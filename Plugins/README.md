@@ -1,14 +1,14 @@
 # Plugins SDK 3
 Plugins feitos com o SDK3. Para baixar apenas o plugin verifique a pasta output dentro da pasta do plugin. 
 
-# Subpastas:
+## Subpastas:
 - ChatMods: Plugins que alteram ou adicionam funcionalidades ao chat do firecast
 - Core: Plugins básicos do Firecast
 - Sheets: Plugins de modelos de fichas
 - TablesDock: Plugins de janelas acopláveis 
 - Template: Template criado por Ambesek para criar plugins para o Firecast
 
-# Contribuir
+## Contribuir
 Para contribuir com seus plugins:
 - Faça um "Fork" do projeto principal (de rrpgfirecast).
 - Adicione seus plugins.
