@@ -15,6 +15,7 @@ Passo a Passo:
 7. Abra o arquivo "compilar e instalar.bat"
 
  7.1 Arquivos .bat podem ser perigosos para seu computador, evite abrir .bat desconhecidos. Se quiser verificar o que o .bat faz abra ele em um editor de texto e veja que comandos possuem. Esses possuem apenas os comandos "rdk p" e "rdk i" do proprio SDK do RRPG. 
+
 8. Após o template ter sido compilado e instalado eu seu pc verifique a pasta "output". Ela vai conter seu plugin .rpk, esse arquivo deve ser destribuido para que outros instalem sua ficha. 
 9. Agora vá em uma de suas mesas e crie uma ficha do tipo do plugin que criou. Experimente mexer no codigo, principalmente left, top, height e width para ver o que muda nos exemplos da ficha. Experimente criar novas abas e objetos. Compile novamente para ver o que muda na ficha.
  
