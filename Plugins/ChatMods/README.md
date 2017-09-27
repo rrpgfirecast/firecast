@@ -12,3 +12,5 @@ Esses plugins adicionam novas funções ou alteram funções do chat. Seja atrá
    - Permite salvar o nick e cor de fonte do chat por mesa. 
 - PokeIcons: Ambesek 
   - Adiciona icones de pokémons para serem usados como os memes do RRPG. 
+- RoletaRussa: AlyssonRPG
+  - Todos da mesa rolam um d100, o menor resultado é kickado. Util para sorteios. 
