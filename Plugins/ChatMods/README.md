@@ -1,7 +1,7 @@
 # ChatMods
 Esses plugins adicionam novas funções ou alteram funções do chat. Seja atrávés de novos comandos ou alteração de comportamentos. 
 
-#Responsaveis pelos projetos:
+# Responsaveis pelos projetos:
 - AfkBot: Ambesek
     - Mensagem personalizada para avisar espectadores ou quem falar com o mestre enquanto ele estiver AFK. 
 - Autolog: Dniester "Tyras" Amorim de Aguiar
