@@ -36,7 +36,7 @@ Se busca apenas pelos plugins, olhe na pasta output do projeto.
 
 #Contribuir
 Para contribuir com seus plugins:
-- Faça um "Fork" do projeto principal (de VinnyAmbesek).
+- Faça um "Fork" do projeto principal (de rrpgfirecast).
 - Adicione seus plugins.
 - Realize um commit (de preferencia explicando o plugin nos comentarios do commit).
 - Realize um pull request.
