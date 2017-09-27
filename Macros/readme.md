@@ -1,10 +1,10 @@
-#Macros em Lua
+# Macros em Lua
 Essa pasta contem diversos macros uteis em lua para sistemas diversos. 
 Cada entrada nessa lista deve ser um macro diferente. 
 
 Se deseja aprender a criar seus macros: http://rrpg.com.br/sdk3/RRPG%20SDK%203.html?Macros.html
 
-Como instalar os macros:
+# Como instalar os macros:
 * Digite /macros no chat e deve aparecer uma janela. 
 * Decida se vai ser uma macro pessoal (Minhas Macros) ou publica (Macros para todos da mesa).
 * Clique em "Nova Macro ..."
@@ -15,3 +15,8 @@ Como instalar os macros:
 * Feche o gerenciador de Macros.
 * Teste ele na mesa.
   * Dica: Alguns macros podem gerar flood e irritar outros jogadores. Para evitar bans ao testa-los abra um pvt consigo mesmo. 
+  
+  # Subpastas
+  As subpastas organizam os macros por sistema. Há também duas pastas para macros não associados a sistemas. 
+  - Uteis: Macros com funções que melhoram o chat do Firecast. 
+  - Ficha: Macros feitos para uso em conjunto com certos plugins de ficha. 
