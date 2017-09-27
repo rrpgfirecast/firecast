@@ -22,6 +22,6 @@ Para contribuir com alteraçoes no plugin de outra pessoa:
 - Realize um pull request para o dono do plugin.
   - Se a pessoa aprovar os plugins vai realizar um pull request para o projeto principal. Apenas o dono do plugin vai ter alteraçoes aceitas nos pull requests para rrpgfirecast. Se voce tentar alterar um plugin de outra pessoa com um pull request direto para rrpgfirecast seu pedido sera negado.  
 
-Se você tiver dificuldades usando o git e quiser enviar seu plugin pode só postar o plugin em nosso grupo do [facebook]
+Se você tiver dificuldades usando o git e quiser enviar seu plugin pode só postar o plugin em nosso grupo do [facebook] e pedir para ele ser adicionado.
 
   [facebook]: <https://www.facebook.com/groups/460782814000421/>
