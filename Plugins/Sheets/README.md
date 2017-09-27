@@ -2,7 +2,7 @@
 Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais). 
 
 - AD&D 2e: Ambesek
-	- Ficha para o sistema Advanced Dungeons and Dragons.
+	- Ficha para o sistema Advanced Dungeons and Dragons 2º edição.
 - Ao Cair da Noite: Ambesek
 	- Ficha para o sistema Ao Cair da Noite.
 - Arc Metal Zhuls: Ambesek
