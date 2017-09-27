@@ -1,4 +1,4 @@
-# fichaRPGmeister
+# Ficha RPGmeister
 Proximas Versões
 + Tiro Multiplo Aprimorado pra ataques avançados. 
 + Dar uma olhada nas questões de ajuste de tamanho da ficha para telas pequenas. 
