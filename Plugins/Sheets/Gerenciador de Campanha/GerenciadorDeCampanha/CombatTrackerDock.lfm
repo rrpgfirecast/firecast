@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCombatTracker" formType="tablesDock" dataType="RRPG.TB.COMBAT.TRACKER.v1" title="Tracker de Combate" align="client">
+	<import file="combatTrackerGlobals.xml"/>
+	<import file="CombatTrackerScripts.xml"/>	
+	
+	<!--
+	<script>
+		system.isMobile = function() return true; end;
+	</script> -->
+	
+	<layout name="layTopTracker" align="top" height="18" margins="{left=2, right=2, top=2}">
+		<button name="btnAddAtor" text="" class="combatHeaderButton" hint="Adicionar um novo ator ao Tracker">
+			<image align="client" src="images/addIcon.png"/>
+			<event name="onClick">
+				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+
+				if not mesaDoPersonagem.meuJogador.isGold then
+					shoMessage("Apenas para usuarios Gold!");
+					return;
+				end;
+
+				self:criarNovoAtor();
+			</event>
+		</button>
+		<button name="btnRoll" text="R" align="left" class="combatHeaderButton" hint="Faz os testes de iniciativa de todos.">
+			<event name="onClick">
+				local nodes = ndb.getChildNodes(sheet.atores);
+				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+
+				if not mesaDoPersonagem.meuJogador.isGold then
+					shoMessage("Apenas para usuarios Gold!");
+					return;
+				end;
+
+				for i=1, #nodes, 1 do
+					if nodes[i].iniciativaBonus ~= nil then
+						local rolagem = rrpg.interpretarRolagem("1d20 + " .. nodes[i].iniciativaBonus);
+
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Iniciativa de " .. (nodes[i].nome or "Nome"),
+								function (rolado)
+									nodes[i].iniciativa = rolado.resultado;
+									self.rclAtores:sort();
+								end); 
+					end;
+				end
+
+
+			</event>
+		</button>
+		<button name="btnUpdate" text="A" onClick="self.rclAtores:sort()" align="left" class="combatHeaderButton" hint="Atualiza a ordem de iniciativa"/>
+		<button name="btnAddAll" text="T" align="left" class="combatHeaderButton" hint="Adiciona todos com +Jogador a lista.">
+			<event name="onClick">
+				local jogadores = rrpg.getMesaDe(sheet).jogadores;
+				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+
+				if not mesaDoPersonagem.meuJogador.isGold then
+					shoMessage("Apenas para usuarios Gold!");
+					return;
+				end;
+
+				for i=1, #jogadores, 1 do
+					if jogadores[i].isJogador then
+						local ator = self:criarNovoAtor();
+						ator.nome = utils.removerFmtChat(jogadores[i].nick)
+						ator.fof = 1;
+					end;
+				end
+			</event>
+		</button>
+		
+		<button name="btnLimpar" text="Limpar" class="combatHeaderButton" align="right" width="60" onClick="self:limpar();"/>
+	</layout>
+	
+	<layout align="top" class="combatHeaderContentAlignedLayout combatHeader0_H" height="16" padding="{left=2, right=2}">
+		<layout name="layHeader0" class="combatHeader0">
+		</layout>
+				
+		<label class="combatHeaderNome" text=" Teste   Nome"/>
+		
+		<layout name="layRightAlinedTitle" class="combateHeaderRightAlignedContent">
+			<label name="labTitIniciativa" class="combatHeaderIniciativa" text="Init" horzTextAlign="center"/>		
+			<label name="labTitFoF" class="combatHeaderFriendOrFoe" text="A/H" horzTextAlign="center"/>				
+		</layout>
+	</layout>
+	
+	<script>
+		if system.isMobile() then
+			self.layTopTracker.height = 32;
+			self.btnAddAtor.width = self.layTopTracker.height;
+			self.layHeader0.width = 32;
+			self.layRightAlinedTitle.width = 108;
+			self.layRightAlinedTitle.width = 108;
+			self.labTitFoF.width = 32;
+			self.labTitIniciativa.width = 32;
+		end;
+	</script>	
+	
+	<recordList name="rclAtores" align="client" field="atores" templateForm="frmAtorCombatTracker" margins="{top=1}">
+		<event name="onCompare">
+			return self:compareNodes(nodeA, nodeB);
+		</event>
+	</recordList>
+	
+	<layout name="layTrackerBottom" align="bottom" height="28" margins="{top=2, left=2, bottom=2, right=2}">
+		<button text="Próx. turno" onClick="self:proximoTurno();" fontSize="11" width="70" align="left"/>
+		
+		<layout align="right" width="68">
+			<label align="left" autoSize="true" text="Rodada" wordWrap="false" fontSize="11"/>
+			<edit field="rodada" align="client" type="number" min="0" horzTextAlign="center" fontStyle="bold"/>			
+		</layout>
+	</layout>
+	
+	<script>
+		if system.isMobile() then
+			self.layTrackerBottom.height = 32;
+		end;
+		
+		self.onStartDrop = self.handleStartDrop;
+		self.rclAtores.onStartDrop = self.handleStartDrop;
+	</script>
+</form>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLH3" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+
+    	<template name="Arma">
+    		<label left="5" top="5" width="100" height="25" text="Mão"/>
+			<edit left="50" top="5" width="160" height="25" field="nome_$(field)"/>
+			<label left="215" top="5" width="100" height="25" text="Rank"/>
+			<edit left="255" top="5" width="50" height="25" field="rank_$(field)"/>
+			<label left="310" top="5" width="100" height="25" text="Preço"/>
+			<edit left="345" top="5" width="50" height="25" field="preco_$(field)"/>
+
+			<label left="5" top="30" width="100" height="25" text="TAG"/>
+			<edit left="50" top="30" width="160" height="25" field="tag_$(field)"/>
+			<label left="215" top="30" width="100" height="25" text="Ataque" fontSize="12"/>
+			<edit left="255" top="30" width="50" height="25" field="ataque_$(field)"/>
+			<label left="310" top="30" width="100" height="25" text="Magia"/>
+			<edit left="345" top="30" width="50" height="25" field="magia_$(field)"/>
+
+			<label left="5" top="55" width="100" height="25" text="Efeito"/>
+			<edit left="50" top="55" width="160" height="25" field="efeito_$(field)"/>
+			<label left="215" top="55" width="100" height="25" text="PDEF"/>
+			<edit left="255" top="55" width="50" height="25" field="pdef_$(field)"/>
+			<label left="310" top="55" width="100" height="25" text="MDEF"/>
+			<edit left="345" top="55" width="50" height="25" field="mdef_$(field)"/>
+
+			<label left="115" top="80" width="100" height="25" text="Iniciativa" fontSize="11"/>
+			<edit left="160" top="80" width="50" height="25" field="iniciativa_$(field)"/>
+			<label left="215" top="80" width="100" height="25" text="Precisão"  fontSize="11"/>
+			<edit left="255" top="80" width="50" height="25" field="precisao_$(field)"/>
+			<label left="310" top="80" width="100" height="25" text="Alcance" fontSize="10"/>
+			<edit left="345" top="80" width="50" height="25" field="alcance_$(field)"/>
+    	</template>
+
+    	<template name="Armadura">
+    		<label left="5" top="5" width="100" height="25" text="Armadura" fontSize="10"/>
+			<edit left="50" top="5" width="160" height="25" field="nome_$(field)"/>
+			<label left="215" top="5" width="100" height="25" text="Rank"/>
+			<edit left="255" top="5" width="50" height="25" field="rank_$(field)"/>
+			<label left="310" top="5" width="100" height="25" text="Preço"/>
+			<edit left="345" top="5" width="50" height="25" field="preco_$(field)"/>
+
+			<label left="5" top="30" width="100" height="25" text="TAG"/>
+			<edit left="50" top="30" width="160" height="25" field="tag_$(field)"/>
+			<label left="215" top="30" width="100" height="25" text="PDEF"/>
+			<edit left="255" top="30" width="50" height="25" field="pdef_$(field)"/>
+			<label left="310" top="30" width="100" height="25" text="MDEF"/>
+			<edit left="345" top="30" width="50" height="25" field="mdef_$(field)"/>
+
+			<label left="5" top="55" width="100" height="25" text="Efeito"/>
+			<edit left="50" top="55" width="160" height="25" field="efeito_$(field)"/>
+			<label left="215" top="55" width="100" height="25" text="Iniciativa" fontSize="10"/>
+			<edit left="255" top="55" width="50" height="25" field="iniciativa_$(field)"/>
+    	</template>
+
+    	<template name="Acessorio">
+    		<label left="5" top="5" width="100" height="25" text="Acessório" fontSize="10"/>
+			<edit left="50" top="5" width="160" height="25" field="nome_$(field)"/>
+			<label left="215" top="5" width="100" height="25" text="Rank"/>
+			<edit left="255" top="5" width="50" height="25" field="rank_$(field)"/>
+			<label left="310" top="5" width="100" height="25" text="Preço"/>
+			<edit left="345" top="5" width="50" height="25" field="preco_$(field)"/>
+
+			<label left="5" top="30" width="100" height="25" text="TAG"/>
+			<edit left="50" top="30" width="160" height="25" field="tag_$(field)"/>
+			<label left="215" top="30" width="100" height="25" text="PDEF"/>
+			<edit left="255" top="30" width="50" height="25" field="pdef_$(field)"/>
+			<label left="310" top="30" width="100" height="25" text="MDEF"/>
+			<edit left="345" top="30" width="50" height="25" field="mdef_$(field)"/>
+
+			<label left="5" top="55" width="100" height="25" text="Efeito"/>
+			<edit left="50" top="55" width="160" height="25" field="efeito_$(field)"/>
+			<label left="215" top="55" width="100" height="25" text="Iniciativa" fontSize="10"/>
+			<edit left="255" top="55" width="50" height="25" field="iniciativa_$(field)"/>
+			<label left="310" top="55" width="100" height="25" text="Magia"/>
+			<edit left="345" top="55" width="50" height="25" field="magia_$(field)"/>
+    	</template>
+
+    	<layout left="0" top="0" width="400" height="110">
+    		<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+    		<Arma field="mao_1"/>
+		</layout>
+		<layout left="405" top="0" width="400" height="110">
+    		<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+    		<Arma field="mao_2"/>
+		</layout>
+		<layout left="810" top="0" width="400" height="110">
+    		<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+    		<Armadura field="armadura"/>
+		</layout>
+
+		<layout left="0" top="115" width="400" height="85">
+    		<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+    		<Acessorio field="acessorio_1"/>
+		</layout>
+		<layout left="405" top="115" width="400" height="85">
+    		<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+    		<Acessorio field="acessorio_2"/>
+		</layout>
+		<layout left="810" top="115" width="400" height="85">
+    		<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+    		<Acessorio field="acessorio_3"/>
+		</layout>
+
+		<layout left="0" top="205" width="775" height="386">
+    		<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+
+   			<button text="+" left="2" top="2" width="20" height="20">
+				<event name="onClick">
+					self.rclListaDosItens:append();
+				</event>
+			</button>
+    		<label left="5" top="0" width="765" height="25" text="BOLSA/EXTRAS" horzTextAlign="center"/>
+
+    		<recordList name="rclListaDosItens" field="listaItens" templateForm="frmLH3_1" left="0" top="30" width="760" height="351" layout="vertical" minQt="1"/>
+		</layout>
+
+
+
+
+
+
+		
+		<image align="client" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20LH%20releases/imagens/block.png" style="autoFit"/>
+    </scrollBox>
+</form>

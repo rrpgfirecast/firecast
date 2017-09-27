@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmBibliotecaRPGmeister05" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+		<rectangle left="0" top="0" width="400" height="605" color="Black">
+			<label left="5" top="5" width="395" height="25" text="CENARIO" horzTextAlign="center"/>
+			
+			<button left="5" top="50" width="200" text="Os Planos" onClick="gui.openInBrowser('https://www.dropbox.com/s/1aw740u9b3wvjrt/Os%20Planos.docx?dl=0');" />
+			<button left="55" top="75" width="200" text="Paraiso" onClick="gui.openInBrowser('https://www.dropbox.com/sh/9g61gaiqp1w26pj/AAB6L8e2tCRr-SIpuT3USDu8a?dl=0');" />
+			<button left="55" top="100" width="200" text="Efíria" onClick="gui.openInBrowser('https://www.dropbox.com/sh/y2k6m6txanthymt/AABWdGLGGHmf5Zm5SZ5NuyBGa?dl=0');" />
+			<button left="55" top="125" width="200" text="Centelha" onClick="gui.openInBrowser('https://www.dropbox.com/sh/dhm0ej851nwvajd/AABBIgmm9z1vtlTFtv1vzyTFa?dl=0');" />
+			<button left="55" top="150" width="200" text="SobAlec" onClick="gui.openInBrowser('https://www.dropbox.com/sh/ra93f3459bm1599/AAC8ddVoiSn2s4MAHdtTYkHCa?dl=0');" />
+			<label left="80" top="175" width="395" height="25" text="Sob"/>
+			<button left="105" top="200" width="200" text="Republica Arcana" onClick="gui.openInBrowser('https://www.dropbox.com/sh/z8d3w39ohi7d30z/AACuzzRRpK7q0i6P8PZMhM8ka?dl=0');" />
+			<button left="55" top="225" width="200" text="Ardeal" onClick="gui.openInBrowser('https://www.dropbox.com/sh/ufgop6i95f291wt/AAAlAuAEkRhwJR07fDe-OhVZa?dl=0');" />
+			<button left="105" top="250" width="200" text="Imperio do Oriente" onClick="gui.openInBrowser('https://www.dropbox.com/sh/w9n6kypcgp26tcr/AABo3e-AU3b3iYYBmeSQ2Bq2a?dl=0');" />
+			<button left="55" top="275" width="200" text="Abismo" onClick="gui.openInBrowser('https://www.dropbox.com/sh/qtxprhcc5wg67m7/AAD42F9E38y91g9Vs5-FIccta?dl=0');" />
+			<button left="55" top="300" width="200" text="Diaféle" onClick="gui.openInBrowser('https://www.dropbox.com/sh/ck4kjvwoyq18mqq/AACdzNfXQecCv3WFS9y5TaPTa?dl=0');" />
+			<button left="55" top="325" width="200" text="Inferno" onClick="gui.openInBrowser('https://www.dropbox.com/sh/wut4r54ypjdsvtm/AAAROtZ746UjrJInElkn_xS9a?dl=0');" />
+			
+			<button left="5" top="375" width="200" text="Escravidão" onClick="gui.openInBrowser('https://www.dropbox.com/s/10b630bqoul2iv1/Como%20a%20Escravid%C3%A3o%20%C3%A9%20vista%20em%20cada%20plano.docx?dl=0');" />
+		</rectangle>
+		
+		<rectangle left="405" top="0" width="400" height="605" color="Black">
+			<label left="5" top="5" width="395" height="25" text="MONSTROS" horzTextAlign="center"/>
+			
+			<button left="5" top="50" width="200" text="Monstros Diferentes" onClick="gui.openInBrowser('https://www.dropbox.com/s/92oujsl7fxdovyw/Monstros%20Diferentes.docx?dl=0');" />
+			
+			<label left="5" top="100" width="395" height="25" text="Novos Monstros"/>
+			<button left="5" top="125" width="200" text="Espirito Possessor" onClick="gui.openInBrowser('https://www.dropbox.com/s/rrr5b02wow5uksp/Espirito%20Possessor.docx?dl=0');" />
+			
+			<button left="5" top="175" width="200" text="Progressão Selvagem" onClick="gui.openInBrowser('https://www.dropbox.com/s/e0e1afgbzhv93qk/Progress%C3%B5es%20Selvagens.docx?dl=0');" />
+		</rectangle>
+    </scrollBox>
+</form>

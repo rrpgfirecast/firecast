@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmRDF8" align="client" theme="dark">
+	<scrollBox align="client">
+		<image left="0" top="0" width="450" height="271" style="autoFit" src="images/RDF.png"/>
+		<image left="550" top="0" width="250" height="250" style="autoFit" src="images/RPGmeister.jpg"/>
+
+		<layout left="850" top="0" width="200" height="310">
+			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round"/>
+			<label left="0" top="10" width="200" height="20" text="Programador: Vinny (Ambesek)" horzTextAlign="center"/>
+			<label left="0" top="35" width="200" height="20" text="Arte: Nefer (Nefertyne)" horzTextAlign="center"/>
+			<label left="0" top="60" width="200" height="20" text="Consultor: Thales Gagliardi(Tchaleko)" horzTextAlign="center" fontSize="11"/>
+			<label left="0" top="85" width="200" height="20" text="Ficha feita para a mesa Confraria" horzTextAlign="center"/>
+			<label left="0" top="110" width="200" height="20" text="do Dragão Ornitorrinco" horzTextAlign="center"/>
+			<label left="0" top="135" width="200" height="20" text="Sistema: Reinos de Ferro" horzTextAlign="center"/>
+
+			<label left="0" top="160" width="200" height="20" text="Colaboradores:" horzTextAlign="center"/>
+			<label left="0" top="185" width="200" height="20" text="Lucas Stobbe (Stobbe)" horzTextAlign="center"/>
+			<label left="0" top="210" width="200" height="20" text="Felipe \&quot;Tanaka\&quot; (touhitsu)" horzTextAlign="center"/>
+			<label left="0" top="235" width="200" height="20" text="Pedro Marra (Baladash)" horzTextAlign="center"/>
+			<label left="0" top="260" width="200" height="20" text="Bruno \&quot;Ventania\&quot; (Lycan)" horzTextAlign="center"/>
+			<label left="0" top="285" width="200" height="20" text="Henrique Restivo (Psit)" horzTextAlign="center"/>
+
+		</layout>
+		
+		<label left="555" top="300" width="100" height="20" text="Versão Atual: " horzTextAlign="center"/>
+		<image left="667" top="300" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RDF%20releases/release.png"/>
+		<label left="555" top="325" width="100" height="20" text="Ultima Versão: " horzTextAlign="center"/>
+		<image left="667" top="325" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao02.png"/>
+			
+		<button left="555" top="350" width="100" text="Change Log" onClick="gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RDF%20releases/Change%20Log.txt')" />
+		<button left="667" top="350" width="100" text="Atualizar" onClick="gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RDF%20releases/Ficha%20RdF.rpk')" />
+		
+		<label left="555" top="400" width="200" height="20" text="Conheça as Mesas:"/>
+		<button left="555" top="425" width="100" text="RPGmeister" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
+		<button left="667" top="425" width="100" text="Confraria" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=69566');" />
+	</scrollBox>
+</form>

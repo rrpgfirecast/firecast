@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmADnD2" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+        <template name="PericiaArma">
+        	<edit left="5" top="0" width="190" height="25" field="Pericia_Arma_$(field)"/>
+        	<edit left="195" top="0" width="50" height="25" field="Pericia_Arma_Pontos_$(field)"/>
+        </template>
+        <template name="PericiaGeral">
+        	<edit left="5" top="0" width="190" height="25" field="Pericia_Geral_$(field)"/>
+        	<edit left="195" top="0" width="50" height="25" field="Pericia_Geral_Pontos_$(field)"/>
+        	<edit left="245" top="0" width="50" height="25" field="Pericia_Geral_HAB$(field)"/>
+        	<edit left="295" top="0" width="50" height="25" field="Pericia_Geral_MOD_$(field)"/>
+        </template>
+
+        <layout left="0" top="0" width="250" height="610">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="250" height="20" text="PERÍCIA COM ARMA" horzTextAlign="center"/>
+
+	        <layout left="0" top="30" width="250" height="25">
+	        	<label left="5" top="5" width="40" height="20" text="Iniciais" fontSize="11" horzTextAlign="center"/>
+        		<edit left="45" top="0" width="40" height="25" field="Pericia_Arma_Inicial"/>
+
+        		<label left="85" top="5" width="40" height="20" text="Adicionais" fontSize="8" horzTextAlign="center"/>
+        		<edit left="125" top="0" width="40" height="25" field="Pericia_Arma_Adicional"/>
+
+        		<label left="165" top="5" width="40" height="20" text="Penalidade" fontSize="8" horzTextAlign="center"/>
+        		<edit left="205" top="0" width="40" height="25" field="Pericia_Arma_Penalidade"/>
+	        </layout>
+	        <layout left="0" top="55" width="250" height="25">
+	        	<label  left="5" top="0" width="190" height="25" fontSize="13" horzTextAlign="center" text="Arma"/>
+        		<label left="195" top="0" width="50" height="25" fontSize="13" horzTextAlign="center" text="Pontos"/>
+	        </layout>
+	        <layout left="0" top="80" width="250" height="25">
+	        	<PericiaArma field="2"/>
+	        </layout>
+	        <layout left="0" top="105" width="250" height="25">
+	        	<PericiaArma field="3"/>
+	        </layout>
+	        <layout left="0" top="130" width="250" height="25">
+	        	<PericiaArma field="4"/>
+	        </layout>
+	        <layout left="0" top="155" width="250" height="25">
+	        	<PericiaArma field="5"/>
+	        </layout>
+	        <layout left="0" top="180" width="250" height="25">
+	        	<PericiaArma field="7"/>
+	        </layout>
+	        <layout left="0" top="205" width="250" height="25">
+	        	<PericiaArma field="8"/>
+	        </layout>
+	        <layout left="0" top="230" width="250" height="25">
+	        	<PericiaArma field="9"/>
+	        </layout>
+	        <layout left="0" top="255" width="250" height="25">
+	        	<PericiaArma field="10"/>
+	        </layout>
+	        <layout left="0" top="280" width="250" height="25">
+	        	<PericiaArma field="11"/>
+	        </layout>
+	        <layout left="0" top="305" width="250" height="25">
+	        	<PericiaArma field="12"/>
+	        </layout>
+	        <layout left="0" top="330" width="250" height="25">
+	        	<PericiaArma field="13"/>
+	        </layout>
+	        <layout left="0" top="355" width="250" height="25">
+	        	<PericiaArma field="14"/>
+	        </layout>
+	        <layout left="0" top="380" width="250" height="25">
+	        	<PericiaArma field="15"/>
+	        </layout>
+	        <layout left="0" top="405" width="250" height="25">
+	        	<PericiaArma field="16"/>
+	        </layout>
+	        <layout left="0" top="430" width="250" height="25">
+	        	<PericiaArma field="17"/>
+	        </layout>
+	        <layout left="0" top="455" width="250" height="25">
+	        	<PericiaArma field="18"/>
+	        </layout>
+	        <layout left="0" top="480" width="250" height="25">
+	        	<PericiaArma field="19"/>
+	        </layout>
+	        <layout left="0" top="505" width="250" height="25">
+	        	<PericiaArma field="20"/>
+	        </layout>
+	        <layout left="0" top="530" width="250" height="25">
+	        	<PericiaArma field="21"/>
+	        </layout>
+	        <layout left="0" top="555" width="250" height="25">
+	        	<PericiaArma field="22"/>
+	        </layout>
+	        <layout left="0" top="580" width="250" height="25">
+	        	<PericiaArma field="23"/>
+	        </layout>
+	    </layout>
+    	
+	    <layout left="260" top="0" width="350" height="610">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="350" height="20" text="PERÍCIA GERAL" horzTextAlign="center"/>
+
+	        <layout left="0" top="30" width="350" height="25">
+	        	<label left="55" top="5" width="40" height="20" text="Iniciais" fontSize="11" horzTextAlign="center"/>
+        		<edit left="95" top="0" width="40" height="25" field="Pericia_Geral_Inicial"/>
+
+        		<label left="135" top="5" width="40" height="20" text="Adicionais" fontSize="8" horzTextAlign="center"/>
+        		<edit left="175" top="0" width="40" height="25" field="Pericia_Geral_Adicional"/>
+
+        		<label left="215" top="5" width="40" height="20" text="Penalidade" fontSize="8" horzTextAlign="center"/>
+        		<edit left="255" top="0" width="40" height="25" field="Pericia_Geral_Penalidade"/>
+	        </layout>
+	        <layout left="0" top="55" width="350" height="25">
+	        	<label  left="5" top="0" width="190" height="25" fontSize="13" horzTextAlign="center" text="Perícia"/>
+        		<label left="195" top="0" width="50" height="25" fontSize="13" horzTextAlign="center" text="Pontos"/>
+        		<label left="245" top="0" width="50" height="25" fontSize="13" horzTextAlign="center" text="HAB"/>
+        		<label left="295" top="0" width="50" height="25" fontSize="13" horzTextAlign="center" text="MOD"/>
+	        </layout>
+	        <layout left="0" top="80" width="350" height="25">
+	        	<PericiaGeral field="2"/>
+	        </layout>
+	        <layout left="0" top="105" width="350" height="25">
+	        	<PericiaGeral field="3"/>
+	        </layout>
+	        <layout left="0" top="130" width="350" height="25">
+	        	<PericiaGeral field="4"/>
+	        </layout>
+	        <layout left="0" top="155" width="350" height="25">
+	        	<PericiaGeral field="5"/>
+	        </layout>
+	        <layout left="0" top="180" width="350" height="25">
+	        	<PericiaGeral field="7"/>
+	        </layout>
+	        <layout left="0" top="205" width="350" height="25">
+	        	<PericiaGeral field="8"/>
+	        </layout>
+	        <layout left="0" top="230" width="350" height="25">
+	        	<PericiaGeral field="9"/>
+	        </layout>
+	        <layout left="0" top="255" width="350" height="25">
+	        	<PericiaGeral field="10"/>
+	        </layout>
+	        <layout left="0" top="280" width="350" height="25">
+	        	<PericiaGeral field="11"/>
+	        </layout>
+	        <layout left="0" top="305" width="350" height="25">
+	        	<PericiaGeral field="12"/>
+	        </layout>
+	        <layout left="0" top="330" width="350" height="25">
+	        	<PericiaGeral field="13"/>
+	        </layout>
+	        <layout left="0" top="355" width="350" height="25">
+	        	<PericiaGeral field="14"/>
+	        </layout>
+	        <layout left="0" top="380" width="350" height="25">
+	        	<PericiaGeral field="15"/>
+	        </layout>
+	        <layout left="0" top="405" width="350" height="25">
+	        	<PericiaGeral field="16"/>
+	        </layout>
+	        <layout left="0" top="430" width="350" height="25">
+	        	<PericiaGeral field="17"/>
+	        </layout>
+	        <layout left="0" top="455" width="350" height="25">
+	        	<PericiaGeral field="18"/>
+	        </layout>
+	        <layout left="0" top="480" width="350" height="25">
+	        	<PericiaGeral field="19"/>
+	        </layout>
+	        <layout left="0" top="505" width="350" height="25">
+	        	<PericiaGeral field="20"/>
+	        </layout>
+	        <layout left="0" top="530" width="350" height="25">
+	        	<PericiaGeral field="21"/>
+	        </layout>
+	        <layout left="0" top="555" width="350" height="25">
+	        	<PericiaGeral field="22"/>
+	        </layout>
+	        <layout left="0" top="580" width="350" height="25">
+	        	<PericiaGeral field="23"/>
+	        </layout>
+	    </layout>
+
+
+	    <layout left="620" top="0" width="150" height="255">
+	    	<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="150" height="20" text="TALENTOS LADINOS" horzTextAlign="center"/>
+
+	        <label left="5" top="25" width="100" height="20" fontSize="13" horzTextAlign="center" text="Furtar Bolsos"/>
+	        <edit left="105" top="25" width="40" height="25" field="Talento_Furto"/>
+	        <label left="5" top="50" width="100" height="20" fontSize="13" horzTextAlign="center" text="Abrir Fechaduras"/>
+	        <edit left="105" top="50" width="40" height="25" field="Talento_Abrir_Fechaduras"/>
+	        <label left="5" top="75" width="100" height="20" fontSize="8" horzTextAlign="center" text="Achar/Desarmar Armadilhas"/>
+	        <edit left="105" top="75" width="40" height="25" field="Talento_Armadilhas"/>
+	        <label left="5" top="100" width="100" height="20" fontSize="10" horzTextAlign="center" text="Mover-se em Silêncio"/>
+	        <edit left="105" top="100" width="40" height="25" field="Talento_Furtividade"/>
+	        <label left="5" top="125" width="100" height="20" fontSize="10" horzTextAlign="center" text="Esconder-se nas Sombras"/>
+	        <edit left="105" top="125" width="40" height="25" field="Talento_Esconder"/>
+	        <label left="5" top="150" width="100" height="20" fontSize="13" horzTextAlign="center" text="Ouvir Ruídos"/>
+	        <edit left="105" top="150" width="40" height="25" field="Talento_Ouvir"/>
+	        <label left="5" top="175" width="100" height="20" fontSize="13" horzTextAlign="center" text="Escalar Muros"/>
+	        <edit left="105" top="175" width="40" height="25" field="Talento_Escalar"/>
+	        <label left="5" top="200" width="100" height="20" fontSize="11" horzTextAlign="center" text="Decifrar Linguagens"/>
+	        <edit left="105" top="200" width="40" height="25" field="Talento_Decifrar"/>
+	        <label left="5" top="225" width="100" height="20" fontSize="11" horzTextAlign="center" text="Ataque pelas Costas"/>
+	        <edit left="105" top="225" width="40" height="25" field="Talento_Ataque_Furtivo"/>
+	    </layout>
+
+	    <layout left="620" top="259" width="150" height="355">
+	    	<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="150" height="20" text="PODER DA FÉ" horzTextAlign="center"/>
+
+	        <label left="5" top="25" width="100" height="20" fontSize="13" horzTextAlign="center" text="Esqueleto (1DV)"/>
+	        <edit left="105" top="25" width="40" height="25" field="Fe1"/>
+	        <label left="5" top="50" width="100" height="20" fontSize="13" horzTextAlign="center" text="Zumbi"/>
+	        <edit left="105" top="50" width="40" height="25" field="Fe2"/>
+	        <label left="5" top="75" width="100" height="20" fontSize="13" horzTextAlign="center" text="Carniçal (2DV)"/>
+	        <edit left="105" top="75" width="40" height="25" field="Fe3"/>
+	        <label left="5" top="100" width="100" height="20" fontSize="13" horzTextAlign="center" text="Sombra (3-4DV)"/>
+	        <edit left="105" top="100" width="40" height="25" field="Fe4"/>
+	        <label left="5" top="125" width="100" height="20" fontSize="13" horzTextAlign="center" text="Vulto (5DV)"/>
+	        <edit left="105" top="125" width="40" height="25" field="Fe5"/>
+	        <label left="5" top="150" width="100" height="20" fontSize="13" horzTextAlign="center" text="Carniçal"/>
+	        <edit left="105" top="150" width="40" height="25" field="Fe6"/>
+	        <label left="5" top="175" width="100" height="20" fontSize="13" horzTextAlign="center" text="Aparição (6DV)"/>
+	        <edit left="105" top="175" width="40" height="25" field="Fe7"/>
+	        <label left="5" top="200" width="100" height="20" fontSize="13" horzTextAlign="center" text="Múmia (7DV)"/>
+	        <edit left="105" top="200" width="40" height="25" field="Fe8"/>
+	        <label left="5" top="225" width="100" height="20" fontSize="13" horzTextAlign="center" text="Espectro (8DV)"/>
+	        <edit left="105" top="225" width="40" height="25" field="Fe9"/>
+	        <label left="5" top="250" width="100" height="20" fontSize="13" horzTextAlign="center" text="Vampiro (9DV)"/>
+	        <edit left="105" top="250" width="40" height="25" field="Fe10"/>
+	        <label left="5" top="275" width="100" height="20" fontSize="13" horzTextAlign="center" text="Fantasma (10DV)"/>
+	        <edit left="105" top="275" width="40" height="25" field="Fe11"/>
+	        <label left="5" top="300" width="100" height="20" fontSize="13" horzTextAlign="center" text="Lich (11DV+)"/>
+	        <edit left="105" top="300" width="40" height="25" field="Fe12"/>
+	        <label left="5" top="325" width="100" height="20" fontSize="13" horzTextAlign="center" text="Especial"/>
+	        <edit left="105" top="325" width="40" height="25" field="Fe13"/>
+	    </layout>
+
+	    <layout left="780" top="0" width="265" height="300">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="0" width="265" height="20" text="Habilidades Especificas" horzTextAlign="center"/>
+			<textEditor left="5" top="25" width="255" height="265" field="HE1"/>
+        </layout>
+
+        <layout left="780" top="310" width="265" height="300">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="0" width="265" height="20" text="Habilidades Especificas" horzTextAlign="center"/>
+			<textEditor left="5" top="25" width="255" height="265" field="HE3"/>
+        </layout>
+
+        <layout left="1055" top="0" width="265" height="300">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="0" width="265" height="20" text="Habilidades Especificas" horzTextAlign="center"/>
+			<textEditor left="5" top="25" width="255" height="265" field="HE2"/>
+        </layout>
+
+        <layout left="1055" top="310" width="265" height="300">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="0" width="265" height="20" text="Habilidades Especificas" horzTextAlign="center"/>
+			<textEditor left="5" top="25" width="255" height="265" field="HE4"/>
+        </layout>
+
+    	<image align="client" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20ADnD%20releases/imagens/block.png" style="autoFit"/>
+    </scrollBox>
+</form>

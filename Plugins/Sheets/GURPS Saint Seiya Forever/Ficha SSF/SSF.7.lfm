@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSSF7" align="client" theme="dark">
+	<scrollBox align="client">
+		<image left="0" top="0" width="500" height="500" style="autoFit" src="images/SSF.jpg"/>
+		<image left="550" top="0" width="250" height="250" style="autoFit" src="images/RPGmeister.jpg"/>
+
+		<layout left="850" top="0" width="200" height="400">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="10" width="200" height="20" text="Programador: Vinny (Ambesek)" horzTextAlign="center"/>
+			<label left="0" top="35" width="200" height="20" text="Arte: Nefer (Nefertyne)" horzTextAlign="center"/>
+			<label left="0" top="60" width="200" height="20" text="Consultor: Bedaz e Kubiach" horzTextAlign="center"/>
+			<label left="0" top="95" width="200" height="20" text="Ficha feita para a mesa" horzTextAlign="center"/>
+			<label left="0" top="120" width="200" height="20" text="Saint Seiya Forever" horzTextAlign="center"/>
+			<label left="0" top="145" width="200" height="20" text="Sistema: GURPS (Adaptação)" horzTextAlign="center"/>
+
+			<label left="0" top="195" width="200" height="20" text="Colaboradores: " horzTextAlign="center"/>
+			<label left="0" top="220" width="200" height="20" text="M_Sama" horzTextAlign="center"/>
+			<label left="0" top="245" width="200" height="20" text="Mestre_Zephyrus" horzTextAlign="center"/>
+			<label left="0" top="270" width="200" height="20" text="Magvinho" horzTextAlign="center"/>
+			<label left="0" top="295" width="200" height="20" text="Seth" horzTextAlign="center"/>
+			<label left="0" top="320" width="200" height="20" text="Havokk" horzTextAlign="center"/>
+		</layout>
+		
+		<label left="550" top="300" width="100" height="20" text="Versão Atual: " horzTextAlign="center"/>
+		<image left="662" top="300" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao04.png"/>
+		<label left="550" top="325" width="100" height="20" text="Ultima Versão: " horzTextAlign="center"/>
+		<image left="662" top="325" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20SSF%20releases/release.png"/>
+			
+		<button left="550" top="350" width="100" text="Change Log" onClick="gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20SSF%20releases/Change%20Log.txt')" />
+		<button left="662" top="350" width="100" text="Atualizar" onClick="gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20SSF%20releases/Ficha%20SSF.rpk')" />
+		
+		<label left="550" top="400" width="200" height="20" text="Conheça as Mesas:"/>
+		<button left="550" top="425" width="100" text="RPGmeister" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
+		<button left="662" top="425" width="130" text="Saint Seiya Forever" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=99187');" />
+
+		<image left="0" top="0" width="1335" height="615" style="autoFit" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20SSF%20releases/imagens/ABA0.png"/>
+	</scrollBox>
+</form>

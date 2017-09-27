@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSSF2" align="client" theme="dark">
+    <scrollBox align="client">
+    	<template name="Pericia">
+			<edit left="5" top="0" width="85" height="25" field="pericia_$(field)"/>
+			<dataLink field="pericia_$(field)" defaultValue="$(nome)"/>
+
+			<rectangle left="90" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="90" top="3" width="40" height="20" field="nh_$(field)" horzTextAlign="center"/>
+
+        	<comboBox left="130" top="0" width="50" height="25" field="atr_$(field)" items="{'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'}" values="{'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'}"/>
+        	<dataLink field="atr_$(field)" defaultValue="$(atr)"/>
+
+        	<label left="180" top="3" width="10" height="20" text="+" horzTextAlign="center"/>
+        	<edit left="190" top="0" width="30" height="25" type="number" field="bonus_$(field)"/>
+
+        	<comboBox left="220" top="0" width="55" height="25" field="dificuldade_$(field)" items="{'F', 'M', 'D', 'MD'}" values="{'F', 'M', 'D', 'MD'}"/>
+        	<dataLink field="dificuldade_$(field)" defaultValue="$(dificuldade)"/>
+
+        	<rectangle left="275" top="0" width="25" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="275" top="3" width="25" height="20" field="xp_$(field)" horzTextAlign="center"/>
+
+        	<button left="300" top="3" width="20" height="20" text="R">
+				<event name="onClick">
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+				
+					rolagem = rrpg.interpretarRolagem("3d6");
+					target = (sheet.nh_$(field) or 0) + (tonumber(sheet.mod) or 0);
+					local tecnica = "$(field)";
+					if (tecnica=="3_16" or tecnica=="3_17" or tecnica=="3_18" or tecnica=="1_9") then
+						fulminante = true;
+					else 
+						fulminante = nil;
+					end;
+
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de " .. (sheet.pericia_$(field) or 0) .." [NH" .. (sheet.nh_$(field) or 0) .. (sheet.sinal or "+") .. (sheet.mod or 0) .. "]", 
+						function (rolado)
+							pos(rolado);
+						end);
+				</event>
+			</button>
+
+        	<dataLink fields="{'atr_$(field)', 'dificuldade_$(field)', 'bonus_$(field)', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'}">
+				<event name="onChange">
+					if sheet~=nil then
+						local mod2 = 0;
+						local tabela_custo;
+
+						if sheet.dificuldade_$(field)=="F" then
+							tabela_custo = {0, 0, 0, 0, 1, 2, 4, 8, 12, 16};
+						elseif sheet.dificuldade_$(field)=="M" then
+							tabela_custo = {0, 0, 0, 1, 2, 4, 8, 12, 16, 20};
+						elseif sheet.dificuldade_$(field)=="D" then
+							tabela_custo = {0, 0, 1, 2, 4, 8, 12, 16, 20, 24};
+						elseif sheet.dificuldade_$(field)=="MD" then
+							tabela_custo = {0, 1, 2, 4, 8, 12, 16, 20, 24, 28};
+						else
+							tabela_custo = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+						end;
+
+						local mod3 = (tonumber(sheet.bonus_$(field)) or -4) + 5;
+						local mod4 = 0;
+						if mod3>10 then
+							mod4 = (mod3-10)*4;
+							mod3 = 10;
+						end;
+
+						mod2 = tabela_custo[mod3] + mod4;
+
+						local xp = (tonumber(sheet.xp_$(field)) or 0);
+						sheet.xp_$(field) = mod2;
+						sheet.xp_pericias = (tonumber(sheet.xp_pericias) or 0) - xp + mod2;
+
+						local mod = 0;
+						if sheet.atr_$(field)=="ST" then
+							mod = (tonumber(sheet.total_st) or 0);
+						elseif sheet.atr_$(field)=="DX" then
+							mod = (tonumber(sheet.total_dx) or 0);
+						elseif sheet.atr_$(field)=="IQ" then
+							mod = (tonumber(sheet.total_iq) or 0);
+						elseif sheet.atr_$(field)=="HT" then
+							mod = (tonumber(sheet.total_ht) or 0);
+						elseif sheet.atr_$(field)=="VT" then
+							mod = (tonumber(sheet.total_von) or 0);
+						elseif sheet.atr_$(field)=="PR" then
+							mod = (tonumber(sheet.total_per) or 0);
+						else
+							mod = 0;
+						end
+
+						local atr = mod;
+						mod = mod + (tonumber(sheet.bonus_$(field)) or 0);
+
+						local default1 = $(default1) ;
+						local default2 = "$(default2)";
+						local default3 = "$(default3)";
+
+						if mod2 == 0 then
+							if default1 == nil then
+								mod = 0;
+							else
+								default1 = atr + default1;
+								default2 = (tonumber(sheet["nh_" .. default2]) or 0) - $(pen2);
+								default3 = (tonumber(sheet["nh_" .. default3]) or 0) - $(pen3);
+
+								mod = math.max(default1, default2, default3);
+							end;
+						end;
+
+						sheet.nh_$(field) = mod;
+					end;
+				</event>
+			</dataLink>
+
+		</template>
+
+		<layout left="0" top="0" width="325" height="615">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="5" width="325" height="20" text="     NOME            NH        AT     +  BN       DF        PT"/>
+
+			<layout left="0" top="30" width="325" height="25">
+				<Pericia field="1_1" nome="Atuação" atr="IQ" dificuldade="M" default1="-5" default2="1_19" default3="0_0" pen2="2" pen3="2"/>
+			</layout>
+			<layout left="0" top="55" width="325" height="25">
+				<Pericia field="1_2" nome="Arremesso" atr="DX" dificuldade="M" default1="-2" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="80" width="325" height="25">
+				<Pericia field="1_3" nome="Arma de Arremesso" atr="DX" dificuldade="F" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="105" width="325" height="25">
+				<Pericia field="1_4" nome="Alquimia (Arma S.)" atr="IQ" dificuldade="MD" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="130" width="325" height="25">
+				<Pericia field="1_5" nome="Armeiro (Arma S.)" atr="IQ" dificuldade="M" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="155" width="325" height="25">
+				<Pericia field="1_6" nome="Acrobacia" atr="DX" dificuldade="D" default1="-6" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="180" width="325" height="25">
+				<Pericia field="1_7" nome="Bloqueio Mental" atr="VT" dificuldade="M" default1="-5" default2="2_17" default3="0_0" pen2="5" pen3="0"/>
+			</layout>
+			<layout left="0" top="205" width="325" height="25">
+				<Pericia field="1_8" nome="Briga" atr="DX" dificuldade="F" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="230" width="325" height="25">
+				<Pericia field="1_9" nome="Caratê" atr="DX" dificuldade="D" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="255" width="325" height="25">
+				<Pericia field="1_10" nome="Cativar" atr="VT" dificuldade="D" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="280" width="325" height="25">
+				<Pericia field="1_11" nome="Cartografia" atr="IQ" dificuldade="M" default1="-5" default2="2_7" default3="0_0" pen2="2" pen3="0"/>
+			</layout>
+			<layout left="0" top="305" width="325" height="25">
+				<Pericia field="1_12" nome="Canto" atr="HT" dificuldade="F" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="330" width="325" height="25">
+				<Pericia field="1_13" nome="Controle Corporal" atr="HT" dificuldade="MD" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="355" width="325" height="25">
+				<Pericia field="1_14" nome="Controle da Respiração" atr="HT" dificuldade="D" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="380" width="325" height="25">
+				<Pericia field="1_15" nome="Conhecimento de Ervas" atr="IQ" dificuldade="MD" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="405" width="325" height="25">
+				<Pericia field="1_16" nome="Detecção de Mentiras" atr="PR" dificuldade="D" default1="-6" default2="2_14" default3="0_0" pen2="4" pen3="0"/>
+			</layout>
+			<layout left="0" top="430" width="325" height="25">
+				<Pericia field="1_17" nome="Diplomacia" atr="IQ" dificuldade="D" default1="-6" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="455" width="325" height="25">
+				<Pericia field="1_18" nome="Diagnose" atr="IQ" dificuldade="D" default1="-6" default2="2_16" default3="3_2" pen2="4" pen3="8"/>
+			</layout>
+			<layout left="0" top="480" width="325" height="25">
+				<Pericia field="1_19" nome="Dissimulação" atr="IQ" dificuldade="M" default1="-5" default2="1_1" default3="0_0" pen2="2" pen3="0"/>
+			</layout>
+			<layout left="0" top="505" width="325" height="25">
+				<Pericia field="1_20" nome="Escalada" atr="DX" dificuldade="M" default1="-5" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+
+			<layout left="0" top="550" width="250" height="25" >
+				<label left="5" top="5" width="80" height="20" text="Modificador" fontSize="10"/>
+        		<edit left="60" top="0" width="40" height="25" field="mod"/>
+			</layout>
+		</layout>
+
+		<layout left="330" top="0" width="325" height="615">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="5" width="325" height="20" text="     NOME            NH        AT     +  BN       DF        PT"/>
+
+			<layout left="0" top="30" width="325" height="25">
+				<Pericia field="2_1" nome="Estratégia" atr="IQ" dificuldade="D" default1="-6" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="55" width="325" height="25">
+				<Pericia field="2_2" nome="Escudo" atr="DX" dificuldade="F" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="80" width="325" height="25">
+				<Pericia field="2_3" nome="Fisiologia" atr="IQ" dificuldade="D" default1="-6" default2="1_18" default3="2_16" pen2="5" pen3="5"/>
+			</layout>
+			<layout left="0" top="105" width="325" height="25">
+				<Pericia field="2_4" nome="Força Mental" atr="VT" dificuldade="F" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="130" width="325" height="25">
+				<Pericia field="2_5" nome="Furtividade" atr="DX" dificuldade="M" default1="-5" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="155" width="325" height="25">
+				<Pericia field="2_6" nome="Fuga" atr="DX" dificuldade="D" default1="-6" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="180" width="325" height="25">
+				<Pericia field="2_7" nome="Geografia" atr="IQ" dificuldade="D" default1="-6" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="205" width="325" height="25">
+				<Pericia field="2_8" nome="História" atr="IQ" dificuldade="D" default1="-6" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="230" width="325" height="25">
+				<Pericia field="2_9" nome="Interrogatório" atr="IQ" dificuldade="M" default1="-5" default2="2_10" default3="0_0" pen2="3" pen3="0"/>
+			</layout>
+			<layout left="0" top="255" width="325" height="25">
+				<Pericia field="2_10" nome="Intimidação" atr="VT" dificuldade="M" default1="-5" default2="1_19" default3="0_0" pen2="3" pen3="0"/>
+			</layout>
+			<layout left="0" top="280" width="325" height="25">
+				<Pericia field="2_11" nome="Lábia" atr="IQ" dificuldade="M" default1="-5" default2="1_19" default3="0_0" pen2="5" pen3="0"/>
+			</layout>
+			<layout left="0" top="305" width="325" height="25">
+				<Pericia field="2_12" nome="Leitura Lábial" atr="PR" dificuldade="M" default1="-10" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="330" width="325" height="25">
+				<Pericia field="2_13" nome="Liderança" atr="IQ" dificuldade="M" default1="-5" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="355" width="325" height="25">
+				<Pericia field="2_14" nome="Linguagem Corporal" atr="DX" dificuldade="D" default1="-100" default2="1_16" default3="0_0" pen2="4" pen3="0"/>
+			</layout>
+			<layout left="0" top="380" width="325" height="25">
+				<Pericia field="2_15" nome="Lutas às Cegas" atr="PR" dificuldade="MD" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="405" width="325" height="25">
+				<Pericia field="2_16" nome="Medicina (Cosmo)" atr="IQ" dificuldade="D" default1="-7" default2="3_2" default3="0_0" pen2="11" pen3="0"/>
+			</layout>
+			<layout left="0" top="430" width="325" height="25">
+				<Pericia field="2_17" nome="Meditação" atr="VT" dificuldade="D" default1="-6" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="455" width="325" height="25">
+				<Pericia field="2_18" nome="Natação" atr="HT" dificuldade="F" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="480" width="325" height="25">
+				<Pericia field="2_19" nome="Naturalista" atr="IQ" dificuldade="D" default1="-6" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="505" width="325" height="25">
+				<Pericia field="2_20" nome="Observação" atr="PR" dificuldade="M" default1="-5" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+		</layout>
+
+		<layout left="660" top="0" width="325" height="615">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="5" width="325" height="20" text="     NOME            NH        AT     +  BN       DF        PT"/>
+
+			<layout left="0" top="30" width="325" height="25">
+				<Pericia field="3_1" nome="Ocultismo" atr="IQ" dificuldade="M" default1="-5" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="55" width="325" height="25">
+				<Pericia field="3_2" nome="Primeiros Socorros" atr="IQ" dificuldade="F" default1="-4" default2="2_16" default3="0_0" pen2="4" pen3="0"/>
+			</layout>
+			<layout left="0" top="80" width="325" height="25">
+				<Pericia field="3_3" nome="Persuadir" atr="VT" dificuldade="D" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="105" width="325" height="25">
+				<Pericia field="3_4" nome="Postura Imóvel" atr="DX" dificuldade="D" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="130" width="325" height="25">
+				<Pericia field="3_5" nome="Perseguição" atr="IQ" dificuldade="M" default1="-5" default2="2_5" default3="2_20" pen2="4" pen3="5"/>
+			</layout>
+			<layout left="0" top="155" width="325" height="25">
+				<Pericia field="3_6" nome="Rastreamento" atr="IQ" dificuldade="M" default1="-5" default2="2_19" default3="0_0" pen2="5" pen3="0"/>
+			</layout>
+			<layout left="0" top="180" width="325" height="25">
+				<Pericia field="3_7" nome="Salto" atr="DX" dificuldade="F" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="205" width="325" height="25">
+				<Pericia field="3_8" nome="Sobrevivência" atr="IQ" dificuldade="M" default1="-5" default2="2_19" default3="0_0" pen2="3" pen3="0"/>
+			</layout>
+			<layout left="0" top="230" width="325" height="25">
+				<Pericia field="3_9" nome="Trato Social (Nobreza)" atr="IQ" dificuldade="F" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="255" width="325" height="25">
+				<Pericia field="3_10" nome="Trato Social (Espectro)" atr="IQ" dificuldade="F" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="280" width="325" height="25">
+				<Pericia field="3_11" nome="Trato Social (Guerreiro)" atr="IQ" dificuldade="F" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="305" width="325" height="25">
+				<Pericia field="3_12" nome="Trato Social (Berserk)" atr="IQ" dificuldade="F" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="330" width="325" height="25">
+				<Pericia field="3_13" nome="Trato Social (Marinas)" atr="IQ" dificuldade="F" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="355" width="325" height="25">
+				<Pericia field="3_14" nome="Trato Social (Santos)" atr="IQ" dificuldade="F" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="380" width="325" height="25">
+				<Pericia field="3_15" nome="Teologia (Hipermito)" atr="IQ" dificuldade="D" default1="-6" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="405" width="325" height="25">
+				<Pericia field="3_16" nome="Técnica de Ataque 1" atr="DX" dificuldade="F" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="430" width="325" height="25">
+				<Pericia field="3_17" nome="Técnica de Ataque 2" atr="DX" dificuldade="F" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="455" width="325" height="25">
+				<Pericia field="3_18" nome="Técnica de Ataque 3" atr="DX" dificuldade="F" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="480" width="325" height="25">
+				<Pericia field="3_19" nome="Técnica de Defesa 1" atr="DX" dificuldade="D" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="505" width="325" height="25">
+				<Pericia field="3_20" nome="Técnica de Defesa 1" atr="DX" dificuldade="D" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+		</layout>
+
+		<layout left="990" top="0" width="325" height="615">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="5" width="325" height="20" text="     NOME            NH        AT     +  BN       DF        PT"/>
+
+			<layout left="0" top="30" width="325" height="25">
+				<Pericia field="4_1" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="55" width="325" height="25">
+				<Pericia field="4_2" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="80" width="325" height="25">
+				<Pericia field="4_3" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="105" width="325" height="25">
+				<Pericia field="4_4" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="130" width="325" height="25">
+				<Pericia field="4_5" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="155" width="325" height="25">
+				<Pericia field="4_6" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="180" width="325" height="25">
+				<Pericia field="4_7" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="205" width="325" height="25">
+				<Pericia field="4_8" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="230" width="325" height="25">
+				<Pericia field="4_9" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="255" width="325" height="25">
+				<Pericia field="4_10" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="280" width="325" height="25">
+				<Pericia field="4_11" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="305" width="325" height="25">
+				<Pericia field="4_12" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="330" width="325" height="25">
+				<Pericia field="4_13" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="355" width="325" height="25">
+				<Pericia field="4_14" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="380" width="325" height="25">
+				<Pericia field="4_15" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="405" width="325" height="25">
+				<Pericia field="4_16" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="430" width="325" height="25">
+				<Pericia field="4_17" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="455" width="325" height="25">
+				<Pericia field="4_18" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="480" width="325" height="25">
+				<Pericia field="4_19" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+			<layout left="0" top="505" width="325" height="25">
+				<Pericia field="4_20" nome="" atr="" dificuldade="" default1="nil" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+			</layout>
+		</layout>
+
+		<image left="0" top="0" width="1335" height="615" style="autoFit" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20SSF%20releases/imagens/ABA0.png"/>
+    </scrollBox>
+</form>

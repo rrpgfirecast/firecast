@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGerenciador03_AVENTURA" width="1300" height="200" theme="dark" margins="{top=1}">
+	<rectangle left="0" top="0" width="810" height="200" color="#212121">
+		
+		<label left="5" top="0" width="25" height="25" text="Nª" horzTextAlign="center"/>
+		<label left="30" top="0" width="200" height="25" text="Nome" horzTextAlign="center"/>
+		<label left="230" top="0" width="100" height="25" text="Data Inicio" horzTextAlign="center"/>
+		<label left="330" top="0" width="100" height="25" text="Data Fim" horzTextAlign="center"/>
+		<label left="430" top="0" width="100" height="25" text="Sessao Inicio" horzTextAlign="center"/>
+		<label left="530" top="0" width="100" height="25" text="Sessao Fim" horzTextAlign="center"/>
+		<label left="630" top="0" width="150" height="25" text="Estado" horzTextAlign="center"/>
+		
+		<label  left="5" top="50" width="400" height="25" text="Descriçao" horzTextAlign="center"/>
+		<label  left="405" top="50" width="400" height="25" text="Resultados" horzTextAlign="center"/>
+		
+		<edit left="5" top="25" width="25" height="25" field="numero" type="number"/>
+		<edit left="30" top="25" width="200" height="25" field="nome"/>
+		<edit left="230" top="25" width="100" height="25" field="dataInicio"/>
+		<edit left="330" top="25" width="100" height="25" field="dataFim"/>
+		<edit left="430" top="25" width="100" height="25" field="sessaoInicio"/>
+		<edit left="530" top="25" width="100" height="25" field="sessaoFim"/>
+		<comboBox left="630" top="25" width="125" height="25" field="estado" items="{'Ativa', 'Pausada', 'Completa', 'Falha'}" values="{'0', '1', '2', '3'}" value="0"/>
+		<imageCheckBox name="cbxInvisivel" left="757" top="27" width="20" height="20" checkedImage="images/invisivel2.png" uncheckedImage="images/visivel2.png" autoChange="false" onClick="self:alternarVisibilidade();" hint="Alterna visibilidade para Jogadores e Espectadores."/> 
+		<button left="780" top="25" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar essa aventura?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+		
+		<textEditor  left="5" top="75" width="400" height="120" field="descricao" />
+		<textEditor  left="405" top="75" width="400" height="120" field="resultados" />
+		
+		<script>
+			 function self:alternarVisibilidade()
+				if self.cbxInvisivel.checked then
+					 ndb.setPermission(sheet, "group", "jogadores", "read", nil);
+					 ndb.setPermission(sheet, "group", "espectadores", "read", nil);
+				else
+					 ndb.setPermission(sheet, "group", "jogadores", "read", "deny");
+					 ndb.setPermission(sheet, "group", "espectadores", "read", "deny");
+				end;
+			 end; 
+			 function self:atualizarCbxInvisivel()		  
+				self.cbxInvisivel.checked = ndb.getPermission(sheet, "group", "espectadores", "read") == "deny" or
+											 ndb.getPermission(sheet, "group", "jogadores", "read") == "deny"																					
+				self.cbxInvisivel.enabled = ndb.testPermission(sheet, "writePermissions");
+			 end;
+		</script>
+	</rectangle>
+	<event name="onScopeNodeChanged">
+		if self.observer ~= nil then   
+			self.observer.enabled = false;
+			self.observer = nil;
+		end;
+		 
+		if sheet ~= nil then   
+			self.observer = ndb.newObserver(sheet);
+			self.observer.onPermissionListChanged =
+				function(node)				 
+					self:atualizarCbxInvisivel();
+				end;							   
+			self.observer.onFinalPermissionsCouldBeChanged =
+				function(node)
+					self:atualizarCbxInvisivel();
+				end;							   
+			self:atualizarCbxInvisivel();  
+		end;
+	</event>
+</form>

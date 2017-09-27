@@ -1,0 +1,14 @@
+-- Causa Dano a todos jogadores
+local rolagem = arg[1];
+
+if rolagem==nil then
+  rolagem = inputQuery("Rolagem de dano a ser causado.");
+end;
+
+local resultado = rolar(rolagem, "Dano em Area");
+
+for i = 1, #jogadores, 1 do
+  if jogadores[i].isJogador then
+    enviar("/vigor " .. jogadores[i].login .. " -" .. resultado);
+  end;
+end;

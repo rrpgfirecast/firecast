@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAMZ1_3" align="client" theme="dark">
+	<template name="Peculiaridade">
+		<label left="0" top="5" width="60" height="20" text="$(nome)" horzTextAlign="center"/>
+		<edit left="60" top="0" width="170" height="25" field="desc_$(field)"/>
+	</template>
+	<template name="PeculiaridadeGrande">
+		<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+		<label left="0" top="5" width="230" height="20" text="$(nome)" horzTextAlign="center"/>
+		<textEditor left="5" top="25" width="225" height="170" field="desc_$(field)"/>
+	</template>
+	<scrollBox align="client">
+		<layout left="0" top="0" width="240" height="60">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<layout left="5" top="5" width="240" height="25" >
+				<Peculiaridade field="peculiaridade_tipo" nome="Tipo"/>
+			</layout>
+			<layout left="5" top="30" width="240" height="25" >
+				<Peculiaridade field="peculiaridade_nome" nome="Nome"/>
+			</layout>
+		</layout>
+		<layout left="0" top="65" width="240" height="400">
+			<rectangle align="client" color="black"/>
+			<label left="0" top="5" width="240" height="20" text="Historia" horzTextAlign="center"/>
+			<textEditor left="5" top="25" width="230" height="370" field="desc_peculiaridade_historia"/>
+		</layout>
+		<layout left="250" top="0" width="960" height="200">
+			<layout left="0" top="0" width="235" height="200" >
+				<PeculiaridadeGrande field="peculiaridade_descricao" nome="Descrição"/>
+			</layout>
+			<layout left="240" top="0" width="235" height="200" >
+				<PeculiaridadeGrande field="peculiaridade_extra" nome="Habilidade"/>
+			</layout>
+			<layout left="480" top="0" width="235" height="200" >
+				<PeculiaridadeGrande field="peculiaridade_cooldown" nome="Acerto / Cooldown / Duração"/>
+			</layout>
+		</layout>
+
+		<layout left="250" top="200" width="725" height="265">
+			<layout left="0" top="5" width="465" height="255" >
+				<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+				<label left="0" top="0" width="465" height="20" text="Desenvolvimento" horzTextAlign="center"/>
+				<textEditor left="5" top="25" width="455" height="225" field="desc_peculiaridade_desenvolvimento"/>
+			</layout>
+			<layout left="470" top="5" width="255" height="255" >
+				<rectangle align="client" color="black" strokeColor="white" strokeSize="1"/>
+				<image left="1" top="1" width="253" height="253" field="peculiaridade_image" editable="true" style="autoFit" >
+					<event name="OnStartDrag">
+					    drag:addData("imageURL", sheet.peculiaridade_image);
+					</event>
+				</image>
+			</layout>
+		</layout>
+
+	</scrollBox>
+</form>

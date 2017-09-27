@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmGerenciarSimpleMacros" title="Gerenciar Macros" width="450" height="450" resizable="true">
+	<import file="../interfaceUtils.xml"/>
+
+	<!-- Popup de Edição da Macro -->
+	<popup name="popEditMacro">
+		<event name="onClose">
+			self.popEditMacro:setNodeObject(nil);
+		</event>
+		
+		<scrollBox align="client">
+			<layout align="top" height="25" padding="{left=2, right=2}">
+				<label text="Editar Macro" align="client" margins="{right=2}" horzTextAlign="center" fontSize="16"/>
+				<button text="Fechar" align="right" width="80" onClick="self.popEditMacro:close();"/>			
+			</layout>
+			
+			<horzLine align="top" margins="{top=4, bottom=2, left=16, right=16}" strokeColor="white"/>
+			
+			<flowLayout align="top" autoHeight="true" margins="{left=5,right=5, top=8}">
+				<label text="Nome " autoSize="true"/>
+				<label text="(Não inclua o caracter '/' nem espaços!)" autoSize="true" fontSize="12" fontColor="gray" wordWrap="false"/>
+				<flowLineBreak/>
+				
+				<flowPart minWidth="100" maxWidth="250" height="30" margins="{bottom=12, top=-2}">					
+					<edit name="edtNomeDaMacro" align="client" field="macro" textPrompt="Exemplo: Atacar"/>
+				</flowPart>			
+				<flowLineBreak/>
+				
+				<radioButton groupName="tipoMacro" field="tipoMacro" fieldValue="S" text="Macro Simples"/>
+				<radioButton groupName="tipoMacro" field="tipoMacro" fieldValue="L" text="Macro em Lua" margins="{bottom=12, right=8}"/>
+				<button  text="??" width="45" onClick="gui.openInBrowser('http://rrpg.com.br/sdk3beta/RRPG%20SDK%203.html?Macros.html');"/>
+				<flowLineBreak/>
+				
+				<label text="Ações " autoSize="true" vertTextAlign="trailing"/>
+				<label name="labExtraInfoAcoes" text="(Uma por linha)" autoSize="true" fontSize="12" fontColor="gray" wordWrap="false" vertTextAlign="trailing"/>				
+				<flowLineBreak/>				
+				
+				<flowPart name="flpCode" minWidth="100" maxWidth="1200" height="100" margins="{bottom=12, top=-2}">					
+					<textEditor align="client" field="acoes" wordWrap="false"/>
+				</flowPart>			
+						
+				
+				<flowLineBreak/>	
+				<button text="Apagar Macro" width="150" margins="{top=8, right=15, bottom=15}" height="30">
+					<event name="OnClick">
+						dialogs.confirmYesNo("Deseja realmente apagar esta macro?",
+							function (confirmado)
+								if confirmado then
+									local node = self.popEditMacro:getNodeObject();								
+									self.popEditMacro:close();						
+									
+									if node ~= nil then
+										ndb.deleteNode(node);
+										globalMacrosInvalido = true;
+									end;
+								end;
+							end);
+					</event>
+				</button>
+				
+			</flowLayout>
+		</scrollBox>
+		
+		<dataLink fields="{'macro', 'acoes'}" onChange="globalMacrosInvalido = true;"/>		
+		<dataLink field="tipoMacro" defaultValue="S">
+			<event name="onChange">
+				self.labExtraInfoAcoes.visible = self.popEditMacro:getNodeObject().tipoMacro ~= "L"; 
+			</event>
+		</dataLink>
+		<dataLink field="macro" onChange="self.popEditMacro:getNodeObject().macro = globalPrepareMacroName(self.popEditMacro:getNodeObject().macro);"/>
+		
+		<event name="OnResize">	
+				self.flpCode.height = self.popEditMacro.height - 220;
+		</event>
+		
+		<event name="onCalculateSize"><![CDATA[
+			local w = (self.width or 0) * 0.8;
+			local h = (self.height or 0) * 0.8;
+				
+			if w < 250 then
+				w = 250;
+			elseif w > 1000 then
+				w = 1000;
+			end;
+			
+			if h < 280 then
+				h = 280;
+			elseif h > 1000 then
+				h = 1000;
+			end;
+		
+			return w, h;						
+			]]>
+		</event>		
+	</popup>	
+
+	<script><![CDATA[		
+		function self.editarMacroNode(node)
+			if node ~= nil then
+				self.popEditMacro:setNodeObject(node);	
+				self.popEditMacro:show();
+				
+				setTimeout(
+					function()
+						if self.edtNomeDaMacro.text == "" then
+							self.edtNomeDaMacro:setFocus();
+						end;
+					end, 10);
+			end;
+		end;
+	]]>
+	</script>	
+		
+		
+	<!-- Tabs da janela -->	
+	<tabControl align="client">
+		<tab title="Macros para todos da mesa" name="tabMacroMesa">
+			<dataScopeBox name="dsbMacrosMesaGlobal" align="client">
+				<layout align="client" margins="{left=2, top=2, right=2, bottom=2}">
+						<layout align="top" height="25" margins="{left=2, right=2, bottom=8}">
+							<label name="labTitMesa2" text="Mesa" align="client" horzTextAlign="center" fontSize="16" fontStyle="bold"/>										
+						</layout>					
+				
+					<layout align="top" height="28" margins="{bottom=5, top=5, left=5}">
+						<button text="Nova macro para todos" align="left" width="150" onClick="self.editarMacroNode(self.rclMacrosDaMesaGlobal:append());"/>
+					</layout>
+					
+					<recordList name="rclMacrosDaMesaGlobal" align="client" field="macros" 
+								templateForm="frmGerenciarSimpleMacrosItem" selectable="true"/>
+				</layout>
+			</dataScopeBox>
+		</tab>
+	
+		<tab title="Minhas macros">
+			<tabControl align="client">
+				<tab title="Globais">
+					<layout align="client" margins="{left=2, top=2, right=2, bottom=2}">
+						<layout align="top" height="28" margins="{bottom=5, top=5, left=5}">
+							<button text="Nova macro global" align="left" width="150" onClick="self.editarMacroNode(self.rclMacrosGlobais:append());"/>
+						</layout>
+						
+						<recordList name="rclMacrosGlobais" align="client" field="macros" 
+									templateForm="frmGerenciarSimpleMacrosItem" selectable="true"/>
+					</layout>
+				</tab>
+				
+				<tab name="tabMacrosDaMesa" title="Desta mesa">
+					<dataScopeBox name="dsbMacrosDaMesa" align="client">
+						<layout align="client" margins="{left=2, top=2, right=2, bottom=2}">
+							<layout align="top" height="25" margins="{left=2, right=2, bottom=8}">
+								<label name="labTitMesa" text="Mesa" align="client" horzTextAlign="center" fontSize="16" fontStyle="bold"/>			
+								
+							</layout>				
+								
+						
+							<layout align="top" height="28" margins="{bottom=3}">
+								<button text="Nova macro desta mesa" align="left" width="180" onClick="self.editarMacroNode(self.rclMacrosDaMesa:append());"/>
+							</layout>
+							
+							<recordList name="rclMacrosDaMesa" align="client" field="macros" 
+										templateForm="frmGerenciarSimpleMacrosItem" selectable="true"/>
+						</layout>				
+					</dataScopeBox>
+				</tab>
+			</tabControl>
+		</tab>
+	
+
+	</tabControl>	
+	
+	<event name="onShow">
+		if globalSimpleMacrosNDB == nil then
+			globalSimpleMacrosNDB = ndb.load("simpleMacros.xml");
+		end;			
+	
+		if globalSimpleMacrosNDB.global == nil then
+			globalSimpleMacrosNDB.global = {};
+		end;
+		
+		self:setNodeObject(globalSimpleMacrosNDB.global);
+		
+		if self._mesa ~= nil then
+			self.tabMacrosDaMesa.visible = true;
+					
+			if globalSimpleMacrosNDB.mesas == nil then
+				globalSimpleMacrosNDB.mesas = {};
+			end;	
+
+			if globalSimpleMacrosNDB.mesas[self._mesa.codigoInterno] == nil then
+				globalSimpleMacrosNDB.mesas[self._mesa.codigoInterno] = {};
+			end;	
+			
+			self.dsbMacrosDaMesa.node = globalSimpleMacrosNDB.mesas[self._mesa.codigoInterno];
+			self.labTitMesa.text = "Mesa: " .. self._mesa.nome;
+			self.labTitMesa2.text = self.labTitMesa.text;
+			
+			local opcoes = {};
+			local travouForm = false;
+			opcoes.criar = true;
+			opcoes.callbackDeCarga = function()
+										self:lockWithActivity("Carregando Macros da Mesa");
+										travouForm = true;
+									 end;
+			
+			self._mesa:abrirNDBDeMesa("RRPG_Macros", 
+				function(nG)
+					if travouForm then
+						self:unlockWithActivity();
+					end;					
+					
+					if nG ~= nil then
+						self.dsbMacrosMesaGlobal.node = nG;
+					else
+						self.tabMacroMesa.visible = false;
+					end;
+				end, opcoes)
+			
+		else
+			self.tabMacrosDaMesa.visible = false;
+			self.dsbMacrosDaMesa.node = nil;
+			self.tabMacroMesa.visible = false;
+		end;
+	</event>
+	
+	<event name="onHide">
+		self.dsbMacrosDaMesa.node = nil;
+		self:setNodeObject(nil);
+	</event>
+		
+</popupForm>

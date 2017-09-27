@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGerenciador02_SEMANA" width="110" height="25" theme="dark" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit left="0" top="0" width="30" height="25" field="ordem" type="number"/>
+		<edit left="30" top="0" width="165" height="25" field="dia"/>
+
+		<button left="195" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse dia da semana?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+</form>

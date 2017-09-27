@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmBibliotecaRPGmeister04" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+		<rectangle left="0" top="0" width="400" height="605" color="Black">
+			<label left="5" top="5" width="395" height="25" text="EQUIPAMENTOS" horzTextAlign="center"/>
+			
+			<button left="5" top="50" width="200" text="Armas" onClick="gui.openInBrowser('https://www.dropbox.com/s/lndl6jmrulyqnxj/Armas.docx?dl=0');" />
+			<button left="55" top="75" width="200" text="Armas Mágicas" onClick="gui.openInBrowser('https://www.dropbox.com/s/ql85oxst00yja9h/Armas%20Magicas.docx?dl=0');" />
+			<button left="55" top="100" width="200" text="Armas Únicas" onClick="gui.openInBrowser('https://www.dropbox.com/s/7esdqqograh6dfp/Armas%20Especificas.docx?dl=0');" />
+			<button left="55" top="125" width="200" text="Munição" onClick="gui.openInBrowser('https://www.dropbox.com/s/rbyy4n626ltke1e/Municao.docx?dl=0');" />
+			<button left="55" top="150" width="200" text="Regras para novas Armas" onClick="gui.openInBrowser('https://www.dropbox.com/s/vt4tnzqtx5t2cd0/Criando%20regras%20para%20novas%20armas.docx?dl=0');" />
+			
+			<button left="5" top="200" width="200" text="Armaduras e Escudos" onClick="gui.openInBrowser('https://www.dropbox.com/s/errboycithawyqy/Armaduras.docx?dl=0');" />
+			<button left="55" top="225" width="200" text="Armaduras e Escudos Mágicos" onClick="gui.openInBrowser('https://www.dropbox.com/s/6xx7ea8son0b9m5/Armaduras%20Magicas.docx?dl=0');" />
+			<button left="55" top="250" width="200" text="Armaduras e Escudos Únicos" onClick="gui.openInBrowser('https://www.dropbox.com/s/35q20wcjw39u45u/Armaduras%20Espec%C3%ADficas.docx?dl=0');" />
+			
+			<button left="5" top="300" width="200" text="Equipamento de Aventura" onClick="gui.openInBrowser('https://www.dropbox.com/s/zarfvtto7k9u151/Equipamento%20de%20Aventura.docx?dl=0');" />
+			
+			<button left="5" top="350" width="200" text="Itens Alquímicos" onClick="gui.openInBrowser('https://www.dropbox.com/s/r13wz5zjyv0pq39/Itens%20Alquimicos.docx?dl=0');" />
+			<button left="55" top="375" width="200" text="Capsulas" onClick="gui.openInBrowser('https://www.dropbox.com/s/j522t8pqeburd16/Capsulas%20Alquimicas%20para%20Armas.docx?dl=0');" />
+			
+			<label left="5" top="400" width="395" height="25" text="Armadilhas"/>
+			<button left="55" top="425" width="200" text="Armadilhas de Bolso" onClick="gui.openInBrowser('https://www.dropbox.com/s/sw0qq2wqbjvb9yv/Armadilhas%20de%20bolso.docx?dl=0');" />
+			
+			<label left="5" top="450" width="395" height="25" text="Transporte"/>
+			<button left="55" top="475" width="200" text="Embarcações" onClick="gui.openInBrowser('https://www.dropbox.com/s/07ekmm6xjsa4iht/Embarca%C3%A7%C3%B5es.docx?dl=0');" />
+			<button left="55" top="500" width="200" text="Trens" onClick="gui.openInBrowser('https://www.dropbox.com/s/s2vwy3hbvbjep7r/Trens.docx?dl=0');" />
+			<button left="55" top="525" width="200" text="Montarias" onClick="gui.openInBrowser('https://www.dropbox.com/s/2k9og5zf7ivsenz/Montarias%20e%20animais%20treinados.docx?dl=0');" />
+			
+		</rectangle>
+		
+		<rectangle left="405" top="0" width="400" height="605" color="Black">
+			<label left="5" top="5" width="395" height="25" text="EQUIPAMENTOS" horzTextAlign="center"/>
+			
+			<button left="5" top="50" width="200" text="Engenhocas a Vapor" onClick="gui.openInBrowser('https://www.dropbox.com/s/4c9c8emfwy6gsi3/Engenhocas%20a%20Vapor.docx?dl=0');" />
+			
+			<button left="5" top="100" width="200" text="Imóveis" onClick="gui.openInBrowser('https://www.dropbox.com/s/vnpzg60e8310303/Constru%C3%A7%C3%B5es.docx?dl=0');" />
+			
+			<label left="5" top="150" width="395" height="25" text="Itens Mágicos"/>
+			<button left="55" top="175" width="200" text="Objetos Maravilhosos" onClick="gui.openInBrowser('https://www.dropbox.com/s/s2k4rpegaqw4f2p/Objetos%20Maravilhosos.docx?dl=0');" />
+			<button left="55" top="200" width="200" text="Itens Semi-Mágicos" onClick="gui.openInBrowser('https://www.dropbox.com/s/zaxd5ctg5j9gn7j/Itens%20Semi%20Magicos.docx?dl=0');" />
+			<button left="55" top="225" width="200" text="Tatuagens" onClick="gui.openInBrowser('https://www.dropbox.com/s/si17f1sa6cd2fkz/Tatuagens%20m%C3%A1gicas.docx?dl=0');" />
+			<button left="55" top="250" width="200" text="Pergaminhos de Permanência" onClick="gui.openInBrowser('https://www.dropbox.com/s/h74lv8li44m8ydf/Permanencias.docx?dl=0');" />
+			<button left="55" top="275" width="200" text="Poções e Óleos" onClick="gui.openInBrowser('https://www.dropbox.com/s/eq9jn7uq5titrs1/Po%C3%A7%C3%B5es%20e%20%C3%B3leos.docx?dl=0');" />
+			<button left="55" top="300" width="200" text="Criando Itens Mágicos" onClick="gui.openInBrowser('https://www.dropbox.com/s/desamzckfsqwns7/Criando%20Itens%20Magicos.docx?dl=0');" />
+			<button left="105" top="325" width="200" text="Tabela de Preços Comuns" onClick="gui.openInBrowser('https://www.dropbox.com/s/mfsud2fmbi4m2gj/Tabela%20de%20pre%C3%A7os%20comuns%20para%20itens.docx?dl=0');" />
+			<button left="55" top="350" width="200" text="Artefatos" onClick="gui.openInBrowser('https://www.dropbox.com/s/ugaaq8i5pkwsb07/Artefatos.docx?dl=0');" />
+			
+			<label left="5" top="400" width="395" height="25" text="Materiais"/>
+			<button left="55" top="425" width="200" text="Materiais Especiais" onClick="gui.openInBrowser('https://www.dropbox.com/s/2nupgkolby6skii/Materiais%20Especiais.docx?dl=0');" />
+			<button left="55" top="450" width="200" text="Materiais Especiais Épicos" onClick="gui.openInBrowser('https://www.dropbox.com/s/q61v9rj8e35ughq/Materiais%20Especiais%20%C3%89picos.docx?dl=0');" />
+			<button left="55" top="475" width="200" text="Minérios Especiais" onClick="gui.openInBrowser('https://www.dropbox.com/s/1kqe5xulj4pekvp/Minerios%20Especiais.docx?dl=0');" />
+		</rectangle>
+		
+		<rectangle left="810" top="0" width="400" height="200" color="Black">
+			<label left="5" top="5" width="395" height="25" text="COMBATES" horzTextAlign="center"/>
+			
+			<button left="5" top="50" width="200" text="Encontros" onClick="gui.openInBrowser('https://www.dropbox.com/s/fvgux8l7vcc3oyu/Lidando%20com%20Encontros.docx?dl=0');" />
+			
+			<button left="5" top="100" width="200" text="Pontos de Vida" onClick="gui.openInBrowser('https://www.dropbox.com/s/fv3s150m8t05txs/Novo%20sistema%20para%20pontos%20de%20vida.docx?dl=0');" />
+		</rectangle>
+		
+		<rectangle left="810" top="205" width="400" height="400" color="Black">
+			<label left="5" top="5" width="395" height="25" text="AVENTURAS" horzTextAlign="center"/>
+			
+			<button left="5" top="50" width="200" text="Tesouros" onClick="gui.openInBrowser('https://www.dropbox.com/s/j81pnwwy0nrj528/Dinheiro%20por%20n%C3%ADvel.xlsx?dl=0');" />
+			
+			<button left="5" top="100" width="200" text="Reputação" onClick="gui.openInBrowser('https://www.dropbox.com/s/qiwhwbcge46sdvn/Reputa%C3%A7%C3%A3o.docx?dl=0');" />
+			
+			<button left="5" top="150" width="200" text="Viajantes Planares" onClick="gui.openInBrowser('https://www.dropbox.com/s/v7xpo0g5i2z0ofp/Viajantes%20Planares.docx?dl=0');" />
+			
+			<button left="5" top="200" width="200" text="Aflições" onClick="gui.openInBrowser('https://www.dropbox.com/sh/y42yy8aap8tmbxw/AAC1A6GGnTCUPfNyp2OpYEtja?dl=0');" />
+		</rectangle>
+		
+    </scrollBox>
+</form>

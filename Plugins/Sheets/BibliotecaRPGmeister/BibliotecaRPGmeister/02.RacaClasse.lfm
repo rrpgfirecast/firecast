@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmBibliotecaRPGmeister02" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+		<rectangle left="0" top="0" width="400" height="605" color="Black">
+			<label left="5" top="5" width="395" height="25" text="RAÇAS" horzTextAlign="center"/>
+			
+			<button left="5" top="50" width="200" text="Súmario" onClick="gui.openInBrowser('https://www.dropbox.com/s/zc4131x9qj0rh1t/Ra%C3%A7as.docx?dl=0');" />
+			<label left="5" top="70" width="395" height="25" fontSize="11" text=" - Resumo das raças disponíveis. "/>
+			
+			<button left="5" top="100" width="200" text="Raças Hibridas" onClick="gui.openInBrowser('https://www.dropbox.com/s/br7f1g2ahjy6508/Ra%C3%A7as%20hibridas.docx?dl=0');" />
+			<label left="5" top="120" width="395" height="25" fontSize="11" text=" - Raças mestiças e suas regras. "/>
+			
+			<button left="5" top="150" width="200" text="Raças por Plano" onClick="gui.openInBrowser('https://www.dropbox.com/s/u33asu0jw6xacyt/Ra%C3%A7as%20por%20plano.docx?dl=0');" />
+			<label left="5" top="170" width="395" height="25" fontSize="11" text=" - Separação das raças por plano de origem e onde existem."/>
+			
+			<button left="5" top="200" width="200" text="Ajuste de Nível" onClick="gui.openInBrowser('https://www.dropbox.com/s/95rrwibxq2icbpg/Ajuste%20de%20N%C3%ADvel.docx?dl=0');" />
+			<button left="55" top="225" width="200" text="Reduzindo o Ajuste" onClick="gui.openInBrowser('https://www.dropbox.com/s/3d6fndbbpj67574/Reduzindo%20ajuste%20de%20n%C3%ADvel.docx?dl=0');" />
+			
+			<button left="5" top="275" width="200" text="Raças" onClick="gui.openInBrowser('https://www.dropbox.com/sh/g80mv7wohkxb5wf/AACcknnLASBp5jeXUg85bLO9a?dl=0');" />
+			<button left="55" top="300" width="200" text="Primatas" onClick="gui.openInBrowser('https://www.dropbox.com/sh/niq3hkmfcuyus8t/AABbUhvHcInnMcLSMniiIoqFa?dl=0');" />
+			<button left="55" top="325" width="200" text="Elfos" onClick="gui.openInBrowser('https://www.dropbox.com/sh/ylq1dq1d7z23870/AAAKQVYpkGdmCMPNwaCUsnbZa?dl=0');" />
+			<button left="55" top="350" width="200" text="Anões" onClick="gui.openInBrowser('https://www.dropbox.com/sh/r7o5fbd85lslou2/AABBSX10dINbsOiAU9WqgTgNa?dl=0');" />
+			<button left="55" top="375" width="200" text="Gnomos" onClick="gui.openInBrowser('https://www.dropbox.com/sh/r4xp6imj97hx60t/AABUSzB0apDBtHFrC2-F4EG2a?dl=0');" />
+			<button left="55" top="400" width="200" text="Halflings" onClick="gui.openInBrowser('https://www.dropbox.com/sh/cf1a1sb1s4kw061/AADzGHb5VV7CCX2T1Zq6eIKPa?dl=0');" />
+			<button left="55" top="425" width="200" text="Repteis" onClick="gui.openInBrowser('https://www.dropbox.com/sh/qfrkxqu3bkffpzv/AABFrS8PnadoC6RavbLd2QUka?dl=0');" />
+			<button left="55" top="450" width="200" text="Leporideos" onClick="gui.openInBrowser('https://www.dropbox.com/sh/0v5ih8us8g5sdwv/AAC1lkFupID6bxqXpAYduMOUa?dl=0');" />
+			<button left="55" top="475" width="200" text="Felinos" onClick="gui.openInBrowser('https://www.dropbox.com/sh/jgmac3hptgbswze/AABHUfMRwuzoxCyGa7aO8bN1a?dl=0');" />
+			<button left="55" top="500" width="200" text="Caninos" onClick="gui.openInBrowser('https://www.dropbox.com/sh/daftbg5sw3kcje9/AADNDrYtQWXaIlka5ZtS-ccYa?dl=0');" />
+			<button left="55" top="525" width="200" text="Humanoides Monstruosos" onClick="gui.openInBrowser('https://www.dropbox.com/sh/ozbnjl0ktzzxe0t/AACznpMEeELx-NSNMaPpqUNva?dl=0');" />
+			<button left="55" top="550" width="200" text="Fadas" onClick="gui.openInBrowser('https://www.dropbox.com/sh/l9q0ate5gkg6tvy/AAACvwxQ_WLNw4kbGjsAgrK8a?dl=0');" />
+			<button left="55" top="575" width="200" text="Extraplanares Nativos" onClick="gui.openInBrowser('https://www.dropbox.com/sh/2umf17hzoags2ql/AAB6TzxdzE5VPMmNQa21xDHTa?dl=0');" />
+		</rectangle>
+	
+		<rectangle left="405" top="0" width="400" height="605" color="Black">
+			<label left="5" top="5" width="395" height="25" text="CLASSES" horzTextAlign="center"/>
+			
+			<button left="5" top="50" width="200" text="Súmario" onClick="gui.openInBrowser('https://www.dropbox.com/s/7jn484upuwrs5o9/Classes.docx?dl=0');" />
+			<label left="5" top="70" width="395" height="25" fontSize="10" text=" - Lista das classes e seus planos de origem."/>
+			<label left="5" top="80" width="395" height="25" fontSize="10" text=" - Observe que mesmo as classes básicas as vezes possuem alterações."/>
+			
+			<button left="5" top="100" width="200" text="Classe Favorecida" onClick="gui.openInBrowser('https://www.dropbox.com/s/y58v5caoovnohzv/Classes%20Favorecidas.docx?dl=0');" />
+			<label left="5" top="120" width="395" height="25" fontSize="11" text=" - Nova regra para classes favorecidas. "/>
+			
+			<button left="5" top="150" width="200" text="Multiclasse" onClick="gui.openInBrowser('https://www.dropbox.com/s/fbt7v6i1fssk0i2/Multiclasse.docx?dl=0');" />
+			<label left="5" top="170" width="395" height="25" fontSize="11" text=" - Regras da mesa para personagem multiclasse."/>
+			
+			<button left="5" top="200" width="200" text="Descrição das Classes" onClick="gui.openInBrowser('https://www.dropbox.com/sh/fdkfgge18b7grtn/AABBoaLP49SVZm9YH-Vh_fVta?dl=0');" />
+			<label left="5" top="220" width="395" height="25" fontSize="11" text=" - Descrição individual de cada classe. "/>
+			
+			<label left="5" top="250" width="395" height="25" text="Alternativas de Classe"/>
+			<button left="55" top="275" width="200" text="Companheiro Animal" onClick="gui.openInBrowser('https://www.dropbox.com/s/srjih41d70ng1g4/Companheiro%20Animal.docx?dl=0');" />
+		</rectangle>
+		
+		
+    </scrollBox>
+</form>

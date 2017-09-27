@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGerenciador01_Jogadores" height="35" theme="dark" margins="{top=1}">
+	<rectangle left="0" top="0" width="660" height="35" color="#212121">
+		<edit left="5" top="5" width="100" height="25" field="jogador" />
+		<edit left="105" top="5" width="100" height="25" field="personagem" />
+		<edit left="205" top="5" width="75" height="25" field="xpInicial" />
+		<edit left="280" top="5" width="75" height="25" field="xpGasta" />
+		<edit left="355" top="5" width="75" height="25" field="xp" />
+		<rectangle left="430" top="5" width="25" height="25" color="black" strokeColor="white" strokeSize="1" compilerOrder="0"/>
+		<label left="430" top="5" width="25" height="25" field="nep" horzTextAlign="center"/>
+		<edit left="455" top="5" width="75" height="25" field="poInicial" />
+		<edit left="530" top="5" width="75" height="25" field="po" />
+		<edit left="605" top="5" width="25" height="25" field="entranda" />
+		<button left="630" top="5" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse jogador?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+	<dataLink field="xp">
+			<event name="onChange">
+					local mod = sheet.xp or "0";
+					mod = string.gsub(mod, "X", "");
+					mod = string.gsub(mod, "P", "");
+					mod = string.gsub(mod, "x", "");
+					mod = string.gsub(mod, "p", "");
+					mod = string.gsub(mod, "%.", "");
+					mod = (tonumber(mod) or 0);
+					local mod2 = 0;
+					local mod3 = 0;
+					while mod>=mod2 do
+						mod3 = mod3+1;
+						mod2 = mod2 + mod3*1000;
+					end
+					
+					while true do  
+						mod2, k = string.gsub(mod2, "^(-?%d+)(%d%d%d)", '%1,%2')
+						if (k==0) then
+						  break
+						end
+					end
+					mod2 = string.gsub(mod2, ",", ".");
+					
+					sheet.xpNivel = mod2 .. "XP";
+					sheet.nep = mod3;
+			</event>
+		</dataLink>
+</form>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGerenciador01_Sessao" height="35" theme="dark" margins="{top=1}">
+	<rectangle left="0" top="0" width="530" height="35" color="#212121">
+		<edit left="5" top="5" width="30" height="25" field="numero" type="number"/>
+		<edit left="35" top="5" width="205" height="25" field="xp" />
+		<edit left="240" top="5" width="90" height="25" field="po" />
+		<edit left="330" top="5" width="80" height="25" field="data" />
+		<button left="410" top="5" width="50" height="25" text="LOG" hint="Abrir Log">
+			<event name="onClick">
+                    gui.openInBrowser(sheet.log);                 
+               </event>
+		</button>
+		<edit left="460" top="5" width="40" height="25" field="log" />
+		<button left="500" top="5" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar essa sessao?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+</form>

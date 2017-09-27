@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmUserDrawingDetails" cancelable="true" drawContainer="false" width="164" height="90" theme="light"
+		   cursor="arrow" canFocus="false">
+		   
+	<import file="sceneTags.xml"/>
+
+	<script>
+		local DEFAULT_OPTIONS = {};
+		local options = nil;
+		local data = {};
+		
+		function self:popularData()
+			if self.cbxFill.checked then
+				data.fillColor = self.cmbFill.color;
+			else
+				data.fillColor = "None";
+			end
+			
+			if self.cbxStroke.checked then
+				data.strokeColor = self.cmbStroke.color;
+			else
+				data.strokeColor = "None";
+			end;
+			
+			data.snapToGrid = self.cbxSnapToGrid.checked;
+		end;		
+		
+		local function notificarChange()
+			if options.onChange ~= nil then
+				options.onChange(data);
+			end;
+		end;		
+				
+		local inChange = false;
+				
+		function self:doStrokeChanged(canCheck)		
+			if inChange then
+				return;
+			end;
+		
+			inChange = true;
+		
+			if self.isShowing then				
+				if canCheck then
+					self.cbxStroke.checked = true;
+				end;
+				
+				local r, g, b, a = colorToRGBA(self.cmbStroke.color);
+				
+				if self.cbxStroke.checked and (a ~= 1) then
+					a = 1.0;
+					self.cmbStroke.color = RGBAToColor(r, g, b, a);
+				elseif not self.cbxStroke.checked and (a ~= 0) then
+					a = 0.0;
+					self.cmbStroke.color = RGBAToColor(r, g, b, a);
+				end
+												
+				data.strokeColor = self.cmbStroke.color;
+					
+				notificarChange();		
+			end;
+			
+			inChange = false;
+		end;
+		
+		function self:doFillChanged(canCheck)	
+			if inChange then
+				return;
+			end;
+			
+			inChange = true;
+		
+			if self.isShowing then
+				if canCheck then
+					self.cbxFill.checked = true;				
+				end;
+				
+				local r, g, b, a = colorToRGBA(self.cmbFill.color);
+				
+				if self.cbxFill.checked and (a ~= 1) then
+					a = 1.0;
+					self.cmbFill.color = RGBAToColor(r, g, b, a);
+				elseif not self.cbxFill.checked and (a ~= 0) then
+					a = 0.0;
+					self.cmbFill.color = RGBAToColor(r, g, b, a);
+				end
+				
+				data.fillColor = self.cmbFill.color;
+				
+				notificarChange();
+			end;
+			
+			inChange = false;
+		end;	
+
+		function self:doSnapToGridChanged()
+			if inChange then
+				return;
+			end;
+			
+			inChange = true;
+		
+			if self.isShowing then				
+				data.snapToGrid = self.cbxSnapToGrid.checked;				
+				notificarChange();
+			end;
+			
+			inChange = false;		
+		end;
+
+	</script>
+	
+	<style>
+		colorComboBox {
+			height: 30;
+			width: 50;			
+		}
+		
+		checkBox {
+			width: 100;
+			height: 30;
+			margins: {left=4, right=4};
+			fontSize: 11;
+		}
+	</style>
+	
+	<flowLayout name="flaLayout" align="client">
+		<checkBox name="cbxStroke" onChange="self:doStrokeChanged(false)"/>
+		<colorComboBox name="cmbStroke" onChange="self:doStrokeChanged(true)" useAlpha="false" />
+		<flowLineBreak/>
+		<checkBox name="cbxFill" onChange="self:doFillChanged(false)"/>
+		<colorComboBox name="cmbFill" onChange="self:doFillChanged(true)" useAlpha="false"/>
+		<flowLineBreak/>
+		<checkBox name="cbxSnapToGrid" onChange="self:doSnapToGridChanged()"/>		
+	</flowLayout>	
+	
+	<script><![CDATA[
+		self.cbxStroke.text = lang('userDrawing.stroke');
+		self.cbxFill.text = lang('userDrawing.fill');
+		self.cbxSnapToGrid.text = lang('scene.tokenEdit.snapToGrid');
+	
+		function self:prepareForShow(theOptions)
+			inChange = true;
+			self:beginUpdate();
+			options = theOptions or DEFAULT_OPTIONS;
+			
+			local r, g, b, a;
+			
+			-- Stroke			
+			r, g, b, a = colorToRGBA(options.strokeColor or "Black");
+
+			if a < 0.99 then
+				a = 0;
+			else
+				a = 1;
+			end;
+			
+			self.cmbStroke.color = RGBAToColor(r, g, b, a);						
+			self.cbxStroke.checked = a >= 0.99;
+			self.cbxSnapToGrid.checked = options.snapToGrid == true;
+						
+			-- Fill			
+			r, g, b, a = colorToRGBA(options.fillColor or "Null");
+			
+			if a < 0.99 then
+				a = 0;
+			else
+				a = 1;
+			end;
+			
+			self.cmbFill.color = RGBAToColor(r, g, b, a);						
+			self.cbxFill.checked = a >= 0.99;
+						
+			data = {};
+			self:popularData();
+			self:endUpdate();
+			inChange = false;
+		end;
+		
+		function self:prepareForClose()
+			options = DEFAULT_OPTIONS;
+		end;
+		]]>
+	</script>	
+	
+	<event name="onKeyUp">	
+	</event>
+
+	
+</popupForm>

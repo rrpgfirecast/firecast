@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAMZ2_1" align="client" theme="dark">
+	<template name="Zhuls">
+		<label left="0" top="5" width="80" height="20" text="$(nome)" horzTextAlign="trailing"/>
+		<edit left="85" top="0" width="155" height="25" field="desc_$(field)"/>
+	</template>
+	<scrollBox align="client">
+		<layout left="0" top="0" width="960" height="35">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<layout left="5" top="5" width="310" height="25" >
+				<Zhuls field="portador " nome="Portador"/>
+			</layout>
+			<layout left="240" top="5" width="310" height="25" >
+				<label left="0" top="5" width="80" height="20" text="Nome" horzTextAlign="trailing"/>
+				<edit left="85" top="0" width="155" height="25" field="zhuls"/>
+			</layout>
+			<layout left="475" top="5" width="310" height="25" >
+				<Zhuls field="porte" nome="Porte"/>
+			</layout>
+			<layout left="710" top="5" width="310" height="25" >
+				<Zhuls field="altura_zhuls" nome="Altura"/>
+			</layout>
+		</layout>
+
+		<layout left="0" top="40" width="400" height="400">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Frase de Invocação" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="360" field="invocacao"/>
+        </layout>
+		<layout left="410" top="40" width="400" height="400">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Caracteristicas" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="360" field="caracteristicas_zhuls"/>
+        </layout>
+        <layout left="820" top="40" width="400" height="400">
+        	<rectangle align="client" color="black" strokeColor="white" strokeSize="1"/>
+			<image left="1" top="1" width="398" height="398" field="avatar_zhul" editable="true" style="autoFit" >
+				<event name="OnStartDrag">
+				    drag:addData("imageURL", sheet.avatar_zhul);
+				</event>
+			</image>
+		</layout>
+
+	</scrollBox>
+</form>

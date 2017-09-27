@@ -1,0 +1,41 @@
+﻿[pt]
+dice.title=Personalização de Dados
+dice.choosenDice=Dados:
+dice.d4=D4
+dice.d6=D6
+dice.d8=D8
+dice.d10=D10
+dice.d10cent=D10 - Dezenas
+dice.d12=D12
+dice.d20=D20
+dice.fudge=Fudge
+dice.any=Todos
+dice.alert.customizationForRubyOnly=Apenas usuários Rubys podem personalizar dados individualmente
+dice.use.my.customization=Usar minha personalização
+dice.faceColor=Cor dos números:
+dice.texture=Textura:
+dice.bkg.type.color=Cor sólida
+dice.bkg.type.image=Uma imagem
+dice.bkgColor=Cor de fundo:
+dice.image=Imagem de fundo:
+
+[en]
+dice.title=Dice Customization
+dice.choosenDice=Dices:
+dice.d4=D4
+dice.d6=D6
+dice.d8=D8
+dice.d10=D10
+dice.d10cent=D10 - Tens
+dice.d12=D12
+dice.d20=D20
+dice.fudge=Fudge
+dice.any=All
+dice.alert.customizationForRubyOnly=Only Ruby users can customize individual dices
+dice.use.my.customization=Use my customization
+dice.faceColor=Numbers color:
+dice.texture=Texture:
+dice.bkg.type.color=Solid color
+dice.bkg.type.image=An image
+dice.bkgColor=Background color:
+dice.image=Background image:

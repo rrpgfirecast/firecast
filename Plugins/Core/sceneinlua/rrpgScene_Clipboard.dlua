@@ -1,0 +1,348 @@
+﻿require("scene.lua");
+require("utils.lua");
+require("ndb.lua");
+require("system.lua");
+require("rrpgScene_Globals.lua");
+require("rrpgScene_Undo.dlua");
+
+
+local SC3CLIPBOARD_TEXT_PREFIX = '<sc3clipboard<';
+local SC3CLIPBOARD_TEXT_SUFFIX = '>sc3clipboad>';
+local SC3CLIBPOARD_TEXT_PATTERN = SC3CLIPBOARD_TEXT_PREFIX .. "(.*)" .. SC3CLIPBOARD_TEXT_SUFFIX;
+
+local Serializer = nil;
+
+local OBJECTS_TYPE_TO_CLIPBOARD = {};
+OBJECTS_TYPE_TO_CLIPBOARD["token"] = true;
+OBJECTS_TYPE_TO_CLIPBOARD["effectArea"] = true;
+OBJECTS_TYPE_TO_CLIPBOARD["userDrawing"] = true;
+OBJECTS_TYPE_TO_CLIPBOARD["opBitmap"] = true;
+OBJECTS_TYPE_TO_CLIPBOARD["opPath"] = true;
+OBJECTS_TYPE_TO_CLIPBOARD["opText"] = true;
+
+local PROPS_TYPE_PERSIST = {};
+PROPS_TYPE_PERSIST["bool"] = true;
+PROPS_TYPE_PERSIST["boolean"] = true;
+PROPS_TYPE_PERSIST["string"] = true;
+PROPS_TYPE_PERSIST["double"] = true;
+PROPS_TYPE_PERSIST["enum"] = true;
+PROPS_TYPE_PERSIST["int"] = true;
+PROPS_TYPE_PERSIST["integer"] = true;
+PROPS_TYPE_PERSIST["color"] = true;
+PROPS_TYPE_PERSIST["set"] = true;
+
+local IGNORE_PROPS = {};
+IGNORE_PROPS["isHover"] = true;
+
+local function genTableClipboardForWrappedObject(item, recursivo)	
+	local props = rawget(item, "props");
+		
+	if rawget(item, "handle") ~= nil and props ~= nil then
+		if OBJECTS_TYPE_TO_CLIPBOARD[item.objectType] ~= nil then			
+			local p = {props={}};	
+			-- Objeto Wrapped-Lua
+						
+			for k, v in pairs(props) do
+				if (PROPS_TYPE_PERSIST[v.tipo] ~= nil) and
+				   (v.getter ~= nil or v.readProp ~= nil) and
+				   (v.setter ~= nil or v.writeProp ~= nil) and 
+				   (IGNORE_PROPS[k] == nil)  then
+					p.props[k] = item[k];
+				elseif v.tipo == "table" and (v.getter or v.readProp) ~= nil and recursivo then
+					local subItem = item[k];
+					
+					if type(subItem) == "table" then
+						local subP = genTableClipboardForWrappedObject(subItem);
+						
+						if subP ~= nil then
+							p.props[k] = subP;
+						end;
+					end;
+				end;
+			end;
+		
+			p.objectType = item.objectType;		
+			return p;	
+		end;
+	else
+		local p = {};
+		
+		for k, v in pairs(item) do
+			if type(v) == "table" then
+				if recursivo then
+					p[k] = genTableClipboardForWrappedObject(v, recursivo);
+				end;
+			else
+				p[k] = v;
+			end
+		end;
+		
+		return p;
+	end;
+end;
+
+local function copyTablePersistedToWrappedObject(persisted, item, recursivo)	
+	local props = rawget(item, "props");
+			
+	if rawget(item, "handle") ~= nil and props ~= nil and persisted.props ~= nil then
+		if (OBJECTS_TYPE_TO_CLIPBOARD[item.objectType] ~= nil) and (item.objectType == persisted.objectType) then			
+			-- Objeto Wrapped-Lua
+						
+			for k, vPersistido in pairs(persisted.props) do
+				local v = props[k];
+			
+				if v ~= nil then
+					if (PROPS_TYPE_PERSIST[v.tipo] ~= nil) and
+					   (v.getter ~= nil or v.readProp ~= nil) and
+					   (v.setter ~= nil or v.writeProp ~= nil) then
+						item[k] = vPersistido;
+					elseif v.tipo == "table" and (v.getter or v.readProp) ~= nil and recursivo then
+						local valorNoItem = item[k];
+						
+						if type(valorNoItem) == "table" and type(vPersisitdo) == "table" then
+							copyTablePersistedToWrappedObject(vPersistido, valorNoItem, recursivo);
+						end;
+					end;
+				end;
+			end;
+		end;
+	else
+	end;
+end;
+
+local function genTableClipboardForCanvas(canvas)
+	local p = nil;
+	
+	for i = 1, canvas.opCount, 1 do
+		local op = canvas:getOp(i - 1);
+		
+		if op ~= nil then
+			local opPersisted = genTableClipboardForWrappedObject(op);
+			
+			if opPersisted ~= nil then
+				if p == nil then
+					p = {};
+				end;
+				
+				if op.objectType == "opBitmap" then
+					opPersisted.sourceRect = op.sourceRect;
+				end;
+				
+				p[#p + 1] = opPersisted;
+			end;
+		end;
+	end;
+	
+	return p;
+end;
+
+local function copyTablePersistedToCanvasObject(canvas, pCanvas)
+	canvas:clear();
+	
+	for i = 1, #pCanvas, 1 do
+		local pOp = pCanvas[i];
+		local op = nil;
+		
+		if pOp.objectType == 'opBitmap' then
+			op = canvas:addBitmap();
+			
+			if pOp.sourceRect ~= nil then
+				op.sourceRect = pOp.sourceRect;
+			end;
+		elseif pOp.objectType == 'opPath' then
+			op = canvas:addPath();
+		elseif pOp.objectType == 'opText' then
+			op = canvas:addText();		
+		end;
+		
+		if op ~= nil then
+			copyTablePersistedToWrappedObject(pOp, op);
+		end;
+	end;
+end;
+
+local function genTableClipboardForNode(node)
+	local p = {};
+	p.name = ndb.getNodeName(node);
+	local pChildNodes = nil;
+	local childNodes = ndb.getChildNodes(node);	
+			
+	for i = 1, #childNodes, 1 do
+		local cNode = childNodes[i];
+		
+		if pChildNodes == nil then
+			pChildNodes = {};
+			p.childNodes = pChildNodes;
+		end;
+		
+		pChildNodes[#pChildNodes + 1] =  genTableClipboardForNode(cNode);
+	end;
+			
+	local pAtributos = nil;
+	local atributos = ndb.getAttributes(node);
+	
+	for k, v in pairs(atributos) do
+		if pAtributos == nil then
+			pAtributos = {};
+			p.atributes = pAtributos;
+		end;
+		
+		pAtributos[k] = v;
+	end;
+			
+	return p;
+end;
+
+function SC3CLIPBOARD_Pack(itens)
+	if Serializer == nil then
+		Serializer = require("utils.serializer.dlua");
+	end;
+	
+	local pacote = {};
+	
+	for i = 1, #itens, 1 do
+		local item = itens[i];
+		
+		if (item ~= nil) and (OBJECTS_TYPE_TO_CLIPBOARD[item.objectType] ~= nil) then
+			local p = genTableClipboardForWrappedObject(item);
+			
+			if p ~= nil then
+				if item.canvas ~= nil then
+					p.canvas = genTableClipboardForCanvas(item.canvas);
+				end;
+				
+				local uData = item.userData;
+				
+				if uData ~= nil then
+					p.userData = genTableClipboardForNode(uData);
+				end;
+			
+				pacote[#pacote + 1] = p;
+			end;
+		end		
+	end;
+				
+	return SC3CLIPBOARD_TEXT_PREFIX .. Serializer.packData(pacote) .. SC3CLIPBOARD_TEXT_SUFFIX;
+end;
+
+function SC3CLIPBOARD_Copy(itens)
+	local clipboardData = SC3CLIPBOARD_Pack(itens);
+	System.setClipboardText(clipboardData);
+end
+
+function SC3CLIPBOARD_Unpack(txt)
+	if Serializer == nil then
+		Serializer = require("utils.serializer.dlua");
+	end;
+
+	local txtPacote = string.match(txt, SC3CLIBPOARD_TEXT_PATTERN);
+	
+	if txtPacote ~= nil then
+		return Serializer.unpackData(txtPacote);
+	else
+		return nil;
+	end;
+end;
+
+local function SC3CLIPBOARD_PasteItem(scene, p, centroDoPacote, pivo)
+	if p.objectType == "token" or p.objectType == 'userDrawing' then
+		local item;
+		
+		if p.objectType == 'token' then
+			item = scene.items:addToken();
+		elseif p.objectType == "userDrawing" then
+			item = scene.items:addUserDrawing();			
+		else
+			return;
+		end;
+		
+		item:beginUpdate();
+		
+		tryFinally(
+			function()
+				copyTablePersistedToWrappedObject(p, item);				
+				item.layer = scene.workingLayer;
+
+				
+				local dx = pivo.x + ((item.x + item.width / 2) - centroDoPacote.x);
+				local dy = pivo.y + ((item.y + item.height / 2) - centroDoPacote.y);	
+									
+				if p.objectType == "token" then
+					dx, dy = UTIL_BomLugarCenter(scene, dx, dy, scene.workingLayer);
+				end;
+				
+				item:setCenter(dx, dy);	
+				item.selected = true;
+				
+				if type(p.canvas) == "table" then
+					copyTablePersistedToCanvasObject(item.canvas, p.canvas, true);
+				end;
+								
+				if p.objectType == "userDrawing" then
+					item:markAsMyDrawing();
+				end;							
+			end,
+			function()
+				item:endUpdate();
+			end);			
+	end;	
+end;
+
+function SC3CLIPBOARD_PastePacote(scene, pacote, pivo)
+	local center = {x = 0, y = 0};
+	local qtParaMedia = 0;
+	local lenPacote = #pacote;
+	
+	-- Calcular centro
+	
+	for i = 1, lenPacote, 1 do
+		local item = pacote[i];
+		local props = item.props;
+		
+		if (props ~= nil) and (props.width ~= nil) and props.height ~= nil and
+            props.x ~= nil and props.y ~= nil then
+			local esteCX = (props.width or 0) / 2 + (props.x or 0);
+			local esteCY = (props.height or 0) / 2 + (props.y or 0);
+			center.x = center.x + esteCX;
+			center.y = center.y + esteCY;
+			qtParaMedia = qtParaMedia + 1;
+		end;
+	end;
+	
+	if qtParaMedia > 0 then
+		center.x = center.x / qtParaMedia;
+		center.y = center.y / qtParaMedia;
+	end;
+	
+	
+	if pivo == nil then	
+		local _lastMouseDown = rawget(scene, "_lastMouseDown");
+		pivo = {};				
+	
+		if _lastMouseDown ~= nil then
+			pivo.x = _lastMouseDown.x;
+			pivo.y = _lastMouseDown.y;
+		else
+			local i, j = scene.grid:worldToCell(center.x, center.y);				
+			pivo.x, pivo.y = scene.grid:cellToWorld(i, j + 1);		
+		end;
+	end;
+	
+	scene.items:clearSelection();
+	
+	for i = 1, #pacote, 1 do
+		SC3CLIPBOARD_PasteItem(scene, pacote[i], center, pivo);
+	end;	
+end;
+
+function SC3CLIPBOARD_Paste(scene, pivo)
+	local pacote = SC3CLIPBOARD_Unpack(System.getClipboardText());
+	
+	if pacote ~= nil then
+		SC3UNDO_Capture(scene,
+			function ()
+				SC3CLIPBOARD_PastePacote(scene, pacote, pivo);
+			end);
+		
+	end;
+end;

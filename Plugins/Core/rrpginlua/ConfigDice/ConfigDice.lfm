@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmConfigDice" title="Personalizar Dados" width="300" height="300" resizable="true">
+	<import file="../interfaceUtils.xml"/>
+	
+	<script><![CDATA[
+		local DADOS = {"any", "d4", "d6", "d8", "d10", "d10cent", "d12", "d20", "fudge"};
+	
+		function self:podeEspecificarDados()
+			return rrpg.getCurrentUser().isRuby;
+		end;
+	
+		function self:updateSelectedDice()
+			local nodeName = self.cmbCDice.value;
+			local node = sheet[nodeName];
+			
+			if node == nil then	
+				sheet[nodeName] = {};
+				node = sheet[nodeName]; 
+			end
+			
+			if nodeName ~= "any" and not self:podeEspecificarDados() then
+				self.scbContent.node = nil;		
+				self.scbContent.visible = false;
+				self.layRubyOnly.visible = true;
+			else	
+				if node.bkgColor == nil then
+					node.bkgColor = "#eec300ff";
+				end;
+				
+				if node.faceColor == nil then
+					node.faceColor = "black";
+				end;
+				
+				if node.bkgType == nil then
+					node.bkgType = "color";
+				end;
+			
+				self.scbContent.node = node;		
+				self.scbContent.visible = true;
+				self.layRubyOnly.visible = false;
+			end;		
+		end;
+	
+		function self:configurarInterface() 
+			self.title = lang("dice.title");
+			self.labCDice.text = lang("dice.choosenDice");
+			self.labRubyOnly.text = lang("dice.alert.customizationForRubyOnly");
+			self.cbxCustomized.text = lang("dice.use.my.customization");
+			self.labCorLetra.text = lang("dice.faceColor");
+			self.labBkg.text = lang("dice.texture");
+			self.rdbCorSolida.text = lang("dice.bkg.type.color");
+			self.rdbImagem.text = lang("dice.bkg.type.image");
+			self.labCorFundo.text = lang("dice.bkgColor");
+			self.labImagem.text = lang("dice.image");
+			
+			local valores = {};
+			local textos = {};
+			
+			for i = 1, #DADOS, 1 do
+				valores[#valores + 1] = DADOS[i];
+				textos[#textos + 1] = lang("dice." .. DADOS[i]);
+			end;
+			
+			self.cmbCDice.items = textos;
+			self.cmbCDice.values = valores;
+			self.cmbCDice.value = "any";
+			self:updateSelectedDice();
+		end;
+		
+	]]></script>
+		
+		
+	<layout class="conteudoForm" margins="{top=5, bottom=5, left = 5, right = 5}">
+		<layout align="top" height="30">
+			<label name="labCDice" align="left" wordWrap="false" text="Dado:" margins="{right=10}" horzTextAlign="trailing"
+				  width="50"/>
+			<comboBox name="cmbCDice" align="client" onChange="self:updateSelectedDice()"/>
+		</layout> 		
+		
+		<!-- Edição do dado -->
+		
+		<dataScopeBox name="scbContent" align="client" margins="{top=10, left=5, right=5}">
+			<layout align="top" height="30">
+				<checkBox name="cbxCustomized" left="55" field="enabled" width="200"/>
+			</layout>
+											
+						
+			<flowLayout name="layCustomization" align="client" visible="false" maxControlsPerLine="1">
+			
+				<!-- Cor da letra -->
+				<flowPart align="top" height="35" maxWidth="9999">
+					<label name="labCorLetra" wordWrap="false" align="left" width="130" horzTextAlign="trailing"
+								 margins="{right=5}"/>
+					<colorComboBox align="client" field="faceColor" useAlpha="false"/>
+				</flowPart>
+			
+				<!-- Background -->
+				<flowPart align="top" height="40" margins="{top=5}" maxWidth="9999">
+					<label name="labBkg" wordWrap="false" align="left" width="130" horzTextAlign="trailing"
+								 margins="{right=5}"/>
+								 
+					<layout name="layRadiosBkg" align="client">
+						<radioButton name="rdbCorSolida" align="top" field="bkgType" fieldValue="color"/>
+						<radioButton name="rdbImagem" align="top" field="bkgType" fieldValue="image"/>
+					</layout>
+				</flowPart>		
+
+				<!-- Cor Sólida -->
+				<flowPart name="layCorSolida" align="top" height="35" margins="{top=5}" visible="false" maxWidth="9999">
+					<label name="labCorFundo" wordWrap="false" align="left" width="130" horzTextAlign="trailing"
+								 margins="{right=5}"/>
+					<colorComboBox align="client" field="bkgColor" useAlpha="false"/>
+				</flowPart>	
+				
+				<!-- Imagem -->
+				<flowPart name="layImagem" align="top" height="90" margins="{top=5}" visible="false" maxWidth="9999">					
+					<label name="labImagem" wordWrap="false" align="left" width="130" horzTextAlign="trailing"
+								 margins="{right=5}"/>
+								 
+					<rectangle align="client" color="null" strokeColor="white" strokeSize="1" xradius="5" yradius="5">
+						<image align="client" field="imageURL" style="autoFit" editable="true"/>
+					</rectangle>
+				</flowPart>				
+			</flowLayout>
+			
+			<script>
+				function self:mostrarBkgType()
+					local bkgType = self.scbContent.node.bkgType;
+					
+					if bkgType == "color" then
+						self.layCorSolida.visible = true;
+						self.layImagem.visible = false;
+					elseif bkgType == "image" then
+						self.layImagem.visible = true;					
+						self.layCorSolida.visible = false;
+					else
+						self.layCorSolida.visible = false;
+						self.layImagem.visible = false;					
+					end;
+					
+					self.layCustomization:needRealign();
+				end;
+			</script>
+			
+			<dataLink field="enabled" onChange="self.layCustomization.visible = self.scbContent.node.enabled;"/>
+			<dataLink field="bkgType" onChange="self:mostrarBkgType();"/>
+			
+		</dataScopeBox>
+		
+		<layout name="layRubyOnly" align="client" visible="false">
+			<label name="labRubyOnly" align="client" horzTextAlign="center" vertTextAlign="center" />
+		</layout>
+	</layout>		
+	
+	<BottomClosePopupPanel/>	
+	
+	<event name="OnShow">
+		self:configurarInterface();
+	</event>
+</popupForm>

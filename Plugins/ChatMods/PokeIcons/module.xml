@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.4_beta_2">
+	<id>PokeIcons</id>
+	<version>0.3.1</version>
+	<name>PokeIcons</name>
+	<description>Use comandos /poke e /unown pra inserir pokémon no chat.</description>
+	<author>Vinny Ambesek</author>
+	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
+	<contact>vinnyrpgmeister@gmail.com</contact>
+</module>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.3">
+	<!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
+	<id>BibliotecaRPGmeister</id>
+	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
+	<version>0.2</version>
+	<name>RPGM</name>
+	<description>Biblioteca com o material da mesa RPGmeister. Tanto para facilitar para abrir os links do dropbox quanto para permitir o uso por jogadores mobile.</description>
+	<author>Ambesek</author>
+	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
+	<contact>vinnyrpgmeister@gmail.com</contact>
+</module>

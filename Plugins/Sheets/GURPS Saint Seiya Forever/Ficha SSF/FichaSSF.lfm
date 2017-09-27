@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaSSF" formType="sheetTemplate" dataType="Ambesek.Nefertyne.FichaSSF" title="Ficha SSF" align="client" theme="dark">
+    <tabControl align="client">
+        <tab title="Geral">
+            <import file="SSF.1.lfm"/>
+        </tab>
+        <tab title="Perícias">
+            <import file="SSF.2.lfm"/>
+        </tab>
+        <tab title="Combate">
+            <import file="SSF.3.lfm"/>
+        </tab>
+		<tab title="Descrições">
+            <import file="SSF.5.lfm"/>
+        </tab>
+		<tab title="Anotações">
+            <import file="SSF.6.lfm"/>
+        </tab>
+		<tab title="Creditos">
+            <import file="SSF.7.lfm"/>
+        </tab>
+    </tabControl>
+</form>

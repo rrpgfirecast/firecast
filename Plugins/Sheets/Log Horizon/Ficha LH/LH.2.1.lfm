@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLH2_1" width="322" height="287" theme="dark">
+    <layout left="1" top="1" width="320" height="285">
+    	<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+    		<layout left="0" top="5" width="320" height="25">
+    			<label left="5" top="0" width="100" height="25" text="NOME"/>
+				<edit left="50" top="0" width="160" height="25" field="nome_habilidade"/>
+				<label left="215" top="0" width="100" height="25" text="Max HR"/>
+				<edit left="265" top="0" width="50" height="25" field="hr_habilidade"/>
+    		</layout>
+    		<layout left="0" top="30" width="320" height="25">
+    			<label left="5" top="0" width="100" height="25" text="Tipo"/>
+				<edit left="50" top="0" width="110" height="25" field="tipo_habilidade"/>
+				<label left="165" top="0" width="100" height="25" text="TAG"/>
+				<edit left="210" top="0" width="105" height="25" field="tag_habilidade"/>
+    		</layout>
+    		<layout left="0" top="55" width="320" height="25">
+    			<label left="5" top="0" width="100" height="25" text="Teste"/>
+				<edit left="50" top="0" width="110" height="25" field="teste_habilidade"/>
+				<label left="165" top="0" width="100" height="25" text="Timming" fontSize="11"/>
+				<edit left="210" top="0" width="105" height="25" field="timming_habilidade"/>
+    		</layout>
+    		<layout left="0" top="80" width="320" height="25">
+    			<label left="5" top="0" width="100" height="25" text="Alvo"/>
+				<edit left="50" top="0" width="110" height="25" field="alvo_habilidade"/>
+				<label left="165" top="0" width="100" height="25" text="Custo"/>
+				<edit left="210" top="0" width="105" height="25" field="custo_habilidade"/>
+    		</layout>
+    		<layout left="0" top="105" width="320" height="25">
+    			<label left="5" top="0" width="100" height="25" text="Alcance" fontSize="12"/>
+				<edit left="50" top="0" width="110" height="25" field="alcance_habilidade"/>
+				<label left="165" top="0" width="100" height="25" text="Limite"/>
+				<edit left="210" top="0" width="105" height="25" field="limite_habilidade"/>
+    		</layout>
+    		<layout left="0" top="130" width="320" height="150">
+    			<label left="5" top="0" width="320" height="25" text="EFEITO" horzTextAlign="center"/>
+    			 <button left="290" width="25" height="25" text="X">
+					<event name="onClick">
+						dialogs.confirmOkCancel("Tem certeza que quer apagar essa habilidade?",
+							function (confirmado)
+								if confirmado then
+									ndb.deleteNode(sheet);
+								end;
+						end);
+					</event>
+				</button>
+    			<textEditor left="5" top="25" width="310" height="125" field="efeito_habilidade"/>
+    		</layout>
+    </layout>
+</form>

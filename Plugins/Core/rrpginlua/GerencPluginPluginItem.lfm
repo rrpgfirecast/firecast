@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGerencPluginItem" title="Gerenciar Plugins" height="30">
+	<import file="interfaceUtils.xml"/>
+	
+	<style>
+		label {
+			wordWrap: false;
+			autoSize: true;
+		}
+	</style>
+	
+	<script><![CDATA[
+		local function desinstalarPlugin()
+			if sheet == nil then
+				return;
+			end;
+			
+			local moduleId = sheet.moduleId;
+			
+			dialogs.confirmYesNo("Deseja realmente desinstalar este plug-in?",
+				function (confirmado)
+					if confirmado then
+						local r, msg = rrpg.plugins.uninstallPlugin(moduleId);
+						
+						if not r then
+							showMessage("Não foi possível desinstalar o plugin: " .. msg);
+						end;
+					end;
+				end);
+		end;
+		]]>
+	</script>
+	
+	<flowLayout name="flwPlug" align="top" maxControlsPerLine="2" autoHeight="true" onResize="self.height = self.flwPlug.height + 15;">
+		<label name="labNome" field="name" wordWrap="false" fontColor="white" margins="{right=3}"/>
+		<label field="version" fontColor="gray" fontSize="12"/>;
+		
+		<flowLineBreak/>
+		
+		<flowPart name="fptDescricao" minWidth="100" maxWidth="800" margins="{left=10, right=10}">
+			<label name="labDescricao" field="description" fontColor="silver" fontSize="12" align="top" wordWrap="true" onResize="self.fptDescricao.height = self.labDescricao.height;"/>
+		</flowPart>
+
+		<flowLineBreak/>
+		<label text="Autor: " fontColor="silver" fontSize="12" margins="{left=10}"/>
+		<label field="author" fontColor="gray" fontSize="11"/>
+		
+		<flowLineBreak/>
+		<button name="btnDesinstalar" text="Desinstalar" margins="{left=5, top=5}" width="110" height="40" onClick="desinstalarPlugin()"/>
+	</flowLayout>
+	
+	<dataLink field="moduleId" onChange="self.btnDesinstalar.visible = sheet.moduleId ~= 'RRPG.FIRECAST.FMXModule';"/>
+</form>

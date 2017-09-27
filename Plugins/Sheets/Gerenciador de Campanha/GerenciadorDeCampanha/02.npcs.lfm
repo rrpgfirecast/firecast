@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGerenciador02" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+		<rectangle left="0" top="0" width="1320" height="20" color="Black">
+			<button left="40" top="0" width="20" height="20" text="N" onClick="self.rclListaNPCs:append();"/>
+			<label left="0" top="0" width="1320" height="20" text="LISTA DE NPCs CONHECIDOS" horzTextAlign="center" />
+			<recordList name="rclListaNPCs" field="listaNPCs" templateForm="frmGerenciador02_SELECT" left="0" top="20" width="1320" height="45" selectable="true" layout="horizontal" minQt="1">
+				<event name="onSelect">
+					local node = self.rclListaNPCs.selectedNode;
+					self.boxNPCs.node = node;
+					self.boxNPCs.visible = (node ~= nil);
+				</event>
+				<event name="onEndEnumeration">
+					if self.rclListaNPCs.selectedNode == nil and sheet ~= nil then
+						local nodes = ndb.getChildNodes(sheet.listaNPCs);               
+						if #nodes > 0 then
+							self.rclListaNPCs.selectedNode = nodes[1];
+						end;
+					end;
+				</event>
+			</recordList>
+		</rectangle>
+		
+		<dataScopeBox name="boxNPCs" visible="false" left="0" top="0" width="1320" height="615">
+				<button left="0" top="0" width="20" height="20" text="+" onClick="self.rclNPCs:append();"/>
+				<button left="20" top="0" width="20" height="20" text="O" onClick="self.rclNPCs:sort();"/>
+				<recordList left="0" top="65" width="1320" height="550" layout="horizontalTiles" minQt="1" name="rclNPCs" field="npcs" templateForm="frmGerenciador02_NPC">
+					<event name="onCompare">
+						local mod1 = nodeA.relacao;
+						local mod2 = nodeB.relacao;
+						local modR = utils.compareStringPtBr(mod1, mod2);
+						if modR==0 then
+							mod1 = nodeA.nome;
+							mod2 = nodeB.nome;
+							modR = utils.compareStringPtBr(mod1, mod2);
+						end;
+						return modR;
+					</event>
+				</recordList>
+		</dataScopeBox>
+    </scrollBox>
+</form>

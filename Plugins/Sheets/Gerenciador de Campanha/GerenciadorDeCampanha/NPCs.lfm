@@ -1,0 +1,1088 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="CaixaFichaNPC" width="270" height="109" theme="dark"> 
+	<script>
+		function pegarJogador()
+			return ndb.testPermission(sheet, "write");
+		end;
+		
+		-- Muda a cor do texto que exibe o Alinhamento do NPC
+		function self:setarNPC()
+			if sheet ~= nil then
+				if sheet.alinhamentoNPC == "Jogador" then
+					self.NomePequenoBarrinha.fontColor = "#99ff99";
+					sheet.ModCor = "J";
+				elseif sheet.alinhamentoNPC == "Aliado" then
+					sheet.NomePequeno = "Aliado";
+					self.NomePequenoBarrinha.fontColor = "#9999ff";
+					sheet.ModCor = "A";
+				elseif sheet.alinhamentoNPC == "Inimigo" then
+					sheet.NomePequeno = "Inimigo";
+					self.NomePequenoBarrinha.fontColor = "#ff9999";
+					sheet.ModCor = "I";
+				elseif sheet.alinhamentoNPC == "Neutro" then
+					sheet.NomePequeno = "Neutro";
+					self.NomePequenoBarrinha.fontColor = "#eeeeee";
+					sheet.ModCor = "N";
+				end;
+			end;
+		end;
+
+		function cordiv0(valor)
+			if valor == 0 then
+				return 1;
+			else
+				return valor;
+			end;
+		end;
+		
+		function PrepararRolagem(nomerolagem, rolagem, d20)
+			d20 = (d20 or false)
+			
+			local rolando = rrpg.interpretarRolagem(rolagem); 
+			
+			if not rolando.possuiAlgumDado then
+				if d20 then
+					rolando = rrpg.interpretarRolagem("1d20"):concatenar(rolando);
+				else
+					rolando = rrpg.interpretarRolagem("1d1-1"):concatenar(rolando);
+				end;
+			end; 
+			
+			local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+
+			if mesaDoPersonagem ~= nil then
+				mesaDoPersonagem.activeChat:rolarDados(rolando, nomerolagem);
+			end;
+		end;
+	
+        function self:alternarVisibilidade()
+             if self.cbxInvisivel.checked then
+             	sheet.hideNPC = false;
+                ndb.setPermission(sheet, "group", "jogadores", "read", nil);
+                ndb.setPermission(sheet, "group", "espectadores", "read", nil);
+             else
+             	sheet.hideNPC = true;
+                ndb.setPermission(sheet, "group", "jogadores", "read", "deny");
+                ndb.setPermission(sheet, "group", "espectadores", "read", "deny");
+             end;
+         end; 
+
+         function self:atualizarCbxInvisivel()          
+             self.cbxInvisivel.checked = ndb.getPermission(sheet, "group", "espectadores", "read") == "deny" or
+                                         ndb.getPermission(sheet, "group", "jogadores", "read") == "deny"
+
+			if self.cbxInvisivel.checked then
+				self.opacity = 0.5;
+			else
+				self.opacity = 1.0;
+			end;
+
+            self.cbxInvisivel.enabled = DonoMestre(sheet, true);
+			self.imgApagar.enabled = DonoMestre(sheet, true);
+			self.imgBloquear.enabled = DonoMestre(sheet, true);
+			self.imgFalar.enabled = DonoMestre(sheet, true);
+		end;
+    </script> 
+
+    <template name="editableBar">
+		<layout left="3" top="$(top1)" height="8" width="64">
+			<imageCheckBox align="client">
+				<progressBar colorMode="hl" width="64" height="8" hitTest="true" mouseGlow="true" color="#808080" name="Barrinha$(num)" field="Barrinha$(num)Valor" fieldMax="Barrinha$(num)ValorMax">
+					<event name="onMouseEnter">
+						self.CorBarrinha$(num).color = (sheet.CorBarrinha$(num) .. "AA");
+						self.ValoresBarrinha$(num).visible = true;
+						self.InfoBarrinha$(num).visible = (pegarJogador() or GetBarrinhaVisivel(sheet.ImagemBloqueada, $(num)));
+						self.InfoBarrinha$(num)Oculto.visible = not (pegarJogador() or GetBarrinhaVisivel(sheet.ImagemBloqueada, $(num))); 	
+					</event>
+					<event name="onMouseLeave">
+						self.ValoresBarrinha$(num).visible = false;
+					</event>
+					<event name="onDblClick">
+						if pegarJogador() or true then
+							sheet.BarrinhaID = $(num);
+							sheet.AtributoBarrinha = GetBarrinhaNome($(num));
+							
+							sheet.ModificadorBarrinha = "igual";
+							sheet.ModificadorBarrinhaMax = "igual";
+							sheet.ValorTempAtualBarrinha = sheet.Barrinha$(num)Valor;
+							sheet.ValorTempMaxBarrinha = sheet.Barrinha$(num)ValorMax;
+							sheet.ValorMudadoAtualBarrinha = sheet.Barrinha$(num)Valor;
+							sheet.ValorMudadoMaxBarrinha = sheet.Barrinha$(num)ValorMax;
+							self.CorPopupBarrinhas.color = self.CorBarrinha$(num).color;
+							self.BarrinhaPopup.scopeNode = sheet;
+							self.BarrinhaPopup:show(bottomCenter, self.Barrinha$(num));
+							self.BarrinhaPopup.top = (self.BarrinhaPopup.top + 29 + 10);
+						end;
+					</event>
+				</progressBar>
+			</imageCheckBox>
+		</layout>
+		<layout left="69" top="$(top2)" width="90" height="14" visible="false" name="ValoresBarrinha$(num)">
+			<rectangle align="client" xradius="2" yradius="2" name="CorBarrinha$(num)" color="green">
+				<label align="left" fontColor="white" fontSize="12" autoSize="true" textTrimming="none" wordWrap="false" name="InfoBarrinha$(num)" field="InfoBarrinha$(num)" horzTextAlign="center" text="0/0">
+					<event name="onResize">
+						self.InfoBarrinha$(num).width = (self.ValoresBarrinha1.width - 4);
+					</event>
+				</label>
+				<label align="client" fontColor="white" fontSize="12" autoSize="true" textTrimming="none" wordWrap="false" name="InfoBarrinha$(num)Oculto" visible="false" field="InfoBarrinha$(num)Oculto" horzTextAlign="center" text="??/??"/>
+			</rectangle>
+		</layout>
+		<dataLink field="Barrinha$(num)Invisivel" defaultValue="false">
+			<event name="onChange">
+				self.Barrinha$(num).visible = not sheet.Barrinha$(num)Invisivel;
+			</event>
+		</dataLink>
+		<dataLink field="CorBarrinha$(num)" defaultValue="#808080">
+			<event name="onChange">
+				self.Barrinha$(num).color = sheet.CorBarrinha$(num);
+			</event>
+		</dataLink>
+	</template>
+	
+	<template name="corzinha">
+		<layout align="top" margins="{top=2, left=2}" width="20" height="20">
+			<rectangle align="client" color="$(cor)" >
+				<label align="client" margins="{top=2, bottom=2, left=2, right=2}" name="Cor_$(corid)" horzTextAlign="center" vertTextAlign="center" text="$(corid)" fontColor="$(correversa)"/>
+			</rectangle>
+		 </layout>
+	</template>
+	
+	<dataLink field="CorNha">
+		<event name="onChange">
+			sheet.CorReversa = ReverterCor(sheet.CorNha);
+		</event>
+	</dataLink>
+	
+	<layout align="client" visible="false">
+		
+	</layout>
+	
+	<layout align="client" visible="false">
+		<popupForm name="TipoDeBarras" cancelable="false" width="200" title="Alinhamento do NPC"  height="100">
+			<label align="top" margins="{left=10, top=4}" fontStyle="bold" field="NomeGrande" height="16" />
+			<layout align="client">
+				<radioButton text="Aliado" groupName="AlinhamentoNPCs" vertTextAlign="center" field="alinhamentoNPC" fieldValue="Aliado" top="7" left="10"/> 
+				<radioButton text="Inimigo" groupName="AlinhamentoNPCs" vertTextAlign="center" field="alinhamentoNPC" fieldValue="Inimigo" top="7" left="75" />
+				<radioButton text="Neutro" groupName="AlinhamentoNPCs" vertTextAlign="center" field="alinhamentoNPC" fieldValue="Neutro" top="29" left="10"/>
+				<radioButton text="Jogador" groupName="AlinhamentoNPCs" vertTextAlign="center" field="alinhamentoNPC" fieldValue="Jogador" top="29" left="75">
+					<event name="onClick">
+						chamarListaDeJogadores();
+					</event>
+				</radioButton>
+				<layout width="140" name="listaDeJogadores" top="54" left="10" height="18" hitTest="true">
+					<rectangle align="client" color="#333333" xradius="2" yradius="2" hitTest="true">
+						<label fontColor="white" align="client" vertTextAlign="center" margins="{left=4}" text="Opções" field="opcaoEscolhida2" hitTest="true" >
+					 		<event name="onClick">
+								setTimeout (function()
+									sheet.alinhamentoNPC = "Jogador";
+									chamarListaDeJogadores();
+								end, 10)
+								InvocarOPopupForm(sheet);
+							</event>
+				 		</label>
+				 		<path align="right" width="16" margins="{right=2, left=2, top=4, bottom=4}" color="orange" data="M 100 100 L 300 100 L 200 300 z">
+				 			<event name="onClick">
+								setTimeout (function()
+									sheet.alinhamentoNPC = "Jogador";
+									chamarListaDeJogadores();
+								end, 10)
+								InvocarOPopupForm(sheet);
+							</event>
+						</path>
+						<event name="onClick">
+							setTimeout (function()
+								sheet.alinhamentoNPC = "Jogador";
+								chamarListaDeJogadores();
+							end, 10)
+							InvocarOPopupForm(sheet);
+						 </event>
+					</rectangle>
+				</layout>
+			</layout>
+			<layout align="right" width="40" margins="{top=35, right=4, bottom=5}">
+				<button name="BotonAction" align="client" text="Ok!" >
+					<event name="onClick">
+						if not (sheet.alinhamentoNPC == "Jogador" and sheet.opcaoEscolhida2 == "Nenhum") then
+							ndb.setPermission(sheet, "user", sheet.NomePequeno, "read", nil)
+							ndb.setPermission(sheet, "user", sheet.NomePequeno, "write", nil)
+								
+							if sheet.alinhamentoNPC == "Jogador" then
+								sheet.NomePequeno = sheet.opcaoEscolhida2;
+								ndb.setPermission(sheet, "user", sheet.NomePequeno, "read", "strongAllow")
+								ndb.setPermission(sheet, "user", sheet.NomePequeno, "write", "strongAllow")
+							end;
+							self:setarNPC();
+							self.TipoDeBarras:close();
+							FecharOPopupForm();
+						else
+							dialogs.alert("Não há um jogador para escolher.")
+						end;
+					</event>
+				</button>
+			</layout>
+			<event name="onCancelRequest">
+				if sheet.ModCor == "J" then
+					sheet.alinhamentoNPC = "Jogador"
+				elseif sheet.ModCor == "A" then
+					sheet.alinhamentoNPC = "Aliado"
+				elseif sheet.ModCor == "I" then
+					sheet.alinhamentoNPC = "Inimigo"
+				else
+					sheet.alinhamentoNPC = "Neutro"
+				end;
+				self.TipoDeBarras:close();
+				FecharOPopupForm();
+			</event>
+		</popupForm>
+	</layout>
+	
+	<dataLink field="opcaoEscolhida2" defaultValue="Nenhum">
+		<event name="onChange">
+			if (sheet.alinhamentoNPC ~= "Jogador" or sheet.opcaoEscolhida2 ~= "Nenhum") then
+				self.BotonAction.enabled = true;
+			else
+				self.BotonAction.enabled = false;
+			end
+		</event>
+	</dataLink>
+	<dataLink field="alinhamentoNPC" defaultValue="Neutro">
+		<event name="onChange">
+			self.BotonAction.enabled = (sheet.alinhamentoNPC ~= "Jogador" or sheet.opcaoEscolhida2 ~= "Nenhum");
+		</event>
+	</dataLink>
+	<dataLink field="NomeGrande" defaultValue="Nome do NPC"/>
+	<dataLink field="NomePequeno" defaultValue="Neutro">
+		<event name="onChange">
+			self:setarNPC();
+		</event>
+	</dataLink>
+	
+	<dataLink field="Linha1" defaultValue="&lt;linha&gt;"/>
+	<dataLink field="Linha2" defaultValue="&lt;linha&gt;"/>
+	
+	<dataLink field="ModificadorBarrinhaMax" defaultValue="igual"/>
+	<dataLink field="ModificadorBarrinha" defaultValue="igual"/>
+	
+	<dataLink fields="{'Barrinha1Valor', 'Barrinha1ValorMax'}" defaultValues="{'0', '0'}">
+		<event name="onChange">
+			local test = GetBarrinhaNumeros(1);
+			local d0 = (tonumber(sheet.Barrinha1ValorMax or 0) == 0)
+				if d0 then
+					d0 = 1
+				else
+					d0 = tonumber(sheet.Barrinha1ValorMax or 1)
+				end;
+			if test then
+				sheet.InfoBarrinha1 = (sheet.Barrinha1Valor or 0) .. "/" .. (sheet.Barrinha1ValorMax or 0);
+				sheet.InfoBarrinha1Oculto = "??/??";
+			else
+				sheet.InfoBarrinha1 = tostring(math.floor((100 * (sheet.Barrinha1Valor or 0)) / d0)) .. "%";
+				sheet.InfoBarrinha1Oculto = "??%";
+			end;
+			
+		</event>
+	</dataLink>
+	<dataLink fields="{'Barrinha2Valor', 'Barrinha2ValorMax'}" defaultValues="{'0', '0'}">
+		<event name="onChange">
+			local test = GetBarrinhaNumeros(2);
+			local d0 = (tonumber(sheet.Barrinha2ValorMax or 0) == 0)
+				if d0 then
+					d0 = 1
+				else
+					d0 = tonumber(sheet.Barrinha2ValorMax or 1)
+				end;
+			if test then
+				sheet.InfoBarrinha2 = (sheet.Barrinha2Valor or 0) .. "/" .. (sheet.Barrinha2ValorMax or 0);
+				sheet.InfoBarrinha2Oculto = "??/??";
+			else
+				sheet.InfoBarrinha2 = tostring(math.floor((100 * (sheet.Barrinha2Valor or 0)) / d0)) .. "%";
+				sheet.InfoBarrinha2Oculto = "??%";
+			end;
+		</event>
+	</dataLink>
+	<dataLink fields="{'Barrinha3Valor', 'Barrinha3ValorMax'}" defaultValues="{'0', '0'}">
+		<event name="onChange">
+			local test = GetBarrinhaNumeros(3);
+			local d0 = (tonumber(sheet.Barrinha3ValorMax or 0) == 0);
+				if d0 then
+					d0 = 1
+				else
+					d0 = tonumber(sheet.Barrinha3ValorMax or 1)
+				end;
+			if test then
+				sheet.InfoBarrinha3 = (sheet.Barrinha3Valor or 0) .. "/" .. (sheet.Barrinha3ValorMax or 0);
+				sheet.InfoBarrinha3Oculto = "??/??";
+			else
+				sheet.InfoBarrinha3 = tostring(math.floor((100 * (sheet.Barrinha3Valor or 0)) / d0)) .. "%";
+				sheet.InfoBarrinha3Oculto = "??%";
+			end;
+		</event>
+	</dataLink>
+	<dataLink fields="{'Barrinha4Valor', 'Barrinha4ValorMax'}" defaultValues="{'0', '0'}">
+		<event name="onChange">
+			local test = GetBarrinhaNumeros(4);
+			local d0 = (tonumber(sheet.Barrinha4ValorMax or 0) == 0);
+				if d0 then
+					d0 = 1
+				else
+					d0 = tonumber(sheet.Barrinha4ValorMax or 1)
+				end;
+			if test then
+				sheet.InfoBarrinha4 = (sheet.Barrinha4Valor or 0) .. "/" .. (sheet.Barrinha4ValorMax or 0);
+				sheet.InfoBarrinha4Oculto = "??/??";
+			else
+				sheet.InfoBarrinha4 = tostring(math.floor((100 * (sheet.Barrinha4Valor or 0)) / d0)) .. "%";
+				sheet.InfoBarrinha4Oculto = "??%";
+			end;
+		</event>
+	</dataLink>
+	
+	<layout align="client" visible="false">
+		<popupForm title="Menu de Formatação de Mensagens" name="MensagemPopup" width="420" height="200" padding="{left=4, right=4, top=4, bottom=4}">
+			<popup name="MenuCor" width="172" height="150">
+				<layout align="top" height="24">
+					<label align="client" text="Informação de Cores:" horzTextAlign="center" fontStyle="Bold"/>
+				</layout>
+				<layout align="client" margins="{left=4, right=4}" hitTest="true">
+					<flowLayout align="client" orientation="horizontal" maxControlsPerLine="7">
+						<corzinha cor="#FFFFFF" correversa="#000000" corNome="Branco" corid="1"/>
+						<corzinha cor="#7f7fff" correversa="#000000" corNome="Roxo" corid="2"/>
+						<corzinha cor="#7fff7f" correversa="#800080" corNome="Verde" corid="3"/>
+						<corzinha cor="#ff0000" correversa="#000000" corNome="Vermelho" corid="4"/>
+						<corzinha cor="#ff7f7f" correversa="#000000" corNome="Salmão" corid="5"/>
+						<corzinha cor="#ff7fff" correversa="#000000" corNome="Rosa" corid="6"/>
+						<corzinha cor="#ff7f00" correversa="#000000" corNome="Laranja" corid="7"/>
+						<corzinha cor="#ffff00" correversa="#000000" corNome="Amarelo" corid="8"/>
+						<corzinha cor="#00ff00" correversa="#000000" corNome="Verde" corid="9"/>
+						<corzinha cor="#7fffff" correversa="#000000" corNome="Azul-Claro" corid="10"/>
+						<corzinha cor="#00ffff" correversa="#000000" corNome="Ciano" corid="11"/>
+						<corzinha cor="#0000ff" correversa="#ffffff" corNome="Azul-Escuro" corid="12"/>
+						<corzinha cor="#ff00ff" correversa="#000000" corNome="Rosa-Choque" corid="13"/>
+						<corzinha cor="#7f7f7f" correversa="#000000" corNome="Cinza" corid="14"/>
+						<corzinha cor="#3f3f3f" correversa="#FFFFFF" corNome="Preto" corid="15"/>
+						<corzinha cor="#0f0f0f" correversa="#FFFFFF" corNome="Preto" corid="16"/>
+						<corzinha cor="#1f1f1f" correversa="#FFFFFF" corNome="Preto" corid="17"/>
+						<corzinha cor="#777777" correversa="#000000" corNome="Cinza" corid="18"/>
+						<corzinha cor="#111111" correversa="#FFFFFF" corNome="Preto" corid="19"/>
+						<corzinha cor="#292929" correversa="#FFFFFF" corNome="Preto" corid="20"/>
+						<corzinha cor="#191200" correversa="#FFFFFF" corNome="Marrom" corid="21"/>
+						<corzinha cor="#6699ff" correversa="#000000" corNome="Azul" corid="22"/>
+						<corzinha cor="#f2b440" correversa="#000000" corNome="Amarelo" corid="23"/>
+						<corzinha cor="#d45252" correversa="#000000" corNome="Vinho" corid="24"/>
+						<corzinha cor="#d396dc" correversa="#000000" corNome="Roxo" corid="25"/>
+						<corzinha cor="#f47193" correversa="#000000" corNome="Rosa" corid="26"/>
+						<corzinha cor="#6cecb3" correversa="#000000" corNome="Verde-Água" corid="27"/>
+						<corzinha cor="#e54c27" correversa="#000000" corNome="Vermelho" corid="28"/>
+					</flowLayout>
+				</layout>
+				<layout align="bottom" height="24" margins="{bottom=8}">
+					<button align="right" text="Ok!" margins="{right=4}">
+						<event name="onClick">
+							self.MenuCor:close();
+						</event>
+					</button>
+				</layout>
+			</popup>
+		
+			<layout align="top" height="128" margins="{top=4}">
+				<layout align="top" height="18" margins="{left=8}">
+					<label align="left" fontSize="12" fontStyle="bold" autoSize="true" text="Mensagem"/>
+					<comboBox align="left" field="ShowNome" fontColor="white" fontSize="12" items="{'Texto', 'Narração', 'Avatar', 'Mostrar Nome', 'Nome e Avatar'}" values="{'0', '1', '2', '3', '4'}" text="Texto" width="118" vertTextAlign="trailing" margins="{left=10}"/>
+					
+					<layout align="left" width="132" margins="{left=6}">
+						<label fontColor="white" align="left" fontSize="12" autoSize="true" margins="{top=2}" text="Cor do Texto:"/>
+						<comboBox align="left" name="CorP" field="CorP" margins="{left=8, right=4}" width="48" fontColor="white" items="{'1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28'}" values="{'1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28'}" value="1"/>
+					</layout>
+					
+					<button align="right" text="Cores..." width="64" margins="{right=4}">
+						<event name="onClick">
+							self.MenuCor.scopeNode = sheet;
+							self.MenuCor:show();
+						</event>
+					</button>
+				</layout>
+				
+				<textEditor align="client" fontSize="12" name="TextoMensagem" field="TextoMensagem" margins="{left=4, right=4, top=4, bottom=4}"/>
+				
+				<layout align="bottom" height="20" margins="{bottom=4, top=4}">
+					<label align="left" width="100" fontSize="12" text="Formatar:" fontStyle="bold" margins="{left=8}" />
+					<button align="right" width="48" text="Enter" margins="{right=2}">
+						<event name="onClick">
+							sheet.TextoMensagem = (sheet.TextoMensagem or "") .. "\13\10";
+						</event>
+					</button>
+					<button align="right" width="60" text="Limpar" margins="{right=4}">
+						<event name="onClick">
+							sheet.TextoMensagem = "";
+						</event>
+					</button>
+					<layout align="right" width="132">
+						<label left="0" fontColor="white" fontSize="12" autoSize="true" text="Aplicar Cor:"/>
+						<comboBox left="70" height="20" name="CorN" field="CorN" margins="{left=8}" width="48" fontColor="white" items="{' ', '1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28'}" values="{'0', '01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28'}" value="0">
+						</comboBox>
+					</layout>
+					
+					<dataLink field="CorN" defaultValue="0">
+						<event name="onChange">
+							if not ((sheet.CorN == 0) or (self.CorN.value == "0")) then
+								local cor = "[§K" .. self.CorN.text .. "]";
+								if (cor ~= "[§K ]" and not inserindo) then
+									inserindo = true
+									sheet.TextoMensagem = (sheet.TextoMensagem or "") .. cor;
+								end;
+								
+								self.CorN.value = "0";
+								setTimeout(function()
+									inserindo = false;
+								end, 100);
+							end;
+						</event>
+					</dataLink>
+					
+					<button align="right" width="20" fontStyle="bold" text="B" margins="{right=2}">
+						<event name="onClick">
+							sheet.TextoMensagem = (sheet.TextoMensagem or "") .. "[§B]";
+						</event>
+					</button>
+					<button align="right" width="20" fontStyle="italic" text="I" margins="{right=2}">
+						<event name="onClick">
+							sheet.TextoMensagem = (sheet.TextoMensagem or "") .. "[§T]";
+						</event>
+					</button>
+					<button align="right" width="20" fontStyle="underline" text="U" margins="{right=2}">
+						<event name="onClick">
+							sheet.TextoMensagem = (sheet.TextoMensagem or "") .. "[§U]";
+						</event>
+					</button>
+					<button align="right" width="20" fontStyle="strikeout" text="S" margins="{right=2}">
+						<event name="onClick">
+							sheet.TextoMensagem = (sheet.TextoMensagem or "") .. "[§S]";
+						</event>
+					</button>
+				</layout>
+			</layout>
+			<layout align="bottom" height="60" margins="{top=4}">
+				<layout align="left" width="80" margins="{left=4}">
+					<label align="top" height="18" fontSize="12" margins="{left=8}" text="Rolagem"/>
+					<edit align="top" height="22" fontSize="12" margins="{left=4, right=4, top=4, bottom=4}" field="TextoRolagem"/>
+				</layout>
+				<layout align="left" width="180" margins="{left=4}">
+					<label align="top" height="18" fontSize="12" margins="{left=8}" text="Nome da Rolagem"/>
+					<edit align="top" height="22" fontSize="12" margins="{left=4, right=4, top=4, bottom=4}" field="NomeRolagem"/>
+				</layout>
+				<layout align="client" margins="{left=4, right=4}">
+					<button align="top" height="22" fontSize="12" margins="{left=4, right=4}" text="Enviar Mensagem">
+						<event name="onClick">
+							local minhaMesa = rrpg.getMesaDe(sheet);
+							local chat = minhaMesa.activeChat;    
+							
+							cor = "[§K" .. self.CorP.text .. "]"
+							
+							local textoCompleto = self.TextoMensagem.text;
+							for linha in textoCompleto:gmatch("[^\13\10]+") do
+								if (tonumber(sheet.ShowNome) == 3) then
+									if sheet.NomeGrande ~= nil then
+										chat:enviarMensagemNPC(sheet.NomeGrande, cor .. linha);
+									else
+										showMessage("O personagem não possui um nome. Adicione um antes de enviar por este modo.")
+									end;
+								elseif (tonumber(sheet.ShowNome) == 0) then
+									chat:enviarMensagem(cor .. linha);
+								elseif (tonumber(sheet.ShowNome) == 1) then
+									chat:enviarNarracao(cor .. linha);
+								elseif (tonumber(sheet.ShowNome) == 2) then
+									if sheet.AvatarNPC ~= nil then
+										chat:enviarNarracao("[§I" .. sheet.AvatarNPC .. "] " .. cor .. linha)
+									else
+										showMessage("O personagem não possui uma imagem. Adicione uma antes de enviar por este modo.")
+									end;
+								elseif (tonumber(sheet.ShowNome) == 4) then
+									if sheet.AvatarNPC ~= nil then
+										if sheet.NomeGrande ~= nil then
+											chat:enviarMensagemNPC(sheet.NomeGrande, "[§I" .. sheet.AvatarNPC .. "] " .. cor .. linha);
+										else
+											showMessage("O personagem não possui um nome. Adicione um antes de enviar por este modo.")
+										end;
+									else
+										showMessage("O personagem não possui uma imagem. Adicione uma antes de enviar por este modo.")
+									end;
+								end;
+							end;
+						</event>
+					</button>
+					
+					<button align="top" height="22" fontSize="12" margins="{top=4, left=4, right=4}" text="Enviar Rolagem">
+						<event name="onClick">
+							if sheet.NomeRolagem ~= nil then
+								local nome = sheet.NomeRolagem .. " - " .. sheet.NomeGrande;
+							PrepararRolagem(nome, sheet.TextoRolagem);
+							else
+								PrepararRolagem("", sheet.TextoRolagem);
+							end;
+						</event>
+					</button>
+				</layout>
+			</layout>
+		</popupForm>
+	</layout>
+	<dataLink field="ShowNome" defaultValue="1">
+		<event name="onChange">
+			if sheet.Shownome ~= nil then
+				self.CorP.enabled = true;
+			else
+				sheet.ShowNome = 1;
+			end;
+		</event>
+	</dataLink>
+	<popup name="BarrinhaPopup" width="140" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}">
+		<rectangle align="client" color="white" xradius="5" yradius="5">
+			<rectangle align="client" name="CorPopupBarrinhas" color="#808080" xradius="5" yradius="5" opacity="0.9">
+				<label fontColor="black" margins="{left=6, top=2}" align="top" text="Valor da Aba" field="AtributoBarrinha" fontSize="12" fontStyle="bold" autoSize="true"/>
+				<layout align="client" margins="{top=2, left=4}">
+					<layout align="top" height="18">
+						<label fontColor="black" align="left" text="Atual:  " horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+						<comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinha" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
+						<edit fontColor="black" margins="{left=2, right=4}" type="number" align="client" transparent="true" field="ValorMudadoAtualBarrinha" name="ValorAtualBarrinha">
+							<event name="onEnter">
+								self.ValorAtualBarrinha.transparent = false;
+								self.ValorAtualBarrinha.fontColor = "white";
+							</event>
+							<event name="onExit">
+								self.ValorAtualBarrinha.transparent = true;
+								self.ValorAtualBarrinha.fontColor = "black";
+							</event>
+							<event name="OnKeyDown">
+								local oenter = (event.keyCode == 13)
+								if oenter then
+									self.BarrinhaPopup:close();
+								end;
+							</event>
+						</edit>
+					</layout>
+					<layout align="top" height="18">
+						<label fontColor="black" align="left" text="Max:  " horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+						<comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinhaMax" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
+						<edit fontColor="black" margins="{left=2, right=4}" type="number" align="client" transparent="true" field="ValorMudadoMaxBarrinha" name="ValorMaxBarrinha">
+							<event name="onEnter">
+								self.ValorMaxBarrinha.transparent = false;
+								self.ValorMaxBarrinha.fontColor = "white";
+							</event>
+							<event name="onExit">
+								self.ValorMaxBarrinha.transparent = true;
+								self.ValorMaxBarrinha.fontColor = "black";
+							</event>
+							<event name="OnKeyDown">
+								local oenter = (event.keyCode == 13)
+								if oenter then
+									self.BarrinhaPopup:close();
+								end;
+							</event>
+						</edit>
+					</layout>
+				</layout>
+			</rectangle>
+		</rectangle>
+		
+		<event name="onClose">
+			setTimeout( function()
+				if (sheet.ModificadorBarrinha == "igual") then
+					sheet.ValorTempAtualBarrinha = tonumber(sheet.ValorMudadoAtualBarrinha or 0);
+				elseif (sheet.ModificadorBarrinha == "mais") then
+					sheet.ValorTempAtualBarrinha = tonumber(sheet.ValorTempAtualBarrinha or 0) + tonumber(sheet.ValorMudadoAtualBarrinha or 0);
+				elseif (sheet.ModificadorBarrinha == "menos") then
+					sheet.ValorTempAtualBarrinha = tonumber(sheet.ValorTempAtualBarrinha or 0) - tonumber(sheet.ValorMudadoAtualBarrinha or 0);
+				end;
+				
+				if (sheet.ModificadorBarrinhaMax == "igual") then
+					sheet.ValorTempMaxBarrinha = tonumber(sheet.ValorMudadoMaxBarrinha or 0);
+				elseif (sheet.ModificadorBarrinhaMax == "mais") then
+					sheet.ValorTempMaxBarrinha = tonumber(sheet.ValorTempMaxBarrinha or 0) + tonumber(sheet.ValorMudadoMaxBarrinha or 0);
+				elseif (sheet.ModificadorBarrinhaMax == "menos") then
+					sheet.ValorTempMaxBarrinha = tonumber(sheet.ValorTempMaxBarrinha or 0) - tonumber(sheet.ValorMudadoMaxBarrinha or 0);
+				end;
+				
+				local barrinhapc = 0
+				local barrinhapcmax = 0
+				local porcentagem = 0
+				local porcentagemmax = 0
+			
+				if sheet.BarrinhaID == 1 then
+					barrinhapc = (sheet.ValorTempAtualBarrinha - sheet.Barrinha1Valor);
+					barrinhapcmax = (sheet.ValorTempMaxBarrinha - sheet.Barrinha1ValorMax);
+					porcentagem = math.floor((sheet.ValorTempAtualBarrinha * 100) / cordiv0(sheet.Barrinha1Valor)) - 100;
+					porcentagemmax = math.floor((sheet.ValorTempMaxBarrinha * 100) / cordiv0(sheet.Barrinha1ValorMax)) - 100;
+					sheet.Barrinha1Valor = sheet.ValorTempAtualBarrinha;
+					sheet.Barrinha1ValorMax = sheet.ValorTempMaxBarrinha;
+				elseif sheet.BarrinhaID == 2 then
+					barrinhapc = (sheet.ValorTempAtualBarrinha - sheet.Barrinha2Valor);
+					barrinhapcmax = (sheet.ValorTempMaxBarrinha - sheet.Barrinha2ValorMax);
+					porcentagem = math.floor((sheet.ValorTempAtualBarrinha * 100) / cordiv0(sheet.Barrinha2Valor)) - 100;
+					porcentagemmax = math.floor((sheet.ValorTempMaxBarrinha * 100) / cordiv0(sheet.Barrinha2ValorMax)) - 100;
+					sheet.Barrinha2Valor = sheet.ValorTempAtualBarrinha;
+					sheet.Barrinha2ValorMax = sheet.ValorTempMaxBarrinha;
+				elseif sheet.BarrinhaID == 3 then
+					barrinhapc = (sheet.ValorTempAtualBarrinha - sheet.Barrinha3Valor);
+					barrinhapcmax = (sheet.ValorTempMaxBarrinha - sheet.Barrinha3ValorMax);
+					porcentagem = math.floor((sheet.ValorTempAtualBarrinha * 100) / cordiv0(sheet.Barrinha3Valor)) - 100;
+					porcentagemmax = math.floor((sheet.ValorTempMaxBarrinha * 100) / cordiv0(sheet.Barrinha3ValorMax)) - 100;
+					sheet.Barrinha3Valor = sheet.ValorTempAtualBarrinha;
+					sheet.Barrinha3ValorMax = sheet.ValorTempMaxBarrinha;
+				elseif sheet.BarrinhaID == 4 then
+					barrinhapc = (sheet.ValorTempAtualBarrinha - sheet.Barrinha4Valor);
+					barrinhapcmax = (sheet.ValorTempMaxBarrinha - sheet.Barrinha4ValorMax);
+					porcentagem = math.floor((sheet.ValorTempAtualBarrinha * 100) / cordiv0(sheet.Barrinha4Valor)) - 100;
+					porcentagemmax = math.floor((sheet.ValorTempMaxBarrinha * 100) / cordiv0(sheet.Barrinha4ValorMax)) - 100;
+					sheet.Barrinha4Valor = sheet.ValorTempAtualBarrinha;
+					sheet.Barrinha4ValorMax = sheet.ValorTempMaxBarrinha;
+				end;
+					
+				local chat = GetEnviarChat();
+				
+				if (chat and ((barrinhapc ~= 0) or (barrinhapcmax ~= 0))) then
+					EnviarMudanca(sheet.BarrinhaID, sheet.imagemBloqueada, sheet.NomeGrande, sheet.AtributoBarrinha, barrinhapc, barrinhapcmax, porcentagem, porcentagemmax);
+				end;
+			end, 100)
+		</event>
+	</popup>
+		
+    <layout align="client">
+		<!-- Botão para apagar o item da lista -->
+		<rectangle left="2" top="2" width="104" height="104" color="#111111"/>
+		<image left="2" top="2" width="104" height="104" editable="true" optimize="true" style="autoFit" field="AvatarNPC"/>
+		<layout left="107" top="0" width="160" height="104">
+			<imageCheckBox top="34" left="100" width="18" height="18" name="imgApagar" checkedImage="images/delete.png" uncheckedImage="images/delete.png" >
+				<event name="onClick">
+					if DonoMestre(sheet, false, "docksub10") then
+						dialogs.confirmYesNo("Deseja realmente apagar este item?",
+							function (confirmado)
+								if confirmado then
+									self.TipoDeBarras:close();
+									FecharOPopupForm();
+									ndb.deleteNode(sheet);
+								else
+										
+								end;
+							end);
+					end;
+				</event>
+			</imageCheckBox>
+			<imageCheckBox top="52" left="122" width="18" height="18" name="imgFalar" checkedImage="images/voice.png" uncheckedImage="images/voice.png" >
+				<event name="onClick">
+					if DonoMestre(sheet, false, "docksub1") then
+						if sheet.ShowNome == nil then
+							sheet.ShowNome = 1;
+						end;
+						self.MensagemPopup.scopeNode = sheet;
+						self.MensagemPopup:show();	
+					end;
+				</event>
+			</imageCheckBox>
+			<imageCheckBox top="32" left="120" width="18" height="18" name="imgBloquear" field="imagemBloqueada" checkedImage="images/bloqueado.png" uncheckedImage="images/desbloqueado.png" >
+				<event name="onClick">
+					if not DonoMestre(sheet, false, "docksub2") then
+						sheet.imagemBloqueada = not sheet.imagemBloqueada;
+					end;
+				</event>
+			</imageCheckBox>
+			<imageCheckBox top="52" left="140" width="18" height="18" field="imagemInvisivel" autoChange="false" name="cbxInvisivel" checkedImage="images/invisivel.png" uncheckedImage="images/visivel.png" >
+				<event name="onClick">
+					if DonoMestre(sheet, false, "docksub3") then
+						self:alternarVisibilidade();
+					end;
+				</event>
+			</imageCheckBox>
+			<imageCheckBox top="32" left="142" width="18" height="18" name="imgInfo" checkedImage="images/info.png" uncheckedImage="images/info.png" >
+				<event name="onClick">
+					mesa = rrpg.getMesaDe(sheet);
+					local pop;
+					if mesa.meuJogador.isMestre or self.sheet.cbxFicha then
+						pop = self:findControlByName("popupDetails");
+					else
+						pop = self:findControlByName("popupDetailsSmall");
+					end
+					
+					if pop ~= nil then
+						pop:setNodeObject(self.sheet);
+						pop:showPopupEx("center");
+					else
+						showMessage("Ops, bug... Nao encontrei o popup de detalhes para exibir");
+					end;
+				</event>
+			</imageCheckBox>
+				
+			<dataLink field="imagemInvisivel" defaultValue="false">
+				<event name="onChange">
+					RequestReload("begin");
+					if sheet.imagemInvisivel then
+						if DonoMestre(sheet, true, "docksub4") then
+							self.opacity = 0.50;
+						end;
+					else
+						if DonoMestre(sheet, true, "docksub5") then
+							self.opacity = 1.00;
+						end;
+					end;
+					RequestReload("end");
+				</event>
+			</dataLink>
+
+			<popup name="popupDetailsSmall" width="450" height="200" backOpacity="0.4">
+				<label left="10" top="0" width="150" height="25" text="Raça" horzTextAlign="center"/>
+				<label left="160" top="0" width="280" height="25" text="Classe" horzTextAlign="center"/>
+				
+				<label left="10" top="50" width="125" height="25" text="Atitude" horzTextAlign="center"/>
+				<label left="135" top="50" width="125" height="25" text="Relação" horzTextAlign="center"/>
+				<label left="260" top="50" width="175" height="25" text="Comentarios" horzTextAlign="center"/>
+				
+				<label left="10" top="100" width="250" height="25" text="Descrição" horzTextAlign="center"/>
+				
+				<edit left="10" top="25" width="150" height="25" field="raca" />
+				<edit left="160" top="25" width="280" height="25" field="classe" />
+				
+				<edit left="10" top="75" width="125" height="25" field="atitude" />
+				<edit left="135" top="75" width="125" height="25" field="relacao" />
+				<textEditor  left="260" top="75" width="175" height="120" field="comentarios" />
+				
+				<textEditor  left="10" top="125" width="250" height="70" field="descricao" />
+			</popup>
+
+			<popup name="popupDetails" width="1335" height="620" backOpacity="0.4">
+				<template name="AtributoComp">
+					<button left="0" top="3" width="42" height="20" text="$(ATR)">
+						<event name="onClick">
+							local dado = "1d20 ";
+							local bonus = tonumber(sheet.$(atr)ModComp) or 0;
+							if bonus &gt;= 0 then
+								dado = "1d20 + ";
+							end;
+							local rolagem = rrpg.interpretarRolagem(dado .. bonus);
+							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(nome) de " .. (sheet.NomeGrande or "Companheiro"));
+						</event>
+					</button>
+					<edit left="45" top="0" width="30" height="25" field="$(atr)Comp">
+						<event name="onChange">
+							if sheet~=nil then
+								if debug then
+									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
+									index = index + 1;
+								end;
+								local mod = (tonumber(sheet.$(atr)Comp) or 0);
+								mod = math.floor((mod-10)/2);
+								if mod &gt;=0 then
+									mod = "+" .. mod;
+								end;
+								sheet.$(atr)ModComp = mod;
+							end;
+						</event>
+					</edit>
+					<rectangle left="80" top="0" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
+					<label left="80" top="0" width="30" height="25" field="$(atr)ModComp" horzTextAlign="center"/>
+					<edit left="115" top="0" width="75" height="25" field="$(atr)CompDesc"/>
+				</template>
+				<template name="TRComp">
+					<button left="0" top="3" width="42" height="20" text="$(ATR)">
+						<event name="onClick">
+							local dado = "1d20 ";
+							local bonus = tonumber(sheet.$(atr)Comp) or 0;
+							if bonus &gt;= 0 then
+								dado = "1d20 + ";
+							end;
+							local rolagem = rrpg.interpretarRolagem(dado .. bonus);
+							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(nome) de " .. (sheet.NomeGrande or "Companheiro"));
+						</event>
+					</button>
+					<edit left="45" top="0" width="30" height="25" field="$(atr)Comp"/>
+					<edit left="80" top="0" width="110" height="25" field="$(atr)CompDesc"/>
+				</template>
+
+				<rectangle left="5" top="5" width="200" height="185" color="black">
+					<label left="5" top="10" width="70" height="20" text="Raça"/>
+					<edit left="70" top="5" width="125" height="25" field="raca"/>
+					
+					<label left="5" top="35" width="70" height="20" text="Classe"/>
+					<edit left="70" top="30" width="125" height="25" field="classe"/>
+					
+					<label left="5" top="60" width="70" height="20" text="Tipo"/>
+					<edit left="70" top="55" width="125" height="25" field="tipoComp"/>
+					
+					<label left="5" top="85" width="70" height="20" text="Subtipos"/>
+					<edit left="70" top="80" width="125" height="25" field="subtiposComp"/>
+					
+					<label left="5" top="110" width="70" height="20" text="Tamanho"/>
+					<edit left="70" top="105" width="125" height="25" field="tamanhoComp"/>
+				</rectangle>
+
+				<rectangle left="5" top="143" width="200" height="110" color="black">
+					<label left="5" top="10" width="40" height="20" text="DVs"/>
+					<edit left="35" top="5" width="70" height="25" field="dvsComp"/>
+
+					<label left="110" top="8" width="40" height="20" text="PVs"/>
+					<edit left="140" top="5" width="55" height="25" field="pvsComp"/>
+
+					<label left="5" top="35" width="60" height="20" text="CA"/>
+					<edit left="70" top="30" width="35" height="25" field="caComp"/>
+
+					<label left="5" top="60" width="60" height="20" text="Toque"/>
+					<edit left="70" top="55" width="35" height="25" field="toqueComp"/>
+
+					<label left="5" top="85" width="60" height="20" text="Surpresa"/>
+					<edit left="70" top="80" width="35" height="25" field="surpresaComp"/>
+
+					<textEditor left="105" top="30" width="90" height="75" field="caCompDesc"/>
+				</rectangle>
+
+				<rectangle left="5" top="256" width="200" height="110" color="black">
+					<button left="5" top="8" width="70" height="20" text="Iniciativa">
+						<event name="onClick">
+							local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.iniciativaComp or 0));
+							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de iniciativa de " .. (sheet.NomeGrande or "Companheiro"));
+						</event>
+					</button>
+					<edit left="80" top="5" width="30" height="25" field="iniciativaComp"/>
+					<edit left="110" top="5" width="85" height="25" field="iniciativaCompDesc"/>
+
+					<label left="2" top="35" width="85" height="20" text="Deslocamento" fontSize="12"/>
+					<edit left="80" top="30" width="115" height="25" field="deslocamentoComp"/>
+
+					<label left="5" top="60" width="40" height="20" text="BBA"/>
+					<edit left="35" top="55" width="55" height="25" field="bbaComp"/>
+
+					<button left="90" top="58" width="60" height="20" text="Agarrar">
+						<event name="onClick">
+							local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.agarrarComp or 0));
+							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de agarrar de " .. (sheet.NomeGrande or "Companheiro"));
+						</event>
+					</button>
+					<edit left="150" top="55" width="45" height="25" field="agarrarComp"/>
+
+					<label left="5" top="85" width="40" height="20" text="Esp."/>
+					<edit left="35" top="80" width="35" height="25" field="esp1Comp"/>
+					<edit left="70" top="80" width="35" height="25" field="esp2Comp"/>
+
+					<label left="110" top="85" width="40" height="20" text="Alc."/>
+					<edit left="140" top="80" width="55" height="25" field="alcanceComp"/>
+				</rectangle>
+
+				<rectangle left="5" top="369" width="200" height="160" color="black">
+					<layout left="5" top="5" width="195" height="25">
+						<AtributoComp ATR="FOR" atr="for" nome="força"/>
+					</layout>
+					<layout left="5" top="30" width="195" height="25">
+						<AtributoComp ATR="DES" atr="des" nome="destreza"/>
+					</layout>
+					<layout left="5" top="55" width="195" height="25">
+						<AtributoComp ATR="CON" atr="con" nome="constituição"/>
+					</layout>
+					<layout left="5" top="80" width="195" height="25">
+						<AtributoComp ATR="INT" atr="int" nome="inteligência"/>
+					</layout>
+					<layout left="5" top="105" width="195" height="25">
+						<AtributoComp ATR="SAB" atr="sab" nome="sabedoria"/>
+					</layout>
+					<layout left="5" top="130" width="195" height="25">
+						<AtributoComp ATR="CAR" atr="car" nome="carisma"/>
+					</layout>
+				</rectangle>
+
+				<rectangle left="5" top="532" width="200" height="85" color="black">
+					<layout left="5" top="5" width="195" height="25">
+						<TRComp ATR="FORT" atr="fort" nome="fortitude"/>
+					</layout>
+					<layout left="5" top="30" width="195" height="25">
+						<TRComp ATR="REF" atr="ref" nome="reflexos"/>
+					</layout>
+					<layout left="5" top="55" width="195" height="25">
+						<TRComp ATR="VON" atr="von" nome="vontade"/>
+					</layout>
+				</rectangle>
+
+				<rectangle left="210" top="5" width="300" height="300" color="black">
+					<imageCheckBox field="cbxFicha" left="0" top="2" width="20" height="20" checkedImage="images/visivel.png" uncheckedImage="images/invisivel.png" hint="Altera a visibilidade da ficha entre somente o mestre e todos. "/> 
+					<label left="0" top="0" width="300" height="25" text="PERÍCIAS" horzTextAlign="center"/>
+					<textEditor left="5" top="30" width="290" height="265" field="periciasComp"/>
+				</rectangle>
+
+				<rectangle left="515" top="5" width="300" height="300" color="black">
+					<label left="0" top="0" width="300" height="25" text="TALENTOS" horzTextAlign="center"/>
+					<textEditor left="5" top="30" width="290" height="265" field="talentosComp"/>
+				</rectangle>
+
+				<rectangle left="820" top="5" width="300" height="300" color="black">
+					<label left="0" top="0" width="300" height="25" text="HABILIDADES" horzTextAlign="center"/>
+					<textEditor left="5" top="30" width="290" height="265" field="habilidadesComp"/>
+				</rectangle>
+
+				<rectangle left="210" top="310" width="300" height="300" color="black">
+					<label left="0" top="0" width="300" height="25" text="INVENTARIO" horzTextAlign="center"/>
+					<textEditor left="5" top="30" width="290" height="240" field="inventarioComp"/> 
+					<label left="55" top="275" width="50" height="20" text="PESO"/>
+					<edit left="95" top="270" width="70" height="25" field="pesoInventorioComp" vertTextAlign="center" horzTextAlign="center" />
+					<label left="175" top="275" width="50" height="20" text="PREÇO"/>
+					<edit left="225" top="270" width="70" height="25" field="precoInventorioComp" vertTextAlign="center" horzTextAlign="center" />
+				</rectangle>
+
+				<rectangle left="515" top="310" width="300" height="300" color="black">
+					<label left="0" top="0" width="300" height="25" text="ATAQUES" horzTextAlign="center"/>
+					<textEditor left="5" top="30" width="290" height="120" field="ataquesComp"/>
+					<label left="5" top="150" width="100" height="20" text="Macro"/>
+					<script>
+						local function lines(str)
+						   local t = {}
+						   local function helper(line)
+						      table.insert(t, line)
+						      return ""
+						   end
+						   helper((str:gsub("(.-)\r?\n", helper)))
+						   return t
+						end
+					</script>
+					<button left="55" top="150" width="50" height="20" hint="Envia tudo do segundo espaço para ataques no chat." text="Atacar">
+						<event name="onClick">
+							local macro = sheet.macro;
+							showMessage(macro);
+							if macro~=nil then
+								local macros = lines(macro);
+								local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+								for i=1, #macros, 1 do
+									mesaDoPersonagem.activeChat:enviarMensagem(macros[i]);
+								end;
+							end;
+						</event>
+					</button>
+					<textEditor left="5" top="170" width="290" height="120" field="macro"/>
+				</rectangle>
+
+				<rectangle left="820" top="310" width="300" height="300" color="black">
+					<label left="0" top="0" width="300" height="25" text="OUTROS" horzTextAlign="center"/>
+					<textEditor left="5" top="30" width="290" height="265" field="outrosComp"/>
+				</rectangle>
+
+				<layout left="1125" top="5" width="200" height="300">
+					<rectangle left="0" top="0" width="200" height="150" color="black"/>
+					<label left="0" top="0" width="200" height="25" text="Comentarios" horzTextAlign="center"/>
+					<textEditor left="5" top="25" width="190" height="125" field="comentarios" />
+
+					<rectangle left="0" top="155" width="200" height="145" color="black"/>
+					<label left="0" top="150" width="200" height="25" text="Descrição" horzTextAlign="center"/>
+					<textEditor left="5" top="175" width="190" height="125" field="descricao" />
+				</layout>
+
+				<layout left="1125" top="310" width="200" height="300">
+					<rectangle align="client" color="black"/>
+
+					<label left="5" top="5" width="190" height="20" text="Atitude" horzTextAlign="center"/>
+					<edit left="5" top="25" width="190" height="25" field="atitude"/>
+					<label left="5" top="55" width="190" height="20" text="Relação" horzTextAlign="center"/>
+					<edit left="5" top="75" width="190" height="25" field="relacao"/>
+					
+					<label left="0" top="100" width="200" height="25" text="Historia" horzTextAlign="center"/>
+					<textEditor left="5" top="125" width="190" height="175" field="historia" />
+				</layout>
+			</popup>
+			
+			<edit align="none" top="0" left="0" width="155" fontSize="11.5" height="18" fontStyle="bold" vertTextAlign="trailing" field="NomeGrande" transparent="true" name="NomeGrandeBarrinha">
+				<event name="onEnter">
+					self.NomeGrandeBarrinha.transparent = false;
+				</event>
+				<event name="onExit">
+					self.NomeGrandeBarrinha.transparent = true;
+				</event>
+			</edit>
+			<layout top="14" left="0" width="155" height="18" hitTest="true">
+				<edit align="client"  fontSize="11.5"  field="NomePequeno" vertTextAlign="trailing" fontStyle="bold" name="NomePequenoBarrinha" enabled="false" padding="{left=4, right=4, bottom=4, top=4}" transparent="true"/>
+				<path align="right" width="18" margins="{left=4, right=4, bottom=6, top=4}" color="orange" data="M 100 100 L 300 100 L 200 300 z" hitTest="true">
+					<event name="onClick">	
+						if DonoMestre(sheet, false, "docksub6") then
+							if sheet.ModCor == "J" then
+								sheet.alinhamentoNPC = "Jogador"
+							elseif sheet.ModCor == "A" then
+								sheet.alinhamentoNPC = "Aliado"
+							elseif sheet.ModCor == "I" then
+								sheet.alinhamentoNPC = "Inimigo"
+							else
+								sheet.alinhamentoNPC = "Neutro"
+							end;
+							chamarListaDeJogadores();
+							self.TipoDeBarras.scopeNode = sheet;
+							self.TipoDeBarras:show();
+						end
+					</event>
+				</path>
+				<event name="onClick">
+					if DonoMestre(sheet, false, "docksub6") then
+						if sheet.ModCor == "J" then
+							sheet.alinhamentoNPC = "Jogador"
+						elseif sheet.ModCor == "A" then
+							sheet.alinhamentoNPC = "Aliado"
+						elseif sheet.ModCor == "I" then
+							sheet.alinhamentoNPC = "Inimigo"
+						else
+							sheet.alinhamentoNPC = "Neutro"
+						end;
+						chamarListaDeJogadores();
+						self.TipoDeBarras.scopeNode = sheet;
+						self.TipoDeBarras:show();
+					end
+				</event>
+			</layout>
+
+			<editableBar top1="32" top2="29" num="1"/>
+			<editableBar top1="42" top2="39" num="2"/>
+			<editableBar top1="52" top2="49" num="3"/>
+			<editableBar top1="62" top2="59" num="4"/>
+
+			<edit top="71" left="0" width="155" height="18" fontSize="12" fontColor="#999999" vertTextAlign="trailing" text="&lt;linha&gt;" field="Linha1" transparent="true" name="Linha1Barrinha">
+				<event name="onEnter">
+					self.Linha1Barrinha.transparent = false;
+				</event>
+				<event name="onExit">
+					self.Linha1Barrinha.transparent = true;
+				</event>
+			</edit>
+			<edit top="85" left="0" width="155" height="18" fontSize="12" fontColor="#999999" vertTextAlign="trailing" field="Linha2" text="&lt;linha&gt;" transparent="true" name="Linha2Barrinha">
+				<event name="onEnter">
+					self.Linha2Barrinha.transparent = false;
+				</event>
+				<event name="onExit">
+					self.Linha2Barrinha.transparent = true;
+				</event>
+			</edit>
+		</layout>
+	</layout>
+	
+	<dataLink field="CorP" defaultValue="1"/>
+	
+	<event name="onScopeNodeChanged">
+        if self.observer ~= nil then   
+			self.observer.enabled = false;
+			self.observer = nil;
+        end;
+		
+		if sheet ~= nil then   
+			self.observer = ndb.newObserver(sheet);
+			self.observer.onPermissionListChanged =
+				function(node)                 
+						self:atualizarCbxInvisivel();
+				end;                               
+
+			self.observer.onFinalPermissionsCouldBeChanged =
+				function(node)
+						self:atualizarCbxInvisivel();
+				end;                               
+
+			self:setarNPC();
+			self:atualizarCbxInvisivel();  
+        end;
+	</event>
+
+	<event name="onHide">
+		self.TipoDeBarras:close();
+		FecharOPopupForm();
+	</event>
+	
+	<dataLink fields="{'Aberto1'}" defaultValues="false"/>
+</form>

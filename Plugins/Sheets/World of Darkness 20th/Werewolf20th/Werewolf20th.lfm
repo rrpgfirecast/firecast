@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWerewolf20th" formType="sheetTemplate" dataType="Ambesek.Werewolf.20th" title="Werewolf 20th Anniversary" align="client" theme="dark">
+	<tabControl align="client">
+		<tab title="Main">
+			<import file="W20.1.lfm"/>
+		</tab>
+		<tab title="Traits">
+			<import file="W20.2.lfm"/>
+		</tab>
+		<tab title="Inventory">
+			<import file="W20.3.lfm"/>
+		</tab>
+		<tab title="Background">
+			<import file="W20.4.lfm"/>
+		</tab>
+		<tab title="Notes">
+			<import file="W20.5.lfm"/>
+		</tab>
+		<tab title="Credits">
+			<import file="W20.6.lfm"/>
+		</tab>
+	</tabControl>
+</form>

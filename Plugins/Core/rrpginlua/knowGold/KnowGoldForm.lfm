@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmKnowGold" height="300" width="300" title="RRPG Gold">	
+	<script><![CDATA[
+		local KG = require("/knowGold/knowGoldPanel.dlua");
+		
+		self.panKG = KG.newPanel();
+		self.panKG.align = "client";
+		self.panKG.parent = self;		
+		
+		function self:setInfo(info)
+			self.panKG:setInfo(info);
+		end;
+	]]>	
+	</script>
+</popupForm> 

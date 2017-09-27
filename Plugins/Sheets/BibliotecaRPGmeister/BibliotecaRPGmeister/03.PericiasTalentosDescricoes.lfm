@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmBibliotecaRPGmeister03" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+		<rectangle left="0" top="0" width="400" height="200" color="Black">
+			<label left="5" top="5" width="395" height="25" text="PERICIAS" horzTextAlign="center"/>
+			
+			<label left="5" top="50" width="395" height="25" text="Usos Diferentes"/>
+			<label left="5" top="75" width="395" height="25" fontSize="11" text=" - Algumas perícias podem ter uso diferente do padrão."/>
+			<button left="55" top="100" width="200" text="Diplomacia" onClick="gui.openInBrowser('https://www.dropbox.com/s/9tfqbf4hwcu0j6t/Diplomacia.docx?dl=0');" />
+			<button left="55" top="125" width="200" text="Falar Idioma" onClick="gui.openInBrowser('https://www.dropbox.com/s/16l6yd03ksqikcg/Idiomas.docx?dl=0');" />
+			
+			<button left="5" top="150" width="200" text="Perícias Raciais" onClick="gui.openInBrowser('https://www.dropbox.com/s/ifavh0i1ysypxqm/Pericias%20Raciais.docx?dl=0');" />
+		</rectangle>
+		
+		<rectangle left="0" top="205" width="400" height="400" color="Black">
+			<label left="5" top="5" width="395" height="25" text="TALENTOS" horzTextAlign="center"/>
+			
+			<button left="5" top="50" width="200" text="Novos Talentos" onClick="gui.openInBrowser('https://www.dropbox.com/s/alp56fyooxhaks0/Novos%20Talentos.docx?dl=0');" />
+			
+			<button left="5" top="100" width="200" text="Novos Talentos Épicos" onClick="gui.openInBrowser('https://www.dropbox.com/s/p2ipjp3z88to50h/Novos%20Talentos%20%C3%89picos.docx?dl=0');" />
+			
+			<button left="5" top="150" width="200" text="Talentos Equivalentes" onClick="gui.openInBrowser('https://www.dropbox.com/s/ikiwxpl01h7cvqn/Talentos%20equivalentes.docx?dl=0');" />
+			<label left="5" top="170" width="395" height="25" fontSize="11" text=" - Regras para habilidades pegas múltiplas vezes por conta de características de classe duplicadas."/>
+		</rectangle>
+		
+		<rectangle left="405" top="0" width="400" height="605" color="Black">
+			<label left="5" top="5" width="395" height="25" text="MAGIAS" horzTextAlign="center"/>
+			
+			<button left="5" top="50" width="200" text="Signos" onClick="gui.openInBrowser('https://www.dropbox.com/s/c0iuyky0cpsdedv/Signos.docx?dl=0');" />
+			<button left="55" top="75" width="200" text="Doutrinas" onClick="gui.openInBrowser('https://www.dropbox.com/s/jimcg230bymgqv4/Doutrinas.docx?dl=0');" />
+			
+			<button left="5" top="125" width="200" text="Domínios" onClick="gui.openInBrowser('https://www.dropbox.com/s/v6p4wgd4z6391a4/Novos%20dominios.docx?dl=0');" />
+			
+			<label left="5" top="175" width="395" height="25" text="Listas de Magias de Classe"/>
+			<button left="55" top="200" width="200" text="Alquimista" onClick="gui.openInBrowser('https://www.dropbox.com/s/yym7ur8l7ogire8/Lista%20de%20formulas%20do%20alquimista.docx?dl=0');" />
+			<button left="55" top="225" width="200" text="Cultivador" onClick="gui.openInBrowser('https://www.dropbox.com/s/30q95h1mw2mvbky/Extratos%20de%20Essencias.docx?dl=0');" />
+			<button left="55" top="250" width="200" text="Duelista Arcano" onClick="gui.openInBrowser('https://www.dropbox.com/s/risnouhziu69oj4/Magias%20do%20Duelista%20Arcano.docx?dl=0');" />
+			<button left="55" top="275" width="200" text="Elementalista" onClick="gui.openInBrowser('https://www.dropbox.com/s/ptdzac0l271e7jv/Elementalismo.docx?dl=0');" />
+			<button left="55" top="300" width="200" text="Execrador" onClick="gui.openInBrowser('https://www.dropbox.com/s/ydb523lhcmn768q/Magias%20do%20Execrador.docx?dl=0');" />
+			<button left="55" top="325" width="200" text="Executor" onClick="gui.openInBrowser('https://www.dropbox.com/s/izeyj7s6i5s0dq4/Lista%20de%20formulas%20do%20executor.docx?dl=0');" />
+			<button left="55" top="350" width="200" text="Lâmina Arcana" onClick="gui.openInBrowser('https://www.dropbox.com/s/bkr407bs379n2pt/Magias%20do%20L%C3%A2mina%20Arcana.docx?dl=0');" />
+			<button left="55" top="375" width="200" text="Mestre dos Itens Mágicos" onClick="gui.openInBrowser('https://www.dropbox.com/s/skdiw7e179audqy/Magias%20do%20Mestre%20dos%20Itens%20Magicos.docx?dl=0');" />
+		</rectangle>
+		
+		<rectangle left="810" top="0" width="400" height="605" color="Black">
+			<label left="5" top="5" width="395" height="25" text="DESCRIÇÕES" horzTextAlign="center"/>
+			
+			<button left="5" top="50" width="200" text="Tendência" onClick="gui.openInBrowser('https://www.dropbox.com/s/8tyws2w55r8yirw/Tend%C3%AAncias.docx?dl=0');" />
+			
+			<label left="5" top="100" width="395" height="25" text="Religião"/>
+			<button left="55" top="125" width="200" text="Cultos" onClick="gui.openInBrowser('https://www.dropbox.com/s/1t2alvgjonoad3y/Religi%C3%A3o.docx?dl=0');" />
+			<button left="55" top="150" width="200" text="Relações entre Cultos" onClick="gui.openInBrowser('https://www.dropbox.com/s/2vpa4samjs0moxk/Rela%C3%A7%C3%B5es.docx?dl=0');" />
+			<label left="55" top="170" width="395" height="25" fontSize="11" text=" - A tabela está incompleta."/>
+			<button left="55" top="200" width="200" text="Panteões" onClick="gui.openInBrowser('https://www.dropbox.com/s/j2o8ucsmjuv9smy/Pante%C3%B5es.docx?dl=0');" />
+			
+			<button left="5" top="250" width="200" text="Idades" onClick="gui.openInBrowser('https://www.dropbox.com/s/wnkzixhjjfyte3m/Idades.docx?dl=0');" />
+		</rectangle>
+		
+    </scrollBox>
+</form>

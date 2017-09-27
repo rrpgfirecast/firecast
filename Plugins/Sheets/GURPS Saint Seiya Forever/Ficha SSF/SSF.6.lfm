@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSSF6" align="client" theme="dark">
+    <scrollBox align="client">
+       <layout left="0" top="0" width="400" height="580">
+			<rectangle left="0" top="0" width="400" height="580" color="black" xradius="15" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Anotações" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="540" field="anotacoes1"/>
+        </layout>
+		
+		<layout left="410" top="0" width="400" height="580">
+			<rectangle left="0" top="0" width="400" height="580" color="black" xradius="15" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Anotações" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="540" field="anotacoes2"/>
+        </layout>
+		
+		<layout left="820" top="0" width="400" height="580">
+			<rectangle left="0" top="0" width="400" height="580" color="black" xradius="15" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Anotações" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="540" field="anotacoes3"/>
+        </layout>
+	   
+	   
+	    <image left="0" top="0" width="1335" height="615" style="autoFit" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20SSF%20releases/imagens/ABA0.png"/>
+    </scrollBox>
+</form>

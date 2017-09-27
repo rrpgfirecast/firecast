@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmADnD3" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+		<template name="Equipamento">
+			<edit left="5" top="0" width="190" height="25" field="Equipamento_$(field)"/>
+        	<edit left="195" top="0" width="50" height="25" field="Equipamento_Custo_$(field)">
+        		<event name="onChange">
+                	sumCusto();
+                </event>
+        	</edit>
+        	<edit left="245" top="0" width="50" height="25" field="Equipamento_Peso_$(field)">
+        		<event name="onChange">
+                	sumPeso();
+                </event>
+        	</edit>
+		</template>
+
+		<script>
+			local function sumCusto();
+				if sheet~=nil then
+					local mod = (tonumber(sheet.Equipamento_Custo_1_1) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_2) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_3) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_4) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_5) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_6) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_7) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_8) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_9) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_10) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_11) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_12) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_13) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_14) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_15) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_16) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_17) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_18) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_19) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_20) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_21) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_1_22) or 0) +
+								(tonumber(sheet.Equipamento_Custo_2_1) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_2) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_3) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_4) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_5) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_6) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_7) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_8) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_9) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_10) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_11) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_12) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_13) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_14) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_15) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_16) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_17) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_18) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_19) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_20) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_21) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_2_22) or 0) +
+								(tonumber(sheet.Equipamento_Custo_3_1) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_2) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_3) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_4) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_5) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_6) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_7) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_8) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_9) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_10) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_11) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_12) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_13) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_14) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_15) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_16) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_17) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_18) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_19) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_20) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_21) or 0) + 
+								(tonumber(sheet.Equipamento_Custo_3_22) or 0);
+					sheet.Custo_Total = mod;
+				end;
+			end;
+		</script>
+
+		<script>
+			local function sumPeso();
+				if sheet~=nil then
+					local mod = (tonumber(sheet.Equipamento_Peso_1_1) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_2) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_3) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_4) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_5) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_6) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_7) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_8) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_9) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_10) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_11) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_12) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_13) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_14) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_15) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_16) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_17) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_18) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_19) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_20) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_21) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_1_22) or 0) +
+								(tonumber(sheet.Equipamento_Peso_2_1) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_2) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_3) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_4) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_5) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_6) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_7) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_8) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_9) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_10) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_11) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_12) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_13) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_14) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_15) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_16) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_17) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_18) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_19) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_20) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_21) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_2_22) or 0) +
+								(tonumber(sheet.Equipamento_Peso_3_1) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_2) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_3) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_4) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_5) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_6) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_7) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_8) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_9) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_10) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_11) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_12) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_13) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_14) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_15) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_16) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_17) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_18) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_19) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_20) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_21) or 0) + 
+								(tonumber(sheet.Equipamento_Peso_3_22) or 0);
+					sheet.Peso_Total = mod;
+				end;
+			end;
+		</script>
+
+		 <layout left="0" top="0" width="300" height="610">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="300" height="20" text="EQUIPAMENTOS" horzTextAlign="center"/>
+
+	        <layout left="0" top="30" width="300" height="25">
+	        	<label left="5"  top="0" width="190" height="25" horzTextAlign="center" text="Item"/>
+        		<label left="195" top="0" width="50" height="25" horzTextAlign="center" text="Custo"/>
+        		<label left="245" top="0" width="50" height="25" horzTextAlign="center" text="Peso"/>
+	        </layout>
+	        <layout left="0" top="55" width="300" height="25">
+	        	<Equipamento field="1_1"/>
+	        </layout>
+	        <layout left="0" top="80" width="300" height="25">
+	        	<Equipamento field="1_2"/>
+	        </layout>
+	        <layout left="0" top="105" width="300" height="25">
+	        	<Equipamento field="1_3"/>
+	        </layout>
+	        <layout left="0" top="130" width="300" height="25">
+	        	<Equipamento field="1_4"/>
+	        </layout>
+	        <layout left="0" top="155" width="300" height="25">
+	        	<Equipamento field="1_5"/>
+	        </layout>
+	        <layout left="0" top="180" width="300" height="25">
+	        	<Equipamento field="1_6"/>
+	        </layout>
+	        <layout left="0" top="205" width="300" height="25">
+	        	<Equipamento field="1_7"/>
+	        </layout>
+	        <layout left="0" top="230" width="300" height="25">
+	        	<Equipamento field="1_8"/>
+	        </layout>
+	        <layout left="0" top="255" width="300" height="25">
+	        	<Equipamento field="1_9"/>
+	        </layout>
+	        <layout left="0" top="280" width="300" height="25">
+	        	<Equipamento field="1_10"/>
+	        </layout>
+	        <layout left="0" top="305" width="300" height="25">
+	        	<Equipamento field="1_11"/>
+	        </layout>
+	        <layout left="0" top="330" width="300" height="25">
+	        	<Equipamento field="1_12"/>
+	        </layout>
+	        <layout left="0" top="355" width="300" height="25">
+	        	<Equipamento field="1_13"/>
+	        </layout>
+	        <layout left="0" top="380" width="300" height="25">
+	        	<Equipamento field="1_14"/>
+	        </layout>
+	        <layout left="0" top="405" width="300" height="25">
+	        	<Equipamento field="1_15"/>
+	        </layout>
+	        <layout left="0" top="430" width="300" height="25">
+	        	<Equipamento field="1_16"/>
+	        </layout>
+	        <layout left="0" top="455" width="300" height="25">
+	        	<Equipamento field="1_17"/>
+	        </layout>
+	        <layout left="0" top="480" width="300" height="25">
+	        	<Equipamento field="1_18"/>
+	        </layout>
+	        <layout left="0" top="505" width="300" height="25">
+	        	<Equipamento field="1_19"/>
+	        </layout>
+	        <layout left="0" top="530" width="300" height="25">
+	        	<Equipamento field="1_20"/>
+	        </layout>
+	        <layout left="0" top="555" width="300" height="25">
+	        	<Equipamento field="1_21"/>
+	        </layout>
+	        <layout left="0" top="580" width="300" height="25">
+	        	<Equipamento field="1_22"/>
+	        </layout>
+	    </layout>
+
+		<layout left="310" top="0" width="300" height="610">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="300" height="20" text="EQUIPAMENTOS" horzTextAlign="center"/>
+
+	        <layout left="0" top="30" width="300" height="25">
+	        	<label left="5"  top="0" width="190" height="25" horzTextAlign="center" text="Item"/>
+        		<label left="195" top="0" width="50" height="25" horzTextAlign="center" text="Custo"/>
+        		<label left="245" top="0" width="50" height="25" horzTextAlign="center" text="Peso"/>
+	        </layout>
+	        <layout left="0" top="55" width="300" height="25">
+	        	<Equipamento field="2_1"/>
+	        </layout>
+	        <layout left="0" top="80" width="300" height="25">
+	        	<Equipamento field="2_2"/>
+	        </layout>
+	        <layout left="0" top="105" width="300" height="25">
+	        	<Equipamento field="2_3"/>
+	        </layout>
+	        <layout left="0" top="130" width="300" height="25">
+	        	<Equipamento field="2_4"/>
+	        </layout>
+	        <layout left="0" top="155" width="300" height="25">
+	        	<Equipamento field="2_5"/>
+	        </layout>
+	        <layout left="0" top="180" width="300" height="25">
+	        	<Equipamento field="2_6"/>
+	        </layout>
+	        <layout left="0" top="205" width="300" height="25">
+	        	<Equipamento field="2_7"/>
+	        </layout>
+	        <layout left="0" top="230" width="300" height="25">
+	        	<Equipamento field="2_8"/>
+	        </layout>
+	        <layout left="0" top="255" width="300" height="25">
+	        	<Equipamento field="2_9"/>
+	        </layout>
+	        <layout left="0" top="280" width="300" height="25">
+	        	<Equipamento field="2_10"/>
+	        </layout>
+	        <layout left="0" top="305" width="300" height="25">
+	        	<Equipamento field="2_11"/>
+	        </layout>
+	        <layout left="0" top="330" width="300" height="25">
+	        	<Equipamento field="2_12"/>
+	        </layout>
+	        <layout left="0" top="355" width="300" height="25">
+	        	<Equipamento field="2_13"/>
+	        </layout>
+	        <layout left="0" top="380" width="300" height="25">
+	        	<Equipamento field="2_14"/>
+	        </layout>
+	        <layout left="0" top="405" width="300" height="25">
+	        	<Equipamento field="2_15"/>
+	        </layout>
+	        <layout left="0" top="430" width="300" height="25">
+	        	<Equipamento field="2_16"/>
+	        </layout>
+	        <layout left="0" top="455" width="300" height="25">
+	        	<Equipamento field="2_17"/>
+	        </layout>
+	        <layout left="0" top="480" width="300" height="25">
+	        	<Equipamento field="2_18"/>
+	        </layout>
+	        <layout left="0" top="505" width="300" height="25">
+	        	<Equipamento field="2_19"/>
+	        </layout>
+	        <layout left="0" top="530" width="300" height="25">
+	        	<Equipamento field="2_20"/>
+	        </layout>
+	        <layout left="0" top="555" width="300" height="25">
+	        	<Equipamento field="2_21"/>
+	        </layout>
+	        <layout left="0" top="580" width="300" height="25">
+	        	<Equipamento field="2_22"/>
+	        </layout>
+	    </layout>
+
+		<layout left="620" top="0" width="300" height="610">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="300" height="20" text="EQUIPAMENTOS" horzTextAlign="center"/>
+
+	        <layout left="0" top="30" width="300" height="25">
+	        	<label left="5"  top="0" width="190" height="25" horzTextAlign="center" text="Item"/>
+        		<label left="195" top="0" width="50" height="25" horzTextAlign="center" text="Custo"/>
+        		<label left="245" top="0" width="50" height="25" horzTextAlign="center" text="Peso"/>
+	        </layout>
+	        <layout left="0" top="55" width="300" height="25">
+	        	<Equipamento field="3_1"/>
+	        </layout>
+	        <layout left="0" top="80" width="300" height="25">
+	        	<Equipamento field="3_2"/>
+	        </layout>
+	        <layout left="0" top="105" width="300" height="25">
+	        	<Equipamento field="3_3"/>
+	        </layout>
+	        <layout left="0" top="130" width="300" height="25">
+	        	<Equipamento field="3_4"/>
+	        </layout>
+	        <layout left="0" top="155" width="300" height="25">
+	        	<Equipamento field="3_5"/>
+	        </layout>
+	        <layout left="0" top="180" width="300" height="25">
+	        	<Equipamento field="3_6"/>
+	        </layout>
+	        <layout left="0" top="205" width="300" height="25">
+	        	<Equipamento field="3_7"/>
+	        </layout>
+	        <layout left="0" top="230" width="300" height="25">
+	        	<Equipamento field="3_8"/>
+	        </layout>
+	        <layout left="0" top="255" width="300" height="25">
+	        	<Equipamento field="3_9"/>
+	        </layout>
+	        <layout left="0" top="280" width="300" height="25">
+	        	<Equipamento field="3_10"/>
+	        </layout>
+	        <layout left="0" top="305" width="300" height="25">
+	        	<Equipamento field="3_11"/>
+	        </layout>
+	        <layout left="0" top="330" width="300" height="25">
+	        	<Equipamento field="3_12"/>
+	        </layout>
+	        <layout left="0" top="355" width="300" height="25">
+	        	<Equipamento field="3_13"/>
+	        </layout>
+	        <layout left="0" top="380" width="300" height="25">
+	        	<Equipamento field="3_14"/>
+	        </layout>
+	        <layout left="0" top="405" width="300" height="25">
+	        	<Equipamento field="3_15"/>
+	        </layout>
+	        <layout left="0" top="430" width="300" height="25">
+	        	<Equipamento field="3_16"/>
+	        </layout>
+	        <layout left="0" top="455" width="300" height="25">
+	        	<Equipamento field="3_17"/>
+	        </layout>
+	        <layout left="0" top="480" width="300" height="25">
+	        	<Equipamento field="3_18"/>
+	        </layout>
+	        <layout left="0" top="505" width="300" height="25">
+	        	<Equipamento field="3_19"/>
+	        </layout>
+	        <layout left="0" top="530" width="300" height="25">
+	        	<Equipamento field="3_20"/>
+	        </layout>
+	        <layout left="0" top="555" width="300" height="25">
+	        	<Equipamento field="3_21"/>
+	        </layout>
+	        <layout left="0" top="580" width="300" height="25">
+	        	<Equipamento field="3_22"/>
+	        </layout>
+	    </layout>
+
+	    <layout left="930" top="0" width="300" height="115">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="300" height="20" text="DINHEIRO E CARGA" horzTextAlign="center"/>
+
+			<label left="5" top="55" width="60" height="20" text="CARGA" horzTextAlign="trailing"/>
+	        <rectangle left="70" top="50" width="40" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="70" top="50" width="40" height="25" field="Peso_Total" horzTextAlign="center"/>
+			<label left="120" top="55" width="60" height="20" text="GASTOS" horzTextAlign="trailing"/>
+	        <rectangle left="185" top="50" width="40" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="185" top="50" width="40" height="25" field="Custo_Total" horzTextAlign="center"/>
+
+			<label left="5" top="90" width="20" height="20" text="PL" horzTextAlign="trailing"/>
+        	<edit left="30" top="85" width="40" height="25" field="PL"/>
+        	<label left="70" top="90" width="20" height="20" text="PO" horzTextAlign="trailing"/>
+        	<edit left="95" top="85" width="40" height="25" field="PO"/>
+        	<label left="135" top="90" width="20" height="20" text="PP" horzTextAlign="trailing"/>
+        	<edit left="160" top="85" width="40" height="25" field="PP"/>
+        	<label left="200" top="90" width="20" height="20" text="PC" horzTextAlign="trailing"/>
+        	<edit left="225" top="85" width="40" height="25" field="PC"/>
+	    </layout>
+
+	    <layout left="930" top="120" width="300" height="490">
+	    	<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="300" height="20" text="OUTROS" horzTextAlign="center"/>
+
+	        <textEditor left="5" top="30" width="290" height="450" field="Equipamentos_Outros"/>
+	    </layout>
+
+		<image align="client" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20ADnD%20releases/imagens/block.png" style="autoFit"/>
+    </scrollBox>
+</form>

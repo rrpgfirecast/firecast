@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form dataType="br.com.rrpg.DnD5_S3" formType="sheetTemplate" title="D&amp;D 5e" name="frmDnD5" theme="dark">
+	<import file="styles.xml"/>
+	<import file="templates.xml"/>
+	
+	<tabControl align="client" name="pgcPrincipal">
+		<tab title="Frente">
+			<import file="frente.xml"/>
+		</tab>
+		
+		<tab title="Caracteristicas">
+			<import file="caracteristicas.xml"/>
+		</tab>		
+		
+		<tab title="Equipamento">
+			<import file="equipamento.xml"/>
+		</tab>	
+
+		<tab title="Magias">
+			<import file="magias.xml"/>
+		</tab>		
+
+		<tab title="Anotações">
+			<rectangle class="fundo">
+				<textEditor align="client" field="outros.anotacoes" class="transparente"  margins="{left=2, right=2, top=2, bottom=2}"/>
+			</rectangle>
+		</tab>
+	</tabControl>		
+</form>

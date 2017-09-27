@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmRdF" formType="sheetTemplate" dataType="Ambesek.Nefertyne.FichaRdF" title="Ficha Reinos de Ferro" align="client" theme="dark">
+    <tabControl align="client">
+        <tab title="Geral">
+            <import file="FichaRdF.1.lfm"/>
+        </tab>
+        <tab title="Equipamentos">
+            <import file="FichaRdF.2.lfm"/>
+        </tab>
+        <tab title="Habilidades">
+            <import file="FichaRdF.3.lfm"/>
+        </tab>
+        <tab title="Poderes">
+            <import file="FichaRdF.4.lfm"/>
+        </tab>
+        <tab title="Steamjack">
+            <import file="FichaRdF.5.lfm"/>
+        </tab>
+        <tab title="Descrição">
+            <import file="FichaRdF.6.lfm"/>
+        </tab>
+        <tab title="Anotações">
+            <import file="FichaRdF.7.lfm"/>
+        </tab>
+		<tab title="Creditos">
+            <import file="FichaRdF.8.lfm"/>
+        </tab>
+    </tabControl>
+</form>

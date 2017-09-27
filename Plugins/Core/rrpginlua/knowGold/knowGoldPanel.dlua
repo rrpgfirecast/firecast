@@ -1,0 +1,81 @@
+﻿require("gui.lua");
+local KG = {};
+
+function KG.newPanel()
+	local pan = gui.newLayout();
+	local labInfo = gui.newLabel();
+	local btnGoGold = gui.newButton();
+	local layCentro = gui.newLayout();
+	local imgGold = gui.newImage();
+	pan.align = "client";
+	
+	imgGold.src = "/knowGold/gold64.png";
+	imgGold.align = "top";
+	imgGold.height = 48;
+	imgGold.parent = layCentro;
+	
+	labInfo.align = "top";
+	labInfo.wordWrap = true;
+	labInfo.horzTextAlign = "center";
+	labInfo.autoSize = true;
+	labInfo.parent = layCentro;
+	labInfo.margins = {top = 4};
+	
+	btnGoGold.text = "Conferir como o Gold é barato";	
+	btnGoGold.margins = {top=10};
+	btnGoGold.parent = pan;
+	btnGoGold.width = 200;
+	btnGoGold.height = 30;
+	
+	layCentro.parent = pan;
+	
+	function pan:setInfo(info)
+		labInfo.text = info;
+	end;
+	
+	local function realinharLayout()
+		local w = pan.width;
+		local h = pan.height;
+		local dIcoH = 48;
+		
+		local hSemIco = labInfo.height + labInfo.margins.top + btnGoGold.height + btnGoGold.margins.top;
+		local hSobrando = h - hSemIco;
+			
+		local icoSize = dIcoH;
+		
+		if hSobrando < icoSize then
+			icoSize = hSobrando;
+			
+			if icoSize < 0 then
+				icoSize = 0;
+			end;
+		end;
+		
+		imgGold.height = icoSize;
+		
+		local hImg = imgGold.height;
+		local hLabel = labInfo.height;
+		
+		layCentro.height = hImg + hLabel + labInfo.margins.top;
+		layCentro.width = w;
+		layCentro.left = 0;
+		layCentro.top = h / 2 - layCentro.height / 2 - btnGoGold.height / 2 - btnGoGold.margins.top / 2;
+		
+		btnGoGold.top = layCentro.top + layCentro.height + btnGoGold.margins.top;
+		btnGoGold.left = w / 2 - btnGoGold.width / 2;	
+	end;
+	
+	pan.onResize = realinharLayout;		
+	labInfo.onResize = realinharLayout;	
+	
+	btnGoGold.onClick = function ()		
+		require("internet.lua");
+		local url = "http://firecast.rrpg.com.br:92/p?p=pagGoldNaoLogado&Usuario=" .. internet.httpEncode(rrpg.getCurrentUser().login);
+		gui.openInBrowser(url);
+	end;
+	
+	pan:setInfo("Recurso exclusivo para assinantes Gold");
+	return pan;
+end;
+
+return KG;

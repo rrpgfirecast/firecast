@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmEfeitoCombatTracker" height="18" padding="{left=1,top=1,right=1,bottom=1}">
+	<import file="combatTrackerGlobals.xml"/>
+
+	<script><![CDATA[
+		local function createDraggerForAtor()
+			return self:findControlByName("frmCombatTracker");
+		end;		
+
+		local function getTracker()
+			return self:findControlByName("frmCombatTracker");
+		end;
+	
+		function self:apagarEfeito()
+			ndb.deleteNode(sheet);
+		end;
+		
+		function self:doUsuarioAlterouDuracao()
+			if sheet ~= nil then
+				sheet.duracaoReal = nil;
+			end;
+		end;
+	]]>
+	</script>
+	
+	<image name="imgEfeito" align="left" src="images/effect.png" width="16" hitTest="true" hint="Um efeito/condição do ator"/>
+	
+	<edit name="edtDescricao" align="client" field="descricao" transparent="true" class="combatTrackerEdit" fontSize="10" margins="{right=2}">
+		<horzLine align="bottom" strokeSize="1" strokeColor="black" opacity="0.5"/>
+	</edit>
+	
+	<layout name="layDireita" align="right" width="40">
+		<edit name="edtDuracao" align="left" width="25" type="number" hint="Duração do efeito/condição (medido em Rodadas)" 
+		      margins="{right=3, top=1, bottom=1}" horzTextAlign="center"
+			  class="combatTrackerEdit" fontSize="10" field="duracao" min="0"
+			  onUserChange="self:doUsuarioAlterouDuracao()">
+		</edit>
+		
+		<image name="imgDeleteEfeito" align="left" src="images/deleteEffect.png" hitTest="true" width="12" cursor="handPoint" opacity="0.6"
+				onMouseUp="if event.button == 'left' then self:apagarEfeito(); end;"/>
+	</layout>
+	
+	<script>
+		if system.isMobile() then
+			self.height = 30;
+			self.imgEfeito.width = 30;
+			self.imgEfeito.style = "autoFit";			
+			self.edtDescricao.fontSize = 12;
+			
+			self.edtDuracao.width = 30;
+			self.edtDuracao.fontSize = 12;
+			self.imgDeleteEfeito.width = 30;
+			self.imgDeleteEfeito.style = "autoFit";
+			self.layDireita.width = 63;
+		end;
+		
+		local tracker = getTracker();
+		
+		local function setDropRecursivo(ctrl)
+			ctrl.onStartDrop = tracker.handleStartDrop;
+			
+			local childs = ctrl:getChildren();
+			
+			for i = 1, #childs, 1 do
+				setDropRecursivo(childs[i]);
+			end;
+		end;
+		
+		setDropRecursivo(self);		
+	</script>
+</form>	

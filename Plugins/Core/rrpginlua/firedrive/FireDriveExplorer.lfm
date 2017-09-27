@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmFireDriveExplorer" title="FireDrive" height="300" width="300" resizable="true">
+	<script>
+		function self:adaptarTamanhoDaTela()
+			local sw, sh = system.getScreenSize();
+			local dw = 650;
+			local dh = 600;
+		
+			if dw > sw - 20 then
+				dw = sw - 20;
+			end;
+			
+			if dh > sh - 20 then
+				dh = sh - 20;
+			end;
+						
+			self.width = dw;
+			self.height = dh;
+		end;
+	
+		self:adaptarTamanhoDaTela();	
+	
+		local cUser = rrpg.getCurrentUser();
+		local canUseFireDrive = cUser.isGold or cUser.isGoldPlus or cUser.isRuby;		
+
+		if canUseFireDrive then							
+			self.navigator = require("/firedrive/firedriveNavigator.dlua").newFDNavigatorLayout();				
+		end;	
+	</script>
+	
+	<layout name="layCentro" align="client">
+	</layout>
+	
+	<script>
+		if self.navigator ~= nil then
+			self.navigator:gotoDir('/');
+			self.navigator.align = "client";			
+			self.navigator.parent = self.layCentro;		
+		else
+			local KG = require("/knowGold/knowGoldPanel.dlua");
+			
+			self.panKG = KG.newPanel();
+			self.panKG:setInfo("FireDrive é uma hospedagem de arquivos na internet exclusiva para assinantes RRPG Gold");
+			self.panKG.parent = self.layCentro;		
+		end;
+		
+		self.onHide = function()		
+			if self.navigator ~= nil then
+				self.navigator:finalizar();
+				self.navigator = nil;
+			end;
+		end;		
+	</script>
+	
+</popupForm>

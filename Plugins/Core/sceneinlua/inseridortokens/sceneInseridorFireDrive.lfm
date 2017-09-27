@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmInseriorFireDrive" width="460" height="300" drawContainer="true" resizable="true" placement="center"
+		   cancelable="false">
+ 		   
+	<import file="../interfaceUtils.xml"/>
+	<style>
+		flowPart.optionPart {
+			height: 30;
+			minWidth: 50;
+			maxWidth: 5000;
+			margins: {left=2, right=2, top=2, bottom=2};
+		}
+		
+		.itemTitle {
+			align: left;
+			width: 110;
+			autoSize: false;
+			horzTextAlign: trailing;	
+			vertTextAlign: center;
+			margins:{right=5};
+		}
+		
+		.itemContent {
+			align: client;
+			margins:{right=5};
+		}
+		
+		.groupTitle {
+			align: left;						
+			autoSize: true;
+			wordWrap: false;
+			horzTextAlign: leading;	
+			vertTextAlign: center;
+			margins:{left=10, right=5};		
+			fontSize: 15;
+			fontColor: #FFCC66;
+		}
+	</style>
+
+	<template name="GroupHeader">
+		<!-- nomeLabel = uniqueName("labGroupHeader"); 
+		     
+			 if name == nil then
+				name = uniqueName("flpGroupHeader");
+			end; -->	 
+	
+		<flowPart class="optionPart">
+			<label name="$(nomeLabel)" class="groupTitle"/>
+			<horzLine align="bottom" strokeColor="#FFCC6670" margins="{left=10}"/>			
+		</flowPart>
+		
+		<script>
+			self.$(nomeLabel).text = lang("$(text)");
+		</script>
+	</template>
+
+	<template name="EdicaoBarrinha">
+		<flowPart name="flpBar$(indice)" class="optionPart">			
+			<label name="labBar$(indice)" class="itemTitle" fontColor="white"/>
+			<flowLayout class="itemContent">
+				<edit name="edtBarValue$(indice)" width="35" field="$(field)"/>
+				<label text="/" horzTextAlign="center" autoSize="true" wordWrap="false" margins="{left=8, right=8}"/>
+				<edit name="edtBarMax$(indice)" width="35" field="$(field)Max"/>
+				<colorComboBox name="cmbCorBar$(indice)" width="50" useAlpha="false" 
+							   margins="{left=8, right=8}" field="$(field)Color"/>
+			</flowLayout>	
+		</flowPart>
+		
+		<script>
+			self.labBar$(indice).text = LANG('scene.tokenEdit.barraPrefix') .. " $(indice):";
+		</script>
+	</template>
+			
+	<script>
+		require("system.lua");
+		require("rrpgScene_Undo.dlua");
+		require("dialogs.lua");
+		require("fireDrive.lua");
+		require("rrpgScene_Globals.lua");
+		local scene = nil;	
+		local ignoreRecalcWH = false;
+		local realCellWidth = 1;
+		local realCellHeight = 1;
+		local offsetCellsW = 1;
+		local offsetCellsH = 1;
+		local exibindoFOW = false;
+		
+		if not System.isMobile() then
+			self.height = 485;
+		end;
+		
+		function self:checkVisibilityOfTabControl()
+			local mustBeVisible = false;
+			local selected = self.rclListaDosTokens.selectedNode;  
+			
+			mustBeVisible = selected ~= nil;
+			
+			self.dsbToken.visible = mustBeVisible;
+			self.layInfoSelectOrCreateToken.visible = not mustBeVisible; 
+			self.btnInsert.enabled = mustBeVisible;
+			self.btnOkName.enabled = mustBeVisible;
+			self.delete.enabled = mustBeVisible;
+		end;
+	</script>
+	
+	<scrollBox align="client">
+		<layout width="130" align="left" margins="{left=5, bottom=2, top=2}">
+			<flowLayout align="top" autoHeight="true" >
+				<button width="60" horzTextAlign="center" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2, right=2}" onClick="self:processarNew()" name="btnNew"/>		
+				<button width="60" class="rodapeButton tokenRodapeButton" margins="{left=0, top=2, bottom=2}" name="delete" onClick="self:deleteToken()"/>
+			</flowLayout>		
+		
+			<rectangle align="client" color="#707070" strokeSize="1" strokeColor="#70707080">
+				<recordList align="client" name="rclListaDosTokens" field="tokensSalvos" templateForm="rclPlayer_svg" selectable="true">
+					<event name="onSelect">							
+						self.dsbToken.node = self.rclListaDosTokens.selectedNode;													
+						self:checkVisibilityOfTabControl();						
+					</event>
+					<event name="onCompare">               
+							return utils.compareStringPtBr(nodeA.name, nodeB.name);
+					</event>
+				</recordList>
+			</rectangle>
+		</layout>
+		
+		<layout visible="false" name="layInfoSelectOrCreateToken" align="client" margins="{left=2, right=2, top=2, bottom=2}">
+			<label name="labSelectTokenInfo" align="client" vertTextAlign="center" horzTextAlign="center" wordWrap="true"/>
+		</layout>
+		
+		<dataScopeBox align="client" name="dsbToken">
+			<tabControl align="client" margins="{left=5, bottom=2, top=2, right=5}" name="tabCtrlDados">
+				<tab name="tabPrincipal">
+					<scrollBox align="client">
+						<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" name="flaContent">		
+							<GroupHeader text="scene.menu.tokenOptions"/>			
+								
+							<!-- Personagem -->
+							<flowPart class="optionPart">	
+								<label name="labPersonagem" class="itemTitle"/>
+								<comboBox name="cmbPersonagem" class="itemContent" field="character"/>
+							</flowPart>	
+							
+							<!-- Nome -->
+							<flowPart class="optionPart">	
+								<label name="labelText" class="itemTitle"/>
+								<edit name="labelVal" class="itemContent" field="name" onUserChange="self.rclListaDosTokens:sort()"/>
+							</flowPart>						
+							
+							<!-- Agarrar ao Grid -->
+							<flowPart class="optionPart">	
+								<label name="labSnapToGrid" class="itemTitle"/>
+								<checkBox name="cbxSnapToGrid" class="itemContent" field="snapToGrid"/>
+							</flowPart>					
+							
+							<!-- Facing Mode -->
+							<flowPart class="optionPart">	
+								<label name="labFacingMode" class="itemTitle"/>
+								<comboBox name="cmbFacingMode" class="itemContent" values="{'rotate', 'drawArrow'}" field="facingMode"/>
+							</flowPart>									
+
+							<flowPart class="optionPart">
+								<label name="layerText" class="itemTitle"/>
+								<comboBox name="layerVal" class="itemContent" field="layer"/>	
+							</flowPart>								
+							
+							<EdicaoBarrinha indice="1" field="bar1"/>
+							<EdicaoBarrinha indice="2" field="bar2"/>
+							<EdicaoBarrinha indice="3" field="bar3"/>
+
+							<flowPart class="optionPart">
+								<label left="55" top="5" width="60" height="20" name="widthText" horzTextAlign="center"/>
+								<edit left="115" top="5" width="50" height="25" name="widthVal" type="number" field="width"/>
+								<label left="170" top="5" width="60" height="20" name="widthCell"/>
+							</flowPart>	
+
+							<flowPart class="optionPart">
+								<label left="55" top="5" width="60" height="20" name="heightText" horzTextAlign="center"/>
+								<edit left="115" top="5" width="50" height="25" name="heightVal" type="number" field="height"/>
+								<label left="170" top="5" width="60" height="20" name="heightCell"/>
+							</flowPart>	
+
+							<flowPart class="optionPart">
+								<label left="55" top="5" width="60" height="20" name="angleText" horzTextAlign="center"/>
+								<edit left="115" top="5" width="50" height="25" name="angleVal" type="float" min="0" max="360" decimalPlaces="1" field="angle"/>
+								<label left="170" top="5" width="60" height="20" name="angleDegree"/>
+							</flowPart>	
+
+						</flowLayout>
+					</scrollBox>		
+				</tab>
+
+				<tab name="tabImagem">
+					<label name="labTitle" left="10" top="0" width="100" height="28" horzTextAlign="leading" vertTextAlign="center" fontSize="15" fontColor="#FFCC66"/>
+					<horzLine left="10" top="30" width="290" strokeColor="#FFCC6670" margins="{left=10}"/>			
+					
+					<script>
+						self.labTitle.text = lang("scene.inseridor.tab.imagem");
+					</script>
+
+					<layout left="0" top="30" width="300" height="270">
+						<rectangle left="45" top="5" width="200" height="200" strokeColor="white" color="black"/>
+						<label left="45" top="95" width="200" height="20" fontSize="11" name="click" horzTextAlign="center"/>
+						<image left="45" top="5" width="200" height="200" style="autoFit" editable="true" name="image" field="image"/>
+						
+						<button left="55" top="215" width="185" height="25" name="input" onClick="self:openFile()"/>
+					</layout>
+				</tab>
+
+				<template name="ComponenteDeLuz">
+					<!-- nomeLabel = uniqueName("labCompLuz");
+
+						if nomeMetric == nil then
+							nomeMetric = uniqueName("labMetric");
+						end;
+						
+						if nomeEdit == nil then
+							nomeEdit = uniqueName("edtMetric");
+						end;				
+					-->	 		
+					
+					<layout align="top" height="28" margins="{top=2}">
+						<label name="$(nomeLabel)" align="left" width="100" horzTextAlign="trailing" margins="{right=4}"/>
+					
+						<edit left="105" top="0" width="50" height="28" name="$(nomeEdit)" type="float" min="0" max="9999" decimalPlaces="1" field="$(field)"/>
+						<label left="158" top="3" width="50" height="28" name="$(nomeMetric)" text="m" autoSize="true" margins="{left=4, right=2}"/>												
+					</layout>
+					
+					<script>
+						self.$(nomeLabel).text = lang('$(title)') .. ":";								
+					</script>
+				</template>		
+				
+				<template name="ComponenteDeAngulo">
+					<!-- nomeLabel = uniqueName("labCompAngulo"); 
+					
+						if nomeEdit == nil then
+							nomeEdit = uniqueName("edtAngulo");
+						end;	
+					-->	 			
+				
+					<layout align="top" height="28" margins="{top=2}">
+						<label name="$(nomeLabel)" align="left" width="100" horzTextAlign="trailing" margins="{right=4}"/>	
+						
+						<edit left="105" top="0" width="30" height="28" name="$(nomeEdit)" type="float" min="1" max="360" decimalPlaces="1" field="$(field)"/>
+						<label left="138" top="3" width="50" height="28" name="$(nomeMetric)" text="graus" autoSize="true" margins="{left=4, right=2}"/>	
+					</layout>
+					
+					<script>
+						self.$(nomeLabel).text = lang('$(title)') .. ":";
+					</script>			
+				</template>		
+
+				<tab name="tabFOW">
+					<scrollBox align="client">
+						<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" name="flaContentFOW">			
+							<GroupHeader text="scene.fogOfWar.tokenVision"/>		
+							
+							<flowPart class="optionPart" height="150">	
+								<label name="labCampoDeVisao" class="itemTitle"/>				
+								<layout class="itemContent">
+									<!-- Possui visao -->
+									<layout align="top" height="28" margins="{top=2}">
+										<label name="labHasVision" align="left" width="100" horzTextAlign="trailing" margins="{right=4}"/>
+										<checkBox name="visionHave" align="client" class="itemContent" margins="{top=2}" field="hasSight"/>
+									</layout>						
+									
+									<ComponenteDeLuz title="scene.fogOfWar.sobLuzIntensa" nomeMetric="labMetricVLI" nomeEdit="visionIntense" field="visionIntense"/>
+									<ComponenteDeLuz title="scene.fogOfWar.sobLuzFraca" nomeMetric="labMetricVLF" nomeEdit="visionWeak" field="visionWeak"/>
+									<ComponenteDeLuz title="scene.fogOfWar.sobEscuridao" nomeMetric="labMetricVLE" nomeEdit="visionDark" field="visionDark"/>
+									<ComponenteDeAngulo title="scene.fogOfWar.angulo" nomeEdit="visionAngle" field="visionAngle"/>
+								</layout>			
+							</flowPart>					
+													
+							<GroupHeader text="scene.fogOfWar.tokenLight"/>														
+
+							<flowPart class="optionPart" height="90">	
+								<label name="labLuz" class="itemTitle"/>				
+								<layout class="itemContent">
+									<ComponenteDeLuz title="scene.fogOfWar.luzIntensa" nomeMetric="labMetricLI" nomeEdit="lightIntense" field="lightIntense"/>
+									<ComponenteDeLuz title="scene.fogOfWar.luzFraca" nomeMetric="labMetricLF" nomeEdit="lightWeak" field="lightWeak"/>
+									<ComponenteDeAngulo title="scene.fogOfWar.angulo" nomeEdit="lightAngle" field="lightAngle"/>
+								</layout>			
+							</flowPart>					
+						</flowLayout>
+					</scrollBox>			
+				</tab>
+			</tabControl>
+		</dataScopeBox>	
+	</scrollBox>
+	
+	<layout class="rodapeForm">
+		<flowLayout align="client" horzAlign="trailing">
+			<style>
+				.tokenRodapeButton {
+					height: 35; 
+				}
+			</style>
+		
+			
+			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarOK()" name="btnInsert"/>
+			<button width="100" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarOkClose()" name="btnOkName"/>
+			<button width="80" horzTextAlign="center" class="rodapeButton tokenRodapeButton" onClick="self:processarCancel()" name="btnCancelName"/>	
+		</flowLayout>
+
+		<script>
+			self.btnNew.text = lang('scene.inseridor.buttons.new');			
+			self.btnInsert.text = lang('scene.inseridor.buttons.insert');
+			self.btnOkName.text = lang('scene.inseridor.buttons.insertClose');
+			self.btnCancelName.text = lang('scene.inseridor.buttons.Close');
+		</script>
+	</layout>
+	
+	<script><![CDATA[
+		local node = ndb.load("inseridorOptions.xml");
+
+		local oldName;
+
+		if node.tokens == nil then
+			node.tokens = {};
+			node.widthVal = 1;
+			node.heightVal = 1;
+		end;
+
+		self.labSelectTokenInfo.text = lang('scene.inseridor.selectOrCreateToken');
+		self.tabImagem.text = lang('scene.inseridor.tab.imagem');
+		self.tabPrincipal.text = lang('scene.tokenEdit.propriedades');
+		self.tabFOW.text = lang('scene.fogOfWar');
+
+		self.labPersonagem.text = lang('scene.tokenEdit.personagem');
+		self.cbxSnapToGrid.text = lang('scene.tokenEdit.snapToGrid');
+
+		self.labCampoDeVisao.text = lang('scene.fogOfWar.alcance.tokenVision');
+		self.labLuz.text = lang('scene.fogOfWar.alcance.tokenLight');
+		self.labHasVision.text = lang('scene.fogOfWar.token.hasSight');
+
+		self.click.text = lang('scene.inseridor.image.click');
+		self.image.url = "";
+		self.widthText.text = lang('scene.inseridor.labels.width');
+		self.widthCell.text = lang('scene.inseridor.labels.cell');
+		self.widthVal.text = node.widthVal;
+		self.heightText.text = lang('scene.inseridor.labels.height');
+		self.heightCell.text = lang('scene.inseridor.labels.cell');
+		self.heightVal.text = node.heightVal;
+		self.angleText.text = lang('scene.inseridor.labels.angle');
+		self.angleVal.text = node.angleVal;
+		self.angleDegree.text = lang('scene.inseridor.labels.degree');
+
+		self.cbxSnapToGrid.checked = node.snapToGrid;
+
+		self.edtBarValue1.text = node.bar1X;
+		self.edtBarMax1.text = node.bar1Y;
+		self.cmbCorBar1.color = node.bar1C or "Indianred";
+
+		self.edtBarValue2.text = node.bar2X;
+		self.edtBarMax2.text = node.bar2Y;
+		self.cmbCorBar2.color = node.bar2C or "Lightskyblue";
+
+		self.edtBarValue3.text = node.bar3X;
+		self.edtBarMax3.text = node.bar3Y;
+		self.cmbCorBar3.color = node.bar3C or "Limegreen";
+
+		self.cmbPersonagem.value = tostring(node.character) or "0";
+
+		self.visionIntense.text = node.visionIntense;
+		self.visionWeak.text = node.visionWeak;
+		self.visionDark.text = node.visionDark;
+		self.visionAngle.text = node.visionAngle;
+		self.visionHave.checked = node.visionHave;
+		self.lightIntense.text = node.lightIntense;
+		self.lightWeak.text = node.lightWeak;
+		self.lightAngle.text = node.lightAngle;
+
+		self.labelText.text = lang('scene.inseridor.labels.label');
+		self.input.text = lang('scene.inseridor.labels.input');
+		self.delete.text = lang('scene.inseridor.labels.delete');
+		self.layerText.text = lang('scene.inseridor.labels.layer');
+		self.layerVal.items = {lang("scene.inseridor.labels.layer1"), lang("scene.inseridor.labels.layer2"), lang("scene.inseridor.labels.layer3")};
+		self.layerVal.values = {'B', 'O', 'T'};
+		
+		self.labFacingMode.text = lang('scene.FacingMode.title');
+		self.cmbFacingMode.items = {lang('scene.FacingMode.rotate'), lang('scene.FacingMode.arrow')};		
+
+		function self:prepareForShow(oScene)
+			scene = oScene;
+
+			self:listAllCharacters();
+			self:checkVisibilityOfTabControl();			
+		end;
+
+		function self:listAllCharacters()
+			local mesa = rrpg.getMesaDe(scene);
+
+			local personagens = {};
+			recursiveEnumPersonagensEmBibItem(mesa.biblioteca, personagens);
+			
+			table.sort(personagens,
+				function(left, right)
+					return utils.compareStringPtBr(left.nome, right.nome) < 0;
+				end);
+				
+			local nomes = {};
+			local valores = {};
+			
+			nomes[1] = LANG("scene.tokenEdit.semPersonagem");
+			valores[1] = "0";
+			
+			for i = 1, #personagens, 1 do
+				nomes[#nomes + 1] = personagens[i].nome;
+				valores[#valores + 1] = tostring(personagens[i].codigoInterno);
+			end;
+			
+			self.cmbPersonagem.items = nomes;
+			self.cmbPersonagem.values = valores;
+		end;
+
+		function recursiveEnumPersonagensEmBibItem(bibItem, dest)
+			if bibItem.tipo == "personagem" then
+				if (bibItem.loginDono ~= nil) and (bibItem.loginDono ~= "") then
+					dest[#dest + 1] = bibItem;
+				end;
+			else
+				local filhos = bibItem.filhos;
+				
+				for i = 1, #filhos, 1 do
+					recursiveEnumPersonagensEmBibItem(filhos[i], dest);
+				end;
+			end;
+		end;
+
+		function self:openFile()
+			local node = self.rclListaDosTokens.selectedNode;
+			
+			if node == nil then
+				return;
+			end;
+		
+			dialogs.openFile("Selecione o arquivo de imagem", "image/*", false,
+		        function(arquivos)
+		                local arq = arquivos[1];
+		                -- arq.name possui o nome do arquivo
+		                -- arq.stream possui o objeto stream do conteúdo 
+
+		                fireDrive.createDirectory("/uploads");
+		                fireDrive.upload("/uploads/" .. arq.name, arq.stream,
+		                	function(fditem)
+								if node ~= nil then
+									node.image = fditem.url;
+								end;		                		
+		                	end);          
+		        end);
+		end;
+
+		function self:deleteToken()
+			local nodeToDelete = self.rclListaDosTokens.selectedNode;
+			
+			if nodeToDelete ~= nil then
+		
+				dialogs.confirmYesNo(lang('scene.inseridor.labels.deleteConfirm'),
+					function (confirmado)
+						if confirmado then				
+							ndb.deleteNode(nodeToDelete);
+							self:checkVisibilityOfTabControl();
+						end;
+					end);
+			end;
+		end;
+
+		function self:processarOkClose()
+			self:processarOK();
+			self:processarCancel();
+		end;
+
+		
+		function self:processarNew()			
+			local newNode = self.rclListaDosTokens:append();	
+			
+			if newNode ~= nil then
+				newNode.name = lang("scene.inseridor.nameYourToken");
+				newNode.width = 1;
+				newNode.height = 1;
+				newNode.angle = 0;	
+				newNode.snapToGrid = true;				
+				newNode.bar1Color = "Indianred";
+				newNode.bar2Color = "Lightskyblue";
+				newNode.bar3Color = "Limegreen";	
+				newNode.visionIntense = 102;
+				newNode.visionWeak = 1.5;
+				newNode.visionDark = 0;
+				newNode.visionAngle = 360;
+				newNode.hasSight = false;
+				newNode.lightIntense = 0;
+				newNode.lightWeak = 0;
+				newNode.lightAngle = 360;
+				newNode.layer = 'T';  -- tokens
+				newNode.facingMode = "rotate";
+				self.rclListaDosTokens.selectedNode = newNode;
+				self:checkVisibilityOfTabControl();				
+				self.tabCtrlDados.tabIndex = 0;
+				self.labelVal:setFocus();
+			end;		
+		end;
+
+		function self:processarOK()	
+			local x, y;
+			local _lastMouseDown = rawget(scene, "_lastMouseDown");	
+			local layer;
+			
+			if self.layerVal.value == 'O' then
+				layer = "objects";
+			elseif self.layerVal.value == 'B' then
+				layer = "background"
+			else
+				layer = "tokens";
+			end;					
+						
+			if _lastMouseDown ~= nil then
+				x = _lastMouseDown.x;
+				y = _lastMouseDown.y;
+			else
+				x = (scene.worldWidth / 2);
+				y = (scene.worldHeight / 2);				
+			end;
+
+			local i, j = scene.grid:worldToCell(x, y);
+			local tx, ty = scene.grid:cellToWorld(i, j);
+			x, y = UTIL_BomLugarCenter(scene, tx, ty, layer);		
+		
+			local token = scene.items:addToken(layer);
+			local size = scene.grid.cellSize;
+			local width = (tonumber(self.widthVal.text) or 1) * size;
+			local height = (tonumber(self.heightVal.text) or 1) * size;
+			local angle = tonumber(self.angleVal.text) or 0;		
+
+			token.snapToGrid = self.cbxSnapToGrid.checked;
+
+			token.barValue1 = self.edtBarValue1.text;
+			token.barMax1 = self.edtBarMax1.text;
+			token.barColor1 = self.cmbCorBar1.color;
+			token.barValue2 = self.edtBarValue2.text;
+			token.barMax2 = self.edtBarMax2.text;
+			token.barColor2 = self.cmbCorBar2.color;
+			token.barValue3 = self.edtBarValue3.text;
+			token.barMax3 = self.edtBarMax3.text;
+			token.barColor3 = self.cmbCorBar3.color;
+
+			local ownerCharID = tonumber(self.cmbPersonagem.value) or 0;
+			if ownerCharID > 0 then
+				token.ownerCharacter = ownerCharID;
+			else
+				token.ownerCharacter = 0;
+			end;
+
+			if self.visionIntense.text==nil or self.visionIntense.text=="" then
+				self.visionIntense.text = "102";
+			end;
+			if self.visionWeak.text==nil or self.visionWeak.text=="" then
+				self.visionWeak.text = "1,5";
+			end;
+			if self.visionAngle.text==nil or self.visionAngle.text=="" then
+				self.visionAngle.text = "360";
+			end;
+			if self.lightAngle.text==nil or self.lightAngle.text=="" then
+				self.lightAngle.text = "360";
+			end;
+
+			token.visionIntenseLightRange = self.visionIntense.text;
+			token.visionWeakLightRange = self.visionWeak.text;
+			token.visionDarknessRange = self.visionDark.text;
+			token.visionAngle= self.visionAngle.text;
+			token.visionHaveVision = self.visionHave.checked;
+			token.lightIntenseRange = self.lightIntense.text;
+			token.lightWeakRange = self.lightWeak.text;
+			token.lightAngle = self.lightAngle.text;
+
+			if self.cmbFacingMode.value ~= "" then
+				token.facingMode = self.cmbFacingMode.value;
+			end;
+			
+			token.width = width;
+			token.height = height;
+			token.rotation = angle;			
+			token.x = x - width / 2;
+			token.y = y - height / 2;
+			token:doSnapToGrid();
+
+			token.image.url = self.image.url;
+			scene.items:clearSelection();
+			token.selected = true;
+		end;
+		
+		function self:processarCancel()
+			self:close();
+		end;
+		]]>
+	</script>
+	
+	<event name="onKeyUp">	
+		if (event.keyCode == 0x89) or (event.keyCode == 0x1B) then
+			setTimeout(
+				function()
+					self:processarCancel();
+				end, 1);
+			
+			event.keyCode = 0;
+			event.key = "";
+		end;
+	</event>	
+	
+	<event name="onCancelRequest">
+		self:processarCancel();
+	</event>
+	
+</popupForm>

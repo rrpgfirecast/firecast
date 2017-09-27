@@ -1,0 +1,73 @@
+﻿local qJobs = {};
+
+function qJobs.newQueue(maxJobs)
+	local fila = {};
+	local workingJobsCount = 0;
+	local primJob = nil;
+	local ultJob = nil;
+	
+	function fila:startJob(job)
+		function job:endJob()
+			fila:endJob(job);
+		end;
+	
+		workingJobsCount = workingJobsCount + 1;							
+		job.callback(job);
+	end;
+	
+	function fila:endJob(job)
+		workingJobsCount = workingJobsCount - 1;
+		
+		if workingJobsCount < 0 then
+			workingJobsCount = 0;
+		end;
+		
+		if workingJobsCount < maxJobs then
+			fila:liberarProxJob();
+		end;
+	end;
+	
+	function fila:liberarProxJob()
+		if primJob ~= nil then
+			local j = primJob;
+			primJob = j.proximo;
+								
+			if primJob == nil then
+				ultJob = nil;
+			else
+				primJob.anterior = nil;
+			end;
+			
+			j.proximo = nil;
+			j.anterior = nil;			
+			fila:startJob(j);
+		end;
+	end
+	
+	function fila:addJob(callback)		
+		local job = {};
+		job.id = esteId;
+		job.callback = callback;	
+		
+		job.proximo = nil;
+				
+		if ultJob ~= nil then
+			ultJob.proximo = job;
+			job.anterior = ultJob;
+		end;
+		
+		ultJob = job;		
+		
+		if primJob == nil then
+			primJob = job;
+		end;
+		
+		if workingJobsCount < maxJobs then
+			fila:liberarProxJob();			
+		end;
+	end;
+	
+	return fila;
+end;
+
+return qJobs;

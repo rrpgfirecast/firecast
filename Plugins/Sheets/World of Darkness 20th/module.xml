@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.3" originalPluginFileName="World of Darkness 20th.rpk">
+    <id>Ambesek.WoD.20th</id>
+    <version>0.2</version>
+    <name>World of Darkness 20th Anniversary</name>
+    <description>Plugin de ficha para Werewolf the Apocalypse 20th Anniversary Edition e Vampíre the Dark Ages 20th Anniversary Edition</description>
+    <author>Ambesek</author>
+    <site></site>
+    <contact>vinnyrpgmeister@gmail.com</contact>
+    <dataTypes>
+		<dataType title="Werewolf 20th Anniversary" name="frmWerewolf20th" lfmFile="Werewolf20th/Werewolf20th.lfm">Ambesek.Werewolf.20th</dataType>
+		<dataType title="Vampire 20th Anniversary" name="frmVampireDarkAges20th" lfmFile="VampireDarkAges20th/Vampire20th.lfm">Ambesek.VampireDarkAges.20th</dataType>
+	</dataTypes>
+</module>

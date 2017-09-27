@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.4_beta_2">
+	<id>MemesSaver</id>
+	<version>0.1</version>
+	<name>Memes Saver</name>
+	<description>Permite criar e salvar seus proprios memes.</description>
+	<author>Vinny Ambesek</author>
+	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
+	<contact>vinnyrpgmeister@gmail.com</contact>
+</module>

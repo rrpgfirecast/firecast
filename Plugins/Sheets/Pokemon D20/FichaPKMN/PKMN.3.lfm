@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPKMN3" align="client" theme="dark">
+	<template name="TimeIcon">
+		<button left="$(left)" top="$(top)" width="100" height="100">
+			<event name="onClick">
+					if sheet ~= nil then
+						if sheet.pkmn_time_$(pos) == nil then
+							sheet.pkmn_time_$(pos) = {num="$(pos)"};
+						end;
+						sheet.selected = $(pos);
+						local node = sheet.pkmn_time_$(pos);
+						self.boxDetalhesDoTime.node = node;
+						self.boxDetalhesDoTime.visible = (node ~= nil);
+					end;
+			</event>
+			<image left="0" top="0" width="100" height="100" style="proportional" field="time_icon_$(pos)" src="http://www.serebii.net/xy/pokemon/$(num).png"/>
+			<image left="1" top="1" width="24" height="24" style="proportional" field="time_ball_$(pos)" src="http://www.serebii.net/itemdex/sprites/.png"/>
+			<image left="75" top="1" width="24" height="24" style="proportional" field="time_equip_$(pos)" src="http://www.serebii.net/itemdex/sprites/.png"/>
+			<label left="1" top="75" width="25" height="25" field="time_status_$(pos)" horzTextAlign="center" fontSize="11"/>
+			<label left="75" top="75" width="25" height="25" field="time_level_$(pos)" horzTextAlign="center"/>
+		</button>
+	</template>
+
+	<template name="Atributo">
+		<label left="0" top="0" width="50" height="25" text="$(nome)" fontSize="$(fontSize)"/>
+		<rectangle left="55" top="0" width="30" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+		<label left="55" top="0" width="30" height="25" field="total_$(field)" horzTextAlign="center"/>
+		<rectangle left="90" top="0" width="30" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+		<label left="90" top="0" width="30" height="25" field="mod_$(field)" horzTextAlign="center"/>
+		<edit left="125" top="0" width="30" height="25" field="base_$(field)">
+			<event name="onChange">
+				sum_mod_$(field)();
+			</event>
+		</edit>
+		<edit left="155" top="0" width="30" height="25" field="iv_$(field)">
+			<event name="onChange">
+				sum_mod_$(field)();
+				if sheet ~= nil then
+					local iv = (tonumber(self.boxDetalhesDoTime.node.iv_$(field)) or 0);
+					iv = math.max(1, iv);
+					iv = math.min(32, iv);
+					self.boxDetalhesDoTime.node.iv_$(field) = iv;
+				end;
+			</event>
+		</edit>
+		<edit left="185" top="0" width="30" height="25" field="ev_$(field)">
+			<event name="onChange">
+				sum_mod_$(field)();
+				if sheet ~= nil then
+					local ev = (tonumber(self.boxDetalhesDoTime.node.ev_$(field)) or 0);
+					iv = math.max(0, ev);
+					iv = math.min(64, ev);
+					self.boxDetalhesDoTime.node.ev_$(field) = iv;
+
+					local sum = (tonumber(self.boxDetalhesDoTime.node.ev_pv) or 0) + 
+								(tonumber(self.boxDetalhesDoTime.node.ev_ataque) or 0) + 
+								(tonumber(self.boxDetalhesDoTime.node.ev_defesa) or 0) + 
+								(tonumber(self.boxDetalhesDoTime.node.ev_ataque_especial) or 0) + 
+								(tonumber(self.boxDetalhesDoTime.node.ev_defesa_especial) or 0) + 
+								(tonumber(self.boxDetalhesDoTime.node.ev_agilidade) or 0);
+
+					if sum > 128 then
+						showMessage("Você possui " .. sum .. "EVs, o limite é 128!");
+					end;
+				end;
+			</event>
+		</edit>
+		<rectangle left="215" top="0" width="30" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+		<label left="215" top="0" width="30" height="25" field="nature_$(field)" horzTextAlign="center"/>
+		<edit left="245" top="0" width="30" height="25" field="bf_$(field)">
+			<event name="onChange">
+				sum_mod_$(field)();
+				if sheet ~= nil then
+					local bf = (tonumber(self.boxDetalhesDoTime.node.bf_$(field)) or 0);
+					bf = math.max(-6, bf);
+					bf = math.min(6, bf);
+					self.boxDetalhesDoTime.node.bf_$(field) = bf;
+				end;
+			</event>
+		</edit>
+
+		<script>
+			local function sum_mod_$(field)()
+				if sheet~= nil then
+					local at = (tonumber(self.boxDetalhesDoTime.node.base_$(field)) or 0);
+					at = (at+1)/8;
+					local aux = math.floor(at) + 0.5;
+					if at &lt; aux then
+						at = math.floor(at);
+					else
+						at = math.floor(at) + 1;
+					end;
+
+					local iv = (tonumber(self.boxDetalhesDoTime.node.iv_$(field)) or 0);
+					iv = math.floor(iv/8);
+
+					local ev = (tonumber(self.boxDetalhesDoTime.node.ev_$(field)) or 0);
+					ev = math.floor(ev/8);
+
+					local nt = 0;
+					local id = $(id);
+					if id > 0 then
+						local nature = self.boxDetalhesDoTime.node.pokemon_natureza;
+						nature = tonumber(nature) or 0;
+						local plus = math.floor(nature / 10);
+						local minus = math.floor(nature % 10);
+
+						if plus ~= minus then
+							if plus == id then
+								self.boxDetalhesDoTime.node.nature_$(field) = "16";
+								nt = 2;
+							elseif minus == id then
+								self.boxDetalhesDoTime.node.nature_$(field) = "-16";
+								nt = -2;
+							else
+								self.boxDetalhesDoTime.node.nature_$(field) = "0";
+							end;
+						else
+							self.boxDetalhesDoTime.node.nature_$(field) = "0";
+						end;
+					else
+						self.boxDetalhesDoTime.node.nature_$(field) = "0";
+					end;
+
+					local efeitos = 0;
+					local atributo = "$(field)";
+					if atributo == "ataque" and self.boxDetalhesDoTime.node.efeitos == "BRN" then
+						efeitos = -4;
+					elseif atributo == "agilidade" and self.boxDetalhesDoTime.node.efeitos == "PAR" then
+						efeitos = -2;
+					end;
+
+					local total = at + iv + ev + nt;
+					local mod =  math.floor((total/2) - 5) + (tonumber(self.boxDetalhesDoTime.node.bf_$(field)) or 0)*2 + efeitos;
+					mod = math.max(-5, mod);
+
+					self.boxDetalhesDoTime.node.total_$(field) = total;
+					self.boxDetalhesDoTime.node.mod_$(field) = mod;
+					updateND();
+					updatePV();
+					updateCA_AC();
+					updateDesl();
+				end;
+			end;
+		</script>
+	</template>
+
+	<script>
+		local function updateND()
+			if sheet ~= nil then
+				local pontos =  (tonumber(self.boxDetalhesDoTime.node.total_pv) or 0) + 
+								(tonumber(self.boxDetalhesDoTime.node.total_ataque) or 0) + 
+								(tonumber(self.boxDetalhesDoTime.node.total_defesa) or 0) + 
+								(tonumber(self.boxDetalhesDoTime.node.total_ataque_especial) or 0) + 
+								(tonumber(self.boxDetalhesDoTime.node.total_defesa_especial) or 0) + 
+								(tonumber(self.boxDetalhesDoTime.node.total_agilidade) or 0);
+				pontos = pontos * 8 + (tonumber(self.boxDetalhesDoTime.node.habilidade_custo) or 0);
+				local ajuste = math.floor((pontos-181)/120)-2;
+				local nd = (tonumber(self.boxDetalhesDoTime.node.pokemon_nivel) or 0) + ajuste;
+				if nd &lt; 1 then
+					nd = "1/" .. math.floor(2 ^ math.abs(nd-1));
+				end;
+
+				self.boxDetalhesDoTime.node.nd = nd;
+			end;
+		end;
+	</script>
+	<script>
+		local function updatePV()
+			local dv = (tonumber(self.boxDetalhesDoTime.node.estagio) or 0)
+			local nv = (tonumber(self.boxDetalhesDoTime.node.pokemon_nivel) or 0)
+			local mod = (tonumber(self.boxDetalhesDoTime.node.mod_pv) or 0)
+
+			local min = dv + mod;
+			min = math.max(min, 1);
+
+			local pv = min * nv;
+			self.boxDetalhesDoTime.node.pv = pv;
+		end;
+	</script>
+	<script>
+		local function updateCA_AC()
+			local at = (tonumber(self.boxDetalhesDoTime.node.mod_ataque) or 0);
+			local df = (tonumber(self.boxDetalhesDoTime.node.mod_defesa) or 0);
+			local sa = (tonumber(self.boxDetalhesDoTime.node.mod_ataque_especial) or 0);
+			local sd = (tonumber(self.boxDetalhesDoTime.node.mod_defesa_especial) or 0);
+			local nv = (tonumber(self.boxDetalhesDoTime.node.pokemon_nivel) or 0);
+			local tm = (tonumber(self.boxDetalhesDoTime.node.tamanho) or 0) * -1;
+			local cab = (tonumber(self.boxDetalhesDoTime.node.cab) or 0);
+			local acb = (tonumber(self.boxDetalhesDoTime.node.acb) or 0);
+
+			acf = at + tm + acb;
+			ace = sa + tm + acb;
+			acs = math.max(ace, acf);
+
+			caf = 5 + nv + df + tm + cab;
+			cae = 5 + nv + sd + tm + cab;
+			cas = math.max(cae, caf);
+
+			self.boxDetalhesDoTime.node.acf = acf;
+			self.boxDetalhesDoTime.node.ace = ace;
+			self.boxDetalhesDoTime.node.acs = acs;
+			self.boxDetalhesDoTime.node.caf = caf;
+			self.boxDetalhesDoTime.node.cae = cae;
+			self.boxDetalhesDoTime.node.cas = cas;
+		end;
+	</script>
+	<script>
+		local function updateDesl()
+			if sheet ~= nil then
+				local mod = (tonumber(self.boxDetalhesDoTime.node.mod_agilidade) or 0);
+				mod = 6 + mod;
+
+				local terrestre = math.floor((tonumber(self.boxDetalhesDoTime.node.desl_mult_terrestre) or 0) * mod);
+				local aquatico = math.floor((tonumber(self.boxDetalhesDoTime.node.desl_mult_aquatico) or 0) * mod);
+				local aereo = math.floor((tonumber(self.boxDetalhesDoTime.node.desl_mult_aereo) or 0) * mod);
+				local escavar = math.floor((tonumber(self.boxDetalhesDoTime.node.desl_mult_escavar) or 0) * mod);
+				local escalar = math.floor((tonumber(self.boxDetalhesDoTime.node.desl_mult_escalar) or 0) * mod);
+
+				self.boxDetalhesDoTime.node.desl_terrestre = "" .. (terrestre*1.5) .. "m (" .. terrestre .. "q)";
+				self.boxDetalhesDoTime.node.desl_aquatico = "" .. (aquatico*1.5) .. "m (" .. aquatico .. "q)";
+				self.boxDetalhesDoTime.node.desl_aereo = "" .. (aereo*1.5) .. "m (" .. aereo .. "q)";
+				self.boxDetalhesDoTime.node.desl_escavar =  "" .. (escavar*1.5) .. "m (" .. escavar .. "q)";
+				self.boxDetalhesDoTime.node.desl_escalar = "" .. (escalar*1.5) .. "m (" .. escalar .. "q)";
+			end;
+		end;
+	</script>
+
+	<scrollBox align="client">
+		<layout left="0" top="0" width="205" height="410">
+			<TimeIcon left="0" top="0" num="149" pos="1"/>
+			<TimeIcon left="100" top="50" num="123" pos="2"/>
+			<TimeIcon left="0" top="100" num="141" pos="3"/>
+			<TimeIcon left="100" top="150" num="721" pos="4"/>
+			<TimeIcon left="0" top="200" num="720" pos="5"/>
+			<TimeIcon left="100" top="250" num="719" pos="6"/>
+		</layout>
+
+		<dataScopeBox left="205" top="0" width="1130" height="615" visible="false" name="boxDetalhesDoTime">
+			<rectangle align="client" color="Black" strokeColor="white" strokeSize="1"/>
+			<edit left="5" top="5" width="30" height="25" field="icon_id">
+				<event name="onChange">
+					updateIcon();
+				</event>
+			</edit>
+			<edit left="35" top="5" width="100" height="25" field="pokemon_nome"/>
+			<edit left="135" top="5" width="100" height="25" field="pokemon_nick"/>
+			<comboBox left="240" top="5" width="40" height="25" field="pokemon_sexo" items="{'♂', '♀', '-'}" values="{'m', 'f', 'n'}"/>
+			<comboBox left="280" top="5" width="90" height="25" field="pokemon_natureza" items="{'Hardy', 'Lonely', 'Adamant', 'Naughty', 'Brave', 'Bold', 'Docile', 'Impish', 'Lax', 'Relaxed', 'Modest', 'Mild', 'Bashful', 'Rash', 'Quiet', 'Calm', 'Gentle', 'Careful', 'Quirky', 'Sassy', 'Timid', 'Hasty', 'Jolly', 'Naive', 'Serious'}" values="{'11', '12', '13', '14', '15', '21', '22', '23', '24', '25', '31', '32', '33', '34', '35', '41', '42', '43', '44', '45', '51', '52', '53', '54', '55'}" value="11">
+				<event name="onChange">
+					sum_mod_ataque();
+					sum_mod_defesa();
+					sum_mod_ataque_especial();
+					sum_mod_defesa_especial();
+					sum_mod_agilidade();
+				</event>
+			</comboBox>
+
+			<comboBox left="380" top="5" width="90" height="25" field="pokemon_tipo1" items="{' ', 'Inseto', 'Noturno', 'Dragão', 'Eletrico', 'Fada', 'Lutador', 'Fogo', 'Voador', 'Fantasma', 'Planta', 'Terra', 'Gelo', 'Normal', 'Veneno', 'Psíquico', 'Pedra', 'Metal', 'Água'}" values="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18'}" value="0"/>
+			<comboBox left="470" top="5" width="90" height="25" field="pokemon_tipo2" items="{' ', 'Inseto', 'Noturno', 'Dragão', 'Eletrico', 'Fada', 'Lutador', 'Fogo', 'Voador', 'Fantasma', 'Planta', 'Terra', 'Gelo', 'Normal', 'Veneno', 'Psíquico', 'Pedra', 'Metal', 'Água'}" values="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18'}" value="0"/>
+			<comboBox left="570" top="5" width="100" height="25" field="pokemon_ball" items="{'pokeball', 'greatball', 'ultraball', 'diveball', 'duskball', 'healball', 'luxuryball', 'nestball', 'netball', 'premierball', 'quickball', 'repeatball', 'timerball', 'moonball', 'lureball', 'loveball', 'levelball', 'heavyball', 'fastball', 'friendball', 'safariball', 'sportball', 'parkball', 'masterball', 'dreamball', 'cherishball', 'none'}" values="{'pokeball', 'greatball', 'ultraball', 'diveball', 'duskball', 'healball', 'luxuryball', 'nestball', 'netball', 'premierball', 'quickball', 'repeatball', 'timerball', 'moonball', 'lureball', 'loveball', 'levelball', 'heavyball', 'fastball', 'friendball', 'safariball', 'sportball', 'parkball', 'masterball', 'dreamball', 'cherishball', 'none'}" value="none">
+				<event name="onChange">
+					updateIcon();
+				</event>
+			</comboBox>
+
+
+			<layout left="0" top="32" width="1130" height="185">
+				<label left="15" top="0" width="30" height="25" text="XP"/>
+				<edit left="35" top="0" width="70" height="25" field="xp">
+					<event name="onChange">
+						if sheet~= nil then
+							local mod = self.boxDetalhesDoTime.node.xp or "";
+							mod = string.gsub(mod, "X", "");
+							mod = string.gsub(mod, "P", "");
+							mod = string.gsub(mod, "x", "");
+							mod = string.gsub(mod, "p", "");
+							mod = string.gsub(mod, "%.", "");
+							mod = (tonumber(mod) or 0);
+							local mod2 = 0;
+							local mod3 = 0;
+							while mod>=mod2 do
+								mod3 = mod3+1;
+								mod2 = mod2 + mod3*1000;
+							end
+							
+							while true do  
+								mod2, k = string.gsub(mod2, "^(-?%d+)(%d%d%d)", '%1,%2');
+								if (k==0) then
+								  break
+								end
+							end
+							mod2 = string.gsub(mod2, ",", ".");
+							
+							self.boxDetalhesDoTime.node.xp_lvlup = mod2 .. "XP";
+							self.boxDetalhesDoTime.node.pokemon_nivel = mod3;
+							updateND();
+							updatePV();
+							updateCA_AC();
+							updateIcon();
+						end;
+					</event>
+				</edit>
+				<rectangle left="110" top="0" width="70" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="110" top="0" width="70" height="25" field="xp_lvlup" horzTextAlign="center"/>
+
+				<label left="185" top="0" width="50" height="25" text="Nível"/>
+				<rectangle left="220" top="0" width="30" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="220" top="0" width="30" height="25" field="pokemon_nivel" horzTextAlign="center"/>
+
+				<label left="250" top="0" width="25" height="25" text=" ND"/>
+				<rectangle left="275" top="0" width="30" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="275" top="0" width="30" height="25" field="nd" horzTextAlign="center"/>
+
+				<label left="310" top="0" width="25" height="25" text=" OT"/>
+				<edit left="335" top="0" width="150" height="25" field="ot"/>
+			</layout>
+
+			<layout left="0" top="55" width="1130" height="185">
+				<checkBox left="5" top="0" width="60" height="25" text="Shiny" field="shiny">
+					<event name="onChange">
+						updateIcon();
+					</event>
+				</checkBox>
+				<checkBox left="65" top="0" width="60" height="25" text="Mega" field="mega">
+					<event name="onChange">
+						updateIcon();
+					</event>
+				</checkBox>
+				<checkBox left="125" top="0" width="30" height="25" text="Y" field="y">
+					<event name="onChange">
+						updateIcon();
+					</event>
+				</checkBox>
+				<checkBox left="160" top="0" width="30" height="25" text="X" field="x">
+					<event name="onChange">
+						updateIcon();
+					</event>
+				</checkBox>
+				<checkBox left="195" top="0" width="80" height="25" text="Pokérus" field="pokerus"/>
+			</layout>
+
+			<button left="1100" top="5" width="25" height="25" text="+">
+				<event name="onClick">
+					if sheet~= nil then
+						local pos = tonumber(self.boxDetalhesDoTime.node.num) or 1;
+						if pos > 1 then
+							sheet.pkmn_time_7 = sheet["pkmn_time_" .. (pos-1)];
+							sheet["pkmn_time_" .. (pos-1)] = sheet["pkmn_time_" .. pos];
+							sheet["pkmn_time_" .. pos] = sheet.pkmn_time_7;
+
+							sheet["pkmn_time_" .. pos].num = pos;
+							sheet["pkmn_time_" .. (pos-1)].num = pos-1;
+							self.boxDetalhesDoTime.node = sheet["pkmn_time_" .. pos];
+							updateIcon();
+							self.boxDetalhesDoTime.node = sheet["pkmn_time_" .. (pos-1)];
+							updateIcon();
+						end;
+					end;
+				</event>
+			</button>
+
+
+			<button left="1100" top="35" width="25" height="25" text="-">
+				<event name="onClick">
+					if sheet~= nil then
+						local pos = tonumber(self.boxDetalhesDoTime.node.num) or 1;
+						if pos &lt; 6 then
+							sheet.pkmn_time_7 = sheet["pkmn_time_" .. (pos+1)];
+							sheet["pkmn_time_" .. (pos+1)] = sheet["pkmn_time_" .. pos];
+							sheet["pkmn_time_" .. pos] = sheet.pkmn_time_7;
+
+							sheet["pkmn_time_" .. pos].num = pos;
+							sheet["pkmn_time_" .. (pos+1)].num = pos+1;
+							self.boxDetalhesDoTime.node = sheet["pkmn_time_" .. pos];
+							updateIcon();
+							self.boxDetalhesDoTime.node = sheet["pkmn_time_" .. (pos+1)];
+							updateIcon();
+						end;
+					end;
+				</event>
+			</button>
+
+			<button left="1040" top="5" width="55" height="55" text="">
+				<image left="15" top="15" width="25" height="25" style="stretch" field="browser_icon" src="http://www.serebii.net/favicon.ico"/>
+				<event name="onClick">
+					local id = (self.boxDetalhesDoTime.node.icon_id or "000");
+					gui.openInBrowser("http://www.serebii.net/pokedex-xy/" .. id .. ".shtml");
+				</event>
+			</button>
+
+			<layout left="5" top="80" width="290" height="185">
+				<rectangle align="client" color="Black" strokeColor="white" strokeSize="1"/>
+				<layout left="5" top="5" width="300" height="25">
+					<label left="55" top="0" width="50" height="25" text="Total"/>
+					<label left="90" top="0" width="50" height="25" text="Mod"/>
+					<label left="125" top="0" width="50" height="25" text="Base"/>
+					<button left="155" top="0" width="30" height="25" text="IV">
+						<event name="onClick">
+								if sheet ~= nil then
+									local jogadores = rrpg.getMesaDe(sheet).jogadores;
+									local current = nil;
+									
+									for i = 1, #jogadores, 1 do
+										if jogadores[i].login==rrpg.getCurrentUser().login then
+											current = jogadores[i];
+										end;
+									end; 
+									
+									if current~=nil and current.isMestre then
+										self.boxDetalhesDoTime.node.iv_pv = math.random(1, 32);
+										self.boxDetalhesDoTime.node.iv_ataque = math.random(1, 32);
+										self.boxDetalhesDoTime.node.iv_defesa = math.random(1, 32);
+										self.boxDetalhesDoTime.node.iv_ataque_especial = math.random(1, 32);
+										self.boxDetalhesDoTime.node.iv_defesa_especial = math.random(1, 32);
+										self.boxDetalhesDoTime.node.iv_agilidade = math.random(1, 32);
+									end;
+								end;
+						</event>
+					</button>
+					<label left="185" top="0" width="50" height="25" text="  EV"/>
+					<label left="215" top="0" width="50" height="25" text="  NT"/>
+					<label left="245" top="0" width="50" height="25" text="  BF"/>
+				</layout>
+				<layout left="5" top="30" width="300" height="25">
+					<Atributo nome="PV" field="pv" fontSize="13" id="0"/>
+				</layout>
+				<layout left="5" top="55" width="300" height="25">
+					<Atributo nome="Ataque" field="ataque" fontSize="13" id="1"/>
+				</layout>
+				<layout left="5" top="80" width="300" height="25">
+					<Atributo nome="Defesa" field="defesa" fontSize="13" id="2"/>
+				</layout>
+				<layout left="5" top="105" width="300" height="25">
+					<Atributo nome="At. Esp." field="ataque_especial" fontSize="13" id="3"/>
+				</layout>
+				<layout left="5" top="130" width="300" height="25">
+					<Atributo nome="Df. Esp." field="defesa_especial" fontSize="13" id="4"/>
+				</layout>
+				<layout left="5" top="155" width="300" height="25">
+					<Atributo nome="Agilidade" field="agilidade" fontSize="11" id="5"/>
+				</layout>
+			</layout>
+
+			<layout left="300" top="80" width="260" height="185">
+				<rectangle align="client" color="Black" strokeColor="white" strokeSize="1"/>
+
+				<label left="5" top="0" width="190" height="25" text="Habilidade" horzTextAlign="center"/>
+				<edit left="5" top="25" width="190" height="25" field="habilidade_nome"/>
+				<label left="200" top="0" width="55" height="25" text="Custo" horzTextAlign="center"/>
+				<edit left="200" top="25" width="55" height="25" field="habilidade_custo">
+					<event name="onChange">
+						updateND();
+					</event>
+				</edit>
+				<textEditor left="5" top="50" width="250" height="35" field="habilidade_descricao"/>
+
+				<label left="5" top="85" width="250" height="25" text="Equipamento" horzTextAlign="center"/>
+				<edit left="5" top="110" width="250" height="25" field="equipamento_nome">
+					<event name="onChange">
+						updateIcon();
+					</event>
+				</edit>
+
+				<textEditor left="5" top="135" width="250" height="40" field="equipamento_descricao"/>
+
+			</layout>
+
+			<layout left="565" top="80" width="290" height="185">
+				<rectangle align="client" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="0" top="5" width="65" height="25" text="Tamanho" horzTextAlign="center"/>
+				<comboBox left="65" top="5" width="100" height="25" field="tamanho" items="{'Minusculo', 'Minimo', 'Miudo', 'Pequeno', 'Médio', 'Grande', 'Enorme', 'Imenso', 'Colossal', 'Colossal+'}" values="{'-4', '-3', '-2', '-1', '0', '1', '2', '3', '4', '5'}">
+					<event name="onChange">
+						updateCA_AC();
+					</event>
+				</comboBox>
+				<label left="185" top="5" width="35" height="25" text="Esp." horzTextAlign="center"/>
+				<edit left="220" top="5" width="65" height="25" field="espaco"/>
+
+				<label left="0" top="30" width="65" height="25" text="Estagio" horzTextAlign="center"/>
+				<comboBox left="65" top="30" width="120" height="25" field="estagio" items="{'Bebê', 'Antepenultimo', 'Penultimo', 'Ultimo', 'Mega'}" values="{'4', '6', '8', '10', '12'}">
+					<event name="onChange">
+						if sheet~=nil then
+							self.boxDetalhesDoTime.node.dv = "d" .. (self.boxDetalhesDoTime.node.estagio or 0);
+							updatePV();
+						end;
+					</event>
+				</comboBox>
+				<label left="185" top="30" width="35" height="25" text="DV" horzTextAlign="center"/>
+				<rectangle left="220" top="30" width="65" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="220" top="30" width="65" height="25" field="dv" horzTextAlign="center"/>
+
+				<label left="0" top="55" width="65" height="25" text="STAB" horzTextAlign="center"/>
+				<comboBox left="55" top="55" width="50" height="25" field="stab" items="{'1.5', '2'}" values="{'1.5', '2'}" value="1.5"/>
+				<label left="105" top="55" width="65" height="25" text="CRIT" />
+				<comboBox left="135" top="55" width="55" height="25" field="crit" items="{'1.5', '2.25'}" values="{'2', '3'}" value="1.5"/>
+
+				<label left="185" top="55" width="35" height="25" text="PV" horzTextAlign="center"/>
+				<edit left="220" top="55" width="35" height="25" field="pv_atual"/>
+				<rectangle left="255" top="55" width="30" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="255" top="55" width="30" height="25" field="pv" horzTextAlign="center"/>
+
+				<label left="0" top="80" width="65" height="25" text="Efeitos" horzTextAlign="center"/>
+				<comboBox left="65" top="80" width="120" height="25" field="efeitos" items="{'Envenenado', 'Paralisado', 'Dormindo', 'Queimado', 'Congelado', 'Nocauteado', 'Saudavel'}" values="{'PSN', 'PAR', 'SLP', 'BRN', 'FRZ', 'FNT', ' '}">
+					<event name="onChange">
+						if sheet~=nil then
+							updateIcon();
+							sum_mod_ataque();
+							sum_mod_agilidade();
+						end;
+					</event>
+				</comboBox>
+
+				<layout left="0" top="0" width="290" height="185">
+					<label left="5" top="110" width="35" height="25" text="CAF" horzTextAlign="center"/>
+					<rectangle left="40" top="110" width="30" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+					<label left="40" top="110" width="30" height="25" field="caf" horzTextAlign="center"/>
+
+					<label left="75" top="110" width="35" height="25" text="CAE" horzTextAlign="center"/>
+					<rectangle left="110" top="110" width="30" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+					<label left="110" top="110" width="30" height="25" field="cae" horzTextAlign="center"/>
+
+					<label left="145" top="110" width="35" height="25" text="CAS" horzTextAlign="center"/>
+					<rectangle left="180" top="110" width="30" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+					<label left="180" top="110" width="30" height="25" field="cas" horzTextAlign="center"/>
+
+					<label left="215" top="110" width="35" height="25" text="CAB" horzTextAlign="center"/>
+					<edit left="250" top="110" width="30" height="25" field="cab">
+						<event name="onChange">
+							if sheet~=nil then
+								local cab = tonumber(self.boxDetalhesDoTime.node.cab) or 0;
+								cab = math.max(-6, cab);
+								cab = math.min(6, cab);
+								self.boxDetalhesDoTime.node.cab = cab;
+								updateCA_AC();
+							end;
+						</event>
+					</edit>
+
+					<label left="5" top="135" width="35" height="25" text="ACF" horzTextAlign="center"/>
+					<rectangle left="40" top="135" width="30" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+					<label left="40" top="135" width="30" height="25" field="acf" horzTextAlign="center"/>
+
+					<label left="75" top="135" width="35" height="25" text="ACE" horzTextAlign="center"/>
+					<rectangle left="110" top="135" width="30" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+					<label left="110" top="135" width="30" height="25" field="ace" horzTextAlign="center"/>
+
+					<label left="145" top="135" width="35" height="25" text="ACS" horzTextAlign="center"/>
+					<rectangle left="180" top="135" width="30" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+					<label left="180" top="135" width="30" height="25" field="acs" horzTextAlign="center"/>
+
+					<label left="215" top="135" width="35" height="25" text="ACB" horzTextAlign="center"/>
+					<edit left="250" top="135" width="30" height="25" field="acb">
+						<event name="onChange">
+							if sheet~=nil then
+								local acb = tonumber(self.boxDetalhesDoTime.node.acb) or 0;
+								acb = math.max(-6, acb);
+								acb = math.min(6, acb);
+								self.boxDetalhesDoTime.node.acb = acb;
+								updateCA_AC();
+							end;
+						</event>
+					</edit>
+				</layout>
+			</layout>
+
+			<layout left="860" top="80" width="265" height="185">
+				<rectangle align="client" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="5" top="0" width="265" height="25" text="DESLOCAMENTOS" horzTextAlign="center"/>
+
+				<label left="75" top="30" width="35" height="25" text="Mult"/>
+				<label left="105" top="30" width="75" height="25" text="    Valor"/>
+				<label left="180" top="30" width="75" height="25" text="Qualidade" fontSize="13"/>
+
+				<label left="5" top="55" width="70" height="25" text="Terrestre" horzTextAlign="center"/>
+				<edit left="75" top="55" width="35" height="25" field="desl_mult_terrestre">
+					<event name="onChange">
+						updateDesl();
+					</event>
+				</edit>
+				<rectangle left="105" top="55" width="155" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="105" top="55" width="155" height="25" field="desl_terrestre" horzTextAlign="center"/>
+
+				<label left="5" top="80" width="70" height="25" text="Aquatico" horzTextAlign="center"/>
+				<edit left="75" top="80" width="35" height="25" field="desl_mult_aquatico">
+					<event name="onChange">
+						updateDesl();
+					</event>
+				</edit>
+				<rectangle left="105" top="80" width="155" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="105" top="80" width="155" height="25" field="desl_aquatico" horzTextAlign="center"/>
+
+				<label left="5" top="105" width="70" height="25" text="Aereo" horzTextAlign="center"/>
+				<edit left="75" top="105" width="35" height="25" field="desl_mult_aereo">
+					<event name="onChange">
+						updateDesl();
+					</event>
+				</edit>
+				<rectangle left="105" top="105" width="80" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="105" top="105" width="80" height="25" field="desl_aereo" horzTextAlign="center"/>
+				<edit left="185" top="105" width="75" height="25" field="desl_manobra_aereo"/>
+
+				<label left="5" top="130" width="70" height="25" text="Escavar" horzTextAlign="center"/>
+				<edit left="75" top="130" width="35" height="25" field="desl_mult_escavar">
+					<event name="onChange">
+						updateDesl();
+					</event>
+				</edit>
+				<rectangle left="105" top="130" width="80" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="105" top="130" width="80" height="25" field="desl_escavar" horzTextAlign="center"/>
+				<edit left="185" top="130" width="75" height="25" field="desl_manobra_aescavar"/>
+
+				<label left="5" top="155" width="70" height="25" text="Escalar" horzTextAlign="center"/>
+				<edit left="75" top="155" width="35" height="25" field="desl_mult_escalar">
+					<event name="onChange">
+						updateDesl();
+					</event>
+				</edit>
+				<rectangle left="105" top="155" width="155" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="105" top="155" width="155" height="25" field="desl_escalar" horzTextAlign="center"/>
+			</layout>
+
+			
+
+			<layout left="5" top="270" width="1120" height="340">
+				<rectangle align="client" color="Black" strokeColor="white" strokeSize="1"/>
+				<button left="5" top="2" width="20" height="20" text="+" onClick="self.rclGolpes:append();"/>
+				<button left="25" top="2" width="20" height="20" text="O" onClick="self.rclGolpes:sort();"/>
+				<label left="0" top="2" width="1100" height="20" text="GOLPES" horzTextAlign="center"/>
+
+				<recordList left="5" top="25" width="1110" height="310" name="rclGolpes" field="golpes" templateForm="frmPKMN3MOVE" layout="horizontalTiles">
+					<event name="onCompare"><![CDATA[               
+		                if (tonumber(nodeA.ordem) or 99) < (tonumber(nodeB.ordem) or 99) then
+		                        return -1;
+		                elseif (tonumber(nodeA.ordem) or 99) > (tonumber(nodeB.ordem) or 99) then
+		                        return 1;
+		                else   
+		                        return utils.compareStringPtBr(nodeA.nome_golpe, nodeB.nome_golpe);
+		                end;               
+
+		                ]]>
+			        </event>
+				</recordList>
+
+			</layout>
+
+			<script>
+				local function updateIcon()
+					if sheet ~= nil then
+						local url = "http://www.serebii.net/xy/pokemon/";
+						if self.boxDetalhesDoTime.node.shiny then
+							url = "http://www.serebii.net/Shiny/XY/";
+						end;
+						local id = (self.boxDetalhesDoTime.node.icon_id or "000");
+						if self.boxDetalhesDoTime.node.mega then
+							id = id .. "-m"
+						end;
+						if self.boxDetalhesDoTime.node.y then
+							id = id .. "y"
+						end;
+						if self.boxDetalhesDoTime.node.x then
+							id = id .. "x"
+						end;
+
+						sheet["time_icon_" .. self.boxDetalhesDoTime.node.num] = url .. id .. ".png";
+
+						self.boxDetalhesDoTime.node.browser_icon = "http://www.serebii.net/pokedex-xy/icon/" .. id .. ".png";					
+
+						url = "http://www.serebii.net/itemdex/sprites/" .. (self.boxDetalhesDoTime.node.pokemon_ball or "ball") .. ".png";
+						sheet["time_ball_" .. self.boxDetalhesDoTime.node.num] = url;
+
+						sheet["time_level_" .. self.boxDetalhesDoTime.node.num] = self.boxDetalhesDoTime.node.pokemon_nivel;
+						sheet["time_status_" .. self.boxDetalhesDoTime.node.num] = self.boxDetalhesDoTime.node.efeitos;
+
+						local equip = (self.boxDetalhesDoTime.node.equipamento_nome or "");
+						equip = equip:gsub("%s+", "");
+						equip = equip:lower();
+
+						url = "http://www.serebii.net/itemdex/sprites/" .. (equip or "") .. ".png";
+						sheet["time_equip_" .. self.boxDetalhesDoTime.node.num] = url;
+
+					end;
+				end;
+			</script>
+		</dataScopeBox>
+	</scrollBox>
+</form>

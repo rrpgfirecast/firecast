@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGerenciador02_NPC" width="650" height="200" theme="dark" margins="{top=1}">
+	<rectangle left="0" top="0" width="650" height="200" color="#212121">
+		<rectangle left="0" top="0" width="200" height="200" color="black" strokeColor="white" strokeSize="1"/>
+		<image left="1" top="1" width="198" height="198" field="avatar" editable="true" style="autoFit" />
+		
+		<label left="200" top="0" width="125" height="25" text="Raça" horzTextAlign="center"/>
+		<label left="325" top="0" width="125" height="25" text="Classe" horzTextAlign="center"/>
+		<label left="450" top="0" width="150" height="25" text="Nome" horzTextAlign="center"/>
+		
+		<label left="200" top="50" width="125" height="25" text="Atitude" horzTextAlign="center"/>
+		<label left="325" top="50" width="125" height="25" text="Relação" horzTextAlign="center"/>
+		<label left="450" top="50" width="175" height="25" text="Comentarios" horzTextAlign="center"/>
+		
+		<label left="200" top="100" width="250" height="25" text="Descrição" horzTextAlign="center"/>
+		
+		<edit left="200" top="25" width="125" height="25" field="raca" />
+		<edit left="325" top="25" width="125" height="25" field="classe" />
+		<edit left="450" top="25" width="150" height="25" field="nome" />
+		
+		<edit left="200" top="75" width="125" height="25" field="atitude" />
+		<edit left="325" top="75" width="125" height="25" field="relacao" />
+		<textEditor  left="450" top="75" width="175" height="120" field="comentarios" />
+		
+		<textEditor  left="200" top="125" width="250" height="70" field="descricao" />
+		
+		<button left="620" top="5" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse npc?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+</form>

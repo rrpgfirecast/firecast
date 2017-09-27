@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAMZ3" align="client" theme="dark">
+	<template name="Atribute2">
+		<script><![CDATA[
+			local function rolagemCallback$(field)(rolagem)
+				local chance = (tonumber(sheet.chance_$(field)) or 0);
+				local resultado = rolagem.resultado;
+				local mesa = rrpg.getMesaDe(sheet);
+
+				if resultado <= chance then
+					mesa.activeChat:enviarMensagem("Sucesso!");
+				else
+					mesa.activeChat:enviarMensagem("Falha!");
+				end;
+
+			end;
+			]]>
+		</script>
+
+		<button left="0" top="0" width="110" height="20" text="$(text)" horzTextAlign="center" fontSize="$(fontSize)">
+			<event name="onClick"><![CDATA[
+				local atributo = (tonumber(sheet.atr_efetivo_$(field)) or 0);
+
+				local chance = 30;
+
+				if atributo > 95 then
+					chance = 100;
+				else
+					local p1 = math.min(atributo, 25);
+					local p2 = math.max(math.min(atributo-25, 20), 0);
+					local p3 = math.max(math.min(atributo-45, 50), 0);
+
+					chance = 30 + p1 + (p2 * 0.75) + (p3 * 0.5);
+				end;
+
+				sheet.chance_$(field) = chance;
+
+				local rolagem = rrpg.interpretarRolagem("1d100");
+				local mesa = rrpg.getMesaDe(sheet);
+				mesa.activeChat:rolarDados(rolagem, "Teste de $(text) " .. atributo .. " (" .. chance .. "%)", rolagemCallback$(field));
+				]]>
+			</event>
+		</button>
+		
+		<edit left="110" top="0" width="50" height="25" field="atr_bonus_$(field)" type="number"/>
+		<rectangle left="160" top="0" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="160" top="0" width="50" height="25" horzTextAlign="center" field="atr_efetivo_$(field)"/>
+
+		<dataLink fields="{'atr_total_$(field)', 'atr_bonus_$(field)'}">
+			<event name="onChange">
+				if sheet~=nil then
+					local total = 	(tonumber(sheet.atr_total_$(field)) or 0) +
+									(tonumber(sheet.atr_bonus_$(field)) or 0);
+					sheet.atr_efetivo_$(field) = total;
+				end;
+			</event>
+		</dataLink>
+	</template>
+
+	<template name="diceRoll">
+		<button left="0" top="0" width="110" height="20" text="$(text)" horzTextAlign="center" fontSize="$(fontSize)">
+			<event name="onClick">
+				local roll = sheet.roll_$(field) or "1d1-1";
+				local rolagem = rrpg.interpretarRolagem(roll);
+				local mesa = rrpg.getMesaDe(sheet);
+				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+			</event>
+		</button>
+
+		<rectangle left="110" top="0" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="110" top="0" width="100" height="25" horzTextAlign="center" field="roll_$(field)"/>
+
+		<edit left="210" top="0" width="40" height="25" horzTextAlign="center" field="extra_$(field)"/>
+
+		<dataLink fields="{'$(look_1)', '$(look_2)', 'extra_$(field)'}">
+			<event name="onChange">
+				if sheet == nil then return end;
+
+				local f1 = tonumber(sheet.$(look_1)) or 0;
+				local f2 = tonumber(sheet.$(look_2)) or 0;
+				local f3 = tonumber(sheet.extra_$(field)) or 0;
+				local mod = f1 + f2 + f3;
+
+				sheet.roll_$(field) = "$(dice) + " .. mod;
+			</event>
+		</dataLink>
+	</template>
+
+	<scrollBox align="client">
+		<layout left="270" top="0" width="220" height="180">
+			<rectangle align="client" color="black"/>
+			<label left="0" top="5" width="220" height="20" text="Atributos - Allei" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="310" height="25">
+				<label left="110" top="5" width="50" height="20" text="Bônus" horzTextAlign="center"/>
+				<label left="160" top="5" width="50" height="20" text="Total" horzTextAlign="center"/>
+			</layout>
+
+			<layout left="5" top="50" width="210" height="25">
+				<Atribute2 text="Destreza (DES)" field="des" fontSize="13"/>
+			</layout>
+			<layout left="5" top="75" width="210" height="25">
+				<Atribute2 text="Percepção (PER)" field="per" fontSize="13"/>
+			</layout>
+			<layout left="5" top="100" width="210" height="25">
+				<Atribute2 text="Inteligência (INT)" field="int" fontSize="13"/>
+			</layout>
+			<layout left="5" top="125" width="210" height="25">
+				<Atribute2 text="Concentração (CON)" field="con" fontSize="11"/>
+			</layout>
+			<layout left="5" top="150" width="210" height="25">
+				<Atribute2 text="Força de Vontade (FV)" field="fv" fontSize="10"/>
+			</layout>
+		</layout>
+
+		<layout left="500" top="0" width="220" height="180">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="220" height="20" text="Talentos - Allei" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="210" height="25">
+				<label left="110" top="5" width="50" height="20" text="Bônus" horzTextAlign="center"/>
+				<label left="160" top="5" width="50" height="20" text="Total" horzTextAlign="center"/>
+			</layout>
+			<layout left="5" top="50" width="210" height="25">
+				<Atribute2 text="Mira (MIR)" field="mir" fontSize="13"/>
+			</layout>
+			<layout left="5" top="75" width="210" height="25">
+				<Atribute2 text="Raciocínio (RAC)" field="rac" fontSize="13"/>
+			</layout>
+			<layout left="5" top="100" width="210" height="25">
+				<Atribute2 text="Reflexo (REF)" field="ref" fontSize="13"/>
+			</layout>
+			<layout left="5" top="125" width="210" height="25">
+				<Atribute2 text="Habilidade (HAB)" field="hab" fontSize="13"/>
+			</layout>
+		</layout>
+
+		<layout left="730" top="0" width="220" height="180">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="220" height="20" text="Atributos - Zhul" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="210" height="25">
+				<label left="110" top="5" width="50" height="20" text="Bônus" horzTextAlign="center"/>
+				<label left="160" top="5" width="50" height="20" text="Total" horzTextAlign="center"/>
+			</layout>
+			<layout left="5" top="50" width="210" height="25">
+				<Atribute2 text="Força (FOR)" field="for" fontSize="13"/>
+			</layout>
+			<layout left="5" top="75" width="210" height="25">
+				<Atribute2 text="Velocidade (VEL)" field="vel" fontSize="13"/>
+			</layout>
+			<layout left="5" top="100" width="210" height="25">
+				<Atribute2 text="Maquinário (MAQ)" field="maq" fontSize="13"/>
+			</layout>
+			<layout left="5" top="125" width="210" height="25">
+				<Atribute2 text="Construção Elemental (CE)" field="ce" fontSize="8"/>
+			</layout>
+		</layout>
+
+		<layout left="960" top="0" width="220" height="180">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="220" height="20" text="Talentos - Zhul" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="210" height="25">
+				<label left="110" top="5" width="50" height="20" text="Bônus" horzTextAlign="center"/>
+				<label left="160" top="5" width="50" height="20" text="Total" horzTextAlign="center"/>
+			</layout>
+			<layout left="5" top="50" width="210" height="25">
+				<Atribute2 text="Poder de Fogo (PF)" field="pf" fontSize="11"/>
+			</layout>
+			<layout left="5" top="75" width="210" height="25">
+				<Atribute2 text="Agilidade (AGI)" field="agi" fontSize="13"/>
+			</layout>
+			<layout left="5" top="100" width="210" height="25">
+				<Atribute2 text="Resistência (RES)" field="res" fontSize="13"/>
+			</layout>
+			<layout left="5" top="125" width="210" height="25">
+				<Atribute2 text="Voo" field="voo" fontSize="13"/>
+			</layout>
+		</layout>
+
+
+		<layout left="0" top="0" width="260" height="305">
+			<rectangle align="client" color="black"/>
+			<label left="0" top="5" width="220" height="20" text="Êxitos" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="250" height="25">
+				<diceRoll text="Iniciativa" field="iniciativa" fontSize="13" look_1="atr_efetivo_ref" look_2="atr_efetivo_agi" dice="1d20"/>
+			</layout>
+
+			<label left="0" top="55" width="220" height="20" text="Acertos" horzTextAlign="center"/>
+
+			<layout left="5" top="75" width="250" height="25">
+				<diceRoll text="Ataque Corp." field="acertos_cac" fontSize="13" look_1="atr_efetivo_des" look_2="atr_efetivo_vel" dice="1d20"/>
+			</layout>
+			<layout left="5" top="100" width="250" height="25">
+				<diceRoll text="Ataque a Dist." field="acertos_dist" fontSize="13" look_1="atr_efetivo_mir" look_2="atr_efetivo_agi" dice="1d20"/>
+			</layout>
+			<layout left="5" top="125" width="250" height="25">
+				<diceRoll text="Bloqueio" field="acertos_bloqueio" fontSize="13" look_1="atr_efetivo_ref" look_2="atr_efetivo_vel" dice="1d20"/>
+			</layout>
+			<layout left="5" top="150" width="250" height="25">
+				<diceRoll text="Escape" field="acertos_escape" fontSize="13" look_1="atr_efetivo_per" look_2="atr_efetivo_agi" dice="1d20"/>
+			</layout>
+			<layout left="5" top="175" width="250" height="25">
+				<diceRoll text="Agarrão" field="acertos_agarrao" fontSize="13" look_1="atr_efetivo_for" look_2="atr_efetivo_des" dice="1d10"/>
+			</layout>
+			<layout left="5" top="200" width="250" height="25">
+				<diceRoll text="Counter" field="acertos_counter" fontSize="13" look_1="atr_efetivo_hab" look_2="atr_efetivo_vel" dice="1d20"/>
+			</layout>
+
+			<label left="0" top="230" width="220" height="20" text="Ataques" horzTextAlign="center"/>
+
+			<layout left="5" top="250" width="250" height="25">
+				<diceRoll text="Corpo-a-Corpo" field="ataques_cac" fontSize="13" look_1="atr_efetivo_for" look_2="empty" dice="1d10"/>
+			</layout>
+			<layout left="5" top="275" width="250" height="25">
+				<diceRoll text="À Distancia" field="ataques_dist" fontSize="13" look_1="atr_efetivo_pf" look_2="empty" dice="1d10"/>
+			</layout>
+		</layout>
+
+		<layout left="270" top="190" width="485" height="425">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="485" height="20" text="Habilidades" horzTextAlign="center"/>
+			<recordList name="rclHabilidadesIniciaisPequeno" field="campoDosHabilidadesIniciais" templateForm="frmAMZ3_1" left="5" top="25" width="475" height="395" layout="vertical"/>
+		</layout>
+
+	</scrollBox>
+</form>

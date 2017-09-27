@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>PDF para SVG (RRPG Firecast)</title>
+	</head>
+	<script src="zip/jszip.js"></script>
+	<script src="pdf/pdf.js"></script>
+	<script src="xmltotxt.js" charset="UTF-8"></script>
+	<script src="conversor.js" charset="UTF-8"></script>
+	
+	
+	<script>
+		function aplicarConfiguracoes() {
+			var novaEscala = document.getElementById('edtEscala').value;
+		
+			if (novaEscala >= 0.05 && novaEscala <= 50) 
+				scaleToUse = novaEscala;
+			else
+				scaleToUse = 1.5;
+					
+			var convByImage = document.getElementById("convByImage").checked;
+			
+			if (convByImage)		
+				renderAsImage = true;
+			else
+				renderAsImage = false;		
+
+			var cce = document.getElementById("choiceToEdit").checked;
+			
+			if (cce)
+				convertChoicesParaEdits = true;
+			else
+				convertChoicesParaEdits = false;
+				
+			if (document.getElementById("cbxDesenharShapeAnnotations").checked)	
+				desenharShapesDosAnnotations = true;
+			else
+				desenharShapesDosAnnotations = false;				
+		
+			if (pdfObj)
+				showPage(currentPage); // Reexibir a página			
+		}
+	</script>
+	
+	<style>
+		.configuracao span {
+			font-size: 14px;
+		}
+	</style>
+	
+	<body>
+		<input type="file" id="files" name="files[]" accept=".pdf"/>
+		<p>
+			<div class="configuracao" style="border: 1px solid black; display:inline-block;padding:1px">
+				<span>Configurações:</span>
+				<br/>
+				<span>			
+					<span>Escala (Zoom): </span>
+					<input id="edtEscala" type="number" step="0.05" style="width:50px; margins: 2px;" value="1.5"/>
+					<span> vezes</span>
+					<br/>
+					<span>Tipo de Conversão: </span>
+					<input id="convByImage" type="radio" name="tipoConv" value="convStatica" checked="checked">Gerar imagem estática (conversão mais fiél)</input>
+					<input id="convElements" type="radio" name="tipoConv" value="convStatica">Gerar elementos svg</input>
+					<br/>
+					<span>Converter campos de escolha para: </span>
+					<input id="choiceToEdit" type="radio" name="oQueChoices" value="1" checked="checked">Caixas de texto</input>
+					<input id="choiceToCombo" type="radio" name="oQueChoices" value="2">Caixas de seleção vazias</input>
+					<br/>		
+					<input type="checkbox" id="cbxDesenharShapeAnnotations" checked="checked">Permitir figuras nos campos/annotations</input>
+					<br/>		
+					<input type="button" value="Aplicar Configurações" onclick="aplicarConfiguracoes()" />
+				</span>
+			</div>
+			<br/>
+			<br/>
+			<span>Paginas: </span>
+			<span id="pagesLinks"></span>
+		</p>
+			
+		
+		<span id="spanDimensoes"></span>
+		<div id="svgTarget" style="border-style: solid; border-color: black; border-width:1px;width:0px">
+		</div>
+		
+		<script>
+		    function handleFileSelect(evt) {
+				var files = evt.target.files; // FileList object
+				
+				if (!files || files.length == 0) {
+					return;
+				}
+				
+				var file = files[0];
+
+				pdfObj = null;
+				aplicarConfiguracoes();
+				iniciarConversor(URL.createObjectURL(file), file.name);
+			}
+		
+			document.getElementById('files').addEventListener('change', handleFileSelect, false);
+		</script>
+	</body>
+</html>

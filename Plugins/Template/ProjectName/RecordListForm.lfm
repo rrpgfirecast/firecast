@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmRecordListForm" width="110" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit left="0" top="0" width="30" height="25" field="contador" type="number"/>
+		<edit left="30" top="0" width="165" height="25" field="nome"/>
+
+		<!-- Botão que apaga o objeto da lista -->
+		<button left="195" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+		<!-- Soma os contadores da lista -->
+		<dataLink field="contador">
+			<event name="onChange"><![CDATA[
+		        if sheet~= nil then
+					local node = ndb.getRoot(sheet);
+					local objetos = ndb.getChildNodes(node.listaDe);
+					local soma = 0;
+
+					for i=1, #objetos, 1 do 
+						soma = soma + (tonumber(objetos[i].contador) or 0);
+					end;
+
+					node.countSum = soma;
+
+					-- Atualiza a ordem lista a cada alteração
+					local rclName = self:findControlByName("rclName");
+					rclName:sort();
+				end;
+		        ]]>
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

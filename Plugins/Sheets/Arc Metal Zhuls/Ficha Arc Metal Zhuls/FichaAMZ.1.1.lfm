@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAMZ1_1" align="client" theme="dark">
+	<template name="Alleis">
+		<label left="0" top="5" width="100" height="20" text="$(nome)" horzTextAlign="trailing"/>
+		<edit left="110" top="0" width="200" height="25" field="desc_$(field)"/>
+	</template>
+	<scrollBox align="client">
+		<layout left="0" top="0" width="960" height="70">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<layout left="5" top="5" width="310" height="25" >
+				<Alleis field="nome" nome="Nome"/>
+			</layout>
+			<layout left="5" top="35" width="310" height="25" >
+				<Alleis field="familia" nome="Família"/>
+			</layout>
+			<layout left="320" top="5" width="310" height="25" >
+				<Alleis field="sexo" nome="Sexo"/>
+			</layout>
+			<layout left="320" top="35" width="310" height="25" >
+				<Alleis field="idade" nome="Idade"/>
+			</layout>
+			<layout left="585" top="5" width="310" height="25" >
+				<Alleis field="altura" nome="Altura"/>
+			</layout>
+			<layout left="585" top="35" width="310" height="25" >
+				<Alleis field="peso" nome="Peso"/>
+			</layout>
+		</layout>
+
+		<layout left="0" top="80" width="400" height="400">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Aparencia" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="360" field="aparencia"/>
+        </layout>
+		<layout left="410" top="80" width="400" height="400">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Personalidade" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="360" field="personalidade"/>
+        </layout>
+        <layout left="820" top="80" width="400" height="400">
+        	<rectangle align="client" color="black" strokeColor="white" strokeSize="1"/>
+			<image left="1" top="1" width="398" height="398" field="avatar" editable="true" style="autoFit" >
+				<event name="OnStartDrag">
+				    drag:addData("imageURL", sheet.avatar);
+				</event>
+			</image>
+		</layout>
+
+	</scrollBox>
+</form>

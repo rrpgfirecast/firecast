@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaLH" formType="sheetTemplate" dataType="Ambesek.Nefertyne.FichaLH" title="Ficha LH" align="client" theme="dark">
+    <tabControl align="client">
+        <tab title="Geral">
+            <import file="LH.1.lfm"/>
+        </tab>
+        <tab title="Habilidades">
+            <import file="LH.2.lfm"/>
+        </tab>
+        <tab title="Inventario">
+            <import file="LH.3.lfm"/>
+        </tab>
+		<tab title="Descrições">
+            <import file="LH.4.lfm"/>
+        </tab>
+		<tab title="Anotações">
+            <import file="LH.5.lfm"/>
+        </tab>
+		<tab title="Creditos">
+            <import file="LH.6.lfm"/>
+        </tab>
+    </tabControl>
+</form>

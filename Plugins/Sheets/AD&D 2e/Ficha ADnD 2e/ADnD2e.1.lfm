@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmADnD1" align="client" theme="dark">
+    <scrollBox align="client">
+        
+		<template name="Cabecalho">
+        	<label left="5" top="5" width="100" height="20" text="$(nome)" horzTextAlign="trailing"/>
+        	<edit left="110" top="0" width="200" height="25" field="$(field)"/>
+        </template>
+
+        <template name="Arma">
+        	<edit left="5" top="0" width="190" height="25" field="Arma_$(field)"/>
+        	<edit left="195" top="0" width="50" height="25" field="Arma_ataques_$(field)"/>
+        	<edit left="245" top="0" width="50" height="25" field="Arma_alcance_$(field)"/>
+        	<edit left="295" top="0" width="50" height="25" field="Arma_dano_pm_$(field)"/>
+        	<edit left="345" top="0" width="50" height="25" field="Arma_dano_g_$(field)"/>
+        	<edit left="395" top="0" width="50" height="25" field="Arma_ajuste_$(field)"/>
+        	<edit left="445" top="0" width="50" height="25" field="Arma_tipo_$(field)"/>
+        	<edit left="495" top="0" width="50" height="25" field="Arma_peso_$(field)"/>
+        	<edit left="545" top="0" width="50" height="25" field="Arma_velocidade_$(field)"/>
+        </template>
+		
+		<layout left="0" top="0" width="935" height="70">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<layout left="5" top="5" width="310" height="25" >
+				<Cabecalho field="nome" nome="Nome"/>
+			</layout>
+			<layout left="270" top="5" width="310" height="25" >
+				<Cabecalho field="raca" nome="Raça"/>
+			</layout>
+			<layout left="560" top="5" width="310" height="25" >
+				<Cabecalho field="divindade" nome="Divindade"/>
+			</layout>
+			<layout left="5" top="35" width="310" height="25" >
+				<label left="5" top="5" width="100" height="20" text="Nível" horzTextAlign="trailing"/>
+        		<edit left="110" top="0" width="40" height="25" field="nivel"/>
+        		<label left="155" top="5" width="20" height="20" text="XP" horzTextAlign="trailing"/>
+        		<edit left="180" top="0" width="65" height="25" field="xp1"/>
+        		<edit left="245" top="0" width="65" height="25" field="xp2"/>
+			</layout>
+			<layout left="270" top="35" width="310" height="25" >
+				<Cabecalho field="classe" nome="Classe"/>
+			</layout>
+			<layout left="560" top="35" width="310" height="25" >
+				<Cabecalho field="tendencia" nome="Tendência"/>
+			</layout>
+		</layout>
+
+		<layout left="0" top="80" width="450" height="360">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="450" height="20" text="ATRIBUTOS" horzTextAlign="center"/>
+			
+	        <layout left="0" top="30" width="450" height="50">
+	        	<label left="5" top="5" width="100" height="45" text="FORÇA"/>
+	        	<edit left="100" top="0" width="50" height="50" field="forca" horzTextAlign="center" fontSize="20"/>
+
+	        	<label left="155" top="5" width="40" height="20" text="Acerto"/>
+        		<edit left="155" top="25" width="40" height="25" field="for_acerto"/>
+
+        		<label left="203" top="5" width="40" height="20" text="Dano"/>
+        		<edit left="200" top="25" width="40" height="25" field="for_dano"/>
+
+        		<label left="247" top="5" width="40" height="20" text="Carga"/>
+        		<edit left="245" top="25" width="40" height="25" field="for_carga"/>
+
+        		<label left="290" top="5" width="45" height="20" text="Sustentação" fontSize="8"/>
+        		<edit left="290" top="25" width="40" height="25" field="for_sustentacao"/>
+
+        		<label left="338" top="5" width="40" height="20" text="Abrir"/>
+        		<edit left="335" top="25" width="40" height="25" field="for_abrir"/>
+
+        		<label left="380" top="5" width="40" height="20" text="Barras"/>
+        		<edit left="380" top="25" width="40" height="25" field="for_barras"/>
+	        </layout>
+	        <layout left="0" top="85" width="450" height="50">
+	        	<label left="5" top="5" width="100" height="45" text="DESTREZA"/>
+	        	<edit left="100" top="0" width="50" height="50" field="destreza" horzTextAlign="center" fontSize="20"/>
+
+	        	<label left="155" top="5" width="40" height="20" text="Reação" fontSize="12"/>
+        		<edit left="155" top="25" width="40" height="25" field="des_reacao"/>
+
+        		<label left="203" top="5" width="40" height="20" text="Ataque" fontSize="12"/>
+        		<edit left="200" top="25" width="40" height="25" field="des_ataque"/>
+
+        		<label left="247" top="5" width="40" height="20" text="Defesa"/>
+        		<edit left="245" top="25" width="40" height="25" field="des_defesa"/>
+	        </layout>
+	        <layout left="0" top="140" width="450" height="50">
+	        	<label left="5" top="5" width="100" height="45" text="CONSTITUIÇÃO"/>
+	        	<edit left="100" top="0" width="50" height="50" field="constituicao" horzTextAlign="center" fontSize="20"/>
+
+	        	<label left="160" top="5" width="40" height="20" text="PVs"/>
+        		<edit left="155" top="25" width="40" height="25" field="con_pvs"/>
+
+        		<label left="200" top="5" width="40" height="20" text="Colapso" fontSize="11"/>
+        		<edit left="200" top="25" width="40" height="25" field="con_colapse"/>
+
+        		<label left="243" top="5" width="47" height="20" text="Ressurreição" fontSize="8"/>
+        		<edit left="245" top="25" width="40" height="25" field="con_ressurreicao"/>
+
+        		<label left="290" top="5" width="45" height="20" text="Veneno" fontSize="12"/>
+        		<edit left="290" top="25" width="40" height="25" field="con_veneno"/>
+
+        		<label left="335" top="5" width="50" height="20" text="Regeneração" fontSize="8"/>
+        		<edit left="335" top="25" width="40" height="25" field="con_regeneracao"/>
+	        </layout>
+	        <layout left="0" top="195" width="450" height="50">
+	        	<label left="5" top="5" width="100" height="45" text="INTELIGÊNCIA"/>
+	        	<edit left="100" top="0" width="50" height="50" field="inteligencia" horzTextAlign="center" fontSize="20"/>
+
+	        	<label left="155" top="5" width="40" height="20" text="Idiomas" fontSize="11"/>
+        		<edit left="155" top="25" width="40" height="25" field="int_idiomas"/>
+
+        		<label left="200" top="5" width="40" height="20" text="Magia" fontSize="13"/>
+        		<edit left="200" top="25" width="40" height="25" field="int_magia"/>
+
+        		<label left="245" top="5" width="47" height="20" text="Aprender" fontSize="10"/>
+        		<edit left="245" top="25" width="40" height="25" field="int_aprender"/>
+
+        		<label left="290" top="5" width="45" height="20" text="Maximo" fontSize="11"/>
+        		<edit left="290" top="25" width="40" height="25" field="int_magia"/>
+
+        		<label left="335" top="5" width="95" height="20" text="Imunidade à Magia" fontSize="11"/>
+        		<edit left="335" top="25" width="95" height="25" field="int_imunidade"/>
+	        </layout>
+	        <layout left="0" top="250" width="450" height="50">
+	        	<label left="5" top="5" width="100" height="45" text="SABEDORIA"/>
+	        	<edit left="100" top="0" width="50" height="50" field="sabedoria" horzTextAlign="center" fontSize="20"/>
+
+	        	<label left="155" top="5" width="40" height="20" text="Defesa" fontSize="11"/>
+        		<edit left="155" top="25" width="40" height="25" field="sab_defesa"/>
+
+        		<label left="200" top="5" width="85" height="20" text="Magias Extras" fontSize="13"/>
+        		<edit left="200" top="25" width="85" height="25" field="sab_extra"/>
+
+        		<label left="290" top="5" width="45" height="20" text="Falha" fontSize="12"/>
+        		<edit left="290" top="25" width="40" height="25" field="sab_falha"/>
+
+        		<label left="335" top="5" width="95" height="20" text="Imunidade à Magia" fontSize="11"/>
+        		<edit left="335" top="25" width="95" height="25" field="int_imunidade"/>
+	        </layout>
+	        <layout left="0" top="305" width="450" height="50">
+	        	<label left="5" top="5" width="100" height="45" text="CARISMA"/>
+	        	<edit left="100" top="0" width="50" height="50" field="carisma" horzTextAlign="center" fontSize="20"/>
+
+	        	<label left="155" top="5" width="40" height="20" text="Aliados" fontSize="12"/>
+        		<edit left="155" top="25" width="40" height="25" field="car_aliados"/>
+
+        		<label left="203" top="5" width="40" height="20" text="Lealdade" fontSize="10"/>
+        		<edit left="200" top="25" width="40" height="25" field="car_lealdade"/>
+
+        		<label left="247" top="5" width="40" height="20" text="Reação" fontSize="12"/>
+        		<edit left="245" top="25" width="40" height="25" field="car_reação"/>
+	        </layout>
+        </layout>
+		
+       	<layout left="0" top="450" width="600" height="160">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="600" height="20" text="RESISTÊNCIAS" horzTextAlign="center"/>
+
+	        <layout left="0" top="25" width="600" height="25">
+	        	<label left="100" top="5" width="35" height="20" text="1" horzTextAlign="center"/>
+	        	<label left="135" top="5" width="35" height="20" text="2" horzTextAlign="center"/>
+	        	<label left="170" top="5" width="35" height="20" text="3" horzTextAlign="center"/>
+	        	<label left="205" top="5" width="35" height="20" text="4" horzTextAlign="center"/>
+	        	<label left="240" top="5" width="35" height="20" text="5" horzTextAlign="center"/>
+	        	<label left="275" top="5" width="35" height="20" text="6" horzTextAlign="center"/>
+	        	<label left="310" top="5" width="35" height="20" text="7" horzTextAlign="center"/>
+	        	<label left="345" top="5" width="35" height="20" text="8" horzTextAlign="center"/>
+	        	<label left="380" top="5" width="35" height="20" text="9" horzTextAlign="center"/>
+	        	<label left="415" top="5" width="35" height="20" text="10" horzTextAlign="center"/>
+
+	        	<label left="455" top="5" width="105" height="20" text="Paralisia/Veneno/Morte" horzTextAlign="trailing" fontSize="10"/>
+	        	<edit left="560" top="0" width="35" height="25" field="TRveneno"/>
+	        </layout>
+
+	        <layout left="0" top="50" width="600" height="25">
+	        	<label left="2" top="5" width="40" height="20" text="TACO" horzTextAlign="trailing"/>
+        		<edit left="45" top="0" width="40" height="25" field="taco"/>
+
+        		<edit left="100" top="0" width="35" height="25" field="taco1"/>
+        		<edit left="135" top="0" width="35" height="25" field="taco2"/>
+        		<edit left="170" top="0" width="35" height="25" field="taco3"/>
+        		<edit left="205" top="0" width="35" height="25" field="taco4"/>
+        		<edit left="240" top="0" width="35" height="25" field="taco5"/>
+        		<edit left="275" top="0" width="35" height="25" field="taco6"/>
+        		<edit left="310" top="0" width="35" height="25" field="taco7"/>
+        		<edit left="345" top="0" width="35" height="25" field="taco8"/>
+        		<edit left="380" top="0" width="35" height="25" field="taco9"/>
+        		<edit left="415" top="0" width="35" height="25" field="taco10"/>
+
+        		<label left="455" top="5" width="105" height="20" text="Bastão/Cajado/Varinha" horzTextAlign="trailing" fontSize="10"/>
+	        	<edit left="560" top="0" width="35" height="25" field="TRgatilho"/>
+	        </layout>
+	        <layout left="0" top="75" width="600" height="25">
+				<label left="2" top="5" width="40" height="20" text="Acerto" horzTextAlign="trailing"/>
+        		<edit left="45" top="0" width="40" height="25" field="acerto"/>
+
+        		<label left="100" top="5" width="35" height="20" text="-1" horzTextAlign="center"/>
+	        	<label left="135" top="5" width="35" height="20" text="-2" horzTextAlign="center"/>
+	        	<label left="170" top="5" width="35" height="20" text="-3" horzTextAlign="center"/>
+	        	<label left="205" top="5" width="35" height="20" text="-4" horzTextAlign="center"/>
+	        	<label left="240" top="5" width="35" height="20" text="-5" horzTextAlign="center"/>
+	        	<label left="275" top="5" width="35" height="20" text="-6" horzTextAlign="center"/>
+	        	<label left="310" top="5" width="35" height="20" text="-7" horzTextAlign="center"/>
+	        	<label left="345" top="5" width="35" height="20" text="-8" horzTextAlign="center"/>
+	        	<label left="380" top="5" width="35" height="20" text="-9" horzTextAlign="center"/>
+	        	<label left="415" top="5" width="35" height="20" text="-10" horzTextAlign="center"/>
+
+	        	<label left="455" top="5" width="105" height="20" text="Petrificação/Transformação" horzTextAlign="trailing" fontSize="8"/>
+	        	<edit left="560" top="0" width="35" height="25" field="TRtransmutacao"/>
+	        </layout>
+	        <layout left="0" top="100" width="600" height="25">
+	        	<label left="2" top="5" width="40" height="20" text="Distância" horzTextAlign="trailing" fontSize="10"/>
+        		<edit left="45" top="0" width="40" height="25" field="distancia"/>
+
+				<edit left="100" top="0" width="35" height="25" field="taco-1"/>
+				<edit left="135" top="0" width="35" height="25" field="taco-2"/>
+				<edit left="170" top="0" width="35" height="25" field="taco-3"/>
+				<edit left="205" top="0" width="35" height="25" field="taco-4"/>
+				<edit left="240" top="0" width="35" height="25" field="taco-5"/>
+				<edit left="275" top="0" width="35" height="25" field="taco-6"/>
+				<edit left="310" top="0" width="35" height="25" field="taco-7"/>
+				<edit left="345" top="0" width="35" height="25" field="taco-8"/>
+				<edit left="380" top="0" width="35" height="25" field="taco-9"/>
+				<edit left="415" top="0" width="35" height="25" field="taco-10"/>
+
+				<label left="455" top="5" width="105" height="20" text="Sopro-de-Dragão" horzTextAlign="trailing" fontSize="11"/>
+	        	<edit left="560" top="0" width="35" height="25" field="TRsopro"/>
+	        </layout>
+	    	<layout left="0" top="125" width="600" height="25">
+	    		<label left="455" top="5" width="105" height="20" text="Magia" horzTextAlign="trailing" fontSize="13"/>
+	        	<edit left="560" top="0" width="35" height="25" field="TRmagia"/>
+	       	</layout>
+	    </layout>
+
+	    <layout left="460" top="80" width="200" height="160">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="200" height="20" text="CATEGORIA DE ARMADURA (CA)" horzTextAlign="center"/>
+
+	        <label left="5" top="30" width="90" height="20" text="Destreza" horzTextAlign="trailing"/>
+        	<edit left="100" top="25" width="40" height="25" field="CAdes">
+        		<event name="onChange">
+                	sumCA();
+                </event>
+        	</edit>
+			<label left="5" top="55" width="90" height="20" text="Armadura" horzTextAlign="trailing"/>
+        	<edit left="100" top="50" width="40" height="25" field="CAarmadura">
+        		<event name="onChange">
+                	sumCA();
+                </event>
+        	</edit>
+			<label left="5" top="80" width="90" height="20" text="Escudo" horzTextAlign="trailing"/>
+        	<edit left="100" top="75" width="40" height="25" field="CAescudo">
+        		<event name="onChange">
+                	sumCA();
+                </event>
+        	</edit>
+			<label left="5" top="105" width="90" height="20" text="" horzTextAlign="trailing"/>
+        	<edit left="100" top="100" width="40" height="25" field="CAoutros">
+        		<event name="onChange">
+                	sumCA();
+                </event>
+        	</edit>
+
+        	<label left="5" top="130" width="90" height="20" text="TOTAL" horzTextAlign="trailing"/>
+        	<rectangle left="100" top="125" width="40" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="100" top="125" width="40" height="25" field="CAtotal" horzTextAlign="center"/>
+
+			<script>
+				local function sumCA();
+					if sheet~=nil then
+						local mod = 10 +
+									(tonumber(sheet.CAdes) or 0) + 
+									(tonumber(sheet.CAarmadura) or 0) + 
+									(tonumber(sheet.CAescudo) or 0) + 
+									(tonumber(sheet.CAoutros) or 0);
+						sheet.CAtotal = mod;
+					end;
+				end;
+			</script>
+	    </layout>
+
+	    <layout left="460" top="250" width="200" height="60">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="200" height="20" text="PONTOS DE VIDA" horzTextAlign="center"/>
+
+	        <edit left="5" top="30" width="95" height="25" field="PVatual"/>
+	        <edit left="100" top="30" width="95" height="25" field="PVmax"/>
+	    </layout>
+
+	    <image left="460" top="320" width="120" height="120" style="stretch" src="images/d20.png"/>
+
+		<rectangle left="670" top="80" width="230" height="230" color="DimGray" xradius="5" yradius="5" cornerType="innerLine"/>
+		<image left="670" top="80" width="230" height="230" field="avatar" editable="true" style="autoFit"/>
+
+		<layout left="610" top="320" width="600" height="290">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="600" height="20" text="ARMAS" horzTextAlign="center"/>
+
+	        <layout left="0" top="30" width="600" height="25">
+		        <label  left="5" top="0" width="190" height="25" fontSize="13" horzTextAlign="center" text="Arma"/>
+	        	<label left="195" top="0" width="50" height="25" fontSize="11" horzTextAlign="center" text="Ataques"/>
+	        	<label left="245" top="0" width="50" height="25" fontSize="11" horzTextAlign="center" text="Alcance"/>
+	        	<label left="295" top="0" width="50" height="25" fontSize="9" horzTextAlign="center" text="Dano (P/M)"/>
+	        	<label left="345" top="0" width="50" height="25" fontSize="11" horzTextAlign="center" text="Dano (G)"/>
+	        	<label left="395" top="0" width="50" height="25" fontSize="10" horzTextAlign="center" text="Ajuste"/>
+	        	<label left="445" top="0" width="50" height="25" fontSize="13" horzTextAlign="center" text="Peso"/>
+	        	<label left="495" top="0" width="50" height="25" fontSize="13" horzTextAlign="center" text="Tipo"/>
+	        	<label left="545" top="0" width="50" height="25" fontSize="10" horzTextAlign="center" text="Velocidade"/>
+	        </layout>
+	        <layout left="0" top="55" width="600" height="25">
+	        	<Arma field="1"/>
+	        </layout>
+	        <layout left="0" top="80" width="600" height="25">
+	        	<Arma field="2"/>
+	        </layout>
+	        <layout left="0" top="105" width="600" height="25">
+	        	<Arma field="3"/>
+	        </layout>
+	        <layout left="0" top="130" width="600" height="25">
+	        	<Arma field="4"/>
+	        </layout>
+	        <layout left="0" top="155" width="600" height="25">
+	        	<Arma field="5"/>
+	        </layout>
+	        <layout left="0" top="180" width="600" height="25">
+	        	<Arma field="6"/>
+	        </layout>
+	        <layout left="0" top="205" width="600" height="25">
+	        	<Arma field="7"/>
+	        </layout>
+	        <layout left="0" top="230" width="600" height="25">
+	        	<Arma field="8"/>
+	        </layout>
+	        <layout left="0" top="255" width="600" height="25">
+	        	<Arma field="9"/>
+	        </layout>
+		</layout>
+
+		<image align="client" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20ADnD%20releases/imagens/block.png" style="autoFit"/>
+	</scrollBox>
+</form>

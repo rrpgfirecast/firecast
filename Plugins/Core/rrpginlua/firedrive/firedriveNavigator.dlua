@@ -1,0 +1,709 @@
+﻿local fireDrive = require("fireDrive.lua");
+require("gui.lua");
+local ndb = require("ndb.lua");
+local utils = require("utils.lua");
+local dialogs = require("dialogs.lua");
+local system = require("system.lua");
+require("fireDriveGlobals.dlua");
+
+local nav = {};
+
+function nav.criarAddPopup(ctrl)
+	local pop = gui.newPopup();
+	pop.width = 150;
+	pop.height = 110;	
+	
+	
+	local btnDir = gui.newButton();
+	btnDir.align = "top";
+	btnDir.margins = {left=5, right=5, top=5, bottom=5};
+	btnDir.text = "Novo diretório";
+	btnDir.height = 40;
+	btnDir.parent = pop;
+	
+	local btnUpload = gui.newButton();
+	btnUpload.align = "top";
+	btnUpload.margins = {left=5, right=5, top=5, bottom=5};
+	btnUpload.text = "";
+	btnUpload.height = 40;
+	btnUpload.parent = pop;	
+	
+	local m = {left=5, right=2, top=5, bottom=5};
+	btnUpload.padding = m;
+		
+	local imgUpload = gui.newImage();
+	imgUpload.align = "left";
+	imgUpload.height = btnUpload.height - m.top - m.bottom;
+	imgUpload.width = imgUpload.height;
+	imgUpload.url = "/firedrive/icos/uploadIco.png";
+	imgUpload.parent = btnUpload;
+	imgUpload.margins = {right=5};
+	
+	local labUpload = gui.newLabel();
+	labUpload.horzTextAlign = "leading";
+	labUpload.text = "Fazer Upload";
+	labUpload.align = "client";
+	labUpload.parent = btnUpload;
+	
+	
+	btnDir.onClick = function()
+						dialogs.inputQuery("Nome do diretório", "Nome do novo diretório:", nil,
+							function(informado)
+								pop:close();	
+								ctrl:setLoading();										
+								
+								fireDrive.createDirectory(includePathDelim(ctrl.currentDir) .. informado,
+														  function()
+															ctrl:gotoDir(ctrl.currentDir, 
+																function()
+																	ctrl:trySelectItem(informado);
+																end);
+																
+															ctrl:unsetLoading();
+														  end,
+														  
+														  function(errMsg)															
+															ctrl:unsetLoading();
+															ctrl:notifyError(errMsg);
+														  end);								
+							end,
+							
+							function()
+							end);										
+					 end;
+
+	
+	btnUpload.onClick = function ()
+							local filtroAbrir = nil;
+							
+							if ctrl.filter ~= nil then
+								if ctrl.filter:match("image/.+") then
+									filtroAbrir = "image/*";
+								end;
+							end;
+							
+							dialogs.openFile("Selecione arquivos para fazer upload", filtroAbrir, true, 
+								function(files)
+									pop:close();	
+								
+									for i = 1, #files, 1 do										
+										local f = files[i];
+										ctrl:startUploadFile(f.name, f.stream);
+									end;
+								end);
+						end;
+	
+	return pop;
+end;
+
+function nav.criarItemMenuPopup(ctrl)
+	local pop = gui.newPopup();
+	pop.width = 200;
+	pop.height = 130;
+	pop.backOpacity = 0.25; 
+	local itemUrl;	
+	local itemName;
+	local itemNode;
+	local totalH = 0;
+	
+	local function newMenuBtn(text)
+		local btn = gui.newButton();
+		local margins = {left=5, right=5, top=3, bottom=3};
+		local btnH = 35;
+		btn.text = text;
+		btn.margins = margins;
+		btn.height = btnH;
+		btn.align = "top";
+		btn.wordWrap = true;
+		btn.parent = pop;
+		
+		totalH = totalH + margins.top + margins.bottom + btnH;
+		return btn;
+	end;
+	
+	local btnRename = newMenuBtn("Renomear...");
+	local btnDelete = newMenuBtn("Excluir");
+	local btnCopyURL = newMenuBtn("Copiar link de download");	
+	--local btnTeste = newMenuBtn("Botao 2");
+	
+	pop.height = totalH + 8;
+	
+	btnDelete.onClick = function()
+							local itemUrlToDel = itemUrl;
+	
+							dialogs.confirmYesNo("Deseja realmente excluir '" .. itemName .. "'?", 
+								function(confirmado)
+									if confirmado then
+										pop:close();
+										ctrl:setLoading();
+
+										fireDrive.delete(itemUrlToDel, 
+											function()
+												ctrl:gotoDir(ctrl.currentDir);
+												ctrl:unsetLoading();
+											end,
+											
+											function(errorMsg)
+												ctrl:unsetLoading();
+												ctrl:notifyError(errorMsg);
+											end);
+									end;
+								end);
+						end;
+						
+	btnCopyURL.onClick = function()
+		local url = "";
+	
+		if itemNode ~= nil and itemNode.url ~= nil then
+			system.setClipboardText(itemNode.url);
+		end;		
+		
+		
+		pop:close();
+	end;
+	
+	btnRename.onClick = function()
+			local oldCompleteFileName = itemUrl;
+	
+			dialogs.inputQuery("Digite um novo nome", "Novo nome", extractFileName(oldCompleteFileName),
+				function(nv)
+					local nvParts = breakPathIntoParts(nv);
+					
+					if (#nvParts > 0) and (nvParts[1] ~= "") then
+						local newLocalFileName = nvParts[1];
+						local newFullName = extractFilePath(oldCompleteFileName) .. newLocalFileName;
+						
+						pop:close();
+						ctrl:setLoading();
+
+						fireDrive.rename(oldCompleteFileName, newFullName,
+							function()
+								ctrl:gotoDir(ctrl.currentDir, 
+									function()
+										ctrl:trySelectItem(newLocalFileName);
+									end);
+									
+								ctrl:unsetLoading();								
+							end,
+							
+							function(errorMsg)
+								ctrl:unsetLoading();
+								ctrl:notifyError(errorMsg);
+							end);						
+					end;
+				end);
+		end;
+	
+	pop.parent = ctrl;
+	
+	function pop:exibir(node, form)
+		if (node == nil) or ((node.name or "") == "") then
+			return;
+		end;
+		
+		btnCopyURL.enabled = (not node.isDir) and (not node.uploading);
+		btnDelete.enabled = not node.uploading;
+		btnRename.enabled = not node.uploading;
+						
+		itemName = node.name;
+		itemNode = node;
+		itemUrl = includePathDelim(ctrl.currentDir) .. node.name;		
+		pop:show("mouse", form);		
+	end;
+	
+	return pop;
+end;
+
+function nav.newFDNavigatorLayout()
+	local ctrl = gui.newDataScopeBox();
+	
+	local layTop;
+	local layCenter;
+	local btnVoltar;
+	local btnAdd;
+	local labTitulo;
+	local rclItens;
+	local indLoading;
+	local loadingCount = 0;
+	local scopeBox = ctrl;
+	local _wasRclFocused = false;
+	local sheet = ndb.newMemNodeDatabase();
+	local labErro = nil;
+	local labSpaceInfo = nil;
+	
+	scopeBox.node = sheet;
+	
+	layTop = gui.newRectangle();
+	ctrl.layTop = layTop
+	layTop.align = "top";
+	layTop.height = 48;
+	layTop.parent = ctrl;	
+	layTop.color = "#101010";
+	layTop.padding = {left=2, right=2, top = 2, bottom = 2};
+	
+	btnVoltar = gui.newButton();
+	ctrl.btnVoltar = btnVoltar;
+	btnVoltar.width = layTop.height;
+	btnVoltar.align = "left";
+	--btnVoltar.text = "<-";
+	btnVoltar.text = "";
+	btnVoltar.parent = layTop;
+	btnVoltar.canFocus = false;
+	
+	btnVoltar.imgBack = gui.newImage();
+	btnVoltar.imgBack.align = "client";
+	btnVoltar.imgBack.url = "/firedrive/back.png";
+	btnVoltar.imgBack.margins = {left=4, right = 4, top = 4, bottom = 4};
+	btnVoltar.imgBack.parent = btnVoltar;
+	
+	btnAdd = gui.newButton();
+	ctrl.btnAdd = btnAdd;
+	btnAdd.align = "right";
+	btnAdd.text = "";
+	btnAdd.canFocus = false;
+	btnAdd.width = layTop.height;
+	btnAdd.parent = layTop;	
+	
+	btnAdd._img = gui.newImage();
+	btnAdd._img.align = "client";
+	btnAdd._img.url = "/firedrive/icos/addIcon.png";	
+	--btnAdd._img.margins = {left=4, right = 4, top = 4, bottom = 4};	
+	btnAdd._img.parent = btnAdd;	
+	
+	labTitulo = gui.newLabel();
+	ctrl.labTitulo = labTitulo;
+	labTitulo.align = "client";
+	labTitulo.horzTextAlign = "center";
+	labTitulo.text = "/";
+	labTitulo.fontSize = 15;
+	labTitulo.parent = layTop;
+	
+	labSpaceInfo = gui.newLabel();
+	labSpaceInfo.align = "bottom";
+	labSpaceInfo.fontSize = 11;
+	labSpaceInfo.autoSize = true;
+	labSpaceInfo.wordWrap = false;
+	labSpaceInfo.horzTextAlign = "trailing";
+	labSpaceInfo.margins = {top=2};
+	labSpaceInfo.text = "";
+	labSpaceInfo.parent = ctrl;
+	
+	layCenter = gui.newLayout();
+	ctrl.layCenter = layCenter;
+	layCenter.align = "client";
+	layCenter.parent = ctrl;
+	
+	rclItens = gui.newRecordList();
+	ctrl.rclItens = rclItens;
+	rclItens.align = "client";
+	rclItens.selectable = true;	
+	rclItens.parent = layCenter;	
+	rclItens.field = "itens";
+	rclItens.templateForm = "frmFireDriveNavigatorItem";
+	rclItens.layout = "horizontalTiles";
+	
+	indLoading = gui.newActivityIndicator();	
+	ctrl.indLoading = ctrl;
+	indLoading.enabled = false;
+	indLoading.width = 64;
+	indLoading.height = 64;
+	indLoading.visible = false;
+	indLoading.parent = layCenter;
+		
+	function ctrl:setLoading()
+		loadingCount = loadingCount + 1;
+		
+		if loadingCount == 1 then
+			indLoading.visible = true;
+			indLoading.enabled = true;
+			_wasRclFocused = rclItens:isFocused() or rclItens:isChildFocused();			
+			rclItens.enabled = false;
+		end;
+	end;
+	
+	function ctrl:unsetLoading()
+		loadingCount = loadingCount - 1;
+		
+		if loadingCount <= 0 then
+			loadingCount = 0;
+			indLoading.visible = false;
+			indLoading.enabled = false;			
+			rclItens.enabled = true;	
+
+			if _wasRclFocused then
+				rclItens:setFocus();
+			end;
+		end;
+	end;
+		
+	function ctrl:gotoDir(directory, callback)
+		local pathParts = breakPathIntoParts(directory);
+		btnVoltar.visible = #pathParts > 0;		
+		ctrl.currentDir = directory;			
+		
+		labTitulo.text = includePathDelim(directory);
+		ctrl.setLoading();		
+		sheet.itens = nil;
+		
+		if ctrl._addPopup ~= nil then
+			ctrl._addPopup:close();
+		end;
+		
+		if ctrl._menuPopup ~= nil then
+			ctrl._menuPopup:close();
+		end;
+		
+		if labErro ~= nil then
+			labErro.parent = nil;
+		end;
+		
+		fireDrive.getFiles(directory,
+			function(itens)
+				ctrl:unsetLoading();
+				
+				if directory == ctrl.currentDir then
+					ndb.beginUpdate(sheet);
+					
+					tryFinally(
+						function ()		
+							if ctrl.filter ~= nil then
+								local filteredItens = {};
+								
+								for i = 1, #itens, 1 do
+									local it = itens[i];
+									
+									if it.isDir or (it.mimeType ~= nil and it.mimeType:match(ctrl.filter)) then
+										filteredItens[#filteredItens + 1] = it;
+									end;													
+								end;
+								
+								sheet.itens = filteredItens;
+							else
+								sheet.itens = itens;
+							end;																		
+							
+							local uploads = require("/firedrive/fireDriveUploads.dlua");
+							local uploadsInFolder = uploads.getUploadsInFolder(directory);
+							
+							for i = 1, #uploadsInFolder, 1 do
+								uploadsInFolder[i]:addNewNavigatorNodeInto(sheet.itens);
+							end;					
+					    end,
+						
+						function()
+							ndb.endUpdate(sheet);
+						end);
+				
+					
+					rclItens.selectedNode = nil;
+					ctrl:updateSpaceInfo();
+				end;
+				
+				if type(callback) == "function" then
+					callback();
+				end;
+			end,
+			
+			function(errMsg)
+				ctrl:unsetLoading();
+				
+				if directory == ctrl.currentDir then	
+					ctrl:showLabErro(errMsg);
+				end;
+			end);
+	end;	
+
+	function ctrl:showLabErro(errMsg)
+		if labErro == nil then
+			labErro = gui.newLabel();
+			labErro.align = "client";
+			labErro.vertTextAlign = "center";
+			labErro.horzTextAlign = "center";	
+			labErro.fontColor = "white";
+			labErro.fontSize = 18;
+			labErro.fontStyle = "bold";
+		end;
+		
+		labErro.text = "Ops: " .. errMsg;
+		labErro.parent = layCenter;
+	end;
+	
+	function ctrl:open(node)
+		ctrl:notifyUIActivity();
+	
+		if node ~= nil and node.name ~= nil and node.name ~= "" and (not node.uploading) then
+			if node.isDir then
+				ctrl:gotoDir(includePathDelim(ctrl.currentDir) .. node.name);
+			else		
+				if ctrl.onOpenItem ~= nil then
+					ctrl.onOpenItem(node);
+				end;
+			end;
+		end;
+	end;
+		
+	function ctrl:returnOneLevel()
+		local paths = breakPathIntoParts(ctrl.currentDir);
+		local p = "/";
+		
+		for i = 1, #paths - 1, 1 do
+			p = p .. paths[i] .. "/";
+		end;
+		
+		ctrl:gotoDir(p);
+	end;
+	
+	function ctrl:notifyError(errorMsg)
+		dialogs.showMessageDlg(errorMsg, dialogs.DT_ERROR, {dialogs.DB_OK});																
+	end;
+	
+	function ctrl:exibirMenuParaItem(node, form)
+		ctrl:notifyUIActivity();
+	
+		if ctrl._menuPopup == nil then
+			ctrl._menuPopup = nav.criarItemMenuPopup(ctrl);
+		end;
+		
+		ctrl._menuPopup:exibir(node, form);		
+	end;
+		
+	function ctrl:locateNodeForItem(itemName)
+		if sheet.itens ~= nil then
+			local nodes = ndb.getChildNodes(sheet.itens);
+			
+			for i = 1, #nodes, 1 do
+				local node = nodes[i];
+				
+				if utils.compareStringPtBr(node.name, itemName) == 0 then
+					return node;
+				end;
+			end;
+		end;	
+	end;
+	
+	function ctrl:trySelectItem(itemName)
+		local node = ctrl:locateNodeForItem(itemName);
+		
+		if node ~= nil then
+			rclItens.selectedNode = node;
+			rclItens:scrollToNode(node);
+		end;
+	end;
+	
+	function ctrl:startUploadFile(fileName, stream)
+		local uploadInDir = includePathDelim(ctrl.currentDir);
+		local destName = uploadInDir .. fileName;
+		local fdUploads = require("/firedrive/fireDriveUploads.dlua"); 
+		local uploadObject = fdUploads.getOrCreateUploadTable(destName);
+						
+		if uploadObject.sending then
+			return;
+		end;
+		
+		ndb.beginUpdate(sheet);
+		
+		tryFinally(function()
+			if sheet.itens == nil then
+				sheet.itens = {};
+			end;
+			
+			local node;
+			node = uploadObject:addNewNavigatorNodeInto(sheet.itens);
+			uploadObject:progress(0, 0);
+			
+			fireDrive.uploadFile(destName, stream, 
+				function(arq)
+					uploadObject:finalizar();
+					
+					ndb.beginUpdate(node);
+					
+					tryFinally(
+						function()
+							local cn = ndb.getChildNodes(sheet.itens);
+						
+							for i = 1, #cn, 1 do
+								local aNode = cn[i];
+								
+								if (aNode.name == node.name) and (aNode ~= node) then
+									ndb.deleteNode(aNode);
+								end;
+							end;
+							
+							ndb.clearNode(node);							
+							
+							for k, v in pairs(arq) do
+								node[k] = v;
+							end;
+							
+							if includePathDelim(ctrl.currentDir) == uploadInDir then
+								ctrl:trySelectItem(fileName);	
+							end;
+							
+							ctrl:updateSpaceInfo();
+						end,
+						
+						function ()
+							ndb.endUpdate(node);
+						end);
+					
+					
+					--[[ctrl:gotoDir(ctrl.currentDir, 
+								function()
+									ctrl:trySelectItem(fileName);									
+								end);	]]										
+				end,
+				
+				function(cBytes, maxBytes)
+					uploadObject:progress(cBytes, maxBytes);
+				end,
+				
+				function(errorMsg)
+					uploadObject:setErrorState(errorMsg);
+					uploadObject:finalizar();
+					ctrl:notifyError(string.format("Erro ao fazer upload do arquivo '%s': %s", fileName, errorMsg));											
+				end);		
+			end,
+			
+			function ()
+				ndb.endUpdate(sheet);
+			end);	
+	end;
+		
+	function ctrl:notifyUIActivity()
+		if ctrl.onUIActivity ~= nil then
+			ctrl.onUIActivity();
+		end;
+	end;
+	
+	function ctrl:notifyRequestCancel()
+		if ctrl.onRequestCancel ~= nil then
+			ctrl.onRequestCancel();
+		end;
+	end;
+	
+	function ctrl:getSelectedItem()
+		return rclItens.selectedNode;
+	end;
+	
+		
+	function ctrl:updateSpaceInfo()	
+		fireDrive.getSpaceInfo(
+			function(space)
+				local total = space.total or 0;
+				local used = space.used or 0;
+				local divisor;
+				local quantificador;
+				
+				if total <= 0 then
+					total = 1;
+				end;
+				
+				if total >= 1024 * 1024 * 1024 then
+					divisor = 1024 * 1024 * 1024;
+					quantificador = "GB";					
+				elseif total >= 1024 * 1024 then
+					divisor = 1024 * 1024;
+					quantificador = "MB";					
+				elseif total >= 1024 then
+					divisor = 1024;
+					quantificador = "KB";	
+				else
+					divisor = 1;
+					quantificador = "Bytes";
+				end;
+				
+				labSpaceInfo.text = string.format("Usado: %2.2f / %1.1f %s", used / divisor, total / divisor, quantificador);
+			end);
+	end;
+	
+	function ctrl:finalizar()
+		ndb.clearNode(sheet);		
+	end;
+		
+	btnVoltar.onClick = function()
+							ctrl:notifyUIActivity();	
+	
+							local parts = breakPathIntoParts(ctrl.currentDir);
+							local newDir = "/";
+							
+							for i = 1, #parts - 1, 1 do
+								newDir = newDir .. parts[i] .. "/";
+							end;
+							
+							ctrl:gotoDir(newDir);
+						end;
+						
+	btnAdd.onClick = function ()
+						ctrl:notifyUIActivity();
+	
+						if ctrl._addPopup == nil then
+							ctrl._addPopup = nav.criarAddPopup(ctrl);
+							ctrl._addPopup.parent = ctrl;
+						end;
+						
+						ctrl._addPopup:show("bottomCenter", btnAdd);
+					 end;
+		
+	layCenter.onResize = function()
+							indLoading.left = layCenter.width / 2 - indLoading.width / 2;
+							indLoading.top = layCenter.height / 2 - indLoading.height / 2;
+						end	;
+		
+	rclItens.onCompare = function(nodeA, nodeB)
+							local r = 0;
+							
+							if (nodeA.isDir) and (not nodeB.isDir) then
+								return -1;
+							elseif (not nodeA.isDir) and (nodeB.isDir) then
+								return 1;
+							end;
+							
+							r = utils.compareStringPtBr(nodeA.name, nodeB.name);								
+							return r;
+						 end;
+		
+	rclItens.onItemAdded = function (node, form)
+								form._navigator = ctrl;
+	   					   end;
+						   
+	rclItens.onItemRemoved = function (node, form)
+								form._navigator = nil;
+	   					   end;					
+
+	rclItens.onKeyDown = function(event)
+							ctrl:notifyUIActivity();
+	
+							if event.keyCode == 13 or event.key == "\13" then
+								-- ENTER
+								event.key = 0;
+								event.keyCode = 0;
+								local node = rclItens.selectedNode;
+								
+								if node ~= nil then
+									ctrl:open(node);
+								end;
+							elseif event.keyCode == 8 then
+								-- BackSpace	
+								event.key = 0;
+								event.keyCode = 0;
+								ctrl:returnOneLevel();
+							elseif event.keyCode == 27 then
+								ctrl:notifyRequestCancel();
+								event.key = "";
+								event.keyCode = 0;
+							end;	
+						 end;
+						 
+	rclItens.onSelect = function(node, form)
+							ctrl:notifyUIActivity();
+						end;
+		
+	ctrl:gotoDir("/");
+	
+	ctrl.onUIActivity = nil;	
+	ctrl.onOpenItem = nil;
+	ctrl.onRequestCancel = nil;
+	return ctrl;
+end;
+
+return nav;

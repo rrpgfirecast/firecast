@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmVampireDarkAges20th" formType="sheetTemplate" dataType="Ambesek.VampireDarkAges.20th" title="Vampire Dark Ages 20th Anniversary" align="client" theme="dark">
+	<tabControl align="client">
+		<tab title="Main">
+			<import file="V20.1.lfm"/>
+		</tab>
+		<tab title="Abilities">
+			<import file="V20.2.lfm"/>
+		</tab>
+		<tab title="Inventory">
+			<import file="V20.3.lfm"/>
+		</tab>
+		<tab title="Descriptions">
+			<import file="V20.4.lfm"/>
+		</tab>
+		<tab title="Background">
+			<import file="V20.5.lfm"/>
+		</tab>
+		<tab title="Notes">
+			<import file="V20.6.lfm"/>
+		</tab>
+		<tab title="Credits">
+			<import file="V20.7.lfm"/>
+		</tab>
+	</tabControl>
+</form>

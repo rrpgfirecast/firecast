@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Listade_NPC_Ficha" formType="sheetTemplate" dataType="Lista.de.NPC.Ficha" title="Lista de NPCs (Ficha)" align="client" theme="dark">
+	<template name="corInfo">
+		<layout align="left" width="20" height="20" hitTest="true" >
+			<rectangle align="client" margins="{left=2, right=2, top=2, bottom=2}" hitTest="true" color="$(cor)">
+				<event name="onClick">
+					sheet.CorIndex = "$(index)";
+					sheet.ColorString = "$(cor)";
+				</event>
+			</rectangle>
+			<event name="onClick">
+				sheet.CorIndex = "$(index)";
+				sheet.ColorString = "$(cor)";
+			</event>
+		 </layout>
+	</template>
+
+	<template name="colorBar">
+		<label align="left" fontSize="12" text="Barrinha 1:" horzTextAlign="trailing" width="64"/>
+		<edit align="left" fontSize="12" width="108" vertTextAlign="trailing" field="NomeBarrinha$(num)" text="Barrinha $(num)" margins="{left=4}"/>
+		<layout align="left" width="26" margins="{left=4}">
+				<rectangle align="client" color="white" hitTest="true" margins="{left=4, right=4}">
+					<rectangle color="black" align="client" margins="{left=1, right=1, top=1, bottom=1}" hitTest="true">
+						<rectangle name="CorBarrinha$(num)" color="#808080" align="client" margins="{left=1, right=1, top=1, bottom=1}" hitTest="true">
+							<event name="onClick">
+								sheet.IndexBarrinha = $(num);
+								sheet.CorIndex = sheet.IndexBarrinha$(num);
+								sheet.ColorString = sheet.CorBarrinha$(num);
+								self.SelectCor:show();
+							</event>
+						</rectangle>
+						<event name="onClick">
+							sheet.IndexBarrinha = $(num);
+							sheet.CorIndex = sheet.IndexBarrinha$(num);
+							sheet.ColorString = sheet.CorBarrinha$(num);
+							self.SelectCor:show();
+						</event>
+					</rectangle>
+				<event name="onClick">
+					sheet.IndexBarrinha = $(num);
+					sheet.CorIndex = sheet.IndexBarrinha$(num);
+					sheet.ColorString = sheet.CorBarrinha$(num);
+					self.SelectCor:show();
+				</event>
+			</rectangle>
+		</layout>
+		<comboBox align="left" fontSize="12" width="82" text="Visibilidade" fontColor="white" vertTextAlign="trailing" items="{'Pública', 'Privada', 'Nenhuma'}" values="{'a', 'b', 'c'}" value="a" field="VisibBarrinha$(num)" margins="{left=4}"/>
+		<comboBox align="left" fontSize="12" width="104" text="Tipo de Números"  vertTextAlign="trailing" fontColor="white" field="NumerosBarrinha$(num)" items="{'Valores Fixos', 'Porcentagens'}" values="{'x', 'y'}" value="x" margins="{left=4}"/>
+
+		<dataLink field="CorBarrinha$(num)" defaultValue="#808080">
+			<event name="onChange">
+				self.CorBarrinha$(num).color = sheet.CorBarrinha$(num);
+				local nodes2 = ndb.getChildNodes(sheet.campoDosNPC);
+				for j = 1, #nodes2, 1 do
+				nodes2[j].CorBarrinha$(num) = sheet.CorBarrinha$(num);
+				end;
+			</event>
+		</dataLink>
+	</template>
+	
+	<dataLink field="CorIndex" defaultValue="0">
+		<event name="onChange">
+			self.Selected.left = 20 * (tonumber(sheet.CorIndex or 0) % 8);
+			self.Selected.top = 20 * math.floor(tonumber(sheet.CorIndex or 0) / 8);
+		</event>
+	</dataLink>
+
+	<script>
+		function getOrganizacao()
+			return sheet.TipoOrganizar;
+		end;
+		
+		function MudarNomeDaAba(nome)
+			sheet.opcaoEscolhida = nome;
+		end;
+	
+		function self:autoCalcular();
+			local nodes = ndb.getChildNodes(sheet.opcoesFalsas);
+			self.dropDownFalso:show(bottomCenter, self.comboBoxFalsa);
+			self.dropDownFalso.top = self.dropDownFalso.top + self.comboBoxFalsa.height;
+			self.dropDownFalso.height = 8 + (24 * #nodes)
+		end;
+		
+		function autoFechar()
+			self.dropDownFalso:close();
+		end;
+		
+		function safeNodeDeletion(node)
+			nodes = ndb.getChildNodes(sheet.opcoesFalsas);
+			setTimeout(function()
+				if node == self.dcsMain.scopeNode then
+					self.opcoesFalsas.selectedNode = nodes[1];
+				end;
+			end, 10)
+			ndb.deleteNode(node);
+			self:autoCalcular();
+			self.dropDownFalso:close();
+		end;
+		
+		function GetBarrinhaNome(id)
+			if sheet ~= nil then
+				if id == 1 then
+					return (sheet.NomeBarrinha1 or "Barrinha 1");
+				elseif id == 2 then
+					return (sheet.NomeBarrinha2 or "Barrinha 2");
+				elseif id == 3 then
+					return (sheet.NomeBarrinha3 or "Barrinha 3");
+				elseif id == 4 then
+					return (sheet.NomeBarrinha4 or "Barrinha 4");
+				end;
+			end;
+		end;
+		
+		function GetBarrinhaVisivel(blockoverlay, id)
+			if sheet ~= nil then
+				if not blockoverlay then
+					if id == 1 then
+						return (sheet.VisibBarrinha1 == "a");
+					elseif id == 2 then
+						return (sheet.VisibBarrinha2 == "a");
+					elseif id == 3 then
+						return (sheet.VisibBarrinha3 == "a");
+					elseif id == 4 then
+						return (sheet.VisibBarrinha4 == "a");
+					end;
+				else
+					return DonoMestre();
+				end;
+			end;
+		end;
+		
+		function GetBarrinhaNumeros(id)
+			if sheet ~= nil then
+				if id == 1 then
+					return (sheet.NumerosBarrinha1 == "x");
+				elseif id == 2 then
+					return (sheet.NumerosBarrinha2 == "x");
+				elseif id == 3 then
+					return (sheet.NumerosBarrinha3 == "x");
+				elseif id == 4 then
+					return (sheet.NumerosBarrinha4 == "x");
+				end;
+			end;
+		end;
+		
+		function GetEnviarChat()
+			if sheet ~= nil then
+			return sheet.EnviarNoChat;
+			end;
+		end;
+	
+		function InvocarOPopupForm(node, place, tp)
+			self.recordNode.scopeNode = node;
+			self.dropDownFalso2.scopeNode = sheet;
+			self.dropDownFalso2:show(bottom, place);
+			self.dropDownFalso2.top = tp + 24;
+		end;
+		
+		function FecharOPopupForm()
+			self.dropDownFalso2:close();
+		end;
+	
+		function autoCalcular()
+			jogz2 = {}
+			mesaDaFicha = rrpg.getMesaDe(sheet);
+				for i = 1, #mesaDaFicha.jogadores, 1 do
+					jogz2[i] = mesaDaFicha.jogadores[i].login;
+				end;
+			self.dropDownFalso2.height = (24 * (#jogz2 + 1))
+						 
+			self.opcoesFalsas2:sort();
+		end;
+		
+		function chamarListaDeJogadores()
+			if sheet ~= nil then
+				self.opcoesFalsas2:sort();
+				local nodes = ndb.getChildNodes(sheet.opcoesFalsas2)
+				mesaDaFicha = rrpg.getMesaDe(sheet);
+				jogz = {}
+				jogz[1] = "Nenhum"
+				jogz2 = {}
+				for i = 1, #nodes, 1 do
+					jogz[i+1] = (nodes[i].NomeDaOpcao or "");
+				end;
+				for i = 1, #mesaDaFicha.jogadores, 1 do
+					jogz2[i] = mesaDaFicha.jogadores[i].login;
+				end;
+				if jogz2 ~= jogz then
+					if #nodes >= 2 then
+						for i = #nodes, 1, -1 do
+						setTimeout( function()
+							ndb.deleteNode(nodes[i])
+						end,2)
+						end;
+					end;
+					local node = nil;
+						node = self.opcoesFalsas2:append();
+					setTimeout( function()
+					for i = 1, #jogz2, 1 do
+						node = self.opcoesFalsas2:append();
+					end;
+					end,10)
+				else
+				end;
+				setTimeout( function()
+					
+					local nodes2 = ndb.getChildNodes(sheet.opcoesFalsas2)
+					for i = 1, #nodes2, 1 do
+						if i == 1 then
+							nodes2[i].NomeDaOpcao = "Nenhum"
+							nodes2[1].CodigoInterno = 1;
+						else
+							nodes2[i].NomeDaOpcao = jogz2[i-1]
+							nodes2[i].CodigoInterno = 2;
+							nodes2[i].CodigoInterno = 2;
+						end
+					end;
+					autoCalcular();
+				end, 20)
+			end
+		end;
+	</script>
+	
+	<layout align="client" visible="false">
+		<popup name="Config" width="412" height="190">
+			<label align="top" height="18" horzTextAlign="center" text="Configurações de Barrinhas" fontStyle="bold" fontColor="white"/>
+			<layout name="dcsTituloEAbas" align="top" height="18">
+				<label left="5" fontSize="12" autoSize="true" text="Título da Aba:"/>
+				<edit left="85" height="18" fontColor="white" vertTextAlign="center" fontSize="12" width="108" field="NomeDaOpcao"/>
+				<label left="210" fontSize="12" autoSize="true" text="Organização:"  margins="{left=12}"/>
+				<comboBox left="292" height="18" fontColor="white" fontSize="12" width="108" field="TipoOrganizar" items="{'Alfabética', 'Alinhamento'}" values="{'Alfa', 'Alin'}"/>
+			</layout>
+			<layout align="top" height="18" margins="{top=4}">
+				<layout align="left" width="64"/>
+				<label align="left" fontSize="12" width="108" text="Nome da Barrinha" margins="{left=4}"/>
+				<label align="left" fontSize="12" width="26" horzTextAlign="center" text="Cor" margins="{left=4}"/>
+				<label align="left" fontSize="12" width="82" text="Visibilidade" margins="{left=4}"/>
+				<label align="left" fontSize="12" width="108" text="Tipo de Números"  margins="{left=4}"/>
+			</layout>
+			<layout align="top" height="18" margins="{top=4}">
+				<colorBar num="1"/>
+			</layout>
+			<layout align="top" height="18" margins="{top=4}">
+				<colorBar num="2"/>
+			</layout>
+			<layout align="top" height="18" margins="{top=4}">
+				<colorBar num="3"/>
+			</layout>
+			<layout align="top" height="18" margins="{top=4}">
+				<colorBar num="4"/>
+			</layout>
+			<layout align="top" height="24" margins="top=8">
+				<checkBox margins="{left=4}" align="left" field="EnviarNoChat" width="180" fontSize="12" text="Enviar alterações ao chat"/>
+				<dataLink field="EnviarNoChat" defaultValue="false"/>
+				<button align="right" width="80" text="OK!" margins="{right=8}">
+					<event name="onClick">
+						self.Config:close();
+					</event>
+				</button>
+			</layout>
+			
+			<popup name="SelectCor" width="192" height="100">
+				<layout align="top" height="24">
+					<label align="client" text="Selecione a Cor:" horzTextAlign="center" fontStyle="Bold"/>
+				</layout>
+				
+				<layout name="Nha" align="client" margins="{left=10, right=10}" hitTest="true">
+					<layout align="none" name="Selected" width="20" height="20">
+						<rectangle align="client" color="white">
+							<rectangle color="black" align="client" margins="{left=1, right=1, top=1, bottom=1}"/>
+						</rectangle>
+					</layout>
+					<flowLayout name="Flow" align="client" orientation="horizontal" maxControlsPerLine="8" hitTest="true" canFocus="true">
+							<corInfo align="left" cor="#acacac" index="0"/>
+							<corInfo align="left" cor="#5959ff" index="1"/>
+							<corInfo align="left" cor="#59ff59" index="2"/>
+							<corInfo align="left" cor="#ff5959" index="3"/>
+							<corInfo align="left" cor="#ff59ff" index="4"/>
+							<corInfo align="left" cor="#ffac59" index="5"/>
+							<corInfo align="left" cor="#ffff59" index="6"/>
+							<corInfo align="left" cor="#59ffff" index="7"/>
+
+							<corInfo align="left" cor="#ffd159" index="8"/>
+							<corInfo align="left" cor="#5990ff" index="9"/>
+							<corInfo align="left" cor="#f4c264" index="10"/>
+							<corInfo align="left" cor="#de7a7a" index="11"/>
+							<corInfo align="left" cor="#cb83d6" index="12"/>
+							<corInfo align="left" cor="#f3658a" index="13"/>
+							<corInfo align="left" cor="#8cecb3" index="14"/>
+							<corInfo align="left" cor="#ed846b" index="15"/>
+					</flowLayout>
+				</layout>
+
+				<layout align="bottom" height="24">
+					<button align="right" text="OK!" margins="{right=4}">
+						<event name="onClick">
+							if sheet.IndexBarrinha == 1 then
+								sheet.IndexBarrinha1 = sheet.CorIndex;
+								sheet.CorBarrinha1 = sheet.ColorString;
+							elseif sheet.IndexBarrinha == 2 then
+								sheet.IndexBarrinha2 = sheet.CorIndex;
+								sheet.CorBarrinha2 = sheet.ColorString;
+							elseif sheet.IndexBarrinha == 3 then
+								sheet.IndexBarrinha3 = sheet.CorIndex;
+								sheet.CorBarrinha3 = sheet.ColorString;
+							elseif sheet.IndexBarrinha == 4 then
+								sheet.IndexBarrinha4 = sheet.CorIndex;
+								sheet.CorBarrinha4 = sheet.ColorString;
+							end;
+							self.SelectCor:close();
+						</event>
+					</button>
+				</layout>
+			</popup>
+		</popup>
+	</layout>
+	
+	<event name="onShow">
+		if self.opcoesFalsas2.selectedNode == nil and sheet ~= nil then
+			chamarListaDeJogadores();
+			autoCalcular();
+            local nodes = ndb.getChildNodes(sheet.opcoesFalsas2);               
+
+            if #nodes > 0 then
+                self.opcoesFalsas2.selectedNode = nodes[1];
+            end;
+        end;
+	</event>
+	
+	<dataScopeBox name="recordNode" visible="false" />
+
+	<layout visible="false">
+		<popup name="dropDownFalso2" width="128" height="128" backOpacity="0" >
+			<scrollBox align="client">
+				 <recordList visible="true" align="top" templateForm="OpcaoDaComboboxFalsa2" field="opcoesFalsas2" name="opcoesFalsas2" layout="verticalTiles" autoHeight="true" selectable="true" minQt="0" >
+					<event name="onSelect">
+						 local node = self.opcoesFalsas2.selectedNode;
+						 setTimeout(function()
+							if node ~= nil then
+								self.recordNode.scopeNode.opcaoEscolhida2 = node.NomeDaOpcao;
+							end;
+						 end,10);
+					</event>
+					 
+					<event name="onCompare">
+						if (nodeA.CodigoInterno == nil) then
+							if (nodeA.NomeDaOpcao == "Nenhum") then
+								nodeA.CodigoInterno = 1;
+							else
+								nodeA.CodigoInterno = 2;
+							end;
+						end;
+						if (nodeB.CodigoInterno == nil) then
+							if (nodeB.NomeDaOpcao == "Nenhum") then
+								nodeB.CodigoInterno = 1;
+							else
+								nodeB.CodigoInterno = 2;
+							end;
+						end;
+					 
+						if nodeB.CodigoInterno > nodeA.CodigoInterno then
+							return -1;
+						elseif not (nodeB.CodigoInterno >= nodeA.CodigoInterno) then
+							return 1;
+						else
+							return 1 * utils.compareStringPtBr(nodeA.NomeDaOpcao, nodeB.NomeDaOpcao);
+						end;
+					</event>
+					 
+				</recordList>
+			</scrollBox>	
+	 	</popup>
+	</layout>
+
+	<rectangle color="#0f0f0f" align="client">
+	
+		<layout align="top" height="24" margins="{top=4, left=2}">
+			<imageCheckBox margins="{left=4}" align="left" width="24" hint="Configurações da Lista"
+				 name="Configurar" checkedImage="images/config.png" uncheckedImage="images/config.png">
+				<event name="onClick">
+					if DonoMestre() then
+						self.Config.scopeNode = sheet;
+						self.Config:show();
+					else
+						dialogs.alert("Apenas o dono da ficha e o mestre da mesa podem realizar esta ação.");
+					end;
+				</event>
+			</imageCheckBox>
+			<imageCheckBox margins="{left=4}" align="left" width="24" hint="Adicionar novo NPC"
+				 name="NovoNPC" checkedImage="images/addnpc.png" uncheckedImage="images/addnpc.png">
+				<event name="onClick">
+					if DonoMestre() then			
+						node = self.rclListaDeNPC:append();
+					else
+						dialogs.alert("Apenas o dono da ficha e o mestre da mesa podem realizar esta ação.");
+					end;
+				</event>
+			</imageCheckBox>
+			<imageCheckBox margins="{left=4}" align="left" width="24" hint="Ordenar Lista de NPCs" 
+				 name="Organizar" checkedImage="images/organize.png" uncheckedImage="images/organize.png">
+				<event name="onClick">
+					if DonoMestre() then			
+						self.rclListaDeNPC:sort();
+					else
+						dialogs.alert("Apenas o dono da ficha e o mestre da mesa podem realizar esta ação.");
+					end;
+				</event>
+			</imageCheckBox>
+			<label align="left" margins="{left=12}" autoSize="true" field="NomeDaOpcao"/>
+		</layout>
+		
+		<dataLink field="NomeDaOpcao" defaultValue="Lista de NPCs"/>
+		<dataLink field="TipoOrganizar" defaultValue="Alfa" />
+		
+		<scrollBox name="MainClient" align="client" margins="{top=2}">
+			<recordList name="rclListaDeNPC" layout="VerticalTiles" field="campoDosNPC" templateForm="CaixaFichaNPC2" align="none" autoHeight="true" selectable="true" minQt="0">	
+				<event name="onBeginEnumeration">
+					
+				</event>							
+			
+				<event name="onItemAdded">
+					node.CorBarrinha1 = (sheet.CorBarrinha1 or "#808080");
+					node.CorBarrinha2 = (sheet.CorBarrinha2 or "#808080");
+					node.CorBarrinha3 = (sheet.CorBarrinha3 or "#808080");
+					node.CorBarrinha4 = (sheet.CorBarrinha4 or "#808080");
+					form.Barrinha1.color = sheet.CorBarrinha1;
+					form.Barrinha2.color = sheet.CorBarrinha2;
+					form.Barrinha3.color = sheet.CorBarrinha3;
+					form.Barrinha4.color = sheet.CorBarrinha4;
+				</event>
+			
+				<event name="onCompare">
+					org = getOrganizacao();
+					if nodeA.hideNPC and not nodeB.hideNPC then
+						return 1;
+					elseif not nodeA.hideNPC and nodeB.hideNPC then
+						return -1;
+					end;
+
+					if org == "Alfa" then
+						return utils.compareStringPtBr(nodeA.NomeGrande, nodeB.NomeGrande);
+					else
+						if ((nodeB.alinhamentoNPC or "Padrão") > (nodeA.alinhamentoNPC or "Padrão")) then
+							return -1;
+						elseif (nodeA.alinhamentoNPC or "Padrão") == (nodeB.alinhamentoNPC or "Padrão") then
+							return utils.compareStringPtBr(nodeA.NomePequeno, nodeB.NomePequeno);
+						else
+							return 1;
+						end;
+					end;
+				</event>
+			</recordList>
+		</scrollBox>
+		
+		<layout align="bottom" height="32">
+			<label align="right" fontStyle="italic" fontSize="12" opacity="0.8" autoSize="true" text="Criado por Mia\nEditado por Ambesek"/>
+		</layout>
+		
+		<event name="onResize">
+			if self.width >= 270 then
+				self.rclListaDeNPC.width = self.width;
+			else
+				self.rclListaDeNPC.width = 270;
+			end;
+		</event>
+		
+		<script>
+			function DEC_HEX(IN)
+					local B,K,OUT,I,D = 16,"0123456789ABCDEF","",0
+					while IN > 0 do
+						I=I+1
+						D = (IN % B) + 1
+						IN = math.floor(IN/B)
+						
+						OUT = string.sub(K,D,D) .. OUT
+					end
+					return OUT
+				end;
+			
+			function DonoMestre(node, foioscript)
+				if sheet ~= nil then
+					node = (node or sheet);
+					foioscript = (foioscript or false)
+					local personagem = rrpg.getPersonagemDe(sheet);                                
+					
+					if (personagem ~= nil) then
+						local mesa = personagem.mesa;
+
+						if ndb.testPermission(node, "writePermissions") then               
+						return true;
+						else
+							return false;
+					   end;
+					else
+						return ndb.testPermission(node, "writePermissions");
+					end; 
+				end;
+			end;
+
+			function EnviarMudanca(barrinhaid, blockoverlay, nomepers, nome, valor, valormax, pc, pcmax)
+				if sheet ~= nil then
+				if not blockoverlay then
+					publico = GetBarrinhaVisivel(blockoverlay, barrinhaid);
+				else
+					publico = false
+				end;
+				porcentagem = not (GetBarrinhaNumeros(barrinhaid));
+				nome = tostring(nome or GetBarrinhaNome(barrinhaid));
+				
+				local text = "[§K2]" .. tostring(nome) .. "[§K3] de [§K2]" .. tostring(nomepers) .. "[§K3]: ";
+				
+				if tonumber(valor) >= 0 then
+					valor = "+" .. tostring(valor);
+				end;
+				if tonumber(valormax) >= 0 then
+					valormax = "+" .. tostring(valormax);
+				end;
+				if tonumber(pc) >= 0 then
+					pc = "+" .. tostring(pc);
+				end;
+				if tonumber(pcmax) >= 0 then
+					pcmax = "+" .. tostring(pcmax);
+				end;
+				
+				if publico then
+					if not porcentagem then
+						if tonumber(valormax) == 0 then
+							text = text .. valor;
+						else
+							text = text .. valor .. "/" .. valormax;
+						end;
+					else
+						if tonumber(valormax) == 0 then
+							text = text .. pc .. "%";
+						else
+							text = text .. pc .. "%" .. "/" .. pcmax .. "%";
+						end;
+					end;
+				else
+					if tonumber(valor) >= 0 then
+						valor = "+??";
+					else 
+						valor = "-??"
+					end;
+					if tonumber(valormax) >= 0 then
+						valormax = "+??";
+					else 
+						valormax = "-??"
+					end;
+					
+					if not porcentagem then
+						if tonumber(valormax) == 0 then
+							text = text .. valor;
+						else
+							text = text .. valor .. "/" .. valormax;
+						end;
+					else
+						if tonumber(valormax) == 0 then
+							text = text .. valor .. "%";
+						else
+							text = text .. valor .. "%" .. "/" .. valormax .. "%";
+						end;
+					end;
+				end;
+				
+				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+				if mesaDoPersonagem ~= nil then
+					   mesaDoPersonagem.activeChat:enviarMensagem(text);
+				end;
+			end;
+			end;
+			
+			function RequestReload(mode)
+				if sheet ~= nil then
+					if mode == "begin" then
+						self.rclListaDeNPC:beginUpdate();
+						self.rclListaDeNPC.visible = false;
+					elseif mode == "end" then
+						self.rclListaDeNPC.visible = true;
+						self.rclListaDeNPC:endUpdate();
+					end;
+				end;
+			end;
+		</script>
+		
+		<dataLink fields="{'VisibBarrinha1', 'VisibBarrinha2', 'VisibBarrinha3', 'VisibBarrinha4'}" defaultValues="{'a', 'a', 'a', 'a'}">
+			<event name="onChange">
+					local nodes = ndb.getChildNodes(sheet.campoDosNPC);       
+					self:beginUpdate();
+					for i = 1,#nodes, 1 do
+						if sheet.VisibBarrinha1 ~= "c" then
+							nodes[i].Barrinha1Invisivel = false;
+						else
+							nodes[i].Barrinha1Invisivel = true;
+						end;
+					
+						if sheet.VisibBarrinha2 ~= "c" then
+							nodes[i].Barrinha2Invisivel = false;
+						else
+							nodes[i].Barrinha2Invisivel = true;
+						end;
+						
+						if sheet.VisibBarrinha3 ~= "c" then
+							nodes[i].Barrinha3Invisivel = false;
+						else
+							nodes[i].Barrinha3Invisivel = true;
+						end;
+						
+						if sheet.VisibBarrinha4 ~= "c" then
+							nodes[i].Barrinha4Invisivel = false;
+						else
+							nodes[i].Barrinha4Invisivel = true;
+						end;
+					end;
+					self:endUpdate();
+				</event>
+			</dataLink>
+		
+		<dataLink fields="{'NumerosBarrinha1', 'NumerosBarrinha2', 'NumerosBarrinha3', 'NumerosBarrinha4'}" defaultValues="{'x', 'x', 'x', 'x'}">
+			<event name="onChange">
+				local nodes = ndb.getChildNodes(sheet.campoDosNPC);    
+				self:beginUpdate();
+				for i = 1,#nodes, 1 do
+					setTimeout( function ()
+						local test = GetBarrinhaNumeros(1);
+						local d0 = (tonumber(nodes[i].Barrinha1ValorMax or 0) == 0)
+							
+						if d0 then
+							d0 = 1
+						else
+							d0 = nodes[i].Barrinha1ValorMax
+							end;
+						if test then
+							nodes[i].InfoBarrinha1 = (nodes[i].Barrinha1Valor or 0) .. "/" .. (nodes[i].Barrinha1ValorMax  or 0);
+							nodes[i].InfoBarrinha1Oculto = "??/??";
+						else
+							nodes[i].InfoBarrinha1 = tostring(math.floor((100 * (nodes[i].Barrinha1Valor or 0)) / d0)) .. "%";
+							nodes[i].InfoBarrinha1Oculto = "??%";
+						end;
+								
+						local test = GetBarrinhaNumeros(2);
+						local d0 = (tonumber(nodes[i].Barrinha2ValorMax or 0) == 0)
+						
+						if d0 then
+							d0 = 1
+						else
+							d0 = nodes[i].Barrinha2ValorMax
+						end;
+						if test then
+							nodes[i].InfoBarrinha2 = (nodes[i].Barrinha2Valor  or 0) .. "/" .. (nodes[i].Barrinha2ValorMax  or 0);
+							nodes[i].InfoBarrinha2Oculto = "??/??";
+						else
+							nodes[i].InfoBarrinha2 = tostring(math.floor((100 * (nodes[i].Barrinha2Valor  or 0)) / d0)) .. "%";
+							nodes[i].InfoBarrinha2Oculto = "??%";
+						end;
+						local test = GetBarrinhaNumeros(3);
+						local d0 = (tonumber(nodes[i].Barrinha3ValorMax or 0) == 0);
+						if d0 then
+							d0 = 1
+						else
+							d0 = nodes[i].Barrinha3ValorMax
+						end;
+						if test then
+							nodes[i].InfoBarrinha3 = (nodes[i].Barrinha3Valor or 0) .. "/" .. (nodes[i].Barrinha3ValorMax  or 0);
+							nodes[i].InfoBarrinha3Oculto = "??/??";
+						else
+							nodes[i].InfoBarrinha3 = tostring(math.floor((100 * (nodes[i].Barrinha3Valor or 0) ) / d0)) .. "%";
+							nodes[i].InfoBarrinha3Oculto = "??%";
+						end;
+						local test = GetBarrinhaNumeros(4);
+						local d0 = (tonumber(nodes[i].Barrinha4ValorMax or 0) == 0);
+						if d0 then
+							d0 = 1
+						else
+							d0 = nodes[i].Barrinha4ValorMax
+						end;
+						if test then
+							nodes[i].InfoBarrinha4 = (nodes[i].Barrinha4Valor or 0) .. "/" .. (nodes[i].Barrinha4ValorMax or 0);
+							nodes[i].InfoBarrinha4Oculto = "??/??";
+						else
+							nodes[i].InfoBarrinha4 = tostring(math.floor((100 * (nodes[i].Barrinha4Valor or 0)) / d0)) .. "%";
+							nodes[i].InfoBarrinha4Oculto = "??%";
+						end;
+					end, 100);
+				end;
+				self:endUpdate();
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

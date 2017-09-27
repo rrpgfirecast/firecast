@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLH2" align="client" theme="dark">
+    <scrollBox align="client">
+    	<layout left="0" top="0" width="1310" height="25">
+    		<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+
+    		<button text="+" left="2" top="2" width="20" height="20">
+				<event name="onClick">
+					self.rclListaDasHabilidades:append();
+				</event>
+			</button>
+    		<label left="5" top="0" width="1300" height="25" text="HABILIDADES" horzTextAlign="center"/>
+    	</layout>
+
+    	<recordList name="rclListaDasHabilidades" field="listaHablidades" templateForm="frmLH2_1" left="0" top="30" width="1310" height="580" layout="horizontalTiles" minQt="1"/>
+    	
+    	<image align="client" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20LH%20releases/imagens/block.png" style="autoFit"/>
+    </scrollBox>
+</form>

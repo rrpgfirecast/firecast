@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="rclPlayer_svg" width="150" height="30" theme="dark">
+	<!-- <rectangle left="0" top="1" width="130" height="28" color="black" hitTest="false"/> -->
+    <label left="5" top="5" width="125" height="20" field="name"/>
+    <!-- <dataLink field="name" defaultValue="Token"/> -->
+</form>

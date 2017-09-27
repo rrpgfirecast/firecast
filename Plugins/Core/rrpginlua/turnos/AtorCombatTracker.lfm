@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAtorCombatTracker" height="47">
+	<import file="combatTrackerGlobals.xml"/>
+
+	<script><![CDATA[
+		local preparedVez = false;
+	
+		local ATOR_VIEW_STATE_VISIVEL = 0;
+		local ATOR_VIEW_STATE_PARC_VISIVEL = 1;
+		local ATOR_VIEW_STATE_INVISIVEL = 2;
+	
+		local function getTracker()
+			return self:findControlByName("frmCombatTracker");
+		end;	
+	
+		function self:atualizarInterfaceFriendOrFoe()
+			local f = sheet.fof;
+				
+			if f == 1 then
+				-- Amigo				
+				self.rctFriendOrFoe.color = "lime";
+				self.rctFriendOrFoe.hint = "Amigável";
+				self.rctOuter.color = "#00FF0016";
+				self.rctOuter.strokeColor = "#00FF00A0";				
+			elseif f == 2 then
+				-- Neutro
+				self.rctFriendOrFoe.color = "yellow";
+				self.rctFriendOrFoe.hint = "Neutro";
+				self.rctOuter.color = "#FFFF0016";
+				self.rctOuter.strokeColor = "#FFFF00A0";				
+			elseif f == 3 then
+				-- Inimigo
+				self.rctFriendOrFoe.color = "red";
+				self.rctFriendOrFoe.hint = "Hostil";
+				self.rctOuter.color = "#FF000016";
+				self.rctOuter.strokeColor = "#FF0000B0";								
+			else
+				self.rctFriendOrFoe.color = "#00000000"; -- Transparente
+				self.rctFriendOrFoe.hint = "Amigável ou Hostil?";
+				self.rctOuter.color = "#00000000";
+				self.rctOuter.strokeColor = "#FFFFFFA0";								
+				-- Desconhecido
+			end;					
+		end;
+		
+		function self:nextFriendOrFoeFlag()
+			local f = tonumber(sheet.fof or 0) or 0;		
+			sheet.fof = (f + 1) % 4;
+		end;
+		
+		function self:atualizarInterfaceVez()
+			local v = not not sheet.vez;
+			
+			if v ~= preparedVez then
+				preparedVez = v;				
+				self.imgVez.visible = v;				
+				
+				if v == true then		
+					self.rctOuter.strokeSize = 2;
+					--self.rctOuter.padding = {left=2, top=2, right=2, bottom=2};
+				else
+					self.rctOuter.strokeSize = 0;
+					--self.rctOuter.padding = {};
+				end;
+				
+				self:recalcularAlturaDoAtor();
+			end;					
+		end;
+		
+		function self:setarTurnoDesteAtor()
+			getTracker():ativarTurnoDe(sheet);
+		end;
+			
+		
+		function self:recalcularAlturaDoAtor()
+			local function getAlturaDeCtrl(ctrl)
+				local m = ctrl.margins;
+				return ctrl.height + (m.top or 0) + (m.bottom or 0);
+			end;
+		
+			local p = self.rctOuter.padding;
+		
+			local h = getAlturaDeCtrl(self.layPrimeiraLinha) +
+				   	 getAlturaDeCtrl(self.laySegundaLinha) +
+					 getAlturaDeCtrl(self.rclEfeitos) + 
+					 p.top;					 		
+					 
+			if self.height ~= h then
+				self.height = h;
+			end;
+		end;
+		
+		function self:apagarAtor()
+			local n = sheet;
+			
+			dialogs.confirmYesNo("Deseja realmente apagar este ator?",
+				function(confirmado)
+					if confirmado then
+						if n.vez then
+							getTracker():proximoTurno();
+						end;
+						
+						ndb.deleteNode(n);
+					end;
+				end);
+		end;
+		
+		local function agendarReordenacao()
+			local tracker = getTracker();
+			
+			if tracker ~= nil then
+				tracker:agendarReordenacao();
+			end;
+		end;
+		
+		function self:exibirMenuDoAtor()
+			getTracker():exibirMenuDoAtor(sheet, self);
+		end;
+		
+		function self:adicionarEfeito()
+			self.rclEfeitos:append();
+			
+			setTimeout(function()
+						getTracker():scrollToAtor(sheet);
+					   end, 50);	
+		end;
+		
+		function self:getCurrentViewState()
+			local estaInvisivel = (ndb.getPermission(sheet, "group", "espectadores", "read") == "deny" or
+			                       ndb.getPermission(sheet, "group", "jogadores", "read") == "deny");
+								   
+			local estaParcialmenteVisivel;
+			estaParcialmenteVisivel = sheet.visibilityState == ATOR_VIEW_STATE_PARC_VISIVEL;
+				
+			if estaInvisivel or (sheet.visibilityState == ATOR_VIEW_STATE_INVISIVEL) then
+				return ATOR_VIEW_STATE_INVISIVEL;
+			elseif estaParcialmenteVisivel then
+				return ATOR_VIEW_STATE_PARC_VISIVEL;
+			else
+				return ATOR_VIEW_STATE_VISIVEL;
+			end;		
+		end;
+		
+		function self:atualizarIndicacaoVisibilidade()
+			local currViewState = self:getCurrentViewState();			
+			local urlImg;
+			local hintAUsar;
+			local segundaLinhaDeveEstarVisivel = true;
+			
+			if currViewState == ATOR_VIEW_STATE_INVISIVEL then
+				urlImg = "/turnos/images/invisivel.png";
+				hintAUsar = "Ator visível APENAS para mestres";
+			elseif currViewState == ATOR_VIEW_STATE_PARC_VISIVEL then
+				urlImg = "/turnos/images/visivelParcial.png"
+				hintAUsar = "Ator visível a todos, porém anotações e efeitos escondidos";
+				
+				local mesa = rrpg.getMesaDe(sheet);
+				local meuJogador;
+				
+				if mesa ~= nil then
+					meuJogador = mesa.meuJogador;
+				else
+					meuJogador = nil;
+				end;
+				
+				if meuJogador ~= nil then				
+					segundaLinhaDeveEstarVisivel = meuJogador.isMestre or meuJogador.isJuggernaut;
+				end;
+				
+				if mesa == nil then
+					segundaLinhaDeveEstarVisivel = false;				
+				end;
+			else
+				urlImg = "/turnos/images/visivel.png";
+				hintAUsar = "Ator visível a todos";	
+			end;
+			
+			self.imgInvisivel.src = urlImg;
+			self.imgInvisivel.hint = hintAUsar;
+			self.edtAnotacoes.visible = segundaLinhaDeveEstarVisivel;
+			self.imgAddEfeito.visible = self.edtAnotacoes.visible;
+			self.imgInvisivel.visible = self.edtAnotacoes.visible;
+		end;
+		
+		function self:alternarVisibilidade()						
+			if ndb.testPermission(sheet, "writePermissions") and ndb.testPermission(sheet, "write") then		
+				local dadosSensiveisNode = sheet.dadosSensiveis;
+				
+				if dadosSensiveisNode == nil then
+					if not ndb.testPermission(sheet, "createChild") then
+						-- não há permissao para crair nodes
+						return;
+					end;
+					
+					sheet.dadosSensiveis = {};
+					dadosSensiveisNode = sheet.dadosSensiveis;
+				else
+					if not ndb.testPermission(dadosSensiveisNode, "writePermissions") then
+						-- Não há permissão para escreve permissoes neste sub-node
+						return;
+					end;
+				end;
+			
+				local currViewState = self:getCurrentViewState();
+				
+				if currViewState == ATOR_VIEW_STATE_PARC_VISIVEL then
+					-- tornar invisivel
+					sheet.visibilityState = ATOR_VIEW_STATE_INVISIVEL;					
+					ndb.setPermission(sheet, "group", "espectadores", "read", "deny");
+					ndb.setPermission(sheet, "group", "jogadores", "read", "deny");		
+					ndb.setPermission(sheet, "group", "espectadores", "createChild", "deny");
+					ndb.setPermission(sheet, "group", "jogadores", "createChild", "deny");	
+				elseif currViewState == ATOR_VIEW_STATE_INVISIVEL then
+					-- tornar visivel
+					sheet.visibilityState = ATOR_VIEW_STATE_VISIVEL;	
+					ndb.setPermission(dadosSensiveisNode, "group", "espectadores", "read", nil);
+					ndb.setPermission(dadosSensiveisNode, "group", "jogadores", "read", nil);						
+					ndb.setPermission(sheet, "group", "espectadores", "createChild", nil);
+					ndb.setPermission(sheet, "group", "jogadores", "createChild", nil);		
+					ndb.setPermission(sheet, "group", "espectadores", "read", nil);
+					ndb.setPermission(sheet, "group", "jogadores", "read", nil);				
+				else
+					-- tornar parcialmente visivel
+					sheet.visibilityState = ATOR_VIEW_STATE_PARC_VISIVEL;
+					ndb.setPermission(dadosSensiveisNode, "group", "espectadores", "read", "deny");
+					ndb.setPermission(dadosSensiveisNode, "group", "jogadores", "read", "deny");						
+					ndb.setPermission(sheet, "group", "espectadores", "createChild", "deny");
+					ndb.setPermission(sheet, "group", "jogadores", "createChild", "deny");							
+					ndb.setPermission(sheet, "group", "espectadores", "read", nil);
+					ndb.setPermission(sheet, "group", "jogadores", "read", nil);																									
+				end;
+			end;
+		end;		
+	]]>
+	</script>
+	
+	<rectangle name="rctOuter" align="client" color="#00000000" strokeSize="0" strokeColor="#FFFFFFA0" padding="{left=3, top=3, right=2, bottom=3}" hitTest="true" onMenu="self:exibirMenuDoAtor();">
+		<layout name="layPrimeiraLinha" align="top" height="20" class="combatHeaderContentAlignedLayout">
+			<rectangle name="rctVez" class="combatHeader0" color="#00000000" strokeSize="1" strokeColor="black" 
+					   xradius="2" yradius="2" hitTest="true" cursor="handPoint" onMouseUp="self:setarTurnoDesteAtor();" onMenu="self:exibirMenuDoAtor();">
+				<image name="imgVez" align="client" height="24" visible="false" src="images/vez.png"/>
+			</rectangle>		
+		
+			
+			<edit name="edtNome" field="nome" class="combatHeaderNome combatTrackerEdit" onMenu="self:exibirMenuDoAtor();"/>
+						
+			<layout name="layRightAlinedComps" class="combateHeaderRightAlignedContent">
+				<edit name="edtIniciativa" field="iniciativa" class="combatHeaderIniciativa combatTrackerEdit" type="number" horzTextAlign="center" onMenu="self:exibirMenuDoAtor();"/>
+				
+				<rectangle name="rctFriendOrFoe" class="combatHeaderFriendOrFoe" color="#00000000" 
+						   strokeColor="black" strokeSize="2" xradius="4" yradius="4"
+						   hitTest="true" cursor="handPoint" onMouseUp="if event.button == 'left' then self:nextFriendOrFoeFlag(); end;"
+						   hint="Amigável ou Hostil?" onMenu="self:exibirMenuDoAtor();">				
+				</rectangle>
+								
+				<image name="imgDeleteAtor" class="combatHeaderDelete" hitTest="true" cursor="handPoint" src="images/delete.png" onMouseUp="if event.button == 'left' then self:apagarAtor(); end;" onMenu="self:exibirMenuDoAtor();"/>
+			</layout>					
+		</layout>
+		
+		<layout name="laySegundaLinha" align="top" height="20" margins="{top=1, left=28, right=10}">						
+			<edit align="client" field="dadosSensiveis.notas" class="combatTrackerEdit" transparent="true" hint="Anotações" name="edtAnotacoes">			
+				<horzLine align="bottom" strokeColor="black" strokeSize="1"/>
+			</edit>
+			
+			<image align="right" name="imgInvisivel" width="14" 
+		    		hint="Ator visivel a todos" hitTest="true" cursor="handPoint"
+					src="images/visivel.png"
+					onMouseUp="if event.button =='left' then self:alternarVisibilidade(); end;"/>
+							
+			<image align="right" hitTest="true" src="images/addEffect.png" cursor="handPoint" hint="Adicionar um efeito a este ator" width="14" margins="{left=4}"
+					name="imgAddEfeito" onMouseUp="if event.button =='left' then self:adicionarEfeito() end;"/>
+		</layout>	
+		
+		<recordList margins="{left=28, top=1, right=14}" name="rclEfeitos" align="top" autoHeight="true" field="dadosSensiveis.efeitos" templateForm="frmEfeitoCombatTracker" onResize="self:recalcularAlturaDoAtor()"/>		
+
+		<script>
+			if system.isMobile() then
+				self.layPrimeiraLinha.height = 32;
+				self.rctVez.width = 32;
+				self.edtNome.fontSize = 13;					
+				self.rctFriendOrFoe.width = 32;
+				self.edtIniciativa.width = 32;
+				self.imgDeleteAtor.width = 32;
+				self.layRightAlinedComps.width = 108;
+				
+				self.laySegundaLinha.height = 30;
+				self.edtAnotacoes.fontSize = 12;
+				self.imgInvisivel.width = 30;
+				self.imgInvisivel.style = "autoFit";
+				self.imgAddEfeito.width = 30;
+								
+				local margens = self.laySegundaLinha.margins;
+				margens.left = 34;
+				self.laySegundaLinha.margins = margens;
+				
+				margens = self.rclEfeitos.margins;
+				margens.left = 34;
+				self.rclEfeitos.margins = margens;
+			end;
+		</script>			
+	</rectangle>
+	
+	
+	<dataLink field="fof" onChange="self:atualizarInterfaceFriendOrFoe();"/>
+	<dataLink field="vez" onChange="self:atualizarInterfaceVez();"/>
+	
+	<dataLink fields="{'iniciativa', '_id'}" onChange="agendarReordenacao();"/>;
+	
+	<event name="onMenu">
+		self:exibirMenuDoAtor();
+	</event>
+	
+	<event name="onShow">
+		self:recalcularAlturaDoAtor();
+	</event>
+	
+	
+	<script>
+		local tracker = getTracker();
+		
+		local function setDropRecursivo(ctrl)
+			ctrl.onStartDrop = tracker.handleStartDrop;
+			
+			local childs = ctrl:getChildren();
+			
+			for i = 1, #childs, 1 do
+				setDropRecursivo(childs[i]);
+			end;
+		end;
+		
+		local function setDraggerRecursivo(ctrl, dragger)
+			if ctrl ~= self.rctVez and ctrl:getClassName() ~= "edit" then				
+				ctrl.onStartDrag = dragger;
+			end;
+			
+			local childs = ctrl:getChildren();
+			
+			for i = 1, #childs, 1 do
+				setDraggerRecursivo(childs[i], dragger);
+			end;		
+		end;
+		
+		setDropRecursivo(self);
+	</script>		
+	
+	<event name="onScopeNodeChanged">
+		if self._observer ~= nil then
+			self._observer.enabled = false;
+			self._observer = nil;
+		end;		
+		
+		if sheet ~= nil then			
+			self._observer = ndb.newObserver(sheet);
+			
+			self._observer.onDeepPermissionListChanged = 
+				function(node) 
+					self:atualizarIndicacaoVisibilidade(); 
+				end;
+			
+			self._observer.onFinalPermissionsCouldBeChanged = 
+					function(node)						
+						local souMestre = false;												
+						local mesa = rrpg.getMesaDe(sheet);
+						
+						if mesa ~= nil then
+							local meuJogador = mesa.meuJogador;
+							
+							if meuJogador ~= nil then
+								souMestre = meuJogador.isMestre or meuJogador.isJuggernaut;
+							end;
+						end;
+						
+						self.imgInvisivel.enabled = (ndb.testPermission(sheet, "writePermissions") and 
+													 ndb.testPermission(sheet, "readPermissions") and 
+													 ndb.testPermission(sheet, "write") and 
+													 ndb.testPermission(sheet, "createChild")) and
+													 souMestre;	
+						self.imgAddEfeito.enabled = self.imgInvisivel.enabled;								
+						self:atualizarIndicacaoVisibilidade(); 
+					end;
+			
+			self._observer.onChanged =
+				function(node, attribute)
+					if attribute == "visibilityState" then
+						self:atualizarIndicacaoVisibilidade();											
+					end;
+				end;
+			
+			self._observer.onFinalPermissionsCouldBeChanged();			
+			
+			local umDragger = getTracker():createDraggerForAtor(sheet);
+			setDraggerRecursivo(self, umDragger);
+		else
+			setDraggerRecursivo(self, nil);
+		end;				
+	</event>
+</form>

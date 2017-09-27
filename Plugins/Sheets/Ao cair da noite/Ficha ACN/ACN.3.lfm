@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmACN3" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+		<template name="Protecao">
+			<rectangle left="0" top="0" width="400" height="85" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="0" width="400" height="20" text="$(nome)" horzTextAlign="center"/>
+			
+			<label left="10" top="30" width="45" height="20" text="Tipo"/>
+        	<edit left="55" top="25" width="135" height="25" field="tipo$(field)"/>
+			
+			<label left="195" top="30" width="40" height="20" text="$(prot)"/>
+        	<edit left="240" top="25" width="35" height="25" field="$(prot2)$(field)"/>
+			
+			<label left="285" top="30" width="70" height="20" text="Penalidade"/>
+        	<edit left="355" top="25" width="30" height="25" field="penalidade$(field)"/>
+			
+			<label left="10" top="55" width="45" height="20" text="Outros"/>
+        	<edit left="55" top="50" width="135" height="25" field="outros$(field)"/>
+			
+			<label left="195" top="55" width="40" height="20" text="Força"/>
+        	<edit left="240" top="50" width="35" height="25" field="forcaMin$(field)"/>
+			
+			<label left="285" top="55" width="70" height="20" text="$(efic)"/>
+        	<edit left="355" top="50" width="30" height="25" field="$(efic2)$(field)"/>
+		</template>
+		
+		<template name="Arma">
+			<edit left="10" top="$(top)" width="150" height="25" field="nome$(field)"/>
+			<edit left="170" top="$(top)" width="150" height="25" field="teste$(field)"/>
+			<edit left="330" top="$(top)" width="30" height="25" field="dificuldade$(field)"/>
+			<edit left="370" top="$(top)" width="30" height="25" field="dano$(field)"/>
+			<edit left="410" top="$(top)" width="30" height="25" field="municao$(field)"/>
+			<edit left="450" top="$(top)" width="350" height="25" field="outros$(field)"/>
+		</template>
+		
+		<layout left="0" top="0" width="400" height="600">
+			<rectangle left="0" top="0" width="400" height="600" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="0" width="400" height="20" text="EQUIPAMENTOS" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="560" field="equipamentos"/>
+		</layout>
+		
+		<layout left="410" top="0" width="400" height="250">
+			<rectangle left="0" top="0" width="400" height="250" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="0" width="400" height="20" text="POSSES" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="210" field="bens"/>
+		</layout>
+		
+		<layout left="820" top="0" width="400" height="250">
+			<rectangle left="0" top="0" width="400" height="250" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="0" width="400" height="20" text="OUTROS" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="210" field="outrosItens"/>
+		</layout>
+		
+		<layout left="410" top="260" width="810" height="245">
+			<rectangle left="0" top="0" width="810" height="245" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="0" width="810" height="20" text="ARMAS" horzTextAlign="center"/>
+			
+			<label left="10" top="25" width="150" height="20" text="Nome"/>
+			<label left="170" top="25" width="150" height="20" text="Teste"/>
+			<label left="330" top="25" width="35" height="20" text="Dific"/>
+			<label left="370" top="25" width="40" height="20" text="Dano"/>
+			<label left="410" top="25" width="35" height="20" text="Mun."/>
+			<label left="450" top="25" width="350" height="20" text="Outros"/>
+			
+			<Arma top="50" field="1"/>
+			<Arma top="80" field="2"/>
+			<Arma top="110" field="3"/>
+			<Arma top="140" field="4"/>
+			<Arma top="170" field="5"/>
+			<Arma top="200" field="6"/>
+			
+		</layout>
+		
+		
+		<layout left="410" top="515" width="400" height="85">
+			<Protecao nome="PROTEÇÃO/ARMADURA" field="Armadura" prot="Índice" prot2="indice" efic="Eficácia" efic2="eficacia"/>
+		</layout>
+		
+		<layout left="820" top="515" width="400" height="85">
+			<Protecao nome="PROTEÇÃO/ESCUDO" field="Escudo" prot="Aparar" prot2="aparar" efic="Cobertura" efic2="cobertura"/>
+		</layout>
+			
+    </scrollBox>
+</form>

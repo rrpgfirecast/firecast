@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="OpcaoDaComboboxFalsa2" height="24" align="top" theme="dark"> 
+	
+	 
+	 <label align="client" field="NomeDaOpcao" margins="{left=8}" text="Nome da Opção" />
+
+	<dataLink field="NomeDaOpcao" defaultValue="Nenhum"/>
+ </form>
+ 

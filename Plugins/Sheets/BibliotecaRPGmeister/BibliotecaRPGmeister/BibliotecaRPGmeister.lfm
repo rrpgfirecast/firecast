@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmBibliotecaRPGmeister" formType="sheetTemplate" dataType="Ambesek.Biblioteca.RPGmeister" title="Biblioteca RPGmeister" align="client" theme="dark">
+    <tabControl align="client">
+        <tab title="Introdução">
+            <import file="01.Introducao.lfm"/>
+        </tab>
+		<tab title="Raça/Classe">
+            <import file="02.RacaClasse.lfm"/>
+        </tab>
+		<tab title="Habilidades">
+            <import file="03.PericiasTalentosDescricoes.lfm"/>
+        </tab>
+		<tab title="Regras">
+            <import file="04.EquipamentosCombatesAventuras.lfm"/>
+        </tab>
+		<tab title="Cenario">
+            <import file="05.CenarioMonstros.lfm"/>
+        </tab>
+    </tabControl>
+</form>

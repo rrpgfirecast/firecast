@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGerenciador02_MES" width="110" height="25" theme="dark" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit left="0" top="0" width="30" height="25" field="ordem" type="number"/>
+		<edit left="30" top="0" width="130" height="25" field="mes"/>
+		<edit left="160" top="0" width="35" height="25" field="dias" type="number"/>
+
+		<button left="195" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse mês?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+		<dataLink field="dias">
+			<event name="onChange"><![CDATA[               
+		        if sheet~= nil then
+					local node = ndb.getRoot(sheet);
+					local mod = 0;
+					local nodes = ndb.getChildNodes(node.listaMeses); 
+					for i=1, #nodes, 1 do
+						nodes[i].cumulativo = mod;
+						mod = mod + (tonumber(nodes[i].dias) or 0);
+					end
+					node.dias = mod;
+				end;
+		        ]]>
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmExamples" align="client">
+	<scrollBox align="client">
+
+		<!-- Combobox de seleção de cores -->
+		<layout left="0" top="0" width="45" height="45">
+			<comboBox left="0" top="0" width="200" height="45" field="colorSelector" name="colorSelector" visible="false" items="{'AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood', 'CadetBlue', 'Chartreuse', 'Chocolate', 'Coral', 'CornflowerBlue', 'Cornsilk', 'Crimson', 'Cyan', 'DarkBlue', 'DarkCyan', 'DarkGoldenRod', 'DarkGray', 'DarkGreen', 'DarkKhaki', 'DarkMagenta', 'DarkOliveGreen', 'DarkOrange', 'DarkOrchid', 'DarkRed', 'DarkSalmon', 'DarkSeaGreen', 'DarkSlateBlue', 'DarkSlateGray', 'DarkTurquoise', 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DimGray', 'DodgerBlue', 'FireBrick', 'FloralWhite', 'ForestGreen', 'Fuchsia', 'Gainsboro', 'GhostWhite', 'Gold', 'GoldenRod', 'Gray', 'Green', 'GreenYellow', 'HoneyDew', 'HotPink', 'IndianRed ', 'Indigo ', 'Ivory', 'Khaki', 'Lavender', 'LavenderBlush', 'LawnGreen', 'LemonChiffon', 'LightBlue', 'LightCoral', 'LightCyan', 'LightGoldenRodYellow', 'LightGray', 'LightGreen', 'LightPink', 'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGray', 'LightSteelBlue', 'LightYellow', 'Lime', 'LimeGreen', 'Linen', 'Magenta', 'Maroon', 'MediumAquaMarine', 'MediumBlue', 'MediumOrchid', 'MediumPurple', 'MediumSeaGreen', 'MediumSlateBlue', 'MediumSpringGreen', 'MediumTurquoise', 'MediumVioletRed', 'MidnightBlue', 'MintCream', 'MistyRose', 'Moccasin', 'NavajoWhite', 'Navy', 'OldLace', 'Olive', 'OliveDrab', 'Orange', 'OrangeRed', 'Orchid', 'PaleGoldenRod', 'PaleGreen', 'PaleTurquoise', 'PaleVioletRed', 'PapayaWhip', 'PeachPuff', 'Peru', 'Pink', 'Plum', 'PowderBlue', 'Purple', 'RebeccaPurple', 'Red', 'RosyBrown', 'RoyalBlue', 'SaddleBrown', 'Salmon', 'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna', 'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'Snow', 'SpringGreen', 'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'}" values="{'#F0F8FF', '#FAEBD7', '#00FFFF', '#7FFFD4', '#F0FFFF', '#F5F5DC', '#FFE4C4', '#000000', '#FFEBCD', '#0000FF', '#8A2BE2', '#A52A2A', '#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50', '#6495ED', '#FFF8DC', '#DC143C', '#00FFFF', '#00008B', '#008B8B', '#B8860B', '#A9A9A9', '#006400', '#BDB76B', '#8B008B', '#556B2F', '#FF8C00', '#9932CC', '#8B0000', '#E9967A', '#8FBC8F', '#483D8B', '#2F4F4F', '#00CED1', '#9400D3', '#FF1493', '#00BFFF', '#696969', '#1E90FF', '#B22222', '#FFFAF0', '#228B22', '#FF00FF', '#DCDCDC', '#F8F8FF', '#FFD700', '#DAA520', '#808080', '#008000', '#ADFF2F', '#F0FFF0', '#FF69B4', '#CD5C5C', '#4B0082', '#FFFFF0', '#F0E68C', '#E6E6FA', '#FFF0F5', '#7CFC00', '#FFFACD', '#ADD8E6', '#F08080', '#E0FFFF', '#FAFAD2', '#D3D3D3', '#90EE90', '#FFB6C1', '#FFA07A', '#20B2AA', '#87CEFA', '#778899', '#B0C4DE', '#FFFFE0', '#00FF00', '#32CD32', '#FAF0E6', '#FF00FF', '#800000', '#66CDAA', '#0000CD', '#BA55D3', '#9370DB', '#3CB371', '#7B68EE', '#00FA9A', '#48D1CC', '#C71585', '#191970', '#F5FFFA', '#FFE4E1', '#FFE4B5', '#FFDEAD', '#000080', '#FDF5E6', '#808000', '#6B8E23', '#FFA500', '#FF4500', '#DA70D6', '#EEE8AA', '#98FB98', '#AFEEEE', '#DB7093', '#FFEFD5', '#FFDAB9', '#CD853F', '#FFC0CB', '#DDA0DD', '#B0E0E6', '#800080', '#663399', '#FF0000', '#BC8F8F', '#4169E1', '#8B4513', '#FA8072', '#F4A460', '#2E8B57', '#FFF5EE', '#A0522D', '#C0C0C0', '#87CEEB', '#6A5ACD', '#708090', '#FFFAFA', '#00FF7F', '#4682B4', '#D2B48C', '#008080', '#D8BFD8', '#FF6347', '#40E0D0', '#EE82EE', '#F5DEB3', '#FFFFFF', '#F5F5F5', '#FFFF00', '#9ACD32'}">
+		        <event name="onChange">
+		            if sheet~=nil then
+		                self.showColor.color = sheet.colorSelector or "#000000";
+		                self.colorSelector.visible = false;
+		            end;
+		        </event>
+    		</comboBox>
+		    <rectangle left="0" top="0" width="45" height="45" name="showColor" hitTest="true" cornerType="round" xradius="2" yradius="2" strokeColor="black" strokeSize="2" hint="Muda a cor padrão da fonte do editor de texto. Você só vai notar diferença ao começar um novo paragrafo. ">
+		        <event name="onMouseDown">
+		            self.colorSelector:dropDown();
+		            self.colorSelector.visible = true;
+		        </event>
+		        <event name="onExit">
+		            self.colorSelector.visible = false;
+		        </event>
+		    </rectangle>
+		</layout>
+
+		<!-- Layout com titulo. Lembre-se sempre de ajustar o width da label ao tamanho do layout para manter o nome no centro -->
+		<layout left="0" top="50" width="200" height="200">
+			<rectangle align="client" color="black"/>
+			<label left="0" top="5" width="200" height="20" text="Titulo do Layout" horzTextAlign="center"/>
+		</layout>
+
+		<!-- Guarda a soma os contadores da lista -->
+		<rectangle left="0" top="255" width="25" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="0" top="255" width="25" height="25" field="countSum" horzTextAlign="center"/>
+		<label left="25" top="255" width="115" height="25" text="&lt;- Soma contador"/>
+
+		<!-- Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado -->
+		<button left="165" top="255" width="25" height="25" text="+" hint="Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado ">
+	    	<event name="onClick"><![CDATA[
+	    		-- Aumenta um contador enquanto adiciona um objeto
+				if sheet~=nil then
+					local objetos = ndb.getChildNodes(sheet.listaDe);
+
+					local node = self.rclName:append();
+					if node~=nil then
+						local contador = #objetos;
+						for i=1, #objetos, 1 do
+							local aux = tonumber(objetos[i].contador) or 0;
+							if aux > contador then
+								contador = aux;
+							end;
+						end;
+						node.contador = contador + 1;
+					end;
+
+					self.rclName:sort();
+				end;
+				]]>
+			</event>
+	    </button>
+	    <!-- Adiciona objetos a lista com contador em relação ao tamanho da lista -->
+		<button left="190" top="255" width="25" height="25" text="+" hint="Adiciona objetos a lista com contador em relação ao tamanho da lista">
+	    	<event name="onClick"><![CDATA[
+	    		-- Aumenta um contador enquanto adiciona um objeto
+				if sheet~=nil then
+					local objetos = ndb.getChildNodes(sheet.listaDe);
+					local num = #objetos + 1;
+
+					local node = self.rclName:append();
+					if node~=nil then
+						node.contador = num;
+					end;
+
+					self.rclName:sort();
+				end;
+				]]>
+			</event>
+	    </button>
+	    <!-- Organiza os objetos da lista -->
+	    <button left="215" top="255" width="25" height="25" text="O" onClick="self.rclName:sort();" hint="Organizar"/>
+	    <!-- Marcador de tamanho da Lista de Objetos -->
+	    <rectangle left="0" top="280" width="240" height="260" color="black"/>
+		<!-- Lista de Objetos -->
+		<!-- O templateForm é pego de outro arquivo. No caso: "RecordListForm.lfm" -->
+		<recordList left="0" top="280" width="240" height="260" name="rclName" field="listaDe" templateForm="frmRecordListForm" layout="vertical">
+			<event name="onCompare"><![CDATA[
+				-- Esse codigo organiza a ordem dos objetos da lista. 
+		        if (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
+		            return -1;
+		        elseif (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
+		            return 1;
+		        else   
+		            return 0;
+		        end;               
+		        ]]>
+			</event>
+		</recordList>
+
+		<!-- botao que abre popup -->
+		<button left="50" top="0" width="25" height="25" text="i" name="popupButton" hint="Botao que abre popup">
+	    	<event name="onClick"><![CDATA[
+	    		local pop = self:findControlByName("popExemplo");
+				
+				if pop ~= nil then
+					pop:setNodeObject(sheet);
+					pop:showPopupEx("bottomCenter", self.popupButton);
+				else
+					showMessage("Ops, bug.. nao encontrei o popup para exibir");
+				end;
+				]]>
+			</event>
+		</button>
+
+		<!-- Popup de exemplo -->
+		<popup name="popExemplo" width="300" height="400" backOpacity="0.4">
+			<label left="0" top="5" width="300" height="20" text="Exemplo de PopUp" horzTextAlign="center"/>
+		</popup>
+
+		<!-- função que vai ser chamada após rolagem -->
+		<script>
+			<![CDATA[
+			local function rolagemCallback(rolagem)
+				local msg = "";
+				for i = 1, #rolagem.ops, 1 do  
+					local operacao = rolagem.ops[i];      
+
+					-- Vamos verificar que tipo de operação é esta.      
+					if operacao.tipo == "dado" then        
+					        -- Adicionar à mensagem informações sobre este conjunto de dados.
+					        msg = msg .. operacao.quantidade .. "d" .. operacao.face .. ": \n  ";               
+
+					       -- Loop percorrendo cada um dos resultados individuais deste conjunto de dados.
+					        for j = 1, #operacao.resultados, 1 do
+					                msg = msg .. "  " .. math.floor(operacao.resultados[j]);
+					        end;               
+
+					        msg = msg .. "\n";
+					elseif operacao.tipo == "imediato" then
+					        msg = msg .. "Valor imediato: " .. operacao.valor .. "\n";
+					end;
+				end; 
+				-- Concatenar à mensagem o resultado final da rolagem
+				msg = msg .. "------------------- \nResultado Final: " .. rolagem.resultado; 
+
+				-- Escrever resultado na mesa só para o usuario
+				local mesa = rrpg.getMesaDe(sheet);
+				mesa.activeChat:escrever(msg);
+			end;
+			]]>
+		</script>
+
+		<!-- botao que faz rolagem na mesa e depois processa o retorno -->
+		<button left="100" top="0" width="25" height="25" text="R" hint="Botao que faz rolagem de teste">
+	    	<event name="onClick"><![CDATA[
+	    		local roll = sheet.roll or "1d1-1";
+	    		local rolagem = rrpg.interpretarRolagem(roll);
+				local mesa = rrpg.getMesaDe(sheet);
+				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+				]]>
+			</event>
+		</button>
+		<!-- Valor que será usado na rolagem. Pode ser qualquer rolagem que o RRPG saiba executar -->
+		<edit left="125" top="0" width="75" height="25" field="roll"/>
+
+		<!-- RecordList + DataScopeBox -->
+		<button left="250" top="0" width="25" height="25" text="+" onClick="self.rclSelector:append();" hint="Adicionar"/>
+		<button left="275" top="0" width="25" height="25" text="O" onClick="self.rclSelector:sort();" hint="Organizar"/>
+		<!-- Marcador de tamanho da Lista de Objetos -->
+	    <rectangle left="250" top="25" width="240" height="260" color="black"/>
+		<!-- RecordList para seleção -->
+		<recordList left="250" top="25" width="240" height="260" name="rclSelector" field="listaDeOpcoes" templateForm="frmDataScopeSelectionForm" layout="vertical" selectable="true">
+			<event name="onCompare"><![CDATA[
+				-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+		        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);              
+		        ]]>
+			</event>
+			<event name="onSelect"><![CDATA[
+					local node = self.rclSelector.selectedNode;
+					self.boxDetalhesDoItem.node = node; 
+					self.boxDetalhesDoItem.visible = (node ~= nil);
+				]]>
+			</event>
+		</recordList>
+		<!-- Info selecionada vai estar aqui -->
+		<dataScopeBox left="500" top="25" width="240" height="260" name="boxDetalhesDoItem" visible="false">
+			<rectangle align="client" color="black"/>
+			<!-- O mesmo valor do edit nome vai estar no label do seletor pois tem o mesmo field -->
+			<edit left="5" top="5" width="230" height="25" field="nome"/>
+		</dataScopeBox>
+
+		<!-- Imagem que ao ser clicada passa para a proxima da lista -->
+		<button left="250" top="290" width="100" height="100" hint="click to change image">
+			<!-- Coloca imagem padrão -->
+			<dataLink field="clickableImage" defaultValue="http://firecast.blob.core.windows.net/blobs/KEMDMPRM_386214.png"/>
+			<image align="client" field="clickableImage" margins="{left=5, right=5, top=5, bottom=5}" style="proportional"/>
+
+			<script>
+				<![CDATA[
+				-- criando array das imagens que vão ser utilizadas. 
+				-- melhor usar imagens hospedadas no firedrive nesse caso
+				local pics = {	"http://firecast.blob.core.windows.net/blobs/KEMDMPRM_386214.png", 
+								"http://firecast.blob.core.windows.net/blobs/IAUQMVUR_386260.png", 
+								"http://firecast.blob.core.windows.net/blobs/QNIIBIMV_386244.png", 
+								"http://firecast.blob.core.windows.net/blobs/APKABCKF_386218.png", 
+								"http://firecast.blob.core.windows.net/blobs/DFBFKPTH_386212.png", 
+								"http://firecast.blob.core.windows.net/blobs/PPIRFSBI_386208.png", 
+								"http://firecast.blob.core.windows.net/blobs/FGLDGNRW_386257.png", 
+								"http://firecast.blob.core.windows.net/blobs/LFRIRPIW_386226.png", 
+								"http://firecast.blob.core.windows.net/blobs/CEJAMDNT_386246.png", 
+								"http://firecast.blob.core.windows.net/blobs/MKLJSRET_386230.png"};
+				]]>
+			</script>
+
+			<event name="onClick"><![CDATA[
+				if sheet.imageCounter == nil then
+					sheet.imageCounter = 0;
+				end;
+				-- Contador que vai de 0 a 9 e reseta ao passar de 9
+				sheet.imageCounter = (sheet.imageCounter + 1) % 10;
+				-- pegando imagem do array. O +1 é por que arrays em lua começam em 1 e não em 0
+				sheet.clickableImage = pics[sheet.imageCounter +1];
+				]]>
+			</event>
+		</button>
+
+		<!-- Imagem para avatar do personagem editavel e que pode ser arrastada para o scene -->
+		<rectangle left="375" top="290" width="100" height="100" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="40" width="100" height="20" text="Avatar" horzTextAlign="center"/>
+			<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+				<event name="OnStartDrag">
+				    drag:addData("imageURL", sheet.avatar);
+				</event>
+			</image>
+		</rectangle>
+		
+	</scrollBox>
+</form>

@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmGraphicItemMenu" width="235" height="120" title="Menu" drawContainer="false"> 
+	<import file="sceneTags.xml"/>
+
+	<script>
+		require("rrpgScene_Undo.dlua");
+		require("scene_genericItemMenu.dlua");
+		local currentMenuLayout = nil;
+		local theSelection = nil;
+		local theScene = nil;
+		
+		local function resizeForLayoutSize(aLayout)
+			local h = aLayout.height;
+			self.height = h + 5;
+		end;
+		
+		local function onLayoutResized(aLayout)
+			if aLayout == currentMenuLayout then
+				resizeForLayoutSize(aLayout);
+			end;
+		end;
+		
+		local function alterarCamada(camada)
+			if theSelection ~= nil then
+				SC3UNDO_Capture(theScene,
+					function()
+						for k, v in pairs(theSelection) do
+							v.layer = camada;
+							v.selected = false;
+						end;
+					end);	
+			end;
+			
+			self:close();
+		end;
+	</script>
+	
+	<flowLayout name="flaLayout" class="menu">
+	</flowLayout>	
+	
+	<flowLayout name="flaCamadas" class="menu">
+	</flowLayout>
+	
+	<flowLayout name="flaImageOptions" class="menu">
+	</flowLayout>	
+	
+	<script>
+		local __Menuses = {self.flaLayout, self.flaCamadas, self.flaImageOptions};
+		require("rrpgScene_Clipboard.dlua");
+		require("rrpgScene_Undo.dlua");
+	
+		for k, v in pairs(__Menuses) do
+			local aLayout = v;
+			aLayout.onAfterLayoutCalc = function() onLayoutResized(aLayout); end;				
+		end;
+			
+		-- Menu Principal	
+	
+		local btnLayer = newMenuItem(lang("scene.tokenMenu.changeLayer"), self.flaLayout);		
+		local macEdit = newMultiActionMenuItem("", self.flaLayout, 5);
+		local actCopy = macEdit:addActionButton("/icos/menuCopy.png", LANG("scene.menu.token.editCA.copy"));
+		local actPaste = macEdit:addActionButton("/icos/menuPaste.png", LANG("scene.menu.token.editCA.paste"));
+		local actUndo = macEdit:addActionButton("/icos/menuUndo.png", LANG("scene.menu.token.editCA.undo"));				
+		local actInvisible = macEdit:addCheckBoxAction("/icos/menuInvisible.png", LANG("scene.visibilityChange.ToGMOnly"));									
+		
+		local macOrganizar = newMultiActionMenuItem("", self.flaLayout, 5);
+		local actBringToFront = macOrganizar:addActionButton("/icos/bringToFront.png", LANG("scene.organization.bringToFront"));		
+		local actSendToBack = macOrganizar:addActionButton("/icos/sendToBack.png", LANG("scene.organization.sendToBack"));
+		
+		actBringToFront.onClick = function()
+									GENERICItem_BringToFront(theScene, theSelection);
+									self:close();
+								  end;
+								  
+		actSendToBack.onClick = function()
+									GENERICItem_SendToBack(theScene, theSelection);
+									self:close();
+								  end;								  
+		
+		local btnApagar = newMenuItem(lang("scene.remove.item"), self.flaLayout);				
+				
+		
+		-- Menu Camadas
+				
+		local btnCamadaVoltar = newMenuItem(lang("scene.menu.backOption"), self.flaCamadas);
+		local btnCamadaTokens, itmCamadaTokens = newMenuItem(lang("scene.layer.tokens.noprefix"), self.flaCamadas);
+		local btnCamadaObjetos, itmCamadaObjetos = newMenuItem(lang("scene.layer.objects.noprefix"), self.flaCamadas);
+		local btnCamadaBackground, itmCamadaBackground = newMenuItem(lang("scene.layer.background.noprefix"), self.flaCamadas);			
+		
+		btnLayer.onClick = function()
+							  self:setActiveMenu(self.flaCamadas);
+						   end;	
+		
+		btnCamadaVoltar.onClick = function()
+							self:setActiveMenu(self.flaLayout);
+						  end;	
+			
+		actCopy.onClick = function()
+							SC3CLIPBOARD_Copy(theSelection);
+							self:close();
+						  end;	
+						  
+		actPaste.onClick = function()
+							SC3CLIPBOARD_Paste(theScene);
+							self:close();
+						  end;		
+							
+		actUndo.onClick = function()
+							SC3UNDO_Undo(theScene);
+							self:close();
+						  end;	
+						  
+		btnCamadaTokens.onClick = function() alterarCamada("tokens"); end;
+		btnCamadaObjetos.onClick = function() alterarCamada("objects"); end;
+		btnCamadaBackground.onClick = function() alterarCamada("background"); end;
+		
+		btnApagar.onClick = function()
+								local sel = theSelection;								
+								local msg;
+								
+								if #sel == 1 then
+									msg = LANG("scene.ask.deleteOneItem");
+								else
+									msg = string.format(LANG("scene.ask.deleteMultiItem"), #sel);						
+								end;
+								
+								self:close();
+								
+								dialogs.confirmYesNo(msg, 
+									function(confirmado)
+										if confirmado then
+											SC3UNDO_Capture(theScene, 
+												function()
+													for i = 1, #sel, 1 do
+														sel[i]:delete();
+													end;
+												end);
+										end;
+									end);			
+							end;								
+		
+		function self:setActiveMenu(menu)
+			currentMenuLayout = menu;
+		
+			for k, v in pairs(__Menuses) do
+				if menu == v then
+					v.visible = true;
+				else
+					v.visible = false;
+				end;
+			end;
+			
+			resizeForLayoutSize(menu)
+		end;
+		
+		function self:prepareForShow(selection, scene)
+			local firstItem = nil;
+			local currentLayer = "tokens";
+			theScene = scene;
+			
+			for k, v in pairs(selection) do
+				firstItem = v;
+				break;
+			end;
+			
+			if firstItem ~= nil then
+				currentLayer = firstItem.layer;
+			end;
+		
+			itmCamadaTokens:setChecked(false);			
+			itmCamadaObjetos:setChecked(false);
+			itmCamadaBackground:setChecked(false);
+					
+			if currentLayer == "tokens" then
+				itmCamadaTokens:setChecked(true);
+			elseif currentLayer == "objects" then
+				itmCamadaObjetos:setChecked(true);
+			elseif currentLayer == "background" then
+				itmCamadaBackground:setChecked(true);
+			end;
+		
+			self:setActiveMenu(self.flaLayout);		
+			theSelection = selection;
+			
+			local estaVisible = true;
+			
+			if #theSelection > 0 then
+				local umDrawing = theSelection[1];
+				
+						local function createInvertBoolOptionCallback(propName)							
+							local valorInicial = umDrawing[propName];
+							local xScene = scene;
+						
+							return function()
+										SC3UNDO_Capture(xScene,
+											function()
+												for i = 1, #theSelection, 1 do 
+													theSelection[i][propName] = not valorInicial;
+												end;	
+											end);
+										
+										self:close();							
+							       end;
+						end;		
+				
+				-- Visibilidade
+				estaVisible = umDrawing.visible;
+				actInvisible:setChecked(not estaVisible);				
+				actInvisible.onClick = createInvertBoolOptionCallback("visible");
+			end;					
+		end;	
+	</script>	
+	
+	<event name="onKeyUp">	
+		if (event.keyCode == 0x89) or (event.keyCode == 0x1B) then
+			setTimeout(
+				function()
+					self:close();
+				end, 1);
+			
+			event.keyCode = 0;
+			event.key = "";
+		end;
+	</event>
+	
+	<event name="onHide">
+		theSelection = nil;
+	</event>
+	
+</popupForm>

@@ -1,0 +1,706 @@
+﻿require("scene.lua");
+require("utils.lua");
+require("system.lua");
+require("sceneMath.dlua");
+
+local TEMPO_CONSOLIDAR_PATH = 700;
+local PATH_LINE_COLOR = "CornflowerBlue";
+local USED_CELLS_COLOR = "CornflowerBlue";
+
+local HIST_PATH_LINE_COLOR = "DarkCyan";
+local HIST_USED_CELLS_COLOR = HIST_PATH_LINE_COLOR;
+
+local function drawAPath(path, vp, desenharFinal, track)
+	local m = path;
+	local opacity = track.opacity;
+	
+	if m.pathFound and (m.lines ~= nil) and (#m.lines >= 1) then
+		vp:prepareDraw(track.pathColor, 3);
+	
+		for i = 1, #m.lines, 1 do
+			local l = m.lines[i];
+			local tsx, tsy = vp:worldToScreen(l.sx, l.sy);
+			local tex, tey = vp:worldToScreen(l.ex, l.ey);
+			vp:drawLine(tsx, tsy, tex, tey, opacity);
+		end;
+		
+		if desenharFinal then
+			local ultLine = m.lines[#m.lines];
+			
+			-- Desenhar cabeça da seta			
+			local fx, fy = vp:worldToScreen(ultLine.ex, ultLine.ey);
+			
+			local auxX, auxY = vp:worldToScreen(ultLine.seta1.x, ultLine.seta1.y);
+			vp:drawLine(fx, fy, auxX, auxY, opacity);
+			
+			auxX, auxY = vp:worldToScreen(ultLine.seta2.x, ultLine.seta2.y);
+			vp:drawLine(fx, fy, auxX, auxY, opacity);		
+			
+			-- Desenhar o texto com a distância
+			
+			vp:prepareFont(18, nil, true);				
+			local txt = m.distanceStr;
+			local sx, sy = vp:textSize(txt);
+			local px = fx - sx / 2;
+			local py = fy - sy - math.max((track.rotatedHeight / 2) * vp.scale + 8, 20);				
+			vp:prepareFill("white");
+			vp:fillRect(px - 2, py - 2 , px + sx + 4, py + sy + 4, 0.8);
+			
+			vp:prepareFill("black");				
+			vp:fillText(px, py, txt);
+		end
+	end;
+end;
+
+local function doDrawUsedCells(scene, viewport, cellsUsed, track)
+	viewport:prepareFill(track.usedCellsColor);
+	local opacity = track.opacity;
+	
+	local function drawCell(i, j)
+		viewport:fillACell(i, j, 0.25 * opacity);
+	end;
+	
+	for i, v in pairs(cellsUsed) do
+		for j, v2 in pairs(v) do
+			drawCell(i, j);
+		end;
+	end;	
+	
+	local bPath = track.bPath;
+	
+	if (bPath ~= nil) and (bPath.cellsUsed ~= nil) then
+		local bCellsUsed = bPath.cellsUsed;
+		
+		for i, v in pairs(bCellsUsed) do
+			for j, v2 in pairs(v) do
+				if (cellsUsed[i] == nil) or (cellsUsed[i][j] == nil) then
+					drawCell(i, j);
+				end;
+			end;
+		end;		
+	end;
+end;
+
+local function doDrawTrack(scene, track)
+	local vp = scene.viewport;
+	local currPath = track.bPath;
+	local paths = track.paths;
+	
+	if currPath ~= nil then
+		if currPath.pathFound then
+			for i = 1, #paths, 1 do
+				drawAPath(paths[i], vp, false, track);
+			end;
+		
+			drawAPath(currPath, vp, true, track);
+		elseif #paths > 0 then
+			for i = 1, #paths - 1, 1 do
+				drawAPath(paths[i], vp, false, track);
+			end;	
+
+			drawAPath(paths[#paths], vp, true, track);					
+		end;
+	end;
+	
+	if track.cellsUsed ~= nil then
+		doDrawUsedCells(scene, vp, track.cellsUsed, track);
+	end;	
+end;
+
+local _tracksPerScene = {};
+
+local function MOVETRACK_addTRACK(scene, track)
+	local tracks = _tracksPerScene[scene];
+	
+	if tracks == nil then
+		tracks = {};
+		tracks.aboveCount = 0;
+		tracks.belowCount = 0;
+		tracks.objsAbove = {};
+		tracks.objsBelow = {};
+		_tracksPerScene[scene] = tracks;
+	end;
+	
+	if track.aboveTokens then
+		tracks.aboveCount = tracks.aboveCount + 1;
+		tracks.objsAbove[track] = track;		
+		
+		if tracks.aboveCount == 1 then
+			local viewport = scene.viewport;
+			
+			tracks.listenerDraw = viewport:listen("onAfterDrawLayers",
+				function()
+					for k, v in pairs(tracks.objsAbove) do
+						doDrawTrack(scene, k);				
+					end;				
+				end);
+		end;		
+	else
+		tracks.belowCount = tracks.belowCount + 1;
+		tracks.objsBelow[track] = track;	
+		
+		if tracks.belowCount == 1 then
+			local viewport = scene.viewport;
+			
+			tracks.listenerDrawBelow = viewport:listen("onBeforeDrawTokensLayer",
+				function()
+					for k, v in pairs(tracks.objsBelow) do
+						doDrawTrack(scene, k);				
+					end;				
+				end);
+		end;		
+	end;	
+end;
+
+local function MOVETRACK_removeTRACK(scene, track)
+	local tracks = _tracksPerScene[scene];
+	
+	if tracks == nil then
+		return;
+	end;
+	
+	if track.aboveTokens then	
+		tracks.aboveCount = tracks.aboveCount - 1;
+		tracks.objsAbove[track] = nil;		
+		
+		if tracks.aboveCount == 0 then
+			scene.viewport:unlisten(tracks.listenerDraw);
+		end;		
+	else
+		tracks.belowCount = tracks.belowCount - 1;
+		tracks.objsBelow[track] = nil;	
+		
+		if tracks.belowCount == 0 then
+			scene.viewport:unlisten(tracks.listenerDrawBelow);
+		end;	
+	end;
+	
+	if tracks.aboveCount + tracks.belowCount  <= 0 then
+		_tracksPerScene[scene] = nil;	
+	end;
+		
+	scene.viewport:needRepaint();
+end;
+
+function MOVETRACK_newMoveTrack(scene, item)
+	local track = {};
+	local grid = scene.grid;
+	local snapToGrid = item.snapToGrid;
+		
+	track.item = item;
+	track.scene = scene;
+	track.start = {};
+	track._end = {};
+	track.isPainting = false;
+	track.pathColor = PATH_LINE_COLOR;
+	track.usedCellsColor = USED_CELLS_COLOR;
+	track.opacity = 1.0;
+	track.aboveTokens = true;
+	
+	local calculouDifCenterXY = false;
+	local dispX, dispY = 0, 0;
+	
+	local function obterPosicaoDoToken()
+		if not calculouDifCenterXY then
+			local cx, cy = item:getCenter(true);
+			dispX = cx - item.x;
+			dispY = cy - item.y;
+			calculouDifCenterXY = true;
+		end;
+	
+		return item.x + dispX, item.y + dispY;
+	end;	
+
+	track.start.x = item.x;
+	track.start.y = item.y;
+	track.start.width = item.width;
+	track.start.height = item.height;
+	track.start.cx, track.start.cy = obterPosicaoDoToken();
+	track.start.rotation = item.rotation;
+	track._end.x = track.start.x;
+	track._end.y = track.start.y;
+	track._end.cx = track.start.cx;
+	track._end.cy = track.start.cy;
+	track.offsetYDrawDistance = (item.width / 2 + item.height / 2) * 0.5;
+	
+	track.rotatedWidth, track.rotatedHeight = SC3Math.rotatedSize(item.width, item.height, item.rotation);
+	
+	
+	track.start.gridCenterX, track.start.gridCenterY = obterPosicaoDoToken();
+	track.start.gridCenterI, track.start.gridCenterJ = grid:worldToCell(track.start.gridCenterX, track.start.gridCenterY);
+	track.start.gridCenterX, track.start.gridCenterY = grid:cellToWorld(track.start.gridCenterI, track.start.gridCenterJ);
+	
+	track.offsetX = (item.x + item.width / 2) - track.start.gridCenterX;
+	track.offsetY = (item.y + item.height / 2) - track.start.gridCenterY;
+	--track.offsetX = 0;
+	--track.offsetY = 0;
+	
+	track.paths = {};
+	track.gridShape = nil; -- tabela que será criada posteriormente
+	track.cellsUsed = {};  -- track.cellsUsed[i][j] = true
+	
+	track.bPath = {};
+	local bPath = track.bPath;	
+	bPath.startX = track.start.cx;
+	bPath.startY = track.start.cy;
+	bPath.endX = bPath.startX;
+	bPath.endY = bPath.startY;
+	bPath.startI, bPath.startJ = grid:worldToCell(bPath.startX, bPath.startY);
+	bPath.endI = bPath.startI;
+	bPath.endJ = bPath.startJ;	
+	bPath.lastModification = System.getTickCount();
+	bPath.pathFound = false;
+	bPath.distanciaPreAcumulada = 0;
+	bPath.distance = 0;		
+	bPath.cellsUsed = nil; -- bPath.cellsUsed[i][j] = true
+						
+	local function addToCellsUsedBaseOnShape(cellsUsed, posI, posJ)
+		local gridShape = track.gridShape;
+		local posX, posY = grid:cellToWorld(posI, posJ);
+		
+		for i = 1, #gridShape, 1 do
+			local s = gridShape[i];	
+			local newX = posX + s.dx;
+			local newY = posY + s.dy;
+			
+			local usedI, usedJ = grid:worldToCell(newX, newY);
+			
+			--local usedI = posI + s.i;
+			--local usedJ = posJ + s.j;
+			
+			local iTable = cellsUsed[usedI];
+			
+			if iTable == nil then
+				iTable = {};
+				cellsUsed[usedI] = iTable;
+			end;
+			
+			iTable[usedJ] = true;
+		end;
+	end;
+						
+	local function calculatePath(path)		
+		local m = path;
+		local opcoes = {diagonals=grid.squareDiagonals, endOfGrid="continue"};
+		
+		if path.rastrearColisao then
+			opcoes.trackCollisions = true;
+			opcoes.collisionRadius = math.min(item.width, item.height) * 0.5 * 0.2;			
+		end;
+		
+		if m.previous ~= nil then
+			opcoes.continuationData = m.previous.continuationData;			
+		end;
+	
+		local found, distance, steps, continuationData = scene.grid:shortestPath(m.startI, m.startJ, m.endI, m.endJ, 
+																				 opcoes);
+																				 
+		if path.rastrearColisao and not found then			
+			-- Tentar novamente sem rastrear colisões.
+			opcoes.trackCollisions = nil;
+			opcoes.collisionRadius = nil;
+			found, distance, steps, continuationData = scene.grid:shortestPath(m.startI, m.startJ, m.endI, m.endJ, 
+																				 opcoes);
+		end;
+																									
+		found = found and (distance > 0);
+		m.pathFound = found;
+					
+		if found then
+			m.steps = steps;
+			m.distance = distance;
+			m.lines = {};
+			m.cellSize = grid.cellSize;
+			m.continuationData = continuationData;
+			m.cellsUsed = {};
+
+			local formatoAUsar;
+			local totalDistancia = distance + (m.distanciaPreAcumulada or 0.0);
+			
+			if math.abs(math.floor(totalDistancia) - totalDistancia) > 0.001 then
+				formatoAUsar = "%1.1f %s";
+			else
+				formatoAUsar = "%0.0f %s";
+			end
+							
+			m.distanceStr = string.format(formatoAUsar, totalDistancia, 
+										  tryLang("metric." .. scene.worldMetricName) or scene.worldMetricName);
+			
+			local startLineX, startLineY;
+			local currLineX, currLineY;		
+			local oldLine = nil;
+							
+							
+			if track.gridShape == nil then
+				track:initializeShape();
+			end;
+							
+			for i = 1, #steps, 1 do
+				local s = steps[i];
+				addToCellsUsedBaseOnShape(m.cellsUsed, s.i, s.j);
+				s.cx, s.cy = scene.grid:cellToWorld(s.i, s.j);
+				s.cx = s.cx + track.offsetX;
+				s.cy = s.cy + track.offsetY;
+				
+				local newLine = {};
+				local deveAddNewLine = true;		
+							
+				if oldLine ~= nil then
+					newLine.sx = oldLine.ex;
+					newLine.sy = oldLine.ey;												
+				else
+					newLine.sx = s.cx;
+					newLine.sy = s.cy;
+				end;
+				
+				newLine.ex = s.cx;
+				newLine.ey = s.cy;										
+				newLine.angle = math.floor((math.atan(-(newLine.ey - newLine.sy), newLine.ex - newLine.sx) * 180.0 / math.pi) + 0.5);						
+				
+				if (oldLine ~= nil) and (oldLine.angle == newLine.angle) then
+					-- Mesmo angulo da linha anterior.. Vamos imendar.
+					oldLine.ex = newLine.ex;
+					oldLine.ey = newLine.ey;
+					deveAddNewLine = false;
+				end;
+				
+				if deveAddNewLine then
+					oldLine = newLine;				
+					m.lines[#m.lines + 1] = newLine;
+				end;					
+			end;
+			
+			if #m.lines >= 1 then
+				local ultLinha = m.lines[#m.lines];
+				local cellSize = m.cellSize;
+				ultLinha.rotMatrix = SceneLib.Math.newRotationMatrix(ultLinha.angle, ultLinha.ex, ultLinha.ey);
+				ultLinha.seta1 = {};
+				ultLinha.seta2 = {};
+				
+				local auxX = ultLinha.ex - cellSize * 0.35;
+				local auxY = ultLinha.ey - cellSize * 0.18;
+				ultLinha.seta1.x, ultLinha.seta1.y = SceneLib.Math.transformPoint(auxX, auxY, ultLinha.rotMatrix);
+				
+				auxX = ultLinha.ex - cellSize * 0.35;
+				auxY = ultLinha.ey + cellSize * 0.18;
+				ultLinha.seta2.x, ultLinha.seta2.y = SceneLib.Math.transformPoint(auxX, auxY, ultLinha.rotMatrix);					
+			end;
+		else
+			m.steps = nil;
+			m.distance = 0;
+			m.lines = nil;
+			m.continuationData = nil;
+			m.cellsUsed = nil;
+		end;
+	end;			
+		
+	function track:consolidateBuildingPath(aPath)	
+		if aPath.cellsUsed ~= nil then
+			for i, v in pairs(aPath.cellsUsed) do
+				for j, v2 in pairs(v) do
+					local iTable = track.cellsUsed[i];
+					
+					if iTable == nil then
+						iTable = {};
+						track.cellsUsed[i] = iTable;
+					end;
+										
+					iTable[j] = true;						
+				end;
+			end;
+		end;
+	end;
+		
+	function track:trackNewPosition(rastrearColisao)	
+		local novoCX, novoCY = obterPosicaoDoToken();
+		local novoI, novoJ = grid:worldToCell(novoCX, novoCY);
+		local tickAtual = System.getTickCount();
+		local deslocou;
+	
+		if snapToGrid then
+			deslocou = (novoI ~= bPath.endI) or (novoJ ~= bPath.endJ);
+		else
+			deslocou = (novoCX ~= bPath.endX) or (novoCY ~= bPath.endY);
+		end;
+		
+		if bPath.pathFound and deslocou and (tickAtual - bPath.lastModification >  TEMPO_CONSOLIDAR_PATH) then
+			local oldPath = bPath;
+			track.paths[#track.paths + 1] = track.bPath;			
+			bPath = {};
+			track.bPath = bPath;
+			
+			bPath.startX = oldPath.endX;
+			bPath.startY = oldPath.endY;
+			bPath.startI = oldPath.endI;
+			bPath.startJ = oldPath.endJ;
+			bPath.previous = oldPath;
+			bPath.distanciaPreAcumulada = oldPath.distance + oldPath.distanciaPreAcumulada;
+			bPath.distance = 0;
+			
+			track:consolidateBuildingPath(oldPath);
+		end;
+		
+		if deslocou then
+			bPath.endX = novoCX;
+			bPath.endY = novoCY;
+			bPath.endI = novoI;
+			bPath.endJ = novoJ;					
+			bPath.lastModification = tickAtual;		
+			bPath.rastrearColisao = rastrearColisao;
+			calculatePath(bPath);
+			track._end.x = item.x;
+			track._end.y = item.y;
+			track._end.cx = novoCX;
+			track._end.cy = novoCY;
+			
+			if track.isPainting then
+				scene.viewport:needRepaint();
+			end;
+		end;
+	end;	
+	
+	function track:endTrack()
+		self:stopPaint();		
+	end;
+		
+	function track:initializeShape()
+		local cx, cy = obterPosicaoDoToken();
+		local pI, pJ = grid:worldToCell(cx, cy);	
+		local pStartX, pStartY = grid:cellToWorld(pI, pJ);		
+		--local pStartX, pStartY = cx, cy;
+		local cellsOccupied = item:getCellsOccupied();	
+		track.gridShape = {};
+
+		for i = 1, #cellsOccupied, 1 do
+			local celula = cellsOccupied[i];
+			local shapeDelta = {};
+			shapeDelta.i = celula.i - pI;
+			shapeDelta.j = celula.j - pJ;
+
+			local pCellX, pCellY = grid:cellToWorld(celula.i, celula.j);
+			shapeDelta.dx = pCellX - pStartX;
+			shapeDelta.dy = pCellY - pStartY;
+			
+			track.gridShape[#track.gridShape + 1] = shapeDelta;				
+		end;		
+	end;
+	
+	function track:save()			
+		local t = {};
+		t.distance = bPath.distanciaPreAcumulada + bPath.distance;				
+		local steps = {};
+		local cellsUsed = {};
+		local oldStep = nil;
+		
+				local function addStep(x, y)
+					if (oldStep == nil) or (oldStep[1] ~= x) or (oldStep[2] ~= y) then
+						local s = {x, y};	
+						steps[#steps + 1] = s;
+						oldStep = s;
+					end;									
+				end;
+				
+				local function processarPathData(p)	
+					if p.lines ~= nil then
+						for i = 1, #p.lines, 1 do 
+							local linha = p.lines[i];
+							addStep(linha.sx, linha.sy);
+							addStep(linha.ex, linha.ey);						
+						end;
+					end;
+					
+					if p.cellsUsed ~= nil then
+						for i, v in pairs(p.cellsUsed) do
+							for j, v2 in pairs(v) do
+								local iTable = cellsUsed[i];
+								
+								if iTable == nil then
+									iTable = {};
+									cellsUsed[i] = iTable;
+								end;
+													
+								iTable[j] = true;						
+							end;
+						end;
+					end;
+				end;		
+		
+		for i = 1, #self.paths, 1 do
+			processarPathData(self.paths[i]);
+		end;
+		
+		if bPath ~= nil then
+			processarPathData(bPath);	
+		end;
+		
+		if #steps > 1 then
+			local stepsStr;
+			
+			for i = 1, #steps, 1 do
+				local s = steps[i];
+				local sStr = string.format("%4.4f %4.4f", s[1], s[2]);
+				
+				if i == 1 then
+					stepsStr = sStr;
+				else
+					stepsStr = stepsStr .. " " .. sStr;
+				end;
+			end;
+		
+			t.steps = stepsStr;
+		end;
+
+		local temCells = false;
+		local cellsStr = "";
+		
+		for i, v in pairs(cellsUsed) do
+			cellsStr = cellsStr .. i .. "(";
+			local primDoI = true;
+		
+			for j, v2 in pairs(v) do
+				if primDoI then
+					cellsStr = cellsStr .. j;
+				else
+					cellsStr = cellsStr .. " "  .. j;
+				end;
+			
+				primDoI = false;
+			end;
+			
+			cellsStr = cellsStr .. ")";
+			temCells = true;
+		end;
+			
+		if temCells then
+			t.cells = cellsStr;
+		end;
+		
+		t.sx = track.start.cx;
+		t.sy = track.start.cy;
+		t.ex = track._end.cx;
+		t.ey = track._end.cy;		
+		return t;
+	end;
+	
+	function track:load(data)
+		track.start.cx = data.sx or track.start.cx;
+		track.start.cy = data.sy or track.start.cy;
+		track.paths = {};
+
+		bPath = {};
+		track.bPath = bPath;
+		bPath.distanciaPreAcumulada = 0;
+		bPath.distance = data.distance or 0;
+		bPath.cellSize = grid.cellSize;
+		bPath.pathFound = true;
+		bPath.cellsUsed = {};
+		bPath.lines = {};
+		
+		-- Carregar linhas
+		
+		local primStep = true;
+		local prevEX, prevEY;
+		
+		for vx, vy in string.gmatch(data.steps or "", "(%-?[%d%.]+) (%-?[%d%.]+)") do
+			local ax = tonumber(vx)
+			local ay = tonumber(vy);
+			
+			if ax ~= nil and ay ~= nil then			
+				if primStep then
+					prevEX = ax;
+					prevEY = ay;			
+					primStep = false;
+				else
+					local l = {};
+					l.sx = prevEX;
+					l.sy = prevEY;
+					l.ex = ax;
+					l.ey = ay;				
+					l.angle = math.floor((math.atan(-(l.ey - l.sy), l.ex - l.sx) * 180.0 / math.pi) + 0.5);						
+					
+					if bPath.lines == nil then
+						bPath.lines = {};
+					end;
+					
+					bPath.lines[#bPath.lines + 1] = l;
+					
+					prevEX = ax;
+					prevEY = ay;				
+				end;					
+			end;
+		end;
+		
+		if #bPath.lines >= 1 then
+			local ultLinha = bPath.lines[#bPath.lines];
+			local cellSize = bPath.cellSize;
+			ultLinha.rotMatrix = SceneLib.Math.newRotationMatrix(ultLinha.angle, ultLinha.ex, ultLinha.ey);
+			ultLinha.seta1 = {};
+			ultLinha.seta2 = {};
+			
+			local auxX = ultLinha.ex - cellSize * 0.35;
+			local auxY = ultLinha.ey - cellSize * 0.18;
+			ultLinha.seta1.x, ultLinha.seta1.y = SceneLib.Math.transformPoint(auxX, auxY, ultLinha.rotMatrix);
+			
+			auxX = ultLinha.ex - cellSize * 0.35;
+			auxY = ultLinha.ey + cellSize * 0.18;
+			ultLinha.seta2.x, ultLinha.seta2.y = SceneLib.Math.transformPoint(auxX, auxY, ultLinha.rotMatrix);					
+		end;	
+		
+		-- Carregar informacoes de distancia
+
+		local formatoAUsar;
+		local totalDistancia = data.distance or 0;
+		
+		if math.abs(math.floor(totalDistancia) - totalDistancia) > 0.001 then
+			formatoAUsar = "%1.1f %s";
+		else
+			formatoAUsar = "%0.0f %s";
+		end
+						
+		bPath.distanceStr = string.format(formatoAUsar, totalDistancia, 
+									  tryLang("metric." .. scene.worldMetricName) or scene.worldMetricName);
+									 
+		-- carregar células usadas
+		track.cellsUsed = {};
+		
+		for i, jotas in string.gmatch(data.cells or "", "([%d%-]+)%(([%d %-]*)%)") do
+			local iValue = tonumber(i);
+			
+			for j in string.gmatch(jotas, "([%-%d]+)") do
+				local jValue = tonumber(j);				
+				local iTable = track.cellsUsed[iValue];
+				
+				if iTable == nil then
+					iTable = {};
+					track.cellsUsed[iValue] = iTable;
+				end;
+				
+				iTable[jValue] = true;
+			end;
+		end;
+		
+		track.pathColor = HIST_PATH_LINE_COLOR;
+		track.usedCellsColor = HIST_USED_CELLS_COLOR;		
+		track.opacity = 0.7;
+		track.aboveTokens = false;
+	end;
+		
+	function track:startPaint();
+		if not track.isPainting then
+			MOVETRACK_addTRACK(scene, track);	
+			track.isPainting = true;
+			scene.viewport:needRepaint();
+		end;
+	end;
+	
+	function track:stopPaint()
+		if track.isPainting then		
+			MOVETRACK_removeTRACK(scene, track);
+			track.isPainting = false;
+			scene.viewport:needRepaint();		
+		end;
+	end;
+		
+	track:trackNewPosition();	
+	return track;
+end;

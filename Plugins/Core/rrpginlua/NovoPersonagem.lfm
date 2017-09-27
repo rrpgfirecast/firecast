@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmNovoPersonagem" title="Criar Personagem" width="300" height="385" cancelable="false">
+	<import file="interfaceUtils.xml"/>
+
+	<style>
+		label.tituloCampo {
+			autoSize: true;
+			wordWrap: false;
+			margins: {top=10, bottom=2};
+		}	
+		
+		.campo1 {
+			width: 250;
+		}
+		
+		radioButton {
+			height: 26;
+		}
+	</style>
+	
+	<script><![CDATA[
+		require("rrpgRequests.lua");
+	
+		local function saveStateToNodeDatabase()		
+			if sheet then
+				if self.rdbJogador.checked then
+					sheet.personagemDo = "jogador";
+				else
+					sheet.personagemDo = "npc";
+				end;
+				
+				if self.rdbTodos.checked then
+					sheet.quemPodeVer = "todos";
+				else
+					sheet.quemPodeVer = "apenasMestre";
+				end;
+
+				sheet.lastDataType = self.cmbTemplate.value;
+			end;
+		end;
+	
+		local function criarPersonagem()
+			if self._estaAguardandoResposta then
+				return;
+			end;
+		
+			local nomePersonagem = self.edtNome.text or "";
+			local dataType = self.cmbTemplate.value or "";
+			local loginDono = self.cmbJogador.value or "";
+			
+			if nomePersonagem == "" then
+				showMessage("Preencha o nome do personagem", function() self.edtNome:setFocus(); end);
+				return false;
+			end;
+			
+			if dataType == "" then
+				showMessage("Selecione um layout de ficha", function() self.cmbTemplate:setFocus(); self.cmbTemplate:dropDown(); end);
+				return false;
+			end;
+			
+			if self.rdbJogador.checked and (loginDono == "") then
+				showMessage("Selecione um jogador da lista ou opte por criar um personagem NPC", function() self.cmbJogador:setFocus(); self.cmbJogador:dropDown(); end);
+				return false;
+			end;
+			
+			saveStateToNodeDatabase();
+								
+			rrpg.requests.criarPersonagem(self._bibMae, nomePersonagem, dataType, self.rdbTodos.checked, self._mesa:findJogador(loginDono), 
+				function()
+					self._estaAguardandoResposta = false;
+					self:unlockWithActivity();
+					self:close();
+				end,
+				
+				function(err)
+					self._estaAguardandoResposta = false;
+					self:unlockWithActivity();					
+					showMessage("Não foi possível criar o personagem: " .. (err or ""));
+				end);
+				
+			self._estaAguardandoResposta = true;				
+			self:lockWithActivity("Criando personagem");		
+		end;
+		
+		local function carregarComboDeJogadores()
+			local mesa = self._mesa;			
+			local jogadoresStrings = {};
+			
+			self.cmbJogador.values = {};
+			
+			if mesa ~= nil then
+				local jogadores = mesa.jogadores;
+				
+				for i = 1, #jogadores, 1 do
+					local jogador = jogadores[i];
+					jogadoresStrings[#jogadoresStrings + 1] = jogador.login;
+				end;
+			end;
+			
+			utils.sortPtBrArray(jogadoresStrings);
+			self.cmbJogador.items = jogadoresStrings;		
+		end;
+		
+		local function carregarComboDeTemplates()
+			local dts = rrpg.plugins.getInstalledDataTypes();
+			
+			local dtsToShow = {};
+			
+			for i = 1, #dts, 1 do
+				local dt = dts[i];
+				
+				if dt.formType == "sheetTemplate" then
+					dtsToShow[#dtsToShow + 1] = dt;
+				end;
+			end;
+			
+		
+			table.sort(dtsToShow, function (esquerda, direita)
+									return utils.compareStringPtBr(esquerda.title, direita.title) < 0;
+								  end);									  						 
+
+			local titles = {};
+			local values = {};
+			
+			for i = 1, #dtsToShow, 1 do
+				titles[i] = string.gsub(dtsToShow[i].title, "&", "n");
+				values[i] = dtsToShow[i].dataType;
+			end;
+						
+			self.cmbTemplate.items = titles;
+			self.cmbTemplate.values = values;
+		end;		
+				
+		local function configurarNodeDatabase()		
+			local node = ndb.load("config.xml");
+					
+			if type(node.novoPersonagem) ~= "table" then
+				node.novoPersonagem = {};
+			end;
+			
+			node = node.novoPersonagem;
+			node.personagemDo = node.personagemDo or "npc";
+			node.quemPodeVer = node.quemPodeVer or "soMestre";		
+			
+			self._configNode = node;
+			
+			if node.personagemDo == "jogador" then
+				self.rdbJogador.checked = true;
+			else
+				self.rdbNPC.checked = true;
+			end;
+			
+			if node.quemPodeVer == "todos" then
+				self.rdbTodos.checked = true;
+			else
+				self.rdbSoMestre.checked = true;
+			end;
+			
+			if node.lastDataType ~= nil then
+				self.cmbTemplate.value = node.lastDataType;
+			end;
+			
+			if self.cmbTemplate.value == nil or self.cmbTemplate.value == "" then
+				local templateValues = self.cmbTemplate.values;
+				
+				if #templateValues > 0 then
+					self.cmbTemplate.value = templateValues[1];
+				end;
+			end;
+			
+			self:setNodeObject(node);
+		end;
+		
+		local function processarRequisicaoDeCancelamento()
+			if not self._estaAguardandoResposta then
+				local temAlgoPreenchido = (self.edtNome.text ~= '') or (self.rdbJogador.checked and self.cmbJogador.text ~= '');	
+
+				if temAlgoPreenchido then
+					dialogs.confirmYesNo('Deseja realmente cancelar a criação do personagem?',
+						function (confirmado)
+							if confirmado then
+								self:close();
+							end
+						end);				
+				else
+					self:close();
+				end;			
+			end;		
+		end;
+	]]>
+	</script>
+	
+	<event name="onShow">
+		carregarComboDeJogadores();	
+		carregarComboDeTemplates();	
+		configurarNodeDatabase();		
+	</event>	
+	
+	<event name="onCancelRequest">
+		processarRequisicaoDeCancelamento();
+	</event>
+	
+	<!--	
+	
+		-->	
+
+	<label text="Novo Personagem" class="tituloForm" />
+	
+	<scrollBox class="conteudoForm">
+
+	
+		<flowLayout align="top" margins="{left=10, right=10, top=5, bottom=5}" autoHeight="true" maxControlsPerLine="1">
+			<label text="Nome do Personagem:" class="tituloCampo"/>	
+			<edit name="edtNome" class="campo1" onKeyDown="if event.keyCode == 13 then criarPersonagem(); end;" enterKeyType="done"/>
+			
+			
+			
+			<label text="Layout da ficha:" class="tituloCampo"/>
+			<comboBox name="cmbTemplate" class="campo1"/>
+			
+			
+			<label text="Este será um personagem:" class="tituloCampo"/>
+	
+			
+			<flowLayout height="40" minWidth="150" maxWidth="600" autoHeight="true">
+				<radioButton name="rdbNPC" groupName="personagemDo" text="NPC"/>
+				<flowLineBreak/>		
+				<radioButton name="rdbJogador" groupName="personagemDo" text="Do jogador:" width="100"/>
+				
+				<comboBox name="cmbJogador" width="148">
+					<event name="onChange">
+						if self.cmbJogador.text ~= "" then
+							self.rdbJogador.checked = true;
+						end;
+					</event>
+				</comboBox>
+			</flowLayout>
+
+			
+			
+			<label text="Quem poderá ver este personagem?" class="tituloCampo"/>
+	
+			
+			<flowLayout height="40" minWidth="150" maxWidth="600" autoHeight="true">
+				<radioButton name="rdbSoMestre" groupName="QuemPodeVerPersonagem" text="Somente o mestre" width="200"/>
+				<flowLineBreak/>		
+				<radioButton name="rdbTodos" groupName="QuemPodeVerPersonagem" text="Todos da mesa" width="200"/>
+			</flowLayout>			
+		</flowLayout>	
+	</scrollBox>
+	
+	<layout class="rodapeForm">
+		<ActionCancelPopupPanel actionText="Criar" actionClick="criarPersonagem();" cancelClick="processarRequisicaoDeCancelamento();"/>
+	</layout>
+	
+</popupForm>

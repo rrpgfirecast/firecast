@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmMagicTokens" width="250" height="200" drawContainer="true" resizable="true" placement="center"
+		   cancelable="false">
+ 		   
+	<import file="../interfaceUtils.xml"/>
+	<style>
+		flowPart.optionPart {
+			height: 30;
+			minWidth: 50;
+			maxWidth: 5000;
+			margins: {left=2, right=2, top=2, bottom=2};
+		}
+		
+		.itemTitle {
+			align: left;
+			width: 110;
+			autoSize: false;
+			horzTextAlign: trailing;	
+			vertTextAlign: center;
+			margins:{right=5};
+		}
+
+		.itemInfo{
+			align: right;
+			width: 80;
+			autoSize: false;
+			horzTextAlign: leading;	
+			vertTextAlign: center;
+			margins:{right=5};
+		}
+		
+		.itemContent {
+			align: client;
+			margins:{right=5};
+		}
+		
+		.groupTitle {
+			align: left;						
+			autoSize: true;
+			wordWrap: false;
+			horzTextAlign: leading;	
+			vertTextAlign: center;
+			margins:{left=10, right=5};		
+			fontSize: 15;
+			fontColor: #FFCC66;
+		}
+	</style>
+
+	<template name="GroupHeader">
+		<!-- nomeLabel = uniqueName("labGroupHeader"); 
+		     
+			 if name == nil then
+				name = uniqueName("flpGroupHeader");
+			end; -->	 
+	
+		<flowPart class="optionPart">
+			<label name="$(nomeLabel)" class="groupTitle"/>
+			<horzLine align="bottom" strokeColor="#FFCC6670" margins="{left=10}"/>			
+		</flowPart>
+		
+		<script>
+			self.$(nomeLabel).text = lang("$(text)");
+		</script>
+	</template>
+			
+	<script>
+		require("system.lua");
+		require("rrpgScene_Undo.dlua");
+		require("dialogs.lua");
+		require("fireDrive.lua");
+		local scene = nil;	
+		local ignoreRecalcWH = false;
+		local realCellWidth = 1;
+		local realCellHeight = 1;
+		local offsetCellsW = 1;
+		local offsetCellsH = 1;
+		local exibindoFOW = false;
+	</script>
+	
+	<scrollBox align="client">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" name="flaContent">		
+			<GroupHeader text="scene.magic.title"/>			
+			
+			<flowPart class="optionPart">
+				<label name="areaLabel" class="itemTitle"/>
+				<comboBox name="areaType" class="itemContent"/>	
+			</flowPart>	
+			
+			<flowPart class="optionPart">	
+				<label name="reachLabel" class="itemTitle"/>
+				<label name="square" class="itemInfo"/>
+				<edit name="reachVal" class="itemContent" type="number" min="1" />
+			</flowPart>
+
+			<flowPart class="optionPart">	
+				<label name="colorLabel" class="itemTitle"/>
+				<colorComboBox name="colorBox" width="50" useAlpha="true" align="left"/>
+			</flowPart>
+		</flowLayout>									
+	</scrollBox>
+	
+	<layout class="rodapeForm">
+		<button width="80" horzTextAlign="center" class="rodapeButton" align="right" onClick="self:processarOK()" name="btnInsert"/>
+		<button width="80" horzTextAlign="center" class="rodapeButton" align="right" onClick="self:processarCancel()" name="btnCancelName"/>	
+
+		<script>
+			self.btnInsert.text = lang('scene.inseridor.buttons.insert');
+			self.btnCancelName.text = lang('scene.inseridor.buttons.Close');
+		</script>
+	</layout>
+	
+	<script><![CDATA[
+		local multx = 1;
+		local multy = 1;
+		
+		self.areaLabel.text = lang('scene.magic.areaLabel');
+		self.areaType.items = {lang("scene.magic.areaType1"), lang("scene.magic.areaType2"), lang("scene.magic.areaType3"), lang("scene.magic.areaType4"), lang("scene.magic.areaType5"), lang("scene.magic.areaType6")};
+		self.areaType.value = lang("scene.magic.areaType4");
+
+		self.reachLabel.text = lang('scene.magic.reachLabel');
+		self.reachVal.text = "4";
+		self.square.text = lang('scene.magic.square');
+
+		self.colorLabel.text = lang('scene.magic.colorLabel');
+		self.colorBox.color = "#FF00007F";
+
+		function self:prepareForShow(oScene)
+			scene = oScene;
+		end;
+
+		function self:createConeDiagonally()
+			local reach = tonumber(self.reachVal.text) or 1;
+			local path = "M 0 0 h " .. reach;
+
+			for i=1, reach, 1 do
+				if i == 1 then
+					path = path .. " v " .. 1;
+				elseif i==2 then
+					path = path .. " h -" .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " h -" .. 1;
+					else
+						path = path .. " v " .. 1;
+					end;
+				end;
+			end;
+
+			for i=reach, 1, -1 do
+				if i == 1 then
+					path = path .. " h -" .. 1;
+				elseif i==2 then
+					path = path .. " v " .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " v " .. 1;
+					else
+						path = path .. " h -" .. 1;
+					end;
+				end;
+			end;
+
+			path = path .. " Z";
+
+			self:createToken(path);
+		end;
+
+		function self:createConeHorizontally()
+			local reach = tonumber(self.reachVal.text) or 1;
+			local path = "M 0 0";
+			local height = math.ceil(reach*multy/2);
+
+
+			for i=1, height, 1 do
+				path = path .. " v -1 h " .. multy;
+			end;
+
+			for i=reach, 1, -1 do
+				if i == 1 then
+					path = path .. " v 1";
+				elseif i == 2 then
+					path = path .. " h " .. multy;
+				else 
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " h " .. multy;
+					else
+						path = path .. " v 1";
+					end;
+				end;
+			end;
+
+			for i=1, reach, 1 do
+				if i == 1 then
+					path = path .. " v 1";
+				elseif i == 2 then
+					path = path .. " h -" .. multy;
+				else 
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " h -" .. multy;
+					else
+						path = path .. " v 1";
+					end;
+				end;
+			end;
+
+			for i=height, 1, -1 do
+				path = path .. " h -" .. multy .. " v -1";
+			end;
+
+			path = path .. " Z";
+
+			self:createToken(path);
+		end;
+
+		function self:createHalfCircle()
+			local reach = tonumber(self.reachVal.text) or 1;
+			local path = "M 0 0";
+
+			for i=1, reach, 1 do
+				if i == 1 then
+					path = path .. " h " .. 2;
+				elseif i==2 then
+					path = path .. " v " .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " v " .. 1;
+					else
+						path = path .. " h " .. 2;
+					end;
+				end;
+			end;
+
+			for i=reach, 1, -1 do
+				if i == 1 then
+					path = path .. " v " .. 1;
+				elseif i==2 then
+					path = path .. " h " .. 2;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " h " .. 2;
+					else
+						path = path .. " v " .. 1;
+					end;
+				end;
+			end;
+
+			for i=1, reach, 1 do
+				if i == 1 then
+					path = path .. " v " .. 1;
+				elseif i==2 then
+					path = path .. " h -" .. 2;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " h -" .. 2;
+					else
+						path = path .. " v " .. 1;
+					end;
+				end;
+			end;
+
+			for i=reach, 1, -1 do
+				if i == 1 then
+					path = path .. " h -" .. 2;
+				elseif i==2 then
+					path = path .. " v " .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " v " .. 1;
+					else
+						path = path .. " h -" .. 2;
+					end;
+				end;
+			end;
+
+			path = path .. " Z";
+
+			self:createToken(path);
+		end;
+
+		function self:createCircle()
+			local reach = tonumber(self.reachVal.text) or 1;
+			local path = "M " .. reach .. " 0";
+
+			for i=1, reach, 1 do
+				if i == 1 then
+					path = path .. " h " .. 1;
+				elseif i==2 then
+					path = path .. " v " .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " v " .. 1;
+					else
+						path = path .. " h " .. 1;
+					end;
+				end;
+			end;
+
+			for i=reach, 1, -1 do
+				if i == 1 then
+					path = path .. " v " .. 1;
+				elseif i==2 then
+					path = path .. " h " .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " h " .. 1;
+					else
+						path = path .. " v " .. 1;
+					end;
+				end;
+			end;
+
+			for i=1, reach, 1 do
+				if i == 1 then
+					path = path .. " v " .. 1;
+				elseif i==2 then
+					path = path .. " h -" .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " h -" .. 1;
+					else
+						path = path .. " v " .. 1;
+					end;
+				end;
+			end;
+
+			for i=reach, 1, -1 do
+				if i == 1 then
+					path = path .. " h -" .. 1;
+				elseif i==2 then
+					path = path .. " v " .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " v " .. 1;
+					else
+						path = path .. " h -" .. 1;
+					end;
+				end;
+			end;
+
+			for i=1, reach, 1 do
+				if i == 1 then
+					path = path .. " h -" .. 1;
+				elseif i==2 then
+					path = path .. " v -" .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " v -" .. 1;
+					else
+						path = path .. " h -" .. 1;
+					end;
+				end;
+			end;
+
+			for i=reach, 1, -1 do
+				if i == 1 then
+					path = path .. " v -" .. 1;
+				elseif i==2 then
+					path = path .. " h -" .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " h -" .. 1;
+					else
+						path = path .. " v -" .. 1;
+					end;
+				end;
+			end;
+
+			for i=1, reach, 1 do
+				if i == 1 then
+					path = path .. " v -" .. 1;
+				elseif i==2 then
+					path = path .. " h " .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " h " .. 1;
+					else
+						path = path .. " v -" .. 1;
+					end;
+				end;
+			end;
+
+			for i=reach, 1, -1 do
+				if i == 1 then
+					path = path .. " h " .. 1;
+				elseif i==2 then
+					path = path .. " v -" .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " v -" .. 1;
+					else
+						path = path .. " h " .. 1;
+					end;
+				end;
+			end;
+
+			path = path .. " Z";
+
+			self:createToken(path);
+		end;
+
+		function self:createSquare()
+			local reach = tonumber(self.reachVal.text) or 1;
+			local path = "M 0 0 h " .. reach .. " v " .. reach .. " h -" .. reach .. " Z";
+			self:createToken(path);
+		end;
+
+		function self:createEmanacao()
+			local reach = tonumber(self.reachVal.text) or 1;
+			local path = "M " .. reach .. " 0";
+
+			path = path .. " h 1";
+
+			for i=1, reach, 1 do
+				if i == 1 then
+					path = path .. " h " .. 1;
+				elseif i==2 then
+					path = path .. " v " .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " v " .. 1;
+					else
+						path = path .. " h " .. 1;
+					end;
+				end;
+			end;
+
+			for i=reach, 1, -1 do
+				if i == 1 then
+					path = path .. " v " .. 1;
+				elseif i==2 then
+					path = path .. " h " .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " h " .. 1;
+					else
+						path = path .. " v " .. 1;
+					end;
+				end;
+			end;
+
+			path = path .. " v 1";
+
+			for i=1, reach, 1 do
+				if i == 1 then
+					path = path .. " v " .. 1;
+				elseif i==2 then
+					path = path .. " h -" .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " h -" .. 1;
+					else
+						path = path .. " v " .. 1;
+					end;
+				end;
+			end;
+
+			for i=reach, 1, -1 do
+				if i == 1 then
+					path = path .. " h -" .. 1;
+				elseif i==2 then
+					path = path .. " v " .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " v " .. 1;
+					else
+						path = path .. " h -" .. 1;
+					end;
+				end;
+			end;
+
+			path = path .. " h -1";
+
+			for i=1, reach, 1 do
+				if i == 1 then
+					path = path .. " h -" .. 1;
+				elseif i==2 then
+					path = path .. " v -" .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " v -" .. 1;
+					else
+						path = path .. " h -" .. 1;
+					end;
+				end;
+			end;
+
+			for i=reach, 1, -1 do
+				if i == 1 then
+					path = path .. " v -" .. 1;
+				elseif i==2 then
+					path = path .. " h -" .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " h -" .. 1;
+					else
+						path = path .. " v -" .. 1;
+					end;
+				end;
+			end;
+
+			path = path .. " v -1";
+
+			for i=1, reach, 1 do
+				if i == 1 then
+					path = path .. " v -" .. 1;
+				elseif i==2 then
+					path = path .. " h " .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " h " .. 1;
+					else
+						path = path .. " v -" .. 1;
+					end;
+				end;
+			end;
+
+			for i=reach, 1, -1 do
+				if i == 1 then
+					path = path .. " h " .. 1;
+				elseif i==2 then
+					path = path .. " v -" .. 1;
+				else
+					local ending = (i-2)%3;
+					if ending == 0 then
+						path = path .. " v -" .. 1;
+					else
+						path = path .. " h " .. 1;
+					end;
+				end;
+			end;
+
+			path = path .. " Z";
+
+			self:createToken(path);
+		end;
+
+		function self:createToken(path)
+			local reach = tonumber(self.reachVal.text) or 1;
+			local size = scene.grid.cellSize;
+
+			local _lastMouseDown = rawget(scene, "_lastMouseDown");	
+			if _lastMouseDown ~= nil then
+				y, x = scene.grid:worldToCell(_lastMouseDown.x, _lastMouseDown.y);
+			else
+				y, x = scene.grid:worldToCell((scene.worldWidth / 2), (scene.worldHeight / 2));
+			end;
+
+			local token = scene.items:addToken("tokens");
+			token.x = x * size + scene.grid.offsetX;
+			token.y = y * size + scene.grid.offsetY;
+			token.width = reach * size * multx;
+			token.height = reach * size * multy;
+			token.name = self.areaType.value .. " de " .. reach .. " " .. lang("scene.magic.square") .. ".";
+
+			opGrafica = token.canvas:addPath();
+			opGrafica.name = self.areaType.value .. " de " .. reach .. " " .. lang("scene.magic.square") .. ".";
+			opGrafica.x = 0;
+			opGrafica.y = 0;
+			opGrafica.width = 1;
+			opGrafica.height = 1;
+			opGrafica.z = 10; 
+			opGrafica.color = self.colorBox.color;
+            opGrafica.strokeSize = 1;
+            opGrafica.pathData = path;
+			
+			scene.items:clearSelection();			
+			token.selected = true;			
+		end;
+
+		function round(num, numDecimalPlaces)
+			local mult = 10^(numDecimalPlaces or 0)
+			return math.floor(num * mult + 0.5) / mult
+		end
+
+		function self:processarOK()	
+			local opt = self.areaType.value;
+			local reach = tonumber(self.reachVal.text) or 1;
+			multx = 1;
+			multy = 1;
+
+			if opt == lang("scene.magic.areaType1") then
+				self:createConeDiagonally();
+			elseif opt == lang("scene.magic.areaType2") then
+				local max = reach * 2;
+				local redux = round(reach/3)*2;
+				multy = (max-redux)/reach;
+				self:createConeHorizontally();
+			elseif opt == lang("scene.magic.areaType3") then
+				multy = 2;
+				self:createHalfCircle();
+			elseif opt == lang("scene.magic.areaType4") then
+				multx = 2;
+				multy = 2;
+				self:createCircle();
+			elseif opt == lang("scene.magic.areaType5") then
+				self:createSquare();
+			elseif opt == lang("scene.magic.areaType6") then
+				multy = ((reach*2)+1)/reach;
+				multx = multy;
+				self:createEmanacao();
+			end;
+
+			self:processarCancel();
+		end;
+		
+		function self:processarCancel()
+			self:close();
+		end;
+		]]>
+	</script>
+	
+	<event name="onKeyUp">	
+		if (event.keyCode == 0x89) or (event.keyCode == 0x1B) then
+			setTimeout(
+				function()
+					self:processarCancel();
+				end, 1);
+			
+			event.keyCode = 0;
+			event.key = "";
+		end;
+	</event>	
+	
+	<event name="onCancelRequest">
+		self:processarCancel();
+	</event>
+	
+</popupForm>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGerenciarSimpleMacrosItem" title="Gerenciar Plugins" height="30" margins="{left=4, right=4, top=1, bottom=1}">
+	<import file="../interfaceUtils.xml"/>
+	
+	
+	<script><![CDATA[
+		local function editarMacro()
+			local frm = self:findControlByName("frmGerenciarSimpleMacros");
+			
+			if frm ~= nil then
+				frm.editarMacroNode(sheet);
+			end;
+		end;
+		]]>
+	</script>
+	
+	<layout align="client" margins="{top=2, left=2}">
+		<label name="labMacro" align="client" text="(Macro Vazia)"/>
+		<button align="right" text="Editar..." margins="{left=4, right=4, top=1, bottom=1}" 
+				width="75" onClick="editarMacro();"/>
+	</layout>
+	
+	<horzLine align="bottom" margins="{top=2}"/>
+	
+	<dataLink field="macro">
+		<event name="onChange">
+			self.labMacro.text = sheet.macro or "(Macro Vazia)";
+		</event>
+	</dataLink>
+</form>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAMZ1_2" align="client" theme="dark">
+	<template name="Atribute">
+		<label left="0" top="0" width="110" height="20" text="$(text)" horzTextAlign="center" fontSize="$(fontSize)"/>
+		<edit left="110" top="0" width="50" height="25" field="atr_inicial_$(field)" type="number"/>
+		<edit left="160" top="0" width="50" height="25" field="atr_dom_$(field)" type="number"/>
+		<edit left="210" top="0" width="50" height="25" field="atr_evolucao_$(field)" type="number"/>
+
+		<rectangle left="260" top="0" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="260" top="0" width="50" height="25" horzTextAlign="center" field="atr_total_$(field)"/>
+
+		<dataLink fields="{'atr_inicial_$(field)', 'atr_dom_$(field)', 'atr_evolucao_$(field)'}">
+			<event name="onChange">
+				if sheet~=nil then
+					local total = 	(tonumber(sheet.atr_inicial_$(field)) or 0) +
+									(tonumber(sheet.atr_dom_$(field)) or 0) +
+									(tonumber(sheet.atr_evolucao_$(field)) or 0);
+					sheet.atr_total_$(field) = total;
+				end;
+			</event>
+		</dataLink>
+	</template>
+	<template name="Turma">
+		<radioButton left="5" top="0" width="20" height="20" field="turma_inicial_$(field)" groupName="turma_inicial"/>
+		<radioButton left="35" top="0" width="20" height="20" field="turma_atual_$(field)" groupName="turma_atual"/>
+		<label left="60" top="0" width="90" height="20" text="$(text)" horzTextAlign="center"/>
+	</template>
+
+	<scrollBox align="client">
+		<layout left="0" top="0" width="270" height="255">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="270" height="20" text="Geral" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="260" height="25">
+				<label left="0" top="0" width="110" height="20" text="Dom" horzTextAlign="center"/>
+				<comboBox left="110" top="0" width="150" height="25" field="dom" items="{'Fisico-Corporal', 'Sensibilidade Elevada', 'Mental-Lógico', 'Intrapessoal', 'Visual-Espacial'}"/>
+			</layout>
+			<layout left="5" top="50" width="260" height="50">
+				<label left="110" top="5" width="50" height="20" text="Inicial" horzTextAlign="center"/>
+				<label left="160" top="5" width="50" height="20" text="Evolução" horzTextAlign="center" fontSize="11"/>
+				<label left="210" top="5" width="50" height="20" text="Total" horzTextAlign="center"/>
+
+				<label left="0" top="25" width="110" height="20" text="Perseverança" horzTextAlign="center"/>
+				<edit left="110" top="25" width="50" height="25" field="pers_inicial" type="number"/>
+				<edit left="160" top="25" width="50" height="25" field="pers_evolucao" type="number"/>
+				<edit left="210" top="25" width="50" height="25" field="pers_total" type="number"/>
+			</layout>
+			<layout left="5" top="100" width="260" height="25">
+				<label left="0" top="0" width="110" height="20" text="Nível" horzTextAlign="center"/>
+				<edit left="110" top="0" width="150" height="25" field="nivel"/>
+			</layout>
+			<layout left="5" top="125" width="260" height="25">
+				<label left="0" top="0" width="110" height="20" text="Experiência" horzTextAlign="center"/>
+				<edit left="110" top="0" width="150" height="25" field="experiencia"/>
+			</layout>
+			<layout left="5" top="150" width="260" height="25">
+				<label left="0" top="0" width="110" height="20" text="Haks" horzTextAlign="center"/>
+				<edit left="110" top="0" width="150" height="25" field="haks"/>
+			</layout>
+			<layout left="5" top="175" width="260" height="25">
+				<label left="0" top="0" width="110" height="20" text="Zhuls" horzTextAlign="center"/>
+				<rectangle left="110" top="0" width="150" height="25" color="black" strokeColor="white" strokeSize="1"/>
+				<label left="112" top="0" width="146" height="25" field="zhuls" horzTextAlign="center"/>
+			</layout>
+			<layout left="5" top="200" width="260" height="25">
+				<label left="0" top="0" width="110" height="20" text="Modelo" horzTextAlign="center"/>
+				<rectangle left="110" top="0" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
+				<label left="112" top="0" width="71" height="25" field="modelo_nome" fontSize="12" horzTextAlign="center"/>
+				<rectangle left="185" top="0" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
+				<label left="187" top="0" width="71" height="25" field="modelo_tipo" fontSize="12" horzTextAlign="center"/>
+			</layout>
+			<layout left="5" top="225" width="260" height="25">
+				<label left="0" top="0" width="110" height="20" text="Device" horzTextAlign="center"/>
+				<edit left="110" top="0" width="150" height="25" field="device"/>
+			</layout>
+		</layout>
+
+		<layout left="280" top="0" width="320" height="180">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="320" height="20" text="Atributos" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="310" height="25">
+				<label left="110" top="5" width="50" height="20" text="Inicial" horzTextAlign="center"/>
+				<label left="160" top="5" width="50" height="20" text="Dom" horzTextAlign="center"/>
+				<label left="210" top="5" width="50" height="20" text="Evolução" horzTextAlign="center" fontSize="11"/>
+				<label left="260" top="5" width="50" height="20" text="Total" horzTextAlign="center"/>
+			</layout>
+			<layout left="5" top="50" width="310" height="25">
+				<Atribute text="Destreza (DES)" field="des" fontSize="13"/>
+			</layout>
+			<layout left="5" top="75" width="310" height="25">
+				<Atribute text="Percepção (PER)" field="per" fontSize="13"/>
+			</layout>
+			<layout left="5" top="100" width="310" height="25">
+				<Atribute text="Inteligência (INT)" field="int" fontSize="13"/>
+			</layout>
+			<layout left="5" top="125" width="310" height="25">
+				<Atribute text="Concentração (CON)" field="con" fontSize="12"/>
+			</layout>
+			<layout left="5" top="150" width="310" height="25">
+				<Atribute text="Força de Vontade (FV)" field="fv" fontSize="11"/>
+			</layout>
+		</layout>
+
+		<layout left="610" top="0" width="320" height="180">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="320" height="20" text="Talentos" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="310" height="25">
+				<label left="110" top="5" width="50" height="20" text="Natural" horzTextAlign="center"/>
+				<label left="160" top="5" width="50" height="20" text="Dom" horzTextAlign="center"/>
+				<label left="210" top="5" width="50" height="20" text="Evolução" horzTextAlign="center" fontSize="11"/>
+				<label left="260" top="5" width="50" height="20" text="Total" horzTextAlign="center"/>
+			</layout>
+			<layout left="5" top="50" width="310" height="25">
+				<Atribute text="Mira (MIR)" field="mir" fontSize="13"/>
+			</layout>
+			<layout left="5" top="75" width="310" height="25">
+				<Atribute text="Raciocínio (RAC)" field="rac" fontSize="13"/>
+			</layout>
+			<layout left="5" top="100" width="310" height="25">
+				<Atribute text="Reflexo (REF)" field="ref" fontSize="13"/>
+			</layout>
+			<layout left="5" top="125" width="310" height="25">
+				<Atribute text="Habilidade (HAB)" field="hab" fontSize="13"/>
+			</layout>
+		</layout>
+
+		<layout left="0" top="260" width="270" height="255">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="270" height="20" text="Pontos de Personagem (PPs)" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="260" height="25">
+				<label left="0" top="0" width="110" height="20" text="Total" horzTextAlign="center"/>
+				<edit left="110" top="0" width="150" height="25" field="pps_total" type="number"/>
+			</layout>
+			<layout left="5" top="50" width="260" height="25">
+				<label left="0" top="0" width="110" height="20" text="Gastos - Allei" horzTextAlign="center"/>
+				<edit left="110" top="0" width="150" height="25" field="pps_gastos_allei" type="number"/>
+			</layout>
+			<layout left="5" top="75" width="260" height="25">
+				<label left="0" top="0" width="110" height="20" text="Saldo Total" horzTextAlign="center"/>
+
+				<rectangle left="110" top="0" width="150" height="25" color="black" strokeColor="white" strokeSize="1"/>
+				<label left="110" top="0" width="150" height="25" horzTextAlign="center" field="pps_saldo"/>
+			</layout>
+			<layout left="5" top="100" width="260" height="150">
+				<label left="0" top="0" width="260" height="20" text="Balanço de PPs" horzTextAlign="center"/>
+				<textEditor left="0" top="25" width="260" height="125" field="pps_dist_allei"/>
+			</layout>
+			<dataLink fields="{'pps_total', 'pps_gastos_allei', 'pps_gastos_zhul'}">
+				<event name="onChange">
+					if sheet~=nil then
+						local total = 	(tonumber(sheet.pps_total) or 0) -
+										(tonumber(sheet.pps_gastos_allei) or 0) -
+										(tonumber(sheet.pps_gastos_zhul) or 0);
+						sheet.pps_saldo = total;
+					end;
+				</event>
+			</dataLink>
+		</layout>
+
+		<layout left="280" top="190" width="630" height="325">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="630" height="20" text="Academia Mentis Allei" horzTextAlign="center"/>
+
+			<layout left="10" top="25" width="150" height="180">
+				<rectangle align="client" color="#191919" xradius="5" yradius="5" cornerType="round"/>
+				<label left="0" top="0" width="150" height="20" text="Turmas" horzTextAlign="center"/>
+
+				<layout left="0" top="25" width="150" height="25">
+					<label left="0" top="0" width="30" height="20" text="Inicial" horzTextAlign="center" fontSize="11"/>
+					<label left="30" top="0" width="30" height="20" text="Atual" horzTextAlign="center" fontSize="11"/>
+					<label left="60" top="0" width="90" height="20" text="Nome" horzTextAlign="center"/>
+				</layout>
+				<layout left="0" top="50" width="150" height="25">
+					<Turma field="drav" text="Drav"/>
+				</layout>
+				<layout left="0" top="75" width="150" height="25">
+					<Turma field="guillion" text="Guillion"/>
+				</layout>
+				<layout left="0" top="100" width="150" height="25">
+					<Turma field="dante" text="Dante"/>
+				</layout>
+				<layout left="0" top="125" width="150" height="25">
+					<Turma field="god" text="God"/>
+				</layout>
+				<layout left="0" top="150" width="150" height="25">
+					<Turma field="zeus" text="Zeus"/>
+				</layout>
+			</layout>
+
+			<layout left="170" top="25" width="240" height="290">
+				<rectangle align="client" color="#191919" xradius="5" yradius="5" cornerType="round"/>
+				<label left="0" top="0" width="240" height="20" text="Missões" horzTextAlign="center"/>
+
+				<layout left="40" top="25" width="160" height="25">
+					<label left="0" top="0" width="110" height="20" text="Nº Total de Missões" horzTextAlign="center" fontSize="11"/>
+					<edit left="110" top="0" width="50" height="25" field="missoes_num" type="number"/>
+				</layout>
+				<layout left="0" top="50" width="240" height="235">
+					<label left="5" top="0" width="30" height="20" text="Nº" horzTextAlign="center" fontSize="11"/>
+					<label left="35" top="0" width="150" height="20" text="Relatório" horzTextAlign="center" fontSize="11"/>
+					<button left="185" top="1" width="23" height="23" text="+">
+						<event name="onClick">
+							if sheet~=nil then
+								local node = self.rclListaDasMissoes:append();
+								local nodes = ndb.getChildNodes(sheet.campoDasMissoes);  
+								node.num = #nodes;
+							end;
+						</event>
+					</button>
+					
+					<recordList name="rclListaDasMissoes" field="campoDasMissoes" templateForm="frmAMZ1_2_1" left="5" top="25" width="230" height="205" layout="vertical"/>
+				</layout>
+
+			</layout>
+
+			<layout left="420" top="25" width="200" height="190">
+				<rectangle align="client" color="#191919" xradius="5" yradius="5" cornerType="round"/>
+				<label left="0" top="0" width="200" height="20" text="Atividades Extra-Curriculares" horzTextAlign="center"/>
+
+				<layout left="0" top="25" width="200" height="100">
+					<label left="0" top="0" width="200" height="20" text="Participações em Eventos" horzTextAlign="center" fontSize="11"/>
+
+					<label left="0" top="25" width="125" height="20" text="Nº de Participações" horzTextAlign="center" fontSize="11"/>
+					<edit left="125" top="25" width="50" height="25" field="eventos_num" type="number"/>
+
+					<label left="0" top="50" width="125" height="20" text="Nº de Vitorias" horzTextAlign="center" fontSize="11"/>
+					<edit left="125" top="50" width="50" height="25" field="eventos_vitorias" type="number"/>
+
+					<label left="0" top="75" width="125" height="20" text="Nº de Vezes Campeão" horzTextAlign="center" fontSize="11"/>
+					<edit left="125" top="75" width="50" height="25" field="eventos_campeao" type="number"/>
+				</layout>
+
+				<layout left="0" top="135" width="200" height="25">
+					<label left="0" top="0" width="125" height="20" text="Batalhas Oficiais" horzTextAlign="center" fontSize="11"/>
+					<edit left="125" top="0" width="50" height="25" field="eventos_batalhas" type="number"/>
+				</layout>
+				<layout left="0" top="160" width="200" height="25">
+					<label left="0" top="0" width="125" height="20" text="Combate de Treinos" horzTextAlign="center" fontSize="11"/>
+					<edit left="125" top="0" width="50" height="25" field="eventos_treinos" type="number"/>
+				</layout>
+			</layout>
+		</layout>
+	</scrollBox>
+</form>

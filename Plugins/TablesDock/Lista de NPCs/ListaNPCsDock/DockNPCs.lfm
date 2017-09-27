@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="ListaDeNPCs" align="client" theme="dark">
+	<script>
+		function InvocarOPopupForm(node)
+			self.recordNode.scopeNode = node;
+			self.dropDownFalso2.scopeNode = sheet;
+			self.dropDownFalso2:show();
+		end;
+	
+		function FecharOPopupForm()
+			self.dropDownFalso2:close();
+		end;
+	
+		function autoCalcular()
+			jogz2 = {}
+			mesaDaFicha = rrpg.getMesaDe(sheet);
+				for i = 1, #mesaDaFicha.jogadores, 1 do
+					jogz2[i] = mesaDaFicha.jogadores[i].login;
+				end;
+			self.dropDownFalso2.height = (24 * (#jogz2 + 1))		 
+			self.opcoesFalsas2:sort();
+		end;
+		
+		function chamarListaDeJogadores()
+			if sheet ~= nil then
+				self.opcoesFalsas2:sort();
+				local nodes = ndb.getChildNodes(sheet.opcoesFalsas2)
+				mesaDaFicha = rrpg.getMesaDe(sheet);
+				jogz = {}
+				jogz[1] = "Nenhum"
+				jogz2 = {}
+				for i = 1, #nodes, 1 do
+					jogz[i+1] = (nodes[i].NomeDaOpcao or "");
+				end;
+				for i = 1, #mesaDaFicha.jogadores, 1 do
+					jogz2[i] = mesaDaFicha.jogadores[i].login;
+				end;
+				if jogz2 ~= jogz then
+					if #nodes >= 2 then
+						for i = #nodes, 1, -1 do
+						setTimeout( function()
+							ndb.deleteNode(nodes[i])
+						end,2)
+						end;
+					end;
+					local node = nil;
+						node = self.opcoesFalsas2:append();
+					setTimeout( function()
+					for i = 1, #jogz2, 1 do
+						node = self.opcoesFalsas2:append();
+					end;
+					end,10)
+				else
+				end;
+				setTimeout( function()
+					local nodes2 = ndb.getChildNodes(sheet.opcoesFalsas2)
+					for i = 1, #nodes2, 1 do
+						if i == 1 then
+							nodes2[i].NomeDaOpcao = "Nenhum"
+							nodes2[1].CodigoInterno = 1;
+						else
+							nodes2[i].NomeDaOpcao = jogz2[i-1]
+							nodes2[i].CodigoInterno = 2;
+							nodes2[i].CodigoInterno = 2;
+						end
+					end;
+					autoCalcular();
+				end, 20)
+			end
+		end;
+	</script>
+	
+	<event name="onShow">
+		if self.opcoesFalsas2.selectedNode == nil and sheet ~= nil then
+			chamarListaDeJogadores();
+			autoCalcular();
+            local nodes = ndb.getChildNodes(sheet.opcoesFalsas2);               
+            if #nodes > 0 then
+                self.opcoesFalsas2.selectedNode = nodes[1];
+            end;
+        end;
+	</event>
+	
+	<dataScopeBox name="recordNode" visible="false"/>
+
+	<layout visible="false">
+		<popupForm name="dropDownFalso2" title="Jogador?" width="128" height="128"  >
+			<scrollBox align="client">
+				 <recordList margins="{left=8}" visible="true" align="top" templateForm="OpcaoDaComboboxFalsa2" field="opcoesFalsas2" name="opcoesFalsas2" layout="verticalTiles" autoHeight="true" selectable="true" minQt="0" >
+					 <event name="onSelect">
+						 local node = self.opcoesFalsas2.selectedNode;
+						 setTimeout(function()
+							if node ~= nil then
+								self.recordNode.scopeNode.opcaoEscolhida2 = node.NomeDaOpcao;
+							end;
+						 end,10);
+					 </event>
+					 <event name="onCompare">
+						if (nodeA.CodigoInterno == nil) then
+							if (nodeA.NomeDaOpcao == "Nenhum") then
+								nodeA.CodigoInterno = 1;
+							else
+								nodeA.CodigoInterno = 2;
+							end;
+						end;
+						if (nodeB.CodigoInterno == nil) then
+							if (nodeB.NomeDaOpcao == "Nenhum") then
+								nodeB.CodigoInterno = 1;
+							else
+								nodeB.CodigoInterno = 2;
+							end;
+						end;
+					 
+						if nodeB.CodigoInterno > nodeA.CodigoInterno then
+							return -1;
+						elseif not (nodeB.CodigoInterno >= nodeA.CodigoInterno) then
+							return 1;
+						else
+							return 1 * utils.compareStringPtBr(nodeA.NomeDaOpcao, nodeB.NomeDaOpcao);
+						end;
+					 </event>
+				 </recordList>
+			</scrollBox>
+		</popupForm>
+	</layout>
+
+	<rectangle color="#0f0f0f" align="client">
+		<layout align="top" height="24" margins="{top=4, left=2}">
+			
+			<imageCheckBox margins="{left=4}" align="left" width="24" hint="Configurações da Lista"
+				 name="Configurar" checkedImage="images/config.png" uncheckedImage="images/config.png">
+				<event name="onClick">
+					if DonoMestre() then
+						self.Config.scopeNode = sheet;
+						self.Config:show();
+					else
+						dialogs.alert("Apenas o dono da ficha e o mestre da mesa podem realizar esta ação.");
+					end;
+				</event>
+			</imageCheckBox>
+			<imageCheckBox margins="{left=4}" align="left" width="24" hint="Adicionar novo NPC"
+				 name="NovoNPC" checkedImage="images/addnpc.png" uncheckedImage="images/addnpc.png">
+				<event name="onClick">
+					if DonoMestre() then			
+						node = self.rclListaDeNPC:append();
+					else
+						dialogs.alert("Apenas o dono da ficha e o mestre da mesa podem realizar esta ação.");
+					end;
+				</event>
+			</imageCheckBox>
+			<imageCheckBox margins="{left=4}" align="left" width="24" hint="Ordenar Lista de NPCs"
+				 name="Organizar" checkedImage="images/organize.png" uncheckedImage="images/organize.png">
+				<event name="onClick">
+					if DonoMestre() then			
+						self.rclListaDeNPC:sort();
+					else
+						dialogs.alert("Apenas o dono da ficha e o mestre da mesa podem realizar esta ação.");
+					end;
+				</event>
+			</imageCheckBox>
+		</layout>
+	
+		<scrollBox name="MainClient" align="client" margins="{top=2}">
+			<recordList name="rclListaDeNPC" layout="VerticalTiles" field="campoDosNPC" templateForm="CaixaFichaNPC" align="none" autoHeight="true" selectable="true" minQt="0" >		<event name="onBeginEnumeration">
+					
+				</event>							
+			
+				<event name="onItemAdded">
+					node.CorBarrinha1 = (sheet.CorBarrinha1 or "#808080");
+					node.CorBarrinha2 = (sheet.CorBarrinha2 or "#808080");
+					node.CorBarrinha3 = (sheet.CorBarrinha3 or "#808080");
+					node.CorBarrinha4 = (sheet.CorBarrinha4 or "#808080");
+					form.Barrinha1.color = sheet.CorBarrinha1;
+					form.Barrinha2.color = sheet.CorBarrinha2;
+					form.Barrinha3.color = sheet.CorBarrinha3;
+					form.Barrinha4.color = sheet.CorBarrinha4;
+				</event>
+			
+				<event name="onCompare">
+					org = getOrganizacao();
+					if nodeA.hideNPC and not nodeB.hideNPC then
+						return 1;
+					elseif not nodeA.hideNPC and nodeB.hideNPC then
+						return -1;
+					end;
+					if org == "Alfa" then
+						return utils.compareStringPtBr(nodeA.NomeGrande, nodeB.NomeGrande);
+					else
+						if ((nodeB.alinhamentoNPC or "Padrão") > (nodeA.alinhamentoNPC or "Padrão")) then
+							return -1;
+						elseif (nodeA.alinhamentoNPC or "Padrão") == (nodeB.alinhamentoNPC or "Padrão") then
+							return utils.compareStringPtBr(nodeA.NomePequeno, nodeB.NomePequeno);
+						else
+							return 1;
+						end;
+					end;
+				</event>
+			</recordList>
+		</scrollBox>
+	
+		<layout align="bottom" height="32">
+			<label align="right" fontStyle="italic" fontSize="12" opacity="0.8" autoSize="true" text="Criado por Mia\nEditado por Ambesek"/>
+		</layout>
+	
+		<event name="onResize">
+			if self.width >= 270 then
+				self.rclListaDeNPC.width = self.width;
+			else
+				self.rclListaDeNPC.width = 270;
+			end;
+		</event>
+	
+		<script>
+			function DEC_HEX(IN)
+				local B,K,OUT,I,D = 16,"0123456789ABCDEF","",0
+				while IN > 0 do
+					I=I+1
+					D = (IN % B) + 1
+					IN = math.floor(IN/B)
+					
+					OUT = string.sub(K,D,D) .. OUT
+				end
+				return OUT
+			end;
+		
+			function DonoMestre(node, foioscript)
+				if sheet ~= nil then
+					node = (node or sheet);
+					foioscript = (foioscript or false)
+					local personagem = rrpg.getPersonagemDe(sheet);                                
+					
+					if (personagem ~= nil) then
+						local mesa = personagem.mesa;
+
+						if ndb.testPermission(node, "writePermissions") then               
+						return true;
+						else
+							return false;
+					   end;
+					else
+						
+						return ndb.testPermission(node, "writePermissions");
+					end; 
+				end;
+			end;
+
+			function EnviarMudanca(barrinhaid, blockoverlay, nomepers, nome, valor, valormax, pc, pcmax)
+				if sheet ~= nil then
+					if not blockoverlay then
+						publico = GetBarrinhaVisivel(blockoverlay, barrinhaid);
+					else
+						publico = false
+					end;
+					porcentagem = not (GetBarrinhaNumeros(barrinhaid));
+					nome = tostring(nome or GetBarrinhaNome(barrinhaid));
+					
+					local text = "[§K2]" .. tostring(nome) .. "[§K3] de [§K2]" .. tostring(nomepers) .. "[§K3]: ";
+					
+					if tonumber(valor) >= 0 then
+						valor = "+" .. tostring(valor);
+					end;
+					if tonumber(valormax) >= 0 then
+						valormax = "+" .. tostring(valormax);
+					end;
+					if tonumber(pc) >= 0 then
+						pc = "+" .. tostring(pc);
+					end;
+					if tonumber(pcmax) >= 0 then
+						pcmax = "+" .. tostring(pcmax);
+					end;
+					
+					if publico then
+						if not porcentagem then
+							if tonumber(valormax) == 0 then
+								text = text .. valor;
+							else
+								text = text .. valor .. "/" .. valormax;
+							end;
+						else
+							if tonumber(valormax) == 0 then
+								text = text .. pc .. "%";
+							else
+								text = text .. pc .. "%" .. "/" .. pcmax .. "%";
+							end;
+						end;
+					else
+						if tonumber(valor) >= 0 then
+							valor = "+??";
+						else 
+							valor = "-??"
+						end;
+						if tonumber(valormax) >= 0 then
+							valormax = "+??";
+						else 
+							valormax = "-??"
+						end;
+						
+						if not porcentagem then
+							if tonumber(valormax) == 0 then
+								text = text .. valor;
+							else
+								text = text .. valor .. "/" .. valormax;
+							end;
+						else
+							if tonumber(valormax) == 0 then
+								text = text .. valor .. "%";
+							else
+								text = text .. valor .. "%" .. "/" .. valormax .. "%";
+							end;
+						end;
+					end;
+					
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					if mesaDoPersonagem ~= nil then
+						mesaDoPersonagem.activeChat:enviarMensagem(text);
+					end;
+				end;
+			end;
+			
+			function RequestReload(mode)
+				if sheet ~= nil then
+					if mode == "begin" then
+						self.rclListaDeNPC:beginUpdate();
+						self.rclListaDeNPC.visible = false;
+					elseif mode == "end" then
+						self.rclListaDeNPC.visible = true;
+						self.rclListaDeNPC:endUpdate();
+					end;
+				end;
+			end;
+		</script>
+	</rectangle>
+</form>

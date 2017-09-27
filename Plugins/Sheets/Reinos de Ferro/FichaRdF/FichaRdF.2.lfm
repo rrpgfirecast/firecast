@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmRDF2" align="client" theme="dark">
+	<scrollBox align="client">
+	    <template name="AtaqueC">
+        	<edit left="0" top="0" width="150" height="25" field="atqC_$(field)" horzTextAlign="center"/>
+        	<edit left="150" top="0" width="150" height="25" field="atqC_notas_$(field)" horzTextAlign="center"/>
+        	<edit left="300" top="0" width="50" height="25" field="atqC_aco_$(field)" horzTextAlign="center"/>
+        	<edit left="350" top="0" width="50" height="25" field="atqC_pf_$(field)" horzTextAlign="center"/>
+        </template>
+        <template name="AtaqueD">
+        	<edit left="0" top="0" width="150" height="25" field="atqD_$(field)" horzTextAlign="center"/>
+        	<edit left="150" top="0" width="150" height="25" field="atqD_notas_$(field)" horzTextAlign="center"/>
+        	<edit left="300" top="0" width="50" height="25" field="atqD_alc_$(field)" horzTextAlign="center"/>
+        	<edit left="350" top="0" width="50" height="25" field="atqD_adi_$(field)" horzTextAlign="center"/>
+        	<edit left="400" top="0" width="50" height="25" field="atqD_pod_$(field)" horzTextAlign="center"/>
+        	<edit left="450" top="0" width="50" height="25" field="atqD_mun_$(field)" horzTextAlign="center"/>
+        </template>
+        <template name="Armadura">
+        	<edit left="0" top="0" width="150" height="25" field="arm_$(field)" horzTextAlign="center"/>
+        	<edit left="150" top="0" width="150" height="25" field="arm_notas_$(field)" horzTextAlign="center"/>
+        	<edit left="300" top="0" width="50" height="25" field="arm_alc_$(field)" horzTextAlign="center"/>
+        	<edit left="350" top="0" width="50" height="25" field="arm_adi_$(field)" horzTextAlign="center"/>
+        	<edit left="400" top="0" width="50" height="25" field="arm_pod_$(field)" horzTextAlign="center"/>
+        </template>
+
+        <layout left="0" top="0" width="430" height="210">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="15" top="0" width="400" height="20" text="ATAQUES CORPO A CORPO" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="400" height="25" >
+				<label left="0" top="5" width="150" height="20" text="NOME" horzTextAlign="center"/>
+				<label left="150" top="5" width="150" height="20" text="NOTAS" horzTextAlign="center"/>
+				<label left="300" top="5" width="50" height="20" text="ACO" horzTextAlign="center"/>
+				<label left="350" top="5" width="50" height="20" text="P+F" horzTextAlign="center"/>
+			</layout>
+			<scrollBox left="0" top="50" width="425" height="150">
+				<layout left="5" top="0" width="400" height="25" >
+					<AtaqueC field="1"/>
+				</layout>
+				<layout left="5" top="25" width="400" height="25" >
+					<AtaqueC field="2"/>
+				</layout>
+				<layout left="5" top="50" width="400" height="25" >
+					<AtaqueC field="3"/>
+				</layout>
+				<layout left="5" top="75" width="400" height="25" >
+					<AtaqueC field="4"/>
+				</layout>
+				<layout left="5" top="100" width="400" height="25" >
+					<AtaqueC field="5"/>
+				</layout>
+				<layout left="5" top="125" width="400" height="25" >
+					<AtaqueC field="6"/>
+				</layout>
+				<layout left="5" top="150" width="400" height="25" >
+					<AtaqueC field="7"/>
+				</layout>
+				<layout left="5" top="175" width="400" height="25" >
+					<AtaqueC field="8"/>
+				</layout>
+				<layout left="5" top="200" width="400" height="25" >
+					<AtaqueC field="9"/>
+				</layout>
+				<layout left="5" top="225" width="400" height="25" >
+					<AtaqueC field="10"/>
+				</layout>
+			</scrollBox>
+		</layout>
+
+		<layout left="440" top="0" width="530" height="210">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="15" top="0" width="500" height="20" text="ATAQUES A DISTANCIA" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="500" height="25" >
+				<label left="0" top="5" width="150" height="20" text="NOME" horzTextAlign="center"/>
+				<label left="150" top="5" width="150" height="20" text="NOTAS" horzTextAlign="center"/>
+				<label left="300" top="5" width="50" height="20" text="ALC" horzTextAlign="center"/>
+				<label left="350" top="5" width="50" height="20" text="ADI" horzTextAlign="center"/>
+				<label left="400" top="5" width="50" height="20" text="POD" horzTextAlign="center"/>
+				<label left="450" top="5" width="50" height="20" text="MUN" horzTextAlign="center"/>
+			</layout>
+			<scrollBox left="0" top="50" width="525" height="150">
+				<layout left="5" top="0" width="500" height="25" >
+					<AtaqueD field="1"/>
+				</layout>
+				<layout left="5" top="25" width="500" height="25" >
+					<AtaqueD field="2"/>
+				</layout>
+				<layout left="5" top="50" width="500" height="25" >
+					<AtaqueD field="3"/>
+				</layout>
+				<layout left="5" top="75" width="500" height="25" >
+					<AtaqueD field="4"/>
+				</layout>
+				<layout left="5" top="100" width="500" height="25" >
+					<AtaqueD field="5"/>
+				</layout>
+				<layout left="5" top="125" width="500" height="25" >
+					<AtaqueD field="6"/>
+				</layout>
+				<layout left="5" top="150" width="500" height="25" >
+					<AtaqueD field="7"/>
+				</layout>
+				<layout left="5" top="175" width="500" height="25" >
+					<AtaqueD field="8"/>
+				</layout>
+				<layout left="5" top="200" width="500" height="25" >
+					<AtaqueD field="9"/>
+				</layout>
+				<layout left="5" top="225" width="500" height="25" >
+					<AtaqueD field="10"/>
+				</layout>
+			</scrollBox>
+		</layout>
+
+		<layout left="0" top="220" width="430" height="390">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="15" top="0" width="400" height="20" text="EQUIPAMENTO" horzTextAlign="center"/>
+
+			<textEditor left="5" top="25" width="420" height="360" field="equipamento"/>
+		</layout>
+
+		<layout left="440" top="220" width="460" height="110">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="15" top="0" width="400" height="20" text="ARMADURA" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="450" height="25" >
+				<label left="0" top="5" width="150" height="20" text="NOME" horzTextAlign="center"/>
+				<label left="150" top="5" width="150" height="20" text="DESCRIÇÃO" horzTextAlign="center"/>
+				<label left="300" top="5" width="50" height="20" text="VEL" horzTextAlign="center"/>
+				<label left="350" top="5" width="50" height="20" text="DEF" horzTextAlign="center"/>
+				<label left="400" top="5" width="50" height="20" text="ARM" horzTextAlign="center"/>
+			</layout>
+			<layout left="5" top="50" width="500" height="25" >
+				<Armadura field="1"/>
+			</layout>
+			<layout left="5" top="75" width="500" height="25" >
+				<Armadura field="2"/>
+			</layout>
+		</layout>
+
+		<layout left="440" top="340" width="250" height="250">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="0" width="240" height="20" text="DINHEIRO" horzTextAlign="center"/>
+
+			<textEditor left="5" top="25" width="240" height="220" field="dinheiro"/>
+		</layout>
+
+		<image align="client" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20RdF%20releases/imagens/block.png" style="autoFit"/>
+	</scrollBox>
+</form>

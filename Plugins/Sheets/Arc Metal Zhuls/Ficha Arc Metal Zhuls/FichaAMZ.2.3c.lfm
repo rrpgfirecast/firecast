@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAMZ2_3c" align="client" theme="dark">
+	<scrollBox align="client">
+		<layout left="0" top="0" width="800" height="625">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="800" height="20" text="Habilidades Iniciais" horzTextAlign="center"/>
+			<button left="1" top="1" width="23" height="23" text="+">
+				<event name="onClick">
+					if sheet~=nil then
+						local node = self.rclHabilidadesIniciais:append();
+					end;
+				</event>
+			</button>
+			<recordList name="rclHabilidadesIniciais" field="campoDosHabilidadesIniciais" templateForm="frmAMZ2_3_1" left="5" top="25" width="790" height="595" layout="vertical" minQt="1"/>
+		</layout>
+	</scrollBox>
+</form>

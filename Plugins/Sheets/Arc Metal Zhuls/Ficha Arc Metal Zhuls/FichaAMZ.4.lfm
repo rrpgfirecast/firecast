@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAMZ4" align="client" theme="dark">
+	<scrollBox align="client">
+		<richEdit align="client" field="historia" backgroundColor="#333333" defaultFontColor="white" defaultFontSize="12"/>
+	</scrollBox>
+</form>

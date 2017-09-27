@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmACN1" align="client" theme="dark">
+    <scrollBox align="client">
+        
+		<template name="Cabecalho">
+        	<label left="0" top="5" width="100" height="20" text="$(nome)" horzTextAlign="trailing"/>
+        	<edit left="110" top="0" width="200" height="25" field="$(field)"/>
+        </template>
+		
+		<template name="Historico">
+        	<radioButton left="0" top="0" groupName="grupo1" field="dado1" fieldValue="historicoTotal$(field)">
+        		<event name="onChange">
+					if sheet~=nil then
+						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
+					end;
+        		</event>
+        	</radioButton>
+    		<radioButton left="0" top="15" groupName="grupo2" field="dado2" fieldValue="historicoTotal$(field)">
+    			<event name="onChange">
+					if sheet~=nil then
+						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
+					end;
+        		</event>
+    		</radioButton>
+
+    		<edit left="20" top="0" width="100" height="25" field="historicoNome$(field)"/>
+
+			<rectangle left="125" top="0" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+        	<label left="135" top="3" width="30" height="20" field="historicoTotal$(field)"/>
+        	<edit left="165" top="0" width="30" height="25" type="number" min="0" field="historicoValor$(field)">
+				<event name="onUserChange">
+					local mod = (tonumber(sheet.historicoValor$(field)) or 0)+
+											(tonumber(sheet.historicoBonus$(field)) or 0)+
+											(tonumber(sheet.historicoXp$(field)) or 0);
+					sheet.historicoTotal$(field) = mod;
+				</event>
+			</edit>
+        	<edit left="200" top="0" width="30" height="25" type="number" min="0" field="historicoBonus$(field)">
+				<event name="onUserChange">
+					local mod = (tonumber(sheet.historicoValor$(field)) or 0)+
+											(tonumber(sheet.historicoBonus$(field)) or 0)+
+											(tonumber(sheet.historicoXp$(field)) or 0);
+					sheet.historicoTotal$(field) = mod;
+				</event>
+			</edit>
+        	<edit left="235" top="0" width="30" height="25" type="number" min="0" field="historicoXp$(field)">
+				<event name="onUserChange">
+					local mod = (tonumber(sheet.historicoValor$(field)) or 0)+
+											(tonumber(sheet.historicoBonus$(field)) or 0)+
+											(tonumber(sheet.historicoXp$(field)) or 0);
+					sheet.historicoTotal$(field) = mod;
+					xpHistoricos();
+					xpMisticos();
+				</event>
+			</edit>
+        </template>
+		
+        <template name="Atributo">
+			<radioButton left="0" top="0" groupName="grupo1" field="dado1" fieldValue="teste$(field)">
+        		<event name="onChange">
+					if sheet~=nil then
+						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
+					end;
+        		</event>
+        	</radioButton>
+    		<radioButton left="0" top="13" groupName="grupo2" field="dado2" fieldValue="teste$(field)">
+    			<event name="onChange">
+					if sheet~=nil then
+						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
+					end;
+        		</event>
+    		</radioButton>
+
+        	<label left="20" top="5" width="85" height="20" text="$(nome)"/>
+			
+			<rectangle left="100" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="100" top="3" width="40" height="20" field="total$(field)" horzTextAlign="center"/>
+        	
+			<edit left="145" top="0" width="30" height="25" type="number" field="base$(field)"/>
+        	<edit left="180" top="0" width="30" height="25" type="number" field="inicial$(field)"/>
+			<edit left="215" top="0" width="30" height="25" type="number" field="bonus$(field)"/>
+        	<edit left="250" top="0" width="30" height="25" type="number" field="xp$(field)"/>
+			
+			<dataLink fields="{'base$(field)', 'inicial$(field)', 'bonus$(field)', 'xp$(field)', 'penalidadeEscudo', 'penalidadeArmadura'}">
+				<event name="onChange">
+					if sheet~=nil then
+						local mod = (tonumber(sheet.base$(field)) or 0)+
+									(tonumber(sheet.inicial$(field)) or 0)+
+									(tonumber(sheet.bonus$(field)) or 0)+
+									(tonumber(sheet.xp$(field)) or 0);
+						if $(fator) > 1 then
+							local pen = 0;
+							if "$(field)"=="agilidade" then
+								pen = (tonumber(sheet.penalidadeArmadura) or 0) +
+									(tonumber(sheet.penalidadeEscudo) or 0);
+								mod = mod - pen;
+							end;
+							sheet.total$(field) = mod .. " | " ..(mod / $(fator));
+							sheet.teste$(field) = mod / $(fator);
+						else
+							sheet.total$(field) = mod;
+							sheet.teste$(field) = mod;
+						end;
+						xpAtributo();
+						xpAegis();
+					end;
+				</event>
+			</dataLink>
+        </template>
+		
+		<template name="PV">
+        	<label left="10" top="0" width="95" height="20" text="$(nome)"/>
+			<flowLayout left="100" top="0" height="100" width="60">                 
+					<checkBox align="left" width="20" field="check1_1_$(field)"/>
+					<checkBox align="left" width="20" field="check2_1_$(field)"/>
+					<checkBox align="left" width="20" field="check3_1_$(field)"/>
+					<flowLineBreak/>
+				<!-- if tonumber(quantidade)>=2 then -->                  
+					<checkBox align="left" width="20" field="check1_2_$(field)"/>
+					<checkBox align="left" width="20" field="check2_2_$(field)"/>
+					<checkBox align="left" width="20" field="check3_2_$(field)"/>
+					<flowLineBreak/>
+				<!-- end; -->
+				<!-- if tonumber(quantidade)>=3 then -->                  
+					<checkBox align="left" width="20" field="check1_3_$(field)"/>
+					<checkBox align="left" width="20" field="check2_3_$(field)"/>
+					<checkBox align="left" width="20" field="check3_3_$(field)"/>
+					<flowLineBreak/>
+				<!-- end; -->
+				<!-- if tonumber(quantidade)>=4 then -->                  
+					<checkBox align="left" width="20" field="check1_4_$(field)"/>
+					<checkBox align="left" width="20" field="check2_4_$(field)"/>
+					<checkBox align="left" width="20" field="check3_4_$(field)"/>
+					<flowLineBreak/>
+				<!-- end; -->
+				<!-- if tonumber(quantidade)>=5 then -->                  
+					<checkBox align="left" width="20" field="check1_5_$(field)"/>
+					<checkBox align="left" width="20" field="check2_5_$(field)"/>
+					<checkBox align="left" width="20" field="check3_5_$(field)"/>
+					<flowLineBreak/>
+				<!-- end; -->
+			</flowLayout>
+			<edit left="170" top="0" width="30" height="25" field="penalidade$(field)"/>
+			<script>
+				local function isAny$(field)()
+					local mod = sheet.check1_1_$(field) or sheet.check2_1_$(field) or sheet.check3_1_$(field);
+					local quantidade = tonumber($(quantidade));
+					if quantidade>=2 then
+						mod = mod or sheet.check1_2_$(field) or sheet.check2_2_$(field) or sheet.check3_2_$(field);
+					end;
+					if quantidade>=3 then
+						mod = mod or sheet.check1_3_$(field) or sheet.check2_3_$(field) or sheet.check3_3_$(field);
+					end;
+					if quantidade>=4 then
+						mod = mod or sheet.check1_4_$(field) or sheet.check2_4_$(field) or sheet.check3_4_$(field);	
+					end;
+					if quantidade>=5 then
+						mod = mod or sheet.check1_5_$(field) or sheet.check2_5_$(field) or sheet.check3_5_$(field);
+					end;
+					return mod;
+				end;
+			</script>
+			
+        </template>
+		
+		<layout left="0" top="0" width="960" height="70">
+			<rectangle left="5" top="0" width="950" height="70" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<layout left="5" top="5" width="310" height="25" >
+				<Cabecalho field="nome" nome="Nome"/>
+			</layout>
+			<layout left="320" top="5" width="310" height="25" >
+				<Cabecalho field="conceito" nome="Conceito"/>
+			</layout>
+			<layout left="585" top="5" width="310" height="25" >
+				<Cabecalho field="faccao" nome="Facção"/>
+			</layout>
+			<layout left="5" top="35" width="310" height="25" >
+				<Cabecalho field="impeto" nome="Ímpeto"/>
+			</layout>
+			<layout left="320" top="35" width="310" height="25" >
+				<Cabecalho field="comportamento" nome="Comportamento"/>
+			</layout>
+			<layout left="585" top="35" width="310" height="25" >
+				<Cabecalho field="direcao" nome="Direção"/>
+			</layout>
+		</layout>
+		
+		<layout left="0" top="75" width="315" height="245">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="5" top="0" width="315" height="20" text="ATRIBUTOS" horzTextAlign="center"/>
+			<label left="250" top="80" width="100" height="20" text="Físicos" horzTextAlign="center" rotationAngle="90"/>
+			<label left="250" top="175" width="100" height="20" text="Mentais" horzTextAlign="center" rotationAngle="90"/>
+			
+			<label left="105" top="25" width="315" height="20" text=" Total"/>
+			<label left="150" top="25" width="315" height="20" text="Base"/>
+			<label left="185" top="25" width="315" height="20" text=" Inic"/>
+			<label left="220" top="25" width="315" height="20" text=" Apr."/>
+			<label left="255" top="25" width="315" height="20" text="  XP"/>
+			
+			<layout left="5" top="50" width="315" height="30" >
+				<Atributo field="forca" nome="Força" fator="2" minVal="3"/>
+			</layout>
+			<layout left="5" top="80" width="315" height="30" >
+				<Atributo field="agilidade" nome="Agilidade" fator="2" minVal="3"/>
+			</layout>
+			<layout left="5" top="110" width="315" height="30" >
+				<Atributo field="resiliencia" nome="Resiliência" fator="2" minVal="3"/>
+			</layout>
+			<horzLine left="0" top="145" width="315" strokeColor="white"/>
+			<layout left="5" top="150" width="315" height="30" >
+				<Atributo field="carisma" nome="Carisma" fator="2" minVal="3"/>
+			</layout>
+			<layout left="5" top="180" width="315" height="30" >
+				<Atributo field="percepcao" nome="Percepção" fator="2" minVal="3"/>
+			</layout>
+			<layout left="5" top="210" width="315" height="30" >
+				<Atributo field="perspicacia" nome="Perspicácia" fator="2" minVal="3"/>
+			</layout>
+
+			<script>
+				local function xpAtributo()
+					if sheet~=nil then
+						local mod = 0;
+						local valores = {   ((tonumber(sheet.testeforca) or 0)*2 - (tonumber(sheet.xpforca) or 0)), 
+											((tonumber(sheet.testeagilidade) or 0)*2 - (tonumber(sheet.xpagilidade) or 0)), 
+											((tonumber(sheet.testeresiliencia) or 0)*2 - (tonumber(sheet.xpresiliencia) or 0)), 
+											((tonumber(sheet.testecarisma) or 0)*2 - (tonumber(sheet.xpcarisma) or 0)), 
+											((tonumber(sheet.testepercepcao) or 0)*2 - (tonumber(sheet.xppercepcao) or 0)),
+											((tonumber(sheet.testeperspicacia) or 0)*2 - (tonumber(sheet.xpperspicacia) or 0)) };
+						
+						local limites = {	(tonumber(sheet.xpforca) or 0),
+											(tonumber(sheet.xpagilidade) or 0),
+											(tonumber(sheet.xpresiliencia) or 0),
+											(tonumber(sheet.xpcarisma) or 0),
+											(tonumber(sheet.xppercepcao) or 0),
+											(tonumber(sheet.xpperspicacia) or 0)}
+						
+						for i=1, 6, 1 do
+							for j=1, limites[i], 1 do
+								mod = mod + (valores[i]+j)*3;
+							end;
+						end;
+						sheet.XPatributos = mod;
+						sheet.XPgasta = (tonumber(sheet.XPatributos) or 0) + 
+										(tonumber(sheet.XPaegis) or 0) + 
+										(tonumber(sheet.XPhistoricos) or 0) + 
+										(tonumber(sheet.XPmisticos) or 0) + 
+										(tonumber(sheet.XPaptidoes) or 0);
+					end;
+				end;
+			</script>
+		</layout>
+		
+		<layout left="0" top="325" width="315" height="185">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="5" top="0" width="315" height="20" text="EIDOLON" horzTextAlign="center"/>
+			
+			<label left="105" top="25" width="315" height="20" text=" Total"/>
+			<label left="150" top="25" width="315" height="20" text="Base"/>
+			<label left="185" top="25" width="315" height="20" text=" Inic"/>
+			<label left="220" top="25" width="315" height="20" text=" Apr."/>
+			<label left="255" top="25" width="315" height="20" text="  XP"/>
+			
+			<label left="250" top="80" width="100" height="20" text="Aegis" horzTextAlign="center" rotationAngle="90"/>
+			<layout left="5" top="50" width="315" height="30" >
+				<Atributo field="consciencia" nome="Consciência" fator="1" minVal="1"/>
+			</layout>
+			<layout left="5" top="80" width="315" height="30" >
+				<Atributo field="espirito" nome="Espírito" fator="1" minVal="1"/>
+			</layout>
+			<layout left="5" top="110" width="315" height="30" >
+				<Atributo field="perseveranca" nome="Perseverança" fator="1" minVal="1"/>
+			</layout>
+			
+			<horzLine left="0" top="145" width="315" strokeColor="white"/>
+			<layout left="5" top="150" width="315" height="30" >
+				<label left="30" top="0" width="85" height="20" text="Gladius"/>
+				<edit left="175" top="0" width="30" height="25" type="number" field="gladiusMin">
+					<event name="onUserChange">
+						if sheet.gladiusMin~=nil and sheet.gladiusMax~=nil then
+							sheet.gladius = sheet.gladiusMin/sheet.gladiusMax;
+						end;
+					</event>
+				</edit>
+				<edit left="210" top="0" width="30" height="25" type="number" field="gladiusMax">
+					<event name="onUserChange">
+						if sheet.gladiusMin~=nil and sheet.gladiusMax~=nil then
+							sheet.gladius = sheet.gladiusMin/sheet.gladiusMax;
+						end;
+					</event>
+				</edit>
+				<progressBar left="100" top="5" width="65" height="15" color="blue" hitTest="true" max="1" field="gladius"/>
+			</layout>
+
+			<script>
+				local function xpAegis()
+					if sheet~=nil then
+						local mod = 0;
+						local valores = {   ((tonumber(sheet.testeconsciencia) or 0) - (tonumber(sheet.xpconsciencia) or 0)), 
+											((tonumber(sheet.testeespirito) or 0) - (tonumber(sheet.xpespirito) or 0)), 
+											((tonumber(sheet.testeperseveranca) or 0) - (tonumber(sheet.xpperseveranca) or 0))};
+						
+						local limites = {	(tonumber(sheet.xpconsciencia) or 0),
+											(tonumber(sheet.xpespirito) or 0),
+											(tonumber(sheet.xpperseveranca) or 0)}
+						
+						for i=1, 3, 1 do
+							for j=1, limites[i], 1 do
+								mod = mod + (valores[i]+j);
+							end;
+						end;
+
+						sheet.XPaegis = mod;
+						sheet.XPgasta = (tonumber(sheet.XPatributos) or 0) + 
+										(tonumber(sheet.XPaegis) or 0) + 
+										(tonumber(sheet.XPhistoricos) or 0) + 
+										(tonumber(sheet.XPmisticos) or 0) + 
+										(tonumber(sheet.XPaptidoes) or 0);
+					end;
+				end;
+			</script>
+		</layout>
+		
+		<layout left="840" top="530" width="200" height="65">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<button left="65" top="10" width="70" text="PADRÃO*">
+				<event name="onClick">
+					default();
+				</event>
+			</button>
+			<label left="35" top="35" width="130" height="20" text="*Seta valores iniciais."/>
+		</layout>
+		
+		<layout left="625" top="530" width="210" height="65">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="0" width="200" height="20" text="XP" horzTextAlign="center"/>
+			
+			<rectangle left="10" top="25" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="20" top="28" width="30" height="20" field="XPgasta"/>
+			
+			<label left="48" top="25" width="10" height="20" text="+"/>
+			<edit left="60" top="25" width="30" height="25" type="number" field="XPgasta2"/>
+			
+			<label left="93" top="25" width="10" height="20" text="="/>
+			
+			<rectangle left="105" top="25" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="115" top="28" width="30" height="20" field="XPgastaTotal"/>
+			
+			<label left="148" top="25" width="10" height="20" text="|"/>
+			<edit left="160" top="25" width="30" height="25" type="number" field="XP"/>
+			
+			<dataLink fields="{'XPgasta', 'XPgasta2'}">
+				<event name="onChange">
+					if sheet ~= nil then
+						sheet.XPgastaTotal = (tonumber(sheet.XPgasta) or 0) + (tonumber(sheet.XPgasta2) or 0);
+					end;
+				</event>
+			</dataLink>
+		</layout>
+		
+		<layout left="320" top="75" width="300" height="320">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="0" width="300" height="20" text="HISTORICOS" horzTextAlign="center"/>
+			
+			<label left="25" top="20" width="315" height="20" text=" Nome"/>
+			<label left="135" top="20" width="315" height="20" text="Total"/>
+			<label left="170" top="20" width="315" height="20" text=" Inic"/>
+			<label left="202" top="20" width="315" height="20" text=" Apr."/>
+			<label left="235" top="20" width="315" height="20" text="  XP"/>
+			
+			<scrollBox left="0" top="40" width="295" height="260">
+				<layout left="5" top="0" width="270" height="35">
+					<Historico field="1_1"/>
+				</layout>
+				<layout left="5" top="35" width="270" height="35">
+					<Historico field="1_2"/>
+				</layout>
+				<layout left="5" top="70" width="270" height="35">
+					<Historico field="1_3"/>
+				</layout>
+				<layout left="5" top="105" width="270" height="35">
+					<Historico field="1_4"/>
+				</layout>
+				<layout left="5" top="140" width="270" height="35">
+					<Historico field="1_5"/>
+				</layout>
+				<layout left="5" top="175" width="270" height="35">
+					<Historico field="1_6"/>
+				</layout>
+				<layout left="5" top="210" width="270" height="35">
+					<Historico field="2_1"/>
+				</layout>
+				<layout left="5" top="245" width="270" height="35">
+					<Historico field="2_2"/>
+				</layout>
+				<layout left="5" top="280" width="270" height="35">
+					<Historico field="2_3"/>
+				</layout>
+				<layout left="5" top="315" width="270" height="35">
+					<Historico field="2_4"/>
+				</layout>
+				<layout left="5" top="350" width="270" height="35">
+					<Historico field="2_5"/>
+				</layout>
+				<layout left="5" top="385" width="270" height="35">
+					<Historico field="2_6"/>
+				</layout>
+				<layout left="5" top="420" width="270" height="35">
+					<Historico field="3_1"/>
+				</layout>
+				<layout left="5" top="455" width="270" height="35">
+					<Historico field="3_2"/>
+				</layout>
+				<layout left="5" top="490" width="270" height="35">
+					<Historico field="3_3"/>
+				</layout>
+				<layout left="5" top="525" width="270" height="35">
+					<Historico field="3_4"/>
+				</layout>
+				<layout left="5" top="560" width="270" height="35">
+					<Historico field="3_5"/>
+				</layout>
+				<layout left="5" top="595" width="270" height="35">
+					<Historico field="3_6"/>
+				</layout>
+				<script>
+					local function xpHistoricos()
+						if sheet~=nil then
+							local mod = 0;
+							local valores = {   ((tonumber(sheet.historicoTotal1_1) or 0) - (tonumber(sheet.historicoXp1_1) or 0)), 
+												((tonumber(sheet.historicoTotal1_2) or 0) - (tonumber(sheet.historicoXp1_2) or 0)), 
+												((tonumber(sheet.historicoTotal1_3) or 0) - (tonumber(sheet.historicoXp1_3) or 0)),
+												((tonumber(sheet.historicoTotal1_4) or 0) - (tonumber(sheet.historicoXp1_4) or 0)),
+												((tonumber(sheet.historicoTotal1_5) or 0) - (tonumber(sheet.historicoXp1_5) or 0)),
+												((tonumber(sheet.historicoTotal1_6) or 0) - (tonumber(sheet.historicoXp1_6) or 0)),
+												((tonumber(sheet.historicoTotal2_1) or 0) - (tonumber(sheet.historicoXp2_1) or 0)),
+												((tonumber(sheet.historicoTotal2_2) or 0) - (tonumber(sheet.historicoXp2_2) or 0)),
+												((tonumber(sheet.historicoTotal2_3) or 0) - (tonumber(sheet.historicoXp2_3) or 0)),
+												((tonumber(sheet.historicoTotal2_4) or 0) - (tonumber(sheet.historicoXp2_4) or 0)),
+												((tonumber(sheet.historicoTotal2_5) or 0) - (tonumber(sheet.historicoXp2_5) or 0)),
+												((tonumber(sheet.historicoTotal2_6) or 0) - (tonumber(sheet.historicoXp2_6) or 0)),
+												((tonumber(sheet.historicoTotal3_1) or 0) - (tonumber(sheet.historicoXp3_1) or 0)),
+												((tonumber(sheet.historicoTotal3_2) or 0) - (tonumber(sheet.historicoXp3_2) or 0)),
+												((tonumber(sheet.historicoTotal3_3) or 0) - (tonumber(sheet.historicoXp3_3) or 0)),
+												((tonumber(sheet.historicoTotal3_4) or 0) - (tonumber(sheet.historicoXp3_4) or 0)),
+												((tonumber(sheet.historicoTotal3_5) or 0) - (tonumber(sheet.historicoXp3_5) or 0)),
+												((tonumber(sheet.historicoTotal3_6) or 0) - (tonumber(sheet.historicoXp3_6) or 0)),
+												};
+							
+							local limites = {	(tonumber(sheet.historicoXp1_1) or 0),
+												(tonumber(sheet.historicoXp1_2) or 0),
+												(tonumber(sheet.historicoXp1_3) or 0),
+												(tonumber(sheet.historicoXp1_4) or 0),
+												(tonumber(sheet.historicoXp1_5) or 0),
+												(tonumber(sheet.historicoXp1_6) or 0),
+												(tonumber(sheet.historicoXp2_1) or 0),
+												(tonumber(sheet.historicoXp2_2) or 0),
+												(tonumber(sheet.historicoXp2_3) or 0),
+												(tonumber(sheet.historicoXp2_4) or 0),
+												(tonumber(sheet.historicoXp2_5) or 0),
+												(tonumber(sheet.historicoXp2_6) or 0),
+												(tonumber(sheet.historicoXp3_1) or 0),
+												(tonumber(sheet.historicoXp3_2) or 0),
+												(tonumber(sheet.historicoXp3_3) or 0),
+												(tonumber(sheet.historicoXp3_4) or 0),
+												(tonumber(sheet.historicoXp3_5) or 0),
+												(tonumber(sheet.historicoXp3_6) or 0)
+												};
+							
+							for i=1, 18, 1 do
+								for j=1, limites[i], 1 do
+									mod = mod + (valores[i]+j)*2;
+								end;
+							end;
+
+							sheet.XPhistoricos = mod;
+							sheet.XPgasta = (tonumber(sheet.XPatributos) or 0) + 
+											(tonumber(sheet.XPaegis) or 0) + 
+											(tonumber(sheet.XPhistoricos) or 0) + 
+											(tonumber(sheet.XPmisticos) or 0) + 
+											(tonumber(sheet.XPaptidoes) or 0);
+						end;
+					end;
+				</script>
+			</scrollBox>
+		</layout>
+
+		<layout left="320" top="400" width="300" height="180">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="0" width="300" height="20" text="HISTORICOS MISTICOS" horzTextAlign="center"/>
+			
+			<label left="25" top="20" width="315" height="20" text=" Nome"/>
+			<label left="135" top="20" width="315" height="20" text="Total"/>
+			<label left="170" top="20" width="315" height="20" text=" Inic"/>
+			<label left="202" top="20" width="315" height="20" text=" Apr."/>
+			<label left="235" top="20" width="315" height="20" text="  XP"/>
+			
+			<scrollBox left="0" top="40" width="295" height="120">
+				<layout left="5" top="0" width="270" height="35">
+					<Historico field="1_1_m"/>
+				</layout>
+				<layout left="5" top="35" width="270" height="35">
+					<Historico field="1_2_m"/>
+				</layout>
+				<layout left="5" top="70" width="270" height="35">
+					<Historico field="1_3_m"/>
+				</layout>
+				<layout left="5" top="105" width="270" height="35">
+					<Historico field="1_4_m"/>
+				</layout>
+				<layout left="5" top="140" width="270" height="35">
+					<Historico field="1_5_m"/>
+				</layout>
+				<layout left="5" top="175" width="270" height="35">
+					<Historico field="1_6_m"/>
+				</layout>
+				<layout left="5" top="210" width="270" height="35">
+					<Historico field="2_1_m"/>
+				</layout>
+				<layout left="5" top="245" width="270" height="35">
+					<Historico field="2_2_m"/>
+				</layout>
+				<layout left="5" top="280" width="270" height="35">
+					<Historico field="2_3_m"/>
+				</layout>
+				<layout left="5" top="315" width="270" height="35">
+					<Historico field="2_4_m"/>
+				</layout>
+				<layout left="5" top="350" width="270" height="35">
+					<Historico field="2_5_m"/>
+				</layout>
+				<layout left="5" top="385" width="270" height="35">
+					<Historico field="2_6_m"/>
+				</layout>
+				<layout left="5" top="420" width="270" height="35">
+					<Historico field="3_1_m"/>
+				</layout>
+				<layout left="5" top="455" width="270" height="35">
+					<Historico field="3_2_m"/>
+				</layout>
+				<layout left="5" top="490" width="270" height="35">
+					<Historico field="3_3_m"/>
+				</layout>
+				<layout left="5" top="525" width="270" height="35">
+					<Historico field="3_4_m"/>
+				</layout>
+				<layout left="5" top="560" width="270" height="35">
+					<Historico field="3_5_m"/>
+				</layout>
+				<layout left="5" top="595" width="270" height="35">
+					<Historico field="3_6_m"/>
+				</layout>
+				<script>
+					local function xpMisticos()
+						if sheet~=nil then
+							local mod = 0;
+							local valores = {   ((tonumber(sheet.historicoTotal1_1_m) or 0) - (tonumber(sheet.historicoXp1_1_m) or 0)), 
+												((tonumber(sheet.historicoTotal1_2_m) or 0) - (tonumber(sheet.historicoXp1_2_m) or 0)), 
+												((tonumber(sheet.historicoTotal1_3_m) or 0) - (tonumber(sheet.historicoXp1_3_m) or 0)),
+												((tonumber(sheet.historicoTotal1_4_m) or 0) - (tonumber(sheet.historicoXp1_4_m) or 0)),
+												((tonumber(sheet.historicoTotal1_5_m) or 0) - (tonumber(sheet.historicoXp1_5_m) or 0)),
+												((tonumber(sheet.historicoTotal1_6_m) or 0) - (tonumber(sheet.historicoXp1_6_m) or 0)),
+												((tonumber(sheet.historicoTotal2_1_m) or 0) - (tonumber(sheet.historicoXp2_1_m) or 0)),
+												((tonumber(sheet.historicoTotal2_2_m) or 0) - (tonumber(sheet.historicoXp2_2_m) or 0)),
+												((tonumber(sheet.historicoTotal2_3_m) or 0) - (tonumber(sheet.historicoXp2_3_m) or 0)),
+												((tonumber(sheet.historicoTotal2_4_m) or 0) - (tonumber(sheet.historicoXp2_4_m) or 0)),
+												((tonumber(sheet.historicoTotal2_5_m) or 0) - (tonumber(sheet.historicoXp2_5_m) or 0)),
+												((tonumber(sheet.historicoTotal2_6_m) or 0) - (tonumber(sheet.historicoXp2_6_m) or 0)),
+												((tonumber(sheet.historicoTotal3_1_m) or 0) - (tonumber(sheet.historicoXp3_1_m) or 0)),
+												((tonumber(sheet.historicoTotal3_2_m) or 0) - (tonumber(sheet.historicoXp3_2_m) or 0)),
+												((tonumber(sheet.historicoTotal3_3_m) or 0) - (tonumber(sheet.historicoXp3_3_m) or 0)),
+												((tonumber(sheet.historicoTotal3_4_m) or 0) - (tonumber(sheet.historicoXp3_4_m) or 0)),
+												((tonumber(sheet.historicoTotal3_5_m) or 0) - (tonumber(sheet.historicoXp3_5_m) or 0)),
+												((tonumber(sheet.historicoTotal3_6_m) or 0) - (tonumber(sheet.historicoXp3_6_m) or 0)),
+												};
+							
+							local limites = {	(tonumber(sheet.historicoXp1_1_m) or 0),
+												(tonumber(sheet.historicoXp1_2_m) or 0),
+												(tonumber(sheet.historicoXp1_3_m) or 0),
+												(tonumber(sheet.historicoXp1_4_m) or 0),
+												(tonumber(sheet.historicoXp1_5_m) or 0),
+												(tonumber(sheet.historicoXp1_6_m) or 0),
+												(tonumber(sheet.historicoXp2_1_m) or 0),
+												(tonumber(sheet.historicoXp2_2_m) or 0),
+												(tonumber(sheet.historicoXp2_3_m) or 0),
+												(tonumber(sheet.historicoXp2_4_m) or 0),
+												(tonumber(sheet.historicoXp2_5_m) or 0),
+												(tonumber(sheet.historicoXp2_6_m) or 0),
+												(tonumber(sheet.historicoXp3_1_m) or 0),
+												(tonumber(sheet.historicoXp3_2_m) or 0),
+												(tonumber(sheet.historicoXp3_3_m) or 0),
+												(tonumber(sheet.historicoXp3_4_m) or 0),
+												(tonumber(sheet.historicoXp3_5_m) or 0),
+												(tonumber(sheet.historicoXp3_6_m) or 0)
+												};
+							
+							for i=1, 18, 1 do
+								for j=1, limites[i], 1 do
+									mod = mod + (valores[i]+j)*5;
+								end;
+							end;
+
+							sheet.XPmisticos = mod;
+							sheet.XPgasta = (tonumber(sheet.XPatributos) or 0) + 
+											(tonumber(sheet.XPaegis) or 0) + 
+											(tonumber(sheet.XPhistoricos) or 0) + 
+											(tonumber(sheet.XPmisticos) or 0) + 
+											(tonumber(sheet.XPaptidoes) or 0);
+						end;
+					end;
+				</script>
+			</scrollBox>
+		</layout>
+		
+		<layout left="625" top="75" width="210" height="450">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="5" top="0" width="210" height="20" text="SAÚDE" horzTextAlign="center"/>
+			
+			<horzLine left="0" top="25" width="210" strokeColor="white"/>
+			<layout left="0" top="30" width="210" height="60">
+				<PV nome="LEVE" field="1" quantidade="3"/>
+			</layout>
+			<horzLine left="0" top="95" width="210" strokeColor="white"/>
+			<layout left="0" top="100" width="210" height="40">
+				<PV nome="MEDIO" field="2" quantidade="2"/>
+			</layout>
+			<horzLine left="0" top="145" width="210" strokeColor="white"/>
+			<layout left="0" top="150" width="210" height="40">
+				<PV nome="SERIO" field="3" quantidade="2"/>
+			</layout>
+			<horzLine left="0" top="195" width="210" strokeColor="white"/>
+			<layout left="0" top="200" width="210" height="40">
+				<PV nome="GRAVE" field="4" quantidade="2"/>
+			</layout>
+			<horzLine left="0" top="245" width="210" strokeColor="white"/>
+			<layout left="0" top="250" width="210" height="25">
+				<PV nome="INCAPACITADO" field="5" quantidade="1"/>
+			</layout>
+			<horzLine left="0" top="280" width="210" strokeColor="white"/>
+			<layout left="0" top="285" width="210" height="100">
+				<PV nome="INCOSCIENTE" field="6" quantidade="5"/>
+			</layout>
+			<horzLine left="0" top="385" width="210" strokeColor="white"/>
+			
+			<label left="5" top="415" width="60" height="20" text="Absorção"/>
+			
+			<label left="65" top="390" width="30" height="20" text="Total" horzTextAlign="center"/>
+			<rectangle left="65" top="415" width="30" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="65" top="415" width="30" height="25" field="absorcao" horzTextAlign="center"/>
+			
+			<label left="100" top="390" width="30" height="20" text=" Res." horzTextAlign="center"/>
+			<rectangle left="100" top="415" width="30" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="100" top="415" width="30" height="25" field="absRes" horzTextAlign="center"/>
+			<dataLink field="totalresiliencia">
+				<event name="onChange">
+					if sheet ~= nil then
+						sheet.absRes = math.floor(tonumber(sheet.testeresiliencia) or 0);
+					end;
+				</event>
+			</dataLink>
+			
+			<label left="135" top="390" width="30" height="20" text="Arm" horzTextAlign="center"/>
+			<rectangle left="135" top="415" width="30" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="135" top="415" width="30" height="25" field="indiceArmadura" horzTextAlign="center"/>
+			
+			<label left="170" top="390" width="30" height="20" text=" Out." horzTextAlign="center"/>
+			<edit left="170" top="415" width="30" height="25" type="number" field="absOutros"/>
+			
+			<dataLink fields="{'absRes', 'indiceArmadura', 'absOutros'}">
+				<event name="onChange">
+					if sheet ~= nil then
+						sheet.absorcao = (tonumber(sheet.absRes) or 0) + (tonumber(sheet.absOutros) or 0) + (tonumber(sheet.indiceArmadura) or 0);
+					end;
+				</event>
+			</dataLink>
+			
+		</layout>
+		
+		<layout left="0" top="515" width="315" height="70">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			
+			<button left="10" top="10" width="70" height="20" text="Iniciativa">
+				 <event name="onClick">
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					
+					rolagem = rrpg.interpretarRolagem("1d10 + " .. (sheet.iniciativa or 0));
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Iniciativa de " .. (sheet.nome or 0));
+				 </event>
+			</button>
+			<rectangle left="90" top="10" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="100" top="10" width="30" height="20" field="iniciativa"/>
+			
+			<edit left="135" top="10" width="30" height="25" type="number" field="iniciativaBonus"/>
+			<label left="190" top="10" width="100" height="20" field="ms"/>
+			
+			<label left="10" top="40" width="90" height="20" text="Velocidade"/>
+			<rectangle left="90" top="40" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="100" top="40" width="30" height="20" field="velocidade"/>
+			
+			<edit left="135" top="40" width="30" height="25" type="number" field="velocidadeBonus"/>
+			<label left="190" top="40" width="100" height="20" field="kmh"/>
+			
+			
+			<dataLink fields="{'totalforca', 'totalagilidade', 'totalperspicacia', 'iniciativaBonus', 'velocidadeBonus'}">
+				<event name="onChange">
+					if sheet ~= nil then
+						sheet.iniciativa = ((tonumber(sheet.testeagilidade) or 0) + (tonumber(sheet.testeperspicacia) or 0)) * 2 + (tonumber(sheet.iniciativaBonus) or 0);
+						sheet.velocidade = ((tonumber(sheet.testeagilidade) or 0) + (tonumber(sheet.testeforca) or 0) + 2) * 2 + (tonumber(sheet.velocidadeBonus) or 0);
+						local mod = math.floor(((tonumber(sheet.velocidade) or 0)/3) * 100);
+						mod = mod / 100;
+						sheet.ms = mod .. "m/s";
+						sheet.kmh = ((tonumber(sheet.velocidade) or 0)*1.2) .. "Km/h";
+					end;
+				</event>
+			</dataLink>
+		</layout>
+		
+		<layout left="840" top="455" width="300" height="70">
+			<rectangle left="0" top="0" width="300" height="70" color="black" xradius="15" yradius="15" cornerType="round"/>
+			
+			<rectangle left="10" top="30" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="5" top="10" width="50" height="20" text="Dado 1"/>
+       		<label left="20" top="32" width="30" height="20" field="num1" text="val"/>
+			
+       		<label left="46" top="32" width="10" height="20" text="+"/>
+			
+       		<rectangle left="55" top="30" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="50" top="10" width="50" height="20" text="Dado 2"/>
+       		<label left="65" top="32" width="30" height="20" field="num2" text="val"/>
+       		
+			<label left="92" top="32" width="10" height="20" text="+"/>
+       		
+			<label left="105" top="10" width="40" height="20" text="Especs"/>
+			<comboBox left="105" top="30" width="50" items="{'0', '1,5', '3'}"  values="{'0', '1', '2'}" value="0" field="especBonus"/>
+			
+			<label left="160" top="10" width="40" height="20" text="Extra"/>
+       		<edit left="160" top="30" width="30" height="25" field="extra"/>
+			
+			<label left="195" top="10" width="40" height="20" text="Dific."/>
+			<edit left="195" top="30" width="30" height="25" field="dificuldade" type="number"/>
+			
+			<button left="230" top="30" width="50" text="ROLAR">
+                <event name="onClick">
+                	rolar();
+                </event>
+       		</button>
+		</layout>
+		
+		<rectangle left="840" top="90" width="350" height="350" color="DimGray" xradius="5" yradius="5" cornerType="innerLine"/>
+		<image left="840" top="90" width="350" height="350" field="avatar" editable="true" style="autoFit"/>
+		
+		<label left="0" top="595" width="600" height="20" field="audit"/>
+		<dataLink fields="{'inicialconsciencia', 'inicialespirito', 'inicialperseveranca', 'inicialforca', 'inicialagilidade', 'inicialresiliencia', 'inicialcarisma', 'inicialpercepcao', 'inicialperspicacia', 'base0_1', 'base0_2', 'base0_3', 'base0_4', 'base0_5', 'base0_6', 'base0_7', 'base0_8', 'base0_9', 'base0_10', 'base0_11', 'base0_12', 'base1_1', 'base1_2', 'base1_3', 'base1_4', 'base1_5', 'base1_6', 'base1_7', 'base1_8', 'base1_9', 'base1_10', 'base1_11', 'base1_12', 'base2_1', 'base2_2', 'base2_3', 'base2_4', 'base2_5', 'base2_6', 'base2_7', 'base2_8', 'base2_9', 'base2_10', 'base2_11', 'base2_12', 'base3_1', 'base3_2', 'base3_3', 'base3_4', 'base3_5', 'base3_6', 'base3_7', 'base3_8', 'base3_9', 'base3_10', 'base3_11', 'base3_12', 'historicoValor1_1', 'historicoValor1_2', 'historicoValor1_3', 'historicoValor1_4', 'historicoValor1_5', 'historicoValor1_6', 'historicoValor2_1', 'historicoValor2_2', 'historicoValor2_3', 'historicoValor2_4', 'historicoValor2_5', 'historicoValor2_6', 'historicoValor3_1', 'historicoValor3_2', 'historicoValor3_3', 'historicoValor3_4', 'historicoValor3_5', 'historicoValor3_6'}">
+			<event name="onChange">
+				if sheet~=nil then
+					local mod = "Atributos: ";
+					local fisicos = (tonumber(sheet.inicialforca) or 0) + (tonumber(sheet.inicialagilidade) or 0) + (tonumber(sheet.inicialresiliencia) or 0);
+					local mentais = (tonumber(sheet.inicialcarisma) or 0) + (tonumber(sheet.inicialpercepcao) or 0) + (tonumber(sheet.inicialperspicacia) or 0);
+					mod = mod .. fisicos .. "/" .. mentais .. ", Aptidões: ";
+					
+					fisicos = (tonumber(sheet.base0_1) or 0) + (tonumber(sheet.base0_2) or 0) + (tonumber(sheet.base0_3) or 0) + (tonumber(sheet.base0_4) or 0) + (tonumber(sheet.base0_5) or 0) + (tonumber(sheet.base0_6) or 0) + (tonumber(sheet.base0_7) or 0) + (tonumber(sheet.base0_8) or 0) + (tonumber(sheet.base0_9) or 0) + (tonumber(sheet.base0_10) or 0) + (tonumber(sheet.base0_11) or 0) + (tonumber(sheet.base0_12) or 0) + (tonumber(sheet.base2_1) or 0) + (tonumber(sheet.base2_2) or 0) + (tonumber(sheet.base2_3) or 0) + (tonumber(sheet.base2_4) or 0) + (tonumber(sheet.base2_5) or 0) + (tonumber(sheet.base2_6) or 0) + (tonumber(sheet.base2_7) or 0) + (tonumber(sheet.base2_8) or 0) + (tonumber(sheet.base2_9) or 0) + (tonumber(sheet.base2_10) or 0) + (tonumber(sheet.base2_11) or 0) + (tonumber(sheet.base2_12) or 0);
+					mentais = (tonumber(sheet.base1_1) or 0) + (tonumber(sheet.base1_2) or 0) + (tonumber(sheet.base1_3) or 0) + (tonumber(sheet.base1_4) or 0) + (tonumber(sheet.base1_5) or 0) + (tonumber(sheet.base1_6) or 0) + (tonumber(sheet.base1_7) or 0) + (tonumber(sheet.base1_8) or 0) + (tonumber(sheet.base1_9) or 0) + (tonumber(sheet.base1_10) or 0) + (tonumber(sheet.base1_11) or 0) + (tonumber(sheet.base1_12) or 0) + (tonumber(sheet.base3_1) or 0) + (tonumber(sheet.base3_2) or 0) + (tonumber(sheet.base3_3) or 0) + (tonumber(sheet.base3_4) or 0) + (tonumber(sheet.base3_5) or 0) + (tonumber(sheet.base3_6) or 0) + (tonumber(sheet.base3_7) or 0) + (tonumber(sheet.base3_8) or 0) + (tonumber(sheet.base3_9) or 0) + (tonumber(sheet.base3_10) or 0) + (tonumber(sheet.base3_11) or 0) + (tonumber(sheet.base3_12) or 0);
+					mod = mod .. fisicos .. "/" .. mentais .. ", Especializações: ?, Historico: ";
+					
+					local historico = (tonumber(sheet.historicoValor1_1) or 0) + (tonumber(sheet.historicoValor1_2) or 0) + (tonumber(sheet.historicoValor1_3) or 0) + (tonumber(sheet.historicoValor1_4) or 0) + (tonumber(sheet.historicoValor1_5) or 0) + (tonumber(sheet.historicoValor1_6) or 0) + (tonumber(sheet.historicoValor2_1) or 0) + (tonumber(sheet.historicoValor2_2) or 0) + (tonumber(sheet.historicoValor2_3) or 0) + (tonumber(sheet.historicoValor2_4) or 0) + (tonumber(sheet.historicoValor2_5) or 0) + (tonumber(sheet.historicoValor2_6) or 0) + (tonumber(sheet.historicoValor3_1) or 0) + (tonumber(sheet.historicoValor3_2) or 0) + (tonumber(sheet.historicoValor3_3) or 0) + (tonumber(sheet.historicoValor3_4) or 0) + (tonumber(sheet.historicoValor3_5) or 0) + (tonumber(sheet.historicoValor3_6) or 0);
+					
+					mod = mod .. historico .. ", Eidolon: ";
+					
+					local eidolon = (tonumber(sheet.inicialconsciencia) or 0) + (tonumber(sheet.inicialespirito) or 0) + (tonumber(sheet.inicialperseveranca) or 0);
+					
+					mod = mod .. eidolon;
+					
+					sheet.audit = mod;
+				end;
+			</event>
+		</dataLink>
+		
+		<script>
+			local function rolar()
+				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+                local mod = (tonumber(sheet[sheet.dado1]) or 0) + (tonumber(sheet[sheet.dado2]) or 0) + (tonumber(sheet.extra) or 0);
+                if sheet.especBonus=='1' then
+                	mod = mod + 1.5;
+                elseif sheet.especBonus=='2' then
+                	mod = mod + 3;
+                end;
+				local pen = 0;
+				if isAny6() then
+					pen = tonumber(sheet.penalidade6) or 0;
+				elseif isAny5() then
+					pen = tonumber(sheet.penalidade5) or 0;
+				elseif isAny4() then
+					pen = tonumber(sheet.penalidade4) or 0;
+				elseif isAny3() then
+					pen = tonumber(sheet.penalidade3) or 0;
+				elseif isAny2() then
+					pen = tonumber(sheet.penalidade2) or 0;
+				elseif isAny1() then
+					pen = tonumber(sheet.penalidade1) or 0;
+				end;
+				mod = mod - pen;
+				
+                mod = math.floor(mod);
+
+               	local mod1 = (tonumber(sheet.dificuldade) or 0);
+               	dificuldade = mod1;
+
+               	rolagem = rrpg.interpretarRolagem(mod .. "d10");
+               	mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dificuldade: " .. mod1  .. " (" ..(sheet[sheet.dado1] or 0) .. " + " .. (sheet[sheet.dado2] or 0) .. " + " .. (sheet.especBonus or 0) .. "x especializaçao + " .. (sheet.extra or 0) .. " - " .. pen .. " dano)", 
+					function (rolado)
+						local sucessos = 0;
+						local op = rolado.ops[1];
+
+						for j=1, #op.resultados, 1 do
+							if op.resultados[j] >= dificuldade then
+						    	sucessos = sucessos +1;
+							end;
+						end;
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						mesaDoPersonagem.activeChat:enviarMensagem(sucessos .. " Sucesso(s)!");
+					end);
+			end;
+		</script>
+		
+		<script>
+			local function default()
+				sheet.nome0_1 = "Armas Brancas";
+				sheet.nome0_2 = "Arremesso";
+				sheet.nome0_3 = "Briga";
+				sheet.nome0_4 = "Esportes";
+				sheet.nome0_5 = "Esquiva";
+				sheet.nome0_6 = "Furtividade";
+				sheet.nome0_7 = "Prestidigitação";
+				sheet.nome0_8 = "Sobrevivência";
+				sheet.nome1_1 = "Empatia";
+				sheet.nome1_2 = "Emp. Animais";
+				sheet.nome1_3 = "Etiqueta";
+				sheet.nome1_4 = "Expressão";
+				sheet.nome1_5 = "Intimidação";
+				sheet.nome1_6 = "Investigação";
+				sheet.nome1_7 = "Lábia";
+				sheet.nome1_8 = "Liderança";
+				sheet.nome1_9 = "Manha";
+				sheet.nome1_10 = "Prontidão";
+				sheet.nome2_1 = "Acrobacia";
+				sheet.nome2_2 = "Armas de Fogo";
+				sheet.nome2_3 = "Arte da Fuga";
+				sheet.nome2_4 = "Artes Marciais";
+				sheet.nome2_5 = "Conduçao";
+				sheet.nome2_6 = "Oficios";
+				sheet.nome2_7 = "Performace";
+				sheet.nome2_8 = "Subterfúgio";
+				sheet.nome3_1 = "Acadêmicos";
+				sheet.nome3_2 = "Administração";
+				sheet.nome3_3 = "Ciências";
+				sheet.nome3_4 = "Computação";
+				sheet.nome3_5 = "Cultura";
+				sheet.nome3_6 = "Direito";
+				sheet.nome3_7 = "Medicina";
+				sheet.nome3_8 = "Ocultismo";
+				sheet.nome3_9 = "Política";
+				sheet.nome3_10 = "Tecnologia";
+				
+				sheet.baseforca = 3;
+				sheet.baseagilidade = 3;
+				sheet.baseresiliencia = 3;
+				sheet.basecarisma = 3;
+				sheet.basepercepcao = 3;
+				sheet.baseperspicacia = 3;
+				
+				sheet.baseconsciencia = 1;
+				sheet.baseespirito = 1;
+				sheet.baseperseveranca = 1;
+				
+			end;
+		</script>
+		
+	</scrollBox>
+</form>

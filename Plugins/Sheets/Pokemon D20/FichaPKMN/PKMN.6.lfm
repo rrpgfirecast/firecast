@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPKMN6" align="client" theme="dark" margins="{top=1}">
+	<scrollBox align="client">
+		<image left="0" top="0" width="500" height="500" style="autoFit" src="images/RPGmeister.jpg"/>
+		<image left="550" top="0" width="500" height="250" style="autoFit" src="images/PKMN.png"/>
+
+		<layout left="550" top="300" width="200" height="150">
+			<rectangle left="0" top="0" width="200" height="150" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="10" width="200" height="20" text="Programador: Vinny (Ambesek)" horzTextAlign="center"/>
+			<label left="0" top="35" width="200" height="20" text="Arte: Nefer (Nefertyne)" horzTextAlign="center"/>
+			<label left="0" top="95" width="200" height="20" text="Ficha feita para Pokémon d20" horzTextAlign="center"/>
+			<label left="0" top="120" width="200" height="20" text="Sistema: d20 System" horzTextAlign="center"/>
+		</layout>
+		
+		<label left="755" top="300" width="100" height="20" text="Versão Atual: " horzTextAlign="center"/>
+		<image left="867" top="300" width="100" height="20" style="autoFit" src="https://dl.dropboxusercontent.com/u/31086811/ficha%20ACN%20releases/versao01.png"/>
+		<label left="755" top="325" width="100" height="20" text="Ultima Versão: " horzTextAlign="center"/>
+		<image left="867" top="325" width="100" height="20" style="autoFit" src="https://dl.dropboxusercontent.com/u/31086811/ficha%20ACN%20releases/release.png"/>
+			
+		<button left="755" top="350" width="100" text="Change Log" onClick="gui.openInBrowser('https://dl.dropboxusercontent.com/u/31086811/ficha%20ACN%20releases/Change%20Log.txt')" />
+		<button left="867" top="350" width="100" text="Atualizar" onClick="gui.openInBrowser('https://dl.dropboxusercontent.com/u/31086811/ficha%20ACN%20releases/Ficha%20ACN.rpk')" />
+		
+		<label left="755" top="400" width="200" height="20" text="Conheça as Mesas:"/>
+		<button left="755" top="425" width="100" text="RPGmeister" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
+		<button left="867" top="425" width="100" text="SALEM" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=97151');" />
+	</scrollBox>
+</form>

@@ -1,0 +1,43 @@
+﻿require("scene.lua");
+
+SC3Math = {};
+
+function SC3Math.rotatedSize(w, h, angle, centerX, centerY)
+	if centerX == nil then
+		centerX = w / 2;
+	end;
+	
+	if centerY == nil then
+		centerY = h / 2;
+	end;
+	
+	local matriz = SceneLib.Math.newRotationMatrix(angle, centerX, centerY);
+	local ptsRotated = {{x=0, y=0}, {x=w, y=0}, {x=w,y=h}, {x=0, y=h}};
+	
+	for i = 1, #ptsRotated, 1 do
+		ptsRotated[i].x, ptsRotated[i].y = SceneLib.Math.transformPoint(ptsRotated[i].x, ptsRotated[i].y, matriz);
+	end;
+	
+	local menorX = ptsRotated[1].x;
+	local maiorX = ptsRotated[1].x;
+	local menorY = ptsRotated[1].y;
+	local maiorY = ptsRotated[1].y;	
+	
+	for i = 2, #ptsRotated, 1 do
+		local pt = ptsRotated[i];
+		
+		if pt.x < menorX then
+			menorX = pt.x;
+		elseif pt.x > maiorX then
+			maiorX = pt.x;
+		end;
+		
+		if pt.y < menorY then
+			menorY = pt.y;
+		elseif pt.y > maiorY then
+			maiorY = pt.y;
+		end;
+	end;
+	
+	return maiorX - menorX, maiorY - menorY;
+end;

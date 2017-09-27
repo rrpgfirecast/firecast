@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAMZ1_2_1" width="205" height="25" theme="dark" margins="{top=1}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			dialogs.confirmYesNo("Deseja realmente apagar essa missão?",
+								 function (confirmado)
+									if confirmado then
+										ndb.deleteNode(sheet);
+									end;
+								 end);
+		end;
+		]]>	
+	</script>
+	<edit left="0" top="1" width="30" height="23" field="num" type="number"/>
+	<edit left="30" top="1" width="150" height="23" field="missao"/>
+	<button left="180" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+</form>

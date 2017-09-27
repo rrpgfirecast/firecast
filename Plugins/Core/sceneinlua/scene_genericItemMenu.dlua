@@ -1,0 +1,115 @@
+﻿require("scene.lua");
+require("utils.lua");
+require("rrpgScene_Undo.dlua");
+
+local function getItensOfLayer(scene, layer)
+	local itensOfLayer = {};
+	
+	for i = 1, #scene.items, 1 do
+		local item = scene.items[i];
+		
+		if item.layer == layer then
+			itensOfLayer[#itensOfLayer + 1] = item;		
+		end;
+	end;
+	
+	return itensOfLayer;
+end;
+
+local function ordenarListaPorZ(lista)
+	table.sort(lista, 
+		function(left, right)
+			return left:compareZOrder(right) < 0;
+		end);
+		
+	return lista;
+end;
+
+local function redistribuirZ(lista)
+	ordenarListaPorZ(lista);
+	local oldZ = nil;
+	
+	for i = 1, #lista, 1 do
+		local item = lista[i];
+		local esteZ = item.z;
+		
+		if oldZ ~= nil then
+			local zEsperado = oldZ + 1;
+			
+			if esteZ ~= zEsperado then
+				esteZ = zEsperado;
+				item.z = zEsperado;				
+			end;
+		end;
+		
+		oldZ = esteZ;
+	end;
+end;
+
+local function showMsgZ(lista)
+	local s = "";
+	
+	for i = 1, #lista, 1 do
+		s = s .. " " .. lista[i].z;
+	end
+	
+	showMessage(s);
+end;
+
+function GENERICItem_SendToBack(scene, selection)
+	if #selection <= 0 then
+		return;
+	end;
+	
+	local layer = selection[1].layer;
+	local itensOfLayer = getItensOfLayer(scene, layer);
+	
+	if #itensOfLayer <= 0 then
+		return;
+	end;
+
+	ordenarListaPorZ(selection);
+	ordenarListaPorZ(itensOfLayer);
+		
+	local minZ = itensOfLayer[1].z;
+	local qtSelection = #selection;
+	
+	SC3UNDO_Capture(scene, 
+		function()
+			for i = 1, qtSelection, 1 do
+				local s = selection[i];
+				s.z = minZ - qtSelection + i - 1;
+			end;
+			
+			redistribuirZ(itensOfLayer);
+		end);	
+end;
+
+function GENERICItem_BringToFront(scene, selection)
+	if #selection <= 0 then
+		return;
+	end;
+	
+	local layer = selection[1].layer;
+	local itensOfLayer = getItensOfLayer(scene, layer);
+	
+	if #itensOfLayer <= 0 then
+		return;
+	end;
+
+	ordenarListaPorZ(selection);
+	ordenarListaPorZ(itensOfLayer);
+		
+	local maxZ = itensOfLayer[#itensOfLayer].z;
+	local qtSelection = #selection;
+	
+	SC3UNDO_Capture(scene, 
+		function()
+			for i = 1, qtSelection, 1 do
+				local s = selection[i];
+				s.z = maxZ + i;
+			end;
+			
+			redistribuirZ(itensOfLayer);
+		end);	
+end;

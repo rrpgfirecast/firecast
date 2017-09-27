@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaACN" formType="sheetTemplate" dataType="Ambesek.Nefertyne.FichaACN" title="Ficha ACN" align="client" theme="dark">
+    <tabControl align="client">
+        <tab title="Geral">
+            <import file="ACN.1.lfm"/>
+        </tab>
+        <tab title="Aptidões">
+            <import file="ACN.2.lfm"/>
+        </tab>
+        <tab title="Inventario">
+            <import file="ACN.3.lfm"/>
+        </tab>
+		<tab title="Descrições">
+            <import file="ACN.4.lfm"/>
+        </tab>
+		<tab title="Anotações">
+            <import file="ACN.5.lfm"/>
+        </tab>
+		<tab title="Creditos">
+            <import file="ACN.6.lfm"/>
+        </tab>
+    </tabControl>
+</form>

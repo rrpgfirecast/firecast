@@ -1,0 +1,133 @@
+﻿local BTree = require("btree.dlua");
+require("utils.lua");
+require("dialogs.lua");
+
+local bt = BTree.new();
+
+local fora = {};
+local dentro = {};
+
+local QT_CHAVES = 1000000;
+local QT_TESTES = 200;
+local qtFora = 0;
+local qtDentro = 0;
+
+for i = 1, QT_CHAVES, 1 do
+	fora[i] = i;
+end;
+
+qtFora = QT_CHAVES;
+
+local function ValidarBT()
+	--[[bt:validate();
+	
+	for i = 1, qtDentro, 1 do
+		local chaveDentro = dentro[i];		
+		local r, v = bt:tryGet(chaveDentro);
+		
+		if not r then
+			error("Uma chave que deveria estar dentro não está");
+		end;
+		
+		if v ~= chaveDentro + 1 then
+			error("o valor da chave mudou...");
+		end;
+	end;
+	
+	for i = 1, qtFora, 1 do
+		local chaveFora = fora[i];		
+		local r, v = bt:tryGet(chaveFora);
+		
+		if r then
+			error("Uma chave que deveria estar fora foi encontrado dentro");
+		end;
+	end;]]
+end;
+
+local function inserirUmAleatorio()
+	if qtFora > 0 then
+		local indice = math.random(1, qtFora);		
+		local valorDaChave = fora[indice];
+		
+		if qtFora > 1 then
+			fora[indice] = fora[qtFora];
+		end;
+		
+		qtFora = qtFora - 1;			
+		bt:inserir(valorDaChave, valorDaChave + 1);
+		
+		qtDentro = qtDentro + 1;
+		dentro[qtDentro] = valorDaChave;
+		
+		ValidarBT();
+	end;
+end;
+
+local function removerUmAleatorio()
+	if qtDentro > 0 then
+		local indice = math.random(1, qtDentro);		
+		local valorDaChave = dentro[indice];
+		
+		if qtDentro > 1 then
+			dentro[indice] = dentro[qtDentro];
+		end;
+		
+		qtDentro = qtDentro - 1;
+
+		qtFora = qtFora + 1;
+		fora[qtFora] = valorDaChave;
+		
+		bt:remover(valorDaChave);
+		ValidarBT();
+	end;
+end;
+
+local function inserirQt(qt)
+	while (qt > 0) do
+		inserirUmAleatorio();
+		qt = qt - 1;
+	end;
+end;
+
+local function removerQt(qt)
+	while (qt > 0) do
+		removerUmAleatorio();
+		qt = qt - 1;
+	end;
+end;
+
+local function inserirTodos()
+	inserirQt(qtFora);
+end;
+
+local function removerTodos()
+	removerQt(qtDentro);
+end;
+
+local idxTeste;
+--[[
+for idxTeste = 1, QT_TESTES, 1 do
+	inserirTodos();
+	removerTodos();
+	
+	inserirQt(qtFora / 2);
+	removerQt(qtDentro / 2);
+	
+	inserirTodos();
+	removerQt(qtDentro / 2);
+	
+	removerTodos();
+end;]]
+
+showMessage('vai');
+inserirTodos();
+--removerTodos();
+--inserirQt(8);
+
+showMessage(bt.count);
+--showMessage(tableToStr(bt.raiz, true));
+
+setTimeout(
+	function()
+		--showMessage(tableToStr(bt.raiz, true));
+	end, 50);

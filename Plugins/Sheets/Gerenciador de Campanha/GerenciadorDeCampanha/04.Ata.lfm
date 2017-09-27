@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGerenciador04" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+		<rectangle left="0" top="0" width="1260" height="20" color="Black">
+			<label left="0" top="0" width="1260" height="20" text="ATA DE PRESENÇA" horzTextAlign="center" />
+			<button left="0" top="0" width="20" height="20" text="+" onClick="self.rclPresenca:append();" hint="Novo"/>
+			<button left="20" top="0" width="20" height="20" text="O" onClick="self.rclPresenca:sort();" hint="Organizar"/>
+		</rectangle>
+		
+		<scrollBox left="0" top="20" width="1260" height="590">
+				<recordList left="0" top="0" width="1240" height="600" itemHeight="200" autoHeight="true" minQt="1" layout="horizontalTiles" name="rclPresenca" field="presenca" templateForm="frmGerenciador04_PRESENCA">
+					<event name="onCompare">
+						local mod1 = nodeA.nick;
+						local mod2 = nodeB.nick;
+						local modR = utils.compareStringPtBr(mod1, mod2);
+						return modR;
+					</event>
+				</recordList>
+		</scrollBox>
+    </scrollBox>
+</form>

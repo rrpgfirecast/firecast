@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFM" formType="sheetTemplate" dataType="Ambesek.Nefertyne.FichaMultiaba" title="Ficha Multiaba" align="client" theme="dark">
+    <scrollBox align="client">
+        <layout width="1470" height="50">
+            <button left="0" top="0" width="45" height="45" text="" onClick="self.rclAbas:append();" hint="Adiciona nova aba. ">
+                <image margins="{left = 5, right = 5, top = 5, bottom = 5}" align="client" src="images/addlista.png"/>
+            </button>
+            <recordList name="rclAbas" field="opcoesFalsas" templateForm="frmFM_Aba" left="200" top="0" width="1270" height="46" selectable="true" layout="horizontal">
+                <event name="onSelect">
+                    local node = self.rclAbas.selectedNode;
+                    self.boxTexto.node = node;
+                    self.boxTexto.visible = (node ~= nil);
+                </event>
+            </recordList>
+        </layout>
+        <layout align="client">
+            <dataScopeBox name="boxTexto" align="client" visible="false">
+                <button left="50" top="0" width="45" height="45" text="" onClick="self.Config.scopeNode = sheet;self.Config:show();" hint="Abre as configurações da lista de NPCs. ">
+                    <image margins="{left = 5, right = 5, top = 5, bottom = 5}" align="client" src="images/config.png"/>
+                </button>
+                <button left="100" top="0" width="45" height="45" text="" onClick="self.rclListaDeNPCs:append();" hint="Adiciona novo personagem. ">
+                    <image margins="{left = 5, right = 5, top = 5, bottom = 5}" align="client" src="images/addnpc.png"/>
+                </button>
+                <button left="150" top="0" width="45" height="45" text="" onClick="self.rclListaDeNPCs:sort();" hint="Organiza a lista. ">
+                    <image margins="{left = 5, right = 5, top = 5, bottom = 5}" align="client" src="images/organize.png"/>
+                </button>
+                <layout align="client" margins="{top=50}">
+                    <rectangle align="client" color="black"/>
+
+                    <recordList name="rclListaDeNPCs" layout="VerticalTiles" field="campoDosNPC" templateForm="CaixaFichaNPC" align="client" autoHeight="true" selectable="true" minQt="0"/>
+                </layout>
+            </dataScopeBox>
+        </layout>
+    </scrollBox>
+</form>

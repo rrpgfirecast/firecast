@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.4_beta_1" originalPluginFileName="nicksaver.rpk">
+	<id>NickSaver</id>
+	<version>0.4</version>
+	<name>NickSaver</name>
+	<description>Salva o nick do usuario por mesa.</description>
+	<author>Vinny Ambesek</author>
+	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
+	<contact>vinnyrpgmeister@gmail.com</contact>
+</module>

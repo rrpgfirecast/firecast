@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmGerTablesDock" title="Gerenciar Janelas Acopláveis" width="300" height="300" resizable="true">	
+	<import file="../interfaceUtils.xml"/>
+
+	<script><![CDATA[		
+		require("utils.lua");		
+		local plugins = require("plugins.lua");
+		
+		local inicializado = false;
+		local listenerPInstall;
+		local listenerPUninstall;
+		local listenerUserClosed;
+	
+		local function inicializar()
+			self:setNodeObject(ndb.newMemNodeDatabase());	
+			inicializado = true;
+		end;
+		
+		local function carregarTablesDock()
+			if not inicializado then
+				inicializar();
+			end;
+		
+			local tds = rrpg.plugins.getInstalledTablesDock();			
+			
+			table.sort(tds, 
+				function(l, r)
+					return utils.compareStringPtBr(l.title, r.title) < 0;
+				end);
+			
+			for i = 1, #tds, 1 do
+				local td = tds[i];				
+				td.ativo = plugins.getIsTablesDockActive(self.mesa, td.moduleId, td.name);
+			end;
+				
+			sheet.tablesDock = tds;
+		end;
+	]]>
+	</script>
+
+	
+	<label class="tituloForm" text="Janelas Acopláveis"/>
+	
+	<layout class="conteudoForm">
+		<recordList name="rclTablesDock" align="client" field="tablesDock" templateForm="frmTableDockItem">
+			<event name="onItemAdded">
+				form.mesa = self.mesa;
+				form.loadTDFunction = self.loadTDFunction;
+				form.unloadTDFunction = self.unloadTDFunction;				
+			</event>
+			
+			<event name="onItemRemoved">
+				form.unloadTDFunction = nil;							
+				form.loadTDFunction = nil;				
+				form.mesa = nil;
+			</event>
+		</recordList>
+	</layout>
+	
+	<event name="OnShow">
+		carregarTablesDock();
+		
+		listenerPInstall = rrpg.messaging.listen("PluginInstalled", carregarTablesDock);
+		listenerPUninstall = rrpg.messaging.listen("PluginUninstalled", carregarTablesDock);
+		listenerUserClosed = rrpg.messaging.listen("TablesDockClosedByUser", carregarTablesDock);		
+	</event>
+	
+	<event name="OnHide">
+		rrpg.messaging.unlisten(listenerUserClosed);
+		rrpg.messaging.unlisten(listenerPInstall);
+		rrpg.messaging.unlisten(listenerPUninstall);
+	</event>
+	
+	<script>
+		inicializar();
+	</script>
+</popupForm>

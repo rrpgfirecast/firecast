@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.2">
+    <!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
+    <id>fira.fira.sistema.random</id>
+    <!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
+    <version>1.0</version>
+    <name>Ficha Aleatória</name>
+    <description>Uma ficha de personagem com elementos aleatórios e com diversas ferramentas.</description>
+    <author>Yiotoo(Fábio Lofredo Cesar)</author>
+    <site></site>
+    <contact></contact>
+</module>

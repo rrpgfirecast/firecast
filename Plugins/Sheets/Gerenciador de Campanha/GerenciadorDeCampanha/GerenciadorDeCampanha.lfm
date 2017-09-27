@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmBibliotecaRPGmeister" formType="sheetTemplate" dataType="Ambesek.Gerenciador.RPGmeister" title="Gerenciador de Campanha" align="client" theme="dark">
+    <tabControl align="client">
+        <tab title="Introdução">
+            <import file="01.Introducao.lfm"/>
+        </tab>
+        <tab title="Calendario">
+            <import file="02.Calendario.lfm"/>
+        </tab>
+        <tab title="NPCs">
+            <import file="MainDockNPCs.lfm"/>
+        </tab>
+        <tab title="Iniciativas">
+            <import file="CombatTrackerDock.lfm"/>
+        </tab>
+		<tab title="Aventuras">
+            <import file="03.aventuras.lfm"/>
+        </tab>
+		<tab title="Ata">
+            <import file="04.Ata.lfm"/>
+        </tab>
+		<tab title="Anotaçoes">
+            <import file="05.Anotacoes.lfm"/>
+        </tab>
+		<tab title="Creditos">
+            <import file="06.Creditos.lfm"/>
+        </tab>
+    </tabControl>
+</form>

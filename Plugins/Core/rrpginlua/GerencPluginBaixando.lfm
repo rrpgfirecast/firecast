@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPluginBaixando" title="Plugin Baixando" height="30">
+	<import file="interfaceUtils.xml"/>
+	
+	<style>
+		label {
+		}
+	</style>
+	
+	<script>
+		local function realmenteCancelarDownload(indicatorId)
+			if sheet ~= nil then
+				local internetDownloadId = sheet.internetDownloadId;
+				
+				if internetDownloadId ~= nil then
+					internet.stopDownload(internetDownloadId);
+					sheet.internetDownloadId = nil;
+				end;		
+				
+				ndb.deleteNode(sheet);
+			end;
+		end;
+		
+		local function cancelarDownload()
+			if sheet == nil then
+				return;
+			end;
+		
+			local indicatorId = sheet.indicatorId;
+		
+			if sheet.errorMsg == nil then
+				dialogs.confirmYesNo("Deseja realmente cancelar o download?",
+					function(confirmado)
+						if confirmado then
+							realmenteCancelarDownload(indicatorId);
+						end;
+					end);
+			else
+				realmenteCancelarDownload(indicatorId);
+			end;
+		end;
+	</script>
+	
+	<flowLayout name="flwPlug" align="top" maxControlsPerLine="10" autoHeight="true" onResize="self.height = self.flwPlug.height + 8;">
+		<flowPart minWidth="100" maxWidth="800" margins="{right=3}" height="20">	
+			<label name="labUrl" field="fileName" wordWrap="false" fontColor="white" align="client"/>
+		</flowPart>
+
+		<flowLineBreak horzAlign="center"/>
+			
+		<flowPart minWidth="80" maxWidth="250" margins="{left=10, right=10}" height="32">
+			<activityIndicator name="indAtividade" align="left" width="32" enabled="true"/>
+			<label name="labProgress" align="client" text="0,0%" />
+		</flowPart>
+		
+		<button name="btnCancelar" text="Cancelar" margins="{left=10, top=5}" width="110" height="32" onClick="cancelarDownload();"/>
+	</flowLayout>	
+	
+	<dataLink fields="{'progress', 'errorMsg'}">
+		<event name="onChange">	
+			local errorMsg = sheet.errorMsg;
+			
+			if errorMsg == nil then												
+				self.labProgress.text = string.format('%1.1f%%', sheet.progress or 0);
+			else
+				self.indAtividade.enabled = false;
+				self.indAtividade.visible = false;
+				self.labProgress.text = tostring(errorMsg);
+			end;
+		</event>
+	</dataLink>	
+</form>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmRDF4_1" height="25" theme="dark">
+    <edit left="0" top="0" width="200" height="25" field="mag_nome"/>
+    <edit left="200" top="0" width="50" height="25" field="mag_cst"/>
+    <edit left="250" top="0" width="50" height="25" field="mag_alc"/>
+    <edit left="300" top="0" width="50" height="25" field="mag_ade"/>
+    <edit left="350" top="0" width="50" height="25" field="mag_pod"/>
+	<edit left="400" top="0" width="50" height="25" field="mag_man"/>
+	<edit left="450" top="0" width="50" height="25" field="mag_ofe"/>  
+	<button left="500" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar essa magia?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+</form>

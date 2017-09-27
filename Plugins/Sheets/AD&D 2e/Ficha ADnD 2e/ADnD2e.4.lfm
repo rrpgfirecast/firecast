@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmADnD4" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+    	<template name="ItemMagico">
+			<edit left="5" top="0" width="190" height="25" field="ItemMagico_$(field)"/>
+        	<edit left="195" top="0" width="50" height="25" field="ItemMagico_Custo_$(field)">
+        		<event name="onChange">
+                	sumCusto();
+                </event>
+        	</edit>
+        	<edit left="245" top="0" width="50" height="25" field="ItemMagico_Quantia_$(field)"/>
+		</template>
+
+		<template name="Grimorio">
+			<edit left="5" top="$(top)" width="45" height="25" field="Grimorio_total_$(field)"/>
+			<edit left="50" top="$(top)" width="45" height="25" field="Grimorio_usadas_$(field)"/>
+			<edit left="95" top="$(top)" width="45" height="25" field="Grimorio_vazias_$(field)"/>
+		</template>
+
+		<layout left="0" top="0" width="140" height="255">
+	    	<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="140" height="20" text="MAGIAS POR DIA" horzTextAlign="center"/>
+
+	        <label left="25" top="25" width="60" height="20" fontSize="13" horzTextAlign="center" text="1º"/>
+	        <edit left="75" top="25" width="40" height="25" field="Circulo1"/>
+	        <label left="25" top="50" width="60" height="20" fontSize="13" horzTextAlign="center" text="2º"/>
+	        <edit left="75" top="50" width="40" height="25" field="Circulo2"/>
+	        <label left="25" top="75" width="60" height="20" fontSize="13" horzTextAlign="center" text="3º"/>
+	        <edit left="75" top="75" width="40" height="25" field="Circulo3"/>
+	        <label left="25" top="100" width="60" height="20" fontSize="13" horzTextAlign="center" text="4º"/>
+	        <edit left="75" top="100" width="40" height="25" field="Circulo4"/>
+	        <label left="25" top="125" width="60" height="20" fontSize="13" horzTextAlign="center" text="5º"/>
+	        <edit left="75" top="125" width="40" height="25" field="Circulo5"/>
+	        <label left="25" top="150" width="60" height="20" fontSize="13" horzTextAlign="center" text="6º"/>
+	        <edit left="75" top="150" width="40" height="25" field="Circulo6"/>
+	        <label left="25" top="175" width="60" height="20" fontSize="13" horzTextAlign="center" text="7º"/>
+	        <edit left="75" top="175" width="40" height="25" field="Circulo7"/>
+	        <label left="25" top="200" width="60" height="20" fontSize="13" horzTextAlign="center" text="8º"/>
+	        <edit left="75" top="200" width="40" height="25" field="Circulo8"/>
+	        <label left="25" top="225" width="60" height="20" fontSize="13" horzTextAlign="center" text="9º"/>
+	        <edit left="75" top="225" width="40" height="25" field="Circulo9"/>
+	    </layout>
+
+	    <layout left="150" top="0" width="150" height="255">
+	    	<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="140" height="20" text="GRIMÓRIO" horzTextAlign="center"/>
+
+	        <label left="5" top="30" width="45" height="20" fontSize="13" horzTextAlign="center" text="Total"/>
+	        <label left="50" top="30" width="45" height="20" fontSize="13" horzTextAlign="center" text="Usadas"/>
+	        <label left="95" top="30" width="45" height="20" fontSize="13" horzTextAlign="center" text="Vazias"/>
+
+	        <Grimorio top="50" field="1"/>
+	        <Grimorio top="75" field="2"/>
+	        <Grimorio top="100" field="3"/>
+	        <Grimorio top="125" field="4"/>
+	        <Grimorio top="150" field="5"/>
+	        <Grimorio top="175" field="6"/>
+	        <Grimorio top="200" field="7"/>
+	        <Grimorio top="225" field="8"/>
+	    </layout>
+
+	    <layout left="0" top="260" width="300" height="340">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="300" height="20" text="ITENS DE MAGIA" horzTextAlign="center"/>
+
+	        <layout left="0" top="30" width="300" height="25">
+	        	<label left="5"  top="0" width="190" height="25" horzTextAlign="center" text="Item"/>
+        		<label left="195" top="0" width="50" height="25" horzTextAlign="center" text="Custo"/>
+        		<label left="245" top="0" width="50" height="25" horzTextAlign="center" text="Quantidade" fontSize="9"/>
+	        </layout>
+	        <layout left="0" top="55" width="300" height="25">
+	        	<ItemMagico field="1_1"/>
+	        </layout>
+	        <layout left="0" top="80" width="300" height="25">
+	        	<ItemMagico field="1_2"/>
+	        </layout>
+	        <layout left="0" top="105" width="300" height="25">
+	        	<ItemMagico field="1_3"/>
+	        </layout>
+	        <layout left="0" top="130" width="300" height="25">
+	        	<ItemMagico field="1_4"/>
+	        </layout>
+	        <layout left="0" top="155" width="300" height="25">
+	        	<ItemMagico field="1_5"/>
+	        </layout>
+	        <layout left="0" top="180" width="300" height="25">
+	        	<ItemMagico field="1_6"/>
+	        </layout>
+	        <layout left="0" top="205" width="300" height="25">
+	        	<ItemMagico field="1_7"/>
+	        </layout>
+	        <layout left="0" top="230" width="300" height="25">
+	        	<ItemMagico field="1_8"/>
+	        </layout>
+	        <layout left="0" top="255" width="300" height="25">
+	        	<ItemMagico field="1_9"/>
+	        </layout>
+	        <layout left="0" top="280" width="300" height="25">
+	        	<ItemMagico field="1_10"/>
+	        </layout>
+	        <layout left="0" top="305" width="300" height="25">
+	        	<ItemMagico field="1_11"/>
+	        </layout>
+	    </layout>
+
+	    <layout left="310" top="0" width="300" height="200">
+	    	<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="300" height="20" text="1º CIRCULO" horzTextAlign="center"/>
+	        <textEditor left="5" top="30" width="290" height="165" field="magia1"/>
+	    </layout>
+
+	    <layout left="620" top="0" width="300" height="200">
+	    	<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="300" height="20" text="2º CIRCULO" horzTextAlign="center"/>
+	        <textEditor left="5" top="30" width="290" height="165" field="magia2"/>
+	    </layout>
+
+	    <layout left="930" top="0" width="300" height="200">
+	    	<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="300" height="20" text="3º CIRCULO" horzTextAlign="center"/>
+	        <textEditor left="5" top="30" width="290" height="165" field="magia3"/>
+	    </layout>
+
+	    <layout left="310" top="205" width="300" height="200">
+	    	<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="300" height="20" text="4º CIRCULO" horzTextAlign="center"/>
+	        <textEditor left="5" top="30" width="290" height="165" field="magia4"/>
+	    </layout>
+
+	    <layout left="620" top="205" width="300" height="200">
+	    	<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="300" height="20" text="5º CIRCULO" horzTextAlign="center"/>
+	        <textEditor left="5" top="30" width="290" height="165" field="magia5"/>
+	    </layout>
+
+	    <layout left="930" top="205" width="300" height="200">
+	    	<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="300" height="20" text="6º CIRCULO" horzTextAlign="center"/>
+	        <textEditor left="5" top="30" width="290" height="165" field="magia6"/>
+	    </layout>
+
+	    <layout left="310" top="410" width="300" height="200">
+	    	<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="300" height="20" text="7º CIRCULO" horzTextAlign="center"/>
+	        <textEditor left="5" top="30" width="290" height="165" field="magia7"/>
+	    </layout>
+
+	    <layout left="620" top="410" width="300" height="200">
+	    	<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="300" height="20" text="8º CIRCULO" horzTextAlign="center"/>
+	        <textEditor left="5" top="30" width="290" height="165" field="magia8"/>
+	    </layout>
+
+	    <layout left="930" top="410" width="300" height="200">
+	    	<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+	        <label left="0" top="5" width="300" height="20" text="9º CIRCULO" horzTextAlign="center"/>
+	        <textEditor left="5" top="30" width="290" height="165" field="magia9"/>
+	    </layout>
+
+		<image align="client" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20ADnD%20releases/imagens/block.png" style="autoFit"/>
+    </scrollBox>
+</form>

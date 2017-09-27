@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmRDF4" align="client" theme="dark">
+    <scrollBox align="client">
+    	<template name="Mekanica">
+    		<label left="0" top="0" width="275" height="20" text="$(nome)" horzTextAlign="center"/>
+    		<textEditor left="0" top="20" width="275" height="125" field="mek_$(field)"/>
+    	</template>
+
+       <layout left="0" top="0" width="555" height="610">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="0" width="520" height="20" text="MAGIAS" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="545" height="25" >
+				<label left="0" top="5" width="100" height="20" text="Tradição Arcana" horzTextAlign="center"/>
+				<edit left="100" top="0" width="400" height="25" field="tradicao_arcana"/>
+			</layout>
+			<layout left="5" top="50" width="545" height="25" >
+				<label left="0" top="5" width="200" height="20" text="NOME" horzTextAlign="center"/>
+				<label left="200" top="5" width="50" height="20" text="CST" horzTextAlign="center"/>
+				<label left="250" top="5" width="50" height="20" text="ALC" horzTextAlign="center"/>
+				<label left="300" top="5" width="50" height="20" text="ADE" horzTextAlign="center"/>
+				<label left="350" top="5" width="50" height="20" text="POD" horzTextAlign="center"/>
+				<label left="400" top="5" width="50" height="20" text="MAN" horzTextAlign="center"/>
+				<label left="450" top="5" width="50" height="20" text="OFE" horzTextAlign="center"/>
+				<button left="500" top="0" width="25" height="25" text="+" onClick="self.rclMagias:append();"/>
+			</layout>
+			<recordList left="5" top="75" width="545" height="530" minQt="1" name="rclMagias" field="magias" templateForm="frmRDF4_1"/>
+		</layout>
+	   
+	    <layout left="565" top="0" width="565" height="610">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="0" width="555" height="20" text="MEKÂNICA" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="275" height="145" >
+				<Mekanica nome="Cárter" field="carter" />
+			</layout>
+			<layout left="285" top="25" width="275" height="145" >
+				<Mekanica nome="Placa Rúnica" field="placa_runica" />
+			</layout>
+
+			<layout left="5" top="170" width="275" height="145" >
+				<Mekanica nome="Capacitor" field="capacitor" />
+			</layout>
+			<layout left="285" top="170" width="275" height="145" >
+				<Mekanica nome="Placa Rúnica" field="placa_runica2" />
+			</layout>
+
+			<layout left="5" top="315" width="275" height="145" >
+				<Mekanica nome="Notas" field="notas" />
+			</layout>
+			<layout left="285" top="315" width="275" height="145" >
+				<Mekanica nome="Beneficio" field="beneficio" />
+			</layout>
+
+			<layout left="5" top="460" width="275" height="145" >
+				<Mekanica nome="Capacitores" field="capacitores" />
+			</layout>
+			<layout left="285" top="460" width="275" height="145" >
+				<Mekanica nome="Cargas" field="cargas" />
+			</layout>
+		</layout>
+	
+		<image align="client" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20RdF%20releases/imagens/block.png" style="autoFit"/>
+    </scrollBox>
+</form>

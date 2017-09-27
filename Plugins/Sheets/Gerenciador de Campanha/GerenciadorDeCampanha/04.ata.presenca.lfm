@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGerenciador04_PRESENCA" width="310" height="235" theme="dark" margins="{top=1}">
+	<rectangle left="0" top="0" width="310" height="235" color="#212121" strokeColor="white" strokeSize="1">
+		
+		<label left="5" top="5" width="150" height="25" text="Jogador" horzTextAlign="center" />
+		<label left="5" top="30" width="150" height="25" text="Personagem" horzTextAlign="center" />
+		<label left="5" top="55" width="150" height="25" text="Presença" horzTextAlign="center" />
+		<label left="5" top="80" width="150" height="25" text="Atraso Justificado" horzTextAlign="center" />
+		<label left="5" top="105" width="150" height="25" text="Atraso" horzTextAlign="center" />
+		<label left="5" top="130" width="150" height="25" text="Falta Justificada" horzTextAlign="center" />
+		<label left="5" top="155" width="150" height="25" text="Falta" horzTextAlign="center" />
+		<label left="5" top="180" width="150" height="25" text="Uso" horzTextAlign="center" />
+		<label left="5" top="205" width="150" height="25" text="Desperdicio" horzTextAlign="center" />
+		
+		<edit left="155" top="5" width="150" height="25" field="nick" />
+		<edit left="155" top="30" width="150" height="25" field="nome" />
+		<edit left="155" top="55" width="50" height="25" field="presenca" />
+		<edit left="155" top="80" width="50" height="25" field="atrasoJustificado" />
+		<edit left="155" top="105" width="50" height="25" field="atraso" />
+		<edit left="155" top="130" width="50" height="25" field="faltaJustificada" />
+		<edit left="155" top="155" width="50" height="25" field="falta" />
+		<edit left="155" top="180" width="50" height="25" field="usos" />
+		<edit left="155" top="205" width="50" height="25" field="desperdicio" />
+		<rectangle left="205" top="55" width="100" height="150" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="205" top="85" width="100" height="25" text="PH" horzTextAlign="center" fontSize="30"/>
+		<label left="205" top="120" width="100" height="25" field="ph" horzTextAlign="center" fontSize="30"/>
+		<horzLine left="230" top="155" width="50" strokeColor="white"/>
+		<label left="205" top="155" width="100" height="25" field="pontos" horzTextAlign="center"/>
+		
+		<button left="230" top="205" width="50" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse jogador?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+		
+		<dataLink fields="{'presenca', 'atrasoJustificado', 'atraso', 'falta', 'usos', 'desperdicio'}"> 
+			<event name="onChange">
+				local mod = (tonumber(sheet.presenca) or 0)*4 + 
+								(tonumber(sheet.atrasoJustificado) or 0)*2 + 
+								(tonumber(sheet.atraso) or 0)*1 -   
+								(tonumber(sheet.falta) or 0)*10 -  
+								(tonumber(sheet.usos) or 0)*10 - 
+								(tonumber(sheet.desperdicio) or 0);
+				sheet.pontos = mod;								
+				sheet.ph = math.floor(mod/10);
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

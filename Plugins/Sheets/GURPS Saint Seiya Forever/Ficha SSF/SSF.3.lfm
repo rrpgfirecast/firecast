@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSSF3" align="client" theme="dark">
+    <scrollBox align="client">
+		<layout left="0" top="0" width="210" height="615">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="5" width="210" height="20" text="TECNICAS" horzTextAlign="center"/>
+
+			<button text="+" left="185" top="5" width="20" height="20">
+				<event name="onClick">
+					self.rclListaDasTecnicas:append();
+					custoTecnica();
+				</event>
+			</button>
+
+			<rectangle left="5" top="30" width="200" height="580" color="#101010"/>
+			<recordList name="rclListaDasTecnicas" field="listaTecnicas" templateForm="frmSSF3_1" left="5" top="30" width="200" height="580" selectable="true" layout="vertical" minQt="1">
+				<event name="onSelect">
+					local node = self.rclListaDasTecnicas.selectedNode;
+					self.boxDetalhesDasTecnicas.node = node;
+					self.boxDetalhesDasTecnicas.visible = (node ~= nil);
+					custoTecnica();
+				</event>
+				<event name="onEndEnumeration">
+					if self.rclListaDasTecnicas.selectedNode == nil and sheet ~= nil then
+						local nodes = ndb.getChildNodes(sheet.listaTecnicas);               
+						if #nodes > 0 then
+							self.rclListaDasTecnicas.selectedNode = nodes[1];
+						end;
+					end;
+				</event>
+			</recordList>
+		</layout>
+
+		<dataScopeBox name="boxDetalhesDasTecnicas" visible="false" left="220" top="0" width="400" height="615">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<script>
+				local function custoTecnica()
+					if sheet~=nil then
+						local mod = 0;
+						local node = self.boxDetalhesDasTecnicas.node;
+						if node ~= nil then
+							local nodes = ndb.getChildNodes(node.listaDosEfeitosPositivos); 
+							
+							for i=1, #nodes, 1 do
+								mod = mod + (tonumber(nodes[i].custo_efeito_positivo) or 0);
+							end
+							nodes = ndb.getChildNodes(node.listaDosEfeitosNegativos);   
+							for i=1, #nodes, 1 do
+								mod = mod - (tonumber(nodes[i].custo_efeito_negativo) or 0);
+							end
+							mod = mod + (tonumber(node.tipo_tecnica) or 0);
+							node.custo_tecnica = mod;
+						end;
+
+						mod = 0;
+						nodes = ndb.getChildNodes(sheet.listaTecnicas);   
+						for i=1, #nodes, 1 do
+							mod = mod + (tonumber(nodes[i].custo_tecnica) or 0);
+						end
+						sheet.xp_tecnicas = mod;
+
+					end
+				end;
+			</script>
+
+			<layout left="0" top="5" width="200" height="25" >
+				<label left="5" top="5" width="50" height="20" text="Nome"/>
+        		<edit left="55" top="0" width="140" height="25" field="nome_tecnica"/>
+			</layout>
+			<layout left="200" top="5" width="200" height="25" >
+				<label left="5" top="5" width="50" height="20" text="Nível"/>
+        		<edit left="55" top="0" width="140" height="25" field="nivel_tecnica"/>
+			</layout>
+
+			<layout left="0" top="30" width="200" height="25" >
+				<label left="5" top="5" width="50" height="20" text="Custo"/>
+        		<rectangle left="55" top="0" width="140" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="55" top="3" width="140" height="20" field="custo_tecnica" horzTextAlign="center"/>
+			</layout>
+			<layout left="200" top="30" width="200" height="25" >
+				<label left="5" top="5" width="50" height="20" text="Fadiga"/>
+        		<edit left="55" top="0" width="140" height="25" field="fadiga_tecnica"/>
+			</layout>
+
+			<layout left="0" top="55" width="200" height="25" >
+				<button left="5" top="2" width="50" height="20" text="Dados">
+					<event name="onClick">
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					
+						rolagem = rrpg.interpretarRolagem(self.boxDetalhesDasTecnicas.node.dados_tecnica);
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Tecnica " .. (self.boxDetalhesDasTecnicas.node.nome_tecnica or 0),
+							function (rolagem)
+								if sheet~=nil then
+									local maximo = 0;
+									local media = 0;
+									local minimo = 0;
+									local efetividade = 0;
+									local resultado = rolagem.resultado;
+									local color = 1;
+
+									for i = 1, #rolagem.ops, 1 do 
+										local operacao = rolagem.ops[i]; 
+										if operacao.tipo == "dado" then   
+											maximo = maximo + (operacao.quantidade * operacao.face);
+											media = media + (operacao.quantidade * (operacao.face+1)/2);
+											minimo = minimo + operacao.quantidade;
+										elseif operacao.tipo == "imediato" then
+											maximo = maximo + operacao.valor;
+											media = media + operacao.valor;
+											minimo = minimo + operacao.valor;
+										end;
+									end;
+
+									efetividade = math.floor( (resultado-minimo)/(maximo-minimo) * 100);
+									if efetividade &lt; 20 then
+										color = 4;
+									elseif efetividade &lt; 40 then
+										color = 7;
+									elseif efetividade &lt; 60 then
+										color = 8;
+									elseif efetividade &lt; 80 then
+										color = 12;
+									else
+										color = 9;
+									end;
+
+									local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+
+									if self.boxDetalhesDasTecnicas.node.tipo_tecnica == "75" then
+										mesaDoPersonagem.activeChat:enviarMensagem("[§K" .. color .. "]A defesa atingiu " .. efetividade .. "% de seu poder total!");
+									else 
+										mesaDoPersonagem.activeChat:enviarMensagem("[§K" .. color .. "]O golpe atingiu " .. efetividade .. "% de seu poder total!");
+									end;
+
+									
+								end;
+
+							end);
+					</event>
+				</button>
+        		<edit left="55" top="0" width="140" height="25" field="dados_tecnica"/>
+			</layout>
+			<layout left="200" top="55" width="200" height="25" >
+				<label left="5" top="5" width="50" height="20" text="Tipo"/>
+        		<comboBox left="55" top="0" width="140" height="25" field="tipo_tecnica" items="{'Ofensiva', 'Defensiva', 'Avançada'}" values="{'0', '75', '100'}"/>
+        		<dataLink field="tipo_tecnica">
+					<event name="onChange">
+						if sheet~=nil then
+							custoTecnica();
+						end;
+					</event>
+				</dataLink>
+			</layout>
+
+			<textEditor left="5" top="80" width="390" height="210" field="descricao_tecnica"/>
+
+			<button left="160" top="295" width="80" height="20" text="EFEITOS">
+				<event name="onClick">
+					if sheet~=nil then
+						local mod = "[§K1]Efeitos: [§K12]";
+						local node = self.boxDetalhesDasTecnicas.node;
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+
+						if node ~= nil then
+							local nodes = ndb.getChildNodes(node.listaDosEfeitosPositivos); 
+							for i=1, #nodes, 1 do
+								if nodes[i].show_efeito_positivo then
+									mod = mod .. "[" .. (nodes[i].nome_efeito_positivo) .. "] ";
+								end;
+							end
+
+							mod = mod .. "[§K4]";
+
+							nodes = ndb.getChildNodes(node.listaDosEfeitosNegativos);   
+							for i=1, #nodes, 1 do
+								if nodes[i].show_efeito_negativo then
+									mod = mod .. "[" .. (nodes[i].nome_efeito_negativo) .. "] ";
+								end;
+							end
+						end;
+
+						mesaDoPersonagem.activeChat:enviarMensagem(mod);
+					end;
+				</event>
+			</button>
+
+			<layout left="5" top="315" width="190" height="295">
+				<label left="0" top="5" width="190" height="20" text="POSITIVOS" horzTextAlign="center"/>
+				<button text="+" left="165" top="5" width="20" height="20">
+					<event name="onClick">
+						self.rclListaDosEfeitosPositivos:append();
+						custoTecnica();
+					</event>
+				</button>
+
+				<label left="25" top="30" width="190" height="20" text="  E    Nome               Custo"/>
+
+				<rectangle left="0" top="50" width="190" height="245" color="#101010"/>
+				<recordList name="rclListaDosEfeitosPositivos" field="listaDosEfeitosPositivos" templateForm="frmSSF3_2" left="0" top="50" width="190" height="245" layout="vertical" minQt="1" selectable="true">
+					<event name="onSelect">
+						if sheet~=nil then
+							custoTecnica();
+						end;
+					</event>
+				</recordList>
+			</layout>
+
+			<layout left="205" top="315" width="190" height="295">
+				<label left="0" top="5" width="190" height="20" text="NEGATIVOS" horzTextAlign="center"/>
+				<button text="+" left="165" top="5" width="20" height="20">
+					<event name="onClick">
+						self.rclListaDosEfeitosNegativos:append();
+						custoTecnica();
+					</event>
+				</button>
+
+				<label left="25" top="30" width="190" height="20" text="  E    Nome               Custo"/>
+
+				<rectangle left="0" top="50" width="190" height="245" color="#101010"/>
+				<recordList name="rclListaDosEfeitosNegativos" field="listaDosEfeitosNegativos" templateForm="frmSSF3_3" left="0" top="50" width="190" height="245" layout="vertical" minQt="1">
+					<event name="onSelect">
+						if sheet~=nil then
+							custoTecnica();
+						end;
+					</event>
+				</recordList>
+			</layout>
+		</dataScopeBox>
+
+		<rectangle left="630" top="0" width="300" height="300" color="DimGray" xradius="5" yradius="5" cornerType="innerLine"/>
+		<image left="630" top="0" width="300" height="300" field="avatar_armadura" editable="true" style="stretch"/>
+
+		<layout left="630" top="310" width="300" height="300">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="5" width="300" height="20" text="CONDIÇÃO" horzTextAlign="center"/>
+			<label left="0" top="30" width="300" height="20" text="          TIPO                       MODIFICADORES"/>
+
+			<comboBox left="5" top="55" width="100" height="25" field="tipo_armadura" items="{'Bronze', 'Prata', 'Ouro'}" values="{'1', '2', '3'}"/>
+			<dataLink field="tipo_armadura">
+				<event name="onChange">
+					if sheet~=nil then
+						if sheet.tipo_armadura == "1" then
+							sheet.dano_armadura6 = "1.000";
+							sheet.dano_armadura5 = "801-999";
+							sheet.dano_armadura4 = "601-800";
+							sheet.dano_armadura3 = "401-600";
+							sheet.dano_armadura2 = "201-400";
+							sheet.dano_armadura1 = "0-200";
+						elseif sheet.tipo_armadura == "2" then
+							sheet.dano_armadura6 = "2.000";
+							sheet.dano_armadura5 = "1.601-1.999";
+							sheet.dano_armadura4 = "1.201-1.600";
+							sheet.dano_armadura3 = "801-1.200";
+							sheet.dano_armadura2 = "401-800";
+							sheet.dano_armadura1 = "0-400";
+						elseif sheet.tipo_armadura == "3" then
+							sheet.dano_armadura6 = "5.000";
+							sheet.dano_armadura5 = "4.001-4.999";
+							sheet.dano_armadura4 = "3.001-4.000";
+							sheet.dano_armadura3 = "2.001-3.000";
+							sheet.dano_armadura2 = "1.001-2.000";
+							sheet.dano_armadura1 = "0-1.000";
+						end
+					end;
+				</event>
+			</dataLink>
+
+
+			<rectangle left="5" top="80" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="5" top="80" width="100" height="20" field="dano_armadura6" horzTextAlign="center"/>
+        	<rectangle left="5" top="110" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="5" top="110" width="100" height="20" field="dano_armadura5" horzTextAlign="center"/>
+        	<rectangle left="5" top="140" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="5" top="140" width="100" height="20" field="dano_armadura4" horzTextAlign="center"/>
+        	<rectangle left="5" top="170" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="5" top="170" width="100" height="20" field="dano_armadura3" horzTextAlign="center"/>
+        	<rectangle left="5" top="200" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="5" top="200" width="100" height="20" field="dano_armadura2" horzTextAlign="center"/>
+        	<rectangle left="5" top="230" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="5" top="230" width="100" height="20" field="dano_armadura1" horzTextAlign="center"/>
+
+        	<rectangle left="110" top="80" width="185" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="110" top="80" width="185" height="20" text="Morta" horzTextAlign="center"/>
+        	<rectangle left="110" top="110" width="185" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="110" top="110" width="185" height="20" text="Cosmo e Energização -100%" horzTextAlign="center"/>
+        	<rectangle left="110" top="140" width="185" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="110" top="140" width="185" height="20" text="RD básica -50%, HT-8" horzTextAlign="center"/>
+        	<rectangle left="110" top="170" width="185" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="110" top="170" width="185" height="20" text="Cosmo e Energização -50%" horzTextAlign="center"/>
+        	<rectangle left="110" top="200" width="185" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="110" top="200" width="185" height="20" text="RD ablativa -50%, HT-4" horzTextAlign="center"/>
+        	<rectangle left="110" top="230" width="185" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="110" top="230" width="185" height="20" text="Nenhum" horzTextAlign="center"/>
+
+        	<checkBox left="10" top="255" text="Equipada" field="armadura_equipada"/>
+		</layout>
+
+		<layout left="940" top="0" width="200" height="135">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<layout left="5" top="5" width="190" height="25" >
+				<label left="5" top="5" width="50" height="20" text="Nome"/>
+        		<edit left="55" top="0" width="140" height="25" field="nome_armadura"/>
+			</layout>
+			<layout left="5" top="30" width="190" height="25" >
+				<label left="5" top="5" width="60" height="20" text="RD Bas."/>
+        		<edit left="55" top="0" width="70" height="25" field="rdb_armadura"/>
+        		<edit left="125" top="0" width="70" height="25" field="rdb_armadura_atual"/>
+			</layout>
+			<layout left="5" top="55" width="190" height="25" >
+				<label left="5" top="5" width="60" height="20" text="RD Abl."/>
+        		<edit left="55" top="0" width="70" height="25" field="rda_armadura"/>
+        		<edit left="125" top="0" width="70" height="25" field="rda_armadura_atual"/>
+			</layout>
+			<layout left="5" top="80" width="190" height="25" >
+				<label left="5" top="5" width="50" height="20" text="HT"/>
+        		<edit left="55" top="0" width="70" height="25" field="ht_armadura"/>
+        		<edit left="125" top="0" width="70" height="25" field="ht_armadura_atual"/>
+			</layout>
+			<layout left="5" top="105" width="190" height="25" >
+				<label left="5" top="5" width="50" height="20" text="PV"/>
+        		<edit left="55" top="0" width="70" height="25" field="pv_armadura"/>
+        		<edit left="125" top="0" width="70" height="25" field="pv_armadura_atual"/>
+			</layout>
+		</layout>
+
+		<layout left="940" top="145" width="350" height="435">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="5" width="350" height="20" text="ATAQUES COMUNS" horzTextAlign="center"/>
+
+			<button text="+" left="325" top="5" width="20" height="20">
+				<event name="onClick">
+					self.rclListaDasArmas:append();
+				</event>
+			</button>
+
+			<rectangle left="5" top="30" width="340" height="400" color="#101010"/>
+			<recordList name="rclListaDasArmas" field="listaDasArmas" templateForm="frmSSF3_4" left="5" top="30" width="340" height="400" layout="vertical" minQt="1"/>
+
+		</layout>
+
+		<image left="0" top="0" width="1335" height="615" style="autoFit" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20SSF%20releases/imagens/ABA0.png"/>
+    </scrollBox>
+</form>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister" formType="sheetTemplate" dataType="Arc.Metal.Zhuls" title="Ficha Arc Metal Zhuls" align="client" theme="dark">
+	<tabControl align="client">
+		<tab title="Allei">
+			<tabControl align="client">
+				<tab title="Status Básicos">
+					<import file="FichaAMZ.1.1.lfm"/>
+				</tab>
+				<tab title="Status Avançados">
+					<import file="FichaAMZ.1.2.lfm"/>
+				</tab>
+				<tab title="Peculiaridade Única">
+					<import file="FichaAMZ.1.3.lfm"/>
+				</tab>
+				<tab title="Inventario">
+					<import file="FichaAMZ.1.4.lfm"/>
+				</tab>
+			</tabControl>
+		</tab>
+		<tab title="Zhuls">
+			<tabControl align="client">
+				<tab title="Status Básicos">
+					<import file="FichaAMZ.2.1.lfm"/>
+				</tab>
+				<tab title="Status Avançados">
+					<import file="FichaAMZ.2.2.lfm"/>
+				</tab>
+				<tab title="Habilidades">
+					<tabControl align="client">
+						<tab title="Habilidades Unicas">
+							<import file="FichaAMZ.2.3a.lfm"/>
+						</tab>
+						<tab title="Estilo de Luta">
+							<import file="FichaAMZ.2.3b.lfm"/>
+						</tab>
+						<tab title="Habilidades Iniciais">
+							<import file="FichaAMZ.2.3c.lfm"/>
+						</tab>
+					</tabControl>
+				</tab>
+				<tab title="Equipamentos">
+					<import file="FichaAMZ.2.4.lfm"/>
+				</tab>
+			</tabControl>
+		</tab>
+		<tab title="Rolagens">
+			<import file="FichaAMZ.3.lfm"/>
+		</tab>
+		<tab title="Historia">
+			<import file="FichaAMZ.4.lfm"/>
+		</tab>
+		<tab title="Anotações">
+			<import file="FichaAMZ.5.lfm"/>
+		</tab>
+		<tab title="Creditos">
+			<import file="FichaAMZ.6.lfm"/>
+		</tab>
+	</tabControl>
+</form>

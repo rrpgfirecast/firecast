@@ -1,0 +1,181 @@
+﻿require("scene.lua");
+require("utils.lua");
+require("ndb.lua");
+require("system.lua");
+
+local _undos = {};
+setmetatable(_undos, {__mode="k"});
+
+local function getSceneUndo(scene)
+	local undo = _undos[scene];
+	
+	if undo == nil then
+		undo = {};
+		_undos[scene] = undo;		
+		
+		local MAX_UNDO = 30;
+		
+		-- Lista duplamente encadeada
+		local qtUndo = 0;		
+		local primeiroUndo = nil;
+		local ultimoUndo = nil;
+								
+		function undo:removerEntry(entry)
+			qtUndo = qtUndo - 1;
+			
+			if entry.anterior ~= nil then
+				entry.anterior.proximo = entry.proximo;
+			end;
+			
+			if entry.proximo ~= nil then
+				entry.proximo.anterior = entry.anterior;
+			end;
+			
+			if primeiroUndo == entry then
+				primeiroUndo = entry.proximo;
+			end;
+			
+			if ultimoUndo == entry then
+				ultimoUndo = entry.anterior;
+			end;
+		end;
+								
+		function undo:add(callback)
+			local entry = {};
+			entry.callback = callback;
+			entry.anterior = ultimoUndo;
+
+			if ultimoUndo ~= nil then
+				ultimoUndo.proximo = entry;			
+			end;
+			
+			if primeiroUndo == nil then
+				primeiroUndo = entry;
+			end;
+			
+			ultimoUndo = entry;
+			qtUndo = qtUndo + 1;
+			
+			if (qtUndo > MAX_UNDO) and (primeiroUndo ~= nil) then
+				undo:removerEntry(primeiroUndo);
+			end;
+		end;
+		
+		function undo:undoLast()
+			if ultimoUndo ~= nil then
+				local entry = ultimoUndo;
+				undo:removerEntry(entry);
+				entry.callback();
+			end;
+		end;
+	end;
+	
+	return undo;
+end;
+
+function SC3UNDO_Undo(scene)
+	local undo = getSceneUndo(scene);
+	undo:undoLast();	
+end;
+
+function SC3UNDO_Add(scene, callback)
+	local undo = getSceneUndo(scene);
+	undo:add(callback);
+end;
+
+function SC3UNDO_AddNDBUndoData(scene, undoData)
+	SC3UNDO_Add(scene, 
+		function()
+			local tr = scene:newTransaction();
+			scene:pushTransaction(tr);
+			
+			tryFinally(
+				function()
+					tr:applyUndoData(undoData);
+					tr:commit();
+				end,
+				function()
+					scene:popTransaction();
+				end);
+			
+		end);
+end;
+
+function SC3UNDO_Capture(scene, callback)
+	local tr = scene:newTransaction();
+	scene:pushTransaction(tr);
+	
+	tryFinally(
+		function()
+			scene:beginUpdate();
+			
+			tryFinally(
+				function()
+					callback();
+					SC3UNDO_AddNDBUndoData(scene, tr:createUndoData());
+					tr:commit();				
+				end,
+				function()
+					scene:endUpdate();
+				end);
+		end,
+		function()			
+			scene:popTransaction();
+			tr:rollback();
+		end);			
+end;
+
+local __facades = {};
+local __facadesObj = {};
+setmetatable(__facades, {__mode="k"});
+setmetatable(__facadesObj, {__mode="kv"});
+
+function SC3UNDO_GetFacade(objeto)
+	local f = __facades[objeto];
+	
+	if f == nil then
+		local facadeObject = {};
+		
+		f = function ()
+			return __facadesObj[facadeObject.f]; 
+		end;
+		
+		facadeObject.f = f;
+		
+		__facades[objeto] = f;
+		__facadesObj[f] = objeto;
+	end;
+	
+	return f;
+end;
+
+function SC3UNDO_SetFacade(objeto, facade)
+	if facade ~= nil then
+		__facades[objeto] = facade;
+		__facadesObj[facade] = objeto;
+	end;
+end;
+
+function SC3UNDO_AtivarUndoHotKey(scene, ativar)
+	local ht = rawget(scene, "__undoHotKey");
+
+	if ativar and ht == nil then
+		ht = {};
+	    local VK = require("vkCodes.dlua");		
+		
+		ht.keyDownListener = scene.viewport:listen("onKeyDown",
+			function(event)
+				if (event.keyCode == VK.vkZ) and event.ctrlKey then 
+					SC3UNDO_Undo(scene);
+					event.keyCode = 0;
+					event.key = "";	
+				end;			
+			end);
+	
+		rawset(scene, "__undoHotKey", ht);
+	elseif not ativar and ht ~= nil then
+		scene.viewport:unlisten(ht.keyDownListener);
+		rawset(scene, "__undoHotKey", nil);
+	end;
+end;
+

@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmRDF5" align="client" theme="dark">
+    <scrollBox align="client">
+        <template name="Desc">
+        	<label left="0" top="5" width="100" height="20" text="$(nome)"/>
+        	<edit left="100" top="0" width="200" height="25" field="sj_$(field)"/>
+        </template>
+        <template name="Atr">
+        	<label left="0" top="5" width="50" height="20" text="$(nome)" horzTextAlign="center"/>
+        	<edit left="0" top="25" width="50" height="25" field="sj_atr_$(field)" horzTextAlign="center"/>
+        </template>
+        <template name="AtaqueSJC">
+        	<edit left="0" top="0" width="150" height="25" field="atqC_$(field)" horzTextAlign="center"/>
+        	<edit left="150" top="0" width="150" height="25" field="atqC_notas_$(field)" horzTextAlign="center"/>
+        	<edit left="300" top="0" width="50" height="25" field="atqC_aco_$(field)" horzTextAlign="center"/>
+        	<edit left="350" top="0" width="50" height="25" field="atqC_pf_$(field)" horzTextAlign="center"/>
+        </template>
+        <template name="AtaqueSJD">
+        	<edit left="0" top="0" width="150" height="25" field="atqD_$(field)" horzTextAlign="center"/>
+        	<edit left="150" top="0" width="150" height="25" field="atqD_notas_$(field)" horzTextAlign="center"/>
+        	<edit left="300" top="0" width="50" height="25" field="atqD_alc_$(field)" horzTextAlign="center"/>
+        	<edit left="350" top="0" width="50" height="25" field="atqD_adi_$(field)" horzTextAlign="center"/>
+        	<edit left="400" top="0" width="50" height="25" field="atqD_pod_$(field)" horzTextAlign="center"/>
+        	<edit left="450" top="0" width="50" height="25" field="atqD_mun_$(field)" horzTextAlign="center"/>
+        </template>
+        <template name="Dano">
+        	<edit left="0" top="0" width="100" height="25" field="dano_$(field)" horzTextAlign="center"/>
+        	<edit left="100" top="0" width="300" height="25" field="dano_desc_$(field)" horzTextAlign="center"/>
+        </template>
+        <template name="Mecanismo">
+        	<edit left="0" top="0" width="100" height="25" field="meca_$(field)" horzTextAlign="center"/>
+        	<edit left="100" top="0" width="280" height="25" field="meca_desc_$(field)" horzTextAlign="center"/>
+        </template>
+
+        <layout left="0" top="0" width="315" height="160">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+
+			<layout left="5" top="5" width="300" height="25">
+				<Desc nome="Nome" field="nome" />
+			</layout>
+			<layout left="5" top="30" width="300" height="25">
+				<Desc nome="Chassis" field="chassis" />
+			</layout>
+			<layout left="5" top="55" width="300" height="25">
+				<Desc nome="Peso" field="peso" />
+			</layout>
+			<layout left="5" top="80" width="300" height="25">
+				<Desc nome="Altura" field="altura" />
+			</layout>
+			<layout left="5" top="105" width="300" height="25">
+				<Desc nome="Max. Comb." field="m_combustivel" />
+			</layout>
+			<layout left="5" top="130" width="300" height="25">
+				<Desc nome="Gasto Comb." field="g_combustivel" />
+			</layout>
+	    </layout>
+
+	    <layout left="0" top="165" width="210" height="130">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="0" width="200" height="20" text="ATRIBUTOS" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="50" height="50">
+				<Atr nome="FIS" field="fis" />
+			</layout>
+			<layout left="55" top="25" width="50" height="50">
+				<Atr nome="VEL" field="vel" />
+			</layout>
+			<layout left="105" top="25" width="50" height="50">
+				<Atr nome="FOR" field="for" />
+			</layout>
+			<layout left="155" top="25" width="50" height="50">
+				<Atr nome="AGI" field="agi" />
+			</layout>
+
+			<layout left="5" top="75" width="50" height="50">
+				<Atr nome="DES" field="des" />
+			</layout>
+			<layout left="55" top="75" width="50" height="50">
+				<Atr nome="MAE" field="mae" />
+			</layout>
+			<layout left="105" top="75" width="50" height="50">
+				<Atr nome="INT" field="int" />
+			</layout>
+			<layout left="155" top="75" width="50" height="50">
+				<Atr nome="PER" field="per" />
+			</layout>
+		</layout>
+
+		<layout left="215" top="165" width="100" height="150">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="0" width="90" height="20" text="DANO" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="200" height="25">
+				<label left="0" top="5" width="15" height="20" text="1" horzTextAlign="center"/>
+				<label left="15" top="5" width="15" height="20" text="2" horzTextAlign="center"/>
+				<label left="30" top="5" width="15" height="20" text="3" horzTextAlign="center"/>
+				<label left="45" top="5" width="15" height="20" text="4" horzTextAlign="center"/>
+				<label left="60" top="5" width="15" height="20" text="5" horzTextAlign="center"/>
+				<label left="75" top="5" width="15" height="20" text="3" horzTextAlign="center"/>
+			</layout>
+			<layout left="5" top="50" width="200" height="25">
+				<checkBox left="0" top="0"/>
+				<checkBox left="15" top="0"/>
+				<checkBox left="30" top="0"/>
+				<checkBox left="45" top="0"/>
+				<checkBox left="60" top="0"/>
+				<checkBox left="75" top="0"/>
+			</layout>
+			<layout left="5" top="65" width="200" height="25">
+				<checkBox left="0" top="0"/>
+				<checkBox left="15" top="0"/>
+				<checkBox left="30" top="0"/>
+				<checkBox left="45" top="0"/>
+				<checkBox left="60" top="0"/>
+				<checkBox left="75" top="0"/>
+			</layout>
+			<layout left="5" top="80" width="200" height="25">
+				<checkBox left="0" top="0"/>
+				<checkBox left="15" top="0"/>
+				<checkBox left="30" top="0"/>
+				<checkBox left="45" top="0"/>
+				<checkBox left="60" top="0"/>
+				<checkBox left="75" top="0"/>
+			</layout>
+			<layout left="5" top="95" width="200" height="25">
+				<checkBox left="0" top="0"/>
+				<checkBox left="15" top="0"/>
+				<checkBox left="30" top="0"/>
+				<checkBox left="45" top="0"/>
+				<checkBox left="60" top="0"/>
+				<checkBox left="75" top="0"/>
+			</layout>
+			<layout left="5" top="110" width="200" height="25">
+				<checkBox left="0" top="0"/>
+				<checkBox left="15" top="0"/>
+				<checkBox left="30" top="0"/>
+				<checkBox left="45" top="0"/>
+				<checkBox left="60" top="0"/>
+				<checkBox left="75" top="0"/>
+			</layout>
+			<layout left="5" top="125" width="200" height="25">
+				<checkBox left="0" top="0"/>
+				<checkBox left="15" top="0"/>
+				<checkBox left="30" top="0"/>
+				<checkBox left="45" top="0"/>
+				<checkBox left="60" top="0"/>
+				<checkBox left="75" top="0"/>
+			</layout>
+		</layout>
+
+		<layout left="0" top="320" width="315" height="130">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="0" width="305" height="20" text="CORTEX" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="300" height="25">
+				<Desc nome="Marca" field="marca" />
+			</layout>
+			<layout left="5" top="50" width="300" height="25">
+				<Desc nome="Notas" field="nota" />
+			</layout>
+			<layout left="5" top="75" width="300" height="25">
+				<Desc nome="Bônus de Ataque" field="luta" />
+			</layout>
+			<layout left="5" top="100" width="300" height="25">
+				<Desc nome="Idioma" field="idioma" />
+			</layout>
+	    </layout>
+
+		<layout left="320" top="0" width="530" height="210">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="15" top="0" width="500" height="20" text="ATAQUES A DISTANCIA" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="500" height="25" >
+				<label left="0" top="5" width="150" height="20" text="NOME" horzTextAlign="center"/>
+				<label left="150" top="5" width="150" height="20" text="NOTAS" horzTextAlign="center"/>
+				<label left="300" top="5" width="50" height="20" text="ALC" horzTextAlign="center"/>
+				<label left="350" top="5" width="50" height="20" text="ADI" horzTextAlign="center"/>
+				<label left="400" top="5" width="50" height="20" text="POD" horzTextAlign="center"/>
+				<label left="450" top="5" width="50" height="20" text="MUN" horzTextAlign="center"/>
+			</layout>
+			<scrollBox left="0" top="50" width="525" height="150">
+				<layout left="5" top="0" width="500" height="25" >
+					<AtaqueSJD field="1"/>
+				</layout>
+				<layout left="5" top="25" width="500" height="25" >
+					<AtaqueSJD field="2"/>
+				</layout>
+				<layout left="5" top="50" width="500" height="25" >
+					<AtaqueSJD field="3"/>
+				</layout>
+				<layout left="5" top="75" width="500" height="25" >
+					<AtaqueSJD field="4"/>
+				</layout>
+				<layout left="5" top="100" width="500" height="25" >
+					<AtaqueSJD field="5"/>
+				</layout>
+				<layout left="5" top="125" width="500" height="25" >
+					<AtaqueSJD field="6"/>
+				</layout>
+				<layout left="5" top="150" width="500" height="25" >
+					<AtaqueSJD field="7"/>
+				</layout>
+				<layout left="5" top="175" width="500" height="25" >
+					<AtaqueSJD field="8"/>
+				</layout>
+				<layout left="5" top="200" width="500" height="25" >
+					<AtaqueSJD field="9"/>
+				</layout>
+				<layout left="5" top="225" width="500" height="25" >
+					<AtaqueSJD field="10"/>
+				</layout>
+			</scrollBox>
+		</layout>
+
+		<layout left="855" top="0" width="430" height="210">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="15" top="0" width="400" height="20" text="ATAQUES CORPO A CORPO" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="400" height="25" >
+				<label left="0" top="5" width="150" height="20" text="NOME" horzTextAlign="center"/>
+				<label left="150" top="5" width="150" height="20" text="NOTAS" horzTextAlign="center"/>
+				<label left="300" top="5" width="50" height="20" text="ACO" horzTextAlign="center"/>
+				<label left="350" top="5" width="50" height="20" text="P+F" horzTextAlign="center"/>
+			</layout>
+			<scrollBox left="0" top="50" width="425" height="150">
+				<layout left="5" top="0" width="400" height="25" >
+					<AtaqueSJC field="1"/>
+				</layout>
+				<layout left="5" top="25" width="400" height="25" >
+					<AtaqueSJC field="2"/>
+				</layout>
+				<layout left="5" top="50" width="400" height="25" >
+					<AtaqueSJC field="3"/>
+				</layout>
+				<layout left="5" top="75" width="400" height="25" >
+					<AtaqueSJC field="4"/>
+				</layout>
+				<layout left="5" top="100" width="400" height="25" >
+					<AtaqueSJC field="5"/>
+				</layout>
+				<layout left="5" top="125" width="400" height="25" >
+					<AtaqueSJC field="6"/>
+				</layout>
+				<layout left="5" top="150" width="400" height="25" >
+					<AtaqueSJC field="7"/>
+				</layout>
+				<layout left="5" top="175" width="400" height="25" >
+					<AtaqueSJC field="8"/>
+				</layout>
+				<layout left="5" top="200" width="400" height="25" >
+					<AtaqueSJC field="9"/>
+				</layout>
+				<layout left="5" top="225" width="400" height="25" >
+					<AtaqueSJC field="10"/>
+				</layout>
+			</scrollBox>
+		</layout>
+	   
+	   <layout left="320" top="215" width="310" height="80">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="310" height="20" text="DEFESA" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="50" height="50" >
+				<Atr field="vel" nome="VEL"/>
+			</layout>
+			<layout left="55" top="25" width="50" height="50" >
+				<Atr field="agi" nome="AGI"/>
+			</layout>
+			<layout left="105" top="25" width="50" height="50" >
+				<Atr field="per" nome="PER"/>
+			</layout>
+			<layout left="155" top="25" width="50" height="50" >
+				<Atr field="equip" nome="EQUIP"/>
+			</layout>
+			<layout left="205" top="25" width="50" height="50" >
+				<Atr field="out_def" nome="OUTRO"/>
+			</layout>
+			<layout left="255" top="25" width="50" height="50" >
+				<label left="0" top="5" width="50" height="20" text="TOTAL" horzTextAlign="center"/>
+				<rectangle left="0" top="25" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="0" top="25" width="50" height="25" field="sj_defesa_total" horzTextAlign="center"/>
+			</layout>
+			<dataLink fields="{'sj_atr_vel', 'sj_atr_agi', 'sj_atr_per', 'sj_atr_equip', 'sj_atr_out_def'}">
+                <event name="onChange">   
+                	if sheet~=nil then
+                		sheet.sj_defesa_total = 	(tonumber(sheet.sj_atr_vel) or 0) + 
+	                                            (tonumber(sheet.sj_atr_agi) or 0) + 
+	                                            (tonumber(sheet.sj_atr_per) or 0) + 
+	                                            (tonumber(sheet.sj_atr_equip) or 0) + 
+	                                            (tonumber(sheet.sj_atr_out_def) or 0);
+                	end;
+                </event>
+        	</dataLink>
+		</layout>
+
+		<layout left="320" top="300" width="310" height="80">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="310" height="20" text="ARMADURA" horzTextAlign="center"/>
+
+			<layout left="30" top="25" width="50" height="50" >
+				<Atr field="fis" nome="FIS"/>
+			</layout>
+			<layout left="80" top="25" width="50" height="50" >
+				<Atr field="arm" nome="ARM"/>
+			</layout>
+			<layout left="130" top="25" width="50" height="50" >
+				<Atr field="esc" nome="ESC"/>
+			</layout>
+			<layout left="180" top="25" width="50" height="50" >
+				<Atr field="out_arm" nome="OUTRO"/>
+			</layout>
+			<layout left="230" top="25" width="50" height="50" >
+				<label left="0" top="5" width="50" height="20" text="TOTAL" horzTextAlign="center"/>
+				<rectangle left="0" top="25" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="0" top="25" width="50" height="25" field="sj_armadura_total" horzTextAlign="center"/>
+			</layout>
+			<dataLink fields="{'sj_atr_fis', 'sj_atr_arm', 'sj_atr_esc', 'sj_atr_out_arm'}">
+                <event name="onChange">   
+                	if sheet~=nil then
+                		sheet.sj_armadura_total = 	(tonumber(sheet.sj_atr_fis) or 0) + 
+	                                            (tonumber(sheet.sj_atr_arm) or 0) + 
+	                                            (tonumber(sheet.sj_atr_esc) or 0) + 
+	                                            (tonumber(sheet.sj_atr_out_arm) or 0);
+                	end;
+                </event>
+        	</dataLink>
+		</layout>
+
+		<layout left="635" top="215" width="410" height="180">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="0" width="400" height="20" text="DANO CATASTROFICO" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="500" height="25" >
+				<label left="0" top="5" width="100" height="20" text="DANO" horzTextAlign="center"/>
+				<label left="100" top="5" width="300" height="20" text="DESCRIÇÃO" horzTextAlign="center"/>
+			</layout>
+			<layout left="0" top="50" width="500" height="555">
+				<layout left="5" top="0" width="500" height="25" >
+					<Dano field="1"/>
+				</layout>
+				<layout left="5" top="25" width="500" height="25" >
+					<Dano field="2"/>
+				</layout>
+				<layout left="5" top="50" width="500" height="25" >
+					<Dano field="3"/>
+				</layout>
+				<layout left="5" top="75" width="500" height="25" >
+					<Dano field="4"/>
+				</layout>
+				<layout left="5" top="100" width="500" height="25" >
+					<Dano field="5"/>
+				</layout>
+			</layout>
+		</layout>
+
+		<layout left="635" top="400" width="410" height="180">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="0" width="400" height="20" text="MECANISMOS E APRIMORAMENTOS" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="500" height="25" >
+				<label left="0" top="5" width="100" height="20" text="NOME" horzTextAlign="center"/>
+				<label left="100" top="5" width="300" height="20" text="DESCRIÇÃO" horzTextAlign="center"/>
+			</layout>
+			<scrollBox left="0" top="50" width="405" height="125">
+				<layout left="5" top="0" width="380" height="25" >
+					<Mecanismo field="1"/>
+				</layout>
+				<layout left="5" top="25" width="380" height="25" >
+					<Mecanismo field="2"/>
+				</layout>
+				<layout left="5" top="50" width="380" height="25" >
+					<Mecanismo field="3"/>
+				</layout>
+				<layout left="5" top="75" width="380" height="25" >
+					<Mecanismo field="4"/>
+				</layout>
+				<layout left="5" top="100" width="380" height="25" >
+					<Mecanismo field="5"/>
+				</layout>
+				<layout left="5" top="125" width="380" height="25" >
+					<Mecanismo field="6"/>
+				</layout>
+				<layout left="5" top="150" width="380" height="25" >
+					<Mecanismo field="7"/>
+				</layout>
+				<layout left="5" top="175" width="380" height="25" >
+					<Mecanismo field="8"/>
+				</layout>
+				<layout left="5" top="200" width="380" height="25" >
+					<Mecanismo field="9"/>
+				</layout>
+				<layout left="5" top="225" width="380" height="25" >
+					<Mecanismo field="10"/>
+				</layout>
+			</scrollBox>
+		</layout>
+
+		<rectangle left="1050" top="215" width="252" height="252" color="black" strokeColor="white" strokeSize="1"/>
+		<image left="1050" top="216" width="250" height="250" field="steamjack" editable="true" style="autoFit" />
+	
+		<image align="client" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20RdF%20releases/imagens/block.png" style="autoFit"/>
+    </scrollBox>
+</form>

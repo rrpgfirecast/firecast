@@ -1,0 +1,854 @@
+﻿local rrpg = require("rrpg.lua");
+local Dialogs = require("dialogs.lua");
+local NDB = require("ndb.lua");
+
+local macros = {};
+local _MACRO_CALL_CO_FUNCTION_RET = "CallSomeFunctionInMainThread";
+
+local cloneFunctions = {};
+
+local function cloneTable(t)
+	if t == nil then
+		return nil;
+	end;
+
+	if rawget(t, "handle") ~= nil then
+		return cloneFunctions.cloneRRPGObject(t);
+	else
+		local r = {};
+		
+		for k, v in pairs(t) do	
+			if type(v) == "table" then
+				r[k] = cloneTable(v);
+			else
+				r[k] = v;
+			end;
+		end;
+		
+		return r;
+	end
+end;
+
+cloneFunctions.cloneTable = cloneTable;
+
+local __cloneObjectMetaTable = {
+	__eq = function(op1, op2)
+		local o1 = rawget(op1, "__o");
+		local o2 = rawget(op2, "__o");
+				
+		return o1 == o2;
+	end,
+
+	__index = function(table, key)
+		local rObj = rawget(table, "__o");
+		
+		if rObj ~= nil then
+			local v = rObj[key];
+			
+			if type(v) == "table" then
+				local nV = cloneTable(v);
+				
+				if rawget(v, "handle") ~= nil then
+					rawset(table, key, nV);									
+				end;
+				
+				return nV;
+			else
+				return v;
+			end;
+		else
+			return nil;			
+		end;
+	end
+};
+
+local function cloneRRPGObject(o)
+	if o == nil then
+		return nil;
+	end;
+
+	local r = {};
+	r.__o = o;
+	
+	for k, v in pairs(o) do	
+		local typeOfV = type(v);
+	
+		if typeOfV == "function" then
+			local vF = v;
+			
+			r[k] = function(par1, ...)		
+				local retValues;
+			
+				if par1 == r then
+					retValues = table.pack(vF(r.__o, ...));
+				else
+					retValues = table.pack(vF(par1, ...));
+				end;
+				
+				local i;
+				
+				for i = 1, #retValues, 1 do
+					if type(retValues[i]) == "table" then
+						retValues[i] = cloneTable(retValues[i]);
+					end;
+				end;
+				
+				return table.unpack(retValues);
+			end;			
+		elseif typeOfV == "table" then
+			r[k] = cloneTable(v);
+		else	
+			r[k] = v;
+		end;		
+	end;
+	
+	setmetatable(r, __cloneObjectMetaTable);
+	return r;
+end;
+
+cloneFunctions.cloneRRPGObject = cloneRRPGObject;
+
+local yieldedFunctions = {};
+
+local function handleCoResume(co, ...)
+	local retornos = table.pack(coroutine.resume(co, ...));
+												
+	if not retornos[1] then
+		local dialogs = require("dialogs.lua");
+		
+		dialogs.showMessageDlg("Erro na execução da macro:\n" .. retornos[2], dialogs.DT_ERROR, {dialogs.DB_OK});
+		--error(retornos[2]);
+	else
+		if retornos[2] == _MACRO_CALL_CO_FUNCTION_RET then			
+			local f = yieldedFunctions[retornos[3]];
+			
+			if type(f) == "function" then
+				f(co, table.unpack(retornos, 4));
+			end;
+		elseif coroutine.status(co)	== "dead" then
+			local endCallback = rawget(co, "__endCallback");
+			
+			if endCallback ~= nil then
+				endCallback(table.unpack(retornos, 2));
+			end;
+		end;
+	end;
+end;
+
+function yieldedFunctions.yRolarDado(co, chat, rolagem, msgAdicional)	
+	chat:rolarDados(rolagem, msgAdicional,
+		function(rolado)
+			handleCoResume(co, rolado.resultado, rolado);
+		end);
+end;
+
+function yieldedFunctions.yEsperar(co, milisegundos)	
+	setTimeout(function()
+			handleCoResume(co);
+		end, milisegundos);
+end;
+
+function yieldedFunctions.yShowMessage(co, msg)	
+	Dialogs.showMessage(msg,
+		function()
+			handleCoResume(co);
+		end);
+end;
+
+function yieldedFunctions.yAlert(co, msg)	
+	Dialogs.alert(msg,
+		function()
+			handleCoResume(co);
+		end);
+end;
+
+function yieldedFunctions.yConfirmOkCancel(co, question)	
+	Dialogs.confirmOkCancel(question,
+		function(confirmado)
+			handleCoResume(co, confirmado);
+		end);
+end;
+
+function yieldedFunctions.yConfirmYesNo(co, question)	
+	Dialogs.confirmYesNo(question,
+		function(confirmado)
+			handleCoResume(co, confirmado);
+		end);
+end;
+
+function yieldedFunctions.yInputQuery(co, prompt, initialValue, allowEmptyString)	
+	Dialogs.inputQuery(prompt, prompt, initialValue,
+		function(valor)
+			handleCoResume(co, valor);
+		end,
+		
+		function ()
+			-- do nothing. coRoutine will be garbage collected
+		end, allowEmptyString);
+end;
+
+function yieldedFunctions.yInvokeMacro(co, chat, macroName, parameter)	
+	local foundMacro = nil;
+	
+	if globalFindMacro ~= nil then -- declareted in rrpgsimplemacros.lua
+		foundMacro = globalFindMacro(macroName, rrpg.getMesaDe(chat));
+	end;
+	
+	if foundMacro ~= nil then
+		if globalExecutarMacro == nil then
+			handleCoResume(co, false, "Macro runner engine not found");		
+		else
+			globalExecutarMacro(foundMacro, {chat=chat, 
+											 parametro=parameter},
+				function(...)
+					handleCoResume(co, true, ...);
+				end)		
+		end;	
+	else
+		handleCoResume(co, false, "Macro not found: " .. (tostring(macroName) or ""));
+	end;
+end;
+
+function yieldedFunctions.ySelectImageURL(co, defaultURL)
+	Dialogs.selectImageURL(defaultURL,
+		function(url)
+			handleCoResume(co, url);
+		end,
+		
+		function ()
+			-- do nothing. coRoutine will be garbage collected
+		end);
+end;
+
+function yieldedFunctions.yChoose(co, prompt, options, defaultOptionIndex, shortCircuit)
+	Dialogs.choose(prompt, options,
+		function(selected, index, text)
+			if selected then
+				handleCoResume(co, index, text);
+			else	
+				-- -- do nothing. coRoutine will be garbage collected
+			end;
+		end, 
+		
+		defaultOptionIndex, shortCircuit);
+end;
+
+function yieldedFunctions.yChooseMultiple(co, prompt, options)
+	Dialogs.chooseMultiple(prompt, options,
+		function(selected, indexes, texts)
+			if selected then
+				handleCoResume(co, indexes, texts);
+			else	
+				-- do nothing. coRoutine will be garbage collected
+			end;
+		end);
+end;
+
+function yieldedFunctions.yGetSheetOfCharacter(co, character)
+	character:loadSheetNDB(
+		function(node)
+			if node ~= nil then
+				handleCoResume(co, node);
+			else	
+				-- do nothing. coRoutine will be garbage collected
+			end;
+		end);
+end;
+
+local __delayedLoadMacroEnv = {
+	jogadores = function(chat)
+			local js = {};
+			local mesa = rrpg.getMesaDe(chat);
+			
+			if mesa ~= nil then
+				local mJs = mesa.jogadores;
+				
+				for i = 1, #mJs, 1 do
+					js[#js + 1] = cloneTable(mJs[i]);
+				end;
+			end;
+					
+			return js;
+		end,
+	
+	meuJogador = function(chat)
+			local mesa = rrpg.getMesaDe(chat);
+			
+			if mesa ~= nil then
+				return cloneTable(mesa.meuJogador);
+			else
+				return nil;
+			end;
+		end;
+		
+	mesa = function(chat)
+		return cloneTable(rrpg.getMesaDe(chat));
+	end;
+	
+	arg = function(chat, env)
+		local str = env.parametro or "";
+		local ret = {};
+		
+		for w in string.gmatch(str, "[^%s]+") do
+			if w ~= "" then
+				ret[#ret + 1] = w;
+			end;
+		end;
+		
+		return ret;
+	end;
+	
+	parameter = function(chat, env)
+		return env.parametro;
+	end;
+	
+	myCharacter = function(chat, env)
+		return env.getCharacterOfPlayer(env.myPlayer);
+	end;
+	
+	sheet = function(chat, env)
+		return env.getCharacterSheet(env.myCharacter);
+	end;
+};
+
+__delayedLoadMacroEnv.myPlayer = __delayedLoadMacroEnv.meuJogador;
+__delayedLoadMacroEnv.room = __delayedLoadMacroEnv.mesa;
+__delayedLoadMacroEnv.players = __delayedLoadMacroEnv.jogadores;
+
+local function createMacroEnvTable(chat)
+	local env = {};
+	
+	function env.escrever(texto, quebrarLinha, permitirSmileys)
+		chat:escrever(texto, quebrarLinha, permitirSmileys);
+	end;
+	
+	env.write = env.escrever;
+	
+	function env.enviar(texto)
+		chat:enviarMensagem(texto);
+	end;		
+	
+	env.send = env.enviar;
+	
+	function env.rolar(rolagem, msgAdicional)
+		local query = {};
+		query.chat = chat;
+		query.rolagem = rolagem;
+		query.msgAdicional = msgAdicional; 
+		local resultado, rolagem = coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yRolarDado', chat, rolagem, msgAdicional);
+		return resultado, rolagem;
+	end;
+	
+	env.roll = env.rolar;
+	
+	function env.rolarLocal(rolagem)
+		local rolagem = rrpg.interpretarRolagem(rolagem);
+		rolagem:rolarLocalmente();
+		return rolagem.resultado, rolagem;
+	end;
+
+	env.rollLocal = env.rolarLocal;
+	
+	function env.esperar(milisegundos)
+		if type(milisegundos) == "number" then
+			if milisegundos < 1 then
+				milisegundos = 1;
+			end;
+			
+			coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yEsperar', milisegundos);
+		end;
+	end;
+	
+	env.wait = env.esperar;
+	
+	function env.agir(acao)
+		chat:enviarAcao(acao);
+	end;
+	
+	env.act = env.agir;
+		
+	function env.narrar(narracao)
+		chat:enviarNarracao(narracao);
+	end;
+	
+	env.narrate = env.narrar;
+	
+	function env.enviarNPC(npc, msg)
+		chat:enviarMensagemNPC(npc, msg);
+	end;
+	
+	env.sendNPC = env.enviarNPC;
+	
+	env.showMessage = function(msg)
+		coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yShowMessage', msg);
+	end;
+	
+	env.alert = function(msg)
+		coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yAlert', msg);	
+	end;
+	
+	env.confirmOkCancel = function(question)
+		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yConfirmYesNo', question);	
+	end;
+	
+	env.confirmYesNo = function(question)
+		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yConfirmYesNo', question);	
+	end;
+	
+	env.inputQuery = function (prompt, initialValue, allowEmptyString)
+		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yInputQuery', prompt, initialValue, allowEmptyString);	
+	end;
+	
+	env.selectImageURL = function(defaultURL)
+		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'ySelectImageURL', defaultURL);	
+	end;
+	
+	env.invoke = function(macroName, parameter)
+		local ret = table.pack(coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yInvokeMacro', chat, macroName, parameter));	
+		
+		if ret[1] == true then
+			return table.unpack(ret, 2);
+		else
+			error(ret[2]);
+		end;
+	end;
+	
+	env.choose = function (prompt, options, defaultOptionIndex, shortCircuit)
+		if type(options) ~= "table" or #options < 1 then
+			error(lang("macros.error.invalidOptionForChoose"));
+		end;
+	
+		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yChoose', prompt, options, defaultOptionIndex, shortCircuit);	
+	end;
+	
+	env.chooseMultiple = function (prompt, options)
+		if type(options) ~= "table" or #options < 1 then
+			error(lang("macros.error.invalidOptionForChoose"));
+		end;	
+	
+		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yChooseMultiple', prompt, options);	
+	end;	
+	
+	local function _getPlayersSorted()
+		local mesa = env.mesa;
+			
+		if mesa == nil then
+			return {};
+		end;
+		
+		local players = mesa.jogadores;
+		
+		if players == nil then
+			return {};
+		end;
+		
+		table.sort(players,
+			function(left, right)
+				if left.isJuggernaut and not right.isJuggernaut then
+					return true;
+				elseif not left.isJuggernaut and right.isJuggernaut then
+					return false;
+				end;
+				
+				if left.isMestre and not right.isMestre then
+					return true;
+				elseif not left.isMestre and right.isMestre then
+					return false;
+				end;		
+
+				if left.isJogador and not right.isJogador then
+					return true;
+				elseif not left.isJogador and right.isJogador then
+					return false;
+				end;
+				
+				local leftNick = removerAcentos(utils.removerFmtChat(left.nick));
+				local rightNick = removerAcentos(utils.removerFmtChat(right.nick));
+				
+				if utils.compareStringPtBr(leftNick, rightNick) < 0 then
+					return true;
+				else
+					return false;
+				end;
+			end);
+				
+		return players;
+	end;
+	
+	local function _getAllCharactersSorted(filterFunction)
+		local mesa = env.mesa;
+		
+		if mesa == nil then
+			return {};
+		end;
+		
+		local chars = {};	
+		
+		local function recursiveEnumChars(bibItem, chars)
+			if bibItem == nil then
+				return;
+			end;
+			
+			local tipo = bibItem.tipo;
+			
+			if tipo == "personagem" then						
+				local filtrado = false;
+			
+				if filterFunction ~= nil then
+					filtrado = filterFunction(bibItem);
+				else	
+					filtrado = true;
+				end;
+				
+				if filtrado then	
+					chars[#chars + 1] = bibItem;
+				end;
+			elseif tipo == "diretorio" or tipo == "biblioteca" then
+				local filhos = bibItem.filhos;
+				local i;
+				
+				for i = 1, #filhos, 1 do
+					recursiveEnumChars(filhos[i], chars);
+				end
+			end;
+		end;
+		
+		local bibRoot = mesa.biblioteca;
+		recursiveEnumChars(bibRoot, chars);	
+		
+		table.sort(chars,
+			function(left, right)
+				if utils.compareStringPtBr(left.nome, right.nome) < 0 then
+					return true;
+				else
+					return false;
+				end;				
+			end);			
+		
+		return chars;
+	end;
+	
+	local function _createCharactersFilterFunction(filter)
+		local myPlayer = env.myPlayer;
+		local myLogin = nil;
+		
+		if myPlayer ~= nil then
+			myLogin = myPlayer.login;
+		end;
+		
+		return function(c)
+			-- filter function
+			local loginDono = c.loginDono;		
+			local isPC = type(loginDono) == "string" and loginDono ~= "";			
+			
+			if filter == "pc" then
+				return isPC;
+			elseif filter == "pcOnline" then	
+				return isPC and c.dono ~= nil;
+			elseif filter == "npc" then
+				return not isPC;
+			elseif filter == "all" then	
+				return true;
+			elseif filter == "mine" then
+				return isPC and (utils.compareStringPtBr(loginDono, myLogin) == 0)
+			elseif filter == nil then
+				return true;
+			else
+				error(lang("macros.error.invalidCharacterFilter") .. ": " .. tostring(filter));
+			end
+		end
+	end;
+	
+	env.choosePlayer = function(prompt, shortCircuit)
+		local players = _getPlayersSorted();
+		local playersText = {};
+		
+		for i = 1, #players, 1 do
+			playersText[i] = utils.removerFmtChat(players[i].nick) .. ' (' .. players[i].login .. ')';
+		end;
+		
+		local index = env.choose(prompt, playersText, nil, shortCircuit);
+		return players[index];
+	end;
+	
+	env.choosePlayers = function(prompt)
+		local players = _getPlayersSorted();
+		local playersText = {};
+		
+		for i = 1, #players, 1 do
+			playersText[i] = utils.removerFmtChat(players[i].nick) .. ' (' .. players[i].login .. ')';
+		end;
+		
+		local indexes = env.chooseMultiple(prompt, playersText);
+		local playersReturn = {};
+		
+		for i = 1, #indexes, 1 do
+			playersReturn[i] = players[indexes[i]]
+		end;
+		
+		return playersReturn;
+	end;
+
+	env.chooseCharacter	= function(prompt, filter, shortCircuit)
+		local chars = _getAllCharactersSorted(_createCharactersFilterFunction(filter));
+		local charsStr = {};			
+		
+		if #chars < 1 then
+			if filter == "any" then
+				error(lang("macros.error.noCharsForFilter.all"));
+			elseif filter == "pc" then
+				error(lang("macros.error.noCharsForFilter.pc"));
+			elseif filter == "pcOnline" then
+				error(lang("macros.error.noCharsForFilter.pcOnline"));
+			elseif filter == "npc" then
+				error(lang("macros.error.noCharsForFilter.npc"));
+			elseif filter == "mine" then
+				error(lang("macros.error.noCharsForFilter.mine"));			
+			else
+				error(lang("macros.error.noCharsForFilter") .. ": " .. (filter or "any"));
+			end;
+		end;
+		
+		local i;
+		
+		for i = 1, #chars, 1 do
+			charsStr[i] = chars[i].nome;
+		end;
+		
+		local idx = env.choose(prompt, charsStr, nil, shortCircuit);
+		return chars[idx];
+	end;
+	
+	env.chooseCharacterOfPlayer	= function(prompt, player, shortCircuit)		
+		local loginToSeek = nil;
+		
+		if type(player) == "number" then
+			player = env.mesa:findJogador(player);
+			
+			if player == nil then
+				error(lang("macros.error.playerNotFound") .. ": " .. tostring(player));
+			end;
+			
+			loginToSeek = player.login;
+		elseif type(player) == "string" then
+			loginToSeek = player;
+		elseif type(player) == "table" then
+			if player.objectType ~= "jogador" then
+				error(lang("macros.error.invalidParameterFunc") .. " chooseCharacterOfPlayer");
+			end;
+			
+			loginToSeek = player.login;
+		else
+			error(lang("macros.error.invalidParameterFunc") .. " chooseCharacterOfPlayer");
+		end;
+	
+		local chars = _getAllCharactersSorted(
+			function(per)
+				if utils.compareStringPtBr(per.loginDono, loginToSeek) == 0 then
+					return true;					
+				else	
+					return false;
+				end;
+			end);
+			
+		local charsStr = {};			
+		
+		if #chars < 1 then
+			error(lang("macros.error.noCharsForFilter.specificPlayer"));
+		end;
+		
+		local i;
+		
+		for i = 1, #chars, 1 do
+			charsStr[i] = chars[i].nome;
+		end;
+		
+		local idx = env.choose(prompt, charsStr, nil, shortCircuit);
+		return chars[idx];
+	end;	
+	
+	env.chooseCharacters = function(prompt, filter)
+		local chars = _getAllCharactersSorted(_createCharactersFilterFunction(filter));
+		local charsStr = {};			
+		
+		if #chars < 1 then
+			if filter == "any" then
+				error(lang("macros.error.noCharsForFilter.all"));
+			elseif filter == "pc" then
+				error(lang("macros.error.noCharsForFilter.pc"));
+			elseif filter == "pcOnline" then
+				error(lang("macros.error.noCharsForFilter.pcOnline"));
+			elseif filter == "npc" then
+				error(lang("macros.error.noCharsForFilter.npc"));
+			elseif filter == "mine" then
+				error(lang("macros.error.noCharsForFilter.mine"));					
+			else
+				error(lang("macros.error.noCharsForFilter") .. ": " .. (filter or "any"));
+			end;
+		end;
+		
+		local i;
+		
+		for i = 1, #chars, 1 do
+			charsStr[i] = chars[i].nome;
+		end;
+		
+		local indexes = env.chooseMultiple(prompt, charsStr);
+		local retTable = {};
+		
+		for i = 1, #indexes, 1 do
+			retTable[i] = chars[indexes[i]];
+		end;
+		
+		return retTable;
+	end;		
+	
+	env.getCharacterOfPlayer = function(player)
+		local loginToSeek = nil;
+		local playerObject = nil;
+		
+		if type(player) == "number" then
+			player = env.mesa:findJogador(player);
+			
+			if player == nil then
+				error(lang("macros.error.playerNotFound") .. ": " .. tostring(player));
+			end;
+			
+			loginToSeek = player.login;
+			playerObject = player;
+		elseif type(player) == "string" then
+			loginToSeek = player;
+			playerObject = env.mesa:findJogador(player);
+		elseif type(player) == "table" then
+			if player.objectType ~= "jogador" then
+				error(lang("macros.error.invalidParameterFunc") .. " getCharacterOfPlayer");
+			end;
+			
+			loginToSeek = player.login;
+			playerObject = player;
+		else
+			error(lang("macros.error.invalidParameterFunc") .. " getCharacterOfPlayer");
+		end;
+	
+		local mainPersonagem = nil;
+		
+		if playerObject ~= nil and playerObject.personagemPrincipal > 0 then
+			mainPersonagem = env.mesa:findBibliotecaItem(playerObject.personagemPrincipal);
+			
+			if mainPersonagem ~= nil then
+				return mainPersonagem;
+			end;
+		end;
+		
+		-- fallback plan 0
+		
+		local personagemHigherCode = nil;
+		
+		local chars = _getAllCharactersSorted(
+			function(per)
+				if utils.compareStringPtBr(per.loginDono, loginToSeek) == 0 then
+					if playerObject ~= nil and playerObject.personagemPrincipal == per.codigoInterno then
+						mainPersonagem = per;
+					end;					
+					
+					if personagemHigherCode == nil or per.codigoInterno > personagemHigherCode.codigoInterno then
+						personagemHigherCode = per;
+					end;
+				
+					return true;					
+				else	
+					return false;
+				end;
+			end);
+			
+		if mainPersonagem ~= nil then
+			return mainPersonagem;
+		end;		
+		
+		if personagemHigherCode ~= nil then -- fallback plan 1
+			return personagemHigherCode;
+		end;
+							
+		if #chars < 1 then -- fallback plan 2
+			error(lang("macros.error.noCharsForFilter.specificPlayer"));
+		end;
+		
+		return chars[1];	
+	end;
+	
+	env.getCharacterSheet = function(character)	
+		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yGetSheetOfCharacter', character);			
+	end;
+	
+	env.pairs = pairs;
+	env.ipairs = ipairs;
+	env.pcall = pcall;
+	env.select = select;
+	env.tonumber = tonumber;
+	env.tostring = tostring;
+	env.type = type;
+	env.unpack = unpack;
+	env.xpcall = xpcall;
+	env.assert = assert;
+	env.error = error;
+	env.table = cloneTable(table);
+	env.math = cloneTable(math);
+	env.string = cloneTable(string);	
+	env.coroutine = cloneTable(coroutine);
+	env.utils = cloneTable(utils);
+	env.ndb = cloneTable(NDB);
+	env.NDB = env.ndb;
+	
+	local originalLoad = load;
+	
+	env.load = function(chunk, chunkname, mode)
+			      return originalLoad(chunk, chunkname, mode, env);
+	           end;
+			   	
+	-- metatable para carregar informações de forma atrasada, só quando precisar.
+	local envMetaTable = {
+		__index = function(table, key)
+			local delayedLoadFunction = __delayedLoadMacroEnv[key];
+			
+			if delayedLoadFunction ~= nil then
+				local v = delayedLoadFunction(chat, env);
+				rawset(table, key, v);
+				return v;
+			else
+				return nil;
+			end;
+		end};
+	
+	setmetatable(env, envMetaTable);
+	return env;
+end;
+
+function macros.compileMacro(body, chat, macroName, endCallback)
+	local macroFunction = function (parameters)
+		local ambiente = createMacroEnvTable(chat);
+		
+		if type(parameters) == "table" then
+			for k, v in pairs(parameters) do
+				if ambiente[k] == nil and (v ~= nil) then
+					ambiente[k] = v;
+				end;
+			end;
+		end;
+	
+		
+		local f, errorMsg = load(body, macroName, "t", ambiente);
+		
+		if f == nil then
+			error("Erro ao compilar macro:\n\n" .. errorMsg);
+			return nil;
+		end;
+			
+		local co = coroutine.create(f);		
+		rawset(co, "__endCallback", endCallback);		
+		handleCoResume(co);
+	end;
+	
+	return macroFunction;
+end;
+
+return macros;

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister5D_svg" width="250" height="25" theme="dark" margins="{top=1}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			dialogs.confirmYesNo("Deseja realmente apagar essa magia?",
+								 function (confirmado)
+									if confirmado then
+										ndb.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showMagiaPopup()
+			local pop = self:findControlByName("popMagia");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de magia para exibir");
+			end;				
+		end;
+		]]>	
+	</script>
+	<edit left="0" top="1" width="140" height="23" field="nomeMagia"/>
+	<edit left="140" top="1" width="30" height="23" field="dispMagia"/>
+	<edit left="170" top="1" width="30" height="23" field="prepMagia"/>
+	<button left="200" top="1" width="23" height="23" text="i" onClick="showMagiaPopup();"/>
+	<button left="225" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+</form>

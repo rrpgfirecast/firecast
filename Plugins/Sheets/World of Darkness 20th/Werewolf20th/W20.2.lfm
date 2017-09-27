@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmW20_2" align="client" theme="dark">
+	<scrollBox align="client">
+
+		<template name="Background">
+			<edit left="0" top="5" width="95" height="20" field="$(field)" fontSize="12"/>
+			<imageCheckBox left="100" top="0" width="25" height="25" field="$(field)_1" checkedImage="images/paw_on.png" uncheckedImage="images/paw_off.png"/>
+			<imageCheckBox left="125" top="0" width="25" height="25" field="$(field)_2" checkedImage="images/paw_on.png" uncheckedImage="images/paw_off.png"/>
+			<imageCheckBox left="150" top="0" width="25" height="25" field="$(field)_3" checkedImage="images/paw_on.png" uncheckedImage="images/paw_off.png"/>
+			<imageCheckBox left="175" top="0" width="25" height="25" field="$(field)_4" checkedImage="images/paw_on.png" uncheckedImage="images/paw_off.png"/>
+			<imageCheckBox left="200" top="0" width="25" height="25" field="$(field)_5" checkedImage="images/paw_on.png" uncheckedImage="images/paw_off.png"/>
+		</template>
+
+		<layout left="0" top="0" width="255" height="205">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="5" top="0" width="240" height="20" text="BACKGROUNDS" horzTextAlign="center"/>
+
+			<layout left="15" top="25" width="225" height="25" >
+				<Background field="background_1"/>
+			</layout>
+			<layout left="15" top="50" width="225" height="25" >
+				<Background field="background_2"/>
+			</layout>
+			<layout left="15" top="75" width="225" height="25" >
+				<Background field="background_3"/>
+			</layout>
+			<layout left="15" top="100" width="225" height="25" >
+				<Background field="background_4"/>
+			</layout>
+			<layout left="15" top="125" width="225" height="25" >
+				<Background field="background_5"/>
+			</layout>
+			<layout left="15" top="150" width="225" height="25" >
+				<Background field="background_6"/>
+			</layout>
+		</layout>
+
+		<layout left="0" top="215" width="255" height="355">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="5" top="0" width="240" height="20" text="GIFTS" horzTextAlign="center"/>
+
+			<layout left="15" top="25" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="gift_1"/>
+			</layout>
+			<layout left="15" top="50" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="gift_2"/>
+			</layout>
+			<layout left="15" top="75" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="gift_3"/>
+			</layout>
+			<layout left="15" top="100" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="gift_4"/>
+			</layout>
+			<layout left="15" top="125" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="gift_5"/>
+			</layout>
+			<layout left="15" top="150" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="gift_6"/>
+			</layout>
+			<layout left="15" top="175" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="gift_7"/>
+			</layout>
+			<layout left="15" top="200" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="gift_8"/>
+			</layout>
+			<layout left="15" top="225" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="gift_9"/>
+			</layout>
+			<layout left="15" top="250" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="gift_10"/>
+			</layout>
+			<layout left="15" top="275" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="gift_11"/>
+			</layout>
+			<layout left="15" top="300" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="gift_12"/>
+			</layout>
+		</layout>
+
+		<layout left="265" top="0" width="690" height="205">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+
+			<layout left="15" top="0" width="125" height="175" >
+				<radioButton left="25" top="0" width="75" height="20" text="HOMID" horzTextAlign="center" groupName="form" field="shape"/>
+
+				<label left="0" top="70" width="125" height="20" text="No Change" horzTextAlign="center"/>
+
+				<label left="0" top="130" width="125" height="20" text="Difficulty: 6" horzTextAlign="center"/>
+			</layout>
+
+			<layout left="150" top="0" width="125" height="190" >
+				<radioButton left="25" top="0" width="75" height="20" text="GLABRO" horzTextAlign="center" groupName="form" field="shape"/>
+
+				<label left="0" top="30" width="125" height="20" text="Strength (+2)" horzTextAlign="center"/>
+				<label left="0" top="50" width="125" height="20" text="Stamina (+2)" horzTextAlign="center"/>
+				<label left="0" top="70" width="125" height="20" text="Appearance (-1)" horzTextAlign="center"/>
+				<label left="0" top="90" width="125" height="20" text="Manipulation (-2)" horzTextAlign="center"/>
+
+				<label left="0" top="130" width="125" height="20" text="Difficulty: 7" horzTextAlign="center"/>
+			</layout>
+
+			<layout left="285" top="0" width="125" height="190" >
+				<radioButton left="25" top="0" width="75" height="20" text="CRINOS" horzTextAlign="center" groupName="form" field="shape"/>
+
+				<label left="0" top="30" width="125" height="20" text="Strength (+4)" horzTextAlign="center"/>
+				<label left="0" top="50" width="125" height="20" text="Dextery (+1)" horzTextAlign="center"/>
+				<label left="0" top="70" width="125" height="20" text="Stamina (+3)" horzTextAlign="center"/>
+				<label left="0" top="90" width="125" height="20" text="Manipulation (-3)" horzTextAlign="center"/>
+				<label left="0" top="110" width="125" height="20" text="Appearance 0" horzTextAlign="center"/>
+
+				<label left="0" top="130" width="125" height="20" text="Difficulty: 6" horzTextAlign="center"/>
+				<label left="0" top="150" width="125" height="20" text="INCITE DELIRIUM" horzTextAlign="center"/>
+				<label left="0" top="170" width="125" height="20" text="IN HUMANS" horzTextAlign="center"/>
+			</layout>
+
+			<layout left="420" top="0" width="125" height="190" >
+				<radioButton left="25" top="0" width="75" height="20" text="HISPO" horzTextAlign="center" groupName="form" field="shape"/>
+
+				<label left="0" top="30" width="125" height="20" text="Strength (+3)" horzTextAlign="center"/>
+				<label left="0" top="50" width="125" height="20" text="Dexterity (+2)" horzTextAlign="center"/>
+				<label left="0" top="70" width="125" height="20" text="Stamina (+3)" horzTextAlign="center"/>
+				<label left="0" top="90" width="125" height="20" text="Manipulation (-3)" horzTextAlign="center"/>
+				<label left="0" top="110" width="125" height="20" text="+1 Die to Bite Damage" horzTextAlign="center" fontSize="11"/>
+
+				<label left="0" top="130" width="125" height="20" text="Difficulty: 7" horzTextAlign="center"/>
+			</layout>
+
+			<layout left="555" top="0" width="125" height="190" >
+				<radioButton left="25" top="0" width="75" height="20" text="LUPUS" horzTextAlign="center" groupName="form" field="shape"/>
+
+				<label left="0" top="30" width="125" height="20" text="Strength (+1)" horzTextAlign="center"/>
+				<label left="0" top="50" width="125" height="20" text="Dexterity (+2)" horzTextAlign="center"/>
+				<label left="0" top="70" width="125" height="20" text="Stamina (+2)" horzTextAlign="center"/>
+				<label left="0" top="90" width="125" height="20" text="Manipulation (-3)" horzTextAlign="center"/>
+				<label left="0" top="110" width="125" height="20" text="-2 Perception Diff" horzTextAlign="center" fontSize="11"/>
+
+				<label left="0" top="130" width="125" height="20" text="Difficulty: 6" horzTextAlign="center"/>
+			</layout>
+		</layout>
+
+		<layout left="265" top="215" width="255" height="355">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="5" top="0" width="240" height="20" text="OTHER TRAITS" horzTextAlign="center"/>
+
+			<layout left="15" top="25" width="225" height="25" >
+				<Background field="trait_1"/>
+			</layout>
+			<layout left="15" top="50" width="225" height="25" >
+				<Background field="trait_2"/>
+			</layout>
+			<layout left="15" top="75" width="225" height="25" >
+				<Background field="trait_3"/>
+			</layout>
+			<layout left="15" top="100" width="225" height="25" >
+				<Background field="trait_4"/>
+			</layout>
+			<layout left="15" top="125" width="225" height="25" >
+				<Background field="trait_5"/>
+			</layout>
+			<layout left="15" top="150" width="225" height="25" >
+				<Background field="trait_6"/>
+			</layout>
+			<layout left="15" top="175" width="225" height="25" >
+				<Background field="trait_7"/>
+			</layout>
+			<layout left="15" top="200" width="225" height="25" >
+				<Background field="trait_8"/>
+			</layout>
+			<layout left="15" top="225" width="225" height="25" >
+				<Background field="trait_9"/>
+			</layout>
+			<layout left="15" top="250" width="225" height="25" >
+				<Background field="trait_10"/>
+			</layout>
+			<layout left="15" top="275" width="225" height="25" >
+				<Background field="trait_11"/>
+			</layout>
+			<layout left="15" top="300" width="225" height="25" >
+				<Background field="trait_12"/>
+			</layout>
+		</layout>
+
+		<layout left="530" top="215" width="255" height="355">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="5" top="0" width="240" height="20" text="RITES" horzTextAlign="center"/>
+
+			<layout left="15" top="25" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="rites_1"/>
+			</layout>
+			<layout left="15" top="50" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="rites_2"/>
+			</layout>
+			<layout left="15" top="75" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="rites_3"/>
+			</layout>
+			<layout left="15" top="100" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="rites_4"/>
+			</layout>
+			<layout left="15" top="125" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="rites_5"/>
+			</layout>
+			<layout left="15" top="150" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="rites_6"/>
+			</layout>
+			<layout left="15" top="175" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="rites_7"/>
+			</layout>
+			<layout left="15" top="200" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="rites_8"/>
+			</layout>
+			<layout left="15" top="225" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="rites_9"/>
+			</layout>
+			<layout left="15" top="250" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="rites_10"/>
+			</layout>
+			<layout left="15" top="275" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="rites_11"/>
+			</layout>
+			<layout left="15" top="300" width="225" height="25" >
+				<edit left="0" top="5" width="255" height="20" field="rites_12"/>
+			</layout>
+		</layout>
+
+		<layout left="795" top="215" width="255" height="170">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="5" top="0" width="240" height="20" text="BATTLE SCARS" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="225" height="130" field="scars"/>
+		</layout>
+
+		<layout left="795" top="400" width="255" height="170">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="5" top="0" width="240" height="20" text="METIS DEFORMITY" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="225" height="130" field="deformity"/>
+		</layout>
+	</scrollBox>
+</form>

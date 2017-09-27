@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmBoardProps" width="300" height="300" drawContainer="true" resizable="true" placement="center"
+		   cancelable="false">
+ 		   
+	<import file="interfaceUtils.xml"/>
+	<style>
+		flowPart.optionPart {
+			height: 30;
+			minWidth: 50;
+			maxWidth: 5000;
+			margins: {left=2, right=2, top=2, bottom=2};
+		}
+		
+		.itemTitle {
+			align: left;
+			width: 110;
+			autoSize: false;
+			horzTextAlign: trailing;	
+			vertTextAlign: center;
+			margins:{right=5};
+		}
+		
+		.itemContent {
+			align: client;
+			margins:{right=5};
+		}
+		
+		.groupTitle {
+			align: left;						
+			autoSize: true;
+			wordWrap: false;
+			horzTextAlign: leading;	
+			vertTextAlign: center;
+			margins:{left=10, right=5};		
+			fontSize: 15;
+			fontColor: #FFCC66;
+		}
+		
+	</style>	
+
+	<template name="GroupHeader">
+		<!-- nomeLabel = uniqueName("labGroupHeader"); -->
+	
+		<flowPart class="optionPart">
+			<label name="$(nomeLabel)" class="groupTitle"/>
+			<horzLine align="bottom" strokeColor="#FFCC6670" margins="{left=10}"/>			
+		</flowPart>
+		
+		<script>
+			self.$(nomeLabel).text = lang("$(text)");
+		</script>
+	</template>
+			
+	<script><![CDATA[
+		require("system.lua");
+		require("rrpgScene_Undo.dlua");
+		local scene = nil;	
+		local ignoreRecalcWH = false;
+		local realCellWidth = 1;
+		local realCellHeight = 1;
+		local offsetCellsW = 1;
+		local offsetCellsH = 1;
+		local exibindoFOW = false;
+		
+		local _maxH = 450;
+		local _minH = 300;
+		local _useHeight;
+		local _screenSafeW, _screenSafeH = System.getScreenSize();
+		_screenSafeH = _screenSafeH - 40;
+				
+		_useHeight = _screenSafeH;
+		
+		if _useHeight < _minH then
+			_useHeight = _minH;
+		elseif _useHeight > _maxH then
+			_useHeight = _maxH;
+		end;
+		
+		self.height = _useHeight;
+		]]>
+	</script>	
+	
+	<tabControl align="client">
+		<tab name="tabPrincipal">	
+			<scrollBox align="client">
+				<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" name="flaContent">			
+					<GroupHeader text="scene.menu.sceneOptions"/>		
+					
+					<!-- Tipo de célula -->
+					<flowPart class="optionPart" name="partTipoCelula">	
+						<label name="labTipoDeCelula" class="itemTitle"/>
+						<flowLayout name="flaTipoDeCelula" class="itemContent" onAfterLayoutCalc="self.partTipoCelula.height = math.max(30, self.flaTipoDeCelula.contentHeight)">
+							<style>
+								flowPart.cellTypePart {
+									minWidth: 50;
+									maxWidth: 50;
+									height: 30;
+									margins: {left=3, right=3, top=3, bottom=3};
+									hitTest: true;
+								}
+								
+								radioButton.cellType {
+									align: left;
+									width: 20;
+									groupName: sceneCellType;
+								}
+								
+								image.cellType {
+									align: client;
+								}
+								
+								path.cellType {
+									align: client;
+									mode: fit;
+									color: #00000000;
+									strokeColor: white;
+									strokeSize: 1.0;
+									hitTest: false;
+									roundToPixel: true;
+								}
+							</style>
+							
+							<flowPart class="cellTypePart" onClick="self.rbtCellTypeQuad.checked = true">
+								<radioButton name="rbtCellTypeQuad" class="cellType" onChange="self:rbtCellTypeChanged()"/>
+								<path class="cellType" data="M 0 0 L 1 0 L 1 1 L 0 1 z"/>
+							</flowPart>
+							
+							<flowPart class="cellTypePart" onClick="self.rbtCellTypeVertHex.checked = true">
+								<radioButton name="rbtCellTypeVertHex" class="cellType" onChange="self:rbtCellTypeChanged()"/>
+								<path class="cellType" data="M 84 0 L 168 50 L 168 140 L 84 190 L 0 140 L 0 50 z"/>
+							</flowPart>
+							
+							<flowPart class="cellTypePart" onClick="self.rbtCellTypeHorzHex.checked = true">
+								<radioButton name="rbtCellTypeHorzHex" class="cellType" onChange="self:rbtCellTypeChanged()"/>
+								<path class="cellType" data="M 0 84 L 50 0 L 140 0 L 190 84 L 140 168 L 50 168 Z" />
+							</flowPart>									
+						</flowLayout>
+					</flowPart>		
+
+					<!-- Diagonais -->
+					<flowPart class="optionPart" name="partSquareDiagonals">	
+						<label name="labDiagonais" class="itemTitle"/>
+						<comboBox name="cmbDiagonais" class="itemContent"/>
+					</flowPart>		
+				
+					<!-- Tamanho de cada Célula -->
+					<flowPart class="optionPart">	
+						<label name="labCellSize" class="itemTitle"/>
+						<layout class="itemContent">
+							<edit name="edtCellSize" type="float" align="client" decimalPlaces="1" min="0.1">		
+								<event name="onChange">
+									ignoreRecalcWH = true;
+									self:recalculateRealCellSize();
+									self.edtLargura.min = realCellWidth;
+									self.edtAltura.min = realCellHeight;
+									self.edtLargura.asNumber = self:cellsToMetric(self.edtLarguraCells.asNumber, realCellWidth, offsetCellsW);				
+									self.edtAltura.asNumber = self:cellsToMetric(self.edtAlturaCells.asNumber, realCellHeight, offsetCellsH);			
+									ignoreRecalcWH = false;
+								</event>
+							</edit>
+							
+							<comboBox name="cmbMetric" align="right" width="90" margins="{left=5}" onChange="self:atualizarTitulosLarguraAltura()"/>
+						</layout>
+					</flowPart>				
+				
+					<!-- Dimensões -->
+					<flowPart class="optionPart" name="partDimensoes" margins="{left=2, right=2, top=3, bottom=3}">	
+						<label name="labDimensoes" class="itemTitle" wordWrap="true"/>
+						<layout name="layContentDimensions" class="itemContent">
+							<flowLayout name="flaContentDimensions" align="top" autoHeight="true" onAfterLayoutCalc="self.partDimensoes.height = self.flaContentDimensions.height;">
+								
+								<edit name="edtLargura" width="50" type="float" decimalPlaces="1" min="0.1"/>
+								<label name="labLarguraXAltura" autoSize="true" wordWrap="false" margins="{left=5, right=5}" text="x" horzTextAlign="center"/>
+								<edit name="edtAltura" width="50" type="float" decimalPlaces="1" min="0.1"/>
+								<label name="labLarguraAlturaMetric" autoSize="true" margins="{left=5}" wordWrap="false" fontSize="11"/>						
+								<flowLineBreak />	
+								<label name="labLarguraAlturaOr" autoSize="true" horzTextAlign="leading" wordWrap="false" margins="{left=55}"/>
+								<flowLineBreak/>	
+								<edit name="edtLarguraCells" width="50" type="float" decimalPlaces="1" min="1"/>
+								<label name="labLarguraXAlturaCells" autoSize="true" wordWrap="false" margins="{left=5, right=5}" text="x" horzTextAlign="center"/>
+								<edit name="edtAlturaCells" width="50" type="float" decimalPlaces="1" min="1"/>
+								<label name="labLarguraAlturaMetricCells" autoSize="true" margins="{left=5}" wordWrap="false" fontSize="10"/>						
+							</flowLayout>
+						</layout>
+										
+					</flowPart>						
+															
+							
+					<!-- Cor de Fundo -->
+					<flowPart class="optionPart">	
+						<label name="labCorDeFundo" class="itemTitle"/>
+						<colorComboBox name="cmbCorFundo" useAlpha="false" class="itemContent"/>
+					</flowPart>			
+							
+					<GroupHeader text="scene.grid"/>		
+							
+					<!-- Exibir Linhas do Grid -->
+					<flowPart class="optionPart">	
+						<label name="labDrawGridLines" class="itemTitle"/>
+						<checkBox name="cbxDrawGrid" class="itemContent"/>
+					</flowPart>							
+							
+					<!-- Cor do Grid -->
+					<flowPart class="optionPart">	
+						<label name="labCorGrid" class="itemTitle"/>
+						<colorComboBox name="cmbCorGrid" class="itemContent"/>
+					</flowPart>			
+							
+					<!-- Deslocamento do Grid -->
+					<flowPart class="optionPart" name="partGridOffset">	
+						<label name="labDeslocamentoGrid" class="itemTitle"/>					
+						<flowLayout name="flaContentOffset" class="itemContent" onAfterLayoutCalc="self.partGridOffset.height = math.max(self.flaContentOffset.contentHeight, 30);">					
+							<edit name="edtOffsetX" width="50" type="float" decimalPlaces="2"/>
+							<label name="labOffsetXOffsetY" autoSize="true" wordWrap="false" margins="{left=5, right=5}" text="x" horzTextAlign="center"/>
+							<edit name="edtOffsetY" width="50" type="float" decimalPlaces="2"/>
+							<label name="labOffsetMetric" autoSize="true" margins="{left=5}" wordWrap="false" fontSize="11"/>												
+						</flowLayout>				
+					</flowPart>							
+							
+				</flowLayout>
+			</scrollBox>
+		</tab>
+		
+		<!-- Imagem de Fundo -->
+		
+		<tab name="tabBkgImg">
+			<scrollBox align="client">
+				<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" name="flaContentBkg">			
+					<GroupHeader text="scene.bkgImageTabTitle"/>						
+							
+					<!-- Enabled -->
+					<flowPart class="optionPart" height="200">	
+						<label name="labBkgImg" class="itemTitle" visible="false"/>
+						<rectangle name="rctBkgImg" class="itemContent" strokeColor="white" color="None" strokeSize="1">
+							<image name="imgBkgImg" align="client" style="proportional" center="true" editable="true" margins="{top=2, left=2, right=2}"/>
+							<label name="labOrientBkgImg" align="bottom" wordWrap="false" fontSize="10" horzTextAlign="center"/>
+						</rectangle>						
+						
+						<script>						   
+						     local __m = self.rctBkgImg.margins;
+							 __m.left = __m.right;
+							 self.rctBkgImg.margins = __m;
+						 </script>						
+					</flowPart>					
+				</flowLayout>
+			</scrollBox>		
+		</tab>
+		
+		<!-- Fog of War -->
+		
+		<tab name="tabFOW">
+			<scrollBox align="client">
+				<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" name="flaContentFOW">			
+					<GroupHeader text="scene.gm.editFow"/>						
+							
+					<!-- Enabled -->
+					<flowPart class="optionPart">	
+						<label name="labEnableFoW" class="itemTitle"/>
+						<checkBox name="cbxEnableFoW" class="itemContent"/>
+					</flowPart>					
+					
+					<!-- Luz Ambiente -->
+					<flowPart class="optionPart">	
+						<label name="labAmbientLight" class="itemTitle"/>
+						<comboBox name="cmbAmbientLight" class="itemContent"/>
+					</flowPart>		
+					
+					<!-- Compartilhamento -->
+					<flowPart class="optionPart">	
+						<label name="labFogSharing" class="itemTitle"/>
+						<comboBox name="cmbFogSharing" class="itemContent"/>
+					</flowPart>		
+				</flowLayout>
+			</scrollBox>
+		</tab>
+	</tabControl>
+			
+	<BottomActionCancelPopupPanel actionClick="self:processarOK()" cancelClick="self:processarCancel()"/>
+	
+	<script><![CDATA[	
+		self.title = lang('scene.menu.sceneOptions');
+		self.labCorDeFundo.text = lang('scene.title.bkgColor');
+		self.labCellSize.text = lang('scene.cellSize');
+		self.labDimensoes.text = lang('scene.dimensionsTitle');		
+		self.labLarguraAlturaOr.text = lang("scene.or");
+		self.labLarguraAlturaMetricCells.text = lang("scene.cells");
+		self.labTipoDeCelula.text = lang("scene.cellType");
+		self.labCorGrid.text = lang('scene.gridColor');
+		self.cbxDrawGrid.text = lang('scene.drawGrid');
+		self.labDeslocamentoGrid.text = lang('scene.gridOffset');
+		self.labDiagonais.text = lang('scene.squareDiagonals');
+		self.tabPrincipal.text = lang('scene.menu.sceneOptions.tabPrincipal');
+		self.tabFOW.text = lang('scene.fogOfWar');		
+		self.tabBkgImg.text = lang('scene.bkgImageTabTitle');
+		self.labBkgImg.text = lang('scene.bkgImageTabTitle.useThis');		
+		self.labOrientBkgImg.text = lang('scene.bkgImageTabTitle.guide');
+		
+		self.labEnableFoW.text = lang('scene.fogOfWar.options.enabled');
+		self.labAmbientLight.text = lang('scene.fogOfWar.options.ambientLight');
+		self.labFogSharing.text = lang('scene.fogOfWar.options.sharing');		
+		
+		local metricValues = {'cm', 'in', 'm', 'ft', 'km', 'mi', 'anoluz'};
+		local metricNames = {};
+		
+		self.cmbAmbientLight.items = {lang("scene.fogOfWar.options.ambientLight.intense"), 
+									  lang("scene.fogOfWar.options.ambientLight.weak"),
+									  lang("scene.fogOfWar.options.ambientLight.none")};
+		self.cmbAmbientLight.values = {"intense", "weak", "none"};
+		
+		self.cmbFogSharing.items = {lang('scene.fogOfWar.options.sharing.individual'),
+									lang('scene.fogOfWar.options.sharing.group')};
+		self.cmbFogSharing.values = {"individual", "group"};									
+		
+		if System.isMobile() then
+			self.placement = "top";
+		end;
+		
+		for i = 1, #metricValues, 1 do
+			metricNames[i] = lang("metric." .. metricValues[i]);
+		end;
+		
+		self.cmbMetric.values = metricValues;
+		self.cmbMetric.items = metricNames;
+		
+		self.cmbDiagonais.values = {"simplified", "alternated", "manhattan", "euclidean"};
+		self.cmbDiagonais.items = {lang("scene.diagonals.simplified"), 
+								   lang("scene.diagonals.alternated"), 
+								   lang("scene.diagonals.manhattan"), 
+								   lang("scene.diagonals.euclidean")};
+		
+		self.edtLargura.onChange = function()
+			if not ignoreRecalcWH then
+				ignoreRecalcWH = true;								
+				self.edtLarguraCells.asNumber = self:metricToCells(self.edtLargura.asNumber, realCellWidth, offsetCellsW);		
+				ignoreRecalcWH = false;
+			end;
+		end;
+		
+		self.edtAltura.onChange = function()
+			if not ignoreRecalcWH then
+				ignoreRecalcWH = true;
+				self.edtAlturaCells.asNumber = self:metricToCells(self.edtAltura.asNumber, realCellHeight, offsetCellsH);									
+				ignoreRecalcWH = false;
+			end;
+		end;		
+		
+		self.edtLarguraCells.onChange = function()
+			if not ignoreRecalcWH then
+				ignoreRecalcWH = true;			
+				self.edtLargura.asNumber = self:cellsToMetric(self.edtLarguraCells.asNumber, realCellWidth, offsetCellsW);														
+				ignoreRecalcWH = false;
+			end;
+		end;	
+
+		self.edtAlturaCells.onChange = function()
+			if not ignoreRecalcWH then
+				ignoreRecalcWH = true;
+				self.edtAltura.asNumber = self:cellsToMetric(self.edtAlturaCells.asNumber, realCellHeight, offsetCellsH);	
+				ignoreRecalcWH = false;
+			end;
+		end;
+		
+		function self:recalculateRealCellSize()
+			local diagonalsVisible = false;
+		
+			if self.rbtCellTypeVertHex.checked then
+				realCellWidth = self.edtCellSize.asNumber;
+				realCellHeight = self.edtCellSize.asNumber * (2 / math.sqrt(3));				
+				offsetCellsW = realCellWidth;
+				offsetCellsH = realCellHeight * 0.75;
+				self.edtOffsetX.min = -realCellWidth;
+				self.edtOffsetX.max = realCellWidth;
+				self.edtOffsetY.min = -2 * realCellHeight;
+				self.edtOffsetY.max = 2 * realCellHeight;						
+			elseif self.rbtCellTypeHorzHex.checked then
+				realCellWidth = self.edtCellSize.asNumber * (2 / math.sqrt(3));
+				realCellHeight = self.edtCellSize.asNumber;							
+				offsetCellsW = realCellWidth * 0.75;
+				offsetCellsH = realCellHeight;		
+				self.edtOffsetX.min = -2 * realCellWidth;
+				self.edtOffsetX.max = 2 * realCellWidth;
+				self.edtOffsetY.min = -realCellHeight;
+				self.edtOffsetY.max = realCellHeight;				
+			else
+				realCellWidth = self.edtCellSize.asNumber;
+				realCellHeight = self.edtCellSize.asNumber;						
+				offsetCellsW = realCellWidth;
+				offsetCellsH = realCellHeight;				
+				self.edtOffsetX.min = -realCellWidth;
+				self.edtOffsetX.max = realCellWidth;
+				self.edtOffsetY.min = -realCellHeight;
+				self.edtOffsetY.max = realCellHeight;				
+				diagonalsVisible = true;
+			end;					
+			
+			if diagonalsVisible ~= self.partSquareDiagonals.visible then
+				self.partSquareDiagonals.visible = diagonalsVisible;
+				self.flaContent:needRealign();
+			end;
+		end;		
+		
+		function self:metricToCells(metric, cellSize, cellOffset)
+			if metric <= cellSize then
+				return metric / cellSize;
+			else
+				return 1 + (metric - cellSize) / cellOffset;
+			end;
+		end;
+		
+		function self:cellsToMetric(cells, cellSize, cellOffset)
+			if cells < 1 then
+				return cells * cellSize;
+			else
+				return cellSize + (cells - 1) * cellOffset;
+			end;
+		end;
+		
+		function self:rbtCellTypeChanged()		
+			self:recalculateRealCellSize()
+			
+			if not ignoreRecalcWH then
+				ignoreRecalcWH = true;
+				self.edtLargura.asNumber = self:cellsToMetric(self.edtLarguraCells.asNumber, realCellWidth, offsetCellsW);				
+				self.edtAltura.asNumber = self:cellsToMetric(self.edtAlturaCells.asNumber, realCellHeight, offsetCellsH);					
+				ignoreRecalcWH = false;
+			end;		
+		end;
+		
+		function self:atualizarTitulosLarguraAltura()
+			self.labLarguraAlturaMetric.text = self.cmbMetric.text;
+			self.labOffsetMetric.text = self.cmbMetric.text;
+		end;
+		
+		function self:prepareForShow(oScene)
+			scene = oScene;
+			
+			self:beginUpdate();
+			self.cmbCorFundo.color = scene.bkgColor;
+			self.cmbCorGrid.color = scene.grid.gridColor;
+			self.edtCellSize.asNumber = scene.grid.cellSize;
+			self.cmbMetric.value = scene.worldMetricName;	
+			self.cbxDrawGrid.checked = scene.grid.drawGrid;
+			self.edtOffsetX.asNumber = scene.grid.offsetX;
+			self.edtOffsetY.asNumber = scene.grid.offsetY;
+			self.cmbDiagonais.value = scene.grid.squareDiagonals;
+			self:atualizarTitulosLarguraAltura();
+			
+			local gridType = scene.grid.gridType;
+			
+			self.rbtCellTypeVertHex.checked = false;
+			self.rbtCellTypeHorzHex.checked = false;
+			self.rbtCellTypeQuad.checked = false;
+			
+			if gridType == "vertHex" then
+				self.rbtCellTypeVertHex.checked = true;
+			elseif gridType == "horzHex" then
+				self.rbtCellTypeHorzHex.checked = true;
+			else
+				self.rbtCellTypeQuad.checked = true;
+			end;
+			
+			self:recalculateRealCellSize();		
+			
+			exibindoFOW = scene.isGM;
+			self.tabFOW.visible = exibindoFOW;
+			self.tabBkgImg.visible = scene.isGM;
+			
+			ignoreRecalcWH = true;
+			self.edtLargura.asNumber = scene.worldWidth;
+			self.edtAltura.asNumber = scene.worldHeight;
+			self.edtLarguraCells.asNumber = self:metricToCells(self.edtLargura.asNumber, realCellWidth, offsetCellsW);
+			self.edtAlturaCells.asNumber = self:metricToCells(self.edtAltura.asNumber, realCellHeight, offsetCellsH);
+			self.edtLargura.min = scene.grid.cellSize;
+			self.edtAltura.min = scene.grid.cellSize;
+			self.cbxEnableFoW.checked = scene.fogOfWar.enabled;
+			self.cmbAmbientLight.value = scene.fogOfWar.ambientLight;	
+			self.cmbFogSharing.value = scene.fogOfWar.sharingMode;
+			self.imgBkgImg.src = scene.bkgImageURL;
+			
+			ignoreRecalcWH = false;
+			self:endUpdate();
+		end;		
+		
+		function self:processarOK()
+			SC3UNDO_Capture(scene,
+				function()						
+					scene:beginUpdate();			
+					scene.bkgColor = self.cmbCorFundo.color;
+					scene.grid.gridColor = self.cmbCorGrid.color;
+					scene.grid.cellSize = self.edtCellSize.asNumber;
+					scene.grid.drawGrid = self.cbxDrawGrid.checked;
+					scene.worldMetricName = self.cmbMetric.value;
+					scene.worldWidth = self.edtLargura.asNumber;
+					scene.worldHeight = self.edtAltura.asNumber;
+					scene.grid.offsetX = self.edtOffsetX.asNumber;
+					scene.grid.offsetY = self.edtOffsetY.asNumber;
+					scene.grid.squareDiagonals = self.cmbDiagonais.value;
+					
+					if self.rbtCellTypeVertHex.checked then
+						scene.grid.gridType = "vertHex";
+					elseif self.rbtCellTypeHorzHex.checked then
+						scene.grid.gridType = "horzHex";
+					else
+						scene.grid.gridType = "square";
+					end;
+					
+					if exibindoFOW then
+						scene.fogOfWar.enabled = self.cbxEnableFoW.checked;
+						scene.fogOfWar.ambientLight = self.cmbAmbientLight.value;	
+						scene.fogOfWar.sharingMode = self.cmbFogSharing.value;						
+					end;
+					
+					if self.tabBkgImg.visible  then
+						scene.bkgImageURL = self.imgBkgImg.src;					
+					end;
+					
+					scene:endUpdate();
+				end);
+			self:close();
+		end;
+		
+		function self:processarCancel()
+			self:close();
+		end;
+		]]>
+	</script>
+	
+	<event name="onKeyUp">	
+		if (event.keyCode == 0x89) or (event.keyCode == 0x1B) then
+			setTimeout(
+				function()
+					self:processarCancel();
+				end, 1);
+			
+			event.keyCode = 0;
+			event.key = "";
+		end;
+	</event>	
+	
+	<event name="onCancelRequest">
+		self:processarCancel();
+	</event>
+	
+</popupForm>

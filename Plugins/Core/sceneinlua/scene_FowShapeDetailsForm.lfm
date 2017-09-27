@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmFoWShapeDetails" cancelable="true" drawContainer="false" width="188" height="34" theme="light"
+		   cursor="arrow" canFocus="false">
+		   
+	<import file="sceneTags.xml"/>
+
+	<script>
+		require("rrpgScene_ShapesMaker.dlua");
+	
+		local DEFAULT_OPTIONS = {shape=SHAPE_RECTANGLE};
+		local options = nil;
+		local data = {};
+		
+		function self:popularData()			
+			data.shape = tonumber(self.cmbShape.value);
+		end;		
+		
+		local function notificarChange()
+			if options.onChange ~= nil then
+				options.onChange(data);
+			end;
+		end;		
+				
+		local inChange = false;
+				
+		function self:doShapeChanged()		
+			if inChange then
+				return;
+			end;
+		
+			inChange = true;
+		
+			if self.isShowing then																				
+				data.shape = tonumber(self.cmbShape.value);
+				notificarChange();		
+			end;
+			
+			inChange = false;
+		end;
+	</script>
+	
+	<style>
+		colorComboBox, comboBox {
+			height: 30;
+			width: 100;			
+		}
+		
+		checkBox, label {
+			width: 70;
+			height: 30;
+			margins: {left=4, right=6};
+			fontSize: 11;
+			horzTextAlign: trailing;
+		}
+		
+		label {
+			wordWrap: true;
+		}
+	</style>
+	
+	<flowLayout name="flaLayout" align="client" margins="{left=2, top=2, bottom=2, right=2}">
+		<label name="labShape"/>
+		<comboBox name="cmbShape" onChange="self:doShapeChanged();" />	
+	</flowLayout>	
+	
+	<script><![CDATA[
+		self.labShape.text = lang('shapeMaker.shape');
+		
+		self.cmbShape.items = {lang("shapeMaker.freeHand"), lang("shapeMaker.rectangle"), lang("shapeMaker.ellipse"), lang("shapeMaker.polygon")};
+		self.cmbShape.values = {SHAPE_FREE_HAND, SHAPE_RECTANGLE, SHAPE_ELLIPSE, SHAPE_POLYGON};
+
+		function self:prepareForShow(theOptions)
+			inChange = true;
+			self:beginUpdate();
+			options = theOptions or DEFAULT_OPTIONS;
+			options.shape = options.shape or SHAPE_RECTANGLE;
+						
+			data = {};
+			self.cmbShape.value = options.shape;
+			self:popularData();
+			self:endUpdate();
+			inChange = false;
+		end;
+		
+		function self:prepareForClose()
+			options = DEFAULT_OPTIONS;
+		end;
+		]]>
+	</script>	
+	
+	<event name="onKeyUp">	
+	</event>
+
+	
+</popupForm>

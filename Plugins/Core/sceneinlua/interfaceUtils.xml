@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+	<style>
+		label.tituloForm {
+			fontSize: 15;
+			fontColor: #FFCC66;
+			margins: {left=4, right=4, top=3, bottom=3};
+			horzTextAlign: leading;
+			align: top;
+			autoSize: true;
+		}
+		
+		.conteudoForm {
+			align: client;
+			margins: {left=12, right=12, top=1, bottom=5};
+		}
+		
+		.rodapeForm {
+			align: bottom;
+			margins: {top=2, bottom=2};
+			height: 40;
+		}
+		
+		.rodapeButton {
+			width: 100;
+			margins: {left=4, right=4};
+		}		
+	</style>
+		
+	<template name="ActionCancelPopupPanel">
+		<!-- 
+			btnOkName = uniqueName("btnOk");
+			btnCancelName = uniqueName("btnCancel");
+		-->
+		<button width="$(actionWidth or 100)" 
+				horzTextAlign="center" class="rodapeButton" align="right"
+				onClick="$(actionClick)"
+				name="$(btnOkName)"/>
+				
+		<button horzTextAlign="center" class="rodapeButton" align="right" 
+				onClick="$(cancelClick or 'gui.closePopup(self);')"
+				name="$(btnCancelName)"/>	
+
+		<script>
+			self.$(btnOkName).text = lang("$(actionText)");
+			self.$(btnCancelName).text = lang("cancelar");
+		</script>
+	</template>
+	
+	<template name="BottomActionCancelPopupPanel">
+		<layout class="rodapeForm">
+			<ActionCancelPopupPanel actionText="$(actionText or 'Ok')" actionClick="$(actionClick)" 
+									actionWidth="$(actionWidth or 100)"
+								    cancelClick="$(cancelClick)"/>
+		</layout>		
+	</template>
+</group>

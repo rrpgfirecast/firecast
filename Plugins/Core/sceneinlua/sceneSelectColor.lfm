@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmSelColor" width="300" height="160" drawContainer="true" resizable="true" placement="center"
+		   cancelable="false">
+ 		   
+	<import file="interfaceUtils.xml"/>
+	<style>
+		flowPart.optionPart {
+			height: 30;
+			minWidth: 50;
+			maxWidth: 5000;
+			margins: {left=2, right=2, top=2, bottom=2};
+		}
+		
+		.itemTitle {
+			align: left;
+			width: 20;
+			autoSize: false;
+			horzTextAlign: trailing;	
+			vertTextAlign: center;
+			margins:{right=5};
+		}
+		
+		.itemContent {
+			align: client;
+			margins:{right=20};
+		}
+		
+		.groupTitle {
+			align: left;						
+			autoSize: true;
+			wordWrap: false;
+			horzTextAlign: leading;	
+			vertTextAlign: center;
+			margins:{left=10, right=5};		
+			fontSize: 15;
+			fontColor: #FFCC66;
+		}	
+	</style>	
+
+	<template name="GroupHeader">
+		<!-- nomeLabel = "labGroupHeader";
+		    uniqueName("labGroupHeader"); -->
+	
+		<flowPart class="optionPart">
+			<label name="$(nomeLabel)" class="groupTitle"/>
+			<horzLine align="bottom" strokeColor="#FFCC6670" margins="{left=10}"/>			
+		</flowPart>
+		
+		<script>
+			self.$(nomeLabel).text = lang("$(text)");
+		</script>
+	</template>
+			
+	<script>
+		require("system.lua");
+		
+		local options = nil;		
+		self.onRetorno = nil; -- preencher este callback para processar		
+	</script>	
+	
+	<scrollBox align="client">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" name="flaContent">			
+			<GroupHeader text="scene.selectColor.title"/>		
+						
+			
+			<!-- Definir cor -->
+			<flowPart class="optionPart">	
+				<label name="labDefinirCor" class="itemTitle"/>
+				<checkBox name="cbxDefinirCor" class="itemContent" onChange="self.cmbCor.enabled = self.cbxDefinirCor.checked;"/>													
+			</flowPart>	
+			
+			<flowPart class="optionPart">	
+				<label name="labACor" class="itemTitle"/>									
+				<colorComboBox name="cmbCor" class="itemContent" useAlpha="true"/>
+			</flowPart>				
+
+		</flowLayout>
+	</scrollBox>
+	
+	<BottomActionCancelPopupPanel actionClick="self:processarOK()" cancelClick="self:processarCancel()"/>
+	
+	<script><![CDATA[	
+		self.title = lang('scene.selectColor.title');	
+		self.cbxDefinirCor.text = lang("scene.selectColor.defineColor");
+
+		function self:prepareForShow(corInicial, theOptions)
+			theOptions = theOptions or {};			
+			options = theOptions;
+	
+			self:beginUpdate();
+			
+			if theOptions.title ~= nil then
+				self.labGroupHeader.text = theOptions.title;
+				self.title = theOptions.title;
+			else
+				self.labGroupHeader.text = lang('scene.selectColor.title');
+				self.title = lang('scene.selectColor.title');
+			end;
+			
+			if theOptions.defineTitle ~= nil then
+				self.cbxDefinirCor.text = theOptions.defineTitle;
+			end;
+			
+			local isNullColor = corInicial == "Null" or corInicial == "#00000000" or 
+			   corInicial == "Transparent" or corInicial == "None" or 
+			   corInicial == nil;
+			
+			if isNullColor then
+				if theOptions.defaultColor ~= nil then
+					self.cbxDefinirCor.checked = true;
+					self.cmbCor.color = theOptions.defaultColor;					
+				else			
+					self.cbxDefinirCor.checked = false;
+					self.cmbCor.color = "#000000FF";
+				end;
+			else
+				self.cbxDefinirCor.checked = true;
+				self.cmbCor.color = corInicial;
+			end;		
+			
+			if theOptions.useAlpha ~= nil then
+				self.cmbCor.useAlpha = theOptions.useAlpha; 
+			end;
+			
+			self.cmbCor.enabled = self.cbxDefinirCor.checked;			
+			self:endUpdate();
+		end;		
+		
+		function self:processarOK()
+			if self.onRetorno ~= nil then
+				self.onRetorno(self.cmbCor.color, self.cbxDefinirCor.checked);
+			end;			
+	
+			self:close();
+		end;
+		
+		function self:processarCancel()
+			self:close();
+		end;
+		]]>
+	</script>
+	
+	<event name="onKeyUp">	
+		if (event.keyCode == 0x89) or (event.keyCode == 0x1B) then
+			setTimeout(
+				function()
+					self:processarCancel();
+				end, 1);
+			
+			event.keyCode = 0;
+			event.key = "";
+		end;
+	</event>	
+	
+	<event name="onCancelRequest">
+		self:processarCancel();
+	</event>
+	
+</popupForm>

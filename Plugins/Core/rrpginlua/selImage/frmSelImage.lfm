@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmSelImagemURL" title="Imagem" height="300" width="300" resizable="true">
+	<import file="../interfaceUtils.xml"/>
+
+	<script> <![CDATA[		
+		function self:adaptarTamanhoDaTela()
+			local sw, sh = system.getScreenSize();
+			local dw = 650;
+			local dh = 600;
+		
+			if dw > sw - 15 then
+				dw = sw - 15;
+			end;
+			
+			if dh > sh - 15 then
+				dh = sh - 15;
+			end;
+						
+			self.width = dw;
+			self.height = dh;
+		end;
+	
+		self:adaptarTamanhoDaTela();
+	
+		local cUser = rrpg.getCurrentUser();
+		local canUseFireDrive = cUser.isGold or cUser.isGoldPlus or cUser.isRuby;		
+		
+		if canUseFireDrive then							
+			self.navigator = require("/firedrive/firedriveNavigator.dlua").newFDNavigatorLayout();				
+		end;
+		
+		function self:prepare()
+			if self._defaultUrl ~= nil and type(self._defaultUrl) == "string" then
+				self.edtURL.text = self._defaultUrl;
+			end;
+		end;
+		
+		function self:retornarOK(url)
+			self.__retornouOK = true;
+		
+			if self._callback ~= nil then
+				self._callback(url);
+			end;
+			
+			self._cancelCallback = nil;		
+			self._callback = nil;						
+			self:close();
+		end;
+		
+		function self:retornarCancel(deveFecharForm)
+			if not self.__retornouOK and self._cancelCallback ~= ni then
+				self._cancelCallback();
+			end;
+			
+			self._cancelCallback = nil;		
+			self._callback = nil;
+			
+			if deveFecharForm then
+				self:close();
+			end;
+		end;
+				
+		self.onHide = function()
+			if not self.__retornouOK then
+				self:retornarCancel(false);
+			end;
+			
+			if self.navigator ~= nil then
+				self.navigator:finalizar();
+				self.navigator = nil;
+			end;
+		end;
+		
+		self.onShow = function()
+			self.edtURL:setFocus();
+			self.rdbURL.checked = true;
+		end;
+		
+		function self:tryDespacharOK()
+			if self.rdbFireDrive.checked then
+				if self.navigator ~= nil then
+					local sel = self.navigator:getSelectedItem();
+					
+					if (sel ~= nil) and (not sel.uploading) and (not sel.isDir) and (sel.url ~= nil) then
+						self:retornarOK(sel.url);
+					end;
+				end;
+			else
+				self:retornarOK(self.edtURL.text);
+			end;
+		end;
+		
+     ]]>		
+	</script>
+	
+	<label class="tituloForm" text="Selecione uma imagem"/>
+		
+	<flowLayout align="client" name="flwMain" class="conteudoForm">
+		<!-- Imagem de um site -->
+		<flowPart name="flpImgSite" height="20" minWidth="180" maxWidth="99999" margins="{top=10}">
+			<radioButton name="rdbURL" text="Uma imagem de um site " width="175" align="left" vertTextAlign="center"/>
+			<horzLine name="linha1" strokeColor="white"/>
+			
+			<event name="onResize">
+				self.linha1.left = self.rdbURL.width;
+				self.linha1.width = self.flpImgSite.width - self.rdbURL.width;
+				self.linha1.top = self.flpImgSite.height / 2 - self.linha1.height / 2;
+			</event>														
+		</flowPart>
+		<flowLineBreak/>
+		
+		<flowPart margins="{left=20, top=5}" minWidth="180" maxWidth="9999" height="30">
+			<label text="URL da imagem: " align="left" autoSize="true" wordWrap="false"/>
+			<edit name="edtURL" align="client" margins="{left=4}" onEnter="self.rdbURL.checked = true;">
+				<event name="onKeyDown">
+					if event.keyCode == 13 or event.key == "\n" then
+						event.keyCode = 0;
+						event.key = "";
+						self:tryDespacharOK();
+					elseif event.keyCode == 27 then
+						self:retornarCancel(true);
+						event.keyCode = 0;
+						event.key = "";
+					end;
+				</event>
+			</edit>
+		</flowPart>
+		<flowLineBreak/>
+		
+		<!-- Imagem do FireDrive -->
+		<flowPart name="flpImgFireDrive" height="20" minWidth="180" maxWidth="99999" margins="{top=25}">
+			<radioButton name="rdbFireDrive" text="Uma imagem do FireDrive " width="185" align="left" vertTextAlign="center"/>
+			<horzLine name="linha2" strokeColor="white"/>
+			
+			<event name="onResize">
+				self.linha2.left = self.rdbFireDrive.width;
+				self.linha2.width = self.flpImgFireDrive.width - self.rdbFireDrive.width;
+				self.linha2.top = self.flpImgFireDrive.height / 2 - self.linha2.height / 2;
+			</event>														
+		</flowPart>
+		<flowLineBreak/>	
+
+		<flowPart name="fireDriveNavigatorContent" margins="{left=20, top=5}" minWidth="180" maxWidth="9999" height="80">
+
+		</flowPart>
+
+		<event name="onAfterLayoutCalc"><![CDATA[
+			local fdCH = self.flwMain.height - self.fireDriveNavigatorContent.top - self.flwMain.padding.bottom;
+			
+			if fdCH < 10 then
+				fdCH = 10;
+			end;
+			
+			if fdCH ~= self.fireDriveNavigatorContent.height then
+				self.fireDriveNavigatorContent.height = fdCH;
+			end;
+			]]>
+		</event>
+	</flowLayout>
+
+	<BottomActionCancelPopupPanel actionClick="self:tryDespacharOK()" cancelClick="self:retornarCancel(true)"/>
+	
+	<script>
+		
+		if self.navigator ~= nil then
+			self.navigator.filter = "image/.+";
+			self.navigator:gotoDir('/');
+			self.navigator.align = "client";
+			self.navigator.parent = self.fireDriveNavigatorContent;		
+			
+			
+			self.navigator.onUIActivity = function()
+				if (not self.rdbFireDrive.checked) and self.rdbFireDrive.enabled then
+					self.rdbFireDrive.checked = true;
+				end;						
+			end;
+			
+			self.navigator.onOpenItem = function(item)
+				self:retornarOK(item.url);
+			end;
+			
+			self.navigator.onRequestCancel = function()
+				self:retornarCancel(true);
+			end;
+		else
+			self.rdbFireDrive.enabled = false;
+			local KG = require("/knowGold/knowGoldPanel.dlua");
+			
+			self.panKG = KG.newPanel();
+			self.panKG:setInfo("FireDrive é uma hospedagem de arquivos na internet exclusiva para assinantes RRPG Gold");
+			self.panKG.parent = self.fireDriveNavigatorContent;
+		end;
+	</script>
+</popupForm>

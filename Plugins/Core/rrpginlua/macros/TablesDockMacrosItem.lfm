@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMacroItemTablesDock" height="25" width="75" margins="{left=5,right=5,top=5,bottom=5}">
+	<script><![CDATA[
+	
+		local function executarMacro()
+			local msg = {};
+			msg.mesa = self.mesa;
+			msg.parametro = "";
+			msg.chat = self.mesa.activeChat;
+			globalExecutarMacro(sheet, msg);
+		end;		
+		
+		local innerSpacing = 0;
+	]]>	
+	</script>
+		
+	<label name="labMacro" field="macro" wordWrap="false" autoSize="true" fontStyle=""
+		   onResize="self.width = self.labMacro.width + innerSpacing * 2; self.height = self.labMacro.height + innerSpacing * 2;"
+		   hitTest="true" cursor="handPoint"
+		   onMouseEnter="self.labMacro.fontStyle = {'underline'};"
+		   onMouseLeave="self.labMacro.fontStyle = '';" onClick="executarMacro()" fontSize="13"/>
+		   
+	<script>
+		if system.isMobile() then
+			self.labMacro.fontSize = 20;
+			innerspacing = 8;
+		end;
+		
+		self.labMacro.left = innerSpacing;
+		self.labMacro.top = innerSpacing;		
+	</script>
+</form>

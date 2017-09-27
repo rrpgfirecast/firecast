@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAMZ2_4" align="client" theme="dark">
+	<template name="Equipment">
+		<label left="0" top="0" width="100" height="20" text="$(text)" horzTextAlign="center"/>
+		<edit left="100" top="0" width="200" height="25" field="zhul_$(field)"/>
+	</template>
+	<scrollBox align="client">
+		<layout left="0" top="0" width="310" height="175">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+
+			<layout left="5" top="25" width="300" height="25">
+				<Equipment field="arma1" text="Arma Primaria"/>
+			</layout>
+			<layout left="5" top="75" width="300" height="25">
+				<Equipment field="arma2" text="Arma Secundaria"/>
+			</layout>
+			<layout left="5" top="125" width="300" height="25">
+				<Equipment field="arma3" text="Arma Reserva"/>
+			</layout>
+		</layout>
+		<layout left="315" top="0" width="310" height="175">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+
+			<layout left="5" top="25" width="300" height="25">
+				<Equipment field="equip1" text="Equipamento 1"/>
+			</layout>
+			<layout left="5" top="75" width="300" height="25">
+				<Equipment field="equip2" text="Equipamento 2"/>
+			</layout>
+			<layout left="5" top="125" width="300" height="25">
+				<Equipment field="equip3" text="Equipamento 3"/>
+			</layout>
+		</layout>
+
+		<layout left="630" top="0" width="310" height="175">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+
+			<layout left="5" top="25" width="300" height="25">
+				<Equipment field="ee1" text="E.E. 1"/>
+			</layout>
+			<layout left="5" top="75" width="300" height="25">
+				<Equipment field="ee2" text="E.E. 2"/>
+			</layout>
+			<layout left="5" top="125" width="300" height="25">
+				<Equipment field="ee3" text="E.E. 3"/>
+			</layout>
+		</layout>
+	</scrollBox>
+</form>

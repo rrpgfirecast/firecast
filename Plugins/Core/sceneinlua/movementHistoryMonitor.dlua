@@ -1,0 +1,117 @@
+﻿require("scene.lua");
+require("utils.lua");
+require("ndb.lua");
+require("movementHistoryCore.dlua");
+
+--[[ Monitor do NDB do scene ]]
+
+function MOVHIST_MONITOR_start(scene, movHist)
+
+	local itemsMonitoring = {};
+
+	local function startMonitor(item)
+		local m = itemsMonitoring[item];
+		
+		if m == nil then
+			m = {};
+			m.dataLink = item:newUserDataLink();
+
+			m.dataLink.onChildAdded = function (node)
+				movHist:addHistoryEntry(node, item);
+			end;
+			
+			m.dataLink.onChildRemoved = function (node)
+				movHist:removeHistoryEntry(node);
+			end;			
+			
+			m.evtBoundsChange = item:listen("onBoundsChange",
+				function(item)
+					movHist:scheduleRevalidateHistsToDraw();
+				end);
+						
+			m.dataLink.field = 'movHist';
+			itemsMonitoring[item] = m;
+		end;
+	end;
+	
+	local function endMonitor(item)
+		local m = itemsMonitoring[item];
+		
+		if m ~= nil then
+			movHist:removeTokenHistoryEntry(item);			
+			m.dataLink.onChildAdded = nil;
+			m.dataLink.onChildRemoved = nil;
+			item:unlisten(m.evtBoundsChange);
+			itemsMonitoring[item] = nil;
+		end;	
+	end;
+
+	local function evt_OnItemAdded(item)
+		if item.layer == "tokens" then
+			startMonitor(item);
+		end;	
+	end;
+	
+	local function evt_OnItemRemoved(item)
+		endMonitor(item);
+	end;
+	
+	local function evt_OnItemLayerChange(item)
+		if item.layer == "tokens" then
+			startMonitor(item);
+		else
+			endMonitor(item);
+		end;
+	end;	
+
+	local tmtCheckSelected = nil;
+	
+	local function scheduleCheckSelectedTokens()
+		if tmtCheckSelected == nil then
+			tmtCheckSelected = setTimeout(
+									function()
+										tmtCheckSelected = nil;
+										local selection = scene.items.selection;
+										local setModeFunc = MOVHIST_SetMode;
+													
+										if setModeFunc ~= nil then													
+											if #selection > 0 then
+												-- Mostrar histórico de movimento apenas da seleção
+												setModeFunc(scene, "tokens", {selection[1]});
+											else
+												-- Mostrar histórico de movimento de todos, do ultimo, na verdade
+												setModeFunc(scene, "last", nil);
+											end;
+										end;
+									end, 1);
+		end;
+	end;
+	
+	local function evt_OnItemSelected(item)
+		if itemsMonitoring[item] ~= nil then
+			scheduleCheckSelectedTokens();
+		end;
+	end;
+	
+	local function evt_OnItemDeselected(item)
+		if itemsMonitoring[item] ~= nil then
+			scheduleCheckSelectedTokens();
+		end;	
+	end;
+	
+	scene.items:listen("onItemAdded", evt_OnItemAdded);
+	scene.items:listen("onItemRemoved", evt_OnItemRemoved);
+	scene.items:listen("onItemLayerChange", evt_OnItemLayerChange);	
+	scene.items:listen("onItemSelected", evt_OnItemSelected);
+	scene.items:listen("onItemDeselected", evt_OnItemDeselected);
+
+	-- Comecar a monitorar os itens ja existentes
+	
+	for i = 1, #scene.items, 1 do
+		local item = scene.items[i];
+		
+		if item.layer == "tokens" then
+			startMonitor(item);
+		end;
+	end;
+end;

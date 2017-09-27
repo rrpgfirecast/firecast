@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGerenciador02_SELECT" width="110" height="25" theme="dark" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<button left="0" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse npc?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+		
+		<edit left="25" top="0" width="85" height="25" field="grupo" />	
+		
+	</rectangle>
+</form>

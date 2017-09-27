@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+	<style>
+		.combatHeaderContentAlignedLayout{
+			margins: {left=2, right=2};
+		}
+		
+		.combatHeaderButton {
+			width: 24;
+			align: left;
+			margins: {left=2, right=2};
+		}
+		
+		.combatHeader0 {
+			width: 23;
+			align: left;
+		}
+		
+		.combatHeader0_H  {
+			height: 23;
+		}
+		
+		
+		.combatHeaderNome {
+			margins: {left=3};
+			width: 28;
+			align: client;
+		}		
+		
+		.combateHeaderRightAlignedContent {
+			align:right;
+			width: 78;
+		}
+		
+		.combatHeaderIniciativa {
+			margins: {left=3};
+			width: 28;
+			align: left;
+		}	
+
+		.combatHeaderFriendOrFoe {
+			margins: {left=3};
+			width: 25;
+			align: left;
+		}			
+		
+		
+		.combatHeaderDelete {
+			margins: {left=5};
+			width: 15;
+			align: left;
+		}					
+		
+		
+		edit.combatTrackerEdit {
+			fontSize: 11;
+		}
+		
+		.combatHeaderContentAlignedLayout label {
+			fontSize: 11;
+		}
+	</style>
+</group>

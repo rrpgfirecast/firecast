@@ -1,0 +1,342 @@
+﻿require("scene.lua");
+require("utils.lua");
+
+local BTREELIB = nil;
+
+local function _arvHistKeyCompare(left, right)
+	local ld, rd;
+	ld = left.date or 0;
+	rd = right.date or 0;
+	
+	if ld > rd then
+		return -1;
+	elseif ld < rd then
+		return 1;
+	else
+		ld = left.g;
+		rd = right.g;
+		
+		if ld  > rd then
+			return -1;
+		elseif ld < rd then
+			return 1;
+		else
+			return 0;
+		end;
+	end;
+end;
+
+local __generatorID = 0;
+
+function MOVHIST_new(scene)
+	BTREELIB = BTREELIB or require("btree.dlua");
+
+	local mh = {};
+	local arvoreHist = BTREELIB.new(_arvHistKeyCompare);
+	local nodesInfos = {};
+	local tokensInfos = {};
+	local drawEnabled = {}; -- vários motivos podem deixar o movhist draw enabled true ou false
+	local finalDrawEnabled = false;
+	mh.mode = "last"; -- pode ser "last", "tokens", "specHistory"
+	mh.modeParam = nil;
+	local oldHistShown = {};
+	local tmtHTD = nil;  -- timer schedule revalidate hists to draw
+		
+
+	function mh:addHistoryEntry(node, token)
+		local nodeInfo = nodesInfos[node];		
+		
+		if nodeInfo == nil then
+			-- Nova entrada de histórico
+			nodeInfo = {};
+			nodeInfo.arvKey = {};
+			nodesInfos[node] = nodeInfo;
+		else
+			-- Atualização de uma entrada de histórico
+			arvoreHist:remover(nodeInfo.arvKey);			
+			nodeInfo.tokenInfos.arvoreHist:remover(nodeInfo.arvKey);
+		end;
+		
+		nodeInfo.date = node.date;		
+		nodeInfo.token = token;
+		nodeInfo.node = node;
+		nodeInfo.distance = node.distance or 1;
+		nodeInfo.sx = node.sx or 0;
+		nodeInfo.sy = node.sy or 0;
+		nodeInfo.ex = node.ex or 0;
+		nodeInfo.ey = node.ey or 0;
+		nodeInfo.arvKey.date = nodeInfo.date;
+		nodeInfo.arvKey.node = node;
+		nodeInfo.arvKey.g = __generatorID;
+		__generatorID = __generatorID + 1;
+		
+		arvoreHist:inserir(nodeInfo.arvKey, nodeInfo);
+		
+		local tkInfos = tokensInfos[token];
+		
+		if tkInfos == nil then
+			tkInfos = {};
+			tkInfos.nodes = {count=0};
+			tkInfos.arvoreHist = BTREELIB.new(_arvHistKeyCompare);
+			tokensInfos[token] = tkInfos;
+		end;
+		
+		nodeInfo.tokenInfos = tkInfos;
+		
+		if tkInfos.nodes[node] == nil then		
+			tkInfos.nodes[node] = true;	
+			tkInfos.nodes.count = tkInfos.nodes.count + 1;
+		end;
+		
+		tkInfos.arvoreHist:inserir(nodeInfo.arvKey, nodeInfo);		
+		
+		if finalDrawEnabled then
+			mh:scheduleRevalidateHistsToDraw();		
+		end;
+	end;
+	
+	function mh:removeHistoryEntry(node)
+		local nodeInfo = nodesInfos[node];		
+		
+		if nodeInfo ~= nil then
+			arvoreHist:remover(nodeInfo.arvKey);
+			nodesInfos[node] = nil;
+			
+			local tkInfos = nodeInfo.tokenInfos;			
+			
+			if tkInfos ~= nil then					
+				tkInfos.arvoreHist:remover(nodeInfo.arvKey);
+				
+				if tkInfos.nodes[node] ~= nil then					
+					tkInfos.nodes[node] = nil;
+					tkInfos.nodes.count = tkInfos.nodes.count - 1;
+				end;
+				
+				if tkInfos.nodes.count <= 0 then					
+					tkInfos[nodeInfo.token] = nil;
+				end;
+				
+				if finalDrawEnabled then
+					mh:scheduleRevalidateHistsToDraw();		
+				end;					
+			end;					
+		end;
+	end;	
+
+	function mh:removeTokenHistoryEntry(token)
+		local tkInfos = tokensInfos[token];
+		
+		if tkInfos ~= nil then
+			local nodesToRemove = {};
+			
+			for k, v in pairs(tkInfos.nodes) do
+				if type(k) == 'table' then
+					nodesToRemove[k] = v;
+				end;
+			end;
+			
+			for k, v in pairs(nodesToRemove) do
+				self:removeHistoryEntry(k);
+			end;			
+		end;			
+	end;
+	
+	function mh:historicosSeEncaixam(hNext, hPrev, cellSize, ignorarPosAtual)	
+		local maxOffset = cellSize * 0.7;
+	
+		if hNext == nil then
+			if ignorarPosAtual then
+				return true;
+			else
+				local aCX, aCY = hPrev.token:getCenter(false);
+				
+				return (math.abs(aCX - hPrev.ex) <= maxOffset) and
+					   (math.abs(aCY - hPrev.ey) <= maxOffset); 
+			end;
+		end;
+		
+		return (hNext.token == hPrev.token) and 
+		       (math.abs(hNext.sx - hPrev.ex) <= maxOffset) and
+			   (math.abs(hNext.sy - hPrev.ey) <= maxOffset);		
+	end;
+	
+	function mh:enumLastsHistorysInArvore(arvore, dest)
+		local nav = arvore:navigator();						
+		local infoSelected = nil;
+		local pesquisar = true;
+		local totalDistance = 0;			
+		local cellSize = scene.grid.cellSize;		
+		local maxDistance = 11 * cellSize 
+		
+		while not nav:eof() and pesquisar do
+			local v = nav:value();
+		
+			if mh:historicosSeEncaixam(infoSelected, v, cellSize)  then
+				infoSelected = v;
+			
+				if (totalDistance + v.distance <= maxDistance) or (totalDistance < cellSize) then
+					totalDistance = totalDistance + v.distance;
+					dest[#dest + 1] = v;
+				else
+					pesquisar = false; -- historico muito velho
+				end;
+			else
+				pesquisar = false;
+			end;
+			
+			nav:next();
+		end;		
+			
+	end;
+	
+	function mh:enumLastsHistorys()
+		local r = {};		
+		-- Analisar mov history de todos os tokens
+		mh:enumLastsHistorysInArvore(arvoreHist, r);
+		return r;
+	end;
+	
+	function mh:enumTokensHistorys()
+		local r = {};		
+		-- Analisar mov history de todos os tokens
+		if mh.modeParam == nil then
+			return r;
+		end;
+		
+		for i = 1, #mh.modeParam, 1 do
+			local token = mh.modeParam[i];
+			local tkInfo = tokensInfos[token];
+	
+			if tkInfo ~= nil then
+				mh:enumLastsHistorysInArvore(tkInfo.arvoreHist, r);
+			end;
+		end;		
+		
+		return r;
+	end;	
+	
+	function mh:enumHistoryToDraw()
+		local r = nil;
+		
+		if finalDrawEnabled then
+			if mh.mode == "last" then
+				r = mh:enumLastsHistorys();
+			elseif mh.mode == "tokens" then
+				r = mh:enumTokensHistorys();
+			end;
+		end;
+		
+		return r or {};
+	end;
+	
+	function mh:recalculateFinalDrawEnabled()
+		local oldFinalDrawEnabled = finalDrawEnabled;					
+		local newEnabled = nil;
+		
+		for k, v in pairs(drawEnabled) do
+			if v == true then
+				if newEnabled == nil then
+					newEnabled = true;
+				end;
+			else
+				newEnabled = false;
+				break;
+			end;
+		end;
+		
+		if newEnabled == true then
+			finalDrawEnabled = true;
+		else
+			finalDrawEnabled = false;
+		end;
+		
+		if finalDrawEnabled ~= oldFinalDrawEnabled then
+			mh:scheduleRevalidateHistsToDraw();
+		end;
+	end;
+	
+	function mh:ehIgualNewShowHistComOldShownHist(novo)
+		if oldHistShown == nil then
+			return (novo == nil) or (#novo == 0);
+		end;
+		
+		if novo == nil then
+			return (oldHistShown == nil) or (#oldHistShown == 0);
+		end;
+		
+		if #oldHistShown ~= #novo then
+			return false;
+		end;
+		
+		for i = 1, #oldHistShown, 1 do
+			local o = oldHistShown[i];
+			local n = novo[i];
+			
+			if o ~= n then
+				return false;
+			end;
+		end;
+		
+		return true;
+	end;
+	
+	function mh:revalidateHistsToDraw()
+		-- Chamar Eventos
+		local tmtAux = tmtHTD;
+		
+		if tmtAux ~= nil then
+			tmtHTD = nil;
+			clearTimeout(tmtAux);
+		end;
+		
+		if not scene.isObjectAlive then
+			return;
+		end;
+		
+		local evt = mh.onHistToDrawChanged;
+		
+		if evt ~= nil then
+			local novoToShow; 
+			
+			if not finalDrawEnabled then
+				novoToShow = {};
+			else
+				novoToShow = mh:enumHistoryToDraw();				
+			end;
+						
+			if not mh:ehIgualNewShowHistComOldShownHist(novoToShow) then
+				oldHistShown = novoToShow;
+				evt(scene, self, novoToShow);				
+			end;		
+		end;	
+	end;
+	
+	function mh:scheduleRevalidateHistsToDraw()	
+		if tmtHTD == nil then
+			tmtHTD = setTimeout(
+							function()
+								tmtHTD = nil;
+								mh:revalidateHistsToDraw();
+							end, 30);
+		end;
+	end;
+	
+	function mh:setDrawEnabled(reason, enabled)
+		local v = drawEnabled[reason];
+		
+		if v ~= enabled then
+			drawEnabled[reason] = enabled;
+			mh:recalculateFinalDrawEnabled();
+		end;
+		
+		return finalDrawEnabled;
+	end;
+	
+	function mh:setMode(mode, param)
+		mh.mode = mode;
+		mh.modeParam = param;
+		mh:scheduleRevalidateHistsToDraw();
+	end;
+	
+	return mh;
+end;

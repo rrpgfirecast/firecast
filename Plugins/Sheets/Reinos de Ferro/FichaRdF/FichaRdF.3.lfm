@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmRDF3" align="client" theme="dark">
+	<scrollBox align="client">
+	    <template name="Pericia">
+        	<edit left="0" top="0" width="150" height="25" field="per_$(field)"/>
+        	<edit left="150" top="0" width="50" height="25" field="per_chave_$(field)" horzTextAlign="center"/>
+        	<edit left="210" top="0" width="40" height="25" field="per_atr_$(field)" horzTextAlign="center"/>
+        	<edit left="250" top="0" width="40" height="25" field="per_niv_$(field)" horzTextAlign="center"/>
+        	<edit left="290" top="0" width="40" height="25" field="per_out_$(field)" horzTextAlign="center"/>
+        	<rectangle left="340" top="0" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="340" top="0" width="50" height="25" field="per_total_$(field)" horzTextAlign="center"/>
+        	<dataLink fields="{'per_atr_$(field)', 'per_niv_$(field)', 'per_out_$(field)'}">
+                <event name="onChange">   
+                	if sheet~=nil then
+                		sheet.per_total_$(field) = 	(tonumber(sheet.per_atr_$(field)) or 0) + 
+	                                            	(tonumber(sheet.per_niv_$(field)) or 0) + 
+	                                            	(tonumber(sheet.per_out_$(field)) or 0);
+                	end;
+                </event>
+        	</dataLink>
+        </template>
+        <template name="Beneficio">
+        	<edit left="0" top="0" width="150" height="25" field="ben_$(field)"/>
+        	<edit left="150" top="0" width="250" height="25" field="ben_desc_$(field)"/>
+        	<edit left="400" top="0" width="40" height="25" field="ben_pag_$(field)" horzTextAlign="center"/>
+        </template>
+
+        <layout left="0" top="0" width="400" height="610">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="0" width="390" height="20" text="PERICIAS" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="500" height="25" >
+				<label left="0" top="5" width="150" height="20" text="NOME" horzTextAlign="center"/>
+				<label left="150" top="5" width="50" height="20" text="Chave" horzTextAlign="center"/>
+				<label left="210" top="5" width="40" height="20" text="ATR" horzTextAlign="center"/>
+				<label left="250" top="5" width="40" height="20" text="NIV" horzTextAlign="center"/>
+				<label left="290" top="5" width="40" height="20" text="OUT" horzTextAlign="center"/>
+				<label left="340" top="5" width="50" height="20" text="TOTAL" horzTextAlign="center"/>
+			</layout>
+			<layout left="0" top="50" width="500" height="555">
+				<layout left="5" top="0" width="500" height="25" >
+					<Pericia field="1"/>
+					<dataLink field="per_1" defaultValue="Arma de Mão"/>
+					<dataLink field="per_chave_1" defaultValue="MAE"/>
+				</layout>
+				<layout left="5" top="25" width="500" height="25" >
+					<Pericia field="2"/>
+					<dataLink field="per_2" defaultValue="Arma Grande"/>
+					<dataLink field="per_chave_2" defaultValue="MAE"/>
+				</layout>
+				<layout left="5" top="50" width="500" height="25" >
+					<Pericia field="3"/>
+					<dataLink field="per_3" defaultValue="Pistola"/>
+					<dataLink field="per_chave_3" defaultValue="DES"/>
+				</layout>
+				<layout left="5" top="75" width="500" height="25" >
+					<Pericia field="4"/>
+					<dataLink field="per_4" defaultValue="Fuzil"/>
+					<dataLink field="per_chave_4" defaultValue="DES"/>
+				</layout>
+				<layout left="5" top="100" width="500" height="25" >
+					<Pericia field="5"/>
+				</layout>
+				<layout left="5" top="125" width="500" height="25" >
+					<Pericia field="6"/>
+				</layout>
+				<layout left="5" top="150" width="500" height="25" >
+					<Pericia field="7"/>
+				</layout>
+				<layout left="5" top="175" width="500" height="25" >
+					<Pericia field="8"/>
+					<dataLink field="per_8" defaultValue="Detecção"/>
+					<dataLink field="per_chave_8" defaultValue="PER"/>
+				</layout>
+				<layout left="5" top="200" width="500" height="25" >
+					<Pericia field="9"/>
+					<dataLink field="per_9" defaultValue="Esgueirar-se"/>
+					<dataLink field="per_chave_9" defaultValue="AGI"/>
+				</layout>
+				<layout left="5" top="225" width="500" height="25" >
+					<Pericia field="10"/>
+					<dataLink field="per_10" defaultValue="Comandar"/>
+					<dataLink field="per_chave_10" defaultValue="SOCIAL"/>
+				</layout>
+				<layout left="5" top="250" width="500" height="25" >
+					<Pericia field="11"/>
+				</layout>
+				<layout left="5" top="275" width="500" height="25" >
+					<Pericia field="12"/>
+				</layout>
+				<layout left="5" top="300" width="500" height="25" >
+					<Pericia field="13"/>
+				</layout>
+				<layout left="5" top="325" width="500" height="25" >
+					<Pericia field="14"/>
+				</layout>
+				<layout left="5" top="350" width="500" height="25" >
+					<Pericia field="15"/>
+				</layout>
+				<layout left="5" top="375" width="500" height="25" >
+					<Pericia field="16"/>
+				</layout>
+				<layout left="5" top="400" width="500" height="25" >
+					<Pericia field="17"/>
+				</layout>
+				<layout left="5" top="425" width="500" height="25" >
+					<Pericia field="18"/>
+				</layout>
+				<layout left="5" top="450" width="500" height="25" >
+					<Pericia field="19"/>
+				</layout>
+				<layout left="5" top="475" width="500" height="25" >
+					<Pericia field="20"/>
+				</layout>
+				<layout left="5" top="500" width="500" height="25" >
+					<Pericia field="21"/>
+				</layout>
+				<layout left="5" top="525" width="500" height="25" >
+					<Pericia field="22"/>
+				</layout>
+			</layout>
+		</layout>
+
+		<layout left="410" top="0" width="450" height="610">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="0" width="440" height="20" text="BENEFICIOS E HABILIDADES" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="500" height="25" >
+				<label left="0" top="5" width="150" height="20" text="NOME" horzTextAlign="center"/>
+				<label left="150" top="5" width="250" height="20" text="DESCRIÇÃO" horzTextAlign="center"/>
+				<label left="400" top="5" width="40" height="20" text="PAG" horzTextAlign="center"/>
+			</layout>
+			<layout left="0" top="50" width="500" height="555">
+				<layout left="5" top="0" width="500" height="25" >
+					<Beneficio field="1"/>
+				</layout>
+				<layout left="5" top="25" width="500" height="25" >
+					<Beneficio field="2"/>
+				</layout>
+				<layout left="5" top="50" width="500" height="25" >
+					<Beneficio field="3"/>
+				</layout>
+				<layout left="5" top="75" width="500" height="25" >
+					<Beneficio field="4"/>
+				</layout>
+				<layout left="5" top="100" width="500" height="25" >
+					<Beneficio field="5"/>
+				</layout>
+				<layout left="5" top="125" width="500" height="25" >
+					<Beneficio field="6"/>
+				</layout>
+				<layout left="5" top="150" width="500" height="25" >
+					<Beneficio field="7"/>
+				</layout>
+				<layout left="5" top="175" width="500" height="25" >
+					<Beneficio field="8"/>
+				</layout>
+				<layout left="5" top="200" width="500" height="25" >
+					<Beneficio field="9"/>
+				</layout>
+				<layout left="5" top="225" width="500" height="25" >
+					<Beneficio field="10"/>
+				</layout>
+				<layout left="5" top="250" width="500" height="25" >
+					<Beneficio field="11"/>
+				</layout>
+				<layout left="5" top="275" width="500" height="25" >
+					<Beneficio field="12"/>
+				</layout>
+				<layout left="5" top="300" width="500" height="25" >
+					<Beneficio field="13"/>
+				</layout>
+				<layout left="5" top="325" width="500" height="25" >
+					<Beneficio field="14"/>
+				</layout>
+				<layout left="5" top="350" width="500" height="25" >
+					<Beneficio field="15"/>
+				</layout>
+				<layout left="5" top="375" width="500" height="25" >
+					<Beneficio field="16"/>
+				</layout>
+				<layout left="5" top="400" width="500" height="25" >
+					<Beneficio field="17"/>
+				</layout>
+				<layout left="5" top="425" width="500" height="25" >
+					<Beneficio field="18"/>
+				</layout>
+				<layout left="5" top="450" width="500" height="25" >
+					<Beneficio field="19"/>
+				</layout>
+				<layout left="5" top="475" width="500" height="25" >
+					<Beneficio field="20"/>
+				</layout>
+				<layout left="5" top="500" width="500" height="25" >
+					<Beneficio field="21"/>
+				</layout>
+				<layout left="5" top="525" width="500" height="25" >
+					<Beneficio field="22"/>
+				</layout>
+			</layout>
+		</layout>
+
+		<layout left="870" top="0" width="250" height="200">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="0" width="240" height="20" text="CONEXÕES" horzTextAlign="center"/>
+
+			<textEditor left="5" top="25" width="240" height="170" field="conexoes"/>
+		</layout>
+
+		<image align="client" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20RdF%20releases/imagens/block.png" style="autoFit"/>
+	</scrollBox>
+</form>

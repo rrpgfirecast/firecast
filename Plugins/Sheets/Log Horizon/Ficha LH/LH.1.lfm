@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLH1" align="client" theme="dark">
+    <scrollBox align="client">
+        
+		<template name="Cabecalho">
+        	<label left="0" top="5" width="100" height="20" text="$(nome)" horzTextAlign="trailing"/>
+        	<edit left="110" top="0" width="200" height="25" field="desc_$(field)"/>
+        </template>
+
+        <template name="Atributo">
+        	<label left="5" top="5" width="40" height="20" text="$(nome)"/>
+        	<edit left="40" top="0" width="30" height="25" field="$(field)_racial">
+        		<event name="onChange">
+                	$(nome)();
+                </event>
+        	</edit>
+        	<edit left="75" top="0" width="30" height="25" field="$(field)_classe">
+        		<event name="onChange">
+                	$(nome)();
+                </event>
+        	</edit>
+        	<edit left="110" top="0" width="30" height="25" field="$(field)_nivel">
+        		<event name="onChange">
+                	$(nome)();
+                </event>
+        	</edit>
+        	<edit left="145" top="0" width="30" height="25" field="$(field)_itens">
+        		<event name="onChange">
+                	$(nome)();
+                </event>
+        	</edit>
+        	<edit left="180" top="0" width="30" height="25" field="$(field)_outros">
+        		<event name="onChange">
+                	$(nome)();
+                </event>
+        	</edit>
+
+        	<rectangle left="215" top="0" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="215" top="0" width="35" height="25" field="$(field)_total" horzTextAlign="center"/>
+
+			<rectangle left="255" top="0" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="255" top="0" width="35" height="25" field="$(field)_teste" horzTextAlign="center"/>
+
+			<script>
+				local function $(nome)();
+					if sheet~=nil then
+						sheet.$(field)_total =  (tonumber(sheet.$(field)_racial ) or 0) + 
+												(tonumber(sheet.$(field)_classe ) or 0) + 
+												(tonumber(sheet.$(field)_nivel ) or 0) + 
+												(tonumber(sheet.$(field)_itens ) or 0) + 
+												(tonumber(sheet.$(field)_outros ) or 0);
+						sheet.$(field)_teste = math.floor((tonumber(sheet.$(field)_total) or 0)/3);
+
+						updateCapacidade();
+					end;
+				end;
+			</script>
+        </template>
+
+        <template name="Capacidade">
+        	<label left="5" top="5" width="100" height="20" text="$(nome)"/>
+
+        	<rectangle left="100" top="0" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="100" top="0" width="35" height="25" field="$(field)" horzTextAlign="center"/>
+			<dataLink field="$(field)">
+				<event name="onChange">
+                	$(field)Sum();
+                </event>
+			</dataLink>
+
+			<edit left="140" top="0" width="30" height="25" field="$(field)_habilidades">
+        		<event name="onChange">
+                	$(field)Sum();
+                </event>
+        	</edit>
+
+        	<edit left="170" top="0" width="30" height="25" field="$(field)_itens">
+        		<event name="onChange">
+                	$(field)Sum();
+                </event>
+        	</edit>
+
+        	<rectangle left="205" top="0" width="35" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+			<label left="205" top="0" width="35" height="25" field="$(field)_total" horzTextAlign="center"/>
+
+        	<script>
+				local function $(field)Sum();
+					if sheet~=nil then
+						sheet.$(field)_total =  (tonumber(sheet.$(field)) or 0) + 
+												(tonumber(sheet.$(field)_habilidades) or 0) + 
+												(tonumber(sheet.$(field)_itens) or 0)
+					end;
+				end;
+			</script>
+
+        </template>
+
+   		<script>
+			local function updateCapacidade()
+				if sheet~= nil then
+					local str = (tonumber(sheet.for_teste) or 0);
+					local des = (tonumber(sheet.des_teste) or 0);
+					local pod = (tonumber(sheet.pod_teste) or 0);
+					local int = (tonumber(sheet.int_teste) or 0);
+					local maior = math.max(str, des, pod, int);
+
+					sheet.atletismo = str;
+					sheet.tolerancia = str;
+					sheet.desativar = des;
+					sheet.operar = des;
+					sheet.percepcao = pod;
+					sheet.negociacao = pod;
+					sheet.conhecimento = int;
+					sheet.analisar = int;
+					sheet.precisao = maior;
+					sheet.evasao = des;
+					sheet.resistencia = pod;
+
+					sheet.defesa_fisica_mod = str*2;
+					sheet.defesa_magica_mod = int*2;
+					sheet.iniciativa_mod = str + int;
+
+					sheet.defesa_fisica_total = str*2 + 
+												(tonumber(sheet.defesa_fisica) or 0) + 
+												(tonumber(sheet.defesa_fisica_itens) or 0);
+					sheet.defesa_magica_total = int*2 + 
+												(tonumber(sheet.defesa_magica) or 0) + 
+												(tonumber(sheet.defesa_magica_itens) or 0);
+					sheet.iniciativa_total = str + int + 
+											(tonumber(sheet.iniciativa) or 0) + 
+											(tonumber(sheet.iniciativa_itens) or 0);
+					sheet.velocidade_total = 2 + 
+											(tonumber(sheet.velocidade) or 0) + 
+											(tonumber(sheet.velocidade_itens) or 0);
+				end;
+			end;
+		</script>
+
+		<layout left="0" top="0" width="960" height="70">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<layout left="5" top="5" width="310" height="25" >
+				<Cabecalho field="raca" nome="Raça"/>
+			</layout>
+			<layout left="320" top="5" width="310" height="25" >
+				<Cabecalho field="classe" nome="Classe"/>
+			</layout>
+			<layout left="585" top="5" width="310" height="25" >
+				<Cabecalho field="rank" nome="Rank"/>
+			</layout>
+			<layout left="5" top="35" width="310" height="25" >
+				<Cabecalho field="arquetipo" nome="Arquetipo"/>
+			</layout>
+			<layout left="320" top="35" width="310" height="25" >
+				<Cabecalho field="sub_classe" nome="Sub-Classe"/>
+			</layout>
+		</layout>
+
+		<layout left="0" top="75" width="300" height="165">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="5" width="290" height="20" text="ATRIBUTOS" horzTextAlign="center"/>
+				
+			<layout left="5" top="30" width="300" height="25">
+				<label left="40" top="0" width="35" height="25" text="Racial" fontSize="11"/>
+				<label left="75" top="0" width="35" height="25" text="Classe" fontSize="11"/>
+				<label left="110" top="0" width="35" height="25" text="Nível" fontSize="11"/>
+				<label left="145" top="0" width="35" height="25" text="Itens" fontSize="11"/>
+				<label left="180" top="0" width="35" height="25" text="Outros" fontSize="10"/>
+				<label left="215" top="0" width="35" height="25" text="Total" fontSize="13"/>
+				<label left="250" top="0" width="35" height="25" text="Teste" fontSize="13"/>
+			</layout>
+			<layout left="5" top="55" width="300" height="25">
+				<Atributo nome="FOR" field="for"/>
+			</layout>
+			<layout left="5" top="80" width="300" height="25">
+				<Atributo nome="DES" field="des"/>
+			</layout>
+			<layout left="5" top="105" width="300" height="25">
+				<Atributo nome="POD" field="pod"/>
+			</layout>
+			<layout left="5" top="130" width="300" height="25">
+				<Atributo nome="INT" field="int"/>
+			</layout>
+		</layout>
+
+		<layout left="0" top="245" width="300" height="310">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="5" width="290" height="20" text="BATALHA" horzTextAlign="center"/>
+
+			<layout left="5" top="30" width="300" height="25">
+				<label left="5" top="0" width="100" height="25" text="HP"/>
+				<edit left="110" top="0" width="90" height="25" field="hp_atual"/>
+				<edit left="200" top="0" width="90" height="25" field="hp_maximo"/>
+			</layout>
+			<layout left="5" top="55" width="300" height="25">
+				<label left="5" top="0" width="100" height="25" text="Recuperação"/>
+				<edit left="110" top="0" width="180" height="25" field="recuperacao"/>
+			</layout>
+			<layout left="5" top="80" width="300" height="25">
+				<label left="5" top="0" width="100" height="25" text="PD" />
+				<edit left="110" top="0" width="90" height="25" field="pd_atual"/>
+				<edit left="200" top="0" width="90" height="25" field="pd_maximo"/>
+			</layout>
+			<layout left="5" top="105" width="300" height="25">
+				<label left="5" top="0" width="100" height="25" text="Ódio" />
+				<edit left="110" top="0" width="180" height="25" field="odio"/>
+			</layout>
+
+			<layout left="5" top="155" width="300" height="25">
+				<label left="5" top="0" width="100" height="25" text="Dano Físico" />
+				<edit left="110" top="0" width="180" height="25" field="dano_fisico"/>
+			</layout>
+			<layout left="5" top="180" width="300" height="25">
+				<label left="5" top="0" width="100" height="25" text="Dano Mágico" />
+				<edit left="110" top="0" width="180" height="25" field="dano_magico"/>
+			</layout>
+			<layout left="5" top="205" width="300" height="25">
+				<label left="5" top="0" width="100" height="25" text="Defesa Fisíca" />
+
+				<rectangle left="110" top="0" width="45" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="110" top="0" width="45" height="25" field="defesa_fisica_mod" horzTextAlign="center"/>
+				<edit left="155" top="0" width="45" height="25" field="defesa_fisica">
+	        		<event name="onChange">
+	                	updateCapacidade();
+	                </event>
+        		</edit>
+				<edit left="200" top="0" width="45" height="25" field="defesa_fisica_itens">
+	        		<event name="onChange">
+	                	updateCapacidade();
+	                </event>
+        		</edit>
+				<rectangle left="245" top="0" width="45" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="245" top="0" width="45" height="25" field="defesa_fisica_total" horzTextAlign="center"/>
+			</layout>
+			<layout left="5" top="230" width="300" height="25">
+				<label left="5" top="0" width="100" height="25" text="Defesa Mágica" />
+				
+				<rectangle left="110" top="0" width="45" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="110" top="0" width="45" height="25" field="defesa_magica_mod" horzTextAlign="center"/>
+				<edit left="155" top="0" width="45" height="25" field="defesa_magica">
+	        		<event name="onChange">
+	                	updateCapacidade();
+	                </event>
+        		</edit>
+				<edit left="200" top="0" width="45" height="25" field="defesa_magica_itens">
+	        		<event name="onChange">
+	                	updateCapacidade();
+	                </event>
+        		</edit>
+				<rectangle left="245" top="0" width="45" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="245" top="0" width="45" height="25" field="defesa_magica_total" horzTextAlign="center"/>
+			</layout>
+			<layout left="5" top="255" width="300" height="25">
+				<label left="5" top="0" width="100" height="25" text="Iniciativa" />
+
+				<rectangle left="110" top="0" width="45" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="110" top="0" width="45" height="25" field="iniciativa_mod" horzTextAlign="center"/>
+				<edit left="155" top="0" width="45" height="25" field="Iniciativa">
+	        		<event name="onChange">
+	                	updateCapacidade();
+	                </event>
+        		</edit>
+				<edit left="200" top="0" width="45" height="25" field="iniciativa_itens">
+	        		<event name="onChange">
+	                	updateCapacidade();
+	                </event>
+        		</edit>
+				<rectangle left="245" top="0" width="45" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="245" top="0" width="45" height="25" field="iniciativa_total" horzTextAlign="center"/>
+			</layout>
+			<layout left="5" top="280" width="300" height="25">
+				<label left="5" top="0" width="100" height="25" text="Velocidade" />
+
+				<rectangle left="110" top="0" width="45" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="110" top="0" width="45" height="25" text="2" horzTextAlign="center"/>
+				<edit left="155" top="0" width="45" height="25" field="velocidade">
+	        		<event name="onChange">
+	                	updateCapacidade();
+	                </event>
+        		</edit>
+				<edit left="200" top="0" width="45" height="25" field="velocidade_itens">
+	        		<event name="onChange">
+	                	updateCapacidade();
+	                </event>
+        		</edit>
+				<rectangle left="245" top="0" width="45" height="25" color="Black" strokeColor="white" strokeSize="1"/>
+				<label left="245" top="0" width="45" height="25" field="velocidade_total" horzTextAlign="center"/>
+			</layout>
+		</layout>
+
+		<layout left="305" top="75" width="250" height="335">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="5" width="240" height="20" text="CAPACIDADES" horzTextAlign="center"/>
+
+			<layout left="5" top="30" width="300" height="25">
+				<label left="105" top="0" width="35" height="25" text="ATR" fontSize="13"/>
+				<label left="140" top="0" width="35" height="25" text="HAB" fontSize="13"/>
+				<label left="170" top="0" width="35" height="25" text="Itens" fontSize="12"/>
+				<label left="205" top="0" width="35" height="25" text="Total" fontSize="12"/>
+			</layout>
+			<layout left="5" top="55" width="300" height="25">
+				<Capacidade nome="Atletismo" field="atletismo"/>
+			</layout>
+			<layout left="5" top="80" width="300" height="25">
+				<Capacidade nome="Tolerância" field="tolerancia"/>
+			</layout>
+			<layout left="5" top="105" width="300" height="25">
+				<Capacidade nome="Desativar" field="desativar"/>
+			</layout>
+			<layout left="5" top="130" width="300" height="25">
+				<Capacidade nome="Operar" field="operar"/>
+			</layout>
+			<layout left="5" top="155" width="300" height="25">
+				<Capacidade nome="Percepção" field="percepcao"/>
+			</layout>
+			<layout left="5" top="180" width="300" height="25">
+				<Capacidade nome="Negociação" field="negociacao"/>
+			</layout>
+			<layout left="5" top="205" width="300" height="25">
+				<Capacidade nome="Conhecimento" field="conhecimento"/>
+			</layout>
+			<layout left="5" top="230" width="300" height="25">
+				<Capacidade nome="Analisar" field="analisar"/>
+			</layout>
+			<layout left="5" top="255" width="300" height="25">
+				<Capacidade nome="Precisão" field="precisao"/>
+			</layout>
+			<layout left="5" top="280" width="300" height="25">
+				<Capacidade nome="Evasão" field="evasao"/>
+			</layout>
+			<layout left="5" top="305" width="300" height="25">
+				<Capacidade nome="Resistência" field="resistencia"/>
+			</layout>
+		</layout>
+
+		<layout left="305" top="415" width="250" height="140">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="5" width="240" height="20" text="EFEITOS" horzTextAlign="center"/>
+
+			<textEditor left="5" top="30" width="240" height="105" field="efeitos"/>
+		</layout>
+
+		<rectangle left="560" top="75" width="250" height="250" color="DimGray" xradius="5" yradius="5" cornerType="innerLine"/>
+		<image left="560" top="75" width="250" height="250" field="avatar" editable="true" style="autoFit"/>
+
+		<image align="client" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20LH%20releases/imagens/block.png" style="autoFit"/>
+	</scrollBox>
+</form>

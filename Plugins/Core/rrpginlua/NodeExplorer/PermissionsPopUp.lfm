@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmNodePermissions" width="400" height="280" title="Node Explorer" theme="dark" resizable="true">
+	<script><![CDATA[
+		local ndbTemporario = ndb.newMemNodeDatabase();
+	
+		local nodeRaiz; -- Node raiz que o usuario pediu para editar
+		local node; -- Node Atual que o usuario está editando
+		local currentChildNodes = {}; -- Array com os child nodes do node atual
+		local ndb = require("ndb.lua");
+		local depth;	
+		
+		if sheet~=nil and node==nil then
+			node = sheet;
+		end;
+		
+		if depth==nil then
+			depth = 0;
+		end;
+
+		local trPermissions = nil;
+
+		local permission_list = {"read", "write", "createChild", "delete", "readPermissions", "writePermissions", "writeMetaPermissions"};
+
+		local function refreshScreen()
+			if node==nil then
+				node = nodeRaiz;
+			end;
+			
+			if sheet.selKind=="user" then
+				self.edit_login.visible = true;
+				self.comboBox_selId.visible = false;
+
+				for i=1, 7 do
+					local perm =  ndb.getPermission(node, "user", sheet.login, permission_list[i]);
+					sheet[permission_list[i]] = perm;
+				end;
+			elseif sheet.selKind=="group" then
+				self.edit_login.visible = false;
+				self.comboBox_selId.visible = true;
+
+				for i=1, 7 do
+					local perm =  ndb.getPermission(node, "group", sheet.selId, permission_list[i]);
+					sheet[permission_list[i]] = perm;
+				end;
+			end;
+		end;
+
+		local function refreshList()
+			if node==nil then
+				node = nodeRaiz;
+			end;
+			
+			local list = ndb.getChildNodes(sheet.childs);
+			for i=1, #list do
+				if ndb.isNodeObject(list[i]) then
+					ndb.deleteNode(list[i]);
+				end;
+			end;
+			
+			local newChilds = {};
+			
+			for i = 1, #currentChildNodes, 1 do
+				local childInfo = {};
+				childInfo.child_name = ndb.getNodeName(currentChildNodes[i]);
+				childInfo.num = i;
+				newChilds[i] = childInfo;
+			end;
+			
+			sheet.childs = newChilds;
+
+			local novoAddress = nil;
+			local addrNode = node;
+			local depthAlcancado = 0;
+			
+			while addrNode ~= nil do
+				if depthAlcancado >= 4 then
+					novoAddress = "(..) > " .. novoAddress;
+					break;
+				end;
+			
+				if depthAlcancado == 0 then
+					novoAddress = ndb.getNodeName(addrNode);
+				else
+					novoAddress = ndb.getNodeName(addrNode) .. " > " .. novoAddress;
+				end;
+				
+				depthAlcancado = depthAlcancado + 1;
+				
+				if addrNode ~= nodeRaiz then
+					addrNode = ndb.getParent(addrNode);			
+				else
+					addrNode = nil;
+				end;
+			end;
+			
+			sheet.address = novoAddress;
+		end;
+		
+		local function gotoNode(n)
+			node = n;
+			currentChildNodes = ndb.getChildNodes(n);
+			
+			table.sort(currentChildNodes,
+				function(left, right)
+					return utils.compareStringPtBr(ndb.getNodeName(left), ndb.getNodeName(right)) < 0;
+				end);
+			
+			refreshList();			
+		end;
+		
+		
+		
+	]]>	
+	</script>
+
+	<event name="onShow">
+		if sheet ~= nil then
+			trPermissions = ndb.newTransaction(nodeRaiz);
+			node = nodeRaiz;
+
+			sheet.address = "Raiz";
+			depth = 0;
+
+			sheet.selKind = "group";
+			sheet.selId = "jogadores";
+
+			for i=1, 7 do
+				local perm =  ndb.getPermission(node, "group", sheet.selId, permission_list[i]);
+				sheet[permission_list[i]] = perm;
+			end;
+
+			if ndb.getState(node) == "opening" then
+				self:lockWithActivity("Carregando...");
+			
+				self.nodeObserver = ndb.newObserver(node);
+				self.nodeObserver.onStateChanged = 
+					function (theNode)
+						if ndb.getState(node) ~= "opening" then
+							self:unlockWithActivity();
+							gotoNode(nodeRaiz);
+							self.nodeObserver = nil;
+						end;						
+					end;
+			else
+				gotoNode(nodeRaiz);
+			end					
+		end;
+	</event>
+	
+	<event name="onHide">
+		if sheet ~= nil then
+			trPermissions:rollback();
+		end;
+	</event>
+
+	<scrollBox align="client">
+		<button left="5" top="5" width="105" height="25" text="Raiz">
+			<event name="onClick">
+				if sheet~= nil then
+					gotoNode(nodeRaiz)
+					depth = 0;
+					self.button_father.visible = false;
+					refreshScreen();
+				end;
+			</event>
+		</button>
+		<button left="5" top="35" width="105" height="25" text="Voltar" name="button_father" visible="false">
+			<event name="onClick">
+				if sheet~= nil then
+					local nodePai;
+				
+					if depth > 1 then
+						nodePai = ndb.getParent(node);
+					else
+						nodePai = nodeRaiz;
+					end;
+					
+					depth = depth - 1;
+					
+					if depth==0 then
+						self.button_father.visible = false;
+					end;
+
+					gotoNode(nodePai);
+					refreshScreen();
+				end;
+			</event>
+		</button>
+
+		<rectangle left="5" top="65" width="105" height="210" color="#404040"/>  
+		<recordList name="rclChilds" field="childs" templateForm="frmChildNodePerms" left="5" top="65" width="105" height="210" selectable="true"  hitTest="true" cursor="handPoint">
+			<event name="onSelect">
+				if sheet~= nil and self.rclChilds.selectedNode~=nil then
+					if node==nil then
+						node = nodeRaiz;
+					end;
+
+					local novoNode = currentChildNodes[self.rclChilds.selectedNode.num];
+					
+					if depth == nil then
+						depth = 1;
+					else 
+						depth = depth+1;
+					end;
+
+					gotoNode(novoNode);
+					refreshScreen();					
+					self.button_father.visible = true;
+				end;
+			</event>
+		</recordList>
+
+		<rectangle left="115" top="5" width="1" height="270" color="white"/>
+
+		<label left="120" top="5" width="270" height="25" field="address" textTrimming="character"/>
+		<comboBox left="120" top="35" width="100" height="25" items="{'Usuário', 'Grupo'}"  values="{'user', 'group'}" field="selKind">
+			<event name="onChange">
+				if sheet~= nil then
+					refreshScreen();
+				end;
+			</event>
+		</comboBox>
+		<edit left="225" top="35" width="170" height="25" field="login" name="edit_login" visible="false">
+			<event name="onChange">
+				if sheet~= nil then
+					if node==nil then
+						node = sheet;
+					end;
+					
+					for i=1, 7 do
+						local perm =  ndb.getPermission(node, "user", sheet.login, permission_list[i]);
+						sheet[permission_list[i]] = perm;
+					end;
+				end;
+			</event>
+		</edit>
+		<comboBox left="225" top="35" width="170" height="25" items="{'Todos', 'Mestres Auxiliares', 'Mestres', 'Jogadores', 'Espectadores', 'Criador da Mesa', 'Criador', 'Dono', 'Cegos', 'Mudos', 'Com Voz'}"  values="{'todos', 'mestresAux', 'mestres', 'jogadores', 'espectadores', 'criadorDaMesa', 'criador', 'dono', 'cegos', 'mudos', 'voices'}" field="selId" name="comboBox_selId">
+			<event name="onChange">
+				if sheet~= nil then
+					if node==nil then
+						node = sheet;
+					end;
+					if sheet.selId == nil then
+						sheet.selId="jogadores";
+					end;
+					for i=1, 7 do
+						local perm =  ndb.getPermission(node, "group", sheet.selId, permission_list[i]);
+						sheet[permission_list[i]] = perm;
+					end;
+				end;
+			</event>
+		</comboBox>
+		<dataLink field="selId" defaultValue="jogadores"/>
+
+		<horzLine left="125" top="65" width="270" strokeColor="white"/>
+
+		<label left="125" top="70" width="95" height="25" text="Visualizar" hitTest="true" hint="Indica se o usuario/grupo pode visualizar os dados desse objeto."/>
+		<comboBox left="225" top="70" width="170" height="25" items="{'Permitido', 'Negado', 'Fortemente Permitido', 'Indefinido'}"  values="{'allow', 'deny', 'strongAllow', ''}" field="read">
+			<event name="onChange">
+				if sheet~= nil then
+					ndb.pushTransaction(nodeRaiz, trPermissions);
+					if node==nil then
+						node = sheet;
+					end;
+					if sheet.selKind=="user" then
+						ndb.setPermission(node, "user", sheet.login, "read", sheet.read);
+					elseif sheet.selKind=="group" then
+						ndb.setPermission(node, "group", sheet.selId, "read", sheet.read);
+					end;
+					ndb.popTransaction(nodeRaiz);
+				end;
+			</event>
+		</comboBox>
+
+		<label left="125" top="95" width="100" height="25" text="Modificar" hitTest="true" hint="Indica se o usuario/grupo pode modificar informação armazenada nesse objeto."/>
+		<comboBox left="225" top="95" width="170" height="25" items="{'Permitido', 'Negado', 'Fortemente Permitido', 'Indefinido'}"  values="{'allow', 'deny', 'strongAllow', ''}" field="write">
+			<event name="onChange">
+				if sheet~= nil then
+					ndb.pushTransaction(nodeRaiz, trPermissions);
+					if node==nil then
+						node = sheet;
+					end;
+					if sheet.selKind=="user" then
+						ndb.setPermission(node, "user", sheet.login, "write", sheet.write);
+					elseif sheet.selKind=="group" then
+						ndb.setPermission(node, "group", sheet.selId, "write", sheet.write);
+					end;
+					ndb.popTransaction(nodeRaiz);
+				end;
+			</event>
+		</comboBox>
+
+		<label left="125" top="120" width="100" height="25" text="Expandir" hitTest="true" hint="Indica se o usuario/grupo pode adicionar objetos filhos a esse objeto."/>
+		<comboBox left="225" top="120" width="170" height="25" items="{'Permitido', 'Negado', 'Fortemente Permitido', 'Indefinido'}"  values="{'allow', 'deny', 'strongAllow', ''}" field="createChild">
+			<event name="onChange">
+				if sheet~= nil then
+					ndb.pushTransaction(nodeRaiz, trPermissions);
+					if node==nil then
+						node = sheet;
+					end;
+					if sheet.selKind=="user" then
+						ndb.setPermission(node, "user", sheet.login, "createChild", sheet.createChild);
+					elseif sheet.selKind=="group" then
+						ndb.setPermission(node, "group", sheet.selId, "createChild", sheet.createChild);
+					end;
+					ndb.popTransaction(nodeRaiz);
+				end;
+			</event>
+		</comboBox>
+
+		<label left="125" top="145" width="100" height="25" text="Apagar"  hitTest="true" hint="Indica se o usuario/grupo pode apagar esse objeto do banco de dados."/>
+		<comboBox left="225" top="145" width="170" height="25" items="{'Permitido', 'Negado', 'Fortemente Permitido', 'Indefinido'}"  values="{'allow', 'deny', 'strongAllow', ''}" field="delete">
+			<event name="onChange">
+				if sheet~= nil then
+					ndb.pushTransaction(nodeRaiz, trPermissions);
+					if node==nil then
+						node = sheet;
+					end;
+					if sheet.selKind=="user" then
+						ndb.setPermission(node, "user", sheet.login, "delete", sheet.delete);
+					elseif sheet.selKind=="group" then
+						ndb.setPermission(node, "group", sheet.selId, "delete", sheet.delete);
+					end;
+					ndb.popTransaction(nodeRaiz);
+				end;
+			</event>
+		</comboBox>
+
+		<label left="125" top="170" width="100" height="25" text="Ler Permissões" hitTest="true" hint="Indica se o usuario/grupo pode ver as permissões de visualização, modificação, expansão e de apagar."/>
+		<comboBox left="225" top="170" width="170" height="25" items="{'Permitido', 'Negado', 'Fortemente Permitido', 'Indefinido'}"  values="{'allow', 'deny', 'strongAllow', ''}" field="readPermissions">
+			<event name="onChange">
+				if sheet~= nil then
+					ndb.pushTransaction(nodeRaiz, trPermissions);
+					if node==nil then
+						node = sheet;
+					end;
+					if sheet.selKind=="user" then
+						ndb.setPermission(node, "user", sheet.login, "readPermissions", sheet.readPermissions);
+					elseif sheet.selKind=="group" then
+						ndb.setPermission(node, "group", sheet.selId, "readPermissions", sheet.readPermissions);
+					end;
+					ndb.popTransaction(nodeRaiz);
+				end;
+			</event>
+		</comboBox>
+
+		<label left="125" top="195" width="100" height="25" text="Dar Permissões" hitTest="true" hint="Indica se o usuario/grupo pode dar permissões de visualização, modificação, expansão e de apagar."/>
+		<comboBox left="225" top="195" width="170" height="25" items="{'Permitido', 'Negado', 'Fortemente Permitido', 'Indefinido'}"  values="{'allow', 'deny', 'strongAllow', ''}" field="writePermissions">
+			<event name="onChange">
+				if sheet~= nil then
+					ndb.pushTransaction(nodeRaiz, trPermissions);
+					if node==nil then
+						node = sheet;
+					end;
+					if sheet.selKind=="user" then
+						ndb.setPermission(node, "user", sheet.login, "writePermissions", sheet.writePermissions);
+					elseif sheet.selKind=="group" then
+						ndb.setPermission(node, "group", sheet.selId, "writePermissions", sheet.writePermissions);
+					end;
+					ndb.popTransaction(nodeRaiz);
+				end;
+			</event>
+		</comboBox>
+
+		<label left="125" top="220" width="100" height="25" text="META Permissões" fontSize="12" hitTest="true" hint="Indica se o usuario/grupo pode definir quem pode dar permissões de dar permissões e ler permissões."/>
+		<comboBox left="225" top="220" width="170" height="25" items="{'Permitido', 'Negado', 'Fortemente Permitido', 'Indefinido'}"  values="{'allow', 'deny', 'strongAllow', ''}" field="writeMetaPermissions">
+			<event name="onChange">
+				if sheet~= nil then
+					ndb.pushTransaction(nodeRaiz, trPermissions);
+					if node==nil then
+						node = sheet;
+					end;
+					if sheet.selKind=="user" then
+						ndb.setPermission(node, "user", sheet.login, "writeMetaPermissions", sheet.writeMetaPermissions);
+					elseif sheet.selKind=="group" then
+						ndb.setPermission(node, "group", sheet.selId, "writeMetaPermissions", sheet.writeMetaPermissions);
+					end;
+					ndb.popTransaction(nodeRaiz);
+				end;
+			</event>
+		</comboBox>
+
+		<button left="125" top="250" width="80" height="25" text="Desfazer">
+			<event name="onClick">
+				if sheet~= nil then
+					dialogs.confirmOkCancel("Tem certeza que deseja desfazer as alterações?",
+						function (confirmado)
+							if confirmado then
+								trPermissions:rollback();
+								refreshScreen();
+							end;
+					end);
+				end;
+			</event>
+		</button>
+
+		<button left="215" top="250" width="80" height="25" text="Salvar">
+			<event name="onClick">
+				if sheet~= nil then
+					dialogs.confirmOkCancel("Tem certeza que deseja salvar as alterações?",
+						function (confirmado)
+							if confirmado then
+								trPermissions:commit();
+							end;
+					end);
+				end;
+			</event>
+		</button>
+
+		<button left="305" top="250" width="80" height="25" text="Ajuda">
+			<event name="onClick">
+				if sheet~= nil then
+					gui.openInBrowser('http://wiki.rrpg.com.br/index.php?title=Editor_de_Permiss%C3%B5es_de_Node');
+				end;
+			</event>
+		</button>
+
+
+	</scrollBox>
+	
+	<script>
+		function self:editar(ONodeRaiz) 
+			nodeRaiz = ONodeRaiz;
+			self:setNodeObject(ndbTemporario);
+			self:show();
+		end;
+	</script>
+</popupForm>

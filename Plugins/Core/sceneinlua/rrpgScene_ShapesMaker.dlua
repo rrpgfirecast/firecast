@@ -1,0 +1,653 @@
+﻿require("scene.lua");
+require("utils.lua");
+require("rrpgScene_TouchNav.lua");
+require("rrpgScene_InertialMov.lua");
+require("rrpgScene_MovementHistory.lua");
+local VKCodes = require("vkCodes.dlua");
+
+SHAPE_FREE_HAND = 1;
+SHAPE_RECTANGLE = 2;
+SHAPE_ELLIPSE = 3;
+SHAPE_POINT = 4;
+SHAPE_TEXT_POINT = 5;
+SHAPE_POLYGON = 6;
+
+local shapeMakerMetaTable = {};
+shapeMakerMetaTable.__gc = 
+	function(maker)
+		local fncDettach = maker.dettach;
+		
+		if fncDettach ~= nil then
+			fncDettach(maker);
+		end;
+	end;
+
+local function newTracker_FreeHand(maker, scene)
+	local tracker = {};
+	local points = {};
+	local qtPoints = 0;
+	tracker.cursor = "cross";
+	
+	local function appendPoint(x, y)
+		local pt = {x = x, y = y};
+		points[qtPoints + 1] = pt;
+		qtPoints = qtPoints + 1;
+		
+		if qtPoints > 1 then
+			maker:notifyChanged();		
+		end;
+	end;
+	
+	function tracker.setStart(x, y)
+		qtPoints = 0;
+		appendPoint(x, y);
+	end;
+	
+	function tracker.addPoint(x, y)
+		appendPoint(x, y);
+	end;	
+	
+	function tracker.endTrack(x, y)		
+		if qtPoints > 1  then		
+			maker:notifyHaveShape();			
+		end;
+	end;	
+	
+	function tracker.getPolygon()	
+		if qtPoints > 1 then		
+			return points;
+		end;
+	end;
+	
+	return tracker;
+end;
+
+local function newTracker_Rectangle(maker, scene)
+	local tracker = {};
+	local points = {};
+	local qtPoints = 0;
+	tracker.cursor = "cross";
+	local startX, startY = nil, nil;
+	
+	local function appendPoint(x, y)
+		local pt = {x = x, y = y};
+		points[qtPoints + 1] = pt;
+		qtPoints = qtPoints + 1;
+		
+		if qtPoints >= 5 then
+			maker:notifyChanged();		
+		end;
+	end;	
+	
+	function tracker.setStart(x, y)
+		qtPoints = 0;
+		startX  = x;
+		startY = y;
+		appendPoint(x, y);
+	end;
+	
+	function tracker.addPoint(x, y)
+		qtPoints = 1;
+		appendPoint(x, startY);
+		appendPoint(x, y);
+		appendPoint(startX, y);
+		appendPoint(startX, startY);
+	end;	
+	
+	function tracker.endTrack(x, y)		
+		if qtPoints >= 5 then
+			maker:notifyHaveShape();			
+		end;
+	end;	
+	
+	function tracker.getPolygon()	
+		if qtPoints >= 5 then
+			return points;
+		end;
+	end;
+	
+	return tracker;
+end;
+	
+local function newTracker_Ellipse(maker, scene)
+	local tracker = {};
+	tracker.cursor = "cross";
+	local startX, startY = nil, nil;
+	local endX, endY = nil, nil;
+	local width, height = nil, nil;
+	local cx, cy = nil, nil;
+		
+	function tracker.setStart(x, y)
+		startX = x;
+		startY = y;
+	end;
+	
+	function tracker.addPoint(x, y)
+		endX = x;
+		endY = y;
+		
+		cx, cy = (startX + endX) / 2, (startY + endY) / 2;
+		width, height = math.abs(endX - startX), math.abs(endY - startY);
+		
+		if width > 0 and height > 0 then
+			maker:notifyChanged();	
+		end;
+	end;	
+	
+	function tracker.endTrack(x, y)		
+		if width ~= nil and height ~= nil and width > 0 and height > 0 then
+			maker:notifyHaveShape();			
+		end;
+	end;	
+	
+	function tracker.getEllipse()	
+		return startX, startY, endX, endY;
+	end;
+	
+	return tracker;
+end;	
+	
+local function newTracker_Point(maker, scene)
+	local tracker = {};
+	tracker.cursor = "cross";
+	local pX, pY = nil, nil;
+
+	function tracker.setStart(x, y)
+		pX = x;
+		pY = y;
+	end;
+	
+	function tracker.addPoint(x, y)
+		pX = x;
+		pY = y;		
+	end;	
+	
+	function tracker.endTrack(x, y)	
+		pX = x;
+		pY = y;		
+		maker:notifyHaveShape();			
+	end;	
+	
+	function tracker.getPoint()	
+		return pX, pY;
+	end;
+	
+	return tracker;
+end;	
+
+local function newTracker_TextPoint(maker, scene)
+	local tracker = newTracker_Point(maker, scene);
+	tracker.cursor = "IBeam";
+	return tracker;
+end
+
+
+local function newTracker_Polygon(maker, scene)
+	local tracker = {};
+	local points = {};
+	local pointsWithBuilding = nil;
+	local qtPoints = 0;
+	tracker.cursor = "cross";
+	tracker.multiMouseDown = true;
+	
+	local building = {};
+	local isBuilding = false;
+	
+	local function createPointsWithBuilding()
+		pointsWithBuilding = {};
+		
+		for i = 1, qtPoints, 1 do
+			pointsWithBuilding[i] = points[i];
+		end;
+		
+		pointsWithBuilding[qtPoints + 1] = building;
+	end;	
+	
+	local function appendPoint(x, y)
+		local pt = {x = x, y = y};
+		points[qtPoints + 1] = pt;
+		qtPoints = qtPoints + 1;		
+		pointsWithBuilding = nil;		
+		maker:notifyChanged();		
+	end;
+	
+	function tracker.setStart(x, y)
+		if qtPoints == 0 then
+			appendPoint(x, y);
+		end;
+	
+		isBuilding = true;
+		building.x = x;
+		building.y = y;
+		
+		maker:notifyChanged();					
+	end;
+	
+	function tracker.addPoint(x, y)
+		isBuilding = true;
+		building.x = x;
+		building.y = y;
+		
+		maker:notifyChanged();			
+	end;	
+	
+	function tracker.endTrack(x, y)	
+		isBuilding = false;
+		appendPoint(x, y);
+	end;	
+	
+	function tracker.finish()
+		if qtPoints > 0 or isBuilding then
+			maker:notifyHaveShape();
+		end;
+	end;
+	
+	function tracker.getPolygon()	
+		if qtPoints > 0 or isBuilding then
+			if pointsWithBuilding == nil then
+				createPointsWithBuilding();
+			end;
+		
+			return pointsWithBuilding;
+		end;
+	end;
+	
+	return tracker;
+end;
+	
+local SHAPE_TRACK_WHILE_MOUSE_DOWN = {};
+SHAPE_TRACK_WHILE_MOUSE_DOWN[SHAPE_FREE_HAND] = newTracker_FreeHand;
+SHAPE_TRACK_WHILE_MOUSE_DOWN[SHAPE_RECTANGLE] = newTracker_Rectangle;
+SHAPE_TRACK_WHILE_MOUSE_DOWN[SHAPE_ELLIPSE] = newTracker_Ellipse;
+SHAPE_TRACK_WHILE_MOUSE_DOWN[SHAPE_POINT] = newTracker_Point;
+SHAPE_TRACK_WHILE_MOUSE_DOWN[SHAPE_TEXT_POINT] = newTracker_TextPoint;
+SHAPE_TRACK_WHILE_MOUSE_DOWN[SHAPE_POLYGON] = newTracker_Polygon;
+	
+local LAYER_EVENT_DRAW = {};	
+LAYER_EVENT_DRAW["tokens"] = "onAfterDrawLayers";
+LAYER_EVENT_DRAW["objects"] = "onBeforeDrawTokensLayer";
+LAYER_EVENT_DRAW["background"] = "onBeforeDrawGridLayer";
+	
+function SHAPEMaker_New(scene, shape)
+	local maker = {};
+	setmetatable(maker, shapeMakerMetaTable);
+	
+	local cellSize = scene.grid.cellSize;
+	local oldCursor = scene.viewport.cursor;	
+	
+	
+	maker.onChange = nil; -- evento
+	maker.onStop = nil;  -- evento
+	maker.autoDraw = false;
+	maker.fillColor = "none";
+	maker.strokeColor = "black";
+	maker.shape = shape;
+	maker.continuedShaper = true;
+	maker.snapToGrid = false;	
+		
+	maker.strokeSize = 0.15 * cellSize;	
+	
+	local trackerCreator = SHAPE_TRACK_WHILE_MOUSE_DOWN[shape];
+	local tracker = nil;
+	local viewport = scene.viewport;
+	
+	local isAttached = false;
+	local mouseDownX, mouseDownY = nil, nil;
+	local isMouseDown = false;
+	local ignoreNextPoint = false;
+	
+	local function doMouseDown(event)	
+		if event.button == "left" and not ignoreNextPoint then		
+			local wx, wy = viewport:screenToWorld(event.x, event.y);
+		
+			mouseDownX = event.x;
+			mouseDownY = event.y;
+			isMouseDown = true;
+			
+			if tracker ~= nil then
+				tracker.setStart(wx, wy);
+			end;
+		end;
+	end;
+
+	local function doMouseMove(event)
+		if isMouseDown and not ignoreNextPoint then
+			local wx, wy = viewport:screenToWorld(event.x, event.y);		
+		
+			if tracker ~= nil then
+				tracker.addPoint(wx, wy);
+			end;
+		end;
+	end;
+	
+	local function doMouseUp(event)
+		if event.button == "left" and isMouseDown and not ignoreNextPoint then				
+			isMouseDown = false;
+			local wx, wy = viewport:screenToWorld(event.x, event.y);				
+			
+			if tracker ~= nil then
+				tracker.endTrack(wx, wy);
+			end;
+		elseif event.button == "right" then
+			if tracker ~= nil and tracker.multiMouseDown then
+				tracker.finish();
+				maker:start();
+			end;
+		end;	
+	end;	
+	
+	local function doKeyDown(event)
+		if (event.keyCode == VKCodes.vkEscape)then
+			-- Cancelar o shape atual
+			event.keyCode = 0;
+			event.key = "";
+			
+			if tracker.multiMouseDown then
+				tracker.finish();
+			end;
+			
+			--maker:abort();
+			maker:start();
+			isMouseDown = false;
+			scene.viewport:needRepaint();
+		end;	
+	end;		
+	
+	local function doDblClick(event)	
+		if tracker ~= nil and tracker.multiMouseDown and not ignoreNextPoint then			
+			tracker.finish();
+			maker:start();
+			ignoreNextPoint = true;		
+			
+			setTimeout(function()
+						ignoreNextPoint = false;	
+					   end, 100);
+		end;	
+	end;
+	
+	local function execDrawPolygon()
+		local pol = maker:getPolygon();			
+		
+		if pol ~= nil then
+			local qtPontos = #pol;
+			
+			if qtPontos < 1 then
+				return;
+			end;
+			
+			viewport:pushWorldToScreenTransform();			
+			
+			local r, g, b, a;
+			local color;			
+			
+			-- Fill	
+
+			color = maker.fillColor;
+			r, g, b, a = colorToRGBA(color);
+			
+			if a > 0.1 then
+				viewport:prepareFill(color);				
+				viewport:fillPolygon(pol);									
+			end;		
+									
+			-- Stroke
+		
+			color = maker.strokeColor;
+			r, g, b, a = colorToRGBA(color);
+			
+			if a > 0.1 then
+				viewport:prepareDraw(color, maker.strokeSize, "round", "round");				
+				local oldX = pol[1].x;
+				local oldY = pol[1].y;
+				
+				for i = 2, qtPontos, 1 do
+					local pt = pol[i];
+					local newX = pt.x;
+					local newY = pt.y;
+					viewport:drawLine(oldX, oldY, newX, newY);
+					oldX = newX;
+					oldY = newY;
+				end;				
+			end;
+			
+			viewport:popTransform();			
+		end;
+	end;
+	
+	local function execDrawEllipse()
+		local x, y, x2, y2 = tracker.getEllipse();	
+		
+		if x2 ~= nil then
+			viewport:pushWorldToScreenTransform();		
+
+			local r, g, b, a;
+			local color;
+			
+			-- Fill
+			color = maker.fillColor;
+			r, g, b, a = colorToRGBA(color);
+			
+			if a > 0.1 then
+				viewport:prepareFill(color);				
+				viewport:fillEllipse(x, y, x2, y2);									
+			end;		
+		
+			-- Stroke
+		
+			color = maker.strokeColor;
+			r, g, b, a = colorToRGBA(color);
+			
+			if a > 0.1 then
+				viewport:prepareDraw(color, maker.strokeSize, "round", "round");				
+				viewport:drawEllipse(x, y, x2, y2);									
+			end;
+			
+			viewport:popTransform();			
+		end;
+	end;
+		
+	local listenerMouseDown = nil;
+	local listenerMouseMove = nil;
+	local listenerMouseUp = nil;
+	local listenerKeyDown = nil;
+	local listenerDraw = nil;
+	local listenerDblClick = nil;
+	
+	function maker:attach()
+		if not isAttached then
+			isAttached = true;
+			
+			oldCursor = scene.viewport.cursor;
+
+			if tracker ~= nil and tracker.cursor ~= nil then				
+				scene.viewport.cursor = tracker.cursor;
+			end;
+			
+			listenerMouseDown = scene.viewport:listen("onMouseDown", doMouseDown);
+			listenerMouseMove = scene.viewport:listen("onMouseMove", doMouseMove);
+			listenerMouseUp = scene.viewport:listen("onMouseUp", doMouseUp);
+			listenerKeyDown = scene.viewport:listen("onKeyDown", doKeyDown);
+			listenerDblClick = scene.viewport:listen("onMouseDblClick", doDblClick);
+			
+			if maker.autoDraw and tracker ~= nil then				
+				local drawEventName = LAYER_EVENT_DRAW[scene.workingLayer];
+
+				if drawEventName == nil then
+					drawEventName = "onAfterDrawLayers";
+				end;
+								
+				local metodoDrawer = nil;
+				
+				if tracker.getPolygon ~= nil then
+					metodoDrawer = execDrawPolygon;
+				elseif tracker.getEllipse ~= nil then
+					metodoDrawer = execDrawEllipse;
+				end;
+							
+				if metodoDrawer ~= nil then
+					listenerDraw = scene.viewport:listen(drawEventName, metodoDrawer);
+				end;
+			else
+				listenerDraw = nil;
+			end;
+		end;	
+	end;
+	
+	function maker:dettach()
+		if isAttached then
+			isAttached = false;
+			scene.viewport.cursor = oldCursor;				
+			
+			scene.viewport:unlisten(listenerMouseDown);
+			scene.viewport:unlisten(listenerMouseMove);
+			scene.viewport:unlisten(listenerMouseUp);		
+			scene.viewport:unlisten(listenerKeyDown);				
+			scene.viewport:unlisten(listenerDraw);	
+			scene.viewport:unlisten(listenerDblClick);			 
+			scene.viewport:needRepaint();			
+		end;
+	end;
+	
+	function maker:start()
+		if trackerCreator ~= nil then
+			tracker = trackerCreator(maker, scene);			
+		else
+			tracker = nil;
+		end;			
+
+		maker:attach();		
+	end;
+	
+	function maker:abort()
+		if tracker ~= nil and tracker.multiMouseDown then
+			tracker.finish();
+		end;		
+	
+		maker:dettach();		
+		local stopFnc = maker.onStop;
+		
+		if stopFnc ~= nil then
+			maker.onStop = nil;
+			--stopFnc();
+		end;			
+	end;	
+	
+	function maker:notifyHaveShape()
+		local stopFnc = maker.onStop;	
+	
+		if not maker.continuedShaper then			
+			maker:dettach();		
+		end;	
+		
+		if stopFnc ~= nil then
+			stopFnc();
+		end;
+		
+		if maker.continuedShaper then			
+			maker:start();		
+		end;		
+		
+		if maker.autoDraw then
+			scene.viewport:needRepaint();
+		end;
+	end;
+	
+	function maker:notifyChanged()
+		if maker.onChange ~= nil then
+			maker.onChange();
+		end;
+		
+		if maker.autoDraw then
+			scene.viewport:needRepaint();
+		end;
+	end;
+	
+	function maker:getPolygon()
+		if tracker ~= nil then
+			local getPol = tracker.getPolygon;
+			
+			if getPol ~= nil then
+				return getPol();				
+			end;
+		end;
+	end;
+		
+	local function ellipseToPolygon(x, y, x2, y2)
+		local PRECISAO_CIRCULO_EM_GRAUS = 360.0 / 18;
+		local qtPontos = math.max(3, math.ceil(360 / PRECISAO_CIRCULO_EM_GRAUS));
+		local stepAngulo = (2 * math.pi) / qtPontos;
+		local anguloAtual = 0;
+		local pol = {};
+		local cx = (x + x2) / 2;
+		local cy = (y + y2) / 2;
+		local largura = math.abs(x2 - x) / 2;
+		local altura = math.abs(y2 - y) / 2;
+		
+		for i = 1, qtPontos, 1 do			
+			local vSin = math.sin(anguloAtual);
+			local vCos = math.cos(anguloAtual);
+			local pt = {};
+			pt.x = vCos * largura + cx;
+			pt.y = -vSin * altura + cy;
+			pol[i] = pt;
+			anguloAtual = anguloAtual + stepAngulo;			
+		end;
+		
+		pol[#pol + 1] = pol[1];		
+		return pol;
+	end;
+	
+	function maker:forceGetPolygon()
+		if tracker ~= nil then
+			local getPol = tracker.getPolygon;
+			
+			if getPol ~= nil then
+				return getPol();	
+			else 
+				if tracker.getEllipse ~= nil then
+					local x, y, x2, y2 = tracker.getEllipse();
+					
+					if x2 ~= nil then
+						return ellipseToPolygon(x, y, x2, y2);
+					else
+						if tracker.getPoint ~= nil then
+							local x, y = tracker.getPoint();
+							
+							if y ~= nil then
+								return ellipseToPolygon(x - 0.5, y - 0.5, x + 0.5, y + 0.5);
+							else
+								return {};
+							end;				
+						else
+							return {};
+						end;
+					end;
+				end;
+			end;
+		else
+			return {};
+		end;		
+	end;
+	
+	function maker:getEllipse()
+		if tracker ~= nil and tracker.getEllipse ~= nil then
+			local x, y, x2, y2 = tracker.getEllipse();
+			
+			if x2 ~= nil then
+				return x, y, x2, y2;
+			end;
+		end;
+	end;	
+	
+	function maker:getPoint()
+		if tracker ~= nil and tracker.getPoint ~= nil then
+			local x, y = tracker.getPoint();
+			
+			if y ~= nil then
+				return x, y;
+			end;
+		end;
+	end;	
+	
+	return maker;
+end;

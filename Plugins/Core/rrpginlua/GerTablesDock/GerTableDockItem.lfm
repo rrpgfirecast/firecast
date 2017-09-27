@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTableDockItem" height="28">	
+	<script><![CDATA[
+		local plugins = require("plugins.lua");
+		local tdGlobal = require("/GerTablesDock/GerTablesDockGlobal.dlua");
+	
+		local ignorarMudancaCount = 0;
+	
+		local function doAtivoMudou()
+			ignorarMudancaCount = ignorarMudancaCount + 1;
+			self.cbxAtivar.checked = sheet.ativo;
+			ignorarMudancaCount = ignorarMudancaCount - 1;
+		end;
+		
+		local function inverterEstadoPorClick()
+			if ignorarMudancaCount <= 0 then			
+				ignorarMudancaCount = ignorarMudancaCount + 1;
+				
+				if self.mesa.podeTablesDock then
+					if not self.cbxAtivar.checked then
+						self.unloadTDFunction(self.mesa, sheet);
+					else					
+						self.loadTDFunction(self.mesa, sheet);
+					end;				
+
+					sheet.ativo = plugins.getIsTablesDockActive(self.mesa, sheet.moduleId, sheet.name);
+					local tdN = tdGlobal.getNDBForMesaTablesDock(self.mesa, sheet.moduleId, sheet.name, sheet.ativo);				
+					
+					if tdN ~= nil then
+						tdN.ativo = sheet.ativo;
+					end;
+				else
+					if self.frmKG == nil then
+						self.frmKG = gui.newForm("frmKnowGold");
+						self.frmKG.width = 300;
+						self.frmKG.height = 300;
+						self.frmKG:setInfo("Janelas Acopláveis é um recurso exclusivo para usuários assinantes do RRPG Gold.\nVocê também poderá utilizar as janelas acopláveis se o dono da mesa for Gold Plus =)");
+					end;
+									
+					self.frmKG:show();
+				end;			
+					
+				
+				setTimeout(function()
+							ignorarMudancaCount = ignorarMudancaCount + 1;
+							local atv = plugins.getIsTablesDockActive(self.mesa, sheet.moduleId, sheet.name);
+							self.cbxAtivar.checked = atv;
+							sheet.ativo = atv;
+							ignorarMudancaCount = ignorarMudancaCount - 1;
+						   end, 50);
+				
+				ignorarMudancaCount = ignorarMudancaCount - 1;
+			end;
+		end;
+		
+		local function doLimparDados()
+			local m = self.mesa;
+			local dt = sheet.dataType;
+		
+			dialogs.confirmYesNo("Deseja realmente limpar os dados desta janela acoplável?",
+				function(confirmado)
+					if confirmado then
+							m:abrirNDBDeMesa(sheet.dataType, 
+								function(root)																	
+									if root ~= nil then
+										ndb.clearNode(root);
+									end;	
+								end);
+					end;
+				end);
+		end;
+			
+		local function doAtualizarEstadoBtnLimpar()
+			self.btnLimparDados.enabled = (sheet.dataType ~= nil) and type(sheet.dataType) == "string";
+			self.btnEditPermissions.enabled = self.btnLimparDados.enabled;
+		end;
+		
+		local function doEditPermissions()
+			local m = self.mesa;				
+		
+			m:abrirNDBDeMesa(sheet.dataType, 
+				function(root)																	
+					if root ~= nil then
+						ndb.editPermissions(root);
+					end;	
+				end);
+		end;		
+	]]>	
+	</script>
+
+	<checkBox name="cbxAtivar" text="" align="left" width="28" onChange="inverterEstadoPorClick()"/>
+	<label align="client" field="title" hitTest="true" onClick="self.cbxAtivar.checked = not self.cbxAtivar.checked"/>
+	<button name="btnLimparDados" text="Limpar Dados" align="right" width="85" fontSize="12" textTrimming="none" margins="{top=1,bottom=1,left=1, right=1}" onClick="doLimparDados()"/>
+	<button name="btnEditPermissions" hint="Editar Permissões..." align="right" width="32" fontSize="12" textTrimming="none" margins="{top=1,bottom=1,left=1, right=1}" onClick="doEditPermissions()">	
+		<image align="client" src="/GerTablesDock/security.png" >
+		</image>
+	</button>
+	
+	<dataLink field="ativo" onChange="doAtivoMudou();"/>	
+	<dataLink field="dataType" onChange="doAtualizarEstadoBtnLimpar()"/>
+	
+	<event name="onScopeNodeChanged">
+		if sheet ~= nil then
+			doAtualizarEstadoBtnLimpar();
+		end;
+	</event>
+</form> 

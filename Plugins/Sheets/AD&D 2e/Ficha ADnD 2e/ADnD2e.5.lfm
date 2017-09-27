@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmADnD5" align="client" theme="dark">
+	<scrollBox align="client">
+	   <template name="Descricao">
+        	<label left="0" top="5" width="100" height="20" text="$(nome)" horzTextAlign="trailing"/>
+        	<edit left="110" top="0" width="200" height="25" field="desc_$(field)"/>
+        </template>
+	   
+		<layout left="0" top="0" width="960" height="70">
+			<rectangle left="5" top="0" width="950" height="70" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<layout left="5" top="5" width="310" height="25" >
+				<Descricao field="sexo" nome="Sexo"/>
+			</layout>
+			<layout left="320" top="5" width="310" height="25" >
+				<Descricao field="altura" nome="Altura"/>
+			</layout>
+			<layout left="585" top="5" width="310" height="25" >
+				<Descricao field="olhos" nome="Olhos"/>
+			</layout>
+			<layout left="5" top="35" width="310" height="25" >
+				<Descricao field="idade" nome="Idade"/>
+			</layout>
+			<layout left="320" top="35" width="310" height="25" >
+				<Descricao field="peso" nome="Peso"/>
+			</layout>
+			<layout left="585" top="35" width="310" height="25" >
+				<Descricao field="cabelo" nome="Cabelo"/>
+			</layout>
+		</layout>
+		
+		<layout left="0" top="80" width="400" height="175">
+			<rectangle left="0" top="0" width="400" height="175" color="black" xradius="15" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Aparencia" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="135" field="aparencia"/>
+        </layout>
+		<layout left="0" top="260" width="400" height="175">
+			<rectangle left="0" top="0" width="400" height="175" color="black" xradius="15" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Personalidade" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="135" field="personalidade"/>
+        </layout>
+		<layout left="0" top="440" width="400" height="175">
+			<rectangle left="0" top="0" width="400" height="175" color="black" xradius="15" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Idiomas" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="135" field="idiomas"/>
+        </layout>
+		
+		<layout left="410" top="80" width="600" height="535">
+			<rectangle left="0" top="0" width="600" height="535" color="black" xradius="15" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="600" height="20" text="Historia" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="580" height="495" field="historia"/>
+        </layout>
+		
+	</scrollBox>
+</form>

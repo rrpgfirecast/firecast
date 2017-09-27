@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAMZ3_1" width="450" height="25" theme="dark" margins="{top=5}">
+	<rectangle align="client" color="#191919" xradius="5" yradius="5" cornerType="round" hitTest="false"/>
+
+	<rectangle left="0" top="0" width="149" height="25" color="black" strokeColor="white" strokeSize="1"/>
+	<label left="0" top="0" width="149" height="25" horzTextAlign="center" field="nome"/>
+
+	<rectangle left="150" top="0" width="149" height="25" color="black" strokeColor="white" strokeSize="1"/>
+	<label left="150" top="0" width="149" height="25" horzTextAlign="center" field="acerto"/>
+
+	<rectangle left="300" top="0" width="149" height="25" color="black" strokeColor="white" strokeSize="1"/>
+	<label left="300" top="0" width="149" height="25" horzTextAlign="center" field="dano"/>
+</form>

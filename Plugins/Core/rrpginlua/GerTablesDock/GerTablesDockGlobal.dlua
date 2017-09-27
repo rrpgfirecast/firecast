@@ -1,0 +1,41 @@
+﻿require("ndb.lua");
+local tdGlobal = {};
+
+local tdNDB = nil;
+
+function tdGlobal.getDocksInfoNDB()
+	if tdNDB == nil then
+		tdNDB = ndb.load("tablesDockNDB.xml");
+	end;
+	
+	return tdNDB;
+end;
+
+function tdGlobal.getNDBForMesa(mesa)
+	local r = tdGlobal.getDocksInfoNDB();
+	local id = "m_" .. tostring(math.tointeger(mesa.codigoInterno));
+	
+	local n = r[id];
+	
+	if n == nil then
+		r[id] = {};
+		n = r[id];
+	end;
+	
+	return n;
+end;
+
+function tdGlobal.getNDBForMesaTablesDock(mesa, moduleId, name, canCreate)
+	local n = tdGlobal.getNDBForMesa(mesa);	
+	local tdID = (moduleId .. "_" .. name):gsub("%.", "_");	
+	local tdN = n[tdID];	
+	
+	if tdN == nil and canCreate then
+		n[tdID] = {};
+		tdN = n[tdID];
+	end;
+	
+	return tdN;
+end;
+
+return tdGlobal;

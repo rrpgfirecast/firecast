@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmSceneMenu" cancelable="true" drawContainer="false" width="170">
+	<import file="sceneTags.xml"/>
+
+	<script>
+		local currentMenuLayout = nil;
+		local theSelection = nil;
+		local theScene = nil;		
+		
+		local function resizeForLayoutSize(aLayout)
+			local h = aLayout.height;
+			self.height = h + 5;
+		end;
+		
+		local function onLayoutResized(aLayout)
+			if aLayout == currentMenuLayout then
+				resizeForLayoutSize(aLayout);
+			end;
+		end;
+	</script>
+	
+	<flowLayout name="flaLayout" class="menu">
+	</flowLayout>	
+	
+	<script>
+		
+	
+		require("rrpgScene_Clipboard.dlua");
+		require("rrpgScene_Undo.dlua");
+		
+		local __Menuses = {self.flaLayout};
+	
+		for k, v in pairs(__Menuses) do
+			local aLayout = v;
+			aLayout.onAfterLayoutCalc = function() onLayoutResized(aLayout); end;				
+		end;	
+	
+		newMenuSeparatorItem(self.flaLayout);
+		local macEdit = newMultiActionMenuItem("", self.flaLayout, 4);
+		local actPaste = macEdit:addActionButton("/icos/menuPaste.png", LANG("scene.menu.token.editCA.paste"));
+		local actUndo = macEdit:addActionButton("/icos/menuUndo.png", LANG("scene.menu.token.editCA.undo"));	
+		
+		local btnProperties = newMenuItem(lang("scene.menu.sceneOptions"), self.flaLayout);		
+		
+		actPaste.onClick = function()
+							SC3CLIPBOARD_Paste(theScene);
+							self:close();
+						  end;		
+							
+		actUndo.onClick = function()
+							SC3UNDO_Undo(theScene);
+							self:close();
+						  end;			
+		
+		btnProperties.onClick = function()
+							  -- Chamar outro popup aqui
+							  local frm = gui.newForm("frmBoardProps");
+							  frm:prepareForShow(theScene);									  
+							  self:close();
+							  frm:show();
+						   end;			
+		
+		function self:setActiveMenu(menu)
+			currentMenuLayout = menu;
+		
+			for k, v in pairs(__Menuses) do
+				if menu == v then
+					v.visible = true;
+				else
+					v.visible = false;
+				end;
+			end;
+			
+			resizeForLayoutSize(menu)
+		end;
+		
+		function self:prepareForShow(selection, scene)		
+			self:setActiveMenu(self.flaLayout);		
+			theSelection = selection;
+			theScene = scene;
+		end;	
+	</script>	
+	
+	<event name="onKeyUp">	
+		if (event.keyCode == 0x89) or (event.keyCode == 0x1B) then
+			setTimeout(
+				function()
+					self:close();
+				end, 1);
+			
+			event.keyCode = 0;
+			event.key = "";
+		end;
+	</event>
+	
+	<event name="onHide">
+		theSelection = nil;
+		theScene = nil;
+	</event>
+	
+</popupForm>

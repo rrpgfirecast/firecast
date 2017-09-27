@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.4_beta_3" originalPluginFileName="afkbot.rpk">
+	<id>AfkBot</id>
+	<version>0.5</version>
+	<name>AfkBot</name>
+	<description>Crie uma mensagem padrão para responder quando estiver ocupado.</description>
+	<author>Vinny Ambesek</author>
+	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
+	<contact>vinnyrpgmeister@gmail.com</contact>
+</module>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAMZ2_3_1" width="765" height="325" theme="dark" margins="{top=5}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
+								 function (confirmado)
+									if confirmado then
+										ndb.deleteNode(sheet);
+									end;
+								 end);
+		end;
+		]]>	
+	</script>
+	<rectangle align="client" color="#191919" xradius="5" yradius="5" cornerType="round" hitTest="false"/>
+	<button left="740" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+
+	<label left="0" top="0" width="60" height="20" text="Nome" horzTextAlign="center"/>
+	<edit left="60" top="0" width="680" height="25" field="nome"/>
+
+	<label left="0" top="25" width="60" height="20" text="Tipo" horzTextAlign="center"/>
+	<edit left="60" top="25" width="705" height="25" field="tipo"/>
+
+	<label left="0" top="75" width="60" height="20" text="Descrição" horzTextAlign="center"/>
+	<textEditor left="60" top="50" width="705" height="75" field="descricao"/>
+
+	<label left="0" top="125" width="60" height="20" text="Efeito" horzTextAlign="center"/>
+	<edit left="60" top="125" width="705" height="25" field="efeito"/>
+
+	<label left="0" top="150" width="60" height="20" text="Acerto" horzTextAlign="center"/>
+	<edit left="60" top="150" width="705" height="25" field="acerto"/>
+
+	<label left="0" top="175" width="60" height="20" text="Canalização" horzTextAlign="center" fontSize="11"/>
+	<edit left="60" top="175" width="705" height="25" field="canalizacao"/>
+
+	<label left="0" top="200" width="60" height="20" text="Condições" horzTextAlign="center"/>
+	<edit left="60" top="200" width="705" height="25" field="condicoes"/>
+
+	<label left="0" top="225" width="60" height="20" text="Duração" horzTextAlign="center"/>
+	<edit left="60" top="225" width="705" height="25" field="duracao"/>
+
+	<label left="0" top="250" width="60" height="20" text="Custo" horzTextAlign="center"/>
+	<edit left="60" top="250" width="705" height="25" field="custo"/>
+
+	<label left="0" top="275" width="60" height="20" text="Dano" horzTextAlign="center"/>
+	<edit left="60" top="275" width="705" height="25" field="dano"/>
+
+	<label left="0" top="300" width="60" height="20" text="OBS.:" horzTextAlign="center"/>
+	<edit left="60" top="300" width="705" height="25" field="obs"/>
+</form>

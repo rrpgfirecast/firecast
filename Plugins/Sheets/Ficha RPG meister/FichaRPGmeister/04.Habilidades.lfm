@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister4_svg" align="client" theme="dark" margins="{top=1}">
+	 <scrollBox align="client">
+
+	 	<template name="habilidadeSmallCenter">
+			<flowPart minWidth="90" maxWidth="100" height="35">
+				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+			</flowPart>
+		</template>
+		<template name="habilidadeLarge">
+			<flowPart minWidth="180" maxWidth="200" height="35">
+				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<edit align="client" class="" field="$(field)" fontSize="12"/>
+			</flowPart>
+		</template>
+
+	 	<popup name="popHabilidade" width="300" height="240" backOpacity="0.4">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+				<habilidadeSmallCenter text="Nível" field="nivelHabilidade"/>
+				<habilidadeLarge text="Obtido" field="obtencaoHabilidade"/>
+				<habilidadeSmallCenter text="Página" field="paginaHabilidade"/>
+				<habilidadeLarge text="Livro" field="livroHabilidade"/>
+			</flowLayout>
+			<textEditor align="client" field="descricao"/>
+		</popup>
+
+			
+		<layout left="0" top="0" width="380" height="600">
+			<rectangle align="client" color="#0000007F"/>
+			<label left="0" top="0" width="380" height="20" text="TALENTOS" horzTextAlign="center"/>
+
+			<recordList name="rclListaDosTalentos" field="campoDosTalentos" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="570" layout="vertical">
+				<event name="onCompare">
+		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+		        </event>
+			</recordList>
+		</layout>
+			
+		<layout left="395" top="0" width="380" height="600">
+			<rectangle align="client" color="#0000007F"/>
+			<label left="0" top="0" width="380" height="20" text="OUTROS" horzTextAlign="center"/>
+
+			<recordList name="rclListaDosOutros" field="campoDosOutros" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="570" layout="vertical">
+				<event name="onCompare">
+		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+		        </event>
+			</recordList>
+		</layout>
+		
+		<layout left="790" top="0" width="380" height="600">
+			<rectangle align="client" color="#0000007F"/>
+			<label left="0" top="0" width="380" height="20" text="CARACTERISTICAS DE CLASSE" horzTextAlign="center"/>
+
+			<recordList name="rclListaDasCaracteristicasClasse" field="campoDasCaracteristicasClasse" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="570" layout="vertical">
+				<event name="onCompare">
+		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+		        </event>
+			</recordList>
+		</layout>
+
+		<layout left="1180" top="0" width="135" height="600">
+			<button text="Novo Talento" left="0" top="0" width="125" height="25" onClick="self.rclListaDosTalentos:append();"/>
+			<button text="Novo Outros" left="0" top="25" width="125" height="25" onClick="self.rclListaDosOutros:append();"/>
+			<button text="Nova Caracteristica" left="0" top="50" width="125" height="25" onClick="self.rclListaDasCaracteristicasClasse:append();"/>
+
+			<button text="Organizar" left="0" top="75" width="125" height="25">
+				<event name="onClick">
+					self.rclListaDosTalentos:sort();
+					self.rclListaDosOutros:sort();
+					self.rclListaDasCaracteristicasClasse:sort();
+				</event>
+			</button>
+		</layout>
+	 </scrollBox>
+</form>

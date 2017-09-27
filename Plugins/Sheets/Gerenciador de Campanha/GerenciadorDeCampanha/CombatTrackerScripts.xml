@@ -1,0 +1,478 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<group>
+	<script><![CDATA[
+		local ATOR_VIEW_STATE_VISIVEL = 0;
+		local ATOR_VIEW_STATE_PARC_VISIVEL = 1;
+		local ATOR_VIEW_STATE_INVISIVEL = 2;
+	
+		local function getAtoresNDB()
+			if sheet.atores == nil then
+				sheet.atores = {};
+			end;
+			
+			return sheet.atores;
+		end;	
+
+		local function getAtoresNodes()
+			local atores = getAtoresNDB();
+			return ndb.getChildNodes(atores);
+		end;
+		
+		function self:souMestre()
+			local mesa = rrpg.getMesaDe(sheet);
+
+			if mesa ~= nil then
+				local j = mesa.meuJogador;
+				
+				if j ~= nil then
+					return j.isMestre;
+				else
+					return false;
+				end;
+			else
+				return false;
+			end;
+		end;
+		
+		function self:narrar(msg)
+			local mesa = rrpg.getMesaDe(sheet);
+			
+			if mesa ~= nil then
+				local chat = mesa.chat;
+				
+				if chat ~= nil then
+					chat:enviarNarracao(msg);
+				end;
+			end;
+		end;
+		
+		function self:escrever(msg)
+			local mesa = rrpg.getMesaDe(sheet);
+			
+			if mesa ~= nil then
+				local chat = mesa.chat;
+				
+				if chat ~= nil then
+					chat:escrever(msg);
+				end;
+			end;
+		end;
+		
+		function self:getNomeColoridoDe(nodeAtor)
+			local corAsNumero;
+			local fof = nodeAtor.fof;
+			
+			if fof == 1 then
+				corAsNumero = 3; -- Amigo
+			elseif fof == 2 then
+				corAsNumero = 8;  -- Neutro
+			elseif fof == 3 then
+				corAsNumero = 4;  -- Inimigo
+			else
+				corAsNumero = 14; -- Não definido
+			end;	
+
+			return "[§K" .. corAsNumero .. "]" .. nodeAtor.nome;			
+		end;
+		
+		function self:ativarTurnoDe(node)
+			if not self:souMestre() then
+				return nil;
+			end;		
+		
+			local atores = getAtoresNodes();
+			local oldEstavaNaVez = node.vez;
+			
+			for i = 1, #atores, 1 do
+				local a = atores[i];
+				
+				if a ~= node then
+					a.vez = false;
+				end;
+			end;
+			
+			if node ~= nil then
+				node.vez = true;
+				self.rclAtores:scrollToNode(node);
+			end;
+						
+			if (type(node.nome) == "string" and node.nome ~= "") and
+               (not oldEstavaNaVez)	then
+				local headerTralha = "[§K15] >>";
+				local footerTralha = "";
+				local notificacaoDeTurno = "[§K1]" .. headerTralha .. "[§K1] Turno de " .. self:getNomeColoridoDe(node) .. "[§K1] " .. footerTralha;
+			
+				if (ndb.getPermission(node, "group", "espectadores", "read") ~= "deny") then			   
+					self:narrar(notificacaoDeTurno);
+				else					
+					self:escrever(notificacaoDeTurno);
+				end;
+			end;
+		end;
+		
+		local scheduledSort = false;
+		
+		function self:reordenar()
+			self.rclAtores:sort();
+			scheduledSort = false;
+		end;
+		
+		function self:agendarReordenacao()
+			if not scheduledSort then
+				scheduledSort = true;
+				
+				setTimeout(function()
+							  if scheduledSort then
+								self:reordenar();
+								scheduledSort = false;
+							  end;							  
+						   end, 200);
+			end;
+		end;	
+		
+		function self:compareNodes(nodeA, nodeB)
+			local r = (tonumber(nodeB.iniciativa) or 0) - (tonumber(nodeA.iniciativa) or 0);
+			
+			if r == 0 then
+				r = (nodeA._id or 0) - (nodeB._id or 0);
+			end;
+			
+			return r;		
+		end;
+		
+		function self:avancarRelogioDeAtor(ator, relogioAtual, relogioOld)
+			if ator.dadosSensiveis ~= nil and ator.dadosSensiveis.efeitos ~= nil then
+				local lEfeitos = ndb.getChildNodes(ator.dadosSensiveis.efeitos);
+				
+				for i = 1, #lEfeitos, 1 do
+					local ef = lEfeitos[i];
+					local duracao = tonumber(ef.duracao);
+										
+					if (duracao ~= nil) and (duracao > 0) then
+						local duracaoReal = tonumber(ef.duracaoReal);					
+					
+						if duracaoReal == nil then
+							duracaoReal = duracao;
+							ef.duracaoReal = duracaoReal;
+						end;
+						
+						local duracaoRealRestante = duracaoReal - (relogioAtual - relogioOld);
+						local constanteMargemSuperior = 0.000001;
+																		
+						if duracaoRealRestante < constanteMargemSuperior then
+							local nomeEfeito = ef.descricao;
+							ndb.deleteNode(ef);
+							
+							if nomeEfeito ~= nil and ator.nome ~= nil then
+								local fof = ator.fof or 0;
+								local enviarNarracao = (ndb.getPermission(ator, "group", "espectadores", "read") ~= "deny") and
+								                       (fof ~= 3) and (ator.visibilityState ~= ATOR_VIEW_STATE_PARC_VISIVEL); -- não é inimigo;
+													   
+								local notificacao = "[§K15] >> [§K1]O efeito [§K7]" .. nomeEfeito .. "[§K1] de " .. self:getNomeColoridoDe(ator) .. "[§K1] chegou ao fim";
+								
+								if enviarNarracao then
+									self:narrar(notificacao);
+								else
+									self:escrever(notificacao);
+								end;
+							end;
+						else
+							ef.duracaoReal = duracaoRealRestante;
+							local duracaoRestanteArredondada = math.ceil(duracaoRealRestante - constanteMargemSuperior);							
+						
+							if duracaoRestanteArredondada ~= duracao then
+								ef.duracao = duracaoRestanteArredondada;
+							end;
+						end;						
+						
+					end;					
+				end;
+			end;
+		end;
+		
+		function self:avancarRelogio(rodadas)
+			-- esta função avança o relógio do combat tracker, podendo remover automaticamente os efeitos
+			-- dos atores
+			--  OBS: O parâmetro "rodadas" virá com valor "quebrado", exemplo: 0.5, 0.3, etc..
+							
+			rodadas = rodadas or 1.0;
+			local relogioAtual = tonumber(sheet.relogio) or 0.0;
+			local relogioOld = relogioAtual;
+			local atores = getAtoresNodes();			
+			
+			relogioAtual = relogioAtual + rodadas;
+			
+			for i = 1, #atores, 1 do
+				self:avancarRelogioDeAtor(atores[i], relogioAtual, relogioOld);
+			end;
+						
+			sheet.relogio = relogioAtual;
+		end;
+		
+		function self:proximoTurno()
+			if not self:souMestre() then
+				return;
+			end;
+		
+			local atores = getAtoresNodes();
+			local atorComVez = nil;
+			local idxAtorComVez = nil;
+			local novaRodada = false;
+			
+			if #atores > 0 then			
+				table.sort(atores,
+					function(nodeA, nodeB)
+						return self:compareNodes(nodeA, nodeB) < 0;
+					end);
+			
+				for i = 1, #atores, 1 do
+					local a = atores[i];
+					
+					if a.vez then
+						atorComVez = a;
+						idxAtorComVez = i;	
+						break;					
+					end;
+				end;			
+
+				if idxAtorComVez == nil then
+					idxAtorComVez = 1;
+				else					
+					idxAtorComVez = idxAtorComVez + 1;
+				end;
+				
+				if idxAtorComVez < 1 then
+					idxAtorComVez = 1;
+				elseif idxAtorComVez > #atores then
+					idxAtorComVez = 1;
+					novaRodada = true;
+				end;
+				
+				self:ativarTurnoDe(atores[idxAtorComVez]);
+				
+				if novaRodada then
+					sheet.rodada = (tonumber(sheet.rodada or 0) or 0) + 1;
+				end;
+			end;
+			
+			if tonumber(sheet.rodada) == nil then
+				sheet.rodada = 1;
+			end;
+			
+			if #atores > 0 then
+				self:avancarRelogio(1 / #atores);
+			else
+				self:avancarRelogio(1);			
+			end;
+		end;
+		
+		function self:tratarNovoAtor(node)
+			if node ~= nil then
+				local g = (sheet.generator or 0) + 1;
+				sheet.generator = g;				
+				node._id = g;
+			end;
+		end;
+		
+		function self:criarNovoAtor()
+			local novoNode = nil;
+			ndb.beginUpdate(sheet);
+			
+			tryFinally(function()
+					novoNode = self.rclAtores:append();
+					self:tratarNovoAtor(novoNode);
+				end,
+				
+				function()
+					ndb.endUpdate(sheet);
+				end);
+				
+			return novoNode;
+		end;
+		
+		function self:limpar()		
+			local n = sheet;
+			
+			dialogs.confirmYesNo("Deseja realmente limpar o Tracker de Combate?",
+				function(confirmado)
+					if confirmado then
+						n.atores = {};
+						n.rodada = 1;
+						n.relogio = 0;
+					end;
+				end);
+		end;
+		
+		function self:exibirMenuDoAtor(node, form)
+			self.popAtor.node = node;
+			self.popAtorForm = form;
+			self.popAtor:show("mouseCenter", form);
+		end;
+		
+		function self:scrollToAtor(node)
+			self.rclAtores:scrollToNode(node);
+		end;
+
+		self.listenersAtivo = false;
+		self.listenerHandleChatCommand = nil;
+		self.listenerListChatCommands = nil;
+			
+		local function verificarEstadoMsgEvents()			
+			local deveUsarListeners = self.visible and sheet ~= nil;
+			local mesaAcoplada = rrpg.getMesaDe(sheet);
+			
+			if deveUsarListeners and not self.listenersAtivo and mesaAcoplada ~= nil then				
+			
+				-- ativar listeners
+				self.listenersAtivo = true;
+				
+				self.listenerHandleChatCommand = rrpg.messaging.listen("HandleChatCommand", 
+					function(msg)
+						if (msg.comando == ">>") and (self:souMestre()) then
+							self:proximoTurno();
+							msg.response = {handled = true};
+						end;					
+					end, {mesa = mesaAcoplada});
+					
+				self.listenerListChatCommands = rrpg.messaging.listen("ListChatCommands", 
+					function(msg)
+						if self:souMestre() then
+							msg.response = {{comando="/>>", descricao="Iniciar o próximo turno (Tracker de Combate)"}};
+						end;						
+					end, {mesa = mesaAcoplada});					
+				
+			elseif not deveUsarListeners and self.listenersAtivo then
+				-- desativar listeners;				
+				self.listenersAtivo = false;
+				rrpg.messaging.unlisten(self.listenerHandleChatCommand);
+				rrpg.messaging.unlisten(self.listenerListChatCommands);				
+				self.listenerHandleChatCommand = nil;
+				self.listenerListChatCommands = nil;				
+			end
+		end;		
+			
+		self.onScopeNodeChanged = verificarEstadoMsgEvents;							
+		self.onShow = verificarEstadoMsgEvents;
+		self.onHide = verificarEstadoMsgEvents;
+		
+		local function dropPersonagemActor(personagem)
+			if personagem == nil then
+				return;
+			end;
+		
+			local atores = ndb.getChildNodes(getAtoresNDB());
+			local atorDoPersonagem = nil;	
+		    local chavePer = personagem.codigoInterno;
+
+			for i = 1, #atores, 1 do
+				local a = atores[i];
+				
+				if a.chavePer ~= nil and a.chavePer == chavePer then
+					atorDoPersonagem = a;
+					break;
+				end;
+			end;
+			
+			if atorDoPersonagem == nil then
+				atorDoPersonagem = self:criarNovoAtor();
+				atorDoPersonagem.chavePer = chavePer;				
+			end;
+			
+			atorDoPersonagem.nome = personagem.nome;
+			
+			if personagem.loginDono ~= "" then			
+				atorDoPersonagem.fof = 1;
+			else
+				atorDoPersonagem.fof = 2;
+			end;
+			
+			return atorDoPersonagem;			
+		end;
+		
+		local function dropJogadorActor(jogador)					
+			local mesa = rrpg.getMesaDe(jogador);
+			
+			if mesa ~= nil then
+				local chavePer = jogador.personagemPrincipal;
+				local personagem = mesa:findBibliotecaItem(chavePer);
+				
+				if personagem ~= nil then
+					return dropPersonagemActor(personagem);					
+				end;							
+			end;
+		
+			local atores = ndb.getChildNodes(getAtoresNDB());
+			local atorDoJogador = nil;
+			local loginJogador = string.lower(jogador.login);
+
+			for i = 1, #atores, 1 do
+				local a = atores[i];
+				
+				if a.login ~= nil and string.lower(a.login) == loginJogador then
+					atorDoJogador = a;
+					break;
+				end;
+			end;
+			
+			if atorDoJogador == nil then
+				atorDoJogador = self:criarNovoAtor();
+				atorDoJogador.login = loginJogador;				
+			end;
+			
+			atorDoJogador.nome = jogador.nick;
+			atorDoJogador.fof = 1;
+			
+			return atorDoJogador;
+		end;
+		
+		function self.handleStartDrop(drop, x, y, drag)
+			drop:addAction('characters',
+				function(value)
+					for i = 1, #value, 1 do
+						dropPersonagemActor(value[i]);
+					end
+				end);		
+		
+			drop:addAction('character',
+				function(value)
+					dropPersonagemActor(value);
+				end);		
+		
+			drop:addAction('players',
+				function(value)
+					for i = 1, #value, 1 do
+						dropJogadorActor(value[i]);
+					end
+				end);		
+		
+			drop:addAction('player',
+				function(value)
+					dropJogadorActor(value);
+				end);
+		end;
+		
+		function self:createDraggerForAtor(ator)
+			local tracker = self;
+		
+			return function(drag, x, y)
+					  drag:addData('text', tostring(ator.nome));
+					  local mesa = rrpg.getMesaDe(tracker);
+					  
+					  if mesa ~= nil then
+						local jogador = mesa:findJogador(tostring(ator.login or ""));
+						
+						if jogador ~= nil then
+							drag:addData('player', jogador);
+						end;
+						
+						local personagem = mesa:findBibliotecaItem(tonumber(ator.chavePer) or -1);
+						
+						if personagem ~= nil then
+							drag:addData('character', personagem);
+						end;
+					  end;					  
+				   end;
+		end;
+	]]>	
+	</script>
+</group>

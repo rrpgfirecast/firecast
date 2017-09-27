@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="frmGerenciarPlugins" title="Gerenciar Plugins" width="300" height="380">
+	<import file="interfaceUtils.xml"/>
+
+	<script><![CDATA[		
+		local downloadsPlugs = require("downloadsDePlugins.lua");
+		
+		local function atualizarListaDePlugins()
+			if sheet == nil then
+				return;
+			end;
+		
+			sheet.plugins = rrpg.plugins.getInstalledPlugins();				
+		end;
+		
+		local function goInstalarNovoPlugin()
+		
+			dialogs.inputQuery("Baixar Plugin", "Cole a URL do arquivo plugin de extensão '.rpk' (http://)", "", 
+				function (url)										
+						local id = downloadsPlugs.startDownloadPlugin(url); 
+				end);			
+		end;	
+
+	]]>
+	</script>
+	
+	<event name="onShow">
+		if sheet == nil then
+			self:setNodeObject(downloadsPlugs.getNDB());
+			atualizarListaDePlugins();
+		end;		
+		
+		self._listener1 = rrpg.messaging.listen("PluginInstalled",
+			function ()
+				atualizarListaDePlugins();
+			end);		
+			
+		self._listener2 = rrpg.messaging.listen("PluginUninstalled",
+			function ()
+				atualizarListaDePlugins();
+			end);				
+	</event>
+	
+	<event name="OnHide">
+		rrpg.messaging.unlisten(self._listener1);
+		rrpg.messaging.unlisten(self._listener2);
+	</event>
+	
+	
+	
+	<label text="Plug-ins instalados" class="tituloForm" />
+	
+	<layout class="conteudoForm">
+		<layout name="layTop" align="top" height="45" margins="{bottom=10}" onResize="self.btnInstalar.left = self.layTop.width / 2 - self.btnInstalar.width / 2; self.btnInstalar.height = self.layTop.height;">
+			<button name="btnInstalar" text="Baixar um plug-in..." width="200" wordWrap="false" onClick="goInstalarNovoPlugin()"/>
+		</layout>
+		
+		<scrollBox align="client">
+			<recordList align="top" field="downloads" templateForm="frmPluginBaixando" autoHeight="true"/>
+			<recordList align="top" field="plugins" templateForm="frmGerencPluginItem" autoHeight="true"/>
+		</scrollBox>
+	</layout>	
+</popupForm>

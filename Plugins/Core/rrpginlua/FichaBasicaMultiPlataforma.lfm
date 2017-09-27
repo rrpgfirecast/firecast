@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaBasicaV3" formType="sheetTemplate" dataType="br.com.rrpg.FICHA_BASICA_V3" title="Ficha Básica Multi Abas">
+	<style>
+		textEditor {
+			padding: {left=2, right=2};
+		}
+	</style>
+
+	<tabControl align="client">	
+		<tab title="Atributos">
+			<textEditor align="client" field="atributosStr" wordWrap="true"/>
+		</tab>
+		
+		<tab title="Habilidades">
+			<textEditor align="client" field="habilidadesStr" wordWrap="true"/>
+		</tab>
+		
+		<tab title="Equipamentos">
+			<textEditor align="client" field="equipamentosStr" wordWrap="true"/>
+		</tab>		
+		
+		<tab title="História">
+			<textEditor align="client" field="historiaStr" wordWrap="true"/>
+		</tab>		
+	</tabControl>
+</form>

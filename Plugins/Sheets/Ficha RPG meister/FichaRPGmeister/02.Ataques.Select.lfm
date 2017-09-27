@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister2AS_svg" width="180" height="30" theme="dark">
+    <button width="30" height="30" text="X">
+		<event name="onClick">
+			dialogs.confirmOkCancel("Tem certeza que quer apagar esse ataque?",
+				function (confirmado)
+					if confirmado then
+						ndb.deleteNode(sheet);
+					end;
+			end);
+		</event>
+	</button>
+    <label left="35" top="5" width="145" height="20" text="Teste de label" field="nomeAtaque"/>
+	<dataLink field="nomeAtaque" defaultValue="Nome Ataque"/>
+</form>

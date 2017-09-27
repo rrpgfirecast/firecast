@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmRDF1" align="client" theme="dark">
+	<scrollBox align="client">
+	   <template name="Info">
+        	<label left="0" top="5" width="100" height="20" text="$(nome)" horzTextAlign="trailing"/>
+        	<edit left="110" top="0" width="200" height="25" field="desc_$(field)"/>
+        </template>
+
+        <template name="Atributo">
+        	<label left="0" top="5" width="50" height="20" text="$(nome)" horzTextAlign="center"/>
+        	<edit left="0" top="25" width="50" height="25" field="atr_$(field)" horzTextAlign="center"/>
+        	<label left="50" top="5" width="50" height="20" text="Max." horzTextAlign="center"/>
+        	<edit left="50" top="25" width="50" height="25" field="atr_max_$(field)" horzTextAlign="center"/>
+        </template>
+
+        <template name="Bloco">
+        	<label left="0" top="5" width="50" height="20" text="$(nome)" horzTextAlign="center"/>
+        	<edit left="0" top="25" width="50" height="25" field="bloco_$(field)" horzTextAlign="center"/>
+        </template>
+        	
+        <template name="Espiral">
+        	<label left="0" top="15" width="70" height="20" text="$(nome)" horzTextAlign="center"/>
+        	<checkBox left="75" top="15"/>
+        	<checkBox left="90" top="15"/>
+        	<checkBox left="105" top="5"/>
+        	<checkBox left="105" top="25"/>
+        	<checkBox left="120" top="5"/>
+        	<checkBox left="120" top="25"/>
+        	<checkBox left="135" top="5"/>
+        	<checkBox left="135" top="25"/>
+        	<checkBox left="150" top="5"/>
+        	<checkBox left="150" top="25"/>
+        	<label left="165" top="5" width="15" height="15" text="$(num1)" horzTextAlign="center"/>
+        	<label left="165" top="25" width="15" height="15" text="$(num2)" horzTextAlign="center"/>
+        	<label left="190" top="15" width="100" height="20" text="$(pen)" horzTextAlign="center"/>
+        </template>
+	   
+		<layout left="0" top="0" width="960" height="70">
+			<rectangle left="5" top="0" width="950" height="70" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<layout left="5" top="5" width="310" height="25" >
+				<Info field="nome" nome="Nome"/>
+			</layout>
+			<layout left="320" top="5" width="310" height="25" >
+				<Info field="arquetipo" nome="Aquétipo"/>
+			</layout>
+			<layout left="585" top="5" width="310" height="25" >
+				<Info field="religiao" nome="Religião"/>
+			</layout>
+			<layout left="5" top="35" width="310" height="25" >
+				<Info field="raca" nome="Raça"/>
+			</layout>
+			<layout left="320" top="35" width="310" height="25" >
+				<Info field="carreiras" nome="Carreiras"/>
+			</layout>
+			<layout left="585" top="35" width="310" height="25" >
+				<label left="0" top="5" width="100" height="20" text="Nível" horzTextAlign="trailing"/>
+        		<edit left="110" top="0" width="50" height="25" field="nivel"/>
+        		<label left="160" top="5" width="40" height="20" text="XP" horzTextAlign="trailing"/>
+        		<edit left="210" top="0" width="100" height="25" field="xp"/>
+			</layout>
+		</layout>
+		
+		<layout left="0" top="80" width="250" height="400">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="250" height="20" text="ATRIBUTOS" horzTextAlign="center"/>
+			<layout left="15" top="50" width="240" height="50" >
+				<Atributo field="fis" nome="FIS"/>
+			</layout>
+			<layout left="130" top="25" width="240" height="50" >
+				<Atributo field="vel" nome="VEL"/>
+			</layout>
+			<layout left="130" top="75" width="290" height="50" >
+				<Atributo field="for" nome="FOR"/>
+			</layout>
+			<horzLine left="0" top="130" width="300" strokeColor="white"/>
+
+			<layout left="15" top="155" width="240" height="50" >
+				<Atributo field="agi" nome="AGI"/>
+			</layout>
+			<layout left="130" top="130" width="240" height="50" >
+				<Atributo field="des" nome="DES"/>
+			</layout>
+			<layout left="130" top="180" width="290" height="50" >
+				<Atributo field="mae" nome="MAE"/>
+			</layout>
+			<horzLine left="0" top="235" width="300" strokeColor="white"/>
+
+			<layout left="15" top="260" width="240" height="50" >
+				<Atributo field="int" nome="INT"/>
+			</layout>
+			<layout left="130" top="235" width="240" height="50" >
+				<Atributo field="arc" nome="ARC"/>
+			</layout>
+			<layout left="130" top="285" width="290" height="50" >
+				<Atributo field="per" nome="PER"/>
+			</layout>
+			<horzLine left="0" top="340" width="300" strokeColor="white"/>
+
+			<layout left="100" top="340" width="240" height="50" >
+				<Bloco field="von" nome="VON"/>
+			</layout>
+		</layout>
+
+		<layout left="0" top="490" width="250" height="120">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="5" top="0" width="240" height="20" text="FERIMENTOS PERMANENTES" horzTextAlign="center"/>
+
+			<textEditor left="5" top="25" width="240" height="90" field="ferimentos"/>
+		</layout>
+
+		<layout left="260" top="80" width="310" height="80">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="310" height="20" text="DEFESA" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="50" height="50" >
+				<Bloco field="vel" nome="VEL"/>
+			</layout>
+			<layout left="55" top="25" width="50" height="50" >
+				<Bloco field="agi" nome="AGI"/>
+			</layout>
+			<layout left="105" top="25" width="50" height="50" >
+				<Bloco field="per" nome="PER"/>
+			</layout>
+			<layout left="155" top="25" width="50" height="50" >
+				<Bloco field="equip" nome="EQUIP"/>
+			</layout>
+			<layout left="205" top="25" width="50" height="50" >
+				<Bloco field="out_def" nome="OUTRO"/>
+			</layout>
+			<layout left="255" top="25" width="50" height="50" >
+				<label left="0" top="5" width="50" height="20" text="TOTAL" horzTextAlign="center"/>
+				<rectangle left="0" top="25" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="0" top="25" width="50" height="25" field="defesa_total" horzTextAlign="center"/>
+			</layout>
+			<dataLink fields="{'bloco_vel', 'bloco_agi', 'bloco_per', 'bloco_equip', 'bloco_out_def'}">
+                <event name="onChange">   
+                	if sheet~=nil then
+                		sheet.defesa_total = 	(tonumber(sheet.bloco_vel) or 0) + 
+	                                            (tonumber(sheet.bloco_agi) or 0) + 
+	                                            (tonumber(sheet.bloco_per) or 0) + 
+	                                            (tonumber(sheet.bloco_equip) or 0) + 
+	                                            (tonumber(sheet.bloco_out_def) or 0);
+                	end;
+                </event>
+        	</dataLink>
+		</layout>
+
+		<layout left="260" top="170" width="310" height="80">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="310" height="20" text="ARMADURA" horzTextAlign="center"/>
+
+			<layout left="30" top="25" width="50" height="50" >
+				<Bloco field="fis" nome="FIS"/>
+			</layout>
+			<layout left="80" top="25" width="50" height="50" >
+				<Bloco field="arm" nome="ARM"/>
+			</layout>
+			<layout left="130" top="25" width="50" height="50" >
+				<Bloco field="esc" nome="ESC"/>
+			</layout>
+			<layout left="180" top="25" width="50" height="50" >
+				<Bloco field="out_arm" nome="OUTRO"/>
+			</layout>
+			<layout left="230" top="25" width="50" height="50" >
+				<label left="0" top="5" width="50" height="20" text="TOTAL" horzTextAlign="center"/>
+				<rectangle left="0" top="25" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="0" top="25" width="50" height="25" field="armadura_total" horzTextAlign="center"/>
+			</layout>
+			<dataLink fields="{'bloco_fis', 'bloco_arm', 'bloco_esc', 'bloco_out_arm'}">
+                <event name="onChange">   
+                	if sheet~=nil then
+                		sheet.armadura_total = 	(tonumber(sheet.bloco_fis) or 0) + 
+	                                            (tonumber(sheet.bloco_arm) or 0) + 
+	                                            (tonumber(sheet.bloco_esc) or 0) + 
+	                                            (tonumber(sheet.bloco_out_arm) or 0);
+                	end;
+                </event>
+        	</dataLink>
+		</layout>
+
+		<layout left="260" top="260" width="310" height="80">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="310" height="20" text="INICIATIVA" horzTextAlign="center"/>
+
+			<layout left="5" top="25" width="50" height="50" >
+				<Bloco field="vel" nome="VEL"/>
+			</layout>
+			<layout left="55" top="25" width="50" height="50" >
+				<Bloco field="mae" nome="MAE"/>
+			</layout>
+			<layout left="105" top="25" width="50" height="50" >
+				<Bloco field="per" nome="PER"/>
+			</layout>
+			<layout left="155" top="25" width="50" height="50" >
+				<Bloco field="equip_ini" nome="EQUIP"/>
+			</layout>
+			<layout left="205" top="25" width="50" height="50" >
+				<Bloco field="out_ini" nome="OUTRO"/>
+			</layout>
+			<layout left="255" top="25" width="50" height="50" >
+				<label left="0" top="5" width="50" height="20" text="TOTAL" horzTextAlign="center"/>
+				<rectangle left="0" top="25" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="0" top="25" width="50" height="25" field="iniciativa_total" horzTextAlign="center"/>
+			</layout>
+			<dataLink fields="{'bloco_vel', 'bloco_mae', 'bloco_per', 'bloco_equip_ini', 'bloco_out_ini'}">
+                <event name="onChange">   
+                	if sheet~=nil then
+                		sheet.iniciativa_total = 	(tonumber(sheet.bloco_vel) or 0) + 
+	                                            	(tonumber(sheet.bloco_mae) or 0) + 
+	                                            	(tonumber(sheet.bloco_per) or 0) + 
+	                                            	(tonumber(sheet.bloco_equip_ini) or 0) + 
+	                                            	(tonumber(sheet.bloco_out_ini) or 0);
+                	end;
+                </event>
+        	</dataLink>
+		</layout>
+
+		<layout left="260" top="350" width="310" height="80">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="310" height="20" text="ALCANCE DE COMANDO" horzTextAlign="center"/>
+
+			<layout left="55" top="25" width="50" height="50" >
+				<Bloco field="int" nome="INT"/>
+			</layout>
+			<layout left="105" top="25" width="50" height="50" >
+				<Bloco field="cmd" nome="CMD"/>
+			</layout>
+			<layout left="155" top="25" width="50" height="50" >
+				<Bloco field="out_cmd" nome="OUTRO"/>
+			</layout>
+			<layout left="205" top="25" width="50" height="50" >
+				<label left="0" top="5" width="50" height="20" text="TOTAL" horzTextAlign="center"/>
+				<rectangle left="0" top="25" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="0" top="25" width="50" height="25" field="cmd_total" horzTextAlign="center"/>
+			</layout>
+			<dataLink fields="{'bloco_int', 'bloco_cmd', 'bloco_out_cmd'}">
+                <event name="onChange">   
+                	if sheet~=nil then
+                		sheet.cmd_total = 	(tonumber(sheet.bloco_int) or 0) + 
+	                                            	(tonumber(sheet.bloco_cmd) or 0) + 
+	                                            	(tonumber(sheet.bloco_out_cmd) or 0);
+                	end;
+                </event>
+        	</dataLink>
+		</layout>
+
+		<layout left="260" top="440" width="310" height="165">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="310" height="20" text="PONTOS DE FAÇANHA" horzTextAlign="center"/>
+
+			<edit left="10" top="25" width="50" height="25" field="facanha" horzTextAlign="center"/>
+			<label left="70" top="25" width="230" height="20" text="Recebendo pontos de Façanha:" horzTextAlign="center"/>
+			<label left="70" top="45" width="230" height="20" text="Destruir Inimigo, Sucesso Critico, Prêmio do Mestre." horzTextAlign="center" fontSize="9"/>
+			<label left="70" top="80" width="230" height="20" text="Gastando pontos de Façanha:" horzTextAlign="center"/>
+			<label left="50" top="100" width="250" height="20" text="Ampliar teste de Pericia, Atirar e Correr, Corrida." horzTextAlign="center" fontSize="9"/>
+			<label left="50" top="120" width="250" height="20" text="Ação Rapida, Recuperar Folego, Aparar, Esquiva, Refazer Teste." horzTextAlign="center" fontSize="9"/>
+			<label left="50" top="140" width="250" height="20" text="Resistir efeito continuo/Imobilizar/Nocaute, Investida." horzTextAlign="center" fontSize="9"/>
+
+		</layout>
+
+		<rectangle left="579" top="79" width="302" height="302" color="black" strokeColor="white" strokeSize="1"/>
+		<image left="580" top="80" width="300" height="300" field="avatar" editable="true" style="autoFit" />
+
+		<layout left="580" top="390" width="302" height="210">
+			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+			<label left="0" top="0" width="302" height="20" text="ESPIRAL VITAL" horzTextAlign="center"/>
+
+			<layout left="6" top="25" width="290" height="50" >
+				<Espiral nome="Fisico" num1="1" num2="2" pen="-2FOR"/>
+			</layout>
+			<layout left="6" top="75" width="290" height="50" >
+				<Espiral nome="Agilidade" num1="3" num2="4" pen="-2 Ataques"/>
+			</layout>
+			<layout left="6" top="125" width="290" height="50" >
+				<Espiral nome="Intelecto" num1="5" num2="6" pen="-2 DEF, X magia"/>
+			</layout>
+			<layout left="6" top="160" width="290" height="50" >
+				<label left="0" top="15" width="100" height="20" text="Campo de Força" horzTextAlign="center"/>
+	        	<checkBox left="105" top="15"/>
+	        	<checkBox left="120" top="15"/>
+	        	<checkBox left="135" top="15"/>
+	        	<checkBox left="150" top="15"/>
+	        	<checkBox left="165" top="15"/>
+	        	<checkBox left="180" top="15"/>
+			</layout>
+		</layout>
+
+		<image align="client" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20RdF%20releases/imagens/block.png" style="autoFit"/>
+	</scrollBox>
+</form>

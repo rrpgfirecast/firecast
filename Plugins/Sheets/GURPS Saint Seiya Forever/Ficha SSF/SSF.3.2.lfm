@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSSF3_2" width="170" height="25" theme="dark">
+    <button width="25" height="25" text="X">
+		<event name="onClick">
+			dialogs.confirmOkCancel("Tem certeza que quer apagar esse efeito?",
+				function (confirmado)
+					if confirmado then
+						ndb.deleteNode(sheet);
+					end;
+			end);
+		</event>
+	</button>
+	<checkBox left="25" top="1" text="" field="show_efeito_positivo"/>
+    <edit left="44" top="0" width="100" height="25" field="nome_efeito_positivo"/>
+    <edit left="144" top="0" width="30" height="25" field="custo_efeito_positivo"/>
+</form>

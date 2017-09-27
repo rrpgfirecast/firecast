@@ -1,0 +1,885 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form align="client" theme="light" name="frmFichaTeste" title="Malditos Goblins" formType="sheetTemplate" dataType="mg.mg.now" >        
+	<script><![CDATA[
+	
+	
+	
+	
+	
+	
+	
+	
+	-- nome 
+	local function nomefunc()
+		local rolltemp1 = rrpg.interpretarRolagem("1d6");
+		rolltemp1:rolarLocalmente();
+		local rolltemp2 = rrpg.interpretarRolagem("1d6");
+		rolltemp2:rolarLocalmente();
+		local aaa = "aaa";
+		local bbb = "bbb";
+	
+		if rolltemp1.resultado == 1 then
+			aaa = "Sp";
+		end;
+		if rolltemp1.resultado == 2 then
+			aaa = "Cr";
+		end;
+		if rolltemp1.resultado == 3 then
+			aaa = "Bu";
+		end;
+		if rolltemp1.resultado == 4 then
+			aaa = "Ut";
+		end;
+		if rolltemp1.resultado == 5 then
+			aaa = "An";
+		end;
+		if rolltemp1.resultado == 6 then
+			aaa = "Om";
+		end;
+	
+		if rolltemp2.resultado == 1 then
+			bbb = "or";
+		end;
+		if rolltemp2.resultado == 2 then
+			bbb = "ut";
+		end;
+		if rolltemp2.resultado == 3 then
+			bbb = "ar";
+		end;
+		if rolltemp2.resultado == 4 then
+			bbb = "an";
+		end;
+		if rolltemp2.resultado == 5 then
+			bbb = "ot";
+		end;
+		if rolltemp2.resultado == 6 then
+			bbb = "ec";
+		end;
+		
+		return aaa .. bbb;
+	
+	end;
+	
+	
+	
+	--atualizar o total dos atributos
+	local function atualizartotalfunc(ATR,ATRMOD)
+		if ATR == nil then ATR = 0; end;
+		if ATRMOD == nil then ATRMOD = 0; end;
+			
+		return ATR + ATRMOD;
+	end;
+	
+	
+	
+	local function nivelvoltarfunc()
+	
+		if sheet.nivel > 1 then
+			sheet.nivel = sheet.nivel - 1;
+		
+			local chat = rrpg.getMesaDe(sheet).chat;
+			chat:enviarMensagem(sheet.NOMEdoPERSONAGEM .. " voltou para o nível: " .. sheet.nivel .. "!");
+			if sheet.nivel == 2 then
+			
+		end;
+		
+		if sheet.nivel == 1 then
+			sheet.talento2 = "---";
+		
+		end;
+		
+		if sheet.nivel == 2 then
+			sheet.talento3 = "---";
+		
+		end;
+
+		if sheet.nivel > 2 then
+			sheet.ATR5 = sheet.ATR5 - 1;
+			sheet.ATRtot5 = sheet.ATRtot5 - 1;
+		
+		end;	
+	
+		
+		
+		
+		end;
+	
+	
+	
+	end;
+	
+	
+	
+	
+	
+	-- subir de lv
+	local function nivelfunc()
+	
+		if sheet.nivel ~= 0 then
+			sheet.nivel = sheet.nivel + 1;
+			
+			local chat = rrpg.getMesaDe(sheet).chat;
+			chat:enviarMensagem(sheet.NOMEdoPERSONAGEM .. " subiu de nível! Foi para o nível: " .. sheet.nivel .. "!");
+			
+			
+			if sheet.nivel == 2 then
+				if sheet.ocupacao == "Mercenário." then
+					sheet.talento2 = "Ataque Brutal";
+				end;
+				if sheet.ocupacao == "Caçador." then
+					sheet.talento2 = "Mira Certeira";
+				end;
+				if sheet.ocupacao == "Gatuno." then
+					sheet.talento2 = "Armar Armadilhas";
+				end;
+				if sheet.ocupacao == "Líder." then
+					sheet.talento2 = "Ataque Brutal";
+				end;
+				if sheet.ocupacao == "Piromaníaco." then
+					sheet.talento2 = "Suicídio Explosivo";
+				end;
+				if sheet.ocupacao == "Xamã." then
+					sheet.talento2 = "Cura";
+				end;
+			end;
+		
+			if sheet.nivel == 3 then
+				if sheet.ocupacao == "Mercenário." then
+					sheet.talento3 = "Ataque Fatal";
+				end;
+				if sheet.ocupacao == "Caçador." then
+					sheet.talento3 = "Tiro Fatal";
+				end;
+				if sheet.ocupacao == "Gatuno." then
+					sheet.talento3 = "Ataque Furtivo";
+				end;
+				if sheet.ocupacao == "Líder." then
+					sheet.talento3 = "Ataque Fatal";
+				end;
+				if sheet.ocupacao == "Piromaníaco." then
+					sheet.talento3 = "Imunidade";
+				end;
+				if sheet.ocupacao == "Xamã." then
+					sheet.talento3 = "Petrificar";
+				end;
+			end;
+			
+			if sheet.nivel > 3 then
+				sheet.ATR5 = sheet.ATR5 + 1;
+				sheet.ATRtot5 = sheet.ATRtot5 + 1;
+			end;
+		end;
+	end;
+	
+	
+	
+	
+	
+	-- HELP
+	
+	local function HELPfunc(menu, tipo )
+		--caracteristica
+		if menu == "caracteristica" then
+		
+			if tipo == "Insano" then
+				sheet.HELPtext = "Insano: Você não tem controle de seus atos. Sempre que o mestre quiser, ele pode pedir um teste de Sorte (dificuldade 5). Se você falhar, o mestre poderá decidir um ato idiota para seu personagem fazer.";
+			end;
+			if tipo == "Fedorento" then
+				sheet.HELPtext = "Fedorento: Você fede e ninguém gosta de ficar perto. Qualquer um que fique por mais de 1 minuto perto de você, poderá ficar nauseado e vomitar.";
+			end;
+			if tipo == "Cicatrizes" then
+				sheet.HELPtext = "Cicatrizes: Você possui muitas cicatrizes de muitas batalhas. As fêmeas goblins nunca olharão para você.";
+			end;
+			if tipo == "Gordo" then
+				sheet.HELPtext = "Gordo: Você é obeso e tem problemas em passar em buracos estreitos, se esconder e não consegue correr por muito tempo.";
+			end;
+			if tipo == "Fala Errado" then
+				sheet.HELPtext = "Fala Errado: Você tem algum problema de comunicação (gagueira, língua presa, troca letras, etc) e isso irrita muito os seus companheiros.";
+			end;
+			if tipo == "Anomalia" then
+				sheet.HELPtext = "Você possui uma anomalia genética (algo comum entre goblins): " .. sheet.aparencia ;
+			end;		
+		end;
+		--equipamento
+		if menu == "equipamento" then
+			if tipo == "---" then
+				sheet.HELPtext = "Nada.";
+			end;
+		
+			if tipo == "2 Adagas" then
+				sheet.HELPtext = "Adaga: dano 2. Esta arma pode ser arremessada como arma de distância.";
+			end;
+	
+			if tipo == "Adaga" then
+				sheet.HELPtext = "Adaga: dano 2. Esta arma pode ser arremessada como arma de distância.";
+			end;
+			
+			if tipo == "Escudo" then
+				sheet.HELPtext = "Escudo: Proteção 1.";
+			end;
+			
+			if tipo == "Arco Simples" then
+				sheet.HELPtext = "Arco Simples: distância; dano 2.";
+			end;
+			
+			if tipo == "Arco Composto" then
+				sheet.HELPtext = "Arco Composto: distância; dano 3.";
+			end;
+			
+			if tipo == "4 Adagas" then
+				sheet.HELPtext = "Adaga: dano 2. Esta arma pode ser arremessada como arma de distância.";
+			end;
+			
+			if tipo == "Besta" then
+				sheet.HELPtext = "Besta: distância; dano 3.";
+			end;
+			
+			if tipo == "Elmo" then
+				sheet.HELPtext = "Elmo: Proteção 1.";
+			end;
+			
+			if tipo == "Espada" then
+				sheet.HELPtext = "Espada: dano 3.";
+			end;			
+			
+			if tipo == "Machado" then
+				sheet.HELPtext = "Machado: dano 4.";
+			end;			
+			
+			if tipo == "2 Machadinhas" then
+				sheet.HELPtext = "Machadinha: dano 3. Esta arma pode ser arremessada como arma de distância.";
+			end;			
+
+			if tipo == "Espadona" then
+				sheet.HELPtext = "Espadona: dano 5.";
+			end;
+
+			if tipo == "2 Espadas" then
+				sheet.HELPtext = "Espada: dano 3.";
+			end;
+
+			if tipo == "Armadura" then
+				sheet.HELPtext = "Armadura: Proteção 1.";
+			end;
+
+			if tipo == "Pistola" then
+				sheet.HELPtext = "Pistola: distância; dano 4.";
+			end;
+
+			if tipo == "2 Pistolas" then
+				sheet.HELPtext = "Pistola: distância; dano 4.";
+			end;
+
+			if tipo == "3 Galinhas Explosivas" then
+				sheet.HELPtext = "Galinha Explosiva: distância; dano 4 em todos até 3m.";
+			end;
+
+			if tipo == "Barril de Pólvora" then
+				sheet.HELPtext = "Barril de Pólvora: dano 5 em todos até 3m.";
+			end;
+			
+			if tipo == "2 Galinhas Explosivas" then
+				sheet.HELPtext = "Galinha Explosiva: distância; dano 4 em todos até 3m.";
+			end;
+			
+			if tipo == "Canhão" then
+				sheet.HELPtext = "Canhão: distância; dano 8; Carregar: 2 turnos.";
+			end;
+			if tipo == "Cajado" then
+				sheet.HELPtext = "Cajado: dano 1.";
+			end;
+			
+		end;
+	
+		--talentos
+	
+	
+		if menu == "talento" then
+			
+			if tipo == "---" then
+				sheet.HELPtext = "Nada.";
+			end;
+			
+			--talentos nv1
+			if tipo == "Mestre de Armas" then
+				sheet.HELPtext = "Mestre de Armas: Você sempre rola +1 dado em todos os ataques que você fizer lutando com sua arma favorita ,Escolha uma.";
+			end;
+			if tipo == "Rastrear" then
+				sheet.HELPtext = "Rastrear: Com um teste bem sucedido de Conhecimento ,dificuldade 3, você pode rastrear qualquer criatura.";
+			end;
+			if tipo == "Roubar" then
+				sheet.HELPtext = "Roubar: Você pode roubar sem ser visto se vencer um teste resistido de Habilidade contra a vítima.";
+			end;
+			if tipo == "Grito de Guerra" then
+				sheet.HELPtext = "Grito de Guerra: Uma vez ao dia você pode dar um grito que permitirá que todos seus aliados rolem 1 dado a mais para se esquivar até o final da batalha.";
+			end;
+			if tipo == "Resistência" then
+				sheet.HELPtext = "Resistência: Você pode fazer um teste de Sorte ,dificuldade 5, quando receber dano de fogo ou explosão de fogo. Se vencer, você não recebe dano.";
+			end;
+			if tipo == "Raio de Energia" then
+				sheet.HELPtext = "Raio de Energia: Você pode gastar pontos de magia para fazer ataques a distância. Cada ponto gasto causará um ponto de dano ,pode gastar mais para fazer ataque com mais dano.";
+			end;
+			
+			--talentos nv2
+			if tipo == "Ataque Brutal" then
+				sheet.HELPtext = "Ataque Brutal: Uma vez ao dia você pode fazer um ataque brutal, que causa o dobro de dano na vítima.";
+			end;
+			if tipo == "Mira Certeira" then
+				sheet.HELPtext = "Mira Certeira: Você ignora a proteção dos seus oponentes.";
+			end;
+			if tipo == "Armar Armadilhas" then
+				sheet.HELPtext = "Armar Armadilhas: Você pode fazer uma armadilha em qualquer lugar se tiver alguns materiais. A pessoa terá que passar em um teste de Sorte ,dificuldade 5, para não cair na sua armadilha.";
+			end;
+			if tipo == "Suicídio Explosivo" then
+				sheet.HELPtext = "Suicídio Explosivo: Usando sua arma, você pode se explodir e matar TODOS os que estiverem na área da explosão.";
+			end;
+			if tipo == "Cura" then
+				sheet.HELPtext = "Cura: Você pode gastar seus pontos de magia para curar seus aliados. Cada ponto de magia recupera um ponto de vitalidade.";
+			end;
+			
+			--talentos nv3
+			if tipo == "Ataque Fatal" then
+				sheet.HELPtext = "Ataque Fatal: Uma vez ao dia você pode fazer um ataque fatal. Se acertar, a vitima deverá vencer um teste de Sorte ,Dificuldade 5. Se ela falhar ela morrerá.";
+			end;
+			if tipo == "Tiro Fatal" then
+				sheet.HELPtext = "Tiro Fatal: Uma vez ao dia você pode fazer um ataque à distância fatal. Se acertar, a vitima deverá vencer um teste de Sorte ,Dificuldade 5, ou morrerá imediatamente.";
+			end;
+			if tipo == "Ataque Furtivo" then
+				sheet.HELPtext = "Ataque Furtivo: Se você não foi visto, você pode fazer um ataque furtivo. Se acertar, a vitima deverá fazer um teste de Sorte ,Dificuldade 5. Se ela falhar ela morrerá.";
+			end;
+			if tipo == "Imunidade" then
+				sheet.HELPtext = "Imunidade: Você nunca recebe dano com fogo ou explosão.";
+			end;
+			if tipo == "Petrificar" then
+				sheet.HELPtext = "Petrificar: Gastando 6 pontos de magia você pode paralisar qualquer criatura.";
+			end;
+		end;
+	end;
+	
+	
+	-- em caso de anomalia
+	local function anomaliafunc()
+		local rollanomalia = rrpg.interpretarRolagem("2d6");
+		rollanomalia:rolarLocalmente();
+		
+
+		if rollanomalia.resultado == 2 then
+			return "Manchas rosas";
+		end;
+		if rollanomalia.resultado == 3 then
+			return "Manchas rosas";
+		end;		
+		if rollanomalia.resultado == 4 then
+			return "Orelhas no sovaco";
+		end;
+		if rollanomalia.resultado == 5 then
+			return "Corcunda";
+		end;
+		if rollanomalia.resultado == 6 then
+			return "Braço extra atrofiado";
+		end;
+		if rollanomalia.resultado == 7 then
+			local rollolhos = rrpg.interpretarRolagem("1d6");
+			rollolhos:rolarLocalmente();
+			return rollolhos.resultado .. " Olhos";
+		end;
+		if rollanomalia.resultado == 8 then
+			return "Olhos Gigantes";	
+		end;
+		if rollanomalia.resultado == 9 then
+			return "Mãos Gigantes";	
+		end;		
+		if rollanomalia.resultado == 10 then
+			return "Duas Cabeças";	
+		end;		
+		if rollanomalia.resultado == 11 then
+			return anomaliafunc() .. "/" .. anomaliafunc();	
+		end;
+		if rollanomalia.resultado == 12 then
+			return anomaliafunc() .. "/" .. anomaliafunc();	
+		end;		
+	
+	end;
+	
+	
+	--criando aparencia
+	local function aparenciafunc(roll2,roll3)
+		local cor = "aaa";
+		local car = "bbb";
+		
+		--cor
+		if roll2 == 1 then
+			sheet.ATR1 = sheet.ATR1 + 1
+			sheet.ATR2 = sheet.ATR2 + 1
+			cor = "Verde Claro";
+		end;
+		if roll2 == 2 then
+			sheet.ATR1 = sheet.ATR1 + 1
+			sheet.ATR4 = sheet.ATR4 + 1
+			cor = "Verde";	
+		end;
+		if roll2 == 3 then
+			sheet.ATR1 = sheet.ATR1 + 1
+			sheet.ATR3 = sheet.ATR3 + 1
+			cor = "Verde Escuro";
+		end;
+		if roll2 == 4 then
+			sheet.ATR3 = sheet.ATR3 + 1
+			sheet.ATR4 = sheet.ATR4 + 1
+			cor = "Amarelo";
+		end;
+		if roll2 == 5 then
+			sheet.ATR2 = sheet.ATR2 + 1
+			sheet.ATR3 = sheet.ATR3 + 1
+			cor = "Vermelho";
+		end;
+		if roll2 == 6 then
+			sheet.ATR2 = sheet.ATR2 + 1
+			sheet.ATR4 = sheet.ATR4 + 1
+			cor = "Azul";
+		end;
+	
+	
+		--caracteristica
+		if roll2 == 1 then
+			car = "Insano";
+			sheet.HELPcaracteristica = "Insano";
+			end;
+		if roll2 == 2 then
+			car = "Fedorento";
+			sheet.HELPcaracteristica = "Fedorento";
+		end;
+		if roll2 == 3 then
+			car = "Cicatrizes";
+			sheet.HELPcaracteristica = "Cicatrizes";
+		end;
+		if roll2 == 4 then
+			car = "Gordo";
+			sheet.HELPcaracteristica = "Gordo";
+		end;
+		if roll2 == 5 then
+			car = "Fala Errado";
+			sheet.HELPcaracteristica = "Fala Errado";
+		end;
+		if roll2 == 6 then
+			car = "Anomalia: " .. anomaliafunc();
+			sheet.HELPcaracteristica = "Anomalia";
+		end;
+	
+	
+		return cor .. " e " .. car .. ".";
+	end;
+	
+	
+	--equipamentos
+	--equip leves
+	local function EquipLevefunc(roll4)
+		if roll4 == 1 then
+			sheet.equipamento1 = "2 Adagas";
+			sheet.equipamento2 = "---";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "2";
+			sheet.ATR8 = "0";
+		end;
+		if roll4 == 2 then
+			sheet.equipamento1 = "Adaga";
+			sheet.equipamento2 = "Escudo";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "2";
+			sheet.ATR8 = "1";
+		end;
+		if roll4 == 3 then
+			sheet.equipamento1 = "Arco Simples";
+			sheet.equipamento2 = "---";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "2";
+			sheet.ATR8 = "0";
+		end;
+		if roll4 == 4 then
+			sheet.equipamento1 = "Arco Composto";
+			sheet.equipamento2 = "---";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "3";
+			sheet.ATR8 = "0";
+		end;
+		if roll4 == 5 then
+			sheet.equipamento1 = "4 Adagas";
+			sheet.equipamento2 = "---";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "2";
+			sheet.ATR8 = "0";
+		end;
+		if roll4 == 6 then
+			sheet.equipamento1 = "Besta";
+			sheet.equipamento2 = "Elmo";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "3";
+			sheet.ATR8 = "1";
+		end;
+	end;
+	-- equip pesados
+	local function EquipPesadofunc(roll4)
+		if roll4 == 1 then
+			sheet.equipamento1 = "Espada";
+			sheet.equipamento2 = "Escudo";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "3";
+			sheet.ATR8 = "1";
+		end;
+		if roll4 == 2 then
+			sheet.equipamento1 = "Machado";
+			sheet.equipamento2 = "Elmo";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "4";
+			sheet.ATR8 = "1";
+		end;
+		if roll4 == 3 then
+			sheet.equipamento1 = "2 Machadinhas";
+			sheet.equipamento2 = "---";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "3";
+			sheet.ATR8 = "0";
+		end;
+		if roll4 == 4 then
+			sheet.equipamento1 = "Espadona";
+			sheet.equipamento2 = "---";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "5";
+			sheet.ATR8 = "0";
+		end;
+		if roll4 == 5 then
+			sheet.equipamento1 = "2 Espadas";
+			sheet.equipamento2 = "Armadura";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "3";
+			sheet.ATR8 = "1";
+		end;
+		if roll4 == 6 then
+			sheet.equipamento1 = "Adaga";
+			sheet.equipamento2 = "Espada";
+			sheet.equipamento3 = "Armadura";
+			sheet.ATR7 = "3";
+			sheet.ATR8 = "1";
+		end;	
+	
+	end;
+	-- equip explosivos
+	local function EquipExplosivofunc(roll4)
+		if roll4 == 1 then
+			sheet.equipamento1 = "Pistola";
+			sheet.equipamento2 = "Elmo";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "4";
+			sheet.ATR8 = "1";
+		end;
+		if roll4 == 2 then
+			sheet.equipamento1 = "2 Pistolas";
+			sheet.equipamento2 = "---";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "4";
+			sheet.ATR8 = "0";
+		end;
+		if roll4 == 3 then
+			sheet.equipamento1 = "3 Galinhas Explosivas";
+			sheet.equipamento2 = "---";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "4";
+			sheet.ATR8 = "0";
+		end;
+		if roll4 == 4 then
+			sheet.equipamento1 = "Barril de Pólvora";
+			sheet.equipamento2 = "---";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "5";
+			sheet.ATR8 = "0";
+		end;
+		if roll4 == 5 then
+			sheet.equipamento1 = "Pistola";
+			sheet.equipamento2 = "2 Galinhas Explosivas";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "4";
+			sheet.ATR8 = "0";
+		end;
+		if roll4 == 6 then
+			sheet.equipamento1 = "Canhão";
+			sheet.equipamento2 = "---";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "8";
+			sheet.ATR8 = "0";
+		end;
+	
+	end;
+	
+	
+	
+	
+	
+	
+	--criando ocupação e equipamentos
+	local function ocupacaofunc(roll1,roll4)
+		sheet.talento2 = "---";
+		sheet.talento3 = "---";
+		if roll1 == 1 then
+			sheet.ATR1 = sheet.ATR1 + 1;
+			sheet.ATR3 = sheet.ATR3 + 1;
+			EquipPesadofunc(roll4);
+			sheet.talento1 = "Mestre de Armas";
+			return "Mercenário.";
+		end;
+		if roll1 == 2 then
+			sheet.ATR1 = sheet.ATR1 + 1;
+			sheet.ATR4 = sheet.ATR4 + 1;
+			EquipLevefunc(roll4);
+			sheet.talento1 = "Rastrear";
+			return "Caçador.";
+		end;
+		if roll1 == 3 then
+			sheet.ATR3 = sheet.ATR3 + 1;
+			sheet.ATR2 = sheet.ATR2 + 1;
+			EquipLevefunc(roll4);
+			sheet.talento1 = "Roubar"
+			return "Gatuno.";
+		end;
+		if roll1 == 4 then
+			sheet.ATR1 = sheet.ATR1 + 1;
+			sheet.ATR2 = sheet.ATR2 + 1;
+			EquipPesadofunc(roll4);
+			sheet.talento1 = "Grito de Guerra"
+			return "Líder.";
+		end;
+		if roll1 == 5 then
+			sheet.ATR3 = sheet.ATR3 + 1;
+			sheet.ATR4 = sheet.ATR4 + 1;
+			EquipExplosivofunc(roll4);
+			sheet.talento1 = "Resistência";
+			return "Piromaníaco.";
+		end;
+		if roll1 == 6 then
+			sheet.ATR2 = sheet.ATR2 + 1;
+			sheet.ATR4 = sheet.ATR4 + 1;
+			sheet.ATR6 = sheet.ATR6 + 8;
+			sheet.equipamento1 = "Cajado";
+			sheet.equipamento2 = "---";
+			sheet.equipamento3 = "---";
+			sheet.ATR7 = "1";
+			sheet.ATR8 = "0";
+			sheet.talento1 = "Raio de Energia";
+			return "Xamã." ;
+		end;
+	
+	
+		
+	
+	end;
+	
+	
+	--criando ficha
+	local function main()
+		if sheet.habilitadoficha == "HABILITADO" then
+			
+			--Básicos
+			sheet.NOMEdoPERSONAGEM = nomefunc();
+			sheet.nivel = 1
+			sheet.ATR1 = 1
+			sheet.ATR2 = 1
+			sheet.ATR3 = 1
+			sheet.ATR4 = 1
+			sheet.ATR5 = 4
+			sheet.ATR6 = 0
+			sheet.ATR7 = 0
+			sheet.ATR8 = 0
+			sheet.ATRMOD1 = 0
+			sheet.ATRMOD2 = 0
+			sheet.ATRMOD3 = 0
+			sheet.ATRMOD4 = 0
+			sheet.ATRMOD5 = 0
+			sheet.ATRMOD6 = 0
+			sheet.CTRLCV4 = "Itens"
+			sheet.CTRLCV5 = "História - Opcional"
+			-- ocupaçao e aparência
+			local rolltemp1 = rrpg.interpretarRolagem("1d6");
+			rolltemp1:rolarLocalmente();
+			local rolltemp2 = rrpg.interpretarRolagem("1d6");
+			rolltemp2:rolarLocalmente();
+			local rolltemp3 = rrpg.interpretarRolagem("1d6");
+			rolltemp3:rolarLocalmente();
+			local rolltemp4 = rrpg.interpretarRolagem("1d6");
+			rolltemp4:rolarLocalmente();
+			
+			sheet.ocupacao = ocupacaofunc(rolltemp1.resultado,rolltemp4.resultado)
+			sheet.aparencia = aparenciafunc(rolltemp2.resultado, rolltemp3.resultado)
+			
+			
+			
+			
+			-- atualizando o total
+			sheet.ATRtot1 = atualizartotalfunc(sheet.ATR1,sheet.ATRMOD1);
+			sheet.ATRtot2 = atualizartotalfunc(sheet.ATR2,sheet.ATRMOD2);
+			sheet.ATRtot3 = atualizartotalfunc(sheet.ATR3,sheet.ATRMOD3);
+			sheet.ATRtot4 = atualizartotalfunc(sheet.ATR4,sheet.ATRMOD4);
+			sheet.ATRtot5 = atualizartotalfunc(sheet.ATR5,sheet.ATRMOD5);
+			sheet.ATRtot6 = atualizartotalfunc(sheet.ATR6,sheet.ATRMOD6);
+			local chat = rrpg.getMesaDe(sheet).chat;
+			
+			chat:enviarMensagem( sheet.numerogoblin .. "° Goblin Criado!" );
+			sheet.numerogoblin = sheet.numerogoblin + 1;
+			sheet.habilitadoficha = "DESABILITADO";
+			sheet.habilitadobool = false;
+			
+		end;	
+		return;
+	end;
+	
+	local function habilitadofunc()
+	
+		if sheet.habilitadobool == true then	
+			sheet.habilitadoficha = "HABILITADO";
+		else 
+		
+			sheet.habilitadoficha = "DESABILITADO";
+		end;
+	
+	
+	end;
+	
+	
+	
+	
+
+	]]></script>
+	--Caso seja útil ou modifique o código ficarei grato se puder colocar meu nome nos créditos ou referências
+	
+	--invisíveis
+	<label left="2000" top="2000" fontColor="WhiteSmoke" field="HELPcaracteristica"/>
+	<label left="2000" top="2000" fontColor="WhiteSmoke" field="numerogoblin"/><dataLink fields="{'numerogoblin'}" defaultValues="{'1'}"/>
+	--nomes
+	<edit  top ="10" text="Nome do goblin:" fontColor="black" width = "150" transparent="true"  />
+	<edit height="28" top ="10" left="105" fontColor="black" width = "200" transparent="false" text="0" field="NOMEdoPERSONAGEM"/><dataLink fields="{'NOMEdoPERSONAGEM'}" defaultValues="{'0'}"/>
+	<edit readOnly="true" top ="10" text="Nome do jogador: " fontColor="black" width = "120" left="305" transparent="true"/>
+	<edit height="28" top ="10" left="425" fontColor="black" width = "200" transparent="false" field="NOMEdoJOGADOR"/><dataLink fields="{'NOMEdoJOGADOR'}" defaultValues="{'0'}"/>
+
+	-- ocupação e aparência
+	<label left="5" top ="45" text="Ocupação: " fontColor="black" width = "150"   />
+	<label top ="45" left="70" fontColor="black" width = "200"  text="0" field="ocupacao"/><dataLink fields="{'ocupacao'}" defaultValues="{'0'}"/>
+	<button onClick="HELPfunc( 'caracteristica', sheet.HELPcaracteristica );" text="?" width="18" height="18" left="160" top ="47" />
+	<label top ="45" text="Aparência: " fontColor="black" width = "120" left="180" />
+	<label top ="45" left="245" fontColor="black" width = "400" field="aparencia"/><dataLink fields="{'aparencia'}" defaultValues="{'0'}"/>
+	
+	--nivel
+	<label left="005" top="75" width = "200" fontColor="black" text="Nível:"/>
+	<label left="110" top="75" width = "200" fontColor="black" text="0" field="nivel"/><dataLink fields="{'nivel'}" defaultValues="{'0'}"/>
+	
+	-- criar e subir de lv
+	<button onClick="main();" text="Criar Globin" left="300" top ="73" fontColor="red"  width = "100" />
+	<label  top ="73" left="420" fontColor="black" width = "120"  field="habilitadoficha"/>
+	<dataLink fields="{'habilitadoficha'}" defaultValues="{'HABILITADO'}"/>
+	<button onClick="nivelfunc();" text="Subir de Nível" left="140" top ="73"  width = "100" />
+	<button onClick="nivelvoltarfunc();" text="Voltar" left="241" top ="73"  width = "50" />
+	<checkBox left="405" top="73" text="" field="habilitadobool"/>
+	<dataLink fields="{'habilitadobool'}" defaultValues="{'true'}">
+		<event name="onChange">
+			habilitadofunc();
+		</event>
+	</dataLink>	
+	--atributos
+	
+	--nomes
+	<label left="005" top="105" width = "200" fontStyle="bold" fontColor="black" text="Atributo"/>
+	<label left="110" top="105" width = "200" fontStyle="bold" fontColor="black" text="Básico"/>
+	<label left="160" top="105" width = "200" fontStyle="bold" fontColor="black" text="Mod"/>
+	<label left="210" top="105" width = "200" fontStyle="bold" fontColor="black" text="Total"/>
+	<label left="300" top="105" width = "150" fontStyle="bold" fontColor="black" text="Equipamentos"/>
+	<label left="470" top="105" width = "150" fontStyle="bold" fontColor="black" text="Talentos"/>
+	-- 1° e 2° colunas: Atributo e Básico
+	<label left="005" top="135" width = "200" fontColor="black" text="Combate:"/>
+	<label left="110" top="135" width = "200" fontColor="black" text="0" field="ATR1"/><dataLink fields="{'ATR1'}" defaultValues="{'0'}"/>
+	
+	<label left="005" top="165" width = "200" fontColor="black" text="Conhecimento:"/>
+	<label left="110" top="165" width = "200" fontColor="black" text="0" field="ATR2"/><dataLink fields="{'ATR2'}" defaultValues="{'0'}"/>
+	
+	<label left="005" top="195" width = "200" fontColor="black" text="Habilidade:"/>
+	<label left="110" top="195" width = "200" fontColor="black" text="0" field="ATR3"/><dataLink fields="{'ATR3'}" defaultValues="{'0'}"/>
+	
+	<label left="005" top="225" width = "200" fontColor="black" text="Sorte:"/>
+	<label left="110" top="225" width = "200" fontColor="black" text="0" field="ATR4"/><dataLink fields="{'ATR4'}" defaultValues="{'0'}"/>
+	
+	<label left="005" top="255" width = "200" fontColor="black" text="Vitalidade:"/>
+	<label left="110" top="255" width = "200" fontColor="black" text="0" field="ATR5"/><dataLink fields="{'ATR5'}" defaultValues="{'0'}"/>
+	
+	<label left="005" top="285" width = "200" fontColor="black" text="Pontos de magia:"/>
+	<label left="110" top="285" width = "200" fontColor="black" text="0" field="ATR6"/><dataLink fields="{'ATR6'}" defaultValues="{'0'}"/>
+	
+	<label left="005" top="315" width = "200" fontColor="black" text="Dano:"/>
+	<edit left="105" top="310" width = "45" fontColor="black" height="28" text="0" field="ATR7"/><dataLink fields="{'ATR7'}" defaultValues="{'0'}"/>
+	
+	<label left="005" top="345" width = "200" fontColor="black" text="Proteção:"/>
+	<edit left="105" top="340" width = "45" fontColor="black" height="28" text="0" field="ATR8"/><dataLink fields="{'ATR8'}" defaultValues="{'0'}"/>
+	
+	--3° coluna: Mod
+	
+	<edit left="155" top="130" width = "45" type="number" height="28" fontColor="black" text="0" field="ATRMOD1"/>
+	<dataLink fields="{'ATRMOD1'}" defaultValues="{'0'}"><event name="onChange">
+		sheet.ATRtot1 = atualizartotalfunc(sheet.ATR1,sheet.ATRMOD1);
+	</event></dataLink>
+	<edit left="155" top="160" width = "45" type="number" height="28" fontColor="black" text="0" field="ATRMOD2"/>
+	<dataLink fields="{'ATRMOD2'}" defaultValues="{'0'}"><event name="onChange">
+		sheet.ATRtot2 = atualizartotalfunc(sheet.ATR2,sheet.ATRMOD2);
+	</event></dataLink>
+	<edit left="155" top="190" width = "45" type="number" height="28" fontColor="black" text="0" field="ATRMOD3"/>
+	<dataLink fields="{'ATRMOD3'}" defaultValues="{'0'}"><event name="onChange">
+		sheet.ATRtot3 = atualizartotalfunc(sheet.ATR3,sheet.ATRMOD3);
+	</event></dataLink>
+	<edit left="155" top="220" width = "45" type="number" height="28" fontColor="black" text="0" field="ATRMOD4"/>
+	<dataLink fields="{'ATRMOD4'}" defaultValues="{'0'}"><event name="onChange">
+		sheet.ATRtot4 = atualizartotalfunc(sheet.ATR4,sheet.ATRMOD4);
+	</event></dataLink>
+	<edit left="155" top="250" width = "45" type="number" height="28" fontColor="black" text="0" field="ATRMOD5"/>
+	<dataLink fields="{'ATRMOD5'}" defaultValues="{'0'}"><event name="onChange">
+		sheet.ATRtot5 = atualizartotalfunc(sheet.ATR5,sheet.ATRMOD5);
+	</event></dataLink>
+	<edit left="155" top="280" width = "45" type="number" height="28" fontColor="black" text="0" field="ATRMOD6"/>
+	<dataLink fields="{'ATRMOD6'}" defaultValues="{'0'}"><event name="onChange">
+		sheet.ATRtot6 = atualizartotalfunc(sheet.ATR6,sheet.ATRMOD6);
+	</event></dataLink>
+	--4° coluna: total
+
+	<label left="210" top="135" width = "200" fontColor="black" text="0" field="ATRtot1"/><dataLink fields="{'ATRtot1'}" defaultValues="{'0'}"/>
+	<label left="210" top="165" width = "200" fontColor="black" text="0" field="ATRtot2"/><dataLink fields="{'ATRtot2'}" defaultValues="{'0'}"/>
+	<label left="210" top="195" width = "200" fontColor="black" text="0" field="ATRtot3"/><dataLink fields="{'ATRtot3'}" defaultValues="{'0'}"/>
+	<label left="210" top="225" width = "200" fontColor="black" text="0" field="ATRtot4"/><dataLink fields="{'ATRtot4'}" defaultValues="{'0'}"/>
+	<label left="210" top="255" width = "200" fontColor="black" text="0" field="ATRtot5"/><dataLink fields="{'ATRtot5'}" defaultValues="{'0'}"/>
+	<label left="210" top="285" width = "200" fontColor="black" text="0" field="ATRtot6"/><dataLink fields="{'ATRtot6'}" defaultValues="{'0'}"/>
+	
+	--Equipamentos
+	<label left="300" top="135" width = "150" fontColor="black" text="---" field="equipamento1"/>
+	<label left="300" top="165" width = "150" fontColor="black" text="---" field="equipamento2"/>
+	<label left="300" top="195" width = "150" fontColor="black" text="---" field="equipamento3"/>
+	
+	<button left="280" top="135" text="?" width="18" height="18" onClick="HELPfunc( 'equipamento', sheet.equipamento1 );" />
+	<button left="280" top="165" text="?" width="18" height="18" onClick="HELPfunc( 'equipamento', sheet.equipamento2 );" />
+	<button left="280" top="195" text="?" width="18" height="18" onClick="HELPfunc( 'equipamento', sheet.equipamento3 );" />
+	
+	--Talentos
+	<label left="470" top="135" width = "150" fontColor="black" text="---" field="talento1"/>
+	<label left="470" top="165" width = "150" fontColor="black" text="---" field="talento2"/>
+	<label left="470" top="195" width = "150" fontColor="black" text="---" field="talento3"/>
+	
+	<button left="450" top="135" text="?" width="18" height="18" onClick="HELPfunc( 'talento', sheet.talento1 );" />
+	<button left="450" top="165" text="?" width="18" height="18" onClick="HELPfunc( 'talento', sheet.talento2 );" />
+	<button left="450" top="195" text="?" width="18" height="18" onClick="HELPfunc( 'talento', sheet.talento3 );" />
+	
+	--HELP
+	<label fontSize="13"  fontColor="black"  left="280" top="225" width="400" height="150" vertTextAlign="leading" text="0" field="HELPtext"/>
+	--Anotações
+
+	<textEditor left="700" top="000" width="200" height="140" text="" field="CTRLCV1"/><dataLink fields="{'CTRLCV1'}" defaultValues="{'Anotações'}"/>
+	<textEditor left="700" top="150" width="200" height="140" text="" field="CTRLCV2"/><dataLink fields="{'CTRLCV2'}" defaultValues="{'Anotações'}"/>
+	<textEditor left="700" top="300" width="200" height="140" text="" field="CTRLCV3"/><dataLink fields="{'CTRLCV3'}" defaultValues="{'Anotações'}"/>
+	<textEditor left="000" top="450" width="440" height="200" text="" field="CTRLCV4"/><dataLink fields="{'CTRLCV4'}" defaultValues="{'Itens'}"/>
+	<textEditor left="460" top="450" width="440" height="200" text="" field="CTRLCV5"/><dataLink fields="{'CTRLCV5'}" defaultValues="{'História - Opcional'}"/>
+	
+		
+		<label fontStyle="bold" left="10" top ="660" text="Ficha criada por Yiotoo. (Fábio Lofredo Cesar) v1.2" fontColor="black" width = "400" />
+
+		
+	</form>

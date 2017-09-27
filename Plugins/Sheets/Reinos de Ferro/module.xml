@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.3">
+	<!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
+	<id>FICHA_RdF</id>
+	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
+	<version>0.2</version>
+	<name>NFicha Reinos de Ferro</name>
+	<description>Ficha para o cenario/sistema Reinos de Ferro.</description>
+	<author>Ambesek &amp; Nefertyne</author>
+	<site></site>
+	<contact>vinnyrpgmeister@gmail.com</contact>
+</module>

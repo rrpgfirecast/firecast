@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplateCreditos" align="client">
+	<scrollBox align="client">
+		<image left="0" top="0" width="500" height="500" style="autoFit" src="log mesa"/>
+		<image left="550" top="0" width="250" height="250" style="autoFit" src="images/RPGmeister.jpg"/>
+
+		<layout left="850" top="0" width="200" height="160">
+			<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round"/>
+			<label left="0" top="10" width="200" height="20" text="Template feito por: " horzTextAlign="center"/>
+			<label left="0" top="35" width="200" height="20" text="Vinny (Ambesek)" horzTextAlign="center"/>
+		</layout>
+		
+		<label left="555" top="300" width="100" height="20" text="Versão Atual: " horzTextAlign="center"/>
+		<image left="667" top="300" width="100" height="20" style="autoFit" src="link versao atual"/>
+		<label left="555" top="325" width="100" height="20" text="Ultima Versão: " horzTextAlign="center"/>
+		<image left="667" top="325" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao01.png"/>
+			
+		<button left="555" top="350" width="100" text="Change Log" onClick="gui.openInBrowser('link change log')" />
+		<button left="667" top="350" width="100" text="Atualizar" onClick="gui.openInBrowser('link atualizar')" />
+		
+		<label left="555" top="400" width="200" height="20" text="Conheça as Mesas:"/>
+		<button left="555" top="425" width="100" text="RPGmeister" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
+		<button left="667" top="425" width="125" text="Nome Mesa" onClick="gui.openInBrowser('link mesa');" />
+	</scrollBox>
+</form>

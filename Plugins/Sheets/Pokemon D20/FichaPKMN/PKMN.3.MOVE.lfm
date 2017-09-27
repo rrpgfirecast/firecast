@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPKMN3MOVE" height="155" width="545" theme="dark">
+	<rectangle align="client" color="Black" strokeColor="white" strokeSize="1"/>
+
+	<label left="5" top="5" height="25" width="50" text="Nome"/>
+	<edit  left="45" top="5" height="25" width="100" field="nome_golpe"/>
+
+	<comboBox left="150" top="5" width="90" height="25" field="tipo_golpe" items="{'-', 'Inseto', 'Noturno', 'Dragão', 'Eletrico', 'Fada', 'Lutador', 'Fogo', 'Voador', 'Fantasma', 'Planta', 'Terra', 'Gelo', 'Normal', 'Veneno', 'Psíquico', 'Pedra', 'Metal', 'Água'}" values="{'-1', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18'}"/>
+	<comboBox left="245" top="5" width="90" height="25" field="categoria_golpe" items="{'Físico', 'Especial', 'Suporte'}" values="{'1', '2', '3'}">
+		<event name="onChange">
+			acc();
+			dano();
+		</event>
+	</comboBox>
+
+	<label left="345" top="5" height="25" width="25" text="PP"/>
+	<edit  left="365" top="5" height="25" width="30" field="pp_golpe">
+		<event name="onChange">
+			pp();
+		</event>
+	</edit>
+	<checkBox left="395" top="5" height="25" width="15" field="ppup1_golpe">
+		<event name="onChange">
+			pp();
+		</event>
+	</checkBox>
+	<checkBox left="410" top="5" height="25" width="15" field="ppup2_golpe">
+		<event name="onChange">
+			pp();
+		</event>
+	</checkBox>
+	<checkBox left="425" top="5" height="25" width="15" field="ppup3_golpe">
+		<event name="onChange">
+			pp();
+		</event>
+	</checkBox>
+	<rectangle left="445" top="5" height="25" width="30" color="Black" strokeColor="white" strokeSize="1"/>
+	<label left="445" top="5" height="25" width="30" field="ppreal_golpe" horzTextAlign="center"/>
+	<edit left="480" top="5" height="25" width="30" field="ppusado_golpe"/>
+
+	 <button left="515" top="5" width="25" height="25" text="X">
+		<event name="onClick">
+			dialogs.confirmOkCancel("Tem certeza que quer apagar esse golpe?",
+				function (confirmado)
+					if confirmado then
+						ndb.deleteNode(sheet);
+					end;
+				end);
+		</event>
+	</button>
+
+
+	<button left="5" top="35" height="25" width="40" text="Acc.">
+		<event name="onClick">
+			acc();
+			if sheet ~=nil then
+				local gastos = tonumber(sheet.ppusado_golpe);
+				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+				local prioridade = tonumber(sheet.prioridade_golpe) or 0;
+				local prio = "";
+				if prioridade ~= 0 then
+					prio = " (Prioridade: " .. prioridade .. ").";
+				end;
+
+				if gastos ~= nil then
+					if gastos &lt;= 0 then
+						mesaDoPersonagem.activeChat:enviarMensagem("Sem PP!");
+						return;
+					end;
+					gastos = gastos - 1;
+					sheet.ppusado_golpe = gastos;
+				end;
+
+				teste = sheet.acc_real_golpe or "";
+				teste = "1d20+" .. teste;
+				
+				mesaDoPersonagem.activeChat:rolarDados(teste, "Teste de Acerto de " .. sheet.nome_golpe .. prio, 
+					function (rolado)
+						pos(rolado);
+					end);
+			end;
+		</event>
+	</button>
+	<edit left="45" top="35" height="25" width="30" field="acc_golpe">
+		<event name="onChange">
+			acc();
+		</event>
+	</edit>
+	<rectangle left="75" top="35" height="25" width="30" color="Black" strokeColor="white" strokeSize="1"/>
+	<label left="75" top="35" height="25" width="30" field="acc_real_golpe" horzTextAlign="center"/>
+
+	<button left="110" top="35" height="25" width="50" text="Dano">
+		<event name="onClick">
+			dano();
+			rolagem_dano();
+		</event>
+	</button>
+	<edit left="160" top="35" height="25" width="40" field="poder_golpe">
+		<event name="onChange">
+			dano();
+		</event>
+	</edit>
+	<rectangle left="200" top="35" height="25" width="35" color="Black" strokeColor="white" strokeSize="1"/>
+	<label left="200" top="35" height="25" width="35" field="poder_real_golpe" horzTextAlign="center"/>
+	<rectangle left="235" top="35" height="25" width="100" color="Black" strokeColor="white" strokeSize="1"/>
+	<label left="235" top="35" height="25" width="100" field="dados_golpe" horzTextAlign="center"/>
+
+	<label left="335" top="35" height="25" width="40" text="CRIT"/>
+	<edit  left="365" top="35" height="25" width="30" field="crit_golpe"/>
+	<label left="395" top="35" height="25" width="40" text="PRIO"/>
+	<edit  left="425" top="35" height="25" width="30" field="prioridade_golpe"/>
+	<label left="455" top="35" height="25" width="40" text="NEP"/>
+	<edit  left="480" top="35" height="25" width="30" field="nep_golpe"/>
+
+	<button left="515" top="35" width="25" height="25" text="O">
+		<event name="onClick">
+			if sheet~= nil then
+				local nome = sheet.nome_golpe or "";
+				nome = nome:gsub("%s+", "");
+				nome = nome:lower();
+				url = "http://www.serebii.net/attackdex-xy/" .. nome .. ".shtml";
+				gui.openInBrowser(url);
+			end;
+		</event>
+	</button>
+
+	<label left="5" top="65" height="25" width="40" text="EQUIP" fontSize="11"/>
+	<edit  left="35" top="65" height="25" width="30" field="equip_bonus">
+		<event name="onChange">
+			dano();
+		</event>
+	</edit>
+	<label left="66" top="65" height="25" width="40" text="HAB"/>
+	<edit  left="95" top="65" height="25" width="30" field="habilidade_bonus">
+		<event name="onChange">
+			dano();
+		</event>
+	</edit>
+	<label left="125" top="65" height="25" width="40" text="CLIM"/>
+	<edit  left="155" top="65" height="25" width="30" field="clima_bonus">
+		<event name="onChange">
+			dano();
+		</event>
+	</edit>
+	<label left="185" top="65" height="25" width="40" text="TIME"/>
+	<edit  left="215" top="65" height="25" width="30" field="time_bonus">
+		<event name="onChange">
+			dano();
+		</event>
+	</edit>
+	<label left="246" top="65" height="25" width="40" text="OUT"/>
+	<edit  left="275" top="65" height="25" width="30" field="outros_bonus">
+		<event name="onChange">
+			dano();
+		</event>
+	</edit>
+	<label left="306" top="65" height="25" width="40" text="VAR"/>
+	<edit  left="335" top="65" height="25" width="30" field="variante_bonus">
+		<event name="onChange">
+			dano();
+		</event>
+	</edit>
+
+	<label left="460" top="65" height="25" width="50" text="ORDEM"/>
+	<edit  left="510" top="65" height="25" width="30" field="ordem" type="number"/>
+
+	<label left="5" top="95" height="25" width="40" text="DESC" fontSize="12"/>
+	<edit  left="35" top="95" height="25" width="505" field="descricao"/>
+
+	<label left="5" top="125" height="25" width="40" text="EXTRA" fontSize="10"/>
+	<edit  left="35" top="125" height="25" width="435" field="efeito_secundario"/>
+	<label left="470" top="125" height="25" width="40" text="CHANCE" fontSize="10"/>
+	<edit  left="510" top="125" height="25" width="30" field="chance_efeito_secundario" type="number"/>
+
+	<script>
+		local function rolagem_dano()
+			if sheet ~=nil then
+				local teste = sheet.dados_golpe or "1d1";
+
+				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+				mesaDoPersonagem.activeChat:rolarDados(teste, "Rolagem de Dano de " .. sheet.nome_golpe);
+			end;
+		end;
+	</script>
+
+	<script>
+		local function secundario()
+			local chance = tonumber(sheet.chance_efeito_secundario);
+			local extra = sheet.efeito_secundario or "";
+			local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+			local perc = math.random(0, 100);
+			if chance ~= nil then
+				if chance >= perc then
+					mesaDoPersonagem.activeChat:enviarMensagem(extra);
+				end;
+			end;
+		end;
+	</script>
+
+	<script>
+		local function pos(rolado)
+			local decisivo = tonumber(sheet.crit_golpe) or 20;
+			local dado = rolado.ops[1].resultados[1];
+
+			if dado == 1 then
+				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+				mesaDoPersonagem.activeChat:rolarDados(teste, "Confirmação de Falha Critica de " .. sheet.nome_golpe);
+			elseif dado>= decisivo then
+				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+				mesaDoPersonagem.activeChat:rolarDados(teste, "Confirmação de Sucesso Decisivo de " .. sheet.nome_golpe);
+				local box = ndb.getRoot(sheet);
+				box = box["pkmn_time_" .. box.selected];
+				local mult = tonumber(box.crit) or 2;
+
+				secundario();
+				rolagem_dano();
+				if mult >= 2 then
+					rolagem_dano();
+				end;
+				if mult == 3 then
+					rolagem_dano();
+				end;
+			else
+				secundario();
+				rolagem_dano();
+			end;
+		end;
+	</script>
+
+	<script>
+		local function dano()
+			if sheet~= nil then
+				local poder = tonumber(sheet.poder_golpe) or 5;
+				local tipo = sheet.tipo_golpe;
+				local mult = 1;
+				local categoria = tonumber(sheet.categoria_golpe) or 0;
+				
+				local box = ndb.getRoot(sheet);
+				box = box["pkmn_time_" .. box.selected];
+				local nv = box.pokemon_nivel or 1;
+				local tm = (tonumber(box.tamanho) or 0);
+
+				if box.pokemon_tipo1 == tipo or box.pokemon_tipo2 == tipo then
+					local stab = (tonumber(box.stab) or 0) - 1;
+					mult = mult + stab;
+				end;
+
+				local equip = (tonumber(sheet.equip_bonus) or 0) / 100;
+				local habilidade = (tonumber(sheet.habilidade_bonus) or 0) / 100;
+				local clima = (tonumber(sheet.clima_bonus) or 0) / 100;
+				local time = (tonumber(sheet.time_bonus) or 0) / 100;
+				local outros = (tonumber(sheet.outros_bonus) or 0) / 100;
+				local variante = (tonumber(sheet.variante_bonus) or 0) / 100;
+
+				mult = mult + equip + habilidade + clima + time + outros + variante;
+
+				poder = poder * mult;
+				if categoria == 3 then
+					sheet.poder_real_golpe = "";
+				else
+					sheet.poder_real_golpe = poder;
+				end;
+				
+				poder = math.floor(poder/5);
+				local aux = poder;
+
+				local dados = {"1d1", "1d2", "1d3", "1d4", "2d2", "1d6", "2d3", "1d8", "2d4", "1d10", "4d2", "1d12", "2d6", "3d4", "4d3", "2d8", "4d4", "3d6", "2d10", "5d4", "2d12", "3d8", "4d6", "6d4", "3d10", "5d6", "4d8", "3d12", "8d4", "6d6", "4d10", "5d8", "7d6", "10d4", "4d12", "6d8", "5d10", "8d6", "7d8", "5d12", "6d10", "10d6", "8d8", "7d10", "6d12", "9d8", "12d6", "8d10", "10d8", "7d12", "14d6", "9d10", "8d12", "15d6", "12d8", "10d10", "16d6", "9d12", "17d6", "11d10", "14d8", "10d12", "12d10", "19d6", "15d8", "20d6", "11d12", "16d8", "21d6", "17d8", "14d10", "12d12", "23d6", "18d8", "15d10", "24d6", "13d12", "19d8", "25d6", "16d10"};
+
+				local dado = "1";
+				
+				if categoria==1 then
+					dado = (tonumber(box.mod_ataque) or 0) + tm + nv;
+				elseif categoria==2 then
+					dado = (tonumber(box.mod_ataque_especial) or 0) + tm +nv;
+				end;
+
+				while aux>0 do
+					if aux > 81 then
+						dado = dado .. "+" .. dados[81];
+						aux = aux - 81;
+					else 
+						dado = dado .. "+" .. dados[aux];
+						aux = 0;
+					end;
+				end;
+
+				if categoria==3 then
+					dado = "";
+				end;
+
+				sheet.dados_golpe = dado;
+			end;
+		end;
+	</script>
+
+	<script>
+		local function acc()
+			if sheet~=nil then
+				local box = ndb.getRoot(sheet);
+				box = box["pkmn_time_" .. box.selected];
+
+				local nv = box.pokemon_nivel or 1;
+				local acc = (tonumber(sheet.acc_golpe) or 0);
+				local ac = nv * acc / 100;
+				ac = math.floor(ac);
+
+				local bonus = 0;
+				local categoria = tonumber(sheet.categoria_golpe) or 0;
+				if categoria==1 then
+					bonus = tonumber(box.acf) or 0;
+				elseif categoria==2 then
+					bonus = tonumber(box.ace) or 0;
+				elseif categoria==3 then
+					bonus = tonumber(box.acs) or 0;
+				end;
+
+				ac = ac + bonus;		
+				sheet.acc_real_golpe = ac;
+			end;
+		end;
+	</script>
+
+	<script>
+		local function pp()
+			if sheet~=nil then
+				local mult = 1;
+				local pp = (tonumber(sheet.pp_golpe) or 0);
+
+				if pp>=30 then
+					pp = "-";
+				else
+					if sheet.ppup1_golpe then
+						mult = mult + 0.2;
+					end;
+					if sheet.ppup2_golpe then
+						mult = mult + 0.2;
+					end;
+					if sheet.ppup3_golpe then
+						mult = mult + 0.2;
+					end;
+
+					pp = pp * mult / 5;
+					local round = math.floor(pp) + 0.5;
+					if pp>=round then
+						pp = math.floor(pp) + 1;
+					else
+						pp = math.floor(pp);
+					end;
+				end;
+				sheet.ppreal_golpe = pp;
+			end;
+		end;
+	</script>
+</form>

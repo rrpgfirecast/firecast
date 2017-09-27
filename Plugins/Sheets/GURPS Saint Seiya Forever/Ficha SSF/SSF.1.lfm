@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSSF1" align="client" theme="dark">
+	<scrollBox align="client">
+		<script>
+			local function pos(rolado)
+				if sheet~=nil then
+					local alvo = target;
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+
+					local decisivo = 4;
+					if alvo >= 16 then
+						decisivo = 6;
+					elseif alvo >= 15 then
+						decisivo = 5;
+					end;
+
+					local critico = 18;
+					if alvo &lt;=15 then
+						critico = 17;
+					end;
+					critico = math.min(critico, alvo+10);
+
+					local resultado = rolado.resultado;
+					local diferenca = math.abs(resultado-target);
+
+					if resultado &lt;= decisivo then
+						if fulminante ~= nil then
+							mesaDoPersonagem.activeChat:enviarMensagem("[§K9]ATAQUE FULMINANTE! PASSOU POR " .. diferenca .. "! " .. meme(1));
+							fulminante = nil;
+						else
+							mesaDoPersonagem.activeChat:enviarMensagem("[§K9]SUCESSO DECISIVO! PASSOU POR " .. diferenca .. "! " .. meme(1));
+						end;
+					elseif resultado &lt;= alvo then
+						mesaDoPersonagem.activeChat:enviarMensagem("[§K12]SUCESSO! PASSOU POR " .. diferenca .. "! " .. meme(2));
+					elseif resultado &lt; critico then
+						mesaDoPersonagem.activeChat:enviarMensagem("[§K7]FALHA! FALHOU POR " .. diferenca .. "! " .. meme(3));
+					else
+						mesaDoPersonagem.activeChat:enviarMensagem("[§K4]FALHA CRITICA! FALHOU POR " .. diferenca .. "! " .. meme(4));
+					end;
+
+				end;
+			end;
+		</script>
+
+		<script>
+			function meme(type)
+				local perfect = {":troll:", ":lol:", ":megusta:", ":yeahh:", ":awyeah:", ":hue:", ":D", "8)", "xD", "*.*", "S2", ":star:"};
+				local good = {":notbad:", ":truestory:", ":doge:", ":)", ":P", ";)", ":3", "^^", ":like:"};
+				local bad = {":okay:", ":pokerface:", ":rage:", ":desprezo:", ":(", ":o", "Oo", "-_-", ":/", ":'(", ":dislike:"};
+				local terrible = {":genius:", ":kidme:", ":alone:", ":vish:", ":yao:", ":wtf:", ":ohgod:", ":dino:", "T.T", ":poop:"};
+
+				local memes = {};
+				if type==1 then
+					memes = perfect;
+				elseif type==2 then
+					memes = good;
+				elseif type==3 then
+					memes = bad;
+				else
+					memes = terrible;
+				end
+
+				local num = math.random(#memes);
+
+				return memes[num];
+			end;
+		</script>
+
+		<template name="Cabecalho">
+			<label left="0" top="5" width="100" height="20" text="$(nome)" horzTextAlign="trailing"/>
+			<edit left="110" top="0" width="200" height="25" field="$(field)"/>
+		</template>
+
+		<template name="Atributo">
+			<button left="5" top="2" width="30" height="20" text="$(nome)">
+				<event name="onClick">
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+				
+					rolagem = rrpg.interpretarRolagem("3d6");
+					target = (sheet.total_$(field) or 0) + (tonumber(sheet.mod) or 0);
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(nome) [" .. (sheet.total_$(field) or 0) .. (sheet.sinal or "+") .. (sheet.mod or 0) .. "]", 
+						function (rolado)
+							pos(rolado);
+						end);
+				</event>
+			</button>
+
+			<rectangle left="40" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="40" top="3" width="40" height="20" field="total_$(field)" horzTextAlign="center"/>
+
+        	<edit left="90" top="0" width="30" height="25" type="number" field="inicial_$(field)"/>
+        	<edit left="120" top="0" width="30" height="25" type="number" field="cosmo_$(field)"/>
+        	<edit left="150" top="0" width="30" height="25" type="number" field="xp_$(field)"/>
+
+        	<dataLink fields="{'inicial_$(field)', 'cosmo_$(field)', 'xp_$(field)'}">
+				<event name="onChange">
+					if sheet~=nil then
+						local xp = (tonumber(sheet.xp_$(field)) or 0);
+						xp = xp/($(factor)*10);
+
+						local mod = (tonumber(sheet.inicial_$(field)) or 0)+
+									(tonumber(sheet.cosmo_$(field)) or 0)+
+									xp;
+						mod = math.floor(mod);
+						sheet.total_$(field) = mod;
+					end;
+				</event>
+			</dataLink>
+		</template>
+
+		<template name="AtributoSecundario">
+			<label left="5" top="5" width="30" height="20" text="$(nome)" visible="$(t1)"/>
+			<button left="0" top="2" width="40" height="20" text="$(nome)" visible="$(t2)">
+				<event name="onClick">
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+				
+					rolagem = rrpg.interpretarRolagem("3d6");
+					target = (sheet.total_$(field) or 0) + (tonumber(sheet.mod) or 0);
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(nome) [" .. (sheet.total_$(field) or 0) .. (sheet.sinal or "+") .. (sheet.mod or 0) .. "]", 
+						function (rolado)
+							pos(rolado);
+						end);
+				</event>
+			</button>
+
+			<rectangle left="45" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="45" top="3" width="40" height="20" field="total_$(field)" horzTextAlign="center"/>
+
+        	<rectangle left="90" top="0" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        	<label left="90" top="3" width="30" height="20" field="total_$(atr)" horzTextAlign="center"/>
+        	<edit left="120" top="0" width="30" height="25" type="number" field="cosmo_$(field)"/>
+        	<edit left="150" top="0" width="30" height="25" type="number" field="xp_$(field)"/>
+
+        	<dataLink fields="{'total_$(atr)', 'cosmo_$(field)', 'xp_$(field)'}">
+				<event name="onChange">
+					if sheet~=nil then
+						local xp = (tonumber(sheet.xp_$(field)) or 0);
+						xp = xp/($(custo));
+
+						local mod = (tonumber(sheet.total_$(atr)) or 0)+
+									(tonumber(sheet.cosmo_$(field)) or 0)+
+									xp;
+						mod = math.floor(mod);
+						sheet.total_$(field) = mod;
+					end;
+				</event>
+			</dataLink>
+		</template>
+
+		<layout left="0" top="0" width="960" height="85">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+	   		<layout left="0" top="5" width="310" height="25" >
+				<Cabecalho field="nome" nome="Nome"/>
+			</layout>
+			<layout left="0" top="30" width="310" height="25" >
+				<Cabecalho field="divindade" nome="Divindade"/>
+			</layout>
+			<layout left="0" top="55" width="310" height="25" >
+				<label left="0" top="5" width="100" height="20" text="Cosmo" horzTextAlign="trailing"/>
+				<rectangle left="110" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="110" top="3" width="40" height="20" field="cosmo" horzTextAlign="center"/>
+
+        		<edit left="160" top="0" width="40" height="25" field="xpc_total"/>
+
+				<label left="210" top="5" width="50" height="20" text="Elevar"/>
+				<edit left="270" top="0" width="40" height="25" field="xpc_elevado"/>
+				<dataLink fields="{'xpc_total', 'armadura_equipada', 'tipo_armadura', 'xpc_elevado'}">
+					<event name="onChange">
+					if sheet~=nil then
+						local mod = (tonumber(sheet.xpc_total) or 0);
+						local cosmo = 0;
+						if mod > 3800 then
+							cosmo = 80 + math.floor((mod-3800)/100);
+						elseif mod > 2400 then
+							cosmo = 60 + math.floor((mod-2400)/70);
+						elseif mod > 1400 then
+							cosmo = 40 + math.floor((mod-1400)/50);
+						elseif mod > 600 then
+							cosmo = 20 + math.floor((mod-600)/40);
+						else 
+							cosmo = math.floor((mod)/30);
+						end
+
+						local cosmo2 = 0;
+						local cosmoMin = 0;
+						if sheet.armadura_equipada then
+							if sheet.tipo_armadura == "1" then
+								cosmoMin = 20;
+							elseif sheet.tipo_armadura == "2" then
+								cosmoMin = 40;
+							elseif sheet.tipo_armadura == "3" then
+								cosmoMin = 60;
+							end;
+
+							if cosmo &lt; cosmoMin then
+								cosmo = cosmoMin;
+							else 
+								cosmo2 = math.floor(cosmo/10);
+								if cosmo2>5 then
+									cosmo2 = 5;
+								end;
+								cosmo = cosmo + cosmo2;
+							end
+						end;
+
+						sheet.cosmo = cosmo;
+					end;
+					</event>
+				</dataLink>
+			</layout>
+
+			<layout left="300" top="5" width="310" height="25" >
+				<Cabecalho field="armadura" nome="Armadura"/>
+			</layout>
+			<layout left="300" top="30" width="310" height="25" >
+				<Cabecalho field="constelacao" nome="Constelação"/>
+			</layout>
+			<layout left="300" top="55" width="310" height="25" >
+				<Cabecalho field="signo" nome="Signo"/>
+			</layout>
+
+			<layout left="600" top="5" width="310" height="25" >
+				<Cabecalho field="classificacao" nome="Classificação"/>
+			</layout>
+			<layout left="600" top="30" width="310" height="25" >
+				<Cabecalho field="titulo" nome="Título"/>
+			</layout>
+			<layout left="600" top="55" width="310" height="25" >
+				<Cabecalho field="idade" nome="Idade"/>
+			</layout>
+		</layout>
+
+		<layout left="0" top="95" width="200" height="160">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="5" width="200" height="20" text="ATRIBUTOS" horzTextAlign="center"/>
+
+			<label left="50" top="30" width="40" height="20" text="Total"/>
+        	<label left="100" top="30" width="30" height="20" text="Inicial" fontSize="11"/>
+        	<label left="131" top="30" width="33" height="20" text="Cosmo" fontSize="10"/>
+        	<label left="164" top="30" width="30" height="20" text="Custo" fontSize="10"/>
+
+			<layout left="10" top="50" width="190" height="25" >
+				<Atributo field="st" nome="ST" factor="1"/>
+			</layout>
+			<layout left="10" top="75" width="190" height="25" >
+				<Atributo field="dx" nome="DX" factor="2"/>
+			</layout>
+			<layout left="10" top="100" width="190" height="25" >
+				<Atributo field="iq" nome="IQ" factor="2"/>
+			</layout>
+			<layout left="10" top="125" width="190" height="25" >
+				<Atributo field="ht" nome="HT" factor="1"/>
+			</layout>
+		</layout>
+
+		<layout left="210" top="95" width="200" height="160">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+
+			<label left="50" top="30" width="40" height="20" text="Total"/>
+        	<label left="96" top="30" width="30" height="20" text="Base" fontSize="12"/>
+        	<label left="126" top="30" width="33" height="20" text="Cosmo" fontSize="10"/>
+        	<label left="163" top="30" width="30" height="20" text="Custo" fontSize="10"/>
+
+			<layout left="5" top="50" width="190" height="25" >
+				<AtributoSecundario field="pv" nome="PV" custo="2" atr="st" t1="true" t2="false"/>
+			</layout>
+			<layout left="5" top="75" width="190" height="25" >
+				<AtributoSecundario field="von" nome="VON" custo="5" atr="iq" t1="false" t2="true"/>
+			</layout>
+			<layout left="5" top="100" width="190" height="25" >
+				<AtributoSecundario field="per" nome="PER" custo="5" atr="iq" t1="false" t2="true"/>
+			</layout>
+			<layout left="5" top="125" width="190" height="25" >
+				<AtributoSecundario field="pf" nome="PF" custo="3" atr="ht" t1="true" t2="false"/>
+			</layout>
+		</layout>
+
+		<layout left="420" top="95" width="250" height="185">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+
+			<label left="60" top="5" width="40" height="20" text="Total"/>
+			<label left="120" top="5" width="40" height="20" text="Outros"/>
+			<label left="170" top="5" width="40" height="20" text="NH"/>
+
+			<layout left="0" top="25" width="240" height="25" >
+				<button left="5" top="2" width="50" height="20" fontSize="10" text="Desl.">
+					<event name="onClick">
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					
+						rolagem = rrpg.interpretarRolagem("1d6+" .. (math.floor(sheet.total_desl) or 0));
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Iniciativa " .. (sheet.total_desl or 0) .. " " .. (sheet.descricao_velocidade or 0) .. " (" .. (sheet.nivel_velocidade or 0) .. ")");
+					</event>
+				</button>
+
+				<rectangle left="60" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="60" top="3" width="40" height="20" field="total_desl" horzTextAlign="center"/>
+
+        		<edit left="120" top="0" width="40" height="25" type="number" field="out_desl"/>
+
+        		<dataLink fields="{'total_dx', 'total_ht', 'out_desl'}">
+					<event name="onChange">
+						if sheet~=nil then
+							local mod = (tonumber(sheet.total_dx) or 0)+
+										(tonumber(sheet.total_ht) or 0);
+							mod = mod/4;
+							mod = mod +
+								(tonumber(sheet.out_desl) or 0);
+							sheet.total_desl = mod;
+						end;
+					</event>
+				</dataLink>
+			</layout>
+
+			<layout left="0" top="50" width="240" height="25" >
+				<button left="5" top="2" width="50" height="20" fontSize="10" text="Bloqueio">
+					<event name="onClick">
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					
+						rolagem = rrpg.interpretarRolagem("3d6");
+						target = (sheet.total_bloqueio or 0) + (tonumber(sheet.mod) or 0);
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Bloqueio [" .. (sheet.total_bloqueio or 0) .. (sheet.sinal or "+") .. (sheet.mod or 0) .. "]", 
+						function (rolado)
+							pos(rolado);
+						end);
+					</event>
+				</button>
+
+				<rectangle left="60" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="60" top="3" width="40" height="20" field="total_bloqueio" horzTextAlign="center"/>
+
+        		<edit left="120" top="0" width="40" height="25" type="number" field="out_bloqueio"/>
+
+        		<dataLink fields="{'out_bloqueio', 'nh_2_2'}">
+					<event name="onChange">
+						if sheet~=nil then
+							local mod = (tonumber(sheet.out_bloqueio) or 0) +
+										(tonumber(sheet.nh_2_2) or 0)/2 +
+										3;
+							sheet.total_bloqueio = math.floor(mod);
+						end;
+					</event>
+				</dataLink>
+			</layout>
+
+			<layout left="0" top="75" width="240" height="25" >
+				<button left="5" top="2" width="50" height="20" fontSize="10" text="Esquiva">
+					<event name="onClick">
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					
+						rolagem = rrpg.interpretarRolagem("3d6");
+						target = (sheet.total_esq or 0) + (tonumber(sheet.mod) or 0);
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Esquiva [" .. (sheet.total_esq or 0) .. (sheet.sinal or "+") .. (sheet.mod or 0) .. "]", 
+						function (rolado)
+							pos(rolado);
+						end);
+					</event>
+				</button>
+
+				<rectangle left="60" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="60" top="3" width="40" height="20" field="total_esq" horzTextAlign="center"/>
+
+        		<edit left="120" top="0" width="40" height="25" type="number" field="out_esq"/>
+
+        		<dataLink fields="{'total_desl', 'out_esq'}">
+					<event name="onChange">
+						if sheet~=nil then
+							local mod = (tonumber(sheet.total_desl) or 0) +
+										(tonumber(sheet.out_esq) or 0) + 
+										3;
+							sheet.total_esq = math.floor(mod);
+						end;
+					</event>
+				</dataLink>
+			</layout>
+
+			<layout left="0" top="100" width="240" height="25" >
+				<button left="5" top="2" width="50" height="20" fontSize="10" text="Aparar">
+					<event name="onClick">
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					
+						rolagem = rrpg.interpretarRolagem("3d6");
+						target = (sheet.total_aparar or 0) + (tonumber(sheet.mod) or 0);
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Aparar [" .. (sheet.total_aparar or 0) .. (sheet.sinal or "+") .. (sheet.mod or 0) .. "]", 
+						function (rolado)
+							pos(rolado);
+						end);
+					</event>
+				</button>
+
+				<rectangle left="60" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="60" top="3" width="40" height="20" field="total_aparar" horzTextAlign="center"/>
+
+        		<edit left="120" top="0" width="40" height="25" type="number" field="out_aparar"/>
+
+        		<dataLink fields="{'out_aparar', 'nh_1_9'}">
+					<event name="onChange">
+						if sheet~=nil then
+							local mod = (tonumber(sheet.out_aparar) or 0) +
+										(tonumber(sheet.nh_1_9) or 0)/2 +
+										3;
+							sheet.total_aparar = math.floor(mod);
+						end;
+					</event>
+				</dataLink>
+
+			</layout>
+
+			<layout left="0" top="125" width="245" height="25" >
+				<button left="5" top="2" width="50" height="20" fontSize="10" text="S. Aparar">
+					<event name="onClick">
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					
+						rolagem = rrpg.interpretarRolagem("3d6");
+						target = (sheet.total_super_aparar or 0) + (tonumber(sheet.mod) or 0);
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Super Aparar [" .. (sheet.total_super_aparar or 0) .. (sheet.sinal or "+") .. (sheet.mod or 0) .. "]", 
+						function (rolado)
+							pos(rolado);
+						end);
+					</event>
+				</button>
+
+				<rectangle left="60" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="60" top="3" width="40" height="20" field="total_super_aparar" horzTextAlign="center"/>
+
+        		<edit left="120" top="0" width="40" height="25" type="number" field="out_super_aparar"/>
+        		<comboBox left="160" top="0" width="85" height="25" field="nh_super_aparar" items="{'Ataque 1', 'Ataque 2', 'Ataque 3'}" values="{'1', '2', '3'}"/>
+
+        		<dataLink fields="{'out_super_aparar', 'nh_3_16', 'nh_3_17', 'nh_3_18', 'nh_super_aparar'}">
+					<event name="onChange">
+						if sheet~=nil then
+							local mod = (tonumber(sheet.out_super_aparar) or 0) + 2;
+
+							if sheet.nh_super_aparar == "1" then
+								mod = mod + (tonumber(sheet.nh_3_16) or 0)/2;
+							elseif sheet.nh_super_aparar == "2" then
+								mod = mod + (tonumber(sheet.nh_3_17) or 0)/2;
+							elseif sheet.nh_super_aparar == "3" then
+								mod = mod + (tonumber(sheet.nh_3_18) or 0)/2;
+							end;
+
+							sheet.total_super_aparar = math.floor(mod);
+						end;
+					</event>
+				</dataLink>
+			</layout>
+
+			<layout left="0" top="150" width="245" height="25" >
+				<button left="5" top="2" width="50" height="20" fontSize="10" text="T.Defesa">
+					<event name="onClick">
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					
+						rolagem = rrpg.interpretarRolagem("3d6");
+						target = (sheet.total_tecnica_defesa or 0) + (tonumber(sheet.mod) or 0);
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Defesa [" .. (sheet.total_tecnica_defesa or 0) .. (sheet.sinal or "+") .. (sheet.mod or 0) .. "]", 
+						function (rolado)
+							pos(rolado);
+						end);
+					</event>
+				</button>
+
+				<rectangle left="60" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="60" top="3" width="40" height="20" field="total_tecnica_defesa" horzTextAlign="center"/>
+
+        		<edit left="120" top="0" width="40" height="25" type="number" field="out_tecnica_defesa"/>
+        		<comboBox left="160" top="0" width="85" height="25" field="nh_tecnica_defesa" items="{'Defesa 1', 'Defesa 2'}" values="{'1', '2'}"/>
+
+        		<dataLink fields="{'out_tecnica_defesa', 'nh_3_19', 'nh_3_20', 'nh_tecnica_defesa'}">
+					<event name="onChange">
+						if sheet~=nil then
+							local mod = (tonumber(sheet.out_tecnica_defesa) or 0) + 3;
+
+							if sheet.nh_super_aparar == "1" then
+								mod = mod + (tonumber(sheet.nh_3_19) or 0)/2;
+							elseif sheet.nh_super_aparar == "2" then
+								mod = mod + (tonumber(sheet.nh_3_20) or 0)/2;
+							end;
+
+							sheet.total_tecnica_defesa = math.floor(mod);
+						end;
+					</event>
+				</dataLink>
+			</layout>
+		</layout>
+
+		<rectangle left="680" top="95" width="250" height="250" color="DimGray" xradius="5" yradius="5" cornerType="innerLine"/>
+		<image left="680" top="95" width="250" height="250" field="avatar" editable="true" style="autoFit"/>
+
+		<layout left="680" top="355" width="250" height="250">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="5" width="250" height="20" text="REAÇÃO" horzTextAlign="center"/>
+
+			<layout left="0" top="30" width="250" height="25" >
+				<label left="10" top="5" width="50" height="20" text="Aparência" fontSize="10"/>
+        		<edit left="60" top="0" width="150" height="25" field="aparencia"/>
+			</layout>
+			<layout left="0" top="55" width="250" height="25" >
+				<label left="10" top="5" width="50" height="20" text="Status" fontSize="10"/>
+        		<edit left="60" top="0" width="150" height="25" field="status"/>
+			</layout>
+			<layout left="0" top="80" width="250" height="25" >
+				<label left="10" top="5" width="50" height="20" text="Reputação" fontSize="10"/>
+        		<edit left="60" top="0" width="150" height="25" field="reputacao"/>
+			</layout>
+
+			<textEditor left="10" top="105" width="230" height="105" field="reputacao_descricao"/>
+			<layout left="0" top="210" width="250" height="25" >
+				<label left="5" top="5" width="80" height="20" text="Modificador" fontSize="10"/>
+        		<edit left="60" top="0" width="40" height="25" field="mod"/>
+        		<dataLink field="mod">
+					<event name="onChange">
+						if sheet~=nil then
+							if (tonumber(sheet.mod) or 0) >= 0 then
+								sheet.sinal = "+";
+							else
+								sheet.sinal = "";
+							end;
+						end;
+					</event>
+				</dataLink>
+			</layout>
+
+		</layout>
+
+		<layout left="0" top="265" width="200" height="345">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="5" width="180" height="20" text="VANTAGENS &amp; HABILIDADES" horzTextAlign="center"/>
+
+			<button text="+" left="175" top="5" width="20" height="20">
+				<event name="onClick">
+					self.rclListaDasVantagens:append();
+				</event>
+			</button>
+
+			<rectangle left="5" top="30" width="190" height="310" color="#101010"/>
+			<recordList name="rclListaDasVantagens" field="listaVantagens" templateForm="frmSSF1_1" left="5" top="30" width="190" height="310" selectable="true" layout="vertical" minQt="1">
+
+				<event name="onSelect">
+					local node = self.rclListaDasVantagens.selectedNode;
+					self.boxDetalhesDasVantagens.node = node;
+					self.boxDetalhesDasVantagens.visible = (node ~= nil);
+				</event>
+				<event name="onEndEnumeration">
+					if self.rclListaDasVantagens.selectedNode == nil and sheet ~= nil then
+						local nodes = ndb.getChildNodes(sheet.listaVantagens);               
+						if #nodes > 0 then
+							self.rclListaDasVantagens.selectedNode = nodes[1];
+						end;
+					end;
+				</event>
+			</recordList>
+		</layout>
+
+		<dataScopeBox name="boxDetalhesDasVantagens" visible="false" left="210" top="265" width="200" height="345">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+
+			<layout left="0" top="5" width="200" height="25" >
+				<label left="5" top="5" width="50" height="20" text="Nome"/>
+        		<edit left="55" top="0" width="140" height="25" field="nome_vantagem"/>
+			</layout>
+
+			<layout left="0" top="30" width="100" height="25" >
+				<label left="5" top="5" width="50" height="20" text="Nível"/>
+        		<edit left="55" top="0" width="40" height="25" field="nivel_vantagem"/>
+			</layout>
+
+			<layout left="100" top="30" width="100" height="25" >
+				<label left="5" top="5" width="50" height="20" text="Custo"/>
+        		<edit left="55" top="0" width="40" height="25" field="custo_vantagem"/>
+			</layout>
+
+			<textEditor left="5" top="60" width="190" height="280" field="descricao_vantagem"/>
+
+			<dataLink field="custo_vantagem">
+				<event name="onChange">
+					if sheet~=nil then
+						local mod = 0;
+						local nodes = ndb.getChildNodes(sheet.listaVantagens);   
+						for i=1, #nodes, 1 do
+							mod = mod + (tonumber(nodes[i].custo_vantagem) or 0);
+						end
+						sheet.xp_vantagens = mod;
+					end;
+				</event>
+			</dataLink>
+		</dataScopeBox>
+
+		<layout left="420" top="290" width="250" height="210">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="5" width="250" height="20" text="PONTOS GASTOS" horzTextAlign="center"/>
+
+			<layout left="0" top="30" width="125" height="25" >
+				<label left="5" top="5" width="80" height="20" text="ATRIBUTOS"/>
+        		
+        		<rectangle left="85" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="85" top="3" width="40" height="20" field="xp_atributos" horzTextAlign="center"/>
+
+        		<dataLink fields="{'xp_st', 'xp_dx', 'xp_iq', 'xp_ht', 'xp_pv', 'xp_von', 'xp_per', 'xp_pf'}">
+					<event name="onChange">
+						if sheet~=nil then
+
+							local mod = (tonumber(sheet.xp_st) or 0)+
+										(tonumber(sheet.xp_dx) or 0)+
+										(tonumber(sheet.xp_iq) or 0)+
+										(tonumber(sheet.xp_ht) or 0)+
+										(tonumber(sheet.xp_pv) or 0)+
+										(tonumber(sheet.xp_von) or 0)+
+										(tonumber(sheet.xp_per) or 0)+
+										(tonumber(sheet.xp_pf) or 0);
+							sheet.xp_atributos = mod;
+						end;
+					</event>
+				</dataLink>
+			</layout>
+
+			<layout left="125" top="30" width="125" height="25" >
+				<label left="5" top="5" width="80" height="20" text="PERÍCIAS"/>
+        		
+        		<rectangle left="75" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="75" top="3" width="40" height="20" field="xp_pericias" horzTextAlign="center"/>
+
+        		<dataLink field="xp_pericias" defaultValue="0"/>
+			</layout>
+
+			<layout left="0" top="55" width="125" height="25" >
+				<label left="5" top="5" width="80" height="20" text="VANTAGENS"/>
+        		
+        		<rectangle left="85" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="85" top="3" width="40" height="20" field="xp_vantagens" horzTextAlign="center"/>
+			</layout>
+
+			<layout left="125" top="55" width="125" height="25" >
+				<label left="5" top="5" width="80" height="20" text="TECNICAS"/>
+        		
+        		<rectangle left="75" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="75" top="3" width="40" height="20" field="xp_tecnicas" horzTextAlign="center"/>
+			</layout>
+
+			<label left="0" top="85" width="250" height="20" text="PONTOS TOTAIS" horzTextAlign="center"/>
+
+			<layout left="0" top="105" width="250" height="25">
+				<label left="60" top="5" width="40" height="20" text="Inicial" fontSize="11"/>
+				<label left="105" top="5" width="40" height="20" text="Ganho"/>
+				<label left="150" top="5" width="40" height="20" text="Gasta"/>
+				<label left="195" top="5" width="40" height="20" text="Sobra"/>
+
+			</layout>
+
+			<layout left="5" top="130" width="250" height="25">
+				<label left="5" top="5" width="50" height="20" text="PERS"/>
+
+				<edit left="55" top="0" width="40" height="25" field="xpp_inicial"/>
+				<edit left="100" top="0" width="40" height="25" field="xpp_ganha"/>
+
+				<rectangle left="145" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="145" top="3" width="40" height="20" field="xpp_gasta" horzTextAlign="center"/>
+
+        		<rectangle left="190" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="190" top="3" width="40" height="20" field="xpp_sobrando" horzTextAlign="center"/>
+
+        		<dataLink fields="{'xp_atributos', 'xp_pericias', 'xp_vantagens'}">
+					<event name="onChange">
+						if sheet~=nil then
+
+							local mod = (tonumber(sheet.xp_atributos) or 0)+
+										(tonumber(sheet.xp_pericias) or 0)+
+										(tonumber(sheet.xp_vantagens) or 0);
+							sheet.xpp_gasta = mod;
+						end;
+					</event>
+				</dataLink>
+				<dataLink fields="{'xpp_inicial', 'xpp_gasta', 'xpp_ganha'}">
+					<event name="onChange">
+						if sheet~=nil then
+							local mod = (tonumber(sheet.xpp_inicial) or 0)+
+										(tonumber(sheet.xpp_ganha) or 0)-
+										(tonumber(sheet.xpp_gasta) or 0);
+							sheet.xpp_sobrando = mod;
+						end;
+					</event>
+				</dataLink>
+			</layout>
+
+			<layout left="5" top="155" width="250" height="25">
+				<label left="5" top="5" width="50" height="20" text="TEC"/>
+				<edit left="55" top="0" width="40" height="25" field="xpt_inicial"/>
+				<edit left="100" top="0" width="40" height="25" field="xpt_ganha"/>
+
+				<rectangle left="145" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="145" top="3" width="40" height="20" field="xp_tecnicas" horzTextAlign="center"/>
+
+        		<rectangle left="190" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="190" top="3" width="40" height="20" field="xpt_sobrando" horzTextAlign="center"/>
+
+				<dataLink fields="{'xpt_inicial', 'xp_tecnicas', 'xpt_ganha'}">
+					<event name="onChange">
+						if sheet~=nil then
+
+							local mod = (tonumber(sheet.xpt_inicial) or 0)+
+										(tonumber(sheet.xpt_ganha) or 0)-
+										(tonumber(sheet.xp_tecnicas) or 0);
+							sheet.xpt_sobrando = mod;
+						end;
+					</event>
+				</dataLink>
+			</layout>
+
+			<layout left="5" top="180" width="250" height="25">
+				<label left="5" top="5" width="50" height="20" text="TOTAL"/>
+				
+				<rectangle left="55" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="55" top="3" width="40" height="20" field="exp_inicial" horzTextAlign="center"/>
+        		<dataLink fields="{'xpt_inicial', 'xpp_inicial'}">
+					<event name="onChange">
+						if sheet~=nil then
+
+							local mod = (tonumber(sheet.xpt_inicial) or 0)+
+										(tonumber(sheet.xpp_inicial) or 0);
+							sheet.exp_inicial = mod;
+						end;
+					</event>
+				</dataLink>
+
+        		<rectangle left="100" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="100" top="3" width="40" height="20" field="exp_ganha" horzTextAlign="center"/>
+        		<dataLink fields="{'xpt_ganha', 'xpp_ganha'}">
+					<event name="onChange">
+						if sheet~=nil then
+
+							local mod = (tonumber(sheet.xpt_ganha) or 0)+
+										(tonumber(sheet.xpp_ganha) or 0);
+							sheet.exp_ganha = mod;
+						end;
+					</event>
+				</dataLink>
+
+        		<rectangle left="145" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        		<label left="145" top="3" width="40" height="20" field="exp_gasta" horzTextAlign="center"/>
+        		<dataLink fields="{'xpp_gasta', 'xp_tecnicas'}">
+					<event name="onChange">
+						if sheet~=nil then
+
+							local mod = (tonumber(sheet.xpp_gasta) or 0)+
+										(tonumber(sheet.xp_tecnicas) or 0);
+							sheet.exp_gasta = mod;
+						end;
+					</event>
+				</dataLink>
+
+			</layout>
+		</layout>
+
+		<layout left="420" top="510" width="250" height="85">
+			<rectangle align="client" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="5" width="250" height="20" text="VELOCIDADE &amp; SENTIDOS" horzTextAlign="center"/>
+
+			<layout left="0" top="30" width="250" height="25" >
+				<label left="10" top="5" width="35" height="20" text="Vel:"/>
+        		<edit left="50" top="0" width="120" height="25" field="descricao_velocidade"/>
+
+				<label left="172" top="5" width="35" height="20" text="Nível"/>
+        		<edit left="205" top="0" width="40" height="25" field="nivel_velocidade"/>
+			</layout>
+			<layout left="0" top="55" width="250" height="25" >
+				<label left="10" top="5" width="35" height="20" text="Sent:"/>
+        		<edit left="50" top="0" width="195" height="25" field="descricao_sentido"/>
+			</layout>
+		</layout>
+
+		<image left="0" top="0" width="1335" height="615" style="autoFit" src="https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20SSF%20releases/imagens/ABA0.png"/>
+	</scrollBox>
+</form>
