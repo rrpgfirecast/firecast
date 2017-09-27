@@ -76,8 +76,6 @@
 				]]>
 			</event>
 	    </button>
-	    <!-- Organiza os objetos da lista -->
-	    <button left="215" top="255" width="25" height="25" text="O" onClick="self.rclName:sort();" hint="Organizar"/>
 	    <!-- Marcador de tamanho da Lista de Objetos -->
 	    <rectangle left="0" top="280" width="240" height="260" color="black"/>
 		<!-- Lista de Objetos -->
@@ -164,7 +162,6 @@
 
 		<!-- RecordList + DataScopeBox -->
 		<button left="250" top="0" width="25" height="25" text="+" onClick="self.rclSelector:append();" hint="Adicionar"/>
-		<button left="275" top="0" width="25" height="25" text="O" onClick="self.rclSelector:sort();" hint="Organizar"/>
 		<!-- Marcador de tamanho da Lista de Objetos -->
 	    <rectangle left="250" top="25" width="240" height="260" color="black"/>
 		<!-- RecordList para seleção -->
