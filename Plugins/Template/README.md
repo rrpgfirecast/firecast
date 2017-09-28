@@ -12,9 +12,10 @@ Passo a Passo:
 4. Altere o "name" do plugin no module.xml para refletir o que ele faz, assim como sua descrição. 
 5. Ainda no module.xml ponha seu login do RRPG como "author", ponha tambem seu contato abaixo.
 6. Altere o nome da pasta "ProjectName" para o nome do seu projeto sem espaços. 
-7. Abra o arquivo "compilar e instalar.bat"
-8. Após o template ter sido compilado e instalado eu seu pc verifique a pasta "output". Ela vai conter seu plugin .rpk, esse arquivo deve ser destribuido para que outros instalem sua ficha. 
-9. Agora vá em uma de suas mesas e crie uma ficha do tipo do plugin que criou. Experimente mexer no codigo, principalmente left, top, height e width para ver o que muda nos exemplos da ficha. Experimente criar novas abas e objetos. Compile novamente para ver o que muda na ficha.
+7. No arquivo "Main.lfm" altere o dataType. Pode ser o mesmo id do plugin. Em seguida altere o title do plugin. Pode ser o mesmo que o nome do plugin.
+8. Abra o arquivo "compilar e instalar.bat"
+9. Após o template ter sido compilado e instalado eu seu pc verifique a pasta "output". Ela vai conter seu plugin .rpk, esse arquivo deve ser destribuido para que outros instalem sua ficha. 
+10. Agora vá em uma de suas mesas e crie uma ficha do tipo do plugin que criou. Experimente mexer no codigo, principalmente left, top, height e width para ver o que muda nos exemplos da ficha. Experimente criar novas abas e objetos. Compile novamente para ver o que muda na ficha.
  
 Obs.:  Arquivos ".bat" podem ser perigosos para seu computador, evite abrir .bat desconhecidos. Se quiser verificar o que o .bat faz abra ele em um editor de texto e veja que comandos possuem. Esses possuem apenas os comandos "rdk p" e "rdk i" do proprio SDK do RRPG. 
 
