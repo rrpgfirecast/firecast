@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmDataScopeSelectionForm" width="110" height="25" margins="{top=1}">
+	<!-- Funções de controle de visibilidade da opção -->
+	<script>
+	     function self:alternarVisibilidade()
+	     	 ndb.setPermission(sheet, "user", sheet.loginDono, "read", "strongAllow");
+	         if self.cbxInvisivel.checked then
+	              ndb.setPermission(sheet, "group", "jogadores", "read", nil);
+	              ndb.setPermission(sheet, "group", "espectadores", "read", nil);
+	         else
+	              ndb.setPermission(sheet, "group", "jogadores", "read", "deny");
+	              ndb.setPermission(sheet, "group", "espectadores", "read", "deny");
+	         end;
+	     end; 
+	     function self:atualizarCbxInvisivel()          
+	         self.cbxInvisivel.checked = ndb.getPermission(sheet, "group", "jogadores", "read") == "deny" or ndb.getPermission(sheet, "group", "espectadores", "read") == "deny";
+	          self.cbxInvisivel.enabled = ndb.testPermission(sheet, "writePermissions");
+	     end;
+	</script>
+
+	<rectangle align="client" color="#212121" hitTest="false">
+		<label left="0" top="0" width="170" height="25" field="nome" horzTextAlign="center"/>
+
+		<!-- alterna visibilidade entre todo mundo e só o mestre -->
+		 <imageCheckBox name="cbxInvisivel" left="192" top="2" width="20" height="20" checkedImage="images/invisivel.png" uncheckedImage="images/visivel.png" autoChange="false" onClick="self:alternarVisibilidade();"/> 
+		<!-- Botão que apaga o objeto da lista -->
+		<button left="215" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				ndb.deleteNode(sheet);
+			</event>
+		</button>
+
+		<!-- Poe Nome como valor padrao do field nome, e atualiza a lista sempre que altera-lo -->
+		<dataLink field="nome" defaultValue="Vantagem"/>
+		<dataLink field="desc_vandes"/>
+		<dataLink field="efeito_vandes"/>
+	</rectangle>
+
+	<!-- Atualiza se o objeto está invisivel ou não -->
+	<event name="onScopeNodeChanged">
+	    if self.observer ~= nil then   
+	        self.observer.enabled = false;
+	        self.observer = nil;
+	    end;
+	     
+	    if sheet ~= nil then   
+	        self.observer = ndb.newObserver(sheet);
+	        self.observer.onPermissionListChanged =
+	            function(node)                 
+	                self:atualizarCbxInvisivel();
+	            end;                               
+	        self.observer.onFinalPermissionsCouldBeChanged =
+	            function(node)
+	                self:atualizarCbxInvisivel();
+	            end;                               
+	        self:atualizarCbxInvisivel();  
+	    end;
+	</event>
+</form>

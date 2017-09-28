@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLH8" align="client" theme="dark">
+	<scrollBox align="client">
+		<image left="0" top="0" width="500" height="250" style="autoFit" src="images/LH.jpg"/>
+		<image left="510" top="0" width="350" height="350" style="autoFit" src="images/RPGmeister.jpg"/>
+
+		<layout left="0" top="300" width="200" height="200">
+			<rectangle left="0" top="0" width="200" height="200" color="black" xradius="15" yradius="15" cornerType="round"/>
+			<label left="0" top="10" width="200" height="20" text="Obrigado aos autores originais:" horzTextAlign="center"/>
+			<label left="0" top="35" width="200" height="20" text="Programador: Vinny (Ambesek)" horzTextAlign="center"/>
+			<label left="0" top="60" width="200" height="20" text="Arte: Nefer (Nefertyne)" horzTextAlign="center"/>
+			<label left="0" top="85" width="200" height="20" text="Consultor: Vinny (hellblackjack)" horzTextAlign="center"/>
+
+			<label left="0" top="120" width="200" height="20" text="Ficha modificado por:" horzTextAlign="center"/>
+			<label left="0" top="145" width="200" height="20" text="HashBR - Túlio" horzTextAlign="center"/>
+		</layout>					
+	</scrollBox>
+</form>
