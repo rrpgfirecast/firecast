@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmGerenciador02_MES" width="110" height="25" theme="dark" margins="{top=1}">
 	<rectangle align="client" color="#212121">
-		<edit left="0" top="0" width="30" height="25" field="ordem" type="number"/>
+		<edit left="0" top="0" width="30" height="25" field="ordem" type="number">
+			<event name="onChange">
+				local rcl = self:findControlByName("rclMeses");
+				if rcl~= nil then
+					rcl:sort();
+				end;
+			</event>
+		</edit>
 		<edit left="30" top="0" width="130" height="25" field="mes"/>
 		<edit left="160" top="0" width="35" height="25" field="dias" type="number"/>
 

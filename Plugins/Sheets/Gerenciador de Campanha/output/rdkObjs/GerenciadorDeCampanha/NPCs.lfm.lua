@@ -3983,7 +3983,6 @@ function newCaixaFichaNPC()
     obj._e_event58 = obj.button22:addEventListener("onClick",
         function (self)
             local macro = sheet.macro;
-            							showMessage(macro);
             							if macro~=nil then
             								local macros = lines(macro);
             								local mesaDoPersonagem = rrpg.getMesaDe(sheet);

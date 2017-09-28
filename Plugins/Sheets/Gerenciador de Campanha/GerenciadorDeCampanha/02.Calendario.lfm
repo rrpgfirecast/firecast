@@ -88,7 +88,6 @@
 							end;
 						</event>
 	    			</button>
-	    			<button left="35" top="0" width="25" height="25" text="O" onClick="self.rclMeses:sort();" hint="Organizar"/>
 	    			<label left="115" top="0" width="40" height="25" text="Total" hitTest="true" hint="Quantos dias dura o ano."/>
 	    			<rectangle left="165" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
 					<label left="165" top="0" width="35" height="25" field="dias" horzTextAlign="center" fontSize="12" name="dias" hitTest="true" hint="Se estiver vermelho a duração do ano e das estações está dessincronizada. "/>
@@ -146,7 +145,6 @@
 							end;
 						</event>
 	    			</button>
-	    			<button left="35" top="0" width="25" height="25" text="O" onClick="self.rclSemana:sort();" hint="Organizar"/>
 	    			<label left="125" top="0" width="40" height="25" text="Desvio" hitTest="true" hint="O ano 1 começa em quem dia da semana?"/>
 					<edit left="165" top="0" width="35" height="25" field="desvioSemana" type="number"/>
 				</layout>
@@ -232,7 +230,6 @@
 							end;
 						</event>
 	    			</button>
-	    			<button left="35" top="0" width="25" height="25" text="O" onClick="self.rclEstacoes:sort();" hint="Organizar"/>
 	    			<label left="125" top="0" width="40" height="25" text="Desvio" hitTest="true" hint="Em que dia do ano começa a primeira estação?"/>
 					<edit left="165" top="0" width="35" height="25" field="desvioEstacao" type="number"/>
 				</layout>

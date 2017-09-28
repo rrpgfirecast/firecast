@@ -168,20 +168,20 @@ function newfrmFichaRPGmeister10_svg()
     obj.textEditor3:setName("textEditor3");
 
 
-				local function secret()
-					local mesa = rrpg.getMesaDe(sheet);
-					
-					if mesa.meuJogador.isMestre then
-						self.a1.visible = true;
-						self.a2.visible = true;
-						self.a3.visible = true;
-					else
-						self.a1.visible = false;
-						self.a2.visible = false;
-						self.a3.visible = false;
-					end;
+			local function secret()
+				local mesa = rrpg.getMesaDe(sheet);
+				
+				if mesa.meuJogador.isMestre then
+					self.a1.visible = true;
+					self.a2.visible = true;
+					self.a3.visible = true;
+				else
+					self.a1.visible = false;
+					self.a2.visible = false;
+					self.a3.visible = false;
 				end;
-			
+			end;
+		
 
 
     obj._e_event0 = obj.button1:addEventListener("onClick",

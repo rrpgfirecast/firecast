@@ -919,7 +919,7 @@ function newfrmAMZ2_2()
     obj.label33:setTop(0);
     obj.label33:setWidth(320);
     obj.label33:setHeight(20);
-    obj.label33:setText("Talentos");
+    obj.label33:setText("Perícias");
     obj.label33:setHorzTextAlign("center");
     obj.label33:setName("label33");
 

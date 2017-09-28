@@ -47,7 +47,6 @@
 
 			</event>
 		</button>
-		<button name="btnUpdate" text="A" onClick="self.rclAtores:sort()" align="left" class="combatHeaderButton" hint="Atualiza a ordem de iniciativa"/>
 		<button name="btnAddAll" text="T" align="left" class="combatHeaderButton" hint="Adiciona todos com +Jogador a lista.">
 			<event name="onClick">
 				local jogadores = rrpg.getMesaDe(sheet).jogadores;

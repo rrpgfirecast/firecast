@@ -12,7 +12,14 @@
 		<label left="5" top="180" width="150" height="25" text="Uso" horzTextAlign="center" />
 		<label left="5" top="205" width="150" height="25" text="Desperdicio" horzTextAlign="center" />
 		
-		<edit left="155" top="5" width="150" height="25" field="nick" />
+		<edit left="155" top="5" width="150" height="25" field="nick">
+			<event name="onChange">
+				local rcl = self:findControlByName("rclPresenca");
+				if rcl~= nil then
+					rcl:sort();
+				end;
+			</event>
+		</edit>
 		<edit left="155" top="30" width="150" height="25" field="nome" />
 		<edit left="155" top="55" width="50" height="25" field="presenca" />
 		<edit left="155" top="80" width="50" height="25" field="atrasoJustificado" />

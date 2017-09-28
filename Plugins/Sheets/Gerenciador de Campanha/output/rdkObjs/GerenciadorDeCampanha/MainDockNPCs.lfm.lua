@@ -27,9 +27,6 @@ function newListade_NPC_Dock()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("Listade_NPC_Dock");
-    obj:setFormType("tablesDock");
-    obj:setDataType("Lista.de.NPC");
-    obj:setTitle("Lista de NPCs");
     obj:setAlign("client");
     obj:setTheme("dark");
 
@@ -2281,15 +2278,13 @@ local _Listade_NPC_Dock = {
     newEditor = newListade_NPC_Dock, 
     new = newListade_NPC_Dock, 
     name = "Listade_NPC_Dock", 
-    dataType = "Lista.de.NPC", 
-    formType = "tablesDock", 
+    dataType = "", 
+    formType = "undefined", 
     formComponentName = "form", 
-    title = "Lista de NPCs", 
+    title = "", 
     description=""};
 
 Listade_NPC_Dock = _Listade_NPC_Dock;
 rrpg.registrarForm(_Listade_NPC_Dock);
-rrpg.registrarDataType(_Listade_NPC_Dock);
-rrpg.registrarSpecialForm(_Listade_NPC_Dock);
 
 return _Listade_NPC_Dock;

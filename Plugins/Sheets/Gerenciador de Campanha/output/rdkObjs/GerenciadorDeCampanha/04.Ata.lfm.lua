@@ -65,16 +65,6 @@ function newfrmGerenciador04()
     obj.button1:setHint("Novo");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
-    obj.button2:setParent(obj.rectangle1);
-    obj.button2:setLeft(20);
-    obj.button2:setTop(0);
-    obj.button2:setWidth(20);
-    obj.button2:setHeight(20);
-    obj.button2:setText("O");
-    obj.button2:setHint("Organizar");
-    obj.button2:setName("button2");
-
     obj.scrollBox2 = gui.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox2:setParent(obj.scrollBox1);
     obj.scrollBox2:setLeft(0);
@@ -102,12 +92,7 @@ function newfrmGerenciador04()
             self.rclPresenca:append();
         end, obj);
 
-    obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
-            self.rclPresenca:sort();
-        end, obj);
-
-    obj._e_event2 = obj.rclPresenca:addEventListener("onCompare",
+    obj._e_event1 = obj.rclPresenca:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             local mod1 = nodeA.nick;
             						local mod2 = nodeB.nick;
@@ -116,7 +101,6 @@ function newfrmGerenciador04()
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
@@ -130,13 +114,12 @@ function newfrmGerenciador04()
           self:setNodeDatabase(nil);
         end;
 
+        if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
+        if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
+        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.rclPresenca ~= nil then self.rclPresenca:destroy(); self.rclPresenca = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
-        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
-        if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
         self:_oldLFMDestroy();
     end;
 

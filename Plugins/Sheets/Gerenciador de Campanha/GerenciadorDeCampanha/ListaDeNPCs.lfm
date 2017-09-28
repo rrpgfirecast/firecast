@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFM" formType="sheetTemplate" dataType="Ambesek.Nefertyne.FichaMultiaba" title="Ficha Multiaba" align="client" theme="dark">
+<form name="frmNPCList" align="client" theme="dark">
     <scrollBox align="client">
         <layout width="1470" height="50">
             <button left="0" top="0" width="45" height="45" text="" onClick="self.rclAbas:append();" hint="Adiciona nova aba. ">
                 <image margins="{left = 5, right = 5, top = 5, bottom = 5}" align="client" src="images/addlista.png"/>
             </button>
-            <recordList name="rclAbas" field="opcoesFalsas" templateForm="frmFM_Aba" left="200" top="0" width="1270" height="46" selectable="true" layout="horizontal">
+            <recordList name="rclAbas" field="opcoesFalsas" templateForm="frmNPCListAba" left="200" top="0" width="1270" height="46" selectable="true" layout="horizontal">
                 <event name="onSelect">
                     local node = self.rclAbas.selectedNode;
                     self.boxTexto.node = node;

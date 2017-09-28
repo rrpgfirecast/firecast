@@ -91,7 +91,15 @@ function newfrmGerenciador02_ESTACAO()
     obj.dataLink1:setField("dias");
     obj.dataLink1:setName("dataLink1");
 
-    obj._e_event0 = obj.button1:addEventListener("onClick",
+    obj._e_event0 = obj.edit1:addEventListener("onChange",
+        function (self)
+            local rcl = self:findControlByName("rclEstacoes");
+            				if rcl~= nil then
+            					rcl:sort();
+            				end;
+        end, obj);
+
+    obj._e_event1 = obj.button1:addEventListener("onClick",
         function (self)
             local pop = self:findControlByName("popClima");
             				
@@ -103,7 +111,7 @@ function newfrmGerenciador02_ESTACAO()
             				end;
         end, obj);
 
-    obj._e_event1 = obj.button2:addEventListener("onClick",
+    obj._e_event2 = obj.button2:addEventListener("onClick",
         function (self)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse mês?",
             					function (confirmado)
@@ -113,7 +121,7 @@ function newfrmGerenciador02_ESTACAO()
             				end);
         end, obj);
 
-    obj._e_event2 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event3 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
             					local node = ndb.getRoot(sheet);
@@ -128,6 +136,7 @@ function newfrmGerenciador02_ESTACAO()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);

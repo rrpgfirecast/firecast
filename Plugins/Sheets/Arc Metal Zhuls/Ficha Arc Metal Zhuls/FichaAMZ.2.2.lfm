@@ -133,7 +133,7 @@
 
 		<layout left="610" top="0" width="320" height="155">
 			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
-			<label left="0" top="0" width="320" height="20" text="Talentos" horzTextAlign="center"/>
+			<label left="0" top="0" width="320" height="20" text="Perícias" horzTextAlign="center"/>
 
 			<layout left="5" top="25" width="310" height="25">
 				<label left="110" top="5" width="50" height="20" text="Natural" horzTextAlign="center"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFM_Aba" height="25" width="125" theme="dark" margins="{right=2}">
+<form name="frmNPCListAba" height="25" width="125" theme="dark" margins="{right=2}">
 	<rectangle align="client" strokeColor="black" strokeSize="2" color="#000000FF"/>
 
     <edit left="0" top="0" width="75" height="25" field="NomeDaOpcao" name="name_aba" transparent="true">

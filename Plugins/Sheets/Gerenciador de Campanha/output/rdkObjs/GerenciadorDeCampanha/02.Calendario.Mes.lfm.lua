@@ -81,7 +81,15 @@ function newfrmGerenciador02_MES()
     obj.dataLink1:setField("dias");
     obj.dataLink1:setName("dataLink1");
 
-    obj._e_event0 = obj.button1:addEventListener("onClick",
+    obj._e_event0 = obj.edit1:addEventListener("onChange",
+        function (self)
+            local rcl = self:findControlByName("rclMeses");
+            				if rcl~= nil then
+            					rcl:sort();
+            				end;
+        end, obj);
+
+    obj._e_event1 = obj.button1:addEventListener("onClick",
         function (self)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse mês?",
             					function (confirmado)
@@ -91,7 +99,7 @@ function newfrmGerenciador02_MES()
             				end);
         end, obj);
 
-    obj._e_event1 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event2 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
             					local node = ndb.getRoot(sheet);
@@ -106,6 +114,7 @@ function newfrmGerenciador02_MES()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;

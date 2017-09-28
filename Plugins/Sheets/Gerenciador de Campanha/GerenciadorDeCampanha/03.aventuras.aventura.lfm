@@ -13,7 +13,14 @@
 		<label  left="5" top="50" width="400" height="25" text="Descriçao" horzTextAlign="center"/>
 		<label  left="405" top="50" width="400" height="25" text="Resultados" horzTextAlign="center"/>
 		
-		<edit left="5" top="25" width="25" height="25" field="numero" type="number"/>
+		<edit left="5" top="25" width="25" height="25" field="numero" type="number">
+			<event name="onChange">
+				local rcl = self:findControlByName("rclAventuras");
+				if rcl~= nil then
+					rcl:sort();
+				end;
+			</event>
+		</edit>
 		<edit left="30" top="25" width="200" height="25" field="nome"/>
 		<edit left="230" top="25" width="100" height="25" field="dataInicio"/>
 		<edit left="330" top="25" width="100" height="25" field="dataFim"/>

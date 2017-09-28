@@ -63,7 +63,7 @@
 				local roll = sheet.roll_$(field) or "1d1-1";
 				local rolagem = rrpg.interpretarRolagem(roll);
 				local mesa = rrpg.getMesaDe(sheet);
-				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+				mesa.activeChat:rolarDados(rolagem, "Teste de $(text)", rolagemCallback);
 			</event>
 		</button>
 
@@ -159,7 +159,7 @@
 
 		<layout left="960" top="0" width="220" height="180">
 			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
-			<label left="0" top="0" width="220" height="20" text="Talentos - Zhul" horzTextAlign="center"/>
+			<label left="0" top="0" width="220" height="20" text="Perícias - Zhul" horzTextAlign="center"/>
 
 			<layout left="5" top="25" width="210" height="25">
 				<label left="110" top="5" width="50" height="20" text="Bônus" horzTextAlign="center"/>

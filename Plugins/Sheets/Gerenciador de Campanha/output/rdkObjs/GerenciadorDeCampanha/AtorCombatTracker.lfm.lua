@@ -619,57 +619,66 @@ function newfrmAtorCombatTracker()
             self:exibirMenuDoAtor();
         end, obj);
 
-    obj._e_event6 = obj.rctFriendOrFoe:addEventListener("onMouseUp",
+    obj._e_event6 = obj.edtIniciativa:addEventListener("onChange",
+        function (self)
+            local rcl = self:findControlByName("rclAtores");
+            						if rcl~= nil then
+            							rcl:sort();
+            						end;
+        end, obj);
+
+    obj._e_event7 = obj.rctFriendOrFoe:addEventListener("onMouseUp",
         function (self, event)
             if event.button == 'left' then self:nextFriendOrFoeFlag(); end;
         end, obj);
 
-    obj._e_event7 = obj.rctFriendOrFoe:addEventListener("onMenu",
+    obj._e_event8 = obj.rctFriendOrFoe:addEventListener("onMenu",
         function (self, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
-    obj._e_event8 = obj.imgDeleteAtor:addEventListener("onMouseUp",
+    obj._e_event9 = obj.imgDeleteAtor:addEventListener("onMouseUp",
         function (self, event)
             if event.button == 'left' then self:apagarAtor(); end;
         end, obj);
 
-    obj._e_event9 = obj.imgDeleteAtor:addEventListener("onMenu",
+    obj._e_event10 = obj.imgDeleteAtor:addEventListener("onMenu",
         function (self, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
-    obj._e_event10 = obj.imgInvisivel:addEventListener("onMouseUp",
+    obj._e_event11 = obj.imgInvisivel:addEventListener("onMouseUp",
         function (self, event)
             if event.button =='left' then self:alternarVisibilidade(); end;
         end, obj);
 
-    obj._e_event11 = obj.imgAddEfeito:addEventListener("onMouseUp",
+    obj._e_event12 = obj.imgAddEfeito:addEventListener("onMouseUp",
         function (self, event)
             if event.button =='left' then self:adicionarEfeito() end;
         end, obj);
 
-    obj._e_event12 = obj.rclEfeitos:addEventListener("onResize",
+    obj._e_event13 = obj.rclEfeitos:addEventListener("onResize",
         function (self)
             self:recalcularAlturaDoAtor()
         end, obj);
 
-    obj._e_event13 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event14 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self:atualizarInterfaceFriendOrFoe();
         end, obj);
 
-    obj._e_event14 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event15 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self:atualizarInterfaceVez();
         end, obj);
 
-    obj._e_event15 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event16 = obj.dataLink3:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             agendarReordenacao();
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event16);
         __o_rrpgObjs.removeEventListenerById(self._e_event15);
         __o_rrpgObjs.removeEventListenerById(self._e_event14);
         __o_rrpgObjs.removeEventListenerById(self._e_event13);

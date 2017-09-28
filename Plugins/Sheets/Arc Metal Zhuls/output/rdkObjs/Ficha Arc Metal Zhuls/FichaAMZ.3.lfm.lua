@@ -1143,7 +1143,7 @@ function newfrmAMZ3()
     obj.label23:setTop(0);
     obj.label23:setWidth(220);
     obj.label23:setHeight(20);
-    obj.label23:setText("Talentos - Zhul");
+    obj.label23:setText("Perícias - Zhul");
     obj.label23:setHorzTextAlign("center");
     obj.label23:setName("label23");
 
@@ -2585,7 +2585,7 @@ function newfrmAMZ3()
             local roll = sheet.roll_iniciativa or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de Iniciativa", rolagemCallback);
         end, obj);
 
     obj._e_event35 = obj.dataLink18:addEventListener("onChange",
@@ -2605,7 +2605,7 @@ function newfrmAMZ3()
             local roll = sheet.roll_acertos_cac or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de Ataque Corp.", rolagemCallback);
         end, obj);
 
     obj._e_event37 = obj.dataLink19:addEventListener("onChange",
@@ -2625,7 +2625,7 @@ function newfrmAMZ3()
             local roll = sheet.roll_acertos_dist or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de Ataque a Dist.", rolagemCallback);
         end, obj);
 
     obj._e_event39 = obj.dataLink20:addEventListener("onChange",
@@ -2645,7 +2645,7 @@ function newfrmAMZ3()
             local roll = sheet.roll_acertos_bloqueio or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de Bloqueio", rolagemCallback);
         end, obj);
 
     obj._e_event41 = obj.dataLink21:addEventListener("onChange",
@@ -2665,7 +2665,7 @@ function newfrmAMZ3()
             local roll = sheet.roll_acertos_escape or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de Escape", rolagemCallback);
         end, obj);
 
     obj._e_event43 = obj.dataLink22:addEventListener("onChange",
@@ -2685,7 +2685,7 @@ function newfrmAMZ3()
             local roll = sheet.roll_acertos_agarrao or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de Agarrão", rolagemCallback);
         end, obj);
 
     obj._e_event45 = obj.dataLink23:addEventListener("onChange",
@@ -2705,7 +2705,7 @@ function newfrmAMZ3()
             local roll = sheet.roll_acertos_counter or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de Counter", rolagemCallback);
         end, obj);
 
     obj._e_event47 = obj.dataLink24:addEventListener("onChange",
@@ -2725,7 +2725,7 @@ function newfrmAMZ3()
             local roll = sheet.roll_ataques_cac or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de Corpo-a-Corpo", rolagemCallback);
         end, obj);
 
     obj._e_event49 = obj.dataLink25:addEventListener("onChange",
@@ -2745,7 +2745,7 @@ function newfrmAMZ3()
             local roll = sheet.roll_ataques_dist or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de À Distancia", rolagemCallback);
         end, obj);
 
     obj._e_event51 = obj.dataLink26:addEventListener("onChange",

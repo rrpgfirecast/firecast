@@ -943,7 +943,6 @@
 					<button left="55" top="150" width="50" height="20" hint="Envia tudo do segundo espaço para ataques no chat." text="Atacar">
 						<event name="onClick">
 							local macro = sheet.macro;
-							showMessage(macro);
 							if macro~=nil then
 								local macros = lines(macro);
 								local mesaDoPersonagem = rrpg.getMesaDe(sheet);

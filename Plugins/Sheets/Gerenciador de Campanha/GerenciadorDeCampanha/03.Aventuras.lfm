@@ -4,21 +4,20 @@
 		<rectangle left="0" top="0" width="830" height="20" color="Black">
 			<label left="0" top="0" width="830" height="20" text="LISTA DE AVENTURAS" horzTextAlign="center" />
 			<button left="0" top="0" width="20" height="20" text="+" hint="Nova Aventura">
-	    				<event name="onClick">
-							if sheet~=nil then
-								local aventuras = ndb.getChildNodes(sheet.aventuras);
-								local num = #aventuras + 1;
+	    		<event name="onClick">
+					if sheet~=nil then
+						local aventuras = ndb.getChildNodes(sheet.aventuras);
+						local num = #aventuras + 1;
 
-								local node = self.rclAventuras:append();
-								if node~=nil then
-									node.numero = num;
-								end;
+						local node = self.rclAventuras:append();
+						if node~=nil then
+							node.numero = num;
+						end;
 
-								self.rclAventuras:sort();
-							end;
-						</event>
-	    			</button>
-			<button left="20" top="0" width="20" height="20" text="O" onClick="self.rclAventuras:sort();" hint="Organizar"/>
+						self.rclAventuras:sort();
+					end;
+				</event>
+	    	</button>
 		</rectangle>
 		
 		<scrollBox left="0" top="20" width="830" height="590">

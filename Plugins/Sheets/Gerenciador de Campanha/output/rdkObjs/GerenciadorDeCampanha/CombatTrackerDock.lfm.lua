@@ -539,15 +539,6 @@ function newfrmCombatTracker()
     obj.btnRoll:setWidth(24);
     obj.btnRoll:setMargins({left=2, right=2});
 
-    obj.btnUpdate = gui.fromHandle(_obj_newObject("button"));
-    obj.btnUpdate:setParent(obj.layTopTracker);
-    obj.btnUpdate:setName("btnUpdate");
-    obj.btnUpdate:setText("A");
-    obj.btnUpdate:setAlign("left");
-    obj.btnUpdate:setHint("Atualiza a ordem de iniciativa");
-    obj.btnUpdate:setWidth(24);
-    obj.btnUpdate:setMargins({left=2, right=2});
-
     obj.btnAddAll = gui.fromHandle(_obj_newObject("button"));
     obj.btnAddAll:setParent(obj.layTopTracker);
     obj.btnAddAll:setName("btnAddAll");
@@ -720,12 +711,7 @@ function newfrmCombatTracker()
             				end
         end, obj);
 
-    obj._e_event2 = obj.btnUpdate:addEventListener("onClick",
-        function (self)
-            self.rclAtores:sort()
-        end, obj);
-
-    obj._e_event3 = obj.btnAddAll:addEventListener("onClick",
+    obj._e_event2 = obj.btnAddAll:addEventListener("onClick",
         function (self)
             local jogadores = rrpg.getMesaDe(sheet).jogadores;
             				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
@@ -744,23 +730,22 @@ function newfrmCombatTracker()
             				end
         end, obj);
 
-    obj._e_event4 = obj.btnLimpar:addEventListener("onClick",
+    obj._e_event3 = obj.btnLimpar:addEventListener("onClick",
         function (self)
             self:limpar();
         end, obj);
 
-    obj._e_event5 = obj.rclAtores:addEventListener("onCompare",
+    obj._e_event4 = obj.rclAtores:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return self:compareNodes(nodeA, nodeB);
         end, obj);
 
-    obj._e_event6 = obj.button1:addEventListener("onClick",
+    obj._e_event5 = obj.button1:addEventListener("onClick",
         function (self)
             self:proximoTurno();
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event6);
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
@@ -789,12 +774,11 @@ function newfrmCombatTracker()
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.layRightAlinedTitle ~= nil then self.layRightAlinedTitle:destroy(); self.layRightAlinedTitle = nil; end;
         if self.btnAddAtor ~= nil then self.btnAddAtor:destroy(); self.btnAddAtor = nil; end;
-        if self.btnUpdate ~= nil then self.btnUpdate:destroy(); self.btnUpdate = nil; end;
         if self.btnLimpar ~= nil then self.btnLimpar:destroy(); self.btnLimpar = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.layTrackerBottom ~= nil then self.layTrackerBottom:destroy(); self.layTrackerBottom = nil; end;
-        if self.layHeader0 ~= nil then self.layHeader0:destroy(); self.layHeader0 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
+        if self.layHeader0 ~= nil then self.layHeader0:destroy(); self.layHeader0 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         self:_oldLFMDestroy();

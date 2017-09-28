@@ -65,16 +65,6 @@ function newfrmGerenciador03()
     obj.button1:setHint("Nova Aventura");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
-    obj.button2:setParent(obj.rectangle1);
-    obj.button2:setLeft(20);
-    obj.button2:setTop(0);
-    obj.button2:setWidth(20);
-    obj.button2:setHeight(20);
-    obj.button2:setText("O");
-    obj.button2:setHint("Organizar");
-    obj.button2:setName("button2");
-
     obj.scrollBox2 = gui.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox2:setParent(obj.scrollBox1);
     obj.scrollBox2:setLeft(0);
@@ -99,24 +89,19 @@ function newfrmGerenciador03()
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
             if sheet~=nil then
-            								local aventuras = ndb.getChildNodes(sheet.aventuras);
-            								local num = #aventuras + 1;
+            						local aventuras = ndb.getChildNodes(sheet.aventuras);
+            						local num = #aventuras + 1;
             
-            								local node = self.rclAventuras:append();
-            								if node~=nil then
-            									node.numero = num;
-            								end;
+            						local node = self.rclAventuras:append();
+            						if node~=nil then
+            							node.numero = num;
+            						end;
             
-            								self.rclAventuras:sort();
-            							end;
+            						self.rclAventuras:sort();
+            					end;
         end, obj);
 
-    obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
-            self.rclAventuras:sort();
-        end, obj);
-
-    obj._e_event2 = obj.rclAventuras:addEventListener("onCompare",
+    obj._e_event1 = obj.rclAventuras:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.numero) or 0) < (tonumber(nodeB.numero) or 0) then
             		                    return 1;
@@ -128,7 +113,6 @@ function newfrmGerenciador03()
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
@@ -142,13 +126,12 @@ function newfrmGerenciador03()
           self:setNodeDatabase(nil);
         end;
 
+        if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
+        if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
+        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.rclAventuras ~= nil then self.rclAventuras:destroy(); self.rclAventuras = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
-        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
-        if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
         self:_oldLFMDestroy();
     end;
 

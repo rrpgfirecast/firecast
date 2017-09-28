@@ -5,7 +5,7 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 
-function newfrmFM()
+function newfrmNPCList()
     __o_rrpgObjs.beginObjectsLoading();
 
     local obj = gui.fromHandle(_obj_newObject("form"));
@@ -26,10 +26,7 @@ function newfrmFM()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmFM");
-    obj:setFormType("sheetTemplate");
-    obj:setDataType("Ambesek.Nefertyne.FichaMultiaba");
-    obj:setTitle("Ficha Multiaba");
+    obj:setName("frmNPCList");
     obj:setAlign("client");
     obj:setTheme("dark");
 
@@ -65,7 +62,7 @@ function newfrmFM()
     obj.rclAbas:setParent(obj.layout1);
     obj.rclAbas:setName("rclAbas");
     obj.rclAbas:setField("opcoesFalsas");
-    obj.rclAbas:setTemplateForm("frmFM_Aba");
+    obj.rclAbas:setTemplateForm("frmNPCListAba");
     obj.rclAbas:setLeft(200);
     obj.rclAbas:setTop(0);
     obj.rclAbas:setWidth(1270);
@@ -228,18 +225,17 @@ function newfrmFM()
     return obj;
 end;
 
-local _frmFM = {
-    newEditor = newfrmFM, 
-    new = newfrmFM, 
-    name = "frmFM", 
-    dataType = "Ambesek.Nefertyne.FichaMultiaba", 
-    formType = "sheetTemplate", 
+local _frmNPCList = {
+    newEditor = newfrmNPCList, 
+    new = newfrmNPCList, 
+    name = "frmNPCList", 
+    dataType = "", 
+    formType = "undefined", 
     formComponentName = "form", 
-    title = "Ficha Multiaba", 
+    title = "", 
     description=""};
 
-frmFM = _frmFM;
-rrpg.registrarForm(_frmFM);
-rrpg.registrarDataType(_frmFM);
+frmNPCList = _frmNPCList;
+rrpg.registrarForm(_frmNPCList);
 
-return _frmFM;
+return _frmNPCList;

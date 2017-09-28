@@ -4337,7 +4337,7 @@ function newfrmFichaRPGmeister()
     obj.label145:setTop(0);
     obj.label145:setWidth(320);
     obj.label145:setHeight(20);
-    obj.label145:setText("Talentos");
+    obj.label145:setText("Perícias");
     obj.label145:setHorzTextAlign("center");
     obj.label145:setName("label145");
 
@@ -6308,7 +6308,7 @@ function newfrmFichaRPGmeister()
     obj.label192:setTop(0);
     obj.label192:setWidth(220);
     obj.label192:setHeight(20);
-    obj.label192:setText("Talentos - Zhul");
+    obj.label192:setText("Perícias - Zhul");
     obj.label192:setHorzTextAlign("center");
     obj.label192:setName("label192");
 
@@ -7510,7 +7510,7 @@ function newfrmFichaRPGmeister()
     obj.image7:setWidth(100);
     obj.image7:setHeight(20);
     obj.image7:setStyle("autoFit");
-    obj.image7:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao02.png");
+    obj.image7:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao03.png");
     obj.image7:setName("image7");
 
     obj.button29 = gui.fromHandle(_obj_newObject("button"));
@@ -8373,7 +8373,7 @@ function newfrmFichaRPGmeister()
             local roll = sheet.roll_iniciativa or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de Iniciativa", rolagemCallback);
         end, obj);
 
     obj._e_event60 = obj.dataLink37:addEventListener("onChange",
@@ -8393,7 +8393,7 @@ function newfrmFichaRPGmeister()
             local roll = sheet.roll_acertos_cac or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de Ataque Corp.", rolagemCallback);
         end, obj);
 
     obj._e_event62 = obj.dataLink38:addEventListener("onChange",
@@ -8413,7 +8413,7 @@ function newfrmFichaRPGmeister()
             local roll = sheet.roll_acertos_dist or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de Ataque a Dist.", rolagemCallback);
         end, obj);
 
     obj._e_event64 = obj.dataLink39:addEventListener("onChange",
@@ -8433,7 +8433,7 @@ function newfrmFichaRPGmeister()
             local roll = sheet.roll_acertos_bloqueio or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de Bloqueio", rolagemCallback);
         end, obj);
 
     obj._e_event66 = obj.dataLink40:addEventListener("onChange",
@@ -8453,7 +8453,7 @@ function newfrmFichaRPGmeister()
             local roll = sheet.roll_acertos_escape or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de Escape", rolagemCallback);
         end, obj);
 
     obj._e_event68 = obj.dataLink41:addEventListener("onChange",
@@ -8473,7 +8473,7 @@ function newfrmFichaRPGmeister()
             local roll = sheet.roll_acertos_agarrao or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de Agarrão", rolagemCallback);
         end, obj);
 
     obj._e_event70 = obj.dataLink42:addEventListener("onChange",
@@ -8493,7 +8493,7 @@ function newfrmFichaRPGmeister()
             local roll = sheet.roll_acertos_counter or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de Counter", rolagemCallback);
         end, obj);
 
     obj._e_event72 = obj.dataLink43:addEventListener("onChange",
@@ -8513,7 +8513,7 @@ function newfrmFichaRPGmeister()
             local roll = sheet.roll_ataques_cac or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de Corpo-a-Corpo", rolagemCallback);
         end, obj);
 
     obj._e_event74 = obj.dataLink44:addEventListener("onChange",
@@ -8533,7 +8533,7 @@ function newfrmFichaRPGmeister()
             local roll = sheet.roll_ataques_dist or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
-            				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
+            				mesa.activeChat:rolarDados(rolagem, "Teste de À Distancia", rolagemCallback);
         end, obj);
 
     obj._e_event76 = obj.dataLink45:addEventListener("onChange",

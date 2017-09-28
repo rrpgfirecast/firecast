@@ -5,7 +5,7 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 
-function newfrmFM_Aba()
+function newfrmNPCListAba()
     __o_rrpgObjs.beginObjectsLoading();
 
     local obj = gui.fromHandle(_obj_newObject("form"));
@@ -26,7 +26,7 @@ function newfrmFM_Aba()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmFM_Aba");
+    obj:setName("frmNPCListAba");
     obj:setHeight(25);
     obj:setWidth(125);
     obj:setTheme("dark");
@@ -168,17 +168,17 @@ function newfrmFM_Aba()
     return obj;
 end;
 
-local _frmFM_Aba = {
-    newEditor = newfrmFM_Aba, 
-    new = newfrmFM_Aba, 
-    name = "frmFM_Aba", 
+local _frmNPCListAba = {
+    newEditor = newfrmNPCListAba, 
+    new = newfrmNPCListAba, 
+    name = "frmNPCListAba", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
     title = "", 
     description=""};
 
-frmFM_Aba = _frmFM_Aba;
-rrpg.registrarForm(_frmFM_Aba);
+frmNPCListAba = _frmNPCListAba;
+rrpg.registrarForm(_frmNPCListAba);
 
-return _frmFM_Aba;
+return _frmNPCListAba;

@@ -276,12 +276,20 @@ function newfrmGerenciador03_AVENTURA()
             		end;
         end, obj);
 
-    obj._e_event1 = obj.cbxInvisivel:addEventListener("onClick",
+    obj._e_event1 = obj.edit1:addEventListener("onChange",
+        function (self)
+            local rcl = self:findControlByName("rclAventuras");
+            				if rcl~= nil then
+            					rcl:sort();
+            				end;
+        end, obj);
+
+    obj._e_event2 = obj.cbxInvisivel:addEventListener("onClick",
         function (self)
             self:alternarVisibilidade();
         end, obj);
 
-    obj._e_event2 = obj.button1:addEventListener("onClick",
+    obj._e_event3 = obj.button1:addEventListener("onClick",
         function (self)
             dialogs.confirmOkCancel("Tem certeza que quer apagar essa aventura?",
             					function (confirmado)
@@ -292,6 +300,7 @@ function newfrmGerenciador03_AVENTURA()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);

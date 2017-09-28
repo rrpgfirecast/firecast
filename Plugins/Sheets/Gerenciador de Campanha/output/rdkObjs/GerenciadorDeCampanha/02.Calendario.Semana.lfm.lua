@@ -66,7 +66,15 @@ function newfrmGerenciador02_SEMANA()
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj._e_event0 = obj.button1:addEventListener("onClick",
+    obj._e_event0 = obj.edit1:addEventListener("onChange",
+        function (self)
+            local rcl = self:findControlByName("rclSemana");
+            				if rcl~= nil then
+            					rcl:sort();
+            				end;
+        end, obj);
+
+    obj._e_event1 = obj.button1:addEventListener("onClick",
         function (self)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse dia da semana?",
             					function (confirmado)
@@ -77,6 +85,7 @@ function newfrmGerenciador02_SEMANA()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
 

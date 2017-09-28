@@ -4,7 +4,6 @@
 		<rectangle left="0" top="0" width="1260" height="20" color="Black">
 			<label left="0" top="0" width="1260" height="20" text="ATA DE PRESENÇA" horzTextAlign="center" />
 			<button left="0" top="0" width="20" height="20" text="+" onClick="self.rclPresenca:append();" hint="Novo"/>
-			<button left="20" top="0" width="20" height="20" text="O" onClick="self.rclPresenca:sort();" hint="Organizar"/>
 		</rectangle>
 		
 		<scrollBox left="0" top="20" width="1260" height="590">

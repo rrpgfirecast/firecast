@@ -546,16 +546,6 @@ function newfrmGerenciador02()
     obj.button1:setHint("Novo");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
-    obj.button2:setParent(obj.layout3);
-    obj.button2:setLeft(35);
-    obj.button2:setTop(0);
-    obj.button2:setWidth(25);
-    obj.button2:setHeight(25);
-    obj.button2:setText("O");
-    obj.button2:setHint("Organizar");
-    obj.button2:setName("button2");
-
     obj.label15 = gui.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.layout3);
     obj.label15:setLeft(115);
@@ -671,25 +661,15 @@ function newfrmGerenciador02()
     obj.layout5:setHeight(25);
     obj.layout5:setName("layout5");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
-    obj.button3:setParent(obj.layout5);
-    obj.button3:setLeft(10);
-    obj.button3:setTop(0);
-    obj.button3:setWidth(25);
-    obj.button3:setHeight(25);
-    obj.button3:setText("+");
-    obj.button3:setHint("Novo");
-    obj.button3:setName("button3");
-
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
-    obj.button4:setParent(obj.layout5);
-    obj.button4:setLeft(35);
-    obj.button4:setTop(0);
-    obj.button4:setWidth(25);
-    obj.button4:setHeight(25);
-    obj.button4:setText("O");
-    obj.button4:setHint("Organizar");
-    obj.button4:setName("button4");
+    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2:setParent(obj.layout5);
+    obj.button2:setLeft(10);
+    obj.button2:setTop(0);
+    obj.button2:setWidth(25);
+    obj.button2:setHeight(25);
+    obj.button2:setText("+");
+    obj.button2:setHint("Novo");
+    obj.button2:setName("button2");
 
     obj.label20 = gui.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.layout5);
@@ -775,15 +755,15 @@ function newfrmGerenciador02()
     obj.layout7:setHeight(25);
     obj.layout7:setName("layout7");
 
-    obj.button5 = gui.fromHandle(_obj_newObject("button"));
-    obj.button5:setParent(obj.layout7);
-    obj.button5:setLeft(10);
-    obj.button5:setTop(0);
-    obj.button5:setWidth(25);
-    obj.button5:setHeight(25);
-    obj.button5:setText("+");
-    obj.button5:setHint("Novo");
-    obj.button5:setName("button5");
+    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3:setParent(obj.layout7);
+    obj.button3:setLeft(10);
+    obj.button3:setTop(0);
+    obj.button3:setWidth(25);
+    obj.button3:setHeight(25);
+    obj.button3:setText("+");
+    obj.button3:setHint("Novo");
+    obj.button3:setName("button3");
 
     obj.celestialBt = gui.fromHandle(_obj_newObject("button"));
     obj.celestialBt:setParent(obj.layout7);
@@ -870,25 +850,15 @@ function newfrmGerenciador02()
     obj.layout9:setHeight(25);
     obj.layout9:setName("layout9");
 
-    obj.button6 = gui.fromHandle(_obj_newObject("button"));
-    obj.button6:setParent(obj.layout9);
-    obj.button6:setLeft(10);
-    obj.button6:setTop(0);
-    obj.button6:setWidth(25);
-    obj.button6:setHeight(25);
-    obj.button6:setText("+");
-    obj.button6:setHint("Novo");
-    obj.button6:setName("button6");
-
-    obj.button7 = gui.fromHandle(_obj_newObject("button"));
-    obj.button7:setParent(obj.layout9);
-    obj.button7:setLeft(35);
-    obj.button7:setTop(0);
-    obj.button7:setWidth(25);
-    obj.button7:setHeight(25);
-    obj.button7:setText("O");
-    obj.button7:setHint("Organizar");
-    obj.button7:setName("button7");
+    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4:setParent(obj.layout9);
+    obj.button4:setLeft(10);
+    obj.button4:setTop(0);
+    obj.button4:setWidth(25);
+    obj.button4:setHeight(25);
+    obj.button4:setText("+");
+    obj.button4:setHint("Novo");
+    obj.button4:setName("button4");
 
     obj.label28 = gui.fromHandle(_obj_newObject("label"));
     obj.label28:setParent(obj.layout9);
@@ -1049,15 +1019,15 @@ function newfrmGerenciador02()
     obj.edit6:setField("era");
     obj.edit6:setName("edit6");
 
-    obj.button8 = gui.fromHandle(_obj_newObject("button"));
-    obj.button8:setParent(obj.layout10);
-    obj.button8:setLeft(5);
-    obj.button8:setTop(55);
-    obj.button8:setWidth(100);
-    obj.button8:setHeight(25);
-    obj.button8:setText("Avançar");
-    obj.button8:setHint("Avança X dias no Calandario.");
-    obj.button8:setName("button8");
+    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5:setParent(obj.layout10);
+    obj.button5:setLeft(5);
+    obj.button5:setTop(55);
+    obj.button5:setWidth(100);
+    obj.button5:setHeight(25);
+    obj.button5:setText("Avançar");
+    obj.button5:setHint("Avança X dias no Calandario.");
+    obj.button5:setName("button5");
 
     obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout10);
@@ -1198,12 +1168,7 @@ function newfrmGerenciador02()
             							end;
         end, obj);
 
-    obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
-            self.rclMeses:sort();
-        end, obj);
-
-    obj._e_event2 = obj.rclMeses:addEventListener("onCompare",
+    obj._e_event1 = obj.rclMeses:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.ordem) or 0) < (tonumber(nodeB.ordem) or 0) then
             		                    return -1;
@@ -1214,7 +1179,7 @@ function newfrmGerenciador02()
             		                end;
         end, obj);
 
-    obj._e_event3 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event2 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
             							if sheet.dias ~= sheet.duracaoEstacao then
@@ -1225,7 +1190,7 @@ function newfrmGerenciador02()
             						end;
         end, obj);
 
-    obj._e_event4 = obj.button3:addEventListener("onClick",
+    obj._e_event3 = obj.button2:addEventListener("onClick",
         function (self)
             if sheet~=nil then
             								local semana = ndb.getChildNodes(sheet.listaSemana);
@@ -1241,12 +1206,7 @@ function newfrmGerenciador02()
             							end;
         end, obj);
 
-    obj._e_event5 = obj.button4:addEventListener("onClick",
-        function (self)
-            self.rclSemana:sort();
-        end, obj);
-
-    obj._e_event6 = obj.rclSemana:addEventListener("onCompare",
+    obj._e_event4 = obj.rclSemana:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.ordem) or 0) < (tonumber(nodeB.ordem) or 0) then
             		                        return -1;
@@ -1257,7 +1217,7 @@ function newfrmGerenciador02()
             		                end;
         end, obj);
 
-    obj._e_event7 = obj.button5:addEventListener("onClick",
+    obj._e_event5 = obj.button3:addEventListener("onClick",
         function (self)
             if sheet~=nil then
             								local node = self.rclLuas:append();
@@ -1271,7 +1231,7 @@ function newfrmGerenciador02()
             							end;
         end, obj);
 
-    obj._e_event8 = obj.celestialBt:addEventListener("onClick",
+    obj._e_event6 = obj.celestialBt:addEventListener("onClick",
         function (self)
             local pop = self:findControlByName("popCelestial");
             							
@@ -1283,7 +1243,7 @@ function newfrmGerenciador02()
             							end;
         end, obj);
 
-    obj._e_event9 = obj.button6:addEventListener("onClick",
+    obj._e_event7 = obj.button4:addEventListener("onClick",
         function (self)
             if sheet~=nil then
             								local estacao = ndb.getChildNodes(sheet.listaEstacoes);
@@ -1300,12 +1260,7 @@ function newfrmGerenciador02()
             							end;
         end, obj);
 
-    obj._e_event10 = obj.button7:addEventListener("onClick",
-        function (self)
-            self.rclEstacoes:sort();
-        end, obj);
-
-    obj._e_event11 = obj.rclEstacoes:addEventListener("onCompare",
+    obj._e_event8 = obj.rclEstacoes:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.ordem) or 0) < (tonumber(nodeB.ordem) or 0) then
             		                    return -1;
@@ -1316,7 +1271,7 @@ function newfrmGerenciador02()
             		                end;
         end, obj);
 
-    obj._e_event12 = obj.button8:addEventListener("onClick",
+    obj._e_event9 = obj.button5:addEventListener("onClick",
         function (self)
             if sheet~=nil then
             						local tempo = tonumber(sheet.tempo) or 1;
@@ -1356,7 +1311,7 @@ function newfrmGerenciador02()
             					end;
         end, obj);
 
-    obj._e_event13 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event10 = obj.dataLink3:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
             						-- Reading sheet
@@ -1919,9 +1874,6 @@ function newfrmGerenciador02()
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event13);
-        __o_rrpgObjs.removeEventListenerById(self._e_event12);
-        __o_rrpgObjs.removeEventListenerById(self._e_event11);
         __o_rrpgObjs.removeEventListenerById(self._e_event10);
         __o_rrpgObjs.removeEventListenerById(self._e_event9);
         __o_rrpgObjs.removeEventListenerById(self._e_event8);
@@ -2016,7 +1968,6 @@ function newfrmGerenciador02()
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
         if self.comboBox5 ~= nil then self.comboBox5:destroy(); self.comboBox5 = nil; end;
-        if self.button7 ~= nil then self.button7:destroy(); self.button7 = nil; end;
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.flowPart22 ~= nil then self.flowPart22:destroy(); self.flowPart22 = nil; end;
@@ -2029,12 +1980,11 @@ function newfrmGerenciador02()
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
-        if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
         if self.comboBox9 ~= nil then self.comboBox9:destroy(); self.comboBox9 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
-        if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.rectangle6 ~= nil then self.rectangle6:destroy(); self.rectangle6 = nil; end;
+        if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.label36 ~= nil then self.label36:destroy(); self.label36 = nil; end;
         if self.flowPart6 ~= nil then self.flowPart6:destroy(); self.flowPart6 = nil; end;
@@ -2058,7 +2008,6 @@ function newfrmGerenciador02()
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
         if self.label25 ~= nil then self.label25:destroy(); self.label25 = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
-        if self.button8 ~= nil then self.button8:destroy(); self.button8 = nil; end;
         if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.flowPart21 ~= nil then self.flowPart21:destroy(); self.flowPart21 = nil; end;

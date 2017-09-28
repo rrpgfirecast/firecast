@@ -301,7 +301,14 @@
 			<edit name="edtIniciativaBonus" field="iniciativaBonus" class="combatHeaderIniciativa combatTrackerEdit" type="number" horzTextAlign="center"/>
 						
 			<layout name="layRightAlinedComps" class="combateHeaderRightAlignedContent">
-				<edit name="edtIniciativa" field="iniciativa" class="combatHeaderIniciativa combatTrackerEdit" type="number" horzTextAlign="center"/>
+				<edit name="edtIniciativa" field="iniciativa" class="combatHeaderIniciativa combatTrackerEdit" type="number" horzTextAlign="center">
+					<event name="onChange">
+						local rcl = self:findControlByName("rclAtores");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+					</event>
+				</edit>
 				
 				<rectangle name="rctFriendOrFoe" class="combatHeaderFriendOrFoe" color="#00000000" 
 						   strokeColor="black" strokeSize="2" xradius="4" yradius="4"

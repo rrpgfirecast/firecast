@@ -279,7 +279,15 @@ function newfrmGerenciador04_PRESENCA()
     obj.dataLink1:setFields({'presenca', 'atrasoJustificado', 'atraso', 'falta', 'usos', 'desperdicio'});
     obj.dataLink1:setName("dataLink1");
 
-    obj._e_event0 = obj.button1:addEventListener("onClick",
+    obj._e_event0 = obj.edit1:addEventListener("onChange",
+        function (self)
+            local rcl = self:findControlByName("rclPresenca");
+            				if rcl~= nil then
+            					rcl:sort();
+            				end;
+        end, obj);
+
+    obj._e_event1 = obj.button1:addEventListener("onClick",
         function (self)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse jogador?",
             					function (confirmado)
@@ -289,7 +297,7 @@ function newfrmGerenciador04_PRESENCA()
             				end);
         end, obj);
 
-    obj._e_event1 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event2 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local mod = (tonumber(sheet.presenca) or 0)*4 + 
             								(tonumber(sheet.atrasoJustificado) or 0)*2 + 
@@ -302,6 +310,7 @@ function newfrmGerenciador04_PRESENCA()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
