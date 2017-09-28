@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLH5" align="client" theme="dark" margins="{top=1}">
+    <scrollBox align="client">
+    	<template name="Arma">
+    		<label left="5" top="5" width="95" height="25" horzTextAlign="center" text="Nome"/>
+    		<edit left="100" top="5" width="295" height="25" field="nome_$(field)"/>
+    		<label left="5" top="30" width="95" height="25" horzTextAlign="center" text="Quantidade"/>
+			<edit left="100" top="30" width="205" height="25" field="qtd_$(field)"/>
+			<label left="310" top="30" width="45" height="25" text="Preço"/>
+			<edit left="345" top="30" width="50" height="25" field="preco_$(field)"/>
+			<label left="0" top="60" width="400" height="25" horzTextAlign="center" text="Descrição"/>
+			<textEditor left="5" top="85" width="390" height="60" field="tag_$(field)"/>
+
+    	</template>
+    	<layout left="0" top="0" width="400" height="150">
+    		<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+    		<Arma field="item1"/>
+		</layout>
+		<layout left="405" top="0" width="400" height="150">
+    		<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+    		<Arma field="item2"/>
+		</layout>
+		<layout left="0" top="155" width="805" height="550">
+    		<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
+
+   			<button text="+" left="2" top="2" width="27" height="27">
+				<event name="onClick">
+					self.rclListaDosItens:append();
+				</event>
+			</button>
+    		<label left="5" top="0" width="765" height="25" text="OUTROS" horzTextAlign="center"/>
+
+    		<recordList name="rclListaDosItens" field="listaItens" templateForm="frmLH5_1" left="0" top="30" width="800" height="505" layout="vertical" minQt="1"/>
+		</layout>
+    </scrollBox>
+</form>
