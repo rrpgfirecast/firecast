@@ -21,6 +21,22 @@
 				<habilidadeLarge text="Obtido" field="obtencaoHabilidade"/>
 				<habilidadeSmallCenter text="Página" field="paginaHabilidade"/>
 				<habilidadeLarge text="Livro" field="livroHabilidade"/>
+				<dataLink field="nivelHabilidade">
+					<event name="onChange">
+						local rcl = self:findControlByName("rclListaDosTalentos");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+						rcl = self:findControlByName("rclListaDosOutros");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+						rcl = self:findControlByName("rclListaDasCaracteristicasClasse");
+						if rcl~= nil then
+							rcl:sort();
+						end;
+					</event>
+				</dataLink>
 			</flowLayout>
 			<textEditor align="client" field="descricao"/>
 		</popup>
@@ -63,14 +79,6 @@
 			<button text="Novo Talento" left="0" top="0" width="125" height="25" onClick="self.rclListaDosTalentos:append();"/>
 			<button text="Novo Outros" left="0" top="25" width="125" height="25" onClick="self.rclListaDosOutros:append();"/>
 			<button text="Nova Caracteristica" left="0" top="50" width="125" height="25" onClick="self.rclListaDasCaracteristicasClasse:append();"/>
-
-			<button text="Organizar" left="0" top="75" width="125" height="25">
-				<event name="onClick">
-					self.rclListaDosTalentos:sort();
-					self.rclListaDosOutros:sort();
-					self.rclListaDasCaracteristicasClasse:sort();
-				</event>
-			</button>
 		</layout>
 	 </scrollBox>
 </form>

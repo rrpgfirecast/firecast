@@ -24,7 +24,50 @@
 		]]>	
 	</script>
 	<edit left="0" top="1" width="140" height="23" field="nomeMagia"/>
-	<edit left="140" top="1" width="30" height="23" field="dispMagia"/>
+	<edit left="140" top="1" width="30" height="23" field="dispMagia">
+		<event name="onChange">
+			local rcl = self:findControlByName("rclListaDasMagias0");
+			if rcl~= nil then
+				rcl:sort();
+			end;
+			rcl = self:findControlByName("rclListaDasMagias1");
+			if rcl~= nil then
+				rcl:sort();
+			end;
+			rcl = self:findControlByName("rclListaDasMagias2");
+			if rcl~= nil then
+				rcl:sort();
+			end;
+			rcl = self:findControlByName("rclListaDasMagias3");
+			if rcl~= nil then
+				rcl:sort();
+			end;
+			rcl = self:findControlByName("rclListaDasMagias4");
+			if rcl~= nil then
+				rcl:sort();
+			end;
+			rcl = self:findControlByName("rclListaDasMagias5");
+			if rcl~= nil then
+				rcl:sort();
+			end;
+			rcl = self:findControlByName("rclListaDasMagias6");
+			if rcl~= nil then
+				rcl:sort();
+			end;
+			rcl = self:findControlByName("rclListaDasMagias7");
+			if rcl~= nil then
+				rcl:sort();
+			end;
+			rcl = self:findControlByName("rclListaDasMagias8");
+			if rcl~= nil then
+				rcl:sort();
+			end;
+			rcl = self:findControlByName("rclListaDasMagias9");
+			if rcl~= nil then
+				rcl:sort();
+			end;
+		</event>
+	</edit>
 	<edit left="170" top="1" width="30" height="23" field="prepMagia"/>
 	<button left="200" top="1" width="23" height="23" text="i" onClick="showMagiaPopup();"/>
 	<button left="225" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>

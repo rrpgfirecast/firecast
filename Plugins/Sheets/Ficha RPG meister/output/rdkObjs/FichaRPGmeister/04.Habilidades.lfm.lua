@@ -156,6 +156,11 @@ function newfrmFichaRPGmeister4_svg()
     obj.edit4:setFontSize(12);
     obj.edit4:setName("edit4");
 
+    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.flowLayout1);
+    obj.dataLink1:setField("nivelHabilidade");
+    obj.dataLink1:setName("dataLink1");
+
     obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.popHabilidade);
     obj.textEditor1:setAlign("client");
@@ -302,50 +307,50 @@ function newfrmFichaRPGmeister4_svg()
     obj.button3:setHeight(25);
     obj.button3:setName("button3");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
-    obj.button4:setParent(obj.layout4);
-    obj.button4:setText("Organizar");
-    obj.button4:setLeft(0);
-    obj.button4:setTop(75);
-    obj.button4:setWidth(125);
-    obj.button4:setHeight(25);
-    obj.button4:setName("button4");
+    obj._e_event0 = obj.dataLink1:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            local rcl = self:findControlByName("rclListaDosTalentos");
+            						if rcl~= nil then
+            							rcl:sort();
+            						end;
+            						rcl = self:findControlByName("rclListaDosOutros");
+            						if rcl~= nil then
+            							rcl:sort();
+            						end;
+            						rcl = self:findControlByName("rclListaDasCaracteristicasClasse");
+            						if rcl~= nil then
+            							rcl:sort();
+            						end;
+        end, obj);
 
-    obj._e_event0 = obj.rclListaDosTalentos:addEventListener("onCompare",
+    obj._e_event1 = obj.rclListaDosTalentos:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
-    obj._e_event1 = obj.rclListaDosOutros:addEventListener("onCompare",
+    obj._e_event2 = obj.rclListaDosOutros:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
-    obj._e_event2 = obj.rclListaDasCaracteristicasClasse:addEventListener("onCompare",
+    obj._e_event3 = obj.rclListaDasCaracteristicasClasse:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
-    obj._e_event3 = obj.button1:addEventListener("onClick",
+    obj._e_event4 = obj.button1:addEventListener("onClick",
         function (self)
             self.rclListaDosTalentos:append();
         end, obj);
 
-    obj._e_event4 = obj.button2:addEventListener("onClick",
+    obj._e_event5 = obj.button2:addEventListener("onClick",
         function (self)
             self.rclListaDosOutros:append();
         end, obj);
 
-    obj._e_event5 = obj.button3:addEventListener("onClick",
+    obj._e_event6 = obj.button3:addEventListener("onClick",
         function (self)
             self.rclListaDasCaracteristicasClasse:append();
-        end, obj);
-
-    obj._e_event6 = obj.button4:addEventListener("onClick",
-        function (self)
-            self.rclListaDosTalentos:sort();
-            					self.rclListaDosOutros:sort();
-            					self.rclListaDasCaracteristicasClasse:sort();
         end, obj);
 
     function obj:_releaseEvents()
@@ -367,7 +372,6 @@ function newfrmFichaRPGmeister4_svg()
           self:setNodeDatabase(nil);
         end;
 
-        if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
         if self.flowPart3 ~= nil then self.flowPart3:destroy(); self.flowPart3 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
@@ -380,6 +384,7 @@ function newfrmFichaRPGmeister4_svg()
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.popHabilidade ~= nil then self.popHabilidade:destroy(); self.popHabilidade = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
         if self.flowLayout1 ~= nil then self.flowLayout1:destroy(); self.flowLayout1 = nil; end;

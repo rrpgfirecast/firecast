@@ -199,13 +199,8 @@
 						self.rclListaDasMagias$(num):append();
 					</event>
 				</button>
-				<button text="O" left="25" top="5" width="20" height="20">
-					<event name="onClick">
-						self.rclListaDasMagias$(num):sort();
-					</event>
-				</button>
 				<label vertTextAlign="center" left="50" top="5" width="100" height="20" text="Magias Nível $(num)   PREP USO"/>
-				<recordList name="rclListaDasMagias$(num)" field="campoDasMagias$(num)" templateForm="frmFichaRPGmeister5D_svg" left="5" top="25" width="270" height="150" layout="vertical" minQt="1">
+				<recordList name="rclListaDasMagias$(num)" field="campoDasMagias$(num)" templateForm="frmFichaRPGmeister5D_svg" left="5" top="25" width="270" height="150" layout="vertical">
 					<event name="onCompare"><![CDATA[               
 					    if (tonumber(nodeA.dispMagia) or 0) < (tonumber(nodeB.dispMagia) or 0) then
 					        return 1;

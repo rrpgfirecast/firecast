@@ -785,32 +785,23 @@ function newfrmFichaRPGmeister3_svg()
 
     obj.button3 = gui.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.layout4);
-    obj.button3:setText("Organizar");
+    obj.button3:setText("Padrão DnD3.5");
     obj.button3:setLeft(0);
     obj.button3:setTop(50);
     obj.button3:setWidth(125);
     obj.button3:setHeight(25);
+    obj.button3:setHint("Vai apagar todas perícias atuais. ");
     obj.button3:setName("button3");
 
     obj.button4 = gui.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.layout4);
-    obj.button4:setText("Padrão DnD3.5");
+    obj.button4:setText("Padrão Pathfinder");
     obj.button4:setLeft(0);
     obj.button4:setTop(75);
     obj.button4:setWidth(125);
     obj.button4:setHeight(25);
     obj.button4:setHint("Vai apagar todas perícias atuais. ");
     obj.button4:setName("button4");
-
-    obj.button5 = gui.fromHandle(_obj_newObject("button"));
-    obj.button5:setParent(obj.layout4);
-    obj.button5:setText("Padrão Pathfinder");
-    obj.button5:setLeft(0);
-    obj.button5:setTop(100);
-    obj.button5:setWidth(125);
-    obj.button5:setHeight(25);
-    obj.button5:setHint("Vai apagar todas perícias atuais. ");
-    obj.button5:setName("button5");
 
     obj._e_event0 = obj.rclListaDasPericias:addEventListener("onCompare",
         function (self, nodeA, nodeB)
@@ -836,22 +827,15 @@ function newfrmFichaRPGmeister3_svg()
 
     obj._e_event4 = obj.button3:addEventListener("onClick",
         function (self)
-            self.rclListaDasPericias:sort();
-            					self.rclListaDosIdiomas:sort();
-        end, obj);
-
-    obj._e_event5 = obj.button4:addEventListener("onClick",
-        function (self)
             dndSkills();
         end, obj);
 
-    obj._e_event6 = obj.button5:addEventListener("onClick",
+    obj._e_event5 = obj.button4:addEventListener("onClick",
         function (self)
             pathSkills();
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event6);
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
@@ -891,7 +875,6 @@ function newfrmFichaRPGmeister3_svg()
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
-        if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.checkBox6 ~= nil then self.checkBox6:destroy(); self.checkBox6 = nil; end;
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;

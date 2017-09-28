@@ -298,6 +298,187 @@ function lDialogs.selectImageURL(defaultURL, callback, cancelCallback)
 	_obj_invoke(query.handle, "Execute");	
 end
 
+local function _newChoiceDialogPopup(className)
+	local GUI = require("gui.lua");
+	local obj = GUI.controlFromHandle(_obj_newObject(className or 'TLuaChoiceDialogPopup'));
+	
+	if obj.eves == nil then	
+		obj.eves = {};
+	end;
+	
+	function obj:addSelectionOption(option)
+		_obj_invoke(obj.handle, "AddSelectionOption", tostring(option) or "");
+	end;
+	
+	function obj:setDefaultIndex(defaultIndex)
+		_obj_setProp(obj.handle, "DefaultIndex", defaultIndex);
+	end;
+
+	function obj:setTitle(title)
+		_obj_setProp(obj.handle, "DialogTitle", tostring(title) or "");
+	end;	
+	
+	function obj:buildPanel()
+		_obj_invoke(obj.handle, "BuildPanel");
+	end;
+
+	function obj:executeAsync()
+		_obj_invoke(obj.handle, "ExecuteAsync");
+	end;
+	
+	function obj:acquireFocus()
+		_obj_invoke(obj.handle, "AcquireFocus");
+	end;	
+	
+	function obj:getSelectedIndex()
+		return _obj_getProp(obj.handle, "LuaSelectedIndex");
+	end;
+	
+	obj.eves["onChoiceSelected"] = "";
+	obj.eves["onChoiceCanceled"] = "";
+		
+	objs.registerHandle(obj.handle, obj);	
+	return obj;
+end;
+
+local function _newMultipleChoiceDialogPopup()
+	local obj = _newChoiceDialogPopup("TLuaMultipleChoiceDialogPopup");
+	
+	function obj:getSelectedIndexes()
+		return _obj_invokeEx(obj.handle, "ReturnLuaArrayOfSelected");
+	end;
+	
+	return obj;
+end;
+
+local function _executeChoicePanel(panel, callback)
+	local GUI = require("gui.lua");
+	require("utils.lua");
+		
+	local frm = GUI.newPopupForm();
+	frm.drawContainer = true;
+	frm.cancelable = false;
+	frm.resizable = true;
+	local haveNotified = false;
+	
+	local cancelProc = function()
+							frm:close();
+							
+							if not haveNotified then
+								haveNotified = true;
+								
+								setTimeout(
+									function()
+										callback(false);
+									end, 1);									
+							end;
+						  end;	
+	
+	frm.onCancelRequest = cancelProc;
+	panel.onChoiceCanceled = cancelProc;	
+	frm.onHide = cancelProc;
+						  
+	panel.onChoiceSelected =
+		function()
+			local mustNotify = not haveNotified;
+			haveNotified = true;
+		
+			frm:close();
+						
+			if mustNotify then		
+					setTimeout(function()
+									callback(true);
+								end, 1);					
+			end;
+		end;	
+	
+	panel.parent = frm;
+	panel.align = "client";
+	panel.visible = true;
+	frm.width = 300;
+	frm.height = 300;	
+	frm.theme = "dark";
+	panel:executeAsync();
+	frm:show();
+	panel:acquireFocus();
+end;
+
+function lDialogs.choose(prompt, options, callback, defaultIndex)
+	if (type(options) ~= "table") or (#options < 1) then
+		if callback ~= nil then
+			callback(false);
+		end;
+		
+		return;
+	end;
+
+	local GUI = require("gui.lua");
+	local choosePanel = _newChoiceDialogPopup();
+	
+	if type(options) == "table" then
+		local i;
+		
+		for i = 1, #options, 1 do
+			choosePanel:addSelectionOption(options[i]);
+		end;
+	end;
+	
+	if defaultIndex ~= nil then
+		choosePanel:setDefaultIndex(defaultIndex - 1);
+	end;
+	
+	choosePanel:setTitle(prompt or "");	
+	choosePanel:buildPanel();
+	
+	_executeChoicePanel(choosePanel,
+		function (confirmed)		
+			if callback ~= nil then
+				if confirmed then
+					local idx = choosePanel:getSelectedIndex() + 1;
+					callback(true, idx, options[idx]);
+				else
+					callback(false);
+				end;
+			end;
+		end);
+end;
+
+function lDialogs.chooseMultiple(prompt, options, callback)
+	local GUI = require("gui.lua");
+	local choosePanel = _newMultipleChoiceDialogPopup();
+	
+	if type(options) == "table" then
+		local i;
+		
+		for i = 1, #options, 1 do
+			choosePanel:addSelectionOption(options[i]);
+		end;
+	end;
+		
+	choosePanel:setTitle(prompt or "");	
+	choosePanel:buildPanel();
+	
+	_executeChoicePanel(choosePanel,
+		function (confirmed)		
+			if callback ~= nil then
+				if confirmed then
+					local indexes = choosePanel:getSelectedIndexes();
+					local values = {};
+					
+					for i = 1, #indexes, 1 do
+						indexes[i] = indexes[i] + 1;
+						values[i] = options[indexes[i]];
+					end;
+					
+					callback(true, indexes, values);
+				else
+					callback(false);
+				end;
+			end;
+		end);
+end;
+
+
 dialogs = lDialogs;
 Dialogs = dialogs;
 return dialogs;

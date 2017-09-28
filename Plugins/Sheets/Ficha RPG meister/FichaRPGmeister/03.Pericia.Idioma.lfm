@@ -28,7 +28,14 @@
 
 	<rectangle align="client" color="#202020" hitTest="false"/>
 
-	<edit vertTextAlign="center" left="0" top="0" width="110" height="25" field="nomeIdioma"/>
+	<edit vertTextAlign="center" left="0" top="0" width="110" height="25" field="nomeIdioma">
+		<event name="onChange">
+			local rcl = self:findControlByName("rclListaDosIdiomas");
+			if rcl~= nil then
+				rcl:sort();
+			end;
+		</event>
+	</edit>
 	<edit vertTextAlign="center" left="110" top="0" width="110" height="25" field="alfabetoIdioma"/>
 
 	<button left="220" top="1" width="23" height="23" text="i" onClick="showIdiomaPopup();"/>

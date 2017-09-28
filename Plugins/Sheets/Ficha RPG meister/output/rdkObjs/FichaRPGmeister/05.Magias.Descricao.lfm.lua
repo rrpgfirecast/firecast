@@ -100,17 +100,62 @@ function newfrmFichaRPGmeister5D_svg()
     obj.button2:setText("X");
     obj.button2:setName("button2");
 
-    obj._e_event0 = obj.button1:addEventListener("onClick",
+    obj._e_event0 = obj.edit2:addEventListener("onChange",
+        function (self)
+            local rcl = self:findControlByName("rclListaDasMagias0");
+            			if rcl~= nil then
+            				rcl:sort();
+            			end;
+            			rcl = self:findControlByName("rclListaDasMagias1");
+            			if rcl~= nil then
+            				rcl:sort();
+            			end;
+            			rcl = self:findControlByName("rclListaDasMagias2");
+            			if rcl~= nil then
+            				rcl:sort();
+            			end;
+            			rcl = self:findControlByName("rclListaDasMagias3");
+            			if rcl~= nil then
+            				rcl:sort();
+            			end;
+            			rcl = self:findControlByName("rclListaDasMagias4");
+            			if rcl~= nil then
+            				rcl:sort();
+            			end;
+            			rcl = self:findControlByName("rclListaDasMagias5");
+            			if rcl~= nil then
+            				rcl:sort();
+            			end;
+            			rcl = self:findControlByName("rclListaDasMagias6");
+            			if rcl~= nil then
+            				rcl:sort();
+            			end;
+            			rcl = self:findControlByName("rclListaDasMagias7");
+            			if rcl~= nil then
+            				rcl:sort();
+            			end;
+            			rcl = self:findControlByName("rclListaDasMagias8");
+            			if rcl~= nil then
+            				rcl:sort();
+            			end;
+            			rcl = self:findControlByName("rclListaDasMagias9");
+            			if rcl~= nil then
+            				rcl:sort();
+            			end;
+        end, obj);
+
+    obj._e_event1 = obj.button1:addEventListener("onClick",
         function (self)
             showMagiaPopup();
         end, obj);
 
-    obj._e_event1 = obj.button2:addEventListener("onClick",
+    obj._e_event2 = obj.button2:addEventListener("onClick",
         function (self)
             askForDelete();
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;

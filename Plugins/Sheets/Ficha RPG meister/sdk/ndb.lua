@@ -660,6 +660,116 @@ function ndb.loadNodeFromLocalID(localNodeID)
 	return _ndb_tryLoadNodeFromLocalID(localNodeID);
 end;
 
+local _Serializer = nil;
+
+function ndb.broadcastMessage(nodeObj, messageId, message, loopBack)
+	if nodeObj ~= nil then
+		local node = localNDB.getNodeObjectFromFacade(nodeObj);
+		
+		if node ~= nil then		
+			if _Serializer == nil then
+				_Serializer = require("utils.serializer.dlua");
+			end;
+		
+			if loopBack == nil then
+				loopBack = false;
+			end;
+		
+			_obj_invokeEx(node.handle, "LUABroadcastMessage", messageId, _Serializer.serialize(message), loopBack);			
+		end;	
+	end;
+end;
+
+function ndb.newBroadcastListener(nodeObj, messageId, callback)
+	if nodeObj ~= nil then
+		local node = localNDB.getNodeObjectFromFacade(nodeObj);
+		
+		if node ~= nil then			
+			local obj = objs.objectFromHandle(_obj_newObject("TLuaNDBBroadcastReceiver"));
+			obj.eves = obj.eves or {};
+			obj.eves["onReceiveBroadcast"] = "sender, messageId, messageText";	
+			
+			_obj_invoke(obj.handle, "SetupReceiver", node.handle, messageId or "");
+			
+			obj.onReceiveBroadcast = function(sender, messageId, messageText)			
+										if callback ~= nil then										
+											if _Serializer == nil then
+												_Serializer = require("utils.serializer.dlua");
+											end;										
+										
+											local success, message = pcall(_Serializer.deserialize, messageText);
+											
+											if not success then
+												message = messageText;
+											end;
+										
+											callback(sender, messageId, message);
+										end;
+									end;	
+			return obj;		
+		end;	
+	end;
+end;
+
+function ndb.onReady(nodeObj, callback, failCallback)	
+	local function scheduleFailReturn()
+		if failCallback ~= nil then
+			setTimeout(failCallback, 1, nil);
+		end;
+	end;
+		
+	if nodeObj == nil then
+		scheduleFailReturn();		
+		return;		
+	end;	
+	
+	local state = ndb.getState(nodeObj);
+	
+	if state == "open" then
+		-- Already loaded
+		
+		if callback ~= nil then
+			setTimeout(callback, 1, nodeObj);
+		end;
+		
+		return;
+	end;
+	
+	-- Not loaded yet, letz monitor
+	local nodeInternObj = localNDB.getNodeObjectFromFacade(nodeObj);
+	local ndbObj = localNDB.ndbFromHandle(_ndb_getNDBHandleOfNode(nodeInternObj.handle));
+	local jaNotificou = false;
+	local listenerProvider = nil;
+	local listenerLoaded = nil;
+	
+	local function checkState()
+		if not jaNotificou then
+			local state = ndb.getState(nodeObj);
+		
+			if state == "open" then
+				jaNotificou = true;
+				
+				if callback ~= nil then
+					setTimeout(callback, 1, nodeObj);
+				end;
+			elseif state == "closed" then
+				jaNotificou = true;					
+				scheduleFailReturn();
+			end;
+			
+			if jaNotificou then
+				ndbObj:removeEventListener(listenerProvider);
+				ndbObj:removeEventListener(listenerLoaded);
+			end;						
+		end;						
+	end;
+			
+	listenerProvider = ndbObj:addEventListener("OnProviderStateChange", checkState);
+	listenerLoaded = ndbObj:addEventListener("OnLoaded", checkState);
+			
+	checkState();	
+end;
+
 -- OVERRIDE de funções nativas para funcionar com o NDB
 
 local oldPairsFunc = pairs;

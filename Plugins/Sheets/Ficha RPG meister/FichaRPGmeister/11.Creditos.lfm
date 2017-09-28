@@ -19,7 +19,7 @@
 		
 		<label left="630" top="400" width="90" height="20" text="SUA VERSÃO:"/>
 		<rectangle left="724" top="399" width="102" height="22" color="white" strokeColor="black" strokeSize="1"/>
-		<image left="725" top="400" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao25.png"/>
+		<image left="725" top="400" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao26.png"/>
 		
 		<label left="620" top="430" width="100" height="20" text="VERSÃO ATUAL:"/>
 		<rectangle left="724" top="429" width="102" height="22" color="white" strokeColor="black" strokeSize="1"/>

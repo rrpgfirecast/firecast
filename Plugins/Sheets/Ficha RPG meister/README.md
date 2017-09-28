@@ -3,6 +3,11 @@ Proximas Versões
 + Tiro Multiplo Aprimorado pra ataques avançados. 
 + Dar uma olhada nas questões de ajuste de tamanho da ficha para telas pequenas. 
 
+27 de Setembro de 2017
+Versão 26:
+- Todos botoes para forçar organizar foram removidos. Agora a ficha auto organiza as listas a cada alteração. 
+- Macros /atq, /per, /tr e /atr instalados juntos com a ficha. /help mostra instruções de uso. 
+
 23 de Agosto de 2017
 Versao 25: 
 - Popup de Magia possui opções para pagina e livro. 
@@ -223,20 +228,10 @@ https://www.dropbox.com/sh/ed9umrwlz98l7x3/AABBeLsudoGNalLtcMr8cppFa?dl=0
 
 Futuras Versoes (por aba): 
 
-GERAL
-3 Setar o valor das barrinhas e do avatar atraves da ficha. 
-
-TALENTOS
-5 Instanciar (Talvez no futuro, agora está funfando legal, nao tem nenhum personagem que precise de mais de 35 espacos para habilidades de classe, raca e talentos).
-
-MAGIA
-? Adicionar novos tipos de magia.  
-
 CREDITOS/OPCOES
 * Bloquear rolagens na mesa?
 * Bloquear rolagens fora da mesa?
-* Exibir alteracoes das barrinhas na mesa?
-* Exportar/Importar Ficha de html/json
+* Exportar/Importar Ficha de xml/json
 * Tema: Plano de fundo de acordo com plano do origem do personagem (estetico apenas, entao baixa prioridade)
 * Exibir contorno dos Slots usados
 

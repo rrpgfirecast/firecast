@@ -204,7 +204,15 @@ function newfrmFichaRPGmeister3p_svg()
     obj.dataLink2:setFields({'graduacaoPericia', 'isClass'});
     obj.dataLink2:setName("dataLink2");
 
-    obj._e_event0 = obj.comboBox1:addEventListener("onChange",
+    obj._e_event0 = obj.edit1:addEventListener("onChange",
+        function (self)
+            local rcl = self:findControlByName("rclListaDasPericias");
+            			if rcl~= nil then
+            				rcl:sort();
+            			end;
+        end, obj);
+
+    obj._e_event1 = obj.comboBox1:addEventListener("onChange",
         function (self)
             if sheet~= nil then
             				if debug then
@@ -231,22 +239,22 @@ function newfrmFichaRPGmeister3p_svg()
             			end;
         end, obj);
 
-    obj._e_event1 = obj.button1:addEventListener("onClick",
+    obj._e_event2 = obj.button1:addEventListener("onClick",
         function (self)
             rollTest();
         end, obj);
 
-    obj._e_event2 = obj.button2:addEventListener("onClick",
+    obj._e_event3 = obj.button2:addEventListener("onClick",
         function (self)
             showPericiaPopup();
         end, obj);
 
-    obj._e_event3 = obj.button3:addEventListener("onClick",
+    obj._e_event4 = obj.button3:addEventListener("onClick",
         function (self)
             askForDelete();
         end, obj);
 
-    obj._e_event4 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event5 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
             				if debug then
@@ -280,7 +288,7 @@ function newfrmFichaRPGmeister3p_svg()
             			end;
         end, obj);
 
-    obj._e_event5 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event6 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
             				if debug then
@@ -316,6 +324,7 @@ function newfrmFichaRPGmeister3p_svg()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event6);
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);

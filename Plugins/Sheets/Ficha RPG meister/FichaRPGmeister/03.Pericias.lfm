@@ -207,14 +207,8 @@
 					idioma.escritaIdioma = true;
 				</event>
 			</button>
-			<button text="Organizar" left="0" top="50" width="125" height="25">
-				<event name="onClick">
-					self.rclListaDasPericias:sort();
-					self.rclListaDosIdiomas:sort();
-				</event>
-			</button>
-			<button text="Padrão DnD3.5" left="0" top="75" width="125" height="25" onClick="dndSkills();" hint="Vai apagar todas perícias atuais. "/>
-			<button text="Padrão Pathfinder" left="0" top="100" width="125" height="25" onClick="pathSkills();" hint="Vai apagar todas perícias atuais. "/>
+			<button text="Padrão DnD3.5" left="0" top="50" width="125" height="25" onClick="dndSkills();" hint="Vai apagar todas perícias atuais. "/>
+			<button text="Padrão Pathfinder" left="0" top="75" width="125" height="25" onClick="pathSkills();" hint="Vai apagar todas perícias atuais. "/>
 		</layout>
 	</scrollBox>
 </form>

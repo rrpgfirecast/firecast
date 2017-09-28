@@ -3576,15 +3576,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj.button3:setHeight(20);
     obj.button3:setName("button3");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
-    obj.button4:setParent(obj.layout59);
-    obj.button4:setText("O");
-    obj.button4:setLeft(25);
-    obj.button4:setTop(5);
-    obj.button4:setWidth(20);
-    obj.button4:setHeight(20);
-    obj.button4:setName("button4");
-
     obj.label93 = gui.fromHandle(_obj_newObject("label"));
     obj.label93:setParent(obj.layout59);
     obj.label93:setVertTextAlign("center");
@@ -3609,7 +3600,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rclListaDasMagias6:setWidth(270);
     obj.rclListaDasMagias6:setHeight(150);
     obj.rclListaDasMagias6:setLayout("vertical");
-    obj.rclListaDasMagias6:setMinQt(1);
 
     obj.layout60 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout60:setParent(obj.layoutListaMagias);
@@ -3627,23 +3617,14 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rectangle6:setStrokeSize(1);
     obj.rectangle6:setName("rectangle6");
 
-    obj.button5 = gui.fromHandle(_obj_newObject("button"));
-    obj.button5:setParent(obj.layout60);
-    obj.button5:setText("+");
-    obj.button5:setLeft(5);
-    obj.button5:setTop(5);
-    obj.button5:setWidth(20);
-    obj.button5:setHeight(20);
-    obj.button5:setName("button5");
-
-    obj.button6 = gui.fromHandle(_obj_newObject("button"));
-    obj.button6:setParent(obj.layout60);
-    obj.button6:setText("O");
-    obj.button6:setLeft(25);
-    obj.button6:setTop(5);
-    obj.button6:setWidth(20);
-    obj.button6:setHeight(20);
-    obj.button6:setName("button6");
+    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4:setParent(obj.layout60);
+    obj.button4:setText("+");
+    obj.button4:setLeft(5);
+    obj.button4:setTop(5);
+    obj.button4:setWidth(20);
+    obj.button4:setHeight(20);
+    obj.button4:setName("button4");
 
     obj.label94 = gui.fromHandle(_obj_newObject("label"));
     obj.label94:setParent(obj.layout60);
@@ -3669,7 +3650,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rclListaDasMagias0:setWidth(270);
     obj.rclListaDasMagias0:setHeight(150);
     obj.rclListaDasMagias0:setLayout("vertical");
-    obj.rclListaDasMagias0:setMinQt(1);
 
     obj.layout61 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout61:setParent(obj.layoutListaMagias);
@@ -3687,23 +3667,14 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rectangle7:setStrokeSize(1);
     obj.rectangle7:setName("rectangle7");
 
-    obj.button7 = gui.fromHandle(_obj_newObject("button"));
-    obj.button7:setParent(obj.layout61);
-    obj.button7:setText("+");
-    obj.button7:setLeft(5);
-    obj.button7:setTop(5);
-    obj.button7:setWidth(20);
-    obj.button7:setHeight(20);
-    obj.button7:setName("button7");
-
-    obj.button8 = gui.fromHandle(_obj_newObject("button"));
-    obj.button8:setParent(obj.layout61);
-    obj.button8:setText("O");
-    obj.button8:setLeft(25);
-    obj.button8:setTop(5);
-    obj.button8:setWidth(20);
-    obj.button8:setHeight(20);
-    obj.button8:setName("button8");
+    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5:setParent(obj.layout61);
+    obj.button5:setText("+");
+    obj.button5:setLeft(5);
+    obj.button5:setTop(5);
+    obj.button5:setWidth(20);
+    obj.button5:setHeight(20);
+    obj.button5:setName("button5");
 
     obj.label95 = gui.fromHandle(_obj_newObject("label"));
     obj.label95:setParent(obj.layout61);
@@ -3729,7 +3700,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rclListaDasMagias3:setWidth(270);
     obj.rclListaDasMagias3:setHeight(150);
     obj.rclListaDasMagias3:setLayout("vertical");
-    obj.rclListaDasMagias3:setMinQt(1);
 
     obj.layout62 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout62:setParent(obj.layoutListaMagias);
@@ -3747,23 +3717,14 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rectangle8:setStrokeSize(1);
     obj.rectangle8:setName("rectangle8");
 
-    obj.button9 = gui.fromHandle(_obj_newObject("button"));
-    obj.button9:setParent(obj.layout62);
-    obj.button9:setText("+");
-    obj.button9:setLeft(5);
-    obj.button9:setTop(5);
-    obj.button9:setWidth(20);
-    obj.button9:setHeight(20);
-    obj.button9:setName("button9");
-
-    obj.button10 = gui.fromHandle(_obj_newObject("button"));
-    obj.button10:setParent(obj.layout62);
-    obj.button10:setText("O");
-    obj.button10:setLeft(25);
-    obj.button10:setTop(5);
-    obj.button10:setWidth(20);
-    obj.button10:setHeight(20);
-    obj.button10:setName("button10");
+    obj.button6 = gui.fromHandle(_obj_newObject("button"));
+    obj.button6:setParent(obj.layout62);
+    obj.button6:setText("+");
+    obj.button6:setLeft(5);
+    obj.button6:setTop(5);
+    obj.button6:setWidth(20);
+    obj.button6:setHeight(20);
+    obj.button6:setName("button6");
 
     obj.label96 = gui.fromHandle(_obj_newObject("label"));
     obj.label96:setParent(obj.layout62);
@@ -3789,7 +3750,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rclListaDasMagias7:setWidth(270);
     obj.rclListaDasMagias7:setHeight(150);
     obj.rclListaDasMagias7:setLayout("vertical");
-    obj.rclListaDasMagias7:setMinQt(1);
 
     obj.layout63 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout63:setParent(obj.layoutListaMagias);
@@ -3807,23 +3767,14 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rectangle9:setStrokeSize(1);
     obj.rectangle9:setName("rectangle9");
 
-    obj.button11 = gui.fromHandle(_obj_newObject("button"));
-    obj.button11:setParent(obj.layout63);
-    obj.button11:setText("+");
-    obj.button11:setLeft(5);
-    obj.button11:setTop(5);
-    obj.button11:setWidth(20);
-    obj.button11:setHeight(20);
-    obj.button11:setName("button11");
-
-    obj.button12 = gui.fromHandle(_obj_newObject("button"));
-    obj.button12:setParent(obj.layout63);
-    obj.button12:setText("O");
-    obj.button12:setLeft(25);
-    obj.button12:setTop(5);
-    obj.button12:setWidth(20);
-    obj.button12:setHeight(20);
-    obj.button12:setName("button12");
+    obj.button7 = gui.fromHandle(_obj_newObject("button"));
+    obj.button7:setParent(obj.layout63);
+    obj.button7:setText("+");
+    obj.button7:setLeft(5);
+    obj.button7:setTop(5);
+    obj.button7:setWidth(20);
+    obj.button7:setHeight(20);
+    obj.button7:setName("button7");
 
     obj.label97 = gui.fromHandle(_obj_newObject("label"));
     obj.label97:setParent(obj.layout63);
@@ -3849,7 +3800,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rclListaDasMagias1:setWidth(270);
     obj.rclListaDasMagias1:setHeight(150);
     obj.rclListaDasMagias1:setLayout("vertical");
-    obj.rclListaDasMagias1:setMinQt(1);
 
     obj.layout64 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout64:setParent(obj.layoutListaMagias);
@@ -3867,23 +3817,14 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rectangle10:setStrokeSize(1);
     obj.rectangle10:setName("rectangle10");
 
-    obj.button13 = gui.fromHandle(_obj_newObject("button"));
-    obj.button13:setParent(obj.layout64);
-    obj.button13:setText("+");
-    obj.button13:setLeft(5);
-    obj.button13:setTop(5);
-    obj.button13:setWidth(20);
-    obj.button13:setHeight(20);
-    obj.button13:setName("button13");
-
-    obj.button14 = gui.fromHandle(_obj_newObject("button"));
-    obj.button14:setParent(obj.layout64);
-    obj.button14:setText("O");
-    obj.button14:setLeft(25);
-    obj.button14:setTop(5);
-    obj.button14:setWidth(20);
-    obj.button14:setHeight(20);
-    obj.button14:setName("button14");
+    obj.button8 = gui.fromHandle(_obj_newObject("button"));
+    obj.button8:setParent(obj.layout64);
+    obj.button8:setText("+");
+    obj.button8:setLeft(5);
+    obj.button8:setTop(5);
+    obj.button8:setWidth(20);
+    obj.button8:setHeight(20);
+    obj.button8:setName("button8");
 
     obj.label98 = gui.fromHandle(_obj_newObject("label"));
     obj.label98:setParent(obj.layout64);
@@ -3909,7 +3850,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rclListaDasMagias4:setWidth(270);
     obj.rclListaDasMagias4:setHeight(150);
     obj.rclListaDasMagias4:setLayout("vertical");
-    obj.rclListaDasMagias4:setMinQt(1);
 
     obj.layout65 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout65:setParent(obj.layoutListaMagias);
@@ -3927,23 +3867,14 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rectangle11:setStrokeSize(1);
     obj.rectangle11:setName("rectangle11");
 
-    obj.button15 = gui.fromHandle(_obj_newObject("button"));
-    obj.button15:setParent(obj.layout65);
-    obj.button15:setText("+");
-    obj.button15:setLeft(5);
-    obj.button15:setTop(5);
-    obj.button15:setWidth(20);
-    obj.button15:setHeight(20);
-    obj.button15:setName("button15");
-
-    obj.button16 = gui.fromHandle(_obj_newObject("button"));
-    obj.button16:setParent(obj.layout65);
-    obj.button16:setText("O");
-    obj.button16:setLeft(25);
-    obj.button16:setTop(5);
-    obj.button16:setWidth(20);
-    obj.button16:setHeight(20);
-    obj.button16:setName("button16");
+    obj.button9 = gui.fromHandle(_obj_newObject("button"));
+    obj.button9:setParent(obj.layout65);
+    obj.button9:setText("+");
+    obj.button9:setLeft(5);
+    obj.button9:setTop(5);
+    obj.button9:setWidth(20);
+    obj.button9:setHeight(20);
+    obj.button9:setName("button9");
 
     obj.label99 = gui.fromHandle(_obj_newObject("label"));
     obj.label99:setParent(obj.layout65);
@@ -3969,7 +3900,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rclListaDasMagias8:setWidth(270);
     obj.rclListaDasMagias8:setHeight(150);
     obj.rclListaDasMagias8:setLayout("vertical");
-    obj.rclListaDasMagias8:setMinQt(1);
 
     obj.layout66 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout66:setParent(obj.layoutListaMagias);
@@ -3987,23 +3917,14 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rectangle12:setStrokeSize(1);
     obj.rectangle12:setName("rectangle12");
 
-    obj.button17 = gui.fromHandle(_obj_newObject("button"));
-    obj.button17:setParent(obj.layout66);
-    obj.button17:setText("+");
-    obj.button17:setLeft(5);
-    obj.button17:setTop(5);
-    obj.button17:setWidth(20);
-    obj.button17:setHeight(20);
-    obj.button17:setName("button17");
-
-    obj.button18 = gui.fromHandle(_obj_newObject("button"));
-    obj.button18:setParent(obj.layout66);
-    obj.button18:setText("O");
-    obj.button18:setLeft(25);
-    obj.button18:setTop(5);
-    obj.button18:setWidth(20);
-    obj.button18:setHeight(20);
-    obj.button18:setName("button18");
+    obj.button10 = gui.fromHandle(_obj_newObject("button"));
+    obj.button10:setParent(obj.layout66);
+    obj.button10:setText("+");
+    obj.button10:setLeft(5);
+    obj.button10:setTop(5);
+    obj.button10:setWidth(20);
+    obj.button10:setHeight(20);
+    obj.button10:setName("button10");
 
     obj.label100 = gui.fromHandle(_obj_newObject("label"));
     obj.label100:setParent(obj.layout66);
@@ -4029,7 +3950,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rclListaDasMagias2:setWidth(270);
     obj.rclListaDasMagias2:setHeight(150);
     obj.rclListaDasMagias2:setLayout("vertical");
-    obj.rclListaDasMagias2:setMinQt(1);
 
     obj.layout67 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout67:setParent(obj.layoutListaMagias);
@@ -4047,23 +3967,14 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rectangle13:setStrokeSize(1);
     obj.rectangle13:setName("rectangle13");
 
-    obj.button19 = gui.fromHandle(_obj_newObject("button"));
-    obj.button19:setParent(obj.layout67);
-    obj.button19:setText("+");
-    obj.button19:setLeft(5);
-    obj.button19:setTop(5);
-    obj.button19:setWidth(20);
-    obj.button19:setHeight(20);
-    obj.button19:setName("button19");
-
-    obj.button20 = gui.fromHandle(_obj_newObject("button"));
-    obj.button20:setParent(obj.layout67);
-    obj.button20:setText("O");
-    obj.button20:setLeft(25);
-    obj.button20:setTop(5);
-    obj.button20:setWidth(20);
-    obj.button20:setHeight(20);
-    obj.button20:setName("button20");
+    obj.button11 = gui.fromHandle(_obj_newObject("button"));
+    obj.button11:setParent(obj.layout67);
+    obj.button11:setText("+");
+    obj.button11:setLeft(5);
+    obj.button11:setTop(5);
+    obj.button11:setWidth(20);
+    obj.button11:setHeight(20);
+    obj.button11:setName("button11");
 
     obj.label101 = gui.fromHandle(_obj_newObject("label"));
     obj.label101:setParent(obj.layout67);
@@ -4089,7 +4000,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rclListaDasMagias5:setWidth(270);
     obj.rclListaDasMagias5:setHeight(150);
     obj.rclListaDasMagias5:setLayout("vertical");
-    obj.rclListaDasMagias5:setMinQt(1);
 
     obj.layout68 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout68:setParent(obj.layoutListaMagias);
@@ -4107,23 +4017,14 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rectangle14:setStrokeSize(1);
     obj.rectangle14:setName("rectangle14");
 
-    obj.button21 = gui.fromHandle(_obj_newObject("button"));
-    obj.button21:setParent(obj.layout68);
-    obj.button21:setText("+");
-    obj.button21:setLeft(5);
-    obj.button21:setTop(5);
-    obj.button21:setWidth(20);
-    obj.button21:setHeight(20);
-    obj.button21:setName("button21");
-
-    obj.button22 = gui.fromHandle(_obj_newObject("button"));
-    obj.button22:setParent(obj.layout68);
-    obj.button22:setText("O");
-    obj.button22:setLeft(25);
-    obj.button22:setTop(5);
-    obj.button22:setWidth(20);
-    obj.button22:setHeight(20);
-    obj.button22:setName("button22");
+    obj.button12 = gui.fromHandle(_obj_newObject("button"));
+    obj.button12:setParent(obj.layout68);
+    obj.button12:setText("+");
+    obj.button12:setLeft(5);
+    obj.button12:setTop(5);
+    obj.button12:setWidth(20);
+    obj.button12:setHeight(20);
+    obj.button12:setName("button12");
 
     obj.label102 = gui.fromHandle(_obj_newObject("label"));
     obj.label102:setParent(obj.layout68);
@@ -4149,7 +4050,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj.rclListaDasMagias9:setWidth(270);
     obj.rclListaDasMagias9:setHeight(150);
     obj.rclListaDasMagias9:setLayout("vertical");
-    obj.rclListaDasMagias9:setMinQt(1);
 
     obj.layoutMagiasEpicas = gui.fromHandle(_obj_newObject("layout"));
     obj.layoutMagiasEpicas:setParent(obj.boxDetalhesDoItem);
@@ -8063,12 +7963,7 @@ function newfrmFichaRPGmeister5M_svg()
             self.rclListaDasMagias6:append();
         end, obj);
 
-    obj._e_event68 = obj.button4:addEventListener("onClick",
-        function (self)
-            self.rclListaDasMagias6:sort();
-        end, obj);
-
-    obj._e_event69 = obj.rclListaDasMagias6:addEventListener("onCompare",
+    obj._e_event68 = obj.rclListaDasMagias6:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.dispMagia) or 0) < (tonumber(nodeB.dispMagia) or 0) then
             					        return 1;
@@ -8079,17 +7974,12 @@ function newfrmFichaRPGmeister5M_svg()
             					    end;
         end, obj);
 
-    obj._e_event70 = obj.button5:addEventListener("onClick",
+    obj._e_event69 = obj.button4:addEventListener("onClick",
         function (self)
             self.rclListaDasMagias0:append();
         end, obj);
 
-    obj._e_event71 = obj.button6:addEventListener("onClick",
-        function (self)
-            self.rclListaDasMagias0:sort();
-        end, obj);
-
-    obj._e_event72 = obj.rclListaDasMagias0:addEventListener("onCompare",
+    obj._e_event70 = obj.rclListaDasMagias0:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.dispMagia) or 0) < (tonumber(nodeB.dispMagia) or 0) then
             					        return 1;
@@ -8100,17 +7990,12 @@ function newfrmFichaRPGmeister5M_svg()
             					    end;
         end, obj);
 
-    obj._e_event73 = obj.button7:addEventListener("onClick",
+    obj._e_event71 = obj.button5:addEventListener("onClick",
         function (self)
             self.rclListaDasMagias3:append();
         end, obj);
 
-    obj._e_event74 = obj.button8:addEventListener("onClick",
-        function (self)
-            self.rclListaDasMagias3:sort();
-        end, obj);
-
-    obj._e_event75 = obj.rclListaDasMagias3:addEventListener("onCompare",
+    obj._e_event72 = obj.rclListaDasMagias3:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.dispMagia) or 0) < (tonumber(nodeB.dispMagia) or 0) then
             					        return 1;
@@ -8121,17 +8006,12 @@ function newfrmFichaRPGmeister5M_svg()
             					    end;
         end, obj);
 
-    obj._e_event76 = obj.button9:addEventListener("onClick",
+    obj._e_event73 = obj.button6:addEventListener("onClick",
         function (self)
             self.rclListaDasMagias7:append();
         end, obj);
 
-    obj._e_event77 = obj.button10:addEventListener("onClick",
-        function (self)
-            self.rclListaDasMagias7:sort();
-        end, obj);
-
-    obj._e_event78 = obj.rclListaDasMagias7:addEventListener("onCompare",
+    obj._e_event74 = obj.rclListaDasMagias7:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.dispMagia) or 0) < (tonumber(nodeB.dispMagia) or 0) then
             					        return 1;
@@ -8142,17 +8022,12 @@ function newfrmFichaRPGmeister5M_svg()
             					    end;
         end, obj);
 
-    obj._e_event79 = obj.button11:addEventListener("onClick",
+    obj._e_event75 = obj.button7:addEventListener("onClick",
         function (self)
             self.rclListaDasMagias1:append();
         end, obj);
 
-    obj._e_event80 = obj.button12:addEventListener("onClick",
-        function (self)
-            self.rclListaDasMagias1:sort();
-        end, obj);
-
-    obj._e_event81 = obj.rclListaDasMagias1:addEventListener("onCompare",
+    obj._e_event76 = obj.rclListaDasMagias1:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.dispMagia) or 0) < (tonumber(nodeB.dispMagia) or 0) then
             					        return 1;
@@ -8163,17 +8038,12 @@ function newfrmFichaRPGmeister5M_svg()
             					    end;
         end, obj);
 
-    obj._e_event82 = obj.button13:addEventListener("onClick",
+    obj._e_event77 = obj.button8:addEventListener("onClick",
         function (self)
             self.rclListaDasMagias4:append();
         end, obj);
 
-    obj._e_event83 = obj.button14:addEventListener("onClick",
-        function (self)
-            self.rclListaDasMagias4:sort();
-        end, obj);
-
-    obj._e_event84 = obj.rclListaDasMagias4:addEventListener("onCompare",
+    obj._e_event78 = obj.rclListaDasMagias4:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.dispMagia) or 0) < (tonumber(nodeB.dispMagia) or 0) then
             					        return 1;
@@ -8184,17 +8054,12 @@ function newfrmFichaRPGmeister5M_svg()
             					    end;
         end, obj);
 
-    obj._e_event85 = obj.button15:addEventListener("onClick",
+    obj._e_event79 = obj.button9:addEventListener("onClick",
         function (self)
             self.rclListaDasMagias8:append();
         end, obj);
 
-    obj._e_event86 = obj.button16:addEventListener("onClick",
-        function (self)
-            self.rclListaDasMagias8:sort();
-        end, obj);
-
-    obj._e_event87 = obj.rclListaDasMagias8:addEventListener("onCompare",
+    obj._e_event80 = obj.rclListaDasMagias8:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.dispMagia) or 0) < (tonumber(nodeB.dispMagia) or 0) then
             					        return 1;
@@ -8205,17 +8070,12 @@ function newfrmFichaRPGmeister5M_svg()
             					    end;
         end, obj);
 
-    obj._e_event88 = obj.button17:addEventListener("onClick",
+    obj._e_event81 = obj.button10:addEventListener("onClick",
         function (self)
             self.rclListaDasMagias2:append();
         end, obj);
 
-    obj._e_event89 = obj.button18:addEventListener("onClick",
-        function (self)
-            self.rclListaDasMagias2:sort();
-        end, obj);
-
-    obj._e_event90 = obj.rclListaDasMagias2:addEventListener("onCompare",
+    obj._e_event82 = obj.rclListaDasMagias2:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.dispMagia) or 0) < (tonumber(nodeB.dispMagia) or 0) then
             					        return 1;
@@ -8226,17 +8086,12 @@ function newfrmFichaRPGmeister5M_svg()
             					    end;
         end, obj);
 
-    obj._e_event91 = obj.button19:addEventListener("onClick",
+    obj._e_event83 = obj.button11:addEventListener("onClick",
         function (self)
             self.rclListaDasMagias5:append();
         end, obj);
 
-    obj._e_event92 = obj.button20:addEventListener("onClick",
-        function (self)
-            self.rclListaDasMagias5:sort();
-        end, obj);
-
-    obj._e_event93 = obj.rclListaDasMagias5:addEventListener("onCompare",
+    obj._e_event84 = obj.rclListaDasMagias5:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.dispMagia) or 0) < (tonumber(nodeB.dispMagia) or 0) then
             					        return 1;
@@ -8247,17 +8102,12 @@ function newfrmFichaRPGmeister5M_svg()
             					    end;
         end, obj);
 
-    obj._e_event94 = obj.button21:addEventListener("onClick",
+    obj._e_event85 = obj.button12:addEventListener("onClick",
         function (self)
             self.rclListaDasMagias9:append();
         end, obj);
 
-    obj._e_event95 = obj.button22:addEventListener("onClick",
-        function (self)
-            self.rclListaDasMagias9:sort();
-        end, obj);
-
-    obj._e_event96 = obj.rclListaDasMagias9:addEventListener("onCompare",
+    obj._e_event86 = obj.rclListaDasMagias9:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.dispMagia) or 0) < (tonumber(nodeB.dispMagia) or 0) then
             					        return 1;
@@ -8268,12 +8118,12 @@ function newfrmFichaRPGmeister5M_svg()
             					    end;
         end, obj);
 
-    obj._e_event97 = obj.dataLink64:addEventListener("onChange",
+    obj._e_event87 = obj.dataLink64:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.boxDetalhesDoItem.node.total10 = (tonumber(self.boxDetalhesDoItem.node.base10) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus10) or 0);
         end, obj);
 
-    obj._e_event98 = obj.dataLink65:addEventListener("onChange",
+    obj._e_event88 = obj.dataLink65:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8314,7 +8164,7 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event99 = obj.dataLink66:addEventListener("onChange",
+    obj._e_event89 = obj.dataLink66:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8346,12 +8196,12 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event100 = obj.dataLink67:addEventListener("onChange",
+    obj._e_event90 = obj.dataLink67:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.boxDetalhesDoItem.node.total11 = (tonumber(self.boxDetalhesDoItem.node.base11) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus11) or 0);
         end, obj);
 
-    obj._e_event101 = obj.dataLink68:addEventListener("onChange",
+    obj._e_event91 = obj.dataLink68:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8392,7 +8242,7 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event102 = obj.dataLink69:addEventListener("onChange",
+    obj._e_event92 = obj.dataLink69:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8424,12 +8274,12 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event103 = obj.dataLink70:addEventListener("onChange",
+    obj._e_event93 = obj.dataLink70:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.boxDetalhesDoItem.node.total12 = (tonumber(self.boxDetalhesDoItem.node.base12) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus12) or 0);
         end, obj);
 
-    obj._e_event104 = obj.dataLink71:addEventListener("onChange",
+    obj._e_event94 = obj.dataLink71:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8470,7 +8320,7 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event105 = obj.dataLink72:addEventListener("onChange",
+    obj._e_event95 = obj.dataLink72:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8502,12 +8352,12 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event106 = obj.dataLink73:addEventListener("onChange",
+    obj._e_event96 = obj.dataLink73:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.boxDetalhesDoItem.node.total13 = (tonumber(self.boxDetalhesDoItem.node.base13) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus13) or 0);
         end, obj);
 
-    obj._e_event107 = obj.dataLink74:addEventListener("onChange",
+    obj._e_event97 = obj.dataLink74:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8548,7 +8398,7 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event108 = obj.dataLink75:addEventListener("onChange",
+    obj._e_event98 = obj.dataLink75:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8580,12 +8430,12 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event109 = obj.dataLink76:addEventListener("onChange",
+    obj._e_event99 = obj.dataLink76:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.boxDetalhesDoItem.node.total14 = (tonumber(self.boxDetalhesDoItem.node.base14) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus14) or 0);
         end, obj);
 
-    obj._e_event110 = obj.dataLink77:addEventListener("onChange",
+    obj._e_event100 = obj.dataLink77:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8626,7 +8476,7 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event111 = obj.dataLink78:addEventListener("onChange",
+    obj._e_event101 = obj.dataLink78:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8658,12 +8508,12 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event112 = obj.dataLink79:addEventListener("onChange",
+    obj._e_event102 = obj.dataLink79:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.boxDetalhesDoItem.node.total15 = (tonumber(self.boxDetalhesDoItem.node.base15) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus15) or 0);
         end, obj);
 
-    obj._e_event113 = obj.dataLink80:addEventListener("onChange",
+    obj._e_event103 = obj.dataLink80:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8704,7 +8554,7 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event114 = obj.dataLink81:addEventListener("onChange",
+    obj._e_event104 = obj.dataLink81:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8736,12 +8586,12 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event115 = obj.dataLink82:addEventListener("onChange",
+    obj._e_event105 = obj.dataLink82:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.boxDetalhesDoItem.node.total16 = (tonumber(self.boxDetalhesDoItem.node.base16) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus16) or 0);
         end, obj);
 
-    obj._e_event116 = obj.dataLink83:addEventListener("onChange",
+    obj._e_event106 = obj.dataLink83:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8782,7 +8632,7 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event117 = obj.dataLink84:addEventListener("onChange",
+    obj._e_event107 = obj.dataLink84:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8814,12 +8664,12 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event118 = obj.dataLink85:addEventListener("onChange",
+    obj._e_event108 = obj.dataLink85:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.boxDetalhesDoItem.node.total17 = (tonumber(self.boxDetalhesDoItem.node.base17) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus17) or 0);
         end, obj);
 
-    obj._e_event119 = obj.dataLink86:addEventListener("onChange",
+    obj._e_event109 = obj.dataLink86:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8860,7 +8710,7 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event120 = obj.dataLink87:addEventListener("onChange",
+    obj._e_event110 = obj.dataLink87:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8892,12 +8742,12 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event121 = obj.dataLink88:addEventListener("onChange",
+    obj._e_event111 = obj.dataLink88:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.boxDetalhesDoItem.node.total18 = (tonumber(self.boxDetalhesDoItem.node.base18) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus18) or 0);
         end, obj);
 
-    obj._e_event122 = obj.dataLink89:addEventListener("onChange",
+    obj._e_event112 = obj.dataLink89:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8938,7 +8788,7 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event123 = obj.dataLink90:addEventListener("onChange",
+    obj._e_event113 = obj.dataLink90:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -8970,12 +8820,12 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event124 = obj.dataLink91:addEventListener("onChange",
+    obj._e_event114 = obj.dataLink91:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.boxDetalhesDoItem.node.total19 = (tonumber(self.boxDetalhesDoItem.node.base19) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus19) or 0);
         end, obj);
 
-    obj._e_event125 = obj.dataLink92:addEventListener("onChange",
+    obj._e_event115 = obj.dataLink92:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -9016,7 +8866,7 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event126 = obj.dataLink93:addEventListener("onChange",
+    obj._e_event116 = obj.dataLink93:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             							if debug then
@@ -9048,22 +8898,12 @@ function newfrmFichaRPGmeister5M_svg()
             						end;
         end, obj);
 
-    obj._e_event127 = obj.comboBox8:addEventListener("onChange",
+    obj._e_event117 = obj.comboBox8:addEventListener("onChange",
         function (self)
             limpar();
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event127);
-        __o_rrpgObjs.removeEventListenerById(self._e_event126);
-        __o_rrpgObjs.removeEventListenerById(self._e_event125);
-        __o_rrpgObjs.removeEventListenerById(self._e_event124);
-        __o_rrpgObjs.removeEventListenerById(self._e_event123);
-        __o_rrpgObjs.removeEventListenerById(self._e_event122);
-        __o_rrpgObjs.removeEventListenerById(self._e_event121);
-        __o_rrpgObjs.removeEventListenerById(self._e_event120);
-        __o_rrpgObjs.removeEventListenerById(self._e_event119);
-        __o_rrpgObjs.removeEventListenerById(self._e_event118);
         __o_rrpgObjs.removeEventListenerById(self._e_event117);
         __o_rrpgObjs.removeEventListenerById(self._e_event116);
         __o_rrpgObjs.removeEventListenerById(self._e_event115);
@@ -9200,7 +9040,6 @@ function newfrmFichaRPGmeister5M_svg()
         if self.dataLink71 ~= nil then self.dataLink71:destroy(); self.dataLink71 = nil; end;
         if self.edit64 ~= nil then self.edit64:destroy(); self.edit64 = nil; end;
         if self.dataLink86 ~= nil then self.dataLink86:destroy(); self.dataLink86 = nil; end;
-        if self.button15 ~= nil then self.button15:destroy(); self.button15 = nil; end;
         if self.layout15 ~= nil then self.layout15:destroy(); self.layout15 = nil; end;
         if self.edit41 ~= nil then self.edit41:destroy(); self.edit41 = nil; end;
         if self.layout10 ~= nil then self.layout10:destroy(); self.layout10 = nil; end;
@@ -9227,7 +9066,6 @@ function newfrmFichaRPGmeister5M_svg()
         if self.label148 ~= nil then self.label148:destroy(); self.label148 = nil; end;
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.label75 ~= nil then self.label75:destroy(); self.label75 = nil; end;
-        if self.button16 ~= nil then self.button16:destroy(); self.button16 = nil; end;
         if self.label158 ~= nil then self.label158:destroy(); self.label158 = nil; end;
         if self.label63 ~= nil then self.label63:destroy(); self.label63 = nil; end;
         if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
@@ -9273,7 +9111,6 @@ function newfrmFichaRPGmeister5M_svg()
         if self.dataLink84 ~= nil then self.dataLink84:destroy(); self.dataLink84 = nil; end;
         if self.layout52 ~= nil then self.layout52:destroy(); self.layout52 = nil; end;
         if self.label52 ~= nil then self.label52:destroy(); self.label52 = nil; end;
-        if self.button21 ~= nil then self.button21:destroy(); self.button21 = nil; end;
         if self.edit115 ~= nil then self.edit115:destroy(); self.edit115 = nil; end;
         if self.edit16 ~= nil then self.edit16:destroy(); self.edit16 = nil; end;
         if self.label47 ~= nil then self.label47:destroy(); self.label47 = nil; end;
@@ -9406,7 +9243,6 @@ function newfrmFichaRPGmeister5M_svg()
         if self.edit128 ~= nil then self.edit128:destroy(); self.edit128 = nil; end;
         if self.label129 ~= nil then self.label129:destroy(); self.label129 = nil; end;
         if self.textEditor30 ~= nil then self.textEditor30:destroy(); self.textEditor30 = nil; end;
-        if self.button13 ~= nil then self.button13:destroy(); self.button13 = nil; end;
         if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
         if self.edit103 ~= nil then self.edit103:destroy(); self.edit103 = nil; end;
         if self.dataLink45 ~= nil then self.dataLink45:destroy(); self.dataLink45 = nil; end;
@@ -9483,7 +9319,6 @@ function newfrmFichaRPGmeister5M_svg()
         if self.label50 ~= nil then self.label50:destroy(); self.label50 = nil; end;
         if self.dataLink57 ~= nil then self.dataLink57:destroy(); self.dataLink57 = nil; end;
         if self.button8 ~= nil then self.button8:destroy(); self.button8 = nil; end;
-        if self.button18 ~= nil then self.button18:destroy(); self.button18 = nil; end;
         if self.edit42 ~= nil then self.edit42:destroy(); self.edit42 = nil; end;
         if self.edit118 ~= nil then self.edit118:destroy(); self.edit118 = nil; end;
         if self.edit154 ~= nil then self.edit154:destroy(); self.edit154 = nil; end;
@@ -9538,10 +9373,9 @@ function newfrmFichaRPGmeister5M_svg()
         if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
         if self.label59 ~= nil then self.label59:destroy(); self.label59 = nil; end;
         if self.label68 ~= nil then self.label68:destroy(); self.label68 = nil; end;
-        if self.button20 ~= nil then self.button20:destroy(); self.button20 = nil; end;
+        if self.edit131 ~= nil then self.edit131:destroy(); self.edit131 = nil; end;
         if self.edit47 ~= nil then self.edit47:destroy(); self.edit47 = nil; end;
         if self.dataLink23 ~= nil then self.dataLink23:destroy(); self.dataLink23 = nil; end;
-        if self.edit131 ~= nil then self.edit131:destroy(); self.edit131 = nil; end;
         if self.label67 ~= nil then self.label67:destroy(); self.label67 = nil; end;
         if self.layout68 ~= nil then self.layout68:destroy(); self.layout68 = nil; end;
         if self.edit149 ~= nil then self.edit149:destroy(); self.edit149 = nil; end;
@@ -9740,7 +9574,6 @@ function newfrmFichaRPGmeister5M_svg()
         if self.label149 ~= nil then self.label149:destroy(); self.label149 = nil; end;
         if self.dataLink19 ~= nil then self.dataLink19:destroy(); self.dataLink19 = nil; end;
         if self.edit148 ~= nil then self.edit148:destroy(); self.edit148 = nil; end;
-        if self.button22 ~= nil then self.button22:destroy(); self.button22 = nil; end;
         if self.layout27 ~= nil then self.layout27:destroy(); self.layout27 = nil; end;
         if self.dataLink36 ~= nil then self.dataLink36:destroy(); self.dataLink36 = nil; end;
         if self.dataLink60 ~= nil then self.dataLink60:destroy(); self.dataLink60 = nil; end;
@@ -9786,12 +9619,11 @@ function newfrmFichaRPGmeister5M_svg()
         if self.comboBox8 ~= nil then self.comboBox8:destroy(); self.comboBox8 = nil; end;
         if self.edit51 ~= nil then self.edit51:destroy(); self.edit51 = nil; end;
         if self.edit119 ~= nil then self.edit119:destroy(); self.edit119 = nil; end;
-        if self.button17 ~= nil then self.button17:destroy(); self.button17 = nil; end;
+        if self.rclListaDasMagias9 ~= nil then self.rclListaDasMagias9:destroy(); self.rclListaDasMagias9 = nil; end;
         if self.edit48 ~= nil then self.edit48:destroy(); self.edit48 = nil; end;
         if self.label85 ~= nil then self.label85:destroy(); self.label85 = nil; end;
         if self.label46 ~= nil then self.label46:destroy(); self.label46 = nil; end;
         if self.dataLink48 ~= nil then self.dataLink48:destroy(); self.dataLink48 = nil; end;
-        if self.rclListaDasMagias9 ~= nil then self.rclListaDasMagias9:destroy(); self.rclListaDasMagias9 = nil; end;
         if self.textEditor14 ~= nil then self.textEditor14:destroy(); self.textEditor14 = nil; end;
         if self.label153 ~= nil then self.label153:destroy(); self.label153 = nil; end;
         if self.edit78 ~= nil then self.edit78:destroy(); self.edit78 = nil; end;
@@ -9817,11 +9649,9 @@ function newfrmFichaRPGmeister5M_svg()
         if self.textEditor18 ~= nil then self.textEditor18:destroy(); self.textEditor18 = nil; end;
         if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
         if self.label141 ~= nil then self.label141:destroy(); self.label141 = nil; end;
-        if self.button19 ~= nil then self.button19:destroy(); self.button19 = nil; end;
-        if self.button14 ~= nil then self.button14:destroy(); self.button14 = nil; end;
+        if self.edit136 ~= nil then self.edit136:destroy(); self.edit136 = nil; end;
         if self.dataLink50 ~= nil then self.dataLink50:destroy(); self.dataLink50 = nil; end;
         if self.layout86 ~= nil then self.layout86:destroy(); self.layout86 = nil; end;
-        if self.edit136 ~= nil then self.edit136:destroy(); self.edit136 = nil; end;
         if self.layout85 ~= nil then self.layout85:destroy(); self.layout85 = nil; end;
         if self.label134 ~= nil then self.label134:destroy(); self.label134 = nil; end;
         if self.layoutListaMagias ~= nil then self.layoutListaMagias:destroy(); self.layoutListaMagias = nil; end;

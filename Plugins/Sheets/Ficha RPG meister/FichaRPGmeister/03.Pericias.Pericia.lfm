@@ -44,7 +44,14 @@
 	<rectangle align="client" color="#202020" hitTest="false"/>
 
 	<checkBox left="1" top="5" width="19" height="15" field="isClass"/>
-	<edit vertTextAlign="center" left="21" top="0" width="138" height="25" field="nomePericia"/>
+	<edit vertTextAlign="center" left="21" top="0" width="138" height="25" field="nomePericia">
+		<event name="onChange">
+			local rcl = self:findControlByName("rclListaDasPericias");
+			if rcl~= nil then
+				rcl:sort();
+			end;
+		</event>
+	</edit>
 	<comboBox vertTextAlign="center" horzTextAlign="center" left="165" top="0" width="60" height="25" field="chavePericia" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" fontColor="white">
 		<event name="onChange">
 			if sheet~= nil then

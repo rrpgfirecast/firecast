@@ -36,7 +36,6 @@
 			<label left="80" top="0" width="30" height="25" field="$(atr)ModComp" horzTextAlign="center"/>
 			<edit left="115" top="0" width="75" height="25" field="$(atr)CompDesc"/>
 		</template>
-
 		<template name="TRComp">
 			<button left="0" top="3" width="42" height="20" text="$(ATR)">
 				<event name="onClick">
@@ -213,7 +212,6 @@
 					</event>
 				</button>
 				<textEditor left="5" top="170" width="290" height="120" field="macro"/>
-				
 			</rectangle>
 
 			<rectangle left="815" top="305" width="300" height="300" color="black">

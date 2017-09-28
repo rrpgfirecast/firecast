@@ -203,6 +203,8 @@ local function controlFromHandle(handle)
 	return ctrl;
 end
 
+gui.controlFromHandle = controlFromHandle;
+
 --[[ Objeto Layout ]]--
 
 local function layoutFromHandle(handle)
@@ -387,6 +389,8 @@ local function formLayoutFromHandle(handle)
 	ctrl.eves["onScopeNodeChanged"] = "";	
 	ctrl.eves["onShow"] = "";
 	ctrl.eves["onHide"] = "";
+	ctrl.eves["onNodeReady"] = "";
+	ctrl.eves["onNodeUnready"] = "";
 	return ctrl;	
 end
 
