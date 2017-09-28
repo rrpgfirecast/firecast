@@ -20,6 +20,8 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais).
 	- Ficha para o sistema GURPS adaptada para a mesa Saint Seiya Forever.
 - Gerenciador de Campanha: Ambesek
 	- Ficha para gerenciamento de campanhas. Experiencia, tesouros, aventuras, calendario e presenças. 
+- Konoha Heroes: HashBR
+	- Ficha para a mesa e sistema Konoha Heroes (Naruto).
 - Log Horizon: Ambesek
 	- Ficha para o sistema proprio Log Horizon.
 - Malditos Goblins: Yiotoo
