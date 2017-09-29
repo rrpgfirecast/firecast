@@ -5,7 +5,7 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 
-function newfrmGerenciador01_Sessao()
+function newfrmRecordListFormExperience()
     __o_rrpgObjs.beginObjectsLoading();
 
     local obj = gui.fromHandle(_obj_newObject("form"));
@@ -26,75 +26,63 @@ function newfrmGerenciador01_Sessao()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmGerenciador01_Sessao");
-    obj:setHeight(35);
-    obj:setTheme("dark");
+    obj:setName("frmRecordListFormExperience");
+    obj:setWidth(150);
+    obj:setHeight(25);
     obj:setMargins({top=1});
 
     obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
-    obj.rectangle1:setLeft(0);
-    obj.rectangle1:setTop(0);
-    obj.rectangle1:setWidth(530);
-    obj.rectangle1:setHeight(35);
+    obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
     obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
-    obj.edit1:setLeft(5);
-    obj.edit1:setTop(5);
+    obj.edit1:setLeft(0);
+    obj.edit1:setTop(0);
     obj.edit1:setWidth(30);
     obj.edit1:setHeight(25);
-    obj.edit1:setField("numero");
+    obj.edit1:setField("contador");
     obj.edit1:setType("number");
     obj.edit1:setName("edit1");
 
     obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.rectangle1);
-    obj.edit2:setLeft(35);
-    obj.edit2:setTop(5);
-    obj.edit2:setWidth(80);
+    obj.edit2:setLeft(30);
+    obj.edit2:setTop(0);
+    obj.edit2:setWidth(95);
     obj.edit2:setHeight(25);
-    obj.edit2:setField("data");
+    obj.edit2:setField("valor");
+    obj.edit2:setType("number");
     obj.edit2:setName("edit2");
 
     obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
-    obj.button1:setLeft(115);
-    obj.button1:setTop(5);
-    obj.button1:setWidth(50);
+    obj.button1:setLeft(125);
+    obj.button1:setTop(0);
+    obj.button1:setWidth(25);
     obj.button1:setHeight(25);
-    obj.button1:setText("LOG");
-    obj.button1:setHint("Abrir Log");
+    obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit3:setParent(obj.rectangle1);
-    obj.edit3:setLeft(165);
-    obj.edit3:setTop(5);
-    obj.edit3:setWidth(100);
-    obj.edit3:setHeight(25);
-    obj.edit3:setField("log");
-    obj.edit3:setName("edit3");
+    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.rectangle1);
+    obj.dataLink1:setField("valor");
+    obj.dataLink1:setName("dataLink1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
-    obj.button2:setParent(obj.rectangle1);
-    obj.button2:setLeft(265);
-    obj.button2:setTop(5);
-    obj.button2:setWidth(25);
-    obj.button2:setHeight(25);
-    obj.button2:setText("X");
-    obj.button2:setName("button2");
-
-    obj._e_event0 = obj.button1:addEventListener("onClick",
+    obj._e_event0 = obj.edit1:addEventListener("onChange",
         function (self)
-            gui.openInBrowser(sheet.log);
+            -- Atualiza a ordem lista a cada alteração
+            				local rcl = self:findControlByName("rclExperience");
+            				if rcl~=nil then
+            					rcl:sort();
+            				end;
         end, obj);
 
-    obj._e_event1 = obj.button2:addEventListener("onClick",
+    obj._e_event1 = obj.button1:addEventListener("onClick",
         function (self)
-            dialogs.confirmOkCancel("Tem certeza que quer apagar essa sessao?",
+            dialogs.confirmOkCancel("Tem certeza que quer apagar essa Experiência?",
             					function (confirmado)
             						if confirmado then
             							ndb.deleteNode(sheet);
@@ -102,7 +90,37 @@ function newfrmGerenciador01_Sessao()
             				end);
         end, obj);
 
+    obj._e_event2 = obj.dataLink1:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet~= nil then
+            		        	local box = self:findControlByName("boxDetalhesDoItem");
+            					if box~=nil then
+            						local node = box.node;
+            					
+            						local objetos = ndb.getChildNodes(node.listaDeExperiencia);
+            						local soma = 0;
+            
+            						for i=1, #objetos, 1 do 
+            							soma = soma + (tonumber(objetos[i].valor) or 0);
+            						end;
+            
+            						local mod = "" .. soma;
+            						
+            						while true do  
+            							mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
+            							if (k==0) then
+            							  break
+            							end
+            						end
+            						mod = string.gsub(mod, ",", ".");
+            
+            						node.XP = mod;
+            					end;
+            				end;
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
@@ -116,12 +134,11 @@ function newfrmGerenciador01_Sessao()
           self:setNodeDatabase(nil);
         end;
 
-        if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         self:_oldLFMDestroy();
     end;
 
@@ -132,17 +149,17 @@ function newfrmGerenciador01_Sessao()
     return obj;
 end;
 
-local _frmGerenciador01_Sessao = {
-    newEditor = newfrmGerenciador01_Sessao, 
-    new = newfrmGerenciador01_Sessao, 
-    name = "frmGerenciador01_Sessao", 
+local _frmRecordListFormExperience = {
+    newEditor = newfrmRecordListFormExperience, 
+    new = newfrmRecordListFormExperience, 
+    name = "frmRecordListFormExperience", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
     title = "", 
     description=""};
 
-frmGerenciador01_Sessao = _frmGerenciador01_Sessao;
-rrpg.registrarForm(_frmGerenciador01_Sessao);
+frmRecordListFormExperience = _frmRecordListFormExperience;
+rrpg.registrarForm(_frmRecordListFormExperience);
 
-return _frmGerenciador01_Sessao;
+return _frmRecordListFormExperience;

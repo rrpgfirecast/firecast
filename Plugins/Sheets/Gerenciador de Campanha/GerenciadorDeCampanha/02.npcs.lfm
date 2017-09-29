@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmGerenciador02" align="client" theme="dark" margins="{top=1}">
+<form name="frmGerenciadorNPCs" align="client" theme="dark" margins="{top=1}">
     <scrollBox align="client">
 		<rectangle left="0" top="0" width="1320" height="20" color="Black">
 			<button left="40" top="0" width="20" height="20" text="N" onClick="self.rclListaNPCs:append();"/>

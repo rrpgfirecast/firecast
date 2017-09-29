@@ -5,7 +5,7 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 
-function newfrmGerenciador02()
+function newfrmGerenciadorNPCs()
     __o_rrpgObjs.beginObjectsLoading();
 
     local obj = gui.fromHandle(_obj_newObject("form"));
@@ -26,7 +26,7 @@ function newfrmGerenciador02()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmGerenciador02");
+    obj:setName("frmGerenciadorNPCs");
     obj:setAlign("client");
     obj:setTheme("dark");
     obj:setMargins({top=1});
@@ -198,17 +198,17 @@ function newfrmGerenciador02()
     return obj;
 end;
 
-local _frmGerenciador02 = {
-    newEditor = newfrmGerenciador02, 
-    new = newfrmGerenciador02, 
-    name = "frmGerenciador02", 
+local _frmGerenciadorNPCs = {
+    newEditor = newfrmGerenciadorNPCs, 
+    new = newfrmGerenciadorNPCs, 
+    name = "frmGerenciadorNPCs", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
     title = "", 
     description=""};
 
-frmGerenciador02 = _frmGerenciador02;
-rrpg.registrarForm(_frmGerenciador02);
+frmGerenciadorNPCs = _frmGerenciadorNPCs;
+rrpg.registrarForm(_frmGerenciadorNPCs);
 
-return _frmGerenciador02;
+return _frmGerenciadorNPCs;

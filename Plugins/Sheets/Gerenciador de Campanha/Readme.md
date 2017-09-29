@@ -2,6 +2,16 @@
 Gerenciador de informações de campanha. Feito para ajudar jogadores e mestres a manterem notas organizadas sobre o jogo. 
 Proximas Versões:
 
+28 de Setembro de 2017
+Versão 08
+* Removidos botões de organizar. Agora a ficha deve faze-lo automaticamente. 
+* Nova aba para Jogadores, com XP, PO e Presença autocalculada. 
+* Mestre pode permitir a todos ou só ao jogador ver sua XP, PO e Presença. 
+
+27 de Agosto de 2017
+Versão 07
+* NPCs da lista de NPCs agora tem um espaço para ficha. Por padrão só o mestre pode visualizar ela, mas pode alterar a visibilidade para os jogadores. 
+
 26 de Julho de 2017
 Versão 06
 * Multiplos bugs corrigidos. 

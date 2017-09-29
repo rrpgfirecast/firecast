@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.4">
 	<id>GerenciadorDeCampanha</id>
-	<version>0.7.1</version>
+	<version>0.8</version>
 	<name>Gerenciador</name>
 	<description>Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres.</description>
 	<author>Ambesek</author>

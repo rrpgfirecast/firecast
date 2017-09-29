@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmJogadores" align="client">
+	<scrollBox align="client">
+		<rectangle left="0" top="0" width="240" height="600" color="black"/>
+		<button left="0" top="0" width="25" height="25" text="+" onClick="self.rclSelector:append();" hint="Adicionar"/>
+		<button left="25" top="0" width="25" height="25" text="V" hint="Dá voz a todos jogadores da lista, retira +Jogador dos outros e ativa mesa moderada. ">
+			<event name="onClick">
+				if sheet~=nil then
+					local jogadores = ndb.getChildNodes(sheet.listaDeJogadores);
+					local jogadoresNome = "";
+					local mesa = rrpg.getMesaDe(sheet);
+					local usuarios = mesa.jogadores;
+
+					mesa:requestSetModerada(true);
+					for i=1, #jogadores, 1 do
+						jogadoresNome = jogadoresNome .. jogadores[i].login .. " ";
+					end;
+
+					for i=1, #usuarios, 1 do 
+						if string.find(jogadoresNome, usuarios[i].login)== nil then
+							if not usuarios[i].isMestre then
+								usuarios[i]:requestSetJogador(false);
+								usuarios[i]:requestSetVoz(false);
+							end
+						else
+							usuarios[i]:requestSetJogador(true);
+							usuarios[i]:requestSetVoz(true);
+						end;
+					end;
+				end;
+			</event>
+		</button>
+		<recordList left="0" top="25" width="240" height="575" name="rclSelector" field="listaDeJogadores" templateForm="frmDataScopeSelectionForm" layout="vertical" selectable="true">
+			<event name="onCompare"><![CDATA[
+				-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
+				return utils.compareStringPtBr(nodeA.login, nodeB.login);			  
+				]]>
+			</event>
+			<event name="onSelect"><![CDATA[
+					local node = self.rclSelector.selectedNode;
+					self.boxDetalhesDoItem.node = node; 
+					self.boxDetalhesDoItem.visible = (node ~= nil);
+				]]>
+			</event>
+		</recordList>
+		
+		<dataScopeBox left="250" top="0" width="1000" height="600" name="boxDetalhesDoItem" visible="false">
+			<rectangle align="client" color="black"/>
+			
+			<layout left="5" top="5" width="990" height="25">
+				<label left="0" top="5" width="70" height="20" text="Login" horzTextAlign="center"/>
+				<edit left="70" top="0" width="100" height="25" field="login"/>
+
+				<label left="200" top="5" width="70" height="20" text="Personagem" horzTextAlign="center" fontSize="12"/>
+				<edit left="275" top="0" width="100" height="25" field="personagem"/>
+			</layout>
+
+			<layout left="5" top="30" width="170" height="300">
+				<button left="0" top="0" width="25" height="25" text="+" hint="Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado ">
+			    	<event name="onClick"><![CDATA[
+			    		-- Aumenta um contador enquanto adiciona um objeto
+						if self.boxDetalhesDoItem.node~=nil then
+							local objetos = ndb.getChildNodes(self.boxDetalhesDoItem.node.listaDeExperiencia);
+
+							local node = self.rclExperience:append();
+							if node~=nil then
+								local contador = #objetos;
+								for i=1, #objetos, 1 do
+									local aux = tonumber(objetos[i].contador) or 0;
+									if aux > contador then
+										contador = aux;
+									end;
+								end;
+								node.contador = contador + 1;
+							end;
+
+							self.rclExperience:sort();
+						end;
+						]]>
+					</event>
+			    </button>
+				<label left="10" top="5" width="70" height="20" text="XP" horzTextAlign="center"/>
+				<rectangle left="70" top="0" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
+				<label left="70" top="0" width="100" height="25" field="XP" horzTextAlign="center"/>
+				<dataLink field="XP">
+					<event name="onChange">
+						local mod = self.boxDetalhesDoItem.node.XP or "0";
+						mod = string.gsub(mod, "%.", "");
+						mod = (tonumber(mod) or 0);
+						local mod2 = 0;
+						local mod3 = 0;
+						while mod>=mod2 do
+							mod3 = mod3+1;
+							mod2 = mod2 + mod3*1000;
+						end
+						
+						while true do  
+							mod2, k = string.gsub(mod2, "^(-?%d+)(%d%d%d)", '%1,%2')
+							if (k==0) then
+							  break
+							end
+						end
+						mod2 = string.gsub(mod2, ",", ".");
+						
+						self.boxDetalhesDoItem.node.nep = mod3;
+						self.boxDetalhesDoItem.node.alvo = mod2;
+					</event>
+				</dataLink>
+
+				<label left="0" top="30" width="35" height="20" text="NEP" horzTextAlign="center"/>
+				<rectangle left="35" top="25" width="25" height="25" color="black" strokeColor="white" strokeSize="1"/>
+				<label left="35" top="25" width="25" height="25" field="nep" horzTextAlign="center"/>
+
+				<rectangle left="70" top="25" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
+				<label left="70" top="25" width="100" height="25" field="alvo" horzTextAlign="center"/>
+
+				<rectangle left="0" top="50" width="170" height="250" color="#191919"/>
+				<recordList left="0" top="50" width="170" height="250" name="rclExperience" field="listaDeExperiencia" templateForm="frmRecordListFormExperience" layout="vertical">
+					<event name="onCompare"><![CDATA[
+						-- Esse codigo organiza a ordem dos objetos da lista. 
+				        if (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
+				            return -1;
+				        elseif (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
+				            return 1;
+				        else   
+				            return 0;
+				        end;               
+				        ]]>
+					</event>
+				</recordList>
+			</layout>
+
+			<layout left="210" top="30" width="170" height="300">
+				<button left="0" top="0" width="25" height="25" text="+" hint="Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado ">
+			    	<event name="onClick"><![CDATA[
+			    		-- Aumenta um contador enquanto adiciona um objeto
+						if self.boxDetalhesDoItem.node~=nil then
+							local objetos = ndb.getChildNodes(self.boxDetalhesDoItem.node.listaDeDinheiro);
+
+							local node = self.rclDinheiro:append();
+							if node~=nil then
+								local contador = #objetos;
+								for i=1, #objetos, 1 do
+									local aux = tonumber(objetos[i].contador) or 0;
+									if aux > contador then
+										contador = aux;
+									end;
+								end;
+								node.contador = contador + 1;
+							end;
+
+							self.rclDinheiro:sort();
+						end;
+						]]>
+					</event>
+			    </button>
+				<label left="10" top="5" width="70" height="20" text="PO" horzTextAlign="center"/>
+				<rectangle left="70" top="0" width="100" height="25" color="black" strokeColor="white" strokeSize="1"/>
+				<label left="70" top="0" width="100" height="25" field="PO" horzTextAlign="center"/>
+
+				<rectangle left="0" top="25" width="170" height="275" color="#191919"/>
+				<recordList left="0" top="25" width="170" height="275" name="rclDinheiro" field="listaDeDinheiro" templateForm="frmRecordListFormDinheiro" layout="vertical">
+					<event name="onCompare"><![CDATA[
+						-- Esse codigo organiza a ordem dos objetos da lista. 
+				        if (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
+				            return -1;
+				        elseif (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
+				            return 1;
+				        else   
+				            return 0;
+				        end;               
+				        ]]>
+					</event>
+				</recordList>
+			</layout>
+
+			<rectangle left="405" top="30" width="310" height="185" color="#212121" strokeColor="white" strokeSize="1">
+				<label left="5" top="5" width="150" height="25" text="Presença" horzTextAlign="center" />
+				<label left="5" top="30" width="150" height="25" text="Atraso Justificado" horzTextAlign="center" />
+				<label left="5" top="55" width="150" height="25" text="Atraso" horzTextAlign="center" />
+				<label left="5" top="80" width="150" height="25" text="Falta Justificada" horzTextAlign="center" />
+				<label left="5" top="105" width="150" height="25" text="Falta" horzTextAlign="center" />
+				<label left="5" top="130" width="150" height="25" text="Uso" horzTextAlign="center" />
+				<label left="5" top="155" width="150" height="25" text="Desperdicio" horzTextAlign="center" />
+				
+				<edit left="155" top="5" width="50" height="25" field="presenca" />
+				<edit left="155" top="30" width="50" height="25" field="atrasoJustificado" />
+				<edit left="155" top="55" width="50" height="25" field="atraso" />
+				<edit left="155" top="80" width="50" height="25" field="faltaJustificada" />
+				<edit left="155" top="105" width="50" height="25" field="falta" />
+				<edit left="155" top="130" width="50" height="25" field="usos" />
+				<edit left="155" top="155" width="50" height="25" field="desperdicio" />
+
+				<rectangle left="205" top="5" width="100" height="150" color="black" strokeColor="white" strokeSize="1"/>
+				<label left="205" top="35" width="100" height="25" text="PH" horzTextAlign="center" fontSize="30"/>
+				<label left="205" top="70" width="100" height="25" field="ph" horzTextAlign="center" fontSize="30"/>
+				<horzLine left="230" top="105" width="50" strokeColor="white"/>
+				<label left="205" top="105" width="100" height="25" field="pontos" horzTextAlign="center"/>
+
+				<dataLink fields="{'presenca', 'atrasoJustificado', 'atraso', 'falta', 'usos', 'desperdicio'}"> 
+					<event name="onChange">
+						local mod = (tonumber(self.boxDetalhesDoItem.node.presenca) or 0)*4 + 
+										(tonumber(self.boxDetalhesDoItem.node.atrasoJustificado) or 0)*2 + 
+										(tonumber(self.boxDetalhesDoItem.node.atraso) or 0)*1 -   
+										(tonumber(self.boxDetalhesDoItem.node.falta) or 0)*10 -  
+										(tonumber(self.boxDetalhesDoItem.node.usos) or 0)*10 - 
+										(tonumber(self.boxDetalhesDoItem.node.desperdicio) or 0);
+						self.boxDetalhesDoItem.node.pontos = mod;								
+						self.boxDetalhesDoItem.node.ph = math.max(math.floor(mod/10), 0);
+					</event>
+				</dataLink>
+			</rectangle>
+
+			<rectangle left="405" top="225" width="310" height="310" color="black" strokeColor="white" strokeSize="1">
+				<label left="0" top="145" width="310" height="20" text="Avatar" horzTextAlign="center"/>
+				<image align="client" field="avatar" editable="true" hitTest="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+					<event name="OnStartDrag">
+					    drag:addData("imageURL", sheet.avatar);
+					</event>
+				</image>
+			</rectangle>
+		</dataScopeBox>
+	</scrollBox>
+</form>

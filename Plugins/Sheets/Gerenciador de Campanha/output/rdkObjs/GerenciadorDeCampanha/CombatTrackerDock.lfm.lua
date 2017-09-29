@@ -27,9 +27,6 @@ function newfrmCombatTracker()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmCombatTracker");
-    obj:setFormType("tablesDock");
-    obj:setDataType("RRPG.TB.COMBAT.TRACKER.v1");
-    obj:setTitle("Tracker de Combate");
     obj:setAlign("client");
 
 
@@ -795,15 +792,13 @@ local _frmCombatTracker = {
     newEditor = newfrmCombatTracker, 
     new = newfrmCombatTracker, 
     name = "frmCombatTracker", 
-    dataType = "RRPG.TB.COMBAT.TRACKER.v1", 
-    formType = "tablesDock", 
+    dataType = "", 
+    formType = "undefined", 
     formComponentName = "form", 
-    title = "Tracker de Combate", 
+    title = "", 
     description=""};
 
 frmCombatTracker = _frmCombatTracker;
 rrpg.registrarForm(_frmCombatTracker);
-rrpg.registrarDataType(_frmCombatTracker);
-rrpg.registrarSpecialForm(_frmCombatTracker);
 
 return _frmCombatTracker;

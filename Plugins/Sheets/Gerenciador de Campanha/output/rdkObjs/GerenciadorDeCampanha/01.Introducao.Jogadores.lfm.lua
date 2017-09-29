@@ -160,29 +160,29 @@ function newfrmGerenciador01_Jogadores()
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local mod = sheet.xp or "0";
-            					mod = string.gsub(mod, "X", "");
-            					mod = string.gsub(mod, "P", "");
-            					mod = string.gsub(mod, "x", "");
-            					mod = string.gsub(mod, "p", "");
-            					mod = string.gsub(mod, "%.", "");
-            					mod = (tonumber(mod) or 0);
-            					local mod2 = 0;
-            					local mod3 = 0;
-            					while mod>=mod2 do
-            						mod3 = mod3+1;
-            						mod2 = mod2 + mod3*1000;
-            					end
-            					
-            					while true do  
-            						mod2, k = string.gsub(mod2, "^(-?%d+)(%d%d%d)", '%1,%2')
-            						if (k==0) then
-            						  break
-            						end
-            					end
-            					mod2 = string.gsub(mod2, ",", ".");
-            					
-            					sheet.xpNivel = mod2 .. "XP";
-            					sheet.nep = mod3;
+            			mod = string.gsub(mod, "X", "");
+            			mod = string.gsub(mod, "P", "");
+            			mod = string.gsub(mod, "x", "");
+            			mod = string.gsub(mod, "p", "");
+            			mod = string.gsub(mod, "%.", "");
+            			mod = (tonumber(mod) or 0);
+            			local mod2 = 0;
+            			local mod3 = 0;
+            			while mod>=mod2 do
+            				mod3 = mod3+1;
+            				mod2 = mod2 + mod3*1000;
+            			end
+            			
+            			while true do  
+            				mod2, k = string.gsub(mod2, "^(-?%d+)(%d%d%d)", '%1,%2')
+            				if (k==0) then
+            				  break
+            				end
+            			end
+            			mod2 = string.gsub(mod2, ",", ".");
+            			
+            			sheet.xpNivel = mod2 .. "XP";
+            			sheet.nep = mod3;
         end, obj);
 
     function obj:_releaseEvents()

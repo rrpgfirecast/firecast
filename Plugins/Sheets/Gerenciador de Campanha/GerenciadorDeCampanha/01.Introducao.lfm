@@ -1,54 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmGerenciador01" align="client" theme="dark" margins="{top=1}">
-    <scrollBox align="client">
-		<rectangle left="0" top="0" width="550" height="615" color="Black">
-			<label left="5" top="5" width="550" height="25" text="SESSÕES" horzTextAlign="center" />
-			
-			<label left="5" top="30" width="30" height="25" text="Nº" horzTextAlign="center" />
-			<label left="35" top="30" width="205" height="25" text="XP" horzTextAlign="center" />
-			<label left="240" top="30" width="90" height="25" text="PO" horzTextAlign="center" />
-			<label left="330" top="30" width="80" height="25" text="Data" horzTextAlign="center" />
-			<label left="460" top="30" width="40" height="25" text="Log" horzTextAlign="center" />
-			
-			<button left="495" top="5" width="25" height="25" text="O" onClick="self.rclSessoes:sort();" hint="Organizar"/>
-			<button left="520" top="5" width="25" height="25" text="+" hint="Novo">
-				<event name="onClick">
-					if sheet~=nil then
-						local sessoes = ndb.getChildNodes(sheet.sessoes);
-						local num = 1;
-
-						if #sessoes > 0 then
-							num = (tonumber(sessoes[#sessoes].numero) or 0) + 1
-						end;
-
-						local node = self.rclSessoes:append();
-						if node~=nil then
-							node.numero = num;
-							node.data = os.date("%d/%m/%Y", os.time());
-						end;
-
-						self.rclSessoes:sort();
-					end;
-				</event>
-			</button>
-			
-			<scrollBox left="0" top="55" width="550" height="555">
-				<recordList left="0" top="0" width="530" height="555" itemHeight="35" autoHeight="true" minQt="1" name="rclSessoes" field="sessoes" templateForm="frmGerenciador01_Sessao">
-					<event name="onCompare"><![CDATA[               
-		                if (tonumber(nodeA.numero) or 0) < (tonumber(nodeB.numero) or 0) then
-		                    return 1;
-		                elseif (tonumber(nodeA.numero) or 0) > (tonumber(nodeB.numero) or 0) then
-		                    return -1;
-		                else   
-		                    return 0;
-		                end;               
-		                ]]>
-					</event>
-				</recordList>
-			</scrollBox>
-		</rectangle>
-		
-		<rectangle left="555" top="0" width="680" height="615" color="Black">
+    <scrollBox align="client">		
+		<rectangle left="0" top="0" width="680" height="615" color="Black">
 			<label left="5" top="5" width="550" height="25" text="JOGADORES" horzTextAlign="center" />
 			
 			<label left="5" top="30" width="100" height="25" text="Jogador" horzTextAlign="center" />
@@ -88,7 +41,6 @@
 					end;
 				</event>
 			</button>
-			<button left="625" top="5" width="25" height="25" text="O" onClick="self.rclJogadores:sort();" hint="Organizar"/>
 			<button left="650" top="5" width="25" height="25" text="+" onClick="self.rclJogadores:append();" hint="Novo"/>
 			
 			<scrollBox left="0" top="55" width="680" height="440">
