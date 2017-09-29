@@ -1,4 +1,4 @@
-#Gerenciador de Campanha
+# Gerenciador de Campanha
 Gerenciador de informações de campanha. Feito para ajudar jogadores e mestres a manterem notas organizadas sobre o jogo. 
 Proximas Versões:
 
