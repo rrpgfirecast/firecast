@@ -1,12 +1,12 @@
 object frmMain: TfrmMain
   Left = 0
-  Height = 492
+  Height = 420
   Top = 0
-  Width = 644
+  Width = 554
   ActiveControl = chkTagForm
-  Caption = 'frmMain'
-  ClientHeight = 492
-  ClientWidth = 644
+  Caption = 'RRPG SDK3 Sheet Designer '
+  ClientHeight = 420
+  ClientWidth = 554
   Color = clWhite
   OnCreate = FormCreate
   LCLVersion = '1.6.4.0'
@@ -15,7 +15,7 @@ object frmMain: TfrmMain
     Left = 0
     Height = 26
     Top = 0
-    Width = 644
+    Width = 557
     Caption = 'ToolBar1'
     TabOrder = 0
     object chkTagForm: TCheckBox
@@ -123,13 +123,20 @@ object frmMain: TfrmMain
       Style = tbsSeparator
     end
     object edtNome: TEdit
-      Left = 531
+      Left = 1
       Height = 23
-      Top = 2
+      Top = 24
       Width = 107
       Enabled = False
       TabOrder = 5
       Text = 'NOME_AQUI'
     end
+  end
+  object SDK3Label1: TSDK3Label
+    Left = 88
+    Height = 15
+    Top = 48
+    Width = 382
+    Text = 'Monte a sua tela aqui, utilizando os componentes da paleta /RRPGSDK3/'
   end
 end

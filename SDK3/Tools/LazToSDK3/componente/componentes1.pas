@@ -6,9 +6,12 @@ interface
 
 uses
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  LCLType, LCLProc, LCLIntf, ActnList, LazUTF8, Menus,
+  LCLType, LCLProc, LCLIntf, ActnList, LazUTF8, Menus, ComCtrls,
   FileUtil, ExtCtrls, Buttons, DbCtrls;
 
+{   Classes, SysUtils, types, LCLStrConsts, LCLType, LCLProc, LMessages, Graphics,
+  ExtendedStrings, LCLIntf, ActnList, Controls, TextStrings, LazUTF8,
+  Forms, Menus, LResources;}
 type
   TSDK3Button = class(TCustomButton)
   private
@@ -81,7 +84,7 @@ type
 type
   TSDK3Edit = class(TCustomEdit)
   private
-    FField, FTextP, FType: String;
+    FField, FTextP: String;
     FTransp, FPass: Boolean;
     FMin, FMax, FNumber: Double;
     FDecP: Integer;
@@ -231,7 +234,6 @@ type
   TSDK3Label = class(TCustomLabel)
   private
     FField: String;
-
   protected
 
   public
@@ -246,6 +248,65 @@ type
     property AutoSize;
   end;
 
+type
+  TSDK3ProgressBar = class(TCustomProgressBar)
+  private
+    FField: String;
+    FmouseGlow: Boolean;
+    FMin, FMax, FPosition: Double;
+  protected
+
+  public
+
+  published
+    property Align;
+    property Color;
+    property Position: Double read FPosition write FPosition;
+    property Field: String read FField write FField;
+    property Enabled;
+    property Min: Double read FMin write FMin;
+    property Max: Double read FMax write FMax;
+    //fieldMin
+    //fieldMax
+    // colorMode
+    property mouseGlow: Boolean read FmouseGlow write FmouseGlow;
+    property Visible;
+  end;
+
+type
+  TSDK3RadioButton = class(TCustomCheckBox)
+  private
+    FField, FGroupName, FFieldValue: String;
+  protected
+
+  public
+
+  published
+    property Align;
+    property Caption;
+    property Font;
+    property Checked;
+    property GroupName: String read FGroupName write FGroupName;
+    property FieldValue: String read FFieldValue write FFieldValue;
+    property Field: String read FField write FField;
+    property Enabled;
+    property Visible;
+  end;
+{
+type
+  TSDK3TabControl = class(TCustomTabControl)
+  private
+
+  protected
+
+  public
+
+  published
+    property Align;
+    property Enabled;
+    property Visible;
+  end;
+}
 procedure Register;
 
 implementation
@@ -255,7 +316,7 @@ begin
   {$I componentes1_icon.lrs}
   RegisterComponents('RRPGSDK3',[TSDK3Button, TSDK3ColorComboBox, TSDK3ComboBox,
   TSDK3CheckBox, TSDK3Edit, TSDK3FlowLayout, TSDK3Image, TSDK3Layout, TSDK3FlowPart,
-  TSDK3ImageCheckBox, TSDK3Label]);
+  TSDK3ImageCheckBox, TSDK3Label, TSDK3ProgressBar, TSDK3RadioButton]);
 end;
 
 end.

@@ -132,11 +132,28 @@ object frmMain: TfrmMain
       Text = 'NOME_AQUI'
     end
   end
-  object SDK3Button1: TSDK3Button
-    Left = 56
-    Height = 25
-    Top = 120
-    Width = 75
-    Caption = 'SDK3Button1'
+  object SDK3FlowLayout1: TSDK3FlowLayout
+    Left = 88
+    Height = 160
+    Top = 144
+    Width = 202
+    AutoHeight = False
+    MaxControlsPerLine = 0
+    MaxColumns = 0
+    LineSpacing = 0
+    ContentWidth = 0
+    ContentHeight = 0
+    object SDK3FlowPart1: TSDK3FlowPart
+      Left = 1
+      Height = 50
+      Top = 1
+      Width = 170
+      MinWidth = 0
+      MaxWidth = 0
+      MinScaledWidth = 0
+      MaxScaledWidth = 0
+      AvoidScale = False
+      adjustHeightToLine = False
+    end
   end
 end

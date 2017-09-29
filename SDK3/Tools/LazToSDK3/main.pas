@@ -20,6 +20,7 @@ type
     edtDataType: TEdit;
     edtTitle: TEdit;
     edtNome: TEdit;
+    SDK3Label1: TSDK3Label;
     ToolBar1: TToolBar;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
@@ -46,10 +47,13 @@ type
     function MakeFlowPart(item: TSDK3FlowPart): String;
     function MakeImageCheckBox(item: TSDK3ImageCheckBox): String;
     function MakeLabel(item: TSDK3Label): String;
+    function MakeProgressBar(item: TSDK3ProgressBar): String;
+    function MakeRadioButton(item: TSDK3RadioButton): String;
 
     procedure FormCreate(Sender: TObject);
     procedure Finalizar(Sender: TObject);
     function geraTags(comp: TComponent; memo: TMemo): String;
+    function PanXpan(comp: TComponent): String;
   private
     { private declarations }
   public
@@ -242,12 +246,42 @@ begin
      result := Replaces(s);
 end;
 
+function TfrmMain.MakeProgressBar(item: TSDK3ProgressBar): String;
+var
+  s: String;
+begin
+     s := '<progressBar enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     LowerCase(booltostr(item.Visible)) + '" '+#13+#9+#9 +
+     'position="' + floattostr(item.Position) + '" min="' + floattostr(item.Min) +
+     '" max="' + floattostr(item.Max) + '" mouseGlow="' + LowerCase(booltostr(item.mouseGlow)) +
+     '" color="#' + TColorToHex(item.Color) + '" field="' + item.Field + '" ';
+
+     s := s  + Aligns(item) + '/>';
+     result := Replaces(s);
+end;
+
+function TfrmMain.MakeRadioButton(item: TSDK3RadioButton): String;
+var
+  s: String;
+begin
+     s := '<radioButton text="' + item.Caption + '" checked="' + LowerCase(booltostr(item.Checked)) +
+     '" enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     LowerCase(booltostr(item.Visible)) + '" field="' + item.Field + '"'+
+     'fontColor="#' + TColorToHex(item.Font.Color) +
+     '" fontFamily="' + item.Font.Name + '" fontSize="' + inttostr(item.Font.Size) + '" '+#13+#9+#9+
+     ' groupName="' + item.GroupName + '" fieldValue="' + item.FieldValue +'" ';
+
+     s := s + Fonts(item.Font);
+     s := s + ' ' + Aligns(item) + '/>';
+     result := Replaces(s);
+end;
+
 procedure TfrmMain.Finalizar(Sender: TObject);
 var
-  i, j, c, lyt: integer;
   memo: TMemo;
   svdlg: TSaveDialog;
-  memos: array of TMemo;
 begin
 
      memo := TMemo.Create(self);
@@ -264,85 +298,7 @@ begin
        memo.Lines.Add('title="'+edtTitle.Text+'" name="'+edtNome.Text+'" theme="'+cbbTheme.Text+'">'+#13);
      end;
 
-     lyt := 0;
-     for i := 0 to ComponentCount - 1 do
-     begin
-          if (Components[i] is TSDK3FlowLayout) or
-          (Components[i] is TSDK3Layout) or
-          (Components[i] is TSDK3FlowPart) then
-          begin
-               lyt := lyt + 1;
-          end;
-     end;
-
-     if lyt = 0 then
-     begin
-       for i := 0 to ComponentCount - 1 do
-       begin
-            memo.text := geraTags(Components[i], memo);
-       end;
-     end
-     else
-     begin
-          setLength(memos, lyt);
-          for i := 0 to lyt do
-          begin
-               memos[i] := TMemo.Create(self);
-               memos[i].Visible := false;
-               memos[i].Clear;
-          end;
-
-          c := 0;
-          for i := 0 to ComponentCount - 1 do
-          begin
-               if (Components[i] is TSDK3Layout) then
-               begin
-                    memos[c].text := geraTags(Components[i], memos[c]);
-                    for j := 0 to ComponentCount - 1 do
-                    begin
-                         if Components[j].GetParentComponent = Components[i] then
-                            memos[c].text := geraTags(Components[j], memos[c]);
-                    end;
-                    memos[c].lines.Add(#13+#9+'</layout>');
-                    c := c + 1;
-               end
-               else
-               if (Components[i] is TSDK3FlowLayout) then
-               begin
-                    memos[c].text := geraTags(Components[i], memos[c]);
-                    for j := 0 to ComponentCount - 1 do
-                    begin
-                         if Components[j].GetParentComponent = Components[i] then
-                            memos[c].text := geraTags(Components[j], memos[c]);
-                    end;
-                    memos[c].lines.Add(#13+#9+'</flowLayout>');
-                    c := c + 1;
-               end
-               else
-               if (Components[i] is TSDK3FlowPart) then
-               begin
-                    memos[c].text := geraTags(Components[i], memos[c]);
-                    for j := 0 to ComponentCount - 1 do
-                    begin
-                         if Components[j].GetParentComponent = Components[i] then
-                            memos[c].text := geraTags(Components[j], memos[c]);
-                    end;
-                    memos[c].lines.Add(#13+#9+'</flowPart>');
-                    c := c + 1;
-               end
-               else
-               if (Components[i].GetParentComponent = frmMain) then
-               begin
-                    memo.text := geraTags(Components[i], memo);
-               end;
-          end;
-
-          for i := 0 to lyt do
-          begin
-               memo.lines.Add(memos[i].text);
-               memos[i].free;
-          end;
-     end;
+     memo.Lines.Add(panXpan(frmMain));
 
      if chkTagForm.Checked then
      begin
@@ -355,7 +311,61 @@ begin
      end;
      memo.free;
      svdlg.Free;
+     showmessage('Código gerado!');
 
+end;
+
+function TfrmMain.PanXpan(comp: TComponent): String;
+var
+  i: integer;
+  s: string;
+  memo: TMemo;
+begin
+     memo := TMemo.Create(self);
+     memo.Visible := false;
+     memo.Clear;
+
+     for i := 1 to Self.ComponentCount -1 do
+     begin
+          if (Components[i].GetParentComponent = comp) then
+          begin
+
+            if (Self.Components[i].ClassName <> 'TSDK3Layout') and
+             (Self.Components[i].ClassName <> 'TSDK3FlowLayout') and
+             (Self.Components[i].ClassName <> 'TSDK3FlowPart')  then
+            begin
+                 memo.Text := geraTags(Components[i], memo);
+            end
+            else
+            begin
+              if (Self.Components[i].ClassName = 'TSDK3Layout') then
+              begin
+                     memo.Text := memo.Text + MakeLayout(Components[i] as TSDK3Layout) + #13;
+                     memo.Text := memo.Text + panXpan(Components[i]) + #13;
+                     memo.Text := memo.Text +  #13 +'</layout>' + #13;
+              end
+              else
+              if (Self.Components[i].ClassName = 'TSDK3FlowLayout') then
+              begin
+                   memo.Text := MakeFlowLayout(Components[i] as TSDK3FlowLayout) + #13;
+                   memo.Text := memo.Text + panXpan(Components[i]) + #13;
+                   memo.Text := memo.Text +  #13 +'</flowLayout>' + #13;
+              end
+              else
+              if (Self.Components[i].ClassName = 'TSDK3FlowPart') then
+              begin
+                   memo.Text := MakeFlowPart(Components[i] as TSDK3FlowPart) + #13;
+                   memo.Text := memo.Text + panXpan(Components[i]) + #13;
+                   memo.Text := memo.Text +  #13 +'</flowPart>' + #13;
+              end;
+            end;
+
+          end;
+     end;
+
+     s := memo.text;
+     memo.free;
+     result := s;
 end;
 
 function TfrmMain.geraTags(comp: TComponent; memo: TMemo): String;
@@ -423,6 +433,18 @@ begin
          if comp is TSDK3Label then
          begin
                 memo.Lines.add(#9 + MakeLabel((comp as TSDK3Label)));
+                memo.lines.add('');
+         end
+         else
+         if comp is TSDK3ProgressBar then
+         begin
+                memo.Lines.add(#9 + MakeProgressBar((comp as TSDK3ProgressBar)));
+                memo.lines.add('');
+         end
+         else
+         if comp is TSDK3RadioButton then
+         begin
+                memo.Lines.add(#9 + MakeRadioButton((comp as TSDK3RadioButton)));
                 memo.lines.add('');
          end;
          result := memo.text;
@@ -549,6 +571,8 @@ begin
      s := stringReplace(s, 'autoChange="0"', '', [rfReplaceALL]);
      s := stringReplace(s, 'autoSize="-1"', '', [rfReplaceALL]);
      s := stringReplace(s, 'autoSize="0"', 'autoSize="true"', [rfReplaceALL]);
+     s := stringReplace(s, 'mouseGlow="-1"', 'mouseGlow="false"', [rfReplaceALL]);
+     s := stringReplace(s, 'mouseGlow="0"', '', [rfReplaceALL]);
 
      s := stringReplace(s, 'hint=""', '', [rfReplaceALL]);
      s := stringReplace(s, 'fontSize="0"', '', [rfReplaceALL]);
@@ -562,7 +586,7 @@ begin
      s := stringReplace(s, 'tabOrder="0"', '', [rfReplaceALL]);
      s := stringReplace(s, 'autoHeight="0"', '', [rfReplaceALL]);
      s := stringReplace(s, 'maxControlsPerLine="0"', '', [rfReplaceALL]);
-     s := stringReplace(s, 'MmxColumns="0"', '', [rfReplaceALL]);
+     s := stringReplace(s, 'maxColumns="0"', '', [rfReplaceALL]);
      s := stringReplace(s, 'lineSpacing="0"', '', [rfReplaceALL]);
      s := stringReplace(s, 'contentWidth="0"', '', [rfReplaceALL]);
      s := stringReplace(s, 'contentHeight="0"', '', [rfReplaceALL]);
@@ -582,6 +606,8 @@ begin
      s := stringReplace(s, 'URLWhileLoading=""', '', [rfReplaceALL]);
      s := stringReplace(s, 'uncheckedImage=""', '', [rfReplaceALL]);
      s := stringReplace(s, 'checkedImage=""', '', [rfReplaceALL]);
+     s := stringReplace(s, 'fieldValue=""', '', [rfReplaceALL]);
+     s := stringReplace(s, 'groupName=""', '', [rfReplaceALL]);
 
      s := stringReplace(s, '   ', ' ', [rfReplaceALL]);
      s := stringReplace(s, '  ', ' ', [rfReplaceALL]);
