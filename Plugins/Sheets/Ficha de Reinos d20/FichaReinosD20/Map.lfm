@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMap" align="client">
+	<scrollBox align="client" name="mapa">
+		<rectangle left="0" top="0" width="1152" height="648" color="black"/>
+		<image width="1152" height="648" field="mapa" hitTest="true" style="proportional" hint="Clique para alterar Imagem, shift+clique para adicionar Cidade, ctrl+clique para adicionar Ponto de Interesse. ">
+			<event name="onMouseDown">
+				sheet.button = event.button;
+				sheet.x = event.x;
+				sheet.y = event.y;
+				sheet.shiftKey = event.shiftKey;
+				sheet.ctrlKey = event.ctrlKey;
+				sheet.altKey = event.altKey;
+			</event>
+			<event name="onClick">
+				<![CDATA[
+				if sheet==nil then return end;
+				
+				local mesa = rrpg.getMesaDe(sheet);
+				if not ndb.testPermission(sheet, "write") then return end;
+
+				if sheet.shiftKey then
+					-- Adicionar Cidade
+					if sheet.cityNum == nil then
+						sheet.cityNum = 0;
+					end;
+					sheet.cityNum = sheet.cityNum + 1;
+
+					local btn = gui.newButton();
+					btn.parent = self.mapa;
+					btn.left = sheet.x-12;
+					btn.top = sheet.y-12;
+					btn.width = 25;
+					btn.height = 25;
+					btn.cursor = "handPoint";
+					btn.hint = "Cidade";
+					btn.opacity = 0.35;
+					btn.name = "button_c"..sheet.cityNum;
+					btn.text = "";
+
+					local node = self.rclDestalhesDaCidade:append();
+					node.name = btn.name;
+					node.left = btn.left;
+					node.top = btn.top;
+					node.nome = "Cidade";
+
+					local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
+					node.contador = #cidades;
+
+					btn.onClick = function() 
+						self.boxDetalhesDaCidade.node = node; 
+						self.boxDetalhesDaCidade.visible = (node ~= nil);
+						self.tabControl.tabIndex = 2;
+					end;
+
+					self.boxDetalhesDaCidade.node = node;
+					self.boxDetalhesDaCidade.visible = (node ~= nil);
+					self.tabControl.tabIndex = 2;
+
+				elseif sheet.ctrlKey then
+					-- Adicionar Ponto de Interesse
+					if sheet.geographyNum == nil then
+						sheet.geographyNum = 0;
+					end;
+					sheet.geographyNum = sheet.geographyNum + 1;
+
+					local btn = gui.newButton();
+					btn.parent = self.mapa;
+					btn.left = sheet.x-15;
+					btn.top = sheet.y-15;
+					btn.width = 30;
+					btn.height = 30;
+					btn.cursor = "handPoint";
+					btn.hint = "Lugar";
+					btn.opacity = 0.35;
+					btn.name = "button_g"..sheet.geographyNum;
+					btn.text = "";
+
+					local node = self.rclDestalhesDaGeografia:append();
+					node.name = btn.name;
+					node.left = btn.left;
+					node.top = btn.top;
+					node.nome = "Lugar";
+					
+					local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
+					node.contador = #lugares;
+
+					btn.onClick = function() 
+						self.boxDetalhesDaGeografia.node = node; 
+						self.boxDetalhesDaGeografia.visible = (node ~= nil);
+						self.tabControl.tabIndex = 3;
+					end;
+
+					self.boxDetalhesDaGeografia.node = node;
+					self.boxDetalhesDaGeografia.visible = (node ~= nil);
+					self.tabControl.tabIndex = 3;
+
+					
+				else
+					-- Alterar Imagem
+					Dialogs.selectImageURL(nil,
+						function(url)
+							sheet.mapa = url;
+						end);
+				end;
+				]]>
+			</event>
+		</image>
+	</scrollBox>
+</form>

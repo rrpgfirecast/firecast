@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplate" formType="sheetTemplate" dataType="Ambesek.Nefertyne.Reinos" title="Ficha Reinos d20" align="client" theme="dark">
+	<tabControl align="client" name="tabControl">
+		<tab title="Reino">
+			<import file="Kingdom.lfm"/>
+		</tab>
+		<tab title="Mapa">
+			<import file="Map.lfm"/>
+		</tab>
+		<tab title="Cidades">
+			<import file="Cities.lfm"/>
+		</tab>
+		<tab title="Pontos de Interesse">
+			<import file="Geography.lfm"/>
+		</tab>
+		<tab title="Pessoas Importantes">
+			<import file="MainDockNPCs.lfm"/>
+		</tab>
+		<tab title="Anotações">
+			<import file="Notes.lfm"/>
+		</tab>
+		<tab title="Creditos">
+			<import file="Credits.lfm"/>
+		</tab>
+	</tabControl>
+</form>

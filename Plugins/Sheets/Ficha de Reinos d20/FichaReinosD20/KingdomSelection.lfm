@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmKingdomSelection" width="200" height="25" margins="{top=5, left=5, right=5}">
+	<rectangle align="client" color="#212121" hitTest="false">
+		<label left="20" top="0" width="160" height="25" field="nome" horzTextAlign="center"/>
+	</rectangle>
+</form>

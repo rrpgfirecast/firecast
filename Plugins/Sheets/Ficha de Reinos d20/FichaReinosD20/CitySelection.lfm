@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCitySelection" width="200" height="25" margins="{top=5, left=5, right=5}">
+	<script>
+
+		local function getNumber(text)
+			local mod = "0";
+			if text~= nil then
+				mod = string.gsub(text, "%.", "");
+				mod = string.gsub(mod, "P", "");
+				mod = string.gsub(mod, "p", "");
+				mod = string.gsub(mod, "O", "");
+				mod = string.gsub(mod, "o", "");
+			end
+			return tonumber(mod) or 0;
+		end;
+	</script>
+
+	<rectangle align="client" color="#212121" hitTest="false">
+		<edit left="0" top="0" width="30" height="25" field="contador" type="number">
+			<event name="onChange"><![CDATA[
+		        if sheet~= nil then
+					-- Atualiza a ordem lista a cada alteração
+					local rcl = self:findControlByName("rclDestalhesDaCidade");
+					if rcl~=nil then
+						rcl:sort();
+					end;
+				end;
+		        ]]>
+			</event>
+		</edit>
+
+		<edit left="30" top="0" width="135" height="25" field="nome">
+			<event name="onChange">
+				if sheet==nil then return end;
+				if sheet.name ~= nil then
+					local btn = self:findControlByName(sheet.name);
+					if btn ~= nil then
+						btn.hint = sheet.nome;
+					end;
+				end;
+			</event>
+		</edit>
+
+		<button left="165" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar essa cidade?",
+					function (confirmado)
+						if confirmado then
+							if sheet.name ~= nil then
+								local btn = self:findControlByName(sheet.name);
+								if btn ~= nil then
+									btn.parent = nil;
+								end;
+							end;
+
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+		<dataLink field="populacao">
+			<event name="onChange"><![CDATA[
+		        if sheet~= nil then
+					local node = ndb.getRoot(sheet);
+					local objetos = ndb.getChildNodes(node.listaDeDestalhesDaCidade);
+					local soma = 0;
+
+					for i=1, #objetos, 1 do 
+						soma = soma + (tonumber(objetos[i].populacao) or 0);
+					end;
+
+					node.populacao = soma;
+				end;
+		        ]]>
+			</event>
+		</dataLink>
+
+		<dataLink field="riqueza">
+			<event name="onChange"><![CDATA[
+		        if sheet~= nil then
+					local node = ndb.getRoot(sheet);
+					local objetos = ndb.getChildNodes(node.listaDeDestalhesDaCidade);
+					local soma = 0;
+
+					for i=1, #objetos, 1 do 
+						soma = soma + getNumber(objetos[i].riqueza);
+					end;
+
+					while true do  
+						soma, k = string.gsub(soma, "^(-?%d+)(%d%d%d)", '%1,%2')
+						if (k==0) then
+						  break
+						end
+					end
+					soma = string.gsub(soma, ",", ".");
+
+					node.riqueza = soma;
+				end;
+		        ]]>
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

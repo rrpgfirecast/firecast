@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmKingdom" align="client">
+	<template name="descriptionBox">
+		<rectangle align="client" color="black"/>
+		<label left="0" top="5" width="410" height="20" text="$(text)" horzTextAlign="center"/>
+
+		<layout left="5" top="30" width="400" height="250">
+			<richEdit align="client" field="$(field)" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+		</layout>
+	</template>
+	<template name="descriptionEdit">
+		<label left="0" top="5" width="$(width1)" height="20" text="$(text)" horzTextAlign="center"/>
+		<edit left="$(width1)" top="5" width="$(width2)" height="20" field="$(field)"/>
+	</template>
+	<template name="descriptionLabel">
+		<label left="0" top="5" width="$(width1)" height="20" text="$(text)" horzTextAlign="center"/>
+		<rectangle left="$(width1)" top="5" width="$(width2)" height="20" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="$(width1)" top="5" width="$(width2)" height="20" field="$(field)" horzTextAlign="center"/>
+	</template>
+	<scrollBox align="client">
+		<layout left="0" top="0" width="1240" height="30">
+			<rectangle align="client" color="black"/>
+
+			<layout left="0" top="0" width="200" height="30">
+				<descriptionEdit width1="95" width2="100" text="Reino" field="reino"/>
+			</layout>
+			<layout left="210" top="0" width="200" height="30">
+				<descriptionLabel width1="95" width2="100" text="População" field="populacao"/>
+			</layout>
+			<layout left="420" top="0" width="200" height="30">
+				<descriptionLabel width1="95" width2="100" text="Riqueza" field="riqueza"/>
+			</layout>
+			<layout left="830" top="0" width="410" height="30">
+			</layout>
+		</layout>
+
+
+		<rectangle left="0" top="35" width="200" height="245" color="black"/>
+		<!-- RecordList para seleção -->
+		<recordList left="0" top="35" width="200" height="240" name="rclDestalhesDoReino" field="listaDeDestalhesDoReino" templateForm="frmKingdomSelection" layout="vertical" selectable="true" minQt="8">
+			<event name="onEndEnumeration"><![CDATA[
+				if sheet~= nil then
+					local objetos = ndb.getChildNodes(sheet.listaDeDestalhesDoReino);
+					local nomes = {"Descrição","Cultura","Raças","Classes","Historia","Geografia","Clima", "Outros"};
+					for i=1, #objetos, 1 do
+						objetos[i].nome = nomes[i];
+					end;
+
+					if self.rclDestalhesDoReino.selectedNode== nil and #objetos>0 then
+						self.rclDestalhesDoReino.selectedNode = objetos[1]; 
+					end;
+				end;
+				]]>
+			</event>
+			<event name="onSelect"><![CDATA[
+					local node = self.rclDestalhesDoReino.selectedNode;
+					self.boxDetalhesDoReino.node = node; 
+					self.boxDetalhesDoReino.visible = (node ~= nil);
+				]]>
+			</event>
+		</recordList>
+		<!-- Info selecionada vai estar aqui -->
+		<dataScopeBox left="210" top="35" width="1030" height="535" name="boxDetalhesDoReino" visible="false">
+			<richEdit align="client" field="$(field)" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+		</dataScopeBox>
+	</scrollBox>
+</form>

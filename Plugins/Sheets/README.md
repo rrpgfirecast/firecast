@@ -15,6 +15,8 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais).
 	- Ficha V3 com multiplas abas e de uso geral. 
 - Ficha RPG meister: Ambesek
 	- Ficha para d20system. Usada por jogadores de D&D3.5, Pathfinder e TormentaRPG.
+- Ficha Reinos d20
+	- Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre.  
 - Fira: Yiotoo
 - GURPS Saint Seiya Forever: Ambesek
 	- Ficha para o sistema GURPS adaptada para a mesa Saint Seiya Forever.

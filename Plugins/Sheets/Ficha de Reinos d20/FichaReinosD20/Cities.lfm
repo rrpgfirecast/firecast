@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCities" align="client">
+	<scrollBox align="client">
+		<rectangle left="0" top="0" width="200" height="600" color="black"/>
+		<!-- RecordList para seleção -->
+		<recordList left="0" top="0" width="200" height="595" name="rclDestalhesDaCidade" field="listaDeDestalhesDaCidade" templateForm="frmCitySelection" layout="vertical" selectable="true">
+			<event name="onEndEnumeration"><![CDATA[
+				if sheet~= nil then
+					local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
+					local mapa = self:findControlByName("mapa");
+
+					for i=1, #cidades, 1 do
+						local node = cidades[i];
+
+						if node.name ~= nil then
+							local btn = self:findControlByName(node.name);
+							if btn == nil then
+								local btn = gui.newButton();
+								btn.parent = mapa;
+								btn.left = node.left;
+								btn.top = node.top;
+								btn.width = 25;
+								btn.height = 25;
+								btn.cursor = "handPoint";
+								btn.hint = node.nome;
+								btn.opacity = 0.35;
+								btn.name = node.name;
+								btn.text = "";
+
+								btn.onClick = function() 
+									self.boxDetalhesDaCidade.node = node; 
+									self.boxDetalhesDaCidade.visible = (node ~= nil);
+									self.tabControl.tabIndex = 2;
+								end;
+							end;
+						end;
+					end;
+
+					if self.rclDestalhesDaCidade.selectedNode== nil and #cidades>0 then
+						self.rclDestalhesDaCidade.selectedNode = cidades[1]; 
+					end;
+				end;
+				]]>
+			</event>
+			<event name="onSelect"><![CDATA[
+					local node = self.rclDestalhesDaCidade.selectedNode;
+					self.boxDetalhesDaCidade.node = node; 
+					self.boxDetalhesDaCidade.visible = (node ~= nil);
+				]]>
+			</event>
+			<event name="onCompare"><![CDATA[
+				-- Esse codigo organiza a ordem dos objetos da lista. 
+		        if (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
+		            return -1;
+		        elseif (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
+		            return 1;
+		        else   
+		            return 0;
+		        end;               
+		        ]]>
+			</event>
+		</recordList>
+		<!-- Info selecionada vai estar aqui -->
+		<dataScopeBox left="210" top="0" width="1030" height="600" name="boxDetalhesDaCidade" visible="false">
+			<scrollBox align="client">
+				<rectangle left="0" top="0" width="1010" height="2285" color="black"/>
+
+				<label left="0" top="5" width="100" height="20" text="Tamanho" horzTextAlign="center"/>
+				<comboBox left="90" top="5" width="130" height="20" field="tamanho" items="{'Lugarejo','Povoado','Aldeia','Vila Pequena','Vila Grande','Cidade Pequena','Cidade Grande','Metrópole','Metrópole Planar'}" fontSize="11"/>
+
+				<label left="200" top="5" width="100" height="20" text="Tipo" horzTextAlign="center"/>
+				<comboBox left="280" top="5" width="100" height="20" field="tipo" name="cidade_tipo" items="{'Rural','Fronteira','Civil','Urbana'}" hint="" fontSize="11">
+					<event name="onChange">
+						local node = self.boxDetalhesDaCidade.node;
+						if node==nil then return end;
+
+						local combobox = self:findControlByName("cidade_tipo");
+						if node.tipo=="Rural" then
+							combobox.hint = "A cidade fica em uma região isolada ou distante de outros lugares possuindo muitos habitantes de classes ligadas à natureza. Possuem 25% menos riquezas que outras cidades.";
+						elseif node.tipo=="Fronteira" then
+							combobox.hint = "A cidade fica perto da borda de duas regiões e por isso possui muitos habitantes temporários (mercadores, aventureiros, viajantes) possuindo como moradores personagens de classes urbanas, mas sendo possível encontrar personagens de classes diferentes em épocas diferentes.";
+						elseif node.tipo=="Civil" then
+							combobox.hint = "Estas regiões são habitas de forma similar as fronteiras, mas sem o grande número de visitantes. Portanto é mais difícil de encontrar personagens de classes muito diferentes.";
+						elseif node.tipo=="Urbana" then
+							combobox.hint = "Regiões densamente habitadas por diversos tipos de pessoas. É possível encontrar uma variedade maior de habitantes do que uma área de fronteira e em qualquer época. Possuem 25% mais riquezas que outras cidades.";
+						end;
+					</event>
+				</comboBox>
+
+				<label left="400" top="5" width="100" height="20" text="Composição Racial" horzTextAlign="center" fontSize="11"/>
+				<comboBox left="500" top="5" width="130" height="20" field="composicao" name="cidade_composicao" items="{'Isolada','Miscigenada','Integrada'}" fontSize="11">
+					<event name="onChange">
+						local node = self.boxDetalhesDaCidade.node;
+						if node==nil then return end;
+
+						local combobox = self:findControlByName("cidade_composicao");
+						if node.composicao=="Isolada" then
+							combobox.hint = "Uma raça principal.";
+						elseif node.composicao=="Miscigenada" then
+							combobox.hint = "Algumas raças principais, mas uma boa porção de outras raças.";
+						elseif node.composicao=="Integrada" then
+							combobox.hint = "Divisão parcialmente igualitária de raças";
+						end;
+					</event>
+				</comboBox>
+
+				<label left="620" top="5" width="100" height="20" text="Economia" horzTextAlign="center" fontSize="11"/>
+				<comboBox left="700" top="5" width="100" height="20" field="economia" name="cidade_economia" items="{'Fabricação','Agropecuária','Exploração','Vendas'}" fontSize="11">
+					<event name="onChange">
+						local node = self.boxDetalhesDaCidade.node;
+						if node==nil then return end;
+
+						local combobox = self:findControlByName("cidade_economia");
+						if node.economia =="Fabricação" then
+							combobox.hint = "Está cidade tem como principal atividade economica a compra de material prima para produção de objetos que são revendidos. ";
+						elseif node.economia =="Agropecuária" then
+							combobox.hint = "Está cidade tem como principal atividade economica a exportação de alimentos.";
+						elseif node.economia =="Exploração" then
+							combobox.hint = "Está cidade tem como principal atividade economica a exploração de recursos naturais. ";
+						elseif node.economia =="Vendas" then
+							combobox.hint = "Está cidade tem como principal atividade economica o comercio, sendo um centro de comprar e vendas. ";
+						end;
+					</event>
+				</comboBox>
+
+				<button left="900" top="5" width="100" height="45" text="Aleatorio" horzTextAlign="center" fontSize="15" hint="Cria uma cidade aleatoria. ">
+					<event name="onClick"><![CDATA[
+						local node = self.boxDetalhesDaCidade.node;
+						if node==nil then return end;
+
+						if node.tamanho == nil or node.tamanho == "" then
+							local tamanhos = {"Lugarejo","Povoado","Aldeia","Vila Pequena","Vila Grande","Cidade Pequena","Cidade Grande","Metrópole","Metrópole Planar"};
+							local index = math.random(9);
+
+							node.tamanho = tamanhos[index];
+						end;
+
+						if node.tipo == nil or node.tipo == "" then
+							local tipos = {"Rural","Fronteira","Civil","Urbana"};
+							local index = math.random(4);
+
+							node.tipo = tipos[index];
+						end;
+
+						if node.populacao == nil or node.populacao == "" then
+
+							if node.tamanho == "Lugarejo" then
+								node.populacao = math.random(20,80);
+							elseif node.tamanho == "Povoado" then
+								node.populacao = math.random(81,400);
+							elseif node.tamanho == "Aldeia" then
+								node.populacao = math.random(401,900);
+							elseif node.tamanho == "Vila Pequena" then
+								node.populacao = math.random(901,2000);
+							elseif node.tamanho == "Vila Grande" then
+								node.populacao = math.random(2001,5000);
+							elseif node.tamanho == "Cidade Pequena" then
+								node.populacao = math.random(5001,12000);
+							elseif node.tamanho == "Cidade Grande" then
+								node.populacao = math.random(12001,25000);
+							elseif node.tamanho == "Metrópole" then
+								node.populacao = math.random(25001,100000);
+							elseif node.tamanho == "Metrópole Planar" then
+								node.populacao = math.random(100001,200000);
+							end;
+
+						end;
+
+						if node.composicao == nil or node.composicao == "" then
+							local composicoes = {"Isolada","Miscigenada","Integrada"};
+							local index = math.random(3);
+
+							node.composicao = composicoes[index];
+						end;
+
+						if node.economia == nil or node.economia == "" then
+							local economias = {"Fabricação","Agropecuária","Exploração","Vendas"};
+							local index = math.random(4);
+
+							node.economia = economias[index];
+						end;
+
+						if node.politica_1~=true and node.politica_2~=true and node.politica_3~=true and node.politica_4~=true and node.politica_5~=true and node.politica_6~=true and node.politica_7~=true and node.politica_8~=true and node.politica_9~=true then
+							local index = math.random(9);
+
+							node["politica_" .. index] = true;
+						end;
+
+						if node.militarizacao == nil or node.militarizacao == "" then
+							local militarizacoes = {"Baixo","Médio","Alto","Guerra"};
+							local index = math.random(4);
+
+							node.militarizacao = militarizacoes[index];
+						end;
+
+						]]>
+					</event>
+				</button>
+
+				<label left="0" top="30" width="100" height="20" text="População" horzTextAlign="center" fontSize="11" hint="Quantidade de adultos. Crianças e Idosos é cerca de 30% desse valor. "/>
+				<edit left="100" top="30" width="100" height="20" field="populacao" type="number" min="0">
+					<event name="onChange"><![CDATA[
+						local node = self.boxDetalhesDaCidade.node;
+						if node==nil then return end;
+
+						local populacao = tonumber(node.populacao) or 0;
+
+						if populacao <=80 then
+							node.tamanho = "Lugarejo";
+						elseif populacao <=400 then
+							node.tamanho = "Povoado";
+						elseif populacao <=900 then
+							node.tamanho = "Aldeia";
+						elseif populacao <=2000 then
+							node.tamanho = "Vila Pequena";
+						elseif populacao <=5000 then
+							node.tamanho = "Vila Grande";
+						elseif populacao <=12000 then
+							node.tamanho = "Cidade Pequena";
+						elseif populacao <=25000 then
+							node.tamanho = "Cidade Grande";
+						elseif populacao <=100000 then
+							node.tamanho = "Metrópole";
+						else
+							node.tamanho = "Metrópole Planar";
+						end;
+						]]>
+					</event>
+				</edit>
+
+				<label left="200" top="30" width="100" height="20" text="Limite de PO" horzTextAlign="center" fontSize="11" hint="Preço do item mais caro da cidade. "/>
+				<edit left="300" top="30" width="100" height="20" field="limitePO"/>
+
+				<label left="400" top="30" width="100" height="20" text="Riqueza Total" horzTextAlign="center" fontSize="11" hint="Quantidade de dinheiro que pode ser usada em vendas e compras de um mesmo tipo de item. "/>
+				<edit left="500" top="30" width="100" height="20" field="riqueza"/>
+
+				<dataLink fields="{'populacao','tipo'}">
+					<event name="onChange"><![CDATA[
+						local node = self.boxDetalhesDaCidade.node;
+						if node==nil then return end;
+
+						local populacao = tonumber(node.populacao) or 0;
+						local mult = 4;
+
+						if populacao >100000 then
+							mult = 6;
+						end;
+
+						-- Alterar mult por tipo de cidade
+						if node.tipo=="Rural" then
+							mult = mult * 0.75;
+						elseif node.tipo=="Urbana" then
+							mult = mult * 1.25;
+						end;
+
+						-- Limite de PO
+						local limite = math.floor(mult * populacao);
+						local riqueza = math.floor(limite * populacao / 20);
+						
+						while true do  
+							limite, k = string.gsub(limite, "^(-?%d+)(%d%d%d)", '%1,%2')
+							if (k==0) then
+							  break
+							end
+						end
+						limite = string.gsub(limite, ",", ".");
+
+						while true do  
+							riqueza, k = string.gsub(riqueza, "^(-?%d+)(%d%d%d)", '%1,%2')
+							if (k==0) then
+							  break
+							end
+						end
+						riqueza = string.gsub(riqueza, ",", ".");
+
+						node.limitePO = limite;
+
+						-- Riqueza Total
+						node.riqueza = riqueza;
+
+						]]>
+					</event>
+				</dataLink>
+
+				<label left="5" top="55" width="1000" height="20" text="Descrição" horzTextAlign="center"/>
+				<richEdit left="5" top="80" width="1000" height="400" field="descricao" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+
+				<label left="5" top="485" width="1000" height="20" text="Historia" horzTextAlign="center"/>
+				<richEdit left="5" top="510" width="1000" height="400" field="historia" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+
+				<label left="5" top="915" width="1000" height="20" text="Boatos" horzTextAlign="center"/>
+				<richEdit left="5" top="940" width="1000" height="300" field="historia" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+
+				<label left="0" top="1245" width="100" height="20" text="Politica" horzTextAlign="center"/>
+				<checkBox left="100" top="1245" width="100" height="20" field="politica_1" text="Monarquia" hint="O poder é hereditário e possui apenas duas classes sociais: nobreza e plebe."/>
+				<checkBox left="200" top="1245" width="100" height="20" field="politica_2" text="Tribal" hint="O poder é dado ao mais capaz e se ele for julgado incapaz pode perder esse direito."/>
+				<checkBox left="300" top="1245" width="100" height="20" field="politica_3" text="Feudal" hint="O poder é hereditário, mas possui varias classes sociais de nobreza e plebe."/>
+				<checkBox left="400" top="1245" width="100" height="20" field="politica_4" text="República" hint="O governo é criado através de eleições onde apenas os representantes do povo (como um conselho ou assembleia) podem votar e escolher o seu líder."/>
+				<checkBox left="500" top="1245" width="100" height="20" field="politica_5" text="Democracia" hint="Todos os cidadãos têm o direito de votar para escolher seu líder. Observe que nem todos da sociedade podem ser considerados cidadãos, mas diferente da república é um grupo muito maior."/>
+				<checkBox left="600" top="1245" width="100" height="20" field="politica_6" text="Magocracia" hint="O governante é o conjurador arcano mais poderoso."/>
+				<checkBox left="700" top="1245" width="100" height="20" field="politica_7" text="Teocracia" hint="O governante é o conjurador divino mais poderoso de determinada religião."/>
+				<checkBox left="800" top="1245" width="100" height="20" field="politica_8" text="Plutocracia" hint="O poder é exercido pela pessoa mais rica."/>
+				<checkBox left="900" top="1245" width="100" height="20" field="politica_9" text="Outro" hint=""/>
+
+				<label left="0" top="1270" width="100" height="20" text="Militarização" horzTextAlign="center"/>
+				<comboBox left="100" top="1270" width="100" height="20" field="militarizacao" name="cidade_militarizacao" items="{'Baixo','Médio','Alto','Guerra'}" hint="" fontSize="11">
+					<event name="onChange">
+						local node = self.boxDetalhesDaCidade.node;
+						if node==nil then return end;
+
+						local mult = 1;
+						local combobox = self:findControlByName("cidade_militarizacao");
+						if node.militarizacao=="Baixo" then
+							combobox.hint = "-50% dos guardas e reservistas.";
+							mult = 0.5;
+						elseif node.militarizacao=="Médio" then
+							combobox.hint = "Quantidade normal de guardas e reservistas.";
+						elseif node.militarizacao=="Alto" then
+							combobox.hint = "+50% guardas e reservistas.";
+							mult = 1.5;
+						elseif node.militarizacao=="Guerra" then
+							combobox.hint = "+100% guardas e reservistas, considere que os reservistas vão estar prontos para lutar a qualquer hora (não é necessário esperar uma hora)";
+							mult = 2;
+						end;
+					</event>
+				</comboBox>
+
+				<label left="200" top="1270" width="100" height="20" text="Guardas" horzTextAlign="center" hitTest="true" hint="Número de guardas patrulhando as ruas a qualquer momento e diariamente. "/>
+				<rectangle left="300" top="1270" width="100" height="20" color="black" strokeColor="white" strokeSize="1"/>
+				<label left="300" top="1270" width="100" height="20" field="guardas" horzTextAlign="center" hitTest="true" hint="Número de guardas patrulhando as ruas a qualquer momento e diariamente. "/>
+
+				<label left="400" top="1270" width="100" height="20" text="Reservistas" horzTextAlign="center" hitTest="true" hint="Número de guardas não oficiais ou de folga. Podem ser chamados para ajudar em caso de emergencias e demoram cerca de uma hora para todos chegarem."/>
+				<rectangle left="500" top="1270" width="100" height="20" color="black" strokeColor="white" strokeSize="1"/>
+				<label left="500" top="1270" width="100" height="20" field="reservistas" horzTextAlign="center" hitTest="true" hint="Número de guardas não oficiais ou de folga. Podem ser chamados para ajudar em caso de emergencias e demoram cerca de uma hora para todos chegarem."/>
+
+				<dataLink fields="{'populacao','militarizacao'}">
+					<event name="onChange">
+						local node = self.boxDetalhesDaCidade.node;
+						if node==nil then return end;
+
+						local mult = 1;
+						if node.militarizacao=="Baixo" then
+							mult = 0.5;
+						elseif node.militarizacao=="Médio" then
+						elseif node.militarizacao=="Alto" then
+							mult = 1.5;
+						elseif node.militarizacao=="Guerra" then
+							mult = 2;
+						end;
+
+						local populacao = tonumber(node.populacao) or 0;
+
+						local guardas = math.max(math.floor(populacao * mult / 100), 1);
+						local reservistas = math.max(math.floor(populacao * mult / 20), 1);
+
+						node.guardas = guardas;
+						node.reservistas = reservistas;
+					</event>
+				</dataLink>
+				
+				<label left="5" top="1295" width="1000" height="20" text="Poderes" horzTextAlign="center" hitTest="true" hint="Descreva a forma de governo e quem são os poderes da cidade, assim como sua relação entre si."/>
+				<richEdit left="5" top="1320" width="1000" height="300" field="poderes" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+
+				<label left="5" top="1625" width="1000" height="20" text="Pessoas Importantes" horzTextAlign="center"/>
+				<richEdit left="5" top="1650" width="1000" height="300" field="pessoas" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+
+				<label left="5" top="1955" width="1000" height="20" text="Organizações" horzTextAlign="center"/>
+				<richEdit left="5" top="1980" width="1000" height="300" field="organizacoes" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+
+			</scrollBox>
+		</dataScopeBox>
+	</scrollBox>
+</form>
