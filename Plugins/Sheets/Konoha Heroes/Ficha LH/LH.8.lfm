@@ -13,6 +13,7 @@
 
 			<label left="0" top="120" width="200" height="20" text="Ficha modificado por:" horzTextAlign="center"/>
 			<label left="0" top="145" width="200" height="20" text="HashBR - Túlio" horzTextAlign="center"/>
+			<label left="0" top="170" width="200" height="20" text="Desenho: Átilla Gallio" horzTextAlign="center"/>
 		</layout>					
 	</scrollBox>
 </form>

@@ -4,22 +4,16 @@
         <tab title="Principal">
             <import file="LH.1.lfm"/>
         </tab>
-        <tab name="jutsusNINGENTAI" visible="false" title="NIN/GEN/TAI">
+        <tab name="jutsusNINGENTAI" visible="false" title="Jutsus e Clan">
             <import file="LH.2.lfm"/>
         </tab>       
-        <tab name="basicoclan" visible="false" title="Básicos/Clan">
-            <import file="LH.3.lfm"/>
-        </tab>
-        <tab name="jutsusOUTROS" visible="false" title="KEN/Kuchyose/EstLuta">
-            <import file="LH.4.lfm"/>
-        </tab>
-        <tab name="inventario" visible="false" title="Inventario">
+        <tab name="inventario" visible="false" title="Inventário">
             <import file="LH.5.lfm"/>
         </tab>
 		<tab title="Descrições">
             <import file="LH.6.lfm"/>
         </tab>
-		<tab title="Conexões">
+		<tab name="anot" visible="false" title="Anotações">
             <import file="LH.7.lfm"/>
         </tab>
 		<tab title="Creditos">

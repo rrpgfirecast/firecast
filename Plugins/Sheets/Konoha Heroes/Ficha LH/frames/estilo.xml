@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="200" height="170">
+        <draw>
+                <!-- Imagem de fundo -->               
+                <image left="0" top="0" right="200" bottom="170" overflowX="stretch" overflowY="stretch">
+                        <anchors left="true" top="true" bottom="true" right="true"/>
+                        <source url="../images/estilo.png" left="0" right="200" top="0" bottom="170"/>
+                </image>                               
+        </draw>
+</frame>

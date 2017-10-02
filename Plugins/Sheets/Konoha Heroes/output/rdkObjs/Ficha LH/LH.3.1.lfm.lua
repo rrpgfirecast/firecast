@@ -27,13 +27,12 @@ function newfrmLH3_1()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmLH3_1");
-    obj:setHeight(50);
+    obj:setHeight(35);
     obj:setTheme("dark");
 
     obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setAlign("client");
-    obj.layout1:setHeight(300);
     obj.layout1:setMargins({left=4, right=4, top=4, bottom=4});
     obj.layout1:setName("layout1");
 
@@ -47,16 +46,15 @@ function newfrmLH3_1()
     obj.label1 = gui.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setAlign("client");
-    obj.label1:setWidth(290);
     obj.label1:setText("Teste de label");
-    obj.label1:setField("campoBasico");
+    obj.label1:setField("campoJutsu");
     obj.label1:setMargins({left=4});
     obj.label1:setName("label1");
 
     obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.layout1);
-    obj.dataLink1:setField("campoBasico");
-    obj.dataLink1:setDefaultValue("Nome do Jutsu");
+    obj.dataLink1:setField("campoJutsu");
+    obj.dataLink1:setDefaultValue("Nome do Jutsu Básico");
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
