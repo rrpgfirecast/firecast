@@ -27,7 +27,7 @@ function newfrmLH2_3()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmLH2_3");
-    obj:setHeight(50);
+    obj:setHeight(35);
     obj:setTheme("dark");
 
     obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
@@ -47,14 +47,14 @@ function newfrmLH2_3()
     obj.label1:setParent(obj.layout1);
     obj.label1:setAlign("client");
     obj.label1:setText("Teste de label");
-    obj.label1:setField("campoTaijutsu");
+    obj.label1:setField("campoJutsu");
     obj.label1:setMargins({left=4});
     obj.label1:setName("label1");
 
     obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.layout1);
-    obj.dataLink1:setField("campoTaijutsu");
-    obj.dataLink1:setDefaultValue("Nome do Jutsu");
+    obj.dataLink1:setField("campoJutsu");
+    obj.dataLink1:setDefaultValue("Nome do Taijutsu");
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",

@@ -135,6 +135,16 @@ function newfrmLH8()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
+    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7:setParent(obj.layout1);
+    obj.label7:setLeft(0);
+    obj.label7:setTop(170);
+    obj.label7:setWidth(200);
+    obj.label7:setHeight(20);
+    obj.label7:setText("Desenho: Átilla Gallio");
+    obj.label7:setHorzTextAlign("center");
+    obj.label7:setName("label7");
+
     function obj:_releaseEvents()
     end;
 
@@ -154,6 +164,7 @@ function newfrmLH8()
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;

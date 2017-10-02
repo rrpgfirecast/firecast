@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmLH7_1" align="client" height="565" theme="dark">
+       <layout left="0" top="0" width="400" height="280">
+			<rectangle left="0" top="0" width="400" height="280" color="black" xradius="15" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Conexões Públicas" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="240" field="anotacoes1"/>
+        </layout>
+		
+		<layout left="410" top="0" width="400" height="280">
+			<rectangle left="0" top="0" width="400" height="280" color="black" xradius="15" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Conexões Privadas" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="240" field="anotacoes2"/>
+        </layout>
+		
+		<layout left="0" top="285" width="400" height="280">
+			<rectangle left="0" top="0" width="400" height="280" color="black" xradius="15" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Anotações" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="240" field="anotacoes3"/>
+        </layout>
+
+		<layout left="410" top="285" width="400" height="280">
+			<rectangle left="0" top="0" width="400" height="280" color="black" xradius="15" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Memória do Personagem" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="240" field="anotacoes4"/>
+        </layout>
+</form>

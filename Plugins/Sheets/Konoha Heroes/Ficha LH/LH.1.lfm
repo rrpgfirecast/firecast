@@ -54,8 +54,6 @@
 						else
 							sheet.$(field)_teste = "Kage";							
 						end;
-
-						
 					end;
 				end;	
 				]]>
@@ -67,19 +65,19 @@
 			local function vida_status();
 				if sheet~=nil then
 					sheet.vida_total =  (tonumber(sheet.vida_base ) or 0) * 
-											(tonumber(sheet.vida_mult ) or 1);				
+										(tonumber(sheet.vida_mult ) or 1);				
 				end;
 			end;
 			local function cha_status();
 				if sheet~=nil then
 					sheet.cha_total =  (tonumber(sheet.cha_base ) or 0) * 
-											(tonumber(sheet.cha_mult ) or 1);				
+										(tonumber(sheet.cha_mult ) or 1);				
 				end;
 			end;
 			local function sta_status();
 				if sheet~=nil then
 					sheet.sta_total =  (tonumber(sheet.sta_base ) or 0) * 
-											(tonumber(sheet.sta_mult ) or 1);				
+										(tonumber(sheet.sta_mult ) or 1);				
 				end;
 			end;	
 			]]>
@@ -119,34 +117,35 @@
 			</layout>
 		</layout>
 
-		<layout name="atributos_todos" visible="false" left="0" top="100" width="300" height="230">
+		<layout left="0" top="100" width="300" height="230">
 			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
 			<label left="5" top="5" width="290" height="20" text="ATRIBUTOS" horzTextAlign="center"/>
-				
-			<layout left="5" top="30" width="300" height="25">
-				<label left="50" top="0" width="35" height="25" text="Base" fontSize="11"/>
-				<label left="90" top="0" width="35" height="25" text="Multi" fontSize="11"/>
-				<label left="130" top="0" width="35" height="25" text="Extra" fontSize="11"/>
-				<label left="175" top="0" width="35" height="25" text="Total" fontSize="10"/>
-				<label left="235" top="0" width="35" height="25" text="Rank" fontSize="13"/>
-			</layout>
-			<layout left="5" top="55" width="300" height="25">
-				<Atributo nome="VDS" field="vds"/>
-			</layout>
-			<layout left="5" top="80" width="300" height="25">
-				<Atributo nome="AFE" field="afe"/>
-			</layout>
-			<layout left="5" top="110" width="300" height="25">
-				<Atributo nome="INT" field="int"/>
-			</layout>
-			<layout left="5" top="135" width="300" height="25">
-				<Atributo nome="CCH" field="cch"/>
-			</layout>
-			<layout left="5" top="165" width="300" height="25">
-				<Atributo nome="AGI" field="agi"/>
-			</layout>
-			<layout left="5" top="190" width="300" height="25">
-				<Atributo nome="FOR" field="for"/>
+			<layout left="5" top="0" width="300" height="215" name="atributos_todos" visible="false">				
+				<layout left="5" top="30" width="300" height="25">
+					<label left="50" top="0" width="35" height="25" text="Base" fontSize="11"/>
+					<label left="90" top="0" width="35" height="25" text="Multi" fontSize="11"/>
+					<label left="130" top="0" width="35" height="25" text="Extra" fontSize="11"/>
+					<label left="175" top="0" width="35" height="25" text="Total" fontSize="10"/>
+					<label left="235" top="0" width="35" height="25" text="Rank" fontSize="13"/>
+				</layout>
+				<layout left="5" top="55" width="300" height="25">
+					<Atributo nome="VDS" field="vds"/>
+				</layout>
+				<layout left="5" top="80" width="300" height="25">
+					<Atributo nome="AFE" field="afe"/>
+				</layout>
+				<layout left="5" top="110" width="300" height="25">
+					<Atributo nome="INT" field="int"/>
+				</layout>
+				<layout left="5" top="135" width="300" height="25">
+					<Atributo nome="CCH" field="cch"/>
+				</layout>
+				<layout left="5" top="165" width="300" height="25">
+					<Atributo nome="AGI" field="agi"/>
+				</layout>
+				<layout left="5" top="190" width="300" height="25">
+					<Atributo nome="FOR" field="for"/>
+				</layout>
 			</layout>
 		</layout>
 
@@ -215,44 +214,20 @@
 			</layout>
 		</layout>
 
-		<layout name="localizacao" visible="false" left="305" top="255" width="230" height="75">
+		<layout left="305" top="255" width="230" height="75">
 			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
 			<label top="0" width="220" height="20" text="Localização Atual" horzTextAlign="center"/>
-			<edit top="25" left="5" width="220" fontSize="18" height="40" horzTextAlign="center"/>
+			<edit name="localizacao" visible="false" top="25" left="5" width="220" fontSize="18" height="40" horzTextAlign="center"/>
 		</layout>
 
 		<layout left="105" top="335" width="430" height="100">
 			<rectangle align="client" color="black" xradius="5" yradius="5" cornerType="round"/>
-			<label left="5" top="5" width="430" height="20" text="EFEITOS" horzTextAlign="center"/>
+			<label left="5" top="5" width="430" height="20" text="Bônus dos Atributos" horzTextAlign="center"/>
 
-			<textEditor left="5" top="30" width="420" height="60" field="efeitos"/>
+			<textEditor name="buffatt" visible="false" left="5" top="30" width="420" height="60" field="efeitos"/>
 		</layout>
 
-		<button left="0" top="335" width="100" height="100">
-			<!-- Coloca imagem padrão -->
-			<dataLink field="clickableImage" defaultValue="https://i.imgur.com/rSCV1fB.jpg"/>
-			<image align="client" field="clickableImage" margins="{left=5, right=5, top=5, bottom=5}" style="autoFit"/>
-
-			<script>
-				<![CDATA[
-				-- criando array das imagens que vão ser utilizadas. 
-				-- melhor usar imagens hospedadas no firedrive nesse caso
-				local pics = {	"https://i.imgur.com/rSCV1fB.jpg", 
-								"https://i.imgur.com/B2JojCZ.jpg"};
-				]]>
-			</script>
-
-			<event name="onClick"><![CDATA[
-				if sheet.imageCounter == nil then
-					sheet.imageCounter = 0;
-				end;
-				-- Contador que vai de 0 a 9 e reseta ao passar de 9
-				sheet.imageCounter = (sheet.imageCounter + 1) % 2;
-				-- pegando imagem do array. O +1 é por que arrays em lua começam em 1 e não em 0
-				sheet.clickableImage = pics[sheet.imageCounter +1];
-				]]>
-			</event>
-		</button>
+		<imageCheckBox left="0" top="335" width="100" height="100" checkedImage="images/bad.jpg" uncheckedImage="images/good.jpg"/>
 
 		<layout left="0" top="440" width="530" height="260">
 			<button left="0" top="0" height="25" width="125" text="+ Vantagem" onClick="self.rclSelector:append();"/>
@@ -297,26 +272,24 @@
 							self.inventario.visible = true;
 							self.atributos_todos.visible = true;
 							self.jutsusNINGENTAI.visible = true;
-							self.jutsusOUTROS.visible = true;
-							self.basicoclan.visible = true;
+							--self.jutsusOUTROS.visible = true;
+							--self.basicoclan.visible = true;
 							self.perso.visible = true;
 							self.hist.visible = true;
 							self.localizacao.visible = true;
-							self.con_priv.visible = true;
 							self.anot.visible = true;
-							self.memoria.visible = true;
+							self.buffatt.visible = true;
 						else
 							self.inventario.visible = false;
 							self.atributos_todos.visible = false;
 							self.jutsusNINGENTAI.visible = false;
-							self.jutsusOUTROS.visible = false;
-							self.basicoclan.visible = false;
+							--self.jutsusOUTROS.visible = false;
+							--self.basicoclan.visible = false;
 							self.perso.visible = false;
 							self.hist.visible = false;
 							self.localizacao.visible = false;
-							self.con_priv.visible = false;
 							self.anot.visible = false;
-							self.memoria.visible = false;							
+							self.buffatt.visible = false;					
 							self.popMeuPopup:show('bottom', self.descricoes);
 						end;
 					</event>
