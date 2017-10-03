@@ -292,11 +292,11 @@ type
     property Enabled;
     property Visible;
   end;
-{
+
 type
   TSDK3TabControl = class(TCustomTabControl)
   private
-
+         FTab: Integer;
   protected
 
   public
@@ -304,9 +304,59 @@ type
   published
     property Align;
     property Enabled;
+    property TabIndex: Integer read FTab write FTab;
     property Visible;
   end;
+{
+type
+  TSDK3Rectangle = class(TShape)
+  private
+
+  protected
+
+  public
+
+  published
+
+  end;
 }
+
+type
+  TSDK3RichEdit = class(TCustomMemo)
+  private
+    FROnly, FshowToolbar, FhideSelection: Boolean;
+    FField: String;
+    FBackColor, fdefaultFontColor: TColor;
+    FdefaultFontSize: Double;
+  protected
+
+  public
+
+  published
+    property Align;
+    property BackgroundColor: TColor read FBackColor write FBackColor;
+    property DefaultFontColor: Tcolor read FdefaultFontColor write FdefaultFontColor;
+    property DefaultFontSize: Double read FdefaultFontSize write FdefaultFontSize;
+    property Enabled;
+    property Field: String read FField write FField;
+    property ReadyOnly: Boolean read FROnly write FROnly;
+    property ShowToolbar: Boolean read FshowToolbar write FshowToolbar;
+    property HideSelection: Boolean read FhideSelection write FhideSelection;
+    property Visible;
+  end;
+
+type
+  TSDK3ScrollBox = class(TScrollBox)
+  private
+
+  protected
+
+  public
+
+  published
+
+  end;
+
 procedure Register;
 
 implementation
@@ -316,7 +366,8 @@ begin
   {$I componentes1_icon.lrs}
   RegisterComponents('RRPGSDK3',[TSDK3Button, TSDK3ColorComboBox, TSDK3ComboBox,
   TSDK3CheckBox, TSDK3Edit, TSDK3FlowLayout, TSDK3Image, TSDK3Layout, TSDK3FlowPart,
-  TSDK3ImageCheckBox, TSDK3Label, TSDK3ProgressBar, TSDK3RadioButton]);
+  TSDK3ImageCheckBox, TSDK3Label, TSDK3ProgressBar, TSDK3RadioButton, TSDK3TabControl,
+  TCustomPage, TSDK3RichEdit, TSDK3ScrollBox]);
 end;
 
 end.

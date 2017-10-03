@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Menus,
-  ExtCtrls, StdCtrls, LCLIntf, Buttons, DbCtrls, ComCtrls,
+  ExtCtrls, StdCtrls, LCLIntf, Buttons, DbCtrls, ComCtrls, RichMemo,
   componentes1;
 
 type
@@ -20,7 +20,10 @@ type
     edtDataType: TEdit;
     edtTitle: TEdit;
     edtNome: TEdit;
+    SDK3Button1: TSDK3Button;
+    SDK3Edit1: TSDK3Edit;
     SDK3Label1: TSDK3Label;
+    SDK3ScrollBox1: TSDK3ScrollBox;
     ToolBar1: TToolBar;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
@@ -49,11 +52,16 @@ type
     function MakeLabel(item: TSDK3Label): String;
     function MakeProgressBar(item: TSDK3ProgressBar): String;
     function MakeRadioButton(item: TSDK3RadioButton): String;
+    function MakeTabControl(item: TSDK3TabControl): String;
+    function MakeTab(item: TCustomPage): String;
+    function MakeRichEdit(item: TSDK3RichEdit): String;
+    function MakeScrollBox(item: TSDK3ScrollBox): String;
 
     procedure FormCreate(Sender: TObject);
     procedure Finalizar(Sender: TObject);
     function geraTags(comp: TComponent; memo: TMemo): String;
     function PanXpan(comp: TComponent): String;
+
   private
     { private declarations }
   public
@@ -278,6 +286,61 @@ begin
      result := Replaces(s);
 end;
 
+function TfrmMain.MakeTabControl(item: TSDK3TabControl): String;
+var
+  s: String;
+begin
+     s := '<tabControl enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     LowerCase(booltostr(item.Visible)) + '" '+
+     'tabIndex="' + inttostr(item.TabIndex) + '" ';
+     s := s  + Aligns(item) + '>';
+     result := Replaces(s);
+end;
+
+function TfrmMain.MakeTab(item: TCustomPage): String;
+var
+  s: String;
+begin
+     s := '<tab enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     LowerCase(booltostr(item.Visible)) + '" '+
+     'title="' + item.Name + '" ';
+
+     s := s  + Aligns(item) + '>';
+     result := Replaces(s);
+end;
+
+function TfrmMain.MakeRichEdit(item: TSDK3RichEdit): String;
+var
+  s: String;
+begin
+     s := '<richEdit enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     LowerCase(booltostr(item.Visible)) + '" '+
+     'field="' + item.Field + '" readyOnly="'+LowerCase(booltostr(item.ReadyOnly)) +
+     '" backgroundColor="#' + TColorToHex(item.BackgroundColor) +
+     '" defaultFontColor="#' + TColorToHex(item.DefaultFontColor) +
+     '" defaultFontSize="' + floattostr(item.DefaultFontSize) +
+     '" showToolbar="' +LowerCase(booltostr(item.ShowToolbar)) +
+     '" hideSelection="' + LowerCase(booltostr(item.HideSelection)) + '" '+#13+#9+#9;
+
+     s := s  + Aligns(item) + '/>';
+     result := Replaces(s);
+end;
+
+function TfrmMain.MakeScrollBox(item: TSDK3ScrollBox): String;
+var
+  s: String;
+begin
+     s := '<scrollBox enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     LowerCase(booltostr(item.Visible)) + '" ';
+
+     s := s  + Aligns(item) + '>';
+     result := Replaces(s);
+end;
+
 procedure TfrmMain.Finalizar(Sender: TObject);
 var
   memo: TMemo;
@@ -332,7 +395,10 @@ begin
 
             if (Self.Components[i].ClassName <> 'TSDK3Layout') and
              (Self.Components[i].ClassName <> 'TSDK3FlowLayout') and
-             (Self.Components[i].ClassName <> 'TSDK3FlowPart')  then
+             (Self.Components[i].ClassName <> 'TSDK3FlowPart')  and
+             (Self.Components[i].ClassName <> 'TSDK3TabControl')  and
+             (Self.Components[i].ClassName <> 'TCustomPage')  and
+             (Self.Components[i].ClassName <> 'TSDK3ScrollBox')  then
             begin
                  memo.Text := geraTags(Components[i], memo);
             end
@@ -357,9 +423,29 @@ begin
                    memo.Text := MakeFlowPart(Components[i] as TSDK3FlowPart) + #13;
                    memo.Text := memo.Text + panXpan(Components[i]) + #13;
                    memo.Text := memo.Text +  #13 +'</flowPart>' + #13;
+              end
+              else
+              if (Self.Components[i].ClassName = 'TSDK3TabControl') then
+              begin
+                   memo.Text := MakeTabControl(Components[i] as TSDK3TabControl) + #13;
+                   memo.Text := memo.Text + panXpan(Components[i]) + #13;
+                   memo.Text := memo.Text +  #13 +'</tabControl>' + #13;
+              end
+              else
+              if (Self.Components[i].ClassName = 'TCustomPage') then
+              begin
+                   memo.Text := MakeTab(Components[i] as TCustomPage) + #13;
+                   memo.Text := memo.Text + panXpan(Components[i]) + #13;
+                   memo.Text := memo.Text +  #13 +'</tab>' + #13;
+              end
+              else
+              if (Self.Components[i].ClassName = 'TSDK3ScrollBox') then
+              begin
+                   memo.Text := MakeScrollBox(Components[i] as TSDK3ScrollBox) + #13;
+                   memo.Text := memo.Text + panXpan(Components[i]) + #13;
+                   memo.Text := memo.Text +  #13 +'</scrollBox>' + #13;
               end;
             end;
-
           end;
      end;
 
@@ -446,6 +532,12 @@ begin
          begin
                 memo.Lines.add(#9 + MakeRadioButton((comp as TSDK3RadioButton)));
                 memo.lines.add('');
+         end
+         else
+         if comp is TSDK3RichEdit then
+         begin
+                memo.Lines.add(#9 + MakeRichEdit((comp as TSDK3RichEdit)));
+                memo.lines.add('');
          end;
          result := memo.text;
 end;
@@ -491,7 +583,11 @@ begin
      if item.Align <> alClient then
      begin
           if item.Align = alNone then
-               f := 'left="' + inttostr(item.Left) + '" top="' + inttostr(item.top) +
+               if (item.GetParentComponent = frmMain) then
+                  f := 'left="' + inttostr(item.Left) + '" top="' + inttostr(item.top - 26) +
+               '" width="' + inttostr(item.Width) + '" height="' + inttostr(item.Height) + '"'
+               else
+                  f := 'left="' + inttostr(item.Left) + '" top="' + inttostr(item.top) +
                '" width="' + inttostr(item.Width) + '" height="' + inttostr(item.Height) + '"'
           else
           begin
@@ -523,7 +619,11 @@ begin
      if itemA <> alClient then
      begin
           if itemA = alNone then
-               f := 'left="' + inttostr(item.Left) + '" top="' + inttostr(item.top - 26) +
+               if (item.GetParentComponent = frmMain) then
+                  f := 'left="' + inttostr(item.Left) + '" top="' + inttostr(item.top - 26) +
+               '" width="' + inttostr(item.Width) + '" height="' + inttostr(item.Height) + '"'
+               else
+                  f := 'left="' + inttostr(item.Left) + '" top="' + inttostr(item.top) +
                '" width="' + inttostr(item.Width) + '" height="' + inttostr(item.Height) + '"'
           else
           begin
@@ -573,6 +673,12 @@ begin
      s := stringReplace(s, 'autoSize="0"', 'autoSize="true"', [rfReplaceALL]);
      s := stringReplace(s, 'mouseGlow="-1"', 'mouseGlow="false"', [rfReplaceALL]);
      s := stringReplace(s, 'mouseGlow="0"', '', [rfReplaceALL]);
+     s := stringReplace(s, 'readyOnly="0"', '', [rfReplaceALL]);
+     s := stringReplace(s, 'readyOnly="-1"', 'readyOnly="true"', [rfReplaceALL]);
+     s := stringReplace(s, 'showToolbar="0"', 'showToolbar="false"', [rfReplaceALL]);
+     s := stringReplace(s, 'showToolbar="-1"', '', [rfReplaceALL]);
+     s := stringReplace(s, 'hideSelection="0"', 'hideSelection="false"', [rfReplaceALL]);
+     s := stringReplace(s, 'hideSelection="-1"', '', [rfReplaceALL]);
 
      s := stringReplace(s, 'hint=""', '', [rfReplaceALL]);
      s := stringReplace(s, 'fontSize="0"', '', [rfReplaceALL]);
@@ -599,6 +705,7 @@ begin
      s := stringReplace(s, 'maxScaledWidth="0"', '', [rfReplaceALL]);
      s := stringReplace(s, 'avoidScale="0"', '', [rfReplaceALL]);
      s := stringReplace(s, 'adjustHeightToLine="0"', '', [rfReplaceALL]);
+     s := stringReplace(s, 'defaultFontSize="0"', '', [rfReplaceALL]);
 
      s := stringReplace(s, 'stepSizes=""', '', [rfReplaceALL]);
      s := stringReplace(s, 'frameStyle=""', '', [rfReplaceALL]);

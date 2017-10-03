@@ -141,4 +141,35 @@ object frmMain: TfrmMain
     Font.Style = [fsBold]
     Text = 'Monte a sua tela aqui utilizando os componentes da paleta /RRPGSDK3/'
   end
+  object SDK3ScrollBox1: TSDK3ScrollBox
+    Left = 144
+    Height = 150
+    Top = 176
+    Width = 150
+    HorzScrollBar.Page = 129
+    VertScrollBar.Page = 129
+    ClientHeight = 129
+    ClientWidth = 129
+    TabOrder = 1
+    object SDK3Button1: TSDK3Button
+      Left = 112
+      Height = 25
+      Top = 32
+      Width = 75
+      Caption = 'SDK3Button1'
+    end
+    object SDK3Edit1: TSDK3Edit
+      Left = 32
+      Height = 23
+      Top = 120
+      Width = 80
+      Transparent = False
+      IsPasswordEdit = False
+      Min = 0
+      Max = 0
+      DecimalPlaces = 0
+      AsNumber = 0
+      Text = 'SDK3Edit1'
+    end
+  end
 end

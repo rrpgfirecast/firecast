@@ -1,12 +1,12 @@
 object frmMain: TfrmMain
   Left = 0
-  Height = 492
+  Height = 484
   Top = 0
-  Width = 644
+  Width = 653
   ActiveControl = chkTagForm
-  Caption = 'frmMain'
-  ClientHeight = 492
-  ClientWidth = 644
+  Caption = 'RRPG SDK3 Sheet Designer '
+  ClientHeight = 484
+  ClientWidth = 653
   Color = clWhite
   OnCreate = FormCreate
   LCLVersion = '1.6.4.0'
@@ -15,7 +15,7 @@ object frmMain: TfrmMain
     Left = 0
     Height = 26
     Top = 0
-    Width = 644
+    Width = 653
     Caption = 'ToolBar1'
     TabOrder = 0
     object chkTagForm: TCheckBox
@@ -132,28 +132,44 @@ object frmMain: TfrmMain
       Text = 'NOME_AQUI'
     end
   end
-  object SDK3FlowLayout1: TSDK3FlowLayout
-    Left = 88
-    Height = 160
-    Top = 144
-    Width = 202
-    AutoHeight = False
-    MaxControlsPerLine = 0
-    MaxColumns = 0
-    LineSpacing = 0
-    ContentWidth = 0
-    ContentHeight = 0
-    object SDK3FlowPart1: TSDK3FlowPart
-      Left = 1
-      Height = 50
-      Top = 1
-      Width = 170
-      MinWidth = 0
-      MaxWidth = 0
-      MinScaledWidth = 0
-      MaxScaledWidth = 0
-      AvoidScale = False
-      adjustHeightToLine = False
+  object SDK3Label1: TSDK3Label
+    Left = 48
+    Height = 19
+    Top = 83
+    Width = 554
+    Font.Name = 'Century Gothic'
+    Font.Style = [fsBold]
+    Text = 'Monte a sua tela aqui utilizando os componentes da paleta /RRPGSDK3/'
+  end
+  object SDK3ScrollBox1: TSDK3ScrollBox
+    Left = 144
+    Height = 150
+    Top = 176
+    Width = 150
+    HorzScrollBar.Page = 129
+    VertScrollBar.Page = 129
+    ClientHeight = 129
+    ClientWidth = 129
+    TabOrder = 1
+    object SDK3Button1: TSDK3Button
+      Left = 112
+      Height = 25
+      Top = 32
+      Width = 75
+      Caption = 'SDK3Button1'
+    end
+    object SDK3Edit1: TSDK3Edit
+      Left = 32
+      Height = 23
+      Top = 120
+      Width = 80
+      Transparent = False
+      IsPasswordEdit = False
+      Min = 0
+      Max = 0
+      DecimalPlaces = 0
+      AsNumber = 0
+      Text = 'SDK3Edit1'
     end
   end
 end
