@@ -21,9 +21,23 @@ type
     edtTitle: TEdit;
     edtNome: TEdit;
     SDK3Button1: TSDK3Button;
+    SDK3ComboBox1: TSDK3ComboBox;
     SDK3Edit1: TSDK3Edit;
+    SDK3Edit2: TSDK3Edit;
+    SDK3Edit3: TSDK3Edit;
+    SDK3Edit4: TSDK3Edit;
+    SDK3Edit5: TSDK3Edit;
+    SDK3Edit6: TSDK3Edit;
+    SDK3Image1: TSDK3Image;
     SDK3Label1: TSDK3Label;
-    SDK3ScrollBox1: TSDK3ScrollBox;
+    SDK3Label2: TSDK3Label;
+    SDK3Label3: TSDK3Label;
+    SDK3Label4: TSDK3Label;
+    SDK3Label5: TSDK3Label;
+    SDK3Label6: TSDK3Label;
+    SDK3Label7: TSDK3Label;
+    SDK3Layout1: TSDK3Layout;
+    SDK3RichEdit1: TSDK3RichEdit;
     ToolBar1: TToolBar;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
@@ -148,7 +162,7 @@ begin
      'textPrompt="' + item.TextPrompt + '" transparent="' + LowerCase(booltostr(item.Transparent))+
      '" isPasswordEdit="' + LowerCase(booltostr(item.IsPasswordEdit)) + '" min="' + floattostr(item.Min) +
      '" max="' + floattostr(item.Max) + '" decimalPlaces="'+ inttostr(item.DecimalPlaces) + '" asNumber="'+
-     floattostr(item.asNumber)+'"'+#13+#9+#9;
+     floattostr(item.asNumber)+'" ';
 
      s := s + Fonts(item.Font);
      s := s + ' ' + Aligns(item) + '/>';
@@ -358,7 +372,8 @@ begin
      begin
        memo.Lines.Add('<?xml version="1.0" encoding="UTF-8"?>'+#13+#9);
        memo.Lines.Add('<form formType="'+cbbTemplate.Text+'" dataType="'+edtDataType.Text+'" ');
-       memo.Lines.Add('title="'+edtTitle.Text+'" name="'+edtNome.Text+'" theme="'+cbbTheme.Text+'">'+#13);
+       memo.Lines.Add('title="'+edtTitle.Text+'" name="'+edtNome.Text+'" theme="'+cbbTheme.Text+'" ');
+       memo.Text:= memo.Text + Aligns(frmMain) + '>' + #13;
      end;
 
      memo.Lines.Add(panXpan(frmMain));
@@ -669,8 +684,8 @@ begin
      s := stringReplace(s, 'showProgress="0"', 'showProgress="true"', [rfReplaceALL]);
      s := stringReplace(s, 'autoChange="-1"', 'autoChange="false"', [rfReplaceALL]);
      s := stringReplace(s, 'autoChange="0"', '', [rfReplaceALL]);
-     s := stringReplace(s, 'autoSize="-1"', '', [rfReplaceALL]);
-     s := stringReplace(s, 'autoSize="0"', 'autoSize="true"', [rfReplaceALL]);
+     s := stringReplace(s, 'autoSize="-1"', 'autoSize="true"', [rfReplaceALL]);
+     s := stringReplace(s, 'autoSize="0"', '', [rfReplaceALL]);
      s := stringReplace(s, 'mouseGlow="-1"', 'mouseGlow="false"', [rfReplaceALL]);
      s := stringReplace(s, 'mouseGlow="0"', '', [rfReplaceALL]);
      s := stringReplace(s, 'readyOnly="0"', '', [rfReplaceALL]);
@@ -688,8 +703,14 @@ begin
      s := stringReplace(s, 'items=""', 'items="{}"', [rfReplaceALL]);
      s := stringReplace(s, 'values=""', 'values="{}"', [rfReplaceALL]);
      s := stringReplace(s, 'value=""', '', [rfReplaceALL]);
+//     s := stringReplace(s, 'text=""', ' ', [rfReplaceALL]);
+     s := stringReplace(s, 'textPrompt=""', '', [rfReplaceALL]);
 
      s := stringReplace(s, 'tabOrder="0"', '', [rfReplaceALL]);
+     s := stringReplace(s, 'min="0"', '', [rfReplaceALL]);
+     s := stringReplace(s, 'max="0"', '', [rfReplaceALL]);
+     s := stringReplace(s, 'decimalPlaces="0"', '', [rfReplaceALL]);
+     s := stringReplace(s, 'asNumber="0"', '', [rfReplaceALL]);
      s := stringReplace(s, 'autoHeight="0"', '', [rfReplaceALL]);
      s := stringReplace(s, 'maxControlsPerLine="0"', '', [rfReplaceALL]);
      s := stringReplace(s, 'maxColumns="0"', '', [rfReplaceALL]);

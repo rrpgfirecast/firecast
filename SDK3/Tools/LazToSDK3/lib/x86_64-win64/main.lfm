@@ -1,12 +1,12 @@
 object frmMain: TfrmMain
   Left = 0
-  Height = 484
+  Height = 601
   Top = 0
-  Width = 653
+  Width = 895
   ActiveControl = chkTagForm
   Caption = 'RRPG SDK3 Sheet Designer '
-  ClientHeight = 484
-  ClientWidth = 653
+  ClientHeight = 601
+  ClientWidth = 895
   Color = clWhite
   OnCreate = FormCreate
   LCLVersion = '1.6.4.0'
@@ -15,7 +15,7 @@ object frmMain: TfrmMain
     Left = 0
     Height = 26
     Top = 0
-    Width = 653
+    Width = 895
     Caption = 'ToolBar1'
     TabOrder = 0
     object chkTagForm: TCheckBox
@@ -132,44 +132,210 @@ object frmMain: TfrmMain
       Text = 'NOME_AQUI'
     end
   end
-  object SDK3Label1: TSDK3Label
-    Left = 48
-    Height = 19
-    Top = 83
-    Width = 554
-    Font.Name = 'Century Gothic'
-    Font.Style = [fsBold]
-    Text = 'Monte a sua tela aqui utilizando os componentes da paleta /RRPGSDK3/'
-  end
-  object SDK3ScrollBox1: TSDK3ScrollBox
-    Left = 144
-    Height = 150
-    Top = 176
-    Width = 150
-    HorzScrollBar.Page = 129
-    VertScrollBar.Page = 129
-    ClientHeight = 129
-    ClientWidth = 129
-    TabOrder = 1
-    object SDK3Button1: TSDK3Button
+  object SDK3Layout1: TSDK3Layout
+    Left = 0
+    Height = 120
+    Top = 26
+    Width = 895
+    Align = alTop
+    object SDK3Label1: TSDK3Label
       Left = 112
-      Height = 25
-      Top = 32
-      Width = 75
-      Caption = 'SDK3Button1'
+      Height = 15
+      Top = 8
+      Width = 34
+      Font.Height = -13
+      Font.Name = 'Times New Roman'
+      Font.Style = [fsBold]
+      Text = 'Nome'
+      AutoSize = False
     end
     object SDK3Edit1: TSDK3Edit
-      Left = 32
+      Left = 112
       Height = 23
-      Top = 120
-      Width = 80
+      Top = 21
+      Width = 168
       Transparent = False
       IsPasswordEdit = False
       Min = 0
       Max = 0
       DecimalPlaces = 0
       AsNumber = 0
-      Text = 'SDK3Edit1'
     end
+    object SDK3Label2: TSDK3Label
+      Left = 288
+      Height = 15
+      Top = 8
+      Width = 31
+      Font.Height = -13
+      Font.Name = 'Times New Roman'
+      Font.Style = [fsBold]
+      Text = 'Idade'
+      AutoSize = False
+    end
+    object SDK3Edit2: TSDK3Edit
+      Left = 288
+      Height = 23
+      Top = 21
+      Width = 40
+      Transparent = False
+      IsPasswordEdit = False
+      Min = 0
+      Max = 0
+      DecimalPlaces = 0
+      AsNumber = 0
+    end
+    object SDK3Label3: TSDK3Label
+      Left = 336
+      Height = 15
+      Top = 8
+      Width = 37
+      Font.Height = -13
+      Font.Name = 'Times New Roman'
+      Font.Style = [fsBold]
+      Text = 'Facção'
+      AutoSize = False
+    end
+    object SDK3Edit3: TSDK3Edit
+      Left = 336
+      Height = 23
+      Top = 21
+      Width = 168
+      Transparent = False
+      IsPasswordEdit = False
+      Min = 0
+      Max = 0
+      DecimalPlaces = 0
+      AsNumber = 0
+    end
+    object SDK3Image1: TSDK3Image
+      Left = 3
+      Height = 104
+      Top = 8
+      Width = 104
+      Src = 'https://cdn.bulbagarden.net/upload/thumb/a/a4/186Politoed.png/250px-186Politoed.png'
+      Center = False
+      Optimize = False
+      ShowProgress = False
+      Editable = True
+      NaturalWidth = 0
+      NaturalHeight = 0
+    end
+    object SDK3Label4: TSDK3Label
+      Left = 112
+      Height = 15
+      Top = 48
+      Width = 48
+      Font.Height = -13
+      Font.Name = 'Times New Roman'
+      Font.Style = [fsBold]
+      Text = 'Dinheiro'
+      AutoSize = False
+    end
+    object SDK3Edit4: TSDK3Edit
+      Left = 112
+      Height = 23
+      Top = 61
+      Width = 64
+      Transparent = False
+      IsPasswordEdit = False
+      Min = 0
+      Max = 0
+      DecimalPlaces = 0
+      AsNumber = 0
+    end
+    object SDK3Label5: TSDK3Label
+      Left = 184
+      Height = 15
+      Top = 48
+      Width = 29
+      Font.Height = -13
+      Font.Name = 'Times New Roman'
+      Font.Style = [fsBold]
+      Text = 'Nível'
+      AutoSize = False
+    end
+    object SDK3Edit5: TSDK3Edit
+      Left = 184
+      Height = 23
+      Top = 61
+      Width = 56
+      Transparent = False
+      IsPasswordEdit = False
+      Min = 0
+      Max = 0
+      DecimalPlaces = 0
+      AsNumber = 0
+    end
+    object SDK3Label6: TSDK3Label
+      Left = 248
+      Height = 15
+      Top = 48
+      Width = 23
+      Font.Height = -13
+      Font.Name = 'Times New Roman'
+      Font.Style = [fsBold]
+      Text = 'Exp.'
+      AutoSize = False
+    end
+    object SDK3Edit6: TSDK3Edit
+      Left = 248
+      Height = 23
+      Top = 61
+      Width = 56
+      Transparent = False
+      IsPasswordEdit = False
+      Min = 0
+      Max = 0
+      DecimalPlaces = 0
+      AsNumber = 0
+    end
+    object SDK3Button1: TSDK3Button
+      Left = 511
+      Height = 25
+      Top = 21
+      Width = 107
+      Caption = 'Subir de nível'
+    end
+    object SDK3ComboBox1: TSDK3ComboBox
+      Left = 311
+      Height = 23
+      Top = 61
+      Width = 156
+      Items = '{''Água'',''Fogo'',''Vento''}'
+      Text = 'Água'
+      Value = 'Água'
+      Values = '{''Água'',''Fogo'',''Vento''}'
+    end
+    object SDK3Label7: TSDK3Label
+      Left = 311
+      Height = 15
+      Top = 48
+      Width = 53
+      Font.Height = -13
+      Font.Name = 'Times New Roman'
+      Font.Style = [fsBold]
+      Text = 'Elemento'
+      AutoSize = False
+    end
+    object SDK3Button2: TSDK3Button
+      Left = 840
+      Height = 25
+      Top = 21
+      Width = 107
+      Caption = 'Subir de nível'
+    end
+  end
+  object SDK3RichEdit1: TSDK3RichEdit
+    Left = 0
+    Height = 455
+    Top = 146
+    Width = 895
+    Align = alClient
+    BackgroundColor = clWhite
+    DefaultFontColor = clBlack
+    DefaultFontSize = 0
+    ReadyOnly = False
+    ShowToolbar = True
+    HideSelection = False
   end
 end
