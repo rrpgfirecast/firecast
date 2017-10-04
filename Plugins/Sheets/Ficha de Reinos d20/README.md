@@ -6,7 +6,7 @@ Planejado:
 * Exportar para Markdown (http://homebrewery.naturalcrit.com). 
 
 Versão 03: 
-* Bug com imagem que não estivaca corrigido. 
+* Bug com imagem que não esticava corrigido. 
 * Bug ao adicionar cidades ou pontos de interesse ao mapa com o zoom ligado resolvidos. 
 
 Versão 02:
