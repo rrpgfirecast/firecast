@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmMap" align="client">
 	<scrollBox align="client" name="mapa">
-		<rectangle left="0" top="0" width="1152" height="648" color="black"/>
-		<image width="1152" height="648" field="mapa" hitTest="true" style="proportional" hint="Clique para alterar Imagem, shift+clique para adicionar Cidade, ctrl+clique para adicionar Ponto de Interesse. ">
+		<rectangle left="0" top="0" width="1152" height="648" color="black" name="mapRectangle"/>
+		<image width="1152" height="648" field="mapa" name="mapImage" hitTest="true" style="proportional" hint="Clique para alterar Imagem, shift+clique para adicionar Cidade, ctrl+clique para adicionar Ponto de Interesse. ">
 			<event name="onMouseDown">
 				sheet.button = event.button;
 				sheet.x = event.x;
@@ -16,21 +16,29 @@
 				if sheet==nil then return end;
 				
 				local mesa = rrpg.getMesaDe(sheet);
-				if not ndb.testPermission(sheet, "write") then return end;
+				local mapImage = self:findControlByName("mapImage");
+
+
 
 				if sheet.shiftKey then
+					if not ndb.testPermission(sheet, "write") then return end;
 					-- Adicionar Cidade
 					if sheet.cityNum == nil then
 						sheet.cityNum = 0;
 					end;
 					sheet.cityNum = sheet.cityNum + 1;
 
+					local scale = 1;
+					if mapImage.scale > 1 then
+						scale = 0.5;
+					end;
+
 					local btn = gui.newButton();
 					btn.parent = self.mapa;
-					btn.left = sheet.x-12;
-					btn.top = sheet.y-12;
-					btn.width = 25;
-					btn.height = 25;
+					btn.left = (sheet.x-12)/scale;
+					btn.top = (sheet.y-12)/scale;
+					btn.width = 25/scale;
+					btn.height = 25/scale;
 					btn.cursor = "handPoint";
 					btn.hint = "Cidade";
 					btn.opacity = 0.35;
@@ -39,8 +47,8 @@
 
 					local node = self.rclDestalhesDaCidade:append();
 					node.name = btn.name;
-					node.left = btn.left;
-					node.top = btn.top;
+					node.left = btn.left * scale;
+					node.top = btn.top * scale;
 					node.nome = "Cidade";
 
 					local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
@@ -57,18 +65,24 @@
 					self.tabControl.tabIndex = 2;
 
 				elseif sheet.ctrlKey then
+					if not ndb.testPermission(sheet, "write") then return end;
 					-- Adicionar Ponto de Interesse
 					if sheet.geographyNum == nil then
 						sheet.geographyNum = 0;
 					end;
 					sheet.geographyNum = sheet.geographyNum + 1;
 
+					local scale = 1;
+					if mapImage.scale > 1 then
+						scale = 0.5;
+					end;
+
 					local btn = gui.newButton();
 					btn.parent = self.mapa;
-					btn.left = sheet.x-15;
-					btn.top = sheet.y-15;
-					btn.width = 30;
-					btn.height = 30;
+					btn.left = (sheet.x-15)/scale;
+					btn.top = (sheet.y-15)/scale;
+					btn.width = 30/scale;
+					btn.height = 30/scale;
 					btn.cursor = "handPoint";
 					btn.hint = "Lugar";
 					btn.opacity = 0.35;
@@ -77,8 +91,8 @@
 
 					local node = self.rclDestalhesDaGeografia:append();
 					node.name = btn.name;
-					node.left = btn.left;
-					node.top = btn.top;
+					node.left = btn.left * scale;
+					node.top = btn.top * scale;
 					node.nome = "Lugar";
 					
 					local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
@@ -94,8 +108,51 @@
 					self.boxDetalhesDaGeografia.visible = (node ~= nil);
 					self.tabControl.tabIndex = 3;
 
-					
+				elseif sheet.altKey then
+					-- Zoom control
+					local mapRectangle = self:findControlByName("mapRectangle");
+					local scale = 2;
+
+					if mapImage.scale > 1 then
+						scale = 0.5;
+					end;
+
+					mapImage.scale = mapImage.scale * scale;
+					mapRectangle.width = mapRectangle.width * scale;
+					mapRectangle.height = mapRectangle.height * scale;
+
+					-- repositioning city buttons
+					local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
+					for i=1, #cidades, 1 do
+						local node = cidades[i];
+						if node.name ~= nil then
+							local btn = self:findControlByName(node.name);
+							if btn ~= nil then
+								btn.width = btn.width * scale;
+								btn.height = btn.height * scale;
+								btn.left = btn.left * scale;
+								btn.top = btn.top * scale;
+							end;
+						end;
+					end;
+
+					-- repositioning places buttons
+					local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
+					for i=1, #lugares, 1 do
+						local node = lugares[i];
+						if node.name ~= nil then
+							local btn = self:findControlByName(node.name);
+							if btn ~= nil then
+								btn.width = btn.width * scale;
+								btn.height = btn.height * scale;
+								btn.left = btn.left * scale;
+								btn.top = btn.top * scale;
+							end;
+						end;
+					end;
+
 				else
+					if not ndb.testPermission(sheet, "write") then return end;
 					-- Alterar Imagem
 					Dialogs.selectImageURL(nil,
 						function(url)
@@ -105,5 +162,8 @@
 				]]>
 			</event>
 		</image>
+		<script>
+			_obj_setProp(self.mapImage.handle, "Stretch", true);
+		</script>
 	</scrollBox>
 </form>

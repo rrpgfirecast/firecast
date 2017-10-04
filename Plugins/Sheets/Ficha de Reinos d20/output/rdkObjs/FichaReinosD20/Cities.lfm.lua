@@ -74,7 +74,7 @@ function newfrmCities()
     obj.rectangle2:setLeft(0);
     obj.rectangle2:setTop(0);
     obj.rectangle2:setWidth(1010);
-    obj.rectangle2:setHeight(2285);
+    obj.rectangle2:setHeight(2740);
     obj.rectangle2:setColor("black");
     obj.rectangle2:setName("rectangle2");
 
@@ -247,6 +247,16 @@ function newfrmCities()
     obj.dataLink1:setFields({'populacao','tipo'});
     obj.dataLink1:setName("dataLink1");
 
+    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1:setParent(obj.scrollBox2);
+    obj.checkBox1:setLeft(700);
+    obj.checkBox1:setTop(30);
+    obj.checkBox1:setWidth(100);
+    obj.checkBox1:setHeight(20);
+    obj.checkBox1:setField("capital");
+    obj.checkBox1:setText("Capital");
+    obj.checkBox1:setName("checkBox1");
+
     obj.label8 = gui.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.scrollBox2);
     obj.label8:setLeft(5);
@@ -307,7 +317,7 @@ function newfrmCities()
     obj.richEdit3:setTop(940);
     obj.richEdit3:setWidth(1000);
     obj.richEdit3:setHeight(300);
-    obj.richEdit3:setField("historia");
+    obj.richEdit3:setField("boatos");
     lfm_setPropAsString(obj.richEdit3, "backgroundColor",  "#333333");
     lfm_setPropAsString(obj.richEdit3, "defaultFontSize",  "12");
     lfm_setPropAsString(obj.richEdit3, "defaultFontColor",  "white");
@@ -323,104 +333,104 @@ function newfrmCities()
     obj.label11:setHorzTextAlign("center");
     obj.label11:setName("label11");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox1:setParent(obj.scrollBox2);
-    obj.checkBox1:setLeft(100);
-    obj.checkBox1:setTop(1245);
-    obj.checkBox1:setWidth(100);
-    obj.checkBox1:setHeight(20);
-    obj.checkBox1:setField("politica_1");
-    obj.checkBox1:setText("Monarquia");
-    obj.checkBox1:setHint("O poder é hereditário e possui apenas duas classes sociais: nobreza e plebe.");
-    obj.checkBox1:setName("checkBox1");
-
     obj.checkBox2 = gui.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox2:setParent(obj.scrollBox2);
-    obj.checkBox2:setLeft(200);
+    obj.checkBox2:setLeft(100);
     obj.checkBox2:setTop(1245);
     obj.checkBox2:setWidth(100);
     obj.checkBox2:setHeight(20);
-    obj.checkBox2:setField("politica_2");
-    obj.checkBox2:setText("Tribal");
-    obj.checkBox2:setHint("O poder é dado ao mais capaz e se ele for julgado incapaz pode perder esse direito.");
+    obj.checkBox2:setField("politica_1");
+    obj.checkBox2:setText("Monarquia");
+    obj.checkBox2:setHint("O poder é hereditário e possui apenas duas classes sociais: nobreza e plebe.");
     obj.checkBox2:setName("checkBox2");
 
     obj.checkBox3 = gui.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox3:setParent(obj.scrollBox2);
-    obj.checkBox3:setLeft(300);
+    obj.checkBox3:setLeft(200);
     obj.checkBox3:setTop(1245);
     obj.checkBox3:setWidth(100);
     obj.checkBox3:setHeight(20);
-    obj.checkBox3:setField("politica_3");
-    obj.checkBox3:setText("Feudal");
-    obj.checkBox3:setHint("O poder é hereditário, mas possui varias classes sociais de nobreza e plebe.");
+    obj.checkBox3:setField("politica_2");
+    obj.checkBox3:setText("Tribal");
+    obj.checkBox3:setHint("O poder é dado ao mais capaz e se ele for julgado incapaz pode perder esse direito.");
     obj.checkBox3:setName("checkBox3");
 
     obj.checkBox4 = gui.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox4:setParent(obj.scrollBox2);
-    obj.checkBox4:setLeft(400);
+    obj.checkBox4:setLeft(300);
     obj.checkBox4:setTop(1245);
     obj.checkBox4:setWidth(100);
     obj.checkBox4:setHeight(20);
-    obj.checkBox4:setField("politica_4");
-    obj.checkBox4:setText("República");
-    obj.checkBox4:setHint("O governo é criado através de eleições onde apenas os representantes do povo (como um conselho ou assembleia) podem votar e escolher o seu líder.");
+    obj.checkBox4:setField("politica_3");
+    obj.checkBox4:setText("Feudal");
+    obj.checkBox4:setHint("O poder é hereditário, mas possui varias classes sociais de nobreza e plebe.");
     obj.checkBox4:setName("checkBox4");
 
     obj.checkBox5 = gui.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox5:setParent(obj.scrollBox2);
-    obj.checkBox5:setLeft(500);
+    obj.checkBox5:setLeft(400);
     obj.checkBox5:setTop(1245);
     obj.checkBox5:setWidth(100);
     obj.checkBox5:setHeight(20);
-    obj.checkBox5:setField("politica_5");
-    obj.checkBox5:setText("Democracia");
-    obj.checkBox5:setHint("Todos os cidadãos têm o direito de votar para escolher seu líder. Observe que nem todos da sociedade podem ser considerados cidadãos, mas diferente da república é um grupo muito maior.");
+    obj.checkBox5:setField("politica_4");
+    obj.checkBox5:setText("República");
+    obj.checkBox5:setHint("O governo é criado através de eleições onde apenas os representantes do povo (como um conselho ou assembleia) podem votar e escolher o seu líder.");
     obj.checkBox5:setName("checkBox5");
 
     obj.checkBox6 = gui.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox6:setParent(obj.scrollBox2);
-    obj.checkBox6:setLeft(600);
+    obj.checkBox6:setLeft(500);
     obj.checkBox6:setTop(1245);
     obj.checkBox6:setWidth(100);
     obj.checkBox6:setHeight(20);
-    obj.checkBox6:setField("politica_6");
-    obj.checkBox6:setText("Magocracia");
-    obj.checkBox6:setHint("O governante é o conjurador arcano mais poderoso.");
+    obj.checkBox6:setField("politica_5");
+    obj.checkBox6:setText("Democracia");
+    obj.checkBox6:setHint("Todos os cidadãos têm o direito de votar para escolher seu líder. Observe que nem todos da sociedade podem ser considerados cidadãos, mas diferente da república é um grupo muito maior.");
     obj.checkBox6:setName("checkBox6");
 
     obj.checkBox7 = gui.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox7:setParent(obj.scrollBox2);
-    obj.checkBox7:setLeft(700);
+    obj.checkBox7:setLeft(600);
     obj.checkBox7:setTop(1245);
     obj.checkBox7:setWidth(100);
     obj.checkBox7:setHeight(20);
-    obj.checkBox7:setField("politica_7");
-    obj.checkBox7:setText("Teocracia");
-    obj.checkBox7:setHint("O governante é o conjurador divino mais poderoso de determinada religião.");
+    obj.checkBox7:setField("politica_6");
+    obj.checkBox7:setText("Magocracia");
+    obj.checkBox7:setHint("O governante é o conjurador arcano mais poderoso.");
     obj.checkBox7:setName("checkBox7");
 
     obj.checkBox8 = gui.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox8:setParent(obj.scrollBox2);
-    obj.checkBox8:setLeft(800);
+    obj.checkBox8:setLeft(700);
     obj.checkBox8:setTop(1245);
     obj.checkBox8:setWidth(100);
     obj.checkBox8:setHeight(20);
-    obj.checkBox8:setField("politica_8");
-    obj.checkBox8:setText("Plutocracia");
-    obj.checkBox8:setHint("O poder é exercido pela pessoa mais rica.");
+    obj.checkBox8:setField("politica_7");
+    obj.checkBox8:setText("Teocracia");
+    obj.checkBox8:setHint("O governante é o conjurador divino mais poderoso de determinada religião.");
     obj.checkBox8:setName("checkBox8");
 
     obj.checkBox9 = gui.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox9:setParent(obj.scrollBox2);
-    obj.checkBox9:setLeft(900);
+    obj.checkBox9:setLeft(800);
     obj.checkBox9:setTop(1245);
     obj.checkBox9:setWidth(100);
     obj.checkBox9:setHeight(20);
-    obj.checkBox9:setField("politica_9");
-    obj.checkBox9:setText("Outro");
-    obj.checkBox9:setHint("");
+    obj.checkBox9:setField("politica_8");
+    obj.checkBox9:setText("Plutocracia");
+    obj.checkBox9:setHint("O poder é exercido pela pessoa mais rica.");
     obj.checkBox9:setName("checkBox9");
+
+    obj.checkBox10 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox10:setParent(obj.scrollBox2);
+    obj.checkBox10:setLeft(900);
+    obj.checkBox10:setTop(1245);
+    obj.checkBox10:setWidth(100);
+    obj.checkBox10:setHeight(20);
+    obj.checkBox10:setField("politica_9");
+    obj.checkBox10:setText("Outro");
+    obj.checkBox10:setHint("");
+    obj.checkBox10:setName("checkBox10");
 
     obj.label12 = gui.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.scrollBox2);
@@ -587,6 +597,36 @@ function newfrmCities()
     lfm_setPropAsString(obj.richEdit6, "defaultFontColor",  "white");
     obj.richEdit6:setName("richEdit6");
 
+    obj.scrollBox3 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox3:setParent(obj.scrollBox2);
+    obj.scrollBox3:setLeft(205);
+    obj.scrollBox3:setTop(2285);
+    obj.scrollBox3:setWidth(600);
+    obj.scrollBox3:setHeight(450);
+    obj.scrollBox3:setName("scrollBox3");
+
+    obj.mapRectangleCidade = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.mapRectangleCidade:setParent(obj.scrollBox3);
+    obj.mapRectangleCidade:setWidth(600);
+    obj.mapRectangleCidade:setHeight(450);
+    obj.mapRectangleCidade:setColor("#333333");
+    obj.mapRectangleCidade:setName("mapRectangleCidade");
+
+    obj.mapImageCidade = gui.fromHandle(_obj_newObject("image"));
+    obj.mapImageCidade:setParent(obj.scrollBox3);
+    obj.mapImageCidade:setWidth(600);
+    obj.mapImageCidade:setHeight(450);
+    obj.mapImageCidade:setField("mapaCidade");
+    obj.mapImageCidade:setName("mapImageCidade");
+    obj.mapImageCidade:setHitTest(true);
+    obj.mapImageCidade:setStyle("proportional");
+    obj.mapImageCidade:setHint("Clique para alterar Imagem. ");
+
+
+						_obj_setProp(self.mapImageCidade.handle, "Stretch", true);
+					
+
+
     obj._e_event0 = obj.rclDestalhesDaCidade:addEventListener("onEndEnumeration",
         function (self)
             if sheet~= nil then
@@ -636,7 +676,11 @@ function newfrmCities()
     obj._e_event2 = obj.rclDestalhesDaCidade:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista. 
-            		        if (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
+            				if nodeA.capital and not nodeB.capital then
+            					return -1;
+            				elseif not nodeA.capital and nodeB.capital then
+            					return 1;
+            		        elseif (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
             		            return -1;
             		        elseif (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
             		            return 1;
@@ -883,7 +927,45 @@ function newfrmCities()
             						node.reservistas = reservistas;
         end, obj);
 
+    obj._e_event11 = obj.mapImageCidade:addEventListener("onMouseDown",
+        function (self, event)
+            local node = self.boxDetalhesDaCidade.node;
+            							node.event = event;
+        end, obj);
+
+    obj._e_event12 = obj.mapImageCidade:addEventListener("onClick",
+        function (self)
+            local node = self.boxDetalhesDaCidade.node;
+            							if node==nil then return end;
+            							local mesa = rrpg.getMesaDe(sheet);
+            
+            							if node.event.altKey then
+            								-- Zoom control
+            								local mapImageCidade = self:findControlByName("mapImageCidade");
+            								local mapRectangleCidade = self:findControlByName("mapRectangleCidade");
+            								local scale = 2;
+            
+            								if mapImageCidade.scale > 1 then
+            									scale = 0.5;
+            								end;
+            
+            								mapImageCidade.scale = mapImageCidade.scale * scale;
+            								mapRectangleCidade.width = mapRectangleCidade.width * scale;
+            								mapRectangleCidade.height = mapRectangleCidade.height * scale;
+            							else
+            								if not ndb.testPermission(sheet, "write") then return end;
+            								-- Alterar Imagem
+            								Dialogs.selectImageURL(nil,
+            									function(url)
+            										local node = self.boxDetalhesDaCidade.node;
+            										node.mapaCidade = url;
+            									end);
+            							end;
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event12);
+        __o_rrpgObjs.removeEventListenerById(self._e_event11);
         __o_rrpgObjs.removeEventListenerById(self._e_event10);
         __o_rrpgObjs.removeEventListenerById(self._e_event9);
         __o_rrpgObjs.removeEventListenerById(self._e_event8);
@@ -913,6 +995,7 @@ function newfrmCities()
         if self.checkBox3 ~= nil then self.checkBox3:destroy(); self.checkBox3 = nil; end;
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
+        if self.mapImageCidade ~= nil then self.mapImageCidade:destroy(); self.mapImageCidade = nil; end;
         if self.boxDetalhesDaCidade ~= nil then self.boxDetalhesDaCidade:destroy(); self.boxDetalhesDaCidade = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
@@ -933,6 +1016,7 @@ function newfrmCities()
         if self.rclDestalhesDaCidade ~= nil then self.rclDestalhesDaCidade:destroy(); self.rclDestalhesDaCidade = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
         if self.label11 ~= nil then self.label11:destroy(); self.label11 = nil; end;
+        if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
@@ -946,17 +1030,19 @@ function newfrmCities()
         if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
+        if self.checkBox10 ~= nil then self.checkBox10:destroy(); self.checkBox10 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.checkBox9 ~= nil then self.checkBox9:destroy(); self.checkBox9 = nil; end;
+        if self.mapRectangleCidade ~= nil then self.mapRectangleCidade:destroy(); self.mapRectangleCidade = nil; end;
         if self.cidade_economia ~= nil then self.cidade_economia:destroy(); self.cidade_economia = nil; end;
         if self.richEdit2 ~= nil then self.richEdit2:destroy(); self.richEdit2 = nil; end;
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
         if self.checkBox4 ~= nil then self.checkBox4:destroy(); self.checkBox4 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
-        if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
         if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
+        if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         self:_oldLFMDestroy();

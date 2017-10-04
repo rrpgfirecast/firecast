@@ -50,7 +50,11 @@
 			</event>
 			<event name="onCompare"><![CDATA[
 				-- Esse codigo organiza a ordem dos objetos da lista. 
-		        if (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
+				if nodeA.capital and not nodeB.capital then
+					return -1;
+				elseif not nodeA.capital and nodeB.capital then
+					return 1;
+		        elseif (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
 		            return -1;
 		        elseif (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
 		            return 1;
@@ -63,7 +67,7 @@
 		<!-- Info selecionada vai estar aqui -->
 		<dataScopeBox left="210" top="0" width="1030" height="600" name="boxDetalhesDaCidade" visible="false">
 			<scrollBox align="client">
-				<rectangle left="0" top="0" width="1010" height="2285" color="black"/>
+				<rectangle left="0" top="0" width="1010" height="2740" color="black"/>
 
 				<label left="0" top="5" width="100" height="20" text="Tamanho" horzTextAlign="center"/>
 				<comboBox left="90" top="5" width="130" height="20" field="tamanho" items="{'Lugarejo','Povoado','Aldeia','Vila Pequena','Vila Grande','Cidade Pequena','Cidade Grande','Metrópole','Metrópole Planar'}" fontSize="11"/>
@@ -282,6 +286,8 @@
 					</event>
 				</dataLink>
 
+				<checkBox left="700" top="30" width="100" height="20" field="capital" text="Capital"/>
+
 				<label left="5" top="55" width="1000" height="20" text="Descrição" horzTextAlign="center"/>
 				<richEdit left="5" top="80" width="1000" height="400" field="descricao" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
 
@@ -289,7 +295,7 @@
 				<richEdit left="5" top="510" width="1000" height="400" field="historia" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
 
 				<label left="5" top="915" width="1000" height="20" text="Boatos" horzTextAlign="center"/>
-				<richEdit left="5" top="940" width="1000" height="300" field="historia" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+				<richEdit left="5" top="940" width="1000" height="300" field="boatos" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
 
 				<label left="0" top="1245" width="100" height="20" text="Politica" horzTextAlign="center"/>
 				<checkBox left="100" top="1245" width="100" height="20" field="politica_1" text="Monarquia" hint="O poder é hereditário e possui apenas duas classes sociais: nobreza e plebe."/>
@@ -367,6 +373,49 @@
 				<label left="5" top="1955" width="1000" height="20" text="Organizações" horzTextAlign="center"/>
 				<richEdit left="5" top="1980" width="1000" height="300" field="organizacoes" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
 
+				<scrollBox left="205" top="2285" width="600" height="450">
+					<rectangle width="600" height="450" color="#333333" name="mapRectangleCidade"/>
+					<image width="600" height="450" field="mapaCidade" name="mapImageCidade" hitTest="true" style="proportional" hint="Clique para alterar Imagem. ">
+						<event name="onMouseDown">
+							local node = self.boxDetalhesDaCidade.node;
+							node.event = event;
+						</event>
+						<event name="onClick">
+							<![CDATA[
+							local node = self.boxDetalhesDaCidade.node;
+							if node==nil then return end;
+							local mesa = rrpg.getMesaDe(sheet);
+
+							if node.event.altKey then
+								-- Zoom control
+								local mapImageCidade = self:findControlByName("mapImageCidade");
+								local mapRectangleCidade = self:findControlByName("mapRectangleCidade");
+								local scale = 2;
+
+								if mapImageCidade.scale > 1 then
+									scale = 0.5;
+								end;
+
+								mapImageCidade.scale = mapImageCidade.scale * scale;
+								mapRectangleCidade.width = mapRectangleCidade.width * scale;
+								mapRectangleCidade.height = mapRectangleCidade.height * scale;
+							else
+								if not ndb.testPermission(sheet, "write") then return end;
+								-- Alterar Imagem
+								Dialogs.selectImageURL(nil,
+									function(url)
+										local node = self.boxDetalhesDaCidade.node;
+										node.mapaCidade = url;
+									end);
+							end;
+
+							]]>
+						</event>
+					</image>
+					<script>
+						_obj_setProp(self.mapImageCidade.handle, "Stretch", true);
+					</script>
+				</scrollBox>
 			</scrollBox>
 		</dataScopeBox>
 	</scrollBox>
