@@ -1,6 +1,15 @@
 # Ficha de Reinos d20
 Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre.  
 
+Planejado:
+* Icones instanciaveis para o mapa da cidade. 
+
+Versão 02:
+* bug corrigido com campo historia e boatos. 
+* Zoom no mapa. 
+* Checkbox capital.
+* Mapa Cidade com zoom.
+
 Versão 01: 
 * Clique no mapa para mudar a imagem.
 * Shift + Clique no mapa para criar uma cidade. 

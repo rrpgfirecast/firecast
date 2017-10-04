@@ -16,18 +16,7 @@
 	</script>
 
 	<rectangle align="client" color="#212121" hitTest="false">
-		<edit left="0" top="0" width="30" height="25" field="contador" type="number">
-			<event name="onChange"><![CDATA[
-		        if sheet~= nil then
-					-- Atualiza a ordem lista a cada alteração
-					local rcl = self:findControlByName("rclDestalhesDaCidade");
-					if rcl~=nil then
-						rcl:sort();
-					end;
-				end;
-		        ]]>
-			</event>
-		</edit>
+		<edit left="0" top="0" width="30" height="25" field="contador" type="number"/>
 
 		<edit left="30" top="0" width="135" height="25" field="nome">
 			<event name="onChange">
@@ -58,6 +47,19 @@
 				end);
 			</event>
 		</button>
+
+		<dataLink fields="{'populacao', 'capital'}">
+			<event name="onChange"><![CDATA[
+		        if sheet~= nil then
+					-- Atualiza a ordem lista a cada alteração
+					local rcl = self:findControlByName("rclDestalhesDaCidade");
+					if rcl~=nil then
+						rcl:sort();
+					end;
+				end;
+		        ]]>
+			</event>
+		</dataLink>
 
 		<dataLink field="populacao">
 			<event name="onChange"><![CDATA[

@@ -34,26 +34,26 @@ function newfrmMap()
     obj.mapa:setAlign("client");
     obj.mapa:setName("mapa");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle1:setParent(obj.mapa);
-    obj.rectangle1:setLeft(0);
-    obj.rectangle1:setTop(0);
-    obj.rectangle1:setWidth(1152);
-    obj.rectangle1:setHeight(648);
-    obj.rectangle1:setColor("black");
-    obj.rectangle1:setName("rectangle1");
+    obj.mapRectangle = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.mapRectangle:setParent(obj.mapa);
+    obj.mapRectangle:setLeft(0);
+    obj.mapRectangle:setTop(0);
+    obj.mapRectangle:setWidth(1152);
+    obj.mapRectangle:setHeight(648);
+    obj.mapRectangle:setColor("black");
+    obj.mapRectangle:setName("mapRectangle");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
-    obj.image1:setParent(obj.mapa);
-    obj.image1:setWidth(1152);
-    obj.image1:setHeight(648);
-    obj.image1:setField("mapa");
-    obj.image1:setHitTest(true);
-    obj.image1:setStyle("proportional");
-    obj.image1:setHint("Clique para alterar Imagem, shift+clique para adicionar Cidade, ctrl+clique para adicionar Ponto de Interesse. ");
-    obj.image1:setName("image1");
+    obj.mapImage = gui.fromHandle(_obj_newObject("image"));
+    obj.mapImage:setParent(obj.mapa);
+    obj.mapImage:setWidth(1152);
+    obj.mapImage:setHeight(648);
+    obj.mapImage:setField("mapa");
+    obj.mapImage:setName("mapImage");
+    obj.mapImage:setHitTest(true);
+    obj.mapImage:setStyle("proportional");
+    obj.mapImage:setHint("Clique para alterar Imagem, shift+clique para adicionar Cidade, ctrl+clique para adicionar Ponto de Interesse. ");
 
-    obj._e_event0 = obj.image1:addEventListener("onMouseDown",
+    obj._e_event0 = obj.mapImage:addEventListener("onMouseDown",
         function (self, event)
             sheet.button = event.button;
             				sheet.x = event.x;
@@ -63,14 +63,14 @@ function newfrmMap()
             				sheet.altKey = event.altKey;
         end, obj);
 
-    obj._e_event1 = obj.image1:addEventListener("onClick",
+    obj._e_event1 = obj.mapImage:addEventListener("onClick",
         function (self)
             if sheet==nil then return end;
             				
             				local mesa = rrpg.getMesaDe(sheet);
-            				if not ndb.testPermission(sheet, "write") then return end;
             
             				if sheet.shiftKey then
+            					if not ndb.testPermission(sheet, "write") then return end;
             					-- Adicionar Cidade
             					if sheet.cityNum == nil then
             						sheet.cityNum = 0;
@@ -109,6 +109,7 @@ function newfrmMap()
             					self.tabControl.tabIndex = 2;
             
             				elseif sheet.ctrlKey then
+            					if not ndb.testPermission(sheet, "write") then return end;
             					-- Adicionar Ponto de Interesse
             					if sheet.geographyNum == nil then
             						sheet.geographyNum = 0;
@@ -146,8 +147,52 @@ function newfrmMap()
             					self.boxDetalhesDaGeografia.visible = (node ~= nil);
             					self.tabControl.tabIndex = 3;
             
-            					
+            				elseif sheet.altKey then
+            					-- Zoom control
+            					local mapImage = self:findControlByName("mapImage");
+            					local mapRectangle = self:findControlByName("mapRectangle");
+            					local scale = 2;
+            
+            					if mapImage.scale > 1 then
+            						scale = 0.5;
+            					end;
+            
+            					mapImage.scale = mapImage.scale * scale;
+            					mapRectangle.width = mapRectangle.width * scale;
+            					mapRectangle.height = mapRectangle.height * scale;
+            
+            					-- repositioning city buttons
+            					local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
+            					for i=1, #cidades, 1 do
+            						local node = cidades[i];
+            						if node.name ~= nil then
+            							local btn = self:findControlByName(node.name);
+            							if btn ~= nil then
+            								btn.width = btn.width * scale;
+            								btn.height = btn.height * scale;
+            								btn.left = btn.left * scale;
+            								btn.top = btn.top * scale;
+            							end;
+            						end;
+            					end;
+            
+            					-- repositioning places buttons
+            					local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
+            					for i=1, #lugares, 1 do
+            						local node = lugares[i];
+            						if node.name ~= nil then
+            							local btn = self:findControlByName(node.name);
+            							if btn ~= nil then
+            								btn.width = btn.width * scale;
+            								btn.height = btn.height * scale;
+            								btn.left = btn.left * scale;
+            								btn.top = btn.top * scale;
+            							end;
+            						end;
+            					end;
+            
             				else
+            					if not ndb.testPermission(sheet, "write") then return end;
             					-- Alterar Imagem
             					Dialogs.selectImageURL(nil,
             						function(url)
@@ -171,8 +216,8 @@ function newfrmMap()
         end;
 
         if self.mapa ~= nil then self.mapa:destroy(); self.mapa = nil; end;
-        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
+        if self.mapRectangle ~= nil then self.mapRectangle:destroy(); self.mapRectangle = nil; end;
+        if self.mapImage ~= nil then self.mapImage:destroy(); self.mapImage = nil; end;
         self:_oldLFMDestroy();
     end;
 
