@@ -254,6 +254,11 @@ function newfrmTemplate()
     obj.mapImage:setStyle("proportional");
     obj.mapImage:setHint("Clique para alterar Imagem, shift+clique para adicionar Cidade, ctrl+clique para adicionar Ponto de Interesse. ");
 
+
+			_obj_setProp(self.mapImage.handle, "Stretch", true);
+		
+
+
     obj.tab3 = gui.fromHandle(_obj_newObject("tab"));
     obj.tab3:setParent(obj.tabControl);
     obj.tab3:setTitle("Cidades");
@@ -856,6 +861,11 @@ function newfrmTemplate()
     obj.mapImageCidade:setHitTest(true);
     obj.mapImageCidade:setStyle("proportional");
     obj.mapImageCidade:setHint("Clique para alterar Imagem. ");
+
+
+						_obj_setProp(self.mapImageCidade.handle, "Stretch", true);
+					
+
 
     obj.tab4 = gui.fromHandle(_obj_newObject("tab"));
     obj.tab4:setParent(obj.tabControl);
@@ -2516,7 +2526,7 @@ function newfrmTemplate()
     obj.image3:setWidth(100);
     obj.image3:setHeight(20);
     obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao02.png");
+    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao03.png");
     obj.image3:setName("image3");
 
     obj.button4 = gui.fromHandle(_obj_newObject("button"));
@@ -2589,6 +2599,9 @@ function newfrmTemplate()
             if sheet==nil then return end;
             				
             				local mesa = rrpg.getMesaDe(sheet);
+            				local mapImage = self:findControlByName("mapImage");
+            
+            
             
             				if sheet.shiftKey then
             					if not ndb.testPermission(sheet, "write") then return end;
@@ -2598,12 +2611,17 @@ function newfrmTemplate()
             					end;
             					sheet.cityNum = sheet.cityNum + 1;
             
+            					local scale = 1;
+            					if mapImage.scale > 1 then
+            						scale = 0.5;
+            					end;
+            
             					local btn = gui.newButton();
             					btn.parent = self.mapa;
-            					btn.left = sheet.x-12;
-            					btn.top = sheet.y-12;
-            					btn.width = 25;
-            					btn.height = 25;
+            					btn.left = (sheet.x-12)/scale;
+            					btn.top = (sheet.y-12)/scale;
+            					btn.width = 25/scale;
+            					btn.height = 25/scale;
             					btn.cursor = "handPoint";
             					btn.hint = "Cidade";
             					btn.opacity = 0.35;
@@ -2612,8 +2630,8 @@ function newfrmTemplate()
             
             					local node = self.rclDestalhesDaCidade:append();
             					node.name = btn.name;
-            					node.left = btn.left;
-            					node.top = btn.top;
+            					node.left = btn.left * scale;
+            					node.top = btn.top * scale;
             					node.nome = "Cidade";
             
             					local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
@@ -2637,12 +2655,17 @@ function newfrmTemplate()
             					end;
             					sheet.geographyNum = sheet.geographyNum + 1;
             
+            					local scale = 1;
+            					if mapImage.scale > 1 then
+            						scale = 0.5;
+            					end;
+            
             					local btn = gui.newButton();
             					btn.parent = self.mapa;
-            					btn.left = sheet.x-15;
-            					btn.top = sheet.y-15;
-            					btn.width = 30;
-            					btn.height = 30;
+            					btn.left = (sheet.x-15)/scale;
+            					btn.top = (sheet.y-15)/scale;
+            					btn.width = 30/scale;
+            					btn.height = 30/scale;
             					btn.cursor = "handPoint";
             					btn.hint = "Lugar";
             					btn.opacity = 0.35;
@@ -2651,8 +2674,8 @@ function newfrmTemplate()
             
             					local node = self.rclDestalhesDaGeografia:append();
             					node.name = btn.name;
-            					node.left = btn.left;
-            					node.top = btn.top;
+            					node.left = btn.left * scale;
+            					node.top = btn.top * scale;
             					node.nome = "Lugar";
             					
             					local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
@@ -2670,7 +2693,6 @@ function newfrmTemplate()
             
             				elseif sheet.altKey then
             					-- Zoom control
-            					local mapImage = self:findControlByName("mapImage");
             					local mapRectangle = self:findControlByName("mapRectangle");
             					local scale = 2;
             

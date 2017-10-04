@@ -622,6 +622,11 @@ function newfrmCities()
     obj.mapImageCidade:setStyle("proportional");
     obj.mapImageCidade:setHint("Clique para alterar Imagem. ");
 
+
+						_obj_setProp(self.mapImageCidade.handle, "Stretch", true);
+					
+
+
     obj._e_event0 = obj.rclDestalhesDaCidade:addEventListener("onEndEnumeration",
         function (self)
             if sheet~= nil then

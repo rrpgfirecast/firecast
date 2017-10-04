@@ -53,6 +53,11 @@ function newfrmMap()
     obj.mapImage:setStyle("proportional");
     obj.mapImage:setHint("Clique para alterar Imagem, shift+clique para adicionar Cidade, ctrl+clique para adicionar Ponto de Interesse. ");
 
+
+			_obj_setProp(self.mapImage.handle, "Stretch", true);
+		
+
+
     obj._e_event0 = obj.mapImage:addEventListener("onMouseDown",
         function (self, event)
             sheet.button = event.button;
@@ -68,6 +73,9 @@ function newfrmMap()
             if sheet==nil then return end;
             				
             				local mesa = rrpg.getMesaDe(sheet);
+            				local mapImage = self:findControlByName("mapImage");
+            
+            
             
             				if sheet.shiftKey then
             					if not ndb.testPermission(sheet, "write") then return end;
@@ -77,12 +85,17 @@ function newfrmMap()
             					end;
             					sheet.cityNum = sheet.cityNum + 1;
             
+            					local scale = 1;
+            					if mapImage.scale > 1 then
+            						scale = 0.5;
+            					end;
+            
             					local btn = gui.newButton();
             					btn.parent = self.mapa;
-            					btn.left = sheet.x-12;
-            					btn.top = sheet.y-12;
-            					btn.width = 25;
-            					btn.height = 25;
+            					btn.left = (sheet.x-12)/scale;
+            					btn.top = (sheet.y-12)/scale;
+            					btn.width = 25/scale;
+            					btn.height = 25/scale;
             					btn.cursor = "handPoint";
             					btn.hint = "Cidade";
             					btn.opacity = 0.35;
@@ -91,8 +104,8 @@ function newfrmMap()
             
             					local node = self.rclDestalhesDaCidade:append();
             					node.name = btn.name;
-            					node.left = btn.left;
-            					node.top = btn.top;
+            					node.left = btn.left * scale;
+            					node.top = btn.top * scale;
             					node.nome = "Cidade";
             
             					local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
@@ -116,12 +129,17 @@ function newfrmMap()
             					end;
             					sheet.geographyNum = sheet.geographyNum + 1;
             
+            					local scale = 1;
+            					if mapImage.scale > 1 then
+            						scale = 0.5;
+            					end;
+            
             					local btn = gui.newButton();
             					btn.parent = self.mapa;
-            					btn.left = sheet.x-15;
-            					btn.top = sheet.y-15;
-            					btn.width = 30;
-            					btn.height = 30;
+            					btn.left = (sheet.x-15)/scale;
+            					btn.top = (sheet.y-15)/scale;
+            					btn.width = 30/scale;
+            					btn.height = 30/scale;
             					btn.cursor = "handPoint";
             					btn.hint = "Lugar";
             					btn.opacity = 0.35;
@@ -130,8 +148,8 @@ function newfrmMap()
             
             					local node = self.rclDestalhesDaGeografia:append();
             					node.name = btn.name;
-            					node.left = btn.left;
-            					node.top = btn.top;
+            					node.left = btn.left * scale;
+            					node.top = btn.top * scale;
             					node.nome = "Lugar";
             					
             					local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
@@ -149,7 +167,6 @@ function newfrmMap()
             
             				elseif sheet.altKey then
             					-- Zoom control
-            					local mapImage = self:findControlByName("mapImage");
             					local mapRectangle = self:findControlByName("mapRectangle");
             					local scale = 2;
             

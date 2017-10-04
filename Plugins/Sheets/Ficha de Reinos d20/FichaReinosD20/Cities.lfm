@@ -412,6 +412,9 @@
 							]]>
 						</event>
 					</image>
+					<script>
+						_obj_setProp(self.mapImageCidade.handle, "Stretch", true);
+					</script>
 				</scrollBox>
 			</scrollBox>
 		</dataScopeBox>
