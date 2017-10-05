@@ -11,7 +11,7 @@ Versão 03:
 
 Versão 02:
 * bug corrigido com campo historia e boatos. 
-* Zoom no mapa. 
+* Zoom no mapa (alt+clique). 
 * Checkbox capital.
 * Mapa Cidade com zoom.
 
