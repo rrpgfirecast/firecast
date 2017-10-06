@@ -6,7 +6,7 @@ if dificuldade == nil then
 end; 
 
 local resultado = rolar("3d6", "NH " .. dificuldade);
-if resultado==18 or (resultado>=17 and dificuldade==17) or resultado-10>=dificuldade then
+if resultado==18 or (resultado>=17 and dificuldade<=15) or resultado-10>=dificuldade then
   enviar("Falha Critica!");
 elseif resultado<4 or (resultado<=5 and dificuldade>=15) or (resultado<=6 and dificuldade>=16) then
   enviar("Sucesso Critico!");
