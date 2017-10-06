@@ -4,6 +4,8 @@ Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro
 Planejado:
 * Icones instanciaveis para o mapa da cidade. 
 * Exportar para Markdown (http://homebrewery.naturalcrit.com). 
+* Ajustar tamanho dos botoes do mapa. 
+* Arrastar botões do mapa. 
 
 Versão 03: 
 * Bug com imagem que não esticava corrigido. 
