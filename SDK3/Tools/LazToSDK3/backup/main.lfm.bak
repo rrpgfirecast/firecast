@@ -1,12 +1,12 @@
 object frmMain: TfrmMain
   Left = 0
-  Height = 601
+  Height = 559
   Top = 0
-  Width = 895
+  Width = 651
   ActiveControl = chkTagForm
   Caption = 'RRPG SDK3 Sheet Designer '
-  ClientHeight = 601
-  ClientWidth = 895
+  ClientHeight = 559
+  ClientWidth = 651
   Color = clWhite
   OnCreate = FormCreate
   LCLVersion = '1.6.4.0'
@@ -15,7 +15,7 @@ object frmMain: TfrmMain
     Left = 0
     Height = 26
     Top = 0
-    Width = 895
+    Width = 651
     Caption = 'ToolBar1'
     TabOrder = 0
     object chkTagForm: TCheckBox
@@ -136,7 +136,7 @@ object frmMain: TfrmMain
     Left = 0
     Height = 120
     Top = 26
-    Width = 895
+    Width = 651
     Align = alTop
     object SDK3Label1: TSDK3Label
       Left = 112
@@ -160,6 +160,7 @@ object frmMain: TfrmMain
       Max = 0
       DecimalPlaces = 0
       AsNumber = 0
+      Text = '&'
     end
     object SDK3Label2: TSDK3Label
       Left = 288
@@ -242,6 +243,7 @@ object frmMain: TfrmMain
       Max = 0
       DecimalPlaces = 0
       AsNumber = 0
+      Text = '"'
     end
     object SDK3Label5: TSDK3Label
       Left = 184
@@ -294,7 +296,7 @@ object frmMain: TfrmMain
       Height = 25
       Top = 21
       Width = 107
-      Caption = 'Subir de nível'
+      Caption = '"'
     end
     object SDK3ComboBox1: TSDK3ComboBox
       Left = 311
@@ -317,19 +319,12 @@ object frmMain: TfrmMain
       Text = 'Elemento'
       AutoSize = False
     end
-    object SDK3Button2: TSDK3Button
-      Left = 840
-      Height = 25
-      Top = 21
-      Width = 107
-      Caption = 'Subir de nível'
-    end
   end
   object SDK3RichEdit1: TSDK3RichEdit
     Left = 0
-    Height = 455
+    Height = 413
     Top = 146
-    Width = 895
+    Width = 651
     Align = alClient
     BackgroundColor = clWhite
     DefaultFontColor = clBlack

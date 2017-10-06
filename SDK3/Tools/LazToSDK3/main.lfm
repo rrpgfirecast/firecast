@@ -160,7 +160,7 @@ object frmMain: TfrmMain
       Max = 0
       DecimalPlaces = 0
       AsNumber = 0
-      Text = 'Politoed'
+      Text = '&'
     end
     object SDK3Label2: TSDK3Label
       Left = 288
@@ -184,7 +184,6 @@ object frmMain: TfrmMain
       Max = 0
       DecimalPlaces = 0
       AsNumber = 0
-      Text = '4'
     end
     object SDK3Label3: TSDK3Label
       Left = 336
@@ -244,6 +243,7 @@ object frmMain: TfrmMain
       Max = 0
       DecimalPlaces = 0
       AsNumber = 0
+      Text = '"'
     end
     object SDK3Label5: TSDK3Label
       Left = 184
@@ -296,7 +296,7 @@ object frmMain: TfrmMain
       Height = 25
       Top = 21
       Width = 107
-      Caption = 'Subir de nível'
+      Caption = '"'
     end
     object SDK3ComboBox1: TSDK3ComboBox
       Left = 311

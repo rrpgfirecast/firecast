@@ -48,7 +48,7 @@ type
     procedure cbbThemeChange(Sender: TObject);
     procedure chkTagFormChange(Sender: TObject);
     function TColorToHex(Cor: TColor): string;
-    function Replaces(s: string): String;
+    function Replaces(s: string; tags: String): String;
     function Aligns(item: TWinControl): String;
     function AlignsNotWinControl(itemA: TAlign; item: TControl): String;
     function Fonts(item: TFont): String;
@@ -76,6 +76,8 @@ type
     function geraTags(comp: TComponent; memo: TMemo): String;
     function PanXpan(comp: TComponent): String;
 
+    function xMLE(S: String): String;
+
   private
     { private declarations }
   public
@@ -95,264 +97,265 @@ function TfrmMain.MakeButton(item: TSDK3Button): String;
 var
   s: String;
 begin
-     s := '<button text="' + item.Caption + '" enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     s := 'text="' + xMLE(item.Caption) + '" enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
      LowerCase(booltostr(item.Visible)) + '" '+#13+#9+#9+' fontColor="#' + TColorToHex(item.Font.Color) +
-     '" fontFamily="' + item.Font.Name + '" fontSize="' + inttostr(item.Font.Size);
+     '" fontFamily="' + xMLE(item.Font.Name) + '" fontSize="' + inttostr(item.Font.Size);
 
      s := s + '"' + Fonts(item.Font)+#13+#9+#9;
-     s := s + ' ' + Aligns(item) + '/>';
+     s := s + ' ' + Aligns(item);
 
-     result := Replaces(s);
+     result := Replaces(s, '<button ');
 end;
 
 function TfrmMain.MakeColorComboBox(item: TSDK3ColorComboBox): String;
 var
   s: String;
 begin
-     s := '<colorComboBox color="Null" enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
-     LowerCase(booltostr(item.Visible)) + '" field="' + item.Field + '" '+#13+#9+#9;
+     s := 'color="Null" enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     LowerCase(booltostr(item.Visible)) + '" field="' + xMLE(item.Field) + '" '+#13+#9+#9;
 
-     s := s + ' ' + Aligns(item) + '/>';
-     result := Replaces(s);
+     s := s + ' ' + Aligns(item);
+     result := Replaces(s, '<colorComboBox ');
 end;
 
 function TfrmMain.MakeComboBox(item: TSDK3ComboBox): String;
 var
   s: String;
 begin
-     s := '<comboBox enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
-     LowerCase(booltostr(item.Visible)) + '" field="' + item.Field + '" '+#13+#9+#9 +
+     s := 'enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     LowerCase(booltostr(item.Visible)) + '" field="' + xMLE(item.Field) + '" '+#13+#9+#9 +
      'fontColor="#' + TColorToHex(item.Font.Color) +
-     '" fontFamily="' + item.Font.Name + '" fontSize="' + inttostr(item.Font.Size) + '"'+
-     ' items="' + item.Items + '" values="' + item.values + '" value="' + item.value+'" '+#13+#9+#9;
+     '" fontFamily="' + xMLE(item.Font.Name) + '" fontSize="' + inttostr(item.Font.Size) + '"'+
+     ' items="' + item.Items + '" values="' + item.values + '" value="' + item.value + '" '+#13+#9+#9;
 
      s := s + Fonts(item.Font);
-     s := s + ' ' + Aligns(item) + '/>';
-     result := Replaces(s);
+     s := s + ' ' + Aligns(item);
+     result := Replaces(s, '<comboBox ');
 end;
 
 function TfrmMain.MakeCheckBox(item: TSDK3CheckBox): String;
 var
   s: String;
 begin
-     s := '<checkBox text="' + item.Caption + '" checked="' + LowerCase(booltostr(item.Checked)) +
+     s := 'text="' + xMLE(item.Caption) + '" checked="' + LowerCase(booltostr(item.Checked)) +
      '" enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
-     LowerCase(booltostr(item.Visible)) + '" field="' + item.Field + '"'+
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     LowerCase(booltostr(item.Visible)) + '" field="' + xMLE(item.Field) + '"'+
      'fontColor="#' + TColorToHex(item.Font.Color) +
-     '" fontFamily="' + item.Font.Name + '" fontSize="' + inttostr(item.Font.Size) + '" '+#13+#9+#9;
+     '" fontFamily="' + xMLE(item.Font.Name) + '" fontSize="' + inttostr(item.Font.Size) + '" '+#13+#9+#9;
 
      s := s + Fonts(item.Font);
-     s := s + ' ' + Aligns(item) + '/>';
-     result := Replaces(s);
+     s := s + ' ' + Aligns(item);
+     result := Replaces(s, '<checkBox ');
 end;
 
 function TfrmMain.MakeEdit(item: TSDK3Edit): String;
 var
   s: String;
 begin
-     s := '<edit text="' + item.Caption + '" enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
-     LowerCase(booltostr(item.Visible)) + '" field="' + item.Field + '" '+
+     s := 'text="' + xMLE(item.Caption) + '" enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     LowerCase(booltostr(item.Visible)) + '" field="' + xMLE(item.Field) + '" '+
      'fontColor="#' + TColorToHex(item.Font.Color) +
-     '" fontFamily="' + item.Font.Name + '" fontSize="' + inttostr(item.Font.Size) + '"'+#13+#9+#9+
-     'textPrompt="' + item.TextPrompt + '" transparent="' + LowerCase(booltostr(item.Transparent))+
+     '" fontFamily="' + xMLE(item.Font.Name) + '" fontSize="' + inttostr(item.Font.Size) + '"'+#13+#9+#9+
+     'textPrompt="' + xMLE(item.TextPrompt) + '" transparent="' + LowerCase(booltostr(item.Transparent))+
      '" isPasswordEdit="' + LowerCase(booltostr(item.IsPasswordEdit)) + '" min="' + floattostr(item.Min) +
      '" max="' + floattostr(item.Max) + '" decimalPlaces="'+ inttostr(item.DecimalPlaces) + '" asNumber="'+
      floattostr(item.asNumber)+'" ';
 
      s := s + Fonts(item.Font);
-     s := s + ' ' + Aligns(item) + '/>';
-     result := Replaces(s);
+     s := s + ' ' + Aligns(item);
+     result := Replaces(s, '<edit ');
 end;
 
 function TfrmMain.MakeFlowLayout(item: TSDK3FlowLayout): String;
 var
   s: String;
 begin
-     s := '<flowLayout enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     s := 'enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
      LowerCase(booltostr(item.Visible)) + '" '+#13+#9+#9 +
      'autoHeight="' + LowerCase(booltostr(item.AutoHeight)) + '" maxControlsPerLine="' +
      inttostr(item.MaxControlsPerLine) + '" maxColumns="' + inttostr(item.MaxColumns)+
      '" lineSpacing="' + floattostr(item.LineSpacing) + '" '+#13+#9+#9+'contentWidth="' +
      floattostr(item.ContentWidth) + '" contentHeight="' + floattostr(item.ContentHeight) +
-     '" frameStyle="' + item.FrameStyle + '" frameRegion="' + item.FrameRegion +'"'+#13+#9+#9;
+     '" frameStyle="' + xMLE(item.FrameStyle) + '" frameRegion="' + xMLE(item.FrameRegion) +'"'+#13+#9+#9;
 
-     s := s + ' ' + Aligns(item) + '>';
-     result := Replaces(s);
+     s := s + ' ' + Aligns(item);
+     result := Replaces(s, '<flowLayout ');
 end;
 
 function TfrmMain.MakeImage(item: TSDK3Image): String;
 var
   s: String;
 begin
-     s := '<image enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     s := 'enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
      LowerCase(booltostr(item.Visible)) + '" '+#13+#9+#9 +
      ' center="' + LowerCase(booltostr(item.Center)) + '" editable="' +
-     LowerCase(booltostr(item.Editable)) + '" field="' + item.Field + '" '+
+     LowerCase(booltostr(item.Editable)) + '" field="' + xMLE(item.Field) + '" '+
      'naturalWidth="' + floattostr(item.NaturalWidth) + '" naturalHeight="' +
      floattostr(item.NaturalHeight) + '" optimize="' +
      LowerCase(booltostr(item.Optimize)) + '" showProgress="' +
-     LowerCase(booltostr(item.ShowProgress)) + '" src="' + item.Src + '" '+#13+#9+#9 +
-     'URLWhileLoading="' + item.URLWhileLoading + '" ';
+     LowerCase(booltostr(item.ShowProgress)) + '" src="' + xMLE(item.Src) + '" '+#13+#9+#9 +
+     'URLWhileLoading="' + xMLE(item.URLWhileLoading) + '" ';
 
-     s := s + ' ' + AlignsNotWinControl(item.Align, item) + '/>';
-     result := Replaces(s);
+     s := s + ' ' + AlignsNotWinControl(item.Align, item);
+     result := Replaces(s, '<image ');
 end;
 
 function TfrmMain.MakeLayout(item: TSDK3Layout): String;
 var
   s: String;
 begin
-     s := '<layout enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     s := 'enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
      LowerCase(booltostr(item.Visible)) + '" '+#13+#9+#9 +
-     'frameStyle="' + item.FrameStyle + '" frameRegion="' + item.FrameRegion +'" ';
+     'frameStyle="' + xMLE(item.FrameStyle) + '" frameRegion="' + xMLE(item.FrameRegion) +'" ';
 
-     s := s  + Aligns(item) + '>';
-     result := Replaces(s);
+     s := s  + Aligns(item);
+     result := Replaces(s, '<layout ');
 end;
 
 function TfrmMain.MakeFlowPart(item: TSDK3FlowPart): String;
 var
   s: String;
 begin
-     s := '<flowPart enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     s := 'enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
      LowerCase(booltostr(item.Visible)) + '" '+#13+#9+#9 +
-     'frameStyle="' + item.FrameStyle + '" frameRegion="' + item.FrameRegion +
+     'frameStyle="' + xMLE(item.FrameStyle) + '" frameRegion="' + xMLE(item.FrameRegion) +
      '" minWidth="' + floattostr(item.MinWidth) +'" maxWidth="' + floattostr(item.MaxWidth) +
      '" minScaledWidth="'+ floattostr(item.MinScaledWidth) + '" maxScaledWidth="' +
      floattostr(item.MaxScaledWidth) + '" avoidScale="' + LowerCase(booltostr(item.AvoidScale)) +
-     '" ' + #13+#9+#9 + ' stepSizes="' + item.StepSizes + '" adjustHeightToLine="' +
+     '" ' + #13+#9+#9 + ' stepSizes="' + xMLE(item.StepSizes) + '" adjustHeightToLine="' +
      LowerCase(booltostr(item.adjustHeightToLine)) + '" ' ;
 
-     s := s  + Aligns(item) + '>';
-     result := Replaces(s);
+     s := s  + Aligns(item);
+     result := Replaces(s, '<flowPart ');
 end;
 
 function TfrmMain.MakeImageCheckBox(item: TSDK3ImageCheckBox): String;
 var
   s: String;
 begin
-     s := '<imageCheckBox checked="' + LowerCase(booltostr(item.Checked)) +
+     s := 'checked="' + LowerCase(booltostr(item.Checked)) +
      '" enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
-     LowerCase(booltostr(item.Visible)) + '" field="' + item.Field + '" '+#13+#9+#9+
-     ' checkedImage="' + item.CheckedImage + '" uncheckedImage="' + item.UncheckedImage +
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     LowerCase(booltostr(item.Visible)) + '" field="' + xMLE(item.Field) + '" '+#13+#9+#9+
+     ' checkedImage="' + xMLE(item.CheckedImage) + '" uncheckedImage="' + xMLE(item.UncheckedImage) +
      '" optimize="'+ LowerCase(booltostr(item.Optimize)) + '" autoChange="' +
      LowerCase(booltostr(item.AutoChange)) + '" ';
 
-     s := s  + AlignsNotWinControl(item.Align, item) + '/>';
-     result := Replaces(s);
+     s := s  + AlignsNotWinControl(item.Align, item);
+     result := Replaces(s, '<imageCheckBox ');
 end;
 
 function TfrmMain.MakeLabel(item: TSDK3Label): String;
 var
   s: String;
 begin
-     s := '<label text="' + item.Caption + '" enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
-     LowerCase(booltostr(item.Visible)) + '" field="' + item.Field + '" '+
+     s := 'text="' + xMLE(item.Caption) + '" enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     LowerCase(booltostr(item.Visible)) + '" field="' + xMLE(item.Field) + '" '+
      'fontColor="#' + TColorToHex(item.Font.Color) +
-     '" fontFamily="' + item.Font.Name + '" fontSize="' + inttostr(item.Font.Size) +
+     '" fontFamily="' + xMLE(item.Font.Name) + '" fontSize="' + inttostr(item.Font.Size) +
      '" autoSize="' + LowerCase(booltostr(item.AutoSize)) + '" ';
 
      s := s + Fonts(item.Font);
-     s := s + ' ' + AlignsNotWinControl(item.Align, item) + '/>';
-     result := Replaces(s);
+     s := s + ' ' + AlignsNotWinControl(item.Align, item);
+     result := Replaces(s, '<label ');
 end;
 
 function TfrmMain.MakeProgressBar(item: TSDK3ProgressBar): String;
 var
   s: String;
 begin
-     s := '<progressBar enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     s := 'enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
      LowerCase(booltostr(item.Visible)) + '" '+#13+#9+#9 +
      'position="' + floattostr(item.Position) + '" min="' + floattostr(item.Min) +
      '" max="' + floattostr(item.Max) + '" mouseGlow="' + LowerCase(booltostr(item.mouseGlow)) +
-     '" color="#' + TColorToHex(item.Color) + '" field="' + item.Field + '" ';
+     '" color="#' + TColorToHex(item.Color) + '" field="' + xMLE(item.Field) + '" ';
 
-     s := s  + Aligns(item) + '/>';
-     result := Replaces(s);
+     s := s  + Aligns(item);
+     result := Replaces(s, '<progressBar ');
 end;
 
 function TfrmMain.MakeRadioButton(item: TSDK3RadioButton): String;
 var
   s: String;
 begin
-     s := '<radioButton text="' + item.Caption + '" checked="' + LowerCase(booltostr(item.Checked)) +
+     s := 'text="' + xMLE(item.Caption) + '" checked="' + LowerCase(booltostr(item.Checked)) +
      '" enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
-     LowerCase(booltostr(item.Visible)) + '" field="' + item.Field + '"'+
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     LowerCase(booltostr(item.Visible)) + '" field="' + xMLE(item.Field) + '"'+
      'fontColor="#' + TColorToHex(item.Font.Color) +
-     '" fontFamily="' + item.Font.Name + '" fontSize="' + inttostr(item.Font.Size) + '" '+#13+#9+#9+
-     ' groupName="' + item.GroupName + '" fieldValue="' + item.FieldValue +'" ';
+     '" fontFamily="' + xMLE(item.Font.Name) + '" fontSize="' + inttostr(item.Font.Size) + '" '+#13+#9+#9+
+     ' groupName="' + xMLE(item.GroupName) + '" fieldValue="' + xMLE(item.FieldValue) +'" ';
 
      s := s + Fonts(item.Font);
-     s := s + ' ' + Aligns(item) + '/>';
-     result := Replaces(s);
+     s := s + ' ' + Aligns(item);
+     result := Replaces(s, '<radioButton ');
 end;
 
 function TfrmMain.MakeTabControl(item: TSDK3TabControl): String;
 var
   s: String;
 begin
-     s := '<tabControl enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     s := 'enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
      LowerCase(booltostr(item.Visible)) + '" '+
      'tabIndex="' + inttostr(item.TabIndex) + '" ';
-     s := s  + Aligns(item) + '>';
-     result := Replaces(s);
+
+     s := s  + Aligns(item);
+     result := Replaces(s, '<tabControl ');
 end;
 
 function TfrmMain.MakeTab(item: TCustomPage): String;
 var
   s: String;
 begin
-     s := '<tab enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     s := 'enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
      LowerCase(booltostr(item.Visible)) + '" '+
-     'title="' + item.Name + '" ';
+     'title="' + xMLE(item.Name) + '" ';
 
-     s := s  + Aligns(item) + '>';
-     result := Replaces(s);
+     s := s  + Aligns(item);
+     result := Replaces(s, '<tab ');
 end;
 
 function TfrmMain.MakeRichEdit(item: TSDK3RichEdit): String;
 var
   s: String;
 begin
-     s := '<richEdit enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     s := 'enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
      LowerCase(booltostr(item.Visible)) + '" '+
-     'field="' + item.Field + '" readyOnly="'+LowerCase(booltostr(item.ReadyOnly)) +
+     'field="' + xMLE(item.Field) + '" readyOnly="'+LowerCase(booltostr(item.ReadyOnly)) +
      '" backgroundColor="#' + TColorToHex(item.BackgroundColor) +
      '" defaultFontColor="#' + TColorToHex(item.DefaultFontColor) +
      '" defaultFontSize="' + floattostr(item.DefaultFontSize) +
      '" showToolbar="' +LowerCase(booltostr(item.ShowToolbar)) +
      '" hideSelection="' + LowerCase(booltostr(item.HideSelection)) + '" '+#13+#9+#9;
 
-     s := s  + Aligns(item) + '/>';
-     result := Replaces(s);
+     s := s  + Aligns(item);
+     result := Replaces(s, '<richEdit ');
 end;
 
 function TfrmMain.MakeScrollBox(item: TSDK3ScrollBox): String;
 var
   s: String;
 begin
-     s := '<scrollBox enabled="' + LowerCase(booltostr(item.Enabled)) +
-     '" hint="' + item.Hint + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
+     s := 'enabled="' + LowerCase(booltostr(item.Enabled)) +
+     '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
      LowerCase(booltostr(item.Visible)) + '" ';
 
-     s := s  + Aligns(item) + '>';
-     result := Replaces(s);
+     s := s  + Aligns(item);
+     result := Replaces(s, '<scrollBox ');
 end;
 
 procedure TfrmMain.Finalizar(Sender: TObject);
@@ -564,7 +567,7 @@ var
 begin
   menuBar := TmainMenu.Create(frmMain);
   item := TMenuItem.Create(menuBar);
-  item.Caption:='GERAR FICHA!';
+  item.Caption :='GERAR FICHA!';
   item.OnClick := @Finalizar;
   menuBar.Items.Add(item);
 end;
@@ -662,8 +665,17 @@ begin
      result := f;
 end;
 
-function TfrmMain.Replaces(s: string): String;
+function TfrmMain.Replaces(s: string; tags: String): String;
+var
+  tagF: String;
 begin
+
+     if (tags = '<layout ') or (tags = '<flowLayout ') or (tags = '<flowPart ') or
+     (tags = '<tabControl ') or (tags = '<tab ') or (tags = '<scrollBox ') then
+          tagF := '>'
+     else
+         tagF := '/>';
+
      s := stringReplace(s, 'enabled="0"', 'enabled="false"', [rfReplaceALL]);
      s := stringReplace(s, 'enabled="-1"', '', [rfReplaceALL]);
      s := stringReplace(s, 'visible="0"', 'visible="false"', [rfReplaceALL]);
@@ -739,7 +751,8 @@ begin
 
      s := stringReplace(s, '   ', ' ', [rfReplaceALL]);
      s := stringReplace(s, '  ', ' ', [rfReplaceALL]);
-     result:= s;
+
+     result:= tags+s+tagF;
 end;
 
 function TfrmMain.TColorToHex(Cor: TColor): string;
@@ -768,6 +781,18 @@ begin
           edtNome.Enabled:=false;
           edtTitle.Enabled:=false;
      end;
+end;
+
+function TfrmMain.xMLE(S: String): String;
+begin
+
+     s := stringReplace(s, '&', '&amp;', [rfReplaceALL]);
+     s := stringReplace(s, '<', '&lt;', [rfReplaceALL]);
+     s := stringReplace(s, '>', '&gt;', [rfReplaceALL]);
+     s := stringReplace(s, '''', '&apos;', [rfReplaceALL]);
+     s := stringReplace(s, '"', '&apos;&apos;', [rfReplaceALL]);
+
+     result := s;
 end;
 
 procedure TfrmMain.cbbThemeChange(Sender: TObject);

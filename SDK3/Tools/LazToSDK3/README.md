@@ -43,8 +43,3 @@ Tags funcionando até o momento:
 - FlowPart
 - ImageCheckBox
 - Label
-- ProgressBar
-- RadioButton
-- TabControl/Tab
-- RichEdit
-- ScrollBox
