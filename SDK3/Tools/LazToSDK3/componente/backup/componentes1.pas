@@ -46,7 +46,8 @@ type
 type
   TSDK3ComboBox = class(TCustomComboBox)
   private
-    FField, FValues, FValue, FItems: String;
+    FField, FValue: String;
+    FValues, FItems: String;
   protected
 
   public
@@ -354,9 +355,7 @@ type
   public
 
   published
-    property Align;
-    property Enabled;
-    property Visible;
+
   end;
 
 procedure Register;

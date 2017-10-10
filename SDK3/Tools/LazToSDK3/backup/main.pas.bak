@@ -20,24 +20,6 @@ type
     edtDataType: TEdit;
     edtTitle: TEdit;
     edtNome: TEdit;
-    SDK3Button1: TSDK3Button;
-    SDK3ComboBox1: TSDK3ComboBox;
-    SDK3Edit1: TSDK3Edit;
-    SDK3Edit2: TSDK3Edit;
-    SDK3Edit3: TSDK3Edit;
-    SDK3Edit4: TSDK3Edit;
-    SDK3Edit5: TSDK3Edit;
-    SDK3Edit6: TSDK3Edit;
-    SDK3Image1: TSDK3Image;
-    SDK3Label1: TSDK3Label;
-    SDK3Label2: TSDK3Label;
-    SDK3Label3: TSDK3Label;
-    SDK3Label4: TSDK3Label;
-    SDK3Label5: TSDK3Label;
-    SDK3Label6: TSDK3Label;
-    SDK3Label7: TSDK3Label;
-    SDK3Layout1: TSDK3Layout;
-    SDK3RichEdit1: TSDK3RichEdit;
     ToolBar1: TToolBar;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
@@ -75,6 +57,7 @@ type
     procedure Finalizar(Sender: TObject);
     function geraTags(comp: TComponent; memo: TMemo): String;
     function PanXpan(comp: TComponent): String;
+    function IdentarXMLorHTML( s: String): String;
 
     function xMLE(S: String): String;
 
@@ -99,10 +82,10 @@ var
 begin
      s := 'text="' + xMLE(item.Caption) + '" enabled="' + LowerCase(booltostr(item.Enabled)) +
      '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
-     LowerCase(booltostr(item.Visible)) + '" '+#13+#9+#9+' fontColor="#' + TColorToHex(item.Font.Color) +
+     LowerCase(booltostr(item.Visible)) + '" fontColor="#' + TColorToHex(item.Font.Color) +
      '" fontFamily="' + xMLE(item.Font.Name) + '" fontSize="' + inttostr(item.Font.Size);
 
-     s := s + '"' + Fonts(item.Font)+#13+#9+#9;
+     s := s + '"' + Fonts(item.Font);
      s := s + ' ' + Aligns(item);
 
      result := Replaces(s, '<button ');
@@ -114,7 +97,7 @@ var
 begin
      s := 'color="Null" enabled="' + LowerCase(booltostr(item.Enabled)) +
      '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
-     LowerCase(booltostr(item.Visible)) + '" field="' + xMLE(item.Field) + '" '+#13+#9+#9;
+     LowerCase(booltostr(item.Visible)) + '" field="' + xMLE(item.Field) + '" ';
 
      s := s + ' ' + Aligns(item);
      result := Replaces(s, '<colorComboBox ');
@@ -126,10 +109,10 @@ var
 begin
      s := 'enabled="' + LowerCase(booltostr(item.Enabled)) +
      '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
-     LowerCase(booltostr(item.Visible)) + '" field="' + xMLE(item.Field) + '" '+#13+#9+#9 +
+     LowerCase(booltostr(item.Visible)) + '" field="' + xMLE(item.Field) + '" ' +
      'fontColor="#' + TColorToHex(item.Font.Color) +
      '" fontFamily="' + xMLE(item.Font.Name) + '" fontSize="' + inttostr(item.Font.Size) + '"'+
-     ' items="' + item.Items + '" values="' + item.values + '" value="' + item.value + '" '+#13+#9+#9;
+     ' items="' + item.Items + '" values="' + item.values + '" value="' + item.value + '" ';
 
      s := s + Fonts(item.Font);
      s := s + ' ' + Aligns(item);
@@ -145,7 +128,7 @@ begin
      '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
      LowerCase(booltostr(item.Visible)) + '" field="' + xMLE(item.Field) + '"'+
      'fontColor="#' + TColorToHex(item.Font.Color) +
-     '" fontFamily="' + xMLE(item.Font.Name) + '" fontSize="' + inttostr(item.Font.Size) + '" '+#13+#9+#9;
+     '" fontFamily="' + xMLE(item.Font.Name) + '" fontSize="' + inttostr(item.Font.Size) + '" ';
 
      s := s + Fonts(item.Font);
      s := s + ' ' + Aligns(item);
@@ -160,7 +143,7 @@ begin
      '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
      LowerCase(booltostr(item.Visible)) + '" field="' + xMLE(item.Field) + '" '+
      'fontColor="#' + TColorToHex(item.Font.Color) +
-     '" fontFamily="' + xMLE(item.Font.Name) + '" fontSize="' + inttostr(item.Font.Size) + '"'+#13+#9+#9+
+     '" fontFamily="' + xMLE(item.Font.Name) + '" fontSize="' + inttostr(item.Font.Size) + '"'+
      'textPrompt="' + xMLE(item.TextPrompt) + '" transparent="' + LowerCase(booltostr(item.Transparent))+
      '" isPasswordEdit="' + LowerCase(booltostr(item.IsPasswordEdit)) + '" min="' + floattostr(item.Min) +
      '" max="' + floattostr(item.Max) + '" decimalPlaces="'+ inttostr(item.DecimalPlaces) + '" asNumber="'+
@@ -177,12 +160,12 @@ var
 begin
      s := 'enabled="' + LowerCase(booltostr(item.Enabled)) +
      '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
-     LowerCase(booltostr(item.Visible)) + '" '+#13+#9+#9 +
+     LowerCase(booltostr(item.Visible)) + '" ' +
      'autoHeight="' + LowerCase(booltostr(item.AutoHeight)) + '" maxControlsPerLine="' +
      inttostr(item.MaxControlsPerLine) + '" maxColumns="' + inttostr(item.MaxColumns)+
-     '" lineSpacing="' + floattostr(item.LineSpacing) + '" '+#13+#9+#9+'contentWidth="' +
+     '" lineSpacing="' + floattostr(item.LineSpacing) + '" '+'contentWidth="' +
      floattostr(item.ContentWidth) + '" contentHeight="' + floattostr(item.ContentHeight) +
-     '" frameStyle="' + xMLE(item.FrameStyle) + '" frameRegion="' + xMLE(item.FrameRegion) +'"'+#13+#9+#9;
+     '" frameStyle="' + xMLE(item.FrameStyle) + '" frameRegion="' + xMLE(item.FrameRegion) +'"';
 
      s := s + ' ' + Aligns(item);
      result := Replaces(s, '<flowLayout ');
@@ -194,13 +177,13 @@ var
 begin
      s := 'enabled="' + LowerCase(booltostr(item.Enabled)) +
      '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
-     LowerCase(booltostr(item.Visible)) + '" '+#13+#9+#9 +
+     LowerCase(booltostr(item.Visible)) + '" ' +
      ' center="' + LowerCase(booltostr(item.Center)) + '" editable="' +
      LowerCase(booltostr(item.Editable)) + '" field="' + xMLE(item.Field) + '" '+
      'naturalWidth="' + floattostr(item.NaturalWidth) + '" naturalHeight="' +
      floattostr(item.NaturalHeight) + '" optimize="' +
      LowerCase(booltostr(item.Optimize)) + '" showProgress="' +
-     LowerCase(booltostr(item.ShowProgress)) + '" src="' + xMLE(item.Src) + '" '+#13+#9+#9 +
+     LowerCase(booltostr(item.ShowProgress)) + '" src="' + xMLE(item.Src) + '" ' +
      'URLWhileLoading="' + xMLE(item.URLWhileLoading) + '" ';
 
      s := s + ' ' + AlignsNotWinControl(item.Align, item);
@@ -213,7 +196,7 @@ var
 begin
      s := 'enabled="' + LowerCase(booltostr(item.Enabled)) +
      '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
-     LowerCase(booltostr(item.Visible)) + '" '+#13+#9+#9 +
+     LowerCase(booltostr(item.Visible)) + '" ' +
      'frameStyle="' + xMLE(item.FrameStyle) + '" frameRegion="' + xMLE(item.FrameRegion) +'" ';
 
      s := s  + Aligns(item);
@@ -226,7 +209,7 @@ var
 begin
      s := 'enabled="' + LowerCase(booltostr(item.Enabled)) +
      '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
-     LowerCase(booltostr(item.Visible)) + '" '+#13+#9+#9 +
+     LowerCase(booltostr(item.Visible)) + '" ' +
      'frameStyle="' + xMLE(item.FrameStyle) + '" frameRegion="' + xMLE(item.FrameRegion) +
      '" minWidth="' + floattostr(item.MinWidth) +'" maxWidth="' + floattostr(item.MaxWidth) +
      '" minScaledWidth="'+ floattostr(item.MinScaledWidth) + '" maxScaledWidth="' +
@@ -245,7 +228,7 @@ begin
      s := 'checked="' + LowerCase(booltostr(item.Checked)) +
      '" enabled="' + LowerCase(booltostr(item.Enabled)) +
      '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
-     LowerCase(booltostr(item.Visible)) + '" field="' + xMLE(item.Field) + '" '+#13+#9+#9+
+     LowerCase(booltostr(item.Visible)) + '" field="' + xMLE(item.Field) + '" '+
      ' checkedImage="' + xMLE(item.CheckedImage) + '" uncheckedImage="' + xMLE(item.UncheckedImage) +
      '" optimize="'+ LowerCase(booltostr(item.Optimize)) + '" autoChange="' +
      LowerCase(booltostr(item.AutoChange)) + '" ';
@@ -276,7 +259,7 @@ var
 begin
      s := 'enabled="' + LowerCase(booltostr(item.Enabled)) +
      '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
-     LowerCase(booltostr(item.Visible)) + '" '+#13+#9+#9 +
+     LowerCase(booltostr(item.Visible)) + '" ' +
      'position="' + floattostr(item.Position) + '" min="' + floattostr(item.Min) +
      '" max="' + floattostr(item.Max) + '" mouseGlow="' + LowerCase(booltostr(item.mouseGlow)) +
      '" color="#' + TColorToHex(item.Color) + '" field="' + xMLE(item.Field) + '" ';
@@ -294,7 +277,7 @@ begin
      '" hint="' + xMLE(item.Hint) + '" tabOrder="' + inttostr(item.Tag) + '" visible="' +
      LowerCase(booltostr(item.Visible)) + '" field="' + xMLE(item.Field) + '"'+
      'fontColor="#' + TColorToHex(item.Font.Color) +
-     '" fontFamily="' + xMLE(item.Font.Name) + '" fontSize="' + inttostr(item.Font.Size) + '" '+#13+#9+#9+
+     '" fontFamily="' + xMLE(item.Font.Name) + '" fontSize="' + inttostr(item.Font.Size) + '" '+
      ' groupName="' + xMLE(item.GroupName) + '" fieldValue="' + xMLE(item.FieldValue) +'" ';
 
      s := s + Fonts(item.Font);
@@ -340,7 +323,7 @@ begin
      '" defaultFontColor="#' + TColorToHex(item.DefaultFontColor) +
      '" defaultFontSize="' + floattostr(item.DefaultFontSize) +
      '" showToolbar="' +LowerCase(booltostr(item.ShowToolbar)) +
-     '" hideSelection="' + LowerCase(booltostr(item.HideSelection)) + '" '+#13+#9+#9;
+     '" hideSelection="' + LowerCase(booltostr(item.HideSelection)) + '" ';
 
      s := s  + Aligns(item);
      result := Replaces(s, '<richEdit ');
@@ -386,13 +369,16 @@ begin
        memo.Lines.Add(#13+'</form>');
      end;
 
+     memo.Text := IdentarXMLorHTML(memo.text);
+
      if svdlg.Execute then
      begin
           memo.Lines.SaveToFile(svdlg.FileName);
+          showmessage('Código gerado!');
      end;
      memo.free;
      svdlg.Free;
-     showmessage('Código gerado!');
+
 
 end;
 
@@ -406,64 +392,55 @@ begin
      memo.Visible := false;
      memo.Clear;
 
-     for i := 1 to Self.ComponentCount -1 do
+     for i := 0 to Self.ComponentCount-1 do
      begin
-          if (Components[i].GetParentComponent = comp) then
+          if (Self.Components[i].GetParentComponent = comp) then
           begin
 
-            if (Self.Components[i].ClassName <> 'TSDK3Layout') and
-             (Self.Components[i].ClassName <> 'TSDK3FlowLayout') and
-             (Self.Components[i].ClassName <> 'TSDK3FlowPart')  and
-             (Self.Components[i].ClassName <> 'TSDK3TabControl')  and
-             (Self.Components[i].ClassName <> 'TCustomPage')  and
-             (Self.Components[i].ClassName <> 'TSDK3ScrollBox')  then
-            begin
-                 memo.Text := geraTags(Components[i], memo);
-            end
-            else
-            begin
-              if (Self.Components[i].ClassName = 'TSDK3Layout') then
+              if (Self.Components[i] is TSDK3Layout) then
               begin
-                     memo.Text := memo.Text + MakeLayout(Components[i] as TSDK3Layout) + #13;
-                     memo.Text := memo.Text + panXpan(Components[i]) + #13;
-                     memo.Text := memo.Text +  #13 +'</layout>' + #13;
+                     memo.Text := memo.Text + MakeLayout(Components[i] as TSDK3Layout);
+                     memo.Text := memo.Text + panXpan(Components[i]);
+                     memo.Text := memo.Text + '</layout>';
               end
               else
-              if (Self.Components[i].ClassName = 'TSDK3FlowLayout') then
+              if (Self.Components[i] is TSDK3FlowLayout) then
               begin
-                   memo.Text := MakeFlowLayout(Components[i] as TSDK3FlowLayout) + #13;
-                   memo.Text := memo.Text + panXpan(Components[i]) + #13;
-                   memo.Text := memo.Text +  #13 +'</flowLayout>' + #13;
+                   memo.Text := MakeFlowLayout(Components[i] as TSDK3FlowLayout);
+                   memo.Text := memo.Text + panXpan(Components[i]);
+                   memo.Text := memo.Text +  '</flowLayout>';
               end
               else
-              if (Self.Components[i].ClassName = 'TSDK3FlowPart') then
+              if (Self.Components[i] is TSDK3FlowPart) then
               begin
-                   memo.Text := MakeFlowPart(Components[i] as TSDK3FlowPart) + #13;
-                   memo.Text := memo.Text + panXpan(Components[i]) + #13;
-                   memo.Text := memo.Text +  #13 +'</flowPart>' + #13;
+                   memo.Text := MakeFlowPart(Components[i] as TSDK3FlowPart);
+                   memo.Text := memo.Text + panXpan(Components[i]);
+                   memo.Text := memo.Text +  '</flowPart>';
               end
               else
-              if (Self.Components[i].ClassName = 'TSDK3TabControl') then
+              if (Self.Components[i] is TSDK3TabControl) then
               begin
-                   memo.Text := MakeTabControl(Components[i] as TSDK3TabControl) + #13;
-                   memo.Text := memo.Text + panXpan(Components[i]) + #13;
-                   memo.Text := memo.Text +  #13 +'</tabControl>' + #13;
+                   memo.Text := MakeTabControl(Components[i] as TSDK3TabControl);
+                   memo.Text := memo.Text + panXpan(Components[i]);
+                   memo.Text := memo.Text +  '</tabControl>';
               end
               else
-              if (Self.Components[i].ClassName = 'TCustomPage') then
+              if (Self.Components[i] is TCustomPage) then
               begin
-                   memo.Text := MakeTab(Components[i] as TCustomPage) + #13;
-                   memo.Text := memo.Text + panXpan(Components[i]) + #13;
-                   memo.Text := memo.Text +  #13 +'</tab>' + #13;
+                   memo.Text := MakeTab(Components[i] as TCustomPage);
+                   memo.Text := memo.Text + panXpan(Components[i]);
+                   memo.Text := memo.Text + '</tab>';
               end
               else
-              if (Self.Components[i].ClassName = 'TSDK3ScrollBox') then
+              if (Self.Components[i] is TSDK3ScrollBox) then
               begin
-                   memo.Text := MakeScrollBox(Components[i] as TSDK3ScrollBox) + #13;
-                   memo.Text := memo.Text + panXpan(Components[i]) + #13;
-                   memo.Text := memo.Text +  #13 +'</scrollBox>' + #13;
-              end;
-            end;
+                   memo.Text := MakeScrollBox(Components[i] as TSDK3ScrollBox);
+                   memo.Text := memo.Text + panXpan(Components[i]);
+                   memo.Text := memo.Text + '</scrollBox>';
+              end
+              else
+                   memo.Text := geraTags(Components[i], memo);
+
           end;
      end;
 
@@ -570,6 +547,7 @@ begin
   item.Caption :='GERAR FICHA!';
   item.OnClick := @Finalizar;
   menuBar.Items.Add(item);
+
 end;
 
 function TfrmMain.Fonts(item: TFont): String;
@@ -715,7 +693,6 @@ begin
      s := stringReplace(s, 'items=""', 'items="{}"', [rfReplaceALL]);
      s := stringReplace(s, 'values=""', 'values="{}"', [rfReplaceALL]);
      s := stringReplace(s, 'value=""', '', [rfReplaceALL]);
-//     s := stringReplace(s, 'text=""', ' ', [rfReplaceALL]);
      s := stringReplace(s, 'textPrompt=""', '', [rfReplaceALL]);
 
      s := stringReplace(s, 'tabOrder="0"', '', [rfReplaceALL]);
@@ -801,6 +778,60 @@ begin
      frmMain.Color:=$004E4E4E
   else
      frmMain.Color:=clWhite;
+end;
+
+function TfrmMain.IdentarXMLorHTML(s: String): String;
+var
+  i, w, lv: Integer;
+  str: String;
+begin
+     s := StringReplace(s, #$D#$A, '', [rfReplaceAll]);
+     s := StringReplace(s, #13#10, '', [rfReplaceAll]);
+     s := StringReplace(s, #13, '', [rfReplaceAll]);
+     s := StringReplace(s, #9, '', [rfReplaceAll]);
+     s := StringReplace(s, '  ', ' ', [rfReplaceAll]);
+     s := StringReplace(s, '  ', ' ', [rfReplaceAll]);
+     s := StringReplace(s, '  ', ' ', [rfReplaceAll]);
+
+     lv := 0;
+     str := '';
+     i := 1;
+     while i < Length(s) do
+     begin
+
+          if (s[i] + s[i+1]) = '</' then
+          begin
+            // str := str + #13;
+             lv := lv - 2;
+          end;
+
+          if ((s[i] + s[i+1]) = '/>') or ((s[i] + s[i+1]) = '?>') then
+          begin
+               str := str + s[i] + s[i+1] + #13;
+               for w := 1 to lv do
+                   str := str + #9;
+               i := i + 2;
+               continue;
+          end;
+
+          if s[i] = '>' then
+          begin
+             str := str + s[i] + #13 + #13;
+             lv := lv + 1;
+             for w := 1 to lv do
+                   str := str + #9;
+             i := i + 1;
+             continue;
+          end;
+
+          str := str + s[i];
+          i := i + 1;
+
+     end;
+     str := stringreplace(str, #9+'</', '</', [rfReplaceAll]);
+     str := stringreplace(str, #13+#9, #13+#13+#9, [rfReplaceAll]);
+     str := stringreplace(str, #13+#13+#13, #13+#13, [rfReplaceAll]);
+     result := str+'>';
 end;
 
 end.
