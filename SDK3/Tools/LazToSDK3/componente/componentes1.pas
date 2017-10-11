@@ -359,29 +359,10 @@ type
   end;
 
 
-  type
-    TNif = class(TComponent)
-    private
-      FDNI : LongInt;
-      function GetNIF : char;
-    protected
-    public
-      property NIF: char read GetNIF;
-    published
-       property DNI: LongInt read FDNI write FDNI;
-    end;
-
 procedure Register;
 
 implementation
 
-function TNIF.GetNIF(): char;
-Var aux1 : integer;
-Const letras : string = 'TRWAGMYFPDXBNJZSQVHLCKE';
-begin
-  aux1:=FDNI - ((FDNI div 23) * 23);
-  result:=letras[aux1+1];
-end;
 
 procedure Register;
 begin
@@ -389,7 +370,7 @@ begin
   RegisterComponents('RRPGSDK3',[TSDK3Button, TSDK3ColorComboBox, TSDK3ComboBox,
   TSDK3CheckBox, TSDK3Edit, TSDK3FlowLayout, TSDK3Image, TSDK3Layout, TSDK3FlowPart,
   TSDK3ImageCheckBox, TSDK3Label, TSDK3ProgressBar, TSDK3RadioButton, TSDK3TabControl,
-  TCustomPage, TSDK3RichEdit, TSDK3ScrollBox, TNif]);
+  TCustomPage, TSDK3RichEdit, TSDK3ScrollBox]);
 end;
 
 end.

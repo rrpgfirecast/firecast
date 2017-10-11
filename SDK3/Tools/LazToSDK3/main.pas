@@ -17,9 +17,28 @@ type
     chkTagForm: TCheckBox;
     cbbTemplate: TComboBox;
     cbbTheme: TComboBox;
+    hello: TCustomPage;
+    CustomPage2: TCustomPage;
     edtDataType: TEdit;
     edtTitle: TEdit;
     edtNome: TEdit;
+    SDK3Button1: TSDK3Button;
+    SDK3ComboBox1: TSDK3ComboBox;
+    SDK3Edit1: TSDK3Edit;
+    SDK3Edit2: TSDK3Edit;
+    SDK3Edit3: TSDK3Edit;
+    SDK3Edit4: TSDK3Edit;
+    SDK3FlowLayout1: TSDK3FlowLayout;
+    SDK3FlowPart1: TSDK3FlowPart;
+    SDK3FlowPart2: TSDK3FlowPart;
+    SDK3FlowPart3: TSDK3FlowPart;
+    SDK3FlowPart4: TSDK3FlowPart;
+    SDK3Layout1: TSDK3Layout;
+    SDK3Layout2: TSDK3Layout;
+    SDK3Layout3: TSDK3Layout;
+    SDK3RichEdit1: TSDK3RichEdit;
+    SDK3ScrollBox1: TSDK3ScrollBox;
+    SDK3TabControl1: TSDK3TabControl;
     ToolBar1: TToolBar;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
@@ -388,64 +407,64 @@ var
   s: string;
   memo: TMemo;
 begin
-     memo := TMemo.Create(self);
-     memo.Visible := false;
-     memo.Clear;
 
-     for i := 0 to Self.ComponentCount-1 do
+     for i := Self.ComponentCount-1 downto 0 do
      begin
           if (Self.Components[i].GetParentComponent = comp) then
           begin
 
-              if (Self.Components[i] is TSDK3Layout) then
+              if (Self.Components[i] is TSDK3ScrollBox) then
               begin
-                     memo.Text := memo.Text + MakeLayout(Components[i] as TSDK3Layout);
-                     memo.Text := memo.Text + panXpan(Components[i]);
-                     memo.Text := memo.Text + '</layout>';
-              end
-              else
-              if (Self.Components[i] is TSDK3FlowLayout) then
-              begin
-                   memo.Text := MakeFlowLayout(Components[i] as TSDK3FlowLayout);
-                   memo.Text := memo.Text + panXpan(Components[i]);
-                   memo.Text := memo.Text +  '</flowLayout>';
-              end
-              else
-              if (Self.Components[i] is TSDK3FlowPart) then
-              begin
-                   memo.Text := MakeFlowPart(Components[i] as TSDK3FlowPart);
-                   memo.Text := memo.Text + panXpan(Components[i]);
-                   memo.Text := memo.Text +  '</flowPart>';
-              end
-              else
-              if (Self.Components[i] is TSDK3TabControl) then
-              begin
-                   memo.Text := MakeTabControl(Components[i] as TSDK3TabControl);
-                   memo.Text := memo.Text + panXpan(Components[i]);
-                   memo.Text := memo.Text +  '</tabControl>';
+                   s := s + MakeScrollBox(Components[i] as TSDK3ScrollBox);
+                   s := s + panXpan(Components[i]);
+                   s := s + '</scrollBox>';
               end
               else
               if (Self.Components[i] is TCustomPage) then
               begin
-                   memo.Text := MakeTab(Components[i] as TCustomPage);
-                   memo.Text := memo.Text + panXpan(Components[i]);
-                   memo.Text := memo.Text + '</tab>';
+                   s := s + MakeTab(Components[i] as TCustomPage);
+                   s := s + panXpan(Components[i]);
+                   s := s + '</tab>';
               end
               else
-              if (Self.Components[i] is TSDK3ScrollBox) then
+              if (Self.Components[i] is TSDK3TabControl) then
               begin
-                   memo.Text := MakeScrollBox(Components[i] as TSDK3ScrollBox);
-                   memo.Text := memo.Text + panXpan(Components[i]);
-                   memo.Text := memo.Text + '</scrollBox>';
+                   s := s + MakeTabControl(Components[i] as TSDK3TabControl);
+                   s := s + panXpan(Components[i]);
+                   s := s +  '</tabControl>';
               end
               else
-                   memo.Text := geraTags(Components[i], memo);
+              if (Self.Components[i] is TSDK3FlowPart) then
+              begin
+                   s := s + MakeFlowPart(Components[i] as TSDK3FlowPart);
+                   s := s + panXpan(Components[i]);
+                   s := s +  '</flowPart>';
+              end
+              else
+              if (Self.Components[i] is TSDK3FlowLayout) then
+              begin
+                   s := s + MakeFlowLayout(Components[i] as TSDK3FlowLayout);
+                   s := s + panXpan(Components[i]);
+                   s := s +  '</flowLayout>';
+              end
+              else
+              if (Self.Components[i] is TSDK3Layout) then
+              begin
+                     s := s + MakeLayout(Components[i] as TSDK3Layout);
+                     s := s + panXpan(Components[i]);
+                     s := s + '</layout>';
+              end
+              else
+              begin
+                   memo := TMemo.Create(self);
+                   memo.visible := false;
+                   memo.text := s;
+                   s := geraTags(Components[i], memo);
+                   memo.free;
+              end;
 
           end;
      end;
-
-     s := memo.text;
-     memo.free;
      result := s;
 end;
 
@@ -789,8 +808,8 @@ begin
      s := StringReplace(s, #13#10, '', [rfReplaceAll]);
      s := StringReplace(s, #13, '', [rfReplaceAll]);
      s := StringReplace(s, #9, '', [rfReplaceAll]);
-     s := StringReplace(s, '  ', ' ', [rfReplaceAll]);
-     s := StringReplace(s, '  ', ' ', [rfReplaceAll]);
+     s := StringReplace(s, '    ', ' ', [rfReplaceAll]);
+     s := StringReplace(s, '   ', ' ', [rfReplaceAll]);
      s := StringReplace(s, '  ', ' ', [rfReplaceAll]);
 
      lv := 0;
