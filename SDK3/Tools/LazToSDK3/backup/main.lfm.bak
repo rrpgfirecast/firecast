@@ -132,4 +132,195 @@ object frmMain: TfrmMain
       Text = 'NOME_AQUI'
     end
   end
+  object SDK3Layout1: TSDK3Layout
+    Left = 0
+    Height = 250
+    Top = 26
+    Width = 651
+    Align = alTop
+    object SDK3FlowLayout1: TSDK3FlowLayout
+      Left = 264
+      Height = 248
+      Top = 1
+      Width = 386
+      Align = alRight
+      AutoHeight = False
+      MaxControlsPerLine = 0
+      MaxColumns = 0
+      LineSpacing = 0
+      ContentWidth = 0
+      ContentHeight = 0
+      object SDK3FlowPart1: TSDK3FlowPart
+        Left = 1
+        Height = 50
+        Top = 1
+        Width = 170
+        MinWidth = 0
+        MaxWidth = 0
+        MinScaledWidth = 0
+        MaxScaledWidth = 0
+        AvoidScale = False
+        adjustHeightToLine = False
+        object SDK3Edit1: TSDK3Edit
+          Left = 40
+          Height = 23
+          Top = 16
+          Width = 80
+          Transparent = False
+          IsPasswordEdit = False
+          Min = 0
+          Max = 0
+          DecimalPlaces = 0
+          AsNumber = 0
+          Text = 'SDK3Edit1'
+        end
+      end
+      object SDK3FlowPart2: TSDK3FlowPart
+        Left = 171
+        Height = 50
+        Top = 1
+        Width = 170
+        MinWidth = 0
+        MaxWidth = 0
+        MinScaledWidth = 0
+        MaxScaledWidth = 0
+        AvoidScale = False
+        adjustHeightToLine = False
+        object SDK3Edit2: TSDK3Edit
+          Left = 40
+          Height = 23
+          Top = 16
+          Width = 80
+          Transparent = False
+          IsPasswordEdit = False
+          Min = 0
+          Max = 0
+          DecimalPlaces = 0
+          AsNumber = 0
+          Text = 'SDK3Edit2'
+        end
+      end
+      object SDK3FlowPart3: TSDK3FlowPart
+        Left = 1
+        Height = 50
+        Top = 51
+        Width = 170
+        MinWidth = 0
+        MaxWidth = 0
+        MinScaledWidth = 0
+        MaxScaledWidth = 0
+        AvoidScale = False
+        adjustHeightToLine = False
+        object SDK3Edit3: TSDK3Edit
+          Left = 40
+          Height = 23
+          Top = 16
+          Width = 80
+          Transparent = False
+          IsPasswordEdit = False
+          Min = 0
+          Max = 0
+          DecimalPlaces = 0
+          AsNumber = 0
+          Text = 'SDK3Edit3'
+        end
+      end
+      object SDK3FlowPart4: TSDK3FlowPart
+        Left = 171
+        Height = 50
+        Top = 51
+        Width = 170
+        MinWidth = 0
+        MaxWidth = 0
+        MinScaledWidth = 0
+        MaxScaledWidth = 0
+        AvoidScale = False
+        adjustHeightToLine = False
+        object SDK3Edit4: TSDK3Edit
+          Left = 40
+          Height = 23
+          Top = 16
+          Width = 80
+          Transparent = False
+          IsPasswordEdit = False
+          Min = 0
+          Max = 0
+          DecimalPlaces = 0
+          AsNumber = 0
+          Text = 'SDK3Edit4'
+        end
+      end
+    end
+    object SDK3Button1: TSDK3Button
+      Left = 16
+      Height = 200
+      Top = 24
+      Width = 227
+      Caption = 'SDK3Button1'
+    end
+  end
+  object SDK3Layout2: TSDK3Layout
+    Left = 0
+    Height = 283
+    Top = 276
+    Width = 651
+    Align = alClient
+    object SDK3TabControl1: TSDK3TabControl
+      Left = 1
+      Height = 281
+      Top = 1
+      Width = 649
+      Align = alClient
+      TabIndex = 0
+      object hello: TCustomPage
+        Left = 0
+        Height = 253
+        Top = 0
+        Width = 641
+        object SDK3Layout3: TSDK3Layout
+          Left = 48
+          Height = 192
+          Top = 32
+          Width = 538
+          object SDK3ComboBox1: TSDK3ComboBox
+            Left = 92
+            Height = 23
+            Top = 52
+            Width = 372
+            Text = 'SDK3ComboBox1'
+          end
+        end
+      end
+      object CustomPage2: TCustomPage
+        Left = 0
+        Height = 253
+        Top = 0
+        Width = 641
+        object SDK3ScrollBox1: TSDK3ScrollBox
+          Left = 0
+          Height = 253
+          Top = 0
+          Width = 641
+          HorzScrollBar.Page = 620
+          VertScrollBar.Page = 232
+          Align = alClient
+          ClientHeight = 232
+          ClientWidth = 620
+          TabOrder = 0
+          object SDK3RichEdit1: TSDK3RichEdit
+            Left = 0
+            Height = 355
+            Top = 0
+            Width = 740
+            BackgroundColor = clBlack
+            DefaultFontColor = clBlack
+            DefaultFontSize = 0
+            ReadyOnly = False
+            ShowToolbar = True
+            HideSelection = False
+          end
+        end
+      end
+    end
+  end
 end
