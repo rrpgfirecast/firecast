@@ -8,9 +8,13 @@
 				if sheet~= nil then
 					local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
 					local mapa = self:findControlByName("mapa");
+					local mapImage = self:findControlByName("mapImage");
 
 					for i=1, #cidades, 1 do
 						local node = cidades[i];
+
+						local altura = tonumber(sheet.altura) or 25;
+						local largura = tonumber(sheet.largura) or 25;
 
 						if node.name ~= nil then
 							local btn = self:findControlByName(node.name);
@@ -19,18 +23,49 @@
 								btn.parent = mapa;
 								btn.left = node.left;
 								btn.top = node.top;
-								btn.width = 25;
-								btn.height = 25;
+								btn.width = largura;
+								btn.height = altura;
 								btn.cursor = "handPoint";
 								btn.hint = node.nome;
 								btn.opacity = 0.35;
 								btn.name = node.name;
 								btn.text = "";
+								sheet.drag = false;
 
 								btn.onClick = function() 
+									if sheet.dragged then
+										sheet.dragged = false;
+										return;
+									end;
 									self.boxDetalhesDaCidade.node = node; 
 									self.boxDetalhesDaCidade.visible = (node ~= nil);
 									self.tabControl.tabIndex = 2;
+								end;
+
+								btn.onMouseDown = function(event) 
+									sheet.drag = true;
+									sheet.dragX = event.x;
+									sheet.dragY = event.y;
+								end;
+
+								btn.onMouseMove = function(event)
+									if sheet.drag~=true then return end;
+									sheet.dragged = true;
+
+									btn.top = btn.top + (event.y - sheet.dragY);
+									btn.left = btn.left + (event.x - sheet.dragX);
+								end;
+
+								btn.onMouseUp = function(event)
+									sheet.drag = false;
+
+									local mapImage = self:findControlByName("mapImage");
+									local scale = 1;
+									if mapImage.scale > 1 then
+										scale = 0.5;
+									end;
+									node.left = btn.left*scale;
+									node.top = btn.top*scale;
 								end;
 							end;
 						end;

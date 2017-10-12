@@ -82,6 +82,9 @@ function newfrmGeography()
             					for i=1, #lugares, 1 do
             						local node = lugares[i];
             
+            						local altura2 = tonumber(sheet.altura2) or 30;
+            						local largura2 = tonumber(sheet.largura2) or 30;
+            
             						if node.name ~= nil then
             							local btn = self:findControlByName(node.name);
             							if btn == nil then
@@ -89,8 +92,8 @@ function newfrmGeography()
             								btn.parent = mapa;
             								btn.left = node.left;
             								btn.top = node.top;
-            								btn.width = 30;
-            								btn.height = 30;
+            								btn.width = largura2;
+            								btn.height = altura2;
             								btn.cursor = "handPoint";
             								btn.hint = node.nome;
             								btn.opacity = 0.35;
@@ -98,9 +101,39 @@ function newfrmGeography()
             								btn.text = "";
             
             								btn.onClick = function() 
+            									if sheet.dragged then
+            										sheet.dragged = false;
+            										return;
+            									end;
             									self.boxDetalhesDaGeografia.node = node; 
             									self.boxDetalhesDaGeografia.visible = (node ~= nil);
             									self.tabControl.tabIndex = 3;
+            								end;
+            
+            								btn.onMouseDown = function(event) 
+            									sheet.drag = true;
+            									sheet.dragX = event.x;
+            									sheet.dragY = event.y;
+            								end;
+            
+            								btn.onMouseMove = function(event)
+            									if sheet.drag~=true then return end;
+            									sheet.dragged = true;
+            
+            									btn.top = btn.top + (event.y - sheet.dragY);
+            									btn.left = btn.left + (event.x - sheet.dragX);
+            								end;
+            
+            								btn.onMouseUp = function(event)
+            									local mapImage = self:findControlByName("mapImage");
+            									local scale = 1;
+            									if mapImage.scale > 1 then
+            										scale = 0.5;
+            									end;
+            
+            									sheet.drag = false;
+            									node.left = btn.left*scale;
+            									node.top = btn.top*scale;
             								end;
             							end;
             						end;

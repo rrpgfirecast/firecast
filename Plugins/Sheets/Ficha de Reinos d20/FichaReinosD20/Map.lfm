@@ -18,8 +18,6 @@
 				local mesa = rrpg.getMesaDe(sheet);
 				local mapImage = self:findControlByName("mapImage");
 
-
-
 				if sheet.shiftKey then
 					if not ndb.testPermission(sheet, "write") then return end;
 					-- Adicionar Cidade
@@ -32,13 +30,18 @@
 					if mapImage.scale > 1 then
 						scale = 0.5;
 					end;
+					local altura = tonumber(sheet.altura) or 25;
+					local largura = tonumber(sheet.largura) or 25;
+
+					local altura2 = tonumber(sheet.altura2) or 30;
+					local largura2 = tonumber(sheet.largura2) or 30;
 
 					local btn = gui.newButton();
 					btn.parent = self.mapa;
 					btn.left = (sheet.x-12)/scale;
 					btn.top = (sheet.y-12)/scale;
-					btn.width = 25/scale;
-					btn.height = 25/scale;
+					btn.width = largura/scale;
+					btn.height = altura/scale;
 					btn.cursor = "handPoint";
 					btn.hint = "Cidade";
 					btn.opacity = 0.35;
@@ -55,9 +58,39 @@
 					node.contador = #cidades;
 
 					btn.onClick = function() 
+						if sheet.dragged then
+							sheet.dragged = false;
+							return;
+						end;
 						self.boxDetalhesDaCidade.node = node; 
 						self.boxDetalhesDaCidade.visible = (node ~= nil);
 						self.tabControl.tabIndex = 2;
+					end;
+
+					btn.onMouseDown = function(event) 
+						sheet.drag = true;
+						sheet.dragX = event.x;
+						sheet.dragY = event.y;
+					end;
+
+					btn.onMouseMove = function(event)
+						if sheet.drag~=true then return end;
+						sheet.dragged = true;
+
+						btn.top = btn.top + (event.y - sheet.dragY);
+						btn.left = btn.left + (event.x - sheet.dragX);
+					end;
+
+					btn.onMouseUp = function(event)
+						sheet.drag = false;
+
+						local mapImage = self:findControlByName("mapImage");
+						local scale = 1;
+						if mapImage.scale > 1 then
+							scale = 0.5;
+						end;
+						node.left = btn.left*scale;
+						node.top = btn.top*scale;
 					end;
 
 					self.boxDetalhesDaCidade.node = node;
@@ -81,8 +114,8 @@
 					btn.parent = self.mapa;
 					btn.left = (sheet.x-15)/scale;
 					btn.top = (sheet.y-15)/scale;
-					btn.width = 30/scale;
-					btn.height = 30/scale;
+					btn.width = largura2/scale;
+					btn.height = altura2/scale;
 					btn.cursor = "handPoint";
 					btn.hint = "Lugar";
 					btn.opacity = 0.35;
@@ -99,9 +132,39 @@
 					node.contador = #lugares;
 
 					btn.onClick = function() 
+						if sheet.dragged then
+							sheet.dragged = false;
+							return;
+						end;
 						self.boxDetalhesDaGeografia.node = node; 
 						self.boxDetalhesDaGeografia.visible = (node ~= nil);
 						self.tabControl.tabIndex = 3;
+					end;
+
+					btn.onMouseDown = function(event) 
+						sheet.drag = true;
+						sheet.dragX = event.x;
+						sheet.dragY = event.y;
+					end;
+
+					btn.onMouseMove = function(event)
+						if sheet.drag~=true then return end;
+						sheet.dragged = true;
+
+						btn.top = btn.top + (event.y - sheet.dragY);
+						btn.left = btn.left + (event.x - sheet.dragX);
+					end;
+
+					btn.onMouseUp = function(event)
+						sheet.drag = false;
+
+						local mapImage = self:findControlByName("mapImage");
+						local scale = 1;
+						if mapImage.scale > 1 then
+							scale = 0.5;
+						end;
+						node.left = btn.left*scale;
+						node.top = btn.top*scale;
 					end;
 
 					self.boxDetalhesDaGeografia.node = node;
@@ -162,6 +225,91 @@
 				]]>
 			</event>
 		</image>
+
+		<layout left="1160" top="0" width="110" height="200">
+			<rectangle align="client" color="black"/>
+
+			<label left="0" top="5" width="110" height="20" text="Altura Cidade" horzTextAlign="center" hint="Tamanho vertical em pixels dos botões/cidades do mapa. " hitTest="true"/>
+			<edit left="5" top="25" width="100" height="20" field="altura" horzTextAlign="center" hint="Tamanho vertical dos botões/cidades do mapa. " type="number"/>
+			<dataLink field="altura" defaultValue="25">
+				<event name="onChange">
+					local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
+
+					for i=1, #cidades, 1 do
+						local node = cidades[i];
+						local altura = tonumber(sheet.altura) or 25;
+
+						if node.name ~= nil then
+							local btn = self:findControlByName(node.name);
+							if btn ~= nil then
+								btn.height = altura;
+							end;
+						end;
+					end;
+				</event>
+			</dataLink>
+
+			<label left="0" top="55" width="110" height="20" text="Largura Cidade" horzTextAlign="center" hint="Tamanho horizontal em pixels dos botões/cidades do mapa. " hitTest="true"/>
+			<edit left="5" top="75" width="100" height="20" field="largura" horzTextAlign="center" hint="Tamanho horizontal dos botões/cidades do mapa. " type="number"/>
+			<dataLink field="largura" defaultValue="25">
+				<event name="onChange">
+					local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
+
+					for i=1, #cidades, 1 do
+						local node = cidades[i];
+						local largura = tonumber(sheet.largura) or 25;
+
+						if node.name ~= nil then
+							local btn = self:findControlByName(node.name);
+							if btn ~= nil then
+								btn.width = largura;
+							end;
+						end;
+					end;
+				</event>
+			</dataLink>
+
+			<label left="0" top="105" width="110" height="20" text="Altura Lugares" horzTextAlign="center" hint="Tamanho vertical em pixels dos botões/lugares do mapa. " hitTest="true"/>
+			<edit left="5" top="125" width="100" height="20" field="altura2" horzTextAlign="center" hint="Tamanho vertical dos botões/lugares do mapa. " type="number"/>
+			<dataLink field="altura2" defaultValue="30">
+				<event name="onChange">
+					local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
+
+					for i=1, #lugares, 1 do
+						local node = lugares[i];
+						local altura2 = tonumber(sheet.altura2) or 25;
+
+						if node.name ~= nil then
+							local btn = self:findControlByName(node.name);
+							if btn ~= nil then
+								btn.height = altura2;
+							end;
+						end;
+					end;
+				</event>
+			</dataLink>
+
+			<label left="0" top="155" width="110" height="20" text="Largura Lugares" horzTextAlign="center" hint="Tamanho horizontal em pixels dos botões/lugares do mapa. " hitTest="true"/>
+			<edit left="5" top="175" width="100" height="20" field="largura2" horzTextAlign="center" hint="Tamanho horizontal dos botões/lugares do mapa. " type="number"/>
+			<dataLink field="largura2" defaultValue="30">
+				<event name="onChange">
+					local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
+
+					for i=1, #lugares, 1 do
+						local node = lugares[i];
+						local largura2 = tonumber(sheet.largura2) or 25;
+
+						if node.name ~= nil then
+							local btn = self:findControlByName(node.name);
+							if btn ~= nil then
+								btn.width = largura2;
+							end;
+						end;
+					end;
+				</event>
+			</dataLink>
+		</layout>   
+
 		<script>
 			_obj_setProp(self.mapImage.handle, "Stretch", true);
 		</script>
