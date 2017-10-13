@@ -22,7 +22,7 @@ elseif resultado <= 36 then
 	local resultado = rolar("1d100", "Rinho, Elephant or Mouse"); 
 	if resultado <= 25 then
 		enviar("Rinho");
-	elseif resultado <= 50
+	elseif resultado <= 50 then
 		enviar("Elephant");
 	else
 		enviar("Mouse");
