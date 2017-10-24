@@ -102,12 +102,12 @@
 		<!-- Info selecionada vai estar aqui -->
 		<dataScopeBox left="210" top="0" width="1030" height="600" name="boxDetalhesDaCidade" visible="false">
 			<scrollBox align="client">
-				<rectangle left="0" top="0" width="1010" height="2740" color="black"/>
+				<rectangle left="0" top="0" width="1010" height="3070" color="black"/>
 
-				<label left="0" top="5" width="100" height="20" text="Tamanho" horzTextAlign="center"/>
+				<label left="0" top="5" width="100" height="20" text="Tamanho" horzTextAlign="center" hitTest="true"/>
 				<comboBox left="90" top="5" width="130" height="20" field="tamanho" items="{'Lugarejo','Povoado','Aldeia','Vila Pequena','Vila Grande','Cidade Pequena','Cidade Grande','Metrópole','Metrópole Planar'}" fontSize="11"/>
 
-				<label left="200" top="5" width="100" height="20" text="Tipo" horzTextAlign="center"/>
+				<label left="200" top="5" width="100" height="20" text="Tipo" horzTextAlign="center" hitTest="true"/>
 				<comboBox left="280" top="5" width="100" height="20" field="tipo" name="cidade_tipo" items="{'Rural','Fronteira','Civil','Urbana'}" hint="" fontSize="11">
 					<event name="onChange">
 						local node = self.boxDetalhesDaCidade.node;
@@ -126,7 +126,7 @@
 					</event>
 				</comboBox>
 
-				<label left="400" top="5" width="100" height="20" text="Composição Racial" horzTextAlign="center" fontSize="11"/>
+				<label left="400" top="5" width="100" height="20" text="Composição Racial" horzTextAlign="center" fontSize="11" hitTest="true"/>
 				<comboBox left="500" top="5" width="130" height="20" field="composicao" name="cidade_composicao" items="{'Isolada','Miscigenada','Integrada'}" fontSize="11">
 					<event name="onChange">
 						local node = self.boxDetalhesDaCidade.node;
@@ -143,7 +143,7 @@
 					</event>
 				</comboBox>
 
-				<label left="620" top="5" width="100" height="20" text="Economia" horzTextAlign="center" fontSize="11"/>
+				<label left="620" top="5" width="100" height="20" text="Economia" horzTextAlign="center" fontSize="11" hitTest="true"/>
 				<comboBox left="700" top="5" width="100" height="20" field="economia" name="cidade_economia" items="{'Fabricação','Agropecuária','Exploração','Vendas'}" fontSize="11">
 					<event name="onChange">
 						local node = self.boxDetalhesDaCidade.node;
@@ -161,6 +161,8 @@
 						end;
 					</event>
 				</comboBox>
+
+				<checkBox left="810" top="5" width="100" height="20" field="capital" text="Capital"/>
 
 				<button left="900" top="5" width="100" height="45" text="Aleatorio" horzTextAlign="center" fontSize="15" hint="Cria uma cidade aleatoria. ">
 					<event name="onClick"><![CDATA[
@@ -236,7 +238,7 @@
 					</event>
 				</button>
 
-				<label left="0" top="30" width="100" height="20" text="População" horzTextAlign="center" fontSize="11" hint="Quantidade de adultos. Crianças e Idosos é cerca de 30% desse valor. "/>
+				<label left="0" top="30" width="100" height="20" text="População" horzTextAlign="center" fontSize="11" hint="Quantidade de adultos. Crianças e Idosos é cerca de 30% desse valor. " hitTest="true"/>
 				<edit left="100" top="30" width="100" height="20" field="populacao" type="number" min="0">
 					<event name="onChange"><![CDATA[
 						local node = self.boxDetalhesDaCidade.node;
@@ -267,10 +269,10 @@
 					</event>
 				</edit>
 
-				<label left="200" top="30" width="100" height="20" text="Limite de PO" horzTextAlign="center" fontSize="11" hint="Preço do item mais caro da cidade. "/>
+				<label left="200" top="30" width="100" height="20" text="Limite de PO" horzTextAlign="center" fontSize="11" hint="Preço do item mais caro da cidade. " hitTest="true"/>
 				<edit left="300" top="30" width="100" height="20" field="limitePO"/>
 
-				<label left="400" top="30" width="100" height="20" text="Riqueza Total" horzTextAlign="center" fontSize="11" hint="Quantidade de dinheiro que pode ser usada em vendas e compras de um mesmo tipo de item. "/>
+				<label left="400" top="30" width="100" height="20" text="Riqueza Total" horzTextAlign="center" fontSize="11" hint="Quantidade de dinheiro que pode ser usada em vendas e compras de um mesmo tipo de item. " hitTest="true"/>
 				<edit left="500" top="30" width="100" height="20" field="riqueza"/>
 
 				<dataLink fields="{'populacao','tipo'}">
@@ -321,7 +323,8 @@
 					</event>
 				</dataLink>
 
-				<checkBox left="700" top="30" width="100" height="20" field="capital" text="Capital"/>
+				<label left="600" top="30" width="100" height="20" text="Fundação" horzTextAlign="center" fontSize="11" hint="Ano de fundação da cidade. " hitTest="true"/>
+				<edit left="700" top="30" width="100" height="20" field="fundacao"/>
 
 				<label left="5" top="55" width="1000" height="20" text="Descrição" horzTextAlign="center"/>
 				<richEdit left="5" top="80" width="1000" height="400" field="descricao" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
@@ -408,7 +411,10 @@
 				<label left="5" top="1955" width="1000" height="20" text="Organizações" horzTextAlign="center"/>
 				<richEdit left="5" top="1980" width="1000" height="300" field="organizacoes" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
 
-				<scrollBox left="205" top="2285" width="600" height="450">
+				<label left="5" top="2285" width="1000" height="20" text="Religião" horzTextAlign="center"/>
+				<richEdit left="5" top="2310" width="1000" height="300" field="religiao" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+
+				<scrollBox left="205" top="2615" width="600" height="450">
 					<rectangle width="600" height="450" color="#333333" name="mapRectangleCidade"/>
 					<image width="600" height="450" field="mapaCidade" name="mapImageCidade" hitTest="true" style="proportional" hint="Clique para alterar Imagem. ">
 						<event name="onMouseDown">

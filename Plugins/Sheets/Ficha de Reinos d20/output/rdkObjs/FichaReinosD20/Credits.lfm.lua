@@ -29,6 +29,193 @@ function newfrmTemplateCreditos()
     obj:setName("frmTemplateCreditos");
     obj:setAlign("client");
 
+
+
+	local function listToString(list, max)
+		local text = "";
+
+		for k=0, max, 1 do
+			text = text .. (list[k] or "");
+		end;
+
+		return text;
+	end;
+
+	local function richEditToMarkdown(richEdit)
+		if richEdit==nil then return "" end;
+		local nodes = ndb.getChildNodes(richEdit);
+		--local text = utils.tableToStr(richEdit) .. "\n";
+		local text = "";
+
+		local strList = {};
+		local strMax = 0;
+
+		for i=1, #nodes, 1 do
+			local parts = ndb.getChildNodes(nodes[i]);
+
+			local str = "";
+			local table = "";
+
+			local fragList = {};
+			local fragMax = 0;
+			for j=1, #parts, 1 do 
+				local object = parts[j];
+				local frag = "";
+
+				if object.t == "txt" then
+					if object.text ~= nil then
+						frag = object.text:gsub("\9", "\n");
+					else
+						frag = "";
+					end;
+
+					if object.style ~= nil and frag~="\n" then
+						local style = object.style;
+
+						if string.match(style, "b") then
+							frag = "**" .. frag .. "**";
+						end;
+
+						if string.match(style, "i") then
+							frag = "*" .. frag .. "*";
+						end;
+
+						if string.match(style, "u") then
+							--frag = "__" .. frag .. "__";
+						end;
+
+						if string.match(style, "s") then
+							frag = "~~" .. frag .. "~~";
+						end;
+					end;
+				elseif object.ctype == "imageURL" then
+					frag = "<img src='" .. object.url .. "' style='position:absolute;bottom:50px;right:30px;width:280px' />";
+				end;
+
+				if object.i ~= nil then
+					fragList[object.i] = frag;
+					if object.i > fragMax then fragMax = object.i end;
+				end;
+
+				table = table .. utils.tableToStr(object) .. "\n";
+			end;
+			
+			str = listToString(fragList, fragMax);
+			strList[nodes[i].i] = str .. "\n";
+			if nodes[i].i > strMax then strMax = nodes[i].i end;
+			
+			--text = text .. "\n" .. table .. "\n";
+			--text = text .. utils.tableToStr(nodes[i]) .. "\n\n";
+		end;
+
+		text = listToString(strList, strMax);
+
+		return text;
+	end;
+
+	local function exportToMarkdown()
+		local retorno = "";
+
+		local mesa = rrpg.getMesaDe(sheet);
+
+		local reino = ndb.getChildNodes(sheet.listaDeDestalhesDoReino);
+		retorno = "# " .. (sheet.reino or "Reino") .. "\n" .. richEditToMarkdown(reino[1]["$(field)"]) .. "\n";
+		retorno = retorno .. "## Cultura" .. "\n" .. richEditToMarkdown(reino[2]["$(field)"]) .. "\n";
+		retorno = retorno .. "## Raças" .. "\n" .. richEditToMarkdown(reino[3]["$(field)"]) .. "\n";
+		retorno = retorno .. "## Classes" .. "\n" .. richEditToMarkdown(reino[4]["$(field)"]) .. "\n";
+		retorno = retorno .. "## Historia" .. "\n" .. richEditToMarkdown(reino[5]["$(field)"]) .. "\n";
+		retorno = retorno .. "## Geografia" .. "\n" .. richEditToMarkdown(reino[6]["$(field)"]) .. "\n";
+		retorno = retorno .. "## Clima" .. "\n" .. richEditToMarkdown(reino[7]["$(field)"]) .. "\n";
+		retorno = retorno .. "## Religião" .. "\n" .. richEditToMarkdown(reino[9]["$(field)"]) .. "\n";
+		retorno = retorno .. "## Outros" .. "\n" .. richEditToMarkdown(reino[8]["$(field)"]) .. "\n";
+
+		retorno = retorno .. "<div class='wide'><img src='" .. (sheet.mapa or "") .. "' style='width:640px;height:360px' /><div style='margin-top:20px'></div></div>\n";
+		
+		local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
+
+		retorno = retorno .. "## Cidades" .. "\n\n"
+
+		for i=1, #cidades, 1 do 
+			local cidade = cidades[i];
+			local capital = "";
+			if cidade.capital then
+				capital = "[capital]\n";
+			end;
+
+
+			retorno = retorno .. "### " .. (cidade.nome or "Cidade") .. "\n" .. capital .. richEditToMarkdown(cidade.descricao) .. "\n";
+			retorno = retorno .. "#### Historia" .. "\n" .. richEditToMarkdown(cidade.historia) .. "\n";
+
+			retorno = retorno .. "**Tamanho:** " .. (cidade.tamanho or "tamanho") .. "\n\n";
+			retorno = retorno .. "**Tipo:** " .. (cidade.tipo or "tipo") .. "\n\n";
+			retorno = retorno .. "**Composição Racial:** " .. (cidade.composicao or "composicao") .. "\n\n";
+			retorno = retorno .. "**Economia:** " .. (cidade.economia or "economia") .. "\n\n";
+			retorno = retorno .. "**População:** " .. (cidade.populacao or "populacao") .. "\n\n";
+			retorno = retorno .. "**Limite de PO:** " .. (cidade.limitePO or "limitePO") .. "\n\n";
+			retorno = retorno .. "**Riqueza Total:** " .. (cidade.riqueza or "riqueza") .. "\n\n";
+			retorno = retorno .. "**Fundação:** " .. (cidade.fundacao or "fundacao") .. "\n\n";
+
+			retorno = retorno .. "#### Boatos" .. "\n" .. richEditToMarkdown(cidade.boatos) .. "\n";
+
+			retorno = retorno .. "**Politica:** ";
+			if cidade.politica_1 then
+				retorno = retorno .. "Monarquia ";
+			end;
+			if cidade.politica_2 then
+				retorno = retorno .. "Tribal ";
+			end;
+			if cidade.politica_3 then
+				retorno = retorno .. "Feudal ";
+			end;
+			if cidade.politica_4 then
+				retorno = retorno .. "República ";
+			end;
+			if cidade.politica_5 then
+				retorno = retorno .. "Democracia ";
+			end;
+			if cidade.politica_6 then
+				retorno = retorno .. "Magocracia";
+			end;
+			if cidade.politica_7 then
+				retorno = retorno .. "Teocracia";
+			end;
+			if cidade.politica_8 then
+				retorno = retorno .. "Plutocracia";
+			end;
+			if cidade.politica_9 then
+				retorno = retorno .. "Outros";
+			end;
+			retorno = retorno .. "\n\n";
+
+			retorno = retorno .. "**Militarização:** " .. (cidade.militarizacao or "militarizacao") .. "\n\n";
+			retorno = retorno .. "**Guardas:** " .. (cidade.guardas or "guardas") .. "\n\n";
+			retorno = retorno .. "**Reservistas:** " .. (cidade.reservistas or "reservistas") .. "\n\n";
+
+			retorno = retorno .. "#### Poderes" .. "\n" .. richEditToMarkdown(cidade.poderes) .. "\n";
+			retorno = retorno .. "#### Pessoas Importantes" .. "\n" .. richEditToMarkdown(cidade.pessoas) .. "\n";
+			retorno = retorno .. "#### Organizações" .. "\n" .. richEditToMarkdown(cidade.organizacoes) .. "\n";
+			retorno = retorno .. "#### Religião" .. "\n" .. richEditToMarkdown(cidade.religiao) .. "\n";
+
+			retorno = retorno .. "<div class='wide'><img src='" .. (cidade.mapaCidade or "") .. "' style='width:640px;height:360px' /><div style='margin-top:20px'></div></div>\n";
+
+		end;
+
+		local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
+
+		retorno = retorno .. "## Pontos de Interesse\n\n";
+
+		for i=1, #lugares, 1 do
+			local lugar = lugares[i];
+
+			retorno = retorno .. "### " .. (lugar.nome or "Lugar") .. "\n" .. richEditToMarkdown(lugar.descricao) .. "\n";
+		end;
+
+		System.setClipboardText(retorno);
+	end;
+
+	
+
+
     obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
@@ -154,6 +341,15 @@ function newfrmTemplateCreditos()
     obj.button3:setText("RPGmeister");
     obj.button3:setName("button3");
 
+    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4:setParent(obj.scrollBox1);
+    obj.button4:setLeft(660);
+    obj.button4:setTop(425);
+    obj.button4:setWidth(100);
+    obj.button4:setText("Exportar");
+    obj.button4:setHint("Coloca o conteudo da ficha na área de tranferencia (Ctrl+V) no formato markdown. Experimente colar o texto no site: homebrewery.naturalcrit.com");
+    obj.button4:setName("button4");
+
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/README.md')
@@ -169,7 +365,13 @@ function newfrmTemplateCreditos()
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
+    obj._e_event3 = obj.button4:addEventListener("onClick",
+        function (self)
+            exportToMarkdown();
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
@@ -184,6 +386,7 @@ function newfrmTemplateCreditos()
           self:setNodeDatabase(nil);
         end;
 
+        if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;

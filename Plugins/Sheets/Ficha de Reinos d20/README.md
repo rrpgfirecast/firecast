@@ -3,6 +3,9 @@ Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro
 
 Planejado:
 * Icones instanciaveis para o mapa da cidade. 
+
+Versão 05:
+* Descrição da Religião no Reino na primeira aba e nas cidades.
 * Exportar para Markdown (http://homebrewery.naturalcrit.com). 
 
 Versão 04:

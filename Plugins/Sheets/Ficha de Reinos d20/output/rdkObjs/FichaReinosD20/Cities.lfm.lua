@@ -74,7 +74,7 @@ function newfrmCities()
     obj.rectangle2:setLeft(0);
     obj.rectangle2:setTop(0);
     obj.rectangle2:setWidth(1010);
-    obj.rectangle2:setHeight(2740);
+    obj.rectangle2:setHeight(3070);
     obj.rectangle2:setColor("black");
     obj.rectangle2:setName("rectangle2");
 
@@ -86,6 +86,7 @@ function newfrmCities()
     obj.label1:setHeight(20);
     obj.label1:setText("Tamanho");
     obj.label1:setHorzTextAlign("center");
+    obj.label1:setHitTest(true);
     obj.label1:setName("label1");
 
     obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
@@ -107,6 +108,7 @@ function newfrmCities()
     obj.label2:setHeight(20);
     obj.label2:setText("Tipo");
     obj.label2:setHorzTextAlign("center");
+    obj.label2:setHitTest(true);
     obj.label2:setName("label2");
 
     obj.cidade_tipo = gui.fromHandle(_obj_newObject("comboBox"));
@@ -130,6 +132,7 @@ function newfrmCities()
     obj.label3:setText("Composição Racial");
     obj.label3:setHorzTextAlign("center");
     obj.label3:setFontSize(11);
+    obj.label3:setHitTest(true);
     obj.label3:setName("label3");
 
     obj.cidade_composicao = gui.fromHandle(_obj_newObject("comboBox"));
@@ -152,6 +155,7 @@ function newfrmCities()
     obj.label4:setText("Economia");
     obj.label4:setHorzTextAlign("center");
     obj.label4:setFontSize(11);
+    obj.label4:setHitTest(true);
     obj.label4:setName("label4");
 
     obj.cidade_economia = gui.fromHandle(_obj_newObject("comboBox"));
@@ -164,6 +168,16 @@ function newfrmCities()
     obj.cidade_economia:setName("cidade_economia");
     obj.cidade_economia:setItems({'Fabricação','Agropecuária','Exploração','Vendas'});
     obj.cidade_economia:setFontSize(11);
+
+    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1:setParent(obj.scrollBox2);
+    obj.checkBox1:setLeft(810);
+    obj.checkBox1:setTop(5);
+    obj.checkBox1:setWidth(100);
+    obj.checkBox1:setHeight(20);
+    obj.checkBox1:setField("capital");
+    obj.checkBox1:setText("Capital");
+    obj.checkBox1:setName("checkBox1");
 
     obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox2);
@@ -187,6 +201,7 @@ function newfrmCities()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setFontSize(11);
     obj.label5:setHint("Quantidade de adultos. Crianças e Idosos é cerca de 30% desse valor. ");
+    obj.label5:setHitTest(true);
     obj.label5:setName("label5");
 
     obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
@@ -210,6 +225,7 @@ function newfrmCities()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setFontSize(11);
     obj.label6:setHint("Preço do item mais caro da cidade. ");
+    obj.label6:setHitTest(true);
     obj.label6:setName("label6");
 
     obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
@@ -231,6 +247,7 @@ function newfrmCities()
     obj.label7:setHorzTextAlign("center");
     obj.label7:setFontSize(11);
     obj.label7:setHint("Quantidade de dinheiro que pode ser usada em vendas e compras de um mesmo tipo de item. ");
+    obj.label7:setHitTest(true);
     obj.label7:setName("label7");
 
     obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
@@ -247,25 +264,37 @@ function newfrmCities()
     obj.dataLink1:setFields({'populacao','tipo'});
     obj.dataLink1:setName("dataLink1");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox1:setParent(obj.scrollBox2);
-    obj.checkBox1:setLeft(700);
-    obj.checkBox1:setTop(30);
-    obj.checkBox1:setWidth(100);
-    obj.checkBox1:setHeight(20);
-    obj.checkBox1:setField("capital");
-    obj.checkBox1:setText("Capital");
-    obj.checkBox1:setName("checkBox1");
-
     obj.label8 = gui.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.scrollBox2);
-    obj.label8:setLeft(5);
-    obj.label8:setTop(55);
-    obj.label8:setWidth(1000);
+    obj.label8:setLeft(600);
+    obj.label8:setTop(30);
+    obj.label8:setWidth(100);
     obj.label8:setHeight(20);
-    obj.label8:setText("Descrição");
+    obj.label8:setText("Fundação");
     obj.label8:setHorzTextAlign("center");
+    obj.label8:setFontSize(11);
+    obj.label8:setHint("Ano de fundação da cidade. ");
+    obj.label8:setHitTest(true);
     obj.label8:setName("label8");
+
+    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4:setParent(obj.scrollBox2);
+    obj.edit4:setLeft(700);
+    obj.edit4:setTop(30);
+    obj.edit4:setWidth(100);
+    obj.edit4:setHeight(20);
+    obj.edit4:setField("fundacao");
+    obj.edit4:setName("edit4");
+
+    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9:setParent(obj.scrollBox2);
+    obj.label9:setLeft(5);
+    obj.label9:setTop(55);
+    obj.label9:setWidth(1000);
+    obj.label9:setHeight(20);
+    obj.label9:setText("Descrição");
+    obj.label9:setHorzTextAlign("center");
+    obj.label9:setName("label9");
 
     obj.richEdit1 = gui.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit1:setParent(obj.scrollBox2);
@@ -279,15 +308,15 @@ function newfrmCities()
     lfm_setPropAsString(obj.richEdit1, "defaultFontColor",  "white");
     obj.richEdit1:setName("richEdit1");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
-    obj.label9:setParent(obj.scrollBox2);
-    obj.label9:setLeft(5);
-    obj.label9:setTop(485);
-    obj.label9:setWidth(1000);
-    obj.label9:setHeight(20);
-    obj.label9:setText("Historia");
-    obj.label9:setHorzTextAlign("center");
-    obj.label9:setName("label9");
+    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10:setParent(obj.scrollBox2);
+    obj.label10:setLeft(5);
+    obj.label10:setTop(485);
+    obj.label10:setWidth(1000);
+    obj.label10:setHeight(20);
+    obj.label10:setText("Historia");
+    obj.label10:setHorzTextAlign("center");
+    obj.label10:setName("label10");
 
     obj.richEdit2 = gui.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit2:setParent(obj.scrollBox2);
@@ -301,15 +330,15 @@ function newfrmCities()
     lfm_setPropAsString(obj.richEdit2, "defaultFontColor",  "white");
     obj.richEdit2:setName("richEdit2");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
-    obj.label10:setParent(obj.scrollBox2);
-    obj.label10:setLeft(5);
-    obj.label10:setTop(915);
-    obj.label10:setWidth(1000);
-    obj.label10:setHeight(20);
-    obj.label10:setText("Boatos");
-    obj.label10:setHorzTextAlign("center");
-    obj.label10:setName("label10");
+    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11:setParent(obj.scrollBox2);
+    obj.label11:setLeft(5);
+    obj.label11:setTop(915);
+    obj.label11:setWidth(1000);
+    obj.label11:setHeight(20);
+    obj.label11:setText("Boatos");
+    obj.label11:setHorzTextAlign("center");
+    obj.label11:setName("label11");
 
     obj.richEdit3 = gui.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit3:setParent(obj.scrollBox2);
@@ -323,15 +352,15 @@ function newfrmCities()
     lfm_setPropAsString(obj.richEdit3, "defaultFontColor",  "white");
     obj.richEdit3:setName("richEdit3");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
-    obj.label11:setParent(obj.scrollBox2);
-    obj.label11:setLeft(0);
-    obj.label11:setTop(1245);
-    obj.label11:setWidth(100);
-    obj.label11:setHeight(20);
-    obj.label11:setText("Politica");
-    obj.label11:setHorzTextAlign("center");
-    obj.label11:setName("label11");
+    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12:setParent(obj.scrollBox2);
+    obj.label12:setLeft(0);
+    obj.label12:setTop(1245);
+    obj.label12:setWidth(100);
+    obj.label12:setHeight(20);
+    obj.label12:setText("Politica");
+    obj.label12:setHorzTextAlign("center");
+    obj.label12:setName("label12");
 
     obj.checkBox2 = gui.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox2:setParent(obj.scrollBox2);
@@ -432,15 +461,15 @@ function newfrmCities()
     obj.checkBox10:setHint("");
     obj.checkBox10:setName("checkBox10");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
-    obj.label12:setParent(obj.scrollBox2);
-    obj.label12:setLeft(0);
-    obj.label12:setTop(1270);
-    obj.label12:setWidth(100);
-    obj.label12:setHeight(20);
-    obj.label12:setText("Militarização");
-    obj.label12:setHorzTextAlign("center");
-    obj.label12:setName("label12");
+    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13:setParent(obj.scrollBox2);
+    obj.label13:setLeft(0);
+    obj.label13:setTop(1270);
+    obj.label13:setWidth(100);
+    obj.label13:setHeight(20);
+    obj.label13:setText("Militarização");
+    obj.label13:setHorzTextAlign("center");
+    obj.label13:setName("label13");
 
     obj.cidade_militarizacao = gui.fromHandle(_obj_newObject("comboBox"));
     obj.cidade_militarizacao:setParent(obj.scrollBox2);
@@ -454,17 +483,17 @@ function newfrmCities()
     obj.cidade_militarizacao:setHint("");
     obj.cidade_militarizacao:setFontSize(11);
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
-    obj.label13:setParent(obj.scrollBox2);
-    obj.label13:setLeft(200);
-    obj.label13:setTop(1270);
-    obj.label13:setWidth(100);
-    obj.label13:setHeight(20);
-    obj.label13:setText("Guardas");
-    obj.label13:setHorzTextAlign("center");
-    obj.label13:setHitTest(true);
-    obj.label13:setHint("Número de guardas patrulhando as ruas a qualquer momento e diariamente. ");
-    obj.label13:setName("label13");
+    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14:setParent(obj.scrollBox2);
+    obj.label14:setLeft(200);
+    obj.label14:setTop(1270);
+    obj.label14:setWidth(100);
+    obj.label14:setHeight(20);
+    obj.label14:setText("Guardas");
+    obj.label14:setHorzTextAlign("center");
+    obj.label14:setHitTest(true);
+    obj.label14:setHint("Número de guardas patrulhando as ruas a qualquer momento e diariamente. ");
+    obj.label14:setName("label14");
 
     obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.scrollBox2);
@@ -477,29 +506,29 @@ function newfrmCities()
     obj.rectangle3:setStrokeSize(1);
     obj.rectangle3:setName("rectangle3");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
-    obj.label14:setParent(obj.scrollBox2);
-    obj.label14:setLeft(300);
-    obj.label14:setTop(1270);
-    obj.label14:setWidth(100);
-    obj.label14:setHeight(20);
-    obj.label14:setField("guardas");
-    obj.label14:setHorzTextAlign("center");
-    obj.label14:setHitTest(true);
-    obj.label14:setHint("Número de guardas patrulhando as ruas a qualquer momento e diariamente. ");
-    obj.label14:setName("label14");
-
     obj.label15 = gui.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.scrollBox2);
-    obj.label15:setLeft(400);
+    obj.label15:setLeft(300);
     obj.label15:setTop(1270);
     obj.label15:setWidth(100);
     obj.label15:setHeight(20);
-    obj.label15:setText("Reservistas");
+    obj.label15:setField("guardas");
     obj.label15:setHorzTextAlign("center");
     obj.label15:setHitTest(true);
-    obj.label15:setHint("Número de guardas não oficiais ou de folga. Podem ser chamados para ajudar em caso de emergencias e demoram cerca de uma hora para todos chegarem.");
+    obj.label15:setHint("Número de guardas patrulhando as ruas a qualquer momento e diariamente. ");
     obj.label15:setName("label15");
+
+    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16:setParent(obj.scrollBox2);
+    obj.label16:setLeft(400);
+    obj.label16:setTop(1270);
+    obj.label16:setWidth(100);
+    obj.label16:setHeight(20);
+    obj.label16:setText("Reservistas");
+    obj.label16:setHorzTextAlign("center");
+    obj.label16:setHitTest(true);
+    obj.label16:setHint("Número de guardas não oficiais ou de folga. Podem ser chamados para ajudar em caso de emergencias e demoram cerca de uma hora para todos chegarem.");
+    obj.label16:setName("label16");
 
     obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.scrollBox2);
@@ -512,34 +541,34 @@ function newfrmCities()
     obj.rectangle4:setStrokeSize(1);
     obj.rectangle4:setName("rectangle4");
 
-    obj.label16 = gui.fromHandle(_obj_newObject("label"));
-    obj.label16:setParent(obj.scrollBox2);
-    obj.label16:setLeft(500);
-    obj.label16:setTop(1270);
-    obj.label16:setWidth(100);
-    obj.label16:setHeight(20);
-    obj.label16:setField("reservistas");
-    obj.label16:setHorzTextAlign("center");
-    obj.label16:setHitTest(true);
-    obj.label16:setHint("Número de guardas não oficiais ou de folga. Podem ser chamados para ajudar em caso de emergencias e demoram cerca de uma hora para todos chegarem.");
-    obj.label16:setName("label16");
+    obj.label17 = gui.fromHandle(_obj_newObject("label"));
+    obj.label17:setParent(obj.scrollBox2);
+    obj.label17:setLeft(500);
+    obj.label17:setTop(1270);
+    obj.label17:setWidth(100);
+    obj.label17:setHeight(20);
+    obj.label17:setField("reservistas");
+    obj.label17:setHorzTextAlign("center");
+    obj.label17:setHitTest(true);
+    obj.label17:setHint("Número de guardas não oficiais ou de folga. Podem ser chamados para ajudar em caso de emergencias e demoram cerca de uma hora para todos chegarem.");
+    obj.label17:setName("label17");
 
     obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.scrollBox2);
     obj.dataLink2:setFields({'populacao','militarizacao'});
     obj.dataLink2:setName("dataLink2");
 
-    obj.label17 = gui.fromHandle(_obj_newObject("label"));
-    obj.label17:setParent(obj.scrollBox2);
-    obj.label17:setLeft(5);
-    obj.label17:setTop(1295);
-    obj.label17:setWidth(1000);
-    obj.label17:setHeight(20);
-    obj.label17:setText("Poderes");
-    obj.label17:setHorzTextAlign("center");
-    obj.label17:setHitTest(true);
-    obj.label17:setHint("Descreva a forma de governo e quem são os poderes da cidade, assim como sua relação entre si.");
-    obj.label17:setName("label17");
+    obj.label18 = gui.fromHandle(_obj_newObject("label"));
+    obj.label18:setParent(obj.scrollBox2);
+    obj.label18:setLeft(5);
+    obj.label18:setTop(1295);
+    obj.label18:setWidth(1000);
+    obj.label18:setHeight(20);
+    obj.label18:setText("Poderes");
+    obj.label18:setHorzTextAlign("center");
+    obj.label18:setHitTest(true);
+    obj.label18:setHint("Descreva a forma de governo e quem são os poderes da cidade, assim como sua relação entre si.");
+    obj.label18:setName("label18");
 
     obj.richEdit4 = gui.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit4:setParent(obj.scrollBox2);
@@ -553,15 +582,15 @@ function newfrmCities()
     lfm_setPropAsString(obj.richEdit4, "defaultFontColor",  "white");
     obj.richEdit4:setName("richEdit4");
 
-    obj.label18 = gui.fromHandle(_obj_newObject("label"));
-    obj.label18:setParent(obj.scrollBox2);
-    obj.label18:setLeft(5);
-    obj.label18:setTop(1625);
-    obj.label18:setWidth(1000);
-    obj.label18:setHeight(20);
-    obj.label18:setText("Pessoas Importantes");
-    obj.label18:setHorzTextAlign("center");
-    obj.label18:setName("label18");
+    obj.label19 = gui.fromHandle(_obj_newObject("label"));
+    obj.label19:setParent(obj.scrollBox2);
+    obj.label19:setLeft(5);
+    obj.label19:setTop(1625);
+    obj.label19:setWidth(1000);
+    obj.label19:setHeight(20);
+    obj.label19:setText("Pessoas Importantes");
+    obj.label19:setHorzTextAlign("center");
+    obj.label19:setName("label19");
 
     obj.richEdit5 = gui.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit5:setParent(obj.scrollBox2);
@@ -575,15 +604,15 @@ function newfrmCities()
     lfm_setPropAsString(obj.richEdit5, "defaultFontColor",  "white");
     obj.richEdit5:setName("richEdit5");
 
-    obj.label19 = gui.fromHandle(_obj_newObject("label"));
-    obj.label19:setParent(obj.scrollBox2);
-    obj.label19:setLeft(5);
-    obj.label19:setTop(1955);
-    obj.label19:setWidth(1000);
-    obj.label19:setHeight(20);
-    obj.label19:setText("Organizações");
-    obj.label19:setHorzTextAlign("center");
-    obj.label19:setName("label19");
+    obj.label20 = gui.fromHandle(_obj_newObject("label"));
+    obj.label20:setParent(obj.scrollBox2);
+    obj.label20:setLeft(5);
+    obj.label20:setTop(1955);
+    obj.label20:setWidth(1000);
+    obj.label20:setHeight(20);
+    obj.label20:setText("Organizações");
+    obj.label20:setHorzTextAlign("center");
+    obj.label20:setName("label20");
 
     obj.richEdit6 = gui.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit6:setParent(obj.scrollBox2);
@@ -597,10 +626,32 @@ function newfrmCities()
     lfm_setPropAsString(obj.richEdit6, "defaultFontColor",  "white");
     obj.richEdit6:setName("richEdit6");
 
+    obj.label21 = gui.fromHandle(_obj_newObject("label"));
+    obj.label21:setParent(obj.scrollBox2);
+    obj.label21:setLeft(5);
+    obj.label21:setTop(2285);
+    obj.label21:setWidth(1000);
+    obj.label21:setHeight(20);
+    obj.label21:setText("Religião");
+    obj.label21:setHorzTextAlign("center");
+    obj.label21:setName("label21");
+
+    obj.richEdit7 = gui.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit7:setParent(obj.scrollBox2);
+    obj.richEdit7:setLeft(5);
+    obj.richEdit7:setTop(2310);
+    obj.richEdit7:setWidth(1000);
+    obj.richEdit7:setHeight(300);
+    obj.richEdit7:setField("religiao");
+    lfm_setPropAsString(obj.richEdit7, "backgroundColor",  "#333333");
+    lfm_setPropAsString(obj.richEdit7, "defaultFontSize",  "12");
+    lfm_setPropAsString(obj.richEdit7, "defaultFontColor",  "white");
+    obj.richEdit7:setName("richEdit7");
+
     obj.scrollBox3 = gui.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox3:setParent(obj.scrollBox2);
     obj.scrollBox3:setLeft(205);
-    obj.scrollBox3:setTop(2285);
+    obj.scrollBox3:setTop(2615);
     obj.scrollBox3:setWidth(600);
     obj.scrollBox3:setHeight(450);
     obj.scrollBox3:setName("scrollBox3");
@@ -1036,8 +1087,9 @@ function newfrmCities()
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
         if self.checkBox6 ~= nil then self.checkBox6:destroy(); self.checkBox6 = nil; end;
-        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
+        if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
+        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.checkBox8 ~= nil then self.checkBox8:destroy(); self.checkBox8 = nil; end;
         if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
         if self.checkBox7 ~= nil then self.checkBox7:destroy(); self.checkBox7 = nil; end;
@@ -1049,12 +1101,15 @@ function newfrmCities()
         if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.rclDestalhesDaCidade ~= nil then self.rclDestalhesDaCidade:destroy(); self.rclDestalhesDaCidade = nil; end;
+        if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
+        if self.richEdit7 ~= nil then self.richEdit7:destroy(); self.richEdit7 = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
         if self.label11 ~= nil then self.label11:destroy(); self.label11 = nil; end;
         if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
+        if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
         if self.richEdit6 ~= nil then self.richEdit6:destroy(); self.richEdit6 = nil; end;
         if self.cidade_tipo ~= nil then self.cidade_tipo:destroy(); self.cidade_tipo = nil; end;
         if self.richEdit3 ~= nil then self.richEdit3:destroy(); self.richEdit3 = nil; end;

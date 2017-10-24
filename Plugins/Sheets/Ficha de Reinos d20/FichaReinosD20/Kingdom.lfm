@@ -34,16 +34,17 @@
 			</layout>
 		</layout>
 
-
-		<rectangle left="0" top="35" width="200" height="245" color="black"/>
+		<rectangle left="0" top="35" width="200" height="275" color="black"/>
 		<!-- RecordList para seleção -->
-		<recordList left="0" top="35" width="200" height="240" name="rclDestalhesDoReino" field="listaDeDestalhesDoReino" templateForm="frmKingdomSelection" layout="vertical" selectable="true" minQt="8">
+		<recordList left="0" top="35" width="200" height="270" name="rclDestalhesDoReino" field="listaDeDestalhesDoReino" templateForm="frmKingdomSelection" layout="vertical" selectable="true" minQt="9">
 			<event name="onEndEnumeration"><![CDATA[
 				if sheet~= nil then
 					local objetos = ndb.getChildNodes(sheet.listaDeDestalhesDoReino);
-					local nomes = {"Descrição","Cultura","Raças","Classes","Historia","Geografia","Clima", "Outros"};
+					local nomes = {"Descrição","Cultura","Raças","Classes","Historia","Geografia","Clima", "Outros", "Religião"};
+					local indexes = {1,2,3,4,5,6,7,9,8};
 					for i=1, #objetos, 1 do
 						objetos[i].nome = nomes[i];
+						objetos[i].index = indexes[i];
 					end;
 
 					if self.rclDestalhesDoReino.selectedNode== nil and #objetos>0 then
@@ -58,6 +59,16 @@
 					self.boxDetalhesDoReino.visible = (node ~= nil);
 				]]>
 			</event>
+			<event name="onCompare"><![CDATA[			   
+				if (nodeA.index or 0) < (nodeB.index or 0) then
+					return -1;
+				elseif (nodeA.index or 0) > (nodeB.index or 0) then
+					return 1;
+				else   
+					return 0;
+				end;
+				]]>
+		</event>
 		</recordList>
 		<!-- Info selecionada vai estar aqui -->
 		<dataScopeBox left="210" top="35" width="1030" height="535" name="boxDetalhesDoReino" visible="false">

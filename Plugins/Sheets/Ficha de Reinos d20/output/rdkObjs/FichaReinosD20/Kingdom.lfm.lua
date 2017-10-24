@@ -166,7 +166,7 @@ function newfrmKingdom()
     obj.rectangle4:setLeft(0);
     obj.rectangle4:setTop(35);
     obj.rectangle4:setWidth(200);
-    obj.rectangle4:setHeight(245);
+    obj.rectangle4:setHeight(275);
     obj.rectangle4:setColor("black");
     obj.rectangle4:setName("rectangle4");
 
@@ -175,13 +175,13 @@ function newfrmKingdom()
     obj.rclDestalhesDoReino:setLeft(0);
     obj.rclDestalhesDoReino:setTop(35);
     obj.rclDestalhesDoReino:setWidth(200);
-    obj.rclDestalhesDoReino:setHeight(240);
+    obj.rclDestalhesDoReino:setHeight(270);
     obj.rclDestalhesDoReino:setName("rclDestalhesDoReino");
     obj.rclDestalhesDoReino:setField("listaDeDestalhesDoReino");
     obj.rclDestalhesDoReino:setTemplateForm("frmKingdomSelection");
     obj.rclDestalhesDoReino:setLayout("vertical");
     obj.rclDestalhesDoReino:setSelectable(true);
-    obj.rclDestalhesDoReino:setMinQt(8);
+    obj.rclDestalhesDoReino:setMinQt(9);
 
     obj.boxDetalhesDoReino = gui.fromHandle(_obj_newObject("dataScopeBox"));
     obj.boxDetalhesDoReino:setParent(obj.scrollBox1);
@@ -205,9 +205,11 @@ function newfrmKingdom()
         function (self)
             if sheet~= nil then
             					local objetos = ndb.getChildNodes(sheet.listaDeDestalhesDoReino);
-            					local nomes = {"Descrição","Cultura","Raças","Classes","Historia","Geografia","Clima", "Outros"};
+            					local nomes = {"Descrição","Cultura","Raças","Classes","Historia","Geografia","Clima", "Outros", "Religião"};
+            					local indexes = {1,2,3,4,5,6,7,9,8};
             					for i=1, #objetos, 1 do
             						objetos[i].nome = nomes[i];
+            						objetos[i].index = indexes[i];
             					end;
             
             					if self.rclDestalhesDoReino.selectedNode== nil and #objetos>0 then
@@ -223,7 +225,19 @@ function newfrmKingdom()
             					self.boxDetalhesDoReino.visible = (node ~= nil);
         end, obj);
 
+    obj._e_event2 = obj.rclDestalhesDoReino:addEventListener("onCompare",
+        function (self, nodeA, nodeB)
+            if (nodeA.index or 0) < (nodeB.index or 0) then
+            					return -1;
+            				elseif (nodeA.index or 0) > (nodeB.index or 0) then
+            					return 1;
+            				else   
+            					return 0;
+            				end;
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
