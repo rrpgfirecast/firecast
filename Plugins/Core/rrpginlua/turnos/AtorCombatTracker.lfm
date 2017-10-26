@@ -241,7 +241,7 @@
 				<image name="imgVez" align="client" height="24" visible="false" src="images/vez.png"/>
 			</rectangle>		
 		
-			
+			<edit name="edtIniciativaRolagem" field="iniciativaRolagem" class="combatHeaderIniciativaRolagem combatTrackerEdit" horzTextAlign="center" onMenu="self:exibirMenuDoAtor();"/>
 			<edit name="edtNome" field="nome" class="combatHeaderNome combatTrackerEdit" onMenu="self:exibirMenuDoAtor();"/>
 						
 			<layout name="layRightAlinedComps" class="combateHeaderRightAlignedContent">

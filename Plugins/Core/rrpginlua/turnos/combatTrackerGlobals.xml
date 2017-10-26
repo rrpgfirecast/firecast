@@ -20,9 +20,14 @@
 			height: 23;
 		}
 		
-		
+		.combatHeaderTeste {
+			margins: {left=5};
+			width: 50;
+			align: left;
+		}
+
 		.combatHeaderNome {
-			margins: {left=3};
+			margins: {left=5};
 			width: 28;
 			align: client;
 		}		
@@ -36,7 +41,13 @@
 			margins: {left=3};
 			width: 28;
 			align: left;
-		}	
+		}
+
+		.combatHeaderIniciativaRolagem {
+			margins: {left=3};
+			width: 50;
+			align: left;
+		}
 
 		.combatHeaderFriendOrFoe {
 			margins: {left=3};
