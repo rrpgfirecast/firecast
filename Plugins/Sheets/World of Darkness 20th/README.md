@@ -1,10 +1,14 @@
 # World of Darkness
 
+04 de Novembro de 2017
 Versão 03
 - Ficha de Mage 20th aniversary adicionada.
 
+02 de Julho de 2017
 Versão 02:
-- Ficha de Vampire Dark Ages 20th aniversary adicionada.
+- Corrigido bug no Rank que duplicava pra gnosis, willpower e rage os valores. 
 
-Versão 01:
+01 de Julho de 2017
+Versão 01
+- Ficha de Vampire Dark Ages 20th aniversary adicionada.
 - Ficha de Werewolf 20th aniversary adicionada.
