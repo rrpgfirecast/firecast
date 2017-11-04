@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister1_svg" align="client" theme="dark" margins="{top=1}">
 	<scrollBox align="client">
-
 		<template name="smallTitleCenter">
 			<flowPart minWidth="50" maxWidth="50" height="15">
 				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
@@ -10,6 +9,16 @@
 		<template name="smallFieldCenter">
 			<flowPart minWidth="50" maxWidth="50" height="20">
 				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+			</flowPart>
+		</template>
+		<template name="midFieldCenter">
+			<flowPart minWidth="50" maxWidth="75" height="20">
+				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+			</flowPart>
+		</template>
+		<template name="smallCheckboxCenter">
+			<flowPart minWidth="50" maxWidth="75" height="15">
+				<checkBox align="client" class="" field="$(field)" text="$(text)" horzTextAlign="center" fontSize="10"/>
 			</flowPart>
 		</template>
 		<template name="longTextCenter">
@@ -28,9 +37,8 @@
 				<comboBox align="client" fontColor="white" field="$(field)" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}"/>
 			</flowPart>
 		</template>
-
 		<template name="atributeFlow">
-			<flowLayout align="top" autoHeight="true" maxControlsPerLine="11" margins="{bottom=4}" horzAlign="center">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="13" margins="{bottom=4}" horzAlign="center">
 				<smallFieldCenter field="inicial$(atr)"/>
 				<smallFieldCenter field="raca$(atr)"/>
 				<smallFieldCenter field="nep$(atr)"/>
@@ -38,13 +46,16 @@
 				<smallFieldCenter field="tamanho$(atr)"/>
 				<smallFieldCenter field="outros$(atr)"/>
 				<flowPart minWidth="20" maxWidth="20" height="20"/>
-				<smallFieldCenter field="melhoria$(atr)"/>
-				<smallFieldCenter field="danoTemp$(atr)"/>
-				<smallFieldCenter field="danoPerm$(atr)"/>
-				<smallFieldCenter field="temporario$(atr)"/>
+				<midFieldCenter field="melhoria$(atr)"/>
+				<midFieldCenter field="danoTemp$(atr)"/>
+				<midFieldCenter field="danoPerm$(atr)"/>
+				<midFieldCenter field="temporario$(atr)"/>
+				<midFieldCenter field="magia$(atr)"/>
+				<midFieldCenter field="classe$(atr)"/>
 			</flowLayout>
 
-			<dataLink fields="{'inicial$(atr)', 'raca$(atr)', 'nep$(atr)', 'inerente$(atr)', 'tamanho$(atr)', 'outros$(atr)', 'melhoria$(atr)', 'danoTemp$(atr)', 'danoPerm$(atr)', 'temporario$(atr)'}">
+			<dataLink fields="{'isMelhoriaActive', 'isDnTempActive', 'isDnPermActive', 'isTempActive', 'isClasseActive', 'isMagiaActive'}" defaultValues="{'true', 'true', 'true', 'true', 'true', 'true'}"/>
+			<dataLink fields="{'inicial$(atr)', 'raca$(atr)', 'nep$(atr)', 'inerente$(atr)', 'tamanho$(atr)', 'outros$(atr)', 'melhoria$(atr)', 'danoTemp$(atr)', 'danoPerm$(atr)', 'temporario$(atr)', 'magia$(atr)', 'classe$(atr)', 'isMelhoriaActive', 'isDnTempActive', 'isDnPermActive', 'isTempActive', 'isClasseActive', 'isMagiaActive'}">
 				<event name="onChange"><![CDATA[
 					if sheet~= nil then
 						if debug then
@@ -58,11 +69,25 @@
 										(tonumber(sheet.inerente$(atr)) or 0) + 
 										(tonumber(sheet.tamanho$(atr)) or 0) + 
 										(tonumber(sheet.outros$(atr)) or 0);
-						local efetivo = real + 
-										(tonumber(sheet.melhoria$(atr)) or 0) + 
-										(tonumber(sheet.danoTemp$(atr)) or 0) + 
-										(tonumber(sheet.danoPerm$(atr)) or 0) + 
-										(tonumber(sheet.temporario$(atr)) or 0);
+						local efetivo = real;
+						if sheet.isMelhoriaActive then
+							efetivo = efetivo + (tonumber(sheet.melhoria$(atr)) or 0);
+						end;
+						if sheet.isDnTempActive then
+							efetivo = efetivo + (tonumber(sheet.danoTemp$(atr)) or 0);
+						end;
+						if sheet.isDnPermActive then
+							efetivo = efetivo + (tonumber(sheet.danoPerm$(atr)) or 0);
+						end;
+						if sheet.isTempActive then
+							efetivo = efetivo + (tonumber(sheet.temporario$(atr)) or 0);
+						end;
+						if sheet.isClasseActive then
+							efetivo = efetivo + (tonumber(sheet.magia$(atr)) or 0);
+						end;
+						if sheet.isMagiaActive then
+							efetivo = efetivo + (tonumber(sheet.classe$(atr)) or 0);
+						end;			
 						sheet.real$(atr) = real;
 						sheet.efet$(atr) = efetivo;
 					end;
@@ -205,8 +230,8 @@
 			</flowPart>
 		</template>
 
-		<popup name="popAtributo" width="570" height="165" backOpacity="0.4">
-			<flowLayout align="top" autoHeight="true" maxControlsPerLine="11" margins="{bottom=4}" horzAlign="center">
+		<popup name="popAtributo" width="820" height="170" backOpacity="0.4">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="13" margins="{bottom=4}" horzAlign="center">
 				<smallTitleCenter text="Inicial"/>
 				<smallTitleCenter text="Raça"/>
 				<smallTitleCenter text="NEP"/>
@@ -214,10 +239,12 @@
 				<smallTitleCenter text="Tamanho"/>
 				<smallTitleCenter text="Outros"/>
 				<flowPart minWidth="20" maxWidth="20" height="15"/>
-				<smallTitleCenter text="Melhoria"/>
-				<smallTitleCenter text="Dn Temp."/>
-				<smallTitleCenter text="Dn Perm."/>
-				<smallTitleCenter text="Temp."/>
+				<smallCheckboxCenter text="Melhoria" field="isMelhoriaActive"/>
+				<smallCheckboxCenter text="Dn Temp." field="isDnTempActive"/>
+				<smallCheckboxCenter text="Dn Perm." field="isDnPermActive"/>
+				<smallCheckboxCenter text="Temp." field="isTempActive"/>
+				<smallCheckboxCenter text="Classe" field="isClasseActive"/>
+				<smallCheckboxCenter text="Magia" field="isMagiaActive"/>
 			</flowLayout>
 			<atributeFlow atr="For"/>
 			<atributeFlow atr="Des"/>

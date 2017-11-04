@@ -2,6 +2,13 @@
 Proximas Versões
 + Tiro Multiplo Aprimorado pra ataques avançados. 
 + Dar uma olhada nas questões de ajuste de tamanho da ficha para telas pequenas. 
++ Checar funcionamento dos macros imbutidos na ficha. 
++ Checkbox para bonus temporarios de atributos. 
+
+Versão 27:
+- Alguns bugs resolvidos com os macros instalados com a ficha. 
+- Habilidades mostra junto ao nome da habilidade o nível. 
+- Bonus temporarios podem ser ativados e desativados. 
 
 27 de Setembro de 2017
 Versão 26:

@@ -6,30 +6,40 @@ local atrText = "local indice = tonumber(arg[1]);local texto = \"\";local filter
 local trText= "local indice = tonumber(arg[1]);local texto = \"\";local filter = arg[2];local personagem = sheet;if indice == nil or indice < 1 or indice > 3 then  indice, texto = choose(\"Que teste deseja fazer?\", {\"Fortitude\", \"Reflexos\", \"Vontade\"}, 1);end;if filter == \"all\" or filter == \"pc\" or filter == \"pcOnline\" or filter==\"npc\" then  personagem = getCharacterSheet(chooseCharacter(\"Qual personagem deseja testar \"..texto..\"?\", filter));elseif ilter == \"mine\" then  personagem = getCharacterSheet(chooseCharacterOfPlayer(\"Qual personagem deseja testar \"..texto..\"?\", myPlayer));end;local teste = \"1d20+\";if indice == 1 then  teste = teste .. (tonumber(personagem.trFort) or 0);  rolar(teste, \"Teste de Fortitude de \" .. (personagem.nome or \"Nome\"));elseif indice == 2 then  teste = teste .. (tonumber(personagem.trRef) or 0);  rolar(teste, \"Teste de Reflexos de \" .. (personagem.nome or \"Nome\"));elseif indice == 3 then  teste = teste .. (tonumber(personagem.trVon) or 0);  rolar(teste, \"Teste de Vontade de \" .. (personagem.nome or \"Nome\"));end;";
 rrpg.messaging.listen("HandleChatCommand", 
 	function (message)
-		if message.comando == "ataq" then
+		
+		local args = {};
+		local index = 0;
+		for i in string.gmatch(message.parametro, "%S+") do
+			index = index + 1;
+			args[index] = i;
+		end
 
+		local obj = {parametro=message.parametro, arg=args};
+
+		if message.comando == "ataq" or message.comando == "atq" then
 			local ataqFunction = Macros.compileMacro(ataqText, message.chat, "ataq");
-			ataqFunction(message.parametro);
+			ataqFunction(obj);
 
 			message.response = {handled = true};
+
 		elseif message.comando == "per" then
-
 			local perFunction = Macros.compileMacro(perText, message.chat, "per");
-			perFunction(message.parametro);
+			perFunction(obj);
 
 			message.response = {handled = true};
+
 		elseif message.comando == "atr" then
-
 			local atrFunction = Macros.compileMacro(atrText, message.chat, "atr");
-			atrFunction(message.parametro);
+			atrFunction(obj);
 
 			message.response = {handled = true};
+
 		elseif message.comando == "tr" then
-
 			local trFunction = Macros.compileMacro(trText, message.chat, "tr");
-			trFunction(message.parametro);
+			trFunction(obj);
 
 			message.response = {handled = true};
+
 		end
 	end);
 
@@ -38,5 +48,5 @@ rrpg.messaging.listen("ListChatCommands",
         message.response = {{comando="/tr <numero 1 a 3 (opcional)> <filtro npc|pc|pcOnline|all|mine (opcional)>", descricao="FichaRPGmeister. Ao usar /tr (sem parametros) abre um popup para selecionar um teste de resistencia. Será feito o teste de resistência do personagem mais recentemente atribuido. Ao usar /tr acompanhado de um numero e sem um filtro o teste de resistencia (1: fortitude, 2: reflexos, 3: vontade) é feito para o personagem mais recentemente atribuido. Ao usar /tr acompanhado de um valor (use -1 se quiser selecionar a resistencia na janela pop up) e um parametro de filtro é aberta uma janela para selecionar um personagem para realizar o teste."},
                             {comando="/atr <numero 1 a 6 (opcional)> <filtro npc|pc|pcOnline|all|mine (opcional)>", descricao="FichaRPGmeister. Ao usar /atr (sem parametros) abre um popup para selecionar um teste de resistencia. Será feito o teste de atributo do personagem mais recentemente atribuido. Ao usar /atr acompanhado de um numero e sem um filtro o teste de atributo (1: FOR, 2: DES, 3: CON, 4: INT, 5: SAB, 6:CAR) é feito para o personagem mais recentemente atribuido. Ao usar /atr acompanhado de um valor (use -1 se quiser selecionar o atributo na janela pop up) e um parametro de filtro é aberta uma janela para selecionar um personagem para realizar o teste."},
                             {comando="/per <numero ou nome (opcional)> <filtro npc|pc|pcOnline|all|mine (opcional)>", descricao="FichaRPGmeister. Ao usar /per (sem parametros) abre um popup para selecionar um teste de pericia. Será feito o teste de atributo do personagem mais recentemente atribuido. Ao usar /per acompanhado de um numero e sem um filtro o teste da pericia naquela posição da ficha será realizado. Ao usar /per acompanhado do nome da pericia o teste daquela pericia será realizado. Tente por o nome da pericia parecido com como está na ficha. O macro vai tentar ignorar letras maiusculas, acentos e outros. Ao usar /per acompanhado de um valor (numero ou nome, use -1 se quiser selecionar a pericia na janela pop up) e um parametro de filtro é aberta uma janela para selecionar um personagem para realizar o teste."},
-                            {comando="/ataq <numero (opcional) <filtro npc|pc|pcOnline|all|mine (opcional)>", descricao="FichaRPGmeister. Ao usar /per (sem parametros) abre um popup para selecionar um ataque avançado. Será feito o ataque com o personagem mais recentemente atribuido. Ao usar /per acompanhado de um numero e sem um filtro, o ataque naquela posição será realizado. Ao usar /per acompanhado de um valor (use -1 se quiser selecionar o ataque na janela pop up) e um parametro de filtro é aberta uma janela para selecionar um personagem para realizar o ataque."}};
+                            {comando="/ataq ou /atq <numero (opcional) <filtro npc|pc|pcOnline|all|mine (opcional)>", descricao="FichaRPGmeister. Ao usar /per (sem parametros) abre um popup para selecionar um ataque avançado. Será feito o ataque com o personagem mais recentemente atribuido. Ao usar /per acompanhado de um numero e sem um filtro, o ataque naquela posição será realizado. Ao usar /per acompanhado de um valor (use -1 se quiser selecionar o ataque na janela pop up) e um parametro de filtro é aberta uma janela para selecionar um personagem para realizar o ataque."}};
     end);

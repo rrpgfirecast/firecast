@@ -66,10 +66,21 @@ function newfrmFichaRPGmeister4h_svg()
     obj.edit1:setVertTextAlign("center");
     obj.edit1:setLeft(0);
     obj.edit1:setTop(0);
-    obj.edit1:setWidth(300);
+    obj.edit1:setWidth(30);
     obj.edit1:setHeight(23);
-    obj.edit1:setField("nomeHabilidade");
+    obj.edit1:setField("nivelHabilidade");
+    obj.edit1:setType("number");
     obj.edit1:setName("edit1");
+
+    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2:setParent(obj);
+    obj.edit2:setVertTextAlign("center");
+    obj.edit2:setLeft(35);
+    obj.edit2:setTop(0);
+    obj.edit2:setWidth(265);
+    obj.edit2:setHeight(23);
+    obj.edit2:setField("nomeHabilidade");
+    obj.edit2:setName("edit2");
 
     obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
@@ -115,6 +126,7 @@ function newfrmFichaRPGmeister4h_svg()
 
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         self:_oldLFMDestroy();
