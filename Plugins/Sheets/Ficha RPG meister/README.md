@@ -8,7 +8,7 @@ Proximas Versões
 Versão 27:
 - Alguns bugs resolvidos com os macros instalados com a ficha. 
 - Habilidades mostra junto ao nome da habilidade o nível. 
-- Bonus temporarios podem ser ativados e desativados. 
+- Bonus temporarios em atributos podem ser ativados e desativados. 
 
 27 de Setembro de 2017
 Versão 26:
