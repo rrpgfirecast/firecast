@@ -207,9 +207,21 @@ function lfm_setPropAsString(ctrlOrHandle, propName, vAsStr)
 		return nil;
 	end;
 	
-	local setter = obj[prop.setter];
 	v = lfm_strToValue(vAsStr, prop.tipo, prop.values);
-	setter(obj, v);
+	local setterName = prop.setter;
+	
+	if setterName ~= nil then
+		local setter = obj[setterName];
+		setter(obj, v);
+	else
+		local propName = prop.writeProp;
+		
+		if propName == nil then
+			error(propName .. " is readonly");			
+		end;
+		
+		_obj_setProp(obj.handle, propName, v);
+	end;	
 end;
 
 function lfm_getPropAsStringToUser(ctrlOrHandle, propName)

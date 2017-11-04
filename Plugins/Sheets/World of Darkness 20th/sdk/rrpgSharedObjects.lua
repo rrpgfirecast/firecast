@@ -51,6 +51,10 @@ local function stringToSid(str)
 end;
 
 function SharedObjects.tryPack(tabela)
+	if type(tabela) ~= "table" then
+		return false;
+	end;
+
 	local h = rawget(tabela, "handle");
 	
 	if h ~= nil then

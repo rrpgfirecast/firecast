@@ -61,7 +61,9 @@ function SceneLib.registerPlugin(attachCallback)
 			
 			if attachCallback ~= nil then
 				setTimeout(function()
-								attachCallback(scene, att);
+								if scene ~= nil and scene.isObjectAlive then
+									attachCallback(scene, att);
+								end;
 							end, 1)
 			end;
 		end;

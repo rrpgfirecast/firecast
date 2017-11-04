@@ -5,7 +5,7 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 
-function newfrmW20_6()
+function newfrmM20_6()
     __o_rrpgObjs.beginObjectsLoading();
 
     local obj = gui.fromHandle(_obj_newObject("form"));
@@ -26,7 +26,7 @@ function newfrmW20_6()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmW20_6");
+    obj:setName("frmM20_6");
     obj:setAlign("client");
     obj:setTheme("dark");
 
@@ -40,9 +40,9 @@ function newfrmW20_6()
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
     obj.image1:setWidth(500);
-    obj.image1:setHeight(175);
+    obj.image1:setHeight(257);
     obj.image1:setStyle("autoFit");
-    obj.image1:setSRC("/Werewolf20th/images/werewolf.png");
+    obj.image1:setSRC("/Mage20th/images/mage.png");
     obj.image1:setName("image1");
 
     obj.image2 = gui.fromHandle(_obj_newObject("image"));
@@ -52,7 +52,7 @@ function newfrmW20_6()
     obj.image2:setWidth(250);
     obj.image2:setHeight(250);
     obj.image2:setStyle("autoFit");
-    obj.image2:setSRC("/Werewolf20th/images/RPGmeister.jpg");
+    obj.image2:setSRC("/Mage20th/images/RPGmeister.jpg");
     obj.image2:setName("image2");
 
     obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
@@ -287,17 +287,17 @@ function newfrmW20_6()
     return obj;
 end;
 
-local _frmW20_6 = {
-    newEditor = newfrmW20_6, 
-    new = newfrmW20_6, 
-    name = "frmW20_6", 
+local _frmM20_6 = {
+    newEditor = newfrmM20_6, 
+    new = newfrmM20_6, 
+    name = "frmM20_6", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
     title = "", 
     description=""};
 
-frmW20_6 = _frmW20_6;
-rrpg.registrarForm(_frmW20_6);
+frmM20_6 = _frmM20_6;
+rrpg.registrarForm(_frmM20_6);
 
-return _frmW20_6;
+return _frmM20_6;

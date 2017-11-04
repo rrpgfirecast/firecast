@@ -15523,7 +15523,7 @@ function newfrmVampireDarkAges20th()
     obj.image13:setWidth(100);
     obj.image13:setHeight(20);
     obj.image13:setStyle("autoFit");
-    obj.image13:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao02.png");
+    obj.image13:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao03.png");
     obj.image13:setName("image13");
 
     obj.label132 = gui.fromHandle(_obj_newObject("label"));

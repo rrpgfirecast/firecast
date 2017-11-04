@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmW20_6" align="client" theme="dark">
+<form name="frmM20_6" align="client" theme="dark">
 	<scrollBox align="client">
-		<image left="0" top="0" width="500" height="175" style="autoFit" src="images/werewolf.png"/>
+		<image left="0" top="0" width="500" height="257" style="autoFit" src="images/mage.png"/>
 		<image left="550" top="0" width="250" height="250" style="autoFit" src="images/RPGmeister.jpg"/>
 
 		<layout left="850" top="0" width="200" height="310">

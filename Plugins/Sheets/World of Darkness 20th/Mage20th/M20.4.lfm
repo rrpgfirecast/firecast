@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmM20_4" align="client" theme="dark">
+	<scrollBox align="client">
+	   <template name="Descricao">
+        	<label left="0" top="5" width="100" height="20" text="$(nome)" horzTextAlign="trailing"/>
+        	<edit left="110" top="0" width="200" height="25" field="desc_$(field)"/>
+        </template>
+	   
+		<layout left="0" top="0" width="960" height="95">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+
+			<layout left="5" top="5" width="310" height="25" >
+				<Descricao field="sexo" nome="Sex"/>
+			</layout>
+			<layout left="320" top="5" width="310" height="25" >
+				<Descricao field="altura" nome="Height"/>
+			</layout>
+			<layout left="585" top="5" width="310" height="25" >
+				<Descricao field="olhos" nome="Eyes"/>
+			</layout>
+
+			<layout left="5" top="35" width="310" height="25" >
+				<Descricao field="idade" nome="Age"/>
+			</layout>
+			<layout left="320" top="35" width="310" height="25" >
+				<Descricao field="peso" nome="Weight"/>
+			</layout>
+			<layout left="585" top="35" width="310" height="25" >
+				<Descricao field="cabelo" nome="Hair"/>
+			</layout>
+
+			<layout left="5" top="65" width="310" height="25" >
+				<Descricao field="idadeAparente" nome="Apparent Age"/>
+			</layout>
+
+			<layout left="585" top="65" width="310" height="25" >
+				<Descricao field="etinicidade" nome="Ethnicity"/>
+			</layout>
+		</layout>
+		
+		<layout left="0" top="105" width="400" height="175">
+			<rectangle left="0" top="0" width="400" height="175" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+	        <label left="0" top="0" width="400" height="20" text="Appearance" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="135" field="aparencia"/>
+        </layout>
+
+		<layout left="0" top="285" width="195" height="175">
+			<rectangle left="0" top="0" width="195" height="175" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+	        <label left="0" top="0" width="195" height="20" text="Concept" horzTextAlign="center"/>
+			<textEditor left="15" top="25" width="165" height="135" field="personalidade"/>
+        </layout>
+        <layout left="205" top="285" width="195" height="175">
+			<rectangle left="0" top="0" width="195" height="175" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+	        <label left="0" top="0" width="195" height="20" text="Nature" horzTextAlign="center"/>
+			<textEditor left="15" top="25" width="165" height="135" field="natureza"/>
+        </layout>
+
+		<layout left="0" top="465" width="400" height="175">
+			<rectangle left="0" top="0" width="400" height="175" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+	        <label left="0" top="0" width="400" height="20" text="Languages" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="135" field="idiomas"/>
+        </layout>
+		
+		<layout left="410" top="105" width="630" height="535">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+	        <label left="0" top="0" width="630" height="20" text="Prelude" horzTextAlign="center"/>
+			<richEdit left="10" top="25" width="610" height="495" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+        </layout>
+	</scrollBox>
+</form>

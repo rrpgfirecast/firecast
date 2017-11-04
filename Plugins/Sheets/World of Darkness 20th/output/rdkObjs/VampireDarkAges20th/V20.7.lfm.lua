@@ -170,7 +170,7 @@ function newfrmVDA20_7()
     obj.image3:setWidth(100);
     obj.image3:setHeight(20);
     obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao02.png");
+    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao03.png");
     obj.image3:setName("image3");
 
     obj.label10 = gui.fromHandle(_obj_newObject("label"));

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmVDA20_4" align="client" theme="dark">
 	<scrollBox align="client">
-	   <template name="Merit">
+	   	<template name="Merit">
 			<edit left="0" top="0" width="200" height="24" field="merit_$(num)"/>
 			<edit left="200" top="0" width="100" height="24" field="type_$(num)"/>
 			<edit left="300" top="0" width="50" height="24" field="costy_$(num)"/>
