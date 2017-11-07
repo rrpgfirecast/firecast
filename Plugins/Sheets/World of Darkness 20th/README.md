@@ -1,5 +1,9 @@
 # World of Darkness
 
+07 de Novembro de 2017
+Versão 04
+- Ficha de Mage Dark Ages adicionada. 
+
 04 de Novembro de 2017
 Versão 03
 - Ficha de Mage 20th anniversary adicionada.

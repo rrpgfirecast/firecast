@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMDA20_4" align="client" theme="dark">
+	<template name="Place">
+		<edit left="10" top="0" width="200" height="24" field="place_location_$(num)"/>
+		<edit left="210" top="0" width="395" height="24" field="place_description_$(num)"/>
+	</template>;
+	<scrollBox align="client">
+		<layout left="0" top="0" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="ALLIES" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="allies"/>
+		</layout>
+
+		<layout left="0" top="175" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="MENTOR" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="mentor"/>
+		</layout>
+
+
+		<layout left="250" top="0" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="CONTACTS" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="contacts"/>
+		</layout>
+
+		<layout left="250" top="175" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="RESOURCES" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="resources"/>
+		</layout>
+
+		<layout left="500" top="0" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="LIBRARY" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="library"/>
+		</layout>
+
+		<layout left="500" top="175" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="FAMILIARS" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="familiars"/>
+		</layout>
+
+		<layout left="750" top="0" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="CRAY" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="cray"/>
+		</layout>
+
+		<layout left="750" top="175" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="SERVANTS" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="servants"/>
+		</layout>
+
+		<layout left="1000" top="0" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="INFLUENCE" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="influence"/>
+		</layout>
+
+		<layout left="1000" top="175" width="240" height="165">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="240" height="20" text="OTHER" horzTextAlign="center"/>
+
+			<textEditor left="15" top="25" width="200" height="125" field="other"/>
+		</layout>
+
+
+		<layout left="0" top="350" width="615" height="215">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="615" height="20" text="CHANTRY" horzTextAlign="center"/>
+
+			<label left="10" top="25" width="200" height="20" text="Location" horzTextAlign="center"/>
+			<label left="210" top="25" width="395" height="20" text="Description" horzTextAlign="center"/>
+
+			<layout left="0" top="50" width="615" height="25">
+				<Place num="1"/>
+			</layout>
+			<layout left="0" top="75" width="615" height="25">
+				<Place num="2"/>
+			</layout>
+			<layout left="0" top="100" width="615" height="25">
+				<Place num="3"/>
+			</layout>
+			<layout left="0" top="125" width="615" height="25">
+				<Place num="4"/>
+			</layout>
+			<layout left="0" top="150" width="615" height="25">
+				<Place num="5"/>
+			</layout>
+			<layout left="0" top="175" width="615" height="25">
+				<Place num="6"/>
+			</layout>
+		</layout>
+
+		<layout left="625" top="350" width="615" height="215">
+			<rectangle align="client" color="black" xradius="10" yradius="10" cornerType="innerLine"/>
+			<label left="0" top="0" width="615" height="20" text="SANCTUM" horzTextAlign="center"/>
+
+			<label left="10" top="25" width="200" height="20" text="Location" horzTextAlign="center"/>
+			<label left="210" top="25" width="395" height="20" text="Description" horzTextAlign="center"/>
+
+			<layout left="0" top="50" width="615" height="25">
+				<Place num="7"/>
+			</layout>
+			<layout left="0" top="75" width="615" height="25">
+				<Place num="8"/>
+			</layout>
+			<layout left="0" top="100" width="615" height="25">
+				<Place num="9"/>
+			</layout>
+			<layout left="0" top="125" width="615" height="25">
+				<Place num="10"/>
+			</layout>
+			<layout left="0" top="150" width="615" height="25">
+				<Place num="11"/>
+			</layout>
+			<layout left="0" top="175" width="615" height="25">
+				<Place num="12"/>
+			</layout>
+		</layout>
+	</scrollBox>
+</form>
