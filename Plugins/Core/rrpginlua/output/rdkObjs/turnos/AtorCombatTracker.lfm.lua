@@ -299,12 +299,22 @@ function newfrmAtorCombatTracker()
     obj.imgVez:setVisible(false);
     obj.imgVez:setSRC("/turnos/images/vez.png");
 
+    obj.edtIniciativaRolagem = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtIniciativaRolagem:setParent(obj.layPrimeiraLinha);
+    obj.edtIniciativaRolagem:setName("edtIniciativaRolagem");
+    obj.edtIniciativaRolagem:setField("iniciativaRolagem");
+    obj.edtIniciativaRolagem:setHorzTextAlign("center");
+    obj.edtIniciativaRolagem:setFontSize(11);
+    obj.edtIniciativaRolagem:setMargins({left=3});
+    obj.edtIniciativaRolagem:setWidth(50);
+    obj.edtIniciativaRolagem:setAlign("left");
+
     obj.edtNome = gui.fromHandle(_obj_newObject("edit"));
     obj.edtNome:setParent(obj.layPrimeiraLinha);
     obj.edtNome:setName("edtNome");
     obj.edtNome:setField("nome");
     obj.edtNome:setFontSize(11);
-    obj.edtNome:setMargins({left=3});
+    obj.edtNome:setMargins({left=5});
     obj.edtNome:setWidth(28);
     obj.edtNome:setAlign("client");
 
@@ -552,67 +562,73 @@ function newfrmAtorCombatTracker()
             self:exibirMenuDoAtor();
         end, obj);
 
-    obj._e_event6 = obj.edtNome:addEventListener("onMenu",
+    obj._e_event6 = obj.edtIniciativaRolagem:addEventListener("onMenu",
         function (self, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
-    obj._e_event7 = obj.edtIniciativa:addEventListener("onMenu",
+    obj._e_event7 = obj.edtNome:addEventListener("onMenu",
         function (self, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
-    obj._e_event8 = obj.rctFriendOrFoe:addEventListener("onMouseUp",
+    obj._e_event8 = obj.edtIniciativa:addEventListener("onMenu",
+        function (self, x, y)
+            self:exibirMenuDoAtor();
+        end, obj);
+
+    obj._e_event9 = obj.rctFriendOrFoe:addEventListener("onMouseUp",
         function (self, event)
             if event.button == 'left' then self:nextFriendOrFoeFlag(); end;
         end, obj);
 
-    obj._e_event9 = obj.rctFriendOrFoe:addEventListener("onMenu",
+    obj._e_event10 = obj.rctFriendOrFoe:addEventListener("onMenu",
         function (self, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
-    obj._e_event10 = obj.imgDeleteAtor:addEventListener("onMouseUp",
+    obj._e_event11 = obj.imgDeleteAtor:addEventListener("onMouseUp",
         function (self, event)
             if event.button == 'left' then self:apagarAtor(); end;
         end, obj);
 
-    obj._e_event11 = obj.imgDeleteAtor:addEventListener("onMenu",
+    obj._e_event12 = obj.imgDeleteAtor:addEventListener("onMenu",
         function (self, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
-    obj._e_event12 = obj.imgInvisivel:addEventListener("onMouseUp",
+    obj._e_event13 = obj.imgInvisivel:addEventListener("onMouseUp",
         function (self, event)
             if event.button =='left' then self:alternarVisibilidade(); end;
         end, obj);
 
-    obj._e_event13 = obj.imgAddEfeito:addEventListener("onMouseUp",
+    obj._e_event14 = obj.imgAddEfeito:addEventListener("onMouseUp",
         function (self, event)
             if event.button =='left' then self:adicionarEfeito() end;
         end, obj);
 
-    obj._e_event14 = obj.rclEfeitos:addEventListener("onResize",
+    obj._e_event15 = obj.rclEfeitos:addEventListener("onResize",
         function (self)
             self:recalcularAlturaDoAtor()
         end, obj);
 
-    obj._e_event15 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event16 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self:atualizarInterfaceFriendOrFoe();
         end, obj);
 
-    obj._e_event16 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event17 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self:atualizarInterfaceVez();
         end, obj);
 
-    obj._e_event17 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event18 = obj.dataLink3:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             agendarReordenacao();
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event18);
         __o_rrpgObjs.removeEventListenerById(self._e_event17);
         __o_rrpgObjs.removeEventListenerById(self._e_event16);
         __o_rrpgObjs.removeEventListenerById(self._e_event15);
@@ -659,6 +675,7 @@ function newfrmAtorCombatTracker()
         if self.imgDeleteAtor ~= nil then self.imgDeleteAtor:destroy(); self.imgDeleteAtor = nil; end;
         if self.edtIniciativa ~= nil then self.edtIniciativa:destroy(); self.edtIniciativa = nil; end;
         if self.layPrimeiraLinha ~= nil then self.layPrimeiraLinha:destroy(); self.layPrimeiraLinha = nil; end;
+        if self.edtIniciativaRolagem ~= nil then self.edtIniciativaRolagem:destroy(); self.edtIniciativaRolagem = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         self:_oldLFMDestroy();
     end;

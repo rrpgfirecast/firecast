@@ -5654,7 +5654,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -5778,7 +5778,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -5825,7 +5825,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -5872,7 +5872,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -6073,7 +6073,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -6120,7 +6120,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -6167,7 +6167,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -6214,7 +6214,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -6261,7 +6261,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -6385,7 +6385,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -6432,7 +6432,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -6479,7 +6479,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -6526,7 +6526,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -6573,7 +6573,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -6697,7 +6697,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -6744,7 +6744,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -6791,7 +6791,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
@@ -6838,7 +6838,7 @@ self.flwMagicRecordList10._recalcHeight();
             								local valor;
             							
             								if temPericia then
-            									valor = modificador	+ (sheet.bonusProficiencia or 0)						
+            									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
             								else
             									valor = modificador;
             								end;								
