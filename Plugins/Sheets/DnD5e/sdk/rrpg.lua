@@ -117,8 +117,10 @@ local function newRolagemObject()
 			rolDirObj = localRRPG.interpretarRolagem(rolDir);
 		elseif type(rolDir) == "table" then
 			rolDirObj = rolDir;
+		elseif type(rolDir) == "number" then
+			rolDirObj = localRRPG.interpretarRolagem(tostring(rolDir));
 		else
-			return;
+			error("Cant concatenate rolls with the type " .. type(rolDir));
 		end;		
 		
 		local ret = _obj_invoke(self.handle, "Concatenar", rolDirObj.handle);
