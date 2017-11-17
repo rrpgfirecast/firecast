@@ -9,6 +9,8 @@ local resultado = rolar(rolagem, "Dano em Area");
 
 for i = 1, #jogadores, 1 do
   if jogadores[i].isJogador then
-    enviar("/vigor " .. jogadores[i].login .. " -" .. resultado);
+    local min, max = jogadores[i]:getBarValue(1);
+  	local novo = min - resultado;
+    jogadores[i]:requestSetBarValue(1, novo);
   end;
 end;
