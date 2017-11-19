@@ -1,5 +1,5 @@
 -- Faz uma sequencia de ataques
-local bonus =tonumber( arg[1]);
+local bonus = tonumber(arg[1]);
 local qtd = tonumber(arg[2]);
 
 if bonus==nil then
