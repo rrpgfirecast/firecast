@@ -17,12 +17,13 @@ if n==nil then
   n = tonumber(inputQuery("Modificador:")) or 0;
 end;
 
+local indice, texto = choose("Exausto?", {"Não", "Sim"}, 1);
+
 
 local roll = "1d12 + " .. x .. "d6 + " .. n;
 
 local resultado, rolagem = rolar(roll); 
 
-local sucesso = resultado >= na;
 
 local runa = false;
 local olho = false;
@@ -42,6 +43,9 @@ for i=1, #rolagem.ops, 1 do
 				if op.resultados[j] == 6 then
 					sucessos = sucessos + 1;
 				end;
+				if indice == 2 and op.resultados[j] <= 3 then
+					resultado = math.floor(resultado - op.resultados[j]);
+				end;
 			end;
 
 		end;
@@ -50,14 +54,18 @@ for i=1, #rolagem.ops, 1 do
 
 end;
 
+local sucesso = na <= resultado;
+
 if olho then
 	enviar("Olho de Sauron! Falha.");
 elseif runa then
 	enviar("Runa de Gandalf! Sucesso.");
 elseif sucesso and sucessos>1 then
-	enviar("Sucesso Extraordinario. Resultado "  .. resultado .. " > NA" .. na .. " e " .. sucessos .. "x6.");
+	enviar("Sucesso Extraordinario. Resultado "  .. resultado .. " >= NA" .. na .. " e " .. sucessos .. "x6.");
 elseif sucesso and sucessos==1 then
-	enviar("Sucesso Maior. Resultado "  .. resultado .. " > NA" .. na .. " e " .. sucessos .. "x6.");
+	enviar("Sucesso Maior. Resultado "  .. resultado .. " >= NA" .. na .. " e " .. sucessos .. "x6.");
+elseif sucesso then
+	enviar("Sucesso. Resultado "  .. resultado .. " >= NA" .. na .. " e " .. sucessos .. "x6.");
 else
 	enviar("Falha. Resultado: " .. resultado .. " < NA" .. na);
 end;
