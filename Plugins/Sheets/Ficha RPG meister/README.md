@@ -2,8 +2,8 @@
 Proximas Versões
 + Tiro Multiplo Aprimorado pra ataques avançados. 
 + Dar uma olhada nas questões de ajuste de tamanho da ficha para telas pequenas. 
-+ Checar funcionamento dos macros imbutidos na ficha. 
-+ Checkbox para bonus temporarios de atributos. 
++ No calculo de magias por dia deixar em branco se base for nil. 
++ Bug: força n altera carga automaticamente. 
 
 Versão 27:
 - Alguns bugs resolvidos com os macros instalados com a ficha. 
