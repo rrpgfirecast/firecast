@@ -11,6 +11,8 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais).
 	- Conteudo da mesa RPGmeister para facil acesso.
 - DnD5e: AlyssonRPG
 	- Ficha para o sistema Dungeons and Dragons Next.
+- FFRPG Mob Creator: Hitoshura
+	- Ajuda na criação de Mobs para FFRPG.
 - Ficha Multiaba: Ambesek
 	- Ficha V3 com multiplas abas e de uso geral. 
 - Ficha RPG meister: Ambesek
