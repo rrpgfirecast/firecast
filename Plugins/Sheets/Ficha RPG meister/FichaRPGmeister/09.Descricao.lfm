@@ -28,7 +28,7 @@
 			<Descricao left1="910" left2="1000" top="75" text="REINO" field="reino"/>
 		</rectangle>
 
-		<dataLink fields="{'tamanho', 'quadrupede'}">
+		<dataLink fields="{'tamanho', 'quadrupede', 'efetFor'}">
 			<event name="onChange">
 				<![CDATA[
 				if sheet~=nil then

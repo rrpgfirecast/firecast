@@ -403,7 +403,7 @@ local function _executeChoicePanel(panel, callback)
 	panel:acquireFocus();
 end;
 
-function lDialogs.choose(prompt, options, callback, defaultIndex)
+function lDialogs.choose(prompt, options, callback, defaultIndex, shortCircuit)
 	if (type(options) ~= "table") or (#options < 1) then
 		if callback ~= nil then
 			callback(false);
@@ -415,11 +415,22 @@ function lDialogs.choose(prompt, options, callback, defaultIndex)
 	local GUI = require("gui.lua");
 	local choosePanel = _newChoiceDialogPopup();
 	
-	if type(options) == "table" then
+	if type(options) == "table" then				
 		local i;
 		
 		for i = 1, #options, 1 do
 			choosePanel:addSelectionOption(options[i]);
+		end;	
+
+		if shortCircuit and (#options == 1) then
+			setTimeout(
+				function()
+					if callback ~= nil then	
+						callback(true, 1, options[1]);
+					end;
+				end, 1);	
+				
+			return;
 		end;
 	end;
 	

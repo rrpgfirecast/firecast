@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister6_svg" align="client" theme="dark" margins="{top=1}">
 	<scrollBox align="client">
-		<image left="0" top="0" width="1211" height="668" src="images/06.Equipamentos.png" style="stretch" optimize="true" compilerOrder="0"/>
 		<script>
 			local function getNumber(text)
 				local mod = "0";
@@ -59,22 +58,55 @@
 					end;
 				end;
 			end;
+
+			local function resetImgSlot()
+				if sheet==nil then return end;
+				sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/slots.png";
+			end;
 		</script>
 		
 		<template name="Equipamento">
-			<rectangle align="client" color="black"/>
+			<script>
+				local function loadImgSlot$(slot)()
+					if sheet==nil then return end;
+					sheet.imgSlots = "$(url)";
+				end;
+			</script>
+
+			<rectangle align="client" color="black">
+				<event name="onMouseEnter">
+					loadImgSlot$(slot)()
+				</event>
+			</rectangle>
 			<label left="5" top="1" width="200" height="20" text="$(nome)"/>
-			<edit vertTextAlign="center" left="5" top="20" width="240" height="25" field="equipamento$(slot)"/>
-			<textEditor left="5" top="47" width="240" height="140" field="descricao$(slot)"/>
+			<edit vertTextAlign="center" left="5" top="20" width="240" height="25" field="equipamento$(slot)">
+				<event name="onMouseEnter">
+					loadImgSlot$(slot)()
+				</event>
+			</edit>
+			<textEditor left="5" top="47" width="240" height="140" field="descricao$(slot)">
+				<event name="onMouseEnter">
+					loadImgSlot$(slot)()
+				</event>
+			</textEditor>
 
 			<label left="70" top="193" width="50" height="20" text="Kg"/>
-			<edit horzTextAlign="center" vertTextAlign="center" left="90" top="190" width="50" height="25" field="peso$(slot)"/>
+			<edit horzTextAlign="center" vertTextAlign="center" left="90" top="190" width="50" height="25" field="peso$(slot)">
+				<event name="onMouseEnter">
+					loadImgSlot$(slot)()
+				</event>
+			</edit>
 			<label left="147" top="193" width="50" height="20" text="$"/>
-			<edit horzTextAlign="center" vertTextAlign="center" left="160" top="190" width="84" height="25" field="preco$(slot)"/>
+			<edit horzTextAlign="center" vertTextAlign="center" left="160" top="190" width="84" height="25" field="preco$(slot)">
+				<event name="onMouseEnter">
+					loadImgSlot$(slot)()
+				</event>
+			</edit>
 			<layout left="5" top="195" height="15" width="64">
 				<imageCheckBox align="client">
 					<progressBar colorMode="hl" width="50" height="15" hitTest="true" mouseGlow="true" color="Green" name="Barrinha$(num)" field="Barrinha$(num)Valor" fieldMax="Barrinha$(num)ValorMax">
 						<event name="onMouseEnter">
+							loadImgSlot$(slot)();
 							self.CorBarrinha$(num).color = "Green";
 							self.ValoresBarrinha$(num).visible = true;
 							sheet.InfoBarrinha$(num) = (sheet.Barrinha$(num)Valor or 0) .. "/"	.. (sheet.Barrinha$(num)ValorMax or 0);					
@@ -206,28 +238,38 @@
 			</event>
 		</popup>
 
+		<rectangle align="client" color="#00000000" opacity="0">
+			<event name="onMouseEnter">
+				resetImgSlot()
+			</event>
+		</rectangle>
 
 		<layout left="1" top="1" width="250" height="222">
-			<Equipamento slot="Cabeca" nome="CABEÇA" num="0"/>
+			<Equipamento slot="Cabeca" nome="CABEÇA" num="0" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/cabeca.png"/>
 		</layout>
 		<layout left="252" top="1" width="250" height="222">
-			<Equipamento slot="Olhos" nome="OLHOS" num="1"/>
+			<Equipamento slot="Olhos" nome="OLHOS" num="1" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/olhos.png"/>
 		</layout>
 		
-		<image left="506" top="70" width="200" height="600" src="images/slots.png" style="stretch" optimize="true" compilerOrder="0"/>
+		<image left="506" top="70" width="200" height="600" src="http://blob.firecast.com.br/blobs/GADIAGUF_607701/slots.png" field="imgSlots" style="stretch" optimize="true" compilerOrder="0"/>
 		
 		<layout left="710" top="1" width="250" height="222">
-			<Equipamento slot="Pescoco" nome="PESCOÇO" num="2"/>
+			<Equipamento slot="Pescoco" nome="PESCOÇO" num="2" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/pescoco.png"/>
 		</layout>
 		<layout left="961" top="1" width="250" height="222">
-			<Equipamento slot="Ombros" nome="OMBROS" num="3"/>
+			<Equipamento slot="Ombros" nome="OMBROS" num="3" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/ombros.png"/>
 		</layout>
 		
 		<layout left="1" top="224" width="250" height="222">
-			<Equipamento slot="Torso" nome="TORSO"  num="4"/>
+			<Equipamento slot="Torso" nome="TORSO"  num="4" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/torso.png"/>
 		</layout>
 		<layout left="252" top="224" width="250" height="222">
-			<rectangle align="client" color="black"/>
+			<rectangle align="client" color="black">
+				<event name="onMouseEnter">
+					if sheet==nil then return end;
+					sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/corpo.png";
+				</event>
+			</rectangle>
 			<label left="5" top="1" width="200" height="20" text="CORPO (ARMADURA)"/>
 			<edit vertTextAlign="center" left="5" top="20" width="240" height="25" field="equipamentoCorpo"/>
 
@@ -299,23 +341,23 @@
 			</dataLink>
 		</layout>
 		<layout left="710" top="224" width="250" height="222">
-			<Equipamento slot="Punhos" nome="PUNHOS" num="6"/>
+			<Equipamento slot="Punhos" nome="PUNHOS" num="6" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/punhos.png"/>
 		</layout>
 		<layout left="961" top="224" width="250" height="222">
-			<Equipamento slot="Cintura" nome="CINTURA" num="7"/>
+			<Equipamento slot="Cintura" nome="CINTURA" num="7" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/cintura.png"/>
 		</layout>
 		
 		<layout left="1" top="447" width="250" height="222">
-			<Equipamento slot="Maos" nome="MÃOS" num="8"/>
+			<Equipamento slot="Maos" nome="MÃOS" num="8" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/maos.png"/>
 		</layout>
 		<layout left="252" top="447" width="250" height="222">
-			<Equipamento slot="DedosI" nome="DEDO I" num="9"/>
+			<Equipamento slot="DedosI" nome="DEDO I" num="9" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/dedoI.png"/>
 		</layout>
 		<layout left="710" top="447" width="250" height="222">
-			<Equipamento slot="DesdosII" nome="DEDO II" num="10"/>
+			<Equipamento slot="DesdosII" nome="DEDO II" num="10" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/dedoII.png"/>
 		</layout>
 		<layout left="961" top="447" width="250" height="222">
-			<Equipamento slot="Pes" nome="PÉS" num="11"/>
+			<Equipamento slot="Pes" nome="PÉS" num="11" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/pes.png"/>
 		</layout>
 	</scrollBox>
 </form>

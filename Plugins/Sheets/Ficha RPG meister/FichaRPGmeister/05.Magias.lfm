@@ -105,7 +105,13 @@
 				<label vertTextAlign="center" left="140" top="0" width="30" height="25" field="bonus$(num)"/>
 				<dataLink fields="{'base$(num)', 'bonus$(num)'}">
 					<event name="onChange">
-						self.boxDetalhesDoItem.node.total$(num) = (tonumber(self.boxDetalhesDoItem.node.base$(num)) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus$(num)) or 0);
+						local node = self.boxDetalhesDoItem.node;
+						if node.base$(num)==nil then 
+							node.total$(num) = nil;
+						else
+							node.total$(num) = 	(tonumber(node.base$(num)) or 0) + 
+												(tonumber(node.bonus$(num)) or 0);
+						end;
 					</event>
 				</dataLink>
 				<dataLink fields="{'atributoBonus', 'efetModFor', 'efetModDes', 'efetModCon', 'efetModInt', 'efetModSab', 'efetModCar'}">

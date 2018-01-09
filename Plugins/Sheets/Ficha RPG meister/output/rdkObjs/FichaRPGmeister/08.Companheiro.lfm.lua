@@ -999,6 +999,11 @@ function newfrmFichaRPGmeister8_svg()
     obj.edit38:setHorzTextAlign("center");
     obj.edit38:setName("edit38");
 
+    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.boxDetalhesDoCompanheiro);
+    obj.dataLink1:setField("precoInventorioComp");
+    obj.dataLink1:setName("dataLink1");
+
     obj.rectangle16 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle16:setParent(obj.boxDetalhesDoCompanheiro);
     obj.rectangle16:setLeft(510);
@@ -1385,7 +1390,19 @@ function newfrmFichaRPGmeister8_svg()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de vontade de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event17 = obj.button12:addEventListener("onClick",
+    obj._e_event17 = obj.dataLink1:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            					local nodes = ndb.getChildNodes(sheet.campoDosCompanheiros);   
+            					local total = 0;
+            					for i=1, #nodes, 1 do
+            						total = total + (getNumber(nodes[i].precoInventorioComp) or 0);
+            					end
+            					sheet.precoInventorioComp = total;
+        end, obj);
+
+    obj._e_event18 = obj.button12:addEventListener("onClick",
         function (self)
             local macro = self.boxDetalhesDoCompanheiro.node.macro;
             						if macro~=nil then
@@ -1397,24 +1414,24 @@ function newfrmFichaRPGmeister8_svg()
             						end;
         end, obj);
 
-    obj._e_event18 = obj.image1:addEventListener("onStartDrag",
+    obj._e_event19 = obj.image1:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", self.rclListaDosCompanheiros.selectedNode.avatarComp);
         end, obj);
 
-    obj._e_event19 = obj.button13:addEventListener("onClick",
+    obj._e_event20 = obj.button13:addEventListener("onClick",
         function (self)
             self.rclListaDosCompanheiros:append();
         end, obj);
 
-    obj._e_event20 = obj.rclListaDosCompanheiros:addEventListener("onSelect",
+    obj._e_event21 = obj.rclListaDosCompanheiros:addEventListener("onSelect",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             				self.boxDetalhesDoCompanheiro.node = node;
             				self.boxDetalhesDoCompanheiro.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event21 = obj.rclListaDosCompanheiros:addEventListener("onEndEnumeration",
+    obj._e_event22 = obj.rclListaDosCompanheiros:addEventListener("onEndEnumeration",
         function (self)
             if self.rclListaDosCompanheiros.selectedNode == nil and sheet ~= nil then
             					local nodes = ndb.getChildNodes(sheet.campoDosCompanheiros);               
@@ -1425,6 +1442,7 @@ function newfrmFichaRPGmeister8_svg()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event22);
         __o_rrpgObjs.removeEventListenerById(self._e_event21);
         __o_rrpgObjs.removeEventListenerById(self._e_event20);
         __o_rrpgObjs.removeEventListenerById(self._e_event19);
@@ -1532,6 +1550,7 @@ function newfrmFichaRPGmeister8_svg()
         if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
         if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.button11 ~= nil then self.button11:destroy(); self.button11 = nil; end;
         if self.button12 ~= nil then self.button12:destroy(); self.button12 = nil; end;
         if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;

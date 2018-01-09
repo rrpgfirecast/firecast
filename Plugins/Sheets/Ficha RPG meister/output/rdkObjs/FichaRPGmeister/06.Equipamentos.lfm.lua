@@ -38,25 +38,15 @@ function newfrmFichaRPGmeister6_svg()
 
     obj.image1 = gui.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.scrollBox1);
-    obj.image1:setLeft(0);
-    obj.image1:setTop(0);
-    obj.image1:setWidth(1211);
-    obj.image1:setHeight(668);
-    obj.image1:setSRC("images/06.Equipamentos.png");
+    obj.image1:setLeft(506);
+    obj.image1:setTop(70);
+    obj.image1:setWidth(200);
+    obj.image1:setHeight(600);
+    obj.image1:setSRC("http://blob.firecast.com.br/blobs/GADIAGUF_607701/slots.png");
+    obj.image1:setField("imgSlots");
     obj.image1:setStyle("stretch");
     obj.image1:setOptimize(true);
     obj.image1:setName("image1");
-
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
-    obj.image2:setParent(obj.scrollBox1);
-    obj.image2:setLeft(506);
-    obj.image2:setTop(70);
-    obj.image2:setWidth(200);
-    obj.image2:setHeight(600);
-    obj.image2:setSRC("/FichaRPGmeister/images/slots.png");
-    obj.image2:setStyle("stretch");
-    obj.image2:setOptimize(true);
-    obj.image2:setName("image2");
 
 
 			local function getNumber(text)
@@ -114,6 +104,11 @@ function newfrmFichaRPGmeister6_svg()
 						self.rclListaDeNPC:endUpdate();
 					end;
 				end;
+			end;
+
+			local function resetImgSlot()
+				if sheet==nil then return end;
+				sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/slots.png";
 			end;
 		
 
@@ -239,6 +234,13 @@ function newfrmFichaRPGmeister6_svg()
     obj.ValorMaxBarrinha:setField("ValorMudadoMaxBarrinha");
     obj.ValorMaxBarrinha:setName("ValorMaxBarrinha");
 
+    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2:setParent(obj.scrollBox1);
+    obj.rectangle2:setAlign("client");
+    obj.rectangle2:setColor("#00000000");
+    obj.rectangle2:setOpacity(0);
+    obj.rectangle2:setName("rectangle2");
+
     obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.scrollBox1);
     obj.layout4:setLeft(1);
@@ -247,11 +249,19 @@ function newfrmFichaRPGmeister6_svg()
     obj.layout4:setHeight(222);
     obj.layout4:setName("layout4");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle2:setParent(obj.layout4);
-    obj.rectangle2:setAlign("client");
-    obj.rectangle2:setColor("black");
-    obj.rectangle2:setName("rectangle2");
+
+				local function loadImgSlotCabeca()
+					if sheet==nil then return end;
+					sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/cabeca.png";
+				end;
+			
+
+
+    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3:setParent(obj.layout4);
+    obj.rectangle3:setAlign("client");
+    obj.rectangle3:setColor("black");
+    obj.rectangle3:setName("rectangle3");
 
     obj.label4 = gui.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout4);
@@ -390,11 +400,19 @@ function newfrmFichaRPGmeister6_svg()
     obj.layout6:setHeight(222);
     obj.layout6:setName("layout6");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle3:setParent(obj.layout6);
-    obj.rectangle3:setAlign("client");
-    obj.rectangle3:setColor("black");
-    obj.rectangle3:setName("rectangle3");
+
+				local function loadImgSlotOlhos()
+					if sheet==nil then return end;
+					sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/olhos.png";
+				end;
+			
+
+
+    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4:setParent(obj.layout6);
+    obj.rectangle4:setAlign("client");
+    obj.rectangle4:setColor("black");
+    obj.rectangle4:setName("rectangle4");
 
     obj.label7 = gui.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout6);
@@ -533,11 +551,19 @@ function newfrmFichaRPGmeister6_svg()
     obj.layout8:setHeight(222);
     obj.layout8:setName("layout8");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle4:setParent(obj.layout8);
-    obj.rectangle4:setAlign("client");
-    obj.rectangle4:setColor("black");
-    obj.rectangle4:setName("rectangle4");
+
+				local function loadImgSlotPescoco()
+					if sheet==nil then return end;
+					sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/pescoco.png";
+				end;
+			
+
+
+    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5:setParent(obj.layout8);
+    obj.rectangle5:setAlign("client");
+    obj.rectangle5:setColor("black");
+    obj.rectangle5:setName("rectangle5");
 
     obj.label10 = gui.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout8);
@@ -676,11 +702,19 @@ function newfrmFichaRPGmeister6_svg()
     obj.layout10:setHeight(222);
     obj.layout10:setName("layout10");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle5:setParent(obj.layout10);
-    obj.rectangle5:setAlign("client");
-    obj.rectangle5:setColor("black");
-    obj.rectangle5:setName("rectangle5");
+
+				local function loadImgSlotOmbros()
+					if sheet==nil then return end;
+					sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/ombros.png";
+				end;
+			
+
+
+    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6:setParent(obj.layout10);
+    obj.rectangle6:setAlign("client");
+    obj.rectangle6:setColor("black");
+    obj.rectangle6:setName("rectangle6");
 
     obj.label13 = gui.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout10);
@@ -819,11 +853,19 @@ function newfrmFichaRPGmeister6_svg()
     obj.layout12:setHeight(222);
     obj.layout12:setName("layout12");
 
-    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle6:setParent(obj.layout12);
-    obj.rectangle6:setAlign("client");
-    obj.rectangle6:setColor("black");
-    obj.rectangle6:setName("rectangle6");
+
+				local function loadImgSlotTorso()
+					if sheet==nil then return end;
+					sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/torso.png";
+				end;
+			
+
+
+    obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle7:setParent(obj.layout12);
+    obj.rectangle7:setAlign("client");
+    obj.rectangle7:setColor("black");
+    obj.rectangle7:setName("rectangle7");
 
     obj.label16 = gui.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.layout12);
@@ -962,11 +1004,11 @@ function newfrmFichaRPGmeister6_svg()
     obj.layout14:setHeight(222);
     obj.layout14:setName("layout14");
 
-    obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle7:setParent(obj.layout14);
-    obj.rectangle7:setAlign("client");
-    obj.rectangle7:setColor("black");
-    obj.rectangle7:setName("rectangle7");
+    obj.rectangle8 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle8:setParent(obj.layout14);
+    obj.rectangle8:setAlign("client");
+    obj.rectangle8:setColor("black");
+    obj.rectangle8:setName("rectangle8");
 
     obj.label19 = gui.fromHandle(_obj_newObject("label"));
     obj.label19:setParent(obj.layout14);
@@ -1251,11 +1293,19 @@ function newfrmFichaRPGmeister6_svg()
     obj.layout16:setHeight(222);
     obj.layout16:setName("layout16");
 
-    obj.rectangle8 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle8:setParent(obj.layout16);
-    obj.rectangle8:setAlign("client");
-    obj.rectangle8:setColor("black");
-    obj.rectangle8:setName("rectangle8");
+
+				local function loadImgSlotPunhos()
+					if sheet==nil then return end;
+					sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/punhos.png";
+				end;
+			
+
+
+    obj.rectangle9 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle9:setParent(obj.layout16);
+    obj.rectangle9:setAlign("client");
+    obj.rectangle9:setColor("black");
+    obj.rectangle9:setName("rectangle9");
 
     obj.label29 = gui.fromHandle(_obj_newObject("label"));
     obj.label29:setParent(obj.layout16);
@@ -1394,11 +1444,19 @@ function newfrmFichaRPGmeister6_svg()
     obj.layout18:setHeight(222);
     obj.layout18:setName("layout18");
 
-    obj.rectangle9 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle9:setParent(obj.layout18);
-    obj.rectangle9:setAlign("client");
-    obj.rectangle9:setColor("black");
-    obj.rectangle9:setName("rectangle9");
+
+				local function loadImgSlotCintura()
+					if sheet==nil then return end;
+					sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/cintura.png";
+				end;
+			
+
+
+    obj.rectangle10 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle10:setParent(obj.layout18);
+    obj.rectangle10:setAlign("client");
+    obj.rectangle10:setColor("black");
+    obj.rectangle10:setName("rectangle10");
 
     obj.label32 = gui.fromHandle(_obj_newObject("label"));
     obj.label32:setParent(obj.layout18);
@@ -1537,11 +1595,19 @@ function newfrmFichaRPGmeister6_svg()
     obj.layout20:setHeight(222);
     obj.layout20:setName("layout20");
 
-    obj.rectangle10 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle10:setParent(obj.layout20);
-    obj.rectangle10:setAlign("client");
-    obj.rectangle10:setColor("black");
-    obj.rectangle10:setName("rectangle10");
+
+				local function loadImgSlotMaos()
+					if sheet==nil then return end;
+					sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/maos.png";
+				end;
+			
+
+
+    obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle11:setParent(obj.layout20);
+    obj.rectangle11:setAlign("client");
+    obj.rectangle11:setColor("black");
+    obj.rectangle11:setName("rectangle11");
 
     obj.label35 = gui.fromHandle(_obj_newObject("label"));
     obj.label35:setParent(obj.layout20);
@@ -1680,11 +1746,19 @@ function newfrmFichaRPGmeister6_svg()
     obj.layout22:setHeight(222);
     obj.layout22:setName("layout22");
 
-    obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle11:setParent(obj.layout22);
-    obj.rectangle11:setAlign("client");
-    obj.rectangle11:setColor("black");
-    obj.rectangle11:setName("rectangle11");
+
+				local function loadImgSlotDedosI()
+					if sheet==nil then return end;
+					sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/dedoI.png";
+				end;
+			
+
+
+    obj.rectangle12 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle12:setParent(obj.layout22);
+    obj.rectangle12:setAlign("client");
+    obj.rectangle12:setColor("black");
+    obj.rectangle12:setName("rectangle12");
 
     obj.label38 = gui.fromHandle(_obj_newObject("label"));
     obj.label38:setParent(obj.layout22);
@@ -1823,11 +1897,19 @@ function newfrmFichaRPGmeister6_svg()
     obj.layout24:setHeight(222);
     obj.layout24:setName("layout24");
 
-    obj.rectangle12 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle12:setParent(obj.layout24);
-    obj.rectangle12:setAlign("client");
-    obj.rectangle12:setColor("black");
-    obj.rectangle12:setName("rectangle12");
+
+				local function loadImgSlotDesdosII()
+					if sheet==nil then return end;
+					sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/dedoII.png";
+				end;
+			
+
+
+    obj.rectangle13 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle13:setParent(obj.layout24);
+    obj.rectangle13:setAlign("client");
+    obj.rectangle13:setColor("black");
+    obj.rectangle13:setName("rectangle13");
 
     obj.label41 = gui.fromHandle(_obj_newObject("label"));
     obj.label41:setParent(obj.layout24);
@@ -1966,11 +2048,19 @@ function newfrmFichaRPGmeister6_svg()
     obj.layout26:setHeight(222);
     obj.layout26:setName("layout26");
 
-    obj.rectangle13 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle13:setParent(obj.layout26);
-    obj.rectangle13:setAlign("client");
-    obj.rectangle13:setColor("black");
-    obj.rectangle13:setName("rectangle13");
+
+				local function loadImgSlotPes()
+					if sheet==nil then return end;
+					sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/pes.png";
+				end;
+			
+
+
+    obj.rectangle14 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle14:setParent(obj.layout26);
+    obj.rectangle14:setAlign("client");
+    obj.rectangle14:setColor("black");
+    obj.rectangle14:setName("rectangle14");
 
     obj.label44 = gui.fromHandle(_obj_newObject("label"));
     obj.label44:setParent(obj.layout26);
@@ -2174,19 +2264,50 @@ function newfrmFichaRPGmeister6_svg()
             									end;
         end, obj);
 
-    obj._e_event3 = obj.Barrinha0:addEventListener("onMouseEnter",
+    obj._e_event3 = obj.rectangle2:addEventListener("onMouseEnter",
         function (self)
-            self.CorBarrinha0.color = "Green";
+            resetImgSlot()
+        end, obj);
+
+    obj._e_event4 = obj.rectangle3:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotCabeca()
+        end, obj);
+
+    obj._e_event5 = obj.edit1:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotCabeca()
+        end, obj);
+
+    obj._e_event6 = obj.textEditor1:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotCabeca()
+        end, obj);
+
+    obj._e_event7 = obj.edit2:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotCabeca()
+        end, obj);
+
+    obj._e_event8 = obj.edit3:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotCabeca()
+        end, obj);
+
+    obj._e_event9 = obj.Barrinha0:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotCabeca();
+            							self.CorBarrinha0.color = "Green";
             							self.ValoresBarrinha0.visible = true;
             							sheet.InfoBarrinha0 = (sheet.Barrinha0Valor or 0) .. "/"	.. (sheet.Barrinha0ValorMax or 0);
         end, obj);
 
-    obj._e_event4 = obj.Barrinha0:addEventListener("onMouseLeave",
+    obj._e_event10 = obj.Barrinha0:addEventListener("onMouseLeave",
         function (self)
             self.ValoresBarrinha0.visible = false;
         end, obj);
 
-    obj._e_event5 = obj.Barrinha0:addEventListener("onDblClick",
+    obj._e_event11 = obj.Barrinha0:addEventListener("onDblClick",
         function (self)
             sheet.BarrinhaID = 0;
             							sheet.AtributoBarrinha = sheet.equipamentoCabeca;
@@ -2203,29 +2324,55 @@ function newfrmFichaRPGmeister6_svg()
             							self.BarrinhaPopup.top = (self.BarrinhaPopup.top + 29 + 10);
         end, obj);
 
-    obj._e_event6 = obj.InfoBarrinha0:addEventListener("onResize",
+    obj._e_event12 = obj.InfoBarrinha0:addEventListener("onResize",
         function (self)
             self.InfoBarrinha0.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
-    obj._e_event7 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event13 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.Barrinha0.color = "Green";
         end, obj);
 
-    obj._e_event8 = obj.Barrinha1:addEventListener("onMouseEnter",
+    obj._e_event14 = obj.rectangle4:addEventListener("onMouseEnter",
         function (self)
-            self.CorBarrinha1.color = "Green";
+            loadImgSlotOlhos()
+        end, obj);
+
+    obj._e_event15 = obj.edit4:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotOlhos()
+        end, obj);
+
+    obj._e_event16 = obj.textEditor2:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotOlhos()
+        end, obj);
+
+    obj._e_event17 = obj.edit5:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotOlhos()
+        end, obj);
+
+    obj._e_event18 = obj.edit6:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotOlhos()
+        end, obj);
+
+    obj._e_event19 = obj.Barrinha1:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotOlhos();
+            							self.CorBarrinha1.color = "Green";
             							self.ValoresBarrinha1.visible = true;
             							sheet.InfoBarrinha1 = (sheet.Barrinha1Valor or 0) .. "/"	.. (sheet.Barrinha1ValorMax or 0);
         end, obj);
 
-    obj._e_event9 = obj.Barrinha1:addEventListener("onMouseLeave",
+    obj._e_event20 = obj.Barrinha1:addEventListener("onMouseLeave",
         function (self)
             self.ValoresBarrinha1.visible = false;
         end, obj);
 
-    obj._e_event10 = obj.Barrinha1:addEventListener("onDblClick",
+    obj._e_event21 = obj.Barrinha1:addEventListener("onDblClick",
         function (self)
             sheet.BarrinhaID = 1;
             							sheet.AtributoBarrinha = sheet.equipamentoOlhos;
@@ -2242,29 +2389,55 @@ function newfrmFichaRPGmeister6_svg()
             							self.BarrinhaPopup.top = (self.BarrinhaPopup.top + 29 + 10);
         end, obj);
 
-    obj._e_event11 = obj.InfoBarrinha1:addEventListener("onResize",
+    obj._e_event22 = obj.InfoBarrinha1:addEventListener("onResize",
         function (self)
             self.InfoBarrinha1.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
-    obj._e_event12 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event23 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.Barrinha1.color = "Green";
         end, obj);
 
-    obj._e_event13 = obj.Barrinha2:addEventListener("onMouseEnter",
+    obj._e_event24 = obj.rectangle5:addEventListener("onMouseEnter",
         function (self)
-            self.CorBarrinha2.color = "Green";
+            loadImgSlotPescoco()
+        end, obj);
+
+    obj._e_event25 = obj.edit7:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotPescoco()
+        end, obj);
+
+    obj._e_event26 = obj.textEditor3:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotPescoco()
+        end, obj);
+
+    obj._e_event27 = obj.edit8:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotPescoco()
+        end, obj);
+
+    obj._e_event28 = obj.edit9:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotPescoco()
+        end, obj);
+
+    obj._e_event29 = obj.Barrinha2:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotPescoco();
+            							self.CorBarrinha2.color = "Green";
             							self.ValoresBarrinha2.visible = true;
             							sheet.InfoBarrinha2 = (sheet.Barrinha2Valor or 0) .. "/"	.. (sheet.Barrinha2ValorMax or 0);
         end, obj);
 
-    obj._e_event14 = obj.Barrinha2:addEventListener("onMouseLeave",
+    obj._e_event30 = obj.Barrinha2:addEventListener("onMouseLeave",
         function (self)
             self.ValoresBarrinha2.visible = false;
         end, obj);
 
-    obj._e_event15 = obj.Barrinha2:addEventListener("onDblClick",
+    obj._e_event31 = obj.Barrinha2:addEventListener("onDblClick",
         function (self)
             sheet.BarrinhaID = 2;
             							sheet.AtributoBarrinha = sheet.equipamentoPescoco;
@@ -2281,29 +2454,55 @@ function newfrmFichaRPGmeister6_svg()
             							self.BarrinhaPopup.top = (self.BarrinhaPopup.top + 29 + 10);
         end, obj);
 
-    obj._e_event16 = obj.InfoBarrinha2:addEventListener("onResize",
+    obj._e_event32 = obj.InfoBarrinha2:addEventListener("onResize",
         function (self)
             self.InfoBarrinha2.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
-    obj._e_event17 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event33 = obj.dataLink3:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.Barrinha2.color = "Green";
         end, obj);
 
-    obj._e_event18 = obj.Barrinha3:addEventListener("onMouseEnter",
+    obj._e_event34 = obj.rectangle6:addEventListener("onMouseEnter",
         function (self)
-            self.CorBarrinha3.color = "Green";
+            loadImgSlotOmbros()
+        end, obj);
+
+    obj._e_event35 = obj.edit10:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotOmbros()
+        end, obj);
+
+    obj._e_event36 = obj.textEditor4:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotOmbros()
+        end, obj);
+
+    obj._e_event37 = obj.edit11:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotOmbros()
+        end, obj);
+
+    obj._e_event38 = obj.edit12:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotOmbros()
+        end, obj);
+
+    obj._e_event39 = obj.Barrinha3:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotOmbros();
+            							self.CorBarrinha3.color = "Green";
             							self.ValoresBarrinha3.visible = true;
             							sheet.InfoBarrinha3 = (sheet.Barrinha3Valor or 0) .. "/"	.. (sheet.Barrinha3ValorMax or 0);
         end, obj);
 
-    obj._e_event19 = obj.Barrinha3:addEventListener("onMouseLeave",
+    obj._e_event40 = obj.Barrinha3:addEventListener("onMouseLeave",
         function (self)
             self.ValoresBarrinha3.visible = false;
         end, obj);
 
-    obj._e_event20 = obj.Barrinha3:addEventListener("onDblClick",
+    obj._e_event41 = obj.Barrinha3:addEventListener("onDblClick",
         function (self)
             sheet.BarrinhaID = 3;
             							sheet.AtributoBarrinha = sheet.equipamentoOmbros;
@@ -2320,29 +2519,55 @@ function newfrmFichaRPGmeister6_svg()
             							self.BarrinhaPopup.top = (self.BarrinhaPopup.top + 29 + 10);
         end, obj);
 
-    obj._e_event21 = obj.InfoBarrinha3:addEventListener("onResize",
+    obj._e_event42 = obj.InfoBarrinha3:addEventListener("onResize",
         function (self)
             self.InfoBarrinha3.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
-    obj._e_event22 = obj.dataLink4:addEventListener("onChange",
+    obj._e_event43 = obj.dataLink4:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.Barrinha3.color = "Green";
         end, obj);
 
-    obj._e_event23 = obj.Barrinha4:addEventListener("onMouseEnter",
+    obj._e_event44 = obj.rectangle7:addEventListener("onMouseEnter",
         function (self)
-            self.CorBarrinha4.color = "Green";
+            loadImgSlotTorso()
+        end, obj);
+
+    obj._e_event45 = obj.edit13:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotTorso()
+        end, obj);
+
+    obj._e_event46 = obj.textEditor5:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotTorso()
+        end, obj);
+
+    obj._e_event47 = obj.edit14:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotTorso()
+        end, obj);
+
+    obj._e_event48 = obj.edit15:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotTorso()
+        end, obj);
+
+    obj._e_event49 = obj.Barrinha4:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotTorso();
+            							self.CorBarrinha4.color = "Green";
             							self.ValoresBarrinha4.visible = true;
             							sheet.InfoBarrinha4 = (sheet.Barrinha4Valor or 0) .. "/"	.. (sheet.Barrinha4ValorMax or 0);
         end, obj);
 
-    obj._e_event24 = obj.Barrinha4:addEventListener("onMouseLeave",
+    obj._e_event50 = obj.Barrinha4:addEventListener("onMouseLeave",
         function (self)
             self.ValoresBarrinha4.visible = false;
         end, obj);
 
-    obj._e_event25 = obj.Barrinha4:addEventListener("onDblClick",
+    obj._e_event51 = obj.Barrinha4:addEventListener("onDblClick",
         function (self)
             sheet.BarrinhaID = 4;
             							sheet.AtributoBarrinha = sheet.equipamentoTorso;
@@ -2359,29 +2584,35 @@ function newfrmFichaRPGmeister6_svg()
             							self.BarrinhaPopup.top = (self.BarrinhaPopup.top + 29 + 10);
         end, obj);
 
-    obj._e_event26 = obj.InfoBarrinha4:addEventListener("onResize",
+    obj._e_event52 = obj.InfoBarrinha4:addEventListener("onResize",
         function (self)
             self.InfoBarrinha4.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
-    obj._e_event27 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event53 = obj.dataLink5:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.Barrinha4.color = "Green";
         end, obj);
 
-    obj._e_event28 = obj.Barrinha5:addEventListener("onMouseEnter",
+    obj._e_event54 = obj.rectangle8:addEventListener("onMouseEnter",
+        function (self)
+            if sheet==nil then return end;
+            					sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/corpo.png";
+        end, obj);
+
+    obj._e_event55 = obj.Barrinha5:addEventListener("onMouseEnter",
         function (self)
             self.CorBarrinha5.color = "Green";
             							self.ValoresBarrinha5.visible = true;
             							sheet.InfoBarrinha5 = (sheet.Barrinha5Valor or 0) .. "/"	.. (sheet.Barrinha5ValorMax or 0);
         end, obj);
 
-    obj._e_event29 = obj.Barrinha5:addEventListener("onMouseLeave",
+    obj._e_event56 = obj.Barrinha5:addEventListener("onMouseLeave",
         function (self)
             self.ValoresBarrinha5.visible = false;
         end, obj);
 
-    obj._e_event30 = obj.Barrinha5:addEventListener("onDblClick",
+    obj._e_event57 = obj.Barrinha5:addEventListener("onDblClick",
         function (self)
             sheet.BarrinhaID = 5;
             							sheet.AtributoBarrinha = sheet.equipamentoCorpo;
@@ -2398,29 +2629,55 @@ function newfrmFichaRPGmeister6_svg()
             							self.BarrinhaPopup.top = (self.BarrinhaPopup.top + 29 + 10);
         end, obj);
 
-    obj._e_event31 = obj.InfoBarrinha5:addEventListener("onResize",
+    obj._e_event58 = obj.InfoBarrinha5:addEventListener("onResize",
         function (self)
             self.InfoBarrinha5.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
-    obj._e_event32 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event59 = obj.dataLink6:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.Barrinha5.color = "Green";
         end, obj);
 
-    obj._e_event33 = obj.Barrinha6:addEventListener("onMouseEnter",
+    obj._e_event60 = obj.rectangle9:addEventListener("onMouseEnter",
         function (self)
-            self.CorBarrinha6.color = "Green";
+            loadImgSlotPunhos()
+        end, obj);
+
+    obj._e_event61 = obj.edit26:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotPunhos()
+        end, obj);
+
+    obj._e_event62 = obj.textEditor7:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotPunhos()
+        end, obj);
+
+    obj._e_event63 = obj.edit27:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotPunhos()
+        end, obj);
+
+    obj._e_event64 = obj.edit28:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotPunhos()
+        end, obj);
+
+    obj._e_event65 = obj.Barrinha6:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotPunhos();
+            							self.CorBarrinha6.color = "Green";
             							self.ValoresBarrinha6.visible = true;
             							sheet.InfoBarrinha6 = (sheet.Barrinha6Valor or 0) .. "/"	.. (sheet.Barrinha6ValorMax or 0);
         end, obj);
 
-    obj._e_event34 = obj.Barrinha6:addEventListener("onMouseLeave",
+    obj._e_event66 = obj.Barrinha6:addEventListener("onMouseLeave",
         function (self)
             self.ValoresBarrinha6.visible = false;
         end, obj);
 
-    obj._e_event35 = obj.Barrinha6:addEventListener("onDblClick",
+    obj._e_event67 = obj.Barrinha6:addEventListener("onDblClick",
         function (self)
             sheet.BarrinhaID = 6;
             							sheet.AtributoBarrinha = sheet.equipamentoPunhos;
@@ -2437,29 +2694,55 @@ function newfrmFichaRPGmeister6_svg()
             							self.BarrinhaPopup.top = (self.BarrinhaPopup.top + 29 + 10);
         end, obj);
 
-    obj._e_event36 = obj.InfoBarrinha6:addEventListener("onResize",
+    obj._e_event68 = obj.InfoBarrinha6:addEventListener("onResize",
         function (self)
             self.InfoBarrinha6.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
-    obj._e_event37 = obj.dataLink7:addEventListener("onChange",
+    obj._e_event69 = obj.dataLink7:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.Barrinha6.color = "Green";
         end, obj);
 
-    obj._e_event38 = obj.Barrinha7:addEventListener("onMouseEnter",
+    obj._e_event70 = obj.rectangle10:addEventListener("onMouseEnter",
         function (self)
-            self.CorBarrinha7.color = "Green";
+            loadImgSlotCintura()
+        end, obj);
+
+    obj._e_event71 = obj.edit29:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotCintura()
+        end, obj);
+
+    obj._e_event72 = obj.textEditor8:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotCintura()
+        end, obj);
+
+    obj._e_event73 = obj.edit30:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotCintura()
+        end, obj);
+
+    obj._e_event74 = obj.edit31:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotCintura()
+        end, obj);
+
+    obj._e_event75 = obj.Barrinha7:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotCintura();
+            							self.CorBarrinha7.color = "Green";
             							self.ValoresBarrinha7.visible = true;
             							sheet.InfoBarrinha7 = (sheet.Barrinha7Valor or 0) .. "/"	.. (sheet.Barrinha7ValorMax or 0);
         end, obj);
 
-    obj._e_event39 = obj.Barrinha7:addEventListener("onMouseLeave",
+    obj._e_event76 = obj.Barrinha7:addEventListener("onMouseLeave",
         function (self)
             self.ValoresBarrinha7.visible = false;
         end, obj);
 
-    obj._e_event40 = obj.Barrinha7:addEventListener("onDblClick",
+    obj._e_event77 = obj.Barrinha7:addEventListener("onDblClick",
         function (self)
             sheet.BarrinhaID = 7;
             							sheet.AtributoBarrinha = sheet.equipamentoCintura;
@@ -2476,29 +2759,55 @@ function newfrmFichaRPGmeister6_svg()
             							self.BarrinhaPopup.top = (self.BarrinhaPopup.top + 29 + 10);
         end, obj);
 
-    obj._e_event41 = obj.InfoBarrinha7:addEventListener("onResize",
+    obj._e_event78 = obj.InfoBarrinha7:addEventListener("onResize",
         function (self)
             self.InfoBarrinha7.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
-    obj._e_event42 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event79 = obj.dataLink8:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.Barrinha7.color = "Green";
         end, obj);
 
-    obj._e_event43 = obj.Barrinha8:addEventListener("onMouseEnter",
+    obj._e_event80 = obj.rectangle11:addEventListener("onMouseEnter",
         function (self)
-            self.CorBarrinha8.color = "Green";
+            loadImgSlotMaos()
+        end, obj);
+
+    obj._e_event81 = obj.edit32:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotMaos()
+        end, obj);
+
+    obj._e_event82 = obj.textEditor9:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotMaos()
+        end, obj);
+
+    obj._e_event83 = obj.edit33:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotMaos()
+        end, obj);
+
+    obj._e_event84 = obj.edit34:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotMaos()
+        end, obj);
+
+    obj._e_event85 = obj.Barrinha8:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotMaos();
+            							self.CorBarrinha8.color = "Green";
             							self.ValoresBarrinha8.visible = true;
             							sheet.InfoBarrinha8 = (sheet.Barrinha8Valor or 0) .. "/"	.. (sheet.Barrinha8ValorMax or 0);
         end, obj);
 
-    obj._e_event44 = obj.Barrinha8:addEventListener("onMouseLeave",
+    obj._e_event86 = obj.Barrinha8:addEventListener("onMouseLeave",
         function (self)
             self.ValoresBarrinha8.visible = false;
         end, obj);
 
-    obj._e_event45 = obj.Barrinha8:addEventListener("onDblClick",
+    obj._e_event87 = obj.Barrinha8:addEventListener("onDblClick",
         function (self)
             sheet.BarrinhaID = 8;
             							sheet.AtributoBarrinha = sheet.equipamentoMaos;
@@ -2515,29 +2824,55 @@ function newfrmFichaRPGmeister6_svg()
             							self.BarrinhaPopup.top = (self.BarrinhaPopup.top + 29 + 10);
         end, obj);
 
-    obj._e_event46 = obj.InfoBarrinha8:addEventListener("onResize",
+    obj._e_event88 = obj.InfoBarrinha8:addEventListener("onResize",
         function (self)
             self.InfoBarrinha8.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
-    obj._e_event47 = obj.dataLink9:addEventListener("onChange",
+    obj._e_event89 = obj.dataLink9:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.Barrinha8.color = "Green";
         end, obj);
 
-    obj._e_event48 = obj.Barrinha9:addEventListener("onMouseEnter",
+    obj._e_event90 = obj.rectangle12:addEventListener("onMouseEnter",
         function (self)
-            self.CorBarrinha9.color = "Green";
+            loadImgSlotDedosI()
+        end, obj);
+
+    obj._e_event91 = obj.edit35:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotDedosI()
+        end, obj);
+
+    obj._e_event92 = obj.textEditor10:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotDedosI()
+        end, obj);
+
+    obj._e_event93 = obj.edit36:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotDedosI()
+        end, obj);
+
+    obj._e_event94 = obj.edit37:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotDedosI()
+        end, obj);
+
+    obj._e_event95 = obj.Barrinha9:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotDedosI();
+            							self.CorBarrinha9.color = "Green";
             							self.ValoresBarrinha9.visible = true;
             							sheet.InfoBarrinha9 = (sheet.Barrinha9Valor or 0) .. "/"	.. (sheet.Barrinha9ValorMax or 0);
         end, obj);
 
-    obj._e_event49 = obj.Barrinha9:addEventListener("onMouseLeave",
+    obj._e_event96 = obj.Barrinha9:addEventListener("onMouseLeave",
         function (self)
             self.ValoresBarrinha9.visible = false;
         end, obj);
 
-    obj._e_event50 = obj.Barrinha9:addEventListener("onDblClick",
+    obj._e_event97 = obj.Barrinha9:addEventListener("onDblClick",
         function (self)
             sheet.BarrinhaID = 9;
             							sheet.AtributoBarrinha = sheet.equipamentoDedosI;
@@ -2554,29 +2889,55 @@ function newfrmFichaRPGmeister6_svg()
             							self.BarrinhaPopup.top = (self.BarrinhaPopup.top + 29 + 10);
         end, obj);
 
-    obj._e_event51 = obj.InfoBarrinha9:addEventListener("onResize",
+    obj._e_event98 = obj.InfoBarrinha9:addEventListener("onResize",
         function (self)
             self.InfoBarrinha9.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
-    obj._e_event52 = obj.dataLink10:addEventListener("onChange",
+    obj._e_event99 = obj.dataLink10:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.Barrinha9.color = "Green";
         end, obj);
 
-    obj._e_event53 = obj.Barrinha10:addEventListener("onMouseEnter",
+    obj._e_event100 = obj.rectangle13:addEventListener("onMouseEnter",
         function (self)
-            self.CorBarrinha10.color = "Green";
+            loadImgSlotDesdosII()
+        end, obj);
+
+    obj._e_event101 = obj.edit38:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotDesdosII()
+        end, obj);
+
+    obj._e_event102 = obj.textEditor11:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotDesdosII()
+        end, obj);
+
+    obj._e_event103 = obj.edit39:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotDesdosII()
+        end, obj);
+
+    obj._e_event104 = obj.edit40:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotDesdosII()
+        end, obj);
+
+    obj._e_event105 = obj.Barrinha10:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotDesdosII();
+            							self.CorBarrinha10.color = "Green";
             							self.ValoresBarrinha10.visible = true;
             							sheet.InfoBarrinha10 = (sheet.Barrinha10Valor or 0) .. "/"	.. (sheet.Barrinha10ValorMax or 0);
         end, obj);
 
-    obj._e_event54 = obj.Barrinha10:addEventListener("onMouseLeave",
+    obj._e_event106 = obj.Barrinha10:addEventListener("onMouseLeave",
         function (self)
             self.ValoresBarrinha10.visible = false;
         end, obj);
 
-    obj._e_event55 = obj.Barrinha10:addEventListener("onDblClick",
+    obj._e_event107 = obj.Barrinha10:addEventListener("onDblClick",
         function (self)
             sheet.BarrinhaID = 10;
             							sheet.AtributoBarrinha = sheet.equipamentoDesdosII;
@@ -2593,29 +2954,55 @@ function newfrmFichaRPGmeister6_svg()
             							self.BarrinhaPopup.top = (self.BarrinhaPopup.top + 29 + 10);
         end, obj);
 
-    obj._e_event56 = obj.InfoBarrinha10:addEventListener("onResize",
+    obj._e_event108 = obj.InfoBarrinha10:addEventListener("onResize",
         function (self)
             self.InfoBarrinha10.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
-    obj._e_event57 = obj.dataLink11:addEventListener("onChange",
+    obj._e_event109 = obj.dataLink11:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.Barrinha10.color = "Green";
         end, obj);
 
-    obj._e_event58 = obj.Barrinha11:addEventListener("onMouseEnter",
+    obj._e_event110 = obj.rectangle14:addEventListener("onMouseEnter",
         function (self)
-            self.CorBarrinha11.color = "Green";
+            loadImgSlotPes()
+        end, obj);
+
+    obj._e_event111 = obj.edit41:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotPes()
+        end, obj);
+
+    obj._e_event112 = obj.textEditor12:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotPes()
+        end, obj);
+
+    obj._e_event113 = obj.edit42:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotPes()
+        end, obj);
+
+    obj._e_event114 = obj.edit43:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotPes()
+        end, obj);
+
+    obj._e_event115 = obj.Barrinha11:addEventListener("onMouseEnter",
+        function (self)
+            loadImgSlotPes();
+            							self.CorBarrinha11.color = "Green";
             							self.ValoresBarrinha11.visible = true;
             							sheet.InfoBarrinha11 = (sheet.Barrinha11Valor or 0) .. "/"	.. (sheet.Barrinha11ValorMax or 0);
         end, obj);
 
-    obj._e_event59 = obj.Barrinha11:addEventListener("onMouseLeave",
+    obj._e_event116 = obj.Barrinha11:addEventListener("onMouseLeave",
         function (self)
             self.ValoresBarrinha11.visible = false;
         end, obj);
 
-    obj._e_event60 = obj.Barrinha11:addEventListener("onDblClick",
+    obj._e_event117 = obj.Barrinha11:addEventListener("onDblClick",
         function (self)
             sheet.BarrinhaID = 11;
             							sheet.AtributoBarrinha = sheet.equipamentoPes;
@@ -2632,17 +3019,74 @@ function newfrmFichaRPGmeister6_svg()
             							self.BarrinhaPopup.top = (self.BarrinhaPopup.top + 29 + 10);
         end, obj);
 
-    obj._e_event61 = obj.InfoBarrinha11:addEventListener("onResize",
+    obj._e_event118 = obj.InfoBarrinha11:addEventListener("onResize",
         function (self)
             self.InfoBarrinha11.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
-    obj._e_event62 = obj.dataLink12:addEventListener("onChange",
+    obj._e_event119 = obj.dataLink12:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.Barrinha11.color = "Green";
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event119);
+        __o_rrpgObjs.removeEventListenerById(self._e_event118);
+        __o_rrpgObjs.removeEventListenerById(self._e_event117);
+        __o_rrpgObjs.removeEventListenerById(self._e_event116);
+        __o_rrpgObjs.removeEventListenerById(self._e_event115);
+        __o_rrpgObjs.removeEventListenerById(self._e_event114);
+        __o_rrpgObjs.removeEventListenerById(self._e_event113);
+        __o_rrpgObjs.removeEventListenerById(self._e_event112);
+        __o_rrpgObjs.removeEventListenerById(self._e_event111);
+        __o_rrpgObjs.removeEventListenerById(self._e_event110);
+        __o_rrpgObjs.removeEventListenerById(self._e_event109);
+        __o_rrpgObjs.removeEventListenerById(self._e_event108);
+        __o_rrpgObjs.removeEventListenerById(self._e_event107);
+        __o_rrpgObjs.removeEventListenerById(self._e_event106);
+        __o_rrpgObjs.removeEventListenerById(self._e_event105);
+        __o_rrpgObjs.removeEventListenerById(self._e_event104);
+        __o_rrpgObjs.removeEventListenerById(self._e_event103);
+        __o_rrpgObjs.removeEventListenerById(self._e_event102);
+        __o_rrpgObjs.removeEventListenerById(self._e_event101);
+        __o_rrpgObjs.removeEventListenerById(self._e_event100);
+        __o_rrpgObjs.removeEventListenerById(self._e_event99);
+        __o_rrpgObjs.removeEventListenerById(self._e_event98);
+        __o_rrpgObjs.removeEventListenerById(self._e_event97);
+        __o_rrpgObjs.removeEventListenerById(self._e_event96);
+        __o_rrpgObjs.removeEventListenerById(self._e_event95);
+        __o_rrpgObjs.removeEventListenerById(self._e_event94);
+        __o_rrpgObjs.removeEventListenerById(self._e_event93);
+        __o_rrpgObjs.removeEventListenerById(self._e_event92);
+        __o_rrpgObjs.removeEventListenerById(self._e_event91);
+        __o_rrpgObjs.removeEventListenerById(self._e_event90);
+        __o_rrpgObjs.removeEventListenerById(self._e_event89);
+        __o_rrpgObjs.removeEventListenerById(self._e_event88);
+        __o_rrpgObjs.removeEventListenerById(self._e_event87);
+        __o_rrpgObjs.removeEventListenerById(self._e_event86);
+        __o_rrpgObjs.removeEventListenerById(self._e_event85);
+        __o_rrpgObjs.removeEventListenerById(self._e_event84);
+        __o_rrpgObjs.removeEventListenerById(self._e_event83);
+        __o_rrpgObjs.removeEventListenerById(self._e_event82);
+        __o_rrpgObjs.removeEventListenerById(self._e_event81);
+        __o_rrpgObjs.removeEventListenerById(self._e_event80);
+        __o_rrpgObjs.removeEventListenerById(self._e_event79);
+        __o_rrpgObjs.removeEventListenerById(self._e_event78);
+        __o_rrpgObjs.removeEventListenerById(self._e_event77);
+        __o_rrpgObjs.removeEventListenerById(self._e_event76);
+        __o_rrpgObjs.removeEventListenerById(self._e_event75);
+        __o_rrpgObjs.removeEventListenerById(self._e_event74);
+        __o_rrpgObjs.removeEventListenerById(self._e_event73);
+        __o_rrpgObjs.removeEventListenerById(self._e_event72);
+        __o_rrpgObjs.removeEventListenerById(self._e_event71);
+        __o_rrpgObjs.removeEventListenerById(self._e_event70);
+        __o_rrpgObjs.removeEventListenerById(self._e_event69);
+        __o_rrpgObjs.removeEventListenerById(self._e_event68);
+        __o_rrpgObjs.removeEventListenerById(self._e_event67);
+        __o_rrpgObjs.removeEventListenerById(self._e_event66);
+        __o_rrpgObjs.removeEventListenerById(self._e_event65);
+        __o_rrpgObjs.removeEventListenerById(self._e_event64);
+        __o_rrpgObjs.removeEventListenerById(self._e_event63);
         __o_rrpgObjs.removeEventListenerById(self._e_event62);
         __o_rrpgObjs.removeEventListenerById(self._e_event61);
         __o_rrpgObjs.removeEventListenerById(self._e_event60);
@@ -2812,6 +3256,7 @@ function newfrmFichaRPGmeister6_svg()
         if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
         if self.ValoresBarrinha11 ~= nil then self.ValoresBarrinha11:destroy(); self.ValoresBarrinha11 = nil; end;
         if self.ValorAtualBarrinha ~= nil then self.ValorAtualBarrinha:destroy(); self.ValorAtualBarrinha = nil; end;
+        if self.rectangle14 ~= nil then self.rectangle14:destroy(); self.rectangle14 = nil; end;
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
         if self.ValoresBarrinha1 ~= nil then self.ValoresBarrinha1:destroy(); self.ValoresBarrinha1 = nil; end;
         if self.ValoresBarrinha2 ~= nil then self.ValoresBarrinha2:destroy(); self.ValoresBarrinha2 = nil; end;
@@ -2863,7 +3308,6 @@ function newfrmFichaRPGmeister6_svg()
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
         if self.label32 ~= nil then self.label32:destroy(); self.label32 = nil; end;
         if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
-        if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
@@ -2892,8 +3336,8 @@ function newfrmFichaRPGmeister6_svg()
         if self.layout19 ~= nil then self.layout19:destroy(); self.layout19 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
-        if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
         if self.rectangle8 ~= nil then self.rectangle8:destroy(); self.rectangle8 = nil; end;
+        if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
         if self.edit30 ~= nil then self.edit30:destroy(); self.edit30 = nil; end;
         if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
         if self.label42 ~= nil then self.label42:destroy(); self.label42 = nil; end;
@@ -2933,9 +3377,9 @@ function newfrmFichaRPGmeister6_svg()
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.Barrinha7 ~= nil then self.Barrinha7:destroy(); self.Barrinha7 = nil; end;
         if self.layout22 ~= nil then self.layout22:destroy(); self.layout22 = nil; end;
+        if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
         if self.imageCheckBox11 ~= nil then self.imageCheckBox11:destroy(); self.imageCheckBox11 = nil; end;
         if self.dataLink11 ~= nil then self.dataLink11:destroy(); self.dataLink11 = nil; end;
-        if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
         if self.CorBarrinha11 ~= nil then self.CorBarrinha11:destroy(); self.CorBarrinha11 = nil; end;
         if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
         if self.Barrinha3 ~= nil then self.Barrinha3:destroy(); self.Barrinha3 = nil; end;

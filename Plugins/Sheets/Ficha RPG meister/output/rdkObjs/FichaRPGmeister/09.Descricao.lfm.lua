@@ -307,7 +307,7 @@ function newfrmFichaRPGmeister9_svg()
 
     obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.scrollBox1);
-    obj.dataLink1:setFields({'tamanho', 'quadrupede'});
+    obj.dataLink1:setFields({'tamanho', 'quadrupede', 'efetFor'});
     obj.dataLink1:setName("dataLink1");
 
     obj.layout1 = gui.fromHandle(_obj_newObject("layout"));

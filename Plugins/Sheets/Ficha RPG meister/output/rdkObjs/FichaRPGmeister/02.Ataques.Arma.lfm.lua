@@ -56,8 +56,10 @@ function newfrmFichaRPGmeister2Aar_svg()
 			local nomeAtaque = sheet.weapon.batismo or sheet.weapon.nome or sheet.weapon.arma or "Arma";
     		local bba = tonumber(node.bba) or 0;
     		local acertos = {};
+
+            -- Adicionando bônus de melhoria ou de qualidade Obra-Prima ao acerto
     		local pen = tonumber(sheet.weapon.qualidade) or 0;
-    		if sheet.weapon.qualidade=="Obra-Prima" or sheet.weapon.qualidade=="OP" or sheet.weapon.qualidade=="obra-prima" or sheet.weapon.qualidade=="op" or sheet.weapon.qualidade=="Obra-prima" or sheet.weapon.qualidade=="Op" then
+            if utils.compareStringPtBr(sheet.weapon.qualidade, "Obra-Prima") or utils.compareStringPtBr(sheet.weapon.qualidade, "OP") then
     			pen = 1;
     		end;
     		pen = pen + (tonumber(node.buffAtaque) or 0);
@@ -323,7 +325,8 @@ function newfrmFichaRPGmeister2Aar_svg()
     		--Calculando multiplicador e dano extra por critico
     		local mod = sheet.weapon.multiplicador or "2";
     		mod = string.gsub(mod, "x", "");
-    		local multiplicador = tonumber(mod);
+            mod = string.gsub(mod, "X", "");
+    		local multiplicador = tonumber(mod) or 2;
     		auto = auto .. "x" .. multiplicador .. " [";
 
     		local extra = crit;

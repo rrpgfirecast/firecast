@@ -6352,7 +6352,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event5 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total0 = (tonumber(self.boxDetalhesDoItem.node.base0) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus0) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base0==nil then 
+            							node.total0 = nil;
+            						else
+            							node.total0 = 	(tonumber(node.base0) or 0) + 
+            												(tonumber(node.bonus0) or 0);
+            						end;
         end, obj);
 
     obj._e_event6 = obj.dataLink3:addEventListener("onChange",
@@ -6430,7 +6436,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event8 = obj.dataLink5:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total1 = (tonumber(self.boxDetalhesDoItem.node.base1) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus1) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base1==nil then 
+            							node.total1 = nil;
+            						else
+            							node.total1 = 	(tonumber(node.base1) or 0) + 
+            												(tonumber(node.bonus1) or 0);
+            						end;
         end, obj);
 
     obj._e_event9 = obj.dataLink6:addEventListener("onChange",
@@ -6508,7 +6520,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event11 = obj.dataLink8:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total2 = (tonumber(self.boxDetalhesDoItem.node.base2) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus2) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base2==nil then 
+            							node.total2 = nil;
+            						else
+            							node.total2 = 	(tonumber(node.base2) or 0) + 
+            												(tonumber(node.bonus2) or 0);
+            						end;
         end, obj);
 
     obj._e_event12 = obj.dataLink9:addEventListener("onChange",
@@ -6586,7 +6604,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event14 = obj.dataLink11:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total3 = (tonumber(self.boxDetalhesDoItem.node.base3) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus3) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base3==nil then 
+            							node.total3 = nil;
+            						else
+            							node.total3 = 	(tonumber(node.base3) or 0) + 
+            												(tonumber(node.bonus3) or 0);
+            						end;
         end, obj);
 
     obj._e_event15 = obj.dataLink12:addEventListener("onChange",
@@ -6664,7 +6688,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event17 = obj.dataLink14:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total4 = (tonumber(self.boxDetalhesDoItem.node.base4) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus4) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base4==nil then 
+            							node.total4 = nil;
+            						else
+            							node.total4 = 	(tonumber(node.base4) or 0) + 
+            												(tonumber(node.bonus4) or 0);
+            						end;
         end, obj);
 
     obj._e_event18 = obj.dataLink15:addEventListener("onChange",
@@ -6742,7 +6772,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event20 = obj.dataLink17:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total5 = (tonumber(self.boxDetalhesDoItem.node.base5) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus5) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base5==nil then 
+            							node.total5 = nil;
+            						else
+            							node.total5 = 	(tonumber(node.base5) or 0) + 
+            												(tonumber(node.bonus5) or 0);
+            						end;
         end, obj);
 
     obj._e_event21 = obj.dataLink18:addEventListener("onChange",
@@ -6820,7 +6856,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event23 = obj.dataLink20:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total6 = (tonumber(self.boxDetalhesDoItem.node.base6) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus6) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base6==nil then 
+            							node.total6 = nil;
+            						else
+            							node.total6 = 	(tonumber(node.base6) or 0) + 
+            												(tonumber(node.bonus6) or 0);
+            						end;
         end, obj);
 
     obj._e_event24 = obj.dataLink21:addEventListener("onChange",
@@ -6898,7 +6940,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event26 = obj.dataLink23:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total7 = (tonumber(self.boxDetalhesDoItem.node.base7) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus7) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base7==nil then 
+            							node.total7 = nil;
+            						else
+            							node.total7 = 	(tonumber(node.base7) or 0) + 
+            												(tonumber(node.bonus7) or 0);
+            						end;
         end, obj);
 
     obj._e_event27 = obj.dataLink24:addEventListener("onChange",
@@ -6976,7 +7024,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event29 = obj.dataLink26:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total8 = (tonumber(self.boxDetalhesDoItem.node.base8) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus8) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base8==nil then 
+            							node.total8 = nil;
+            						else
+            							node.total8 = 	(tonumber(node.base8) or 0) + 
+            												(tonumber(node.bonus8) or 0);
+            						end;
         end, obj);
 
     obj._e_event30 = obj.dataLink27:addEventListener("onChange",
@@ -7054,7 +7108,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event32 = obj.dataLink29:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total9 = (tonumber(self.boxDetalhesDoItem.node.base9) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus9) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base9==nil then 
+            							node.total9 = nil;
+            						else
+            							node.total9 = 	(tonumber(node.base9) or 0) + 
+            												(tonumber(node.bonus9) or 0);
+            						end;
         end, obj);
 
     obj._e_event33 = obj.dataLink30:addEventListener("onChange",
@@ -7180,7 +7240,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event37 = obj.dataLink34:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total0 = (tonumber(self.boxDetalhesDoItem.node.base0) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus0) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base0==nil then 
+            							node.total0 = nil;
+            						else
+            							node.total0 = 	(tonumber(node.base0) or 0) + 
+            												(tonumber(node.bonus0) or 0);
+            						end;
         end, obj);
 
     obj._e_event38 = obj.dataLink35:addEventListener("onChange",
@@ -7258,7 +7324,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event40 = obj.dataLink37:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total1 = (tonumber(self.boxDetalhesDoItem.node.base1) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus1) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base1==nil then 
+            							node.total1 = nil;
+            						else
+            							node.total1 = 	(tonumber(node.base1) or 0) + 
+            												(tonumber(node.bonus1) or 0);
+            						end;
         end, obj);
 
     obj._e_event41 = obj.dataLink38:addEventListener("onChange",
@@ -7336,7 +7408,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event43 = obj.dataLink40:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total2 = (tonumber(self.boxDetalhesDoItem.node.base2) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus2) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base2==nil then 
+            							node.total2 = nil;
+            						else
+            							node.total2 = 	(tonumber(node.base2) or 0) + 
+            												(tonumber(node.bonus2) or 0);
+            						end;
         end, obj);
 
     obj._e_event44 = obj.dataLink41:addEventListener("onChange",
@@ -7414,7 +7492,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event46 = obj.dataLink43:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total3 = (tonumber(self.boxDetalhesDoItem.node.base3) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus3) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base3==nil then 
+            							node.total3 = nil;
+            						else
+            							node.total3 = 	(tonumber(node.base3) or 0) + 
+            												(tonumber(node.bonus3) or 0);
+            						end;
         end, obj);
 
     obj._e_event47 = obj.dataLink44:addEventListener("onChange",
@@ -7492,7 +7576,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event49 = obj.dataLink46:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total4 = (tonumber(self.boxDetalhesDoItem.node.base4) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus4) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base4==nil then 
+            							node.total4 = nil;
+            						else
+            							node.total4 = 	(tonumber(node.base4) or 0) + 
+            												(tonumber(node.bonus4) or 0);
+            						end;
         end, obj);
 
     obj._e_event50 = obj.dataLink47:addEventListener("onChange",
@@ -7570,7 +7660,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event52 = obj.dataLink49:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total5 = (tonumber(self.boxDetalhesDoItem.node.base5) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus5) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base5==nil then 
+            							node.total5 = nil;
+            						else
+            							node.total5 = 	(tonumber(node.base5) or 0) + 
+            												(tonumber(node.bonus5) or 0);
+            						end;
         end, obj);
 
     obj._e_event53 = obj.dataLink50:addEventListener("onChange",
@@ -7648,7 +7744,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event55 = obj.dataLink52:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total6 = (tonumber(self.boxDetalhesDoItem.node.base6) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus6) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base6==nil then 
+            							node.total6 = nil;
+            						else
+            							node.total6 = 	(tonumber(node.base6) or 0) + 
+            												(tonumber(node.bonus6) or 0);
+            						end;
         end, obj);
 
     obj._e_event56 = obj.dataLink53:addEventListener("onChange",
@@ -7726,7 +7828,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event58 = obj.dataLink55:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total7 = (tonumber(self.boxDetalhesDoItem.node.base7) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus7) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base7==nil then 
+            							node.total7 = nil;
+            						else
+            							node.total7 = 	(tonumber(node.base7) or 0) + 
+            												(tonumber(node.bonus7) or 0);
+            						end;
         end, obj);
 
     obj._e_event59 = obj.dataLink56:addEventListener("onChange",
@@ -7804,7 +7912,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event61 = obj.dataLink58:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total8 = (tonumber(self.boxDetalhesDoItem.node.base8) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus8) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base8==nil then 
+            							node.total8 = nil;
+            						else
+            							node.total8 = 	(tonumber(node.base8) or 0) + 
+            												(tonumber(node.bonus8) or 0);
+            						end;
         end, obj);
 
     obj._e_event62 = obj.dataLink59:addEventListener("onChange",
@@ -7882,7 +7996,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event64 = obj.dataLink61:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total9 = (tonumber(self.boxDetalhesDoItem.node.base9) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus9) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base9==nil then 
+            							node.total9 = nil;
+            						else
+            							node.total9 = 	(tonumber(node.base9) or 0) + 
+            												(tonumber(node.bonus9) or 0);
+            						end;
         end, obj);
 
     obj._e_event65 = obj.dataLink62:addEventListener("onChange",
@@ -8120,7 +8240,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event87 = obj.dataLink64:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total10 = (tonumber(self.boxDetalhesDoItem.node.base10) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus10) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base10==nil then 
+            							node.total10 = nil;
+            						else
+            							node.total10 = 	(tonumber(node.base10) or 0) + 
+            												(tonumber(node.bonus10) or 0);
+            						end;
         end, obj);
 
     obj._e_event88 = obj.dataLink65:addEventListener("onChange",
@@ -8198,7 +8324,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event90 = obj.dataLink67:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total11 = (tonumber(self.boxDetalhesDoItem.node.base11) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus11) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base11==nil then 
+            							node.total11 = nil;
+            						else
+            							node.total11 = 	(tonumber(node.base11) or 0) + 
+            												(tonumber(node.bonus11) or 0);
+            						end;
         end, obj);
 
     obj._e_event91 = obj.dataLink68:addEventListener("onChange",
@@ -8276,7 +8408,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event93 = obj.dataLink70:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total12 = (tonumber(self.boxDetalhesDoItem.node.base12) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus12) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base12==nil then 
+            							node.total12 = nil;
+            						else
+            							node.total12 = 	(tonumber(node.base12) or 0) + 
+            												(tonumber(node.bonus12) or 0);
+            						end;
         end, obj);
 
     obj._e_event94 = obj.dataLink71:addEventListener("onChange",
@@ -8354,7 +8492,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event96 = obj.dataLink73:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total13 = (tonumber(self.boxDetalhesDoItem.node.base13) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus13) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base13==nil then 
+            							node.total13 = nil;
+            						else
+            							node.total13 = 	(tonumber(node.base13) or 0) + 
+            												(tonumber(node.bonus13) or 0);
+            						end;
         end, obj);
 
     obj._e_event97 = obj.dataLink74:addEventListener("onChange",
@@ -8432,7 +8576,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event99 = obj.dataLink76:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total14 = (tonumber(self.boxDetalhesDoItem.node.base14) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus14) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base14==nil then 
+            							node.total14 = nil;
+            						else
+            							node.total14 = 	(tonumber(node.base14) or 0) + 
+            												(tonumber(node.bonus14) or 0);
+            						end;
         end, obj);
 
     obj._e_event100 = obj.dataLink77:addEventListener("onChange",
@@ -8510,7 +8660,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event102 = obj.dataLink79:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total15 = (tonumber(self.boxDetalhesDoItem.node.base15) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus15) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base15==nil then 
+            							node.total15 = nil;
+            						else
+            							node.total15 = 	(tonumber(node.base15) or 0) + 
+            												(tonumber(node.bonus15) or 0);
+            						end;
         end, obj);
 
     obj._e_event103 = obj.dataLink80:addEventListener("onChange",
@@ -8588,7 +8744,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event105 = obj.dataLink82:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total16 = (tonumber(self.boxDetalhesDoItem.node.base16) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus16) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base16==nil then 
+            							node.total16 = nil;
+            						else
+            							node.total16 = 	(tonumber(node.base16) or 0) + 
+            												(tonumber(node.bonus16) or 0);
+            						end;
         end, obj);
 
     obj._e_event106 = obj.dataLink83:addEventListener("onChange",
@@ -8666,7 +8828,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event108 = obj.dataLink85:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total17 = (tonumber(self.boxDetalhesDoItem.node.base17) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus17) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base17==nil then 
+            							node.total17 = nil;
+            						else
+            							node.total17 = 	(tonumber(node.base17) or 0) + 
+            												(tonumber(node.bonus17) or 0);
+            						end;
         end, obj);
 
     obj._e_event109 = obj.dataLink86:addEventListener("onChange",
@@ -8744,7 +8912,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event111 = obj.dataLink88:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total18 = (tonumber(self.boxDetalhesDoItem.node.base18) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus18) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base18==nil then 
+            							node.total18 = nil;
+            						else
+            							node.total18 = 	(tonumber(node.base18) or 0) + 
+            												(tonumber(node.bonus18) or 0);
+            						end;
         end, obj);
 
     obj._e_event112 = obj.dataLink89:addEventListener("onChange",
@@ -8822,7 +8996,13 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj._e_event114 = obj.dataLink91:addEventListener("onChange",
         function (self, field, oldValue, newValue)
-            self.boxDetalhesDoItem.node.total19 = (tonumber(self.boxDetalhesDoItem.node.base19) or 0) + (tonumber(self.boxDetalhesDoItem.node.bonus19) or 0);
+            local node = self.boxDetalhesDoItem.node;
+            						if node.base19==nil then 
+            							node.total19 = nil;
+            						else
+            							node.total19 = 	(tonumber(node.base19) or 0) + 
+            												(tonumber(node.bonus19) or 0);
+            						end;
         end, obj);
 
     obj._e_event115 = obj.dataLink92:addEventListener("onChange",
