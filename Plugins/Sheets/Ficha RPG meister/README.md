@@ -2,8 +2,14 @@
 Proximas Versões
 + Tiro Multiplo Aprimorado pra ataques avançados. 
 + Dar uma olhada nas questões de ajuste de tamanho da ficha para telas pequenas. 
-+ No calculo de magias por dia deixar em branco se base for nil. 
-+ Bug: força n altera carga automaticamente. 
+
+Versão 28:
+- Agora se a quantidade base de magias for vazio o total é exibido vazio (não somando 0 com o bônus do atributo). 
+- Adicionado espaço para colocar dinheiro total do personagem. A ficha vai calcular os gastos e exibir quanto resta para gastar. 
+- Ao passar o mouse sobre um espaço de equipamento a parte no corpo relacionada se acende. 
+- Bug corrigido: alterar força não estava alterando cargas automaticamente. 
+- Bug corrigido: ataques avançados dão problema com multiplicador que usa "X" maiusculo ou caracteres invalidos.  
+- Bug corrigido: calculo do preço dos equipamentos do companheiro não estava indo automatico. 
 
 Versão 27:
 - Alguns bugs resolvidos com os macros instalados com a ficha. 
