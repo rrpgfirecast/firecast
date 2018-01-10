@@ -205,7 +205,7 @@ function newfrm_FM()
     obj.popupSettings:setParent(obj.scrollBox1);
     obj.popupSettings:setName("popupSettings");
     obj.popupSettings:setWidth(210);
-    obj.popupSettings:setHeight(135);
+    obj.popupSettings:setHeight(160);
     obj.popupSettings:setBackOpacity(0.4);
 
     obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
@@ -213,7 +213,7 @@ function newfrm_FM()
     obj.layout2:setLeft(5);
     obj.layout2:setTop(5);
     obj.layout2:setWidth(200);
-    obj.layout2:setHeight(125);
+    obj.layout2:setHeight(160);
     obj.layout2:setName("layout2");
 
     obj.label8 = gui.fromHandle(_obj_newObject("label"));
@@ -309,26 +309,53 @@ function newfrm_FM()
     obj.checkBox2:setText("Padrão Global.");
     obj.checkBox2:setField("global");
     obj.checkBox2:setHint("Vai usar essas configurações em todas fichas multiabas abertas.");
-    obj.checkBox2:setVisible(false);
     obj.checkBox2:setName("checkBox2");
 
+    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3:setParent(obj.layout2);
+    obj.button3:setTop(125);
+    obj.button3:setWidth(200);
+    obj.button3:setHeight(25);
+    obj.button3:setText("Padrão Global.");
+    obj.button3:setHint("Vai usar as ultimas configurações usadas em outras fichas nessa.");
+    obj.button3:setName("button3");
 
-            local default = ndb.load("defaults.xml");
-            --colocar algo para quando sheet terminar de carregar puxar os valoredes de default. 
 
-            local function dump(o)
-               if type(o) == 'table' then
-                  local s = '{ '
-                  for k,v in pairs(o) do
-                     if type(k) ~= 'number' then k = '"'..k..'"' end
-                     s = s .. '['..k..'] = ' .. dump(v) .. ','
-                  end
-                  return s .. '} '
-               else
-                  return tostring(o)
-               end
-            end
-        
+			local default = ndb.load("defaults.xml");
+			local loaded = false;
+			--colocar algo para quando sheet terminar de carregar puxar os valores de default. 
+
+			local function dump(o)
+			   if type(o) == 'table' then
+				  local s = '{ '
+				  for k,v in pairs(o) do
+					 if type(k) ~= 'number' then k = '"'..k..'"' end
+					 s = s .. '['..k..'] = ' .. dump(v) .. ','
+				  end
+				  return s .. '} '
+			   else
+				  return tostring(o)
+			   end
+			end
+
+		local function loadDefault()
+		    if sheet==nil then return end;
+
+		    if default.global then
+			    sheet.showToolbar = default.showToolbar;
+			    sheet.fontSize = default.fontSize;
+			    sheet.fontColor = default.fontColor;
+			    sheet.backgroundColor = default.backgroundColor;
+			    sheet.global = true;
+		    end;
+
+		    self.txt.showToolbar = not sheet.showToolbar;
+		    self.txt.defaultFontSize = sheet.fontSize;
+		    self.txt.defaultFontColor = sheet.fontColor;
+		    self.txt.backgroundColor = sheet.backgroundColor;
+
+		end;
+		
 
 
     obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
@@ -338,22 +365,22 @@ function newfrm_FM()
 
     obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout3);
-    obj.layout4:setWidth(145);
-    obj.layout4:setHeight(50);
+    obj.layout4:setAlign("left");
+    obj.layout4:setWidth(150);
     obj.layout4:setName("layout4");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
-    obj.button3:setParent(obj.layout4);
-    obj.button3:setLeft(0);
-    obj.button3:setTop(0);
-    obj.button3:setWidth(45);
-    obj.button3:setHeight(45);
-    obj.button3:setText("");
-    obj.button3:setHint("Adiciona nova aba. ");
-    obj.button3:setName("button3");
+    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4:setParent(obj.layout4);
+    obj.button4:setLeft(0);
+    obj.button4:setTop(0);
+    obj.button4:setWidth(45);
+    obj.button4:setHeight(45);
+    obj.button4:setText("");
+    obj.button4:setHint("Adiciona nova aba. ");
+    obj.button4:setName("button4");
 
     obj.image4 = gui.fromHandle(_obj_newObject("image"));
-    obj.image4:setParent(obj.button3);
+    obj.image4:setParent(obj.button4);
     obj.image4:setLeft(5);
     obj.image4:setTop(5);
     obj.image4:setWidth(35);
@@ -391,9 +418,7 @@ function newfrm_FM()
 
     obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout3);
-    obj.layout5:setLeft(150);
-    obj.layout5:setWidth(1270);
-    obj.layout5:setHeight(50);
+    obj.layout5:setAlign("client");
     obj.layout5:setName("layout5");
 
     obj.rclAbas = gui.fromHandle(_obj_newObject("recordList"));
@@ -401,9 +426,7 @@ function newfrm_FM()
     obj.rclAbas:setName("rclAbas");
     obj.rclAbas:setField("abas");
     obj.rclAbas:setTemplateForm("frm_FM_Aba");
-    obj.rclAbas:setLeft(0);
-    obj.rclAbas:setTop(0);
-    obj.rclAbas:setWidth(1270);
+    obj.rclAbas:setAlign("top");
     obj.rclAbas:setHeight(46);
     obj.rclAbas:setSelectable(true);
     obj.rclAbas:setLayout("horizontal");
@@ -441,90 +464,117 @@ function newfrm_FM()
     obj._e_event2 = obj.colorComboBox1:addEventListener("onChange",
         function (self)
             if sheet~=nil then
-                                        self.txt.backgroundColor = sheet.backgroundColor;
-                                        default.backgroundColor = sheet.backgroundColor;
-                                    end;
+            							self.txt.backgroundColor = sheet.backgroundColor;
+            							default.backgroundColor = sheet.backgroundColor;
+            						end;
         end, obj);
 
     obj._e_event3 = obj.colorComboBox2:addEventListener("onChange",
         function (self)
             if sheet~=nil then
-                                        self.txt.defaultFontColor = sheet.fontColor;
-                                        default.fontColor = sheet.fontColor;
-                                    end;
+            							self.txt.defaultFontColor = sheet.fontColor;
+            							default.fontColor = sheet.fontColor;
+            						end;
         end, obj);
 
     obj._e_event4 = obj.edit1:addEventListener("onChange",
         function (self)
             if sheet~=nil then
-                                        self.txt.defaultFontSize = sheet.fontSize;
-                                        default.fontSize = sheet.fontSize;
-                                    end;
+            							self.txt.defaultFontSize = sheet.fontSize;
+            							default.fontSize = sheet.fontSize;
+            						end;
         end, obj);
 
     obj._e_event5 = obj.checkBox1:addEventListener("onChange",
         function (self)
             if sheet~=nil then
-                                        self.txt.showToolbar = not sheet.showToolbar;
-                                        default.showToolbar = sheet.showToolbar;
-                                    end;
+            							self.txt.showToolbar = not sheet.showToolbar;
+            							default.showToolbar = sheet.showToolbar;
+            						end;
         end, obj);
 
     obj._e_event6 = obj.checkBox2:addEventListener("onChange",
         function (self)
             if sheet~=nil then
-                                        default.global = sheet.global;
-                                    end;
+            				    default.global = sheet.global;
+            				end;
         end, obj);
 
     obj._e_event7 = obj.button3:addEventListener("onClick",
         function (self)
+            if sheet~=nil then
+            							local default = ndb.load("defaults.xml");
+            							
+            							sheet.showToolbar = default.showToolbar;
+            							self.txt.showToolbar = not sheet.showToolbar;
+            
+            							sheet.fontSize = default.fontSize;
+            							self.txt.defaultFontSize = sheet.fontSize;
+            
+            							sheet.fontColor = default.fontColor;
+            							self.txt.defaultFontColor = sheet.fontColor;
+            							
+            							sheet.backgroundColor = default.backgroundColor;
+            							self.txt.backgroundColor = sheet.backgroundColor;
+            						end;
+        end, obj);
+
+    obj._e_event8 = obj.button4:addEventListener("onClick",
+        function (self)
             self.rclAbas:append();
         end, obj);
 
-    obj._e_event8 = obj.settingsBT:addEventListener("onClick",
+    obj._e_event9 = obj.settingsBT:addEventListener("onClick",
         function (self)
-            local pop = self:findControlByName("popupSettings");
-                                
-                                    if pop ~= nil then
-                                        pop:setNodeObject(self.sheet);
-                                        pop:showPopupEx("bottom", self.settingsBT);
-                                    else
-                                        showMessage("Ops, bug.. nao encontrei o popup de opções para exibir");
-                                    end;
+            loadDefault();
+            						local pop = self:findControlByName("popupSettings");
+            					
+            						if pop ~= nil then
+            							pop:setNodeObject(self.sheet);
+            							pop:showPopupEx("bottom", self.settingsBT);
+            						else
+            							showMessage("Ops, bug.. nao encontrei o popup de opções para exibir");
+            						end;
         end, obj);
 
-    obj._e_event9 = obj.creditBt:addEventListener("onClick",
+    obj._e_event10 = obj.creditBt:addEventListener("onClick",
         function (self)
             local pop = self:findControlByName("popCredit");
-                                
-                                    if pop ~= nil then
-                                        pop:setNodeObject(self.sheet);
-                                        pop:showPopupEx("bottom", self.creditBt);
-                                    else
-                                        showMessage("Ops, bug.. nao encontrei o popup de creditos para exibir");
-                                    end;
+            					
+            						if pop ~= nil then
+            							pop:setNodeObject(self.sheet);
+            							pop:showPopupEx("bottom", self.creditBt);
+            						else
+            							showMessage("Ops, bug.. nao encontrei o popup de creditos para exibir");
+            						end;
         end, obj);
 
-    obj._e_event10 = obj.rclAbas:addEventListener("onSelect",
+    obj._e_event11 = obj.rclAbas:addEventListener("onSelect",
         function (self)
             local node = self.rclAbas.selectedNode;
-                                    self.boxTexto.node = node;
-                                    self.boxTexto.visible = (node ~= nil);
+            						self.boxTexto.node = node;
+            						self.boxTexto.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event11 = obj.rclAbas:addEventListener("onEndEnumeration",
+    obj._e_event12 = obj.rclAbas:addEventListener("onEndEnumeration",
         function (self)
             if self.rclAbas.selectedNode == nil and sheet ~= nil then
-                                        local nodes = ndb.getChildNodes(sheet.abas);               
+            							local nodes = ndb.getChildNodes(sheet.abas);			   
             
-                                        if #nodes > 0 then
-                                            self.rclAbas.selectedNode = nodes[1];
-                                        end;
-                                    end;
+            							if #nodes > 0 then
+            								self.rclAbas.selectedNode = nodes[1];
+            							end;
+            						end;
+        end, obj);
+
+    obj._e_event13 = obj.txt:addEventListener("onMouseMove",
+        function (self, event)
+            loadDefault();
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event13);
+        __o_rrpgObjs.removeEventListenerById(self._e_event12);
         __o_rrpgObjs.removeEventListenerById(self._e_event11);
         __o_rrpgObjs.removeEventListenerById(self._e_event10);
         __o_rrpgObjs.removeEventListenerById(self._e_event9);
@@ -550,6 +600,7 @@ function newfrm_FM()
 
         if self.settingsBT ~= nil then self.settingsBT:destroy(); self.settingsBT = nil; end;
         if self.checkBox2 ~= nil then self.checkBox2:destroy(); self.checkBox2 = nil; end;
+        if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
         if self.creditBt ~= nil then self.creditBt:destroy(); self.creditBt = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;

@@ -389,6 +389,8 @@ local function formLayoutFromHandle(handle)
 	ctrl.eves["onScopeNodeChanged"] = "";	
 	ctrl.eves["onShow"] = "";
 	ctrl.eves["onHide"] = "";
+	ctrl.eves["onNodeReady"] = "";
+	ctrl.eves["onNodeUnready"] = "";
 	return ctrl;	
 end
 
