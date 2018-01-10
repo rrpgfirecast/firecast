@@ -26484,7 +26484,7 @@ function newfrmFichaRPGmeister()
     obj.image25:setWidth(100);
     obj.image25:setHeight(20);
     obj.image25:setStyle("autoFit");
-    obj.image25:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao28.png");
+    obj.image25:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao29.png");
     obj.image25:setName("image25");
 
     obj.label714 = gui.fromHandle(_obj_newObject("label"));
