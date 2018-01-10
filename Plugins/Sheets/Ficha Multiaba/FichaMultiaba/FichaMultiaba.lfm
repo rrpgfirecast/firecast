@@ -14,7 +14,7 @@
 
 			<label left="210" top="160" width="90" height="20" text="SUA VERSÃO:"/>
 			<rectangle left="304" top="159" width="102" height="22" color="white" strokeColor="black" strokeSize="1"/>
-			<image left="305" top="160" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao03.png"/>
+			<image left="305" top="160" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao04.png"/>
 			
 			<label left="210" top="190" width="100" height="20" text="VERSÃO ATUAL:"/>
 			<rectangle left="304" top="189" width="102" height="22" color="white" strokeColor="black" strokeSize="1"/>

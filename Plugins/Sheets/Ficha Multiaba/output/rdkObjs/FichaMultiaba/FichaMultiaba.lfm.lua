@@ -143,7 +143,7 @@ function newfrm_FM()
     obj.image2:setWidth(100);
     obj.image2:setHeight(20);
     obj.image2:setStyle("autoFit");
-    obj.image2:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao03.png");
+    obj.image2:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao04.png");
     obj.image2:setName("image2");
 
     obj.label6 = gui.fromHandle(_obj_newObject("label"));
@@ -339,20 +339,20 @@ function newfrm_FM()
 			end
 
 		local function loadDefault()
-		    if sheet==nil then return end;
+			if sheet==nil then return end;
 
-		    if default.global then
-			    sheet.showToolbar = default.showToolbar;
-			    sheet.fontSize = default.fontSize;
-			    sheet.fontColor = default.fontColor;
-			    sheet.backgroundColor = default.backgroundColor;
-			    sheet.global = true;
-		    end;
+			if default.global then
+				sheet.showToolbar = default.showToolbar;
+				sheet.fontSize = default.fontSize;
+				sheet.fontColor = default.fontColor;
+				sheet.backgroundColor = default.backgroundColor;
+				sheet.global = true;
+			end;
 
-		    self.txt.showToolbar = not sheet.showToolbar;
-		    self.txt.defaultFontSize = sheet.fontSize;
-		    self.txt.defaultFontColor = sheet.fontColor;
-		    self.txt.backgroundColor = sheet.backgroundColor;
+			self.txt.showToolbar = not sheet.showToolbar;
+			self.txt.defaultFontSize = sheet.fontSize;
+			self.txt.defaultFontColor = sheet.fontColor;
+			self.txt.backgroundColor = sheet.backgroundColor;
 
 		end;
 		
@@ -496,7 +496,7 @@ function newfrm_FM()
     obj._e_event6 = obj.checkBox2:addEventListener("onChange",
         function (self)
             if sheet~=nil then
-            				    default.global = sheet.global;
+            					default.global = sheet.global;
             				end;
         end, obj);
 
