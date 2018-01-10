@@ -6,6 +6,28 @@
 			dialogs.confirmYesNo("Deseja realmente apagar essa arma?",
 								 function (confirmado)
 									if confirmado then
+										local node = ndb.getRoot(sheet);
+										local nodes = ndb.getChildNodes(node.campoDasArmas); 
+										local index = 0;
+										for i=1, #nodes, 1 do
+											if nodes[i]==sheet then
+												index = i;
+											end;
+										end;
+
+										local ataques = ndb.getChildNodes(node.campoDosAtaques);
+										for i=1, #ataques, 1 do
+											local armas = ndb.getChildNodes(ataques[i].campoDeArmas);
+											for j=1, #armas, 1 do
+												local weaponID = tonumber(armas[j].weaponType) or 0;
+												if weaponID == index then
+													armas[j].weaponType = nil;
+												elseif weaponID > index then
+													armas[j].weaponType = weaponID - 1;
+												end
+											end;
+										end;
+
 										ndb.deleteNode(sheet);
 									end;
 								 end);
