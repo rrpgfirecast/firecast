@@ -235,6 +235,140 @@ function newfrmTemplate()
     obj.mapa:setAlign("client");
     obj.mapa:setName("mapa");
 
+    obj.sizeLayout = gui.fromHandle(_obj_newObject("layout"));
+    obj.sizeLayout:setParent(obj.mapa);
+    obj.sizeLayout:setName("sizeLayout");
+    obj.sizeLayout:setLeft(1160);
+    obj.sizeLayout:setTop(0);
+    obj.sizeLayout:setWidth(110);
+    obj.sizeLayout:setHeight(200);
+
+    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5:setParent(obj.sizeLayout);
+    obj.rectangle5:setAlign("client");
+    obj.rectangle5:setColor("black");
+    obj.rectangle5:setName("rectangle5");
+
+    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6:setParent(obj.sizeLayout);
+    obj.label6:setLeft(0);
+    obj.label6:setTop(5);
+    obj.label6:setWidth(110);
+    obj.label6:setHeight(20);
+    obj.label6:setText("Altura Cidade");
+    obj.label6:setHorzTextAlign("center");
+    obj.label6:setHint("Tamanho vertical em pixels dos botões/cidades do mapa. ");
+    obj.label6:setHitTest(true);
+    obj.label6:setName("label6");
+
+    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2:setParent(obj.sizeLayout);
+    obj.edit2:setLeft(5);
+    obj.edit2:setTop(25);
+    obj.edit2:setWidth(100);
+    obj.edit2:setHeight(20);
+    obj.edit2:setField("altura");
+    obj.edit2:setHorzTextAlign("center");
+    obj.edit2:setHint("Tamanho vertical dos botões/cidades do mapa. ");
+    obj.edit2:setType("number");
+    obj.edit2:setName("edit2");
+
+    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.sizeLayout);
+    obj.dataLink1:setField("altura");
+    obj.dataLink1:setDefaultValue("25");
+    obj.dataLink1:setName("dataLink1");
+
+    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7:setParent(obj.sizeLayout);
+    obj.label7:setLeft(0);
+    obj.label7:setTop(55);
+    obj.label7:setWidth(110);
+    obj.label7:setHeight(20);
+    obj.label7:setText("Largura Cidade");
+    obj.label7:setHorzTextAlign("center");
+    obj.label7:setHint("Tamanho horizontal em pixels dos botões/cidades do mapa. ");
+    obj.label7:setHitTest(true);
+    obj.label7:setName("label7");
+
+    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3:setParent(obj.sizeLayout);
+    obj.edit3:setLeft(5);
+    obj.edit3:setTop(75);
+    obj.edit3:setWidth(100);
+    obj.edit3:setHeight(20);
+    obj.edit3:setField("largura");
+    obj.edit3:setHorzTextAlign("center");
+    obj.edit3:setHint("Tamanho horizontal dos botões/cidades do mapa. ");
+    obj.edit3:setType("number");
+    obj.edit3:setName("edit3");
+
+    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2:setParent(obj.sizeLayout);
+    obj.dataLink2:setField("largura");
+    obj.dataLink2:setDefaultValue("25");
+    obj.dataLink2:setName("dataLink2");
+
+    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8:setParent(obj.sizeLayout);
+    obj.label8:setLeft(0);
+    obj.label8:setTop(105);
+    obj.label8:setWidth(110);
+    obj.label8:setHeight(20);
+    obj.label8:setText("Altura Lugares");
+    obj.label8:setHorzTextAlign("center");
+    obj.label8:setHint("Tamanho vertical em pixels dos botões/lugares do mapa. ");
+    obj.label8:setHitTest(true);
+    obj.label8:setName("label8");
+
+    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4:setParent(obj.sizeLayout);
+    obj.edit4:setLeft(5);
+    obj.edit4:setTop(125);
+    obj.edit4:setWidth(100);
+    obj.edit4:setHeight(20);
+    obj.edit4:setField("altura2");
+    obj.edit4:setHorzTextAlign("center");
+    obj.edit4:setHint("Tamanho vertical dos botões/lugares do mapa. ");
+    obj.edit4:setType("number");
+    obj.edit4:setName("edit4");
+
+    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3:setParent(obj.sizeLayout);
+    obj.dataLink3:setField("altura2");
+    obj.dataLink3:setDefaultValue("30");
+    obj.dataLink3:setName("dataLink3");
+
+    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9:setParent(obj.sizeLayout);
+    obj.label9:setLeft(0);
+    obj.label9:setTop(155);
+    obj.label9:setWidth(110);
+    obj.label9:setHeight(20);
+    obj.label9:setText("Largura Lugares");
+    obj.label9:setHorzTextAlign("center");
+    obj.label9:setHint("Tamanho horizontal em pixels dos botões/lugares do mapa. ");
+    obj.label9:setHitTest(true);
+    obj.label9:setName("label9");
+
+    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5:setParent(obj.sizeLayout);
+    obj.edit5:setLeft(5);
+    obj.edit5:setTop(175);
+    obj.edit5:setWidth(100);
+    obj.edit5:setHeight(20);
+    obj.edit5:setField("largura2");
+    obj.edit5:setHorzTextAlign("center");
+    obj.edit5:setHint("Tamanho horizontal dos botões/lugares do mapa. ");
+    obj.edit5:setType("number");
+    obj.edit5:setName("edit5");
+
+    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4:setParent(obj.sizeLayout);
+    obj.dataLink4:setField("largura2");
+    obj.dataLink4:setDefaultValue("30");
+    obj.dataLink4:setName("dataLink4");
+
     obj.mapRectangle = gui.fromHandle(_obj_newObject("rectangle"));
     obj.mapRectangle:setParent(obj.mapa);
     obj.mapRectangle:setLeft(0);
@@ -253,140 +387,6 @@ function newfrmTemplate()
     obj.mapImage:setHitTest(true);
     obj.mapImage:setStyle("proportional");
     obj.mapImage:setHint("Clique para alterar Imagem, shift+clique para adicionar Cidade, ctrl+clique para adicionar Ponto de Interesse. ");
-
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout6:setParent(obj.mapa);
-    obj.layout6:setLeft(1160);
-    obj.layout6:setTop(0);
-    obj.layout6:setWidth(110);
-    obj.layout6:setHeight(200);
-    obj.layout6:setName("layout6");
-
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle5:setParent(obj.layout6);
-    obj.rectangle5:setAlign("client");
-    obj.rectangle5:setColor("black");
-    obj.rectangle5:setName("rectangle5");
-
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
-    obj.label6:setParent(obj.layout6);
-    obj.label6:setLeft(0);
-    obj.label6:setTop(5);
-    obj.label6:setWidth(110);
-    obj.label6:setHeight(20);
-    obj.label6:setText("Altura Cidade");
-    obj.label6:setHorzTextAlign("center");
-    obj.label6:setHint("Tamanho vertical em pixels dos botões/cidades do mapa. ");
-    obj.label6:setHitTest(true);
-    obj.label6:setName("label6");
-
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit2:setParent(obj.layout6);
-    obj.edit2:setLeft(5);
-    obj.edit2:setTop(25);
-    obj.edit2:setWidth(100);
-    obj.edit2:setHeight(20);
-    obj.edit2:setField("altura");
-    obj.edit2:setHorzTextAlign("center");
-    obj.edit2:setHint("Tamanho vertical dos botões/cidades do mapa. ");
-    obj.edit2:setType("number");
-    obj.edit2:setName("edit2");
-
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink1:setParent(obj.layout6);
-    obj.dataLink1:setField("altura");
-    obj.dataLink1:setDefaultValue("25");
-    obj.dataLink1:setName("dataLink1");
-
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
-    obj.label7:setParent(obj.layout6);
-    obj.label7:setLeft(0);
-    obj.label7:setTop(55);
-    obj.label7:setWidth(110);
-    obj.label7:setHeight(20);
-    obj.label7:setText("Largura Cidade");
-    obj.label7:setHorzTextAlign("center");
-    obj.label7:setHint("Tamanho horizontal em pixels dos botões/cidades do mapa. ");
-    obj.label7:setHitTest(true);
-    obj.label7:setName("label7");
-
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit3:setParent(obj.layout6);
-    obj.edit3:setLeft(5);
-    obj.edit3:setTop(75);
-    obj.edit3:setWidth(100);
-    obj.edit3:setHeight(20);
-    obj.edit3:setField("largura");
-    obj.edit3:setHorzTextAlign("center");
-    obj.edit3:setHint("Tamanho horizontal dos botões/cidades do mapa. ");
-    obj.edit3:setType("number");
-    obj.edit3:setName("edit3");
-
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink2:setParent(obj.layout6);
-    obj.dataLink2:setField("largura");
-    obj.dataLink2:setDefaultValue("25");
-    obj.dataLink2:setName("dataLink2");
-
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
-    obj.label8:setParent(obj.layout6);
-    obj.label8:setLeft(0);
-    obj.label8:setTop(105);
-    obj.label8:setWidth(110);
-    obj.label8:setHeight(20);
-    obj.label8:setText("Altura Lugares");
-    obj.label8:setHorzTextAlign("center");
-    obj.label8:setHint("Tamanho vertical em pixels dos botões/lugares do mapa. ");
-    obj.label8:setHitTest(true);
-    obj.label8:setName("label8");
-
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit4:setParent(obj.layout6);
-    obj.edit4:setLeft(5);
-    obj.edit4:setTop(125);
-    obj.edit4:setWidth(100);
-    obj.edit4:setHeight(20);
-    obj.edit4:setField("altura2");
-    obj.edit4:setHorzTextAlign("center");
-    obj.edit4:setHint("Tamanho vertical dos botões/lugares do mapa. ");
-    obj.edit4:setType("number");
-    obj.edit4:setName("edit4");
-
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink3:setParent(obj.layout6);
-    obj.dataLink3:setField("altura2");
-    obj.dataLink3:setDefaultValue("30");
-    obj.dataLink3:setName("dataLink3");
-
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
-    obj.label9:setParent(obj.layout6);
-    obj.label9:setLeft(0);
-    obj.label9:setTop(155);
-    obj.label9:setWidth(110);
-    obj.label9:setHeight(20);
-    obj.label9:setText("Largura Lugares");
-    obj.label9:setHorzTextAlign("center");
-    obj.label9:setHint("Tamanho horizontal em pixels dos botões/lugares do mapa. ");
-    obj.label9:setHitTest(true);
-    obj.label9:setName("label9");
-
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit5:setParent(obj.layout6);
-    obj.edit5:setLeft(5);
-    obj.edit5:setTop(175);
-    obj.edit5:setWidth(100);
-    obj.edit5:setHeight(20);
-    obj.edit5:setField("largura2");
-    obj.edit5:setHorzTextAlign("center");
-    obj.edit5:setHint("Tamanho horizontal dos botões/lugares do mapa. ");
-    obj.edit5:setType("number");
-    obj.edit5:setName("edit5");
-
-    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink4:setParent(obj.layout6);
-    obj.dataLink4:setField("largura2");
-    obj.dataLink4:setDefaultValue("30");
-    obj.dataLink4:setName("dataLink4");
 
 
 			_obj_setProp(self.mapImage.handle, "Stretch", true);
@@ -1210,14 +1210,14 @@ function newfrmTemplate()
 	
 
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout7:setParent(obj.Listade_NPC_Dock);
-    obj.layout7:setAlign("client");
-    obj.layout7:setVisible(false);
-    obj.layout7:setName("layout7");
+    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6:setParent(obj.Listade_NPC_Dock);
+    obj.layout6:setAlign("client");
+    obj.layout6:setVisible(false);
+    obj.layout6:setName("layout6");
 
     obj.Config = gui.fromHandle(_obj_newObject("popupForm"));
-    obj.Config:setParent(obj.layout7);
+    obj.Config:setParent(obj.layout6);
     obj.Config:setTitle("Configuração de Barrinhas");
     obj.Config:setName("Config");
     obj.Config:setWidth(406);
@@ -1280,21 +1280,21 @@ function newfrmTemplate()
     obj.comboBox2:setValues({'Alfa', 'Alin'});
     obj.comboBox2:setName("comboBox2");
 
+    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7:setParent(obj.Config);
+    obj.layout7:setAlign("top");
+    obj.layout7:setHeight(18);
+    obj.layout7:setMargins({top=4});
+    obj.layout7:setName("layout7");
+
     obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout8:setParent(obj.Config);
-    obj.layout8:setAlign("top");
-    obj.layout8:setHeight(18);
-    obj.layout8:setMargins({top=4});
+    obj.layout8:setParent(obj.layout7);
+    obj.layout8:setAlign("left");
+    obj.layout8:setWidth(64);
     obj.layout8:setName("layout8");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout9:setParent(obj.layout8);
-    obj.layout9:setAlign("left");
-    obj.layout9:setWidth(64);
-    obj.layout9:setName("layout9");
-
     obj.label34 = gui.fromHandle(_obj_newObject("label"));
-    obj.label34:setParent(obj.layout8);
+    obj.label34:setParent(obj.layout7);
     obj.label34:setAlign("left");
     obj.label34:setFontSize(12);
     obj.label34:setWidth(108);
@@ -1303,7 +1303,7 @@ function newfrmTemplate()
     obj.label34:setName("label34");
 
     obj.label35 = gui.fromHandle(_obj_newObject("label"));
-    obj.label35:setParent(obj.layout8);
+    obj.label35:setParent(obj.layout7);
     obj.label35:setAlign("left");
     obj.label35:setFontSize(12);
     obj.label35:setWidth(26);
@@ -1313,7 +1313,7 @@ function newfrmTemplate()
     obj.label35:setName("label35");
 
     obj.label36 = gui.fromHandle(_obj_newObject("label"));
-    obj.label36:setParent(obj.layout8);
+    obj.label36:setParent(obj.layout7);
     obj.label36:setAlign("left");
     obj.label36:setFontSize(12);
     obj.label36:setWidth(82);
@@ -1322,7 +1322,7 @@ function newfrmTemplate()
     obj.label36:setName("label36");
 
     obj.label37 = gui.fromHandle(_obj_newObject("label"));
-    obj.label37:setParent(obj.layout8);
+    obj.label37:setParent(obj.layout7);
     obj.label37:setAlign("left");
     obj.label37:setFontSize(12);
     obj.label37:setWidth(108);
@@ -1330,15 +1330,15 @@ function newfrmTemplate()
     obj.label37:setMargins({left=4});
     obj.label37:setName("label37");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout10:setParent(obj.Config);
-    obj.layout10:setAlign("top");
-    obj.layout10:setHeight(18);
-    obj.layout10:setMargins({top=4});
-    obj.layout10:setName("layout10");
+    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9:setParent(obj.Config);
+    obj.layout9:setAlign("top");
+    obj.layout9:setHeight(18);
+    obj.layout9:setMargins({top=4});
+    obj.layout9:setName("layout9");
 
     obj.label38 = gui.fromHandle(_obj_newObject("label"));
-    obj.label38:setParent(obj.layout10);
+    obj.label38:setParent(obj.layout9);
     obj.label38:setAlign("left");
     obj.label38:setFontSize(12);
     obj.label38:setText("Barrinha 1:");
@@ -1347,7 +1347,7 @@ function newfrmTemplate()
     obj.label38:setName("label38");
 
     obj.edit11 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit11:setParent(obj.layout10);
+    obj.edit11:setParent(obj.layout9);
     obj.edit11:setAlign("left");
     obj.edit11:setFontSize(12);
     obj.edit11:setWidth(108);
@@ -1357,15 +1357,15 @@ function newfrmTemplate()
     obj.edit11:setMargins({left=4});
     obj.edit11:setName("edit11");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout11:setParent(obj.layout10);
-    obj.layout11:setAlign("left");
-    obj.layout11:setWidth(26);
-    obj.layout11:setMargins({left=4});
-    obj.layout11:setName("layout11");
+    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10:setParent(obj.layout9);
+    obj.layout10:setAlign("left");
+    obj.layout10:setWidth(26);
+    obj.layout10:setMargins({left=4});
+    obj.layout10:setName("layout10");
 
     obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle11:setParent(obj.layout11);
+    obj.rectangle11:setParent(obj.layout10);
     obj.rectangle11:setAlign("client");
     obj.rectangle11:setColor("white");
     obj.rectangle11:setHitTest(true);
@@ -1389,7 +1389,7 @@ function newfrmTemplate()
     obj.CorBarrinha1:setHitTest(true);
 
     obj.comboBox3 = gui.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox3:setParent(obj.layout10);
+    obj.comboBox3:setParent(obj.layout9);
     obj.comboBox3:setAlign("left");
     obj.comboBox3:setFontSize(12);
     obj.comboBox3:setWidth(82);
@@ -1404,7 +1404,7 @@ function newfrmTemplate()
     obj.comboBox3:setName("comboBox3");
 
     obj.comboBox4 = gui.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox4:setParent(obj.layout10);
+    obj.comboBox4:setParent(obj.layout9);
     obj.comboBox4:setAlign("left");
     obj.comboBox4:setFontSize(12);
     obj.comboBox4:setWidth(104);
@@ -1419,20 +1419,20 @@ function newfrmTemplate()
     obj.comboBox4:setName("comboBox4");
 
     obj.dataLink8 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink8:setParent(obj.layout10);
+    obj.dataLink8:setParent(obj.layout9);
     obj.dataLink8:setField("CorBarrinha1");
     obj.dataLink8:setDefaultValue("#808080");
     obj.dataLink8:setName("dataLink8");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout12:setParent(obj.Config);
-    obj.layout12:setAlign("top");
-    obj.layout12:setHeight(18);
-    obj.layout12:setMargins({top=4});
-    obj.layout12:setName("layout12");
+    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11:setParent(obj.Config);
+    obj.layout11:setAlign("top");
+    obj.layout11:setHeight(18);
+    obj.layout11:setMargins({top=4});
+    obj.layout11:setName("layout11");
 
     obj.label39 = gui.fromHandle(_obj_newObject("label"));
-    obj.label39:setParent(obj.layout12);
+    obj.label39:setParent(obj.layout11);
     obj.label39:setAlign("left");
     obj.label39:setFontSize(12);
     obj.label39:setText("Barrinha 1:");
@@ -1441,7 +1441,7 @@ function newfrmTemplate()
     obj.label39:setName("label39");
 
     obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit12:setParent(obj.layout12);
+    obj.edit12:setParent(obj.layout11);
     obj.edit12:setAlign("left");
     obj.edit12:setFontSize(12);
     obj.edit12:setWidth(108);
@@ -1451,15 +1451,15 @@ function newfrmTemplate()
     obj.edit12:setMargins({left=4});
     obj.edit12:setName("edit12");
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout13:setParent(obj.layout12);
-    obj.layout13:setAlign("left");
-    obj.layout13:setWidth(26);
-    obj.layout13:setMargins({left=4});
-    obj.layout13:setName("layout13");
+    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12:setParent(obj.layout11);
+    obj.layout12:setAlign("left");
+    obj.layout12:setWidth(26);
+    obj.layout12:setMargins({left=4});
+    obj.layout12:setName("layout12");
 
     obj.rectangle13 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle13:setParent(obj.layout13);
+    obj.rectangle13:setParent(obj.layout12);
     obj.rectangle13:setAlign("client");
     obj.rectangle13:setColor("white");
     obj.rectangle13:setHitTest(true);
@@ -1483,7 +1483,7 @@ function newfrmTemplate()
     obj.CorBarrinha2:setHitTest(true);
 
     obj.comboBox5 = gui.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox5:setParent(obj.layout12);
+    obj.comboBox5:setParent(obj.layout11);
     obj.comboBox5:setAlign("left");
     obj.comboBox5:setFontSize(12);
     obj.comboBox5:setWidth(82);
@@ -1498,7 +1498,7 @@ function newfrmTemplate()
     obj.comboBox5:setName("comboBox5");
 
     obj.comboBox6 = gui.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox6:setParent(obj.layout12);
+    obj.comboBox6:setParent(obj.layout11);
     obj.comboBox6:setAlign("left");
     obj.comboBox6:setFontSize(12);
     obj.comboBox6:setWidth(104);
@@ -1513,20 +1513,20 @@ function newfrmTemplate()
     obj.comboBox6:setName("comboBox6");
 
     obj.dataLink9 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink9:setParent(obj.layout12);
+    obj.dataLink9:setParent(obj.layout11);
     obj.dataLink9:setField("CorBarrinha2");
     obj.dataLink9:setDefaultValue("#808080");
     obj.dataLink9:setName("dataLink9");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout14:setParent(obj.Config);
-    obj.layout14:setAlign("top");
-    obj.layout14:setHeight(18);
-    obj.layout14:setMargins({top=4});
-    obj.layout14:setName("layout14");
+    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13:setParent(obj.Config);
+    obj.layout13:setAlign("top");
+    obj.layout13:setHeight(18);
+    obj.layout13:setMargins({top=4});
+    obj.layout13:setName("layout13");
 
     obj.label40 = gui.fromHandle(_obj_newObject("label"));
-    obj.label40:setParent(obj.layout14);
+    obj.label40:setParent(obj.layout13);
     obj.label40:setAlign("left");
     obj.label40:setFontSize(12);
     obj.label40:setText("Barrinha 1:");
@@ -1535,7 +1535,7 @@ function newfrmTemplate()
     obj.label40:setName("label40");
 
     obj.edit13 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit13:setParent(obj.layout14);
+    obj.edit13:setParent(obj.layout13);
     obj.edit13:setAlign("left");
     obj.edit13:setFontSize(12);
     obj.edit13:setWidth(108);
@@ -1545,15 +1545,15 @@ function newfrmTemplate()
     obj.edit13:setMargins({left=4});
     obj.edit13:setName("edit13");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout15:setParent(obj.layout14);
-    obj.layout15:setAlign("left");
-    obj.layout15:setWidth(26);
-    obj.layout15:setMargins({left=4});
-    obj.layout15:setName("layout15");
+    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14:setParent(obj.layout13);
+    obj.layout14:setAlign("left");
+    obj.layout14:setWidth(26);
+    obj.layout14:setMargins({left=4});
+    obj.layout14:setName("layout14");
 
     obj.rectangle15 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle15:setParent(obj.layout15);
+    obj.rectangle15:setParent(obj.layout14);
     obj.rectangle15:setAlign("client");
     obj.rectangle15:setColor("white");
     obj.rectangle15:setHitTest(true);
@@ -1577,7 +1577,7 @@ function newfrmTemplate()
     obj.CorBarrinha3:setHitTest(true);
 
     obj.comboBox7 = gui.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox7:setParent(obj.layout14);
+    obj.comboBox7:setParent(obj.layout13);
     obj.comboBox7:setAlign("left");
     obj.comboBox7:setFontSize(12);
     obj.comboBox7:setWidth(82);
@@ -1592,7 +1592,7 @@ function newfrmTemplate()
     obj.comboBox7:setName("comboBox7");
 
     obj.comboBox8 = gui.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox8:setParent(obj.layout14);
+    obj.comboBox8:setParent(obj.layout13);
     obj.comboBox8:setAlign("left");
     obj.comboBox8:setFontSize(12);
     obj.comboBox8:setWidth(104);
@@ -1607,20 +1607,20 @@ function newfrmTemplate()
     obj.comboBox8:setName("comboBox8");
 
     obj.dataLink10 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink10:setParent(obj.layout14);
+    obj.dataLink10:setParent(obj.layout13);
     obj.dataLink10:setField("CorBarrinha3");
     obj.dataLink10:setDefaultValue("#808080");
     obj.dataLink10:setName("dataLink10");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout16:setParent(obj.Config);
-    obj.layout16:setAlign("top");
-    obj.layout16:setHeight(18);
-    obj.layout16:setMargins({top=4});
-    obj.layout16:setName("layout16");
+    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15:setParent(obj.Config);
+    obj.layout15:setAlign("top");
+    obj.layout15:setHeight(18);
+    obj.layout15:setMargins({top=4});
+    obj.layout15:setName("layout15");
 
     obj.label41 = gui.fromHandle(_obj_newObject("label"));
-    obj.label41:setParent(obj.layout16);
+    obj.label41:setParent(obj.layout15);
     obj.label41:setAlign("left");
     obj.label41:setFontSize(12);
     obj.label41:setText("Barrinha 1:");
@@ -1629,7 +1629,7 @@ function newfrmTemplate()
     obj.label41:setName("label41");
 
     obj.edit14 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit14:setParent(obj.layout16);
+    obj.edit14:setParent(obj.layout15);
     obj.edit14:setAlign("left");
     obj.edit14:setFontSize(12);
     obj.edit14:setWidth(108);
@@ -1639,15 +1639,15 @@ function newfrmTemplate()
     obj.edit14:setMargins({left=4});
     obj.edit14:setName("edit14");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout17:setParent(obj.layout16);
-    obj.layout17:setAlign("left");
-    obj.layout17:setWidth(26);
-    obj.layout17:setMargins({left=4});
-    obj.layout17:setName("layout17");
+    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16:setParent(obj.layout15);
+    obj.layout16:setAlign("left");
+    obj.layout16:setWidth(26);
+    obj.layout16:setMargins({left=4});
+    obj.layout16:setName("layout16");
 
     obj.rectangle17 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle17:setParent(obj.layout17);
+    obj.rectangle17:setParent(obj.layout16);
     obj.rectangle17:setAlign("client");
     obj.rectangle17:setColor("white");
     obj.rectangle17:setHitTest(true);
@@ -1671,7 +1671,7 @@ function newfrmTemplate()
     obj.CorBarrinha4:setHitTest(true);
 
     obj.comboBox9 = gui.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox9:setParent(obj.layout16);
+    obj.comboBox9:setParent(obj.layout15);
     obj.comboBox9:setAlign("left");
     obj.comboBox9:setFontSize(12);
     obj.comboBox9:setWidth(82);
@@ -1686,7 +1686,7 @@ function newfrmTemplate()
     obj.comboBox9:setName("comboBox9");
 
     obj.comboBox10 = gui.fromHandle(_obj_newObject("comboBox"));
-    obj.comboBox10:setParent(obj.layout16);
+    obj.comboBox10:setParent(obj.layout15);
     obj.comboBox10:setAlign("left");
     obj.comboBox10:setFontSize(12);
     obj.comboBox10:setWidth(104);
@@ -1701,20 +1701,20 @@ function newfrmTemplate()
     obj.comboBox10:setName("comboBox10");
 
     obj.dataLink11 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink11:setParent(obj.layout16);
+    obj.dataLink11:setParent(obj.layout15);
     obj.dataLink11:setField("CorBarrinha4");
     obj.dataLink11:setDefaultValue("#808080");
     obj.dataLink11:setName("dataLink11");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout18:setParent(obj.Config);
-    obj.layout18:setAlign("top");
-    obj.layout18:setHeight(24);
-    obj.layout18:setMargins({top=8});
-    obj.layout18:setName("layout18");
+    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17:setParent(obj.Config);
+    obj.layout17:setAlign("top");
+    obj.layout17:setHeight(24);
+    obj.layout17:setMargins({top=8});
+    obj.layout17:setName("layout17");
 
     obj.checkBox11 = gui.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox11:setParent(obj.layout18);
+    obj.checkBox11:setParent(obj.layout17);
     obj.checkBox11:setMargins({left=4});
     obj.checkBox11:setAlign("left");
     obj.checkBox11:setField("EnviarNoChat");
@@ -1724,13 +1724,13 @@ function newfrmTemplate()
     obj.checkBox11:setName("checkBox11");
 
     obj.dataLink12 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink12:setParent(obj.layout18);
+    obj.dataLink12:setParent(obj.layout17);
     obj.dataLink12:setField("EnviarNoChat");
     obj.dataLink12:setDefaultValue("false");
     obj.dataLink12:setName("dataLink12");
 
     obj.button2 = gui.fromHandle(_obj_newObject("button"));
-    obj.button2:setParent(obj.layout18);
+    obj.button2:setParent(obj.layout17);
     obj.button2:setAlign("right");
     obj.button2:setWidth(80);
     obj.button2:setText("OK!");
@@ -1743,14 +1743,14 @@ function newfrmTemplate()
     obj.SelectCor:setWidth(192);
     obj.SelectCor:setHeight(100);
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout19:setParent(obj.SelectCor);
-    obj.layout19:setAlign("top");
-    obj.layout19:setHeight(24);
-    obj.layout19:setName("layout19");
+    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18:setParent(obj.SelectCor);
+    obj.layout18:setAlign("top");
+    obj.layout18:setHeight(24);
+    obj.layout18:setName("layout18");
 
     obj.label42 = gui.fromHandle(_obj_newObject("label"));
-    obj.label42:setParent(obj.layout19);
+    obj.label42:setParent(obj.layout18);
     obj.label42:setAlign("client");
     obj.label42:setText("Selecione a Cor:");
     obj.label42:setHorzTextAlign("center");
@@ -1793,6 +1793,22 @@ function newfrmTemplate()
     obj.Flow:setHitTest(true);
     obj.Flow:setCanFocus(true);
 
+    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19:setParent(obj.Flow);
+    obj.layout19:setAlign("left");
+    obj.layout19:setWidth(20);
+    obj.layout19:setHeight(20);
+    obj.layout19:setHitTest(true);
+    obj.layout19:setName("layout19");
+
+    obj.rectangle21 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle21:setParent(obj.layout19);
+    obj.rectangle21:setAlign("client");
+    obj.rectangle21:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.rectangle21:setHitTest(true);
+    obj.rectangle21:setColor("#acacac");
+    obj.rectangle21:setName("rectangle21");
+
     obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.Flow);
     obj.layout20:setAlign("left");
@@ -1801,13 +1817,13 @@ function newfrmTemplate()
     obj.layout20:setHitTest(true);
     obj.layout20:setName("layout20");
 
-    obj.rectangle21 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle21:setParent(obj.layout20);
-    obj.rectangle21:setAlign("client");
-    obj.rectangle21:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.rectangle21:setHitTest(true);
-    obj.rectangle21:setColor("#acacac");
-    obj.rectangle21:setName("rectangle21");
+    obj.rectangle22 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle22:setParent(obj.layout20);
+    obj.rectangle22:setAlign("client");
+    obj.rectangle22:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.rectangle22:setHitTest(true);
+    obj.rectangle22:setColor("#5959ff");
+    obj.rectangle22:setName("rectangle22");
 
     obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.Flow);
@@ -1817,13 +1833,13 @@ function newfrmTemplate()
     obj.layout21:setHitTest(true);
     obj.layout21:setName("layout21");
 
-    obj.rectangle22 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle22:setParent(obj.layout21);
-    obj.rectangle22:setAlign("client");
-    obj.rectangle22:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.rectangle22:setHitTest(true);
-    obj.rectangle22:setColor("#5959ff");
-    obj.rectangle22:setName("rectangle22");
+    obj.rectangle23 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle23:setParent(obj.layout21);
+    obj.rectangle23:setAlign("client");
+    obj.rectangle23:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.rectangle23:setHitTest(true);
+    obj.rectangle23:setColor("#59ff59");
+    obj.rectangle23:setName("rectangle23");
 
     obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.Flow);
@@ -1833,13 +1849,13 @@ function newfrmTemplate()
     obj.layout22:setHitTest(true);
     obj.layout22:setName("layout22");
 
-    obj.rectangle23 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle23:setParent(obj.layout22);
-    obj.rectangle23:setAlign("client");
-    obj.rectangle23:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.rectangle23:setHitTest(true);
-    obj.rectangle23:setColor("#59ff59");
-    obj.rectangle23:setName("rectangle23");
+    obj.rectangle24 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle24:setParent(obj.layout22);
+    obj.rectangle24:setAlign("client");
+    obj.rectangle24:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.rectangle24:setHitTest(true);
+    obj.rectangle24:setColor("#ff5959");
+    obj.rectangle24:setName("rectangle24");
 
     obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.Flow);
@@ -1849,13 +1865,13 @@ function newfrmTemplate()
     obj.layout23:setHitTest(true);
     obj.layout23:setName("layout23");
 
-    obj.rectangle24 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle24:setParent(obj.layout23);
-    obj.rectangle24:setAlign("client");
-    obj.rectangle24:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.rectangle24:setHitTest(true);
-    obj.rectangle24:setColor("#ff5959");
-    obj.rectangle24:setName("rectangle24");
+    obj.rectangle25 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle25:setParent(obj.layout23);
+    obj.rectangle25:setAlign("client");
+    obj.rectangle25:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.rectangle25:setHitTest(true);
+    obj.rectangle25:setColor("#ff59ff");
+    obj.rectangle25:setName("rectangle25");
 
     obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.Flow);
@@ -1865,13 +1881,13 @@ function newfrmTemplate()
     obj.layout24:setHitTest(true);
     obj.layout24:setName("layout24");
 
-    obj.rectangle25 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle25:setParent(obj.layout24);
-    obj.rectangle25:setAlign("client");
-    obj.rectangle25:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.rectangle25:setHitTest(true);
-    obj.rectangle25:setColor("#ff59ff");
-    obj.rectangle25:setName("rectangle25");
+    obj.rectangle26 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle26:setParent(obj.layout24);
+    obj.rectangle26:setAlign("client");
+    obj.rectangle26:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.rectangle26:setHitTest(true);
+    obj.rectangle26:setColor("#ffac59");
+    obj.rectangle26:setName("rectangle26");
 
     obj.layout25 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.Flow);
@@ -1881,13 +1897,13 @@ function newfrmTemplate()
     obj.layout25:setHitTest(true);
     obj.layout25:setName("layout25");
 
-    obj.rectangle26 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle26:setParent(obj.layout25);
-    obj.rectangle26:setAlign("client");
-    obj.rectangle26:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.rectangle26:setHitTest(true);
-    obj.rectangle26:setColor("#ffac59");
-    obj.rectangle26:setName("rectangle26");
+    obj.rectangle27 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle27:setParent(obj.layout25);
+    obj.rectangle27:setAlign("client");
+    obj.rectangle27:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.rectangle27:setHitTest(true);
+    obj.rectangle27:setColor("#ffff59");
+    obj.rectangle27:setName("rectangle27");
 
     obj.layout26 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.Flow);
@@ -1897,13 +1913,13 @@ function newfrmTemplate()
     obj.layout26:setHitTest(true);
     obj.layout26:setName("layout26");
 
-    obj.rectangle27 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle27:setParent(obj.layout26);
-    obj.rectangle27:setAlign("client");
-    obj.rectangle27:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.rectangle27:setHitTest(true);
-    obj.rectangle27:setColor("#ffff59");
-    obj.rectangle27:setName("rectangle27");
+    obj.rectangle28 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle28:setParent(obj.layout26);
+    obj.rectangle28:setAlign("client");
+    obj.rectangle28:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.rectangle28:setHitTest(true);
+    obj.rectangle28:setColor("#59ffff");
+    obj.rectangle28:setName("rectangle28");
 
     obj.layout27 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.Flow);
@@ -1913,13 +1929,13 @@ function newfrmTemplate()
     obj.layout27:setHitTest(true);
     obj.layout27:setName("layout27");
 
-    obj.rectangle28 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle28:setParent(obj.layout27);
-    obj.rectangle28:setAlign("client");
-    obj.rectangle28:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.rectangle28:setHitTest(true);
-    obj.rectangle28:setColor("#59ffff");
-    obj.rectangle28:setName("rectangle28");
+    obj.rectangle29 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle29:setParent(obj.layout27);
+    obj.rectangle29:setAlign("client");
+    obj.rectangle29:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.rectangle29:setHitTest(true);
+    obj.rectangle29:setColor("#ffd159");
+    obj.rectangle29:setName("rectangle29");
 
     obj.layout28 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.Flow);
@@ -1929,13 +1945,13 @@ function newfrmTemplate()
     obj.layout28:setHitTest(true);
     obj.layout28:setName("layout28");
 
-    obj.rectangle29 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle29:setParent(obj.layout28);
-    obj.rectangle29:setAlign("client");
-    obj.rectangle29:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.rectangle29:setHitTest(true);
-    obj.rectangle29:setColor("#ffd159");
-    obj.rectangle29:setName("rectangle29");
+    obj.rectangle30 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle30:setParent(obj.layout28);
+    obj.rectangle30:setAlign("client");
+    obj.rectangle30:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.rectangle30:setHitTest(true);
+    obj.rectangle30:setColor("#5990ff");
+    obj.rectangle30:setName("rectangle30");
 
     obj.layout29 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout29:setParent(obj.Flow);
@@ -1945,13 +1961,13 @@ function newfrmTemplate()
     obj.layout29:setHitTest(true);
     obj.layout29:setName("layout29");
 
-    obj.rectangle30 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle30:setParent(obj.layout29);
-    obj.rectangle30:setAlign("client");
-    obj.rectangle30:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.rectangle30:setHitTest(true);
-    obj.rectangle30:setColor("#5990ff");
-    obj.rectangle30:setName("rectangle30");
+    obj.rectangle31 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle31:setParent(obj.layout29);
+    obj.rectangle31:setAlign("client");
+    obj.rectangle31:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.rectangle31:setHitTest(true);
+    obj.rectangle31:setColor("#f4c264");
+    obj.rectangle31:setName("rectangle31");
 
     obj.layout30 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout30:setParent(obj.Flow);
@@ -1961,13 +1977,13 @@ function newfrmTemplate()
     obj.layout30:setHitTest(true);
     obj.layout30:setName("layout30");
 
-    obj.rectangle31 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle31:setParent(obj.layout30);
-    obj.rectangle31:setAlign("client");
-    obj.rectangle31:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.rectangle31:setHitTest(true);
-    obj.rectangle31:setColor("#f4c264");
-    obj.rectangle31:setName("rectangle31");
+    obj.rectangle32 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle32:setParent(obj.layout30);
+    obj.rectangle32:setAlign("client");
+    obj.rectangle32:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.rectangle32:setHitTest(true);
+    obj.rectangle32:setColor("#de7a7a");
+    obj.rectangle32:setName("rectangle32");
 
     obj.layout31 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.Flow);
@@ -1977,13 +1993,13 @@ function newfrmTemplate()
     obj.layout31:setHitTest(true);
     obj.layout31:setName("layout31");
 
-    obj.rectangle32 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle32:setParent(obj.layout31);
-    obj.rectangle32:setAlign("client");
-    obj.rectangle32:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.rectangle32:setHitTest(true);
-    obj.rectangle32:setColor("#de7a7a");
-    obj.rectangle32:setName("rectangle32");
+    obj.rectangle33 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle33:setParent(obj.layout31);
+    obj.rectangle33:setAlign("client");
+    obj.rectangle33:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.rectangle33:setHitTest(true);
+    obj.rectangle33:setColor("#cb83d6");
+    obj.rectangle33:setName("rectangle33");
 
     obj.layout32 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.Flow);
@@ -1993,13 +2009,13 @@ function newfrmTemplate()
     obj.layout32:setHitTest(true);
     obj.layout32:setName("layout32");
 
-    obj.rectangle33 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle33:setParent(obj.layout32);
-    obj.rectangle33:setAlign("client");
-    obj.rectangle33:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.rectangle33:setHitTest(true);
-    obj.rectangle33:setColor("#cb83d6");
-    obj.rectangle33:setName("rectangle33");
+    obj.rectangle34 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle34:setParent(obj.layout32);
+    obj.rectangle34:setAlign("client");
+    obj.rectangle34:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.rectangle34:setHitTest(true);
+    obj.rectangle34:setColor("#f3658a");
+    obj.rectangle34:setName("rectangle34");
 
     obj.layout33 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout33:setParent(obj.Flow);
@@ -2009,13 +2025,13 @@ function newfrmTemplate()
     obj.layout33:setHitTest(true);
     obj.layout33:setName("layout33");
 
-    obj.rectangle34 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle34:setParent(obj.layout33);
-    obj.rectangle34:setAlign("client");
-    obj.rectangle34:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.rectangle34:setHitTest(true);
-    obj.rectangle34:setColor("#f3658a");
-    obj.rectangle34:setName("rectangle34");
+    obj.rectangle35 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle35:setParent(obj.layout33);
+    obj.rectangle35:setAlign("client");
+    obj.rectangle35:setMargins({left=2, right=2, top=2, bottom=2});
+    obj.rectangle35:setHitTest(true);
+    obj.rectangle35:setColor("#8cecb3");
+    obj.rectangle35:setName("rectangle35");
 
     obj.layout34 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout34:setParent(obj.Flow);
@@ -2025,38 +2041,22 @@ function newfrmTemplate()
     obj.layout34:setHitTest(true);
     obj.layout34:setName("layout34");
 
-    obj.rectangle35 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle35:setParent(obj.layout34);
-    obj.rectangle35:setAlign("client");
-    obj.rectangle35:setMargins({left=2, right=2, top=2, bottom=2});
-    obj.rectangle35:setHitTest(true);
-    obj.rectangle35:setColor("#8cecb3");
-    obj.rectangle35:setName("rectangle35");
-
-    obj.layout35 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout35:setParent(obj.Flow);
-    obj.layout35:setAlign("left");
-    obj.layout35:setWidth(20);
-    obj.layout35:setHeight(20);
-    obj.layout35:setHitTest(true);
-    obj.layout35:setName("layout35");
-
     obj.rectangle36 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle36:setParent(obj.layout35);
+    obj.rectangle36:setParent(obj.layout34);
     obj.rectangle36:setAlign("client");
     obj.rectangle36:setMargins({left=2, right=2, top=2, bottom=2});
     obj.rectangle36:setHitTest(true);
     obj.rectangle36:setColor("#ed846b");
     obj.rectangle36:setName("rectangle36");
 
-    obj.layout36 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout36:setParent(obj.SelectCor);
-    obj.layout36:setAlign("bottom");
-    obj.layout36:setHeight(24);
-    obj.layout36:setName("layout36");
+    obj.layout35 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout35:setParent(obj.SelectCor);
+    obj.layout35:setAlign("bottom");
+    obj.layout35:setHeight(24);
+    obj.layout35:setName("layout35");
 
     obj.button3 = gui.fromHandle(_obj_newObject("button"));
-    obj.button3:setParent(obj.layout36);
+    obj.button3:setParent(obj.layout35);
     obj.button3:setAlign("right");
     obj.button3:setText("OK!");
     obj.button3:setMargins({right=4});
@@ -2069,14 +2069,14 @@ function newfrmTemplate()
     obj.rectangle37:setPadding({top=4, left=4});
     obj.rectangle37:setName("rectangle37");
 
-    obj.layout37 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout37:setParent(obj.rectangle37);
-    obj.layout37:setAlign("top");
-    obj.layout37:setHeight(24);
-    obj.layout37:setName("layout37");
+    obj.layout36 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout36:setParent(obj.rectangle37);
+    obj.layout36:setAlign("top");
+    obj.layout36:setHeight(24);
+    obj.layout36:setName("layout36");
 
     obj.NovaAbadeNPCs = gui.fromHandle(_obj_newObject("imageCheckBox"));
-    obj.NovaAbadeNPCs:setParent(obj.layout37);
+    obj.NovaAbadeNPCs:setParent(obj.layout36);
     obj.NovaAbadeNPCs:setMargins({left=4});
     obj.NovaAbadeNPCs:setAlign("left");
     obj.NovaAbadeNPCs:setWidth(24);
@@ -2085,7 +2085,7 @@ function newfrmTemplate()
     obj.NovaAbadeNPCs:setImageUnchecked("/FichaReinosD20/images/addlista.png");
 
     obj.comboBoxFalsa = gui.fromHandle(_obj_newObject("dataScopeBox"));
-    obj.comboBoxFalsa:setParent(obj.layout37);
+    obj.comboBoxFalsa:setParent(obj.layout36);
     obj.comboBoxFalsa:setAlign("left");
     obj.comboBoxFalsa:setMargins({left=8});
     obj.comboBoxFalsa:setName("comboBoxFalsa");
@@ -2209,13 +2209,13 @@ function newfrmTemplate()
     obj.recordNode:setName("recordNode");
     obj.recordNode:setVisible(false);
 
-    obj.layout38 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout38:setParent(obj.ListaDeNPCs);
-    obj.layout38:setVisible(false);
-    obj.layout38:setName("layout38");
+    obj.layout37 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout37:setParent(obj.ListaDeNPCs);
+    obj.layout37:setVisible(false);
+    obj.layout37:setName("layout37");
 
     obj.dropDownFalso2 = gui.fromHandle(_obj_newObject("popupForm"));
-    obj.dropDownFalso2:setParent(obj.layout38);
+    obj.dropDownFalso2:setParent(obj.layout37);
     obj.dropDownFalso2:setName("dropDownFalso2");
     obj.dropDownFalso2:setTitle("Jogador?");
     obj.dropDownFalso2:setWidth(128);
@@ -2245,15 +2245,15 @@ function newfrmTemplate()
     obj.rectangle39:setAlign("client");
     obj.rectangle39:setName("rectangle39");
 
-    obj.layout39 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout39:setParent(obj.rectangle39);
-    obj.layout39:setAlign("top");
-    obj.layout39:setHeight(24);
-    obj.layout39:setMargins({top=4, left=2});
-    obj.layout39:setName("layout39");
+    obj.layout38 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout38:setParent(obj.rectangle39);
+    obj.layout38:setAlign("top");
+    obj.layout38:setHeight(24);
+    obj.layout38:setMargins({top=4, left=2});
+    obj.layout38:setName("layout38");
 
     obj.Configurar = gui.fromHandle(_obj_newObject("imageCheckBox"));
-    obj.Configurar:setParent(obj.layout39);
+    obj.Configurar:setParent(obj.layout38);
     obj.Configurar:setMargins({left=4});
     obj.Configurar:setAlign("left");
     obj.Configurar:setWidth(24);
@@ -2263,7 +2263,7 @@ function newfrmTemplate()
     obj.Configurar:setImageUnchecked("/FichaReinosD20/images/config.png");
 
     obj.NovoNPC = gui.fromHandle(_obj_newObject("imageCheckBox"));
-    obj.NovoNPC:setParent(obj.layout39);
+    obj.NovoNPC:setParent(obj.layout38);
     obj.NovoNPC:setMargins({left=4});
     obj.NovoNPC:setAlign("left");
     obj.NovoNPC:setWidth(24);
@@ -2273,7 +2273,7 @@ function newfrmTemplate()
     obj.NovoNPC:setImageUnchecked("/FichaReinosD20/images/addnpc.png");
 
     obj.Organizar = gui.fromHandle(_obj_newObject("imageCheckBox"));
-    obj.Organizar:setParent(obj.layout39);
+    obj.Organizar:setParent(obj.layout38);
     obj.Organizar:setMargins({left=4});
     obj.Organizar:setAlign("left");
     obj.Organizar:setWidth(24);
@@ -2299,14 +2299,14 @@ function newfrmTemplate()
     obj.rclListaDeNPC:setSelectable(true);
     obj.rclListaDeNPC:setMinQt(0);
 
-    obj.layout40 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout40:setParent(obj.rectangle39);
-    obj.layout40:setAlign("bottom");
-    obj.layout40:setHeight(32);
-    obj.layout40:setName("layout40");
+    obj.layout39 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout39:setParent(obj.rectangle39);
+    obj.layout39:setAlign("bottom");
+    obj.layout39:setHeight(32);
+    obj.layout39:setName("layout39");
 
     obj.label44 = gui.fromHandle(_obj_newObject("label"));
-    obj.label44:setParent(obj.layout40);
+    obj.label44:setParent(obj.layout39);
     obj.label44:setAlign("right");
     lfm_setPropAsString(obj.label44, "fontStyle",  "italic");
     obj.label44:setFontSize(12);
@@ -2495,16 +2495,16 @@ function newfrmTemplate()
     obj.scrollBox8:setAlign("client");
     obj.scrollBox8:setName("scrollBox8");
 
-    obj.layout41 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout41:setParent(obj.scrollBox8);
-    obj.layout41:setLeft(0);
-    obj.layout41:setTop(0);
-    obj.layout41:setWidth(400);
-    obj.layout41:setHeight(580);
-    obj.layout41:setName("layout41");
+    obj.layout40 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout40:setParent(obj.scrollBox8);
+    obj.layout40:setLeft(0);
+    obj.layout40:setTop(0);
+    obj.layout40:setWidth(400);
+    obj.layout40:setHeight(580);
+    obj.layout40:setName("layout40");
 
     obj.rectangle40 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle40:setParent(obj.layout41);
+    obj.rectangle40:setParent(obj.layout40);
     obj.rectangle40:setLeft(0);
     obj.rectangle40:setTop(0);
     obj.rectangle40:setWidth(400);
@@ -2516,7 +2516,7 @@ function newfrmTemplate()
     obj.rectangle40:setName("rectangle40");
 
     obj.label45 = gui.fromHandle(_obj_newObject("label"));
-    obj.label45:setParent(obj.layout41);
+    obj.label45:setParent(obj.layout40);
     obj.label45:setLeft(0);
     obj.label45:setTop(0);
     obj.label45:setWidth(400);
@@ -2526,7 +2526,7 @@ function newfrmTemplate()
     obj.label45:setName("label45");
 
     obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor1:setParent(obj.layout41);
+    obj.textEditor1:setParent(obj.layout40);
     obj.textEditor1:setLeft(10);
     obj.textEditor1:setTop(25);
     obj.textEditor1:setWidth(380);
@@ -2534,16 +2534,16 @@ function newfrmTemplate()
     obj.textEditor1:setField("anotacoes1");
     obj.textEditor1:setName("textEditor1");
 
-    obj.layout42 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout42:setParent(obj.scrollBox8);
-    obj.layout42:setLeft(410);
-    obj.layout42:setTop(0);
-    obj.layout42:setWidth(400);
-    obj.layout42:setHeight(580);
-    obj.layout42:setName("layout42");
+    obj.layout41 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout41:setParent(obj.scrollBox8);
+    obj.layout41:setLeft(410);
+    obj.layout41:setTop(0);
+    obj.layout41:setWidth(400);
+    obj.layout41:setHeight(580);
+    obj.layout41:setName("layout41");
 
     obj.rectangle41 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle41:setParent(obj.layout42);
+    obj.rectangle41:setParent(obj.layout41);
     obj.rectangle41:setLeft(0);
     obj.rectangle41:setTop(0);
     obj.rectangle41:setWidth(400);
@@ -2555,7 +2555,7 @@ function newfrmTemplate()
     obj.rectangle41:setName("rectangle41");
 
     obj.label46 = gui.fromHandle(_obj_newObject("label"));
-    obj.label46:setParent(obj.layout42);
+    obj.label46:setParent(obj.layout41);
     obj.label46:setLeft(0);
     obj.label46:setTop(0);
     obj.label46:setWidth(400);
@@ -2565,7 +2565,7 @@ function newfrmTemplate()
     obj.label46:setName("label46");
 
     obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor2:setParent(obj.layout42);
+    obj.textEditor2:setParent(obj.layout41);
     obj.textEditor2:setLeft(10);
     obj.textEditor2:setTop(25);
     obj.textEditor2:setWidth(380);
@@ -2573,16 +2573,16 @@ function newfrmTemplate()
     obj.textEditor2:setField("anotacoes2");
     obj.textEditor2:setName("textEditor2");
 
-    obj.layout43 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout43:setParent(obj.scrollBox8);
-    obj.layout43:setLeft(820);
-    obj.layout43:setTop(0);
-    obj.layout43:setWidth(400);
-    obj.layout43:setHeight(580);
-    obj.layout43:setName("layout43");
+    obj.layout42 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout42:setParent(obj.scrollBox8);
+    obj.layout42:setLeft(820);
+    obj.layout42:setTop(0);
+    obj.layout42:setWidth(400);
+    obj.layout42:setHeight(580);
+    obj.layout42:setName("layout42");
 
     obj.rectangle42 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle42:setParent(obj.layout43);
+    obj.rectangle42:setParent(obj.layout42);
     obj.rectangle42:setLeft(0);
     obj.rectangle42:setTop(0);
     obj.rectangle42:setWidth(400);
@@ -2594,7 +2594,7 @@ function newfrmTemplate()
     obj.rectangle42:setName("rectangle42");
 
     obj.label47 = gui.fromHandle(_obj_newObject("label"));
-    obj.label47:setParent(obj.layout43);
+    obj.label47:setParent(obj.layout42);
     obj.label47:setLeft(0);
     obj.label47:setTop(0);
     obj.label47:setWidth(400);
@@ -2604,7 +2604,7 @@ function newfrmTemplate()
     obj.label47:setName("label47");
 
     obj.textEditor3 = gui.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor3:setParent(obj.layout43);
+    obj.textEditor3:setParent(obj.layout42);
     obj.textEditor3:setLeft(10);
     obj.textEditor3:setTop(25);
     obj.textEditor3:setWidth(380);
@@ -2824,16 +2824,16 @@ function newfrmTemplate()
     obj.image1:setSRC("/FichaReinosD20/images/RPGmeister.jpg");
     obj.image1:setName("image1");
 
-    obj.layout44 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout44:setParent(obj.scrollBox9);
-    obj.layout44:setLeft(550);
-    obj.layout44:setTop(0);
-    obj.layout44:setWidth(200);
-    obj.layout44:setHeight(160);
-    obj.layout44:setName("layout44");
+    obj.layout43 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout43:setParent(obj.scrollBox9);
+    obj.layout43:setLeft(550);
+    obj.layout43:setTop(0);
+    obj.layout43:setWidth(200);
+    obj.layout43:setHeight(160);
+    obj.layout43:setName("layout43");
 
     obj.rectangle43 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle43:setParent(obj.layout44);
+    obj.rectangle43:setParent(obj.layout43);
     obj.rectangle43:setAlign("client");
     obj.rectangle43:setColor("black");
     obj.rectangle43:setXradius(5);
@@ -2842,7 +2842,7 @@ function newfrmTemplate()
     obj.rectangle43:setName("rectangle43");
 
     obj.label48 = gui.fromHandle(_obj_newObject("label"));
-    obj.label48:setParent(obj.layout44);
+    obj.label48:setParent(obj.layout43);
     obj.label48:setLeft(0);
     obj.label48:setTop(10);
     obj.label48:setWidth(200);
@@ -2852,7 +2852,7 @@ function newfrmTemplate()
     obj.label48:setName("label48");
 
     obj.label49 = gui.fromHandle(_obj_newObject("label"));
-    obj.label49:setParent(obj.layout44);
+    obj.label49:setParent(obj.layout43);
     obj.label49:setLeft(0);
     obj.label49:setTop(35);
     obj.label49:setWidth(200);
@@ -2898,7 +2898,7 @@ function newfrmTemplate()
     obj.image3:setWidth(100);
     obj.image3:setHeight(20);
     obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao04.png");
+    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao05.png");
     obj.image3:setName("image3");
 
     obj.button4 = gui.fromHandle(_obj_newObject("button"));
@@ -2978,7 +2978,75 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event3 = obj.mapImage:addEventListener("onMouseDown",
+    obj._e_event3 = obj.dataLink1:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
+            
+            					for i=1, #cidades, 1 do
+            						local node = cidades[i];
+            						local altura = tonumber(sheet.altura) or 25;
+            
+            						if node.name ~= nil then
+            							local btn = self:findControlByName(node.name);
+            							if btn ~= nil then
+            								btn.height = altura;
+            							end;
+            						end;
+            					end;
+        end, obj);
+
+    obj._e_event4 = obj.dataLink2:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
+            
+            					for i=1, #cidades, 1 do
+            						local node = cidades[i];
+            						local largura = tonumber(sheet.largura) or 25;
+            
+            						if node.name ~= nil then
+            							local btn = self:findControlByName(node.name);
+            							if btn ~= nil then
+            								btn.width = largura;
+            							end;
+            						end;
+            					end;
+        end, obj);
+
+    obj._e_event5 = obj.dataLink3:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
+            
+            					for i=1, #lugares, 1 do
+            						local node = lugares[i];
+            						local altura2 = tonumber(sheet.altura2) or 25;
+            
+            						if node.name ~= nil then
+            							local btn = self:findControlByName(node.name);
+            							if btn ~= nil then
+            								btn.height = altura2;
+            							end;
+            						end;
+            					end;
+        end, obj);
+
+    obj._e_event6 = obj.dataLink4:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
+            
+            					for i=1, #lugares, 1 do
+            						local node = lugares[i];
+            						local largura2 = tonumber(sheet.largura2) or 25;
+            
+            						if node.name ~= nil then
+            							local btn = self:findControlByName(node.name);
+            							if btn ~= nil then
+            								btn.width = largura2;
+            							end;
+            						end;
+            					end;
+        end, obj);
+
+    obj._e_event7 = obj.mapImage:addEventListener("onMouseDown",
         function (self, event)
             sheet.button = event.button;
             				sheet.x = event.x;
@@ -2988,7 +3056,7 @@ function newfrmTemplate()
             				sheet.altKey = event.altKey;
         end, obj);
 
-    obj._e_event4 = obj.mapImage:addEventListener("onClick",
+    obj._e_event8 = obj.mapImage:addEventListener("onClick",
         function (self)
             if sheet==nil then return end;
             				
@@ -3152,10 +3220,14 @@ function newfrmTemplate()
             					-- Zoom control
             					local mapRectangle = self:findControlByName("mapRectangle");
             					local scale = 2;
+            					self.sizeLayout.left = 2320;
             
             					if mapImage.scale > 1 then
             						scale = 0.5;
+            						self.sizeLayout.left = 1160;
             					end;
+            
+            
             
             					mapImage.scale = mapImage.scale * scale;
             					mapRectangle.width = mapRectangle.width * scale;
@@ -3199,74 +3271,6 @@ function newfrmTemplate()
             							sheet.mapa = url;
             						end);
             				end;
-        end, obj);
-
-    obj._e_event5 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
-            local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
-            
-            					for i=1, #cidades, 1 do
-            						local node = cidades[i];
-            						local altura = tonumber(sheet.altura) or 25;
-            
-            						if node.name ~= nil then
-            							local btn = self:findControlByName(node.name);
-            							if btn ~= nil then
-            								btn.height = altura;
-            							end;
-            						end;
-            					end;
-        end, obj);
-
-    obj._e_event6 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
-            local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
-            
-            					for i=1, #cidades, 1 do
-            						local node = cidades[i];
-            						local largura = tonumber(sheet.largura) or 25;
-            
-            						if node.name ~= nil then
-            							local btn = self:findControlByName(node.name);
-            							if btn ~= nil then
-            								btn.width = largura;
-            							end;
-            						end;
-            					end;
-        end, obj);
-
-    obj._e_event7 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
-            local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
-            
-            					for i=1, #lugares, 1 do
-            						local node = lugares[i];
-            						local altura2 = tonumber(sheet.altura2) or 25;
-            
-            						if node.name ~= nil then
-            							local btn = self:findControlByName(node.name);
-            							if btn ~= nil then
-            								btn.height = altura2;
-            							end;
-            						end;
-            					end;
-        end, obj);
-
-    obj._e_event8 = obj.dataLink4:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
-            local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
-            
-            					for i=1, #lugares, 1 do
-            						local node = lugares[i];
-            						local largura2 = tonumber(sheet.largura2) or 25;
-            
-            						if node.name ~= nil then
-            							local btn = self:findControlByName(node.name);
-            							if btn ~= nil then
-            								btn.width = largura2;
-            							end;
-            						end;
-            					end;
         end, obj);
 
     obj._e_event9 = obj.rclDestalhesDaCidade:addEventListener("onEndEnumeration",
@@ -3874,7 +3878,7 @@ function newfrmTemplate()
             self.Config:close();
         end, obj);
 
-    obj._e_event43 = obj.layout20:addEventListener("onClick",
+    obj._e_event43 = obj.layout19:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "0";
             				sheet.ColorString = "#acacac";
@@ -3886,7 +3890,7 @@ function newfrmTemplate()
             					sheet.ColorString = "#acacac";
         end, obj);
 
-    obj._e_event45 = obj.layout21:addEventListener("onClick",
+    obj._e_event45 = obj.layout20:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "1";
             				sheet.ColorString = "#5959ff";
@@ -3898,7 +3902,7 @@ function newfrmTemplate()
             					sheet.ColorString = "#5959ff";
         end, obj);
 
-    obj._e_event47 = obj.layout22:addEventListener("onClick",
+    obj._e_event47 = obj.layout21:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "2";
             				sheet.ColorString = "#59ff59";
@@ -3910,7 +3914,7 @@ function newfrmTemplate()
             					sheet.ColorString = "#59ff59";
         end, obj);
 
-    obj._e_event49 = obj.layout23:addEventListener("onClick",
+    obj._e_event49 = obj.layout22:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "3";
             				sheet.ColorString = "#ff5959";
@@ -3922,7 +3926,7 @@ function newfrmTemplate()
             					sheet.ColorString = "#ff5959";
         end, obj);
 
-    obj._e_event51 = obj.layout24:addEventListener("onClick",
+    obj._e_event51 = obj.layout23:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "4";
             				sheet.ColorString = "#ff59ff";
@@ -3934,7 +3938,7 @@ function newfrmTemplate()
             					sheet.ColorString = "#ff59ff";
         end, obj);
 
-    obj._e_event53 = obj.layout25:addEventListener("onClick",
+    obj._e_event53 = obj.layout24:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "5";
             				sheet.ColorString = "#ffac59";
@@ -3946,7 +3950,7 @@ function newfrmTemplate()
             					sheet.ColorString = "#ffac59";
         end, obj);
 
-    obj._e_event55 = obj.layout26:addEventListener("onClick",
+    obj._e_event55 = obj.layout25:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "6";
             				sheet.ColorString = "#ffff59";
@@ -3958,7 +3962,7 @@ function newfrmTemplate()
             					sheet.ColorString = "#ffff59";
         end, obj);
 
-    obj._e_event57 = obj.layout27:addEventListener("onClick",
+    obj._e_event57 = obj.layout26:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "7";
             				sheet.ColorString = "#59ffff";
@@ -3970,7 +3974,7 @@ function newfrmTemplate()
             					sheet.ColorString = "#59ffff";
         end, obj);
 
-    obj._e_event59 = obj.layout28:addEventListener("onClick",
+    obj._e_event59 = obj.layout27:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "8";
             				sheet.ColorString = "#ffd159";
@@ -3982,7 +3986,7 @@ function newfrmTemplate()
             					sheet.ColorString = "#ffd159";
         end, obj);
 
-    obj._e_event61 = obj.layout29:addEventListener("onClick",
+    obj._e_event61 = obj.layout28:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "9";
             				sheet.ColorString = "#5990ff";
@@ -3994,7 +3998,7 @@ function newfrmTemplate()
             					sheet.ColorString = "#5990ff";
         end, obj);
 
-    obj._e_event63 = obj.layout30:addEventListener("onClick",
+    obj._e_event63 = obj.layout29:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "10";
             				sheet.ColorString = "#f4c264";
@@ -4006,7 +4010,7 @@ function newfrmTemplate()
             					sheet.ColorString = "#f4c264";
         end, obj);
 
-    obj._e_event65 = obj.layout31:addEventListener("onClick",
+    obj._e_event65 = obj.layout30:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "11";
             				sheet.ColorString = "#de7a7a";
@@ -4018,7 +4022,7 @@ function newfrmTemplate()
             					sheet.ColorString = "#de7a7a";
         end, obj);
 
-    obj._e_event67 = obj.layout32:addEventListener("onClick",
+    obj._e_event67 = obj.layout31:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "12";
             				sheet.ColorString = "#cb83d6";
@@ -4030,7 +4034,7 @@ function newfrmTemplate()
             					sheet.ColorString = "#cb83d6";
         end, obj);
 
-    obj._e_event69 = obj.layout33:addEventListener("onClick",
+    obj._e_event69 = obj.layout32:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "13";
             				sheet.ColorString = "#f3658a";
@@ -4042,7 +4046,7 @@ function newfrmTemplate()
             					sheet.ColorString = "#f3658a";
         end, obj);
 
-    obj._e_event71 = obj.layout34:addEventListener("onClick",
+    obj._e_event71 = obj.layout33:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "14";
             				sheet.ColorString = "#8cecb3";
@@ -4054,7 +4058,7 @@ function newfrmTemplate()
             					sheet.ColorString = "#8cecb3";
         end, obj);
 
-    obj._e_event73 = obj.layout35:addEventListener("onClick",
+    obj._e_event73 = obj.layout34:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "15";
             				sheet.ColorString = "#ed846b";
@@ -4628,8 +4632,9 @@ function newfrmTemplate()
         if self.dataLink15 ~= nil then self.dataLink15:destroy(); self.dataLink15 = nil; end;
         if self.rectangle12 ~= nil then self.rectangle12:destroy(); self.rectangle12 = nil; end;
         if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
-        if self.layout35 ~= nil then self.layout35:destroy(); self.layout35 = nil; end;
+        if self.sizeLayout ~= nil then self.sizeLayout:destroy(); self.sizeLayout = nil; end;
         if self.rclDestalhesDaCidade ~= nil then self.rclDestalhesDaCidade:destroy(); self.rclDestalhesDaCidade = nil; end;
+        if self.layout35 ~= nil then self.layout35:destroy(); self.layout35 = nil; end;
         if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
         if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
         if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
@@ -4724,7 +4729,6 @@ function newfrmTemplate()
         if self.Config ~= nil then self.Config:destroy(); self.Config = nil; end;
         if self.layout28 ~= nil then self.layout28:destroy(); self.layout28 = nil; end;
         if self.MainClient ~= nil then self.MainClient:destroy(); self.MainClient = nil; end;
-        if self.layout44 ~= nil then self.layout44:destroy(); self.layout44 = nil; end;
         if self.layout19 ~= nil then self.layout19:destroy(); self.layout19 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;

@@ -3,11 +3,11 @@ Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro
 
 Planejado:
 * Icones instanciaveis para o mapa da cidade. 
-* Mover opções de tamanho junto com zoom. 
 
 Versão 05:
 * Descrição da Religião no Reino na primeira aba e nas cidades.
-* Exportar para Markdown (http://homebrewery.naturalcrit.com). 
+* Exportar para Markdown (beta) (http://homebrewery.naturalcrit.com). 
+* Bug corrigido: marcador de tamanho dos icones move com o zoom do mapa. 
 
 Versão 04:
 * Agora é possivel mudar o tamanho padrão dos botoes de cidades e pontos de interesse (lugares) na aba mapa. 
