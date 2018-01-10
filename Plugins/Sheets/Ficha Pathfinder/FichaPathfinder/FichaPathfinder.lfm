@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister" formType="sheetTemplate" dataType="Ambesek.Nefertyne.FichaPathfinder" title="Ficha Pathfinder" align="client" theme="dark">
+    <script>
+        local debug = false;
+        local index = 1;
+    </script>
+    <tabControl align="client">
+        <tab title="Geral">
+            <import file="01.Geral.lfm"/>
+        </tab>
+        <tab title="Ataques">
+            <tabControl align="client">
+                <tab title="Simples">
+                    <import file="02.Ataques.lfm"/>
+                </tab>
+                <tab title="Avançados">
+                    <import file="02.AtaquesAprimorados.lfm"/>
+                </tab>
+            </tabControl>
+        </tab>
+        <tab title="Perícias">
+            <import file="03.Pericias.lfm"/>
+        </tab>
+        <tab title="Habilidades">
+            <import file="04.Habilidades.lfm"/>
+        </tab>
+		<tab title="Magias">
+            <import file="05.Magias.lfm"/>
+        </tab>
+		<tab title="Equipamentos">
+            <import file="06.Equipamentos.lfm"/>
+        </tab>
+        <tab title="Inventario">
+            <import file="07.Inventario.lfm"/>
+        </tab>
+		<tab title="Companheiro">
+            <import file="08.Companheiro.lfm"/>
+        </tab>
+        <tab title="Descrição">
+            <import file="09.Descricao.lfm"/>
+        </tab>
+        <tab title="Anotações">
+            <import file="10.Anotacoes.lfm"/>
+        </tab>
+		<tab title="Creditos">
+            <import file="11.Creditos.lfm"/>
+        </tab>
+    </tabControl>
+</form>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmConsumiveis" height="60" margins="{top=2,bottom=2}">
+	<rectangle align="client" color="black"/>
+	
+	<label left="10" top="5" width="50" height="20" text="NOME"/>
+	<edit left="60" top="5" width="100" height="25" field="nome"/>
+	
+	<label left="163" top="5" width="20" height="20" text="NC"/>
+	<edit left="185" top="5" width="25" height="25" field="nc"/>
+	
+	<label left="213" top="5" width="20" height="20" text="CD"/>
+	<edit left="235" top="5" width="25" height="25" field="cd"/>
+	
+	<button left="5" top="30" width="50" text="Dados" onClick="teste();"/>
+	<edit left="60" top="30" width="100" height="25" field="dados"/>
+	
+	<label left="168" top="30" width="50" height="20" text="USOS"/>
+	<edit left="210" top="30" width="25" height="25" field="usosMin"/>
+	<edit left="235" top="30" width="25" height="25" field="usosMax"/>
+	
+    <button align="right" text="X" width="18" onClick="ndb.deleteNode(sheet);"/>
+	
+	<script>
+		local function teste()
+			if sheet.usosMin~=nil then
+				sheet.usosMin = tonumber(sheet.usosMin) - 1;
+			end;
+			
+			if sheet.dados~=nil then
+				local rolagem = rrpg.interpretarRolagem(sheet.dados);
+				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+				local texto = "";
+				if sheet.nome~=nil then
+					texto = texto .. sheet.nome .. " foi usado.";
+				else	
+					texto = texto .. "Item foi usado";
+				end;
+				
+				if sheet.cd~=nil then
+					texto = texto .. " CD: " .. sheet.cd .. ".";
+				end;
+				
+				mesaDoPersonagem.activeChat:rolarDados(rolagem, texto);
+			end;
+			
+		end;
+	</script>
+	
+</form>
