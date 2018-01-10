@@ -56,6 +56,15 @@
 						end;
 						return (utils.compareStringPtBr(mod1, mod2) * -1);
 					</event>
+					<event name="onEndEnumeration">
+					    if self.rclJogadores.selectedNode == nil and sheet ~= nil then
+					        local nodes = ndb.getChildNodes(sheet.jogadores);               
+
+					        if #nodes > 0 then
+					            self.rclJogadores.selectedNode = nodes[1];
+					        end;
+					    end;
+					</event>
 				</recordList>
 			</scrollBox>
 		</rectangle>

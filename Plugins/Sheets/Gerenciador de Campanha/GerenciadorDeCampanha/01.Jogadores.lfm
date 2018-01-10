@@ -42,6 +42,15 @@
 					self.boxDetalhesDoItem.visible = (node ~= nil);
 				]]>
 			</event>
+			<event name="onEndEnumeration">
+			    if self.rclSelector.selectedNode == nil and sheet ~= nil then
+			        local nodes = ndb.getChildNodes(sheet.listaDeJogadores);               
+
+			        if #nodes > 0 then
+			            self.rclSelector.selectedNode = nodes[1];
+			        end;
+			    end;
+			</event>
 		</recordList>
 		
 		<dataScopeBox left="250" top="0" width="1000" height="600" name="boxDetalhesDoItem" visible="false">
@@ -64,7 +73,7 @@
 
 							local node = self.rclExperience:append();
 							if node~=nil then
-								local contador = #objetos;
+								local contador = 0;
 								for i=1, #objetos, 1 do
 									local aux = tonumber(objetos[i].contador) or 0;
 									if aux > contador then
@@ -139,7 +148,7 @@
 
 							local node = self.rclDinheiro:append();
 							if node~=nil then
-								local contador = #objetos;
+								local contador = 0;
 								for i=1, #objetos, 1 do
 									local aux = tonumber(objetos[i].contador) or 0;
 									if aux > contador then

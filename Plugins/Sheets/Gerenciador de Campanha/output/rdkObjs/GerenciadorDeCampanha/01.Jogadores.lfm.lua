@@ -608,7 +608,18 @@ function newfrmJogadores()
             					self.boxDetalhesDoItem.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event4 = obj.button3:addEventListener("onClick",
+    obj._e_event4 = obj.rclSelector:addEventListener("onEndEnumeration",
+        function (self)
+            if self.rclSelector.selectedNode == nil and sheet ~= nil then
+            			        local nodes = ndb.getChildNodes(sheet.listaDeJogadores);               
+            
+            			        if #nodes > 0 then
+            			            self.rclSelector.selectedNode = nodes[1];
+            			        end;
+            			    end;
+        end, obj);
+
+    obj._e_event5 = obj.button3:addEventListener("onClick",
         function (self)
             -- Aumenta um contador enquanto adiciona um objeto
             						if self.boxDetalhesDoItem.node~=nil then
@@ -616,7 +627,7 @@ function newfrmJogadores()
             
             							local node = self.rclExperience:append();
             							if node~=nil then
-            								local contador = #objetos;
+            								local contador = 0;
             								for i=1, #objetos, 1 do
             									local aux = tonumber(objetos[i].contador) or 0;
             									if aux > contador then
@@ -630,7 +641,7 @@ function newfrmJogadores()
             						end;
         end, obj);
 
-    obj._e_event5 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event6 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local mod = self.boxDetalhesDoItem.node.XP or "0";
             						mod = string.gsub(mod, "%.", "");
@@ -654,7 +665,7 @@ function newfrmJogadores()
             						self.boxDetalhesDoItem.node.alvo = mod2;
         end, obj);
 
-    obj._e_event6 = obj.rclExperience:addEventListener("onCompare",
+    obj._e_event7 = obj.rclExperience:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista. 
             				        if (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
@@ -666,7 +677,7 @@ function newfrmJogadores()
             				        end;
         end, obj);
 
-    obj._e_event7 = obj.button4:addEventListener("onClick",
+    obj._e_event8 = obj.button4:addEventListener("onClick",
         function (self)
             -- Aumenta um contador enquanto adiciona um objeto
             						if self.boxDetalhesDoItem.node~=nil then
@@ -674,7 +685,7 @@ function newfrmJogadores()
             
             							local node = self.rclDinheiro:append();
             							if node~=nil then
-            								local contador = #objetos;
+            								local contador = 0;
             								for i=1, #objetos, 1 do
             									local aux = tonumber(objetos[i].contador) or 0;
             									if aux > contador then
@@ -688,7 +699,7 @@ function newfrmJogadores()
             						end;
         end, obj);
 
-    obj._e_event8 = obj.rclDinheiro:addEventListener("onCompare",
+    obj._e_event9 = obj.rclDinheiro:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista. 
             				        if (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
@@ -700,7 +711,7 @@ function newfrmJogadores()
             				        end;
         end, obj);
 
-    obj._e_event9 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event10 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local mod = (tonumber(self.boxDetalhesDoItem.node.presenca) or 0)*4 + 
             										(tonumber(self.boxDetalhesDoItem.node.atrasoJustificado) or 0)*2 + 
@@ -712,12 +723,13 @@ function newfrmJogadores()
             						self.boxDetalhesDoItem.node.ph = math.max(math.floor(mod/10), 0);
         end, obj);
 
-    obj._e_event10 = obj.image1:addEventListener("onStartDrag",
+    obj._e_event11 = obj.image1:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event11);
         __o_rrpgObjs.removeEventListenerById(self._e_event10);
         __o_rrpgObjs.removeEventListenerById(self._e_event9);
         __o_rrpgObjs.removeEventListenerById(self._e_event8);

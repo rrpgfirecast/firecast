@@ -2,6 +2,10 @@
 Gerenciador de informações de campanha. Feito para ajudar jogadores e mestres a manterem notas organizadas sobre o jogo. 
 Proximas Versões:
 
+Versão 09:
+* Removidas abas antigas. 
+* Ajustes menores. 
+
 28 de Setembro de 2017
 Versão 08
 * Removidos botões de organizar. Agora a ficha deve faze-lo automaticamente. 

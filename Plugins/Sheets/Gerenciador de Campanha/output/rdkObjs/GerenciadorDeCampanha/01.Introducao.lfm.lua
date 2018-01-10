@@ -231,7 +231,19 @@ function newfrmGerenciador01()
             						return (utils.compareStringPtBr(mod1, mod2) * -1);
         end, obj);
 
+    obj._e_event3 = obj.rclJogadores:addEventListener("onEndEnumeration",
+        function (self)
+            if self.rclJogadores.selectedNode == nil and sheet ~= nil then
+            					        local nodes = ndb.getChildNodes(sheet.jogadores);               
+            
+            					        if #nodes > 0 then
+            					            self.rclJogadores.selectedNode = nodes[1];
+            					        end;
+            					    end;
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
