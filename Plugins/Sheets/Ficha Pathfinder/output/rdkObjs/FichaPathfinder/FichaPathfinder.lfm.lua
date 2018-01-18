@@ -27561,15 +27561,34 @@ function newfrmFichaRPGmeister()
     obj.label734:setWidth(120);
     obj.label734:setHeight(20);
     obj.label734:setText("CONHEÇA A MESA:");
+    obj.label734:setFontSize(11);
     obj.label734:setName("label734");
 
     obj.button117 = gui.fromHandle(_obj_newObject("button"));
     obj.button117:setParent(obj.scrollBox12);
-    obj.button117:setLeft(740);
+    obj.button117:setLeft(730);
     obj.button117:setTop(525);
     obj.button117:setWidth(100);
     obj.button117:setText("RPGmeister");
     obj.button117:setName("button117");
+
+    obj.button118 = gui.fromHandle(_obj_newObject("button"));
+    obj.button118:setParent(obj.scrollBox12);
+    obj.button118:setLeft(840);
+    obj.button118:setTop(525);
+    obj.button118:setWidth(100);
+    obj.button118:setHeight(20);
+    obj.button118:setText("Exportar Ficha");
+    obj.button118:setName("button118");
+
+    obj.button119 = gui.fromHandle(_obj_newObject("button"));
+    obj.button119:setParent(obj.scrollBox12);
+    obj.button119:setLeft(950);
+    obj.button119:setTop(525);
+    obj.button119:setWidth(100);
+    obj.button119:setHeight(20);
+    obj.button119:setText("Importar Ficha");
+    obj.button119:setName("button119");
 
     obj._e_event0 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
@@ -34792,7 +34811,45 @@ function newfrmFichaRPGmeister()
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
+    obj._e_event424 = obj.button118:addEventListener("onClick",
+        function (self)
+            local export = ndb.load("export.xml");
+            				export.clone = sheet;
+            
+            				setTimeout(
+            						function ()
+            							local stream = vhd.openFile("export.xml");
+            							Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml");
+            						end, 
+            						2500
+            					);
+        end, obj);
+
+    obj._e_event425 = obj.button119:addEventListener("onClick",
+        function (self)
+            Dialogs.openFile("Importar Ficha", "application/xml", false, 
+            					function(arquivos)
+            						local arq = arquivos[1];
+            
+            						local stream = vhd.openFile("import.xml", "w");
+            						stream:copyFrom(arq.stream, arq.stream.size);
+            
+            
+            						setTimeout(
+            								function ()
+            									stream:close();
+            									local import = ndb.load("import.xml");
+            									sheet = import.clone;
+            								end, 
+            								2500
+            							);
+            
+            					end);
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event425);
+        __o_rrpgObjs.removeEventListenerById(self._e_event424);
         __o_rrpgObjs.removeEventListenerById(self._e_event423);
         __o_rrpgObjs.removeEventListenerById(self._e_event422);
         __o_rrpgObjs.removeEventListenerById(self._e_event421);
@@ -36483,6 +36540,7 @@ function newfrmFichaRPGmeister()
         if self.textEditor33 ~= nil then self.textEditor33:destroy(); self.textEditor33 = nil; end;
         if self.textEditor21 ~= nil then self.textEditor21:destroy(); self.textEditor21 = nil; end;
         if self.layout179 ~= nil then self.layout179:destroy(); self.layout179 = nil; end;
+        if self.button119 ~= nil then self.button119:destroy(); self.button119 = nil; end;
         if self.rectangle60 ~= nil then self.rectangle60:destroy(); self.rectangle60 = nil; end;
         if self.label513 ~= nil then self.label513:destroy(); self.label513 = nil; end;
         if self.dataLink56 ~= nil then self.dataLink56:destroy(); self.dataLink56 = nil; end;
@@ -36928,6 +36986,7 @@ function newfrmFichaRPGmeister()
         if self.layout135 ~= nil then self.layout135:destroy(); self.layout135 = nil; end;
         if self.scrollBox11 ~= nil then self.scrollBox11:destroy(); self.scrollBox11 = nil; end;
         if self.imageCheckBox4 ~= nil then self.imageCheckBox4:destroy(); self.imageCheckBox4 = nil; end;
+        if self.button118 ~= nil then self.button118:destroy(); self.button118 = nil; end;
         if self.edit709 ~= nil then self.edit709:destroy(); self.edit709 = nil; end;
         if self.textEditor55 ~= nil then self.textEditor55:destroy(); self.textEditor55 = nil; end;
         if self.edit781 ~= nil then self.edit781:destroy(); self.edit781 = nil; end;

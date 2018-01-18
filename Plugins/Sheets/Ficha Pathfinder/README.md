@@ -1,5 +1,9 @@
 # Ficha Pathfinder
 
+Versão 2:
+- Corrigido bug com a qualidade das armas nos ataques avançados.
+- Opção para exportar e importar ficha para um arquivo xml (aba creditos).
+
 Versão 1: Adaptação da ficha RPGmeister para Pathfinder. 
 - Pericias agora seguem a regra de pathfinder apenas. 
 - Novo slot de testa adicionado. Slot de corpo dividido em dois (Corpo e Armadura).

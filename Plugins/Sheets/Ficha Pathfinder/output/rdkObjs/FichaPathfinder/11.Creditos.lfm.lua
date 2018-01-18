@@ -267,15 +267,34 @@ function newfrmFichaRPGmeister11_svg()
     obj.label12:setWidth(120);
     obj.label12:setHeight(20);
     obj.label12:setText("CONHEÇA A MESA:");
+    obj.label12:setFontSize(11);
     obj.label12:setName("label12");
 
     obj.button4 = gui.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.scrollBox1);
-    obj.button4:setLeft(740);
+    obj.button4:setLeft(730);
     obj.button4:setTop(525);
     obj.button4:setWidth(100);
     obj.button4:setText("RPGmeister");
     obj.button4:setName("button4");
+
+    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5:setParent(obj.scrollBox1);
+    obj.button5:setLeft(840);
+    obj.button5:setTop(525);
+    obj.button5:setWidth(100);
+    obj.button5:setHeight(20);
+    obj.button5:setText("Exportar Ficha");
+    obj.button5:setName("button5");
+
+    obj.button6 = gui.fromHandle(_obj_newObject("button"));
+    obj.button6:setParent(obj.scrollBox1);
+    obj.button6:setLeft(950);
+    obj.button6:setTop(525);
+    obj.button6:setWidth(100);
+    obj.button6:setHeight(20);
+    obj.button6:setText("Importar Ficha");
+    obj.button6:setName("button6");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
@@ -297,7 +316,45 @@ function newfrmFichaRPGmeister11_svg()
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
+    obj._e_event4 = obj.button5:addEventListener("onClick",
+        function (self)
+            local export = ndb.load("export.xml");
+            				export.clone = sheet;
+            
+            				setTimeout(
+            						function ()
+            							local stream = vhd.openFile("export.xml");
+            							Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml");
+            						end, 
+            						2500
+            					);
+        end, obj);
+
+    obj._e_event5 = obj.button6:addEventListener("onClick",
+        function (self)
+            Dialogs.openFile("Importar Ficha", "application/xml", false, 
+            					function(arquivos)
+            						local arq = arquivos[1];
+            
+            						local stream = vhd.openFile("import.xml", "w");
+            						stream:copyFrom(arq.stream, arq.stream.size);
+            
+            
+            						setTimeout(
+            								function ()
+            									stream:close();
+            									local import = ndb.load("import.xml");
+            									sheet = import.clone;
+            								end, 
+            								2500
+            							);
+            
+            					end);
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event5);
+        __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
@@ -330,8 +387,10 @@ function newfrmFichaRPGmeister11_svg()
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
+        if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
+        if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
