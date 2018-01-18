@@ -727,36 +727,6 @@ function newfrmFichaRPGmeister3_svg()
     obj.label26:setHorzTextAlign("center");
     obj.label26:setName("label26");
 
-    obj.label27 = gui.fromHandle(_obj_newObject("label"));
-    obj.label27:setParent(obj.layout3);
-    obj.label27:setLeft(10);
-    obj.label27:setTop(55);
-    obj.label27:setWidth(70);
-    obj.label27:setHeight(20);
-    obj.label27:setText("Pathfinder");
-    obj.label27:setName("label27");
-
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle5:setParent(obj.layout3);
-    obj.rectangle5:setLeft(80);
-    obj.rectangle5:setTop(55);
-    obj.rectangle5:setWidth(37);
-    obj.rectangle5:setHeight(20);
-    obj.rectangle5:setColor("black");
-    obj.rectangle5:setStrokeColor("white");
-    obj.rectangle5:setStrokeSize(1);
-    obj.rectangle5:setName("rectangle5");
-
-    obj.label28 = gui.fromHandle(_obj_newObject("label"));
-    obj.label28:setParent(obj.layout3);
-    obj.label28:setField("pontosPericiaPath");
-    obj.label28:setLeft(80);
-    obj.label28:setTop(55);
-    obj.label28:setWidth(37);
-    obj.label28:setHeight(20);
-    obj.label28:setHorzTextAlign("center");
-    obj.label28:setName("label28");
-
     obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.scrollBox1);
     obj.layout4:setLeft(940);
@@ -793,16 +763,6 @@ function newfrmFichaRPGmeister3_svg()
     obj.button3:setHint("Vai apagar todas perícias atuais. ");
     obj.button3:setName("button3");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
-    obj.button4:setParent(obj.layout4);
-    obj.button4:setText("Padrão Pathfinder");
-    obj.button4:setLeft(0);
-    obj.button4:setTop(75);
-    obj.button4:setWidth(125);
-    obj.button4:setHeight(25);
-    obj.button4:setHint("Vai apagar todas perícias atuais. ");
-    obj.button4:setName("button4");
-
     obj._e_event0 = obj.rclListaDasPericias:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
@@ -830,13 +790,7 @@ function newfrmFichaRPGmeister3_svg()
             dndSkills();
         end, obj);
 
-    obj._e_event5 = obj.button4:addEventListener("onClick",
-        function (self)
-            pathSkills();
-        end, obj);
-
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
@@ -854,7 +808,6 @@ function newfrmFichaRPGmeister3_svg()
         end;
 
         if self.rclListaDasPericias ~= nil then self.rclListaDasPericias:destroy(); self.rclListaDasPericias = nil; end;
-        if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
         if self.checkBox5 ~= nil then self.checkBox5:destroy(); self.checkBox5 = nil; end;
         if self.label14 ~= nil then self.label14:destroy(); self.label14 = nil; end;
         if self.flowPart8 ~= nil then self.flowPart8:destroy(); self.flowPart8 = nil; end;
@@ -890,8 +843,6 @@ function newfrmFichaRPGmeister3_svg()
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
-        if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
-        if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.checkBox2 ~= nil then self.checkBox2:destroy(); self.checkBox2 = nil; end;
         if self.flowPart3 ~= nil then self.flowPart3:destroy(); self.flowPart3 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
@@ -926,7 +877,6 @@ function newfrmFichaRPGmeister3_svg()
         if self.edit10 ~= nil then self.edit10:destroy(); self.edit10 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
-        if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
         self:_oldLFMDestroy();
     end;
 

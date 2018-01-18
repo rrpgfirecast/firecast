@@ -27,7 +27,7 @@
 
             -- Adicionando bônus de melhoria ou de qualidade Obra-Prima ao acerto
     		local pen = tonumber(sheet.weapon.qualidade) or 0;
-            if utils.compareStringPtBr(sheet.weapon.qualidade, "Obra-Prima") or utils.compareStringPtBr(sheet.weapon.qualidade, "OP") then
+            if utils.compareStringPtBr(sheet.weapon.qualidade, "Obra-Prima")==0 or utils.compareStringPtBr(sheet.weapon.qualidade, "OP")==0 or utils.compareStringPtBr(sheet.weapon.qualidade, "ObraPrima")==0  then
     			pen = 1;
     		end;
     		pen = pen + (tonumber(node.buffAtaque) or 0);

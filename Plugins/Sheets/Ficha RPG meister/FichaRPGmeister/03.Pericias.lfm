@@ -192,10 +192,6 @@
 				<label left="10" top="30" width="70" height="20" text="DnD3.5"/>
 				<rectangle left="80" top="30" width="37" height="20" color="black" strokeColor="white" strokeSize="1"/>
                 <label field="pontosPericia" left="80" top="30" width="37" height="20" horzTextAlign="center"/>
-
-                <label left="10" top="55" width="70" height="20" text="Pathfinder"/>
-				<rectangle left="80" top="55" width="37" height="20" color="black" strokeColor="white" strokeSize="1"/>
-                <label field="pontosPericiaPath" left="80" top="55" width="37" height="20" horzTextAlign="center"/>
 		</layout>
 
 		<layout left="940" top="520" width="135" height="200">
@@ -208,7 +204,6 @@
 				</event>
 			</button>
 			<button text="Padrão DnD3.5" left="0" top="50" width="125" height="25" onClick="dndSkills();" hint="Vai apagar todas perícias atuais. "/>
-			<button text="Padrão Pathfinder" left="0" top="75" width="125" height="25" onClick="pathSkills();" hint="Vai apagar todas perícias atuais. "/>
 		</layout>
 	</scrollBox>
 </form>

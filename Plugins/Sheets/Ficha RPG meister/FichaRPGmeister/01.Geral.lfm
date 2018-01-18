@@ -936,68 +936,6 @@
 				</dataLink>
 			</layout>
 
-			<layout left="0" top="95" width="180" height="25">
-				<button left="5" top="0" width="40" height="25" text="BMC" fontSize="11">
-					<event name="onClick">
-						local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.bmc or "0"));
-						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de BMC de " .. (sheet.nome or "NOME"));
-					</event>
-				</button>
-				<rectangle left="46" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
-				<label left="46" width="35" height="25" field="bmc" horzTextAlign="center"/>
-
-				<label left="83" top="0" width="50" height="25" text="BMD"/>
-				<rectangle left="112" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
-				<label left="112" width="35" height="25" field="bmd" horzTextAlign="center"/>
-
-				<button left="150" top="0" width="25" height="25" name="ManeuverBt" text="i">
-					<event name="onClick">
-						local pop = self:findControlByName("popManeuver");
-					
-						if pop ~= nil then
-							pop:setNodeObject(self.sheet);
-							pop:showPopupEx("rightCenter", self.ManeuverBt);
-						else
-							showMessage("Ops, bug.. nao encontrei o popup de manobra para exibir");
-						end;
-						</event>
-				</button>
-
-				<dataLink fields="{'bba', 'efetModFor', 'bmcTamanho', 'bmcOutros', 'destrezaBMC', 'bmcDiversos', 'bmdTamanho', 'bmdOutros', 'efetModDes', 'bmdDiversos'}"> 
-					<event name="onChange">
-						if sheet~= nil then
-							if debug then
-								local mesa = rrpg.getMesaDe(sheet);
-								mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando BMC/BMD.");
-								index = index + 1;
-							end;
-							local bba = tonumber(sheet.bba) or 0;
-							local str = tonumber(sheet.efetModFor) or 0;
-							local bmcTamanho = tonumber(sheet.bmcTamanho) or 0;
-							local bmcOutros = tonumber(sheet.bmcOutros) or 0;
-							local destrezaBMC = sheet.destrezaBMC;
-							local bmcDiversos = tonumber(sheet.bmcDiversos) or 0;
-							local bmdTamanho = tonumber(sheet.bmdTamanho) or 0;
-							local bmdOutros = tonumber(sheet.bmdOutros) or 0;
-							local dex = tonumber(sheet.efetModDes) or 0;
-							local bmdDiversos = tonumber(sheet.bmdDiversos) or 0;
-
-							local bmc = bba + bmcTamanho + bmcOutros + bmcDiversos;
-							if destrezaBMC then
-								bmc = bmc + dex;
-							else 
-								bmc = bmc + str;
-							end;
-
-							local bmd = 10 + bba + bmdTamanho + bmdOutros + bmdDiversos + str + dex;
-
-							sheet.bmc = bmc;
-							sheet.bmd = bmd;
-						end;
-					</event>
-				</dataLink>
-			</layout>
 		</layout>
 
 		<rectangle left="0" top="505" width="140" height="115" color="black">

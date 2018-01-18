@@ -3,6 +3,11 @@ Proximas Versões
 + Tiro Multiplo Aprimorado pra ataques avançados. 
 + Dar uma olhada nas questões de ajuste de tamanho da ficha para telas pequenas. 
 
+Versão 29
+- Corrigido bug com a qualidade das armas nos ataques avançados.
+- Removido conteudo de pathfinder. 
+- Opção para exportar e importar ficha para um arquivo xml (aba creditos).
+
 Versão 28:
 - Agora se a quantidade base de magias for vazio o total é exibido vazio (não somando 0 com o bônus do atributo). 
 - Adicionado espaço para colocar dinheiro total do personagem. A ficha vai calcular os gastos e exibir quanto resta para gastar. 
