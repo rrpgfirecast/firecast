@@ -25,7 +25,7 @@
 		
 		<label left="630" top="400" width="90" height="20" text="SUA VERSÃO:"/>
 		<rectangle left="724" top="399" width="102" height="22" color="white" strokeColor="black" strokeSize="1"/>
-		<image left="725" top="400" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao01.png"/>
+		<image left="725" top="400" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao02.png"/>
 		
 		<label left="620" top="430" width="100" height="20" text="VERSÃO ATUAL:"/>
 		<rectangle left="724" top="429" width="102" height="22" color="white" strokeColor="black" strokeSize="1"/>
@@ -45,7 +45,11 @@
 				setTimeout(
 						function ()
 							local stream = vhd.openFile("export.xml");
-							Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml");
+							Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
+								function()
+									stream:close();
+									showMessage("Ficha Exportada.");
+								end);
 						end, 
 						2500
 					);
@@ -63,19 +67,43 @@
 						local stream = vhd.openFile("import.xml", "w");
 						stream:copyFrom(arq.stream, arq.stream.size);
 
-
 						setTimeout(
 								function ()
 									stream:close();
 									local import = ndb.load("import.xml");
-									sheet = import.clone;
+									
+									local allAtts = ndb.getAttributes(import.clone);
+
+									local mesa = rrpg.getMesaDe(sheet);
+									for k, v in pairs(allAtts) do
+										sheet[k] = v;
+									end;
+									
+									sheet.campoDosAtaques = import.clone.campoDosAtaques;
+
+									sheet.campoDasPericias = import.clone.campoDasPericias;
+									sheet.campoDosIdiomas = import.clone.campoDosIdiomas;
+
+									sheet.campoDosTalentos = import.clone.campoDosTalentos;
+									sheet.campoDosOutros = import.clone.campoDosOutros;
+									sheet.campoDasCaracteristicasClasse = import.clone.campoDasCaracteristicasClasse;
+
+									sheet.campoDosItens = import.clone.campoDosItens;
+
+									sheet.campoDasArmas = import.clone.campoDasArmas;
+									sheet.itensConsumiveis = import.clone.itensConsumiveis;
+
+									sheet.campoDosCompanheiros = import.clone.campoDosCompanheiros;
+
+									import = {};
+
+									showMessage("Ficha Importa.");
 								end, 
-								2500
+								3000
 							);
 
 					end);
 			</event>
 		</button>
-
     </scrollBox>
 </form>

@@ -203,7 +203,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.image2:setWidth(100);
     obj.image2:setHeight(20);
     obj.image2:setStyle("autoFit");
-    obj.image2:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao01.png");
+    obj.image2:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao02.png");
     obj.image2:setName("image2");
 
     obj.label11 = gui.fromHandle(_obj_newObject("label"));
@@ -324,7 +324,11 @@ function newfrmFichaRPGmeister11_svg()
             				setTimeout(
             						function ()
             							local stream = vhd.openFile("export.xml");
-            							Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml");
+            							Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
+            								function()
+            									stream:close();
+            									showMessage("Ficha Exportada.");
+            								end);
             						end, 
             						2500
             					);
@@ -339,14 +343,39 @@ function newfrmFichaRPGmeister11_svg()
             						local stream = vhd.openFile("import.xml", "w");
             						stream:copyFrom(arq.stream, arq.stream.size);
             
-            
             						setTimeout(
             								function ()
             									stream:close();
             									local import = ndb.load("import.xml");
-            									sheet = import.clone;
+            									
+            									local allAtts = ndb.getAttributes(import.clone);
+            
+            									local mesa = rrpg.getMesaDe(sheet);
+            									for k, v in pairs(allAtts) do
+            										sheet[k] = v;
+            									end;
+            									
+            									sheet.campoDosAtaques = import.clone.campoDosAtaques;
+            
+            									sheet.campoDasPericias = import.clone.campoDasPericias;
+            									sheet.campoDosIdiomas = import.clone.campoDosIdiomas;
+            
+            									sheet.campoDosTalentos = import.clone.campoDosTalentos;
+            									sheet.campoDosOutros = import.clone.campoDosOutros;
+            									sheet.campoDasCaracteristicasClasse = import.clone.campoDasCaracteristicasClasse;
+            
+            									sheet.campoDosItens = import.clone.campoDosItens;
+            
+            									sheet.campoDasArmas = import.clone.campoDasArmas;
+            									sheet.itensConsumiveis = import.clone.itensConsumiveis;
+            
+            									sheet.campoDosCompanheiros = import.clone.campoDosCompanheiros;
+            
+            									import = {};
+            
+            									showMessage("Ficha Importa.");
             								end, 
-            								2500
+            								3000
             							);
             
             					end);
