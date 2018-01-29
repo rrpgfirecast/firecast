@@ -162,16 +162,6 @@ function newfrmTemplate()
     obj.button2:setHint("Adiciona objetos a lista com contador em relação ao tamanho da lista");
     obj.button2:setName("button2");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
-    obj.button3:setParent(obj.scrollBox1);
-    obj.button3:setLeft(215);
-    obj.button3:setTop(255);
-    obj.button3:setWidth(25);
-    obj.button3:setHeight(25);
-    obj.button3:setText("O");
-    obj.button3:setHint("Organizar");
-    obj.button3:setName("button3");
-
     obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.scrollBox1);
     obj.rectangle3:setLeft(0);
@@ -250,15 +240,15 @@ function newfrmTemplate()
 			
 
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
-    obj.button4:setParent(obj.scrollBox1);
-    obj.button4:setLeft(100);
-    obj.button4:setTop(0);
-    obj.button4:setWidth(25);
-    obj.button4:setHeight(25);
-    obj.button4:setText("R");
-    obj.button4:setHint("Botao que faz rolagem de teste");
-    obj.button4:setName("button4");
+    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3:setParent(obj.scrollBox1);
+    obj.button3:setLeft(100);
+    obj.button3:setTop(0);
+    obj.button3:setWidth(25);
+    obj.button3:setHeight(25);
+    obj.button3:setText("R");
+    obj.button3:setHint("Botao que faz rolagem de teste");
+    obj.button3:setName("button3");
 
     obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.scrollBox1);
@@ -269,25 +259,15 @@ function newfrmTemplate()
     obj.edit1:setField("roll");
     obj.edit1:setName("edit1");
 
-    obj.button5 = gui.fromHandle(_obj_newObject("button"));
-    obj.button5:setParent(obj.scrollBox1);
-    obj.button5:setLeft(250);
-    obj.button5:setTop(0);
-    obj.button5:setWidth(25);
-    obj.button5:setHeight(25);
-    obj.button5:setText("+");
-    obj.button5:setHint("Adicionar");
-    obj.button5:setName("button5");
-
-    obj.button6 = gui.fromHandle(_obj_newObject("button"));
-    obj.button6:setParent(obj.scrollBox1);
-    obj.button6:setLeft(275);
-    obj.button6:setTop(0);
-    obj.button6:setWidth(25);
-    obj.button6:setHeight(25);
-    obj.button6:setText("O");
-    obj.button6:setHint("Organizar");
-    obj.button6:setName("button6");
+    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4:setParent(obj.scrollBox1);
+    obj.button4:setLeft(250);
+    obj.button4:setTop(0);
+    obj.button4:setWidth(25);
+    obj.button4:setHeight(25);
+    obj.button4:setText("+");
+    obj.button4:setHint("Adicionar");
+    obj.button4:setName("button4");
 
     obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.scrollBox1);
@@ -334,23 +314,23 @@ function newfrmTemplate()
     obj.edit2:setField("nome");
     obj.edit2:setName("edit2");
 
-    obj.button7 = gui.fromHandle(_obj_newObject("button"));
-    obj.button7:setParent(obj.scrollBox1);
-    obj.button7:setLeft(250);
-    obj.button7:setTop(290);
-    obj.button7:setWidth(100);
-    obj.button7:setHeight(100);
-    obj.button7:setHint("click to change image");
-    obj.button7:setName("button7");
+    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5:setParent(obj.scrollBox1);
+    obj.button5:setLeft(250);
+    obj.button5:setTop(290);
+    obj.button5:setWidth(100);
+    obj.button5:setHeight(100);
+    obj.button5:setHint("click to change image");
+    obj.button5:setName("button5");
 
     obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink1:setParent(obj.button7);
+    obj.dataLink1:setParent(obj.button5);
     obj.dataLink1:setField("clickableImage");
     obj.dataLink1:setDefaultValue("http://firecast.blob.core.windows.net/blobs/KEMDMPRM_386214.png");
     obj.dataLink1:setName("dataLink1");
 
     obj.image1 = gui.fromHandle(_obj_newObject("image"));
-    obj.image1:setParent(obj.button7);
+    obj.image1:setParent(obj.button5);
     obj.image1:setAlign("client");
     obj.image1:setField("clickableImage");
     obj.image1:setMargins({left=5, right=5, top=5, bottom=5});
@@ -1019,21 +999,21 @@ function newfrmTemplate()
     obj.image6:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao01.png");
     obj.image6:setName("image6");
 
-    obj.button8 = gui.fromHandle(_obj_newObject("button"));
-    obj.button8:setParent(obj.scrollBox4);
-    obj.button8:setLeft(555);
-    obj.button8:setTop(350);
-    obj.button8:setWidth(100);
-    obj.button8:setText("Change Log");
-    obj.button8:setName("button8");
+    obj.button6 = gui.fromHandle(_obj_newObject("button"));
+    obj.button6:setParent(obj.scrollBox4);
+    obj.button6:setLeft(555);
+    obj.button6:setTop(350);
+    obj.button6:setWidth(100);
+    obj.button6:setText("Change Log");
+    obj.button6:setName("button6");
 
-    obj.button9 = gui.fromHandle(_obj_newObject("button"));
-    obj.button9:setParent(obj.scrollBox4);
-    obj.button9:setLeft(667);
-    obj.button9:setTop(350);
-    obj.button9:setWidth(100);
-    obj.button9:setText("Atualizar");
-    obj.button9:setName("button9");
+    obj.button7 = gui.fromHandle(_obj_newObject("button"));
+    obj.button7:setParent(obj.scrollBox4);
+    obj.button7:setLeft(667);
+    obj.button7:setTop(350);
+    obj.button7:setWidth(100);
+    obj.button7:setText("Atualizar");
+    obj.button7:setName("button7");
 
     obj.label29 = gui.fromHandle(_obj_newObject("label"));
     obj.label29:setParent(obj.scrollBox4);
@@ -1044,21 +1024,21 @@ function newfrmTemplate()
     obj.label29:setText("Conheça as Mesas:");
     obj.label29:setName("label29");
 
-    obj.button10 = gui.fromHandle(_obj_newObject("button"));
-    obj.button10:setParent(obj.scrollBox4);
-    obj.button10:setLeft(555);
-    obj.button10:setTop(425);
-    obj.button10:setWidth(100);
-    obj.button10:setText("RPGmeister");
-    obj.button10:setName("button10");
+    obj.button8 = gui.fromHandle(_obj_newObject("button"));
+    obj.button8:setParent(obj.scrollBox4);
+    obj.button8:setLeft(555);
+    obj.button8:setTop(425);
+    obj.button8:setWidth(100);
+    obj.button8:setText("RPGmeister");
+    obj.button8:setName("button8");
 
-    obj.button11 = gui.fromHandle(_obj_newObject("button"));
-    obj.button11:setParent(obj.scrollBox4);
-    obj.button11:setLeft(667);
-    obj.button11:setTop(425);
-    obj.button11:setWidth(125);
-    obj.button11:setText("Nome Mesa");
-    obj.button11:setName("button11");
+    obj.button9 = gui.fromHandle(_obj_newObject("button"));
+    obj.button9:setParent(obj.scrollBox4);
+    obj.button9:setLeft(667);
+    obj.button9:setTop(425);
+    obj.button9:setWidth(125);
+    obj.button9:setText("Nome Mesa");
+    obj.button9:setName("button9");
 
     obj._e_event0 = obj.colorSelector:addEventListener("onChange",
         function (self)
@@ -1117,12 +1097,7 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event5 = obj.button3:addEventListener("onClick",
-        function (self)
-            self.rclName:sort();
-        end, obj);
-
-    obj._e_event6 = obj.rclName:addEventListener("onCompare",
+    obj._e_event5 = obj.rclName:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista. 
             		        if (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
@@ -1134,7 +1109,7 @@ function newfrmTemplate()
             		        end;
         end, obj);
 
-    obj._e_event7 = obj.popupButton:addEventListener("onClick",
+    obj._e_event6 = obj.popupButton:addEventListener("onClick",
         function (self)
             local pop = self:findControlByName("popExemplo");
             				
@@ -1146,7 +1121,7 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event8 = obj.button4:addEventListener("onClick",
+    obj._e_event7 = obj.button3:addEventListener("onClick",
         function (self)
             local roll = sheet.roll or "1d1-1";
             	    		local rolagem = rrpg.interpretarRolagem(roll);
@@ -1154,68 +1129,61 @@ function newfrmTemplate()
             				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
         end, obj);
 
-    obj._e_event9 = obj.button5:addEventListener("onClick",
+    obj._e_event8 = obj.button4:addEventListener("onClick",
         function (self)
             self.rclSelector:append();
         end, obj);
 
-    obj._e_event10 = obj.button6:addEventListener("onClick",
-        function (self)
-            self.rclSelector:sort();
-        end, obj);
-
-    obj._e_event11 = obj.rclSelector:addEventListener("onCompare",
+    obj._e_event9 = obj.rclSelector:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
             		        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
-    obj._e_event12 = obj.rclSelector:addEventListener("onSelect",
+    obj._e_event10 = obj.rclSelector:addEventListener("onSelect",
         function (self)
             local node = self.rclSelector.selectedNode;
             					self.boxDetalhesDoItem.node = node; 
             					self.boxDetalhesDoItem.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event13 = obj.button7:addEventListener("onClick",
+    obj._e_event11 = obj.button5:addEventListener("onClick",
         function (self)
             if sheet.imageCounter == nil then
             					sheet.imageCounter = 0;
             				end;
             				-- Contador que vai de 0 a 9 e reseta ao passar de 9
-            				sheet.imageCounter = (sheet.imageCounter + 1) % 10;
+            				sheet.imageCounter = (sheet.imageCounter + 1) % #pics;
             				-- pegando imagem do array. O +1 é por que arrays em lua começam em 1 e não em 0
             				sheet.clickableImage = pics[sheet.imageCounter +1];
         end, obj);
 
-    obj._e_event14 = obj.image2:addEventListener("onStartDrag",
+    obj._e_event12 = obj.image2:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
-    obj._e_event15 = obj.button8:addEventListener("onClick",
+    obj._e_event13 = obj.button6:addEventListener("onClick",
         function (self)
             gui.openInBrowser('link change log')
         end, obj);
 
-    obj._e_event16 = obj.button9:addEventListener("onClick",
+    obj._e_event14 = obj.button7:addEventListener("onClick",
         function (self)
             gui.openInBrowser('link atualizar')
         end, obj);
 
-    obj._e_event17 = obj.button10:addEventListener("onClick",
+    obj._e_event15 = obj.button8:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event18 = obj.button11:addEventListener("onClick",
+    obj._e_event16 = obj.button9:addEventListener("onClick",
         function (self)
             gui.openInBrowser('link mesa');
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event18);
-        __o_rrpgObjs.removeEventListenerById(self._e_event17);
         __o_rrpgObjs.removeEventListenerById(self._e_event16);
         __o_rrpgObjs.removeEventListenerById(self._e_event15);
         __o_rrpgObjs.removeEventListenerById(self._e_event14);
@@ -1306,13 +1274,12 @@ function newfrmTemplate()
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.rectangle7 ~= nil then self.rectangle7:destroy(); self.rectangle7 = nil; end;
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
-        if self.button7 ~= nil then self.button7:destroy(); self.button7 = nil; end;
         if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
+        if self.button7 ~= nil then self.button7:destroy(); self.button7 = nil; end;
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
         if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
         if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
-        if self.button11 ~= nil then self.button11:destroy(); self.button11 = nil; end;
         if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
         if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
@@ -1326,7 +1293,6 @@ function newfrmTemplate()
         if self.colorSelector ~= nil then self.colorSelector:destroy(); self.colorSelector = nil; end;
         if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
-        if self.button10 ~= nil then self.button10:destroy(); self.button10 = nil; end;
         if self.rectangle12 ~= nil then self.rectangle12:destroy(); self.rectangle12 = nil; end;
         if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
         if self.label11 ~= nil then self.label11:destroy(); self.label11 = nil; end;

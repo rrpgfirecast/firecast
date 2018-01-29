@@ -213,7 +213,7 @@
 					sheet.imageCounter = 0;
 				end;
 				-- Contador que vai de 0 a 9 e reseta ao passar de 9
-				sheet.imageCounter = (sheet.imageCounter + 1) % 10;
+				sheet.imageCounter = (sheet.imageCounter + 1) % #pics;
 				-- pegando imagem do array. O +1 é por que arrays em lua começam em 1 e não em 0
 				sheet.clickableImage = pics[sheet.imageCounter +1];
 				]]>

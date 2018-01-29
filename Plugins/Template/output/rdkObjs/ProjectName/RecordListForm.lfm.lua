@@ -95,7 +95,9 @@ function newfrmRecordListForm()
             
             					-- Atualiza a ordem lista a cada alteração
             					local rclName = self:findControlByName("rclName");
-            					rclName:sort();
+            					if rclName~=nil then
+            						rclName:sort();
+            					end;
             				end;
         end, obj);
 
