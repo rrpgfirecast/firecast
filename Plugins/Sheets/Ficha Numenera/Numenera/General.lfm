@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeneral" align="client">
+	<scrollBox align="client">
+		<rectangle left="0" top="0" width="410" height="110" color="black">
+			<label left="5" top="5" width="100" height="25" text="NOME"/>
+			<edit vertTextAlign="center" left="100" top="5" width="300" height="25" field="nome"/>
+			
+			<label left="5" top="30" width="100" height="25" text="TIPO"/>
+			<edit vertTextAlign="center" left="100" top="30" width="300" height="25" field="tipo"/>
+			
+			<label left="5" top="55" width="100" height="25" text="DESCRITOR"/>
+			<edit vertTextAlign="center" left="100" top="55" width="300" height="25" field="descritor"/>
+			
+			<label left="5" top="80" width="100" height="25" text="FOCO"/>
+			<edit vertTextAlign="center" left="100" top="80" width="300" height="25" field="foco"/>
+		</rectangle>
+
+		<rectangle left="0" top="120" width="410" height="300" color="black">
+			<button left="5" top="5" width="25" height="25" text="+" onClick="self.rclAntecedente:append();" hint="Adicionar Antecedente"/>
+			<label left="35" top="5" width="100" height="25" text="ANTECEDENTE"/>
+			
+			<recordList left="5" top="30" width="400" height="260" name="rclAntecedente" field="listaDeAntecedentes" templateForm="frmSimpleListItem" layout="verticalTiles">
+				<event name="onCompare"><![CDATA[
+					-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
+					return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+					]]>
+				</event>
+			</recordList>
+		</rectangle>
+
+		<rectangle left="420" top="0" width="410" height="300" color="black">
+			<button left="5" top="5" width="25" height="25" text="+" onClick="self.rclHabilidadesEspeciais:append();" hint="Adicionar Habilidade Especial"/>
+			<label left="35" top="5" width="200" height="25" text="HABILIDADES ESPECIAIS"/>
+			
+			<recordList left="5" top="30" width="400" height="260" name="rclHabilidadesEspeciais" field="listaDeHabilidadesEspeciais" templateForm="frmSimpleListItem" layout="verticalTiles">
+				<event name="onCompare"><![CDATA[
+					-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
+					return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+					]]>
+				</event>
+			</recordList>
+		</rectangle>
+
+		<rectangle left="420" top="310" width="410" height="120" color="black">
+			<label left="35" top="5" width="200" height="25" text="DESENVOLVIMENTO"/>
+
+			<checkBox field="desenvolvimento0" left="5" top="35" width="200" text="AUMENTAR HABILIDADES" hint="4 pontos nos atributos."/>
+			<checkBox field="desenvolvimento1" left="5" top="55" width="200" text="IR EM DIREÇÃO A PERFEIÇÃO." hint="Adicione um a uma de suas margens. "/>
+			<checkBox field="desenvolvimento2" left="5" top="75" width="200" text="ESFORÇO EXTRA." hint="Aumente esforço em 1."/>
+			<checkBox field="desenvolvimento3" left="5" top="95" width="200" text="TREINAMENTO DE PERICIAS." hint="Torne-se treinado em uma perícia a sua escolha, ou especialize-se em uma que já for treinado. "/>
+
+			<checkBox field="desenvolvimento4" left="205" top="35" width="70" text="OUTRO"/>
+			<edit left="275" top="35" width="125" height="20" field="outroDesenvolvimento4" fontSize="11"/>
+
+			<checkBox field="desenvolvimento5" left="205" top="55" width="70" text="OUTRO"/>
+			<edit left="275" top="55" width="125" height="20" field="outroDesenvolvimento5" fontSize="11"/>
+
+			<checkBox field="desenvolvimento6" left="205" top="75" width="70" text="OUTRO"/>
+			<edit left="275" top="75" width="125" height="20" field="outroDesenvolvimento6" fontSize="11"/>
+
+			<checkBox field="desenvolvimento7" left="205" top="95" width="70" text="OUTRO"/>
+			<edit left="275" top="95" width="125" height="20" field="outroDesenvolvimento7" fontSize="11"/>
+		</rectangle>
+
+		<rectangle left="840" top="0" width="362" height="362" color="black" strokeColor="white" strokeSize="1"/>
+		<image left="841" top="1" width="360" height="360" field="avatar" editable="true" style="autoFit" >
+			<event name="OnStartDrag">
+			    drag:addData("imageURL", sheet.avatar);
+			</event>
+		</image>
+	</scrollBox>
+</form>

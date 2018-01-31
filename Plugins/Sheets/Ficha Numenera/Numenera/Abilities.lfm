@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAbilities" align="client">
+	<scrollBox align="client">
+		<rectangle left="0" top="0" width="370" height="35" color="black">
+			<label left="5" top="5" width="50" height="25" text="GRAU"/>
+			<edit vertTextAlign="center" left="50" top="5" width="50" height="25" field="grau" horzTextAlign="center"/>
+
+			<label left="110" top="5" width="50" height="25" text="ESFORÇO" fontSize="10"/>
+			<edit vertTextAlign="center" left="160" top="5" width="50" height="25" field="esforco" horzTextAlign="center"/>
+
+			<label left="215" top="5" width="50" height="25" text="XP" horzTextAlign="center"/>
+			<edit vertTextAlign="center" left="265" top="5" width="50" height="25" field="xp" horzTextAlign="center"/>
+		</rectangle>
+
+		<rectangle left="0" top="45" width="370" height="110" color="black">
+			<label left="55" top="5" width="100" height="25" text="POTÊNCIA" horzTextAlign="center"/>
+			<label left="160" top="5" width="100" height="25" text="VELOCIDADE" horzTextAlign="center"/>
+			<label left="265" top="5" width="100" height="25" text="INTELECTO" horzTextAlign="center"/>
+
+			<edit vertTextAlign="center" left="55" top="30" width="100" height="25" field="potencia" horzTextAlign="center"/>
+			<edit vertTextAlign="center" left="160" top="30" width="100" height="25" field="velocidade" horzTextAlign="center"/>
+			<edit vertTextAlign="center" left="265" top="30" width="100" height="25" field="intelecto" horzTextAlign="center"/>
+
+			<label left="5" top="55" width="100" height="25" text="Margem"/>
+			<edit vertTextAlign="center" left="80" top="55" width="50" height="25" field="potenciaMargem" horzTextAlign="center"/>
+			<edit vertTextAlign="center" left="185" top="55" width="50" height="25" field="velocidadeMargem" horzTextAlign="center"/>
+			<edit vertTextAlign="center" left="290" top="55" width="50" height="25" field="intelectoMargem" horzTextAlign="center"/>
+
+			<label left="5" top="80" width="100" height="25" text="Reserva"/>
+			<edit vertTextAlign="center" left="80" top="80" width="50" height="25" field="potenciaReserva" horzTextAlign="center"/>
+			<edit vertTextAlign="center" left="185" top="80" width="50" height="25" field="velocidadeReserva" horzTextAlign="center"/>
+			<edit vertTextAlign="center" left="290" top="80" width="50" height="25" field="intelectoReserva" horzTextAlign="center"/>
+		</rectangle>
+
+		<rectangle left="0" top="165" width="370" height="60" color="black">
+			<label left="35" top="5" width="200" height="25" text="DANO"/>
+
+			<checkBox field="dano0" left="5" top="35" width="180" text="ENFRAQUECIDO" hint="Esforço custa  ponto extra por nível aplicado. Todos os efeitos maiores e menores rolados são ignorados. 17-20 +1 Dano."/>
+			<checkBox field="dano1" left="180" top="35" width="180" text="DEBILITADO" hint="Não pode realizar ações exceto mover / rastejar. Não pode se mover se velocidade for zero. "/>
+		</rectangle>
+
+		<rectangle left="0" top="235" width="370" height="60" color="black">
+			<label left="35" top="5" width="100" height="25" text="RECUPERAÇÃO"/>
+			<edit vertTextAlign="center" left="130" top="5" width="50" height="25" field="recuperacao" horzTextAlign="center"/>
+
+			<checkBox field="recuperacao0" left="5" top="35" width="90" text="1 Ação" horzTextAlign="center"/>
+			<checkBox field="recuperacao1" left="90" top="35" width="90" text="10 Minutos" horzTextAlign="center"/>
+			<checkBox field="recuperacao2" left="180" top="35" width="90" text="1 Hora" horzTextAlign="center"/>
+			<checkBox field="recuperacao3" left="270" top="35" width="90" text="10 Horas" horzTextAlign="center"/>
+		</rectangle>
+
+		<rectangle left="0" top="305" width="370" height="35" color="black">
+			<label left="35" top="5" width="100" height="25" text="ARMADURA"/>
+			<edit vertTextAlign="center" left="130" top="5" width="50" height="25" field="armadura" horzTextAlign="center"/>
+		</rectangle>
+
+		<rectangle left="380" top="0" width="520" height="340" color="black">
+			<button left="5" top="5" width="25" height="25" text="+" onClick="self.rclPericias:append();" hint="Adicionar Pericia"/>
+			<label left="35" top="5" width="100" height="25" text="PERÍCIAS"/>
+			
+			<recordList left="5" top="30" width="510" height="300" name="rclPericias" field="listaDePericias" templateForm="frmSkillItem" layout="verticalTiles">
+				<event name="onCompare"><![CDATA[
+					-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
+					return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+					]]>
+				</event>
+			</recordList>
+		</rectangle>
+	</scrollBox>
+</form>

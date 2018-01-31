@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplateDescription" align="client">
+	<scrollBox align="client">
+		<template name="Descricao">
+			<label left="$(left1)" top="$(top)" width="90" height="20" text="$(text)" horzTextAlign="center"/>
+			<edit left="$(left2)" top="$(top)" width="200" height="25" field="$(field)" vertTextAlign="center" />
+		</template>
+		
+		<rectangle left="0" top="0" width="1205" height="105" color="black">
+			<label left="3" top="1" width="100" height="20" text="DESCRIÇÃO"/>
+
+			<Descricao left1="10" left2="100" top="25" text="TAMANHO" field="tamanho"/>
+			<Descricao left1="10" left2="100" top="50" text="ALTURA" field="altura"/>
+			<Descricao left1="10" left2="100" top="75" text="PESO" field="peso"/>
+			
+			<Descricao left1="310" left2="400" top="25" text="IDADE" field="idade"/>
+			<Descricao left1="310" left2="400" top="50" text="SEXO" field="sexo"/>
+			<Descricao left1="310" left2="400" top="75" text="OUTROS" field="aparenciaOutros"/>
+			
+			<Descricao left1="610" left2="700" top="25" text="OLHOS" field="aparenciaOlhos"/>
+			<Descricao left1="610" left2="700" top="50" text="PELE" field="pele"/>
+			<Descricao left1="610" left2="700" top="75" text="CABELO" field="cabelo"/>
+			
+			<Descricao left1="910" left2="1000" top="25" text="PLANO" field="plano"/>
+			<Descricao left1="910" left2="1000" top="50" text="REGIÃO" field="regiao"/>
+			<Descricao left1="910" left2="1000" top="75" text="REINO" field="reino"/>
+		</rectangle>
+		
+		<layout left="0" top="110" width="375" height="240">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="100" height="20" text="APARÊNCIA"/>
+			<textEditor left="5" top="25" width="365" height="210" field="aparencia"/>
+		</layout>
+		<layout left="0" top="355" width="375" height="250">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="100" height="20" text="PERSONALIDADE"/>
+			<textEditor left="5" top="25" width="365" height="220" field="personalidade"/>
+		</layout>
+		<layout left="380" top="110" width="825" height="495">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="100" height="20" text="HISTORIA"/>
+			<richEdit left="5" top="25" width="815" height="465" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+		</layout>
+	</scrollBox>
+</form>

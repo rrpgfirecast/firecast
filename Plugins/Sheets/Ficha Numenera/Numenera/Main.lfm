@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMain" formType="sheetTemplate" dataType="Ambesek.Nefertyne.Numenera" title="Ficha Numenéra" align="client" theme="dark">
+    <tabControl align="client">
+        <tab title="Geral">
+            <import file="General.lfm"/>
+        </tab>
+        <tab title="Habilidades">
+            <import file="Abilities.lfm"/>
+        </tab>
+        <tab title="Inventario">
+            <import file="Inventory.lfm"/>
+        </tab>
+        <tab title="Descrição">
+            <import file="Description.lfm"/>
+        </tab>
+        <tab title="Anotações">
+            <import file="Notes.lfm"/>
+        </tab>
+		<tab title="Creditos">
+            <import file="Credits.lfm"/>
+        </tab>
+    </tabControl>
+</form>

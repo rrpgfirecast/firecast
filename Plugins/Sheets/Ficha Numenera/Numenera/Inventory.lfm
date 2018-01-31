@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInventory" align="client">
+	<scrollBox align="client">
+		<rectangle left="0" top="0" width="275" height="600" color="black">
+			<button left="5" top="5" width="25" height="25" text="+" onClick="self.rclCifras:append();" hint="Adicionar Cifra"/>
+			<label left="35" top="5" width="100" height="25" text="CIFRAS"/>
+			
+			<recordList left="5" top="30" width="265" height="560" name="rclCifras" field="listaDeCifras" templateForm="frmCypherItem" layout="vertical">
+				<event name="onCompare"><![CDATA[
+					-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
+					return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+					]]>
+				</event>
+			</recordList>
+		</rectangle>
+
+		<rectangle left="285" top="0" width="205" height="600" color="black">
+			<button left="5" top="5" width="25" height="25" text="+" onClick="self.rclArtifacts:append();" hint="Adicionar Cifra"/>
+			<label left="35" top="5" width="200" height="25" text="ARTEFATOS e ESQUISITICES"/>
+			
+			<recordList left="5" top="30" width="200" height="560" name="rclArtifacts" field="listaDeArtefatos" templateForm="frmSimpleListItem" layout="vertical">
+				<event name="onCompare"><![CDATA[
+					-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
+					return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+					]]>
+				</event>
+			</recordList>
+		</rectangle>
+
+		<rectangle left="500" top="0" width="205" height="600" color="black">
+			<button left="5" top="5" width="25" height="25" text="+" onClick="self.rclEquipment:append();" hint="Adicionar Equipamento"/>
+			<label left="35" top="5" width="200" height="25" text="EQUIPAMENTOS   Shins"/>
+			<edit vertTextAlign="center" left="175" top="5" width="25" height="25" field="shins" horzTextAlign="center"/>
+			
+			<recordList left="5" top="30" width="200" height="560" name="rclEquipment" field="listaDeEquipamentos" templateForm="frmSimpleListItem" layout="vertical">
+				<event name="onCompare"><![CDATA[
+					-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
+					return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+					]]>
+				</event>
+			</recordList>
+		</rectangle>
+
+		<rectangle left="715" top="0" width="295" height="600" color="black">
+			<button left="5" top="5" width="25" height="25" text="+" onClick="self.rclAtaques:append();" hint="Adicionar Ataque"/>
+			<label left="35" top="5" width="250" height="25" text="ATAQUES                   MOD  DANO"/>
+			
+			<recordList left="5" top="30" width="285" height="560" name="rclAtaques" field="listaDeAtaques" templateForm="frmAttackItem" layout="vertical">
+				<event name="onCompare"><![CDATA[
+					-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
+					return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+					]]>
+				</event>
+			</recordList>
+		</rectangle>
+	</scrollBox>
+</form>
