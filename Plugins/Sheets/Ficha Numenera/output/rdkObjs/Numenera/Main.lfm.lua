@@ -1533,7 +1533,7 @@ function newfrmMain()
     obj.label43:setTop(10);
     obj.label43:setWidth(200);
     obj.label43:setHeight(20);
-    obj.label43:setText("Feito por: ");
+    obj.label43:setText("Programador: Vinny (Ambesek)");
     obj.label43:setHorzTextAlign("center");
     obj.label43:setName("label43");
 
@@ -1543,7 +1543,7 @@ function newfrmMain()
     obj.label44:setTop(35);
     obj.label44:setWidth(200);
     obj.label44:setHeight(20);
-    obj.label44:setText("Vinny (Ambesek)");
+    obj.label44:setText("Sistema: Numenéra");
     obj.label44:setHorzTextAlign("center");
     obj.label44:setName("label44");
 
@@ -1564,7 +1564,7 @@ function newfrmMain()
     obj.image4:setWidth(100);
     obj.image4:setHeight(20);
     obj.image4:setStyle("autoFit");
-    obj.image4:setSRC("link versao atual");
+    obj.image4:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Numenera/release.png");
     obj.image4:setName("image4");
 
     obj.label46 = gui.fromHandle(_obj_newObject("label"));
@@ -1619,14 +1619,6 @@ function newfrmMain()
     obj.button10:setWidth(100);
     obj.button10:setText("RPGmeister");
     obj.button10:setName("button10");
-
-    obj.button11 = gui.fromHandle(_obj_newObject("button"));
-    obj.button11:setParent(obj.scrollBox6);
-    obj.button11:setLeft(667);
-    obj.button11:setTop(425);
-    obj.button11:setWidth(125);
-    obj.button11:setText("Nome Mesa");
-    obj.button11:setName("button11");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
@@ -1712,12 +1704,12 @@ function newfrmMain()
 
     obj._e_event15 = obj.button8:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('link change log')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Numenera/README.md')
         end, obj);
 
     obj._e_event16 = obj.button9:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('link atualizar')
+            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Numenera/Ficha%20Numenera.rpk')
         end, obj);
 
     obj._e_event17 = obj.button10:addEventListener("onClick",
@@ -1725,13 +1717,7 @@ function newfrmMain()
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event18 = obj.button11:addEventListener("onClick",
-        function (self)
-            gui.openInBrowser('link mesa');
-        end, obj);
-
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event18);
         __o_rrpgObjs.removeEventListenerById(self._e_event17);
         __o_rrpgObjs.removeEventListenerById(self._e_event16);
         __o_rrpgObjs.removeEventListenerById(self._e_event15);
@@ -1871,7 +1857,6 @@ function newfrmMain()
         if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
         if self.rclArtifacts ~= nil then self.rclArtifacts:destroy(); self.rclArtifacts = nil; end;
         if self.rclAtaques ~= nil then self.rclAtaques:destroy(); self.rclAtaques = nil; end;
-        if self.button11 ~= nil then self.button11:destroy(); self.button11 = nil; end;
         if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
         if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
         if self.label36 ~= nil then self.label36:destroy(); self.label36 = nil; end;

@@ -11,12 +11,12 @@
 		</layout>
 		
 		<label left="555" top="300" width="100" height="20" text="Versão Atual: " horzTextAlign="center"/>
-		<image left="667" top="300" width="100" height="20" style="autoFit" src="link versao atual"/>
+		<image left="667" top="300" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Numenera/release.png"/>
 		<label left="555" top="325" width="100" height="20" text="Ultima Versão: " horzTextAlign="center"/>
 		<image left="667" top="325" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao01.png"/>
 			
-		<button left="555" top="350" width="100" text="Change Log" onClick="gui.openInBrowser('link change log')" />
-		<button left="667" top="350" width="100" text="Atualizar" onClick="gui.openInBrowser('link atualizar')" />
+		<button left="555" top="350" width="100" text="Change Log" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Numenera/README.md')" />
+		<button left="667" top="350" width="100" text="Atualizar" onClick="gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Numenera/Ficha%20Numenera.rpk')" />
 		
 		<label left="555" top="400" width="200" height="20" text="Conheça as Mesas:"/>
 		<button left="555" top="425" width="100" text="RPGmeister" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />

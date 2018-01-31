@@ -77,7 +77,7 @@ function newfrmTemplateCreditos()
     obj.label1:setTop(10);
     obj.label1:setWidth(200);
     obj.label1:setHeight(20);
-    obj.label1:setText("Feito por: ");
+    obj.label1:setText("Programador: Vinny (Ambesek)");
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
@@ -87,7 +87,7 @@ function newfrmTemplateCreditos()
     obj.label2:setTop(35);
     obj.label2:setWidth(200);
     obj.label2:setHeight(20);
-    obj.label2:setText("Vinny (Ambesek)");
+    obj.label2:setText("Sistema: Numenéra");
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
@@ -108,7 +108,7 @@ function newfrmTemplateCreditos()
     obj.image3:setWidth(100);
     obj.image3:setHeight(20);
     obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("link versao atual");
+    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Numenera/release.png");
     obj.image3:setName("image3");
 
     obj.label4 = gui.fromHandle(_obj_newObject("label"));
@@ -164,22 +164,14 @@ function newfrmTemplateCreditos()
     obj.button3:setText("RPGmeister");
     obj.button3:setName("button3");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
-    obj.button4:setParent(obj.scrollBox1);
-    obj.button4:setLeft(667);
-    obj.button4:setTop(425);
-    obj.button4:setWidth(125);
-    obj.button4:setText("Nome Mesa");
-    obj.button4:setName("button4");
-
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('link change log')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Numenera/README.md')
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('link atualizar')
+            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Numenera/Ficha%20Numenera.rpk')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
@@ -187,13 +179,7 @@ function newfrmTemplateCreditos()
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event3 = obj.button4:addEventListener("onClick",
-        function (self)
-            gui.openInBrowser('link mesa');
-        end, obj);
-
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
@@ -208,7 +194,6 @@ function newfrmTemplateCreditos()
           self:setNodeDatabase(nil);
         end;
 
-        if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;

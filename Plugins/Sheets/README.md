@@ -15,8 +15,12 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais).
 	- Ajuda na criação de Mobs para FFRPG.
 - Ficha Multiaba: Ambesek
 	- Ficha V3 com multiplas abas e de uso geral. 
+- Ficha Numenéra: Ambesek
+	- Ficha para o cenario e sistema Numenéra
+- Ficha Pathfinder: Ambesek
+	- Ficha para Pathfinder.
 - Ficha RPG meister: Ambesek
-	- Ficha para d20system. Usada por jogadores de D&D3.5, Pathfinder e TormentaRPG.
+	- Ficha para d20system. Usada por jogadores de D&D3.5.
 - Ficha Reinos d20
 	- Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre.  
 - Fira: Yiotoo
