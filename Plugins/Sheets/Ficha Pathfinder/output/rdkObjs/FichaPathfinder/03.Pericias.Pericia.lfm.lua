@@ -316,12 +316,6 @@ function newfrmFichaRPGmeister3p_svg()
             					path = path + (tonumber(nodes[i].graduacaoPericia) or 0);
             				end
             
-            				if node.idiomasIsClass then
-            					mod = mod + (tonumber(nodes.idiomasGrad) or 0);
-            				else
-            					mod = mod + (tonumber(nodes.idiomasGrad) or 0) * 2;
-            				end;
-            
             				node.pontosPericia = mod;
             				node.pontosPericiaPath = path;
             			end;

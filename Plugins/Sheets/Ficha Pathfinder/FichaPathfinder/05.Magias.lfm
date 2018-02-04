@@ -37,17 +37,56 @@
 				<event name="onClick">
 					local rolagem = rrpg.interpretarRolagem("1d20 +" .. self.boxDetalhesDoItem.node.NC);
 					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de conjurador de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de conjurador de " .. (sheet.nome or "NOME"));
 				</event>
 			</button>
-			<edit vertTextAlign="center" left="235" top="5" width="100" height="25" field="NC"/>
+			<edit vertTextAlign="center" left="235" top="5" width="50" height="25" field="NC"/>
 			
-			<label vertTextAlign="center" left="340" top="10" width="30" height="25" text="PM"/>
-			<edit vertTextAlign="center" left="375" top="5" width="100" height="25" field="PM"/>
-			<label vertTextAlign="center" left="480" top="10" width="30" height="25" text="Usos"/>
-			<edit vertTextAlign="center" left="515" top="5" width="100" height="25" field="usos"/>
-			<label vertTextAlign="center" left="620" top="10" width="35" height="25" text="Outros"/>
-			<edit vertTextAlign="center" left="665" top="5" width="535" height="25" field="magiasOutros"/>
+			<label vertTextAlign="center" left="290" top="10" width="30" height="25" text="PM"/>
+			<edit vertTextAlign="center" left="325" top="5" width="50" height="25" field="PM"/>
+			<edit vertTextAlign="center" left="375" top="5" width="50" height="25" field="usos"/>
+
+			<button vertTextAlign="center" left="450" top="5" width="100" height="25" text="Concentração" fontSize="11">
+				<event name="onClick">
+					local concentracao = (tonumber(self.boxDetalhesDoItem.node.concentracao) or 0);
+
+					local rolagem = rrpg.interpretarRolagem("1d20 +" .. concentracao);
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de concentração de " .. (sheet.nome or "NOME"));
+				</event>
+			</button>
+			<rectangle left="550" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label field="concentracao" left="555" top="10" width="40" height="25" vertTextAlign="center" horzTextAlign="center"/>
+
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="600" top="5" width="60" height="25" field="atributoConcentracao" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" fontColor="white"/>
+			<edit vertTextAlign="center" left="660" top="5" width="50" height="25" field="concentracaoOutros"/>
+
+			<label vertTextAlign="center" left="720" top="10" width="35" height="25" text="Outros"/>
+			<edit vertTextAlign="center" left="765" top="5" width="435" height="25" field="magiasOutros"/>
+
+			<dataLink fields="{'NC', 'atributoConcentracao', 'concentracaoOutros'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local concentracao = (tonumber(self.boxDetalhesDoItem.node.NC) or 0) + 
+										 (tonumber(self.boxDetalhesDoItem.node.concentracaoOutros) or 0);
+
+					if self.boxDetalhesDoItem.node.atributoConcentracao == "1" then
+						concentracao = concentracao + sheet.efetModFor;
+					elseif self.boxDetalhesDoItem.node.atributoConcentracao == "2" then
+						concentracao = concentracao + sheet.efetModDes;
+					elseif self.boxDetalhesDoItem.node.atributoConcentracao == "3" then
+						concentracao = concentracao + sheet.efetModCon;
+					elseif self.boxDetalhesDoItem.node.atributoConcentracao == "4" then
+						concentracao = concentracao + sheet.efetModInt;
+					elseif self.boxDetalhesDoItem.node.atributoConcentracao == "5" then
+						concentracao = concentracao + sheet.efetModSab;
+					elseif self.boxDetalhesDoItem.node.atributoConcentracao == "6" then
+						concentracao = concentracao + sheet.efetModCar;
+					end;
+
+					self.boxDetalhesDoItem.node.concentracao = concentracao;
+				</event>
+			</dataLink>
 			
 			<script>
 				local function limpar()

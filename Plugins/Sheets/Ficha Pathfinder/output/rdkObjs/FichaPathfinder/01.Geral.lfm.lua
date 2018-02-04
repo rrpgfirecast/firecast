@@ -6015,7 +6015,7 @@ function newfrmFichaRPGmeister1_svg()
     obj.label126:setTop(0);
     obj.label126:setWidth(40);
     obj.label126:setHeight(20);
-    obj.label126:setText("SURP.");
+    obj.label126:setText("DESP.");
     obj.label126:setName("label126");
 
     obj.rectangle53 = gui.fromHandle(_obj_newObject("rectangle"));
@@ -6199,7 +6199,7 @@ function newfrmFichaRPGmeister1_svg()
     obj.label134:setTop(1);
     obj.label134:setWidth(220);
     obj.label134:setHeight(20);
-    obj.label134:setText("PONTOS DE VIGOR");
+    obj.label134:setText("PONTOS DE VIDA");
     obj.label134:setName("label134");
 
     obj.label135 = gui.fromHandle(_obj_newObject("label"));
@@ -6208,7 +6208,7 @@ function newfrmFichaRPGmeister1_svg()
     obj.label135:setTop(25);
     obj.label135:setWidth(100);
     obj.label135:setHeight(20);
-    obj.label135:setText("VIGOR");
+    obj.label135:setText("REAL");
     obj.label135:setName("label135");
 
     obj.edit155 = gui.fromHandle(_obj_newObject("edit"));
@@ -6640,7 +6640,7 @@ function newfrmFichaRPGmeister1_svg()
     obj.label152:setTop(30);
     obj.label152:setWidth(50);
     obj.label152:setHeight(25);
-    obj.label152:setText("BMD");
+    obj.label152:setText("DMC");
     obj.label152:setName("label152");
 
     obj.rectangle62 = gui.fromHandle(_obj_newObject("rectangle"));

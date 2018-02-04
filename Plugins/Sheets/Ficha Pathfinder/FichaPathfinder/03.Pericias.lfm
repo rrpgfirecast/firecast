@@ -170,15 +170,12 @@
 
 		<layout left="940" top="0" width="300" height="400">
 			<rectangle align="client" color="black"/>
-			<checkBox left="60" top="5" width="19" height="15" field="idiomasIsClass"/>
-			<label text="FALAR IDIOMAS" left="80" top="1" width="135" height="20"/>
-			<edit vertTextAlign="center" horzTextAlign="center" left="50" top="25" width="30" height="20" field="idiomasGrad" type="float"/>
-			<label text="Graduações" left="90" top="25" width="135" height="20"/>
+			<label text="IDIOMAS" left="0" top="1" width="300" height="20" horzTextAlign="center"/>
 
-			<label text="Idioma" left="0" top="55" width="110" height="20" horzTextAlign="center"/>
-			<label text="Alfabeto" left="110" top="55" width="110" height="20" horzTextAlign="center"/>
+			<label text="Idioma" left="0" top="30" width="110" height="20" horzTextAlign="center"/>
+			<label text="Alfabeto" left="110" top="30" width="110" height="20" horzTextAlign="center"/>
 
-			<recordList name="rclListaDosIdiomas" field="campoDosIdiomas" templateForm="frmFichaRPGmeister3i_svg" left="5" top="75" width="290" height="320" layout="vertical">
+			<recordList name="rclListaDosIdiomas" field="campoDosIdiomas" templateForm="frmFichaRPGmeister3i_svg" left="5" top="50" width="290" height="345" layout="vertical">
 				<event name="onCompare">
 		            return utils.compareStringPtBr(nodeA.nomeIdioma, nodeB.nomeIdioma);
 		        </event>

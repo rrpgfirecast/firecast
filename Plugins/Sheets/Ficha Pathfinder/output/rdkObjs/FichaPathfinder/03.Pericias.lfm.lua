@@ -603,64 +603,35 @@ function newfrmFichaRPGmeister3_svg()
     obj.rectangle2:setColor("black");
     obj.rectangle2:setName("rectangle2");
 
-    obj.checkBox6 = gui.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox6:setParent(obj.layout2);
-    obj.checkBox6:setLeft(60);
-    obj.checkBox6:setTop(5);
-    obj.checkBox6:setWidth(19);
-    obj.checkBox6:setHeight(15);
-    obj.checkBox6:setField("idiomasIsClass");
-    obj.checkBox6:setName("checkBox6");
-
     obj.label20 = gui.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.layout2);
-    obj.label20:setText("FALAR IDIOMAS");
-    obj.label20:setLeft(80);
+    obj.label20:setText("IDIOMAS");
+    obj.label20:setLeft(0);
     obj.label20:setTop(1);
-    obj.label20:setWidth(135);
+    obj.label20:setWidth(300);
     obj.label20:setHeight(20);
+    obj.label20:setHorzTextAlign("center");
     obj.label20:setName("label20");
-
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit10:setParent(obj.layout2);
-    obj.edit10:setVertTextAlign("center");
-    obj.edit10:setHorzTextAlign("center");
-    obj.edit10:setLeft(50);
-    obj.edit10:setTop(25);
-    obj.edit10:setWidth(30);
-    obj.edit10:setHeight(20);
-    obj.edit10:setField("idiomasGrad");
-    obj.edit10:setType("float");
-    obj.edit10:setName("edit10");
 
     obj.label21 = gui.fromHandle(_obj_newObject("label"));
     obj.label21:setParent(obj.layout2);
-    obj.label21:setText("Graduações");
-    obj.label21:setLeft(90);
-    obj.label21:setTop(25);
-    obj.label21:setWidth(135);
+    obj.label21:setText("Idioma");
+    obj.label21:setLeft(0);
+    obj.label21:setTop(30);
+    obj.label21:setWidth(110);
     obj.label21:setHeight(20);
+    obj.label21:setHorzTextAlign("center");
     obj.label21:setName("label21");
 
     obj.label22 = gui.fromHandle(_obj_newObject("label"));
     obj.label22:setParent(obj.layout2);
-    obj.label22:setText("Idioma");
-    obj.label22:setLeft(0);
-    obj.label22:setTop(55);
+    obj.label22:setText("Alfabeto");
+    obj.label22:setLeft(110);
+    obj.label22:setTop(30);
     obj.label22:setWidth(110);
     obj.label22:setHeight(20);
     obj.label22:setHorzTextAlign("center");
     obj.label22:setName("label22");
-
-    obj.label23 = gui.fromHandle(_obj_newObject("label"));
-    obj.label23:setParent(obj.layout2);
-    obj.label23:setText("Alfabeto");
-    obj.label23:setLeft(110);
-    obj.label23:setTop(55);
-    obj.label23:setWidth(110);
-    obj.label23:setHeight(20);
-    obj.label23:setHorzTextAlign("center");
-    obj.label23:setName("label23");
 
     obj.rclListaDosIdiomas = gui.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDosIdiomas:setParent(obj.layout2);
@@ -668,9 +639,9 @@ function newfrmFichaRPGmeister3_svg()
     obj.rclListaDosIdiomas:setField("campoDosIdiomas");
     obj.rclListaDosIdiomas:setTemplateForm("frmFichaRPGmeister3i_svg");
     obj.rclListaDosIdiomas:setLeft(5);
-    obj.rclListaDosIdiomas:setTop(75);
+    obj.rclListaDosIdiomas:setTop(50);
     obj.rclListaDosIdiomas:setWidth(290);
-    obj.rclListaDosIdiomas:setHeight(320);
+    obj.rclListaDosIdiomas:setHeight(345);
     obj.rclListaDosIdiomas:setLayout("vertical");
 
     obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
@@ -687,24 +658,24 @@ function newfrmFichaRPGmeister3_svg()
     obj.rectangle3:setColor("black");
     obj.rectangle3:setName("rectangle3");
 
+    obj.label23 = gui.fromHandle(_obj_newObject("label"));
+    obj.label23:setParent(obj.layout3);
+    obj.label23:setText("PONTOS GASTOS");
+    obj.label23:setLeft(0);
+    obj.label23:setTop(0);
+    obj.label23:setWidth(135);
+    obj.label23:setHeight(20);
+    obj.label23:setHorzTextAlign("center");
+    obj.label23:setName("label23");
+
     obj.label24 = gui.fromHandle(_obj_newObject("label"));
     obj.label24:setParent(obj.layout3);
-    obj.label24:setText("PONTOS GASTOS");
-    obj.label24:setLeft(0);
-    obj.label24:setTop(0);
-    obj.label24:setWidth(135);
+    obj.label24:setLeft(10);
+    obj.label24:setTop(30);
+    obj.label24:setWidth(70);
     obj.label24:setHeight(20);
-    obj.label24:setHorzTextAlign("center");
+    obj.label24:setText("Pathfinder");
     obj.label24:setName("label24");
-
-    obj.label25 = gui.fromHandle(_obj_newObject("label"));
-    obj.label25:setParent(obj.layout3);
-    obj.label25:setLeft(10);
-    obj.label25:setTop(30);
-    obj.label25:setWidth(70);
-    obj.label25:setHeight(20);
-    obj.label25:setText("Pathfinder");
-    obj.label25:setName("label25");
 
     obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.layout3);
@@ -717,15 +688,15 @@ function newfrmFichaRPGmeister3_svg()
     obj.rectangle4:setStrokeSize(1);
     obj.rectangle4:setName("rectangle4");
 
-    obj.label26 = gui.fromHandle(_obj_newObject("label"));
-    obj.label26:setParent(obj.layout3);
-    obj.label26:setField("pontosPericiaPath");
-    obj.label26:setLeft(80);
-    obj.label26:setTop(30);
-    obj.label26:setWidth(37);
-    obj.label26:setHeight(20);
-    obj.label26:setHorzTextAlign("center");
-    obj.label26:setName("label26");
+    obj.label25 = gui.fromHandle(_obj_newObject("label"));
+    obj.label25:setParent(obj.layout3);
+    obj.label25:setField("pontosPericiaPath");
+    obj.label25:setLeft(80);
+    obj.label25:setTop(30);
+    obj.label25:setWidth(37);
+    obj.label25:setHeight(20);
+    obj.label25:setHorzTextAlign("center");
+    obj.label25:setName("label25");
 
     obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.scrollBox1);
@@ -824,20 +795,18 @@ function newfrmFichaRPGmeister3_svg()
         if self.flowPart7 ~= nil then self.flowPart7:destroy(); self.flowPart7 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
         if self.flowLayout1 ~= nil then self.flowLayout1:destroy(); self.flowLayout1 = nil; end;
-        if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
-        if self.checkBox6 ~= nil then self.checkBox6:destroy(); self.checkBox6 = nil; end;
+        if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
         if self.label22 ~= nil then self.label22:destroy(); self.label22 = nil; end;
-        if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.flowPart6 ~= nil then self.flowPart6:destroy(); self.flowPart6 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
         if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
-        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
@@ -874,7 +843,6 @@ function newfrmFichaRPGmeister3_svg()
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
         if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
-        if self.edit10 ~= nil then self.edit10:destroy(); self.edit10 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         self:_oldLFMDestroy();

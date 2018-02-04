@@ -222,9 +222,13 @@ function newfrmFichaRPGmeister2Aar_svg()
     		-- Dano que não se aplica a tiros multiplos
     		if sheet.ataquePoderoso then
     			local dmg = math.abs(tonumber(sheet.ataquePoderosoPen) or 0);
-    			if sheet.empunhadura=="2" then
-    				dmg = dmg * 2;
-    			end;
+    			if sheet.empunhadura=="2" or sheet.mao =="2" then
+    				dmg = dmg * 3;
+    			elseif sheet.empunhadura=="4" or sheet.mao =="1" then
+                    dmg = dmg;
+                else 
+                    dmg = dmg * 2;
+                end;
     			dado = dado .. "+" .. dmg;
     		end;
 
@@ -408,6 +412,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox1:setHeight(25);
     obj.checkBox1:setText("Furtivo");
     obj.checkBox1:setField("furtivo");
+    obj.checkBox1:setHint("Adicione aqui o seu valor de ataque furtivo no formato +xd6, sendo x a quantidade de dados extras. ");
     obj.checkBox1:setName("checkBox1");
 
     obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
@@ -438,6 +443,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox2:setHeight(25);
     obj.checkBox2:setText("Ataque Poderoso");
     obj.checkBox2:setField("ataquePoderoso");
+    obj.checkBox2:setHint("Coloque aqui a penalidade do seu ataque poderoso. Esse valor será multiplicado e adicionado ao seu dano de acordo com as regras do talento. ");
     obj.checkBox2:setName("checkBox2");
 
     obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
@@ -468,6 +474,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox3:setHeight(25);
     obj.checkBox3:setText("Espec. em Combate");
     obj.checkBox3:setField("especializacaoCombate");
+    obj.checkBox3:setHint("");
     obj.checkBox3:setName("checkBox3");
 
     obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
@@ -498,6 +505,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox4:setHeight(25);
     obj.checkBox4:setText("Tiro Multiplo");
     obj.checkBox4:setField("tiroMultiplo");
+    obj.checkBox4:setHint("");
     obj.checkBox4:setName("checkBox4");
 
     obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
@@ -528,6 +536,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox5:setHeight(25);
     obj.checkBox5:setText("Ataque Multiplo");
     obj.checkBox5:setField("ataqueMultiplo");
+    obj.checkBox5:setHint("");
     obj.checkBox5:setName("checkBox5");
 
     obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
@@ -558,6 +567,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox6:setHeight(25);
     obj.checkBox6:setText("Composto");
     obj.checkBox6:setField("composto");
+    obj.checkBox6:setHint("");
     obj.checkBox6:setName("checkBox6");
 
     obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
@@ -588,6 +598,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox7:setHeight(25);
     obj.checkBox7:setText("Limite");
     obj.checkBox7:setField("limite");
+    obj.checkBox7:setHint("");
     obj.checkBox7:setName("checkBox7");
 
     obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
@@ -618,6 +629,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox8:setHeight(25);
     obj.checkBox8:setText("Alcance");
     obj.checkBox8:setField("alcance");
+    obj.checkBox8:setHint("");
     obj.checkBox8:setName("checkBox8");
 
     obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
@@ -671,6 +683,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox9:setHeight(25);
     obj.checkBox9:setText("Rajada de Golpes");
     obj.checkBox9:setField("rajada");
+    obj.checkBox9:setHint("");
     obj.checkBox9:setName("checkBox9");
 
     obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
@@ -716,6 +729,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox10:setHeight(25);
     obj.checkBox10:setText("Tamanho");
     obj.checkBox10:setField("tamanho");
+    obj.checkBox10:setHint("");
     obj.checkBox10:setName("checkBox10");
 
     obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
@@ -761,6 +775,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox11:setHeight(25);
     obj.checkBox11:setText("Dano por Energia");
     obj.checkBox11:setField("energia");
+    obj.checkBox11:setHint("");
     obj.checkBox11:setName("checkBox11");
 
     obj.edit14 = gui.fromHandle(_obj_newObject("edit"));
@@ -806,6 +821,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox12:setHeight(25);
     obj.checkBox12:setText("Talentos");
     obj.checkBox12:setField("talentos");
+    obj.checkBox12:setHint("");
     obj.checkBox12:setName("checkBox12");
 
     obj.edit16 = gui.fromHandle(_obj_newObject("edit"));
@@ -866,6 +882,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox13:setHeight(25);
     obj.checkBox13:setText("Itens");
     obj.checkBox13:setField("itens");
+    obj.checkBox13:setHint("");
     obj.checkBox13:setName("checkBox13");
 
     obj.edit19 = gui.fromHandle(_obj_newObject("edit"));
@@ -926,6 +943,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox14:setHeight(25);
     obj.checkBox14:setText("Magias");
     obj.checkBox14:setField("magias");
+    obj.checkBox14:setHint("");
     obj.checkBox14:setName("checkBox14");
 
     obj.edit22 = gui.fromHandle(_obj_newObject("edit"));
@@ -986,6 +1004,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox15:setHeight(25);
     obj.checkBox15:setText("Extra");
     obj.checkBox15:setField("extra");
+    obj.checkBox15:setHint("");
     obj.checkBox15:setName("checkBox15");
 
     obj.edit25 = gui.fromHandle(_obj_newObject("edit"));
@@ -1046,6 +1065,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox16:setHeight(25);
     obj.checkBox16:setText("Outros");
     obj.checkBox16:setField("outros");
+    obj.checkBox16:setHint("");
     obj.checkBox16:setName("checkBox16");
 
     obj.edit28 = gui.fromHandle(_obj_newObject("edit"));

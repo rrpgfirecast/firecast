@@ -1,5 +1,12 @@
 # Ficha Pathfinder
 
+
+Versão 3:
++ Ajustados os nomes de multiplos campos de acordo com a tradução oficial. 
++ Adicionadas pericias que estavam faltando (geografia e linguistica).
++ Ajustado funcionamento de ataque poderoso. 
++ Espaço nas magias para teste de concentração (nc+atr+out)
+
 Versão 2:
 - Corrigido bug com a qualidade das armas nos ataques avançados.
 - Opção para exportar e importar ficha para um arquivo xml (aba creditos).

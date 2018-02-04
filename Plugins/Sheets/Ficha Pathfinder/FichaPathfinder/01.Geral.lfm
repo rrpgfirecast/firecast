@@ -658,7 +658,7 @@
 				<rectangle left="5" top="25" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
 				<label left="5" top="27" width="35" field="ca" horzTextAlign="center"/>
 				
-				<label left="45" top="0" width="40" height="20" text="SURP."/>
+				<label left="45" top="0" width="40" height="20" text="DESP."/>
 				<rectangle left="45" top="25" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
 				<label left="45" top="27" width="35" field="surpresa" horzTextAlign="center"/>
 				
@@ -838,9 +838,9 @@
 		</rectangle>
 
 		<rectangle left="0" top="335" width="220" height="165" color="black">
-			<label left="5" top="1" width="220" height="20" text="PONTOS DE VIGOR"/>
+			<label left="5" top="1" width="220" height="20" text="PONTOS DE VIDA"/>
 			
-			<label left="35" top="25" width="100" height="20" text="VIGOR"/>
+			<label left="35" top="25" width="100" height="20" text="REAL"/>
 			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="5" top="45" width="105" height="25" field="pvTotal"/>
 			<label left="115" top="25" width="100" height="20" text="TEMPORARIO"/>
 			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="110" top="45" width="105" height="25" field="pvTemporario"/>
@@ -975,7 +975,7 @@
 				<rectangle left="46" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
 				<label left="46" width="35" height="25" field="bmc" horzTextAlign="center"/>
 
-				<label left="10" top="30" width="50" height="25" text="BMD"/>
+				<label left="10" top="30" width="50" height="25" text="DMC"/>
 				<rectangle left="46" top="30" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
 				<label left="46" top="30" width="35" height="25" field="bmd" horzTextAlign="center"/>
 
