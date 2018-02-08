@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="468" height="100" autoScaleY="true">
+	<borders left="12" top="24" bottom="24" right="20" />
+	<draw>		
+		<!-- ParteEsquerda -->
+		<image left="0" top="0" right="84" bottom="100" overflowX="stretch" overflowY="stretch" zOrder="0">
+			<anchors left="true" top="true" bottom="true"/>
+			<source url="header0_smaller.png" left="0" right="84" top="0" bottom="100"/>
+		</image>	
+
+		<!-- Parte Direita -->
+		<image left="425" top="0" right="468" bottom="100" overflowX="stretch" overflowY="stretch" zOrder="0">
+			<anchors left="false" top="true" bottom="true" right="true"/>
+			<source url="header0_smaller.png" left="425" right="468" top="0" bottom="100"/>
+		</image>	
+		
+		<!-- Parte Central -->
+		<image left="84" top="0" right="425" bottom="100" overflowX="stretch" overflowY="stretch" zOrder="-1">
+			<anchors left="true" top="true" bottom="true" right="true"/>
+			<source url="header0_smaller.png" left="84" right="425" top="0" bottom="100"/>
+		</image>			
+		
+		<!-- fundo -->
+		<!--
+		<image left="0" top="0" right="228" bottom="94" overflowX="stretch" overflowY="stretch" zOrder="-1">
+			<anchors left="true" top="true" bottom="true" right="true"/>
+			<source url="header0_smaller.png" left="0" right="228" top="0" bottom="94"/>
+		</image>					
+		-->
+	</draw>
+	
+	<regions>
+		<region name="RegiaoSmallTitulo" left="10" top="30" right="39" bottom="70">
+			<anchors left="true" top="true" bottom="true" right="false"/>		
+		</region>
+		
+		<region name="RegiaoConteudo" left="81" top="24" right="446" bottom="76">
+			<anchors left="true" top="true" bottom="true" right="true"/>		
+		</region>	
+	</regions>	
+</frame>

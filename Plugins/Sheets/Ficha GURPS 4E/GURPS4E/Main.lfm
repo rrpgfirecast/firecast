@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplate" formType="sheetTemplate" dataType="Ambesek.Nefertyne.GURPS" title="Ficha GURPS 4E" align="client" theme="dark">
+    <import file="../styles.xml"/>
+    <import file="../templates.xml"/>
+    <tabControl align="client" name="pgcPrincipal">
+        <tab title="Atributos">
+            <import file="Atributes.xml"/>
+        </tab>
+        <tab title="Descrição">
+            <import file="Characteristics.xml"/>
+        </tab>
+        <tab title="Habilidades">
+            <import file="Abilities.xml"/>
+        </tab>
+        <tab title="Perícias">
+            <import file="Skills.xml"/>
+        </tab>
+		<tab title="Creditos">
+            <import file="Credits.lfm"/>
+        </tab>
+    </tabControl>
+</form>

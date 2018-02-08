@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAtributes" align="client">
+	<scrollBox align="client">
+		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="2" name="fraFrenteLayout">
+			
+			<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center">
+				
+				<flowLayout name="fraLayAtributos" class="tile" vertAlign="leading" autoHeight="true" minScaledWidth="290" maxControlsPerLine="2" horzAlign="center"
+							lineSpacing="10" frameStyle="frames/panel1/frame.xml" 
+							margins="{left=2, top=2, right=16, bottom=4}" avoidScale="true">
+
+					<boxAtributo titulo="ST" field="st"/>
+					<boxAtributo titulo="HT" field="ht"/>
+
+					<boxAtributo titulo="DX" field="dx"/>
+					<boxAtributo titulo="VT " field="vt"/>
+
+					<boxAtributo titulo="IQ" field="iq"/>
+					<boxAtributo titulo="PER " field="per"/>
+
+					<boxAtributo titulo="PV" field="pv"/>
+					<boxAtributo titulo="PF" field="pf"/>
+				</flowLayout>
+				
+				<flowLayout name="fraLayAtributos2" class="tile" vertAlign="leading" autoHeight="true" minScaledWidth="290" maxControlsPerLine="3" horzAlign="center"
+							lineSpacing="10" frameStyle="frames/panel1/frame.xml" 
+							margins="{left=2, top=2, right=16, bottom=4}" avoidScale="true">
+					
+					<flowPart stepSizes="{120}" minScaledWidth="120" height="145" frameStyle="frames/panel4transp/frame.xml">
+						<label align="top" text="CARGA BASE" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit align="client" class="atributo transparente" field="carga" fontSize="30"/>	
+					</flowPart>
+					<dataLink field="carga">
+						<event name="onChange">
+							if sheet==nil then return end;
+
+							local carga = tonumber(sheet.carga) or 0;
+
+							sheet.bc_0 = "Nenhuma (BC): " .. (carga);
+							sheet.bc_1 = "Leve (BCx2): " .. (carga*2);
+							sheet.bc_2 = "Média (BCx3): " .. (carga*3);
+							sheet.bc_3 = "Pesada (BCx6): " .. (carga*6);
+							sheet.bc_4 = "Muito Pesada (BCx10): " .. (carga*10);
+						</event>
+					</dataLink>
+
+					<boxAtributo titulo="VELOCIDADE" field="velocidade"/>
+					<dataLink field="atributos_mod_velocidade">
+						<event name="onChange">
+							if sheet==nil then return end;
+
+							local velocidade = tonumber(sheet.atributos_mod_velocidade) or 0;
+
+							sheet.db_0 = "DBx1: " .. (velocidade);
+							sheet.db_1 = "DBx0,8: " .. (velocidade*0.8);
+							sheet.db_2 = "DBx0,6: " .. (velocidade*0.6);
+							sheet.db_3 = "DBx0,4: " .. (velocidade*0.4);
+							sheet.db_4 = "DBx0,2: " .. (velocidade*0.2);
+						</event>
+					</dataLink>
+
+
+					<boxAtributo titulo="DESLOCAMENTO" field="deslocamento"/>
+
+					<flowPart stepSizes="{120}" minScaledWidth="120" height="145" frameStyle="frames/panel4transp/frame.xml">
+						<label left="15" top="10" width="90" height="25" field="bc_0" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="35" width="90" height="25" field="bc_1" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="60" width="90" height="25" field="bc_2" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="85" width="90" height="25" field="bc_3" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="110" width="90" height="25" field="bc_4" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					</flowPart>
+					<flowPart stepSizes="{120}" minScaledWidth="120" height="145" frameStyle="frames/panel4transp/frame.xml">
+						<label left="15" top="10" width="90" height="25" field="db_0" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="35" width="90" height="25" field="db_1" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="60" width="90" height="25" field="db_2" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="85" width="90" height="25" field="db_3" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="110" width="90" height="25" field="db_4" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					</flowPart>
+
+					<flowPart stepSizes="{120}" minScaledWidth="120" height="145" frameStyle="frames/panel4transp/frame.xml">
+						<label left="15" top="10" width="70" height="25" text="Esquiva" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit left="75" top="15" width="20" height="20" fontSize="10" field="esq_0"/>
+						<label left="15" top="35" width="90" height="25" field="esq_1" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="60" width="90" height="25" field="esq_2" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="85" width="90" height="25" field="esq_3" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="110" width="90" height="25" field="esq_4" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					</flowPart>
+					<dataLink field="esq_0">
+						<event name="onChange">
+							if sheet==nil then return end;
+
+							local esquiva = tonumber(sheet.esq_0) or 0;
+
+							sheet.esq_1 = "Esquiva-1: " .. math.max(esquiva-1, 3);
+							sheet.esq_2 = "Esquiva-2: " .. math.max(esquiva-2, 3);
+							sheet.esq_3 = "Esquiva-3: " .. math.max(esquiva-3, 3);
+							sheet.esq_4 = "Esquiva-4: " .. math.max(esquiva-4, 3);
+						</event>
+					</dataLink>
+
+					<flowPart stepSizes="{120}" minScaledWidth="120" height="145" frameStyle="frames/panel4transp/frame.xml">
+						<label align="top" text="GdP" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit align="client" class="atributo transparente" field="gdp" fontSize="30"/>	
+					</flowPart>
+
+					<flowPart stepSizes="{120}" minScaledWidth="120" height="145" frameStyle="frames/panel4transp/frame.xml">
+						<label align="top" text="GdB" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit align="client" class="atributo transparente" field="gdb" fontSize="30"/>	
+					</flowPart>
+
+				</flowLayout>
+
+
+			</flowLayout>
+
+		</flowLayout>
+
+	</scrollBox>
+</form>

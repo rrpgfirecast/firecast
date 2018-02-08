@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSkills" align="client">
+	<scrollBox align="client">
+		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraPericiasLayout">
+
+			<flowPart class="tileCarac" height="600" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
+
+				<layout align="top" height="25">
+					<label align="top" autoSize="true" text="PERÍCIAS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					<button align="left" text="+" width="25" hint="Adiciona uma perícia." horzTextAlign="center" onClick="self.rclSkills:append();" margins="{top=-10}"/>
+				</layout>
+
+				<recordList align="client" name="rclSkills" field="listaDePericias" templateForm="frmSkillItem" layout="verticalTiles">
+					<event name="onCompare"><![CDATA[
+						-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
+						return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+						]]>
+					</event>
+				</recordList>
+			</flowPart>		
+	
+		</flowLayout>
+	</scrollBox>
+</form>

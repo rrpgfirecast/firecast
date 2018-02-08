@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAbilities" align="client">
+	<scrollBox align="client">
+		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraHabilidadesLayout">
+
+			<flowPart class="tileCarac" height="515" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
+				<textEditor align="client" field="vantagens" class="transparente" margins="{top=2}" fontSize="16"/>
+				
+				<layout align="bottom">
+					<label align="bottom" autoSize="true" text="VANTAGENS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					<edit align="right" field="vantagens_pontos" width="50"/>
+				</layout>
+			</flowPart>	
+
+			<flowPart class="tileCarac" height="515" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
+				<textEditor align="client" field="desvantagens" class="transparente" margins="{top=2}" fontSize="16"/>
+
+				<layout align="bottom">
+					<label align="bottom" autoSize="true" text="DESVANTAGENS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					<edit align="right" field="desvantagens_pontos" width="50"/>
+				</layout>
+			</flowPart>		
+	
+		</flowLayout>
+	</scrollBox>
+</form>
