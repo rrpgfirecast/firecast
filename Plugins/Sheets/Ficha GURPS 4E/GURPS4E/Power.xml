@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle class="fundo">
+	<template name="magicInfoField">
+		<flowPart minWidth="30" maxWidth="400" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+		</flowPart>
+	</template>
+	<popup name="popPower" width="250" height="250" backOpacity="0.4">
+		<edit align="top" class="" field="nome" textPrompt="NOME DA MAGIA" horzTextAlign="center"/>
+	
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+			<magicInfoField text="TIPO" field="tipo"/>
+			<magicInfoField text="CUSTO" field="custo"/>
+		</flowLayout>
+		
+		<textEditor align="client" field="descricao" class=""/>
+	</popup>
+	<scrollBox align="client">
+		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraPoderesLayout">
+			
+			<flowPart class="tileCarac" height="600" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
+
+				<layout align="top" height="25">
+					<label align="top" autoSize="true" text="TECNICAS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					<button align="left" text="+" width="25" hint="Adiciona uma tecnica." horzTextAlign="center" onClick="self.rclTech:append();" margins="{top=-10}"/>
+				</layout>
+				
+				<recordList align="top" height="575" name="rclTech" field="listaDeTecnicas" templateForm="frmMagiaItemSemCheckbox" layout="vertical">
+					<event name="onCompare"><![CDATA[
+						-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
+						return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+						]]>
+					</event>
+				</recordList>
+			</flowPart>
+
+			<flowPart class="tileCarac" height="600" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
+
+				<layout align="top" height="25">
+					<label align="top" autoSize="true" text="MAGIAS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					<button align="left" text="+" width="25" hint="Adiciona uma tecnica." horzTextAlign="center" onClick="self.rclMagic:append();" margins="{top=-10}"/>
+				</layout>
+				
+				<recordList align="top" height="575" name="rclMagic" field="listaDeMagias" templateForm="frmMagiaItemSemCheckbox" layout="vertical">
+					<event name="onCompare"><![CDATA[
+						-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
+						return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+						]]>
+					</event>
+				</recordList>
+			</flowPart>
+
+		</flowLayout>
+	</scrollBox>
+</rectangle>

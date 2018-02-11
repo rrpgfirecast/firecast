@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagiaItemSemCheckbox">
+    <import file="../styles.xml"/>
+    <import file="../templates.xml"/>
+	
+	<magiaItemContent useCheckBox="false">
+	</magiaItemContent>	
+
+
+
+	<dataLink field="custo">
+		<event name="onChange">
+			pointCount();
+		</event>
+	</dataLink>
+</form>

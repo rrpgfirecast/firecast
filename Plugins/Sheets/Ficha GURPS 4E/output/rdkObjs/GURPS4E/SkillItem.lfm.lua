@@ -87,14 +87,24 @@ function newfrmSkillItem()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
+    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3:setParent(obj.rectangle1);
+    obj.rectangle3:setLeft(190);
+    obj.rectangle3:setTop(0);
+    obj.rectangle3:setWidth(30);
+    obj.rectangle3:setHeight(25);
+    obj.rectangle3:setStrokeColor("white");
+    obj.rectangle3:setColor("#FF000000");
+    obj.rectangle3:setStrokeSize(1);
+    obj.rectangle3:setHitTest(false);
+    obj.rectangle3:setName("rectangle3");
+
     obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit2:setParent(obj.rectangle1);
-    obj.edit2:setLeft(190);
-    obj.edit2:setTop(0);
-    obj.edit2:setWidth(30);
-    obj.edit2:setHeight(25);
+    obj.edit2:setParent(obj.rectangle3);
+    obj.edit2:setAlign("client");
     obj.edit2:setType("number");
     obj.edit2:setField("bonus");
+    obj.edit2:setTransparent(true);
     obj.edit2:setName("edit2");
 
     obj.label3 = gui.fromHandle(_obj_newObject("label"));
@@ -107,14 +117,24 @@ function newfrmSkillItem()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
+    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4:setParent(obj.rectangle1);
+    obj.rectangle4:setLeft(230);
+    obj.rectangle4:setTop(0);
+    obj.rectangle4:setWidth(30);
+    obj.rectangle4:setHeight(25);
+    obj.rectangle4:setStrokeColor("white");
+    obj.rectangle4:setColor("#FF000000");
+    obj.rectangle4:setStrokeSize(1);
+    obj.rectangle4:setHitTest(false);
+    obj.rectangle4:setName("rectangle4");
+
     obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit3:setParent(obj.rectangle1);
-    obj.edit3:setLeft(230);
-    obj.edit3:setTop(0);
-    obj.edit3:setWidth(30);
-    obj.edit3:setHeight(25);
+    obj.edit3:setParent(obj.rectangle4);
+    obj.edit3:setAlign("client");
     obj.edit3:setType("number");
     obj.edit3:setField("penalidade");
+    obj.edit3:setTransparent(true);
     obj.edit3:setName("edit3");
 
     obj.comboBox2 = gui.fromHandle(_obj_newObject("comboBox"));
@@ -128,14 +148,24 @@ function newfrmSkillItem()
     obj.comboBox2:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox2:setName("comboBox2");
 
+    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5:setParent(obj.rectangle1);
+    obj.rectangle5:setLeft(315);
+    obj.rectangle5:setTop(3);
+    obj.rectangle5:setWidth(25);
+    obj.rectangle5:setHeight(20);
+    obj.rectangle5:setStrokeColor("white");
+    obj.rectangle5:setColor("#FF000000");
+    obj.rectangle5:setStrokeSize(1);
+    obj.rectangle5:setHitTest(false);
+    obj.rectangle5:setName("rectangle5");
+
     obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit4:setParent(obj.rectangle1);
-    obj.edit4:setLeft(315);
-    obj.edit4:setTop(3);
-    obj.edit4:setWidth(25);
-    obj.edit4:setHeight(20);
+    obj.edit4:setParent(obj.rectangle5);
+    obj.edit4:setAlign("client");
     obj.edit4:setField("pts");
     obj.edit4:setHorzTextAlign("center");
+    obj.edit4:setTransparent(true);
     obj.edit4:setName("edit4");
 
     obj.button1 = gui.fromHandle(_obj_newObject("button"));
@@ -149,8 +179,13 @@ function newfrmSkillItem()
 
     obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.rectangle1);
-    obj.dataLink1:setFields({'atr', 'bonus', 'penalidade'});
+    obj.dataLink1:setField("pts");
     obj.dataLink1:setName("dataLink1");
+
+    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2:setParent(obj.rectangle1);
+    obj.dataLink2:setFields({'atr', 'bonus', 'penalidade'});
+    obj.dataLink2:setName("dataLink2");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
@@ -163,6 +198,11 @@ function newfrmSkillItem()
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            pointCount();
+        end, obj);
+
+    obj._e_event2 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -191,6 +231,7 @@ function newfrmSkillItem()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
@@ -204,15 +245,19 @@ function newfrmSkillItem()
           self:setNodeDatabase(nil);
         end;
 
-        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
+        if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
+        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.comboBox2 ~= nil then self.comboBox2:destroy(); self.comboBox2 = nil; end;

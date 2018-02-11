@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle class="fundo">
+	<scrollBox align="client">
+		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraInventarioLayout">
+			
+			<flowPart class="tileCarac" height="600" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
+
+				<layout align="top" height="25">
+					<label align="top" autoSize="true" text="MOCHILA" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					<button align="left" text="+" width="25" hint="" horzTextAlign="center" onClick="self.rclBackpack:append();" margins="{top=-10}"/>
+				</layout>
+
+				<recordList align="client" name="rclBackpack" field="listaDeItens" templateForm="frmBackpackItem" layout="vertical" minQt="3">
+					<event name="onCompare"><![CDATA[
+						-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
+						return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+						]]>
+					</event>
+				</recordList>
+			</flowPart>
+
+			<flowPart class="tileCarac" height="600" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
+
+				<layout align="top" height="25">
+					<label align="top" autoSize="true" text="EQUIPAMENTOS E OBJETOS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					<button align="left" text="+" width="25" hint="" horzTextAlign="center" onClick="self.rclEquipments:append();" margins="{top=-10}"/>
+				</layout>
+
+				<recordList align="client" name="rclEquipments" field="listaDeEquipamentos" templateForm="frmBackpackItem" layout="vertical">
+					<event name="onCompare"><![CDATA[
+						-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
+						return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+						]]>
+					</event>
+				</recordList>
+			</flowPart>
+
+			<flowPart class="tileCarac" height="600" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
+				<textEditor align="client" field="outrosEquipamentos" class="transparente" margins="{top=2}" fontSize="16"/>
+				
+				<label align="bottom" autoSize="true" text="EQUIPAMENTOS E POSSES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+			</flowPart>	
+
+		</flowLayout>
+	</scrollBox>
+</rectangle>

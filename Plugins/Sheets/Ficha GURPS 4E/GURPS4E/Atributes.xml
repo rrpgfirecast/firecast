@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmAtributes" align="client">
+<rectangle class="fundo">
 	<scrollBox align="client">
 		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="2" name="fraFrenteLayout">
 			
@@ -108,6 +108,17 @@
 						<edit align="client" class="atributo transparente" field="gdb" fontSize="30"/>	
 					</flowPart>
 
+					<flowLineBreak/>
+
+					<upperGridMagicBox field="pontosRestantes" titulo="PONTOS RESTANTES"/>
+					<upperGridMagicEditBox field="totalPontos" titulo="TOTAL DE PONTOS"/>
+
+					<dataLink fields="{'totalPontos', 'atributos_st', 'atributos_ht', 'atributos_dx', 'atributos_vt', 'atributos_iq', 'atributos_per', 'atributos_pv', 'atributos_pf', 'atributos_velocidade', 'atributos_deslocamento'}">
+						<event name="onChange">
+							pointCount();
+						</event>
+					</dataLink>
+					
 				</flowLayout>
 
 
@@ -116,4 +127,4 @@
 		</flowLayout>
 
 	</scrollBox>
-</form>
+</rectangle>

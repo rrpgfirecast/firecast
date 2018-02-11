@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPowerItem" width="250" height="25" margins="{top=1, right=5}">
+	<rectangle align="client" color="#212121">
+		<rectangle left="5" top="0" width="170" height="25" strokeColor="white" color="#FF000000" strokeSize="1" hitTest="false">
+			<edit align="client" field="nome" transparent="true"/>
+		</rectangle>
+		<rectangle left="175" top="0" width="25" height="25" strokeColor="white" color="#FF000000" strokeSize="1" hitTest="false">
+			<edit align="client" field="custo" transparent="true"/>
+		</rectangle>
+
+		<dataLink field="custo">
+			<event name="onChange">
+				pointCount();
+			</event>
+		</dataLink>
+
+		<button left="200" top="0" width="25" height="25" text="i">
+			<event name="onClick">
+				local pop = self:findControlByName("popPower");
+					
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:showPopupEx("bottomCenter", self);
+				else
+					showMessage("Ops, bug.. nao encontrei o popup para exibir");
+				end;				
+			</event>
+		</button>
+
+		<button left="225" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+</form>

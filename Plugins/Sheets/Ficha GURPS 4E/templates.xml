@@ -197,6 +197,12 @@
 		<button text="Apagar" align="right" width="60" margins="{left=4, right=4, top=2, bottom=2}" onClick="askForDelete();"/>		
 	</template>
 	
+	<template name="magiaItemContentEditAndLine2">
+		<edit name="edtNome" class="transparente" align="client" field="nome" margins="{left=4, right=4}" vertTextAlign="center"/>
+		<horzLine align="bottom" strokeColor="white"/>	
+		<button text="Apagar" align="right" width="60" margins="{left=4, right=4, top=2, bottom=2}" onClick="askForDelete();"/>		
+	</template>
+	
 	<template name="magiaItemContent">
 		<script> 
 			<![CDATA[			
@@ -210,7 +216,7 @@
 			end;
 
 			local function showMagiaPopup()
-				local pop = self:findControlByName("popMagia");
+				local pop = self:findControlByName("popPower");
 					
 				if pop ~= nil then
 					pop:setNodeObject(self.sheet);
@@ -231,6 +237,35 @@
 		</layout>		
 		<!-- else -->
 		<magiaItemContentEditAndLine/>
+		<!-- end; -->
+		
+		<script>self.height=32;</script>
+	</template>
+	
+	<template name="magiaItemContent2">
+		<script> 
+			<![CDATA[			
+			local function askForDelete()
+				dialogs.confirmYesNo("Deseja realmente apagar este item?",
+									 function (confirmado)
+										if confirmado then
+											ndb.deleteNode(self.sheet);
+										end;
+									 end);
+			end;
+
+			]]>		
+		</script>
+		
+		
+		
+		<!-- if (useCheckBox == "true") or (useCheckBox == true) then -->
+		<dndCheckBox align="left" field="marcacao" width="25"/>
+		<layout align="client">
+			<magiaItemContentEditAndLine/>			
+		</layout>		
+		<!-- else -->
+		<magiaItemContentEditAndLine2/>
 		<!-- end; -->
 		
 		<script>self.height=32;</script>

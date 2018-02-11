@@ -9,13 +9,19 @@
 		<comboBox left="130" top="0" width="50" height="25" field="atr" items="{'ST', 'DX', 'IQ', 'HT', 'VT', 'PR', '-'}"/>
 
 		<label left="180" top="3" width="10" height="20" text="+" horzTextAlign="center"/>
-		<edit left="190" top="0" width="30" height="25" type="number" field="bonus"/>
+		<rectangle left="190" top="0" width="30" height="25" strokeColor="white" color="#FF000000" strokeSize="1" hitTest="false">
+			<edit align="client" type="number" field="bonus" transparent="true"/>
+		</rectangle>
 		<label left="220" top="3" width="10" height="20" text="-" horzTextAlign="center"/>
-		<edit left="230" top="0" width="30" height="25" type="number" field="penalidade"/>
+		<rectangle left="230" top="0" width="30" height="25" strokeColor="white" color="#FF000000" strokeSize="1" hitTest="false">
+			<edit align="client" type="number" field="penalidade" transparent="true"/>
+		</rectangle>
 
 		<comboBox left="260" top="0" width="55" height="25" field="dificuldade" items="{'F', 'M', 'D', 'MD'}" values="{'F', 'M', 'D', 'MD'}"/>
 
-		<edit left="315" top="3" width="25" height="20" field="pts" horzTextAlign="center"/>
+		<rectangle left="315" top="3" width="25" height="20" strokeColor="white" color="#FF000000" strokeSize="1" hitTest="false">
+			<edit align="client" field="pts" horzTextAlign="center" transparent="true"/>
+		</rectangle>
 
 		<button left="340" top="0" width="25" height="25" text="X">
 			<event name="onClick">
@@ -27,6 +33,12 @@
 				end);
 			</event>
 		</button>
+
+		<dataLink field="pts">
+			<event name="onChange">
+				pointCount();
+			</event>
+		</dataLink>
 
 		<dataLink fields="{'atr', 'bonus', 'penalidade'}">
 			<event name="onChange">

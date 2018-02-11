@@ -11,6 +11,8 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais).
 	- Conteudo da mesa RPGmeister para facil acesso.
 - DnD5e: AlyssonRPG
 	- Ficha para o sistema Dungeons and Dragons Next.
+- Ficha GURPS 4E: Ambesek
+	- Ficha feita para GURPS 4ª edição.
 - FFRPG Mob Creator: Hitoshura
 	- Ajuda na criação de Mobs para FFRPG.
 - Ficha Multiaba: Ambesek
@@ -21,7 +23,7 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais).
 	- Ficha para Pathfinder.
 - Ficha RPG meister: Ambesek
 	- Ficha para d20system. Usada por jogadores de D&D3.5.
-- Ficha Reinos d20
+- Ficha Reinos d20: Ambesek
 	- Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre.  
 - Fira: Yiotoo
 - GURPS Saint Seiya Forever: Ambesek

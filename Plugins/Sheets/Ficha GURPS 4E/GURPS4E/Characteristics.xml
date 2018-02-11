@@ -1,39 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmCharacteristics" align="client">
+<rectangle class="fundo">
 	<scrollBox align="client">
 		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraCaracteristicasLayout">
 			
 			<!-- Primeira Linha -->
 			<flowLayout class="oneLineTile2" autoHeight="true" minScaledWidth="290" horzAlign="center">
 				<!-- NOME DO PERSONAGEM -->													
-				<flowPart class="tile" minWidth="320" maxWidth="1600" frameStyle="frames/banner/heroGroup.xml" height="175" vertAlign="center" avoidScale="true">							
+				<flowPart class="tile2" minWidth="320" height="175" maxWidth="1600" frameStyle="frames/banner/heroGroup.xml" vertAlign="center" avoidScale="true">
 					<layout align="client">
-							<edit field="nome" class="transparente center" fontSize="17" align="client"/>
-							<label align="bottom" text="NOME DO PERSONAGEM" class="tituloCampo" autoSize="true" margins="{left=3}"/>
+						<edit field="nome" class="transparente center" fontSize="17" align="client"/>
+						<label align="bottom" text="NOME DO PERSONAGEM" class="tituloCampo" autoSize="true" margins="{left=3}"/>
 					</layout>
 				</flowPart>				
 		
 				<!-- GRID DE INFORMACOES SUPERIORES DA FRENTE -->
-				<flowLayout class="tile"  minWidth="320" maxWidth="1600" name="fraUpperGridCaracteristicas" avoidScale="true" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" vertAlign="trailing" maxControlsPerLine="3">								
-						<upperGridCampo field="caracteristicas.idade" minWidth="100" titulo="IDADE"/>
-						<upperGridCampo field="caracteristicas.altura" titulo="ALTURA"/>
-						<upperGridCampo field="caracteristicas.peso" titulo="PESO"/>									
-						<upperGridCampo field="caracteristicas.olhos" minWidth="100" titulo="OLHOS"/>
-						<upperGridCampo field="caracteristicas.pele" titulo="PELE"/>
-						<upperGridCampo field="caracteristicas.cabelo" titulo="CABELO"/>
+				<flowLayout class="tile2"  minWidth="320" maxWidth="1600" name="fraUpperGridCaracteristicas" avoidScale="true" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" vertAlign="trailing" maxControlsPerLine="3">								
+					<upperGridCampo field="idade" minWidth="100" titulo="IDADE"/>
+					<upperGridCampo field="altura" titulo="ALTURA"/>
+					<upperGridCampo field="peso" titulo="PESO"/>									
+					<upperGridCampo field="olhos" minWidth="100" titulo="JOGADOR"/>
+					<upperGridCampo field="pele" titulo="TAMANHO"/>
+					<upperGridCampo field="cabelo" titulo="IDADE"/>
 				</flowLayout>	
+			</flowLayout>
 
-				<flowLineBreak/>
-
+			<flowLineBreak/>
+			
+			<flowLayout class="oneLineTile2" autoHeight="true" minScaledWidth="290" horzAlign="center" lineSpacing="10">
 				<flowPart class="tileCarac" height="515" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
 					<richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
 
 					<label align="bottom" autoSize="true" text="HISTORIA" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 				</flowPart>	
 
+				<flowLayout maxControlsPerLine="1" autoHeight="true" class="tileCarac" lineSpacing="10" margins="{left=4, right=4}">
+					<flowPart class="tileCarac" height="170" frameStyle="frames/panel5/centerPanel.xml" margins="{left = 4, right = 4}">
+						<label align="top" autoSize="true" text="APARÊNCIA" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						<textEditor align="client" field="aparencia" class="transparente" margins="{top=2}" fontSize="16"/>
+					</flowPart>	
+
+					<flowPart class="tileCarac" height="170" frameStyle="frames/panel5/centerPanel.xml" margins="{left = 4, right = 4}">
+						<label align="top" autoSize="true" text="ANOTAÇÕES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						<textEditor align="client" field="anotacoes" class="transparente" margins="{top=2}" fontSize="16"/>
+					</flowPart>	
+
+					<flowPart class="tileCarac" height="170" frameStyle="frames/panel5/centerPanel.xml" margins="{left = 4, right = 4}">
+						<label align="top" autoSize="true" text="PECULIARIDADES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						<textEditor align="client" field="peculiaridades" class="transparente" margins="{top=2}" fontSize="16"/>
+					</flowPart>	
+				</flowLayout>
+
+				
+
 			</flowLayout>		
 	
 		</flowLayout>
 
 	</scrollBox>
-</form>
+</rectangle>

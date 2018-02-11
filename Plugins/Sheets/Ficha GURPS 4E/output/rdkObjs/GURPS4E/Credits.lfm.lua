@@ -29,8 +29,12 @@ function newfrmTemplateCreditos()
     obj:setName("frmTemplateCreditos");
     obj:setAlign("client");
 
+    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1:setParent(obj);
+    obj.rectangle1:setName("rectangle1");
+
     obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox1:setParent(obj);
+    obj.scrollBox1:setParent(obj.rectangle1);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
@@ -54,22 +58,32 @@ function newfrmTemplateCreditos()
     obj.image2:setSRC("/GURPS4E/images/RPGmeister.jpg");
     obj.image2:setName("image2");
 
+    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3:setParent(obj.scrollBox1);
+    obj.image3:setLeft(850);
+    obj.image3:setTop(0);
+    obj.image3:setWidth(250);
+    obj.image3:setHeight(250);
+    obj.image3:setStyle("autoFit");
+    obj.image3:setSRC("/GURPS4E/images/Capa.png");
+    obj.image3:setName("image3");
+
     obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
-    obj.layout1:setLeft(850);
-    obj.layout1:setTop(0);
+    obj.layout1:setLeft(150);
+    obj.layout1:setTop(250);
     obj.layout1:setWidth(200);
     obj.layout1:setHeight(160);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle1:setParent(obj.layout1);
-    obj.rectangle1:setAlign("client");
-    obj.rectangle1:setColor("black");
-    obj.rectangle1:setXradius(5);
-    obj.rectangle1:setYradius(15);
-    obj.rectangle1:setCornerType("round");
-    obj.rectangle1:setName("rectangle1");
+    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2:setParent(obj.layout1);
+    obj.rectangle2:setAlign("client");
+    obj.rectangle2:setColor("black");
+    obj.rectangle2:setXradius(5);
+    obj.rectangle2:setYradius(15);
+    obj.rectangle2:setCornerType("round");
+    obj.rectangle2:setName("rectangle2");
 
     obj.label1 = gui.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
@@ -101,15 +115,15 @@ function newfrmTemplateCreditos()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
-    obj.image3:setParent(obj.scrollBox1);
-    obj.image3:setLeft(667);
-    obj.image3:setTop(300);
-    obj.image3:setWidth(100);
-    obj.image3:setHeight(20);
-    obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("link versao atual");
-    obj.image3:setName("image3");
+    obj.image4 = gui.fromHandle(_obj_newObject("image"));
+    obj.image4:setParent(obj.scrollBox1);
+    obj.image4:setLeft(667);
+    obj.image4:setTop(300);
+    obj.image4:setWidth(100);
+    obj.image4:setHeight(20);
+    obj.image4:setStyle("autoFit");
+    obj.image4:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20GURPS%204E/release.png");
+    obj.image4:setName("image4");
 
     obj.label4 = gui.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.scrollBox1);
@@ -117,19 +131,19 @@ function newfrmTemplateCreditos()
     obj.label4:setTop(325);
     obj.label4:setWidth(100);
     obj.label4:setHeight(20);
-    obj.label4:setText("Ultima Versão: ");
+    obj.label4:setText("Sua Versão: ");
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.image4 = gui.fromHandle(_obj_newObject("image"));
-    obj.image4:setParent(obj.scrollBox1);
-    obj.image4:setLeft(667);
-    obj.image4:setTop(325);
-    obj.image4:setWidth(100);
-    obj.image4:setHeight(20);
-    obj.image4:setStyle("autoFit");
-    obj.image4:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao01.png");
-    obj.image4:setName("image4");
+    obj.image5 = gui.fromHandle(_obj_newObject("image"));
+    obj.image5:setParent(obj.scrollBox1);
+    obj.image5:setLeft(667);
+    obj.image5:setTop(325);
+    obj.image5:setWidth(100);
+    obj.image5:setHeight(20);
+    obj.image5:setStyle("autoFit");
+    obj.image5:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao01.png");
+    obj.image5:setName("image5");
 
     obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
@@ -169,17 +183,17 @@ function newfrmTemplateCreditos()
     obj.button4:setLeft(667);
     obj.button4:setTop(425);
     obj.button4:setWidth(125);
-    obj.button4:setText("O Trono de Sol");
+    obj.button4:setText("[A] Homebound");
     obj.button4:setName("button4");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('link change log')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/README.md')
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('link atualizar')
+            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20GURPS%204E/Ficha%20GURPS%204E.rpk')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
@@ -189,7 +203,7 @@ function newfrmTemplateCreditos()
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=133655');
+            gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=131156');
         end, obj);
 
     function obj:_releaseEvents()
@@ -213,13 +227,15 @@ function newfrmTemplateCreditos()
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
-        if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.image4 ~= nil then self.image4:destroy(); self.image4 = nil; end;
-        if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
-        if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
+        if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
+        if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
+        if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
