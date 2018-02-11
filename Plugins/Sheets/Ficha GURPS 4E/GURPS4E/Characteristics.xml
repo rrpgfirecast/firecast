@@ -6,7 +6,7 @@
 			<!-- Primeira Linha -->
 			<flowLayout class="oneLineTile2" autoHeight="true" minScaledWidth="290" horzAlign="center">
 				<!-- NOME DO PERSONAGEM -->													
-				<flowPart class="tile2" minWidth="320" height="175" maxWidth="1600" frameStyle="frames/banner/heroGroup.xml" vertAlign="center" avoidScale="true">
+				<flowPart class="tile2" minWidth="320" height="175" maxWidth="1600" frameStyle="frames/banner/dragon.xml" vertAlign="center" avoidScale="true">
 					<layout align="client">
 						<edit field="nome" class="transparente center" fontSize="17" align="client"/>
 						<label align="bottom" text="NOME DO PERSONAGEM" class="tituloCampo" autoSize="true" margins="{left=3}"/>
@@ -20,7 +20,7 @@
 					<upperGridCampo field="peso" titulo="PESO"/>									
 					<upperGridCampo field="olhos" minWidth="100" titulo="JOGADOR"/>
 					<upperGridCampo field="pele" titulo="TAMANHO"/>
-					<upperGridCampo field="cabelo" titulo="IDADE"/>
+					<upperGridCampo field="cabelo" titulo="REAÇÃO"/>
 				</flowLayout>	
 			</flowLayout>
 
