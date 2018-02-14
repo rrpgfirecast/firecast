@@ -3,6 +3,9 @@ Proximas Versões
 + Tiro Multiplo Aprimorado pra ataques avançados. 
 + Dar uma olhada nas questões de ajuste de tamanho da ficha para telas pequenas. 
 
+Versão 30
+- Adicionados hint aos ataques avançados. 
+
 Versão 29
 - Corrigido bug com a qualidade das armas nos ataques avançados.
 - Removido conteudo de pathfinder. 

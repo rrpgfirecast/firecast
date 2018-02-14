@@ -38,7 +38,6 @@ function newfrmFichaRPGmeister3_svg()
 
 
 			
-			local path = ndb.load("pathskills.xml");
 			local dnd = ndb.load("dndskills.xml");
 
 			local function updateAtributes(num)
@@ -123,25 +122,6 @@ function newfrmFichaRPGmeister3_svg()
 					end;
 					if dnd[i].armadura > 1 then
 						pericia.penalidadeArmadura = true;
-					end;
-				end;
-
-				self.rclListaDasPericias:sort();
-			end;
-
-			local function pathSkills()
-				local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
-				for i=1, #nodes, 1 do
-					ndb.deleteNode(nodes[i]);
-				end
-
-				for i=1, 34, 1 do
-					local pericia = self.rclListaDasPericias:append();
-					pericia.nomePericia = path[i].nome;
-					pericia.chavePericia = path[i].chave;
-					pericia.exigeTreino = path[i].treino;
-					if path[i].armadura > 0 then
-						pericia.penalidadeArmadura2 = true;
 					end;
 				end;
 

@@ -333,7 +333,7 @@
 		end;
 	</script>
 <template name="checkEdit">
-		<checkBox left="0" top="$(top)" width="150" height="25" text="$(text)" field="$(field)"/>
+		<checkBox left="0" top="$(top)" width="150" height="25" text="$(text)" field="$(field)" hint="$(hint)"/>
 		<edit  left="150" top="$(top)" width="40" height="25" field="$(field)$(prompt1)"/>
 		<dataLink field="$(field)$(prompt1)" defaultValue="$(prompt1)" />
 		<script>
@@ -372,36 +372,36 @@
 			</event>
 		</comboBox>
 		<layout left="0" top="25" width="270" height="250">
-			<checkEdit top="0" text="Furtivo" field="furtivo" num="1" prompt1="Dano"/>
-			<checkEdit top="25" text="Ataque Poderoso" field="ataquePoderoso" num="1" prompt1="Pen"/>
-			<checkEdit top="50" text="Espec. em Combate" field="especializacaoCombate" num="1" prompt1="Pen"/>
-			<checkEdit top="75" text="Tiro Multiplo" field="tiroMultiplo" num="1" prompt1="Qtd"/>
-			<checkEdit top="100" text="Ataque Multiplo" field="ataqueMultiplo" num="1" prompt1="Qtd"/>
-			<checkEdit top="125" text="Composto" field="composto" num="1" prompt1="Lim"/>
-            <checkEdit top="150" text="Limite" field="limite" num="1" prompt1="Qtd"/>
-			<checkEdit top="175" text="Alcance" field="alcance" num="2" prompt1="Mult" prompt2="Pen"/>
+			<checkEdit top="0" text="Furtivo" field="furtivo" num="1" prompt1="Dano" hint="Adicione aqui o seu valor de ataque furtivo no formato +xd6, sendo x a quantidade de dados extras. "/>
+			<checkEdit top="25" text="Ataque Poderoso" field="ataquePoderoso" num="1" prompt1="Pen" hint="Coloque aqui a penalidade do seu ataque poderoso. Esse valor será multiplicado e adicionado ao seu dano de acordo com as regras do talento. "/>
+			<checkEdit top="50" text="Espec. em Combate" field="especializacaoCombate" num="1" prompt1="Pen" hint="Coloque aqui quanto você quer passar do seu acerto para a CA. Você precisa ajustar a CA manualmente, mas o acerto não. "/>
+			<checkEdit top="75" text="Tiro Multiplo" field="tiroMultiplo" num="1" prompt1="Qtd" hint="Coloque aqui quantas flechas deseja usar no ataque. "/>
+			<checkEdit top="100" text="Ataque Multiplo" field="ataqueMultiplo" num="1" prompt1="Qtd" hint="Coloque aqui quantos ataques naturais são feitos com essa arma. Já aplica as penalidades por ataques primarios ou secundarios."/>
+			<checkEdit top="125" text="Composto" field="composto" num="1" prompt1="Lim" hint="Bônus minimo de força necessario para usar esse arco composto. Se não possuir força minima a penalidade já é aplicada. "/>
+            <checkEdit top="150" text="Limite" field="limite" num="1" prompt1="Qtd" hint="Limita a quantidade de ataques usados em um ataque total. Util para caso o personagem não tenha todos talentos de combater com duas armas. "/>
+			<checkEdit top="175" text="Alcance" field="alcance" num="2" prompt1="Mult" prompt2="Pen" hint="Coloque no primeiro campo a quantidade de vezes que você deseja multiplicar o incremento de distancia (até 5 para armas de arremesso e até 10 para outros). No segundo a penalidade que você quer adicionar ao ataque por isso (normalmente -2/incremento)."/>
 		</layout>
 		<layout left="270" top="25" width="270" height="250">
-			<checkEdit top="0" text="Rajada de Golpes" field="rajada" num="2" prompt1="Qtd" prompt2="Pen"/>
-			<checkEdit top="25" text="Tamanho" field="tamanho" num="2" prompt1="Dado" prompt2="Pen"/>
-            <checkEdit top="50" text="Dano por Energia" field="energia" num="2" prompt1="Dano" prompt2="Crit"/>
-			<checkEdit top="75" text="Talentos" field="talentos" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq"/>
-			<checkEdit top="100" text="Itens" field="itens" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq"/>
-			<checkEdit top="125" text="Magias" field="magias" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq"/>
-			<checkEdit top="150" text="Extra" field="extra" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq"/>
-			<checkEdit top="175" text="Outros" field="outros" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq"/>
+			<checkEdit top="0" text="Rajada de Golpes" field="rajada" num="2" prompt1="Qtd" prompt2="Pen" hint="Quantos golpes serão feitos na rajada de golpes e a penalidade aplicada neles. "/>
+			<checkEdit top="25" text="Tamanho" field="tamanho" num="2" prompt1="Dado" prompt2="Pen" hint="Coloque aqui o novo dado de dano por aumento ou diminuição de tamanho do personagem e a penalidade ou bônus adequado. Se for em descrição e mudar o tamanho do personage a penalidade vai automaticamente. "/>
+            <checkEdit top="50" text="Dano por Energia" field="energia" num="2" prompt1="Dano" prompt2="Crit" hint="Coloque aqui qualquer dano extra por energia da arma, assim como dano extra por energia em sucessos decisivos. Normalmente ganhos por armas flamejantes e da explosão flamejante, ou similares. "/>
+			<checkEdit top="75" text="Talentos" field="talentos" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por talentos."/>
+			<checkEdit top="100" text="Itens" field="itens" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por itens."/>
+			<checkEdit top="125" text="Magias" field="magias" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por efeitos magicos."/>
+			<checkEdit top="150" text="Extra" field="extra" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas."/>
+			<checkEdit top="175" text="Outros" field="outros" num="3" prompt1="Dano" prompt2="Crit" prompt3="Ataq" hint="Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas."/>
 		</layout>
 		<layout left="570" top="25" width="150" height="250">
-			<checkBox left="0" top="0" width="150" height="25" text="Ambidestria" field="ambidestria"/>
-			<checkBox left="0" top="25" width="150" height="25" text="Duas Armas" field="combate2armas"/>
-			<checkBox left="0" top="50" width="150" height="25" text="Duas Armas Leves" field="combate2armasLeve"/>
-			<checkBox left="0" top="75" width="150" height="25" text="Velocidade" field="velocidade"/>
-			<checkBox left="0" top="100" width="150" height="25" text="Tiro Rapido" field="tiroRapido"/>
-			<checkBox left="0" top="125" width="150" height="25" text="Tiro Rapido Apr." field="tiroRapidoAprimorado"/>
-			<checkBox left="0" top="150" width="150" height="25" text="Golpe Perspicaz" field="perspicaz"/>
-			<checkBox left="0" top="175" width="150" height="25" text="Ataque Multiplo Apr" field="ataqueMultiploApr"/>
-            <checkBox left="0" top="200" width="150" height="25" text="Arquearia Zen" field="zen"/>
-            <checkBox left="0" top="225" width="150" height="25" text="Flanquear" field="flanquear"/>
+			<checkBox left="0" top="0" width="150" height="25" text="Ambidestria" field="ambidestria" hint="Marque se possuir o talento ambidestria. Fazendo com que seus ataques com duas mãos adicionem o dobro da força no dano, ou que ataques com a arma secundaria adicionem a força sem reduzi-la a metade. "/>
+			<checkBox left="0" top="25" width="150" height="25" text="Duas Armas" field="combate2armas" hint="Marque se estiver lutando com duas armas e usando uma arma de uma mão na mão inabil. "/>
+			<checkBox left="0" top="50" width="150" height="25" text="Duas Armas Leves" field="combate2armasLeve" hint="Marque se estiver lutando com duas armas e usando uma arma leve na mão inabil. "/>
+			<checkBox left="0" top="75" width="150" height="25" text="Velocidade" field="velocidade" hint="Marque se estiver sobre efeito de velocidade ou algo similar. Não adiciona o +1 no acerto automaticamente, use o campo de magias. "/>
+			<checkBox left="0" top="100" width="150" height="25" text="Tiro Rapido" field="tiroRapido" hint="Marque se estiver usando o talento tiro rapido para adicionar o ataque extra. Já aplica a penalidade. "/>
+			<checkBox left="0" top="125" width="150" height="25" text="Tiro Rapido Apr." field="tiroRapidoAprimorado" hint="Marque se estiver usando o talento tiro rapido aprimorado para adicionar o ataque extra, sem a penalidade."/>
+			<checkBox left="0" top="150" width="150" height="25" text="Golpe Perspicaz" field="perspicaz" hint="Marque se estiver usando golpe perpicaz para adicionar inteligencia ao dano. "/>
+			<checkBox left="0" top="175" width="150" height="25" text="Ataque Multiplo Apr" field="ataqueMultiploApr" hint="Marque se tiver o talento ataque multiplo aprimorado, para reduzir a penalidade de ataques multiplos de -5 para -2."/>
+            <checkBox left="0" top="200" width="150" height="25" text="Arquearia Zen" field="zen" hint="Marque para trocar o bônus de destreza no acerto por sabedoria. "/>
+            <checkBox left="0" top="225" width="150" height="25" text="Flanquear" field="flanquear" hint="Marque se estiver flanquando o alvo. "/>
 		</layout>
 		<layout left="720" top="25" width="225" height="250">
 			<label left="0" top="0" width="75" height="25" text="Forma"/>
@@ -413,7 +413,7 @@
             <label left="0" top="50" width="75" height="25" text="Mão"/>
 			<comboBox left="75" top="50" width="150" height="25" field="mao" items="{'Habil', 'Inabil', 'Natural: Principal'}" values="{'0', '1', '2'}" fontColor="white"/>
 
-			<label left="0" top="75" width="75" height="25" text="Munição"/>
+			<label left="0" top="75" width="75" height="25" text="Munição" hint="Vão ser consumidas automaticamente durante ataques. Se acabarem um aviso vai exibir no chat, mas não vai impedir novos ataques de serem feitos. "/>
 			<edit left="75" top="75" width="50" height="25" field="municao"/>
 
 			<textEditor left="0" top="100" width="225" height="150" field="detalhes"/>

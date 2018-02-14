@@ -408,6 +408,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox1:setHeight(25);
     obj.checkBox1:setText("Furtivo");
     obj.checkBox1:setField("furtivo");
+    obj.checkBox1:setHint("Adicione aqui o seu valor de ataque furtivo no formato +xd6, sendo x a quantidade de dados extras. ");
     obj.checkBox1:setName("checkBox1");
 
     obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
@@ -438,6 +439,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox2:setHeight(25);
     obj.checkBox2:setText("Ataque Poderoso");
     obj.checkBox2:setField("ataquePoderoso");
+    obj.checkBox2:setHint("Coloque aqui a penalidade do seu ataque poderoso. Esse valor será multiplicado e adicionado ao seu dano de acordo com as regras do talento. ");
     obj.checkBox2:setName("checkBox2");
 
     obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
@@ -468,6 +470,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox3:setHeight(25);
     obj.checkBox3:setText("Espec. em Combate");
     obj.checkBox3:setField("especializacaoCombate");
+    obj.checkBox3:setHint("Coloque aqui quanto você quer passar do seu acerto para a CA. Você precisa ajustar a CA manualmente, mas o acerto não. ");
     obj.checkBox3:setName("checkBox3");
 
     obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
@@ -498,6 +501,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox4:setHeight(25);
     obj.checkBox4:setText("Tiro Multiplo");
     obj.checkBox4:setField("tiroMultiplo");
+    obj.checkBox4:setHint("Coloque aqui quantas flechas deseja usar no ataque. ");
     obj.checkBox4:setName("checkBox4");
 
     obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
@@ -528,6 +532,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox5:setHeight(25);
     obj.checkBox5:setText("Ataque Multiplo");
     obj.checkBox5:setField("ataqueMultiplo");
+    obj.checkBox5:setHint("Coloque aqui quantos ataques naturais são feitos com essa arma. Já aplica as penalidades por ataques primarios ou secundarios.");
     obj.checkBox5:setName("checkBox5");
 
     obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
@@ -558,6 +563,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox6:setHeight(25);
     obj.checkBox6:setText("Composto");
     obj.checkBox6:setField("composto");
+    obj.checkBox6:setHint("Bônus minimo de força necessario para usar esse arco composto. Se não possuir força minima a penalidade já é aplicada. ");
     obj.checkBox6:setName("checkBox6");
 
     obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
@@ -588,6 +594,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox7:setHeight(25);
     obj.checkBox7:setText("Limite");
     obj.checkBox7:setField("limite");
+    obj.checkBox7:setHint("Limita a quantidade de ataques usados em um ataque total. Util para caso o personagem não tenha todos talentos de combater com duas armas. ");
     obj.checkBox7:setName("checkBox7");
 
     obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
@@ -618,6 +625,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox8:setHeight(25);
     obj.checkBox8:setText("Alcance");
     obj.checkBox8:setField("alcance");
+    obj.checkBox8:setHint("Coloque no primeiro campo a quantidade de vezes que você deseja multiplicar o incremento de distancia (até 5 para armas de arremesso e até 10 para outros). No segundo a penalidade que você quer adicionar ao ataque por isso (normalmente -2/incremento).");
     obj.checkBox8:setName("checkBox8");
 
     obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
@@ -671,6 +679,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox9:setHeight(25);
     obj.checkBox9:setText("Rajada de Golpes");
     obj.checkBox9:setField("rajada");
+    obj.checkBox9:setHint("Quantos golpes serão feitos na rajada de golpes e a penalidade aplicada neles. ");
     obj.checkBox9:setName("checkBox9");
 
     obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
@@ -716,6 +725,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox10:setHeight(25);
     obj.checkBox10:setText("Tamanho");
     obj.checkBox10:setField("tamanho");
+    obj.checkBox10:setHint("Coloque aqui o novo dado de dano por aumento ou diminuição de tamanho do personagem e a penalidade ou bônus adequado. Se for em descrição e mudar o tamanho do personage a penalidade vai automaticamente. ");
     obj.checkBox10:setName("checkBox10");
 
     obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
@@ -761,6 +771,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox11:setHeight(25);
     obj.checkBox11:setText("Dano por Energia");
     obj.checkBox11:setField("energia");
+    obj.checkBox11:setHint("Coloque aqui qualquer dano extra por energia da arma, assim como dano extra por energia em sucessos decisivos. Normalmente ganhos por armas flamejantes e da explosão flamejante, ou similares. ");
     obj.checkBox11:setName("checkBox11");
 
     obj.edit14 = gui.fromHandle(_obj_newObject("edit"));
@@ -806,6 +817,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox12:setHeight(25);
     obj.checkBox12:setText("Talentos");
     obj.checkBox12:setField("talentos");
+    obj.checkBox12:setHint("Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por talentos.");
     obj.checkBox12:setName("checkBox12");
 
     obj.edit16 = gui.fromHandle(_obj_newObject("edit"));
@@ -866,6 +878,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox13:setHeight(25);
     obj.checkBox13:setText("Itens");
     obj.checkBox13:setField("itens");
+    obj.checkBox13:setHint("Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por itens.");
     obj.checkBox13:setName("checkBox13");
 
     obj.edit19 = gui.fromHandle(_obj_newObject("edit"));
@@ -926,6 +939,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox14:setHeight(25);
     obj.checkBox14:setText("Magias");
     obj.checkBox14:setField("magias");
+    obj.checkBox14:setHint("Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por efeitos magicos.");
     obj.checkBox14:setName("checkBox14");
 
     obj.edit22 = gui.fromHandle(_obj_newObject("edit"));
@@ -986,6 +1000,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox15:setHeight(25);
     obj.checkBox15:setText("Extra");
     obj.checkBox15:setField("extra");
+    obj.checkBox15:setHint("Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas.");
     obj.checkBox15:setName("checkBox15");
 
     obj.edit25 = gui.fromHandle(_obj_newObject("edit"));
@@ -1046,6 +1061,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox16:setHeight(25);
     obj.checkBox16:setText("Outros");
     obj.checkBox16:setField("outros");
+    obj.checkBox16:setHint("Coloque aqui qualquer bônus no dano, no dano de sucesso decisivo ou no acerto ganho por razões diversas.");
     obj.checkBox16:setName("checkBox16");
 
     obj.edit28 = gui.fromHandle(_obj_newObject("edit"));
@@ -1114,6 +1130,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox17:setHeight(25);
     obj.checkBox17:setText("Ambidestria");
     obj.checkBox17:setField("ambidestria");
+    obj.checkBox17:setHint("Marque se possuir o talento ambidestria. Fazendo com que seus ataques com duas mãos adicionem o dobro da força no dano, ou que ataques com a arma secundaria adicionem a força sem reduzi-la a metade. ");
     obj.checkBox17:setName("checkBox17");
 
     obj.checkBox18 = gui.fromHandle(_obj_newObject("checkBox"));
@@ -1124,6 +1141,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox18:setHeight(25);
     obj.checkBox18:setText("Duas Armas");
     obj.checkBox18:setField("combate2armas");
+    obj.checkBox18:setHint("Marque se estiver lutando com duas armas e usando uma arma de uma mão na mão inabil. ");
     obj.checkBox18:setName("checkBox18");
 
     obj.checkBox19 = gui.fromHandle(_obj_newObject("checkBox"));
@@ -1134,6 +1152,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox19:setHeight(25);
     obj.checkBox19:setText("Duas Armas Leves");
     obj.checkBox19:setField("combate2armasLeve");
+    obj.checkBox19:setHint("Marque se estiver lutando com duas armas e usando uma arma leve na mão inabil. ");
     obj.checkBox19:setName("checkBox19");
 
     obj.checkBox20 = gui.fromHandle(_obj_newObject("checkBox"));
@@ -1144,6 +1163,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox20:setHeight(25);
     obj.checkBox20:setText("Velocidade");
     obj.checkBox20:setField("velocidade");
+    obj.checkBox20:setHint("Marque se estiver sobre efeito de velocidade ou algo similar. Não adiciona o +1 no acerto automaticamente, use o campo de magias. ");
     obj.checkBox20:setName("checkBox20");
 
     obj.checkBox21 = gui.fromHandle(_obj_newObject("checkBox"));
@@ -1154,6 +1174,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox21:setHeight(25);
     obj.checkBox21:setText("Tiro Rapido");
     obj.checkBox21:setField("tiroRapido");
+    obj.checkBox21:setHint("Marque se estiver usando o talento tiro rapido para adicionar o ataque extra. Já aplica a penalidade. ");
     obj.checkBox21:setName("checkBox21");
 
     obj.checkBox22 = gui.fromHandle(_obj_newObject("checkBox"));
@@ -1164,6 +1185,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox22:setHeight(25);
     obj.checkBox22:setText("Tiro Rapido Apr.");
     obj.checkBox22:setField("tiroRapidoAprimorado");
+    obj.checkBox22:setHint("Marque se estiver usando o talento tiro rapido aprimorado para adicionar o ataque extra, sem a penalidade.");
     obj.checkBox22:setName("checkBox22");
 
     obj.checkBox23 = gui.fromHandle(_obj_newObject("checkBox"));
@@ -1174,6 +1196,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox23:setHeight(25);
     obj.checkBox23:setText("Golpe Perspicaz");
     obj.checkBox23:setField("perspicaz");
+    obj.checkBox23:setHint("Marque se estiver usando golpe perpicaz para adicionar inteligencia ao dano. ");
     obj.checkBox23:setName("checkBox23");
 
     obj.checkBox24 = gui.fromHandle(_obj_newObject("checkBox"));
@@ -1184,6 +1207,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox24:setHeight(25);
     obj.checkBox24:setText("Ataque Multiplo Apr");
     obj.checkBox24:setField("ataqueMultiploApr");
+    obj.checkBox24:setHint("Marque se tiver o talento ataque multiplo aprimorado, para reduzir a penalidade de ataques multiplos de -5 para -2.");
     obj.checkBox24:setName("checkBox24");
 
     obj.checkBox25 = gui.fromHandle(_obj_newObject("checkBox"));
@@ -1194,6 +1218,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox25:setHeight(25);
     obj.checkBox25:setText("Arquearia Zen");
     obj.checkBox25:setField("zen");
+    obj.checkBox25:setHint("Marque para trocar o bônus de destreza no acerto por sabedoria. ");
     obj.checkBox25:setName("checkBox25");
 
     obj.checkBox26 = gui.fromHandle(_obj_newObject("checkBox"));
@@ -1204,6 +1229,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.checkBox26:setHeight(25);
     obj.checkBox26:setText("Flanquear");
     obj.checkBox26:setField("flanquear");
+    obj.checkBox26:setHint("Marque se estiver flanquando o alvo. ");
     obj.checkBox26:setName("checkBox26");
 
     obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
@@ -1285,6 +1311,7 @@ function newfrmFichaRPGmeister2Aar_svg()
     obj.label4:setWidth(75);
     obj.label4:setHeight(25);
     obj.label4:setText("Munição");
+    obj.label4:setHint("Vão ser consumidas automaticamente durante ataques. Se acabarem um aviso vai exibir no chat, mas não vai impedir novos ataques de serem feitos. ");
     obj.label4:setName("label4");
 
     obj.edit31 = gui.fromHandle(_obj_newObject("edit"));

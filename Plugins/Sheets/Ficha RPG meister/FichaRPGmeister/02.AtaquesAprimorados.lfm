@@ -265,7 +265,7 @@
 						end);
 					</event>
 				</button>
-				<button text="Cancelar" left="570" top="5" width="100" height="20">
+				<button text="Cancelar" left="570" top="5" width="100" height="20" hint="Libera a trava que evita multiplos ataques ao mesmo tempo manualmente. Sistema anti duplo clique. ">
 					<event name="onClick">
 						rolando =false;
 					</event>

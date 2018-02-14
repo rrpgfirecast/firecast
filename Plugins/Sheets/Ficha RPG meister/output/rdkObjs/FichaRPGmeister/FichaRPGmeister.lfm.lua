@@ -13580,6 +13580,7 @@ function newfrmFichaRPGmeister()
     obj.button79:setTop(5);
     obj.button79:setWidth(100);
     obj.button79:setHeight(20);
+    obj.button79:setHint("Libera a trava que evita multiplos ataques ao mesmo tempo manualmente. Sistema anti duplo clique. ");
     obj.button79:setName("button79");
 
     obj.rclListaDeArmas = gui.fromHandle(_obj_newObject("recordList"));
@@ -13613,7 +13614,6 @@ function newfrmFichaRPGmeister()
 
 
 			
-			local path = ndb.load("pathskills.xml");
 			local dnd = ndb.load("dndskills.xml");
 
 			local function updateAtributes(num)
@@ -13698,25 +13698,6 @@ function newfrmFichaRPGmeister()
 					end;
 					if dnd[i].armadura > 1 then
 						pericia.penalidadeArmadura = true;
-					end;
-				end;
-
-				self.rclListaDasPericias:sort();
-			end;
-
-			local function pathSkills()
-				local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
-				for i=1, #nodes, 1 do
-					ndb.deleteNode(nodes[i]);
-				end
-
-				for i=1, 34, 1 do
-					local pericia = self.rclListaDasPericias:append();
-					pericia.nomePericia = path[i].nome;
-					pericia.chavePericia = path[i].chave;
-					pericia.exigeTreino = path[i].treino;
-					if path[i].armadura > 0 then
-						pericia.penalidadeArmadura2 = true;
 					end;
 				end;
 

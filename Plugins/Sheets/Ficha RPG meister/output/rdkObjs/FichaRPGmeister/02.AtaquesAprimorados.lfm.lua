@@ -323,6 +323,7 @@ function newfrmFichaRPGmeister2a_svg()
     obj.button4:setTop(5);
     obj.button4:setWidth(100);
     obj.button4:setHeight(20);
+    obj.button4:setHint("Libera a trava que evita multiplos ataques ao mesmo tempo manualmente. Sistema anti duplo clique. ");
     obj.button4:setName("button4");
 
     obj.rclListaDeArmas = gui.fromHandle(_obj_newObject("recordList"));
