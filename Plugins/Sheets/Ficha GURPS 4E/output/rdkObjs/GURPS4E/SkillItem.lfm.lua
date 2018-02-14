@@ -144,8 +144,7 @@ function newfrmSkillItem()
     obj.comboBox2:setWidth(55);
     obj.comboBox2:setHeight(25);
     obj.comboBox2:setField("dificuldade");
-    obj.comboBox2:setItems({'F', 'M', 'D', 'MD'});
-    obj.comboBox2:setValues({'F', 'M', 'D', 'MD'});
+    obj.comboBox2:setItems({'F', 'M', 'D', 'MD', '-'});
     obj.comboBox2:setName("comboBox2");
 
     obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));

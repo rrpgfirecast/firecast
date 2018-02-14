@@ -10,13 +10,7 @@
 					<button align="left" text="+" width="25" hint="" horzTextAlign="center" onClick="self.rclBackpack:append();" margins="{top=-10}"/>
 				</layout>
 
-				<recordList align="client" name="rclBackpack" field="listaDeItens" templateForm="frmBackpackItem" layout="vertical" minQt="3">
-					<event name="onCompare"><![CDATA[
-						-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
-						return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
-						]]>
-					</event>
-				</recordList>
+				<recordList align="client" name="rclBackpack" field="listaDeItens" templateForm="frmBackpackItem" layout="vertical" minQt="3"/>
 			</flowPart>
 
 			<flowPart class="tileCarac" height="600" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
@@ -26,13 +20,7 @@
 					<button align="left" text="+" width="25" hint="" horzTextAlign="center" onClick="self.rclEquipments:append();" margins="{top=-10}"/>
 				</layout>
 
-				<recordList align="client" name="rclEquipments" field="listaDeEquipamentos" templateForm="frmBackpackItem" layout="vertical">
-					<event name="onCompare"><![CDATA[
-						-- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
-						return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
-						]]>
-					</event>
-				</recordList>
+				<recordList align="client" name="rclEquipments" field="listaDeEquipamentos" templateForm="frmBackpackItem" layout="vertical"/>
 			</flowPart>
 
 			<flowPart class="tileCarac" height="600" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">

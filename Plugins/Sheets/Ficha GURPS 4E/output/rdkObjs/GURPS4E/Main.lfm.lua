@@ -1215,7 +1215,7 @@ self.upperGridMagicEditBox1._RecalcSize();
 
     obj.flowPart17 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart17:setParent(obj.fraHabilidadesLayout);
-    obj.flowPart17:setHeight(515);
+    obj.flowPart17:setHeight(400);
     obj.flowPart17:setFrameStyle("frames/panel5/frame.xml");
     obj.flowPart17:setMargins({left = 4, right = 4});
     obj.flowPart17:setName("flowPart17");
@@ -1229,7 +1229,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.textEditor1:setParent(obj.flowPart17);
     obj.textEditor1:setAlign("client");
     obj.textEditor1:setField("vantagens");
-    obj.textEditor1:setMargins({top=2});
+    obj.textEditor1:setMargins({top=2, left=5, right=5});
     obj.textEditor1:setFontSize(16);
     obj.textEditor1:setName("textEditor1");
     obj.textEditor1:setTransparent(true);
@@ -1272,7 +1272,7 @@ self.upperGridMagicEditBox1._RecalcSize();
 
     obj.flowPart18 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart18:setParent(obj.fraHabilidadesLayout);
-    obj.flowPart18:setHeight(515);
+    obj.flowPart18:setHeight(400);
     obj.flowPart18:setFrameStyle("frames/panel5/frame.xml");
     obj.flowPart18:setMargins({left = 4, right = 4});
     obj.flowPart18:setName("flowPart18");
@@ -1286,7 +1286,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.textEditor2:setParent(obj.flowPart18);
     obj.textEditor2:setAlign("client");
     obj.textEditor2:setField("desvantagens");
-    obj.textEditor2:setMargins({top=2});
+    obj.textEditor2:setMargins({top=2, left=5, right=5});
     obj.textEditor2:setFontSize(16);
     obj.textEditor2:setName("textEditor2");
     obj.textEditor2:setTransparent(true);
@@ -1959,7 +1959,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.flowPart26 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart26:setParent(obj.flowLayout5);
     obj.flowPart26:setHeight(170);
-    obj.flowPart26:setFrameStyle("frames/panel5/centerPanel.xml");
+    obj.flowPart26:setFrameStyle("frames/panel5/topPanel.xml");
     obj.flowPart26:setMargins({left = 4, right = 4});
     obj.flowPart26:setName("flowPart26");
     obj.flowPart26:setStepSizes({});
@@ -2024,8 +2024,8 @@ self.upperGridMagicEditBox1._RecalcSize();
 
     obj.flowPart28 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart28:setParent(obj.flowLayout5);
-    obj.flowPart28:setHeight(170);
-    obj.flowPart28:setFrameStyle("frames/panel5/centerPanel.xml");
+    obj.flowPart28:setHeight(155);
+    obj.flowPart28:setFrameStyle("frames/panel5/bottomPanel.xml");
     obj.flowPart28:setMargins({left = 4, right = 4});
     obj.flowPart28:setName("flowPart28");
     obj.flowPart28:setStepSizes({});
@@ -2704,46 +2704,32 @@ self.upperGridMagicEditBox1._RecalcSize();
             self.rclBackpack:append();
         end, obj);
 
-    obj._e_event13 = obj.rclBackpack:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
-            -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
-            						return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
-        end, obj);
-
-    obj._e_event14 = obj.button5:addEventListener("onClick",
+    obj._e_event13 = obj.button5:addEventListener("onClick",
         function (self)
             self.rclEquipments:append();
         end, obj);
 
-    obj._e_event15 = obj.rclEquipments:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
-            -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
-            						return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
-        end, obj);
-
-    obj._e_event16 = obj.button6:addEventListener("onClick",
+    obj._e_event14 = obj.button6:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/README.md')
         end, obj);
 
-    obj._e_event17 = obj.button7:addEventListener("onClick",
+    obj._e_event15 = obj.button7:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20GURPS%204E/Ficha%20GURPS%204E.rpk')
         end, obj);
 
-    obj._e_event18 = obj.button8:addEventListener("onClick",
+    obj._e_event16 = obj.button8:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event19 = obj.button9:addEventListener("onClick",
+    obj._e_event17 = obj.button9:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=131156');
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event19);
-        __o_rrpgObjs.removeEventListenerById(self._e_event18);
         __o_rrpgObjs.removeEventListenerById(self._e_event17);
         __o_rrpgObjs.removeEventListenerById(self._e_event16);
         __o_rrpgObjs.removeEventListenerById(self._e_event15);

@@ -17,7 +17,7 @@
 			<edit align="client" type="number" field="penalidade" transparent="true"/>
 		</rectangle>
 
-		<comboBox left="260" top="0" width="55" height="25" field="dificuldade" items="{'F', 'M', 'D', 'MD'}" values="{'F', 'M', 'D', 'MD'}"/>
+		<comboBox left="260" top="0" width="55" height="25" field="dificuldade" items="{'F', 'M', 'D', 'MD', '-'}"/>
 
 		<rectangle left="315" top="3" width="25" height="20" strokeColor="white" color="#FF000000" strokeSize="1" hitTest="false">
 			<edit align="client" field="pts" horzTextAlign="center" transparent="true"/>
