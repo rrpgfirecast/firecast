@@ -304,9 +304,11 @@
 		end;
 		
 		function self:exibirMenuDoAtor(node, form)
-			self.popAtor.node = node;
-			self.popAtorForm = form;
-			self.popAtor:show("mouseCenter", form);
+			if self ~= nil and self.popAtor ~= nil then
+				self.popAtor.node = node;
+				self.popAtorForm = form;
+				self.popAtor:show("mouseCenter", form);
+			end;
 		end;
 		
 		function self:scrollToAtor(node)
