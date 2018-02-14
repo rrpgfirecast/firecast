@@ -1,5 +1,8 @@
 # Ficha Pathfinder
+* Mudar agarrar de companheiro para bmc e dmc.
 
+Versão 4:
++ Bug corrigido: quando o personagem está usando armadura não estava contabilizando o +3 em pericias de classe com graduações. 
 
 Versão 3:
 + Ajustados os nomes de multiplos campos de acordo com a tradução oficial. 

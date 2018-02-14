@@ -14409,7 +14409,6 @@ function newfrmFichaRPGmeister()
 
 			
 			local path = ndb.load("pathskills.xml");
-			local dnd = ndb.load("dndskills.xml");
 
 			local function updateAtributes(num)
 				if debug then
@@ -14442,10 +14441,6 @@ function newfrmFichaRPGmeister()
 			end;
 
 			local function updatePenalty()
-				if debug then
-					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Penalidade nas pericias.");
-					index = index + 1;
-				end;
 				if sheet~=nil then
 					local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
 					for i=1, #nodes, 1 do
@@ -14470,33 +14465,14 @@ function newfrmFichaRPGmeister()
 							if nodes[i].penalidadeArmadura2 then
 								mod = mod + pen;
 							end;
+							if nodes[i].isClass and (tonumber(nodes[i].graduacaoPericia) or 0)>0 then
+								mod = mod + 3;
+							end;
 
 							nodes[i].totalPericia = mod;
 						end;
 					end;
 				end;
-			end;
-
-			local function dndSkills()
-				local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
-				for i=1, #nodes, 1 do
-					ndb.deleteNode(nodes[i]);
-				end
-
-				for i=1, 44, 1 do
-					local pericia = self.rclListaDasPericias:append();
-					pericia.nomePericia = dnd[i].nome;
-					pericia.chavePericia = dnd[i].chave;
-					pericia.exigeTreino = dnd[i].treino;
-					if dnd[i].armadura > 0 then
-						pericia.penalidadeArmadura2 = true;
-					end;
-					if dnd[i].armadura > 1 then
-						pericia.penalidadeArmadura = true;
-					end;
-				end;
-
-				self.rclListaDasPericias:sort();
 			end;
 
 			local function pathSkills()
@@ -34848,7 +34824,7 @@ function newfrmFichaRPGmeister()
 
     obj._e_event422 = obj.button115:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Pathfinder%20releases/Change%20Log.txt')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/README.md')
         end, obj);
 
     obj._e_event423 = obj.button116:addEventListener("onClick",

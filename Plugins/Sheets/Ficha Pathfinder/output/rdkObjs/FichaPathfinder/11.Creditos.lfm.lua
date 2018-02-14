@@ -298,7 +298,7 @@ function newfrmFichaRPGmeister11_svg()
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Pathfinder%20releases/Change%20Log.txt')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/README.md')
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
