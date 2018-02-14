@@ -33406,7 +33406,7 @@ function newfrmFichaRPGmeister()
 
     obj._e_event400 = obj.button114:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/Change%20Log.txt')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/README.md')
         end, obj);
 
     obj._e_event401 = obj.button115:addEventListener("onClick",
