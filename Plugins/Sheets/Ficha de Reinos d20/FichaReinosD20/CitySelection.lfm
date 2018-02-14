@@ -48,7 +48,7 @@
 			</event>
 		</button>
 
-		<dataLink fields="{'populacao', 'capital'}">
+		<dataLink fields="{'populacao', 'capital', 'contador'}">
 			<event name="onChange"><![CDATA[
 		        if sheet~= nil then
 					-- Atualiza a ordem lista a cada alteração

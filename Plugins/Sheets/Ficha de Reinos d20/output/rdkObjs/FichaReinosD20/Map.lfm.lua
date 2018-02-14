@@ -185,7 +185,7 @@ function newfrmMap()
     obj.mapImage:setName("mapImage");
     obj.mapImage:setHitTest(true);
     obj.mapImage:setStyle("proportional");
-    obj.mapImage:setHint("Clique para alterar Imagem, shift+clique para adicionar Cidade, ctrl+clique para adicionar Ponto de Interesse. ");
+    obj.mapImage:setHint("Clique para alterar Imagem, shift+clique para adicionar Cidade, ctrl+clique para adicionar Ponto de Interesse, alt+clique para alternar o zoom. ");
 
 
 			_obj_setProp(self.mapImage.handle, "Stretch", true);
@@ -368,6 +368,9 @@ function newfrmMap()
             					if mapImage.scale > 1 then
             						scale = 0.5;
             					end;
+            
+            					local altura2 = tonumber(sheet.altura2) or 30;
+            					local largura2 = tonumber(sheet.largura2) or 30;
             
             					local btn = gui.newButton();
             					btn.parent = self.mapa;

@@ -84,7 +84,7 @@ function newfrmCitySelection()
 
     obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.rectangle1);
-    obj.dataLink1:setFields({'populacao', 'capital'});
+    obj.dataLink1:setFields({'populacao', 'capital', 'contador'});
     obj.dataLink1:setName("dataLink1");
 
     obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));

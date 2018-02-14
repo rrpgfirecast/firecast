@@ -86,7 +86,7 @@
 		</layout>
 
 		<rectangle left="0" top="0" width="1152" height="648" color="black" name="mapRectangle"/>
-		<image width="1152" height="648" field="mapa" name="mapImage" hitTest="true" style="proportional" hint="Clique para alterar Imagem, shift+clique para adicionar Cidade, ctrl+clique para adicionar Ponto de Interesse. ">
+		<image width="1152" height="648" field="mapa" name="mapImage" hitTest="true" style="proportional" hint="Clique para alterar Imagem, shift+clique para adicionar Cidade, ctrl+clique para adicionar Ponto de Interesse, alt+clique para alternar o zoom. ">
 			<event name="onMouseDown">
 				sheet.button = event.button;
 				sheet.x = event.x;
@@ -193,6 +193,9 @@
 					if mapImage.scale > 1 then
 						scale = 0.5;
 					end;
+
+					local altura2 = tonumber(sheet.altura2) or 30;
+					local largura2 = tonumber(sheet.largura2) or 30;
 
 					local btn = gui.newButton();
 					btn.parent = self.mapa;

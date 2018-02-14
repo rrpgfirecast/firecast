@@ -215,6 +215,7 @@ function newfrmKingdom()
             					if self.rclDestalhesDoReino.selectedNode== nil and #objetos>0 then
             						self.rclDestalhesDoReino.selectedNode = objetos[1]; 
             					end;
+            					self.rclDestalhesDoReino:sort();
             				end;
         end, obj);
 

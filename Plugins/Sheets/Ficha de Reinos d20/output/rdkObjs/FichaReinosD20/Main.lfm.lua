@@ -386,7 +386,7 @@ function newfrmTemplate()
     obj.mapImage:setName("mapImage");
     obj.mapImage:setHitTest(true);
     obj.mapImage:setStyle("proportional");
-    obj.mapImage:setHint("Clique para alterar Imagem, shift+clique para adicionar Cidade, ctrl+clique para adicionar Ponto de Interesse. ");
+    obj.mapImage:setHint("Clique para alterar Imagem, shift+clique para adicionar Cidade, ctrl+clique para adicionar Ponto de Interesse, alt+clique para alternar o zoom. ");
 
 
 			_obj_setProp(self.mapImage.handle, "Stretch", true);
@@ -2898,7 +2898,7 @@ function newfrmTemplate()
     obj.image3:setWidth(100);
     obj.image3:setHeight(20);
     obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao05.png");
+    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao06.png");
     obj.image3:setName("image3");
 
     obj.button4 = gui.fromHandle(_obj_newObject("button"));
@@ -2957,6 +2957,7 @@ function newfrmTemplate()
             					if self.rclDestalhesDoReino.selectedNode== nil and #objetos>0 then
             						self.rclDestalhesDoReino.selectedNode = objetos[1]; 
             					end;
+            					self.rclDestalhesDoReino:sort();
             				end;
         end, obj);
 
@@ -3154,6 +3155,9 @@ function newfrmTemplate()
             					if mapImage.scale > 1 then
             						scale = 0.5;
             					end;
+            
+            					local altura2 = tonumber(sheet.altura2) or 30;
+            					local largura2 = tonumber(sheet.largura2) or 30;
             
             					local btn = gui.newButton();
             					btn.parent = self.mapa;
@@ -3494,6 +3498,7 @@ function newfrmTemplate()
         function (self)
             local node = self.boxDetalhesDaCidade.node;
             						if node==nil then return end;
+            						if populacao == nil then return end;
             
             						local populacao = tonumber(node.populacao) or 0;
             

@@ -899,6 +899,7 @@ function newfrmCities()
         function (self)
             local node = self.boxDetalhesDaCidade.node;
             						if node==nil then return end;
+            						if populacao == nil then return end;
             
             						local populacao = tonumber(node.populacao) or 0;
             
