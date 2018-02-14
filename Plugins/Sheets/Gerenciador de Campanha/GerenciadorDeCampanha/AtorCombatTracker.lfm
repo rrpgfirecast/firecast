@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmAtorCombatTracker" height="47">
 	<import file="combatTrackerGlobals.xml"/>
-
+	<import file="CombatTrackerScripts.xml"/>
+	
 	<script><![CDATA[
 		local preparedVez = false;
 	

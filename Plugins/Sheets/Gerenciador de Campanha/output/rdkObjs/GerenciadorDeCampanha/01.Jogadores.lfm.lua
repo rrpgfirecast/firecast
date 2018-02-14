@@ -571,7 +571,17 @@ function newfrmJogadores()
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (self)
             if sheet~=nil then
+            					local jogadores = rrpg.getMesaDe(sheet).jogadores;
+            					local current = nil;
+            					for i = 1, #jogadores, 1 do
+            						if jogadores[i].login==rrpg.getCurrentUser().login then
+            							current = jogadores[i];
+            						end;
+            					end;
+            					if not current.isMestre then return end;
+            
             					local jogadores = ndb.getChildNodes(sheet.listaDeJogadores);
+            
             					local jogadoresNome = "";
             					local mesa = rrpg.getMesaDe(sheet);
             					local usuarios = mesa.jogadores;
@@ -721,6 +731,10 @@ function newfrmJogadores()
             										(tonumber(self.boxDetalhesDoItem.node.desperdicio) or 0);
             						self.boxDetalhesDoItem.node.pontos = mod;								
             						self.boxDetalhesDoItem.node.ph = math.max(math.floor(mod/10), 0);
+            
+            						if mod > 40 then
+            							self.boxDetalhesDoItem.node.desperdicio = (tonumber(self.boxDetalhesDoItem.node.desperdicio) or 0) + (mod - 40);
+            						end;
         end, obj);
 
     obj._e_event11 = obj.image1:addEventListener("onStartDrag",

@@ -333,6 +333,7 @@ function newfrmCombatTracker()
 		end;
 		
 		function self:exibirMenuDoAtor(node, form)
+			if self == nil or self.popAtor == nil then return end;
 			self.popAtor.node = node;
 			self.popAtorForm = form;
 			self.popAtor:show("mouseCenter", form);
