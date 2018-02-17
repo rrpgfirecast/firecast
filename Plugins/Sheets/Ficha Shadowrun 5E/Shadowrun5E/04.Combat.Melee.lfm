@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMelee" width="415" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit left="0" top="0" width="150" height="25" field="melee_weapon"/>
+		<edit left="150" top="0" width="40" height="25" field="melee_reach" horzTextAlign="center" type="number"/>
+		<edit left="190" top="0" width="40" height="25" field="melee_damage" horzTextAlign="center" type="number"/>
+		<edit left="230" top="0" width="40" height="25" field="melee_accuracy" horzTextAlign="center" type="number"/>
+		<edit left="270" top="0" width="40" height="25" field="melee_ap" horzTextAlign="center" type="number"/>
+		<edit left="310" top="0" width="40" height="25" field="melee_price" horzTextAlign="center" type="number"/>
+		<edit left="350" top="0" width="40" height="25" field="melee_weight" horzTextAlign="center" type="number"/>
+
+		<button left="390" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+		<dataLink field="melee_price">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local node = ndb.getRoot(sheet);
+				local objetos = ndb.getChildNodes(node.meleeWeaponsList);
+				local price = 0;
+
+				for i=1, #objetos, 1 do 
+					price = price + (tonumber(objetos[i].melee_price) or 0);
+				end;
+
+				node.weapon_melee_price = price;
+			</event>
+		</dataLink>
+
+		<dataLink field="melee_weight">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local node = ndb.getRoot(sheet);
+				local objetos = ndb.getChildNodes(node.meleeWeaponsList);
+				local weight = 0;
+
+				for i=1, #objetos, 1 do 
+					weight = weight + (tonumber(objetos[i].melee_weight) or 0);
+				end;
+
+				node.weapon_melee_weight = weight;
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

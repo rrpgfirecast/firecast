@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGear" width="325" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit left="0" top="0" width="150" height="25" field="gear_name"/>
+		<edit left="150" top="0" width="50" height="25" field="gear_rating" horzTextAlign="center" type="number"/>
+		<edit left="200" top="0" width="50" height="25" field="gear_price" horzTextAlign="center" type="number"/>
+		<edit left="250" top="0" width="50" height="25" field="gear_weight" horzTextAlign="center" type="number"/>
+
+		<button left="300" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+		<dataLink field="gear_price">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local node = ndb.getRoot(sheet);
+				local objetos = ndb.getChildNodes(node.gearList);
+				local price = 0;
+
+				for i=1, #objetos, 1 do 
+					price = price + (tonumber(objetos[i].gear_price) or 0);
+				end;
+
+				node.gear_price = price;
+			</event>
+		</dataLink>
+
+		<dataLink field="gear_weight">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local node = ndb.getRoot(sheet);
+				local objetos = ndb.getChildNodes(node.gearList);
+				local weight = 0;
+
+				for i=1, #objetos, 1 do 
+					weight = weight + (tonumber(objetos[i].gear_weight) or 0);
+				end;
+
+				node.gear_weight = weight;
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmContact" width="325" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit left="0" top="0" width="150" height="25" field="contact_name"/>
+		<edit left="150" top="0" width="50" height="25" field="contact_loyality" horzTextAlign="center" type="number"/>
+		<edit left="200" top="0" width="50" height="25" field="contact_connection" horzTextAlign="center" type="number"/>
+		<edit left="250" top="0" width="50" height="25" field="contact_favor" horzTextAlign="center" type="number"/>
+
+		<button left="300" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+		<dataLink fields="{'contact_loyality', 'contact_connection'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local node = ndb.getRoot(sheet);
+				local objetos = ndb.getChildNodes(node.contactList);
+				local karma = 0;
+
+				for i=1, #objetos, 1 do 
+					karma = karma + (tonumber(objetos[i].contact_loyality) or 0);
+					karma = karma + (tonumber(objetos[i].contact_connection) or 0);
+				end;
+
+				node.contact_karma = karma;
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

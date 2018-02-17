@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmBlank" align="client">
+	<scrollBox align="client">
+		<rectangle color="grey" width="1363" height="686"/>
+		<!-- Copie esse arquivo e mude o name do form quando quiser criar um novo lfm -->
+	</scrollBox>
+</form>

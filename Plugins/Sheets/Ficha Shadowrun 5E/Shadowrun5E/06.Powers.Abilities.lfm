@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAbilities" width="325" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit left="0" top="0" width="150" height="25" field="abilities_name"/>
+		<edit left="150" top="0" width="50" height="25" field="abilities_type" horzTextAlign="center"/>
+		<edit left="200" top="0" width="100" height="25" field="abilities_range" horzTextAlign="center" type="number"/>
+		<edit left="300" top="0" width="50" height="25" field="abilities_karma" horzTextAlign="center" type="number"/>
+
+		<button left="350" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+		<dataLink field="abilities_karma">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local node = ndb.getRoot(sheet);
+				local objetos = ndb.getChildNodes(node.abilityList);
+				local karma = 0;
+
+				for i=1, #objetos, 1 do 
+					karma = karma + (tonumber(objetos[i].abilities_karma) or 0);
+				end;
+
+				node.abilities_karma = karma;
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

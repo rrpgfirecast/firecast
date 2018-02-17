@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmStats" align="client">
+	<scrollBox align="client">
+		<layout left="0" top="0" width="210" height="505">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="210" height="20" text="KARMA SPENT" horzTextAlign="center"/>
+
+			<label text="ATTRIBUTES" left="5" top="25" width="150" height="20" horzTextAlign="center"/>
+			<rectangle left="155" top="25" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="155" top="25" width="50" height="25" field="attribute_karma_spent" vertTextAlign="center" horzTextAlign="center"/>
+
+			<label text="ACTIVE SKILLS" left="5" top="50" width="150" height="20" horzTextAlign="center"/>
+			<rectangle left="155" top="50" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="155" top="50" width="50" height="25" field="skills_active_karma_spent" vertTextAlign="center" horzTextAlign="center"/>
+
+			<label text="KNOWLEDGE SKILLS" left="5" top="75" width="150" height="20" horzTextAlign="center"/>
+			<rectangle left="155" top="75" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="155" top="75" width="50" height="25" field="skills_knowledge_karma_spent" vertTextAlign="center" horzTextAlign="center"/>
+
+			<label text="LANGUAGE SKILLS" left="5" top="100" width="150" height="20" horzTextAlign="center"/>
+			<rectangle left="155" top="100" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="155" top="100" width="50" height="25" field="skills_language_karma_spent" vertTextAlign="center" horzTextAlign="center"/>
+
+			<label text="QUALITIES" left="5" top="125" width="150" height="20" horzTextAlign="center"/>
+			<rectangle left="155" top="125" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="155" top="125" width="50" height="25" field="qualities_karma" vertTextAlign="center" horzTextAlign="center"/>
+
+			<label text="CONTACTS" left="5" top="150" width="150" height="20" horzTextAlign="center"/>
+			<rectangle left="155" top="150" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="155" top="150" width="50" height="25" field="contact_karma" vertTextAlign="center" horzTextAlign="center"/>
+
+			<label text="S/P/R/CF" left="5" top="175" width="150" height="20" horzTextAlign="center"/>
+			<rectangle left="155" top="175" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="155" top="175" width="50" height="25" field="spells_karma" vertTextAlign="center" horzTextAlign="center"/>
+
+			<label text="POWERS/ABILITIES" left="5" top="200" width="150" height="20" horzTextAlign="center"/>
+			<rectangle left="155" top="200" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="155" top="200" width="50" height="25" field="abilities_karma" vertTextAlign="center" horzTextAlign="center"/>
+
+			<label text="OTHER" left="5" top="225" width="150" height="20" horzTextAlign="center"/>
+			<edit left="155" top="225" width="50" height="25" field="other_karma" vertTextAlign="center" horzTextAlign="center" type="number"/>
+
+			<label text="MISC" left="5" top="250" width="150" height="20" horzTextAlign="center"/>
+			<edit left="155" top="250" width="50" height="25" field="misc_karma" vertTextAlign="center" horzTextAlign="center" type="number"/>
+
+			<label text="ALTERNATIVE" left="5" top="275" width="150" height="20" horzTextAlign="center"/>
+			<edit left="155" top="275" width="50" height="25" field="alternative_karma" vertTextAlign="center" horzTextAlign="center" type="number"/>
+
+			<textEditor left="5" top="300" width="200" height="200" field="details_karma"/>
+
+			<dataLink fields="{'attribute_karma_spent', 'skills_active_karma_spent', 'skills_knowledge_karma_spent', 'skills_language_karma_spent', 'qualities_karma', 'contact_karma', 'spells_karma', 'abilities_karma', 'other_karma', 'misc_karma', 'alternative_karma', 'details_karma', 'karmaTotal'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					local karma = 	(tonumber(sheet.attribute_karma_spent) or 0) + 
+									(tonumber(sheet.skills_active_karma_spent) or 0) + 
+									(tonumber(sheet.skills_knowledge_karma_spent) or 0) + 
+									(tonumber(sheet.skills_language_karma_spent) or 0) + 
+									(tonumber(sheet.qualities_karma) or 0) + 
+									(tonumber(sheet.contact_karma) or 0) + 
+									(tonumber(sheet.spells_karma) or 0) + 
+									(tonumber(sheet.abilities_karma) or 0) + 
+									(tonumber(sheet.other_karma) or 0) + 
+									(tonumber(sheet.misc_karma) or 0) + 
+									(tonumber(sheet.alternative_karma) or 0) + 
+									(tonumber(sheet.details_karma) or 0);
+
+					local left = (tonumber(sheet.karmaTotal) or 0) - karma;
+
+					sheet.karma = left;
+				</event>
+			</dataLink>
+		</layout>
+
+		<layout left="215" top="0" width="610" height="155">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="610" height="20" text="PRIORITIES" horzTextAlign="center"/>
+
+			<label text="PRIORITY A" left="5" top="25" width="100" height="20" horzTextAlign="center"/>
+			<comboBox left="105" top="25" width="500" height="25" field="priority_a" items="{'METATYPE: Human (9), Elf (8), Dwarf (7), Ork (7), Troll (5)', 'ATTRIBUTES: 24', 'MAGIC: Magician or Mystic Adept: Magic 6, two Rating 5 Magical skills, 10 spells', 'RESSONANCE: Technomancer: Resonance 6, two Rating 5 Resonance skills, 5 complex forms', 'SKILLS: 46/10 ', 'RESOURCES: 450,000¥'}"/>
+
+			<label text="PRIORITY B" left="5" top="50" width="100" height="20" horzTextAlign="center"/>
+			<comboBox left="105" top="50" width="500" height="25" field="priority_b" items="{'METATYPE: Human (7), Elf (6), Dwarf (4), Ork (4), Troll (0)', 'ATTRIBUTES: 20', 'MAGIC: Magician or Mystic Adept: Magic 4, two Rating 4 Magical skills, 7 spells', 'RESSONANCE: Technomancer: Resonance 4, two Rating 4 Resonance skills, 2 complex forms', 'MAGIC: Adept: Magic 6, one Rating 4 Active skill', 'MAGIC: Aspected Magician: Magic 5, one Rating 4 Magical skill group', 'SKILLS: 36/5 ', 'RESOURCES: 275,000¥'}"/>
+
+			<label text="PRIORITY C" left="5" top="75" width="100" height="20" horzTextAlign="center"/>
+			<comboBox left="105" top="75" width="500" height="25" field="priority_c" items="{'METATYPE: Human (5), Elf (3), Dwarf (1), Ork (0)', 'ATTRIBUTES: 16', 'MAGIC: Magician or Mystic Adept: Magic 3, 5 spells', 'RESSONANCE: Technomancer: Resonance 3, 1 complex form', 'MAGIC: Adept: Magic 4, one Rating 2 Active skill', 'MAGIC: Aspected Magician: Magic 3, one Rating 2 Magical skill group', 'SKILLS: 28/2 ', 'RESOURCES: 140,000¥'}"/>
+
+			<label text="PRIORITY D" left="5" top="100" width="100" height="20" horzTextAlign="center"/>
+			<comboBox left="105" top="100" width="500" height="25" field="priority_d" items="{'METATYPE: Human (3), Elf (0)', 'ATTRIBUTES: 14', 'MAGIC: Adept: Magic 2', 'MAGIC: Aspected Magician: Magic 2', 'SKILLS: 22/0 ', 'RESOURCES: 50,000¥'}"/>
+
+			<label text="PRIORITY E" left="5" top="125" width="100" height="20" horzTextAlign="center"/>
+			<comboBox left="105" top="125" width="500" height="25" field="priority_e" items="{'METATYPE: Human (1)', 'ATTRIBUTES: 12 ', 'MAGIC: — ', 'SKILLS: 18/0 ', 'RESOURCES: 6,000¥'}"/>
+		</layout>
+
+		<layout left="215" top="160" width="310" height="130">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="310" height="20" text="BASE/POINTS SPENT" horzTextAlign="center"/>
+
+			<label left="155" top="25" width="50" height="20" text="BASE" horzTextAlign="center"/>
+			<label left="205" top="25" width="50" height="20" text="POINTS" horzTextAlign="center"/>
+			<label left="255" top="25" width="50" height="20" text="GROUP" horzTextAlign="center"/>
+
+			<label text="ATTRIBUTES" left="5" top="50" width="150" height="20" horzTextAlign="center"/>
+			<rectangle left="155" top="50" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="155" top="50" width="50" height="25" field="attribute_base_spent" vertTextAlign="center" horzTextAlign="center"/>
+			<rectangle left="205" top="50" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="205" top="50" width="50" height="25" field="attribute_initial_spent" vertTextAlign="center" horzTextAlign="center"/>
+
+			<label text="ACTIVE SKILLS" left="5" top="75" width="150" height="20" horzTextAlign="center"/>
+			<rectangle left="155" top="75" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="155" top="75" width="50" height="25" field="skills_active_base_spent" vertTextAlign="center" horzTextAlign="center"/>
+			<rectangle left="205" top="75" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="205" top="75" width="50" height="25" field="skills_active_points_spent" vertTextAlign="center" horzTextAlign="center"/>
+			<rectangle left="255" top="75" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="255" top="75" width="50" height="25" field="skills_active_group_spent" vertTextAlign="center" horzTextAlign="center"/>
+
+			<label text="KNOWLEDGE/LANGUAGE" left="5" top="100" width="150" height="20" horzTextAlign="center"/>
+			<rectangle left="155" top="100" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="155" top="100" width="50" height="25" field="skill_knowledge_base_spent" vertTextAlign="center" horzTextAlign="center"/>
+			<rectangle left="205" top="100" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="205" top="100" width="50" height="25" field="skill_knowledge_points_spent" vertTextAlign="center" horzTextAlign="center"/>
+		</layout>
+
+	</scrollBox>
+</form>

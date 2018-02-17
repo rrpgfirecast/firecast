@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplate" formType="sheetTemplate" dataType="Ambesek.Nefertyne.Shadowrun5E" title="Ficha Shadowrun 5E" align="client" theme="dark">
+	<tabControl align="client">
+		<tab title="General">
+			<import file="01.General.lfm"/>
+		</tab>
+		<tab title="Skills">
+			<import file="02.Skills.lfm"/>
+		</tab>
+		<tab title="Qualities">
+			<import file="03.Qualities.lfm"/>
+		</tab>
+		<tab title="Combat">
+			<import file="04.Combat.lfm"/>
+		</tab>
+		<tab title="Inventory">
+			<import file="05.Inventory.lfm"/>
+		</tab>
+		<tab title="Powers">
+			<import file="06.Powers.lfm"/>
+		</tab>
+		<tab title="Description">
+			<import file="Description.lfm"/>
+		</tab>
+		<tab title="Notes">
+			<import file="Notes.lfm"/>
+		</tab>
+		<tab title="Stats">
+            <import file="Stats.lfm"/>
+		</tab>
+		<tab title="Credits">
+			<import file="Credits.lfm"/>
+		</tab>
+	</tabControl>
+</form>

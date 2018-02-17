@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSkills" align="client">
+	<scrollBox align="client">
+		<layout left="0" top="0" width="285" height="685">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="285" height="20" text="ACTIVE SKILLS" horzTextAlign="center"/>
+			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclSkillList:append();"/>
+
+			<recordList name="rclSkillList" field="skillList" templateForm="frmActiveSkill" left="5" top="25" width="275" height="650" layout="vertical">
+				<event name="onCompare">
+					if utils.compareStringPtBr(nodeA.skill_group_name, nodeB.skill_group_name)== 0 then
+						return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
+					else 
+		            	return utils.compareStringPtBr(nodeA.skill_group_name, nodeB.skill_group_name);
+		            end;
+		        </event>
+			</recordList>
+		</layout>
+
+		<layout left="290" top="0" width="285" height="685">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="285" height="20" text="KNOWLEDGE SKILLS" horzTextAlign="center"/>
+			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclKnowledgeList:append();"/>
+
+			<recordList name="rclKnowledgeList" field="knowledgeList" templateForm="frmKnowledgeSkill" left="5" top="25" width="275" height="650" layout="vertical">
+				<event name="onCompare">
+					return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
+		        </event>
+			</recordList>
+		</layout>
+
+		<layout left="580" top="0" width="285" height="685">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="285" height="20" text="LANGUAGE SKILLS" horzTextAlign="center"/>
+			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclLanguageList:append();"/>
+
+			<recordList name="rclLanguageList" field="languageList" templateForm="frmLanguageSkill" left="5" top="25" width="275" height="650" layout="vertical">
+				<event name="onCompare">
+					return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
+		        </event>
+			</recordList>
+		</layout>
+	</scrollBox>
+</form>

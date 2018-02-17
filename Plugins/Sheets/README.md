@@ -11,6 +11,8 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais).
 	- Conteudo da mesa RPGmeister para facil acesso.
 - DnD5e: AlyssonRPG
 	- Ficha para o sistema Dungeons and Dragons Next.
+- Ficha Cyberpunk 2020: Ambesek
+	- Ficha para o cenario e sistema Cyberpunk 2020
 - Ficha GURPS 4E: Ambesek
 	- Ficha feita para GURPS 4ª edição.
 - FFRPG Mob Creator: Hitoshura
@@ -25,6 +27,8 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais).
 	- Ficha para d20system. Usada por jogadores de D&D3.5.
 - Ficha Reinos d20: Ambesek
 	- Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre.  
+- Ficha Shadowrun 5E: Ambesek
+	- Para o sistema e cenario Shadowrun 5ª edição
 - Fira: Yiotoo
 - GURPS Saint Seiya Forever: Ambesek
 	- Ficha para o sistema GURPS adaptada para a mesa Saint Seiya Forever.

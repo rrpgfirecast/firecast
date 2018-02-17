@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCombat" align="client">
+	<scrollBox align="client">
+		<layout left="0" top="0" width="540" height="340">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="540" height="20" text="RANGED WEAPONS" horzTextAlign="center"/>
+			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclRangedWeapons:append();"/>
+
+			<label text="WEAPON" left="5" top="25" width="150" height="20" horzTextAlign="center"/>
+			<label text="DMG" left="155" top="25" width="40" height="20" horzTextAlign="center"/>
+			<label text="ACC" left="195" top="25" width="40" height="20" horzTextAlign="center"/>
+			<label text="AP" left="235" top="25" width="40" height="20" horzTextAlign="center"/>
+			<label text="MODE" left="275" top="25" width="40" height="20" horzTextAlign="center"/>
+			<label text="RC" left="315" top="25" width="40" height="20" horzTextAlign="center"/>
+			<label text="AMMO" left="355" top="25" width="40" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="PRICE" left="395" top="25" width="40" height="20" horzTextAlign="center" fontSize="12"/>
+			<label text="WEIGHT" left="435" top="25" width="40" height="20" horzTextAlign="center" fontSize="11"/>
+
+			<recordList name="rclRangedWeapons" field="rangedWeaponsList" templateForm="frmRanged" left="5" top="50" width="530" height="280" layout="vertical">
+				<event name="onCompare">
+					return utils.compareStringPtBr(nodeA.ranged_weapon, nodeB.ranged_weapon);
+		        </event>
+			</recordList>
+		</layout>
+
+		<layout left="545" top="0" width="450" height="340">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="450" height="20" text="MELEE WEAPONS" horzTextAlign="center"/>
+			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclMeleeWeapons:append();"/>
+
+			<label text="WEAPON" left="5" top="25" width="150" height="20" horzTextAlign="center"/>
+			<label text="REACH" left="155" top="25" width="40" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="DMG" left="195" top="25" width="40" height="20" horzTextAlign="center"/>
+			<label text="ACC" left="235" top="25" width="40" height="20" horzTextAlign="center"/>
+			<label text="AP" left="275" top="25" width="40" height="20" horzTextAlign="center"/>
+			<label text="PRICE" left="315" top="25" width="40" height="20" horzTextAlign="center" fontSize="12"/>
+			<label text="WEIGHT" left="355" top="25" width="40" height="20" horzTextAlign="center" fontSize="11"/>
+
+			<recordList name="rclMeleeWeapons" field="meleeWeaponsList" templateForm="frmMelee" left="5" top="50" width="440" height="280" layout="vertical">
+				<event name="onCompare">
+					return utils.compareStringPtBr(nodeA.melee_weapon, nodeB.melee_weapon);
+		        </event>
+			</recordList>
+		</layout>
+
+		<layout left="0" top="345" width="460" height="340">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="460" height="20" text="AUGMENTATIONS" horzTextAlign="center"/>
+			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclAugmentations:append();"/>
+
+			<label text="AUGMENTATION" left="5" top="25" width="150" height="20" horzTextAlign="center"/>
+			<label text="RATING" left="155" top="25" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="NOTES" left="205" top="25" width="100" height="20" horzTextAlign="center"/>
+			<label text="ESSENCE" left="305" top="25" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="PRICE" left="355" top="25" width="50" height="20" horzTextAlign="center" fontSize="12"/>
+
+			<recordList name="rclAugmentations" field="augmentationsList" templateForm="frmAugmentation" left="5" top="50" width="450" height="280" layout="vertical">
+				<event name="onCompare">
+					return utils.compareStringPtBr(nodeA.augmentation_name, nodeB.augmentation_name);
+		        </event>
+			</recordList>
+		</layout>
+
+		<layout left="465" top="345" width="360" height="340">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="360" height="20" text="ARMOR" horzTextAlign="center"/>
+			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclArmor:append();"/>
+
+			<label text="ARMOR" left="5" top="25" width="100" height="20" horzTextAlign="center"/>
+			<label text="RATING" left="105" top="25" width="40" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="NOTES" left="145" top="25" width="80" height="20" horzTextAlign="center"/>
+			<label text="PRICE" left="225" top="25" width="40" height="20" horzTextAlign="center" fontSize="12"/>
+			<label text="WEIGHT" left="265" top="25" width="40" height="20" horzTextAlign="center" fontSize="11"/>
+
+			<recordList name="rclArmor" field="armorList" templateForm="frmArmor" left="5" top="50" width="350" height="280" layout="vertical">
+				<event name="onCompare">
+					return utils.compareStringPtBr(nodeA.armor_name, nodeB.armor_name);
+		        </event>
+			</recordList>
+		</layout>
+
+	</scrollBox>
+</form>

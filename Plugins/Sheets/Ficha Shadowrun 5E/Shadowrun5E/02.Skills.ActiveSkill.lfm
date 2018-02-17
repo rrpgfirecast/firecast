@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmActiveSkill" width="250" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit left="0" top="0" width="150" height="25" field="skill_name"/>
+
+		<rectangle left="150" top="0" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="150" top="0" width="50" height="25" field="skill_total" vertTextAlign="center" horzTextAlign="center"/>
+
+		<button left="200" top="0" width="25" height="25" text="i">
+			<event name="onClick">
+				local pop = self:findControlByName("popupActiveSkill");
+				
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:showPopupEx("right", self);
+				else
+					showMessage("Ops, bug.. nao encontrei o popup de pericias para exibir");
+				end;
+			</event>
+		</button>
+
+		<button left="225" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+		<dataLink fields="{'skill_base', 'skill_points', 'skill_karma_bonus', 'skill_group_points', 'skill_group_karma_bonus', 'skill_other'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+				sheet.skill_total = 	(tonumber(sheet.skill_base) or 0) + 
+										(tonumber(sheet.skill_points) or 0) + 
+										(tonumber(sheet.skill_karma_bonus) or 0) + 
+										(tonumber(sheet.skill_group_points) or 0) + 
+										(tonumber(sheet.skill_group_karma_bonus) or 0) + 
+										(tonumber(sheet.skill_other) or 0);
+			</event>
+		</dataLink>
+		<dataLink fields="{'skill_karma_spent', 'skill_espec_karma', 'skill_group_karma_spent'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local node = ndb.getRoot(sheet);
+				local objetos = ndb.getChildNodes(node.skillList);
+				local karma = 0;
+				local groups = {};
+
+				for i=1, #objetos, 1 do 
+					karma = karma + (tonumber(objetos[i].skill_karma_spent) or 0);
+					karma = karma + (tonumber(objetos[i].skill_espec_karma) or 0);
+					if not containGroup(groups, objetos[i].skill_group_name) then
+						karma = karma + (tonumber(objetos[i].skill_group_karma_spent) or 0);
+						groups[#groups+1] = objetos[i].skill_group_name;
+					end;
+				end;
+
+				node.skills_active_karma_spent = karma;
+			</event>
+		</dataLink>
+		<dataLink fields="{'skill_group_points'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local node = ndb.getRoot(sheet);
+				local objetos = ndb.getChildNodes(node.skillList);
+				local points = 0;
+				local groups = {};
+
+				for i=1, #objetos, 1 do 
+					if not containGroup(groups, objetos[i].skill_group_name) then
+						points = points + (tonumber(objetos[i].skill_group_points) or 0);
+						groups[#groups+1] = objetos[i].skill_group_name;
+					end;
+				end;
+
+				node.skills_active_group_spent = points;
+			</event>
+		</dataLink>
+		<dataLink fields="{'skill_points'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local node = ndb.getRoot(sheet);
+				local objetos = ndb.getChildNodes(node.skillList);
+				local points = 0;
+
+				for i=1, #objetos, 1 do 
+					points = points + (tonumber(objetos[i].skill_points) or 0);
+				end;
+
+				node.skills_active_points_spent = points;
+			</event>
+		</dataLink>
+		<dataLink fields="{'skill_base'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local node = ndb.getRoot(sheet);
+				local objetos = ndb.getChildNodes(node.skillList);
+				local base = 0;
+
+				for i=1, #objetos, 1 do 
+					base = base + (tonumber(objetos[i].skill_base) or 0);
+				end;
+
+				node.skills_active_base_spent = base;
+			</event>
+		</dataLink>
+
+		<script>
+			local function containGroup(array, word)
+				local contain = false;
+
+				for i=1, #array, 1 do
+					if utils.compareStringPtBr(array[i], word)==0 then
+						contain = true;
+					end;
+				end;
+
+				return contain;
+			end;
+		</script>
+	</rectangle>
+</form>

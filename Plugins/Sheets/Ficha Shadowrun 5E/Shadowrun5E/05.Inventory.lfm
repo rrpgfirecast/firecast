@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInventory" align="client">
+	<scrollBox align="client">
+		<layout left="0" top="0" width="360" height="685">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="360" height="20" text="GEAR" horzTextAlign="center"/>
+			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclGearList:append();"/>
+
+			<label text="ITEM" left="5" top="25" width="150" height="20" horzTextAlign="center"/>
+			<label text="RATING" left="155" top="25" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="PRICE" left="205" top="25" width="50" height="20" horzTextAlign="center" fontSize="12"/>
+			<label text="WEIGHT" left="255" top="25" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+
+			<recordList name="rclGearList" field="gearList" templateForm="frmGear" left="5" top="50" width="350" height="625" layout="vertical">
+				<event name="onCompare">
+					return utils.compareStringPtBr(nodeA.gear_name, nodeB.gear_name);
+		        </event>
+			</recordList>
+		</layout>
+
+		<layout left="365" top="0" width="360" height="340">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="360" height="20" text="CYBERDECK" horzTextAlign="center"/>
+
+			<label text="MODEL" left="5" top="25" width="60" height="20" horzTextAlign="center"/>
+			<edit left="65" top="25" width="55" height="25" field="cyberdeck_model"/>
+			<label text="ATTACK" left="125" top="25" width="60" height="20" horzTextAlign="center"/>
+			<edit left="185" top="25" width="55" height="25" field="cyberdeck_attack" horzTextAlign="center" type="number"/>
+			<label text="SLEAZE" left="245" top="25" width="60" height="20" horzTextAlign="center"/>
+			<edit left="305" top="25" width="50" height="25" field="cyberdeck_sleaze" horzTextAlign="center" type="number"/>
+
+			<label text="RATING" left="5" top="50" width="60" height="20" horzTextAlign="center"/>
+			<edit left="65" top="50" width="55" height="25" field="cyberdeck_rating" horzTextAlign="center" type="number"/>
+			<label text="PROCESSING" left="125" top="50" width="60" height="20" horzTextAlign="center" fontSize="10"/>
+			<edit left="185" top="50" width="55" height="25" field="cyberdeck_data_processing" horzTextAlign="center" type="number"/>
+			<label text="FIREWALL" left="245" top="50" width="60" height="20" horzTextAlign="center"/>
+			<edit left="305" top="50" width="50" height="25" field="cyberdeck_firewall" horzTextAlign="center" type="number"/>
+
+			<textEditor left="5" top="75" width="350" height="235" field="cyberdeck_programs"/>
+
+			<label text="Matrix Condition Monitor" left="5" top="310" width="150" height="20" horzTextAlign="center"/>
+			<edit left="155" top="310" width="50" height="25" field="monitor_matrix" horzTextAlign="center" type="number"/>
+			<label left="205" top="310" width="10" height="25" text="-" horzTextAlign="center"/>
+			<edit left="215" top="310" width="50" height="25" field="monitor_matrix_damage" horzTextAlign="center" type="number"/>			
+			<label left="265" top="310" width="10" height="25" text="=" horzTextAlign="center"/>
+			<rectangle left="275" top="310" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="275" top="310" width="50" height="25" field="monitor_matrix_left" vertTextAlign="center" horzTextAlign="center"/>
+
+			<dataLink fields="{'monitor_matrix', 'monitor_matrix_damage'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					sheet.monitor_matrix_left = (tonumber(sheet.monitor_matrix) or 0) - ((tonumber(sheet.monitor_matrix_damage) or 0));
+				</event>
+			</dataLink>
+		</layout>
+
+		<layout left="365" top="345" width="360" height="340">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="360" height="20" text="VEHICLE" horzTextAlign="center"/>
+
+			<label text="VEHICLE" left="5" top="25" width="60" height="20" horzTextAlign="center"/>
+			<edit left="65" top="25" width="55" height="25" field="vehicle_model"/>
+			<label text="HANDLING" left="125" top="25" width="60" height="20" horzTextAlign="center" fontSize="11"/>
+			<edit left="185" top="25" width="55" height="25" field="vehicle_handling" horzTextAlign="center" type="number"/>
+			<label text="ACCELERATION" left="245" top="25" width="60" height="20" horzTextAlign="center" fontSize="8"/>
+			<edit left="305" top="25" width="50" height="25" field="vehicle_acceleration" horzTextAlign="center" type="number"/>
+
+			<label text="SPEED" left="5" top="50" width="60" height="20" horzTextAlign="center"/>
+			<edit left="65" top="50" width="55" height="25" field="vehicle_speed" horzTextAlign="center" type="number"/>
+			<label text="PILOT" left="125" top="50" width="60" height="20" horzTextAlign="center"/>
+			<edit left="185" top="50" width="55" height="25" field="vehicle_pilot" horzTextAlign="center" type="number"/>
+			<label text="BODY" left="245" top="50" width="60" height="20" horzTextAlign="center"/>
+			<edit left="305" top="50" width="50" height="25" field="vehicle_body" horzTextAlign="center" type="number"/>
+
+			<label text="ARMOR" left="5" top="75" width="60" height="20" horzTextAlign="center"/>
+			<edit left="65" top="75" width="55" height="25" field="vehicle_armor" horzTextAlign="center" type="number"/>
+			<label text="SENSOR" left="125" top="75" width="60" height="20" horzTextAlign="center"/>
+			<edit left="185" top="75" width="55" height="25" field="vehicle_sensor" horzTextAlign="center" type="number"/>
+			<label text="OTHER" left="245" top="75" width="60" height="20" horzTextAlign="center"/>
+			<edit left="305" top="75" width="50" height="25" field="vehicle_other"/>
+
+			<textEditor left="5" top="100" width="350" height="235" field="vehicle_notes"/>
+		</layout>
+
+		<layout left="730" top="0" width="360" height="340">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="360" height="20" text="ID - LIFESTYLE - CURRENCY" horzTextAlign="center"/>
+
+			<label text="LIFESTYLE" left="5" top="25" width="60" height="25" horzTextAlign="center"/>
+			<edit left="65" top="25" width="290" height="25" field="lifestyle"/>
+
+			<label text="NUYEN" left="5" top="50" width="60" height="25" horzTextAlign="center"/>
+			<edit left="65" top="50" width="115" height="25" field="nuyen" horzTextAlign="center" type="number"/>
+			<label text="LICENSES" left="180" top="50" width="60" height="25" horzTextAlign="center"/>
+			<edit left="240" top="50" width="115" height="25" field="licenses" horzTextAlign="center" type="number"/>
+
+			<textEditor left="5" top="75" width="350" height="260" field="ids_lifestyles_licenses"/>
+		</layout>
+	</scrollBox>
+</form>

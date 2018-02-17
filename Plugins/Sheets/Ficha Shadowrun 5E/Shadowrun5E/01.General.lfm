@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeneral" align="client">
+	<template name="smallTitleCenter">
+		<flowPart minWidth="50" maxWidth="50" height="15">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+		</flowPart>
+	</template>
+	<template name="smallFieldCenter">
+		<flowPart minWidth="50" maxWidth="50" height="20">
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="mediumCheckboxCenter">
+		<flowPart minWidth="50" maxWidth="100" height="15">
+			<checkBox align="client" class="" field="$(field)" text="$(text)" horzTextAlign="center" fontSize="10"/>
+		</flowPart>
+	</template>
+	<template name="mediumTitleCenter">
+		<flowPart minWidth="50" maxWidth="100" height="15">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+		</flowPart>
+	</template>
+	<template name="mediumFieldCenter">
+		<flowPart minWidth="50" maxWidth="100" height="20">
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="mediumTextCenter">
+		<flowPart minWidth="50" maxWidth="100" height="20">
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="longTextCenter">
+		<flowPart minWidth="50" maxWidth="150" height="20">
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="doubleSmallFieldCenter">
+		<flowPart minWidth="100" maxWidth="100" height="20">
+			<edit align="left" width="50" class="" field="$(field1)" horzTextAlign="center" fontSize="12" type="number"/>
+			<edit align="left" width="50" class="" field="$(field2)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="atributeFlow">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="8" margins="{bottom=4}" horzAlign="center">
+			<smallFieldCenter field="attribute_$(field)_max"/>
+			<smallFieldCenter field="attribute_$(field)_base"/>
+			<smallFieldCenter field="attribute_$(field)_initial"/>
+			<smallFieldCenter field="attribute_$(field)_karma"/>
+			<smallFieldCenter field="attribute_$(field)_other"/>
+			<flowPart minWidth="20" maxWidth="20" height="20"/>
+			<smallFieldCenter field="attribute_$(field)_augmented"/>
+			<smallFieldCenter field="attribute_$(field)_misc"/>
+		</flowLayout>
+	</template>
+	<template name="LabelEdit">
+		<label left="$(left1)" top="$(top)" width="90" height="20" text="$(text)" horzTextAlign="center"/>
+		<edit left="$(left2)" top="$(top)" width="300" height="25" field="$(field)" vertTextAlign="center"/>
+	</template>
+	<template name="LabelEdit50">
+		<label left="$(left1)" top="$(top)" width="90" height="20" text="$(text)" horzTextAlign="center"/>
+		<edit left="$(left2)" top="$(top)" width="50" height="25" field="$(field)" vertTextAlign="center" horzTextAlign="center"/>
+	</template>
+	<template name="Label50">
+		<label left="$(left1)" top="$(top)" width="90" height="20" text="$(text)" horzTextAlign="center"/>
+		<rectangle left="$(left2)" top="$(top)" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="$(left2)" top="$(top)" width="50" height="25" field="$(field)" vertTextAlign="center" horzTextAlign="center"/>
+	</template>
+	<template name="Attribute">
+		<label left="$(left1)" top="$(top)" width="90" height="20" text="$(text)" horzTextAlign="center"/>
+		<rectangle left="$(left2)" top="$(top)" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="$(left2)" top="$(top)" width="50" height="25" field="attribute_$(field)_real" vertTextAlign="center" horzTextAlign="center"/>
+		<rectangle left="$(left3)" top="$(top)" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="$(left3)" top="$(top)" width="50" height="25" field="attribute_$(field)_effective" vertTextAlign="center" horzTextAlign="center"/>
+
+		<dataLink fields="{'attribute_$(field)_max', 'attribute_$(field)_base', 'attribute_$(field)_initial', 'attribute_$(field)_karma', 'attribute_$(field)_other', 'attribute_$(field)_augmented', 'attribute_$(field)_misc'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local real = 	(tonumber(sheet.attribute_$(field)_base) or 0) + 
+								(tonumber(sheet.attribute_$(field)_initial) or 0);
+
+				local karma = (tonumber(sheet.attribute_$(field)_karma) or 0);
+
+				while (karma > 0) do
+					karma = karma - ((real+1) * 5);
+					if karma >= 0 then
+						real = real + 1;
+					end;
+				end;
+
+				real = real + (tonumber(sheet.attribute_$(field)_other) or 0);
+				real = math.min(real, (tonumber(sheet.attribute_$(field)_max) or 11));
+
+				effective = real + 
+							(tonumber(sheet.attribute_$(field)_augmented) or 0) + 
+							(tonumber(sheet.attribute_$(field)_misc) or 0);
+
+				sheet.attribute_$(field)_real = real;
+				sheet.attribute_$(field)_effective = effective;
+			</event>
+		</dataLink>
+	</template>
+	<template name="CompoundAttribute">
+		<label left="$(left1)" top="$(top)" width="90" height="20" text="$(text)" horzTextAlign="center"/>
+		<rectangle left="$(left2)" top="$(top)" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="$(left2)" top="$(top)" width="50" height="25" field="$(field)" vertTextAlign="center" horzTextAlign="center"/>
+		<edit left="$(left3)" top="$(top)" width="50" height="25" field="$(field)_other" vertTextAlign="center" horzTextAlign="center"/>
+
+		<dataLink fields="{'attribute_$(link1)_effective', 'attribute_$(link2)_effective', '$(field)_other'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local link1 = (tonumber(sheet.attribute_$(link1)_effective) or 0);
+				local link2 = (tonumber(sheet.attribute_$(link2)_effective) or 0);
+				local other = (tonumber(sheet.$(field)_other) or 0);
+				sheet.$(field) = link1 + link2 + other;
+			</event>
+		</dataLink>
+	</template>
+	<template name="Monitor">
+		<label left="$(left1)" top="$(top)" width="90" height="20" text="$(text)" horzTextAlign="center"/>
+		<rectangle left="$(left2)" top="$(top)" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="$(left2)" top="$(top)" width="40" height="25" field="$(field)" vertTextAlign="center" horzTextAlign="center"/>
+		<edit left="$(left3)" top="$(top)" width="30" height="25" field="$(field)_other" vertTextAlign="center" horzTextAlign="center"/>
+
+		<edit left="$(left4)" top="$(top)" width="30" height="25" field="$(field)_damage" vertTextAlign="center" horzTextAlign="center"/>
+		<rectangle left="$(left5)" top="$(top)" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="$(left5)" top="$(top)" width="40" height="25" field="$(field)_left" vertTextAlign="center" horzTextAlign="center"/>
+		<label left="$(left6)" top="$(top)" width="50" height="25" field="$(field)_modifier" vertTextAlign="center" horzTextAlign="center"/>
+
+		<dataLink fields="{'attribute_$(link1)_effective', '$(field)_other'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local link1 = math.ceil((tonumber(sheet.attribute_$(link1)_effective) or 0)/2);
+				local other = (tonumber(sheet.$(field)_other) or 0);
+				sheet.$(field) = link1 + other + 8;
+			</event>
+		</dataLink>
+
+		<dataLink fields="{'$(field)_damage', '$(field)'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local total = (tonumber(sheet.$(field)) or 0);
+				local damage = (tonumber(sheet.$(field)_damage) or 0);
+				sheet.$(field)_left = total - damage;
+
+				local mod = math.floor(damage/3);
+				if mod > 0 then
+					sheet.$(field)_modifier = "-" .. mod .. " d.p.";
+				else
+					sheet.$(field)_modifier = "";
+				end;
+			</event>
+		</dataLink>
+	</template>
+	<template name="Overflow">
+		<label left="$(left1)" top="$(top)" width="90" height="20" text="$(text)" horzTextAlign="center"/>
+		<rectangle left="$(left2)" top="$(top)" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="$(left2)" top="$(top)" width="40" height="25" field="$(field)" vertTextAlign="center" horzTextAlign="center"/>
+		<edit left="$(left3)" top="$(top)" width="30" height="25" field="$(field)_other" vertTextAlign="center" horzTextAlign="center"/>
+
+		<edit left="$(left4)" top="$(top)" width="30" height="25" field="$(field)_damage" vertTextAlign="center" horzTextAlign="center"/>
+		<rectangle left="$(left5)" top="$(top)" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="$(left5)" top="$(top)" width="40" height="25" field="$(field)_left" vertTextAlign="center" horzTextAlign="center"/>
+		<label left="$(left6)" top="$(top)" width="50" height="25" field="$(field)_modifier" vertTextAlign="center" horzTextAlign="center"/>
+
+		<dataLink fields="{'attribute_$(link1)_effective', '$(field)_other'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local link1 = math.ceil((tonumber(sheet.attribute_$(link1)_effective) or 0)/2);
+				local other = (tonumber(sheet.$(field)_other) or 0);
+				sheet.$(field) = link1 + other;
+			</event>
+		</dataLink>
+
+		<dataLink fields="{'$(field)_damage', '$(field)'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local total = (tonumber(sheet.$(field)) or 0);
+				local damage = (tonumber(sheet.$(field)_damage) or 0);
+				local left = total - damage;
+
+				sheet.$(field)_left = left;
+
+				if left >= 0 then
+					sheet.$(field)_modifier = "";
+				else 
+					sheet.$(field)_modifier = "DEAD";
+				end;
+			</event>
+		</dataLink>
+	</template>
+	<template name="Essence">
+		<label left="$(left1)" top="$(top)" width="90" height="20" text="$(text)" horzTextAlign="center"/>
+		<rectangle left="$(left2)" top="$(top)" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="$(left2)" top="$(top)" width="50" height="25" field="attribute_$(field)_real" vertTextAlign="center" horzTextAlign="center"/>
+		<rectangle left="$(left3)" top="$(top)" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="$(left3)" top="$(top)" width="50" height="25" field="attribute_$(field)_effective" vertTextAlign="center" horzTextAlign="center"/>
+
+		<dataLink field="attribute_$(field)_real" defaultValue="6">
+			<event name="onChange">
+				if sheet==nil then return end;
+				sheet.attribute_$(field)_effective = math.floor(tonumber(sheet.attribute_$(field)_real) or 6);
+			</event>
+		</dataLink>
+	</template>
+	<template name="AttributeButton">
+		<button left="$(left)" top="$(top)" text=">>" width="30" height="100" name="$(name)">
+			<event name="onClick">
+				local pop = self:findControlByName("$(popup)");
+			
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:showPopupEx("rightCenter", self.$(name));
+				else
+					showMessage("Ops, bug.. nao encontrei o popup $(popup) para exibir");
+				end;
+			</event>
+		</button>
+	</template>
+
+	<popup name="popupPhysical" width="400" height="130" backOpacity="0.4">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="8" margins="{bottom=4}" horzAlign="center">
+			<smallTitleCenter text="Max"/>
+			<smallTitleCenter text="Base"/>
+			<smallTitleCenter text="Initial"/>
+			<smallTitleCenter text="Karma"/>
+			<smallTitleCenter text="Other"/>
+			<flowPart minWidth="20" maxWidth="20" height="15"/>
+			<smallTitleCenter text="Augment"/>
+			<smallTitleCenter text="Misc"/>
+		</flowLayout>
+		<atributeFlow field="body"/>
+		<atributeFlow field="agility"/>
+		<atributeFlow field="reaction"/>
+		<atributeFlow field="strenght"/>
+	</popup>
+	<popup name="popupMental" width="400" height="130" backOpacity="0.4">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="8" margins="{bottom=4}" horzAlign="center">
+			<smallTitleCenter text="Max"/>
+			<smallTitleCenter text="Base"/>
+			<smallTitleCenter text="Initial"/>
+			<smallTitleCenter text="Karma"/>
+			<smallTitleCenter text="Other"/>
+			<flowPart minWidth="20" maxWidth="20" height="15"/>
+			<smallTitleCenter text="Augment"/>
+			<smallTitleCenter text="Misc"/>
+		</flowLayout>
+		<atributeFlow field="charisma"/>
+		<atributeFlow field="intuition"/>
+		<atributeFlow field="logic"/>
+		<atributeFlow field="willpower"/>
+	</popup>
+	<popup name="popupSpecial" width="400" height="130" backOpacity="0.4">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="8" margins="{bottom=4}" horzAlign="center">
+			<smallTitleCenter text="Max"/>
+			<smallTitleCenter text="Base"/>
+			<smallTitleCenter text="Initial"/>
+			<smallTitleCenter text="Karma"/>
+			<smallTitleCenter text="Other"/>
+			<flowPart minWidth="20" maxWidth="20" height="15"/>
+			<smallTitleCenter text="Augment"/>
+			<smallTitleCenter text="Misc"/>
+		</flowLayout>
+		<atributeFlow field="edge"/>
+		<atributeFlow field="magic"/>
+		<atributeFlow field="ressonance"/>
+	</popup>
+	<popup name="popupActiveSkill" width="350" height="220" backOpacity="0.4">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<mediumTitleCenter text="Base"/>
+			<mediumTitleCenter text="Points"/>
+			<flowPart minWidth="100" maxWidth="100" height="15">
+				<label align="left" width="85" class="tituloCampo" fontSize="10" text="Karma" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<button align="left" width="15" text="+">
+					<event name="onClick">
+						local pop = self:findControlByName("popupActiveSkill");
+						if pop == nil then return end;
+
+						local total = (tonumber(pop.node.skill_total) or 0) + 1;
+
+						pop.node.skill_karma_bonus = (tonumber(pop.node.skill_karma_bonus) or 0) + 1;
+						pop.node.skill_karma_spent = (tonumber(pop.node.skill_karma_spent) or 0) + (total*2);
+					</event>
+				</button>
+			</flowPart>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<mediumFieldCenter field="skill_base"/>
+			<mediumFieldCenter field="skill_points"/>
+			<doubleSmallFieldCenter field1="skill_karma_bonus" field2="skill_karma_spent"/>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" margins="{bottom=4}" horzAlign="center">
+			<label align="top" class="tituloCampo" fontSize="10" text="Group" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<mediumTitleCenter text="Name"/>
+			<mediumTitleCenter text="Points"/>
+			<flowPart minWidth="100" maxWidth="100" height="15">
+				<label align="left" width="85" class="tituloCampo" fontSize="10" text="Karma" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<button align="left" width="15" text="+">
+					<event name="onClick">
+						local pop = self:findControlByName("popupActiveSkill");
+						if pop == nil then return end;
+
+						local total = (tonumber(pop.node.skill_total) or 0) + 1;
+
+						pop.node.skill_group_karma_bonus = (tonumber(pop.node.skill_group_karma_bonus) or 0) + 1;
+						pop.node.skill_group_karma_spent = (tonumber(pop.node.skill_group_karma_spent) or 0) + (total*5);
+
+						local objetos = ndb.getChildNodes(sheet.skillList);
+						for i=1, #objetos, 1 do 
+							if utils.compareStringPtBr(objetos[i].skill_group_name, pop.node.skill_group_name) == 0 then
+								objetos[i].skill_group_karma_bonus = pop.node.skill_group_karma_bonus;
+								objetos[i].skill_group_karma_spent = pop.node.skill_group_karma_spent;
+							end;
+						end;
+					</event>
+				</button>
+			</flowPart>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<mediumTextCenter field="skill_group_name"/>
+			<mediumFieldCenter field="skill_group_points"/>
+			<doubleSmallFieldCenter field1="skill_group_karma_bonus" field2="skill_group_karma_spent"/>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" margins="{bottom=4}" horzAlign="center">
+			<label align="top" class="tituloCampo" fontSize="10" text="Especialization" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<mediumTitleCenter text="Other"/>
+			<mediumTitleCenter text="Points"/>
+			<mediumTitleCenter text="Karma"/>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<mediumFieldCenter field="skill_other"/>
+			<mediumFieldCenter field="skill_espec_points"/>
+			<mediumFieldCenter field="skill_espec_karma"/>
+		</flowLayout>
+
+		<textEditor align="client" field="skils_especs"/>
+	</popup>
+	<popup name="popupKnowledgeSkill" width="350" height="200" backOpacity="0.4">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<mediumTitleCenter text="Base"/>
+			<mediumTitleCenter text="Points"/>
+			<flowPart minWidth="100" maxWidth="100" height="15">
+				<label align="left" width="85" class="tituloCampo" fontSize="10" text="Karma" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<button align="left" width="15" text="+">
+					<event name="onClick">
+						local pop = self:findControlByName("popupKnowledgeSkill");
+						if pop == nil then return end;
+
+						local total = (tonumber(pop.node.skill_total) or 0) + 1;
+
+						pop.node.skill_karma_bonus = (tonumber(pop.node.skill_karma_bonus) or 0) + 1;
+						pop.node.skill_karma_spent = (tonumber(pop.node.skill_karma_spent) or 0) + total;
+					</event>
+				</button>
+			</flowPart>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<mediumFieldCenter field="skill_base"/>
+			<mediumFieldCenter field="skill_points"/>
+			<doubleSmallFieldCenter field1="skill_karma_bonus" field2="skill_karma_spent"/>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" margins="{bottom=4}" horzAlign="center">
+			<label align="top" class="tituloCampo" fontSize="10" text="Category" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<longTextCenter field="skill_category"/>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" margins="{bottom=4}" horzAlign="center">
+			<label align="top" class="tituloCampo" fontSize="10" text="Especialization" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<mediumTitleCenter text="Other"/>
+			<mediumTitleCenter text="Points"/>
+			<mediumTitleCenter text="Karma"/>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<mediumFieldCenter field="skill_other"/>
+			<mediumFieldCenter field="skill_espec_points"/>
+			<mediumFieldCenter field="skill_espec_karma"/>
+		</flowLayout>
+
+		<textEditor align="client" field="skils_especs"/>
+	</popup>
+	<popup name="popupLanguageSkill" width="350" height="160" backOpacity="0.4">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<mediumCheckboxCenter text="Native" field="skill_native"/>
+			<mediumTitleCenter text="Points"/>
+			<flowPart minWidth="100" maxWidth="100" height="15">
+				<label align="left" width="85" class="tituloCampo" fontSize="10" text="Karma" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<button align="left" width="15" text="+">
+					<event name="onClick">
+						local pop = self:findControlByName("popupLanguageSkill");
+						if pop == nil then return end;
+
+						local total = (tonumber(pop.node.skill_total) or 0) + 1;
+
+						pop.node.skill_karma_bonus = (tonumber(pop.node.skill_karma_bonus) or 0) + 1;
+						pop.node.skill_karma_spent = (tonumber(pop.node.skill_karma_spent) or 0) + total;
+					</event>
+				</button>
+			</flowPart>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<flowPart minWidth="50" maxWidth="100" height="20"/>
+			<mediumFieldCenter field="skill_points"/>
+			<doubleSmallFieldCenter field1="skill_karma_bonus" field2="skill_karma_spent"/>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="1" margins="{bottom=4}" horzAlign="center">
+			<label align="top" class="tituloCampo" fontSize="10" text="Especialization" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<mediumTitleCenter text="Other"/>
+			<mediumTitleCenter text="Points"/>
+			<mediumTitleCenter text="Karma"/>
+		</flowLayout>
+
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<mediumFieldCenter field="skill_other"/>
+			<mediumFieldCenter field="skill_espec_points"/>
+			<mediumFieldCenter field="skill_espec_karma"/>
+		</flowLayout>
+
+		<textEditor align="client" field="skils_especs"/>
+	</popup>
+
+	<scrollBox align="client">
+		<layout width="560" height="85">
+			<rectangle align="client" color="black"/>
+
+			<LabelEdit left1="5" left2="100" top="5" text="NAME" field="name"/>
+			<LabelEdit left1="5" left2="100" top="30" text="CONCEPT" field="concept"/>
+			<LabelEdit left1="5" left2="100" top="55" text="METATYPE" field="metatype"/>
+
+			<Label50 left1="405" left2="500" top="5" text="KARMA" field="karma"/>
+			<LabelEdit50 left1="405" left2="500" top="30" text="TOTAL KARMA" field="karmaTotal"/>
+		</layout>
+
+		<layout left="0" top="90" width="260" height="465">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="260" height="20" text="ATTRIBUTES" horzTextAlign="center"/>
+
+			<label left="195" top="90" width="100" height="20" text="Physical" horzTextAlign="center" rotationAngle="90"/>
+			<horzLine left="0" top="155" width="315" strokeColor="white"/>
+			<label left="195" top="200" width="100" height="20" text="Mental" horzTextAlign="center" rotationAngle="90"/>
+			<horzLine left="0" top="265" width="315" strokeColor="white"/>
+			<label left="195" top="310" width="100" height="20" text="Special" horzTextAlign="center" rotationAngle="90"/>
+			<horzLine left="0" top="375" width="315" strokeColor="white"/>
+
+			<label left="95" top="25" width="50" height="20" text="Real" horzTextAlign="center"/>
+			<label left="145" top="25" width="50" height="20" text="Augm." horzTextAlign="center"/>
+
+			<Attribute left1="5" left2="95" left3="145" top="50" text="Body" field="body"/>
+			<Attribute left1="5" left2="95" left3="145" top="75" text="Agility" field="agility"/>
+			<Attribute left1="5" left2="95" left3="145" top="100" text="Reaction" field="reaction"/>
+			<Attribute left1="5" left2="95" left3="145" top="125" text="Strenght" field="strenght"/>
+			<AttributeButton left="200" top="50" popup="popupPhysical" name="physicalButton"/>
+
+			<Attribute left1="5" left2="95" left3="145" top="160" text="Charisma" field="charisma"/>
+			<Attribute left1="5" left2="95" left3="145" top="185" text="Intuition" field="intuition"/>
+			<Attribute left1="5" left2="95" left3="145" top="210" text="Logic" field="logic"/>
+			<Attribute left1="5" left2="95" left3="145" top="235" text="Willpower" field="willpower"/>
+			<AttributeButton left="200" top="160" popup="popupMental" name="mentalButton"/>
+
+			<Attribute left1="5" left2="95" left3="145" top="270" text="Edge" field="edge"/>
+			<Attribute left1="5" left2="95" left3="145" top="295" text="Magic" field="magic"/>
+			<Attribute left1="5" left2="95" left3="145" top="320" text="Ressonance" field="ressonance"/>
+			<Essence left1="5" left2="95" left3="145" top="345" text="Essence" field="essence"/>
+			<AttributeButton left="200" top="270" popup="popupSpecial" name="specialButton"/>
+
+			<Label50 left1="5" left2="95" top="380" text="Physical Limit" field="limitPhysical"/>
+			<Label50 left1="5" left2="95" top="405" text="Mental Limit" field="limitMental"/>
+			<Label50 left1="5" left2="95" top="430" text="Social Limit" field="limitSocial"/>
+
+			<dataLink fields="{'attribute_body_effective', 'attribute_reaction_effective', 'attribute_strenght_effective'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					local strenght = (tonumber(sheet.attribute_strenght_effective) or 0) * 2;
+					local body = (tonumber(sheet.attribute_body_effective) or 0);
+					local reaction = (tonumber(sheet.attribute_reaction_effective) or 0);
+
+					sheet.limitPhysical = math.ceil((strenght + body + reaction)/3);
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'attribute_willpower_effective', 'attribute_intuition_effective', 'attribute_logic_effective'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					local logic = (tonumber(sheet.attribute_logic_effective) or 0) * 2;
+					local willpower = (tonumber(sheet.attribute_willpower_effective) or 0);
+					local intuition = (tonumber(sheet.attribute_intuition_effective) or 0);
+
+					sheet.limitMental = math.ceil((logic + willpower + intuition)/3);
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'attribute_willpower_effective', 'attribute_essence_effective', 'attribute_charisma_effective'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					local charisma = (tonumber(sheet.attribute_charisma_effective) or 0) * 2;
+					local willpower = (tonumber(sheet.attribute_willpower_effective) or 0);
+					local essence = (tonumber(sheet.attribute_essence_effective) or 0);
+
+					sheet.limitSocial = math.ceil((charisma + willpower + essence)/3);
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'attribute_body_karma', 'attribute_agility_karma', 'attribute_reaction_karma', 'attribute_strenght_karma', 'attribute_charisma_karma', 'attribute_intuition_karma', 'attribute_logic_karma', 'attribute_willpower_karma', 'attribute_edge_karma', 'attribute_magic_karma', 'attribute_ressonance_karma'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					sheet.attribute_karma_spent = 	(tonumber(sheet.attribute_body_karma) or 0) + 
+													(tonumber(sheet.attribute_agility_karma) or 0) + 
+													(tonumber(sheet.attribute_reaction_karma) or 0) + 
+													(tonumber(sheet.attribute_strenght_karma) or 0) + 
+													(tonumber(sheet.attribute_charisma_karma) or 0) + 
+													(tonumber(sheet.attribute_intuition_karma) or 0) + 
+													(tonumber(sheet.attribute_logic_karma) or 0) + 
+													(tonumber(sheet.attribute_willpower_karma) or 0) + 
+													(tonumber(sheet.attribute_edge_karma) or 0) + 
+													(tonumber(sheet.attribute_magic_karma) or 0) + 
+													(tonumber(sheet.attribute_ressonance_karma) or 0);
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'attribute_body_base', 'attribute_agility_base', 'attribute_reaction_base', 'attribute_strenght_base', 'attribute_charisma_base', 'attribute_intuition_base', 'attribute_logic_base', 'attribute_willpower_base', 'attribute_edge_base', 'attribute_magic_base', 'attribute_ressonance_base'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					sheet.attribute_base_spent = 	(tonumber(sheet.attribute_body_base) or 0) + 
+													(tonumber(sheet.attribute_agility_base) or 0) + 
+													(tonumber(sheet.attribute_reaction_base) or 0) + 
+													(tonumber(sheet.attribute_strenght_base) or 0) + 
+													(tonumber(sheet.attribute_charisma_base) or 0) + 
+													(tonumber(sheet.attribute_intuition_base) or 0) + 
+													(tonumber(sheet.attribute_logic_base) or 0) + 
+													(tonumber(sheet.attribute_willpower_base) or 0) + 
+													(tonumber(sheet.attribute_edge_base) or 0) + 
+													(tonumber(sheet.attribute_magic_base) or 0) + 
+													(tonumber(sheet.attribute_ressonance_base) or 0);
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'attribute_body_initial', 'attribute_agility_initial', 'attribute_reaction_initial', 'attribute_strenght_initial', 'attribute_charisma_initial', 'attribute_intuition_initial', 'attribute_logic_initial', 'attribute_willpower_initial', 'attribute_edge_initial', 'attribute_magic_initial', 'attribute_ressonance_initial'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					sheet.attribute_initial_spent = 	(tonumber(sheet.attribute_body_initial) or 0) + 
+													(tonumber(sheet.attribute_agility_initial) or 0) + 
+													(tonumber(sheet.attribute_reaction_initial) or 0) + 
+													(tonumber(sheet.attribute_strenght_initial) or 0) + 
+													(tonumber(sheet.attribute_charisma_initial) or 0) + 
+													(tonumber(sheet.attribute_intuition_initial) or 0) + 
+													(tonumber(sheet.attribute_logic_initial) or 0) + 
+													(tonumber(sheet.attribute_willpower_initial) or 0) + 
+													(tonumber(sheet.attribute_edge_initial) or 0) + 
+													(tonumber(sheet.attribute_magic_initial) or 0) + 
+													(tonumber(sheet.attribute_ressonance_initial) or 0);
+				</event>
+			</dataLink>
+		</layout>
+
+		<layout left="265" top="90" width="295" height="110">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="295" height="20" text="INITATIVES" horzTextAlign="center"/>
+
+			<layout top="25" width="260" height="25">
+				<button left="5" top="0" width="80" height="25" text="Initiative">
+					<event name="onClick">
+						local teste = (sheet.initiativePhysicalDice or 1) .. "d6 + " .. (sheet.initiativePhysical or 0); 
+						local rolagem = rrpg.interpretarRolagem(teste);
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa de " .. (sheet.name or "name"));
+					</event>
+				</button>
+				<rectangle left="90" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+				<label left="90" width="50" height="25" field="initiativePhysical" vertTextAlign="center" horzTextAlign="center"/>
+				<label left="140" width="25" height="25" text="+"/>
+				<edit left="150"  width="25" height="25" field="initiativePhysicalDice" vertTextAlign="center" horzTextAlign="center" type="number"/>
+				<label left="175" width="25" height="25" text="d6"/>
+
+				<edit left="205"  width="50" height="25" field="initiativePhysicalOther" vertTextAlign="center" horzTextAlign="center" type="number"/>
+
+				<dataLink field="initiativePhysicalDice" defaultValue="1"/>
+				<dataLink fields="{'attribute_reaction_effective', 'attribute_intuition_effective', 'initiativePhysicalOther'}">
+					<event name="onChange">
+						if sheet==nil then return end;
+
+						local reaction = (tonumber(sheet.attribute_reaction_effective) or 0);
+						local intuition = (tonumber(sheet.attribute_intuition_effective) or 0);
+						local other = (tonumber(sheet.initiativePhysicalOther) or 0);
+
+						sheet.initiativePhysical = reaction+intuition+other;
+					</event>
+				</dataLink>
+			</layout>
+
+			<layout top="50" width="260" height="25">
+				<button left="5" top="0" width="80" height="25" text="Matrix">
+					<event name="onClick">
+						local teste = (sheet.initiativeMatrixDice or 1) .. "d6 + " .. (sheet.initiativeMatrix or 0); 
+						local rolagem = rrpg.interpretarRolagem(teste);
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa da Matrix de " .. (sheet.name or "name"));
+					</event>
+				</button>
+				<rectangle left="90" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+				<label left="90" width="50" height="25" field="initiativeMatrix" vertTextAlign="center" horzTextAlign="center"/>
+				<label left="140" width="25" height="25" text="+"/>
+				<edit left="150"  width="25" height="25" field="initiativeMatrixDice" vertTextAlign="center" horzTextAlign="center" type="number"/>
+				<label left="175" width="25" height="25" text="d6"/>
+
+				<edit left="205"  width="50" height="25" field="initiativeMatrixOther" vertTextAlign="center" horzTextAlign="center" type="number"/>
+
+				<dataLink field="initiativeMatrixDice" defaultValue="3"/>
+				<dataLink fields="{'attribute_intuition_effective', 'initiativeMatrixOther', 'cyberdeck_data_processing'}">
+					<event name="onChange">
+						if sheet==nil then return end;
+
+						local intuition = (tonumber(sheet.attribute_intuition_effective) or 0);
+						local data = (tonumber(sheet.cyberdeck_data_processing) or 0);
+						local other = (tonumber(sheet.initiativeMatrixOther) or 0);
+
+						sheet.initiativeMatrix = intuition+data+other;
+					</event>
+				</dataLink>
+			</layout>
+
+			<layout top="75" width="260" height="25">
+				<button left="5" top="0" width="80" height="25" text="Astral">
+					<event name="onClick">
+						local teste = (sheet.initiativeAstralDice or 1) .. "d6 + " .. (sheet.initiativeAstral or 0); 
+						local rolagem = rrpg.interpretarRolagem(teste);
+						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa Astral de " .. (sheet.name or "name"));
+					</event>
+				</button>
+				<rectangle left="90" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+				<label left="90" width="50" height="25" field="initiativeAstral" vertTextAlign="center" horzTextAlign="center"/>
+				<label left="140" width="25" height="25" text="+"/>
+				<edit left="150"  width="25" height="25" field="initiativeAstralDice" vertTextAlign="center" horzTextAlign="center" type="number"/>
+				<label left="175" width="25" height="25" text="d6"/>
+
+				<edit left="205"  width="50" height="25" field="initiativeAstralOther" vertTextAlign="center" horzTextAlign="center" type="number"/>
+
+				<dataLink field="initiativeAstralDice" defaultValue="2"/>
+				<dataLink fields="{'attribute_intuition_effective', 'initiativeAstralOther'}">
+					<event name="onChange">
+						if sheet==nil then return end;
+
+						local intuition = (tonumber(sheet.attribute_intuition_effective) or 0);
+						local other = (tonumber(sheet.initiativeAstralOther) or 0);
+
+						sheet.initiativeAstral = (intuition*2)+other;
+					</event>
+				</dataLink>
+			</layout>
+		</layout>
+
+		<layout left="265" top="205" width="295" height="155">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="295" height="20" text="COMPOUND ATTRIBUTES" horzTextAlign="center"/>
+
+			<CompoundAttribute left1="5" left2="95" left3="145" top="25" text="Composure" field="attribute_composure" link1="charisma" link2="willpower"/>
+			<CompoundAttribute left1="5" left2="95" left3="145" top="50" text="Judge Intention" field="attribute_judge" link1="charisma" link2="intuition"/>
+			<CompoundAttribute left1="5" left2="95" left3="145" top="75" text="Lifting/Carrying" field="attribute_lifting" link1="body" link2="strenght"/>
+			<CompoundAttribute left1="5" left2="95" left3="145" top="100" text="Memory" field="attribute_memory" link1="logic" link2="willpower"/>
+			
+			<label left="5" top="125" width="90" height="20" text="Movement" horzTextAlign="center"/>
+			<rectangle left="95" top="125" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="95" top="125" width="50" height="25" field="attribute_movement_walk" vertTextAlign="center" horzTextAlign="center"/>
+			<rectangle left="145" top="125" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="145" top="125" width="50" height="25" field="attribute_movement_run" vertTextAlign="center" horzTextAlign="center"/>
+
+
+			<dataLink field="attribute_agility_effective">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					local agility = (tonumber(sheet.attribute_agility_effective) or 0);
+
+					sheet.attribute_movement_walk = agility * 2;
+					sheet.attribute_movement_run = agility * 4;
+				</event>
+			</dataLink>
+		</layout>
+
+		<layout left="265" top="365" width="295" height="130">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="300" height="20" text="CONDITION MONITOR" horzTextAlign="center"/>
+
+			<label left="95" top="25" width="40" height="20" text="Total" horzTextAlign="center"/>
+			<label left="135" top="25" width="30" height="20" text="Bonus" horzTextAlign="center" fontSize="11"/>
+
+			<label left="170" top="25" width="30" height="20" text="DMG" horzTextAlign="center" fontSize="11"/>
+			<label left="200" top="25" width="40" height="20" text="Left" horzTextAlign="center"/>
+			<label left="240" top="25" width="50" height="20" text="Modifier" horzTextAlign="center"/>
+
+			<Monitor left1="5" left2="95" left3="135" left4="170" left5="200" left6="240" top="50" text="Physical" field="monitor_physical" link1="body"/>
+			<Monitor left1="5" left2="95" left3="135" left4="170" left5="200" left6="240" top="75" text="Stun" field="monitor_stun" link1="willpower"/>
+			<Overflow left1="5" left2="95" left3="135" left4="170" left5="200" left6="240" top="100" text="Overflow" field="monitor_overflow" link1="body"/>
+		</layout>
+
+
+		<rectangle left="565" top="0" width="200" height="200" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="90" width="200" height="20" text="Avatar" horzTextAlign="center"/>
+			<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+				<event name="OnStartDrag">
+				    drag:addData("imageURL", sheet.avatar);
+				</event>
+			</image>
+		</rectangle>
+
+	</scrollBox>
+</form>

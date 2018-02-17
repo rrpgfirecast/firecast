@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPowers" align="client">
+	<scrollBox align="client">
+		<layout left="0" top="0" width="510" height="685">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="510" height="20" text="SPELLS - PREPARATIONS - RITUALS - COMPLEX FORMS" horzTextAlign="center"/>
+			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclSpells:append();"/>
+
+			<label text="S/P/R/CF" left="5" top="25" width="150" height="20" horzTextAlign="center"/>
+			<label text="TYPE/TARGET" left="155" top="25" width="100" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="RANGE" left="255" top="25" width="50" height="20" horzTextAlign="center" fontSize="12"/>
+			<label text="DURATION" left="305" top="25" width="50" height="20" horzTextAlign="center" fontSize="10"/>
+			<label text="DRAIN" left="355" top="25" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="KARMA" left="405" top="25" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+
+			<recordList name="rclSpells" field="spellList" templateForm="frmSpells" left="5" top="50" width="500" height="625" layout="vertical">
+				<event name="onCompare">
+					return utils.compareStringPtBr(nodeA.spell_name, nodeB.spell_name);
+		        </event>
+			</recordList>
+		</layout>
+
+		<layout left="515" top="0" width="410" height="685">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="410" height="20" text="ADEPT POWER or OTHER ABILITIES" horzTextAlign="center"/>
+			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclAbilities:append();"/>
+
+			<label text="NAME" left="5" top="25" width="150" height="20" horzTextAlign="center"/>
+			<label text="RATING" left="155" top="25" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="NOTES" left="205" top="25" width="100" height="20" horzTextAlign="center" fontSize="12"/>
+			<label text="KARMA" left="305" top="25" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+
+			<recordList name="rclAbilities" field="abilityList" templateForm="frmAbilities" left="5" top="50" width="400" height="625" layout="vertical">
+				<event name="onCompare">
+					return utils.compareStringPtBr(nodeA.abilities_name, nodeB.abilities_name);
+		        </event>
+			</recordList>
+		</layout>
+
+
+	</scrollBox>
+</form>

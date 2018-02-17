@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplateDescription" align="client">
+	<scrollBox align="client">
+		<template name="Descricao">
+			<label left="$(left1)" top="$(top)" width="90" height="20" text="$(text)" horzTextAlign="center" fontSize="$(fontSize)"/>
+			<edit left="$(left2)" top="$(top)" width="200" height="25" field="$(field)" vertTextAlign="center" />
+		</template>
+		
+		<rectangle left="0" top="0" width="1205" height="105" color="black">
+			<label left="3" top="1" width="100" height="20" text="PERSONAL DATA"/>
+
+			<Descricao left1="10" left2="100" top="25" text="ETHNICITY" field="ethnicity" fontSize="13"/>
+			<Descricao left1="10" left2="100" top="50" text="HEIGHT" field="altura" fontSize="13"/>
+			<Descricao left1="10" left2="100" top="75" text="WEIGHT" field="peso" fontSize="13"/>
+			
+			<Descricao left1="310" left2="400" top="25" text="AGE" field="idade" fontSize="13"/>
+			<Descricao left1="310" left2="400" top="50" text="SEX" field="sexo" fontSize="13"/>
+			<Descricao left1="310" left2="400" top="75" text="OTHER" field="aparenciaOutros" fontSize="13"/>
+			
+			<Descricao left1="610" left2="700" top="25" text="EYES" field="aparenciaOlhos" fontSize="13"/>
+			<Descricao left1="610" left2="700" top="50" text="SKIN" field="pele" fontSize="13"/>
+			<Descricao left1="610" left2="700" top="75" text="HAIR" field="cabelo" fontSize="13"/>
+			
+			<Descricao left1="910" left2="1000" top="25" text="STREET CRED" field="cred" fontSize="13"/>
+			<Descricao left1="910" left2="1000" top="50" text="NOTORIETY" field="notoriety" fontSize="13"/>
+			<Descricao left1="910" left2="1000" top="75" text="PUBLIC AWARENESS" field="awareness" fontSize="9"/>
+		</rectangle>
+		
+		<layout left="0" top="110" width="375" height="240">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="100" height="20" text="APPEARANCE"/>
+			<textEditor left="5" top="25" width="365" height="210" field="aparencia"/>
+		</layout>
+		<layout left="0" top="355" width="375" height="250">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="100" height="20" text="PERSONALITY"/>
+			<textEditor left="5" top="25" width="365" height="220" field="personalidade"/>
+		</layout>
+		<layout left="380" top="110" width="825" height="495">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="100" height="20" text="BACKGROUND"/>
+			<richEdit left="5" top="25" width="815" height="465" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+		</layout>
+	</scrollBox>
+</form>

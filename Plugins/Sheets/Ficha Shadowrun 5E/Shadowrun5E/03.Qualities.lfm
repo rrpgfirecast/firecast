@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmQualities" align="client">
+	<scrollBox align="client">
+		<layout left="0" top="0" width="410" height="685">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="410" height="20" text="POSITIVE QUALITIES" horzTextAlign="center"/>
+			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclPositiveQualities:append();"/>
+
+			<label text="NAME" left="5" top="25" width="150" height="20" horzTextAlign="center"/>
+			<label text="NOTES" left="155" top="25" width="150" height="20" horzTextAlign="center"/>
+			<label text="KARMA" left="305" top="25" width="50" height="20" horzTextAlign="center"/>
+
+			<recordList name="rclPositiveQualities" field="positiveQualityList" templateForm="frmQuality" left="5" top="50" width="400" height="625" layout="vertical">
+				<event name="onCompare">
+					return utils.compareStringPtBr(nodeA.quality_name, nodeB.quality_name);
+		        </event>
+			</recordList>
+		</layout>
+
+		<layout left="415" top="0" width="410" height="685">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="410" height="20" text="NEGATIVE QUALITIES" horzTextAlign="center"/>
+			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclNegativeQualities:append();"/>
+
+			<label text="NAME" left="5" top="25" width="150" height="20" horzTextAlign="center"/>
+			<label text="NOTES" left="155" top="25" width="150" height="20" horzTextAlign="center"/>
+			<label text="KARMA" left="305" top="25" width="50" height="20" horzTextAlign="center"/>
+
+			<recordList name="rclNegativeQualities" field="negativeQualityList" templateForm="frmQuality" left="5" top="50" width="400" height="625" layout="vertical">
+				<event name="onCompare">
+					return utils.compareStringPtBr(nodeA.quality_name, nodeB.quality_name);
+		        </event>
+			</recordList>
+		</layout>
+
+		<layout left="830" top="0" width="360" height="685">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="360" height="20" text="CONTACTS" horzTextAlign="center"/>
+			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclContacts:append();"/>
+
+			<label text="NAME" left="5" top="25" width="150" height="20" horzTextAlign="center"/>
+			<label text="LOYALTY" left="155" top="25" width="50" height="20" horzTextAlign="center" fontSize="12"/>
+			<label text="CONNECTION" left="205" top="25" width="50" height="20" horzTextAlign="center" fontSize="7"/>
+			<label text="FAVOR" left="255" top="25" width="50" height="20" horzTextAlign="center"/>
+
+			<recordList name="rclContacts" field="contactList" templateForm="frmContact" left="5" top="50" width="350" height="625" layout="vertical">
+				<event name="onCompare">
+					return utils.compareStringPtBr(nodeA.contact_name, nodeB.contact_name);
+		        </event>
+			</recordList>
+		</layout>
+
+	</scrollBox>
+</form>
