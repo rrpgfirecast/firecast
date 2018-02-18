@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister7_svg" align="client" theme="dark" margins="{top=1}">
+	<scrollBox align="client">
+
+		<layout left="0" top="0" width="475" height="330">
+			<rectangle align="client" color="black"/>
+
+			<button text="+" left="5" top="5" width="20" height="20">
+				<event name="onClick">
+					self.rclListaDasArmas:append();
+				</event>
+			</button>
+			<label left="30" top="5" width="435" height="20" text="ARMAS E ESCUDOS                                     Kg         $"/>
+			<recordList name="rclListaDasArmas" field="campoDasArmas" templateForm="frmFichaRPGmeister7A_svg" left="5" top="25" width="465" height="275" layout="vertical" minQt="1"/>
+
+			<label left="260" top="305" width="50" height="20" text="Kg"/>
+			<rectangle left="280" top="305" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
+			<label vertTextAlign="center" horzTextAlign="center" left="280" top="305" width="70" height="20" field="pesoArmas"/>
+			<label left="360" top="305" width="50" height="20" text="$"/>
+			<rectangle left="375" top="305" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
+			<label vertTextAlign="center" horzTextAlign="center" left="375" top="305" width="91" height="20" field="precoArmas"/>
+		</layout>
+		
+		<layout left="0" top="335" width="475" height="335">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="200" height="20" text="MOCHILA"/>
+			<textEditor left="5" top="25" width="465" height="280" field="mochila"/>
+			<label left="280" top="310" width="50" height="20" text="Kg"/>
+			<edit vertTextAlign="center" horzTextAlign="center" left="300" top="310" width="70" height="20" field="pesoMochila"/>
+			<label left="380" top="310" width="50" height="20" text="$"/>
+			<edit vertTextAlign="center" horzTextAlign="center" left="395" top="310" width="71" height="20" field="precoMochila"/>
+		</layout>
+
+		<template name="smallInventory">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="150" height="20" text="$(title)"/>
+			
+			<textEditor left="5" top="25" width="190" height="165" field="$(field)"/>
+			
+			<label left="5" top="195" width="50" height="20" text="Kg"/>
+			<edit vertTextAlign="center" horzTextAlign="center" left="25" top="195" width="70" height="20" field="peso$(field2)"/>
+			<label left="105" top="195" width="50" height="20" text="$"/>
+			<edit vertTextAlign="center" horzTextAlign="center" left="120" top="195" width="70" height="20" field="preco$(field2)"/>
+		</template>
+		
+		<layout left="480" top="0" width="200" height="220">
+			<smallInventory title="PERMANENCIAS" field="permanencias" field2="Permanencias"/>
+		</layout>
+		<layout left="685" top="0" width="200" height="220">
+			<smallInventory title="LIVRES" field="livres" field2="Livres"/>
+		</layout>
+		<layout left="480" top="225" width="200" height="220">
+			<smallInventory title="OUTROS" field="outros" field2="Outros"/>
+		</layout>
+		<layout left="685" top="225" width="200" height="220">
+			<smallInventory title="MUNIÇÕES" field="municoes" field2="Municoes"/>
+		</layout>
+		<layout left="480" top="450" width="200" height="221">
+			<smallInventory title="BOLSOS" field="bolsos" field2="Bolsos"/>
+		</layout>
+		<layout left="685" top="450" width="200" height="221">
+			<smallInventory title="IMOVEIS" field="moveis" field2="Imoveis"/>
+		</layout>
+
+		<layout left="890" top="0" width="155" height="185">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="200" height="20" text="DINHEIRO"/>
+			<textEditor left="5" top="25" width="145" height="80" field="dinheiro"/>
+
+			<label left="10" top="110" width="50" height="20" text="TOTAL"/>
+			<edit field="dinheiroTotal"  left="65" top="110" width="85" height="20" fontSize="11"/>
+
+			<label left="10" top="135" width="50" height="20" text="GASTOS"/>
+			<rectangle left="65" top="135" width="85" height="20" color="black" strokeColor="white" strokeSize="1"/>
+			<label field="gastos" text="0" left="65" top="135" width="85" height="20" horzTextAlign="center" fontSize="11"/>
+
+			<label left="10" top="160" width="50" height="20" text="RESTANTE" fontSize="10"/>
+			<rectangle left="65" top="160" width="85" height="20" color="black" strokeColor="white" strokeSize="1"/>
+			<label field="dinheiroRestante" text="0" left="65" top="160" width="85" height="20" horzTextAlign="center" fontSize="11"/>
+		</layout>
+		<dataLink fields="{'precoCabeca', 'precoOlhos', 'precoPescoco', 'precoOmbros', 'precoTorso', 'precoCorpo', 'precoPunhos', 'precoCintura', 'precoMaos', 'precoDedosI', 'precoDesdosII', 'precoPes', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal'}">
+			<event name="onChange">
+				if sheet~= nil then
+					if debug then
+						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Gastos em PO");
+						index = index + 1;
+					end;
+
+					-- Calculando todos gastos
+					local mod = 0;
+					mod = (getNumber(sheet.precoCabeca) or 0) +
+								(getNumber(sheet.precoOlhos) or 0) +
+								(getNumber(sheet.precoPescoco) or 0) +
+								(getNumber(sheet.precoOmbros) or 0) +
+								(getNumber(sheet.precoTorso) or 0) +
+								(getNumber(sheet.precoCorpo) or 0) +
+								(getNumber(sheet.precoPunhos) or 0) +
+								(getNumber(sheet.precoCintura) or 0) +
+								(getNumber(sheet.precoMaos) or 0) +
+								(getNumber(sheet.precoDedosI) or 0) +
+								(getNumber(sheet.precoDesdosII) or 0) +
+								(getNumber(sheet.precoPes) or 0) +
+								(getNumber(sheet.precoArmas) or 0) +
+								(getNumber(sheet.precoMochila) or 0) +
+								(getNumber(sheet.precoPermanencias) or 0) +
+								(getNumber(sheet.precoLivres) or 0) +
+								(getNumber(sheet.precoOutros) or 0) +
+								(getNumber(sheet.precoMunicoes) or 0) +
+								(getNumber(sheet.precoBolsos) or 0) +
+								(getNumber(sheet.precoImoveis) or 0) +
+								(getNumber(sheet.precoInventorioComp) or 0);
+
+					-- Calculando dinheiro restante
+					local total = getNumber(sheet.dinheiroTotal) or 0;
+					local restante = total - mod;
+					--showMessage(total .. " | " .. mod .. " | " .. restante);
+
+					-- Formatando texto
+					mod = string.gsub(mod, "%.", "_");
+					while true do  
+						mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
+						if (k==0) then
+							break
+							end
+						end
+					mod = string.gsub(mod, ",", ".");
+					mod = string.gsub(mod, "_", ",");
+					sheet.gastos = mod .. "PO";
+
+					restante = string.gsub(restante, "%.", "_");
+					while true do  
+						restante, k = string.gsub(restante, "^(-?%d+)(%d%d%d)", '%1,%2')
+						if (k==0) then
+							break
+							end
+						end
+					restante = string.gsub(restante, ",", ".");
+					restante = string.gsub(restante, "_", ",");
+					sheet.dinheiroRestante = restante .. "PO";
+
+
+				end;
+			</event>
+		</dataLink>
+
+		<layout left="890" top="190" width="250" height="222">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="200" height="20" text="ARMADURA"/>
+			<edit vertTextAlign="center" left="5" top="20" width="240" height="25" field="equipamentoCorpo"/>
+
+			<label left="5" top="50" width="50" height="20" text="CA"/>
+			<edit vertTextAlign="center" left="25" top="50" width="40" height="20" field="equipamentoCorpoCA"/>
+			<edit vertTextAlign="center" left="65" top="50" width="40" height="20" field="equipamentoCorpoCAmelhoria"/>
+			<label left="110" top="50" width="50" height="20" text="CAT"/>
+			<comboBox left="140" top="50" width="105" height="20" field="equipamentoCorpoCategoria" items="{'Leve', 'Média', 'Pesada', 'Massiva'}" fontColor="white"/>
+
+			<label left="10" top="75" width="50" height="20" text="DES"/>
+			<edit vertTextAlign="center" left="45" top="75" width="40" height="20" field="equipamentoCorpoDesMax"/>
+			<label left="90" top="75" width="50" height="20" text="PEN"/>
+			<edit vertTextAlign="center" left="125" top="75" width="40" height="20" field="equipamentoCorpoPen"/>
+			<label left="170" top="75" width="50" height="20" text="Falha" fontSize="13"/>
+			<edit vertTextAlign="center" left="205" top="75" width="40" height="20" field="equipamentoCorpoFalha"/>
+
+			<label left="10" top="100" width="50" height="20" text="Desl"/>
+			<edit vertTextAlign="center" left="45" top="100" width="40" height="20" field="equipamentoCorpoDesl"/>
+			<label left="170" top="100" width="50" height="20" text="Correr" fontSize="12"/>
+			<edit vertTextAlign="center" left="205" top="100" width="40" height="20" field="equipamentoCorpoCorrer"/>
+
+			<textEditor left="5" top="122" width="240" height="65" field="descricaoCorpo"/>
+			<label left="70" top="193" width="50" height="20" text="Kg"/>
+			<edit horzTextAlign="center" vertTextAlign="center" left="90" top="190" width="50" height="25" field="pesoCorpo"/>
+			<label left="147" top="193" width="50" height="20" text="$"/>
+			<edit horzTextAlign="center" vertTextAlign="center" left="160" top="190" width="84" height="25" field="precoCorpo"/>
+		</layout>
+
+		<layout left="1050" top="0" width="155" height="185">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="150" height="20" text="CARGA"/>
+			
+			<label left="20" top="25" width="50" height="20" text="LEVE"/>
+			<rectangle left="80" top="25" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="80" top="25" width="70" height="20" field="cargaLeve" horzTextAlign="center"/>
+
+			<label left="20" top="47" width="50" height="20" text="MÉDIA"/>
+			<rectangle left="80" top="47" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="80" top="47" width="70" height="20" field="cargaMedia" horzTextAlign="center"/>
+
+			<label left="20" top="69" width="50" height="20" text="PESADA"/>
+			<rectangle left="80" top="69" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="80" top="69" width="70" height="20" field="cargaPesada" horzTextAlign="center"/>
+			
+			<rectangle width="70" height="20" left="80" top="91" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="20" top="91" width="50" height="20" text="ERGUER"/>
+			<label field="cargaErguer" text="valor" width="70" height="20" left="80" top="91" horzTextAlign="center"/>
+			<rectangle width="70" height="20" left="80" top="113" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="10" top="113" width="70" height="20" text="EMPURRAR"/>
+			<label field="cargaLevantar" text="valor" width="70" height="20" left="80" top="113" horzTextAlign="center"/>
+			<rectangle width="70" height="20" left="80" top="135" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="10" top="135" width="65" height="20" text="LEVANTAR"/>
+			<label field="cargaEmpurrar" text="valor" width="70" height="20" left="80" top="135" horzTextAlign="center"/>
+			<rectangle width="70" height="20" left="80" top="160" color="#404040"/>
+			<label left="20" top="160" width="65" height="20" text="ATUAL"/>
+			<label field="cargaAtual" width="70" height="20" left="80" top="160" horzTextAlign="center" fontColor="white"/>
+		</layout>
+		<dataLink field="cargaPesada">
+			<event name="onChange">
+				if sheet~= nil then
+					if debug then
+						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Carga");
+						index = index + 1;
+					end;
+
+					local mod1 = sheet.cargaPesada;
+					if mod1==nil then
+						mod1 = "0";
+					end
+					mod1 = string.gsub(mod1, "Kg", "");
+					mod1 = string.gsub(mod1, "K", "");
+					mod1 = string.gsub(mod1, "k", "");
+					mod1 = string.gsub(mod1, "G", "");
+					mod1 = string.gsub(mod1, "g", "");
+					mod1 = string.gsub(mod1, ",", ".");
+					local mod = (tonumber(mod1) or 0);
+					sheet.cargaErguer = mod .. "Kg";
+					sheet.cargaLevantar = (2*mod) .. "Kg";
+					sheet.cargaEmpurrar = (5*mod) .. "Kg";
+				end;
+			</event>
+		</dataLink>
+		<dataLink fields="{'pesoCabeca', 'pesoOlhos', 'pesoPescoco', 'pesoOmbros', 'pesoTorso', 'pesoCorpo', 'pesoPunhos', 'pesoCintura', 'pesoMaos', 'pesoDedosI', 'pesoDesdosII', 'pesoPes', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp'}">
+			<event name="onChange">
+				if sheet~=nil then
+					if debug then
+						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Carga");
+						index = index + 1;
+					end;
+					local mod = 0;
+					mod = (getNumber(sheet.pesoCabeca) or 0) +
+								(getNumber(sheet.pesoOlhos) or 0) +
+								(getNumber(sheet.pesoPescoco) or 0) +
+								(getNumber(sheet.pesoOmbros) or 0) +
+								(getNumber(sheet.pesoTorso) or 0) +
+								(getNumber(sheet.pesoCorpo) or 0) +
+								(getNumber(sheet.pesoPunhos) or 0) +
+								(getNumber(sheet.pesoCintura) or 0) +
+								(getNumber(sheet.pesoMaos) or 0) +
+								(getNumber(sheet.pesoDedosI) or 0) +
+								(getNumber(sheet.pesoDesdosII) or 0) +
+								(getNumber(sheet.pesoPes) or 0) +
+								(getNumber(sheet.pesoArmas) or 0) +
+								(getNumber(sheet.pesoMochila) or 0) +
+								(getNumber(sheet.pesoPermanencias) or 0) +
+								(getNumber(sheet.pesoLivres) or 0) +
+								(getNumber(sheet.pesoOutros) or 0) +
+								(getNumber(sheet.pesoMunicoes) or 0) +
+								(getNumber(sheet.pesoBolsos) or 0) +
+								(getNumber(sheet.pesoImoveis) or 0);
+					while true do  
+						mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
+						if (k==0) then
+							break
+							end
+						end
+					mod = string.gsub(mod, ",", ".");
+					sheet.cargaAtual = mod .. "Kg";
+				end;
+			</event>
+		</dataLink>
+
+		<template name="weaponInfoField">
+			<flowPart minWidth="290" maxWidth="300" height="35">
+				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+				<edit align="client" class="" field="$(field)" fontSize="12"/>
+			</flowPart>
+		</template>
+		<template name="weaponInfoFieldSmallCenter">
+			<flowPart minWidth="90" maxWidth="100" height="35">
+				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+			</flowPart>
+		</template>
+		<template name="weaponInfoFieldSmall">
+			<flowPart minWidth="90" maxWidth="100" height="35">
+				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+				<edit align="client" class="" field="$(field)" fontSize="12"/>
+			</flowPart>
+		</template>
+		<popup name="popArma" width="300" height="400" backOpacity="0.4">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+				<weaponInfoFieldSmall text="NOME" field="batismo" hint="Se a arma possui um nome de batismo ponha ele aqui."/>
+				<weaponInfoFieldSmall text="ARMA" field="arma" hint="Qual a arma? Espada Longa? Machado de Batalha? Arco Longo?"/>
+				<weaponInfoFieldSmall text="TAMANHO" field="tamanho" hint="Essa arma foi feita para um personagem de que tamanho? Médio? Pequeno? Grande?"/>
+				<weaponInfoFieldSmall text="MATERIAL" field="material" hint="Essa arma foi feita de um material especial? Adamante? Prata?"/>
+				<weaponInfoFieldSmallCenter text="QUALIDADE" field="qualidade" hint="Essa arma é Obra-Prima? +1? +2?"/>
+				<weaponInfoFieldSmall text="CATEGORIA" field="categoria" hint="Essa arma é Simples? Comum? Exotica?"/>
+				<weaponInfoFieldSmallCenter text="DANO" field="dano" hint="Qual o dado de dano dessa arma?"/>
+				<weaponInfoFieldSmallCenter text="DECISIVO" field="decisivo" hint="Quando a margem de ameaça dessa arma?20? 19-20?"/>
+				<weaponInfoFieldSmallCenter text="MULTIPLICADOR" field="multiplicador" hint="Em um decisivo por quanto é multiplicado o dano dessa arma?"/>
+				<weaponInfoFieldSmall text="ALCANCE" field="alcance" hint="Qual o alcance em metros da arma? Normalmente usado apenas em armas de ataque a distancia. "/>
+				<weaponInfoFieldSmall text="ESPECIAL" field="especial" hint="Essa arma tem efeitos especiais? Pode ser usada em derrubar? desarmar? Pode ser preparada contra investida?"/>
+				<weaponInfoFieldSmall text="TIPO" field="tipo" hint="Qual o tipo de dano que essa arma causa? Concusivo? Cortante?"/>
+				<weaponInfoField text="EFEITOS" field="efeitos" hint="Essa arma tem efeitos mágicos? Flamejante? Vorpal?"/>
+				<weaponInfoFieldSmallCenter text="CA" field="ca" hint="Para escudos: qual o bonus que ele fornece na CA?"/>
+				<weaponInfoFieldSmallCenter text="PEN" field="penalidade" hint="Para escudos: qual a penalidade do escudo?"/>
+				<weaponInfoFieldSmallCenter text="FALHA" field="falha" hint="Para escudos: qual a falha arcana?"/>
+			</flowLayout>
+			<textEditor align="client" field="descricao" class=""/>
+		</popup>
+
+	</scrollBox>
+</form>

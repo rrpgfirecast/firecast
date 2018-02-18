@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister3_svg" align="client" theme="dark" margins="{top=1}">
+	<scrollBox align="client">
+
+		<script> 
+		<![CDATA[
+			
+			local dnd = ndb.load("dndskills.xml");
+
+			local function updateAtributes(num)
+				if debug then
+					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Atributos nas Pericias. ");
+					index = index + 1;
+				end;
+				local atr = "" .. num;
+				local mod = 0;
+				
+				if num == 1 then
+					mod = getFOR();
+				elseif num == 2 then
+					mod = getDES();
+				elseif num == 3 then
+					mod = getCON();
+				elseif num == 4 then
+					mod = getINT();
+				elseif num == 5 then
+					mod = getSAB();
+				elseif num == 6 then
+					mod = getCAR();
+				end;
+
+				local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+				for i=1, #nodes, 1 do
+					if nodes[i].chavePericia == atr then
+						nodes[i].atributoPericia = mod;
+					end;
+				end
+			end;
+
+			local function updatePenalty()
+				if debug then
+					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Penalidade nas pericias.");
+					index = index + 1;
+				end;
+				if sheet~=nil then
+					local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+					for i=1, #nodes, 1 do
+						if nodes[i].penalidadeArmadura or nodes[i].penalidadeArmadura2 then
+							local pen = (tonumber(sheet.penalidade) or 0)
+
+							local mod = 0;
+							mod =   (tonumber(nodes[i].atributoPericia) or 0) +
+									(tonumber(nodes[i].graduacaoPericia) or 0) +
+									(tonumber(nodes[i].penalidesPericia) or 0) +
+									(tonumber(nodes[i].racialPericia) or 0) +
+									(tonumber(nodes[i].sinergiaPericia) or 0) +
+									(tonumber(nodes[i].equipamentosPericia) or 0) +
+									(tonumber(nodes[i].magicoPericia) or 0) +
+									(tonumber(nodes[i].outrosPericia) or 0) + 
+									(tonumber(nodes[i].talentosPericia) or 0) +
+									(tonumber(nodes[i].classePericia) or 0);
+
+							if nodes[i].penalidadeArmadura then
+								mod = mod + pen;
+							end;
+							if nodes[i].penalidadeArmadura2 then
+								mod = mod + pen;
+							end;
+
+							nodes[i].totalPericia = mod;
+						end;
+					end;
+				end;
+			end;
+
+			local function dndSkills()
+				local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+				for i=1, #nodes, 1 do
+					ndb.deleteNode(nodes[i]);
+				end
+
+				for i=1, 43, 1 do
+					local pericia = self.rclListaDasPericias:append();
+					pericia.nomePericia = dnd[i].nome;
+					pericia.chavePericia = dnd[i].chave;
+					pericia.exigeTreino = dnd[i].treino;
+					if dnd[i].armadura > 0 then
+						pericia.penalidadeArmadura2 = true;
+					end;
+					if dnd[i].armadura > 1 then
+						pericia.penalidadeArmadura = true;
+					end;
+				end;
+
+				self.rclListaDasPericias:sort();
+			end;
+		]]>	
+		</script>
+
+		<template name="periciaSmallCenter">
+			<flowPart minWidth="90" maxWidth="100" height="35">
+				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+			</flowPart>
+		</template>
+
+		<popup name="popPericia" width="300" height="185" backOpacity="0.4">
+			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+				<periciaSmallCenter text="Penalidades" field="penalidesPericia"/>
+				<periciaSmallCenter text="Racial" field="racialPericia"/>
+				<periciaSmallCenter text="Sinergia" field="sinergiaPericia"/>
+				<periciaSmallCenter text="Equipamentos" field="equipamentosPericia"/>
+				<periciaSmallCenter text="Magico" field="magicoPericia"/>
+				<periciaSmallCenter text="Outros" field="outrosPericia"/>
+				<periciaSmallCenter text="Talentos" field="talentosPericia"/>
+				<periciaSmallCenter text="Classe" field="classePericia"/>
+				<periciaSmallCenter text="Condicional" field="condicionalPericia"/>
+			</flowLayout>
+			<textEditor align="bottom" field="descricao"/>
+			<checkBox align="left" text="Exige Treino" field="exigeTreino"/>
+			<checkBox align="right" text="Penalidade Armadura" field="penalidadeArmadura"/>
+			<checkBox align="right" width="20" text="" field="penalidadeArmadura2"/>
+		</popup>
+		<popup name="popIdioma" width="200" height="100" backOpacity="0.4">
+			<checkBox align="top" text="Falar/Entender" field="conversarIdioma"/>
+			<checkBox align="top" text="Escrever/Ler" field="escritaIdioma"/>
+			<textEditor align="client" field="descricao"/>
+		</popup>
+
+		<layout left="0" top="0" width="930" height="685">
+			<rectangle align="client" color="black"/>
+			<label text="NOME DA PERÍCIA" left="20" top="1" width="135" height="20" horzTextAlign="center"/>
+			<label text="CHAVE" left="165" top="1" width="60" height="20" horzTextAlign="center"/>
+			<label text="TOTAL" left="245" top="1" width="40" height="20" horzTextAlign="center"/>
+			<label text="ATR" left="285" top="1" width="33" height="20" horzTextAlign="center"/>
+			<label text="GRAD" left="320" top="1" width="40" height="20" horzTextAlign="center"/>
+
+			<label text="NOME DA PERÍCIA" left="465" top="1" width="135" height="20" horzTextAlign="center"/>
+			<label text="CHAVE" left="610" top="1" width="60" height="20" horzTextAlign="center"/>
+			<label text="TOTAL" left="690" top="1" width="40" height="20" horzTextAlign="center"/>
+			<label text="ATR" left="730" top="1" width="33" height="20" horzTextAlign="center"/>
+			<label text="GRAD" left="765" top="1" width="40" height="20" horzTextAlign="center"/>
+
+			<recordList name="rclListaDasPericias" field="campoDasPericias" templateForm="frmFichaRPGmeister3p_svg" left="5" top="25" width="920" height="650" layout="verticalTiles">
+				<event name="onCompare">
+		            return utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
+		        </event>
+			</recordList>
+		</layout>
+
+		<layout left="940" top="0" width="135" height="60">
+			<rectangle align="client" color="black"/>
+				<label text="PONTOS GASTOS" left="0" top="0" width="135" height="20" horzTextAlign="center"/>
+
+				<label left="10" top="30" width="70" height="20" text="DnD3.5"/>
+				<rectangle left="80" top="30" width="37" height="20" color="black" strokeColor="white" strokeSize="1"/>
+                <label field="pontosPericia" left="80" top="30" width="37" height="20" horzTextAlign="center"/>
+		</layout>
+
+		<layout left="940" top="70" width="135" height="200">
+			<button text="Nova Perícia" left="0" top="0" width="125" height="25" onClick="self.rclListaDasPericias:append();"/>
+			<button text="Padrão DnD3.5" left="0" top="25" width="125" height="25" onClick="dndSkills();" hint="Vai apagar todas perícias atuais. "/>
+		</layout>
+	</scrollBox>
+</form>
