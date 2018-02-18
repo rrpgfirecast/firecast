@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInventoryItem" width="325" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit left="0" top="0" width="150" height="25" field="nome"/>
+		<edit left="150" top="0" width="50" height="25" field="quantidade"/>
+		<edit left="200" top="0" width="50" height="25" field="preco"/>
+		<edit left="250" top="0" width="50" height="25" field="peso"/>
+
+		<!-- Botão que apaga o objeto da lista -->
+		<button left="300" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+		<!-- Soma os contadores da lista -->
+		<dataLink field="preco">
+			<event name="onChange"><![CDATA[
+		        if sheet==nil then return end;
+		        priceCount();
+		        ]]>
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

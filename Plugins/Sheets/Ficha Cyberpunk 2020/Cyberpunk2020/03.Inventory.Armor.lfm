@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInventoryArmor" width="725" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit left="0" top="0" width="150" height="25" field="nome"/>
+		<edit left="150" top="0" width="50" height="25" field="cabeca"/>
+		<edit left="200" top="0" width="50" height="25" field="torso"/>
+		<edit left="250" top="0" width="50" height="25" field="bracoDireito"/>
+		<edit left="300" top="0" width="50" height="25" field="bracoEsquerdo"/>
+		<edit left="350" top="0" width="50" height="25" field="pernaDireito"/>
+		<edit left="400" top="0" width="50" height="25" field="pernaEsquerdo"/>
+		<edit left="450" top="0" width="150" height="25" field="detalhes"/>
+		<edit left="600" top="0" width="50" height="25" field="preco"/>
+		<edit left="650" top="0" width="50" height="25" field="peso"/>
+
+		<!-- Botão que apaga o objeto da lista -->
+		<button left="700" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+		<!-- Soma os contadores da lista -->
+		<dataLink field="preco">
+			<event name="onChange"><![CDATA[
+		        if sheet==nil then return end;
+		        priceCount();
+		        ]]>
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

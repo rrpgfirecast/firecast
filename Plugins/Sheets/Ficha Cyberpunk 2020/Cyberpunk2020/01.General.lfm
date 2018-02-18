@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeneral" align="client">
+	<template name="LabelEdit">
+		<label left="$(left1)" top="$(top)" width="90" height="20" text="$(text)" horzTextAlign="center"/>
+		<edit left="$(left2)" top="$(top)" width="300" height="25" field="$(field)" vertTextAlign="center"/>
+	</template>
+	<template name="Atributo">
+		<label left="$(left1)" top="$(top)" width="100" height="20" text="$(text)" horzTextAlign="center"/>
+		<edit left="$(left2)" top="$(top)" width="50" height="25" field="$(field)" vertTextAlign="center"/>
+	</template>
+	<template name="Blindagem">
+		<label left="$(left)" top="30" width="75" height="20" text="$(text)" horzTextAlign="center"/>
+		<edit left="$(left)" top="55" width="75" height="25" field="$(field)" vertTextAlign="center"/>
+	</template>
+	<template name="Dano">
+		<label left="$(left)" top="5" width="75" height="20" text="$(text1)" horzTextAlign="center"/>
+		<edit left="$(left)" top="30" width="75" height="25" field="$(field)" vertTextAlign="center"/>
+		<label left="$(left)" top="55" width="75" height="20" text="$(text2)" horzTextAlign="center" fontSize="9"/>
+	</template>
+
+
+	<scrollBox align="client">
+		<rectangle color="#FF000000" width="1363" height="686"/>
+
+		<layout width="1010" height="60">
+			<rectangle align="client" color="black"/>
+
+			<LabelEdit left1="5" left2="100" top="5" text="NOME" field="nome"/>
+			<LabelEdit left1="5" left2="100" top="30" text="ETINIA/RAÇA" field="raca"/>
+
+			<LabelEdit left1="405" left2="500" top="5" text="DETALHES" field="detalhes"/>
+			<LabelEdit left1="405" left2="500" top="30" text="CLASSE" field="classe"/>
+
+			<label left="805" top="17" width="90" height="20" text="PONTOS" horzTextAlign="center"/>
+			<edit left="900" top="15" width="100" height="30" field="pontos" vertTextAlign="center"/>
+		</layout>
+
+		<layout top="70" width="610" height="110">
+			<rectangle align="client" color="black"/>
+			<label left="0" top="5" width="610" height="20" text="ATRIBUTOS" horzTextAlign="center"/>
+
+			<Atributo  left1="5" left2="105" top="30" text="INTELIGÊNCIA" field="inteligencia"/>
+			<Atributo  left1="5" left2="105" top="55" text="ATRATIVIDADE" field="atratividade"/>
+			<Atributo  left1="5" left2="105" top="80" text="EMPATIA" field="empatia"/>
+
+			<Atributo  left1="155" left2="255" top="30" text="REFLEXOS" field="reflexos"/>
+			<Atributo  left1="155" left2="255" top="55" text="SORTE" field="sorte"/>
+			<Atributo  left1="155" left2="255" top="80" text="CORRER" field="correr"/>
+
+			<Atributo  left1="305" left2="405" top="30" text="TECNICA" field="tecnica"/>
+			<Atributo  left1="305" left2="405" top="55" text="MOVIMENTO" field="movimento"/>
+			<Atributo  left1="305" left2="405" top="80" text="SALTAR" field="saltar"/>
+
+			<Atributo  left1="455" left2="555" top="30" text="AUTOCONTROLE" field="autocontrole"/>
+			<Atributo  left1="455" left2="555" top="55" text="TIPO CORPORAL" field="tipoCorporal"/>
+			<Atributo  left1="455" left2="555" top="80" text="LEVANTAR" field="levantar"/>
+		</layout>
+
+		<rectangle left="620" top="70" width="250" height="250" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="40" width="250" height="20" text="Avatar" horzTextAlign="center"/>
+			<image align="client" field="avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+				<event name="OnStartDrag">
+				    drag:addData("imageURL", sheet.avatar);
+				</event>
+			</image>
+		</rectangle>
+
+		<layout top="190" width="535" height="85">
+			<rectangle align="client" color="black"/>
+			<label left="0" top="5" width="535" height="20" text="BLINDAGEM" horzTextAlign="center"/>
+
+			<label left="5" top="30" width="75" height="20" text="Localização" horzTextAlign="center"/>
+
+			<label left="5" top="55" width="75" height="20" text="Blindagem PB" horzTextAlign="center" fontSize="12"/>
+
+			<Blindagem left="80" text="Cabeça 1" field="blindagemCabeca"/>
+			<Blindagem left="155" text="Torso 2-4" field="blindagemTorso"/>
+			<Blindagem left="230" text="Braço D. 5" field="blindagemBracoDireito"/>
+			<Blindagem left="305" text="Braço E. 6" field="blindagemBracoEsquerdo"/>
+			<Blindagem left="380" text="Perna D. 7-8" field="blindagemPernaDireita"/>
+			<Blindagem left="455" text="Perna E. 9-0" field="blindagemPernaEsquerda"/>
+		</layout>
+
+		<layout top="285" width="535" height="185">
+			<rectangle align="client" color="black"/>
+			<label left="0" top="5" width="535" height="20" text="DANO" horzTextAlign="center"/>
+
+			<label left="5" top="30" width="75" height="20" text="VIT" horzTextAlign="center"/>
+			<edit left="5" top="55" width="75" height="125" field="vit" horzTextAlign="center" vertTextAlign="center"/>
+			<label left="80" top="30" width="75" height="20" text="MTC" horzTextAlign="center"/>
+			<edit left="80" top="55" width="75" height="125" field="mtc" horzTextAlign="center" vertTextAlign="center"/>
+
+			<layout top="25" width="535" height="75">
+				<Dano left="155" text2="Atordoamento 0" text1="Leve" field="dano0"/>
+				<Dano left="230" text2="Atordoamento 1" text1="Grave" field="dano1"/>
+				<Dano left="305" text2="Atordoamento 2" text1="Crítico" field="dano2"/>
+				<Dano left="380" text2="Atordoamento 3" text1="Mortal 0" field="dano3"/>
+				<Dano left="455" text2="Atordoamento 4" text1="Mortal -1" field="dano4"/>
+			</layout>
+
+			<layout top="100" width="535" height="75">
+				<Dano left="155" text2="Atordoamento 5" text1="Mortal -2" field="dano5"/>
+				<Dano left="230" text2="Atordoamento 6" text1="Mortal -3" field="dano6"/>
+				<Dano left="305" text2="Atordoamento 7" text1="Mortal -4" field="dano7"/>
+				<Dano left="380" text2="Atordoamento 8" text1="Mortal -5" field="dano8"/>
+				<Dano left="455" text2="Atordoamento 9" text1="Mortal -6" field="dano9"/>
+			</layout>
+		</layout>
+
+
+		<!-- Copie esse arquivo e mude o name do form quando quiser criar um novo lfm -->
+	</scrollBox>
+</form>

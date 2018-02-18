@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInventory" align="client">
+	<scrollBox align="client"><layout left="0" top="0" width="360" height="685">
+			<rectangle align="client" color="black"/>
+			<label text="ITEM" left="5" top="1" width="150" height="20" horzTextAlign="center"/>
+			<label text="QTD" left="155" top="1" width="50" height="20" horzTextAlign="center"/>
+			<label text="PREÇO" left="205" top="1" width="50" height="20" horzTextAlign="center"/>
+			<label text="PESO" left="255" top="1" width="50" height="20" horzTextAlign="center"/>
+			<button text="+" left="305" top="0" width="25" height="25" onClick="self.rclInventory:append();"/>	
+
+			<recordList name="rclInventory" field="inventoryList" templateForm="frmInventoryItem" left="5" top="25" width="350" height="650" layout="vertical">
+				<event name="onCompare">
+					return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+		        </event>
+			</recordList>
+		</layout>
+
+		<layout left="370" top="0" width="760" height="335">
+			<rectangle align="client" color="black"/>
+			<label text="ARMA" left="5" top="1" width="150" height="20" horzTextAlign="center"/>
+			<label text="TIPO" left="155" top="1" width="50" height="20" horzTextAlign="center"/>
+			<label text="PRECISÃO" left="205" top="1" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="OCULT." left="255" top="1" width="50" height="20" horzTextAlign="center" fontSize="12"/>
+			<label text="DISP." left="305" top="1" width="50" height="20" horzTextAlign="center"/>
+			<label text="DANO" left="355" top="1" width="50" height="20" horzTextAlign="center"/>
+			<label text="Nº DISP." left="405" top="1" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="CD TIRO" left="455" top="1" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="CONF." left="505" top="1" width="50" height="20" horzTextAlign="center"/>
+			<label text="ALCANCE" left="555" top="1" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="PREÇO" left="605" top="1" width="50" height="20" horzTextAlign="center"/>
+			<label text="PESO" left="655" top="1" width="50" height="20" horzTextAlign="center"/>
+			<button text="+" left="705" top="0" width="25" height="25" onClick="self.rclInventoryWeapon:append();"/>	
+
+			<recordList name="rclInventoryWeapon" field="weaponList" templateForm="frmInventoryWeapon" left="5" top="25" width="750" height="300" layout="vertical">
+				<event name="onCompare">
+					return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+		        </event>
+			</recordList>
+		</layout>
+
+		<layout left="370" top="345" width="760" height="335">
+			<rectangle align="client" color="black"/>
+
+			<label text="ARMADURA" left="5" top="1" width="150" height="20" horzTextAlign="center"/>
+			<label text="CABEÇA" left="155" top="1" width="50" height="20" horzTextAlign="center"/>
+			<label text="TORSO" left="205" top="1" width="50" height="20" horzTextAlign="center"/>
+			<label text="BRAÇO D" left="255" top="1" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="BRAÇO E" left="305" top="1" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="PERNA D" left="355" top="1" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="PERNA E" left="405" top="1" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="DETALHES" left="455" top="1" width="150" height="20" horzTextAlign="center"/>
+			<label text="PREÇO" left="605" top="1" width="50" height="20" horzTextAlign="center"/>
+			<label text="PESO" left="655" top="1" width="50" height="20" horzTextAlign="center"/>
+			<button text="+" left="705" top="0" width="25" height="25" onClick="self.rclInventoryArmor:append();"/>	
+
+			<recordList name="rclInventoryArmor" field="armorList" templateForm="frmInventoryArmor" left="5" top="25" width="750" height="300" layout="vertical">
+				<event name="onCompare">
+					return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+		        </event>
+			</recordList>
+		</layout>
+	</scrollBox>
+</form>

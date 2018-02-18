@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSkillItem" width="385" height="25" theme="dark" margins="{top=2, bottom=2, right=10}">
+
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+				function (confirmado)
+					if confirmado then
+						ndb.deleteNode(sheet);
+					end;
+				end);
+		end;
+
+		]]>	
+	</script>
+
+	<rectangle align="client" color="#202020" hitTest="false"/>
+
+	<edit vertTextAlign="center" left="5" top="0" width="155" height="25" field="nome">
+		<event name="onChange">
+			local rcl = self:findControlByName("rclListaDasPericias");
+			if rcl~= nil then
+				rcl:sort();
+			end;
+		</event>
+	</edit>
+	<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="0" width="70" height="25" field="atributo" items="{'ATR', 'TCO', 'AuCon', 'REF', 'TEC', 'INT', 'EMP'}" values="{'1', '2', '3', '4', '5', '6', '7'}" fontColor="white">
+		<event name="onChange">
+			if sheet~= nil then
+
+				local atributoPericia = 0;
+				local node = ndb.getRoot(sheet);
+
+				if sheet.atributo == "1" then
+					atributoPericia = tonumber(node.atratividade) or 0;
+				elseif sheet.atributo == "2" then
+					atributoPericia = tonumber(node.tipoCorporal) or 0;
+				elseif sheet.atributo == "3" then
+					atributoPericia = tonumber(node.autocontrole) or 0;
+				elseif sheet.atributo == "4" then
+					atributoPericia = tonumber(node.reflexos) or 0;
+				elseif sheet.atributo == "5" then
+					atributoPericia = tonumber(node.tecnica) or 0;
+				elseif sheet.atributo == "6" then
+					atributoPericia = tonumber(node.inteligencia) or 0;
+				elseif sheet.atributo == "7" then
+					atributoPericia = tonumber(node.empatia) or 0;
+				end;
+				sheet.atributoPericia = atributoPericia;
+			end;
+		</event>
+	</comboBox>
+
+	<rectangle left="240" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
+	<label field="total" text="0" left="240" top="0" width="35" height="25" horzTextAlign="center"/>
+
+	<rectangle left="280" top="0" width="33" height="24" color="black" strokeColor="white" strokeSize="1"/>
+	<label field="atributoPericia" text="0" left="280" top="0" width="33" height="20" horzTextAlign="center"/>
+
+	<edit vertTextAlign="center" horzTextAlign="center" left="320" top="0" width="30" height="25" field="pontos" type="number"/>
+
+	<button left="360" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+
+	<dataLink fields="{'atributoPericia', 'pontos', 'atributo'}">
+		<event name="onChange">
+			if sheet== nil then return end;
+
+			local mod = 0;
+			mod = 	(tonumber(sheet.atributoPericia) or 0) +
+					(tonumber(sheet.pontos) or 0);
+
+			sheet.total = mod;
+		</event>
+	</dataLink>
+</form>
