@@ -11,6 +11,8 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais).
 	- Conteudo da mesa RPGmeister para facil acesso.
 - DnD5e: AlyssonRPG
 	- Ficha para o sistema Dungeons and Dragons Next.
+- Ficha Avatar d20: Ambesek
+	- Ficha para a adaptação de Avatar para o sistema d20.
 - Ficha Cyberpunk 2020: Ambesek
 	- Ficha para o cenario e sistema Cyberpunk 2020
 - Ficha GURPS 4E: Ambesek
