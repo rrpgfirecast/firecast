@@ -4042,6 +4042,11 @@ function newfrmGeneral()
     obj.dataLink18:setFields({'attribute_body_initial', 'attribute_agility_initial', 'attribute_reaction_initial', 'attribute_strenght_initial', 'attribute_charisma_initial', 'attribute_intuition_initial', 'attribute_logic_initial', 'attribute_willpower_initial', 'attribute_edge_initial', 'attribute_magic_initial', 'attribute_ressonance_initial'});
     obj.dataLink18:setName("dataLink18");
 
+    obj.dataLink19 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink19:setParent(obj.layout2);
+    obj.dataLink19:setField("augmentations_essence");
+    obj.dataLink19:setName("dataLink19");
+
     obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.scrollBox1);
     obj.layout3:setLeft(265);
@@ -4140,16 +4145,16 @@ function newfrmGeneral()
     obj.edit108:setType("number");
     obj.edit108:setName("edit108");
 
-    obj.dataLink19 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink19:setParent(obj.layout4);
-    obj.dataLink19:setField("initiativePhysicalDice");
-    obj.dataLink19:setDefaultValue("1");
-    obj.dataLink19:setName("dataLink19");
-
     obj.dataLink20 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink20:setParent(obj.layout4);
-    obj.dataLink20:setFields({'attribute_reaction_effective', 'attribute_intuition_effective', 'initiativePhysicalOther'});
+    obj.dataLink20:setField("initiativePhysicalDice");
+    obj.dataLink20:setDefaultValue("1");
     obj.dataLink20:setName("dataLink20");
+
+    obj.dataLink21 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink21:setParent(obj.layout4);
+    obj.dataLink21:setFields({'attribute_reaction_effective', 'attribute_intuition_effective', 'initiativePhysicalOther'});
+    obj.dataLink21:setName("dataLink21");
 
     obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout3);
@@ -4225,16 +4230,16 @@ function newfrmGeneral()
     obj.edit110:setType("number");
     obj.edit110:setName("edit110");
 
-    obj.dataLink21 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink21:setParent(obj.layout5);
-    obj.dataLink21:setField("initiativeMatrixDice");
-    obj.dataLink21:setDefaultValue("3");
-    obj.dataLink21:setName("dataLink21");
-
     obj.dataLink22 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink22:setParent(obj.layout5);
-    obj.dataLink22:setFields({'attribute_intuition_effective', 'initiativeMatrixOther', 'cyberdeck_data_processing'});
+    obj.dataLink22:setField("initiativeMatrixDice");
+    obj.dataLink22:setDefaultValue("3");
     obj.dataLink22:setName("dataLink22");
+
+    obj.dataLink23 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink23:setParent(obj.layout5);
+    obj.dataLink23:setFields({'attribute_intuition_effective', 'initiativeMatrixOther', 'cyberdeck_data_processing'});
+    obj.dataLink23:setName("dataLink23");
 
     obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout3);
@@ -4310,16 +4315,16 @@ function newfrmGeneral()
     obj.edit112:setType("number");
     obj.edit112:setName("edit112");
 
-    obj.dataLink23 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink23:setParent(obj.layout6);
-    obj.dataLink23:setField("initiativeAstralDice");
-    obj.dataLink23:setDefaultValue("2");
-    obj.dataLink23:setName("dataLink23");
-
     obj.dataLink24 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink24:setParent(obj.layout6);
-    obj.dataLink24:setFields({'attribute_intuition_effective', 'initiativeAstralOther'});
+    obj.dataLink24:setField("initiativeAstralDice");
+    obj.dataLink24:setDefaultValue("2");
     obj.dataLink24:setName("dataLink24");
+
+    obj.dataLink25 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink25:setParent(obj.layout6);
+    obj.dataLink25:setFields({'attribute_intuition_effective', 'initiativeAstralOther'});
+    obj.dataLink25:setName("dataLink25");
 
     obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.scrollBox1);
@@ -4388,10 +4393,10 @@ function newfrmGeneral()
     obj.edit113:setHorzTextAlign("center");
     obj.edit113:setName("edit113");
 
-    obj.dataLink25 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink25:setParent(obj.layout7);
-    obj.dataLink25:setFields({'attribute_charisma_effective', 'attribute_willpower_effective', 'attribute_composure_other'});
-    obj.dataLink25:setName("dataLink25");
+    obj.dataLink26 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink26:setParent(obj.layout7);
+    obj.dataLink26:setFields({'attribute_charisma_effective', 'attribute_willpower_effective', 'attribute_composure_other'});
+    obj.dataLink26:setName("dataLink26");
 
     obj.label115 = gui.fromHandle(_obj_newObject("label"));
     obj.label115:setParent(obj.layout7);
@@ -4436,10 +4441,10 @@ function newfrmGeneral()
     obj.edit114:setHorzTextAlign("center");
     obj.edit114:setName("edit114");
 
-    obj.dataLink26 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink26:setParent(obj.layout7);
-    obj.dataLink26:setFields({'attribute_charisma_effective', 'attribute_intuition_effective', 'attribute_judge_other'});
-    obj.dataLink26:setName("dataLink26");
+    obj.dataLink27 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink27:setParent(obj.layout7);
+    obj.dataLink27:setFields({'attribute_charisma_effective', 'attribute_intuition_effective', 'attribute_judge_other'});
+    obj.dataLink27:setName("dataLink27");
 
     obj.label117 = gui.fromHandle(_obj_newObject("label"));
     obj.label117:setParent(obj.layout7);
@@ -4484,10 +4489,10 @@ function newfrmGeneral()
     obj.edit115:setHorzTextAlign("center");
     obj.edit115:setName("edit115");
 
-    obj.dataLink27 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink27:setParent(obj.layout7);
-    obj.dataLink27:setFields({'attribute_body_effective', 'attribute_strenght_effective', 'attribute_lifting_other'});
-    obj.dataLink27:setName("dataLink27");
+    obj.dataLink28 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink28:setParent(obj.layout7);
+    obj.dataLink28:setFields({'attribute_body_effective', 'attribute_strenght_effective', 'attribute_lifting_other'});
+    obj.dataLink28:setName("dataLink28");
 
     obj.label119 = gui.fromHandle(_obj_newObject("label"));
     obj.label119:setParent(obj.layout7);
@@ -4532,10 +4537,10 @@ function newfrmGeneral()
     obj.edit116:setHorzTextAlign("center");
     obj.edit116:setName("edit116");
 
-    obj.dataLink28 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink28:setParent(obj.layout7);
-    obj.dataLink28:setFields({'attribute_logic_effective', 'attribute_willpower_effective', 'attribute_memory_other'});
-    obj.dataLink28:setName("dataLink28");
+    obj.dataLink29 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink29:setParent(obj.layout7);
+    obj.dataLink29:setFields({'attribute_logic_effective', 'attribute_willpower_effective', 'attribute_memory_other'});
+    obj.dataLink29:setName("dataLink29");
 
     obj.label121 = gui.fromHandle(_obj_newObject("label"));
     obj.label121:setParent(obj.layout7);
@@ -4591,10 +4596,10 @@ function newfrmGeneral()
     obj.label123:setHorzTextAlign("center");
     obj.label123:setName("label123");
 
-    obj.dataLink29 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink29:setParent(obj.layout7);
-    obj.dataLink29:setField("attribute_agility_effective");
-    obj.dataLink29:setName("dataLink29");
+    obj.dataLink30 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink30:setParent(obj.layout7);
+    obj.dataLink30:setField("attribute_agility_effective");
+    obj.dataLink30:setName("dataLink30");
 
     obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.scrollBox1);
@@ -4759,15 +4764,15 @@ function newfrmGeneral()
     obj.label133:setHorzTextAlign("center");
     obj.label133:setName("label133");
 
-    obj.dataLink30 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink30:setParent(obj.layout8);
-    obj.dataLink30:setFields({'attribute_body_effective', 'monitor_physical_other'});
-    obj.dataLink30:setName("dataLink30");
-
     obj.dataLink31 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink31:setParent(obj.layout8);
-    obj.dataLink31:setFields({'monitor_physical_damage', 'monitor_physical'});
+    obj.dataLink31:setFields({'attribute_body_effective', 'monitor_physical_other'});
     obj.dataLink31:setName("dataLink31");
+
+    obj.dataLink32 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink32:setParent(obj.layout8);
+    obj.dataLink32:setFields({'monitor_physical_damage', 'monitor_physical'});
+    obj.dataLink32:setName("dataLink32");
 
     obj.label134 = gui.fromHandle(_obj_newObject("label"));
     obj.label134:setParent(obj.layout8);
@@ -4856,15 +4861,15 @@ function newfrmGeneral()
     obj.label137:setHorzTextAlign("center");
     obj.label137:setName("label137");
 
-    obj.dataLink32 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink32:setParent(obj.layout8);
-    obj.dataLink32:setFields({'attribute_willpower_effective', 'monitor_stun_other'});
-    obj.dataLink32:setName("dataLink32");
-
     obj.dataLink33 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink33:setParent(obj.layout8);
-    obj.dataLink33:setFields({'monitor_stun_damage', 'monitor_stun'});
+    obj.dataLink33:setFields({'attribute_willpower_effective', 'monitor_stun_other'});
     obj.dataLink33:setName("dataLink33");
+
+    obj.dataLink34 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink34:setParent(obj.layout8);
+    obj.dataLink34:setFields({'monitor_stun_damage', 'monitor_stun'});
+    obj.dataLink34:setName("dataLink34");
 
     obj.label138 = gui.fromHandle(_obj_newObject("label"));
     obj.label138:setParent(obj.layout8);
@@ -4953,15 +4958,15 @@ function newfrmGeneral()
     obj.label141:setHorzTextAlign("center");
     obj.label141:setName("label141");
 
-    obj.dataLink34 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink34:setParent(obj.layout8);
-    obj.dataLink34:setFields({'attribute_body_effective', 'monitor_overflow_other'});
-    obj.dataLink34:setName("dataLink34");
-
     obj.dataLink35 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink35:setParent(obj.layout8);
-    obj.dataLink35:setFields({'monitor_overflow_damage', 'monitor_overflow'});
+    obj.dataLink35:setFields({'attribute_body_effective', 'monitor_overflow_other'});
     obj.dataLink35:setName("dataLink35");
+
+    obj.dataLink36 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink36:setParent(obj.layout8);
+    obj.dataLink36:setFields({'monitor_overflow_damage', 'monitor_overflow'});
+    obj.dataLink36:setName("dataLink36");
 
     obj.rectangle49 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle49:setParent(obj.scrollBox1);
@@ -5468,7 +5473,17 @@ function newfrmGeneral()
             													(tonumber(sheet.attribute_ressonance_initial) or 0);
         end, obj);
 
-    obj._e_event25 = obj.button5:addEventListener("onClick",
+    obj._e_event25 = obj.dataLink19:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            					local essence = 6 - (tonumber(sheet.augmentations_essence) or 0);
+            
+            					sheet.attribute_essence_real = essence;
+            					sheet.attribute_essence_effective = math.floor(essence);
+        end, obj);
+
+    obj._e_event26 = obj.button5:addEventListener("onClick",
         function (self)
             local teste = (sheet.initiativePhysicalDice or 1) .. "d6 + " .. (sheet.initiativePhysical or 0); 
             						local rolagem = rrpg.interpretarRolagem(teste);
@@ -5476,7 +5491,7 @@ function newfrmGeneral()
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa de " .. (sheet.name or "name"));
         end, obj);
 
-    obj._e_event26 = obj.dataLink20:addEventListener("onChange",
+    obj._e_event27 = obj.dataLink21:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -5487,7 +5502,7 @@ function newfrmGeneral()
             						sheet.initiativePhysical = reaction+intuition+other;
         end, obj);
 
-    obj._e_event27 = obj.button6:addEventListener("onClick",
+    obj._e_event28 = obj.button6:addEventListener("onClick",
         function (self)
             local teste = (sheet.initiativeMatrixDice or 1) .. "d6 + " .. (sheet.initiativeMatrix or 0); 
             						local rolagem = rrpg.interpretarRolagem(teste);
@@ -5495,7 +5510,7 @@ function newfrmGeneral()
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa da Matrix de " .. (sheet.name or "name"));
         end, obj);
 
-    obj._e_event28 = obj.dataLink22:addEventListener("onChange",
+    obj._e_event29 = obj.dataLink23:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -5506,7 +5521,7 @@ function newfrmGeneral()
             						sheet.initiativeMatrix = intuition+data+other;
         end, obj);
 
-    obj._e_event29 = obj.button7:addEventListener("onClick",
+    obj._e_event30 = obj.button7:addEventListener("onClick",
         function (self)
             local teste = (sheet.initiativeAstralDice or 1) .. "d6 + " .. (sheet.initiativeAstral or 0); 
             						local rolagem = rrpg.interpretarRolagem(teste);
@@ -5514,7 +5529,7 @@ function newfrmGeneral()
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa Astral de " .. (sheet.name or "name"));
         end, obj);
 
-    obj._e_event30 = obj.dataLink24:addEventListener("onChange",
+    obj._e_event31 = obj.dataLink25:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -5524,7 +5539,7 @@ function newfrmGeneral()
             						sheet.initiativeAstral = (intuition*2)+other;
         end, obj);
 
-    obj._e_event31 = obj.dataLink25:addEventListener("onChange",
+    obj._e_event32 = obj.dataLink26:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -5534,7 +5549,7 @@ function newfrmGeneral()
             				sheet.attribute_composure = link1 + link2 + other;
         end, obj);
 
-    obj._e_event32 = obj.dataLink26:addEventListener("onChange",
+    obj._e_event33 = obj.dataLink27:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -5544,7 +5559,7 @@ function newfrmGeneral()
             				sheet.attribute_judge = link1 + link2 + other;
         end, obj);
 
-    obj._e_event33 = obj.dataLink27:addEventListener("onChange",
+    obj._e_event34 = obj.dataLink28:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -5554,7 +5569,7 @@ function newfrmGeneral()
             				sheet.attribute_lifting = link1 + link2 + other;
         end, obj);
 
-    obj._e_event34 = obj.dataLink28:addEventListener("onChange",
+    obj._e_event35 = obj.dataLink29:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -5564,7 +5579,7 @@ function newfrmGeneral()
             				sheet.attribute_memory = link1 + link2 + other;
         end, obj);
 
-    obj._e_event35 = obj.dataLink29:addEventListener("onChange",
+    obj._e_event36 = obj.dataLink30:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -5574,7 +5589,7 @@ function newfrmGeneral()
             					sheet.attribute_movement_run = agility * 4;
         end, obj);
 
-    obj._e_event36 = obj.dataLink30:addEventListener("onChange",
+    obj._e_event37 = obj.dataLink31:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -5583,7 +5598,7 @@ function newfrmGeneral()
             				sheet.monitor_physical = link1 + other + 8;
         end, obj);
 
-    obj._e_event37 = obj.dataLink31:addEventListener("onChange",
+    obj._e_event38 = obj.dataLink32:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -5599,7 +5614,7 @@ function newfrmGeneral()
             				end;
         end, obj);
 
-    obj._e_event38 = obj.dataLink32:addEventListener("onChange",
+    obj._e_event39 = obj.dataLink33:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -5608,7 +5623,7 @@ function newfrmGeneral()
             				sheet.monitor_stun = link1 + other + 8;
         end, obj);
 
-    obj._e_event39 = obj.dataLink33:addEventListener("onChange",
+    obj._e_event40 = obj.dataLink34:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -5624,7 +5639,7 @@ function newfrmGeneral()
             				end;
         end, obj);
 
-    obj._e_event40 = obj.dataLink34:addEventListener("onChange",
+    obj._e_event41 = obj.dataLink35:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -5633,7 +5648,7 @@ function newfrmGeneral()
             				sheet.monitor_overflow = link1 + other;
         end, obj);
 
-    obj._e_event41 = obj.dataLink35:addEventListener("onChange",
+    obj._e_event42 = obj.dataLink36:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -5650,12 +5665,13 @@ function newfrmGeneral()
             				end;
         end, obj);
 
-    obj._e_event42 = obj.image1:addEventListener("onStartDrag",
+    obj._e_event43 = obj.image1:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event43);
         __o_rrpgObjs.removeEventListenerById(self._e_event42);
         __o_rrpgObjs.removeEventListenerById(self._e_event41);
         __o_rrpgObjs.removeEventListenerById(self._e_event40);
@@ -6197,6 +6213,7 @@ function newfrmGeneral()
         if self.dataLink19 ~= nil then self.dataLink19:destroy(); self.dataLink19 = nil; end;
         if self.flowPart64 ~= nil then self.flowPart64:destroy(); self.flowPart64 = nil; end;
         if self.rectangle43 ~= nil then self.rectangle43:destroy(); self.rectangle43 = nil; end;
+        if self.dataLink36 ~= nil then self.dataLink36:destroy(); self.dataLink36 = nil; end;
         if self.flowPart114 ~= nil then self.flowPart114:destroy(); self.flowPart114 = nil; end;
         if self.edit53 ~= nil then self.edit53:destroy(); self.edit53 = nil; end;
         if self.flowLayout9 ~= nil then self.flowLayout9:destroy(); self.flowLayout9 = nil; end;

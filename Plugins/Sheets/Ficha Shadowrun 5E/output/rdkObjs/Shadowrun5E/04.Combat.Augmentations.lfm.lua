@@ -104,6 +104,11 @@ function newfrmAugmentation()
     obj.dataLink1:setField("augmentation_price");
     obj.dataLink1:setName("dataLink1");
 
+    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2:setParent(obj.rectangle1);
+    obj.dataLink2:setField("augmentation_essence");
+    obj.dataLink2:setName("dataLink2");
+
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
@@ -129,7 +134,23 @@ function newfrmAugmentation()
             				node.augmentations_price = price;
         end, obj);
 
+    obj._e_event2 = obj.dataLink2:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            				local node = ndb.getRoot(sheet);
+            				local objetos = ndb.getChildNodes(node.augmentationsList);
+            				local essence = 0;
+            
+            				for i=1, #objetos, 1 do 
+            					essence = essence + (tonumber(objetos[i].augmentation_essence) or 0);
+            				end;
+            
+            				node.augmentations_essence = essence;
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
@@ -148,6 +169,7 @@ function newfrmAugmentation()
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
+        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;

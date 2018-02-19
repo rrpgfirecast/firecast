@@ -33,5 +33,21 @@
 				node.augmentations_price = price;
 			</event>
 		</dataLink>
+
+		<dataLink field="augmentation_essence">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local node = ndb.getRoot(sheet);
+				local objetos = ndb.getChildNodes(node.augmentationsList);
+				local essence = 0;
+
+				for i=1, #objetos, 1 do 
+					essence = essence + (tonumber(objetos[i].augmentation_essence) or 0);
+				end;
+
+				node.augmentations_essence = essence;
+			</event>
+		</dataLink>
 	</rectangle>
 </form>

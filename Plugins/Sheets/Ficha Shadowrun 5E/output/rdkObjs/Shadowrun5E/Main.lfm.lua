@@ -4061,6 +4061,11 @@ function newfrmTemplate()
     obj.dataLink18:setFields({'attribute_body_initial', 'attribute_agility_initial', 'attribute_reaction_initial', 'attribute_strenght_initial', 'attribute_charisma_initial', 'attribute_intuition_initial', 'attribute_logic_initial', 'attribute_willpower_initial', 'attribute_edge_initial', 'attribute_magic_initial', 'attribute_ressonance_initial'});
     obj.dataLink18:setName("dataLink18");
 
+    obj.dataLink19 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink19:setParent(obj.layout2);
+    obj.dataLink19:setField("augmentations_essence");
+    obj.dataLink19:setName("dataLink19");
+
     obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.scrollBox1);
     obj.layout3:setLeft(265);
@@ -4159,16 +4164,16 @@ function newfrmTemplate()
     obj.edit108:setType("number");
     obj.edit108:setName("edit108");
 
-    obj.dataLink19 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink19:setParent(obj.layout4);
-    obj.dataLink19:setField("initiativePhysicalDice");
-    obj.dataLink19:setDefaultValue("1");
-    obj.dataLink19:setName("dataLink19");
-
     obj.dataLink20 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink20:setParent(obj.layout4);
-    obj.dataLink20:setFields({'attribute_reaction_effective', 'attribute_intuition_effective', 'initiativePhysicalOther'});
+    obj.dataLink20:setField("initiativePhysicalDice");
+    obj.dataLink20:setDefaultValue("1");
     obj.dataLink20:setName("dataLink20");
+
+    obj.dataLink21 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink21:setParent(obj.layout4);
+    obj.dataLink21:setFields({'attribute_reaction_effective', 'attribute_intuition_effective', 'initiativePhysicalOther'});
+    obj.dataLink21:setName("dataLink21");
 
     obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout3);
@@ -4244,16 +4249,16 @@ function newfrmTemplate()
     obj.edit110:setType("number");
     obj.edit110:setName("edit110");
 
-    obj.dataLink21 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink21:setParent(obj.layout5);
-    obj.dataLink21:setField("initiativeMatrixDice");
-    obj.dataLink21:setDefaultValue("3");
-    obj.dataLink21:setName("dataLink21");
-
     obj.dataLink22 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink22:setParent(obj.layout5);
-    obj.dataLink22:setFields({'attribute_intuition_effective', 'initiativeMatrixOther', 'cyberdeck_data_processing'});
+    obj.dataLink22:setField("initiativeMatrixDice");
+    obj.dataLink22:setDefaultValue("3");
     obj.dataLink22:setName("dataLink22");
+
+    obj.dataLink23 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink23:setParent(obj.layout5);
+    obj.dataLink23:setFields({'attribute_intuition_effective', 'initiativeMatrixOther', 'cyberdeck_data_processing'});
+    obj.dataLink23:setName("dataLink23");
 
     obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout3);
@@ -4329,16 +4334,16 @@ function newfrmTemplate()
     obj.edit112:setType("number");
     obj.edit112:setName("edit112");
 
-    obj.dataLink23 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink23:setParent(obj.layout6);
-    obj.dataLink23:setField("initiativeAstralDice");
-    obj.dataLink23:setDefaultValue("2");
-    obj.dataLink23:setName("dataLink23");
-
     obj.dataLink24 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink24:setParent(obj.layout6);
-    obj.dataLink24:setFields({'attribute_intuition_effective', 'initiativeAstralOther'});
+    obj.dataLink24:setField("initiativeAstralDice");
+    obj.dataLink24:setDefaultValue("2");
     obj.dataLink24:setName("dataLink24");
+
+    obj.dataLink25 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink25:setParent(obj.layout6);
+    obj.dataLink25:setFields({'attribute_intuition_effective', 'initiativeAstralOther'});
+    obj.dataLink25:setName("dataLink25");
 
     obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.scrollBox1);
@@ -4407,10 +4412,10 @@ function newfrmTemplate()
     obj.edit113:setHorzTextAlign("center");
     obj.edit113:setName("edit113");
 
-    obj.dataLink25 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink25:setParent(obj.layout7);
-    obj.dataLink25:setFields({'attribute_charisma_effective', 'attribute_willpower_effective', 'attribute_composure_other'});
-    obj.dataLink25:setName("dataLink25");
+    obj.dataLink26 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink26:setParent(obj.layout7);
+    obj.dataLink26:setFields({'attribute_charisma_effective', 'attribute_willpower_effective', 'attribute_composure_other'});
+    obj.dataLink26:setName("dataLink26");
 
     obj.label115 = gui.fromHandle(_obj_newObject("label"));
     obj.label115:setParent(obj.layout7);
@@ -4455,10 +4460,10 @@ function newfrmTemplate()
     obj.edit114:setHorzTextAlign("center");
     obj.edit114:setName("edit114");
 
-    obj.dataLink26 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink26:setParent(obj.layout7);
-    obj.dataLink26:setFields({'attribute_charisma_effective', 'attribute_intuition_effective', 'attribute_judge_other'});
-    obj.dataLink26:setName("dataLink26");
+    obj.dataLink27 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink27:setParent(obj.layout7);
+    obj.dataLink27:setFields({'attribute_charisma_effective', 'attribute_intuition_effective', 'attribute_judge_other'});
+    obj.dataLink27:setName("dataLink27");
 
     obj.label117 = gui.fromHandle(_obj_newObject("label"));
     obj.label117:setParent(obj.layout7);
@@ -4503,10 +4508,10 @@ function newfrmTemplate()
     obj.edit115:setHorzTextAlign("center");
     obj.edit115:setName("edit115");
 
-    obj.dataLink27 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink27:setParent(obj.layout7);
-    obj.dataLink27:setFields({'attribute_body_effective', 'attribute_strenght_effective', 'attribute_lifting_other'});
-    obj.dataLink27:setName("dataLink27");
+    obj.dataLink28 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink28:setParent(obj.layout7);
+    obj.dataLink28:setFields({'attribute_body_effective', 'attribute_strenght_effective', 'attribute_lifting_other'});
+    obj.dataLink28:setName("dataLink28");
 
     obj.label119 = gui.fromHandle(_obj_newObject("label"));
     obj.label119:setParent(obj.layout7);
@@ -4551,10 +4556,10 @@ function newfrmTemplate()
     obj.edit116:setHorzTextAlign("center");
     obj.edit116:setName("edit116");
 
-    obj.dataLink28 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink28:setParent(obj.layout7);
-    obj.dataLink28:setFields({'attribute_logic_effective', 'attribute_willpower_effective', 'attribute_memory_other'});
-    obj.dataLink28:setName("dataLink28");
+    obj.dataLink29 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink29:setParent(obj.layout7);
+    obj.dataLink29:setFields({'attribute_logic_effective', 'attribute_willpower_effective', 'attribute_memory_other'});
+    obj.dataLink29:setName("dataLink29");
 
     obj.label121 = gui.fromHandle(_obj_newObject("label"));
     obj.label121:setParent(obj.layout7);
@@ -4610,10 +4615,10 @@ function newfrmTemplate()
     obj.label123:setHorzTextAlign("center");
     obj.label123:setName("label123");
 
-    obj.dataLink29 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink29:setParent(obj.layout7);
-    obj.dataLink29:setField("attribute_agility_effective");
-    obj.dataLink29:setName("dataLink29");
+    obj.dataLink30 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink30:setParent(obj.layout7);
+    obj.dataLink30:setField("attribute_agility_effective");
+    obj.dataLink30:setName("dataLink30");
 
     obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.scrollBox1);
@@ -4778,15 +4783,15 @@ function newfrmTemplate()
     obj.label133:setHorzTextAlign("center");
     obj.label133:setName("label133");
 
-    obj.dataLink30 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink30:setParent(obj.layout8);
-    obj.dataLink30:setFields({'attribute_body_effective', 'monitor_physical_other'});
-    obj.dataLink30:setName("dataLink30");
-
     obj.dataLink31 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink31:setParent(obj.layout8);
-    obj.dataLink31:setFields({'monitor_physical_damage', 'monitor_physical'});
+    obj.dataLink31:setFields({'attribute_body_effective', 'monitor_physical_other'});
     obj.dataLink31:setName("dataLink31");
+
+    obj.dataLink32 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink32:setParent(obj.layout8);
+    obj.dataLink32:setFields({'monitor_physical_damage', 'monitor_physical'});
+    obj.dataLink32:setName("dataLink32");
 
     obj.label134 = gui.fromHandle(_obj_newObject("label"));
     obj.label134:setParent(obj.layout8);
@@ -4875,15 +4880,15 @@ function newfrmTemplate()
     obj.label137:setHorzTextAlign("center");
     obj.label137:setName("label137");
 
-    obj.dataLink32 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink32:setParent(obj.layout8);
-    obj.dataLink32:setFields({'attribute_willpower_effective', 'monitor_stun_other'});
-    obj.dataLink32:setName("dataLink32");
-
     obj.dataLink33 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink33:setParent(obj.layout8);
-    obj.dataLink33:setFields({'monitor_stun_damage', 'monitor_stun'});
+    obj.dataLink33:setFields({'attribute_willpower_effective', 'monitor_stun_other'});
     obj.dataLink33:setName("dataLink33");
+
+    obj.dataLink34 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink34:setParent(obj.layout8);
+    obj.dataLink34:setFields({'monitor_stun_damage', 'monitor_stun'});
+    obj.dataLink34:setName("dataLink34");
 
     obj.label138 = gui.fromHandle(_obj_newObject("label"));
     obj.label138:setParent(obj.layout8);
@@ -4972,15 +4977,15 @@ function newfrmTemplate()
     obj.label141:setHorzTextAlign("center");
     obj.label141:setName("label141");
 
-    obj.dataLink34 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink34:setParent(obj.layout8);
-    obj.dataLink34:setFields({'attribute_body_effective', 'monitor_overflow_other'});
-    obj.dataLink34:setName("dataLink34");
-
     obj.dataLink35 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink35:setParent(obj.layout8);
-    obj.dataLink35:setFields({'monitor_overflow_damage', 'monitor_overflow'});
+    obj.dataLink35:setFields({'attribute_body_effective', 'monitor_overflow_other'});
     obj.dataLink35:setName("dataLink35");
+
+    obj.dataLink36 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink36:setParent(obj.layout8);
+    obj.dataLink36:setFields({'monitor_overflow_damage', 'monitor_overflow'});
+    obj.dataLink36:setName("dataLink36");
 
     obj.rectangle49 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle49:setParent(obj.scrollBox1);
@@ -6205,10 +6210,10 @@ function newfrmTemplate()
     obj.label204:setHorzTextAlign("center");
     obj.label204:setName("label204");
 
-    obj.dataLink36 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink36:setParent(obj.layout20);
-    obj.dataLink36:setFields({'monitor_matrix', 'monitor_matrix_damage'});
-    obj.dataLink36:setName("dataLink36");
+    obj.dataLink37 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink37:setParent(obj.layout20);
+    obj.dataLink37:setFields({'monitor_matrix', 'monitor_matrix_damage'});
+    obj.dataLink37:setName("dataLink37");
 
     obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.scrollBox5);
@@ -7621,10 +7626,10 @@ function newfrmTemplate()
     obj.textEditor12:setField("details_karma");
     obj.textEditor12:setName("textEditor12");
 
-    obj.dataLink37 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink37:setParent(obj.layout31);
-    obj.dataLink37:setFields({'attribute_karma_spent', 'skills_active_karma_spent', 'skills_knowledge_karma_spent', 'skills_language_karma_spent', 'qualities_karma', 'contact_karma', 'spells_karma', 'abilities_karma', 'other_karma', 'misc_karma', 'alternative_karma', 'details_karma', 'karmaTotal'});
-    obj.dataLink37:setName("dataLink37");
+    obj.dataLink38 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink38:setParent(obj.layout31);
+    obj.dataLink38:setFields({'attribute_karma_spent', 'skills_active_karma_spent', 'skills_knowledge_karma_spent', 'skills_language_karma_spent', 'qualities_karma', 'contact_karma', 'spells_karma', 'abilities_karma', 'other_karma', 'misc_karma', 'alternative_karma', 'details_karma', 'karmaTotal'});
+    obj.dataLink38:setName("dataLink38");
 
     obj.layout32 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.scrollBox9);
@@ -8608,7 +8613,17 @@ function newfrmTemplate()
             													(tonumber(sheet.attribute_ressonance_initial) or 0);
         end, obj);
 
-    obj._e_event25 = obj.button5:addEventListener("onClick",
+    obj._e_event25 = obj.dataLink19:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            					local essence = 6 - (tonumber(sheet.augmentations_essence) or 0);
+            
+            					sheet.attribute_essence_real = essence;
+            					sheet.attribute_essence_effective = math.floor(essence);
+        end, obj);
+
+    obj._e_event26 = obj.button5:addEventListener("onClick",
         function (self)
             local teste = (sheet.initiativePhysicalDice or 1) .. "d6 + " .. (sheet.initiativePhysical or 0); 
             						local rolagem = rrpg.interpretarRolagem(teste);
@@ -8616,7 +8631,7 @@ function newfrmTemplate()
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa de " .. (sheet.name or "name"));
         end, obj);
 
-    obj._e_event26 = obj.dataLink20:addEventListener("onChange",
+    obj._e_event27 = obj.dataLink21:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8627,7 +8642,7 @@ function newfrmTemplate()
             						sheet.initiativePhysical = reaction+intuition+other;
         end, obj);
 
-    obj._e_event27 = obj.button6:addEventListener("onClick",
+    obj._e_event28 = obj.button6:addEventListener("onClick",
         function (self)
             local teste = (sheet.initiativeMatrixDice or 1) .. "d6 + " .. (sheet.initiativeMatrix or 0); 
             						local rolagem = rrpg.interpretarRolagem(teste);
@@ -8635,7 +8650,7 @@ function newfrmTemplate()
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa da Matrix de " .. (sheet.name or "name"));
         end, obj);
 
-    obj._e_event28 = obj.dataLink22:addEventListener("onChange",
+    obj._e_event29 = obj.dataLink23:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8646,7 +8661,7 @@ function newfrmTemplate()
             						sheet.initiativeMatrix = intuition+data+other;
         end, obj);
 
-    obj._e_event29 = obj.button7:addEventListener("onClick",
+    obj._e_event30 = obj.button7:addEventListener("onClick",
         function (self)
             local teste = (sheet.initiativeAstralDice or 1) .. "d6 + " .. (sheet.initiativeAstral or 0); 
             						local rolagem = rrpg.interpretarRolagem(teste);
@@ -8654,7 +8669,7 @@ function newfrmTemplate()
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa Astral de " .. (sheet.name or "name"));
         end, obj);
 
-    obj._e_event30 = obj.dataLink24:addEventListener("onChange",
+    obj._e_event31 = obj.dataLink25:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8664,7 +8679,7 @@ function newfrmTemplate()
             						sheet.initiativeAstral = (intuition*2)+other;
         end, obj);
 
-    obj._e_event31 = obj.dataLink25:addEventListener("onChange",
+    obj._e_event32 = obj.dataLink26:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8674,7 +8689,7 @@ function newfrmTemplate()
             				sheet.attribute_composure = link1 + link2 + other;
         end, obj);
 
-    obj._e_event32 = obj.dataLink26:addEventListener("onChange",
+    obj._e_event33 = obj.dataLink27:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8684,7 +8699,7 @@ function newfrmTemplate()
             				sheet.attribute_judge = link1 + link2 + other;
         end, obj);
 
-    obj._e_event33 = obj.dataLink27:addEventListener("onChange",
+    obj._e_event34 = obj.dataLink28:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8694,7 +8709,7 @@ function newfrmTemplate()
             				sheet.attribute_lifting = link1 + link2 + other;
         end, obj);
 
-    obj._e_event34 = obj.dataLink28:addEventListener("onChange",
+    obj._e_event35 = obj.dataLink29:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8704,7 +8719,7 @@ function newfrmTemplate()
             				sheet.attribute_memory = link1 + link2 + other;
         end, obj);
 
-    obj._e_event35 = obj.dataLink29:addEventListener("onChange",
+    obj._e_event36 = obj.dataLink30:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8714,7 +8729,7 @@ function newfrmTemplate()
             					sheet.attribute_movement_run = agility * 4;
         end, obj);
 
-    obj._e_event36 = obj.dataLink30:addEventListener("onChange",
+    obj._e_event37 = obj.dataLink31:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8723,7 +8738,7 @@ function newfrmTemplate()
             				sheet.monitor_physical = link1 + other + 8;
         end, obj);
 
-    obj._e_event37 = obj.dataLink31:addEventListener("onChange",
+    obj._e_event38 = obj.dataLink32:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8739,7 +8754,7 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event38 = obj.dataLink32:addEventListener("onChange",
+    obj._e_event39 = obj.dataLink33:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8748,7 +8763,7 @@ function newfrmTemplate()
             				sheet.monitor_stun = link1 + other + 8;
         end, obj);
 
-    obj._e_event39 = obj.dataLink33:addEventListener("onChange",
+    obj._e_event40 = obj.dataLink34:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8764,7 +8779,7 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event40 = obj.dataLink34:addEventListener("onChange",
+    obj._e_event41 = obj.dataLink35:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8773,7 +8788,7 @@ function newfrmTemplate()
             				sheet.monitor_overflow = link1 + other;
         end, obj);
 
-    obj._e_event41 = obj.dataLink35:addEventListener("onChange",
+    obj._e_event42 = obj.dataLink36:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8790,17 +8805,17 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event42 = obj.image1:addEventListener("onStartDrag",
+    obj._e_event43 = obj.image1:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
-    obj._e_event43 = obj.button8:addEventListener("onClick",
+    obj._e_event44 = obj.button8:addEventListener("onClick",
         function (self)
             self.rclSkillList:append();
         end, obj);
 
-    obj._e_event44 = obj.rclSkillList:addEventListener("onCompare",
+    obj._e_event45 = obj.rclSkillList:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if utils.compareStringPtBr(nodeA.skill_group_name, nodeB.skill_group_name)== 0 then
             						return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
@@ -8809,133 +8824,133 @@ function newfrmTemplate()
             		            end;
         end, obj);
 
-    obj._e_event45 = obj.button9:addEventListener("onClick",
+    obj._e_event46 = obj.button9:addEventListener("onClick",
         function (self)
             self.rclKnowledgeList:append();
         end, obj);
 
-    obj._e_event46 = obj.rclKnowledgeList:addEventListener("onCompare",
+    obj._e_event47 = obj.rclKnowledgeList:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
         end, obj);
 
-    obj._e_event47 = obj.button10:addEventListener("onClick",
+    obj._e_event48 = obj.button10:addEventListener("onClick",
         function (self)
             self.rclLanguageList:append();
         end, obj);
 
-    obj._e_event48 = obj.rclLanguageList:addEventListener("onCompare",
+    obj._e_event49 = obj.rclLanguageList:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
         end, obj);
 
-    obj._e_event49 = obj.button11:addEventListener("onClick",
+    obj._e_event50 = obj.button11:addEventListener("onClick",
         function (self)
             self.rclPositiveQualities:append();
         end, obj);
 
-    obj._e_event50 = obj.rclPositiveQualities:addEventListener("onCompare",
+    obj._e_event51 = obj.rclPositiveQualities:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.quality_name, nodeB.quality_name);
         end, obj);
 
-    obj._e_event51 = obj.button12:addEventListener("onClick",
+    obj._e_event52 = obj.button12:addEventListener("onClick",
         function (self)
             self.rclNegativeQualities:append();
         end, obj);
 
-    obj._e_event52 = obj.rclNegativeQualities:addEventListener("onCompare",
+    obj._e_event53 = obj.rclNegativeQualities:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.quality_name, nodeB.quality_name);
         end, obj);
 
-    obj._e_event53 = obj.button13:addEventListener("onClick",
+    obj._e_event54 = obj.button13:addEventListener("onClick",
         function (self)
             self.rclContacts:append();
         end, obj);
 
-    obj._e_event54 = obj.rclContacts:addEventListener("onCompare",
+    obj._e_event55 = obj.rclContacts:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.contact_name, nodeB.contact_name);
         end, obj);
 
-    obj._e_event55 = obj.button14:addEventListener("onClick",
+    obj._e_event56 = obj.button14:addEventListener("onClick",
         function (self)
             self.rclRangedWeapons:append();
         end, obj);
 
-    obj._e_event56 = obj.rclRangedWeapons:addEventListener("onCompare",
+    obj._e_event57 = obj.rclRangedWeapons:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.ranged_weapon, nodeB.ranged_weapon);
         end, obj);
 
-    obj._e_event57 = obj.button15:addEventListener("onClick",
+    obj._e_event58 = obj.button15:addEventListener("onClick",
         function (self)
             self.rclMeleeWeapons:append();
         end, obj);
 
-    obj._e_event58 = obj.rclMeleeWeapons:addEventListener("onCompare",
+    obj._e_event59 = obj.rclMeleeWeapons:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.melee_weapon, nodeB.melee_weapon);
         end, obj);
 
-    obj._e_event59 = obj.button16:addEventListener("onClick",
+    obj._e_event60 = obj.button16:addEventListener("onClick",
         function (self)
             self.rclAugmentations:append();
         end, obj);
 
-    obj._e_event60 = obj.rclAugmentations:addEventListener("onCompare",
+    obj._e_event61 = obj.rclAugmentations:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.augmentation_name, nodeB.augmentation_name);
         end, obj);
 
-    obj._e_event61 = obj.button17:addEventListener("onClick",
+    obj._e_event62 = obj.button17:addEventListener("onClick",
         function (self)
             self.rclArmor:append();
         end, obj);
 
-    obj._e_event62 = obj.rclArmor:addEventListener("onCompare",
+    obj._e_event63 = obj.rclArmor:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.armor_name, nodeB.armor_name);
         end, obj);
 
-    obj._e_event63 = obj.button18:addEventListener("onClick",
+    obj._e_event64 = obj.button18:addEventListener("onClick",
         function (self)
             self.rclGearList:append();
         end, obj);
 
-    obj._e_event64 = obj.rclGearList:addEventListener("onCompare",
+    obj._e_event65 = obj.rclGearList:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.gear_name, nodeB.gear_name);
         end, obj);
 
-    obj._e_event65 = obj.dataLink36:addEventListener("onChange",
+    obj._e_event66 = obj.dataLink37:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             					sheet.monitor_matrix_left = (tonumber(sheet.monitor_matrix) or 0) - ((tonumber(sheet.monitor_matrix_damage) or 0));
         end, obj);
 
-    obj._e_event66 = obj.button19:addEventListener("onClick",
+    obj._e_event67 = obj.button19:addEventListener("onClick",
         function (self)
             self.rclSpells:append();
         end, obj);
 
-    obj._e_event67 = obj.rclSpells:addEventListener("onCompare",
+    obj._e_event68 = obj.rclSpells:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.spell_name, nodeB.spell_name);
         end, obj);
 
-    obj._e_event68 = obj.button20:addEventListener("onClick",
+    obj._e_event69 = obj.button20:addEventListener("onClick",
         function (self)
             self.rclAbilities:append();
         end, obj);
 
-    obj._e_event69 = obj.rclAbilities:addEventListener("onCompare",
+    obj._e_event70 = obj.rclAbilities:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.abilities_name, nodeB.abilities_name);
         end, obj);
 
-    obj._e_event70 = obj.dataLink37:addEventListener("onChange",
+    obj._e_event71 = obj.dataLink38:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8957,22 +8972,23 @@ function newfrmTemplate()
             					sheet.karma = left;
         end, obj);
 
-    obj._e_event71 = obj.button21:addEventListener("onClick",
+    obj._e_event72 = obj.button21:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Shadowrun%205E/README.md')
         end, obj);
 
-    obj._e_event72 = obj.button22:addEventListener("onClick",
+    obj._e_event73 = obj.button22:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Shadowrun%205E/Ficha%20Shadowrun%205E.rpk')
         end, obj);
 
-    obj._e_event73 = obj.button23:addEventListener("onClick",
+    obj._e_event74 = obj.button23:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event74);
         __o_rrpgObjs.removeEventListenerById(self._e_event73);
         __o_rrpgObjs.removeEventListenerById(self._e_event72);
         __o_rrpgObjs.removeEventListenerById(self._e_event71);
@@ -9728,6 +9744,7 @@ function newfrmTemplate()
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
         if self.edit102 ~= nil then self.edit102:destroy(); self.edit102 = nil; end;
         if self.label207 ~= nil then self.label207:destroy(); self.label207 = nil; end;
+        if self.dataLink38 ~= nil then self.dataLink38:destroy(); self.dataLink38 = nil; end;
         if self.label209 ~= nil then self.label209:destroy(); self.label209 = nil; end;
         if self.edit117 ~= nil then self.edit117:destroy(); self.edit117 = nil; end;
         if self.flowPart24 ~= nil then self.flowPart24:destroy(); self.flowPart24 = nil; end;

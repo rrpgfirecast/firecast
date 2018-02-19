@@ -586,6 +586,19 @@
 													(tonumber(sheet.attribute_ressonance_initial) or 0);
 				</event>
 			</dataLink>
+
+			<dataLink field="augmentations_essence">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					local essence = 6 - (tonumber(sheet.augmentations_essence) or 0);
+
+					sheet.attribute_essence_real = essence;
+					sheet.attribute_essence_effective = math.floor(essence);
+				</event>
+			</dataLink>
+
+
 		</layout>
 
 		<layout left="265" top="90" width="295" height="110">
