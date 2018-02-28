@@ -5,7 +5,7 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 
-function newfrmTecnica()
+function newfrmAvancado()
     __o_rrpgObjs.beginObjectsLoading();
 
     local obj = gui.fromHandle(_obj_newObject("form"));
@@ -26,9 +26,9 @@ function newfrmTecnica()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmTecnica");
+    obj:setName("frmAvancado");
     obj:setHeight(25);
-    obj:setWidth(325);
+    obj:setWidth(350);
     obj:setMargins({top=2});
 
 			
@@ -89,13 +89,24 @@ function newfrmTecnica()
     obj.edit3:setTop(0);
     obj.edit3:setWidth(50);
     obj.edit3:setHeight(23);
-    obj.edit3:setField("pt");
+    obj.edit3:setField("ajuste");
     obj.edit3:setHorzTextAlign("center");
     obj.edit3:setName("edit3");
 
+    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4:setParent(obj);
+    obj.edit4:setVertTextAlign("center");
+    obj.edit4:setLeft(250);
+    obj.edit4:setTop(0);
+    obj.edit4:setWidth(50);
+    obj.edit4:setHeight(23);
+    obj.edit4:setField("pt");
+    obj.edit4:setHorzTextAlign("center");
+    obj.edit4:setName("edit4");
+
     obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
-    obj.button1:setLeft(250);
+    obj.button1:setLeft(300);
     obj.button1:setTop(1);
     obj.button1:setWidth(23);
     obj.button1:setHeight(23);
@@ -104,7 +115,7 @@ function newfrmTecnica()
 
     obj.button2 = gui.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj);
-    obj.button2:setLeft(275);
+    obj.button2:setLeft(325);
     obj.button2:setTop(1);
     obj.button2:setWidth(23);
     obj.button2:setHeight(23);
@@ -133,11 +144,11 @@ function newfrmTecnica()
             			local node = ndb.getRoot(sheet);
             			
             			local pt = 0;
-            			local objetos = ndb.getChildNodes(node.campoDasTecnicas);
+            			local objetos = ndb.getChildNodes(node.campoDasTecnicasAvancadas);
             			for i=1, #objetos, 1 do 
             				pt = pt + (tonumber(objetos[i].pt) or 0);
             			end;
-            			node.pt_tecnica = pt;
+            			node.pt_tecnica_avancada = pt;
         end, obj);
 
     function obj:_releaseEvents()
@@ -158,6 +169,7 @@ function newfrmTecnica()
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
@@ -172,17 +184,17 @@ function newfrmTecnica()
     return obj;
 end;
 
-local _frmTecnica = {
-    newEditor = newfrmTecnica, 
-    new = newfrmTecnica, 
-    name = "frmTecnica", 
+local _frmAvancado = {
+    newEditor = newfrmAvancado, 
+    new = newfrmAvancado, 
+    name = "frmAvancado", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
     title = "", 
     description=""};
 
-frmTecnica = _frmTecnica;
-rrpg.registrarForm(_frmTecnica);
+frmAvancado = _frmAvancado;
+rrpg.registrarForm(_frmAvancado);
 
-return _frmTecnica;
+return _frmAvancado;

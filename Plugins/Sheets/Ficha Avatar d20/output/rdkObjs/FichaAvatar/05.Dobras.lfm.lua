@@ -175,9 +175,18 @@ function newfrmDobras()
     obj.label4:setTop(0);
     obj.label4:setWidth(335);
     obj.label4:setHeight(20);
-    obj.label4:setText("TECNICAS");
+    obj.label4:setText("DOBRAS");
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
+
+    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4:setParent(obj.layout1);
+    obj.edit4:setLeft(300);
+    obj.edit4:setTop(0);
+    obj.edit4:setWidth(30);
+    obj.edit4:setHeight(20);
+    obj.edit4:setField("capacidadeDobra");
+    obj.edit4:setName("edit4");
 
     obj.label5 = gui.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout1);
@@ -298,7 +307,7 @@ function newfrmDobras()
     obj.layout3:setParent(obj.scrollBox1);
     obj.layout3:setLeft(690);
     obj.layout3:setTop(0);
-    obj.layout3:setWidth(335);
+    obj.layout3:setWidth(385);
     obj.layout3:setHeight(600);
     obj.layout3:setName("layout3");
 
@@ -321,7 +330,7 @@ function newfrmDobras()
     obj.label12:setParent(obj.layout3);
     obj.label12:setLeft(0);
     obj.label12:setTop(0);
-    obj.label12:setWidth(335);
+    obj.label12:setWidth(385);
     obj.label12:setHeight(20);
     obj.label12:setText("TECNICAS AVANÇADAS");
     obj.label12:setHorzTextAlign("center");
@@ -353,18 +362,28 @@ function newfrmDobras()
     obj.label15:setTop(25);
     obj.label15:setWidth(50);
     obj.label15:setHeight(20);
-    obj.label15:setText("PT");
+    obj.label15:setText("AJUSTE");
     obj.label15:setHorzTextAlign("center");
     obj.label15:setName("label15");
+
+    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16:setParent(obj.layout3);
+    obj.label16:setLeft(255);
+    obj.label16:setTop(25);
+    obj.label16:setWidth(50);
+    obj.label16:setHeight(20);
+    obj.label16:setText("PT");
+    obj.label16:setHorzTextAlign("center");
+    obj.label16:setName("label16");
 
     obj.rclListaDasTecnicasAvancadas = gui.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDasTecnicasAvancadas:setParent(obj.layout3);
     obj.rclListaDasTecnicasAvancadas:setName("rclListaDasTecnicasAvancadas");
     obj.rclListaDasTecnicasAvancadas:setField("campoDasTecnicasAvancadas");
-    obj.rclListaDasTecnicasAvancadas:setTemplateForm("frmTecnica");
+    obj.rclListaDasTecnicasAvancadas:setTemplateForm("frmAvancado");
     obj.rclListaDasTecnicasAvancadas:setLeft(5);
     obj.rclListaDasTecnicasAvancadas:setTop(50);
-    obj.rclListaDasTecnicasAvancadas:setWidth(320);
+    obj.rclListaDasTecnicasAvancadas:setWidth(375);
     obj.rclListaDasTecnicasAvancadas:setHeight(545);
     obj.rclListaDasTecnicasAvancadas:setLayout("vertical");
 
@@ -421,9 +440,10 @@ function newfrmDobras()
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.popTecnica ~= nil then self.popTecnica:destroy(); self.popTecnica = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
+        if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
         if self.label11 ~= nil then self.label11:destroy(); self.label11 = nil; end;
+        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
@@ -444,6 +464,7 @@ function newfrmDobras()
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
+        if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;

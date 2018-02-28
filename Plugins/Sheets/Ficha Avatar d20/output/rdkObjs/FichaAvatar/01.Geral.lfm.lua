@@ -6018,7 +6018,7 @@ function newfrmFichaRPGmeister1_svg()
             					local nep = (tonumber(sheet.nep) or 0);
             
             					for i=1, nep, 1 do
-            						pt = pt + 25 + math.floor(i/2) * 5;
+            						pt = pt + 50 + math.floor(i/2) * 5;
             					end;
             					sheet.pt_total = pt;
         end, obj);

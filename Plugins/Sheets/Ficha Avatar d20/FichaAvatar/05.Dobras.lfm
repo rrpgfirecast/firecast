@@ -28,7 +28,8 @@
 		<layout left="0" top="0" width="335" height="600">
 			<rectangle align="client" color="#0000007F"/>
 			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclListaDasDobras:append();"/>
-			<label left="0" top="0" width="335" height="20" text="TECNICAS" horzTextAlign="center"/>
+			<label left="0" top="0" width="335" height="20" text="DOBRAS" horzTextAlign="center"/>
+			<edit left="300" top="0" width="30" height="20" field="capacidadeDobra"/>
 
 			<label left="5" top="25" width="150" height="20" text="TIPO" horzTextAlign="center"/>
 			<label left="155" top="25" width="50" height="20" text="NÍVEL" horzTextAlign="center"/>
@@ -57,16 +58,17 @@
 			</recordList>
 		</layout>
 			
-		<layout left="690" top="0" width="335" height="600">
+		<layout left="690" top="0" width="385" height="600">
 			<rectangle align="client" color="#0000007F"/>
 			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclListaDasTecnicasAvancadas:append();"/>
-			<label left="0" top="0" width="335" height="20" text="TECNICAS AVANÇADAS" horzTextAlign="center"/>
+			<label left="0" top="0" width="385" height="20" text="TECNICAS AVANÇADAS" horzTextAlign="center"/>
 
 			<label left="5" top="25" width="150" height="20" text="TIPO" horzTextAlign="center"/>
 			<label left="155" top="25" width="50" height="20" text="NÍVEL" horzTextAlign="center"/>
-			<label left="205" top="25" width="50" height="20" text="PT" horzTextAlign="center"/>
+			<label left="205" top="25" width="50" height="20" text="AJUSTE" horzTextAlign="center"/>
+			<label left="255" top="25" width="50" height="20" text="PT" horzTextAlign="center"/>
 
-			<recordList name="rclListaDasTecnicasAvancadas" field="campoDasTecnicasAvancadas" templateForm="frmTecnica" left="5" top="50" width="320" height="545" layout="vertical">
+			<recordList name="rclListaDasTecnicasAvancadas" field="campoDasTecnicasAvancadas" templateForm="frmAvancado" left="5" top="50" width="375" height="545" layout="vertical">
 				<event name="onCompare">
 		            return ((tonumber(nodeA.nome) or 0) - (tonumber(nodeB.nome) or 0));
 		        </event>

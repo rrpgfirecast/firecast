@@ -14310,9 +14310,18 @@ function newfrmAvatar()
     obj.label364:setTop(0);
     obj.label364:setWidth(335);
     obj.label364:setHeight(20);
-    obj.label364:setText("TECNICAS");
+    obj.label364:setText("DOBRAS");
     obj.label364:setHorzTextAlign("center");
     obj.label364:setName("label364");
+
+    obj.edit533 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit533:setParent(obj.layout51);
+    obj.edit533:setLeft(300);
+    obj.edit533:setTop(0);
+    obj.edit533:setWidth(30);
+    obj.edit533:setHeight(20);
+    obj.edit533:setField("capacidadeDobra");
+    obj.edit533:setName("edit533");
 
     obj.label365 = gui.fromHandle(_obj_newObject("label"));
     obj.label365:setParent(obj.layout51);
@@ -14433,7 +14442,7 @@ function newfrmAvatar()
     obj.layout53:setParent(obj.scrollBox6);
     obj.layout53:setLeft(690);
     obj.layout53:setTop(0);
-    obj.layout53:setWidth(335);
+    obj.layout53:setWidth(385);
     obj.layout53:setHeight(600);
     obj.layout53:setName("layout53");
 
@@ -14456,7 +14465,7 @@ function newfrmAvatar()
     obj.label372:setParent(obj.layout53);
     obj.label372:setLeft(0);
     obj.label372:setTop(0);
-    obj.label372:setWidth(335);
+    obj.label372:setWidth(385);
     obj.label372:setHeight(20);
     obj.label372:setText("TECNICAS AVANÇADAS");
     obj.label372:setHorzTextAlign("center");
@@ -14488,18 +14497,28 @@ function newfrmAvatar()
     obj.label375:setTop(25);
     obj.label375:setWidth(50);
     obj.label375:setHeight(20);
-    obj.label375:setText("PT");
+    obj.label375:setText("AJUSTE");
     obj.label375:setHorzTextAlign("center");
     obj.label375:setName("label375");
+
+    obj.label376 = gui.fromHandle(_obj_newObject("label"));
+    obj.label376:setParent(obj.layout53);
+    obj.label376:setLeft(255);
+    obj.label376:setTop(25);
+    obj.label376:setWidth(50);
+    obj.label376:setHeight(20);
+    obj.label376:setText("PT");
+    obj.label376:setHorzTextAlign("center");
+    obj.label376:setName("label376");
 
     obj.rclListaDasTecnicasAvancadas = gui.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDasTecnicasAvancadas:setParent(obj.layout53);
     obj.rclListaDasTecnicasAvancadas:setName("rclListaDasTecnicasAvancadas");
     obj.rclListaDasTecnicasAvancadas:setField("campoDasTecnicasAvancadas");
-    obj.rclListaDasTecnicasAvancadas:setTemplateForm("frmTecnica");
+    obj.rclListaDasTecnicasAvancadas:setTemplateForm("frmAvancado");
     obj.rclListaDasTecnicasAvancadas:setLeft(5);
     obj.rclListaDasTecnicasAvancadas:setTop(50);
-    obj.rclListaDasTecnicasAvancadas:setWidth(320);
+    obj.rclListaDasTecnicasAvancadas:setWidth(375);
     obj.rclListaDasTecnicasAvancadas:setHeight(545);
     obj.rclListaDasTecnicasAvancadas:setLayout("vertical");
 
@@ -14543,14 +14562,14 @@ function newfrmAvatar()
     obj.button88:setHeight(20);
     obj.button88:setName("button88");
 
-    obj.label376 = gui.fromHandle(_obj_newObject("label"));
-    obj.label376:setParent(obj.layout54);
-    obj.label376:setLeft(30);
-    obj.label376:setTop(5);
-    obj.label376:setWidth(435);
-    obj.label376:setHeight(20);
-    obj.label376:setText("ARMAS E ESCUDOS                                     Kg         $");
-    obj.label376:setName("label376");
+    obj.label377 = gui.fromHandle(_obj_newObject("label"));
+    obj.label377:setParent(obj.layout54);
+    obj.label377:setLeft(30);
+    obj.label377:setTop(5);
+    obj.label377:setWidth(435);
+    obj.label377:setHeight(20);
+    obj.label377:setText("ARMAS E ESCUDOS                                     Kg         $");
+    obj.label377:setName("label377");
 
     obj.rclListaDasArmas = gui.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDasArmas:setParent(obj.layout54);
@@ -14564,14 +14583,14 @@ function newfrmAvatar()
     obj.rclListaDasArmas:setLayout("vertical");
     obj.rclListaDasArmas:setMinQt(1);
 
-    obj.label377 = gui.fromHandle(_obj_newObject("label"));
-    obj.label377:setParent(obj.layout54);
-    obj.label377:setLeft(260);
-    obj.label377:setTop(305);
-    obj.label377:setWidth(50);
-    obj.label377:setHeight(20);
-    obj.label377:setText("Kg");
-    obj.label377:setName("label377");
+    obj.label378 = gui.fromHandle(_obj_newObject("label"));
+    obj.label378:setParent(obj.layout54);
+    obj.label378:setLeft(260);
+    obj.label378:setTop(305);
+    obj.label378:setWidth(50);
+    obj.label378:setHeight(20);
+    obj.label378:setText("Kg");
+    obj.label378:setName("label378");
 
     obj.rectangle117 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle117:setParent(obj.layout54);
@@ -14584,25 +14603,25 @@ function newfrmAvatar()
     obj.rectangle117:setStrokeSize(1);
     obj.rectangle117:setName("rectangle117");
 
-    obj.label378 = gui.fromHandle(_obj_newObject("label"));
-    obj.label378:setParent(obj.layout54);
-    obj.label378:setVertTextAlign("center");
-    obj.label378:setHorzTextAlign("center");
-    obj.label378:setLeft(280);
-    obj.label378:setTop(305);
-    obj.label378:setWidth(70);
-    obj.label378:setHeight(20);
-    obj.label378:setField("pesoArmas");
-    obj.label378:setName("label378");
-
     obj.label379 = gui.fromHandle(_obj_newObject("label"));
     obj.label379:setParent(obj.layout54);
-    obj.label379:setLeft(360);
+    obj.label379:setVertTextAlign("center");
+    obj.label379:setHorzTextAlign("center");
+    obj.label379:setLeft(280);
     obj.label379:setTop(305);
-    obj.label379:setWidth(50);
+    obj.label379:setWidth(70);
     obj.label379:setHeight(20);
-    obj.label379:setText("$");
+    obj.label379:setField("pesoArmas");
     obj.label379:setName("label379");
+
+    obj.label380 = gui.fromHandle(_obj_newObject("label"));
+    obj.label380:setParent(obj.layout54);
+    obj.label380:setLeft(360);
+    obj.label380:setTop(305);
+    obj.label380:setWidth(50);
+    obj.label380:setHeight(20);
+    obj.label380:setText("$");
+    obj.label380:setName("label380");
 
     obj.rectangle118 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle118:setParent(obj.layout54);
@@ -14615,16 +14634,16 @@ function newfrmAvatar()
     obj.rectangle118:setStrokeSize(1);
     obj.rectangle118:setName("rectangle118");
 
-    obj.label380 = gui.fromHandle(_obj_newObject("label"));
-    obj.label380:setParent(obj.layout54);
-    obj.label380:setVertTextAlign("center");
-    obj.label380:setHorzTextAlign("center");
-    obj.label380:setLeft(375);
-    obj.label380:setTop(305);
-    obj.label380:setWidth(91);
-    obj.label380:setHeight(20);
-    obj.label380:setField("precoArmas");
-    obj.label380:setName("label380");
+    obj.label381 = gui.fromHandle(_obj_newObject("label"));
+    obj.label381:setParent(obj.layout54);
+    obj.label381:setVertTextAlign("center");
+    obj.label381:setHorzTextAlign("center");
+    obj.label381:setLeft(375);
+    obj.label381:setTop(305);
+    obj.label381:setWidth(91);
+    obj.label381:setHeight(20);
+    obj.label381:setField("precoArmas");
+    obj.label381:setName("label381");
 
     obj.layout55 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout55:setParent(obj.scrollBox7);
@@ -14640,14 +14659,14 @@ function newfrmAvatar()
     obj.rectangle119:setColor("black");
     obj.rectangle119:setName("rectangle119");
 
-    obj.label381 = gui.fromHandle(_obj_newObject("label"));
-    obj.label381:setParent(obj.layout55);
-    obj.label381:setLeft(5);
-    obj.label381:setTop(1);
-    obj.label381:setWidth(200);
-    obj.label381:setHeight(20);
-    obj.label381:setText("MOCHILA");
-    obj.label381:setName("label381");
+    obj.label382 = gui.fromHandle(_obj_newObject("label"));
+    obj.label382:setParent(obj.layout55);
+    obj.label382:setLeft(5);
+    obj.label382:setTop(1);
+    obj.label382:setWidth(200);
+    obj.label382:setHeight(20);
+    obj.label382:setText("MOCHILA");
+    obj.label382:setName("label382");
 
     obj.textEditor8 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor8:setParent(obj.layout55);
@@ -14658,45 +14677,45 @@ function newfrmAvatar()
     obj.textEditor8:setField("mochila");
     obj.textEditor8:setName("textEditor8");
 
-    obj.label382 = gui.fromHandle(_obj_newObject("label"));
-    obj.label382:setParent(obj.layout55);
-    obj.label382:setLeft(280);
-    obj.label382:setTop(310);
-    obj.label382:setWidth(50);
-    obj.label382:setHeight(20);
-    obj.label382:setText("Kg");
-    obj.label382:setName("label382");
-
-    obj.edit533 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit533:setParent(obj.layout55);
-    obj.edit533:setVertTextAlign("center");
-    obj.edit533:setHorzTextAlign("center");
-    obj.edit533:setLeft(300);
-    obj.edit533:setTop(310);
-    obj.edit533:setWidth(70);
-    obj.edit533:setHeight(20);
-    obj.edit533:setField("pesoMochila");
-    obj.edit533:setName("edit533");
-
     obj.label383 = gui.fromHandle(_obj_newObject("label"));
     obj.label383:setParent(obj.layout55);
-    obj.label383:setLeft(380);
+    obj.label383:setLeft(280);
     obj.label383:setTop(310);
     obj.label383:setWidth(50);
     obj.label383:setHeight(20);
-    obj.label383:setText("$");
+    obj.label383:setText("Kg");
     obj.label383:setName("label383");
 
     obj.edit534 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit534:setParent(obj.layout55);
     obj.edit534:setVertTextAlign("center");
     obj.edit534:setHorzTextAlign("center");
-    obj.edit534:setLeft(395);
+    obj.edit534:setLeft(300);
     obj.edit534:setTop(310);
-    obj.edit534:setWidth(71);
+    obj.edit534:setWidth(70);
     obj.edit534:setHeight(20);
-    obj.edit534:setField("precoMochila");
+    obj.edit534:setField("pesoMochila");
     obj.edit534:setName("edit534");
+
+    obj.label384 = gui.fromHandle(_obj_newObject("label"));
+    obj.label384:setParent(obj.layout55);
+    obj.label384:setLeft(380);
+    obj.label384:setTop(310);
+    obj.label384:setWidth(50);
+    obj.label384:setHeight(20);
+    obj.label384:setText("$");
+    obj.label384:setName("label384");
+
+    obj.edit535 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit535:setParent(obj.layout55);
+    obj.edit535:setVertTextAlign("center");
+    obj.edit535:setHorzTextAlign("center");
+    obj.edit535:setLeft(395);
+    obj.edit535:setTop(310);
+    obj.edit535:setWidth(71);
+    obj.edit535:setHeight(20);
+    obj.edit535:setField("precoMochila");
+    obj.edit535:setName("edit535");
 
     obj.layout56 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout56:setParent(obj.scrollBox7);
@@ -14712,14 +14731,14 @@ function newfrmAvatar()
     obj.rectangle120:setColor("black");
     obj.rectangle120:setName("rectangle120");
 
-    obj.label384 = gui.fromHandle(_obj_newObject("label"));
-    obj.label384:setParent(obj.layout56);
-    obj.label384:setLeft(5);
-    obj.label384:setTop(1);
-    obj.label384:setWidth(150);
-    obj.label384:setHeight(20);
-    obj.label384:setText("PERMANENCIAS");
-    obj.label384:setName("label384");
+    obj.label385 = gui.fromHandle(_obj_newObject("label"));
+    obj.label385:setParent(obj.layout56);
+    obj.label385:setLeft(5);
+    obj.label385:setTop(1);
+    obj.label385:setWidth(150);
+    obj.label385:setHeight(20);
+    obj.label385:setText("PERMANENCIAS");
+    obj.label385:setName("label385");
 
     obj.textEditor9 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor9:setParent(obj.layout56);
@@ -14730,45 +14749,45 @@ function newfrmAvatar()
     obj.textEditor9:setField("permanencias");
     obj.textEditor9:setName("textEditor9");
 
-    obj.label385 = gui.fromHandle(_obj_newObject("label"));
-    obj.label385:setParent(obj.layout56);
-    obj.label385:setLeft(5);
-    obj.label385:setTop(195);
-    obj.label385:setWidth(50);
-    obj.label385:setHeight(20);
-    obj.label385:setText("Kg");
-    obj.label385:setName("label385");
-
-    obj.edit535 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit535:setParent(obj.layout56);
-    obj.edit535:setVertTextAlign("center");
-    obj.edit535:setHorzTextAlign("center");
-    obj.edit535:setLeft(25);
-    obj.edit535:setTop(195);
-    obj.edit535:setWidth(70);
-    obj.edit535:setHeight(20);
-    obj.edit535:setField("pesoPermanencias");
-    obj.edit535:setName("edit535");
-
     obj.label386 = gui.fromHandle(_obj_newObject("label"));
     obj.label386:setParent(obj.layout56);
-    obj.label386:setLeft(105);
+    obj.label386:setLeft(5);
     obj.label386:setTop(195);
     obj.label386:setWidth(50);
     obj.label386:setHeight(20);
-    obj.label386:setText("$");
+    obj.label386:setText("Kg");
     obj.label386:setName("label386");
 
     obj.edit536 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit536:setParent(obj.layout56);
     obj.edit536:setVertTextAlign("center");
     obj.edit536:setHorzTextAlign("center");
-    obj.edit536:setLeft(120);
+    obj.edit536:setLeft(25);
     obj.edit536:setTop(195);
     obj.edit536:setWidth(70);
     obj.edit536:setHeight(20);
-    obj.edit536:setField("precoPermanencias");
+    obj.edit536:setField("pesoPermanencias");
     obj.edit536:setName("edit536");
+
+    obj.label387 = gui.fromHandle(_obj_newObject("label"));
+    obj.label387:setParent(obj.layout56);
+    obj.label387:setLeft(105);
+    obj.label387:setTop(195);
+    obj.label387:setWidth(50);
+    obj.label387:setHeight(20);
+    obj.label387:setText("$");
+    obj.label387:setName("label387");
+
+    obj.edit537 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit537:setParent(obj.layout56);
+    obj.edit537:setVertTextAlign("center");
+    obj.edit537:setHorzTextAlign("center");
+    obj.edit537:setLeft(120);
+    obj.edit537:setTop(195);
+    obj.edit537:setWidth(70);
+    obj.edit537:setHeight(20);
+    obj.edit537:setField("precoPermanencias");
+    obj.edit537:setName("edit537");
 
     obj.layout57 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout57:setParent(obj.scrollBox7);
@@ -14784,14 +14803,14 @@ function newfrmAvatar()
     obj.rectangle121:setColor("black");
     obj.rectangle121:setName("rectangle121");
 
-    obj.label387 = gui.fromHandle(_obj_newObject("label"));
-    obj.label387:setParent(obj.layout57);
-    obj.label387:setLeft(5);
-    obj.label387:setTop(1);
-    obj.label387:setWidth(150);
-    obj.label387:setHeight(20);
-    obj.label387:setText("LIVRES");
-    obj.label387:setName("label387");
+    obj.label388 = gui.fromHandle(_obj_newObject("label"));
+    obj.label388:setParent(obj.layout57);
+    obj.label388:setLeft(5);
+    obj.label388:setTop(1);
+    obj.label388:setWidth(150);
+    obj.label388:setHeight(20);
+    obj.label388:setText("LIVRES");
+    obj.label388:setName("label388");
 
     obj.textEditor10 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor10:setParent(obj.layout57);
@@ -14802,45 +14821,45 @@ function newfrmAvatar()
     obj.textEditor10:setField("livres");
     obj.textEditor10:setName("textEditor10");
 
-    obj.label388 = gui.fromHandle(_obj_newObject("label"));
-    obj.label388:setParent(obj.layout57);
-    obj.label388:setLeft(5);
-    obj.label388:setTop(195);
-    obj.label388:setWidth(50);
-    obj.label388:setHeight(20);
-    obj.label388:setText("Kg");
-    obj.label388:setName("label388");
-
-    obj.edit537 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit537:setParent(obj.layout57);
-    obj.edit537:setVertTextAlign("center");
-    obj.edit537:setHorzTextAlign("center");
-    obj.edit537:setLeft(25);
-    obj.edit537:setTop(195);
-    obj.edit537:setWidth(70);
-    obj.edit537:setHeight(20);
-    obj.edit537:setField("pesoLivres");
-    obj.edit537:setName("edit537");
-
     obj.label389 = gui.fromHandle(_obj_newObject("label"));
     obj.label389:setParent(obj.layout57);
-    obj.label389:setLeft(105);
+    obj.label389:setLeft(5);
     obj.label389:setTop(195);
     obj.label389:setWidth(50);
     obj.label389:setHeight(20);
-    obj.label389:setText("$");
+    obj.label389:setText("Kg");
     obj.label389:setName("label389");
 
     obj.edit538 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit538:setParent(obj.layout57);
     obj.edit538:setVertTextAlign("center");
     obj.edit538:setHorzTextAlign("center");
-    obj.edit538:setLeft(120);
+    obj.edit538:setLeft(25);
     obj.edit538:setTop(195);
     obj.edit538:setWidth(70);
     obj.edit538:setHeight(20);
-    obj.edit538:setField("precoLivres");
+    obj.edit538:setField("pesoLivres");
     obj.edit538:setName("edit538");
+
+    obj.label390 = gui.fromHandle(_obj_newObject("label"));
+    obj.label390:setParent(obj.layout57);
+    obj.label390:setLeft(105);
+    obj.label390:setTop(195);
+    obj.label390:setWidth(50);
+    obj.label390:setHeight(20);
+    obj.label390:setText("$");
+    obj.label390:setName("label390");
+
+    obj.edit539 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit539:setParent(obj.layout57);
+    obj.edit539:setVertTextAlign("center");
+    obj.edit539:setHorzTextAlign("center");
+    obj.edit539:setLeft(120);
+    obj.edit539:setTop(195);
+    obj.edit539:setWidth(70);
+    obj.edit539:setHeight(20);
+    obj.edit539:setField("precoLivres");
+    obj.edit539:setName("edit539");
 
     obj.layout58 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout58:setParent(obj.scrollBox7);
@@ -14856,14 +14875,14 @@ function newfrmAvatar()
     obj.rectangle122:setColor("black");
     obj.rectangle122:setName("rectangle122");
 
-    obj.label390 = gui.fromHandle(_obj_newObject("label"));
-    obj.label390:setParent(obj.layout58);
-    obj.label390:setLeft(5);
-    obj.label390:setTop(1);
-    obj.label390:setWidth(150);
-    obj.label390:setHeight(20);
-    obj.label390:setText("OUTROS");
-    obj.label390:setName("label390");
+    obj.label391 = gui.fromHandle(_obj_newObject("label"));
+    obj.label391:setParent(obj.layout58);
+    obj.label391:setLeft(5);
+    obj.label391:setTop(1);
+    obj.label391:setWidth(150);
+    obj.label391:setHeight(20);
+    obj.label391:setText("OUTROS");
+    obj.label391:setName("label391");
 
     obj.textEditor11 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor11:setParent(obj.layout58);
@@ -14874,45 +14893,45 @@ function newfrmAvatar()
     obj.textEditor11:setField("outros");
     obj.textEditor11:setName("textEditor11");
 
-    obj.label391 = gui.fromHandle(_obj_newObject("label"));
-    obj.label391:setParent(obj.layout58);
-    obj.label391:setLeft(5);
-    obj.label391:setTop(195);
-    obj.label391:setWidth(50);
-    obj.label391:setHeight(20);
-    obj.label391:setText("Kg");
-    obj.label391:setName("label391");
-
-    obj.edit539 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit539:setParent(obj.layout58);
-    obj.edit539:setVertTextAlign("center");
-    obj.edit539:setHorzTextAlign("center");
-    obj.edit539:setLeft(25);
-    obj.edit539:setTop(195);
-    obj.edit539:setWidth(70);
-    obj.edit539:setHeight(20);
-    obj.edit539:setField("pesoOutros");
-    obj.edit539:setName("edit539");
-
     obj.label392 = gui.fromHandle(_obj_newObject("label"));
     obj.label392:setParent(obj.layout58);
-    obj.label392:setLeft(105);
+    obj.label392:setLeft(5);
     obj.label392:setTop(195);
     obj.label392:setWidth(50);
     obj.label392:setHeight(20);
-    obj.label392:setText("$");
+    obj.label392:setText("Kg");
     obj.label392:setName("label392");
 
     obj.edit540 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit540:setParent(obj.layout58);
     obj.edit540:setVertTextAlign("center");
     obj.edit540:setHorzTextAlign("center");
-    obj.edit540:setLeft(120);
+    obj.edit540:setLeft(25);
     obj.edit540:setTop(195);
     obj.edit540:setWidth(70);
     obj.edit540:setHeight(20);
-    obj.edit540:setField("precoOutros");
+    obj.edit540:setField("pesoOutros");
     obj.edit540:setName("edit540");
+
+    obj.label393 = gui.fromHandle(_obj_newObject("label"));
+    obj.label393:setParent(obj.layout58);
+    obj.label393:setLeft(105);
+    obj.label393:setTop(195);
+    obj.label393:setWidth(50);
+    obj.label393:setHeight(20);
+    obj.label393:setText("$");
+    obj.label393:setName("label393");
+
+    obj.edit541 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit541:setParent(obj.layout58);
+    obj.edit541:setVertTextAlign("center");
+    obj.edit541:setHorzTextAlign("center");
+    obj.edit541:setLeft(120);
+    obj.edit541:setTop(195);
+    obj.edit541:setWidth(70);
+    obj.edit541:setHeight(20);
+    obj.edit541:setField("precoOutros");
+    obj.edit541:setName("edit541");
 
     obj.layout59 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout59:setParent(obj.scrollBox7);
@@ -14928,14 +14947,14 @@ function newfrmAvatar()
     obj.rectangle123:setColor("black");
     obj.rectangle123:setName("rectangle123");
 
-    obj.label393 = gui.fromHandle(_obj_newObject("label"));
-    obj.label393:setParent(obj.layout59);
-    obj.label393:setLeft(5);
-    obj.label393:setTop(1);
-    obj.label393:setWidth(150);
-    obj.label393:setHeight(20);
-    obj.label393:setText("MUNIÇÕES");
-    obj.label393:setName("label393");
+    obj.label394 = gui.fromHandle(_obj_newObject("label"));
+    obj.label394:setParent(obj.layout59);
+    obj.label394:setLeft(5);
+    obj.label394:setTop(1);
+    obj.label394:setWidth(150);
+    obj.label394:setHeight(20);
+    obj.label394:setText("MUNIÇÕES");
+    obj.label394:setName("label394");
 
     obj.textEditor12 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor12:setParent(obj.layout59);
@@ -14946,45 +14965,45 @@ function newfrmAvatar()
     obj.textEditor12:setField("municoes");
     obj.textEditor12:setName("textEditor12");
 
-    obj.label394 = gui.fromHandle(_obj_newObject("label"));
-    obj.label394:setParent(obj.layout59);
-    obj.label394:setLeft(5);
-    obj.label394:setTop(195);
-    obj.label394:setWidth(50);
-    obj.label394:setHeight(20);
-    obj.label394:setText("Kg");
-    obj.label394:setName("label394");
-
-    obj.edit541 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit541:setParent(obj.layout59);
-    obj.edit541:setVertTextAlign("center");
-    obj.edit541:setHorzTextAlign("center");
-    obj.edit541:setLeft(25);
-    obj.edit541:setTop(195);
-    obj.edit541:setWidth(70);
-    obj.edit541:setHeight(20);
-    obj.edit541:setField("pesoMunicoes");
-    obj.edit541:setName("edit541");
-
     obj.label395 = gui.fromHandle(_obj_newObject("label"));
     obj.label395:setParent(obj.layout59);
-    obj.label395:setLeft(105);
+    obj.label395:setLeft(5);
     obj.label395:setTop(195);
     obj.label395:setWidth(50);
     obj.label395:setHeight(20);
-    obj.label395:setText("$");
+    obj.label395:setText("Kg");
     obj.label395:setName("label395");
 
     obj.edit542 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit542:setParent(obj.layout59);
     obj.edit542:setVertTextAlign("center");
     obj.edit542:setHorzTextAlign("center");
-    obj.edit542:setLeft(120);
+    obj.edit542:setLeft(25);
     obj.edit542:setTop(195);
     obj.edit542:setWidth(70);
     obj.edit542:setHeight(20);
-    obj.edit542:setField("precoMunicoes");
+    obj.edit542:setField("pesoMunicoes");
     obj.edit542:setName("edit542");
+
+    obj.label396 = gui.fromHandle(_obj_newObject("label"));
+    obj.label396:setParent(obj.layout59);
+    obj.label396:setLeft(105);
+    obj.label396:setTop(195);
+    obj.label396:setWidth(50);
+    obj.label396:setHeight(20);
+    obj.label396:setText("$");
+    obj.label396:setName("label396");
+
+    obj.edit543 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit543:setParent(obj.layout59);
+    obj.edit543:setVertTextAlign("center");
+    obj.edit543:setHorzTextAlign("center");
+    obj.edit543:setLeft(120);
+    obj.edit543:setTop(195);
+    obj.edit543:setWidth(70);
+    obj.edit543:setHeight(20);
+    obj.edit543:setField("precoMunicoes");
+    obj.edit543:setName("edit543");
 
     obj.layout60 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout60:setParent(obj.scrollBox7);
@@ -15000,14 +15019,14 @@ function newfrmAvatar()
     obj.rectangle124:setColor("black");
     obj.rectangle124:setName("rectangle124");
 
-    obj.label396 = gui.fromHandle(_obj_newObject("label"));
-    obj.label396:setParent(obj.layout60);
-    obj.label396:setLeft(5);
-    obj.label396:setTop(1);
-    obj.label396:setWidth(150);
-    obj.label396:setHeight(20);
-    obj.label396:setText("BOLSOS");
-    obj.label396:setName("label396");
+    obj.label397 = gui.fromHandle(_obj_newObject("label"));
+    obj.label397:setParent(obj.layout60);
+    obj.label397:setLeft(5);
+    obj.label397:setTop(1);
+    obj.label397:setWidth(150);
+    obj.label397:setHeight(20);
+    obj.label397:setText("BOLSOS");
+    obj.label397:setName("label397");
 
     obj.textEditor13 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor13:setParent(obj.layout60);
@@ -15018,45 +15037,45 @@ function newfrmAvatar()
     obj.textEditor13:setField("bolsos");
     obj.textEditor13:setName("textEditor13");
 
-    obj.label397 = gui.fromHandle(_obj_newObject("label"));
-    obj.label397:setParent(obj.layout60);
-    obj.label397:setLeft(5);
-    obj.label397:setTop(195);
-    obj.label397:setWidth(50);
-    obj.label397:setHeight(20);
-    obj.label397:setText("Kg");
-    obj.label397:setName("label397");
-
-    obj.edit543 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit543:setParent(obj.layout60);
-    obj.edit543:setVertTextAlign("center");
-    obj.edit543:setHorzTextAlign("center");
-    obj.edit543:setLeft(25);
-    obj.edit543:setTop(195);
-    obj.edit543:setWidth(70);
-    obj.edit543:setHeight(20);
-    obj.edit543:setField("pesoBolsos");
-    obj.edit543:setName("edit543");
-
     obj.label398 = gui.fromHandle(_obj_newObject("label"));
     obj.label398:setParent(obj.layout60);
-    obj.label398:setLeft(105);
+    obj.label398:setLeft(5);
     obj.label398:setTop(195);
     obj.label398:setWidth(50);
     obj.label398:setHeight(20);
-    obj.label398:setText("$");
+    obj.label398:setText("Kg");
     obj.label398:setName("label398");
 
     obj.edit544 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit544:setParent(obj.layout60);
     obj.edit544:setVertTextAlign("center");
     obj.edit544:setHorzTextAlign("center");
-    obj.edit544:setLeft(120);
+    obj.edit544:setLeft(25);
     obj.edit544:setTop(195);
     obj.edit544:setWidth(70);
     obj.edit544:setHeight(20);
-    obj.edit544:setField("precoBolsos");
+    obj.edit544:setField("pesoBolsos");
     obj.edit544:setName("edit544");
+
+    obj.label399 = gui.fromHandle(_obj_newObject("label"));
+    obj.label399:setParent(obj.layout60);
+    obj.label399:setLeft(105);
+    obj.label399:setTop(195);
+    obj.label399:setWidth(50);
+    obj.label399:setHeight(20);
+    obj.label399:setText("$");
+    obj.label399:setName("label399");
+
+    obj.edit545 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit545:setParent(obj.layout60);
+    obj.edit545:setVertTextAlign("center");
+    obj.edit545:setHorzTextAlign("center");
+    obj.edit545:setLeft(120);
+    obj.edit545:setTop(195);
+    obj.edit545:setWidth(70);
+    obj.edit545:setHeight(20);
+    obj.edit545:setField("precoBolsos");
+    obj.edit545:setName("edit545");
 
     obj.layout61 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout61:setParent(obj.scrollBox7);
@@ -15072,14 +15091,14 @@ function newfrmAvatar()
     obj.rectangle125:setColor("black");
     obj.rectangle125:setName("rectangle125");
 
-    obj.label399 = gui.fromHandle(_obj_newObject("label"));
-    obj.label399:setParent(obj.layout61);
-    obj.label399:setLeft(5);
-    obj.label399:setTop(1);
-    obj.label399:setWidth(150);
-    obj.label399:setHeight(20);
-    obj.label399:setText("IMOVEIS");
-    obj.label399:setName("label399");
+    obj.label400 = gui.fromHandle(_obj_newObject("label"));
+    obj.label400:setParent(obj.layout61);
+    obj.label400:setLeft(5);
+    obj.label400:setTop(1);
+    obj.label400:setWidth(150);
+    obj.label400:setHeight(20);
+    obj.label400:setText("IMOVEIS");
+    obj.label400:setName("label400");
 
     obj.textEditor14 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor14:setParent(obj.layout61);
@@ -15090,45 +15109,45 @@ function newfrmAvatar()
     obj.textEditor14:setField("moveis");
     obj.textEditor14:setName("textEditor14");
 
-    obj.label400 = gui.fromHandle(_obj_newObject("label"));
-    obj.label400:setParent(obj.layout61);
-    obj.label400:setLeft(5);
-    obj.label400:setTop(195);
-    obj.label400:setWidth(50);
-    obj.label400:setHeight(20);
-    obj.label400:setText("Kg");
-    obj.label400:setName("label400");
-
-    obj.edit545 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit545:setParent(obj.layout61);
-    obj.edit545:setVertTextAlign("center");
-    obj.edit545:setHorzTextAlign("center");
-    obj.edit545:setLeft(25);
-    obj.edit545:setTop(195);
-    obj.edit545:setWidth(70);
-    obj.edit545:setHeight(20);
-    obj.edit545:setField("pesoImoveis");
-    obj.edit545:setName("edit545");
-
     obj.label401 = gui.fromHandle(_obj_newObject("label"));
     obj.label401:setParent(obj.layout61);
-    obj.label401:setLeft(105);
+    obj.label401:setLeft(5);
     obj.label401:setTop(195);
     obj.label401:setWidth(50);
     obj.label401:setHeight(20);
-    obj.label401:setText("$");
+    obj.label401:setText("Kg");
     obj.label401:setName("label401");
 
     obj.edit546 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit546:setParent(obj.layout61);
     obj.edit546:setVertTextAlign("center");
     obj.edit546:setHorzTextAlign("center");
-    obj.edit546:setLeft(120);
+    obj.edit546:setLeft(25);
     obj.edit546:setTop(195);
     obj.edit546:setWidth(70);
     obj.edit546:setHeight(20);
-    obj.edit546:setField("precoImoveis");
+    obj.edit546:setField("pesoImoveis");
     obj.edit546:setName("edit546");
+
+    obj.label402 = gui.fromHandle(_obj_newObject("label"));
+    obj.label402:setParent(obj.layout61);
+    obj.label402:setLeft(105);
+    obj.label402:setTop(195);
+    obj.label402:setWidth(50);
+    obj.label402:setHeight(20);
+    obj.label402:setText("$");
+    obj.label402:setName("label402");
+
+    obj.edit547 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit547:setParent(obj.layout61);
+    obj.edit547:setVertTextAlign("center");
+    obj.edit547:setHorzTextAlign("center");
+    obj.edit547:setLeft(120);
+    obj.edit547:setTop(195);
+    obj.edit547:setWidth(70);
+    obj.edit547:setHeight(20);
+    obj.edit547:setField("precoImoveis");
+    obj.edit547:setName("edit547");
 
     obj.layout62 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout62:setParent(obj.scrollBox7);
@@ -15144,14 +15163,14 @@ function newfrmAvatar()
     obj.rectangle126:setColor("black");
     obj.rectangle126:setName("rectangle126");
 
-    obj.label402 = gui.fromHandle(_obj_newObject("label"));
-    obj.label402:setParent(obj.layout62);
-    obj.label402:setLeft(5);
-    obj.label402:setTop(1);
-    obj.label402:setWidth(200);
-    obj.label402:setHeight(20);
-    obj.label402:setText("DINHEIRO");
-    obj.label402:setName("label402");
+    obj.label403 = gui.fromHandle(_obj_newObject("label"));
+    obj.label403:setParent(obj.layout62);
+    obj.label403:setLeft(5);
+    obj.label403:setTop(1);
+    obj.label403:setWidth(200);
+    obj.label403:setHeight(20);
+    obj.label403:setText("DINHEIRO");
+    obj.label403:setName("label403");
 
     obj.textEditor15 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor15:setParent(obj.layout62);
@@ -15162,33 +15181,33 @@ function newfrmAvatar()
     obj.textEditor15:setField("dinheiro");
     obj.textEditor15:setName("textEditor15");
 
-    obj.label403 = gui.fromHandle(_obj_newObject("label"));
-    obj.label403:setParent(obj.layout62);
-    obj.label403:setLeft(10);
-    obj.label403:setTop(110);
-    obj.label403:setWidth(50);
-    obj.label403:setHeight(20);
-    obj.label403:setText("TOTAL");
-    obj.label403:setName("label403");
-
-    obj.edit547 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit547:setParent(obj.layout62);
-    obj.edit547:setField("dinheiroTotal");
-    obj.edit547:setLeft(65);
-    obj.edit547:setTop(110);
-    obj.edit547:setWidth(85);
-    obj.edit547:setHeight(20);
-    obj.edit547:setFontSize(11);
-    obj.edit547:setName("edit547");
-
     obj.label404 = gui.fromHandle(_obj_newObject("label"));
     obj.label404:setParent(obj.layout62);
     obj.label404:setLeft(10);
-    obj.label404:setTop(135);
+    obj.label404:setTop(110);
     obj.label404:setWidth(50);
     obj.label404:setHeight(20);
-    obj.label404:setText("GASTOS");
+    obj.label404:setText("TOTAL");
     obj.label404:setName("label404");
+
+    obj.edit548 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit548:setParent(obj.layout62);
+    obj.edit548:setField("dinheiroTotal");
+    obj.edit548:setLeft(65);
+    obj.edit548:setTop(110);
+    obj.edit548:setWidth(85);
+    obj.edit548:setHeight(20);
+    obj.edit548:setFontSize(11);
+    obj.edit548:setName("edit548");
+
+    obj.label405 = gui.fromHandle(_obj_newObject("label"));
+    obj.label405:setParent(obj.layout62);
+    obj.label405:setLeft(10);
+    obj.label405:setTop(135);
+    obj.label405:setWidth(50);
+    obj.label405:setHeight(20);
+    obj.label405:setText("GASTOS");
+    obj.label405:setName("label405");
 
     obj.rectangle127 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle127:setParent(obj.layout62);
@@ -15201,27 +15220,27 @@ function newfrmAvatar()
     obj.rectangle127:setStrokeSize(1);
     obj.rectangle127:setName("rectangle127");
 
-    obj.label405 = gui.fromHandle(_obj_newObject("label"));
-    obj.label405:setParent(obj.layout62);
-    obj.label405:setField("gastos");
-    obj.label405:setText("0");
-    obj.label405:setLeft(65);
-    obj.label405:setTop(135);
-    obj.label405:setWidth(85);
-    obj.label405:setHeight(20);
-    obj.label405:setHorzTextAlign("center");
-    obj.label405:setFontSize(11);
-    obj.label405:setName("label405");
-
     obj.label406 = gui.fromHandle(_obj_newObject("label"));
     obj.label406:setParent(obj.layout62);
-    obj.label406:setLeft(10);
-    obj.label406:setTop(160);
-    obj.label406:setWidth(50);
+    obj.label406:setField("gastos");
+    obj.label406:setText("0");
+    obj.label406:setLeft(65);
+    obj.label406:setTop(135);
+    obj.label406:setWidth(85);
     obj.label406:setHeight(20);
-    obj.label406:setText("RESTANTE");
-    obj.label406:setFontSize(10);
+    obj.label406:setHorzTextAlign("center");
+    obj.label406:setFontSize(11);
     obj.label406:setName("label406");
+
+    obj.label407 = gui.fromHandle(_obj_newObject("label"));
+    obj.label407:setParent(obj.layout62);
+    obj.label407:setLeft(10);
+    obj.label407:setTop(160);
+    obj.label407:setWidth(50);
+    obj.label407:setHeight(20);
+    obj.label407:setText("RESTANTE");
+    obj.label407:setFontSize(10);
+    obj.label407:setName("label407");
 
     obj.rectangle128 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle128:setParent(obj.layout62);
@@ -15234,17 +15253,17 @@ function newfrmAvatar()
     obj.rectangle128:setStrokeSize(1);
     obj.rectangle128:setName("rectangle128");
 
-    obj.label407 = gui.fromHandle(_obj_newObject("label"));
-    obj.label407:setParent(obj.layout62);
-    obj.label407:setField("dinheiroRestante");
-    obj.label407:setText("0");
-    obj.label407:setLeft(65);
-    obj.label407:setTop(160);
-    obj.label407:setWidth(85);
-    obj.label407:setHeight(20);
-    obj.label407:setHorzTextAlign("center");
-    obj.label407:setFontSize(11);
-    obj.label407:setName("label407");
+    obj.label408 = gui.fromHandle(_obj_newObject("label"));
+    obj.label408:setParent(obj.layout62);
+    obj.label408:setField("dinheiroRestante");
+    obj.label408:setText("0");
+    obj.label408:setLeft(65);
+    obj.label408:setTop(160);
+    obj.label408:setWidth(85);
+    obj.label408:setHeight(20);
+    obj.label408:setHorzTextAlign("center");
+    obj.label408:setFontSize(11);
+    obj.label408:setName("label408");
 
     obj.dataLink47 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink47:setParent(obj.scrollBox7);
@@ -15265,62 +15284,62 @@ function newfrmAvatar()
     obj.rectangle129:setColor("black");
     obj.rectangle129:setName("rectangle129");
 
-    obj.label408 = gui.fromHandle(_obj_newObject("label"));
-    obj.label408:setParent(obj.layout63);
-    obj.label408:setLeft(5);
-    obj.label408:setTop(1);
-    obj.label408:setWidth(200);
-    obj.label408:setHeight(20);
-    obj.label408:setText("ARMADURA");
-    obj.label408:setName("label408");
-
-    obj.edit548 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit548:setParent(obj.layout63);
-    obj.edit548:setVertTextAlign("center");
-    obj.edit548:setLeft(5);
-    obj.edit548:setTop(20);
-    obj.edit548:setWidth(240);
-    obj.edit548:setHeight(25);
-    obj.edit548:setField("equipamentoCorpo");
-    obj.edit548:setName("edit548");
-
     obj.label409 = gui.fromHandle(_obj_newObject("label"));
     obj.label409:setParent(obj.layout63);
     obj.label409:setLeft(5);
-    obj.label409:setTop(50);
-    obj.label409:setWidth(50);
+    obj.label409:setTop(1);
+    obj.label409:setWidth(200);
     obj.label409:setHeight(20);
-    obj.label409:setText("CA");
+    obj.label409:setText("ARMADURA");
     obj.label409:setName("label409");
 
     obj.edit549 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit549:setParent(obj.layout63);
     obj.edit549:setVertTextAlign("center");
-    obj.edit549:setLeft(25);
-    obj.edit549:setTop(50);
-    obj.edit549:setWidth(40);
-    obj.edit549:setHeight(20);
-    obj.edit549:setField("equipamentoCorpoCA");
+    obj.edit549:setLeft(5);
+    obj.edit549:setTop(20);
+    obj.edit549:setWidth(240);
+    obj.edit549:setHeight(25);
+    obj.edit549:setField("equipamentoCorpo");
     obj.edit549:setName("edit549");
+
+    obj.label410 = gui.fromHandle(_obj_newObject("label"));
+    obj.label410:setParent(obj.layout63);
+    obj.label410:setLeft(5);
+    obj.label410:setTop(50);
+    obj.label410:setWidth(50);
+    obj.label410:setHeight(20);
+    obj.label410:setText("CA");
+    obj.label410:setName("label410");
 
     obj.edit550 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit550:setParent(obj.layout63);
     obj.edit550:setVertTextAlign("center");
-    obj.edit550:setLeft(65);
+    obj.edit550:setLeft(25);
     obj.edit550:setTop(50);
     obj.edit550:setWidth(40);
     obj.edit550:setHeight(20);
-    obj.edit550:setField("equipamentoCorpoCAmelhoria");
+    obj.edit550:setField("equipamentoCorpoCA");
     obj.edit550:setName("edit550");
 
-    obj.label410 = gui.fromHandle(_obj_newObject("label"));
-    obj.label410:setParent(obj.layout63);
-    obj.label410:setLeft(110);
-    obj.label410:setTop(50);
-    obj.label410:setWidth(50);
-    obj.label410:setHeight(20);
-    obj.label410:setText("CAT");
-    obj.label410:setName("label410");
+    obj.edit551 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit551:setParent(obj.layout63);
+    obj.edit551:setVertTextAlign("center");
+    obj.edit551:setLeft(65);
+    obj.edit551:setTop(50);
+    obj.edit551:setWidth(40);
+    obj.edit551:setHeight(20);
+    obj.edit551:setField("equipamentoCorpoCAmelhoria");
+    obj.edit551:setName("edit551");
+
+    obj.label411 = gui.fromHandle(_obj_newObject("label"));
+    obj.label411:setParent(obj.layout63);
+    obj.label411:setLeft(110);
+    obj.label411:setTop(50);
+    obj.label411:setWidth(50);
+    obj.label411:setHeight(20);
+    obj.label411:setText("CAT");
+    obj.label411:setName("label411");
 
     obj.comboBox5 = gui.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox5:setParent(obj.layout63);
@@ -15333,102 +15352,102 @@ function newfrmAvatar()
     obj.comboBox5:setFontColor("white");
     obj.comboBox5:setName("comboBox5");
 
-    obj.label411 = gui.fromHandle(_obj_newObject("label"));
-    obj.label411:setParent(obj.layout63);
-    obj.label411:setLeft(10);
-    obj.label411:setTop(75);
-    obj.label411:setWidth(50);
-    obj.label411:setHeight(20);
-    obj.label411:setText("DES");
-    obj.label411:setName("label411");
-
-    obj.edit551 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit551:setParent(obj.layout63);
-    obj.edit551:setVertTextAlign("center");
-    obj.edit551:setLeft(45);
-    obj.edit551:setTop(75);
-    obj.edit551:setWidth(40);
-    obj.edit551:setHeight(20);
-    obj.edit551:setField("equipamentoCorpoDesMax");
-    obj.edit551:setName("edit551");
-
     obj.label412 = gui.fromHandle(_obj_newObject("label"));
     obj.label412:setParent(obj.layout63);
-    obj.label412:setLeft(90);
+    obj.label412:setLeft(10);
     obj.label412:setTop(75);
     obj.label412:setWidth(50);
     obj.label412:setHeight(20);
-    obj.label412:setText("PEN");
+    obj.label412:setText("DES");
     obj.label412:setName("label412");
 
     obj.edit552 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit552:setParent(obj.layout63);
     obj.edit552:setVertTextAlign("center");
-    obj.edit552:setLeft(125);
+    obj.edit552:setLeft(45);
     obj.edit552:setTop(75);
     obj.edit552:setWidth(40);
     obj.edit552:setHeight(20);
-    obj.edit552:setField("equipamentoCorpoPen");
+    obj.edit552:setField("equipamentoCorpoDesMax");
     obj.edit552:setName("edit552");
 
     obj.label413 = gui.fromHandle(_obj_newObject("label"));
     obj.label413:setParent(obj.layout63);
-    obj.label413:setLeft(170);
+    obj.label413:setLeft(90);
     obj.label413:setTop(75);
     obj.label413:setWidth(50);
     obj.label413:setHeight(20);
-    obj.label413:setText("Falha");
-    obj.label413:setFontSize(13);
+    obj.label413:setText("PEN");
     obj.label413:setName("label413");
 
     obj.edit553 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit553:setParent(obj.layout63);
     obj.edit553:setVertTextAlign("center");
-    obj.edit553:setLeft(205);
+    obj.edit553:setLeft(125);
     obj.edit553:setTop(75);
     obj.edit553:setWidth(40);
     obj.edit553:setHeight(20);
-    obj.edit553:setField("equipamentoCorpoFalha");
+    obj.edit553:setField("equipamentoCorpoPen");
     obj.edit553:setName("edit553");
 
     obj.label414 = gui.fromHandle(_obj_newObject("label"));
     obj.label414:setParent(obj.layout63);
-    obj.label414:setLeft(10);
-    obj.label414:setTop(100);
+    obj.label414:setLeft(170);
+    obj.label414:setTop(75);
     obj.label414:setWidth(50);
     obj.label414:setHeight(20);
-    obj.label414:setText("Desl");
+    obj.label414:setText("Falha");
+    obj.label414:setFontSize(13);
     obj.label414:setName("label414");
 
     obj.edit554 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit554:setParent(obj.layout63);
     obj.edit554:setVertTextAlign("center");
-    obj.edit554:setLeft(45);
-    obj.edit554:setTop(100);
+    obj.edit554:setLeft(205);
+    obj.edit554:setTop(75);
     obj.edit554:setWidth(40);
     obj.edit554:setHeight(20);
-    obj.edit554:setField("equipamentoCorpoDesl");
+    obj.edit554:setField("equipamentoCorpoFalha");
     obj.edit554:setName("edit554");
 
     obj.label415 = gui.fromHandle(_obj_newObject("label"));
     obj.label415:setParent(obj.layout63);
-    obj.label415:setLeft(170);
+    obj.label415:setLeft(10);
     obj.label415:setTop(100);
     obj.label415:setWidth(50);
     obj.label415:setHeight(20);
-    obj.label415:setText("Correr");
-    obj.label415:setFontSize(12);
+    obj.label415:setText("Desl");
     obj.label415:setName("label415");
 
     obj.edit555 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit555:setParent(obj.layout63);
     obj.edit555:setVertTextAlign("center");
-    obj.edit555:setLeft(205);
+    obj.edit555:setLeft(45);
     obj.edit555:setTop(100);
     obj.edit555:setWidth(40);
     obj.edit555:setHeight(20);
-    obj.edit555:setField("equipamentoCorpoCorrer");
+    obj.edit555:setField("equipamentoCorpoDesl");
     obj.edit555:setName("edit555");
+
+    obj.label416 = gui.fromHandle(_obj_newObject("label"));
+    obj.label416:setParent(obj.layout63);
+    obj.label416:setLeft(170);
+    obj.label416:setTop(100);
+    obj.label416:setWidth(50);
+    obj.label416:setHeight(20);
+    obj.label416:setText("Correr");
+    obj.label416:setFontSize(12);
+    obj.label416:setName("label416");
+
+    obj.edit556 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit556:setParent(obj.layout63);
+    obj.edit556:setVertTextAlign("center");
+    obj.edit556:setLeft(205);
+    obj.edit556:setTop(100);
+    obj.edit556:setWidth(40);
+    obj.edit556:setHeight(20);
+    obj.edit556:setField("equipamentoCorpoCorrer");
+    obj.edit556:setName("edit556");
 
     obj.textEditor16 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor16:setParent(obj.layout63);
@@ -15439,45 +15458,45 @@ function newfrmAvatar()
     obj.textEditor16:setField("descricaoCorpo");
     obj.textEditor16:setName("textEditor16");
 
-    obj.label416 = gui.fromHandle(_obj_newObject("label"));
-    obj.label416:setParent(obj.layout63);
-    obj.label416:setLeft(70);
-    obj.label416:setTop(193);
-    obj.label416:setWidth(50);
-    obj.label416:setHeight(20);
-    obj.label416:setText("Kg");
-    obj.label416:setName("label416");
-
-    obj.edit556 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit556:setParent(obj.layout63);
-    obj.edit556:setHorzTextAlign("center");
-    obj.edit556:setVertTextAlign("center");
-    obj.edit556:setLeft(90);
-    obj.edit556:setTop(190);
-    obj.edit556:setWidth(50);
-    obj.edit556:setHeight(25);
-    obj.edit556:setField("pesoCorpo");
-    obj.edit556:setName("edit556");
-
     obj.label417 = gui.fromHandle(_obj_newObject("label"));
     obj.label417:setParent(obj.layout63);
-    obj.label417:setLeft(147);
+    obj.label417:setLeft(70);
     obj.label417:setTop(193);
     obj.label417:setWidth(50);
     obj.label417:setHeight(20);
-    obj.label417:setText("$");
+    obj.label417:setText("Kg");
     obj.label417:setName("label417");
 
     obj.edit557 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit557:setParent(obj.layout63);
     obj.edit557:setHorzTextAlign("center");
     obj.edit557:setVertTextAlign("center");
-    obj.edit557:setLeft(160);
+    obj.edit557:setLeft(90);
     obj.edit557:setTop(190);
-    obj.edit557:setWidth(84);
+    obj.edit557:setWidth(50);
     obj.edit557:setHeight(25);
-    obj.edit557:setField("precoCorpo");
+    obj.edit557:setField("pesoCorpo");
     obj.edit557:setName("edit557");
+
+    obj.label418 = gui.fromHandle(_obj_newObject("label"));
+    obj.label418:setParent(obj.layout63);
+    obj.label418:setLeft(147);
+    obj.label418:setTop(193);
+    obj.label418:setWidth(50);
+    obj.label418:setHeight(20);
+    obj.label418:setText("$");
+    obj.label418:setName("label418");
+
+    obj.edit558 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit558:setParent(obj.layout63);
+    obj.edit558:setHorzTextAlign("center");
+    obj.edit558:setVertTextAlign("center");
+    obj.edit558:setLeft(160);
+    obj.edit558:setTop(190);
+    obj.edit558:setWidth(84);
+    obj.edit558:setHeight(25);
+    obj.edit558:setField("precoCorpo");
+    obj.edit558:setName("edit558");
 
     obj.layout64 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout64:setParent(obj.scrollBox7);
@@ -15493,23 +15512,23 @@ function newfrmAvatar()
     obj.rectangle130:setColor("black");
     obj.rectangle130:setName("rectangle130");
 
-    obj.label418 = gui.fromHandle(_obj_newObject("label"));
-    obj.label418:setParent(obj.layout64);
-    obj.label418:setLeft(5);
-    obj.label418:setTop(1);
-    obj.label418:setWidth(150);
-    obj.label418:setHeight(20);
-    obj.label418:setText("CARGA");
-    obj.label418:setName("label418");
-
     obj.label419 = gui.fromHandle(_obj_newObject("label"));
     obj.label419:setParent(obj.layout64);
-    obj.label419:setLeft(20);
-    obj.label419:setTop(25);
-    obj.label419:setWidth(50);
+    obj.label419:setLeft(5);
+    obj.label419:setTop(1);
+    obj.label419:setWidth(150);
     obj.label419:setHeight(20);
-    obj.label419:setText("LEVE");
+    obj.label419:setText("CARGA");
     obj.label419:setName("label419");
+
+    obj.label420 = gui.fromHandle(_obj_newObject("label"));
+    obj.label420:setParent(obj.layout64);
+    obj.label420:setLeft(20);
+    obj.label420:setTop(25);
+    obj.label420:setWidth(50);
+    obj.label420:setHeight(20);
+    obj.label420:setText("LEVE");
+    obj.label420:setName("label420");
 
     obj.rectangle131 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle131:setParent(obj.layout64);
@@ -15522,24 +15541,24 @@ function newfrmAvatar()
     obj.rectangle131:setStrokeSize(1);
     obj.rectangle131:setName("rectangle131");
 
-    obj.label420 = gui.fromHandle(_obj_newObject("label"));
-    obj.label420:setParent(obj.layout64);
-    obj.label420:setLeft(80);
-    obj.label420:setTop(25);
-    obj.label420:setWidth(70);
-    obj.label420:setHeight(20);
-    obj.label420:setField("cargaLeve");
-    obj.label420:setHorzTextAlign("center");
-    obj.label420:setName("label420");
-
     obj.label421 = gui.fromHandle(_obj_newObject("label"));
     obj.label421:setParent(obj.layout64);
-    obj.label421:setLeft(20);
-    obj.label421:setTop(47);
-    obj.label421:setWidth(50);
+    obj.label421:setLeft(80);
+    obj.label421:setTop(25);
+    obj.label421:setWidth(70);
     obj.label421:setHeight(20);
-    obj.label421:setText("MÉDIA");
+    obj.label421:setField("cargaLeve");
+    obj.label421:setHorzTextAlign("center");
     obj.label421:setName("label421");
+
+    obj.label422 = gui.fromHandle(_obj_newObject("label"));
+    obj.label422:setParent(obj.layout64);
+    obj.label422:setLeft(20);
+    obj.label422:setTop(47);
+    obj.label422:setWidth(50);
+    obj.label422:setHeight(20);
+    obj.label422:setText("MÉDIA");
+    obj.label422:setName("label422");
 
     obj.rectangle132 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle132:setParent(obj.layout64);
@@ -15552,24 +15571,24 @@ function newfrmAvatar()
     obj.rectangle132:setStrokeSize(1);
     obj.rectangle132:setName("rectangle132");
 
-    obj.label422 = gui.fromHandle(_obj_newObject("label"));
-    obj.label422:setParent(obj.layout64);
-    obj.label422:setLeft(80);
-    obj.label422:setTop(47);
-    obj.label422:setWidth(70);
-    obj.label422:setHeight(20);
-    obj.label422:setField("cargaMedia");
-    obj.label422:setHorzTextAlign("center");
-    obj.label422:setName("label422");
-
     obj.label423 = gui.fromHandle(_obj_newObject("label"));
     obj.label423:setParent(obj.layout64);
-    obj.label423:setLeft(20);
-    obj.label423:setTop(69);
-    obj.label423:setWidth(50);
+    obj.label423:setLeft(80);
+    obj.label423:setTop(47);
+    obj.label423:setWidth(70);
     obj.label423:setHeight(20);
-    obj.label423:setText("PESADA");
+    obj.label423:setField("cargaMedia");
+    obj.label423:setHorzTextAlign("center");
     obj.label423:setName("label423");
+
+    obj.label424 = gui.fromHandle(_obj_newObject("label"));
+    obj.label424:setParent(obj.layout64);
+    obj.label424:setLeft(20);
+    obj.label424:setTop(69);
+    obj.label424:setWidth(50);
+    obj.label424:setHeight(20);
+    obj.label424:setText("PESADA");
+    obj.label424:setName("label424");
 
     obj.rectangle133 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle133:setParent(obj.layout64);
@@ -15582,15 +15601,15 @@ function newfrmAvatar()
     obj.rectangle133:setStrokeSize(1);
     obj.rectangle133:setName("rectangle133");
 
-    obj.label424 = gui.fromHandle(_obj_newObject("label"));
-    obj.label424:setParent(obj.layout64);
-    obj.label424:setLeft(80);
-    obj.label424:setTop(69);
-    obj.label424:setWidth(70);
-    obj.label424:setHeight(20);
-    obj.label424:setField("cargaPesada");
-    obj.label424:setHorzTextAlign("center");
-    obj.label424:setName("label424");
+    obj.label425 = gui.fromHandle(_obj_newObject("label"));
+    obj.label425:setParent(obj.layout64);
+    obj.label425:setLeft(80);
+    obj.label425:setTop(69);
+    obj.label425:setWidth(70);
+    obj.label425:setHeight(20);
+    obj.label425:setField("cargaPesada");
+    obj.label425:setHorzTextAlign("center");
+    obj.label425:setName("label425");
 
     obj.rectangle134 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle134:setParent(obj.layout64);
@@ -15603,25 +15622,25 @@ function newfrmAvatar()
     obj.rectangle134:setStrokeSize(1);
     obj.rectangle134:setName("rectangle134");
 
-    obj.label425 = gui.fromHandle(_obj_newObject("label"));
-    obj.label425:setParent(obj.layout64);
-    obj.label425:setLeft(20);
-    obj.label425:setTop(91);
-    obj.label425:setWidth(50);
-    obj.label425:setHeight(20);
-    obj.label425:setText("ERGUER");
-    obj.label425:setName("label425");
-
     obj.label426 = gui.fromHandle(_obj_newObject("label"));
     obj.label426:setParent(obj.layout64);
-    obj.label426:setField("cargaErguer");
-    obj.label426:setText("valor");
-    obj.label426:setWidth(70);
-    obj.label426:setHeight(20);
-    obj.label426:setLeft(80);
+    obj.label426:setLeft(20);
     obj.label426:setTop(91);
-    obj.label426:setHorzTextAlign("center");
+    obj.label426:setWidth(50);
+    obj.label426:setHeight(20);
+    obj.label426:setText("ERGUER");
     obj.label426:setName("label426");
+
+    obj.label427 = gui.fromHandle(_obj_newObject("label"));
+    obj.label427:setParent(obj.layout64);
+    obj.label427:setField("cargaErguer");
+    obj.label427:setText("valor");
+    obj.label427:setWidth(70);
+    obj.label427:setHeight(20);
+    obj.label427:setLeft(80);
+    obj.label427:setTop(91);
+    obj.label427:setHorzTextAlign("center");
+    obj.label427:setName("label427");
 
     obj.rectangle135 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle135:setParent(obj.layout64);
@@ -15634,25 +15653,25 @@ function newfrmAvatar()
     obj.rectangle135:setStrokeSize(1);
     obj.rectangle135:setName("rectangle135");
 
-    obj.label427 = gui.fromHandle(_obj_newObject("label"));
-    obj.label427:setParent(obj.layout64);
-    obj.label427:setLeft(10);
-    obj.label427:setTop(113);
-    obj.label427:setWidth(70);
-    obj.label427:setHeight(20);
-    obj.label427:setText("EMPURRAR");
-    obj.label427:setName("label427");
-
     obj.label428 = gui.fromHandle(_obj_newObject("label"));
     obj.label428:setParent(obj.layout64);
-    obj.label428:setField("cargaLevantar");
-    obj.label428:setText("valor");
+    obj.label428:setLeft(10);
+    obj.label428:setTop(113);
     obj.label428:setWidth(70);
     obj.label428:setHeight(20);
-    obj.label428:setLeft(80);
-    obj.label428:setTop(113);
-    obj.label428:setHorzTextAlign("center");
+    obj.label428:setText("EMPURRAR");
     obj.label428:setName("label428");
+
+    obj.label429 = gui.fromHandle(_obj_newObject("label"));
+    obj.label429:setParent(obj.layout64);
+    obj.label429:setField("cargaLevantar");
+    obj.label429:setText("valor");
+    obj.label429:setWidth(70);
+    obj.label429:setHeight(20);
+    obj.label429:setLeft(80);
+    obj.label429:setTop(113);
+    obj.label429:setHorzTextAlign("center");
+    obj.label429:setName("label429");
 
     obj.rectangle136 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle136:setParent(obj.layout64);
@@ -15665,25 +15684,25 @@ function newfrmAvatar()
     obj.rectangle136:setStrokeSize(1);
     obj.rectangle136:setName("rectangle136");
 
-    obj.label429 = gui.fromHandle(_obj_newObject("label"));
-    obj.label429:setParent(obj.layout64);
-    obj.label429:setLeft(10);
-    obj.label429:setTop(135);
-    obj.label429:setWidth(65);
-    obj.label429:setHeight(20);
-    obj.label429:setText("LEVANTAR");
-    obj.label429:setName("label429");
-
     obj.label430 = gui.fromHandle(_obj_newObject("label"));
     obj.label430:setParent(obj.layout64);
-    obj.label430:setField("cargaEmpurrar");
-    obj.label430:setText("valor");
-    obj.label430:setWidth(70);
-    obj.label430:setHeight(20);
-    obj.label430:setLeft(80);
+    obj.label430:setLeft(10);
     obj.label430:setTop(135);
-    obj.label430:setHorzTextAlign("center");
+    obj.label430:setWidth(65);
+    obj.label430:setHeight(20);
+    obj.label430:setText("LEVANTAR");
     obj.label430:setName("label430");
+
+    obj.label431 = gui.fromHandle(_obj_newObject("label"));
+    obj.label431:setParent(obj.layout64);
+    obj.label431:setField("cargaEmpurrar");
+    obj.label431:setText("valor");
+    obj.label431:setWidth(70);
+    obj.label431:setHeight(20);
+    obj.label431:setLeft(80);
+    obj.label431:setTop(135);
+    obj.label431:setHorzTextAlign("center");
+    obj.label431:setName("label431");
 
     obj.rectangle137 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle137:setParent(obj.layout64);
@@ -15694,25 +15713,25 @@ function newfrmAvatar()
     obj.rectangle137:setColor("#404040");
     obj.rectangle137:setName("rectangle137");
 
-    obj.label431 = gui.fromHandle(_obj_newObject("label"));
-    obj.label431:setParent(obj.layout64);
-    obj.label431:setLeft(20);
-    obj.label431:setTop(160);
-    obj.label431:setWidth(65);
-    obj.label431:setHeight(20);
-    obj.label431:setText("ATUAL");
-    obj.label431:setName("label431");
-
     obj.label432 = gui.fromHandle(_obj_newObject("label"));
     obj.label432:setParent(obj.layout64);
-    obj.label432:setField("cargaAtual");
-    obj.label432:setWidth(70);
-    obj.label432:setHeight(20);
-    obj.label432:setLeft(80);
+    obj.label432:setLeft(20);
     obj.label432:setTop(160);
-    obj.label432:setHorzTextAlign("center");
-    obj.label432:setFontColor("white");
+    obj.label432:setWidth(65);
+    obj.label432:setHeight(20);
+    obj.label432:setText("ATUAL");
     obj.label432:setName("label432");
+
+    obj.label433 = gui.fromHandle(_obj_newObject("label"));
+    obj.label433:setParent(obj.layout64);
+    obj.label433:setField("cargaAtual");
+    obj.label433:setWidth(70);
+    obj.label433:setHeight(20);
+    obj.label433:setLeft(80);
+    obj.label433:setTop(160);
+    obj.label433:setHorzTextAlign("center");
+    obj.label433:setFontColor("white");
+    obj.label433:setName("label433");
 
     obj.dataLink48 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink48:setParent(obj.scrollBox7);
@@ -15747,25 +15766,25 @@ function newfrmAvatar()
     obj.flowPart205:setHeight(35);
     obj.flowPart205:setName("flowPart205");
 
-    obj.label433 = gui.fromHandle(_obj_newObject("label"));
-    obj.label433:setParent(obj.flowPart205);
-    obj.label433:setAlign("top");
-    obj.label433:setFontSize(10);
-    obj.label433:setText("NOME");
-    obj.label433:setHorzTextAlign("center");
-    obj.label433:setWordWrap(true);
-    obj.label433:setTextTrimming("none");
-    obj.label433:setAutoSize(true);
-    obj.label433:setHint("Se a arma possui um nome de batismo ponha ele aqui.");
-    obj.label433:setHitTest(true);
-    obj.label433:setName("label433");
+    obj.label434 = gui.fromHandle(_obj_newObject("label"));
+    obj.label434:setParent(obj.flowPart205);
+    obj.label434:setAlign("top");
+    obj.label434:setFontSize(10);
+    obj.label434:setText("NOME");
+    obj.label434:setHorzTextAlign("center");
+    obj.label434:setWordWrap(true);
+    obj.label434:setTextTrimming("none");
+    obj.label434:setAutoSize(true);
+    obj.label434:setHint("Se a arma possui um nome de batismo ponha ele aqui.");
+    obj.label434:setHitTest(true);
+    obj.label434:setName("label434");
 
-    obj.edit558 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit558:setParent(obj.flowPart205);
-    obj.edit558:setAlign("client");
-    obj.edit558:setField("batismo");
-    obj.edit558:setFontSize(12);
-    obj.edit558:setName("edit558");
+    obj.edit559 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit559:setParent(obj.flowPart205);
+    obj.edit559:setAlign("client");
+    obj.edit559:setField("batismo");
+    obj.edit559:setFontSize(12);
+    obj.edit559:setName("edit559");
 
     obj.flowPart206 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart206:setParent(obj.flowLayout17);
@@ -15774,25 +15793,25 @@ function newfrmAvatar()
     obj.flowPart206:setHeight(35);
     obj.flowPart206:setName("flowPart206");
 
-    obj.label434 = gui.fromHandle(_obj_newObject("label"));
-    obj.label434:setParent(obj.flowPart206);
-    obj.label434:setAlign("top");
-    obj.label434:setFontSize(10);
-    obj.label434:setText("ARMA");
-    obj.label434:setHorzTextAlign("center");
-    obj.label434:setWordWrap(true);
-    obj.label434:setTextTrimming("none");
-    obj.label434:setAutoSize(true);
-    obj.label434:setHint("Qual a arma? Espada Longa? Machado de Batalha? Arco Longo?");
-    obj.label434:setHitTest(true);
-    obj.label434:setName("label434");
+    obj.label435 = gui.fromHandle(_obj_newObject("label"));
+    obj.label435:setParent(obj.flowPart206);
+    obj.label435:setAlign("top");
+    obj.label435:setFontSize(10);
+    obj.label435:setText("ARMA");
+    obj.label435:setHorzTextAlign("center");
+    obj.label435:setWordWrap(true);
+    obj.label435:setTextTrimming("none");
+    obj.label435:setAutoSize(true);
+    obj.label435:setHint("Qual a arma? Espada Longa? Machado de Batalha? Arco Longo?");
+    obj.label435:setHitTest(true);
+    obj.label435:setName("label435");
 
-    obj.edit559 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit559:setParent(obj.flowPart206);
-    obj.edit559:setAlign("client");
-    obj.edit559:setField("arma");
-    obj.edit559:setFontSize(12);
-    obj.edit559:setName("edit559");
+    obj.edit560 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit560:setParent(obj.flowPart206);
+    obj.edit560:setAlign("client");
+    obj.edit560:setField("arma");
+    obj.edit560:setFontSize(12);
+    obj.edit560:setName("edit560");
 
     obj.flowPart207 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart207:setParent(obj.flowLayout17);
@@ -15801,25 +15820,25 @@ function newfrmAvatar()
     obj.flowPart207:setHeight(35);
     obj.flowPart207:setName("flowPart207");
 
-    obj.label435 = gui.fromHandle(_obj_newObject("label"));
-    obj.label435:setParent(obj.flowPart207);
-    obj.label435:setAlign("top");
-    obj.label435:setFontSize(10);
-    obj.label435:setText("TAMANHO");
-    obj.label435:setHorzTextAlign("center");
-    obj.label435:setWordWrap(true);
-    obj.label435:setTextTrimming("none");
-    obj.label435:setAutoSize(true);
-    obj.label435:setHint("Essa arma foi feita para um personagem de que tamanho? Médio? Pequeno? Grande?");
-    obj.label435:setHitTest(true);
-    obj.label435:setName("label435");
+    obj.label436 = gui.fromHandle(_obj_newObject("label"));
+    obj.label436:setParent(obj.flowPart207);
+    obj.label436:setAlign("top");
+    obj.label436:setFontSize(10);
+    obj.label436:setText("TAMANHO");
+    obj.label436:setHorzTextAlign("center");
+    obj.label436:setWordWrap(true);
+    obj.label436:setTextTrimming("none");
+    obj.label436:setAutoSize(true);
+    obj.label436:setHint("Essa arma foi feita para um personagem de que tamanho? Médio? Pequeno? Grande?");
+    obj.label436:setHitTest(true);
+    obj.label436:setName("label436");
 
-    obj.edit560 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit560:setParent(obj.flowPart207);
-    obj.edit560:setAlign("client");
-    obj.edit560:setField("tamanho");
-    obj.edit560:setFontSize(12);
-    obj.edit560:setName("edit560");
+    obj.edit561 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit561:setParent(obj.flowPart207);
+    obj.edit561:setAlign("client");
+    obj.edit561:setField("tamanho");
+    obj.edit561:setFontSize(12);
+    obj.edit561:setName("edit561");
 
     obj.flowPart208 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart208:setParent(obj.flowLayout17);
@@ -15828,25 +15847,25 @@ function newfrmAvatar()
     obj.flowPart208:setHeight(35);
     obj.flowPart208:setName("flowPart208");
 
-    obj.label436 = gui.fromHandle(_obj_newObject("label"));
-    obj.label436:setParent(obj.flowPart208);
-    obj.label436:setAlign("top");
-    obj.label436:setFontSize(10);
-    obj.label436:setText("MATERIAL");
-    obj.label436:setHorzTextAlign("center");
-    obj.label436:setWordWrap(true);
-    obj.label436:setTextTrimming("none");
-    obj.label436:setAutoSize(true);
-    obj.label436:setHint("Essa arma foi feita de um material especial? Adamante? Prata?");
-    obj.label436:setHitTest(true);
-    obj.label436:setName("label436");
+    obj.label437 = gui.fromHandle(_obj_newObject("label"));
+    obj.label437:setParent(obj.flowPart208);
+    obj.label437:setAlign("top");
+    obj.label437:setFontSize(10);
+    obj.label437:setText("MATERIAL");
+    obj.label437:setHorzTextAlign("center");
+    obj.label437:setWordWrap(true);
+    obj.label437:setTextTrimming("none");
+    obj.label437:setAutoSize(true);
+    obj.label437:setHint("Essa arma foi feita de um material especial? Adamante? Prata?");
+    obj.label437:setHitTest(true);
+    obj.label437:setName("label437");
 
-    obj.edit561 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit561:setParent(obj.flowPart208);
-    obj.edit561:setAlign("client");
-    obj.edit561:setField("material");
-    obj.edit561:setFontSize(12);
-    obj.edit561:setName("edit561");
+    obj.edit562 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit562:setParent(obj.flowPart208);
+    obj.edit562:setAlign("client");
+    obj.edit562:setField("material");
+    obj.edit562:setFontSize(12);
+    obj.edit562:setName("edit562");
 
     obj.flowPart209 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart209:setParent(obj.flowLayout17);
@@ -15855,26 +15874,26 @@ function newfrmAvatar()
     obj.flowPart209:setHeight(35);
     obj.flowPart209:setName("flowPart209");
 
-    obj.label437 = gui.fromHandle(_obj_newObject("label"));
-    obj.label437:setParent(obj.flowPart209);
-    obj.label437:setAlign("top");
-    obj.label437:setFontSize(10);
-    obj.label437:setText("QUALIDADE");
-    obj.label437:setHorzTextAlign("center");
-    obj.label437:setWordWrap(true);
-    obj.label437:setTextTrimming("none");
-    obj.label437:setAutoSize(true);
-    obj.label437:setHint("Essa arma é Obra-Prima? +1? +2?");
-    obj.label437:setHitTest(true);
-    obj.label437:setName("label437");
+    obj.label438 = gui.fromHandle(_obj_newObject("label"));
+    obj.label438:setParent(obj.flowPart209);
+    obj.label438:setAlign("top");
+    obj.label438:setFontSize(10);
+    obj.label438:setText("QUALIDADE");
+    obj.label438:setHorzTextAlign("center");
+    obj.label438:setWordWrap(true);
+    obj.label438:setTextTrimming("none");
+    obj.label438:setAutoSize(true);
+    obj.label438:setHint("Essa arma é Obra-Prima? +1? +2?");
+    obj.label438:setHitTest(true);
+    obj.label438:setName("label438");
 
-    obj.edit562 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit562:setParent(obj.flowPart209);
-    obj.edit562:setAlign("client");
-    obj.edit562:setField("qualidade");
-    obj.edit562:setHorzTextAlign("center");
-    obj.edit562:setFontSize(12);
-    obj.edit562:setName("edit562");
+    obj.edit563 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit563:setParent(obj.flowPart209);
+    obj.edit563:setAlign("client");
+    obj.edit563:setField("qualidade");
+    obj.edit563:setHorzTextAlign("center");
+    obj.edit563:setFontSize(12);
+    obj.edit563:setName("edit563");
 
     obj.flowPart210 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart210:setParent(obj.flowLayout17);
@@ -15883,25 +15902,25 @@ function newfrmAvatar()
     obj.flowPart210:setHeight(35);
     obj.flowPart210:setName("flowPart210");
 
-    obj.label438 = gui.fromHandle(_obj_newObject("label"));
-    obj.label438:setParent(obj.flowPart210);
-    obj.label438:setAlign("top");
-    obj.label438:setFontSize(10);
-    obj.label438:setText("CATEGORIA");
-    obj.label438:setHorzTextAlign("center");
-    obj.label438:setWordWrap(true);
-    obj.label438:setTextTrimming("none");
-    obj.label438:setAutoSize(true);
-    obj.label438:setHint("Essa arma é Simples? Comum? Exotica?");
-    obj.label438:setHitTest(true);
-    obj.label438:setName("label438");
+    obj.label439 = gui.fromHandle(_obj_newObject("label"));
+    obj.label439:setParent(obj.flowPart210);
+    obj.label439:setAlign("top");
+    obj.label439:setFontSize(10);
+    obj.label439:setText("CATEGORIA");
+    obj.label439:setHorzTextAlign("center");
+    obj.label439:setWordWrap(true);
+    obj.label439:setTextTrimming("none");
+    obj.label439:setAutoSize(true);
+    obj.label439:setHint("Essa arma é Simples? Comum? Exotica?");
+    obj.label439:setHitTest(true);
+    obj.label439:setName("label439");
 
-    obj.edit563 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit563:setParent(obj.flowPart210);
-    obj.edit563:setAlign("client");
-    obj.edit563:setField("categoria");
-    obj.edit563:setFontSize(12);
-    obj.edit563:setName("edit563");
+    obj.edit564 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit564:setParent(obj.flowPart210);
+    obj.edit564:setAlign("client");
+    obj.edit564:setField("categoria");
+    obj.edit564:setFontSize(12);
+    obj.edit564:setName("edit564");
 
     obj.flowPart211 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart211:setParent(obj.flowLayout17);
@@ -15910,26 +15929,26 @@ function newfrmAvatar()
     obj.flowPart211:setHeight(35);
     obj.flowPart211:setName("flowPart211");
 
-    obj.label439 = gui.fromHandle(_obj_newObject("label"));
-    obj.label439:setParent(obj.flowPart211);
-    obj.label439:setAlign("top");
-    obj.label439:setFontSize(10);
-    obj.label439:setText("DANO");
-    obj.label439:setHorzTextAlign("center");
-    obj.label439:setWordWrap(true);
-    obj.label439:setTextTrimming("none");
-    obj.label439:setAutoSize(true);
-    obj.label439:setHint("Qual o dado de dano dessa arma?");
-    obj.label439:setHitTest(true);
-    obj.label439:setName("label439");
+    obj.label440 = gui.fromHandle(_obj_newObject("label"));
+    obj.label440:setParent(obj.flowPart211);
+    obj.label440:setAlign("top");
+    obj.label440:setFontSize(10);
+    obj.label440:setText("DANO");
+    obj.label440:setHorzTextAlign("center");
+    obj.label440:setWordWrap(true);
+    obj.label440:setTextTrimming("none");
+    obj.label440:setAutoSize(true);
+    obj.label440:setHint("Qual o dado de dano dessa arma?");
+    obj.label440:setHitTest(true);
+    obj.label440:setName("label440");
 
-    obj.edit564 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit564:setParent(obj.flowPart211);
-    obj.edit564:setAlign("client");
-    obj.edit564:setField("dano");
-    obj.edit564:setHorzTextAlign("center");
-    obj.edit564:setFontSize(12);
-    obj.edit564:setName("edit564");
+    obj.edit565 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit565:setParent(obj.flowPart211);
+    obj.edit565:setAlign("client");
+    obj.edit565:setField("dano");
+    obj.edit565:setHorzTextAlign("center");
+    obj.edit565:setFontSize(12);
+    obj.edit565:setName("edit565");
 
     obj.flowPart212 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart212:setParent(obj.flowLayout17);
@@ -15938,26 +15957,26 @@ function newfrmAvatar()
     obj.flowPart212:setHeight(35);
     obj.flowPart212:setName("flowPart212");
 
-    obj.label440 = gui.fromHandle(_obj_newObject("label"));
-    obj.label440:setParent(obj.flowPart212);
-    obj.label440:setAlign("top");
-    obj.label440:setFontSize(10);
-    obj.label440:setText("DECISIVO");
-    obj.label440:setHorzTextAlign("center");
-    obj.label440:setWordWrap(true);
-    obj.label440:setTextTrimming("none");
-    obj.label440:setAutoSize(true);
-    obj.label440:setHint("Quando a margem de ameaça dessa arma?20? 19-20?");
-    obj.label440:setHitTest(true);
-    obj.label440:setName("label440");
+    obj.label441 = gui.fromHandle(_obj_newObject("label"));
+    obj.label441:setParent(obj.flowPart212);
+    obj.label441:setAlign("top");
+    obj.label441:setFontSize(10);
+    obj.label441:setText("DECISIVO");
+    obj.label441:setHorzTextAlign("center");
+    obj.label441:setWordWrap(true);
+    obj.label441:setTextTrimming("none");
+    obj.label441:setAutoSize(true);
+    obj.label441:setHint("Quando a margem de ameaça dessa arma?20? 19-20?");
+    obj.label441:setHitTest(true);
+    obj.label441:setName("label441");
 
-    obj.edit565 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit565:setParent(obj.flowPart212);
-    obj.edit565:setAlign("client");
-    obj.edit565:setField("decisivo");
-    obj.edit565:setHorzTextAlign("center");
-    obj.edit565:setFontSize(12);
-    obj.edit565:setName("edit565");
+    obj.edit566 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit566:setParent(obj.flowPart212);
+    obj.edit566:setAlign("client");
+    obj.edit566:setField("decisivo");
+    obj.edit566:setHorzTextAlign("center");
+    obj.edit566:setFontSize(12);
+    obj.edit566:setName("edit566");
 
     obj.flowPart213 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart213:setParent(obj.flowLayout17);
@@ -15966,26 +15985,26 @@ function newfrmAvatar()
     obj.flowPart213:setHeight(35);
     obj.flowPart213:setName("flowPart213");
 
-    obj.label441 = gui.fromHandle(_obj_newObject("label"));
-    obj.label441:setParent(obj.flowPart213);
-    obj.label441:setAlign("top");
-    obj.label441:setFontSize(10);
-    obj.label441:setText("MULTIPLICADOR");
-    obj.label441:setHorzTextAlign("center");
-    obj.label441:setWordWrap(true);
-    obj.label441:setTextTrimming("none");
-    obj.label441:setAutoSize(true);
-    obj.label441:setHint("Em um decisivo por quanto é multiplicado o dano dessa arma?");
-    obj.label441:setHitTest(true);
-    obj.label441:setName("label441");
+    obj.label442 = gui.fromHandle(_obj_newObject("label"));
+    obj.label442:setParent(obj.flowPart213);
+    obj.label442:setAlign("top");
+    obj.label442:setFontSize(10);
+    obj.label442:setText("MULTIPLICADOR");
+    obj.label442:setHorzTextAlign("center");
+    obj.label442:setWordWrap(true);
+    obj.label442:setTextTrimming("none");
+    obj.label442:setAutoSize(true);
+    obj.label442:setHint("Em um decisivo por quanto é multiplicado o dano dessa arma?");
+    obj.label442:setHitTest(true);
+    obj.label442:setName("label442");
 
-    obj.edit566 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit566:setParent(obj.flowPart213);
-    obj.edit566:setAlign("client");
-    obj.edit566:setField("multiplicador");
-    obj.edit566:setHorzTextAlign("center");
-    obj.edit566:setFontSize(12);
-    obj.edit566:setName("edit566");
+    obj.edit567 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit567:setParent(obj.flowPart213);
+    obj.edit567:setAlign("client");
+    obj.edit567:setField("multiplicador");
+    obj.edit567:setHorzTextAlign("center");
+    obj.edit567:setFontSize(12);
+    obj.edit567:setName("edit567");
 
     obj.flowPart214 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart214:setParent(obj.flowLayout17);
@@ -15994,25 +16013,25 @@ function newfrmAvatar()
     obj.flowPart214:setHeight(35);
     obj.flowPart214:setName("flowPart214");
 
-    obj.label442 = gui.fromHandle(_obj_newObject("label"));
-    obj.label442:setParent(obj.flowPart214);
-    obj.label442:setAlign("top");
-    obj.label442:setFontSize(10);
-    obj.label442:setText("ALCANCE");
-    obj.label442:setHorzTextAlign("center");
-    obj.label442:setWordWrap(true);
-    obj.label442:setTextTrimming("none");
-    obj.label442:setAutoSize(true);
-    obj.label442:setHint("Qual o alcance em metros da arma? Normalmente usado apenas em armas de ataque a distancia. ");
-    obj.label442:setHitTest(true);
-    obj.label442:setName("label442");
+    obj.label443 = gui.fromHandle(_obj_newObject("label"));
+    obj.label443:setParent(obj.flowPart214);
+    obj.label443:setAlign("top");
+    obj.label443:setFontSize(10);
+    obj.label443:setText("ALCANCE");
+    obj.label443:setHorzTextAlign("center");
+    obj.label443:setWordWrap(true);
+    obj.label443:setTextTrimming("none");
+    obj.label443:setAutoSize(true);
+    obj.label443:setHint("Qual o alcance em metros da arma? Normalmente usado apenas em armas de ataque a distancia. ");
+    obj.label443:setHitTest(true);
+    obj.label443:setName("label443");
 
-    obj.edit567 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit567:setParent(obj.flowPart214);
-    obj.edit567:setAlign("client");
-    obj.edit567:setField("alcance");
-    obj.edit567:setFontSize(12);
-    obj.edit567:setName("edit567");
+    obj.edit568 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit568:setParent(obj.flowPart214);
+    obj.edit568:setAlign("client");
+    obj.edit568:setField("alcance");
+    obj.edit568:setFontSize(12);
+    obj.edit568:setName("edit568");
 
     obj.flowPart215 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart215:setParent(obj.flowLayout17);
@@ -16021,25 +16040,25 @@ function newfrmAvatar()
     obj.flowPart215:setHeight(35);
     obj.flowPart215:setName("flowPart215");
 
-    obj.label443 = gui.fromHandle(_obj_newObject("label"));
-    obj.label443:setParent(obj.flowPart215);
-    obj.label443:setAlign("top");
-    obj.label443:setFontSize(10);
-    obj.label443:setText("ESPECIAL");
-    obj.label443:setHorzTextAlign("center");
-    obj.label443:setWordWrap(true);
-    obj.label443:setTextTrimming("none");
-    obj.label443:setAutoSize(true);
-    obj.label443:setHint("Essa arma tem efeitos especiais? Pode ser usada em derrubar? desarmar? Pode ser preparada contra investida?");
-    obj.label443:setHitTest(true);
-    obj.label443:setName("label443");
+    obj.label444 = gui.fromHandle(_obj_newObject("label"));
+    obj.label444:setParent(obj.flowPart215);
+    obj.label444:setAlign("top");
+    obj.label444:setFontSize(10);
+    obj.label444:setText("ESPECIAL");
+    obj.label444:setHorzTextAlign("center");
+    obj.label444:setWordWrap(true);
+    obj.label444:setTextTrimming("none");
+    obj.label444:setAutoSize(true);
+    obj.label444:setHint("Essa arma tem efeitos especiais? Pode ser usada em derrubar? desarmar? Pode ser preparada contra investida?");
+    obj.label444:setHitTest(true);
+    obj.label444:setName("label444");
 
-    obj.edit568 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit568:setParent(obj.flowPart215);
-    obj.edit568:setAlign("client");
-    obj.edit568:setField("especial");
-    obj.edit568:setFontSize(12);
-    obj.edit568:setName("edit568");
+    obj.edit569 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit569:setParent(obj.flowPart215);
+    obj.edit569:setAlign("client");
+    obj.edit569:setField("especial");
+    obj.edit569:setFontSize(12);
+    obj.edit569:setName("edit569");
 
     obj.flowPart216 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart216:setParent(obj.flowLayout17);
@@ -16048,25 +16067,25 @@ function newfrmAvatar()
     obj.flowPart216:setHeight(35);
     obj.flowPart216:setName("flowPart216");
 
-    obj.label444 = gui.fromHandle(_obj_newObject("label"));
-    obj.label444:setParent(obj.flowPart216);
-    obj.label444:setAlign("top");
-    obj.label444:setFontSize(10);
-    obj.label444:setText("TIPO");
-    obj.label444:setHorzTextAlign("center");
-    obj.label444:setWordWrap(true);
-    obj.label444:setTextTrimming("none");
-    obj.label444:setAutoSize(true);
-    obj.label444:setHint("Qual o tipo de dano que essa arma causa? Concusivo? Cortante?");
-    obj.label444:setHitTest(true);
-    obj.label444:setName("label444");
+    obj.label445 = gui.fromHandle(_obj_newObject("label"));
+    obj.label445:setParent(obj.flowPart216);
+    obj.label445:setAlign("top");
+    obj.label445:setFontSize(10);
+    obj.label445:setText("TIPO");
+    obj.label445:setHorzTextAlign("center");
+    obj.label445:setWordWrap(true);
+    obj.label445:setTextTrimming("none");
+    obj.label445:setAutoSize(true);
+    obj.label445:setHint("Qual o tipo de dano que essa arma causa? Concusivo? Cortante?");
+    obj.label445:setHitTest(true);
+    obj.label445:setName("label445");
 
-    obj.edit569 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit569:setParent(obj.flowPart216);
-    obj.edit569:setAlign("client");
-    obj.edit569:setField("tipo");
-    obj.edit569:setFontSize(12);
-    obj.edit569:setName("edit569");
+    obj.edit570 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit570:setParent(obj.flowPart216);
+    obj.edit570:setAlign("client");
+    obj.edit570:setField("tipo");
+    obj.edit570:setFontSize(12);
+    obj.edit570:setName("edit570");
 
     obj.flowPart217 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart217:setParent(obj.flowLayout17);
@@ -16075,25 +16094,25 @@ function newfrmAvatar()
     obj.flowPart217:setHeight(35);
     obj.flowPart217:setName("flowPart217");
 
-    obj.label445 = gui.fromHandle(_obj_newObject("label"));
-    obj.label445:setParent(obj.flowPart217);
-    obj.label445:setAlign("top");
-    obj.label445:setFontSize(10);
-    obj.label445:setText("EFEITOS");
-    obj.label445:setHorzTextAlign("center");
-    obj.label445:setWordWrap(true);
-    obj.label445:setTextTrimming("none");
-    obj.label445:setAutoSize(true);
-    obj.label445:setHint("Essa arma tem efeitos mágicos? Flamejante? Vorpal?");
-    obj.label445:setHitTest(true);
-    obj.label445:setName("label445");
+    obj.label446 = gui.fromHandle(_obj_newObject("label"));
+    obj.label446:setParent(obj.flowPart217);
+    obj.label446:setAlign("top");
+    obj.label446:setFontSize(10);
+    obj.label446:setText("EFEITOS");
+    obj.label446:setHorzTextAlign("center");
+    obj.label446:setWordWrap(true);
+    obj.label446:setTextTrimming("none");
+    obj.label446:setAutoSize(true);
+    obj.label446:setHint("Essa arma tem efeitos mágicos? Flamejante? Vorpal?");
+    obj.label446:setHitTest(true);
+    obj.label446:setName("label446");
 
-    obj.edit570 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit570:setParent(obj.flowPart217);
-    obj.edit570:setAlign("client");
-    obj.edit570:setField("efeitos");
-    obj.edit570:setFontSize(12);
-    obj.edit570:setName("edit570");
+    obj.edit571 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit571:setParent(obj.flowPart217);
+    obj.edit571:setAlign("client");
+    obj.edit571:setField("efeitos");
+    obj.edit571:setFontSize(12);
+    obj.edit571:setName("edit571");
 
     obj.flowPart218 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart218:setParent(obj.flowLayout17);
@@ -16102,26 +16121,26 @@ function newfrmAvatar()
     obj.flowPart218:setHeight(35);
     obj.flowPart218:setName("flowPart218");
 
-    obj.label446 = gui.fromHandle(_obj_newObject("label"));
-    obj.label446:setParent(obj.flowPart218);
-    obj.label446:setAlign("top");
-    obj.label446:setFontSize(10);
-    obj.label446:setText("CA");
-    obj.label446:setHorzTextAlign("center");
-    obj.label446:setWordWrap(true);
-    obj.label446:setTextTrimming("none");
-    obj.label446:setAutoSize(true);
-    obj.label446:setHint("Para escudos: qual o bonus que ele fornece na CA?");
-    obj.label446:setHitTest(true);
-    obj.label446:setName("label446");
+    obj.label447 = gui.fromHandle(_obj_newObject("label"));
+    obj.label447:setParent(obj.flowPart218);
+    obj.label447:setAlign("top");
+    obj.label447:setFontSize(10);
+    obj.label447:setText("CA");
+    obj.label447:setHorzTextAlign("center");
+    obj.label447:setWordWrap(true);
+    obj.label447:setTextTrimming("none");
+    obj.label447:setAutoSize(true);
+    obj.label447:setHint("Para escudos: qual o bonus que ele fornece na CA?");
+    obj.label447:setHitTest(true);
+    obj.label447:setName("label447");
 
-    obj.edit571 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit571:setParent(obj.flowPart218);
-    obj.edit571:setAlign("client");
-    obj.edit571:setField("ca");
-    obj.edit571:setHorzTextAlign("center");
-    obj.edit571:setFontSize(12);
-    obj.edit571:setName("edit571");
+    obj.edit572 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit572:setParent(obj.flowPart218);
+    obj.edit572:setAlign("client");
+    obj.edit572:setField("ca");
+    obj.edit572:setHorzTextAlign("center");
+    obj.edit572:setFontSize(12);
+    obj.edit572:setName("edit572");
 
     obj.flowPart219 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart219:setParent(obj.flowLayout17);
@@ -16130,26 +16149,26 @@ function newfrmAvatar()
     obj.flowPart219:setHeight(35);
     obj.flowPart219:setName("flowPart219");
 
-    obj.label447 = gui.fromHandle(_obj_newObject("label"));
-    obj.label447:setParent(obj.flowPart219);
-    obj.label447:setAlign("top");
-    obj.label447:setFontSize(10);
-    obj.label447:setText("PEN");
-    obj.label447:setHorzTextAlign("center");
-    obj.label447:setWordWrap(true);
-    obj.label447:setTextTrimming("none");
-    obj.label447:setAutoSize(true);
-    obj.label447:setHint("Para escudos: qual a penalidade do escudo?");
-    obj.label447:setHitTest(true);
-    obj.label447:setName("label447");
+    obj.label448 = gui.fromHandle(_obj_newObject("label"));
+    obj.label448:setParent(obj.flowPart219);
+    obj.label448:setAlign("top");
+    obj.label448:setFontSize(10);
+    obj.label448:setText("PEN");
+    obj.label448:setHorzTextAlign("center");
+    obj.label448:setWordWrap(true);
+    obj.label448:setTextTrimming("none");
+    obj.label448:setAutoSize(true);
+    obj.label448:setHint("Para escudos: qual a penalidade do escudo?");
+    obj.label448:setHitTest(true);
+    obj.label448:setName("label448");
 
-    obj.edit572 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit572:setParent(obj.flowPart219);
-    obj.edit572:setAlign("client");
-    obj.edit572:setField("penalidade");
-    obj.edit572:setHorzTextAlign("center");
-    obj.edit572:setFontSize(12);
-    obj.edit572:setName("edit572");
+    obj.edit573 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit573:setParent(obj.flowPart219);
+    obj.edit573:setAlign("client");
+    obj.edit573:setField("penalidade");
+    obj.edit573:setHorzTextAlign("center");
+    obj.edit573:setFontSize(12);
+    obj.edit573:setName("edit573");
 
     obj.flowPart220 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart220:setParent(obj.flowLayout17);
@@ -16158,26 +16177,26 @@ function newfrmAvatar()
     obj.flowPart220:setHeight(35);
     obj.flowPart220:setName("flowPart220");
 
-    obj.label448 = gui.fromHandle(_obj_newObject("label"));
-    obj.label448:setParent(obj.flowPart220);
-    obj.label448:setAlign("top");
-    obj.label448:setFontSize(10);
-    obj.label448:setText("FALHA");
-    obj.label448:setHorzTextAlign("center");
-    obj.label448:setWordWrap(true);
-    obj.label448:setTextTrimming("none");
-    obj.label448:setAutoSize(true);
-    obj.label448:setHint("Para escudos: qual a falha arcana?");
-    obj.label448:setHitTest(true);
-    obj.label448:setName("label448");
+    obj.label449 = gui.fromHandle(_obj_newObject("label"));
+    obj.label449:setParent(obj.flowPart220);
+    obj.label449:setAlign("top");
+    obj.label449:setFontSize(10);
+    obj.label449:setText("FALHA");
+    obj.label449:setHorzTextAlign("center");
+    obj.label449:setWordWrap(true);
+    obj.label449:setTextTrimming("none");
+    obj.label449:setAutoSize(true);
+    obj.label449:setHint("Para escudos: qual a falha arcana?");
+    obj.label449:setHitTest(true);
+    obj.label449:setName("label449");
 
-    obj.edit573 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit573:setParent(obj.flowPart220);
-    obj.edit573:setAlign("client");
-    obj.edit573:setField("falha");
-    obj.edit573:setHorzTextAlign("center");
-    obj.edit573:setFontSize(12);
-    obj.edit573:setName("edit573");
+    obj.edit574 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit574:setParent(obj.flowPart220);
+    obj.edit574:setAlign("client");
+    obj.edit574:setField("falha");
+    obj.edit574:setHorzTextAlign("center");
+    obj.edit574:setFontSize(12);
+    obj.edit574:setName("edit574");
 
     obj.textEditor17 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor17:setParent(obj.popArma);
@@ -16220,95 +16239,95 @@ function newfrmAvatar()
     obj.rectangle138:setColor("black");
     obj.rectangle138:setName("rectangle138");
 
-    obj.label449 = gui.fromHandle(_obj_newObject("label"));
-    obj.label449:setParent(obj.rectangle138);
-    obj.label449:setLeft(5);
-    obj.label449:setTop(10);
-    obj.label449:setWidth(70);
-    obj.label449:setHeight(20);
-    obj.label449:setText("Nome");
-    obj.label449:setName("label449");
-
-    obj.edit574 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit574:setParent(obj.rectangle138);
-    obj.edit574:setLeft(70);
-    obj.edit574:setTop(5);
-    obj.edit574:setWidth(125);
-    obj.edit574:setHeight(25);
-    obj.edit574:setField("nomeComp");
-    obj.edit574:setName("edit574");
-
     obj.label450 = gui.fromHandle(_obj_newObject("label"));
     obj.label450:setParent(obj.rectangle138);
     obj.label450:setLeft(5);
-    obj.label450:setTop(35);
+    obj.label450:setTop(10);
     obj.label450:setWidth(70);
     obj.label450:setHeight(20);
-    obj.label450:setText("Raça");
+    obj.label450:setText("Nome");
     obj.label450:setName("label450");
 
     obj.edit575 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit575:setParent(obj.rectangle138);
     obj.edit575:setLeft(70);
-    obj.edit575:setTop(30);
+    obj.edit575:setTop(5);
     obj.edit575:setWidth(125);
     obj.edit575:setHeight(25);
-    obj.edit575:setField("racaComp");
+    obj.edit575:setField("nomeComp");
     obj.edit575:setName("edit575");
 
     obj.label451 = gui.fromHandle(_obj_newObject("label"));
     obj.label451:setParent(obj.rectangle138);
     obj.label451:setLeft(5);
-    obj.label451:setTop(60);
+    obj.label451:setTop(35);
     obj.label451:setWidth(70);
     obj.label451:setHeight(20);
-    obj.label451:setText("Tipo");
+    obj.label451:setText("Raça");
     obj.label451:setName("label451");
 
     obj.edit576 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit576:setParent(obj.rectangle138);
     obj.edit576:setLeft(70);
-    obj.edit576:setTop(55);
+    obj.edit576:setTop(30);
     obj.edit576:setWidth(125);
     obj.edit576:setHeight(25);
-    obj.edit576:setField("tipoComp");
+    obj.edit576:setField("racaComp");
     obj.edit576:setName("edit576");
 
     obj.label452 = gui.fromHandle(_obj_newObject("label"));
     obj.label452:setParent(obj.rectangle138);
     obj.label452:setLeft(5);
-    obj.label452:setTop(85);
+    obj.label452:setTop(60);
     obj.label452:setWidth(70);
     obj.label452:setHeight(20);
-    obj.label452:setText("Subtipos");
+    obj.label452:setText("Tipo");
     obj.label452:setName("label452");
 
     obj.edit577 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit577:setParent(obj.rectangle138);
     obj.edit577:setLeft(70);
-    obj.edit577:setTop(80);
+    obj.edit577:setTop(55);
     obj.edit577:setWidth(125);
     obj.edit577:setHeight(25);
-    obj.edit577:setField("subtiposComp");
+    obj.edit577:setField("tipoComp");
     obj.edit577:setName("edit577");
 
     obj.label453 = gui.fromHandle(_obj_newObject("label"));
     obj.label453:setParent(obj.rectangle138);
     obj.label453:setLeft(5);
-    obj.label453:setTop(110);
+    obj.label453:setTop(85);
     obj.label453:setWidth(70);
     obj.label453:setHeight(20);
-    obj.label453:setText("Tamanho");
+    obj.label453:setText("Subtipos");
     obj.label453:setName("label453");
 
     obj.edit578 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit578:setParent(obj.rectangle138);
     obj.edit578:setLeft(70);
-    obj.edit578:setTop(105);
+    obj.edit578:setTop(80);
     obj.edit578:setWidth(125);
     obj.edit578:setHeight(25);
-    obj.edit578:setField("tamanhoComp");
+    obj.edit578:setField("subtiposComp");
     obj.edit578:setName("edit578");
+
+    obj.label454 = gui.fromHandle(_obj_newObject("label"));
+    obj.label454:setParent(obj.rectangle138);
+    obj.label454:setLeft(5);
+    obj.label454:setTop(110);
+    obj.label454:setWidth(70);
+    obj.label454:setHeight(20);
+    obj.label454:setText("Tamanho");
+    obj.label454:setName("label454");
+
+    obj.edit579 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit579:setParent(obj.rectangle138);
+    obj.edit579:setLeft(70);
+    obj.edit579:setTop(105);
+    obj.edit579:setWidth(125);
+    obj.edit579:setHeight(25);
+    obj.edit579:setField("tamanhoComp");
+    obj.edit579:setName("edit579");
 
     obj.rectangle139 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle139:setParent(obj.boxDetalhesDoCompanheiro);
@@ -16319,95 +16338,95 @@ function newfrmAvatar()
     obj.rectangle139:setColor("black");
     obj.rectangle139:setName("rectangle139");
 
-    obj.label454 = gui.fromHandle(_obj_newObject("label"));
-    obj.label454:setParent(obj.rectangle139);
-    obj.label454:setLeft(5);
-    obj.label454:setTop(10);
-    obj.label454:setWidth(40);
-    obj.label454:setHeight(20);
-    obj.label454:setText("DVs");
-    obj.label454:setName("label454");
-
-    obj.edit579 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit579:setParent(obj.rectangle139);
-    obj.edit579:setLeft(35);
-    obj.edit579:setTop(5);
-    obj.edit579:setWidth(70);
-    obj.edit579:setHeight(25);
-    obj.edit579:setField("dvsComp");
-    obj.edit579:setName("edit579");
-
     obj.label455 = gui.fromHandle(_obj_newObject("label"));
     obj.label455:setParent(obj.rectangle139);
-    obj.label455:setLeft(110);
-    obj.label455:setTop(8);
+    obj.label455:setLeft(5);
+    obj.label455:setTop(10);
     obj.label455:setWidth(40);
     obj.label455:setHeight(20);
-    obj.label455:setText("PVs");
+    obj.label455:setText("DVs");
     obj.label455:setName("label455");
 
     obj.edit580 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit580:setParent(obj.rectangle139);
-    obj.edit580:setLeft(140);
+    obj.edit580:setLeft(35);
     obj.edit580:setTop(5);
-    obj.edit580:setWidth(55);
+    obj.edit580:setWidth(70);
     obj.edit580:setHeight(25);
-    obj.edit580:setField("pvsComp");
+    obj.edit580:setField("dvsComp");
     obj.edit580:setName("edit580");
 
     obj.label456 = gui.fromHandle(_obj_newObject("label"));
     obj.label456:setParent(obj.rectangle139);
-    obj.label456:setLeft(5);
-    obj.label456:setTop(35);
-    obj.label456:setWidth(60);
+    obj.label456:setLeft(110);
+    obj.label456:setTop(8);
+    obj.label456:setWidth(40);
     obj.label456:setHeight(20);
-    obj.label456:setText("CA");
+    obj.label456:setText("PVs");
     obj.label456:setName("label456");
 
     obj.edit581 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit581:setParent(obj.rectangle139);
-    obj.edit581:setLeft(70);
-    obj.edit581:setTop(30);
-    obj.edit581:setWidth(35);
+    obj.edit581:setLeft(140);
+    obj.edit581:setTop(5);
+    obj.edit581:setWidth(55);
     obj.edit581:setHeight(25);
-    obj.edit581:setField("caComp");
+    obj.edit581:setField("pvsComp");
     obj.edit581:setName("edit581");
 
     obj.label457 = gui.fromHandle(_obj_newObject("label"));
     obj.label457:setParent(obj.rectangle139);
     obj.label457:setLeft(5);
-    obj.label457:setTop(60);
+    obj.label457:setTop(35);
     obj.label457:setWidth(60);
     obj.label457:setHeight(20);
-    obj.label457:setText("Toque");
+    obj.label457:setText("CA");
     obj.label457:setName("label457");
 
     obj.edit582 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit582:setParent(obj.rectangle139);
     obj.edit582:setLeft(70);
-    obj.edit582:setTop(55);
+    obj.edit582:setTop(30);
     obj.edit582:setWidth(35);
     obj.edit582:setHeight(25);
-    obj.edit582:setField("toqueComp");
+    obj.edit582:setField("caComp");
     obj.edit582:setName("edit582");
 
     obj.label458 = gui.fromHandle(_obj_newObject("label"));
     obj.label458:setParent(obj.rectangle139);
     obj.label458:setLeft(5);
-    obj.label458:setTop(85);
+    obj.label458:setTop(60);
     obj.label458:setWidth(60);
     obj.label458:setHeight(20);
-    obj.label458:setText("Surpresa");
+    obj.label458:setText("Toque");
     obj.label458:setName("label458");
 
     obj.edit583 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit583:setParent(obj.rectangle139);
     obj.edit583:setLeft(70);
-    obj.edit583:setTop(80);
+    obj.edit583:setTop(55);
     obj.edit583:setWidth(35);
     obj.edit583:setHeight(25);
-    obj.edit583:setField("surpresaComp");
+    obj.edit583:setField("toqueComp");
     obj.edit583:setName("edit583");
+
+    obj.label459 = gui.fromHandle(_obj_newObject("label"));
+    obj.label459:setParent(obj.rectangle139);
+    obj.label459:setLeft(5);
+    obj.label459:setTop(85);
+    obj.label459:setWidth(60);
+    obj.label459:setHeight(20);
+    obj.label459:setText("Surpresa");
+    obj.label459:setName("label459");
+
+    obj.edit584 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit584:setParent(obj.rectangle139);
+    obj.edit584:setLeft(70);
+    obj.edit584:setTop(80);
+    obj.edit584:setWidth(35);
+    obj.edit584:setHeight(25);
+    obj.edit584:setField("surpresaComp");
+    obj.edit584:setName("edit584");
 
     obj.textEditor18 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor18:setParent(obj.rectangle139);
@@ -16436,60 +16455,60 @@ function newfrmAvatar()
     obj.button89:setText("Iniciativa");
     obj.button89:setName("button89");
 
-    obj.edit584 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit584:setParent(obj.rectangle140);
-    obj.edit584:setLeft(80);
-    obj.edit584:setTop(5);
-    obj.edit584:setWidth(30);
-    obj.edit584:setHeight(25);
-    obj.edit584:setField("iniciativaComp");
-    obj.edit584:setName("edit584");
-
     obj.edit585 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit585:setParent(obj.rectangle140);
-    obj.edit585:setLeft(110);
+    obj.edit585:setLeft(80);
     obj.edit585:setTop(5);
-    obj.edit585:setWidth(85);
+    obj.edit585:setWidth(30);
     obj.edit585:setHeight(25);
-    obj.edit585:setField("iniciativaCompDesc");
+    obj.edit585:setField("iniciativaComp");
     obj.edit585:setName("edit585");
-
-    obj.label459 = gui.fromHandle(_obj_newObject("label"));
-    obj.label459:setParent(obj.rectangle140);
-    obj.label459:setLeft(2);
-    obj.label459:setTop(35);
-    obj.label459:setWidth(85);
-    obj.label459:setHeight(20);
-    obj.label459:setText("Deslocamento");
-    obj.label459:setFontSize(12);
-    obj.label459:setName("label459");
 
     obj.edit586 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit586:setParent(obj.rectangle140);
-    obj.edit586:setLeft(80);
-    obj.edit586:setTop(30);
-    obj.edit586:setWidth(115);
+    obj.edit586:setLeft(110);
+    obj.edit586:setTop(5);
+    obj.edit586:setWidth(85);
     obj.edit586:setHeight(25);
-    obj.edit586:setField("deslocamentoComp");
+    obj.edit586:setField("iniciativaCompDesc");
     obj.edit586:setName("edit586");
 
     obj.label460 = gui.fromHandle(_obj_newObject("label"));
     obj.label460:setParent(obj.rectangle140);
-    obj.label460:setLeft(5);
-    obj.label460:setTop(60);
-    obj.label460:setWidth(40);
+    obj.label460:setLeft(2);
+    obj.label460:setTop(35);
+    obj.label460:setWidth(85);
     obj.label460:setHeight(20);
-    obj.label460:setText("BBA");
+    obj.label460:setText("Deslocamento");
+    obj.label460:setFontSize(12);
     obj.label460:setName("label460");
 
     obj.edit587 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit587:setParent(obj.rectangle140);
-    obj.edit587:setLeft(35);
-    obj.edit587:setTop(55);
-    obj.edit587:setWidth(55);
+    obj.edit587:setLeft(80);
+    obj.edit587:setTop(30);
+    obj.edit587:setWidth(115);
     obj.edit587:setHeight(25);
-    obj.edit587:setField("bbaComp");
+    obj.edit587:setField("deslocamentoComp");
     obj.edit587:setName("edit587");
+
+    obj.label461 = gui.fromHandle(_obj_newObject("label"));
+    obj.label461:setParent(obj.rectangle140);
+    obj.label461:setLeft(5);
+    obj.label461:setTop(60);
+    obj.label461:setWidth(40);
+    obj.label461:setHeight(20);
+    obj.label461:setText("BBA");
+    obj.label461:setName("label461");
+
+    obj.edit588 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit588:setParent(obj.rectangle140);
+    obj.edit588:setLeft(35);
+    obj.edit588:setTop(55);
+    obj.edit588:setWidth(55);
+    obj.edit588:setHeight(25);
+    obj.edit588:setField("bbaComp");
+    obj.edit588:setName("edit588");
 
     obj.button90 = gui.fromHandle(_obj_newObject("button"));
     obj.button90:setParent(obj.rectangle140);
@@ -16500,59 +16519,59 @@ function newfrmAvatar()
     obj.button90:setText("Agarrar");
     obj.button90:setName("button90");
 
-    obj.edit588 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit588:setParent(obj.rectangle140);
-    obj.edit588:setLeft(150);
-    obj.edit588:setTop(55);
-    obj.edit588:setWidth(45);
-    obj.edit588:setHeight(25);
-    obj.edit588:setField("agarrarComp");
-    obj.edit588:setName("edit588");
-
-    obj.label461 = gui.fromHandle(_obj_newObject("label"));
-    obj.label461:setParent(obj.rectangle140);
-    obj.label461:setLeft(5);
-    obj.label461:setTop(85);
-    obj.label461:setWidth(40);
-    obj.label461:setHeight(20);
-    obj.label461:setText("Esp.");
-    obj.label461:setName("label461");
-
     obj.edit589 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit589:setParent(obj.rectangle140);
-    obj.edit589:setLeft(35);
-    obj.edit589:setTop(80);
-    obj.edit589:setWidth(35);
+    obj.edit589:setLeft(150);
+    obj.edit589:setTop(55);
+    obj.edit589:setWidth(45);
     obj.edit589:setHeight(25);
-    obj.edit589:setField("esp1Comp");
+    obj.edit589:setField("agarrarComp");
     obj.edit589:setName("edit589");
-
-    obj.edit590 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit590:setParent(obj.rectangle140);
-    obj.edit590:setLeft(70);
-    obj.edit590:setTop(80);
-    obj.edit590:setWidth(35);
-    obj.edit590:setHeight(25);
-    obj.edit590:setField("esp2Comp");
-    obj.edit590:setName("edit590");
 
     obj.label462 = gui.fromHandle(_obj_newObject("label"));
     obj.label462:setParent(obj.rectangle140);
-    obj.label462:setLeft(110);
+    obj.label462:setLeft(5);
     obj.label462:setTop(85);
     obj.label462:setWidth(40);
     obj.label462:setHeight(20);
-    obj.label462:setText("Alc.");
+    obj.label462:setText("Esp.");
     obj.label462:setName("label462");
+
+    obj.edit590 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit590:setParent(obj.rectangle140);
+    obj.edit590:setLeft(35);
+    obj.edit590:setTop(80);
+    obj.edit590:setWidth(35);
+    obj.edit590:setHeight(25);
+    obj.edit590:setField("esp1Comp");
+    obj.edit590:setName("edit590");
 
     obj.edit591 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit591:setParent(obj.rectangle140);
-    obj.edit591:setLeft(140);
+    obj.edit591:setLeft(70);
     obj.edit591:setTop(80);
-    obj.edit591:setWidth(55);
+    obj.edit591:setWidth(35);
     obj.edit591:setHeight(25);
-    obj.edit591:setField("alcanceComp");
+    obj.edit591:setField("esp2Comp");
     obj.edit591:setName("edit591");
+
+    obj.label463 = gui.fromHandle(_obj_newObject("label"));
+    obj.label463:setParent(obj.rectangle140);
+    obj.label463:setLeft(110);
+    obj.label463:setTop(85);
+    obj.label463:setWidth(40);
+    obj.label463:setHeight(20);
+    obj.label463:setText("Alc.");
+    obj.label463:setName("label463");
+
+    obj.edit592 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit592:setParent(obj.rectangle140);
+    obj.edit592:setLeft(140);
+    obj.edit592:setTop(80);
+    obj.edit592:setWidth(55);
+    obj.edit592:setHeight(25);
+    obj.edit592:setField("alcanceComp");
+    obj.edit592:setName("edit592");
 
     obj.rectangle141 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle141:setParent(obj.boxDetalhesDoCompanheiro);
@@ -16580,14 +16599,14 @@ function newfrmAvatar()
     obj.button91:setText("FOR");
     obj.button91:setName("button91");
 
-    obj.edit592 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit592:setParent(obj.layout65);
-    obj.edit592:setLeft(45);
-    obj.edit592:setTop(0);
-    obj.edit592:setWidth(30);
-    obj.edit592:setHeight(25);
-    obj.edit592:setField("forComp");
-    obj.edit592:setName("edit592");
+    obj.edit593 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit593:setParent(obj.layout65);
+    obj.edit593:setLeft(45);
+    obj.edit593:setTop(0);
+    obj.edit593:setWidth(30);
+    obj.edit593:setHeight(25);
+    obj.edit593:setField("forComp");
+    obj.edit593:setName("edit593");
 
     obj.rectangle142 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle142:setParent(obj.layout65);
@@ -16600,24 +16619,24 @@ function newfrmAvatar()
     obj.rectangle142:setStrokeSize(1);
     obj.rectangle142:setName("rectangle142");
 
-    obj.label463 = gui.fromHandle(_obj_newObject("label"));
-    obj.label463:setParent(obj.layout65);
-    obj.label463:setLeft(80);
-    obj.label463:setTop(0);
-    obj.label463:setWidth(30);
-    obj.label463:setHeight(25);
-    obj.label463:setField("forModComp");
-    obj.label463:setHorzTextAlign("center");
-    obj.label463:setName("label463");
+    obj.label464 = gui.fromHandle(_obj_newObject("label"));
+    obj.label464:setParent(obj.layout65);
+    obj.label464:setLeft(80);
+    obj.label464:setTop(0);
+    obj.label464:setWidth(30);
+    obj.label464:setHeight(25);
+    obj.label464:setField("forModComp");
+    obj.label464:setHorzTextAlign("center");
+    obj.label464:setName("label464");
 
-    obj.edit593 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit593:setParent(obj.layout65);
-    obj.edit593:setLeft(115);
-    obj.edit593:setTop(0);
-    obj.edit593:setWidth(75);
-    obj.edit593:setHeight(25);
-    obj.edit593:setField("forCompDesc");
-    obj.edit593:setName("edit593");
+    obj.edit594 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit594:setParent(obj.layout65);
+    obj.edit594:setLeft(115);
+    obj.edit594:setTop(0);
+    obj.edit594:setWidth(75);
+    obj.edit594:setHeight(25);
+    obj.edit594:setField("forCompDesc");
+    obj.edit594:setName("edit594");
 
     obj.layout66 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout66:setParent(obj.rectangle141);
@@ -16636,14 +16655,14 @@ function newfrmAvatar()
     obj.button92:setText("DES");
     obj.button92:setName("button92");
 
-    obj.edit594 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit594:setParent(obj.layout66);
-    obj.edit594:setLeft(45);
-    obj.edit594:setTop(0);
-    obj.edit594:setWidth(30);
-    obj.edit594:setHeight(25);
-    obj.edit594:setField("desComp");
-    obj.edit594:setName("edit594");
+    obj.edit595 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit595:setParent(obj.layout66);
+    obj.edit595:setLeft(45);
+    obj.edit595:setTop(0);
+    obj.edit595:setWidth(30);
+    obj.edit595:setHeight(25);
+    obj.edit595:setField("desComp");
+    obj.edit595:setName("edit595");
 
     obj.rectangle143 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle143:setParent(obj.layout66);
@@ -16656,24 +16675,24 @@ function newfrmAvatar()
     obj.rectangle143:setStrokeSize(1);
     obj.rectangle143:setName("rectangle143");
 
-    obj.label464 = gui.fromHandle(_obj_newObject("label"));
-    obj.label464:setParent(obj.layout66);
-    obj.label464:setLeft(80);
-    obj.label464:setTop(0);
-    obj.label464:setWidth(30);
-    obj.label464:setHeight(25);
-    obj.label464:setField("desModComp");
-    obj.label464:setHorzTextAlign("center");
-    obj.label464:setName("label464");
+    obj.label465 = gui.fromHandle(_obj_newObject("label"));
+    obj.label465:setParent(obj.layout66);
+    obj.label465:setLeft(80);
+    obj.label465:setTop(0);
+    obj.label465:setWidth(30);
+    obj.label465:setHeight(25);
+    obj.label465:setField("desModComp");
+    obj.label465:setHorzTextAlign("center");
+    obj.label465:setName("label465");
 
-    obj.edit595 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit595:setParent(obj.layout66);
-    obj.edit595:setLeft(115);
-    obj.edit595:setTop(0);
-    obj.edit595:setWidth(75);
-    obj.edit595:setHeight(25);
-    obj.edit595:setField("desCompDesc");
-    obj.edit595:setName("edit595");
+    obj.edit596 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit596:setParent(obj.layout66);
+    obj.edit596:setLeft(115);
+    obj.edit596:setTop(0);
+    obj.edit596:setWidth(75);
+    obj.edit596:setHeight(25);
+    obj.edit596:setField("desCompDesc");
+    obj.edit596:setName("edit596");
 
     obj.layout67 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout67:setParent(obj.rectangle141);
@@ -16692,14 +16711,14 @@ function newfrmAvatar()
     obj.button93:setText("CON");
     obj.button93:setName("button93");
 
-    obj.edit596 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit596:setParent(obj.layout67);
-    obj.edit596:setLeft(45);
-    obj.edit596:setTop(0);
-    obj.edit596:setWidth(30);
-    obj.edit596:setHeight(25);
-    obj.edit596:setField("conComp");
-    obj.edit596:setName("edit596");
+    obj.edit597 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit597:setParent(obj.layout67);
+    obj.edit597:setLeft(45);
+    obj.edit597:setTop(0);
+    obj.edit597:setWidth(30);
+    obj.edit597:setHeight(25);
+    obj.edit597:setField("conComp");
+    obj.edit597:setName("edit597");
 
     obj.rectangle144 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle144:setParent(obj.layout67);
@@ -16712,24 +16731,24 @@ function newfrmAvatar()
     obj.rectangle144:setStrokeSize(1);
     obj.rectangle144:setName("rectangle144");
 
-    obj.label465 = gui.fromHandle(_obj_newObject("label"));
-    obj.label465:setParent(obj.layout67);
-    obj.label465:setLeft(80);
-    obj.label465:setTop(0);
-    obj.label465:setWidth(30);
-    obj.label465:setHeight(25);
-    obj.label465:setField("conModComp");
-    obj.label465:setHorzTextAlign("center");
-    obj.label465:setName("label465");
+    obj.label466 = gui.fromHandle(_obj_newObject("label"));
+    obj.label466:setParent(obj.layout67);
+    obj.label466:setLeft(80);
+    obj.label466:setTop(0);
+    obj.label466:setWidth(30);
+    obj.label466:setHeight(25);
+    obj.label466:setField("conModComp");
+    obj.label466:setHorzTextAlign("center");
+    obj.label466:setName("label466");
 
-    obj.edit597 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit597:setParent(obj.layout67);
-    obj.edit597:setLeft(115);
-    obj.edit597:setTop(0);
-    obj.edit597:setWidth(75);
-    obj.edit597:setHeight(25);
-    obj.edit597:setField("conCompDesc");
-    obj.edit597:setName("edit597");
+    obj.edit598 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit598:setParent(obj.layout67);
+    obj.edit598:setLeft(115);
+    obj.edit598:setTop(0);
+    obj.edit598:setWidth(75);
+    obj.edit598:setHeight(25);
+    obj.edit598:setField("conCompDesc");
+    obj.edit598:setName("edit598");
 
     obj.layout68 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout68:setParent(obj.rectangle141);
@@ -16748,14 +16767,14 @@ function newfrmAvatar()
     obj.button94:setText("INT");
     obj.button94:setName("button94");
 
-    obj.edit598 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit598:setParent(obj.layout68);
-    obj.edit598:setLeft(45);
-    obj.edit598:setTop(0);
-    obj.edit598:setWidth(30);
-    obj.edit598:setHeight(25);
-    obj.edit598:setField("intComp");
-    obj.edit598:setName("edit598");
+    obj.edit599 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit599:setParent(obj.layout68);
+    obj.edit599:setLeft(45);
+    obj.edit599:setTop(0);
+    obj.edit599:setWidth(30);
+    obj.edit599:setHeight(25);
+    obj.edit599:setField("intComp");
+    obj.edit599:setName("edit599");
 
     obj.rectangle145 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle145:setParent(obj.layout68);
@@ -16768,24 +16787,24 @@ function newfrmAvatar()
     obj.rectangle145:setStrokeSize(1);
     obj.rectangle145:setName("rectangle145");
 
-    obj.label466 = gui.fromHandle(_obj_newObject("label"));
-    obj.label466:setParent(obj.layout68);
-    obj.label466:setLeft(80);
-    obj.label466:setTop(0);
-    obj.label466:setWidth(30);
-    obj.label466:setHeight(25);
-    obj.label466:setField("intModComp");
-    obj.label466:setHorzTextAlign("center");
-    obj.label466:setName("label466");
+    obj.label467 = gui.fromHandle(_obj_newObject("label"));
+    obj.label467:setParent(obj.layout68);
+    obj.label467:setLeft(80);
+    obj.label467:setTop(0);
+    obj.label467:setWidth(30);
+    obj.label467:setHeight(25);
+    obj.label467:setField("intModComp");
+    obj.label467:setHorzTextAlign("center");
+    obj.label467:setName("label467");
 
-    obj.edit599 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit599:setParent(obj.layout68);
-    obj.edit599:setLeft(115);
-    obj.edit599:setTop(0);
-    obj.edit599:setWidth(75);
-    obj.edit599:setHeight(25);
-    obj.edit599:setField("intCompDesc");
-    obj.edit599:setName("edit599");
+    obj.edit600 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit600:setParent(obj.layout68);
+    obj.edit600:setLeft(115);
+    obj.edit600:setTop(0);
+    obj.edit600:setWidth(75);
+    obj.edit600:setHeight(25);
+    obj.edit600:setField("intCompDesc");
+    obj.edit600:setName("edit600");
 
     obj.layout69 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout69:setParent(obj.rectangle141);
@@ -16804,14 +16823,14 @@ function newfrmAvatar()
     obj.button95:setText("SAB");
     obj.button95:setName("button95");
 
-    obj.edit600 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit600:setParent(obj.layout69);
-    obj.edit600:setLeft(45);
-    obj.edit600:setTop(0);
-    obj.edit600:setWidth(30);
-    obj.edit600:setHeight(25);
-    obj.edit600:setField("sabComp");
-    obj.edit600:setName("edit600");
+    obj.edit601 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit601:setParent(obj.layout69);
+    obj.edit601:setLeft(45);
+    obj.edit601:setTop(0);
+    obj.edit601:setWidth(30);
+    obj.edit601:setHeight(25);
+    obj.edit601:setField("sabComp");
+    obj.edit601:setName("edit601");
 
     obj.rectangle146 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle146:setParent(obj.layout69);
@@ -16824,24 +16843,24 @@ function newfrmAvatar()
     obj.rectangle146:setStrokeSize(1);
     obj.rectangle146:setName("rectangle146");
 
-    obj.label467 = gui.fromHandle(_obj_newObject("label"));
-    obj.label467:setParent(obj.layout69);
-    obj.label467:setLeft(80);
-    obj.label467:setTop(0);
-    obj.label467:setWidth(30);
-    obj.label467:setHeight(25);
-    obj.label467:setField("sabModComp");
-    obj.label467:setHorzTextAlign("center");
-    obj.label467:setName("label467");
+    obj.label468 = gui.fromHandle(_obj_newObject("label"));
+    obj.label468:setParent(obj.layout69);
+    obj.label468:setLeft(80);
+    obj.label468:setTop(0);
+    obj.label468:setWidth(30);
+    obj.label468:setHeight(25);
+    obj.label468:setField("sabModComp");
+    obj.label468:setHorzTextAlign("center");
+    obj.label468:setName("label468");
 
-    obj.edit601 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit601:setParent(obj.layout69);
-    obj.edit601:setLeft(115);
-    obj.edit601:setTop(0);
-    obj.edit601:setWidth(75);
-    obj.edit601:setHeight(25);
-    obj.edit601:setField("sabCompDesc");
-    obj.edit601:setName("edit601");
+    obj.edit602 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit602:setParent(obj.layout69);
+    obj.edit602:setLeft(115);
+    obj.edit602:setTop(0);
+    obj.edit602:setWidth(75);
+    obj.edit602:setHeight(25);
+    obj.edit602:setField("sabCompDesc");
+    obj.edit602:setName("edit602");
 
     obj.layout70 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout70:setParent(obj.rectangle141);
@@ -16860,14 +16879,14 @@ function newfrmAvatar()
     obj.button96:setText("CAR");
     obj.button96:setName("button96");
 
-    obj.edit602 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit602:setParent(obj.layout70);
-    obj.edit602:setLeft(45);
-    obj.edit602:setTop(0);
-    obj.edit602:setWidth(30);
-    obj.edit602:setHeight(25);
-    obj.edit602:setField("carComp");
-    obj.edit602:setName("edit602");
+    obj.edit603 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit603:setParent(obj.layout70);
+    obj.edit603:setLeft(45);
+    obj.edit603:setTop(0);
+    obj.edit603:setWidth(30);
+    obj.edit603:setHeight(25);
+    obj.edit603:setField("carComp");
+    obj.edit603:setName("edit603");
 
     obj.rectangle147 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle147:setParent(obj.layout70);
@@ -16880,24 +16899,24 @@ function newfrmAvatar()
     obj.rectangle147:setStrokeSize(1);
     obj.rectangle147:setName("rectangle147");
 
-    obj.label468 = gui.fromHandle(_obj_newObject("label"));
-    obj.label468:setParent(obj.layout70);
-    obj.label468:setLeft(80);
-    obj.label468:setTop(0);
-    obj.label468:setWidth(30);
-    obj.label468:setHeight(25);
-    obj.label468:setField("carModComp");
-    obj.label468:setHorzTextAlign("center");
-    obj.label468:setName("label468");
+    obj.label469 = gui.fromHandle(_obj_newObject("label"));
+    obj.label469:setParent(obj.layout70);
+    obj.label469:setLeft(80);
+    obj.label469:setTop(0);
+    obj.label469:setWidth(30);
+    obj.label469:setHeight(25);
+    obj.label469:setField("carModComp");
+    obj.label469:setHorzTextAlign("center");
+    obj.label469:setName("label469");
 
-    obj.edit603 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit603:setParent(obj.layout70);
-    obj.edit603:setLeft(115);
-    obj.edit603:setTop(0);
-    obj.edit603:setWidth(75);
-    obj.edit603:setHeight(25);
-    obj.edit603:setField("carCompDesc");
-    obj.edit603:setName("edit603");
+    obj.edit604 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit604:setParent(obj.layout70);
+    obj.edit604:setLeft(115);
+    obj.edit604:setTop(0);
+    obj.edit604:setWidth(75);
+    obj.edit604:setHeight(25);
+    obj.edit604:setField("carCompDesc");
+    obj.edit604:setName("edit604");
 
     obj.rectangle148 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle148:setParent(obj.boxDetalhesDoCompanheiro);
@@ -16925,23 +16944,23 @@ function newfrmAvatar()
     obj.button97:setText("FORT");
     obj.button97:setName("button97");
 
-    obj.edit604 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit604:setParent(obj.layout71);
-    obj.edit604:setLeft(45);
-    obj.edit604:setTop(0);
-    obj.edit604:setWidth(30);
-    obj.edit604:setHeight(25);
-    obj.edit604:setField("fortComp");
-    obj.edit604:setName("edit604");
-
     obj.edit605 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit605:setParent(obj.layout71);
-    obj.edit605:setLeft(80);
+    obj.edit605:setLeft(45);
     obj.edit605:setTop(0);
-    obj.edit605:setWidth(110);
+    obj.edit605:setWidth(30);
     obj.edit605:setHeight(25);
-    obj.edit605:setField("fortCompDesc");
+    obj.edit605:setField("fortComp");
     obj.edit605:setName("edit605");
+
+    obj.edit606 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit606:setParent(obj.layout71);
+    obj.edit606:setLeft(80);
+    obj.edit606:setTop(0);
+    obj.edit606:setWidth(110);
+    obj.edit606:setHeight(25);
+    obj.edit606:setField("fortCompDesc");
+    obj.edit606:setName("edit606");
 
     obj.layout72 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout72:setParent(obj.rectangle148);
@@ -16960,23 +16979,23 @@ function newfrmAvatar()
     obj.button98:setText("REF");
     obj.button98:setName("button98");
 
-    obj.edit606 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit606:setParent(obj.layout72);
-    obj.edit606:setLeft(45);
-    obj.edit606:setTop(0);
-    obj.edit606:setWidth(30);
-    obj.edit606:setHeight(25);
-    obj.edit606:setField("refComp");
-    obj.edit606:setName("edit606");
-
     obj.edit607 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit607:setParent(obj.layout72);
-    obj.edit607:setLeft(80);
+    obj.edit607:setLeft(45);
     obj.edit607:setTop(0);
-    obj.edit607:setWidth(110);
+    obj.edit607:setWidth(30);
     obj.edit607:setHeight(25);
-    obj.edit607:setField("refCompDesc");
+    obj.edit607:setField("refComp");
     obj.edit607:setName("edit607");
+
+    obj.edit608 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit608:setParent(obj.layout72);
+    obj.edit608:setLeft(80);
+    obj.edit608:setTop(0);
+    obj.edit608:setWidth(110);
+    obj.edit608:setHeight(25);
+    obj.edit608:setField("refCompDesc");
+    obj.edit608:setName("edit608");
 
     obj.layout73 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout73:setParent(obj.rectangle148);
@@ -16995,23 +17014,23 @@ function newfrmAvatar()
     obj.button99:setText("VON");
     obj.button99:setName("button99");
 
-    obj.edit608 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit608:setParent(obj.layout73);
-    obj.edit608:setLeft(45);
-    obj.edit608:setTop(0);
-    obj.edit608:setWidth(30);
-    obj.edit608:setHeight(25);
-    obj.edit608:setField("vonComp");
-    obj.edit608:setName("edit608");
-
     obj.edit609 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit609:setParent(obj.layout73);
-    obj.edit609:setLeft(80);
+    obj.edit609:setLeft(45);
     obj.edit609:setTop(0);
-    obj.edit609:setWidth(110);
+    obj.edit609:setWidth(30);
     obj.edit609:setHeight(25);
-    obj.edit609:setField("vonCompDesc");
+    obj.edit609:setField("vonComp");
     obj.edit609:setName("edit609");
+
+    obj.edit610 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit610:setParent(obj.layout73);
+    obj.edit610:setLeft(80);
+    obj.edit610:setTop(0);
+    obj.edit610:setWidth(110);
+    obj.edit610:setHeight(25);
+    obj.edit610:setField("vonCompDesc");
+    obj.edit610:setName("edit610");
 
     obj.rectangle149 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle149:setParent(obj.boxDetalhesDoCompanheiro);
@@ -17022,15 +17041,15 @@ function newfrmAvatar()
     obj.rectangle149:setColor("black");
     obj.rectangle149:setName("rectangle149");
 
-    obj.label469 = gui.fromHandle(_obj_newObject("label"));
-    obj.label469:setParent(obj.rectangle149);
-    obj.label469:setLeft(0);
-    obj.label469:setTop(0);
-    obj.label469:setWidth(300);
-    obj.label469:setHeight(25);
-    obj.label469:setText("PERÍCIAS");
-    obj.label469:setHorzTextAlign("center");
-    obj.label469:setName("label469");
+    obj.label470 = gui.fromHandle(_obj_newObject("label"));
+    obj.label470:setParent(obj.rectangle149);
+    obj.label470:setLeft(0);
+    obj.label470:setTop(0);
+    obj.label470:setWidth(300);
+    obj.label470:setHeight(25);
+    obj.label470:setText("PERÍCIAS");
+    obj.label470:setHorzTextAlign("center");
+    obj.label470:setName("label470");
 
     obj.textEditor19 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor19:setParent(obj.rectangle149);
@@ -17050,15 +17069,15 @@ function newfrmAvatar()
     obj.rectangle150:setColor("black");
     obj.rectangle150:setName("rectangle150");
 
-    obj.label470 = gui.fromHandle(_obj_newObject("label"));
-    obj.label470:setParent(obj.rectangle150);
-    obj.label470:setLeft(0);
-    obj.label470:setTop(0);
-    obj.label470:setWidth(300);
-    obj.label470:setHeight(25);
-    obj.label470:setText("TALENTOS");
-    obj.label470:setHorzTextAlign("center");
-    obj.label470:setName("label470");
+    obj.label471 = gui.fromHandle(_obj_newObject("label"));
+    obj.label471:setParent(obj.rectangle150);
+    obj.label471:setLeft(0);
+    obj.label471:setTop(0);
+    obj.label471:setWidth(300);
+    obj.label471:setHeight(25);
+    obj.label471:setText("TALENTOS");
+    obj.label471:setHorzTextAlign("center");
+    obj.label471:setName("label471");
 
     obj.textEditor20 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor20:setParent(obj.rectangle150);
@@ -17078,15 +17097,15 @@ function newfrmAvatar()
     obj.rectangle151:setColor("black");
     obj.rectangle151:setName("rectangle151");
 
-    obj.label471 = gui.fromHandle(_obj_newObject("label"));
-    obj.label471:setParent(obj.rectangle151);
-    obj.label471:setLeft(0);
-    obj.label471:setTop(0);
-    obj.label471:setWidth(300);
-    obj.label471:setHeight(25);
-    obj.label471:setText("HABILIDADES");
-    obj.label471:setHorzTextAlign("center");
-    obj.label471:setName("label471");
+    obj.label472 = gui.fromHandle(_obj_newObject("label"));
+    obj.label472:setParent(obj.rectangle151);
+    obj.label472:setLeft(0);
+    obj.label472:setTop(0);
+    obj.label472:setWidth(300);
+    obj.label472:setHeight(25);
+    obj.label472:setText("HABILIDADES");
+    obj.label472:setHorzTextAlign("center");
+    obj.label472:setName("label472");
 
     obj.textEditor21 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor21:setParent(obj.rectangle151);
@@ -17106,15 +17125,15 @@ function newfrmAvatar()
     obj.rectangle152:setColor("black");
     obj.rectangle152:setName("rectangle152");
 
-    obj.label472 = gui.fromHandle(_obj_newObject("label"));
-    obj.label472:setParent(obj.rectangle152);
-    obj.label472:setLeft(0);
-    obj.label472:setTop(0);
-    obj.label472:setWidth(300);
-    obj.label472:setHeight(25);
-    obj.label472:setText("INVENTARIO");
-    obj.label472:setHorzTextAlign("center");
-    obj.label472:setName("label472");
+    obj.label473 = gui.fromHandle(_obj_newObject("label"));
+    obj.label473:setParent(obj.rectangle152);
+    obj.label473:setLeft(0);
+    obj.label473:setTop(0);
+    obj.label473:setWidth(300);
+    obj.label473:setHeight(25);
+    obj.label473:setText("INVENTARIO");
+    obj.label473:setHorzTextAlign("center");
+    obj.label473:setName("label473");
 
     obj.textEditor22 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor22:setParent(obj.rectangle152);
@@ -17125,45 +17144,45 @@ function newfrmAvatar()
     obj.textEditor22:setField("inventarioComp");
     obj.textEditor22:setName("textEditor22");
 
-    obj.label473 = gui.fromHandle(_obj_newObject("label"));
-    obj.label473:setParent(obj.rectangle152);
-    obj.label473:setLeft(55);
-    obj.label473:setTop(275);
-    obj.label473:setWidth(50);
-    obj.label473:setHeight(20);
-    obj.label473:setText("PESO");
-    obj.label473:setName("label473");
-
-    obj.edit610 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit610:setParent(obj.rectangle152);
-    obj.edit610:setLeft(95);
-    obj.edit610:setTop(270);
-    obj.edit610:setWidth(70);
-    obj.edit610:setHeight(25);
-    obj.edit610:setField("pesoInventorioComp");
-    obj.edit610:setVertTextAlign("center");
-    obj.edit610:setHorzTextAlign("center");
-    obj.edit610:setName("edit610");
-
     obj.label474 = gui.fromHandle(_obj_newObject("label"));
     obj.label474:setParent(obj.rectangle152);
-    obj.label474:setLeft(175);
+    obj.label474:setLeft(55);
     obj.label474:setTop(275);
     obj.label474:setWidth(50);
     obj.label474:setHeight(20);
-    obj.label474:setText("PREÇO");
+    obj.label474:setText("PESO");
     obj.label474:setName("label474");
 
     obj.edit611 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit611:setParent(obj.rectangle152);
-    obj.edit611:setLeft(225);
+    obj.edit611:setLeft(95);
     obj.edit611:setTop(270);
     obj.edit611:setWidth(70);
     obj.edit611:setHeight(25);
-    obj.edit611:setField("precoInventorioComp");
+    obj.edit611:setField("pesoInventorioComp");
     obj.edit611:setVertTextAlign("center");
     obj.edit611:setHorzTextAlign("center");
     obj.edit611:setName("edit611");
+
+    obj.label475 = gui.fromHandle(_obj_newObject("label"));
+    obj.label475:setParent(obj.rectangle152);
+    obj.label475:setLeft(175);
+    obj.label475:setTop(275);
+    obj.label475:setWidth(50);
+    obj.label475:setHeight(20);
+    obj.label475:setText("PREÇO");
+    obj.label475:setName("label475");
+
+    obj.edit612 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit612:setParent(obj.rectangle152);
+    obj.edit612:setLeft(225);
+    obj.edit612:setTop(270);
+    obj.edit612:setWidth(70);
+    obj.edit612:setHeight(25);
+    obj.edit612:setField("precoInventorioComp");
+    obj.edit612:setVertTextAlign("center");
+    obj.edit612:setHorzTextAlign("center");
+    obj.edit612:setName("edit612");
 
     obj.dataLink50 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink50:setParent(obj.boxDetalhesDoCompanheiro);
@@ -17179,15 +17198,15 @@ function newfrmAvatar()
     obj.rectangle153:setColor("black");
     obj.rectangle153:setName("rectangle153");
 
-    obj.label475 = gui.fromHandle(_obj_newObject("label"));
-    obj.label475:setParent(obj.rectangle153);
-    obj.label475:setLeft(0);
-    obj.label475:setTop(0);
-    obj.label475:setWidth(300);
-    obj.label475:setHeight(25);
-    obj.label475:setText("ATAQUES");
-    obj.label475:setHorzTextAlign("center");
-    obj.label475:setName("label475");
+    obj.label476 = gui.fromHandle(_obj_newObject("label"));
+    obj.label476:setParent(obj.rectangle153);
+    obj.label476:setLeft(0);
+    obj.label476:setTop(0);
+    obj.label476:setWidth(300);
+    obj.label476:setHeight(25);
+    obj.label476:setText("ATAQUES");
+    obj.label476:setHorzTextAlign("center");
+    obj.label476:setName("label476");
 
     obj.textEditor23 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor23:setParent(obj.rectangle153);
@@ -17198,14 +17217,14 @@ function newfrmAvatar()
     obj.textEditor23:setField("ataquesComp");
     obj.textEditor23:setName("textEditor23");
 
-    obj.label476 = gui.fromHandle(_obj_newObject("label"));
-    obj.label476:setParent(obj.rectangle153);
-    obj.label476:setLeft(5);
-    obj.label476:setTop(150);
-    obj.label476:setWidth(100);
-    obj.label476:setHeight(20);
-    obj.label476:setText("Macro");
-    obj.label476:setName("label476");
+    obj.label477 = gui.fromHandle(_obj_newObject("label"));
+    obj.label477:setParent(obj.rectangle153);
+    obj.label477:setLeft(5);
+    obj.label477:setTop(150);
+    obj.label477:setWidth(100);
+    obj.label477:setHeight(20);
+    obj.label477:setText("Macro");
+    obj.label477:setName("label477");
 
 
 					local function lines(str)
@@ -17248,15 +17267,15 @@ function newfrmAvatar()
     obj.rectangle154:setColor("black");
     obj.rectangle154:setName("rectangle154");
 
-    obj.label477 = gui.fromHandle(_obj_newObject("label"));
-    obj.label477:setParent(obj.rectangle154);
-    obj.label477:setLeft(0);
-    obj.label477:setTop(0);
-    obj.label477:setWidth(300);
-    obj.label477:setHeight(25);
-    obj.label477:setText("OUTROS");
-    obj.label477:setHorzTextAlign("center");
-    obj.label477:setName("label477");
+    obj.label478 = gui.fromHandle(_obj_newObject("label"));
+    obj.label478:setParent(obj.rectangle154);
+    obj.label478:setLeft(0);
+    obj.label478:setTop(0);
+    obj.label478:setWidth(300);
+    obj.label478:setHeight(25);
+    obj.label478:setText("OUTROS");
+    obj.label478:setHorzTextAlign("center");
+    obj.label478:setName("label478");
 
     obj.textEditor25 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor25:setParent(obj.rectangle154);
@@ -17347,24 +17366,24 @@ function newfrmAvatar()
     obj.rectangle157:setColor("black");
     obj.rectangle157:setName("rectangle157");
 
-    obj.label478 = gui.fromHandle(_obj_newObject("label"));
-    obj.label478:setParent(obj.rectangle157);
-    obj.label478:setLeft(3);
-    obj.label478:setTop(1);
-    obj.label478:setWidth(100);
-    obj.label478:setHeight(20);
-    obj.label478:setText("DESCRIÇÃO");
-    obj.label478:setName("label478");
-
     obj.label479 = gui.fromHandle(_obj_newObject("label"));
     obj.label479:setParent(obj.rectangle157);
-    obj.label479:setLeft(10);
-    obj.label479:setTop(25);
-    obj.label479:setWidth(90);
+    obj.label479:setLeft(3);
+    obj.label479:setTop(1);
+    obj.label479:setWidth(100);
     obj.label479:setHeight(20);
-    obj.label479:setText("TAMANHO");
-    obj.label479:setHorzTextAlign("center");
+    obj.label479:setText("DESCRIÇÃO");
     obj.label479:setName("label479");
+
+    obj.label480 = gui.fromHandle(_obj_newObject("label"));
+    obj.label480:setParent(obj.rectangle157);
+    obj.label480:setLeft(10);
+    obj.label480:setTop(25);
+    obj.label480:setWidth(90);
+    obj.label480:setHeight(20);
+    obj.label480:setText("TAMANHO");
+    obj.label480:setHorzTextAlign("center");
+    obj.label480:setName("label480");
 
     obj.comboBox6 = gui.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox6:setParent(obj.rectangle157);
@@ -17387,225 +17406,225 @@ function newfrmAvatar()
     obj.checkBox32:setText("Quadrúpede");
     obj.checkBox32:setName("checkBox32");
 
-    obj.label480 = gui.fromHandle(_obj_newObject("label"));
-    obj.label480:setParent(obj.rectangle157);
-    obj.label480:setLeft(10);
-    obj.label480:setTop(50);
-    obj.label480:setWidth(90);
-    obj.label480:setHeight(20);
-    obj.label480:setText("ALTURA");
-    obj.label480:setHorzTextAlign("center");
-    obj.label480:setName("label480");
-
-    obj.edit612 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit612:setParent(obj.rectangle157);
-    obj.edit612:setLeft(100);
-    obj.edit612:setTop(50);
-    obj.edit612:setWidth(200);
-    obj.edit612:setHeight(25);
-    obj.edit612:setField("altura");
-    obj.edit612:setVertTextAlign("center");
-    obj.edit612:setName("edit612");
-
     obj.label481 = gui.fromHandle(_obj_newObject("label"));
     obj.label481:setParent(obj.rectangle157);
     obj.label481:setLeft(10);
-    obj.label481:setTop(75);
+    obj.label481:setTop(50);
     obj.label481:setWidth(90);
     obj.label481:setHeight(20);
-    obj.label481:setText("PESO");
+    obj.label481:setText("ALTURA");
     obj.label481:setHorzTextAlign("center");
     obj.label481:setName("label481");
 
     obj.edit613 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit613:setParent(obj.rectangle157);
     obj.edit613:setLeft(100);
-    obj.edit613:setTop(75);
+    obj.edit613:setTop(50);
     obj.edit613:setWidth(200);
     obj.edit613:setHeight(25);
-    obj.edit613:setField("peso");
+    obj.edit613:setField("altura");
     obj.edit613:setVertTextAlign("center");
     obj.edit613:setName("edit613");
 
     obj.label482 = gui.fromHandle(_obj_newObject("label"));
     obj.label482:setParent(obj.rectangle157);
-    obj.label482:setLeft(310);
-    obj.label482:setTop(25);
+    obj.label482:setLeft(10);
+    obj.label482:setTop(75);
     obj.label482:setWidth(90);
     obj.label482:setHeight(20);
-    obj.label482:setText("IDADE");
+    obj.label482:setText("PESO");
     obj.label482:setHorzTextAlign("center");
     obj.label482:setName("label482");
 
     obj.edit614 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit614:setParent(obj.rectangle157);
-    obj.edit614:setLeft(400);
-    obj.edit614:setTop(25);
+    obj.edit614:setLeft(100);
+    obj.edit614:setTop(75);
     obj.edit614:setWidth(200);
     obj.edit614:setHeight(25);
-    obj.edit614:setField("idade");
+    obj.edit614:setField("peso");
     obj.edit614:setVertTextAlign("center");
     obj.edit614:setName("edit614");
 
     obj.label483 = gui.fromHandle(_obj_newObject("label"));
     obj.label483:setParent(obj.rectangle157);
     obj.label483:setLeft(310);
-    obj.label483:setTop(50);
+    obj.label483:setTop(25);
     obj.label483:setWidth(90);
     obj.label483:setHeight(20);
-    obj.label483:setText("SEXO");
+    obj.label483:setText("IDADE");
     obj.label483:setHorzTextAlign("center");
     obj.label483:setName("label483");
 
     obj.edit615 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit615:setParent(obj.rectangle157);
     obj.edit615:setLeft(400);
-    obj.edit615:setTop(50);
+    obj.edit615:setTop(25);
     obj.edit615:setWidth(200);
     obj.edit615:setHeight(25);
-    obj.edit615:setField("sexo");
+    obj.edit615:setField("idade");
     obj.edit615:setVertTextAlign("center");
     obj.edit615:setName("edit615");
 
     obj.label484 = gui.fromHandle(_obj_newObject("label"));
     obj.label484:setParent(obj.rectangle157);
     obj.label484:setLeft(310);
-    obj.label484:setTop(75);
+    obj.label484:setTop(50);
     obj.label484:setWidth(90);
     obj.label484:setHeight(20);
-    obj.label484:setText("OUTROS");
+    obj.label484:setText("SEXO");
     obj.label484:setHorzTextAlign("center");
     obj.label484:setName("label484");
 
     obj.edit616 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit616:setParent(obj.rectangle157);
     obj.edit616:setLeft(400);
-    obj.edit616:setTop(75);
+    obj.edit616:setTop(50);
     obj.edit616:setWidth(200);
     obj.edit616:setHeight(25);
-    obj.edit616:setField("aparenciaOutros");
+    obj.edit616:setField("sexo");
     obj.edit616:setVertTextAlign("center");
     obj.edit616:setName("edit616");
 
     obj.label485 = gui.fromHandle(_obj_newObject("label"));
     obj.label485:setParent(obj.rectangle157);
-    obj.label485:setLeft(610);
-    obj.label485:setTop(25);
+    obj.label485:setLeft(310);
+    obj.label485:setTop(75);
     obj.label485:setWidth(90);
     obj.label485:setHeight(20);
-    obj.label485:setText("OLHOS");
+    obj.label485:setText("OUTROS");
     obj.label485:setHorzTextAlign("center");
     obj.label485:setName("label485");
 
     obj.edit617 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit617:setParent(obj.rectangle157);
-    obj.edit617:setLeft(700);
-    obj.edit617:setTop(25);
+    obj.edit617:setLeft(400);
+    obj.edit617:setTop(75);
     obj.edit617:setWidth(200);
     obj.edit617:setHeight(25);
-    obj.edit617:setField("aparenciaOlhos");
+    obj.edit617:setField("aparenciaOutros");
     obj.edit617:setVertTextAlign("center");
     obj.edit617:setName("edit617");
 
     obj.label486 = gui.fromHandle(_obj_newObject("label"));
     obj.label486:setParent(obj.rectangle157);
     obj.label486:setLeft(610);
-    obj.label486:setTop(50);
+    obj.label486:setTop(25);
     obj.label486:setWidth(90);
     obj.label486:setHeight(20);
-    obj.label486:setText("PELE");
+    obj.label486:setText("OLHOS");
     obj.label486:setHorzTextAlign("center");
     obj.label486:setName("label486");
 
     obj.edit618 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit618:setParent(obj.rectangle157);
     obj.edit618:setLeft(700);
-    obj.edit618:setTop(50);
+    obj.edit618:setTop(25);
     obj.edit618:setWidth(200);
     obj.edit618:setHeight(25);
-    obj.edit618:setField("pele");
+    obj.edit618:setField("aparenciaOlhos");
     obj.edit618:setVertTextAlign("center");
     obj.edit618:setName("edit618");
 
     obj.label487 = gui.fromHandle(_obj_newObject("label"));
     obj.label487:setParent(obj.rectangle157);
     obj.label487:setLeft(610);
-    obj.label487:setTop(75);
+    obj.label487:setTop(50);
     obj.label487:setWidth(90);
     obj.label487:setHeight(20);
-    obj.label487:setText("CABELO");
+    obj.label487:setText("PELE");
     obj.label487:setHorzTextAlign("center");
     obj.label487:setName("label487");
 
     obj.edit619 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit619:setParent(obj.rectangle157);
     obj.edit619:setLeft(700);
-    obj.edit619:setTop(75);
+    obj.edit619:setTop(50);
     obj.edit619:setWidth(200);
     obj.edit619:setHeight(25);
-    obj.edit619:setField("cabelo");
+    obj.edit619:setField("pele");
     obj.edit619:setVertTextAlign("center");
     obj.edit619:setName("edit619");
 
     obj.label488 = gui.fromHandle(_obj_newObject("label"));
     obj.label488:setParent(obj.rectangle157);
-    obj.label488:setLeft(910);
-    obj.label488:setTop(25);
+    obj.label488:setLeft(610);
+    obj.label488:setTop(75);
     obj.label488:setWidth(90);
     obj.label488:setHeight(20);
-    obj.label488:setText("REINO");
+    obj.label488:setText("CABELO");
     obj.label488:setHorzTextAlign("center");
     obj.label488:setName("label488");
 
     obj.edit620 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit620:setParent(obj.rectangle157);
-    obj.edit620:setLeft(1000);
-    obj.edit620:setTop(25);
+    obj.edit620:setLeft(700);
+    obj.edit620:setTop(75);
     obj.edit620:setWidth(200);
     obj.edit620:setHeight(25);
-    obj.edit620:setField("reino");
+    obj.edit620:setField("cabelo");
     obj.edit620:setVertTextAlign("center");
     obj.edit620:setName("edit620");
 
     obj.label489 = gui.fromHandle(_obj_newObject("label"));
     obj.label489:setParent(obj.rectangle157);
     obj.label489:setLeft(910);
-    obj.label489:setTop(50);
+    obj.label489:setTop(25);
     obj.label489:setWidth(90);
     obj.label489:setHeight(20);
-    obj.label489:setText("REGIÃO");
+    obj.label489:setText("REINO");
     obj.label489:setHorzTextAlign("center");
     obj.label489:setName("label489");
 
     obj.edit621 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit621:setParent(obj.rectangle157);
     obj.edit621:setLeft(1000);
-    obj.edit621:setTop(50);
+    obj.edit621:setTop(25);
     obj.edit621:setWidth(200);
     obj.edit621:setHeight(25);
-    obj.edit621:setField("regiao");
+    obj.edit621:setField("reino");
     obj.edit621:setVertTextAlign("center");
     obj.edit621:setName("edit621");
 
     obj.label490 = gui.fromHandle(_obj_newObject("label"));
     obj.label490:setParent(obj.rectangle157);
     obj.label490:setLeft(910);
-    obj.label490:setTop(75);
+    obj.label490:setTop(50);
     obj.label490:setWidth(90);
     obj.label490:setHeight(20);
-    obj.label490:setText("CIDADE");
+    obj.label490:setText("REGIÃO");
     obj.label490:setHorzTextAlign("center");
     obj.label490:setName("label490");
 
     obj.edit622 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit622:setParent(obj.rectangle157);
     obj.edit622:setLeft(1000);
-    obj.edit622:setTop(75);
+    obj.edit622:setTop(50);
     obj.edit622:setWidth(200);
     obj.edit622:setHeight(25);
-    obj.edit622:setField("cidade");
+    obj.edit622:setField("regiao");
     obj.edit622:setVertTextAlign("center");
     obj.edit622:setName("edit622");
+
+    obj.label491 = gui.fromHandle(_obj_newObject("label"));
+    obj.label491:setParent(obj.rectangle157);
+    obj.label491:setLeft(910);
+    obj.label491:setTop(75);
+    obj.label491:setWidth(90);
+    obj.label491:setHeight(20);
+    obj.label491:setText("CIDADE");
+    obj.label491:setHorzTextAlign("center");
+    obj.label491:setName("label491");
+
+    obj.edit623 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit623:setParent(obj.rectangle157);
+    obj.edit623:setLeft(1000);
+    obj.edit623:setTop(75);
+    obj.edit623:setWidth(200);
+    obj.edit623:setHeight(25);
+    obj.edit623:setField("cidade");
+    obj.edit623:setVertTextAlign("center");
+    obj.edit623:setName("edit623");
 
     obj.dataLink51 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink51:setParent(obj.scrollBox9);
@@ -17626,14 +17645,14 @@ function newfrmAvatar()
     obj.rectangle158:setColor("black");
     obj.rectangle158:setName("rectangle158");
 
-    obj.label491 = gui.fromHandle(_obj_newObject("label"));
-    obj.label491:setParent(obj.layout74);
-    obj.label491:setLeft(5);
-    obj.label491:setTop(1);
-    obj.label491:setWidth(100);
-    obj.label491:setHeight(20);
-    obj.label491:setText("APARÊNCIA");
-    obj.label491:setName("label491");
+    obj.label492 = gui.fromHandle(_obj_newObject("label"));
+    obj.label492:setParent(obj.layout74);
+    obj.label492:setLeft(5);
+    obj.label492:setTop(1);
+    obj.label492:setWidth(100);
+    obj.label492:setHeight(20);
+    obj.label492:setText("APARÊNCIA");
+    obj.label492:setName("label492");
 
     obj.textEditor26 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor26:setParent(obj.layout74);
@@ -17658,14 +17677,14 @@ function newfrmAvatar()
     obj.rectangle159:setColor("black");
     obj.rectangle159:setName("rectangle159");
 
-    obj.label492 = gui.fromHandle(_obj_newObject("label"));
-    obj.label492:setParent(obj.layout75);
-    obj.label492:setLeft(5);
-    obj.label492:setTop(1);
-    obj.label492:setWidth(100);
-    obj.label492:setHeight(20);
-    obj.label492:setText("PERSONALIDADE");
-    obj.label492:setName("label492");
+    obj.label493 = gui.fromHandle(_obj_newObject("label"));
+    obj.label493:setParent(obj.layout75);
+    obj.label493:setLeft(5);
+    obj.label493:setTop(1);
+    obj.label493:setWidth(100);
+    obj.label493:setHeight(20);
+    obj.label493:setText("PERSONALIDADE");
+    obj.label493:setName("label493");
 
     obj.textEditor27 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor27:setParent(obj.layout75);
@@ -17690,14 +17709,14 @@ function newfrmAvatar()
     obj.rectangle160:setColor("black");
     obj.rectangle160:setName("rectangle160");
 
-    obj.label493 = gui.fromHandle(_obj_newObject("label"));
-    obj.label493:setParent(obj.layout76);
-    obj.label493:setLeft(5);
-    obj.label493:setTop(1);
-    obj.label493:setWidth(100);
-    obj.label493:setHeight(20);
-    obj.label493:setText("HISTORIA");
-    obj.label493:setName("label493");
+    obj.label494 = gui.fromHandle(_obj_newObject("label"));
+    obj.label494:setParent(obj.layout76);
+    obj.label494:setLeft(5);
+    obj.label494:setTop(1);
+    obj.label494:setWidth(100);
+    obj.label494:setHeight(20);
+    obj.label494:setText("HISTORIA");
+    obj.label494:setName("label494");
 
     obj.button102 = gui.fromHandle(_obj_newObject("button"));
     obj.button102:setParent(obj.layout76);
@@ -17750,15 +17769,15 @@ function newfrmAvatar()
     obj.rectangle161:setColor("black");
     obj.rectangle161:setName("rectangle161");
 
-    obj.label494 = gui.fromHandle(_obj_newObject("label"));
-    obj.label494:setParent(obj.layout77);
-    obj.label494:setLeft(0);
-    obj.label494:setTop(0);
-    obj.label494:setWidth(400);
-    obj.label494:setHeight(20);
-    obj.label494:setText("ANOTAÇÕES");
-    obj.label494:setHorzTextAlign("center");
-    obj.label494:setName("label494");
+    obj.label495 = gui.fromHandle(_obj_newObject("label"));
+    obj.label495:setParent(obj.layout77);
+    obj.label495:setLeft(0);
+    obj.label495:setTop(0);
+    obj.label495:setWidth(400);
+    obj.label495:setHeight(20);
+    obj.label495:setText("ANOTAÇÕES");
+    obj.label495:setHorzTextAlign("center");
+    obj.label495:setName("label495");
 
     obj.textEditor28 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor28:setParent(obj.layout77);
@@ -17783,15 +17802,15 @@ function newfrmAvatar()
     obj.rectangle162:setColor("black");
     obj.rectangle162:setName("rectangle162");
 
-    obj.label495 = gui.fromHandle(_obj_newObject("label"));
-    obj.label495:setParent(obj.layout78);
-    obj.label495:setLeft(0);
-    obj.label495:setTop(0);
-    obj.label495:setWidth(400);
-    obj.label495:setHeight(20);
-    obj.label495:setText("ANOTAÇÕES");
-    obj.label495:setHorzTextAlign("center");
-    obj.label495:setName("label495");
+    obj.label496 = gui.fromHandle(_obj_newObject("label"));
+    obj.label496:setParent(obj.layout78);
+    obj.label496:setLeft(0);
+    obj.label496:setTop(0);
+    obj.label496:setWidth(400);
+    obj.label496:setHeight(20);
+    obj.label496:setText("ANOTAÇÕES");
+    obj.label496:setHorzTextAlign("center");
+    obj.label496:setName("label496");
 
     obj.textEditor29 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor29:setParent(obj.layout78);
@@ -17816,15 +17835,15 @@ function newfrmAvatar()
     obj.rectangle163:setColor("black");
     obj.rectangle163:setName("rectangle163");
 
-    obj.label496 = gui.fromHandle(_obj_newObject("label"));
-    obj.label496:setParent(obj.layout79);
-    obj.label496:setLeft(0);
-    obj.label496:setTop(0);
-    obj.label496:setWidth(400);
-    obj.label496:setHeight(20);
-    obj.label496:setText("ANOTAÇÕES");
-    obj.label496:setHorzTextAlign("center");
-    obj.label496:setName("label496");
+    obj.label497 = gui.fromHandle(_obj_newObject("label"));
+    obj.label497:setParent(obj.layout79);
+    obj.label497:setLeft(0);
+    obj.label497:setTop(0);
+    obj.label497:setWidth(400);
+    obj.label497:setHeight(20);
+    obj.label497:setText("ANOTAÇÕES");
+    obj.label497:setHorzTextAlign("center");
+    obj.label497:setName("label497");
 
     obj.textEditor30 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor30:setParent(obj.layout79);
@@ -17882,35 +17901,35 @@ function newfrmAvatar()
     obj.rectangle164:setCornerType("round");
     obj.rectangle164:setName("rectangle164");
 
-    obj.label497 = gui.fromHandle(_obj_newObject("label"));
-    obj.label497:setParent(obj.layout80);
-    obj.label497:setLeft(0);
-    obj.label497:setTop(10);
-    obj.label497:setWidth(200);
-    obj.label497:setHeight(20);
-    obj.label497:setText("Programador: Vinny (Ambesek)");
-    obj.label497:setHorzTextAlign("center");
-    obj.label497:setName("label497");
-
     obj.label498 = gui.fromHandle(_obj_newObject("label"));
     obj.label498:setParent(obj.layout80);
     obj.label498:setLeft(0);
-    obj.label498:setTop(35);
+    obj.label498:setTop(10);
     obj.label498:setWidth(200);
     obj.label498:setHeight(20);
-    obj.label498:setText("Arte: Nefer (Nefertyne)");
+    obj.label498:setText("Programador: Vinny (Ambesek)");
     obj.label498:setHorzTextAlign("center");
     obj.label498:setName("label498");
 
     obj.label499 = gui.fromHandle(_obj_newObject("label"));
     obj.label499:setParent(obj.layout80);
     obj.label499:setLeft(0);
-    obj.label499:setTop(95);
+    obj.label499:setTop(35);
     obj.label499:setWidth(200);
     obj.label499:setHeight(20);
-    obj.label499:setText("Sistema: Ambesek & Nefertyne");
+    obj.label499:setText("Arte: Nefer (Nefertyne)");
     obj.label499:setHorzTextAlign("center");
     obj.label499:setName("label499");
+
+    obj.label500 = gui.fromHandle(_obj_newObject("label"));
+    obj.label500:setParent(obj.layout80);
+    obj.label500:setLeft(0);
+    obj.label500:setTop(95);
+    obj.label500:setWidth(200);
+    obj.label500:setHeight(20);
+    obj.label500:setText("Sistema: Ambesek & Nefertyne");
+    obj.label500:setHorzTextAlign("center");
+    obj.label500:setName("label500");
 
     obj.layout81 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout81:setParent(obj.scrollBox11);
@@ -17926,15 +17945,15 @@ function newfrmAvatar()
     obj.rectangle165:setColor("black");
     obj.rectangle165:setName("rectangle165");
 
-    obj.label500 = gui.fromHandle(_obj_newObject("label"));
-    obj.label500:setParent(obj.layout81);
-    obj.label500:setLeft(0);
-    obj.label500:setTop(0);
-    obj.label500:setWidth(400);
-    obj.label500:setHeight(20);
-    obj.label500:setText("ANOTAÇÕES DO MESTRE");
-    obj.label500:setHorzTextAlign("center");
-    obj.label500:setName("label500");
+    obj.label501 = gui.fromHandle(_obj_newObject("label"));
+    obj.label501:setParent(obj.layout81);
+    obj.label501:setLeft(0);
+    obj.label501:setTop(0);
+    obj.label501:setWidth(400);
+    obj.label501:setHeight(20);
+    obj.label501:setText("ANOTAÇÕES DO MESTRE");
+    obj.label501:setHorzTextAlign("center");
+    obj.label501:setName("label501");
 
     obj.textEditor31 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor31:setParent(obj.layout81);
@@ -17945,14 +17964,14 @@ function newfrmAvatar()
     obj.textEditor31:setField("anotacoes_do_mestre");
     obj.textEditor31:setName("textEditor31");
 
-    obj.label501 = gui.fromHandle(_obj_newObject("label"));
-    obj.label501:setParent(obj.scrollBox11);
-    obj.label501:setLeft(630);
-    obj.label501:setTop(400);
-    obj.label501:setWidth(90);
-    obj.label501:setHeight(20);
-    obj.label501:setText("SUA VERSÃO:");
-    obj.label501:setName("label501");
+    obj.label502 = gui.fromHandle(_obj_newObject("label"));
+    obj.label502:setParent(obj.scrollBox11);
+    obj.label502:setLeft(630);
+    obj.label502:setTop(400);
+    obj.label502:setWidth(90);
+    obj.label502:setHeight(20);
+    obj.label502:setText("SUA VERSÃO:");
+    obj.label502:setName("label502");
 
     obj.rectangle166 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle166:setParent(obj.scrollBox11);
@@ -17972,17 +17991,17 @@ function newfrmAvatar()
     obj.image24:setWidth(100);
     obj.image24:setHeight(20);
     obj.image24:setStyle("autoFit");
-    obj.image24:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao01.png");
+    obj.image24:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao02.png");
     obj.image24:setName("image24");
 
-    obj.label502 = gui.fromHandle(_obj_newObject("label"));
-    obj.label502:setParent(obj.scrollBox11);
-    obj.label502:setLeft(620);
-    obj.label502:setTop(430);
-    obj.label502:setWidth(100);
-    obj.label502:setHeight(20);
-    obj.label502:setText("VERSÃO ATUAL:");
-    obj.label502:setName("label502");
+    obj.label503 = gui.fromHandle(_obj_newObject("label"));
+    obj.label503:setParent(obj.scrollBox11);
+    obj.label503:setLeft(620);
+    obj.label503:setTop(430);
+    obj.label503:setWidth(100);
+    obj.label503:setHeight(20);
+    obj.label503:setText("VERSÃO ATUAL:");
+    obj.label503:setName("label503");
 
     obj.rectangle167 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle167:setParent(obj.scrollBox11);
@@ -18037,15 +18056,15 @@ function newfrmAvatar()
     obj.button106:setText("Adaptação");
     obj.button106:setName("button106");
 
-    obj.label503 = gui.fromHandle(_obj_newObject("label"));
-    obj.label503:setParent(obj.scrollBox11);
-    obj.label503:setLeft(620);
-    obj.label503:setTop(525);
-    obj.label503:setWidth(120);
-    obj.label503:setHeight(20);
-    obj.label503:setText("CONHEÇA A MESA:");
-    obj.label503:setFontSize(11);
-    obj.label503:setName("label503");
+    obj.label504 = gui.fromHandle(_obj_newObject("label"));
+    obj.label504:setParent(obj.scrollBox11);
+    obj.label504:setLeft(620);
+    obj.label504:setTop(525);
+    obj.label504:setWidth(120);
+    obj.label504:setHeight(20);
+    obj.label504:setText("CONHEÇA A MESA:");
+    obj.label504:setFontSize(11);
+    obj.label504:setName("label504");
 
     obj.button107 = gui.fromHandle(_obj_newObject("button"));
     obj.button107:setParent(obj.scrollBox11);
@@ -18404,7 +18423,7 @@ function newfrmAvatar()
             					local nep = (tonumber(sheet.nep) or 0);
             
             					for i=1, nep, 1 do
-            						pt = pt + 25 + math.floor(i/2) * 5;
+            						pt = pt + 50 + math.floor(i/2) * 5;
             					end;
             					sheet.pt_total = pt;
         end, obj);
@@ -21074,7 +21093,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de força de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event145 = obj.edit592:addEventListener("onChange",
+    obj._e_event145 = obj.edit593:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -21104,7 +21123,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de destreza de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event147 = obj.edit594:addEventListener("onChange",
+    obj._e_event147 = obj.edit595:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -21134,7 +21153,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de constituição de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event149 = obj.edit596:addEventListener("onChange",
+    obj._e_event149 = obj.edit597:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -21164,7 +21183,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de inteligência de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event151 = obj.edit598:addEventListener("onChange",
+    obj._e_event151 = obj.edit599:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -21194,7 +21213,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de sabedoria de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event153 = obj.edit600:addEventListener("onChange",
+    obj._e_event153 = obj.edit601:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -21224,7 +21243,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de carisma de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event155 = obj.edit602:addEventListener("onChange",
+    obj._e_event155 = obj.edit603:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -22099,6 +22118,7 @@ function newfrmAvatar()
         if self.edit56 ~= nil then self.edit56:destroy(); self.edit56 = nil; end;
         if self.label137 ~= nil then self.label137:destroy(); self.label137 = nil; end;
         if self.label80 ~= nil then self.label80:destroy(); self.label80 = nil; end;
+        if self.edit623 ~= nil then self.edit623:destroy(); self.edit623 = nil; end;
         if self.label385 ~= nil then self.label385:destroy(); self.label385 = nil; end;
         if self.flowPart167 ~= nil then self.flowPart167:destroy(); self.flowPart167 = nil; end;
         if self.edit141 ~= nil then self.edit141:destroy(); self.edit141 = nil; end;
@@ -22366,6 +22386,7 @@ function newfrmAvatar()
         if self.flowPart149 ~= nil then self.flowPart149:destroy(); self.flowPart149 = nil; end;
         if self.flowPart3 ~= nil then self.flowPart3:destroy(); self.flowPart3 = nil; end;
         if self.label39 ~= nil then self.label39:destroy(); self.label39 = nil; end;
+        if self.label504 ~= nil then self.label504:destroy(); self.label504 = nil; end;
         if self.edit299 ~= nil then self.edit299:destroy(); self.edit299 = nil; end;
         if self.checkBox19 ~= nil then self.checkBox19:destroy(); self.checkBox19 = nil; end;
         if self.rectangle74 ~= nil then self.rectangle74:destroy(); self.rectangle74 = nil; end;
