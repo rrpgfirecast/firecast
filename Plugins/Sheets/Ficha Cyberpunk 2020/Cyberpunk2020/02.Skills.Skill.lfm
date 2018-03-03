@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmSkillItem" width="385" height="25" theme="dark" margins="{top=2, bottom=2, right=10}">
+<form name="frmSkillItem" width="410" height="25" theme="dark" margins="{top=2, bottom=2, right=10}">
 
 	<script> 
 		<![CDATA[			
@@ -10,6 +10,17 @@
 						ndb.deleteNode(sheet);
 					end;
 				end);
+		end;
+
+		local function showPericiaPopup()
+			local pop = self:findControlByName("popPericia");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("right", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de pericias para exibir");
+			end;				
 		end;
 
 		]]>	
@@ -60,15 +71,19 @@
 
 	<edit vertTextAlign="center" horzTextAlign="center" left="320" top="0" width="30" height="25" field="pontos" type="number"/>
 
-	<button left="360" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+	<button left="350" top="1" width="23" height="23" text="i" onClick="showPericiaPopup();"/>
+	<button left="385" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
 
-	<dataLink fields="{'atributoPericia', 'pontos', 'atributo'}">
+	<dataLink fields="{'atributoPericia', 'pontos', 'atributo', 'cyber', 'magia', 'outros'}">
 		<event name="onChange">
 			if sheet== nil then return end;
 
 			local mod = 0;
 			mod = 	(tonumber(sheet.atributoPericia) or 0) +
-					(tonumber(sheet.pontos) or 0);
+					(tonumber(sheet.pontos) or 0) +
+					(tonumber(sheet.cyber) or 0) +
+					(tonumber(sheet.magia) or 0) +
+					(tonumber(sheet.outros) or 0);
 
 			sheet.total = mod;
 		</event>

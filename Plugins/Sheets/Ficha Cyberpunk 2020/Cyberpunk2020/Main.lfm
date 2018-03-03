@@ -43,6 +43,9 @@
 		<tab title="Inventario">
 			<import file="03.Inventory.lfm"/>
 		</tab>
+		<tab title="Cibernético">
+			<import file="04.Cyber.lfm"/>
+		</tab>
 		<tab title="Descrição">
 			<import file="Description.lfm"/>
 		</tab>

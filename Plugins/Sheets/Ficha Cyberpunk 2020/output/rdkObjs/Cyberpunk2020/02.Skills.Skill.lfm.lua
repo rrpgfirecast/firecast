@@ -27,7 +27,7 @@ function newfrmSkillItem()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmSkillItem");
-    obj:setWidth(385);
+    obj:setWidth(410);
     obj:setHeight(25);
     obj:setTheme("dark");
     obj:setMargins({top=2, bottom=2, right=10});
@@ -40,6 +40,17 @@ function newfrmSkillItem()
 						ndb.deleteNode(sheet);
 					end;
 				end);
+		end;
+
+		local function showPericiaPopup()
+			local pop = self:findControlByName("popPericia");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("right", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de pericias para exibir");
+			end;				
 		end;
 
 		
@@ -134,16 +145,25 @@ function newfrmSkillItem()
 
     obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
-    obj.button1:setLeft(360);
+    obj.button1:setLeft(350);
     obj.button1:setTop(1);
     obj.button1:setWidth(23);
     obj.button1:setHeight(23);
-    obj.button1:setText("X");
+    obj.button1:setText("i");
     obj.button1:setName("button1");
+
+    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2:setParent(obj);
+    obj.button2:setLeft(385);
+    obj.button2:setTop(1);
+    obj.button2:setWidth(23);
+    obj.button2:setHeight(23);
+    obj.button2:setText("X");
+    obj.button2:setName("button2");
 
     obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
-    obj.dataLink1:setFields({'atributoPericia', 'pontos', 'atributo'});
+    obj.dataLink1:setFields({'atributoPericia', 'pontos', 'atributo', 'cyber', 'magia', 'outros'});
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.edit1:addEventListener("onChange",
@@ -182,21 +202,30 @@ function newfrmSkillItem()
 
     obj._e_event2 = obj.button1:addEventListener("onClick",
         function (self)
+            showPericiaPopup();
+        end, obj);
+
+    obj._e_event3 = obj.button2:addEventListener("onClick",
+        function (self)
             askForDelete();
         end, obj);
 
-    obj._e_event3 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event4 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet== nil then return end;
             
             			local mod = 0;
             			mod = 	(tonumber(sheet.atributoPericia) or 0) +
-            					(tonumber(sheet.pontos) or 0);
+            					(tonumber(sheet.pontos) or 0) +
+            					(tonumber(sheet.cyber) or 0) +
+            					(tonumber(sheet.magia) or 0) +
+            					(tonumber(sheet.outros) or 0);
             
             			sheet.total = mod;
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
@@ -221,6 +250,7 @@ function newfrmSkillItem()
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         self:_oldLFMDestroy();
     end;

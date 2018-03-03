@@ -28,9 +28,25 @@
 				end;
 			end
 		end;
-
 	]]>	
 	</script>
+
+	<template name="periciaSmallCenter">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+
+	<popup name="popPericia" width="300" height="100" backOpacity="0.4">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<periciaSmallCenter text="Cibernético" field="cyber"/>
+			<periciaSmallCenter text="Magia" field="magia"/>
+			<periciaSmallCenter text="Outros" field="outros"/>
+		</flowLayout>
+		<textEditor align="bottom" field="descricao"/>
+	</popup>
+
 	<dataLink fields="{'atratividade', 'tipoCorporal', 'autocontrole', 'reflexos', 'tecnica', 'inteligencia', 'empatia'}">
 		<event name="onChange">
 			if sheet==nil then return end;
@@ -45,9 +61,7 @@
 	</dataLink>
 
 	<scrollBox align="client">
-		<rectangle color="#FF000000" width="1363" height="686"/>
-		
-		<layout left="0" top="0" width="830" height="685">
+		<layout left="0" top="0" width="880" height="685">
 			<rectangle align="client" color="black"/>
 			<label text="NOME DA PERÍCIA" left="20" top="1" width="135" height="20" horzTextAlign="center"/>
 			<label text="CHAVE" left="165" top="1" width="60" height="20" horzTextAlign="center"/>
@@ -55,13 +69,13 @@
 			<label text="ATR" left="285" top="1" width="33" height="20" horzTextAlign="center"/>
 			<label text="PTS" left="320" top="1" width="40" height="20" horzTextAlign="center"/>
 
-			<label text="NOME DA PERÍCIA" left="415" top="1" width="135" height="20" horzTextAlign="center"/>
-			<label text="CHAVE" left="560" top="1" width="60" height="20" horzTextAlign="center"/>
-			<label text="TOTAL" left="640" top="1" width="40" height="20" horzTextAlign="center"/>
-			<label text="ATR" left="680" top="1" width="33" height="20" horzTextAlign="center"/>
-			<label text="PTS" left="715" top="1" width="40" height="20" horzTextAlign="center"/>
+			<label text="NOME DA PERÍCIA" left="440" top="1" width="135" height="20" horzTextAlign="center"/>
+			<label text="CHAVE" left="585" top="1" width="60" height="20" horzTextAlign="center"/>
+			<label text="TOTAL" left="665" top="1" width="40" height="20" horzTextAlign="center"/>
+			<label text="ATR" left="705" top="1" width="33" height="20" horzTextAlign="center"/>
+			<label text="PTS" left="740" top="1" width="40" height="20" horzTextAlign="center"/>
 
-			<recordList name="rclListaDasPericias" field="campoDasPericias" templateForm="frmSkillItem" left="5" top="25" width="820" height="650" layout="verticalTiles">
+			<recordList name="rclListaDasPericias" field="campoDasPericias" templateForm="frmSkillItem" left="5" top="25" width="870" height="650" layout="verticalTiles">
 				<event name="onCompare">
 					if utils.compareStringPtBr(nodeA.atributo, nodeB.atributo)== 0 then
 						return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
@@ -72,6 +86,6 @@
 			</recordList>
 		</layout>
 
-		<button text="Nova Perícia" left="840" top="0" width="125" height="25" onClick="self.rclListaDasPericias:append();"/>	
+		<button text="Nova Perícia" left="890" top="0" width="125" height="25" onClick="self.rclListaDasPericias:append();"/>	
 	</scrollBox>
 </form>

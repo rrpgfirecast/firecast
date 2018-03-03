@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmInventory" align="client">
-	<scrollBox align="client"><layout left="0" top="0" width="360" height="685">
+
+	<template name="Value">
+		<label left="$(left1)" top="$(top)" width="100" height="20" text="$(text)" horzTextAlign="center"/>
+		<rectangle left="$(left2)" top="$(top)" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="$(left2)" top="$(top)" width="50" height="25" field="$(field)" vertTextAlign="center" horzTextAlign="center"/>
+	</template>
+
+	<scrollBox align="client">
+		<layout left="0" top="0" width="360" height="685">
 			<rectangle align="client" color="black"/>
 			<label text="ITEM" left="5" top="1" width="150" height="20" horzTextAlign="center"/>
 			<label text="QTD" left="155" top="1" width="50" height="20" horzTextAlign="center"/>
@@ -58,6 +66,34 @@
 					return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
 		        </event>
 			</recordList>
+		</layout>
+
+		<layout left="1140" top="0" width="210" height="60">
+			<rectangle align="client" color="black"/>
+
+			<Value left1="5" left2="105" top="5" text="PREÇO" field="itensCost"/>
+			<Value left1="5" left2="105" top="30" text="PESO" field="itensWeight"/>
+
+			<dataLink fields="{'inventoryWeight', 'weaponWeight', 'armorWeight'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					sheet.itensWeight = (tonumber(sheet.inventoryWeight) or 0) + 
+										(tonumber(sheet.weaponWeight) or 0) + 
+										(tonumber(sheet.armorWeight) or 0);
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'inventoryCost', 'weaponCost', 'armorCost', 'cyberCost'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					sheet.itensCost = (tonumber(sheet.inventoryCost) or 0) + 
+										(tonumber(sheet.cyberCost) or 0) + 
+										(tonumber(sheet.weaponCost) or 0) + 
+										(tonumber(sheet.armorCost) or 0);
+				</event>
+			</dataLink>
 		</layout>
 	</scrollBox>
 </form>

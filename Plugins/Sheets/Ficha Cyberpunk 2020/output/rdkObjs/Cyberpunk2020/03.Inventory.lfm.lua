@@ -405,6 +405,94 @@ function newfrmInventory()
     obj.rclInventoryArmor:setHeight(300);
     obj.rclInventoryArmor:setLayout("vertical");
 
+    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4:setParent(obj.scrollBox1);
+    obj.layout4:setLeft(1140);
+    obj.layout4:setTop(0);
+    obj.layout4:setWidth(210);
+    obj.layout4:setHeight(60);
+    obj.layout4:setName("layout4");
+
+    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4:setParent(obj.layout4);
+    obj.rectangle4:setAlign("client");
+    obj.rectangle4:setColor("black");
+    obj.rectangle4:setName("rectangle4");
+
+    obj.label27 = gui.fromHandle(_obj_newObject("label"));
+    obj.label27:setParent(obj.layout4);
+    obj.label27:setLeft(5);
+    obj.label27:setTop(5);
+    obj.label27:setWidth(100);
+    obj.label27:setHeight(20);
+    obj.label27:setText("PREÇO");
+    obj.label27:setHorzTextAlign("center");
+    obj.label27:setName("label27");
+
+    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5:setParent(obj.layout4);
+    obj.rectangle5:setLeft(105);
+    obj.rectangle5:setTop(5);
+    obj.rectangle5:setWidth(50);
+    obj.rectangle5:setHeight(25);
+    obj.rectangle5:setColor("black");
+    obj.rectangle5:setStrokeColor("white");
+    obj.rectangle5:setStrokeSize(1);
+    obj.rectangle5:setName("rectangle5");
+
+    obj.label28 = gui.fromHandle(_obj_newObject("label"));
+    obj.label28:setParent(obj.layout4);
+    obj.label28:setLeft(105);
+    obj.label28:setTop(5);
+    obj.label28:setWidth(50);
+    obj.label28:setHeight(25);
+    obj.label28:setField("itensCost");
+    obj.label28:setVertTextAlign("center");
+    obj.label28:setHorzTextAlign("center");
+    obj.label28:setName("label28");
+
+    obj.label29 = gui.fromHandle(_obj_newObject("label"));
+    obj.label29:setParent(obj.layout4);
+    obj.label29:setLeft(5);
+    obj.label29:setTop(30);
+    obj.label29:setWidth(100);
+    obj.label29:setHeight(20);
+    obj.label29:setText("PESO");
+    obj.label29:setHorzTextAlign("center");
+    obj.label29:setName("label29");
+
+    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6:setParent(obj.layout4);
+    obj.rectangle6:setLeft(105);
+    obj.rectangle6:setTop(30);
+    obj.rectangle6:setWidth(50);
+    obj.rectangle6:setHeight(25);
+    obj.rectangle6:setColor("black");
+    obj.rectangle6:setStrokeColor("white");
+    obj.rectangle6:setStrokeSize(1);
+    obj.rectangle6:setName("rectangle6");
+
+    obj.label30 = gui.fromHandle(_obj_newObject("label"));
+    obj.label30:setParent(obj.layout4);
+    obj.label30:setLeft(105);
+    obj.label30:setTop(30);
+    obj.label30:setWidth(50);
+    obj.label30:setHeight(25);
+    obj.label30:setField("itensWeight");
+    obj.label30:setVertTextAlign("center");
+    obj.label30:setHorzTextAlign("center");
+    obj.label30:setName("label30");
+
+    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.layout4);
+    obj.dataLink1:setFields({'inventoryWeight', 'weaponWeight', 'armorWeight'});
+    obj.dataLink1:setName("dataLink1");
+
+    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2:setParent(obj.layout4);
+    obj.dataLink2:setFields({'inventoryCost', 'weaponCost', 'armorCost', 'cyberCost'});
+    obj.dataLink2:setName("dataLink2");
+
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
             self.rclInventory:append();
@@ -435,7 +523,28 @@ function newfrmInventory()
             return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
+    obj._e_event6 = obj.dataLink1:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            					sheet.itensWeight = (tonumber(sheet.inventoryWeight) or 0) + 
+            										(tonumber(sheet.weaponWeight) or 0) + 
+            										(tonumber(sheet.armorWeight) or 0);
+        end, obj);
+
+    obj._e_event7 = obj.dataLink2:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            					sheet.itensCost = (tonumber(sheet.inventoryCost) or 0) + 
+            										(tonumber(sheet.cyberCost) or 0) + 
+            										(tonumber(sheet.weaponCost) or 0) + 
+            										(tonumber(sheet.armorCost) or 0);
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event7);
+        __o_rrpgObjs.removeEventListenerById(self._e_event6);
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
@@ -454,17 +563,40 @@ function newfrmInventory()
         end;
 
         if self.label14 ~= nil then self.label14:destroy(); self.label14 = nil; end;
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.rclInventoryArmor ~= nil then self.rclInventoryArmor:destroy(); self.rclInventoryArmor = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.rclInventoryArmor ~= nil then self.rclInventoryArmor:destroy(); self.rclInventoryArmor = nil; end;
+        if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
+        if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
+        if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
+        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
+        if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
+        if self.rectangle6 ~= nil then self.rectangle6:destroy(); self.rectangle6 = nil; end;
+        if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
+        if self.label22 ~= nil then self.label22:destroy(); self.label22 = nil; end;
+        if self.label30 ~= nil then self.label30:destroy(); self.label30 = nil; end;
+        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
+        if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
+        if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
+        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
+        if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
+        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
+        if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
+        if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
+        if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
         if self.label11 ~= nil then self.label11:destroy(); self.label11 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
-        if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.rclInventoryWeapon ~= nil then self.rclInventoryWeapon:destroy(); self.rclInventoryWeapon = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
@@ -473,25 +605,12 @@ function newfrmInventory()
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
-        if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
-        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
-        if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
-        if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
-        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
-        if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
-        if self.label22 ~= nil then self.label22:destroy(); self.label22 = nil; end;
+        if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
-        if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
-        if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
-        if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
-        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
+        if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
-        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
-        if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
         if self.rclInventory ~= nil then self.rclInventory:destroy(); self.rclInventory = nil; end;
-        if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
         self:_oldLFMDestroy();
     end;
 

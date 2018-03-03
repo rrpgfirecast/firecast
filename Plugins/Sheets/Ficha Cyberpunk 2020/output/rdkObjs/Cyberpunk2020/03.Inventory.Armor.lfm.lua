@@ -138,8 +138,43 @@ function newfrmInventoryArmor()
 
     obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.rectangle1);
-    obj.dataLink1:setField("preco");
+    obj.dataLink1:setFields({'cabeca'});
     obj.dataLink1:setName("dataLink1");
+
+    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2:setParent(obj.rectangle1);
+    obj.dataLink2:setFields({'torso'});
+    obj.dataLink2:setName("dataLink2");
+
+    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3:setParent(obj.rectangle1);
+    obj.dataLink3:setFields({'bracoDireito'});
+    obj.dataLink3:setName("dataLink3");
+
+    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4:setParent(obj.rectangle1);
+    obj.dataLink4:setFields({'bracoEsquerdo'});
+    obj.dataLink4:setName("dataLink4");
+
+    obj.dataLink5 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5:setParent(obj.rectangle1);
+    obj.dataLink5:setFields({'pernaDireito'});
+    obj.dataLink5:setName("dataLink5");
+
+    obj.dataLink6 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink6:setParent(obj.rectangle1);
+    obj.dataLink6:setFields({'pernaEsquerdo'});
+    obj.dataLink6:setName("dataLink6");
+
+    obj.dataLink7 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7:setParent(obj.rectangle1);
+    obj.dataLink7:setFields({'preco'});
+    obj.dataLink7:setName("dataLink7");
+
+    obj.dataLink8 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink8:setParent(obj.rectangle1);
+    obj.dataLink8:setFields({'peso'});
+    obj.dataLink8:setName("dataLink8");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
@@ -154,10 +189,131 @@ function newfrmInventoryArmor()
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
-            		        priceCount();
+            
+            				local node = ndb.getRoot(sheet);
+            				local objetos = ndb.getChildNodes(node.armorList);
+            				local blindagem = 0;
+            
+            				for i=1, #objetos, 1 do 
+            					blindagem = blindagem + (tonumber(objetos[i].cabeca) or 0);
+            				end;
+            
+            				node.blindagemCabeca = blindagem;
+        end, obj);
+
+    obj._e_event2 = obj.dataLink2:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            				local node = ndb.getRoot(sheet);
+            				local objetos = ndb.getChildNodes(node.armorList);
+            				local blindagem = 0;
+            
+            				for i=1, #objetos, 1 do 
+            					blindagem = blindagem + (tonumber(objetos[i].torso) or 0);
+            				end;
+            
+            				node.blindagemTorso = blindagem;
+        end, obj);
+
+    obj._e_event3 = obj.dataLink3:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            				local node = ndb.getRoot(sheet);
+            				local objetos = ndb.getChildNodes(node.armorList);
+            				local blindagem = 0;
+            
+            				for i=1, #objetos, 1 do 
+            					blindagem = blindagem + (tonumber(objetos[i].bracoDireito) or 0);
+            				end;
+            
+            				node.blindagemBracoDireito = blindagem;
+        end, obj);
+
+    obj._e_event4 = obj.dataLink4:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            				local node = ndb.getRoot(sheet);
+            				local objetos = ndb.getChildNodes(node.armorList);
+            				local blindagem = 0;
+            
+            				for i=1, #objetos, 1 do 
+            					blindagem = blindagem + (tonumber(objetos[i].bracoEsquerdo) or 0);
+            				end;
+            
+            				node.blindagemBracoEsquerdo = blindagem;
+        end, obj);
+
+    obj._e_event5 = obj.dataLink5:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            				local node = ndb.getRoot(sheet);
+            				local objetos = ndb.getChildNodes(node.armorList);
+            				local blindagem = 0;
+            
+            				for i=1, #objetos, 1 do 
+            					blindagem = blindagem + (tonumber(objetos[i].pernaDireito) or 0);
+            				end;
+            
+            				node.blindagemPernaDireita = blindagem;
+        end, obj);
+
+    obj._e_event6 = obj.dataLink6:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            				local node = ndb.getRoot(sheet);
+            				local objetos = ndb.getChildNodes(node.armorList);
+            				local blindagem = 0;
+            
+            				for i=1, #objetos, 1 do 
+            					blindagem = blindagem + (tonumber(objetos[i].pernaEsquerdo) or 0);
+            				end;
+            
+            				node.blindagemPernaEsquerda = blindagem;
+        end, obj);
+
+    obj._e_event7 = obj.dataLink7:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            				local node = ndb.getRoot(sheet);
+            				local objetos = ndb.getChildNodes(node.armorList);
+            				local cost = 0;
+            
+            				for i=1, #objetos, 1 do 
+            					cost = cost + (tonumber(objetos[i].preco) or 0);
+            				end;
+            
+            				node.armorCost = cost;
+        end, obj);
+
+    obj._e_event8 = obj.dataLink8:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            				local node = ndb.getRoot(sheet);
+            				local objetos = ndb.getChildNodes(node.armorList);
+            				local weight = 0;
+            
+            				for i=1, #objetos, 1 do 
+            					weight = weight + (tonumber(objetos[i].peso) or 0);
+            				end;
+            
+            				node.armorWeight = weight;
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event8);
+        __o_rrpgObjs.removeEventListenerById(self._e_event7);
+        __o_rrpgObjs.removeEventListenerById(self._e_event6);
+        __o_rrpgObjs.removeEventListenerById(self._e_event5);
+        __o_rrpgObjs.removeEventListenerById(self._e_event4);
+        __o_rrpgObjs.removeEventListenerById(self._e_event3);
+        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
@@ -172,17 +328,24 @@ function newfrmInventoryArmor()
         end;
 
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
+        if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
+        if self.dataLink7 ~= nil then self.dataLink7:destroy(); self.dataLink7 = nil; end;
         if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
         if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
+        if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.edit10 ~= nil then self.edit10:destroy(); self.edit10 = nil; end;
         if self.edit6 ~= nil then self.edit6:destroy(); self.edit6 = nil; end;
+        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
+        if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
+        if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         self:_oldLFMDestroy();
     end;

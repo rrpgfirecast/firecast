@@ -8,9 +8,15 @@
 		<label left="$(left1)" top="$(top)" width="100" height="20" text="$(text)" horzTextAlign="center"/>
 		<edit left="$(left2)" top="$(top)" width="50" height="25" field="$(field)" vertTextAlign="center"/>
 	</template>
+	<template name="AtributoField">
+		<label left="$(left1)" top="$(top)" width="100" height="20" text="$(text)" horzTextAlign="center"/>
+		<rectangle left="$(left2)" top="$(top)" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="$(left2)" top="$(top)" width="50" height="25" field="$(field)" vertTextAlign="center" horzTextAlign="center"/>
+	</template>
 	<template name="Blindagem">
 		<label left="$(left)" top="30" width="75" height="20" text="$(text)" horzTextAlign="center"/>
-		<edit left="$(left)" top="55" width="75" height="25" field="$(field)" vertTextAlign="center"/>
+		<rectangle left="$(left)" top="55" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="$(left)" top="55" width="75" height="25" field="$(field)" horzTextAlign="center" vertTextAlign="center"/>
 	</template>
 	<template name="Dano">
 		<label left="$(left)" top="5" width="75" height="20" text="$(text1)" horzTextAlign="center"/>
@@ -26,7 +32,7 @@
 			<rectangle align="client" color="black"/>
 
 			<LabelEdit left1="5" left2="100" top="5" text="NOME" field="nome"/>
-			<LabelEdit left1="5" left2="100" top="30" text="ETINIA/RAÇA" field="raca"/>
+			<LabelEdit left1="5" left2="100" top="30" text="ETNIA/RAÇA" field="raca"/>
 
 			<LabelEdit left1="405" left2="500" top="5" text="DETALHES" field="detalhes"/>
 			<LabelEdit left1="405" left2="500" top="30" text="CLASSE" field="classe"/>
@@ -39,21 +45,65 @@
 			<rectangle align="client" color="black"/>
 			<label left="0" top="5" width="610" height="20" text="ATRIBUTOS" horzTextAlign="center"/>
 
-			<Atributo  left1="5" left2="105" top="30" text="INTELIGÊNCIA" field="inteligencia"/>
-			<Atributo  left1="5" left2="105" top="55" text="ATRATIVIDADE" field="atratividade"/>
-			<Atributo  left1="5" left2="105" top="80" text="EMPATIA" field="empatia"/>
+			<Atributo left1="5" left2="105" top="30" text="INTELIGÊNCIA" field="inteligencia"/>
+			<Atributo left1="5" left2="105" top="55" text="ATRATIVIDADE" field="atratividade"/>
+			<Atributo left1="5" left2="105" top="80" text="EMPATIA" field="empatia"/>
 
-			<Atributo  left1="155" left2="255" top="30" text="REFLEXOS" field="reflexos"/>
-			<Atributo  left1="155" left2="255" top="55" text="SORTE" field="sorte"/>
-			<Atributo  left1="155" left2="255" top="80" text="CORRER" field="correr"/>
+			<Atributo left1="155" left2="255" top="30" text="REFLEXOS" field="reflexos"/>
+			<Atributo left1="155" left2="255" top="55" text="SORTE" field="sorte"/>
+			<AtributoField left1="155" left2="255" top="80" text="CORRER" field="correr"/>
 
-			<Atributo  left1="305" left2="405" top="30" text="TECNICA" field="tecnica"/>
-			<Atributo  left1="305" left2="405" top="55" text="MOVIMENTO" field="movimento"/>
-			<Atributo  left1="305" left2="405" top="80" text="SALTAR" field="saltar"/>
+			<Atributo left1="305" left2="405" top="30" text="TECNICA" field="tecnica"/>
+			<Atributo left1="305" left2="405" top="55" text="MOVIMENTO" field="movimento"/>
+			<AtributoField left1="305" left2="405" top="80" text="SALTAR" field="saltar"/>
 
-			<Atributo  left1="455" left2="555" top="30" text="AUTOCONTROLE" field="autocontrole"/>
-			<Atributo  left1="455" left2="555" top="55" text="TIPO CORPORAL" field="tipoCorporal"/>
-			<Atributo  left1="455" left2="555" top="80" text="LEVANTAR" field="levantar"/>
+			<Atributo left1="455" left2="555" top="30" text="AUTOCONTROLE" field="autocontrole"/>
+			<Atributo left1="455" left2="555" top="55" text="TIPO CORPORAL" field="tipoCorporal"/>
+			<AtributoField left1="455" left2="555" top="80" text="LEVANTAR" field="levantar"/>
+
+			<dataLink field="empatia">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local emp = tonumber(sheet.empatia) or 0;
+					sheet.phTotal = emp * 10;
+				</event>
+			</dataLink>
+
+			<dataLink field="movimento">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local mov = tonumber(sheet.movimento) or 0;
+					sheet.correr = mov * 3;
+					sheet.saltar = mov * 3 / 4;
+				</event>
+			</dataLink>
+
+			<dataLink field="tipoCorporal">
+				<event name="onChange"><![CDATA[
+					if sheet==nil then return end;
+					local tco = tonumber(sheet.tipoCorporal) or 0;
+					
+					sheet.levantar = tco * 10;
+
+					sheet.vit = tco;
+					
+					if tco <= 2 then
+						sheet.mtc = 0;
+					elseif tco <=4 then
+						sheet.mtc = -1;
+					elseif tco <=7 then
+						sheet.mtc = -2;
+					elseif tco <=9 then
+						sheet.mtc = -3;
+					elseif tco <=10 then
+						sheet.mtc = -4;
+					else
+						sheet.mtc = -5;
+					end;
+
+					]]>	
+				</event>
+			</dataLink>
 		</layout>
 
 		<rectangle left="620" top="70" width="250" height="250" color="black" strokeColor="white" strokeSize="1">
@@ -86,9 +136,11 @@
 			<label left="0" top="5" width="535" height="20" text="DANO" horzTextAlign="center"/>
 
 			<label left="5" top="30" width="75" height="20" text="VIT" horzTextAlign="center"/>
-			<edit left="5" top="55" width="75" height="125" field="vit" horzTextAlign="center" vertTextAlign="center"/>
+			<rectangle left="5" top="55" width="75" height="125" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="5" top="55" width="75" height="125" field="vit" horzTextAlign="center" vertTextAlign="center"/>
 			<label left="80" top="30" width="75" height="20" text="MTC" horzTextAlign="center"/>
-			<edit left="80" top="55" width="75" height="125" field="mtc" horzTextAlign="center" vertTextAlign="center"/>
+			<rectangle left="80" top="55" width="75" height="125" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="80" top="55" width="75" height="125" field="mtc" horzTextAlign="center" vertTextAlign="center"/>
 
 			<layout top="25" width="535" height="75">
 				<Dano left="155" text2="Atordoamento 0" text1="Leve" field="dano0"/>
@@ -105,6 +157,15 @@
 				<Dano left="380" text2="Atordoamento 8" text1="Mortal -5" field="dano8"/>
 				<Dano left="455" text2="Atordoamento 9" text1="Mortal -6" field="dano9"/>
 			</layout>
+		</layout>
+
+		<layout top="480" width="535" height="200">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="5" width="260" height="20" text="REPUTAÇÃO" horzTextAlign="center"/>
+			<label left="270" top="5" width="260" height="20" text="EXPERIÊNCIA" horzTextAlign="center"/>
+
+			<textEditor left="5" top="25" width="260" height="170" field="reputacao"/>
+			<textEditor left="270" top="25" width="260" height="170" field="experiencia"/>
 		</layout>
 
 
