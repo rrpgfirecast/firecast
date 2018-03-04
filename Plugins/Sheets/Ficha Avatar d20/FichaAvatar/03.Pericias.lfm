@@ -148,13 +148,15 @@
 			</recordList>
 		</layout>
 
-		<layout left="940" top="0" width="135" height="60">
+		<layout left="940" top="0" width="175" height="60">
 			<rectangle align="client" color="black"/>
-				<label text="PONTOS GASTOS" left="0" top="0" width="135" height="20" horzTextAlign="center"/>
+				<label text="PONTOS GASTOS" left="0" top="5" width="130" height="20" horzTextAlign="center"/>
+				<rectangle left="130" top="5" width="40" height="20" color="black" strokeColor="white" strokeSize="1"/>
+                <label field="pontosPericia" left="130" top="5" width="40" height="20" horzTextAlign="center"/>
 
-				<label left="10" top="30" width="70" height="20" text="DnD3.5"/>
-				<rectangle left="80" top="30" width="37" height="20" color="black" strokeColor="white" strokeSize="1"/>
-                <label field="pontosPericia" left="80" top="30" width="37" height="20" horzTextAlign="center"/>
+				<label text="PERÍCIAS DE CLASSE" left="0" top="30" width="130" height="20" horzTextAlign="center"/>
+				<rectangle left="130" top="30" width="40" height="20" color="black" strokeColor="white" strokeSize="1"/>
+                <label field="periciasClasse" left="130" top="30" width="40" height="20" horzTextAlign="center"/>
 		</layout>
 
 		<layout left="940" top="70" width="135" height="200">

@@ -65,15 +65,173 @@
 			</recordList>
 		</layout>
 		
-		<layout left="790" top="0" width="380" height="600">
+		<layout left="790" top="0" width="380" height="375">
 			<rectangle align="client" color="#0000007F"/>
 			<label left="0" top="0" width="380" height="20" text="CARACTERISTICAS DE CLASSE" horzTextAlign="center"/>
 
-			<recordList name="rclListaDasCaracteristicasClasse" field="campoDasCaracteristicasClasse" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="570" layout="vertical">
+			<recordList name="rclListaDasCaracteristicasClasse" field="campoDasCaracteristicasClasse" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="345" layout="vertical">
 				<event name="onCompare">
 		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
 		        </event>
 			</recordList>
+		</layout>		
+
+		<layout left="790" top="385" width="380" height="215">
+			<rectangle align="client" color="#0000007F"/>
+
+			<label left="10" top="5" width="150" height="20" text="Conceito" horzTextAlign="center"/>
+			<edit left="160" top="5" width="150" height="25" field="classeConceito"/>
+
+			<label left="310" top="5" width="65" height="20" text="TOTAL" horzTextAlign="center"/>
+			<rectangle left="315" top="30" width="60" height="60" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="315" top="30" width="60" height="60" field="classePontos" horzTextAlign="center"/>
+
+			<label left="10" top="35" width="150" height="20" text="Bônus Base Ataque" horzTextAlign="center"/>
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="35" width="150" height="25" name="classeBBA" field="classeBBA" items="{'Ruim (0)', 'Médio (+1)', 'Bom (+2)'}" values="{'0', '1', '2'}" fontColor="white">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					if sheet.classeBBA == "0" then
+						self.classeBBA.hint = "BBA = 1/2 do NEP e sabe usar todas armas simples e armaduras leves.";
+					elseif sheet.classeBBA == "1" then
+						self.classeBBA.hint = "BBA = 3/4 do NEP e sabe usar todas armas simples, armaduras até médias e escudos (menos de corpo).";
+					elseif sheet.classeBBA == "2" then
+						self.classeBBA.hint = "BBA = NEP e sabe usar todas armas simples e comuns, armaduras até pesada e escudos.";
+					else
+						self.classeBBA.hint = "";
+					end;
+				</event>
+			</comboBox>
+
+			<label left="10" top="65" width="150" height="20" text="Bônus Base Fortitude" horzTextAlign="center"/>
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="65" width="150" height="25" name="classeBBF" field="classeBBF" items="{'Ruim (0)', 'Bom (+1)'}" values="{'0', '1'}" fontColor="white">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					if sheet.classeBBF == "0" then
+						self.classeBBF.hint = "BBF = 1/3 do NEP.";
+					elseif sheet.classeBBF == "1" then
+						self.classeBBF.hint = "BBF = 2 + 1/2 do NEP.";
+					else
+						self.classeBBF.hint = "";
+					end;
+				</event>
+			</comboBox>
+
+			<label left="10" top="95" width="150" height="20" text="Bônus Base Reflexos" horzTextAlign="center"/>
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="95" width="150" height="25" name="classeBBR" field="classeBBR" items="{'Ruim (0)', 'Bom (+1)'}" values="{'0', '1'}" fontColor="white">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					if sheet.classeBBR == "0" then
+						self.classeBBR.hint = "BBR = 1/3 do NEP.";
+					elseif sheet.classeBBR == "1" then
+						self.classeBBR.hint = "BBR = 2 + 1/2 do NEP.";
+					else
+						self.classeBBR.hint = "";
+					end;
+				</event>
+			</comboBox>
+
+			<label left="10" top="125" width="150" height="20" text="Bônus Base Vontade" horzTextAlign="center"/>
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="125" width="150" height="25" name="classeBBV" field="classeBBV" items="{'Ruim (0)', 'Bom (+1)'}" values="{'0', '1'}" fontColor="white">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					if sheet.classeBBV == "0" then
+						self.classeBBV.hint = "BBV = 1/3 do NEP.";
+					elseif sheet.classeBBV == "1" then
+						self.classeBBV.hint = "BBV = 2 + 1/2 do NEP.";
+					else
+						self.classeBBV.hint = "";
+					end;
+				</event>
+			</comboBox>
+
+			<label left="10" top="155" width="150" height="20" text="Perícias" horzTextAlign="center"/>
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="155" width="150" height="25" name="classePericia" field="classePericia" items="{'Ruim (0)', 'Médio (+1)', 'Bom (+2)', 'Excelente (+3)'}" values="{'0', '1', '2', '3'}" fontColor="white">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					if sheet.classePericia == "0" then
+						self.classePericia.hint = "2 + 1 + modificador de inteligência por nível, 7 perícias de classe.";
+					elseif sheet.classePericia == "1" then
+						self.classePericia.hint = "4 + 1 + modificador de inteligência por nível, 13 perícias de classe.";
+					elseif sheet.classePericia == "2" then
+						self.classePericia.hint = "6 + 1 + modificador de inteligência por nível, 18 perícias de classe.";
+					elseif sheet.classePericia == "3" then
+						self.classePericia.hint = "8 + 1 + modificador de inteligência por nível, 22 perícias de classe.";
+					else
+						self.classePericia.hint = "";
+					end;
+				</event>
+			</comboBox>
+
+			<label left="10" top="185" width="150" height="20" text="Dados de Vida" horzTextAlign="center"/>
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="185" width="150" height="25" name="classeDVs" field="classeDVs" items="{'Ruim (0)', 'Médio (+1)', 'Bom (+2)', 'Excelente (+3)'}" values="{'0', '1', '2', '3'}" fontColor="white">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					if sheet.classeDVs == "0" then
+						self.classeDVs.hint = "1d6 + modificador de constituição por nível.";
+					elseif sheet.classeDVs == "1" then
+						self.classeDVs.hint = "1d8 + modificador de constituição por nível.";
+					elseif sheet.classeDVs == "2" then
+						self.classeDVs.hint = "1d10 + modificador de constituição por nível.";
+					elseif sheet.classeDVs == "3" then
+						self.classeDVs.hint = "1d12 + modificador de constituição por nível.";
+					else
+						self.classeDVs.hint = "";
+					end;
+				</event>
+			</comboBox>
+
+			<dataLink fields="{'classeBBA','classeBBF','classeBBR','classeBBV','classePericia','classeDVs'}" defaultValues="{'0','0','0','0','0','0'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					sheet.classePontos = 	(tonumber(sheet.classeBBA) or 0) + 
+											(tonumber(sheet.classeBBF) or 0) + 
+											(tonumber(sheet.classeBBR) or 0) + 
+											(tonumber(sheet.classeBBV) or 0) + 
+											(tonumber(sheet.classePericia) or 0) + 
+											(tonumber(sheet.classeDVs) or 0);
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'nep','classeBBA','classeBBF','classeBBR','classeBBV'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					local nep = (tonumber(sheet.nep) or 1);
+
+					if sheet.classeBBA == "0" then
+						sheet.bba = math.floor(nep/2);
+					elseif sheet.classeBBA == "1" then
+						sheet.bba = math.floor(nep*3/4);
+					elseif sheet.classeBBA == "2" then
+						sheet.bba = nep;
+					end;
+
+					if sheet.classeBBF == "0" then
+						sheet.baseFort = math.floor(nep/3);
+					elseif sheet.classeBBF == "1" then
+						sheet.baseFort = 2 + math.floor(nep/2);
+					end;
+
+					if sheet.classeBBR == "0" then
+						sheet.baseRef = math.floor(nep/3);
+					elseif sheet.classeBBR == "1" then
+						sheet.baseRef = 2 + math.floor(nep/2);
+					end;
+
+					if sheet.classeBBV == "0" then
+						sheet.baseVon = math.floor(nep/3);
+					elseif sheet.classeBBV == "1" then
+						sheet.baseVon = 2 + math.floor(nep/2);
+					end;
+				</event>
+			</dataLink>
 		</layout>
 
 		<layout left="1180" top="0" width="135" height="600">

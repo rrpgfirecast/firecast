@@ -302,12 +302,16 @@ function newfrmFichaRPGmeister3p_svg()
             				end;
             				local path = 0;
             				local nodes = ndb.getChildNodes(node.campoDasPericias); 
+            				local deClasse = 0;
             				--showMessage(#nodes);
             				for i=1, #nodes, 1 do
             					local mult = 1;
             					if not nodes[i].isClass then
             						mult = 2;
+            					else
+            						deClasse = deClasse + 1;
             					end;
+            
             					mod = mod + (tonumber(nodes[i].graduacaoPericia) or 0) * mult;
             					path = path + (tonumber(nodes[i].graduacaoPericia) or 0);
             				end
@@ -320,6 +324,7 @@ function newfrmFichaRPGmeister3p_svg()
             
             				node.pontosPericia = mod;
             				node.pontosPericiaPath = path;
+            				node.periciasClasse = deClasse;
             			end;
         end, obj);
 

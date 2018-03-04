@@ -153,7 +153,7 @@
 		</template>
 		<template name="resitenceFlow">
 			<flowLayout align="top" autoHeight="true" maxControlsPerLine="11" margins="{bottom=4}" horzAlign="center">
-				<smallFieldCenter field="base$(tr)"/>
+				<smallLabelCenter field="base$(tr)"/>
 				<smallLabelCenter field="atrMod$(tr)"/>
 				<smallFieldCenter field="magia$(tr)"/>
 				<smallFieldCenter field="variavel$(tr)"/>
@@ -270,7 +270,15 @@
 		</popup>
 		<popup name="popCA" width="600" height="210" backOpacity="0.4">
 			<flowLayout align="top" autoHeight="true" margins="{bottom=4}">
-				<Protection nome="Armadura" field="armaduraCa"/>
+				<smallTitleCenter text="Armadura"/>
+				<smallLabelCenter field="equipamentoCorpoCA"/>
+				<longTextCenter field="equipamentoCorpoCA2"/>
+				<flowPart minWidth="50" maxWidth="60" height="20">
+					<checkBox field="armaduraCaSurp" text="Surpresa" fontSize="10" height="20"/>
+				</flowPart>
+				<flowPart minWidth="50" maxWidth="60" height="20">
+					<checkBox field="armaduraCaToque" text="Toque" fontSize="10" height="15"/>
+				</flowPart>
 				<flowPart minWidth="10" maxWidth="20" height="15"/>
 				<smallTitleCenter text="Penalidade"/>
 				<smallLabelCenter field="equipamentoCorpoPen"/>
@@ -880,7 +888,8 @@
 			<rectangle align="client" color="black"/>
 			<label left="0" top="0" width="180" height="25" text="BBA" horzTextAlign="center"/>
 			
-			<edit left="5" top="25" width="40" height="25" type="number" horzTextAlign="center" field="bba">
+			<rectangle left="5" top="25" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<edit left="5" top="25" width="40" height="25" type="number" horzTextAlign="center" field="bba" transparent="true">
 				<event name="onChange"><![CDATA[
 					if sheet~= nil then
 						if debug then
@@ -1045,7 +1054,7 @@
 		</rectangle>
 
 		<rectangle left="745" top="90" width="362" height="362" color="black" strokeColor="white" strokeSize="1"/>
-		<image left="746" top="116" width="360" height="360" field="avatar" editable="true" style="autoFit" >
+		<image left="746" top="91" width="360" height="360" field="avatar" editable="true" style="autoFit" >
 			<event name="OnStartDrag">
 			    drag:addData("imageURL", sheet.avatar);
 			</event>

@@ -137,8 +137,6 @@
 					restante = string.gsub(restante, ",", ".");
 					restante = string.gsub(restante, "_", ",");
 					sheet.dinheiroRestante = restante .. "PO";
-
-
 				end;
 			</event>
 		</dataLink>
@@ -148,11 +146,10 @@
 			<label left="5" top="1" width="200" height="20" text="ARMADURA"/>
 			<edit vertTextAlign="center" left="5" top="20" width="240" height="25" field="equipamentoCorpo"/>
 
-			<label left="5" top="50" width="50" height="20" text="CA"/>
-			<edit vertTextAlign="center" left="25" top="50" width="40" height="20" field="equipamentoCorpoCA"/>
-			<edit vertTextAlign="center" left="65" top="50" width="40" height="20" field="equipamentoCorpoCAmelhoria"/>
-			<label left="110" top="50" width="50" height="20" text="CAT"/>
-			<comboBox left="140" top="50" width="105" height="20" field="equipamentoCorpoCategoria" items="{'Leve', 'Média', 'Pesada', 'Massiva'}" fontColor="white"/>
+			<label left="10" top="50" width="50" height="20" text="CA"/>
+			<edit vertTextAlign="center" left="45" top="50" width="40" height="20" field="equipamentoCorpoCA"/>
+			<label left="90" top="50" width="50" height="20" text="CAT"/>
+			<comboBox left="120" top="50" width="125" height="20" field="equipamentoCorpoCategoria" items="{'Leve', 'Média', 'Pesada', 'Massiva'}" fontColor="white"/>
 
 			<label left="10" top="75" width="50" height="20" text="DES"/>
 			<edit vertTextAlign="center" left="45" top="75" width="40" height="20" field="equipamentoCorpoDesMax"/>

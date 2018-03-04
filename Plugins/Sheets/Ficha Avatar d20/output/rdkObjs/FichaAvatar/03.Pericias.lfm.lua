@@ -573,7 +573,7 @@ function newfrmFichaRPGmeister3_svg()
     obj.layout2:setParent(obj.scrollBox1);
     obj.layout2:setLeft(940);
     obj.layout2:setTop(0);
-    obj.layout2:setWidth(135);
+    obj.layout2:setWidth(175);
     obj.layout2:setHeight(60);
     obj.layout2:setName("layout2");
 
@@ -587,41 +587,63 @@ function newfrmFichaRPGmeister3_svg()
     obj.label20:setParent(obj.layout2);
     obj.label20:setText("PONTOS GASTOS");
     obj.label20:setLeft(0);
-    obj.label20:setTop(0);
-    obj.label20:setWidth(135);
+    obj.label20:setTop(5);
+    obj.label20:setWidth(130);
     obj.label20:setHeight(20);
     obj.label20:setHorzTextAlign("center");
     obj.label20:setName("label20");
 
-    obj.label21 = gui.fromHandle(_obj_newObject("label"));
-    obj.label21:setParent(obj.layout2);
-    obj.label21:setLeft(10);
-    obj.label21:setTop(30);
-    obj.label21:setWidth(70);
-    obj.label21:setHeight(20);
-    obj.label21:setText("DnD3.5");
-    obj.label21:setName("label21");
-
     obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout2);
-    obj.rectangle3:setLeft(80);
-    obj.rectangle3:setTop(30);
-    obj.rectangle3:setWidth(37);
+    obj.rectangle3:setLeft(130);
+    obj.rectangle3:setTop(5);
+    obj.rectangle3:setWidth(40);
     obj.rectangle3:setHeight(20);
     obj.rectangle3:setColor("black");
     obj.rectangle3:setStrokeColor("white");
     obj.rectangle3:setStrokeSize(1);
     obj.rectangle3:setName("rectangle3");
 
+    obj.label21 = gui.fromHandle(_obj_newObject("label"));
+    obj.label21:setParent(obj.layout2);
+    obj.label21:setField("pontosPericia");
+    obj.label21:setLeft(130);
+    obj.label21:setTop(5);
+    obj.label21:setWidth(40);
+    obj.label21:setHeight(20);
+    obj.label21:setHorzTextAlign("center");
+    obj.label21:setName("label21");
+
     obj.label22 = gui.fromHandle(_obj_newObject("label"));
     obj.label22:setParent(obj.layout2);
-    obj.label22:setField("pontosPericia");
-    obj.label22:setLeft(80);
+    obj.label22:setText("PERÍCIAS DE CLASSE");
+    obj.label22:setLeft(0);
     obj.label22:setTop(30);
-    obj.label22:setWidth(37);
+    obj.label22:setWidth(130);
     obj.label22:setHeight(20);
     obj.label22:setHorzTextAlign("center");
     obj.label22:setName("label22");
+
+    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4:setParent(obj.layout2);
+    obj.rectangle4:setLeft(130);
+    obj.rectangle4:setTop(30);
+    obj.rectangle4:setWidth(40);
+    obj.rectangle4:setHeight(20);
+    obj.rectangle4:setColor("black");
+    obj.rectangle4:setStrokeColor("white");
+    obj.rectangle4:setStrokeSize(1);
+    obj.rectangle4:setName("rectangle4");
+
+    obj.label23 = gui.fromHandle(_obj_newObject("label"));
+    obj.label23:setParent(obj.layout2);
+    obj.label23:setField("periciasClasse");
+    obj.label23:setLeft(130);
+    obj.label23:setTop(30);
+    obj.label23:setWidth(40);
+    obj.label23:setHeight(20);
+    obj.label23:setHorzTextAlign("center");
+    obj.label23:setName("label23");
 
     obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.scrollBox1);
@@ -697,6 +719,7 @@ function newfrmFichaRPGmeister3_svg()
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
+        if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
         if self.label22 ~= nil then self.label22:destroy(); self.label22 = nil; end;
@@ -731,6 +754,7 @@ function newfrmFichaRPGmeister3_svg()
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
+        if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
         if self.flowPart4 ~= nil then self.flowPart4:destroy(); self.flowPart4 = nil; end;
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
