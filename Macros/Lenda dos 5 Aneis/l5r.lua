@@ -3,19 +3,19 @@
 -- Definindo quantidade de dados
 local qtd = tonumber(arg[1]);
 while qtd==nil do
-	qtd = tonumber(inputQuery("Quantidade de dados: "));
+    qtd = tonumber(inputQuery("Quantidade de dados: "));
 end;
 if qtd < 1 then 
-	qtd=1;
+    qtd=1;
 end;
 
 -- Definindo limite de dados
 local limite = tonumber(arg[2]);
 while limite==nil do
-	limite = tonumber(inputQuery("Limite de dados: "));
+    limite = tonumber(inputQuery("Limite de dados: "));
 end;
 if limite > qtd then
-	limite = qtd;
+    limite = qtd;
 end
 
 -- Rolando os dados
@@ -39,9 +39,11 @@ table.sort(dados);
 -- eliminar os dados menores, de traz para frente
 local ignore = qtd - limite + 1;
 local texto = ""; 
+local soma = 0;
 for i = #dados, ignore, -1 do
     texto = texto .. " " .. math.floor(dados[i]);
+    soma = soma + math.floor(dados[i]);
 end; 
 
 -- Exibir resultado
-enviar("Os " .. limite .. " maiores números foram:" .. texto);
+enviar("Os " .. limite .. " maiores números foram:" .. texto .. " [" .. soma .. "]");
