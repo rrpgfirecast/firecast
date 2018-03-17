@@ -125,7 +125,7 @@
 						end
 					mod = string.gsub(mod, ",", ".");
 					mod = string.gsub(mod, "_", ",");
-					sheet.gastos = mod .. "PO";
+					sheet.gastos = mod;
 
 					restante = string.gsub(restante, "%.", "_");
 					while true do  
@@ -136,7 +136,7 @@
 						end
 					restante = string.gsub(restante, ",", ".");
 					restante = string.gsub(restante, "_", ",");
-					sheet.dinheiroRestante = restante .. "PO";
+					sheet.dinheiroRestante = restante;
 				end;
 			</event>
 		</dataLink>

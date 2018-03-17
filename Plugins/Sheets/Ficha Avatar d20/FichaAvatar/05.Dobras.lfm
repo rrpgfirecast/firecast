@@ -30,6 +30,7 @@
 	</popup>
 	<popup name="popTecnica" width="250" height="250" backOpacity="0.4">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<tecnicaLarge text="Elementos" field="elementos"/>
 			<tecnicaLarge text="Duração" field="duracao"/>
 			<tecnicaLarge text="CD" field="cd"/>
 			<tecnicaLarge text="Material" field="material"/>

@@ -1743,7 +1743,7 @@ function newfrmFichaRPGmeister7_svg()
             						end
             					mod = string.gsub(mod, ",", ".");
             					mod = string.gsub(mod, "_", ",");
-            					sheet.gastos = mod .. "PO";
+            					sheet.gastos = mod;
             
             					restante = string.gsub(restante, "%.", "_");
             					while true do  
@@ -1754,7 +1754,7 @@ function newfrmFichaRPGmeister7_svg()
             						end
             					restante = string.gsub(restante, ",", ".");
             					restante = string.gsub(restante, "_", ",");
-            					sheet.dinheiroRestante = restante .. "PO";
+            					sheet.dinheiroRestante = restante;
             				end;
         end, obj);
 

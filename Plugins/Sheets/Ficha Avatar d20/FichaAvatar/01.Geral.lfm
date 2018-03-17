@@ -268,7 +268,7 @@
 			<resitenceFlow tr="Von"/>
 			<textEditor align="client" field="trCondicional"/>
 		</popup>
-		<popup name="popCA" width="600" height="210" backOpacity="0.4">
+		<popup name="popCA" width="500" height="210" backOpacity="0.4">
 			<flowLayout align="top" autoHeight="true" margins="{bottom=4}">
 				<smallTitleCenter text="Armadura"/>
 				<smallLabelCenter field="equipamentoCorpoCA"/>
@@ -282,16 +282,12 @@
 				<flowPart minWidth="10" maxWidth="20" height="15"/>
 				<smallTitleCenter text="Penalidade"/>
 				<smallLabelCenter field="equipamentoCorpoPen"/>
-				<smallTitleCenter text="Falha"/>
-				<smallLabelCenter field="equipamentoCorpoFalha"/>
 				<flowLineBreak/>
 				
 				<Protection nome="Escudo" field="escudoCa"/>
 				<flowPart minWidth="10" maxWidth="20" height="15"/>
 				<smallTitleCenter text="Penalidade"/>
 				<smallFieldCenter field="escudoPen"/>
-				<smallTitleCenter text="Falha"/>
-				<smallFieldCenter field="escudoFalha"/>
 				<flowLineBreak/>
 				
 				<smallTitleCenter text="Destreza"/>
@@ -600,7 +596,7 @@
 		<rectangle left="480" top="150" width="260" height="155" color="black">
 			<label left="0" top="1" width="260" height="20" text="CLASSE DE ARMADURA" horzTextAlign="center"/>
 
-			<layout left="20" top="25" width="220" height="50" >
+			<layout left="40" top="25" width="220" height="50" >
 				<label left="10" top="0" width="35" height="20" text="CA"/>
 				<rectangle left="5" top="25" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
 				<label left="5" top="27" width="35" field="ca" horzTextAlign="center"/>
@@ -616,16 +612,6 @@
 				<label left="135" top="0" width="35" height="20" text="PEN"/>
 				<rectangle left="135" top="25" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
 				<label left="135" top="27" width="35" field="penalidade" horzTextAlign="center"/>
-				
-				<button left="170" top="0" width="45" height="20" fontSize="10" text="FALHA">
-					<event name="onClick">
-						local rolagem = rrpg.interpretarRolagem("1d100");
-						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Falha Arcana (" .. (sheet.falha or "0%").. ") de " .. (sheet.nome or "NOME"));
-					</event>
-				</button>
-				<rectangle left="175" top="25" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
-				<label left="175" top="27" width="35" field="falha" horzTextAlign="center"/>
 			</layout>
 			<button left="30" top="80" width="200" height="20" fontSize="10" text="+" name="caDetails">
 				<event name="onClick">
@@ -640,7 +626,7 @@
 				</event>
 			</button>
 
-			<dataLink fields="{'armaduraCa', 'escudoCa', 'efetModDes', 'tamanhoCa', 'naturalCa', 'deflexaoCa', 'esquivaCa', 'sorteCa', 'outrosCa', 'variadosCa', 'armaduraCaSurp', 'escudoCaSurp', 'destrezaCaSurp', 'tamanhoCaSurp', 'naturalCaSurp', 'deflexaoCaSurp', 'esquivaCaSurp', 'sorteCaSurp', 'outrosCaSurp', 'variadosCaSurp', 'armaduraCaToque', 'escudoCaToque', 'destrezaCaToque', 'tamanhoCaToque', 'naturalCaToque', 'deflexaoCaToque', 'esquivaCaToque', 'sorteCaToque', 'outrosCaToque', 'variadosCaToque'}">
+			<dataLink fields="{'equipamentoCorpoCA', 'escudoCa', 'efetModDes', 'tamanhoCa', 'naturalCa', 'deflexaoCa', 'esquivaCa', 'sorteCa', 'outrosCa', 'variadosCa', 'armaduraCaSurp', 'escudoCaSurp', 'destrezaCaSurp', 'tamanhoCaSurp', 'naturalCaSurp', 'deflexaoCaSurp', 'esquivaCaSurp', 'sorteCaSurp', 'outrosCaSurp', 'variadosCaSurp', 'armaduraCaToque', 'escudoCaToque', 'destrezaCaToque', 'tamanhoCaToque', 'naturalCaToque', 'deflexaoCaToque', 'esquivaCaToque', 'sorteCaToque', 'outrosCaToque', 'variadosCaToque'}">
 				<event name="onChange"><![CDATA[
 					if sheet~= nil then
 						if debug then
@@ -648,7 +634,7 @@
 							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CA");
 							index = index + 1;
 						end;
-						local armaduraCa = (tonumber(sheet.armaduraCa) or 0);
+						local armaduraCa = (tonumber(sheet.equipamentoCorpoCA) or 0);
 						local escudoCa = (tonumber(sheet.escudoCa) or 0);
 						local efetModDes = (tonumber(sheet.efetModDes) or 0);
 						local tamanhoCa = (tonumber(sheet.tamanhoCa) or 0);
@@ -750,29 +736,6 @@
 						end;
 						sheet.penalidade = (tonumber(sheet.equipamentoCorpoPen) or 0) + (tonumber(sheet.escudoPEn) or 0);
 						updatePenalty();
-					end;
-					]]>
-				</event>
-			</dataLink>
-			<dataLink fields="{'equipamentoCorpoFalha', 'escudoFalha'}">
-				<event name="onChange"><![CDATA[
-					if sheet~=nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Falha Arcana.");
-							index = index + 1;
-						end;
-						local equipamentoCorpoFalha = sheet.equipamentoCorpoFalha;
-						local escudoFalha = sheet.escudoFalha;
-
-						if equipamentoCorpoFalha~= nil then
-							equipamentoCorpoFalha = string.gsub(equipamentoCorpoFalha, "%%", "");
-						end;
-						if escudoFalha~= nil then
-							escudoFalha = string.gsub(escudoFalha, "%%", "");
-						end;
-
-						sheet.falha = ((tonumber(equipamentoCorpoFalha) or 0) + (tonumber(escudoFalha) or 0)) .. "%";
 					end;
 					]]>
 				</event>
