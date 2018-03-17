@@ -46,6 +46,9 @@
 		<tab title="Cibernético">
 			<import file="04.Cyber.lfm"/>
 		</tab>
+		<tab title="Veículos">
+			<import file="05.Vehicles.lfm"/>
+		</tab>
 		<tab title="Descrição">
 			<import file="Description.lfm"/>
 		</tab>
@@ -56,5 +59,4 @@
 			<import file="Credits.lfm"/>
 		</tab>
 	</tabControl>
-	<image align="client" src="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Cyberpunk%202020/root.png" style="stretch"/>
 </form>

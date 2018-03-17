@@ -84,14 +84,15 @@
 				</event>
 			</dataLink>
 
-			<dataLink fields="{'inventoryCost', 'weaponCost', 'armorCost', 'cyberCost'}">
+			<dataLink fields="{'inventoryCost', 'weaponCost', 'armorCost', 'cyberCost', 'vehicleCost'}">
 				<event name="onChange">
 					if sheet==nil then return end;
 
 					sheet.itensCost = (tonumber(sheet.inventoryCost) or 0) + 
 										(tonumber(sheet.cyberCost) or 0) + 
 										(tonumber(sheet.weaponCost) or 0) + 
-										(tonumber(sheet.armorCost) or 0);
+										(tonumber(sheet.armorCost) or 0) + 
+										(tonumber(sheet.vehicleCost) or 0);
 				</event>
 			</dataLink>
 		</layout>

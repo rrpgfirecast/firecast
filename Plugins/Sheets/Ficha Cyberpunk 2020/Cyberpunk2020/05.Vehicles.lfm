@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmVehicles" align="client">
+	<scrollBox align="client">
+		<rectangle color="grey" width="1363" height="686"/>
+		
+		<layout left="0" top="0" width="580" height="60">
+			<rectangle align="client" color="black"/>
+
+			<layout left="0" top="0" width="220" height="60">
+				<rectangle left="4" top="4" width="52" height="52" color="black" strokeColor="white" strokeSize="1"/>
+				<image left="10" top="10" width="40" height="40" src="images/wheel.png"/>
+				<rectangle left="54" top="4" width="52" height="52" color="black" strokeColor="white" strokeSize="1"/>
+				<edit left="60" top="10" width="40" height="40" field="wheel" horzTextAlign="center" vertTextAlign="center" fontSize="20" transparent="true"/>
+
+				<label left="110" top="5" width="80" height="20" text="Links" horzTextAlign="trailing"/>
+				<edit left="195" top="5" width="30" height="25" field="wheel_link" horzTextAlign="center" vertTextAlign="center"/>
+				<label left="110" top="30" width="80" height="20" text="Computador" horzTextAlign="trailing"/>
+				<edit left="195" top="30" width="30" height="25" field="wheel_computer" horzTextAlign="center" vertTextAlign="center"/>
+			</layout>
+
+			<layout left="230" top="0" width="225" height="60">
+				<rectangle left="4" top="4" width="52" height="52" color="black" strokeColor="white" strokeSize="1"/>
+				<image left="10" top="10" width="40" height="40" src="images/pistol.png"/>
+				<rectangle left="54" top="4" width="52" height="52" color="black" strokeColor="white" strokeSize="1"/>
+				<edit left="60" top="10" width="40" height="40" field="pistol" horzTextAlign="center" vertTextAlign="center" fontSize="20" transparent="true"/>
+
+				<label left="110" top="5" width="80" height="20" text="Links" horzTextAlign="trailing"/>
+				<edit left="195" top="5" width="30" height="25" field="pistol_link" horzTextAlign="center" vertTextAlign="center"/>
+				<label left="110" top="30" width="80" height="20" text="Computador" horzTextAlign="trailing"/>
+				<edit left="195" top="30" width="30" height="25" field="pistol_computer" horzTextAlign="center" vertTextAlign="center"/>
+			</layout>
+
+			<layout left="460" top="0" width="115" height="60">
+				<rectangle left="4" top="4" width="52" height="52" color="black" strokeColor="white" strokeSize="1"/>
+				<image left="10" top="10" width="40" height="40" src="images/heart.png"/>
+				<rectangle left="54" top="4" width="52" height="52" color="black" strokeColor="white" strokeSize="1"/>
+				<edit left="60" top="10" width="40" height="40" field="heart" horzTextAlign="center" vertTextAlign="center" fontSize="20" transparent="true"/>
+			</layout>
+		</layout>
+
+		<layout left="0" top="70" width="170" height="135">
+			<rectangle align="client" color="black"/>
+
+			<radioButton left="5" top="5" width="60" height="20" field="marcha1" text="1º - R" groupName="marcha"/>
+			<edit left="65" top="5" width="100" height="25" field="marcha1_details"/>
+			<radioButton left="5" top="30" width="60" height="20" field="marcha2" text="2º" groupName="marcha"/>
+			<edit left="65" top="30" width="100" height="25" field="marcha2_details"/>
+			<radioButton left="5" top="55" width="60" height="20" field="marcha3" text="3º" groupName="marcha"/>
+			<edit left="65" top="55" width="100" height="25" field="marcha3_details"/>
+			<radioButton left="5" top="80" width="60" height="20" field="marcha4" text="4º" groupName="marcha"/>
+			<edit left="65" top="80" width="100" height="25" field="marcha4_details"/>
+			<radioButton left="5" top="105" width="60" height="20" field="marcha5" text="5º" groupName="marcha"/>
+			<edit left="65" top="105" width="100" height="25" field="marcha5_details"/>
+		</layout>
+
+		<layout left="0" top="215" width="170" height="160">
+			<rectangle align="client" color="black"/>
+
+			<label left="5" top="5" width="80" height="20" text="Estrutura" horzTextAlign="center"/>
+			<edit left="85" top="5" width="40" height="25" field="estrutura_atual"/>
+			<edit left="125" top="5" width="40" height="25" field="estrutura_total"/>
+			<label left="5" top="30" width="80" height="20" text="Frontal" horzTextAlign="center"/>
+			<edit left="85" top="30" width="40" height="25" field="estrutura_frontal_atual"/>
+			<edit left="125" top="30" width="40" height="25" field="estrutura_frontal_total"/>
+			<label left="5" top="55" width="80" height="20" text="Esquerda" horzTextAlign="center"/>
+			<edit left="85" top="55" width="40" height="25" field="estrutura_esquerda_atual"/>
+			<edit left="125" top="55" width="40" height="25" field="estrutura_esquerda_total"/>
+			<label left="5" top="80" width="80" height="20" text="Direita" horzTextAlign="center"/>
+			<edit left="85" top="80" width="40" height="25" field="estrutura_direita_atual"/>
+			<edit left="125" top="80" width="40" height="25" field="estrutura_direita_total"/>
+			<label left="5" top="105" width="80" height="20" text="Traseira" horzTextAlign="center"/>
+			<edit left="85" top="105" width="40" height="25" field="estrutura_traseira_atual"/>
+			<edit left="125" top="105" width="40" height="25" field="estrutura_traseira_total"/>
+			<label left="5" top="130" width="80" height="20" text="Interna" horzTextAlign="center"/>
+			<edit left="85" top="130" width="40" height="25" field="estrutura_interna_atual"/>
+			<edit left="125" top="130" width="40" height="25" field="estrutura_interna_total"/>
+		</layout>
+
+		<layout left="180" top="70" width="760" height="305">
+			<rectangle align="client" color="black"/>
+			<label text="ARMA" left="5" top="1" width="150" height="20" horzTextAlign="center"/>
+			<label text="TIPO" left="155" top="1" width="50" height="20" horzTextAlign="center"/>
+			<label text="PRECISÃO" left="205" top="1" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="OCULT." left="255" top="1" width="50" height="20" horzTextAlign="center" fontSize="12"/>
+			<label text="DISP." left="305" top="1" width="50" height="20" horzTextAlign="center"/>
+			<label text="DANO" left="355" top="1" width="50" height="20" horzTextAlign="center"/>
+			<label text="Nº DISP." left="405" top="1" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="CD TIRO" left="455" top="1" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="CONF." left="505" top="1" width="50" height="20" horzTextAlign="center"/>
+			<label text="ALCANCE" left="555" top="1" width="50" height="20" horzTextAlign="center" fontSize="11"/>
+			<label text="PREÇO" left="605" top="1" width="50" height="20" horzTextAlign="center"/>
+			<label text="POS." left="655" top="1" width="50" height="20" horzTextAlign="center"/>
+			<button text="+" left="705" top="0" width="25" height="25" onClick="self.rclVehicleWeapon:append();"/>	
+
+			<recordList name="rclVehicleWeapon" field="vehicleWeaponList" templateForm="frmVehicleWeapon" left="5" top="25" width="750" height="270" layout="vertical">
+				<event name="onCompare">
+					return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+		        </event>
+			</recordList>
+		</layout>
+
+		<rectangle left="0" top="385" width="250" height="250" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="40" width="250" height="20" text="Veículo" horzTextAlign="center"/>
+			<image align="client" field="vehicleAvatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+				<event name="OnStartDrag">
+				    drag:addData("imageURL", sheet.vehicleAvatar);
+				</event>
+			</image>
+		</rectangle>
+
+	</scrollBox>
+</form>

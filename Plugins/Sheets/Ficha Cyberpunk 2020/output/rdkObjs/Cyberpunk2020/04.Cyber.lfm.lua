@@ -34,13 +34,6 @@ function newfrmCyber()
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle1:setParent(obj.scrollBox1);
-    obj.rectangle1:setColor("grey");
-    obj.rectangle1:setWidth(1363);
-    obj.rectangle1:setHeight(686);
-    obj.rectangle1:setName("rectangle1");
-
     obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
@@ -49,11 +42,11 @@ function newfrmCyber()
     obj.layout1:setHeight(685);
     obj.layout1:setName("layout1");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle2:setParent(obj.layout1);
-    obj.rectangle2:setAlign("client");
-    obj.rectangle2:setColor("black");
-    obj.rectangle2:setName("rectangle2");
+    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1:setParent(obj.layout1);
+    obj.rectangle1:setAlign("client");
+    obj.rectangle1:setColor("black");
+    obj.rectangle1:setName("rectangle1");
 
     obj.label1 = gui.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
@@ -123,11 +116,11 @@ function newfrmCyber()
     obj.layout2:setHeight(35);
     obj.layout2:setName("layout2");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle3:setParent(obj.layout2);
-    obj.rectangle3:setAlign("client");
-    obj.rectangle3:setColor("black");
-    obj.rectangle3:setName("rectangle3");
+    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2:setParent(obj.layout2);
+    obj.rectangle2:setAlign("client");
+    obj.rectangle2:setColor("black");
+    obj.rectangle2:setName("rectangle2");
 
     obj.label5 = gui.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout2);
@@ -139,16 +132,16 @@ function newfrmCyber()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle4:setParent(obj.layout2);
-    obj.rectangle4:setLeft(105);
-    obj.rectangle4:setTop(5);
-    obj.rectangle4:setWidth(50);
-    obj.rectangle4:setHeight(25);
-    obj.rectangle4:setColor("black");
-    obj.rectangle4:setStrokeColor("white");
-    obj.rectangle4:setStrokeSize(1);
-    obj.rectangle4:setName("rectangle4");
+    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3:setParent(obj.layout2);
+    obj.rectangle3:setLeft(105);
+    obj.rectangle3:setTop(5);
+    obj.rectangle3:setWidth(50);
+    obj.rectangle3:setHeight(25);
+    obj.rectangle3:setColor("black");
+    obj.rectangle3:setStrokeColor("white");
+    obj.rectangle3:setStrokeSize(1);
+    obj.rectangle3:setName("rectangle3");
 
     obj.label6 = gui.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout2);
@@ -161,16 +154,16 @@ function newfrmCyber()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle5:setParent(obj.layout2);
-    obj.rectangle5:setLeft(155);
-    obj.rectangle5:setTop(5);
-    obj.rectangle5:setWidth(50);
-    obj.rectangle5:setHeight(25);
-    obj.rectangle5:setColor("black");
-    obj.rectangle5:setStrokeColor("white");
-    obj.rectangle5:setStrokeSize(1);
-    obj.rectangle5:setName("rectangle5");
+    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4:setParent(obj.layout2);
+    obj.rectangle4:setLeft(155);
+    obj.rectangle4:setTop(5);
+    obj.rectangle4:setWidth(50);
+    obj.rectangle4:setHeight(25);
+    obj.rectangle4:setColor("black");
+    obj.rectangle4:setStrokeColor("white");
+    obj.rectangle4:setStrokeSize(1);
+    obj.rectangle4:setName("rectangle4");
 
     obj.label7 = gui.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout2);
@@ -207,7 +200,6 @@ function newfrmCyber()
           self:setNodeDatabase(nil);
         end;
 
-        if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;

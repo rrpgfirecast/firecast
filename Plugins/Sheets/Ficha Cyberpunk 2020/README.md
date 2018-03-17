@@ -1,6 +1,9 @@
 # Fich Cyberpunk 2020
 Ficha para o sistema Cyberpunk 2020
 
+Versão 03:
+* Adicionada aba de veiculos. 
+
 Versão 02
 * Ajustes menores. 
 * Correr e Saltar agora vai automatico. 

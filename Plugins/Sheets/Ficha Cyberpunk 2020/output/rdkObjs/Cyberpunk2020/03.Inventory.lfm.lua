@@ -490,7 +490,7 @@ function newfrmInventory()
 
     obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.layout4);
-    obj.dataLink2:setFields({'inventoryCost', 'weaponCost', 'armorCost', 'cyberCost'});
+    obj.dataLink2:setFields({'inventoryCost', 'weaponCost', 'armorCost', 'cyberCost', 'vehicleCost'});
     obj.dataLink2:setName("dataLink2");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
@@ -539,7 +539,8 @@ function newfrmInventory()
             					sheet.itensCost = (tonumber(sheet.inventoryCost) or 0) + 
             										(tonumber(sheet.cyberCost) or 0) + 
             										(tonumber(sheet.weaponCost) or 0) + 
-            										(tonumber(sheet.armorCost) or 0);
+            										(tonumber(sheet.armorCost) or 0) + 
+            										(tonumber(sheet.vehicleCost) or 0);
         end, obj);
 
     function obj:_releaseEvents()
