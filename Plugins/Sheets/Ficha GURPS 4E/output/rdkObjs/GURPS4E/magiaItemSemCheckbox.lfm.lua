@@ -78,9 +78,9 @@ function newfrmMagiaItemSemCheckbox()
 
     obj.button2 = gui.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj);
-    obj.button2:setText("Apagar");
+    obj.button2:setText("X");
     obj.button2:setAlign("right");
-    obj.button2:setWidth(60);
+    obj.button2:setWidth(30);
     obj.button2:setMargins({left=4, right=4, top=2, bottom=2});
     obj.button2:setName("button2");
 

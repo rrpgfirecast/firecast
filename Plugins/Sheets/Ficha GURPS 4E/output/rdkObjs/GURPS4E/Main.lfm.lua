@@ -2569,7 +2569,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.image5:setWidth(100);
     obj.image5:setHeight(20);
     obj.image5:setStyle("autoFit");
-    obj.image5:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao01.png");
+    obj.image5:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao02.png");
     obj.image5:setName("image5");
 
     obj.button6 = gui.fromHandle(_obj_newObject("button"));
@@ -2682,56 +2682,42 @@ self.upperGridMagicEditBox1._RecalcSize();
             self.rclTech:append();
         end, obj);
 
-    obj._e_event9 = obj.rclTech:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
-            -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
-            						return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
-        end, obj);
-
-    obj._e_event10 = obj.button3:addEventListener("onClick",
+    obj._e_event9 = obj.button3:addEventListener("onClick",
         function (self)
             self.rclMagic:append();
         end, obj);
 
-    obj._e_event11 = obj.rclMagic:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
-            -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
-            						return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
-        end, obj);
-
-    obj._e_event12 = obj.button4:addEventListener("onClick",
+    obj._e_event10 = obj.button4:addEventListener("onClick",
         function (self)
             self.rclBackpack:append();
         end, obj);
 
-    obj._e_event13 = obj.button5:addEventListener("onClick",
+    obj._e_event11 = obj.button5:addEventListener("onClick",
         function (self)
             self.rclEquipments:append();
         end, obj);
 
-    obj._e_event14 = obj.button6:addEventListener("onClick",
+    obj._e_event12 = obj.button6:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/README.md')
         end, obj);
 
-    obj._e_event15 = obj.button7:addEventListener("onClick",
+    obj._e_event13 = obj.button7:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20GURPS%204E/Ficha%20GURPS%204E.rpk')
         end, obj);
 
-    obj._e_event16 = obj.button8:addEventListener("onClick",
+    obj._e_event14 = obj.button8:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event17 = obj.button9:addEventListener("onClick",
+    obj._e_event15 = obj.button9:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=131156');
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event17);
-        __o_rrpgObjs.removeEventListenerById(self._e_event16);
         __o_rrpgObjs.removeEventListenerById(self._e_event15);
         __o_rrpgObjs.removeEventListenerById(self._e_event14);
         __o_rrpgObjs.removeEventListenerById(self._e_event13);

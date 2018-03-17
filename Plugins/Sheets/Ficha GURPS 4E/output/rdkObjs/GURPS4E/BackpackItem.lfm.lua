@@ -60,9 +60,9 @@ function newfrmBackpackItem()
 
     obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
-    obj.button1:setText("Apagar");
+    obj.button1:setText("X");
     obj.button1:setAlign("right");
-    obj.button1:setWidth(60);
+    obj.button1:setWidth(30);
     obj.button1:setMargins({left=4, right=4, top=2, bottom=2});
     obj.button1:setName("button1");
 

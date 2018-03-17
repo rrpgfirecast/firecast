@@ -194,13 +194,13 @@
 		<edit name="edtNome" class="transparente" align="client" field="nome" margins="{left=4, right=4}" vertTextAlign="center"/>
 		<horzLine align="bottom" strokeColor="white"/>						
 		<button text="i" align="right" width="32" margins="{left=4, right=0, top=2, bottom=2}" onClick="showMagiaPopup();"/>		
-		<button text="Apagar" align="right" width="60" margins="{left=4, right=4, top=2, bottom=2}" onClick="askForDelete();"/>		
+		<button text="X" align="right" width="30" margins="{left=4, right=4, top=2, bottom=2}" onClick="askForDelete();"/>		
 	</template>
 	
 	<template name="magiaItemContentEditAndLine2">
 		<edit name="edtNome" class="transparente" align="client" field="nome" margins="{left=4, right=4}" vertTextAlign="center"/>
 		<horzLine align="bottom" strokeColor="white"/>	
-		<button text="Apagar" align="right" width="60" margins="{left=4, right=4, top=2, bottom=2}" onClick="askForDelete();"/>		
+		<button text="X" align="right" width="30" margins="{left=4, right=4, top=2, bottom=2}" onClick="askForDelete();"/>		
 	</template>
 	
 	<template name="magiaItemContent">
