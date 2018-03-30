@@ -48,7 +48,7 @@
 					<button align="left" text="+" width="25" hint="Adiciona uma perícia." horzTextAlign="center" onClick="self.rclSkills:append();" margins="{top=-10}"/>
 				</layout>
 
-				<recordList align="client" name="rclSkills" field="listaDePericias" templateForm="frmSkillItem" layout="verticalTiles"/>
+				<recordList align="client" name="rclSkills" field="listaDePericias" templateForm="frmSkillItem" layout="vertical"/>
 			</flowPart>
 
 			<flowLineBreak/>

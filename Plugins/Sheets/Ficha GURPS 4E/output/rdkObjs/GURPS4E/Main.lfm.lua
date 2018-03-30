@@ -189,6 +189,7 @@ function newfrmTemplate()
     obj.edit2:setFontSize(46);
     lfm_setPropAsString(obj.edit2, "fontStyle",  "bold");
     obj.edit2:setTransparent(true);
+    obj.edit2:setMin(3);
     obj.edit2:setName("edit2");
     obj.edit2:setFontColor("white");
 
@@ -243,6 +244,7 @@ function newfrmTemplate()
     obj.edit4:setFontSize(46);
     lfm_setPropAsString(obj.edit4, "fontStyle",  "bold");
     obj.edit4:setTransparent(true);
+    obj.edit4:setMin(3);
     obj.edit4:setName("edit4");
     obj.edit4:setFontColor("white");
 
@@ -297,6 +299,7 @@ function newfrmTemplate()
     obj.edit6:setFontSize(46);
     lfm_setPropAsString(obj.edit6, "fontStyle",  "bold");
     obj.edit6:setTransparent(true);
+    obj.edit6:setMin(3);
     obj.edit6:setName("edit6");
     obj.edit6:setFontColor("white");
 
@@ -351,6 +354,7 @@ function newfrmTemplate()
     obj.edit8:setFontSize(46);
     lfm_setPropAsString(obj.edit8, "fontStyle",  "bold");
     obj.edit8:setTransparent(true);
+    obj.edit8:setMin(3);
     obj.edit8:setName("edit8");
     obj.edit8:setFontColor("white");
 
@@ -405,6 +409,7 @@ function newfrmTemplate()
     obj.edit10:setFontSize(46);
     lfm_setPropAsString(obj.edit10, "fontStyle",  "bold");
     obj.edit10:setTransparent(true);
+    obj.edit10:setMin(3);
     obj.edit10:setName("edit10");
     obj.edit10:setFontColor("white");
 
@@ -459,6 +464,7 @@ function newfrmTemplate()
     obj.edit12:setFontSize(46);
     lfm_setPropAsString(obj.edit12, "fontStyle",  "bold");
     obj.edit12:setTransparent(true);
+    obj.edit12:setMin(3);
     obj.edit12:setName("edit12");
     obj.edit12:setFontColor("white");
 
@@ -513,6 +519,7 @@ function newfrmTemplate()
     obj.edit14:setFontSize(46);
     lfm_setPropAsString(obj.edit14, "fontStyle",  "bold");
     obj.edit14:setTransparent(true);
+    obj.edit14:setMin(3);
     obj.edit14:setName("edit14");
     obj.edit14:setFontColor("white");
 
@@ -567,6 +574,7 @@ function newfrmTemplate()
     obj.edit16:setFontSize(46);
     lfm_setPropAsString(obj.edit16, "fontStyle",  "bold");
     obj.edit16:setTransparent(true);
+    obj.edit16:setMin(3);
     obj.edit16:setName("edit16");
     obj.edit16:setFontColor("white");
 
@@ -673,6 +681,7 @@ function newfrmTemplate()
     obj.edit19:setFontSize(46);
     lfm_setPropAsString(obj.edit19, "fontStyle",  "bold");
     obj.edit19:setTransparent(true);
+    obj.edit19:setMin(3);
     obj.edit19:setName("edit19");
     obj.edit19:setFontColor("white");
 
@@ -732,6 +741,7 @@ function newfrmTemplate()
     obj.edit21:setFontSize(46);
     lfm_setPropAsString(obj.edit21, "fontStyle",  "bold");
     obj.edit21:setTransparent(true);
+    obj.edit21:setMin(3);
     obj.edit21:setName("edit21");
     obj.edit21:setFontColor("white");
 
@@ -1456,7 +1466,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.rclSkills:setName("rclSkills");
     obj.rclSkills:setField("listaDePericias");
     obj.rclSkills:setTemplateForm("frmSkillItem");
-    obj.rclSkills:setLayout("verticalTiles");
+    obj.rclSkills:setLayout("vertical");
 
     obj.flowLineBreak3 = gui.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak3:setParent(obj.fraHabilidadesLayout);
@@ -2569,7 +2579,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.image5:setWidth(100);
     obj.image5:setHeight(20);
     obj.image5:setStyle("autoFit");
-    obj.image5:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao02.png");
+    obj.image5:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao03.png");
     obj.image5:setName("image5");
 
     obj.button6 = gui.fromHandle(_obj_newObject("button"));

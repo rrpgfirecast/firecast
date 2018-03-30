@@ -151,7 +151,7 @@
 				<edit class="atributo" align="top" margins="{left=25, right=30}" field="atributos_$(field)" height="30" type="number" horzTextAlign="center" vertTextAlign="center"/>
 			</layout>
 			
-			<edit frameRegion="modificador" field="atributos_mod_$(field)" horzTextAlign="center" vertTextAlign="center" fontSize="46" fontStyle="bold" transparent="true"/>
+			<edit frameRegion="modificador" field="atributos_mod_$(field)" horzTextAlign="center" vertTextAlign="center" fontSize="46" fontStyle="bold" transparent="true" min="3"/>
 			<label frameRegion="titulo" text="$(titulo)" vertTextAlign="center" horzTextAlign="center"/>
 			
 		</flowPart>

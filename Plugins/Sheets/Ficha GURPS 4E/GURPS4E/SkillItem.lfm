@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmSkillItem" width="365" height="25" margins="{top=1, right=5}">
-	<rectangle align="client" color="#212121">
-		<edit left="0" top="0" width="100" height="25" field="nome"/>
+<form name="frmSkillItem" width="365" height="25" margins="{top=5, right=5}">
+	<rectangle align="client" color="#404040">
 
-		<rectangle left="100" top="0" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
-        <label left="100" top="3" width="30" height="20" field="nh" horzTextAlign="center"/>
+		<layout align="right" width="180">
+			<rectangle left="0" top="0" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
+	        <label left="0" top="3" width="30" height="20" field="nh" horzTextAlign="center"/>
 
-		<comboBox left="130" top="0" width="50" height="25" field="atr" items="{'ST', 'DX', 'IQ', 'HT', 'VT', 'PR', '-'}"/>
+			<comboBox left="30" top="0" width="50" height="25" field="atr" items="{'ST', 'DX', 'IQ', 'HT', 'VT', 'PR', '-'}"/>
 
-		<label left="180" top="3" width="10" height="20" text="+" horzTextAlign="center"/>
-		<rectangle left="190" top="0" width="30" height="25" strokeColor="white" color="#FF000000" strokeSize="1" hitTest="false">
-			<edit align="client" type="number" field="bonus" transparent="true"/>
-		</rectangle>
-		<label left="220" top="3" width="10" height="20" text="-" horzTextAlign="center"/>
-		<rectangle left="230" top="0" width="30" height="25" strokeColor="white" color="#FF000000" strokeSize="1" hitTest="false">
-			<edit align="client" type="number" field="penalidade" transparent="true"/>
-		</rectangle>
+			<edit left="85" top="0" width="30" height="25" type="number" field="dx" transparent="true" horzTextAlign="center"/>
+			<horzLine left="85" top="22" width="25" strokeColor="white"/>
 
-		<comboBox left="260" top="0" width="55" height="25" field="dificuldade" items="{'F', 'M', 'D', 'MD', '-'}"/>
+			<label left="115" top="3" width="5" height="20" text="|" horzTextAlign="center"/>
 
-		<rectangle left="315" top="3" width="25" height="20" strokeColor="white" color="#FF000000" strokeSize="1" hitTest="false">
-			<edit align="client" field="pts" horzTextAlign="center" transparent="true"/>
-		</rectangle>
+			<edit left="125" top="3" width="25" height="20" field="pts" horzTextAlign="center" transparent="true"/>
+			<horzLine left="125" top="22" width="25" strokeColor="white"/>
+			
+			<button left="155" top="0" width="25" height="25" text="X">
+				<event name="onClick">
+					dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+						function (confirmado)
+							if confirmado then
+								ndb.deleteNode(sheet);
+							end;
+					end);
+				</event>
+			</button>
+		</layout>
 
-		<button left="340" top="0" width="25" height="25" text="X">
-			<event name="onClick">
-				dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
-					function (confirmado)
-						if confirmado then
-							ndb.deleteNode(sheet);
-						end;
-				end);
-			</event>
-		</button>
+		<layout align="client">
+			<edit align="client" field="nome" transparent="true"/>
+			<horzLine align="bottom" strokeColor="white"/>
+		</layout>
 
 		<dataLink field="pts">
 			<event name="onChange">
@@ -40,12 +39,11 @@
 			</event>
 		</dataLink>
 
-		<dataLink fields="{'atr', 'bonus', 'penalidade'}">
+		<dataLink fields="{'atr', 'dx'}">
 			<event name="onChange">
 				if sheet==nil then return end;
 
-				local nh = (tonumber(sheet.bonus) or 0) - 
-							(tonumber(sheet.penalidade) or 0);
+				local nh = (tonumber(sheet.dx) or 0);
 
 				local mod = 0;
 				local node = ndb.getRoot(sheet);

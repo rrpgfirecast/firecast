@@ -142,7 +142,7 @@ function newfrmTemplateCreditos()
     obj.image5:setWidth(100);
     obj.image5:setHeight(20);
     obj.image5:setStyle("autoFit");
-    obj.image5:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao02.png");
+    obj.image5:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao03.png");
     obj.image5:setName("image5");
 
     obj.button1 = gui.fromHandle(_obj_newObject("button"));
