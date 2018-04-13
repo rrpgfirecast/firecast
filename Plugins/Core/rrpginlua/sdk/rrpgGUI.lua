@@ -669,6 +669,8 @@ local function labelFromHandle(handle)
 	ctrl.props["autoSize"] = {setter = "setAutoSize", getter = "getAutoSize", tipo = "bool"};		
 	ctrl.props["field"] = {setter = "setField", getter = "getField", tipo = "string"};		
 	ctrl.props["frameRegion"] = {setter = "setFrameRegion", getter = "getFrameRegion", tipo = "string"};			
+	ctrl.props["format"] = {writeProp = "StringFormat", readProp = "StringFormat", tipo = "string"};		
+	ctrl.props["formatFloat"] = {writeProp = "StringFormatFloat", readProp = "StringFormatFloat", tipo = "string"};			
 	return ctrl;	
 end
 

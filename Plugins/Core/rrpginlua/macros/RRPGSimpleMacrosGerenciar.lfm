@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="frmGerenciarSimpleMacros" title="Gerenciar Macros" width="450" height="450" resizable="true">
+<popupForm name="frmGerenciarSimpleMacros" title="@@macros.ui.manageMacros" width="450" height="450" resizable="true">
 	<import file="../interfaceUtils.xml"/>
 
 	<!-- Popup de Edição da Macro -->
@@ -10,29 +10,29 @@
 		
 		<scrollBox align="client">
 			<layout align="top" height="25" padding="{left=2, right=2}">
-				<label text="Editar Macro" align="client" margins="{right=2}" horzTextAlign="center" fontSize="16"/>
-				<button text="Fechar" align="right" width="80" onClick="self.popEditMacro:close();"/>			
+				<label text="@@macros.ui.editLabel" align="client" margins="{right=2}" horzTextAlign="center" fontSize="16"/>
+				<button text="@@macros.ui.closeButton" align="right" width="80" onClick="self.popEditMacro:close();"/>			
 			</layout>
 			
 			<horzLine align="top" margins="{top=4, bottom=2, left=16, right=16}" strokeColor="white"/>
 			
 			<flowLayout align="top" autoHeight="true" margins="{left=5,right=5, top=8}">
-				<label text="Nome " autoSize="true"/>
-				<label text="(Não inclua o caracter '/' nem espaços!)" autoSize="true" fontSize="12" fontColor="gray" wordWrap="false"/>
+				<label text="@@macros.ui.nameLabel" autoSize="true"/>
+				<label text="@@macros.ui.nameLabel.Orientation" autoSize="true" fontSize="12" fontColor="gray" wordWrap="false"/>
 				<flowLineBreak/>
 				
 				<flowPart minWidth="100" maxWidth="250" height="30" margins="{bottom=12, top=-2}">					
-					<edit name="edtNomeDaMacro" align="client" field="macro" textPrompt="Exemplo: Atacar"/>
+					<edit name="edtNomeDaMacro" align="client" field="macro" textPrompt="@@macros.ui.macroName.example"/>
 				</flowPart>			
 				<flowLineBreak/>
 				
-				<radioButton groupName="tipoMacro" field="tipoMacro" fieldValue="S" text="Macro Simples"/>
-				<radioButton groupName="tipoMacro" field="tipoMacro" fieldValue="L" text="Macro em Lua" margins="{bottom=12, right=8}"/>
+				<radioButton groupName="tipoMacro" field="tipoMacro" fieldValue="S" text="@@macros.ui.macroType.simple"/>
+				<radioButton groupName="tipoMacro" field="tipoMacro" fieldValue="L" text="@@macros.ui.macroType.lua" margins="{bottom=12, right=8}"/>
 				<button  text="??" width="45" onClick="gui.openInBrowser('http://rrpg.com.br/sdk3beta/RRPG%20SDK%203.html?Macros.html');"/>
 				<flowLineBreak/>
 				
-				<label text="Ações " autoSize="true" vertTextAlign="trailing"/>
-				<label name="labExtraInfoAcoes" text="(Uma por linha)" autoSize="true" fontSize="12" fontColor="gray" wordWrap="false" vertTextAlign="trailing"/>				
+				<label text="@@macros.ui.actionsTitle" autoSize="true" vertTextAlign="trailing"/>
+				<label name="labExtraInfoAcoes" text="@@macros.ui.macroType.onePerLine" autoSize="true" fontSize="12" fontColor="gray" wordWrap="false" vertTextAlign="trailing"/>				
 				<flowLineBreak/>				
 				
 				<flowPart name="flpCode" minWidth="100" maxWidth="1200" height="100" margins="{bottom=12, top=-2}">					
@@ -41,9 +41,9 @@
 						
 				
 				<flowLineBreak/>	
-				<button text="Apagar Macro" width="150" margins="{top=8, right=15, bottom=15}" height="30">
+				<button text="@@macros.ui.deleteMacro" width="150" margins="{top=8, right=15, bottom=15}" height="30">
 					<event name="OnClick">
-						dialogs.confirmYesNo("Deseja realmente apagar esta macro?",
+						dialogs.confirmYesNo(lang("macros.ui.deleteConfirmation"),
 							function (confirmado)
 								if confirmado then
 									local node = self.popEditMacro:getNodeObject();								
@@ -114,15 +114,15 @@
 		
 	<!-- Tabs da janela -->	
 	<tabControl align="client">
-		<tab title="Macros para todos da mesa" name="tabMacroMesa">
+		<tab title="@@macros.ui.title.macrosForEveryoneOnRoom" name="tabMacroMesa">
 			<dataScopeBox name="dsbMacrosMesaGlobal" align="client">
 				<layout align="client" margins="{left=2, top=2, right=2, bottom=2}">
 						<layout align="top" height="25" margins="{left=2, right=2, bottom=8}">
-							<label name="labTitMesa2" text="Mesa" align="client" horzTextAlign="center" fontSize="16" fontStyle="bold"/>										
+							<label name="labTitMesa2" text="@@macros.ui.room" align="client" horzTextAlign="center" fontSize="16" fontStyle="bold"/>										
 						</layout>					
 				
 					<layout align="top" height="28" margins="{bottom=5, top=5, left=5}">
-						<button text="Nova macro para todos" align="left" width="150" onClick="self.editarMacroNode(self.rclMacrosDaMesaGlobal:append());"/>
+						<button text="@@macros.ui.roomMacro.newTitle" align="left" width="150" onClick="self.editarMacroNode(self.rclMacrosDaMesaGlobal:append());"/>
 					</layout>
 					
 					<recordList name="rclMacrosDaMesaGlobal" align="client" field="macros" 
@@ -131,12 +131,12 @@
 			</dataScopeBox>
 		</tab>
 	
-		<tab title="Minhas macros">
+		<tab title="@@macros.ui.myMacros.title">
 			<tabControl align="client">
-				<tab title="Globais">
+				<tab title="@@macros.ui.myMacros.global.title">
 					<layout align="client" margins="{left=2, top=2, right=2, bottom=2}">
 						<layout align="top" height="28" margins="{bottom=5, top=5, left=5}">
-							<button text="Nova macro global" align="left" width="150" onClick="self.editarMacroNode(self.rclMacrosGlobais:append());"/>
+							<button text="@@macros.ui.myMacros.global.new.title" align="left" width="150" onClick="self.editarMacroNode(self.rclMacrosGlobais:append());"/>
 						</layout>
 						
 						<recordList name="rclMacrosGlobais" align="client" field="macros" 
@@ -144,17 +144,17 @@
 					</layout>
 				</tab>
 				
-				<tab name="tabMacrosDaMesa" title="Desta mesa">
+				<tab name="tabMacrosDaMesa" title="@@macros.ui.myMacros.thisroom.title">
 					<dataScopeBox name="dsbMacrosDaMesa" align="client">
 						<layout align="client" margins="{left=2, top=2, right=2, bottom=2}">
 							<layout align="top" height="25" margins="{left=2, right=2, bottom=8}">
-								<label name="labTitMesa" text="Mesa" align="client" horzTextAlign="center" fontSize="16" fontStyle="bold"/>			
+								<label name="labTitMesa" text="@@macros.ui.room" align="client" horzTextAlign="center" fontSize="16" fontStyle="bold"/>			
 								
 							</layout>				
 								
 						
 							<layout align="top" height="28" margins="{bottom=3}">
-								<button text="Nova macro desta mesa" align="left" width="180" onClick="self.editarMacroNode(self.rclMacrosDaMesa:append());"/>
+								<button text="@@macros.ui.myMacros.thisroom.new.title" align="left" width="180" onClick="self.editarMacroNode(self.rclMacrosDaMesa:append());"/>
 							</layout>
 							
 							<recordList name="rclMacrosDaMesa" align="client" field="macros" 
@@ -198,7 +198,7 @@
 			local travouForm = false;
 			opcoes.criar = true;
 			opcoes.callbackDeCarga = function()
-										self:lockWithActivity("Carregando Macros da Mesa");
+										self:lockWithActivity(lang("macros.ui.loadingMacrosForRoom"));
 										travouForm = true;
 									 end;
 			
@@ -226,5 +226,5 @@
 		self.dsbMacrosDaMesa.node = nil;
 		self:setNodeObject(nil);
 	</event>
-		
+			
 </popupForm>

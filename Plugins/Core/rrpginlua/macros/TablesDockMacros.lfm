@@ -195,7 +195,7 @@
 	</event>
 	
 	<layout name="layTopo" align="top" height="25">
-		<button name="btnGerMacros" align="left" text="Gerenciar Macros" textTrimming="none" width="112" margins="{left=3, right=3, top=1, bottom=1}" onClick="globalGerenciarMacros(self.mesa);"/>
+		<button name="btnGerMacros" align="left" text="@@macros.ui.manageMacros" textTrimming="none" width="112" margins="{left=3, right=3, top=1, bottom=1}" onClick="globalGerenciarMacros(self.mesa);"/>
 	</layout>
 		
 	<dataScopeBox name="dsbMacros" align="client">

@@ -192,7 +192,7 @@ rrpg.messaging.listen("HandleChatCommand",
 
 rrpg.messaging.listen("ListChatCommands",
 	function(message)
-		message.response = {{comando="/macros", descricao="Abre o gerenciador de Macros do RRPG"}};
+		message.response = {{comando="/macros", descricao=lang("macros.command.description")}};
 	end);
 
 -- MACROS armazenados no servidor RRPG, refente à mesa

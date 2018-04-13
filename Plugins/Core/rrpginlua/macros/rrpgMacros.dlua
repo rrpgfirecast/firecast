@@ -116,7 +116,7 @@ local function handleCoResume(co, ...)
 	if not retornos[1] then
 		local dialogs = require("dialogs.lua");
 		
-		dialogs.showMessageDlg("Erro na execução da macro:\n" .. retornos[2], dialogs.DT_ERROR, {dialogs.DB_OK});
+		dialogs.showMessageDlg(lang("macros.error.executionError") .. ":\n" .. retornos[2], dialogs.DT_ERROR, {dialogs.DB_OK});
 		--error(retornos[2]);
 	else
 		if retornos[2] == _MACRO_CALL_CO_FUNCTION_RET then			
@@ -839,7 +839,7 @@ function macros.compileMacro(body, chat, macroName, endCallback)
 		local f, errorMsg = load(body, macroName, "t", ambiente);
 		
 		if f == nil then
-			error("Erro ao compilar macro:\n\n" .. errorMsg);
+			error(lang("macros.error.compilingError") .. ":\n\n" .. errorMsg);
 			return nil;
 		end;
 			

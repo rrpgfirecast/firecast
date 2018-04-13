@@ -16,7 +16,7 @@
 	
 	<layout align="client" margins="{top=2, left=2}">
 		<label name="labMacro" align="client" text="(Macro Vazia)"/>
-		<button align="right" text="Editar..." margins="{left=4, right=4, top=1, bottom=1}" 
+		<button name="btnEdit" align="right" text="Editar..." margins="{left=4, right=4, top=1, bottom=1}" 
 				width="75" onClick="editarMacro();"/>
 	</layout>
 	
@@ -24,7 +24,12 @@
 	
 	<dataLink field="macro">
 		<event name="onChange">
-			self.labMacro.text = sheet.macro or "(Macro Vazia)";
+			self.labMacro.text = sheet.macro or "(" .. lang("macros.ui.emptyMacro") ..")";
 		</event>
 	</dataLink>
+	
+	<script>
+		self.labMacro.text = "(" .. lang("macros.ui.emptyMacro") ..")";
+		self.btnEdit.text = lang("macros.ui.editButton");
+	</script>
 </form>
