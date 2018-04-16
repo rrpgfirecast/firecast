@@ -17,13 +17,13 @@
 			
 			local moduleId = sheet.moduleId;
 			
-			dialogs.confirmYesNo("Deseja realmente desinstalar este plug-in?",
+			dialogs.confirmYesNo(lang("plugins.mgr.uninstallConfirmation"),
 				function (confirmado)
 					if confirmado then
 						local r, msg = rrpg.plugins.uninstallPlugin(moduleId);
 						
 						if not r then
-							showMessage("Não foi possível desinstalar o plugin: " .. msg);
+							showMessage(lang("plugins.mgr.uninstallFailure") .. ": " .. msg);
 						end;
 					end;
 				end);
@@ -42,11 +42,11 @@
 		</flowPart>
 
 		<flowLineBreak/>
-		<label text="Autor: " fontColor="silver" fontSize="12" margins="{left=10}"/>
+		<label text="@@plugins.mgr.authorLabel" fontColor="silver" fontSize="12" margins="{left=10}"/>
 		<label field="author" fontColor="gray" fontSize="11"/>
 		
 		<flowLineBreak/>
-		<button name="btnDesinstalar" text="Desinstalar" margins="{left=5, top=5}" width="110" height="40" onClick="desinstalarPlugin()"/>
+		<button name="btnDesinstalar" text="@@plugins.mgr.uninstall" margins="{left=5, top=5}" width="110" height="40" onClick="desinstalarPlugin()"/>
 	</flowLayout>
 	
 	<dataLink field="moduleId" onChange="self.btnDesinstalar.visible = sheet.moduleId ~= 'RRPG.FIRECAST.FMXModule';"/>

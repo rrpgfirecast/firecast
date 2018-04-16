@@ -4,9 +4,9 @@
 	<id>RRPG.FIRECAST.FMXModule</id>
 	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
 	<version>1.0</version>
-	<name>RRPG Firecast</name>
+	<name>Firecast</name>
 	<description>Contém funcionalidades padrões do RRPG Firecast. Não é possível desinstalar este plug-in. </description>
-	<author>RRPG Firecast</author>
+	<author>Firecast</author>
 	<site>http://www.www.rrpg.com.br</site>
 	<contact>http://www.rrpg.com.br</contact>
 </module>

@@ -1,6 +1,7 @@
 ﻿require("rrpg.lua");
 require("vhd.lua");
 require("utils.lua");
+require("locale.lua");
 
 memedb = ndb.load("memeData.xml");
 if memedb.link==nil then
@@ -83,7 +84,7 @@ rrpg.listen('HandleChatTextInput',
 rrpg.messaging.listen("HandleChatCommand", 
 	function (message)
 		if message.comando == "savedmemes" then
-			message.chat:escrever("Memes Salvos: ");
+			message.chat:escrever(lang("memes.savedMemes") .. ": ");
 
 			local list = {};
 
@@ -113,12 +114,13 @@ rrpg.messaging.listen("HandleChatCommand",
 			end;
 
 			if index < 2 then
-				message.chat:escrever("Use /addmeme <link> <lista de nome>");
+				message.chat:escrever(lang("memes.addMeme.commandInstruction"));
 				message.response = {handled = true};
 				return;
 			end;
 
-			local text = "Salvo [§I " .. arg[1] .. "] para os nomes: ";
+			local text =  string.format(lang("memes.addMeme.successFeedback") .. ": ", arg[1]);
+			
 			for i=2, #arg, 1 do
 				memedb.link[arg[i]] = arg[1];
 				text = text .. arg[i];
@@ -130,7 +132,7 @@ rrpg.messaging.listen("HandleChatCommand",
 			message.chat:escrever(text);
 
 			message.response = {handled = true};
-		elseif message.comando == "removermeme" then
+		elseif (message.comando == "removermeme") or (message.comando == "removememe") then
 
 			local arg = {};
 			local index = 0;
@@ -140,12 +142,13 @@ rrpg.messaging.listen("HandleChatCommand",
 			end;
 
 			if index < 1 then
-				message.chat:escrever("Use /removermeme <lista de nome>");
+				message.chat:escrever(lang("memes.removeMeme.commandInstruction"));
 				message.response = {handled = true};
 				return;
 			end;
 
-			local text = "Removido [§I " .. memedb.link[arg[1]] .. "] para os nomes: ";
+			local text = string.format(lang("memes.removeMeme.successFeedback") .. ": ", memedb.link[arg[1]]);
+			
 			for i=1, #arg, 1 do
 				memedb.link[arg[i]] = nil;
 				text = text .. arg[i];
@@ -158,7 +161,7 @@ rrpg.messaging.listen("HandleChatCommand",
 
 			message.response = {handled = true};
 		elseif message.comando == "memeshare" then
-			message.chat:escrever("Memes Salvos: ");
+			message.chat:escrever(lang("memes.savedMemes") .. ": ");
 
 			local list = {};
 
@@ -183,9 +186,9 @@ rrpg.messaging.listen("HandleChatCommand",
 rrpg.messaging.listen("ListChatCommands",
         function(message)
                 message.response = {
-                					{comando="/savedmemes", descricao="Exibe todos memes salvos. v0.1"},
-                                    {comando="/addmeme <link> <name list>", descricao="Associa uma URL de imagem a uma lista de nomes."},
-                                    {comando="/removermeme <name>", descricao="Apaga o meme associado a aquele nome."},
-                                    {comando="/memeshare", descricao="Exibe a lista de memes em uma lista facil de compartilhar."}
+                					{comando="/savedmemes", descricao=lang("memes.savedMemes.commandDescription") .." v0.1"},
+                                    {comando="/addmeme <link> <name list>", descricao=lang("memes.addMeme.commandDescription")},
+                                    {comando="/removememe <name>", descricao=lang("memes.removeMeme.commandDescription")},
+                                    {comando="/memeshare", descricao=lang("memes.memeShare.commandDescription")}
                                     };
         end);

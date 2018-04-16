@@ -1,0 +1,21 @@
+﻿[pt]
+memes.savedMemes=Memes Salvos
+memes.savedMemes.commandDescription=Exibe todos memes salvos.
+memes.addMeme.commandInstruction=Use /addmeme <link> <lista de nome>
+memes.addMeme.commandDescription=Associa uma URL de imagem a uma lista de nomes.
+memes.addMeme.successFeedback=Salvo [§I %s] para os nomes
+memes.removeMeme.commandInstruction=Use /removermeme <lista de nome>
+memes.removeMeme.commandDescription=Apaga o meme associado a aquele nome.
+memes.removeMeme.successFeedback=Removido [§I %s] para os nomes
+memes.memeShare.commandDescription=Exibe a lista de memes em uma lista facil de compartilhar.
+
+[en]
+memes.savedMemes=Saved Memes
+memes.savedMemes.commandDescription=Displays all saved memes.
+memes.addMeme.commandInstruction=Use /addmeme <link> <name list>
+memes.addMeme.commandDescription=Associates an image URL with a list of names.
+memes.addMeme.successFeedback=Saved [§I %s] for the names
+memes.removeMeme.commandInstruction=Use /removememe <name list>
+memes.removeMeme.commandDescription=Remove the meme associated with that name.
+memes.removeMeme.successFeedback=Removed [§I %s] for the names
+memes.memeShare.commandDescription=Displays the list of memes in an easy-to-share list.

@@ -1,5 +1,28 @@
 ﻿[pt]
 fc.BottomClosePopupPanel.close=Fechar
 
+plugins.mgr.selectFile=Selecione o arquivo plugin de extensão '.rpk'
+plugins.mgr.title=Gerenciar Plugins
+plugins.mgr.installedPluginsTitle=Plug-ins instalados
+plugins.mgr.installPluginTitle=Instalar um plugin...
+plugins.mgr.cancel=Cancelar
+plugins.mgr.cancelConfirmation=Deseja realmente cancelar o download?
+plugins.mgr.uninstallConfirmation=Deseja realmente desinstalar este plug-in?
+plugins.mgr.uninstallFailure=Não foi possível desinstalar o plugin
+plugins.mgr.authorLabel=Autor: 
+plugins.mgr.uninstall=Desinstalar
+
+
 [en]
 fc.BottomClosePopupPanel.close=Close
+
+plugins.mgr.selectFile=Select the plugin file with '.rpk' extension
+plugins.mgr.title=Manage Plugins
+plugins.mgr.installedPluginsTitle=Installed Plugins
+plugins.mgr.installPluginTitle=Install a plugin...
+plugins.mgr.cancel=Cancel
+plugins.mgr.cancelConfirmation=Do you really want to cancel the download?
+plugins.mgr.uninstallConfirmation=Do you really want to uninstall this plug-in?
+plugins.mgr.uninstallFailure=Unable to uninstall plugin
+plugins.mgr.authorLabel=Author: 
+plugins.mgr.uninstall=Uninstall

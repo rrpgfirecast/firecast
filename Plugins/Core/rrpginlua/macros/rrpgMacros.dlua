@@ -1,11 +1,20 @@
 ﻿local rrpg = require("rrpg.lua");
 local Dialogs = require("dialogs.lua");
 local NDB = require("ndb.lua");
+require("locale.lua");
 
 local macros = {};
 local _MACRO_CALL_CO_FUNCTION_RET = "CallSomeFunctionInMainThread";
 
 local cloneFunctions = {};
+
+local function throwMacroNotAssociatedToRooom(featureName)
+	if type(featureName) == "string" then
+		error(string.format(lang("macros.error.notRoomMisingFeature.withParam"), featureName));
+	else
+		error(lang("macros.error.notRoomMisingFeature"));
+	end;
+end;
 
 local function cloneTable(t)
 	if t == nil then
@@ -266,9 +275,21 @@ local __delayedLoadMacroEnv = {
 				for i = 1, #mJs, 1 do
 					js[#js + 1] = cloneTable(mJs[i]);
 				end;
+			else	
+				throwMacroNotAssociatedToRooom("players");
 			end;
 					
 			return js;
+		end,
+	
+	inRoom = function(chat)
+			local mesa = rrpg.getMesaDe(chat);	
+			
+			if mesa ~= nil then
+				return true;
+			else
+				return false;
+			end;
 		end,
 	
 	meuJogador = function(chat)
@@ -277,12 +298,18 @@ local __delayedLoadMacroEnv = {
 			if mesa ~= nil then
 				return cloneTable(mesa.meuJogador);
 			else
-				return nil;
+				throwMacroNotAssociatedToRooom("myPlayer");
 			end;
 		end;
 		
 	mesa = function(chat)
-		return cloneTable(rrpg.getMesaDe(chat));
+		local m = rrpg.getMesaDe(chat); 
+		
+		if m ~= nil then
+			return cloneTable(m);
+		else
+			throwMacroNotAssociatedToRooom("room");
+		end;
 	end;
 	
 	arg = function(chat, env)
@@ -317,6 +344,14 @@ __delayedLoadMacroEnv.players = __delayedLoadMacroEnv.jogadores;
 
 local function createMacroEnvTable(chat)
 	local env = {};
+	
+	local function assertIsOnRoom(featureName)
+		local mesa = rrpg.getMesaDe(chat);
+		
+		if mesa == nil then
+			throwMacroNotAssociatedToRooom(featureName);
+		end;
+	end;
 	
 	function env.escrever(texto, quebrarLinha, permitirSmileys)
 		chat:escrever(texto, quebrarLinha, permitirSmileys);
@@ -559,7 +594,9 @@ local function createMacroEnvTable(chat)
 		end
 	end;
 	
-	env.choosePlayer = function(prompt, shortCircuit)
+	env.choosePlayer = function(prompt, shortCircuit)	
+		assertIsOnRoom("choosePlayer");
+	
 		local players = _getPlayersSorted();
 		local playersText = {};
 		
@@ -572,6 +609,8 @@ local function createMacroEnvTable(chat)
 	end;
 	
 	env.choosePlayers = function(prompt)
+		assertIsOnRoom("choosePlayers");
+	
 		local players = _getPlayersSorted();
 		local playersText = {};
 		
@@ -590,6 +629,8 @@ local function createMacroEnvTable(chat)
 	end;
 
 	env.chooseCharacter	= function(prompt, filter, shortCircuit)
+		assertIsOnRoom("chooseCharacter");
+	
 		local chars = _getAllCharactersSorted(_createCharactersFilterFunction(filter));
 		local charsStr = {};			
 		
@@ -620,6 +661,8 @@ local function createMacroEnvTable(chat)
 	end;
 	
 	env.chooseCharacterOfPlayer	= function(prompt, player, shortCircuit)		
+		assertIsOnRoom("chooseCharacterOfPlayer");
+		
 		local loginToSeek = nil;
 		
 		if type(player) == "number" then
@@ -668,6 +711,8 @@ local function createMacroEnvTable(chat)
 	end;	
 	
 	env.chooseCharacters = function(prompt, filter)
+		assertIsOnRoom("chooseCharacters");
+	
 		local chars = _getAllCharactersSorted(_createCharactersFilterFunction(filter));
 		local charsStr = {};			
 		
@@ -704,6 +749,8 @@ local function createMacroEnvTable(chat)
 	end;		
 	
 	env.getCharacterOfPlayer = function(player)
+		assertIsOnRoom("getCharacterOfPlayer");
+		
 		local loginToSeek = nil;
 		local playerObject = nil;
 		
@@ -777,6 +824,7 @@ local function createMacroEnvTable(chat)
 	end;
 	
 	env.getCharacterSheet = function(character)	
+		assertIsOnRoom("getCharacterSheet");
 		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yGetSheetOfCharacter', character);			
 	end;
 	

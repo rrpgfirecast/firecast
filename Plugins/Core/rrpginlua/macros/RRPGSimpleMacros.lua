@@ -122,7 +122,7 @@ local function realExecutarMacro(macro, message, endCallback)
 	if macro.tipoMacro == "L" then
 		local macros = require("/macros/rrpgMacros.dlua");
 		local f = macros.compileMacro(macro.acoes, message.chat, "/" .. macro.macro, endCallback)
-		f({parametro=message.parametro});		
+		f({parametro=message.parameter});		
 	else
 		for linha in string.gmatch(macro.acoes, "[^\n\r]+") do
 			-- Quebrar a acoes em linhas.
@@ -171,17 +171,17 @@ end;
 
 rrpg.messaging.listen("HandleChatCommand",
 	function(message)
-		local comando = globalPrepareMacroNameForFind(message.comando or "");
+		local comando = globalPrepareMacroNameForFind(message.command or "");
 	
 		if globalSimpleMacrosNDB == nil then
 			globalSimpleMacrosNDB = ndb.load("simpleMacros.xml");
 		end;		
 	
 		if comando == "MACROS" then
-			globalGerenciarMacros(message.mesa);			
+			globalGerenciarMacros(message.room);			
 			message.response = {handled = true};
 		else						
-			local macro = globalFindMacro(comando, message.mesa);
+			local macro = globalFindMacro(comando, message.room);
 			
 			if macro ~= nil then
 				globalExecutarMacro(macro, message);
@@ -192,7 +192,7 @@ rrpg.messaging.listen("HandleChatCommand",
 
 rrpg.messaging.listen("ListChatCommands",
 	function(message)
-		message.response = {{comando="/macros", descricao=lang("macros.command.description")}};
+		message.response = {{command="/macros", description=lang("macros.command.description")}};
 	end);
 
 -- MACROS armazenados no servidor RRPG, refente à mesa

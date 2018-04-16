@@ -29,7 +29,7 @@
 			local indicatorId = sheet.indicatorId;
 		
 			if sheet.errorMsg == nil then
-				dialogs.confirmYesNo("Deseja realmente cancelar o download?",
+				dialogs.confirmYesNo(lang("plugins.mgr.cancelConfirmation"),
 					function(confirmado)
 						if confirmado then
 							realmenteCancelarDownload(indicatorId);
@@ -53,7 +53,7 @@
 			<label name="labProgress" align="client" text="0,0%" />
 		</flowPart>
 		
-		<button name="btnCancelar" text="Cancelar" margins="{left=10, top=5}" width="110" height="32" onClick="cancelarDownload();"/>
+		<button name="btnCancelar" text="@@plugins.mgr.cancel" margins="{left=10, top=5}" width="110" height="32" onClick="cancelarDownload();"/>
 	</flowLayout>	
 	
 	<dataLink fields="{'progress', 'errorMsg'}">
