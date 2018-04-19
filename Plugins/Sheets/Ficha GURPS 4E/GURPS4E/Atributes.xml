@@ -13,7 +13,7 @@
 					<boxAtributo titulo="HT" field="ht"/>
 
 					<boxAtributo titulo="DX" field="dx"/>
-					<boxAtributo titulo="VT " field="vt"/>
+					<boxAtributo titulo="VONT " field="vt"/>
 
 					<boxAtributo titulo="IQ" field="iq"/>
 					<boxAtributo titulo="PER " field="per"/>
