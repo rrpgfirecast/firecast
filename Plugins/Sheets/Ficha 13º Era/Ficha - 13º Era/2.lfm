@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha___13_Era2_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmFicha___13_Era2_svg path {color: black; strokeColor: black; mode: stretch;} 
+#frmFicha___13_Era2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="893" height="1263" color="white">
+            <image left="0" top="0" width="893" height="1263" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>
+            <layout left="281" top="58" width="586" height="96" compilerOrder="1">
+                <textEditor left="0" top="0" width="586" height="96" fontSize="10.5" fontColor="#000000" field="Journal" transparent="true" compilerOrder="2"/>
+            </layout>
+            <layout left="285" top="177" width="288" height="25" compilerOrder="3">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="288" height="26" field="wpn1" compilerOrder="4"/>
+            </layout>
+            <layout left="591" top="177" width="79" height="25" compilerOrder="5">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="79" height="26" field="att1" compilerOrder="6"/>
+            </layout>
+            <layout left="688" top="178" width="79" height="25" compilerOrder="7">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="79" height="26" field="hit1" compilerOrder="8"/>
+            </layout>
+            <layout left="783" top="179" width="79" height="25" compilerOrder="9">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="79" height="26" field="mis1" compilerOrder="10"/>
+            </layout>
+            <layout left="284" top="206" width="288" height="25" compilerOrder="11">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="288" height="26" field="wpn2" compilerOrder="12"/>
+            </layout>
+            <layout left="688" top="207" width="79" height="25" compilerOrder="15">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="79" height="26" field="hit2" compilerOrder="16"/>
+            </layout>
+            <layout left="784" top="207" width="79" height="25" compilerOrder="17">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="79" height="26" field="mis2" compilerOrder="18"/>
+            </layout>
+            <layout left="591" top="208" width="79" height="25" compilerOrder="13">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="79" height="26" field="att2" compilerOrder="14"/>
+            </layout>
+            <layout left="282" top="236" width="288" height="25" compilerOrder="21">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="288" height="26" field="wpn3" compilerOrder="22"/>
+            </layout>
+            <layout left="591" top="237" width="79" height="25" compilerOrder="23">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="79" height="26" field="att3" compilerOrder="24"/>
+            </layout>
+            <layout left="688" top="237" width="79" height="25" compilerOrder="25">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="79" height="26" field="hit3" compilerOrder="26"/>
+            </layout>
+            <layout left="784" top="237" width="79" height="25" compilerOrder="27">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="79" height="26" field="mis3" compilerOrder="28"/>
+            </layout>
+            <layout left="282" top="266" width="288" height="25" compilerOrder="29">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="288" height="26" field="wpn4" compilerOrder="30"/>
+            </layout>
+            <layout left="591" top="266" width="79" height="25" compilerOrder="31">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="79" height="26" field="att4" compilerOrder="32"/>
+            </layout>
+            <layout left="688" top="266" width="79" height="25" compilerOrder="33">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="79" height="26" field="hit4" compilerOrder="34"/>
+            </layout>
+            <layout left="784" top="266" width="79" height="25" compilerOrder="35">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="79" height="26" field="mis4" compilerOrder="36"/>
+            </layout>
+            <layout left="28" top="268" width="239" height="25" compilerOrder="19">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="239" height="26" field="exp" compilerOrder="20"/>
+            </layout>
+            <layout left="46" top="317" width="205" height="225" compilerOrder="37">
+                <button left="0" top="0" width="205" height="226" compilerOrder="38"/>
+            </layout>
+            <layout left="282" top="332" width="286" height="731" compilerOrder="41">
+                <textEditor left="0" top="0" width="286" height="731" fontSize="10.5" fontColor="#000000" field="powers_column1" transparent="true" compilerOrder="42"/>
+            </layout>
+            <layout left="587" top="332" width="279" height="731" compilerOrder="43">
+                <textEditor left="0" top="0" width="279" height="731" fontSize="10.5" fontColor="#000000" field="powers_column2" transparent="true" compilerOrder="44"/>
+            </layout>
+            <layout left="26" top="601" width="242" height="628" compilerOrder="39">
+                <textEditor left="0" top="0" width="242" height="628" fontSize="12" fontColor="#000000" field="equipment" transparent="true" compilerOrder="40"/>
+            </layout>
+            <layout left="283" top="1109" width="584" height="120" compilerOrder="45">
+                <textEditor left="0" top="0" width="584" height="120" fontSize="12" fontColor="#000000" field="magic_items" transparent="true" compilerOrder="46"/>
+            </layout>
+        </rectangle>
+    </scrollBox>
+</form>
