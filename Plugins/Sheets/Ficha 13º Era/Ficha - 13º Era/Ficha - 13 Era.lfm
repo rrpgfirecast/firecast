@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha___13_Era" formType="sheetTemplate" dataType="rrpg.Ficha.13.Era" title="Ficha - 13º Era" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Frente">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Verso">
+            <import file="2.lfm"/>
+        </tab>
+    </tabControl>
+</form>
