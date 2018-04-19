@@ -1,4 +1,4 @@
-del output\mobile.rpk
+del output\rrpginlua.rpk
 rdk p
 rdk c
 copy output\rrpginlua.rpk ..\..\..\..\rrpg\ClienteMobile\resources\complementosPadroes\rrpginlua.rpk
