@@ -1,0 +1,871 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmL5A5_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmL5A5_svg path {color: black; strokeColor: black; mode: stretch;} 
+#frmL5A5_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="918" height="1188" color="white">
+            <image left="0" top="0" width="918" height="1188" src="images/5.png" style="stretch" optimize="true" compilerOrder="0"/>
+            <layout left="843" top="104" width="26" height="27" compilerOrder="209">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box373" compilerOrder="210"/>
+            </layout>
+            <layout left="822" top="105" width="26" height="27" compilerOrder="135">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box372" compilerOrder="136"/>
+            </layout>
+            <layout left="661" top="107" width="111" height="21" compilerOrder="139">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="111" height="22" field="NOME_31" compilerOrder="140"/>
+            </layout>
+            <layout left="327" top="124" width="26" height="27" compilerOrder="61">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box279" compilerOrder="62"/>
+            </layout>
+            <layout left="348" top="124" width="26" height="27" compilerOrder="63">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box280" compilerOrder="64"/>
+            </layout>
+            <layout left="367" top="124" width="26" height="27" compilerOrder="65">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box281" compilerOrder="66"/>
+            </layout>
+            <layout left="49" top="125" width="26" height="27" compilerOrder="1">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box123" compilerOrder="2"/>
+            </layout>
+            <layout left="69" top="125" width="26" height="27" compilerOrder="75">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box124" compilerOrder="76"/>
+            </layout>
+            <layout left="90" top="125" width="26" height="27" compilerOrder="137">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box125" compilerOrder="138"/>
+            </layout>
+            <layout left="661" top="129" width="55" height="21" compilerOrder="141">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="55" height="22" field="INFLUÊNCIA" compilerOrder="142"/>
+            </layout>
+            <layout left="773" top="129" width="93" height="21" compilerOrder="143">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="93" height="22" field="DEVOÇÃO" compilerOrder="144"/>
+            </layout>
+            <layout left="116" top="130" width="193" height="20" compilerOrder="477">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_0" compilerOrder="478"/>
+            </layout>
+            <layout left="393" top="130" width="193" height="20" compilerOrder="395">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_31" compilerOrder="396"/>
+            </layout>
+            <layout left="327" top="147" width="26" height="27" compilerOrder="67">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box282" compilerOrder="68"/>
+            </layout>
+            <layout left="348" top="147" width="26" height="27" compilerOrder="69">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box283" compilerOrder="70"/>
+            </layout>
+            <layout left="367" top="147" width="26" height="27" compilerOrder="71">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box284" compilerOrder="72"/>
+            </layout>
+            <layout left="49" top="149" width="26" height="27" compilerOrder="145">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box126" compilerOrder="146"/>
+            </layout>
+            <layout left="69" top="149" width="26" height="27" compilerOrder="147">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box127" compilerOrder="148"/>
+            </layout>
+            <layout left="89" top="149" width="26" height="27" compilerOrder="149">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box128" compilerOrder="150"/>
+            </layout>
+            <layout left="117" top="151" width="193" height="20" compilerOrder="479">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_1" compilerOrder="480"/>
+            </layout>
+            <layout left="393" top="151" width="193" height="20" compilerOrder="397">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_32" compilerOrder="398"/>
+            </layout>
+            <layout left="661" top="163" width="205" height="38" compilerOrder="405">
+                <textEditor left="0" top="0" width="205" height="38" fontSize="14.2" fontColor="#000000" field="NOTAS_5" transparent="true" compilerOrder="406"/>
+            </layout>
+            <layout left="327" top="167" width="26" height="27" compilerOrder="307">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box285" compilerOrder="308"/>
+            </layout>
+            <layout left="346" top="167" width="26" height="27" compilerOrder="73">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box286" compilerOrder="74"/>
+            </layout>
+            <layout left="367" top="167" width="26" height="27" compilerOrder="309">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box287" compilerOrder="310"/>
+            </layout>
+            <layout left="49" top="169" width="26" height="27" compilerOrder="3">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box129" compilerOrder="4"/>
+            </layout>
+            <layout left="68" top="169" width="26" height="27" compilerOrder="77">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box130" compilerOrder="78"/>
+            </layout>
+            <layout left="89" top="169" width="26" height="27" compilerOrder="151">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box131" compilerOrder="152"/>
+            </layout>
+            <layout left="117" top="174" width="193" height="20" compilerOrder="481">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_2" compilerOrder="482"/>
+            </layout>
+            <layout left="393" top="174" width="193" height="20" compilerOrder="399">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_33" compilerOrder="400"/>
+            </layout>
+            <layout left="349" top="188" width="26" height="27" compilerOrder="225">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box289" compilerOrder="226"/>
+            </layout>
+            <layout left="49" top="189" width="26" height="27" compilerOrder="5">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box132" compilerOrder="6"/>
+            </layout>
+            <layout left="68" top="189" width="26" height="27" compilerOrder="79">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box133" compilerOrder="80"/>
+            </layout>
+            <layout left="89" top="189" width="26" height="27" compilerOrder="153">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box134" compilerOrder="154"/>
+            </layout>
+            <layout left="327" top="189" width="26" height="27" compilerOrder="311">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box288" compilerOrder="312"/>
+            </layout>
+            <layout left="367" top="189" width="26" height="27" compilerOrder="281">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box290" compilerOrder="282"/>
+            </layout>
+            <layout left="116" top="196" width="193" height="20" compilerOrder="407">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_3" compilerOrder="408"/>
+            </layout>
+            <layout left="393" top="196" width="193" height="20" compilerOrder="401">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_34" compilerOrder="402"/>
+            </layout>
+            <layout left="822" top="199" width="26" height="27" compilerOrder="211">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box374" compilerOrder="212"/>
+            </layout>
+            <layout left="844" top="199" width="26" height="27" compilerOrder="213">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box375" compilerOrder="214"/>
+            </layout>
+            <layout left="661" top="201" width="110" height="21" compilerOrder="453">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="110" height="22" field="NOME_32" compilerOrder="454"/>
+            </layout>
+            <layout left="327" top="211" width="26" height="27" compilerOrder="313">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box291" compilerOrder="314"/>
+            </layout>
+            <layout left="348" top="211" width="26" height="27" compilerOrder="227">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box292" compilerOrder="228"/>
+            </layout>
+            <layout left="367" top="211" width="26" height="27" compilerOrder="283">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box293" compilerOrder="284"/>
+            </layout>
+            <layout left="49" top="212" width="26" height="27" compilerOrder="7">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box135" compilerOrder="8"/>
+            </layout>
+            <layout left="68" top="212" width="26" height="27" compilerOrder="81">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box136" compilerOrder="82"/>
+            </layout>
+            <layout left="89" top="213" width="26" height="27" compilerOrder="155">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box137" compilerOrder="156"/>
+            </layout>
+            <layout left="117" top="217" width="193" height="20" compilerOrder="483">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_4" compilerOrder="484"/>
+            </layout>
+            <layout left="393" top="217" width="193" height="20" compilerOrder="403">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_35" compilerOrder="404"/>
+            </layout>
+            <layout left="661" top="223" width="55" height="21" compilerOrder="455">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="55" height="22" field="INFLUÊNCIA_2" compilerOrder="456"/>
+            </layout>
+            <layout left="773" top="224" width="94" height="21" compilerOrder="457">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="94" height="22" field="DEVOÇÃO_2" compilerOrder="458"/>
+            </layout>
+            <layout left="48" top="233" width="26" height="27" compilerOrder="9">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box138" compilerOrder="10"/>
+            </layout>
+            <layout left="89" top="233" width="26" height="27" compilerOrder="157">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box140" compilerOrder="158"/>
+            </layout>
+            <layout left="326" top="233" width="26" height="27" compilerOrder="315">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box294" compilerOrder="316"/>
+            </layout>
+            <layout left="368" top="233" width="26" height="27" compilerOrder="285">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box296" compilerOrder="286"/>
+            </layout>
+            <layout left="68" top="234" width="26" height="27" compilerOrder="83">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box139" compilerOrder="84"/>
+            </layout>
+            <layout left="347" top="234" width="26" height="27" compilerOrder="229">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box295" compilerOrder="230"/>
+            </layout>
+            <layout left="116" top="239" width="193" height="20" compilerOrder="409">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_5" compilerOrder="410"/>
+            </layout>
+            <layout left="393" top="240" width="193" height="20" compilerOrder="411">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_36" compilerOrder="412"/>
+            </layout>
+            <layout left="70" top="255" width="26" height="27" compilerOrder="85">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box142" compilerOrder="86"/>
+            </layout>
+            <layout left="90" top="255" width="26" height="27" compilerOrder="159">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box143" compilerOrder="160"/>
+            </layout>
+            <layout left="49" top="256" width="26" height="27" compilerOrder="11">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box141" compilerOrder="12"/>
+            </layout>
+            <layout left="326" top="256" width="26" height="27" compilerOrder="317">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box297" compilerOrder="318"/>
+            </layout>
+            <layout left="349" top="256" width="26" height="27" compilerOrder="231">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box298" compilerOrder="232"/>
+            </layout>
+            <layout left="367" top="256" width="26" height="27" compilerOrder="287">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box299" compilerOrder="288"/>
+            </layout>
+            <layout left="661" top="257" width="205" height="38" compilerOrder="459">
+                <textEditor left="0" top="0" width="205" height="38" fontSize="14.2" fontColor="#000000" field="NOTAS_6" transparent="true" compilerOrder="460"/>
+            </layout>
+            <layout left="116" top="261" width="193" height="20" compilerOrder="413">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_6" compilerOrder="414"/>
+            </layout>
+            <layout left="393" top="262" width="193" height="20" compilerOrder="415">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_37" compilerOrder="416"/>
+            </layout>
+            <layout left="49" top="277" width="26" height="27" compilerOrder="13">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box2" compilerOrder="14"/>
+            </layout>
+            <layout left="69" top="277" width="26" height="27" compilerOrder="87">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box144" compilerOrder="88"/>
+            </layout>
+            <layout left="90" top="277" width="26" height="27" compilerOrder="161">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box145" compilerOrder="162"/>
+            </layout>
+            <layout left="326" top="277" width="26" height="27" compilerOrder="319">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box300" compilerOrder="320"/>
+            </layout>
+            <layout left="347" top="278" width="26" height="27" compilerOrder="233">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box301" compilerOrder="234"/>
+            </layout>
+            <layout left="367" top="278" width="26" height="27" compilerOrder="289">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box302" compilerOrder="290"/>
+            </layout>
+            <layout left="116" top="283" width="193" height="20" compilerOrder="417">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_7" compilerOrder="418"/>
+            </layout>
+            <layout left="393" top="283" width="193" height="20" compilerOrder="419">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_38" compilerOrder="420"/>
+            </layout>
+            <layout left="822" top="294" width="26" height="27" compilerOrder="215">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box376" compilerOrder="216"/>
+            </layout>
+            <layout left="843" top="294" width="26" height="27" compilerOrder="217">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box377" compilerOrder="218"/>
+            </layout>
+            <layout left="661" top="296" width="111" height="21" compilerOrder="461">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="111" height="22" field="NOME_33" compilerOrder="462"/>
+            </layout>
+            <layout left="49" top="298" width="26" height="27" compilerOrder="15">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box146" compilerOrder="16"/>
+            </layout>
+            <layout left="69" top="298" width="26" height="27" compilerOrder="89">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box147" compilerOrder="90"/>
+            </layout>
+            <layout left="90" top="298" width="26" height="27" compilerOrder="163">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box148" compilerOrder="164"/>
+            </layout>
+            <layout left="349" top="300" width="26" height="27" compilerOrder="235">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box304" compilerOrder="236"/>
+            </layout>
+            <layout left="326" top="301" width="26" height="27" compilerOrder="321">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box303" compilerOrder="322"/>
+            </layout>
+            <layout left="371" top="301" width="26" height="27" compilerOrder="291">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box305" compilerOrder="292"/>
+            </layout>
+            <layout left="117" top="304" width="193" height="20" compilerOrder="485">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_8" compilerOrder="486"/>
+            </layout>
+            <layout left="393" top="304" width="193" height="20" compilerOrder="421">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_39" compilerOrder="422"/>
+            </layout>
+            <layout left="661" top="318" width="55" height="21" compilerOrder="463">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="55" height="22" field="INFLUÊNCIA_3" compilerOrder="464"/>
+            </layout>
+            <layout left="773" top="318" width="93" height="21" compilerOrder="465">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="93" height="22" field="DEVOÇÃO_3" compilerOrder="466"/>
+            </layout>
+            <layout left="49" top="319" width="26" height="27" compilerOrder="17">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box149" compilerOrder="18"/>
+            </layout>
+            <layout left="69" top="319" width="26" height="27" compilerOrder="91">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box150" compilerOrder="92"/>
+            </layout>
+            <layout left="90" top="319" width="26" height="27" compilerOrder="165">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box151" compilerOrder="166"/>
+            </layout>
+            <layout left="348" top="320" width="26" height="27" compilerOrder="237">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box307" compilerOrder="238"/>
+            </layout>
+            <layout left="327" top="321" width="26" height="27" compilerOrder="323">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box306" compilerOrder="324"/>
+            </layout>
+            <layout left="369" top="321" width="26" height="27" compilerOrder="293">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box308" compilerOrder="294"/>
+            </layout>
+            <layout left="116" top="326" width="193" height="20" compilerOrder="487">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_9" compilerOrder="488"/>
+            </layout>
+            <layout left="393" top="326" width="193" height="20" compilerOrder="423">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_40" compilerOrder="424"/>
+            </layout>
+            <layout left="49" top="341" width="26" height="27" compilerOrder="19">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box152" compilerOrder="20"/>
+            </layout>
+            <layout left="69" top="341" width="26" height="27" compilerOrder="93">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box153" compilerOrder="94"/>
+            </layout>
+            <layout left="90" top="341" width="26" height="27" compilerOrder="167">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box154" compilerOrder="168"/>
+            </layout>
+            <layout left="327" top="342" width="26" height="27" compilerOrder="325">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box309" compilerOrder="326"/>
+            </layout>
+            <layout left="348" top="342" width="26" height="27" compilerOrder="239">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box310" compilerOrder="240"/>
+            </layout>
+            <layout left="369" top="343" width="26" height="27" compilerOrder="295">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box311" compilerOrder="296"/>
+            </layout>
+            <layout left="117" top="348" width="193" height="20" compilerOrder="509">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_10" compilerOrder="510"/>
+            </layout>
+            <layout left="393" top="348" width="193" height="20" compilerOrder="425">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_41" compilerOrder="426"/>
+            </layout>
+            <layout left="661" top="352" width="205" height="38" compilerOrder="467">
+                <textEditor left="0" top="0" width="205" height="38" fontSize="14.2" fontColor="#000000" field="NOTAS_7" transparent="true" compilerOrder="468"/>
+            </layout>
+            <layout left="49" top="362" width="26" height="27" compilerOrder="21">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box155" compilerOrder="22"/>
+            </layout>
+            <layout left="69" top="363" width="26" height="27" compilerOrder="95">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box156" compilerOrder="96"/>
+            </layout>
+            <layout left="91" top="363" width="26" height="27" compilerOrder="169">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box157" compilerOrder="170"/>
+            </layout>
+            <layout left="369" top="363" width="26" height="29" compilerOrder="297">
+                <checkBox left="0" top="0" width="26" height="30" field="Check_Box314" compilerOrder="298"/>
+            </layout>
+            <layout left="328" top="364" width="26" height="27" compilerOrder="327">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box312" compilerOrder="328"/>
+            </layout>
+            <layout left="349" top="364" width="26" height="27" compilerOrder="241">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box313" compilerOrder="242"/>
+            </layout>
+            <layout left="116" top="369" width="193" height="20" compilerOrder="511">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_11" compilerOrder="512"/>
+            </layout>
+            <layout left="393" top="369" width="193" height="20" compilerOrder="427">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_42" compilerOrder="428"/>
+            </layout>
+            <layout left="70" top="384" width="26" height="27" compilerOrder="97">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box159" compilerOrder="98"/>
+            </layout>
+            <layout left="49" top="385" width="26" height="27" compilerOrder="23">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box158" compilerOrder="24"/>
+            </layout>
+            <layout left="90" top="385" width="26" height="27" compilerOrder="171">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box160" compilerOrder="172"/>
+            </layout>
+            <layout left="327" top="387" width="26" height="27" compilerOrder="329">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box315" compilerOrder="330"/>
+            </layout>
+            <layout left="348" top="387" width="26" height="27" compilerOrder="243">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box316" compilerOrder="244"/>
+            </layout>
+            <layout left="822" top="387" width="26" height="27" compilerOrder="221">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box378" compilerOrder="222"/>
+            </layout>
+            <layout left="844" top="387" width="26" height="27" compilerOrder="223">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box379" compilerOrder="224"/>
+            </layout>
+            <layout left="371" top="388" width="26" height="27" compilerOrder="333">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box317" compilerOrder="334"/>
+            </layout>
+            <layout left="661" top="390" width="110" height="21" compilerOrder="469">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="110" height="22" field="NOME_34" compilerOrder="470"/>
+            </layout>
+            <layout left="393" top="391" width="193" height="20" compilerOrder="429">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_43" compilerOrder="430"/>
+            </layout>
+            <layout left="118" top="392" width="193" height="20" compilerOrder="219">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_12" compilerOrder="220"/>
+            </layout>
+            <layout left="371" top="407" width="26" height="27" compilerOrder="335">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box320" compilerOrder="336"/>
+            </layout>
+            <layout left="48" top="408" width="26" height="27" compilerOrder="25">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box161" compilerOrder="26"/>
+            </layout>
+            <layout left="70" top="408" width="26" height="27" compilerOrder="99">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box162" compilerOrder="100"/>
+            </layout>
+            <layout left="90" top="408" width="26" height="27" compilerOrder="173">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box163" compilerOrder="174"/>
+            </layout>
+            <layout left="327" top="409" width="26" height="27" compilerOrder="331">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box318" compilerOrder="332"/>
+            </layout>
+            <layout left="348" top="409" width="26" height="27" compilerOrder="245">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box319" compilerOrder="246"/>
+            </layout>
+            <layout left="661" top="412" width="55" height="21" compilerOrder="471">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="55" height="22" field="INFLUÊNCIA_4" compilerOrder="472"/>
+            </layout>
+            <layout left="773" top="412" width="94" height="21" compilerOrder="473">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="94" height="22" field="DEVOÇÃO_4" compilerOrder="474"/>
+            </layout>
+            <layout left="116" top="413" width="193" height="20" compilerOrder="513">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_13" compilerOrder="514"/>
+            </layout>
+            <layout left="393" top="413" width="193" height="20" compilerOrder="431">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_44" compilerOrder="432"/>
+            </layout>
+            <layout left="48" top="429" width="26" height="27" compilerOrder="27">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box164" compilerOrder="28"/>
+            </layout>
+            <layout left="69" top="429" width="26" height="27" compilerOrder="101">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box165" compilerOrder="102"/>
+            </layout>
+            <layout left="90" top="429" width="26" height="27" compilerOrder="175">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box166" compilerOrder="176"/>
+            </layout>
+            <layout left="326" top="429" width="26" height="27" compilerOrder="337">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box321" compilerOrder="338"/>
+            </layout>
+            <layout left="349" top="429" width="26" height="27" compilerOrder="247">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box322" compilerOrder="248"/>
+            </layout>
+            <layout left="372" top="429" width="26" height="27" compilerOrder="339">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box323" compilerOrder="340"/>
+            </layout>
+            <layout left="117" top="434" width="193" height="20" compilerOrder="489">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_14" compilerOrder="490"/>
+            </layout>
+            <layout left="393" top="434" width="193" height="20" compilerOrder="433">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_45" compilerOrder="434"/>
+            </layout>
+            <layout left="661" top="446" width="205" height="38" compilerOrder="475">
+                <textEditor left="0" top="0" width="205" height="38" fontSize="14.2" fontColor="#000000" field="NOTAS_8" transparent="true" compilerOrder="476"/>
+            </layout>
+            <layout left="369" top="447" width="26" height="27" compilerOrder="299">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box326" compilerOrder="300"/>
+            </layout>
+            <layout left="69" top="450" width="26" height="27" compilerOrder="103">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box168" compilerOrder="104"/>
+            </layout>
+            <layout left="89" top="450" width="26" height="27" compilerOrder="177">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box169" compilerOrder="178"/>
+            </layout>
+            <layout left="326" top="450" width="26" height="27" compilerOrder="341">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box324" compilerOrder="342"/>
+            </layout>
+            <layout left="348" top="450" width="26" height="27" compilerOrder="249">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box325" compilerOrder="250"/>
+            </layout>
+            <layout left="49" top="451" width="26" height="27" compilerOrder="29">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box167" compilerOrder="30"/>
+            </layout>
+            <layout left="116" top="456" width="193" height="20" compilerOrder="491">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_15" compilerOrder="492"/>
+            </layout>
+            <layout left="392" top="457" width="193" height="20" compilerOrder="435">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_46" compilerOrder="436"/>
+            </layout>
+            <layout left="48" top="471" width="26" height="27" compilerOrder="31">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box170" compilerOrder="32"/>
+            </layout>
+            <layout left="69" top="471" width="26" height="27" compilerOrder="105">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box171" compilerOrder="106"/>
+            </layout>
+            <layout left="89" top="471" width="26" height="27" compilerOrder="179">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box172" compilerOrder="180"/>
+            </layout>
+            <layout left="326" top="472" width="26" height="27" compilerOrder="343">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box327" compilerOrder="344"/>
+            </layout>
+            <layout left="347" top="472" width="26" height="27" compilerOrder="251">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box328" compilerOrder="252"/>
+            </layout>
+            <layout left="369" top="472" width="26" height="27" compilerOrder="301">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box329" compilerOrder="302"/>
+            </layout>
+            <layout left="117" top="478" width="193" height="20" compilerOrder="515">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_16" compilerOrder="516"/>
+            </layout>
+            <layout left="393" top="478" width="193" height="20" compilerOrder="437">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_47" compilerOrder="438"/>
+            </layout>
+            <layout left="843" top="482" width="26" height="27" compilerOrder="371">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box381" compilerOrder="372"/>
+            </layout>
+            <layout left="824" top="483" width="26" height="27" compilerOrder="369">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box380" compilerOrder="370"/>
+            </layout>
+            <layout left="661" top="485" width="111" height="20" compilerOrder="493">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="111" height="21" field="NOME_35" compilerOrder="494"/>
+            </layout>
+            <layout left="48" top="493" width="26" height="27" compilerOrder="33">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box173" compilerOrder="34"/>
+            </layout>
+            <layout left="70" top="493" width="26" height="27" compilerOrder="107">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box174" compilerOrder="108"/>
+            </layout>
+            <layout left="89" top="493" width="26" height="27" compilerOrder="181">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box175" compilerOrder="182"/>
+            </layout>
+            <layout left="326" top="495" width="26" height="27" compilerOrder="345">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box330" compilerOrder="346"/>
+            </layout>
+            <layout left="348" top="495" width="26" height="27" compilerOrder="253">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box331" compilerOrder="254"/>
+            </layout>
+            <layout left="369" top="495" width="26" height="27" compilerOrder="303">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box332" compilerOrder="304"/>
+            </layout>
+            <layout left="117" top="500" width="193" height="20" compilerOrder="517">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_17" compilerOrder="518"/>
+            </layout>
+            <layout left="393" top="500" width="193" height="20" compilerOrder="439">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_48" compilerOrder="440"/>
+            </layout>
+            <layout left="661" top="507" width="55" height="21" compilerOrder="495">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="55" height="22" field="INFLUÊNCIA_5" compilerOrder="496"/>
+            </layout>
+            <layout left="773" top="507" width="93" height="21" compilerOrder="497">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="93" height="22" field="DEVOÇÃO_5" compilerOrder="498"/>
+            </layout>
+            <layout left="48" top="515" width="26" height="27" compilerOrder="35">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box176" compilerOrder="36"/>
+            </layout>
+            <layout left="69" top="515" width="26" height="27" compilerOrder="109">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box177" compilerOrder="110"/>
+            </layout>
+            <layout left="88" top="515" width="26" height="27" compilerOrder="183">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box178" compilerOrder="184"/>
+            </layout>
+            <layout left="326" top="515" width="26" height="27" compilerOrder="347">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box333" compilerOrder="348"/>
+            </layout>
+            <layout left="347" top="515" width="26" height="27" compilerOrder="255">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box334" compilerOrder="256"/>
+            </layout>
+            <layout left="368" top="515" width="26" height="27" compilerOrder="377">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box335" compilerOrder="378"/>
+            </layout>
+            <layout left="116" top="522" width="193" height="20" compilerOrder="519">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_18" compilerOrder="520"/>
+            </layout>
+            <layout left="393" top="522" width="193" height="20" compilerOrder="441">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_49" compilerOrder="442"/>
+            </layout>
+            <layout left="346" top="536" width="26" height="27" compilerOrder="257">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box337" compilerOrder="258"/>
+            </layout>
+            <layout left="48" top="537" width="26" height="27" compilerOrder="37">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box179" compilerOrder="38"/>
+            </layout>
+            <layout left="69" top="537" width="26" height="27" compilerOrder="111">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box180" compilerOrder="112"/>
+            </layout>
+            <layout left="326" top="537" width="26" height="27" compilerOrder="349">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box336" compilerOrder="350"/>
+            </layout>
+            <layout left="88" top="538" width="26" height="27" compilerOrder="185">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box181" compilerOrder="186"/>
+            </layout>
+            <layout left="369" top="538" width="26" height="27" compilerOrder="379">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box338" compilerOrder="380"/>
+            </layout>
+            <layout left="660" top="541" width="206" height="38" compilerOrder="499">
+                <textEditor left="0" top="0" width="206" height="38" fontSize="14.2" fontColor="#000000" field="NOTAS_9" transparent="true" compilerOrder="500"/>
+            </layout>
+            <layout left="117" top="544" width="193" height="20" compilerOrder="521">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_19" compilerOrder="522"/>
+            </layout>
+            <layout left="393" top="544" width="193" height="20" compilerOrder="443">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_50" compilerOrder="444"/>
+            </layout>
+            <layout left="48" top="559" width="26" height="27" compilerOrder="39">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box182" compilerOrder="40"/>
+            </layout>
+            <layout left="69" top="559" width="26" height="27" compilerOrder="113">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box183" compilerOrder="114"/>
+            </layout>
+            <layout left="90" top="559" width="26" height="27" compilerOrder="187">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box184" compilerOrder="188"/>
+            </layout>
+            <layout left="326" top="560" width="26" height="27" compilerOrder="381">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box339" compilerOrder="382"/>
+            </layout>
+            <layout left="349" top="560" width="26" height="27" compilerOrder="259">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box340" compilerOrder="260"/>
+            </layout>
+            <layout left="369" top="560" width="26" height="27" compilerOrder="383">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box341" compilerOrder="384"/>
+            </layout>
+            <layout left="117" top="565" width="193" height="20" compilerOrder="523">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_20" compilerOrder="524"/>
+            </layout>
+            <layout left="394" top="565" width="193" height="20" compilerOrder="445">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_51" compilerOrder="446"/>
+            </layout>
+            <layout left="822" top="577" width="26" height="27" compilerOrder="373">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box382" compilerOrder="374"/>
+            </layout>
+            <layout left="843" top="577" width="26" height="27" compilerOrder="375">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box383" compilerOrder="376"/>
+            </layout>
+            <layout left="349" top="580" width="26" height="27" compilerOrder="261">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box343" compilerOrder="262"/>
+            </layout>
+            <layout left="661" top="580" width="111" height="21" compilerOrder="501">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="111" height="22" field="NOME_36" compilerOrder="502"/>
+            </layout>
+            <layout left="48" top="581" width="26" height="27" compilerOrder="41">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box185" compilerOrder="42"/>
+            </layout>
+            <layout left="325" top="581" width="26" height="27" compilerOrder="351">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box342" compilerOrder="352"/>
+            </layout>
+            <layout left="371" top="581" width="26" height="27" compilerOrder="305">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box344" compilerOrder="306"/>
+            </layout>
+            <layout left="69" top="582" width="26" height="27" compilerOrder="115">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box186" compilerOrder="116"/>
+            </layout>
+            <layout left="90" top="582" width="26" height="27" compilerOrder="189">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box187" compilerOrder="190"/>
+            </layout>
+            <layout left="116" top="587" width="193" height="20" compilerOrder="525">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_21" compilerOrder="526"/>
+            </layout>
+            <layout left="393" top="587" width="193" height="20" compilerOrder="447">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_52" compilerOrder="448"/>
+            </layout>
+            <layout left="325" top="601" width="26" height="27" compilerOrder="385">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box345" compilerOrder="386"/>
+            </layout>
+            <layout left="347" top="601" width="26" height="27" compilerOrder="263">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box346" compilerOrder="264"/>
+            </layout>
+            <layout left="661" top="601" width="54" height="21" compilerOrder="503">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="54" height="22" field="INFLUÊNCIA_6" compilerOrder="504"/>
+            </layout>
+            <layout left="773" top="601" width="93" height="21" compilerOrder="505">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="93" height="22" field="DEVOÇÃO_6" compilerOrder="506"/>
+            </layout>
+            <layout left="48" top="602" width="26" height="27" compilerOrder="43">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box188" compilerOrder="44"/>
+            </layout>
+            <layout left="69" top="602" width="26" height="27" compilerOrder="117">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box189" compilerOrder="118"/>
+            </layout>
+            <layout left="90" top="602" width="26" height="27" compilerOrder="191">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box190" compilerOrder="192"/>
+            </layout>
+            <layout left="368" top="603" width="26" height="27" compilerOrder="387">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box347" compilerOrder="388"/>
+            </layout>
+            <layout left="117" top="609" width="193" height="20" compilerOrder="527">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_22" compilerOrder="528"/>
+            </layout>
+            <layout left="393" top="610" width="193" height="20" compilerOrder="449">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_53" compilerOrder="450"/>
+            </layout>
+            <layout left="48" top="623" width="26" height="27" compilerOrder="45">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box191" compilerOrder="46"/>
+            </layout>
+            <layout left="69" top="623" width="26" height="27" compilerOrder="119">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box192" compilerOrder="120"/>
+            </layout>
+            <layout left="90" top="624" width="26" height="27" compilerOrder="193">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box193" compilerOrder="194"/>
+            </layout>
+            <layout left="325" top="624" width="26" height="27" compilerOrder="353">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box348" compilerOrder="354"/>
+            </layout>
+            <layout left="349" top="625" width="26" height="27" compilerOrder="265">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box349" compilerOrder="266"/>
+            </layout>
+            <layout left="371" top="625" width="26" height="27" compilerOrder="389">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box350" compilerOrder="390"/>
+            </layout>
+            <layout left="116" top="630" width="193" height="20" compilerOrder="529">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_23" compilerOrder="530"/>
+            </layout>
+            <layout left="393" top="631" width="193" height="20" compilerOrder="451">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_54" compilerOrder="452"/>
+            </layout>
+            <layout left="661" top="635" width="205" height="38" compilerOrder="507">
+                <textEditor left="0" top="0" width="205" height="38" fontSize="14.2" fontColor="#000000" field="NOTAS_10" transparent="true" compilerOrder="508"/>
+            </layout>
+            <layout left="48" top="645" width="26" height="27" compilerOrder="47">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box194" compilerOrder="48"/>
+            </layout>
+            <layout left="68" top="645" width="26" height="27" compilerOrder="121">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box195" compilerOrder="122"/>
+            </layout>
+            <layout left="90" top="645" width="26" height="27" compilerOrder="195">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box196" compilerOrder="196"/>
+            </layout>
+            <layout left="325" top="646" width="26" height="27" compilerOrder="355">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box351" compilerOrder="356"/>
+            </layout>
+            <layout left="347" top="646" width="26" height="27" compilerOrder="267">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box352" compilerOrder="268"/>
+            </layout>
+            <layout left="371" top="646" width="26" height="27" compilerOrder="391">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box353" compilerOrder="392"/>
+            </layout>
+            <layout left="116" top="652" width="193" height="20" compilerOrder="531">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_24" compilerOrder="532"/>
+            </layout>
+            <layout left="393" top="652" width="193" height="20" compilerOrder="533">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_55" compilerOrder="534"/>
+            </layout>
+            <layout left="48" top="667" width="26" height="27" compilerOrder="49">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box197" compilerOrder="50"/>
+            </layout>
+            <layout left="68" top="667" width="26" height="27" compilerOrder="123">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box198" compilerOrder="124"/>
+            </layout>
+            <layout left="89" top="667" width="26" height="27" compilerOrder="197">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box199" compilerOrder="198"/>
+            </layout>
+            <layout left="369" top="667" width="26" height="27" compilerOrder="559">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box356" compilerOrder="560"/>
+            </layout>
+            <layout left="326" top="668" width="26" height="27" compilerOrder="357">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box354" compilerOrder="358"/>
+            </layout>
+            <layout left="349" top="668" width="26" height="27" compilerOrder="269">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box355" compilerOrder="270"/>
+            </layout>
+            <layout left="116" top="674" width="193" height="20" compilerOrder="535">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_25" compilerOrder="536"/>
+            </layout>
+            <layout left="393" top="674" width="193" height="20" compilerOrder="537">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_56" compilerOrder="538"/>
+            </layout>
+            <layout left="47" top="689" width="26" height="27" compilerOrder="51">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box200" compilerOrder="52"/>
+            </layout>
+            <layout left="68" top="689" width="26" height="27" compilerOrder="125">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box201" compilerOrder="126"/>
+            </layout>
+            <layout left="89" top="690" width="26" height="27" compilerOrder="199">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box202" compilerOrder="200"/>
+            </layout>
+            <layout left="326" top="690" width="26" height="27" compilerOrder="359">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box357" compilerOrder="360"/>
+            </layout>
+            <layout left="348" top="691" width="26" height="27" compilerOrder="271">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box358" compilerOrder="272"/>
+            </layout>
+            <layout left="371" top="691" width="26" height="27" compilerOrder="561">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box359" compilerOrder="562"/>
+            </layout>
+            <layout left="117" top="695" width="193" height="20" compilerOrder="539">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_26" compilerOrder="540"/>
+            </layout>
+            <layout left="393" top="696" width="193" height="20" compilerOrder="541">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_57" compilerOrder="542"/>
+            </layout>
+            <layout left="47" top="711" width="26" height="27" compilerOrder="53">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box203" compilerOrder="54"/>
+            </layout>
+            <layout left="67" top="711" width="26" height="27" compilerOrder="127">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box204" compilerOrder="128"/>
+            </layout>
+            <layout left="89" top="711" width="26" height="27" compilerOrder="201">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box205" compilerOrder="202"/>
+            </layout>
+            <layout left="369" top="711" width="26" height="27" compilerOrder="563">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box362" compilerOrder="564"/>
+            </layout>
+            <layout left="326" top="712" width="26" height="27" compilerOrder="361">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box360" compilerOrder="362"/>
+            </layout>
+            <layout left="347" top="712" width="26" height="27" compilerOrder="273">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box361" compilerOrder="274"/>
+            </layout>
+            <layout left="117" top="717" width="193" height="20" compilerOrder="543">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_27" compilerOrder="544"/>
+            </layout>
+            <layout left="393" top="717" width="193" height="20" compilerOrder="545">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_58" compilerOrder="546"/>
+            </layout>
+            <layout left="613" top="719" width="253" height="421" compilerOrder="573">
+                <textEditor left="0" top="0" width="253" height="421" fontSize="14.2" fontColor="#000000" field="Locais_Visitados" transparent="true" compilerOrder="574"/>
+            </layout>
+            <layout left="47" top="733" width="26" height="27" compilerOrder="55">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box206" compilerOrder="56"/>
+            </layout>
+            <layout left="68" top="733" width="26" height="27" compilerOrder="129">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box207" compilerOrder="130"/>
+            </layout>
+            <layout left="89" top="733" width="26" height="27" compilerOrder="203">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box208" compilerOrder="204"/>
+            </layout>
+            <layout left="326" top="734" width="26" height="27" compilerOrder="363">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box363" compilerOrder="364"/>
+            </layout>
+            <layout left="349" top="734" width="26" height="27" compilerOrder="275">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box364" compilerOrder="276"/>
+            </layout>
+            <layout left="368" top="734" width="26" height="27" compilerOrder="565">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box365" compilerOrder="566"/>
+            </layout>
+            <layout left="117" top="739" width="193" height="20" compilerOrder="547">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_28" compilerOrder="548"/>
+            </layout>
+            <layout left="393" top="740" width="193" height="20" compilerOrder="549">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_59" compilerOrder="550"/>
+            </layout>
+            <layout left="47" top="755" width="26" height="27" compilerOrder="57">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box209" compilerOrder="58"/>
+            </layout>
+            <layout left="68" top="755" width="26" height="27" compilerOrder="131">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box210" compilerOrder="132"/>
+            </layout>
+            <layout left="90" top="755" width="26" height="27" compilerOrder="205">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box211" compilerOrder="206"/>
+            </layout>
+            <layout left="326" top="755" width="26" height="27" compilerOrder="365">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box366" compilerOrder="366"/>
+            </layout>
+            <layout left="347" top="755" width="26" height="27" compilerOrder="277">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box367" compilerOrder="278"/>
+            </layout>
+            <layout left="368" top="757" width="26" height="27" compilerOrder="393">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box368" compilerOrder="394"/>
+            </layout>
+            <layout left="116" top="760" width="193" height="20" compilerOrder="551">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_29" compilerOrder="552"/>
+            </layout>
+            <layout left="393" top="761" width="193" height="20" compilerOrder="553">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_60" compilerOrder="554"/>
+            </layout>
+            <layout left="68" top="776" width="26" height="27" compilerOrder="133">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box213" compilerOrder="134"/>
+            </layout>
+            <layout left="90" top="776" width="26" height="27" compilerOrder="207">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box214" compilerOrder="208"/>
+            </layout>
+            <layout left="349" top="776" width="26" height="27" compilerOrder="279">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box370" compilerOrder="280"/>
+            </layout>
+            <layout left="47" top="777" width="26" height="27" compilerOrder="59">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box212" compilerOrder="60"/>
+            </layout>
+            <layout left="326" top="777" width="26" height="27" compilerOrder="367">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box369" compilerOrder="368"/>
+            </layout>
+            <layout left="367" top="777" width="26" height="27" compilerOrder="567">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box371" compilerOrder="568"/>
+            </layout>
+            <layout left="117" top="782" width="193" height="20" compilerOrder="555">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_30" compilerOrder="556"/>
+            </layout>
+            <layout left="393" top="782" width="193" height="20" compilerOrder="557">
+                <edit transparent="true" fontSize="12.8" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="193" height="21" field="Personagens_Encontrados_61" compilerOrder="558"/>
+            </layout>
+            <layout left="56" top="903" width="262" height="237" compilerOrder="569">
+                <textEditor left="0" top="0" width="262" height="237" fontSize="14.2" fontColor="#000000" field="OBJETIVOS_A_CURTO_PRAZORow1" transparent="true" compilerOrder="570"/>
+            </layout>
+            <layout left="320" top="903" width="265" height="237" compilerOrder="571">
+                <textEditor left="0" top="0" width="265" height="237" fontSize="14.2" fontColor="#000000" field="OBJETIVOS_A_LONGO_PRAZORow1" transparent="true" compilerOrder="572"/>
+            </layout>
+        </rectangle>
+    </scrollBox>
+</form>

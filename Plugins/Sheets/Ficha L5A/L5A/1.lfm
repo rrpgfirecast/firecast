@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmL5A1_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmL5A1_svg path {color: black; strokeColor: black; mode: stretch;} 
+#frmL5A1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="918" height="1188" color="white">
+            <image left="0" top="0" width="918" height="1188" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>
+            <layout left="94" top="45" width="227" height="19" compilerOrder="1">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="227" height="20" field="NOME" compilerOrder="2"/>
+            </layout>
+            <layout left="381" top="45" width="227" height="19" compilerOrder="3">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="227" height="20" field="NÍVEL" compilerOrder="4"/>
+            </layout>
+            <layout left="94" top="71" width="227" height="19" compilerOrder="5">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="227" height="20" field="CLÃ" compilerOrder="6"/>
+            </layout>
+            <layout left="495" top="71" width="113" height="19" compilerOrder="7">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="113" height="20" field="Pontos_de_Experiência" compilerOrder="8"/>
+            </layout>
+            <layout left="106" top="97" width="214" height="19" compilerOrder="9">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="214" height="20" field="ESCOLA" compilerOrder="10"/>
+            </layout>
+            <layout left="411" top="97" width="197" height="19" compilerOrder="11">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="197" height="20" field="Sabedoria" compilerOrder="12"/>
+            </layout>
+            <layout left="200" top="185" width="36" height="36" compilerOrder="13">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="37" field="Vigor" compilerOrder="14"/>
+            </layout>
+            <layout left="428" top="185" width="36" height="36" compilerOrder="15">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="37" field="Reflexos" compilerOrder="16"/>
+            </layout>
+            <layout left="440" top="221" width="36" height="36" compilerOrder="19">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="37" field="Astúcia" compilerOrder="20"/>
+            </layout>
+            <layout left="637" top="222" width="26" height="27" compilerOrder="21">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box12" compilerOrder="22"/>
+            </layout>
+            <layout left="659" top="222" width="26" height="27" compilerOrder="23">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box13" compilerOrder="24"/>
+            </layout>
+            <layout left="680" top="222" width="26" height="27" compilerOrder="25">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box14" compilerOrder="26"/>
+            </layout>
+            <layout left="702" top="222" width="26" height="27" compilerOrder="27">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box15" compilerOrder="28"/>
+            </layout>
+            <layout left="723" top="222" width="26" height="27" compilerOrder="29">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box16" compilerOrder="30"/>
+            </layout>
+            <layout left="744" top="222" width="26" height="27" compilerOrder="31">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box17" compilerOrder="32"/>
+            </layout>
+            <layout left="766" top="222" width="26" height="27" compilerOrder="33">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box18" compilerOrder="34"/>
+            </layout>
+            <layout left="787" top="222" width="26" height="27" compilerOrder="35">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box19" compilerOrder="36"/>
+            </layout>
+            <layout left="808" top="222" width="26" height="27" compilerOrder="37">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box20" compilerOrder="38"/>
+            </layout>
+            <layout left="829" top="222" width="26" height="27" compilerOrder="39">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box21" compilerOrder="40"/>
+            </layout>
+            <layout left="186" top="223" width="36" height="36" compilerOrder="17">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="37" field="Vontade" compilerOrder="18"/>
+            </layout>
+            <layout left="294" top="242" width="36" height="36" compilerOrder="41">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="37" field="Terra" compilerOrder="42"/>
+            </layout>
+            <layout left="334" top="243" width="36" height="36" compilerOrder="43">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="37" field="Ar" compilerOrder="44"/>
+            </layout>
+            <layout left="169" top="270" width="36" height="36" compilerOrder="45">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="37" field="Força" compilerOrder="46"/>
+            </layout>
+            <layout left="457" top="272" width="36" height="36" compilerOrder="51">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="37" field="Agilidade" compilerOrder="52"/>
+            </layout>
+            <layout left="659" top="276" width="26" height="27" compilerOrder="55">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box23" compilerOrder="56"/>
+            </layout>
+            <layout left="680" top="276" width="26" height="27" compilerOrder="57">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box24" compilerOrder="58"/>
+            </layout>
+            <layout left="702" top="276" width="26" height="27" compilerOrder="59">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box25" compilerOrder="60"/>
+            </layout>
+            <layout left="723" top="276" width="26" height="27" compilerOrder="61">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box26" compilerOrder="62"/>
+            </layout>
+            <layout left="744" top="276" width="26" height="27" compilerOrder="63">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box27" compilerOrder="64"/>
+            </layout>
+            <layout left="765" top="276" width="26" height="27" compilerOrder="65">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box28" compilerOrder="66"/>
+            </layout>
+            <layout left="787" top="276" width="26" height="27" compilerOrder="67">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box29" compilerOrder="68"/>
+            </layout>
+            <layout left="808" top="276" width="26" height="27" compilerOrder="69">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box30" compilerOrder="70"/>
+            </layout>
+            <layout left="638" top="277" width="26" height="27" compilerOrder="53">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box22" compilerOrder="54"/>
+            </layout>
+            <layout left="829" top="277" width="26" height="27" compilerOrder="71">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box31" compilerOrder="72"/>
+            </layout>
+            <layout left="344" top="278" width="36" height="36" compilerOrder="49">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="37" field="Fogo" compilerOrder="50"/>
+            </layout>
+            <layout left="281" top="279" width="36" height="36" compilerOrder="47">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="37" field="Água" compilerOrder="48"/>
+            </layout>
+            <layout left="314" top="301" width="36" height="36" compilerOrder="75">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="37" field="Vazio" compilerOrder="76"/>
+            </layout>
+            <layout left="157" top="308" width="36" height="36" compilerOrder="73">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="37" field="Percepção" compilerOrder="74"/>
+            </layout>
+            <layout left="469" top="308" width="36" height="36" compilerOrder="77">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="37" field="Inteligência" compilerOrder="78"/>
+            </layout>
+            <layout left="638" top="334" width="26" height="27" compilerOrder="79">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box32" compilerOrder="80"/>
+            </layout>
+            <layout left="659" top="334" width="26" height="27" compilerOrder="81">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box33" compilerOrder="82"/>
+            </layout>
+            <layout left="681" top="334" width="26" height="27" compilerOrder="83">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box34" compilerOrder="84"/>
+            </layout>
+            <layout left="702" top="334" width="26" height="27" compilerOrder="85">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box35" compilerOrder="86"/>
+            </layout>
+            <layout left="723" top="334" width="26" height="27" compilerOrder="87">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box36" compilerOrder="88"/>
+            </layout>
+            <layout left="744" top="334" width="26" height="27" compilerOrder="89">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box37" compilerOrder="90"/>
+            </layout>
+            <layout left="765" top="334" width="26" height="27" compilerOrder="91">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box38" compilerOrder="92"/>
+            </layout>
+            <layout left="786" top="334" width="26" height="27" compilerOrder="93">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box39" compilerOrder="94"/>
+            </layout>
+            <layout left="808" top="334" width="26" height="27" compilerOrder="95">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box40" compilerOrder="96"/>
+            </layout>
+            <layout left="829" top="334" width="26" height="27" compilerOrder="97">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box41" compilerOrder="98"/>
+            </layout>
+            <layout left="659" top="389" width="26" height="27" compilerOrder="119">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box43" compilerOrder="120"/>
+            </layout>
+            <layout left="680" top="389" width="26" height="27" compilerOrder="121">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box44" compilerOrder="122"/>
+            </layout>
+            <layout left="702" top="389" width="26" height="27" compilerOrder="123">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box45" compilerOrder="124"/>
+            </layout>
+            <layout left="723" top="389" width="26" height="27" compilerOrder="125">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box46" compilerOrder="126"/>
+            </layout>
+            <layout left="744" top="389" width="26" height="27" compilerOrder="127">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box47" compilerOrder="128"/>
+            </layout>
+            <layout left="766" top="389" width="26" height="27" compilerOrder="129">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box48" compilerOrder="130"/>
+            </layout>
+            <layout left="787" top="389" width="26" height="27" compilerOrder="131">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box49" compilerOrder="132"/>
+            </layout>
+            <layout left="808" top="389" width="26" height="27" compilerOrder="133">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box50" compilerOrder="134"/>
+            </layout>
+            <layout left="829" top="389" width="26" height="27" compilerOrder="135">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box51" compilerOrder="136"/>
+            </layout>
+            <layout left="638" top="390" width="26" height="27" compilerOrder="117">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box42" compilerOrder="118"/>
+            </layout>
+            <layout left="232" top="435" width="26" height="27" compilerOrder="99">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box3" compilerOrder="100"/>
+            </layout>
+            <layout left="252" top="435" width="26" height="27" compilerOrder="101">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box4" compilerOrder="102"/>
+            </layout>
+            <layout left="274" top="435" width="26" height="27" compilerOrder="107">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box5" compilerOrder="108"/>
+            </layout>
+            <layout left="295" top="435" width="26" height="27" compilerOrder="105">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box6" compilerOrder="106"/>
+            </layout>
+            <layout left="317" top="435" width="26" height="27" compilerOrder="103">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box7" compilerOrder="104"/>
+            </layout>
+            <layout left="337" top="435" width="26" height="27" compilerOrder="109">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box8" compilerOrder="110"/>
+            </layout>
+            <layout left="359" top="435" width="26" height="27" compilerOrder="111">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box9" compilerOrder="112"/>
+            </layout>
+            <layout left="380" top="435" width="26" height="27" compilerOrder="113">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box10" compilerOrder="114"/>
+            </layout>
+            <layout left="402" top="435" width="26" height="27" compilerOrder="115">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box11" compilerOrder="116"/>
+            </layout>
+            <layout left="49" top="501" width="26" height="27" compilerOrder="137">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box52" compilerOrder="138"/>
+            </layout>
+            <layout left="749" top="501" width="119" height="21" compilerOrder="185">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="119" height="22" field="SABEDORIA__REFLEXOS" compilerOrder="186"/>
+            </layout>
+            <layout left="79" top="503" width="191" height="19" compilerOrder="183">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_1" compilerOrder="184"/>
+            </layout>
+            <layout left="283" top="503" width="30" height="19" compilerOrder="245">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_1" compilerOrder="246"/>
+            </layout>
+            <layout left="325" top="503" width="30" height="19" compilerOrder="291">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_1" compilerOrder="292"/>
+            </layout>
+            <layout left="368" top="503" width="30" height="19" compilerOrder="337">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_1" compilerOrder="338"/>
+            </layout>
+            <layout left="410" top="503" width="192" height="19" compilerOrder="383">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_1" compilerOrder="384"/>
+            </layout>
+            <layout left="49" top="520" width="26" height="27" compilerOrder="139">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box53" compilerOrder="140"/>
+            </layout>
+            <layout left="749" top="522" width="119" height="21" compilerOrder="189">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="119" height="22" field="MODIFICADORES" compilerOrder="190"/>
+            </layout>
+            <layout left="79" top="523" width="191" height="19" compilerOrder="187">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_2" compilerOrder="188"/>
+            </layout>
+            <layout left="283" top="523" width="30" height="19" compilerOrder="247">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_2" compilerOrder="248"/>
+            </layout>
+            <layout left="325" top="523" width="30" height="19" compilerOrder="293">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_2" compilerOrder="294"/>
+            </layout>
+            <layout left="368" top="523" width="30" height="19" compilerOrder="339">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_2" compilerOrder="340"/>
+            </layout>
+            <layout left="410" top="523" width="192" height="19" compilerOrder="385">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_2" compilerOrder="386"/>
+            </layout>
+            <layout left="49" top="539" width="26" height="27" compilerOrder="141">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box54" compilerOrder="142"/>
+            </layout>
+            <layout left="79" top="543" width="191" height="19" compilerOrder="191">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_3" compilerOrder="192"/>
+            </layout>
+            <layout left="283" top="543" width="30" height="19" compilerOrder="249">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_3" compilerOrder="250"/>
+            </layout>
+            <layout left="325" top="543" width="30" height="19" compilerOrder="295">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_3" compilerOrder="296"/>
+            </layout>
+            <layout left="368" top="543" width="30" height="19" compilerOrder="341">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_3" compilerOrder="342"/>
+            </layout>
+            <layout left="410" top="543" width="192" height="19" compilerOrder="387">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_3" compilerOrder="388"/>
+            </layout>
+            <layout left="749" top="544" width="119" height="21" compilerOrder="193">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="119" height="22" field="INICIATIVA_ATUAL" compilerOrder="194"/>
+            </layout>
+            <layout left="49" top="558" width="26" height="27" compilerOrder="143">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box55" compilerOrder="144"/>
+            </layout>
+            <layout left="79" top="563" width="191" height="19" compilerOrder="195">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_4" compilerOrder="196"/>
+            </layout>
+            <layout left="283" top="563" width="30" height="19" compilerOrder="251">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_4" compilerOrder="252"/>
+            </layout>
+            <layout left="325" top="563" width="30" height="19" compilerOrder="297">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_4" compilerOrder="298"/>
+            </layout>
+            <layout left="368" top="563" width="30" height="19" compilerOrder="343">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_4" compilerOrder="344"/>
+            </layout>
+            <layout left="410" top="563" width="192" height="19" compilerOrder="389">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_4" compilerOrder="390"/>
+            </layout>
+            <layout left="49" top="577" width="26" height="27" compilerOrder="145">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box56" compilerOrder="146"/>
+            </layout>
+            <layout left="79" top="582" width="191" height="19" compilerOrder="197">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_5" compilerOrder="198"/>
+            </layout>
+            <layout left="283" top="582" width="30" height="19" compilerOrder="253">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_5" compilerOrder="254"/>
+            </layout>
+            <layout left="325" top="582" width="30" height="19" compilerOrder="299">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_5" compilerOrder="300"/>
+            </layout>
+            <layout left="368" top="582" width="30" height="19" compilerOrder="345">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_5" compilerOrder="346"/>
+            </layout>
+            <layout left="410" top="582" width="192" height="19" compilerOrder="391">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_5" compilerOrder="392"/>
+            </layout>
+            <layout left="749" top="585" width="119" height="21" compilerOrder="199">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="119" height="22" field="TIPO__BÔNUS" compilerOrder="200"/>
+            </layout>
+            <layout left="49" top="597" width="26" height="27" compilerOrder="147">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box57" compilerOrder="148"/>
+            </layout>
+            <layout left="79" top="602" width="191" height="19" compilerOrder="201">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_6" compilerOrder="202"/>
+            </layout>
+            <layout left="283" top="602" width="30" height="19" compilerOrder="255">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_6" compilerOrder="256"/>
+            </layout>
+            <layout left="325" top="602" width="30" height="19" compilerOrder="301">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_6" compilerOrder="302"/>
+            </layout>
+            <layout left="368" top="602" width="30" height="19" compilerOrder="347">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_6" compilerOrder="348"/>
+            </layout>
+            <layout left="410" top="602" width="192" height="19" compilerOrder="393">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_6" compilerOrder="394"/>
+            </layout>
+            <layout left="749" top="607" width="119" height="21" compilerOrder="203">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="119" height="22" field="REDUÇÃO" compilerOrder="204"/>
+            </layout>
+            <layout left="49" top="618" width="26" height="27" compilerOrder="149">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box58" compilerOrder="150"/>
+            </layout>
+            <layout left="79" top="622" width="191" height="19" compilerOrder="205">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_7" compilerOrder="206"/>
+            </layout>
+            <layout left="283" top="622" width="30" height="19" compilerOrder="257">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_7" compilerOrder="258"/>
+            </layout>
+            <layout left="325" top="622" width="30" height="19" compilerOrder="303">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_7" compilerOrder="304"/>
+            </layout>
+            <layout left="368" top="622" width="30" height="19" compilerOrder="349">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_7" compilerOrder="350"/>
+            </layout>
+            <layout left="410" top="622" width="192" height="19" compilerOrder="395">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_7" compilerOrder="396"/>
+            </layout>
+            <layout left="749" top="628" width="119" height="21" compilerOrder="207">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="119" height="22" field="NA_ATUAL" compilerOrder="208"/>
+            </layout>
+            <layout left="49" top="638" width="26" height="27" compilerOrder="151">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box59" compilerOrder="152"/>
+            </layout>
+            <layout left="79" top="642" width="191" height="19" compilerOrder="209">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_8" compilerOrder="210"/>
+            </layout>
+            <layout left="283" top="642" width="30" height="19" compilerOrder="259">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_8" compilerOrder="260"/>
+            </layout>
+            <layout left="325" top="642" width="30" height="19" compilerOrder="305">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_8" compilerOrder="306"/>
+            </layout>
+            <layout left="368" top="642" width="30" height="19" compilerOrder="351">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_8" compilerOrder="352"/>
+            </layout>
+            <layout left="410" top="642" width="192" height="19" compilerOrder="397">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_8" compilerOrder="398"/>
+            </layout>
+            <layout left="49" top="658" width="26" height="27" compilerOrder="153">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box60" compilerOrder="154"/>
+            </layout>
+            <layout left="79" top="662" width="191" height="19" compilerOrder="211">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_9" compilerOrder="212"/>
+            </layout>
+            <layout left="283" top="662" width="30" height="19" compilerOrder="261">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_9" compilerOrder="262"/>
+            </layout>
+            <layout left="325" top="662" width="30" height="19" compilerOrder="307">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_9" compilerOrder="308"/>
+            </layout>
+            <layout left="368" top="662" width="30" height="19" compilerOrder="353">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_9" compilerOrder="354"/>
+            </layout>
+            <layout left="410" top="662" width="192" height="19" compilerOrder="399">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_9" compilerOrder="400"/>
+            </layout>
+            <layout left="749" top="669" width="119" height="21" compilerOrder="213">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="119" height="22" field="BÔNUS_DE_NA" compilerOrder="214"/>
+            </layout>
+            <layout left="49" top="677" width="26" height="27" compilerOrder="155">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box61" compilerOrder="156"/>
+            </layout>
+            <layout left="79" top="682" width="191" height="19" compilerOrder="215">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_10" compilerOrder="216"/>
+            </layout>
+            <layout left="283" top="682" width="30" height="19" compilerOrder="263">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_10" compilerOrder="264"/>
+            </layout>
+            <layout left="325" top="682" width="30" height="19" compilerOrder="309">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_10" compilerOrder="310"/>
+            </layout>
+            <layout left="368" top="682" width="30" height="19" compilerOrder="355">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_10" compilerOrder="356"/>
+            </layout>
+            <layout left="410" top="682" width="192" height="19" compilerOrder="401">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_10" compilerOrder="402"/>
+            </layout>
+            <layout left="749" top="691" width="119" height="21" compilerOrder="217">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="119" height="22" field="QUALIDADE" compilerOrder="218"/>
+            </layout>
+            <layout left="49" top="698" width="26" height="27" compilerOrder="157">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box62" compilerOrder="158"/>
+            </layout>
+            <layout left="79" top="701" width="191" height="19" compilerOrder="219">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_11" compilerOrder="220"/>
+            </layout>
+            <layout left="283" top="701" width="30" height="19" compilerOrder="265">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_11" compilerOrder="266"/>
+            </layout>
+            <layout left="325" top="701" width="30" height="19" compilerOrder="311">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_11" compilerOrder="312"/>
+            </layout>
+            <layout left="368" top="701" width="30" height="19" compilerOrder="357">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_11" compilerOrder="358"/>
+            </layout>
+            <layout left="410" top="701" width="192" height="19" compilerOrder="403">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_11" compilerOrder="404"/>
+            </layout>
+            <layout left="749" top="713" width="119" height="21" compilerOrder="407">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="119" height="22" field="NOTAS" compilerOrder="408"/>
+            </layout>
+            <layout left="48" top="718" width="26" height="27" compilerOrder="159">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box63" compilerOrder="160"/>
+            </layout>
+            <layout left="79" top="721" width="191" height="19" compilerOrder="221">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_12" compilerOrder="222"/>
+            </layout>
+            <layout left="283" top="721" width="30" height="19" compilerOrder="267">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_12" compilerOrder="268"/>
+            </layout>
+            <layout left="325" top="721" width="30" height="19" compilerOrder="313">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_12" compilerOrder="314"/>
+            </layout>
+            <layout left="368" top="721" width="30" height="19" compilerOrder="359">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_12" compilerOrder="360"/>
+            </layout>
+            <layout left="410" top="721" width="192" height="19" compilerOrder="405">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_12" compilerOrder="406"/>
+            </layout>
+            <layout left="48" top="737" width="26" height="27" compilerOrder="161">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box64" compilerOrder="162"/>
+            </layout>
+            <layout left="79" top="741" width="191" height="19" compilerOrder="223">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_13" compilerOrder="224"/>
+            </layout>
+            <layout left="283" top="741" width="30" height="19" compilerOrder="269">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_13" compilerOrder="270"/>
+            </layout>
+            <layout left="325" top="741" width="30" height="19" compilerOrder="315">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_13" compilerOrder="316"/>
+            </layout>
+            <layout left="368" top="741" width="30" height="19" compilerOrder="361">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_13" compilerOrder="362"/>
+            </layout>
+            <layout left="410" top="741" width="192" height="19" compilerOrder="409">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_13" compilerOrder="410"/>
+            </layout>
+            <layout left="749" top="753" width="119" height="36" compilerOrder="413">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="119" height="37" field="TERRA_X_2_POR_NÍVEL_TERRA_X5_PARA_SAUDÁVEL" compilerOrder="414"/>
+            </layout>
+            <layout left="48" top="757" width="26" height="27" compilerOrder="163">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box65" compilerOrder="164"/>
+            </layout>
+            <layout left="79" top="761" width="191" height="19" compilerOrder="225">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_14" compilerOrder="226"/>
+            </layout>
+            <layout left="283" top="761" width="30" height="19" compilerOrder="271">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_14" compilerOrder="272"/>
+            </layout>
+            <layout left="325" top="761" width="30" height="19" compilerOrder="317">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_14" compilerOrder="318"/>
+            </layout>
+            <layout left="368" top="761" width="30" height="19" compilerOrder="363">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_14" compilerOrder="364"/>
+            </layout>
+            <layout left="410" top="761" width="192" height="19" compilerOrder="411">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_14" compilerOrder="412"/>
+            </layout>
+            <layout left="48" top="776" width="26" height="27" compilerOrder="165">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box66" compilerOrder="166"/>
+            </layout>
+            <layout left="79" top="781" width="191" height="19" compilerOrder="227">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_15" compilerOrder="228"/>
+            </layout>
+            <layout left="283" top="781" width="30" height="19" compilerOrder="273">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_15" compilerOrder="274"/>
+            </layout>
+            <layout left="325" top="781" width="30" height="19" compilerOrder="319">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_15" compilerOrder="320"/>
+            </layout>
+            <layout left="368" top="781" width="30" height="19" compilerOrder="365">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_15" compilerOrder="366"/>
+            </layout>
+            <layout left="410" top="781" width="192" height="19" compilerOrder="415">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_15" compilerOrder="416"/>
+            </layout>
+            <layout left="48" top="797" width="26" height="27" compilerOrder="167">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box67" compilerOrder="168"/>
+            </layout>
+            <layout left="79" top="801" width="191" height="19" compilerOrder="229">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_16" compilerOrder="230"/>
+            </layout>
+            <layout left="283" top="801" width="30" height="19" compilerOrder="275">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_16" compilerOrder="276"/>
+            </layout>
+            <layout left="325" top="801" width="30" height="19" compilerOrder="321">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_16" compilerOrder="322"/>
+            </layout>
+            <layout left="368" top="801" width="30" height="19" compilerOrder="367">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_16" compilerOrder="368"/>
+            </layout>
+            <layout left="410" top="801" width="192" height="19" compilerOrder="417">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_16" compilerOrder="418"/>
+            </layout>
+            <layout left="718" top="809" width="49" height="29" compilerOrder="445">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="SAUDÁVEL_0" compilerOrder="446"/>
+            </layout>
+            <layout left="768" top="809" width="49" height="29" compilerOrder="421">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="SAUDÁVEL_0_1" compilerOrder="422"/>
+            </layout>
+            <layout left="819" top="809" width="49" height="29" compilerOrder="423">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="SAUDÁVEL_0_2" compilerOrder="424"/>
+            </layout>
+            <layout left="48" top="817" width="26" height="27" compilerOrder="169">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box68" compilerOrder="170"/>
+            </layout>
+            <layout left="79" top="821" width="191" height="19" compilerOrder="231">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_17" compilerOrder="232"/>
+            </layout>
+            <layout left="283" top="821" width="30" height="19" compilerOrder="277">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_17" compilerOrder="278"/>
+            </layout>
+            <layout left="325" top="821" width="30" height="19" compilerOrder="323">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_17" compilerOrder="324"/>
+            </layout>
+            <layout left="368" top="821" width="30" height="19" compilerOrder="369">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_17" compilerOrder="370"/>
+            </layout>
+            <layout left="410" top="821" width="192" height="19" compilerOrder="419">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_17" compilerOrder="420"/>
+            </layout>
+            <layout left="48" top="835" width="26" height="27" compilerOrder="171">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box69" compilerOrder="172"/>
+            </layout>
+            <layout left="718" top="839" width="49" height="29" compilerOrder="447">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="ESCORIADO_3" compilerOrder="448"/>
+            </layout>
+            <layout left="768" top="839" width="49" height="29" compilerOrder="427">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="ESCORIADO_3_1" compilerOrder="428"/>
+            </layout>
+            <layout left="819" top="839" width="50" height="29" compilerOrder="429">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="50" height="30" field="ESCORIADO_3_2" compilerOrder="430"/>
+            </layout>
+            <layout left="79" top="840" width="191" height="19" compilerOrder="233">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_18" compilerOrder="234"/>
+            </layout>
+            <layout left="283" top="840" width="30" height="19" compilerOrder="279">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_18" compilerOrder="280"/>
+            </layout>
+            <layout left="325" top="840" width="30" height="19" compilerOrder="325">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_18" compilerOrder="326"/>
+            </layout>
+            <layout left="368" top="840" width="30" height="19" compilerOrder="371">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_18" compilerOrder="372"/>
+            </layout>
+            <layout left="410" top="840" width="192" height="19" compilerOrder="425">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_18" compilerOrder="426"/>
+            </layout>
+            <layout left="49" top="856" width="26" height="27" compilerOrder="173">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box70" compilerOrder="174"/>
+            </layout>
+            <layout left="79" top="860" width="191" height="19" compilerOrder="235">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_19" compilerOrder="236"/>
+            </layout>
+            <layout left="283" top="860" width="30" height="19" compilerOrder="281">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_19" compilerOrder="282"/>
+            </layout>
+            <layout left="325" top="860" width="30" height="19" compilerOrder="327">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_19" compilerOrder="328"/>
+            </layout>
+            <layout left="368" top="860" width="30" height="19" compilerOrder="373">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_19" compilerOrder="374"/>
+            </layout>
+            <layout left="410" top="860" width="192" height="19" compilerOrder="431">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_19" compilerOrder="432"/>
+            </layout>
+            <layout left="718" top="869" width="49" height="29" compilerOrder="449">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="MACHUCADO_5" compilerOrder="450"/>
+            </layout>
+            <layout left="768" top="869" width="49" height="29" compilerOrder="435">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="MACHUCADO_5_1" compilerOrder="436"/>
+            </layout>
+            <layout left="819" top="869" width="49" height="29" compilerOrder="437">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="MACHUCADO_5_2" compilerOrder="438"/>
+            </layout>
+            <layout left="48" top="873" width="26" height="27" compilerOrder="175">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box71" compilerOrder="176"/>
+            </layout>
+            <layout left="79" top="880" width="191" height="19" compilerOrder="237">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_20" compilerOrder="238"/>
+            </layout>
+            <layout left="283" top="880" width="30" height="19" compilerOrder="283">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_20" compilerOrder="284"/>
+            </layout>
+            <layout left="325" top="880" width="30" height="19" compilerOrder="329">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_20" compilerOrder="330"/>
+            </layout>
+            <layout left="368" top="880" width="30" height="19" compilerOrder="375">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_20" compilerOrder="376"/>
+            </layout>
+            <layout left="410" top="880" width="192" height="19" compilerOrder="433">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_20" compilerOrder="434"/>
+            </layout>
+            <layout left="48" top="894" width="26" height="27" compilerOrder="177">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box72" compilerOrder="178"/>
+            </layout>
+            <layout left="718" top="898" width="49" height="29" compilerOrder="451">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="FERIDO_10" compilerOrder="452"/>
+            </layout>
+            <layout left="819" top="898" width="49" height="29" compilerOrder="455">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="FERIDO_10_2" compilerOrder="456"/>
+            </layout>
+            <layout left="768" top="899" width="49" height="29" compilerOrder="453">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="FERIDO_10_1" compilerOrder="454"/>
+            </layout>
+            <layout left="79" top="900" width="191" height="19" compilerOrder="239">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_21" compilerOrder="240"/>
+            </layout>
+            <layout left="283" top="900" width="30" height="19" compilerOrder="285">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_21" compilerOrder="286"/>
+            </layout>
+            <layout left="325" top="900" width="30" height="19" compilerOrder="331">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_21" compilerOrder="332"/>
+            </layout>
+            <layout left="368" top="900" width="30" height="19" compilerOrder="377">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_21" compilerOrder="378"/>
+            </layout>
+            <layout left="410" top="900" width="192" height="19" compilerOrder="439">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_21" compilerOrder="440"/>
+            </layout>
+            <layout left="48" top="914" width="26" height="27" compilerOrder="179">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box73" compilerOrder="180"/>
+            </layout>
+            <layout left="79" top="920" width="191" height="19" compilerOrder="241">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_22" compilerOrder="242"/>
+            </layout>
+            <layout left="283" top="920" width="30" height="19" compilerOrder="287">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_22" compilerOrder="288"/>
+            </layout>
+            <layout left="325" top="920" width="30" height="19" compilerOrder="333">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_22" compilerOrder="334"/>
+            </layout>
+            <layout left="368" top="920" width="30" height="19" compilerOrder="379">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_22" compilerOrder="380"/>
+            </layout>
+            <layout left="410" top="920" width="192" height="19" compilerOrder="441">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_22" compilerOrder="442"/>
+            </layout>
+            <layout left="718" top="928" width="49" height="29" compilerOrder="457">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="SER_FERIDO_15" compilerOrder="458"/>
+            </layout>
+            <layout left="768" top="928" width="49" height="29" compilerOrder="459">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="SER_FERIDO_15_1" compilerOrder="460"/>
+            </layout>
+            <layout left="819" top="928" width="49" height="29" compilerOrder="461">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="SER_FERIDO_15_2" compilerOrder="462"/>
+            </layout>
+            <layout left="48" top="935" width="26" height="27" compilerOrder="181">
+                <checkBox left="0" top="0" width="26" height="28" field="Check_Box74" compilerOrder="182"/>
+            </layout>
+            <layout left="79" top="940" width="191" height="19" compilerOrder="243">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="191" height="20" field="PERÍCIAS_23" compilerOrder="244"/>
+            </layout>
+            <layout left="283" top="940" width="30" height="19" compilerOrder="289">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="NÍVEL_23" compilerOrder="290"/>
+            </layout>
+            <layout left="325" top="940" width="30" height="19" compilerOrder="335">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="ATRIB_23" compilerOrder="336"/>
+            </layout>
+            <layout left="368" top="940" width="30" height="19" compilerOrder="381">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="30" height="20" field="TESTE_23" compilerOrder="382"/>
+            </layout>
+            <layout left="410" top="940" width="192" height="19" compilerOrder="443">
+                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="192" height="20" field="ÊNFASE__MAESTRIA_23" compilerOrder="444"/>
+            </layout>
+            <layout left="718" top="958" width="49" height="29" compilerOrder="463">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="INCAPACIT_20" compilerOrder="464"/>
+            </layout>
+            <layout left="768" top="958" width="49" height="29" compilerOrder="465">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="INCAPACIT_20_1" compilerOrder="466"/>
+            </layout>
+            <layout left="819" top="958" width="49" height="29" compilerOrder="467">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="30" field="INCAPACIT_20_2" compilerOrder="468"/>
+            </layout>
+            <layout left="718" top="988" width="49" height="32" compilerOrder="473">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="33" field="ABATIDO_40_DEVE_GASTAR_VAZIO_PARA_AGIR" compilerOrder="474"/>
+            </layout>
+            <layout left="768" top="988" width="49" height="32" compilerOrder="475">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="33" field="ABATIDO_40_DEVE_GASTAR_VAZIO_PARA_AGIR1" compilerOrder="476"/>
+            </layout>
+            <layout left="819" top="988" width="49" height="32" compilerOrder="477">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="33" field="ABATIDO_40_DEVE_GASTAR_VAZIO_PARA_AGIR2" compilerOrder="478"/>
+            </layout>
+            <layout left="302" top="998" width="114" height="23" compilerOrder="471">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="114" height="24" field="TIPO_2" compilerOrder="472"/>
+            </layout>
+            <layout left="120" top="999" width="114" height="22" compilerOrder="469">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="114" height="23" field="TIPO" compilerOrder="470"/>
+            </layout>
+            <layout left="718" top="1020" width="49" height="32" compilerOrder="489">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="33" field="INCONSCIENTE_NÃO_PODE_AGIR" compilerOrder="490"/>
+            </layout>
+            <layout left="768" top="1020" width="49" height="32" compilerOrder="491">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="33" field="INCONSCIENTE_NÃO_PODE_AGIR1" compilerOrder="492"/>
+            </layout>
+            <layout left="819" top="1020" width="49" height="32" compilerOrder="493">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="49" height="33" field="INCONSCIENTE_NÃO_PODE_AGIR_2" compilerOrder="494"/>
+            </layout>
+            <layout left="120" top="1022" width="114" height="23" compilerOrder="479">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="114" height="24" field="ATAQUE" compilerOrder="480"/>
+            </layout>
+            <layout left="302" top="1022" width="114" height="23" compilerOrder="481">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="114" height="24" field="ATAQUE_2" compilerOrder="482"/>
+            </layout>
+            <layout left="422" top="1022" width="61" height="22" compilerOrder="483">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="23" field="TIPORow1" compilerOrder="484"/>
+            </layout>
+            <layout left="484" top="1022" width="61" height="22" compilerOrder="485">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="23" field="DANORow1" compilerOrder="486"/>
+            </layout>
+            <layout left="547" top="1022" width="61" height="22" compilerOrder="487">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="23" field="QUANTIDADERow1" compilerOrder="488"/>
+            </layout>
+            <layout left="120" top="1045" width="114" height="23" compilerOrder="495">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="114" height="24" field="DANO" compilerOrder="496"/>
+            </layout>
+            <layout left="302" top="1045" width="114" height="23" compilerOrder="497">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="114" height="24" field="DANO_2" compilerOrder="498"/>
+            </layout>
+            <layout left="422" top="1045" width="61" height="22" compilerOrder="499">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="23" field="TIPODANO" compilerOrder="500"/>
+            </layout>
+            <layout left="484" top="1045" width="61" height="22" compilerOrder="501">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="23" field="DANODANO" compilerOrder="502"/>
+            </layout>
+            <layout left="546" top="1045" width="61" height="22" compilerOrder="503">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="23" field="QUANTIDADEDANO" compilerOrder="504"/>
+            </layout>
+            <layout left="302" top="1068" width="114" height="23" compilerOrder="507">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="114" height="24" field="BÔNUS_2" compilerOrder="508"/>
+            </layout>
+            <layout left="120" top="1069" width="114" height="23" compilerOrder="505">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="114" height="24" field="BÔNUS" compilerOrder="506"/>
+            </layout>
+            <layout left="422" top="1069" width="61" height="22" compilerOrder="509">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="23" field="TIPOBÔNUS" compilerOrder="510"/>
+            </layout>
+            <layout left="484" top="1069" width="61" height="22" compilerOrder="511">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="23" field="DANOBÔNUS" compilerOrder="512"/>
+            </layout>
+            <layout left="547" top="1069" width="61" height="22" compilerOrder="513">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="23" field="QUANTIDADEBÔNUS" compilerOrder="514"/>
+            </layout>
+            <layout left="749" top="1072" width="119" height="21" compilerOrder="515">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="119" height="22" field="VIGOR_X_2__SABEDORIA" compilerOrder="516"/>
+            </layout>
+            <layout left="120" top="1092" width="114" height="44" compilerOrder="517">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="114" height="45" field="NOTAS_2" compilerOrder="518"/>
+            </layout>
+            <layout left="302" top="1092" width="114" height="44" compilerOrder="519">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="114" height="45" field="NOTAS_3" compilerOrder="520"/>
+            </layout>
+            <layout left="422" top="1092" width="61" height="23" compilerOrder="521">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="24" field="TIPONOTAS" compilerOrder="522"/>
+            </layout>
+            <layout left="484" top="1092" width="61" height="23" compilerOrder="523">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="24" field="DANONOTAS" compilerOrder="524"/>
+            </layout>
+            <layout left="547" top="1092" width="61" height="23" compilerOrder="525">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="24" field="QUANTIDADENOTAS" compilerOrder="526"/>
+            </layout>
+            <layout left="749" top="1094" width="119" height="21" compilerOrder="527">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="119" height="22" field="MODIFICADORES_2" compilerOrder="528"/>
+            </layout>
+            <layout left="422" top="1115" width="61" height="21" compilerOrder="529">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="22" field="TIPONOTAS_2" compilerOrder="530"/>
+            </layout>
+            <layout left="484" top="1115" width="61" height="21" compilerOrder="531">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="22" field="DANONOTAS_2" compilerOrder="532"/>
+            </layout>
+            <layout left="546" top="1115" width="61" height="21" compilerOrder="533">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="61" height="22" field="QUANTIDADENOTAS_2" compilerOrder="534"/>
+            </layout>
+            <layout left="749" top="1115" width="119" height="21" compilerOrder="535">
+                <edit transparent="true" fontSize="13.5" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="119" height="22" field="VALOR_ATUAL" compilerOrder="536"/>
+            </layout>
+        </rectangle>
+    </scrollBox>
+</form>

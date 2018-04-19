@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmL5A" formType="sheetTemplate" dataType="rrpg.ficha.L5A" title="Ficha L5A" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Página 1">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Página 2">
+            <import file="2.lfm"/>
+        </tab>
+        <tab title="Página 3">
+            <import file="3.lfm"/>
+        </tab>
+        <tab title="Página 4">
+            <import file="4.lfm"/>
+        </tab>
+        <tab title="Página 5">
+            <import file="5.lfm"/>
+        </tab>
+    </tabControl>
+</form>
