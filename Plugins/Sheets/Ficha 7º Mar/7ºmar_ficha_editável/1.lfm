@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frm_7mar_ficha_editavel1_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frm_7mar_ficha_editavel1_svg path {color: black; strokeColor: black; mode: stretch;} 
+#frm_7mar_ficha_editavel1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1188" height="918" color="white">
+            <image left="0" top="0" width="1188" height="918" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>
+            <layout left="132" top="85" width="236" height="28" compilerOrder="1">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="236" height="29" field="Jogador" compilerOrder="2"/>
+            </layout>
+            <layout left="611" top="86" width="25" height="22" compilerOrder="29">
+                <checkBox left="0" top="0" width="25" height="23" field="Vigor_3" compilerOrder="30"/>
+            </layout>
+            <layout left="628" top="86" width="25" height="22" compilerOrder="31">
+                <checkBox left="0" top="0" width="25" height="23" field="Vigor_4" compilerOrder="32"/>
+            </layout>
+            <layout left="645" top="86" width="25" height="22" compilerOrder="33">
+                <checkBox left="0" top="0" width="25" height="23" field="Vigor_5" compilerOrder="34"/>
+            </layout>
+            <layout left="577" top="87" width="25" height="22" compilerOrder="25">
+                <checkBox left="0" top="0" width="25" height="23" field="Vigor_1" compilerOrder="26"/>
+            </layout>
+            <layout left="594" top="87" width="25" height="22" compilerOrder="27">
+                <checkBox left="0" top="0" width="25" height="23" field="Vigor_2" compilerOrder="28"/>
+            </layout>
+            <layout left="804" top="93" width="348" height="139" compilerOrder="235">
+                <textEditor left="0" top="0" width="348" height="139" fontSize="14.2" fontColor="#000000" field="Formações" transparent="true" compilerOrder="236"/>
+            </layout>
+            <layout left="132" top="109" width="236" height="28" compilerOrder="3">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="236" height="29" field="Personaguem" compilerOrder="4"/>
+            </layout>
+            <layout left="577" top="111" width="25" height="22" compilerOrder="35">
+                <checkBox left="0" top="0" width="25" height="23" field="Finesse_1" compilerOrder="36"/>
+            </layout>
+            <layout left="594" top="111" width="25" height="22" compilerOrder="37">
+                <checkBox left="0" top="0" width="25" height="23" field="Finesse_2" compilerOrder="38"/>
+            </layout>
+            <layout left="611" top="111" width="25" height="22" compilerOrder="39">
+                <checkBox left="0" top="0" width="25" height="23" field="Finesse_3" compilerOrder="40"/>
+            </layout>
+            <layout left="628" top="111" width="25" height="22" compilerOrder="41">
+                <checkBox left="0" top="0" width="25" height="23" field="Finesse_4" compilerOrder="42"/>
+            </layout>
+            <layout left="646" top="111" width="25" height="22" compilerOrder="43">
+                <checkBox left="0" top="0" width="25" height="23" field="Finesse_5" compilerOrder="44"/>
+            </layout>
+            <layout left="132" top="134" width="236" height="28" compilerOrder="7">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="236" height="29" field="conceito" compilerOrder="8"/>
+            </layout>
+            <layout left="577" top="136" width="25" height="22" compilerOrder="45">
+                <checkBox left="0" top="0" width="25" height="23" field="Argúcia_1" compilerOrder="46"/>
+            </layout>
+            <layout left="594" top="136" width="25" height="22" compilerOrder="47">
+                <checkBox left="0" top="0" width="25" height="23" field="Argúcia_2" compilerOrder="48"/>
+            </layout>
+            <layout left="611" top="136" width="25" height="22" compilerOrder="49">
+                <checkBox left="0" top="0" width="25" height="23" field="Argúcia_3" compilerOrder="50"/>
+            </layout>
+            <layout left="628" top="136" width="25" height="22" compilerOrder="51">
+                <checkBox left="0" top="0" width="25" height="23" field="Argúcia_4" compilerOrder="52"/>
+            </layout>
+            <layout left="646" top="136" width="25" height="22" compilerOrder="53">
+                <checkBox left="0" top="0" width="25" height="23" field="Argúcia_5" compilerOrder="54"/>
+            </layout>
+            <layout left="132" top="158" width="236" height="28" compilerOrder="5">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="236" height="29" field="nação" compilerOrder="6"/>
+            </layout>
+            <layout left="628" top="160" width="25" height="22" compilerOrder="61">
+                <checkBox left="0" top="0" width="25" height="23" field="Determinação_4" compilerOrder="62"/>
+            </layout>
+            <layout left="577" top="161" width="25" height="22" compilerOrder="55">
+                <checkBox left="0" top="0" width="25" height="23" field="Determinação_1" compilerOrder="56"/>
+            </layout>
+            <layout left="594" top="161" width="25" height="22" compilerOrder="57">
+                <checkBox left="0" top="0" width="25" height="23" field="Determinação_2" compilerOrder="58"/>
+            </layout>
+            <layout left="611" top="161" width="25" height="22" compilerOrder="59">
+                <checkBox left="0" top="0" width="25" height="23" field="Determinação_3" compilerOrder="60"/>
+            </layout>
+            <layout left="646" top="161" width="25" height="22" compilerOrder="63">
+                <checkBox left="0" top="0" width="25" height="23" field="Determinação_5" compilerOrder="64"/>
+            </layout>
+            <layout left="132" top="182" width="236" height="28" compilerOrder="9">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="236" height="29" field="religião" compilerOrder="10"/>
+            </layout>
+            <layout left="577" top="185" width="25" height="22" compilerOrder="65">
+                <checkBox left="0" top="0" width="25" height="23" field="Panache_1" compilerOrder="66"/>
+            </layout>
+            <layout left="594" top="185" width="25" height="22" compilerOrder="67">
+                <checkBox left="0" top="0" width="25" height="23" field="Panache_2" compilerOrder="68"/>
+            </layout>
+            <layout left="611" top="185" width="25" height="22" compilerOrder="69">
+                <checkBox left="0" top="0" width="25" height="23" field="Panache_3" compilerOrder="70"/>
+            </layout>
+            <layout left="628" top="185" width="25" height="22" compilerOrder="71">
+                <checkBox left="0" top="0" width="25" height="23" field="Panache_4" compilerOrder="72"/>
+            </layout>
+            <layout left="645" top="185" width="25" height="22" compilerOrder="73">
+                <checkBox left="0" top="0" width="25" height="23" field="Panache_5" compilerOrder="74"/>
+            </layout>
+            <layout left="132" top="220" width="236" height="42" compilerOrder="13">
+                <textEditor left="0" top="0" width="236" height="42" fontSize="14.2" fontColor="#000000" field="reputação" transparent="true" compilerOrder="14"/>
+            </layout>
+            <layout left="495" top="263" width="25" height="22" compilerOrder="75">
+                <checkBox left="0" top="0" width="25" height="23" field="Mirar_1" compilerOrder="76"/>
+            </layout>
+            <layout left="512" top="263" width="25" height="22" compilerOrder="77">
+                <checkBox left="0" top="0" width="25" height="23" field="Mirar_2" compilerOrder="78"/>
+            </layout>
+            <layout left="529" top="263" width="25" height="22" compilerOrder="79">
+                <checkBox left="0" top="0" width="25" height="23" field="Mirar_3" compilerOrder="80"/>
+            </layout>
+            <layout left="545" top="263" width="25" height="22" compilerOrder="81">
+                <checkBox left="0" top="0" width="25" height="23" field="Mirar_4" compilerOrder="82"/>
+            </layout>
+            <layout left="562" top="263" width="25" height="22" compilerOrder="83">
+                <checkBox left="0" top="0" width="25" height="23" field="Mirar_5" compilerOrder="84"/>
+            </layout>
+            <layout left="684" top="263" width="25" height="22" compilerOrder="155">
+                <checkBox left="0" top="0" width="25" height="23" field="Atuar_1" compilerOrder="156"/>
+            </layout>
+            <layout left="701" top="263" width="25" height="22" compilerOrder="157">
+                <checkBox left="0" top="0" width="25" height="23" field="Atuar_2" compilerOrder="158"/>
+            </layout>
+            <layout left="718" top="263" width="25" height="22" compilerOrder="159">
+                <checkBox left="0" top="0" width="25" height="23" field="Atuar_3" compilerOrder="160"/>
+            </layout>
+            <layout left="734" top="263" width="25" height="22" compilerOrder="161">
+                <checkBox left="0" top="0" width="25" height="23" field="Atuar_4" compilerOrder="162"/>
+            </layout>
+            <layout left="751" top="263" width="25" height="22" compilerOrder="163">
+                <checkBox left="0" top="0" width="25" height="23" field="Atuar_5" compilerOrder="164"/>
+            </layout>
+            <layout left="132" top="269" width="236" height="28" compilerOrder="11">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="236" height="29" field="riqueza" compilerOrder="12"/>
+            </layout>
+            <layout left="804" top="273" width="350" height="604" compilerOrder="237">
+                <textEditor left="0" top="0" width="350" height="604" fontSize="14.2" fontColor="#000000" field="Vantagens" transparent="true" compilerOrder="238"/>
+            </layout>
+            <layout left="495" top="287" width="25" height="22" compilerOrder="85">
+                <checkBox left="0" top="0" width="25" height="23" field="Atletismo_1" compilerOrder="86"/>
+            </layout>
+            <layout left="512" top="287" width="25" height="22" compilerOrder="87">
+                <checkBox left="0" top="0" width="25" height="23" field="Atletismo_2" compilerOrder="88"/>
+            </layout>
+            <layout left="529" top="287" width="25" height="22" compilerOrder="89">
+                <checkBox left="0" top="0" width="25" height="23" field="Atletismo_3" compilerOrder="90"/>
+            </layout>
+            <layout left="545" top="287" width="25" height="22" compilerOrder="91">
+                <checkBox left="0" top="0" width="25" height="23" field="Atletismo_4" compilerOrder="92"/>
+            </layout>
+            <layout left="562" top="287" width="25" height="22" compilerOrder="93">
+                <checkBox left="0" top="0" width="25" height="23" field="Atletismo_5" compilerOrder="94"/>
+            </layout>
+            <layout left="734" top="287" width="25" height="22" compilerOrder="171">
+                <checkBox left="0" top="0" width="25" height="23" field="Cavalgar_4" compilerOrder="172"/>
+            </layout>
+            <layout left="684" top="288" width="25" height="22" compilerOrder="165">
+                <checkBox left="0" top="0" width="25" height="23" field="Cavalgar_1" compilerOrder="166"/>
+            </layout>
+            <layout left="701" top="288" width="25" height="22" compilerOrder="167">
+                <checkBox left="0" top="0" width="25" height="23" field="Cavalgar_2" compilerOrder="168"/>
+            </layout>
+            <layout left="718" top="288" width="25" height="22" compilerOrder="169">
+                <checkBox left="0" top="0" width="25" height="23" field="Cavalgar_3" compilerOrder="170"/>
+            </layout>
+            <layout left="751" top="288" width="25" height="22" compilerOrder="173">
+                <checkBox left="0" top="0" width="25" height="23" field="Cavalgar_5" compilerOrder="174"/>
+            </layout>
+            <layout left="495" top="312" width="25" height="22" compilerOrder="95">
+                <checkBox left="0" top="0" width="25" height="23" field="Briga_1" compilerOrder="96"/>
+            </layout>
+            <layout left="512" top="312" width="25" height="22" compilerOrder="97">
+                <checkBox left="0" top="0" width="25" height="23" field="Briga_2" compilerOrder="98"/>
+            </layout>
+            <layout left="529" top="312" width="25" height="22" compilerOrder="99">
+                <checkBox left="0" top="0" width="25" height="23" field="Briga_3" compilerOrder="100"/>
+            </layout>
+            <layout left="545" top="312" width="25" height="22" compilerOrder="101">
+                <checkBox left="0" top="0" width="25" height="23" field="Briga_4" compilerOrder="102"/>
+            </layout>
+            <layout left="562" top="312" width="25" height="22" compilerOrder="103">
+                <checkBox left="0" top="0" width="25" height="23" field="Briga_5" compilerOrder="104"/>
+            </layout>
+            <layout left="684" top="312" width="25" height="22" compilerOrder="175">
+                <checkBox left="0" top="0" width="25" height="23" field="Navegar_1" compilerOrder="176"/>
+            </layout>
+            <layout left="701" top="312" width="25" height="22" compilerOrder="177">
+                <checkBox left="0" top="0" width="25" height="23" field="Navegar_2" compilerOrder="178"/>
+            </layout>
+            <layout left="718" top="312" width="25" height="22" compilerOrder="179">
+                <checkBox left="0" top="0" width="25" height="23" field="Navegar_3" compilerOrder="180"/>
+            </layout>
+            <layout left="734" top="312" width="25" height="22" compilerOrder="181">
+                <checkBox left="0" top="0" width="25" height="23" field="Navegar_4" compilerOrder="182"/>
+            </layout>
+            <layout left="751" top="312" width="25" height="22" compilerOrder="183">
+                <checkBox left="0" top="0" width="25" height="23" field="Navegar_5" compilerOrder="184"/>
+            </layout>
+            <layout left="495" top="337" width="25" height="22" compilerOrder="105">
+                <checkBox left="0" top="0" width="25" height="23" field="Convencer_1" compilerOrder="106"/>
+            </layout>
+            <layout left="512" top="337" width="25" height="22" compilerOrder="107">
+                <checkBox left="0" top="0" width="25" height="23" field="Convencer_2" compilerOrder="108"/>
+            </layout>
+            <layout left="529" top="337" width="25" height="22" compilerOrder="109">
+                <checkBox left="0" top="0" width="25" height="23" field="Convencer_3" compilerOrder="110"/>
+            </layout>
+            <layout left="545" top="337" width="25" height="22" compilerOrder="111">
+                <checkBox left="0" top="0" width="25" height="23" field="Convencer_4" compilerOrder="112"/>
+            </layout>
+            <layout left="562" top="337" width="25" height="22" compilerOrder="113">
+                <checkBox left="0" top="0" width="25" height="23" field="Convencer_5" compilerOrder="114"/>
+            </layout>
+            <layout left="684" top="337" width="25" height="22" compilerOrder="185">
+                <checkBox left="0" top="0" width="25" height="23" field="Erudição_1" compilerOrder="186"/>
+            </layout>
+            <layout left="701" top="337" width="25" height="22" compilerOrder="187">
+                <checkBox left="0" top="0" width="25" height="23" field="Erudição_2" compilerOrder="188"/>
+            </layout>
+            <layout left="718" top="337" width="25" height="22" compilerOrder="189">
+                <checkBox left="0" top="0" width="25" height="23" field="Erudição_3" compilerOrder="190"/>
+            </layout>
+            <layout left="734" top="337" width="25" height="22" compilerOrder="191">
+                <checkBox left="0" top="0" width="25" height="23" field="Erudição_4" compilerOrder="192"/>
+            </layout>
+            <layout left="751" top="337" width="25" height="22" compilerOrder="193">
+                <checkBox left="0" top="0" width="25" height="23" field="Erudição_5" compilerOrder="194"/>
+            </layout>
+            <layout left="511" top="361" width="25" height="22" compilerOrder="117">
+                <checkBox left="0" top="0" width="25" height="23" field="Empatia_2" compilerOrder="118"/>
+            </layout>
+            <layout left="528" top="361" width="25" height="22" compilerOrder="119">
+                <checkBox left="0" top="0" width="25" height="23" field="Empatia_3" compilerOrder="120"/>
+            </layout>
+            <layout left="545" top="361" width="25" height="22" compilerOrder="121">
+                <checkBox left="0" top="0" width="25" height="23" field="Empatia_4" compilerOrder="122"/>
+            </layout>
+            <layout left="562" top="361" width="25" height="22" compilerOrder="123">
+                <checkBox left="0" top="0" width="25" height="23" field="Empatia_5" compilerOrder="124"/>
+            </layout>
+            <layout left="701" top="361" width="25" height="22" compilerOrder="197">
+                <checkBox left="0" top="0" width="25" height="23" field="Seduzir_2" compilerOrder="198"/>
+            </layout>
+            <layout left="718" top="361" width="25" height="22" compilerOrder="199">
+                <checkBox left="0" top="0" width="25" height="23" field="Seduzir_3" compilerOrder="200"/>
+            </layout>
+            <layout left="734" top="361" width="25" height="22" compilerOrder="201">
+                <checkBox left="0" top="0" width="25" height="23" field="Seduzir_4" compilerOrder="202"/>
+            </layout>
+            <layout left="751" top="361" width="25" height="22" compilerOrder="203">
+                <checkBox left="0" top="0" width="25" height="23" field="Seduzir_5" compilerOrder="204"/>
+            </layout>
+            <layout left="35" top="362" width="351" height="121" compilerOrder="15">
+                <textEditor left="0" top="0" width="351" height="121" fontSize="14.2" fontColor="#000000" field="Arcana" transparent="true" compilerOrder="16"/>
+            </layout>
+            <layout left="495" top="362" width="25" height="22" compilerOrder="115">
+                <checkBox left="0" top="0" width="25" height="23" field="Empatia_1" compilerOrder="116"/>
+            </layout>
+            <layout left="684" top="362" width="25" height="22" compilerOrder="195">
+                <checkBox left="0" top="0" width="25" height="23" field="Seduzir_1" compilerOrder="196"/>
+            </layout>
+            <layout left="495" top="386" width="25" height="22" compilerOrder="125">
+                <checkBox left="0" top="0" width="25" height="23" field="Esconder_1" compilerOrder="126"/>
+            </layout>
+            <layout left="512" top="386" width="25" height="22" compilerOrder="127">
+                <checkBox left="0" top="0" width="25" height="23" field="Esconder_2" compilerOrder="128"/>
+            </layout>
+            <layout left="529" top="386" width="25" height="22" compilerOrder="129">
+                <checkBox left="0" top="0" width="25" height="23" field="Esconder_3" compilerOrder="130"/>
+            </layout>
+            <layout left="545" top="386" width="25" height="22" compilerOrder="131">
+                <checkBox left="0" top="0" width="25" height="23" field="Esconder_4" compilerOrder="132"/>
+            </layout>
+            <layout left="562" top="386" width="25" height="22" compilerOrder="133">
+                <checkBox left="0" top="0" width="25" height="23" field="Esconder_5" compilerOrder="134"/>
+            </layout>
+            <layout left="684" top="386" width="25" height="22" compilerOrder="205">
+                <checkBox left="0" top="0" width="25" height="23" field="Furto_1" compilerOrder="206"/>
+            </layout>
+            <layout left="701" top="386" width="25" height="22" compilerOrder="207">
+                <checkBox left="0" top="0" width="25" height="23" field="Furto2" compilerOrder="208"/>
+            </layout>
+            <layout left="718" top="386" width="25" height="22" compilerOrder="209">
+                <checkBox left="0" top="0" width="25" height="23" field="Furto_3" compilerOrder="210"/>
+            </layout>
+            <layout left="734" top="386" width="25" height="22" compilerOrder="211">
+                <checkBox left="0" top="0" width="25" height="23" field="Furto_4" compilerOrder="212"/>
+            </layout>
+            <layout left="751" top="386" width="25" height="22" compilerOrder="213">
+                <checkBox left="0" top="0" width="25" height="23" field="Furto_5" compilerOrder="214"/>
+            </layout>
+            <layout left="495" top="411" width="25" height="22" compilerOrder="135">
+                <checkBox left="0" top="0" width="25" height="23" field="Intimidar_1" compilerOrder="136"/>
+            </layout>
+            <layout left="511" top="411" width="25" height="22" compilerOrder="137">
+                <checkBox left="0" top="0" width="25" height="23" field="Intimidar_2" compilerOrder="138"/>
+            </layout>
+            <layout left="528" top="411" width="25" height="22" compilerOrder="139">
+                <checkBox left="0" top="0" width="25" height="23" field="Intimidar_3" compilerOrder="140"/>
+            </layout>
+            <layout left="545" top="411" width="25" height="22" compilerOrder="141">
+                <checkBox left="0" top="0" width="25" height="23" field="Intimidar_4" compilerOrder="142"/>
+            </layout>
+            <layout left="562" top="411" width="25" height="22" compilerOrder="143">
+                <checkBox left="0" top="0" width="25" height="23" field="Intimidar_5" compilerOrder="144"/>
+            </layout>
+            <layout left="684" top="411" width="25" height="22" compilerOrder="215">
+                <checkBox left="0" top="0" width="25" height="23" field="Arte_da_Guerra_1" compilerOrder="216"/>
+            </layout>
+            <layout left="701" top="411" width="25" height="22" compilerOrder="217">
+                <checkBox left="0" top="0" width="25" height="23" field="Arte_da_Guerra_2" compilerOrder="218"/>
+            </layout>
+            <layout left="718" top="411" width="25" height="22" compilerOrder="219">
+                <checkBox left="0" top="0" width="25" height="23" field="Arte_da_Guerra_3" compilerOrder="220"/>
+            </layout>
+            <layout left="734" top="411" width="25" height="22" compilerOrder="221">
+                <checkBox left="0" top="0" width="25" height="23" field="Arte_da_Guerra_4" compilerOrder="222"/>
+            </layout>
+            <layout left="751" top="411" width="25" height="22" compilerOrder="223">
+                <checkBox left="0" top="0" width="25" height="23" field="Arte_da_Guerra_5" compilerOrder="224"/>
+            </layout>
+            <layout left="495" top="454" width="25" height="22" compilerOrder="145">
+                <checkBox left="0" top="0" width="25" height="23" field="Observar_1" compilerOrder="146"/>
+            </layout>
+            <layout left="512" top="454" width="25" height="22" compilerOrder="147">
+                <checkBox left="0" top="0" width="25" height="23" field="Observar_2" compilerOrder="148"/>
+            </layout>
+            <layout left="529" top="454" width="25" height="22" compilerOrder="149">
+                <checkBox left="0" top="0" width="25" height="23" field="Observar_3" compilerOrder="150"/>
+            </layout>
+            <layout left="545" top="454" width="25" height="22" compilerOrder="151">
+                <checkBox left="0" top="0" width="25" height="23" field="Observar_4" compilerOrder="152"/>
+            </layout>
+            <layout left="562" top="454" width="25" height="22" compilerOrder="153">
+                <checkBox left="0" top="0" width="25" height="23" field="Observar_5" compilerOrder="154"/>
+            </layout>
+            <layout left="684" top="454" width="25" height="22" compilerOrder="225">
+                <checkBox left="0" top="0" width="25" height="23" field="Armas_1" compilerOrder="226"/>
+            </layout>
+            <layout left="701" top="454" width="25" height="22" compilerOrder="227">
+                <checkBox left="0" top="0" width="25" height="23" field="Armas_2" compilerOrder="228"/>
+            </layout>
+            <layout left="718" top="454" width="25" height="22" compilerOrder="229">
+                <checkBox left="0" top="0" width="25" height="23" field="Armas_3" compilerOrder="230"/>
+            </layout>
+            <layout left="734" top="454" width="25" height="22" compilerOrder="231">
+                <checkBox left="0" top="0" width="25" height="23" field="Armas_4" compilerOrder="232"/>
+            </layout>
+            <layout left="751" top="454" width="25" height="22" compilerOrder="233">
+                <checkBox left="0" top="0" width="25" height="23" field="Armas_5" compilerOrder="234"/>
+            </layout>
+            <layout left="134" top="513" width="236" height="28" compilerOrder="17">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="236" height="29" field="Nome_H" compilerOrder="18"/>
+            </layout>
+            <layout left="134" top="537" width="236" height="28" compilerOrder="19">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="236" height="29" field="Objetivo" compilerOrder="20"/>
+            </layout>
+            <layout left="134" top="562" width="236" height="28" compilerOrder="23">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="236" height="29" field="Recompensas" compilerOrder="24"/>
+            </layout>
+            <layout left="630" top="605" width="38" height="41" compilerOrder="247">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_Crítico_1" compilerOrder="248"/>
+            </layout>
+            <layout left="666" top="608" width="38" height="41" compilerOrder="249">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_6" compilerOrder="250"/>
+            </layout>
+            <layout left="598" top="618" width="38" height="41" compilerOrder="245">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_4" compilerOrder="246"/>
+            </layout>
+            <layout left="695" top="618" width="38" height="41" compilerOrder="251">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_7" compilerOrder="252"/>
+            </layout>
+            <layout left="38" top="621" width="347" height="259" compilerOrder="21">
+                <textEditor left="0" top="0" width="347" height="259" fontSize="14.2" fontColor="#000000" field="Passo_1" transparent="true" compilerOrder="22"/>
+            </layout>
+            <layout left="574" top="639" width="38" height="41" compilerOrder="243">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_3" compilerOrder="244"/>
+            </layout>
+            <layout left="719" top="641" width="38" height="41" compilerOrder="253">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_8" compilerOrder="254"/>
+            </layout>
+            <layout left="638" top="665" width="38" height="41" compilerOrder="275">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_17" compilerOrder="276"/>
+            </layout>
+            <layout left="555" top="666" width="38" height="41" compilerOrder="241">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_2" compilerOrder="242"/>
+            </layout>
+            <layout left="737" top="668" width="38" height="41" compilerOrder="255">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_9" compilerOrder="256"/>
+            </layout>
+            <layout left="608" top="676" width="38" height="41" compilerOrder="273">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_16" compilerOrder="274"/>
+            </layout>
+            <layout left="671" top="679" width="38" height="41" compilerOrder="277">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_Crítico_4" compilerOrder="278"/>
+            </layout>
+            <layout left="541" top="693" width="38" height="41" compilerOrder="239">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_1" compilerOrder="240"/>
+            </layout>
+            <layout left="592" top="702" width="38" height="41" compilerOrder="271">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_15" compilerOrder="272"/>
+            </layout>
+            <layout left="744" top="705" width="38" height="41" compilerOrder="257">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_Crítico_2" compilerOrder="258"/>
+            </layout>
+            <layout left="596" top="734" width="38" height="41" compilerOrder="269">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_14" compilerOrder="270"/>
+            </layout>
+            <layout left="732" top="738" width="38" height="41" compilerOrder="259">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_10" compilerOrder="260"/>
+            </layout>
+            <layout left="710" top="759" width="38" height="41" compilerOrder="261">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_11" compilerOrder="262"/>
+            </layout>
+            <layout left="619" top="761" width="38" height="41" compilerOrder="267">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_Crítico_3" compilerOrder="268"/>
+            </layout>
+            <layout left="682" top="772" width="38" height="41" compilerOrder="263">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_12" compilerOrder="264"/>
+            </layout>
+            <layout left="651" top="776" width="38" height="41" compilerOrder="265">
+                <checkBox left="0" top="0" width="38" height="42" field="Dano_13" compilerOrder="266"/>
+            </layout>
+        </rectangle>
+    </scrollBox>
+</form>
