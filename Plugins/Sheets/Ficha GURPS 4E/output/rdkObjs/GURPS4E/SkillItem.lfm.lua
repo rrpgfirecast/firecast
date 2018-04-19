@@ -199,7 +199,12 @@ function newfrmSkillItem()
             					mod = 0;
             				end
             
-            				sheet.nh = nh + mod;
+            				mod =  math.min(mod, 20);
+            
+            				local total = nh + mod;
+            				total =  math.max(total, 3);
+            
+            				sheet.nh = total;
         end, obj);
 
     function obj:_releaseEvents()

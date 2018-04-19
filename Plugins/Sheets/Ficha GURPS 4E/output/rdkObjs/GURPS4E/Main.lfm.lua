@@ -361,7 +361,7 @@ function newfrmTemplate()
     obj.label4 = gui.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.flowPart4);
     obj.label4:setFrameRegion("titulo");
-    obj.label4:setText("VT ");
+    obj.label4:setText("VONT ");
     obj.label4:setVertTextAlign("center");
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
