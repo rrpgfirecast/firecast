@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frm7mar_ficha_editavel" formType="sheetTemplate" dataType="rrpg.ficha.7.mar" title="Ficha 7º Mar" align="client" theme="light">
+    <import file="1.lfm"/>
+</form>
