@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItem" width="300" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit left="0" top="0" width="100" height="25" field="nome"/>
+		<edit left="100" top="0" width="250" height="25" field="efeito"/>
+
+		<comboBox left="350" top="0" width="150" height="25" field="tipo" items="{'Consumível', 'Material', 'Arma', 'Equipamento'}"/>
+
+		<edit left="500" top="0" width="25" height="25" field="quantidade" type="number"/>
+		<rectangle left="525" top="0" width="25" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="525" top="0" width="25" height="25" horzTextAlign="center" field="max"/>
+
+		<button left="550" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse item??",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+		<dataLink fields="{'tipo'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+				local max = 0;
+				if sheet.tipo == "Consumível" then
+					max = 9;
+				elseif sheet.tipo == "Material" then
+					max = 20;
+				elseif sheet.tipo == "Arma" then
+					max = 1;
+				elseif sheet.tipo == "Equipamento" then
+					max = 1;
+				end;
+				sheet.max = max;
+			</event>
+		</dataLink>
+		<dataLink fields="{'quantidade'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+				local quantidade = (tonumber(sheet.quantidade) or 0);
+				local max = (tonumber(sheet.max) or 0);
+				if quantidade > max then
+					sheet.quantidade = max;
+				end;
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

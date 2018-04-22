@@ -4,6 +4,9 @@
         <tab title="Status Básicos">
             <import file="Base.lfm"/>
         </tab>
+        <tab title="Inventário">
+            <import file="Inventory.lfm"/>
+        </tab>
         <tab title="Descrição">
             <import file="Description.lfm"/>
         </tab>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAbilities" width="585" height="50" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<textEditor left="0" top="0" width="510" height="50" field="habilidade"/>
+		<edit left="510" top="0" width="50" height="50" field="nivel" type="number" fontSize="20" horzTextAlign="center" vertTextAlign="center"/>
+
+		<dataLink fields="{'nivel'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local node = ndb.getRoot(sheet);
+				local objetos = ndb.getChildNodes(node.listaDeHabilidades);
+				local nivel = 0;
+
+				for i=1, #objetos, 1 do 
+					nivel = nivel + (tonumber(objetos[i].nivel) or 0);
+				end;
+
+				node.habilidadesNivel = nivel;
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

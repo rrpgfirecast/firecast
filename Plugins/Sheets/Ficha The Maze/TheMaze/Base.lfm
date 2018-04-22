@@ -20,7 +20,6 @@
 	</template>
 
 	<scrollBox align="client">
-		<rectangle color="#000000" width="1363" height="686"/>
 
 		<rectangle left="0" top="0" width="600" height="60" color="black" strokeColor="white" strokeSize="1">
 			<label top="5" width="100" height="25" horzTextAlign="center" text="Nome"/>
@@ -76,6 +75,7 @@
 					local mod = (tonumber(sheet.nivel) or 0);
 					sheet.vidaBase = 4 + (2*mod);
 					sheet.fadigaBase = 1 + (2*mod);
+					sheet.habilidadesDisponivel = 2*mod;
 				</event>
 			</dataLink>
 		</rectangle>
@@ -162,6 +162,22 @@
 			<rectangle left="175" top="210" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
 			<label left="175" top="210" width="50" height="25" horzTextAlign="center" field="sum_nivel"/>
 
+			<dataLink fields="{'cac_total'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local res = (tonumber(sheet.cac_total) or 0);
+					res = math.floor(res/2);
+					sheet.resistenciaFisica = res;
+				</event>
+			</dataLink>
+			<dataLink fields="{'paranormalidade_total'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local res = (tonumber(sheet.paranormalidade_total) or 0);
+					res = math.floor(res/2);
+					sheet.resistenciaParanormal = res;
+				</event>
+			</dataLink>
 
 			<dataLink fields="{'sum_inicial', 'sum_nivel'}">
 				<event name="onChange">
@@ -195,14 +211,43 @@
 					sheet.sum_nivel = sum;
 				</event>
 			</dataLink>
-
 		</rectangle>
 
-		<rectangle left="605" top="0" width="285" height="285" color="black" strokeColor="white" strokeSize="1"/>
-		<image left="606" top="1" width="283" height="283" field="avatar" editable="true" style="autoFit">
+		<rectangle left="315" top="310" width="595" height="80" color="black" strokeColor="white" strokeSize="1">
+			<label left="75" top="5" width="75" height="20" horzTextAlign="center" text="Resistência"/>
+
+			<label left="0" top="25" width="75" height="25" horzTextAlign="center" text="Física"/>
+			<rectangle left="90" top="25" width="45" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="90" top="25" width="45" height="25" horzTextAlign="center" field="resistenciaFisica"/>
+
+			<label left="0" top="50" width="75" height="25" horzTextAlign="center" text="Paranormal"/>
+			<rectangle left="90" top="50" width="45" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="90" top="50" width="45" height="25" horzTextAlign="center" field="resistenciaParanormal"/>
+		</rectangle>
+
+		<rectangle left="315" top="395" width="595" height="290" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="5" width="535" height="25" horzTextAlign="center" text="Habilidades"/>
+			<label left="0" top="5" width="550" height="25" horzTextAlign="trailing" text="Nível" fontSize="11"/>
+
+			<rectangle left="310" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="310" top="5" width="50" height="25" horzTextAlign="center" field="habilidadesNivel"/>
+			<rectangle left="360" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="360" top="5" width="50" height="25" horzTextAlign="center" field="habilidadesDisponivel"/>
+
+			<recordList left="5" top="30" width="585" height="255" name="rclHabilidades" field="listaDeHabilidades" templateForm="frmAbilities" layout="vertical" minQt="5"/>
+		</rectangle>
+
+		<rectangle left="605" top="0" width="305" height="305" color="black" strokeColor="white" strokeSize="1"/>
+		<image left="606" top="1" width="303" height="303" field="avatar" editable="true" style="autoFit">
 			<event name="OnStartDrag">
 			    drag:addData("imageURL", sheet.avatar);
 			</event>
 		</image>
+
+		<rectangle left="915" top="0" width="310" height="190" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="5" width="310" height="25" horzTextAlign="center" text="Contratos"/>
+
+			<recordList left="5" top="30" width="300" height="155" name="rclContratos" field="listaDeContratos" templateForm="frmContract" layout="vertical" minQt="3"/>
+		</rectangle>
 	</scrollBox>
 </form>
