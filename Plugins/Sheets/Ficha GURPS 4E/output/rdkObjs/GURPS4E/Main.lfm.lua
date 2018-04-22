@@ -2450,11 +2450,35 @@ self.upperGridMagicEditBox1._RecalcSize();
 
     obj.tab6 = gui.fromHandle(_obj_newObject("tab"));
     obj.tab6:setParent(obj.pgcPrincipal);
-    obj.tab6:setTitle("Creditos");
+    obj.tab6:setTitle("Anotações");
     obj.tab6:setName("tab6");
 
+    obj.frmBlank = gui.fromHandle(_obj_newObject("form"));
+    obj.frmBlank:setParent(obj.tab6);
+    obj.frmBlank:setName("frmBlank");
+    obj.frmBlank:setAlign("client");
+
+    obj.scrollBox6 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox6:setParent(obj.frmBlank);
+    obj.scrollBox6:setAlign("client");
+    obj.scrollBox6:setName("scrollBox6");
+
+    obj.richEdit2 = gui.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit2:setParent(obj.scrollBox6);
+    obj.richEdit2:setAlign("client");
+    obj.richEdit2:setField("anotacoesLivres");
+    lfm_setPropAsString(obj.richEdit2, "backgroundColor",  "#333333");
+    lfm_setPropAsString(obj.richEdit2, "defaultFontSize",  "12");
+    lfm_setPropAsString(obj.richEdit2, "defaultFontColor",  "white");
+    obj.richEdit2:setName("richEdit2");
+
+    obj.tab7 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab7:setParent(obj.pgcPrincipal);
+    obj.tab7:setTitle("Creditos");
+    obj.tab7:setName("tab7");
+
     obj.frmTemplateCreditos = gui.fromHandle(_obj_newObject("form"));
-    obj.frmTemplateCreditos:setParent(obj.tab6);
+    obj.frmTemplateCreditos:setParent(obj.tab7);
     obj.frmTemplateCreditos:setName("frmTemplateCreditos");
     obj.frmTemplateCreditos:setAlign("client");
 
@@ -2466,13 +2490,13 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.rectangle7:setXradius(10);
     obj.rectangle7:setYradius(10);
 
-    obj.scrollBox6 = gui.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox6:setParent(obj.rectangle7);
-    obj.scrollBox6:setAlign("client");
-    obj.scrollBox6:setName("scrollBox6");
+    obj.scrollBox7 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox7:setParent(obj.rectangle7);
+    obj.scrollBox7:setAlign("client");
+    obj.scrollBox7:setName("scrollBox7");
 
     obj.image1 = gui.fromHandle(_obj_newObject("image"));
-    obj.image1:setParent(obj.scrollBox6);
+    obj.image1:setParent(obj.scrollBox7);
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
     obj.image1:setWidth(500);
@@ -2482,7 +2506,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.image1:setName("image1");
 
     obj.image2 = gui.fromHandle(_obj_newObject("image"));
-    obj.image2:setParent(obj.scrollBox6);
+    obj.image2:setParent(obj.scrollBox7);
     obj.image2:setLeft(550);
     obj.image2:setTop(0);
     obj.image2:setWidth(250);
@@ -2492,7 +2516,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.image2:setName("image2");
 
     obj.image3 = gui.fromHandle(_obj_newObject("image"));
-    obj.image3:setParent(obj.scrollBox6);
+    obj.image3:setParent(obj.scrollBox7);
     obj.image3:setLeft(850);
     obj.image3:setTop(0);
     obj.image3:setWidth(250);
@@ -2502,7 +2526,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.image3:setName("image3");
 
     obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
-    obj.layout19:setParent(obj.scrollBox6);
+    obj.layout19:setParent(obj.scrollBox7);
     obj.layout19:setLeft(150);
     obj.layout19:setTop(250);
     obj.layout19:setWidth(200);
@@ -2541,7 +2565,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.label49:setFontColor("white");
 
     obj.label50 = gui.fromHandle(_obj_newObject("label"));
-    obj.label50:setParent(obj.scrollBox6);
+    obj.label50:setParent(obj.scrollBox7);
     obj.label50:setLeft(555);
     obj.label50:setTop(300);
     obj.label50:setWidth(100);
@@ -2552,7 +2576,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.label50:setFontColor("white");
 
     obj.image4 = gui.fromHandle(_obj_newObject("image"));
-    obj.image4:setParent(obj.scrollBox6);
+    obj.image4:setParent(obj.scrollBox7);
     obj.image4:setLeft(667);
     obj.image4:setTop(300);
     obj.image4:setWidth(100);
@@ -2562,7 +2586,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.image4:setName("image4");
 
     obj.label51 = gui.fromHandle(_obj_newObject("label"));
-    obj.label51:setParent(obj.scrollBox6);
+    obj.label51:setParent(obj.scrollBox7);
     obj.label51:setLeft(555);
     obj.label51:setTop(325);
     obj.label51:setWidth(100);
@@ -2573,17 +2597,17 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.label51:setFontColor("white");
 
     obj.image5 = gui.fromHandle(_obj_newObject("image"));
-    obj.image5:setParent(obj.scrollBox6);
+    obj.image5:setParent(obj.scrollBox7);
     obj.image5:setLeft(667);
     obj.image5:setTop(325);
     obj.image5:setWidth(100);
     obj.image5:setHeight(20);
     obj.image5:setStyle("autoFit");
-    obj.image5:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao03.png");
+    obj.image5:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao04.png");
     obj.image5:setName("image5");
 
     obj.button6 = gui.fromHandle(_obj_newObject("button"));
-    obj.button6:setParent(obj.scrollBox6);
+    obj.button6:setParent(obj.scrollBox7);
     obj.button6:setLeft(555);
     obj.button6:setTop(350);
     obj.button6:setWidth(100);
@@ -2591,7 +2615,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.button6:setName("button6");
 
     obj.button7 = gui.fromHandle(_obj_newObject("button"));
-    obj.button7:setParent(obj.scrollBox6);
+    obj.button7:setParent(obj.scrollBox7);
     obj.button7:setLeft(667);
     obj.button7:setTop(350);
     obj.button7:setWidth(100);
@@ -2599,7 +2623,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.button7:setName("button7");
 
     obj.label52 = gui.fromHandle(_obj_newObject("label"));
-    obj.label52:setParent(obj.scrollBox6);
+    obj.label52:setParent(obj.scrollBox7);
     obj.label52:setLeft(555);
     obj.label52:setTop(400);
     obj.label52:setWidth(200);
@@ -2609,7 +2633,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.label52:setFontColor("white");
 
     obj.button8 = gui.fromHandle(_obj_newObject("button"));
-    obj.button8:setParent(obj.scrollBox6);
+    obj.button8:setParent(obj.scrollBox7);
     obj.button8:setLeft(555);
     obj.button8:setTop(425);
     obj.button8:setWidth(100);
@@ -2617,7 +2641,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.button8:setName("button8");
 
     obj.button9 = gui.fromHandle(_obj_newObject("button"));
-    obj.button9:setParent(obj.scrollBox6);
+    obj.button9:setParent(obj.scrollBox7);
     obj.button9:setLeft(667);
     obj.button9:setTop(425);
     obj.button9:setWidth(125);
@@ -2788,6 +2812,7 @@ self.upperGridMagicEditBox1._RecalcSize();
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
         if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
         if self.flowPart25 ~= nil then self.flowPart25:destroy(); self.flowPart25 = nil; end;
+        if self.frmBlank ~= nil then self.frmBlank:destroy(); self.frmBlank = nil; end;
         if self.fraLayAtributos2 ~= nil then self.fraLayAtributos2:destroy(); self.fraLayAtributos2 = nil; end;
         if self.edtUpperGridCampo5 ~= nil then self.edtUpperGridCampo5:destroy(); self.edtUpperGridCampo5 = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
@@ -2840,6 +2865,7 @@ self.upperGridMagicEditBox1._RecalcSize();
         if self.edtUpperGridCampo3 ~= nil then self.edtUpperGridCampo3:destroy(); self.edtUpperGridCampo3 = nil; end;
         if self.layout18 ~= nil then self.layout18:destroy(); self.layout18 = nil; end;
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
+        if self.tab7 ~= nil then self.tab7:destroy(); self.tab7 = nil; end;
         if self.label29 ~= nil then self.label29:destroy(); self.label29 = nil; end;
         if self.flowPart29 ~= nil then self.flowPart29:destroy(); self.flowPart29 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
@@ -2881,6 +2907,7 @@ self.upperGridMagicEditBox1._RecalcSize();
         if self.layout14 ~= nil then self.layout14:destroy(); self.layout14 = nil; end;
         if self.layout16 ~= nil then self.layout16:destroy(); self.layout16 = nil; end;
         if self.scrollBox5 ~= nil then self.scrollBox5:destroy(); self.scrollBox5 = nil; end;
+        if self.richEdit2 ~= nil then self.richEdit2:destroy(); self.richEdit2 = nil; end;
         if self.UpperGridCampo6 ~= nil then self.UpperGridCampo6:destroy(); self.UpperGridCampo6 = nil; end;
         if self.edit18 ~= nil then self.edit18:destroy(); self.edit18 = nil; end;
         if self.edit25 ~= nil then self.edit25:destroy(); self.edit25 = nil; end;
@@ -2903,6 +2930,7 @@ self.upperGridMagicEditBox1._RecalcSize();
         if self.textEditor9 ~= nil then self.textEditor9:destroy(); self.textEditor9 = nil; end;
         if self.popPower ~= nil then self.popPower:destroy(); self.popPower = nil; end;
         if self.flowLayout3 ~= nil then self.flowLayout3:destroy(); self.flowLayout3 = nil; end;
+        if self.scrollBox7 ~= nil then self.scrollBox7:destroy(); self.scrollBox7 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
         if self.flowPart7 ~= nil then self.flowPart7:destroy(); self.flowPart7 = nil; end;
         if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;

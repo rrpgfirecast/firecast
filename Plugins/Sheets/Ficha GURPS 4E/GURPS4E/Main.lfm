@@ -65,6 +65,9 @@
             <tab title="Inventario">
                 <import file="Inventory.xml"/>
             </tab>
+            <tab title="Anotações">
+                <import file="Blank.lfm"/>
+            </tab>
     		<tab title="Creditos">
                 <import file="Credits.lfm"/>
             </tab>

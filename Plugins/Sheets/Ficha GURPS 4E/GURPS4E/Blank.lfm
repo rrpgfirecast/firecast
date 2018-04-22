@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmBlank" align="client">
 	<scrollBox align="client">
-		<!-- Copie esse arquivo e mude o name do form quando quiser criar um novo lfm -->
+		<richEdit align="client" field="anotacoesLivres" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
 	</scrollBox>
 </form>

@@ -34,6 +34,15 @@ function newfrmBlank()
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
+    obj.richEdit1 = gui.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit1:setParent(obj.scrollBox1);
+    obj.richEdit1:setAlign("client");
+    obj.richEdit1:setField("anotacoesLivres");
+    lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "#333333");
+    lfm_setPropAsString(obj.richEdit1, "defaultFontSize",  "12");
+    lfm_setPropAsString(obj.richEdit1, "defaultFontColor",  "white");
+    obj.richEdit1:setName("richEdit1");
+
     function obj:_releaseEvents()
     end;
 
@@ -47,6 +56,7 @@ function newfrmBlank()
         end;
 
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
+        if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
         self:_oldLFMDestroy();
     end;
 
