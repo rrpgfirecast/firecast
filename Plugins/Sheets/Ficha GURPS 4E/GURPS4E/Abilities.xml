@@ -7,7 +7,7 @@
 				<textEditor align="client" field="vantagens" class="transparente" margins="{top=2, left=5, right=5}" fontSize="16"/>
 				
 				<layout align="bottom">
-					<label align="bottom" autoSize="true" text="VANTAGENS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					<label align="bottom" autoSize="true" text="VANTAGENS &amp; QUALIDADES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 					<frame align="right" frameStyle="frames/panel6/panel6.xml" height="60">
 						<edit field="vantagens_pontos" height="25" width="50" transparent="true" vertTextAlign="center" horzTextAlign="center" />
 					</frame>
@@ -18,7 +18,7 @@
 				<textEditor align="client" field="desvantagens" class="transparente" margins="{top=2, left=5, right=5}" fontSize="16"/>
 
 				<layout align="bottom">
-					<label align="bottom" autoSize="true" text="DESVANTAGENS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					<label align="bottom" autoSize="true" text="DESVANTAGENS &amp; PECULIARIDADES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 					<frame align="right" frameStyle="frames/panel6/panel6.xml" height="60">
 						<edit field="desvantagens_pontos" height="25" width="50" transparent="true" vertTextAlign="center" horzTextAlign="center" />
 					</frame>

@@ -24,9 +24,9 @@
 			</flowPart>
 
 			<flowPart class="tileCarac" height="600" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
-				<textEditor align="client" field="outrosEquipamentos" class="transparente" margins="{top=2}" fontSize="16"/>
+				<label align="top" autoSize="true" text="EQUIPAMENTOS E POSSES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 				
-				<label align="bottom" autoSize="true" text="EQUIPAMENTOS E POSSES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+				<textEditor align="client" field="outrosEquipamentos" class="transparente" margins="{top=2}" fontSize="16"/>
 			</flowPart>	
 
 		</flowLayout>
