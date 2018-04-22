@@ -154,7 +154,7 @@ function newfrmSkillItem()
 
     obj.button2 = gui.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj);
-    obj.button2:setLeft(385);
+    obj.button2:setLeft(375);
     obj.button2:setTop(1);
     obj.button2:setWidth(23);
     obj.button2:setHeight(23);

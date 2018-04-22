@@ -72,7 +72,7 @@
 	<edit vertTextAlign="center" horzTextAlign="center" left="320" top="0" width="30" height="25" field="pontos" type="number"/>
 
 	<button left="350" top="1" width="23" height="23" text="i" onClick="showPericiaPopup();"/>
-	<button left="385" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+	<button left="375" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
 
 	<dataLink fields="{'atributoPericia', 'pontos', 'atributo', 'cyber', 'magia', 'outros'}">
 		<event name="onChange">

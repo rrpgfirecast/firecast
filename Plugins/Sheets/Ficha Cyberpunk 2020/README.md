@@ -1,6 +1,10 @@
 # Fich Cyberpunk 2020
 Ficha para o sistema Cyberpunk 2020
 
+Versão 04: 
+* Perícias separadas em 3 grupos.
+* Adicionando campo para dinheiro. 
+
 Versão 03:
 * Adicionada aba de veiculos. 
 

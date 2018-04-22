@@ -68,11 +68,13 @@
 			</recordList>
 		</layout>
 
-		<layout left="1140" top="0" width="210" height="60">
+		<layout left="1140" top="0" width="210" height="85">
 			<rectangle align="client" color="black"/>
 
 			<Value left1="5" left2="105" top="5" text="PREÇO" field="itensCost"/>
 			<Value left1="5" left2="105" top="30" text="PESO" field="itensWeight"/>
+			<label left="5" top="55" width="100" height="20" text="DINHEIRO" horzTextAlign="center"/>
+			<edit left="105" top="55" width="50" height="25" field="itensCash"/>
 
 			<dataLink fields="{'inventoryWeight', 'weaponWeight', 'armorWeight'}">
 				<event name="onChange">
