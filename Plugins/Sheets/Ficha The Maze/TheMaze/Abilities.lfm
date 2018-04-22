@@ -2,7 +2,7 @@
 <form name="frmAbilities" width="585" height="50" margins="{top=1}">
 	<rectangle align="client" color="#212121">
 		<textEditor left="0" top="0" width="510" height="50" field="habilidade"/>
-		<edit left="510" top="0" width="50" height="50" field="nivel" type="number" fontSize="20" horzTextAlign="center" vertTextAlign="center"/>
+		<edit left="510" top="0" width="50" height="50" field="nivel" type="number" fontSize="20" horzTextAlign="center" vertTextAlign="center" max="3"/>
 
 		<dataLink fields="{'nivel'}">
 			<event name="onChange">

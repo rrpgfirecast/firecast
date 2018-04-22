@@ -36,7 +36,7 @@ function newfrmInventory()
 
     obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
-    obj.rectangle1:setColor("#000000");
+    obj.rectangle1:setColor("#FF000000");
     obj.rectangle1:setWidth(1363);
     obj.rectangle1:setHeight(686);
     obj.rectangle1:setName("rectangle1");
@@ -45,8 +45,8 @@ function newfrmInventory()
     obj.rectangle2:setParent(obj.scrollBox1);
     obj.rectangle2:setLeft(0);
     obj.rectangle2:setTop(0);
-    obj.rectangle2:setWidth(610);
-    obj.rectangle2:setHeight(550);
+    obj.rectangle2:setWidth(1210);
+    obj.rectangle2:setHeight(555);
     obj.rectangle2:setColor("black");
     obj.rectangle2:setStrokeColor("white");
     obj.rectangle2:setStrokeSize(1);
@@ -56,7 +56,7 @@ function newfrmInventory()
     obj.label1:setParent(obj.rectangle2);
     obj.label1:setLeft(5);
     obj.label1:setTop(5);
-    obj.label1:setWidth(100);
+    obj.label1:setWidth(200);
     obj.label1:setHeight(25);
     obj.label1:setHorzTextAlign("center");
     obj.label1:setText("Nome");
@@ -64,9 +64,9 @@ function newfrmInventory()
 
     obj.label2 = gui.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.rectangle2);
-    obj.label2:setLeft(105);
+    obj.label2:setLeft(205);
     obj.label2:setTop(5);
-    obj.label2:setWidth(250);
+    obj.label2:setWidth(700);
     obj.label2:setHeight(25);
     obj.label2:setHorzTextAlign("center");
     obj.label2:setText("Efeito");
@@ -74,7 +74,7 @@ function newfrmInventory()
 
     obj.label3 = gui.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.rectangle2);
-    obj.label3:setLeft(355);
+    obj.label3:setLeft(905);
     obj.label3:setTop(5);
     obj.label3:setWidth(150);
     obj.label3:setHeight(25);
@@ -84,9 +84,9 @@ function newfrmInventory()
 
     obj.label4 = gui.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.rectangle2);
-    obj.label4:setLeft(505);
+    obj.label4:setLeft(1055);
     obj.label4:setTop(5);
-    obj.label4:setWidth(25);
+    obj.label4:setWidth(50);
     obj.label4:setHeight(25);
     obj.label4:setHorzTextAlign("center");
     obj.label4:setText("Qtd");
@@ -94,9 +94,9 @@ function newfrmInventory()
 
     obj.label5 = gui.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.rectangle2);
-    obj.label5:setLeft(530);
+    obj.label5:setLeft(1105);
     obj.label5:setTop(5);
-    obj.label5:setWidth(25);
+    obj.label5:setWidth(50);
     obj.label5:setHeight(25);
     obj.label5:setHorzTextAlign("center");
     obj.label5:setText("Max");
@@ -106,7 +106,7 @@ function newfrmInventory()
     obj.rclInventario:setParent(obj.rectangle2);
     obj.rclInventario:setLeft(5);
     obj.rclInventario:setTop(30);
-    obj.rclInventario:setWidth(600);
+    obj.rclInventario:setWidth(1200);
     obj.rclInventario:setHeight(520);
     obj.rclInventario:setName("rclInventario");
     obj.rclInventario:setField("listaDeItens");
@@ -116,10 +116,10 @@ function newfrmInventory()
 
     obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.scrollBox1);
-    obj.rectangle3:setLeft(615);
-    obj.rectangle3:setTop(0);
+    obj.rectangle3:setLeft(0);
+    obj.rectangle3:setTop(560);
     obj.rectangle3:setWidth(310);
-    obj.rectangle3:setHeight(85);
+    obj.rectangle3:setHeight(110);
     obj.rectangle3:setColor("black");
     obj.rectangle3:setStrokeColor("white");
     obj.rectangle3:setStrokeSize(1);
@@ -157,9 +157,20 @@ function newfrmInventory()
     obj.comboBox2:setValues({'0','4','5','6','7'});
     obj.comboBox2:setName("comboBox2");
 
+    obj.comboBox3 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox3:setParent(obj.rectangle3);
+    obj.comboBox3:setLeft(5);
+    obj.comboBox3:setTop(80);
+    obj.comboBox3:setWidth(300);
+    obj.comboBox3:setHeight(25);
+    obj.comboBox3:setField("armazenamento3");
+    obj.comboBox3:setItems({'+0', '+1', '+2', '+3', '+4', '+5', '+6'});
+    obj.comboBox3:setValues({'0','1','2','3','4','5','6'});
+    obj.comboBox3:setName("comboBox3");
+
     obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.rectangle3);
-    obj.dataLink1:setFields({'armazenamento1','armazenamento2'});
+    obj.dataLink1:setFields({'armazenamento1','armazenamento2','armazenamento3'});
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
@@ -167,7 +178,8 @@ function newfrmInventory()
             if sheet==nil then return end;
             					local armazenamento1 = (tonumber(sheet.armazenamento1) or 0);
             					local armazenamento2 = (tonumber(sheet.armazenamento2) or 0);
-            					local tamanho = 6 + armazenamento1 + armazenamento2;
+            					local armazenamento3 = (tonumber(sheet.armazenamento3) or 0);
+            					local tamanho = 6 + armazenamento1 + armazenamento2 + armazenamento3;
             					sheet.inventarioTamanho = tamanho;
             					self.rclInventario.minQt = tamanho;
             
@@ -194,6 +206,7 @@ function newfrmInventory()
 
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
+        if self.comboBox3 ~= nil then self.comboBox3:destroy(); self.comboBox3 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
