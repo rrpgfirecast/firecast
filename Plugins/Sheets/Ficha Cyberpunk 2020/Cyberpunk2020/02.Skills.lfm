@@ -27,6 +27,20 @@
 					nodes[i].atributoPericia = mod;
 				end;
 			end
+
+			local nodes = ndb.getChildNodes(sheet.campoDasPericiasClasse); 
+			for i=1, #nodes, 1 do
+				if nodes[i].atributo == num then
+					nodes[i].atributoPericia = mod;
+				end;
+			end
+
+			local nodes = ndb.getChildNodes(sheet.campoDasPericiasComuns); 
+			for i=1, #nodes, 1 do
+				if nodes[i].atributo == num then
+					nodes[i].atributoPericia = mod;
+				end;
+			end
 		end;
 	]]>	
 	</script>
@@ -61,21 +75,18 @@
 	</dataLink>
 
 	<scrollBox align="client">
-		<layout left="0" top="0" width="880" height="685">
+		<layout left="0" top="0" width="430" height="685">
 			<rectangle align="client" color="black"/>
-			<label text="NOME DA PERÍCIA" left="20" top="1" width="135" height="20" horzTextAlign="center"/>
-			<label text="CHAVE" left="165" top="1" width="60" height="20" horzTextAlign="center"/>
-			<label text="TOTAL" left="245" top="1" width="40" height="20" horzTextAlign="center"/>
-			<label text="ATR" left="285" top="1" width="33" height="20" horzTextAlign="center"/>
-			<label text="PTS" left="320" top="1" width="40" height="20" horzTextAlign="center"/>
+			<label text="HABILIDADE ESPECIAL" left="0" top="0" width="430" height="20" horzTextAlign="center"/>
+			<button text="+" left="125" top="0" width="20" height="20" onClick="self.rclListaDasPericias:append();"/>	
 
-			<label text="NOME DA PERÍCIA" left="440" top="1" width="135" height="20" horzTextAlign="center"/>
-			<label text="CHAVE" left="585" top="1" width="60" height="20" horzTextAlign="center"/>
-			<label text="TOTAL" left="665" top="1" width="40" height="20" horzTextAlign="center"/>
-			<label text="ATR" left="705" top="1" width="33" height="20" horzTextAlign="center"/>
-			<label text="PTS" left="740" top="1" width="40" height="20" horzTextAlign="center"/>
+			<label text="NOME DA PERÍCIA" left="20" top="25" width="135" height="20" horzTextAlign="center"/>
+			<label text="CHAVE" left="165" top="25" width="60" height="20" horzTextAlign="center"/>
+			<label text="TOTAL" left="245" top="25" width="40" height="20" horzTextAlign="center"/>
+			<label text="ATR" left="285" top="25" width="33" height="20" horzTextAlign="center"/>
+			<label text="PTS" left="320" top="25" width="40" height="20" horzTextAlign="center"/>
 
-			<recordList name="rclListaDasPericias" field="campoDasPericias" templateForm="frmSkillItem" left="5" top="25" width="870" height="650" layout="verticalTiles">
+			<recordList name="rclListaDasPericias" field="campoDasPericias" templateForm="frmSkillItem" left="5" top="50" width="420" height="625" layout="vertical">
 				<event name="onCompare">
 					if utils.compareStringPtBr(nodeA.atributo, nodeB.atributo)== 0 then
 						return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
@@ -86,6 +97,48 @@
 			</recordList>
 		</layout>
 
-		<button text="Nova Perícia" left="890" top="0" width="125" height="25" onClick="self.rclListaDasPericias:append();"/>	
+		<layout left="435" top="0" width="430" height="685">
+			<rectangle align="client" color="black"/>
+			<label text="PERÍCIAS DE CLASSE" left="0" top="0" width="430" height="20" horzTextAlign="center"/>
+			<button text="+" left="130" top="0" width="20" height="20" onClick="self.rclListaDasPericiasClasse:append();"/>
+
+			<label text="NOME DA PERÍCIA" left="20" top="25" width="135" height="20" horzTextAlign="center"/>
+			<label text="CHAVE" left="165" top="25" width="60" height="20" horzTextAlign="center"/>
+			<label text="TOTAL" left="245" top="25" width="40" height="20" horzTextAlign="center"/>
+			<label text="ATR" left="285" top="25" width="33" height="20" horzTextAlign="center"/>
+			<label text="PTS" left="320" top="25" width="40" height="20" horzTextAlign="center"/>
+
+			<recordList name="rclListaDasPericiasClasse" field="campoDasPericiasClasse" templateForm="frmSkillItem" left="5" top="50" width="420" height="625" layout="vertical">
+				<event name="onCompare">
+					if utils.compareStringPtBr(nodeA.atributo, nodeB.atributo)== 0 then
+						return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+					else 
+		            	return utils.compareStringPtBr(nodeA.atributo, nodeB.atributo);
+		            end;
+		        </event>
+			</recordList>
+		</layout>
+
+		<layout left="870" top="0" width="430" height="685">
+			<rectangle align="client" color="black"/>
+			<label text="PERÍCIAS COMUNS" left="0" top="0" width="430" height="20" horzTextAlign="center"/>
+			<button text="+" left="130" top="0" width="20" height="20" onClick="self.rclListaDasPericiasComuns:append();"/>
+
+			<label text="NOME DA PERÍCIA" left="20" top="25" width="135" height="20" horzTextAlign="center"/>
+			<label text="CHAVE" left="165" top="25" width="60" height="20" horzTextAlign="center"/>
+			<label text="TOTAL" left="245" top="25" width="40" height="20" horzTextAlign="center"/>
+			<label text="ATR" left="285" top="25" width="33" height="20" horzTextAlign="center"/>
+			<label text="PTS" left="320" top="25" width="40" height="20" horzTextAlign="center"/>
+
+			<recordList name="rclListaDasPericiasComuns" field="campoDasPericiasComuns" templateForm="frmSkillItem" left="5" top="50" width="420" height="625" layout="vertical">
+				<event name="onCompare">
+					if utils.compareStringPtBr(nodeA.atributo, nodeB.atributo)== 0 then
+						return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+					else 
+		            	return utils.compareStringPtBr(nodeA.atributo, nodeB.atributo);
+		            end;
+		        </event>
+			</recordList>
+		</layout>	
 	</scrollBox>
 </form>

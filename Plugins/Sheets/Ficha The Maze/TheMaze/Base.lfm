@@ -20,8 +20,6 @@
 	</template>
 
 	<scrollBox align="client">
-		<rectangle color="#000000" width="1363" height="686"/>
-
 		<rectangle left="0" top="0" width="600" height="60" color="black" strokeColor="white" strokeSize="1">
 			<label top="5" width="100" height="25" horzTextAlign="center" text="Nome"/>
 			<edit left="105" top="5" width="150" height="25" field="nome"/>
@@ -73,54 +71,49 @@
 				<event name="onChange">
 					if sheet==nil then return end;
 
-					local mod = (tonumber(sheet.nivel) or 0);
-					sheet.vidaBase = 4 + (2*mod);
-					sheet.fadigaBase = 1 + (2*mod);
+					local nivel = (tonumber(sheet.nivel) or 0) * 2;
+					sheet.vidaBase = 4 + nivel;
+					sheet.fadigaBase = 1 + nivel;
+					sheet.habilidadesDisponivel = math.min((nivel+1), 15);
 				</event>
 			</dataLink>
 		</rectangle>
 
 		<rectangle left="0" top="65" width="310" height="85" color="black" strokeColor="white" strokeSize="1">
-
-			<label left="105" top="5" width="50" height="25" horzTextAlign="center" text="Total"/>
-			<label left="155" top="5" width="50" height="25" horzTextAlign="center" text="Compensação" fontSize="8"/>
-			<label left="205" top="5" width="50" height="25" horzTextAlign="center" text="Perdido"/>
+			<label left="105" top="5" width="75" height="25" horzTextAlign="center" text="Naturais"/>
+			<label left="180" top="5" width="75" height="25" horzTextAlign="center" text="Adicional"/>
 			<label left="255" top="5" width="50" height="25" horzTextAlign="center" text="Atual"/>
 
 			<label left="5" top="30" width="100" height="25" horzTextAlign="center" text="Vida"/>
-			<rectangle left="105" top="30" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label left="105" top="30" width="50" height="25" horzTextAlign="center" field="vidaBase"/>
-			<edit left="155" top="30" width="50" height="25" field="vidaCompensacao" horzTextAlign="center" type="number"/>
-			<edit left="205" top="30" width="50" height="25" field="vidaPerdida" horzTextAlign="center" type="number"/>
+			<rectangle left="105" top="30" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="105" top="30" width="75" height="25" horzTextAlign="center" field="vidaBase"/>
+			<edit left="180" top="30" width="75" height="25" field="vidaCompensacao" horzTextAlign="center" type="number"/>
 			<rectangle left="255" top="30" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
 			<label left="255" top="30" width="50" height="25" horzTextAlign="center" field="vidaAtual"/>
 
-			<dataLink fields="{'vidaBase','vidaCompensacao','vidaPerdida'}">
+			<dataLink fields="{'vidaBase','vidaCompensacao'}">
 				<event name="onChange">
 					if sheet==nil then return end;
 
 					local vida = 	(tonumber(sheet.vidaBase) or 0) + 
-									(tonumber(sheet.vidaCompensacao) or 0) -
-									math.abs(tonumber(sheet.vidaPerdida) or 0);
+									(tonumber(sheet.vidaCompensacao) or 0);
 					sheet.vidaAtual = vida;
 				</event>
 			</dataLink>
 
 			<label left="5" top="55" width="100" height="25" horzTextAlign="center" text="Fadiga"/>
-			<rectangle left="105" top="55" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label left="105" top="55" width="50" height="25" horzTextAlign="center" field="fadigaBase"/>
-			<edit left="155" top="55" width="50" height="25" field="fadigaCompensacao" horzTextAlign="center" type="number"/>
-			<edit left="205" top="55" width="50" height="25" field="fadigaPerdida" horzTextAlign="center" type="number"/>
+			<rectangle left="105" top="55" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="105" top="55" width="75" height="25" horzTextAlign="center" field="fadigaBase"/>
+			<edit left="180" top="55" width="75" height="25" field="fadigaCompensacao" horzTextAlign="center" type="number"/>
 			<rectangle left="255" top="55" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
 			<label left="255" top="55" width="50" height="25" horzTextAlign="center" field="fadigaAtual"/>
 
-			<dataLink fields="{'fadigaBase','fadigaCompensacao','fadigaPerdida'}">
+			<dataLink fields="{'fadigaBase','fadigaCompensacao'}">
 				<event name="onChange">
 					if sheet==nil then return end;
 
 					local fadiga = 	(tonumber(sheet.fadigaBase) or 0) + 
-									(tonumber(sheet.fadigaCompensacao) or 0) - 
-									math.abs(tonumber(sheet.fadigaPerdida) or 0);
+									(tonumber(sheet.fadigaCompensacao) or 0);
 					sheet.fadigaAtual = fadiga;
 				</event>
 			</dataLink>
@@ -143,9 +136,9 @@
 			<label left="0" top="5" width="285" height="25" horzTextAlign="center" text="Atributos"/>
 			
 			<label left="75" top="30" width="50" height="25" horzTextAlign="center" text="Total"/>
-			<label left="125" top="30" width="50" height="25" horzTextAlign="center" text="Inicial"/>
+			<label left="125" top="30" width="50" height="25" horzTextAlign="center" text="Perícia"/>
 			<label left="175" top="30" width="50" height="25" horzTextAlign="center" text="Nível"/>
-			<label left="225" top="30" width="50" height="25" horzTextAlign="center" text="Outros"/>
+			<label left="225" top="30" width="50" height="25" horzTextAlign="center" text="Adicional" fontSize="11"/>
 
 			<Atributo top="55" field="agilidade" atr="Agilidade" fontSize="13"/>
 			<Atributo top="80" field="cac" atr="Corpo-a-Corpo" fontSize="10"/>
@@ -162,6 +155,22 @@
 			<rectangle left="175" top="210" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
 			<label left="175" top="210" width="50" height="25" horzTextAlign="center" field="sum_nivel"/>
 
+			<dataLink fields="{'cac_total'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local res = (tonumber(sheet.cac_total) or 0);
+					res = math.floor(res/2);
+					sheet.resistenciaFisica = res;
+				</event>
+			</dataLink>
+			<dataLink fields="{'paranormalidade_total'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local res = (tonumber(sheet.paranormalidade_total) or 0);
+					res = math.floor(res/2);
+					sheet.resistenciaParanormal = res;
+				</event>
+			</dataLink>
 
 			<dataLink fields="{'sum_inicial', 'sum_nivel'}">
 				<event name="onChange">
@@ -195,14 +204,77 @@
 					sheet.sum_nivel = sum;
 				</event>
 			</dataLink>
-
 		</rectangle>
 
-		<rectangle left="605" top="0" width="285" height="285" color="black" strokeColor="white" strokeSize="1"/>
-		<image left="606" top="1" width="283" height="283" field="avatar" editable="true" style="autoFit">
+		<rectangle left="315" top="310" width="155" height="80" color="black" strokeColor="white" strokeSize="1">
+			<label left="75" top="5" width="75" height="20" horzTextAlign="center" text="Resistência"/>
+
+			<label left="0" top="25" width="75" height="25" horzTextAlign="center" text="Física"/>
+			<rectangle left="90" top="25" width="45" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="90" top="25" width="45" height="25" horzTextAlign="center" field="resistenciaFisica"/>
+
+			<label left="0" top="50" width="75" height="25" horzTextAlign="center" text="Paranormal"/>
+			<rectangle left="90" top="50" width="45" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="90" top="50" width="45" height="25" horzTextAlign="center" field="resistenciaParanormal"/>
+		</rectangle>
+
+		<rectangle left="475" top="310" width="435" height="80" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="5" width="435" height="20" horzTextAlign="center" text="Redutores"/>
+
+			<label left="5" top="25" width="135" height="25" horzTextAlign="center" text="Físico"/>
+			<edit left="140" top="25" width="75" height="25" field="redutorFisico"/>
+			<label left="220" top="25" width="135" height="25" horzTextAlign="center" text="Projétil"/>
+			<edit left="355" top="25" width="75" height="25" field="redutorProjetil"/>
+
+			<label left="5" top="50" width="135" height="25" horzTextAlign="center" text="Paranormal"/>
+			<edit left="140" top="50" width="75" height="25" field="redutorParanormal"/>
+			<label left="220" top="50" width="135" height="25" horzTextAlign="center" text="Corrosivo"/>
+			<edit left="355" top="50" width="75" height="25" field="redutorCorrosivo"/>
+		</rectangle>
+
+		<rectangle left="315" top="395" width="595" height="290" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="5" width="535" height="25" horzTextAlign="center" text="Habilidades"/>
+			<label left="0" top="5" width="550" height="25" horzTextAlign="trailing" text="Estágio" fontSize="11"/>
+
+			<rectangle left="310" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="310" top="5" width="50" height="25" horzTextAlign="center" field="habilidadesNivel"/>
+			<rectangle left="360" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="360" top="5" width="50" height="25" horzTextAlign="center" field="habilidadesDisponivel"/>
+
+			<recordList left="5" top="30" width="585" height="255" name="rclHabilidades" field="listaDeHabilidades" templateForm="frmAbilities" layout="vertical" minQt="5">
+				<event name="onEndEnumeration"><![CDATA[
+				if sheet== nil then return end;
+				
+				local objetos = ndb.getChildNodes(sheet.listaDeHabilidades);
+				if objetos[1].nivel == nil then
+					objetos[1].nivel = 1;
+				end;
+				]]>
+			</event>
+			</recordList>
+		</rectangle>
+
+		<rectangle left="605" top="0" width="305" height="305" color="black" strokeColor="white" strokeSize="1"/>
+		<image left="606" top="1" width="303" height="303" field="avatar" editable="true" style="autoFit">
 			<event name="OnStartDrag">
 			    drag:addData("imageURL", sheet.avatar);
 			</event>
 		</image>
+
+		<rectangle left="915" top="0" width="310" height="190" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="5" width="310" height="25" horzTextAlign="center" text="Contratos"/>
+
+			<recordList left="5" top="30" width="300" height="155" name="rclContratos" field="listaDeContratos" templateForm="frmContract" layout="vertical" minQt="3"/>
+		</rectangle>
+
+		<rectangle left="915" top="195" width="310" height="195" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="5" width="310" height="25" horzTextAlign="center" text="Ultimato"/>
+			<textEditor left="5" top="30" width="300" height="160" field="ultimato"/>
+		</rectangle>
+
+		<rectangle left="915" top="395" width="310" height="190" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="5" width="310" height="25" horzTextAlign="center" text="Privilégio"/>
+			<textEditor left="5" top="30" width="300" height="155" field="privilegio"/>
+		</rectangle>
 	</scrollBox>
 </form>

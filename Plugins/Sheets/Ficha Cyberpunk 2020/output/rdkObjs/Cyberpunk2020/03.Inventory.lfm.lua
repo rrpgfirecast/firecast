@@ -410,7 +410,7 @@ function newfrmInventory()
     obj.layout4:setLeft(1140);
     obj.layout4:setTop(0);
     obj.layout4:setWidth(210);
-    obj.layout4:setHeight(60);
+    obj.layout4:setHeight(85);
     obj.layout4:setName("layout4");
 
     obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
@@ -482,6 +482,25 @@ function newfrmInventory()
     obj.label30:setVertTextAlign("center");
     obj.label30:setHorzTextAlign("center");
     obj.label30:setName("label30");
+
+    obj.label31 = gui.fromHandle(_obj_newObject("label"));
+    obj.label31:setParent(obj.layout4);
+    obj.label31:setLeft(5);
+    obj.label31:setTop(55);
+    obj.label31:setWidth(100);
+    obj.label31:setHeight(20);
+    obj.label31:setText("DINHEIRO");
+    obj.label31:setHorzTextAlign("center");
+    obj.label31:setName("label31");
+
+    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1:setParent(obj.layout4);
+    obj.edit1:setLeft(105);
+    obj.edit1:setTop(55);
+    obj.edit1:setWidth(50);
+    obj.edit1:setHeight(25);
+    obj.edit1:setField("itensCash");
+    obj.edit1:setName("edit1");
 
     obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.layout4);
@@ -598,6 +617,7 @@ function newfrmInventory()
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.label20 ~= nil then self.label20:destroy(); self.label20 = nil; end;
+        if self.label31 ~= nil then self.label31:destroy(); self.label31 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.rclInventoryWeapon ~= nil then self.rclInventoryWeapon:destroy(); self.rclInventoryWeapon = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
@@ -611,6 +631,7 @@ function newfrmInventory()
         if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
         if self.label28 ~= nil then self.label28:destroy(); self.label28 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
+        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.rclInventory ~= nil then self.rclInventory:destroy(); self.rclInventory = nil; end;
         self:_oldLFMDestroy();
     end;

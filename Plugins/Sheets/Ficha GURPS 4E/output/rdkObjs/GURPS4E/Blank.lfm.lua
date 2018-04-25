@@ -34,6 +34,12 @@ function newfrmBlank()
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
+    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1:setParent(obj.scrollBox1);
+    obj.textEditor1:setAlign("client");
+    obj.textEditor1:setField("anotacoesLivres");
+    obj.textEditor1:setName("textEditor1");
+
     function obj:_releaseEvents()
     end;
 
@@ -47,6 +53,7 @@ function newfrmBlank()
         end;
 
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
+        if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
         self:_oldLFMDestroy();
     end;
 
