@@ -1,0 +1,43 @@
+﻿[pt]
+fireDrive.msg.INVALID_REQUEST=Requisição inválida
+fireDrive.msg.INVALID_SESSION=Sessão inválida
+fireDrive.msg.NOT_GOLD_USER=O usuário não é Gold
+fireDrive.msg.INVALID_ACTION=Ação inválida
+fireDrive.msg.NOT_FOUND=Não encontrado
+fireDrive.msg.INVALID_OPERATION_REQUEST=Operação inválida
+fireDrive.msg.INVALID_PATH_NAME=Caminho inválido
+fireDrive.msg.FILE_ALREADY_EXISTS=Arquivo já existe
+fireDrive.msg.INVALID_DIRECTORY_NAME=Nome de diretório inválido
+fireDrive.msg.ITEM_DOES_NOT_EXISTS=Item não existe
+fireDrive.msg.INVALID_ITEM_NAME=Nome de item inválido
+fireDrive.msg.SERVER_ERROR=Erro do servidor
+fireDrive.msg.INVALID_FOLDER_FOR_ITEM_NAME=Diretório inválido para o nome do item
+fireDrive.msg.INVALID_NEW_ITEM_NAME=Nome inválido para novo item
+fireDrive.msg.FILE_EXISTS_WITH_OTHER_KIND=Item existe com outro tipo
+fireDrive.msg.CANT_WRITE_TO_IMPORTED_ITEM=Não é possível escrever em um item importado
+fireDrive.msg.INVALID_CONTENT=Conteúdo inválido
+fireDrive.msg.INVALID_FILE_NAME_FOR_ITEM=Nome de arquivo inválido para o item
+fireDrive.msg.FILE_TOO_BIG=O arquivo é muito grande
+fireDrive.msg.NOT_ENOUGH_SPACE=Não há espaço suficiente
+
+[en]
+fireDrive.msg.INVALID_REQUEST=Invalid request
+fireDrive.msg.INVALID_SESSION=Invalid session
+fireDrive.msg.NOT_GOLD_USER=The user is not Gold
+fireDrive.msg.INVALID_ACTION=Invalid action
+fireDrive.msg.NOT_FOUND=Not found
+fireDrive.msg.INVALID_OPERATION_REQUEST=Invalid operation
+fireDrive.msg.INVALID_PATH_NAME=Invalid path name
+fireDrive.msg.FILE_ALREADY_EXISTS=File already exists
+fireDrive.msg.INVALID_DIRECTORY_NAME=Invalid directory name
+fireDrive.msg.ITEM_DOES_NOT_EXISTS=Item does not exists
+fireDrive.msg.INVALID_ITEM_NAME=Invalid item name
+fireDrive.msg.SERVER_ERROR=Server error
+fireDrive.msg.INVALID_FOLDER_FOR_ITEM_NAME=Invalid folder for item name
+fireDrive.msg.INVALID_NEW_ITEM_NAME=Invalid new item name
+fireDrive.msg.FILE_EXISTS_WITH_OTHER_KIND=File exists with other kind
+fireDrive.msg.CANT_WRITE_TO_IMPORTED_ITEM=Can't write to imported item
+fireDrive.msg.INVALID_CONTENT=Invalid content
+fireDrive.msg.INVALID_FILE_NAME_FOR_ITEM=Invalid filename for the item
+fireDrive.msg.FILE_TOO_BIG=File is too large
+fireDrive.msg.NOT_ENOUGH_SPACE=Not enough space

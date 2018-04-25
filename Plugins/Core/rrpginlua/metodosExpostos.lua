@@ -1,6 +1,9 @@
 require("rrpg.lua");
 require("dialogs.lua");
 require("gui.lua");
+require("fireDrive.lua");
+require("utils.lua");
+local fireDriveHost = require("firedrive/firedriveHost.lua");
 
 
 -- A função abaixo é invocada pelo RRPG para exibir as interfaces de criação de personagem.
@@ -30,4 +33,21 @@ end;
 
 function RRPG_GerenciarPlugins()
 	gui.showPopup("frmGerenciarPlugins");
+end;
+
+
+function Firecast_quickUpload(suggestedFileName, mimeType, streamObjectHandle, 
+						      successCallback, progressCallback, failureCallback)
+	local streamObj = utils.streamFromHandle(streamObjectHandle);
+	
+	if type(streamObj) ~= "table" then
+		error("Could not open stream for Firecast_quickUpload");
+	end;
+	
+	return fireDrive.quickUpload(suggestedFileName, mimeType, streamObj,
+								 successCallback, progressCallback, failureCallback);
+end;
+
+function Firecast_firedrive_lang(msg)
+	return fireDriveHost.langMessage(msg);
 end;

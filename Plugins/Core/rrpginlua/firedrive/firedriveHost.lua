@@ -4,6 +4,7 @@ local host = {drive={}};
 local internet = require("internet.lua");
 local utils = require("utils.lua");
 require("fireDriveGlobals.dlua");
+require("locale.lua");
 
 local _DIRTY_NEED_REFRESH = true;
 local ITEM_KIND_DIR = "dir";
@@ -626,6 +627,19 @@ function host.manageItem(destItemName, metadata, onSuccess, onProgress, onFailur
 		end)
 end;
 
+function host.langMessage(msg)
+	local seekStr = utils.removerAcentos(tostring(msg) or "") or "";
+	seekStr = "fireDrive.msg." .. string.gsub(seekStr, "%s", "_");
+	
+	local translated = tryLang(seekStr);
+	
+	if translated ~= nil then
+		return translated;
+	else
+		return msg;
+	end;
+end;
+
 host.setDirty();
 
 ----------------- Funções de comunicação com plugins ------------------
@@ -769,3 +783,5 @@ plugins.listenPM("fireDrive:abortOperation",
 	
 rrpg.messaging.listen("SessionLost",  function(message) host.setDirty(); end);		
 rrpg.messaging.listen("SessionStarted",  function(message) host.setDirty(); end);		
+
+return host;
