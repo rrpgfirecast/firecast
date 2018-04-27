@@ -160,6 +160,47 @@ function host.removeKnownFireDriveItem(itemId)
 	end;
 end;
 
+
+function host.interpretQuickUploadResponse(itemTag)
+	local attr = itemTag.attr;
+	local id = tostring(attr["id"]);
+	local item;
+					
+	if id == nil then
+		error("Servidor retornou um id inválido para um item do firedrive");
+	end;	
+	
+	item = {};	
+	
+	item.id = id;
+	item.name = attr["name"];
+	item.isDir = attr["kind"] == "D";	
+	item.parentId = tonumber(attr["parent"]);
+	item.size = tonumber(attr["size"]) or 0;
+	item.isShared = attr["shared"] == "S";
+	item.isMine = attr["mine"] == "S";
+	item.keyWords = attr["keywords"];
+	item.description = attr["description"];
+	item.url = attr["URL"];	
+	item.mimeType = attr["mimeType"];
+	item.sharedId = tonumber(attr["sharedId"]);
+	item.urlThumb64 = attr["thumb64URL"];	
+		
+	local kind = string.upper(attr["kind"]);
+	
+	if kind == "D" then
+		item.kind = ITEM_KIND_DIR;
+	elseif kind == "P" then
+		item.kind = ITEM_KIND_PLUGIN;
+	elseif kind == "I" then
+		item.kind = ITEM_KIND_IMAGE;		
+	else
+		item.kind = ITEM_KIND_FILE;
+	end;
+			
+	return item;
+end;
+
 function host.breakPathIntoParts(path)
 	return breakPathIntoParts(path);
 end;
@@ -401,11 +442,21 @@ function host.findBlobs(upload, onSuccess, onFailure)
 end;
 
 function host.step2ManageItem(upload, onSuccess, onProgress, onFailure)
-	local req = upload.newRequest("manageItem", 'POST');
+	local metadata = upload.metadata;
+
+	local remoteActionStr;
+	
+	if type(metadata) == "table" and type(metadata.headers) == "table" and 
+		(metadata.headers.operation == "quickUpload") then
+		remoteActionStr = "manageQuickUploadItem";
+	else
+		remoteActionStr = "manageItem";
+	end;
+	
+	local req = upload.newRequest(remoteActionStr, 'POST');
 	local reqStream = utils.newTempFileStream();
 	local buffer = {};
 	local buffer2 = {};
-	local metadata = upload.metadata;
 	local size = nil;
 	local size2 = nil;
 	
@@ -488,6 +539,8 @@ function host.step2ManageItem(upload, onSuccess, onProgress, onFailure)
 					host.removeKnownFireDriveItem(tonumber(el.attr["id"]));
 				elseif el.name == "space" then
 					host.treatSpaceResponse(el);
+				elseif el.name == "quickUploadItem" then
+					resp = host.interpretQuickUploadResponse(el);
 				end;
 			end;
 					

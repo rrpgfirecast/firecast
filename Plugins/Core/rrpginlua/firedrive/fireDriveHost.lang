@@ -19,6 +19,7 @@ fireDrive.msg.INVALID_CONTENT=Conteúdo inválido
 fireDrive.msg.INVALID_FILE_NAME_FOR_ITEM=Nome de arquivo inválido para o item
 fireDrive.msg.FILE_TOO_BIG=O arquivo é muito grande
 fireDrive.msg.NOT_ENOUGH_SPACE=Não há espaço suficiente
+fireDrive.msg.DAILY_LIMIT_REACHED=Limite diário atingido
 
 [en]
 fireDrive.msg.INVALID_REQUEST=Invalid request
@@ -41,3 +42,4 @@ fireDrive.msg.INVALID_CONTENT=Invalid content
 fireDrive.msg.INVALID_FILE_NAME_FOR_ITEM=Invalid filename for the item
 fireDrive.msg.FILE_TOO_BIG=File is too large
 fireDrive.msg.NOT_ENOUGH_SPACE=Not enough space
+fireDrive.msg.DAILY_LIMIT_REACHED=Daily limit reached
