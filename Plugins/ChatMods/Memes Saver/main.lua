@@ -44,37 +44,32 @@ end
 rrpg.listen('HandleChatTextInput',
     function(message)
     	if string.match(message.texto, ":") then
-    		local text = "";
+		    local changed = false;
+				
+			local replacedText = string.gsub(message.texto, "%S+",
+				function(originalMatchedWord)
+					local token = originalMatchedWord;
 
-			local arg = {};
-			local index = 0;
-			for i in string.gmatch(message.texto, "%S+") do
-				index = index + 1;
-				arg[index] = i;
-			end;
+					local dot1 = string.sub(token, 1, 1);
+					local dot2 = string.sub(token, token:len(), token:len());
 
-			local changed = false;
-			for i=1, #arg, 1 do
-				local token = arg[i];
+					local meme;
 
-				local dot1 = string.sub(token, 1, 1);
-				local dot2 = string.sub(token, token:len(), token:len());
+					if dot1==":" and dot2==":" then
+						local tk = string.sub(token, 2, token:len()-1);
+						meme = memedb.link[tk];
+					end;
 
-				local meme;
+					if meme ~=nil then
+						changed = true;
+						return "[§I " .. meme .. "]";
+					else
+						return originalMatchedWord;							
+					end;
+				end);
 
-				if dot1==":" and dot2==":" then
-					local tk = string.sub(token, 2, token:len()-1);
-					meme = memedb.link[tk];
-				end;
-
-				if meme ~=nil then
-					changed = true;
-					arg[i] = "[§I " .. meme .. "]";
-				end;
-				text = text .. arg[i] .. " ";
-			end;
 			if changed then
-				message.response = {newText = text};
+				message.response = {newText = replacedText};
 			end;
     	end;
         
