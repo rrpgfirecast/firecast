@@ -257,6 +257,47 @@ function lDialogs.o(prompt, multiple, callback, cancelCallback)
 	return lDialogs.openFile(prompt, "image/*", multiple, callback, cancelCallback);
 end;
 
+local function _newSelectImageURLObject()
+	local obj = objs.objectFromHandle(_obj_newObject('TLuaSelectImageURLQuery'));
+	
+	if obj.eves == nil then	
+		obj.eves = {};
+	end;
+	
+	obj.eves["OnCallback"] = "";
+	obj.eves["OnCancelCallback"] = "";
+		
+	objs.registerHandle(obj.handle, obj);	
+	return obj;
+end;
+
+local runningSelectImageURLDialogs = {};
+
+function lDialogs.selectImageURL(defaultURL, callback, cancelCallback)
+	local query = _newSelectImageURLObject();	
+		
+	query.OnCallback = function()
+						runningSelectImageURLDialogs[query] = nil;
+						
+						if callback ~= nil then
+							callback(_obj_getProp(query.handle, "SelectedURL"));
+						end;
+				  	 end;
+					 
+	query.OnCancelCallback = function()
+						runningSelectImageURLDialogs[query] = nil;
+						
+						if cancelCallback ~= nil then
+							cancelCallback();
+						end;
+					 end;
+	
+	_obj_setProp(query.handle, "DefaultURL", tostring(defaultURL or "") or "");
+	
+	runningSelectImageURLDialogs[query] = true;
+	_obj_invoke(query.handle, "Execute");	
+end
+
 dialogs = lDialogs;
 Dialogs = dialogs;
 return dialogs;

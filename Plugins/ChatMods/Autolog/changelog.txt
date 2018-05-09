@@ -1,0 +1,109 @@
+﻿CHANGELOG:
+
+v1.2.4
+- Adição da opção de usar o login como nome do arquivo de log para PVTs
+
+===================================================================================
+v1.2.3
+- Fix de "bug" que causava crash em Mesas cujo nome começa ou termina em espaços ou pontos.
+
+===================================================================================
+v1.2.2
+IMPORTANTE: Essa versão do Autolog requer pelo menos a versão 7.3 Beta 1 do RRPG!
+
+- Novo comando: /sendlog <n>: manda as últimas <n> linhas do log da mesa para o
+chat aberto. O comando também está disponível no painel aberto pelo comando /autolog.
+
+- Adicionado aviso para usuários Silver de que o Autolog requer uma assinatura Gold,
+Gold + ou Ruby para funcionar.
+
+- Adicionado as descrições dos comandos no /help (Obrigado por lembrar, Ambesek!)
+
+===================================================================================
+v1.2.0
+
+IMPORTANTE: Essa versão do Autolog requer pelo menos a versão 7.3 Beta 1 do RRPG!
+
+- Agora com interface gráfica de configuração!
+A partir dessa versão, o comando /autolog traz a janela onde você pode habilitar
+ou desabilitar o Autolog para aquela mesa, além de executar os comandos para os
+os logs. Os comandos antigos continuam funcionando, para quem preferir um modo mais
+"direto". O antigo comando /autolog foi substituído pelo comando /enablelog.
+
+- Novo comando /exportlog: Exporta o log da mesa principal para um arquivo txt.
+
+- Os logs agora são organizados em pastas com o nome da mesa (Ver Observações):
+
+- Os popups de erro e informação foram substituídos por mensagens no chat da mesa,
+exceto pela janela de confirmação de apagamento de logs.
+
+Observações:
+A separação dos logs em pastas era algo que eu queria fazer a muito tempo. O nosso
+amigo Ambesek fez uma versão do autolog que separa, porém ela exigia que o usuário
+criasse a pasta da mesa manualmente. Eu pessoalmente não quis implementar com esse
+requerimento, por isso, esperei até Alysson implementar a criação de pastas no SDK.
+
+Esse dia chegou =). Agora os logs são separados em pastas sem a necessidade
+de criá-las manualmente. Os caminhos dos arquivos agora seguem o padrão
+abaixo:
+
+Mesa principal: <Pasta do Autolog>/Logs/<Nome da mesa>/Mesa.log
+PVTs: <Pasta do Autolog>/Logs/<Nome da mesa>/PVT com <Nome do Personagem>.log
+Conversas em grupo: <Pasta do Autolog>/Logs/<Nome da mesa>/Conversa em Grupo ID X.log
+
+===================================================================================
+v1.1.3
+
+- Adição das mensagens de entrada e saída da sala.
+
+===================================================================================
+v1.1.2
+
+- Adição dos valores individuais de cada dado na rolagem. Agora a rolagem é gravada
+idêntica ao que o RRPG exibe.
+
+===================================================================================
+v1.1.1
+
+- Fix de bug que fazia com que as rolagens fossem guardadas com o valor incorreto.
+
+Observações:
+Por hora, o addon não guarda os valores de cada dado individualmente,
+apenas a rolagem e resultado total no estilo "Sasha Grey rolou 1d20+5 = 25"
+
+===================================================================================
+v1.1.0
+
+- Fix de bug que fazia com que risadas (/rir) fossem logadas em branco;
+- Adição (Oficial) de Log de PVTs e Conversas em Grupo (Ver Observações)
+
+Observações:
+Como eu mencionei num comentário anterior, a versão antiga logava tudo (PVTs e
+Conversas em Grupo) tudo no mesmo log. Corrigi isso, e agora PVTs e Conversas terão
+seus próprios logs.
+
+PVTs: <Nome da mesa> (PVT com <Nome do Personagem>).log
+Conversas em grupo: <Nome da mesa> (Conversa em Grupo ID X).log
+
+"Mas porque 'Conversa em Grupo ID X'?"
+Porque pode haver mais de uma conversa em grupo paralela. A idéia era por no nome
+do arquivo os participantes da conversa (algo como "PVT com Mia Khalifa, Sasha Grey
+e Asa Akira"), mas eu não encontrei uma forma de listar os participantes da conversa.
+Como eu não posso deixar misturar as Conversas em Grupo, por enquanto, vai a única
+coisa que eu tenho de diferente entre elas: o ID.
+
+"Bugs" conhecidos:
+O Autolog não loga as mensagens de entrada e saída da sala.
+
+===================================================================================
+v1.0.1
+
+- Corrigido bug na criação de logs de mesas com caracteres especiais no nome (\, /,
+?, etc)
+- Adição de data e hora das mensagens
+- Remoçao da formatação de Nicks
+
+===================================================================================
+v1.0.0
+
+Versão inicial.
