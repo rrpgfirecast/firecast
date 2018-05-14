@@ -345,6 +345,25 @@ function rrpg.registerChatToolButton(params)
 	_obj_setProp(regClass.handle, "Hint", params.hint);
 	_obj_setProp(regClass.handle, "IconURL", params.icon);
 	
+	local p = tonumber(params.priority);
+	
+	if p ~= nil then
+		_obj_setProp(regClass.handle, "Priority", math.floor(p));
+	end;
+	
+	local group = tostring(params.group) or "";
+
+	if group ~= "" then	
+		_obj_setProp(regClass.handle, "Group", tostring(params.group) or "");
+		
+		p = tonumber(params.groupPriority);
+		
+		if p ~= nil then
+			_obj_setProp(regClass.handle, "GroupPriority", math.floor(p));		
+		end;
+	end;	
+	
+	
 	if params.callback ~= nil then
 		regClass.onCallback = params.callback;		
 	end;

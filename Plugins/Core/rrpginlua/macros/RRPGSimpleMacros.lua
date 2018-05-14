@@ -1,6 +1,7 @@
-﻿require("rrpg.lua");
+﻿require("firecast.lua");
 require("ndb.lua");
 require("utils.lua");
+require("locale.lua");
 
 globalMacrosInvalido = true;
 
@@ -169,7 +170,7 @@ function globalGerenciarMacros(mesa)
 	gui.showPopup(frm);	
 end;
 
-rrpg.messaging.listen("HandleChatCommand",
+Firecast.Messaging.listen("HandleChatCommand",
 	function(message)
 		local comando = globalPrepareMacroNameForFind(message.command or "");
 	
@@ -190,7 +191,7 @@ rrpg.messaging.listen("HandleChatCommand",
 		end
 	end);	
 
-rrpg.messaging.listen("ListChatCommands",
+Firecast.Messaging.listen("ListChatCommands",
 	function(message)
 		message.response = {{command="/macros", description=lang("macros.command.description")}};
 	end);
@@ -265,7 +266,7 @@ local function desanexarMacrosDaMesa(mesa)
 	end;	
 end;
 
-rrpg.messaging.listen("MesaJoined",
+Firecast.Messaging.listen("MesaJoined",
 	function(msg)
 		local mesa = msg.mesa;
 		
@@ -274,12 +275,12 @@ rrpg.messaging.listen("MesaJoined",
 		end;
 	end, {eu=true})	;
 	
-rrpg.messaging.listen("MesaParted",
+Firecast.Messaging.listen("MesaParted",
 	function(msg)
 			desanexarMacrosDaMesa(msg.mesa);
 	end, {eu=true});	
 	
-rrpg.messaging.listen("SessionLost",
+Firecast.Messaging.listen("SessionLost",
 	function(msg)
 		local mesas = rrpg.getMesas();
 		
@@ -295,6 +296,20 @@ local function inicializar()
 	for i = 1, #mesas, 1 do
 		anexarMacrosAMesa(mesas[i]);
 	end;	
+	
+	-- Register Chat Tool Button
+	
+	local macroButton = {};
+	macroButton.hint = lang("macros.ui.manageMacros");
+	macroButton.icon = "/macros/icons/scriptIcon.xml";
+	macroButton.group = "macros";
+	
+	macroButton.callback = 
+		function (chat)
+			globalGerenciarMacros(chat.room);
+		end;
+		
+	Firecast.registerChatToolButton(macroButton);
 end;
 
 inicializar();

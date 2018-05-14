@@ -721,7 +721,7 @@ function _INTERNAL_EVE_OnWrappedObjectWasDestroyed(objectID)
 	localStrongRefContextoObjects[objectID] = nil;  -- Permitir o Garbage Collector coletar este objeto
 end;
 
-function _INTERNAL_EVE_ContextObjectFromID(objectID)
+function _INTERNAL_AUX_ContextObjectFromID(objectID)
 	return rrpgWrappers.contextObjectFromID(objectID);
 end;
 
