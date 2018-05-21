@@ -1253,7 +1253,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.label29:setParent(obj.layout11);
     obj.label29:setAlign("bottom");
     obj.label29:setAutoSize(true);
-    obj.label29:setText("VANTAGENS & QUALIDADES");
+    obj.label29:setText("VANTAGENS");
     obj.label29:setFontSize(12);
     obj.label29:setVertTextAlign("center");
     obj.label29:setHorzTextAlign("center");
@@ -1310,7 +1310,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.label30:setParent(obj.layout12);
     obj.label30:setAlign("bottom");
     obj.label30:setAutoSize(true);
-    obj.label30:setText("DESVANTAGENS & PECULIARIDADES");
+    obj.label30:setText("DESVANTAGENS");
     obj.label30:setFontSize(12);
     obj.label30:setVertTextAlign("center");
     obj.label30:setHorzTextAlign("center");
@@ -2703,52 +2703,58 @@ self.upperGridMagicEditBox1._RecalcSize();
             self.rclSkills:append();
         end, obj);
 
-    obj._e_event7 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event7 = obj.rclSkills:addEventListener("onCompare",
+        function (self, nodeA, nodeB)
+            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+        end, obj);
+
+    obj._e_event8 = obj.dataLink5:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             pointCount();
         end, obj);
 
-    obj._e_event8 = obj.button2:addEventListener("onClick",
+    obj._e_event9 = obj.button2:addEventListener("onClick",
         function (self)
             self.rclTech:append();
         end, obj);
 
-    obj._e_event9 = obj.button3:addEventListener("onClick",
+    obj._e_event10 = obj.button3:addEventListener("onClick",
         function (self)
             self.rclMagic:append();
         end, obj);
 
-    obj._e_event10 = obj.button4:addEventListener("onClick",
+    obj._e_event11 = obj.button4:addEventListener("onClick",
         function (self)
             self.rclBackpack:append();
         end, obj);
 
-    obj._e_event11 = obj.button5:addEventListener("onClick",
+    obj._e_event12 = obj.button5:addEventListener("onClick",
         function (self)
             self.rclEquipments:append();
         end, obj);
 
-    obj._e_event12 = obj.button6:addEventListener("onClick",
+    obj._e_event13 = obj.button6:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/README.md')
         end, obj);
 
-    obj._e_event13 = obj.button7:addEventListener("onClick",
+    obj._e_event14 = obj.button7:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20GURPS%204E/Ficha%20GURPS%204E.rpk')
         end, obj);
 
-    obj._e_event14 = obj.button8:addEventListener("onClick",
+    obj._e_event15 = obj.button8:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event15 = obj.button9:addEventListener("onClick",
+    obj._e_event16 = obj.button9:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=131156');
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event16);
         __o_rrpgObjs.removeEventListenerById(self._e_event15);
         __o_rrpgObjs.removeEventListenerById(self._e_event14);
         __o_rrpgObjs.removeEventListenerById(self._e_event13);
