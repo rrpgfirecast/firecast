@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplateNotes" align="client">
+	<scrollBox align="client">
+		<layout left="0" top="0" width="400" height="580">
+			<rectangle left="0" top="0" width="400" height="580" color="black" xradius="5" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Anotações" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="540" field="anotacoes1"/>
+        </layout>
+		
+		<layout left="410" top="0" width="400" height="580">
+			<rectangle left="0" top="0" width="400" height="580" color="black" xradius="5" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Anotações" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="540" field="anotacoes2"/>
+        </layout>
+		
+		<layout left="820" top="0" width="400" height="580">
+			<rectangle left="0" top="0" width="400" height="580" color="black" xradius="5" yradius="15" cornerType="round"/>
+	        <label left="0" top="0" width="400" height="20" text="Anotações" horzTextAlign="center"/>
+			<textEditor left="10" top="25" width="380" height="540" field="anotacoes3"/>
+        </layout>
+	</scrollBox>
+</form>

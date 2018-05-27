@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSkillListForm" width="420" height="25" margins="{top=1,right=5}">
+	<rectangle align="client" color="#212121">
+
+		<edit left="0" top="0" width="150" height="25" field="nome"/>
+
+		<comboBox vertTextAlign="center" horzTextAlign="center" left="150" top="0" width="60" height="25" field="chave" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" fontColor="white">
+			<event name="onChange">
+				if sheet== nil then return end;
+
+				local atributo = 0;
+				local node = ndb.getRoot(sheet);
+
+				if sheet.chave == "1" then
+					atributo = tonumber(node.mod_for) or 0;
+				elseif sheet.chave == "2" then
+					atributo = tonumber(node.mod_des) or 0;
+				elseif sheet.chave == "3" then
+					atributo = tonumber(node.mod_con) or 0;
+				elseif sheet.chave == "4" then
+					atributo = tonumber(node.mod_int) or 0;
+				elseif sheet.chave == "5" then
+					atributo = tonumber(node.mod_sab) or 0;
+				elseif sheet.chave == "6" then
+					atributo = tonumber(node.mod_car) or 0;
+				end;
+				sheet.atributo = atributo;
+			</event>
+		</comboBox>
+
+		<rectangle left="210" top="0" width="50" height="24" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="210" top="0" width="50" height="20" horzTextAlign="center" field="total"/>
+
+		<rectangle left="270" top="0" width="40" height="24" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="270" top="0" width="40" height="20" horzTextAlign="center" field="atributo"/>
+
+		<edit left="310" top="0" width="40" height="25" field="graduacao" type="number" horzTextAlign="center"/>
+
+		<edit left="350" top="0" width="40" height="25" field="outros" type="number" horzTextAlign="center"/>
+
+		<!-- Botão que apaga o objeto da lista -->
+		<button left="395" top="0" width="25" height="25" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+
+
+		<dataLink fields="{'atributo','graduacao','outros'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+				local total = 	(tonumber(sheet.atributo) or 0) +
+								(tonumber(sheet.graduacao) or 0) +
+								(tonumber(sheet.outros) or 0);
+				sheet.total = total;
+			</event>
+		</dataLink>
+	</rectangle>
+</form>

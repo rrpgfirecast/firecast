@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmGeneral" align="client">
+	<template name="Atributo">
+		<label left="5" top="$(top)" width="50" height="25" horzTextAlign="center" text="$(text)"/>
+		<edit left="55" top="$(top)" width="50" height="25" field="valor_$(field)" horzTextAlign="center"/>
+		<rectangle left="105" top="$(top)" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="105" top="$(top)" width="50" height="25" horzTextAlign="center" field="mod_$(field)"/>
+		<dataLink fields="{'valor_$(field)'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+				local valor = tonumber(sheet.valor_$(field)) or 0;
+				local mod = math.floor((valor - 10)/2);
+				sheet.mod_$(field) = mod;
+
+				updateAtributes($(num));
+			</event>
+		</dataLink>
+	</template>
+	<template name="Resistencia">
+		<label left="5" top="$(top)" width="100" height="25" horzTextAlign="center" text="$(text)"/>
+		<rectangle left="105" top="$(top)" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="105" top="$(top)" width="50" height="25" horzTextAlign="center" field="total_$(field)"/>
+		
+		<edit left="155" top="$(top)" width="50" height="25" field="base_$(field)" horzTextAlign="center"/>
+		<edit left="205" top="$(top)" width="50" height="25" horzTextAlign="center" field="mod_$(field)"/>
+		<edit left="255" top="$(top)" width="50" height="25" field="tr_outros_$(field)" horzTextAlign="center"/>
+
+		<dataLink fields="{'base_$(field)', 'mod_$(field)', 'tr_outros_$(field)'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+				local total = 	(tonumber(sheet.base_$(field)) or 0) +
+								(tonumber(sheet.mod_$(field)) or 0) +
+								(tonumber(sheet.tr_outros_$(field)) or 0);
+				sheet.total_$(field) = total;
+			</event>
+		</dataLink>
+	</template>
+	<scrollBox align="client">
+		<rectangle left="0" top="0" width="660" height="60" color="black">
+			<label left="5" top="5" width="100" height="25" horzTextAlign="center" text="Nome"/>
+			<edit left="105" top="5" width="150" height="25" field="nome"/>
+			<label left="255" top="5" width="100" height="25" horzTextAlign="center" text="Jogador"/>
+			<edit left="355" top="5" width="150" height="25" field="jogador"/>
+			<label left="505" top="5" width="75" height="25" horzTextAlign="center" text="Escala"/>
+			<edit left="580" top="5" width="75" height="25" field="escala"/>
+
+			<label left="5" top="30" width="100" height="25" horzTextAlign="center" text="Raça"/>
+			<edit left="105" top="30" width="150" height="25" field="raca"/>
+			<label left="255" top="30" width="100" height="25" horzTextAlign="center" text="Classe"/>
+			<edit left="355" top="30" width="150" height="25" field="classe"/>
+			<label left="505" top="30" width="75" height="25" horzTextAlign="center" text="Nível"/>
+			<edit left="580" top="30" width="75" height="25" field="nivel"/>
+		</rectangle>
+
+		<rectangle left="0" top="65" width="160" height="185" color="black">
+			<label left="0" top="5" width="160" height="25" horzTextAlign="center" text="HABILIDADES"/>
+			<Atributo top="30" field="for" text="FOR" num="1"/>
+			<Atributo top="55" field="des" text="DES" num="2"/>
+			<Atributo top="80" field="con" text="CON" num="3"/>
+			<Atributo top="105" field="int" text="INT" num="4"/>
+			<Atributo top="130" field="sab" text="SAB" num="5"/>
+			<Atributo top="155" field="car" text="CAR" num="6"/>
+		</rectangle>
+
+		<rectangle left="165" top="65" width="310" height="185" color="black">
+			<label left="0" top="5" width="310" height="25" horzTextAlign="center" text="RESISTÊNCIAS"/>
+
+			<label left="105" top="30" width="50" height="25" horzTextAlign="center" fontSize="11" text="Total"/>
+			<label left="155" top="30" width="50" height="25" horzTextAlign="center" fontSize="11" text="Base"/>
+			<label left="205" top="30" width="50" height="25" horzTextAlign="center" fontSize="11" text="Modif."/>
+			<label left="255" top="30" width="50" height="25" horzTextAlign="center" fontSize="11" text="Outros"/>
+
+			<Resistencia top="55" atr="con" text="Fortitude" field="fortitude"/>
+			<Resistencia top="80" atr="des" text="Reflexos" field="reflexos"/>
+			<Resistencia top="105" atr="sab" text="Vontade" field="vontade"/>
+		</rectangle>
+
+		<rectangle left="480" top="65" width="110" height="185" color="black">
+			<label left="0" top="5" width="50" height="25" horzTextAlign="center" text="CA"/>
+			<rectangle left="50" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="50" top="5" width="50" height="25" horzTextAlign="center" field="ca"/>
+
+			<label left="0" top="30" width="50" height="25" horzTextAlign="center" text="DES"/>
+			<rectangle left="50" top="30" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="50" top="30" width="50" height="25" horzTextAlign="center" field="mod_des"/>
+
+			<label left="0" top="55" width="50" height="25" horzTextAlign="center" text="ARM"/>
+			<rectangle left="50" top="55" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="50" top="55" width="50" height="25" horzTextAlign="center" field="ca_armadura"/>
+
+			<label left="0" top="80" width="50" height="25" horzTextAlign="center" text="ESC"/>
+			<rectangle left="50" top="80" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="50" top="80" width="50" height="25" horzTextAlign="center" field="ca_escudo"/>
+
+			<label left="0" top="105" width="50" height="25" horzTextAlign="center" text="NAT"/>
+			<edit left="50" top="105" width="50" height="25" field="ca_natural" horzTextAlign="center"/>
+			<label left="0" top="130" width="50" height="25" horzTextAlign="center" text="OUT"/>
+			<edit left="50" top="130" width="50" height="25" field="ca_outros" horzTextAlign="center"/>
+
+			<dataLink fields="{'mod_des', 'ca_armadura', 'ca_escudo', 'ca_natural', 'ca_outros'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					sheet.ca = (tonumber(sheet.mod_des) or 0) + 
+								(tonumber(sheet.ca_armadura) or 0) + 
+								(tonumber(sheet.ca_escudo) or 0) + 
+								(tonumber(sheet.ca_natural) or 0) + 
+								(tonumber(sheet.ca_outros) or 0) + 10;
+				</event>
+			</dataLink>
+		</rectangle>
+
+		<rectangle left="595" top="65" width="110" height="85" color="black">
+			<label left="0" top="5" width="50" height="25" horzTextAlign="center" text="PVs"/>
+			<edit left="50" top="5" width="50" height="25" field="pvs" horzTextAlign="center"/>
+
+			<label left="0" top="30" width="50" height="25" horzTextAlign="center" text="DVs"/>
+			<edit left="50" top="30" width="50" height="25" field="dvs" horzTextAlign="center"/>
+
+			<label left="0" top="55" width="50" height="25" horzTextAlign="center" text="CON"/>
+			<rectangle left="50" top="55" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="50" top="55" width="50" height="25" horzTextAlign="center" field="mod_con"/>
+		</rectangle>
+
+		<rectangle left="595" top="155" width="110" height="85" color="black">
+			<label left="0" top="5" width="50" height="25" horzTextAlign="center" text="INI"/>
+			<rectangle left="50" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="50" top="5" width="50" height="25" horzTextAlign="center" field="iniciativa"/>
+
+			<label left="0" top="30" width="50" height="25" horzTextAlign="center" text="DES"/>
+			<rectangle left="50" top="30" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="50" top="30" width="50" height="25" horzTextAlign="center" field="mod_des"/>
+
+			<label left="0" top="55" width="50" height="25" horzTextAlign="center" text="OUT"/>
+			<edit left="50" top="55" width="50" height="25" field="iniciativa_outros" horzTextAlign="center"/>
+
+			<dataLink fields="{'mod_des', 'iniciativa_outros'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					sheet.iniciativa = (tonumber(sheet.mod_des) or 0) + 
+										(tonumber(sheet.iniciativa_outros) or 0);
+				</event>
+			</dataLink>
+		</rectangle>
+
+		<rectangle left="0" top="255" width="362" height="362" color="black" strokeColor="white" strokeSize="1"/>
+		<image left="1" top="256" width="360" height="360" field="avatar" editable="true" style="autoFit" >
+			<event name="OnStartDrag">
+			    drag:addData("imageURL", sheet.avatar);
+			</event>
+		</image>
+
+		<rectangle left="370" top="255" width="240" height="300" color="black">
+			<button left="5" top="5" width="25" height="25" text="+" onClick="self.rclTalentos:append();"/>
+			<label left="0" top="5" width="240" height="25" horzTextAlign="center" text="TALENTOS E DEFEITOS"/>
+
+			<recordList left="0" top="30" width="240" height="260" name="rclTalentos" field="listaDeTalentos" templateForm="frmRecordListForm" layout="vertical">
+				<event name="onCompare">
+		            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+				</event>
+			</recordList>
+		</rectangle>
+
+		<rectangle left="615" top="255" width="240" height="300" color="black">
+			<button left="5" top="5" width="25" height="25" text="+" onClick="self.rclMagias:append();"/>
+			<label left="0" top="5" width="240" height="25" horzTextAlign="center" text="MAGIAS"/>
+
+			<recordList left="0" top="30" width="240" height="260" name="rclMagias" field="listaDeMagias" templateForm="frmRecordListForm" layout="vertical">
+				<event name="onCompare">
+		            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+				</event>
+			</recordList>
+		</rectangle>
+	</scrollBox>
+</form>
