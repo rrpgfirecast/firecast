@@ -21,14 +21,14 @@
 			<Descricao left1="610" left2="700" top="50" text="PELE" field="pele"/>
 			<Descricao left1="610" left2="700" top="75" text="CABELO" field="cabelo"/>
 			
-			<Descricao left1="910" left2="1000" top="25" text="TATTO" field="plano"/>
+			<Descricao left1="910" left2="1000" top="25" text="TATOO" field="plano"/>
 			<Descricao left1="910" left2="1000" top="50" text="CICATRIZES" field="regiao"/>
 			<Descricao left1="910" left2="1000" top="75" text="ETNIA" field="reino"/>
 		</rectangle>
 		
 		<layout left="0" top="110" width="375" height="240">
 			<rectangle align="client" color="black"/>
-			<label left="5" top="1" width="100" height="20" text="APARÊNCIA"/>
+			<label left="5" top="1" width="100" height="20" text="CARACTERÍSTICAS"/>
 			<textEditor left="5" top="25" width="365" height="210" field="aparencia"/>
 		</layout>
 		<layout left="0" top="355" width="375" height="250">
@@ -38,7 +38,7 @@
 		</layout>
 		<layout left="380" top="110" width="825" height="495">
 			<rectangle align="client" color="black"/>
-			<label left="5" top="1" width="100" height="20" text="HISTORIA"/>
+			<label left="5" top="1" width="100" height="20" text="PRE-MORTEM"/>
 			<richEdit left="5" top="25" width="815" height="465" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
 		</layout>
 	</scrollBox>

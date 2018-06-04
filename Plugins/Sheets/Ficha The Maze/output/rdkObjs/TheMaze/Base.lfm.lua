@@ -418,7 +418,7 @@ function newfrmBase()
     obj.label19:setWidth(310);
     obj.label19:setHeight(25);
     obj.label19:setHorzTextAlign("center");
-    obj.label19:setText("Bençãos");
+    obj.label19:setText("Bençãos e Sentinelas");
     obj.label19:setName("label19");
 
     obj.label20 = gui.fromHandle(_obj_newObject("label"));
@@ -437,12 +437,24 @@ function newfrmBase()
     obj.rclBencaos:setLeft(5);
     obj.rclBencaos:setTop(30);
     obj.rclBencaos:setWidth(300);
-    obj.rclBencaos:setHeight(455);
+    obj.rclBencaos:setHeight(273);
     obj.rclBencaos:setName("rclBencaos");
     obj.rclBencaos:setField("listaDeBencaos");
     obj.rclBencaos:setTemplateForm("frmBlessing");
     obj.rclBencaos:setLayout("vertical");
-    obj.rclBencaos:setMinQt(5);
+    obj.rclBencaos:setMinQt(3);
+
+    obj.rclSentinela = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclSentinela:setParent(obj.rectangle10);
+    obj.rclSentinela:setLeft(5);
+    obj.rclSentinela:setTop(303);
+    obj.rclSentinela:setWidth(300);
+    obj.rclSentinela:setHeight(182);
+    obj.rclSentinela:setName("rclSentinela");
+    obj.rclSentinela:setField("listaDeSentinelas");
+    obj.rclSentinela:setTemplateForm("frmSentinel");
+    obj.rclSentinela:setLayout("vertical");
+    obj.rclSentinela:setMinQt(2);
 
     obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle11:setParent(obj.scrollBox1);
@@ -988,7 +1000,7 @@ function newfrmBase()
 
     obj.rectangle24 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle24:setParent(obj.rectangle11);
-    obj.rectangle24:setLeft(75);
+    obj.rectangle24:setLeft(15);
     obj.rectangle24:setTop(210);
     obj.rectangle24:setWidth(50);
     obj.rectangle24:setHeight(25);
@@ -996,6 +1008,27 @@ function newfrmBase()
     obj.rectangle24:setStrokeColor("white");
     obj.rectangle24:setStrokeSize(1);
     obj.rectangle24:setName("rectangle24");
+
+    obj.atr_max = gui.fromHandle(_obj_newObject("label"));
+    obj.atr_max:setParent(obj.rectangle11);
+    obj.atr_max:setLeft(15);
+    obj.atr_max:setTop(210);
+    obj.atr_max:setWidth(50);
+    obj.atr_max:setHeight(25);
+    obj.atr_max:setHorzTextAlign("center");
+    obj.atr_max:setField("atr_max");
+    obj.atr_max:setName("atr_max");
+
+    obj.rectangle25 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle25:setParent(obj.rectangle11);
+    obj.rectangle25:setLeft(75);
+    obj.rectangle25:setTop(210);
+    obj.rectangle25:setWidth(50);
+    obj.rectangle25:setHeight(25);
+    obj.rectangle25:setColor("black");
+    obj.rectangle25:setStrokeColor("white");
+    obj.rectangle25:setStrokeSize(1);
+    obj.rectangle25:setName("rectangle25");
 
     obj.label44 = gui.fromHandle(_obj_newObject("label"));
     obj.label44:setParent(obj.rectangle11);
@@ -1007,16 +1040,16 @@ function newfrmBase()
     obj.label44:setField("sum_total");
     obj.label44:setName("label44");
 
-    obj.rectangle25 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle25:setParent(obj.rectangle11);
-    obj.rectangle25:setLeft(125);
-    obj.rectangle25:setTop(210);
-    obj.rectangle25:setWidth(50);
-    obj.rectangle25:setHeight(25);
-    obj.rectangle25:setColor("black");
-    obj.rectangle25:setStrokeColor("white");
-    obj.rectangle25:setStrokeSize(1);
-    obj.rectangle25:setName("rectangle25");
+    obj.rectangle26 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle26:setParent(obj.rectangle11);
+    obj.rectangle26:setLeft(125);
+    obj.rectangle26:setTop(210);
+    obj.rectangle26:setWidth(50);
+    obj.rectangle26:setHeight(25);
+    obj.rectangle26:setColor("black");
+    obj.rectangle26:setStrokeColor("white");
+    obj.rectangle26:setStrokeSize(1);
+    obj.rectangle26:setName("rectangle26");
 
     obj.label45 = gui.fromHandle(_obj_newObject("label"));
     obj.label45:setParent(obj.rectangle11);
@@ -1028,16 +1061,16 @@ function newfrmBase()
     obj.label45:setField("sum_inicial");
     obj.label45:setName("label45");
 
-    obj.rectangle26 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle26:setParent(obj.rectangle11);
-    obj.rectangle26:setLeft(175);
-    obj.rectangle26:setTop(210);
-    obj.rectangle26:setWidth(50);
-    obj.rectangle26:setHeight(25);
-    obj.rectangle26:setColor("black");
-    obj.rectangle26:setStrokeColor("white");
-    obj.rectangle26:setStrokeSize(1);
-    obj.rectangle26:setName("rectangle26");
+    obj.rectangle27 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle27:setParent(obj.rectangle11);
+    obj.rectangle27:setLeft(175);
+    obj.rectangle27:setTop(210);
+    obj.rectangle27:setWidth(50);
+    obj.rectangle27:setHeight(25);
+    obj.rectangle27:setColor("black");
+    obj.rectangle27:setStrokeColor("white");
+    obj.rectangle27:setStrokeSize(1);
+    obj.rectangle27:setName("rectangle27");
 
     obj.label46 = gui.fromHandle(_obj_newObject("label"));
     obj.label46:setParent(obj.rectangle11);
@@ -1051,42 +1084,47 @@ function newfrmBase()
 
     obj.dataLink10 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink10:setParent(obj.rectangle11);
-    obj.dataLink10:setFields({'cac_total'});
+    obj.dataLink10:setFields({'atr_max','sum_total'});
     obj.dataLink10:setName("dataLink10");
 
     obj.dataLink11 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink11:setParent(obj.rectangle11);
-    obj.dataLink11:setFields({'paranormalidade_total'});
+    obj.dataLink11:setFields({'cac_total'});
     obj.dataLink11:setName("dataLink11");
 
     obj.dataLink12 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink12:setParent(obj.rectangle11);
-    obj.dataLink12:setFields({'sum_inicial', 'sum_nivel'});
+    obj.dataLink12:setFields({'paranormalidade_total'});
     obj.dataLink12:setName("dataLink12");
 
     obj.dataLink13 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink13:setParent(obj.rectangle11);
-    obj.dataLink13:setFields({'agilidade_inicial', 'cac_inicial', 'manuseio_inicial', 'pontaria_inicial', 'paranormalidade_inicial', 'sorte_inicial'});
+    obj.dataLink13:setFields({'sum_inicial', 'sum_nivel'});
     obj.dataLink13:setName("dataLink13");
 
     obj.dataLink14 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink14:setParent(obj.rectangle11);
-    obj.dataLink14:setFields({'agilidade_nivel', 'cac_nivel', 'manuseio_nivel', 'pontaria_nivel', 'paranormalidade_nivel', 'sorte_nivel'});
+    obj.dataLink14:setFields({'agilidade_inicial', 'cac_inicial', 'manuseio_inicial', 'pontaria_inicial', 'paranormalidade_inicial', 'sorte_inicial'});
     obj.dataLink14:setName("dataLink14");
 
-    obj.rectangle27 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle27:setParent(obj.scrollBox1);
-    obj.rectangle27:setLeft(315);
-    obj.rectangle27:setTop(310);
-    obj.rectangle27:setWidth(155);
-    obj.rectangle27:setHeight(80);
-    obj.rectangle27:setColor("black");
-    obj.rectangle27:setStrokeColor("white");
-    obj.rectangle27:setStrokeSize(1);
-    obj.rectangle27:setName("rectangle27");
+    obj.dataLink15 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink15:setParent(obj.rectangle11);
+    obj.dataLink15:setFields({'agilidade_nivel', 'cac_nivel', 'manuseio_nivel', 'pontaria_nivel', 'paranormalidade_nivel', 'sorte_nivel'});
+    obj.dataLink15:setName("dataLink15");
+
+    obj.rectangle28 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle28:setParent(obj.scrollBox1);
+    obj.rectangle28:setLeft(315);
+    obj.rectangle28:setTop(310);
+    obj.rectangle28:setWidth(155);
+    obj.rectangle28:setHeight(80);
+    obj.rectangle28:setColor("black");
+    obj.rectangle28:setStrokeColor("white");
+    obj.rectangle28:setStrokeSize(1);
+    obj.rectangle28:setName("rectangle28");
 
     obj.label47 = gui.fromHandle(_obj_newObject("label"));
-    obj.label47:setParent(obj.rectangle27);
+    obj.label47:setParent(obj.rectangle28);
     obj.label47:setLeft(75);
     obj.label47:setTop(5);
     obj.label47:setWidth(75);
@@ -1096,7 +1134,7 @@ function newfrmBase()
     obj.label47:setName("label47");
 
     obj.label48 = gui.fromHandle(_obj_newObject("label"));
-    obj.label48:setParent(obj.rectangle27);
+    obj.label48:setParent(obj.rectangle28);
     obj.label48:setLeft(0);
     obj.label48:setTop(25);
     obj.label48:setWidth(75);
@@ -1105,19 +1143,19 @@ function newfrmBase()
     obj.label48:setText("Física");
     obj.label48:setName("label48");
 
-    obj.rectangle28 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle28:setParent(obj.rectangle27);
-    obj.rectangle28:setLeft(90);
-    obj.rectangle28:setTop(25);
-    obj.rectangle28:setWidth(45);
-    obj.rectangle28:setHeight(25);
-    obj.rectangle28:setColor("black");
-    obj.rectangle28:setStrokeColor("white");
-    obj.rectangle28:setStrokeSize(1);
-    obj.rectangle28:setName("rectangle28");
+    obj.rectangle29 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle29:setParent(obj.rectangle28);
+    obj.rectangle29:setLeft(90);
+    obj.rectangle29:setTop(25);
+    obj.rectangle29:setWidth(45);
+    obj.rectangle29:setHeight(25);
+    obj.rectangle29:setColor("black");
+    obj.rectangle29:setStrokeColor("white");
+    obj.rectangle29:setStrokeSize(1);
+    obj.rectangle29:setName("rectangle29");
 
     obj.label49 = gui.fromHandle(_obj_newObject("label"));
-    obj.label49:setParent(obj.rectangle27);
+    obj.label49:setParent(obj.rectangle28);
     obj.label49:setLeft(90);
     obj.label49:setTop(25);
     obj.label49:setWidth(45);
@@ -1127,7 +1165,7 @@ function newfrmBase()
     obj.label49:setName("label49");
 
     obj.label50 = gui.fromHandle(_obj_newObject("label"));
-    obj.label50:setParent(obj.rectangle27);
+    obj.label50:setParent(obj.rectangle28);
     obj.label50:setLeft(0);
     obj.label50:setTop(50);
     obj.label50:setWidth(75);
@@ -1136,19 +1174,19 @@ function newfrmBase()
     obj.label50:setText("Paranormal");
     obj.label50:setName("label50");
 
-    obj.rectangle29 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle29:setParent(obj.rectangle27);
-    obj.rectangle29:setLeft(90);
-    obj.rectangle29:setTop(50);
-    obj.rectangle29:setWidth(45);
-    obj.rectangle29:setHeight(25);
-    obj.rectangle29:setColor("black");
-    obj.rectangle29:setStrokeColor("white");
-    obj.rectangle29:setStrokeSize(1);
-    obj.rectangle29:setName("rectangle29");
+    obj.rectangle30 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle30:setParent(obj.rectangle28);
+    obj.rectangle30:setLeft(90);
+    obj.rectangle30:setTop(50);
+    obj.rectangle30:setWidth(45);
+    obj.rectangle30:setHeight(25);
+    obj.rectangle30:setColor("black");
+    obj.rectangle30:setStrokeColor("white");
+    obj.rectangle30:setStrokeSize(1);
+    obj.rectangle30:setName("rectangle30");
 
     obj.label51 = gui.fromHandle(_obj_newObject("label"));
-    obj.label51:setParent(obj.rectangle27);
+    obj.label51:setParent(obj.rectangle28);
     obj.label51:setLeft(90);
     obj.label51:setTop(50);
     obj.label51:setWidth(45);
@@ -1157,19 +1195,19 @@ function newfrmBase()
     obj.label51:setField("resistenciaParanormal");
     obj.label51:setName("label51");
 
-    obj.rectangle30 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle30:setParent(obj.scrollBox1);
-    obj.rectangle30:setLeft(475);
-    obj.rectangle30:setTop(310);
-    obj.rectangle30:setWidth(435);
-    obj.rectangle30:setHeight(80);
-    obj.rectangle30:setColor("black");
-    obj.rectangle30:setStrokeColor("white");
-    obj.rectangle30:setStrokeSize(1);
-    obj.rectangle30:setName("rectangle30");
+    obj.rectangle31 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle31:setParent(obj.scrollBox1);
+    obj.rectangle31:setLeft(475);
+    obj.rectangle31:setTop(310);
+    obj.rectangle31:setWidth(435);
+    obj.rectangle31:setHeight(80);
+    obj.rectangle31:setColor("black");
+    obj.rectangle31:setStrokeColor("white");
+    obj.rectangle31:setStrokeSize(1);
+    obj.rectangle31:setName("rectangle31");
 
     obj.label52 = gui.fromHandle(_obj_newObject("label"));
-    obj.label52:setParent(obj.rectangle30);
+    obj.label52:setParent(obj.rectangle31);
     obj.label52:setLeft(0);
     obj.label52:setTop(5);
     obj.label52:setWidth(435);
@@ -1179,7 +1217,7 @@ function newfrmBase()
     obj.label52:setName("label52");
 
     obj.label53 = gui.fromHandle(_obj_newObject("label"));
-    obj.label53:setParent(obj.rectangle30);
+    obj.label53:setParent(obj.rectangle31);
     obj.label53:setLeft(5);
     obj.label53:setTop(25);
     obj.label53:setWidth(135);
@@ -1189,7 +1227,7 @@ function newfrmBase()
     obj.label53:setName("label53");
 
     obj.edit19 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit19:setParent(obj.rectangle30);
+    obj.edit19:setParent(obj.rectangle31);
     obj.edit19:setLeft(140);
     obj.edit19:setTop(25);
     obj.edit19:setWidth(75);
@@ -1198,7 +1236,7 @@ function newfrmBase()
     obj.edit19:setName("edit19");
 
     obj.label54 = gui.fromHandle(_obj_newObject("label"));
-    obj.label54:setParent(obj.rectangle30);
+    obj.label54:setParent(obj.rectangle31);
     obj.label54:setLeft(220);
     obj.label54:setTop(25);
     obj.label54:setWidth(135);
@@ -1208,7 +1246,7 @@ function newfrmBase()
     obj.label54:setName("label54");
 
     obj.edit20 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit20:setParent(obj.rectangle30);
+    obj.edit20:setParent(obj.rectangle31);
     obj.edit20:setLeft(355);
     obj.edit20:setTop(25);
     obj.edit20:setWidth(75);
@@ -1217,7 +1255,7 @@ function newfrmBase()
     obj.edit20:setName("edit20");
 
     obj.label55 = gui.fromHandle(_obj_newObject("label"));
-    obj.label55:setParent(obj.rectangle30);
+    obj.label55:setParent(obj.rectangle31);
     obj.label55:setLeft(5);
     obj.label55:setTop(50);
     obj.label55:setWidth(135);
@@ -1227,7 +1265,7 @@ function newfrmBase()
     obj.label55:setName("label55");
 
     obj.edit21 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit21:setParent(obj.rectangle30);
+    obj.edit21:setParent(obj.rectangle31);
     obj.edit21:setLeft(140);
     obj.edit21:setTop(50);
     obj.edit21:setWidth(75);
@@ -1236,7 +1274,7 @@ function newfrmBase()
     obj.edit21:setName("edit21");
 
     obj.label56 = gui.fromHandle(_obj_newObject("label"));
-    obj.label56:setParent(obj.rectangle30);
+    obj.label56:setParent(obj.rectangle31);
     obj.label56:setLeft(220);
     obj.label56:setTop(50);
     obj.label56:setWidth(135);
@@ -1246,7 +1284,7 @@ function newfrmBase()
     obj.label56:setName("label56");
 
     obj.edit22 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit22:setParent(obj.rectangle30);
+    obj.edit22:setParent(obj.rectangle31);
     obj.edit22:setLeft(355);
     obj.edit22:setTop(50);
     obj.edit22:setWidth(75);
@@ -1254,19 +1292,19 @@ function newfrmBase()
     obj.edit22:setField("redutorCorrosivo");
     obj.edit22:setName("edit22");
 
-    obj.rectangle31 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle31:setParent(obj.scrollBox1);
-    obj.rectangle31:setLeft(315);
-    obj.rectangle31:setTop(395);
-    obj.rectangle31:setWidth(595);
-    obj.rectangle31:setHeight(290);
-    obj.rectangle31:setColor("black");
-    obj.rectangle31:setStrokeColor("white");
-    obj.rectangle31:setStrokeSize(1);
-    obj.rectangle31:setName("rectangle31");
+    obj.rectangle32 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle32:setParent(obj.scrollBox1);
+    obj.rectangle32:setLeft(315);
+    obj.rectangle32:setTop(395);
+    obj.rectangle32:setWidth(595);
+    obj.rectangle32:setHeight(290);
+    obj.rectangle32:setColor("black");
+    obj.rectangle32:setStrokeColor("white");
+    obj.rectangle32:setStrokeSize(1);
+    obj.rectangle32:setName("rectangle32");
 
     obj.label57 = gui.fromHandle(_obj_newObject("label"));
-    obj.label57:setParent(obj.rectangle31);
+    obj.label57:setParent(obj.rectangle32);
     obj.label57:setLeft(0);
     obj.label57:setTop(5);
     obj.label57:setWidth(535);
@@ -1276,7 +1314,7 @@ function newfrmBase()
     obj.label57:setName("label57");
 
     obj.label58 = gui.fromHandle(_obj_newObject("label"));
-    obj.label58:setParent(obj.rectangle31);
+    obj.label58:setParent(obj.rectangle32);
     obj.label58:setLeft(0);
     obj.label58:setTop(5);
     obj.label58:setWidth(550);
@@ -1286,30 +1324,9 @@ function newfrmBase()
     obj.label58:setFontSize(11);
     obj.label58:setName("label58");
 
-    obj.rectangle32 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle32:setParent(obj.rectangle31);
-    obj.rectangle32:setLeft(310);
-    obj.rectangle32:setTop(5);
-    obj.rectangle32:setWidth(50);
-    obj.rectangle32:setHeight(25);
-    obj.rectangle32:setColor("black");
-    obj.rectangle32:setStrokeColor("white");
-    obj.rectangle32:setStrokeSize(1);
-    obj.rectangle32:setName("rectangle32");
-
-    obj.label59 = gui.fromHandle(_obj_newObject("label"));
-    obj.label59:setParent(obj.rectangle31);
-    obj.label59:setLeft(310);
-    obj.label59:setTop(5);
-    obj.label59:setWidth(50);
-    obj.label59:setHeight(25);
-    obj.label59:setHorzTextAlign("center");
-    obj.label59:setField("habilidadesNivel");
-    obj.label59:setName("label59");
-
     obj.rectangle33 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle33:setParent(obj.rectangle31);
-    obj.rectangle33:setLeft(360);
+    obj.rectangle33:setParent(obj.rectangle32);
+    obj.rectangle33:setLeft(310);
     obj.rectangle33:setTop(5);
     obj.rectangle33:setWidth(50);
     obj.rectangle33:setHeight(25);
@@ -1318,8 +1335,29 @@ function newfrmBase()
     obj.rectangle33:setStrokeSize(1);
     obj.rectangle33:setName("rectangle33");
 
+    obj.label59 = gui.fromHandle(_obj_newObject("label"));
+    obj.label59:setParent(obj.rectangle32);
+    obj.label59:setLeft(310);
+    obj.label59:setTop(5);
+    obj.label59:setWidth(50);
+    obj.label59:setHeight(25);
+    obj.label59:setHorzTextAlign("center");
+    obj.label59:setField("habilidadesNivel");
+    obj.label59:setName("label59");
+
+    obj.rectangle34 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle34:setParent(obj.rectangle32);
+    obj.rectangle34:setLeft(360);
+    obj.rectangle34:setTop(5);
+    obj.rectangle34:setWidth(50);
+    obj.rectangle34:setHeight(25);
+    obj.rectangle34:setColor("black");
+    obj.rectangle34:setStrokeColor("white");
+    obj.rectangle34:setStrokeSize(1);
+    obj.rectangle34:setName("rectangle34");
+
     obj.label60 = gui.fromHandle(_obj_newObject("label"));
-    obj.label60:setParent(obj.rectangle31);
+    obj.label60:setParent(obj.rectangle32);
     obj.label60:setLeft(360);
     obj.label60:setTop(5);
     obj.label60:setWidth(50);
@@ -1329,7 +1367,7 @@ function newfrmBase()
     obj.label60:setName("label60");
 
     obj.rclHabilidades = gui.fromHandle(_obj_newObject("recordList"));
-    obj.rclHabilidades:setParent(obj.rectangle31);
+    obj.rclHabilidades:setParent(obj.rectangle32);
     obj.rclHabilidades:setLeft(5);
     obj.rclHabilidades:setTop(30);
     obj.rclHabilidades:setWidth(585);
@@ -1340,16 +1378,16 @@ function newfrmBase()
     obj.rclHabilidades:setLayout("vertical");
     obj.rclHabilidades:setMinQt(5);
 
-    obj.rectangle34 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle34:setParent(obj.scrollBox1);
-    obj.rectangle34:setLeft(605);
-    obj.rectangle34:setTop(0);
-    obj.rectangle34:setWidth(305);
-    obj.rectangle34:setHeight(305);
-    obj.rectangle34:setColor("black");
-    obj.rectangle34:setStrokeColor("white");
-    obj.rectangle34:setStrokeSize(1);
-    obj.rectangle34:setName("rectangle34");
+    obj.rectangle35 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle35:setParent(obj.scrollBox1);
+    obj.rectangle35:setLeft(605);
+    obj.rectangle35:setTop(0);
+    obj.rectangle35:setWidth(305);
+    obj.rectangle35:setHeight(305);
+    obj.rectangle35:setColor("black");
+    obj.rectangle35:setStrokeColor("white");
+    obj.rectangle35:setStrokeSize(1);
+    obj.rectangle35:setName("rectangle35");
 
     obj.image1 = gui.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.scrollBox1);
@@ -1362,19 +1400,19 @@ function newfrmBase()
     obj.image1:setStyle("autoFit");
     obj.image1:setName("image1");
 
-    obj.rectangle35 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle35:setParent(obj.scrollBox1);
-    obj.rectangle35:setLeft(915);
-    obj.rectangle35:setTop(0);
-    obj.rectangle35:setWidth(310);
-    obj.rectangle35:setHeight(190);
-    obj.rectangle35:setColor("black");
-    obj.rectangle35:setStrokeColor("white");
-    obj.rectangle35:setStrokeSize(1);
-    obj.rectangle35:setName("rectangle35");
+    obj.rectangle36 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle36:setParent(obj.scrollBox1);
+    obj.rectangle36:setLeft(915);
+    obj.rectangle36:setTop(0);
+    obj.rectangle36:setWidth(310);
+    obj.rectangle36:setHeight(190);
+    obj.rectangle36:setColor("black");
+    obj.rectangle36:setStrokeColor("white");
+    obj.rectangle36:setStrokeSize(1);
+    obj.rectangle36:setName("rectangle36");
 
     obj.label61 = gui.fromHandle(_obj_newObject("label"));
-    obj.label61:setParent(obj.rectangle35);
+    obj.label61:setParent(obj.rectangle36);
     obj.label61:setLeft(0);
     obj.label61:setTop(5);
     obj.label61:setWidth(310);
@@ -1384,7 +1422,7 @@ function newfrmBase()
     obj.label61:setName("label61");
 
     obj.rclContratos = gui.fromHandle(_obj_newObject("recordList"));
-    obj.rclContratos:setParent(obj.rectangle35);
+    obj.rclContratos:setParent(obj.rectangle36);
     obj.rclContratos:setLeft(5);
     obj.rclContratos:setTop(30);
     obj.rclContratos:setWidth(300);
@@ -1395,19 +1433,19 @@ function newfrmBase()
     obj.rclContratos:setLayout("vertical");
     obj.rclContratos:setMinQt(3);
 
-    obj.rectangle36 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle36:setParent(obj.scrollBox1);
-    obj.rectangle36:setLeft(915);
-    obj.rectangle36:setTop(195);
-    obj.rectangle36:setWidth(310);
-    obj.rectangle36:setHeight(195);
-    obj.rectangle36:setColor("black");
-    obj.rectangle36:setStrokeColor("white");
-    obj.rectangle36:setStrokeSize(1);
-    obj.rectangle36:setName("rectangle36");
+    obj.rectangle37 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle37:setParent(obj.scrollBox1);
+    obj.rectangle37:setLeft(915);
+    obj.rectangle37:setTop(195);
+    obj.rectangle37:setWidth(310);
+    obj.rectangle37:setHeight(195);
+    obj.rectangle37:setColor("black");
+    obj.rectangle37:setStrokeColor("white");
+    obj.rectangle37:setStrokeSize(1);
+    obj.rectangle37:setName("rectangle37");
 
     obj.label62 = gui.fromHandle(_obj_newObject("label"));
-    obj.label62:setParent(obj.rectangle36);
+    obj.label62:setParent(obj.rectangle37);
     obj.label62:setLeft(0);
     obj.label62:setTop(5);
     obj.label62:setWidth(310);
@@ -1417,7 +1455,7 @@ function newfrmBase()
     obj.label62:setName("label62");
 
     obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor1:setParent(obj.rectangle36);
+    obj.textEditor1:setParent(obj.rectangle37);
     obj.textEditor1:setLeft(5);
     obj.textEditor1:setTop(30);
     obj.textEditor1:setWidth(300);
@@ -1425,19 +1463,19 @@ function newfrmBase()
     obj.textEditor1:setField("ultimato");
     obj.textEditor1:setName("textEditor1");
 
-    obj.rectangle37 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle37:setParent(obj.scrollBox1);
-    obj.rectangle37:setLeft(915);
-    obj.rectangle37:setTop(395);
-    obj.rectangle37:setWidth(310);
-    obj.rectangle37:setHeight(190);
-    obj.rectangle37:setColor("black");
-    obj.rectangle37:setStrokeColor("white");
-    obj.rectangle37:setStrokeSize(1);
-    obj.rectangle37:setName("rectangle37");
+    obj.rectangle38 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle38:setParent(obj.scrollBox1);
+    obj.rectangle38:setLeft(915);
+    obj.rectangle38:setTop(395);
+    obj.rectangle38:setWidth(310);
+    obj.rectangle38:setHeight(190);
+    obj.rectangle38:setColor("black");
+    obj.rectangle38:setStrokeColor("white");
+    obj.rectangle38:setStrokeSize(1);
+    obj.rectangle38:setName("rectangle38");
 
     obj.label63 = gui.fromHandle(_obj_newObject("label"));
-    obj.label63:setParent(obj.rectangle37);
+    obj.label63:setParent(obj.rectangle38);
     obj.label63:setLeft(0);
     obj.label63:setTop(5);
     obj.label63:setWidth(310);
@@ -1447,13 +1485,44 @@ function newfrmBase()
     obj.label63:setName("label63");
 
     obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor2:setParent(obj.rectangle37);
+    obj.textEditor2:setParent(obj.rectangle38);
     obj.textEditor2:setLeft(5);
     obj.textEditor2:setTop(30);
     obj.textEditor2:setWidth(300);
     obj.textEditor2:setHeight(155);
     obj.textEditor2:setField("privilegio");
     obj.textEditor2:setName("textEditor2");
+
+    obj.rectangle39 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle39:setParent(obj.scrollBox1);
+    obj.rectangle39:setLeft(915);
+    obj.rectangle39:setTop(590);
+    obj.rectangle39:setWidth(310);
+    obj.rectangle39:setHeight(60);
+    obj.rectangle39:setColor("black");
+    obj.rectangle39:setStrokeColor("white");
+    obj.rectangle39:setStrokeSize(1);
+    obj.rectangle39:setName("rectangle39");
+
+    obj.label64 = gui.fromHandle(_obj_newObject("label"));
+    obj.label64:setParent(obj.rectangle39);
+    obj.label64:setLeft(0);
+    obj.label64:setTop(5);
+    obj.label64:setWidth(310);
+    obj.label64:setHeight(25);
+    obj.label64:setHorzTextAlign("center");
+    obj.label64:setText("Carma");
+    obj.label64:setName("label64");
+
+    obj.comboBox2 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox2:setParent(obj.rectangle39);
+    obj.comboBox2:setLeft(55);
+    obj.comboBox2:setTop(30);
+    obj.comboBox2:setWidth(200);
+    obj.comboBox2:setHeight(25);
+    obj.comboBox2:setField("carma");
+    obj.comboBox2:setItems({'Divino 2','Divino 1','Humano','Demoníaco 1','Demoníaco 2'});
+    obj.comboBox2:setName("comboBox2");
 
     obj._e_event0 = obj.edit2:addEventListener("onChange",
         function (self)
@@ -1482,26 +1551,11 @@ function newfrmBase()
             						sheet.paranormalidade_inicial = 2;
             						sheet.sorte_inicial = 3;
             						local habilidades = ndb.getChildNodes(sheet.listaDeHabilidades);
-            						habilidades[1].habilidade = [[Optimização (Passiva)
-            Estágio 1: Itens Consumíveis têm seus efeitos ampliados.
-            Estágio 2: Recebe mais do mesmo Item.
-            Estágio 3: Trocas exigem menos Materiais.]];
-            						habilidades[2].habilidade = [[Círculo de Alquimia (Instantânea)
-            Estágio 1: Cria uma área que concede Vigor ao Personagem sobre ela (1pt p/ Rodada).
-            Estágio 2-3(+1): Copia a última Habilidade usada por um Aliado no Círculo (+ efeito).
-            Estágio 3(+1): Receber Dano no Círculo restitui a Fadiga gasta na Rodada (+ efeito).]];
-            						habilidades[3].habilidade = [[As Três Etapas
-            Estágio 1: Mistura Itens Consumíveis para lhes dar novos efeitos (1pt).
-            Estágio 2: Transmuta Itens liberando energia no processo (1pt).
-            Estágio 3: Usa Cristais para fundir Itens iguais (1pt).]];
-            						habilidades[4].habilidade = [[Colecionador (Passiva)
-            Estágio 1: Aprimora o estaque de Itens iguais.
-            Estágio 2: Recebe Itens extras de localidades e Tarefas.
-            Estágio 3: Pode escolher o Item no teste de Drop.]];
-            						habilidades[5].habilidade = [[Transmutação
-            Estágio 1-3: Modifica a Arma que empunha para outra do mesmo tipo (1pt p/ Rodada).
-            Estágio 2(+1): Pode usar Transmutação na Arma do Aliado no Círculo (+ efeito).
-            Estágio 3(+1): Usa mais Fadiga para conceder Aprimoramentos à Arma (“x”pt). ]];
+            						habilidades[1].habilidade = "Optimização (Passiva)\nEstágio 1: Itens Consumíveis têm seus efeitos ampliados.\nEstágio 2: Recebe mais do mesmo Item.\nEstágio 3: Trocas exigem menos Materiais.";
+            						habilidades[2].habilidade = "Círculo de Alquimia (Instantânea)\nEstágio 1: Cria uma área que concede Vigor ao Personagem sobre ela (1pt p/ Rodada).\nEstágio 2-3(+1): Copia a última Habilidade usada por um Aliado no Círculo (+ efeito).\nEstágio 3(+1): Receber Dano no Círculo restitui a Fadiga gasta na Rodada (+ efeito).";
+            						habilidades[3].habilidade = "As Três Etapas\nEstágio 1: Mistura Itens Consumíveis para lhes dar novos efeitos (1pt).\nEstágio 2: Transmuta Itens liberando energia no processo (1pt).\nEstágio 3: Usa Cristais para fundir Itens iguais (1pt).";
+            						habilidades[4].habilidade = "Colecionador (Passiva)\nEstágio 1: Aprimora o estaque de Itens iguais.\nEstágio 2: Recebe Itens extras de localidades e Tarefas.\nEstágio 3: Pode escolher o Item no teste de Drop.";
+            						habilidades[5].habilidade = "Transmutação\nEstágio 1-3: Modifica a Arma que empunha para outra do mesmo tipo (1pt p/ Rodada).\nEstágio 2(+1): Pode usar Transmutação na Arma do Aliado no Círculo (+ efeito).\nEstágio 3(+1): Usa mais Fadiga para conceder Aprimoramentos à Arma (“x”pt). ";
             					
             					-- Arcanista
             					elseif sheet.aptidao=="2" then
@@ -1512,26 +1566,11 @@ function newfrmBase()
             						sheet.paranormalidade_inicial = 4;
             						sheet.sorte_inicial = 2;
             						local habilidades = ndb.getChildNodes(sheet.listaDeHabilidades);
-            						habilidades[1].habilidade = [[Habilidade “6º Sentido” (Passiva):
-            Estágio 1: Percebe nativamente atividade Paranormal em objetos e lugares.
-            Estágio 2: Revela a intenção de ataque e detalhes específicos de Inimigos do tipo Espírito.
-            Estágio 3: Concede passivamente Dano Paranormal ampliado.]];
-            						habilidades[2].habilidade = [[Habilidade “Aura Protetora” (Instantânea):
-            Estágio 1: Cria uma Aura que nega o Dano de qualquer ataque recebido (1pt).
-            Estágio 2(+1): Cria mais Auras Protetoras na mesma ação (máx. 3pt).
-            Estágio 3(+1): Aumenta a força das Aura Protetoras (+ efeito)(1pt p/ estaque)(máx. 3pt p/ Aura).]];
-            						habilidades[3].habilidade = [[Habilidade “Símbolo Arcano”:
-            Estágio 1: Concede uma marca de energia Paranormal a um Personagem (1pt p/ estaque)(máx. 3pt).
-            Estágio 2(+1): A marca de energia Paranormal concede melhorias ao portador (+ efeito).
-            Estágio 3(+1): A marca de energia nega Status Anormais no portador (+ efeito).]];
-            						habilidades[4].habilidade = [[Habilidade “Essência Paranormal” (Passiva):
-            Estágio 1: Crítico de Paranormalidade causa ainda mais Dano Paranormal.
-            Estágio 2: Regenera Fadiga se receber Dano Paranormal na Rodada.
-            Estágio 3: Recebe mais 25% de aumento da Fadiga máxima.]];
-            						habilidades[5].habilidade = [[Habilidade “Conjuração Telecinética”:
-            Estágio 1: Usa Telecinese para flutuar um Inimigo ou um objeto (1pt p/ Rodada).
-            Estágio 2(+1): Telecinese Paralisa Inimigos e causa Dano Paranormal (2pt p/ Inimigo).
-            Estágio 3(+2): Gastar mais Fadiga aumenta o Dano Paranormal da Telecinese (+ efeito)(máx. 3pt).]];
+            						habilidades[1].habilidade = "Habilidade “6º Sentido” (Passiva):\nEstágio 1: Percebe nativamente atividade Paranormal em objetos e lugares.\nEstágio 2: Revela a intenção de ataque e detalhes específicos de Inimigos do tipo Espírito.\nEstágio 3: Concede passivamente Dano Paranormal ampliado.";
+            						habilidades[2].habilidade = "Habilidade “Aura Protetora” (Instantânea):\nEstágio 1: Cria uma Aura que nega o Dano de qualquer ataque recebido (1pt).\nEstágio 2(+1): Cria mais Auras Protetoras na mesma ação (máx. 3pt).\nEstágio 3(+1): Aumenta a força das Aura Protetoras (+ efeito)(1pt p/ estaque)(máx. 3pt p/ Aura).";
+            						habilidades[3].habilidade = "Habilidade “Símbolo Arcano”:\nEstágio 1: Concede uma marca de energia Paranormal a um Personagem (1pt p/ estaque)(máx. 3pt).\nEstágio 2(+1): A marca de energia Paranormal concede melhorias ao portador (+ efeito).\nEstágio 3(+1): A marca de energia nega Status Anormais no portador (+ efeito).";
+            						habilidades[4].habilidade = "Habilidade “Essência Paranormal” (Passiva):\nEstágio 1: Crítico de Paranormalidade causa ainda mais Dano Paranormal.\nEstágio 2: Regenera Fadiga se receber Dano Paranormal na Rodada.\nEstágio 3: Recebe mais 25% de aumento da Fadiga máxima.";
+            						habilidades[5].habilidade = "Habilidade “Conjuração Telecinética”:\nEstágio 1: Usa Telecinese para flutuar um Inimigo ou um objeto (1pt p/ Rodada).\nEstágio 2(+1): Telecinese Paralisa Inimigos e causa Dano Paranormal (2pt p/ Inimigo).\nEstágio 3(+2): Gastar mais Fadiga aumenta o Dano Paranormal da Telecinese (+ efeito)(máx. 3pt).";
             					
             					-- Caçador
             					elseif sheet.aptidao=="3" then
@@ -1542,26 +1581,11 @@ function newfrmBase()
             						sheet.paranormalidade_inicial = 1;
             						sheet.sorte_inicial = 2;
             						local habilidades = ndb.getChildNodes(sheet.listaDeHabilidades);
-            						habilidades[1].habilidade = [[Olhar Aguçado (Passiva)
-            Estágio 1: Percebe passivamente detalhes em localidades e em Itens Chave.
-            Estágio 2: Revela intenção de ataque e detalhes específicos de Inimigos não-Espíritos.
-            Estágio 3: Concede passivamente Dano do tipo Projétil ampliado.]];
-            						habilidades[2].habilidade = [[Armadilha
-            Estágio 1: Em modo Furtivo posiciona até duas Armadilhas em campo (1 Mat.).
-            Estágio 2-3(+1): Causa Paralisação em Inimigos que ativarem uma Armadilha (+ efeito).
-            Estágio 3(+1): Confecciona Armadilhas mais fortes usando mais Materiais (+ efeito) (máx. 3 Mat.).]];
-            						habilidades[3].habilidade = [[Veterano na Caçada (Passiva)
-            Estágio 1: Materiais para Armadilha não consomem espaço no Inventário.
-            Estágio 1-3: A cada Estágio melhora a técnica de Arrombamento de portas.
-            Estágio 3: Amplifica os efeitos do modo Furtivo.]];
-            						habilidades[4].habilidade = [[Furtividade (Instantânea)
-            Estágio 1: Entra em modo Furtivo se não for alvo de ataques (1pt p/ Rodada).
-            Estágio 2(+1): Entrar em modo Furtivo não consome a ação (+ efeito).
-            Estágio 3(+1): Entrar em modo Furtivo retira Paralisação, Imobilização e Aturdido (+ efeito)(2pt).]];
-            						habilidades[5].habilidade = [[Letalidade Silenciosa
-            Estágio 1: Em modo Furtivo utiliza um ataque de Dano Físico elevado se estiver atrás do Inimigo (2pt).
-            Estágio 2(+1): Se esta Habilidade derrotar o Inimigo seu custo de Fadiga é restituído (+ efeito)
-            Estágio 3(+1): Se esta Habilidade derrotar o Inimigo Caçador não sai do modo Furtivo (+ efeito).]];
+            						habilidades[1].habilidade = "Olhar Aguçado (Passiva)\nEstágio 1: Percebe passivamente detalhes em localidades e em Itens Chave.\nEstágio 2: Revela intenção de ataque e detalhes específicos de Inimigos não-Espíritos.\nEstágio 3: Concede passivamente Dano do tipo Projétil ampliado.";
+            						habilidades[2].habilidade = "Armadilha\nEstágio 1: Em modo Furtivo posiciona até duas Armadilhas em campo (1 Mat.).\nEstágio 2-3(+1): Causa Paralisação em Inimigos que ativarem uma Armadilha (+ efeito).\nEstágio 3(+1): Confecciona Armadilhas mais fortes usando mais Materiais (+ efeito) (máx. 3 Mat.).";
+            						habilidades[3].habilidade = "Veterano na Caçada (Passiva)\nEstágio 1: Materiais para Armadilha não consomem espaço no Inventário.\nEstágio 1-3: A cada Estágio melhora a técnica de Arrombamento de portas.\nEstágio 3: Amplifica os efeitos do modo Furtivo.";
+            						habilidades[4].habilidade = "Furtividade (Instantânea)\nEstágio 1: Entra em modo Furtivo se não for alvo de ataques (1pt p/ Rodada).\nEstágio 2(+1): Entrar em modo Furtivo não consome a ação (+ efeito).\nEstágio 3(+1): Entrar em modo Furtivo retira Paralisação, Imobilização e Aturdido (+ efeito)(2pt).";
+            						habilidades[5].habilidade = "Letalidade Silenciosa\nEstágio 1: Em modo Furtivo utiliza um ataque de Dano Físico elevado se estiver atrás do Inimigo (2pt).\nEstágio 2(+1): Se esta Habilidade derrotar o Inimigo seu custo de Fadiga é restituído (+ efeito)\nEstágio 3(+1): Se esta Habilidade derrotar o Inimigo Caçador não sai do modo Furtivo (+ efeito).";
             
             					-- Cavaleiro
             					elseif sheet.aptidao=="4" then
@@ -1572,26 +1596,11 @@ function newfrmBase()
             						sheet.paranormalidade_inicial = 1;
             						sheet.sorte_inicial = 2;
             						local habilidades = ndb.getChildNodes(sheet.listaDeHabilidades);
-            						habilidades[1].habilidade = [[Constituição (Passiva)
-            Estágio 1: Ignora o primeiro Status Anormal recebido em Batalha.
-            Estágio 1-3: Aumenta o limite de Itens do Inventário em 2 a cada Estágio desta Habilidade.
-            Estágio 3: Concede passivamente Dano Físico ampliado utilizando Armas Brancas.]];
-            						habilidades[2].habilidade = [[Brado de Glória
-            Estágio 1: Provoca Inimigos Físicos em campo e recebe redução de Dano Físico (2pt).
-            Estágio 2(+1): Concede Vigor de Corpo-a-Corpo contra Inimigos Provocados (+ efeito).
-            Estágio 3(+1): Enquanto houver Inimigos Provocados amplifica efeitos de cura em si (+ efeito).]];
-            						habilidades[3].habilidade = [[Força Destrutiva
-            Estágio 1: Aplica um golpe com Dano Físico elevado (1pt).
-            Estágio 2(+1): Pode concentrar mais Dano em Força Destrutiva (+ efeito)(máx. 3pt).
-            Estágio 3(+1): Esta Habilidade causa Paralisação e Fratura ao alvo (+ efeito).]];
-            						habilidades[4].habilidade = [[Mestre da Batalha (Passiva)
-            Estágio 1: Reduz passivamente o Dano Físico recebido.
-            Estágio 2: Crítico de Corpo-a-Corpo causa ainda mais Dano Físico.
-            Estágio 3: Cavaleiro não pode perder mais de 50% da sua Vida máxima em uma Rodada. ]];
-            						habilidades[5].habilidade = [[Defesa Absoluta (Instantânea)
-            Estágio 1: Nega um ataque Físico já executado em si (1-3pt).
-            Estágio 2: Defesa não consome a Ação. (+ efeito).
-            Estágio 3: Concede Contra-Ataque após a Defesa. (+efeito).]];
+            						habilidades[1].habilidade = "Constituição (Passiva)\nEstágio 1: Ignora o primeiro Status Anormal recebido em Batalha.\nEstágio 1-3: Aumenta o limite de Itens do Inventário em 2 a cada Estágio desta Habilidade.\nEstágio 3: Concede passivamente Dano Físico ampliado utilizando Armas Brancas.";
+            						habilidades[2].habilidade = "Brado de Glória\nEstágio 1: Provoca Inimigos Físicos em campo e recebe redução de Dano Físico (2pt).\nEstágio 2(+1): Concede Vigor de Corpo-a-Corpo contra Inimigos Provocados (+ efeito).\nEstágio 3(+1): Enquanto houver Inimigos Provocados amplifica efeitos de cura em si (+ efeito).";
+            						habilidades[3].habilidade = "Força Destrutiva\nEstágio 1: Aplica um golpe com Dano Físico elevado (1pt).\nEstágio 2(+1): Pode concentrar mais Dano em Força Destrutiva (+ efeito)(máx. 3pt).\nEstágio 3(+1): Esta Habilidade causa Paralisação e Fratura ao alvo (+ efeito).";
+            						habilidades[4].habilidade = "Mestre da Batalha (Passiva)\nEstágio 1: Reduz passivamente o Dano Físico recebido.\nEstágio 2: Crítico de Corpo-a-Corpo causa ainda mais Dano Físico.\nEstágio 3: Cavaleiro não pode perder mais de 50% da sua Vida máxima em uma Rodada. ";
+            						habilidades[5].habilidade = "Defesa Absoluta (Instantânea)\nEstágio 1: Nega um ataque Físico já executado em si (1-3pt).\nEstágio 2: Defesa não consome a Ação. (+ efeito).\nEstágio 3: Concede Contra-Ataque após a Defesa. (+efeito).";
             
             					-- Monge
             					elseif sheet.aptidao=="5" then
@@ -1602,26 +1611,11 @@ function newfrmBase()
             						sheet.paranormalidade_inicial = 2;
             						sheet.sorte_inicial = 1;
             						local habilidades = ndb.getChildNodes(sheet.listaDeHabilidades);
-            						habilidades[1].habilidade = [[Taijutsu (Passiva)
-            Estágio 1: Pode atacar sem usar Armas (1 de Dano Físico)(Sem Dano Crítico).
-            Estágio 2: Atacar a curta distância ativa Acerto Crítico de Taijutsu (apenas para o primeiro ataque).
-            Estágio 3: Aumenta o Dano do Taijutsu em 1 ponto.]];
-            						habilidades[2].habilidade = [[O Estilo Secreto
-            Estágio 1: Acerto Crítico de Taijutsu concede chance de usar Taijutsu novamente (1pt).
-            Estágio 2-3(+1): O número de repetições desta Habilidade é o mesmo de seu Estágio (1pt p/ repetição).
-            Estágio 3: Acerto Crítico da Palma do Dragão e do Estilo do Leopardo ativam o Estilo Secreto (+efeito).]];
-            						habilidades[3].habilidade = [[Chacra (Passiva)
-            Estágio 1: Concede Clarividência.
-            Estágio 2: Concede Taijutsu Sacerdotal (Paranormalidade também ativa o Estilo Secreto).
-            Estágio 3: Enquanto com menos de 20% de Vida recupera 1 ponto de Fadiga por Rodada. ]];
-            						habilidades[4].habilidade = [[A Palma do Dragão (Instantânea)
-            Estágio 1: Causa todo Dano Físico recebido em Dano a um Inimigo + Dano do Taijutsu (2pt).
-            Estágio 2(+1): Palma do Dragão como contra-ataque não consome a Ação (+ efeito).
-            Estágio 3(+1): Reverte Status Anormais recebidos no ataque Inimigo (+efeito). ]];
-            						habilidades[5].habilidade = [[O Estilo do Leopardo
-            Estágio 1: Ataca dois Inimigos com o Dano do Taijutsu (1pt).
-            Estágio 2(+1): Pode encadear mais Inimigos nesta Habilidade (1pt p/ repetição).
-            Estágio 3(+1): Encadear quatro Inimigos restitui toda Fadiga gasta com esta Habilidade (+ efeito). ]];
+            						habilidades[1].habilidade = "Taijutsu (Passiva)\nEstágio 1: Pode atacar sem usar Armas (1 de Dano Físico)(Sem Dano Crítico).\nEstágio 2: Atacar a curta distância ativa Acerto Crítico de Taijutsu (apenas para o primeiro ataque).\nEstágio 3: Aumenta o Dano do Taijutsu em 1 ponto.";
+            						habilidades[2].habilidade = "O Estilo Secreto\nEstágio 1: Acerto Crítico de Taijutsu concede chance de usar Taijutsu novamente (1pt).\nEstágio 2-3(+1): O número de repetições desta Habilidade é o mesmo de seu Estágio (1pt p/ repetição).\nEstágio 3: Acerto Crítico da Palma do Dragão e do Estilo do Leopardo ativam o Estilo Secreto (+efeito).";
+            						habilidades[3].habilidade = "Chacra (Passiva)\nEstágio 1: Concede Clarividência.\nEstágio 2: Concede Taijutsu Sacerdotal (Paranormalidade também ativa o Estilo Secreto).\nEstágio 3: Enquanto com menos de 20% de Vida recupera 1 ponto de Fadiga por Rodada. ";
+            						habilidades[4].habilidade = "A Palma do Dragão (Instantânea)\nEstágio 1: Causa todo Dano Físico recebido em Dano a um Inimigo + Dano do Taijutsu (2pt).\nEstágio 2(+1): Palma do Dragão como contra-ataque não consome a Ação (+ efeito).\nEstágio 3(+1): Reverte Status Anormais recebidos no ataque Inimigo (+efeito). ";
+            						habilidades[5].habilidade = "O Estilo do Leopardo\nEstágio 1: Ataca dois Inimigos com o Dano do Taijutsu (1pt).\nEstágio 2(+1): Pode encadear mais Inimigos nesta Habilidade (1pt p/ repetição).\nEstágio 3(+1): Encadear quatro Inimigos restitui toda Fadiga gasta com esta Habilidade (+ efeito). ";
             					
             					-- Necromante
             					elseif sheet.aptidao=="6" then
@@ -1632,26 +1626,11 @@ function newfrmBase()
             						sheet.paranormalidade_inicial = 4;
             						sheet.sorte_inicial = 2;
             						local habilidades = ndb.getChildNodes(sheet.listaDeHabilidades);
-            						habilidades[1].habilidade = [[Profanador Sanguinolento (Passiva)
-            Estágio 1: Ataques e Habilidades do Necromante causam Dano do tipo Corrosivo.
-            Estágio 2: Reduz passivamente qualquer Dano do tipo Corrosivo recebido.
-            Estágio 3: Inimigos com Sangramento recebem Dano ampliado do Necromante.]];
-            						habilidades[2].habilidade = [[Reanimação
-            Estágio 1: Reanima um Inimigo Inconsciente ao seu favor na Batalha (1 ponto de Vida p/ Rodada).
-            Estágio 2(+1): Sacrifica o Inimigo reanimado para usar uma Habilidade sua (1-3pt).
-            Estágio 3(+1): Reanima mais Inimigos Inconscientes em campo (máx. 3).]];
-            						habilidades[3].habilidade = [[Colhedor de Almas (Instantânea)
-            Estágio 1: Mata um Inimigo Inconsciente e recupera um pouco da Vida do Necromante (sem custo).
-            Estágio 2(+1): Usar esta Habilidade retira Status Anormais do Necromante (+ efeito)
-            Estágio 3(+1): Matar Espíritos recupera Fadiga do Necromante (+ efeito).]];
-            						habilidades[4].habilidade = [[Hemodominus
-            Estágio 1: Absorve parte da Vida de um Inimigo do tipo Físico em campo (1pt).
-            Estágio 2: Inimigos atingidos pelo Hemodominus recebem Sangramento (+efeito).
-            Estágio 3: Pode aumentar a quantidade de absorção de Vida (máx. 3pt).]];
-            						habilidades[5].habilidade = [[Mors Imperiosa (Passiva)
-            Estágio 1: Com 20% ou menos de Vida máxima o Necromante não gasta nada nas Habilidades.
-            Estágio 2: Gasta pontos de Fadiga para não ficar Inconsciente, mas fica Exausto.
-            Estágio 3(+1): Mors Imperiosa se ativa a partir de 40% de Vida.]];
+            						habilidades[1].habilidade = "Profanador Sanguinolento (Passiva)\nEstágio 1: Ataques e Habilidades do Necromante causam Dano do tipo Corrosivo.\nEstágio 2: Reduz passivamente qualquer Dano do tipo Corrosivo recebido.\nEstágio 3: Inimigos com Sangramento recebem Dano ampliado do Necromante.";
+            						habilidades[2].habilidade = "Reanimação\nEstágio 1: Reanima um Inimigo Inconsciente ao seu favor na Batalha (1 ponto de Vida p/ Rodada).\nEstágio 2(+1): Sacrifica o Inimigo reanimado para usar uma Habilidade sua (1-3pt).\nEstágio 3(+1): Reanima mais Inimigos Inconscientes em campo (máx. 3).";
+            						habilidades[3].habilidade = "Colhedor de Almas (Instantânea)\nEstágio 1: Mata um Inimigo Inconsciente e recupera um pouco da Vida do Necromante (sem custo).\nEstágio 2(+1): Usar esta Habilidade retira Status Anormais do Necromante (+ efeito)\nEstágio 3(+1): Matar Espíritos recupera Fadiga do Necromante (+ efeito).";
+            						habilidades[4].habilidade = "Hemodominus\nEstágio 1: Absorve parte da Vida de um Inimigo do tipo Físico em campo (1pt).\nEstágio 2: Inimigos atingidos pelo Hemodominus recebem Sangramento (+efeito).\nEstágio 3: Pode aumentar a quantidade de absorção de Vida (máx. 3pt).";
+            						habilidades[5].habilidade = "Mors Imperiosa (Passiva)\nEstágio 1: Com 20% ou menos de Vida máxima o Necromante não gasta nada nas Habilidades.\nEstágio 2: Gasta pontos de Fadiga para não ficar Inconsciente, mas fica Exausto.\nEstágio 3(+1): Mors Imperiosa se ativa a partir de 40% de Vida.";
             					
             					-- Xamã
             					elseif sheet.aptidao=="7" then
@@ -1662,26 +1641,11 @@ function newfrmBase()
             						sheet.paranormalidade_inicial = 3;
             						sheet.sorte_inicial = 1;
             						local habilidades = ndb.getChildNodes(sheet.listaDeHabilidades);
-            						habilidades[1].habilidade = [[Tatuagem Rúnica (Passiva)
-            Estágio 1: Pode usar todos os pontos do Atributo nos testes de Resistência.
-            Estágio 2: Sobre efeito de Status Anormais Xamã ganha redução de Dano aumentado.
-            Estágio 1-3: Ganha 2 pontos de Vida máximos a cada Estágio desta Habilidade.]];
-            						habilidades[2].habilidade = [[Oração Ancestral (Instantânea)
-            Estágio 1: Um Aliado ganha Vigor em um lançamento, mas Xamã fica Aturdido (1pt p/ Rodada).
-            Estágio 2(+1): O Aliado com Vigor desta Habilidade recebe redução de Dano aumentado (+ efeito).
-            Estágio 3(+1): Esta Habilidade concede Tenacidade ao Aliado (+ efeito).]];
-            						habilidades[3].habilidade = [[O Voo Sagrado do Condor
-            Estágio 1: Colide contra um Inimigo o Paralisando e Provocando os demais (1pt).
-            Estágio 2(+1): Inimigos Provocados ficam Aturdidos para ataques sobre o Xamã (+ efeito).
-            Estágio 3(+1): O Inimigo colidido pelo Xamã perde Tenacidade e Aceleração (+ efeito).]];
-            						habilidades[4].habilidade = [[O Chamado dos Espíritos (Passiva)
-            Estágio 1: Inimigos derrotados com ajuda de Oração Ancestral curam um pouco da Vida do Xamã.
-            Estágio 2: Curas excedentes desta Habilidade curam Aliados ao invés do Xamã.
-            Estágio 3: Enquanto “Aturdido” Xamã ganha Tenacidade.]];
-            						habilidades[5].habilidade = [[Chama Violeta
-            Estágio 1: Cura um pouco da Vida de um Aliado (1pt).
-            Estágio 2(+1): Aumenta a quantidade de Cura ou a quantidade de Aliados curados (máx. 3pt).
-            Estágio 3(+1): Cura retira Status Anormais e prolonga Status Especiais de Aliados (+ efeito).]];
+            						habilidades[1].habilidade = "Tatuagem Rúnica (Passiva)\nEstágio 1: Pode usar todos os pontos do Atributo nos testes de Resistência.\nEstágio 2: Sobre efeito de Status Anormais Xamã ganha redução de Dano aumentado.\nEstágio 1-3: Ganha 2 pontos de Vida máximos a cada Estágio desta Habilidade.";
+            						habilidades[2].habilidade = "Oração Ancestral (Instantânea)\nEstágio 1: Um Aliado ganha Vigor em um lançamento, mas Xamã fica Aturdido (1pt p/ Rodada).\nEstágio 2(+1): O Aliado com Vigor desta Habilidade recebe redução de Dano aumentado (+ efeito).\nEstágio 3(+1): Esta Habilidade concede Tenacidade ao Aliado (+ efeito).";
+            						habilidades[3].habilidade = "O Voo Sagrado do Condor\nEstágio 1: Colide contra um Inimigo o Paralisando e Provocando os demais (1pt).\nEstágio 2(+1): Inimigos Provocados ficam Aturdidos para ataques sobre o Xamã (+ efeito).\nEstágio 3(+1): O Inimigo colidido pelo Xamã perde Tenacidade e Aceleração (+ efeito).";
+            						habilidades[4].habilidade = "O Chamado dos Espíritos (Passiva)\nEstágio 1: Inimigos derrotados com ajuda de Oração Ancestral curam um pouco da Vida do Xamã.\nEstágio 2: Curas excedentes desta Habilidade curam Aliados ao invés do Xamã.\nEstágio 3: Enquanto “Aturdido” Xamã ganha Tenacidade.";
+            						habilidades[5].habilidade = "Chama Violeta\nEstágio 1: Cura um pouco da Vida de um Aliado (1pt).\nEstágio 2(+1): Aumenta a quantidade de Cura ou a quantidade de Aliados curados (máx. 3pt).\nEstágio 3(+1): Cura retira Status Anormais e prolonga Status Especiais de Aliados (+ efeito).";
             					end;
         end, obj);
 
@@ -1703,10 +1667,11 @@ function newfrmBase()
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            					local nivel = (tonumber(sheet.nivel) or 0) * 2;
-            					sheet.vidaBase = 4 + nivel;
-            					sheet.fadigaBase = 1 + nivel;
-            					sheet.habilidadesDisponivel = math.min(nivel, 15);
+            					local nivel = (tonumber(sheet.nivel) or 0);
+            					sheet.vidaBase = 5 + (nivel * 3);
+            					sheet.fadigaBase = 1 + (nivel * 2);
+            					sheet.atr_max = 64 + (nivel * 3);
+            					sheet.habilidadesDisponivel = math.min((nivel * 2), 15);
         end, obj);
 
     obj._e_event4 = obj.dataLink2:addEventListener("onChange",
@@ -1784,12 +1749,27 @@ function newfrmBase()
     obj._e_event12 = obj.dataLink10:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
+            					
+            					local max = tonumber(sheet.atr_max) or 0;
+            					local gastos = tonumber(sheet.sum_total) or 0;
+            					if max > gastos then
+            						self.atr_max.fontColor = "#00FF00";
+            					elseif max < gastos then
+            						self.atr_max.fontColor = "#FF0000";
+            					else
+            						self.atr_max.fontColor = "#FFFFFF";
+            					end;
+        end, obj);
+
+    obj._e_event13 = obj.dataLink11:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
             					local res = (tonumber(sheet.cac_total) or 0);
             					res = math.floor(res/2);
             					sheet.resistenciaFisica = res;
         end, obj);
 
-    obj._e_event13 = obj.dataLink11:addEventListener("onChange",
+    obj._e_event14 = obj.dataLink12:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             					local res = (tonumber(sheet.paranormalidade_total) or 0);
@@ -1797,7 +1777,7 @@ function newfrmBase()
             					sheet.resistenciaParanormal = res;
         end, obj);
 
-    obj._e_event14 = obj.dataLink12:addEventListener("onChange",
+    obj._e_event15 = obj.dataLink13:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             					local sum = (tonumber(sheet.sum_inicial) or 0) + 
@@ -1805,7 +1785,7 @@ function newfrmBase()
             					sheet.sum_total = sum;
         end, obj);
 
-    obj._e_event15 = obj.dataLink13:addEventListener("onChange",
+    obj._e_event16 = obj.dataLink14:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             					local sum = 	(tonumber(sheet.agilidade_inicial) or 0) + 
@@ -1817,7 +1797,7 @@ function newfrmBase()
             					sheet.sum_inicial = sum;
         end, obj);
 
-    obj._e_event16 = obj.dataLink14:addEventListener("onChange",
+    obj._e_event17 = obj.dataLink15:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             					local sum = 	(tonumber(sheet.agilidade_nivel) or 0) + 
@@ -1829,7 +1809,7 @@ function newfrmBase()
             					sheet.sum_nivel = sum;
         end, obj);
 
-    obj._e_event17 = obj.rclHabilidades:addEventListener("onEndEnumeration",
+    obj._e_event18 = obj.rclHabilidades:addEventListener("onEndEnumeration",
         function (self)
             if sheet== nil then return end;
             				
@@ -1839,12 +1819,13 @@ function newfrmBase()
             				end;
         end, obj);
 
-    obj._e_event18 = obj.image1:addEventListener("onStartDrag",
+    obj._e_event19 = obj.image1:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event19);
         __o_rrpgObjs.removeEventListenerById(self._e_event18);
         __o_rrpgObjs.removeEventListenerById(self._e_event17);
         __o_rrpgObjs.removeEventListenerById(self._e_event16);
@@ -1917,7 +1898,9 @@ function newfrmBase()
         if self.label61 ~= nil then self.label61:destroy(); self.label61 = nil; end;
         if self.label63 ~= nil then self.label63:destroy(); self.label63 = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
+        if self.label64 ~= nil then self.label64:destroy(); self.label64 = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
+        if self.rectangle38 ~= nil then self.rectangle38:destroy(); self.rectangle38 = nil; end;
         if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
@@ -1942,6 +1925,7 @@ function newfrmBase()
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
         if self.rectangle33 ~= nil then self.rectangle33:destroy(); self.rectangle33 = nil; end;
         if self.edit8 ~= nil then self.edit8:destroy(); self.edit8 = nil; end;
+        if self.atr_max ~= nil then self.atr_max:destroy(); self.atr_max = nil; end;
         if self.rectangle28 ~= nil then self.rectangle28:destroy(); self.rectangle28 = nil; end;
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
         if self.label52 ~= nil then self.label52:destroy(); self.label52 = nil; end;
@@ -1956,6 +1940,7 @@ function newfrmBase()
         if self.label48 ~= nil then self.label48:destroy(); self.label48 = nil; end;
         if self.label53 ~= nil then self.label53:destroy(); self.label53 = nil; end;
         if self.rectangle26 ~= nil then self.rectangle26:destroy(); self.rectangle26 = nil; end;
+        if self.comboBox2 ~= nil then self.comboBox2:destroy(); self.comboBox2 = nil; end;
         if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.rectangle7 ~= nil then self.rectangle7:destroy(); self.rectangle7 = nil; end;
@@ -1965,6 +1950,7 @@ function newfrmBase()
         if self.label58 ~= nil then self.label58:destroy(); self.label58 = nil; end;
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
+        if self.rclSentinela ~= nil then self.rclSentinela:destroy(); self.rclSentinela = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.rectangle27 ~= nil then self.rectangle27:destroy(); self.rectangle27 = nil; end;
@@ -1986,6 +1972,7 @@ function newfrmBase()
         if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
         if self.edit17 ~= nil then self.edit17:destroy(); self.edit17 = nil; end;
         if self.rectangle30 ~= nil then self.rectangle30:destroy(); self.rectangle30 = nil; end;
+        if self.dataLink15 ~= nil then self.dataLink15:destroy(); self.dataLink15 = nil; end;
         if self.rectangle12 ~= nil then self.rectangle12:destroy(); self.rectangle12 = nil; end;
         if self.label46 ~= nil then self.label46:destroy(); self.label46 = nil; end;
         if self.label39 ~= nil then self.label39:destroy(); self.label39 = nil; end;
@@ -2015,6 +2002,7 @@ function newfrmBase()
         if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
         if self.dataLink11 ~= nil then self.dataLink11:destroy(); self.dataLink11 = nil; end;
         if self.label62 ~= nil then self.label62:destroy(); self.label62 = nil; end;
+        if self.rectangle39 ~= nil then self.rectangle39:destroy(); self.rectangle39 = nil; end;
         if self.edit18 ~= nil then self.edit18:destroy(); self.edit18 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle24 ~= nil then self.rectangle24:destroy(); self.rectangle24 = nil; end;

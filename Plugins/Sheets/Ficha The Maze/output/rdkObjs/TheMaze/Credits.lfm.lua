@@ -41,7 +41,7 @@ function newfrmTemplateCreditos()
     obj.image1:setWidth(500);
     obj.image1:setHeight(500);
     obj.image1:setStyle("autoFit");
-    obj.image1:setSRC("log mesa");
+    obj.image1:setSRC("logo");
     obj.image1:setName("image1");
 
     obj.image2 = gui.fromHandle(_obj_newObject("image"));
@@ -118,7 +118,7 @@ function newfrmTemplateCreditos()
     obj.image3:setWidth(100);
     obj.image3:setHeight(20);
     obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("link versao atual");
+    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20The%20Maze/release.png");
     obj.image3:setName("image3");
 
     obj.label5 = gui.fromHandle(_obj_newObject("label"));
@@ -189,7 +189,7 @@ function newfrmTemplateCreditos()
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('link atualizar')
+            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20The%20Maze/Ficha%20The%20Maze.rpk')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",

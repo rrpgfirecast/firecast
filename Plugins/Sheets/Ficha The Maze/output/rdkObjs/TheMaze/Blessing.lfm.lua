@@ -44,9 +44,9 @@ function newfrmBlessing()
     obj.comboBox1:setWidth(275);
     obj.comboBox1:setHeight(25);
     obj.comboBox1:setField("nome");
-    obj.comboBox1:setItems({'O Chamado de Ninguém (2 moedas)', 'Contra-Ataque (5 moedas)', 'Defesa Ativa (5 moedas)', 'Bênção Severa (3 moedas)', 'Infusão de Espírito (3 moedas)', 'Segunda Chance (4 moedas)', 'Bênção Vigorosa (5 moedas)', 'Regeneração Inerente (3 moedas)', 'Contrato do Arrebatado (6 moedas)', 'Incendiário (4 moedas):', 'Sanguinário (4 moedas)', 'Porto Seguro (2 moedas)', 'Tatuagem de Aruman (8 moedas)', 'Ímpeto (4 moedas)', 'Fúria (4 moedas)', 'Momentum (4 moedas)', 'Invocação de Sentinela (2 moedas): Vulto', 'Invocação de Sentinela (2 moedas): Inquisidora', 'Invocação de Sentinela (2 moedas): Belladonna', 'Invocação de Sentinela (2 moedas): Zelote', 'Invocação de Sentinela (2 moedas): O Juiz:', 'Invocação de Sentinela (2 moedas): O Observador', 'Invocação de Sentinela (2 moedas): Ceifador Abissal'});
+    obj.comboBox1:setItems({'O Chamado de Ninguém (2 moedas)', 'Contra-Ataque (5 moedas)', 'Defesa Ativa (5 moedas)', 'Bênção Severa (3 moedas)', 'Infusão de Espírito (3 moedas)', 'Segunda Chance (4 moedas)', 'Bênção Vigorosa (5 moedas)', 'Regeneração Inerente (3 moedas)', 'Contrato do Arrebatado (6 moedas)', 'Incendiário (4 moedas):', 'Sanguinário (4 moedas)', 'Porto Seguro (2 moedas)', 'Tatuagem de Aruman (8 moedas)', 'Ímpeto (4 moedas)', 'Fúria (4 moedas)', 'Momentum (4 moedas)'});
     obj.comboBox1:setFontSize(10);
-    obj.comboBox1:setValues({'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'});
+    obj.comboBox1:setValues({'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'});
     obj.comboBox1:setName("comboBox1");
 
     obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
@@ -140,27 +140,6 @@ function newfrmBlessing()
             				elseif sheet.nome == "16" then
             					sheet.custo = 4;
             					sheet.bencao = "Recupera 1 ponto de Fadiga sempre que obtiver um Acerto Crítico em qualquer lançamento.";
-            				elseif sheet.nome == "17" then
-            					sheet.custo = 2;
-            					sheet.bencao = "Vulto: a cada Rodada esta Sentinela ataca um Inimigo aleatório no campo. Se por acaso ele atacar um Inimigo com Barreira ou Aura Protetora esta proteção é removida, porém, nenhum Dano será aplicado. Se houver apenas um Inimigo em campo a passiva do Vulto tem apenas metade de chance de ser ativada a cada Rodada.";
-            				elseif sheet.nome == "18" then
-            					sheet.custo = 2;
-            					sheet.bencao = "Inquisidora: a cada Rodada esta Sentinela marca um Aliado aleatório no campo. Aliados marcados recebem cura e efeitos aumentados de fontes aliadas e também podem usar Habilidades sem gastar pontos de Fadiga, porém, Inimigos priorizarão seus ataques e Habilidades em Aliados marcados (sobrepondo Provocações). A marca dura apenas uma Rodada a menos que a Inquisidora marque ocasionalmente a mesmo Aliado novamente. Se houver apenas o portador desta Sentinela em campo a passiva da Inquisidora não será ativada. A Inquisidora não consegue marcar Aliados em modo Furtivo.";
-            				elseif sheet.nome == "19" then
-            					sheet.custo = 2;
-            					sheet.bencao = "Belladonna: a cada Rodada esta Sentinela cura um Aliado aleatório no campo com base na sua Vida máxima. Se por acaso o Aliado curado estiver com um Status Anormal, a cura de Belladonna também remove este Status. Se houver apenas o portador desta Sentinela em campo a passiva de Belladonna tem apenas metade de chance de ser ativada a cada Rodada.";
-            				elseif sheet.nome == "20" then
-            					sheet.custo = 2;
-            					sheet.bencao = "Zelote: a cada Rodada esta Sentinela negará o primeiro Dano do tipo Físico aplicado a um Aliado em campo, o revestindo com sua armadura. Durante esta Rodada o Aliado revestido por Zelote ganha a Habilidade “Tenacidade” e aplica Dano aumentado em seus ataques Corpo-a-Corpo.";
-            				elseif sheet.nome == "21" then
-            					sheet.custo = 2;
-            					sheet.bencao = "O Juiz: a cada Rodada esta Sentinela marca um Inimigo aleatório no campo. Inimigos marcados recebem Dano aumentado de fontes aliadas e ficam Silenciados. A marca dura apenas uma Rodada a menos que O Juiz marque ocasionalmente a mesmo Inimigo novamente. Se houver apenas um Inimigo em campo a passiva d’O Juiz não será ativada. Se O Oportunista estiver em campo O Juiz marca prioritariamente este Inimigo.";
-            				elseif sheet.nome == "22" then
-            					sheet.custo = 2;
-            					sheet.bencao = "O Observador: esta Sentinela anda sozinha pelo Mapa, assim que ela acha um Item Chave ou um mecanismo ativável o seu portador pode si teleporta para a sua localização ao custo de todos os seus pontos de Fadiga (precisa de no mínimo “1” ponto de Fadiga para poder ativar o teleporte)(apenas o seu portador é teleportado, deixando os seus Aliados para trás). O Observador não pode atravessar portas trancadas.";
-            				elseif sheet.nome == "23" then
-            					sheet.custo = 2;
-            					sheet.bencao = "Ceifador Abissal: toda vez que um Aliado morre esta Sentinela guarda a sua alma. Se todos os Aliados que ainda estão vivos pagarem uma quantidade somada de 15 pontos de Vida e todos os seus pontos restantes de Fadiga o Aliado morto retorna a vida. Esta ressureição reestabelece metade de seus pontos de Vida máxima, mas retira todos os pontos de Fadiga que ainda tinha antes de morrer. Todos os Personagens envolvidos neste processo ficam Exaustos por uma grande quantidade de tempo.";
             				end;
         end, obj);
 

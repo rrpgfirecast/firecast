@@ -238,7 +238,7 @@ function newfrmTemplateDescription()
     obj.label11:setTop(25);
     obj.label11:setWidth(90);
     obj.label11:setHeight(20);
-    obj.label11:setText("TATTO");
+    obj.label11:setText("TATOO");
     obj.label11:setHorzTextAlign("center");
     obj.label11:setName("label11");
 
@@ -312,7 +312,7 @@ function newfrmTemplateDescription()
     obj.label14:setTop(1);
     obj.label14:setWidth(100);
     obj.label14:setHeight(20);
-    obj.label14:setText("APARÊNCIA");
+    obj.label14:setText("CARACTERÍSTICAS");
     obj.label14:setName("label14");
 
     obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
@@ -376,7 +376,7 @@ function newfrmTemplateDescription()
     obj.label16:setTop(1);
     obj.label16:setWidth(100);
     obj.label16:setHeight(20);
-    obj.label16:setText("HISTORIA");
+    obj.label16:setText("PRE-MORTEM");
     obj.label16:setName("label16");
 
     obj.richEdit1 = gui.fromHandle(_obj_newObject("richEdit"));

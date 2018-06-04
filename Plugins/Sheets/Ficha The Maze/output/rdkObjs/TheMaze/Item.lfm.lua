@@ -124,9 +124,9 @@ function newfrmItem()
             if sheet==nil then return end;
             				local max = 0;
             				if sheet.tipo == "Consumível" then
-            					max = 9;
+            					max = 3;
             				elseif sheet.tipo == "Material" then
-            					max = 20;
+            					max = 9;
             				elseif sheet.tipo == "Arma" then
             					max = 1;
             				elseif sheet.tipo == "Equipamento" then
