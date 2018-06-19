@@ -35,14 +35,40 @@
 			</event>
 		</dataLink>
 	</template>
+	<template name="magicInfoField">
+		<flowPart minWidth="30" maxWidth="400" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+		</flowPart>
+	</template>
+
+	<popup name="popMagia" width="250" height="350" backOpacity="0.4">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+			<magicInfoField text="Nome" field="nome"/>
+			<magicInfoField text="Nível" field="nivel"/>
+			<magicInfoField text="Tempo" field="tempo"/>
+			<magicInfoField text="Alcance" field="alcance"/>
+			<magicInfoField text="alvo" field="alvo"/>
+			<magicInfoField text="Duração" field="duracao"/>
+			<magicInfoField text="Efeito" field="efeito"/>
+			<magicInfoField text="Area" field="area"/>
+			<magicInfoField text="TR" field="tr"/>
+			<magicInfoField text="RM" field="rm"/>
+		</flowLayout>
+		
+		<textEditor align="client" field="descricao" class=""/>
+	</popup>
+
 	<scrollBox align="client">
-		<rectangle left="0" top="0" width="660" height="60" color="black">
+		<rectangle left="0" top="0" width="860" height="60" color="black">
 			<label left="5" top="5" width="100" height="25" horzTextAlign="center" text="Nome"/>
 			<edit left="105" top="5" width="150" height="25" field="nome"/>
 			<label left="255" top="5" width="100" height="25" horzTextAlign="center" text="Jogador"/>
 			<edit left="355" top="5" width="150" height="25" field="jogador"/>
 			<label left="505" top="5" width="75" height="25" horzTextAlign="center" text="Escala"/>
 			<edit left="580" top="5" width="75" height="25" field="escala"/>
+			<label left="655" top="5" width="100" height="25" horzTextAlign="center" text="Tendência"/>
+			<edit left="755" top="5" width="100" height="25" field="tendencia"/>
 
 			<label left="5" top="30" width="100" height="25" horzTextAlign="center" text="Raça"/>
 			<edit left="105" top="30" width="150" height="25" field="raca"/>
@@ -164,7 +190,7 @@
 			<button left="5" top="5" width="25" height="25" text="+" onClick="self.rclMagias:append();"/>
 			<label left="0" top="5" width="240" height="25" horzTextAlign="center" text="MAGIAS"/>
 
-			<recordList left="0" top="30" width="240" height="260" name="rclMagias" field="listaDeMagias" templateForm="frmRecordListForm" layout="vertical">
+			<recordList left="0" top="30" width="240" height="260" name="rclMagias" field="listaDeMagias" templateForm="frmMagicListForm" layout="vertical">
 				<event name="onCompare">
 		            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
 				</event>
