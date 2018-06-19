@@ -2827,7 +2827,7 @@ function newfrmTemplate()
     obj.image4:setWidth(100);
     obj.image4:setHeight(20);
     obj.image4:setStyle("autoFit");
-    obj.image4:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%204D&T/versao02.png");
+    obj.image4:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%204D&T/release.png");
     obj.image4:setName("image4");
 
     obj.label114 = gui.fromHandle(_obj_newObject("label"));
@@ -2847,7 +2847,7 @@ function newfrmTemplate()
     obj.image5:setWidth(100);
     obj.image5:setHeight(20);
     obj.image5:setStyle("autoFit");
-    obj.image5:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao01.png");
+    obj.image5:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao02.png");
     obj.image5:setName("image5");
 
     obj.button8 = gui.fromHandle(_obj_newObject("button"));
