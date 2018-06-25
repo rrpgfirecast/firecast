@@ -2,6 +2,25 @@
 <form name="frmTemplate" formType="sheetTemplate" dataType="Ambesek.Nefertyne.GURPS" title="Ficha GURPS 4E" align="client" theme="dark">
     <import file="../styles.xml"/>
     <import file="../templates.xml"/>
+    <popup name="popDetails" width="250" height="250" backOpacity="0.4">
+        <label align="top" field="title" horzTextAlign="center"/>
+
+        <flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+            <magicInfoField text="CUSTO" field="custo"/>
+        </flowLayout>
+        
+        <textEditor align="client" field="descricao" class=""/>
+
+        <dataLink field="custo">
+            <event name="onChange">
+                if sheet==nil then return end;
+                sheet.arquetipo_pontos = sheet.arquetipo.custo;
+                sheet.vantagens_pontos = sheet.advantages.custo;
+                sheet.desvantagens_pontos = sheet.disadvantages.custo;
+                sheet.familiaridade_cultural = sheet.familiaridades.custo;
+            </event>
+        </dataLink>
+    </popup>
     <script>
         <![CDATA[
             function pointCount()
@@ -20,7 +39,8 @@
                                 - (tonumber(sheet.atributos_deslocamento) or 0)
                                 - (tonumber(sheet.vantagens_pontos) or 0)
                                 - (tonumber(sheet.desvantagens_pontos) or 0)
-                                - (tonumber(sheet.familiaridade_cultural) or 0);
+                                - (tonumber(sheet.familiaridade_cultural) or 0)
+                                - (tonumber(sheet.arquetipo_pontos) or 0);
 
                 local objetos = ndb.getChildNodes(sheet.listaDePericias);
                 local custo = 0;
@@ -50,6 +70,9 @@
     </script>
     <rectangle class="fundo">
         <tabControl align="client" name="pgcPrincipal">
+            <tab title="Habilidades">
+                <import file="General.xml"/>
+            </tab>
             <tab title="Atributos">
                 <import file="Atributes.xml"/>
             </tab>

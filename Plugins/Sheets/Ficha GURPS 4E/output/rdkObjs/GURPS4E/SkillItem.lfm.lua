@@ -71,7 +71,7 @@ function newfrmSkillItem()
     obj.comboBox1:setWidth(50);
     obj.comboBox1:setHeight(25);
     obj.comboBox1:setField("atr");
-    obj.comboBox1:setItems({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR', '-'});
+    obj.comboBox1:setItems({'ST', 'DX', 'IQ', 'HT', 'Vont', 'Per', '-'});
     obj.comboBox1:setName("comboBox1");
 
     obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
@@ -191,9 +191,9 @@ function newfrmSkillItem()
             					mod = (tonumber(node.atributos_mod_iq) or 0);
             				elseif sheet.atr=="HT" then
             					mod = (tonumber(node.atributos_mod_ht) or 0);
-            				elseif sheet.atr=="VT" then
+            				elseif sheet.atr=="Vont" then
             					mod = (tonumber(node.atributos_mod_vt) or 0);
-            				elseif sheet.atr=="PR" then
+            				elseif sheet.atr=="Per" then
             					mod = (tonumber(node.atributos_mod_per) or 0);
             				else
             					mod = 0;
