@@ -14,10 +14,21 @@
         <dataLink field="custo">
             <event name="onChange">
                 if sheet==nil then return end;
-                sheet.arquetipo_pontos = sheet.arquetipo.custo;
-                sheet.vantagens_pontos = sheet.advantages.custo;
-                sheet.desvantagens_pontos = sheet.disadvantages.custo;
-                sheet.familiaridade_cultural = sheet.familiaridades.custo;
+                if sheet.arquetipo ~= nil then
+                    sheet.arquetipo_pontos = sheet.arquetipo.custo;
+                end;
+                if sheet.advantages ~= nil then
+                    sheet.vantagens_pontos = sheet.advantages.custo;
+                end;
+                if sheet.disadvantages ~= nil then
+                    sheet.desvantagens_pontos = sheet.disadvantages.custo;
+                end;
+                if sheet.familiaridades ~= nil then
+                    sheet.familiaridade_cultural = sheet.familiaridades.custo;
+                end;
+                if sheet.idiomas ~= nil then
+                    sheet.idiomas_pontos = sheet.idiomas.custo;
+                end;
             </event>
         </dataLink>
     </popup>
@@ -40,7 +51,8 @@
                                 - (tonumber(sheet.vantagens_pontos) or 0)
                                 - (tonumber(sheet.desvantagens_pontos) or 0)
                                 - (tonumber(sheet.familiaridade_cultural) or 0)
-                                - (tonumber(sheet.arquetipo_pontos) or 0);
+                                - (tonumber(sheet.arquetipo_pontos) or 0)
+                                - (tonumber(sheet.idiomas_pontos) or 0);
 
                 local objetos = ndb.getChildNodes(sheet.listaDePericias);
                 local custo = 0;
@@ -72,12 +84,6 @@
         <tabControl align="client" name="pgcPrincipal">
             <tab title="Habilidades">
                 <import file="General.xml"/>
-            </tab>
-            <tab title="Atributos">
-                <import file="Atributes.xml"/>
-            </tab>
-            <tab title="Habilidades">
-                <import file="Abilities.xml"/>
             </tab>
             <tab title="Descrição">
                 <import file="Characteristics.xml"/>

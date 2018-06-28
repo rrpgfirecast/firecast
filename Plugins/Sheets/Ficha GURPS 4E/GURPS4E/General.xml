@@ -164,7 +164,31 @@
 					</event>
 				</button>
 
-				<dataLink fields="{'vantagens_pontos', 'desvantagens_pontos', 'familiaridade_cultural','arquetipo_pontos'}">
+				<flowLineBreak/>
+
+				<button margins="{top=5,bottom=5}" align="top" text="Idiomas" width="250">
+					<event name="onClick">
+							local pop = self:findControlByName("popDetails");
+					
+							if sheet.idiomas == nil then
+								sheet.idiomas = {};
+								sheet.idiomas.title = "Idiomas";
+							else
+								sheet.idiomas.title = "Idiomas";
+							end;
+
+							if pop ~= nil then
+								pop:setNodeObject(sheet.idiomas);
+								pop:showPopupEx("center", self);
+							elseif sheet.idiomas == nil then
+								showMessage(sheet.idiomas);
+							else
+								showMessage("Ops, bug.. nao encontrei o popup para exibir");
+							end;
+					</event>
+				</button>
+
+				<dataLink fields="{'vantagens_pontos', 'desvantagens_pontos', 'familiaridade_cultural','arquetipo_pontos','idiomas_pontos'}">
 					<event name="onChange">
 						pointCount();
 					</event>
@@ -172,7 +196,7 @@
 
 				<flowLineBreak/>
 
-				<flowPart stepSizes="{120}" minScaledWidth="120" margins="{top=30}" height="145" frameStyle="frames/panel4transp/frame.xml">
+				<flowPart stepSizes="{120}" minScaledWidth="120" margins="{top=5}" height="145" frameStyle="frames/panel4transp/frame.xml">
 						<label left="15" top="10" width="90" height="25" field="bc_0" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 						<label left="15" top="35" width="90" height="25" field="bc_1" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 						<label left="15" top="60" width="90" height="25" field="bc_2" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
@@ -193,7 +217,7 @@
 						</event>
 				</dataLink>
 
-				<flowPart stepSizes="{120}" minScaledWidth="120" margins="{top=30}" height="145" frameStyle="frames/panel4transp/frame.xml">
+				<flowPart stepSizes="{120}" minScaledWidth="120" margins="{top=5}" height="145" frameStyle="frames/panel4transp/frame.xml">
 						<label left="15" top="10" width="90" height="25" field="db_0" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 						<label left="15" top="35" width="90" height="25" field="db_1" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 						<label left="15" top="60" width="90" height="25" field="db_2" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
@@ -216,7 +240,7 @@
 
 				<flowLineBreak/>
 
-				<flowPart minWidth="280" maxWidth="800" margins="{top=20}" height="64" frameStyle="frames/posCaptionEdit1/frame.xml">
+				<flowPart minWidth="280" maxWidth="800" margins="{top=10}" height="64" frameStyle="frames/posCaptionEdit1/frame.xml">
 					<edit align="left" class="pericia" field="nt_total" width="65"/>
 					<label align="client" text="Nível Tecnológico" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
 				</flowPart>
