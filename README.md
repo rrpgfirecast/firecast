@@ -17,7 +17,7 @@ Subpastas:
 2. Acesse o repositorio do [firecast](https://github.com/rrpgfirecast/firecast) e clique em Fork. 
 3. Em seu fork clique em "Clone or Download" e copie o url, vai ser algo como "https://github.com/{Seu_username_do_github}/firecast.git".
 4. Abra o Source Tree, aperte Ctrl+N, cole o url copiado e clique em Clone. Espere o Source Tree baixar o repositorio. 
-5. Quando o Source Tree terminar de baixar o repositorio adicione suas alterações. Macros, Plugins, e etc. Teste suas alterações e tenha certeza que tudo está funcionando e salve. 
+5. Quando o Source Tree terminar de baixar o repositorio adicione suas alterações. Macros, Plugins, e etc. Teste suas alterações, tenha certeza que tudo está funcionando e salve. 
 6. No Source Tree va em File Status > Working copy. Verifique as alterações que você fez no projeto. Tudo que tiver sido adicionado vai estar de verde. Tudo que foi removido vai estar de vermelho. Selecione os arquivos que desejar mandar para o repositorio e clique em Stage. 
 7. Escreva uma mensagem de commit explicando o que você alterou e por que. Clique em commit e depois Push. 
 8. No topo da janela do Source Tree em Repository > Create Pull Request e clique em Create Pull Request on Web.
