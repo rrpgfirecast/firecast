@@ -7,6 +7,11 @@ Subpastas:
 - Plugins: Plugins de ficha, chat, janelas acoplaveis e outros feitos com o SDK3.
 - SDK3: Informação e detalhes sobre o SDK3.
 
+# Ferramentas:
+- [RDK3.4b](http://www.firecast.com.br/RDK3.4b.exe): necessario instalar para poder compilar os projetos de plugin. 
+- [Sublime](https://www.sublimetext.com/3): um editor de texto, esse ou qualquer outro, que permita editar os arquivos do projeto. 
+- [Souce Tree](https://www.sourcetreeapp.com/): uma ferramenta para uso do git com interface, essa ou qualquer outra, para facilitar o acesso ao github. 
+
 # Uso do Git - Colaborar e adicionar seus projetos. 
 1. Faça uma conta do [GitHub](https://github.com/join?source=login).
 2. Acesse o repositorio do [firecast](https://github.com/rrpgfirecast/firecast) e clique em Fork. 
