@@ -4,4 +4,8 @@
       <id>FICHA_RPG_MEISTER</id>
       <url>https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true</url>
    </element>
+   <element>
+      <id>FichaMultiaba</id>
+      <url>https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true</url>
+   </element>
 </root>
