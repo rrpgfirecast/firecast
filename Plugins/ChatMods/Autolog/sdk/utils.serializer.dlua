@@ -8,6 +8,7 @@ local TYPE_NUMBER = 2;
 local TYPE_BOOLEAN = 3;
 local TYPE_TABLE = 4;
 local TYPE_NIL = 5;
+local TYPE_NUMBER_AS_INTEGER = 10;
 
 local typeToId = {string=TYPE_STRING, number=TYPE_NUMBER, boolean=TYPE_BOOLEAN, table=TYPE_TABLE};
 typeToId["nil"] = TYPE_NIL;
@@ -64,6 +65,12 @@ function serializer.outputValue(value, scope)
 	
 	if idType == nil then
 		error("Tipo não tratado");
+	elseif idType == TYPE_NUMBER then
+		local numberType = math.type(value);
+		
+		if numberType == "integer" then
+			idType = TYPE_NUMBER_AS_INTEGER;
+		end;
 	end;
 	
 	binaryWrite("u8", idType, scope);
@@ -72,6 +79,8 @@ function serializer.outputValue(value, scope)
 		binaryWriteString(value, scope);
 	elseif idType == TYPE_NUMBER then	
 		binaryWrite("double", value, scope);
+	elseif idType == TYPE_NUMBER_AS_INTEGER then	
+		binaryWrite("s64", value, scope);
 	elseif idType == TYPE_BOOLEAN then
 		if value then	
 			binaryWrite("u8", 1, scope);
@@ -169,6 +178,8 @@ function serializer.inputValue(scope)
 		return nil;
 	elseif tipo == TYPE_NUMBER then
 		return binaryRead("double", scope);
+	elseif tipo == TYPE_NUMBER_AS_INTEGER then
+		return binaryRead("s64", scope);
 	elseif tipo == TYPE_TABLE then
 		return serializer.inputTable(scope);
 	elseif tipo == TYPE_BOOLEAN then
