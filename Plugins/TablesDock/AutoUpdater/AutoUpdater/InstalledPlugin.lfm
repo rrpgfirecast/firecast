@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInstalledPlugin" height="50" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<label align="left" field="name" horzTextAlign="center" textTrimming="none" wordWrap="true"/>
+		<label align="left" field="moduleId" horzTextAlign="center" textTrimming="none" wordWrap="true"/>
+		<label align="left" field="author" horzTextAlign="center" textTrimming="none" wordWrap="true"/>
+		<label align="left" field="version" horzTextAlign="center" textTrimming="none" wordWrap="true"/>
+		<label align="left" field="versionAvailable" horzTextAlign="center" textTrimming="none" wordWrap="true"/>
+		<button align="right" width="25" name="downloadButton" visible="false" margins="{top = 12.5, bottom = 12.5, right = 5}">
+			<image align="client" showStyle="proportional" src="images/download.png"/>
+			<event name="onClick">
+				local install = true;
+				if sheet.stream ~= nil then
+					install = rrpg.plugins.installPlugin(sheet.stream, true);
+				end;
+				if install == false or sheet.stream == nil then
+					gui.openInBrowser(sheet.url);
+				end;
+			</event>
+		</button>
+		<button align="right" width="25" margins="{top = 12.5, bottom = 12.5, right = 5}">
+			<image align="client" showStyle="proportional" src="images/delete.png"/>
+			<event name="onClick">
+				Dialogs.confirmOkCancel("Deseja desinstalar esse plugin?",
+			        function (confirmado)
+			            if confirmado then
+			                rrpg.plugins.uninstallPlugin(sheet.moduleId);
+			            end;
+			        end);
+				
+			</event>
+		</button>
+	</rectangle>
+
+	<dataLink fields="{'url'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			if sheet.url==nil or sheet.url=="" then
+				self.downloadButton.visible = false;
+			else
+				self.downloadButton.visible = true;
+			end;
+		</event>
+	</dataLink>
+</form>
