@@ -4,7 +4,7 @@
 	<id>FICHA_RdF</id>
 	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
 	<version>0.2</version>
-	<name>NFicha Reinos de Ferro</name>
+	<name>Ficha Reinos de Ferro</name>
 	<description>Ficha para o cenario/sistema Reinos de Ferro.</description>
 	<author>Ambesek &amp; Nefertyne</author>
 	<site></site>
