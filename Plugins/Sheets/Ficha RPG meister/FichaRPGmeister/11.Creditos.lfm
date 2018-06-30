@@ -90,7 +90,7 @@
 
 									import = {};
 
-									showMessage("Ficha Importa.");
+									showMessage("Ficha Importada.");
 								end, 
 								3000
 							);
