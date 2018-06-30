@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.4b">
 	<id>Ambesek.Nefertyne.Reinos</id>
-	<version>0.6</version>
+	<version>0.7</version>
 	<name>Ficha Reinos d20</name>
 	<description>Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre. </description>
 	<author>Ambesek</author>

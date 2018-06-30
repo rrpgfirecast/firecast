@@ -128,61 +128,21 @@ function newfrmFichaRPGmeister11_svg()
     obj.label7:setParent(obj.scrollBox1);
     obj.label7:setLeft(630);
     obj.label7:setTop(400);
-    obj.label7:setWidth(90);
+    obj.label7:setWidth(200);
     obj.label7:setHeight(20);
     obj.label7:setText("SUA VERSÃO:");
+    obj.label7:setField("versionInstalled");
     obj.label7:setName("label7");
-
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle2:setParent(obj.scrollBox1);
-    obj.rectangle2:setLeft(724);
-    obj.rectangle2:setTop(399);
-    obj.rectangle2:setWidth(102);
-    obj.rectangle2:setHeight(22);
-    obj.rectangle2:setColor("white");
-    obj.rectangle2:setStrokeColor("black");
-    obj.rectangle2:setStrokeSize(1);
-    obj.rectangle2:setName("rectangle2");
-
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
-    obj.image2:setParent(obj.scrollBox1);
-    obj.image2:setLeft(725);
-    obj.image2:setTop(400);
-    obj.image2:setWidth(100);
-    obj.image2:setHeight(20);
-    obj.image2:setStyle("autoFit");
-    obj.image2:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao09.png");
-    obj.image2:setName("image2");
 
     obj.label8 = gui.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.scrollBox1);
-    obj.label8:setLeft(620);
+    obj.label8:setLeft(630);
     obj.label8:setTop(430);
-    obj.label8:setWidth(100);
+    obj.label8:setWidth(200);
     obj.label8:setHeight(20);
     obj.label8:setText("VERSÃO ATUAL:");
+    obj.label8:setField("versionDownloaded");
     obj.label8:setName("label8");
-
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle3:setParent(obj.scrollBox1);
-    obj.rectangle3:setLeft(724);
-    obj.rectangle3:setTop(429);
-    obj.rectangle3:setWidth(102);
-    obj.rectangle3:setHeight(22);
-    obj.rectangle3:setColor("white");
-    obj.rectangle3:setStrokeColor("black");
-    obj.rectangle3:setStrokeSize(1);
-    obj.rectangle3:setName("rectangle3");
-
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
-    obj.image3:setParent(obj.scrollBox1);
-    obj.image3:setLeft(725);
-    obj.image3:setTop(430);
-    obj.image3:setWidth(100);
-    obj.image3:setHeight(20);
-    obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Gerenciador%20de%20Campanha%20releases/release.png");
-    obj.image3:setName("image3");
 
     obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
@@ -227,12 +187,12 @@ function newfrmFichaRPGmeister11_svg()
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Gerenciador%20de%20Campanha%20releases/Change%20Log.txt')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/tree/master/Plugins/Sheets/Gerenciador%20de%20Campanha')
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Gerenciador%20de%20Campanha%20releases/Gerenciador%20de%20Campanha.rpk')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
@@ -267,14 +227,10 @@ function newfrmFichaRPGmeister11_svg()
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
-        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
-        if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
-        if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
-        if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;

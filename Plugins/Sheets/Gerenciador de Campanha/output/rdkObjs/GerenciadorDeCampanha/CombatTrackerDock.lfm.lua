@@ -688,7 +688,16 @@ function newfrmCombatTracker()
 
     obj._e_event1 = obj.btnRoll:addEventListener("onClick",
         function (self)
-            local nodes = ndb.getChildNodes(sheet.atores);
+            local jogadores = rrpg.getMesaDe(sheet).jogadores;
+            				local current = nil;
+            				for i = 1, #jogadores, 1 do
+            					if jogadores[i].login==rrpg.getCurrentUser().login then
+            						current = jogadores[i];
+            					end;
+            				end;
+            				if not current.isMestre then return end;
+            
+            				local nodes = ndb.getChildNodes(sheet.atores);
             				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             
             				if not mesaDoPersonagem.meuJogador.isGold then

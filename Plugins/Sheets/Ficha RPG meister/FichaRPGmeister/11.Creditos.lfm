@@ -54,6 +54,9 @@
 					function(arquivos)
 						local arq = arquivos[1];
 
+						-- Testar se deletar o arquivo funciona bem...
+						--vhd.deleteFile("import.xml")
+						
 						local stream = vhd.openFile("import.xml", "w");
 						stream:copyFrom(arq.stream, arq.stream.size);
 

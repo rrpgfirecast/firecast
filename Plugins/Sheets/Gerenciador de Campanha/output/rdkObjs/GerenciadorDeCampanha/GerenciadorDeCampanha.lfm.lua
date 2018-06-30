@@ -33,6 +33,39 @@ function newfrmBibliotecaRPGmeister()
     obj:setAlign("client");
     obj:setTheme("dark");
 
+
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+        
+
+
     obj.tabControl1 = gui.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl1:setParent(obj);
     obj.tabControl1:setAlign("client");
@@ -4154,61 +4187,21 @@ function newfrmBibliotecaRPGmeister()
     obj.label88:setParent(obj.scrollBox8);
     obj.label88:setLeft(630);
     obj.label88:setTop(400);
-    obj.label88:setWidth(90);
+    obj.label88:setWidth(200);
     obj.label88:setHeight(20);
     obj.label88:setText("SUA VERSÃO:");
+    obj.label88:setField("versionInstalled");
     obj.label88:setName("label88");
-
-    obj.rectangle54 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle54:setParent(obj.scrollBox8);
-    obj.rectangle54:setLeft(724);
-    obj.rectangle54:setTop(399);
-    obj.rectangle54:setWidth(102);
-    obj.rectangle54:setHeight(22);
-    obj.rectangle54:setColor("white");
-    obj.rectangle54:setStrokeColor("black");
-    obj.rectangle54:setStrokeSize(1);
-    obj.rectangle54:setName("rectangle54");
-
-    obj.image4 = gui.fromHandle(_obj_newObject("image"));
-    obj.image4:setParent(obj.scrollBox8);
-    obj.image4:setLeft(725);
-    obj.image4:setTop(400);
-    obj.image4:setWidth(100);
-    obj.image4:setHeight(20);
-    obj.image4:setStyle("autoFit");
-    obj.image4:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao09.png");
-    obj.image4:setName("image4");
 
     obj.label89 = gui.fromHandle(_obj_newObject("label"));
     obj.label89:setParent(obj.scrollBox8);
-    obj.label89:setLeft(620);
+    obj.label89:setLeft(630);
     obj.label89:setTop(430);
-    obj.label89:setWidth(100);
+    obj.label89:setWidth(200);
     obj.label89:setHeight(20);
     obj.label89:setText("VERSÃO ATUAL:");
+    obj.label89:setField("versionDownloaded");
     obj.label89:setName("label89");
-
-    obj.rectangle55 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle55:setParent(obj.scrollBox8);
-    obj.rectangle55:setLeft(724);
-    obj.rectangle55:setTop(429);
-    obj.rectangle55:setWidth(102);
-    obj.rectangle55:setHeight(22);
-    obj.rectangle55:setColor("white");
-    obj.rectangle55:setStrokeColor("black");
-    obj.rectangle55:setStrokeSize(1);
-    obj.rectangle55:setName("rectangle55");
-
-    obj.image5 = gui.fromHandle(_obj_newObject("image"));
-    obj.image5:setParent(obj.scrollBox8);
-    obj.image5:setLeft(725);
-    obj.image5:setTop(430);
-    obj.image5:setWidth(100);
-    obj.image5:setHeight(20);
-    obj.image5:setStyle("autoFit");
-    obj.image5:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Gerenciador%20de%20Campanha%20releases/release.png");
-    obj.image5:setName("image5");
 
     obj.button16 = gui.fromHandle(_obj_newObject("button"));
     obj.button16:setParent(obj.scrollBox8);
@@ -4251,12 +4244,49 @@ function newfrmBibliotecaRPGmeister()
     obj.button19:setText("RPGmeister");
     obj.button19:setName("button19");
 
-    obj._e_event0 = obj.button1:addEventListener("onClick",
+    obj._e_event0 = obj:addEventListener("onNodeReady",
+        function (self)
+            internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true",
+                        function(stream, contentType)
+                            local info = rrpg.plugins.getRPKDetails(stream);
+                            sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+            
+                            local installed = rrpg.plugins.getInstalledPlugins();
+                            local myself;
+                            for i=1, #installed, 1 do
+                                if installed[i].moduleId == info.moduleId then
+                                    myself = installed[i];
+                                    sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                                end;
+                            end;
+            
+                            if sheet.noUpdate==true then return end;
+                            if myself~= nil and isNewVersion(myself.version, info.version) then
+                                Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                                    function(selected, selectedIndex, selectedText)
+                                        if selected and selectedIndex == 1 then
+                                            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true');
+                                        elseif selected and selectedIndex == 3 then
+                                            sheet.noUpdate = true;
+                                        end;
+                                    end);
+                            end;
+                        end,       
+                        function (errorMsg)
+                            --showMessage(errorMsg);
+                        end,       
+                        function (downloaded, total)
+                            -- esta função será chamada constantemente.
+                            -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+                        end);
+        end, obj);
+
+    obj._e_event1 = obj.button1:addEventListener("onClick",
         function (self)
             self.rclSelector:append();
         end, obj);
 
-    obj._e_event1 = obj.button2:addEventListener("onClick",
+    obj._e_event2 = obj.button2:addEventListener("onClick",
         function (self)
             if sheet~=nil then
             					local jogadores = rrpg.getMesaDe(sheet).jogadores;
@@ -4293,20 +4323,20 @@ function newfrmBibliotecaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event2 = obj.rclSelector:addEventListener("onCompare",
+    obj._e_event3 = obj.rclSelector:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
             				return utils.compareStringPtBr(nodeA.login, nodeB.login);
         end, obj);
 
-    obj._e_event3 = obj.rclSelector:addEventListener("onSelect",
+    obj._e_event4 = obj.rclSelector:addEventListener("onSelect",
         function (self)
             local node = self.rclSelector.selectedNode;
             					self.boxDetalhesDoItem.node = node; 
             					self.boxDetalhesDoItem.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event4 = obj.rclSelector:addEventListener("onEndEnumeration",
+    obj._e_event5 = obj.rclSelector:addEventListener("onEndEnumeration",
         function (self)
             if self.rclSelector.selectedNode == nil and sheet ~= nil then
             			        local nodes = ndb.getChildNodes(sheet.listaDeJogadores);               
@@ -4317,7 +4347,7 @@ function newfrmBibliotecaRPGmeister()
             			    end;
         end, obj);
 
-    obj._e_event5 = obj.button3:addEventListener("onClick",
+    obj._e_event6 = obj.button3:addEventListener("onClick",
         function (self)
             -- Aumenta um contador enquanto adiciona um objeto
             						if self.boxDetalhesDoItem.node~=nil then
@@ -4339,7 +4369,7 @@ function newfrmBibliotecaRPGmeister()
             						end;
         end, obj);
 
-    obj._e_event6 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event7 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local mod = self.boxDetalhesDoItem.node.XP or "0";
             						mod = string.gsub(mod, "%.", "");
@@ -4363,7 +4393,7 @@ function newfrmBibliotecaRPGmeister()
             						self.boxDetalhesDoItem.node.alvo = mod2;
         end, obj);
 
-    obj._e_event7 = obj.rclExperience:addEventListener("onCompare",
+    obj._e_event8 = obj.rclExperience:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista. 
             				        if (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
@@ -4375,7 +4405,7 @@ function newfrmBibliotecaRPGmeister()
             				        end;
         end, obj);
 
-    obj._e_event8 = obj.button4:addEventListener("onClick",
+    obj._e_event9 = obj.button4:addEventListener("onClick",
         function (self)
             -- Aumenta um contador enquanto adiciona um objeto
             						if self.boxDetalhesDoItem.node~=nil then
@@ -4397,7 +4427,7 @@ function newfrmBibliotecaRPGmeister()
             						end;
         end, obj);
 
-    obj._e_event9 = obj.rclDinheiro:addEventListener("onCompare",
+    obj._e_event10 = obj.rclDinheiro:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista. 
             				        if (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
@@ -4409,7 +4439,7 @@ function newfrmBibliotecaRPGmeister()
             				        end;
         end, obj);
 
-    obj._e_event10 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event11 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local mod = (tonumber(self.boxDetalhesDoItem.node.presenca) or 0)*4 + 
             										(tonumber(self.boxDetalhesDoItem.node.atrasoJustificado) or 0)*2 + 
@@ -4425,12 +4455,12 @@ function newfrmBibliotecaRPGmeister()
             						end;
         end, obj);
 
-    obj._e_event11 = obj.image1:addEventListener("onStartDrag",
+    obj._e_event12 = obj.image1:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
-    obj._e_event12 = obj.button5:addEventListener("onClick",
+    obj._e_event13 = obj.button5:addEventListener("onClick",
         function (self)
             if sheet~=nil then
             								local meses = ndb.getChildNodes(sheet.listaMeses);
@@ -4447,7 +4477,7 @@ function newfrmBibliotecaRPGmeister()
             							end;
         end, obj);
 
-    obj._e_event13 = obj.rclMeses:addEventListener("onCompare",
+    obj._e_event14 = obj.rclMeses:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.ordem) or 0) < (tonumber(nodeB.ordem) or 0) then
             		                    return -1;
@@ -4458,7 +4488,7 @@ function newfrmBibliotecaRPGmeister()
             		                end;
         end, obj);
 
-    obj._e_event14 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event15 = obj.dataLink3:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
             							if sheet.dias ~= sheet.duracaoEstacao then
@@ -4469,7 +4499,7 @@ function newfrmBibliotecaRPGmeister()
             						end;
         end, obj);
 
-    obj._e_event15 = obj.button6:addEventListener("onClick",
+    obj._e_event16 = obj.button6:addEventListener("onClick",
         function (self)
             if sheet~=nil then
             								local semana = ndb.getChildNodes(sheet.listaSemana);
@@ -4485,7 +4515,7 @@ function newfrmBibliotecaRPGmeister()
             							end;
         end, obj);
 
-    obj._e_event16 = obj.rclSemana:addEventListener("onCompare",
+    obj._e_event17 = obj.rclSemana:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.ordem) or 0) < (tonumber(nodeB.ordem) or 0) then
             		                        return -1;
@@ -4496,7 +4526,7 @@ function newfrmBibliotecaRPGmeister()
             		                end;
         end, obj);
 
-    obj._e_event17 = obj.button7:addEventListener("onClick",
+    obj._e_event18 = obj.button7:addEventListener("onClick",
         function (self)
             if sheet~=nil then
             								local node = self.rclLuas:append();
@@ -4510,7 +4540,7 @@ function newfrmBibliotecaRPGmeister()
             							end;
         end, obj);
 
-    obj._e_event18 = obj.celestialBt:addEventListener("onClick",
+    obj._e_event19 = obj.celestialBt:addEventListener("onClick",
         function (self)
             local pop = self:findControlByName("popCelestial");
             							
@@ -4522,7 +4552,7 @@ function newfrmBibliotecaRPGmeister()
             							end;
         end, obj);
 
-    obj._e_event19 = obj.button8:addEventListener("onClick",
+    obj._e_event20 = obj.button8:addEventListener("onClick",
         function (self)
             if sheet~=nil then
             								local estacao = ndb.getChildNodes(sheet.listaEstacoes);
@@ -4539,7 +4569,7 @@ function newfrmBibliotecaRPGmeister()
             							end;
         end, obj);
 
-    obj._e_event20 = obj.rclEstacoes:addEventListener("onCompare",
+    obj._e_event21 = obj.rclEstacoes:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.ordem) or 0) < (tonumber(nodeB.ordem) or 0) then
             		                    return -1;
@@ -4550,7 +4580,7 @@ function newfrmBibliotecaRPGmeister()
             		                end;
         end, obj);
 
-    obj._e_event21 = obj.button9:addEventListener("onClick",
+    obj._e_event22 = obj.button9:addEventListener("onClick",
         function (self)
             if sheet~=nil then
             						local tempo = tonumber(sheet.tempo) or 1;
@@ -4590,7 +4620,7 @@ function newfrmBibliotecaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event22 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event23 = obj.dataLink5:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
             						-- Reading sheet
@@ -5152,13 +5182,13 @@ function newfrmBibliotecaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event23 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event24 = obj.dataLink6:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.Selected.left = 20 * (tonumber(sheet.CorIndex or 0) % 8);
             			self.Selected.top = 20 * math.floor(tonumber(sheet.CorIndex or 0) / 8);
         end, obj);
 
-    obj._e_event24 = obj.rectangle18:addEventListener("onClick",
+    obj._e_event25 = obj.rectangle18:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 1;
             					sheet.CorIndex = sheet.IndexBarrinha1;
@@ -5166,7 +5196,7 @@ function newfrmBibliotecaRPGmeister()
             					self.SelectCor:show();
         end, obj);
 
-    obj._e_event25 = obj.rectangle19:addEventListener("onClick",
+    obj._e_event26 = obj.rectangle19:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 1;
             							sheet.CorIndex = sheet.IndexBarrinha1;
@@ -5174,7 +5204,7 @@ function newfrmBibliotecaRPGmeister()
             							self.SelectCor:show();
         end, obj);
 
-    obj._e_event26 = obj.CorBarrinha1:addEventListener("onClick",
+    obj._e_event27 = obj.CorBarrinha1:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 1;
             								sheet.CorIndex = sheet.IndexBarrinha1;
@@ -5182,7 +5212,7 @@ function newfrmBibliotecaRPGmeister()
             								self.SelectCor:show();
         end, obj);
 
-    obj._e_event27 = obj.dataLink7:addEventListener("onChange",
+    obj._e_event28 = obj.dataLink7:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.CorBarrinha1.color = sheet.CorBarrinha1;
             				local nodes2 = ndb.getChildNodes(sheet.campoDosNPC);
@@ -5191,7 +5221,7 @@ function newfrmBibliotecaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event28 = obj.rectangle20:addEventListener("onClick",
+    obj._e_event29 = obj.rectangle20:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 2;
             					sheet.CorIndex = sheet.IndexBarrinha2;
@@ -5199,7 +5229,7 @@ function newfrmBibliotecaRPGmeister()
             					self.SelectCor:show();
         end, obj);
 
-    obj._e_event29 = obj.rectangle21:addEventListener("onClick",
+    obj._e_event30 = obj.rectangle21:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 2;
             							sheet.CorIndex = sheet.IndexBarrinha2;
@@ -5207,7 +5237,7 @@ function newfrmBibliotecaRPGmeister()
             							self.SelectCor:show();
         end, obj);
 
-    obj._e_event30 = obj.CorBarrinha2:addEventListener("onClick",
+    obj._e_event31 = obj.CorBarrinha2:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 2;
             								sheet.CorIndex = sheet.IndexBarrinha2;
@@ -5215,7 +5245,7 @@ function newfrmBibliotecaRPGmeister()
             								self.SelectCor:show();
         end, obj);
 
-    obj._e_event31 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event32 = obj.dataLink8:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.CorBarrinha2.color = sheet.CorBarrinha2;
             				local nodes2 = ndb.getChildNodes(sheet.campoDosNPC);
@@ -5224,7 +5254,7 @@ function newfrmBibliotecaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event32 = obj.rectangle22:addEventListener("onClick",
+    obj._e_event33 = obj.rectangle22:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 3;
             					sheet.CorIndex = sheet.IndexBarrinha3;
@@ -5232,7 +5262,7 @@ function newfrmBibliotecaRPGmeister()
             					self.SelectCor:show();
         end, obj);
 
-    obj._e_event33 = obj.rectangle23:addEventListener("onClick",
+    obj._e_event34 = obj.rectangle23:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 3;
             							sheet.CorIndex = sheet.IndexBarrinha3;
@@ -5240,7 +5270,7 @@ function newfrmBibliotecaRPGmeister()
             							self.SelectCor:show();
         end, obj);
 
-    obj._e_event34 = obj.CorBarrinha3:addEventListener("onClick",
+    obj._e_event35 = obj.CorBarrinha3:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 3;
             								sheet.CorIndex = sheet.IndexBarrinha3;
@@ -5248,7 +5278,7 @@ function newfrmBibliotecaRPGmeister()
             								self.SelectCor:show();
         end, obj);
 
-    obj._e_event35 = obj.dataLink9:addEventListener("onChange",
+    obj._e_event36 = obj.dataLink9:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.CorBarrinha3.color = sheet.CorBarrinha3;
             				local nodes2 = ndb.getChildNodes(sheet.campoDosNPC);
@@ -5257,7 +5287,7 @@ function newfrmBibliotecaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event36 = obj.rectangle24:addEventListener("onClick",
+    obj._e_event37 = obj.rectangle24:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 4;
             					sheet.CorIndex = sheet.IndexBarrinha4;
@@ -5265,7 +5295,7 @@ function newfrmBibliotecaRPGmeister()
             					self.SelectCor:show();
         end, obj);
 
-    obj._e_event37 = obj.rectangle25:addEventListener("onClick",
+    obj._e_event38 = obj.rectangle25:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 4;
             							sheet.CorIndex = sheet.IndexBarrinha4;
@@ -5273,7 +5303,7 @@ function newfrmBibliotecaRPGmeister()
             							self.SelectCor:show();
         end, obj);
 
-    obj._e_event38 = obj.CorBarrinha4:addEventListener("onClick",
+    obj._e_event39 = obj.CorBarrinha4:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 4;
             								sheet.CorIndex = sheet.IndexBarrinha4;
@@ -5281,7 +5311,7 @@ function newfrmBibliotecaRPGmeister()
             								self.SelectCor:show();
         end, obj);
 
-    obj._e_event39 = obj.dataLink10:addEventListener("onChange",
+    obj._e_event40 = obj.dataLink10:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.CorBarrinha4.color = sheet.CorBarrinha4;
             				local nodes2 = ndb.getChildNodes(sheet.campoDosNPC);
@@ -5290,204 +5320,204 @@ function newfrmBibliotecaRPGmeister()
             				end;
         end, obj);
 
-    obj._e_event40 = obj.button10:addEventListener("onClick",
+    obj._e_event41 = obj.button10:addEventListener("onClick",
         function (self)
             self.Config:close();
         end, obj);
 
-    obj._e_event41 = obj.layout28:addEventListener("onClick",
+    obj._e_event42 = obj.layout28:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "0";
             				sheet.ColorString = "#acacac";
         end, obj);
 
-    obj._e_event42 = obj.rectangle28:addEventListener("onClick",
+    obj._e_event43 = obj.rectangle28:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "0";
             					sheet.ColorString = "#acacac";
         end, obj);
 
-    obj._e_event43 = obj.layout29:addEventListener("onClick",
+    obj._e_event44 = obj.layout29:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "1";
             				sheet.ColorString = "#5959ff";
         end, obj);
 
-    obj._e_event44 = obj.rectangle29:addEventListener("onClick",
+    obj._e_event45 = obj.rectangle29:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "1";
             					sheet.ColorString = "#5959ff";
         end, obj);
 
-    obj._e_event45 = obj.layout30:addEventListener("onClick",
+    obj._e_event46 = obj.layout30:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "2";
             				sheet.ColorString = "#59ff59";
         end, obj);
 
-    obj._e_event46 = obj.rectangle30:addEventListener("onClick",
+    obj._e_event47 = obj.rectangle30:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "2";
             					sheet.ColorString = "#59ff59";
         end, obj);
 
-    obj._e_event47 = obj.layout31:addEventListener("onClick",
+    obj._e_event48 = obj.layout31:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "3";
             				sheet.ColorString = "#ff5959";
         end, obj);
 
-    obj._e_event48 = obj.rectangle31:addEventListener("onClick",
+    obj._e_event49 = obj.rectangle31:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "3";
             					sheet.ColorString = "#ff5959";
         end, obj);
 
-    obj._e_event49 = obj.layout32:addEventListener("onClick",
+    obj._e_event50 = obj.layout32:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "4";
             				sheet.ColorString = "#ff59ff";
         end, obj);
 
-    obj._e_event50 = obj.rectangle32:addEventListener("onClick",
+    obj._e_event51 = obj.rectangle32:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "4";
             					sheet.ColorString = "#ff59ff";
         end, obj);
 
-    obj._e_event51 = obj.layout33:addEventListener("onClick",
+    obj._e_event52 = obj.layout33:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "5";
             				sheet.ColorString = "#ffac59";
         end, obj);
 
-    obj._e_event52 = obj.rectangle33:addEventListener("onClick",
+    obj._e_event53 = obj.rectangle33:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "5";
             					sheet.ColorString = "#ffac59";
         end, obj);
 
-    obj._e_event53 = obj.layout34:addEventListener("onClick",
+    obj._e_event54 = obj.layout34:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "6";
             				sheet.ColorString = "#ffff59";
         end, obj);
 
-    obj._e_event54 = obj.rectangle34:addEventListener("onClick",
+    obj._e_event55 = obj.rectangle34:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "6";
             					sheet.ColorString = "#ffff59";
         end, obj);
 
-    obj._e_event55 = obj.layout35:addEventListener("onClick",
+    obj._e_event56 = obj.layout35:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "7";
             				sheet.ColorString = "#59ffff";
         end, obj);
 
-    obj._e_event56 = obj.rectangle35:addEventListener("onClick",
+    obj._e_event57 = obj.rectangle35:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "7";
             					sheet.ColorString = "#59ffff";
         end, obj);
 
-    obj._e_event57 = obj.layout36:addEventListener("onClick",
+    obj._e_event58 = obj.layout36:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "8";
             				sheet.ColorString = "#ffd159";
         end, obj);
 
-    obj._e_event58 = obj.rectangle36:addEventListener("onClick",
+    obj._e_event59 = obj.rectangle36:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "8";
             					sheet.ColorString = "#ffd159";
         end, obj);
 
-    obj._e_event59 = obj.layout37:addEventListener("onClick",
+    obj._e_event60 = obj.layout37:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "9";
             				sheet.ColorString = "#5990ff";
         end, obj);
 
-    obj._e_event60 = obj.rectangle37:addEventListener("onClick",
+    obj._e_event61 = obj.rectangle37:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "9";
             					sheet.ColorString = "#5990ff";
         end, obj);
 
-    obj._e_event61 = obj.layout38:addEventListener("onClick",
+    obj._e_event62 = obj.layout38:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "10";
             				sheet.ColorString = "#f4c264";
         end, obj);
 
-    obj._e_event62 = obj.rectangle38:addEventListener("onClick",
+    obj._e_event63 = obj.rectangle38:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "10";
             					sheet.ColorString = "#f4c264";
         end, obj);
 
-    obj._e_event63 = obj.layout39:addEventListener("onClick",
+    obj._e_event64 = obj.layout39:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "11";
             				sheet.ColorString = "#de7a7a";
         end, obj);
 
-    obj._e_event64 = obj.rectangle39:addEventListener("onClick",
+    obj._e_event65 = obj.rectangle39:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "11";
             					sheet.ColorString = "#de7a7a";
         end, obj);
 
-    obj._e_event65 = obj.layout40:addEventListener("onClick",
+    obj._e_event66 = obj.layout40:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "12";
             				sheet.ColorString = "#cb83d6";
         end, obj);
 
-    obj._e_event66 = obj.rectangle40:addEventListener("onClick",
+    obj._e_event67 = obj.rectangle40:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "12";
             					sheet.ColorString = "#cb83d6";
         end, obj);
 
-    obj._e_event67 = obj.layout41:addEventListener("onClick",
+    obj._e_event68 = obj.layout41:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "13";
             				sheet.ColorString = "#f3658a";
         end, obj);
 
-    obj._e_event68 = obj.rectangle41:addEventListener("onClick",
+    obj._e_event69 = obj.rectangle41:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "13";
             					sheet.ColorString = "#f3658a";
         end, obj);
 
-    obj._e_event69 = obj.layout42:addEventListener("onClick",
+    obj._e_event70 = obj.layout42:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "14";
             				sheet.ColorString = "#8cecb3";
         end, obj);
 
-    obj._e_event70 = obj.rectangle42:addEventListener("onClick",
+    obj._e_event71 = obj.rectangle42:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "14";
             					sheet.ColorString = "#8cecb3";
         end, obj);
 
-    obj._e_event71 = obj.layout43:addEventListener("onClick",
+    obj._e_event72 = obj.layout43:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "15";
             				sheet.ColorString = "#ed846b";
         end, obj);
 
-    obj._e_event72 = obj.rectangle43:addEventListener("onClick",
+    obj._e_event73 = obj.rectangle43:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "15";
             					sheet.ColorString = "#ed846b";
         end, obj);
 
-    obj._e_event73 = obj.button11:addEventListener("onClick",
+    obj._e_event74 = obj.button11:addEventListener("onClick",
         function (self)
             if sheet.IndexBarrinha == 1 then
             								sheet.IndexBarrinha1 = sheet.CorIndex;
@@ -5505,7 +5535,7 @@ function newfrmBibliotecaRPGmeister()
             							self.SelectCor:close();
         end, obj);
 
-    obj._e_event74 = obj.NovaAbadeNPCs:addEventListener("onClick",
+    obj._e_event75 = obj.NovaAbadeNPCs:addEventListener("onClick",
         function (self)
             if DonoMestre() then			
             						node = self.opcoesFalsas:append();
@@ -5514,25 +5544,25 @@ function newfrmBibliotecaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event75 = obj.rectangle45:addEventListener("onClick",
+    obj._e_event76 = obj.rectangle45:addEventListener("onClick",
         function (self)
             self.dropDownFalso.scopeNode = sheet;
             						 self:autoCalcular();
         end, obj);
 
-    obj._e_event76 = obj.label69:addEventListener("onClick",
+    obj._e_event77 = obj.label69:addEventListener("onClick",
         function (self)
             self.dropDownFalso.scopeNode = sheet;
             						 self:autoCalcular();
         end, obj);
 
-    obj._e_event77 = obj.path1:addEventListener("onClick",
+    obj._e_event78 = obj.path1:addEventListener("onClick",
         function (self)
             self.dropDownFalso.scopeNode = sheet;
             							 self:autoCalcular();
         end, obj);
 
-    obj._e_event78 = obj.ListaDeNPCs:addEventListener("onShow",
+    obj._e_event79 = obj.ListaDeNPCs:addEventListener("onShow",
         function (self)
             if self.opcoesFalsas2.selectedNode == nil and sheet ~= nil then
             			chamarListaDeJogadores();
@@ -5544,7 +5574,7 @@ function newfrmBibliotecaRPGmeister()
                     end;
         end, obj);
 
-    obj._e_event79 = obj.opcoesFalsas2:addEventListener("onSelect",
+    obj._e_event80 = obj.opcoesFalsas2:addEventListener("onSelect",
         function (self)
             local node = self.opcoesFalsas2.selectedNode;
             						 setTimeout(function()
@@ -5554,7 +5584,7 @@ function newfrmBibliotecaRPGmeister()
             						 end,10);
         end, obj);
 
-    obj._e_event80 = obj.opcoesFalsas2:addEventListener("onCompare",
+    obj._e_event81 = obj.opcoesFalsas2:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (nodeA.CodigoInterno == nil) then
             							if (nodeA.NomeDaOpcao == "Nenhum") then
@@ -5580,7 +5610,7 @@ function newfrmBibliotecaRPGmeister()
             						end;
         end, obj);
 
-    obj._e_event81 = obj.rectangle46:addEventListener("onResize",
+    obj._e_event82 = obj.rectangle46:addEventListener("onResize",
         function (self)
             if self.width >= 270 then
             				self.rclListaDeNPC.width = self.width;
@@ -5589,7 +5619,7 @@ function newfrmBibliotecaRPGmeister()
             			end;
         end, obj);
 
-    obj._e_event82 = obj.Configurar:addEventListener("onClick",
+    obj._e_event83 = obj.Configurar:addEventListener("onClick",
         function (self)
             if DonoMestre() then
             						self.Config.scopeNode = sheet;
@@ -5599,7 +5629,7 @@ function newfrmBibliotecaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event83 = obj.NovoNPC:addEventListener("onClick",
+    obj._e_event84 = obj.NovoNPC:addEventListener("onClick",
         function (self)
             if DonoMestre() then			
             						node = self.rclListaDeNPC:append();
@@ -5608,7 +5638,7 @@ function newfrmBibliotecaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event84 = obj.Organizar:addEventListener("onClick",
+    obj._e_event85 = obj.Organizar:addEventListener("onClick",
         function (self)
             if DonoMestre() then			
             						self.rclListaDeNPC:sort();
@@ -5617,11 +5647,11 @@ function newfrmBibliotecaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event85 = obj.rclListaDeNPC:addEventListener("onBeginEnumeration",
+    obj._e_event86 = obj.rclListaDeNPC:addEventListener("onBeginEnumeration",
         function (self)
         end, obj);
 
-    obj._e_event86 = obj.rclListaDeNPC:addEventListener("onItemAdded",
+    obj._e_event87 = obj.rclListaDeNPC:addEventListener("onItemAdded",
         function (self, node, form)
             node.CorBarrinha1 = (sheet.CorBarrinha1 or "#808080");
             					node.CorBarrinha2 = (sheet.CorBarrinha2 or "#808080");
@@ -5633,7 +5663,7 @@ function newfrmBibliotecaRPGmeister()
             					form.Barrinha4.color = sheet.CorBarrinha4;
         end, obj);
 
-    obj._e_event87 = obj.rclListaDeNPC:addEventListener("onCompare",
+    obj._e_event88 = obj.rclListaDeNPC:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             org = getOrganizacao();
             					if nodeA.hideNPC and not nodeB.hideNPC then
@@ -5654,7 +5684,7 @@ function newfrmBibliotecaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event88 = obj.opcoesFalsas:addEventListener("onSelect",
+    obj._e_event89 = obj.opcoesFalsas:addEventListener("onSelect",
         function (self)
             local node = self.opcoesFalsas.selectedNode;
             					 setTimeout(function()
@@ -5667,7 +5697,7 @@ function newfrmBibliotecaRPGmeister()
             					 self.dropDownFalso:close();
         end, obj);
 
-    obj._e_event89 = obj.opcoesFalsas:addEventListener("onBeginEnumeration",
+    obj._e_event90 = obj.opcoesFalsas:addEventListener("onBeginEnumeration",
         function (self)
             if sheet ~= nil then
             						local nodes = ndb.getChildNodes(sheet.opcoesFalsas);
@@ -5678,7 +5708,7 @@ function newfrmBibliotecaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event90 = obj.opcoesFalsas:addEventListener("onEndEnumeration",
+    obj._e_event91 = obj.opcoesFalsas:addEventListener("onEndEnumeration",
         function (self)
             local nodes = ndb.getChildNodes(sheet.opcoesFalsas);
             					if self.dcsMain.scopeNode == nil then
@@ -5688,7 +5718,7 @@ function newfrmBibliotecaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event91 = obj.dataLink12:addEventListener("onChange",
+    obj._e_event92 = obj.dataLink12:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             				local nodes = ndb.getChildNodes(sheet.opcoesFalsas);
@@ -5704,7 +5734,7 @@ function newfrmBibliotecaRPGmeister()
             			end;
         end, obj);
 
-    obj._e_event92 = obj.dataLink13:addEventListener("onChange",
+    obj._e_event93 = obj.dataLink13:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local nudes = ndb.getChildNodes(sheet.opcoesFalsas);               
             			for i = 1, #nudes, 1 do
@@ -5739,7 +5769,7 @@ function newfrmBibliotecaRPGmeister()
             			end;
         end, obj);
 
-    obj._e_event93 = obj.dataLink14:addEventListener("onChange",
+    obj._e_event94 = obj.dataLink14:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local nudes = ndb.getChildNodes(sheet.opcoesFalsas);               
             			for i = 1, #nudes, 1 do
@@ -5810,7 +5840,7 @@ function newfrmBibliotecaRPGmeister()
             			end;
         end, obj);
 
-    obj._e_event94 = obj.btnAddAtor:addEventListener("onClick",
+    obj._e_event95 = obj.btnAddAtor:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             
@@ -5822,9 +5852,18 @@ function newfrmBibliotecaRPGmeister()
             				self:criarNovoAtor();
         end, obj);
 
-    obj._e_event95 = obj.btnRoll:addEventListener("onClick",
+    obj._e_event96 = obj.btnRoll:addEventListener("onClick",
         function (self)
-            local nodes = ndb.getChildNodes(sheet.atores);
+            local jogadores = rrpg.getMesaDe(sheet).jogadores;
+            				local current = nil;
+            				for i = 1, #jogadores, 1 do
+            					if jogadores[i].login==rrpg.getCurrentUser().login then
+            						current = jogadores[i];
+            					end;
+            				end;
+            				if not current.isMestre then return end;
+            
+            				local nodes = ndb.getChildNodes(sheet.atores);
             				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             
             				if not mesaDoPersonagem.meuJogador.isGold then
@@ -5845,7 +5884,7 @@ function newfrmBibliotecaRPGmeister()
             				end
         end, obj);
 
-    obj._e_event96 = obj.btnAddAll:addEventListener("onClick",
+    obj._e_event97 = obj.btnAddAll:addEventListener("onClick",
         function (self)
             local jogadores = rrpg.getMesaDe(sheet).jogadores;
             				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
@@ -5864,22 +5903,22 @@ function newfrmBibliotecaRPGmeister()
             				end
         end, obj);
 
-    obj._e_event97 = obj.btnLimpar:addEventListener("onClick",
+    obj._e_event98 = obj.btnLimpar:addEventListener("onClick",
         function (self)
             self:limpar();
         end, obj);
 
-    obj._e_event98 = obj.rclAtores:addEventListener("onCompare",
+    obj._e_event99 = obj.rclAtores:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return self:compareNodes(nodeA, nodeB);
         end, obj);
 
-    obj._e_event99 = obj.button12:addEventListener("onClick",
+    obj._e_event100 = obj.button12:addEventListener("onClick",
         function (self)
             self:proximoTurno();
         end, obj);
 
-    obj._e_event100 = obj.button13:addEventListener("onClick",
+    obj._e_event101 = obj.button13:addEventListener("onClick",
         function (self)
             if sheet~=nil then
             						local aventuras = ndb.getChildNodes(sheet.aventuras);
@@ -5894,7 +5933,7 @@ function newfrmBibliotecaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event101 = obj.rclAventuras:addEventListener("onCompare",
+    obj._e_event102 = obj.rclAventuras:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.numero) or 0) < (tonumber(nodeB.numero) or 0) then
             		                return 1;
@@ -5905,7 +5944,7 @@ function newfrmBibliotecaRPGmeister()
             		            end;
         end, obj);
 
-    obj._e_event102 = obj.button14:addEventListener("onClick",
+    obj._e_event103 = obj.button14:addEventListener("onClick",
         function (self)
             if sheet~=nil then
             						local sessoes = ndb.getChildNodes(sheet.sessoes);
@@ -5925,7 +5964,7 @@ function newfrmBibliotecaRPGmeister()
             					end;
         end, obj);
 
-    obj._e_event103 = obj.rclSessoes:addEventListener("onCompare",
+    obj._e_event104 = obj.rclSessoes:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (tonumber(nodeA.numero) or 0) < (tonumber(nodeB.numero) or 0) then
             		                return 1;
@@ -5936,32 +5975,33 @@ function newfrmBibliotecaRPGmeister()
             		            end;
         end, obj);
 
-    obj._e_event104 = obj.button15:addEventListener("onClick",
+    obj._e_event105 = obj.button15:addEventListener("onClick",
         function (self)
             secret();
         end, obj);
 
-    obj._e_event105 = obj.button16:addEventListener("onClick",
+    obj._e_event106 = obj.button16:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Gerenciador%20de%20Campanha%20releases/Change%20Log.txt')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/tree/master/Plugins/Sheets/Gerenciador%20de%20Campanha')
         end, obj);
 
-    obj._e_event106 = obj.button17:addEventListener("onClick",
+    obj._e_event107 = obj.button17:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Gerenciador%20de%20Campanha%20releases/Gerenciador%20de%20Campanha.rpk')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true')
         end, obj);
 
-    obj._e_event107 = obj.button18:addEventListener("onClick",
+    obj._e_event108 = obj.button18:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://www.dropbox.com/s/3eodkgih3aq6hfz/Tutorial.docx?dl=0')
         end, obj);
 
-    obj._e_event108 = obj.button19:addEventListener("onClick",
+    obj._e_event109 = obj.button19:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event109);
         __o_rrpgObjs.removeEventListenerById(self._e_event108);
         __o_rrpgObjs.removeEventListenerById(self._e_event107);
         __o_rrpgObjs.removeEventListenerById(self._e_event106);
@@ -6144,7 +6184,6 @@ function newfrmBibliotecaRPGmeister()
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.rectangle7 ~= nil then self.rectangle7:destroy(); self.rectangle7 = nil; end;
         if self.labTitFoF ~= nil then self.labTitFoF:destroy(); self.labTitFoF = nil; end;
-        if self.rectangle55 ~= nil then self.rectangle55:destroy(); self.rectangle55 = nil; end;
         if self.button7 ~= nil then self.button7:destroy(); self.button7 = nil; end;
         if self.layout42 ~= nil then self.layout42:destroy(); self.layout42 = nil; end;
         if self.flowPart22 ~= nil then self.flowPart22:destroy(); self.flowPart22 = nil; end;
@@ -6277,7 +6316,6 @@ function newfrmBibliotecaRPGmeister()
         if self.layout22 ~= nil then self.layout22:destroy(); self.layout22 = nil; end;
         if self.layout48 ~= nil then self.layout48:destroy(); self.layout48 = nil; end;
         if self.label84 ~= nil then self.label84:destroy(); self.label84 = nil; end;
-        if self.image4 ~= nil then self.image4:destroy(); self.image4 = nil; end;
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
         if self.flowPart24 ~= nil then self.flowPart24:destroy(); self.flowPart24 = nil; end;
         if self.ListaDeNPCs ~= nil then self.ListaDeNPCs:destroy(); self.ListaDeNPCs = nil; end;
@@ -6291,7 +6329,6 @@ function newfrmBibliotecaRPGmeister()
         if self.label40 ~= nil then self.label40:destroy(); self.label40 = nil; end;
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
         if self.comboBox13 ~= nil then self.comboBox13:destroy(); self.comboBox13 = nil; end;
-        if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
         if self.label57 ~= nil then self.label57:destroy(); self.label57 = nil; end;
         if self.label71 ~= nil then self.label71:destroy(); self.label71 = nil; end;
         if self.layout41 ~= nil then self.layout41:destroy(); self.layout41 = nil; end;
@@ -6421,7 +6458,6 @@ function newfrmBibliotecaRPGmeister()
         if self.dataLink14 ~= nil then self.dataLink14:destroy(); self.dataLink14 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.frmJogadores ~= nil then self.frmJogadores:destroy(); self.frmJogadores = nil; end;
-        if self.rectangle54 ~= nil then self.rectangle54:destroy(); self.rectangle54 = nil; end;
         if self.rectangle25 ~= nil then self.rectangle25:destroy(); self.rectangle25 = nil; end;
         if self.flowPart12 ~= nil then self.flowPart12:destroy(); self.flowPart12 = nil; end;
         if self.label74 ~= nil then self.label74:destroy(); self.label74 = nil; end;

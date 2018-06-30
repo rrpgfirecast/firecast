@@ -12,18 +12,13 @@
 				<label left="0" top="120" width="200" height="20" text="RPGmeister" horzTextAlign="center"/>
 			</layout>
 
-			<label left="210" top="160" width="90" height="20" text="SUA VERSÃO:"/>
-			<rectangle left="304" top="159" width="102" height="22" color="white" strokeColor="black" strokeSize="1"/>
-			<image left="305" top="160" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao04.png"/>
-			
-			<label left="210" top="190" width="100" height="20" text="VERSÃO ATUAL:"/>
-			<rectangle left="304" top="189" width="102" height="22" color="white" strokeColor="black" strokeSize="1"/>
-			<image left="305" top="190" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Multiaba/release.png"/>
+			<label left="210" top="160" width="200" height="20" text="SUA VERSÃO:" field="versionInstalled"/>
+			<label left="210" top="190" width="200" height="20" text="VERSÃO ATUAL:" field="versionDownloaded"/>
 
 			<label left="5" top="210" width="120" height="20" text="CONHEÇA A MESA:"/>
 			<button left="125" top="210" width="100" text="RPGmeister" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
 
-			<button left="305" top="215" width="100" text="Atualizar" onClick="gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Multiaba/Ficha%20Multiaba.rpk')" />
+			<button left="305" top="215" width="100" text="Atualizar" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true')" />
 		</popup>
 		<popup name="popupSettings" width="210" height="160" backOpacity="0.4">
 			<layout left="5" top="5" width="200" height="160">
@@ -98,7 +93,7 @@
 
 			</layout>
 		</popup>
-		<script>
+		<script><![CDATA[
 			local default = ndb.load("defaults.xml");
 			local loaded = false;
 			--colocar algo para quando sheet terminar de carregar puxar os valores de default. 
@@ -131,8 +126,38 @@
 			self.txt.defaultFontSize = sheet.fontSize;
 			self.txt.defaultFontColor = sheet.fontColor;
 			self.txt.backgroundColor = sheet.backgroundColor;
-
 		end;
+
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+		]]> 
 		</script>
 		<layout align="top">
 			<layout align="left" width="150">
@@ -195,4 +220,39 @@
 			</dataScopeBox>
 		</layout>
 	</scrollBox>
+    <event name="onNodeReady">
+        internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true",
+            function(stream, contentType)
+                local info = rrpg.plugins.getRPKDetails(stream);
+                sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+
+                local installed = rrpg.plugins.getInstalledPlugins();
+                local myself;
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i];
+                        sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                    end;
+                end;
+
+                if sheet.noUpdate==true then return end;
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true');
+                            elseif selected and selectedIndex == 3 then
+                                sheet.noUpdate = true;
+                            end;
+                        end);
+                end;
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg);
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end);
+    </event>
 </form>

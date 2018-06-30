@@ -33,6 +33,39 @@ function newfrmTemplate()
     obj:setAlign("client");
     obj:setTheme("dark");
 
+
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+        
+
+
     obj.tabControl = gui.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl:setParent(obj);
     obj.tabControl:setAlign("client");
@@ -2865,41 +2898,23 @@ function newfrmTemplate()
     obj.label50:setParent(obj.scrollBox9);
     obj.label50:setLeft(555);
     obj.label50:setTop(300);
-    obj.label50:setWidth(100);
+    obj.label50:setWidth(200);
     obj.label50:setHeight(20);
     obj.label50:setText("Versão Atual: ");
     obj.label50:setHorzTextAlign("center");
+    obj.label50:setField("versionInstalled");
     obj.label50:setName("label50");
-
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
-    obj.image2:setParent(obj.scrollBox9);
-    obj.image2:setLeft(667);
-    obj.image2:setTop(300);
-    obj.image2:setWidth(100);
-    obj.image2:setHeight(20);
-    obj.image2:setStyle("autoFit");
-    obj.image2:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20de%20Reinos%20d20/release.png");
-    obj.image2:setName("image2");
 
     obj.label51 = gui.fromHandle(_obj_newObject("label"));
     obj.label51:setParent(obj.scrollBox9);
     obj.label51:setLeft(555);
     obj.label51:setTop(325);
-    obj.label51:setWidth(100);
+    obj.label51:setWidth(200);
     obj.label51:setHeight(20);
     obj.label51:setText("Ultima Versão: ");
     obj.label51:setHorzTextAlign("center");
+    obj.label51:setField("versionDownloaded");
     obj.label51:setName("label51");
-
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
-    obj.image3:setParent(obj.scrollBox9);
-    obj.image3:setLeft(667);
-    obj.image3:setTop(325);
-    obj.image3:setWidth(100);
-    obj.image3:setHeight(20);
-    obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao06.png");
-    obj.image3:setName("image3");
 
     obj.button4 = gui.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.scrollBox9);
@@ -2943,7 +2958,44 @@ function newfrmTemplate()
     obj.button7:setHint("Coloca o conteudo da ficha na área de tranferencia (Ctrl+V) no formato markdown. Experimente colar o texto no site: homebrewery.naturalcrit.com");
     obj.button7:setName("button7");
 
-    obj._e_event0 = obj.rclDestalhesDoReino:addEventListener("onEndEnumeration",
+    obj._e_event0 = obj:addEventListener("onNodeReady",
+        function (self)
+            internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true",
+                        function(stream, contentType)
+                            local info = rrpg.plugins.getRPKDetails(stream);
+                            sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+            
+                            local installed = rrpg.plugins.getInstalledPlugins();
+                            local myself;
+                            for i=1, #installed, 1 do
+                                if installed[i].moduleId == info.moduleId then
+                                    myself = installed[i];
+                                    sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                                end;
+                            end;
+            
+                            if sheet.noUpdate==true then return end;
+                            if myself~= nil and isNewVersion(myself.version, info.version) then
+                                Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                                    function(selected, selectedIndex, selectedText)
+                                        if selected and selectedIndex == 1 then
+                                            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true');
+                                        elseif selected and selectedIndex == 3 then
+                                            sheet.noUpdate = true;
+                                        end;
+                                    end);
+                            end;
+                        end,       
+                        function (errorMsg)
+                            --showMessage(errorMsg);
+                        end,       
+                        function (downloaded, total)
+                            -- esta função será chamada constantemente.
+                            -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+                        end);
+        end, obj);
+
+    obj._e_event1 = obj.rclDestalhesDoReino:addEventListener("onEndEnumeration",
         function (self)
             if sheet~= nil then
             					local objetos = ndb.getChildNodes(sheet.listaDeDestalhesDoReino);
@@ -2961,14 +3013,14 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event1 = obj.rclDestalhesDoReino:addEventListener("onSelect",
+    obj._e_event2 = obj.rclDestalhesDoReino:addEventListener("onSelect",
         function (self)
             local node = self.rclDestalhesDoReino.selectedNode;
             					self.boxDetalhesDoReino.node = node; 
             					self.boxDetalhesDoReino.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event2 = obj.rclDestalhesDoReino:addEventListener("onCompare",
+    obj._e_event3 = obj.rclDestalhesDoReino:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (nodeA.index or 0) < (nodeB.index or 0) then
             					return -1;
@@ -2979,7 +3031,7 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event3 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event4 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
             
@@ -2996,7 +3048,7 @@ function newfrmTemplate()
             					end;
         end, obj);
 
-    obj._e_event4 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event5 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
             
@@ -3013,7 +3065,7 @@ function newfrmTemplate()
             					end;
         end, obj);
 
-    obj._e_event5 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event6 = obj.dataLink3:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
             
@@ -3030,7 +3082,7 @@ function newfrmTemplate()
             					end;
         end, obj);
 
-    obj._e_event6 = obj.dataLink4:addEventListener("onChange",
+    obj._e_event7 = obj.dataLink4:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
             
@@ -3047,7 +3099,7 @@ function newfrmTemplate()
             					end;
         end, obj);
 
-    obj._e_event7 = obj.mapImage:addEventListener("onMouseDown",
+    obj._e_event8 = obj.mapImage:addEventListener("onMouseDown",
         function (self, event)
             sheet.button = event.button;
             				sheet.x = event.x;
@@ -3057,7 +3109,7 @@ function newfrmTemplate()
             				sheet.altKey = event.altKey;
         end, obj);
 
-    obj._e_event8 = obj.mapImage:addEventListener("onClick",
+    obj._e_event9 = obj.mapImage:addEventListener("onClick",
         function (self)
             if sheet==nil then return end;
             				
@@ -3277,7 +3329,7 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event9 = obj.rclDestalhesDaCidade:addEventListener("onEndEnumeration",
+    obj._e_event10 = obj.rclDestalhesDaCidade:addEventListener("onEndEnumeration",
         function (self)
             if sheet~= nil then
             					local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
@@ -3351,14 +3403,14 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event10 = obj.rclDestalhesDaCidade:addEventListener("onSelect",
+    obj._e_event11 = obj.rclDestalhesDaCidade:addEventListener("onSelect",
         function (self)
             local node = self.rclDestalhesDaCidade.selectedNode;
             					self.boxDetalhesDaCidade.node = node; 
             					self.boxDetalhesDaCidade.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event11 = obj.rclDestalhesDaCidade:addEventListener("onCompare",
+    obj._e_event12 = obj.rclDestalhesDaCidade:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista. 
             				if nodeA.capital and not nodeB.capital then
@@ -3374,7 +3426,7 @@ function newfrmTemplate()
             		        end;
         end, obj);
 
-    obj._e_event12 = obj.cidade_tipo:addEventListener("onChange",
+    obj._e_event13 = obj.cidade_tipo:addEventListener("onChange",
         function (self)
             local node = self.boxDetalhesDaCidade.node;
             						if node==nil then return end;
@@ -3391,7 +3443,7 @@ function newfrmTemplate()
             						end;
         end, obj);
 
-    obj._e_event13 = obj.cidade_composicao:addEventListener("onChange",
+    obj._e_event14 = obj.cidade_composicao:addEventListener("onChange",
         function (self)
             local node = self.boxDetalhesDaCidade.node;
             						if node==nil then return end;
@@ -3406,7 +3458,7 @@ function newfrmTemplate()
             						end;
         end, obj);
 
-    obj._e_event14 = obj.cidade_economia:addEventListener("onChange",
+    obj._e_event15 = obj.cidade_economia:addEventListener("onChange",
         function (self)
             local node = self.boxDetalhesDaCidade.node;
             						if node==nil then return end;
@@ -3423,7 +3475,7 @@ function newfrmTemplate()
             						end;
         end, obj);
 
-    obj._e_event15 = obj.button1:addEventListener("onClick",
+    obj._e_event16 = obj.button1:addEventListener("onClick",
         function (self)
             local node = self.boxDetalhesDaCidade.node;
             						if node==nil then return end;
@@ -3494,7 +3546,7 @@ function newfrmTemplate()
             						end;
         end, obj);
 
-    obj._e_event16 = obj.edit6:addEventListener("onChange",
+    obj._e_event17 = obj.edit6:addEventListener("onChange",
         function (self)
             local node = self.boxDetalhesDaCidade.node;
             						if node==nil then return end;
@@ -3523,7 +3575,7 @@ function newfrmTemplate()
             						end;
         end, obj);
 
-    obj._e_event17 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event18 = obj.dataLink5:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local node = self.boxDetalhesDaCidade.node;
             						if node==nil then return end;
@@ -3568,7 +3620,7 @@ function newfrmTemplate()
             						node.riqueza = riqueza;
         end, obj);
 
-    obj._e_event18 = obj.cidade_militarizacao:addEventListener("onChange",
+    obj._e_event19 = obj.cidade_militarizacao:addEventListener("onChange",
         function (self)
             local node = self.boxDetalhesDaCidade.node;
             						if node==nil then return end;
@@ -3589,7 +3641,7 @@ function newfrmTemplate()
             						end;
         end, obj);
 
-    obj._e_event19 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event20 = obj.dataLink6:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local node = self.boxDetalhesDaCidade.node;
             						if node==nil then return end;
@@ -3613,13 +3665,13 @@ function newfrmTemplate()
             						node.reservistas = reservistas;
         end, obj);
 
-    obj._e_event20 = obj.mapImageCidade:addEventListener("onMouseDown",
+    obj._e_event21 = obj.mapImageCidade:addEventListener("onMouseDown",
         function (self, event)
             local node = self.boxDetalhesDaCidade.node;
             							node.event = event;
         end, obj);
 
-    obj._e_event21 = obj.mapImageCidade:addEventListener("onClick",
+    obj._e_event22 = obj.mapImageCidade:addEventListener("onClick",
         function (self)
             local node = self.boxDetalhesDaCidade.node;
             							if node==nil then return end;
@@ -3649,7 +3701,7 @@ function newfrmTemplate()
             							end;
         end, obj);
 
-    obj._e_event22 = obj.rclDestalhesDaGeografia:addEventListener("onEndEnumeration",
+    obj._e_event23 = obj.rclDestalhesDaGeografia:addEventListener("onEndEnumeration",
         function (self)
             if sheet~= nil then
             					local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
@@ -3721,14 +3773,14 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event23 = obj.rclDestalhesDaGeografia:addEventListener("onSelect",
+    obj._e_event24 = obj.rclDestalhesDaGeografia:addEventListener("onSelect",
         function (self)
             local node = self.rclDestalhesDaGeografia.selectedNode;
             					self.boxDetalhesDaGeografia.node = node; 
             					self.boxDetalhesDaGeografia.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event24 = obj.rclDestalhesDaGeografia:addEventListener("onCompare",
+    obj._e_event25 = obj.rclDestalhesDaGeografia:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista. 
             		        if (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
@@ -3740,13 +3792,13 @@ function newfrmTemplate()
             		        end;
         end, obj);
 
-    obj._e_event25 = obj.dataLink7:addEventListener("onChange",
+    obj._e_event26 = obj.dataLink7:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.Selected.left = 20 * (tonumber(sheet.CorIndex or 0) % 8);
             			self.Selected.top = 20 * math.floor(tonumber(sheet.CorIndex or 0) / 8);
         end, obj);
 
-    obj._e_event26 = obj.rectangle11:addEventListener("onClick",
+    obj._e_event27 = obj.rectangle11:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 1;
             					sheet.CorIndex = sheet.IndexBarrinha1;
@@ -3754,7 +3806,7 @@ function newfrmTemplate()
             					self.SelectCor:show();
         end, obj);
 
-    obj._e_event27 = obj.rectangle12:addEventListener("onClick",
+    obj._e_event28 = obj.rectangle12:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 1;
             							sheet.CorIndex = sheet.IndexBarrinha1;
@@ -3762,7 +3814,7 @@ function newfrmTemplate()
             							self.SelectCor:show();
         end, obj);
 
-    obj._e_event28 = obj.CorBarrinha1:addEventListener("onClick",
+    obj._e_event29 = obj.CorBarrinha1:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 1;
             								sheet.CorIndex = sheet.IndexBarrinha1;
@@ -3770,7 +3822,7 @@ function newfrmTemplate()
             								self.SelectCor:show();
         end, obj);
 
-    obj._e_event29 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event30 = obj.dataLink8:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.CorBarrinha1.color = sheet.CorBarrinha1;
             				local nodes2 = ndb.getChildNodes(sheet.campoDosNPC);
@@ -3779,7 +3831,7 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event30 = obj.rectangle13:addEventListener("onClick",
+    obj._e_event31 = obj.rectangle13:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 2;
             					sheet.CorIndex = sheet.IndexBarrinha2;
@@ -3787,7 +3839,7 @@ function newfrmTemplate()
             					self.SelectCor:show();
         end, obj);
 
-    obj._e_event31 = obj.rectangle14:addEventListener("onClick",
+    obj._e_event32 = obj.rectangle14:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 2;
             							sheet.CorIndex = sheet.IndexBarrinha2;
@@ -3795,7 +3847,7 @@ function newfrmTemplate()
             							self.SelectCor:show();
         end, obj);
 
-    obj._e_event32 = obj.CorBarrinha2:addEventListener("onClick",
+    obj._e_event33 = obj.CorBarrinha2:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 2;
             								sheet.CorIndex = sheet.IndexBarrinha2;
@@ -3803,7 +3855,7 @@ function newfrmTemplate()
             								self.SelectCor:show();
         end, obj);
 
-    obj._e_event33 = obj.dataLink9:addEventListener("onChange",
+    obj._e_event34 = obj.dataLink9:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.CorBarrinha2.color = sheet.CorBarrinha2;
             				local nodes2 = ndb.getChildNodes(sheet.campoDosNPC);
@@ -3812,7 +3864,7 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event34 = obj.rectangle15:addEventListener("onClick",
+    obj._e_event35 = obj.rectangle15:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 3;
             					sheet.CorIndex = sheet.IndexBarrinha3;
@@ -3820,7 +3872,7 @@ function newfrmTemplate()
             					self.SelectCor:show();
         end, obj);
 
-    obj._e_event35 = obj.rectangle16:addEventListener("onClick",
+    obj._e_event36 = obj.rectangle16:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 3;
             							sheet.CorIndex = sheet.IndexBarrinha3;
@@ -3828,7 +3880,7 @@ function newfrmTemplate()
             							self.SelectCor:show();
         end, obj);
 
-    obj._e_event36 = obj.CorBarrinha3:addEventListener("onClick",
+    obj._e_event37 = obj.CorBarrinha3:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 3;
             								sheet.CorIndex = sheet.IndexBarrinha3;
@@ -3836,7 +3888,7 @@ function newfrmTemplate()
             								self.SelectCor:show();
         end, obj);
 
-    obj._e_event37 = obj.dataLink10:addEventListener("onChange",
+    obj._e_event38 = obj.dataLink10:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.CorBarrinha3.color = sheet.CorBarrinha3;
             				local nodes2 = ndb.getChildNodes(sheet.campoDosNPC);
@@ -3845,7 +3897,7 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event38 = obj.rectangle17:addEventListener("onClick",
+    obj._e_event39 = obj.rectangle17:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 4;
             					sheet.CorIndex = sheet.IndexBarrinha4;
@@ -3853,7 +3905,7 @@ function newfrmTemplate()
             					self.SelectCor:show();
         end, obj);
 
-    obj._e_event39 = obj.rectangle18:addEventListener("onClick",
+    obj._e_event40 = obj.rectangle18:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 4;
             							sheet.CorIndex = sheet.IndexBarrinha4;
@@ -3861,7 +3913,7 @@ function newfrmTemplate()
             							self.SelectCor:show();
         end, obj);
 
-    obj._e_event40 = obj.CorBarrinha4:addEventListener("onClick",
+    obj._e_event41 = obj.CorBarrinha4:addEventListener("onClick",
         function (self)
             sheet.IndexBarrinha = 4;
             								sheet.CorIndex = sheet.IndexBarrinha4;
@@ -3869,7 +3921,7 @@ function newfrmTemplate()
             								self.SelectCor:show();
         end, obj);
 
-    obj._e_event41 = obj.dataLink11:addEventListener("onChange",
+    obj._e_event42 = obj.dataLink11:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             self.CorBarrinha4.color = sheet.CorBarrinha4;
             				local nodes2 = ndb.getChildNodes(sheet.campoDosNPC);
@@ -3878,204 +3930,204 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event42 = obj.button2:addEventListener("onClick",
+    obj._e_event43 = obj.button2:addEventListener("onClick",
         function (self)
             self.Config:close();
         end, obj);
 
-    obj._e_event43 = obj.layout19:addEventListener("onClick",
+    obj._e_event44 = obj.layout19:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "0";
             				sheet.ColorString = "#acacac";
         end, obj);
 
-    obj._e_event44 = obj.rectangle21:addEventListener("onClick",
+    obj._e_event45 = obj.rectangle21:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "0";
             					sheet.ColorString = "#acacac";
         end, obj);
 
-    obj._e_event45 = obj.layout20:addEventListener("onClick",
+    obj._e_event46 = obj.layout20:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "1";
             				sheet.ColorString = "#5959ff";
         end, obj);
 
-    obj._e_event46 = obj.rectangle22:addEventListener("onClick",
+    obj._e_event47 = obj.rectangle22:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "1";
             					sheet.ColorString = "#5959ff";
         end, obj);
 
-    obj._e_event47 = obj.layout21:addEventListener("onClick",
+    obj._e_event48 = obj.layout21:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "2";
             				sheet.ColorString = "#59ff59";
         end, obj);
 
-    obj._e_event48 = obj.rectangle23:addEventListener("onClick",
+    obj._e_event49 = obj.rectangle23:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "2";
             					sheet.ColorString = "#59ff59";
         end, obj);
 
-    obj._e_event49 = obj.layout22:addEventListener("onClick",
+    obj._e_event50 = obj.layout22:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "3";
             				sheet.ColorString = "#ff5959";
         end, obj);
 
-    obj._e_event50 = obj.rectangle24:addEventListener("onClick",
+    obj._e_event51 = obj.rectangle24:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "3";
             					sheet.ColorString = "#ff5959";
         end, obj);
 
-    obj._e_event51 = obj.layout23:addEventListener("onClick",
+    obj._e_event52 = obj.layout23:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "4";
             				sheet.ColorString = "#ff59ff";
         end, obj);
 
-    obj._e_event52 = obj.rectangle25:addEventListener("onClick",
+    obj._e_event53 = obj.rectangle25:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "4";
             					sheet.ColorString = "#ff59ff";
         end, obj);
 
-    obj._e_event53 = obj.layout24:addEventListener("onClick",
+    obj._e_event54 = obj.layout24:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "5";
             				sheet.ColorString = "#ffac59";
         end, obj);
 
-    obj._e_event54 = obj.rectangle26:addEventListener("onClick",
+    obj._e_event55 = obj.rectangle26:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "5";
             					sheet.ColorString = "#ffac59";
         end, obj);
 
-    obj._e_event55 = obj.layout25:addEventListener("onClick",
+    obj._e_event56 = obj.layout25:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "6";
             				sheet.ColorString = "#ffff59";
         end, obj);
 
-    obj._e_event56 = obj.rectangle27:addEventListener("onClick",
+    obj._e_event57 = obj.rectangle27:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "6";
             					sheet.ColorString = "#ffff59";
         end, obj);
 
-    obj._e_event57 = obj.layout26:addEventListener("onClick",
+    obj._e_event58 = obj.layout26:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "7";
             				sheet.ColorString = "#59ffff";
         end, obj);
 
-    obj._e_event58 = obj.rectangle28:addEventListener("onClick",
+    obj._e_event59 = obj.rectangle28:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "7";
             					sheet.ColorString = "#59ffff";
         end, obj);
 
-    obj._e_event59 = obj.layout27:addEventListener("onClick",
+    obj._e_event60 = obj.layout27:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "8";
             				sheet.ColorString = "#ffd159";
         end, obj);
 
-    obj._e_event60 = obj.rectangle29:addEventListener("onClick",
+    obj._e_event61 = obj.rectangle29:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "8";
             					sheet.ColorString = "#ffd159";
         end, obj);
 
-    obj._e_event61 = obj.layout28:addEventListener("onClick",
+    obj._e_event62 = obj.layout28:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "9";
             				sheet.ColorString = "#5990ff";
         end, obj);
 
-    obj._e_event62 = obj.rectangle30:addEventListener("onClick",
+    obj._e_event63 = obj.rectangle30:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "9";
             					sheet.ColorString = "#5990ff";
         end, obj);
 
-    obj._e_event63 = obj.layout29:addEventListener("onClick",
+    obj._e_event64 = obj.layout29:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "10";
             				sheet.ColorString = "#f4c264";
         end, obj);
 
-    obj._e_event64 = obj.rectangle31:addEventListener("onClick",
+    obj._e_event65 = obj.rectangle31:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "10";
             					sheet.ColorString = "#f4c264";
         end, obj);
 
-    obj._e_event65 = obj.layout30:addEventListener("onClick",
+    obj._e_event66 = obj.layout30:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "11";
             				sheet.ColorString = "#de7a7a";
         end, obj);
 
-    obj._e_event66 = obj.rectangle32:addEventListener("onClick",
+    obj._e_event67 = obj.rectangle32:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "11";
             					sheet.ColorString = "#de7a7a";
         end, obj);
 
-    obj._e_event67 = obj.layout31:addEventListener("onClick",
+    obj._e_event68 = obj.layout31:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "12";
             				sheet.ColorString = "#cb83d6";
         end, obj);
 
-    obj._e_event68 = obj.rectangle33:addEventListener("onClick",
+    obj._e_event69 = obj.rectangle33:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "12";
             					sheet.ColorString = "#cb83d6";
         end, obj);
 
-    obj._e_event69 = obj.layout32:addEventListener("onClick",
+    obj._e_event70 = obj.layout32:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "13";
             				sheet.ColorString = "#f3658a";
         end, obj);
 
-    obj._e_event70 = obj.rectangle34:addEventListener("onClick",
+    obj._e_event71 = obj.rectangle34:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "13";
             					sheet.ColorString = "#f3658a";
         end, obj);
 
-    obj._e_event71 = obj.layout33:addEventListener("onClick",
+    obj._e_event72 = obj.layout33:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "14";
             				sheet.ColorString = "#8cecb3";
         end, obj);
 
-    obj._e_event72 = obj.rectangle35:addEventListener("onClick",
+    obj._e_event73 = obj.rectangle35:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "14";
             					sheet.ColorString = "#8cecb3";
         end, obj);
 
-    obj._e_event73 = obj.layout34:addEventListener("onClick",
+    obj._e_event74 = obj.layout34:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "15";
             				sheet.ColorString = "#ed846b";
         end, obj);
 
-    obj._e_event74 = obj.rectangle36:addEventListener("onClick",
+    obj._e_event75 = obj.rectangle36:addEventListener("onClick",
         function (self)
             sheet.CorIndex = "15";
             					sheet.ColorString = "#ed846b";
         end, obj);
 
-    obj._e_event75 = obj.button3:addEventListener("onClick",
+    obj._e_event76 = obj.button3:addEventListener("onClick",
         function (self)
             if sheet.IndexBarrinha == 1 then
             								sheet.IndexBarrinha1 = sheet.CorIndex;
@@ -4093,7 +4145,7 @@ function newfrmTemplate()
             							self.SelectCor:close();
         end, obj);
 
-    obj._e_event76 = obj.NovaAbadeNPCs:addEventListener("onClick",
+    obj._e_event77 = obj.NovaAbadeNPCs:addEventListener("onClick",
         function (self)
             if DonoMestre() then			
             						node = self.opcoesFalsas:append();
@@ -4102,25 +4154,25 @@ function newfrmTemplate()
             					end;
         end, obj);
 
-    obj._e_event77 = obj.rectangle38:addEventListener("onClick",
+    obj._e_event78 = obj.rectangle38:addEventListener("onClick",
         function (self)
             self.dropDownFalso.scopeNode = sheet;
             						 self:autoCalcular();
         end, obj);
 
-    obj._e_event78 = obj.label43:addEventListener("onClick",
+    obj._e_event79 = obj.label43:addEventListener("onClick",
         function (self)
             self.dropDownFalso.scopeNode = sheet;
             						 self:autoCalcular();
         end, obj);
 
-    obj._e_event79 = obj.path1:addEventListener("onClick",
+    obj._e_event80 = obj.path1:addEventListener("onClick",
         function (self)
             self.dropDownFalso.scopeNode = sheet;
             							 self:autoCalcular();
         end, obj);
 
-    obj._e_event80 = obj.ListaDeNPCs:addEventListener("onShow",
+    obj._e_event81 = obj.ListaDeNPCs:addEventListener("onShow",
         function (self)
             if self.opcoesFalsas2.selectedNode == nil and sheet ~= nil then
             			chamarListaDeJogadores();
@@ -4132,7 +4184,7 @@ function newfrmTemplate()
                     end;
         end, obj);
 
-    obj._e_event81 = obj.opcoesFalsas2:addEventListener("onSelect",
+    obj._e_event82 = obj.opcoesFalsas2:addEventListener("onSelect",
         function (self)
             local node = self.opcoesFalsas2.selectedNode;
             						 setTimeout(function()
@@ -4142,7 +4194,7 @@ function newfrmTemplate()
             						 end,10);
         end, obj);
 
-    obj._e_event82 = obj.opcoesFalsas2:addEventListener("onCompare",
+    obj._e_event83 = obj.opcoesFalsas2:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if (nodeA.CodigoInterno == nil) then
             							if (nodeA.NomeDaOpcao == "Nenhum") then
@@ -4168,7 +4220,7 @@ function newfrmTemplate()
             						end;
         end, obj);
 
-    obj._e_event83 = obj.rectangle39:addEventListener("onResize",
+    obj._e_event84 = obj.rectangle39:addEventListener("onResize",
         function (self)
             if self.width >= 270 then
             				self.rclListaDeNPC.width = self.width;
@@ -4177,7 +4229,7 @@ function newfrmTemplate()
             			end;
         end, obj);
 
-    obj._e_event84 = obj.Configurar:addEventListener("onClick",
+    obj._e_event85 = obj.Configurar:addEventListener("onClick",
         function (self)
             if DonoMestre() then
             						self.Config.scopeNode = sheet;
@@ -4187,7 +4239,7 @@ function newfrmTemplate()
             					end;
         end, obj);
 
-    obj._e_event85 = obj.NovoNPC:addEventListener("onClick",
+    obj._e_event86 = obj.NovoNPC:addEventListener("onClick",
         function (self)
             if DonoMestre() then			
             						node = self.rclListaDeNPC:append();
@@ -4196,7 +4248,7 @@ function newfrmTemplate()
             					end;
         end, obj);
 
-    obj._e_event86 = obj.Organizar:addEventListener("onClick",
+    obj._e_event87 = obj.Organizar:addEventListener("onClick",
         function (self)
             if DonoMestre() then			
             						self.rclListaDeNPC:sort();
@@ -4205,11 +4257,11 @@ function newfrmTemplate()
             					end;
         end, obj);
 
-    obj._e_event87 = obj.rclListaDeNPC:addEventListener("onBeginEnumeration",
+    obj._e_event88 = obj.rclListaDeNPC:addEventListener("onBeginEnumeration",
         function (self)
         end, obj);
 
-    obj._e_event88 = obj.rclListaDeNPC:addEventListener("onItemAdded",
+    obj._e_event89 = obj.rclListaDeNPC:addEventListener("onItemAdded",
         function (self, node, form)
             node.CorBarrinha1 = (sheet.CorBarrinha1 or "#808080");
             					node.CorBarrinha2 = (sheet.CorBarrinha2 or "#808080");
@@ -4221,7 +4273,7 @@ function newfrmTemplate()
             					form.Barrinha4.color = sheet.CorBarrinha4;
         end, obj);
 
-    obj._e_event89 = obj.rclListaDeNPC:addEventListener("onCompare",
+    obj._e_event90 = obj.rclListaDeNPC:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             org = getOrganizacao();
             					if nodeA.hideNPC and not nodeB.hideNPC then
@@ -4242,7 +4294,7 @@ function newfrmTemplate()
             					end;
         end, obj);
 
-    obj._e_event90 = obj.opcoesFalsas:addEventListener("onSelect",
+    obj._e_event91 = obj.opcoesFalsas:addEventListener("onSelect",
         function (self)
             local node = self.opcoesFalsas.selectedNode;
             					 setTimeout(function()
@@ -4255,7 +4307,7 @@ function newfrmTemplate()
             					 self.dropDownFalso:close();
         end, obj);
 
-    obj._e_event91 = obj.opcoesFalsas:addEventListener("onBeginEnumeration",
+    obj._e_event92 = obj.opcoesFalsas:addEventListener("onBeginEnumeration",
         function (self)
             if sheet ~= nil then
             						local nodes = ndb.getChildNodes(sheet.opcoesFalsas);
@@ -4266,7 +4318,7 @@ function newfrmTemplate()
             					end;
         end, obj);
 
-    obj._e_event92 = obj.opcoesFalsas:addEventListener("onEndEnumeration",
+    obj._e_event93 = obj.opcoesFalsas:addEventListener("onEndEnumeration",
         function (self)
             local nodes = ndb.getChildNodes(sheet.opcoesFalsas);
             					if self.dcsMain.scopeNode == nil then
@@ -4276,7 +4328,7 @@ function newfrmTemplate()
             					end;
         end, obj);
 
-    obj._e_event93 = obj.dataLink13:addEventListener("onChange",
+    obj._e_event94 = obj.dataLink13:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
             				local nodes = ndb.getChildNodes(sheet.opcoesFalsas);
@@ -4292,7 +4344,7 @@ function newfrmTemplate()
             			end;
         end, obj);
 
-    obj._e_event94 = obj.dataLink14:addEventListener("onChange",
+    obj._e_event95 = obj.dataLink14:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local nudes = ndb.getChildNodes(sheet.opcoesFalsas);               
             			for i = 1, #nudes, 1 do
@@ -4327,7 +4379,7 @@ function newfrmTemplate()
             			end;
         end, obj);
 
-    obj._e_event95 = obj.dataLink15:addEventListener("onChange",
+    obj._e_event96 = obj.dataLink15:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local nudes = ndb.getChildNodes(sheet.opcoesFalsas);               
             			for i = 1, #nudes, 1 do
@@ -4398,27 +4450,28 @@ function newfrmTemplate()
             			end;
         end, obj);
 
-    obj._e_event96 = obj.button4:addEventListener("onClick",
+    obj._e_event97 = obj.button4:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/README.md')
         end, obj);
 
-    obj._e_event97 = obj.button5:addEventListener("onClick",
+    obj._e_event98 = obj.button5:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20de%20Reinos%20d20/Ficha%20de%20Reinos%20d20.rpk')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true')
         end, obj);
 
-    obj._e_event98 = obj.button6:addEventListener("onClick",
+    obj._e_event99 = obj.button6:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event99 = obj.button7:addEventListener("onClick",
+    obj._e_event100 = obj.button7:addEventListener("onClick",
         function (self)
             exportToMarkdown();
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event100);
         __o_rrpgObjs.removeEventListenerById(self._e_event99);
         __o_rrpgObjs.removeEventListenerById(self._e_event98);
         __o_rrpgObjs.removeEventListenerById(self._e_event97);
@@ -4609,7 +4662,6 @@ function newfrmTemplate()
         if self.rectangle7 ~= nil then self.rectangle7:destroy(); self.rectangle7 = nil; end;
         if self.checkBox3 ~= nil then self.checkBox3:destroy(); self.checkBox3 = nil; end;
         if self.layout42 ~= nil then self.layout42:destroy(); self.layout42 = nil; end;
-        if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
         if self.button7 ~= nil then self.button7:destroy(); self.button7 = nil; end;
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.CorBarrinha3 ~= nil then self.CorBarrinha3:destroy(); self.CorBarrinha3 = nil; end;
@@ -4710,7 +4762,6 @@ function newfrmTemplate()
         if self.dropDownFalso ~= nil then self.dropDownFalso:destroy(); self.dropDownFalso = nil; end;
         if self.richEdit4 ~= nil then self.richEdit4:destroy(); self.richEdit4 = nil; end;
         if self.frmTemplateNotes ~= nil then self.frmTemplateNotes:destroy(); self.frmTemplateNotes = nil; end;
-        if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
         if self.rectangle38 ~= nil then self.rectangle38:destroy(); self.rectangle38 = nil; end;
