@@ -3,7 +3,7 @@
     <!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
     <id>Ambesek.Auto.Updater</id>
     <!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
-    <version>0.1</version>
+    <version>0.1.1</version>
     <name>Plugin Auto Updater</name>
     <description>Verifica seus plugins e encontra quais tem atualizações disponíveis no git do firecast. TAmbém permite acesso a plugins não instalados do git.</description>
     <author>Ambesek</author>

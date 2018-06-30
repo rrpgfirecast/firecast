@@ -294,12 +294,12 @@ function newfrmTemplate()
             
                     internet.download("https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Plugins/plugins.xml",
                         function(stream, contentType)
-                            --vhd.deleteFile("import.xml");
-                            --local file = vhd.openFile("import.xml", "w");
-                            --file:copyFrom(stream, stream.size);
+                            vhd.deleteFile("import.xml");
+                            local file = vhd.openFile("import.xml", "w");
+                            file:copyFrom(stream, stream.size);
                             setTimeout(
                                 function ()
-                                    --file:close();
+                                    file:close();
                                     local import = ndb.load("import.xml");
             
                                     local list = ndb.getChildNodes(import);
