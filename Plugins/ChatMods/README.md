@@ -4,7 +4,7 @@ Esses plugins adicionam novas funções ou alteram funções do chat. Seja atrá
 # Responsaveis pelos projetos:
 - [AfkBot](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true): Ambesek
     - Mensagem personalizada para avisar espectadores ou quem falar com o mestre enquanto ele estiver AFK. 
-- Autolog: Dniester "Tyras" Amorim de Aguiar
+- (Autolog)[https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Autolog/output/Autolog.rpk]: Dniester "Tyras" Amorim de Aguiar
     - Salva automaticamente tudo que é dito nos chats das mesas enquanto o usuario está nelas em "Documentos\RRPG\Complementos\Autolog\Logs\".
 - [Memes Saver](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Memes%20Saver/output/Memes%20Saver.rpk?raw=true): Ambesek
    - Permite salvar imagens e associa-las a atalhos entre "::" para adiciona-las a mensagens de chat. Da mesma forma que os memes padrão do RRPG. 

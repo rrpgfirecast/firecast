@@ -3,3 +3,5 @@ Esses plugins permitem a criação de janelas acoplaveis, que podem ser adiciona
 
 - [Lista de NPCs](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20NPCs/output/Lista%20de%20NPCs.rpk?raw=true): Mia
   - Permite criar avatares similares aos dos Jogadores (com barrinhas e linhas) para NPCs.
+- [Auto Updater](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true): Ambesek
+  - Verificar o github por atualizações nos plugins. 

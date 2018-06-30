@@ -329,7 +329,7 @@ function newfrmTemplate()
 
     obj._e_event1 = obj:addEventListener("onNodeReady",
         function (self)
-            internet.download("raw_download_link",
+            internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true",
                         function(stream, contentType)
                             local info = rrpg.plugins.getRPKDetails(stream);
                             sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
@@ -348,7 +348,7 @@ function newfrmTemplate()
                                 Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                                     function(selected, selectedIndex, selectedText)
                                         if selected and selectedIndex == 1 then
-                                            gui.openInBrowser('raw_download_link');
+                                            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true');
                                         elseif selected and selectedIndex == 3 then
                                             sheet.noUpdate = true;
                                         end;

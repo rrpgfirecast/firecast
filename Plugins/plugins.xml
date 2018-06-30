@@ -32,4 +32,6 @@
    <element id="RRPG.ROLETA.RUSSA" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/RoletaRussa/output/RoletaRussa.rpk?raw=true"/>
    <element id="LISTA_DE_NPC_RRPG" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20NPCs/output/Lista%20de%20NPCs.rpk?raw=true"/>
    <element id="Ambesek.Nefertyne.Shadowrun5E" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true"/>
+   <element id="Ambesek.Auto.Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" />
+   <element id="Autolog" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Autolog/output/Autolog.rpk?raw=true" />
 </root>
