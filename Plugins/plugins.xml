@@ -34,10 +34,10 @@
    <element id="Ambesek.Nefertyne.Shadowrun5E" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true"/>
    <element id="Ambesek.Auto.Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" />
    <element id="Autolog" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Autolog/output/Autolog.rpk?raw=true" />
-   <element id="o_CHAMADO" url=""/>
-   <element id="dnd35" url=""/>
-   <element id="HdA.LBP" url=""/>
-   <element id="br.FichaDani_MB.3" url=""/>
-   <element id="Stark_OMM_1" url=""/>
-   <element id="ID_PLUGIN_ZOMBIE_SURVIVAL" url=""/>
+   <element id="o_CHAMADO" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Call%20Of%20Cthulhu/output/Call%20Of%20Cthulhu.rpk?raw=true"/>
+   <element id="dnd35" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/D&amp;D%203.5/output/D&amp;D%203.5.rpk?raw=true"/>
+   <element id="HdA.LBP" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Hora%20da%20Aventura/output/Hora%20da%20Aventura.rpk?raw=true"/>
+   <element id="br.FichaDani_MB.3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/MightyBladeV6/output/MightyBladeV6.rpk?raw=true"/>
+   <element id="Stark_OMM_1" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Os%20Mundos%20dos%20Mortos/output/Os%20Mundos%20dos%20Mortos.rpk?raw=true"/>
+   <element id="ID_PLUGIN_ZOMBIE_SURVIVAL" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Zombie%20Survival/output/Zombie%20Survival.rpk?raw=true"/>
 </root>
