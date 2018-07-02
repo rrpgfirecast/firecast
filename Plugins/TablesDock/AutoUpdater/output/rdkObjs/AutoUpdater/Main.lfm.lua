@@ -294,7 +294,9 @@ function newfrmTemplate()
             
                     internet.download("https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Plugins/plugins.xml",
                         function(stream, contentType)
-                            vhd.deleteFile("import.xml");
+                            if vhd.fileExists("import.xml") then
+                                vhd.deleteFile("import.xml");
+                            end;
                             local file = vhd.openFile("import.xml", "w");
                             file:copyFrom(stream, stream.size);
                             setTimeout(
