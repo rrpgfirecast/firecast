@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha_HdA2_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmFicha_HdA2_svg path {color: black; strokeColor: black; mode: stretch;} 
+#frmFicha_HdA2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1077" height="1474" color="white">
+            <image left="0" top="0" width="1077" height="1474" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>
+            <layout left="75" top="119" width="453" height="748" compilerOrder="1">
+                <textEditor left="0" top="0" width="453" height="748" fontSize="18" fontColor="#000000" field="PERSONAGENS" transparent="true" compilerOrder="2"/>
+            </layout>
+            <layout left="561" top="119" width="453" height="348" compilerOrder="3">
+                <textEditor left="0" top="0" width="453" height="348" fontSize="18" fontColor="#000000" field="FEITICOS" transparent="true" compilerOrder="4"/>
+            </layout>
+            <layout left="562" top="547" width="453" height="317" compilerOrder="5">
+                <textEditor left="0" top="0" width="453" height="317" fontSize="18" fontColor="#000000" field="NOTAS" transparent="true" compilerOrder="6"/>
+            </layout>
+            <layout left="76" top="941" width="942" height="463" compilerOrder="7">
+                <textEditor left="0" top="0" width="942" height="463" fontSize="18" fontColor="#000000" field="DIARIO" transparent="true" compilerOrder="8"/>
+            </layout>
+        </rectangle>
+    </scrollBox>
+</form>

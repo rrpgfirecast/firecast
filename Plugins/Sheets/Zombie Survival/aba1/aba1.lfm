@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmaba1" formType="sheetTemplate" dataType="DataType.Zombie.Survival" title="Zombie Survival" align="client" theme="light">
+    <import file="1.lfm"/>
+</form>

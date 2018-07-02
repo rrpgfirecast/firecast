@@ -9,8 +9,11 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 	- Ficha para o sistema próprio Arc Metal Zhuls.
 - [BibliotecaRPGmeister](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/BibliotecaRPGmeister/output/BibliotecaRPGmeister.rpk?raw=true): Ambesek
 	- Conteudo da mesa RPGmeister para facil acesso.
+- [Call Of Cthulhu](raw_link): Alipio Araújo
 - [DnD5e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true): AlyssonRPG
 	- Ficha para o sistema Dungeons and Dragons Next.
+- [D&D 3.5](raw_link): Filernall
+	- Ficha para o sistema D&D3.5
 - [FFRPG Mob Creator](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/FFRPG%20Mob%20Creator/output/FFRPG%20Mob%20Creator.rpk?raw=true): Hitoshura
 	- Plugin que gera ficha para Mobs do sistema FFRPG.
 - [Ficha 3ª Era](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%2013%C2%BA%20Era/output/Ficha%2013%C2%BA%20Era.rpk?raw=true): Ruteski
@@ -24,7 +27,7 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 - [Ficha GURPS 4E](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true): Ambesek
 	- Ficha feita para GURPS 4ª edição.
 - [Ficha L5A](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20L5A/output/Ficha%20L5A.rpk?raw=true): Ruteski
-	- Ficha par ao sistema e cenario A Lenda dos Cinco Aneis. 
+	- Ficha para o sistema e cenario A Lenda dos Cinco Aneis. 
 - [Ficha Multiaba](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true): Ambesek
 	- Ficha V3 com multiplas abas e de uso geral. 
 - [Ficha Numenéra](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Numenera/output/Ficha%20Numenera.rpk?raw=true): Ambesek
@@ -44,15 +47,19 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 	- Ficha para o sistema GURPS adaptada para a mesa Saint Seiya Forever.
 - [Gerenciador de Campanha](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true): Ambesek
 	- Ficha para gerenciamento de campanhas. Experiencia, tesouros, aventuras, calendario e presenças. 
+- [Hora da Aventura](raw_link): LeandroBp
 - [Konoha Heroes](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Konoha%20Heroes/output/Konoha%20Heroes.rpk?raw=true): HashBR
 	- Ficha para a mesa e sistema Konoha Heroes (Naruto).
 - [Log Horizon](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Log%20Horizon/output/Ficha%20LH.rpk?raw=true): Ambesek
 	- Ficha para o sistema proprio Log Horizon.
 - [Malditos Goblins](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Malditos%20Goblins/output/mg.rpk?raw=true): Yiotoo
 	- Ficha para o sistema Malditos Goblins.
+- [Mighty Blade V6](raw_link): DanielMartinsLF
+- [Os Mundos dos Mortos ](raw_link): Mestre_Stark
 - [Pokemon D20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Pokemon%20D20/output/Ficha%20PKMN.rpk?raw=true): Ambesek
 	- Ficha incompleta para uma adaptação de Pokémon d20.
 - [Reinos de Ferro](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Reinos%20de%20Ferro/output/Ficha%20RdF.rpk?raw=true): Ambesek
 	- Ficha para o cenario e sistema Reinos de Ferro. 
 - [World of Darkness 20th](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/output/World%20of%20Darkness%2020th.rpk?raw=true): Ambesek
 	- Ficha para o Vampire the Dark Ages e Werewolf Apocalypse, edição de 20 anos. 
+- [Zombie Survival](raw_link): JuniorMW

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmstarkpdf2_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmstarkpdf2_svg path {color: black; strokeColor: black; mode: stretch;} 
+#frmstarkpdf2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="893" height="1191" color="white">
+            <image left="0" top="0" width="893" height="1191" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>
+            <layout left="47" top="224" width="172" height="175" compilerOrder="3">
+                <textEditor left="0" top="0" width="172" height="175" fontSize="14.2" fontColor="#000000" field="Caixa_de_texto_23" transparent="true" compilerOrder="4"/>
+            </layout>
+            <layout left="255" top="227" width="169" height="171" compilerOrder="1">
+                <textEditor left="0" top="0" width="169" height="171" fontSize="14.2" fontColor="#000000" field="Caixa_de_texto_24" transparent="true" compilerOrder="2"/>
+            </layout>
+            <layout left="456" top="228" width="180" height="171" compilerOrder="5">
+                <textEditor left="0" top="0" width="180" height="171" fontSize="14.2" fontColor="#000000" field="Caixa_de_texto_25" transparent="true" compilerOrder="6"/>
+            </layout>
+            <layout left="663" top="229" width="176" height="170" compilerOrder="7">
+                <textEditor left="0" top="0" width="176" height="170" fontSize="14.2" fontColor="#000000" field="Caixa_de_texto_26" transparent="true" compilerOrder="8"/>
+            </layout>
+            <layout left="40" top="533" width="793" height="83" compilerOrder="9">
+                <textEditor left="0" top="0" width="793" height="83" fontSize="14.2" fontColor="#000000" field="Caixa_de_texto_27" transparent="true" compilerOrder="10"/>
+            </layout>
+            <layout left="43" top="692" width="792" height="81" compilerOrder="11">
+                <textEditor left="0" top="0" width="792" height="81" fontSize="14.2" fontColor="#000000" field="Caixa_de_texto_28" transparent="true" compilerOrder="12"/>
+            </layout>
+            <layout left="42" top="850" width="791" height="82" compilerOrder="13">
+                <textEditor left="0" top="0" width="791" height="82" fontSize="14.2" fontColor="#000000" field="Caixa_de_texto_29" transparent="true" compilerOrder="14"/>
+            </layout>
+            <layout left="47" top="1018" width="790" height="86" compilerOrder="15">
+                <textEditor left="0" top="0" width="790" height="86" fontSize="14.2" fontColor="#000000" field="Caixa_de_texto_30" transparent="true" compilerOrder="16"/>
+            </layout>
+            <layout left="265" top="1141" width="162" height="23" compilerOrder="17">
+                <edit transparent="true" fontSize="14.2" fontColor="#000000" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="162" height="24" field="Caixa_de_texto_31" compilerOrder="18"/>
+            </layout>
+        </rectangle>
+    </scrollBox>
+</form>

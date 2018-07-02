@@ -34,4 +34,10 @@
    <element id="Ambesek.Nefertyne.Shadowrun5E" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true"/>
    <element id="Ambesek.Auto.Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" />
    <element id="Autolog" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Autolog/output/Autolog.rpk?raw=true" />
+   <element id="o_CHAMADO" url=""/>
+   <element id="dnd35" url=""/>
+   <element id="HdA.LBP" url=""/>
+   <element id="br.FichaDani_MB.3" url=""/>
+   <element id="Stark_OMM_1" url=""/>
+   <element id="ID_PLUGIN_ZOMBIE_SURVIVAL" url=""/>
 </root>

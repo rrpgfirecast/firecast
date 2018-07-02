@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha_HdA" formType="sheetTemplate" dataType="HdA.LBP" title="Hora de Aventura" align="client" theme="dark">
+    <tabControl align="client">
+        <tab title="Frente">
+            <import file="1.lfm"/>
+        </tab>
+        <tab title="Verso">
+            <import file="2.lfm"/>
+        </tab>
+    </tabControl>
+</form>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.4b" compilationDate="25052016173130" sdkApiVersion="10" originalPluginFileName="dnd.rpk">
+	<!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
+	<id>dnd35</id>
+	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
+	<version>1.0</version>
+	<name>Dungeons and Dragons</name>
+	<author>Filernall</author>
+	<dataTypes>
+		<dataType title="dnd" name="dnd" lfmFile="ficha.lfm">dnd35</dataType>
+	</dataTypes>    <description>Descrição do plugin aqui. Exemplo: Adiciona suporte para fichas para o sistema TAL, com tais recursos, com tais finalidades...</description>
+    <site>http://www.seusite.com.br</site>
+    <contact>Facebook? Twitter? E-Mail?</contact>
+</module>

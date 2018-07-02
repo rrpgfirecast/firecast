@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form dataType="dnd35" formType="sheetTemplate" title="dnd" name="dnd" theme="light">
+	<tabControl align="client" name="pgcPrincipal">
+		<tab title="Atributos">
+			<import file="frente.xml"/>
+		</tab>
+		
+		<tab title="Perícias">
+			<import file="pericias.xml"/>
+		</tab>
+		
+		<tab title="Verso">
+			<import file="verso.xml"/>
+		</tab>
+		
+		<tab title="História">
+			<textEditor align="client" field="historia" fontColor="black" class="transparente"  margins="{left=2, right=2, top=2, bottom=2}"/>
+		</tab>
+		
+		<tab title="Anotações">
+			<textEditor align="client" field="anotacoes" fontColor="black" class="transparente"  margins="{left=2, right=2, top=2, bottom=2}"/>
+		</tab>
+	</tabControl>
+</form>
