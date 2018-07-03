@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.4_beta_2" compilationDate="14082017003735" sdkApiVersion="28" originalPluginFileName="PokeIcons.rpk">
+<module sdkVersion="3.4b" compilationDate="14082017003735" sdkApiVersion="28" originalPluginFileName="PokeIcons.rpk">
 	<id>PokeIcons</id>
-	<version>0.2</version>
+	<version>0.5</version>
 	<name>PokeIcons</name>
-	<description>Use comandos e atalhos /unown :numero: pra inserir pokémon no chat.</description>
-	<author>Vinny Ambesek</author>
+	<description>Use comandos e atalhos /unown :numero: pra inserir pokémon no chat. Use /help para mais informações. </description>
+	<author>Ambesek</author>
 	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
 	<contact>vinnyrpgmeister@gmail.com</contact>
 </module>
