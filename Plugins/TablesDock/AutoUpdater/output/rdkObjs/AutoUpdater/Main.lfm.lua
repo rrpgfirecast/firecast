@@ -78,7 +78,7 @@ function newfrmTemplate()
         end;
 
         local function verifyUpdate(id, url)
-            local nodes = ndb.getChildNodes(sheet.installedPluginsList); 
+            local nodes = ndb.getChildNodes(updaterSheet.installedPluginsList); 
             local myNode;
             for i=1, #nodes, 1 do
                 if nodes[i].moduleId == id then
@@ -120,8 +120,13 @@ function newfrmTemplate()
         
 
 
+    obj.scope = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.scope:setParent(obj);
+    obj.scope:setName("scope");
+    obj.scope:setAlign("client");
+
     obj.tabControl1 = gui.fromHandle(_obj_newObject("tabControl"));
-    obj.tabControl1:setParent(obj);
+    obj.tabControl1:setParent(obj.scope);
     obj.tabControl1:setAlign("client");
     obj.tabControl1:setName("tabControl1");
 
@@ -266,16 +271,22 @@ function newfrmTemplate()
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
         function (self)
-            local installed = rrpg.plugins.getInstalledPlugins();
-                    local nodes = ndb.getChildNodes(sheet.downloadedPluginsList); 
+            -- Carrega o local sheet para ser usado. 
+                    updaterSheet = ndb.load("sheet.xml");
+                    self.scope:setNodeObject(updaterSheet);
+            
+                    -- Limpa os recordList e carrega a lista de plugins instaladados
+                    local installed = rrpg.plugins.getInstalledPlugins();
+                    local nodes = ndb.getChildNodes(updaterSheet.downloadedPluginsList); 
                     for i=1, #nodes, 1 do
                         ndb.deleteNode(nodes[i]);
                     end;
-                    local nodes = ndb.getChildNodes(sheet.installedPluginsList); 
+                    local nodes = ndb.getChildNodes(updaterSheet.installedPluginsList); 
                     for i=1, #nodes, 1 do
                         ndb.deleteNode(nodes[i]);
                     end;
             
+                    -- Adiciona os plugins instalados a lista
                     for i=1, #installed, 1 do
                         local item = self.installedPluginsList:append();
                         item.name = installed[i].name;
@@ -285,6 +296,7 @@ function newfrmTemplate()
                     end;
                     self.installedPluginsList:sort();
                     
+                    -- Adiciona o nome das colunas a lista.
                     local item = self.installedPluginsList:append();
                     item.name = "Nome";
                     item.moduleId = "ID";
@@ -292,6 +304,7 @@ function newfrmTemplate()
                     item.version = "Versão Instalada";
                     item.versionAvailable = "Versão Disponível";
             
+                    -- Inicia o download da lista de plugins do git
                     internet.download("https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Plugins/plugins.xml",
                         function(stream, contentType)
                             if vhd.fileExists("import.xml") then
@@ -307,6 +320,7 @@ function newfrmTemplate()
                                     local list = ndb.getChildNodes(import);
             
                                     for i=1, #list, 1 do
+                                        -- Verifica se tem updates em cada plugin
                                         verifyUpdate(list[i].id, list[i].url);
                                     end;
             
@@ -334,25 +348,25 @@ function newfrmTemplate()
             internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true",
                         function(stream, contentType)
                             local info = rrpg.plugins.getRPKDetails(stream);
-                            sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+                            updaterSheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
             
                             local installed = rrpg.plugins.getInstalledPlugins();
                             local myself;
                             for i=1, #installed, 1 do
                                 if installed[i].moduleId == info.moduleId then
                                     myself = installed[i];
-                                    sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                                    updaterSheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
                                 end;
                             end;
             
-                            if sheet.noUpdate==true then return end;
+                            if updaterSheet.noUpdate==true then return end;
                             if myself~= nil and isNewVersion(myself.version, info.version) then
                                 Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                                     function(selected, selectedIndex, selectedText)
                                         if selected and selectedIndex == 1 then
                                             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true');
                                         elseif selected and selectedIndex == 3 then
-                                            sheet.noUpdate = true;
+                                            updaterSheet.noUpdate = true;
                                         end;
                                     end);
                             end;
@@ -425,6 +439,7 @@ function newfrmTemplate()
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
         if self.tabControl1 ~= nil then self.tabControl1:destroy(); self.tabControl1 = nil; end;
         if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
+        if self.scope ~= nil then self.scope:destroy(); self.scope = nil; end;
         if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
