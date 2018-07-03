@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.4_beta_2">
+<module sdkVersion="3.4_beta_2" compilationDate="14082017003735" sdkApiVersion="28" originalPluginFileName="PokeIcons.rpk">
 	<id>PokeIcons</id>
-	<version>0.3.1</version>
+	<version>0.2</version>
 	<name>PokeIcons</name>
-	<description>Use comandos /poke e /unown pra inserir pokémon no chat.</description>
+	<description>Use comandos e atalhos /unown :numero: pra inserir pokémon no chat.</description>
 	<author>Vinny Ambesek</author>
 	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
 	<contact>vinnyrpgmeister@gmail.com</contact>
