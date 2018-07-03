@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.4b">
 	<id>GerenciadorDeCampanha</id>
-	<version>1.0</version>
-	<name>Gerenciador</name>
+	<version>1.0.1</version>
+	<name>Gerenciador de Campanha</name>
 	<description>Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres.</description>
 	<author>Ambesek</author>
 	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
