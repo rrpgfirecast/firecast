@@ -122,7 +122,33 @@ local __sceneMethods = {
 		
 		processCommand = function(scene, command)
 							return _obj_invokeEx(scene.handle, "ProcessCommand", command);
-						 end;
+						 end,
+						 
+		broadcastMessage = function(scene, messageId, message, loopBack)
+								local node = _obj_invokeEx(scene.handle, "LuaGetSceneNode");
+								
+								if node ~= nil then
+									return NDB.broadcastMessage(node, messageId, message, loopBack);
+								end;
+						   end,
+						   
+		newBroadcastListener = function(scene, messageId, callback)
+									local node = _obj_invokeEx(scene.handle, "LuaGetSceneNode");
+								
+									if node ~= nil then
+										return NDB.newBroadcastListener(node, messageId, 
+											function(sender, messageId, message)
+												if scene.isObjectAlive and (callback ~= nil) then
+													callback(sender, messageId, message);
+												end;
+											end);
+									end;
+							   end,
+
+		sendDelayedUpdates = function(scene)
+								return _obj_invoke(scene.handle, "SendDelayedUpdates");
+							 end
+						   
 	};
 					  
 local function initWrappedSceneFromHandle(handle)
@@ -908,6 +934,7 @@ end;
 
 local __DOPPathProps = {pathData = {tipo = "string", readProp = "PathData", writeProp="PathData"},
 						data = {tipo = "string", readProp = "PathData", writeProp="PathData"},
+						path = {tipo = "string", readProp = "PathData", writeProp="PathData"},
 						color = {tipo="color", readProp="FillColor", writeProp="FillColor"},
 						strokeColor = {tipo="color", readProp="StrokeColor", writeProp="StrokeColor"},
 						strokeSize = {tipo="double", readProp="StrokeThickness", writeProp="StrokeThickness"},

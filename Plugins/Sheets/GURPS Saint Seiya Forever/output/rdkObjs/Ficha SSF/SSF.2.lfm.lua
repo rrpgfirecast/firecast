@@ -8007,7 +8007,7 @@ function newfrmSSF2()
     obj.dataLink237 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink237:setParent(obj.layout64);
     obj.dataLink237:setField("pericia_3_20");
-    obj.dataLink237:setDefaultValue("Técnica de Defesa 1");
+    obj.dataLink237:setDefaultValue("Técnica de Defesa 2");
     obj.dataLink237:setName("dataLink237");
 
     obj.rectangle122 = gui.fromHandle(_obj_newObject("rectangle"));

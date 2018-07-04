@@ -14,15 +14,14 @@
 			<label left="0" top="145" width="200" height="20" text="Sistema: GURPS (Adaptação)" horzTextAlign="center"/>
 
 			<label left="0" top="195" width="200" height="20" text="Colaboradores: " horzTextAlign="center"/>
-			<label left="0" top="220" width="200" height="20" text="M_Sama" horzTextAlign="center"/>
-			<label left="0" top="245" width="200" height="20" text="Mestre_Zephyrus" horzTextAlign="center"/>
-			<label left="0" top="270" width="200" height="20" text="Magvinho" horzTextAlign="center"/>
-			<label left="0" top="295" width="200" height="20" text="Seth" horzTextAlign="center"/>
-			<label left="0" top="320" width="200" height="20" text="Havokk" horzTextAlign="center"/>
+			<label left="0" top="220" width="200" height="20" text="Mestre_Zephyrus" horzTextAlign="center"/>
+			<label left="0" top="245" width="200" height="20" text="Magvinho" horzTextAlign="center"/>
+			<label left="0" top="270" width="200" height="20" text="Seth" horzTextAlign="center"/>
+			<label left="0" top="295" width="200" height="20" text="Havokk" horzTextAlign="center"/>
 		</layout>
 		
 		<label left="550" top="300" width="100" height="20" text="Versão Atual: " horzTextAlign="center"/>
-		<image left="662" top="300" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao04.png"/>
+		<image left="662" top="300" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao05.png"/>
 		<label left="550" top="325" width="100" height="20" text="Ultima Versão: " horzTextAlign="center"/>
 		<image left="662" top="325" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20SSF%20releases/release.png"/>
 			

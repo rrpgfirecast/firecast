@@ -179,6 +179,7 @@ local _mesaMsgAdapter = {prepareFilters =
 	};
 	
 messaging.addMessageAdapter("ChatMessage", _basicChatMessageAdapter);	
+messaging.addMessageAdapter("HandleChatTextInput", _basicChatMessageAdapter);	
 messaging.addMessageAdapter("HandleChatCommand", _basicChatCommandAdapter);
 messaging.addMessageAdapter("ListChatCommands", __listChatCommandsAdapter);	
 messaging.addMessageAdapter("MesaJoined", _mesaJoinPartAdapter);	

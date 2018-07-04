@@ -1074,27 +1074,43 @@ function newfrmSSF3()
             									local resultado = rolagem.resultado;
             									local color = 1;
             
+            									local faces;
+            									local quantidade = 0;
+            
             									for i = 1, #rolagem.ops, 1 do 
             										local operacao = rolagem.ops[i]; 
-            										if operacao.tipo == "dado" then   
-            											maximo = maximo + (operacao.quantidade * operacao.face);
+            										if operacao.tipo == "dado" then 
+            											quantidade = operacao.quantidade;
+            											faces = operacao.face;  
             											media = media + (operacao.quantidade * (operacao.face+1)/2);
-            											minimo = minimo + operacao.quantidade;
             										elseif operacao.tipo == "imediato" then
-            											maximo = maximo + operacao.valor;
             											media = media + operacao.valor;
-            											minimo = minimo + operacao.valor;
             										end;
             									end;
             
+            									local desvio = math.sqrt(quantidade * (faces * faces -1) / 12);
+            
+            									minimo = media - 3 * desvio;
+            									maximo = media + 3 * desvio;
+            
+            									--showMessage(desvio .. "[" .. minimo .. "-" .. maximo .. "]");
+            
             									efetividade = math.floor( (resultado-minimo)/(maximo-minimo) * 100);
-            									if efetividade < 20 then
+            									if efetividade < 0 then
+            										efetividade = 0;
+            									elseif efetividade > 100 then
+            										efetividade = 100;
+            									end;
+            									efetividade = 60 + math.floor(efetividade * 40 / 100)
+            
+            
+            									if efetividade < 68 then
             										color = 4;
-            									elseif efetividade < 40 then
+            									elseif efetividade < 76 then
             										color = 7;
-            									elseif efetividade < 60 then
+            									elseif efetividade < 84 then
             										color = 8;
-            									elseif efetividade < 80 then
+            									elseif efetividade < 92 then
             										color = 12;
             									else
             										color = 9;

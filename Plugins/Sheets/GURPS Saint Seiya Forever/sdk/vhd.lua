@@ -1,4 +1,5 @@
 vhd = {}
+VHD = vhd;
 
 function vhd.expandFileName(shortFileName)
 	return __vhd__expandFileName(shortFileName);
@@ -36,3 +37,24 @@ function vhd.openFile(fileName, mode)
 		return nil, msgError;
 	end;
 end;
+
+function VHD.forceDirectory(directoryPath)
+	return __vhd_forceDirectory(directoryPath);
+end;
+
+function VHD.deleteFile(fileName)
+	return __vhd_deleteFile(fileName);
+end
+
+function VHD.deleteDirectory(directoryPath)
+	return __vhd_deleteDirectory(directoryPath);
+end
+
+function VHD.directoryExists(path)
+	return __vhd_directoryExists(path);
+end
+
+function VHD.enumerateContent(directoryPath)
+	return __vhd_enumerateContent(directoryPath);
+end
+

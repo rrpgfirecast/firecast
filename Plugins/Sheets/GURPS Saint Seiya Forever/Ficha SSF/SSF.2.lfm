@@ -313,7 +313,7 @@
 				<Pericia field="3_19" nome="Técnica de Defesa 1" atr="DX" dificuldade="D" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
 			</layout>
 			<layout left="0" top="505" width="325" height="25">
-				<Pericia field="3_20" nome="Técnica de Defesa 1" atr="DX" dificuldade="D" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
+				<Pericia field="3_20" nome="Técnica de Defesa 2" atr="DX" dificuldade="D" default1="-4" default2="0_0" default3="0_0" pen2="0" pen3="0"/>
 			</layout>
 		</layout>
 
