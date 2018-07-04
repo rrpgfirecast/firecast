@@ -55,7 +55,9 @@
 						local arq = arquivos[1];
 
 						-- Testar se deletar o arquivo funciona bem...
-						--vhd.deleteFile("import.xml")
+		                if vhd.fileExists("import.xml") then
+		                    vhd.deleteFile("import.xml");
+		                end;
 						
 						local stream = vhd.openFile("import.xml", "w");
 						stream:copyFrom(arq.stream, arq.stream.size);

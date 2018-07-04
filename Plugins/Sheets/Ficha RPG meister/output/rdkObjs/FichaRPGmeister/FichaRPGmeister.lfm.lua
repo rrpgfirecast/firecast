@@ -33485,6 +33485,11 @@ function newfrmFichaRPGmeister()
             					function(arquivos)
             						local arq = arquivos[1];
             
+            						-- Testar se deletar o arquivo funciona bem...
+            		                if vhd.fileExists("import.xml") then
+            		                    vhd.deleteFile("import.xml");
+            		                end;
+            						
             						local stream = vhd.openFile("import.xml", "w");
             						stream:copyFrom(arq.stream, arq.stream.size);
             
@@ -33518,7 +33523,7 @@ function newfrmFichaRPGmeister()
             
             									import = {};
             
-            									showMessage("Ficha Importa.");
+            									showMessage("Ficha Importada.");
             								end, 
             								3000
             							);
