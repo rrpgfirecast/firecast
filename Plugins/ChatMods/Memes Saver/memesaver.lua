@@ -2,6 +2,39 @@
 require("vhd.lua");
 require("utils.lua");
 require("locale.lua");
+require("internet.lua");
+
+local config = ndb.load("config.xml");
+
+local function isNewVersion(installed, downloaded)
+    local installedVersion = {};
+    local installedIndex = 0;
+    for i in string.gmatch(installed, "[^%.]+") do
+        installedIndex = installedIndex +1;
+        installedVersion[installedIndex] = i;
+    end
+
+    local downloadedVersion = {};
+    local downloadedIndex = 0;
+    for i in string.gmatch(downloaded, "[^%.]+") do
+        downloadedIndex = downloadedIndex +1;
+        downloadedVersion[downloadedIndex] = i;
+    end
+
+    for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+        if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+            return false;
+        elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+            return true;
+        end;
+    end;
+
+    if downloadedIndex > installedIndex then
+        return true;
+    else
+        return false;
+    end;
+end;
 
 memedb = ndb.load("memeData.xml");
 if memedb.link==nil then
@@ -104,7 +137,7 @@ rrpg.messaging.listen("HandleChatCommand",
 		    message.chat:escrever(s);
 
 			message.response = {handled = true};
-		elseif message.comando == "addmeme" then
+		elseif (message.comando == "addmeme") or (message.comando == "savememe") then
 
 			local arg = {};
 			local index = 0;
@@ -186,9 +219,43 @@ rrpg.messaging.listen("HandleChatCommand",
 rrpg.messaging.listen("ListChatCommands",
         function(message)
                 message.response = {
-                					{comando="/savedmemes", descricao=lang("memes.savedMemes.commandDescription") .." v0.1"},
-                                    {comando="/addmeme <link> <name list>", descricao=lang("memes.addMeme.commandDescription")},
+                					{comando="/savedmemes", descricao=lang("memes.savedMemes.commandDescription") .." v0.2"},
+                                    {comando="/addmeme (or savememe) <link> <name list>", descricao=lang("memes.addMeme.commandDescription")},
                                     {comando="/removememe <name>", descricao=lang("memes.removeMeme.commandDescription")},
                                     {comando="/memeshare", descricao=lang("memes.memeShare.commandDescription")}
                                     };
         end);
+
+internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Memes%20Saver/output/Memes%20Saver.rpk?raw=true",
+            function(stream, contentType)
+                local info = rrpg.plugins.getRPKDetails(stream);
+                config.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+
+                local installed = rrpg.plugins.getInstalledPlugins();
+                local myself;
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i];
+                        config.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                    end;
+                end;
+
+                if config.noUpdate==true then return end;
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose("Há uma nova versão do AfkBot (".. infor.version .."). Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Memes%20Saver/output/Memes%20Saver.rpk?raw=true');
+                            elseif selected and selectedIndex == 3 then
+                                config.noUpdate = true;
+                            end;
+                        end);
+                end;
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg);
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end);
