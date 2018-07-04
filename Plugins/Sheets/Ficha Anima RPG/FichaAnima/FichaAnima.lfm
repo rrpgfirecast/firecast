@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaAnima" formType="sheetTemplate" dataType="Ambesek.Anima" title="Ficha Anima" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        local debug = false;
+        local index = 1;
+
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+        ]]> 
+    </script>
+    <tabControl align="client">
+        <tab title="Geral">
+            <import file="01.Geral.lfm"/>
+        </tab>
+        <tab title="Ataques">
+            <tabControl align="client">
+                <tab title="Simples">
+                    <import file="02.Ataques.lfm"/>
+                </tab>
+                <tab title="Avançados">
+                    <import file="02.AtaquesAprimorados.lfm"/>
+                </tab>
+            </tabControl>
+        </tab>
+        <tab title="Perícias">
+            <import file="03.Pericias.lfm"/>
+        </tab>
+        <tab title="Habilidades">
+            <import file="04.Habilidades.lfm"/>
+        </tab>
+		<tab title="Magias">
+            <import file="05.Magias.lfm"/>
+        </tab>
+		<tab title="Equipamentos">
+            <import file="06.Equipamentos.lfm"/>
+        </tab>
+        <tab title="Inventario">
+            <import file="07.Inventario.lfm"/>
+        </tab>
+		<tab title="Companheiro">
+            <import file="08.Companheiro.lfm"/>
+        </tab>
+        <tab title="Descrição">
+            <import file="09.Descricao.lfm"/>
+        </tab>
+        <tab title="Anotações">
+            <import file="10.Anotacoes.lfm"/>
+        </tab>
+		<tab title="Creditos">
+            <import file="11.Creditos.lfm"/>
+        </tab>
+    </tabControl>
+    <event name="onNodeReady">
+        internet.download("raw_download_link",
+            function(stream, contentType)
+                local info = rrpg.plugins.getRPKDetails(stream);
+                sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+
+                local installed = rrpg.plugins.getInstalledPlugins();
+                local myself;
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i];
+                        sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                    end;
+                end;
+
+                if sheet.noUpdate==true then return end;
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose("Há uma nova versão (".. info.version .. ") da Ficha Anima. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                gui.openInBrowser('raw_download_link');
+                            elseif selected and selectedIndex == 3 then
+                                sheet.noUpdate = true;
+                            end;
+                        end);
+                end;
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg);
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end);
+    </event>
+</form>
