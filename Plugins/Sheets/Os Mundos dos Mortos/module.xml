@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.4b" compilationDate="09032016230135" sdkApiVersion="7" originalPluginFileName="plugin stark.rpk">
+	<!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
+	<id>Stark_OMM_1</id>
+	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
+	<version>1.0</version>
+	<name>OMM</name>
+	<description>Pluguin de ficha O mundo dos mortos</description>
+	<author>Stark_OMM_1</author>
+	<site>http://www.rrpg.com.br</site>
+	<contact>tiagopaixaotk@hotmail.com</contact>
+	<dataTypes>
+		<dataType title="OMM" name="frmstarkpdf" lfmFile="starkpdf/starkpdf.lfm">Stark_RRpg_OMM</dataType>
+	</dataTypes>
+</module>

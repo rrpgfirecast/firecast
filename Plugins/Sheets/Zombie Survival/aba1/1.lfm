@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmaba11_svg" align="client" theme="light" margins="{top=1}">
+<tabControl left="0" top="0" align="client">
+    <tab title="Personagem">
+    <style>#frmaba11_svg path {color: black; strokeColor: black; mode: stretch;} 
+#frmaba11_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="918" height="1188" color="white">
+            <image left="0" top="0" width="918" height="1188" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>
+            <!-- Nome-->
+			<layout left="187" top="189" width="296" height="29" compilerOrder="1">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="296" height="30" field="untitled1" compilerOrder="2"/>
+            </layout>
+			<!-- Foto do personagem-->
+			<layout left="491" top="181" width="336" height="325" compilerOrder="9">
+                <image field="imagemDoPersonagem" editable="true" style="autoFit" left="0" top="0" width="336" height="325" />
+            </layout>
+			<!-- Idade-->
+            <layout left="181" top="227" width="310" height="29" compilerOrder="3">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="310" height="30" field="untitled2" compilerOrder="4"/>
+            </layout>
+			<!-- Profissão-->
+            <layout left="226" top="267" width="260" height="29" compilerOrder="5">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="260" height="30" field="untitled3" compilerOrder="6"/>
+            </layout>
+			<!-- Personalidade-->
+            <layout left="87" top="375" width="400" height="140" compilerOrder="7">
+                <textEditor left="0" top="0" width="400" height="140" fontSize="25" fontColor="#000000" field="untitled4" transparent="true" compilerOrder="8"/>
+            </layout>
+			<!-- Social-->
+            <layout left="181" top="596" width="146" height="27" compilerOrder="11">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="146" height="28" field="untitled6" compilerOrder="12"/>
+            </layout>
+			<!-- Físico-->
+            <layout left="183" top="635" width="146" height="27" compilerOrder="13">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="146" height="28" field="untitled7" compilerOrder="14"/>
+            </layout>
+			<!-- Inteligência-->
+            <layout left="259" top="675" width="146" height="28" compilerOrder="15">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="146" height="29" field="untitled8" compilerOrder="16"/>
+            </layout>
+			<!-- Moral-->
+            <layout left="542" top="595" width="146" height="28" compilerOrder="17">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="146" height="29" field="untitled9" compilerOrder="18"/>
+            </layout>
+			<!-- Consciência-->
+            <layout left="624" top="635" width="146" height="28" compilerOrder="19">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="146" height="29" field="untitled10" compilerOrder="20"/>
+            </layout>
+			<!-- Armas Brancas-->
+            <layout left="340" top="794" width="55" height="29" compilerOrder="21">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled11" compilerOrder="22"/>
+            </layout>
+            <layout left="407" top="794" width="55" height="29" compilerOrder="23">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled12" compilerOrder="24"/>
+            </layout>
+			<!-- Liderança-->
+            <layout left="758" top="794" width="55" height="29" compilerOrder="55">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled28" compilerOrder="56"/>
+            </layout>
+            <layout left="696" top="795" width="55" height="29" compilerOrder="53">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled27" compilerOrder="54"/>
+            </layout>
+			<!-- Armas de Fogo-->
+            <layout left="341" top="833" width="55" height="29" compilerOrder="25">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled13" compilerOrder="26"/>
+            </layout>
+            <layout left="407" top="834" width="55" height="29" compilerOrder="27">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled14" compilerOrder="28"/>
+            </layout>
+			<!-- Furtividade-->
+            <layout left="695" top="834" width="55" height="29" compilerOrder="57">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled29" compilerOrder="58"/>
+            </layout>
+            <layout left="761" top="834" width="55" height="29" compilerOrder="59">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled30" compilerOrder="60"/>
+            </layout>
+			<!-- Desarmado-->
+            <layout left="406" top="872" width="55" height="29" compilerOrder="31">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled16" compilerOrder="32"/>
+            </layout>
+            <layout left="342" top="873" width="55" height="29" compilerOrder="29">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled15" compilerOrder="30"/>
+            </layout>
+			<!-- Cozinha-->
+            <layout left="695" top="874" width="55" height="29" compilerOrder="61">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled31" compilerOrder="62"/>
+            </layout>
+            <layout left="760" top="874" width="55" height="29" compilerOrder="63">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled32" compilerOrder="64"/>
+            </layout>
+			<!-- Psicologia-->
+            <layout left="342" top="910" width="55" height="29" compilerOrder="33">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled17" compilerOrder="34"/>
+            </layout>
+            <layout left="406" top="912" width="55" height="29" compilerOrder="35">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled18" compilerOrder="36"/>
+            </layout>
+			<!-- Informatica-->
+            <layout left="695" top="912" width="55" height="29" compilerOrder="65">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled33" compilerOrder="66"/>
+            </layout>
+            <layout left="760" top="912" width="55" height="29" compilerOrder="67">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled34" compilerOrder="68"/>
+            </layout>
+			<!-- Administração-->
+            <layout left="340" top="949" width="55" height="29" compilerOrder="37">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled19" compilerOrder="38"/>
+            </layout>
+            <layout left="408" top="949" width="55" height="29" compilerOrder="39">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled20" compilerOrder="40"/>
+            </layout>
+			<!-- Condução-->
+            <layout left="694" top="949" width="55" height="29" compilerOrder="69">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled35" compilerOrder="70"/>
+            </layout>
+            <layout left="758" top="949" width="55" height="29" compilerOrder="71">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled36" compilerOrder="72"/>
+            </layout>
+			<!-- Reparos-->
+            <layout left="343" top="988" width="55" height="29" compilerOrder="41">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled21" compilerOrder="42"/>
+            </layout>
+            <layout left="405" top="988" width="55" height="29" compilerOrder="43">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled22" compilerOrder="44"/>
+            </layout>
+			<!-- Demolição-->
+            <layout left="696" top="988" width="55" height="29" compilerOrder="73">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled37" compilerOrder="74"/>
+            </layout>
+            <layout left="761" top="988" width="55" height="29" compilerOrder="75">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled38" compilerOrder="76"/>
+            </layout>
+			<!-- Ciências-->
+            <layout left="406" top="1027" width="55" height="29" compilerOrder="47">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled24" compilerOrder="48"/>
+            </layout>
+            <layout left="340" top="1028" width="55" height="29" compilerOrder="45">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled23" compilerOrder="46"/>
+            </layout>
+			<!-- Eletronica-->
+            <layout left="696" top="1028" width="55" height="29" compilerOrder="77">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled39" compilerOrder="78"/>
+            </layout>
+            <layout left="759" top="1028" width="55" height="29" compilerOrder="79">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled40" compilerOrder="80"/>
+            </layout>
+			<!-- Persuasao-->
+            <layout left="406" top="1067" width="55" height="29" compilerOrder="51">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled26" compilerOrder="52"/>
+            </layout>
+            <layout left="759" top="1067" width="55" height="29" compilerOrder="83">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled42" compilerOrder="84"/>
+            </layout>
+			<!-- Medicina-->
+            <layout left="342" top="1068" width="55" height="29" compilerOrder="49">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled25" compilerOrder="50"/>
+            </layout>
+            <layout left="694" top="1068" width="55" height="29" compilerOrder="81">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="55" height="30" field="untitled41" compilerOrder="82"/>
+            </layout>
+        </rectangle>
+    </scrollBox>
+	</tab>
+	<tab title="Equipamentos">
+	<scrollBox align="client">
+        <rectangle width="918" height="1188" color="white">
+            <image left="0" top="0" width="918" height="1188" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>
+            <!-- Inventário-->
+			<layout left="85" top="215" width="746" height="230" compilerOrder="85">
+                <textEditor left="0" top="0" width="746" height="230" fontSize="25" fontColor="#000000" field="untitled43" transparent="true" compilerOrder="86"/>
+            </layout>
+			<!-- Mão Esquerda-->
+            <layout left="654" top="494" width="184" height="38" compilerOrder="99">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="184" height="39" field="untitled50" compilerOrder="100"/>
+            </layout>
+			<!-- Cabeça-->
+            <layout left="201" top="497" width="250" height="35" compilerOrder="93">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="250" height="36" field="untitled47" compilerOrder="94"/>
+            </layout>
+			<!-- Roupa-->
+            <layout left="194" top="534" width="241" height="35" compilerOrder="95">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="241" height="36" field="untitled48" compilerOrder="96"/>
+            </layout>
+			<!-- Mão Direita-->
+            <layout left="623" top="534" width="214" height="35" compilerOrder="101">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="214" height="36" field="untitled51" compilerOrder="102"/>
+            </layout>
+			<!-- Pés-->
+            <layout left="150" top="572" width="280" height="36" compilerOrder="97">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="280" height="37" field="untitled49" compilerOrder="98"/>
+            </layout>
+			<!-- Coldre-->
+            <layout left="550" top="575" width="285" height="36" compilerOrder="103">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="285" height="37" field="untitled52" compilerOrder="104"/>
+            </layout>
+			<!-- Bandoleira-->
+            <layout left="607" top="615" width="228" height="32" compilerOrder="105">
+                <edit transparent="true" fontSize="25" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="228" height="33" field="untitled53" compilerOrder="106"/>
+            </layout>
+			<!-- Qualidade Defeito-->
+            <layout left="90" top="720" width="380" height="164" compilerOrder="87">
+                <textEditor left="0" top="0" width="380" height="164" fontSize="25" fontColor="#000000" field="untitled44" transparent="true" compilerOrder="88"/>
+            </layout>
+			<!-- Efeitos-->
+            <layout left="490" top="720" width="350" height="167" compilerOrder="89">
+                <textEditor left="0" top="0" width="350" height="167" fontSize="25" fontColor="#000000" field="untitled45" transparent="true" compilerOrder="90"/>
+            </layout>
+			<!-- Background-->
+            <layout left="87" top="960" width="750" height="217" compilerOrder="91">
+                <textEditor left="0" top="0" width="750" height="217" fontSize="25" fontColor="#000000" field="untitled46" transparent="true" compilerOrder="92"/>
+            </layout>
+        </rectangle>
+    </scrollBox>
+	</tab>
+</tabControl>
+</form>

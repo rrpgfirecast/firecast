@@ -120,61 +120,21 @@ function newfrm_FM()
     obj.label5:setParent(obj.popCredit);
     obj.label5:setLeft(210);
     obj.label5:setTop(160);
-    obj.label5:setWidth(90);
+    obj.label5:setWidth(200);
     obj.label5:setHeight(20);
     obj.label5:setText("SUA VERSÃO:");
+    obj.label5:setField("versionInstalled");
     obj.label5:setName("label5");
-
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle2:setParent(obj.popCredit);
-    obj.rectangle2:setLeft(304);
-    obj.rectangle2:setTop(159);
-    obj.rectangle2:setWidth(102);
-    obj.rectangle2:setHeight(22);
-    obj.rectangle2:setColor("white");
-    obj.rectangle2:setStrokeColor("black");
-    obj.rectangle2:setStrokeSize(1);
-    obj.rectangle2:setName("rectangle2");
-
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
-    obj.image2:setParent(obj.popCredit);
-    obj.image2:setLeft(305);
-    obj.image2:setTop(160);
-    obj.image2:setWidth(100);
-    obj.image2:setHeight(20);
-    obj.image2:setStyle("autoFit");
-    obj.image2:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao04.png");
-    obj.image2:setName("image2");
 
     obj.label6 = gui.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.popCredit);
     obj.label6:setLeft(210);
     obj.label6:setTop(190);
-    obj.label6:setWidth(100);
+    obj.label6:setWidth(200);
     obj.label6:setHeight(20);
     obj.label6:setText("VERSÃO ATUAL:");
+    obj.label6:setField("versionDownloaded");
     obj.label6:setName("label6");
-
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle3:setParent(obj.popCredit);
-    obj.rectangle3:setLeft(304);
-    obj.rectangle3:setTop(189);
-    obj.rectangle3:setWidth(102);
-    obj.rectangle3:setHeight(22);
-    obj.rectangle3:setColor("white");
-    obj.rectangle3:setStrokeColor("black");
-    obj.rectangle3:setStrokeSize(1);
-    obj.rectangle3:setName("rectangle3");
-
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
-    obj.image3:setParent(obj.popCredit);
-    obj.image3:setLeft(305);
-    obj.image3:setTop(190);
-    obj.image3:setWidth(100);
-    obj.image3:setHeight(20);
-    obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Multiaba/release.png");
-    obj.image3:setName("image3");
 
     obj.label7 = gui.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.popCredit);
@@ -353,8 +313,37 @@ function newfrm_FM()
 			self.txt.defaultFontSize = sheet.fontSize;
 			self.txt.defaultFontColor = sheet.fontColor;
 			self.txt.backgroundColor = sheet.backgroundColor;
-
 		end;
+
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
 		
 
 
@@ -379,14 +368,14 @@ function newfrm_FM()
     obj.button4:setHint("Adiciona nova aba. ");
     obj.button4:setName("button4");
 
-    obj.image4 = gui.fromHandle(_obj_newObject("image"));
-    obj.image4:setParent(obj.button4);
-    obj.image4:setLeft(5);
-    obj.image4:setTop(5);
-    obj.image4:setWidth(35);
-    obj.image4:setHeight(35);
-    obj.image4:setSRC("/FichaMultiaba/images/addIcon.png");
-    obj.image4:setName("image4");
+    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2:setParent(obj.button4);
+    obj.image2:setLeft(5);
+    obj.image2:setTop(5);
+    obj.image2:setWidth(35);
+    obj.image2:setHeight(35);
+    obj.image2:setSRC("/FichaMultiaba/images/addIcon.png");
+    obj.image2:setName("image2");
 
     obj.settingsBT = gui.fromHandle(_obj_newObject("button"));
     obj.settingsBT:setParent(obj.layout4);
@@ -398,14 +387,14 @@ function newfrm_FM()
     obj.settingsBT:setName("settingsBT");
     obj.settingsBT:setHint("Opções da ficha.");
 
-    obj.image5 = gui.fromHandle(_obj_newObject("image"));
-    obj.image5:setParent(obj.settingsBT);
-    obj.image5:setLeft(5);
-    obj.image5:setTop(5);
-    obj.image5:setWidth(35);
-    obj.image5:setHeight(35);
-    obj.image5:setSRC("/FichaMultiaba/images/config.png");
-    obj.image5:setName("image5");
+    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3:setParent(obj.settingsBT);
+    obj.image3:setLeft(5);
+    obj.image3:setTop(5);
+    obj.image3:setWidth(35);
+    obj.image3:setHeight(35);
+    obj.image3:setSRC("/FichaMultiaba/images/config.png");
+    obj.image3:setName("image3");
 
     obj.creditBt = gui.fromHandle(_obj_newObject("button"));
     obj.creditBt:setParent(obj.layout4);
@@ -451,17 +440,54 @@ function newfrm_FM()
     obj.txt:setField("txt");
     lfm_setPropAsString(obj.txt, "hideSelection",  "false");
 
-    obj._e_event0 = obj.button1:addEventListener("onClick",
+    obj._e_event0 = obj:addEventListener("onNodeReady",
+        function (self)
+            internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true",
+                        function(stream, contentType)
+                            local info = rrpg.plugins.getRPKDetails(stream);
+                            sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+            
+                            local installed = rrpg.plugins.getInstalledPlugins();
+                            local myself;
+                            for i=1, #installed, 1 do
+                                if installed[i].moduleId == info.moduleId then
+                                    myself = installed[i];
+                                    sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                                end;
+                            end;
+            
+                            if sheet.noUpdate==true then return end;
+                            if myself~= nil and isNewVersion(myself.version, info.version) then
+                                Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                                    function(selected, selectedIndex, selectedText)
+                                        if selected and selectedIndex == 1 then
+                                            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true');
+                                        elseif selected and selectedIndex == 3 then
+                                            sheet.noUpdate = true;
+                                        end;
+                                    end);
+                            end;
+                        end,       
+                        function (errorMsg)
+                            --showMessage(errorMsg);
+                        end,       
+                        function (downloaded, total)
+                            -- esta função será chamada constantemente.
+                            -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+                        end);
+        end, obj);
+
+    obj._e_event1 = obj.button1:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event1 = obj.button2:addEventListener("onClick",
+    obj._e_event2 = obj.button2:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Multiaba/Ficha%20Multiaba.rpk')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true')
         end, obj);
 
-    obj._e_event2 = obj.colorComboBox1:addEventListener("onChange",
+    obj._e_event3 = obj.colorComboBox1:addEventListener("onChange",
         function (self)
             if sheet~=nil then
             							self.txt.backgroundColor = sheet.backgroundColor;
@@ -469,7 +495,7 @@ function newfrm_FM()
             						end;
         end, obj);
 
-    obj._e_event3 = obj.colorComboBox2:addEventListener("onChange",
+    obj._e_event4 = obj.colorComboBox2:addEventListener("onChange",
         function (self)
             if sheet~=nil then
             							self.txt.defaultFontColor = sheet.fontColor;
@@ -477,7 +503,7 @@ function newfrm_FM()
             						end;
         end, obj);
 
-    obj._e_event4 = obj.edit1:addEventListener("onChange",
+    obj._e_event5 = obj.edit1:addEventListener("onChange",
         function (self)
             if sheet~=nil then
             							self.txt.defaultFontSize = sheet.fontSize;
@@ -485,7 +511,7 @@ function newfrm_FM()
             						end;
         end, obj);
 
-    obj._e_event5 = obj.checkBox1:addEventListener("onChange",
+    obj._e_event6 = obj.checkBox1:addEventListener("onChange",
         function (self)
             if sheet~=nil then
             							self.txt.showToolbar = not sheet.showToolbar;
@@ -493,14 +519,14 @@ function newfrm_FM()
             						end;
         end, obj);
 
-    obj._e_event6 = obj.checkBox2:addEventListener("onChange",
+    obj._e_event7 = obj.checkBox2:addEventListener("onChange",
         function (self)
             if sheet~=nil then
             					default.global = sheet.global;
             				end;
         end, obj);
 
-    obj._e_event7 = obj.button3:addEventListener("onClick",
+    obj._e_event8 = obj.button3:addEventListener("onClick",
         function (self)
             if sheet~=nil then
             							local default = ndb.load("defaults.xml");
@@ -519,12 +545,12 @@ function newfrm_FM()
             						end;
         end, obj);
 
-    obj._e_event8 = obj.button4:addEventListener("onClick",
+    obj._e_event9 = obj.button4:addEventListener("onClick",
         function (self)
             self.rclAbas:append();
         end, obj);
 
-    obj._e_event9 = obj.settingsBT:addEventListener("onClick",
+    obj._e_event10 = obj.settingsBT:addEventListener("onClick",
         function (self)
             loadDefault();
             						local pop = self:findControlByName("popupSettings");
@@ -537,7 +563,7 @@ function newfrm_FM()
             						end;
         end, obj);
 
-    obj._e_event10 = obj.creditBt:addEventListener("onClick",
+    obj._e_event11 = obj.creditBt:addEventListener("onClick",
         function (self)
             local pop = self:findControlByName("popCredit");
             					
@@ -549,14 +575,14 @@ function newfrm_FM()
             						end;
         end, obj);
 
-    obj._e_event11 = obj.rclAbas:addEventListener("onSelect",
+    obj._e_event12 = obj.rclAbas:addEventListener("onSelect",
         function (self)
             local node = self.rclAbas.selectedNode;
             						self.boxTexto.node = node;
             						self.boxTexto.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event12 = obj.rclAbas:addEventListener("onEndEnumeration",
+    obj._e_event13 = obj.rclAbas:addEventListener("onEndEnumeration",
         function (self)
             if self.rclAbas.selectedNode == nil and sheet ~= nil then
             							local nodes = ndb.getChildNodes(sheet.abas);			   
@@ -567,12 +593,13 @@ function newfrm_FM()
             						end;
         end, obj);
 
-    obj._e_event13 = obj.txt:addEventListener("onMouseMove",
+    obj._e_event14 = obj.txt:addEventListener("onMouseMove",
         function (self, event)
             loadDefault();
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event14);
         __o_rrpgObjs.removeEventListenerById(self._e_event13);
         __o_rrpgObjs.removeEventListenerById(self._e_event12);
         __o_rrpgObjs.removeEventListenerById(self._e_event11);
@@ -612,20 +639,16 @@ function newfrm_FM()
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
-        if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
         if self.popupSettings ~= nil then self.popupSettings:destroy(); self.popupSettings = nil; end;
-        if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
+        if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
         if self.popCredit ~= nil then self.popCredit:destroy(); self.popCredit = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
         if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
-        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.colorComboBox2 ~= nil then self.colorComboBox2:destroy(); self.colorComboBox2 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
-        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
-        if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
-        if self.image4 ~= nil then self.image4:destroy(); self.image4 = nil; end;
         if self.rclAbas ~= nil then self.rclAbas:destroy(); self.rclAbas = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
@@ -633,13 +656,13 @@ function newfrm_FM()
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.label9 ~= nil then self.label9:destroy(); self.label9 = nil; end;
         if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
-        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
+        if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
+        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
-        if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
         if self.colorComboBox1 ~= nil then self.colorComboBox1:destroy(); self.colorComboBox1 = nil; end;
-        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.txt ~= nil then self.txt:destroy(); self.txt = nil; end;
         self:_oldLFMDestroy();
     end;

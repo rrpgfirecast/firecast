@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha_HdA1_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmFicha_HdA1_svg path {color: black; strokeColor: black; mode: stretch;} 
+#frmFicha_HdA1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="1077" height="1474" color="white">
+            <image left="0" top="0" width="1077" height="1474" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>
+            <layout left="58" top="90" width="502" height="53" compilerOrder="1">
+                <edit transparent="true" fontStyle="bold" fontSize="24" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="502" height="54" field="NOME" compilerOrder="2"/>
+            </layout>
+            <layout left="57" top="216" width="503" height="57" compilerOrder="3">
+                <textEditor transparent="true" fontSize="18" fontColor="#000000" left="0" top="0" width="503" height="57" field="CONCEITO" compilerOrder="4"/>
+            </layout>
+            <layout left="593" top="305" width="409" height="147" compilerOrder="5">
+                <textEditor transparent="true" fontSize="18" fontColor="#000000" left="0" top="0" width="409" height="147" field="HISTORICO" compilerOrder="6"/>
+            </layout>
+            <layout left="595" top="526" width="406" height="140" compilerOrder="7">
+                <textEditor transparent="true" fontSize="18" fontColor="#000000" left="0" top="0" width="406" height="140" field="EQUIPAMENTO" compilerOrder="8"/>
+            </layout>
+            <layout left="315" top="695" width="80" height="80" compilerOrder="9">
+                <edit transparent="true" fontSize="50" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="50" height="70" field="ATRIBUTO1_5" compilerOrder="10"/>
+            </layout>
+            <layout left="636" top="695" width="80" height="80" compilerOrder="11">
+                <edit transparent="true" fontSize="50" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="50" height="70" field="ATRIBUTO2_4" compilerOrder="12"/>
+            </layout>
+            <layout left="962" top="695" width="80" height="80" compilerOrder="13">
+                <edit transparent="true" fontSize="50" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="50" height="70" field="ATRIBUTO3_3" compilerOrder="14"/>
+            </layout>
+            <layout left="120" top="761" width="162" height="46" compilerOrder="15">
+                <edit transparent="true" fontSize="28" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="162" height="47" field="ATRIBUTO1" compilerOrder="16"/>
+            </layout>
+            <layout left="446" top="760" width="162" height="46" compilerOrder="17">
+                <edit transparent="true" fontSize="28" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="162" height="47" field="ATRIBUTO2" compilerOrder="18"/>
+            </layout>			
+            <layout left="769" top="756" width="162" height="46" compilerOrder="19">
+                <edit transparent="true" fontSize="28" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="162" height="47" field="ATRIBUTO3" compilerOrder="20"/>
+            </layout>
+            <layout left="867" top="1138" width="42" height="27" compilerOrder="21">
+                <edit transparent="true" fontSize="20" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="42" height="28" field="PE" compilerOrder="22"/>
+            </layout>
+            <layout left="67" top="886" width="269" height="196" compilerOrder="23">
+                <textEditor left="0" top="0" width="269" height="196" fontSize="18" fontColor="#000000" transparent="true" field="PROEZA1" compilerOrder="24"/>
+            </layout>
+            <layout left="393" top="888" width="269" height="196" compilerOrder="25">
+                <textEditor left="0" top="0" width="269" height="196" fontSize="18" fontColor="#000000" transparent="true" field="PROEZA2" compilerOrder="26"/>
+            </layout>			
+            <layout left="717" top="886" width="269" height="196" compilerOrder="27">
+                <textEditor left="0" top="0" width="269" height="196" fontSize="18" fontColor="#000000" transparent="true" field="PROEZA3" compilerOrder="28"/>
+            </layout>
+            <layout left="54" top="1158" width="282" height="130" compilerOrder="29">
+                <textEditor left="0" top="0" width="282" height="130" fontSize="18" fontColor="#000000" transparent="true" field="DEFEITO" compilerOrder="30"/>
+            </layout>
+            <layout left="492" top="1195" width="50" height="50" compilerOrder="31">
+                <edit transparent="true" fontSize="36" fontColor="#000000" type="number" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="70" height="70" field="PH" compilerOrder="32"/>
+            </layout>
+            <layout left="798" top="1248" width="20" height="20" compilerOrder="33">
+                <checkBox left="0" top="0" width="20" height="20" field="VIDA1" compilerOrder="34"/>
+            </layout>
+            <layout left="857" top="1248" width="20" height="20" compilerOrder="35">
+                <checkBox left="0" top="0" width="20" height="20" field="VIDA2" compilerOrder="36"/>
+            </layout>
+            <layout left="916" top="1248" width="20" height="20" compilerOrder="37">
+                <checkBox left="0" top="0" width="20" height="20" field="VIDA3" compilerOrder="38"/>
+            </layout>
+            <layout left="974" top="1248" width="20" height="20" compilerOrder="39">
+                <checkBox left="0" top="0" width="20" height="20" field="VIDA4" compilerOrder="40"/>
+            </layout>
+            <layout left="115" top="1387" width="197" height="25" compilerOrder="41">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="197" height="26" field="ESTADO1" compilerOrder="42"/>
+            </layout>
+            <layout left="431" top="1387" width="197" height="25" compilerOrder="43">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="197" height="26" field="ESTADO2" compilerOrder="44"/>
+            </layout>
+            <layout left="744" top="1387" width="197" height="25" compilerOrder="45">
+                <edit transparent="true" fontSize="16.5" fontColor="#000000" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="197" height="26" field="ESTADO3" compilerOrder="46"/>
+            </layout>
+			<layout left="190" top="340" width="290" height="290" compilerOrder="47">
+				<image editable="true" left="0" top="0" width="290" height="290" style="proportional" field="IMG" compilerOrder="48"/>
+			</layout>		
+        </rectangle>
+    </scrollBox>
+</form>

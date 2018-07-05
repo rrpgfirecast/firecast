@@ -1,6 +1,10 @@
 # Gerenciador de Campanha
 Gerenciador de informações de campanha. Feito para ajudar jogadores e mestres a manterem notas organizadas sobre o jogo. 
-+ Colocar checagem de mestre para VOZ e INICIATIVA.
+
+Versão 10:
+- Criado sistema de atualização automatica. 
+- Apenas mestre consegue dar voz a todos jogadores. 
+- Apenas mestre consegue rolar a inciativa de todos jogadores. 
 
 Versão 09:
 * Removidas abas antigas. 

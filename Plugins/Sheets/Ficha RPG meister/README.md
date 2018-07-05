@@ -1,10 +1,14 @@
 # Ficha RPGmeister 
 Proximas Versões
 + Tiro Multiplo Aprimorado pra ataques avançados. 
-+ Dar uma olhada nas questões de ajuste de tamanho da ficha para telas pequenas. 
++ Dar uma olhada nas questões de ajuste de tamanho da ficha para telas pequenas.
++ Campo de Magia para pontos de sombra.  
++ Campo de Magia para cristais/essencias.
++ Testar se deletar o import.xml ajuda no import. 
 
 Versão 30
 - Adicionados hint aos ataques avançados. 
+- Criado sistema de atualização automatica. 
 
 Versão 29
 - Corrigido bug com a qualidade das armas nos ataques avançados.

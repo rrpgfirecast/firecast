@@ -33,6 +33,39 @@ function newfrmTemplate()
     obj:setAlign("client");
     obj:setTheme("dark");
 
+
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+        
+
+
     obj.tabControl1 = gui.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl1:setParent(obj);
     obj.tabControl1:setAlign("client");
@@ -909,7 +942,7 @@ function newfrmTemplate()
     obj.image3:setWidth(500);
     obj.image3:setHeight(500);
     obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("log mesa");
+    obj.image3:setSRC("logo_mesa");
     obj.image3:setName("image3");
 
     obj.image4 = gui.fromHandle(_obj_newObject("image"));
@@ -962,42 +995,34 @@ function newfrmTemplate()
     obj.label27 = gui.fromHandle(_obj_newObject("label"));
     obj.label27:setParent(obj.scrollBox4);
     obj.label27:setLeft(555);
-    obj.label27:setTop(300);
-    obj.label27:setWidth(100);
+    obj.label27:setTop(275);
+    obj.label27:setWidth(200);
     obj.label27:setHeight(20);
     obj.label27:setText("Versão Atual: ");
     obj.label27:setHorzTextAlign("center");
+    obj.label27:setField("versionInstalled");
     obj.label27:setName("label27");
-
-    obj.image5 = gui.fromHandle(_obj_newObject("image"));
-    obj.image5:setParent(obj.scrollBox4);
-    obj.image5:setLeft(667);
-    obj.image5:setTop(300);
-    obj.image5:setWidth(100);
-    obj.image5:setHeight(20);
-    obj.image5:setStyle("autoFit");
-    obj.image5:setSRC("link versao atual");
-    obj.image5:setName("image5");
 
     obj.label28 = gui.fromHandle(_obj_newObject("label"));
     obj.label28:setParent(obj.scrollBox4);
     obj.label28:setLeft(555);
-    obj.label28:setTop(325);
-    obj.label28:setWidth(100);
+    obj.label28:setTop(300);
+    obj.label28:setWidth(200);
     obj.label28:setHeight(20);
-    obj.label28:setText("Ultima Versão: ");
+    obj.label28:setText("Sua Versão: ");
     obj.label28:setHorzTextAlign("center");
+    obj.label28:setField("versionDownloaded");
     obj.label28:setName("label28");
 
-    obj.image6 = gui.fromHandle(_obj_newObject("image"));
-    obj.image6:setParent(obj.scrollBox4);
-    obj.image6:setLeft(667);
-    obj.image6:setTop(325);
-    obj.image6:setWidth(100);
-    obj.image6:setHeight(20);
-    obj.image6:setStyle("autoFit");
-    obj.image6:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao01.png");
-    obj.image6:setName("image6");
+    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1:setParent(obj.scrollBox4);
+    obj.checkBox1:setLeft(555);
+    obj.checkBox1:setTop(325);
+    obj.checkBox1:setWidth(200);
+    obj.checkBox1:setHeight(20);
+    obj.checkBox1:setField("noUpdate");
+    obj.checkBox1:setText("Não pedir para atualizar.");
+    obj.checkBox1:setName("checkBox1");
 
     obj.button6 = gui.fromHandle(_obj_newObject("button"));
     obj.button6:setParent(obj.scrollBox4);
@@ -1040,7 +1065,44 @@ function newfrmTemplate()
     obj.button9:setText("Nome Mesa");
     obj.button9:setName("button9");
 
-    obj._e_event0 = obj.colorSelector:addEventListener("onChange",
+    obj._e_event0 = obj:addEventListener("onNodeReady",
+        function (self)
+            internet.download("raw_download_link",
+                        function(stream, contentType)
+                            local info = rrpg.plugins.getRPKDetails(stream);
+                            sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+            
+                            local installed = rrpg.plugins.getInstalledPlugins();
+                            local myself;
+                            for i=1, #installed, 1 do
+                                if installed[i].moduleId == info.moduleId then
+                                    myself = installed[i];
+                                    sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                                end;
+                            end;
+            
+                            if sheet.noUpdate==true then return end;
+                            if myself~= nil and isNewVersion(myself.version, info.version) then
+                                Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                                    function(selected, selectedIndex, selectedText)
+                                        if selected and selectedIndex == 1 then
+                                            gui.openInBrowser('raw_download_link');
+                                        elseif selected and selectedIndex == 3 then
+                                            sheet.noUpdate = true;
+                                        end;
+                                    end);
+                            end;
+                        end,       
+                        function (errorMsg)
+                            --showMessage(errorMsg);
+                        end,       
+                        function (downloaded, total)
+                            -- esta função será chamada constantemente.
+                            -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+                        end);
+        end, obj);
+
+    obj._e_event1 = obj.colorSelector:addEventListener("onChange",
         function (self)
             if sheet~=nil then
             		                self.showColor.color = sheet.colorSelector or "#000000";
@@ -1048,18 +1110,18 @@ function newfrmTemplate()
             		            end;
         end, obj);
 
-    obj._e_event1 = obj.showColor:addEventListener("onMouseDown",
+    obj._e_event2 = obj.showColor:addEventListener("onMouseDown",
         function (self, event)
             self.colorSelector:dropDown();
             		            self.colorSelector.visible = true;
         end, obj);
 
-    obj._e_event2 = obj.showColor:addEventListener("onExit",
+    obj._e_event3 = obj.showColor:addEventListener("onExit",
         function (self)
             self.colorSelector.visible = false;
         end, obj);
 
-    obj._e_event3 = obj.button1:addEventListener("onClick",
+    obj._e_event4 = obj.button1:addEventListener("onClick",
         function (self)
             -- Aumenta um contador enquanto adiciona um objeto
             				if sheet~=nil then
@@ -1081,7 +1143,7 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event4 = obj.button2:addEventListener("onClick",
+    obj._e_event5 = obj.button2:addEventListener("onClick",
         function (self)
             -- Aumenta um contador enquanto adiciona um objeto
             				if sheet~=nil then
@@ -1097,7 +1159,7 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event5 = obj.rclName:addEventListener("onCompare",
+    obj._e_event6 = obj.rclName:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista. 
             		        if (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
@@ -1109,7 +1171,7 @@ function newfrmTemplate()
             		        end;
         end, obj);
 
-    obj._e_event6 = obj.popupButton:addEventListener("onClick",
+    obj._e_event7 = obj.popupButton:addEventListener("onClick",
         function (self)
             local pop = self:findControlByName("popExemplo");
             				
@@ -1121,7 +1183,7 @@ function newfrmTemplate()
             				end;
         end, obj);
 
-    obj._e_event7 = obj.button3:addEventListener("onClick",
+    obj._e_event8 = obj.button3:addEventListener("onClick",
         function (self)
             local roll = sheet.roll or "1d1-1";
             	    		local rolagem = rrpg.interpretarRolagem(roll);
@@ -1129,25 +1191,25 @@ function newfrmTemplate()
             				mesa.activeChat:rolarDados(rolagem, "Teste de Exemplo", rolagemCallback);
         end, obj);
 
-    obj._e_event8 = obj.button4:addEventListener("onClick",
+    obj._e_event9 = obj.button4:addEventListener("onClick",
         function (self)
             self.rclSelector:append();
         end, obj);
 
-    obj._e_event9 = obj.rclSelector:addEventListener("onCompare",
+    obj._e_event10 = obj.rclSelector:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
             		        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
-    obj._e_event10 = obj.rclSelector:addEventListener("onSelect",
+    obj._e_event11 = obj.rclSelector:addEventListener("onSelect",
         function (self)
             local node = self.rclSelector.selectedNode;
             					self.boxDetalhesDoItem.node = node; 
             					self.boxDetalhesDoItem.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event11 = obj.button5:addEventListener("onClick",
+    obj._e_event12 = obj.button5:addEventListener("onClick",
         function (self)
             if sheet.imageCounter == nil then
             					sheet.imageCounter = 0;
@@ -1158,32 +1220,33 @@ function newfrmTemplate()
             				sheet.clickableImage = pics[sheet.imageCounter +1];
         end, obj);
 
-    obj._e_event12 = obj.image2:addEventListener("onStartDrag",
+    obj._e_event13 = obj.image2:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
-    obj._e_event13 = obj.button6:addEventListener("onClick",
+    obj._e_event14 = obj.button6:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('link change log')
+            gui.openInBrowser('link_change_log')
         end, obj);
 
-    obj._e_event14 = obj.button7:addEventListener("onClick",
+    obj._e_event15 = obj.button7:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('link atualizar')
+            gui.openInBrowser('raw_download_link')
         end, obj);
 
-    obj._e_event15 = obj.button8:addEventListener("onClick",
+    obj._e_event16 = obj.button8:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event16 = obj.button9:addEventListener("onClick",
+    obj._e_event17 = obj.button9:addEventListener("onClick",
         function (self)
             gui.openInBrowser('link mesa');
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event17);
         __o_rrpgObjs.removeEventListenerById(self._e_event16);
         __o_rrpgObjs.removeEventListenerById(self._e_event15);
         __o_rrpgObjs.removeEventListenerById(self._e_event14);
@@ -1218,7 +1281,6 @@ function newfrmTemplate()
         if self.frmExamples ~= nil then self.frmExamples:destroy(); self.frmExamples = nil; end;
         if self.rectangle9 ~= nil then self.rectangle9:destroy(); self.rectangle9 = nil; end;
         if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
-        if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
         if self.popExemplo ~= nil then self.popExemplo:destroy(); self.popExemplo = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
         if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;
@@ -1240,7 +1302,6 @@ function newfrmTemplate()
         if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
-        if self.image6 ~= nil then self.image6:destroy(); self.image6 = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
@@ -1318,6 +1379,7 @@ function newfrmTemplate()
         if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
         if self.image4 ~= nil then self.image4:destroy(); self.image4 = nil; end;
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
+        if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.layout7 ~= nil then self.layout7:destroy(); self.layout7 = nil; end;
         self:_oldLFMDestroy();

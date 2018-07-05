@@ -2886,10 +2886,23 @@ function newfrmSSF1()
     obj._e_event25 = obj.button13:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            
+            						local tecnica;
+            
+            						if sheet.nh_super_aparar == "1" then
+            							tecnica = sheet.pericia_3_16;
+            						elseif sheet.nh_super_aparar == "2" then
+            							tecnica = sheet.pericia_3_17;
+            						elseif sheet.nh_super_aparar == "3" then
+            							tecnica = sheet.pericia_3_18;
+            						end;
+            						if tecnica == nil then
+            							tecnica = "Tecnica";
+            						end;
             					
             						rolagem = rrpg.interpretarRolagem("3d6");
             						target = (sheet.total_super_aparar or 0) + (tonumber(sheet.mod) or 0);
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Super Aparar [" .. (sheet.total_super_aparar or 0) .. (sheet.sinal or "+") .. (sheet.mod or 0) .. "]", 
+            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Super Aparar (" .. tecnica .. ") [" .. (sheet.total_super_aparar or 0) .. (sheet.sinal or "+") .. (sheet.mod or 0) .. "]", 
             						function (rolado)
             							pos(rolado);
             						end);
@@ -2915,10 +2928,21 @@ function newfrmSSF1()
     obj._e_event27 = obj.button14:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            
+            						local tecnica;
+            
+            						if sheet.nh_tecnica_defesa == "1" then
+            							tecnica = sheet.pericia_3_19;
+            						elseif sheet.nh_tecnica_defesa == "2" then
+            							tecnica = sheet.pericia_3_20;
+            						end;
+            						if tecnica == nil then
+            							tecnica = "Tecnica";
+            						end;
             					
             						rolagem = rrpg.interpretarRolagem("3d6");
             						target = (sheet.total_tecnica_defesa or 0) + (tonumber(sheet.mod) or 0);
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Defesa [" .. (sheet.total_tecnica_defesa or 0) .. (sheet.sinal or "+") .. (sheet.mod or 0) .. "]", 
+            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Defesa (" .. tecnica .. ") [" .. (sheet.total_tecnica_defesa or 0) .. (sheet.sinal or "+") .. (sheet.mod or 0) .. "]", 
             						function (rolado)
             							pos(rolado);
             						end);
@@ -2929,9 +2953,9 @@ function newfrmSSF1()
             if sheet~=nil then
             							local mod = (tonumber(sheet.out_tecnica_defesa) or 0) + 3;
             
-            							if sheet.nh_super_aparar == "1" then
+            							if sheet.nh_tecnica_defesa == "1" then
             								mod = mod + (tonumber(sheet.nh_3_19) or 0)/2;
-            							elseif sheet.nh_super_aparar == "2" then
+            							elseif sheet.nh_tecnica_defesa == "2" then
             								mod = mod + (tonumber(sheet.nh_3_20) or 0)/2;
             							end;
             

@@ -148,7 +148,7 @@ function newfrmSSF7()
     obj.label8:setTop(220);
     obj.label8:setWidth(200);
     obj.label8:setHeight(20);
-    obj.label8:setText("M_Sama");
+    obj.label8:setText("Mestre_Zephyrus");
     obj.label8:setHorzTextAlign("center");
     obj.label8:setName("label8");
 
@@ -158,7 +158,7 @@ function newfrmSSF7()
     obj.label9:setTop(245);
     obj.label9:setWidth(200);
     obj.label9:setHeight(20);
-    obj.label9:setText("Mestre_Zephyrus");
+    obj.label9:setText("Magvinho");
     obj.label9:setHorzTextAlign("center");
     obj.label9:setName("label9");
 
@@ -168,7 +168,7 @@ function newfrmSSF7()
     obj.label10:setTop(270);
     obj.label10:setWidth(200);
     obj.label10:setHeight(20);
-    obj.label10:setText("Magvinho");
+    obj.label10:setText("Seth");
     obj.label10:setHorzTextAlign("center");
     obj.label10:setName("label10");
 
@@ -178,29 +178,19 @@ function newfrmSSF7()
     obj.label11:setTop(295);
     obj.label11:setWidth(200);
     obj.label11:setHeight(20);
-    obj.label11:setText("Seth");
+    obj.label11:setText("Havokk");
     obj.label11:setHorzTextAlign("center");
     obj.label11:setName("label11");
 
     obj.label12 = gui.fromHandle(_obj_newObject("label"));
-    obj.label12:setParent(obj.layout1);
-    obj.label12:setLeft(0);
-    obj.label12:setTop(320);
-    obj.label12:setWidth(200);
+    obj.label12:setParent(obj.scrollBox1);
+    obj.label12:setLeft(550);
+    obj.label12:setTop(300);
+    obj.label12:setWidth(100);
     obj.label12:setHeight(20);
-    obj.label12:setText("Havokk");
+    obj.label12:setText("Versão Atual: ");
     obj.label12:setHorzTextAlign("center");
     obj.label12:setName("label12");
-
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
-    obj.label13:setParent(obj.scrollBox1);
-    obj.label13:setLeft(550);
-    obj.label13:setTop(300);
-    obj.label13:setWidth(100);
-    obj.label13:setHeight(20);
-    obj.label13:setText("Versão Atual: ");
-    obj.label13:setHorzTextAlign("center");
-    obj.label13:setName("label13");
 
     obj.image3 = gui.fromHandle(_obj_newObject("image"));
     obj.image3:setParent(obj.scrollBox1);
@@ -209,18 +199,18 @@ function newfrmSSF7()
     obj.image3:setWidth(100);
     obj.image3:setHeight(20);
     obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao04.png");
+    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao05.png");
     obj.image3:setName("image3");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
-    obj.label14:setParent(obj.scrollBox1);
-    obj.label14:setLeft(550);
-    obj.label14:setTop(325);
-    obj.label14:setWidth(100);
-    obj.label14:setHeight(20);
-    obj.label14:setText("Ultima Versão: ");
-    obj.label14:setHorzTextAlign("center");
-    obj.label14:setName("label14");
+    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13:setParent(obj.scrollBox1);
+    obj.label13:setLeft(550);
+    obj.label13:setTop(325);
+    obj.label13:setWidth(100);
+    obj.label13:setHeight(20);
+    obj.label13:setText("Ultima Versão: ");
+    obj.label13:setHorzTextAlign("center");
+    obj.label13:setName("label13");
 
     obj.image4 = gui.fromHandle(_obj_newObject("image"));
     obj.image4:setParent(obj.scrollBox1);
@@ -248,14 +238,14 @@ function newfrmSSF7()
     obj.button2:setText("Atualizar");
     obj.button2:setName("button2");
 
-    obj.label15 = gui.fromHandle(_obj_newObject("label"));
-    obj.label15:setParent(obj.scrollBox1);
-    obj.label15:setLeft(550);
-    obj.label15:setTop(400);
-    obj.label15:setWidth(200);
-    obj.label15:setHeight(20);
-    obj.label15:setText("Conheça as Mesas:");
-    obj.label15:setName("label15");
+    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14:setParent(obj.scrollBox1);
+    obj.label14:setLeft(550);
+    obj.label14:setTop(400);
+    obj.label14:setWidth(200);
+    obj.label14:setHeight(20);
+    obj.label14:setText("Conheça as Mesas:");
+    obj.label14:setName("label14");
 
     obj.button3 = gui.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.scrollBox1);
@@ -332,7 +322,6 @@ function newfrmSSF7()
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
         if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
-        if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;

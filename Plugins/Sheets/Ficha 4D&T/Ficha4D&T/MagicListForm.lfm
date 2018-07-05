@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagicListForm" width="110" height="25" margins="{top=1}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			dialogs.confirmYesNo("Deseja realmente apagar essa magia?",
+								 function (confirmado)
+									if confirmado then
+										ndb.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showMagiaPopup()
+			local pop = self:findControlByName("popMagia");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de magia para exibir");
+			end;				
+		end;
+		]]>	
+	</script>
+	<rectangle align="client" color="#212121">
+		<edit left="0" top="0" width="170" height="25" field="nome"/>
+
+		<button left="170" top="0" width="25" height="25" text="i" onclick="showMagiaPopup()"/>
+		<button left="195" top="0" width="25" height="25" text="X" onclick="askForDelete()"/>
+	</rectangle>
+</form>

@@ -60,6 +60,9 @@ function tableToStr(tabela, pretty)
 	end;
 end;
 
+utils.tableToStr = tableToStr;
+utils.strToTable = strToTable;
+
 function utils.removerAcentos(str)
 	return _util_removerAcentos(str);
 end;

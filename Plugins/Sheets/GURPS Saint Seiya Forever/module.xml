@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.3">
+<module sdkVersion="3.4b" compilationDate="29052017191508" sdkApiVersion="26" originalPluginFileName="Ficha SSF.rpk">
 	<id>FICHA_SSF</id>
-	<version>0.4</version>
+	<version>0.5</version>
 	<name>Ficha Saint Seya Forever</name>
 	<description>Ficha feita para a mesa Saint Seiya Forever. Sistema GURPS.</description>
 	<author>Ambesek &amp; Nefertyne</author>
 	<site>http://saintseiyaforever.webnode.com</site>
 	<contact>vinnyrpgmeister@gmail.com</contact>
+	<dataTypes>
+		<dataType title="Ficha SSF" name="frmFichaSSF" lfmFile="Ficha SSF/FichaSSF.lfm">Ambesek.Nefertyne.FichaSSF</dataType>
+	</dataTypes>
 </module>

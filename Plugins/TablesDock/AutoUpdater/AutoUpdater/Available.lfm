@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmAvailable" align="client">
+	<scrollBox align="client">
+		<recordList align="client" field="downloadedPluginsList" name="downloadedPluginsList" templateForm="frmDownloadedPlugin">
+			<event name="onCompare">
+                return utils.compareStringPtBr(nodeA.name, nodeB.name);
+        	</event>
+		</recordList>
+	</scrollBox>
+</form>

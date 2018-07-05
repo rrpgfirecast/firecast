@@ -24,6 +24,15 @@
 		</button>
 		<button name="btnRoll" text="R" align="left" class="combatHeaderButton" hint="Faz os testes de iniciativa de todos.">
 			<event name="onClick">
+				local jogadores = rrpg.getMesaDe(sheet).jogadores;
+				local current = nil;
+				for i = 1, #jogadores, 1 do
+					if jogadores[i].login==rrpg.getCurrentUser().login then
+						current = jogadores[i];
+					end;
+				end;
+				if not current.isMestre then return end;
+
 				local nodes = ndb.getChildNodes(sheet.atores);
 				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
 

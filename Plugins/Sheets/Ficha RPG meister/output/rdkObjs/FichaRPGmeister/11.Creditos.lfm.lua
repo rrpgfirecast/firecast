@@ -141,63 +141,33 @@ function newfrmFichaRPGmeister11_svg()
 
     obj.label6 = gui.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.scrollBox1);
-    obj.label6:setLeft(630);
-    obj.label6:setTop(400);
-    obj.label6:setWidth(90);
+    obj.label6:setLeft(620);
+    obj.label6:setTop(375);
+    obj.label6:setWidth(200);
     obj.label6:setHeight(20);
     obj.label6:setText("SUA VERSÃO:");
+    obj.label6:setField("versionInstalled");
     obj.label6:setName("label6");
-
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle3:setParent(obj.scrollBox1);
-    obj.rectangle3:setLeft(724);
-    obj.rectangle3:setTop(399);
-    obj.rectangle3:setWidth(102);
-    obj.rectangle3:setHeight(22);
-    obj.rectangle3:setColor("white");
-    obj.rectangle3:setStrokeColor("black");
-    obj.rectangle3:setStrokeSize(1);
-    obj.rectangle3:setName("rectangle3");
-
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
-    obj.image2:setParent(obj.scrollBox1);
-    obj.image2:setLeft(725);
-    obj.image2:setTop(400);
-    obj.image2:setWidth(100);
-    obj.image2:setHeight(20);
-    obj.image2:setStyle("autoFit");
-    obj.image2:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao29.png");
-    obj.image2:setName("image2");
 
     obj.label7 = gui.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.scrollBox1);
     obj.label7:setLeft(620);
-    obj.label7:setTop(430);
-    obj.label7:setWidth(100);
+    obj.label7:setTop(400);
+    obj.label7:setWidth(200);
     obj.label7:setHeight(20);
     obj.label7:setText("VERSÃO ATUAL:");
+    obj.label7:setField("versionDownloaded");
     obj.label7:setName("label7");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle4:setParent(obj.scrollBox1);
-    obj.rectangle4:setLeft(724);
-    obj.rectangle4:setTop(429);
-    obj.rectangle4:setWidth(102);
-    obj.rectangle4:setHeight(22);
-    obj.rectangle4:setColor("white");
-    obj.rectangle4:setStrokeColor("black");
-    obj.rectangle4:setStrokeSize(1);
-    obj.rectangle4:setName("rectangle4");
-
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
-    obj.image3:setParent(obj.scrollBox1);
-    obj.image3:setLeft(725);
-    obj.image3:setTop(430);
-    obj.image3:setWidth(100);
-    obj.image3:setHeight(20);
-    obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/release.png");
-    obj.image3:setName("image3");
+    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1:setParent(obj.scrollBox1);
+    obj.checkBox1:setLeft(620);
+    obj.checkBox1:setTop(425);
+    obj.checkBox1:setWidth(200);
+    obj.checkBox1:setHeight(20);
+    obj.checkBox1:setField("noUpdate");
+    obj.checkBox1:setText("Não pedir para atualizar.");
+    obj.checkBox1:setName("checkBox1");
 
     obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
@@ -266,12 +236,12 @@ function newfrmFichaRPGmeister11_svg()
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/Ficha%20RPG%20meister.rpk')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/Ficha%20RPG%20meister%20-%20Tutorial.docx')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/__Tutorial/Ficha%20RPG%20meister%20-%20Tutorial.docx?raw=true')
         end, obj);
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
@@ -303,6 +273,11 @@ function newfrmFichaRPGmeister11_svg()
             					function(arquivos)
             						local arq = arquivos[1];
             
+            						-- Testar se deletar o arquivo funciona bem...
+            		                if vhd.fileExists("import.xml") then
+            		                    vhd.deleteFile("import.xml");
+            		                end;
+            						
             						local stream = vhd.openFile("import.xml", "w");
             						stream:copyFrom(arq.stream, arq.stream.size);
             
@@ -336,7 +311,7 @@ function newfrmFichaRPGmeister11_svg()
             
             									import = {};
             
-            									showMessage("Ficha Importa.");
+            									showMessage("Ficha Importada.");
             								end, 
             								3000
             							);
@@ -363,30 +338,27 @@ function newfrmFichaRPGmeister11_svg()
         end;
 
         if self.button4 ~= nil then self.button4:destroy(); self.button4 = nil; end;
+        if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
+        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
+        if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
-        if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
-        if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
-        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
-        if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
-        if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
-        if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
-        if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
-        if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
-        if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
-        if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
+        if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
+        if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
+        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         self:_oldLFMDestroy();
     end;
 

@@ -272,41 +272,23 @@ function newfrmTemplateCreditos()
     obj.label3:setParent(obj.scrollBox1);
     obj.label3:setLeft(555);
     obj.label3:setTop(300);
-    obj.label3:setWidth(100);
+    obj.label3:setWidth(200);
     obj.label3:setHeight(20);
     obj.label3:setText("Versão Atual: ");
     obj.label3:setHorzTextAlign("center");
+    obj.label3:setField("versionInstalled");
     obj.label3:setName("label3");
-
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
-    obj.image2:setParent(obj.scrollBox1);
-    obj.image2:setLeft(667);
-    obj.image2:setTop(300);
-    obj.image2:setWidth(100);
-    obj.image2:setHeight(20);
-    obj.image2:setStyle("autoFit");
-    obj.image2:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20de%20Reinos%20d20/release.png");
-    obj.image2:setName("image2");
 
     obj.label4 = gui.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.scrollBox1);
     obj.label4:setLeft(555);
     obj.label4:setTop(325);
-    obj.label4:setWidth(100);
+    obj.label4:setWidth(200);
     obj.label4:setHeight(20);
     obj.label4:setText("Ultima Versão: ");
     obj.label4:setHorzTextAlign("center");
+    obj.label4:setField("versionDownloaded");
     obj.label4:setName("label4");
-
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
-    obj.image3:setParent(obj.scrollBox1);
-    obj.image3:setLeft(667);
-    obj.image3:setTop(325);
-    obj.image3:setWidth(100);
-    obj.image3:setHeight(20);
-    obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao06.png");
-    obj.image3:setName("image3");
 
     obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
@@ -357,7 +339,7 @@ function newfrmTemplateCreditos()
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20de%20Reinos%20d20/Ficha%20de%20Reinos%20d20.rpk')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
@@ -395,8 +377,6 @@ function newfrmTemplateCreditos()
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
-        if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
-        if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;

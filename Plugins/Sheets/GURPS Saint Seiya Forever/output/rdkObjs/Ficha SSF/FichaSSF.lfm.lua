@@ -10553,7 +10553,7 @@ function newfrmFichaSSF()
     obj.dataLink262 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink262:setParent(obj.layout112);
     obj.dataLink262:setField("pericia_3_20");
-    obj.dataLink262:setDefaultValue("Técnica de Defesa 1");
+    obj.dataLink262:setDefaultValue("Técnica de Defesa 2");
     obj.dataLink262:setName("dataLink262");
 
     obj.rectangle163 = gui.fromHandle(_obj_newObject("rectangle"));
@@ -15014,7 +15014,7 @@ function newfrmFichaSSF()
     obj.label379:setTop(220);
     obj.label379:setWidth(200);
     obj.label379:setHeight(20);
-    obj.label379:setText("M_Sama");
+    obj.label379:setText("Mestre_Zephyrus");
     obj.label379:setHorzTextAlign("center");
     obj.label379:setName("label379");
 
@@ -15024,7 +15024,7 @@ function newfrmFichaSSF()
     obj.label380:setTop(245);
     obj.label380:setWidth(200);
     obj.label380:setHeight(20);
-    obj.label380:setText("Mestre_Zephyrus");
+    obj.label380:setText("Magvinho");
     obj.label380:setHorzTextAlign("center");
     obj.label380:setName("label380");
 
@@ -15034,7 +15034,7 @@ function newfrmFichaSSF()
     obj.label381:setTop(270);
     obj.label381:setWidth(200);
     obj.label381:setHeight(20);
-    obj.label381:setText("Magvinho");
+    obj.label381:setText("Seth");
     obj.label381:setHorzTextAlign("center");
     obj.label381:setName("label381");
 
@@ -15044,29 +15044,19 @@ function newfrmFichaSSF()
     obj.label382:setTop(295);
     obj.label382:setWidth(200);
     obj.label382:setHeight(20);
-    obj.label382:setText("Seth");
+    obj.label382:setText("Havokk");
     obj.label382:setHorzTextAlign("center");
     obj.label382:setName("label382");
 
     obj.label383 = gui.fromHandle(_obj_newObject("label"));
-    obj.label383:setParent(obj.layout165);
-    obj.label383:setLeft(0);
-    obj.label383:setTop(320);
-    obj.label383:setWidth(200);
+    obj.label383:setParent(obj.scrollBox6);
+    obj.label383:setLeft(550);
+    obj.label383:setTop(300);
+    obj.label383:setWidth(100);
     obj.label383:setHeight(20);
-    obj.label383:setText("Havokk");
+    obj.label383:setText("Versão Atual: ");
     obj.label383:setHorzTextAlign("center");
     obj.label383:setName("label383");
-
-    obj.label384 = gui.fromHandle(_obj_newObject("label"));
-    obj.label384:setParent(obj.scrollBox6);
-    obj.label384:setLeft(550);
-    obj.label384:setTop(300);
-    obj.label384:setWidth(100);
-    obj.label384:setHeight(20);
-    obj.label384:setText("Versão Atual: ");
-    obj.label384:setHorzTextAlign("center");
-    obj.label384:setName("label384");
 
     obj.image10 = gui.fromHandle(_obj_newObject("image"));
     obj.image10:setParent(obj.scrollBox6);
@@ -15075,18 +15065,18 @@ function newfrmFichaSSF()
     obj.image10:setWidth(100);
     obj.image10:setHeight(20);
     obj.image10:setStyle("autoFit");
-    obj.image10:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao04.png");
+    obj.image10:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao05.png");
     obj.image10:setName("image10");
 
-    obj.label385 = gui.fromHandle(_obj_newObject("label"));
-    obj.label385:setParent(obj.scrollBox6);
-    obj.label385:setLeft(550);
-    obj.label385:setTop(325);
-    obj.label385:setWidth(100);
-    obj.label385:setHeight(20);
-    obj.label385:setText("Ultima Versão: ");
-    obj.label385:setHorzTextAlign("center");
-    obj.label385:setName("label385");
+    obj.label384 = gui.fromHandle(_obj_newObject("label"));
+    obj.label384:setParent(obj.scrollBox6);
+    obj.label384:setLeft(550);
+    obj.label384:setTop(325);
+    obj.label384:setWidth(100);
+    obj.label384:setHeight(20);
+    obj.label384:setText("Ultima Versão: ");
+    obj.label384:setHorzTextAlign("center");
+    obj.label384:setName("label384");
 
     obj.image11 = gui.fromHandle(_obj_newObject("image"));
     obj.image11:setParent(obj.scrollBox6);
@@ -15114,14 +15104,14 @@ function newfrmFichaSSF()
     obj.button103:setText("Atualizar");
     obj.button103:setName("button103");
 
-    obj.label386 = gui.fromHandle(_obj_newObject("label"));
-    obj.label386:setParent(obj.scrollBox6);
-    obj.label386:setLeft(550);
-    obj.label386:setTop(400);
-    obj.label386:setWidth(200);
-    obj.label386:setHeight(20);
-    obj.label386:setText("Conheça as Mesas:");
-    obj.label386:setName("label386");
+    obj.label385 = gui.fromHandle(_obj_newObject("label"));
+    obj.label385:setParent(obj.scrollBox6);
+    obj.label385:setLeft(550);
+    obj.label385:setTop(400);
+    obj.label385:setWidth(200);
+    obj.label385:setHeight(20);
+    obj.label385:setText("Conheça as Mesas:");
+    obj.label385:setName("label385");
 
     obj.button104 = gui.fromHandle(_obj_newObject("button"));
     obj.button104:setParent(obj.scrollBox6);
@@ -15489,10 +15479,23 @@ function newfrmFichaSSF()
     obj._e_event25 = obj.button13:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            
+            						local tecnica;
+            
+            						if sheet.nh_super_aparar == "1" then
+            							tecnica = sheet.pericia_3_16;
+            						elseif sheet.nh_super_aparar == "2" then
+            							tecnica = sheet.pericia_3_17;
+            						elseif sheet.nh_super_aparar == "3" then
+            							tecnica = sheet.pericia_3_18;
+            						end;
+            						if tecnica == nil then
+            							tecnica = "Tecnica";
+            						end;
             					
             						rolagem = rrpg.interpretarRolagem("3d6");
             						target = (sheet.total_super_aparar or 0) + (tonumber(sheet.mod) or 0);
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Super Aparar [" .. (sheet.total_super_aparar or 0) .. (sheet.sinal or "+") .. (sheet.mod or 0) .. "]", 
+            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Super Aparar (" .. tecnica .. ") [" .. (sheet.total_super_aparar or 0) .. (sheet.sinal or "+") .. (sheet.mod or 0) .. "]", 
             						function (rolado)
             							pos(rolado);
             						end);
@@ -15518,10 +15521,21 @@ function newfrmFichaSSF()
     obj._e_event27 = obj.button14:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            
+            						local tecnica;
+            
+            						if sheet.nh_tecnica_defesa == "1" then
+            							tecnica = sheet.pericia_3_19;
+            						elseif sheet.nh_tecnica_defesa == "2" then
+            							tecnica = sheet.pericia_3_20;
+            						end;
+            						if tecnica == nil then
+            							tecnica = "Tecnica";
+            						end;
             					
             						rolagem = rrpg.interpretarRolagem("3d6");
             						target = (sheet.total_tecnica_defesa or 0) + (tonumber(sheet.mod) or 0);
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Defesa [" .. (sheet.total_tecnica_defesa or 0) .. (sheet.sinal or "+") .. (sheet.mod or 0) .. "]", 
+            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Defesa (" .. tecnica .. ") [" .. (sheet.total_tecnica_defesa or 0) .. (sheet.sinal or "+") .. (sheet.mod or 0) .. "]", 
             						function (rolado)
             							pos(rolado);
             						end);
@@ -15532,9 +15546,9 @@ function newfrmFichaSSF()
             if sheet~=nil then
             							local mod = (tonumber(sheet.out_tecnica_defesa) or 0) + 3;
             
-            							if sheet.nh_super_aparar == "1" then
+            							if sheet.nh_tecnica_defesa == "1" then
             								mod = mod + (tonumber(sheet.nh_3_19) or 0)/2;
-            							elseif sheet.nh_super_aparar == "2" then
+            							elseif sheet.nh_tecnica_defesa == "2" then
             								mod = mod + (tonumber(sheet.nh_3_20) or 0)/2;
             							end;
             
@@ -22904,27 +22918,43 @@ function newfrmFichaSSF()
             									local resultado = rolagem.resultado;
             									local color = 1;
             
+            									local faces;
+            									local quantidade = 0;
+            
             									for i = 1, #rolagem.ops, 1 do 
             										local operacao = rolagem.ops[i]; 
-            										if operacao.tipo == "dado" then   
-            											maximo = maximo + (operacao.quantidade * operacao.face);
+            										if operacao.tipo == "dado" then 
+            											quantidade = operacao.quantidade;
+            											faces = operacao.face;  
             											media = media + (operacao.quantidade * (operacao.face+1)/2);
-            											minimo = minimo + operacao.quantidade;
             										elseif operacao.tipo == "imediato" then
-            											maximo = maximo + operacao.valor;
             											media = media + operacao.valor;
-            											minimo = minimo + operacao.valor;
             										end;
             									end;
             
+            									local desvio = math.sqrt(quantidade * (faces * faces -1) / 12);
+            
+            									minimo = media - 3 * desvio;
+            									maximo = media + 3 * desvio;
+            
+            									--showMessage(desvio .. "[" .. minimo .. "-" .. maximo .. "]");
+            
             									efetividade = math.floor( (resultado-minimo)/(maximo-minimo) * 100);
-            									if efetividade < 20 then
+            									if efetividade < 0 then
+            										efetividade = 0;
+            									elseif efetividade > 100 then
+            										efetividade = 100;
+            									end;
+            									efetividade = 60 + math.floor(efetividade * 40 / 100)
+            
+            
+            									if efetividade < 68 then
             										color = 4;
-            									elseif efetividade < 40 then
+            									elseif efetividade < 76 then
             										color = 7;
-            									elseif efetividade < 60 then
+            									elseif efetividade < 84 then
             										color = 8;
-            									elseif efetividade < 80 then
+            									elseif efetividade < 92 then
             										color = 12;
             									else
             										color = 9;
@@ -24197,7 +24227,6 @@ function newfrmFichaSSF()
         if self.label236 ~= nil then self.label236:destroy(); self.label236 = nil; end;
         if self.comboBox60 ~= nil then self.comboBox60:destroy(); self.comboBox60 = nil; end;
         if self.comboBox2 ~= nil then self.comboBox2:destroy(); self.comboBox2 = nil; end;
-        if self.label386 ~= nil then self.label386:destroy(); self.label386 = nil; end;
         if self.edit214 ~= nil then self.edit214:destroy(); self.edit214 = nil; end;
         if self.label258 ~= nil then self.label258:destroy(); self.label258 = nil; end;
         if self.edit159 ~= nil then self.edit159:destroy(); self.edit159 = nil; end;

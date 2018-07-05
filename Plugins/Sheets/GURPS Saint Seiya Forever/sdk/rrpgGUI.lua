@@ -203,6 +203,8 @@ local function controlFromHandle(handle)
 	return ctrl;
 end
 
+gui.controlFromHandle = controlFromHandle;
+
 --[[ Objeto Layout ]]--
 
 local function layoutFromHandle(handle)
@@ -387,6 +389,8 @@ local function formLayoutFromHandle(handle)
 	ctrl.eves["onScopeNodeChanged"] = "";	
 	ctrl.eves["onShow"] = "";
 	ctrl.eves["onHide"] = "";
+	ctrl.eves["onNodeReady"] = "";
+	ctrl.eves["onNodeUnready"] = "";
 	return ctrl;	
 end
 
@@ -1059,6 +1063,7 @@ local function tabItemFromHandle(handle)
 	
 	function ctrl:getTitle() return _obj_getProp(self.handle, "Title"); end;
 	function ctrl:setTitle(title) _obj_setProp(self.handle, "Title", title); end;	
+	function ctrl:activate() _obj_invoke(self.handle, "Activate"); end;		
 	
 	ctrl.props["text"] = {setter="setText", getter="getText", tipo="string"};
 	ctrl.props["title"] = {setter="setTitle", getter="getTitle", tipo="string"};
@@ -1370,6 +1375,31 @@ function gui.newDataScopeBox()
 end;
 
 guiLoaders["dataScopeBox"] = dataScopeBoxFromHandle;
+
+--[[ Objeto RichEdit ]]--
+
+local function richEditFromHandle(handle)
+	local ctrl = controlFromHandle(handle);
+	
+	function ctrl:getField() return _gui_getFieldName(self.handle); end;
+	function ctrl:setField(v) _gui_setFieldName(self.handle, v); end;	
+	
+		
+	ctrl.props["field"] = {setter = "setField", getter = "getField", tipo = "string"};		
+	ctrl.props["backgroundColor"] = {readProp = "BackgroundColor", writeProp = "BackgroundColor", tipo = "color"};
+	ctrl.props["defaultFontColor"] = {readProp = "DefaultFontColor", writeProp = "DefaultFontColor", tipo = "color"};
+	ctrl.props["defaultFontSize"] = {readProp = "DefaultFontSize", writeProp = "DefaultFontSize", tipo = "double"};	
+	ctrl.props["showToolbar"] = {readProp = "ShowToolbar", writeProp = "ShowToolbar", tipo = "bool"};
+	ctrl.props["readOnly"] = {readProp = "ReadOnly", writeProp = "ReadOnly", tipo = "bool"};
+	ctrl.props["hideSelection"] = {readProp = "HideSelectionNoFocus", writeProp = "HideSelectionNoFocus", tipo = "bool"};
+	return ctrl;	
+end
+
+function gui.newRichEdit()
+  return gui.fromHandle(_obj_newObject("richEdit"));
+end;
+
+guiLoaders["richEdit"] = richEditFromHandle;
 
 
 --[[ Objeto Popup ]]--

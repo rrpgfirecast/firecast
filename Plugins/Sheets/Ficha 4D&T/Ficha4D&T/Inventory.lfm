@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmInventory" align="client">
+	<scrollBox align="client">
+		<rectangle left="0" top="0" width="820" height="300" color="black">
+			<button left="5" top="5" width="25" height="25" text="+" onClick="self.rclArmas:append();"/>
+			<label left="0" top="5" width="820" height="25" horzTextAlign="center" text="ARMAS"/>
+
+			<label left="5" top="30" width="150" height="25" text="Nome" fontSize="13"  horzTextAlign="center"/>
+			<label left="155" top="30" width="150" height="25" text="Ataque Total" fontSize="13"  horzTextAlign="center"/>
+			<label left="305" top="30" width="50" height="25" text="BBA" fontSize="13"  horzTextAlign="center"/>
+			<label left="355" top="30" width="50" height="25" text="Modif." fontSize="13"  horzTextAlign="center"/>
+			<label left="405" top="30" width="50" height="25" text="Outros" fontSize="13"  horzTextAlign="center"/>
+			<label left="455" top="30" width="50" height="25" text="Dano" fontSize="13"  horzTextAlign="center"/>
+
+			<label left="510" top="30" width="50" height="25" text="Tipo" fontSize="13"  horzTextAlign="center"/>
+			<label left="560" top="30" width="50" height="25" text="Tamanho" fontSize="11"  horzTextAlign="center"/>
+			<label left="610" top="30" width="50" height="25" text="Alcance" fontSize="13"  horzTextAlign="center"/>
+			<label left="660" top="30" width="110" height="25" text="Qualidades" fontSize="13"  horzTextAlign="center"/>
+
+			<recordList left="5" top="55" width="810" height="235" name="rclArmas" field="listaDeArmas" templateForm="frmWeaponListForm" layout="vertical">
+				<event name="onCompare">
+		            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+				</event>
+			</recordList>
+		</rectangle>
+
+		<rectangle left="0" top="305" width="240" height="300" color="black">
+			<button left="5" top="5" width="25" height="25" text="+" onClick="self.rclMochila:append();"/>
+			<label left="0" top="5" width="240" height="25" horzTextAlign="center" text="MOCHILA"/>
+
+			<recordList left="0" top="30" width="240" height="260" name="rclMochila" field="listaDeMochila" templateForm="frmRecordListForm" layout="vertical">
+				<event name="onCompare">
+		            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+				</event>
+			</recordList>
+		</rectangle>
+
+		<rectangle left="245" top="305" width="240" height="300" color="black">
+			<button left="5" top="5" width="25" height="25" text="+" onClick="self.rclEquipamentos:append();"/>
+			<label left="0" top="5" width="240" height="25" horzTextAlign="center" text="EQUIPAMENTOS"/>
+
+			<recordList left="0" top="30" width="240" height="260" name="rclEquipamentos" field="listaDeEquipamentos" templateForm="frmRecordListForm" layout="vertical">
+				<event name="onCompare">
+		            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+				</event>
+			</recordList>
+		</rectangle>
+
+		<rectangle left="490" top="305" width="230" height="110" color="black">
+			<label left="0" top="5" width="230" height="25" horzTextAlign="center" text="ARMADURA"/>
+
+			<label left="0" top="30" width="100" height="25" horzTextAlign="center" text="Nome"/>
+			<edit left="100" top="30" width="120" height="25" field="armadura"/>
+
+			<label left="0" top="55" width="100" height="25" horzTextAlign="center" text="Bônus na CA"/>
+			<edit left="100" top="55" width="60" height="25" field="ca_armadura" horzTextAlign="center" type="number"/>
+
+			<label left="0" top="80" width="100" height="25" horzTextAlign="center" text="Tipo"/>
+			<edit left="100" top="80" width="120" height="25" field="armadura_tipo"/>
+		</rectangle>
+
+		<rectangle left="490" top="420" width="230" height="110" color="black">
+			<label left="0" top="5" width="230" height="25" horzTextAlign="center" text="ESCUDO"/>
+
+			<label left="0" top="30" width="100" height="25" horzTextAlign="center" text="Nome"/>
+			<edit left="100" top="30" width="120" height="25" field="escudo"/>
+
+			<label left="0" top="55" width="100" height="25" horzTextAlign="center" text="Bônus na CA"/>
+			<edit left="100" top="55" width="60" height="25" field="ca_escudo" horzTextAlign="center" type="number"/>
+
+			<label left="0" top="80" width="100" height="25" horzTextAlign="center" text="Tipo"/>
+			<edit left="100" top="80" width="120" height="25" field="escudo_tipo"/>
+		</rectangle>
+	</scrollBox>
+</form>

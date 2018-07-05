@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle class="fundo">
+	<scrollBox align="client">
+		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="2" name="fraFrenteLayoutNew" maxControlsPerLine="2">
+			<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center">
+				<flowLayout class="tile" vertAlign="leading" autoHeight="true" minScaledWidth="290" maxControlsPerLine="2" horzAlign="center" lineSpacing="10" margins="{left=2, top=2, right=16, bottom=4}" avoidScale="true" frameStyle="frames/panel1/frame.xml">
+					<flowPart stepSizes="{130}" minScaledWidth="130" height="160">
+						<edit left="0" top="10" width="40" height="25" field="atributos_st" horzTextAlign="center" transparent="true"/>
+						<label left="40" top="10" width="50" height="25" text="ST" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit left="90" top="10" width="40" height="25" field="atributos_mod_st" horzTextAlign="center" transparent="true"/>
+						
+						<edit left="0" top="35" width="40" height="25" field="atributos_dx" horzTextAlign="center" transparent="true"/>
+						<label left="40" top="35" width="50" height="25" text="DX" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit left="90" top="35" width="40" height="25" field="atributos_mod_dx" horzTextAlign="center" transparent="true"/>
+						
+						<edit left="0" top="60" width="40" height="25" field="atributos_iq" horzTextAlign="center" transparent="true"/>
+						<label left="40" top="60" width="50" height="25" text="IQ" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit left="90" top="60" width="40" height="25" field="atributos_mod_iq" horzTextAlign="center" transparent="true"/>
+						
+						<edit left="0" top="85" width="40" height="25" field="atributos_ht" horzTextAlign="center" transparent="true"/>
+						<label left="40" top="85" width="50" height="25" text="HT" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit left="90" top="85" width="40" height="25" field="atributos_mod_ht" horzTextAlign="center" transparent="true"/>
+						
+						<edit left="0" top="110" width="40" height="25" field="atributos_per" horzTextAlign="center" transparent="true"/>
+						<label left="40" top="110" width="50" height="25" text="Per" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit left="90" top="110" width="40" height="25" field="atributos_mod_per" horzTextAlign="center" transparent="true"/>
+						
+						<edit left="0" top="135" width="40" height="25" field="atributos_vt" horzTextAlign="center" transparent="true"/>
+						<label left="40" top="135" width="50" height="25" text="Vont" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit left="90" top="135" width="40" height="25" field="atributos_mod_vt" horzTextAlign="center" transparent="true"/>
+					</flowPart>
+					<flowPart stepSizes="{130}" minScaledWidth="130" height="160">
+						<edit left="0" top="10" width="40" height="25" field="atributos_deslocamento" horzTextAlign="center" transparent="true"/>
+						<label left="40" top="10" width="50" height="25" text="Desloc." fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit left="90" top="10" width="40" height="25" field="atributos_mod_deslocamento" horzTextAlign="center" transparent="true"/>
+						
+						<label left="40" top="35" width="50" height="25" text="Esquiva" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="90" top="35" width="40" height="25" field="dodge" horzTextAlign="center"/>
+						<dataLink field="atributos_mod_velocidade">
+							<event name="onChange">
+								if sheet == nil then return end;
+								local vel = math.floor(tonumber(sheet.atributos_mod_velocidade) or 0);
+								sheet.dodge = vel + 3;
+							</event>
+						</dataLink>
+						
+						<edit left="0" top="60" width="40" height="25" field="atributos_velocidade" horzTextAlign="center" transparent="true"/>
+						<label left="40" top="60" width="50" height="25" text="Velocidade" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit left="90" top="60" width="40" height="25" field="atributos_mod_velocidade" type="float" horzTextAlign="center" transparent="true"/>
+						
+						<label left="40" top="85" width="50" height="25" text="Carga Base" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit left="90" top="85" width="40" height="25" field="carga" horzTextAlign="center" transparent="true"/>
+						
+						<label left="40" top="110" width="50" height="25" text="GdP" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit left="90" top="110" width="40" height="25" field="gdp" horzTextAlign="center" transparent="true"/>
+						
+						<label left="40" top="135" width="50" height="25" text="GdB" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit left="90" top="135" width="40" height="25" field="gdb" horzTextAlign="center" transparent="true"/>
+					</flowPart>
+				</flowLayout>
+				<dataLink fields="{'atributos_st','atributos_ht','atributos_dx','atributos_vt','atributos_iq','atributos_per','atributos_velocidade','atributos_deslocamento'}" defaultValues="{'+0','+0','+0','+0','+0','+0','+0','+0'}"/>
+				<dataLink fields="{'atributos_mod_st','atributos_mod_dx','atributos_mod_iq','atributos_mod_ht','atributos_mod_vt','atributos_mod_per'}" defaultValues="{10,10,10,10,10,10}"/>
+
+				<flowLineBreak/>
+
+				<flowLayout class="tile" vertAlign="leading" autoHeight="true" minScaledWidth="290" maxControlsPerLine="2" horzAlign="center" lineSpacing="10" margins="{left=2, top=2, right=16, bottom=4}" avoidScale="true">
+					<boxAtributo titulo="PV" field="pv"/>
+					<boxAtributo titulo="PF" field="pf"/>
+				</flowLayout>
+
+				<flowLineBreak/>
+
+				<button margins="{top=5,bottom=5}" align="top" text="Arquétipo" width="250">
+					<event name="onClick">
+							local pop = self:findControlByName("popDetails");
+					
+							if sheet.arquetipo == nil then
+								sheet.arquetipo = {};
+								sheet.arquetipo.title = "Arquétipo";
+							else
+								sheet.arquetipo.title = "Arquétipo";
+							end;
+
+							if pop ~= nil then
+								pop:setNodeObject(sheet.arquetipo);
+								pop:showPopupEx("center", self);
+							elseif sheet.arquetipo == nil then
+								showMessage(sheet.arquetipo);
+							else
+								showMessage("Ops, bug.. nao encontrei o popup para exibir");
+							end;
+					</event>
+				</button>
+
+				<flowLineBreak/>
+
+				<button margins="{top=5,bottom=5}" align="top" text="Vantagens" width="250">
+					<event name="onClick">
+						local pop = self:findControlByName("popDetails");
+				
+						if sheet.advantages == nil then
+							sheet.advantages = {};
+							sheet.advantages.title = "Vantagens";
+						else
+							sheet.advantages.title = "Vantagens";
+						end;
+
+						if pop ~= nil then
+							pop:setNodeObject(sheet.advantages);
+							pop:showPopupEx("center", self);
+						elseif sheet.advantages == nil then
+							showMessage(sheet.advantages);
+						else
+							showMessage("Ops, bug.. nao encontrei o popup para exibir");
+						end;
+					</event>
+				</button>
+
+				<flowLineBreak/>
+
+				<button margins="{top=5,bottom=5}" align="top" text="Desvantagens" width="250">
+					<event name="onClick">
+						local pop = self:findControlByName("popDetails");
+				
+						if sheet.disadvantages == nil then
+							sheet.disadvantages = {};
+							sheet.disadvantages.title = "Desvantagens";
+						else
+							sheet.disadvantages.title = "Desvantagens";
+						end;
+
+						if pop ~= nil then
+							pop:setNodeObject(sheet.disadvantages);
+							pop:showPopupEx("center", self);
+						elseif sheet.disadvantages == nil then
+							showMessage(sheet.disadvantages);
+						else
+							showMessage("Ops, bug.. nao encontrei o popup para exibir");
+						end;
+					</event>
+				</button>
+
+				<flowLineBreak/>
+
+				<button margins="{top=5,bottom=5}" align="top" text="Familiaridades Culturais" width="250">
+					<event name="onClick">
+							local pop = self:findControlByName("popDetails");
+					
+							if sheet.familiaridades == nil then
+								sheet.familiaridades = {};
+								sheet.familiaridades.title = "Familiaridades Culturais";
+							else
+								sheet.familiaridades.title = "Familiaridades Culturais";
+							end;
+
+							if pop ~= nil then
+								pop:setNodeObject(sheet.familiaridades);
+								pop:showPopupEx("center", self);
+							elseif sheet.familiaridades == nil then
+								showMessage(sheet.familiaridades);
+							else
+								showMessage("Ops, bug.. nao encontrei o popup para exibir");
+							end;
+					</event>
+				</button>
+
+				<flowLineBreak/>
+
+				<button margins="{top=5,bottom=5}" align="top" text="Idiomas" width="250">
+					<event name="onClick">
+							local pop = self:findControlByName("popDetails");
+					
+							if sheet.idiomas == nil then
+								sheet.idiomas = {};
+								sheet.idiomas.title = "Idiomas";
+							else
+								sheet.idiomas.title = "Idiomas";
+							end;
+
+							if pop ~= nil then
+								pop:setNodeObject(sheet.idiomas);
+								pop:showPopupEx("center", self);
+							elseif sheet.idiomas == nil then
+								showMessage(sheet.idiomas);
+							else
+								showMessage("Ops, bug.. nao encontrei o popup para exibir");
+							end;
+					</event>
+				</button>
+
+				<dataLink fields="{'vantagens_pontos', 'desvantagens_pontos', 'familiaridade_cultural','arquetipo_pontos','idiomas_pontos'}">
+					<event name="onChange">
+						pointCount();
+					</event>
+				</dataLink>
+
+				<flowLineBreak/>
+
+				<flowPart stepSizes="{120}" minScaledWidth="120" margins="{top=5}" height="145" frameStyle="frames/panel4transp/frame.xml">
+						<label left="15" top="10" width="90" height="25" field="bc_0" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="35" width="90" height="25" field="bc_1" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="60" width="90" height="25" field="bc_2" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="85" width="90" height="25" field="bc_3" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="110" width="90" height="25" field="bc_4" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+				</flowPart>
+				<dataLink field="carga">
+						<event name="onChange">
+							if sheet==nil then return end;
+
+							local carga = tonumber(sheet.carga) or 0;
+
+							sheet.bc_0 = "Nenhuma (BC): " .. (carga);
+							sheet.bc_1 = "Leve (BCx2): " .. (carga*2);
+							sheet.bc_2 = "Média (BCx3): " .. (carga*3);
+							sheet.bc_3 = "Pesada (BCx6): " .. (carga*6);
+							sheet.bc_4 = "Muito Pesada (BCx10): " .. (carga*10);
+						</event>
+				</dataLink>
+
+				<flowPart stepSizes="{120}" minScaledWidth="120" margins="{top=5}" height="145" frameStyle="frames/panel4transp/frame.xml">
+						<label left="15" top="10" width="90" height="25" field="db_0" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="35" width="90" height="25" field="db_1" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="60" width="90" height="25" field="db_2" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="85" width="90" height="25" field="db_3" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="15" top="110" width="90" height="25" field="db_4" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+				</flowPart>
+				<dataLink field="atributos_mod_velocidade">
+						<event name="onChange">
+							if sheet==nil then return end;
+
+							local velocidade = tonumber(sheet.atributos_mod_velocidade) or 0;
+
+							sheet.db_0 = "DBx1: " .. (velocidade);
+							sheet.db_1 = "DBx0,8: " .. (velocidade*0.8);
+							sheet.db_2 = "DBx0,6: " .. (velocidade*0.6);
+							sheet.db_3 = "DBx0,4: " .. (velocidade*0.4);
+							sheet.db_4 = "DBx0,2: " .. (velocidade*0.2);
+						</event>
+				</dataLink>
+
+				<flowLineBreak/>
+
+				<flowPart minWidth="280" maxWidth="800" margins="{top=10}" height="64" frameStyle="frames/posCaptionEdit1/frame.xml">
+					<edit align="left" class="pericia" field="nt_total" width="65"/>
+					<label align="client" text="Nível Tecnológico" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+				</flowPart>
+			</flowLayout>
+			<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center">
+				<flowPart class="tileCarac" height="515" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
+					<layout align="top" height="25">
+						<label align="top" autoSize="true" text="PERÍCIAS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						<button align="left" text="+" width="25" hint="Adiciona uma perícia." horzTextAlign="center" onClick="self.rclSkillsNew:append();" margins="{top=-10}"/>
+					</layout>
+
+					<recordList align="client" name="rclSkillsNew" field="listaDePericias" templateForm="frmSkillItem" layout="vertical">
+						<event name="onCompare">
+			                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+			        	</event>
+					</recordList>
+				</flowPart>
+
+				<flowLineBreak/>
+
+				<flowPart class="tileCarac" height="150" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
+					<textEditor align="client" field="anotacoes_geral" class="transparente" margins="{top=2}" fontSize="16"/>
+				</flowPart>	
+
+				<flowLineBreak/>
+
+				<upperGridMagicBox field="pontosRestantes" titulo="PONTOS RESTANTES"/>
+				<upperGridMagicEditBox field="totalPontos" titulo="TOTAL DE PONTOS"/>
+
+				<dataLink fields="{'totalPontos', 'atributos_st', 'atributos_ht', 'atributos_dx', 'atributos_vt', 'atributos_iq', 'atributos_per', 'atributos_pv', 'atributos_pf', 'atributos_velocidade', 'atributos_deslocamento'}">
+					<event name="onChange">
+						pointCount();
+					</event>
+				</dataLink>
+			</flowLayout>
+
+		</flowLayout>
+	</scrollBox>
+</rectangle>

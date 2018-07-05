@@ -6,8 +6,10 @@
 
 		<comboBox left="900" top="0" width="150" height="25" field="tipo" items="{'Consumível', 'Material', 'Arma', 'Equipamento'}"/>
 
-		<edit left="1050" top="0" width="50" height="25" field="quantidade"/>
-		<edit left="1100" top="0" width="50" height="25" field="max"/>
+		<edit left="1050" top="0" width="50" height="25" field="quantidade"/>        
+		<rectangle left="1100" top="0" width="25" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        <label left="1100" top="0" width="25" height="25" horzTextAlign="center" field="max"/>
+
 
 		<button left="1150" top="0" width="25" height="25" text="X">
 			<event name="onClick">
@@ -19,5 +21,22 @@
 				end);
 			</event>
 		</button>
+
+		<dataLink fields="{'tipo'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+				local max = 0;
+				if sheet.tipo == "Consumível" then
+					max = 3;
+				elseif sheet.tipo == "Material" then
+					max = 9;
+				elseif sheet.tipo == "Arma" then
+					max = 1;
+				elseif sheet.tipo == "Equipamento" then
+					max = 1;
+				end;
+				sheet.max = max;
+			</event>
+		</dataLink>
 	</rectangle>
 </form>

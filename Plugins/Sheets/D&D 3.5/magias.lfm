@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItemDeMagia" height="30" width="270">       
+	
+		<edit field="name" width="150" height="30" fontColor="white"/>
+        <comboBox field="campo" items="{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}" width="50" height="30" left="160" fontColor="white"/>
+       
+
+        <button align="right" text="Apagar" fontSize="10" width="50" left="210"
+                onClick="ndb.deleteNode(sheet);"/>
+	
+</form>

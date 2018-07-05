@@ -2,9 +2,6 @@
 <form name="frmSkills" align="client">
 	<scrollBox align="client">
 		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraPericiasLayout">
-
-			
-	
 		</flowLayout>
 	</scrollBox>
 </form>

@@ -1,6 +1,9 @@
 #Ficha Multiaba
 Ficha V3 com multiplas abas instanciaveis. 
 
+Versão 0.5
+- Criado sistema de atualização automatica. 
+
 Versão 0.4:
 * Bug corrigido: ficha não estava salvando configurações de cor de background. No máximo é necessario clicar no texto para que as alterações entrem em vigor. 
 * Corrigido problema de resolução para telas muito grandes ou pequenas. 

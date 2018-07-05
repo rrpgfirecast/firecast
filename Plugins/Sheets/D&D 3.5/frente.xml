@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle align="client">
+<scrollBox align="client">
+	<flowLayout align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="2">
+		<!-- Nome e Características Físicas-->
+		<rectangle width="300" height="190" align="top" color="white">
+				<image src="/images/logo.png" width="300" height="190" style="stretch"/>
+		</rectangle>
+		
+		<rectangle width="300" height="190" left="305" color="white">
+			<layout width="300" height="60" align="top">
+				<edit field="1" fontColor="black" width="300" height="30"/>
+				<label text="Nome do Personagem" horzTextAlign="center" width="300" top="35" fontColor="black"/>
+			</layout>
+			
+			<layout width="300" height="60" top="65" align="top">
+				<edit field="2" fontColor="black" width="300" height="30"/>
+				<label text="Classe e Nível" horzTextAlign="center" width="300" top="35" fontColor="black"/>
+			</layout>
+			
+			<layout width="300" height="60" top="130" align="top">
+				<edit field="3" fontColor="black" width="73" height="30"/>
+				<label text="Tamanho" horzTextAlign="center" width="73" top="35" fontColor="black"/>
+				
+				<edit field="4" fontColor="black" width="73" height="30" left="75"/>
+				<label text="Idade" horzTextAlign="center" width="73" top="35" left="80" fontColor="black"/>
+				
+				<edit field="5" fontColor="black" width="73" height="30" left="150"/>
+				<label text="Sexo" horzTextAlign="center" width="73" top="35" left="155" fontColor="black"/>
+				
+				<edit field="6" fontColor="black" width="73" height="30" left="225"/>
+				<label text="Altura" horzTextAlign="center" width="73" top="35" left="230" fontColor="black"/>
+			</layout>
+		</rectangle>
+		
+		<rectangle width="300" height="190" left="610" color="white">
+			<layout width="300" height="60" align="top" left="5">
+				<edit field="7" fontColor="black" width="300" height="30"/>
+				<label text="Nome do Jogador" horzTextAlign="center" width="300" top="35" fontColor="black"/>
+			</layout>
+			
+			<layout width="300" height="60" top="65" align="top">
+				<edit field="8" fontColor="black" width="100" height="30"/>
+				<label text="Raça" horzTextAlign="center" width="95" top="35" fontColor="black"/>
+				
+				<edit field="9" fontColor="black" width="100" height="30" left="100"/>
+				<label text="Tendência" horzTextAlign="center" width="95" top="35" left="100" fontColor="black"/>
+				
+				<edit field="10" fontColor="black" width="100" height="30" left="200"/>
+				<label text="Divindade" horzTextAlign="center" width="100" top="35" left="200" fontColor="black"/>
+			</layout>
+			
+			<layout width="300" height="60" top="130" align="top">
+				<edit field="11" fontColor="black" width="73" height="30"/>
+				<label text="Peso" horzTextAlign="center" width="73" top="35" fontColor="black"/>
+				
+				<edit field="12" fontColor="black" width="73" height="30" left="75"/>
+				<label text="Olhos" horzTextAlign="center" width="73" top="35" left="80" fontColor="black"/>
+				
+				<edit field="13" fontColor="black" width="73" height="30" left="150"/>
+				<label text="Cabelo" horzTextAlign="center" width="73" top="35" left="155" fontColor="black"/>
+				
+				<edit field="14" fontColor="black" width="73" height="30" left="225"/>
+				<label text="Pele" horzTextAlign="center" width="73" top="35" left="230" fontColor="black"/>
+			</layout>
+		</rectangle>
+		
+		<!--Habilidades-->
+		<rectangle width="370" height="200" top="195" color="white">
+			<!--Habilidades-->
+			<layout width="70" height="200">
+				<label text="Habilidades" height="50" width="70" horzTextAlign="center" autoSize="true" align="top" fontColor="black"/>
+				<label text="FOR" height="20" width="70" top="55" autoSize="true" fontColor="black"/>
+				<label text="DES" height="20" width="70" top="80" autoSize="true" fontColor="black"/>
+				<label text="CON" height="20" width="70" top="105" autoSize="true" fontColor="black"/>
+				<label text="INT" height="20" width="70" top="130" autoSize="true" fontColor="black"/>
+				<label text="SAB" height="20" width="70" top="155" autoSize="true" fontColor="black"/>
+				<label text="CAR" height="20" width="70" top="180" autoSize="true" fontColor="black"/>
+			</layout>
+			
+			<!--Modificadores de Habilidades-->
+			<layout width="70" height="200" left="75">
+				<label text="valor" height="50" horzTextAlign="center" autoSize="true" align="top" fontColor="black"/>
+				<edit field="forca" height="20" width="70" top="55" fontColor="black"/>
+				<edit field="destreza" height="20" width="70" top="80" fontColor="black"/>
+				<edit field="constituicao" height="20" width="70" top="105" fontColor="black"/>
+				<edit field="inteligencia" height="20" width="70" top="130" fontColor="black"/>
+				<edit field="sabedoria" height="20" width="70" top="155" fontColor="black"/>
+				<edit field="carisma" height="20" width="70" top="180" fontColor="black"/>
+			</layout>
+			
+			<layout width="70" height="200" left="150">
+				<label text="Mod de Habilidade" height="50" horzTextAlign="center" autoSize="true" align="top" fontColor="black"/>
+				<label field="modforca" height="20" width="70" top="55" horzTextAlign="center" fontColor="black"/>
+				<label field="moddestreza" height="20" width="70" top="80" horzTextAlign="center" fontColor="black"/>
+				<label field="modconstituicao" height="20" width="70" top="105" horzTextAlign="center" fontColor="black"/>
+				<label field="modinteligencia" height="20" width="70" top="130" horzTextAlign="center" fontColor="black"/>
+				<label field="modsabedoria" height="20" width="70" top="155" horzTextAlign="center" fontColor="black"/>
+				<label field="modcarisma" height="20" width="70" top="180" horzTextAlign="center" fontColor="black"/>
+			</layout>
+			
+			<!--Habilidades Temporárias-->
+			<layout width="70" height="200" left="225">
+				<label text="Valor Temp" height="50" horzTextAlign="center" autoSize="true" align="top" fontColor="black"/>
+				<edit field="tforca" height="20" width="70" top="55" fontColor="black"/>
+				<edit field="tdestreza" height="20" width="70" top="80" fontColor="black"/>
+				<edit field="tconstituicao" height="20" width="70" top="105" fontColor="black"/>
+				<edit field="tinteligencia" height="20" width="70" top="130" fontColor="black"/>
+				<edit field="tsabedoria" height="20" width="70" top="155" fontColor="black"/>
+				<edit field="tcarisma" height="20" width="70" top="180" fontColor="black"/>
+			</layout>
+			
+			<!--Modificadores Habilidades Temporárias-->
+			<layout width="70" height="200" left="300">
+				<label text="Mod Temp" height="50" horzTextAlign="center" autoSize="true" align="top" fontColor="black"/>
+				<label field="modtforca" height="20" width="70" top="55" horzTextAlign="center" fontColor="black"/>
+				<label field="modtdestreza"  height="20" width="70" top="80" horzTextAlign="center" fontColor="black"/>
+				<label field="modtconstituicao"  height="20" width="70" top="105" horzTextAlign="center" fontColor="black"/>
+				<label field="modtinteligencia" height="20" width="70" top="130" horzTextAlign="center" fontColor="black"/>
+				<label field="modtsabedoria"  height="20" width="70" top="155" horzTextAlign="center" fontColor="black"/>
+				<label field="modtcarisma"  height="20" width="70" top="180" horzTextAlign="center" fontColor="black"/>
+			</layout>
+			
+			<!--formula modificadores-->
+			<dataLink fields="{'forca', 'destreza', 'constituicao', 'inteligencia', 'sabedoria', 'carisma', 
+			'tforca', 'tdestreza', 'tconstituicao', 'tinteligencia', 'tsabedoria', 'tcarisma'}">
+                <event name="onChange">
+                        local mod = math.floor(((sheet.forca or 10) / 2) - 5);
+                     
+
+                        if (mod >= 0) then
+                                mod = "+" .. mod;
+                        end;                       
+
+                        sheet.modforca = mod;
+                </event>
+				
+				<event name="onChange">
+                        local mod = math.floor(((sheet.destreza or 10) / 2) - 5);
+                     
+
+                        if (mod >= 0) then
+                                mod = "+" .. mod;
+                        end;                       
+
+                        sheet.moddestreza = mod;
+                </event>
+				
+				<event name="onChange">
+                        local mod = math.floor(((sheet.constituicao or 10) / 2) - 5);
+                     
+
+                        if (mod >= 0) then
+                                mod = "+" .. mod;
+                        end;                       
+
+                        sheet.modconstituicao = mod;
+                </event>
+				
+				<event name="onChange">
+                        local mod = math.floor(((sheet.inteligencia or 10) / 2) - 5);
+                     
+
+                        if (mod >= 0) then
+                                mod = "+" .. mod;
+                        end;                       
+
+                        sheet.modinteligencia = mod;
+                </event>
+				
+				<event name="onChange">
+                        local mod = math.floor(((sheet.sabedoria or 10) / 2) - 5);
+                     
+
+                        if (mod >= 0) then
+                                mod = "+" .. mod;
+                        end;                       
+
+                        sheet.modsabedoria = mod;
+                </event>
+				
+				<event name="onChange">
+                        local mod = math.floor(((sheet.carisma or 10) / 2) - 5);
+                     
+
+                        if (mod >= 0) then
+                                mod = "+" .. mod;
+                        end;                       
+
+                        sheet.modcarisma = mod;
+                </event>
+				
+				<event name="onChange">
+                        local mod = math.floor(((sheet.tforca or 10) / 2) - 5);
+                     
+
+                        if (mod >= 0) then
+                                mod = "+" .. mod;
+                        end;                       
+
+                        sheet.modtforca = mod;
+                </event>
+				
+				<event name="onChange">
+                        local mod = math.floor(((sheet.tdestreza or 10) / 2) - 5);
+                     
+
+                        if (mod >= 0) then
+                                mod = "+" .. mod;
+                        end;                       
+
+                        sheet.modtdestreza = mod;
+                </event>
+				
+				<event name="onChange">
+                        local mod = math.floor(((sheet.tconstituicao or 10) / 2) - 5);
+                     
+
+                        if (mod >= 0) then
+                                mod = "+" .. mod;
+                        end;                       
+
+                        sheet.modtconstituicao = mod;
+                </event>
+				
+				<event name="onChange">
+                        local mod = math.floor(((sheet.tinteligencia or 10) / 2) - 5);
+                     
+
+                        if (mod >= 0) then
+                                mod = "+" .. mod;
+                        end;                       
+
+                        sheet.modtinteligencia = mod;
+                </event>
+				
+				<event name="onChange">
+                        local mod = math.floor(((sheet.tsabedoria or 10) / 2) - 5);
+                     
+
+                        if (mod >= 0) then
+                                mod = "+" .. mod;
+                        end;                       
+
+                        sheet.modtsabedoria = mod;
+                </event>
+				
+				<event name="onChange">
+                        local mod = math.floor(((sheet.tcarisma or 10) / 2) - 5);
+                     
+
+                        if (mod >= 0) then
+                                mod = "+" .. mod;
+                        end;                       
+
+                        sheet.modtcarisma = mod;
+                </event>
+			</dataLink>
+			
+		</rectangle>
+		
+		<rectangle width="530" height="130" left="380" top="195" color="white">
+			<layout height="30" width="530">
+				<label text="" height="30" width="50"/>
+				<label text="Total" height="30" width="50" left="35" autoSize="true" horzTextAlign="center" fontColor="black"/>
+				<label text="DVs" height="30" width="80" left="90" autoSize="true" horzTextAlign="center" fontColor="black"/>
+				<label text="Outros" height="30" width="80" left="175" autoSize="true" horzTextAlign="center" fontColor="black"/>
+				<label text="Deslocamento" height="30" width="100" left="260" autoSize="true" horzTextAlign="center" fontColor="black"/>
+				<label text="Redução de Dano" height="30" width="160" left="365" autoSize="true" horzTextAlign="center" fontColor="black"/>
+			</layout>
+			
+			
+			<layout width="530" height="30" top="35">
+				<label text="PVS" height="30" width="50" fontColor="black"/>
+				<edit field="15" fontColor="black" horzTextAlign="center" height="30" width="50" left="35"/>
+				<edit field="16" height="30" width="80" left="90"/>
+				<edit field="outrospvs" height="30" width="80" left="175" fontColor="black"/>
+				<edit field="17" height="30" width="100" left="260" fontColor="black"/>
+				<edit field="18" height="30" width="160" left="365" fontColor="black"/>
+			</layout>
+			
+			
+			
+			<layout width="530" height="30" top="70">
+				<label text="CA" height="30" width="45" fontColor="black"/>
+				<edit field="totalca" height="30" width="45" left="50" horzTextAlign="center" fontColor="black"/>
+				<label text=" = 10" height="30" width="45" left="100" horzTextAlign="center" fontColor="black"/>
+				<label text="+" height="30" width="5" left="150" horzTextAlign="center" fontColor="black"/>
+				<label field="ca1" height="30" width="45" left="155" horzTextAlign="center" fontColor="black"/>
+				<label text="+" height="30" width="5" left="205" horzTextAlign="center" fontColor="black"/>
+				<label field="ca2" height="30" width="45" left="210" horzTextAlign="center" fontColor="black"/>
+				<label text="+" height="30" width="5" left="260" horzTextAlign="center" fontColor="black"/>
+				<label field="ca3" height="30" width="45" left="265" horzTextAlign="center" fontColor="black"/>
+				<label text="+" height="30" width="5" left="315" horzTextAlign="center" fontColor="black"/>
+				<edit textPrompt="Tamanho" field="catamanho" height="30" width="45" left="320" horzTextAlign="center" fontColor="black"/>
+				<label text="+" height="30" width="5" left="370" horzTextAlign="center" fontColor="black"/>
+				<edit textPrompt="Natural" field="caarmaduranatural" height="30" width="45" left="375" horzTextAlign="center" fontColor="black"/>
+				<label text="+" height="30" width="5" left="425" horzTextAlign="center" fontColor="black"/>
+				<edit textPrompt="Deflexao" field="deflexao" height="30" width="45" left="430" horzTextAlign="center" fontColor="black"/>
+				<label text="+" height="30" width="5" left="480" horzTextAlign="center" fontColor="black"/>
+				<edit textPrompt="Outros" field="outrosca" height="30" width="45" left="485" horzTextAlign="center" fontColor="black"/>
+			</layout>
+			
+			<dataLink fields="{'moddestreza', 'ca3', 'totalca', 'outrosca', 'deflexao', 'catamanho', 'caarmaduranatural', 'ca2', 'ca3', 'armadura', 'escudo'}">
+							<event name="onChange">
+									sheet.ca3 = sheet.moddestreza;
+									sheet.ca1 = sheet.armadura;
+									sheet.ca2 = sheet.escudo;
+									
+							</event>
+							
+							<event name="onChange">
+									sheet.totalca = (math.floor((sheet.ca3)or 0)+math.floor((sheet.ca1)or 0)+math.floor((sheet.ca2)or 0)+math.floor((sheet.outrosca)or 0)+math.floor((sheet.deflexao)or 0)+math.floor((sheet.catamanho)or 0)+math.floor((sheet.caarmaduranatural)or 0))+10;
+							</event>
+			</dataLink>
+			
+			<layout width="530" height="30" top="100">
+				<label text="" height="30" width="45" fontColor="black"/>
+				<label text="" height="30" width="45" left="50" horzTextAlign="center" fontColor="black"/>
+				<label text="Total" height="30" width="45" left="100" align="bottom" fontColor="black"/>
+				<label text="" height="30" width="5" left="150" horzTextAlign="center" fontColor="black"/>
+				<label text="Armadura" fontSize="9" height="30" width="45" left="155" horzTextAlign="center" fontColor="black"/>
+				<label text="" height="30" width="5" left="205" horzTextAlign="center" fontColor="black"/>
+				<label text="Escudo" fontSize="9" height="30" width="45" left="210" horzTextAlign="center" fontColor="black"/>
+				<label text="" height="30" width="5" left="260" horzTextAlign="center" fontColor="black"/>
+				<label text="" fontSize="9" height="30" width="45" left="265" horzTextAlign="center" fontColor="black"/>
+				<label text="" height="30" width="5" left="315" horzTextAlign="center" fontColor="black"/>
+				<label text="Tamanho" fontSize="9" height="30" width="45" left="320" horzTextAlign="center" fontColor="black"/>
+				<label text="" height="30" width="5" left="370" horzTextAlign="center" fontColor="black"/>
+				<label text="Natural" fontSize="9" height="30" width="45" left="375" horzTextAlign="center" fontColor="black"/>
+				<label text="" height="30" width="5" left="425" horzTextAlign="center" fontColor="black"/>
+				<label text="Deflexao" fontSize="9" height="30" width="45" left="430" horzTextAlign="center" fontColor="black"/>
+				<label text="" height="30" width="5" left="480" horzTextAlign="center" fontColor="black"/>
+				<label text="Outros" fontSize="9" height="30" width="45" left="485" horzTextAlign="center" fontColor="black"/>
+			</layout>
+		</rectangle>
+		
+		<rectangle width="255" height="65" left="380" top="330" color="white">
+			<layout width="255" height="30">
+				<label text="Toque" width="60" height="30" horzTextAlign="center" fontColor="black"/>
+				<edit field="toque" width="60" height="30" left="65" horzTextAlign="center" fontColor="black"/>
+				<label text="Surpresa" width="60" height="130" horzTextAlign="center" fontColor="black"/>
+				<edit field="surpresa" width="60" height="30" left="195" horzTextAlign="center" fontColor="black"/>
+			</layout>
+		
+			<layout width="255" height="30" top="35">
+				<label text="Iniciativa" width="80" height="30" horzTextAlign="center" fontColor="black"/>
+				<label field="iniciativa" width="50" height="30" left="85" horzTextAlign="center" fontColor="black"/>
+				<label text="=" width="10" height="10" left="135" top="10" horzTextAlign="center" fontColor="black"/>
+				<label field="ini1" width="50" height="30" left="145" horzTextAlign="center" fontColor="black"/>
+				<label text="+" width="10" height="5" left="195" top="10" horzTextAlign="center" fontColor="black"/>
+				<edit field="ini2" width="50" height="30" left="205" horzTextAlign="center" fontColor="black"/>
+			</layout>
+			
+			<dataLink fields="{'iniciativa', 'ini1', 'ini2', 'moddestreza'}">
+							<event name="onChange">
+									sheet.ini1 = sheet.moddestreza ;
+							</event>
+							
+							<event name="onChange">
+									sheet.iniciativa = (math.floor((sheet.ini1)or 0)+ math.floor((sheet.ini2)or 0));
+							</event>
+			</dataLink>
+		</rectangle>
+		
+		<!--Resistências-->
+		<rectangle width="635" height="135" top="400" color="white">
+			<layout width="635" height="30">
+				<label text="Teste de Resistência" width="210" height="30" horzTextAlign="center" fontColor="black"/>
+				<label text="Total" width="50" height="30" left="220" horzTextAlign="center" fontColor="black"/>
+				<label text="" width="10" height="30" left="270" horzTextAlign="center" fontColor="black"/>
+				<label text="Base" width="50" height="30" left="280" horzTextAlign="center" fontColor="black"/>
+				<label text="" width="10" height="30" left="330" horzTextAlign="center" fontColor="black"/>
+				<label text="Mod Hab" fontSize="9" width="50" height="30" left="340" horzTextAlign="center" fontColor="black"/>
+				<label text="" width="10" height="30" left="390" horzTextAlign="center" fontColor="black"/>
+				<label text="Mod Mágico" fontSize="8" width="50" height="30" left="400" horzTextAlign="center" fontColor="black"/>
+				<label text="" width="10" height="30" left="450" horzTextAlign="center" fontColor="black"/>
+				<label text="Outros" width="50" height="30" left="460" horzTextAlign="center" fontColor="black"/>
+				<label text="" width="10" height="30" left="510" horzTextAlign="center" fontColor="black"/>
+				<label text="Mod Temp" fontSize="8" width="50" height="30" left="520" horzTextAlign="center" fontColor="black"/>
+				<label text="" width="10" height="30" left="570" horzTextAlign="center" fontColor="black"/>
+				<label text="Condicional" fontSize="8" width="50" height="30" left="580" horzTextAlign="center" fontColor="black"/>
+			</layout>
+			
+			<layout width="635" height="30" top="35">
+				<label text="Fortitude" width="210" height="30" horzTextAlign="center" fontColor="black"/>
+				<label field="fortitude" width="50" height="30" left="220" horzTextAlign="center" fontColor="black"/>
+				<label text="=" width="10" height="30" left="270" horzTextAlign="center" fontColor="black"/>
+				<edit field="basefort" width="50" height="30" left="280" horzTextAlign="center" fontColor="black"/>
+				<label text="+" width="10" height="30" left="330" horzTextAlign="center" fontColor="black"/>
+				<label field="modfort" width="50" height="30" left="340" horzTextAlign="center" fontColor="black"/>
+				<label text="+" width="10" height="30" left="390" horzTextAlign="center" fontColor="black"/>
+				<edit field="magicofort" width="50" height="30" left="400" horzTextAlign="center" fontColor="black"/>
+				<label text="+" width="10" height="30" left="450" horzTextAlign="center" fontColor="black"/>
+				<edit field="outrosfort" width="50" height="30" left="460" horzTextAlign="center" fontColor="black"/>
+				<label text="+" width="10" height="30" left="510" horzTextAlign="center" fontColor="black"/>
+				<edit field="tempfort" width="50" height="30" left="520" horzTextAlign="center" fontColor="black"/>
+				<label text="+" width="10" height="30" left="570" horzTextAlign="center" fontColor="black"/>
+				<edit field="condfort" width="50" height="30" left="580" horzTextAlign="center" fontColor="black"/>
+			</layout>
+			
+			<dataLink fields="{'modconstituicao', 'fortitude', 'basefort', 'modfort', 'magicofort', 'outrosfort', 'tempfort', 'condfort'}">
+							<event name="onChange">
+									sheet.modfort = sheet.modconstituicao ;
+							</event>
+							
+							<event name="onChange">
+									sheet.fortitude = (	math.floor((sheet.basefort)or 0)+ math.floor((sheet.modfort)or 0)+ 
+									math.floor((sheet.magicofort)or 0)+ math.floor((sheet.outrosfort)or 0)+ 
+									math.floor((sheet.tempfort)or 0)+ math.floor((sheet.condfort)or 0));
+							</event>
+			</dataLink>
+			
+			<layout width="635" height="30" top="70">
+				<label text="Reflexos" width="210" height="30" horzTextAlign="center" fontColor="black"/>
+				<label field="reflexos" width="50" height="30" left="220" horzTextAlign="center" fontColor="black"/>
+				<label text="=" width="10" height="30" left="270" horzTextAlign="center" fontColor="black"/>
+				<edit field="baseref" width="50" height="30" left="280" horzTextAlign="center" fontColor="black"/>
+				<label text="+" width="10" height="30" left="330" horzTextAlign="center" fontColor="black"/>
+				<label field="modref" width="50" height="30" left="340" horzTextAlign="center" fontColor="black"/>
+				<label text="+" width="10" height="30" left="390" horzTextAlign="center" fontColor="black"/>
+				<edit field="magicoref" width="50" height="30" left="400" horzTextAlign="center" fontColor="black"/>
+				<label text="+" width="10" height="30" left="450" horzTextAlign="center" fontColor="black"/>
+				<edit field="outrosref" width="50" height="30" left="460" horzTextAlign="center" fontColor="black"/>
+				<label text="+" width="10" height="30" left="510" horzTextAlign="center" fontColor="black"/>
+				<edit field="tempref" width="50" height="30" left="520" horzTextAlign="center" fontColor="black"/>
+				<label text="+" width="10" height="30" left="570" horzTextAlign="center" fontColor="black"/>
+				<edit field="condref" width="50" height="30" left="580" horzTextAlign="center" fontColor="black"/>
+			</layout>
+			
+			<dataLink fields="{'moddestreza', 'reflexos', 'baseref', 'modref', 'magicoref', 'outrosref', 'tempref', 'condref'}">
+							<event name="onChange">
+									sheet.modref = sheet.moddestreza ;
+							</event>
+							
+							<event name="onChange">
+									sheet.reflexos = (	math.floor((sheet.baseref)or 0)+ math.floor((sheet.modref)or 0)+ 
+									math.floor((sheet.magicoref)or 0)+ math.floor((sheet.outrosref)or 0)+ 
+									math.floor((sheet.tempref)or 0)+ math.floor((sheet.condref)or 0));
+							</event>
+			</dataLink>
+			
+			<layout width="635" height="30" top="105">
+				<label text="Vontade" width="210" height="30" horzTextAlign="center" fontColor="black"/>
+				<label field="vontade" width="50" height="30" left="220" horzTextAlign="center" fontColor="black"/>
+				<label text="=" width="10" height="30" left="270" horzTextAlign="center" fontColor="black"/>
+				<edit field="basevont" width="50" height="30" left="280" horzTextAlign="center" fontColor="black"/>
+				<label text="+" width="10" height="30" left="330" horzTextAlign="center" fontColor="black"/>
+				<label field="modvont" width="50" height="30" left="340" horzTextAlign="center" fontColor="black"/>
+				<label text="+" width="10" height="30" left="390" horzTextAlign="center" fontColor="black"/>
+				<edit field="magicovont" width="50" height="30" left="400" horzTextAlign="center" fontColor="black"/>
+				<label text="+" width="10" height="30" left="450" horzTextAlign="center" fontColor="black"/>
+				<edit field="outrosvont" width="50" height="30" left="460" horzTextAlign="center" fontColor="black"/>
+				<label text="+" width="10" height="30" left="510" horzTextAlign="center" fontColor="black"/>
+				<edit field="tempvont" width="50" height="30" left="520" horzTextAlign="center" fontColor="black"/>
+				<label text="+" width="10" height="30" left="570" horzTextAlign="center" fontColor="black"/>
+				<edit field="condvont" width="50" height="30" left="580" horzTextAlign="center" fontColor="black"/>
+			</layout>
+			
+			<dataLink fields="{'modsabedoria', 'vontade', 'basevont', 'modvont', 'magicovont', 'outrosvont', 'tempvont', 'condvont'}">
+							<event name="onChange">
+									sheet.modvont = sheet.modsabedoria ;
+							</event>
+							
+							<event name="onChange">
+									sheet.vontade = (	math.floor((sheet.basevont)or 0)+ math.floor((sheet.modvont)or 0)+ 
+									math.floor((sheet.magicovont)or 0)+ math.floor((sheet.outrosvont)or 0)+ 
+									math.floor((sheet.tempvont)or 0)+ math.floor((sheet.condvont)or 0));
+							</event>
+			</dataLink>
+		</rectangle>
+		
+		<rectangle width="635" height="105" top="540" color="white">
+			<layout width="635" height="30">
+				<label text="Bônus Base de Ataque (BBA)" width="200" height="30" fontColor="black"/>
+				<edit field="bba" width="60" height="30" left="210" fontColor="black"/>
+				<label text="Resistência a Magia" width="200" height="30" left="280" fontColor="black"/>
+				<edit field="19" width="60" height="30" left="480" fontColor="black"/>
+				
+			</layout>
+			
+			<layout width="635" height="30" top="35">
+				<label text="Agarrar" width="150" height="30" fontColor="black"/>
+				<label field="agarrar" width="60" height="30" left="160" fontColor="black"/>
+				<label text="=" width="15" height="30" left="220" fontColor="black"/>
+				<label field="bbaagarrar" width="60" height="30" left="235" fontColor="black"/>
+				<label text="+" width="15" height="30" left="295" fontColor="black"/>
+				<label field="foragarrar" width="60" height="30" left="310" fontColor="black"/>
+				<label text="+" width="15" height="30" left="370" fontColor="black"/>
+				<edit field="tamagarrar" width="60" height="30" left="385" fontColor="black"/>
+				<label text="+" width="15" height="30" left="445" fontColor="black"/>
+				<edit field="outrosagarrar" width="60" height="30" left="460" fontColor="black"/>
+			</layout>
+			
+			<dataLink fields="{'modforca', 'agarrar', 'bbaagarrar', 'foragarrar', 'tamagarrar', 'outrosagarrar', 'bba'}">
+							<event name="onChange">
+									sheet.foragarrar = sheet.modforca ;
+									sheet.bbaagarrar = sheet.bba;
+							</event>
+							
+							<event name="onChange">
+									sheet.agarrar = (	math.floor((sheet.bbaagarrar)or 0)+ math.floor((sheet.foragarrar)or 0)+ 
+									math.floor((sheet.tamagarrar)or 0)+ math.floor((sheet.outrosagarrar)or 0));
+							</event>
+			</dataLink>
+			
+			<layout width="635" height="30" top="75">
+				<label text="" width="150" height="30" fontColor="black"/>
+				<label field="Total" width="60" height="30" left="160" fontColor="black"/>
+				<label text="" width="15" height="30" left="220" fontColor="black"/>
+				<label text="BBA" width="60" height="30" left="235" fontColor="black"/>
+				<label text="" width="15" height="30" left="295" fontColor="black"/>
+				<label text="Mod Força" fontSize="9" width="60" height="30" left="310" fontColor="black"/>
+				<label text="" width="15" height="30" left="370" fontColor="black"/>
+				<label text="Mod Tamanho" fontSize="9" width="60" height="30" left="385" fontColor="black"/>
+				<label text="" width="15" height="30" left="445" fontColor="black"/>
+				<label text="Outros" width="60" height="30" left="460" fontColor="black"/>
+			</layout>
+		</rectangle>
+		
+		<rectangle width="800" height="400" top="650" color="white">
+			
+			 <form name="ataques" width="800" height="690">
+			 <scrollBox align="client">
+				<button height="30"  text="Novo Ataque" width="400"
+                onClick="self.rclataques:append();"/>
+
+				<recordList name="rclataques" field="ataque" templateForm="ataques"
+                   top="60" width="800" height="180" autoHeight="true"/>
+			</scrollBox>
+			</form>
+			
+		</rectangle>
+		
+		<rectangle width="270" height="300" top="330" left="650" color="white">
+			<label text="Magia" width="150" height="30" horzTextAlign="center" fontColor="black"/>
+			<label text="Nível" width="70" height="30" left="160" horzTextAlign="center" fontColor="black"/>
+			
+		<form name="frmFichaTeste" width="270" height="300" top="35">        
+			<button height="30" text="Nova Magia" width="100" onClick="self.rclMagias:append();"/>
+
+			<recordList name="rclMagias" field="magias" templateForm="frmItemDeMagia"
+            top="60" width="270" autoHeight="true"/>
+</form>
+		</rectangle>
+	</flowLayout>
+</scrollBox>
+</rectangle> 

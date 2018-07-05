@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <element id="FICHA_RPG_MEISTER" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true"/>
+   <element id="FichaMultiaba" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true"/>
+   <element id="FICHA_ADnD_2e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/AD&amp;D%202e/output/Ficha%20AD&amp;D%202e.rpk?raw=true"/>
+   <element id="FICHA_ACN" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ao%20cair%20da%20noite/output/Ficha%20ACN.rpk?raw=true"/>
+   <element id="Arc.Metal.Zhuls" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Arc%20Metal%20Zhuls/output/Ficha%20Arc%20Metal%20Zhuls.rpk?raw=true"/>
+   <element id="br.com.rrpg.DnD5_SDK3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true"/>
+   <element id="ID_MOB_FFRPG_3.5" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/FFRPG%20Mob%20Creator/output/FFRPG%20Mob%20Creator.rpk?raw=true"/>
+   <element id="FICHA_13_ERA" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%2013%C2%BA%20Era/output/Ficha%2013%C2%BA%20Era.rpk?raw=true"/>
+   <element id="Ambesek.4DeT" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%204D&amp;T/output/Ficha%204D&amp;T.rpk?raw=true"/>
+   <element id="Ambesek.Nefertyne.Avatar.d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/output/Ficha%20Avatar%20d20.rpk?raw=true"/>
+   <element id="Ambesek.Nefertyne.Cyberpunk2020" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Cyberpunk%202020/output/Ficha%20Cyberpunk%202020.rpk?raw=true"/>
+   <element id="Ambesek.Nefertyne.GURPS" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true"/>
+   <element id="FICHA_L5A" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20L5A/output/Ficha%20L5A.rpk?raw=true"/>
+   <element id="Ambesek.Nefertyne.Numenera" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Numenera/output/Ficha%20Numenera.rpk?raw=true"/>
+   <element id="FICHA_PATHFINDER" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true"/>
+   <element id="Ambesek.The.Maze" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20The%20Maze/output/Ficha%20The%20Maze.rpk?raw=true"/>
+   <element id="Ambesek.Nefertyne.Reinos" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true"/>
+   <element id="fira.fira.sistema.random" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Fira/output/fira.rpk?raw=true"/>
+   <element id="FICHA_SSF" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/GURPS%20Saint%20Seiya%20Forever/output/Ficha%20SSF.rpk?raw=true"/>
+   <element id="GerenciadorDeCampanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true"/>
+   <element id="FICHA_KH" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Konoha%20Heroes/output/Konoha%20Heroes.rpk?raw=true"/>
+   <element id="FICHA_LH" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Log%20Horizon/output/Ficha%20LH.rpk?raw=true"/>
+   <element id="MALDITOSGLOBINS.mal.gob.mal.gob" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Malditos%20Goblins/output/mg.rpk?raw=true"/>
+   <element id="FICHA_RdF" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Reinos%20de%20Ferro/output/Ficha%20RdF.rpk?raw=true"/>
+   <element id="Ambesek.WoD.20th" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/output/World%20of%20Darkness%2020th.rpk?raw=true"/>
+   <element id="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true"/>
+   <element id="MemesSaver" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Memes%20Saver/output/Memes%20Saver.rpk?raw=true"/>
+   <element id="NickSaver" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/NickSaver/output/NickSaver.rpk?raw=true"/>
+   <element id="PokeIcons" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/PokeIcons/output/PokeIcons.rpk?raw=true"/>
+   <element id="RRPG.ROLETA.RUSSA" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/RoletaRussa/output/RoletaRussa.rpk?raw=true"/>
+   <element id="LISTA_DE_NPC_RRPG" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20NPCs/output/Lista%20de%20NPCs.rpk?raw=true"/>
+   <element id="Ambesek.Nefertyne.Shadowrun5E" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Shadowrun%205E/output/Ficha%20Shadowrun%205E.rpk?raw=true"/>
+   <element id="Ambesek.Auto.Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" />
+   <element id="Autolog" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Autolog/output/Autolog.rpk?raw=true" />
+   <element id="o_CHAMADO" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Call%20Of%20Cthulhu/output/Call%20Of%20Cthulhu.rpk?raw=true"/>
+   <element id="dnd35" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/D&amp;D%203.5/output/D&amp;D%203.5.rpk?raw=true"/>
+   <element id="HdA.LBP" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Hora%20da%20Aventura/output/Hora%20da%20Aventura.rpk?raw=true"/>
+   <element id="br.FichaDani_MB.3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/MightyBladeV6/output/MightyBladeV6.rpk?raw=true"/>
+   <element id="Stark_OMM_1" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Os%20Mundos%20dos%20Mortos/output/Os%20Mundos%20dos%20Mortos.rpk?raw=true"/>
+   <element id="ID_PLUGIN_ZOMBIE_SURVIVAL" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Zombie%20Survival/output/Zombie%20Survival.rpk?raw=true"/>
+   <element id="FICHA_7_MAR" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%207%C2%BA%20Mar/output/Ficha%207%C2%BA%20Mar.rpk?raw=true"/>
+   <element id="Ambesek.Anima" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Anima%20RPG/output/Ficha%20Anima%20RPG.rpk?raw=true"/>
+</root>

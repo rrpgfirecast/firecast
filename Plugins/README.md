@@ -1,5 +1,5 @@
 # Plugins SDK 3
-Plugins feitos com o SDK3. Para baixar apenas o plugin verifique a pasta output dentro da pasta do plugin. 
+Plugins feitos com o SDK3. Para baixar apenas o plugin verifique a pasta output dentro da pasta do plugin ou o hyperlink no nome do plguin. . 
 
 ## Subpastas:
 - ChatMods: Plugins que alteram ou adicionam funcionalidades ao chat do firecast

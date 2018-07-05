@@ -1,11 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmBlessing" width="300" height="50" margins="{top=1}">
+<form name="frmBlessing" width="300" height="90" margins="{top=1}">
 	<rectangle align="client" color="#212121">
-		<textEditor left="0" top="0" width="250" height="50" field="bencao"/>
+		<comboBox left="0" top="0" width="275" height="25" field="nome" items="{'O Chamado de Ninguém (2 moedas)', 'Contra-Ataque (5 moedas)', 'Defesa Ativa (5 moedas)', 'Bênção Severa (3 moedas)', 'Infusão de Espírito (3 moedas)', 'Segunda Chance (4 moedas)', 'Bênção Vigorosa (5 moedas)', 'Regeneração Inerente (3 moedas)', 'Contrato do Arrebatado (6 moedas)', 'Incendiário (4 moedas):', 'Sanguinário (4 moedas)', 'Porto Seguro (2 moedas)', 'Tatuagem de Aruman (8 moedas)', 'Ímpeto (4 moedas)', 'Fúria (4 moedas)', 'Momentum (4 moedas)'}" fontSize="10" values="{'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				if sheet.nome == "1" then
+					sheet.custo = 2;
+					sheet.bencao = "Ao custo de “1” Moeda Estranha teleporta a si e os Aliados em campo para sua localidade anterior, fugindo assim de qualquer Batalha (efeito de tipo Instantâneo).";
+				elseif sheet.nome == "2" then
+					sheet.custo = 5;
+					sheet.bencao = "Receber 2 de Dano Físico ou mais concede uma Ação Instantânea para atacar (efeitos de Habilidades e/ou outras Bênçãos não podem ser usados nesta nova Ação)(Máximo de um uso por Rodada).";
+				elseif sheet.nome == "3" then
+					sheet.custo = 5;
+					sheet.bencao = "Receber 3 de Dano Físico ou mais concede uma Ação Instantânea para defender este ataque, negando seu Dano completamente (efeitos de Habilidades e/ou outras Bênçãos não podem ser usados nesta nova ação)(Máximo de um uso por Rodada).";
+				elseif sheet.nome == "4" then
+					sheet.custo = 3;
+					sheet.bencao = "Deixa o portador imune a Envenenamento e Sangramento.";
+				elseif sheet.nome == "5" then
+					sheet.custo = 3;
+					sheet.bencao = "Ataques Corpo-a-Corpo e do tipo Projétil utilizando Armas Sacerdotais podem alvejar Inimigos do tipo Espírito sem a necessidade de um lançamento de Paranormalidade.";
+				elseif sheet.nome == "6" then
+					sheet.custo = 4;
+					sheet.bencao = "A Vida não pode descer para zero pontos em uma mesma Ação Inimiga, permanecendo em “1” ponto não importando a quantidade do Dano recebido. A Ação do próximo Inimigo na mesma Rodada, porém, pode diminuir a Vida se ao acaso ela continuar sendo “1” ponto.";
+				elseif sheet.nome == "7" then
+					sheet.custo = 5;
+					sheet.bencao = "Aumenta o efeito de qualquer Status Especial aplicado em si.";
+				elseif sheet.nome == "8" then
+					sheet.custo = 3;
+					sheet.bencao = "Em uma Batalha, toda Rodada em que não receber Dano e não gastar Fadiga regenera 20% da sua Vida máxima.";
+				elseif sheet.nome == "9" then
+					sheet.custo = 6;
+					sheet.bencao = "Se ao caso morrer seu Personagem retorna ao local da Dama Corvinal mais próxima com os mesmos pontos de Atributos e Habilidades, porém, perdendo todos os Itens, Bênçãos e pontos de Experiência já adquiridos (o Nível permanece o mesmo).";
+				elseif sheet.nome == "10" then
+					sheet.custo = 4;
+					sheet.bencao = "Obter Crítico em um teste de Dano Paranormal incendeia o Inimigo alvo, o aplicando Dano ao longo de duas Rodadas com base em sua Vida máxima (cada Inimigo tem uma resistência diferente às chamas).";
+				elseif sheet.nome == "11" then
+					sheet.custo = 4;
+					sheet.bencao = "Obter Crítico em um teste de Dano Físico causa Sangramento ao Inimigo alvo, os aplicando Dano ao longo de duas Rodadas com base na sua Vida máxima (cada Inimigo tem uma resistência diferente ao Sangramento).";
+				elseif sheet.nome == "12" then
+					sheet.custo = 2;
+					sheet.bencao = "Retornar a uma localidade da Dama Corvinal recupera todos os pontos de Vida e Fadiga.";
+				elseif sheet.nome == "13" then
+					sheet.custo = 8;
+					sheet.bencao = "Pode utilizar todos os espaços do Inventário sem precisar de Itens de Armazenamento.";
+				elseif sheet.nome == "14" then
+					sheet.custo = 4;
+					sheet.bencao = "Obter Crítico em qualquer teste de Dano remove a Habilidade “Tenacidade” do Inimigo alvo.";
+				elseif sheet.nome == "15" then
+					sheet.custo = 4;
+					sheet.bencao = "Regenera 1 ponto de Fadiga para cada 20% de Vida máxima que perder em uma Rodada.";
+				elseif sheet.nome == "16" then
+					sheet.custo = 4;
+					sheet.bencao = "Recupera 1 ponto de Fadiga sempre que obtiver um Acerto Crítico em qualquer lançamento.";
+				end;
+			</event>
+		</comboBox>
+
+		<textEditor left="0" top="25" width="250" height="65" field="bencao"/>
 		
-		<edit left="250" top="0" width="25" height="25" field="custo" type="number"/>
+		<rectangle left="250" top="25" width="25" height="25" color="black" strokeColor="white" strokeSize="1"/>
+        <label left="250" top="25" width="25" height="25" horzTextAlign="center" field="custo"/>
 		<!-- Botão que apaga o objeto da lista -->
-		<button left="250" top="25" width="25" height="25" text="X">
+		<button left="250" top="50" width="25" height="25" text="X">
 			<event name="onClick">
 				dialogs.confirmOkCancel("Tem certeza que quer apagar essa benção?",
 					function (confirmado)

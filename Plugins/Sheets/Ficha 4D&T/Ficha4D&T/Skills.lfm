@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSkills" align="client">
+	<script> 
+		<![CDATA[
+		local skills = {};
+		skills[1] = {};
+		skills[2] = {};
+		skills[3] = {};
+		skills[4] = {};
+		skills[5] = {};
+		skills[6] = {};
+		skills[7] = {};
+		skills[8] = {};
+		skills[9] = {};
+		skills[10] = {};
+		skills[11] = {};
+		skills[12] = {};
+		skills[13] = {};
+		skills[14] = {};
+		skills[15] = {};
+		skills[16] = {};
+		skills[17] = {};
+		skills[18] = {};
+		skills[19] = {};
+		skills[20] = {};
+		skills[21] = {};
+		skills[22] = {};
+		skills[23] = {};
+		skills[24] = {};
+		skills[25] = {};
+		skills[26] = {};
+		skills[27] = {};
+		skills[28] = {};
+		skills[29] = {};
+		skills[30] = {};
+		skills[31] = {};
+		skills[32] = {};
+		skills[33] = {};
+		skills[34] = {};
+		skills[35] = {};
+		skills[36] = {};
+		skills[37] = {};
+		skills[38] = {};
+		skills[39] = {};
+		skills[40] = {};
+		skills[41] = {};
+		skills[42] = {};
+		skills[43] = {};
+		skills[44] = {};
+		skills[45] = {};
+		skills[46] = {};
+		skills[47] = {};
+		skills[48] = {};
+		skills[49] = {};
+		skills[50] = {};
+		skills[51] = {};
+		skills[52] = {};
+		skills[53] = {};
+		skills[54] = {};
+		skills[55] = {};
+		skills[1].nome = "Abrir Fechaduras ";
+		skills[1].chave = "2";
+		skills[2].nome = "Acrobacia ";
+		skills[2].chave = "2";
+		skills[3].nome = "Adestrar Animais ";
+		skills[3].chave = "6";
+		skills[4].nome = "Arte da Fuga ";
+		skills[4].chave = "2";
+		skills[5].nome = "Atuação ";
+		skills[5].chave = "6";
+		skills[6].nome = "Avaliação ";
+		skills[6].chave = "4";
+		skills[7].nome = "Blefar ";
+		skills[7].chave = "6";
+		skills[8].nome = "Cavalgar ";
+		skills[8].chave = "2";
+		skills[9].nome = "Concentração ";
+		skills[9].chave = "3";
+		skills[10].nome = "Conhecimento Arcano ";
+		skills[10].chave = "4";
+		skills[11].nome = "Conhecimento Arte ";
+		skills[11].chave = "4";
+		skills[12].nome = "Conhecimento Atualidades ";
+		skills[12].chave = "4";
+		skills[13].nome = "Conhecimento Ciências Comportamentais ";
+		skills[13].chave = "4";
+		skills[14].nome = "Conhecimento Ciências Físicas ";
+		skills[14].chave = "4";
+		skills[15].nome = "Conhecimento Ciências Naturais ";
+		skills[15].chave = "4";
+		skills[16].nome = "Conhecimento Civil ";
+		skills[16].chave = "4";
+		skills[17].nome = "Conhecimento Cultura Popular ";
+		skills[17].chave = "4";
+		skills[18].nome = "Conhecimento Estratégia ";
+		skills[18].chave = "4";
+		skills[19].nome = "Conhecimento História ";
+		skills[19].chave = "4";
+		skills[20].nome = "Conhecimento Manha ";
+		skills[20].chave = "4";
+		skills[21].nome = "Conhecimento Negócios ";
+		skills[21].chave = "4";
+		skills[22].nome = "Conhecimento Tecnologia ";
+		skills[22].chave = "4";
+		skills[23].nome = "Conhecimento Teologia e Filosofia ";
+		skills[23].chave = "4";
+		skills[24].nome = "Cura ";
+		skills[24].chave = "5";
+		skills[25].nome = "Decifrar Escrita ";
+		skills[25].chave = "4";
+		skills[26].nome = "Demolição ";
+		skills[26].chave = "4";
+		skills[27].nome = "Diplomacia ";
+		skills[27].chave = "6";
+		skills[28].nome = "Disfarce ";
+		skills[28].chave = "6";
+		skills[29].nome = "Equilíbrio ";
+		skills[29].chave = "2";
+		skills[30].nome = "Escalar ";
+		skills[30].chave = "1";
+		skills[31].nome = "Esconder-se ";
+		skills[31].chave = "2";
+		skills[32].nome = "Falar Idioma ";
+		skills[32].chave = "4";
+		skills[33].nome = "Furtividade ";
+		skills[33].chave = "2";
+		skills[34].nome = "Identificar Magia ";
+		skills[34].chave = "4";
+		skills[35].nome = "Intimidar ";
+		skills[35].chave = "6";
+		skills[36].nome = "Investigar ";
+		skills[36].chave = "4";
+		skills[37].nome = "Jogos ";
+		skills[37].chave = "5";
+		skills[38].nome = "Natação ";
+		skills[38].chave = "1";
+		skills[39].nome = "Navegação ";
+		skills[39].chave = "4";
+		skills[40].nome = "Observar ";
+		skills[40].chave = "5";
+		skills[41].nome = "Obter Informações ";
+		skills[41].chave = "6";
+		skills[42].nome = "Ofícios ";
+		skills[42].chave = "4";
+		skills[43].nome = "Operar Mecanismo ";
+		skills[43].chave = "4";
+		skills[44].nome = "Ouvir ";
+		skills[44].chave = "5";
+		skills[45].nome = "Pesquisa ";
+		skills[45].chave = "4";
+		skills[46].nome = "Pilotar ";
+		skills[46].chave = "2";
+		skills[47].nome = "Prestidigitação ";
+		skills[47].chave = "2";
+		skills[48].nome = "Procurar ";
+		skills[48].chave = "4";
+		skills[49].nome = "Profissão ";
+		skills[49].chave = "5";
+		skills[50].nome = "Reparos ";
+		skills[50].chave = "4";
+		skills[51].nome = "Saltar ";
+		skills[51].chave = "1";
+		skills[52].nome = "Sentir Motivação ";
+		skills[52].chave = "5";
+		skills[53].nome = "Sobrevivência ";
+		skills[53].chave = "5";
+		skills[54].nome = "Usar Computador ";
+		skills[54].chave = "4";
+		skills[55].nome = "Usar Cordas ";
+		skills[55].chave = "2";
+
+		local function updateAtributes(num)
+			local atr = "" .. num;
+			local mod = 0;
+			
+			if num == 1 then
+				mod = tonumber(sheet.mod_for) or 0;
+			elseif num == 2 then
+				mod = tonumber(sheet.mod_des) or 0;
+			elseif num == 3 then
+				mod = tonumber(sheet.mod_con) or 0;
+			elseif num == 4 then
+				mod = tonumber(sheet.mod_int) or 0;
+			elseif num == 5 then
+				mod = tonumber(sheet.mod_sab) or 0;
+			elseif num == 6 then
+				mod = tonumber(sheet.mod_car) or 0;
+			end;
+
+			local nodes = ndb.getChildNodes(sheet.listaDePericias); 
+			for i=1, #nodes, 1 do
+				if nodes[i].chave == atr then
+					nodes[i].atributo = mod;
+				end;
+			end
+		end;
+
+		local function defaultSkills()
+			local nodes = ndb.getChildNodes(sheet.listaDePericias); 
+			for i=1, #nodes, 1 do
+				ndb.deleteNode(nodes[i]);
+			end
+
+			for i=1, 55, 1 do
+				local pericia = self.rclPericias:append();
+				pericia.nome = skills[i].nome;
+				pericia.chave = skills[i].chave;
+			end;
+
+			self.rclPericias:sort();
+		end;
+	]]>	
+	</script>
+	<scrollBox align="client">
+		<rectangle left="0" top="0" width="880" height="600" color="black">
+			<button left="5" top="5" width="25" height="25" text="+" onClick="self.rclPericias:append();"/>
+			<button left="30" top="5" width="50" height="25" text="Todas" onClick="defaultSkills();"/>
+
+			<label left="215" top="5" width="50" height="25" horzTextAlign="center" text="Total" fontSize="13"/>
+			<label left="275" top="5" width="40" height="25" horzTextAlign="center" text="Mod" fontSize="13"/>
+			<label left="315" top="5" width="40" height="25" horzTextAlign="center" text="Grad" fontSize="13"/>
+			<label left="355" top="5" width="40" height="25" horzTextAlign="center" text="Outros" fontSize="10"/>
+
+			<label left="640" top="5" width="50" height="25" horzTextAlign="center" text="Total" fontSize="13"/>
+			<label left="700" top="5" width="40" height="25" horzTextAlign="center" text="Mod" fontSize="13"/>
+			<label left="740" top="5" width="40" height="25" horzTextAlign="center" text="Grad" fontSize="13"/>
+			<label left="780" top="5" width="40" height="25" horzTextAlign="center" text="Outros" fontSize="10"/>
+
+			<recordList left="5" top="30" width="870" height="565" name="rclPericias" field="listaDePericias" templateForm="frmSkillListForm" layout="verticalTiles">
+				<event name="onCompare">
+		            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+				</event>
+			</recordList>
+		</rectangle>
+
+		<rectangle left="885" top="0" width="240" height="60" color="black">
+			<label left="0" top="5" width="240" height="25" horzTextAlign="center" text="Grupos de Perícias"/>
+			<edit left="5" top="30" width="230" height="25" field="pericias"/>
+		</rectangle>
+	</scrollBox>
+</form>

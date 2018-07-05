@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplate" formType="tablesDock" dataType="Ambesek.Auto.Updater" title="Plugin Auto Updater" align="client" theme="dark">
+    <script>
+        <![CDATA[
+        local function dump(o)
+           if type(o) == 'table' then
+              local s = '{ '
+              for k,v in pairs(o) do
+                 if type(k) ~= 'number' then k = '"'..k..'"' end
+                 s = s .. '['..k..'] = ' .. dump(v) .. ','
+              end
+              return s .. '} '
+           else
+              return tostring(o)
+           end
+        end
+
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+
+        local function verifyUpdate(id, url)
+            local nodes = ndb.getChildNodes(updaterSheet.installedPluginsList); 
+            local myNode;
+            for i=1, #nodes, 1 do
+                if nodes[i].moduleId == id then
+                    myNode = nodes[i];
+                end;
+            end
+
+            internet.download(url,
+                function(stream, contentType)
+                    -- esta função será chamada quando o download terminar
+                    -- o conteúdo do arquivo baixado está em stream.
+                    local info = rrpg.plugins.getRPKDetails(stream);
+
+                    if myNode ~= nil then
+                        myNode.versionAvailable = info.version;
+                        myNode.url = url;
+                        myNode.stream = stream;
+                    else
+                        local item = self.downloadedPluginsList:append();
+                        item.name = info.name;
+                        item.moduleId = info.moduleId;
+                        item.author = info.author;
+                        item.version = info.version;
+                        item.url = url;
+                        item.stream = stream;
+                    end;
+                end,       
+
+                function (errorMsg)
+                    -- esta função será chamada quando ocorrer algum erro no download.
+                    -- errorMsg possui a msg de erro
+                end,       
+
+                function (downloaded, total)
+                    -- esta função será chamada constantemente.
+                    -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+                end);
+        end;
+        ]]> 
+    </script>
+    <dataScopeBox name="scope" align="client">
+        <tabControl align="client">
+            <tab title="Instalado">
+                <import file="Installed.lfm"/>
+            </tab>
+            <tab title="Disponível">
+                <import file="Available.lfm"/>
+            </tab>
+    		<tab title="Creditos">
+                <import file="Credits.lfm"/>
+            </tab>
+        </tabControl>
+    </dataScopeBox>
+    <event name="onNodeReady">
+        -- Carrega o local sheet para ser usado. 
+        updaterSheet = ndb.load("sheet.xml");
+        self.scope:setNodeObject(updaterSheet);
+
+        -- Limpa os recordList e carrega a lista de plugins instaladados
+        local installed = rrpg.plugins.getInstalledPlugins();
+        local nodes = ndb.getChildNodes(updaterSheet.downloadedPluginsList); 
+        for i=1, #nodes, 1 do
+            ndb.deleteNode(nodes[i]);
+        end;
+        local nodes = ndb.getChildNodes(updaterSheet.installedPluginsList); 
+        for i=1, #nodes, 1 do
+            ndb.deleteNode(nodes[i]);
+        end;
+
+        -- Adiciona os plugins instalados a lista
+        for i=1, #installed, 1 do
+            local item = self.installedPluginsList:append();
+            item.name = installed[i].name;
+            item.moduleId = installed[i].moduleId;
+            item.author = installed[i].author;
+            item.version = installed[i].version;
+        end;
+        self.installedPluginsList:sort();
+        
+        -- Adiciona o nome das colunas a lista.
+        local item = self.installedPluginsList:append();
+        item.name = "Nome";
+        item.moduleId = "ID";
+        item.author = "Autor";
+        item.version = "Versão Instalada";
+        item.versionAvailable = "Versão Disponível";
+
+        -- Inicia o download da lista de plugins do git
+        internet.download("https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Plugins/plugins.xml",
+            function(stream, contentType)
+                if vhd.fileExists("import.xml") then
+                    vhd.deleteFile("import.xml");
+                end;
+                local file = vhd.openFile("import.xml", "w");
+                file:copyFrom(stream, stream.size);
+                setTimeout(
+                    function ()
+                        file:close();
+                        local import = ndb.load("import.xml");
+
+                        local list = ndb.getChildNodes(import);
+
+                        for i=1, #list, 1 do
+                            -- Verifica se tem updates em cada plugin
+                            verifyUpdate(list[i].id, list[i].url);
+                        end;
+
+                    end, 
+                    1000
+                );
+                
+
+            end,       
+
+            function (errorMsg)
+                -- esta função será chamada quando ocorrer algum erro no download.
+                -- errorMsg possui a msg de erro
+                showMessage("Não consegui pegar a lista de plugins do githut :/ \n" .. errorMsg);
+            end,       
+
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+        end);
+    </event>
+    <event name="onNodeReady">
+        internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true",
+            function(stream, contentType)
+                local info = rrpg.plugins.getRPKDetails(stream);
+                updaterSheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+
+                local installed = rrpg.plugins.getInstalledPlugins();
+                local myself;
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i];
+                        updaterSheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                    end;
+                end;
+
+                if updaterSheet.noUpdate==true then return end;
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true');
+                            elseif selected and selectedIndex == 3 then
+                                updaterSheet.noUpdate = true;
+                            end;
+                        end);
+                end;
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg);
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end);
+    </event>
+</form>
