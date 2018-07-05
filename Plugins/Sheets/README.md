@@ -18,6 +18,10 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 	- Plugin que gera ficha para Mobs do sistema FFRPG.
 - [Ficha 3ª Era](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%2013%C2%BA%20Era/output/Ficha%2013%C2%BA%20Era.rpk?raw=true): Ruteski
 	- Ficha para o sistema 3ª Era.
+- [Ficha 7º Sea](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%207%C2%BA%20Mar/output/Ficha%207%C2%BA%20Mar.rpk?raw=true): Ruteski
+	- Ficha para o sistema 7º Sea.
+- [Ficha Anima RPG](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Anima%20RPG/output/Ficha%20Anima%20RPG.rpk?raw=true): Ambesek
+	- Ficha para o sistema Anima RPG (d20 system).
 - [Ficha 4D&T](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%204D&T/output/Ficha%204D&T.rpk?raw=true): Ambesek
 	- Ficha para o sistema 4D&T.
 - [Ficha Avatar d20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/output/Ficha%20Avatar%20d20.rpk?raw=true): Ambesek
