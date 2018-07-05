@@ -641,7 +641,25 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 			end;
 		end;
 	end;	
+	
+	function wChat:getRoom()
+		local handle = rawget(self, "handle");
+		
+		if handle ~= nil then
+			mesaObjectID = _rrpg_tryGetMesaObjectIDRelatedToHandle(handle);		
 			
+			if (mesaObjectID ~= nil) then
+				mesaObjectID = tonumber(mesaObjectID);
+			end;
+			
+			if mesaObjectID ~= nil then
+				return rrpgWrappers.contextObjectFromID(mesaObjectID);
+			end;
+		end;			
+	end;
+			
+				
+	wChat.props["room"] = {getter = "getRoom", tipo = "table"};	
 	return wObj;
 end;
 		
@@ -701,6 +719,10 @@ end;
 
 function _INTERNAL_EVE_OnWrappedObjectWasDestroyed(objectID)					
 	localStrongRefContextoObjects[objectID] = nil;  -- Permitir o Garbage Collector coletar este objeto
+end;
+
+function _INTERNAL_AUX_ContextObjectFromID(objectID)
+	return rrpgWrappers.contextObjectFromID(objectID);
 end;
 
 SharedObjects.registerUnpacker(SHARED_OBJECT_TYPE,
