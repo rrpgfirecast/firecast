@@ -5,7 +5,7 @@
 		<script> 
 		<![CDATA[
 			
-			local dnd = ndb.load("dndskills.xml");
+			local anima = ndb.load("animaskills.xml");
 
 			local function updateAtributes(num)
 				if debug then
@@ -73,21 +73,18 @@
 				end;
 			end;
 
-			local function dndSkills()
+			local function animaSkills()
 				local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
 				for i=1, #nodes, 1 do
 					ndb.deleteNode(nodes[i]);
 				end
 
-				for i=1, 44, 1 do
+				for i=1, 17, 1 do
 					local pericia = self.rclListaDasPericias:append();
-					pericia.nomePericia = dnd[i].nome;
-					pericia.chavePericia = dnd[i].chave;
-					pericia.exigeTreino = dnd[i].treino;
-					if dnd[i].armadura > 0 then
-						pericia.penalidadeArmadura2 = true;
-					end;
-					if dnd[i].armadura > 1 then
+					pericia.nomePericia = anima[i].nome;
+					pericia.chavePericia = anima[i].chave;
+					pericia.exigeTreino = anima[i].treino;
+					if anima[i].armadura > 0 then
 						pericia.penalidadeArmadura = true;
 					end;
 				end;
@@ -117,9 +114,7 @@
 				<periciaSmallCenter text="Condicional" field="condicionalPericia"/>
 			</flowLayout>
 			<textEditor align="bottom" field="descricao"/>
-			<checkBox align="left" text="Exige Treino" field="exigeTreino"/>
 			<checkBox align="right" text="Penalidade Armadura" field="penalidadeArmadura"/>
-			<checkBox align="right" width="20" text="" field="penalidadeArmadura2"/>
 		</popup>
 		<popup name="popIdioma" width="200" height="100" backOpacity="0.4">
 			<checkBox align="top" text="Falar/Entender" field="conversarIdioma"/>
@@ -131,14 +126,14 @@
 			<rectangle align="client" color="black"/>
 			<label text="NOME DA PERÍCIA" left="20" top="1" width="135" height="20" horzTextAlign="center"/>
 			<label text="CHAVE" left="165" top="1" width="60" height="20" horzTextAlign="center"/>
-			<label text="TOTAL" left="245" top="1" width="40" height="20" horzTextAlign="center"/>
-			<label text="ATR" left="285" top="1" width="33" height="20" horzTextAlign="center"/>
+			<label text="TOTAL" left="220" top="1" width="40" height="20" horzTextAlign="center"/>
+			<label text="ATR" left="265" top="1" width="33" height="20" horzTextAlign="center"/>
 			<label text="GRAD" left="320" top="1" width="40" height="20" horzTextAlign="center"/>
 
 			<label text="NOME DA PERÍCIA" left="465" top="1" width="135" height="20" horzTextAlign="center"/>
 			<label text="CHAVE" left="610" top="1" width="60" height="20" horzTextAlign="center"/>
-			<label text="TOTAL" left="690" top="1" width="40" height="20" horzTextAlign="center"/>
-			<label text="ATR" left="730" top="1" width="33" height="20" horzTextAlign="center"/>
+			<label text="TOTAL" left="665" top="1" width="40" height="20" horzTextAlign="center"/>
+			<label text="ATR" left="710" top="1" width="33" height="20" horzTextAlign="center"/>
 			<label text="GRAD" left="765" top="1" width="40" height="20" horzTextAlign="center"/>
 
 			<recordList name="rclListaDasPericias" field="campoDasPericias" templateForm="frmFichaRPGmeister3p_svg" left="5" top="25" width="920" height="650" layout="verticalTiles">
@@ -183,7 +178,7 @@
 					idioma.escritaIdioma = true;
 				</event>
 			</button>
-			<button text="Padrão DnD3.5" left="0" top="50" width="125" height="25" onClick="dndSkills();" hint="Vai apagar todas perícias atuais. "/>
+			<button text="Padrão Anima" left="0" top="50" width="125" height="25" onClick="animaSkills();" hint="Vai apagar todas perícias atuais. "/>
 		</layout>
 	</scrollBox>
 </form>

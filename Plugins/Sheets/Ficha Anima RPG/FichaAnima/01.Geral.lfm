@@ -153,28 +153,25 @@
 		</template>
 		<template name="resitenceFlow">
 			<flowLayout align="top" autoHeight="true" maxControlsPerLine="11" margins="{bottom=4}" horzAlign="center">
-				<smallFieldCenter field="base$(tr)"/>
-				<smallLabelCenter field="atrMod$(tr)"/>
+				<smallLabelCenter field="ajuste"/>
+				<smallLabelCenter field="efetMod$(atr1)"/>
+				<smallLabelCenter field="efetMod$(atr2)"/>
 				<smallFieldCenter field="magia$(tr)"/>
 				<smallFieldCenter field="variavel$(tr)"/>
 				<smallFieldCenter field="temporario$(tr)"/>
 				<smallFieldCenter field="outros$(tr)"/>
-				<atributeComboBox field="atrTr$(tr)"/>
 			</flowLayout>
 
-			<dataLink fields="{'base$(tr)', 'atrMod$(tr)', 'magia$(tr)', 'variavel$(tr)', 'temporario$(tr)', 'outros$(tr)'}">
+			<dataLink fields="{'ajuste', 'efetMod$(atr1)', 'efetMod$(atr2)', 'magia$(tr)', 'variavel$(tr)', 'temporario$(tr)', 'outros$(tr)'}">
 				<event name="onChange"><![CDATA[
 					if sheet~= nil then
-						if debug then
-							rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando TRs. ");
-							index = index + 1;
-						end;
-						local tr = (tonumber(sheet.base$(tr)) or 0) + 
-										(tonumber(sheet.atrMod$(tr)) or 0) + 
-										(tonumber(sheet.magia$(tr)) or 0) + 
-										(tonumber(sheet.variavel$(tr)) or 0) + 
-										(tonumber(sheet.temporario$(tr)) or 0) + 
-										(tonumber(sheet.outros$(tr)) or 0);
+						local tr = 	(tonumber(sheet.ajuste) or 0) + 
+									(tonumber(sheet.efetMod$(atr1)) or 0) + 
+									(tonumber(sheet.efetMod$(atr2)) or 0) + 
+									(tonumber(sheet.magia$(tr)) or 0) + 
+									(tonumber(sheet.variavel$(tr)) or 0) + 
+									(tonumber(sheet.temporario$(tr)) or 0) + 
+									(tonumber(sheet.outros$(tr)) or 0) + 10;
 						sheet.tr$(tr) = tr;
 					end;
 					]]>
@@ -253,19 +250,20 @@
 			<atributeFlow atr="Sab"/>
 			<atributeFlow atr="Car"/>
 		</popup>
-		<popup name="popResistencia" width="380" height="150" backOpacity="0.4">
+		<popup name="popResistencia" width="380" height="175" backOpacity="0.4">
 			<flowLayout align="top" autoHeight="true" maxControlsPerLine="11" margins="{bottom=4}" horzAlign="center">
-				<smallTitleCenter text="Base"/>
-				<smallTitleCenter text="Atributo"/>
+				<smallTitleCenter text="Nível"/>
+				<smallTitleCenter text="Atributo 1"/>
+				<smallTitleCenter text="Atributo 2"/>
 				<smallTitleCenter text="Magia"/>
 				<smallTitleCenter text="Melhoria"/>
 				<smallTitleCenter text="Temp."/>
 				<smallTitleCenter text="Outros"/>
-				<smallTitleCenter text=""/>
 			</flowLayout>
-			<resitenceFlow tr="Fort"/>
-			<resitenceFlow tr="Ref"/>
-			<resitenceFlow tr="Von"/>
+			<resitenceFlow tr="Fort" atr1="For" atr2="Con"/>
+			<resitenceFlow tr="Ref" atr1="Des" atr2="Int"/>
+			<resitenceFlow tr="RefT" atr1="Des" atr2="Int"/>
+			<resitenceFlow tr="Von" atr1="Sab" atr2="Car"/>
 			<textEditor align="client" field="trCondicional"/>
 		</popup>
 		<popup name="popCA" width="600" height="210" backOpacity="0.4">
@@ -407,8 +405,9 @@
 			<rectangle left="890" top="5" width="70" height="25" color="black" strokeColor="white" strokeSize="1"/>
 			<label field="nep" left="890" top="5" width="70" height="25" horzTextAlign="center"/>
 
-			<label left="975" top="5" width="60" height="25" text="AJUSTE"/>
-			<edit vertTextAlign="center" left="1030" top="5" width="70" height="25" field="ajuste"/>
+			<label left="965" top="5" width="60" height="25" text="Mod Nível"/>
+			<rectangle left="1030" top="5" width="70" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label field="ajuste" left="1030" top="5" width="70" height="25" horzTextAlign="center"/>
 			
 			<label left="815" top="30" width="70" height="25" text="XP ATUAL"/>
 			<edit vertTextAlign="center" left="890" top="30" width="210" height="25" field="xpAtual"/>
@@ -436,13 +435,8 @@
 			<label field="xpNivel" left="890" top="80" width="210" height="25" horzTextAlign="center"/>
 
 			<dataLink field="xpAtual">
-				<event name="onChange">
+				<event name="onChange"><![CDATA[
 					if sheet~= nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando NEP");
-							index = index + 1;
-						end;
 						if sheet.xpAtual == nil then
 							sheet.xpAtual = 0;
 						end;
@@ -453,24 +447,37 @@
 						mod = string.gsub(mod, "p", "");
 						mod = string.gsub(mod, "%.", "");
 						mod = (tonumber(mod) or 0);
-						local mod2 = 0;
-						local mod3 = 0;
-						while mod>=mod2 do
-							mod3 = mod3+1;
-							mod2 = mod2 + mod3*1000;
+						local xpAlvo = 50;
+						local xpAlvoOld = 0;
+						local nivel = 1;
+						while mod>=xpAlvo do
+							local aux = xpAlvo;
+							xpAlvo = 2 * xpAlvo - xpAlvoOld + 10 * 2 ^ math.max(math.floor((nivel - 1)/5), 0);
+							xpAlvoOld = aux;
+							local mesa = rrpg.getMesaDe(sheet);
+							nivel = nivel+1;
 						end
 						
 						while true do  
-							mod2, k = string.gsub(mod2, "^(-?%d+)(%d%d%d)", '%1,%2')
+							xpAlvo, k = string.gsub(xpAlvo, "^(-?%d+)(%d%d%d)", '%1,%2')
 							if (k==0) then
 							  break
 							end
 						end
-						mod2 = string.gsub(mod2, ",", ".");
+						xpAlvo = string.gsub(xpAlvo, ",", ".");
 						
-						sheet.xpNivel = mod2 .. "XP";
-						sheet.nep = mod3;
+						sheet.xpNivel = xpAlvo .. "XP";
+						sheet.nep = nivel;
+
+						local ajuste = math.floor((nivel-1)/5);
+						sheet.ajuste = ajuste;
+
+						local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+						for i=1, #nodes, 1 do
+							nodes[i].ajuste = ajuste;
+						end
 					end;
+					]]>
 				</event>
 			</dataLink>
 		</rectangle>
@@ -565,7 +572,9 @@
 			<dataLink fields="{'efetModDes', 'efetModInt', 'efetModSab', 'iniVariado'}">
 				<event name="onChange">
 					if sheet== nil then return end;
-					local modIniciativa = math.max((tonumber(sheet.efetModDes) or 0), (tonumber(sheet.efetModInt) or 0), (tonumber(sheet.efetModSab) or 0))
+					local modIniciativa = math.max((tonumber(sheet.efetModDes) or 0), (tonumber(sheet.efetModInt) or 0), (tonumber(sheet.efetModSab) or 0)) + 
+											(tonumber(sheet.iniVariado) or 0) + 
+											(tonumber(sheet.ajuste) or 0);
 					sheet.modIniciativa = modIniciativa;
 
 					local mod = modIniciativa + (tonumber(sheet.iniVariado) or 0);
@@ -577,200 +586,14 @@
 			</dataLink>
 		</layout>
 
-		<rectangle left="480" top="175" width="260" height="155" color="black">
-			<label left="0" top="1" width="260" height="20" text="CLASSE DE ARMADURA" horzTextAlign="center"/>
-
-			<layout left="20" top="25" width="220" height="50" >
-				<label left="10" top="0" width="35" height="20" text="CA"/>
-				<rectangle left="5" top="25" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
-				<label left="5" top="27" width="35" field="ca" horzTextAlign="center"/>
-				
-				<label left="45" top="0" width="40" height="20" text="SURP."/>
-				<rectangle left="45" top="25" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
-				<label left="45" top="27" width="35" field="surpresa" horzTextAlign="center"/>
-				
-				<label left="85" top="0" width="45" height="20" text="TOQUE"/>
-				<rectangle left="90" top="25" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
-				<label left="90" top="27" width="35" field="toque" horzTextAlign="center"/>
-				
-				<label left="135" top="0" width="35" height="20" text="PEN"/>
-				<rectangle left="135" top="25" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
-				<label left="135" top="27" width="35" field="penalidade" horzTextAlign="center"/>
-				
-				<button left="170" top="0" width="45" height="20" fontSize="10" text="FALHA">
-					<event name="onClick">
-						local rolagem = rrpg.interpretarRolagem("1d100");
-						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Falha Arcana (" .. (sheet.falha or "0%").. ") de " .. (sheet.nome or "NOME"));
-					</event>
-				</button>
-				<rectangle left="175" top="25" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
-				<label left="175" top="27" width="35" field="falha" horzTextAlign="center"/>
-			</layout>
-			<button left="30" top="80" width="200" height="20" fontSize="10" text="+" name="caDetails">
-				<event name="onClick">
-					local pop = self:findControlByName("popCA");
-					
-					if pop ~= nil then
-						pop:setNodeObject(self.sheet);
-						pop:showPopupEx("bottomCenter", self.caDetails);
-					else
-						showMessage("Ops, bug.. nao encontrei o popup de armadura para exibir");
-					end;
-				</event>
-			</button>
-
-			<dataLink fields="{'armaduraCa', 'escudoCa', 'efetModDes', 'tamanhoCa', 'naturalCa', 'deflexaoCa', 'esquivaCa', 'sorteCa', 'outrosCa', 'variadosCa', 'armaduraCaSurp', 'escudoCaSurp', 'destrezaCaSurp', 'tamanhoCaSurp', 'naturalCaSurp', 'deflexaoCaSurp', 'esquivaCaSurp', 'sorteCaSurp', 'outrosCaSurp', 'variadosCaSurp', 'armaduraCaToque', 'escudoCaToque', 'destrezaCaToque', 'tamanhoCaToque', 'naturalCaToque', 'deflexaoCaToque', 'esquivaCaToque', 'sorteCaToque', 'outrosCaToque', 'variadosCaToque'}">
-				<event name="onChange"><![CDATA[
-					if sheet~= nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CA");
-							index = index + 1;
-						end;
-						local armaduraCa = (tonumber(sheet.armaduraCa) or 0);
-						local escudoCa = (tonumber(sheet.escudoCa) or 0);
-						local efetModDes = (tonumber(sheet.efetModDes) or 0);
-						local tamanhoCa = (tonumber(sheet.tamanhoCa) or 0);
-						local naturalCa = (tonumber(sheet.naturalCa) or 0);
-						local deflexaoCa = (tonumber(sheet.deflexaoCa) or 0);
-						local esquivaCa = (tonumber(sheet.esquivaCa) or 0);
-						local sorteCa = (tonumber(sheet.sorteCa) or 0);
-						local outrosCa = (tonumber(sheet.outrosCa) or 0);
-						local variadosCa = (tonumber(sheet.variadosCa) or 0);
-
-						local desMax = tonumber(sheet.equipamentoCorpoDesMax) or 999;
-						if desMax < efetModDes then
-							efetModDes = desMax;
-						end;
-
-						local ca = 	10 + armaduraCa + escudoCa + efetModDes + tamanhoCa + naturalCa + deflexaoCa + esquivaCa + sorteCa + outrosCa + variadosCa;
-						
-						local surpresa = ca;
-						if not sheet.armaduraCaSurp then
-							surpresa = surpresa - armaduraCa;
-						end;
-						if not sheet.escudoCaSurp then
-							surpresa = surpresa - escudoCa;
-						end;
-						if not sheet.destrezaCaSurp then
-							surpresa = surpresa - efetModDes;
-						end;
-						if not sheet.tamanhoCaSurp then
-							surpresa = surpresa - tamanhoCa;
-						end;
-						if not sheet.naturalCaSurp then
-							surpresa = surpresa - naturalCa;
-						end;
-						if not sheet.deflexaoCaSurp then
-							surpresa = surpresa - deflexaoCa;
-						end;
-						if not sheet.esquivaCaSurp then
-							surpresa = surpresa - esquivaCa;
-						end;
-						if not sheet.sorteCaSurp then
-							surpresa = surpresa - sorteCa;
-						end;
-						if not sheet.outrosCaSurp then
-							surpresa = surpresa - outrosCa;
-						end;
-						if not sheet.variadosCaSurp then
-							surpresa = surpresa - variadosCa;
-						end;
-
-						local toque = ca;
-						if not sheet.armaduraCaToque then
-							toque = toque - armaduraCa;
-						end;
-						if not sheet.escudoCaToque then
-							toque = toque - escudoCa;
-						end;
-						if not sheet.destrezaCaToque then
-							toque = toque - efetModDes;
-						end;
-						if not sheet.tamanhoCaToque then
-							toque = toque - tamanhoCa;
-						end;
-						if not sheet.naturalCaToque then
-							toque = toque - naturalCa;
-						end;
-						if not sheet.deflexaoCaToque then
-							toque = toque - deflexaoCa;
-						end;
-						if not sheet.esquivaCaToque then
-							toque = toque - esquivaCa;
-						end;
-						if not sheet.sorteCaToque then
-							toque = toque - sorteCa;
-						end;
-						if not sheet.outrosCaToque then
-							toque = toque - outrosCa;
-						end;
-						if not sheet.variadosCaToque then
-							toque = toque - variadosCa;
-						end;
-
-						sheet.ca = ca;
-						sheet.surpresa = surpresa;
-						sheet.toque = toque;
-					end;
-					]]>
-				</event>
-			</dataLink>
-
-			<dataLink fields="{'armaduraCaSurp', 'escudoCaSurp', 'tamanhoCaSurp', 'naturalCaSurp', 'deflexaoCaSurp', 'destrezaCaToque', 'tamanhoCaToque', 'deflexaoCaToque', 'esquivaCaToque'}" defaultValues="{'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true', 'true'}"/>
-
-			<dataLink fields="{'equipamentoCorpoPen', 'escudoPen'}">
-				<event name="onChange"><![CDATA[
-					if sheet~=nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Penalidade de Armadura.");
-							index = index + 1;
-						end;
-						sheet.penalidade = (tonumber(sheet.equipamentoCorpoPen) or 0) + (tonumber(sheet.escudoPEn) or 0);
-						updatePenalty();
-					end;
-					]]>
-				</event>
-			</dataLink>
-			<dataLink fields="{'equipamentoCorpoFalha', 'escudoFalha'}">
-				<event name="onChange"><![CDATA[
-					if sheet~=nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Falha Arcana.");
-							index = index + 1;
-						end;
-						local equipamentoCorpoFalha = sheet.equipamentoCorpoFalha;
-						local escudoFalha = sheet.escudoFalha;
-
-						if equipamentoCorpoFalha~= nil then
-							equipamentoCorpoFalha = string.gsub(equipamentoCorpoFalha, "%%", "");
-						end;
-						if escudoFalha~= nil then
-							escudoFalha = string.gsub(escudoFalha, "%%", "");
-						end;
-
-						sheet.falha = ((tonumber(equipamentoCorpoFalha) or 0) + (tonumber(escudoFalha) or 0)) .. "%";
-					end;
-					]]>
-				</event>
-			</dataLink>
-
-			<layout left="0" top="105" width="260" height="25">
-				<label left="30" top="0" width="30" height="20" text="RM"/>
-				<edit vertTextAlign="center" left="60" top="0" width="170" height="25" field="rm"/>
-			</layout>
-		</rectangle>
-
 		<rectangle left="0" top="335" width="220" height="165" color="black">
-			<label left="5" top="1" width="220" height="20" text="PONTOS DE VIGOR"/>
+			<label left="5" top="1" width="220" height="20" text="PONTOS DE VIDA"/>
 			
-			<label left="35" top="25" width="100" height="20" text="VIGOR"/>
-			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="5" top="45" width="105" height="25" field="pvTotal"/>
-			<label left="115" top="25" width="100" height="20" text="TEMPORARIO"/>
-			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="110" top="45" width="105" height="25" field="pvTemporario"/>
+			<label left="35" top="25" width="100" height="20" text="TOTAL"/>
+			<rectangle left="5" top="45" width="105" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label vertTextAlign="center" horzTextAlign="center" left="5" top="45" width="105" height="25" field="pvTotal"/>
+			<label left="115" top="25" width="100" height="20" text="EXTRA"/>
+			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="110" top="45" width="105" height="25" field="pvExtra"/>
 			
 			<button left="5" top="70" width="40" height="25"  text="DVs">
 				<event name="onClick">
@@ -801,6 +624,16 @@
 			</button>
 			<edit vertTextAlign="center" left="45" top="70" width="170" height="25" field="dvs"/>
 			<textEditor left="5" top="95" width="210" height="65" field="rd"/>
+
+			<dataLink fields="{'efetCon','pvExtra','nep'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local pv = 10 + (tonumber(sheet.nep) or 0) * 5 +
+									(tonumber(sheet.efetCon) or 0) +
+									(tonumber(sheet.pvExtra) or 0);
+					sheet.pvTotal = pv;
+				</event>
+			</dataLink>
 		</rectangle>
 
 		<layout left="225" top="335" width="322" height="165">
@@ -864,161 +697,23 @@
 			<edit vertTextAlign="center" left="60" top="130" width="70" height="25" field="buffPericia"/>
 		</layout>
 
-		<layout left="552" top="335" width="188" height="142">
-			<rectangle align="client" color="black"/>
-			<label left="0" top="0" width="180" height="25" text="BBA" horzTextAlign="center"/>
-			
-			<edit left="5" top="25" width="40" height="25" type="number" horzTextAlign="center" field="bba">
-				<event name="onChange"><![CDATA[
-					if sheet~= nil then
-						if debug then
-							rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando BBA. ");
-							index = index + 1;
-						end;
-						local bba = tonumber(sheet.bba) or 0;
-						local text = "+" .. bba;
-						local l = 1;
-						while bba > 5 and l < 4 do
-							bba = bba -5;
-							l = l + 1;
-							text = text .. "/+" .. bba;
-						end;
-						sheet.bbaDesc = text;
-					end;
-					]]>
-				</event>
-			</edit>
-			<rectangle left="50" top="25" width="125" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label left="50" top="25" width="125" height="25" field="bbaDesc" horzTextAlign="center"/>
+		<rectangle left="480" top="175" width="260" height="155" color="black">
+			<label left="0" top="0" width="260" height="25" text="DEFESAS" horzTextAlign="center"/>
 
-			<layout left="0" top="60" width="180" height="25">
-				<button left="5" top="0" width="70" height="25" text="AGARRAR" fontSize="11">
-					<event name="onClick">
-						local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.agarrar or "0"));
-						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Agarrar de " .. (sheet.nome or "NOME"));
-					</event>
-				</button>
-				<rectangle left="80" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
-				<label field="agarrar" left="80" width="40" height="25" horzTextAlign="center"/>
-
-				<button left="125" top="0" width="25" height="25" name="GrappleBt" text="i">
-					<event name="onClick">
-						local pop = self:findControlByName("popGrapple");
-					
-						if pop ~= nil then
-							pop:setNodeObject(self.sheet);
-							pop:showPopupEx("rightCenter", self.GrappleBt);
-						else
-							showMessage("Ops, bug.. nao encontrei o popup de agarrar para exibir");
-						end;
-						</event>
-				</button>
-
-				<dataLink fields="{'bba', 'efetModFor', 'agarrarTam', 'agarrarVar'}"> 
-					<event name="onChange">
-						if sheet~= nil then
-							if debug then
-								local mesa = rrpg.getMesaDe(sheet);
-								mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Agarrar.");
-								index = index + 1;
-							end;
-							local agarrar = (tonumber(sheet.bba) or 0) + 
-										(tonumber(sheet.efetModFor) or 0) +  
-										(tonumber(sheet.agarrarTam) or 0) +   
-										(tonumber(sheet.agarrarVar) or 0);					  
-							sheet.agarrar = agarrar;
-						end;
-					</event>
-				</dataLink>
-			</layout>
-
-		</layout>
-
-		<rectangle left="0" top="505" width="140" height="115" color="black">
-			<label left="0" top="0" width="140" height="25" text="RESISTENCIAS" horzTextAlign="center"/>
-
-			<layout left="0" top="30" width="275" height="25">
+			<layout left="55" top="30" width="275" height="25">
 				<Resistence atr="Fort" atrU="FORT" atrN="Fortitude"/>
-				<dataLink field="atrTrFort" defaultValue="3"/>
 			</layout>
-			<layout left="0" top="55" width="275" height="25">
+			<layout left="55" top="55" width="275" height="25">
 				<Resistence atr="Ref" atrU="REF" atrN="Reflexos"/>
-				<dataLink field="atrTrRef" defaultValue="2"/>
 			</layout>
-			<layout left="0" top="80" width="275" height="25">
+			<layout left="55" top="80" width="275" height="25">
+				<Resistence atr="RefT" atrU="REF(T)" atrN="Reflexos (Toque)"/>
+			</layout>
+			<layout left="55" top="105" width="275" height="25">
 				<Resistence atr="Von" atrU="VON" atrN="Vontade"/>
-				<dataLink field="atrTrVon" defaultValue="5"/>
 			</layout>
 
-			<dataLink fields="{'efetModFor', 'efetModDes', 'efetModCon', 'efetModInt', 'efetModSab', 'efetModCar', 'atrTrFort', 'atrTrRef', 'atrTrVon'}">
-				<event name="onChange">
-					if sheet ~= nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando TRs.");
-							index = index + 1;
-						end;
-						local atrModFort = 0;
-						local atrModRef = 0;
-						local atrModVon = 0;
-
-						local num = tonumber(sheet.atrTrFort) or 3;
-
-						if num == 1 then
-							atrModFort = getFOR();
-						elseif num == 2 then
-							atrModFort = getDES();
-						elseif num == 3 then
-							atrModFort = getCON();
-						elseif num == 4 then
-							atrModFort = getINT();
-						elseif num == 5 then
-							atrModFort = getSAB();
-						elseif num == 6 then
-							atrModFort = getCAR();
-						end;
-
-						num = tonumber(sheet.atrTrRef) or 2;
-
-						if num == 1 then
-							atrModRef = getFOR();
-						elseif num == 2 then
-							atrModRef = getDES();
-						elseif num == 3 then
-							atrModRef = getCON();
-						elseif num == 4 then
-							atrModRef = getINT();
-						elseif num == 5 then
-							atrModRef = getSAB();
-						elseif num == 6 then
-							atrModRef = getCAR();
-						end;
-
-						num = tonumber(sheet.atrTrVon) or 5;
-
-						if num == 1 then
-							atrModVon = getFOR();
-						elseif num == 2 then
-							atrModVon = getDES();
-						elseif num == 3 then
-							atrModVon = getCON();
-						elseif num == 4 then
-							atrModVon = getINT();
-						elseif num == 5 then
-							atrModVon = getSAB();
-						elseif num == 6 then
-							atrModVon = getCAR();
-						end;
-
-						sheet.atrModFort = atrModFort;
-						sheet.atrModRef = atrModRef;
-						sheet.atrModVon = atrModVon;
-					end;
-				</event>
-			</dataLink>
-
-			<button left="100" top="30" width="30" height="75" name="TrBut" text=">>">
+			<button left="160" top="30" width="30" height="100" name="TrBut" text=">>">
 				<event name="onClick">
 					local pop = self:findControlByName("popResistencia");
 				

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <__EHEX_31 armadura="0" chave="4" nome="Alquimia" treino="False">
+        <__ndb__ id="2" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_31>
+    <__EHEX_32 armadura="1" chave="2" nome="Acrobacia" treino="False">
+        <__ndb__ id="3" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_32>
+    <__EHEX_33 armadura="0" chave="4" nome="Arcanismo" treino="False">
+        <__ndb__ id="4" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_33>
+    <__EHEX_34 armadura="1" chave="1" nome="Atletismo" treino="False">
+        <__ndb__ id="5" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_34>
+    <__EHEX_35 armadura="0" chave="6" nome="Blefe" treino="False">
+        <__ndb__ id="6" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_35>
+    <__EHEX_36 armadura="0" chave="4" nome="Combate Marcial" treino="False">
+        <__ndb__ id="7" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_36>
+    <__EHEX_37 armadura="0" chave="6" nome="Diplomacia" treino="False">
+        <__ndb__ id="8" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_37>
+    <__EHEX_38 armadura="0" chave="4" nome="Erudição" treino="False">
+        <__ndb__ id="9" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_38>
+    <__EHEX_39 armadura="1" chave="2" nome="Furtividade" treino="False">
+        <__ndb__ id="10" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_39>
+    <__EHEX_3130 armadura="0" chave="6" nome="Intimidação" treino="False">
+        <__ndb__ id="11" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_3130>
+    <__EHEX_3131 armadura="0" chave="5" nome="Intuição" treino="False">
+        <__ndb__ id="12" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_3131>
+    <__EHEX_3132 armadura="1" chave="2" nome="Ladinagem" treino="False">
+        <__ndb__ id="13" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_3132>
+    <__EHEX_3133 armadura="0" chave="5" nome="Percepção" treino="False">
+        <__ndb__ id="14" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_3133>
+    <__EHEX_3134 armadura="0" chave="5" nome="Sobrevivência" treino="False">
+        <__ndb__ id="15" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_3134>
+    <__EHEX_3135 armadura="0" chave="4" nome="Tecnologia" treino="False">
+        <__ndb__ id="16" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_3135>
+    <__EHEX_3136 armadura="1" chave="3" nome="Tolerância" treino="False">
+        <__ndb__ id="17" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_3136>
+    <__EHEX_3137 armadura="0" chave="5" nome="Socorro" treino="False">
+        <__ndb__ id="18" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_3137>
+    <__EHEX_3435>
+        <__ndb__ id="19" />
+    </__EHEX_3435>
+    <__ndb__ id="1" idGenerator="19" />
+</database>
