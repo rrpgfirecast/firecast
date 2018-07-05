@@ -392,12 +392,12 @@ function newfrmTemplate()
 
     obj._e_event4 = obj.button1:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('link_change_log')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/README.md')
         end, obj);
 
     obj._e_event5 = obj.button2:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('raw_download_link')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true')
         end, obj);
 
     obj._e_event6 = obj.button3:addEventListener("onClick",
