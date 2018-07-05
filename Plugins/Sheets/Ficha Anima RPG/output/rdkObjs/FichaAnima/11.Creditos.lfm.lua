@@ -211,12 +211,12 @@ function newfrmFichaRPGmeister11_svg()
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('readme_link')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Anima%20RPG/README.md')
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('raw_download_link')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Anima%20RPG/output/Ficha%20Anima%20RPG.rpk?raw=true')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",

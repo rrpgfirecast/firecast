@@ -14511,7 +14511,7 @@ function newfrmFichaRPGmeister()
 					ndb.deleteNode(nodes[i]);
 				end
 
-				for i=1, 34, 1 do
+				for i=1, 36, 1 do
 					local pericia = self.rclListaDasPericias:append();
 					pericia.nomePericia = path[i].nome;
 					pericia.chavePericia = path[i].chave;

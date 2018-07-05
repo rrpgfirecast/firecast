@@ -26290,7 +26290,7 @@ function newfrmFichaAnima()
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
         function (self)
-            internet.download("raw_download_link",
+            internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Anima%20RPG/output/Ficha%20Anima%20RPG.rpk?raw=true",
                         function(stream, contentType)
                             local info = rrpg.plugins.getRPKDetails(stream);
                             sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
@@ -26309,7 +26309,7 @@ function newfrmFichaAnima()
                                 Dialogs.choose("Há uma nova versão (".. info.version .. ") da Ficha Anima. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                                     function(selected, selectedIndex, selectedText)
                                         if selected and selectedIndex == 1 then
-                                            gui.openInBrowser('raw_download_link');
+                                            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Anima%20RPG/output/Ficha%20Anima%20RPG.rpk?raw=true');
                                         elseif selected and selectedIndex == 3 then
                                             sheet.noUpdate = true;
                                         end;
@@ -33051,12 +33051,12 @@ function newfrmFichaAnima()
 
     obj._e_event394 = obj.button113:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('readme_link')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Anima%20RPG/README.md')
         end, obj);
 
     obj._e_event395 = obj.button114:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('raw_download_link')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Anima%20RPG/output/Ficha%20Anima%20RPG.rpk?raw=true')
         end, obj);
 
     obj._e_event396 = obj.button115:addEventListener("onClick",
