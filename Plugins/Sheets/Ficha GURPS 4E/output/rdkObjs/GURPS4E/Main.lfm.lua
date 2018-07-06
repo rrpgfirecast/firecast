@@ -215,7 +215,7 @@ function newfrmTemplate()
     obj.fraFrenteLayoutNew:setParent(obj.scrollBox1);
     obj.fraFrenteLayoutNew:setAlign("top");
     obj.fraFrenteLayoutNew:setHeight(500);
-    obj.fraFrenteLayoutNew:setMargins({left=10, right=10, top=0});
+    obj.fraFrenteLayoutNew:setMargins({left=10, right=10, top=10});
     obj.fraFrenteLayoutNew:setAutoHeight(true);
     obj.fraFrenteLayoutNew:setHorzAlign("center");
     obj.fraFrenteLayoutNew:setLineSpacing(2);
