@@ -185,7 +185,7 @@ function newfrmFichaRPGmeister3p_svg()
 
     obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
-    obj.dataLink1:setFields({'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'ajuste'});
+    obj.dataLink1:setFields({'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'ajuste', 'penalidade'});
     obj.dataLink1:setName("dataLink1");
 
     obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
