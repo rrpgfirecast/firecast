@@ -16,7 +16,7 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 	- Ficha para o sistema D&D3.5
 - [FFRPG Mob Creator](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/FFRPG%20Mob%20Creator/output/FFRPG%20Mob%20Creator.rpk?raw=true): Hitoshura
 	- Plugin que gera ficha para Mobs do sistema FFRPG.
-- [Ficha 3ª Era](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%2013%C2%BA%20Era/output/Ficha%2013%C2%BA%20Era.rpk?raw=true): Ruteski
+- [Ficha 13ª Era](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%2013%C2%BA%20Era/output/Ficha%2013%C2%BA%20Era.rpk?raw=true): Ruteski
 	- Ficha para o sistema 3ª Era.
 - [Ficha 7º Sea](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%207%C2%BA%20Mar/output/Ficha%207%C2%BA%20Mar.rpk?raw=true): Ruteski
 	- Ficha para o sistema 7º Sea.

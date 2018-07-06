@@ -41,14 +41,7 @@
             <import file="01.Geral.lfm"/>
         </tab>
         <tab title="Ataques">
-            <tabControl align="client">
-                <tab title="Simples">
-                    <import file="02.Ataques.lfm"/>
-                </tab>
-                <tab title="Avançados">
-                    <import file="02.AtaquesAprimorados.lfm"/>
-                </tab>
-            </tabControl>
+            <import file="02.Ataques.lfm"/>
         </tab>
         <tab title="Perícias">
             <import file="03.Pericias.lfm"/>
