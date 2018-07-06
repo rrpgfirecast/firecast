@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rectangle class="fundo">
 	<scrollBox align="client">
-		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="2" name="fraFrenteLayoutNew" maxControlsPerLine="2">
+		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=0}" autoHeight="true" horzAlign="center" lineSpacing="2" name="fraFrenteLayoutNew" maxControlsPerLine="2">
 			<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center">
-				<flowLayout class="tile" vertAlign="leading" autoHeight="true" minScaledWidth="290" maxControlsPerLine="2" horzAlign="center" lineSpacing="10" margins="{left=2, top=2, right=16, bottom=4}" avoidScale="true" frameStyle="frames/panel1/frame.xml">
+				<flowLayout class="tile" vertAlign="leading" autoHeight="true" minScaledWidth="290" maxControlsPerLine="2" horzAlign="center" lineSpacing="10" margins="{left=2, top=0, right=16, bottom=4}" avoidScale="true" frameStyle="frames/panel1/frame.xml">
 					<flowPart stepSizes="{130}" minScaledWidth="130" height="160">
 						<edit left="0" top="10" width="40" height="25" field="atributos_st" horzTextAlign="center" transparent="true"/>
 						<label left="40" top="10" width="50" height="25" text="ST" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
@@ -261,7 +261,7 @@
 
 				<flowLineBreak/>
 
-				<flowPart class="tileCarac" height="150" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
+				<flowPart class="tileCarac" height="150" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4, bottom = 7}">
 					<textEditor align="client" field="anotacoes_geral" class="transparente" margins="{top=2}" fontSize="16"/>
 				</flowPart>	
 

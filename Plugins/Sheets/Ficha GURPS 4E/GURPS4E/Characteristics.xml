@@ -35,18 +35,18 @@
 
 				<flowLayout maxControlsPerLine="1" autoHeight="true" class="tileCarac" lineSpacing="10" margins="{left=4, right=4}">
 					<flowPart class="tileCarac" height="170" frameStyle="frames/panel5/topPanel.xml" margins="{left = 4, right = 4}">
-						<label align="top" autoSize="true" text="APARÊNCIA" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
-						<textEditor align="client" field="aparencia" class="transparente" margins="{top=2}" fontSize="16"/>
+						<label align="bottom" autoSize="true" text="APARÊNCIA" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						<textEditor align="client" field="aparencia" class="transparente" margins="{bottom=2}" fontSize="16"/>
 					</flowPart>	
 
 					<flowPart class="tileCarac" height="170" frameStyle="frames/panel5/centerPanel.xml" margins="{left = 4, right = 4}">
-						<label align="top" autoSize="true" text="QUALIDADES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
-						<textEditor align="client" field="anotacoes" class="transparente" margins="{top=2}" fontSize="16"/>
+						<label align="bottom" autoSize="true" text="QUALIDADES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						<textEditor align="client" field="anotacoes" class="transparente" margins="{bottom=2}" fontSize="16"/>
 					</flowPart>	
 
 					<flowPart class="tileCarac" height="155" frameStyle="frames/panel5/bottomPanel.xml" margins="{left = 4, right = 4}">
-						<label align="top" autoSize="true" text="PECULIARIDADES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
-						<textEditor align="client" field="peculiaridades" class="transparente" margins="{top=2}" fontSize="16"/>
+						<label align="bottom" autoSize="true" text="PECULIARIDADES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						<textEditor align="client" field="peculiaridades" class="transparente" margins="{bottom=2}" fontSize="16"/>
 					</flowPart>	
 				</flowLayout>
 

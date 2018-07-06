@@ -2,6 +2,39 @@
 <form name="frmTemplate" formType="sheetTemplate" dataType="Ambesek.Nefertyne.GURPS" title="Ficha GURPS 4E" align="client" theme="dark">
     <import file="../styles.xml"/>
     <import file="../templates.xml"/>
+    <script>
+        <![CDATA[
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+        ]]> 
+    </script>
     <popup name="popDetails" width="250" height="250" backOpacity="0.4">
         <label align="top" field="title" horzTextAlign="center"/>
 
@@ -102,4 +135,39 @@
             </tab>
         </tabControl>
     </rectangle>
+    <event name="onNodeReady">
+        internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true",
+            function(stream, contentType)
+                local info = rrpg.plugins.getRPKDetails(stream);
+                sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+
+                local installed = rrpg.plugins.getInstalledPlugins();
+                local myself;
+                for i=1, #installed, 1 do
+                    if installed[i].moduleId == info.moduleId then
+                        myself = installed[i];
+                        sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                    end;
+                end;
+
+                if sheet.noUpdate==true then return end;
+                if myself~= nil and isNewVersion(myself.version, info.version) then
+                    Dialogs.choose("Há uma nova versão (" .. info.version .. ") do plugin de FURPS 4E. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                        function(selected, selectedIndex, selectedText)
+                            if selected and selectedIndex == 1 then
+                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true');
+                            elseif selected and selectedIndex == 3 then
+                                sheet.noUpdate = true;
+                            end;
+                        end);
+                end;
+            end,       
+            function (errorMsg)
+                --showMessage(errorMsg);
+            end,       
+            function (downloaded, total)
+                -- esta função será chamada constantemente.
+                -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+            end);
+    </event>
 </form>
