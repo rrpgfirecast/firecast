@@ -5,7 +5,6 @@ local MAX_CHAVES = (ARV_GRAU * 2) - 1;
 local MAX_FILHOS = (ARV_GRAU * 2);
 
 local MIN_CHAVES = ARV_GRAU - 1;
-local MIN_FILHOS = ARV_GRAU;
 
 
 -- Funções privadas
@@ -35,7 +34,7 @@ end;
 
 
 function BTreeIN:innerLocalizarForInsert(paginaOrigem, chaveALocalizar)
-	local ind, comp, pOrg, min, max, meio;
+	local comp, pOrg, min, max, meio;
 	
 	pOrg = paginaOrigem;
 	
@@ -228,7 +227,7 @@ function BTreeIN:innerFindHighest(pagina)
 	end;
 end;
 
-function BTreeIN:destruirPagina(pagina)
+function BTreeIN:destruirPagina(_)
 	-- faz nada
 end;
 
@@ -434,7 +433,7 @@ function BTreeIN:innerDeletePucharDeCima(pagina, indice)
 			
 			pagina_setCountChaves(oPai, oPai.countChaves - 1);
 		else
-			local novoIndiceNoPai;
+			--local novoIndiceNoPai;
 			--oPai, novoIndiceNoPai = self:innerDeletePucharDeCima(oPai, pagina.indiceNoPai);
 			--pagina.indiceNoPai = novoIndiceNoPai;
 			self:innerDeletePucharDeCima(oPai, pagina.indiceNoPai);

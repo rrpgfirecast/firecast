@@ -1,4 +1,4 @@
-﻿local rrpg = require("rrpg.lua");
+﻿require("rrpg.lua");
 local plugins = require("plugins.lua");
 local fdmodule = "RRPG.FIRECAST.FMXModule";
 
@@ -63,7 +63,7 @@ local function fdManageItem(destName, metadata, onSuccess, onProgress, onFailure
 	msg.pmListener = esteUpload.pmListener;
 		
 	plugins.sendPM(fdmodule, "fireDrive:manageItem", msg, 
-		function (r)
+		function (_)
 
 		end,
 		

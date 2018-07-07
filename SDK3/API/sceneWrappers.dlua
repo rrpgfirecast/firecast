@@ -1,4 +1,5 @@
 ﻿local Objs = require("rrpgObjs.lua");
+local objs = Objs;
 local NDB = require("ndb.lua");
 local GUI = nil;
 
@@ -264,11 +265,7 @@ local __viewportMethods = {screenToWorld =
 									if tblTools ~= nil then
 										local o = tblTools[toolID];
 										
-										if o ~= nil then
-											if checked == nil then
-												checked = true;
-											end;
-										
+										if o ~= nil then                          
 											return _obj_getProp(o.handle, "IsChecked");
 										end;
 									end;
@@ -482,7 +479,7 @@ local __GILProps = {count = {tipo = "int", readProp = "Count"},
 					selection = {tipo="table", getter="getSelection"}};
 						 
 local __GILMethods = {	get = function(t, idx) 	
-								local objID = _obj_invoke(t.handle, "GetItemObjectID", k - 1);
+								local objID = _obj_invoke(t.handle, "GetItemObjectID", idx - 1);
 								local o = SceneWrappers.objectFromID(objID);
 								
 								if o == nil then

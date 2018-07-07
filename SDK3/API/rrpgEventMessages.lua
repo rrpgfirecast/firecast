@@ -188,10 +188,10 @@ function messaging.groupOnceListeners(...)
 			function()
 				-- um dos listeners disparou, vamos cancelar os outros.
 				
-				for i = 1, #listenersObjs, 1 do
-					local obj = listenersObjs[i];
-					obj:removeEventListener(eventListenersId[i]);
-					messaging.unlisten(listenersId[i]);
+				for j = 1, #listenersObjs, 1 do
+					local obj = listenersObjs[j];
+					obj:removeEventListener(eventListenersId[j]);
+					messaging.unlisten(listenersId[j]);
 					obj:disable();
 				end;
 			end);

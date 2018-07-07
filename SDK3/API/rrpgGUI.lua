@@ -2,8 +2,8 @@ local objs = require("rrpgObjs.lua");
 local ndb = require("ndb.lua");
 
 gui = {}
+GUI = gui;
 
-local localGui = gui;
 local guiLoaders = {};
 
 gui.guiLoaders = guiLoaders;
