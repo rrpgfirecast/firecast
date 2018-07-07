@@ -97,6 +97,15 @@ rrpg.messaging.listen("HandleChatCommand",
 			end	
 
 			message.response = {handled = true};
+		elseif message.comando == "cleandice" then
+			if message.parametro ~= "" and message.parametro ~= nil then
+				afkdb.diceTimes[message.parametro] = 0;
+				message.chat:escrever("Jogador " .. message.parametro .. " perdoado.");
+			else
+				message.chat:escrever("Login invalido.");
+			end;
+
+			message.response = {handled = true};
 		end
 	end);
 
@@ -112,7 +121,6 @@ rrpg.messaging.listen("ChatMessage",
 			local text = utils.removerFmtChat(message.texto, true);
 			local login = message.mesa.meuJogador.login;
 			local nick = utils.removerFmtChat(message.mesa.meuJogador.nick, true);
-			local mestre = "mestre";
 
 			if message.mesa.meuJogador.isMestre then
 				text = text:lower();
@@ -125,9 +133,12 @@ rrpg.messaging.listen("ChatMessage",
 			
 			local isLogin = string.match(text, login) ~= nil;
 			local isNick = string.match(text, nick) ~= nil;
-			local isMestre = string.match(text, mestre) ~= nil;
+			local isMestre = string.match(text, "mestre") ~= nil;
+			local isDia = string.match(text, "bom dia") ~= nil;
+			local isTarde = string.match(text, "boa tarde") ~= nil;
+			local isNoite = string.match(text, "boa noite") ~= nil;
 
-			if isLogin or isNick or isMestre then
+			if isLogin or isNick or isMestre or isDia or isTarde or isNoite then
 				local info = "[§K1]AfkBot: Está é uma mensagem automatica de " .. message.mesa.meuJogador.nick .. "[§K1](" .. message.mesa.meuJogador.login .. ") que está ocupado e não pode responder.";
 
 				afkdb.afkBotClock[message.mesa.codigoInterno] = os.clock();
@@ -187,7 +198,8 @@ rrpg.messaging.listen("ListChatCommands",
     function(message)
         message.response = {{comando="/msg <Vazio>", descricao="Mostra a mensagem atual salva no AfkBot."},
                             {comando="/msg <Texto>", descricao="Salva <Texto> como a mensagem automatica de resposta no AfkBot. "},
-                            {comando="/stopdice", descricao="Avisa a espectadores para pararem de rolar dados. "},
+                            {comando="/stopdice", descricao="Avisa a espectadores para pararem de rolar dados. E os expulsa na 4ª vez. "},
+                            {comando="/cleandice <login>", descricao="Limpa o contador de rolagens de um jogador. "},
                             {comando="/afk <Boolean (opcional)>", descricao="Ativa ou desativa o AfkBot v0.6, opcionalmente passando true como parametro o bot avisa cada espectador que entrar na mesa. "}};
     end);
 
