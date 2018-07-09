@@ -1,0 +1,42 @@
+﻿require("vhd.lua")
+
+local aliases = {
+      luacheck = "res://toolsres://tools/LuaCheck/src/src/init.lua",
+      ["luacheck.argparse"] = "res://tools/LuaCheck/src/argparse.lua",
+      ["luacheck.builtin_standards"] = "res://tools/LuaCheck/src/builtin_standards.lua",
+      ["luacheck.cache"] = "res://tools/LuaCheck/src/cache.lua",
+      ["luacheck.check"] = "res://tools/LuaCheck/src/check.lua",
+      ["luacheck.config"] = "res://tools/LuaCheck/src/config.lua",
+      ["luacheck.core_utils"] = "res://tools/LuaCheck/src/core_utils.lua",
+      ["luacheck.detect_bad_whitespace"] = "res://tools/LuaCheck/src/detect_bad_whitespace.lua",
+      ["luacheck.detect_cyclomatic_complexity"] = "res://tools/LuaCheck/src/detect_cyclomatic_complexity.lua",
+      ["luacheck.detect_globals"] = "res://tools/LuaCheck/src/detect_globals.lua",
+      ["luacheck.detect_uninit_access"] = "res://tools/LuaCheck/src/detect_uninit_access.lua",
+      ["luacheck.detect_unreachable_code"] = "res://tools/LuaCheck/src/detect_unreachable_code.lua",
+      ["luacheck.detect_unused_locals"] = "res://tools/LuaCheck/src/detect_unused_locals.lua",
+      ["luacheck.detect_unused_rec_funcs"] = "res://tools/LuaCheck/src/detect_unused_rec_funcs.lua",
+      ["luacheck.expand_rockspec"] = "res://tools/LuaCheck/src/expand_rockspec.lua",
+      ["luacheck.filter"] = "res://tools/LuaCheck/src/filter.lua",
+      ["luacheck.format"] = "res://tools/LuaCheck/src/format.lua",
+      ["luacheck.fs"] = "res://tools/LuaCheck/src/fs.lua",
+      ["luacheck.globbing"] = "res://tools/LuaCheck/src/globbing.lua",
+      ["luacheck.inline_options"] = "res://tools/LuaCheck/src/inline_options.lua",
+      ["luacheck.lexer"] = "res://tools/LuaCheck/src/lexer.lua",
+      ["luacheck.lfs_fs"] = "res://tools/LuaCheck/src/lfs_fs.lua",
+      ["luacheck.linearize"] = "res://tools/LuaCheck/src/linearize.lua",
+      ["luacheck.love_standard"] = "res://tools/LuaCheck/src/love_standard.lua",
+      ["luacheck.lua_fs"] = "res://tools/LuaCheck/src/lua_fs.lua",
+      ["luacheck.main"] = "res://tools/LuaCheck/src/main.lua",
+      ["luacheck.name_functions"] = "res://tools/LuaCheck/src/name_functions.lua",
+      ["luacheck.multithreading"] = "res://tools/LuaCheck/src/multithreading.lua",
+      ["luacheck.ngx_standard"] = "res://tools/LuaCheck/src/ngx_standard.lua",
+      ["luacheck.options"] = "res://tools/LuaCheck/src/options.lua",
+      ["luacheck.parser"] = "res://tools/LuaCheck/src/parser.lua",
+      ["luacheck.resolve_locals"] = "res://tools/LuaCheck/src/resolve_locals.lua",
+      ["luacheck.runner"] = "res://tools/LuaCheck/src/runner.lua",
+      ["luacheck.standards"] = "res://tools/LuaCheck/src/standards.lua",
+      ["luacheck.utils"] = "res://tools/LuaCheck/src/utils.lua",
+      ["luacheck.version"] = "res://tools/LuaCheck/src/version.lua"
+   }
+
+VHD.registerAlias(aliases);
