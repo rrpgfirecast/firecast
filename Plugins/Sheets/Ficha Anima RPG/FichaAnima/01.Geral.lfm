@@ -457,6 +457,7 @@
 							local mesa = rrpg.getMesaDe(sheet);
 							nivel = nivel+1;
 						end
+						xpAlvo = math.floor(xpAlvo);
 						
 						while true do  
 							xpAlvo, k = string.gsub(xpAlvo, "^(-?%d+)(%d%d%d)", '%1,%2')
@@ -473,6 +474,11 @@
 						sheet.ajuste = ajuste;
 
 						local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+						for i=1, #nodes, 1 do
+							nodes[i].ajuste = ajuste;
+						end
+
+						local nodes = ndb.getChildNodes(sheet.attackList); 
 						for i=1, #nodes, 1 do
 							nodes[i].ajuste = ajuste;
 						end
@@ -595,35 +601,7 @@
 			<label left="115" top="25" width="100" height="20" text="EXTRA"/>
 			<edit type="number" vertTextAlign="center" horzTextAlign="center" left="110" top="45" width="105" height="25" field="pvExtra"/>
 			
-			<button left="5" top="70" width="40" height="25"  text="DVs">
-				<event name="onClick">
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-					sheet.modificador = sheet.modificador or 0;
-					mesaDoPersonagem.activeChat:rolarDados(sheet.dvs, "Pontos de Vigor de " .. (sheet.nome or "NOME"),
-						function (rolagem)
-							local maximo = 0;
-							local media = 0;
-							for i = 1, #rolagem.ops, 1 do 
-								local operacao = rolagem.ops[i]; 
-								if operacao.tipo == "dado" then   
-									maximo = maximo + (operacao.quantidade * operacao.face);
-									media = media + (operacao.quantidade * (operacao.face+1)/2);
-									if i==1 then
-										media = media + ((operacao.face-1)/2);
-									end;
-								elseif operacao.tipo == "imediato" then
-									maximo = maximo + operacao.valor;
-									media = media + operacao.valor;
-								end;
-							end;
-							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-							mesaDoPersonagem.activeChat:enviarMensagem("PV máximo: " .. maximo .. "; PV médio: " .. math.floor(media));
-							sheet.pvTotal = math.floor(media);
-						end);  
-				</event>
-			</button>
-			<edit vertTextAlign="center" left="45" top="70" width="170" height="25" field="dvs"/>
-			<textEditor left="5" top="95" width="210" height="65" field="rd"/>
+			<textEditor left="5" top="70" width="210" height="90" field="rd"/>
 
 			<dataLink fields="{'efetCon','pvExtra','nep'}">
 				<event name="onChange">

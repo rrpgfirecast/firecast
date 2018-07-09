@@ -96,15 +96,15 @@ function newfrmInstalledPlugin()
     obj.image1:setSRC("/AutoUpdater/images/download.png");
     obj.image1:setName("image1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
-    obj.button1:setParent(obj.rectangle1);
-    obj.button1:setAlign("right");
-    obj.button1:setWidth(25);
-    obj.button1:setMargins({top = 12.5, bottom = 12.5, right = 5});
-    obj.button1:setName("button1");
+    obj.removeButton = gui.fromHandle(_obj_newObject("button"));
+    obj.removeButton:setParent(obj.rectangle1);
+    obj.removeButton:setAlign("right");
+    obj.removeButton:setWidth(25);
+    obj.removeButton:setName("removeButton");
+    obj.removeButton:setMargins({top = 12.5, bottom = 12.5, right = 5});
 
     obj.image2 = gui.fromHandle(_obj_newObject("image"));
-    obj.image2:setParent(obj.button1);
+    obj.image2:setParent(obj.removeButton);
     obj.image2:setAlign("client");
     obj.image2:setShowStyle("proportional");
     obj.image2:setSRC("/AutoUpdater/images/delete.png");
@@ -114,6 +114,11 @@ function newfrmInstalledPlugin()
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setFields({'url'});
     obj.dataLink1:setName("dataLink1");
+
+    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2:setParent(obj);
+    obj.dataLink2:setFields({'enabled'});
+    obj.dataLink2:setName("dataLink2");
 
     obj._e_event0 = obj.downloadButton:addEventListener("onClick",
         function (self)
@@ -126,7 +131,7 @@ function newfrmInstalledPlugin()
             				end;
         end, obj);
 
-    obj._e_event1 = obj.button1:addEventListener("onClick",
+    obj._e_event1 = obj.removeButton:addEventListener("onClick",
         function (self)
             Dialogs.confirmOkCancel("Deseja desinstalar esse plugin?",
             			        function (confirmado)
@@ -147,7 +152,19 @@ function newfrmInstalledPlugin()
             			end;
         end, obj);
 
+    obj._e_event3 = obj.dataLink2:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            			if sheet.enabled then
+            				self.removeButton.visible = true;
+            			else
+            				self.removeButton.visible = false;
+            			end;
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
@@ -163,10 +180,11 @@ function newfrmInstalledPlugin()
         end;
 
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
+        if self.removeButton ~= nil then self.removeButton:destroy(); self.removeButton = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;

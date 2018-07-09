@@ -43,7 +43,13 @@ function newfrmAvailable()
 
     obj._e_event0 = obj.downloadedPluginsList:addEventListener("onCompare",
         function (self, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.name, nodeB.name);
+            if nodeA.enabled and nodeB.enabled then 
+            					return utils.compareStringPtBr(nodeA.name, nodeB.name);
+            				elseif nodeA.enabled then
+            					return 1;
+            				elseif nodeB.enabled then
+            					return -1;
+            				end;
         end, obj);
 
     function obj:_releaseEvents()

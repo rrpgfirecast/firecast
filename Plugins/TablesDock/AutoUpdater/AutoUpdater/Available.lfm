@@ -3,7 +3,13 @@
 	<scrollBox align="client">
 		<recordList align="client" field="downloadedPluginsList" name="downloadedPluginsList" templateForm="frmDownloadedPlugin">
 			<event name="onCompare">
-                return utils.compareStringPtBr(nodeA.name, nodeB.name);
+				if nodeA.enabled and nodeB.enabled then 
+					return utils.compareStringPtBr(nodeA.name, nodeB.name);
+				elseif nodeA.enabled then
+					return 1;
+				elseif nodeB.enabled then
+					return -1;
+				end;
         	</event>
 		</recordList>
 	</scrollBox>
