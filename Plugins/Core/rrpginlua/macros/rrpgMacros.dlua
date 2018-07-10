@@ -93,9 +93,7 @@ local function cloneRRPGObject(o)
 				else
 					retValues = table.pack(vF(par1, ...));
 				end;
-				
-				local i;
-				
+								
 				for i = 1, #retValues, 1 do
 					if type(retValues[i]) == "table" then
 						retValues[i] = cloneTable(retValues[i]);
@@ -199,7 +197,7 @@ end;
 function yieldedFunctions.yInvokeMacro(co, chat, macroName, parameter)	
 	local foundMacro = nil;
 	
-	if globalFindMacro ~= nil then -- declareted in rrpgsimplemacros.lua
+	if globalFindMacro ~= nil then -- declarated in rrpgsimplemacros.lua
 		foundMacro = globalFindMacro(macroName, rrpg.getMesaDe(chat));
 	end;
 	

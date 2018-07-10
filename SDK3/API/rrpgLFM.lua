@@ -26,7 +26,6 @@ function lfm_destroyObject(ctrlOrHandle)
 	if obj ~= nil then
 		lfmObjectsStrongRef[obj.handle] = nil;
 		obj:destroy();
-		obj = nil;
 	end
 end
 
@@ -58,7 +57,7 @@ function lfm_enumProps(ctrlOrHandle)
 	return props;
 end;
 
-local function _getStrOfSetTable(value, valuesOfTipo)
+local function _getStrOfSetTable(value)
 	local ret = "";	
 	local qt = 0;
 	

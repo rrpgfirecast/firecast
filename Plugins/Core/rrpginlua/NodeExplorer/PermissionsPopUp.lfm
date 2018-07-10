@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <popupForm name="frmNodePermissions" width="400" height="280" title="Node Explorer" theme="dark" resizable="true">
 	<script><![CDATA[
+		local ndb = require("ndb.lua");	
 		local ndbTemporario = ndb.newMemNodeDatabase();
 	
 		local nodeRaiz; -- Node raiz que o usuario pediu para editar
-		local node; -- Node Atual que o usuario está editando
+		local node = nil; -- Node Atual que o usuario está editando
 		local currentChildNodes = {}; -- Array com os child nodes do node atual
-		local ndb = require("ndb.lua");
-		local depth;	
+
+		local depth = 0;	
 		
 		if sheet~=nil and node==nil then
 			node = sheet;
-		end;
-		
-		if depth==nil then
-			depth = 0;
 		end;
 
 		local trPermissions = nil;

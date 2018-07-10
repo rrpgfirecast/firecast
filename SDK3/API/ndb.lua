@@ -2,6 +2,7 @@ local objs = require("rrpgObjs.lua");
 local vhd = require("vhd");
 require("utils.lua");
 ndb = {}
+NDB = ndb;
 
 local localNDB = {};
 
