@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister3p_svg" width="435" height="25" theme="dark" margins="{top=2, bottom=2, right=10}">
+
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+								 function (confirmado)
+									if confirmado then
+										ndb.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showPericiaPopup()
+			local pop = self:findControlByName("popPericia");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("right", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de pericias para exibir");
+			end;				
+		end;
+
+		local function rollTest()
+			local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+			local node = ndb.getRoot(sheet);
+
+			local mod = math.floor(tonumber(sheet.totalPericia) or 0) + (tonumber(node.buffPericia) or 0);
+			local rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+
+
+			local warn = "";
+			if sheet.exigeTreino and (tonumber(sheet.graduacaoPericia) or 0)==0 then
+				warn = " (não possuo graduações e exige treinamento)."
+			end;
+
+			local tools = "";
+			if node.exigeFerramentas then
+				tools = " (Também exige ferramentas)."
+			end
+							
+			mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de " .. (sheet.nomePericia or "Pericia") .. " de " .. (node.codinome or "Heroi") .. warn .. tools);
+		end;
+
+		]]>	
+	</script>
+
+	<rectangle align="client" color="#264d43" hitTest="false" xradius="10" yradius="10"/>
+	<button left="0" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+	
+	<edit vertTextAlign="center" left="21" top="0" width="138" height="25" field="nomePericia">
+		<event name="onChange">
+			local rcl = self:findControlByName("rclListaDasPericias");
+			if rcl~= nil then
+				rcl:sort();
+			end;
+		</event>
+	</edit>
+	<button left="160" top="1" width="23" height="23" text="i" onClick="showPericiaPopup();"/>
+	<comboBox vertTextAlign="center" horzTextAlign="center" left="185" top="0" width="60" height="25" field="chavePericia" items="{'FOR', 'VIG', 'AGI', 'DES', 'LUT', 'INT', 'PRO', 'PRE', '-'}" values="{'1', '2', '3', '4', '5', '6', '7', '8', '9'}" fontColor="white">
+		<event name="onChange">
+			if sheet ~= nil then
+				if debug then
+					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Atributo Pericia. ");
+					index = index + 1;
+				end;
+				local atributoPericia = 0;
+				local node = ndb.getRoot(sheet);
+
+				if sheet.chavePericia == "1" then
+					atributoPericia = tonumber(node.For) or 0;
+				elseif sheet.chavePericia == "2" then
+					atributoPericia = tonumber(node.VIG or 0);
+				elseif sheet.chavePericia == "3" then
+					atributoPericia = tonumber(node.AGI or 0);
+				elseif sheet.chavePericia == "4" then
+					atributoPericia = tonumber(node.DES or 0);
+				elseif sheet.chavePericia == "5" then
+					atributoPericia = tonumber(node.LUT or 0);
+				elseif sheet.chavePericia == "6" then
+					atributoPericia = tonumber(node.INT or 0);
+				elseif sheet.chavePericia == "7" then
+					atributoPericia = tonumber(node.PRO or 0);
+				elseif sheet.chavePericia == "8" then
+					atributoPericia = tonumber(node.PRE or 0);
+				end;
+				sheet.atributoPericia = atributoPericia;
+			end;
+		</event>
+	</comboBox>
+	<rectangle left="248" top="0" width="33" height="24" color="#202020" strokeColor="black" strokeSize="1">
+		<label field="atributoPericia" text="0" left="0" top="2" width="33" height="20" horzTextAlign="center"/>
+	</rectangle>
+	<label left="283" text="+" top="3" width="8" height="20" horzTextAlign="center"/>
+	<edit vertTextAlign="center" horzTextAlign="center" left="291" top="-1" width="30" height="25" field="graduacaoPericia" type="float"/>
+	<label left="321" text="+" top="3" width="8" height="20" horzTextAlign="center"/>
+	<edit vertTextAlign="center" horzTextAlign="center" left="329" top="-1" width="30" height="25" field="graduacaoVariavel" type="float"/>
+	<label left="359" text="=" top="3" width="8" height="20" horzTextAlign="center"/>
+	<rectangle left="368" top="0" width="35" height="25" color="#3f8270" strokeColor="white" strokeSize="1">
+		<label field="totalPericia" text="0" left="0" top="0" width="35" height="25" fontStyle="bold" horzTextAlign="center"/>
+	</rectangle>
+	
+	<button left="409" top="1" width="23" height="23" text="" onClick="rollTest();"> <image left="1" width="20" height="21" src="images/dice.png"/> </button>	
+
+
+
+	<dataLink fields="{'atributoPericia', 'graduacaoPericia', 'graduacaoVariavel', 'penalidesPericia', 'equipamentosPericia', 'poderPericia','condicionalPericia'}">
+		<event name="onChange">
+			if sheet~= nil then
+				if debug then
+					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando total Pericia. ");
+					index = index + 1;
+				end;
+				local node = ndb.getRoot(sheet);
+				local pen = (tonumber(node.penalidade) or 0)
+
+				local mod = 0;
+				mod = (tonumber(sheet.atributoPericia) or 0) +
+							(tonumber(sheet.graduacaoPericia) or 0) +
+							(tonumber(sheet.graduacaoVariavel) or 0) +
+							(tonumber(sheet.penalidesPericia) or 0) +
+							(tonumber(sheet.equipamentosPericia) or 0) +
+							(tonumber(sheet.condicionalPericia) or 0);
+
+				if sheet.penalidadeArmadura then
+					mod = mod + pen;
+				end;
+				if sheet.penalidadeArmadura2 then
+					mod = mod + pen;
+				end;
+
+				sheet.totalPericia = mod;
+			end;
+		</event>
+	</dataLink>
+	<dataLink fields="{'graduacaoPericia'}">
+		<event name="onChange">
+			if sheet~= nil then
+				if debug then
+					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Pontos de Pericia. ");
+					index = index + 1;
+				end;
+				local node = ndb.getRoot(sheet);
+				local mod = tonumber(node.idiomasGrad) or 0;
+
+				local path = 0;
+				local nodes = ndb.getChildNodes(node.campoDasPericias); 
+				--showMessage(#nodes);
+				for i=1, #nodes, 1 do
+					local mult = 0.5;
+					mod = mod + (tonumber(nodes[i].graduacaoPericia) or 0) * mult;
+					path = path + (tonumber(nodes[i].graduacaoPericia) or 0);
+				end
+
+				node.pontosPericia = mod;
+				node.pontosPericiaPath = path;
+			end;
+		</event>
+	</dataLink>
+</form>

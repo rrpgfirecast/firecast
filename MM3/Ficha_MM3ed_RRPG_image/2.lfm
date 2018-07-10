@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha_MM3ed_RRPG_image2_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmFicha_MM3ed_RRPG_image2_svg path {color: black; strokeColor: black; mode: stretch;} 
+#frmFicha_MM3ed_RRPG_image2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="893" height="1263" color="white">
+            <image left="0" top="0" width="893" height="1263" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>
+            <layout left="43" top="64" width="397" height="590" compilerOrder="1">
+                <textEditor left="0" top="0" width="397" height="590" fontSize="16.5" fontColor="#000000" field="Historia" transparent="true" compilerOrder="2"/>
+            </layout>
+			<rectangle left="450" top="22" width="402" height="214" color="#6cb098" strokeColor="white" strokeSize="1"/>
+			<image left="452" top="23" width="399" height="211" field="sobmanto" editable="true" style="proportional" >
+				<event name="OnStartDrag">
+					drag:addData("imageURL", sheet.sobmanto);
+				</event>
+			</image>
+            <layout left="452" top="287" width="397" height="276" compilerOrder="9">
+                <textEditor left="0" top="0" width="398" height="276" fontSize="16.5" fontColor="#000000" field="Complicacoes" transparent="true" compilerOrder="10"/>
+            </layout>
+            <layout left="452" top="620" width="397" height="256" compilerOrder="7">
+                <textEditor left="0" top="0" width="398" height="256" fontSize="16.5" fontColor="#000000" field="QGeneral" transparent="true" compilerOrder="8"/>
+            </layout>
+            <layout left="452" top="933" width="397" height="305" compilerOrder="3">
+                <textEditor left="0" top="0" width="397" height="305" fontSize="16.5" fontColor="#000000" field="Inimigos" transparent="true" compilerOrder="4"/>
+            </layout>
+            <layout left="43" top="710" width="397" height="528" compilerOrder="5">
+                <textEditor left="0" top="0" width="397" height="528" fontSize="16.5" fontColor="#000000" field="Anotacoes" transparent="true" compilerOrder="6"/>
+            </layout>
+	<label left="600" top="1240" width="33" height="20" text="GILGANTE E JANUS - VERSAO DA FICHA: 2.7" />
+
+        </rectangle>
+    </scrollBox>
+</form>
