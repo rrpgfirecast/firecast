@@ -4,11 +4,28 @@ local globalTable = _G;
 local standardGlobalVariables = {};
 
 
-local deprecatedGlobalVariablesArray = {"vhd", "rrpg", "ndb", "RRPG"};
-local deprecatedGlobalVariablesDict = {};
 
-for i = 1, #deprecatedGlobalVariablesArray, 1 do
-	deprecatedGlobalVariablesDict[deprecatedGlobalVariablesArray[i]] = true;
+local deprecatedGlobalVariablesDict = {["vhd"] = "VHD",
+									   ["rrpg"] = "Firecast",
+									   ["rrpg.plugins"] = "Firecast.Plugins",
+								       ["Firecast.plugins"] = "Firecast.Plugins",
+									   ["rrpg.messaging"] = "Firecast.Messaging",   
+									   ["Firecast.messaging"] = "Firecast.Messaging",  
+									   ["ndb"] = "NDB",
+									   ["RRPG"]	= "Firecast",
+									   ["system"] = "System",
+									   ["utils"] = "Utils",
+									   ["rrpgUtils"] = "Utils",
+									   ["internet"] = "Internet",
+									   ["gui"] = "GUI",
+									   ["fireDrive"] = "FireDrive",
+									   ["dialogs"] = "Dialogs"
+									   };
+									   
+local deprecatedGlobalVariablesArray = {};									   
+
+for k, v in pairs(deprecatedGlobalVariablesDict) do
+	deprecatedGlobalVariablesArray[#deprecatedGlobalVariablesArray + 1] = k;
 end;
 
 if type(globalTable) == "table" then
@@ -65,6 +82,78 @@ VHD.registerAlias(aliases);
 
 local luacheck = require("luacheck");
 
+local _globalLuaCheckStd = {};
+local _globalLuaCheckStdForSDK = {};
+
+--[[ Mount _globalLuaCheckStd]]--
+	local _avoidCyleGeneratingTables = {};
+
+	local function generateGlobalsRecursivelyTableDefinitions(theTable, inheritPathName, readOnlyDefault)
+		if type(theTable) ~= "table" then
+			return nil;
+		end;			
+		
+		if _avoidCyleGeneratingTables[theTable] then
+			return nil;
+		end;
+		
+		_avoidCyleGeneratingTables[theTable] = true;
+		
+		local ret = {};
+		local retCount = 0;
+		
+		for k, v in pairs(theTable) do
+			if type(k) == "string" then
+				local fullPathName;
+			
+				if inheritPathName == nil then
+					fullPathName = k;
+				else
+					fullPathName = inheritPathName .. "." .. k;
+				end;
+				
+				if not deprecatedGlobalVariablesDict[fullPathName] then
+					local fieldRecord = {};
+					fieldRecord.read_only = readOnlyDefault;
+					
+					if not readOnlyDefault then
+						fieldRecord.other_fields = true;
+					end;
+
+					if type(v) == "table" then
+						local tableToLookup = v;
+									
+						while (type(tableToLookup) == "table") and rawget(tableToLookup, "__isDelayedLoad") do
+							tableToLookup = require(rawget(tableToLookup, "__delayedLoadModuleName"));
+						end;
+					
+						local subFieldsRec = generateGlobalsRecursivelyTableDefinitions(tableToLookup, fullPathName, readOnlyDefault);
+						
+						if subFieldsRec ~= nil then
+							fieldRecord.fields = subFieldsRec;
+						end;
+					end;					
+					
+					ret[k] = fieldRecord;
+					retCount = retCount + 1;
+				end;
+			end;
+		end;
+		
+		_avoidCyleGeneratingTables[theTable] = nil;
+		
+		if retCount > 0 then
+			return ret;
+		else
+			return nil;
+		end;
+	end;
+
+_globalLuaCheckStd.globals = generateGlobalsRecursivelyTableDefinitions(globalTable, nil, true);
+_globalLuaCheckStdForSDK.globals = generateGlobalsRecursivelyTableDefinitions(globalTable, nil, false);
+
+--[[ End of Mount _globalLuaCheckStd]]--
+
 local function createLuaCheckOptions(lintOptions)
 	if type(lintOptions) ~= "table" then
 		lintOptions = {};
@@ -73,29 +162,42 @@ local function createLuaCheckOptions(lintOptions)
 	local luaCheckOptions = {};	
 	
 	if lintOptions.isSDK then
-		luaCheckOptions.globals = standardGlobalVariables;
+		luaCheckOptions.globals = {};
+		--luaCheckOptions.globals = standardGlobalVariables;
 		luaCheckOptions.read_globals = {};
 		luaCheckOptions.not_globals = {};
 	else
 		luaCheckOptions.globals = {};
-		luaCheckOptions.read_globals = standardGlobalVariables;
+		--luaCheckOptions.read_globals = standardGlobalVariables;
+		luaCheckOptions.read_globals = {};
 		luaCheckOptions.not_globals = deprecatedGlobalVariablesArray;
 	end;
+	
+	--luaCheckOptions.std = standardGlobalVariables;	
+	
+	local LINE_LENGTH = 250;
 
-	luaCheckOptions.max_line_length = 200;
-	luaCheckOptions.max_code_line_length = 200;
-	luaCheckOptions.max_string_line_length = 200;
-	luaCheckOptions.max_comment_line_length = 200;
+	luaCheckOptions.max_line_length = LINE_LENGTH;
+	luaCheckOptions.max_code_line_length = LINE_LENGTH;
+	luaCheckOptions.max_string_line_length = LINE_LENGTH;
+	luaCheckOptions.max_comment_line_length = LINE_LENGTH;
 	
 	if type(lintOptions.globals) == "table" then
 		for i = 1, #lintOptions.globals, 1 do
-			luaCheckOptions.globals[#luaCheckOptions.globals + 1] = lintOptions.globals[i] ;
+			---luaCheckOptions.globals[#luaCheckOptions.globals + 1] = lintOptions.globals[i] ;
 		end;
 	end;
 	
-
+	if lintOptions.isSDK then
+		luaCheckOptions.std = _globalLuaCheckStdForSDK;
+	else
+		luaCheckOptions.std = _globalLuaCheckStd;
+	end;
+	
+	luaCheckOptions.globals[#luaCheckOptions.globals + 1] = "_ENV";
+	
 	luaCheckOptions.ignore = {"611", "612", "614", "613", "621", 
-							  "212", "213"};
+							  "212", "213", "241"};
 	return luaCheckOptions;
 end;
 
@@ -134,6 +236,25 @@ function LUACHECK_Content(scriptContent, scriptName, lintOptions)
 	return ret;
 end;
 
+local function parseReports(processedReports)
+	local ret = {};
+	ret.definedGlobals = {};
+	
+	for i = 1, #processedReports, 1 do
+		local entries = processedReports[i];
+		
+		for j = 1, #entries, 1 do
+			local entry = entries[j];	
+
+			if (entry.code == "111") and not deprecatedGlobalVariablesDict[entry.name] then
+				ret.definedGlobals[entry.name] = i;
+			end;
+		end;
+	end;
+	
+	return ret;
+end;
+
 function LUACHECK_MultipleFilesContent(sourcesArr, lintOptions)
 	if type(lintOptions) ~= "table" then
 		lintOptions = {};
@@ -152,7 +273,7 @@ function LUACHECK_MultipleFilesContent(sourcesArr, lintOptions)
 	end;
 	
 	local processedReports = luacheck.check_strings(sourcesStringArray, optionsArray);		
-
+	local parsedData = parseReports(processedReports);
 	
 	local ret = {};
 	
@@ -168,8 +289,32 @@ function LUACHECK_MultipleFilesContent(sourcesArr, lintOptions)
 			local filtered = true;	
 			
 			entry.__msg = luacheck.get_message(entry);
-
-			if sourcesArr[i].ignoreSelfShadowing and (entry.code == "431") and (entry.name == "self") then
+			
+			if sourcesArr[i].isLFMLua then
+				if (entry.code == "431") and (entry.name == "self") then
+					filtered = false;
+				elseif ((entry.code == "211") or (entry.code=="231") or (entry.code == "331")) and
+				       ((entry.name == "self") or (entry.name == "sheet")) then
+					 filtered = false;  
+				end;
+			end;
+			
+			if (entry.code == "113") or (entry.code == "112") then -- accessing/mutating undefined variable 			
+				local deprecatedSubstitute = deprecatedGlobalVariablesDict[entry.name];
+			
+			--and not sourcesArr[i].isSDK
+			
+				if deprecatedSubstitute ~= nil  then
+					if sourcesArr[i].isSDK then
+						filtered = false;
+					else
+						entry.__msg = string.format("global \"%s\" is deprecated. Use \"%s\" instead.", entry.name, deprecatedSubstitute) ;
+						filtered = true;
+					end;
+				elseif parsedData.definedGlobals[entry.name] ~= nil then
+					filtered = false;
+				end;			
+			elseif entry.code == "111" then -- definind global value
 				filtered = false;
 			end;
 			

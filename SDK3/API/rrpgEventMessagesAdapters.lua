@@ -158,7 +158,7 @@ local __listChatCommandsAdapter = {
 			
 			if tComando == "string" then
 				str = str .. "comando" .. comandoIdx .. "=" .. _util_encodeStringToHexUTF8(comando) .. "&";
-				comandoIdx = comandoIdx + 1;
+				--comandoIdx = comandoIdx + 1;
 			elseif tComando == "table" then
 				for i = 1, #comando, 1 do
 					str = str .. "comando" .. comandoIdx .. "=" .. _util_encodeStringToHexUTF8(comando[i]) .. "&";

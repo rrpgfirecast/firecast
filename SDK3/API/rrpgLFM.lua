@@ -213,13 +213,13 @@ function lfm_setPropAsString(ctrlOrHandle, propName, vAsStr)
 		local setter = obj[setterName];
 		setter(obj, v);
 	else
-		local propName = prop.writeProp;
+		local writePropName = prop.writeProp;
 		
-		if propName == nil then
+		if writePropName == nil then
 			error(propName .. " is readonly");			
 		end;
 		
-		_obj_setProp(obj.handle, propName, v);
+		_obj_setProp(obj.handle, writePropName, v);
 	end;	
 end;
 

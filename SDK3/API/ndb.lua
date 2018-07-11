@@ -94,9 +94,7 @@ function localNDB.nodeFromHandle(nodeHandle)
 	
 	function ctrl:getAllChilds()
 		local ret = {};
-		local i, count;
-		
-		count = self:getChildCount();
+		local count = self:getChildCount();			
 		
 		for i = 0, count - 1, 1 do
 			ret[i + 1] = self:getChild(i);
@@ -693,7 +691,7 @@ function ndb.newBroadcastListener(nodeObj, messageId, callback)
 			
 			_obj_invoke(obj.handle, "SetupReceiver", node.handle, messageId or "");
 			
-			obj.onReceiveBroadcast = function(sender, messageId, messageText)			
+			obj.onReceiveBroadcast = function(sender, returnedMessageId, messageText)			
 										if callback ~= nil then										
 											if _Serializer == nil then
 												_Serializer = require("utils.serializer.dlua");
@@ -705,7 +703,7 @@ function ndb.newBroadcastListener(nodeObj, messageId, callback)
 												message = messageText;
 											end;
 										
-											callback(sender, messageId, message);
+											callback(sender, returnedMessageId, message);
 										end;
 									end;	
 			return obj;		
@@ -746,7 +744,7 @@ function ndb.onReady(nodeObj, callback, failCallback)
 	
 	local function checkState()
 		if not jaNotificou then
-			local state = ndb.getState(nodeObj);
+			state = ndb.getState(nodeObj);
 		
 			if state == "open" then
 				jaNotificou = true;

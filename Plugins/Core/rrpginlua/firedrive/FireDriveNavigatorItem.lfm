@@ -79,7 +79,7 @@
 		
 		
 		local function criarUploadStatusComp()
-			local ret = gui.newRectangle();
+			local ret = GUI.newRectangle();
 			ret.xradius = 10;
 			ret.yradius = 10;
 			ret.color = "#000000C0";
@@ -88,7 +88,7 @@
 			ret.hitTest = false;
 			ret.canFocus = false;
 			
-			local aniInd = gui.newActivityIndicator();
+			local aniInd = GUI.newActivityIndicator();
 			aniInd.align = "client";
 			aniInd.visible = true;
 			aniInd.enabled = true;
@@ -97,13 +97,13 @@
 			aniInd.canFocus = false;
 			aniInd.margins = {left=10, right=10, bottom=10, top=10};
 			
-			local labPercent = gui.newLabel();
+			local labPercent = GUI.newLabel();
 			labPercent.align = "top";
 			labPercent.horzTextAlign = "center";
 			labPercent.wordWrap = false;
 			labPercent.autoSize = true;	
 			
-			local barra = gui.newProgressBar();
+			local barra = GUI.newProgressBar();
 			barra.visible = true;
 			barra.hitTest = false;
 			barra.height = 20;
@@ -111,8 +111,8 @@
 			
 			local imgState = nil;
 			
-			local function criarImgState();
-				imgState = gui.newImage();
+			local function criarImgState()
+				imgState = GUI.newImage();
 				imgState.margins = {left=10, right=10, bottom=10, top=10};
 				imgState.align = "client";
 				imgState.hitTest = false;

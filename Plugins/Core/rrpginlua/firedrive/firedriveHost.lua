@@ -385,7 +385,7 @@ function host.findBlobs(upload, onSuccess, onFailure)
 		return;
 	end;
 	
-	local req, reqId = upload.newRequest("findBlobs");	
+	local req = upload.newRequest("findBlobs");	
 	req:setRequestHeader('X-RRPG-Blob-Count', tostring(#upload.blobs));
 	
 	for i = 1, #upload.blobs, 1 do
@@ -527,13 +527,12 @@ function host.step2ManageItem(upload, onSuccess, onProgress, onFailure)
 		function()			
 			local xml = getXMLResponse(req);
 			local resp = nil;
-			local addedItem = nil;
 						
 			for i = 1, #xml.el, 1 do
 				local el = xml.el[i];
 				
 				if el.name == "item" then					
-					addedItem = host.addKnownFireDriveItem(el);
+					local addedItem = host.addKnownFireDriveItem(el);
 					resp = addedItem;
 				elseif el.name == "deletedItem" then
 					host.removeKnownFireDriveItem(tonumber(el.attr["id"]));
@@ -826,7 +825,7 @@ plugins.listenPM("fireDrive:manageItem",
 		local msgX = {};
 		msgX.kind = "uploadId";
 		msgX.uploadId = uploadId;
-		plugins.sendPM(message.moduleId, message.pmListener, m);				
+		plugins.sendPM(message.moduleId, message.pmListener, msgX);				
 	end);	
 
 plugins.listenPM("fireDrive:abortOperation",

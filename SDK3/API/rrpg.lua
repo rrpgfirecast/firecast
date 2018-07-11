@@ -60,7 +60,7 @@ local function newRolagemObject()
 			
 		while (not _obj_getProp(self.handle, "IsNavigatorEOF")) do
 			local sOp = {};			
-			sOp.tipo = string.lower(_obj_getProp(self.handle, "NavigatorTipoOperacao", i));
+			sOp.tipo = string.lower(_obj_getProp(self.handle, "NavigatorTipoOperacao"));
 			
 			if sOp.tipo == "dado" then
 				sOp.quantidade = _obj_getProp(self.handle, "NavigatorDadosQuantidade");
@@ -136,7 +136,7 @@ local function newRolagemObject()
 	end;	
 	
 	function rolObj:rolarLocalmente() _obj_invoke(self.handle, "RolarLocalmente"); self:_readOps(); end;
-	function rolObj:loadFromBase64EncodedString(str) _obj_invoke(self.handle, "LoadFromBase64EncodedString", str); self:_readOps(); return ret; end;		
+	function rolObj:loadFromBase64EncodedString(str) _obj_invoke(self.handle, "LoadFromBase64EncodedString", str); self:_readOps(); end;		
 		
 	rolObj.props = propsRolagem;
 	objs.registerHandle(rolObj.handle, rolObj);	
@@ -194,7 +194,7 @@ function rrpg.getMesaDe(object)
 	end;
 		
 	local handle = rawget(object, "handle");
-	local mesaObjectID = nil;
+	local mesaObjectID;
 	
 	if handle == nil then
 		if ndb.isNodeObject(object) then
@@ -225,7 +225,7 @@ function rrpg.getBibliotecaItemDe(object)
 	end;
 		
 	local handle = rawget(object, "handle");
-	local bibObjectID = nil;
+	local bibObjectID;
 	
 	if handle == nil then
 		if ndb.isNodeObject(object) then

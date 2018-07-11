@@ -99,7 +99,7 @@
 			
 			table.sort(currentChildNodes,
 				function(left, right)
-					return utils.compareStringPtBr(ndb.getNodeName(left), ndb.getNodeName(right)) < 0;
+					return Utils.compareStringPtBr(ndb.getNodeName(left), ndb.getNodeName(right)) < 0;
 				end);
 			
 			refreshList();			
@@ -380,7 +380,7 @@
 		<button left="125" top="250" width="80" height="25" text="Desfazer">
 			<event name="onClick">
 				if sheet~= nil then
-					dialogs.confirmOkCancel("Tem certeza que deseja desfazer as alterações?",
+					Dialogs.confirmOkCancel("Tem certeza que deseja desfazer as alterações?",
 						function (confirmado)
 							if confirmado then
 								trPermissions:rollback();
@@ -394,7 +394,7 @@
 		<button left="215" top="250" width="80" height="25" text="Salvar">
 			<event name="onClick">
 				if sheet~= nil then
-					dialogs.confirmOkCancel("Tem certeza que deseja salvar as alterações?",
+					Dialogs.confirmOkCancel("Tem certeza que deseja salvar as alterações?",
 						function (confirmado)
 							if confirmado then
 								trPermissions:commit();
@@ -407,7 +407,7 @@
 		<button left="305" top="250" width="80" height="25" text="Ajuda">
 			<event name="onClick">
 				if sheet~= nil then
-					gui.openInBrowser('http://wiki.rrpg.com.br/index.php?title=Editor_de_Permiss%C3%B5es_de_Node');
+					GUI.openInBrowser('http://wiki.rrpg.com.br/index.php?title=Editor_de_Permiss%C3%B5es_de_Node');
 				end;
 			</event>
 		</button>

@@ -17,10 +17,10 @@
 			
 			local moduleId = sheet.moduleId;
 			
-			dialogs.confirmYesNo(lang("plugins.mgr.uninstallConfirmation"),
+			Dialogs.confirmYesNo(lang("plugins.mgr.uninstallConfirmation"),
 				function (confirmado)
 					if confirmado then
-						local r, msg = rrpg.plugins.uninstallPlugin(moduleId);
+						local r, msg = Firecast.Plugins.uninstallPlugin(moduleId);
 						
 						if not r then
 							showMessage(lang("plugins.mgr.uninstallFailure") .. ": " .. msg);

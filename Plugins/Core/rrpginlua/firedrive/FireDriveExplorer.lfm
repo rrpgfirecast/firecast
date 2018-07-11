@@ -2,7 +2,7 @@
 <popupForm name="frmFireDriveExplorer" title="FireDrive" height="300" width="300" resizable="true">
 	<script>
 		function self:adaptarTamanhoDaTela()
-			local sw, sh = system.getScreenSize();
+			local sw, sh = System.getScreenSize();
 			local dw = 650;
 			local dh = 600;
 		
@@ -20,7 +20,7 @@
 	
 		self:adaptarTamanhoDaTela();	
 	
-		local cUser = rrpg.getCurrentUser();
+		local cUser = Firecast.getCurrentUser();
 		local canUseFireDrive = cUser.isGold or cUser.isGoldPlus or cUser.isRuby;		
 
 		if canUseFireDrive then							

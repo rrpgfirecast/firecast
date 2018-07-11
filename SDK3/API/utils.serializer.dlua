@@ -89,8 +89,8 @@ function serializer.outputValue(value, scope)
 		end;
 	elseif idType == TYPE_TABLE then
 		serializer.outputTable(value, scope);
-	elseif idType == TYPE_NIL then
-		-- não grava nada;
+	--elseif idType == TYPE_NIL then
+	-- não grava nada;
 	else	
 		error("Tipo desconhecido");
 	end;
