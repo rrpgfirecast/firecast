@@ -12,7 +12,7 @@ local function getFrmFowShapeDetailsForScene(scene, createIfDontExists)
 	local frm = scene.__frmFoWShapeDetails;
 	
 	if frm == nil and createIfDontExists == nil then
-		frm = gui.newForm("frmFoWShapeDetails");
+		frm = GUI.newForm("frmFoWShapeDetails");
 		scene.__frmFoWShapeDetails = frm;
 	end;
 

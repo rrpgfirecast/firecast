@@ -147,7 +147,7 @@ end;
 local function adicionarUmTokenDeUmJogador(scene, jogador, x, y, autoPlace)
 	local avatarUsar = jogador.avatar;
 	local personagem = nil;
-	local mesa = rrpg.getMesaDe(jogador);
+	local mesa = Firecast.getMesaDe(jogador);
 	
 	if mesa ~= nil then
 		personagem = mesa:findBibliotecaItem(jogador.personagemPrincipal);
@@ -198,45 +198,40 @@ end;
 ---------- Ferramentas de Drag n Drop	
 	
 SceneLib.registerPlugin(
-	function (scene, attachment)			
-		local btn_tokensLayer;	
-		local btn_objectsLayer;	
-		local btn_bkgLayer;	
-			
-				
+	function (scene, attachment)							
 		local function doStartDrop(drop, x, y, drag)			
 			drop:addAction("characters",
-				function (value, x, y, drag)
+				function (value, rx, ry, rdrag)
 					for i = 1, #value, 1 do
-						adicionarUmTokenDeUmPersonagem(scene, value[i], x, y, #value > 1);
+						adicionarUmTokenDeUmPersonagem(scene, value[i], rx, ry, #value > 1);
 					end;
 				end);					
 			
 			drop:addAction("character",
-				function (value, x, y, drag)
-					adicionarUmTokenDeUmPersonagem(scene, value, x, y);
+				function (value, rx, ry, rdrag)
+					adicionarUmTokenDeUmPersonagem(scene, value, rx, ry);
 				end);			
 			
 			drop:addAction("sceneUnitClass", 
-							function(value, x, y, drag)								
-								adicionarUmTokenDeUmSceneUnitClass(scene, value, x, y);
+							function(value, rx, ry, rdrag)								
+								adicionarUmTokenDeUmSceneUnitClass(scene, value, rx, ry);
 							end);
 									
 			drop:addAction("players",
-				function (value, x, y, drag)
+				function (value, rx, ry, rdrag)
 					for i = 1, #value, 1 do
-						adicionarUmTokenDeUmJogador(scene, value[i], x, y, #value > 1);
+						adicionarUmTokenDeUmJogador(scene, value[i], rx, ry, #value > 1);
 					end;
 				end);																	
 									
 			drop:addAction("player",
-				function (value, x, y, drag)
-					adicionarUmTokenDeUmJogador(scene, value, x, y);
+				function (value, rx, ry, rdrag)
+					adicionarUmTokenDeUmJogador(scene, value, rx, ry);
 				end);		
 									
 			drop:addAction("imageURL", 
-							function(value, x, y, drag)								
-								verificarLinkEAdicionarToken(scene, value, x, y, drag);
+							function(value, rx, ry, rdrag)								
+								verificarLinkEAdicionarToken(scene, value, rx, ry, rdrag);
 							end);
 			
 			
@@ -244,9 +239,9 @@ SceneLib.registerPlugin(
 			
 			if pLink ~= nil then			
 				drop:addAction("text",
-					function(value, x, y, drag)
-						local pLink = strToProbableLink(value);
-						verificarLinkEAdicionarToken(scene, pLink, x, y, drag);						
+					function(value, rx, ry, rdrag)
+						local rpLink = strToProbableLink(value);
+						verificarLinkEAdicionarToken(scene, rpLink, rx, ry, rdrag);						
 					end);
 			end;		
 		end;

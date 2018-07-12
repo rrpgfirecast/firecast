@@ -99,14 +99,13 @@ local function copyTablePersistedToWrappedObject(persisted, item, recursivo)
 					elseif v.tipo == "table" and (v.getter or v.readProp) ~= nil and recursivo then
 						local valorNoItem = item[k];
 						
-						if type(valorNoItem) == "table" and type(vPersisitdo) == "table" then
+						if type(valorNoItem) == "table" and type(vPersistido) == "table" then
 							copyTablePersistedToWrappedObject(vPersistido, valorNoItem, recursivo);
 						end;
 					end;
 				end;
 			end;
 		end;
-	else
 	end;
 end;
 
@@ -163,9 +162,9 @@ end;
 
 local function genTableClipboardForNode(node)
 	local p = {};
-	p.name = ndb.getNodeName(node);
+	p.name = NDB.getNodeName(node);
 	local pChildNodes = nil;
-	local childNodes = ndb.getChildNodes(node);	
+	local childNodes = NDB.getChildNodes(node);	
 			
 	for i = 1, #childNodes, 1 do
 		local cNode = childNodes[i];
@@ -179,7 +178,7 @@ local function genTableClipboardForNode(node)
 	end;
 			
 	local pAtributos = nil;
-	local atributos = ndb.getAttributes(node);
+	local atributos = NDB.getAttributes(node);
 	
 	for k, v in pairs(atributos) do
 		if pAtributos == nil then

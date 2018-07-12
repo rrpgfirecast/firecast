@@ -17,17 +17,7 @@ local function getInertialMove(viewport)
 		
 		local oldMinX, oldMinY, oldMaxX, oldMaxY;
 		local oldX, oldY;
-		
-		local function setPos(x, y)
-			oldX = x;
-			oldY = y;
-			
-			viewport:beginUpdate();
-			viewport.worldX = x;
-			viewport.worldY = y;
-			viewport:endUpdate();
-		end;
-		
+				
 		mov.onChange = function()
 			local x, y = mov:getPos();		
 			local scale = viewport.scale;
@@ -70,7 +60,7 @@ local function getInertialMove(viewport)
 			end;
 		end;
 		
-		local listenerVPChange = viewport:listen("onChange", updateForViewportChange);						
+		viewport:listen("onChange", updateForViewportChange);						
 		updateForViewportChange();
 	end;
 	

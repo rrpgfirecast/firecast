@@ -3,12 +3,11 @@ require("utils.lua");
 
 SceneLib.registerPlugin(
 	function (scene, attachment)
-		local btn_sceneGenerator;
 		local frmGeneratorOptions = nil;
 		local timeoutClearFrmGenerator = nil;
 
 		scene.viewport:setupToolCategory("Gerador", lang("scene.generator.tabName"), 49);
-		btn_sceneGenerator = scene.viewport:addToolButton("Gerador", 
+		scene.viewport:addToolButton("Gerador", 
 		                             lang("scene.generator.tabName"), 
 									 "/icos/dice.png",
 									 -5,
@@ -22,7 +21,7 @@ SceneLib.registerPlugin(
 						end;								
 
 						if frmGeneratorOptions == nil then				
-							frm = gui.newForm("frmGeneratorOptions");
+							frm = GUI.newForm("frmGeneratorOptions");
 						else
 							frm = frmGeneratorOptions;
 						end

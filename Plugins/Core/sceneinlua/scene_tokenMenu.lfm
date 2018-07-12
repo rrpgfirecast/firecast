@@ -175,7 +175,7 @@
 													local movHist = uData.movHist;
 													
 													if type(movHist) == "table" then
-														ndb.clearNode(movHist);
+														NDB.clearNode(movHist);
 													end;
 												end;
 											end;
@@ -202,7 +202,6 @@
 				local xScene = theScene;
 				
 				return function()
-						local frmSelCor = gui.newForm("frmSelColor");
 						local selecionados = theSelection;
 						
 						SC3UNDO_Capture(xScene, 
@@ -221,7 +220,6 @@
 			end;
 		
 		actFiltroNone.onClick = function()
-									local frmSelCor = gui.newForm("frmSelColor");
 									local selecionados = theSelection;
 									
 									SC3UNDO_Capture(theScene,
@@ -239,7 +237,6 @@
 								end;	
 
 		actFiltroBlur.onClick = function()
-									local frmSelCor = gui.newForm("frmSelColor");
 									local selecionados = theSelection;
 									
 									SC3UNDO_Capture(theScene, 
@@ -260,7 +257,7 @@
 					local xScene = theScene;
 				
 					return function()
-								local frmSelCor = gui.newForm("frmSelColor");
+								local frmSelCor = GUI.newForm("frmSelColor");
 								local selecionados = self.theSelection;
 								
 								if selecionados == nil or #selecionados < 1 or selecionados[1].image == nil then
@@ -309,7 +306,7 @@
 								
 								self:close();
 								
-								dialogs.confirmYesNo(msg, 
+								Dialogs.confirmYesNo(msg, 
 									function(confirmado)
 										if confirmado then
 											SC3UNDO_Capture(theScene, 
@@ -324,7 +321,7 @@
 							
 		btnProps.onClick = function ()
 							-- Chamar outro popup aqui
-							 local frm = gui.newForm("frmTokenProps");
+							 local frm = GUI.newForm("frmTokenProps");
 							 frm:prepareForShow(self.theSelection, theScene);									  
 							 self:close();
 							 frm:show();
@@ -352,7 +349,10 @@
 			
 			for k, v in pairs(selection) do
 				firstItem = v;
-				break;
+				
+				if firstItem ~= nil then
+					break;
+				end;
 			end;
 			
 			if firstItem ~= nil then
@@ -375,7 +375,7 @@
 			theSelection = selection;
 			self.theSelection = theSelection;
 			
-			local estaVisible = true;
+			local estaVisible;
 			
 			if #theSelection > 0 then
 				local umToken = theSelection[1];
@@ -413,7 +413,7 @@
 				end;	
 				
 				actColorBlend.onClick = function()
-									local frmSelCor = gui.newForm("frmSelColor");
+									local frmSelCor = GUI.newForm("frmSelColor");
 									local selecionados = theSelection;
 									local xScene = scene;
 									
@@ -485,17 +485,17 @@
 
 				for i=1, numConditions, 1 do
 					local mark = "condt" .. i;
-					local opGrafica = umToken.canvas:findByName(mark);
+					local opGrafica1 = umToken.canvas:findByName(mark);
 					
-					if opGrafica~=nil then
+					if opGrafica1~=nil then
 						actConditions[i]:setChecked(true);
-						if opGrafica.x == 0 and opGrafica.y == 0 then
+						if opGrafica1.x == 0 and opGrafica1.y == 0 then
 							conditionsSlots[1] = i;
-						elseif opGrafica.x ~= 0 and opGrafica.y == 0 then
+						elseif opGrafica1.x ~= 0 and opGrafica1.y == 0 then
 							conditionsSlots[2] = i;
-						elseif opGrafica.x == 0 and opGrafica.y ~= 0 then
+						elseif opGrafica1.x == 0 and opGrafica1.y ~= 0 then
 							conditionsSlots[3] = i;
-						elseif opGrafica.x ~= 0 and opGrafica.y ~= 0 then
+						elseif opGrafica1.x ~= 0 and opGrafica1.y ~= 0 then
 							conditionsSlots[4] = i;
 						end;						
 					else
@@ -522,13 +522,13 @@
 														conditionsSlots[slot] = i;
 
 														for k=1, #self.theSelection, 1 do
-															local umToken = theSelection[k];
-															local opGrafica = umToken.canvas:findByName(mark);
+															local iterationUmToken = theSelection[k];
+															local iterationOpGrafica = iterationUmToken.canvas:findByName(mark);
 
 															-- Clean old
-															local limit = umToken.canvas.opCount-1;
+															local limit = iterationUmToken.canvas.opCount-1;
 															for l=0, limit, 1 do
-																local aux = umToken.canvas:getOp(l);
+																local aux = iterationUmToken.canvas:getOp(l);
 
 																if aux~= nil and aux.objectType == "opBitmap" and aux.name ~= "condt31" and string.find(aux.name, 'condt')~=nil then
 																	local pos = 0;
@@ -550,34 +550,34 @@
 																end;
 															end;
 
-															opGrafica = umToken.canvas:addBitmap();
-	                    									opGrafica.name = mark;
+															iterationOpGrafica = iterationUmToken.canvas:addBitmap();
+	                    									iterationOpGrafica.name = mark;
 
 	                    									-- Getting URL
 	                    									if i>= 61 and i <= 64 then
-	                    										dialogs.inputQuery("URL", lang("scene.inseridor.url"), "", 
+	                    										Dialogs.inputQuery("URL", lang("scene.inseridor.url"), "", 
 																				function(url)
-																					opGrafica.url = url;
+																					iterationOpGrafica.url = url;
 																				end);
 	                    									else
-	                    										opGrafica.url = lang("scene.menu.conditions.link" .. i);
+	                    										iterationOpGrafica.url = lang("scene.menu.conditions.link" .. i);
 	                    									end;
 	                    								
-	                    									opGrafica.rotMode = "ignoreCanvasRot";
-	                    									opGrafica.outOfOrderMode = "afterOwnerLayer";
+	                    									iterationOpGrafica.rotMode = "ignoreCanvasRot";
+	                    									iterationOpGrafica.outOfOrderMode = "afterOwnerLayer";
 
 											            	if i == 31 then
-											            		opGrafica.x = 0;
-											            		opGrafica.y = 0;
-											            		opGrafica.width = 1;
-											            		opGrafica.height = 1;
+											            		iterationOpGrafica.x = 0;
+											            		iterationOpGrafica.y = 0;
+											            		iterationOpGrafica.width = 1;
+											            		iterationOpGrafica.height = 1;
 											            	else
-											            		opGrafica.x = slotX[slot];
-											            		opGrafica.y = slotY[slot];
-											            		opGrafica.width = 0.4;
-											            		opGrafica.height = 0.4;
+											            		iterationOpGrafica.x = slotX[slot];
+											            		iterationOpGrafica.y = slotY[slot];
+											            		iterationOpGrafica.width = 0.4;
+											            		iterationOpGrafica.height = 0.4;
 											            	end;
-											            	opGrafica.z = 10;
+											            	iterationOpGrafica.z = 10;
 											            end;
 
 											            
@@ -597,8 +597,8 @@
 															local toMove = "condt" .. conditionsSlots[j];
 
 															for k=1, #self.theSelection, 1 do
-																local umToken = theSelection[k];
-																local moving = umToken.canvas:findByName(toMove);
+																local umToken4 = theSelection[k];
+																local moving = umToken4.canvas:findByName(toMove);
 																if moving~=nil and conditionsSlots[j]~= 31 then
 																	moving.x = slotX[j];
 																	moving.y = slotY[j];
@@ -607,10 +607,10 @@
 														end;
 
 														for k=1, #self.theSelection, 1 do
-															local umToken = theSelection[k];
-															local opGrafica = umToken.canvas:findByName(mark);
-															if opGrafica~= nil then
-																opGrafica:delete();
+															local umToken5 = theSelection[k];
+															local opGrafica3 = umToken5.canvas:findByName(mark);
+															if opGrafica3~= nil then
+																opGrafica3:delete();
 															end;
 														end;
 

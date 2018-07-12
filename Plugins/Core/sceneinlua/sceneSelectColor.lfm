@@ -53,8 +53,7 @@
 			
 	<script>
 		require("system.lua");
-		
-		local options = nil;		
+	
 		self.onRetorno = nil; -- preencher este callback para processar		
 	</script>	
 	
@@ -85,7 +84,6 @@
 
 		function self:prepareForShow(corInicial, theOptions)
 			theOptions = theOptions or {};			
-			options = theOptions;
 	
 			self:beginUpdate();
 			

@@ -1,7 +1,7 @@
 ﻿require("scene.lua");
 require("utils.lua");
 require("gui.lua");
-require("rrpg.lua");
+require("firecast.lua");
 
 local WINDOW_CATEGORY = 'windowTool';
 	
@@ -11,15 +11,14 @@ SceneLib.registerPlugin(
 	function (scene, attachment)	
 		scene.viewport:setupToolCategory(WINDOW_CATEGORY, lang("scene.windowTool.categoryTitle"), 15);	
 	
-		local installedGMButtons = false;
-		local btn_cloneAsPopup;		
+		local installedGMButtons = false;		
 		local btn_alternAsTab;	
 		local btn_sceneObrigatorio;
 		
 		local listenerSC3ObrigatorioChanged;
 		
 		if scene:processCommand("queryCanCloneAsPopupWindow") == "true" then		
-			btn_cloneAsPopup = scene.viewport:addToolButton(WINDOW_CATEGORY, 
+			scene.viewport:addToolButton(WINDOW_CATEGORY, 
 										lang("scene.windowTool.openPopupClone"), 
 										"/icos/cloneWindow.png",
 										0,
@@ -86,7 +85,7 @@ SceneLib.registerPlugin(
 
 				atualizarStateSceneObrigatorio();
 				
-				listenerSC3ObrigatorioChanged = rrpg.listen("SC3ObrigatorioChanged", 
+				listenerSC3ObrigatorioChanged = Firecast.listen("SC3ObrigatorioChanged", 
 													function(msg)
 														atualizarStateSceneObrigatorio();
 													end);
@@ -100,7 +99,7 @@ SceneLib.registerPlugin(
 				scene.viewport:removeToolButton(btn_sceneObrigatorio);
 				btn_sceneObrigatorio = nil;
 				
-				rrpg.unlisten(listenerSC3ObrigatorioChanged);
+				Firecast.unlisten(listenerSC3ObrigatorioChanged);
 				listenerSC3ObrigatorioChanged = nil;
 			end;
 		end;
