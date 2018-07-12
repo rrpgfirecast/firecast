@@ -1,5 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister7_svg" align="client" theme="dark" margins="{top=1}">
+		<script>
+			local function getNumber(text)
+				local mod = "0";
+				if text~= nil then
+					mod = string.gsub(text, "%.", "");
+					mod = string.gsub(mod, "k", "000");
+					mod = string.gsub(mod, "K", "");
+					mod = string.gsub(mod, "g", "");
+					mod = string.gsub(mod, "P", "");
+					mod = string.gsub(mod, "p", "");
+					mod = string.gsub(mod, "O", "");
+					mod = string.gsub(mod, "o", "");
+					mod = string.gsub(mod, "X", "");
+					mod = string.gsub(mod, "x", "");
+					mod = string.gsub(mod, " ", "");
+					mod = string.gsub(mod, ",", ".");
+				end
+				return tonumber(mod);
+			end;
+
+			function EnviarMudanca(valor, valormax)
+				if sheet ~= nil then
+					local nome = sheet.AtributoBarrinha or "Equipamento";
+					local personagem = sheet.nome or "nome";
+					local text = "[§K2]" .. nome .. "[§K3] de [§K2]" .. personagem.. "[§K3]: ";
+					
+					if tonumber(valor) >= 0 then
+						valor = "+" .. tostring(valor);
+					end;
+					if tonumber(valormax) >= 0 then
+						valormax = "+" .. tostring(valormax);
+					end;
+					
+					if tonumber(valormax) == 0 then
+						text = text .. valor;
+					else
+						text = text .. valor .. "/" .. valormax;
+					end;
+					
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					if mesaDoPersonagem ~= nil then
+						   mesaDoPersonagem.activeChat:enviarMensagem(text);
+					end;
+				end;
+			end;
+			
+			function RequestReload(mode)
+				if sheet ~= nil then
+					if mode == "begin" then
+						self.rclListaDeNPC:beginUpdate();
+						self.rclListaDeNPC.visible = false;
+					elseif mode == "end" then
+						self.rclListaDeNPC.visible = true;
+						self.rclListaDeNPC:endUpdate();
+					end;
+				end;
+			end;
+
+			local function resetImgSlot()
+				if sheet==nil then return end;
+				sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/slots.png";
+			end;
+		</script>
 	<scrollBox align="client">
 
 		<layout left="0" top="0" width="475" height="330">
