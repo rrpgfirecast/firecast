@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTema" height="25" width="325" margins="{top=2}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
+								 function (confirmado)
+									if confirmado then
+										ndb.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showHabilidadePopup()
+			local pop = self:findControlByName("popDescricao");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("right", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup para exibir");
+			end;				
+		end;
+	]]>
+	</script>
+
+	<rectangle align="client" color="#202020" hitTest="false"/>
+
+	<edit vertTextAlign="center" left="0" top="0" width="50" height="23" field="nivel" horzTextAlign="center"/>
+	<edit vertTextAlign="center" left="50" top="0" width="200" height="23" field="nome"/>
+	<button left="250" top="1" width="23" height="23" text="i" onClick="showHabilidadePopup();"/>
+	<button left="275" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+
+	<dataLink field="pt">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local node = ndb.getRoot(sheet);
+			
+			local pt = 0;
+			local objetos = ndb.getChildNodes(node.campoDasDobras);
+			for i=1, #objetos, 1 do 
+				pt = pt + (tonumber(objetos[i].pt) or 0);
+			end;
+			node.pt_dobra = pt;
+		</event>
+	</dataLink>
+</form>
