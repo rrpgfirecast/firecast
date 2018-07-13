@@ -12,7 +12,7 @@ local function getFrmDetailsForScene(scene, createIfDontExists)
 	local frm = scene.__frmUserDrawingDetails;
 	
 	if frm == nil and createIfDontExists == nil then
-		frm = gui.newForm("frmUserDrawingDetails");
+		frm = GUI.newForm("frmUserDrawingDetails");
 		scene.__frmUserDrawingDetails = frm;
 	end;
 

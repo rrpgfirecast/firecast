@@ -96,9 +96,9 @@ function internet.newHTTPRequest(method, url)
 	function r:getStatus() return _obj_getProp(self.handle, "Status"); end;
 	function r:getStatusText() return _obj_getProp(self.handle, "StatusText"); end;
 	
-	function r:open(method, url)
-		self.method = method;
-		self.url = url;
+	function r:open(openMethod, openURL)
+		self.method = openMethod;
+		self.url = openURL;
 	end;
 	
 	function r:send(body) 

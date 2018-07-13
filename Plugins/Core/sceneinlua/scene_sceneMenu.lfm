@@ -4,7 +4,6 @@
 
 	<script>
 		local currentMenuLayout = nil;
-		local theSelection = nil;
 		local theScene = nil;		
 		
 		local function resizeForLayoutSize(aLayout)
@@ -54,7 +53,7 @@
 		
 		btnProperties.onClick = function()
 							  -- Chamar outro popup aqui
-							  local frm = gui.newForm("frmBoardProps");
+							  local frm = GUI.newForm("frmBoardProps");
 							  frm:prepareForShow(theScene);									  
 							  self:close();
 							  frm:show();
@@ -76,7 +75,6 @@
 		
 		function self:prepareForShow(selection, scene)		
 			self:setActiveMenu(self.flaLayout);		
-			theSelection = selection;
 			theScene = scene;
 		end;	
 	</script>	
@@ -94,7 +92,6 @@
 	</event>
 	
 	<event name="onHide">
-		theSelection = nil;
 		theScene = nil;
 	</event>
 	

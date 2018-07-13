@@ -11,7 +11,7 @@
 			self.cbxAtivar.checked = sheet.ativo;
 			ignorarMudancaCount = ignorarMudancaCount - 1;
 		end;
-		
+				
 		local function inverterEstadoPorClick()
 			if ignorarMudancaCount <= 0 then			
 				ignorarMudancaCount = ignorarMudancaCount + 1;
@@ -31,7 +31,7 @@
 					end;
 				else
 					if self.frmKG == nil then
-						self.frmKG = gui.newForm("frmKnowGold");
+						self.frmKG = GUI.newForm("frmKnowGold");
 						self.frmKG.width = 300;
 						self.frmKG.height = 300;
 						self.frmKG:setInfo("Janelas Acopláveis é um recurso exclusivo para usuários assinantes do RRPG Gold.\nVocê também poderá utilizar as janelas acopláveis se o dono da mesa for Gold Plus =)");
@@ -55,15 +55,14 @@
 		
 		local function doLimparDados()
 			local m = self.mesa;
-			local dt = sheet.dataType;
 		
-			dialogs.confirmYesNo("Deseja realmente limpar os dados desta janela acoplável?",
+			Dialogs.confirmYesNo("Deseja realmente limpar os dados desta janela acoplável?",
 				function(confirmado)
 					if confirmado then
 							m:abrirNDBDeMesa(sheet.dataType, 
 								function(root)																	
 									if root ~= nil then
-										ndb.clearNode(root);
+										NDB.clearNode(root);
 									end;	
 								end);
 					end;
@@ -81,7 +80,7 @@
 			m:abrirNDBDeMesa(sheet.dataType, 
 				function(root)																	
 					if root ~= nil then
-						ndb.editPermissions(root);
+						NDB.editPermissions(root);
 					end;	
 				end);
 		end;		

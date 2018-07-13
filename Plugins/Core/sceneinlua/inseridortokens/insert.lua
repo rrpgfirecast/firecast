@@ -3,7 +3,6 @@ require("utils.lua");
 
 SceneLib.registerPlugin(
 	function (scene, attachment)
-		local btn_sceneGenerator;
 		local frmInserior = nil;
 		local timeoutClearFrmGenerator = nil;
 		local lastFrm;
@@ -23,8 +22,8 @@ SceneLib.registerPlugin(
 
 			if frmInserior == nil or lastFrm ~= form then	
 				lastFrm = form;			
-				frm = gui.newForm(form);
-				local node = ndb.load("inseridor.xml");
+				frm = GUI.newForm(form);
+				local node = NDB.load("inseridor.xml");
 				frm:setNodeObject(node);
 			else
 				frm = frmInserior;
@@ -69,12 +68,12 @@ SceneLib.registerPlugin(
 				 -5,
 				 {},
 				 function()
-					dialogs.openFile(lang("scene.inseridor.instruction"), "image/*", false,
+					Dialogs.openFile(lang("scene.inseridor.instruction"), "image/*", false,
 				        function(arquivos)
 				                local arq = arquivos[1];
 
-				                fireDrive.createDirectory("/uploads");
-				                fireDrive.upload("/uploads/" .. arq.name, arq.stream,
+				                FireDrive.createDirectory("/uploads");
+				                FireDrive.upload("/uploads/" .. arq.name, arq.stream,
 				                	function(fditem)
 				                		local token = scene.items:addToken("tokens");
 
@@ -126,7 +125,7 @@ SceneLib.registerPlugin(
 				 -5,
 				 {},
 				 function()
-					local mesa = rrpg.getMesaDe(scene);
+					local mesa = Firecast.getMesaDe(scene);
 					local usuarios = mesa.jogadores;
 					local ctrl = 0;
 					for i=1, #usuarios, 1 do
@@ -148,7 +147,7 @@ SceneLib.registerPlugin(
 							end;
 
 							token.image.url = jogador.avatar;
-							token.name = utils.removerFmtChat(jogador.nick, true);
+							token.name = Utils.removerFmtChat(jogador.nick, true);
 							token.ownerCharacter = per;
 							token.ownerUserID = jogador.login;
 

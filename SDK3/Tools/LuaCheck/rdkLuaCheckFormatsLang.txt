@@ -1,0 +1,182 @@
+﻿[pt]
+luacheck.translated.statement.index=índice
+luacheck.translated.statement.field=campo
+luacheck.translated.statement.main_chunk=bloco principal
+luacheck.translated.statement.function=função
+
+luacheck.translated.direct={msg}
+
+luacheck.translated.022=diretiva push não pareada
+luacheck.translated.023=diretiva pop não pareada
+
+luacheck.translated.111_module=definindo variável global não-módulo {name!}
+luacheck.translated.111_non_module=definindo variável global não padrão {name!}
+luacheck.translated.112=alterando a variável global não padrão {name!}
+luacheck.translated.113=acessando variável desconhecida {name!}
+
+luacheck.translated.121=alterando a variável global somente leitura {name!}
+luacheck.translated.122=alteando o campo somente leitura {field!} da variável global {name!}
+luacheck.translated.122.indirectly=alterando indiretamente o campo somente leitura {field!} da variável global {name!}
+
+luacheck.translated.131=a variável global {name!} não é utilizada 
+
+luacheck.translated.142=alterando o campo indefinido {field!} da variável global {name!}
+luacheck.translated.142.indirectly=alterando indiretamente o campo indefinido {field!} da variável global {name!}
+luacheck.translated.143=acessando o campo indefinido {field!} da variável global {name!}
+luacheck.translated.143.indirectly=acessando indiretamente o campo indefinido {field!} da variável global {name!}
+
+luacheck.translated.211.func.recursive=a função recursiva {name!} não é utilizada
+luacheck.translated.211.func.mutually_recursive=a função mutuamente recursiva {name!} não é utilizada
+luacheck.translated.211.func.std=a função {name!} não é utilizada 
+luacheck.translated.211.variable=a variável {name!} não é utilizada
+
+luacheck.translated.212.variable=o argumento de comprimento variável "..." não é utilizado
+luacheck.translated.212=o argumento {name!} não é utilizado
+
+luacheck.translated.213=a variável de loop {name!} não é utilizada
+luacheck.translated.221=a variável {name!} nunca é alterada/recebe valor
+luacheck.translated.231=o valor da variável {name!} nunca é acessado
+luacheck.translated.232=o valor do argumento {name!} nunca é acessado
+luacheck.translated.233=o valor da variável de loop {name!} nunca é acessado
+luacheck.translated.241=o valor da variável {name!} é alterado, mas nunca acessado.
+
+luacheck.translated.311.unused=o valor atribuído à variável {name!} não é usado
+luacheck.translated.311.overwritten=o valor atribuído à variável {name!} é sobrescrito na linha {overwritten_line} antes de ser usado.
+
+luacheck.translated.312.unused=o valor do argumento {name!} não é usado
+luacheck.translated.312.overwritten=o valor do argumento {name!} é sobrescrito na linha {overwritten_line} antes de ser usado.
+
+luacheck.translated.313.unused=o valor da variável de loop {name!} não é usado
+luacheck.translated.313.overwritten=o valor da variável de loop {name!} é sobrescrito na linha {overwritten_line} antes de ser usado
+
+luacheck.translated.314=o valor atribuído ao {rdk_target_str} {field!} é sobrescrito na linha {overwritten_line} antes de ser usado
+luacheck.translated.321=acessando valor não inicializado da variável {name!}
+luacheck.translated.331=valor atribuído à variavel {name!} é alterado, mas nunca acessado
+luacheck.translated.341=alterando valor não inicializado da variável {name!}
+
+luacheck.translated.411=a variável {name!} foi previamente definida na linha {prev_line}
+luacheck.translated.412=a variável {name!} foi previamente definida como um argumento na linha {prev_line}
+luacheck.translated.413=a variável {name!} foi previamente definida como uma variável de loop na linha {prev_line}
+luacheck.translated.421=ocultando a definição da variável {name!} na linha {prev_line}
+luacheck.translated.422=ocultando a definição do argumento {name!} na linha {prev_line}
+luacheck.translated.423=ocultando a definição da variável de loop {name!} na linha {prev_line}
+luacheck.translated.431=ocultando a definição da variável capturada/upvalue {name!} na linha {prev_line}
+luacheck.translated.432=ocultando a definição do argumento capturado/upvalue {name!} na linha {prev_line}
+luacheck.translated.433=ocultando a definição da variável de loop capturada/upvalue {name!} na linha {prev_line}
+
+luacheck.translated.511=código inacessível nunca será executado
+luacheck.translated.512=loop é executado no máximo uma vez. Você precisa realmente de um loop?
+luacheck.translated.521=o label {label!} não é usado
+luacheck.translated.531=o lado direito da atribuição tem mais valores do que o lado esquerdo espera
+luacheck.translated.532=o lado direito da atribuição tem menos valores do que o lado esquerdo espera
+luacheck.translated.541=bloco DO..END vazio
+luacheck.translated.542=ramificação IF vazia
+luacheck.translated.551=comando vazio. você usou mais de um ";" ?
+luacheck.translated.561=a complexidade ciclomática do(a) {rdk_function_descr} é muito alta ({complexity} > {max_complexity})
+luacheck.translated.561_function_type=a complexidade ciclomática do(a) {function_type} {function_name!} é muito alta ({complexity} > {max_complexity})
+
+luacheck.translated.611=a linha contém apenas espaços em branco
+luacheck.translated.612=a linha contém espaço em branco em seu final
+luacheck.translated.613=existem espaços em branco no final de uma string
+luacheck.translated.614=existem espaços em branco no final de um comentário
+luacheck.translated.621=indentação inconsistente (ESPAÇO seguido por TAB)
+luacheck.translated.631=a linha é muito longa ({end_column} > {max_length})
+
+luacheck.translated.deprecated=a variável global "%s" foi descontinuada. Use "%s" em seu lugar.
+
+
+
+
+
+
+
+
+
+
+
+
+
+[en]
+luacheck.translated.statement.index=index
+luacheck.translated.statement.field=field
+luacheck.translated.statement.main_chunk=main chunck
+luacheck.translated.statement.function=function
+
+luacheck.translated.direct={msg}
+luacheck.translated.022=unpaired push directive
+luacheck.translated.023=unpaired pop directive
+
+luacheck.translated.111_module=setting non-module global variable {name!}
+luacheck.translated.111_non_module=setting non-standard global variable {name!}
+luacheck.translated.112=mutating non-standard global variable {name!}
+luacheck.translated.113=accessing undefined variable {name!}
+
+luacheck.translated.121=setting read-only global variable {name!}
+luacheck.translated.122=setting read-only field {field!} of global {name!}
+luacheck.translated.122.indirectly=indirectly setting read-only field {field!} of global {name!}
+
+luacheck.translated.131=unused global variable {name!}
+
+luacheck.translated.142=setting undefined field {field!} of global {name!}
+luacheck.translated.142.indirectly=indirectly setting undefined field {field!} of global {name!}
+luacheck.translated.143=accessing undefined field {field!} of global {name!}
+luacheck.translated.143.indirectly=indirectly accessing undefined field {field!} of global {name!}
+
+luacheck.translated.211.func.recursive=unused recursive function {name!}
+luacheck.translated.211.func.mutually_recursive=unused mutually recursive function {name!}
+luacheck.translated.211.func.std=unused function {name!}
+luacheck.translated.211.variable=unused variable {name!}
+
+luacheck.translated.212.variable=unused variable length argument
+luacheck.translated.212=unused argument {name!}
+
+luacheck.translated.213=unused loop variable {name!}
+luacheck.translated.221=variable {name!} is never set
+luacheck.translated.231=variable {name!} is never accessed
+luacheck.translated.232=argument {name!} is never accessed
+luacheck.translated.233=loop variable {name!} is never accessed
+luacheck.translated.241=variable {name!} is mutated but never accessed
+
+luacheck.translated.311.unused=value assigned to variable {name!} is unused
+luacheck.translated.311.overwritten=value assigned to variable {name!} is overwritten on line {overwritten_line} before use
+
+luacheck.translated.312.unused=value of argument {name!} is unused
+luacheck.translated.312.overwritten=value of argument {name!} is overwritten on line {overwritten_line} before use
+
+luacheck.translated.313.unused=value of loop variable {name!} is unused
+luacheck.translated.313.overwritten=value of loop variable {name!} is overwritten on line {overwritten_line} before use
+
+luacheck.translated.314=value assigned to {rdk_target_str} {field!} is overwritten on line {overwritten_line} before use
+luacheck.translated.321=accessing uninitialized variable {name!}
+luacheck.translated.331=value assigned to variable {name!} is mutated but never accessed
+luacheck.translated.341=mutating uninitialized variable {name!}
+
+luacheck.translated.411=variable {name!} was previously defined on line {prev_line}
+luacheck.translated.412=variable {name!} was previously defined as an argument on line {prev_line}
+luacheck.translated.413=variable {name!} was previously defined as a loop variable on line {prev_line}
+luacheck.translated.421=shadowing definition of variable {name!} on line {prev_line}
+luacheck.translated.422=shadowing definition of argument {name!} on line {prev_line}
+luacheck.translated.423=shadowing definition of loop variable {name!} on line {prev_line}
+luacheck.translated.431=shadowing upvalue {name!} on line {prev_line}
+luacheck.translated.432=shadowing upvalue argument {name!} on line {prev_line}
+luacheck.translated.433=shadowing upvalue loop variable {name!} on line {prev_line}
+
+luacheck.translated.511=unreachable code
+luacheck.translated.512=loop is executed at most once
+luacheck.translated.521=unused label {label!}
+luacheck.translated.531=right side of assignment has more values than left side expects
+luacheck.translated.532=right side of assignment has less values than left side expects
+luacheck.translated.541=empty do..end block
+luacheck.translated.542=empty if branch
+luacheck.translated.551=empty statement
+luacheck.translated.561=cyclomatic complexity of {rdk_function_descr} is too high ({complexity} > {max_complexity})
+luacheck.translated.561_function_type=cyclomatic complexity of {function_type} {function_name!} is too high ({complexity} > {max_complexity})
+
+luacheck.translated.611=line contains only whitespace
+luacheck.translated.612=line contains trailing whitespace
+luacheck.translated.613=trailing whitespace in a string
+luacheck.translated.614=trailing whitespace in a comment
+luacheck.translated.621=inconsistent indentation (SPACE followed by TAB)
+luacheck.translated.631=line is too long ({end_column} > {max_length})
+
+luacheck.translated.deprecated=global "%s" is deprecated. Use "%s" instead.

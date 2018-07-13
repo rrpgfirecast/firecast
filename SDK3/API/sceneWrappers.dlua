@@ -83,23 +83,23 @@ local __sceneMethods = {
 			Objs.registerHandle(tr.handle, tr);
 			_obj_invoke(tr.handle, "Initialize", scene.objectID);
 			
-			tr.commit = function(tr)
-				_obj_invoke(tr.handle, "Commit");
+			tr.commit = function(trObj)
+				_obj_invoke(trObj.handle, "Commit");
 			end;
 			
-			tr.rollback = function(tr)
-				_obj_invoke(tr.handle, "Rollback");
+			tr.rollback = function(trObj)
+				_obj_invoke(trObj.handle, "Rollback");
 			end;
 			
-			tr.createUndoData =  function (tr)
-				local handle = _obj_invoke(tr.handle, "CreateUndoData");
+			tr.createUndoData =  function (trObj)
+				local handle = _obj_invoke(trObj.handle, "CreateUndoData");
 				local obj = objs.objectFromHandle(handle);
 				objs.registerHandle(handle, obj);	
 				return obj;
 			end;
 
-			tr.applyUndoData = function(tr, undoData)
-				_obj_invoke(tr.handle, "ApplyUndoData", undoData.handle);
+			tr.applyUndoData = function(trObj, undoData)
+				_obj_invoke(trObj.handle, "ApplyUndoData", undoData.handle);
 			end;					
 			
 			return tr;
@@ -138,9 +138,9 @@ local __sceneMethods = {
 								
 									if node ~= nil then
 										return NDB.newBroadcastListener(node, messageId, 
-											function(sender, messageId, message)
+											function(sender, returnedMessageId, message)
 												if scene.isObjectAlive and (callback ~= nil) then
-													callback(sender, messageId, message);
+													callback(sender, returnedMessageId, message);
 												end;
 											end);
 									end;
@@ -490,30 +490,30 @@ local __GILMethods = {	get = function(t, idx)
 							end,
 							
 						enumInRect = function(t, rect, layer)
-							local objs = _obj_invokeEx(t.handle, "EnumInRect", rect, layer);
+							local retObjs = _obj_invokeEx(t.handle, "EnumInRect", rect, layer);
 							
-							for i = 1, #objs, 1 do
-								objs[i] = SceneWrappers.objectFromID(objs[i]);
+							for i = 1, #retObjs, 1 do
+								retObjs[i] = SceneWrappers.objectFromID(retObjs[i]);
 							end;
 							
-							return objs;
+							return retObjs;
 						end,
 						
 						enumAtPoint = function(t, worldX, worldY, layer)
-							local objs = _obj_invokeEx(t.handle, "EnumInPoint", worldX, worldY, layer);
+							local retObjs = _obj_invokeEx(t.handle, "EnumInPoint", worldX, worldY, layer);
 							
-							for i = 1, #objs, 1 do
-								objs[i] = SceneWrappers.objectFromID(objs[i]);
+							for i = 1, #retObjs, 1 do
+								retObjs[i] = SceneWrappers.objectFromID(retObjs[i]);
 							end;
 							
-							return objs;
+							return retObjs;
 						end,
 						
 						itemAtPoint = function(t, worldX, worldY, layer)
-							local objs = t:enumAtPoint(worldX, worldY, layer);
+							local retObjs = t:enumAtPoint(worldX, worldY, layer);
 							
-							if #objs > 0 then
-								return objs[#objs];
+							if #retObjs > 0 then
+								return retObjs[#retObjs];
 							else
 								return nil;
 							end;

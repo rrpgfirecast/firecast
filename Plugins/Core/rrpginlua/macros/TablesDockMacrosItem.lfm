@@ -21,7 +21,7 @@
 		   onMouseLeave="self.labMacro.fontStyle = '';" onClick="executarMacro()" fontSize="13"/>
 		   
 	<script>
-		if system.isMobile() then
+		if System.isMobile() then
 			self.labMacro.fontSize = 20;
 			innerspacing = 8;
 		end;

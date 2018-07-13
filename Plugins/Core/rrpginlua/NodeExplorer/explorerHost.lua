@@ -1,4 +1,4 @@
-local objs = require("rrpgObjs.lua");
+require("rrpgObjs.lua");
 local ndb = require("ndb.lua");
 local gui = require("gui.lua");
 local plugins = require("plugins.lua");

@@ -69,12 +69,6 @@
 		require("dialogs.lua");
 		require("fireDrive.lua");
 		local scene = nil;	
-		local ignoreRecalcWH = false;
-		local realCellWidth = 1;
-		local realCellHeight = 1;
-		local offsetCellsW = 1;
-		local offsetCellsH = 1;
-		local exibindoFOW = false;
 	</script>
 	
 	<scrollBox align="client">
@@ -590,7 +584,7 @@
 			token.selected = true;			
 		end;
 
-		function round(num, numDecimalPlaces)
+		local function round(num, numDecimalPlaces)
 			local mult = 10^(numDecimalPlaces or 0)
 			return math.floor(num * mult + 0.5) / mult
 		end

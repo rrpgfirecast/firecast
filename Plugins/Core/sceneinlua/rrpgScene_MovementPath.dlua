@@ -326,8 +326,6 @@ function MOVETRACK_newMoveTrack(scene, item)
 			m.distanceStr = string.format(formatoAUsar, totalDistancia, 
 										  tryLang("metric." .. scene.worldMetricName) or scene.worldMetricName);
 			
-			local startLineX, startLineY;
-			local currLineX, currLineY;		
 			local oldLine = nil;
 							
 							
@@ -685,7 +683,7 @@ function MOVETRACK_newMoveTrack(scene, item)
 		track.aboveTokens = false;
 	end;
 		
-	function track:startPaint();
+	function track:startPaint()
 		if not track.isPainting then
 			MOVETRACK_addTRACK(scene, track);	
 			track.isPainting = true;

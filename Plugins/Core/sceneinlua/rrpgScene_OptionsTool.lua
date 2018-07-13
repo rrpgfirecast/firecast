@@ -8,18 +8,17 @@ local SETTINGS_CATEGORY = "settings";
 	
 SceneLib.registerPlugin(
 	function (scene, attachment)			
-		local btn_sceneProps;	
 		local frmBoardProps = nil;
 		local timeoutClearFrmBoard = nil;
 			
 		scene.viewport:setupToolCategory(SETTINGS_CATEGORY, lang("scene.toolcategory.settings"), -5);
 		
-		btn_sceneProps = 
-			scene.viewport:addToolButton(SETTINGS_CATEGORY, 
-										lang("scene.menu.sceneOptions"), 
-										"/icos/scene_props.png",
-										-5,
-										{},
+
+		scene.viewport:addToolButton(SETTINGS_CATEGORY, 
+									lang("scene.menu.sceneOptions"), 
+									"/icos/scene_props.png",
+									-5,
+									{},
 									 
 				function()
 					local frm;
@@ -30,7 +29,7 @@ SceneLib.registerPlugin(
 					end;								
 				
 					if frmBoardProps == nil then				
-						frm = gui.newForm("frmBoardProps");
+						frm = GUI.newForm("frmBoardProps");
 					else
 						frm = frmBoardProps;
 					end

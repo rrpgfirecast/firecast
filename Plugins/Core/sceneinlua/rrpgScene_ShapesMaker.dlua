@@ -115,7 +115,6 @@ local function newTracker_Ellipse(maker, scene)
 	local startX, startY = nil, nil;
 	local endX, endY = nil, nil;
 	local width, height = nil, nil;
-	local cx, cy = nil, nil;
 		
 	function tracker.setStart(x, y)
 		startX = x;
@@ -126,7 +125,6 @@ local function newTracker_Ellipse(maker, scene)
 		endX = x;
 		endY = y;
 		
-		cx, cy = (startX + endX) / 2, (startY + endY) / 2;
 		width, height = math.abs(endX - startX), math.abs(endY - startY);
 		
 		if width > 0 and height > 0 then
@@ -292,7 +290,6 @@ function SHAPEMaker_New(scene, shape)
 	local viewport = scene.viewport;
 	
 	local isAttached = false;
-	local mouseDownX, mouseDownY = nil, nil;
 	local isMouseDown = false;
 	local ignoreNextPoint = false;
 	
@@ -300,8 +297,6 @@ function SHAPEMaker_New(scene, shape)
 		if event.button == "left" and not ignoreNextPoint then		
 			local wx, wy = viewport:screenToWorld(event.x, event.y);
 		
-			mouseDownX = event.x;
-			mouseDownY = event.y;
 			isMouseDown = true;
 			
 			if tracker ~= nil then
@@ -377,13 +372,13 @@ function SHAPEMaker_New(scene, shape)
 			
 			viewport:pushWorldToScreenTransform();			
 			
-			local r, g, b, a;
+			local _, a;
 			local color;			
 			
 			-- Fill	
 
 			color = maker.fillColor;
-			r, g, b, a = colorToRGBA(color);
+			_, _, _, a = colorToRGBA(color);
 			
 			if a > 0.1 then
 				viewport:prepareFill(color);				
@@ -393,7 +388,7 @@ function SHAPEMaker_New(scene, shape)
 			-- Stroke
 		
 			color = maker.strokeColor;
-			r, g, b, a = colorToRGBA(color);
+			_, _, _, a = colorToRGBA(color);
 			
 			if a > 0.1 then
 				viewport:prepareDraw(color, maker.strokeSize, "round", "round");				
@@ -420,12 +415,12 @@ function SHAPEMaker_New(scene, shape)
 		if x2 ~= nil then
 			viewport:pushWorldToScreenTransform();		
 
-			local r, g, b, a;
+			local _, a;
 			local color;
 			
 			-- Fill
 			color = maker.fillColor;
-			r, g, b, a = colorToRGBA(color);
+			_, _, _, a = colorToRGBA(color);
 			
 			if a > 0.1 then
 				viewport:prepareFill(color);				
@@ -435,7 +430,7 @@ function SHAPEMaker_New(scene, shape)
 			-- Stroke
 		
 			color = maker.strokeColor;
-			r, g, b, a = colorToRGBA(color);
+			_, _, _, a = colorToRGBA(color);
 			
 			if a > 0.1 then
 				viewport:prepareDraw(color, maker.strokeSize, "round", "round");				
@@ -611,10 +606,10 @@ function SHAPEMaker_New(scene, shape)
 						return ellipseToPolygon(x, y, x2, y2);
 					else
 						if tracker.getPoint ~= nil then
-							local x, y = tracker.getPoint();
+							local x3, y3 = tracker.getPoint();
 							
 							if y ~= nil then
-								return ellipseToPolygon(x - 0.5, y - 0.5, x + 0.5, y + 0.5);
+								return ellipseToPolygon(x3 - 0.5, y3 - 0.5, x3 + 0.5, y3 + 0.5);
 							else
 								return {};
 							end;				

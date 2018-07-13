@@ -60,22 +60,16 @@
 	</template>
 
 	<script>
-		local NAME_TEXT = '_name_text';
-		local NAME_BACKGROUND = '_name_back';	
+		--local NAME_TEXT = '_name_text';
+		--local NAME_BACKGROUND = '_name_back';	
 	
 		require("system.lua");
 		require("rrpgScene_Globals.lua");
 		require("rrpgScene_Undo.dlua");
-		
-		local scene = nil;	
+				
 		local theToken = nil;
 		local theSelection = nil;
 		local theMesa = nil;
-		local ignoreRecalcWH = false;
-		local realCellWidth = 1;
-		local realCellHeight = 1;
-		local offsetCellsW = 1;
-		local offsetCellsH = 1;	
 		local podeVerBarrinhas = false;
 		local podeVerCoisasDeFoW = false;
 		
@@ -266,7 +260,7 @@
 			
 			table.sort(personagens,
 				function(left, right)
-					return utils.compareStringPtBr(left.nome, right.nome) < 0;
+					return Utils.compareStringPtBr(left.nome, right.nome) < 0;
 				end);
 				
 			local nomes = {};
@@ -285,7 +279,6 @@
 		end;
 		
 		function self:prepareForShow(oSelection, oScene)
-			scene = oScene;
 			theSelection = oSelection;
 			
 			if #theSelection > 0 then
@@ -300,7 +293,7 @@
 				podeVerBarrinhas = oScene.isGM or theToken.isMine;
 				podeVerCoisasDeFoW = podeVerBarrinhas and oScene.fogOfWar.enabled;
 			
-				theMesa = rrpg.getMesaDe(oScene);
+				theMesa = Firecast.getMesaDe(oScene);
 				self:beginUpdate();
 			
 				if theMesa ~= nil then

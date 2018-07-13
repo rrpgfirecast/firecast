@@ -11,21 +11,21 @@
 				return;
 			end;
 		
-			sheet.plugins = rrpg.plugins.getInstalledPlugins();				
+			sheet.plugins = Firecast.Plugins.getInstalledPlugins();				
 		end;
 		
 		local function goInstalarNovoPlugin()
 		
 			if System.isMobile() then			
-				dialogs.inputQuery("Baixar Plugin", "Cole a URL do arquivo plugin de extensão '.rpk' (http://)", "", 
+				Dialogs.inputQuery("Baixar Plugin", "Cole a URL do arquivo plugin de extensão '.rpk' (http://)", "", 
 					function (url)										
-							local id = downloadsPlugs.startDownloadPlugin(url); 
+							downloadsPlugs.startDownloadPlugin(url); 
 					end);	
 			else
 				Dialogs.openFile(lang("plugins.mgr.selectFile"), ".rpk", true,
 								 function(files)
 									for i = 1, #files, 1 do
-										rrpg.plugins.installPlugin(files[i].stream);	
+										Firecast.Plugins.installPlugin(files[i].stream);	
 									end;									
 								 end);
 			end;
@@ -43,20 +43,20 @@
 			atualizarListaDePlugins();
 		end;		
 		
-		self._listener1 = rrpg.messaging.listen("PluginInstalled",
+		self._listener1 = Firecast.Messaging.listen("PluginInstalled",
 			function ()
 				atualizarListaDePlugins();
 			end);		
 			
-		self._listener2 = rrpg.messaging.listen("PluginUninstalled",
+		self._listener2 = Firecast.Messaging.listen("PluginUninstalled",
 			function ()
 				atualizarListaDePlugins();
 			end);				
 	</event>
 	
 	<event name="OnHide">
-		rrpg.messaging.unlisten(self._listener1);
-		rrpg.messaging.unlisten(self._listener2);
+		Firecast.Messaging.unlisten(self._listener1);
+		Firecast.Messaging.unlisten(self._listener2);
 	</event>
 	
 	

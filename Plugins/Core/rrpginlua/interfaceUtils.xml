@@ -33,7 +33,7 @@
 				onClick="$(actionClick)" />
 				
 		<button text="Cancelar" horzTextAlign="center" class="rodapeButton" align="right" 
-				onClick="$(cancelClick or 'gui.closePopup(self);')"/>		
+				onClick="$(cancelClick or 'GUI.closePopup(self);')"/>		
 	</template>
 	
 	<template name="BottomActionCancelPopupPanel">
@@ -51,7 +51,7 @@
 	
 		<layout class="rodapeForm">
 			<button name="$(theBtnName)" text="$(text)" horzTextAlign="center" 
-					class="rodapeButton" align="right" onClick="$(cancelClick or 'gui.closePopup(self);')"/>	
+					class="rodapeButton" align="right" onClick="$(cancelClick or 'GUI.closePopup(self);')"/>	
 		</layout>		
 		
 		<!-- if text == "" or text == nil then -->

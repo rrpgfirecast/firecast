@@ -8,7 +8,7 @@ local dIdGenerator = 0;
 
 function downloads.getNDB()
 	if downloadsNDB == nil then
-		downloadsNDB = ndb.newMemNodeDatabase();
+		downloadsNDB = NDB.newMemNodeDatabase();
 		downloadsNDB.downloads = {};
 		downloadsNDB.plugins = {};
 	end;
@@ -32,18 +32,18 @@ function downloads.startDownloadPlugin(url)
 	local id = downloads.newDownloadIndicator(url);
 	local downloadNDB = downloads.getNDB();
 	
-	local internetDownloadId = internet.download(url,
+	local internetDownloadId = Internet.download(url,
 		function (stream, contentType)
 			downloadNDB.downloads[id].internetDownloadId = nil;
 			
-			local detalhes = rrpg.plugins.getRPKDetails(stream);
+			local detalhes = Firecast.Plugins.getRPKDetails(stream);
 			
 			if detalhes == nil then
 				downloadNDB.downloads[id].errorMsg = "Ops: Arquivo '.rpk' inválido";
 				return;
 			end;
 			
-			local r, msg = rrpg.plugins.installPlugin(stream);
+			local r, msg = Firecast.Plugins.installPlugin(stream);
 							
 			if r then
 				downloadNDB.downloads[id] = nil;

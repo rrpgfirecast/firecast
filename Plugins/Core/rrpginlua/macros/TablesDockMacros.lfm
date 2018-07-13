@@ -2,7 +2,7 @@
 <form name="frmMacrosTD" title="Macros" dataType="RRPG_Macros" formType="tablesDock">
 	<import file="../interfaceUtils.xml"/>
 	<script><![CDATA[
-		local resumoMacrosNDB = ndb.newMemNodeDatabase();
+		local resumoMacrosNDB = NDB.newMemNodeDatabase();
 		resumoMacrosNDB.macros = {};
 		
 		local remoteNDB = nil;
@@ -17,7 +17,7 @@
 		local genMacrosPrepared = 0;
 		
 		local function doEnumMIn(macrosNodeNDB, mDest)
-			local cns = ndb.getChildNodes(macrosNodeNDB);
+			local cns = NDB.getChildNodes(macrosNodeNDB);
 			
 			for i = 1, #cns, 1 do
 				local c = cns[i];
@@ -102,7 +102,7 @@
 		end;
 		
 		local function createObserverFor(n)
-			local observer = ndb.newObserver(n);				
+			local observer = NDB.newObserver(n);				
 								
 			observer.onDeepChildAdded = function(x)
 				onChangeInNDB(n);
@@ -123,7 +123,7 @@
 	
 	
 	<event name="OnShow">
-		self.mesa = rrpg.getMesaDe(self);
+		self.mesa = Firecast.getMesaDe(self);
 		
 		if self.mesa ~= nil then
 			local mesa = self.mesa;
@@ -142,7 +142,7 @@
 				end, {criar=true});		
 
 			if globalSimpleMacrosNDB == nil then
-				globalSimpleMacrosNDB = ndb.load("simpleMacros.xml");
+				globalSimpleMacrosNDB = NDB.load("simpleMacros.xml");
 			end;						
 				
 			if globalSimpleMacrosNDB.global == nil then
@@ -168,7 +168,7 @@
 	</event>
 
 	<event name="OnHide">
-		ndb.clearNode(resumoMacrosNDB);
+		NDB.clearNode(resumoMacrosNDB);
 	
 		if self.mesa ~= nil then
 			self.mesa = nil;
@@ -209,13 +209,13 @@
 			</event>
 			
 			<event name="onCompare">
-				return utils.compareStringPtBr(nodeA.macro, nodeB.macro);
+				return Utils.compareStringPtBr(nodeA.macro, nodeB.macro);
 			</event>
 		</recordList>
 	</dataScopeBox>
 	
 	<script>
-		if system.isMobile() then
+		if System.isMobile() then
 			self.layTopo.height = 32;
 			self.layTopo.margins = {bottom=10, top=5, left=5, right=5};
 			self.dsbMacros.margins = {left=5, right=5};
