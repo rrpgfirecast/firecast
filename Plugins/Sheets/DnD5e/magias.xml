@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <rectangle class="fundo">
 	<style>
 		flowPart.magicHeader {
@@ -134,8 +134,8 @@
 	
 			<dataLink fields="{'magias.habilidadeDeConjuracao', 'atributos.modInteligencia', 'atributos.modSabedoria', 'atributos.modCarisma', 'bonusProficiencia'}">
 				<event name="onChange">	<![CDATA[
-					local hab = nil;
-					local bonusProficiencia = nil;
+					local hab;
+					local bonusProficiencia;
 					local spellSaveValue = nil;
 					local spellAttackValue = nil;
 					local modHab = nil;

@@ -1,9 +1,8 @@
 ﻿require("vhd.lua")
+local Locale = require("locale.lua");
 
 local globalTable = _G;
 local standardGlobalVariables = {};
-
-
 
 local deprecatedGlobalVariablesDict = {["vhd"] = "VHD",
 									   ["rrpg"] = "Firecast",
@@ -38,6 +37,7 @@ end;
 
 
 local luacheck_dir_prefix = "res://tools/LuaCheck/src/";
+local rdkLuaCheckPrefixDir = "res://tools/LuaCheck/"
 
 local aliases = {
       luacheck = luacheck_dir_prefix .. "init.lua",
@@ -80,7 +80,12 @@ local aliases = {
 
 VHD.registerAlias(aliases);
 
+local langFileStream = VHD.openFile(rdkLuaCheckPrefixDir .. "rdkLuaCheckFormatsLang.txt");
+Locale.loadLangTexts(langFileStream:readBinary("utf8"));
+langFileStream:close();
+
 local luacheck = require("luacheck");
+local customRDKFormat = require(rdkLuaCheckPrefixDir .. "customRDKLuaCheckFormat.lua");
 
 local _globalLuaCheckStd = {};
 local _globalLuaCheckStdForSDK = {};
@@ -154,6 +159,10 @@ _globalLuaCheckStdForSDK.globals = generateGlobalsRecursivelyTableDefinitions(gl
 
 --[[ End of Mount _globalLuaCheckStd]]--
 
+-- [[ Custom Text Formats for Luacheck ]]--
+
+-- [[ End of Custom Text Formats for Luacheck ]]--
+
 local function createLuaCheckOptions(lintOptions)
 	if type(lintOptions) ~= "table" then
 		lintOptions = {};
@@ -221,7 +230,7 @@ function LUACHECK_Content(scriptContent, scriptName, lintOptions)
 		local entry = entries[i];
 		local filtered = true;	
 		
-		entry.__msg = luacheck.get_message(entry);
+		entry.__msg = customRDKFormat.get_message(entry);
 
 		if lintOptions.ignoreSelfShadowing and (entry.code == "431") and (entry.name == "self") then
 			filtered = false;
@@ -288,7 +297,7 @@ function LUACHECK_MultipleFilesContent(sourcesArr, lintOptions)
 			local entry = entries[j];
 			local filtered = true;	
 			
-			entry.__msg = luacheck.get_message(entry);
+			entry.__msg = customRDKFormat.get_message(entry);
 			
 			if sourcesArr[i].isLFMLua then
 				if (entry.code == "431") and (entry.name == "self") then
@@ -308,7 +317,7 @@ function LUACHECK_MultipleFilesContent(sourcesArr, lintOptions)
 					if sourcesArr[i].isSDK then
 						filtered = false;
 					else
-						entry.__msg = string.format("global \"%s\" is deprecated. Use \"%s\" instead.", entry.name, deprecatedSubstitute) ;
+						entry.__msg = string.format(lang("luacheck.translated.deprecated"), entry.name, deprecatedSubstitute) ;
 						filtered = true;
 					end;
 				elseif parsedData.definedGlobals[entry.name] ~= nil then
