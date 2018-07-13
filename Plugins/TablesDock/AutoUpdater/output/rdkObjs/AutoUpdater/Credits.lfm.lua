@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmTemplateCreditos()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -29,18 +30,18 @@ function newfrmTemplateCreditos()
     obj:setName("frmTemplateCreditos");
     obj:setAlign("client");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.scrollBox1);
     obj.label1:setLeft(5);
     obj.label1:setTop(10);
@@ -49,7 +50,7 @@ function newfrmTemplateCreditos()
     obj.label1:setText("Feito por: Vinny (Ambesek)");
     obj.label1:setName("label1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.scrollBox1);
     obj.label2:setLeft(5);
     obj.label2:setTop(35);
@@ -60,7 +61,7 @@ function newfrmTemplateCreditos()
     obj.label2:setField("versionInstalled");
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.scrollBox1);
     obj.label3:setLeft(5);
     obj.label3:setTop(60);
@@ -71,7 +72,7 @@ function newfrmTemplateCreditos()
     obj.label3:setField("versionDownloaded");
     obj.label3:setName("label3");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.scrollBox1);
     obj.checkBox1:setLeft(5);
     obj.checkBox1:setTop(85);
@@ -81,7 +82,7 @@ function newfrmTemplateCreditos()
     obj.checkBox1:setText("Não pedir para atualizar.");
     obj.checkBox1:setName("checkBox1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
     obj.button1:setLeft(5);
     obj.button1:setTop(110);
@@ -89,7 +90,7 @@ function newfrmTemplateCreditos()
     obj.button1:setText("Change Log");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.scrollBox1);
     obj.button2:setLeft(5);
     obj.button2:setTop(135);
@@ -97,7 +98,7 @@ function newfrmTemplateCreditos()
     obj.button2:setText("Atualizar");
     obj.button2:setName("button2");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.scrollBox1);
     obj.label4:setLeft(5);
     obj.label4:setTop(160);
@@ -106,7 +107,7 @@ function newfrmTemplateCreditos()
     obj.label4:setText("Conheça a Mesa:");
     obj.label4:setName("label4");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.scrollBox1);
     obj.button3:setLeft(5);
     obj.button3:setTop(185);
@@ -115,12 +116,12 @@ function newfrmTemplateCreditos()
     obj.button3:setName("button3");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/README.md')
         end, obj);
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             local install = rrpg.plugins.installPlugin(updaterSheet.stream, true);
                             if install==false then
                                 gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true');
@@ -128,12 +129,12 @@ function newfrmTemplateCreditos()
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true')
         end, obj);
 
     obj._e_event3 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
@@ -184,6 +185,6 @@ local _frmTemplateCreditos = {
     description=""};
 
 frmTemplateCreditos = _frmTemplateCreditos;
-rrpg.registrarForm(_frmTemplateCreditos);
+Firecast.registrarForm(_frmTemplateCreditos);
 
 return _frmTemplateCreditos;

@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmLH8()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,12 +31,12 @@ function newfrmLH8()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.scrollBox1);
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
@@ -45,7 +46,7 @@ function newfrmLH8()
     obj.image1:setSRC("/Ficha LH/images/LH.jpg");
     obj.image1:setName("image1");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.scrollBox1);
     obj.image2:setLeft(510);
     obj.image2:setTop(0);
@@ -55,7 +56,7 @@ function newfrmLH8()
     obj.image2:setSRC("/Ficha LH/images/RPGmeister.jpg");
     obj.image2:setName("image2");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(300);
@@ -63,7 +64,7 @@ function newfrmLH8()
     obj.layout1:setHeight(200);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
@@ -75,7 +76,7 @@ function newfrmLH8()
     obj.rectangle1:setCornerType("round");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(0);
     obj.label1:setTop(10);
@@ -85,7 +86,7 @@ function newfrmLH8()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout1);
     obj.label2:setLeft(0);
     obj.label2:setTop(35);
@@ -95,7 +96,7 @@ function newfrmLH8()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout1);
     obj.label3:setLeft(0);
     obj.label3:setTop(60);
@@ -105,7 +106,7 @@ function newfrmLH8()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout1);
     obj.label4:setLeft(0);
     obj.label4:setTop(85);
@@ -115,7 +116,7 @@ function newfrmLH8()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout1);
     obj.label5:setLeft(0);
     obj.label5:setTop(120);
@@ -125,7 +126,7 @@ function newfrmLH8()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout1);
     obj.label6:setLeft(0);
     obj.label6:setTop(145);
@@ -135,7 +136,7 @@ function newfrmLH8()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout1);
     obj.label7:setLeft(0);
     obj.label7:setTop(170);
@@ -190,6 +191,6 @@ local _frmLH8 = {
     description=""};
 
 frmLH8 = _frmLH8;
-rrpg.registrarForm(_frmLH8);
+Firecast.registrarForm(_frmLH8);
 
 return _frmLH8;

@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmSkillItem()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,19 +32,19 @@ function newfrmSkillItem()
     obj:setHeight(25);
     obj:setMargins({top=5, right=5});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#404040");
     obj.rectangle1:setName("rectangle1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.rectangle1);
     obj.layout1:setAlign("right");
     obj.layout1:setWidth(180);
     obj.layout1:setName("layout1");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout1);
     obj.rectangle2:setLeft(0);
     obj.rectangle2:setTop(0);
@@ -54,7 +55,7 @@ function newfrmSkillItem()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(0);
     obj.label1:setTop(3);
@@ -64,7 +65,7 @@ function newfrmSkillItem()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.layout1);
     obj.comboBox1:setLeft(30);
     obj.comboBox1:setTop(0);
@@ -74,7 +75,7 @@ function newfrmSkillItem()
     obj.comboBox1:setItems({'ST', 'DX', 'IQ', 'HT', 'Vont', 'Per', '-'});
     obj.comboBox1:setName("comboBox1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setLeft(85);
     obj.edit1:setTop(0);
@@ -86,7 +87,7 @@ function newfrmSkillItem()
     obj.edit1:setHorzTextAlign("center");
     obj.edit1:setName("edit1");
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.layout1);
     obj.horzLine1:setLeft(85);
     obj.horzLine1:setTop(22);
@@ -94,7 +95,7 @@ function newfrmSkillItem()
     obj.horzLine1:setStrokeColor("white");
     obj.horzLine1:setName("horzLine1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout1);
     obj.label2:setLeft(115);
     obj.label2:setTop(3);
@@ -104,7 +105,7 @@ function newfrmSkillItem()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout1);
     obj.edit2:setLeft(125);
     obj.edit2:setTop(3);
@@ -115,7 +116,7 @@ function newfrmSkillItem()
     obj.edit2:setTransparent(true);
     obj.edit2:setName("edit2");
 
-    obj.horzLine2 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine2 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine2:setParent(obj.layout1);
     obj.horzLine2:setLeft(125);
     obj.horzLine2:setTop(22);
@@ -123,7 +124,7 @@ function newfrmSkillItem()
     obj.horzLine2:setStrokeColor("white");
     obj.horzLine2:setName("horzLine2");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout1);
     obj.button1:setLeft(155);
     obj.button1:setTop(0);
@@ -132,36 +133,36 @@ function newfrmSkillItem()
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.rectangle1);
     obj.layout2:setAlign("client");
     obj.layout2:setName("layout2");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout2);
     obj.edit3:setAlign("client");
     obj.edit3:setField("nome");
     obj.edit3:setTransparent(true);
     obj.edit3:setName("edit3");
 
-    obj.horzLine3 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine3 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine3:setParent(obj.layout2);
     obj.horzLine3:setAlign("bottom");
     obj.horzLine3:setStrokeColor("white");
     obj.horzLine3:setName("horzLine3");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.rectangle1);
     obj.dataLink1:setField("pts");
     obj.dataLink1:setName("dataLink1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.rectangle1);
     obj.dataLink2:setFields({'atr', 'dx'});
     obj.dataLink2:setName("dataLink2");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
             						function (confirmado)
             							if confirmado then
@@ -171,12 +172,12 @@ function newfrmSkillItem()
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             pointCount();
         end, obj);
 
     obj._e_event2 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             				local nh = (tonumber(sheet.dx) or 0);
@@ -259,6 +260,6 @@ local _frmSkillItem = {
     description=""};
 
 frmSkillItem = _frmSkillItem;
-rrpg.registrarForm(_frmSkillItem);
+Firecast.registrarForm(_frmSkillItem);
 
 return _frmSkillItem;

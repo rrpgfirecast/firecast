@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmBlessing()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,13 +32,13 @@ function newfrmBlessing()
     obj:setHeight(90);
     obj:setMargins({top=1});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.rectangle1);
     obj.comboBox1:setLeft(0);
     obj.comboBox1:setTop(0);
@@ -49,7 +50,7 @@ function newfrmBlessing()
     obj.comboBox1:setValues({'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'});
     obj.comboBox1:setName("comboBox1");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.rectangle1);
     obj.textEditor1:setLeft(0);
     obj.textEditor1:setTop(25);
@@ -58,7 +59,7 @@ function newfrmBlessing()
     obj.textEditor1:setField("bencao");
     obj.textEditor1:setName("textEditor1");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.rectangle1);
     obj.rectangle2:setLeft(250);
     obj.rectangle2:setTop(25);
@@ -69,7 +70,7 @@ function newfrmBlessing()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(250);
     obj.label1:setTop(25);
@@ -79,7 +80,7 @@ function newfrmBlessing()
     obj.label1:setField("custo");
     obj.label1:setName("label1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(250);
     obj.button1:setTop(50);
@@ -89,7 +90,7 @@ function newfrmBlessing()
     obj.button1:setName("button1");
 
     obj._e_event0 = obj.comboBox1:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet==nil then return end;
             
             				if sheet.nome == "1" then
@@ -144,7 +145,7 @@ function newfrmBlessing()
         end, obj);
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar essa benção?",
             					function (confirmado)
             						if confirmado then
@@ -194,6 +195,6 @@ local _frmBlessing = {
     description=""};
 
 frmBlessing = _frmBlessing;
-rrpg.registrarForm(_frmBlessing);
+Firecast.registrarForm(_frmBlessing);
 
 return _frmBlessing;

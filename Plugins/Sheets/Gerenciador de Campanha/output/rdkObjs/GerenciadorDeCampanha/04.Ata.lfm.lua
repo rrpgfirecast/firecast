@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmGerenciador04()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,12 +32,12 @@ function newfrmGerenciador04()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
@@ -45,7 +46,7 @@ function newfrmGerenciador04()
     obj.rectangle1:setColor("Black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(0);
     obj.label1:setTop(0);
@@ -55,7 +56,7 @@ function newfrmGerenciador04()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(0);
     obj.button1:setTop(0);
@@ -65,7 +66,7 @@ function newfrmGerenciador04()
     obj.button1:setHint("Novo");
     obj.button1:setName("button1");
 
-    obj.scrollBox2 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox2:setParent(obj.scrollBox1);
     obj.scrollBox2:setLeft(0);
     obj.scrollBox2:setTop(20);
@@ -73,7 +74,7 @@ function newfrmGerenciador04()
     obj.scrollBox2:setHeight(590);
     obj.scrollBox2:setName("scrollBox2");
 
-    obj.rclPresenca = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclPresenca = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclPresenca:setParent(obj.scrollBox2);
     obj.rclPresenca:setLeft(0);
     obj.rclPresenca:setTop(0);
@@ -88,12 +89,12 @@ function newfrmGerenciador04()
     obj.rclPresenca:setTemplateForm("frmGerenciador04_PRESENCA");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclPresenca:append();
         end, obj);
 
     obj._e_event1 = obj.rclPresenca:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             local mod1 = nodeA.nick;
             						local mod2 = nodeB.nick;
             						local modR = utils.compareStringPtBr(mod1, mod2);
@@ -141,6 +142,6 @@ local _frmGerenciador04 = {
     description=""};
 
 frmGerenciador04 = _frmGerenciador04;
-rrpg.registrarForm(_frmGerenciador04);
+Firecast.registrarForm(_frmGerenciador04);
 
 return _frmGerenciador04;

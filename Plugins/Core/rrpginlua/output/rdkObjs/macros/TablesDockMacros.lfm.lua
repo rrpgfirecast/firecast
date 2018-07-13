@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmMacrosTD()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -32,7 +33,7 @@ function newfrmMacrosTD()
     obj:setFormType("tablesDock");
 
 
-		local resumoMacrosNDB = ndb.newMemNodeDatabase();
+		local resumoMacrosNDB = NDB.newMemNodeDatabase();
 		resumoMacrosNDB.macros = {};
 		
 		local remoteNDB = nil;
@@ -47,7 +48,7 @@ function newfrmMacrosTD()
 		local genMacrosPrepared = 0;
 		
 		local function doEnumMIn(macrosNodeNDB, mDest)
-			local cns = ndb.getChildNodes(macrosNodeNDB);
+			local cns = NDB.getChildNodes(macrosNodeNDB);
 			
 			for i = 1, #cns, 1 do
 				local c = cns[i];
@@ -132,7 +133,7 @@ function newfrmMacrosTD()
 		end;
 		
 		local function createObserverFor(n)
-			local observer = ndb.newObserver(n);				
+			local observer = NDB.newObserver(n);				
 								
 			observer.onDeepChildAdded = function(x)
 				onChangeInNDB(n);
@@ -151,27 +152,27 @@ function newfrmMacrosTD()
 	
 
 
-    obj.layTopo = gui.fromHandle(_obj_newObject("layout"));
+    obj.layTopo = GUI.fromHandle(_obj_newObject("layout"));
     obj.layTopo:setParent(obj);
     obj.layTopo:setName("layTopo");
     obj.layTopo:setAlign("top");
     obj.layTopo:setHeight(25);
 
-    obj.btnGerMacros = gui.fromHandle(_obj_newObject("button"));
+    obj.btnGerMacros = GUI.fromHandle(_obj_newObject("button"));
     obj.btnGerMacros:setParent(obj.layTopo);
     obj.btnGerMacros:setName("btnGerMacros");
     obj.btnGerMacros:setAlign("left");
-    obj.btnGerMacros:setText("Gerenciar Macros");
+    obj.btnGerMacros:setText(lang("macros.ui.manageMacros"));
     obj.btnGerMacros:setTextTrimming("none");
     obj.btnGerMacros:setWidth(112);
     obj.btnGerMacros:setMargins({left=3, right=3, top=1, bottom=1});
 
-    obj.dsbMacros = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.dsbMacros = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.dsbMacros:setParent(obj);
     obj.dsbMacros:setName("dsbMacros");
     obj.dsbMacros:setAlign("client");
 
-    obj.rclMacros = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclMacros = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclMacros:setParent(obj.dsbMacros);
     obj.rclMacros:setName("rclMacros");
     obj.rclMacros:setField("macros");
@@ -180,7 +181,7 @@ function newfrmMacrosTD()
     obj.rclMacros:setAlign("client");
 
 
-		if system.isMobile() then
+		if System.isMobile() then
 			self.layTopo.height = 32;
 			self.layTopo.margins = {bottom=10, top=5, left=5, right=5};
 			self.dsbMacros.margins = {left=5, right=5};
@@ -192,8 +193,8 @@ self.dsbMacros.node = resumoMacrosNDB;
 
 
     obj._e_event0 = obj:addEventListener("onShow",
-        function (self)
-            self.mesa = rrpg.getMesaDe(self);
+        function (_)
+            self.mesa = Firecast.getMesaDe(self);
             		
             		if self.mesa ~= nil then
             			local mesa = self.mesa;
@@ -212,7 +213,7 @@ self.dsbMacros.node = resumoMacrosNDB;
             				end, {criar=true});		
             
             			if globalSimpleMacrosNDB == nil then
-            				globalSimpleMacrosNDB = ndb.load("simpleMacros.xml");
+            				globalSimpleMacrosNDB = NDB.load("simpleMacros.xml");
             			end;						
             				
             			if globalSimpleMacrosNDB.global == nil then
@@ -238,8 +239,8 @@ self.dsbMacros.node = resumoMacrosNDB;
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onHide",
-        function (self)
-            ndb.clearNode(resumoMacrosNDB);
+        function (_)
+            NDB.clearNode(resumoMacrosNDB);
             	
             		if self.mesa ~= nil then
             			self.mesa = nil;
@@ -266,23 +267,23 @@ self.dsbMacros.node = resumoMacrosNDB;
         end, obj);
 
     obj._e_event2 = obj.btnGerMacros:addEventListener("onClick",
-        function (self)
+        function (_)
             globalGerenciarMacros(self.mesa);
         end, obj);
 
     obj._e_event3 = obj.rclMacros:addEventListener("onItemAdded",
-        function (self, node, form)
+        function (_, node, form)
             form.mesa = self.mesa;
         end, obj);
 
     obj._e_event4 = obj.rclMacros:addEventListener("onItemRemoved",
-        function (self, node, form)
+        function (_, node, form)
             form.mesa = nil;
         end, obj);
 
     obj._e_event5 = obj.rclMacros:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.macro, nodeB.macro);
+        function (_, nodeA, nodeB)
+            return Utils.compareStringPtBr(nodeA.macro, nodeB.macro);
         end, obj);
 
     function obj:_releaseEvents()
@@ -328,8 +329,8 @@ local _frmMacrosTD = {
     description=""};
 
 frmMacrosTD = _frmMacrosTD;
-rrpg.registrarForm(_frmMacrosTD);
-rrpg.registrarDataType(_frmMacrosTD);
-rrpg.registrarSpecialForm(_frmMacrosTD);
+Firecast.registrarForm(_frmMacrosTD);
+Firecast.registrarDataType(_frmMacrosTD);
+Firecast.registrarSpecialForm(_frmMacrosTD);
 
 return _frmMacrosTD;

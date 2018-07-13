@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmItem()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,13 +32,13 @@ function newfrmItem()
     obj:setHeight(25);
     obj:setMargins({top=1});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setLeft(0);
     obj.edit1:setTop(0);
@@ -46,7 +47,7 @@ function newfrmItem()
     obj.edit1:setField("nome");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.rectangle1);
     obj.edit2:setLeft(200);
     obj.edit2:setTop(0);
@@ -55,7 +56,7 @@ function newfrmItem()
     obj.edit2:setField("efeito");
     obj.edit2:setName("edit2");
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.rectangle1);
     obj.comboBox1:setLeft(900);
     obj.comboBox1:setTop(0);
@@ -65,7 +66,7 @@ function newfrmItem()
     obj.comboBox1:setItems({'Consumível', 'Material', 'Arma', 'Equipamento'});
     obj.comboBox1:setName("comboBox1");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.rectangle1);
     obj.edit3:setLeft(1050);
     obj.edit3:setTop(0);
@@ -74,7 +75,7 @@ function newfrmItem()
     obj.edit3:setField("quantidade");
     obj.edit3:setName("edit3");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.rectangle1);
     obj.rectangle2:setLeft(1100);
     obj.rectangle2:setTop(0);
@@ -85,7 +86,7 @@ function newfrmItem()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(1100);
     obj.label1:setTop(0);
@@ -95,7 +96,7 @@ function newfrmItem()
     obj.label1:setField("max");
     obj.label1:setName("label1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(1150);
     obj.button1:setTop(0);
@@ -104,13 +105,13 @@ function newfrmItem()
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.rectangle1);
     obj.dataLink1:setFields({'tipo'});
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse item??",
             					function (confirmado)
             						if confirmado then
@@ -120,7 +121,7 @@ function newfrmItem()
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             				local max = 0;
             				if sheet.tipo == "Consumível" then
@@ -179,6 +180,6 @@ local _frmItem = {
     description=""};
 
 frmItem = _frmItem;
-rrpg.registrarForm(_frmItem);
+Firecast.registrarForm(_frmItem);
 
 return _frmItem;

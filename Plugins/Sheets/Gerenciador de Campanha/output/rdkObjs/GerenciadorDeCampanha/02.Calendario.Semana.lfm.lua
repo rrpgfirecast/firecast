@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmGerenciador02_SEMANA()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -32,13 +33,13 @@ function newfrmGerenciador02_SEMANA()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setLeft(0);
     obj.edit1:setTop(0);
@@ -48,7 +49,7 @@ function newfrmGerenciador02_SEMANA()
     obj.edit1:setType("number");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.rectangle1);
     obj.edit2:setLeft(30);
     obj.edit2:setTop(0);
@@ -57,7 +58,7 @@ function newfrmGerenciador02_SEMANA()
     obj.edit2:setField("dia");
     obj.edit2:setName("edit2");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(195);
     obj.button1:setTop(0);
@@ -67,7 +68,7 @@ function newfrmGerenciador02_SEMANA()
     obj.button1:setName("button1");
 
     obj._e_event0 = obj.edit1:addEventListener("onChange",
-        function (self)
+        function (_)
             local rcl = self:findControlByName("rclSemana");
             				if rcl~= nil then
             					rcl:sort();
@@ -75,7 +76,7 @@ function newfrmGerenciador02_SEMANA()
         end, obj);
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse dia da semana?",
             					function (confirmado)
             						if confirmado then
@@ -123,6 +124,6 @@ local _frmGerenciador02_SEMANA = {
     description=""};
 
 frmGerenciador02_SEMANA = _frmGerenciador02_SEMANA;
-rrpg.registrarForm(_frmGerenciador02_SEMANA);
+Firecast.registrarForm(_frmGerenciador02_SEMANA);
 
 return _frmGerenciador02_SEMANA;

@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmAMZ1_2_1()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -44,7 +45,7 @@ function newfrmAMZ1_2_1()
 		
 
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj);
     obj.edit1:setLeft(0);
     obj.edit1:setTop(1);
@@ -54,7 +55,7 @@ function newfrmAMZ1_2_1()
     obj.edit1:setType("number");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj);
     obj.edit2:setLeft(30);
     obj.edit2:setTop(1);
@@ -63,7 +64,7 @@ function newfrmAMZ1_2_1()
     obj.edit2:setField("missao");
     obj.edit2:setName("edit2");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setLeft(180);
     obj.button1:setTop(1);
@@ -73,7 +74,7 @@ function newfrmAMZ1_2_1()
     obj.button1:setName("button1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             askForDelete();
         end, obj);
 
@@ -114,6 +115,6 @@ local _frmAMZ1_2_1 = {
     description=""};
 
 frmAMZ1_2_1 = _frmAMZ1_2_1;
-rrpg.registrarForm(_frmAMZ1_2_1);
+Firecast.registrarForm(_frmAMZ1_2_1);
 
 return _frmAMZ1_2_1;

@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmRDF4()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,12 +31,12 @@ function newfrmRDF4()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -43,7 +44,7 @@ function newfrmRDF4()
     obj.layout1:setHeight(610);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
@@ -52,7 +53,7 @@ function newfrmRDF4()
     obj.rectangle1:setCornerType("round");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(5);
     obj.label1:setTop(0);
@@ -62,7 +63,7 @@ function newfrmRDF4()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layout1);
     obj.layout2:setLeft(5);
     obj.layout2:setTop(25);
@@ -70,7 +71,7 @@ function newfrmRDF4()
     obj.layout2:setHeight(25);
     obj.layout2:setName("layout2");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout2);
     obj.label2:setLeft(0);
     obj.label2:setTop(5);
@@ -80,7 +81,7 @@ function newfrmRDF4()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout2);
     obj.edit1:setLeft(100);
     obj.edit1:setTop(0);
@@ -89,7 +90,7 @@ function newfrmRDF4()
     obj.edit1:setField("tradicao_arcana");
     obj.edit1:setName("edit1");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout1);
     obj.layout3:setLeft(5);
     obj.layout3:setTop(50);
@@ -97,7 +98,7 @@ function newfrmRDF4()
     obj.layout3:setHeight(25);
     obj.layout3:setName("layout3");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout3);
     obj.label3:setLeft(0);
     obj.label3:setTop(5);
@@ -107,7 +108,7 @@ function newfrmRDF4()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout3);
     obj.label4:setLeft(200);
     obj.label4:setTop(5);
@@ -117,7 +118,7 @@ function newfrmRDF4()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout3);
     obj.label5:setLeft(250);
     obj.label5:setTop(5);
@@ -127,7 +128,7 @@ function newfrmRDF4()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout3);
     obj.label6:setLeft(300);
     obj.label6:setTop(5);
@@ -137,7 +138,7 @@ function newfrmRDF4()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout3);
     obj.label7:setLeft(350);
     obj.label7:setTop(5);
@@ -147,7 +148,7 @@ function newfrmRDF4()
     obj.label7:setHorzTextAlign("center");
     obj.label7:setName("label7");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout3);
     obj.label8:setLeft(400);
     obj.label8:setTop(5);
@@ -157,7 +158,7 @@ function newfrmRDF4()
     obj.label8:setHorzTextAlign("center");
     obj.label8:setName("label8");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout3);
     obj.label9:setLeft(450);
     obj.label9:setTop(5);
@@ -167,7 +168,7 @@ function newfrmRDF4()
     obj.label9:setHorzTextAlign("center");
     obj.label9:setName("label9");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout3);
     obj.button1:setLeft(500);
     obj.button1:setTop(0);
@@ -176,7 +177,7 @@ function newfrmRDF4()
     obj.button1:setText("+");
     obj.button1:setName("button1");
 
-    obj.rclMagias = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclMagias = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclMagias:setParent(obj.layout1);
     obj.rclMagias:setLeft(5);
     obj.rclMagias:setTop(75);
@@ -187,7 +188,7 @@ function newfrmRDF4()
     obj.rclMagias:setField("magias");
     obj.rclMagias:setTemplateForm("frmRDF4_1");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.scrollBox1);
     obj.layout4:setLeft(565);
     obj.layout4:setTop(0);
@@ -195,7 +196,7 @@ function newfrmRDF4()
     obj.layout4:setHeight(610);
     obj.layout4:setName("layout4");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout4);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("black");
@@ -204,7 +205,7 @@ function newfrmRDF4()
     obj.rectangle2:setCornerType("round");
     obj.rectangle2:setName("rectangle2");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout4);
     obj.label10:setLeft(5);
     obj.label10:setTop(0);
@@ -214,7 +215,7 @@ function newfrmRDF4()
     obj.label10:setHorzTextAlign("center");
     obj.label10:setName("label10");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout4);
     obj.layout5:setLeft(5);
     obj.layout5:setTop(25);
@@ -222,7 +223,7 @@ function newfrmRDF4()
     obj.layout5:setHeight(145);
     obj.layout5:setName("layout5");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout5);
     obj.label11:setLeft(0);
     obj.label11:setTop(0);
@@ -232,7 +233,7 @@ function newfrmRDF4()
     obj.label11:setHorzTextAlign("center");
     obj.label11:setName("label11");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout5);
     obj.textEditor1:setLeft(0);
     obj.textEditor1:setTop(20);
@@ -241,7 +242,7 @@ function newfrmRDF4()
     obj.textEditor1:setField("mek_carter");
     obj.textEditor1:setName("textEditor1");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout4);
     obj.layout6:setLeft(285);
     obj.layout6:setTop(25);
@@ -249,7 +250,7 @@ function newfrmRDF4()
     obj.layout6:setHeight(145);
     obj.layout6:setName("layout6");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout6);
     obj.label12:setLeft(0);
     obj.label12:setTop(0);
@@ -259,7 +260,7 @@ function newfrmRDF4()
     obj.label12:setHorzTextAlign("center");
     obj.label12:setName("label12");
 
-    obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.layout6);
     obj.textEditor2:setLeft(0);
     obj.textEditor2:setTop(20);
@@ -268,7 +269,7 @@ function newfrmRDF4()
     obj.textEditor2:setField("mek_placa_runica");
     obj.textEditor2:setName("textEditor2");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.layout4);
     obj.layout7:setLeft(5);
     obj.layout7:setTop(170);
@@ -276,7 +277,7 @@ function newfrmRDF4()
     obj.layout7:setHeight(145);
     obj.layout7:setName("layout7");
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout7);
     obj.label13:setLeft(0);
     obj.label13:setTop(0);
@@ -286,7 +287,7 @@ function newfrmRDF4()
     obj.label13:setHorzTextAlign("center");
     obj.label13:setName("label13");
 
-    obj.textEditor3 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor3:setParent(obj.layout7);
     obj.textEditor3:setLeft(0);
     obj.textEditor3:setTop(20);
@@ -295,7 +296,7 @@ function newfrmRDF4()
     obj.textEditor3:setField("mek_capacitor");
     obj.textEditor3:setName("textEditor3");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.layout4);
     obj.layout8:setLeft(285);
     obj.layout8:setTop(170);
@@ -303,7 +304,7 @@ function newfrmRDF4()
     obj.layout8:setHeight(145);
     obj.layout8:setName("layout8");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout8);
     obj.label14:setLeft(0);
     obj.label14:setTop(0);
@@ -313,7 +314,7 @@ function newfrmRDF4()
     obj.label14:setHorzTextAlign("center");
     obj.label14:setName("label14");
 
-    obj.textEditor4 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor4:setParent(obj.layout8);
     obj.textEditor4:setLeft(0);
     obj.textEditor4:setTop(20);
@@ -322,7 +323,7 @@ function newfrmRDF4()
     obj.textEditor4:setField("mek_placa_runica2");
     obj.textEditor4:setName("textEditor4");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.layout4);
     obj.layout9:setLeft(5);
     obj.layout9:setTop(315);
@@ -330,7 +331,7 @@ function newfrmRDF4()
     obj.layout9:setHeight(145);
     obj.layout9:setName("layout9");
 
-    obj.label15 = gui.fromHandle(_obj_newObject("label"));
+    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.layout9);
     obj.label15:setLeft(0);
     obj.label15:setTop(0);
@@ -340,7 +341,7 @@ function newfrmRDF4()
     obj.label15:setHorzTextAlign("center");
     obj.label15:setName("label15");
 
-    obj.textEditor5 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor5:setParent(obj.layout9);
     obj.textEditor5:setLeft(0);
     obj.textEditor5:setTop(20);
@@ -349,7 +350,7 @@ function newfrmRDF4()
     obj.textEditor5:setField("mek_notas");
     obj.textEditor5:setName("textEditor5");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.layout4);
     obj.layout10:setLeft(285);
     obj.layout10:setTop(315);
@@ -357,7 +358,7 @@ function newfrmRDF4()
     obj.layout10:setHeight(145);
     obj.layout10:setName("layout10");
 
-    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.layout10);
     obj.label16:setLeft(0);
     obj.label16:setTop(0);
@@ -367,7 +368,7 @@ function newfrmRDF4()
     obj.label16:setHorzTextAlign("center");
     obj.label16:setName("label16");
 
-    obj.textEditor6 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor6 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor6:setParent(obj.layout10);
     obj.textEditor6:setLeft(0);
     obj.textEditor6:setTop(20);
@@ -376,7 +377,7 @@ function newfrmRDF4()
     obj.textEditor6:setField("mek_beneficio");
     obj.textEditor6:setName("textEditor6");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.layout4);
     obj.layout11:setLeft(5);
     obj.layout11:setTop(460);
@@ -384,7 +385,7 @@ function newfrmRDF4()
     obj.layout11:setHeight(145);
     obj.layout11:setName("layout11");
 
-    obj.label17 = gui.fromHandle(_obj_newObject("label"));
+    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.layout11);
     obj.label17:setLeft(0);
     obj.label17:setTop(0);
@@ -394,7 +395,7 @@ function newfrmRDF4()
     obj.label17:setHorzTextAlign("center");
     obj.label17:setName("label17");
 
-    obj.textEditor7 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor7 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor7:setParent(obj.layout11);
     obj.textEditor7:setLeft(0);
     obj.textEditor7:setTop(20);
@@ -403,7 +404,7 @@ function newfrmRDF4()
     obj.textEditor7:setField("mek_capacitores");
     obj.textEditor7:setName("textEditor7");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.layout4);
     obj.layout12:setLeft(285);
     obj.layout12:setTop(460);
@@ -411,7 +412,7 @@ function newfrmRDF4()
     obj.layout12:setHeight(145);
     obj.layout12:setName("layout12");
 
-    obj.label18 = gui.fromHandle(_obj_newObject("label"));
+    obj.label18 = GUI.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.layout12);
     obj.label18:setLeft(0);
     obj.label18:setTop(0);
@@ -421,7 +422,7 @@ function newfrmRDF4()
     obj.label18:setHorzTextAlign("center");
     obj.label18:setName("label18");
 
-    obj.textEditor8 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor8 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor8:setParent(obj.layout12);
     obj.textEditor8:setLeft(0);
     obj.textEditor8:setTop(20);
@@ -430,7 +431,7 @@ function newfrmRDF4()
     obj.textEditor8:setField("mek_cargas");
     obj.textEditor8:setName("textEditor8");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.scrollBox1);
     obj.image1:setAlign("client");
     obj.image1:setSRC("https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20RdF%20releases/imagens/block.png");
@@ -438,7 +439,7 @@ function newfrmRDF4()
     obj.image1:setName("image1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclMagias:append();
         end, obj);
 
@@ -521,6 +522,6 @@ local _frmRDF4 = {
     description=""};
 
 frmRDF4 = _frmRDF4;
-rrpg.registrarForm(_frmRDF4);
+Firecast.registrarForm(_frmRDF4);
 
 return _frmRDF4;

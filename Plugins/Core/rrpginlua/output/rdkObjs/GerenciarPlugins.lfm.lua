@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmGerenciarPlugins()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -27,35 +28,48 @@ function newfrmGerenciarPlugins()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmGerenciarPlugins");
-    obj:setTitle("Gerenciar Plugins");
+    obj:setTitle(lang("plugins.mgr.title"));
     obj:setWidth(300);
     obj:setHeight(380);
 
 		
 		local downloadsPlugs = require("downloadsDePlugins.lua");
+		require("plugins.lua");
 		
 		local function atualizarListaDePlugins()
 			if sheet == nil then
 				return;
 			end;
 		
-			sheet.plugins = rrpg.plugins.getInstalledPlugins();				
+			sheet.plugins = Firecast.Plugins.getInstalledPlugins();				
 		end;
 		
 		local function goInstalarNovoPlugin()
 		
-			dialogs.inputQuery("Baixar Plugin", "Cole a URL do arquivo plugin de extensão '.rpk' (http://)", "", 
-				function (url)										
-						local id = downloadsPlugs.startDownloadPlugin(url); 
-				end);			
+			if System.isMobile() then			
+				Dialogs.inputQuery("Baixar Plugin", "Cole a URL do arquivo plugin de extensão '.rpk' (http://)", "", 
+					function (url)										
+							downloadsPlugs.startDownloadPlugin(url); 
+					end);	
+			else
+				Dialogs.openFile(lang("plugins.mgr.selectFile"), ".rpk", true,
+								 function(files)
+									for i = 1, #files, 1 do
+										Firecast.Plugins.installPlugin(files[i].stream);	
+									end;									
+								 end);
+			end;
 		end;	
 
+		if not System.isMobile() then
+			self.resizable = true;
+		end;
 	
 
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
-    obj.label1:setText("Plug-ins instalados");
+    obj.label1:setText(lang("plugins.mgr.installedPluginsTitle"));
     obj.label1:setName("label1");
     obj.label1:setFontSize(15);
     obj.label1:setFontColor("#FFCC66");
@@ -64,32 +78,32 @@ function newfrmGerenciarPlugins()
     obj.label1:setAlign("top");
     obj.label1:setAutoSize(true);
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setName("layout1");
     obj.layout1:setAlign("client");
     obj.layout1:setMargins({left=12, right=12, top=1, bottom=5});
 
-    obj.layTop = gui.fromHandle(_obj_newObject("layout"));
+    obj.layTop = GUI.fromHandle(_obj_newObject("layout"));
     obj.layTop:setParent(obj.layout1);
     obj.layTop:setName("layTop");
     obj.layTop:setAlign("top");
     obj.layTop:setHeight(45);
     obj.layTop:setMargins({bottom=10});
 
-    obj.btnInstalar = gui.fromHandle(_obj_newObject("button"));
+    obj.btnInstalar = GUI.fromHandle(_obj_newObject("button"));
     obj.btnInstalar:setParent(obj.layTop);
     obj.btnInstalar:setName("btnInstalar");
-    obj.btnInstalar:setText("Baixar um plug-in...");
+    obj.btnInstalar:setText(lang("plugins.mgr.installPluginTitle"));
     obj.btnInstalar:setWidth(200);
     obj.btnInstalar:setWordWrap(false);
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj.layout1);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.recordList1 = gui.fromHandle(_obj_newObject("recordList"));
+    obj.recordList1 = GUI.fromHandle(_obj_newObject("recordList"));
     obj.recordList1:setParent(obj.scrollBox1);
     obj.recordList1:setAlign("top");
     obj.recordList1:setField("downloads");
@@ -97,7 +111,7 @@ function newfrmGerenciarPlugins()
     obj.recordList1:setAutoHeight(true);
     obj.recordList1:setName("recordList1");
 
-    obj.recordList2 = gui.fromHandle(_obj_newObject("recordList"));
+    obj.recordList2 = GUI.fromHandle(_obj_newObject("recordList"));
     obj.recordList2:setParent(obj.scrollBox1);
     obj.recordList2:setAlign("top");
     obj.recordList2:setField("plugins");
@@ -106,36 +120,36 @@ function newfrmGerenciarPlugins()
     obj.recordList2:setName("recordList2");
 
     obj._e_event0 = obj:addEventListener("onShow",
-        function (self)
+        function (_)
             if sheet == nil then
             			self:setNodeObject(downloadsPlugs.getNDB());
             			atualizarListaDePlugins();
             		end;		
             		
-            		self._listener1 = rrpg.messaging.listen("PluginInstalled",
+            		self._listener1 = Firecast.Messaging.listen("PluginInstalled",
             			function ()
             				atualizarListaDePlugins();
             			end);		
             			
-            		self._listener2 = rrpg.messaging.listen("PluginUninstalled",
+            		self._listener2 = Firecast.Messaging.listen("PluginUninstalled",
             			function ()
             				atualizarListaDePlugins();
             			end);
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onHide",
-        function (self)
-            rrpg.messaging.unlisten(self._listener1);
-            		rrpg.messaging.unlisten(self._listener2);
+        function (_)
+            Firecast.Messaging.unlisten(self._listener1);
+            		Firecast.Messaging.unlisten(self._listener2);
         end, obj);
 
     obj._e_event2 = obj.layTop:addEventListener("onResize",
-        function (self)
+        function (_)
             self.btnInstalar.left = self.layTop.width / 2 - self.btnInstalar.width / 2; self.btnInstalar.height = self.layTop.height;
         end, obj);
 
     obj._e_event3 = obj.btnInstalar:addEventListener("onClick",
-        function (self)
+        function (_)
             goInstalarNovoPlugin()
         end, obj);
 
@@ -179,10 +193,10 @@ local _frmGerenciarPlugins = {
     dataType = "", 
     formType = "undefined", 
     formComponentName = "popupForm", 
-    title = "Gerenciar Plugins", 
+    title = "@@plugins.mgr.title", 
     description=""};
 
 frmGerenciarPlugins = _frmGerenciarPlugins;
-rrpg.registrarForm(_frmGerenciarPlugins);
+Firecast.registrarForm(_frmGerenciarPlugins);
 
 return _frmGerenciarPlugins;

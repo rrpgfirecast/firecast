@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmStats()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -29,12 +30,12 @@ function newfrmStats()
     obj:setName("frmStats");
     obj:setAlign("client");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -42,13 +43,13 @@ function newfrmStats()
     obj.layout1:setHeight(505);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(5);
     obj.label1:setTop(0);
@@ -58,7 +59,7 @@ function newfrmStats()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout1);
     obj.label2:setText("ATTRIBUTES");
     obj.label2:setLeft(5);
@@ -68,7 +69,7 @@ function newfrmStats()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout1);
     obj.rectangle2:setLeft(155);
     obj.rectangle2:setTop(25);
@@ -79,7 +80,7 @@ function newfrmStats()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout1);
     obj.label3:setLeft(155);
     obj.label3:setTop(25);
@@ -90,7 +91,7 @@ function newfrmStats()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout1);
     obj.label4:setText("ACTIVE SKILLS");
     obj.label4:setLeft(5);
@@ -100,7 +101,7 @@ function newfrmStats()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout1);
     obj.rectangle3:setLeft(155);
     obj.rectangle3:setTop(50);
@@ -111,7 +112,7 @@ function newfrmStats()
     obj.rectangle3:setStrokeSize(1);
     obj.rectangle3:setName("rectangle3");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout1);
     obj.label5:setLeft(155);
     obj.label5:setTop(50);
@@ -122,7 +123,7 @@ function newfrmStats()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout1);
     obj.label6:setText("KNOWLEDGE SKILLS");
     obj.label6:setLeft(5);
@@ -132,7 +133,7 @@ function newfrmStats()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.layout1);
     obj.rectangle4:setLeft(155);
     obj.rectangle4:setTop(75);
@@ -143,7 +144,7 @@ function newfrmStats()
     obj.rectangle4:setStrokeSize(1);
     obj.rectangle4:setName("rectangle4");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout1);
     obj.label7:setLeft(155);
     obj.label7:setTop(75);
@@ -154,7 +155,7 @@ function newfrmStats()
     obj.label7:setHorzTextAlign("center");
     obj.label7:setName("label7");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout1);
     obj.label8:setText("LANGUAGE SKILLS");
     obj.label8:setLeft(5);
@@ -164,7 +165,7 @@ function newfrmStats()
     obj.label8:setHorzTextAlign("center");
     obj.label8:setName("label8");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.layout1);
     obj.rectangle5:setLeft(155);
     obj.rectangle5:setTop(100);
@@ -175,7 +176,7 @@ function newfrmStats()
     obj.rectangle5:setStrokeSize(1);
     obj.rectangle5:setName("rectangle5");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout1);
     obj.label9:setLeft(155);
     obj.label9:setTop(100);
@@ -186,7 +187,7 @@ function newfrmStats()
     obj.label9:setHorzTextAlign("center");
     obj.label9:setName("label9");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout1);
     obj.label10:setText("QUALITIES");
     obj.label10:setLeft(5);
@@ -196,7 +197,7 @@ function newfrmStats()
     obj.label10:setHorzTextAlign("center");
     obj.label10:setName("label10");
 
-    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle6:setParent(obj.layout1);
     obj.rectangle6:setLeft(155);
     obj.rectangle6:setTop(125);
@@ -207,7 +208,7 @@ function newfrmStats()
     obj.rectangle6:setStrokeSize(1);
     obj.rectangle6:setName("rectangle6");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout1);
     obj.label11:setLeft(155);
     obj.label11:setTop(125);
@@ -218,7 +219,7 @@ function newfrmStats()
     obj.label11:setHorzTextAlign("center");
     obj.label11:setName("label11");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout1);
     obj.label12:setText("CONTACTS");
     obj.label12:setLeft(5);
@@ -228,7 +229,7 @@ function newfrmStats()
     obj.label12:setHorzTextAlign("center");
     obj.label12:setName("label12");
 
-    obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle7 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle7:setParent(obj.layout1);
     obj.rectangle7:setLeft(155);
     obj.rectangle7:setTop(150);
@@ -239,7 +240,7 @@ function newfrmStats()
     obj.rectangle7:setStrokeSize(1);
     obj.rectangle7:setName("rectangle7");
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout1);
     obj.label13:setLeft(155);
     obj.label13:setTop(150);
@@ -250,7 +251,7 @@ function newfrmStats()
     obj.label13:setHorzTextAlign("center");
     obj.label13:setName("label13");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout1);
     obj.label14:setText("S/P/R/CF");
     obj.label14:setLeft(5);
@@ -260,7 +261,7 @@ function newfrmStats()
     obj.label14:setHorzTextAlign("center");
     obj.label14:setName("label14");
 
-    obj.rectangle8 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle8 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle8:setParent(obj.layout1);
     obj.rectangle8:setLeft(155);
     obj.rectangle8:setTop(175);
@@ -271,7 +272,7 @@ function newfrmStats()
     obj.rectangle8:setStrokeSize(1);
     obj.rectangle8:setName("rectangle8");
 
-    obj.label15 = gui.fromHandle(_obj_newObject("label"));
+    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.layout1);
     obj.label15:setLeft(155);
     obj.label15:setTop(175);
@@ -282,7 +283,7 @@ function newfrmStats()
     obj.label15:setHorzTextAlign("center");
     obj.label15:setName("label15");
 
-    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.layout1);
     obj.label16:setText("POWERS/ABILITIES");
     obj.label16:setLeft(5);
@@ -292,7 +293,7 @@ function newfrmStats()
     obj.label16:setHorzTextAlign("center");
     obj.label16:setName("label16");
 
-    obj.rectangle9 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle9 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle9:setParent(obj.layout1);
     obj.rectangle9:setLeft(155);
     obj.rectangle9:setTop(200);
@@ -303,7 +304,7 @@ function newfrmStats()
     obj.rectangle9:setStrokeSize(1);
     obj.rectangle9:setName("rectangle9");
 
-    obj.label17 = gui.fromHandle(_obj_newObject("label"));
+    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.layout1);
     obj.label17:setLeft(155);
     obj.label17:setTop(200);
@@ -314,7 +315,7 @@ function newfrmStats()
     obj.label17:setHorzTextAlign("center");
     obj.label17:setName("label17");
 
-    obj.label18 = gui.fromHandle(_obj_newObject("label"));
+    obj.label18 = GUI.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.layout1);
     obj.label18:setText("OTHER");
     obj.label18:setLeft(5);
@@ -324,7 +325,7 @@ function newfrmStats()
     obj.label18:setHorzTextAlign("center");
     obj.label18:setName("label18");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setLeft(155);
     obj.edit1:setTop(225);
@@ -336,7 +337,7 @@ function newfrmStats()
     obj.edit1:setType("number");
     obj.edit1:setName("edit1");
 
-    obj.label19 = gui.fromHandle(_obj_newObject("label"));
+    obj.label19 = GUI.fromHandle(_obj_newObject("label"));
     obj.label19:setParent(obj.layout1);
     obj.label19:setText("MISC");
     obj.label19:setLeft(5);
@@ -346,7 +347,7 @@ function newfrmStats()
     obj.label19:setHorzTextAlign("center");
     obj.label19:setName("label19");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout1);
     obj.edit2:setLeft(155);
     obj.edit2:setTop(250);
@@ -358,7 +359,7 @@ function newfrmStats()
     obj.edit2:setType("number");
     obj.edit2:setName("edit2");
 
-    obj.label20 = gui.fromHandle(_obj_newObject("label"));
+    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.layout1);
     obj.label20:setText("ALTERNATIVE");
     obj.label20:setLeft(5);
@@ -368,7 +369,7 @@ function newfrmStats()
     obj.label20:setHorzTextAlign("center");
     obj.label20:setName("label20");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout1);
     obj.edit3:setLeft(155);
     obj.edit3:setTop(275);
@@ -380,7 +381,7 @@ function newfrmStats()
     obj.edit3:setType("number");
     obj.edit3:setName("edit3");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout1);
     obj.textEditor1:setLeft(5);
     obj.textEditor1:setTop(300);
@@ -389,12 +390,12 @@ function newfrmStats()
     obj.textEditor1:setField("details_karma");
     obj.textEditor1:setName("textEditor1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.layout1);
     obj.dataLink1:setFields({'attribute_karma_spent', 'skills_active_karma_spent', 'skills_knowledge_karma_spent', 'skills_language_karma_spent', 'qualities_karma', 'contact_karma', 'spells_karma', 'abilities_karma', 'other_karma', 'misc_karma', 'alternative_karma', 'details_karma', 'karmaTotal'});
     obj.dataLink1:setName("dataLink1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.scrollBox1);
     obj.layout2:setLeft(215);
     obj.layout2:setTop(0);
@@ -402,13 +403,13 @@ function newfrmStats()
     obj.layout2:setHeight(155);
     obj.layout2:setName("layout2");
 
-    obj.rectangle10 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle10 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle10:setParent(obj.layout2);
     obj.rectangle10:setAlign("client");
     obj.rectangle10:setColor("black");
     obj.rectangle10:setName("rectangle10");
 
-    obj.label21 = gui.fromHandle(_obj_newObject("label"));
+    obj.label21 = GUI.fromHandle(_obj_newObject("label"));
     obj.label21:setParent(obj.layout2);
     obj.label21:setLeft(5);
     obj.label21:setTop(0);
@@ -418,7 +419,7 @@ function newfrmStats()
     obj.label21:setHorzTextAlign("center");
     obj.label21:setName("label21");
 
-    obj.label22 = gui.fromHandle(_obj_newObject("label"));
+    obj.label22 = GUI.fromHandle(_obj_newObject("label"));
     obj.label22:setParent(obj.layout2);
     obj.label22:setText("PRIORITY A");
     obj.label22:setLeft(5);
@@ -428,7 +429,7 @@ function newfrmStats()
     obj.label22:setHorzTextAlign("center");
     obj.label22:setName("label22");
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.layout2);
     obj.comboBox1:setLeft(105);
     obj.comboBox1:setTop(25);
@@ -438,7 +439,7 @@ function newfrmStats()
     obj.comboBox1:setItems({'METATYPE: Human (9), Elf (8), Dwarf (7), Ork (7), Troll (5)', 'ATTRIBUTES: 24', 'MAGIC: Magician or Mystic Adept: Magic 6, two Rating 5 Magical skills, 10 spells', 'RESSONANCE: Technomancer: Resonance 6, two Rating 5 Resonance skills, 5 complex forms', 'SKILLS: 46/10 ', 'RESOURCES: 450,000¥'});
     obj.comboBox1:setName("comboBox1");
 
-    obj.label23 = gui.fromHandle(_obj_newObject("label"));
+    obj.label23 = GUI.fromHandle(_obj_newObject("label"));
     obj.label23:setParent(obj.layout2);
     obj.label23:setText("PRIORITY B");
     obj.label23:setLeft(5);
@@ -448,7 +449,7 @@ function newfrmStats()
     obj.label23:setHorzTextAlign("center");
     obj.label23:setName("label23");
 
-    obj.comboBox2 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox2:setParent(obj.layout2);
     obj.comboBox2:setLeft(105);
     obj.comboBox2:setTop(50);
@@ -458,7 +459,7 @@ function newfrmStats()
     obj.comboBox2:setItems({'METATYPE: Human (7), Elf (6), Dwarf (4), Ork (4), Troll (0)', 'ATTRIBUTES: 20', 'MAGIC: Magician or Mystic Adept: Magic 4, two Rating 4 Magical skills, 7 spells', 'RESSONANCE: Technomancer: Resonance 4, two Rating 4 Resonance skills, 2 complex forms', 'MAGIC: Adept: Magic 6, one Rating 4 Active skill', 'MAGIC: Aspected Magician: Magic 5, one Rating 4 Magical skill group', 'SKILLS: 36/5 ', 'RESOURCES: 275,000¥'});
     obj.comboBox2:setName("comboBox2");
 
-    obj.label24 = gui.fromHandle(_obj_newObject("label"));
+    obj.label24 = GUI.fromHandle(_obj_newObject("label"));
     obj.label24:setParent(obj.layout2);
     obj.label24:setText("PRIORITY C");
     obj.label24:setLeft(5);
@@ -468,7 +469,7 @@ function newfrmStats()
     obj.label24:setHorzTextAlign("center");
     obj.label24:setName("label24");
 
-    obj.comboBox3 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox3:setParent(obj.layout2);
     obj.comboBox3:setLeft(105);
     obj.comboBox3:setTop(75);
@@ -478,7 +479,7 @@ function newfrmStats()
     obj.comboBox3:setItems({'METATYPE: Human (5), Elf (3), Dwarf (1), Ork (0)', 'ATTRIBUTES: 16', 'MAGIC: Magician or Mystic Adept: Magic 3, 5 spells', 'RESSONANCE: Technomancer: Resonance 3, 1 complex form', 'MAGIC: Adept: Magic 4, one Rating 2 Active skill', 'MAGIC: Aspected Magician: Magic 3, one Rating 2 Magical skill group', 'SKILLS: 28/2 ', 'RESOURCES: 140,000¥'});
     obj.comboBox3:setName("comboBox3");
 
-    obj.label25 = gui.fromHandle(_obj_newObject("label"));
+    obj.label25 = GUI.fromHandle(_obj_newObject("label"));
     obj.label25:setParent(obj.layout2);
     obj.label25:setText("PRIORITY D");
     obj.label25:setLeft(5);
@@ -488,7 +489,7 @@ function newfrmStats()
     obj.label25:setHorzTextAlign("center");
     obj.label25:setName("label25");
 
-    obj.comboBox4 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox4:setParent(obj.layout2);
     obj.comboBox4:setLeft(105);
     obj.comboBox4:setTop(100);
@@ -498,7 +499,7 @@ function newfrmStats()
     obj.comboBox4:setItems({'METATYPE: Human (3), Elf (0)', 'ATTRIBUTES: 14', 'MAGIC: Adept: Magic 2', 'MAGIC: Aspected Magician: Magic 2', 'SKILLS: 22/0 ', 'RESOURCES: 50,000¥'});
     obj.comboBox4:setName("comboBox4");
 
-    obj.label26 = gui.fromHandle(_obj_newObject("label"));
+    obj.label26 = GUI.fromHandle(_obj_newObject("label"));
     obj.label26:setParent(obj.layout2);
     obj.label26:setText("PRIORITY E");
     obj.label26:setLeft(5);
@@ -508,7 +509,7 @@ function newfrmStats()
     obj.label26:setHorzTextAlign("center");
     obj.label26:setName("label26");
 
-    obj.comboBox5 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox5:setParent(obj.layout2);
     obj.comboBox5:setLeft(105);
     obj.comboBox5:setTop(125);
@@ -518,7 +519,7 @@ function newfrmStats()
     obj.comboBox5:setItems({'METATYPE: Human (1)', 'ATTRIBUTES: 12 ', 'MAGIC: — ', 'SKILLS: 18/0 ', 'RESOURCES: 6,000¥'});
     obj.comboBox5:setName("comboBox5");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.scrollBox1);
     obj.layout3:setLeft(215);
     obj.layout3:setTop(160);
@@ -526,13 +527,13 @@ function newfrmStats()
     obj.layout3:setHeight(130);
     obj.layout3:setName("layout3");
 
-    obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle11:setParent(obj.layout3);
     obj.rectangle11:setAlign("client");
     obj.rectangle11:setColor("black");
     obj.rectangle11:setName("rectangle11");
 
-    obj.label27 = gui.fromHandle(_obj_newObject("label"));
+    obj.label27 = GUI.fromHandle(_obj_newObject("label"));
     obj.label27:setParent(obj.layout3);
     obj.label27:setLeft(5);
     obj.label27:setTop(0);
@@ -542,7 +543,7 @@ function newfrmStats()
     obj.label27:setHorzTextAlign("center");
     obj.label27:setName("label27");
 
-    obj.label28 = gui.fromHandle(_obj_newObject("label"));
+    obj.label28 = GUI.fromHandle(_obj_newObject("label"));
     obj.label28:setParent(obj.layout3);
     obj.label28:setLeft(155);
     obj.label28:setTop(25);
@@ -552,7 +553,7 @@ function newfrmStats()
     obj.label28:setHorzTextAlign("center");
     obj.label28:setName("label28");
 
-    obj.label29 = gui.fromHandle(_obj_newObject("label"));
+    obj.label29 = GUI.fromHandle(_obj_newObject("label"));
     obj.label29:setParent(obj.layout3);
     obj.label29:setLeft(205);
     obj.label29:setTop(25);
@@ -562,7 +563,7 @@ function newfrmStats()
     obj.label29:setHorzTextAlign("center");
     obj.label29:setName("label29");
 
-    obj.label30 = gui.fromHandle(_obj_newObject("label"));
+    obj.label30 = GUI.fromHandle(_obj_newObject("label"));
     obj.label30:setParent(obj.layout3);
     obj.label30:setLeft(255);
     obj.label30:setTop(25);
@@ -572,7 +573,7 @@ function newfrmStats()
     obj.label30:setHorzTextAlign("center");
     obj.label30:setName("label30");
 
-    obj.label31 = gui.fromHandle(_obj_newObject("label"));
+    obj.label31 = GUI.fromHandle(_obj_newObject("label"));
     obj.label31:setParent(obj.layout3);
     obj.label31:setText("ATTRIBUTES");
     obj.label31:setLeft(5);
@@ -582,7 +583,7 @@ function newfrmStats()
     obj.label31:setHorzTextAlign("center");
     obj.label31:setName("label31");
 
-    obj.rectangle12 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle12 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle12:setParent(obj.layout3);
     obj.rectangle12:setLeft(155);
     obj.rectangle12:setTop(50);
@@ -593,7 +594,7 @@ function newfrmStats()
     obj.rectangle12:setStrokeSize(1);
     obj.rectangle12:setName("rectangle12");
 
-    obj.label32 = gui.fromHandle(_obj_newObject("label"));
+    obj.label32 = GUI.fromHandle(_obj_newObject("label"));
     obj.label32:setParent(obj.layout3);
     obj.label32:setLeft(155);
     obj.label32:setTop(50);
@@ -604,7 +605,7 @@ function newfrmStats()
     obj.label32:setHorzTextAlign("center");
     obj.label32:setName("label32");
 
-    obj.rectangle13 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle13 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle13:setParent(obj.layout3);
     obj.rectangle13:setLeft(205);
     obj.rectangle13:setTop(50);
@@ -615,7 +616,7 @@ function newfrmStats()
     obj.rectangle13:setStrokeSize(1);
     obj.rectangle13:setName("rectangle13");
 
-    obj.label33 = gui.fromHandle(_obj_newObject("label"));
+    obj.label33 = GUI.fromHandle(_obj_newObject("label"));
     obj.label33:setParent(obj.layout3);
     obj.label33:setLeft(205);
     obj.label33:setTop(50);
@@ -626,7 +627,7 @@ function newfrmStats()
     obj.label33:setHorzTextAlign("center");
     obj.label33:setName("label33");
 
-    obj.label34 = gui.fromHandle(_obj_newObject("label"));
+    obj.label34 = GUI.fromHandle(_obj_newObject("label"));
     obj.label34:setParent(obj.layout3);
     obj.label34:setText("ACTIVE SKILLS");
     obj.label34:setLeft(5);
@@ -636,7 +637,7 @@ function newfrmStats()
     obj.label34:setHorzTextAlign("center");
     obj.label34:setName("label34");
 
-    obj.rectangle14 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle14 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle14:setParent(obj.layout3);
     obj.rectangle14:setLeft(155);
     obj.rectangle14:setTop(75);
@@ -647,7 +648,7 @@ function newfrmStats()
     obj.rectangle14:setStrokeSize(1);
     obj.rectangle14:setName("rectangle14");
 
-    obj.label35 = gui.fromHandle(_obj_newObject("label"));
+    obj.label35 = GUI.fromHandle(_obj_newObject("label"));
     obj.label35:setParent(obj.layout3);
     obj.label35:setLeft(155);
     obj.label35:setTop(75);
@@ -658,7 +659,7 @@ function newfrmStats()
     obj.label35:setHorzTextAlign("center");
     obj.label35:setName("label35");
 
-    obj.rectangle15 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle15 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle15:setParent(obj.layout3);
     obj.rectangle15:setLeft(205);
     obj.rectangle15:setTop(75);
@@ -669,7 +670,7 @@ function newfrmStats()
     obj.rectangle15:setStrokeSize(1);
     obj.rectangle15:setName("rectangle15");
 
-    obj.label36 = gui.fromHandle(_obj_newObject("label"));
+    obj.label36 = GUI.fromHandle(_obj_newObject("label"));
     obj.label36:setParent(obj.layout3);
     obj.label36:setLeft(205);
     obj.label36:setTop(75);
@@ -680,7 +681,7 @@ function newfrmStats()
     obj.label36:setHorzTextAlign("center");
     obj.label36:setName("label36");
 
-    obj.rectangle16 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle16 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle16:setParent(obj.layout3);
     obj.rectangle16:setLeft(255);
     obj.rectangle16:setTop(75);
@@ -691,7 +692,7 @@ function newfrmStats()
     obj.rectangle16:setStrokeSize(1);
     obj.rectangle16:setName("rectangle16");
 
-    obj.label37 = gui.fromHandle(_obj_newObject("label"));
+    obj.label37 = GUI.fromHandle(_obj_newObject("label"));
     obj.label37:setParent(obj.layout3);
     obj.label37:setLeft(255);
     obj.label37:setTop(75);
@@ -702,7 +703,7 @@ function newfrmStats()
     obj.label37:setHorzTextAlign("center");
     obj.label37:setName("label37");
 
-    obj.label38 = gui.fromHandle(_obj_newObject("label"));
+    obj.label38 = GUI.fromHandle(_obj_newObject("label"));
     obj.label38:setParent(obj.layout3);
     obj.label38:setText("KNOWLEDGE/LANGUAGE");
     obj.label38:setLeft(5);
@@ -712,7 +713,7 @@ function newfrmStats()
     obj.label38:setHorzTextAlign("center");
     obj.label38:setName("label38");
 
-    obj.rectangle17 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle17 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle17:setParent(obj.layout3);
     obj.rectangle17:setLeft(155);
     obj.rectangle17:setTop(100);
@@ -723,7 +724,7 @@ function newfrmStats()
     obj.rectangle17:setStrokeSize(1);
     obj.rectangle17:setName("rectangle17");
 
-    obj.label39 = gui.fromHandle(_obj_newObject("label"));
+    obj.label39 = GUI.fromHandle(_obj_newObject("label"));
     obj.label39:setParent(obj.layout3);
     obj.label39:setLeft(155);
     obj.label39:setTop(100);
@@ -734,7 +735,7 @@ function newfrmStats()
     obj.label39:setHorzTextAlign("center");
     obj.label39:setName("label39");
 
-    obj.rectangle18 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle18 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle18:setParent(obj.layout3);
     obj.rectangle18:setLeft(205);
     obj.rectangle18:setTop(100);
@@ -745,7 +746,7 @@ function newfrmStats()
     obj.rectangle18:setStrokeSize(1);
     obj.rectangle18:setName("rectangle18");
 
-    obj.label40 = gui.fromHandle(_obj_newObject("label"));
+    obj.label40 = GUI.fromHandle(_obj_newObject("label"));
     obj.label40:setParent(obj.layout3);
     obj.label40:setLeft(205);
     obj.label40:setTop(100);
@@ -757,7 +758,7 @@ function newfrmStats()
     obj.label40:setName("label40");
 
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             					local karma = 	(tonumber(sheet.attribute_karma_spent) or 0) + 
@@ -884,6 +885,6 @@ local _frmStats = {
     description=""};
 
 frmStats = _frmStats;
-rrpg.registrarForm(_frmStats);
+Firecast.registrarForm(_frmStats);
 
 return _frmStats;

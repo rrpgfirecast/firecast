@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmMagiaItemComCheckbox()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,10 +31,10 @@ function newfrmMagiaItemComCheckbox()
 
 			
 			local function askForDelete()
-				dialogs.confirmYesNo("Deseja realmente apagar este item?",
+				Dialogs.confirmYesNo("Deseja realmente apagar este item?",
 									 function (confirmado)
 										if confirmado then
-											ndb.deleteNode(self.sheet);
+											NDB.deleteNode(self.sheet);
 										end;
 									 end);
 			end;
@@ -51,7 +52,7 @@ function newfrmMagiaItemComCheckbox()
 			
 
 
-    obj.imageCheckBox1 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox1 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox1:setParent(obj);
     obj.imageCheckBox1:setAlign("left");
     obj.imageCheckBox1:setWidth(25);
@@ -63,12 +64,12 @@ function newfrmMagiaItemComCheckbox()
     obj.imageCheckBox1:setName("imageCheckBox1");
     obj.imageCheckBox1:setHeight(20);
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setAlign("client");
     obj.layout1:setName("layout1");
 
-    obj.edtNome = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtNome = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtNome:setParent(obj.layout1);
     obj.edtNome:setName("edtNome");
     obj.edtNome:setAlign("client");
@@ -79,13 +80,13 @@ function newfrmMagiaItemComCheckbox()
     obj.edtNome:setFontColor("white");
     obj.edtNome:setTransparent(true);
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.layout1);
     obj.horzLine1:setAlign("bottom");
     obj.horzLine1:setStrokeColor("white");
     obj.horzLine1:setName("horzLine1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout1);
     obj.button1:setText("i");
     obj.button1:setAlign("right");
@@ -93,7 +94,7 @@ function newfrmMagiaItemComCheckbox()
     obj.button1:setMargins({left=4, right=0, top=2, bottom=2});
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout1);
     obj.button2:setText("Apagar");
     obj.button2:setAlign("right");
@@ -105,12 +106,12 @@ self.height=32;
 
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             showMagiaPopup();
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             askForDelete();
         end, obj);
 
@@ -155,6 +156,6 @@ local _frmMagiaItemComCheckbox = {
     description=""};
 
 frmMagiaItemComCheckbox = _frmMagiaItemComCheckbox;
-rrpg.registrarForm(_frmMagiaItemComCheckbox);
+Firecast.registrarForm(_frmMagiaItemComCheckbox);
 
 return _frmMagiaItemComCheckbox;

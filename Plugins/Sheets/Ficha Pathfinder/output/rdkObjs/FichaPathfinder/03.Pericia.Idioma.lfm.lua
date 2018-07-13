@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmFichaRPGmeister3i_svg()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -56,14 +57,14 @@ function newfrmFichaRPGmeister3i_svg()
 		
 
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#202020");
     obj.rectangle1:setHitTest(false);
     obj.rectangle1:setName("rectangle1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj);
     obj.edit1:setVertTextAlign("center");
     obj.edit1:setLeft(0);
@@ -73,7 +74,7 @@ function newfrmFichaRPGmeister3i_svg()
     obj.edit1:setField("nomeIdioma");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj);
     obj.edit2:setVertTextAlign("center");
     obj.edit2:setLeft(110);
@@ -83,7 +84,7 @@ function newfrmFichaRPGmeister3i_svg()
     obj.edit2:setField("alfabetoIdioma");
     obj.edit2:setName("edit2");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setLeft(220);
     obj.button1:setTop(1);
@@ -92,7 +93,7 @@ function newfrmFichaRPGmeister3i_svg()
     obj.button1:setText("i");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj);
     obj.button2:setLeft(245);
     obj.button2:setTop(1);
@@ -102,7 +103,7 @@ function newfrmFichaRPGmeister3i_svg()
     obj.button2:setName("button2");
 
     obj._e_event0 = obj.edit1:addEventListener("onChange",
-        function (self)
+        function (_)
             local rcl = self:findControlByName("rclListaDosIdiomas");
             			if rcl~= nil then
             				rcl:sort();
@@ -110,12 +111,12 @@ function newfrmFichaRPGmeister3i_svg()
         end, obj);
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             showIdiomaPopup();
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             askForDelete();
         end, obj);
 
@@ -160,6 +161,6 @@ local _frmFichaRPGmeister3i_svg = {
     description=""};
 
 frmFichaRPGmeister3i_svg = _frmFichaRPGmeister3i_svg;
-rrpg.registrarForm(_frmFichaRPGmeister3i_svg);
+Firecast.registrarForm(_frmFichaRPGmeister3i_svg);
 
 return _frmFichaRPGmeister3i_svg;

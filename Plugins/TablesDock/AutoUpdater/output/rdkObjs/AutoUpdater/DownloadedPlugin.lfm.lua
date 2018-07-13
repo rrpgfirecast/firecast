@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmDownloadedPlugin()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,13 +31,13 @@ function newfrmDownloadedPlugin()
     obj:setHeight(50);
     obj:setMargins({top=1});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setAlign("left");
     obj.label1:setField("name");
@@ -45,7 +46,7 @@ function newfrmDownloadedPlugin()
     obj.label1:setWordWrap(true);
     obj.label1:setName("label1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.rectangle1);
     obj.label2:setAlign("left");
     obj.label2:setField("moduleId");
@@ -54,7 +55,7 @@ function newfrmDownloadedPlugin()
     obj.label2:setWordWrap(true);
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.rectangle1);
     obj.label3:setAlign("left");
     obj.label3:setField("author");
@@ -63,7 +64,7 @@ function newfrmDownloadedPlugin()
     obj.label3:setWordWrap(true);
     obj.label3:setName("label3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.rectangle1);
     obj.label4:setAlign("left");
     obj.label4:setField("version");
@@ -72,7 +73,7 @@ function newfrmDownloadedPlugin()
     obj.label4:setWordWrap(true);
     obj.label4:setName("label4");
 
-    obj.downloadButton = gui.fromHandle(_obj_newObject("button"));
+    obj.downloadButton = GUI.fromHandle(_obj_newObject("button"));
     obj.downloadButton:setParent(obj.rectangle1);
     obj.downloadButton:setAlign("right");
     obj.downloadButton:setWidth(25);
@@ -80,20 +81,20 @@ function newfrmDownloadedPlugin()
     obj.downloadButton:setVisible(false);
     obj.downloadButton:setMargins({top = 12.5, bottom = 12.5, right = 5});
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.downloadButton);
     obj.image1:setAlign("client");
     obj.image1:setShowStyle("proportional");
     obj.image1:setSRC("/AutoUpdater/images/download.png");
     obj.image1:setName("image1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setFields({'url'});
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.downloadButton:addEventListener("onClick",
-        function (self)
+        function (_)
             local install = true;
             				if sheet.stream ~= nil then
             					install = rrpg.plugins.installPlugin(sheet.stream, true);
@@ -104,7 +105,7 @@ function newfrmDownloadedPlugin()
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             			if sheet.url==nil or sheet.url=="" then
@@ -157,6 +158,6 @@ local _frmDownloadedPlugin = {
     description=""};
 
 frmDownloadedPlugin = _frmDownloadedPlugin;
-rrpg.registrarForm(_frmDownloadedPlugin);
+Firecast.registrarForm(_frmDownloadedPlugin);
 
 return _frmDownloadedPlugin;

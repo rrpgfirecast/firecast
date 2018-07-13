@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmPluginBaixando()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -36,11 +37,11 @@ function newfrmPluginBaixando()
 				local internetDownloadId = sheet.internetDownloadId;
 				
 				if internetDownloadId ~= nil then
-					internet.stopDownload(internetDownloadId);
+					Internet.stopDownload(internetDownloadId);
 					sheet.internetDownloadId = nil;
 				end;		
 				
-				ndb.deleteNode(sheet);
+				NDB.deleteNode(sheet);
 			end;
 		end;
 		
@@ -52,7 +53,7 @@ function newfrmPluginBaixando()
 			local indicatorId = sheet.indicatorId;
 		
 			if sheet.errorMsg == nil then
-				dialogs.confirmYesNo("Deseja realmente cancelar o download?",
+				Dialogs.confirmYesNo(lang("plugins.mgr.cancelConfirmation"),
 					function(confirmado)
 						if confirmado then
 							realmenteCancelarDownload(indicatorId);
@@ -65,14 +66,14 @@ function newfrmPluginBaixando()
 	
 
 
-    obj.flwPlug = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flwPlug = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flwPlug:setParent(obj);
     obj.flwPlug:setName("flwPlug");
     obj.flwPlug:setAlign("top");
     obj.flwPlug:setMaxControlsPerLine(10);
     obj.flwPlug:setAutoHeight(true);
 
-    obj.flowPart1 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart1 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart1:setParent(obj.flwPlug);
     obj.flowPart1:setMinWidth(100);
     obj.flowPart1:setMaxWidth(800);
@@ -80,7 +81,7 @@ function newfrmPluginBaixando()
     obj.flowPart1:setHeight(20);
     obj.flowPart1:setName("flowPart1");
 
-    obj.labUrl = gui.fromHandle(_obj_newObject("label"));
+    obj.labUrl = GUI.fromHandle(_obj_newObject("label"));
     obj.labUrl:setParent(obj.flowPart1);
     obj.labUrl:setName("labUrl");
     obj.labUrl:setField("fileName");
@@ -88,12 +89,12 @@ function newfrmPluginBaixando()
     obj.labUrl:setFontColor("white");
     obj.labUrl:setAlign("client");
 
-    obj.flowLineBreak1 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak1 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak1:setParent(obj.flwPlug);
     obj.flowLineBreak1:setHorzAlign("center");
     obj.flowLineBreak1:setName("flowLineBreak1");
 
-    obj.flowPart2 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart2 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart2:setParent(obj.flwPlug);
     obj.flowPart2:setMinWidth(80);
     obj.flowPart2:setMaxWidth(250);
@@ -101,44 +102,44 @@ function newfrmPluginBaixando()
     obj.flowPart2:setHeight(32);
     obj.flowPart2:setName("flowPart2");
 
-    obj.indAtividade = gui.fromHandle(_obj_newObject("activityIndicator"));
+    obj.indAtividade = GUI.fromHandle(_obj_newObject("activityIndicator"));
     obj.indAtividade:setParent(obj.flowPart2);
     obj.indAtividade:setName("indAtividade");
     obj.indAtividade:setAlign("left");
     obj.indAtividade:setWidth(32);
     obj.indAtividade:setEnabled(true);
 
-    obj.labProgress = gui.fromHandle(_obj_newObject("label"));
+    obj.labProgress = GUI.fromHandle(_obj_newObject("label"));
     obj.labProgress:setParent(obj.flowPart2);
     obj.labProgress:setName("labProgress");
     obj.labProgress:setAlign("client");
     obj.labProgress:setText("0,0%");
 
-    obj.btnCancelar = gui.fromHandle(_obj_newObject("button"));
+    obj.btnCancelar = GUI.fromHandle(_obj_newObject("button"));
     obj.btnCancelar:setParent(obj.flwPlug);
     obj.btnCancelar:setName("btnCancelar");
-    obj.btnCancelar:setText("Cancelar");
+    obj.btnCancelar:setText(lang("plugins.mgr.cancel"));
     obj.btnCancelar:setMargins({left=10, top=5});
     obj.btnCancelar:setWidth(110);
     obj.btnCancelar:setHeight(32);
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setFields({'progress', 'errorMsg'});
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.flwPlug:addEventListener("onResize",
-        function (self)
+        function (_)
             self.height = self.flwPlug.height + 8;
         end, obj);
 
     obj._e_event1 = obj.btnCancelar:addEventListener("onClick",
-        function (self)
+        function (_)
             cancelarDownload();
         end, obj);
 
     obj._e_event2 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local errorMsg = sheet.errorMsg;
             			
             			if errorMsg == nil then												
@@ -195,6 +196,6 @@ local _frmPluginBaixando = {
     description=""};
 
 frmPluginBaixando = _frmPluginBaixando;
-rrpg.registrarForm(_frmPluginBaixando);
+Firecast.registrarForm(_frmPluginBaixando);
 
 return _frmPluginBaixando;

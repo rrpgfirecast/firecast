@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmSkillItem()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,13 +32,13 @@ function newfrmSkillItem()
     obj:setHeight(25);
     obj:setMargins({top=1, right=5});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setLeft(0);
     obj.edit1:setTop(0);
@@ -46,7 +47,7 @@ function newfrmSkillItem()
     obj.edit1:setField("nome");
     obj.edit1:setName("edit1");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.rectangle1);
     obj.checkBox1:setField("treinado");
     obj.checkBox1:setLeft(150);
@@ -56,7 +57,7 @@ function newfrmSkillItem()
     obj.checkBox1:setHorzTextAlign("center");
     obj.checkBox1:setName("checkBox1");
 
-    obj.checkBox2 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox2 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox2:setParent(obj.rectangle1);
     obj.checkBox2:setField("especializado");
     obj.checkBox2:setLeft(180);
@@ -66,7 +67,7 @@ function newfrmSkillItem()
     obj.checkBox2:setHorzTextAlign("center");
     obj.checkBox2:setName("checkBox2");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(215);
     obj.button1:setTop(0);
@@ -76,7 +77,7 @@ function newfrmSkillItem()
     obj.button1:setName("button1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar essea perícia?",
             					function (confirmado)
             						if confirmado then
@@ -124,6 +125,6 @@ local _frmSkillItem = {
     description=""};
 
 frmSkillItem = _frmSkillItem;
-rrpg.registrarForm(_frmSkillItem);
+Firecast.registrarForm(_frmSkillItem);
 
 return _frmSkillItem;

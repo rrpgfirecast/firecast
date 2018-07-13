@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrm_FM()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -33,19 +34,19 @@ function newfrm_FM()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.popCredit = gui.fromHandle(_obj_newObject("popup"));
+    obj.popCredit = GUI.fromHandle(_obj_newObject("popup"));
     obj.popCredit:setParent(obj.scrollBox1);
     obj.popCredit:setName("popCredit");
     obj.popCredit:setWidth(415);
     obj.popCredit:setHeight(250);
     obj.popCredit:setBackOpacity(0.4);
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.popCredit);
     obj.image1:setLeft(5);
     obj.image1:setTop(5);
@@ -56,7 +57,7 @@ function newfrm_FM()
     obj.image1:setOptimize(true);
     obj.image1:setName("image1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.popCredit);
     obj.layout1:setLeft(210);
     obj.layout1:setTop(5);
@@ -64,7 +65,7 @@ function newfrm_FM()
     obj.layout1:setHeight(150);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
@@ -76,7 +77,7 @@ function newfrm_FM()
     obj.rectangle1:setCornerType("round");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(0);
     obj.label1:setTop(10);
@@ -86,7 +87,7 @@ function newfrm_FM()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout1);
     obj.label2:setLeft(0);
     obj.label2:setTop(35);
@@ -96,7 +97,7 @@ function newfrm_FM()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout1);
     obj.label3:setLeft(0);
     obj.label3:setTop(95);
@@ -106,7 +107,7 @@ function newfrm_FM()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout1);
     obj.label4:setLeft(0);
     obj.label4:setTop(120);
@@ -116,7 +117,7 @@ function newfrm_FM()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.popCredit);
     obj.label5:setLeft(210);
     obj.label5:setTop(160);
@@ -126,7 +127,7 @@ function newfrm_FM()
     obj.label5:setField("versionInstalled");
     obj.label5:setName("label5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.popCredit);
     obj.label6:setLeft(210);
     obj.label6:setTop(190);
@@ -136,7 +137,7 @@ function newfrm_FM()
     obj.label6:setField("versionDownloaded");
     obj.label6:setName("label6");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.popCredit);
     obj.label7:setLeft(5);
     obj.label7:setTop(210);
@@ -145,7 +146,7 @@ function newfrm_FM()
     obj.label7:setText("CONHEÇA A MESA:");
     obj.label7:setName("label7");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.popCredit);
     obj.button1:setLeft(125);
     obj.button1:setTop(210);
@@ -153,7 +154,7 @@ function newfrm_FM()
     obj.button1:setText("RPGmeister");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.popCredit);
     obj.button2:setLeft(305);
     obj.button2:setTop(215);
@@ -161,14 +162,14 @@ function newfrm_FM()
     obj.button2:setText("Atualizar");
     obj.button2:setName("button2");
 
-    obj.popupSettings = gui.fromHandle(_obj_newObject("popup"));
+    obj.popupSettings = GUI.fromHandle(_obj_newObject("popup"));
     obj.popupSettings:setParent(obj.scrollBox1);
     obj.popupSettings:setName("popupSettings");
     obj.popupSettings:setWidth(210);
     obj.popupSettings:setHeight(160);
     obj.popupSettings:setBackOpacity(0.4);
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.popupSettings);
     obj.layout2:setLeft(5);
     obj.layout2:setTop(5);
@@ -176,7 +177,7 @@ function newfrm_FM()
     obj.layout2:setHeight(160);
     obj.layout2:setName("layout2");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout2);
     obj.label8:setTop(0);
     obj.label8:setWidth(150);
@@ -185,7 +186,7 @@ function newfrm_FM()
     obj.label8:setHorzTextAlign("center");
     obj.label8:setName("label8");
 
-    obj.colorComboBox1 = gui.fromHandle(_obj_newObject("colorComboBox"));
+    obj.colorComboBox1 = GUI.fromHandle(_obj_newObject("colorComboBox"));
     obj.colorComboBox1:setParent(obj.layout2);
     obj.colorComboBox1:setLeft(150);
     obj.colorComboBox1:setTop(0);
@@ -197,7 +198,7 @@ function newfrm_FM()
     obj.colorComboBox1:setHint("Muda a cor padrão da cor de fundo do editor de texto. ");
     obj.colorComboBox1:setName("colorComboBox1");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout2);
     obj.label9:setTop(25);
     obj.label9:setWidth(150);
@@ -206,7 +207,7 @@ function newfrm_FM()
     obj.label9:setHorzTextAlign("center");
     obj.label9:setName("label9");
 
-    obj.colorComboBox2 = gui.fromHandle(_obj_newObject("colorComboBox"));
+    obj.colorComboBox2 = GUI.fromHandle(_obj_newObject("colorComboBox"));
     obj.colorComboBox2:setParent(obj.layout2);
     obj.colorComboBox2:setLeft(150);
     obj.colorComboBox2:setTop(25);
@@ -218,13 +219,13 @@ function newfrm_FM()
     obj.colorComboBox2:setHint("Muda a cor padrão da fonte do editor de texto.");
     obj.colorComboBox2:setName("colorComboBox2");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.layout2);
     obj.dataLink1:setField("fontColor");
     obj.dataLink1:setDefaultValue("#FFFFFF");
     obj.dataLink1:setName("dataLink1");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout2);
     obj.label10:setTop(50);
     obj.label10:setWidth(150);
@@ -234,7 +235,7 @@ function newfrm_FM()
     obj.label10:setHorzTextAlign("center");
     obj.label10:setName("label10");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout2);
     obj.edit1:setLeft(150);
     obj.edit1:setTop(50);
@@ -246,13 +247,13 @@ function newfrm_FM()
     obj.edit1:setMax(72);
     obj.edit1:setName("edit1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.layout2);
     obj.dataLink2:setField("fontSize");
     obj.dataLink2:setDefaultValue("15");
     obj.dataLink2:setName("dataLink2");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.layout2);
     obj.checkBox1:setTop(75);
     obj.checkBox1:setWidth(200);
@@ -261,7 +262,7 @@ function newfrm_FM()
     obj.checkBox1:setField("showToolbar");
     obj.checkBox1:setName("checkBox1");
 
-    obj.checkBox2 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox2 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox2:setParent(obj.layout2);
     obj.checkBox2:setTop(100);
     obj.checkBox2:setWidth(200);
@@ -271,7 +272,7 @@ function newfrm_FM()
     obj.checkBox2:setHint("Vai usar essas configurações em todas fichas multiabas abertas.");
     obj.checkBox2:setName("checkBox2");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.layout2);
     obj.button3:setTop(125);
     obj.button3:setWidth(200);
@@ -347,18 +348,18 @@ function newfrm_FM()
 		
 
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.scrollBox1);
     obj.layout3:setAlign("top");
     obj.layout3:setName("layout3");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout3);
     obj.layout4:setAlign("left");
     obj.layout4:setWidth(150);
     obj.layout4:setName("layout4");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.layout4);
     obj.button4:setLeft(0);
     obj.button4:setTop(0);
@@ -368,7 +369,7 @@ function newfrm_FM()
     obj.button4:setHint("Adiciona nova aba. ");
     obj.button4:setName("button4");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.button4);
     obj.image2:setLeft(5);
     obj.image2:setTop(5);
@@ -377,7 +378,7 @@ function newfrm_FM()
     obj.image2:setSRC("/FichaMultiaba/images/addIcon.png");
     obj.image2:setName("image2");
 
-    obj.settingsBT = gui.fromHandle(_obj_newObject("button"));
+    obj.settingsBT = GUI.fromHandle(_obj_newObject("button"));
     obj.settingsBT:setParent(obj.layout4);
     obj.settingsBT:setLeft(50);
     obj.settingsBT:setTop(0);
@@ -387,7 +388,7 @@ function newfrm_FM()
     obj.settingsBT:setName("settingsBT");
     obj.settingsBT:setHint("Opções da ficha.");
 
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
     obj.image3:setParent(obj.settingsBT);
     obj.image3:setLeft(5);
     obj.image3:setTop(5);
@@ -396,7 +397,7 @@ function newfrm_FM()
     obj.image3:setSRC("/FichaMultiaba/images/config.png");
     obj.image3:setName("image3");
 
-    obj.creditBt = gui.fromHandle(_obj_newObject("button"));
+    obj.creditBt = GUI.fromHandle(_obj_newObject("button"));
     obj.creditBt:setParent(obj.layout4);
     obj.creditBt:setLeft(100);
     obj.creditBt:setTop(0);
@@ -405,12 +406,12 @@ function newfrm_FM()
     obj.creditBt:setText("?");
     obj.creditBt:setName("creditBt");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout3);
     obj.layout5:setAlign("client");
     obj.layout5:setName("layout5");
 
-    obj.rclAbas = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclAbas = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclAbas:setParent(obj.layout5);
     obj.rclAbas:setName("rclAbas");
     obj.rclAbas:setField("abas");
@@ -420,18 +421,18 @@ function newfrm_FM()
     obj.rclAbas:setSelectable(true);
     obj.rclAbas:setLayout("horizontal");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.scrollBox1);
     obj.layout6:setAlign("client");
     obj.layout6:setName("layout6");
 
-    obj.boxTexto = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.boxTexto = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.boxTexto:setParent(obj.layout6);
     obj.boxTexto:setName("boxTexto");
     obj.boxTexto:setAlign("client");
     obj.boxTexto:setVisible(false);
 
-    obj.txt = gui.fromHandle(_obj_newObject("richEdit"));
+    obj.txt = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.txt:setParent(obj.boxTexto);
     obj.txt:setName("txt");
     obj.txt:setAlign("client");
@@ -441,7 +442,7 @@ function newfrm_FM()
     lfm_setPropAsString(obj.txt, "hideSelection",  "false");
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
-        function (self)
+        function (_)
             internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true",
                         function(stream, contentType)
                             local info = rrpg.plugins.getRPKDetails(stream);
@@ -478,17 +479,17 @@ function newfrm_FM()
         end, obj);
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true')
         end, obj);
 
     obj._e_event3 = obj.colorComboBox1:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             							self.txt.backgroundColor = sheet.backgroundColor;
             							default.backgroundColor = sheet.backgroundColor;
@@ -496,7 +497,7 @@ function newfrm_FM()
         end, obj);
 
     obj._e_event4 = obj.colorComboBox2:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             							self.txt.defaultFontColor = sheet.fontColor;
             							default.fontColor = sheet.fontColor;
@@ -504,7 +505,7 @@ function newfrm_FM()
         end, obj);
 
     obj._e_event5 = obj.edit1:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             							self.txt.defaultFontSize = sheet.fontSize;
             							default.fontSize = sheet.fontSize;
@@ -512,7 +513,7 @@ function newfrm_FM()
         end, obj);
 
     obj._e_event6 = obj.checkBox1:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             							self.txt.showToolbar = not sheet.showToolbar;
             							default.showToolbar = sheet.showToolbar;
@@ -520,14 +521,14 @@ function newfrm_FM()
         end, obj);
 
     obj._e_event7 = obj.checkBox2:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             					default.global = sheet.global;
             				end;
         end, obj);
 
     obj._e_event8 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet~=nil then
             							local default = ndb.load("defaults.xml");
             							
@@ -546,12 +547,12 @@ function newfrm_FM()
         end, obj);
 
     obj._e_event9 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclAbas:append();
         end, obj);
 
     obj._e_event10 = obj.settingsBT:addEventListener("onClick",
-        function (self)
+        function (_)
             loadDefault();
             						local pop = self:findControlByName("popupSettings");
             					
@@ -564,7 +565,7 @@ function newfrm_FM()
         end, obj);
 
     obj._e_event11 = obj.creditBt:addEventListener("onClick",
-        function (self)
+        function (_)
             local pop = self:findControlByName("popCredit");
             					
             						if pop ~= nil then
@@ -576,14 +577,14 @@ function newfrm_FM()
         end, obj);
 
     obj._e_event12 = obj.rclAbas:addEventListener("onSelect",
-        function (self)
+        function (_)
             local node = self.rclAbas.selectedNode;
             						self.boxTexto.node = node;
             						self.boxTexto.visible = (node ~= nil);
         end, obj);
 
     obj._e_event13 = obj.rclAbas:addEventListener("onEndEnumeration",
-        function (self)
+        function (_)
             if self.rclAbas.selectedNode == nil and sheet ~= nil then
             							local nodes = ndb.getChildNodes(sheet.abas);			   
             
@@ -594,7 +595,7 @@ function newfrm_FM()
         end, obj);
 
     obj._e_event14 = obj.txt:addEventListener("onMouseMove",
-        function (self, event)
+        function (_, event)
             loadDefault();
         end, obj);
 
@@ -685,7 +686,7 @@ local _frm_FM = {
     description=""};
 
 frm_FM = _frm_FM;
-rrpg.registrarForm(_frm_FM);
-rrpg.registrarDataType(_frm_FM);
+Firecast.registrarForm(_frm_FM);
+Firecast.registrarDataType(_frm_FM);
 
 return _frm_FM;

@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrm_7mar_ficha_editavel1_svg()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,19 +32,19 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj:setTheme("light");
     obj:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setWidth(1188);
     obj.rectangle1:setHeight(918);
     obj.rectangle1:setColor("white");
     obj.rectangle1:setName("rectangle1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.rectangle1);
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
@@ -54,7 +55,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.image1:setOptimize(true);
     obj.image1:setName("image1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.rectangle1);
     obj.layout1:setLeft(132);
     obj.layout1:setTop(85);
@@ -62,7 +63,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout1:setHeight(28);
     obj.layout1:setName("layout1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setTransparent(true);
     obj.edit1:setFontSize(14.2);
@@ -76,7 +77,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.edit1:setField("Jogador");
     obj.edit1:setName("edit1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.rectangle1);
     obj.layout2:setLeft(132);
     obj.layout2:setTop(109);
@@ -84,7 +85,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout2:setHeight(28);
     obj.layout2:setName("layout2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout2);
     obj.edit2:setTransparent(true);
     obj.edit2:setFontSize(14.2);
@@ -98,7 +99,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.edit2:setField("Personaguem");
     obj.edit2:setName("edit2");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.rectangle1);
     obj.layout3:setLeft(132);
     obj.layout3:setTop(158);
@@ -106,7 +107,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout3:setHeight(28);
     obj.layout3:setName("layout3");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout3);
     obj.edit3:setTransparent(true);
     obj.edit3:setFontSize(14.2);
@@ -120,7 +121,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.edit3:setField("nação");
     obj.edit3:setName("edit3");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.rectangle1);
     obj.layout4:setLeft(132);
     obj.layout4:setTop(134);
@@ -128,7 +129,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout4:setHeight(28);
     obj.layout4:setName("layout4");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout4);
     obj.edit4:setTransparent(true);
     obj.edit4:setFontSize(14.2);
@@ -142,7 +143,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.edit4:setField("conceito");
     obj.edit4:setName("edit4");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.rectangle1);
     obj.layout5:setLeft(132);
     obj.layout5:setTop(182);
@@ -150,7 +151,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout5:setHeight(28);
     obj.layout5:setName("layout5");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout5);
     obj.edit5:setTransparent(true);
     obj.edit5:setFontSize(14.2);
@@ -164,7 +165,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.edit5:setField("religião");
     obj.edit5:setName("edit5");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.rectangle1);
     obj.layout6:setLeft(132);
     obj.layout6:setTop(269);
@@ -172,7 +173,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout6:setHeight(28);
     obj.layout6:setName("layout6");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout6);
     obj.edit6:setTransparent(true);
     obj.edit6:setFontSize(14.2);
@@ -186,7 +187,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.edit6:setField("riqueza");
     obj.edit6:setName("edit6");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.rectangle1);
     obj.layout7:setLeft(132);
     obj.layout7:setTop(220);
@@ -194,7 +195,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout7:setHeight(42);
     obj.layout7:setName("layout7");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout7);
     obj.textEditor1:setLeft(0);
     obj.textEditor1:setTop(0);
@@ -206,7 +207,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.textEditor1:setTransparent(true);
     obj.textEditor1:setName("textEditor1");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.rectangle1);
     obj.layout8:setLeft(35);
     obj.layout8:setTop(362);
@@ -214,7 +215,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout8:setHeight(121);
     obj.layout8:setName("layout8");
 
-    obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.layout8);
     obj.textEditor2:setLeft(0);
     obj.textEditor2:setTop(0);
@@ -226,7 +227,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.textEditor2:setTransparent(true);
     obj.textEditor2:setName("textEditor2");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.rectangle1);
     obj.layout9:setLeft(134);
     obj.layout9:setTop(513);
@@ -234,7 +235,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout9:setHeight(28);
     obj.layout9:setName("layout9");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout9);
     obj.edit7:setTransparent(true);
     obj.edit7:setFontSize(14.2);
@@ -248,7 +249,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.edit7:setField("Nome_H");
     obj.edit7:setName("edit7");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.rectangle1);
     obj.layout10:setLeft(134);
     obj.layout10:setTop(537);
@@ -256,7 +257,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout10:setHeight(28);
     obj.layout10:setName("layout10");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.layout10);
     obj.edit8:setTransparent(true);
     obj.edit8:setFontSize(14.2);
@@ -270,7 +271,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.edit8:setField("Objetivo");
     obj.edit8:setName("edit8");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.rectangle1);
     obj.layout11:setLeft(38);
     obj.layout11:setTop(621);
@@ -278,7 +279,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout11:setHeight(259);
     obj.layout11:setName("layout11");
 
-    obj.textEditor3 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor3:setParent(obj.layout11);
     obj.textEditor3:setLeft(0);
     obj.textEditor3:setTop(0);
@@ -290,7 +291,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.textEditor3:setTransparent(true);
     obj.textEditor3:setName("textEditor3");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.rectangle1);
     obj.layout12:setLeft(134);
     obj.layout12:setTop(562);
@@ -298,7 +299,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout12:setHeight(28);
     obj.layout12:setName("layout12");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.layout12);
     obj.edit9:setTransparent(true);
     obj.edit9:setFontSize(14.2);
@@ -312,7 +313,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.edit9:setField("Recompensas");
     obj.edit9:setName("edit9");
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.rectangle1);
     obj.layout13:setLeft(577);
     obj.layout13:setTop(87);
@@ -320,7 +321,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout13:setHeight(22);
     obj.layout13:setName("layout13");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.layout13);
     obj.checkBox1:setLeft(0);
     obj.checkBox1:setTop(0);
@@ -329,7 +330,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox1:setField("Vigor_1");
     obj.checkBox1:setName("checkBox1");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.rectangle1);
     obj.layout14:setLeft(594);
     obj.layout14:setTop(87);
@@ -337,7 +338,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout14:setHeight(22);
     obj.layout14:setName("layout14");
 
-    obj.checkBox2 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox2 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox2:setParent(obj.layout14);
     obj.checkBox2:setLeft(0);
     obj.checkBox2:setTop(0);
@@ -346,7 +347,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox2:setField("Vigor_2");
     obj.checkBox2:setName("checkBox2");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.rectangle1);
     obj.layout15:setLeft(611);
     obj.layout15:setTop(86);
@@ -354,7 +355,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout15:setHeight(22);
     obj.layout15:setName("layout15");
 
-    obj.checkBox3 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox3 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox3:setParent(obj.layout15);
     obj.checkBox3:setLeft(0);
     obj.checkBox3:setTop(0);
@@ -363,7 +364,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox3:setField("Vigor_3");
     obj.checkBox3:setName("checkBox3");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.rectangle1);
     obj.layout16:setLeft(628);
     obj.layout16:setTop(86);
@@ -371,7 +372,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout16:setHeight(22);
     obj.layout16:setName("layout16");
 
-    obj.checkBox4 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox4 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox4:setParent(obj.layout16);
     obj.checkBox4:setLeft(0);
     obj.checkBox4:setTop(0);
@@ -380,7 +381,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox4:setField("Vigor_4");
     obj.checkBox4:setName("checkBox4");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.rectangle1);
     obj.layout17:setLeft(645);
     obj.layout17:setTop(86);
@@ -388,7 +389,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout17:setHeight(22);
     obj.layout17:setName("layout17");
 
-    obj.checkBox5 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox5 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox5:setParent(obj.layout17);
     obj.checkBox5:setLeft(0);
     obj.checkBox5:setTop(0);
@@ -397,7 +398,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox5:setField("Vigor_5");
     obj.checkBox5:setName("checkBox5");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.rectangle1);
     obj.layout18:setLeft(577);
     obj.layout18:setTop(111);
@@ -405,7 +406,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout18:setHeight(22);
     obj.layout18:setName("layout18");
 
-    obj.checkBox6 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox6 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox6:setParent(obj.layout18);
     obj.checkBox6:setLeft(0);
     obj.checkBox6:setTop(0);
@@ -414,7 +415,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox6:setField("Finesse_1");
     obj.checkBox6:setName("checkBox6");
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.rectangle1);
     obj.layout19:setLeft(594);
     obj.layout19:setTop(111);
@@ -422,7 +423,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout19:setHeight(22);
     obj.layout19:setName("layout19");
 
-    obj.checkBox7 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox7 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox7:setParent(obj.layout19);
     obj.checkBox7:setLeft(0);
     obj.checkBox7:setTop(0);
@@ -431,7 +432,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox7:setField("Finesse_2");
     obj.checkBox7:setName("checkBox7");
 
-    obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.rectangle1);
     obj.layout20:setLeft(611);
     obj.layout20:setTop(111);
@@ -439,7 +440,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout20:setHeight(22);
     obj.layout20:setName("layout20");
 
-    obj.checkBox8 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox8 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox8:setParent(obj.layout20);
     obj.checkBox8:setLeft(0);
     obj.checkBox8:setTop(0);
@@ -448,7 +449,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox8:setField("Finesse_3");
     obj.checkBox8:setName("checkBox8");
 
-    obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.rectangle1);
     obj.layout21:setLeft(628);
     obj.layout21:setTop(111);
@@ -456,7 +457,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout21:setHeight(22);
     obj.layout21:setName("layout21");
 
-    obj.checkBox9 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox9 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox9:setParent(obj.layout21);
     obj.checkBox9:setLeft(0);
     obj.checkBox9:setTop(0);
@@ -465,7 +466,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox9:setField("Finesse_4");
     obj.checkBox9:setName("checkBox9");
 
-    obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.rectangle1);
     obj.layout22:setLeft(646);
     obj.layout22:setTop(111);
@@ -473,7 +474,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout22:setHeight(22);
     obj.layout22:setName("layout22");
 
-    obj.checkBox10 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox10 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox10:setParent(obj.layout22);
     obj.checkBox10:setLeft(0);
     obj.checkBox10:setTop(0);
@@ -482,7 +483,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox10:setField("Finesse_5");
     obj.checkBox10:setName("checkBox10");
 
-    obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.rectangle1);
     obj.layout23:setLeft(577);
     obj.layout23:setTop(136);
@@ -490,7 +491,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout23:setHeight(22);
     obj.layout23:setName("layout23");
 
-    obj.checkBox11 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox11 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox11:setParent(obj.layout23);
     obj.checkBox11:setLeft(0);
     obj.checkBox11:setTop(0);
@@ -499,7 +500,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox11:setField("Argúcia_1");
     obj.checkBox11:setName("checkBox11");
 
-    obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.rectangle1);
     obj.layout24:setLeft(594);
     obj.layout24:setTop(136);
@@ -507,7 +508,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout24:setHeight(22);
     obj.layout24:setName("layout24");
 
-    obj.checkBox12 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox12 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox12:setParent(obj.layout24);
     obj.checkBox12:setLeft(0);
     obj.checkBox12:setTop(0);
@@ -516,7 +517,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox12:setField("Argúcia_2");
     obj.checkBox12:setName("checkBox12");
 
-    obj.layout25 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.rectangle1);
     obj.layout25:setLeft(611);
     obj.layout25:setTop(136);
@@ -524,7 +525,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout25:setHeight(22);
     obj.layout25:setName("layout25");
 
-    obj.checkBox13 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox13 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox13:setParent(obj.layout25);
     obj.checkBox13:setLeft(0);
     obj.checkBox13:setTop(0);
@@ -533,7 +534,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox13:setField("Argúcia_3");
     obj.checkBox13:setName("checkBox13");
 
-    obj.layout26 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.rectangle1);
     obj.layout26:setLeft(628);
     obj.layout26:setTop(136);
@@ -541,7 +542,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout26:setHeight(22);
     obj.layout26:setName("layout26");
 
-    obj.checkBox14 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox14 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox14:setParent(obj.layout26);
     obj.checkBox14:setLeft(0);
     obj.checkBox14:setTop(0);
@@ -550,7 +551,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox14:setField("Argúcia_4");
     obj.checkBox14:setName("checkBox14");
 
-    obj.layout27 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.rectangle1);
     obj.layout27:setLeft(646);
     obj.layout27:setTop(136);
@@ -558,7 +559,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout27:setHeight(22);
     obj.layout27:setName("layout27");
 
-    obj.checkBox15 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox15 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox15:setParent(obj.layout27);
     obj.checkBox15:setLeft(0);
     obj.checkBox15:setTop(0);
@@ -567,7 +568,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox15:setField("Argúcia_5");
     obj.checkBox15:setName("checkBox15");
 
-    obj.layout28 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.rectangle1);
     obj.layout28:setLeft(577);
     obj.layout28:setTop(161);
@@ -575,7 +576,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout28:setHeight(22);
     obj.layout28:setName("layout28");
 
-    obj.checkBox16 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox16 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox16:setParent(obj.layout28);
     obj.checkBox16:setLeft(0);
     obj.checkBox16:setTop(0);
@@ -584,7 +585,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox16:setField("Determinação_1");
     obj.checkBox16:setName("checkBox16");
 
-    obj.layout29 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout29:setParent(obj.rectangle1);
     obj.layout29:setLeft(594);
     obj.layout29:setTop(161);
@@ -592,7 +593,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout29:setHeight(22);
     obj.layout29:setName("layout29");
 
-    obj.checkBox17 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox17 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox17:setParent(obj.layout29);
     obj.checkBox17:setLeft(0);
     obj.checkBox17:setTop(0);
@@ -601,7 +602,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox17:setField("Determinação_2");
     obj.checkBox17:setName("checkBox17");
 
-    obj.layout30 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout30:setParent(obj.rectangle1);
     obj.layout30:setLeft(611);
     obj.layout30:setTop(161);
@@ -609,7 +610,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout30:setHeight(22);
     obj.layout30:setName("layout30");
 
-    obj.checkBox18 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox18 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox18:setParent(obj.layout30);
     obj.checkBox18:setLeft(0);
     obj.checkBox18:setTop(0);
@@ -618,7 +619,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox18:setField("Determinação_3");
     obj.checkBox18:setName("checkBox18");
 
-    obj.layout31 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.rectangle1);
     obj.layout31:setLeft(628);
     obj.layout31:setTop(160);
@@ -626,7 +627,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout31:setHeight(22);
     obj.layout31:setName("layout31");
 
-    obj.checkBox19 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox19 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox19:setParent(obj.layout31);
     obj.checkBox19:setLeft(0);
     obj.checkBox19:setTop(0);
@@ -635,7 +636,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox19:setField("Determinação_4");
     obj.checkBox19:setName("checkBox19");
 
-    obj.layout32 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.rectangle1);
     obj.layout32:setLeft(646);
     obj.layout32:setTop(161);
@@ -643,7 +644,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout32:setHeight(22);
     obj.layout32:setName("layout32");
 
-    obj.checkBox20 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox20 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox20:setParent(obj.layout32);
     obj.checkBox20:setLeft(0);
     obj.checkBox20:setTop(0);
@@ -652,7 +653,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox20:setField("Determinação_5");
     obj.checkBox20:setName("checkBox20");
 
-    obj.layout33 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout33:setParent(obj.rectangle1);
     obj.layout33:setLeft(577);
     obj.layout33:setTop(185);
@@ -660,7 +661,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout33:setHeight(22);
     obj.layout33:setName("layout33");
 
-    obj.checkBox21 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox21 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox21:setParent(obj.layout33);
     obj.checkBox21:setLeft(0);
     obj.checkBox21:setTop(0);
@@ -669,7 +670,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox21:setField("Panache_1");
     obj.checkBox21:setName("checkBox21");
 
-    obj.layout34 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout34 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout34:setParent(obj.rectangle1);
     obj.layout34:setLeft(594);
     obj.layout34:setTop(185);
@@ -677,7 +678,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout34:setHeight(22);
     obj.layout34:setName("layout34");
 
-    obj.checkBox22 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox22 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox22:setParent(obj.layout34);
     obj.checkBox22:setLeft(0);
     obj.checkBox22:setTop(0);
@@ -686,7 +687,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox22:setField("Panache_2");
     obj.checkBox22:setName("checkBox22");
 
-    obj.layout35 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout35:setParent(obj.rectangle1);
     obj.layout35:setLeft(611);
     obj.layout35:setTop(185);
@@ -694,7 +695,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout35:setHeight(22);
     obj.layout35:setName("layout35");
 
-    obj.checkBox23 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox23 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox23:setParent(obj.layout35);
     obj.checkBox23:setLeft(0);
     obj.checkBox23:setTop(0);
@@ -703,7 +704,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox23:setField("Panache_3");
     obj.checkBox23:setName("checkBox23");
 
-    obj.layout36 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout36:setParent(obj.rectangle1);
     obj.layout36:setLeft(628);
     obj.layout36:setTop(185);
@@ -711,7 +712,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout36:setHeight(22);
     obj.layout36:setName("layout36");
 
-    obj.checkBox24 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox24 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox24:setParent(obj.layout36);
     obj.checkBox24:setLeft(0);
     obj.checkBox24:setTop(0);
@@ -720,7 +721,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox24:setField("Panache_4");
     obj.checkBox24:setName("checkBox24");
 
-    obj.layout37 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout37 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout37:setParent(obj.rectangle1);
     obj.layout37:setLeft(645);
     obj.layout37:setTop(185);
@@ -728,7 +729,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout37:setHeight(22);
     obj.layout37:setName("layout37");
 
-    obj.checkBox25 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox25 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox25:setParent(obj.layout37);
     obj.checkBox25:setLeft(0);
     obj.checkBox25:setTop(0);
@@ -737,7 +738,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox25:setField("Panache_5");
     obj.checkBox25:setName("checkBox25");
 
-    obj.layout38 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout38 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout38:setParent(obj.rectangle1);
     obj.layout38:setLeft(495);
     obj.layout38:setTop(263);
@@ -745,7 +746,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout38:setHeight(22);
     obj.layout38:setName("layout38");
 
-    obj.checkBox26 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox26 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox26:setParent(obj.layout38);
     obj.checkBox26:setLeft(0);
     obj.checkBox26:setTop(0);
@@ -754,7 +755,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox26:setField("Mirar_1");
     obj.checkBox26:setName("checkBox26");
 
-    obj.layout39 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout39 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout39:setParent(obj.rectangle1);
     obj.layout39:setLeft(512);
     obj.layout39:setTop(263);
@@ -762,7 +763,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout39:setHeight(22);
     obj.layout39:setName("layout39");
 
-    obj.checkBox27 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox27 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox27:setParent(obj.layout39);
     obj.checkBox27:setLeft(0);
     obj.checkBox27:setTop(0);
@@ -771,7 +772,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox27:setField("Mirar_2");
     obj.checkBox27:setName("checkBox27");
 
-    obj.layout40 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout40 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout40:setParent(obj.rectangle1);
     obj.layout40:setLeft(529);
     obj.layout40:setTop(263);
@@ -779,7 +780,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout40:setHeight(22);
     obj.layout40:setName("layout40");
 
-    obj.checkBox28 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox28 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox28:setParent(obj.layout40);
     obj.checkBox28:setLeft(0);
     obj.checkBox28:setTop(0);
@@ -788,7 +789,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox28:setField("Mirar_3");
     obj.checkBox28:setName("checkBox28");
 
-    obj.layout41 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout41 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout41:setParent(obj.rectangle1);
     obj.layout41:setLeft(545);
     obj.layout41:setTop(263);
@@ -796,7 +797,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout41:setHeight(22);
     obj.layout41:setName("layout41");
 
-    obj.checkBox29 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox29 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox29:setParent(obj.layout41);
     obj.checkBox29:setLeft(0);
     obj.checkBox29:setTop(0);
@@ -805,7 +806,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox29:setField("Mirar_4");
     obj.checkBox29:setName("checkBox29");
 
-    obj.layout42 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout42 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout42:setParent(obj.rectangle1);
     obj.layout42:setLeft(562);
     obj.layout42:setTop(263);
@@ -813,7 +814,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout42:setHeight(22);
     obj.layout42:setName("layout42");
 
-    obj.checkBox30 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox30 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox30:setParent(obj.layout42);
     obj.checkBox30:setLeft(0);
     obj.checkBox30:setTop(0);
@@ -822,7 +823,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox30:setField("Mirar_5");
     obj.checkBox30:setName("checkBox30");
 
-    obj.layout43 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout43 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout43:setParent(obj.rectangle1);
     obj.layout43:setLeft(495);
     obj.layout43:setTop(287);
@@ -830,7 +831,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout43:setHeight(22);
     obj.layout43:setName("layout43");
 
-    obj.checkBox31 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox31 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox31:setParent(obj.layout43);
     obj.checkBox31:setLeft(0);
     obj.checkBox31:setTop(0);
@@ -839,7 +840,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox31:setField("Atletismo_1");
     obj.checkBox31:setName("checkBox31");
 
-    obj.layout44 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout44 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout44:setParent(obj.rectangle1);
     obj.layout44:setLeft(512);
     obj.layout44:setTop(287);
@@ -847,7 +848,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout44:setHeight(22);
     obj.layout44:setName("layout44");
 
-    obj.checkBox32 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox32 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox32:setParent(obj.layout44);
     obj.checkBox32:setLeft(0);
     obj.checkBox32:setTop(0);
@@ -856,7 +857,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox32:setField("Atletismo_2");
     obj.checkBox32:setName("checkBox32");
 
-    obj.layout45 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout45 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout45:setParent(obj.rectangle1);
     obj.layout45:setLeft(529);
     obj.layout45:setTop(287);
@@ -864,7 +865,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout45:setHeight(22);
     obj.layout45:setName("layout45");
 
-    obj.checkBox33 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox33 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox33:setParent(obj.layout45);
     obj.checkBox33:setLeft(0);
     obj.checkBox33:setTop(0);
@@ -873,7 +874,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox33:setField("Atletismo_3");
     obj.checkBox33:setName("checkBox33");
 
-    obj.layout46 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout46 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout46:setParent(obj.rectangle1);
     obj.layout46:setLeft(545);
     obj.layout46:setTop(287);
@@ -881,7 +882,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout46:setHeight(22);
     obj.layout46:setName("layout46");
 
-    obj.checkBox34 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox34 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox34:setParent(obj.layout46);
     obj.checkBox34:setLeft(0);
     obj.checkBox34:setTop(0);
@@ -890,7 +891,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox34:setField("Atletismo_4");
     obj.checkBox34:setName("checkBox34");
 
-    obj.layout47 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout47 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout47:setParent(obj.rectangle1);
     obj.layout47:setLeft(562);
     obj.layout47:setTop(287);
@@ -898,7 +899,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout47:setHeight(22);
     obj.layout47:setName("layout47");
 
-    obj.checkBox35 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox35 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox35:setParent(obj.layout47);
     obj.checkBox35:setLeft(0);
     obj.checkBox35:setTop(0);
@@ -907,7 +908,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox35:setField("Atletismo_5");
     obj.checkBox35:setName("checkBox35");
 
-    obj.layout48 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout48 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout48:setParent(obj.rectangle1);
     obj.layout48:setLeft(495);
     obj.layout48:setTop(312);
@@ -915,7 +916,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout48:setHeight(22);
     obj.layout48:setName("layout48");
 
-    obj.checkBox36 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox36 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox36:setParent(obj.layout48);
     obj.checkBox36:setLeft(0);
     obj.checkBox36:setTop(0);
@@ -924,7 +925,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox36:setField("Briga_1");
     obj.checkBox36:setName("checkBox36");
 
-    obj.layout49 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout49:setParent(obj.rectangle1);
     obj.layout49:setLeft(512);
     obj.layout49:setTop(312);
@@ -932,7 +933,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout49:setHeight(22);
     obj.layout49:setName("layout49");
 
-    obj.checkBox37 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox37 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox37:setParent(obj.layout49);
     obj.checkBox37:setLeft(0);
     obj.checkBox37:setTop(0);
@@ -941,7 +942,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox37:setField("Briga_2");
     obj.checkBox37:setName("checkBox37");
 
-    obj.layout50 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout50 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout50:setParent(obj.rectangle1);
     obj.layout50:setLeft(529);
     obj.layout50:setTop(312);
@@ -949,7 +950,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout50:setHeight(22);
     obj.layout50:setName("layout50");
 
-    obj.checkBox38 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox38 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox38:setParent(obj.layout50);
     obj.checkBox38:setLeft(0);
     obj.checkBox38:setTop(0);
@@ -958,7 +959,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox38:setField("Briga_3");
     obj.checkBox38:setName("checkBox38");
 
-    obj.layout51 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout51 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout51:setParent(obj.rectangle1);
     obj.layout51:setLeft(545);
     obj.layout51:setTop(312);
@@ -966,7 +967,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout51:setHeight(22);
     obj.layout51:setName("layout51");
 
-    obj.checkBox39 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox39 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox39:setParent(obj.layout51);
     obj.checkBox39:setLeft(0);
     obj.checkBox39:setTop(0);
@@ -975,7 +976,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox39:setField("Briga_4");
     obj.checkBox39:setName("checkBox39");
 
-    obj.layout52 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout52 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout52:setParent(obj.rectangle1);
     obj.layout52:setLeft(562);
     obj.layout52:setTop(312);
@@ -983,7 +984,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout52:setHeight(22);
     obj.layout52:setName("layout52");
 
-    obj.checkBox40 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox40 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox40:setParent(obj.layout52);
     obj.checkBox40:setLeft(0);
     obj.checkBox40:setTop(0);
@@ -992,7 +993,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox40:setField("Briga_5");
     obj.checkBox40:setName("checkBox40");
 
-    obj.layout53 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout53 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout53:setParent(obj.rectangle1);
     obj.layout53:setLeft(495);
     obj.layout53:setTop(337);
@@ -1000,7 +1001,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout53:setHeight(22);
     obj.layout53:setName("layout53");
 
-    obj.checkBox41 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox41 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox41:setParent(obj.layout53);
     obj.checkBox41:setLeft(0);
     obj.checkBox41:setTop(0);
@@ -1009,7 +1010,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox41:setField("Convencer_1");
     obj.checkBox41:setName("checkBox41");
 
-    obj.layout54 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout54 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout54:setParent(obj.rectangle1);
     obj.layout54:setLeft(512);
     obj.layout54:setTop(337);
@@ -1017,7 +1018,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout54:setHeight(22);
     obj.layout54:setName("layout54");
 
-    obj.checkBox42 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox42 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox42:setParent(obj.layout54);
     obj.checkBox42:setLeft(0);
     obj.checkBox42:setTop(0);
@@ -1026,7 +1027,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox42:setField("Convencer_2");
     obj.checkBox42:setName("checkBox42");
 
-    obj.layout55 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout55 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout55:setParent(obj.rectangle1);
     obj.layout55:setLeft(529);
     obj.layout55:setTop(337);
@@ -1034,7 +1035,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout55:setHeight(22);
     obj.layout55:setName("layout55");
 
-    obj.checkBox43 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox43 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox43:setParent(obj.layout55);
     obj.checkBox43:setLeft(0);
     obj.checkBox43:setTop(0);
@@ -1043,7 +1044,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox43:setField("Convencer_3");
     obj.checkBox43:setName("checkBox43");
 
-    obj.layout56 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout56 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout56:setParent(obj.rectangle1);
     obj.layout56:setLeft(545);
     obj.layout56:setTop(337);
@@ -1051,7 +1052,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout56:setHeight(22);
     obj.layout56:setName("layout56");
 
-    obj.checkBox44 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox44 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox44:setParent(obj.layout56);
     obj.checkBox44:setLeft(0);
     obj.checkBox44:setTop(0);
@@ -1060,7 +1061,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox44:setField("Convencer_4");
     obj.checkBox44:setName("checkBox44");
 
-    obj.layout57 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout57 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout57:setParent(obj.rectangle1);
     obj.layout57:setLeft(562);
     obj.layout57:setTop(337);
@@ -1068,7 +1069,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout57:setHeight(22);
     obj.layout57:setName("layout57");
 
-    obj.checkBox45 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox45 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox45:setParent(obj.layout57);
     obj.checkBox45:setLeft(0);
     obj.checkBox45:setTop(0);
@@ -1077,7 +1078,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox45:setField("Convencer_5");
     obj.checkBox45:setName("checkBox45");
 
-    obj.layout58 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout58 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout58:setParent(obj.rectangle1);
     obj.layout58:setLeft(495);
     obj.layout58:setTop(362);
@@ -1085,7 +1086,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout58:setHeight(22);
     obj.layout58:setName("layout58");
 
-    obj.checkBox46 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox46 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox46:setParent(obj.layout58);
     obj.checkBox46:setLeft(0);
     obj.checkBox46:setTop(0);
@@ -1094,7 +1095,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox46:setField("Empatia_1");
     obj.checkBox46:setName("checkBox46");
 
-    obj.layout59 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout59 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout59:setParent(obj.rectangle1);
     obj.layout59:setLeft(511);
     obj.layout59:setTop(361);
@@ -1102,7 +1103,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout59:setHeight(22);
     obj.layout59:setName("layout59");
 
-    obj.checkBox47 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox47 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox47:setParent(obj.layout59);
     obj.checkBox47:setLeft(0);
     obj.checkBox47:setTop(0);
@@ -1111,7 +1112,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox47:setField("Empatia_2");
     obj.checkBox47:setName("checkBox47");
 
-    obj.layout60 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout60 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout60:setParent(obj.rectangle1);
     obj.layout60:setLeft(528);
     obj.layout60:setTop(361);
@@ -1119,7 +1120,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout60:setHeight(22);
     obj.layout60:setName("layout60");
 
-    obj.checkBox48 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox48 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox48:setParent(obj.layout60);
     obj.checkBox48:setLeft(0);
     obj.checkBox48:setTop(0);
@@ -1128,7 +1129,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox48:setField("Empatia_3");
     obj.checkBox48:setName("checkBox48");
 
-    obj.layout61 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout61 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout61:setParent(obj.rectangle1);
     obj.layout61:setLeft(545);
     obj.layout61:setTop(361);
@@ -1136,7 +1137,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout61:setHeight(22);
     obj.layout61:setName("layout61");
 
-    obj.checkBox49 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox49 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox49:setParent(obj.layout61);
     obj.checkBox49:setLeft(0);
     obj.checkBox49:setTop(0);
@@ -1145,7 +1146,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox49:setField("Empatia_4");
     obj.checkBox49:setName("checkBox49");
 
-    obj.layout62 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout62 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout62:setParent(obj.rectangle1);
     obj.layout62:setLeft(562);
     obj.layout62:setTop(361);
@@ -1153,7 +1154,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout62:setHeight(22);
     obj.layout62:setName("layout62");
 
-    obj.checkBox50 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox50 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox50:setParent(obj.layout62);
     obj.checkBox50:setLeft(0);
     obj.checkBox50:setTop(0);
@@ -1162,7 +1163,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox50:setField("Empatia_5");
     obj.checkBox50:setName("checkBox50");
 
-    obj.layout63 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout63 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout63:setParent(obj.rectangle1);
     obj.layout63:setLeft(495);
     obj.layout63:setTop(386);
@@ -1170,7 +1171,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout63:setHeight(22);
     obj.layout63:setName("layout63");
 
-    obj.checkBox51 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox51 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox51:setParent(obj.layout63);
     obj.checkBox51:setLeft(0);
     obj.checkBox51:setTop(0);
@@ -1179,7 +1180,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox51:setField("Esconder_1");
     obj.checkBox51:setName("checkBox51");
 
-    obj.layout64 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout64 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout64:setParent(obj.rectangle1);
     obj.layout64:setLeft(512);
     obj.layout64:setTop(386);
@@ -1187,7 +1188,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout64:setHeight(22);
     obj.layout64:setName("layout64");
 
-    obj.checkBox52 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox52 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox52:setParent(obj.layout64);
     obj.checkBox52:setLeft(0);
     obj.checkBox52:setTop(0);
@@ -1196,7 +1197,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox52:setField("Esconder_2");
     obj.checkBox52:setName("checkBox52");
 
-    obj.layout65 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout65 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout65:setParent(obj.rectangle1);
     obj.layout65:setLeft(529);
     obj.layout65:setTop(386);
@@ -1204,7 +1205,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout65:setHeight(22);
     obj.layout65:setName("layout65");
 
-    obj.checkBox53 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox53 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox53:setParent(obj.layout65);
     obj.checkBox53:setLeft(0);
     obj.checkBox53:setTop(0);
@@ -1213,7 +1214,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox53:setField("Esconder_3");
     obj.checkBox53:setName("checkBox53");
 
-    obj.layout66 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout66 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout66:setParent(obj.rectangle1);
     obj.layout66:setLeft(545);
     obj.layout66:setTop(386);
@@ -1221,7 +1222,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout66:setHeight(22);
     obj.layout66:setName("layout66");
 
-    obj.checkBox54 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox54 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox54:setParent(obj.layout66);
     obj.checkBox54:setLeft(0);
     obj.checkBox54:setTop(0);
@@ -1230,7 +1231,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox54:setField("Esconder_4");
     obj.checkBox54:setName("checkBox54");
 
-    obj.layout67 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout67 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout67:setParent(obj.rectangle1);
     obj.layout67:setLeft(562);
     obj.layout67:setTop(386);
@@ -1238,7 +1239,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout67:setHeight(22);
     obj.layout67:setName("layout67");
 
-    obj.checkBox55 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox55 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox55:setParent(obj.layout67);
     obj.checkBox55:setLeft(0);
     obj.checkBox55:setTop(0);
@@ -1247,7 +1248,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox55:setField("Esconder_5");
     obj.checkBox55:setName("checkBox55");
 
-    obj.layout68 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout68 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout68:setParent(obj.rectangle1);
     obj.layout68:setLeft(495);
     obj.layout68:setTop(411);
@@ -1255,7 +1256,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout68:setHeight(22);
     obj.layout68:setName("layout68");
 
-    obj.checkBox56 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox56 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox56:setParent(obj.layout68);
     obj.checkBox56:setLeft(0);
     obj.checkBox56:setTop(0);
@@ -1264,7 +1265,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox56:setField("Intimidar_1");
     obj.checkBox56:setName("checkBox56");
 
-    obj.layout69 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout69 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout69:setParent(obj.rectangle1);
     obj.layout69:setLeft(511);
     obj.layout69:setTop(411);
@@ -1272,7 +1273,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout69:setHeight(22);
     obj.layout69:setName("layout69");
 
-    obj.checkBox57 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox57 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox57:setParent(obj.layout69);
     obj.checkBox57:setLeft(0);
     obj.checkBox57:setTop(0);
@@ -1281,7 +1282,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox57:setField("Intimidar_2");
     obj.checkBox57:setName("checkBox57");
 
-    obj.layout70 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout70 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout70:setParent(obj.rectangle1);
     obj.layout70:setLeft(528);
     obj.layout70:setTop(411);
@@ -1289,7 +1290,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout70:setHeight(22);
     obj.layout70:setName("layout70");
 
-    obj.checkBox58 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox58 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox58:setParent(obj.layout70);
     obj.checkBox58:setLeft(0);
     obj.checkBox58:setTop(0);
@@ -1298,7 +1299,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox58:setField("Intimidar_3");
     obj.checkBox58:setName("checkBox58");
 
-    obj.layout71 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout71 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout71:setParent(obj.rectangle1);
     obj.layout71:setLeft(545);
     obj.layout71:setTop(411);
@@ -1306,7 +1307,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout71:setHeight(22);
     obj.layout71:setName("layout71");
 
-    obj.checkBox59 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox59 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox59:setParent(obj.layout71);
     obj.checkBox59:setLeft(0);
     obj.checkBox59:setTop(0);
@@ -1315,7 +1316,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox59:setField("Intimidar_4");
     obj.checkBox59:setName("checkBox59");
 
-    obj.layout72 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout72 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout72:setParent(obj.rectangle1);
     obj.layout72:setLeft(562);
     obj.layout72:setTop(411);
@@ -1323,7 +1324,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout72:setHeight(22);
     obj.layout72:setName("layout72");
 
-    obj.checkBox60 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox60 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox60:setParent(obj.layout72);
     obj.checkBox60:setLeft(0);
     obj.checkBox60:setTop(0);
@@ -1332,7 +1333,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox60:setField("Intimidar_5");
     obj.checkBox60:setName("checkBox60");
 
-    obj.layout73 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout73 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout73:setParent(obj.rectangle1);
     obj.layout73:setLeft(495);
     obj.layout73:setTop(454);
@@ -1340,7 +1341,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout73:setHeight(22);
     obj.layout73:setName("layout73");
 
-    obj.checkBox61 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox61 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox61:setParent(obj.layout73);
     obj.checkBox61:setLeft(0);
     obj.checkBox61:setTop(0);
@@ -1349,7 +1350,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox61:setField("Observar_1");
     obj.checkBox61:setName("checkBox61");
 
-    obj.layout74 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout74 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout74:setParent(obj.rectangle1);
     obj.layout74:setLeft(512);
     obj.layout74:setTop(454);
@@ -1357,7 +1358,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout74:setHeight(22);
     obj.layout74:setName("layout74");
 
-    obj.checkBox62 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox62 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox62:setParent(obj.layout74);
     obj.checkBox62:setLeft(0);
     obj.checkBox62:setTop(0);
@@ -1366,7 +1367,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox62:setField("Observar_2");
     obj.checkBox62:setName("checkBox62");
 
-    obj.layout75 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout75 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout75:setParent(obj.rectangle1);
     obj.layout75:setLeft(529);
     obj.layout75:setTop(454);
@@ -1374,7 +1375,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout75:setHeight(22);
     obj.layout75:setName("layout75");
 
-    obj.checkBox63 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox63 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox63:setParent(obj.layout75);
     obj.checkBox63:setLeft(0);
     obj.checkBox63:setTop(0);
@@ -1383,7 +1384,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox63:setField("Observar_3");
     obj.checkBox63:setName("checkBox63");
 
-    obj.layout76 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout76 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout76:setParent(obj.rectangle1);
     obj.layout76:setLeft(545);
     obj.layout76:setTop(454);
@@ -1391,7 +1392,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout76:setHeight(22);
     obj.layout76:setName("layout76");
 
-    obj.checkBox64 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox64 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox64:setParent(obj.layout76);
     obj.checkBox64:setLeft(0);
     obj.checkBox64:setTop(0);
@@ -1400,7 +1401,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox64:setField("Observar_4");
     obj.checkBox64:setName("checkBox64");
 
-    obj.layout77 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout77 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout77:setParent(obj.rectangle1);
     obj.layout77:setLeft(562);
     obj.layout77:setTop(454);
@@ -1408,7 +1409,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout77:setHeight(22);
     obj.layout77:setName("layout77");
 
-    obj.checkBox65 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox65 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox65:setParent(obj.layout77);
     obj.checkBox65:setLeft(0);
     obj.checkBox65:setTop(0);
@@ -1417,7 +1418,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox65:setField("Observar_5");
     obj.checkBox65:setName("checkBox65");
 
-    obj.layout78 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout78 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout78:setParent(obj.rectangle1);
     obj.layout78:setLeft(684);
     obj.layout78:setTop(263);
@@ -1425,7 +1426,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout78:setHeight(22);
     obj.layout78:setName("layout78");
 
-    obj.checkBox66 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox66 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox66:setParent(obj.layout78);
     obj.checkBox66:setLeft(0);
     obj.checkBox66:setTop(0);
@@ -1434,7 +1435,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox66:setField("Atuar_1");
     obj.checkBox66:setName("checkBox66");
 
-    obj.layout79 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout79 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout79:setParent(obj.rectangle1);
     obj.layout79:setLeft(701);
     obj.layout79:setTop(263);
@@ -1442,7 +1443,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout79:setHeight(22);
     obj.layout79:setName("layout79");
 
-    obj.checkBox67 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox67 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox67:setParent(obj.layout79);
     obj.checkBox67:setLeft(0);
     obj.checkBox67:setTop(0);
@@ -1451,7 +1452,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox67:setField("Atuar_2");
     obj.checkBox67:setName("checkBox67");
 
-    obj.layout80 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout80 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout80:setParent(obj.rectangle1);
     obj.layout80:setLeft(718);
     obj.layout80:setTop(263);
@@ -1459,7 +1460,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout80:setHeight(22);
     obj.layout80:setName("layout80");
 
-    obj.checkBox68 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox68 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox68:setParent(obj.layout80);
     obj.checkBox68:setLeft(0);
     obj.checkBox68:setTop(0);
@@ -1468,7 +1469,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox68:setField("Atuar_3");
     obj.checkBox68:setName("checkBox68");
 
-    obj.layout81 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout81 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout81:setParent(obj.rectangle1);
     obj.layout81:setLeft(734);
     obj.layout81:setTop(263);
@@ -1476,7 +1477,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout81:setHeight(22);
     obj.layout81:setName("layout81");
 
-    obj.checkBox69 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox69 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox69:setParent(obj.layout81);
     obj.checkBox69:setLeft(0);
     obj.checkBox69:setTop(0);
@@ -1485,7 +1486,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox69:setField("Atuar_4");
     obj.checkBox69:setName("checkBox69");
 
-    obj.layout82 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout82 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout82:setParent(obj.rectangle1);
     obj.layout82:setLeft(751);
     obj.layout82:setTop(263);
@@ -1493,7 +1494,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout82:setHeight(22);
     obj.layout82:setName("layout82");
 
-    obj.checkBox70 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox70 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox70:setParent(obj.layout82);
     obj.checkBox70:setLeft(0);
     obj.checkBox70:setTop(0);
@@ -1502,7 +1503,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox70:setField("Atuar_5");
     obj.checkBox70:setName("checkBox70");
 
-    obj.layout83 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout83 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout83:setParent(obj.rectangle1);
     obj.layout83:setLeft(684);
     obj.layout83:setTop(288);
@@ -1510,7 +1511,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout83:setHeight(22);
     obj.layout83:setName("layout83");
 
-    obj.checkBox71 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox71 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox71:setParent(obj.layout83);
     obj.checkBox71:setLeft(0);
     obj.checkBox71:setTop(0);
@@ -1519,7 +1520,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox71:setField("Cavalgar_1");
     obj.checkBox71:setName("checkBox71");
 
-    obj.layout84 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout84 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout84:setParent(obj.rectangle1);
     obj.layout84:setLeft(701);
     obj.layout84:setTop(288);
@@ -1527,7 +1528,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout84:setHeight(22);
     obj.layout84:setName("layout84");
 
-    obj.checkBox72 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox72 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox72:setParent(obj.layout84);
     obj.checkBox72:setLeft(0);
     obj.checkBox72:setTop(0);
@@ -1536,7 +1537,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox72:setField("Cavalgar_2");
     obj.checkBox72:setName("checkBox72");
 
-    obj.layout85 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout85 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout85:setParent(obj.rectangle1);
     obj.layout85:setLeft(718);
     obj.layout85:setTop(288);
@@ -1544,7 +1545,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout85:setHeight(22);
     obj.layout85:setName("layout85");
 
-    obj.checkBox73 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox73 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox73:setParent(obj.layout85);
     obj.checkBox73:setLeft(0);
     obj.checkBox73:setTop(0);
@@ -1553,7 +1554,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox73:setField("Cavalgar_3");
     obj.checkBox73:setName("checkBox73");
 
-    obj.layout86 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout86 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout86:setParent(obj.rectangle1);
     obj.layout86:setLeft(734);
     obj.layout86:setTop(287);
@@ -1561,7 +1562,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout86:setHeight(22);
     obj.layout86:setName("layout86");
 
-    obj.checkBox74 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox74 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox74:setParent(obj.layout86);
     obj.checkBox74:setLeft(0);
     obj.checkBox74:setTop(0);
@@ -1570,7 +1571,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox74:setField("Cavalgar_4");
     obj.checkBox74:setName("checkBox74");
 
-    obj.layout87 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout87 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout87:setParent(obj.rectangle1);
     obj.layout87:setLeft(751);
     obj.layout87:setTop(288);
@@ -1578,7 +1579,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout87:setHeight(22);
     obj.layout87:setName("layout87");
 
-    obj.checkBox75 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox75 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox75:setParent(obj.layout87);
     obj.checkBox75:setLeft(0);
     obj.checkBox75:setTop(0);
@@ -1587,7 +1588,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox75:setField("Cavalgar_5");
     obj.checkBox75:setName("checkBox75");
 
-    obj.layout88 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout88 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout88:setParent(obj.rectangle1);
     obj.layout88:setLeft(684);
     obj.layout88:setTop(312);
@@ -1595,7 +1596,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout88:setHeight(22);
     obj.layout88:setName("layout88");
 
-    obj.checkBox76 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox76 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox76:setParent(obj.layout88);
     obj.checkBox76:setLeft(0);
     obj.checkBox76:setTop(0);
@@ -1604,7 +1605,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox76:setField("Navegar_1");
     obj.checkBox76:setName("checkBox76");
 
-    obj.layout89 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout89 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout89:setParent(obj.rectangle1);
     obj.layout89:setLeft(701);
     obj.layout89:setTop(312);
@@ -1612,7 +1613,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout89:setHeight(22);
     obj.layout89:setName("layout89");
 
-    obj.checkBox77 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox77 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox77:setParent(obj.layout89);
     obj.checkBox77:setLeft(0);
     obj.checkBox77:setTop(0);
@@ -1621,7 +1622,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox77:setField("Navegar_2");
     obj.checkBox77:setName("checkBox77");
 
-    obj.layout90 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout90 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout90:setParent(obj.rectangle1);
     obj.layout90:setLeft(718);
     obj.layout90:setTop(312);
@@ -1629,7 +1630,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout90:setHeight(22);
     obj.layout90:setName("layout90");
 
-    obj.checkBox78 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox78 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox78:setParent(obj.layout90);
     obj.checkBox78:setLeft(0);
     obj.checkBox78:setTop(0);
@@ -1638,7 +1639,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox78:setField("Navegar_3");
     obj.checkBox78:setName("checkBox78");
 
-    obj.layout91 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout91 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout91:setParent(obj.rectangle1);
     obj.layout91:setLeft(734);
     obj.layout91:setTop(312);
@@ -1646,7 +1647,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout91:setHeight(22);
     obj.layout91:setName("layout91");
 
-    obj.checkBox79 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox79 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox79:setParent(obj.layout91);
     obj.checkBox79:setLeft(0);
     obj.checkBox79:setTop(0);
@@ -1655,7 +1656,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox79:setField("Navegar_4");
     obj.checkBox79:setName("checkBox79");
 
-    obj.layout92 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout92 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout92:setParent(obj.rectangle1);
     obj.layout92:setLeft(751);
     obj.layout92:setTop(312);
@@ -1663,7 +1664,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout92:setHeight(22);
     obj.layout92:setName("layout92");
 
-    obj.checkBox80 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox80 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox80:setParent(obj.layout92);
     obj.checkBox80:setLeft(0);
     obj.checkBox80:setTop(0);
@@ -1672,7 +1673,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox80:setField("Navegar_5");
     obj.checkBox80:setName("checkBox80");
 
-    obj.layout93 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout93 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout93:setParent(obj.rectangle1);
     obj.layout93:setLeft(684);
     obj.layout93:setTop(337);
@@ -1680,7 +1681,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout93:setHeight(22);
     obj.layout93:setName("layout93");
 
-    obj.checkBox81 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox81 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox81:setParent(obj.layout93);
     obj.checkBox81:setLeft(0);
     obj.checkBox81:setTop(0);
@@ -1689,7 +1690,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox81:setField("Erudição_1");
     obj.checkBox81:setName("checkBox81");
 
-    obj.layout94 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout94 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout94:setParent(obj.rectangle1);
     obj.layout94:setLeft(701);
     obj.layout94:setTop(337);
@@ -1697,7 +1698,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout94:setHeight(22);
     obj.layout94:setName("layout94");
 
-    obj.checkBox82 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox82 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox82:setParent(obj.layout94);
     obj.checkBox82:setLeft(0);
     obj.checkBox82:setTop(0);
@@ -1706,7 +1707,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox82:setField("Erudição_2");
     obj.checkBox82:setName("checkBox82");
 
-    obj.layout95 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout95 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout95:setParent(obj.rectangle1);
     obj.layout95:setLeft(718);
     obj.layout95:setTop(337);
@@ -1714,7 +1715,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout95:setHeight(22);
     obj.layout95:setName("layout95");
 
-    obj.checkBox83 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox83 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox83:setParent(obj.layout95);
     obj.checkBox83:setLeft(0);
     obj.checkBox83:setTop(0);
@@ -1723,7 +1724,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox83:setField("Erudição_3");
     obj.checkBox83:setName("checkBox83");
 
-    obj.layout96 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout96 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout96:setParent(obj.rectangle1);
     obj.layout96:setLeft(734);
     obj.layout96:setTop(337);
@@ -1731,7 +1732,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout96:setHeight(22);
     obj.layout96:setName("layout96");
 
-    obj.checkBox84 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox84 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox84:setParent(obj.layout96);
     obj.checkBox84:setLeft(0);
     obj.checkBox84:setTop(0);
@@ -1740,7 +1741,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox84:setField("Erudição_4");
     obj.checkBox84:setName("checkBox84");
 
-    obj.layout97 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout97 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout97:setParent(obj.rectangle1);
     obj.layout97:setLeft(751);
     obj.layout97:setTop(337);
@@ -1748,7 +1749,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout97:setHeight(22);
     obj.layout97:setName("layout97");
 
-    obj.checkBox85 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox85 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox85:setParent(obj.layout97);
     obj.checkBox85:setLeft(0);
     obj.checkBox85:setTop(0);
@@ -1757,7 +1758,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox85:setField("Erudição_5");
     obj.checkBox85:setName("checkBox85");
 
-    obj.layout98 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout98 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout98:setParent(obj.rectangle1);
     obj.layout98:setLeft(684);
     obj.layout98:setTop(362);
@@ -1765,7 +1766,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout98:setHeight(22);
     obj.layout98:setName("layout98");
 
-    obj.checkBox86 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox86 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox86:setParent(obj.layout98);
     obj.checkBox86:setLeft(0);
     obj.checkBox86:setTop(0);
@@ -1774,7 +1775,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox86:setField("Seduzir_1");
     obj.checkBox86:setName("checkBox86");
 
-    obj.layout99 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout99 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout99:setParent(obj.rectangle1);
     obj.layout99:setLeft(701);
     obj.layout99:setTop(361);
@@ -1782,7 +1783,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout99:setHeight(22);
     obj.layout99:setName("layout99");
 
-    obj.checkBox87 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox87 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox87:setParent(obj.layout99);
     obj.checkBox87:setLeft(0);
     obj.checkBox87:setTop(0);
@@ -1791,7 +1792,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox87:setField("Seduzir_2");
     obj.checkBox87:setName("checkBox87");
 
-    obj.layout100 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout100 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout100:setParent(obj.rectangle1);
     obj.layout100:setLeft(718);
     obj.layout100:setTop(361);
@@ -1799,7 +1800,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout100:setHeight(22);
     obj.layout100:setName("layout100");
 
-    obj.checkBox88 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox88 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox88:setParent(obj.layout100);
     obj.checkBox88:setLeft(0);
     obj.checkBox88:setTop(0);
@@ -1808,7 +1809,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox88:setField("Seduzir_3");
     obj.checkBox88:setName("checkBox88");
 
-    obj.layout101 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout101 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout101:setParent(obj.rectangle1);
     obj.layout101:setLeft(734);
     obj.layout101:setTop(361);
@@ -1816,7 +1817,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout101:setHeight(22);
     obj.layout101:setName("layout101");
 
-    obj.checkBox89 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox89 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox89:setParent(obj.layout101);
     obj.checkBox89:setLeft(0);
     obj.checkBox89:setTop(0);
@@ -1825,7 +1826,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox89:setField("Seduzir_4");
     obj.checkBox89:setName("checkBox89");
 
-    obj.layout102 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout102 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout102:setParent(obj.rectangle1);
     obj.layout102:setLeft(751);
     obj.layout102:setTop(361);
@@ -1833,7 +1834,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout102:setHeight(22);
     obj.layout102:setName("layout102");
 
-    obj.checkBox90 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox90 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox90:setParent(obj.layout102);
     obj.checkBox90:setLeft(0);
     obj.checkBox90:setTop(0);
@@ -1842,7 +1843,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox90:setField("Seduzir_5");
     obj.checkBox90:setName("checkBox90");
 
-    obj.layout103 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout103 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout103:setParent(obj.rectangle1);
     obj.layout103:setLeft(684);
     obj.layout103:setTop(386);
@@ -1850,7 +1851,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout103:setHeight(22);
     obj.layout103:setName("layout103");
 
-    obj.checkBox91 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox91 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox91:setParent(obj.layout103);
     obj.checkBox91:setLeft(0);
     obj.checkBox91:setTop(0);
@@ -1859,7 +1860,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox91:setField("Furto_1");
     obj.checkBox91:setName("checkBox91");
 
-    obj.layout104 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout104 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout104:setParent(obj.rectangle1);
     obj.layout104:setLeft(701);
     obj.layout104:setTop(386);
@@ -1867,7 +1868,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout104:setHeight(22);
     obj.layout104:setName("layout104");
 
-    obj.checkBox92 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox92 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox92:setParent(obj.layout104);
     obj.checkBox92:setLeft(0);
     obj.checkBox92:setTop(0);
@@ -1876,7 +1877,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox92:setField("Furto2");
     obj.checkBox92:setName("checkBox92");
 
-    obj.layout105 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout105 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout105:setParent(obj.rectangle1);
     obj.layout105:setLeft(718);
     obj.layout105:setTop(386);
@@ -1884,7 +1885,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout105:setHeight(22);
     obj.layout105:setName("layout105");
 
-    obj.checkBox93 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox93 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox93:setParent(obj.layout105);
     obj.checkBox93:setLeft(0);
     obj.checkBox93:setTop(0);
@@ -1893,7 +1894,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox93:setField("Furto_3");
     obj.checkBox93:setName("checkBox93");
 
-    obj.layout106 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout106 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout106:setParent(obj.rectangle1);
     obj.layout106:setLeft(734);
     obj.layout106:setTop(386);
@@ -1901,7 +1902,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout106:setHeight(22);
     obj.layout106:setName("layout106");
 
-    obj.checkBox94 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox94 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox94:setParent(obj.layout106);
     obj.checkBox94:setLeft(0);
     obj.checkBox94:setTop(0);
@@ -1910,7 +1911,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox94:setField("Furto_4");
     obj.checkBox94:setName("checkBox94");
 
-    obj.layout107 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout107 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout107:setParent(obj.rectangle1);
     obj.layout107:setLeft(751);
     obj.layout107:setTop(386);
@@ -1918,7 +1919,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout107:setHeight(22);
     obj.layout107:setName("layout107");
 
-    obj.checkBox95 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox95 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox95:setParent(obj.layout107);
     obj.checkBox95:setLeft(0);
     obj.checkBox95:setTop(0);
@@ -1927,7 +1928,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox95:setField("Furto_5");
     obj.checkBox95:setName("checkBox95");
 
-    obj.layout108 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout108 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout108:setParent(obj.rectangle1);
     obj.layout108:setLeft(684);
     obj.layout108:setTop(411);
@@ -1935,7 +1936,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout108:setHeight(22);
     obj.layout108:setName("layout108");
 
-    obj.checkBox96 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox96 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox96:setParent(obj.layout108);
     obj.checkBox96:setLeft(0);
     obj.checkBox96:setTop(0);
@@ -1944,7 +1945,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox96:setField("Arte_da_Guerra_1");
     obj.checkBox96:setName("checkBox96");
 
-    obj.layout109 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout109 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout109:setParent(obj.rectangle1);
     obj.layout109:setLeft(701);
     obj.layout109:setTop(411);
@@ -1952,7 +1953,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout109:setHeight(22);
     obj.layout109:setName("layout109");
 
-    obj.checkBox97 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox97 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox97:setParent(obj.layout109);
     obj.checkBox97:setLeft(0);
     obj.checkBox97:setTop(0);
@@ -1961,7 +1962,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox97:setField("Arte_da_Guerra_2");
     obj.checkBox97:setName("checkBox97");
 
-    obj.layout110 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout110 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout110:setParent(obj.rectangle1);
     obj.layout110:setLeft(718);
     obj.layout110:setTop(411);
@@ -1969,7 +1970,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout110:setHeight(22);
     obj.layout110:setName("layout110");
 
-    obj.checkBox98 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox98 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox98:setParent(obj.layout110);
     obj.checkBox98:setLeft(0);
     obj.checkBox98:setTop(0);
@@ -1978,7 +1979,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox98:setField("Arte_da_Guerra_3");
     obj.checkBox98:setName("checkBox98");
 
-    obj.layout111 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout111 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout111:setParent(obj.rectangle1);
     obj.layout111:setLeft(734);
     obj.layout111:setTop(411);
@@ -1986,7 +1987,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout111:setHeight(22);
     obj.layout111:setName("layout111");
 
-    obj.checkBox99 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox99 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox99:setParent(obj.layout111);
     obj.checkBox99:setLeft(0);
     obj.checkBox99:setTop(0);
@@ -1995,7 +1996,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox99:setField("Arte_da_Guerra_4");
     obj.checkBox99:setName("checkBox99");
 
-    obj.layout112 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout112 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout112:setParent(obj.rectangle1);
     obj.layout112:setLeft(751);
     obj.layout112:setTop(411);
@@ -2003,7 +2004,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout112:setHeight(22);
     obj.layout112:setName("layout112");
 
-    obj.checkBox100 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox100 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox100:setParent(obj.layout112);
     obj.checkBox100:setLeft(0);
     obj.checkBox100:setTop(0);
@@ -2012,7 +2013,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox100:setField("Arte_da_Guerra_5");
     obj.checkBox100:setName("checkBox100");
 
-    obj.layout113 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout113 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout113:setParent(obj.rectangle1);
     obj.layout113:setLeft(684);
     obj.layout113:setTop(454);
@@ -2020,7 +2021,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout113:setHeight(22);
     obj.layout113:setName("layout113");
 
-    obj.checkBox101 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox101 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox101:setParent(obj.layout113);
     obj.checkBox101:setLeft(0);
     obj.checkBox101:setTop(0);
@@ -2029,7 +2030,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox101:setField("Armas_1");
     obj.checkBox101:setName("checkBox101");
 
-    obj.layout114 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout114 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout114:setParent(obj.rectangle1);
     obj.layout114:setLeft(701);
     obj.layout114:setTop(454);
@@ -2037,7 +2038,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout114:setHeight(22);
     obj.layout114:setName("layout114");
 
-    obj.checkBox102 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox102 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox102:setParent(obj.layout114);
     obj.checkBox102:setLeft(0);
     obj.checkBox102:setTop(0);
@@ -2046,7 +2047,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox102:setField("Armas_2");
     obj.checkBox102:setName("checkBox102");
 
-    obj.layout115 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout115 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout115:setParent(obj.rectangle1);
     obj.layout115:setLeft(718);
     obj.layout115:setTop(454);
@@ -2054,7 +2055,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout115:setHeight(22);
     obj.layout115:setName("layout115");
 
-    obj.checkBox103 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox103 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox103:setParent(obj.layout115);
     obj.checkBox103:setLeft(0);
     obj.checkBox103:setTop(0);
@@ -2063,7 +2064,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox103:setField("Armas_3");
     obj.checkBox103:setName("checkBox103");
 
-    obj.layout116 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout116 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout116:setParent(obj.rectangle1);
     obj.layout116:setLeft(734);
     obj.layout116:setTop(454);
@@ -2071,7 +2072,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout116:setHeight(22);
     obj.layout116:setName("layout116");
 
-    obj.checkBox104 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox104 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox104:setParent(obj.layout116);
     obj.checkBox104:setLeft(0);
     obj.checkBox104:setTop(0);
@@ -2080,7 +2081,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox104:setField("Armas_4");
     obj.checkBox104:setName("checkBox104");
 
-    obj.layout117 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout117 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout117:setParent(obj.rectangle1);
     obj.layout117:setLeft(751);
     obj.layout117:setTop(454);
@@ -2088,7 +2089,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout117:setHeight(22);
     obj.layout117:setName("layout117");
 
-    obj.checkBox105 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox105 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox105:setParent(obj.layout117);
     obj.checkBox105:setLeft(0);
     obj.checkBox105:setTop(0);
@@ -2097,7 +2098,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox105:setField("Armas_5");
     obj.checkBox105:setName("checkBox105");
 
-    obj.layout118 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout118 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout118:setParent(obj.rectangle1);
     obj.layout118:setLeft(804);
     obj.layout118:setTop(93);
@@ -2105,7 +2106,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout118:setHeight(139);
     obj.layout118:setName("layout118");
 
-    obj.textEditor4 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor4:setParent(obj.layout118);
     obj.textEditor4:setLeft(0);
     obj.textEditor4:setTop(0);
@@ -2117,7 +2118,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.textEditor4:setTransparent(true);
     obj.textEditor4:setName("textEditor4");
 
-    obj.layout119 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout119 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout119:setParent(obj.rectangle1);
     obj.layout119:setLeft(804);
     obj.layout119:setTop(273);
@@ -2125,7 +2126,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout119:setHeight(604);
     obj.layout119:setName("layout119");
 
-    obj.textEditor5 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor5:setParent(obj.layout119);
     obj.textEditor5:setLeft(0);
     obj.textEditor5:setTop(0);
@@ -2137,7 +2138,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.textEditor5:setTransparent(true);
     obj.textEditor5:setName("textEditor5");
 
-    obj.layout120 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout120 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout120:setParent(obj.rectangle1);
     obj.layout120:setLeft(541);
     obj.layout120:setTop(693);
@@ -2145,7 +2146,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout120:setHeight(41);
     obj.layout120:setName("layout120");
 
-    obj.checkBox106 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox106 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox106:setParent(obj.layout120);
     obj.checkBox106:setLeft(0);
     obj.checkBox106:setTop(0);
@@ -2154,7 +2155,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox106:setField("Dano_1");
     obj.checkBox106:setName("checkBox106");
 
-    obj.layout121 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout121 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout121:setParent(obj.rectangle1);
     obj.layout121:setLeft(555);
     obj.layout121:setTop(666);
@@ -2162,7 +2163,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout121:setHeight(41);
     obj.layout121:setName("layout121");
 
-    obj.checkBox107 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox107 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox107:setParent(obj.layout121);
     obj.checkBox107:setLeft(0);
     obj.checkBox107:setTop(0);
@@ -2171,7 +2172,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox107:setField("Dano_2");
     obj.checkBox107:setName("checkBox107");
 
-    obj.layout122 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout122 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout122:setParent(obj.rectangle1);
     obj.layout122:setLeft(574);
     obj.layout122:setTop(639);
@@ -2179,7 +2180,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout122:setHeight(41);
     obj.layout122:setName("layout122");
 
-    obj.checkBox108 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox108 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox108:setParent(obj.layout122);
     obj.checkBox108:setLeft(0);
     obj.checkBox108:setTop(0);
@@ -2188,7 +2189,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox108:setField("Dano_3");
     obj.checkBox108:setName("checkBox108");
 
-    obj.layout123 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout123 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout123:setParent(obj.rectangle1);
     obj.layout123:setLeft(598);
     obj.layout123:setTop(618);
@@ -2196,7 +2197,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout123:setHeight(41);
     obj.layout123:setName("layout123");
 
-    obj.checkBox109 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox109 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox109:setParent(obj.layout123);
     obj.checkBox109:setLeft(0);
     obj.checkBox109:setTop(0);
@@ -2205,7 +2206,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox109:setField("Dano_4");
     obj.checkBox109:setName("checkBox109");
 
-    obj.layout124 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout124 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout124:setParent(obj.rectangle1);
     obj.layout124:setLeft(630);
     obj.layout124:setTop(605);
@@ -2213,7 +2214,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout124:setHeight(41);
     obj.layout124:setName("layout124");
 
-    obj.checkBox110 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox110 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox110:setParent(obj.layout124);
     obj.checkBox110:setLeft(0);
     obj.checkBox110:setTop(0);
@@ -2222,7 +2223,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox110:setField("Dano_Crítico_1");
     obj.checkBox110:setName("checkBox110");
 
-    obj.layout125 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout125 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout125:setParent(obj.rectangle1);
     obj.layout125:setLeft(666);
     obj.layout125:setTop(608);
@@ -2230,7 +2231,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout125:setHeight(41);
     obj.layout125:setName("layout125");
 
-    obj.checkBox111 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox111 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox111:setParent(obj.layout125);
     obj.checkBox111:setLeft(0);
     obj.checkBox111:setTop(0);
@@ -2239,7 +2240,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox111:setField("Dano_6");
     obj.checkBox111:setName("checkBox111");
 
-    obj.layout126 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout126 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout126:setParent(obj.rectangle1);
     obj.layout126:setLeft(695);
     obj.layout126:setTop(618);
@@ -2247,7 +2248,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout126:setHeight(41);
     obj.layout126:setName("layout126");
 
-    obj.checkBox112 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox112 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox112:setParent(obj.layout126);
     obj.checkBox112:setLeft(0);
     obj.checkBox112:setTop(0);
@@ -2256,7 +2257,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox112:setField("Dano_7");
     obj.checkBox112:setName("checkBox112");
 
-    obj.layout127 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout127 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout127:setParent(obj.rectangle1);
     obj.layout127:setLeft(719);
     obj.layout127:setTop(641);
@@ -2264,7 +2265,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout127:setHeight(41);
     obj.layout127:setName("layout127");
 
-    obj.checkBox113 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox113 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox113:setParent(obj.layout127);
     obj.checkBox113:setLeft(0);
     obj.checkBox113:setTop(0);
@@ -2273,7 +2274,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox113:setField("Dano_8");
     obj.checkBox113:setName("checkBox113");
 
-    obj.layout128 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout128 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout128:setParent(obj.rectangle1);
     obj.layout128:setLeft(737);
     obj.layout128:setTop(668);
@@ -2281,7 +2282,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout128:setHeight(41);
     obj.layout128:setName("layout128");
 
-    obj.checkBox114 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox114 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox114:setParent(obj.layout128);
     obj.checkBox114:setLeft(0);
     obj.checkBox114:setTop(0);
@@ -2290,7 +2291,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox114:setField("Dano_9");
     obj.checkBox114:setName("checkBox114");
 
-    obj.layout129 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout129 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout129:setParent(obj.rectangle1);
     obj.layout129:setLeft(744);
     obj.layout129:setTop(705);
@@ -2298,7 +2299,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout129:setHeight(41);
     obj.layout129:setName("layout129");
 
-    obj.checkBox115 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox115 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox115:setParent(obj.layout129);
     obj.checkBox115:setLeft(0);
     obj.checkBox115:setTop(0);
@@ -2307,7 +2308,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox115:setField("Dano_Crítico_2");
     obj.checkBox115:setName("checkBox115");
 
-    obj.layout130 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout130 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout130:setParent(obj.rectangle1);
     obj.layout130:setLeft(732);
     obj.layout130:setTop(738);
@@ -2315,7 +2316,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout130:setHeight(41);
     obj.layout130:setName("layout130");
 
-    obj.checkBox116 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox116 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox116:setParent(obj.layout130);
     obj.checkBox116:setLeft(0);
     obj.checkBox116:setTop(0);
@@ -2324,7 +2325,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox116:setField("Dano_10");
     obj.checkBox116:setName("checkBox116");
 
-    obj.layout131 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout131 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout131:setParent(obj.rectangle1);
     obj.layout131:setLeft(710);
     obj.layout131:setTop(759);
@@ -2332,7 +2333,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout131:setHeight(41);
     obj.layout131:setName("layout131");
 
-    obj.checkBox117 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox117 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox117:setParent(obj.layout131);
     obj.checkBox117:setLeft(0);
     obj.checkBox117:setTop(0);
@@ -2341,7 +2342,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox117:setField("Dano_11");
     obj.checkBox117:setName("checkBox117");
 
-    obj.layout132 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout132 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout132:setParent(obj.rectangle1);
     obj.layout132:setLeft(682);
     obj.layout132:setTop(772);
@@ -2349,7 +2350,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout132:setHeight(41);
     obj.layout132:setName("layout132");
 
-    obj.checkBox118 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox118 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox118:setParent(obj.layout132);
     obj.checkBox118:setLeft(0);
     obj.checkBox118:setTop(0);
@@ -2358,7 +2359,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox118:setField("Dano_12");
     obj.checkBox118:setName("checkBox118");
 
-    obj.layout133 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout133 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout133:setParent(obj.rectangle1);
     obj.layout133:setLeft(651);
     obj.layout133:setTop(776);
@@ -2366,7 +2367,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout133:setHeight(41);
     obj.layout133:setName("layout133");
 
-    obj.checkBox119 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox119 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox119:setParent(obj.layout133);
     obj.checkBox119:setLeft(0);
     obj.checkBox119:setTop(0);
@@ -2375,7 +2376,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox119:setField("Dano_13");
     obj.checkBox119:setName("checkBox119");
 
-    obj.layout134 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout134 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout134:setParent(obj.rectangle1);
     obj.layout134:setLeft(619);
     obj.layout134:setTop(761);
@@ -2383,7 +2384,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout134:setHeight(41);
     obj.layout134:setName("layout134");
 
-    obj.checkBox120 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox120 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox120:setParent(obj.layout134);
     obj.checkBox120:setLeft(0);
     obj.checkBox120:setTop(0);
@@ -2392,7 +2393,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox120:setField("Dano_Crítico_3");
     obj.checkBox120:setName("checkBox120");
 
-    obj.layout135 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout135 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout135:setParent(obj.rectangle1);
     obj.layout135:setLeft(596);
     obj.layout135:setTop(734);
@@ -2400,7 +2401,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout135:setHeight(41);
     obj.layout135:setName("layout135");
 
-    obj.checkBox121 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox121 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox121:setParent(obj.layout135);
     obj.checkBox121:setLeft(0);
     obj.checkBox121:setTop(0);
@@ -2409,7 +2410,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox121:setField("Dano_14");
     obj.checkBox121:setName("checkBox121");
 
-    obj.layout136 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout136 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout136:setParent(obj.rectangle1);
     obj.layout136:setLeft(592);
     obj.layout136:setTop(702);
@@ -2417,7 +2418,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout136:setHeight(41);
     obj.layout136:setName("layout136");
 
-    obj.checkBox122 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox122 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox122:setParent(obj.layout136);
     obj.checkBox122:setLeft(0);
     obj.checkBox122:setTop(0);
@@ -2426,7 +2427,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox122:setField("Dano_15");
     obj.checkBox122:setName("checkBox122");
 
-    obj.layout137 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout137 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout137:setParent(obj.rectangle1);
     obj.layout137:setLeft(608);
     obj.layout137:setTop(676);
@@ -2434,7 +2435,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout137:setHeight(41);
     obj.layout137:setName("layout137");
 
-    obj.checkBox123 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox123 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox123:setParent(obj.layout137);
     obj.checkBox123:setLeft(0);
     obj.checkBox123:setTop(0);
@@ -2443,7 +2444,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox123:setField("Dano_16");
     obj.checkBox123:setName("checkBox123");
 
-    obj.layout138 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout138 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout138:setParent(obj.rectangle1);
     obj.layout138:setLeft(638);
     obj.layout138:setTop(665);
@@ -2451,7 +2452,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout138:setHeight(41);
     obj.layout138:setName("layout138");
 
-    obj.checkBox124 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox124 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox124:setParent(obj.layout138);
     obj.checkBox124:setLeft(0);
     obj.checkBox124:setTop(0);
@@ -2460,7 +2461,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.checkBox124:setField("Dano_17");
     obj.checkBox124:setName("checkBox124");
 
-    obj.layout139 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout139 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout139:setParent(obj.rectangle1);
     obj.layout139:setLeft(671);
     obj.layout139:setTop(679);
@@ -2468,7 +2469,7 @@ function newfrm_7mar_ficha_editavel1_svg()
     obj.layout139:setHeight(41);
     obj.layout139:setName("layout139");
 
-    obj.checkBox125 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox125 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox125:setParent(obj.layout139);
     obj.checkBox125:setLeft(0);
     obj.checkBox125:setTop(0);
@@ -2791,6 +2792,6 @@ local _frm_7mar_ficha_editavel1_svg = {
     description=""};
 
 frm_7mar_ficha_editavel1_svg = _frm_7mar_ficha_editavel1_svg;
-rrpg.registrarForm(_frm_7mar_ficha_editavel1_svg);
+Firecast.registrarForm(_frm_7mar_ficha_editavel1_svg);
 
 return _frm_7mar_ficha_editavel1_svg;

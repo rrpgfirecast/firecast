@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmAMZ2_3()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,12 +31,12 @@ function newfrmAMZ2_3()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -43,7 +44,7 @@ function newfrmAMZ2_3()
     obj.layout1:setHeight(625);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
@@ -52,7 +53,7 @@ function newfrmAMZ2_3()
     obj.rectangle1:setCornerType("round");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(0);
     obj.label1:setTop(0);
@@ -62,7 +63,7 @@ function newfrmAMZ2_3()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.rclHabilidadesUnicas = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclHabilidadesUnicas = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclHabilidadesUnicas:setParent(obj.layout1);
     obj.rclHabilidadesUnicas:setName("rclHabilidadesUnicas");
     obj.rclHabilidadesUnicas:setField("campoDasHabilidadesUnicas");
@@ -74,7 +75,7 @@ function newfrmAMZ2_3()
     obj.rclHabilidadesUnicas:setLayout("vertical");
     obj.rclHabilidadesUnicas:setMinQt(3);
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.scrollBox1);
     obj.layout2:setLeft(410);
     obj.layout2:setTop(0);
@@ -82,7 +83,7 @@ function newfrmAMZ2_3()
     obj.layout2:setHeight(625);
     obj.layout2:setName("layout2");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout2);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("black");
@@ -91,7 +92,7 @@ function newfrmAMZ2_3()
     obj.rectangle2:setCornerType("round");
     obj.rectangle2:setName("rectangle2");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout2);
     obj.label2:setLeft(0);
     obj.label2:setTop(0);
@@ -101,7 +102,7 @@ function newfrmAMZ2_3()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.rclEstilosDeLuta = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclEstilosDeLuta = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclEstilosDeLuta:setParent(obj.layout2);
     obj.rclEstilosDeLuta:setName("rclEstilosDeLuta");
     obj.rclEstilosDeLuta:setField("campoDosEstilosDeLuta");
@@ -113,7 +114,7 @@ function newfrmAMZ2_3()
     obj.rclEstilosDeLuta:setLayout("vertical");
     obj.rclEstilosDeLuta:setMinQt(3);
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.scrollBox1);
     obj.layout3:setLeft(820);
     obj.layout3:setTop(0);
@@ -121,7 +122,7 @@ function newfrmAMZ2_3()
     obj.layout3:setHeight(625);
     obj.layout3:setName("layout3");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout3);
     obj.rectangle3:setAlign("client");
     obj.rectangle3:setColor("black");
@@ -130,7 +131,7 @@ function newfrmAMZ2_3()
     obj.rectangle3:setCornerType("round");
     obj.rectangle3:setName("rectangle3");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout3);
     obj.label3:setLeft(0);
     obj.label3:setTop(0);
@@ -140,7 +141,7 @@ function newfrmAMZ2_3()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout3);
     obj.button1:setLeft(375);
     obj.button1:setTop(1);
@@ -149,7 +150,7 @@ function newfrmAMZ2_3()
     obj.button1:setText("+");
     obj.button1:setName("button1");
 
-    obj.rclHabilidadesIniciais = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclHabilidadesIniciais = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclHabilidadesIniciais:setParent(obj.layout3);
     obj.rclHabilidadesIniciais:setName("rclHabilidadesIniciais");
     obj.rclHabilidadesIniciais:setField("campoDosHabilidadesIniciais");
@@ -162,7 +163,7 @@ function newfrmAMZ2_3()
     obj.rclHabilidadesIniciais:setMinQt(1);
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet~=nil then
             						local node = self.rclHabilidadesIniciais:append();
             					end;
@@ -216,6 +217,6 @@ local _frmAMZ2_3 = {
     description=""};
 
 frmAMZ2_3 = _frmAMZ2_3;
-rrpg.registrarForm(_frmAMZ2_3);
+Firecast.registrarForm(_frmAMZ2_3);
 
 return _frmAMZ2_3;

@@ -432,7 +432,7 @@ local function initBibPersonagemWrappedObjectFromHandle(handle)
 		
 		local function checkState()
 			if not jaNotificou then
-				local state = ndbBib.getState(rootNode);
+				state = ndbBib.getState(rootNode);
 			
 				if state == "open" then
 					jaNotificou = true;
@@ -469,7 +469,6 @@ end;
 		
 local function initBibSceneUnitClassWrappedObjectFromHandle(handle)
 	local wObj = initBibliotecaItemWrappedObjectFromHandle(handle); 
-	local bibItem = wObj;
 	
 	wObj.props["tamanhoX"] = {readProp = "TamanhoX", tipo = "double"};	
 	wObj.props["tamanhoY"] = {readProp = "TamanhoY", tipo = "double"};	
@@ -643,10 +642,10 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 	end;	
 	
 	function wChat:getRoom()
-		local handle = rawget(self, "handle");
+		local selfHandle = rawget(self, "handle");
 		
-		if handle ~= nil then
-			mesaObjectID = _rrpg_tryGetMesaObjectIDRelatedToHandle(handle);		
+		if selfHandle ~= nil then
+			mesaObjectID = _rrpg_tryGetMesaObjectIDRelatedToHandle(selfHandle);		
 			
 			if (mesaObjectID ~= nil) then
 				mesaObjectID = tonumber(mesaObjectID);

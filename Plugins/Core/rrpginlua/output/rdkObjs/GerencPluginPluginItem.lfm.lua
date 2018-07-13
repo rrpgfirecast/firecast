@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmGerencPluginItem()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -38,13 +39,13 @@ function newfrmGerencPluginItem()
 			
 			local moduleId = sheet.moduleId;
 			
-			dialogs.confirmYesNo("Deseja realmente desinstalar este plug-in?",
+			Dialogs.confirmYesNo(lang("plugins.mgr.uninstallConfirmation"),
 				function (confirmado)
 					if confirmado then
-						local r, msg = rrpg.plugins.uninstallPlugin(moduleId);
+						local r, msg = Firecast.Plugins.uninstallPlugin(moduleId);
 						
 						if not r then
-							showMessage("Não foi possível desinstalar o plugin: " .. msg);
+							showMessage(lang("plugins.mgr.uninstallFailure") .. ": " .. msg);
 						end;
 					end;
 				end);
@@ -52,14 +53,14 @@ function newfrmGerencPluginItem()
 		
 
 
-    obj.flwPlug = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flwPlug = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flwPlug:setParent(obj);
     obj.flwPlug:setName("flwPlug");
     obj.flwPlug:setAlign("top");
     obj.flwPlug:setMaxControlsPerLine(2);
     obj.flwPlug:setAutoHeight(true);
 
-    obj.labNome = gui.fromHandle(_obj_newObject("label"));
+    obj.labNome = GUI.fromHandle(_obj_newObject("label"));
     obj.labNome:setParent(obj.flwPlug);
     obj.labNome:setName("labNome");
     obj.labNome:setField("name");
@@ -68,7 +69,7 @@ function newfrmGerencPluginItem()
     obj.labNome:setMargins({right=3});
     obj.labNome:setAutoSize(true);
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.flwPlug);
     obj.label1:setField("version");
     obj.label1:setFontColor("gray");
@@ -77,18 +78,18 @@ function newfrmGerencPluginItem()
     obj.label1:setWordWrap(false);
     obj.label1:setAutoSize(true);
 
-    obj.flowLineBreak1 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak1 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak1:setParent(obj.flwPlug);
     obj.flowLineBreak1:setName("flowLineBreak1");
 
-    obj.fptDescricao = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.fptDescricao = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.fptDescricao:setParent(obj.flwPlug);
     obj.fptDescricao:setName("fptDescricao");
     obj.fptDescricao:setMinWidth(100);
     obj.fptDescricao:setMaxWidth(800);
     obj.fptDescricao:setMargins({left=10, right=10});
 
-    obj.labDescricao = gui.fromHandle(_obj_newObject("label"));
+    obj.labDescricao = GUI.fromHandle(_obj_newObject("label"));
     obj.labDescricao:setParent(obj.fptDescricao);
     obj.labDescricao:setName("labDescricao");
     obj.labDescricao:setField("description");
@@ -98,13 +99,13 @@ function newfrmGerencPluginItem()
     obj.labDescricao:setWordWrap(true);
     obj.labDescricao:setAutoSize(true);
 
-    obj.flowLineBreak2 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak2 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak2:setParent(obj.flwPlug);
     obj.flowLineBreak2:setName("flowLineBreak2");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.flwPlug);
-    obj.label2:setText("Autor: ");
+    obj.label2:setText(lang("plugins.mgr.authorLabel"));
     obj.label2:setFontColor("silver");
     obj.label2:setFontSize(12);
     obj.label2:setMargins({left=10});
@@ -112,7 +113,7 @@ function newfrmGerencPluginItem()
     obj.label2:setWordWrap(false);
     obj.label2:setAutoSize(true);
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.flwPlug);
     obj.label3:setField("author");
     obj.label3:setFontColor("gray");
@@ -121,40 +122,40 @@ function newfrmGerencPluginItem()
     obj.label3:setWordWrap(false);
     obj.label3:setAutoSize(true);
 
-    obj.flowLineBreak3 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak3 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak3:setParent(obj.flwPlug);
     obj.flowLineBreak3:setName("flowLineBreak3");
 
-    obj.btnDesinstalar = gui.fromHandle(_obj_newObject("button"));
+    obj.btnDesinstalar = GUI.fromHandle(_obj_newObject("button"));
     obj.btnDesinstalar:setParent(obj.flwPlug);
     obj.btnDesinstalar:setName("btnDesinstalar");
-    obj.btnDesinstalar:setText("Desinstalar");
+    obj.btnDesinstalar:setText(lang("plugins.mgr.uninstall"));
     obj.btnDesinstalar:setMargins({left=5, top=5});
     obj.btnDesinstalar:setWidth(110);
     obj.btnDesinstalar:setHeight(40);
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("moduleId");
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.flwPlug:addEventListener("onResize",
-        function (self)
+        function (_)
             self.height = self.flwPlug.height + 15;
         end, obj);
 
     obj._e_event1 = obj.labDescricao:addEventListener("onResize",
-        function (self)
+        function (_)
             self.fptDescricao.height = self.labDescricao.height;
         end, obj);
 
     obj._e_event2 = obj.btnDesinstalar:addEventListener("onClick",
-        function (self)
+        function (_)
             desinstalarPlugin()
         end, obj);
 
     obj._e_event3 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.btnDesinstalar.visible = sheet.moduleId ~= 'RRPG.FIRECAST.FMXModule';
         end, obj);
 
@@ -207,6 +208,6 @@ local _frmGerencPluginItem = {
     description=""};
 
 frmGerencPluginItem = _frmGerencPluginItem;
-rrpg.registrarForm(_frmGerencPluginItem);
+Firecast.registrarForm(_frmGerencPluginItem);
 
 return _frmGerencPluginItem;

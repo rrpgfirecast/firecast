@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmAvailable()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -29,12 +30,12 @@ function newfrmAvailable()
     obj:setName("frmAvailable");
     obj:setAlign("client");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.downloadedPluginsList = gui.fromHandle(_obj_newObject("recordList"));
+    obj.downloadedPluginsList = GUI.fromHandle(_obj_newObject("recordList"));
     obj.downloadedPluginsList:setParent(obj.scrollBox1);
     obj.downloadedPluginsList:setAlign("client");
     obj.downloadedPluginsList:setField("downloadedPluginsList");
@@ -42,7 +43,7 @@ function newfrmAvailable()
     obj.downloadedPluginsList:setTemplateForm("frmDownloadedPlugin");
 
     obj._e_event0 = obj.downloadedPluginsList:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             if nodeA.enabled and nodeB.enabled then 
             					return utils.compareStringPtBr(nodeA.name, nodeB.name);
             				elseif nodeA.enabled then
@@ -88,6 +89,6 @@ local _frmAvailable = {
     description=""};
 
 frmAvailable = _frmAvailable;
-rrpg.registrarForm(_frmAvailable);
+Firecast.registrarForm(_frmAvailable);
 
 return _frmAvailable;

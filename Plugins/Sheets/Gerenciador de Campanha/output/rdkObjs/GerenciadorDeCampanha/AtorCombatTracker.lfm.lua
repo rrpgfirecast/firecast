@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmAtorCombatTracker()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -794,7 +795,7 @@ function newfrmAtorCombatTracker()
 	
 
 
-    obj.rctOuter = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rctOuter = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rctOuter:setParent(obj);
     obj.rctOuter:setName("rctOuter");
     obj.rctOuter:setAlign("client");
@@ -804,14 +805,14 @@ function newfrmAtorCombatTracker()
     obj.rctOuter:setPadding({left=3, top=3, right=2, bottom=3});
     obj.rctOuter:setHitTest(true);
 
-    obj.layPrimeiraLinha = gui.fromHandle(_obj_newObject("layout"));
+    obj.layPrimeiraLinha = GUI.fromHandle(_obj_newObject("layout"));
     obj.layPrimeiraLinha:setParent(obj.rctOuter);
     obj.layPrimeiraLinha:setName("layPrimeiraLinha");
     obj.layPrimeiraLinha:setAlign("top");
     obj.layPrimeiraLinha:setHeight(20);
     obj.layPrimeiraLinha:setMargins({left=2, right=2});
 
-    obj.rctVez = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rctVez = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rctVez:setParent(obj.layPrimeiraLinha);
     obj.rctVez:setName("rctVez");
     obj.rctVez:setColor("#00000000");
@@ -824,7 +825,7 @@ function newfrmAtorCombatTracker()
     obj.rctVez:setWidth(23);
     obj.rctVez:setAlign("left");
 
-    obj.imgVez = gui.fromHandle(_obj_newObject("image"));
+    obj.imgVez = GUI.fromHandle(_obj_newObject("image"));
     obj.imgVez:setParent(obj.rctVez);
     obj.imgVez:setName("imgVez");
     obj.imgVez:setAlign("client");
@@ -832,7 +833,7 @@ function newfrmAtorCombatTracker()
     obj.imgVez:setVisible(false);
     obj.imgVez:setSRC("/GerenciadorDeCampanha/images/vez.png");
 
-    obj.edtNome = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtNome = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtNome:setParent(obj.layPrimeiraLinha);
     obj.edtNome:setName("edtNome");
     obj.edtNome:setField("nome");
@@ -841,7 +842,7 @@ function newfrmAtorCombatTracker()
     obj.edtNome:setWidth(28);
     obj.edtNome:setAlign("client");
 
-    obj.edtIniciativaBonus = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtIniciativaBonus = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtIniciativaBonus:setParent(obj.layPrimeiraLinha);
     obj.edtIniciativaBonus:setName("edtIniciativaBonus");
     obj.edtIniciativaBonus:setField("iniciativaBonus");
@@ -852,13 +853,13 @@ function newfrmAtorCombatTracker()
     obj.edtIniciativaBonus:setWidth(28);
     obj.edtIniciativaBonus:setAlign("left");
 
-    obj.layRightAlinedComps = gui.fromHandle(_obj_newObject("layout"));
+    obj.layRightAlinedComps = GUI.fromHandle(_obj_newObject("layout"));
     obj.layRightAlinedComps:setParent(obj.layPrimeiraLinha);
     obj.layRightAlinedComps:setName("layRightAlinedComps");
     obj.layRightAlinedComps:setAlign("right");
     obj.layRightAlinedComps:setWidth(78);
 
-    obj.edtIniciativa = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtIniciativa = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtIniciativa:setParent(obj.layRightAlinedComps);
     obj.edtIniciativa:setName("edtIniciativa");
     obj.edtIniciativa:setField("iniciativa");
@@ -869,7 +870,7 @@ function newfrmAtorCombatTracker()
     obj.edtIniciativa:setWidth(28);
     obj.edtIniciativa:setAlign("left");
 
-    obj.rctFriendOrFoe = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rctFriendOrFoe = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rctFriendOrFoe:setParent(obj.layRightAlinedComps);
     obj.rctFriendOrFoe:setName("rctFriendOrFoe");
     obj.rctFriendOrFoe:setColor("#00000000");
@@ -884,7 +885,7 @@ function newfrmAtorCombatTracker()
     obj.rctFriendOrFoe:setWidth(25);
     obj.rctFriendOrFoe:setAlign("left");
 
-    obj.imgDeleteAtor = gui.fromHandle(_obj_newObject("image"));
+    obj.imgDeleteAtor = GUI.fromHandle(_obj_newObject("image"));
     obj.imgDeleteAtor:setParent(obj.layRightAlinedComps);
     obj.imgDeleteAtor:setName("imgDeleteAtor");
     obj.imgDeleteAtor:setHitTest(true);
@@ -894,14 +895,14 @@ function newfrmAtorCombatTracker()
     obj.imgDeleteAtor:setWidth(15);
     obj.imgDeleteAtor:setAlign("left");
 
-    obj.laySegundaLinha = gui.fromHandle(_obj_newObject("layout"));
+    obj.laySegundaLinha = GUI.fromHandle(_obj_newObject("layout"));
     obj.laySegundaLinha:setParent(obj.rctOuter);
     obj.laySegundaLinha:setName("laySegundaLinha");
     obj.laySegundaLinha:setAlign("top");
     obj.laySegundaLinha:setHeight(20);
     obj.laySegundaLinha:setMargins({top=1, left=28, right=10});
 
-    obj.edtAnotacoes = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtAnotacoes = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtAnotacoes:setParent(obj.laySegundaLinha);
     obj.edtAnotacoes:setAlign("client");
     obj.edtAnotacoes:setField("dadosSensiveis.notas");
@@ -910,14 +911,14 @@ function newfrmAtorCombatTracker()
     obj.edtAnotacoes:setName("edtAnotacoes");
     obj.edtAnotacoes:setFontSize(11);
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.edtAnotacoes);
     obj.horzLine1:setAlign("bottom");
     obj.horzLine1:setStrokeColor("black");
     obj.horzLine1:setStrokeSize(1);
     obj.horzLine1:setName("horzLine1");
 
-    obj.imgInvisivel = gui.fromHandle(_obj_newObject("image"));
+    obj.imgInvisivel = GUI.fromHandle(_obj_newObject("image"));
     obj.imgInvisivel:setParent(obj.laySegundaLinha);
     obj.imgInvisivel:setAlign("right");
     obj.imgInvisivel:setName("imgInvisivel");
@@ -927,7 +928,7 @@ function newfrmAtorCombatTracker()
     obj.imgInvisivel:setCursor("handPoint");
     obj.imgInvisivel:setSRC("images/visivel 2.png");
 
-    obj.imgAddEfeito = gui.fromHandle(_obj_newObject("image"));
+    obj.imgAddEfeito = GUI.fromHandle(_obj_newObject("image"));
     obj.imgAddEfeito:setParent(obj.laySegundaLinha);
     obj.imgAddEfeito:setAlign("right");
     obj.imgAddEfeito:setHitTest(true);
@@ -938,7 +939,7 @@ function newfrmAtorCombatTracker()
     obj.imgAddEfeito:setMargins({left=4});
     obj.imgAddEfeito:setName("imgAddEfeito");
 
-    obj.rclEfeitos = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclEfeitos = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclEfeitos:setParent(obj.rctOuter);
     obj.rclEfeitos:setMargins({left=28, top=1, right=14});
     obj.rclEfeitos:setName("rclEfeitos");
@@ -974,17 +975,17 @@ function newfrmAtorCombatTracker()
 		
 
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("fof");
     obj.dataLink1:setName("dataLink1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj);
     obj.dataLink2:setField("vez");
     obj.dataLink2:setName("dataLink2");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj);
     obj.dataLink3:setFields({'iniciativa', '_id'});
     obj.dataLink3:setName("dataLink3");
@@ -1019,17 +1020,17 @@ function newfrmAtorCombatTracker()
 
 
     obj._e_event0 = obj:addEventListener("onMenu",
-        function (self, x, y)
+        function (_, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onShow",
-        function (self)
+        function (_)
             self:recalcularAlturaDoAtor();
         end, obj);
 
     obj._e_event2 = obj:addEventListener("onScopeNodeChanged",
-        function (self)
+        function (_)
             if self._observer ~= nil then
             			self._observer.enabled = false;
             			self._observer = nil;
@@ -1082,22 +1083,22 @@ function newfrmAtorCombatTracker()
         end, obj);
 
     obj._e_event3 = obj.rctOuter:addEventListener("onMenu",
-        function (self, x, y)
+        function (_, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
     obj._e_event4 = obj.rctVez:addEventListener("onMouseUp",
-        function (self, event)
+        function (_, event)
             self:setarTurnoDesteAtor();
         end, obj);
 
     obj._e_event5 = obj.rctVez:addEventListener("onMenu",
-        function (self, x, y)
+        function (_, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
     obj._e_event6 = obj.edtIniciativa:addEventListener("onChange",
-        function (self)
+        function (_)
             local rcl = self:findControlByName("rclAtores");
             						if rcl~= nil then
             							rcl:sort();
@@ -1105,52 +1106,52 @@ function newfrmAtorCombatTracker()
         end, obj);
 
     obj._e_event7 = obj.rctFriendOrFoe:addEventListener("onMouseUp",
-        function (self, event)
+        function (_, event)
             if event.button == 'left' then self:nextFriendOrFoeFlag(); end;
         end, obj);
 
     obj._e_event8 = obj.rctFriendOrFoe:addEventListener("onMenu",
-        function (self, x, y)
+        function (_, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
     obj._e_event9 = obj.imgDeleteAtor:addEventListener("onMouseUp",
-        function (self, event)
+        function (_, event)
             if event.button == 'left' then self:apagarAtor(); end;
         end, obj);
 
     obj._e_event10 = obj.imgDeleteAtor:addEventListener("onMenu",
-        function (self, x, y)
+        function (_, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
     obj._e_event11 = obj.imgInvisivel:addEventListener("onMouseUp",
-        function (self, event)
+        function (_, event)
             if event.button =='left' then self:alternarVisibilidade(); end;
         end, obj);
 
     obj._e_event12 = obj.imgAddEfeito:addEventListener("onMouseUp",
-        function (self, event)
+        function (_, event)
             if event.button =='left' then self:adicionarEfeito() end;
         end, obj);
 
     obj._e_event13 = obj.rclEfeitos:addEventListener("onResize",
-        function (self)
+        function (_)
             self:recalcularAlturaDoAtor()
         end, obj);
 
     obj._e_event14 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self:atualizarInterfaceFriendOrFoe();
         end, obj);
 
     obj._e_event15 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self:atualizarInterfaceVez();
         end, obj);
 
     obj._e_event16 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             agendarReordenacao();
         end, obj);
 
@@ -1223,6 +1224,6 @@ local _frmAtorCombatTracker = {
     description=""};
 
 frmAtorCombatTracker = _frmAtorCombatTracker;
-rrpg.registrarForm(_frmAtorCombatTracker);
+Firecast.registrarForm(_frmAtorCombatTracker);
 
 return _frmAtorCombatTracker;

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.4b">
+<module sdkVersion="3.5_prealpha_2">
 	<id>Ambesek.4DeT</id>
 	<version>0.2</version>
 	<name>Ficha 4D&amp;T</name>
 	<description>Ficha para DEfensores de Toqui 4ª edição. </description>
 	<author>Ambesek</author>
-	<site></site>
+	<site/>
 	<contact>vinnyrpgmeister@gmail.com</contact>
 </module>

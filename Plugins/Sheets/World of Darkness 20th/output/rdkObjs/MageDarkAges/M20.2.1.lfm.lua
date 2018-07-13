@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmMDA20_2_1()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,13 +32,13 @@ function newfrmMDA20_2_1()
     obj:setHeight(90);
     obj:setMargins({top=1});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setWidth(40);
     obj.label1:setHeight(25);
@@ -45,7 +46,7 @@ function newfrmMDA20_2_1()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setLeft(40);
     obj.edit1:setTop(0);
@@ -54,7 +55,7 @@ function newfrmMDA20_2_1()
     obj.edit1:setField("nome");
     obj.edit1:setName("edit1");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.rectangle1);
     obj.textEditor1:setLeft(0);
     obj.textEditor1:setTop(25);
@@ -63,7 +64,7 @@ function newfrmMDA20_2_1()
     obj.textEditor1:setField("description");
     obj.textEditor1:setName("textEditor1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(245);
     obj.button1:setTop(0);
@@ -72,13 +73,13 @@ function newfrmMDA20_2_1()
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.rectangle1);
     obj.dataLink1:setField("contador");
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
             					function (confirmado)
             						if confirmado then
@@ -88,7 +89,7 @@ function newfrmMDA20_2_1()
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~= nil then
             					local node = ndb.getRoot(sheet);
             					local objetos = ndb.getChildNodes(node.listaDe);
@@ -149,6 +150,6 @@ local _frmMDA20_2_1 = {
     description=""};
 
 frmMDA20_2_1 = _frmMDA20_2_1;
-rrpg.registrarForm(_frmMDA20_2_1);
+Firecast.registrarForm(_frmMDA20_2_1);
 
 return _frmMDA20_2_1;

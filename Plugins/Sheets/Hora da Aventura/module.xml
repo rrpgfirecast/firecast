@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.4b" compilationDate="03042018140242" sdkApiVersion="34" originalPluginFileName="RRPG 1.rpk">
+<module sdkVersion="3.5_prealpha_2" compilationDate="03042018140242" sdkApiVersion="34" originalPluginFileName="RRPG 1.rpk">
 	<!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
 	<id>HdA.LBP</id>
 	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
@@ -9,7 +9,5 @@
 	<author>LeandroBP</author>
 	<site>https://www.facebook.com/lebreves</site>
 	<contact>lebreves@gmail.com</contact>
-	<dataTypes>
-		<dataType title="Hora de Aventura" name="frmFicha_HdA" lfmFile="Ficha_HdA/Ficha_HdA.lfm">HdA.LBP</dataType>
-	</dataTypes>
+	
 </module>

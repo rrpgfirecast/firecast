@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmVehicles()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -29,19 +30,19 @@ function newfrmVehicles()
     obj:setName("frmVehicles");
     obj:setAlign("client");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setColor("grey");
     obj.rectangle1:setWidth(1363);
     obj.rectangle1:setHeight(686);
     obj.rectangle1:setName("rectangle1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -49,13 +50,13 @@ function newfrmVehicles()
     obj.layout1:setHeight(60);
     obj.layout1:setName("layout1");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout1);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("black");
     obj.rectangle2:setName("rectangle2");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layout1);
     obj.layout2:setLeft(0);
     obj.layout2:setTop(0);
@@ -63,7 +64,7 @@ function newfrmVehicles()
     obj.layout2:setHeight(60);
     obj.layout2:setName("layout2");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout2);
     obj.rectangle3:setLeft(4);
     obj.rectangle3:setTop(4);
@@ -74,7 +75,7 @@ function newfrmVehicles()
     obj.rectangle3:setStrokeSize(1);
     obj.rectangle3:setName("rectangle3");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.layout2);
     obj.image1:setLeft(10);
     obj.image1:setTop(10);
@@ -83,7 +84,7 @@ function newfrmVehicles()
     obj.image1:setSRC("/Cyberpunk2020/images/wheel.png");
     obj.image1:setName("image1");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.layout2);
     obj.rectangle4:setLeft(54);
     obj.rectangle4:setTop(4);
@@ -94,7 +95,7 @@ function newfrmVehicles()
     obj.rectangle4:setStrokeSize(1);
     obj.rectangle4:setName("rectangle4");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout2);
     obj.edit1:setLeft(60);
     obj.edit1:setTop(10);
@@ -107,7 +108,7 @@ function newfrmVehicles()
     obj.edit1:setTransparent(true);
     obj.edit1:setName("edit1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout2);
     obj.label1:setLeft(110);
     obj.label1:setTop(5);
@@ -117,7 +118,7 @@ function newfrmVehicles()
     obj.label1:setHorzTextAlign("trailing");
     obj.label1:setName("label1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout2);
     obj.edit2:setLeft(195);
     obj.edit2:setTop(5);
@@ -128,7 +129,7 @@ function newfrmVehicles()
     obj.edit2:setVertTextAlign("center");
     obj.edit2:setName("edit2");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout2);
     obj.label2:setLeft(110);
     obj.label2:setTop(30);
@@ -138,7 +139,7 @@ function newfrmVehicles()
     obj.label2:setHorzTextAlign("trailing");
     obj.label2:setName("label2");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout2);
     obj.edit3:setLeft(195);
     obj.edit3:setTop(30);
@@ -149,7 +150,7 @@ function newfrmVehicles()
     obj.edit3:setVertTextAlign("center");
     obj.edit3:setName("edit3");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout1);
     obj.layout3:setLeft(230);
     obj.layout3:setTop(0);
@@ -157,7 +158,7 @@ function newfrmVehicles()
     obj.layout3:setHeight(60);
     obj.layout3:setName("layout3");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.layout3);
     obj.rectangle5:setLeft(4);
     obj.rectangle5:setTop(4);
@@ -168,7 +169,7 @@ function newfrmVehicles()
     obj.rectangle5:setStrokeSize(1);
     obj.rectangle5:setName("rectangle5");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.layout3);
     obj.image2:setLeft(10);
     obj.image2:setTop(10);
@@ -177,7 +178,7 @@ function newfrmVehicles()
     obj.image2:setSRC("/Cyberpunk2020/images/pistol.png");
     obj.image2:setName("image2");
 
-    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle6:setParent(obj.layout3);
     obj.rectangle6:setLeft(54);
     obj.rectangle6:setTop(4);
@@ -188,7 +189,7 @@ function newfrmVehicles()
     obj.rectangle6:setStrokeSize(1);
     obj.rectangle6:setName("rectangle6");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout3);
     obj.edit4:setLeft(60);
     obj.edit4:setTop(10);
@@ -201,7 +202,7 @@ function newfrmVehicles()
     obj.edit4:setTransparent(true);
     obj.edit4:setName("edit4");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout3);
     obj.label3:setLeft(110);
     obj.label3:setTop(5);
@@ -211,7 +212,7 @@ function newfrmVehicles()
     obj.label3:setHorzTextAlign("trailing");
     obj.label3:setName("label3");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout3);
     obj.edit5:setLeft(195);
     obj.edit5:setTop(5);
@@ -222,7 +223,7 @@ function newfrmVehicles()
     obj.edit5:setVertTextAlign("center");
     obj.edit5:setName("edit5");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout3);
     obj.label4:setLeft(110);
     obj.label4:setTop(30);
@@ -232,7 +233,7 @@ function newfrmVehicles()
     obj.label4:setHorzTextAlign("trailing");
     obj.label4:setName("label4");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout3);
     obj.edit6:setLeft(195);
     obj.edit6:setTop(30);
@@ -243,7 +244,7 @@ function newfrmVehicles()
     obj.edit6:setVertTextAlign("center");
     obj.edit6:setName("edit6");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout1);
     obj.layout4:setLeft(460);
     obj.layout4:setTop(0);
@@ -251,7 +252,7 @@ function newfrmVehicles()
     obj.layout4:setHeight(60);
     obj.layout4:setName("layout4");
 
-    obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle7 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle7:setParent(obj.layout4);
     obj.rectangle7:setLeft(4);
     obj.rectangle7:setTop(4);
@@ -262,7 +263,7 @@ function newfrmVehicles()
     obj.rectangle7:setStrokeSize(1);
     obj.rectangle7:setName("rectangle7");
 
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
     obj.image3:setParent(obj.layout4);
     obj.image3:setLeft(10);
     obj.image3:setTop(10);
@@ -271,7 +272,7 @@ function newfrmVehicles()
     obj.image3:setSRC("/Cyberpunk2020/images/heart.png");
     obj.image3:setName("image3");
 
-    obj.rectangle8 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle8 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle8:setParent(obj.layout4);
     obj.rectangle8:setLeft(54);
     obj.rectangle8:setTop(4);
@@ -282,7 +283,7 @@ function newfrmVehicles()
     obj.rectangle8:setStrokeSize(1);
     obj.rectangle8:setName("rectangle8");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout4);
     obj.edit7:setLeft(60);
     obj.edit7:setTop(10);
@@ -295,7 +296,7 @@ function newfrmVehicles()
     obj.edit7:setTransparent(true);
     obj.edit7:setName("edit7");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.scrollBox1);
     obj.layout5:setLeft(0);
     obj.layout5:setTop(70);
@@ -303,13 +304,13 @@ function newfrmVehicles()
     obj.layout5:setHeight(135);
     obj.layout5:setName("layout5");
 
-    obj.rectangle9 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle9 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle9:setParent(obj.layout5);
     obj.rectangle9:setAlign("client");
     obj.rectangle9:setColor("black");
     obj.rectangle9:setName("rectangle9");
 
-    obj.radioButton1 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton1 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton1:setParent(obj.layout5);
     obj.radioButton1:setLeft(5);
     obj.radioButton1:setTop(5);
@@ -320,7 +321,7 @@ function newfrmVehicles()
     obj.radioButton1:setGroupName("marcha");
     obj.radioButton1:setName("radioButton1");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.layout5);
     obj.edit8:setLeft(65);
     obj.edit8:setTop(5);
@@ -329,7 +330,7 @@ function newfrmVehicles()
     obj.edit8:setField("marcha1_details");
     obj.edit8:setName("edit8");
 
-    obj.radioButton2 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton2 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton2:setParent(obj.layout5);
     obj.radioButton2:setLeft(5);
     obj.radioButton2:setTop(30);
@@ -340,7 +341,7 @@ function newfrmVehicles()
     obj.radioButton2:setGroupName("marcha");
     obj.radioButton2:setName("radioButton2");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.layout5);
     obj.edit9:setLeft(65);
     obj.edit9:setTop(30);
@@ -349,7 +350,7 @@ function newfrmVehicles()
     obj.edit9:setField("marcha2_details");
     obj.edit9:setName("edit9");
 
-    obj.radioButton3 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton3 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton3:setParent(obj.layout5);
     obj.radioButton3:setLeft(5);
     obj.radioButton3:setTop(55);
@@ -360,7 +361,7 @@ function newfrmVehicles()
     obj.radioButton3:setGroupName("marcha");
     obj.radioButton3:setName("radioButton3");
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.layout5);
     obj.edit10:setLeft(65);
     obj.edit10:setTop(55);
@@ -369,7 +370,7 @@ function newfrmVehicles()
     obj.edit10:setField("marcha3_details");
     obj.edit10:setName("edit10");
 
-    obj.radioButton4 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton4 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton4:setParent(obj.layout5);
     obj.radioButton4:setLeft(5);
     obj.radioButton4:setTop(80);
@@ -380,7 +381,7 @@ function newfrmVehicles()
     obj.radioButton4:setGroupName("marcha");
     obj.radioButton4:setName("radioButton4");
 
-    obj.edit11 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit11:setParent(obj.layout5);
     obj.edit11:setLeft(65);
     obj.edit11:setTop(80);
@@ -389,7 +390,7 @@ function newfrmVehicles()
     obj.edit11:setField("marcha4_details");
     obj.edit11:setName("edit11");
 
-    obj.radioButton5 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton5 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton5:setParent(obj.layout5);
     obj.radioButton5:setLeft(5);
     obj.radioButton5:setTop(105);
@@ -400,7 +401,7 @@ function newfrmVehicles()
     obj.radioButton5:setGroupName("marcha");
     obj.radioButton5:setName("radioButton5");
 
-    obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit12:setParent(obj.layout5);
     obj.edit12:setLeft(65);
     obj.edit12:setTop(105);
@@ -409,7 +410,7 @@ function newfrmVehicles()
     obj.edit12:setField("marcha5_details");
     obj.edit12:setName("edit12");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.scrollBox1);
     obj.layout6:setLeft(0);
     obj.layout6:setTop(215);
@@ -417,13 +418,13 @@ function newfrmVehicles()
     obj.layout6:setHeight(160);
     obj.layout6:setName("layout6");
 
-    obj.rectangle10 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle10 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle10:setParent(obj.layout6);
     obj.rectangle10:setAlign("client");
     obj.rectangle10:setColor("black");
     obj.rectangle10:setName("rectangle10");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout6);
     obj.label5:setLeft(5);
     obj.label5:setTop(5);
@@ -433,7 +434,7 @@ function newfrmVehicles()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.edit13 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit13:setParent(obj.layout6);
     obj.edit13:setLeft(85);
     obj.edit13:setTop(5);
@@ -442,7 +443,7 @@ function newfrmVehicles()
     obj.edit13:setField("estrutura_atual");
     obj.edit13:setName("edit13");
 
-    obj.edit14 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit14:setParent(obj.layout6);
     obj.edit14:setLeft(125);
     obj.edit14:setTop(5);
@@ -451,7 +452,7 @@ function newfrmVehicles()
     obj.edit14:setField("estrutura_total");
     obj.edit14:setName("edit14");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout6);
     obj.label6:setLeft(5);
     obj.label6:setTop(30);
@@ -461,7 +462,7 @@ function newfrmVehicles()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.edit15 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit15:setParent(obj.layout6);
     obj.edit15:setLeft(85);
     obj.edit15:setTop(30);
@@ -470,7 +471,7 @@ function newfrmVehicles()
     obj.edit15:setField("estrutura_frontal_atual");
     obj.edit15:setName("edit15");
 
-    obj.edit16 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit16:setParent(obj.layout6);
     obj.edit16:setLeft(125);
     obj.edit16:setTop(30);
@@ -479,7 +480,7 @@ function newfrmVehicles()
     obj.edit16:setField("estrutura_frontal_total");
     obj.edit16:setName("edit16");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout6);
     obj.label7:setLeft(5);
     obj.label7:setTop(55);
@@ -489,7 +490,7 @@ function newfrmVehicles()
     obj.label7:setHorzTextAlign("center");
     obj.label7:setName("label7");
 
-    obj.edit17 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit17:setParent(obj.layout6);
     obj.edit17:setLeft(85);
     obj.edit17:setTop(55);
@@ -498,7 +499,7 @@ function newfrmVehicles()
     obj.edit17:setField("estrutura_esquerda_atual");
     obj.edit17:setName("edit17");
 
-    obj.edit18 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit18:setParent(obj.layout6);
     obj.edit18:setLeft(125);
     obj.edit18:setTop(55);
@@ -507,7 +508,7 @@ function newfrmVehicles()
     obj.edit18:setField("estrutura_esquerda_total");
     obj.edit18:setName("edit18");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout6);
     obj.label8:setLeft(5);
     obj.label8:setTop(80);
@@ -517,7 +518,7 @@ function newfrmVehicles()
     obj.label8:setHorzTextAlign("center");
     obj.label8:setName("label8");
 
-    obj.edit19 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit19:setParent(obj.layout6);
     obj.edit19:setLeft(85);
     obj.edit19:setTop(80);
@@ -526,7 +527,7 @@ function newfrmVehicles()
     obj.edit19:setField("estrutura_direita_atual");
     obj.edit19:setName("edit19");
 
-    obj.edit20 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit20:setParent(obj.layout6);
     obj.edit20:setLeft(125);
     obj.edit20:setTop(80);
@@ -535,7 +536,7 @@ function newfrmVehicles()
     obj.edit20:setField("estrutura_direita_total");
     obj.edit20:setName("edit20");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout6);
     obj.label9:setLeft(5);
     obj.label9:setTop(105);
@@ -545,7 +546,7 @@ function newfrmVehicles()
     obj.label9:setHorzTextAlign("center");
     obj.label9:setName("label9");
 
-    obj.edit21 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit21:setParent(obj.layout6);
     obj.edit21:setLeft(85);
     obj.edit21:setTop(105);
@@ -554,7 +555,7 @@ function newfrmVehicles()
     obj.edit21:setField("estrutura_traseira_atual");
     obj.edit21:setName("edit21");
 
-    obj.edit22 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit22:setParent(obj.layout6);
     obj.edit22:setLeft(125);
     obj.edit22:setTop(105);
@@ -563,7 +564,7 @@ function newfrmVehicles()
     obj.edit22:setField("estrutura_traseira_total");
     obj.edit22:setName("edit22");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout6);
     obj.label10:setLeft(5);
     obj.label10:setTop(130);
@@ -573,7 +574,7 @@ function newfrmVehicles()
     obj.label10:setHorzTextAlign("center");
     obj.label10:setName("label10");
 
-    obj.edit23 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit23:setParent(obj.layout6);
     obj.edit23:setLeft(85);
     obj.edit23:setTop(130);
@@ -582,7 +583,7 @@ function newfrmVehicles()
     obj.edit23:setField("estrutura_interna_atual");
     obj.edit23:setName("edit23");
 
-    obj.edit24 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit24:setParent(obj.layout6);
     obj.edit24:setLeft(125);
     obj.edit24:setTop(130);
@@ -591,7 +592,7 @@ function newfrmVehicles()
     obj.edit24:setField("estrutura_interna_total");
     obj.edit24:setName("edit24");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.scrollBox1);
     obj.layout7:setLeft(180);
     obj.layout7:setTop(70);
@@ -599,13 +600,13 @@ function newfrmVehicles()
     obj.layout7:setHeight(305);
     obj.layout7:setName("layout7");
 
-    obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle11:setParent(obj.layout7);
     obj.rectangle11:setAlign("client");
     obj.rectangle11:setColor("black");
     obj.rectangle11:setName("rectangle11");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout7);
     obj.label11:setText("ARMA");
     obj.label11:setLeft(5);
@@ -615,7 +616,7 @@ function newfrmVehicles()
     obj.label11:setHorzTextAlign("center");
     obj.label11:setName("label11");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout7);
     obj.label12:setText("TIPO");
     obj.label12:setLeft(155);
@@ -625,7 +626,7 @@ function newfrmVehicles()
     obj.label12:setHorzTextAlign("center");
     obj.label12:setName("label12");
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout7);
     obj.label13:setText("PRECISÃO");
     obj.label13:setLeft(205);
@@ -636,7 +637,7 @@ function newfrmVehicles()
     obj.label13:setFontSize(11);
     obj.label13:setName("label13");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout7);
     obj.label14:setText("OCULT.");
     obj.label14:setLeft(255);
@@ -647,7 +648,7 @@ function newfrmVehicles()
     obj.label14:setFontSize(12);
     obj.label14:setName("label14");
 
-    obj.label15 = gui.fromHandle(_obj_newObject("label"));
+    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.layout7);
     obj.label15:setText("DISP.");
     obj.label15:setLeft(305);
@@ -657,7 +658,7 @@ function newfrmVehicles()
     obj.label15:setHorzTextAlign("center");
     obj.label15:setName("label15");
 
-    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.layout7);
     obj.label16:setText("DANO");
     obj.label16:setLeft(355);
@@ -667,7 +668,7 @@ function newfrmVehicles()
     obj.label16:setHorzTextAlign("center");
     obj.label16:setName("label16");
 
-    obj.label17 = gui.fromHandle(_obj_newObject("label"));
+    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.layout7);
     obj.label17:setText("Nº DISP.");
     obj.label17:setLeft(405);
@@ -678,7 +679,7 @@ function newfrmVehicles()
     obj.label17:setFontSize(11);
     obj.label17:setName("label17");
 
-    obj.label18 = gui.fromHandle(_obj_newObject("label"));
+    obj.label18 = GUI.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.layout7);
     obj.label18:setText("CD TIRO");
     obj.label18:setLeft(455);
@@ -689,7 +690,7 @@ function newfrmVehicles()
     obj.label18:setFontSize(11);
     obj.label18:setName("label18");
 
-    obj.label19 = gui.fromHandle(_obj_newObject("label"));
+    obj.label19 = GUI.fromHandle(_obj_newObject("label"));
     obj.label19:setParent(obj.layout7);
     obj.label19:setText("CONF.");
     obj.label19:setLeft(505);
@@ -699,7 +700,7 @@ function newfrmVehicles()
     obj.label19:setHorzTextAlign("center");
     obj.label19:setName("label19");
 
-    obj.label20 = gui.fromHandle(_obj_newObject("label"));
+    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.layout7);
     obj.label20:setText("ALCANCE");
     obj.label20:setLeft(555);
@@ -710,7 +711,7 @@ function newfrmVehicles()
     obj.label20:setFontSize(11);
     obj.label20:setName("label20");
 
-    obj.label21 = gui.fromHandle(_obj_newObject("label"));
+    obj.label21 = GUI.fromHandle(_obj_newObject("label"));
     obj.label21:setParent(obj.layout7);
     obj.label21:setText("PREÇO");
     obj.label21:setLeft(605);
@@ -720,7 +721,7 @@ function newfrmVehicles()
     obj.label21:setHorzTextAlign("center");
     obj.label21:setName("label21");
 
-    obj.label22 = gui.fromHandle(_obj_newObject("label"));
+    obj.label22 = GUI.fromHandle(_obj_newObject("label"));
     obj.label22:setParent(obj.layout7);
     obj.label22:setText("POS.");
     obj.label22:setLeft(655);
@@ -730,7 +731,7 @@ function newfrmVehicles()
     obj.label22:setHorzTextAlign("center");
     obj.label22:setName("label22");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout7);
     obj.button1:setText("+");
     obj.button1:setLeft(705);
@@ -739,7 +740,7 @@ function newfrmVehicles()
     obj.button1:setHeight(25);
     obj.button1:setName("button1");
 
-    obj.rclVehicleWeapon = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclVehicleWeapon = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclVehicleWeapon:setParent(obj.layout7);
     obj.rclVehicleWeapon:setName("rclVehicleWeapon");
     obj.rclVehicleWeapon:setField("vehicleWeaponList");
@@ -750,7 +751,7 @@ function newfrmVehicles()
     obj.rclVehicleWeapon:setHeight(270);
     obj.rclVehicleWeapon:setLayout("vertical");
 
-    obj.rectangle12 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle12 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle12:setParent(obj.scrollBox1);
     obj.rectangle12:setLeft(0);
     obj.rectangle12:setTop(385);
@@ -761,7 +762,7 @@ function newfrmVehicles()
     obj.rectangle12:setStrokeSize(1);
     obj.rectangle12:setName("rectangle12");
 
-    obj.label23 = gui.fromHandle(_obj_newObject("label"));
+    obj.label23 = GUI.fromHandle(_obj_newObject("label"));
     obj.label23:setParent(obj.rectangle12);
     obj.label23:setLeft(0);
     obj.label23:setTop(40);
@@ -771,7 +772,7 @@ function newfrmVehicles()
     obj.label23:setHorzTextAlign("center");
     obj.label23:setName("label23");
 
-    obj.image4 = gui.fromHandle(_obj_newObject("image"));
+    obj.image4 = GUI.fromHandle(_obj_newObject("image"));
     obj.image4:setParent(obj.rectangle12);
     obj.image4:setAlign("client");
     obj.image4:setField("vehicleAvatar");
@@ -781,17 +782,17 @@ function newfrmVehicles()
     obj.image4:setName("image4");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclVehicleWeapon:append();
         end, obj);
 
     obj._e_event1 = obj.rclVehicleWeapon:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event2 = obj.image4:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", sheet.vehicleAvatar);
         end, obj);
 
@@ -909,6 +910,6 @@ local _frmVehicles = {
     description=""};
 
 frmVehicles = _frmVehicles;
-rrpg.registrarForm(_frmVehicles);
+Firecast.registrarForm(_frmVehicles);
 
 return _frmVehicles;

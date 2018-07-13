@@ -1,4 +1,4 @@
-﻿local rrpg = require("rrpg.lua");
+﻿require("rrpg.lua");
 local plugins = require("plugins.lua");
 local fdmodule = "RRPG.FIRECAST.FMXModule";
 
@@ -33,27 +33,27 @@ local function fdManageItem(destName, metadata, onSuccess, onProgress, onFailure
 	esteUpload.onFailure = onFailure;
 	esteUpload.pmListener = "L" .. _rrpg_generateUniqueStrID();
 	esteUpload.pmListenerId = plugins.listenPM(esteUpload.pmListener,
-		function (msg)
-			plugins.replyPM(msg, nil);
+		function (receivedMsg)
+			plugins.replyPM(receivedMsg, nil);
 		
-			if msg.kind == "progress" then
+			if receivedMsg.kind == "progress" then
 				if onProgress ~= nil then
-					onProgress(msg.currentBytes, msg.maxBytes);
+					onProgress(receivedMsg.currentBytes, receivedMsg.maxBytes);
 				end;
-			elseif msg.kind == "error" then				
+			elseif receivedMsg.kind == "error" then				
 				unsetupUpload(esteId);		
 
 				if onFailure ~= nil then
-					onFailure(msg.errorMsg);
+					onFailure(receivedMsg.errorMsg);
 				end;
-			elseif msg.kind == "end" then
+			elseif receivedMsg.kind == "end" then
 				unsetupUpload(esteId);								
 				
 				if onSuccess ~= nil then
-					onSuccess(msg.successData);
+					onSuccess(receivedMsg.successData);
 				end;
-			elseif msg.kind == "uploadId" then
-				esteUpload.remoteUploadId = msg.uploadId;
+			elseif receivedMsg.kind == "uploadId" then
+				esteUpload.remoteUploadId = receivedMsg.uploadId;
 			end;
 		end);
 	
@@ -63,7 +63,7 @@ local function fdManageItem(destName, metadata, onSuccess, onProgress, onFailure
 	msg.pmListener = esteUpload.pmListener;
 		
 	plugins.sendPM(fdmodule, "fireDrive:manageItem", msg, 
-		function (r)
+		function (_)
 
 		end,
 		
@@ -105,7 +105,7 @@ local function fdExecuteUpload(params)
 	local metadata = {};
 	params.stream.position = 0;
 	
-	if params.stream.size > 6 * 1024 * 1024 then
+	if params.stream.size > 15 * 1024 * 1024 then
 		if params.onFailure then
 			params.onFailure("FILE TOO BIG");
 		end;

@@ -16,6 +16,7 @@ _observerEves["onDeepChanged"] = "node, attribute, oldValue";
 _observerEves["onPermissionListChanged"] = "node";
 _observerEves["onDeepPermissionListChanged"] = "node";
 _observerEves["onFinalPermissionsCouldBeChanged"] = "node";
+_observerEves["onStateChanged"] = "node";
 
 local function _observerFromHandle(handle)
 	local obj = objs.tryFindFromHandle(handle);

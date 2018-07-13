@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmNPCList()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,18 +31,18 @@ function newfrmNPCList()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setWidth(1470);
     obj.layout1:setHeight(50);
     obj.layout1:setName("layout1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout1);
     obj.button1:setLeft(0);
     obj.button1:setTop(0);
@@ -51,14 +52,14 @@ function newfrmNPCList()
     obj.button1:setHint("Adiciona nova aba. ");
     obj.button1:setName("button1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.button1);
     obj.image1:setMargins({left = 5, right = 5, top = 5, bottom = 5});
     obj.image1:setAlign("client");
     obj.image1:setSRC("/GerenciadorDeCampanha/images/addlista.png");
     obj.image1:setName("image1");
 
-    obj.rclAbas = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclAbas = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclAbas:setParent(obj.layout1);
     obj.rclAbas:setName("rclAbas");
     obj.rclAbas:setField("opcoesFalsas");
@@ -70,18 +71,18 @@ function newfrmNPCList()
     obj.rclAbas:setSelectable(true);
     obj.rclAbas:setLayout("horizontal");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.scrollBox1);
     obj.layout2:setAlign("client");
     obj.layout2:setName("layout2");
 
-    obj.boxTexto = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.boxTexto = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.boxTexto:setParent(obj.layout2);
     obj.boxTexto:setName("boxTexto");
     obj.boxTexto:setAlign("client");
     obj.boxTexto:setVisible(false);
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.boxTexto);
     obj.button2:setLeft(50);
     obj.button2:setTop(0);
@@ -91,14 +92,14 @@ function newfrmNPCList()
     obj.button2:setHint("Abre as configurações da lista de NPCs. ");
     obj.button2:setName("button2");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.button2);
     obj.image2:setMargins({left = 5, right = 5, top = 5, bottom = 5});
     obj.image2:setAlign("client");
     obj.image2:setSRC("/GerenciadorDeCampanha/images/config.png");
     obj.image2:setName("image2");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.boxTexto);
     obj.button3:setLeft(100);
     obj.button3:setTop(0);
@@ -108,14 +109,14 @@ function newfrmNPCList()
     obj.button3:setHint("Adiciona novo personagem. ");
     obj.button3:setName("button3");
 
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
     obj.image3:setParent(obj.button3);
     obj.image3:setMargins({left = 5, right = 5, top = 5, bottom = 5});
     obj.image3:setAlign("client");
     obj.image3:setSRC("/GerenciadorDeCampanha/images/addnpc.png");
     obj.image3:setName("image3");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.boxTexto);
     obj.button4:setLeft(150);
     obj.button4:setTop(0);
@@ -125,26 +126,26 @@ function newfrmNPCList()
     obj.button4:setHint("Organiza a lista. ");
     obj.button4:setName("button4");
 
-    obj.image4 = gui.fromHandle(_obj_newObject("image"));
+    obj.image4 = GUI.fromHandle(_obj_newObject("image"));
     obj.image4:setParent(obj.button4);
     obj.image4:setMargins({left = 5, right = 5, top = 5, bottom = 5});
     obj.image4:setAlign("client");
     obj.image4:setSRC("/GerenciadorDeCampanha/images/organize.png");
     obj.image4:setName("image4");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.boxTexto);
     obj.layout3:setAlign("client");
     obj.layout3:setMargins({top=50});
     obj.layout3:setName("layout3");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout3);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.rclListaDeNPCs = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclListaDeNPCs = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDeNPCs:setParent(obj.layout3);
     obj.rclListaDeNPCs:setName("rclListaDeNPCs");
     obj.rclListaDeNPCs:setLayout("verticalTiles");
@@ -156,29 +157,29 @@ function newfrmNPCList()
     obj.rclListaDeNPCs:setMinQt(0);
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclAbas:append();
         end, obj);
 
     obj._e_event1 = obj.rclAbas:addEventListener("onSelect",
-        function (self)
+        function (_)
             local node = self.rclAbas.selectedNode;
                                 self.boxTexto.node = node;
                                 self.boxTexto.visible = (node ~= nil);
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             self.Config.scopeNode = sheet;self.Config:show();
         end, obj);
 
     obj._e_event3 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclListaDeNPCs:append();
         end, obj);
 
     obj._e_event4 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclListaDeNPCs:sort();
         end, obj);
 
@@ -236,6 +237,6 @@ local _frmNPCList = {
     description=""};
 
 frmNPCList = _frmNPCList;
-rrpg.registrarForm(_frmNPCList);
+Firecast.registrarForm(_frmNPCList);
 
 return _frmNPCList;

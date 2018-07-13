@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmGeography()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -29,12 +30,12 @@ function newfrmGeography()
     obj:setName("frmGeography");
     obj:setAlign("client");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
@@ -43,7 +44,7 @@ function newfrmGeography()
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.rclDestalhesDaGeografia = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclDestalhesDaGeografia = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclDestalhesDaGeografia:setParent(obj.scrollBox1);
     obj.rclDestalhesDaGeografia:setLeft(0);
     obj.rclDestalhesDaGeografia:setTop(0);
@@ -55,7 +56,7 @@ function newfrmGeography()
     obj.rclDestalhesDaGeografia:setLayout("vertical");
     obj.rclDestalhesDaGeografia:setSelectable(true);
 
-    obj.boxDetalhesDaGeografia = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.boxDetalhesDaGeografia = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.boxDetalhesDaGeografia:setParent(obj.scrollBox1);
     obj.boxDetalhesDaGeografia:setLeft(210);
     obj.boxDetalhesDaGeografia:setTop(0);
@@ -64,7 +65,7 @@ function newfrmGeography()
     obj.boxDetalhesDaGeografia:setName("boxDetalhesDaGeografia");
     obj.boxDetalhesDaGeografia:setVisible(false);
 
-    obj.richEdit1 = gui.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit1:setParent(obj.boxDetalhesDaGeografia);
     obj.richEdit1:setAlign("client");
     obj.richEdit1:setField("descricao");
@@ -74,7 +75,7 @@ function newfrmGeography()
     obj.richEdit1:setName("richEdit1");
 
     obj._e_event0 = obj.rclDestalhesDaGeografia:addEventListener("onEndEnumeration",
-        function (self)
+        function (_)
             if sheet~= nil then
             					local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
             					local mapa = self:findControlByName("mapa");
@@ -146,14 +147,14 @@ function newfrmGeography()
         end, obj);
 
     obj._e_event1 = obj.rclDestalhesDaGeografia:addEventListener("onSelect",
-        function (self)
+        function (_)
             local node = self.rclDestalhesDaGeografia.selectedNode;
             					self.boxDetalhesDaGeografia.node = node; 
             					self.boxDetalhesDaGeografia.visible = (node ~= nil);
         end, obj);
 
     obj._e_event2 = obj.rclDestalhesDaGeografia:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista. 
             		        if (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
             		            return -1;
@@ -205,6 +206,6 @@ local _frmGeography = {
     description=""};
 
 frmGeography = _frmGeography;
-rrpg.registrarForm(_frmGeography);
+Firecast.registrarForm(_frmGeography);
 
 return _frmGeography;

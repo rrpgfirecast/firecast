@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmNovoPersonagem()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -79,7 +80,7 @@ function newfrmNovoPersonagem()
 			
 			saveStateToNodeDatabase();
 								
-			rrpg.requests.criarPersonagem(self._bibMae, nomePersonagem, dataType, self.rdbTodos.checked, self._mesa:findJogador(loginDono), 
+			Firecast.Requests.criarPersonagem(self._bibMae, nomePersonagem, dataType, self.rdbTodos.checked, self._mesa:findJogador(loginDono), 
 				function()
 					self._estaAguardandoResposta = false;
 					self:unlockWithActivity();
@@ -111,12 +112,12 @@ function newfrmNovoPersonagem()
 				end;
 			end;
 			
-			utils.sortPtBrArray(jogadoresStrings);
+			Utils.sortPtBrArray(jogadoresStrings);
 			self.cmbJogador.items = jogadoresStrings;		
 		end;
 		
 		local function carregarComboDeTemplates()
-			local dts = rrpg.plugins.getInstalledDataTypes();
+			local dts = Firecast.Plugins.getInstalledDataTypes();
 			
 			local dtsToShow = {};
 			
@@ -130,7 +131,7 @@ function newfrmNovoPersonagem()
 			
 		
 			table.sort(dtsToShow, function (esquerda, direita)
-									return utils.compareStringPtBr(esquerda.title, direita.title) < 0;
+									return Utils.compareStringPtBr(esquerda.title, direita.title) < 0;
 								  end);									  						 
 
 			local titles = {};
@@ -146,7 +147,7 @@ function newfrmNovoPersonagem()
 		end;		
 				
 		local function configurarNodeDatabase()		
-			local node = ndb.load("config.xml");
+			local node = NDB.load("config.xml");
 					
 			if type(node.novoPersonagem) ~= "table" then
 				node.novoPersonagem = {};
@@ -190,7 +191,7 @@ function newfrmNovoPersonagem()
 				local temAlgoPreenchido = (self.edtNome.text ~= '') or (self.rdbJogador.checked and self.cmbJogador.text ~= '');	
 
 				if temAlgoPreenchido then
-					dialogs.confirmYesNo('Deseja realmente cancelar a criação do personagem?',
+					Dialogs.confirmYesNo('Deseja realmente cancelar a criação do personagem?',
 						function (confirmado)
 							if confirmado then
 								self:close();
@@ -204,7 +205,7 @@ function newfrmNovoPersonagem()
 	
 
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
     obj.label1:setText("Novo Personagem");
     obj.label1:setName("label1");
@@ -215,13 +216,13 @@ function newfrmNovoPersonagem()
     obj.label1:setAlign("top");
     obj.label1:setAutoSize(true);
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setName("scrollBox1");
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setMargins({left=12, right=12, top=1, bottom=5});
 
-    obj.flowLayout1 = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj.scrollBox1);
     obj.flowLayout1:setAlign("top");
     obj.flowLayout1:setMargins({left=10, right=10, top=5, bottom=5});
@@ -229,7 +230,7 @@ function newfrmNovoPersonagem()
     obj.flowLayout1:setMaxControlsPerLine(1);
     obj.flowLayout1:setName("flowLayout1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.flowLayout1);
     obj.label2:setText("Nome do Personagem:");
     obj.label2:setName("label2");
@@ -237,13 +238,13 @@ function newfrmNovoPersonagem()
     obj.label2:setWordWrap(false);
     obj.label2:setMargins({top=10, bottom=2});
 
-    obj.edtNome = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtNome = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtNome:setParent(obj.flowLayout1);
     obj.edtNome:setName("edtNome");
     obj.edtNome:setEnterKeyType("done");
     obj.edtNome:setWidth(250);
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.flowLayout1);
     obj.label3:setText("Layout da ficha:");
     obj.label3:setName("label3");
@@ -251,12 +252,12 @@ function newfrmNovoPersonagem()
     obj.label3:setWordWrap(false);
     obj.label3:setMargins({top=10, bottom=2});
 
-    obj.cmbTemplate = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.cmbTemplate = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.cmbTemplate:setParent(obj.flowLayout1);
     obj.cmbTemplate:setName("cmbTemplate");
     obj.cmbTemplate:setWidth(250);
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.flowLayout1);
     obj.label4:setText("Este será um personagem:");
     obj.label4:setName("label4");
@@ -264,7 +265,7 @@ function newfrmNovoPersonagem()
     obj.label4:setWordWrap(false);
     obj.label4:setMargins({top=10, bottom=2});
 
-    obj.flowLayout2 = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout2 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout2:setParent(obj.flowLayout1);
     obj.flowLayout2:setHeight(40);
     obj.flowLayout2:setMinWidth(150);
@@ -272,18 +273,18 @@ function newfrmNovoPersonagem()
     obj.flowLayout2:setAutoHeight(true);
     obj.flowLayout2:setName("flowLayout2");
 
-    obj.rdbNPC = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.rdbNPC = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.rdbNPC:setParent(obj.flowLayout2);
     obj.rdbNPC:setName("rdbNPC");
     obj.rdbNPC:setGroupName("personagemDo");
     obj.rdbNPC:setText("NPC");
     obj.rdbNPC:setHeight(26);
 
-    obj.flowLineBreak1 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak1 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak1:setParent(obj.flowLayout2);
     obj.flowLineBreak1:setName("flowLineBreak1");
 
-    obj.rdbJogador = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.rdbJogador = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.rdbJogador:setParent(obj.flowLayout2);
     obj.rdbJogador:setName("rdbJogador");
     obj.rdbJogador:setGroupName("personagemDo");
@@ -291,12 +292,12 @@ function newfrmNovoPersonagem()
     obj.rdbJogador:setWidth(100);
     obj.rdbJogador:setHeight(26);
 
-    obj.cmbJogador = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.cmbJogador = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.cmbJogador:setParent(obj.flowLayout2);
     obj.cmbJogador:setName("cmbJogador");
     obj.cmbJogador:setWidth(148);
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.flowLayout1);
     obj.label5:setText("Quem poderá ver este personagem?");
     obj.label5:setName("label5");
@@ -304,7 +305,7 @@ function newfrmNovoPersonagem()
     obj.label5:setWordWrap(false);
     obj.label5:setMargins({top=10, bottom=2});
 
-    obj.flowLayout3 = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout3 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout3:setParent(obj.flowLayout1);
     obj.flowLayout3:setHeight(40);
     obj.flowLayout3:setMinWidth(150);
@@ -312,7 +313,7 @@ function newfrmNovoPersonagem()
     obj.flowLayout3:setAutoHeight(true);
     obj.flowLayout3:setName("flowLayout3");
 
-    obj.rdbSoMestre = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.rdbSoMestre = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.rdbSoMestre:setParent(obj.flowLayout3);
     obj.rdbSoMestre:setName("rdbSoMestre");
     obj.rdbSoMestre:setGroupName("QuemPodeVerPersonagem");
@@ -320,11 +321,11 @@ function newfrmNovoPersonagem()
     obj.rdbSoMestre:setWidth(200);
     obj.rdbSoMestre:setHeight(26);
 
-    obj.flowLineBreak2 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak2 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak2:setParent(obj.flowLayout3);
     obj.flowLineBreak2:setName("flowLineBreak2");
 
-    obj.rdbTodos = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.rdbTodos = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.rdbTodos:setParent(obj.flowLayout3);
     obj.rdbTodos:setName("rdbTodos");
     obj.rdbTodos:setGroupName("QuemPodeVerPersonagem");
@@ -332,14 +333,14 @@ function newfrmNovoPersonagem()
     obj.rdbTodos:setWidth(200);
     obj.rdbTodos:setHeight(26);
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setName("layout1");
     obj.layout1:setAlign("bottom");
     obj.layout1:setMargins({top=2, bottom=2});
     obj.layout1:setHeight(40);
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout1);
     obj.button1:setText("Criar");
     obj.button1:setWidth(100);
@@ -348,7 +349,7 @@ function newfrmNovoPersonagem()
     obj.button1:setName("button1");
     obj.button1:setMargins({left=4, right=4});
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout1);
     obj.button2:setText("Cancelar");
     obj.button2:setHorzTextAlign("center");
@@ -358,36 +359,36 @@ function newfrmNovoPersonagem()
     obj.button2:setMargins({left=4, right=4});
 
     obj._e_event0 = obj:addEventListener("onShow",
-        function (self)
+        function (_)
             carregarComboDeJogadores();	
             		carregarComboDeTemplates();	
             		configurarNodeDatabase();
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onCancelRequest",
-        function (self)
+        function (_)
             processarRequisicaoDeCancelamento();
         end, obj);
 
     obj._e_event2 = obj.edtNome:addEventListener("onKeyDown",
-        function (self, event)
+        function (_, event)
             if event.keyCode == 13 then criarPersonagem(); end;
         end, obj);
 
     obj._e_event3 = obj.cmbJogador:addEventListener("onChange",
-        function (self)
+        function (_)
             if self.cmbJogador.text ~= "" then
             							self.rdbJogador.checked = true;
             						end;
         end, obj);
 
     obj._e_event4 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             criarPersonagem();
         end, obj);
 
     obj._e_event5 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             processarRequisicaoDeCancelamento();
         end, obj);
 
@@ -451,6 +452,6 @@ local _frmNovoPersonagem = {
     description=""};
 
 frmNovoPersonagem = _frmNovoPersonagem;
-rrpg.registrarForm(_frmNovoPersonagem);
+Firecast.registrarForm(_frmNovoPersonagem);
 
 return _frmNovoPersonagem;

@@ -93,7 +93,7 @@ function BTree.new(theComparer)
 	end;
 	
 	function bt:existe(chave)
-		local pEncontrado, indice = self:innerLocateCollated(self.raiz, chave);
+		local pEncontrado = self:innerLocateCollated(self.raiz, chave);
 		return (pEncontrado ~= nil);
 	end;	
 	

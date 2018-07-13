@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmSkills()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -29,12 +30,12 @@ function newfrmSkills()
     obj:setName("frmSkills");
     obj:setAlign("client");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -42,13 +43,13 @@ function newfrmSkills()
     obj.layout1:setHeight(685);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(5);
     obj.label1:setTop(0);
@@ -58,7 +59,7 @@ function newfrmSkills()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout1);
     obj.button1:setText("+");
     obj.button1:setLeft(5);
@@ -67,7 +68,7 @@ function newfrmSkills()
     obj.button1:setHeight(25);
     obj.button1:setName("button1");
 
-    obj.rclSkillList = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclSkillList = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclSkillList:setParent(obj.layout1);
     obj.rclSkillList:setName("rclSkillList");
     obj.rclSkillList:setField("skillList");
@@ -78,7 +79,7 @@ function newfrmSkills()
     obj.rclSkillList:setHeight(650);
     obj.rclSkillList:setLayout("vertical");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.scrollBox1);
     obj.layout2:setLeft(290);
     obj.layout2:setTop(0);
@@ -86,13 +87,13 @@ function newfrmSkills()
     obj.layout2:setHeight(685);
     obj.layout2:setName("layout2");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout2);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("black");
     obj.rectangle2:setName("rectangle2");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout2);
     obj.label2:setLeft(5);
     obj.label2:setTop(0);
@@ -102,7 +103,7 @@ function newfrmSkills()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout2);
     obj.button2:setText("+");
     obj.button2:setLeft(5);
@@ -111,7 +112,7 @@ function newfrmSkills()
     obj.button2:setHeight(25);
     obj.button2:setName("button2");
 
-    obj.rclKnowledgeList = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclKnowledgeList = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclKnowledgeList:setParent(obj.layout2);
     obj.rclKnowledgeList:setName("rclKnowledgeList");
     obj.rclKnowledgeList:setField("knowledgeList");
@@ -122,7 +123,7 @@ function newfrmSkills()
     obj.rclKnowledgeList:setHeight(650);
     obj.rclKnowledgeList:setLayout("vertical");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.scrollBox1);
     obj.layout3:setLeft(580);
     obj.layout3:setTop(0);
@@ -130,13 +131,13 @@ function newfrmSkills()
     obj.layout3:setHeight(685);
     obj.layout3:setName("layout3");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout3);
     obj.rectangle3:setAlign("client");
     obj.rectangle3:setColor("black");
     obj.rectangle3:setName("rectangle3");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout3);
     obj.label3:setLeft(5);
     obj.label3:setTop(0);
@@ -146,7 +147,7 @@ function newfrmSkills()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.layout3);
     obj.button3:setText("+");
     obj.button3:setLeft(5);
@@ -155,7 +156,7 @@ function newfrmSkills()
     obj.button3:setHeight(25);
     obj.button3:setName("button3");
 
-    obj.rclLanguageList = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclLanguageList = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclLanguageList:setParent(obj.layout3);
     obj.rclLanguageList:setName("rclLanguageList");
     obj.rclLanguageList:setField("languageList");
@@ -167,12 +168,12 @@ function newfrmSkills()
     obj.rclLanguageList:setLayout("vertical");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclSkillList:append();
         end, obj);
 
     obj._e_event1 = obj.rclSkillList:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             if utils.compareStringPtBr(nodeA.skill_group_name, nodeB.skill_group_name)== 0 then
             						return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
             					else 
@@ -181,22 +182,22 @@ function newfrmSkills()
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclKnowledgeList:append();
         end, obj);
 
     obj._e_event3 = obj.rclKnowledgeList:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
         end, obj);
 
     obj._e_event4 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclLanguageList:append();
         end, obj);
 
     obj._e_event5 = obj.rclLanguageList:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
         end, obj);
 
@@ -255,6 +256,6 @@ local _frmSkills = {
     description=""};
 
 frmSkills = _frmSkills;
-rrpg.registrarForm(_frmSkills);
+Firecast.registrarForm(_frmSkills);
 
 return _frmSkills;

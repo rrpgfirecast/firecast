@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmBackpackItem()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -41,7 +42,7 @@ function newfrmBackpackItem()
 			
 
 
-    obj.edtNome = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtNome = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtNome:setParent(obj);
     obj.edtNome:setName("edtNome");
     obj.edtNome:setAlign("client");
@@ -52,13 +53,13 @@ function newfrmBackpackItem()
     obj.edtNome:setFontColor("white");
     obj.edtNome:setTransparent(true);
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj);
     obj.horzLine1:setAlign("bottom");
     obj.horzLine1:setStrokeColor("white");
     obj.horzLine1:setName("horzLine1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setText("X");
     obj.button1:setAlign("right");
@@ -70,7 +71,7 @@ self.height=32;
 
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             askForDelete();
         end, obj);
 
@@ -111,6 +112,6 @@ local _frmBackpackItem = {
     description=""};
 
 frmBackpackItem = _frmBackpackItem;
-rrpg.registrarForm(_frmBackpackItem);
+Firecast.registrarForm(_frmBackpackItem);
 
 return _frmBackpackItem;

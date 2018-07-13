@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmAMZ3_1()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -32,7 +33,7 @@ function newfrmAMZ3_1()
     obj:setTheme("dark");
     obj:setMargins({top=5});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#191919");
@@ -42,7 +43,7 @@ function newfrmAMZ3_1()
     obj.rectangle1:setHitTest(false);
     obj.rectangle1:setName("rectangle1");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj);
     obj.rectangle2:setLeft(0);
     obj.rectangle2:setTop(0);
@@ -53,7 +54,7 @@ function newfrmAMZ3_1()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
     obj.label1:setLeft(0);
     obj.label1:setTop(0);
@@ -63,7 +64,7 @@ function newfrmAMZ3_1()
     obj.label1:setField("nome");
     obj.label1:setName("label1");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj);
     obj.rectangle3:setLeft(150);
     obj.rectangle3:setTop(0);
@@ -74,7 +75,7 @@ function newfrmAMZ3_1()
     obj.rectangle3:setStrokeSize(1);
     obj.rectangle3:setName("rectangle3");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj);
     obj.label2:setLeft(150);
     obj.label2:setTop(0);
@@ -84,7 +85,7 @@ function newfrmAMZ3_1()
     obj.label2:setField("acerto");
     obj.label2:setName("label2");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj);
     obj.rectangle4:setLeft(300);
     obj.rectangle4:setTop(0);
@@ -95,7 +96,7 @@ function newfrmAMZ3_1()
     obj.rectangle4:setStrokeSize(1);
     obj.rectangle4:setName("rectangle4");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj);
     obj.label3:setLeft(300);
     obj.label3:setTop(0);
@@ -145,6 +146,6 @@ local _frmAMZ3_1 = {
     description=""};
 
 frmAMZ3_1 = _frmAMZ3_1;
-rrpg.registrarForm(_frmAMZ3_1);
+Firecast.registrarForm(_frmAMZ3_1);
 
 return _frmAMZ3_1;

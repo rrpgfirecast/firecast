@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmFoWShapeDetails()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -50,7 +51,7 @@ function newfrmFoWShapeDetails()
 				rectAsClient = true;
 			end;
 		
-			local fPart = gui.newFlowPart();
+			local fPart = GUI.newFlowPart();
 			fPart.minWidth = 10;
 			fPart.maxWidth = 1000;
 			fPart.parent = flowLayout;
@@ -60,7 +61,7 @@ function newfrmFoWShapeDetails()
 			local fRect = nil;
 			
 			if rectAsClient then
-				fRect = gui.newRectangle();
+				fRect = GUI.newRectangle();
 				fRect.align = "client";
 				fRect.parent = fPart;
 				fRect.color = item.backColor;
@@ -71,13 +72,13 @@ function newfrmFoWShapeDetails()
 				item.client = fPart;
 			end;
 						
-			local fHorzLine = gui.newHorzLine();
+			local fHorzLine = GUI.newHorzLine();
 			fHorzLine.strokeColor = "gray";
 			fHorzLine.align = "bottom";
 			fHorzLine.parent = fPart;
 			item.horzLine = fHorzLine;
 			
-			local fBreakLine = gui.newFlowLineBreak();
+			local fBreakLine = GUI.newFlowLineBreak();
 			fBreakLine.parent = flowLayout;
 			item.breakLine = fBreakLine;
 			
@@ -112,7 +113,7 @@ function newfrmFoWShapeDetails()
 			local fPart = item.flowPart;
 			fPart.height = 8;
 			
-			local fHorzLineSep = gui.newHorzLine();
+			local fHorzLineSep = GUI.newHorzLine();
 			fHorzLineSep.strokeColor = "gray";
 			fHorzLineSep.strokeSize = 3;
 			fHorzLineSep.align = "top";
@@ -126,15 +127,17 @@ function newfrmFoWShapeDetails()
 			
 			return fPart, item;
 		end;
+		
+		self.newMenuSeparatorItem = newMenuSeparatorItem;
 				
 		local function newMenuItem(caption, flowLayout, onClick)
 			local item = newBaseMenuItem(flowLayout);
 			item.isHover = false;
 		
-			local fPart = item.flowPart;			
+			--local fPart = item.flowPart;			
 			local fRect = item.client;
 			
-			local fLabel = gui.newLabel();
+			local fLabel = GUI.newLabel();
 			fLabel.align = "client";
 			fLabel.parent = fRect;
 			fLabel.hitTest = true;
@@ -159,7 +162,9 @@ function newfrmFoWShapeDetails()
 			return fLabel, item;
 		end;
 		
+		self.newMenuItem = newMenuItem;
 		
+	
 		local function newMultiActionMenuItem(caption, flowLayout, maxActPorLinha)
 			local item = newBaseMenuItem(flowLayout, false);
 			item.isHover = false;
@@ -170,7 +175,7 @@ function newfrmFoWShapeDetails()
 			local fClient = item.client;
 			fPart.height = fPart.height + 5;
 			
-			local fLabel = gui.newLabel();
+			local fLabel = GUI.newLabel();
 			fLabel.align = "client";
 			fLabel.width = 1;
 			fLabel.wordWrap = false;
@@ -190,7 +195,9 @@ function newfrmFoWShapeDetails()
 			local ACTION_MARGIN = 2;
 			local ALTURA_MINIMA = fPart.height; 
 			
-			local fFlowActions = gui.newFlowLayout();
+			self.ALTURA_MINIMA = ALTURA_MINIMA;
+			
+			local fFlowActions = GUI.newFlowLayout();
 			fFlowActions.orientation = "horizontal";
 			
 			if caption ~= "" then
@@ -215,7 +222,7 @@ function newfrmFoWShapeDetails()
 				action.defaultBackCheckedColor = item.defaultBackCheckedColor;
 				action.defaultHoverkCheckedColor = item.defaultHoverkCheckedColor;				
 				
-				local fRect = gui.newRectangle();
+				local fRect = GUI.newRectangle();
 				fRect.parent = fFlowActions;
 				fRect.width = ACTION_WIDTH;
 				fRect.height = ACTION_HEIGHT;				
@@ -225,7 +232,7 @@ function newfrmFoWShapeDetails()
 				action.rect = fRect;
 				action.client = fRect;				
 				
-				local fImg = gui.newImage();								
+				local fImg = GUI.newImage();								
 				fImg.hitTest = true;
 				fImg.cursor = "handPoint";
 				fImg.align = "client";
@@ -245,7 +252,7 @@ function newfrmFoWShapeDetails()
 					action.isHover = false;
 				end;			
 								
-				function action:setColor(backColor, hoverColor)
+				function action.setColor(actionSelf, backColor, hoverColor)
 					action.backColor = backColor or action.defaultBackColor;
 					action.hoverColor = hoverColor or action.defaultHoverColor;
 					
@@ -256,7 +263,7 @@ function newfrmFoWShapeDetails()
 					end;
 				end;
 				
-				function action:setChecked(value)
+				function action.setChecked(actionSelf, value)
 					if value then
 						action:setColor(action.defaultBackCheckedColor, action.defaultHoverCheckedColor);
 					else
@@ -277,10 +284,10 @@ function newfrmFoWShapeDetails()
 				return action, fImg;
 			end;
 			
-			function item:addCheckBoxAction(imageURL, hint)
+			function item.addCheckBoxAction(itemSelf, imageURL, hint)
 				local action, fImg = item:addActionBase(imageURL, hint);
 				
-				local fImgCheckbox = gui.newImage();
+				local fImgCheckbox = GUI.newImage();
 				
 				local fPai = fImg.parent;
 				
@@ -304,10 +311,10 @@ function newfrmFoWShapeDetails()
 				return fImg, action;
 			end;
 			
-			function item:addRadioButtonAction(imageURL, hint)
+			function item.addRadioButtonAction(itemSelf, imageURL, hint)
 				local action, fImg = item:addActionBase(imageURL, hint);
 				
-				local fImgRadio = gui.newImage();
+				local fImgRadio = GUI.newImage();
 				
 				local fPai = fImg.parent;
 				
@@ -339,6 +346,8 @@ function newfrmFoWShapeDetails()
 			
 			return item;
 		end;		
+		
+		self.newMultiActionMenuItem = newMultiActionMenuItem;
 	
 
 
@@ -378,13 +387,13 @@ function newfrmFoWShapeDetails()
 	
 
 
-    obj.flaLayout = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flaLayout = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flaLayout:setParent(obj);
     obj.flaLayout:setName("flaLayout");
     obj.flaLayout:setAlign("client");
     obj.flaLayout:setMargins({left=2, top=2, bottom=2, right=2});
 
-    obj.labShape = gui.fromHandle(_obj_newObject("label"));
+    obj.labShape = GUI.fromHandle(_obj_newObject("label"));
     obj.labShape:setParent(obj.flaLayout);
     obj.labShape:setName("labShape");
     obj.labShape:setWordWrap(true);
@@ -394,7 +403,7 @@ function newfrmFoWShapeDetails()
     obj.labShape:setFontSize(11);
     obj.labShape:setHorzTextAlign("trailing");
 
-    obj.cmbShape = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.cmbShape = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.cmbShape:setParent(obj.flaLayout);
     obj.cmbShape:setName("cmbShape");
     obj.cmbShape:setHeight(30);
@@ -426,11 +435,11 @@ function newfrmFoWShapeDetails()
 
 
     obj._e_event0 = obj:addEventListener("onKeyUp",
-        function (self, event)
+        function (_, event)
         end, obj);
 
     obj._e_event1 = obj.cmbShape:addEventListener("onChange",
-        function (self)
+        function (_)
             self:doShapeChanged();
         end, obj);
 
@@ -472,6 +481,6 @@ local _frmFoWShapeDetails = {
     description=""};
 
 frmFoWShapeDetails = _frmFoWShapeDetails;
-rrpg.registrarForm(_frmFoWShapeDetails);
+Firecast.registrarForm(_frmFoWShapeDetails);
 
 return _frmFoWShapeDetails;

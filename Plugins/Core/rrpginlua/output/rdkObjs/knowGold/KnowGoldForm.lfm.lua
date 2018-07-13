@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmKnowGold()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -77,6 +78,6 @@ local _frmKnowGold = {
     description=""};
 
 frmKnowGold = _frmKnowGold;
-rrpg.registrarForm(_frmKnowGold);
+Firecast.registrarForm(_frmKnowGold);
 
 return _frmKnowGold;

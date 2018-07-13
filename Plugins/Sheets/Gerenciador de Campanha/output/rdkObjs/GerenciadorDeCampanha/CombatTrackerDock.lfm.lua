@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmCombatTracker()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -506,14 +507,14 @@ function newfrmCombatTracker()
 	
 
 
-    obj.layTopTracker = gui.fromHandle(_obj_newObject("layout"));
+    obj.layTopTracker = GUI.fromHandle(_obj_newObject("layout"));
     obj.layTopTracker:setParent(obj);
     obj.layTopTracker:setName("layTopTracker");
     obj.layTopTracker:setAlign("top");
     obj.layTopTracker:setHeight(18);
     obj.layTopTracker:setMargins({left=2, right=2, top=2});
 
-    obj.btnAddAtor = gui.fromHandle(_obj_newObject("button"));
+    obj.btnAddAtor = GUI.fromHandle(_obj_newObject("button"));
     obj.btnAddAtor:setParent(obj.layTopTracker);
     obj.btnAddAtor:setName("btnAddAtor");
     obj.btnAddAtor:setText("");
@@ -522,13 +523,13 @@ function newfrmCombatTracker()
     obj.btnAddAtor:setAlign("left");
     obj.btnAddAtor:setMargins({left=2, right=2});
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.btnAddAtor);
     obj.image1:setAlign("client");
     obj.image1:setSRC("/GerenciadorDeCampanha/images/addIcon.png");
     obj.image1:setName("image1");
 
-    obj.btnRoll = gui.fromHandle(_obj_newObject("button"));
+    obj.btnRoll = GUI.fromHandle(_obj_newObject("button"));
     obj.btnRoll:setParent(obj.layTopTracker);
     obj.btnRoll:setName("btnRoll");
     obj.btnRoll:setText("R");
@@ -537,7 +538,7 @@ function newfrmCombatTracker()
     obj.btnRoll:setWidth(24);
     obj.btnRoll:setMargins({left=2, right=2});
 
-    obj.btnAddAll = gui.fromHandle(_obj_newObject("button"));
+    obj.btnAddAll = GUI.fromHandle(_obj_newObject("button"));
     obj.btnAddAll:setParent(obj.layTopTracker);
     obj.btnAddAll:setName("btnAddAll");
     obj.btnAddAll:setText("T");
@@ -546,7 +547,7 @@ function newfrmCombatTracker()
     obj.btnAddAll:setWidth(24);
     obj.btnAddAll:setMargins({left=2, right=2});
 
-    obj.btnLimpar = gui.fromHandle(_obj_newObject("button"));
+    obj.btnLimpar = GUI.fromHandle(_obj_newObject("button"));
     obj.btnLimpar:setParent(obj.layTopTracker);
     obj.btnLimpar:setName("btnLimpar");
     obj.btnLimpar:setText("Limpar");
@@ -554,7 +555,7 @@ function newfrmCombatTracker()
     obj.btnLimpar:setWidth(60);
     obj.btnLimpar:setMargins({left=2, right=2});
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setAlign("top");
     obj.layout1:setHeight(16);
@@ -562,13 +563,13 @@ function newfrmCombatTracker()
     obj.layout1:setName("layout1");
     obj.layout1:setMargins({left=2, right=2});
 
-    obj.layHeader0 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layHeader0 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layHeader0:setParent(obj.layout1);
     obj.layHeader0:setName("layHeader0");
     obj.layHeader0:setWidth(23);
     obj.layHeader0:setAlign("left");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setText(" Teste   Nome");
     obj.label1:setName("label1");
@@ -577,13 +578,13 @@ function newfrmCombatTracker()
     obj.label1:setWidth(28);
     obj.label1:setAlign("client");
 
-    obj.layRightAlinedTitle = gui.fromHandle(_obj_newObject("layout"));
+    obj.layRightAlinedTitle = GUI.fromHandle(_obj_newObject("layout"));
     obj.layRightAlinedTitle:setParent(obj.layout1);
     obj.layRightAlinedTitle:setName("layRightAlinedTitle");
     obj.layRightAlinedTitle:setAlign("right");
     obj.layRightAlinedTitle:setWidth(78);
 
-    obj.labTitIniciativa = gui.fromHandle(_obj_newObject("label"));
+    obj.labTitIniciativa = GUI.fromHandle(_obj_newObject("label"));
     obj.labTitIniciativa:setParent(obj.layRightAlinedTitle);
     obj.labTitIniciativa:setName("labTitIniciativa");
     obj.labTitIniciativa:setText("Init");
@@ -593,7 +594,7 @@ function newfrmCombatTracker()
     obj.labTitIniciativa:setWidth(28);
     obj.labTitIniciativa:setAlign("left");
 
-    obj.labTitFoF = gui.fromHandle(_obj_newObject("label"));
+    obj.labTitFoF = GUI.fromHandle(_obj_newObject("label"));
     obj.labTitFoF:setParent(obj.layRightAlinedTitle);
     obj.labTitFoF:setName("labTitFoF");
     obj.labTitFoF:setText("A/H");
@@ -616,7 +617,7 @@ function newfrmCombatTracker()
 	
 
 
-    obj.rclAtores = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclAtores = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclAtores:setParent(obj);
     obj.rclAtores:setName("rclAtores");
     obj.rclAtores:setAlign("client");
@@ -624,14 +625,14 @@ function newfrmCombatTracker()
     obj.rclAtores:setTemplateForm("frmAtorCombatTracker");
     obj.rclAtores:setMargins({top=1});
 
-    obj.layTrackerBottom = gui.fromHandle(_obj_newObject("layout"));
+    obj.layTrackerBottom = GUI.fromHandle(_obj_newObject("layout"));
     obj.layTrackerBottom:setParent(obj);
     obj.layTrackerBottom:setName("layTrackerBottom");
     obj.layTrackerBottom:setAlign("bottom");
     obj.layTrackerBottom:setHeight(28);
     obj.layTrackerBottom:setMargins({top=2, left=2, bottom=2, right=2});
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layTrackerBottom);
     obj.button1:setText("Próx. turno");
     obj.button1:setFontSize(11);
@@ -639,13 +640,13 @@ function newfrmCombatTracker()
     obj.button1:setAlign("left");
     obj.button1:setName("button1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layTrackerBottom);
     obj.layout2:setAlign("right");
     obj.layout2:setWidth(68);
     obj.layout2:setName("layout2");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout2);
     obj.label2:setAlign("left");
     obj.label2:setAutoSize(true);
@@ -654,7 +655,7 @@ function newfrmCombatTracker()
     obj.label2:setFontSize(11);
     obj.label2:setName("label2");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout2);
     obj.edit1:setField("rodada");
     obj.edit1:setAlign("client");
@@ -675,7 +676,7 @@ function newfrmCombatTracker()
 
 
     obj._e_event0 = obj.btnAddAtor:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             
             				if not mesaDoPersonagem.meuJogador.isGold then
@@ -687,7 +688,7 @@ function newfrmCombatTracker()
         end, obj);
 
     obj._e_event1 = obj.btnRoll:addEventListener("onClick",
-        function (self)
+        function (_)
             local jogadores = rrpg.getMesaDe(sheet).jogadores;
             				local current = nil;
             				for i = 1, #jogadores, 1 do
@@ -719,7 +720,7 @@ function newfrmCombatTracker()
         end, obj);
 
     obj._e_event2 = obj.btnAddAll:addEventListener("onClick",
-        function (self)
+        function (_)
             local jogadores = rrpg.getMesaDe(sheet).jogadores;
             				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             
@@ -738,17 +739,17 @@ function newfrmCombatTracker()
         end, obj);
 
     obj._e_event3 = obj.btnLimpar:addEventListener("onClick",
-        function (self)
+        function (_)
             self:limpar();
         end, obj);
 
     obj._e_event4 = obj.rclAtores:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             return self:compareNodes(nodeA, nodeB);
         end, obj);
 
     obj._e_event5 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self:proximoTurno();
         end, obj);
 
@@ -809,6 +810,6 @@ local _frmCombatTracker = {
     description=""};
 
 frmCombatTracker = _frmCombatTracker;
-rrpg.registrarForm(_frmCombatTracker);
+Firecast.registrarForm(_frmCombatTracker);
 
 return _frmCombatTracker;

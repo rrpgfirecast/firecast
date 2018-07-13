@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmNodePermissions()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -34,20 +35,17 @@ function newfrmNodePermissions()
     obj:setResizable(true);
 
 
+		local ndb = require("ndb.lua");	
 		local ndbTemporario = ndb.newMemNodeDatabase();
 	
 		local nodeRaiz; -- Node raiz que o usuario pediu para editar
-		local node; -- Node Atual que o usuario está editando
+		local node = nil; -- Node Atual que o usuario está editando
 		local currentChildNodes = {}; -- Array com os child nodes do node atual
-		local ndb = require("ndb.lua");
-		local depth;	
+
+		local depth = 0;	
 		
 		if sheet~=nil and node==nil then
 			node = sheet;
-		end;
-		
-		if depth==nil then
-			depth = 0;
 		end;
 
 		local trPermissions = nil;
@@ -135,7 +133,7 @@ function newfrmNodePermissions()
 			
 			table.sort(currentChildNodes,
 				function(left, right)
-					return utils.compareStringPtBr(ndb.getNodeName(left), ndb.getNodeName(right)) < 0;
+					return Utils.compareStringPtBr(ndb.getNodeName(left), ndb.getNodeName(right)) < 0;
 				end);
 			
 			refreshList();			
@@ -146,12 +144,12 @@ function newfrmNodePermissions()
 	
 
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
     obj.button1:setLeft(5);
     obj.button1:setTop(5);
@@ -160,7 +158,7 @@ function newfrmNodePermissions()
     obj.button1:setText("Raiz");
     obj.button1:setName("button1");
 
-    obj.button_father = gui.fromHandle(_obj_newObject("button"));
+    obj.button_father = GUI.fromHandle(_obj_newObject("button"));
     obj.button_father:setParent(obj.scrollBox1);
     obj.button_father:setLeft(5);
     obj.button_father:setTop(35);
@@ -170,7 +168,7 @@ function newfrmNodePermissions()
     obj.button_father:setName("button_father");
     obj.button_father:setVisible(false);
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setLeft(5);
     obj.rectangle1:setTop(65);
@@ -179,7 +177,7 @@ function newfrmNodePermissions()
     obj.rectangle1:setColor("#404040");
     obj.rectangle1:setName("rectangle1");
 
-    obj.rclChilds = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclChilds = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclChilds:setParent(obj.scrollBox1);
     obj.rclChilds:setName("rclChilds");
     obj.rclChilds:setField("childs");
@@ -192,7 +190,7 @@ function newfrmNodePermissions()
     obj.rclChilds:setHitTest(true);
     obj.rclChilds:setCursor("handPoint");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.scrollBox1);
     obj.rectangle2:setLeft(115);
     obj.rectangle2:setTop(5);
@@ -201,7 +199,7 @@ function newfrmNodePermissions()
     obj.rectangle2:setColor("white");
     obj.rectangle2:setName("rectangle2");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.scrollBox1);
     obj.label1:setLeft(120);
     obj.label1:setTop(5);
@@ -211,7 +209,7 @@ function newfrmNodePermissions()
     obj.label1:setTextTrimming("character");
     obj.label1:setName("label1");
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.scrollBox1);
     obj.comboBox1:setLeft(120);
     obj.comboBox1:setTop(35);
@@ -222,7 +220,7 @@ function newfrmNodePermissions()
     obj.comboBox1:setField("selKind");
     obj.comboBox1:setName("comboBox1");
 
-    obj.edit_login = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit_login = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit_login:setParent(obj.scrollBox1);
     obj.edit_login:setLeft(225);
     obj.edit_login:setTop(35);
@@ -232,7 +230,7 @@ function newfrmNodePermissions()
     obj.edit_login:setName("edit_login");
     obj.edit_login:setVisible(false);
 
-    obj.comboBox_selId = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox_selId = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox_selId:setParent(obj.scrollBox1);
     obj.comboBox_selId:setLeft(225);
     obj.comboBox_selId:setTop(35);
@@ -243,13 +241,13 @@ function newfrmNodePermissions()
     obj.comboBox_selId:setField("selId");
     obj.comboBox_selId:setName("comboBox_selId");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.scrollBox1);
     obj.dataLink1:setField("selId");
     obj.dataLink1:setDefaultValue("jogadores");
     obj.dataLink1:setName("dataLink1");
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.scrollBox1);
     obj.horzLine1:setLeft(125);
     obj.horzLine1:setTop(65);
@@ -257,7 +255,7 @@ function newfrmNodePermissions()
     obj.horzLine1:setStrokeColor("white");
     obj.horzLine1:setName("horzLine1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.scrollBox1);
     obj.label2:setLeft(125);
     obj.label2:setTop(70);
@@ -268,7 +266,7 @@ function newfrmNodePermissions()
     obj.label2:setHint("Indica se o usuario/grupo pode visualizar os dados desse objeto.");
     obj.label2:setName("label2");
 
-    obj.comboBox2 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox2:setParent(obj.scrollBox1);
     obj.comboBox2:setLeft(225);
     obj.comboBox2:setTop(70);
@@ -279,7 +277,7 @@ function newfrmNodePermissions()
     obj.comboBox2:setField("read");
     obj.comboBox2:setName("comboBox2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.scrollBox1);
     obj.label3:setLeft(125);
     obj.label3:setTop(95);
@@ -290,7 +288,7 @@ function newfrmNodePermissions()
     obj.label3:setHint("Indica se o usuario/grupo pode modificar informação armazenada nesse objeto.");
     obj.label3:setName("label3");
 
-    obj.comboBox3 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox3:setParent(obj.scrollBox1);
     obj.comboBox3:setLeft(225);
     obj.comboBox3:setTop(95);
@@ -301,7 +299,7 @@ function newfrmNodePermissions()
     obj.comboBox3:setField("write");
     obj.comboBox3:setName("comboBox3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.scrollBox1);
     obj.label4:setLeft(125);
     obj.label4:setTop(120);
@@ -312,7 +310,7 @@ function newfrmNodePermissions()
     obj.label4:setHint("Indica se o usuario/grupo pode adicionar objetos filhos a esse objeto.");
     obj.label4:setName("label4");
 
-    obj.comboBox4 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox4:setParent(obj.scrollBox1);
     obj.comboBox4:setLeft(225);
     obj.comboBox4:setTop(120);
@@ -323,7 +321,7 @@ function newfrmNodePermissions()
     obj.comboBox4:setField("createChild");
     obj.comboBox4:setName("comboBox4");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.scrollBox1);
     obj.label5:setLeft(125);
     obj.label5:setTop(145);
@@ -334,7 +332,7 @@ function newfrmNodePermissions()
     obj.label5:setHint("Indica se o usuario/grupo pode apagar esse objeto do banco de dados.");
     obj.label5:setName("label5");
 
-    obj.comboBox5 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox5:setParent(obj.scrollBox1);
     obj.comboBox5:setLeft(225);
     obj.comboBox5:setTop(145);
@@ -345,7 +343,7 @@ function newfrmNodePermissions()
     obj.comboBox5:setField("delete");
     obj.comboBox5:setName("comboBox5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.scrollBox1);
     obj.label6:setLeft(125);
     obj.label6:setTop(170);
@@ -356,7 +354,7 @@ function newfrmNodePermissions()
     obj.label6:setHint("Indica se o usuario/grupo pode ver as permissões de visualização, modificação, expansão e de apagar.");
     obj.label6:setName("label6");
 
-    obj.comboBox6 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox6 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox6:setParent(obj.scrollBox1);
     obj.comboBox6:setLeft(225);
     obj.comboBox6:setTop(170);
@@ -367,7 +365,7 @@ function newfrmNodePermissions()
     obj.comboBox6:setField("readPermissions");
     obj.comboBox6:setName("comboBox6");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.scrollBox1);
     obj.label7:setLeft(125);
     obj.label7:setTop(195);
@@ -378,7 +376,7 @@ function newfrmNodePermissions()
     obj.label7:setHint("Indica se o usuario/grupo pode dar permissões de visualização, modificação, expansão e de apagar.");
     obj.label7:setName("label7");
 
-    obj.comboBox7 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox7 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox7:setParent(obj.scrollBox1);
     obj.comboBox7:setLeft(225);
     obj.comboBox7:setTop(195);
@@ -389,7 +387,7 @@ function newfrmNodePermissions()
     obj.comboBox7:setField("writePermissions");
     obj.comboBox7:setName("comboBox7");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.scrollBox1);
     obj.label8:setLeft(125);
     obj.label8:setTop(220);
@@ -401,7 +399,7 @@ function newfrmNodePermissions()
     obj.label8:setHint("Indica se o usuario/grupo pode definir quem pode dar permissões de dar permissões e ler permissões.");
     obj.label8:setName("label8");
 
-    obj.comboBox8 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox8 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox8:setParent(obj.scrollBox1);
     obj.comboBox8:setLeft(225);
     obj.comboBox8:setTop(220);
@@ -412,7 +410,7 @@ function newfrmNodePermissions()
     obj.comboBox8:setField("writeMetaPermissions");
     obj.comboBox8:setName("comboBox8");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.scrollBox1);
     obj.button2:setLeft(125);
     obj.button2:setTop(250);
@@ -421,7 +419,7 @@ function newfrmNodePermissions()
     obj.button2:setText("Desfazer");
     obj.button2:setName("button2");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.scrollBox1);
     obj.button3:setLeft(215);
     obj.button3:setTop(250);
@@ -430,7 +428,7 @@ function newfrmNodePermissions()
     obj.button3:setText("Salvar");
     obj.button3:setName("button3");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.scrollBox1);
     obj.button4:setLeft(305);
     obj.button4:setTop(250);
@@ -449,7 +447,7 @@ function newfrmNodePermissions()
 
 
     obj._e_event0 = obj:addEventListener("onShow",
-        function (self)
+        function (_)
             if sheet ~= nil then
             			trPermissions = ndb.newTransaction(nodeRaiz);
             			node = nodeRaiz;
@@ -484,14 +482,14 @@ function newfrmNodePermissions()
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onHide",
-        function (self)
+        function (_)
             if sheet ~= nil then
             			trPermissions:rollback();
             		end;
         end, obj);
 
     obj._e_event2 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet~= nil then
             					gotoNode(nodeRaiz)
             					depth = 0;
@@ -501,7 +499,7 @@ function newfrmNodePermissions()
         end, obj);
 
     obj._e_event3 = obj.button_father:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet~= nil then
             					local nodePai;
             				
@@ -523,7 +521,7 @@ function newfrmNodePermissions()
         end, obj);
 
     obj._e_event4 = obj.rclChilds:addEventListener("onSelect",
-        function (self)
+        function (_)
             if sheet~= nil and self.rclChilds.selectedNode~=nil then
             					if node==nil then
             						node = nodeRaiz;
@@ -544,14 +542,14 @@ function newfrmNodePermissions()
         end, obj);
 
     obj._e_event5 = obj.comboBox1:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             					refreshScreen();
             				end;
         end, obj);
 
     obj._e_event6 = obj.edit_login:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             					if node==nil then
             						node = sheet;
@@ -565,7 +563,7 @@ function newfrmNodePermissions()
         end, obj);
 
     obj._e_event7 = obj.comboBox_selId:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             					if node==nil then
             						node = sheet;
@@ -581,7 +579,7 @@ function newfrmNodePermissions()
         end, obj);
 
     obj._e_event8 = obj.comboBox2:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             					ndb.pushTransaction(nodeRaiz, trPermissions);
             					if node==nil then
@@ -597,7 +595,7 @@ function newfrmNodePermissions()
         end, obj);
 
     obj._e_event9 = obj.comboBox3:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             					ndb.pushTransaction(nodeRaiz, trPermissions);
             					if node==nil then
@@ -613,7 +611,7 @@ function newfrmNodePermissions()
         end, obj);
 
     obj._e_event10 = obj.comboBox4:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             					ndb.pushTransaction(nodeRaiz, trPermissions);
             					if node==nil then
@@ -629,7 +627,7 @@ function newfrmNodePermissions()
         end, obj);
 
     obj._e_event11 = obj.comboBox5:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             					ndb.pushTransaction(nodeRaiz, trPermissions);
             					if node==nil then
@@ -645,7 +643,7 @@ function newfrmNodePermissions()
         end, obj);
 
     obj._e_event12 = obj.comboBox6:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             					ndb.pushTransaction(nodeRaiz, trPermissions);
             					if node==nil then
@@ -661,7 +659,7 @@ function newfrmNodePermissions()
         end, obj);
 
     obj._e_event13 = obj.comboBox7:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             					ndb.pushTransaction(nodeRaiz, trPermissions);
             					if node==nil then
@@ -677,7 +675,7 @@ function newfrmNodePermissions()
         end, obj);
 
     obj._e_event14 = obj.comboBox8:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             					ndb.pushTransaction(nodeRaiz, trPermissions);
             					if node==nil then
@@ -693,9 +691,9 @@ function newfrmNodePermissions()
         end, obj);
 
     obj._e_event15 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet~= nil then
-            					dialogs.confirmOkCancel("Tem certeza que deseja desfazer as alterações?",
+            					Dialogs.confirmOkCancel("Tem certeza que deseja desfazer as alterações?",
             						function (confirmado)
             							if confirmado then
             								trPermissions:rollback();
@@ -706,9 +704,9 @@ function newfrmNodePermissions()
         end, obj);
 
     obj._e_event16 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet~= nil then
-            					dialogs.confirmOkCancel("Tem certeza que deseja salvar as alterações?",
+            					Dialogs.confirmOkCancel("Tem certeza que deseja salvar as alterações?",
             						function (confirmado)
             							if confirmado then
             								trPermissions:commit();
@@ -718,9 +716,9 @@ function newfrmNodePermissions()
         end, obj);
 
     obj._e_event17 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet~= nil then
-            					gui.openInBrowser('http://wiki.rrpg.com.br/index.php?title=Editor_de_Permiss%C3%B5es_de_Node');
+            					GUI.openInBrowser('http://wiki.rrpg.com.br/index.php?title=Editor_de_Permiss%C3%B5es_de_Node');
             				end;
         end, obj);
 
@@ -804,6 +802,6 @@ local _frmNodePermissions = {
     description=""};
 
 frmNodePermissions = _frmNodePermissions;
-rrpg.registrarForm(_frmNodePermissions);
+Firecast.registrarForm(_frmNodePermissions);
 
 return _frmNodePermissions;

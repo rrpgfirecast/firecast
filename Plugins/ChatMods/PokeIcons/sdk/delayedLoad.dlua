@@ -32,6 +32,9 @@ function dLoadHelper.new(moduleName)
 		end;
 	};
 	
+	rawset(interface, "__isDelayedLoad", true);
+	rawset(interface, "__delayedLoadModuleName", moduleName);
+	
 	setmetatable(interface, metaTable);
 	return interface;
 end;

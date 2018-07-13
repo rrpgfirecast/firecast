@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmAtaqueItem()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -32,7 +33,7 @@ function newfrmAtaqueItem()
     obj:setMargins({bottom=5});
     obj:setTheme("dark");
 
-    obj.weapon = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.weapon = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.weapon:setParent(obj);
     obj.weapon:setWidth(1240);
     obj.weapon:setHeight(90);
@@ -40,7 +41,7 @@ function newfrmAtaqueItem()
     obj.weapon:setName("weapon");
     obj.weapon:setVisible(false);
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.weapon);
     obj.rectangle1:setLeft(869);
     obj.rectangle1:setTop(4);
@@ -51,7 +52,7 @@ function newfrmAtaqueItem()
     obj.rectangle1:setStrokeSize(1);
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.weapon);
     obj.label1:setLeft(5);
     obj.label1:setTop(5);
@@ -60,7 +61,7 @@ function newfrmAtaqueItem()
     obj.label1:setText("NOME");
     obj.label1:setName("label1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.weapon);
     obj.edit1:setVertTextAlign("center");
     obj.edit1:setLeft(55);
@@ -70,7 +71,7 @@ function newfrmAtaqueItem()
     obj.edit1:setField("nome");
     obj.edit1:setName("edit1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.weapon);
     obj.label2:setLeft(5);
     obj.label2:setTop(30);
@@ -79,7 +80,7 @@ function newfrmAtaqueItem()
     obj.label2:setText("ARMA");
     obj.label2:setName("label2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.weapon);
     obj.edit2:setVertTextAlign("center");
     obj.edit2:setLeft(55);
@@ -89,7 +90,7 @@ function newfrmAtaqueItem()
     obj.edit2:setField("arma");
     obj.edit2:setName("edit2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.weapon);
     obj.label3:setLeft(5);
     obj.label3:setTop(55);
@@ -98,7 +99,7 @@ function newfrmAtaqueItem()
     obj.label3:setText("TIPO");
     obj.label3:setName("label3");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.weapon);
     obj.edit3:setVertTextAlign("center");
     obj.edit3:setLeft(55);
@@ -108,7 +109,7 @@ function newfrmAtaqueItem()
     obj.edit3:setField("tipo");
     obj.edit3:setName("edit3");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.weapon);
     obj.button1:setLeft(279);
     obj.button1:setTop(6);
@@ -117,7 +118,7 @@ function newfrmAtaqueItem()
     obj.button1:setFontSize(11);
     obj.button1:setName("button1");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.weapon);
     obj.rectangle2:setLeft(352);
     obj.rectangle2:setTop(5);
@@ -128,7 +129,7 @@ function newfrmAtaqueItem()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.weapon);
     obj.label4:setLeft(352);
     obj.label4:setTop(5);
@@ -138,7 +139,7 @@ function newfrmAtaqueItem()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.weapon);
     obj.edit4:setType("number");
     obj.edit4:setVertTextAlign("center");
@@ -149,7 +150,7 @@ function newfrmAtaqueItem()
     obj.edit4:setField("ataqueBonus");
     obj.edit4:setName("edit4");
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.weapon);
     obj.comboBox1:setVertTextAlign("center");
     obj.comboBox1:setHorzTextAlign("center");
@@ -163,7 +164,7 @@ function newfrmAtaqueItem()
     obj.comboBox1:setFontColor("white");
     obj.comboBox1:setName("comboBox1");
 
-    obj.comboBox2 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox2:setParent(obj.weapon);
     obj.comboBox2:setVertTextAlign("center");
     obj.comboBox2:setHorzTextAlign("center");
@@ -177,12 +178,12 @@ function newfrmAtaqueItem()
     obj.comboBox2:setFontColor("white");
     obj.comboBox2:setName("comboBox2");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.weapon);
     obj.dataLink1:setFields({'ataqueBonus','atributo1','atributo2','ajuste'});
     obj.dataLink1:setName("dataLink1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.weapon);
     obj.button2:setLeft(279);
     obj.button2:setTop(31);
@@ -191,7 +192,7 @@ function newfrmAtaqueItem()
     obj.button2:setFontSize(11);
     obj.button2:setName("button2");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.weapon);
     obj.edit5:setVertTextAlign("center");
     obj.edit5:setLeft(352);
@@ -201,7 +202,7 @@ function newfrmAtaqueItem()
     obj.edit5:setField("dano");
     obj.edit5:setName("edit5");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.weapon);
     obj.button3:setLeft(434);
     obj.button3:setTop(31);
@@ -210,7 +211,7 @@ function newfrmAtaqueItem()
     obj.button3:setFontSize(11);
     obj.button3:setName("button3");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.weapon);
     obj.edit6:setVertTextAlign("center");
     obj.edit6:setLeft(495);
@@ -220,7 +221,7 @@ function newfrmAtaqueItem()
     obj.edit6:setField("danoCritico");
     obj.edit6:setName("edit6");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.weapon);
     obj.label5:setLeft(580);
     obj.label5:setTop(5);
@@ -229,7 +230,7 @@ function newfrmAtaqueItem()
     obj.label5:setText("CATEGORIA");
     obj.label5:setName("label5");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.weapon);
     obj.edit7:setVertTextAlign("center");
     obj.edit7:setLeft(660);
@@ -239,7 +240,7 @@ function newfrmAtaqueItem()
     obj.edit7:setField("categoria");
     obj.edit7:setName("edit7");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.weapon);
     obj.label6:setLeft(610);
     obj.label6:setTop(30);
@@ -248,7 +249,7 @@ function newfrmAtaqueItem()
     obj.label6:setText("OBS");
     obj.label6:setName("label6");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.weapon);
     obj.edit8:setVertTextAlign("center");
     obj.edit8:setLeft(660);
@@ -258,7 +259,7 @@ function newfrmAtaqueItem()
     obj.edit8:setField("obs");
     obj.edit8:setName("edit8");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.weapon);
     obj.label7:setLeft(590);
     obj.label7:setTop(55);
@@ -267,7 +268,7 @@ function newfrmAtaqueItem()
     obj.label7:setText("MUNIÇÃO");
     obj.label7:setName("label7");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.weapon);
     obj.edit9:setType("number");
     obj.edit9:setVertTextAlign("center");
@@ -278,7 +279,7 @@ function newfrmAtaqueItem()
     obj.edit9:setField("municao");
     obj.edit9:setName("edit9");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.weapon);
     obj.label8:setLeft(735);
     obj.label8:setTop(55);
@@ -287,7 +288,7 @@ function newfrmAtaqueItem()
     obj.label8:setText("ALCANCE");
     obj.label8:setName("label8");
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.weapon);
     obj.edit10:setVertTextAlign("center");
     obj.edit10:setLeft(795);
@@ -297,7 +298,7 @@ function newfrmAtaqueItem()
     obj.edit10:setField("alcance");
     obj.edit10:setName("edit10");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.weapon);
     obj.label9:setLeft(870);
     obj.label9:setTop(25);
@@ -307,7 +308,7 @@ function newfrmAtaqueItem()
     obj.label9:setText("Clique para adicionar imagem");
     obj.label9:setName("label9");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.weapon);
     obj.image1:setField("imagemArma");
     obj.image1:setEditable(true);
@@ -318,7 +319,7 @@ function newfrmAtaqueItem()
     obj.image1:setHeight(75);
     obj.image1:setName("image1");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.weapon);
     obj.button4:setLeft(1205);
     obj.button4:setTop(4);
@@ -355,7 +356,7 @@ function newfrmAtaqueItem()
 		
 
 
-    obj.add = gui.fromHandle(_obj_newObject("button"));
+    obj.add = GUI.fromHandle(_obj_newObject("button"));
     obj.add:setParent(obj);
     obj.add:setWidth(1240);
     obj.add:setHeight(90);
@@ -363,13 +364,13 @@ function newfrmAtaqueItem()
     obj.add:setText("+");
     obj.add:setName("add");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj);
     obj.dataLink2:setField("enabled");
     obj.dataLink2:setName("dataLink2");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             i = 1;
             				max = 1;
             				danoAlvo1 = 0;
@@ -419,7 +420,7 @@ function newfrmAtaqueItem()
         end, obj);
 
     obj._e_event1 = obj.comboBox1:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             					local atributo1 = 0;
             					local node = ndb.getRoot(sheet);
@@ -442,7 +443,7 @@ function newfrmAtaqueItem()
         end, obj);
 
     obj._e_event2 = obj.comboBox2:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             					local atributo2 = 0;
             					local node = ndb.getRoot(sheet);
@@ -465,7 +466,7 @@ function newfrmAtaqueItem()
         end, obj);
 
     obj._e_event3 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             				sheet.ataque = 	(tonumber(sheet.ataqueBonus) or 0) + 
             								(tonumber(sheet.atributo1) or 0) + 
@@ -474,7 +475,7 @@ function newfrmAtaqueItem()
         end, obj);
 
     obj._e_event4 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				local dano = rrpg.interpretarRolagem(sheet.dano);
             				if sheet.buffDano ~= nil then
@@ -490,7 +491,7 @@ function newfrmAtaqueItem()
         end, obj);
 
     obj._e_event5 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico);
             				if sheet.buffDanoCritico ~= nil then
@@ -509,7 +510,7 @@ function newfrmAtaqueItem()
         end, obj);
 
     obj._e_event6 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse ataque?",
             					function (confirmado)
             						if confirmado then
@@ -519,14 +520,14 @@ function newfrmAtaqueItem()
         end, obj);
 
     obj._e_event7 = obj.add:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.enabled = true;
             			local node = ndb.getRoot(sheet);
             			node.addWeapon = 1;
         end, obj);
 
     obj._e_event8 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             			if sheet.enabled==true then
@@ -612,6 +613,6 @@ local _frmAtaqueItem = {
     description=""};
 
 frmAtaqueItem = _frmAtaqueItem;
-rrpg.registrarForm(_frmAtaqueItem);
+Firecast.registrarForm(_frmAtaqueItem);
 
 return _frmAtaqueItem;

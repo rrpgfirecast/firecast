@@ -2,8 +2,8 @@ local objs = require("rrpgObjs.lua");
 local ndb = require("ndb.lua");
 
 gui = {}
+GUI = gui;
 
-local localGui = gui;
 local guiLoaders = {};
 
 gui.guiLoaders = guiLoaders;
@@ -318,7 +318,6 @@ end;
 
 local function formLayoutFromHandle(handle)
 	local ctrl = layoutFromHandle(handle);
-	local self = ctrl;
 	
 	rawset(ctrl, "__isFormFlag", true);
 	
@@ -404,7 +403,6 @@ guiLoaders["form"] = formLayoutFromHandle;
 
 local function popupFormFromHandle(handle)
 	local ctrl = formLayoutFromHandle(handle);
-	local self = ctrl;
 	
 	function ctrl:getDrawContainer() return _obj_getProp(self.handle, "DrawContainer"); end;
 	function ctrl:setDrawContainer(v) _obj_setProp(self.handle, "DrawContainer", v); end;	
@@ -663,7 +661,7 @@ local function labelFromHandle(handle)
 	function ctrl:getField() return _gui_getFieldName(self.handle); end;
 	function ctrl:setField(v) _gui_setFieldName(self.handle, v); end;
 	
-	function ctrl:getFrameRegion() return obj_getProp(self.handle, "FrameRegion"); end;
+	function ctrl:getFrameRegion() return _obj_getProp(self.handle, "FrameRegion"); end;
 	function ctrl:setFrameRegion(v) _obj_setProp(self.handle, "FrameRegion", v); end;	
 					
 	ctrl.props["autoSize"] = {setter = "setAutoSize", getter = "getAutoSize", tipo = "bool"};		

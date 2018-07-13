@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmGerenciador01_Jogadores()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,7 +32,7 @@ function newfrmGerenciador01_Jogadores()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
@@ -40,7 +41,7 @@ function newfrmGerenciador01_Jogadores()
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.rectangle1);
     obj.rectangle2:setLeft(430);
     obj.rectangle2:setTop(5);
@@ -51,7 +52,7 @@ function newfrmGerenciador01_Jogadores()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setLeft(5);
     obj.edit1:setTop(5);
@@ -60,7 +61,7 @@ function newfrmGerenciador01_Jogadores()
     obj.edit1:setField("jogador");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.rectangle1);
     obj.edit2:setLeft(105);
     obj.edit2:setTop(5);
@@ -69,7 +70,7 @@ function newfrmGerenciador01_Jogadores()
     obj.edit2:setField("personagem");
     obj.edit2:setName("edit2");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.rectangle1);
     obj.edit3:setLeft(205);
     obj.edit3:setTop(5);
@@ -78,7 +79,7 @@ function newfrmGerenciador01_Jogadores()
     obj.edit3:setField("xpInicial");
     obj.edit3:setName("edit3");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.rectangle1);
     obj.edit4:setLeft(280);
     obj.edit4:setTop(5);
@@ -87,7 +88,7 @@ function newfrmGerenciador01_Jogadores()
     obj.edit4:setField("xpGasta");
     obj.edit4:setName("edit4");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.rectangle1);
     obj.edit5:setLeft(355);
     obj.edit5:setTop(5);
@@ -96,7 +97,7 @@ function newfrmGerenciador01_Jogadores()
     obj.edit5:setField("xp");
     obj.edit5:setName("edit5");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(430);
     obj.label1:setTop(5);
@@ -106,7 +107,7 @@ function newfrmGerenciador01_Jogadores()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.rectangle1);
     obj.edit6:setLeft(455);
     obj.edit6:setTop(5);
@@ -115,7 +116,7 @@ function newfrmGerenciador01_Jogadores()
     obj.edit6:setField("poInicial");
     obj.edit6:setName("edit6");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.rectangle1);
     obj.edit7:setLeft(530);
     obj.edit7:setTop(5);
@@ -124,7 +125,7 @@ function newfrmGerenciador01_Jogadores()
     obj.edit7:setField("po");
     obj.edit7:setName("edit7");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.rectangle1);
     obj.edit8:setLeft(605);
     obj.edit8:setTop(5);
@@ -133,7 +134,7 @@ function newfrmGerenciador01_Jogadores()
     obj.edit8:setField("entranda");
     obj.edit8:setName("edit8");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(630);
     obj.button1:setTop(5);
@@ -142,13 +143,13 @@ function newfrmGerenciador01_Jogadores()
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("xp");
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse jogador?",
             					function (confirmado)
             						if confirmado then
@@ -158,7 +159,7 @@ function newfrmGerenciador01_Jogadores()
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local mod = sheet.xp or "0";
             			mod = string.gsub(mod, "X", "");
             			mod = string.gsub(mod, "P", "");
@@ -233,6 +234,6 @@ local _frmGerenciador01_Jogadores = {
     description=""};
 
 frmGerenciador01_Jogadores = _frmGerenciador01_Jogadores;
-rrpg.registrarForm(_frmGerenciador01_Jogadores);
+Firecast.registrarForm(_frmGerenciador01_Jogadores);
 
 return _frmGerenciador01_Jogadores;

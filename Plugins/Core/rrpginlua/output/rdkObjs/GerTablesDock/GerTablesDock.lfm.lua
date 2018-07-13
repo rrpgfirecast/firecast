@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmGerTablesDock()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -42,7 +43,7 @@ function newfrmGerTablesDock()
 		local listenerUserClosed;
 	
 		local function inicializar()
-			self:setNodeObject(ndb.newMemNodeDatabase());	
+			self:setNodeObject(NDB.newMemNodeDatabase());	
 			inicializado = true;
 		end;
 		
@@ -51,11 +52,11 @@ function newfrmGerTablesDock()
 				inicializar();
 			end;
 		
-			local tds = rrpg.plugins.getInstalledTablesDock();			
+			local tds = Firecast.Plugins.getInstalledTablesDock();			
 			
 			table.sort(tds, 
 				function(l, r)
-					return utils.compareStringPtBr(l.title, r.title) < 0;
+					return Utils.compareStringPtBr(l.title, r.title) < 0;
 				end);
 			
 			for i = 1, #tds, 1 do
@@ -68,7 +69,7 @@ function newfrmGerTablesDock()
 	
 
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
     obj.label1:setText("Janelas Acopláveis");
     obj.label1:setName("label1");
@@ -79,13 +80,13 @@ function newfrmGerTablesDock()
     obj.label1:setAlign("top");
     obj.label1:setAutoSize(true);
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setName("layout1");
     obj.layout1:setAlign("client");
     obj.layout1:setMargins({left=12, right=12, top=1, bottom=5});
 
-    obj.rclTablesDock = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclTablesDock = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclTablesDock:setParent(obj.layout1);
     obj.rclTablesDock:setName("rclTablesDock");
     obj.rclTablesDock:setAlign("client");
@@ -98,30 +99,30 @@ function newfrmGerTablesDock()
 
 
     obj._e_event0 = obj:addEventListener("onShow",
-        function (self)
+        function (_)
             carregarTablesDock();
             		
-            		listenerPInstall = rrpg.messaging.listen("PluginInstalled", carregarTablesDock);
-            		listenerPUninstall = rrpg.messaging.listen("PluginUninstalled", carregarTablesDock);
-            		listenerUserClosed = rrpg.messaging.listen("TablesDockClosedByUser", carregarTablesDock);
+            		listenerPInstall = Firecast.Messaging.listen("PluginInstalled", carregarTablesDock);
+            		listenerPUninstall = Firecast.Messaging.listen("PluginUninstalled", carregarTablesDock);
+            		listenerUserClosed = Firecast.Messaging.listen("TablesDockClosedByUser", carregarTablesDock);
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onHide",
-        function (self)
-            rrpg.messaging.unlisten(listenerUserClosed);
-            		rrpg.messaging.unlisten(listenerPInstall);
-            		rrpg.messaging.unlisten(listenerPUninstall);
+        function (_)
+            Firecast.Messaging.unlisten(listenerUserClosed);
+            		Firecast.Messaging.unlisten(listenerPInstall);
+            		Firecast.Messaging.unlisten(listenerPUninstall);
         end, obj);
 
     obj._e_event2 = obj.rclTablesDock:addEventListener("onItemAdded",
-        function (self, node, form)
+        function (_, node, form)
             form.mesa = self.mesa;
             				form.loadTDFunction = self.loadTDFunction;
             				form.unloadTDFunction = self.unloadTDFunction;
         end, obj);
 
     obj._e_event3 = obj.rclTablesDock:addEventListener("onItemRemoved",
-        function (self, node, form)
+        function (_, node, form)
             form.unloadTDFunction = nil;							
             				form.loadTDFunction = nil;				
             				form.mesa = nil;
@@ -167,6 +168,6 @@ local _frmGerTablesDock = {
     description=""};
 
 frmGerTablesDock = _frmGerTablesDock;
-rrpg.registrarForm(_frmGerTablesDock);
+Firecast.registrarForm(_frmGerTablesDock);
 
 return _frmGerTablesDock;

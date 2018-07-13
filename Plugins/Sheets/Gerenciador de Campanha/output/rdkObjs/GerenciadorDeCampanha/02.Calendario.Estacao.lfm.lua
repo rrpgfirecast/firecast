@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmGerenciador02_ESTACAO()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -32,13 +33,13 @@ function newfrmGerenciador02_ESTACAO()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setLeft(0);
     obj.edit1:setTop(0);
@@ -48,7 +49,7 @@ function newfrmGerenciador02_ESTACAO()
     obj.edit1:setType("number");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.rectangle1);
     obj.edit2:setLeft(30);
     obj.edit2:setTop(0);
@@ -57,7 +58,7 @@ function newfrmGerenciador02_ESTACAO()
     obj.edit2:setField("estacao");
     obj.edit2:setName("edit2");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.rectangle1);
     obj.edit3:setLeft(135);
     obj.edit3:setTop(0);
@@ -67,7 +68,7 @@ function newfrmGerenciador02_ESTACAO()
     obj.edit3:setType("number");
     obj.edit3:setName("edit3");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(170);
     obj.button1:setTop(0);
@@ -77,7 +78,7 @@ function newfrmGerenciador02_ESTACAO()
     obj.button1:setHint("Detalhes da Estação");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.rectangle1);
     obj.button2:setLeft(195);
     obj.button2:setTop(0);
@@ -86,13 +87,13 @@ function newfrmGerenciador02_ESTACAO()
     obj.button2:setText("X");
     obj.button2:setName("button2");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.rectangle1);
     obj.dataLink1:setField("dias");
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.edit1:addEventListener("onChange",
-        function (self)
+        function (_)
             local rcl = self:findControlByName("rclEstacoes");
             				if rcl~= nil then
             					rcl:sort();
@@ -100,7 +101,7 @@ function newfrmGerenciador02_ESTACAO()
         end, obj);
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             local pop = self:findControlByName("popClima");
             				
             				if pop ~= nil then
@@ -112,7 +113,7 @@ function newfrmGerenciador02_ESTACAO()
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse mês?",
             					function (confirmado)
             						if confirmado then
@@ -122,7 +123,7 @@ function newfrmGerenciador02_ESTACAO()
         end, obj);
 
     obj._e_event3 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~= nil then
             					local node = ndb.getRoot(sheet);
             					local mod = 0;
@@ -179,6 +180,6 @@ local _frmGerenciador02_ESTACAO = {
     description=""};
 
 frmGerenciador02_ESTACAO = _frmGerenciador02_ESTACAO;
-rrpg.registrarForm(_frmGerenciador02_ESTACAO);
+Firecast.registrarForm(_frmGerenciador02_ESTACAO);
 
 return _frmGerenciador02_ESTACAO;

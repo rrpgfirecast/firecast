@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmSkillItem()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -56,14 +57,14 @@ function newfrmSkillItem()
 		
 
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#202020");
     obj.rectangle1:setHitTest(false);
     obj.rectangle1:setName("rectangle1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj);
     obj.edit1:setVertTextAlign("center");
     obj.edit1:setLeft(5);
@@ -73,7 +74,7 @@ function newfrmSkillItem()
     obj.edit1:setField("nome");
     obj.edit1:setName("edit1");
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj);
     obj.comboBox1:setVertTextAlign("center");
     obj.comboBox1:setHorzTextAlign("center");
@@ -87,7 +88,7 @@ function newfrmSkillItem()
     obj.comboBox1:setFontColor("white");
     obj.comboBox1:setName("comboBox1");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj);
     obj.rectangle2:setLeft(240);
     obj.rectangle2:setTop(0);
@@ -98,7 +99,7 @@ function newfrmSkillItem()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
     obj.label1:setField("total");
     obj.label1:setText("0");
@@ -109,7 +110,7 @@ function newfrmSkillItem()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj);
     obj.rectangle3:setLeft(280);
     obj.rectangle3:setTop(0);
@@ -120,7 +121,7 @@ function newfrmSkillItem()
     obj.rectangle3:setStrokeSize(1);
     obj.rectangle3:setName("rectangle3");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj);
     obj.label2:setField("atributoPericia");
     obj.label2:setText("0");
@@ -131,7 +132,7 @@ function newfrmSkillItem()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj);
     obj.edit2:setVertTextAlign("center");
     obj.edit2:setHorzTextAlign("center");
@@ -143,7 +144,7 @@ function newfrmSkillItem()
     obj.edit2:setType("number");
     obj.edit2:setName("edit2");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setLeft(350);
     obj.button1:setTop(1);
@@ -152,7 +153,7 @@ function newfrmSkillItem()
     obj.button1:setText("i");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj);
     obj.button2:setLeft(375);
     obj.button2:setTop(1);
@@ -161,13 +162,13 @@ function newfrmSkillItem()
     obj.button2:setText("X");
     obj.button2:setName("button2");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setFields({'atributoPericia', 'pontos', 'atributo', 'cyber', 'magia', 'outros'});
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.edit1:addEventListener("onChange",
-        function (self)
+        function (_)
             local rcl = self:findControlByName("rclListaDasPericias");
             			if rcl~= nil then
             				rcl:sort();
@@ -175,7 +176,7 @@ function newfrmSkillItem()
         end, obj);
 
     obj._e_event1 = obj.comboBox1:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             
             				local atributoPericia = 0;
@@ -201,17 +202,17 @@ function newfrmSkillItem()
         end, obj);
 
     obj._e_event2 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             showPericiaPopup();
         end, obj);
 
     obj._e_event3 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             askForDelete();
         end, obj);
 
     obj._e_event4 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet== nil then return end;
             
             			local mod = 0;
@@ -273,6 +274,6 @@ local _frmSkillItem = {
     description=""};
 
 frmSkillItem = _frmSkillItem;
-rrpg.registrarForm(_frmSkillItem);
+Firecast.registrarForm(_frmSkillItem);
 
 return _frmSkillItem;

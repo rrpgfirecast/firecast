@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmJogadores()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -29,12 +30,12 @@ function newfrmJogadores()
     obj:setName("frmJogadores");
     obj:setAlign("client");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
@@ -43,7 +44,7 @@ function newfrmJogadores()
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
     obj.button1:setLeft(0);
     obj.button1:setTop(0);
@@ -53,7 +54,7 @@ function newfrmJogadores()
     obj.button1:setHint("Adicionar");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.scrollBox1);
     obj.button2:setLeft(25);
     obj.button2:setTop(0);
@@ -63,7 +64,7 @@ function newfrmJogadores()
     obj.button2:setHint("Dá voz a todos jogadores da lista, retira +Jogador dos outros e ativa mesa moderada. ");
     obj.button2:setName("button2");
 
-    obj.rclSelector = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclSelector = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclSelector:setParent(obj.scrollBox1);
     obj.rclSelector:setLeft(0);
     obj.rclSelector:setTop(25);
@@ -75,7 +76,7 @@ function newfrmJogadores()
     obj.rclSelector:setLayout("vertical");
     obj.rclSelector:setSelectable(true);
 
-    obj.boxDetalhesDoItem = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.boxDetalhesDoItem = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.boxDetalhesDoItem:setParent(obj.scrollBox1);
     obj.boxDetalhesDoItem:setLeft(250);
     obj.boxDetalhesDoItem:setTop(0);
@@ -84,13 +85,13 @@ function newfrmJogadores()
     obj.boxDetalhesDoItem:setName("boxDetalhesDoItem");
     obj.boxDetalhesDoItem:setVisible(false);
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.boxDetalhesDoItem);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("black");
     obj.rectangle2:setName("rectangle2");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.boxDetalhesDoItem);
     obj.layout1:setLeft(5);
     obj.layout1:setTop(5);
@@ -98,7 +99,7 @@ function newfrmJogadores()
     obj.layout1:setHeight(25);
     obj.layout1:setName("layout1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(0);
     obj.label1:setTop(5);
@@ -108,7 +109,7 @@ function newfrmJogadores()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setLeft(70);
     obj.edit1:setTop(0);
@@ -117,7 +118,7 @@ function newfrmJogadores()
     obj.edit1:setField("login");
     obj.edit1:setName("edit1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout1);
     obj.label2:setLeft(200);
     obj.label2:setTop(5);
@@ -128,7 +129,7 @@ function newfrmJogadores()
     obj.label2:setFontSize(12);
     obj.label2:setName("label2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout1);
     obj.edit2:setLeft(275);
     obj.edit2:setTop(0);
@@ -137,7 +138,7 @@ function newfrmJogadores()
     obj.edit2:setField("personagem");
     obj.edit2:setName("edit2");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.boxDetalhesDoItem);
     obj.layout2:setLeft(5);
     obj.layout2:setTop(30);
@@ -145,7 +146,7 @@ function newfrmJogadores()
     obj.layout2:setHeight(300);
     obj.layout2:setName("layout2");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.layout2);
     obj.button3:setLeft(0);
     obj.button3:setTop(0);
@@ -155,7 +156,7 @@ function newfrmJogadores()
     obj.button3:setHint("Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado ");
     obj.button3:setName("button3");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout2);
     obj.label3:setLeft(10);
     obj.label3:setTop(5);
@@ -165,7 +166,7 @@ function newfrmJogadores()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout2);
     obj.rectangle3:setLeft(70);
     obj.rectangle3:setTop(0);
@@ -176,7 +177,7 @@ function newfrmJogadores()
     obj.rectangle3:setStrokeSize(1);
     obj.rectangle3:setName("rectangle3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout2);
     obj.label4:setLeft(70);
     obj.label4:setTop(0);
@@ -186,12 +187,12 @@ function newfrmJogadores()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.layout2);
     obj.dataLink1:setField("XP");
     obj.dataLink1:setName("dataLink1");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout2);
     obj.label5:setLeft(0);
     obj.label5:setTop(30);
@@ -201,7 +202,7 @@ function newfrmJogadores()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.layout2);
     obj.rectangle4:setLeft(35);
     obj.rectangle4:setTop(25);
@@ -212,7 +213,7 @@ function newfrmJogadores()
     obj.rectangle4:setStrokeSize(1);
     obj.rectangle4:setName("rectangle4");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout2);
     obj.label6:setLeft(35);
     obj.label6:setTop(25);
@@ -222,7 +223,7 @@ function newfrmJogadores()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.layout2);
     obj.rectangle5:setLeft(70);
     obj.rectangle5:setTop(25);
@@ -233,7 +234,7 @@ function newfrmJogadores()
     obj.rectangle5:setStrokeSize(1);
     obj.rectangle5:setName("rectangle5");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout2);
     obj.label7:setLeft(70);
     obj.label7:setTop(25);
@@ -243,7 +244,7 @@ function newfrmJogadores()
     obj.label7:setHorzTextAlign("center");
     obj.label7:setName("label7");
 
-    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle6:setParent(obj.layout2);
     obj.rectangle6:setLeft(0);
     obj.rectangle6:setTop(50);
@@ -252,7 +253,7 @@ function newfrmJogadores()
     obj.rectangle6:setColor("#191919");
     obj.rectangle6:setName("rectangle6");
 
-    obj.rclExperience = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclExperience = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclExperience:setParent(obj.layout2);
     obj.rclExperience:setLeft(0);
     obj.rclExperience:setTop(50);
@@ -263,7 +264,7 @@ function newfrmJogadores()
     obj.rclExperience:setTemplateForm("frmRecordListFormExperience");
     obj.rclExperience:setLayout("vertical");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.boxDetalhesDoItem);
     obj.layout3:setLeft(210);
     obj.layout3:setTop(30);
@@ -271,7 +272,7 @@ function newfrmJogadores()
     obj.layout3:setHeight(300);
     obj.layout3:setName("layout3");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.layout3);
     obj.button4:setLeft(0);
     obj.button4:setTop(0);
@@ -281,7 +282,7 @@ function newfrmJogadores()
     obj.button4:setHint("Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado ");
     obj.button4:setName("button4");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout3);
     obj.label8:setLeft(10);
     obj.label8:setTop(5);
@@ -291,7 +292,7 @@ function newfrmJogadores()
     obj.label8:setHorzTextAlign("center");
     obj.label8:setName("label8");
 
-    obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle7 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle7:setParent(obj.layout3);
     obj.rectangle7:setLeft(70);
     obj.rectangle7:setTop(0);
@@ -302,7 +303,7 @@ function newfrmJogadores()
     obj.rectangle7:setStrokeSize(1);
     obj.rectangle7:setName("rectangle7");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout3);
     obj.label9:setLeft(70);
     obj.label9:setTop(0);
@@ -312,7 +313,7 @@ function newfrmJogadores()
     obj.label9:setHorzTextAlign("center");
     obj.label9:setName("label9");
 
-    obj.rectangle8 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle8 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle8:setParent(obj.layout3);
     obj.rectangle8:setLeft(0);
     obj.rectangle8:setTop(25);
@@ -321,7 +322,7 @@ function newfrmJogadores()
     obj.rectangle8:setColor("#191919");
     obj.rectangle8:setName("rectangle8");
 
-    obj.rclDinheiro = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclDinheiro = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclDinheiro:setParent(obj.layout3);
     obj.rclDinheiro:setLeft(0);
     obj.rclDinheiro:setTop(25);
@@ -332,7 +333,7 @@ function newfrmJogadores()
     obj.rclDinheiro:setTemplateForm("frmRecordListFormDinheiro");
     obj.rclDinheiro:setLayout("vertical");
 
-    obj.rectangle9 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle9 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle9:setParent(obj.boxDetalhesDoItem);
     obj.rectangle9:setLeft(405);
     obj.rectangle9:setTop(30);
@@ -343,7 +344,7 @@ function newfrmJogadores()
     obj.rectangle9:setStrokeSize(1);
     obj.rectangle9:setName("rectangle9");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.rectangle9);
     obj.label10:setLeft(5);
     obj.label10:setTop(5);
@@ -353,7 +354,7 @@ function newfrmJogadores()
     obj.label10:setHorzTextAlign("center");
     obj.label10:setName("label10");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.rectangle9);
     obj.label11:setLeft(5);
     obj.label11:setTop(30);
@@ -363,7 +364,7 @@ function newfrmJogadores()
     obj.label11:setHorzTextAlign("center");
     obj.label11:setName("label11");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.rectangle9);
     obj.label12:setLeft(5);
     obj.label12:setTop(55);
@@ -373,7 +374,7 @@ function newfrmJogadores()
     obj.label12:setHorzTextAlign("center");
     obj.label12:setName("label12");
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.rectangle9);
     obj.label13:setLeft(5);
     obj.label13:setTop(80);
@@ -383,7 +384,7 @@ function newfrmJogadores()
     obj.label13:setHorzTextAlign("center");
     obj.label13:setName("label13");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.rectangle9);
     obj.label14:setLeft(5);
     obj.label14:setTop(105);
@@ -393,7 +394,7 @@ function newfrmJogadores()
     obj.label14:setHorzTextAlign("center");
     obj.label14:setName("label14");
 
-    obj.label15 = gui.fromHandle(_obj_newObject("label"));
+    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.rectangle9);
     obj.label15:setLeft(5);
     obj.label15:setTop(130);
@@ -403,7 +404,7 @@ function newfrmJogadores()
     obj.label15:setHorzTextAlign("center");
     obj.label15:setName("label15");
 
-    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.rectangle9);
     obj.label16:setLeft(5);
     obj.label16:setTop(155);
@@ -413,7 +414,7 @@ function newfrmJogadores()
     obj.label16:setHorzTextAlign("center");
     obj.label16:setName("label16");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.rectangle9);
     obj.edit3:setLeft(155);
     obj.edit3:setTop(5);
@@ -422,7 +423,7 @@ function newfrmJogadores()
     obj.edit3:setField("presenca");
     obj.edit3:setName("edit3");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.rectangle9);
     obj.edit4:setLeft(155);
     obj.edit4:setTop(30);
@@ -431,7 +432,7 @@ function newfrmJogadores()
     obj.edit4:setField("atrasoJustificado");
     obj.edit4:setName("edit4");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.rectangle9);
     obj.edit5:setLeft(155);
     obj.edit5:setTop(55);
@@ -440,7 +441,7 @@ function newfrmJogadores()
     obj.edit5:setField("atraso");
     obj.edit5:setName("edit5");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.rectangle9);
     obj.edit6:setLeft(155);
     obj.edit6:setTop(80);
@@ -449,7 +450,7 @@ function newfrmJogadores()
     obj.edit6:setField("faltaJustificada");
     obj.edit6:setName("edit6");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.rectangle9);
     obj.edit7:setLeft(155);
     obj.edit7:setTop(105);
@@ -458,7 +459,7 @@ function newfrmJogadores()
     obj.edit7:setField("falta");
     obj.edit7:setName("edit7");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.rectangle9);
     obj.edit8:setLeft(155);
     obj.edit8:setTop(130);
@@ -467,7 +468,7 @@ function newfrmJogadores()
     obj.edit8:setField("usos");
     obj.edit8:setName("edit8");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.rectangle9);
     obj.edit9:setLeft(155);
     obj.edit9:setTop(155);
@@ -476,7 +477,7 @@ function newfrmJogadores()
     obj.edit9:setField("desperdicio");
     obj.edit9:setName("edit9");
 
-    obj.rectangle10 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle10 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle10:setParent(obj.rectangle9);
     obj.rectangle10:setLeft(205);
     obj.rectangle10:setTop(5);
@@ -487,7 +488,7 @@ function newfrmJogadores()
     obj.rectangle10:setStrokeSize(1);
     obj.rectangle10:setName("rectangle10");
 
-    obj.label17 = gui.fromHandle(_obj_newObject("label"));
+    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.rectangle9);
     obj.label17:setLeft(205);
     obj.label17:setTop(35);
@@ -498,7 +499,7 @@ function newfrmJogadores()
     obj.label17:setFontSize(30);
     obj.label17:setName("label17");
 
-    obj.label18 = gui.fromHandle(_obj_newObject("label"));
+    obj.label18 = GUI.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.rectangle9);
     obj.label18:setLeft(205);
     obj.label18:setTop(70);
@@ -509,7 +510,7 @@ function newfrmJogadores()
     obj.label18:setFontSize(30);
     obj.label18:setName("label18");
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.rectangle9);
     obj.horzLine1:setLeft(230);
     obj.horzLine1:setTop(105);
@@ -517,7 +518,7 @@ function newfrmJogadores()
     obj.horzLine1:setStrokeColor("white");
     obj.horzLine1:setName("horzLine1");
 
-    obj.label19 = gui.fromHandle(_obj_newObject("label"));
+    obj.label19 = GUI.fromHandle(_obj_newObject("label"));
     obj.label19:setParent(obj.rectangle9);
     obj.label19:setLeft(205);
     obj.label19:setTop(105);
@@ -527,12 +528,12 @@ function newfrmJogadores()
     obj.label19:setHorzTextAlign("center");
     obj.label19:setName("label19");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.rectangle9);
     obj.dataLink2:setFields({'presenca', 'atrasoJustificado', 'atraso', 'falta', 'usos', 'desperdicio'});
     obj.dataLink2:setName("dataLink2");
 
-    obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle11:setParent(obj.boxDetalhesDoItem);
     obj.rectangle11:setLeft(405);
     obj.rectangle11:setTop(225);
@@ -543,7 +544,7 @@ function newfrmJogadores()
     obj.rectangle11:setStrokeSize(1);
     obj.rectangle11:setName("rectangle11");
 
-    obj.label20 = gui.fromHandle(_obj_newObject("label"));
+    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.rectangle11);
     obj.label20:setLeft(0);
     obj.label20:setTop(145);
@@ -553,7 +554,7 @@ function newfrmJogadores()
     obj.label20:setHorzTextAlign("center");
     obj.label20:setName("label20");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.rectangle11);
     obj.image1:setAlign("client");
     obj.image1:setField("avatar");
@@ -564,12 +565,12 @@ function newfrmJogadores()
     obj.image1:setName("image1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclSelector:append();
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet~=nil then
             					local jogadores = rrpg.getMesaDe(sheet).jogadores;
             					local current = nil;
@@ -606,20 +607,20 @@ function newfrmJogadores()
         end, obj);
 
     obj._e_event2 = obj.rclSelector:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
             				return utils.compareStringPtBr(nodeA.login, nodeB.login);
         end, obj);
 
     obj._e_event3 = obj.rclSelector:addEventListener("onSelect",
-        function (self)
+        function (_)
             local node = self.rclSelector.selectedNode;
             					self.boxDetalhesDoItem.node = node; 
             					self.boxDetalhesDoItem.visible = (node ~= nil);
         end, obj);
 
     obj._e_event4 = obj.rclSelector:addEventListener("onEndEnumeration",
-        function (self)
+        function (_)
             if self.rclSelector.selectedNode == nil and sheet ~= nil then
             			        local nodes = ndb.getChildNodes(sheet.listaDeJogadores);               
             
@@ -630,7 +631,7 @@ function newfrmJogadores()
         end, obj);
 
     obj._e_event5 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             -- Aumenta um contador enquanto adiciona um objeto
             						if self.boxDetalhesDoItem.node~=nil then
             							local objetos = ndb.getChildNodes(self.boxDetalhesDoItem.node.listaDeExperiencia);
@@ -652,7 +653,7 @@ function newfrmJogadores()
         end, obj);
 
     obj._e_event6 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local mod = self.boxDetalhesDoItem.node.XP or "0";
             						mod = string.gsub(mod, "%.", "");
             						mod = (tonumber(mod) or 0);
@@ -676,7 +677,7 @@ function newfrmJogadores()
         end, obj);
 
     obj._e_event7 = obj.rclExperience:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista. 
             				        if (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
             				            return -1;
@@ -688,7 +689,7 @@ function newfrmJogadores()
         end, obj);
 
     obj._e_event8 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             -- Aumenta um contador enquanto adiciona um objeto
             						if self.boxDetalhesDoItem.node~=nil then
             							local objetos = ndb.getChildNodes(self.boxDetalhesDoItem.node.listaDeDinheiro);
@@ -710,7 +711,7 @@ function newfrmJogadores()
         end, obj);
 
     obj._e_event9 = obj.rclDinheiro:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista. 
             				        if (tonumber(nodeA.contador) or 0) > (tonumber(nodeB.contador) or 0) then
             				            return -1;
@@ -722,7 +723,7 @@ function newfrmJogadores()
         end, obj);
 
     obj._e_event10 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local mod = (tonumber(self.boxDetalhesDoItem.node.presenca) or 0)*4 + 
             										(tonumber(self.boxDetalhesDoItem.node.atrasoJustificado) or 0)*2 + 
             										(tonumber(self.boxDetalhesDoItem.node.atraso) or 0)*1 -   
@@ -738,7 +739,7 @@ function newfrmJogadores()
         end, obj);
 
     obj._e_event11 = obj.image1:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
@@ -843,6 +844,6 @@ local _frmJogadores = {
     description=""};
 
 frmJogadores = _frmJogadores;
-rrpg.registrarForm(_frmJogadores);
+Firecast.registrarForm(_frmJogadores);
 
 return _frmJogadores;

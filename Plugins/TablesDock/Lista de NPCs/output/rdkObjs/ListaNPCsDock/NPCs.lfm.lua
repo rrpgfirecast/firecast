@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newCaixaFichaNPC()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -115,24 +116,24 @@ function newCaixaFichaNPC()
     
 
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("CorNha");
     obj.dataLink1:setName("dataLink1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setAlign("client");
     obj.layout1:setVisible(false);
     obj.layout1:setName("layout1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj);
     obj.layout2:setAlign("client");
     obj.layout2:setVisible(false);
     obj.layout2:setName("layout2");
 
-    obj.TipoDeBarras = gui.fromHandle(_obj_newObject("popupForm"));
+    obj.TipoDeBarras = GUI.fromHandle(_obj_newObject("popupForm"));
     obj.TipoDeBarras:setParent(obj.layout2);
     obj.TipoDeBarras:setName("TipoDeBarras");
     obj.TipoDeBarras:setCancelable(false);
@@ -140,7 +141,7 @@ function newCaixaFichaNPC()
     obj.TipoDeBarras:setTitle("Alinhamento do NPC");
     obj.TipoDeBarras:setHeight(100);
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.TipoDeBarras);
     obj.label1:setAlign("top");
     obj.label1:setMargins({left=10, top=4});
@@ -149,12 +150,12 @@ function newCaixaFichaNPC()
     obj.label1:setHeight(16);
     obj.label1:setName("label1");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.TipoDeBarras);
     obj.layout3:setAlign("client");
     obj.layout3:setName("layout3");
 
-    obj.radioButton1 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton1 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton1:setParent(obj.layout3);
     obj.radioButton1:setText("Aliado");
     obj.radioButton1:setGroupName("AlinhamentoNPCs");
@@ -165,7 +166,7 @@ function newCaixaFichaNPC()
     obj.radioButton1:setLeft(10);
     obj.radioButton1:setName("radioButton1");
 
-    obj.radioButton2 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton2 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton2:setParent(obj.layout3);
     obj.radioButton2:setText("Inimigo");
     obj.radioButton2:setGroupName("AlinhamentoNPCs");
@@ -176,7 +177,7 @@ function newCaixaFichaNPC()
     obj.radioButton2:setLeft(75);
     obj.radioButton2:setName("radioButton2");
 
-    obj.radioButton3 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton3 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton3:setParent(obj.layout3);
     obj.radioButton3:setText("Neutro");
     obj.radioButton3:setGroupName("AlinhamentoNPCs");
@@ -187,7 +188,7 @@ function newCaixaFichaNPC()
     obj.radioButton3:setLeft(10);
     obj.radioButton3:setName("radioButton3");
 
-    obj.radioButton4 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton4 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton4:setParent(obj.layout3);
     obj.radioButton4:setText("Jogador");
     obj.radioButton4:setGroupName("AlinhamentoNPCs");
@@ -198,7 +199,7 @@ function newCaixaFichaNPC()
     obj.radioButton4:setLeft(75);
     obj.radioButton4:setName("radioButton4");
 
-    obj.listaDeJogadores = gui.fromHandle(_obj_newObject("layout"));
+    obj.listaDeJogadores = GUI.fromHandle(_obj_newObject("layout"));
     obj.listaDeJogadores:setParent(obj.layout3);
     obj.listaDeJogadores:setWidth(140);
     obj.listaDeJogadores:setName("listaDeJogadores");
@@ -207,7 +208,7 @@ function newCaixaFichaNPC()
     obj.listaDeJogadores:setHeight(18);
     obj.listaDeJogadores:setHitTest(true);
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.listaDeJogadores);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#333333");
@@ -216,7 +217,7 @@ function newCaixaFichaNPC()
     obj.rectangle1:setHitTest(true);
     obj.rectangle1:setName("rectangle1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.rectangle1);
     obj.label2:setFontColor("white");
     obj.label2:setAlign("client");
@@ -227,7 +228,7 @@ function newCaixaFichaNPC()
     obj.label2:setHitTest(true);
     obj.label2:setName("label2");
 
-    obj.path1 = gui.fromHandle(_obj_newObject("path"));
+    obj.path1 = GUI.fromHandle(_obj_newObject("path"));
     obj.path1:setParent(obj.rectangle1);
     obj.path1:setAlign("right");
     obj.path1:setWidth(16);
@@ -236,98 +237,98 @@ function newCaixaFichaNPC()
     obj.path1:setPathData("M 100 100 L 300 100 L 200 300 z");
     obj.path1:setName("path1");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.TipoDeBarras);
     obj.layout4:setAlign("right");
     obj.layout4:setWidth(40);
     obj.layout4:setMargins({top=35, right=4, bottom=5});
     obj.layout4:setName("layout4");
 
-    obj.BotonAction = gui.fromHandle(_obj_newObject("button"));
+    obj.BotonAction = GUI.fromHandle(_obj_newObject("button"));
     obj.BotonAction:setParent(obj.layout4);
     obj.BotonAction:setName("BotonAction");
     obj.BotonAction:setAlign("client");
     obj.BotonAction:setText("Ok!");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj);
     obj.dataLink2:setField("opcaoEscolhida2");
     obj.dataLink2:setDefaultValue("Nenhum");
     obj.dataLink2:setName("dataLink2");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj);
     obj.dataLink3:setField("alinhamentoNPC");
     obj.dataLink3:setDefaultValue("Neutro");
     obj.dataLink3:setName("dataLink3");
 
-    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink4:setParent(obj);
     obj.dataLink4:setField("NomeGrande");
     obj.dataLink4:setDefaultValue("Nome do NPC");
     obj.dataLink4:setName("dataLink4");
 
-    obj.dataLink5 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink5:setParent(obj);
     obj.dataLink5:setField("NomePequeno");
     obj.dataLink5:setDefaultValue("Neutro");
     obj.dataLink5:setName("dataLink5");
 
-    obj.dataLink6 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink6:setParent(obj);
     obj.dataLink6:setField("Linha1");
     obj.dataLink6:setDefaultValue("<linha>");
     obj.dataLink6:setName("dataLink6");
 
-    obj.dataLink7 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink7:setParent(obj);
     obj.dataLink7:setField("Linha2");
     obj.dataLink7:setDefaultValue("<linha>");
     obj.dataLink7:setName("dataLink7");
 
-    obj.dataLink8 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink8:setParent(obj);
     obj.dataLink8:setField("ModificadorBarrinhaMax");
     obj.dataLink8:setDefaultValue("igual");
     obj.dataLink8:setName("dataLink8");
 
-    obj.dataLink9 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink9:setParent(obj);
     obj.dataLink9:setField("ModificadorBarrinha");
     obj.dataLink9:setDefaultValue("igual");
     obj.dataLink9:setName("dataLink9");
 
-    obj.dataLink10 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink10 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink10:setParent(obj);
     obj.dataLink10:setFields({'Barrinha1Valor', 'Barrinha1ValorMax'});
     obj.dataLink10:setDefaultValues({'0', '0'});
     obj.dataLink10:setName("dataLink10");
 
-    obj.dataLink11 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink11 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink11:setParent(obj);
     obj.dataLink11:setFields({'Barrinha2Valor', 'Barrinha2ValorMax'});
     obj.dataLink11:setDefaultValues({'0', '0'});
     obj.dataLink11:setName("dataLink11");
 
-    obj.dataLink12 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink12 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink12:setParent(obj);
     obj.dataLink12:setFields({'Barrinha3Valor', 'Barrinha3ValorMax'});
     obj.dataLink12:setDefaultValues({'0', '0'});
     obj.dataLink12:setName("dataLink12");
 
-    obj.dataLink13 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink13 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink13:setParent(obj);
     obj.dataLink13:setFields({'Barrinha4Valor', 'Barrinha4ValorMax'});
     obj.dataLink13:setDefaultValues({'0', '0'});
     obj.dataLink13:setName("dataLink13");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj);
     obj.layout5:setAlign("client");
     obj.layout5:setVisible(false);
     obj.layout5:setName("layout5");
 
-    obj.MensagemPopup = gui.fromHandle(_obj_newObject("popupForm"));
+    obj.MensagemPopup = GUI.fromHandle(_obj_newObject("popupForm"));
     obj.MensagemPopup:setParent(obj.layout5);
     obj.MensagemPopup:setTitle("Menu de Formatação de Mensagens");
     obj.MensagemPopup:setName("MensagemPopup");
@@ -335,19 +336,19 @@ function newCaixaFichaNPC()
     obj.MensagemPopup:setHeight(200);
     obj.MensagemPopup:setPadding({left=4, right=4, top=4, bottom=4});
 
-    obj.MenuCor = gui.fromHandle(_obj_newObject("popup"));
+    obj.MenuCor = GUI.fromHandle(_obj_newObject("popup"));
     obj.MenuCor:setParent(obj.MensagemPopup);
     obj.MenuCor:setName("MenuCor");
     obj.MenuCor:setWidth(172);
     obj.MenuCor:setHeight(150);
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.MenuCor);
     obj.layout6:setAlign("top");
     obj.layout6:setHeight(24);
     obj.layout6:setName("layout6");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout6);
     obj.label3:setAlign("client");
     obj.label3:setText("Informação de Cores:");
@@ -355,21 +356,21 @@ function newCaixaFichaNPC()
     lfm_setPropAsString(obj.label3, "fontStyle",  "bold");
     obj.label3:setName("label3");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.MenuCor);
     obj.layout7:setAlign("client");
     obj.layout7:setMargins({left=4, right=4});
     obj.layout7:setHitTest(true);
     obj.layout7:setName("layout7");
 
-    obj.flowLayout1 = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj.layout7);
     obj.flowLayout1:setAlign("client");
     obj.flowLayout1:setOrientation("horizontal");
     obj.flowLayout1:setMaxControlsPerLine(7);
     obj.flowLayout1:setName("flowLayout1");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.flowLayout1);
     obj.layout8:setAlign("top");
     obj.layout8:setMargins({top=2, left=2});
@@ -377,13 +378,13 @@ function newCaixaFichaNPC()
     obj.layout8:setHeight(20);
     obj.layout8:setName("layout8");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout8);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("#FFFFFF");
     obj.rectangle2:setName("rectangle2");
 
-    obj.Cor_1 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_1 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_1:setParent(obj.rectangle2);
     obj.Cor_1:setAlign("client");
     obj.Cor_1:setMargins({top=2, bottom=2, left=2, right=2});
@@ -393,7 +394,7 @@ function newCaixaFichaNPC()
     obj.Cor_1:setText("1");
     obj.Cor_1:setFontColor("#000000");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.flowLayout1);
     obj.layout9:setAlign("top");
     obj.layout9:setMargins({top=2, left=2});
@@ -401,13 +402,13 @@ function newCaixaFichaNPC()
     obj.layout9:setHeight(20);
     obj.layout9:setName("layout9");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout9);
     obj.rectangle3:setAlign("client");
     obj.rectangle3:setColor("#7f7fff");
     obj.rectangle3:setName("rectangle3");
 
-    obj.Cor_2 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_2 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_2:setParent(obj.rectangle3);
     obj.Cor_2:setAlign("client");
     obj.Cor_2:setMargins({top=2, bottom=2, left=2, right=2});
@@ -417,7 +418,7 @@ function newCaixaFichaNPC()
     obj.Cor_2:setText("2");
     obj.Cor_2:setFontColor("#000000");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.flowLayout1);
     obj.layout10:setAlign("top");
     obj.layout10:setMargins({top=2, left=2});
@@ -425,13 +426,13 @@ function newCaixaFichaNPC()
     obj.layout10:setHeight(20);
     obj.layout10:setName("layout10");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.layout10);
     obj.rectangle4:setAlign("client");
     obj.rectangle4:setColor("#7fff7f");
     obj.rectangle4:setName("rectangle4");
 
-    obj.Cor_3 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_3 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_3:setParent(obj.rectangle4);
     obj.Cor_3:setAlign("client");
     obj.Cor_3:setMargins({top=2, bottom=2, left=2, right=2});
@@ -441,7 +442,7 @@ function newCaixaFichaNPC()
     obj.Cor_3:setText("3");
     obj.Cor_3:setFontColor("#800080");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.flowLayout1);
     obj.layout11:setAlign("top");
     obj.layout11:setMargins({top=2, left=2});
@@ -449,13 +450,13 @@ function newCaixaFichaNPC()
     obj.layout11:setHeight(20);
     obj.layout11:setName("layout11");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.layout11);
     obj.rectangle5:setAlign("client");
     obj.rectangle5:setColor("#ff0000");
     obj.rectangle5:setName("rectangle5");
 
-    obj.Cor_4 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_4 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_4:setParent(obj.rectangle5);
     obj.Cor_4:setAlign("client");
     obj.Cor_4:setMargins({top=2, bottom=2, left=2, right=2});
@@ -465,7 +466,7 @@ function newCaixaFichaNPC()
     obj.Cor_4:setText("4");
     obj.Cor_4:setFontColor("#000000");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.flowLayout1);
     obj.layout12:setAlign("top");
     obj.layout12:setMargins({top=2, left=2});
@@ -473,13 +474,13 @@ function newCaixaFichaNPC()
     obj.layout12:setHeight(20);
     obj.layout12:setName("layout12");
 
-    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle6:setParent(obj.layout12);
     obj.rectangle6:setAlign("client");
     obj.rectangle6:setColor("#ff7f7f");
     obj.rectangle6:setName("rectangle6");
 
-    obj.Cor_5 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_5 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_5:setParent(obj.rectangle6);
     obj.Cor_5:setAlign("client");
     obj.Cor_5:setMargins({top=2, bottom=2, left=2, right=2});
@@ -489,7 +490,7 @@ function newCaixaFichaNPC()
     obj.Cor_5:setText("5");
     obj.Cor_5:setFontColor("#000000");
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.flowLayout1);
     obj.layout13:setAlign("top");
     obj.layout13:setMargins({top=2, left=2});
@@ -497,13 +498,13 @@ function newCaixaFichaNPC()
     obj.layout13:setHeight(20);
     obj.layout13:setName("layout13");
 
-    obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle7 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle7:setParent(obj.layout13);
     obj.rectangle7:setAlign("client");
     obj.rectangle7:setColor("#ff7fff");
     obj.rectangle7:setName("rectangle7");
 
-    obj.Cor_6 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_6 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_6:setParent(obj.rectangle7);
     obj.Cor_6:setAlign("client");
     obj.Cor_6:setMargins({top=2, bottom=2, left=2, right=2});
@@ -513,7 +514,7 @@ function newCaixaFichaNPC()
     obj.Cor_6:setText("6");
     obj.Cor_6:setFontColor("#000000");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.flowLayout1);
     obj.layout14:setAlign("top");
     obj.layout14:setMargins({top=2, left=2});
@@ -521,13 +522,13 @@ function newCaixaFichaNPC()
     obj.layout14:setHeight(20);
     obj.layout14:setName("layout14");
 
-    obj.rectangle8 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle8 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle8:setParent(obj.layout14);
     obj.rectangle8:setAlign("client");
     obj.rectangle8:setColor("#ff7f00");
     obj.rectangle8:setName("rectangle8");
 
-    obj.Cor_7 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_7 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_7:setParent(obj.rectangle8);
     obj.Cor_7:setAlign("client");
     obj.Cor_7:setMargins({top=2, bottom=2, left=2, right=2});
@@ -537,7 +538,7 @@ function newCaixaFichaNPC()
     obj.Cor_7:setText("7");
     obj.Cor_7:setFontColor("#000000");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.flowLayout1);
     obj.layout15:setAlign("top");
     obj.layout15:setMargins({top=2, left=2});
@@ -545,13 +546,13 @@ function newCaixaFichaNPC()
     obj.layout15:setHeight(20);
     obj.layout15:setName("layout15");
 
-    obj.rectangle9 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle9 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle9:setParent(obj.layout15);
     obj.rectangle9:setAlign("client");
     obj.rectangle9:setColor("#ffff00");
     obj.rectangle9:setName("rectangle9");
 
-    obj.Cor_8 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_8 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_8:setParent(obj.rectangle9);
     obj.Cor_8:setAlign("client");
     obj.Cor_8:setMargins({top=2, bottom=2, left=2, right=2});
@@ -561,7 +562,7 @@ function newCaixaFichaNPC()
     obj.Cor_8:setText("8");
     obj.Cor_8:setFontColor("#000000");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.flowLayout1);
     obj.layout16:setAlign("top");
     obj.layout16:setMargins({top=2, left=2});
@@ -569,13 +570,13 @@ function newCaixaFichaNPC()
     obj.layout16:setHeight(20);
     obj.layout16:setName("layout16");
 
-    obj.rectangle10 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle10 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle10:setParent(obj.layout16);
     obj.rectangle10:setAlign("client");
     obj.rectangle10:setColor("#00ff00");
     obj.rectangle10:setName("rectangle10");
 
-    obj.Cor_9 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_9 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_9:setParent(obj.rectangle10);
     obj.Cor_9:setAlign("client");
     obj.Cor_9:setMargins({top=2, bottom=2, left=2, right=2});
@@ -585,7 +586,7 @@ function newCaixaFichaNPC()
     obj.Cor_9:setText("9");
     obj.Cor_9:setFontColor("#000000");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.flowLayout1);
     obj.layout17:setAlign("top");
     obj.layout17:setMargins({top=2, left=2});
@@ -593,13 +594,13 @@ function newCaixaFichaNPC()
     obj.layout17:setHeight(20);
     obj.layout17:setName("layout17");
 
-    obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle11:setParent(obj.layout17);
     obj.rectangle11:setAlign("client");
     obj.rectangle11:setColor("#7fffff");
     obj.rectangle11:setName("rectangle11");
 
-    obj.Cor_10 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_10 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_10:setParent(obj.rectangle11);
     obj.Cor_10:setAlign("client");
     obj.Cor_10:setMargins({top=2, bottom=2, left=2, right=2});
@@ -609,7 +610,7 @@ function newCaixaFichaNPC()
     obj.Cor_10:setText("10");
     obj.Cor_10:setFontColor("#000000");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.flowLayout1);
     obj.layout18:setAlign("top");
     obj.layout18:setMargins({top=2, left=2});
@@ -617,13 +618,13 @@ function newCaixaFichaNPC()
     obj.layout18:setHeight(20);
     obj.layout18:setName("layout18");
 
-    obj.rectangle12 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle12 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle12:setParent(obj.layout18);
     obj.rectangle12:setAlign("client");
     obj.rectangle12:setColor("#00ffff");
     obj.rectangle12:setName("rectangle12");
 
-    obj.Cor_11 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_11 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_11:setParent(obj.rectangle12);
     obj.Cor_11:setAlign("client");
     obj.Cor_11:setMargins({top=2, bottom=2, left=2, right=2});
@@ -633,7 +634,7 @@ function newCaixaFichaNPC()
     obj.Cor_11:setText("11");
     obj.Cor_11:setFontColor("#000000");
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.flowLayout1);
     obj.layout19:setAlign("top");
     obj.layout19:setMargins({top=2, left=2});
@@ -641,13 +642,13 @@ function newCaixaFichaNPC()
     obj.layout19:setHeight(20);
     obj.layout19:setName("layout19");
 
-    obj.rectangle13 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle13 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle13:setParent(obj.layout19);
     obj.rectangle13:setAlign("client");
     obj.rectangle13:setColor("#0000ff");
     obj.rectangle13:setName("rectangle13");
 
-    obj.Cor_12 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_12 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_12:setParent(obj.rectangle13);
     obj.Cor_12:setAlign("client");
     obj.Cor_12:setMargins({top=2, bottom=2, left=2, right=2});
@@ -657,7 +658,7 @@ function newCaixaFichaNPC()
     obj.Cor_12:setText("12");
     obj.Cor_12:setFontColor("#ffffff");
 
-    obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.flowLayout1);
     obj.layout20:setAlign("top");
     obj.layout20:setMargins({top=2, left=2});
@@ -665,13 +666,13 @@ function newCaixaFichaNPC()
     obj.layout20:setHeight(20);
     obj.layout20:setName("layout20");
 
-    obj.rectangle14 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle14 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle14:setParent(obj.layout20);
     obj.rectangle14:setAlign("client");
     obj.rectangle14:setColor("#ff00ff");
     obj.rectangle14:setName("rectangle14");
 
-    obj.Cor_13 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_13 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_13:setParent(obj.rectangle14);
     obj.Cor_13:setAlign("client");
     obj.Cor_13:setMargins({top=2, bottom=2, left=2, right=2});
@@ -681,7 +682,7 @@ function newCaixaFichaNPC()
     obj.Cor_13:setText("13");
     obj.Cor_13:setFontColor("#000000");
 
-    obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.flowLayout1);
     obj.layout21:setAlign("top");
     obj.layout21:setMargins({top=2, left=2});
@@ -689,13 +690,13 @@ function newCaixaFichaNPC()
     obj.layout21:setHeight(20);
     obj.layout21:setName("layout21");
 
-    obj.rectangle15 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle15 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle15:setParent(obj.layout21);
     obj.rectangle15:setAlign("client");
     obj.rectangle15:setColor("#7f7f7f");
     obj.rectangle15:setName("rectangle15");
 
-    obj.Cor_14 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_14 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_14:setParent(obj.rectangle15);
     obj.Cor_14:setAlign("client");
     obj.Cor_14:setMargins({top=2, bottom=2, left=2, right=2});
@@ -705,7 +706,7 @@ function newCaixaFichaNPC()
     obj.Cor_14:setText("14");
     obj.Cor_14:setFontColor("#000000");
 
-    obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.flowLayout1);
     obj.layout22:setAlign("top");
     obj.layout22:setMargins({top=2, left=2});
@@ -713,13 +714,13 @@ function newCaixaFichaNPC()
     obj.layout22:setHeight(20);
     obj.layout22:setName("layout22");
 
-    obj.rectangle16 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle16 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle16:setParent(obj.layout22);
     obj.rectangle16:setAlign("client");
     obj.rectangle16:setColor("#3f3f3f");
     obj.rectangle16:setName("rectangle16");
 
-    obj.Cor_15 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_15 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_15:setParent(obj.rectangle16);
     obj.Cor_15:setAlign("client");
     obj.Cor_15:setMargins({top=2, bottom=2, left=2, right=2});
@@ -729,7 +730,7 @@ function newCaixaFichaNPC()
     obj.Cor_15:setText("15");
     obj.Cor_15:setFontColor("#FFFFFF");
 
-    obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.flowLayout1);
     obj.layout23:setAlign("top");
     obj.layout23:setMargins({top=2, left=2});
@@ -737,13 +738,13 @@ function newCaixaFichaNPC()
     obj.layout23:setHeight(20);
     obj.layout23:setName("layout23");
 
-    obj.rectangle17 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle17 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle17:setParent(obj.layout23);
     obj.rectangle17:setAlign("client");
     obj.rectangle17:setColor("#0f0f0f");
     obj.rectangle17:setName("rectangle17");
 
-    obj.Cor_16 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_16 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_16:setParent(obj.rectangle17);
     obj.Cor_16:setAlign("client");
     obj.Cor_16:setMargins({top=2, bottom=2, left=2, right=2});
@@ -753,7 +754,7 @@ function newCaixaFichaNPC()
     obj.Cor_16:setText("16");
     obj.Cor_16:setFontColor("#FFFFFF");
 
-    obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.flowLayout1);
     obj.layout24:setAlign("top");
     obj.layout24:setMargins({top=2, left=2});
@@ -761,13 +762,13 @@ function newCaixaFichaNPC()
     obj.layout24:setHeight(20);
     obj.layout24:setName("layout24");
 
-    obj.rectangle18 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle18 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle18:setParent(obj.layout24);
     obj.rectangle18:setAlign("client");
     obj.rectangle18:setColor("#1f1f1f");
     obj.rectangle18:setName("rectangle18");
 
-    obj.Cor_17 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_17 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_17:setParent(obj.rectangle18);
     obj.Cor_17:setAlign("client");
     obj.Cor_17:setMargins({top=2, bottom=2, left=2, right=2});
@@ -777,7 +778,7 @@ function newCaixaFichaNPC()
     obj.Cor_17:setText("17");
     obj.Cor_17:setFontColor("#FFFFFF");
 
-    obj.layout25 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.flowLayout1);
     obj.layout25:setAlign("top");
     obj.layout25:setMargins({top=2, left=2});
@@ -785,13 +786,13 @@ function newCaixaFichaNPC()
     obj.layout25:setHeight(20);
     obj.layout25:setName("layout25");
 
-    obj.rectangle19 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle19 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle19:setParent(obj.layout25);
     obj.rectangle19:setAlign("client");
     obj.rectangle19:setColor("#777777");
     obj.rectangle19:setName("rectangle19");
 
-    obj.Cor_18 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_18 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_18:setParent(obj.rectangle19);
     obj.Cor_18:setAlign("client");
     obj.Cor_18:setMargins({top=2, bottom=2, left=2, right=2});
@@ -801,7 +802,7 @@ function newCaixaFichaNPC()
     obj.Cor_18:setText("18");
     obj.Cor_18:setFontColor("#000000");
 
-    obj.layout26 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.flowLayout1);
     obj.layout26:setAlign("top");
     obj.layout26:setMargins({top=2, left=2});
@@ -809,13 +810,13 @@ function newCaixaFichaNPC()
     obj.layout26:setHeight(20);
     obj.layout26:setName("layout26");
 
-    obj.rectangle20 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle20 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle20:setParent(obj.layout26);
     obj.rectangle20:setAlign("client");
     obj.rectangle20:setColor("#111111");
     obj.rectangle20:setName("rectangle20");
 
-    obj.Cor_19 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_19 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_19:setParent(obj.rectangle20);
     obj.Cor_19:setAlign("client");
     obj.Cor_19:setMargins({top=2, bottom=2, left=2, right=2});
@@ -825,7 +826,7 @@ function newCaixaFichaNPC()
     obj.Cor_19:setText("19");
     obj.Cor_19:setFontColor("#FFFFFF");
 
-    obj.layout27 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.flowLayout1);
     obj.layout27:setAlign("top");
     obj.layout27:setMargins({top=2, left=2});
@@ -833,13 +834,13 @@ function newCaixaFichaNPC()
     obj.layout27:setHeight(20);
     obj.layout27:setName("layout27");
 
-    obj.rectangle21 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle21:setParent(obj.layout27);
     obj.rectangle21:setAlign("client");
     obj.rectangle21:setColor("#292929");
     obj.rectangle21:setName("rectangle21");
 
-    obj.Cor_20 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_20 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_20:setParent(obj.rectangle21);
     obj.Cor_20:setAlign("client");
     obj.Cor_20:setMargins({top=2, bottom=2, left=2, right=2});
@@ -849,7 +850,7 @@ function newCaixaFichaNPC()
     obj.Cor_20:setText("20");
     obj.Cor_20:setFontColor("#FFFFFF");
 
-    obj.layout28 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.flowLayout1);
     obj.layout28:setAlign("top");
     obj.layout28:setMargins({top=2, left=2});
@@ -857,13 +858,13 @@ function newCaixaFichaNPC()
     obj.layout28:setHeight(20);
     obj.layout28:setName("layout28");
 
-    obj.rectangle22 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle22 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle22:setParent(obj.layout28);
     obj.rectangle22:setAlign("client");
     obj.rectangle22:setColor("#191200");
     obj.rectangle22:setName("rectangle22");
 
-    obj.Cor_21 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_21 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_21:setParent(obj.rectangle22);
     obj.Cor_21:setAlign("client");
     obj.Cor_21:setMargins({top=2, bottom=2, left=2, right=2});
@@ -873,7 +874,7 @@ function newCaixaFichaNPC()
     obj.Cor_21:setText("21");
     obj.Cor_21:setFontColor("#FFFFFF");
 
-    obj.layout29 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout29:setParent(obj.flowLayout1);
     obj.layout29:setAlign("top");
     obj.layout29:setMargins({top=2, left=2});
@@ -881,13 +882,13 @@ function newCaixaFichaNPC()
     obj.layout29:setHeight(20);
     obj.layout29:setName("layout29");
 
-    obj.rectangle23 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle23:setParent(obj.layout29);
     obj.rectangle23:setAlign("client");
     obj.rectangle23:setColor("#6699ff");
     obj.rectangle23:setName("rectangle23");
 
-    obj.Cor_22 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_22 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_22:setParent(obj.rectangle23);
     obj.Cor_22:setAlign("client");
     obj.Cor_22:setMargins({top=2, bottom=2, left=2, right=2});
@@ -897,7 +898,7 @@ function newCaixaFichaNPC()
     obj.Cor_22:setText("22");
     obj.Cor_22:setFontColor("#000000");
 
-    obj.layout30 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout30:setParent(obj.flowLayout1);
     obj.layout30:setAlign("top");
     obj.layout30:setMargins({top=2, left=2});
@@ -905,13 +906,13 @@ function newCaixaFichaNPC()
     obj.layout30:setHeight(20);
     obj.layout30:setName("layout30");
 
-    obj.rectangle24 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle24 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle24:setParent(obj.layout30);
     obj.rectangle24:setAlign("client");
     obj.rectangle24:setColor("#f2b440");
     obj.rectangle24:setName("rectangle24");
 
-    obj.Cor_23 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_23 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_23:setParent(obj.rectangle24);
     obj.Cor_23:setAlign("client");
     obj.Cor_23:setMargins({top=2, bottom=2, left=2, right=2});
@@ -921,7 +922,7 @@ function newCaixaFichaNPC()
     obj.Cor_23:setText("23");
     obj.Cor_23:setFontColor("#000000");
 
-    obj.layout31 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.flowLayout1);
     obj.layout31:setAlign("top");
     obj.layout31:setMargins({top=2, left=2});
@@ -929,13 +930,13 @@ function newCaixaFichaNPC()
     obj.layout31:setHeight(20);
     obj.layout31:setName("layout31");
 
-    obj.rectangle25 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle25:setParent(obj.layout31);
     obj.rectangle25:setAlign("client");
     obj.rectangle25:setColor("#d45252");
     obj.rectangle25:setName("rectangle25");
 
-    obj.Cor_24 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_24 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_24:setParent(obj.rectangle25);
     obj.Cor_24:setAlign("client");
     obj.Cor_24:setMargins({top=2, bottom=2, left=2, right=2});
@@ -945,7 +946,7 @@ function newCaixaFichaNPC()
     obj.Cor_24:setText("24");
     obj.Cor_24:setFontColor("#000000");
 
-    obj.layout32 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.flowLayout1);
     obj.layout32:setAlign("top");
     obj.layout32:setMargins({top=2, left=2});
@@ -953,13 +954,13 @@ function newCaixaFichaNPC()
     obj.layout32:setHeight(20);
     obj.layout32:setName("layout32");
 
-    obj.rectangle26 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle26 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle26:setParent(obj.layout32);
     obj.rectangle26:setAlign("client");
     obj.rectangle26:setColor("#d396dc");
     obj.rectangle26:setName("rectangle26");
 
-    obj.Cor_25 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_25 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_25:setParent(obj.rectangle26);
     obj.Cor_25:setAlign("client");
     obj.Cor_25:setMargins({top=2, bottom=2, left=2, right=2});
@@ -969,7 +970,7 @@ function newCaixaFichaNPC()
     obj.Cor_25:setText("25");
     obj.Cor_25:setFontColor("#000000");
 
-    obj.layout33 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout33:setParent(obj.flowLayout1);
     obj.layout33:setAlign("top");
     obj.layout33:setMargins({top=2, left=2});
@@ -977,13 +978,13 @@ function newCaixaFichaNPC()
     obj.layout33:setHeight(20);
     obj.layout33:setName("layout33");
 
-    obj.rectangle27 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle27 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle27:setParent(obj.layout33);
     obj.rectangle27:setAlign("client");
     obj.rectangle27:setColor("#f47193");
     obj.rectangle27:setName("rectangle27");
 
-    obj.Cor_26 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_26 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_26:setParent(obj.rectangle27);
     obj.Cor_26:setAlign("client");
     obj.Cor_26:setMargins({top=2, bottom=2, left=2, right=2});
@@ -993,7 +994,7 @@ function newCaixaFichaNPC()
     obj.Cor_26:setText("26");
     obj.Cor_26:setFontColor("#000000");
 
-    obj.layout34 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout34 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout34:setParent(obj.flowLayout1);
     obj.layout34:setAlign("top");
     obj.layout34:setMargins({top=2, left=2});
@@ -1001,13 +1002,13 @@ function newCaixaFichaNPC()
     obj.layout34:setHeight(20);
     obj.layout34:setName("layout34");
 
-    obj.rectangle28 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle28 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle28:setParent(obj.layout34);
     obj.rectangle28:setAlign("client");
     obj.rectangle28:setColor("#6cecb3");
     obj.rectangle28:setName("rectangle28");
 
-    obj.Cor_27 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_27 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_27:setParent(obj.rectangle28);
     obj.Cor_27:setAlign("client");
     obj.Cor_27:setMargins({top=2, bottom=2, left=2, right=2});
@@ -1017,7 +1018,7 @@ function newCaixaFichaNPC()
     obj.Cor_27:setText("27");
     obj.Cor_27:setFontColor("#000000");
 
-    obj.layout35 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout35:setParent(obj.flowLayout1);
     obj.layout35:setAlign("top");
     obj.layout35:setMargins({top=2, left=2});
@@ -1025,13 +1026,13 @@ function newCaixaFichaNPC()
     obj.layout35:setHeight(20);
     obj.layout35:setName("layout35");
 
-    obj.rectangle29 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle29 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle29:setParent(obj.layout35);
     obj.rectangle29:setAlign("client");
     obj.rectangle29:setColor("#e54c27");
     obj.rectangle29:setName("rectangle29");
 
-    obj.Cor_28 = gui.fromHandle(_obj_newObject("label"));
+    obj.Cor_28 = GUI.fromHandle(_obj_newObject("label"));
     obj.Cor_28:setParent(obj.rectangle29);
     obj.Cor_28:setAlign("client");
     obj.Cor_28:setMargins({top=2, bottom=2, left=2, right=2});
@@ -1041,35 +1042,35 @@ function newCaixaFichaNPC()
     obj.Cor_28:setText("28");
     obj.Cor_28:setFontColor("#000000");
 
-    obj.layout36 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout36:setParent(obj.MenuCor);
     obj.layout36:setAlign("bottom");
     obj.layout36:setHeight(24);
     obj.layout36:setMargins({bottom=8});
     obj.layout36:setName("layout36");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout36);
     obj.button1:setAlign("right");
     obj.button1:setText("Ok!");
     obj.button1:setMargins({right=4});
     obj.button1:setName("button1");
 
-    obj.layout37 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout37 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout37:setParent(obj.MensagemPopup);
     obj.layout37:setAlign("top");
     obj.layout37:setHeight(128);
     obj.layout37:setMargins({top=4});
     obj.layout37:setName("layout37");
 
-    obj.layout38 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout38 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout38:setParent(obj.layout37);
     obj.layout38:setAlign("top");
     obj.layout38:setHeight(18);
     obj.layout38:setMargins({left=8});
     obj.layout38:setName("layout38");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout38);
     obj.label4:setAlign("left");
     obj.label4:setFontSize(12);
@@ -1078,7 +1079,7 @@ function newCaixaFichaNPC()
     obj.label4:setText("Mensagem");
     obj.label4:setName("label4");
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.layout38);
     obj.comboBox1:setAlign("left");
     obj.comboBox1:setField("ShowNome");
@@ -1092,14 +1093,14 @@ function newCaixaFichaNPC()
     obj.comboBox1:setMargins({left=10});
     obj.comboBox1:setName("comboBox1");
 
-    obj.layout39 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout39 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout39:setParent(obj.layout38);
     obj.layout39:setAlign("left");
     obj.layout39:setWidth(132);
     obj.layout39:setMargins({left=6});
     obj.layout39:setName("layout39");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout39);
     obj.label5:setFontColor("white");
     obj.label5:setAlign("left");
@@ -1109,7 +1110,7 @@ function newCaixaFichaNPC()
     obj.label5:setText("Cor do Texto:");
     obj.label5:setName("label5");
 
-    obj.CorP = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.CorP = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.CorP:setParent(obj.layout39);
     obj.CorP:setAlign("left");
     obj.CorP:setName("CorP");
@@ -1121,7 +1122,7 @@ function newCaixaFichaNPC()
     obj.CorP:setValues({'1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28'});
     obj.CorP:setValue("1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout38);
     obj.button2:setAlign("right");
     obj.button2:setText("Cores...");
@@ -1129,7 +1130,7 @@ function newCaixaFichaNPC()
     obj.button2:setMargins({right=4});
     obj.button2:setName("button2");
 
-    obj.TextoMensagem = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.TextoMensagem = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.TextoMensagem:setParent(obj.layout37);
     obj.TextoMensagem:setAlign("client");
     obj.TextoMensagem:setFontSize(12);
@@ -1137,14 +1138,14 @@ function newCaixaFichaNPC()
     obj.TextoMensagem:setField("TextoMensagem");
     obj.TextoMensagem:setMargins({left=4, right=4, top=4, bottom=4});
 
-    obj.layout40 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout40 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout40:setParent(obj.layout37);
     obj.layout40:setAlign("bottom");
     obj.layout40:setHeight(20);
     obj.layout40:setMargins({bottom=4, top=4});
     obj.layout40:setName("layout40");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout40);
     obj.label6:setAlign("left");
     obj.label6:setWidth(100);
@@ -1154,7 +1155,7 @@ function newCaixaFichaNPC()
     obj.label6:setMargins({left=8});
     obj.label6:setName("label6");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.layout40);
     obj.button3:setAlign("right");
     obj.button3:setWidth(48);
@@ -1162,7 +1163,7 @@ function newCaixaFichaNPC()
     obj.button3:setMargins({right=2});
     obj.button3:setName("button3");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.layout40);
     obj.button4:setAlign("right");
     obj.button4:setWidth(60);
@@ -1170,13 +1171,13 @@ function newCaixaFichaNPC()
     obj.button4:setMargins({right=4});
     obj.button4:setName("button4");
 
-    obj.layout41 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout41 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout41:setParent(obj.layout40);
     obj.layout41:setAlign("right");
     obj.layout41:setWidth(132);
     obj.layout41:setName("layout41");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout41);
     obj.label7:setLeft(0);
     obj.label7:setFontColor("white");
@@ -1185,7 +1186,7 @@ function newCaixaFichaNPC()
     obj.label7:setText("Aplicar Cor:");
     obj.label7:setName("label7");
 
-    obj.CorN = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.CorN = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.CorN:setParent(obj.layout41);
     obj.CorN:setLeft(70);
     obj.CorN:setHeight(20);
@@ -1198,13 +1199,13 @@ function newCaixaFichaNPC()
     obj.CorN:setValues({'0', '01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28'});
     obj.CorN:setValue("0");
 
-    obj.dataLink14 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink14 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink14:setParent(obj.layout40);
     obj.dataLink14:setField("CorN");
     obj.dataLink14:setDefaultValue("0");
     obj.dataLink14:setName("dataLink14");
 
-    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
     obj.button5:setParent(obj.layout40);
     obj.button5:setAlign("right");
     obj.button5:setWidth(20);
@@ -1213,7 +1214,7 @@ function newCaixaFichaNPC()
     obj.button5:setMargins({right=2});
     obj.button5:setName("button5");
 
-    obj.button6 = gui.fromHandle(_obj_newObject("button"));
+    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
     obj.button6:setParent(obj.layout40);
     obj.button6:setAlign("right");
     obj.button6:setWidth(20);
@@ -1222,7 +1223,7 @@ function newCaixaFichaNPC()
     obj.button6:setMargins({right=2});
     obj.button6:setName("button6");
 
-    obj.button7 = gui.fromHandle(_obj_newObject("button"));
+    obj.button7 = GUI.fromHandle(_obj_newObject("button"));
     obj.button7:setParent(obj.layout40);
     obj.button7:setAlign("right");
     obj.button7:setWidth(20);
@@ -1231,7 +1232,7 @@ function newCaixaFichaNPC()
     obj.button7:setMargins({right=2});
     obj.button7:setName("button7");
 
-    obj.button8 = gui.fromHandle(_obj_newObject("button"));
+    obj.button8 = GUI.fromHandle(_obj_newObject("button"));
     obj.button8:setParent(obj.layout40);
     obj.button8:setAlign("right");
     obj.button8:setWidth(20);
@@ -1240,21 +1241,21 @@ function newCaixaFichaNPC()
     obj.button8:setMargins({right=2});
     obj.button8:setName("button8");
 
-    obj.layout42 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout42 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout42:setParent(obj.MensagemPopup);
     obj.layout42:setAlign("bottom");
     obj.layout42:setHeight(60);
     obj.layout42:setMargins({top=4});
     obj.layout42:setName("layout42");
 
-    obj.layout43 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout43 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout43:setParent(obj.layout42);
     obj.layout43:setAlign("left");
     obj.layout43:setWidth(80);
     obj.layout43:setMargins({left=4});
     obj.layout43:setName("layout43");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout43);
     obj.label8:setAlign("top");
     obj.label8:setHeight(18);
@@ -1263,7 +1264,7 @@ function newCaixaFichaNPC()
     obj.label8:setText("Rolagem");
     obj.label8:setName("label8");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout43);
     obj.edit1:setAlign("top");
     obj.edit1:setHeight(22);
@@ -1272,14 +1273,14 @@ function newCaixaFichaNPC()
     obj.edit1:setField("TextoRolagem");
     obj.edit1:setName("edit1");
 
-    obj.layout44 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout44 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout44:setParent(obj.layout42);
     obj.layout44:setAlign("left");
     obj.layout44:setWidth(180);
     obj.layout44:setMargins({left=4});
     obj.layout44:setName("layout44");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout44);
     obj.label9:setAlign("top");
     obj.label9:setHeight(18);
@@ -1288,7 +1289,7 @@ function newCaixaFichaNPC()
     obj.label9:setText("Nome da Rolagem");
     obj.label9:setName("label9");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout44);
     obj.edit2:setAlign("top");
     obj.edit2:setHeight(22);
@@ -1297,13 +1298,13 @@ function newCaixaFichaNPC()
     obj.edit2:setField("NomeRolagem");
     obj.edit2:setName("edit2");
 
-    obj.layout45 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout45 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout45:setParent(obj.layout42);
     obj.layout45:setAlign("client");
     obj.layout45:setMargins({left=4, right=4});
     obj.layout45:setName("layout45");
 
-    obj.button9 = gui.fromHandle(_obj_newObject("button"));
+    obj.button9 = GUI.fromHandle(_obj_newObject("button"));
     obj.button9:setParent(obj.layout45);
     obj.button9:setAlign("top");
     obj.button9:setHeight(22);
@@ -1312,7 +1313,7 @@ function newCaixaFichaNPC()
     obj.button9:setText("Enviar Mensagem");
     obj.button9:setName("button9");
 
-    obj.button10 = gui.fromHandle(_obj_newObject("button"));
+    obj.button10 = GUI.fromHandle(_obj_newObject("button"));
     obj.button10:setParent(obj.layout45);
     obj.button10:setAlign("top");
     obj.button10:setHeight(22);
@@ -1321,13 +1322,13 @@ function newCaixaFichaNPC()
     obj.button10:setText("Enviar Rolagem");
     obj.button10:setName("button10");
 
-    obj.dataLink15 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink15 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink15:setParent(obj);
     obj.dataLink15:setField("ShowNome");
     obj.dataLink15:setDefaultValue("1");
     obj.dataLink15:setName("dataLink15");
 
-    obj.BarrinhaPopup = gui.fromHandle(_obj_newObject("popup"));
+    obj.BarrinhaPopup = GUI.fromHandle(_obj_newObject("popup"));
     obj.BarrinhaPopup:setParent(obj);
     obj.BarrinhaPopup:setName("BarrinhaPopup");
     obj.BarrinhaPopup:setWidth(140);
@@ -1335,7 +1336,7 @@ function newCaixaFichaNPC()
     obj.BarrinhaPopup:setBackOpacity(0);
     obj.BarrinhaPopup:setMargins({left=4, right=4, top=4, bottom=4});
 
-    obj.rectangle30 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle30 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle30:setParent(obj.BarrinhaPopup);
     obj.rectangle30:setAlign("client");
     obj.rectangle30:setColor("white");
@@ -1343,7 +1344,7 @@ function newCaixaFichaNPC()
     obj.rectangle30:setYradius(5);
     obj.rectangle30:setName("rectangle30");
 
-    obj.CorPopupBarrinhas = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.CorPopupBarrinhas = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.CorPopupBarrinhas:setParent(obj.rectangle30);
     obj.CorPopupBarrinhas:setAlign("client");
     obj.CorPopupBarrinhas:setName("CorPopupBarrinhas");
@@ -1352,7 +1353,7 @@ function newCaixaFichaNPC()
     obj.CorPopupBarrinhas:setYradius(5);
     obj.CorPopupBarrinhas:setOpacity(0.9);
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.CorPopupBarrinhas);
     obj.label10:setFontColor("black");
     obj.label10:setMargins({left=6, top=2});
@@ -1364,19 +1365,19 @@ function newCaixaFichaNPC()
     obj.label10:setAutoSize(true);
     obj.label10:setName("label10");
 
-    obj.layout46 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout46 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout46:setParent(obj.CorPopupBarrinhas);
     obj.layout46:setAlign("client");
     obj.layout46:setMargins({top=2, left=4});
     obj.layout46:setName("layout46");
 
-    obj.layout47 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout47 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout47:setParent(obj.layout46);
     obj.layout47:setAlign("top");
     obj.layout47:setHeight(18);
     obj.layout47:setName("layout47");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout47);
     obj.label11:setFontColor("black");
     obj.label11:setAlign("left");
@@ -1387,7 +1388,7 @@ function newCaixaFichaNPC()
     obj.label11:setFontSize(12);
     obj.label11:setName("label11");
 
-    obj.comboBox2 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox2:setParent(obj.layout47);
     obj.comboBox2:setFontColor("white");
     obj.comboBox2:setMargins({left=2});
@@ -1400,7 +1401,7 @@ function newCaixaFichaNPC()
     obj.comboBox2:setValue("igual");
     obj.comboBox2:setName("comboBox2");
 
-    obj.ValorAtualBarrinha = gui.fromHandle(_obj_newObject("edit"));
+    obj.ValorAtualBarrinha = GUI.fromHandle(_obj_newObject("edit"));
     obj.ValorAtualBarrinha:setParent(obj.layout47);
     obj.ValorAtualBarrinha:setFontColor("black");
     obj.ValorAtualBarrinha:setMargins({left=2, right=4});
@@ -1410,13 +1411,13 @@ function newCaixaFichaNPC()
     obj.ValorAtualBarrinha:setField("ValorMudadoAtualBarrinha");
     obj.ValorAtualBarrinha:setName("ValorAtualBarrinha");
 
-    obj.layout48 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout48 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout48:setParent(obj.layout46);
     obj.layout48:setAlign("top");
     obj.layout48:setHeight(18);
     obj.layout48:setName("layout48");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout48);
     obj.label12:setFontColor("black");
     obj.label12:setAlign("left");
@@ -1427,7 +1428,7 @@ function newCaixaFichaNPC()
     obj.label12:setFontSize(12);
     obj.label12:setName("label12");
 
-    obj.comboBox3 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox3:setParent(obj.layout48);
     obj.comboBox3:setFontColor("white");
     obj.comboBox3:setMargins({left=2});
@@ -1440,7 +1441,7 @@ function newCaixaFichaNPC()
     obj.comboBox3:setValue("igual");
     obj.comboBox3:setName("comboBox3");
 
-    obj.ValorMaxBarrinha = gui.fromHandle(_obj_newObject("edit"));
+    obj.ValorMaxBarrinha = GUI.fromHandle(_obj_newObject("edit"));
     obj.ValorMaxBarrinha:setParent(obj.layout48);
     obj.ValorMaxBarrinha:setFontColor("black");
     obj.ValorMaxBarrinha:setMargins({left=2, right=4});
@@ -1450,12 +1451,12 @@ function newCaixaFichaNPC()
     obj.ValorMaxBarrinha:setField("ValorMudadoMaxBarrinha");
     obj.ValorMaxBarrinha:setName("ValorMaxBarrinha");
 
-    obj.layout49 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout49:setParent(obj);
     obj.layout49:setAlign("client");
     obj.layout49:setName("layout49");
 
-    obj.rectangle31 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle31 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle31:setParent(obj.layout49);
     obj.rectangle31:setLeft(2);
     obj.rectangle31:setTop(2);
@@ -1464,7 +1465,7 @@ function newCaixaFichaNPC()
     obj.rectangle31:setColor("#111111");
     obj.rectangle31:setName("rectangle31");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.layout49);
     obj.image1:setLeft(2);
     obj.image1:setTop(2);
@@ -1476,7 +1477,7 @@ function newCaixaFichaNPC()
     obj.image1:setField("AvatarNPC");
     obj.image1:setName("image1");
 
-    obj.layout50 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout50 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout50:setParent(obj.layout49);
     obj.layout50:setLeft(107);
     obj.layout50:setTop(0);
@@ -1484,7 +1485,7 @@ function newCaixaFichaNPC()
     obj.layout50:setHeight(104);
     obj.layout50:setName("layout50");
 
-    obj.imgApagar = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imgApagar = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imgApagar:setParent(obj.layout50);
     obj.imgApagar:setTop(34);
     obj.imgApagar:setLeft(100);
@@ -1494,7 +1495,7 @@ function newCaixaFichaNPC()
     obj.imgApagar:setImageChecked("/ListaNPCsDock/images/delete.png");
     obj.imgApagar:setImageUnchecked("/ListaNPCsDock/images/delete.png");
 
-    obj.imgFalar = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imgFalar = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imgFalar:setParent(obj.layout50);
     obj.imgFalar:setTop(52);
     obj.imgFalar:setLeft(122);
@@ -1504,7 +1505,7 @@ function newCaixaFichaNPC()
     obj.imgFalar:setImageChecked("/ListaNPCsDock/images/voice.png");
     obj.imgFalar:setImageUnchecked("/ListaNPCsDock/images/voice.png");
 
-    obj.imgBloquear = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imgBloquear = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imgBloquear:setParent(obj.layout50);
     obj.imgBloquear:setTop(32);
     obj.imgBloquear:setLeft(120);
@@ -1515,7 +1516,7 @@ function newCaixaFichaNPC()
     obj.imgBloquear:setImageChecked("/ListaNPCsDock/images/bloqueado.png");
     obj.imgBloquear:setImageUnchecked("/ListaNPCsDock/images/desbloqueado.png");
 
-    obj.cbxInvisivel = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.cbxInvisivel = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.cbxInvisivel:setParent(obj.layout50);
     obj.cbxInvisivel:setTop(52);
     obj.cbxInvisivel:setLeft(140);
@@ -1527,7 +1528,7 @@ function newCaixaFichaNPC()
     obj.cbxInvisivel:setImageChecked("/ListaNPCsDock/images/invisivel.png");
     obj.cbxInvisivel:setImageUnchecked("/ListaNPCsDock/images/visivel.png");
 
-    obj.imgInfo = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imgInfo = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imgInfo:setParent(obj.layout50);
     obj.imgInfo:setTop(32);
     obj.imgInfo:setLeft(142);
@@ -1537,20 +1538,20 @@ function newCaixaFichaNPC()
     obj.imgInfo:setImageChecked("/ListaNPCsDock/images/info.png");
     obj.imgInfo:setImageUnchecked("/ListaNPCsDock/images/info.png");
 
-    obj.dataLink16 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink16 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink16:setParent(obj.layout50);
     obj.dataLink16:setField("imagemInvisivel");
     obj.dataLink16:setDefaultValue("false");
     obj.dataLink16:setName("dataLink16");
 
-    obj.popupDetails = gui.fromHandle(_obj_newObject("popup"));
+    obj.popupDetails = GUI.fromHandle(_obj_newObject("popup"));
     obj.popupDetails:setParent(obj.layout50);
     obj.popupDetails:setName("popupDetails");
     obj.popupDetails:setWidth(450);
     obj.popupDetails:setHeight(200);
     obj.popupDetails:setBackOpacity(0.4);
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.popupDetails);
     obj.label13:setLeft(10);
     obj.label13:setTop(0);
@@ -1560,7 +1561,7 @@ function newCaixaFichaNPC()
     obj.label13:setHorzTextAlign("center");
     obj.label13:setName("label13");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.popupDetails);
     obj.label14:setLeft(160);
     obj.label14:setTop(0);
@@ -1570,7 +1571,7 @@ function newCaixaFichaNPC()
     obj.label14:setHorzTextAlign("center");
     obj.label14:setName("label14");
 
-    obj.label15 = gui.fromHandle(_obj_newObject("label"));
+    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.popupDetails);
     obj.label15:setLeft(10);
     obj.label15:setTop(50);
@@ -1580,7 +1581,7 @@ function newCaixaFichaNPC()
     obj.label15:setHorzTextAlign("center");
     obj.label15:setName("label15");
 
-    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.popupDetails);
     obj.label16:setLeft(135);
     obj.label16:setTop(50);
@@ -1590,7 +1591,7 @@ function newCaixaFichaNPC()
     obj.label16:setHorzTextAlign("center");
     obj.label16:setName("label16");
 
-    obj.label17 = gui.fromHandle(_obj_newObject("label"));
+    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.popupDetails);
     obj.label17:setLeft(260);
     obj.label17:setTop(50);
@@ -1600,7 +1601,7 @@ function newCaixaFichaNPC()
     obj.label17:setHorzTextAlign("center");
     obj.label17:setName("label17");
 
-    obj.label18 = gui.fromHandle(_obj_newObject("label"));
+    obj.label18 = GUI.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.popupDetails);
     obj.label18:setLeft(10);
     obj.label18:setTop(100);
@@ -1610,7 +1611,7 @@ function newCaixaFichaNPC()
     obj.label18:setHorzTextAlign("center");
     obj.label18:setName("label18");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.popupDetails);
     obj.edit3:setLeft(10);
     obj.edit3:setTop(25);
@@ -1619,7 +1620,7 @@ function newCaixaFichaNPC()
     obj.edit3:setField("raca");
     obj.edit3:setName("edit3");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.popupDetails);
     obj.edit4:setLeft(160);
     obj.edit4:setTop(25);
@@ -1628,7 +1629,7 @@ function newCaixaFichaNPC()
     obj.edit4:setField("classe");
     obj.edit4:setName("edit4");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.popupDetails);
     obj.edit5:setLeft(10);
     obj.edit5:setTop(75);
@@ -1637,7 +1638,7 @@ function newCaixaFichaNPC()
     obj.edit5:setField("atitude");
     obj.edit5:setName("edit5");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.popupDetails);
     obj.edit6:setLeft(135);
     obj.edit6:setTop(75);
@@ -1646,7 +1647,7 @@ function newCaixaFichaNPC()
     obj.edit6:setField("relacao");
     obj.edit6:setName("edit6");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.popupDetails);
     obj.textEditor1:setLeft(260);
     obj.textEditor1:setTop(75);
@@ -1655,7 +1656,7 @@ function newCaixaFichaNPC()
     obj.textEditor1:setField("comentarios");
     obj.textEditor1:setName("textEditor1");
 
-    obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.popupDetails);
     obj.textEditor2:setLeft(10);
     obj.textEditor2:setTop(125);
@@ -1664,7 +1665,7 @@ function newCaixaFichaNPC()
     obj.textEditor2:setField("descricao");
     obj.textEditor2:setName("textEditor2");
 
-    obj.NomeGrandeBarrinha = gui.fromHandle(_obj_newObject("edit"));
+    obj.NomeGrandeBarrinha = GUI.fromHandle(_obj_newObject("edit"));
     obj.NomeGrandeBarrinha:setParent(obj.layout50);
     obj.NomeGrandeBarrinha:setAlign("none");
     obj.NomeGrandeBarrinha:setTop(0);
@@ -1678,7 +1679,7 @@ function newCaixaFichaNPC()
     obj.NomeGrandeBarrinha:setTransparent(true);
     obj.NomeGrandeBarrinha:setName("NomeGrandeBarrinha");
 
-    obj.layout51 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout51 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout51:setParent(obj.layout50);
     obj.layout51:setTop(14);
     obj.layout51:setLeft(0);
@@ -1687,7 +1688,7 @@ function newCaixaFichaNPC()
     obj.layout51:setHitTest(true);
     obj.layout51:setName("layout51");
 
-    obj.NomePequenoBarrinha = gui.fromHandle(_obj_newObject("edit"));
+    obj.NomePequenoBarrinha = GUI.fromHandle(_obj_newObject("edit"));
     obj.NomePequenoBarrinha:setParent(obj.layout51);
     obj.NomePequenoBarrinha:setAlign("client");
     obj.NomePequenoBarrinha:setFontSize(11.5);
@@ -1699,7 +1700,7 @@ function newCaixaFichaNPC()
     obj.NomePequenoBarrinha:setPadding({left=4, right=4, bottom=4, top=4});
     obj.NomePequenoBarrinha:setTransparent(true);
 
-    obj.path2 = gui.fromHandle(_obj_newObject("path"));
+    obj.path2 = GUI.fromHandle(_obj_newObject("path"));
     obj.path2:setParent(obj.layout51);
     obj.path2:setAlign("right");
     obj.path2:setWidth(18);
@@ -1709,7 +1710,7 @@ function newCaixaFichaNPC()
     obj.path2:setHitTest(true);
     obj.path2:setName("path2");
 
-    obj.layout52 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout52 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout52:setParent(obj.layout50);
     obj.layout52:setLeft(3);
     obj.layout52:setTop(32);
@@ -1717,12 +1718,12 @@ function newCaixaFichaNPC()
     obj.layout52:setWidth(64);
     obj.layout52:setName("layout52");
 
-    obj.imageCheckBox1 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox1 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox1:setParent(obj.layout52);
     obj.imageCheckBox1:setAlign("client");
     obj.imageCheckBox1:setName("imageCheckBox1");
 
-    obj.Barrinha1 = gui.fromHandle(_obj_newObject("progressBar"));
+    obj.Barrinha1 = GUI.fromHandle(_obj_newObject("progressBar"));
     obj.Barrinha1:setParent(obj.imageCheckBox1);
     obj.Barrinha1:setColorMode("hl");
     obj.Barrinha1:setWidth(64);
@@ -1734,7 +1735,7 @@ function newCaixaFichaNPC()
     obj.Barrinha1:setField("Barrinha1Valor");
     obj.Barrinha1:setFieldMax("Barrinha1ValorMax");
 
-    obj.ValoresBarrinha1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.ValoresBarrinha1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.ValoresBarrinha1:setParent(obj.layout50);
     obj.ValoresBarrinha1:setLeft(69);
     obj.ValoresBarrinha1:setTop(29);
@@ -1743,7 +1744,7 @@ function newCaixaFichaNPC()
     obj.ValoresBarrinha1:setVisible(false);
     obj.ValoresBarrinha1:setName("ValoresBarrinha1");
 
-    obj.CorBarrinha1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.CorBarrinha1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.CorBarrinha1:setParent(obj.ValoresBarrinha1);
     obj.CorBarrinha1:setAlign("client");
     obj.CorBarrinha1:setXradius(2);
@@ -1751,7 +1752,7 @@ function newCaixaFichaNPC()
     obj.CorBarrinha1:setName("CorBarrinha1");
     obj.CorBarrinha1:setColor("green");
 
-    obj.InfoBarrinha1 = gui.fromHandle(_obj_newObject("label"));
+    obj.InfoBarrinha1 = GUI.fromHandle(_obj_newObject("label"));
     obj.InfoBarrinha1:setParent(obj.CorBarrinha1);
     obj.InfoBarrinha1:setAlign("left");
     obj.InfoBarrinha1:setFontColor("white");
@@ -1764,7 +1765,7 @@ function newCaixaFichaNPC()
     obj.InfoBarrinha1:setHorzTextAlign("center");
     obj.InfoBarrinha1:setText("0/0");
 
-    obj.InfoBarrinha1Oculto = gui.fromHandle(_obj_newObject("label"));
+    obj.InfoBarrinha1Oculto = GUI.fromHandle(_obj_newObject("label"));
     obj.InfoBarrinha1Oculto:setParent(obj.CorBarrinha1);
     obj.InfoBarrinha1Oculto:setAlign("client");
     obj.InfoBarrinha1Oculto:setFontColor("white");
@@ -1778,19 +1779,19 @@ function newCaixaFichaNPC()
     obj.InfoBarrinha1Oculto:setHorzTextAlign("center");
     obj.InfoBarrinha1Oculto:setText("??/??");
 
-    obj.dataLink17 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink17 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink17:setParent(obj.layout50);
     obj.dataLink17:setField("Barrinha1Invisivel");
     obj.dataLink17:setDefaultValue("false");
     obj.dataLink17:setName("dataLink17");
 
-    obj.dataLink18 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink18 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink18:setParent(obj.layout50);
     obj.dataLink18:setField("CorBarrinha1");
     obj.dataLink18:setDefaultValue("#808080");
     obj.dataLink18:setName("dataLink18");
 
-    obj.layout53 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout53 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout53:setParent(obj.layout50);
     obj.layout53:setLeft(3);
     obj.layout53:setTop(42);
@@ -1798,12 +1799,12 @@ function newCaixaFichaNPC()
     obj.layout53:setWidth(64);
     obj.layout53:setName("layout53");
 
-    obj.imageCheckBox2 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox2 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox2:setParent(obj.layout53);
     obj.imageCheckBox2:setAlign("client");
     obj.imageCheckBox2:setName("imageCheckBox2");
 
-    obj.Barrinha2 = gui.fromHandle(_obj_newObject("progressBar"));
+    obj.Barrinha2 = GUI.fromHandle(_obj_newObject("progressBar"));
     obj.Barrinha2:setParent(obj.imageCheckBox2);
     obj.Barrinha2:setColorMode("hl");
     obj.Barrinha2:setWidth(64);
@@ -1815,7 +1816,7 @@ function newCaixaFichaNPC()
     obj.Barrinha2:setField("Barrinha2Valor");
     obj.Barrinha2:setFieldMax("Barrinha2ValorMax");
 
-    obj.ValoresBarrinha2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.ValoresBarrinha2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.ValoresBarrinha2:setParent(obj.layout50);
     obj.ValoresBarrinha2:setLeft(69);
     obj.ValoresBarrinha2:setTop(39);
@@ -1824,7 +1825,7 @@ function newCaixaFichaNPC()
     obj.ValoresBarrinha2:setVisible(false);
     obj.ValoresBarrinha2:setName("ValoresBarrinha2");
 
-    obj.CorBarrinha2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.CorBarrinha2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.CorBarrinha2:setParent(obj.ValoresBarrinha2);
     obj.CorBarrinha2:setAlign("client");
     obj.CorBarrinha2:setXradius(2);
@@ -1832,7 +1833,7 @@ function newCaixaFichaNPC()
     obj.CorBarrinha2:setName("CorBarrinha2");
     obj.CorBarrinha2:setColor("green");
 
-    obj.InfoBarrinha2 = gui.fromHandle(_obj_newObject("label"));
+    obj.InfoBarrinha2 = GUI.fromHandle(_obj_newObject("label"));
     obj.InfoBarrinha2:setParent(obj.CorBarrinha2);
     obj.InfoBarrinha2:setAlign("left");
     obj.InfoBarrinha2:setFontColor("white");
@@ -1845,7 +1846,7 @@ function newCaixaFichaNPC()
     obj.InfoBarrinha2:setHorzTextAlign("center");
     obj.InfoBarrinha2:setText("0/0");
 
-    obj.InfoBarrinha2Oculto = gui.fromHandle(_obj_newObject("label"));
+    obj.InfoBarrinha2Oculto = GUI.fromHandle(_obj_newObject("label"));
     obj.InfoBarrinha2Oculto:setParent(obj.CorBarrinha2);
     obj.InfoBarrinha2Oculto:setAlign("client");
     obj.InfoBarrinha2Oculto:setFontColor("white");
@@ -1859,19 +1860,19 @@ function newCaixaFichaNPC()
     obj.InfoBarrinha2Oculto:setHorzTextAlign("center");
     obj.InfoBarrinha2Oculto:setText("??/??");
 
-    obj.dataLink19 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink19 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink19:setParent(obj.layout50);
     obj.dataLink19:setField("Barrinha2Invisivel");
     obj.dataLink19:setDefaultValue("false");
     obj.dataLink19:setName("dataLink19");
 
-    obj.dataLink20 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink20 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink20:setParent(obj.layout50);
     obj.dataLink20:setField("CorBarrinha2");
     obj.dataLink20:setDefaultValue("#808080");
     obj.dataLink20:setName("dataLink20");
 
-    obj.layout54 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout54 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout54:setParent(obj.layout50);
     obj.layout54:setLeft(3);
     obj.layout54:setTop(52);
@@ -1879,12 +1880,12 @@ function newCaixaFichaNPC()
     obj.layout54:setWidth(64);
     obj.layout54:setName("layout54");
 
-    obj.imageCheckBox3 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox3 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox3:setParent(obj.layout54);
     obj.imageCheckBox3:setAlign("client");
     obj.imageCheckBox3:setName("imageCheckBox3");
 
-    obj.Barrinha3 = gui.fromHandle(_obj_newObject("progressBar"));
+    obj.Barrinha3 = GUI.fromHandle(_obj_newObject("progressBar"));
     obj.Barrinha3:setParent(obj.imageCheckBox3);
     obj.Barrinha3:setColorMode("hl");
     obj.Barrinha3:setWidth(64);
@@ -1896,7 +1897,7 @@ function newCaixaFichaNPC()
     obj.Barrinha3:setField("Barrinha3Valor");
     obj.Barrinha3:setFieldMax("Barrinha3ValorMax");
 
-    obj.ValoresBarrinha3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.ValoresBarrinha3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.ValoresBarrinha3:setParent(obj.layout50);
     obj.ValoresBarrinha3:setLeft(69);
     obj.ValoresBarrinha3:setTop(49);
@@ -1905,7 +1906,7 @@ function newCaixaFichaNPC()
     obj.ValoresBarrinha3:setVisible(false);
     obj.ValoresBarrinha3:setName("ValoresBarrinha3");
 
-    obj.CorBarrinha3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.CorBarrinha3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.CorBarrinha3:setParent(obj.ValoresBarrinha3);
     obj.CorBarrinha3:setAlign("client");
     obj.CorBarrinha3:setXradius(2);
@@ -1913,7 +1914,7 @@ function newCaixaFichaNPC()
     obj.CorBarrinha3:setName("CorBarrinha3");
     obj.CorBarrinha3:setColor("green");
 
-    obj.InfoBarrinha3 = gui.fromHandle(_obj_newObject("label"));
+    obj.InfoBarrinha3 = GUI.fromHandle(_obj_newObject("label"));
     obj.InfoBarrinha3:setParent(obj.CorBarrinha3);
     obj.InfoBarrinha3:setAlign("left");
     obj.InfoBarrinha3:setFontColor("white");
@@ -1926,7 +1927,7 @@ function newCaixaFichaNPC()
     obj.InfoBarrinha3:setHorzTextAlign("center");
     obj.InfoBarrinha3:setText("0/0");
 
-    obj.InfoBarrinha3Oculto = gui.fromHandle(_obj_newObject("label"));
+    obj.InfoBarrinha3Oculto = GUI.fromHandle(_obj_newObject("label"));
     obj.InfoBarrinha3Oculto:setParent(obj.CorBarrinha3);
     obj.InfoBarrinha3Oculto:setAlign("client");
     obj.InfoBarrinha3Oculto:setFontColor("white");
@@ -1940,19 +1941,19 @@ function newCaixaFichaNPC()
     obj.InfoBarrinha3Oculto:setHorzTextAlign("center");
     obj.InfoBarrinha3Oculto:setText("??/??");
 
-    obj.dataLink21 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink21 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink21:setParent(obj.layout50);
     obj.dataLink21:setField("Barrinha3Invisivel");
     obj.dataLink21:setDefaultValue("false");
     obj.dataLink21:setName("dataLink21");
 
-    obj.dataLink22 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink22 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink22:setParent(obj.layout50);
     obj.dataLink22:setField("CorBarrinha3");
     obj.dataLink22:setDefaultValue("#808080");
     obj.dataLink22:setName("dataLink22");
 
-    obj.layout55 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout55 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout55:setParent(obj.layout50);
     obj.layout55:setLeft(3);
     obj.layout55:setTop(62);
@@ -1960,12 +1961,12 @@ function newCaixaFichaNPC()
     obj.layout55:setWidth(64);
     obj.layout55:setName("layout55");
 
-    obj.imageCheckBox4 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox4 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox4:setParent(obj.layout55);
     obj.imageCheckBox4:setAlign("client");
     obj.imageCheckBox4:setName("imageCheckBox4");
 
-    obj.Barrinha4 = gui.fromHandle(_obj_newObject("progressBar"));
+    obj.Barrinha4 = GUI.fromHandle(_obj_newObject("progressBar"));
     obj.Barrinha4:setParent(obj.imageCheckBox4);
     obj.Barrinha4:setColorMode("hl");
     obj.Barrinha4:setWidth(64);
@@ -1977,7 +1978,7 @@ function newCaixaFichaNPC()
     obj.Barrinha4:setField("Barrinha4Valor");
     obj.Barrinha4:setFieldMax("Barrinha4ValorMax");
 
-    obj.ValoresBarrinha4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.ValoresBarrinha4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.ValoresBarrinha4:setParent(obj.layout50);
     obj.ValoresBarrinha4:setLeft(69);
     obj.ValoresBarrinha4:setTop(59);
@@ -1986,7 +1987,7 @@ function newCaixaFichaNPC()
     obj.ValoresBarrinha4:setVisible(false);
     obj.ValoresBarrinha4:setName("ValoresBarrinha4");
 
-    obj.CorBarrinha4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.CorBarrinha4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.CorBarrinha4:setParent(obj.ValoresBarrinha4);
     obj.CorBarrinha4:setAlign("client");
     obj.CorBarrinha4:setXradius(2);
@@ -1994,7 +1995,7 @@ function newCaixaFichaNPC()
     obj.CorBarrinha4:setName("CorBarrinha4");
     obj.CorBarrinha4:setColor("green");
 
-    obj.InfoBarrinha4 = gui.fromHandle(_obj_newObject("label"));
+    obj.InfoBarrinha4 = GUI.fromHandle(_obj_newObject("label"));
     obj.InfoBarrinha4:setParent(obj.CorBarrinha4);
     obj.InfoBarrinha4:setAlign("left");
     obj.InfoBarrinha4:setFontColor("white");
@@ -2007,7 +2008,7 @@ function newCaixaFichaNPC()
     obj.InfoBarrinha4:setHorzTextAlign("center");
     obj.InfoBarrinha4:setText("0/0");
 
-    obj.InfoBarrinha4Oculto = gui.fromHandle(_obj_newObject("label"));
+    obj.InfoBarrinha4Oculto = GUI.fromHandle(_obj_newObject("label"));
     obj.InfoBarrinha4Oculto:setParent(obj.CorBarrinha4);
     obj.InfoBarrinha4Oculto:setAlign("client");
     obj.InfoBarrinha4Oculto:setFontColor("white");
@@ -2021,19 +2022,19 @@ function newCaixaFichaNPC()
     obj.InfoBarrinha4Oculto:setHorzTextAlign("center");
     obj.InfoBarrinha4Oculto:setText("??/??");
 
-    obj.dataLink23 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink23 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink23:setParent(obj.layout50);
     obj.dataLink23:setField("Barrinha4Invisivel");
     obj.dataLink23:setDefaultValue("false");
     obj.dataLink23:setName("dataLink23");
 
-    obj.dataLink24 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink24 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink24:setParent(obj.layout50);
     obj.dataLink24:setField("CorBarrinha4");
     obj.dataLink24:setDefaultValue("#808080");
     obj.dataLink24:setName("dataLink24");
 
-    obj.Linha1Barrinha = gui.fromHandle(_obj_newObject("edit"));
+    obj.Linha1Barrinha = GUI.fromHandle(_obj_newObject("edit"));
     obj.Linha1Barrinha:setParent(obj.layout50);
     obj.Linha1Barrinha:setTop(71);
     obj.Linha1Barrinha:setLeft(0);
@@ -2047,7 +2048,7 @@ function newCaixaFichaNPC()
     obj.Linha1Barrinha:setTransparent(true);
     obj.Linha1Barrinha:setName("Linha1Barrinha");
 
-    obj.Linha2Barrinha = gui.fromHandle(_obj_newObject("edit"));
+    obj.Linha2Barrinha = GUI.fromHandle(_obj_newObject("edit"));
     obj.Linha2Barrinha:setParent(obj.layout50);
     obj.Linha2Barrinha:setTop(85);
     obj.Linha2Barrinha:setLeft(0);
@@ -2061,20 +2062,20 @@ function newCaixaFichaNPC()
     obj.Linha2Barrinha:setTransparent(true);
     obj.Linha2Barrinha:setName("Linha2Barrinha");
 
-    obj.dataLink25 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink25 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink25:setParent(obj);
     obj.dataLink25:setField("CorP");
     obj.dataLink25:setDefaultValue("1");
     obj.dataLink25:setName("dataLink25");
 
-    obj.dataLink26 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink26 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink26:setParent(obj);
     obj.dataLink26:setFields({'Aberto1'});
     obj.dataLink26:setDefaultValues({false});
     obj.dataLink26:setName("dataLink26");
 
     obj._e_event0 = obj:addEventListener("onScopeNodeChanged",
-        function (self)
+        function (_)
             if self.observer ~= nil then   
             			self.observer.enabled = false;
             			self.observer = nil;
@@ -2098,18 +2099,18 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onHide",
-        function (self)
+        function (_)
             self.TipoDeBarras:close();
             		FecharOPopupForm();
         end, obj);
 
     obj._e_event2 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             sheet.CorReversa = ReverterCor(sheet.CorNha);
         end, obj);
 
     obj._e_event3 = obj.TipoDeBarras:addEventListener("onCancelRequest",
-        function (self)
+        function (_)
             if sheet.ModCor == "J" then
             					sheet.alinhamentoNPC = "Jogador"
             				elseif sheet.ModCor == "A" then
@@ -2124,12 +2125,12 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event4 = obj.radioButton4:addEventListener("onClick",
-        function (self)
+        function (_)
             chamarListaDeJogadores();
         end, obj);
 
     obj._e_event5 = obj.rectangle1:addEventListener("onClick",
-        function (self)
+        function (_)
             setTimeout (function()
             								sheet.alinhamentoNPC = "Jogador";
             								chamarListaDeJogadores();
@@ -2138,7 +2139,7 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event6 = obj.label2:addEventListener("onClick",
-        function (self)
+        function (_)
             setTimeout (function()
             									sheet.alinhamentoNPC = "Jogador";
             									chamarListaDeJogadores();
@@ -2147,7 +2148,7 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event7 = obj.path1:addEventListener("onClick",
-        function (self)
+        function (_)
             setTimeout (function()
             									sheet.alinhamentoNPC = "Jogador";
             									chamarListaDeJogadores();
@@ -2156,7 +2157,7 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event8 = obj.BotonAction:addEventListener("onClick",
-        function (self)
+        function (_)
             if not (sheet.alinhamentoNPC == "Jogador" and sheet.opcaoEscolhida2 == "Nenhum") then
             							ndb.setPermission(sheet, "user", sheet.NomePequeno, "read", nil)
             							ndb.setPermission(sheet, "user", sheet.NomePequeno, "write", nil)
@@ -2175,7 +2176,7 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event9 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if (sheet.alinhamentoNPC ~= "Jogador" or sheet.opcaoEscolhida2 ~= "Nenhum") then
             				self.BotonAction.enabled = true;
             			else
@@ -2184,17 +2185,17 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event10 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.BotonAction.enabled = (sheet.alinhamentoNPC ~= "Jogador" or sheet.opcaoEscolhida2 ~= "Nenhum");
         end, obj);
 
     obj._e_event11 = obj.dataLink5:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self:setarNPC();
         end, obj);
 
     obj._e_event12 = obj.dataLink10:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local test = GetBarrinhaNumeros(1);
             			local d0 = (tonumber(sheet.Barrinha1ValorMax or 0) == 0)
             				if d0 then
@@ -2212,7 +2213,7 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event13 = obj.dataLink11:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local test = GetBarrinhaNumeros(2);
             			local d0 = (tonumber(sheet.Barrinha2ValorMax or 0) == 0)
             				if d0 then
@@ -2230,7 +2231,7 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event14 = obj.dataLink12:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local test = GetBarrinhaNumeros(3);
             			local d0 = (tonumber(sheet.Barrinha3ValorMax or 0) == 0);
             				if d0 then
@@ -2248,7 +2249,7 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event15 = obj.dataLink13:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local test = GetBarrinhaNumeros(4);
             			local d0 = (tonumber(sheet.Barrinha4ValorMax or 0) == 0);
             				if d0 then
@@ -2266,28 +2267,28 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event16 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.MenuCor:close();
         end, obj);
 
     obj._e_event17 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             self.MenuCor.scopeNode = sheet;
             							self.MenuCor:show();
         end, obj);
 
     obj._e_event18 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.TextoMensagem = (sheet.TextoMensagem or "") .. "\13\10";
         end, obj);
 
     obj._e_event19 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.TextoMensagem = "";
         end, obj);
 
     obj._e_event20 = obj.dataLink14:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if not ((sheet.CorN == 0) or (self.CorN.value == "0")) then
             								local cor = "[§K" .. self.CorN.text .. "]";
             								if (cor ~= "[§K ]" and not inserindo) then
@@ -2303,27 +2304,27 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event21 = obj.button5:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.TextoMensagem = (sheet.TextoMensagem or "") .. "[§B]";
         end, obj);
 
     obj._e_event22 = obj.button6:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.TextoMensagem = (sheet.TextoMensagem or "") .. "[§T]";
         end, obj);
 
     obj._e_event23 = obj.button7:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.TextoMensagem = (sheet.TextoMensagem or "") .. "[§U]";
         end, obj);
 
     obj._e_event24 = obj.button8:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.TextoMensagem = (sheet.TextoMensagem or "") .. "[§S]";
         end, obj);
 
     obj._e_event25 = obj.button9:addEventListener("onClick",
-        function (self)
+        function (_)
             local minhaMesa = rrpg.getMesaDe(sheet);
             							local chat = minhaMesa.activeChat;    
             							
@@ -2362,7 +2363,7 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event26 = obj.button10:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet.NomeRolagem ~= nil then
             								local nome = sheet.NomeRolagem .. " - " .. sheet.NomeGrande;
             							PrepararRolagem(nome, sheet.TextoRolagem);
@@ -2372,7 +2373,7 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event27 = obj.dataLink15:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet.Shownome ~= nil then
             				self.CorP.enabled = true;
             			else
@@ -2381,7 +2382,7 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event28 = obj.BarrinhaPopup:addEventListener("onClose",
-        function (self, canceled)
+        function (_, canceled)
             setTimeout( function()
             				if (sheet.ModificadorBarrinha == "igual") then
             					sheet.ValorTempAtualBarrinha = tonumber(sheet.ValorMudadoAtualBarrinha or 0);
@@ -2443,19 +2444,19 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event29 = obj.ValorAtualBarrinha:addEventListener("onEnter",
-        function (self)
+        function (_)
             self.ValorAtualBarrinha.transparent = false;
             								self.ValorAtualBarrinha.fontColor = "white";
         end, obj);
 
     obj._e_event30 = obj.ValorAtualBarrinha:addEventListener("onExit",
-        function (self)
+        function (_)
             self.ValorAtualBarrinha.transparent = true;
             								self.ValorAtualBarrinha.fontColor = "black";
         end, obj);
 
     obj._e_event31 = obj.ValorAtualBarrinha:addEventListener("onKeyDown",
-        function (self, event)
+        function (_, event)
             local oenter = (event.keyCode == 13)
             								if oenter then
             									self.BarrinhaPopup:close();
@@ -2463,19 +2464,19 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event32 = obj.ValorMaxBarrinha:addEventListener("onEnter",
-        function (self)
+        function (_)
             self.ValorMaxBarrinha.transparent = false;
             								self.ValorMaxBarrinha.fontColor = "white";
         end, obj);
 
     obj._e_event33 = obj.ValorMaxBarrinha:addEventListener("onExit",
-        function (self)
+        function (_)
             self.ValorMaxBarrinha.transparent = true;
             								self.ValorMaxBarrinha.fontColor = "black";
         end, obj);
 
     obj._e_event34 = obj.ValorMaxBarrinha:addEventListener("onKeyDown",
-        function (self, event)
+        function (_, event)
             local oenter = (event.keyCode == 13)
             								if oenter then
             									self.BarrinhaPopup:close();
@@ -2483,7 +2484,7 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event35 = obj.imgApagar:addEventListener("onClick",
-        function (self)
+        function (_)
             if DonoMestre(sheet, false, "docksub10") then
             						dialogs.confirmYesNo("Deseja realmente apagar este item?",
             							function (confirmado)
@@ -2499,7 +2500,7 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event36 = obj.imgFalar:addEventListener("onClick",
-        function (self)
+        function (_)
             if DonoMestre(sheet, false, "docksub1") then
             						if sheet.ShowNome == nil then
             							sheet.ShowNome = 1;
@@ -2510,21 +2511,21 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event37 = obj.imgBloquear:addEventListener("onClick",
-        function (self)
+        function (_)
             if not DonoMestre(sheet, false, "docksub2") then
             						sheet.imagemBloqueada = not sheet.imagemBloqueada;
             					end;
         end, obj);
 
     obj._e_event38 = obj.cbxInvisivel:addEventListener("onClick",
-        function (self)
+        function (_)
             if DonoMestre(sheet, false, "docksub3") then
             						self:alternarVisibilidade();
             					end;
         end, obj);
 
     obj._e_event39 = obj.imgInfo:addEventListener("onClick",
-        function (self)
+        function (_)
             local pop = self:findControlByName("popupDetails");
             					if pop ~= nil then
             						pop:setNodeObject(self.sheet);
@@ -2535,7 +2536,7 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event40 = obj.dataLink16:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             RequestReload("begin");
             					if sheet.imagemInvisivel then
             						if DonoMestre(sheet, true, "docksub4") then
@@ -2550,17 +2551,17 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event41 = obj.NomeGrandeBarrinha:addEventListener("onEnter",
-        function (self)
+        function (_)
             self.NomeGrandeBarrinha.transparent = false;
         end, obj);
 
     obj._e_event42 = obj.NomeGrandeBarrinha:addEventListener("onExit",
-        function (self)
+        function (_)
             self.NomeGrandeBarrinha.transparent = true;
         end, obj);
 
     obj._e_event43 = obj.layout51:addEventListener("onClick",
-        function (self)
+        function (_)
             if DonoMestre(sheet, false, "docksub6") then
             						if sheet.ModCor == "J" then
             							sheet.alinhamentoNPC = "Jogador"
@@ -2578,7 +2579,7 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event44 = obj.path2:addEventListener("onClick",
-        function (self)
+        function (_)
             if DonoMestre(sheet, false, "docksub6") then
             							if sheet.ModCor == "J" then
             								sheet.alinhamentoNPC = "Jogador"
@@ -2596,7 +2597,7 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event45 = obj.Barrinha1:addEventListener("onMouseEnter",
-        function (self)
+        function (_)
             self.CorBarrinha1.color = (sheet.CorBarrinha1 .. "AA");
             						self.ValoresBarrinha1.visible = true;
             						self.InfoBarrinha1.visible = (pegarJogador() or GetBarrinhaVisivel(sheet.ImagemBloqueada, 1));
@@ -2604,12 +2605,12 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event46 = obj.Barrinha1:addEventListener("onMouseLeave",
-        function (self)
+        function (_)
             self.ValoresBarrinha1.visible = false;
         end, obj);
 
     obj._e_event47 = obj.Barrinha1:addEventListener("onDblClick",
-        function (self)
+        function (_)
             if pegarJogador() then
             							sheet.BarrinhaID = 1;
             							sheet.AtributoBarrinha = GetBarrinhaNome(1);
@@ -2628,22 +2629,22 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event48 = obj.InfoBarrinha1:addEventListener("onResize",
-        function (self)
+        function (_)
             self.InfoBarrinha1.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
     obj._e_event49 = obj.dataLink17:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.Barrinha1.visible = not sheet.Barrinha1Invisivel;
         end, obj);
 
     obj._e_event50 = obj.dataLink18:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.Barrinha1.color = sheet.CorBarrinha1;
         end, obj);
 
     obj._e_event51 = obj.Barrinha2:addEventListener("onMouseEnter",
-        function (self)
+        function (_)
             self.CorBarrinha2.color = (sheet.CorBarrinha2 .. "AA");
             						self.ValoresBarrinha2.visible = true;
             						self.InfoBarrinha2.visible = (pegarJogador() or GetBarrinhaVisivel(sheet.ImagemBloqueada, 2));
@@ -2651,12 +2652,12 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event52 = obj.Barrinha2:addEventListener("onMouseLeave",
-        function (self)
+        function (_)
             self.ValoresBarrinha2.visible = false;
         end, obj);
 
     obj._e_event53 = obj.Barrinha2:addEventListener("onDblClick",
-        function (self)
+        function (_)
             if pegarJogador() then
             							sheet.BarrinhaID = 2;
             							sheet.AtributoBarrinha = GetBarrinhaNome(2);
@@ -2675,22 +2676,22 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event54 = obj.InfoBarrinha2:addEventListener("onResize",
-        function (self)
+        function (_)
             self.InfoBarrinha2.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
     obj._e_event55 = obj.dataLink19:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.Barrinha2.visible = not sheet.Barrinha2Invisivel;
         end, obj);
 
     obj._e_event56 = obj.dataLink20:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.Barrinha2.color = sheet.CorBarrinha2;
         end, obj);
 
     obj._e_event57 = obj.Barrinha3:addEventListener("onMouseEnter",
-        function (self)
+        function (_)
             self.CorBarrinha3.color = (sheet.CorBarrinha3 .. "AA");
             						self.ValoresBarrinha3.visible = true;
             						self.InfoBarrinha3.visible = (pegarJogador() or GetBarrinhaVisivel(sheet.ImagemBloqueada, 3));
@@ -2698,12 +2699,12 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event58 = obj.Barrinha3:addEventListener("onMouseLeave",
-        function (self)
+        function (_)
             self.ValoresBarrinha3.visible = false;
         end, obj);
 
     obj._e_event59 = obj.Barrinha3:addEventListener("onDblClick",
-        function (self)
+        function (_)
             if pegarJogador() then
             							sheet.BarrinhaID = 3;
             							sheet.AtributoBarrinha = GetBarrinhaNome(3);
@@ -2722,22 +2723,22 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event60 = obj.InfoBarrinha3:addEventListener("onResize",
-        function (self)
+        function (_)
             self.InfoBarrinha3.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
     obj._e_event61 = obj.dataLink21:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.Barrinha3.visible = not sheet.Barrinha3Invisivel;
         end, obj);
 
     obj._e_event62 = obj.dataLink22:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.Barrinha3.color = sheet.CorBarrinha3;
         end, obj);
 
     obj._e_event63 = obj.Barrinha4:addEventListener("onMouseEnter",
-        function (self)
+        function (_)
             self.CorBarrinha4.color = (sheet.CorBarrinha4 .. "AA");
             						self.ValoresBarrinha4.visible = true;
             						self.InfoBarrinha4.visible = (pegarJogador() or GetBarrinhaVisivel(sheet.ImagemBloqueada, 4));
@@ -2745,12 +2746,12 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event64 = obj.Barrinha4:addEventListener("onMouseLeave",
-        function (self)
+        function (_)
             self.ValoresBarrinha4.visible = false;
         end, obj);
 
     obj._e_event65 = obj.Barrinha4:addEventListener("onDblClick",
-        function (self)
+        function (_)
             if pegarJogador() then
             							sheet.BarrinhaID = 4;
             							sheet.AtributoBarrinha = GetBarrinhaNome(4);
@@ -2769,37 +2770,37 @@ function newCaixaFichaNPC()
         end, obj);
 
     obj._e_event66 = obj.InfoBarrinha4:addEventListener("onResize",
-        function (self)
+        function (_)
             self.InfoBarrinha4.width = (self.ValoresBarrinha1.width - 4);
         end, obj);
 
     obj._e_event67 = obj.dataLink23:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.Barrinha4.visible = not sheet.Barrinha4Invisivel;
         end, obj);
 
     obj._e_event68 = obj.dataLink24:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.Barrinha4.color = sheet.CorBarrinha4;
         end, obj);
 
     obj._e_event69 = obj.Linha1Barrinha:addEventListener("onEnter",
-        function (self)
+        function (_)
             self.Linha1Barrinha.transparent = false;
         end, obj);
 
     obj._e_event70 = obj.Linha1Barrinha:addEventListener("onExit",
-        function (self)
+        function (_)
             self.Linha1Barrinha.transparent = true;
         end, obj);
 
     obj._e_event71 = obj.Linha2Barrinha:addEventListener("onEnter",
-        function (self)
+        function (_)
             self.Linha2Barrinha.transparent = false;
         end, obj);
 
     obj._e_event72 = obj.Linha2Barrinha:addEventListener("onExit",
-        function (self)
+        function (_)
             self.Linha2Barrinha.transparent = true;
         end, obj);
 
@@ -3142,6 +3143,6 @@ local _CaixaFichaNPC = {
     description=""};
 
 CaixaFichaNPC = _CaixaFichaNPC;
-rrpg.registrarForm(_CaixaFichaNPC);
+Firecast.registrarForm(_CaixaFichaNPC);
 
 return _CaixaFichaNPC;

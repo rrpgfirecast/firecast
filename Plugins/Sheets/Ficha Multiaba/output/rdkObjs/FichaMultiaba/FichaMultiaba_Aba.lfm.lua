@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrm_FM_Aba()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -32,7 +33,7 @@ function newfrm_FM_Aba()
     obj:setTheme("dark");
     obj:setMargins({right=2});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setStrokeColor("black");
@@ -41,7 +42,7 @@ function newfrm_FM_Aba()
     obj.rectangle1:setColor("#000000FF");
     obj.rectangle1:setName("rectangle1");
 
-    obj.name_aba = gui.fromHandle(_obj_newObject("edit"));
+    obj.name_aba = GUI.fromHandle(_obj_newObject("edit"));
     obj.name_aba:setParent(obj);
     obj.name_aba:setLeft(0);
     obj.name_aba:setTop(0);
@@ -52,7 +53,7 @@ function newfrm_FM_Aba()
     obj.name_aba:setTransparent(true);
     obj.name_aba:setFontSize(10);
 
-    obj.cbxInvisivel = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.cbxInvisivel = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.cbxInvisivel:setParent(obj);
     obj.cbxInvisivel:setName("cbxInvisivel");
     obj.cbxInvisivel:setLeft(77);
@@ -64,7 +65,7 @@ function newfrm_FM_Aba()
     obj.cbxInvisivel:setAutoChange(false);
     obj.cbxInvisivel:setHint("Altera a visibilidade entre somente o mestre e todos. ");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setLeft(100);
     obj.button1:setTop(0);
@@ -94,7 +95,7 @@ function newfrm_FM_Aba()
 
 
     obj._e_event0 = obj:addEventListener("onScopeNodeChanged",
-        function (self)
+        function (_)
             if self.observer ~= nil then   
                         self.observer.enabled = false;
                         self.observer = nil;
@@ -115,22 +116,22 @@ function newfrm_FM_Aba()
         end, obj);
 
     obj._e_event1 = obj.name_aba:addEventListener("onEnter",
-        function (self)
+        function (_)
             self.name_aba.transparent = false;
         end, obj);
 
     obj._e_event2 = obj.name_aba:addEventListener("onExit",
-        function (self)
+        function (_)
             self.name_aba.transparent = true;
         end, obj);
 
     obj._e_event3 = obj.cbxInvisivel:addEventListener("onClick",
-        function (self)
+        function (_)
             self:alternarVisibilidade();
         end, obj);
 
     obj._e_event4 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar essa aba?",
             				function (confirmado)
             					if confirmado then
@@ -181,6 +182,6 @@ local _frm_FM_Aba = {
     description=""};
 
 frm_FM_Aba = _frm_FM_Aba;
-rrpg.registrarForm(_frm_FM_Aba);
+Firecast.registrarForm(_frm_FM_Aba);
 
 return _frm_FM_Aba;

@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmGerenciador01()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,12 +32,12 @@ function newfrmGerenciador01()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
@@ -45,7 +46,7 @@ function newfrmGerenciador01()
     obj.rectangle1:setColor("Black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(5);
     obj.label1:setTop(5);
@@ -55,7 +56,7 @@ function newfrmGerenciador01()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.rectangle1);
     obj.label2:setLeft(5);
     obj.label2:setTop(30);
@@ -65,7 +66,7 @@ function newfrmGerenciador01()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.rectangle1);
     obj.label3:setLeft(105);
     obj.label3:setTop(30);
@@ -75,7 +76,7 @@ function newfrmGerenciador01()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.rectangle1);
     obj.label4:setLeft(205);
     obj.label4:setTop(30);
@@ -85,7 +86,7 @@ function newfrmGerenciador01()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.rectangle1);
     obj.label5:setLeft(280);
     obj.label5:setTop(30);
@@ -95,7 +96,7 @@ function newfrmGerenciador01()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.rectangle1);
     obj.label6:setLeft(355);
     obj.label6:setTop(30);
@@ -105,7 +106,7 @@ function newfrmGerenciador01()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.rectangle1);
     obj.label7:setLeft(430);
     obj.label7:setTop(30);
@@ -115,7 +116,7 @@ function newfrmGerenciador01()
     obj.label7:setHorzTextAlign("center");
     obj.label7:setName("label7");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.rectangle1);
     obj.label8:setLeft(455);
     obj.label8:setTop(30);
@@ -125,7 +126,7 @@ function newfrmGerenciador01()
     obj.label8:setHorzTextAlign("center");
     obj.label8:setName("label8");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.rectangle1);
     obj.label9:setLeft(530);
     obj.label9:setTop(30);
@@ -135,7 +136,7 @@ function newfrmGerenciador01()
     obj.label9:setHorzTextAlign("center");
     obj.label9:setName("label9");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.rectangle1);
     obj.label10:setLeft(605);
     obj.label10:setTop(30);
@@ -145,7 +146,7 @@ function newfrmGerenciador01()
     obj.label10:setHorzTextAlign("center");
     obj.label10:setName("label10");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(600);
     obj.button1:setTop(5);
@@ -155,7 +156,7 @@ function newfrmGerenciador01()
     obj.button1:setHint("Dá voz a todos jogadores da lista, retira +Jogador dos outros e ativa mesa moderada. ");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.rectangle1);
     obj.button2:setLeft(650);
     obj.button2:setTop(5);
@@ -165,7 +166,7 @@ function newfrmGerenciador01()
     obj.button2:setHint("Novo");
     obj.button2:setName("button2");
 
-    obj.scrollBox2 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox2:setParent(obj.rectangle1);
     obj.scrollBox2:setLeft(0);
     obj.scrollBox2:setTop(55);
@@ -173,7 +174,7 @@ function newfrmGerenciador01()
     obj.scrollBox2:setHeight(440);
     obj.scrollBox2:setName("scrollBox2");
 
-    obj.rclJogadores = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclJogadores = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclJogadores:setParent(obj.scrollBox2);
     obj.rclJogadores:setLeft(0);
     obj.rclJogadores:setTop(0);
@@ -187,7 +188,7 @@ function newfrmGerenciador01()
     obj.rclJogadores:setTemplateForm("frmGerenciador01_Jogadores");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet~=nil then
             						local jogadores = ndb.getChildNodes(sheet.jogadores);
             						local jogadoresNome = "";
@@ -214,12 +215,12 @@ function newfrmGerenciador01()
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclJogadores:append();
         end, obj);
 
     obj._e_event2 = obj.rclJogadores:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             local mod1 = nodeA.xp;
             						local mod2 = nodeB.xp;
             						if mod1==nil then
@@ -232,7 +233,7 @@ function newfrmGerenciador01()
         end, obj);
 
     obj._e_event3 = obj.rclJogadores:addEventListener("onEndEnumeration",
-        function (self)
+        function (_)
             if self.rclJogadores.selectedNode == nil and sheet ~= nil then
             					        local nodes = ndb.getChildNodes(sheet.jogadores);               
             
@@ -295,6 +296,6 @@ local _frmGerenciador01 = {
     description=""};
 
 frmGerenciador01 = _frmGerenciador01;
-rrpg.registrarForm(_frmGerenciador01);
+Firecast.registrarForm(_frmGerenciador01);
 
 return _frmGerenciador01;

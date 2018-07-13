@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmTableDockItem()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -40,7 +41,7 @@ function newfrmTableDockItem()
 			self.cbxAtivar.checked = sheet.ativo;
 			ignorarMudancaCount = ignorarMudancaCount - 1;
 		end;
-		
+				
 		local function inverterEstadoPorClick()
 			if ignorarMudancaCount <= 0 then			
 				ignorarMudancaCount = ignorarMudancaCount + 1;
@@ -60,7 +61,7 @@ function newfrmTableDockItem()
 					end;
 				else
 					if self.frmKG == nil then
-						self.frmKG = gui.newForm("frmKnowGold");
+						self.frmKG = GUI.newForm("frmKnowGold");
 						self.frmKG.width = 300;
 						self.frmKG.height = 300;
 						self.frmKG:setInfo("Janelas Acopláveis é um recurso exclusivo para usuários assinantes do RRPG Gold.\nVocê também poderá utilizar as janelas acopláveis se o dono da mesa for Gold Plus =)");
@@ -84,15 +85,14 @@ function newfrmTableDockItem()
 		
 		local function doLimparDados()
 			local m = self.mesa;
-			local dt = sheet.dataType;
 		
-			dialogs.confirmYesNo("Deseja realmente limpar os dados desta janela acoplável?",
+			Dialogs.confirmYesNo("Deseja realmente limpar os dados desta janela acoplável?",
 				function(confirmado)
 					if confirmado then
 							m:abrirNDBDeMesa(sheet.dataType, 
 								function(root)																	
 									if root ~= nil then
-										ndb.clearNode(root);
+										NDB.clearNode(root);
 									end;	
 								end);
 					end;
@@ -110,28 +110,28 @@ function newfrmTableDockItem()
 			m:abrirNDBDeMesa(sheet.dataType, 
 				function(root)																	
 					if root ~= nil then
-						ndb.editPermissions(root);
+						NDB.editPermissions(root);
 					end;	
 				end);
 		end;		
 	
 
 
-    obj.cbxAtivar = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.cbxAtivar = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.cbxAtivar:setParent(obj);
     obj.cbxAtivar:setName("cbxAtivar");
     obj.cbxAtivar:setText("");
     obj.cbxAtivar:setAlign("left");
     obj.cbxAtivar:setWidth(28);
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
     obj.label1:setAlign("client");
     obj.label1:setField("title");
     obj.label1:setHitTest(true);
     obj.label1:setName("label1");
 
-    obj.btnLimparDados = gui.fromHandle(_obj_newObject("button"));
+    obj.btnLimparDados = GUI.fromHandle(_obj_newObject("button"));
     obj.btnLimparDados:setParent(obj);
     obj.btnLimparDados:setName("btnLimparDados");
     obj.btnLimparDados:setText("Limpar Dados");
@@ -141,7 +141,7 @@ function newfrmTableDockItem()
     obj.btnLimparDados:setTextTrimming("none");
     obj.btnLimparDados:setMargins({top=1,bottom=1,left=1, right=1});
 
-    obj.btnEditPermissions = gui.fromHandle(_obj_newObject("button"));
+    obj.btnEditPermissions = GUI.fromHandle(_obj_newObject("button"));
     obj.btnEditPermissions:setParent(obj);
     obj.btnEditPermissions:setName("btnEditPermissions");
     obj.btnEditPermissions:setHint("Editar Permissões...");
@@ -151,56 +151,56 @@ function newfrmTableDockItem()
     obj.btnEditPermissions:setTextTrimming("none");
     obj.btnEditPermissions:setMargins({top=1,bottom=1,left=1, right=1});
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.btnEditPermissions);
     obj.image1:setAlign("client");
     obj.image1:setSRC("/GerTablesDock/security.png");
     obj.image1:setName("image1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("ativo");
     obj.dataLink1:setName("dataLink1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj);
     obj.dataLink2:setField("dataType");
     obj.dataLink2:setName("dataLink2");
 
     obj._e_event0 = obj:addEventListener("onScopeNodeChanged",
-        function (self)
+        function (_)
             if sheet ~= nil then
             			doAtualizarEstadoBtnLimpar();
             		end;
         end, obj);
 
     obj._e_event1 = obj.cbxAtivar:addEventListener("onChange",
-        function (self)
+        function (_)
             inverterEstadoPorClick()
         end, obj);
 
     obj._e_event2 = obj.label1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.cbxAtivar.checked = not self.cbxAtivar.checked
         end, obj);
 
     obj._e_event3 = obj.btnLimparDados:addEventListener("onClick",
-        function (self)
+        function (_)
             doLimparDados()
         end, obj);
 
     obj._e_event4 = obj.btnEditPermissions:addEventListener("onClick",
-        function (self)
+        function (_)
             doEditPermissions()
         end, obj);
 
     obj._e_event5 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             doAtivoMudou();
         end, obj);
 
     obj._e_event6 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             doAtualizarEstadoBtnLimpar()
         end, obj);
 
@@ -251,6 +251,6 @@ local _frmTableDockItem = {
     description=""};
 
 frmTableDockItem = _frmTableDockItem;
-rrpg.registrarForm(_frmTableDockItem);
+Firecast.registrarForm(_frmTableDockItem);
 
 return _frmTableDockItem;

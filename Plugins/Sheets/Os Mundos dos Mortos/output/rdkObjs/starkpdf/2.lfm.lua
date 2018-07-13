@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmstarkpdf2_svg()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,19 +32,19 @@ function newfrmstarkpdf2_svg()
     obj:setTheme("light");
     obj:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setWidth(893);
     obj.rectangle1:setHeight(1191);
     obj.rectangle1:setColor("white");
     obj.rectangle1:setName("rectangle1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.rectangle1);
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
@@ -54,7 +55,7 @@ function newfrmstarkpdf2_svg()
     obj.image1:setOptimize(true);
     obj.image1:setName("image1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.rectangle1);
     obj.layout1:setLeft(255);
     obj.layout1:setTop(227);
@@ -62,7 +63,7 @@ function newfrmstarkpdf2_svg()
     obj.layout1:setHeight(171);
     obj.layout1:setName("layout1");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout1);
     obj.textEditor1:setLeft(0);
     obj.textEditor1:setTop(0);
@@ -74,7 +75,7 @@ function newfrmstarkpdf2_svg()
     obj.textEditor1:setTransparent(true);
     obj.textEditor1:setName("textEditor1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.rectangle1);
     obj.layout2:setLeft(47);
     obj.layout2:setTop(224);
@@ -82,7 +83,7 @@ function newfrmstarkpdf2_svg()
     obj.layout2:setHeight(175);
     obj.layout2:setName("layout2");
 
-    obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.layout2);
     obj.textEditor2:setLeft(0);
     obj.textEditor2:setTop(0);
@@ -94,7 +95,7 @@ function newfrmstarkpdf2_svg()
     obj.textEditor2:setTransparent(true);
     obj.textEditor2:setName("textEditor2");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.rectangle1);
     obj.layout3:setLeft(456);
     obj.layout3:setTop(228);
@@ -102,7 +103,7 @@ function newfrmstarkpdf2_svg()
     obj.layout3:setHeight(171);
     obj.layout3:setName("layout3");
 
-    obj.textEditor3 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor3:setParent(obj.layout3);
     obj.textEditor3:setLeft(0);
     obj.textEditor3:setTop(0);
@@ -114,7 +115,7 @@ function newfrmstarkpdf2_svg()
     obj.textEditor3:setTransparent(true);
     obj.textEditor3:setName("textEditor3");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.rectangle1);
     obj.layout4:setLeft(663);
     obj.layout4:setTop(229);
@@ -122,7 +123,7 @@ function newfrmstarkpdf2_svg()
     obj.layout4:setHeight(170);
     obj.layout4:setName("layout4");
 
-    obj.textEditor4 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor4:setParent(obj.layout4);
     obj.textEditor4:setLeft(0);
     obj.textEditor4:setTop(0);
@@ -134,7 +135,7 @@ function newfrmstarkpdf2_svg()
     obj.textEditor4:setTransparent(true);
     obj.textEditor4:setName("textEditor4");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.rectangle1);
     obj.layout5:setLeft(40);
     obj.layout5:setTop(533);
@@ -142,7 +143,7 @@ function newfrmstarkpdf2_svg()
     obj.layout5:setHeight(83);
     obj.layout5:setName("layout5");
 
-    obj.textEditor5 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor5:setParent(obj.layout5);
     obj.textEditor5:setLeft(0);
     obj.textEditor5:setTop(0);
@@ -154,7 +155,7 @@ function newfrmstarkpdf2_svg()
     obj.textEditor5:setTransparent(true);
     obj.textEditor5:setName("textEditor5");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.rectangle1);
     obj.layout6:setLeft(43);
     obj.layout6:setTop(692);
@@ -162,7 +163,7 @@ function newfrmstarkpdf2_svg()
     obj.layout6:setHeight(81);
     obj.layout6:setName("layout6");
 
-    obj.textEditor6 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor6 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor6:setParent(obj.layout6);
     obj.textEditor6:setLeft(0);
     obj.textEditor6:setTop(0);
@@ -174,7 +175,7 @@ function newfrmstarkpdf2_svg()
     obj.textEditor6:setTransparent(true);
     obj.textEditor6:setName("textEditor6");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.rectangle1);
     obj.layout7:setLeft(42);
     obj.layout7:setTop(850);
@@ -182,7 +183,7 @@ function newfrmstarkpdf2_svg()
     obj.layout7:setHeight(82);
     obj.layout7:setName("layout7");
 
-    obj.textEditor7 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor7 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor7:setParent(obj.layout7);
     obj.textEditor7:setLeft(0);
     obj.textEditor7:setTop(0);
@@ -194,7 +195,7 @@ function newfrmstarkpdf2_svg()
     obj.textEditor7:setTransparent(true);
     obj.textEditor7:setName("textEditor7");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.rectangle1);
     obj.layout8:setLeft(47);
     obj.layout8:setTop(1018);
@@ -202,7 +203,7 @@ function newfrmstarkpdf2_svg()
     obj.layout8:setHeight(86);
     obj.layout8:setName("layout8");
 
-    obj.textEditor8 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor8 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor8:setParent(obj.layout8);
     obj.textEditor8:setLeft(0);
     obj.textEditor8:setTop(0);
@@ -214,7 +215,7 @@ function newfrmstarkpdf2_svg()
     obj.textEditor8:setTransparent(true);
     obj.textEditor8:setName("textEditor8");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.rectangle1);
     obj.layout9:setLeft(265);
     obj.layout9:setTop(1141);
@@ -222,7 +223,7 @@ function newfrmstarkpdf2_svg()
     obj.layout9:setHeight(23);
     obj.layout9:setName("layout9");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout9);
     obj.edit1:setTransparent(true);
     obj.edit1:setFontSize(14.2);
@@ -290,6 +291,6 @@ local _frmstarkpdf2_svg = {
     description=""};
 
 frmstarkpdf2_svg = _frmstarkpdf2_svg;
-rrpg.registrarForm(_frmstarkpdf2_svg);
+Firecast.registrarForm(_frmstarkpdf2_svg);
 
 return _frmstarkpdf2_svg;

@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmGraphicItemMenu()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -47,7 +48,7 @@ function newfrmGraphicItemMenu()
 				rectAsClient = true;
 			end;
 		
-			local fPart = gui.newFlowPart();
+			local fPart = GUI.newFlowPart();
 			fPart.minWidth = 10;
 			fPart.maxWidth = 1000;
 			fPart.parent = flowLayout;
@@ -57,7 +58,7 @@ function newfrmGraphicItemMenu()
 			local fRect = nil;
 			
 			if rectAsClient then
-				fRect = gui.newRectangle();
+				fRect = GUI.newRectangle();
 				fRect.align = "client";
 				fRect.parent = fPart;
 				fRect.color = item.backColor;
@@ -68,13 +69,13 @@ function newfrmGraphicItemMenu()
 				item.client = fPart;
 			end;
 						
-			local fHorzLine = gui.newHorzLine();
+			local fHorzLine = GUI.newHorzLine();
 			fHorzLine.strokeColor = "gray";
 			fHorzLine.align = "bottom";
 			fHorzLine.parent = fPart;
 			item.horzLine = fHorzLine;
 			
-			local fBreakLine = gui.newFlowLineBreak();
+			local fBreakLine = GUI.newFlowLineBreak();
 			fBreakLine.parent = flowLayout;
 			item.breakLine = fBreakLine;
 			
@@ -109,7 +110,7 @@ function newfrmGraphicItemMenu()
 			local fPart = item.flowPart;
 			fPart.height = 8;
 			
-			local fHorzLineSep = gui.newHorzLine();
+			local fHorzLineSep = GUI.newHorzLine();
 			fHorzLineSep.strokeColor = "gray";
 			fHorzLineSep.strokeSize = 3;
 			fHorzLineSep.align = "top";
@@ -123,15 +124,17 @@ function newfrmGraphicItemMenu()
 			
 			return fPart, item;
 		end;
+		
+		self.newMenuSeparatorItem = newMenuSeparatorItem;
 				
 		local function newMenuItem(caption, flowLayout, onClick)
 			local item = newBaseMenuItem(flowLayout);
 			item.isHover = false;
 		
-			local fPart = item.flowPart;			
+			--local fPart = item.flowPart;			
 			local fRect = item.client;
 			
-			local fLabel = gui.newLabel();
+			local fLabel = GUI.newLabel();
 			fLabel.align = "client";
 			fLabel.parent = fRect;
 			fLabel.hitTest = true;
@@ -156,7 +159,9 @@ function newfrmGraphicItemMenu()
 			return fLabel, item;
 		end;
 		
+		self.newMenuItem = newMenuItem;
 		
+	
 		local function newMultiActionMenuItem(caption, flowLayout, maxActPorLinha)
 			local item = newBaseMenuItem(flowLayout, false);
 			item.isHover = false;
@@ -167,7 +172,7 @@ function newfrmGraphicItemMenu()
 			local fClient = item.client;
 			fPart.height = fPart.height + 5;
 			
-			local fLabel = gui.newLabel();
+			local fLabel = GUI.newLabel();
 			fLabel.align = "client";
 			fLabel.width = 1;
 			fLabel.wordWrap = false;
@@ -187,7 +192,9 @@ function newfrmGraphicItemMenu()
 			local ACTION_MARGIN = 2;
 			local ALTURA_MINIMA = fPart.height; 
 			
-			local fFlowActions = gui.newFlowLayout();
+			self.ALTURA_MINIMA = ALTURA_MINIMA;
+			
+			local fFlowActions = GUI.newFlowLayout();
 			fFlowActions.orientation = "horizontal";
 			
 			if caption ~= "" then
@@ -212,7 +219,7 @@ function newfrmGraphicItemMenu()
 				action.defaultBackCheckedColor = item.defaultBackCheckedColor;
 				action.defaultHoverkCheckedColor = item.defaultHoverkCheckedColor;				
 				
-				local fRect = gui.newRectangle();
+				local fRect = GUI.newRectangle();
 				fRect.parent = fFlowActions;
 				fRect.width = ACTION_WIDTH;
 				fRect.height = ACTION_HEIGHT;				
@@ -222,7 +229,7 @@ function newfrmGraphicItemMenu()
 				action.rect = fRect;
 				action.client = fRect;				
 				
-				local fImg = gui.newImage();								
+				local fImg = GUI.newImage();								
 				fImg.hitTest = true;
 				fImg.cursor = "handPoint";
 				fImg.align = "client";
@@ -242,7 +249,7 @@ function newfrmGraphicItemMenu()
 					action.isHover = false;
 				end;			
 								
-				function action:setColor(backColor, hoverColor)
+				function action.setColor(actionSelf, backColor, hoverColor)
 					action.backColor = backColor or action.defaultBackColor;
 					action.hoverColor = hoverColor or action.defaultHoverColor;
 					
@@ -253,7 +260,7 @@ function newfrmGraphicItemMenu()
 					end;
 				end;
 				
-				function action:setChecked(value)
+				function action.setChecked(actionSelf, value)
 					if value then
 						action:setColor(action.defaultBackCheckedColor, action.defaultHoverCheckedColor);
 					else
@@ -274,10 +281,10 @@ function newfrmGraphicItemMenu()
 				return action, fImg;
 			end;
 			
-			function item:addCheckBoxAction(imageURL, hint)
+			function item.addCheckBoxAction(itemSelf, imageURL, hint)
 				local action, fImg = item:addActionBase(imageURL, hint);
 				
-				local fImgCheckbox = gui.newImage();
+				local fImgCheckbox = GUI.newImage();
 				
 				local fPai = fImg.parent;
 				
@@ -301,10 +308,10 @@ function newfrmGraphicItemMenu()
 				return fImg, action;
 			end;
 			
-			function item:addRadioButtonAction(imageURL, hint)
+			function item.addRadioButtonAction(itemSelf, imageURL, hint)
 				local action, fImg = item:addActionBase(imageURL, hint);
 				
-				local fImgRadio = gui.newImage();
+				local fImgRadio = GUI.newImage();
 				
 				local fPai = fImg.parent;
 				
@@ -336,6 +343,8 @@ function newfrmGraphicItemMenu()
 			
 			return item;
 		end;		
+		
+		self.newMultiActionMenuItem = newMultiActionMenuItem;
 	
 
 
@@ -373,19 +382,19 @@ function newfrmGraphicItemMenu()
 	
 
 
-    obj.flaLayout = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flaLayout = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flaLayout:setParent(obj);
     obj.flaLayout:setName("flaLayout");
     obj.flaLayout:setAlign("top");
     obj.flaLayout:setAutoHeight(true);
 
-    obj.flaCamadas = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flaCamadas = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flaCamadas:setParent(obj);
     obj.flaCamadas:setName("flaCamadas");
     obj.flaCamadas:setAlign("top");
     obj.flaCamadas:setAutoHeight(true);
 
-    obj.flaImageOptions = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flaImageOptions = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flaImageOptions:setParent(obj);
     obj.flaImageOptions:setName("flaImageOptions");
     obj.flaImageOptions:setAlign("top");
@@ -473,7 +482,7 @@ function newfrmGraphicItemMenu()
 								
 								self:close();
 								
-								dialogs.confirmYesNo(msg, 
+								Dialogs.confirmYesNo(msg, 
 									function(confirmado)
 										if confirmado then
 											SC3UNDO_Capture(theScene, 
@@ -507,7 +516,10 @@ function newfrmGraphicItemMenu()
 			
 			for k, v in pairs(selection) do
 				firstItem = v;
-				break;
+				
+				if firstItem ~= nil then
+					break;
+				end;
 			end;
 			
 			if firstItem ~= nil then
@@ -529,7 +541,7 @@ function newfrmGraphicItemMenu()
 			self:setActiveMenu(self.flaLayout);		
 			theSelection = selection;
 			
-			local estaVisible = true;
+			local estaVisible;
 			
 			if #theSelection > 0 then
 				local umDrawing = theSelection[1];
@@ -560,7 +572,7 @@ function newfrmGraphicItemMenu()
 
 
     obj._e_event0 = obj:addEventListener("onKeyUp",
-        function (self, event)
+        function (_, event)
             if (event.keyCode == 0x89) or (event.keyCode == 0x1B) then
             			setTimeout(
             				function()
@@ -573,7 +585,7 @@ function newfrmGraphicItemMenu()
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onHide",
-        function (self)
+        function (_)
             theSelection = nil;
         end, obj);
 
@@ -615,6 +627,6 @@ local _frmGraphicItemMenu = {
     description=""};
 
 frmGraphicItemMenu = _frmGraphicItemMenu;
-rrpg.registrarForm(_frmGraphicItemMenu);
+Firecast.registrarForm(_frmGraphicItemMenu);
 
 return _frmGraphicItemMenu;

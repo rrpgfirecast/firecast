@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmTemplate()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -121,82 +122,82 @@ function newfrmTemplate()
         
 
 
-    obj.scope = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.scope = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.scope:setParent(obj);
     obj.scope:setName("scope");
     obj.scope:setAlign("client");
 
-    obj.tabControl1 = gui.fromHandle(_obj_newObject("tabControl"));
+    obj.tabControl1 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl1:setParent(obj.scope);
     obj.tabControl1:setAlign("client");
     obj.tabControl1:setName("tabControl1");
 
-    obj.tab1 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab1 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab1:setParent(obj.tabControl1);
     obj.tab1:setTitle("Instalado");
     obj.tab1:setName("tab1");
 
-    obj.frmInstalled = gui.fromHandle(_obj_newObject("form"));
+    obj.frmInstalled = GUI.fromHandle(_obj_newObject("form"));
     obj.frmInstalled:setParent(obj.tab1);
     obj.frmInstalled:setName("frmInstalled");
     obj.frmInstalled:setAlign("client");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj.frmInstalled);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.installedPluginsList = gui.fromHandle(_obj_newObject("recordList"));
+    obj.installedPluginsList = GUI.fromHandle(_obj_newObject("recordList"));
     obj.installedPluginsList:setParent(obj.scrollBox1);
     obj.installedPluginsList:setAlign("client");
     obj.installedPluginsList:setField("installedPluginsList");
     obj.installedPluginsList:setName("installedPluginsList");
     obj.installedPluginsList:setTemplateForm("frmInstalledPlugin");
 
-    obj.tab2 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.tabControl1);
     obj.tab2:setTitle("Disponível");
     obj.tab2:setName("tab2");
 
-    obj.frmAvailable = gui.fromHandle(_obj_newObject("form"));
+    obj.frmAvailable = GUI.fromHandle(_obj_newObject("form"));
     obj.frmAvailable:setParent(obj.tab2);
     obj.frmAvailable:setName("frmAvailable");
     obj.frmAvailable:setAlign("client");
 
-    obj.scrollBox2 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox2:setParent(obj.frmAvailable);
     obj.scrollBox2:setAlign("client");
     obj.scrollBox2:setName("scrollBox2");
 
-    obj.downloadedPluginsList = gui.fromHandle(_obj_newObject("recordList"));
+    obj.downloadedPluginsList = GUI.fromHandle(_obj_newObject("recordList"));
     obj.downloadedPluginsList:setParent(obj.scrollBox2);
     obj.downloadedPluginsList:setAlign("client");
     obj.downloadedPluginsList:setField("downloadedPluginsList");
     obj.downloadedPluginsList:setName("downloadedPluginsList");
     obj.downloadedPluginsList:setTemplateForm("frmDownloadedPlugin");
 
-    obj.tab3 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab3 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab3:setParent(obj.tabControl1);
     obj.tab3:setTitle("Creditos");
     obj.tab3:setName("tab3");
 
-    obj.frmTemplateCreditos = gui.fromHandle(_obj_newObject("form"));
+    obj.frmTemplateCreditos = GUI.fromHandle(_obj_newObject("form"));
     obj.frmTemplateCreditos:setParent(obj.tab3);
     obj.frmTemplateCreditos:setName("frmTemplateCreditos");
     obj.frmTemplateCreditos:setAlign("client");
 
-    obj.scrollBox3 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox3 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox3:setParent(obj.frmTemplateCreditos);
     obj.scrollBox3:setAlign("client");
     obj.scrollBox3:setName("scrollBox3");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox3);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.scrollBox3);
     obj.label1:setLeft(5);
     obj.label1:setTop(10);
@@ -205,7 +206,7 @@ function newfrmTemplate()
     obj.label1:setText("Feito por: Vinny (Ambesek)");
     obj.label1:setName("label1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.scrollBox3);
     obj.label2:setLeft(5);
     obj.label2:setTop(35);
@@ -216,7 +217,7 @@ function newfrmTemplate()
     obj.label2:setField("versionInstalled");
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.scrollBox3);
     obj.label3:setLeft(5);
     obj.label3:setTop(60);
@@ -227,7 +228,7 @@ function newfrmTemplate()
     obj.label3:setField("versionDownloaded");
     obj.label3:setName("label3");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.scrollBox3);
     obj.checkBox1:setLeft(5);
     obj.checkBox1:setTop(85);
@@ -237,7 +238,7 @@ function newfrmTemplate()
     obj.checkBox1:setText("Não pedir para atualizar.");
     obj.checkBox1:setName("checkBox1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox3);
     obj.button1:setLeft(5);
     obj.button1:setTop(110);
@@ -245,7 +246,7 @@ function newfrmTemplate()
     obj.button1:setText("Change Log");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.scrollBox3);
     obj.button2:setLeft(5);
     obj.button2:setTop(135);
@@ -253,7 +254,7 @@ function newfrmTemplate()
     obj.button2:setText("Atualizar");
     obj.button2:setName("button2");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.scrollBox3);
     obj.label4:setLeft(5);
     obj.label4:setTop(160);
@@ -262,7 +263,7 @@ function newfrmTemplate()
     obj.label4:setText("Conheça a Mesa:");
     obj.label4:setName("label4");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.scrollBox3);
     obj.button3:setLeft(5);
     obj.button3:setTop(185);
@@ -271,7 +272,7 @@ function newfrmTemplate()
     obj.button3:setName("button3");
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
-        function (self)
+        function (_)
             -- Carrega o local sheet para ser usado. 
                     updaterSheet = ndb.load("sheet.xml");
                     self.scope:setNodeObject(updaterSheet);
@@ -355,7 +356,7 @@ function newfrmTemplate()
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onNodeReady",
-        function (self)
+        function (_)
             internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true",
                         function(stream, contentType)
                             local info = rrpg.plugins.getRPKDetails(stream);
@@ -397,7 +398,7 @@ function newfrmTemplate()
         end, obj);
 
     obj._e_event2 = obj.installedPluginsList:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             if nodeA.enabled and nodeB.enabled then 
             					return utils.compareStringPtBr(nodeA.name, nodeB.name);
             				elseif nodeA.enabled then
@@ -408,7 +409,7 @@ function newfrmTemplate()
         end, obj);
 
     obj._e_event3 = obj.downloadedPluginsList:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             if nodeA.enabled and nodeB.enabled then 
             					return utils.compareStringPtBr(nodeA.name, nodeB.name);
             				elseif nodeA.enabled then
@@ -419,12 +420,12 @@ function newfrmTemplate()
         end, obj);
 
     obj._e_event4 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/README.md')
         end, obj);
 
     obj._e_event5 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             local install = rrpg.plugins.installPlugin(updaterSheet.stream, true);
                             if install==false then
                                 gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true');
@@ -432,12 +433,12 @@ function newfrmTemplate()
         end, obj);
 
     obj._e_event6 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true')
         end, obj);
 
     obj._e_event7 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
@@ -504,8 +505,8 @@ local _frmTemplate = {
     description=""};
 
 frmTemplate = _frmTemplate;
-rrpg.registrarForm(_frmTemplate);
-rrpg.registrarDataType(_frmTemplate);
-rrpg.registrarSpecialForm(_frmTemplate);
+Firecast.registrarForm(_frmTemplate);
+Firecast.registrarDataType(_frmTemplate);
+Firecast.registrarSpecialForm(_frmTemplate);
 
 return _frmTemplate;

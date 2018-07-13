@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmFichaRPGmeister11_svg()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,12 +31,12 @@ function newfrmFichaRPGmeister11_svg()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.scrollBox1);
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
@@ -46,7 +47,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.image1:setOptimize(true);
     obj.image1:setName("image1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(620);
     obj.layout1:setTop(10);
@@ -54,7 +55,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.layout1:setHeight(220);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
@@ -63,7 +64,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.rectangle1:setCornerType("round");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(0);
     obj.label1:setTop(10);
@@ -73,7 +74,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout1);
     obj.label2:setLeft(0);
     obj.label2:setTop(35);
@@ -83,7 +84,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout1);
     obj.label3:setLeft(0);
     obj.label3:setTop(65);
@@ -93,7 +94,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout1);
     obj.label4:setLeft(0);
     obj.label4:setTop(90);
@@ -103,7 +104,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout1);
     obj.label5:setLeft(0);
     obj.label5:setTop(115);
@@ -113,7 +114,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout1);
     obj.label6:setLeft(0);
     obj.label6:setTop(140);
@@ -123,7 +124,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout1);
     obj.label7:setLeft(0);
     obj.label7:setTop(170);
@@ -133,7 +134,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.label7:setHorzTextAlign("center");
     obj.label7:setName("label7");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout1);
     obj.label8:setLeft(0);
     obj.label8:setTop(195);
@@ -143,7 +144,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.label8:setHorzTextAlign("center");
     obj.label8:setName("label8");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.scrollBox1);
     obj.layout2:setLeft(830);
     obj.layout2:setTop(0);
@@ -151,13 +152,13 @@ function newfrmFichaRPGmeister11_svg()
     obj.layout2:setHeight(350);
     obj.layout2:setName("layout2");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout2);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("black");
     obj.rectangle2:setName("rectangle2");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout2);
     obj.label9:setLeft(0);
     obj.label9:setTop(0);
@@ -167,7 +168,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.label9:setHorzTextAlign("center");
     obj.label9:setName("label9");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout2);
     obj.textEditor1:setLeft(10);
     obj.textEditor1:setTop(25);
@@ -176,7 +177,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.textEditor1:setField("anotacoes_do_mestre");
     obj.textEditor1:setName("textEditor1");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.scrollBox1);
     obj.label10:setLeft(630);
     obj.label10:setTop(400);
@@ -186,7 +187,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.label10:setField("versionInstalled");
     obj.label10:setName("label10");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.scrollBox1);
     obj.label11:setLeft(630);
     obj.label11:setTop(430);
@@ -196,7 +197,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.label11:setField("versionDownloaded");
     obj.label11:setName("label11");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
     obj.button1:setLeft(620);
     obj.button1:setTop(475);
@@ -204,7 +205,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.button1:setText("Change Log");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.scrollBox1);
     obj.button2:setLeft(730);
     obj.button2:setTop(475);
@@ -212,7 +213,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.button2:setText("Atualizar");
     obj.button2:setName("button2");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.scrollBox1);
     obj.button3:setLeft(840);
     obj.button3:setTop(475);
@@ -220,7 +221,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.button3:setText("Tutorial");
     obj.button3:setName("button3");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.scrollBox1);
     obj.label12:setLeft(620);
     obj.label12:setTop(525);
@@ -230,7 +231,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.label12:setFontSize(11);
     obj.label12:setName("label12");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.scrollBox1);
     obj.button4:setLeft(730);
     obj.button4:setTop(525);
@@ -238,7 +239,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.button4:setText("RPGmeister");
     obj.button4:setName("button4");
 
-    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
     obj.button5:setParent(obj.scrollBox1);
     obj.button5:setLeft(840);
     obj.button5:setTop(525);
@@ -247,7 +248,7 @@ function newfrmFichaRPGmeister11_svg()
     obj.button5:setText("Exportar Ficha");
     obj.button5:setName("button5");
 
-    obj.button6 = gui.fromHandle(_obj_newObject("button"));
+    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
     obj.button6:setParent(obj.scrollBox1);
     obj.button6:setLeft(950);
     obj.button6:setTop(525);
@@ -257,27 +258,27 @@ function newfrmFichaRPGmeister11_svg()
     obj.button6:setName("button6");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/README.md')
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/__Tutorial/Ficha%20RPG%20meister%20-%20Tutorial.docx?raw=true')
         end, obj);
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     obj._e_event4 = obj.button5:addEventListener("onClick",
-        function (self)
+        function (_)
             local export = ndb.load("export.xml");
             				export.clone = sheet;
             
@@ -295,7 +296,7 @@ function newfrmFichaRPGmeister11_svg()
         end, obj);
 
     obj._e_event5 = obj.button6:addEventListener("onClick",
-        function (self)
+        function (_)
             Dialogs.openFile("Importar Ficha", "application/xml", false, 
             					function(arquivos)
             						local arq = arquivos[1];
@@ -410,6 +411,6 @@ local _frmFichaRPGmeister11_svg = {
     description=""};
 
 frmFichaRPGmeister11_svg = _frmFichaRPGmeister11_svg;
-rrpg.registrarForm(_frmFichaRPGmeister11_svg);
+Firecast.registrarForm(_frmFichaRPGmeister11_svg);
 
 return _frmFichaRPGmeister11_svg;

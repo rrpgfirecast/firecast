@@ -5,7 +5,6 @@ local MAX_CHAVES = (ARV_GRAU * 2) - 1;
 local MAX_FILHOS = (ARV_GRAU * 2);
 
 local MIN_CHAVES = ARV_GRAU - 1;
-local MIN_FILHOS = ARV_GRAU;
 
 
 -- Funções privadas
@@ -35,7 +34,7 @@ end;
 
 
 function BTreeIN:innerLocalizarForInsert(paginaOrigem, chaveALocalizar)
-	local ind, comp, pOrg, min, max, meio;
+	local comp, pOrg, min, max, meio;
 	
 	pOrg = paginaOrigem;
 	
@@ -228,7 +227,7 @@ function BTreeIN:innerFindHighest(pagina)
 	end;
 end;
 
-function BTreeIN:destruirPagina(pagina)
+function BTreeIN:destruirPagina(_)
 	-- faz nada
 end;
 
@@ -434,7 +433,7 @@ function BTreeIN:innerDeletePucharDeCima(pagina, indice)
 			
 			pagina_setCountChaves(oPai, oPai.countChaves - 1);
 		else
-			local novoIndiceNoPai;
+			--local novoIndiceNoPai;
 			--oPai, novoIndiceNoPai = self:innerDeletePucharDeCima(oPai, pagina.indiceNoPai);
 			--pagina.indiceNoPai = novoIndiceNoPai;
 			self:innerDeletePucharDeCima(oPai, pagina.indiceNoPai);
@@ -444,7 +443,7 @@ function BTreeIN:innerDeletePucharDeCima(pagina, indice)
 				pagina.pai = nil;
 				pagina.indiceNoPai = 1;
 				self:destruirPagina(oPai);
-				oPai = nil;
+				--oPai = nil;
 			end;
 		end;
 		
@@ -534,7 +533,8 @@ function BTreeIN:innerDeletePucharDeCima(pagina, indice)
 			pagina_setCountChaves(oPai, oPai.countChaves - 1);
 		else
 			indiceTemp = pagina.indiceNoPai - 1;
-			oPai, indiceTemp = self:innerDeletePucharDeCima(oPai, indiceTemp);
+			--oPai, indiceTemp = self:innerDeletePucharDeCima(oPai, indiceTemp);
+			oPai = self:innerDeletePucharDeCima(oPai, indiceTemp);
 			
 			if oPai.countChaves == 0 then
 				self.raiz = pagina;
@@ -559,7 +559,7 @@ end;
 
 function BTreeIN:innerDelete(pagina, indiceEspaco)
 	local oPai, filhoEsq, filhoDir;
-	local pagToDelete = nil;
+	local pagToDelete;
 	local indiceToDelete;
 	
 	oPai = pagina.pai;
@@ -570,7 +570,8 @@ function BTreeIN:innerDelete(pagina, indiceEspaco)
 		if (oPai ~= nil) and (pagina.countChaves <= MIN_CHAVES) then
 			-- Não é root e vai atingir limite minimo
 			indiceToDelete = indiceEspaco;
-			pagina, indiceToDelete = self:innerDeletePucharDeCima(pagina, indiceToDelete)
+			--pagina, indiceToDelete = self:innerDeletePucharDeCima(pagina, indiceToDelete)
+			self:innerDeletePucharDeCima(pagina, indiceToDelete)
 		else			
 			for i = indiceEspaco, pagina.countChaves - 1, 1 do
 				pagina.chaves[i].valorChave = pagina.chaves[i + 1].valorChave;
@@ -615,7 +616,8 @@ function BTreeIN:innerDelete(pagina, indiceEspaco)
 end;	
 	
 function BTreeIN:checarPagina(p, min, max)
-	local vMin , vMax, last = nil, nil, nil;
+	local vMin , vMax;
+	local last = nil;
 	
 	for i = 1, p.countChaves, 1 do
 		if (min ~= nil) and (self.comparer(p.chaves[i].valorChave, min) < 0) then
@@ -670,9 +672,8 @@ function BTreeIN:validate(errPrefix)
 end;				
 
 
-function BTreeIN:createNavigator()
+function BTreeIN.createNavigator(bt)
 	local nav = {};
-	local bt = self;
 	
 	local fPaginaAtual = nil;
 	local fIndiceAtual = -1;

@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmGerenciador01_Sessao()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,7 +32,7 @@ function newfrmGerenciador01_Sessao()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
@@ -40,7 +41,7 @@ function newfrmGerenciador01_Sessao()
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setLeft(5);
     obj.edit1:setTop(5);
@@ -50,7 +51,7 @@ function newfrmGerenciador01_Sessao()
     obj.edit1:setType("number");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.rectangle1);
     obj.edit2:setLeft(35);
     obj.edit2:setTop(5);
@@ -59,7 +60,7 @@ function newfrmGerenciador01_Sessao()
     obj.edit2:setField("data");
     obj.edit2:setName("edit2");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(115);
     obj.button1:setTop(5);
@@ -69,7 +70,7 @@ function newfrmGerenciador01_Sessao()
     obj.button1:setHint("Abrir Log");
     obj.button1:setName("button1");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.rectangle1);
     obj.edit3:setLeft(165);
     obj.edit3:setTop(5);
@@ -78,7 +79,7 @@ function newfrmGerenciador01_Sessao()
     obj.edit3:setField("log");
     obj.edit3:setName("edit3");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.rectangle1);
     obj.button2:setLeft(265);
     obj.button2:setTop(5);
@@ -88,12 +89,12 @@ function newfrmGerenciador01_Sessao()
     obj.button2:setName("button2");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser(sheet.log);
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar essa sessao?",
             					function (confirmado)
             						if confirmado then
@@ -143,6 +144,6 @@ local _frmGerenciador01_Sessao = {
     description=""};
 
 frmGerenciador01_Sessao = _frmGerenciador01_Sessao;
-rrpg.registrarForm(_frmGerenciador01_Sessao);
+Firecast.registrarForm(_frmGerenciador01_Sessao);
 
 return _frmGerenciador01_Sessao;

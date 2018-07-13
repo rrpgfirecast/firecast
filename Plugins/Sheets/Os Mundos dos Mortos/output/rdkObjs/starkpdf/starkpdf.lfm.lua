@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmstarkpdf()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -33,36 +34,36 @@ function newfrmstarkpdf()
     obj:setAlign("client");
     obj:setTheme("light");
 
-    obj.tabControl1 = gui.fromHandle(_obj_newObject("tabControl"));
+    obj.tabControl1 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl1:setParent(obj);
     obj.tabControl1:setAlign("client");
     obj.tabControl1:setName("tabControl1");
 
-    obj.tab1 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab1 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab1:setParent(obj.tabControl1);
     obj.tab1:setTitle("Frente");
     obj.tab1:setName("tab1");
 
-    obj.frmstarkpdf1_svg = gui.fromHandle(_obj_newObject("form"));
+    obj.frmstarkpdf1_svg = GUI.fromHandle(_obj_newObject("form"));
     obj.frmstarkpdf1_svg:setParent(obj.tab1);
     obj.frmstarkpdf1_svg:setName("frmstarkpdf1_svg");
     obj.frmstarkpdf1_svg:setAlign("client");
     obj.frmstarkpdf1_svg:setTheme("light");
     obj.frmstarkpdf1_svg:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj.frmstarkpdf1_svg);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setWidth(893);
     obj.rectangle1:setHeight(1191);
     obj.rectangle1:setColor("white");
     obj.rectangle1:setName("rectangle1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.rectangle1);
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
@@ -73,7 +74,7 @@ function newfrmstarkpdf()
     obj.image1:setOptimize(true);
     obj.image1:setName("image1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.rectangle1);
     obj.layout1:setLeft(125);
     obj.layout1:setTop(180);
@@ -81,7 +82,7 @@ function newfrmstarkpdf()
     obj.layout1:setHeight(23);
     obj.layout1:setName("layout1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setTransparent(true);
     obj.edit1:setFontSize(14.2);
@@ -95,7 +96,7 @@ function newfrmstarkpdf()
     obj.edit1:setField("Caixa_de_texto_1");
     obj.edit1:setName("edit1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.rectangle1);
     obj.layout2:setLeft(415);
     obj.layout2:setTop(180);
@@ -103,7 +104,7 @@ function newfrmstarkpdf()
     obj.layout2:setHeight(23);
     obj.layout2:setName("layout2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout2);
     obj.edit2:setTransparent(true);
     obj.edit2:setFontSize(14.2);
@@ -117,7 +118,7 @@ function newfrmstarkpdf()
     obj.edit2:setField("Caixa_de_texto_2");
     obj.edit2:setName("edit2");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.rectangle1);
     obj.layout3:setLeft(767);
     obj.layout3:setTop(180);
@@ -125,7 +126,7 @@ function newfrmstarkpdf()
     obj.layout3:setHeight(23);
     obj.layout3:setName("layout3");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout3);
     obj.edit3:setTransparent(true);
     obj.edit3:setFontSize(14.2);
@@ -139,7 +140,7 @@ function newfrmstarkpdf()
     obj.edit3:setField("Caixa_de_texto_3");
     obj.edit3:setName("edit3");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.rectangle1);
     obj.layout4:setLeft(493);
     obj.layout4:setTop(237);
@@ -147,7 +148,7 @@ function newfrmstarkpdf()
     obj.layout4:setHeight(23);
     obj.layout4:setName("layout4");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout4);
     obj.edit4:setTransparent(true);
     obj.edit4:setFontSize(14.2);
@@ -161,7 +162,7 @@ function newfrmstarkpdf()
     obj.edit4:setField("Caixa_de_texto_5");
     obj.edit4:setName("edit4");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.rectangle1);
     obj.layout5:setLeft(675);
     obj.layout5:setTop(237);
@@ -169,7 +170,7 @@ function newfrmstarkpdf()
     obj.layout5:setHeight(23);
     obj.layout5:setName("layout5");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout5);
     obj.edit5:setTransparent(true);
     obj.edit5:setFontSize(14.2);
@@ -183,7 +184,7 @@ function newfrmstarkpdf()
     obj.edit5:setField("Caixa_de_texto_6");
     obj.edit5:setName("edit5");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.rectangle1);
     obj.layout6:setLeft(195);
     obj.layout6:setTop(240);
@@ -191,7 +192,7 @@ function newfrmstarkpdf()
     obj.layout6:setHeight(23);
     obj.layout6:setName("layout6");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout6);
     obj.edit6:setTransparent(true);
     obj.edit6:setFontSize(14.2);
@@ -205,7 +206,7 @@ function newfrmstarkpdf()
     obj.edit6:setField("Caixa_de_texto_4");
     obj.edit6:setName("edit6");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.rectangle1);
     obj.layout7:setLeft(240);
     obj.layout7:setTop(376);
@@ -213,7 +214,7 @@ function newfrmstarkpdf()
     obj.layout7:setHeight(23);
     obj.layout7:setName("layout7");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout7);
     obj.edit7:setTransparent(true);
     obj.edit7:setFontSize(14.2);
@@ -227,7 +228,7 @@ function newfrmstarkpdf()
     obj.edit7:setField("Caixa_de_texto_7");
     obj.edit7:setName("edit7");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.rectangle1);
     obj.layout8:setLeft(474);
     obj.layout8:setTop(376);
@@ -235,7 +236,7 @@ function newfrmstarkpdf()
     obj.layout8:setHeight(23);
     obj.layout8:setName("layout8");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.layout8);
     obj.edit8:setTransparent(true);
     obj.edit8:setFontSize(14.2);
@@ -249,7 +250,7 @@ function newfrmstarkpdf()
     obj.edit8:setField("Caixa_de_texto_8");
     obj.edit8:setName("edit8");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.rectangle1);
     obj.layout9:setLeft(737);
     obj.layout9:setTop(376);
@@ -257,7 +258,7 @@ function newfrmstarkpdf()
     obj.layout9:setHeight(23);
     obj.layout9:setName("layout9");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.layout9);
     obj.edit9:setTransparent(true);
     obj.edit9:setFontSize(14.2);
@@ -271,7 +272,7 @@ function newfrmstarkpdf()
     obj.edit9:setField("Caixa_de_texto_9");
     obj.edit9:setName("edit9");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.rectangle1);
     obj.layout10:setLeft(137);
     obj.layout10:setTop(535);
@@ -279,7 +280,7 @@ function newfrmstarkpdf()
     obj.layout10:setHeight(23);
     obj.layout10:setName("layout10");
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.layout10);
     obj.edit10:setTransparent(true);
     obj.edit10:setFontSize(14.2);
@@ -293,7 +294,7 @@ function newfrmstarkpdf()
     obj.edit10:setField("Caixa_de_texto_10");
     obj.edit10:setName("edit10");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.rectangle1);
     obj.layout11:setLeft(317);
     obj.layout11:setTop(535);
@@ -301,7 +302,7 @@ function newfrmstarkpdf()
     obj.layout11:setHeight(23);
     obj.layout11:setName("layout11");
 
-    obj.edit11 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit11:setParent(obj.layout11);
     obj.edit11:setTransparent(true);
     obj.edit11:setFontSize(14.2);
@@ -315,7 +316,7 @@ function newfrmstarkpdf()
     obj.edit11:setField("Caixa_de_texto_11");
     obj.edit11:setName("edit11");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.rectangle1);
     obj.layout12:setLeft(540);
     obj.layout12:setTop(535);
@@ -323,7 +324,7 @@ function newfrmstarkpdf()
     obj.layout12:setHeight(23);
     obj.layout12:setName("layout12");
 
-    obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit12:setParent(obj.layout12);
     obj.edit12:setTransparent(true);
     obj.edit12:setFontSize(14.2);
@@ -337,7 +338,7 @@ function newfrmstarkpdf()
     obj.edit12:setField("Caixa_de_texto_12");
     obj.edit12:setName("edit12");
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.rectangle1);
     obj.layout13:setLeft(672);
     obj.layout13:setTop(535);
@@ -345,7 +346,7 @@ function newfrmstarkpdf()
     obj.layout13:setHeight(23);
     obj.layout13:setName("layout13");
 
-    obj.edit13 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit13:setParent(obj.layout13);
     obj.edit13:setTransparent(true);
     obj.edit13:setFontSize(14.2);
@@ -359,7 +360,7 @@ function newfrmstarkpdf()
     obj.edit13:setField("Caixa_de_texto_13");
     obj.edit13:setName("edit13");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.rectangle1);
     obj.layout14:setLeft(775);
     obj.layout14:setTop(535);
@@ -367,7 +368,7 @@ function newfrmstarkpdf()
     obj.layout14:setHeight(23);
     obj.layout14:setName("layout14");
 
-    obj.edit14 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit14:setParent(obj.layout14);
     obj.edit14:setTransparent(true);
     obj.edit14:setFontSize(14.2);
@@ -381,7 +382,7 @@ function newfrmstarkpdf()
     obj.edit14:setField("Caixa_de_texto_14");
     obj.edit14:setName("edit14");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.rectangle1);
     obj.layout15:setLeft(633);
     obj.layout15:setTop(718);
@@ -389,7 +390,7 @@ function newfrmstarkpdf()
     obj.layout15:setHeight(23);
     obj.layout15:setName("layout15");
 
-    obj.edit15 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit15:setParent(obj.layout15);
     obj.edit15:setTransparent(true);
     obj.edit15:setFontSize(14.2);
@@ -403,7 +404,7 @@ function newfrmstarkpdf()
     obj.edit15:setField("Caixa_de_texto_17");
     obj.edit15:setName("edit15");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.rectangle1);
     obj.layout16:setLeft(634);
     obj.layout16:setTop(794);
@@ -411,7 +412,7 @@ function newfrmstarkpdf()
     obj.layout16:setHeight(23);
     obj.layout16:setName("layout16");
 
-    obj.edit16 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit16:setParent(obj.layout16);
     obj.edit16:setTransparent(true);
     obj.edit16:setFontSize(14.2);
@@ -425,7 +426,7 @@ function newfrmstarkpdf()
     obj.edit16:setField("Caixa_de_texto_18");
     obj.edit16:setName("edit16");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.rectangle1);
     obj.layout17:setLeft(637);
     obj.layout17:setTop(869);
@@ -433,7 +434,7 @@ function newfrmstarkpdf()
     obj.layout17:setHeight(23);
     obj.layout17:setName("layout17");
 
-    obj.edit17 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit17:setParent(obj.layout17);
     obj.edit17:setTransparent(true);
     obj.edit17:setFontSize(14.2);
@@ -447,7 +448,7 @@ function newfrmstarkpdf()
     obj.edit17:setField("Caixa_de_texto_19");
     obj.edit17:setName("edit17");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.rectangle1);
     obj.layout18:setLeft(633);
     obj.layout18:setTop(945);
@@ -455,7 +456,7 @@ function newfrmstarkpdf()
     obj.layout18:setHeight(23);
     obj.layout18:setName("layout18");
 
-    obj.edit18 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit18:setParent(obj.layout18);
     obj.edit18:setTransparent(true);
     obj.edit18:setFontSize(14.2);
@@ -469,7 +470,7 @@ function newfrmstarkpdf()
     obj.edit18:setField("Caixa_de_texto_20");
     obj.edit18:setName("edit18");
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.rectangle1);
     obj.layout19:setLeft(636);
     obj.layout19:setTop(1020);
@@ -477,7 +478,7 @@ function newfrmstarkpdf()
     obj.layout19:setHeight(23);
     obj.layout19:setName("layout19");
 
-    obj.edit19 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit19:setParent(obj.layout19);
     obj.edit19:setTransparent(true);
     obj.edit19:setFontSize(14.2);
@@ -491,7 +492,7 @@ function newfrmstarkpdf()
     obj.edit19:setField("Caixa_de_texto_21");
     obj.edit19:setName("edit19");
 
-    obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.rectangle1);
     obj.layout20:setLeft(637);
     obj.layout20:setTop(1096);
@@ -499,7 +500,7 @@ function newfrmstarkpdf()
     obj.layout20:setHeight(23);
     obj.layout20:setName("layout20");
 
-    obj.edit20 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit20:setParent(obj.layout20);
     obj.edit20:setTransparent(true);
     obj.edit20:setFontSize(14.2);
@@ -513,7 +514,7 @@ function newfrmstarkpdf()
     obj.edit20:setField("Caixa_de_texto_22");
     obj.edit20:setName("edit20");
 
-    obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.rectangle1);
     obj.layout21:setLeft(90);
     obj.layout21:setTop(725);
@@ -521,7 +522,7 @@ function newfrmstarkpdf()
     obj.layout21:setHeight(409);
     obj.layout21:setName("layout21");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout21);
     obj.textEditor1:setLeft(0);
     obj.textEditor1:setTop(0);
@@ -533,7 +534,7 @@ function newfrmstarkpdf()
     obj.textEditor1:setTransparent(true);
     obj.textEditor1:setName("textEditor1");
 
-    obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.rectangle1);
     obj.layout22:setLeft(297);
     obj.layout22:setTop(727);
@@ -541,7 +542,7 @@ function newfrmstarkpdf()
     obj.layout22:setHeight(409);
     obj.layout22:setName("layout22");
 
-    obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.layout22);
     obj.textEditor2:setLeft(0);
     obj.textEditor2:setTop(0);
@@ -553,31 +554,31 @@ function newfrmstarkpdf()
     obj.textEditor2:setTransparent(true);
     obj.textEditor2:setName("textEditor2");
 
-    obj.tab2 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.tabControl1);
     obj.tab2:setTitle("Verso");
     obj.tab2:setName("tab2");
 
-    obj.frmstarkpdf2_svg = gui.fromHandle(_obj_newObject("form"));
+    obj.frmstarkpdf2_svg = GUI.fromHandle(_obj_newObject("form"));
     obj.frmstarkpdf2_svg:setParent(obj.tab2);
     obj.frmstarkpdf2_svg:setName("frmstarkpdf2_svg");
     obj.frmstarkpdf2_svg:setAlign("client");
     obj.frmstarkpdf2_svg:setTheme("light");
     obj.frmstarkpdf2_svg:setMargins({top=1});
 
-    obj.scrollBox2 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox2:setParent(obj.frmstarkpdf2_svg);
     obj.scrollBox2:setAlign("client");
     obj.scrollBox2:setName("scrollBox2");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.scrollBox2);
     obj.rectangle2:setWidth(893);
     obj.rectangle2:setHeight(1191);
     obj.rectangle2:setColor("white");
     obj.rectangle2:setName("rectangle2");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.rectangle2);
     obj.image2:setLeft(0);
     obj.image2:setTop(0);
@@ -588,7 +589,7 @@ function newfrmstarkpdf()
     obj.image2:setOptimize(true);
     obj.image2:setName("image2");
 
-    obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.rectangle2);
     obj.layout23:setLeft(255);
     obj.layout23:setTop(227);
@@ -596,7 +597,7 @@ function newfrmstarkpdf()
     obj.layout23:setHeight(171);
     obj.layout23:setName("layout23");
 
-    obj.textEditor3 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor3:setParent(obj.layout23);
     obj.textEditor3:setLeft(0);
     obj.textEditor3:setTop(0);
@@ -608,7 +609,7 @@ function newfrmstarkpdf()
     obj.textEditor3:setTransparent(true);
     obj.textEditor3:setName("textEditor3");
 
-    obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.rectangle2);
     obj.layout24:setLeft(47);
     obj.layout24:setTop(224);
@@ -616,7 +617,7 @@ function newfrmstarkpdf()
     obj.layout24:setHeight(175);
     obj.layout24:setName("layout24");
 
-    obj.textEditor4 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor4:setParent(obj.layout24);
     obj.textEditor4:setLeft(0);
     obj.textEditor4:setTop(0);
@@ -628,7 +629,7 @@ function newfrmstarkpdf()
     obj.textEditor4:setTransparent(true);
     obj.textEditor4:setName("textEditor4");
 
-    obj.layout25 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.rectangle2);
     obj.layout25:setLeft(456);
     obj.layout25:setTop(228);
@@ -636,7 +637,7 @@ function newfrmstarkpdf()
     obj.layout25:setHeight(171);
     obj.layout25:setName("layout25");
 
-    obj.textEditor5 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor5:setParent(obj.layout25);
     obj.textEditor5:setLeft(0);
     obj.textEditor5:setTop(0);
@@ -648,7 +649,7 @@ function newfrmstarkpdf()
     obj.textEditor5:setTransparent(true);
     obj.textEditor5:setName("textEditor5");
 
-    obj.layout26 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.rectangle2);
     obj.layout26:setLeft(663);
     obj.layout26:setTop(229);
@@ -656,7 +657,7 @@ function newfrmstarkpdf()
     obj.layout26:setHeight(170);
     obj.layout26:setName("layout26");
 
-    obj.textEditor6 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor6 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor6:setParent(obj.layout26);
     obj.textEditor6:setLeft(0);
     obj.textEditor6:setTop(0);
@@ -668,7 +669,7 @@ function newfrmstarkpdf()
     obj.textEditor6:setTransparent(true);
     obj.textEditor6:setName("textEditor6");
 
-    obj.layout27 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.rectangle2);
     obj.layout27:setLeft(40);
     obj.layout27:setTop(533);
@@ -676,7 +677,7 @@ function newfrmstarkpdf()
     obj.layout27:setHeight(83);
     obj.layout27:setName("layout27");
 
-    obj.textEditor7 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor7 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor7:setParent(obj.layout27);
     obj.textEditor7:setLeft(0);
     obj.textEditor7:setTop(0);
@@ -688,7 +689,7 @@ function newfrmstarkpdf()
     obj.textEditor7:setTransparent(true);
     obj.textEditor7:setName("textEditor7");
 
-    obj.layout28 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.rectangle2);
     obj.layout28:setLeft(43);
     obj.layout28:setTop(692);
@@ -696,7 +697,7 @@ function newfrmstarkpdf()
     obj.layout28:setHeight(81);
     obj.layout28:setName("layout28");
 
-    obj.textEditor8 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor8 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor8:setParent(obj.layout28);
     obj.textEditor8:setLeft(0);
     obj.textEditor8:setTop(0);
@@ -708,7 +709,7 @@ function newfrmstarkpdf()
     obj.textEditor8:setTransparent(true);
     obj.textEditor8:setName("textEditor8");
 
-    obj.layout29 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout29:setParent(obj.rectangle2);
     obj.layout29:setLeft(42);
     obj.layout29:setTop(850);
@@ -716,7 +717,7 @@ function newfrmstarkpdf()
     obj.layout29:setHeight(82);
     obj.layout29:setName("layout29");
 
-    obj.textEditor9 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor9 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor9:setParent(obj.layout29);
     obj.textEditor9:setLeft(0);
     obj.textEditor9:setTop(0);
@@ -728,7 +729,7 @@ function newfrmstarkpdf()
     obj.textEditor9:setTransparent(true);
     obj.textEditor9:setName("textEditor9");
 
-    obj.layout30 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout30:setParent(obj.rectangle2);
     obj.layout30:setLeft(47);
     obj.layout30:setTop(1018);
@@ -736,7 +737,7 @@ function newfrmstarkpdf()
     obj.layout30:setHeight(86);
     obj.layout30:setName("layout30");
 
-    obj.textEditor10 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor10 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor10:setParent(obj.layout30);
     obj.textEditor10:setLeft(0);
     obj.textEditor10:setTop(0);
@@ -748,7 +749,7 @@ function newfrmstarkpdf()
     obj.textEditor10:setTransparent(true);
     obj.textEditor10:setName("textEditor10");
 
-    obj.layout31 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.rectangle2);
     obj.layout31:setLeft(265);
     obj.layout31:setTop(1141);
@@ -756,7 +757,7 @@ function newfrmstarkpdf()
     obj.layout31:setHeight(23);
     obj.layout31:setName("layout31");
 
-    obj.edit21 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit21:setParent(obj.layout31);
     obj.edit21:setTransparent(true);
     obj.edit21:setFontSize(14.2);
@@ -876,7 +877,7 @@ local _frmstarkpdf = {
     description=""};
 
 frmstarkpdf = _frmstarkpdf;
-rrpg.registrarForm(_frmstarkpdf);
-rrpg.registrarDataType(_frmstarkpdf);
+Firecast.registrarForm(_frmstarkpdf);
+Firecast.registrarDataType(_frmstarkpdf);
 
 return _frmstarkpdf;

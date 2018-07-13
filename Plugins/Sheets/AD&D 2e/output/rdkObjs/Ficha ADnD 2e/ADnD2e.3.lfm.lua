@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmADnD3()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,7 +32,7 @@ function newfrmADnD3()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
@@ -186,7 +187,7 @@ function newfrmADnD3()
 		
 
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -194,7 +195,7 @@ function newfrmADnD3()
     obj.layout1:setHeight(610);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
@@ -203,7 +204,7 @@ function newfrmADnD3()
     obj.rectangle1:setCornerType("round");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(0);
     obj.label1:setTop(5);
@@ -213,7 +214,7 @@ function newfrmADnD3()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layout1);
     obj.layout2:setLeft(0);
     obj.layout2:setTop(30);
@@ -221,7 +222,7 @@ function newfrmADnD3()
     obj.layout2:setHeight(25);
     obj.layout2:setName("layout2");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout2);
     obj.label2:setLeft(5);
     obj.label2:setTop(0);
@@ -231,7 +232,7 @@ function newfrmADnD3()
     obj.label2:setText("Item");
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout2);
     obj.label3:setLeft(195);
     obj.label3:setTop(0);
@@ -241,7 +242,7 @@ function newfrmADnD3()
     obj.label3:setText("Custo");
     obj.label3:setName("label3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout2);
     obj.label4:setLeft(245);
     obj.label4:setTop(0);
@@ -251,7 +252,7 @@ function newfrmADnD3()
     obj.label4:setText("Peso");
     obj.label4:setName("label4");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout1);
     obj.layout3:setLeft(0);
     obj.layout3:setTop(55);
@@ -259,7 +260,7 @@ function newfrmADnD3()
     obj.layout3:setHeight(25);
     obj.layout3:setName("layout3");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout3);
     obj.edit1:setLeft(5);
     obj.edit1:setTop(0);
@@ -268,7 +269,7 @@ function newfrmADnD3()
     obj.edit1:setField("Equipamento_1_1");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout3);
     obj.edit2:setLeft(195);
     obj.edit2:setTop(0);
@@ -277,7 +278,7 @@ function newfrmADnD3()
     obj.edit2:setField("Equipamento_Custo_1_1");
     obj.edit2:setName("edit2");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout3);
     obj.edit3:setLeft(245);
     obj.edit3:setTop(0);
@@ -286,7 +287,7 @@ function newfrmADnD3()
     obj.edit3:setField("Equipamento_Peso_1_1");
     obj.edit3:setName("edit3");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout1);
     obj.layout4:setLeft(0);
     obj.layout4:setTop(80);
@@ -294,7 +295,7 @@ function newfrmADnD3()
     obj.layout4:setHeight(25);
     obj.layout4:setName("layout4");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout4);
     obj.edit4:setLeft(5);
     obj.edit4:setTop(0);
@@ -303,7 +304,7 @@ function newfrmADnD3()
     obj.edit4:setField("Equipamento_1_2");
     obj.edit4:setName("edit4");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout4);
     obj.edit5:setLeft(195);
     obj.edit5:setTop(0);
@@ -312,7 +313,7 @@ function newfrmADnD3()
     obj.edit5:setField("Equipamento_Custo_1_2");
     obj.edit5:setName("edit5");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout4);
     obj.edit6:setLeft(245);
     obj.edit6:setTop(0);
@@ -321,7 +322,7 @@ function newfrmADnD3()
     obj.edit6:setField("Equipamento_Peso_1_2");
     obj.edit6:setName("edit6");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout1);
     obj.layout5:setLeft(0);
     obj.layout5:setTop(105);
@@ -329,7 +330,7 @@ function newfrmADnD3()
     obj.layout5:setHeight(25);
     obj.layout5:setName("layout5");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout5);
     obj.edit7:setLeft(5);
     obj.edit7:setTop(0);
@@ -338,7 +339,7 @@ function newfrmADnD3()
     obj.edit7:setField("Equipamento_1_3");
     obj.edit7:setName("edit7");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.layout5);
     obj.edit8:setLeft(195);
     obj.edit8:setTop(0);
@@ -347,7 +348,7 @@ function newfrmADnD3()
     obj.edit8:setField("Equipamento_Custo_1_3");
     obj.edit8:setName("edit8");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.layout5);
     obj.edit9:setLeft(245);
     obj.edit9:setTop(0);
@@ -356,7 +357,7 @@ function newfrmADnD3()
     obj.edit9:setField("Equipamento_Peso_1_3");
     obj.edit9:setName("edit9");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout1);
     obj.layout6:setLeft(0);
     obj.layout6:setTop(130);
@@ -364,7 +365,7 @@ function newfrmADnD3()
     obj.layout6:setHeight(25);
     obj.layout6:setName("layout6");
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.layout6);
     obj.edit10:setLeft(5);
     obj.edit10:setTop(0);
@@ -373,7 +374,7 @@ function newfrmADnD3()
     obj.edit10:setField("Equipamento_1_4");
     obj.edit10:setName("edit10");
 
-    obj.edit11 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit11:setParent(obj.layout6);
     obj.edit11:setLeft(195);
     obj.edit11:setTop(0);
@@ -382,7 +383,7 @@ function newfrmADnD3()
     obj.edit11:setField("Equipamento_Custo_1_4");
     obj.edit11:setName("edit11");
 
-    obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit12:setParent(obj.layout6);
     obj.edit12:setLeft(245);
     obj.edit12:setTop(0);
@@ -391,7 +392,7 @@ function newfrmADnD3()
     obj.edit12:setField("Equipamento_Peso_1_4");
     obj.edit12:setName("edit12");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.layout1);
     obj.layout7:setLeft(0);
     obj.layout7:setTop(155);
@@ -399,7 +400,7 @@ function newfrmADnD3()
     obj.layout7:setHeight(25);
     obj.layout7:setName("layout7");
 
-    obj.edit13 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit13:setParent(obj.layout7);
     obj.edit13:setLeft(5);
     obj.edit13:setTop(0);
@@ -408,7 +409,7 @@ function newfrmADnD3()
     obj.edit13:setField("Equipamento_1_5");
     obj.edit13:setName("edit13");
 
-    obj.edit14 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit14:setParent(obj.layout7);
     obj.edit14:setLeft(195);
     obj.edit14:setTop(0);
@@ -417,7 +418,7 @@ function newfrmADnD3()
     obj.edit14:setField("Equipamento_Custo_1_5");
     obj.edit14:setName("edit14");
 
-    obj.edit15 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit15:setParent(obj.layout7);
     obj.edit15:setLeft(245);
     obj.edit15:setTop(0);
@@ -426,7 +427,7 @@ function newfrmADnD3()
     obj.edit15:setField("Equipamento_Peso_1_5");
     obj.edit15:setName("edit15");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.layout1);
     obj.layout8:setLeft(0);
     obj.layout8:setTop(180);
@@ -434,7 +435,7 @@ function newfrmADnD3()
     obj.layout8:setHeight(25);
     obj.layout8:setName("layout8");
 
-    obj.edit16 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit16:setParent(obj.layout8);
     obj.edit16:setLeft(5);
     obj.edit16:setTop(0);
@@ -443,7 +444,7 @@ function newfrmADnD3()
     obj.edit16:setField("Equipamento_1_6");
     obj.edit16:setName("edit16");
 
-    obj.edit17 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit17:setParent(obj.layout8);
     obj.edit17:setLeft(195);
     obj.edit17:setTop(0);
@@ -452,7 +453,7 @@ function newfrmADnD3()
     obj.edit17:setField("Equipamento_Custo_1_6");
     obj.edit17:setName("edit17");
 
-    obj.edit18 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit18:setParent(obj.layout8);
     obj.edit18:setLeft(245);
     obj.edit18:setTop(0);
@@ -461,7 +462,7 @@ function newfrmADnD3()
     obj.edit18:setField("Equipamento_Peso_1_6");
     obj.edit18:setName("edit18");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.layout1);
     obj.layout9:setLeft(0);
     obj.layout9:setTop(205);
@@ -469,7 +470,7 @@ function newfrmADnD3()
     obj.layout9:setHeight(25);
     obj.layout9:setName("layout9");
 
-    obj.edit19 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit19:setParent(obj.layout9);
     obj.edit19:setLeft(5);
     obj.edit19:setTop(0);
@@ -478,7 +479,7 @@ function newfrmADnD3()
     obj.edit19:setField("Equipamento_1_7");
     obj.edit19:setName("edit19");
 
-    obj.edit20 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit20:setParent(obj.layout9);
     obj.edit20:setLeft(195);
     obj.edit20:setTop(0);
@@ -487,7 +488,7 @@ function newfrmADnD3()
     obj.edit20:setField("Equipamento_Custo_1_7");
     obj.edit20:setName("edit20");
 
-    obj.edit21 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit21:setParent(obj.layout9);
     obj.edit21:setLeft(245);
     obj.edit21:setTop(0);
@@ -496,7 +497,7 @@ function newfrmADnD3()
     obj.edit21:setField("Equipamento_Peso_1_7");
     obj.edit21:setName("edit21");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.layout1);
     obj.layout10:setLeft(0);
     obj.layout10:setTop(230);
@@ -504,7 +505,7 @@ function newfrmADnD3()
     obj.layout10:setHeight(25);
     obj.layout10:setName("layout10");
 
-    obj.edit22 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit22:setParent(obj.layout10);
     obj.edit22:setLeft(5);
     obj.edit22:setTop(0);
@@ -513,7 +514,7 @@ function newfrmADnD3()
     obj.edit22:setField("Equipamento_1_8");
     obj.edit22:setName("edit22");
 
-    obj.edit23 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit23:setParent(obj.layout10);
     obj.edit23:setLeft(195);
     obj.edit23:setTop(0);
@@ -522,7 +523,7 @@ function newfrmADnD3()
     obj.edit23:setField("Equipamento_Custo_1_8");
     obj.edit23:setName("edit23");
 
-    obj.edit24 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit24:setParent(obj.layout10);
     obj.edit24:setLeft(245);
     obj.edit24:setTop(0);
@@ -531,7 +532,7 @@ function newfrmADnD3()
     obj.edit24:setField("Equipamento_Peso_1_8");
     obj.edit24:setName("edit24");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.layout1);
     obj.layout11:setLeft(0);
     obj.layout11:setTop(255);
@@ -539,7 +540,7 @@ function newfrmADnD3()
     obj.layout11:setHeight(25);
     obj.layout11:setName("layout11");
 
-    obj.edit25 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit25:setParent(obj.layout11);
     obj.edit25:setLeft(5);
     obj.edit25:setTop(0);
@@ -548,7 +549,7 @@ function newfrmADnD3()
     obj.edit25:setField("Equipamento_1_9");
     obj.edit25:setName("edit25");
 
-    obj.edit26 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit26:setParent(obj.layout11);
     obj.edit26:setLeft(195);
     obj.edit26:setTop(0);
@@ -557,7 +558,7 @@ function newfrmADnD3()
     obj.edit26:setField("Equipamento_Custo_1_9");
     obj.edit26:setName("edit26");
 
-    obj.edit27 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit27 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit27:setParent(obj.layout11);
     obj.edit27:setLeft(245);
     obj.edit27:setTop(0);
@@ -566,7 +567,7 @@ function newfrmADnD3()
     obj.edit27:setField("Equipamento_Peso_1_9");
     obj.edit27:setName("edit27");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.layout1);
     obj.layout12:setLeft(0);
     obj.layout12:setTop(280);
@@ -574,7 +575,7 @@ function newfrmADnD3()
     obj.layout12:setHeight(25);
     obj.layout12:setName("layout12");
 
-    obj.edit28 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit28 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit28:setParent(obj.layout12);
     obj.edit28:setLeft(5);
     obj.edit28:setTop(0);
@@ -583,7 +584,7 @@ function newfrmADnD3()
     obj.edit28:setField("Equipamento_1_10");
     obj.edit28:setName("edit28");
 
-    obj.edit29 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit29 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit29:setParent(obj.layout12);
     obj.edit29:setLeft(195);
     obj.edit29:setTop(0);
@@ -592,7 +593,7 @@ function newfrmADnD3()
     obj.edit29:setField("Equipamento_Custo_1_10");
     obj.edit29:setName("edit29");
 
-    obj.edit30 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit30 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit30:setParent(obj.layout12);
     obj.edit30:setLeft(245);
     obj.edit30:setTop(0);
@@ -601,7 +602,7 @@ function newfrmADnD3()
     obj.edit30:setField("Equipamento_Peso_1_10");
     obj.edit30:setName("edit30");
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.layout1);
     obj.layout13:setLeft(0);
     obj.layout13:setTop(305);
@@ -609,7 +610,7 @@ function newfrmADnD3()
     obj.layout13:setHeight(25);
     obj.layout13:setName("layout13");
 
-    obj.edit31 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit31:setParent(obj.layout13);
     obj.edit31:setLeft(5);
     obj.edit31:setTop(0);
@@ -618,7 +619,7 @@ function newfrmADnD3()
     obj.edit31:setField("Equipamento_1_11");
     obj.edit31:setName("edit31");
 
-    obj.edit32 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit32:setParent(obj.layout13);
     obj.edit32:setLeft(195);
     obj.edit32:setTop(0);
@@ -627,7 +628,7 @@ function newfrmADnD3()
     obj.edit32:setField("Equipamento_Custo_1_11");
     obj.edit32:setName("edit32");
 
-    obj.edit33 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit33 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit33:setParent(obj.layout13);
     obj.edit33:setLeft(245);
     obj.edit33:setTop(0);
@@ -636,7 +637,7 @@ function newfrmADnD3()
     obj.edit33:setField("Equipamento_Peso_1_11");
     obj.edit33:setName("edit33");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.layout1);
     obj.layout14:setLeft(0);
     obj.layout14:setTop(330);
@@ -644,7 +645,7 @@ function newfrmADnD3()
     obj.layout14:setHeight(25);
     obj.layout14:setName("layout14");
 
-    obj.edit34 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit34:setParent(obj.layout14);
     obj.edit34:setLeft(5);
     obj.edit34:setTop(0);
@@ -653,7 +654,7 @@ function newfrmADnD3()
     obj.edit34:setField("Equipamento_1_12");
     obj.edit34:setName("edit34");
 
-    obj.edit35 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit35 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit35:setParent(obj.layout14);
     obj.edit35:setLeft(195);
     obj.edit35:setTop(0);
@@ -662,7 +663,7 @@ function newfrmADnD3()
     obj.edit35:setField("Equipamento_Custo_1_12");
     obj.edit35:setName("edit35");
 
-    obj.edit36 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit36:setParent(obj.layout14);
     obj.edit36:setLeft(245);
     obj.edit36:setTop(0);
@@ -671,7 +672,7 @@ function newfrmADnD3()
     obj.edit36:setField("Equipamento_Peso_1_12");
     obj.edit36:setName("edit36");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.layout1);
     obj.layout15:setLeft(0);
     obj.layout15:setTop(355);
@@ -679,7 +680,7 @@ function newfrmADnD3()
     obj.layout15:setHeight(25);
     obj.layout15:setName("layout15");
 
-    obj.edit37 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit37 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit37:setParent(obj.layout15);
     obj.edit37:setLeft(5);
     obj.edit37:setTop(0);
@@ -688,7 +689,7 @@ function newfrmADnD3()
     obj.edit37:setField("Equipamento_1_13");
     obj.edit37:setName("edit37");
 
-    obj.edit38 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit38 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit38:setParent(obj.layout15);
     obj.edit38:setLeft(195);
     obj.edit38:setTop(0);
@@ -697,7 +698,7 @@ function newfrmADnD3()
     obj.edit38:setField("Equipamento_Custo_1_13");
     obj.edit38:setName("edit38");
 
-    obj.edit39 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit39 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit39:setParent(obj.layout15);
     obj.edit39:setLeft(245);
     obj.edit39:setTop(0);
@@ -706,7 +707,7 @@ function newfrmADnD3()
     obj.edit39:setField("Equipamento_Peso_1_13");
     obj.edit39:setName("edit39");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.layout1);
     obj.layout16:setLeft(0);
     obj.layout16:setTop(380);
@@ -714,7 +715,7 @@ function newfrmADnD3()
     obj.layout16:setHeight(25);
     obj.layout16:setName("layout16");
 
-    obj.edit40 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit40 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit40:setParent(obj.layout16);
     obj.edit40:setLeft(5);
     obj.edit40:setTop(0);
@@ -723,7 +724,7 @@ function newfrmADnD3()
     obj.edit40:setField("Equipamento_1_14");
     obj.edit40:setName("edit40");
 
-    obj.edit41 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit41:setParent(obj.layout16);
     obj.edit41:setLeft(195);
     obj.edit41:setTop(0);
@@ -732,7 +733,7 @@ function newfrmADnD3()
     obj.edit41:setField("Equipamento_Custo_1_14");
     obj.edit41:setName("edit41");
 
-    obj.edit42 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit42:setParent(obj.layout16);
     obj.edit42:setLeft(245);
     obj.edit42:setTop(0);
@@ -741,7 +742,7 @@ function newfrmADnD3()
     obj.edit42:setField("Equipamento_Peso_1_14");
     obj.edit42:setName("edit42");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.layout1);
     obj.layout17:setLeft(0);
     obj.layout17:setTop(405);
@@ -749,7 +750,7 @@ function newfrmADnD3()
     obj.layout17:setHeight(25);
     obj.layout17:setName("layout17");
 
-    obj.edit43 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit43 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit43:setParent(obj.layout17);
     obj.edit43:setLeft(5);
     obj.edit43:setTop(0);
@@ -758,7 +759,7 @@ function newfrmADnD3()
     obj.edit43:setField("Equipamento_1_15");
     obj.edit43:setName("edit43");
 
-    obj.edit44 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit44 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit44:setParent(obj.layout17);
     obj.edit44:setLeft(195);
     obj.edit44:setTop(0);
@@ -767,7 +768,7 @@ function newfrmADnD3()
     obj.edit44:setField("Equipamento_Custo_1_15");
     obj.edit44:setName("edit44");
 
-    obj.edit45 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit45:setParent(obj.layout17);
     obj.edit45:setLeft(245);
     obj.edit45:setTop(0);
@@ -776,7 +777,7 @@ function newfrmADnD3()
     obj.edit45:setField("Equipamento_Peso_1_15");
     obj.edit45:setName("edit45");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.layout1);
     obj.layout18:setLeft(0);
     obj.layout18:setTop(430);
@@ -784,7 +785,7 @@ function newfrmADnD3()
     obj.layout18:setHeight(25);
     obj.layout18:setName("layout18");
 
-    obj.edit46 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit46:setParent(obj.layout18);
     obj.edit46:setLeft(5);
     obj.edit46:setTop(0);
@@ -793,7 +794,7 @@ function newfrmADnD3()
     obj.edit46:setField("Equipamento_1_16");
     obj.edit46:setName("edit46");
 
-    obj.edit47 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit47:setParent(obj.layout18);
     obj.edit47:setLeft(195);
     obj.edit47:setTop(0);
@@ -802,7 +803,7 @@ function newfrmADnD3()
     obj.edit47:setField("Equipamento_Custo_1_16");
     obj.edit47:setName("edit47");
 
-    obj.edit48 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit48:setParent(obj.layout18);
     obj.edit48:setLeft(245);
     obj.edit48:setTop(0);
@@ -811,7 +812,7 @@ function newfrmADnD3()
     obj.edit48:setField("Equipamento_Peso_1_16");
     obj.edit48:setName("edit48");
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.layout1);
     obj.layout19:setLeft(0);
     obj.layout19:setTop(455);
@@ -819,7 +820,7 @@ function newfrmADnD3()
     obj.layout19:setHeight(25);
     obj.layout19:setName("layout19");
 
-    obj.edit49 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit49 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit49:setParent(obj.layout19);
     obj.edit49:setLeft(5);
     obj.edit49:setTop(0);
@@ -828,7 +829,7 @@ function newfrmADnD3()
     obj.edit49:setField("Equipamento_1_17");
     obj.edit49:setName("edit49");
 
-    obj.edit50 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit50:setParent(obj.layout19);
     obj.edit50:setLeft(195);
     obj.edit50:setTop(0);
@@ -837,7 +838,7 @@ function newfrmADnD3()
     obj.edit50:setField("Equipamento_Custo_1_17");
     obj.edit50:setName("edit50");
 
-    obj.edit51 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit51:setParent(obj.layout19);
     obj.edit51:setLeft(245);
     obj.edit51:setTop(0);
@@ -846,7 +847,7 @@ function newfrmADnD3()
     obj.edit51:setField("Equipamento_Peso_1_17");
     obj.edit51:setName("edit51");
 
-    obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.layout1);
     obj.layout20:setLeft(0);
     obj.layout20:setTop(480);
@@ -854,7 +855,7 @@ function newfrmADnD3()
     obj.layout20:setHeight(25);
     obj.layout20:setName("layout20");
 
-    obj.edit52 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit52 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit52:setParent(obj.layout20);
     obj.edit52:setLeft(5);
     obj.edit52:setTop(0);
@@ -863,7 +864,7 @@ function newfrmADnD3()
     obj.edit52:setField("Equipamento_1_18");
     obj.edit52:setName("edit52");
 
-    obj.edit53 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit53 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit53:setParent(obj.layout20);
     obj.edit53:setLeft(195);
     obj.edit53:setTop(0);
@@ -872,7 +873,7 @@ function newfrmADnD3()
     obj.edit53:setField("Equipamento_Custo_1_18");
     obj.edit53:setName("edit53");
 
-    obj.edit54 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit54:setParent(obj.layout20);
     obj.edit54:setLeft(245);
     obj.edit54:setTop(0);
@@ -881,7 +882,7 @@ function newfrmADnD3()
     obj.edit54:setField("Equipamento_Peso_1_18");
     obj.edit54:setName("edit54");
 
-    obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.layout1);
     obj.layout21:setLeft(0);
     obj.layout21:setTop(505);
@@ -889,7 +890,7 @@ function newfrmADnD3()
     obj.layout21:setHeight(25);
     obj.layout21:setName("layout21");
 
-    obj.edit55 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit55 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit55:setParent(obj.layout21);
     obj.edit55:setLeft(5);
     obj.edit55:setTop(0);
@@ -898,7 +899,7 @@ function newfrmADnD3()
     obj.edit55:setField("Equipamento_1_19");
     obj.edit55:setName("edit55");
 
-    obj.edit56 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit56:setParent(obj.layout21);
     obj.edit56:setLeft(195);
     obj.edit56:setTop(0);
@@ -907,7 +908,7 @@ function newfrmADnD3()
     obj.edit56:setField("Equipamento_Custo_1_19");
     obj.edit56:setName("edit56");
 
-    obj.edit57 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit57 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit57:setParent(obj.layout21);
     obj.edit57:setLeft(245);
     obj.edit57:setTop(0);
@@ -916,7 +917,7 @@ function newfrmADnD3()
     obj.edit57:setField("Equipamento_Peso_1_19");
     obj.edit57:setName("edit57");
 
-    obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.layout1);
     obj.layout22:setLeft(0);
     obj.layout22:setTop(530);
@@ -924,7 +925,7 @@ function newfrmADnD3()
     obj.layout22:setHeight(25);
     obj.layout22:setName("layout22");
 
-    obj.edit58 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit58 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit58:setParent(obj.layout22);
     obj.edit58:setLeft(5);
     obj.edit58:setTop(0);
@@ -933,7 +934,7 @@ function newfrmADnD3()
     obj.edit58:setField("Equipamento_1_20");
     obj.edit58:setName("edit58");
 
-    obj.edit59 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit59 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit59:setParent(obj.layout22);
     obj.edit59:setLeft(195);
     obj.edit59:setTop(0);
@@ -942,7 +943,7 @@ function newfrmADnD3()
     obj.edit59:setField("Equipamento_Custo_1_20");
     obj.edit59:setName("edit59");
 
-    obj.edit60 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit60 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit60:setParent(obj.layout22);
     obj.edit60:setLeft(245);
     obj.edit60:setTop(0);
@@ -951,7 +952,7 @@ function newfrmADnD3()
     obj.edit60:setField("Equipamento_Peso_1_20");
     obj.edit60:setName("edit60");
 
-    obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.layout1);
     obj.layout23:setLeft(0);
     obj.layout23:setTop(555);
@@ -959,7 +960,7 @@ function newfrmADnD3()
     obj.layout23:setHeight(25);
     obj.layout23:setName("layout23");
 
-    obj.edit61 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit61 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit61:setParent(obj.layout23);
     obj.edit61:setLeft(5);
     obj.edit61:setTop(0);
@@ -968,7 +969,7 @@ function newfrmADnD3()
     obj.edit61:setField("Equipamento_1_21");
     obj.edit61:setName("edit61");
 
-    obj.edit62 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit62 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit62:setParent(obj.layout23);
     obj.edit62:setLeft(195);
     obj.edit62:setTop(0);
@@ -977,7 +978,7 @@ function newfrmADnD3()
     obj.edit62:setField("Equipamento_Custo_1_21");
     obj.edit62:setName("edit62");
 
-    obj.edit63 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit63 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit63:setParent(obj.layout23);
     obj.edit63:setLeft(245);
     obj.edit63:setTop(0);
@@ -986,7 +987,7 @@ function newfrmADnD3()
     obj.edit63:setField("Equipamento_Peso_1_21");
     obj.edit63:setName("edit63");
 
-    obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.layout1);
     obj.layout24:setLeft(0);
     obj.layout24:setTop(580);
@@ -994,7 +995,7 @@ function newfrmADnD3()
     obj.layout24:setHeight(25);
     obj.layout24:setName("layout24");
 
-    obj.edit64 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit64 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit64:setParent(obj.layout24);
     obj.edit64:setLeft(5);
     obj.edit64:setTop(0);
@@ -1003,7 +1004,7 @@ function newfrmADnD3()
     obj.edit64:setField("Equipamento_1_22");
     obj.edit64:setName("edit64");
 
-    obj.edit65 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit65 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit65:setParent(obj.layout24);
     obj.edit65:setLeft(195);
     obj.edit65:setTop(0);
@@ -1012,7 +1013,7 @@ function newfrmADnD3()
     obj.edit65:setField("Equipamento_Custo_1_22");
     obj.edit65:setName("edit65");
 
-    obj.edit66 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit66 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit66:setParent(obj.layout24);
     obj.edit66:setLeft(245);
     obj.edit66:setTop(0);
@@ -1021,7 +1022,7 @@ function newfrmADnD3()
     obj.edit66:setField("Equipamento_Peso_1_22");
     obj.edit66:setName("edit66");
 
-    obj.layout25 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.scrollBox1);
     obj.layout25:setLeft(310);
     obj.layout25:setTop(0);
@@ -1029,7 +1030,7 @@ function newfrmADnD3()
     obj.layout25:setHeight(610);
     obj.layout25:setName("layout25");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout25);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("black");
@@ -1038,7 +1039,7 @@ function newfrmADnD3()
     obj.rectangle2:setCornerType("round");
     obj.rectangle2:setName("rectangle2");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout25);
     obj.label5:setLeft(0);
     obj.label5:setTop(5);
@@ -1048,7 +1049,7 @@ function newfrmADnD3()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.layout26 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.layout25);
     obj.layout26:setLeft(0);
     obj.layout26:setTop(30);
@@ -1056,7 +1057,7 @@ function newfrmADnD3()
     obj.layout26:setHeight(25);
     obj.layout26:setName("layout26");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout26);
     obj.label6:setLeft(5);
     obj.label6:setTop(0);
@@ -1066,7 +1067,7 @@ function newfrmADnD3()
     obj.label6:setText("Item");
     obj.label6:setName("label6");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout26);
     obj.label7:setLeft(195);
     obj.label7:setTop(0);
@@ -1076,7 +1077,7 @@ function newfrmADnD3()
     obj.label7:setText("Custo");
     obj.label7:setName("label7");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout26);
     obj.label8:setLeft(245);
     obj.label8:setTop(0);
@@ -1086,7 +1087,7 @@ function newfrmADnD3()
     obj.label8:setText("Peso");
     obj.label8:setName("label8");
 
-    obj.layout27 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.layout25);
     obj.layout27:setLeft(0);
     obj.layout27:setTop(55);
@@ -1094,7 +1095,7 @@ function newfrmADnD3()
     obj.layout27:setHeight(25);
     obj.layout27:setName("layout27");
 
-    obj.edit67 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit67 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit67:setParent(obj.layout27);
     obj.edit67:setLeft(5);
     obj.edit67:setTop(0);
@@ -1103,7 +1104,7 @@ function newfrmADnD3()
     obj.edit67:setField("Equipamento_2_1");
     obj.edit67:setName("edit67");
 
-    obj.edit68 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit68 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit68:setParent(obj.layout27);
     obj.edit68:setLeft(195);
     obj.edit68:setTop(0);
@@ -1112,7 +1113,7 @@ function newfrmADnD3()
     obj.edit68:setField("Equipamento_Custo_2_1");
     obj.edit68:setName("edit68");
 
-    obj.edit69 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit69 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit69:setParent(obj.layout27);
     obj.edit69:setLeft(245);
     obj.edit69:setTop(0);
@@ -1121,7 +1122,7 @@ function newfrmADnD3()
     obj.edit69:setField("Equipamento_Peso_2_1");
     obj.edit69:setName("edit69");
 
-    obj.layout28 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.layout25);
     obj.layout28:setLeft(0);
     obj.layout28:setTop(80);
@@ -1129,7 +1130,7 @@ function newfrmADnD3()
     obj.layout28:setHeight(25);
     obj.layout28:setName("layout28");
 
-    obj.edit70 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit70 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit70:setParent(obj.layout28);
     obj.edit70:setLeft(5);
     obj.edit70:setTop(0);
@@ -1138,7 +1139,7 @@ function newfrmADnD3()
     obj.edit70:setField("Equipamento_2_2");
     obj.edit70:setName("edit70");
 
-    obj.edit71 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit71 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit71:setParent(obj.layout28);
     obj.edit71:setLeft(195);
     obj.edit71:setTop(0);
@@ -1147,7 +1148,7 @@ function newfrmADnD3()
     obj.edit71:setField("Equipamento_Custo_2_2");
     obj.edit71:setName("edit71");
 
-    obj.edit72 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit72 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit72:setParent(obj.layout28);
     obj.edit72:setLeft(245);
     obj.edit72:setTop(0);
@@ -1156,7 +1157,7 @@ function newfrmADnD3()
     obj.edit72:setField("Equipamento_Peso_2_2");
     obj.edit72:setName("edit72");
 
-    obj.layout29 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout29:setParent(obj.layout25);
     obj.layout29:setLeft(0);
     obj.layout29:setTop(105);
@@ -1164,7 +1165,7 @@ function newfrmADnD3()
     obj.layout29:setHeight(25);
     obj.layout29:setName("layout29");
 
-    obj.edit73 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit73 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit73:setParent(obj.layout29);
     obj.edit73:setLeft(5);
     obj.edit73:setTop(0);
@@ -1173,7 +1174,7 @@ function newfrmADnD3()
     obj.edit73:setField("Equipamento_2_3");
     obj.edit73:setName("edit73");
 
-    obj.edit74 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit74 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit74:setParent(obj.layout29);
     obj.edit74:setLeft(195);
     obj.edit74:setTop(0);
@@ -1182,7 +1183,7 @@ function newfrmADnD3()
     obj.edit74:setField("Equipamento_Custo_2_3");
     obj.edit74:setName("edit74");
 
-    obj.edit75 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit75 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit75:setParent(obj.layout29);
     obj.edit75:setLeft(245);
     obj.edit75:setTop(0);
@@ -1191,7 +1192,7 @@ function newfrmADnD3()
     obj.edit75:setField("Equipamento_Peso_2_3");
     obj.edit75:setName("edit75");
 
-    obj.layout30 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout30:setParent(obj.layout25);
     obj.layout30:setLeft(0);
     obj.layout30:setTop(130);
@@ -1199,7 +1200,7 @@ function newfrmADnD3()
     obj.layout30:setHeight(25);
     obj.layout30:setName("layout30");
 
-    obj.edit76 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit76 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit76:setParent(obj.layout30);
     obj.edit76:setLeft(5);
     obj.edit76:setTop(0);
@@ -1208,7 +1209,7 @@ function newfrmADnD3()
     obj.edit76:setField("Equipamento_2_4");
     obj.edit76:setName("edit76");
 
-    obj.edit77 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit77 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit77:setParent(obj.layout30);
     obj.edit77:setLeft(195);
     obj.edit77:setTop(0);
@@ -1217,7 +1218,7 @@ function newfrmADnD3()
     obj.edit77:setField("Equipamento_Custo_2_4");
     obj.edit77:setName("edit77");
 
-    obj.edit78 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit78 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit78:setParent(obj.layout30);
     obj.edit78:setLeft(245);
     obj.edit78:setTop(0);
@@ -1226,7 +1227,7 @@ function newfrmADnD3()
     obj.edit78:setField("Equipamento_Peso_2_4");
     obj.edit78:setName("edit78");
 
-    obj.layout31 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.layout25);
     obj.layout31:setLeft(0);
     obj.layout31:setTop(155);
@@ -1234,7 +1235,7 @@ function newfrmADnD3()
     obj.layout31:setHeight(25);
     obj.layout31:setName("layout31");
 
-    obj.edit79 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit79 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit79:setParent(obj.layout31);
     obj.edit79:setLeft(5);
     obj.edit79:setTop(0);
@@ -1243,7 +1244,7 @@ function newfrmADnD3()
     obj.edit79:setField("Equipamento_2_5");
     obj.edit79:setName("edit79");
 
-    obj.edit80 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit80 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit80:setParent(obj.layout31);
     obj.edit80:setLeft(195);
     obj.edit80:setTop(0);
@@ -1252,7 +1253,7 @@ function newfrmADnD3()
     obj.edit80:setField("Equipamento_Custo_2_5");
     obj.edit80:setName("edit80");
 
-    obj.edit81 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit81 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit81:setParent(obj.layout31);
     obj.edit81:setLeft(245);
     obj.edit81:setTop(0);
@@ -1261,7 +1262,7 @@ function newfrmADnD3()
     obj.edit81:setField("Equipamento_Peso_2_5");
     obj.edit81:setName("edit81");
 
-    obj.layout32 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.layout25);
     obj.layout32:setLeft(0);
     obj.layout32:setTop(180);
@@ -1269,7 +1270,7 @@ function newfrmADnD3()
     obj.layout32:setHeight(25);
     obj.layout32:setName("layout32");
 
-    obj.edit82 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit82 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit82:setParent(obj.layout32);
     obj.edit82:setLeft(5);
     obj.edit82:setTop(0);
@@ -1278,7 +1279,7 @@ function newfrmADnD3()
     obj.edit82:setField("Equipamento_2_6");
     obj.edit82:setName("edit82");
 
-    obj.edit83 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit83 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit83:setParent(obj.layout32);
     obj.edit83:setLeft(195);
     obj.edit83:setTop(0);
@@ -1287,7 +1288,7 @@ function newfrmADnD3()
     obj.edit83:setField("Equipamento_Custo_2_6");
     obj.edit83:setName("edit83");
 
-    obj.edit84 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit84 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit84:setParent(obj.layout32);
     obj.edit84:setLeft(245);
     obj.edit84:setTop(0);
@@ -1296,7 +1297,7 @@ function newfrmADnD3()
     obj.edit84:setField("Equipamento_Peso_2_6");
     obj.edit84:setName("edit84");
 
-    obj.layout33 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout33:setParent(obj.layout25);
     obj.layout33:setLeft(0);
     obj.layout33:setTop(205);
@@ -1304,7 +1305,7 @@ function newfrmADnD3()
     obj.layout33:setHeight(25);
     obj.layout33:setName("layout33");
 
-    obj.edit85 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit85 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit85:setParent(obj.layout33);
     obj.edit85:setLeft(5);
     obj.edit85:setTop(0);
@@ -1313,7 +1314,7 @@ function newfrmADnD3()
     obj.edit85:setField("Equipamento_2_7");
     obj.edit85:setName("edit85");
 
-    obj.edit86 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit86:setParent(obj.layout33);
     obj.edit86:setLeft(195);
     obj.edit86:setTop(0);
@@ -1322,7 +1323,7 @@ function newfrmADnD3()
     obj.edit86:setField("Equipamento_Custo_2_7");
     obj.edit86:setName("edit86");
 
-    obj.edit87 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit87 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit87:setParent(obj.layout33);
     obj.edit87:setLeft(245);
     obj.edit87:setTop(0);
@@ -1331,7 +1332,7 @@ function newfrmADnD3()
     obj.edit87:setField("Equipamento_Peso_2_7");
     obj.edit87:setName("edit87");
 
-    obj.layout34 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout34 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout34:setParent(obj.layout25);
     obj.layout34:setLeft(0);
     obj.layout34:setTop(230);
@@ -1339,7 +1340,7 @@ function newfrmADnD3()
     obj.layout34:setHeight(25);
     obj.layout34:setName("layout34");
 
-    obj.edit88 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit88 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit88:setParent(obj.layout34);
     obj.edit88:setLeft(5);
     obj.edit88:setTop(0);
@@ -1348,7 +1349,7 @@ function newfrmADnD3()
     obj.edit88:setField("Equipamento_2_8");
     obj.edit88:setName("edit88");
 
-    obj.edit89 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit89 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit89:setParent(obj.layout34);
     obj.edit89:setLeft(195);
     obj.edit89:setTop(0);
@@ -1357,7 +1358,7 @@ function newfrmADnD3()
     obj.edit89:setField("Equipamento_Custo_2_8");
     obj.edit89:setName("edit89");
 
-    obj.edit90 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit90 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit90:setParent(obj.layout34);
     obj.edit90:setLeft(245);
     obj.edit90:setTop(0);
@@ -1366,7 +1367,7 @@ function newfrmADnD3()
     obj.edit90:setField("Equipamento_Peso_2_8");
     obj.edit90:setName("edit90");
 
-    obj.layout35 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout35:setParent(obj.layout25);
     obj.layout35:setLeft(0);
     obj.layout35:setTop(255);
@@ -1374,7 +1375,7 @@ function newfrmADnD3()
     obj.layout35:setHeight(25);
     obj.layout35:setName("layout35");
 
-    obj.edit91 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit91 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit91:setParent(obj.layout35);
     obj.edit91:setLeft(5);
     obj.edit91:setTop(0);
@@ -1383,7 +1384,7 @@ function newfrmADnD3()
     obj.edit91:setField("Equipamento_2_9");
     obj.edit91:setName("edit91");
 
-    obj.edit92 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit92 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit92:setParent(obj.layout35);
     obj.edit92:setLeft(195);
     obj.edit92:setTop(0);
@@ -1392,7 +1393,7 @@ function newfrmADnD3()
     obj.edit92:setField("Equipamento_Custo_2_9");
     obj.edit92:setName("edit92");
 
-    obj.edit93 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit93 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit93:setParent(obj.layout35);
     obj.edit93:setLeft(245);
     obj.edit93:setTop(0);
@@ -1401,7 +1402,7 @@ function newfrmADnD3()
     obj.edit93:setField("Equipamento_Peso_2_9");
     obj.edit93:setName("edit93");
 
-    obj.layout36 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout36:setParent(obj.layout25);
     obj.layout36:setLeft(0);
     obj.layout36:setTop(280);
@@ -1409,7 +1410,7 @@ function newfrmADnD3()
     obj.layout36:setHeight(25);
     obj.layout36:setName("layout36");
 
-    obj.edit94 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit94 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit94:setParent(obj.layout36);
     obj.edit94:setLeft(5);
     obj.edit94:setTop(0);
@@ -1418,7 +1419,7 @@ function newfrmADnD3()
     obj.edit94:setField("Equipamento_2_10");
     obj.edit94:setName("edit94");
 
-    obj.edit95 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit95 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit95:setParent(obj.layout36);
     obj.edit95:setLeft(195);
     obj.edit95:setTop(0);
@@ -1427,7 +1428,7 @@ function newfrmADnD3()
     obj.edit95:setField("Equipamento_Custo_2_10");
     obj.edit95:setName("edit95");
 
-    obj.edit96 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit96 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit96:setParent(obj.layout36);
     obj.edit96:setLeft(245);
     obj.edit96:setTop(0);
@@ -1436,7 +1437,7 @@ function newfrmADnD3()
     obj.edit96:setField("Equipamento_Peso_2_10");
     obj.edit96:setName("edit96");
 
-    obj.layout37 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout37 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout37:setParent(obj.layout25);
     obj.layout37:setLeft(0);
     obj.layout37:setTop(305);
@@ -1444,7 +1445,7 @@ function newfrmADnD3()
     obj.layout37:setHeight(25);
     obj.layout37:setName("layout37");
 
-    obj.edit97 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit97 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit97:setParent(obj.layout37);
     obj.edit97:setLeft(5);
     obj.edit97:setTop(0);
@@ -1453,7 +1454,7 @@ function newfrmADnD3()
     obj.edit97:setField("Equipamento_2_11");
     obj.edit97:setName("edit97");
 
-    obj.edit98 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit98 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit98:setParent(obj.layout37);
     obj.edit98:setLeft(195);
     obj.edit98:setTop(0);
@@ -1462,7 +1463,7 @@ function newfrmADnD3()
     obj.edit98:setField("Equipamento_Custo_2_11");
     obj.edit98:setName("edit98");
 
-    obj.edit99 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit99 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit99:setParent(obj.layout37);
     obj.edit99:setLeft(245);
     obj.edit99:setTop(0);
@@ -1471,7 +1472,7 @@ function newfrmADnD3()
     obj.edit99:setField("Equipamento_Peso_2_11");
     obj.edit99:setName("edit99");
 
-    obj.layout38 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout38 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout38:setParent(obj.layout25);
     obj.layout38:setLeft(0);
     obj.layout38:setTop(330);
@@ -1479,7 +1480,7 @@ function newfrmADnD3()
     obj.layout38:setHeight(25);
     obj.layout38:setName("layout38");
 
-    obj.edit100 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit100 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit100:setParent(obj.layout38);
     obj.edit100:setLeft(5);
     obj.edit100:setTop(0);
@@ -1488,7 +1489,7 @@ function newfrmADnD3()
     obj.edit100:setField("Equipamento_2_12");
     obj.edit100:setName("edit100");
 
-    obj.edit101 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit101 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit101:setParent(obj.layout38);
     obj.edit101:setLeft(195);
     obj.edit101:setTop(0);
@@ -1497,7 +1498,7 @@ function newfrmADnD3()
     obj.edit101:setField("Equipamento_Custo_2_12");
     obj.edit101:setName("edit101");
 
-    obj.edit102 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit102 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit102:setParent(obj.layout38);
     obj.edit102:setLeft(245);
     obj.edit102:setTop(0);
@@ -1506,7 +1507,7 @@ function newfrmADnD3()
     obj.edit102:setField("Equipamento_Peso_2_12");
     obj.edit102:setName("edit102");
 
-    obj.layout39 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout39 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout39:setParent(obj.layout25);
     obj.layout39:setLeft(0);
     obj.layout39:setTop(355);
@@ -1514,7 +1515,7 @@ function newfrmADnD3()
     obj.layout39:setHeight(25);
     obj.layout39:setName("layout39");
 
-    obj.edit103 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit103 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit103:setParent(obj.layout39);
     obj.edit103:setLeft(5);
     obj.edit103:setTop(0);
@@ -1523,7 +1524,7 @@ function newfrmADnD3()
     obj.edit103:setField("Equipamento_2_13");
     obj.edit103:setName("edit103");
 
-    obj.edit104 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit104 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit104:setParent(obj.layout39);
     obj.edit104:setLeft(195);
     obj.edit104:setTop(0);
@@ -1532,7 +1533,7 @@ function newfrmADnD3()
     obj.edit104:setField("Equipamento_Custo_2_13");
     obj.edit104:setName("edit104");
 
-    obj.edit105 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit105 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit105:setParent(obj.layout39);
     obj.edit105:setLeft(245);
     obj.edit105:setTop(0);
@@ -1541,7 +1542,7 @@ function newfrmADnD3()
     obj.edit105:setField("Equipamento_Peso_2_13");
     obj.edit105:setName("edit105");
 
-    obj.layout40 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout40 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout40:setParent(obj.layout25);
     obj.layout40:setLeft(0);
     obj.layout40:setTop(380);
@@ -1549,7 +1550,7 @@ function newfrmADnD3()
     obj.layout40:setHeight(25);
     obj.layout40:setName("layout40");
 
-    obj.edit106 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit106 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit106:setParent(obj.layout40);
     obj.edit106:setLeft(5);
     obj.edit106:setTop(0);
@@ -1558,7 +1559,7 @@ function newfrmADnD3()
     obj.edit106:setField("Equipamento_2_14");
     obj.edit106:setName("edit106");
 
-    obj.edit107 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit107 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit107:setParent(obj.layout40);
     obj.edit107:setLeft(195);
     obj.edit107:setTop(0);
@@ -1567,7 +1568,7 @@ function newfrmADnD3()
     obj.edit107:setField("Equipamento_Custo_2_14");
     obj.edit107:setName("edit107");
 
-    obj.edit108 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit108 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit108:setParent(obj.layout40);
     obj.edit108:setLeft(245);
     obj.edit108:setTop(0);
@@ -1576,7 +1577,7 @@ function newfrmADnD3()
     obj.edit108:setField("Equipamento_Peso_2_14");
     obj.edit108:setName("edit108");
 
-    obj.layout41 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout41 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout41:setParent(obj.layout25);
     obj.layout41:setLeft(0);
     obj.layout41:setTop(405);
@@ -1584,7 +1585,7 @@ function newfrmADnD3()
     obj.layout41:setHeight(25);
     obj.layout41:setName("layout41");
 
-    obj.edit109 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit109 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit109:setParent(obj.layout41);
     obj.edit109:setLeft(5);
     obj.edit109:setTop(0);
@@ -1593,7 +1594,7 @@ function newfrmADnD3()
     obj.edit109:setField("Equipamento_2_15");
     obj.edit109:setName("edit109");
 
-    obj.edit110 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit110 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit110:setParent(obj.layout41);
     obj.edit110:setLeft(195);
     obj.edit110:setTop(0);
@@ -1602,7 +1603,7 @@ function newfrmADnD3()
     obj.edit110:setField("Equipamento_Custo_2_15");
     obj.edit110:setName("edit110");
 
-    obj.edit111 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit111 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit111:setParent(obj.layout41);
     obj.edit111:setLeft(245);
     obj.edit111:setTop(0);
@@ -1611,7 +1612,7 @@ function newfrmADnD3()
     obj.edit111:setField("Equipamento_Peso_2_15");
     obj.edit111:setName("edit111");
 
-    obj.layout42 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout42 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout42:setParent(obj.layout25);
     obj.layout42:setLeft(0);
     obj.layout42:setTop(430);
@@ -1619,7 +1620,7 @@ function newfrmADnD3()
     obj.layout42:setHeight(25);
     obj.layout42:setName("layout42");
 
-    obj.edit112 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit112 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit112:setParent(obj.layout42);
     obj.edit112:setLeft(5);
     obj.edit112:setTop(0);
@@ -1628,7 +1629,7 @@ function newfrmADnD3()
     obj.edit112:setField("Equipamento_2_16");
     obj.edit112:setName("edit112");
 
-    obj.edit113 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit113 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit113:setParent(obj.layout42);
     obj.edit113:setLeft(195);
     obj.edit113:setTop(0);
@@ -1637,7 +1638,7 @@ function newfrmADnD3()
     obj.edit113:setField("Equipamento_Custo_2_16");
     obj.edit113:setName("edit113");
 
-    obj.edit114 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit114 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit114:setParent(obj.layout42);
     obj.edit114:setLeft(245);
     obj.edit114:setTop(0);
@@ -1646,7 +1647,7 @@ function newfrmADnD3()
     obj.edit114:setField("Equipamento_Peso_2_16");
     obj.edit114:setName("edit114");
 
-    obj.layout43 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout43 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout43:setParent(obj.layout25);
     obj.layout43:setLeft(0);
     obj.layout43:setTop(455);
@@ -1654,7 +1655,7 @@ function newfrmADnD3()
     obj.layout43:setHeight(25);
     obj.layout43:setName("layout43");
 
-    obj.edit115 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit115 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit115:setParent(obj.layout43);
     obj.edit115:setLeft(5);
     obj.edit115:setTop(0);
@@ -1663,7 +1664,7 @@ function newfrmADnD3()
     obj.edit115:setField("Equipamento_2_17");
     obj.edit115:setName("edit115");
 
-    obj.edit116 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit116 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit116:setParent(obj.layout43);
     obj.edit116:setLeft(195);
     obj.edit116:setTop(0);
@@ -1672,7 +1673,7 @@ function newfrmADnD3()
     obj.edit116:setField("Equipamento_Custo_2_17");
     obj.edit116:setName("edit116");
 
-    obj.edit117 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit117 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit117:setParent(obj.layout43);
     obj.edit117:setLeft(245);
     obj.edit117:setTop(0);
@@ -1681,7 +1682,7 @@ function newfrmADnD3()
     obj.edit117:setField("Equipamento_Peso_2_17");
     obj.edit117:setName("edit117");
 
-    obj.layout44 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout44 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout44:setParent(obj.layout25);
     obj.layout44:setLeft(0);
     obj.layout44:setTop(480);
@@ -1689,7 +1690,7 @@ function newfrmADnD3()
     obj.layout44:setHeight(25);
     obj.layout44:setName("layout44");
 
-    obj.edit118 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit118 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit118:setParent(obj.layout44);
     obj.edit118:setLeft(5);
     obj.edit118:setTop(0);
@@ -1698,7 +1699,7 @@ function newfrmADnD3()
     obj.edit118:setField("Equipamento_2_18");
     obj.edit118:setName("edit118");
 
-    obj.edit119 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit119 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit119:setParent(obj.layout44);
     obj.edit119:setLeft(195);
     obj.edit119:setTop(0);
@@ -1707,7 +1708,7 @@ function newfrmADnD3()
     obj.edit119:setField("Equipamento_Custo_2_18");
     obj.edit119:setName("edit119");
 
-    obj.edit120 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit120 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit120:setParent(obj.layout44);
     obj.edit120:setLeft(245);
     obj.edit120:setTop(0);
@@ -1716,7 +1717,7 @@ function newfrmADnD3()
     obj.edit120:setField("Equipamento_Peso_2_18");
     obj.edit120:setName("edit120");
 
-    obj.layout45 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout45 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout45:setParent(obj.layout25);
     obj.layout45:setLeft(0);
     obj.layout45:setTop(505);
@@ -1724,7 +1725,7 @@ function newfrmADnD3()
     obj.layout45:setHeight(25);
     obj.layout45:setName("layout45");
 
-    obj.edit121 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit121 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit121:setParent(obj.layout45);
     obj.edit121:setLeft(5);
     obj.edit121:setTop(0);
@@ -1733,7 +1734,7 @@ function newfrmADnD3()
     obj.edit121:setField("Equipamento_2_19");
     obj.edit121:setName("edit121");
 
-    obj.edit122 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit122 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit122:setParent(obj.layout45);
     obj.edit122:setLeft(195);
     obj.edit122:setTop(0);
@@ -1742,7 +1743,7 @@ function newfrmADnD3()
     obj.edit122:setField("Equipamento_Custo_2_19");
     obj.edit122:setName("edit122");
 
-    obj.edit123 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit123 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit123:setParent(obj.layout45);
     obj.edit123:setLeft(245);
     obj.edit123:setTop(0);
@@ -1751,7 +1752,7 @@ function newfrmADnD3()
     obj.edit123:setField("Equipamento_Peso_2_19");
     obj.edit123:setName("edit123");
 
-    obj.layout46 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout46 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout46:setParent(obj.layout25);
     obj.layout46:setLeft(0);
     obj.layout46:setTop(530);
@@ -1759,7 +1760,7 @@ function newfrmADnD3()
     obj.layout46:setHeight(25);
     obj.layout46:setName("layout46");
 
-    obj.edit124 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit124 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit124:setParent(obj.layout46);
     obj.edit124:setLeft(5);
     obj.edit124:setTop(0);
@@ -1768,7 +1769,7 @@ function newfrmADnD3()
     obj.edit124:setField("Equipamento_2_20");
     obj.edit124:setName("edit124");
 
-    obj.edit125 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit125 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit125:setParent(obj.layout46);
     obj.edit125:setLeft(195);
     obj.edit125:setTop(0);
@@ -1777,7 +1778,7 @@ function newfrmADnD3()
     obj.edit125:setField("Equipamento_Custo_2_20");
     obj.edit125:setName("edit125");
 
-    obj.edit126 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit126 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit126:setParent(obj.layout46);
     obj.edit126:setLeft(245);
     obj.edit126:setTop(0);
@@ -1786,7 +1787,7 @@ function newfrmADnD3()
     obj.edit126:setField("Equipamento_Peso_2_20");
     obj.edit126:setName("edit126");
 
-    obj.layout47 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout47 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout47:setParent(obj.layout25);
     obj.layout47:setLeft(0);
     obj.layout47:setTop(555);
@@ -1794,7 +1795,7 @@ function newfrmADnD3()
     obj.layout47:setHeight(25);
     obj.layout47:setName("layout47");
 
-    obj.edit127 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit127 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit127:setParent(obj.layout47);
     obj.edit127:setLeft(5);
     obj.edit127:setTop(0);
@@ -1803,7 +1804,7 @@ function newfrmADnD3()
     obj.edit127:setField("Equipamento_2_21");
     obj.edit127:setName("edit127");
 
-    obj.edit128 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit128 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit128:setParent(obj.layout47);
     obj.edit128:setLeft(195);
     obj.edit128:setTop(0);
@@ -1812,7 +1813,7 @@ function newfrmADnD3()
     obj.edit128:setField("Equipamento_Custo_2_21");
     obj.edit128:setName("edit128");
 
-    obj.edit129 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit129 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit129:setParent(obj.layout47);
     obj.edit129:setLeft(245);
     obj.edit129:setTop(0);
@@ -1821,7 +1822,7 @@ function newfrmADnD3()
     obj.edit129:setField("Equipamento_Peso_2_21");
     obj.edit129:setName("edit129");
 
-    obj.layout48 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout48 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout48:setParent(obj.layout25);
     obj.layout48:setLeft(0);
     obj.layout48:setTop(580);
@@ -1829,7 +1830,7 @@ function newfrmADnD3()
     obj.layout48:setHeight(25);
     obj.layout48:setName("layout48");
 
-    obj.edit130 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit130 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit130:setParent(obj.layout48);
     obj.edit130:setLeft(5);
     obj.edit130:setTop(0);
@@ -1838,7 +1839,7 @@ function newfrmADnD3()
     obj.edit130:setField("Equipamento_2_22");
     obj.edit130:setName("edit130");
 
-    obj.edit131 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit131 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit131:setParent(obj.layout48);
     obj.edit131:setLeft(195);
     obj.edit131:setTop(0);
@@ -1847,7 +1848,7 @@ function newfrmADnD3()
     obj.edit131:setField("Equipamento_Custo_2_22");
     obj.edit131:setName("edit131");
 
-    obj.edit132 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit132 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit132:setParent(obj.layout48);
     obj.edit132:setLeft(245);
     obj.edit132:setTop(0);
@@ -1856,7 +1857,7 @@ function newfrmADnD3()
     obj.edit132:setField("Equipamento_Peso_2_22");
     obj.edit132:setName("edit132");
 
-    obj.layout49 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout49:setParent(obj.scrollBox1);
     obj.layout49:setLeft(620);
     obj.layout49:setTop(0);
@@ -1864,7 +1865,7 @@ function newfrmADnD3()
     obj.layout49:setHeight(610);
     obj.layout49:setName("layout49");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout49);
     obj.rectangle3:setAlign("client");
     obj.rectangle3:setColor("black");
@@ -1873,7 +1874,7 @@ function newfrmADnD3()
     obj.rectangle3:setCornerType("round");
     obj.rectangle3:setName("rectangle3");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout49);
     obj.label9:setLeft(0);
     obj.label9:setTop(5);
@@ -1883,7 +1884,7 @@ function newfrmADnD3()
     obj.label9:setHorzTextAlign("center");
     obj.label9:setName("label9");
 
-    obj.layout50 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout50 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout50:setParent(obj.layout49);
     obj.layout50:setLeft(0);
     obj.layout50:setTop(30);
@@ -1891,7 +1892,7 @@ function newfrmADnD3()
     obj.layout50:setHeight(25);
     obj.layout50:setName("layout50");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout50);
     obj.label10:setLeft(5);
     obj.label10:setTop(0);
@@ -1901,7 +1902,7 @@ function newfrmADnD3()
     obj.label10:setText("Item");
     obj.label10:setName("label10");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout50);
     obj.label11:setLeft(195);
     obj.label11:setTop(0);
@@ -1911,7 +1912,7 @@ function newfrmADnD3()
     obj.label11:setText("Custo");
     obj.label11:setName("label11");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout50);
     obj.label12:setLeft(245);
     obj.label12:setTop(0);
@@ -1921,7 +1922,7 @@ function newfrmADnD3()
     obj.label12:setText("Peso");
     obj.label12:setName("label12");
 
-    obj.layout51 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout51 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout51:setParent(obj.layout49);
     obj.layout51:setLeft(0);
     obj.layout51:setTop(55);
@@ -1929,7 +1930,7 @@ function newfrmADnD3()
     obj.layout51:setHeight(25);
     obj.layout51:setName("layout51");
 
-    obj.edit133 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit133 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit133:setParent(obj.layout51);
     obj.edit133:setLeft(5);
     obj.edit133:setTop(0);
@@ -1938,7 +1939,7 @@ function newfrmADnD3()
     obj.edit133:setField("Equipamento_3_1");
     obj.edit133:setName("edit133");
 
-    obj.edit134 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit134 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit134:setParent(obj.layout51);
     obj.edit134:setLeft(195);
     obj.edit134:setTop(0);
@@ -1947,7 +1948,7 @@ function newfrmADnD3()
     obj.edit134:setField("Equipamento_Custo_3_1");
     obj.edit134:setName("edit134");
 
-    obj.edit135 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit135 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit135:setParent(obj.layout51);
     obj.edit135:setLeft(245);
     obj.edit135:setTop(0);
@@ -1956,7 +1957,7 @@ function newfrmADnD3()
     obj.edit135:setField("Equipamento_Peso_3_1");
     obj.edit135:setName("edit135");
 
-    obj.layout52 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout52 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout52:setParent(obj.layout49);
     obj.layout52:setLeft(0);
     obj.layout52:setTop(80);
@@ -1964,7 +1965,7 @@ function newfrmADnD3()
     obj.layout52:setHeight(25);
     obj.layout52:setName("layout52");
 
-    obj.edit136 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit136 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit136:setParent(obj.layout52);
     obj.edit136:setLeft(5);
     obj.edit136:setTop(0);
@@ -1973,7 +1974,7 @@ function newfrmADnD3()
     obj.edit136:setField("Equipamento_3_2");
     obj.edit136:setName("edit136");
 
-    obj.edit137 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit137 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit137:setParent(obj.layout52);
     obj.edit137:setLeft(195);
     obj.edit137:setTop(0);
@@ -1982,7 +1983,7 @@ function newfrmADnD3()
     obj.edit137:setField("Equipamento_Custo_3_2");
     obj.edit137:setName("edit137");
 
-    obj.edit138 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit138 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit138:setParent(obj.layout52);
     obj.edit138:setLeft(245);
     obj.edit138:setTop(0);
@@ -1991,7 +1992,7 @@ function newfrmADnD3()
     obj.edit138:setField("Equipamento_Peso_3_2");
     obj.edit138:setName("edit138");
 
-    obj.layout53 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout53 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout53:setParent(obj.layout49);
     obj.layout53:setLeft(0);
     obj.layout53:setTop(105);
@@ -1999,7 +2000,7 @@ function newfrmADnD3()
     obj.layout53:setHeight(25);
     obj.layout53:setName("layout53");
 
-    obj.edit139 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit139 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit139:setParent(obj.layout53);
     obj.edit139:setLeft(5);
     obj.edit139:setTop(0);
@@ -2008,7 +2009,7 @@ function newfrmADnD3()
     obj.edit139:setField("Equipamento_3_3");
     obj.edit139:setName("edit139");
 
-    obj.edit140 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit140 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit140:setParent(obj.layout53);
     obj.edit140:setLeft(195);
     obj.edit140:setTop(0);
@@ -2017,7 +2018,7 @@ function newfrmADnD3()
     obj.edit140:setField("Equipamento_Custo_3_3");
     obj.edit140:setName("edit140");
 
-    obj.edit141 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit141 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit141:setParent(obj.layout53);
     obj.edit141:setLeft(245);
     obj.edit141:setTop(0);
@@ -2026,7 +2027,7 @@ function newfrmADnD3()
     obj.edit141:setField("Equipamento_Peso_3_3");
     obj.edit141:setName("edit141");
 
-    obj.layout54 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout54 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout54:setParent(obj.layout49);
     obj.layout54:setLeft(0);
     obj.layout54:setTop(130);
@@ -2034,7 +2035,7 @@ function newfrmADnD3()
     obj.layout54:setHeight(25);
     obj.layout54:setName("layout54");
 
-    obj.edit142 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit142 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit142:setParent(obj.layout54);
     obj.edit142:setLeft(5);
     obj.edit142:setTop(0);
@@ -2043,7 +2044,7 @@ function newfrmADnD3()
     obj.edit142:setField("Equipamento_3_4");
     obj.edit142:setName("edit142");
 
-    obj.edit143 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit143 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit143:setParent(obj.layout54);
     obj.edit143:setLeft(195);
     obj.edit143:setTop(0);
@@ -2052,7 +2053,7 @@ function newfrmADnD3()
     obj.edit143:setField("Equipamento_Custo_3_4");
     obj.edit143:setName("edit143");
 
-    obj.edit144 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit144 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit144:setParent(obj.layout54);
     obj.edit144:setLeft(245);
     obj.edit144:setTop(0);
@@ -2061,7 +2062,7 @@ function newfrmADnD3()
     obj.edit144:setField("Equipamento_Peso_3_4");
     obj.edit144:setName("edit144");
 
-    obj.layout55 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout55 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout55:setParent(obj.layout49);
     obj.layout55:setLeft(0);
     obj.layout55:setTop(155);
@@ -2069,7 +2070,7 @@ function newfrmADnD3()
     obj.layout55:setHeight(25);
     obj.layout55:setName("layout55");
 
-    obj.edit145 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit145 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit145:setParent(obj.layout55);
     obj.edit145:setLeft(5);
     obj.edit145:setTop(0);
@@ -2078,7 +2079,7 @@ function newfrmADnD3()
     obj.edit145:setField("Equipamento_3_5");
     obj.edit145:setName("edit145");
 
-    obj.edit146 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit146 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit146:setParent(obj.layout55);
     obj.edit146:setLeft(195);
     obj.edit146:setTop(0);
@@ -2087,7 +2088,7 @@ function newfrmADnD3()
     obj.edit146:setField("Equipamento_Custo_3_5");
     obj.edit146:setName("edit146");
 
-    obj.edit147 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit147 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit147:setParent(obj.layout55);
     obj.edit147:setLeft(245);
     obj.edit147:setTop(0);
@@ -2096,7 +2097,7 @@ function newfrmADnD3()
     obj.edit147:setField("Equipamento_Peso_3_5");
     obj.edit147:setName("edit147");
 
-    obj.layout56 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout56 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout56:setParent(obj.layout49);
     obj.layout56:setLeft(0);
     obj.layout56:setTop(180);
@@ -2104,7 +2105,7 @@ function newfrmADnD3()
     obj.layout56:setHeight(25);
     obj.layout56:setName("layout56");
 
-    obj.edit148 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit148 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit148:setParent(obj.layout56);
     obj.edit148:setLeft(5);
     obj.edit148:setTop(0);
@@ -2113,7 +2114,7 @@ function newfrmADnD3()
     obj.edit148:setField("Equipamento_3_6");
     obj.edit148:setName("edit148");
 
-    obj.edit149 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit149 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit149:setParent(obj.layout56);
     obj.edit149:setLeft(195);
     obj.edit149:setTop(0);
@@ -2122,7 +2123,7 @@ function newfrmADnD3()
     obj.edit149:setField("Equipamento_Custo_3_6");
     obj.edit149:setName("edit149");
 
-    obj.edit150 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit150 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit150:setParent(obj.layout56);
     obj.edit150:setLeft(245);
     obj.edit150:setTop(0);
@@ -2131,7 +2132,7 @@ function newfrmADnD3()
     obj.edit150:setField("Equipamento_Peso_3_6");
     obj.edit150:setName("edit150");
 
-    obj.layout57 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout57 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout57:setParent(obj.layout49);
     obj.layout57:setLeft(0);
     obj.layout57:setTop(205);
@@ -2139,7 +2140,7 @@ function newfrmADnD3()
     obj.layout57:setHeight(25);
     obj.layout57:setName("layout57");
 
-    obj.edit151 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit151 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit151:setParent(obj.layout57);
     obj.edit151:setLeft(5);
     obj.edit151:setTop(0);
@@ -2148,7 +2149,7 @@ function newfrmADnD3()
     obj.edit151:setField("Equipamento_3_7");
     obj.edit151:setName("edit151");
 
-    obj.edit152 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit152 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit152:setParent(obj.layout57);
     obj.edit152:setLeft(195);
     obj.edit152:setTop(0);
@@ -2157,7 +2158,7 @@ function newfrmADnD3()
     obj.edit152:setField("Equipamento_Custo_3_7");
     obj.edit152:setName("edit152");
 
-    obj.edit153 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit153 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit153:setParent(obj.layout57);
     obj.edit153:setLeft(245);
     obj.edit153:setTop(0);
@@ -2166,7 +2167,7 @@ function newfrmADnD3()
     obj.edit153:setField("Equipamento_Peso_3_7");
     obj.edit153:setName("edit153");
 
-    obj.layout58 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout58 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout58:setParent(obj.layout49);
     obj.layout58:setLeft(0);
     obj.layout58:setTop(230);
@@ -2174,7 +2175,7 @@ function newfrmADnD3()
     obj.layout58:setHeight(25);
     obj.layout58:setName("layout58");
 
-    obj.edit154 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit154 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit154:setParent(obj.layout58);
     obj.edit154:setLeft(5);
     obj.edit154:setTop(0);
@@ -2183,7 +2184,7 @@ function newfrmADnD3()
     obj.edit154:setField("Equipamento_3_8");
     obj.edit154:setName("edit154");
 
-    obj.edit155 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit155 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit155:setParent(obj.layout58);
     obj.edit155:setLeft(195);
     obj.edit155:setTop(0);
@@ -2192,7 +2193,7 @@ function newfrmADnD3()
     obj.edit155:setField("Equipamento_Custo_3_8");
     obj.edit155:setName("edit155");
 
-    obj.edit156 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit156 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit156:setParent(obj.layout58);
     obj.edit156:setLeft(245);
     obj.edit156:setTop(0);
@@ -2201,7 +2202,7 @@ function newfrmADnD3()
     obj.edit156:setField("Equipamento_Peso_3_8");
     obj.edit156:setName("edit156");
 
-    obj.layout59 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout59 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout59:setParent(obj.layout49);
     obj.layout59:setLeft(0);
     obj.layout59:setTop(255);
@@ -2209,7 +2210,7 @@ function newfrmADnD3()
     obj.layout59:setHeight(25);
     obj.layout59:setName("layout59");
 
-    obj.edit157 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit157 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit157:setParent(obj.layout59);
     obj.edit157:setLeft(5);
     obj.edit157:setTop(0);
@@ -2218,7 +2219,7 @@ function newfrmADnD3()
     obj.edit157:setField("Equipamento_3_9");
     obj.edit157:setName("edit157");
 
-    obj.edit158 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit158 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit158:setParent(obj.layout59);
     obj.edit158:setLeft(195);
     obj.edit158:setTop(0);
@@ -2227,7 +2228,7 @@ function newfrmADnD3()
     obj.edit158:setField("Equipamento_Custo_3_9");
     obj.edit158:setName("edit158");
 
-    obj.edit159 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit159 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit159:setParent(obj.layout59);
     obj.edit159:setLeft(245);
     obj.edit159:setTop(0);
@@ -2236,7 +2237,7 @@ function newfrmADnD3()
     obj.edit159:setField("Equipamento_Peso_3_9");
     obj.edit159:setName("edit159");
 
-    obj.layout60 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout60 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout60:setParent(obj.layout49);
     obj.layout60:setLeft(0);
     obj.layout60:setTop(280);
@@ -2244,7 +2245,7 @@ function newfrmADnD3()
     obj.layout60:setHeight(25);
     obj.layout60:setName("layout60");
 
-    obj.edit160 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit160 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit160:setParent(obj.layout60);
     obj.edit160:setLeft(5);
     obj.edit160:setTop(0);
@@ -2253,7 +2254,7 @@ function newfrmADnD3()
     obj.edit160:setField("Equipamento_3_10");
     obj.edit160:setName("edit160");
 
-    obj.edit161 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit161 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit161:setParent(obj.layout60);
     obj.edit161:setLeft(195);
     obj.edit161:setTop(0);
@@ -2262,7 +2263,7 @@ function newfrmADnD3()
     obj.edit161:setField("Equipamento_Custo_3_10");
     obj.edit161:setName("edit161");
 
-    obj.edit162 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit162 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit162:setParent(obj.layout60);
     obj.edit162:setLeft(245);
     obj.edit162:setTop(0);
@@ -2271,7 +2272,7 @@ function newfrmADnD3()
     obj.edit162:setField("Equipamento_Peso_3_10");
     obj.edit162:setName("edit162");
 
-    obj.layout61 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout61 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout61:setParent(obj.layout49);
     obj.layout61:setLeft(0);
     obj.layout61:setTop(305);
@@ -2279,7 +2280,7 @@ function newfrmADnD3()
     obj.layout61:setHeight(25);
     obj.layout61:setName("layout61");
 
-    obj.edit163 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit163 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit163:setParent(obj.layout61);
     obj.edit163:setLeft(5);
     obj.edit163:setTop(0);
@@ -2288,7 +2289,7 @@ function newfrmADnD3()
     obj.edit163:setField("Equipamento_3_11");
     obj.edit163:setName("edit163");
 
-    obj.edit164 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit164 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit164:setParent(obj.layout61);
     obj.edit164:setLeft(195);
     obj.edit164:setTop(0);
@@ -2297,7 +2298,7 @@ function newfrmADnD3()
     obj.edit164:setField("Equipamento_Custo_3_11");
     obj.edit164:setName("edit164");
 
-    obj.edit165 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit165 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit165:setParent(obj.layout61);
     obj.edit165:setLeft(245);
     obj.edit165:setTop(0);
@@ -2306,7 +2307,7 @@ function newfrmADnD3()
     obj.edit165:setField("Equipamento_Peso_3_11");
     obj.edit165:setName("edit165");
 
-    obj.layout62 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout62 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout62:setParent(obj.layout49);
     obj.layout62:setLeft(0);
     obj.layout62:setTop(330);
@@ -2314,7 +2315,7 @@ function newfrmADnD3()
     obj.layout62:setHeight(25);
     obj.layout62:setName("layout62");
 
-    obj.edit166 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit166 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit166:setParent(obj.layout62);
     obj.edit166:setLeft(5);
     obj.edit166:setTop(0);
@@ -2323,7 +2324,7 @@ function newfrmADnD3()
     obj.edit166:setField("Equipamento_3_12");
     obj.edit166:setName("edit166");
 
-    obj.edit167 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit167 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit167:setParent(obj.layout62);
     obj.edit167:setLeft(195);
     obj.edit167:setTop(0);
@@ -2332,7 +2333,7 @@ function newfrmADnD3()
     obj.edit167:setField("Equipamento_Custo_3_12");
     obj.edit167:setName("edit167");
 
-    obj.edit168 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit168 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit168:setParent(obj.layout62);
     obj.edit168:setLeft(245);
     obj.edit168:setTop(0);
@@ -2341,7 +2342,7 @@ function newfrmADnD3()
     obj.edit168:setField("Equipamento_Peso_3_12");
     obj.edit168:setName("edit168");
 
-    obj.layout63 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout63 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout63:setParent(obj.layout49);
     obj.layout63:setLeft(0);
     obj.layout63:setTop(355);
@@ -2349,7 +2350,7 @@ function newfrmADnD3()
     obj.layout63:setHeight(25);
     obj.layout63:setName("layout63");
 
-    obj.edit169 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit169 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit169:setParent(obj.layout63);
     obj.edit169:setLeft(5);
     obj.edit169:setTop(0);
@@ -2358,7 +2359,7 @@ function newfrmADnD3()
     obj.edit169:setField("Equipamento_3_13");
     obj.edit169:setName("edit169");
 
-    obj.edit170 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit170 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit170:setParent(obj.layout63);
     obj.edit170:setLeft(195);
     obj.edit170:setTop(0);
@@ -2367,7 +2368,7 @@ function newfrmADnD3()
     obj.edit170:setField("Equipamento_Custo_3_13");
     obj.edit170:setName("edit170");
 
-    obj.edit171 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit171 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit171:setParent(obj.layout63);
     obj.edit171:setLeft(245);
     obj.edit171:setTop(0);
@@ -2376,7 +2377,7 @@ function newfrmADnD3()
     obj.edit171:setField("Equipamento_Peso_3_13");
     obj.edit171:setName("edit171");
 
-    obj.layout64 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout64 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout64:setParent(obj.layout49);
     obj.layout64:setLeft(0);
     obj.layout64:setTop(380);
@@ -2384,7 +2385,7 @@ function newfrmADnD3()
     obj.layout64:setHeight(25);
     obj.layout64:setName("layout64");
 
-    obj.edit172 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit172 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit172:setParent(obj.layout64);
     obj.edit172:setLeft(5);
     obj.edit172:setTop(0);
@@ -2393,7 +2394,7 @@ function newfrmADnD3()
     obj.edit172:setField("Equipamento_3_14");
     obj.edit172:setName("edit172");
 
-    obj.edit173 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit173 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit173:setParent(obj.layout64);
     obj.edit173:setLeft(195);
     obj.edit173:setTop(0);
@@ -2402,7 +2403,7 @@ function newfrmADnD3()
     obj.edit173:setField("Equipamento_Custo_3_14");
     obj.edit173:setName("edit173");
 
-    obj.edit174 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit174 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit174:setParent(obj.layout64);
     obj.edit174:setLeft(245);
     obj.edit174:setTop(0);
@@ -2411,7 +2412,7 @@ function newfrmADnD3()
     obj.edit174:setField("Equipamento_Peso_3_14");
     obj.edit174:setName("edit174");
 
-    obj.layout65 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout65 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout65:setParent(obj.layout49);
     obj.layout65:setLeft(0);
     obj.layout65:setTop(405);
@@ -2419,7 +2420,7 @@ function newfrmADnD3()
     obj.layout65:setHeight(25);
     obj.layout65:setName("layout65");
 
-    obj.edit175 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit175 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit175:setParent(obj.layout65);
     obj.edit175:setLeft(5);
     obj.edit175:setTop(0);
@@ -2428,7 +2429,7 @@ function newfrmADnD3()
     obj.edit175:setField("Equipamento_3_15");
     obj.edit175:setName("edit175");
 
-    obj.edit176 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit176 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit176:setParent(obj.layout65);
     obj.edit176:setLeft(195);
     obj.edit176:setTop(0);
@@ -2437,7 +2438,7 @@ function newfrmADnD3()
     obj.edit176:setField("Equipamento_Custo_3_15");
     obj.edit176:setName("edit176");
 
-    obj.edit177 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit177 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit177:setParent(obj.layout65);
     obj.edit177:setLeft(245);
     obj.edit177:setTop(0);
@@ -2446,7 +2447,7 @@ function newfrmADnD3()
     obj.edit177:setField("Equipamento_Peso_3_15");
     obj.edit177:setName("edit177");
 
-    obj.layout66 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout66 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout66:setParent(obj.layout49);
     obj.layout66:setLeft(0);
     obj.layout66:setTop(430);
@@ -2454,7 +2455,7 @@ function newfrmADnD3()
     obj.layout66:setHeight(25);
     obj.layout66:setName("layout66");
 
-    obj.edit178 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit178 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit178:setParent(obj.layout66);
     obj.edit178:setLeft(5);
     obj.edit178:setTop(0);
@@ -2463,7 +2464,7 @@ function newfrmADnD3()
     obj.edit178:setField("Equipamento_3_16");
     obj.edit178:setName("edit178");
 
-    obj.edit179 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit179 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit179:setParent(obj.layout66);
     obj.edit179:setLeft(195);
     obj.edit179:setTop(0);
@@ -2472,7 +2473,7 @@ function newfrmADnD3()
     obj.edit179:setField("Equipamento_Custo_3_16");
     obj.edit179:setName("edit179");
 
-    obj.edit180 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit180 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit180:setParent(obj.layout66);
     obj.edit180:setLeft(245);
     obj.edit180:setTop(0);
@@ -2481,7 +2482,7 @@ function newfrmADnD3()
     obj.edit180:setField("Equipamento_Peso_3_16");
     obj.edit180:setName("edit180");
 
-    obj.layout67 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout67 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout67:setParent(obj.layout49);
     obj.layout67:setLeft(0);
     obj.layout67:setTop(455);
@@ -2489,7 +2490,7 @@ function newfrmADnD3()
     obj.layout67:setHeight(25);
     obj.layout67:setName("layout67");
 
-    obj.edit181 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit181 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit181:setParent(obj.layout67);
     obj.edit181:setLeft(5);
     obj.edit181:setTop(0);
@@ -2498,7 +2499,7 @@ function newfrmADnD3()
     obj.edit181:setField("Equipamento_3_17");
     obj.edit181:setName("edit181");
 
-    obj.edit182 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit182 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit182:setParent(obj.layout67);
     obj.edit182:setLeft(195);
     obj.edit182:setTop(0);
@@ -2507,7 +2508,7 @@ function newfrmADnD3()
     obj.edit182:setField("Equipamento_Custo_3_17");
     obj.edit182:setName("edit182");
 
-    obj.edit183 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit183 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit183:setParent(obj.layout67);
     obj.edit183:setLeft(245);
     obj.edit183:setTop(0);
@@ -2516,7 +2517,7 @@ function newfrmADnD3()
     obj.edit183:setField("Equipamento_Peso_3_17");
     obj.edit183:setName("edit183");
 
-    obj.layout68 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout68 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout68:setParent(obj.layout49);
     obj.layout68:setLeft(0);
     obj.layout68:setTop(480);
@@ -2524,7 +2525,7 @@ function newfrmADnD3()
     obj.layout68:setHeight(25);
     obj.layout68:setName("layout68");
 
-    obj.edit184 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit184 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit184:setParent(obj.layout68);
     obj.edit184:setLeft(5);
     obj.edit184:setTop(0);
@@ -2533,7 +2534,7 @@ function newfrmADnD3()
     obj.edit184:setField("Equipamento_3_18");
     obj.edit184:setName("edit184");
 
-    obj.edit185 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit185 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit185:setParent(obj.layout68);
     obj.edit185:setLeft(195);
     obj.edit185:setTop(0);
@@ -2542,7 +2543,7 @@ function newfrmADnD3()
     obj.edit185:setField("Equipamento_Custo_3_18");
     obj.edit185:setName("edit185");
 
-    obj.edit186 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit186 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit186:setParent(obj.layout68);
     obj.edit186:setLeft(245);
     obj.edit186:setTop(0);
@@ -2551,7 +2552,7 @@ function newfrmADnD3()
     obj.edit186:setField("Equipamento_Peso_3_18");
     obj.edit186:setName("edit186");
 
-    obj.layout69 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout69 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout69:setParent(obj.layout49);
     obj.layout69:setLeft(0);
     obj.layout69:setTop(505);
@@ -2559,7 +2560,7 @@ function newfrmADnD3()
     obj.layout69:setHeight(25);
     obj.layout69:setName("layout69");
 
-    obj.edit187 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit187 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit187:setParent(obj.layout69);
     obj.edit187:setLeft(5);
     obj.edit187:setTop(0);
@@ -2568,7 +2569,7 @@ function newfrmADnD3()
     obj.edit187:setField("Equipamento_3_19");
     obj.edit187:setName("edit187");
 
-    obj.edit188 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit188 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit188:setParent(obj.layout69);
     obj.edit188:setLeft(195);
     obj.edit188:setTop(0);
@@ -2577,7 +2578,7 @@ function newfrmADnD3()
     obj.edit188:setField("Equipamento_Custo_3_19");
     obj.edit188:setName("edit188");
 
-    obj.edit189 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit189 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit189:setParent(obj.layout69);
     obj.edit189:setLeft(245);
     obj.edit189:setTop(0);
@@ -2586,7 +2587,7 @@ function newfrmADnD3()
     obj.edit189:setField("Equipamento_Peso_3_19");
     obj.edit189:setName("edit189");
 
-    obj.layout70 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout70 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout70:setParent(obj.layout49);
     obj.layout70:setLeft(0);
     obj.layout70:setTop(530);
@@ -2594,7 +2595,7 @@ function newfrmADnD3()
     obj.layout70:setHeight(25);
     obj.layout70:setName("layout70");
 
-    obj.edit190 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit190 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit190:setParent(obj.layout70);
     obj.edit190:setLeft(5);
     obj.edit190:setTop(0);
@@ -2603,7 +2604,7 @@ function newfrmADnD3()
     obj.edit190:setField("Equipamento_3_20");
     obj.edit190:setName("edit190");
 
-    obj.edit191 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit191 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit191:setParent(obj.layout70);
     obj.edit191:setLeft(195);
     obj.edit191:setTop(0);
@@ -2612,7 +2613,7 @@ function newfrmADnD3()
     obj.edit191:setField("Equipamento_Custo_3_20");
     obj.edit191:setName("edit191");
 
-    obj.edit192 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit192 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit192:setParent(obj.layout70);
     obj.edit192:setLeft(245);
     obj.edit192:setTop(0);
@@ -2621,7 +2622,7 @@ function newfrmADnD3()
     obj.edit192:setField("Equipamento_Peso_3_20");
     obj.edit192:setName("edit192");
 
-    obj.layout71 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout71 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout71:setParent(obj.layout49);
     obj.layout71:setLeft(0);
     obj.layout71:setTop(555);
@@ -2629,7 +2630,7 @@ function newfrmADnD3()
     obj.layout71:setHeight(25);
     obj.layout71:setName("layout71");
 
-    obj.edit193 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit193 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit193:setParent(obj.layout71);
     obj.edit193:setLeft(5);
     obj.edit193:setTop(0);
@@ -2638,7 +2639,7 @@ function newfrmADnD3()
     obj.edit193:setField("Equipamento_3_21");
     obj.edit193:setName("edit193");
 
-    obj.edit194 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit194 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit194:setParent(obj.layout71);
     obj.edit194:setLeft(195);
     obj.edit194:setTop(0);
@@ -2647,7 +2648,7 @@ function newfrmADnD3()
     obj.edit194:setField("Equipamento_Custo_3_21");
     obj.edit194:setName("edit194");
 
-    obj.edit195 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit195 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit195:setParent(obj.layout71);
     obj.edit195:setLeft(245);
     obj.edit195:setTop(0);
@@ -2656,7 +2657,7 @@ function newfrmADnD3()
     obj.edit195:setField("Equipamento_Peso_3_21");
     obj.edit195:setName("edit195");
 
-    obj.layout72 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout72 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout72:setParent(obj.layout49);
     obj.layout72:setLeft(0);
     obj.layout72:setTop(580);
@@ -2664,7 +2665,7 @@ function newfrmADnD3()
     obj.layout72:setHeight(25);
     obj.layout72:setName("layout72");
 
-    obj.edit196 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit196 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit196:setParent(obj.layout72);
     obj.edit196:setLeft(5);
     obj.edit196:setTop(0);
@@ -2673,7 +2674,7 @@ function newfrmADnD3()
     obj.edit196:setField("Equipamento_3_22");
     obj.edit196:setName("edit196");
 
-    obj.edit197 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit197 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit197:setParent(obj.layout72);
     obj.edit197:setLeft(195);
     obj.edit197:setTop(0);
@@ -2682,7 +2683,7 @@ function newfrmADnD3()
     obj.edit197:setField("Equipamento_Custo_3_22");
     obj.edit197:setName("edit197");
 
-    obj.edit198 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit198 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit198:setParent(obj.layout72);
     obj.edit198:setLeft(245);
     obj.edit198:setTop(0);
@@ -2691,7 +2692,7 @@ function newfrmADnD3()
     obj.edit198:setField("Equipamento_Peso_3_22");
     obj.edit198:setName("edit198");
 
-    obj.layout73 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout73 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout73:setParent(obj.scrollBox1);
     obj.layout73:setLeft(930);
     obj.layout73:setTop(0);
@@ -2699,7 +2700,7 @@ function newfrmADnD3()
     obj.layout73:setHeight(115);
     obj.layout73:setName("layout73");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.layout73);
     obj.rectangle4:setAlign("client");
     obj.rectangle4:setColor("black");
@@ -2708,7 +2709,7 @@ function newfrmADnD3()
     obj.rectangle4:setCornerType("round");
     obj.rectangle4:setName("rectangle4");
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout73);
     obj.label13:setLeft(0);
     obj.label13:setTop(5);
@@ -2718,7 +2719,7 @@ function newfrmADnD3()
     obj.label13:setHorzTextAlign("center");
     obj.label13:setName("label13");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout73);
     obj.label14:setLeft(5);
     obj.label14:setTop(55);
@@ -2728,7 +2729,7 @@ function newfrmADnD3()
     obj.label14:setHorzTextAlign("trailing");
     obj.label14:setName("label14");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.layout73);
     obj.rectangle5:setLeft(70);
     obj.rectangle5:setTop(50);
@@ -2739,7 +2740,7 @@ function newfrmADnD3()
     obj.rectangle5:setStrokeSize(1);
     obj.rectangle5:setName("rectangle5");
 
-    obj.label15 = gui.fromHandle(_obj_newObject("label"));
+    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.layout73);
     obj.label15:setLeft(70);
     obj.label15:setTop(50);
@@ -2749,7 +2750,7 @@ function newfrmADnD3()
     obj.label15:setHorzTextAlign("center");
     obj.label15:setName("label15");
 
-    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.layout73);
     obj.label16:setLeft(120);
     obj.label16:setTop(55);
@@ -2759,7 +2760,7 @@ function newfrmADnD3()
     obj.label16:setHorzTextAlign("trailing");
     obj.label16:setName("label16");
 
-    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle6:setParent(obj.layout73);
     obj.rectangle6:setLeft(185);
     obj.rectangle6:setTop(50);
@@ -2770,7 +2771,7 @@ function newfrmADnD3()
     obj.rectangle6:setStrokeSize(1);
     obj.rectangle6:setName("rectangle6");
 
-    obj.label17 = gui.fromHandle(_obj_newObject("label"));
+    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.layout73);
     obj.label17:setLeft(185);
     obj.label17:setTop(50);
@@ -2780,7 +2781,7 @@ function newfrmADnD3()
     obj.label17:setHorzTextAlign("center");
     obj.label17:setName("label17");
 
-    obj.label18 = gui.fromHandle(_obj_newObject("label"));
+    obj.label18 = GUI.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.layout73);
     obj.label18:setLeft(5);
     obj.label18:setTop(90);
@@ -2790,7 +2791,7 @@ function newfrmADnD3()
     obj.label18:setHorzTextAlign("trailing");
     obj.label18:setName("label18");
 
-    obj.edit199 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit199 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit199:setParent(obj.layout73);
     obj.edit199:setLeft(30);
     obj.edit199:setTop(85);
@@ -2799,7 +2800,7 @@ function newfrmADnD3()
     obj.edit199:setField("PL");
     obj.edit199:setName("edit199");
 
-    obj.label19 = gui.fromHandle(_obj_newObject("label"));
+    obj.label19 = GUI.fromHandle(_obj_newObject("label"));
     obj.label19:setParent(obj.layout73);
     obj.label19:setLeft(70);
     obj.label19:setTop(90);
@@ -2809,7 +2810,7 @@ function newfrmADnD3()
     obj.label19:setHorzTextAlign("trailing");
     obj.label19:setName("label19");
 
-    obj.edit200 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit200 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit200:setParent(obj.layout73);
     obj.edit200:setLeft(95);
     obj.edit200:setTop(85);
@@ -2818,7 +2819,7 @@ function newfrmADnD3()
     obj.edit200:setField("PO");
     obj.edit200:setName("edit200");
 
-    obj.label20 = gui.fromHandle(_obj_newObject("label"));
+    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.layout73);
     obj.label20:setLeft(135);
     obj.label20:setTop(90);
@@ -2828,7 +2829,7 @@ function newfrmADnD3()
     obj.label20:setHorzTextAlign("trailing");
     obj.label20:setName("label20");
 
-    obj.edit201 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit201 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit201:setParent(obj.layout73);
     obj.edit201:setLeft(160);
     obj.edit201:setTop(85);
@@ -2837,7 +2838,7 @@ function newfrmADnD3()
     obj.edit201:setField("PP");
     obj.edit201:setName("edit201");
 
-    obj.label21 = gui.fromHandle(_obj_newObject("label"));
+    obj.label21 = GUI.fromHandle(_obj_newObject("label"));
     obj.label21:setParent(obj.layout73);
     obj.label21:setLeft(200);
     obj.label21:setTop(90);
@@ -2847,7 +2848,7 @@ function newfrmADnD3()
     obj.label21:setHorzTextAlign("trailing");
     obj.label21:setName("label21");
 
-    obj.edit202 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit202 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit202:setParent(obj.layout73);
     obj.edit202:setLeft(225);
     obj.edit202:setTop(85);
@@ -2856,7 +2857,7 @@ function newfrmADnD3()
     obj.edit202:setField("PC");
     obj.edit202:setName("edit202");
 
-    obj.layout74 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout74 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout74:setParent(obj.scrollBox1);
     obj.layout74:setLeft(930);
     obj.layout74:setTop(120);
@@ -2864,7 +2865,7 @@ function newfrmADnD3()
     obj.layout74:setHeight(490);
     obj.layout74:setName("layout74");
 
-    obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle7 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle7:setParent(obj.layout74);
     obj.rectangle7:setAlign("client");
     obj.rectangle7:setColor("black");
@@ -2873,7 +2874,7 @@ function newfrmADnD3()
     obj.rectangle7:setCornerType("round");
     obj.rectangle7:setName("rectangle7");
 
-    obj.label22 = gui.fromHandle(_obj_newObject("label"));
+    obj.label22 = GUI.fromHandle(_obj_newObject("label"));
     obj.label22:setParent(obj.layout74);
     obj.label22:setLeft(0);
     obj.label22:setTop(5);
@@ -2883,7 +2884,7 @@ function newfrmADnD3()
     obj.label22:setHorzTextAlign("center");
     obj.label22:setName("label22");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout74);
     obj.textEditor1:setLeft(5);
     obj.textEditor1:setTop(30);
@@ -2892,7 +2893,7 @@ function newfrmADnD3()
     obj.textEditor1:setField("Equipamentos_Outros");
     obj.textEditor1:setName("textEditor1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.scrollBox1);
     obj.image1:setAlign("client");
     obj.image1:setSRC("https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20ADnD%20releases/imagens/block.png");
@@ -2900,662 +2901,662 @@ function newfrmADnD3()
     obj.image1:setName("image1");
 
     obj._e_event0 = obj.edit2:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event1 = obj.edit3:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event2 = obj.edit5:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event3 = obj.edit6:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event4 = obj.edit8:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event5 = obj.edit9:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event6 = obj.edit11:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event7 = obj.edit12:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event8 = obj.edit14:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event9 = obj.edit15:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event10 = obj.edit17:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event11 = obj.edit18:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event12 = obj.edit20:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event13 = obj.edit21:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event14 = obj.edit23:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event15 = obj.edit24:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event16 = obj.edit26:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event17 = obj.edit27:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event18 = obj.edit29:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event19 = obj.edit30:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event20 = obj.edit32:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event21 = obj.edit33:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event22 = obj.edit35:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event23 = obj.edit36:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event24 = obj.edit38:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event25 = obj.edit39:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event26 = obj.edit41:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event27 = obj.edit42:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event28 = obj.edit44:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event29 = obj.edit45:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event30 = obj.edit47:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event31 = obj.edit48:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event32 = obj.edit50:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event33 = obj.edit51:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event34 = obj.edit53:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event35 = obj.edit54:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event36 = obj.edit56:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event37 = obj.edit57:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event38 = obj.edit59:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event39 = obj.edit60:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event40 = obj.edit62:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event41 = obj.edit63:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event42 = obj.edit65:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event43 = obj.edit66:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event44 = obj.edit68:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event45 = obj.edit69:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event46 = obj.edit71:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event47 = obj.edit72:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event48 = obj.edit74:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event49 = obj.edit75:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event50 = obj.edit77:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event51 = obj.edit78:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event52 = obj.edit80:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event53 = obj.edit81:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event54 = obj.edit83:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event55 = obj.edit84:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event56 = obj.edit86:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event57 = obj.edit87:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event58 = obj.edit89:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event59 = obj.edit90:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event60 = obj.edit92:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event61 = obj.edit93:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event62 = obj.edit95:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event63 = obj.edit96:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event64 = obj.edit98:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event65 = obj.edit99:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event66 = obj.edit101:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event67 = obj.edit102:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event68 = obj.edit104:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event69 = obj.edit105:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event70 = obj.edit107:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event71 = obj.edit108:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event72 = obj.edit110:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event73 = obj.edit111:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event74 = obj.edit113:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event75 = obj.edit114:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event76 = obj.edit116:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event77 = obj.edit117:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event78 = obj.edit119:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event79 = obj.edit120:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event80 = obj.edit122:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event81 = obj.edit123:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event82 = obj.edit125:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event83 = obj.edit126:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event84 = obj.edit128:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event85 = obj.edit129:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event86 = obj.edit131:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event87 = obj.edit132:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event88 = obj.edit134:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event89 = obj.edit135:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event90 = obj.edit137:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event91 = obj.edit138:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event92 = obj.edit140:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event93 = obj.edit141:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event94 = obj.edit143:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event95 = obj.edit144:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event96 = obj.edit146:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event97 = obj.edit147:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event98 = obj.edit149:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event99 = obj.edit150:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event100 = obj.edit152:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event101 = obj.edit153:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event102 = obj.edit155:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event103 = obj.edit156:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event104 = obj.edit158:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event105 = obj.edit159:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event106 = obj.edit161:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event107 = obj.edit162:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event108 = obj.edit164:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event109 = obj.edit165:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event110 = obj.edit167:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event111 = obj.edit168:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event112 = obj.edit170:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event113 = obj.edit171:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event114 = obj.edit173:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event115 = obj.edit174:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event116 = obj.edit176:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event117 = obj.edit177:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event118 = obj.edit179:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event119 = obj.edit180:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event120 = obj.edit182:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event121 = obj.edit183:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event122 = obj.edit185:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event123 = obj.edit186:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event124 = obj.edit188:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event125 = obj.edit189:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event126 = obj.edit191:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event127 = obj.edit192:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event128 = obj.edit194:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event129 = obj.edit195:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
     obj._e_event130 = obj.edit197:addEventListener("onChange",
-        function (self)
+        function (_)
             sumCusto();
         end, obj);
 
     obj._e_event131 = obj.edit198:addEventListener("onChange",
-        function (self)
+        function (_)
             sumPeso();
         end, obj);
 
@@ -4032,6 +4033,6 @@ local _frmADnD3 = {
     description=""};
 
 frmADnD3 = _frmADnD3;
-rrpg.registrarForm(_frmADnD3);
+Firecast.registrarForm(_frmADnD3);
 
 return _frmADnD3;

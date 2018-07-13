@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmGerenciador04_PRESENCA()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -32,7 +33,7 @@ function newfrmGerenciador04_PRESENCA()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
@@ -43,7 +44,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.rectangle1:setStrokeSize(1);
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(5);
     obj.label1:setTop(5);
@@ -53,7 +54,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.rectangle1);
     obj.label2:setLeft(5);
     obj.label2:setTop(30);
@@ -63,7 +64,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.rectangle1);
     obj.label3:setLeft(5);
     obj.label3:setTop(55);
@@ -73,7 +74,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.rectangle1);
     obj.label4:setLeft(5);
     obj.label4:setTop(80);
@@ -83,7 +84,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.rectangle1);
     obj.label5:setLeft(5);
     obj.label5:setTop(105);
@@ -93,7 +94,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.rectangle1);
     obj.label6:setLeft(5);
     obj.label6:setTop(130);
@@ -103,7 +104,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.rectangle1);
     obj.label7:setLeft(5);
     obj.label7:setTop(155);
@@ -113,7 +114,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.label7:setHorzTextAlign("center");
     obj.label7:setName("label7");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.rectangle1);
     obj.label8:setLeft(5);
     obj.label8:setTop(180);
@@ -123,7 +124,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.label8:setHorzTextAlign("center");
     obj.label8:setName("label8");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.rectangle1);
     obj.label9:setLeft(5);
     obj.label9:setTop(205);
@@ -133,7 +134,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.label9:setHorzTextAlign("center");
     obj.label9:setName("label9");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setLeft(155);
     obj.edit1:setTop(5);
@@ -142,7 +143,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.edit1:setField("nick");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.rectangle1);
     obj.edit2:setLeft(155);
     obj.edit2:setTop(30);
@@ -151,7 +152,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.edit2:setField("nome");
     obj.edit2:setName("edit2");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.rectangle1);
     obj.edit3:setLeft(155);
     obj.edit3:setTop(55);
@@ -160,7 +161,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.edit3:setField("presenca");
     obj.edit3:setName("edit3");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.rectangle1);
     obj.edit4:setLeft(155);
     obj.edit4:setTop(80);
@@ -169,7 +170,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.edit4:setField("atrasoJustificado");
     obj.edit4:setName("edit4");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.rectangle1);
     obj.edit5:setLeft(155);
     obj.edit5:setTop(105);
@@ -178,7 +179,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.edit5:setField("atraso");
     obj.edit5:setName("edit5");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.rectangle1);
     obj.edit6:setLeft(155);
     obj.edit6:setTop(130);
@@ -187,7 +188,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.edit6:setField("faltaJustificada");
     obj.edit6:setName("edit6");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.rectangle1);
     obj.edit7:setLeft(155);
     obj.edit7:setTop(155);
@@ -196,7 +197,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.edit7:setField("falta");
     obj.edit7:setName("edit7");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.rectangle1);
     obj.edit8:setLeft(155);
     obj.edit8:setTop(180);
@@ -205,7 +206,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.edit8:setField("usos");
     obj.edit8:setName("edit8");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.rectangle1);
     obj.edit9:setLeft(155);
     obj.edit9:setTop(205);
@@ -214,7 +215,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.edit9:setField("desperdicio");
     obj.edit9:setName("edit9");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.rectangle1);
     obj.rectangle2:setLeft(205);
     obj.rectangle2:setTop(55);
@@ -225,7 +226,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.rectangle1);
     obj.label10:setLeft(205);
     obj.label10:setTop(85);
@@ -236,7 +237,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.label10:setFontSize(30);
     obj.label10:setName("label10");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.rectangle1);
     obj.label11:setLeft(205);
     obj.label11:setTop(120);
@@ -247,7 +248,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.label11:setFontSize(30);
     obj.label11:setName("label11");
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.rectangle1);
     obj.horzLine1:setLeft(230);
     obj.horzLine1:setTop(155);
@@ -255,7 +256,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.horzLine1:setStrokeColor("white");
     obj.horzLine1:setName("horzLine1");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.rectangle1);
     obj.label12:setLeft(205);
     obj.label12:setTop(155);
@@ -265,7 +266,7 @@ function newfrmGerenciador04_PRESENCA()
     obj.label12:setHorzTextAlign("center");
     obj.label12:setName("label12");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(230);
     obj.button1:setTop(205);
@@ -274,13 +275,13 @@ function newfrmGerenciador04_PRESENCA()
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.rectangle1);
     obj.dataLink1:setFields({'presenca', 'atrasoJustificado', 'atraso', 'falta', 'usos', 'desperdicio'});
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.edit1:addEventListener("onChange",
-        function (self)
+        function (_)
             local rcl = self:findControlByName("rclPresenca");
             				if rcl~= nil then
             					rcl:sort();
@@ -288,7 +289,7 @@ function newfrmGerenciador04_PRESENCA()
         end, obj);
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse jogador?",
             					function (confirmado)
             						if confirmado then
@@ -298,7 +299,7 @@ function newfrmGerenciador04_PRESENCA()
         end, obj);
 
     obj._e_event2 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local mod = (tonumber(sheet.presenca) or 0)*4 + 
             								(tonumber(sheet.atrasoJustificado) or 0)*2 + 
             								(tonumber(sheet.atraso) or 0)*1 -   
@@ -371,6 +372,6 @@ local _frmGerenciador04_PRESENCA = {
     description=""};
 
 frmGerenciador04_PRESENCA = _frmGerenciador04_PRESENCA;
-rrpg.registrarForm(_frmGerenciador04_PRESENCA);
+Firecast.registrarForm(_frmGerenciador04_PRESENCA);
 
 return _frmGerenciador04_PRESENCA;

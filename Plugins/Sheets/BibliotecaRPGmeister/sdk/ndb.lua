@@ -1,6 +1,8 @@
 local objs = require("rrpgObjs.lua");
-require("vhd");
+local vhd = require("vhd");
+require("utils.lua");
 ndb = {}
+NDB = ndb;
 
 local localNDB = {};
 
@@ -92,9 +94,7 @@ function localNDB.nodeFromHandle(nodeHandle)
 	
 	function ctrl:getAllChilds()
 		local ret = {};
-		local i, count;
-		
-		count = self:getChildCount();
+		local count = self:getChildCount();			
 		
 		for i = 0, count - 1, 1 do
 			ret[i + 1] = self:getChild(i);
@@ -115,6 +115,10 @@ function localNDB.nodeFromHandle(nodeHandle)
 		return _ndb_getNodeName(self.handle);
 	end;
 	
+	function ctrl:getLocalID()
+		return _obj_getProp(self.handle, "LocalID");
+	end;	
+	
 	function ctrl:beginUpdate()
 		_obj_invoke(self.handle, "BeginUpdate");
 	end;	
@@ -131,7 +135,7 @@ function localNDB.nodeFromHandle(nodeHandle)
 		return _obj_invokeEx(self.handle, "SetPermission", selKind, selId, permission, allowance);
 	end;
 	
-	function ctrl:getPermission(selKind, selId, permission, allowance)
+	function ctrl:getPermission(selKind, selId, permission)
 		return _obj_invokeEx(self.handle, "GetPermission", selKind, selId, permission);
 	end;	
 	
@@ -163,7 +167,7 @@ function localNDB.copyNodeToAnother(nodeDest, nodeSrc)
 	local allChilds = nodeSrc:getAllChilds();
 	local newChild, srcChild;
 	
-	for k, v in pairs(allChilds) do
+	for _, v in pairs(allChilds) do
 		srcChild = v;
 		newChild = nodeDest:addChild(srcChild:getName());
 		localNDB.copyNodeToAnother(newChild, srcChild);
@@ -638,6 +642,134 @@ function ndb.getServerUTCTime(nodeObj)
 	end;
 end;
 
+function ndb.editPermissions(nodeObj)
+	if nodeObj == nil then
+		return;
+	end;
+	
+	local node = localNDB.getNodeObjectFromFacade(nodeObj);
+	
+	if node ~= nil then		
+		local plugins = require("plugins.lua");
+		local ndbmodule = "RRPG.FIRECAST.FMXModule";	
+		plugins.sendPM(ndbmodule, "ndbHost:editPermissions", {localNodeID=node:getLocalID()}, nil, nil);		
+	end;		
+end;
+
+function ndb.loadNodeFromLocalID(localNodeID)
+	return _ndb_tryLoadNodeFromLocalID(localNodeID);
+end;
+
+local _Serializer = nil;
+
+function ndb.broadcastMessage(nodeObj, messageId, message, loopBack)
+	if nodeObj ~= nil then
+		local node = localNDB.getNodeObjectFromFacade(nodeObj);
+		
+		if node ~= nil then		
+			if _Serializer == nil then
+				_Serializer = require("utils.serializer.dlua");
+			end;
+		
+			if loopBack == nil then
+				loopBack = false;
+			end;
+		
+			_obj_invokeEx(node.handle, "LUABroadcastMessage", messageId, _Serializer.serialize(message), loopBack);			
+		end;	
+	end;
+end;
+
+function ndb.newBroadcastListener(nodeObj, messageId, callback)
+	if nodeObj ~= nil then
+		local node = localNDB.getNodeObjectFromFacade(nodeObj);
+		
+		if node ~= nil then			
+			local obj = objs.objectFromHandle(_obj_newObject("TLuaNDBBroadcastReceiver"));
+			obj.eves = obj.eves or {};
+			obj.eves["onReceiveBroadcast"] = "sender, messageId, messageText";	
+			
+			_obj_invoke(obj.handle, "SetupReceiver", node.handle, messageId or "");
+			
+			obj.onReceiveBroadcast = function(sender, returnedMessageId, messageText)			
+										if callback ~= nil then										
+											if _Serializer == nil then
+												_Serializer = require("utils.serializer.dlua");
+											end;										
+										
+											local success, message = pcall(_Serializer.deserialize, messageText);
+											
+											if not success then
+												message = messageText;
+											end;
+										
+											callback(sender, returnedMessageId, message);
+										end;
+									end;	
+			return obj;		
+		end;	
+	end;
+end;
+
+function ndb.onReady(nodeObj, callback, failCallback)	
+	local function scheduleFailReturn()
+		if failCallback ~= nil then
+			setTimeout(failCallback, 1, nil);
+		end;
+	end;
+		
+	if nodeObj == nil then
+		scheduleFailReturn();		
+		return;		
+	end;	
+	
+	local state = ndb.getState(nodeObj);
+	
+	if state == "open" then
+		-- Already loaded
+		
+		if callback ~= nil then
+			setTimeout(callback, 1, nodeObj);
+		end;
+		
+		return;
+	end;
+	
+	-- Not loaded yet, letz monitor
+	local nodeInternObj = localNDB.getNodeObjectFromFacade(nodeObj);
+	local ndbObj = localNDB.ndbFromHandle(_ndb_getNDBHandleOfNode(nodeInternObj.handle));
+	local jaNotificou = false;
+	local listenerProvider = nil;
+	local listenerLoaded = nil;
+	
+	local function checkState()
+		if not jaNotificou then
+			state = ndb.getState(nodeObj);
+		
+			if state == "open" then
+				jaNotificou = true;
+				
+				if callback ~= nil then
+					setTimeout(callback, 1, nodeObj);
+				end;
+			elseif state == "closed" then
+				jaNotificou = true;					
+				scheduleFailReturn();
+			end;
+			
+			if jaNotificou then
+				ndbObj:removeEventListener(listenerProvider);
+				ndbObj:removeEventListener(listenerLoaded);
+			end;						
+		end;						
+	end;
+			
+	listenerProvider = ndbObj:addEventListener("OnProviderStateChange", checkState);
+	listenerLoaded = ndbObj:addEventListener("OnLoaded", checkState);
+			
+	checkState();	
+end;
+
 -- OVERRIDE de funções nativas para funcionar com o NDB
 
 local oldPairsFunc = pairs;
@@ -649,7 +781,7 @@ local function _prepareNodeFacadePairsState(nodeFacade)
 	
 	local childs = node:getAllChilds();
 	
-	for k, v in oldPairsFunc(childs) do
+	for _, v in oldPairsFunc(childs) do
 		local name = v:getName();
 		local nodeForName = node:findChild(name);
 		

@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmCombatTracker()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -28,15 +29,15 @@ function newfrmCombatTracker()
     obj:beginUpdate();
     obj:setName("frmCombatTracker");
     obj:setFormType("tablesDock");
-    obj:setDataType("RRPG.TB.COMBAT.TRACKER.v1");
+    obj:setDataType("Firecast.TB.COMBAT.TRACKER.v1");
     obj:setTitle("Tracker de Combate");
     obj:setHeight(300);
     obj:setWidth(300);
 
 
-		local ATOR_VIEW_STATE_VISIVEL = 0;
+		--local ATOR_VIEW_STATE_VISIVEL = 0;
 		local ATOR_VIEW_STATE_PARC_VISIVEL = 1;
-		local ATOR_VIEW_STATE_INVISIVEL = 2;
+		--local ATOR_VIEW_STATE_INVISIVEL = 2;
 	
 		local function getAtoresNDB()
 			if sheet.atores == nil then
@@ -48,11 +49,11 @@ function newfrmCombatTracker()
 
 		local function getAtoresNodes()
 			local atores = getAtoresNDB();
-			return ndb.getChildNodes(atores);
+			return NDB.getChildNodes(atores);
 		end;
 		
 		function self:souMestre()
-			local mesa = rrpg.getMesaDe(self);
+			local mesa = Firecast.getMesaDe(self);
 			
 			if mesa ~= nil then
 				local j = mesa.meuJogador;
@@ -68,7 +69,7 @@ function newfrmCombatTracker()
 		end;
 		
 		function self:narrar(msg)
-			local mesa = rrpg.getMesaDe(sheet);
+			local mesa = Firecast.getMesaDe(sheet);
 			
 			if mesa ~= nil then
 				local chat = mesa.chat;
@@ -80,7 +81,7 @@ function newfrmCombatTracker()
 		end;
 		
 		function self:escrever(msg)
-			local mesa = rrpg.getMesaDe(sheet);
+			local mesa = Firecast.getMesaDe(sheet);
 			
 			if mesa ~= nil then
 				local chat = mesa.chat;
@@ -135,7 +136,7 @@ function newfrmCombatTracker()
 				local footerTralha = "";
 				local notificacaoDeTurno = "[§K1]" .. headerTralha .. "[§K1] Turno de " .. self:getNomeColoridoDe(node) .. "[§K1] " .. footerTralha;
 			
-				if (ndb.getPermission(node, "group", "espectadores", "read") ~= "deny") then			   
+				if (NDB.getPermission(node, "group", "espectadores", "read") ~= "deny") then			   
 					self:narrar(notificacaoDeTurno);
 				else					
 					self:escrever(notificacaoDeTurno);
@@ -175,7 +176,7 @@ function newfrmCombatTracker()
 		
 		function self:avancarRelogioDeAtor(ator, relogioAtual, relogioOld)
 			if ator.dadosSensiveis ~= nil and ator.dadosSensiveis.efeitos ~= nil then
-				local lEfeitos = ndb.getChildNodes(ator.dadosSensiveis.efeitos);
+				local lEfeitos = NDB.getChildNodes(ator.dadosSensiveis.efeitos);
 				
 				for i = 1, #lEfeitos, 1 do
 					local ef = lEfeitos[i];
@@ -194,11 +195,11 @@ function newfrmCombatTracker()
 																		
 						if duracaoRealRestante < constanteMargemSuperior then
 							local nomeEfeito = ef.descricao;
-							ndb.deleteNode(ef);
+							NDB.deleteNode(ef);
 							
 							if nomeEfeito ~= nil and ator.nome ~= nil then
 								local fof = ator.fof or 0;
-								local enviarNarracao = (ndb.getPermission(ator, "group", "espectadores", "read") ~= "deny") and
+								local enviarNarracao = (NDB.getPermission(ator, "group", "espectadores", "read") ~= "deny") and
 								                       (fof ~= 3) and (ator.visibilityState ~= ATOR_VIEW_STATE_PARC_VISIVEL); -- não é inimigo;
 													   
 								local notificacao = "[§K15] >> [§K1]O efeito [§K7]" .. nomeEfeito .. "[§K1] de " .. self:getNomeColoridoDe(ator) .. "[§K1] chegou ao fim";
@@ -248,7 +249,6 @@ function newfrmCombatTracker()
 			end;
 		
 			local atores = getAtoresNodes();
-			local atorComVez = nil;
 			local idxAtorComVez = nil;
 			local novaRodada = false;
 			
@@ -262,7 +262,6 @@ function newfrmCombatTracker()
 					local a = atores[i];
 					
 					if a.vez then
-						atorComVez = a;
 						idxAtorComVez = i;	
 						break;					
 					end;
@@ -309,7 +308,7 @@ function newfrmCombatTracker()
 		
 		function self:criarNovoAtor()
 			local novoNode = nil;
-			ndb.beginUpdate(sheet);
+			NDB.beginUpdate(sheet);
 			
 			tryFinally(function()
 					novoNode = self.rclAtores:append();
@@ -317,7 +316,7 @@ function newfrmCombatTracker()
 				end,
 				
 				function()
-					ndb.endUpdate(sheet);
+					NDB.endUpdate(sheet);
 				end);
 				
 			return novoNode;
@@ -326,7 +325,7 @@ function newfrmCombatTracker()
 		function self:limpar()		
 			local n = sheet;
 			
-			dialogs.confirmYesNo("Deseja realmente limpar o Tracker de Combate?",
+			Dialogs.confirmYesNo("Deseja realmente limpar o Tracker de Combate?",
 				function(confirmado)
 					if confirmado then
 						n.atores = {};
@@ -337,9 +336,11 @@ function newfrmCombatTracker()
 		end;
 		
 		function self:exibirMenuDoAtor(node, form)
-			self.popAtor.node = node;
-			self.popAtorForm = form;
-			self.popAtor:show("mouseCenter", form);
+			if self ~= nil and self.popAtor ~= nil then
+				self.popAtor.node = node;
+				self.popAtorForm = form;
+				self.popAtor:show("mouseCenter", form);
+			end;
 		end;
 		
 		function self:scrollToAtor(node)
@@ -352,14 +353,14 @@ function newfrmCombatTracker()
 			
 		local function verificarEstadoMsgEvents()			
 			local deveUsarListeners = self.visible and sheet ~= nil;
-			local mesaAcoplada = rrpg.getMesaDe(sheet);
+			local mesaAcoplada = Firecast.getMesaDe(sheet);
 			
 			if deveUsarListeners and not self.listenersAtivo and mesaAcoplada ~= nil then				
 			
 				-- ativar listeners
 				self.listenersAtivo = true;
 				
-				self.listenerHandleChatCommand = rrpg.messaging.listen("HandleChatCommand", 
+				self.listenerHandleChatCommand = Firecast.Messaging.listen("HandleChatCommand", 
 					function(msg)
 						if (msg.comando == ">>") and (self:souMestre()) then
 							self:proximoTurno();
@@ -367,7 +368,7 @@ function newfrmCombatTracker()
 						end;					
 					end, {mesa = mesaAcoplada});
 					
-				self.listenerListChatCommands = rrpg.messaging.listen("ListChatCommands", 
+				self.listenerListChatCommands = Firecast.Messaging.listen("ListChatCommands", 
 					function(msg)
 						if self:souMestre() then
 							msg.response = {{comando="/>>", descricao="Iniciar o próximo turno (Tracker de Combate)"}};
@@ -377,8 +378,8 @@ function newfrmCombatTracker()
 			elseif not deveUsarListeners and self.listenersAtivo then
 				-- desativar listeners;				
 				self.listenersAtivo = false;
-				rrpg.messaging.unlisten(self.listenerHandleChatCommand);
-				rrpg.messaging.unlisten(self.listenerListChatCommands);				
+				Firecast.Messaging.unlisten(self.listenerHandleChatCommand);
+				Firecast.Messaging.unlisten(self.listenerListChatCommands);				
 				self.listenerHandleChatCommand = nil;
 				self.listenerListChatCommands = nil;				
 			end
@@ -393,7 +394,7 @@ function newfrmCombatTracker()
 				return;
 			end;
 		
-			local atores = ndb.getChildNodes(getAtoresNDB());
+			local atores = NDB.getChildNodes(getAtoresNDB());
 			local atorDoPersonagem = nil;	
 		    local chavePer = personagem.codigoInterno;
 
@@ -423,7 +424,7 @@ function newfrmCombatTracker()
 		end;
 		
 		local function dropJogadorActor(jogador)					
-			local mesa = rrpg.getMesaDe(jogador);
+			local mesa = Firecast.getMesaDe(jogador);
 			
 			if mesa ~= nil then
 				local chavePer = jogador.personagemPrincipal;
@@ -434,7 +435,7 @@ function newfrmCombatTracker()
 				end;							
 			end;
 		
-			local atores = ndb.getChildNodes(getAtoresNDB());
+			local atores = NDB.getChildNodes(getAtoresNDB());
 			local atorDoJogador = nil;
 			local loginJogador = string.lower(jogador.login);
 
@@ -489,7 +490,7 @@ function newfrmCombatTracker()
 		
 			return function(drag, x, y)
 					  drag:addData('text', tostring(ator.nome));
-					  local mesa = rrpg.getMesaDe(tracker);
+					  local mesa = Firecast.getMesaDe(tracker);
 					  
 					  if mesa ~= nil then
 						local jogador = mesa:findJogador(tostring(ator.login or ""));
@@ -509,14 +510,14 @@ function newfrmCombatTracker()
 	
 
 
-    obj.layTopTracker = gui.fromHandle(_obj_newObject("layout"));
+    obj.layTopTracker = GUI.fromHandle(_obj_newObject("layout"));
     obj.layTopTracker:setParent(obj);
     obj.layTopTracker:setName("layTopTracker");
     obj.layTopTracker:setAlign("top");
     obj.layTopTracker:setHeight(18);
     obj.layTopTracker:setMargins({left=2, right=2, top=2});
 
-    obj.btnAddAtor = gui.fromHandle(_obj_newObject("button"));
+    obj.btnAddAtor = GUI.fromHandle(_obj_newObject("button"));
     obj.btnAddAtor:setParent(obj.layTopTracker);
     obj.btnAddAtor:setName("btnAddAtor");
     obj.btnAddAtor:setText("");
@@ -525,13 +526,13 @@ function newfrmCombatTracker()
     obj.btnAddAtor:setAlign("left");
     obj.btnAddAtor:setMargins({left=2, right=2});
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.btnAddAtor);
     obj.image1:setAlign("client");
     obj.image1:setSRC("/turnos/images/addIcon.png");
     obj.image1:setName("image1");
 
-    obj.btnRoll = gui.fromHandle(_obj_newObject("button"));
+    obj.btnRoll = GUI.fromHandle(_obj_newObject("button"));
     obj.btnRoll:setParent(obj.layTopTracker);
     obj.btnRoll:setName("btnRoll");
     obj.btnRoll:setText("R");
@@ -540,7 +541,7 @@ function newfrmCombatTracker()
     obj.btnRoll:setAlign("left");
     obj.btnRoll:setMargins({left=2, right=2});
 
-    obj.btnAddAll = gui.fromHandle(_obj_newObject("button"));
+    obj.btnAddAll = GUI.fromHandle(_obj_newObject("button"));
     obj.btnAddAll:setParent(obj.layTopTracker);
     obj.btnAddAll:setName("btnAddAll");
     obj.btnAddAll:setText("T");
@@ -549,7 +550,7 @@ function newfrmCombatTracker()
     obj.btnAddAll:setAlign("left");
     obj.btnAddAll:setMargins({left=2, right=2});
 
-    obj.btnLimpar = gui.fromHandle(_obj_newObject("button"));
+    obj.btnLimpar = GUI.fromHandle(_obj_newObject("button"));
     obj.btnLimpar:setParent(obj.layTopTracker);
     obj.btnLimpar:setName("btnLimpar");
     obj.btnLimpar:setText("Limpar");
@@ -557,7 +558,7 @@ function newfrmCombatTracker()
     obj.btnLimpar:setWidth(60);
     obj.btnLimpar:setMargins({left=2, right=2});
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setAlign("top");
     obj.layout1:setHeight(16);
@@ -565,13 +566,13 @@ function newfrmCombatTracker()
     obj.layout1:setName("layout1");
     obj.layout1:setMargins({left=2, right=2});
 
-    obj.layHeader0 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layHeader0 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layHeader0:setParent(obj.layout1);
     obj.layHeader0:setName("layHeader0");
     obj.layHeader0:setWidth(23);
     obj.layHeader0:setAlign("left");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setText("Teste");
     obj.label1:setName("label1");
@@ -580,7 +581,7 @@ function newfrmCombatTracker()
     obj.label1:setWidth(50);
     obj.label1:setAlign("left");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout1);
     obj.label2:setText("Nome");
     obj.label2:setName("label2");
@@ -589,13 +590,13 @@ function newfrmCombatTracker()
     obj.label2:setWidth(28);
     obj.label2:setAlign("client");
 
-    obj.layRightAlinedTitle = gui.fromHandle(_obj_newObject("layout"));
+    obj.layRightAlinedTitle = GUI.fromHandle(_obj_newObject("layout"));
     obj.layRightAlinedTitle:setParent(obj.layout1);
     obj.layRightAlinedTitle:setName("layRightAlinedTitle");
     obj.layRightAlinedTitle:setAlign("right");
     obj.layRightAlinedTitle:setWidth(78);
 
-    obj.labTitIniciativa = gui.fromHandle(_obj_newObject("label"));
+    obj.labTitIniciativa = GUI.fromHandle(_obj_newObject("label"));
     obj.labTitIniciativa:setParent(obj.layRightAlinedTitle);
     obj.labTitIniciativa:setName("labTitIniciativa");
     obj.labTitIniciativa:setText("Init");
@@ -605,7 +606,7 @@ function newfrmCombatTracker()
     obj.labTitIniciativa:setWidth(28);
     obj.labTitIniciativa:setAlign("left");
 
-    obj.labTitFoF = gui.fromHandle(_obj_newObject("label"));
+    obj.labTitFoF = GUI.fromHandle(_obj_newObject("label"));
     obj.labTitFoF:setParent(obj.layRightAlinedTitle);
     obj.labTitFoF:setName("labTitFoF");
     obj.labTitFoF:setText("A/H");
@@ -616,7 +617,7 @@ function newfrmCombatTracker()
     obj.labTitFoF:setAlign("left");
 
 
-		if system.isMobile() then
+		if System.isMobile() then
 			self.layTopTracker.height = 32;
 			self.btnAddAtor.width = self.layTopTracker.height;
 			self.layHeader0.width = 32;
@@ -628,7 +629,7 @@ function newfrmCombatTracker()
 	
 
 
-    obj.rclAtores = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclAtores = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclAtores:setParent(obj);
     obj.rclAtores:setName("rclAtores");
     obj.rclAtores:setAlign("client");
@@ -636,14 +637,14 @@ function newfrmCombatTracker()
     obj.rclAtores:setTemplateForm("frmAtorCombatTracker");
     obj.rclAtores:setMargins({top=1});
 
-    obj.layTrackerBottom = gui.fromHandle(_obj_newObject("layout"));
+    obj.layTrackerBottom = GUI.fromHandle(_obj_newObject("layout"));
     obj.layTrackerBottom:setParent(obj);
     obj.layTrackerBottom:setName("layTrackerBottom");
     obj.layTrackerBottom:setAlign("bottom");
     obj.layTrackerBottom:setHeight(28);
     obj.layTrackerBottom:setMargins({top=2, left=2, bottom=2, right=2});
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layTrackerBottom);
     obj.button1:setText("Próx. turno");
     obj.button1:setFontSize(11);
@@ -651,13 +652,13 @@ function newfrmCombatTracker()
     obj.button1:setAlign("left");
     obj.button1:setName("button1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layTrackerBottom);
     obj.layout2:setAlign("right");
     obj.layout2:setWidth(68);
     obj.layout2:setName("layout2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout2);
     obj.label3:setAlign("left");
     obj.label3:setAutoSize(true);
@@ -666,7 +667,7 @@ function newfrmCombatTracker()
     obj.label3:setFontSize(11);
     obj.label3:setName("label3");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout2);
     obj.edit1:setField("rodada");
     obj.edit1:setAlign("client");
@@ -677,7 +678,7 @@ function newfrmCombatTracker()
     obj.edit1:setName("edit1");
 
 
-		if system.isMobile() then
+		if System.isMobile() then
 			self.layTrackerBottom.height = 32;
 		end;
 		
@@ -687,23 +688,23 @@ function newfrmCombatTracker()
 
 
     obj._e_event0 = obj.btnAddAtor:addEventListener("onClick",
-        function (self)
+        function (_)
             self:criarNovoAtor()
         end, obj);
 
     obj._e_event1 = obj.btnRoll:addEventListener("onClick",
-        function (self)
+        function (_)
         end, obj);
 
     obj._e_event2 = obj.btnRoll:addEventListener("onClick",
-        function (self)
-            local atores = ndb.getChildNodes(sheet.atores);
-            				local mesa = rrpg.getMesaDe(self);
+        function (_)
+            local atores = NDB.getChildNodes(sheet.atores);
+            				local mesa = Firecast.getMesaDe(self);
             
             				for i=1, #atores, 1 do 
             				local ator = atores[i];
             					if ator.iniciativaRolagem~= nil then
-            						local rolagem = rrpg.interpretarRolagem(ator.iniciativaRolagem);
+            						local rolagem = Firecast.interpretarRolagem(ator.iniciativaRolagem);
             
             						if rolagem.possuiAlgumDado then
             							mesa.activeChat:rolarDados(rolagem, "Iniciativa de " .. (ator.nome or "ator"), 
@@ -716,12 +717,12 @@ function newfrmCombatTracker()
         end, obj);
 
     obj._e_event3 = obj.btnAddAll:addEventListener("onClick",
-        function (self)
+        function (_)
         end, obj);
 
     obj._e_event4 = obj.btnAddAll:addEventListener("onClick",
-        function (self)
-            local mesa = rrpg.getMesaDe(self);
+        function (_)
+            local mesa = Firecast.getMesaDe(self);
             				local jogadores = mesa.jogadores;
             
             				for i=1, #jogadores, 1 do
@@ -729,7 +730,7 @@ function newfrmCombatTracker()
             					if jogador.isJogador then
             						local ator = self:criarNovoAtor();
             						if ator ~= nil then
-            							ator.nome = utils.removerFmtChat(jogador.nick);
+            							ator.nome = Utils.removerFmtChat(jogador.nick);
             							ator.fof = 1;
             						end;
             					end;
@@ -737,17 +738,17 @@ function newfrmCombatTracker()
         end, obj);
 
     obj._e_event5 = obj.btnLimpar:addEventListener("onClick",
-        function (self)
+        function (_)
             self:limpar();
         end, obj);
 
     obj._e_event6 = obj.rclAtores:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             return self:compareNodes(nodeA, nodeB);
         end, obj);
 
     obj._e_event7 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self:proximoTurno();
         end, obj);
 
@@ -804,15 +805,15 @@ local _frmCombatTracker = {
     newEditor = newfrmCombatTracker, 
     new = newfrmCombatTracker, 
     name = "frmCombatTracker", 
-    dataType = "RRPG.TB.COMBAT.TRACKER.v1", 
+    dataType = "Firecast.TB.COMBAT.TRACKER.v1", 
     formType = "tablesDock", 
     formComponentName = "form", 
     title = "Tracker de Combate", 
     description=""};
 
 frmCombatTracker = _frmCombatTracker;
-rrpg.registrarForm(_frmCombatTracker);
-rrpg.registrarDataType(_frmCombatTracker);
-rrpg.registrarSpecialForm(_frmCombatTracker);
+Firecast.registrarForm(_frmCombatTracker);
+Firecast.registrarDataType(_frmCombatTracker);
+Firecast.registrarSpecialForm(_frmCombatTracker);
 
 return _frmCombatTracker;

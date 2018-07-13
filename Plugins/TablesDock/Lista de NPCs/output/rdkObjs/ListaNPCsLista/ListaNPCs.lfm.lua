@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newListade_NPC_Ficha()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -33,7 +34,7 @@ function newListade_NPC_Ficha()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("CorIndex");
     obj.dataLink1:setDefaultValue("0");
@@ -196,19 +197,19 @@ function newListade_NPC_Ficha()
 	
 
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setAlign("client");
     obj.layout1:setVisible(false);
     obj.layout1:setName("layout1");
 
-    obj.Config = gui.fromHandle(_obj_newObject("popup"));
+    obj.Config = GUI.fromHandle(_obj_newObject("popup"));
     obj.Config:setParent(obj.layout1);
     obj.Config:setName("Config");
     obj.Config:setWidth(412);
     obj.Config:setHeight(190);
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.Config);
     obj.label1:setAlign("top");
     obj.label1:setHeight(18);
@@ -218,13 +219,13 @@ function newListade_NPC_Ficha()
     obj.label1:setFontColor("white");
     obj.label1:setName("label1");
 
-    obj.dcsTituloEAbas = gui.fromHandle(_obj_newObject("layout"));
+    obj.dcsTituloEAbas = GUI.fromHandle(_obj_newObject("layout"));
     obj.dcsTituloEAbas:setParent(obj.Config);
     obj.dcsTituloEAbas:setName("dcsTituloEAbas");
     obj.dcsTituloEAbas:setAlign("top");
     obj.dcsTituloEAbas:setHeight(18);
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.dcsTituloEAbas);
     obj.label2:setLeft(5);
     obj.label2:setFontSize(12);
@@ -232,7 +233,7 @@ function newListade_NPC_Ficha()
     obj.label2:setText("Título da Aba:");
     obj.label2:setName("label2");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.dcsTituloEAbas);
     obj.edit1:setLeft(85);
     obj.edit1:setHeight(18);
@@ -243,7 +244,7 @@ function newListade_NPC_Ficha()
     obj.edit1:setField("NomeDaOpcao");
     obj.edit1:setName("edit1");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.dcsTituloEAbas);
     obj.label3:setLeft(210);
     obj.label3:setFontSize(12);
@@ -252,7 +253,7 @@ function newListade_NPC_Ficha()
     obj.label3:setMargins({left=12});
     obj.label3:setName("label3");
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.dcsTituloEAbas);
     obj.comboBox1:setLeft(292);
     obj.comboBox1:setHeight(18);
@@ -264,20 +265,20 @@ function newListade_NPC_Ficha()
     obj.comboBox1:setValues({'Alfa', 'Alin'});
     obj.comboBox1:setName("comboBox1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.Config);
     obj.layout2:setAlign("top");
     obj.layout2:setHeight(18);
     obj.layout2:setMargins({top=4});
     obj.layout2:setName("layout2");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout2);
     obj.layout3:setAlign("left");
     obj.layout3:setWidth(64);
     obj.layout3:setName("layout3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout2);
     obj.label4:setAlign("left");
     obj.label4:setFontSize(12);
@@ -286,7 +287,7 @@ function newListade_NPC_Ficha()
     obj.label4:setMargins({left=4});
     obj.label4:setName("label4");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout2);
     obj.label5:setAlign("left");
     obj.label5:setFontSize(12);
@@ -296,7 +297,7 @@ function newListade_NPC_Ficha()
     obj.label5:setMargins({left=4});
     obj.label5:setName("label5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout2);
     obj.label6:setAlign("left");
     obj.label6:setFontSize(12);
@@ -305,7 +306,7 @@ function newListade_NPC_Ficha()
     obj.label6:setMargins({left=4});
     obj.label6:setName("label6");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout2);
     obj.label7:setAlign("left");
     obj.label7:setFontSize(12);
@@ -314,14 +315,14 @@ function newListade_NPC_Ficha()
     obj.label7:setMargins({left=4});
     obj.label7:setName("label7");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.Config);
     obj.layout4:setAlign("top");
     obj.layout4:setHeight(18);
     obj.layout4:setMargins({top=4});
     obj.layout4:setName("layout4");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout4);
     obj.label8:setAlign("left");
     obj.label8:setFontSize(12);
@@ -330,7 +331,7 @@ function newListade_NPC_Ficha()
     obj.label8:setWidth(64);
     obj.label8:setName("label8");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout4);
     obj.edit2:setAlign("left");
     obj.edit2:setFontSize(12);
@@ -341,14 +342,14 @@ function newListade_NPC_Ficha()
     obj.edit2:setMargins({left=4});
     obj.edit2:setName("edit2");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout4);
     obj.layout5:setAlign("left");
     obj.layout5:setWidth(26);
     obj.layout5:setMargins({left=4});
     obj.layout5:setName("layout5");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout5);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("white");
@@ -356,7 +357,7 @@ function newListade_NPC_Ficha()
     obj.rectangle1:setMargins({left=4, right=4});
     obj.rectangle1:setName("rectangle1");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.rectangle1);
     obj.rectangle2:setColor("black");
     obj.rectangle2:setAlign("client");
@@ -364,7 +365,7 @@ function newListade_NPC_Ficha()
     obj.rectangle2:setHitTest(true);
     obj.rectangle2:setName("rectangle2");
 
-    obj.CorBarrinha1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.CorBarrinha1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.CorBarrinha1:setParent(obj.rectangle2);
     obj.CorBarrinha1:setName("CorBarrinha1");
     obj.CorBarrinha1:setColor("#808080");
@@ -372,7 +373,7 @@ function newListade_NPC_Ficha()
     obj.CorBarrinha1:setMargins({left=1, right=1, top=1, bottom=1});
     obj.CorBarrinha1:setHitTest(true);
 
-    obj.comboBox2 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox2:setParent(obj.layout4);
     obj.comboBox2:setAlign("left");
     obj.comboBox2:setFontSize(12);
@@ -387,7 +388,7 @@ function newListade_NPC_Ficha()
     obj.comboBox2:setMargins({left=4});
     obj.comboBox2:setName("comboBox2");
 
-    obj.comboBox3 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox3:setParent(obj.layout4);
     obj.comboBox3:setAlign("left");
     obj.comboBox3:setFontSize(12);
@@ -402,20 +403,20 @@ function newListade_NPC_Ficha()
     obj.comboBox3:setMargins({left=4});
     obj.comboBox3:setName("comboBox3");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.layout4);
     obj.dataLink2:setField("CorBarrinha1");
     obj.dataLink2:setDefaultValue("#808080");
     obj.dataLink2:setName("dataLink2");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.Config);
     obj.layout6:setAlign("top");
     obj.layout6:setHeight(18);
     obj.layout6:setMargins({top=4});
     obj.layout6:setName("layout6");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout6);
     obj.label9:setAlign("left");
     obj.label9:setFontSize(12);
@@ -424,7 +425,7 @@ function newListade_NPC_Ficha()
     obj.label9:setWidth(64);
     obj.label9:setName("label9");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout6);
     obj.edit3:setAlign("left");
     obj.edit3:setFontSize(12);
@@ -435,14 +436,14 @@ function newListade_NPC_Ficha()
     obj.edit3:setMargins({left=4});
     obj.edit3:setName("edit3");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.layout6);
     obj.layout7:setAlign("left");
     obj.layout7:setWidth(26);
     obj.layout7:setMargins({left=4});
     obj.layout7:setName("layout7");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout7);
     obj.rectangle3:setAlign("client");
     obj.rectangle3:setColor("white");
@@ -450,7 +451,7 @@ function newListade_NPC_Ficha()
     obj.rectangle3:setMargins({left=4, right=4});
     obj.rectangle3:setName("rectangle3");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.rectangle3);
     obj.rectangle4:setColor("black");
     obj.rectangle4:setAlign("client");
@@ -458,7 +459,7 @@ function newListade_NPC_Ficha()
     obj.rectangle4:setHitTest(true);
     obj.rectangle4:setName("rectangle4");
 
-    obj.CorBarrinha2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.CorBarrinha2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.CorBarrinha2:setParent(obj.rectangle4);
     obj.CorBarrinha2:setName("CorBarrinha2");
     obj.CorBarrinha2:setColor("#808080");
@@ -466,7 +467,7 @@ function newListade_NPC_Ficha()
     obj.CorBarrinha2:setMargins({left=1, right=1, top=1, bottom=1});
     obj.CorBarrinha2:setHitTest(true);
 
-    obj.comboBox4 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox4:setParent(obj.layout6);
     obj.comboBox4:setAlign("left");
     obj.comboBox4:setFontSize(12);
@@ -481,7 +482,7 @@ function newListade_NPC_Ficha()
     obj.comboBox4:setMargins({left=4});
     obj.comboBox4:setName("comboBox4");
 
-    obj.comboBox5 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox5:setParent(obj.layout6);
     obj.comboBox5:setAlign("left");
     obj.comboBox5:setFontSize(12);
@@ -496,20 +497,20 @@ function newListade_NPC_Ficha()
     obj.comboBox5:setMargins({left=4});
     obj.comboBox5:setName("comboBox5");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj.layout6);
     obj.dataLink3:setField("CorBarrinha2");
     obj.dataLink3:setDefaultValue("#808080");
     obj.dataLink3:setName("dataLink3");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.Config);
     obj.layout8:setAlign("top");
     obj.layout8:setHeight(18);
     obj.layout8:setMargins({top=4});
     obj.layout8:setName("layout8");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout8);
     obj.label10:setAlign("left");
     obj.label10:setFontSize(12);
@@ -518,7 +519,7 @@ function newListade_NPC_Ficha()
     obj.label10:setWidth(64);
     obj.label10:setName("label10");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout8);
     obj.edit4:setAlign("left");
     obj.edit4:setFontSize(12);
@@ -529,14 +530,14 @@ function newListade_NPC_Ficha()
     obj.edit4:setMargins({left=4});
     obj.edit4:setName("edit4");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.layout8);
     obj.layout9:setAlign("left");
     obj.layout9:setWidth(26);
     obj.layout9:setMargins({left=4});
     obj.layout9:setName("layout9");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.layout9);
     obj.rectangle5:setAlign("client");
     obj.rectangle5:setColor("white");
@@ -544,7 +545,7 @@ function newListade_NPC_Ficha()
     obj.rectangle5:setMargins({left=4, right=4});
     obj.rectangle5:setName("rectangle5");
 
-    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle6:setParent(obj.rectangle5);
     obj.rectangle6:setColor("black");
     obj.rectangle6:setAlign("client");
@@ -552,7 +553,7 @@ function newListade_NPC_Ficha()
     obj.rectangle6:setHitTest(true);
     obj.rectangle6:setName("rectangle6");
 
-    obj.CorBarrinha3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.CorBarrinha3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.CorBarrinha3:setParent(obj.rectangle6);
     obj.CorBarrinha3:setName("CorBarrinha3");
     obj.CorBarrinha3:setColor("#808080");
@@ -560,7 +561,7 @@ function newListade_NPC_Ficha()
     obj.CorBarrinha3:setMargins({left=1, right=1, top=1, bottom=1});
     obj.CorBarrinha3:setHitTest(true);
 
-    obj.comboBox6 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox6 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox6:setParent(obj.layout8);
     obj.comboBox6:setAlign("left");
     obj.comboBox6:setFontSize(12);
@@ -575,7 +576,7 @@ function newListade_NPC_Ficha()
     obj.comboBox6:setMargins({left=4});
     obj.comboBox6:setName("comboBox6");
 
-    obj.comboBox7 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox7 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox7:setParent(obj.layout8);
     obj.comboBox7:setAlign("left");
     obj.comboBox7:setFontSize(12);
@@ -590,20 +591,20 @@ function newListade_NPC_Ficha()
     obj.comboBox7:setMargins({left=4});
     obj.comboBox7:setName("comboBox7");
 
-    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink4:setParent(obj.layout8);
     obj.dataLink4:setField("CorBarrinha3");
     obj.dataLink4:setDefaultValue("#808080");
     obj.dataLink4:setName("dataLink4");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.Config);
     obj.layout10:setAlign("top");
     obj.layout10:setHeight(18);
     obj.layout10:setMargins({top=4});
     obj.layout10:setName("layout10");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout10);
     obj.label11:setAlign("left");
     obj.label11:setFontSize(12);
@@ -612,7 +613,7 @@ function newListade_NPC_Ficha()
     obj.label11:setWidth(64);
     obj.label11:setName("label11");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout10);
     obj.edit5:setAlign("left");
     obj.edit5:setFontSize(12);
@@ -623,14 +624,14 @@ function newListade_NPC_Ficha()
     obj.edit5:setMargins({left=4});
     obj.edit5:setName("edit5");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.layout10);
     obj.layout11:setAlign("left");
     obj.layout11:setWidth(26);
     obj.layout11:setMargins({left=4});
     obj.layout11:setName("layout11");
 
-    obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle7 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle7:setParent(obj.layout11);
     obj.rectangle7:setAlign("client");
     obj.rectangle7:setColor("white");
@@ -638,7 +639,7 @@ function newListade_NPC_Ficha()
     obj.rectangle7:setMargins({left=4, right=4});
     obj.rectangle7:setName("rectangle7");
 
-    obj.rectangle8 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle8 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle8:setParent(obj.rectangle7);
     obj.rectangle8:setColor("black");
     obj.rectangle8:setAlign("client");
@@ -646,7 +647,7 @@ function newListade_NPC_Ficha()
     obj.rectangle8:setHitTest(true);
     obj.rectangle8:setName("rectangle8");
 
-    obj.CorBarrinha4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.CorBarrinha4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.CorBarrinha4:setParent(obj.rectangle8);
     obj.CorBarrinha4:setName("CorBarrinha4");
     obj.CorBarrinha4:setColor("#808080");
@@ -654,7 +655,7 @@ function newListade_NPC_Ficha()
     obj.CorBarrinha4:setMargins({left=1, right=1, top=1, bottom=1});
     obj.CorBarrinha4:setHitTest(true);
 
-    obj.comboBox8 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox8 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox8:setParent(obj.layout10);
     obj.comboBox8:setAlign("left");
     obj.comboBox8:setFontSize(12);
@@ -669,7 +670,7 @@ function newListade_NPC_Ficha()
     obj.comboBox8:setMargins({left=4});
     obj.comboBox8:setName("comboBox8");
 
-    obj.comboBox9 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox9 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox9:setParent(obj.layout10);
     obj.comboBox9:setAlign("left");
     obj.comboBox9:setFontSize(12);
@@ -684,20 +685,20 @@ function newListade_NPC_Ficha()
     obj.comboBox9:setMargins({left=4});
     obj.comboBox9:setName("comboBox9");
 
-    obj.dataLink5 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink5:setParent(obj.layout10);
     obj.dataLink5:setField("CorBarrinha4");
     obj.dataLink5:setDefaultValue("#808080");
     obj.dataLink5:setName("dataLink5");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.Config);
     obj.layout12:setAlign("top");
     obj.layout12:setHeight(24);
     obj.layout12:setMargins({top=8});
     obj.layout12:setName("layout12");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.layout12);
     obj.checkBox1:setMargins({left=4});
     obj.checkBox1:setAlign("left");
@@ -707,13 +708,13 @@ function newListade_NPC_Ficha()
     obj.checkBox1:setText("Enviar alterações ao chat");
     obj.checkBox1:setName("checkBox1");
 
-    obj.dataLink6 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink6:setParent(obj.layout12);
     obj.dataLink6:setField("EnviarNoChat");
     obj.dataLink6:setDefaultValue("false");
     obj.dataLink6:setName("dataLink6");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout12);
     obj.button1:setAlign("right");
     obj.button1:setWidth(80);
@@ -721,19 +722,19 @@ function newListade_NPC_Ficha()
     obj.button1:setMargins({right=8});
     obj.button1:setName("button1");
 
-    obj.SelectCor = gui.fromHandle(_obj_newObject("popup"));
+    obj.SelectCor = GUI.fromHandle(_obj_newObject("popup"));
     obj.SelectCor:setParent(obj.Config);
     obj.SelectCor:setName("SelectCor");
     obj.SelectCor:setWidth(192);
     obj.SelectCor:setHeight(100);
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.SelectCor);
     obj.layout13:setAlign("top");
     obj.layout13:setHeight(24);
     obj.layout13:setName("layout13");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout13);
     obj.label12:setAlign("client");
     obj.label12:setText("Selecione a Cor:");
@@ -741,34 +742,34 @@ function newListade_NPC_Ficha()
     lfm_setPropAsString(obj.label12, "fontStyle",  "bold");
     obj.label12:setName("label12");
 
-    obj.Nha = gui.fromHandle(_obj_newObject("layout"));
+    obj.Nha = GUI.fromHandle(_obj_newObject("layout"));
     obj.Nha:setParent(obj.SelectCor);
     obj.Nha:setName("Nha");
     obj.Nha:setAlign("client");
     obj.Nha:setMargins({left=10, right=10});
     obj.Nha:setHitTest(true);
 
-    obj.Selected = gui.fromHandle(_obj_newObject("layout"));
+    obj.Selected = GUI.fromHandle(_obj_newObject("layout"));
     obj.Selected:setParent(obj.Nha);
     obj.Selected:setAlign("none");
     obj.Selected:setName("Selected");
     obj.Selected:setWidth(20);
     obj.Selected:setHeight(20);
 
-    obj.rectangle9 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle9 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle9:setParent(obj.Selected);
     obj.rectangle9:setAlign("client");
     obj.rectangle9:setColor("white");
     obj.rectangle9:setName("rectangle9");
 
-    obj.rectangle10 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle10 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle10:setParent(obj.rectangle9);
     obj.rectangle10:setColor("black");
     obj.rectangle10:setAlign("client");
     obj.rectangle10:setMargins({left=1, right=1, top=1, bottom=1});
     obj.rectangle10:setName("rectangle10");
 
-    obj.Flow = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.Flow = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.Flow:setParent(obj.Nha);
     obj.Flow:setName("Flow");
     obj.Flow:setAlign("client");
@@ -777,7 +778,7 @@ function newListade_NPC_Ficha()
     obj.Flow:setHitTest(true);
     obj.Flow:setCanFocus(true);
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.Flow);
     obj.layout14:setAlign("left");
     obj.layout14:setWidth(20);
@@ -785,7 +786,7 @@ function newListade_NPC_Ficha()
     obj.layout14:setHitTest(true);
     obj.layout14:setName("layout14");
 
-    obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle11:setParent(obj.layout14);
     obj.rectangle11:setAlign("client");
     obj.rectangle11:setMargins({left=2, right=2, top=2, bottom=2});
@@ -793,7 +794,7 @@ function newListade_NPC_Ficha()
     obj.rectangle11:setColor("#acacac");
     obj.rectangle11:setName("rectangle11");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.Flow);
     obj.layout15:setAlign("left");
     obj.layout15:setWidth(20);
@@ -801,7 +802,7 @@ function newListade_NPC_Ficha()
     obj.layout15:setHitTest(true);
     obj.layout15:setName("layout15");
 
-    obj.rectangle12 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle12 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle12:setParent(obj.layout15);
     obj.rectangle12:setAlign("client");
     obj.rectangle12:setMargins({left=2, right=2, top=2, bottom=2});
@@ -809,7 +810,7 @@ function newListade_NPC_Ficha()
     obj.rectangle12:setColor("#5959ff");
     obj.rectangle12:setName("rectangle12");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.Flow);
     obj.layout16:setAlign("left");
     obj.layout16:setWidth(20);
@@ -817,7 +818,7 @@ function newListade_NPC_Ficha()
     obj.layout16:setHitTest(true);
     obj.layout16:setName("layout16");
 
-    obj.rectangle13 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle13 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle13:setParent(obj.layout16);
     obj.rectangle13:setAlign("client");
     obj.rectangle13:setMargins({left=2, right=2, top=2, bottom=2});
@@ -825,7 +826,7 @@ function newListade_NPC_Ficha()
     obj.rectangle13:setColor("#59ff59");
     obj.rectangle13:setName("rectangle13");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.Flow);
     obj.layout17:setAlign("left");
     obj.layout17:setWidth(20);
@@ -833,7 +834,7 @@ function newListade_NPC_Ficha()
     obj.layout17:setHitTest(true);
     obj.layout17:setName("layout17");
 
-    obj.rectangle14 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle14 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle14:setParent(obj.layout17);
     obj.rectangle14:setAlign("client");
     obj.rectangle14:setMargins({left=2, right=2, top=2, bottom=2});
@@ -841,7 +842,7 @@ function newListade_NPC_Ficha()
     obj.rectangle14:setColor("#ff5959");
     obj.rectangle14:setName("rectangle14");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.Flow);
     obj.layout18:setAlign("left");
     obj.layout18:setWidth(20);
@@ -849,7 +850,7 @@ function newListade_NPC_Ficha()
     obj.layout18:setHitTest(true);
     obj.layout18:setName("layout18");
 
-    obj.rectangle15 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle15 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle15:setParent(obj.layout18);
     obj.rectangle15:setAlign("client");
     obj.rectangle15:setMargins({left=2, right=2, top=2, bottom=2});
@@ -857,7 +858,7 @@ function newListade_NPC_Ficha()
     obj.rectangle15:setColor("#ff59ff");
     obj.rectangle15:setName("rectangle15");
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.Flow);
     obj.layout19:setAlign("left");
     obj.layout19:setWidth(20);
@@ -865,7 +866,7 @@ function newListade_NPC_Ficha()
     obj.layout19:setHitTest(true);
     obj.layout19:setName("layout19");
 
-    obj.rectangle16 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle16 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle16:setParent(obj.layout19);
     obj.rectangle16:setAlign("client");
     obj.rectangle16:setMargins({left=2, right=2, top=2, bottom=2});
@@ -873,7 +874,7 @@ function newListade_NPC_Ficha()
     obj.rectangle16:setColor("#ffac59");
     obj.rectangle16:setName("rectangle16");
 
-    obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.Flow);
     obj.layout20:setAlign("left");
     obj.layout20:setWidth(20);
@@ -881,7 +882,7 @@ function newListade_NPC_Ficha()
     obj.layout20:setHitTest(true);
     obj.layout20:setName("layout20");
 
-    obj.rectangle17 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle17 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle17:setParent(obj.layout20);
     obj.rectangle17:setAlign("client");
     obj.rectangle17:setMargins({left=2, right=2, top=2, bottom=2});
@@ -889,7 +890,7 @@ function newListade_NPC_Ficha()
     obj.rectangle17:setColor("#ffff59");
     obj.rectangle17:setName("rectangle17");
 
-    obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.Flow);
     obj.layout21:setAlign("left");
     obj.layout21:setWidth(20);
@@ -897,7 +898,7 @@ function newListade_NPC_Ficha()
     obj.layout21:setHitTest(true);
     obj.layout21:setName("layout21");
 
-    obj.rectangle18 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle18 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle18:setParent(obj.layout21);
     obj.rectangle18:setAlign("client");
     obj.rectangle18:setMargins({left=2, right=2, top=2, bottom=2});
@@ -905,7 +906,7 @@ function newListade_NPC_Ficha()
     obj.rectangle18:setColor("#59ffff");
     obj.rectangle18:setName("rectangle18");
 
-    obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.Flow);
     obj.layout22:setAlign("left");
     obj.layout22:setWidth(20);
@@ -913,7 +914,7 @@ function newListade_NPC_Ficha()
     obj.layout22:setHitTest(true);
     obj.layout22:setName("layout22");
 
-    obj.rectangle19 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle19 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle19:setParent(obj.layout22);
     obj.rectangle19:setAlign("client");
     obj.rectangle19:setMargins({left=2, right=2, top=2, bottom=2});
@@ -921,7 +922,7 @@ function newListade_NPC_Ficha()
     obj.rectangle19:setColor("#ffd159");
     obj.rectangle19:setName("rectangle19");
 
-    obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.Flow);
     obj.layout23:setAlign("left");
     obj.layout23:setWidth(20);
@@ -929,7 +930,7 @@ function newListade_NPC_Ficha()
     obj.layout23:setHitTest(true);
     obj.layout23:setName("layout23");
 
-    obj.rectangle20 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle20 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle20:setParent(obj.layout23);
     obj.rectangle20:setAlign("client");
     obj.rectangle20:setMargins({left=2, right=2, top=2, bottom=2});
@@ -937,7 +938,7 @@ function newListade_NPC_Ficha()
     obj.rectangle20:setColor("#5990ff");
     obj.rectangle20:setName("rectangle20");
 
-    obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.Flow);
     obj.layout24:setAlign("left");
     obj.layout24:setWidth(20);
@@ -945,7 +946,7 @@ function newListade_NPC_Ficha()
     obj.layout24:setHitTest(true);
     obj.layout24:setName("layout24");
 
-    obj.rectangle21 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle21:setParent(obj.layout24);
     obj.rectangle21:setAlign("client");
     obj.rectangle21:setMargins({left=2, right=2, top=2, bottom=2});
@@ -953,7 +954,7 @@ function newListade_NPC_Ficha()
     obj.rectangle21:setColor("#f4c264");
     obj.rectangle21:setName("rectangle21");
 
-    obj.layout25 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.Flow);
     obj.layout25:setAlign("left");
     obj.layout25:setWidth(20);
@@ -961,7 +962,7 @@ function newListade_NPC_Ficha()
     obj.layout25:setHitTest(true);
     obj.layout25:setName("layout25");
 
-    obj.rectangle22 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle22 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle22:setParent(obj.layout25);
     obj.rectangle22:setAlign("client");
     obj.rectangle22:setMargins({left=2, right=2, top=2, bottom=2});
@@ -969,7 +970,7 @@ function newListade_NPC_Ficha()
     obj.rectangle22:setColor("#de7a7a");
     obj.rectangle22:setName("rectangle22");
 
-    obj.layout26 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.Flow);
     obj.layout26:setAlign("left");
     obj.layout26:setWidth(20);
@@ -977,7 +978,7 @@ function newListade_NPC_Ficha()
     obj.layout26:setHitTest(true);
     obj.layout26:setName("layout26");
 
-    obj.rectangle23 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle23:setParent(obj.layout26);
     obj.rectangle23:setAlign("client");
     obj.rectangle23:setMargins({left=2, right=2, top=2, bottom=2});
@@ -985,7 +986,7 @@ function newListade_NPC_Ficha()
     obj.rectangle23:setColor("#cb83d6");
     obj.rectangle23:setName("rectangle23");
 
-    obj.layout27 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.Flow);
     obj.layout27:setAlign("left");
     obj.layout27:setWidth(20);
@@ -993,7 +994,7 @@ function newListade_NPC_Ficha()
     obj.layout27:setHitTest(true);
     obj.layout27:setName("layout27");
 
-    obj.rectangle24 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle24 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle24:setParent(obj.layout27);
     obj.rectangle24:setAlign("client");
     obj.rectangle24:setMargins({left=2, right=2, top=2, bottom=2});
@@ -1001,7 +1002,7 @@ function newListade_NPC_Ficha()
     obj.rectangle24:setColor("#f3658a");
     obj.rectangle24:setName("rectangle24");
 
-    obj.layout28 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.Flow);
     obj.layout28:setAlign("left");
     obj.layout28:setWidth(20);
@@ -1009,7 +1010,7 @@ function newListade_NPC_Ficha()
     obj.layout28:setHitTest(true);
     obj.layout28:setName("layout28");
 
-    obj.rectangle25 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle25:setParent(obj.layout28);
     obj.rectangle25:setAlign("client");
     obj.rectangle25:setMargins({left=2, right=2, top=2, bottom=2});
@@ -1017,7 +1018,7 @@ function newListade_NPC_Ficha()
     obj.rectangle25:setColor("#8cecb3");
     obj.rectangle25:setName("rectangle25");
 
-    obj.layout29 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout29:setParent(obj.Flow);
     obj.layout29:setAlign("left");
     obj.layout29:setWidth(20);
@@ -1025,7 +1026,7 @@ function newListade_NPC_Ficha()
     obj.layout29:setHitTest(true);
     obj.layout29:setName("layout29");
 
-    obj.rectangle26 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle26 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle26:setParent(obj.layout29);
     obj.rectangle26:setAlign("client");
     obj.rectangle26:setMargins({left=2, right=2, top=2, bottom=2});
@@ -1033,42 +1034,42 @@ function newListade_NPC_Ficha()
     obj.rectangle26:setColor("#ed846b");
     obj.rectangle26:setName("rectangle26");
 
-    obj.layout30 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout30:setParent(obj.SelectCor);
     obj.layout30:setAlign("bottom");
     obj.layout30:setHeight(24);
     obj.layout30:setName("layout30");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout30);
     obj.button2:setAlign("right");
     obj.button2:setText("OK!");
     obj.button2:setMargins({right=4});
     obj.button2:setName("button2");
 
-    obj.recordNode = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.recordNode = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.recordNode:setParent(obj);
     obj.recordNode:setName("recordNode");
     obj.recordNode:setVisible(false);
 
-    obj.layout31 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj);
     obj.layout31:setVisible(false);
     obj.layout31:setName("layout31");
 
-    obj.dropDownFalso2 = gui.fromHandle(_obj_newObject("popup"));
+    obj.dropDownFalso2 = GUI.fromHandle(_obj_newObject("popup"));
     obj.dropDownFalso2:setParent(obj.layout31);
     obj.dropDownFalso2:setName("dropDownFalso2");
     obj.dropDownFalso2:setWidth(128);
     obj.dropDownFalso2:setHeight(128);
     obj.dropDownFalso2:setBackOpacity(0);
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj.dropDownFalso2);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.opcoesFalsas2 = gui.fromHandle(_obj_newObject("recordList"));
+    obj.opcoesFalsas2 = GUI.fromHandle(_obj_newObject("recordList"));
     obj.opcoesFalsas2:setParent(obj.scrollBox1);
     obj.opcoesFalsas2:setVisible(true);
     obj.opcoesFalsas2:setAlign("top");
@@ -1080,20 +1081,20 @@ function newListade_NPC_Ficha()
     obj.opcoesFalsas2:setSelectable(true);
     obj.opcoesFalsas2:setMinQt(0);
 
-    obj.rectangle27 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle27 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle27:setParent(obj);
     obj.rectangle27:setColor("#0f0f0f");
     obj.rectangle27:setAlign("client");
     obj.rectangle27:setName("rectangle27");
 
-    obj.layout32 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.rectangle27);
     obj.layout32:setAlign("top");
     obj.layout32:setHeight(24);
     obj.layout32:setMargins({top=4, left=2});
     obj.layout32:setName("layout32");
 
-    obj.Configurar = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.Configurar = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.Configurar:setParent(obj.layout32);
     obj.Configurar:setMargins({left=4});
     obj.Configurar:setAlign("left");
@@ -1103,7 +1104,7 @@ function newListade_NPC_Ficha()
     obj.Configurar:setImageChecked("/ListaNPCsLista/images/config.png");
     obj.Configurar:setImageUnchecked("/ListaNPCsLista/images/config.png");
 
-    obj.NovoNPC = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.NovoNPC = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.NovoNPC:setParent(obj.layout32);
     obj.NovoNPC:setMargins({left=4});
     obj.NovoNPC:setAlign("left");
@@ -1113,7 +1114,7 @@ function newListade_NPC_Ficha()
     obj.NovoNPC:setImageChecked("/ListaNPCsLista/images/addnpc.png");
     obj.NovoNPC:setImageUnchecked("/ListaNPCsLista/images/addnpc.png");
 
-    obj.Organizar = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.Organizar = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.Organizar:setParent(obj.layout32);
     obj.Organizar:setMargins({left=4});
     obj.Organizar:setAlign("left");
@@ -1123,7 +1124,7 @@ function newListade_NPC_Ficha()
     obj.Organizar:setImageChecked("/ListaNPCsLista/images/organize.png");
     obj.Organizar:setImageUnchecked("/ListaNPCsLista/images/organize.png");
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout32);
     obj.label13:setAlign("left");
     obj.label13:setMargins({left=12});
@@ -1131,25 +1132,25 @@ function newListade_NPC_Ficha()
     obj.label13:setField("NomeDaOpcao");
     obj.label13:setName("label13");
 
-    obj.dataLink7 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink7:setParent(obj.rectangle27);
     obj.dataLink7:setField("NomeDaOpcao");
     obj.dataLink7:setDefaultValue("Lista de NPCs");
     obj.dataLink7:setName("dataLink7");
 
-    obj.dataLink8 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink8:setParent(obj.rectangle27);
     obj.dataLink8:setField("TipoOrganizar");
     obj.dataLink8:setDefaultValue("Alfa");
     obj.dataLink8:setName("dataLink8");
 
-    obj.MainClient = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.MainClient = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.MainClient:setParent(obj.rectangle27);
     obj.MainClient:setName("MainClient");
     obj.MainClient:setAlign("client");
     obj.MainClient:setMargins({top=2});
 
-    obj.rclListaDeNPC = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclListaDeNPC = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDeNPC:setParent(obj.MainClient);
     obj.rclListaDeNPC:setName("rclListaDeNPC");
     obj.rclListaDeNPC:setLayout("verticalTiles");
@@ -1160,13 +1161,13 @@ function newListade_NPC_Ficha()
     obj.rclListaDeNPC:setSelectable(true);
     obj.rclListaDeNPC:setMinQt(0);
 
-    obj.layout33 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout33:setParent(obj.rectangle27);
     obj.layout33:setAlign("bottom");
     obj.layout33:setHeight(32);
     obj.layout33:setName("layout33");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout33);
     obj.label14:setAlign("right");
     lfm_setPropAsString(obj.label14, "fontStyle",  "italic");
@@ -1296,20 +1297,20 @@ function newListade_NPC_Ficha()
 		
 
 
-    obj.dataLink9 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink9:setParent(obj.rectangle27);
     obj.dataLink9:setFields({'VisibBarrinha1', 'VisibBarrinha2', 'VisibBarrinha3', 'VisibBarrinha4'});
     obj.dataLink9:setDefaultValues({'a', 'a', 'a', 'a'});
     obj.dataLink9:setName("dataLink9");
 
-    obj.dataLink10 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink10 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink10:setParent(obj.rectangle27);
     obj.dataLink10:setFields({'NumerosBarrinha1', 'NumerosBarrinha2', 'NumerosBarrinha3', 'NumerosBarrinha4'});
     obj.dataLink10:setDefaultValues({'x', 'x', 'x', 'x'});
     obj.dataLink10:setName("dataLink10");
 
     obj._e_event0 = obj:addEventListener("onShow",
-        function (self)
+        function (_)
             if self.opcoesFalsas2.selectedNode == nil and sheet ~= nil then
             			chamarListaDeJogadores();
             			autoCalcular();
@@ -1322,13 +1323,13 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.Selected.left = 20 * (tonumber(sheet.CorIndex or 0) % 8);
             			self.Selected.top = 20 * math.floor(tonumber(sheet.CorIndex or 0) / 8);
         end, obj);
 
     obj._e_event2 = obj.rectangle1:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.IndexBarrinha = 1;
             					sheet.CorIndex = sheet.IndexBarrinha1;
             					sheet.ColorString = sheet.CorBarrinha1;
@@ -1336,7 +1337,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event3 = obj.rectangle2:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.IndexBarrinha = 1;
             							sheet.CorIndex = sheet.IndexBarrinha1;
             							sheet.ColorString = sheet.CorBarrinha1;
@@ -1344,7 +1345,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event4 = obj.CorBarrinha1:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.IndexBarrinha = 1;
             								sheet.CorIndex = sheet.IndexBarrinha1;
             								sheet.ColorString = sheet.CorBarrinha1;
@@ -1352,7 +1353,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event5 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.CorBarrinha1.color = sheet.CorBarrinha1;
             				local nodes2 = ndb.getChildNodes(sheet.campoDosNPC);
             				for j = 1, #nodes2, 1 do
@@ -1361,7 +1362,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event6 = obj.rectangle3:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.IndexBarrinha = 2;
             					sheet.CorIndex = sheet.IndexBarrinha2;
             					sheet.ColorString = sheet.CorBarrinha2;
@@ -1369,7 +1370,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event7 = obj.rectangle4:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.IndexBarrinha = 2;
             							sheet.CorIndex = sheet.IndexBarrinha2;
             							sheet.ColorString = sheet.CorBarrinha2;
@@ -1377,7 +1378,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event8 = obj.CorBarrinha2:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.IndexBarrinha = 2;
             								sheet.CorIndex = sheet.IndexBarrinha2;
             								sheet.ColorString = sheet.CorBarrinha2;
@@ -1385,7 +1386,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event9 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.CorBarrinha2.color = sheet.CorBarrinha2;
             				local nodes2 = ndb.getChildNodes(sheet.campoDosNPC);
             				for j = 1, #nodes2, 1 do
@@ -1394,7 +1395,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event10 = obj.rectangle5:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.IndexBarrinha = 3;
             					sheet.CorIndex = sheet.IndexBarrinha3;
             					sheet.ColorString = sheet.CorBarrinha3;
@@ -1402,7 +1403,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event11 = obj.rectangle6:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.IndexBarrinha = 3;
             							sheet.CorIndex = sheet.IndexBarrinha3;
             							sheet.ColorString = sheet.CorBarrinha3;
@@ -1410,7 +1411,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event12 = obj.CorBarrinha3:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.IndexBarrinha = 3;
             								sheet.CorIndex = sheet.IndexBarrinha3;
             								sheet.ColorString = sheet.CorBarrinha3;
@@ -1418,7 +1419,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event13 = obj.dataLink4:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.CorBarrinha3.color = sheet.CorBarrinha3;
             				local nodes2 = ndb.getChildNodes(sheet.campoDosNPC);
             				for j = 1, #nodes2, 1 do
@@ -1427,7 +1428,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event14 = obj.rectangle7:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.IndexBarrinha = 4;
             					sheet.CorIndex = sheet.IndexBarrinha4;
             					sheet.ColorString = sheet.CorBarrinha4;
@@ -1435,7 +1436,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event15 = obj.rectangle8:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.IndexBarrinha = 4;
             							sheet.CorIndex = sheet.IndexBarrinha4;
             							sheet.ColorString = sheet.CorBarrinha4;
@@ -1443,7 +1444,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event16 = obj.CorBarrinha4:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.IndexBarrinha = 4;
             								sheet.CorIndex = sheet.IndexBarrinha4;
             								sheet.ColorString = sheet.CorBarrinha4;
@@ -1451,7 +1452,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event17 = obj.dataLink5:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.CorBarrinha4.color = sheet.CorBarrinha4;
             				local nodes2 = ndb.getChildNodes(sheet.campoDosNPC);
             				for j = 1, #nodes2, 1 do
@@ -1460,204 +1461,204 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event18 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.Config:close();
         end, obj);
 
     obj._e_event19 = obj.layout14:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "0";
             				sheet.ColorString = "#acacac";
         end, obj);
 
     obj._e_event20 = obj.rectangle11:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "0";
             					sheet.ColorString = "#acacac";
         end, obj);
 
     obj._e_event21 = obj.layout15:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "1";
             				sheet.ColorString = "#5959ff";
         end, obj);
 
     obj._e_event22 = obj.rectangle12:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "1";
             					sheet.ColorString = "#5959ff";
         end, obj);
 
     obj._e_event23 = obj.layout16:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "2";
             				sheet.ColorString = "#59ff59";
         end, obj);
 
     obj._e_event24 = obj.rectangle13:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "2";
             					sheet.ColorString = "#59ff59";
         end, obj);
 
     obj._e_event25 = obj.layout17:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "3";
             				sheet.ColorString = "#ff5959";
         end, obj);
 
     obj._e_event26 = obj.rectangle14:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "3";
             					sheet.ColorString = "#ff5959";
         end, obj);
 
     obj._e_event27 = obj.layout18:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "4";
             				sheet.ColorString = "#ff59ff";
         end, obj);
 
     obj._e_event28 = obj.rectangle15:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "4";
             					sheet.ColorString = "#ff59ff";
         end, obj);
 
     obj._e_event29 = obj.layout19:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "5";
             				sheet.ColorString = "#ffac59";
         end, obj);
 
     obj._e_event30 = obj.rectangle16:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "5";
             					sheet.ColorString = "#ffac59";
         end, obj);
 
     obj._e_event31 = obj.layout20:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "6";
             				sheet.ColorString = "#ffff59";
         end, obj);
 
     obj._e_event32 = obj.rectangle17:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "6";
             					sheet.ColorString = "#ffff59";
         end, obj);
 
     obj._e_event33 = obj.layout21:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "7";
             				sheet.ColorString = "#59ffff";
         end, obj);
 
     obj._e_event34 = obj.rectangle18:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "7";
             					sheet.ColorString = "#59ffff";
         end, obj);
 
     obj._e_event35 = obj.layout22:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "8";
             				sheet.ColorString = "#ffd159";
         end, obj);
 
     obj._e_event36 = obj.rectangle19:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "8";
             					sheet.ColorString = "#ffd159";
         end, obj);
 
     obj._e_event37 = obj.layout23:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "9";
             				sheet.ColorString = "#5990ff";
         end, obj);
 
     obj._e_event38 = obj.rectangle20:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "9";
             					sheet.ColorString = "#5990ff";
         end, obj);
 
     obj._e_event39 = obj.layout24:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "10";
             				sheet.ColorString = "#f4c264";
         end, obj);
 
     obj._e_event40 = obj.rectangle21:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "10";
             					sheet.ColorString = "#f4c264";
         end, obj);
 
     obj._e_event41 = obj.layout25:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "11";
             				sheet.ColorString = "#de7a7a";
         end, obj);
 
     obj._e_event42 = obj.rectangle22:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "11";
             					sheet.ColorString = "#de7a7a";
         end, obj);
 
     obj._e_event43 = obj.layout26:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "12";
             				sheet.ColorString = "#cb83d6";
         end, obj);
 
     obj._e_event44 = obj.rectangle23:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "12";
             					sheet.ColorString = "#cb83d6";
         end, obj);
 
     obj._e_event45 = obj.layout27:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "13";
             				sheet.ColorString = "#f3658a";
         end, obj);
 
     obj._e_event46 = obj.rectangle24:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "13";
             					sheet.ColorString = "#f3658a";
         end, obj);
 
     obj._e_event47 = obj.layout28:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "14";
             				sheet.ColorString = "#8cecb3";
         end, obj);
 
     obj._e_event48 = obj.rectangle25:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "14";
             					sheet.ColorString = "#8cecb3";
         end, obj);
 
     obj._e_event49 = obj.layout29:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "15";
             				sheet.ColorString = "#ed846b";
         end, obj);
 
     obj._e_event50 = obj.rectangle26:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.CorIndex = "15";
             					sheet.ColorString = "#ed846b";
         end, obj);
 
     obj._e_event51 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet.IndexBarrinha == 1 then
             								sheet.IndexBarrinha1 = sheet.CorIndex;
             								sheet.CorBarrinha1 = sheet.ColorString;
@@ -1675,7 +1676,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event52 = obj.opcoesFalsas2:addEventListener("onSelect",
-        function (self)
+        function (_)
             local node = self.opcoesFalsas2.selectedNode;
             						 setTimeout(function()
             							if node ~= nil then
@@ -1685,7 +1686,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event53 = obj.opcoesFalsas2:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             if (nodeA.CodigoInterno == nil) then
             							if (nodeA.NomeDaOpcao == "Nenhum") then
             								nodeA.CodigoInterno = 1;
@@ -1711,7 +1712,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event54 = obj.rectangle27:addEventListener("onResize",
-        function (self)
+        function (_)
             if self.width >= 270 then
             				self.rclListaDeNPC.width = self.width;
             			else
@@ -1720,7 +1721,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event55 = obj.Configurar:addEventListener("onClick",
-        function (self)
+        function (_)
             if DonoMestre() then
             						self.Config.scopeNode = sheet;
             						self.Config:show();
@@ -1730,7 +1731,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event56 = obj.NovoNPC:addEventListener("onClick",
-        function (self)
+        function (_)
             if DonoMestre() then			
             						node = self.rclListaDeNPC:append();
             					else
@@ -1739,7 +1740,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event57 = obj.Organizar:addEventListener("onClick",
-        function (self)
+        function (_)
             if DonoMestre() then			
             						self.rclListaDeNPC:sort();
             					else
@@ -1748,11 +1749,11 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event58 = obj.rclListaDeNPC:addEventListener("onBeginEnumeration",
-        function (self)
+        function (_)
         end, obj);
 
     obj._e_event59 = obj.rclListaDeNPC:addEventListener("onItemAdded",
-        function (self, node, form)
+        function (_, node, form)
             node.CorBarrinha1 = (sheet.CorBarrinha1 or "#808080");
             					node.CorBarrinha2 = (sheet.CorBarrinha2 or "#808080");
             					node.CorBarrinha3 = (sheet.CorBarrinha3 or "#808080");
@@ -1764,7 +1765,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event60 = obj.rclListaDeNPC:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             org = getOrganizacao();
             					if nodeA.hideNPC and not nodeB.hideNPC then
             						return 1;
@@ -1786,7 +1787,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event61 = obj.dataLink9:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local nodes = ndb.getChildNodes(sheet.campoDosNPC);       
             					self:beginUpdate();
             					for i = 1,#nodes, 1 do
@@ -1818,7 +1819,7 @@ function newListade_NPC_Ficha()
         end, obj);
 
     obj._e_event62 = obj.dataLink10:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local nodes = ndb.getChildNodes(sheet.campoDosNPC);    
             				self:beginUpdate();
             				for i = 1,#nodes, 1 do
@@ -2103,7 +2104,7 @@ local _Listade_NPC_Ficha = {
     description=""};
 
 Listade_NPC_Ficha = _Listade_NPC_Ficha;
-rrpg.registrarForm(_Listade_NPC_Ficha);
-rrpg.registrarDataType(_Listade_NPC_Ficha);
+Firecast.registrarForm(_Listade_NPC_Ficha);
+Firecast.registrarDataType(_Listade_NPC_Ficha);
 
 return _Listade_NPC_Ficha;

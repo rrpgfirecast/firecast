@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmInventoryArmor()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,13 +32,13 @@ function newfrmInventoryArmor()
     obj:setHeight(25);
     obj:setMargins({top=1});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setLeft(0);
     obj.edit1:setTop(0);
@@ -46,7 +47,7 @@ function newfrmInventoryArmor()
     obj.edit1:setField("nome");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.rectangle1);
     obj.edit2:setLeft(150);
     obj.edit2:setTop(0);
@@ -55,7 +56,7 @@ function newfrmInventoryArmor()
     obj.edit2:setField("cabeca");
     obj.edit2:setName("edit2");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.rectangle1);
     obj.edit3:setLeft(200);
     obj.edit3:setTop(0);
@@ -64,7 +65,7 @@ function newfrmInventoryArmor()
     obj.edit3:setField("torso");
     obj.edit3:setName("edit3");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.rectangle1);
     obj.edit4:setLeft(250);
     obj.edit4:setTop(0);
@@ -73,7 +74,7 @@ function newfrmInventoryArmor()
     obj.edit4:setField("bracoDireito");
     obj.edit4:setName("edit4");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.rectangle1);
     obj.edit5:setLeft(300);
     obj.edit5:setTop(0);
@@ -82,7 +83,7 @@ function newfrmInventoryArmor()
     obj.edit5:setField("bracoEsquerdo");
     obj.edit5:setName("edit5");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.rectangle1);
     obj.edit6:setLeft(350);
     obj.edit6:setTop(0);
@@ -91,7 +92,7 @@ function newfrmInventoryArmor()
     obj.edit6:setField("pernaDireito");
     obj.edit6:setName("edit6");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.rectangle1);
     obj.edit7:setLeft(400);
     obj.edit7:setTop(0);
@@ -100,7 +101,7 @@ function newfrmInventoryArmor()
     obj.edit7:setField("pernaEsquerdo");
     obj.edit7:setName("edit7");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.rectangle1);
     obj.edit8:setLeft(450);
     obj.edit8:setTop(0);
@@ -109,7 +110,7 @@ function newfrmInventoryArmor()
     obj.edit8:setField("detalhes");
     obj.edit8:setName("edit8");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.rectangle1);
     obj.edit9:setLeft(600);
     obj.edit9:setTop(0);
@@ -118,7 +119,7 @@ function newfrmInventoryArmor()
     obj.edit9:setField("preco");
     obj.edit9:setName("edit9");
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.rectangle1);
     obj.edit10:setLeft(650);
     obj.edit10:setTop(0);
@@ -127,7 +128,7 @@ function newfrmInventoryArmor()
     obj.edit10:setField("peso");
     obj.edit10:setName("edit10");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(700);
     obj.button1:setTop(0);
@@ -136,48 +137,48 @@ function newfrmInventoryArmor()
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.rectangle1);
     obj.dataLink1:setFields({'cabeca'});
     obj.dataLink1:setName("dataLink1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.rectangle1);
     obj.dataLink2:setFields({'torso'});
     obj.dataLink2:setName("dataLink2");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj.rectangle1);
     obj.dataLink3:setFields({'bracoDireito'});
     obj.dataLink3:setName("dataLink3");
 
-    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink4:setParent(obj.rectangle1);
     obj.dataLink4:setFields({'bracoEsquerdo'});
     obj.dataLink4:setName("dataLink4");
 
-    obj.dataLink5 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink5:setParent(obj.rectangle1);
     obj.dataLink5:setFields({'pernaDireito'});
     obj.dataLink5:setName("dataLink5");
 
-    obj.dataLink6 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink6:setParent(obj.rectangle1);
     obj.dataLink6:setFields({'pernaEsquerdo'});
     obj.dataLink6:setName("dataLink6");
 
-    obj.dataLink7 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink7:setParent(obj.rectangle1);
     obj.dataLink7:setFields({'preco'});
     obj.dataLink7:setName("dataLink7");
 
-    obj.dataLink8 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink8:setParent(obj.rectangle1);
     obj.dataLink8:setFields({'peso'});
     obj.dataLink8:setName("dataLink8");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
             					function (confirmado)
             						if confirmado then
@@ -187,7 +188,7 @@ function newfrmInventoryArmor()
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             				local node = ndb.getRoot(sheet);
@@ -202,7 +203,7 @@ function newfrmInventoryArmor()
         end, obj);
 
     obj._e_event2 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             				local node = ndb.getRoot(sheet);
@@ -217,7 +218,7 @@ function newfrmInventoryArmor()
         end, obj);
 
     obj._e_event3 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             				local node = ndb.getRoot(sheet);
@@ -232,7 +233,7 @@ function newfrmInventoryArmor()
         end, obj);
 
     obj._e_event4 = obj.dataLink4:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             				local node = ndb.getRoot(sheet);
@@ -247,7 +248,7 @@ function newfrmInventoryArmor()
         end, obj);
 
     obj._e_event5 = obj.dataLink5:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             				local node = ndb.getRoot(sheet);
@@ -262,7 +263,7 @@ function newfrmInventoryArmor()
         end, obj);
 
     obj._e_event6 = obj.dataLink6:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             				local node = ndb.getRoot(sheet);
@@ -277,7 +278,7 @@ function newfrmInventoryArmor()
         end, obj);
 
     obj._e_event7 = obj.dataLink7:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             				local node = ndb.getRoot(sheet);
@@ -292,7 +293,7 @@ function newfrmInventoryArmor()
         end, obj);
 
     obj._e_event8 = obj.dataLink8:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             				local node = ndb.getRoot(sheet);
@@ -368,6 +369,6 @@ local _frmInventoryArmor = {
     description=""};
 
 frmInventoryArmor = _frmInventoryArmor;
-rrpg.registrarForm(_frmInventoryArmor);
+Firecast.registrarForm(_frmInventoryArmor);
 
 return _frmInventoryArmor;

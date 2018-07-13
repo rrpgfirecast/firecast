@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmExamples()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -29,12 +30,12 @@ function newfrmExamples()
     obj:setName("frmExamples");
     obj:setAlign("client");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -42,7 +43,7 @@ function newfrmExamples()
     obj.layout1:setHeight(45);
     obj.layout1:setName("layout1");
 
-    obj.colorSelector = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.colorSelector = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.colorSelector:setParent(obj.layout1);
     obj.colorSelector:setLeft(0);
     obj.colorSelector:setTop(0);
@@ -54,7 +55,7 @@ function newfrmExamples()
     obj.colorSelector:setItems({'AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Black', 'BlanchedAlmond', 'Blue', 'BlueViolet', 'Brown', 'BurlyWood', 'CadetBlue', 'Chartreuse', 'Chocolate', 'Coral', 'CornflowerBlue', 'Cornsilk', 'Crimson', 'Cyan', 'DarkBlue', 'DarkCyan', 'DarkGoldenRod', 'DarkGray', 'DarkGreen', 'DarkKhaki', 'DarkMagenta', 'DarkOliveGreen', 'DarkOrange', 'DarkOrchid', 'DarkRed', 'DarkSalmon', 'DarkSeaGreen', 'DarkSlateBlue', 'DarkSlateGray', 'DarkTurquoise', 'DarkViolet', 'DeepPink', 'DeepSkyBlue', 'DimGray', 'DodgerBlue', 'FireBrick', 'FloralWhite', 'ForestGreen', 'Fuchsia', 'Gainsboro', 'GhostWhite', 'Gold', 'GoldenRod', 'Gray', 'Green', 'GreenYellow', 'HoneyDew', 'HotPink', 'IndianRed ', 'Indigo ', 'Ivory', 'Khaki', 'Lavender', 'LavenderBlush', 'LawnGreen', 'LemonChiffon', 'LightBlue', 'LightCoral', 'LightCyan', 'LightGoldenRodYellow', 'LightGray', 'LightGreen', 'LightPink', 'LightSalmon', 'LightSeaGreen', 'LightSkyBlue', 'LightSlateGray', 'LightSteelBlue', 'LightYellow', 'Lime', 'LimeGreen', 'Linen', 'Magenta', 'Maroon', 'MediumAquaMarine', 'MediumBlue', 'MediumOrchid', 'MediumPurple', 'MediumSeaGreen', 'MediumSlateBlue', 'MediumSpringGreen', 'MediumTurquoise', 'MediumVioletRed', 'MidnightBlue', 'MintCream', 'MistyRose', 'Moccasin', 'NavajoWhite', 'Navy', 'OldLace', 'Olive', 'OliveDrab', 'Orange', 'OrangeRed', 'Orchid', 'PaleGoldenRod', 'PaleGreen', 'PaleTurquoise', 'PaleVioletRed', 'PapayaWhip', 'PeachPuff', 'Peru', 'Pink', 'Plum', 'PowderBlue', 'Purple', 'RebeccaPurple', 'Red', 'RosyBrown', 'RoyalBlue', 'SaddleBrown', 'Salmon', 'SandyBrown', 'SeaGreen', 'SeaShell', 'Sienna', 'Silver', 'SkyBlue', 'SlateBlue', 'SlateGray', 'Snow', 'SpringGreen', 'SteelBlue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 'Wheat', 'White', 'WhiteSmoke', 'Yellow', 'YellowGreen'});
     obj.colorSelector:setValues({'#F0F8FF', '#FAEBD7', '#00FFFF', '#7FFFD4', '#F0FFFF', '#F5F5DC', '#FFE4C4', '#000000', '#FFEBCD', '#0000FF', '#8A2BE2', '#A52A2A', '#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50', '#6495ED', '#FFF8DC', '#DC143C', '#00FFFF', '#00008B', '#008B8B', '#B8860B', '#A9A9A9', '#006400', '#BDB76B', '#8B008B', '#556B2F', '#FF8C00', '#9932CC', '#8B0000', '#E9967A', '#8FBC8F', '#483D8B', '#2F4F4F', '#00CED1', '#9400D3', '#FF1493', '#00BFFF', '#696969', '#1E90FF', '#B22222', '#FFFAF0', '#228B22', '#FF00FF', '#DCDCDC', '#F8F8FF', '#FFD700', '#DAA520', '#808080', '#008000', '#ADFF2F', '#F0FFF0', '#FF69B4', '#CD5C5C', '#4B0082', '#FFFFF0', '#F0E68C', '#E6E6FA', '#FFF0F5', '#7CFC00', '#FFFACD', '#ADD8E6', '#F08080', '#E0FFFF', '#FAFAD2', '#D3D3D3', '#90EE90', '#FFB6C1', '#FFA07A', '#20B2AA', '#87CEFA', '#778899', '#B0C4DE', '#FFFFE0', '#00FF00', '#32CD32', '#FAF0E6', '#FF00FF', '#800000', '#66CDAA', '#0000CD', '#BA55D3', '#9370DB', '#3CB371', '#7B68EE', '#00FA9A', '#48D1CC', '#C71585', '#191970', '#F5FFFA', '#FFE4E1', '#FFE4B5', '#FFDEAD', '#000080', '#FDF5E6', '#808000', '#6B8E23', '#FFA500', '#FF4500', '#DA70D6', '#EEE8AA', '#98FB98', '#AFEEEE', '#DB7093', '#FFEFD5', '#FFDAB9', '#CD853F', '#FFC0CB', '#DDA0DD', '#B0E0E6', '#800080', '#663399', '#FF0000', '#BC8F8F', '#4169E1', '#8B4513', '#FA8072', '#F4A460', '#2E8B57', '#FFF5EE', '#A0522D', '#C0C0C0', '#87CEEB', '#6A5ACD', '#708090', '#FFFAFA', '#00FF7F', '#4682B4', '#D2B48C', '#008080', '#D8BFD8', '#FF6347', '#40E0D0', '#EE82EE', '#F5DEB3', '#FFFFFF', '#F5F5F5', '#FFFF00', '#9ACD32'});
 
-    obj.showColor = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.showColor = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.showColor:setParent(obj.layout1);
     obj.showColor:setLeft(0);
     obj.showColor:setTop(0);
@@ -69,7 +70,7 @@ function newfrmExamples()
     obj.showColor:setStrokeSize(2);
     obj.showColor:setHint("Muda a cor padrão da fonte do editor de texto. Você só vai notar diferença ao começar um novo paragrafo. ");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.scrollBox1);
     obj.layout2:setLeft(0);
     obj.layout2:setTop(50);
@@ -77,13 +78,13 @@ function newfrmExamples()
     obj.layout2:setHeight(200);
     obj.layout2:setName("layout2");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout2);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout2);
     obj.label1:setLeft(0);
     obj.label1:setTop(5);
@@ -93,7 +94,7 @@ function newfrmExamples()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.scrollBox1);
     obj.rectangle2:setLeft(0);
     obj.rectangle2:setTop(255);
@@ -104,7 +105,7 @@ function newfrmExamples()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.scrollBox1);
     obj.label2:setLeft(0);
     obj.label2:setTop(255);
@@ -114,7 +115,7 @@ function newfrmExamples()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.scrollBox1);
     obj.label3:setLeft(25);
     obj.label3:setTop(255);
@@ -123,7 +124,7 @@ function newfrmExamples()
     obj.label3:setText("<- Soma contador");
     obj.label3:setName("label3");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
     obj.button1:setLeft(165);
     obj.button1:setTop(255);
@@ -133,7 +134,7 @@ function newfrmExamples()
     obj.button1:setHint("Adiciona objetos a lista com contador relativo ao ultimo objeto adicionado ");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.scrollBox1);
     obj.button2:setLeft(190);
     obj.button2:setTop(255);
@@ -143,7 +144,7 @@ function newfrmExamples()
     obj.button2:setHint("Adiciona objetos a lista com contador em relação ao tamanho da lista");
     obj.button2:setName("button2");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.scrollBox1);
     obj.rectangle3:setLeft(0);
     obj.rectangle3:setTop(280);
@@ -152,7 +153,7 @@ function newfrmExamples()
     obj.rectangle3:setColor("black");
     obj.rectangle3:setName("rectangle3");
 
-    obj.rclName = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclName = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclName:setParent(obj.scrollBox1);
     obj.rclName:setLeft(0);
     obj.rclName:setTop(280);
@@ -163,7 +164,7 @@ function newfrmExamples()
     obj.rclName:setTemplateForm("frmRecordListForm");
     obj.rclName:setLayout("vertical");
 
-    obj.popupButton = gui.fromHandle(_obj_newObject("button"));
+    obj.popupButton = GUI.fromHandle(_obj_newObject("button"));
     obj.popupButton:setParent(obj.scrollBox1);
     obj.popupButton:setLeft(50);
     obj.popupButton:setTop(0);
@@ -173,14 +174,14 @@ function newfrmExamples()
     obj.popupButton:setName("popupButton");
     obj.popupButton:setHint("Botao que abre popup");
 
-    obj.popExemplo = gui.fromHandle(_obj_newObject("popup"));
+    obj.popExemplo = GUI.fromHandle(_obj_newObject("popup"));
     obj.popExemplo:setParent(obj.scrollBox1);
     obj.popExemplo:setName("popExemplo");
     obj.popExemplo:setWidth(300);
     obj.popExemplo:setHeight(400);
     obj.popExemplo:setBackOpacity(0.4);
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.popExemplo);
     obj.label4:setLeft(0);
     obj.label4:setTop(5);
@@ -221,7 +222,7 @@ function newfrmExamples()
 			
 
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.scrollBox1);
     obj.button3:setLeft(100);
     obj.button3:setTop(0);
@@ -231,7 +232,7 @@ function newfrmExamples()
     obj.button3:setHint("Botao que faz rolagem de teste");
     obj.button3:setName("button3");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.scrollBox1);
     obj.edit1:setLeft(125);
     obj.edit1:setTop(0);
@@ -240,7 +241,7 @@ function newfrmExamples()
     obj.edit1:setField("roll");
     obj.edit1:setName("edit1");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.scrollBox1);
     obj.button4:setLeft(250);
     obj.button4:setTop(0);
@@ -250,7 +251,7 @@ function newfrmExamples()
     obj.button4:setHint("Adicionar");
     obj.button4:setName("button4");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.scrollBox1);
     obj.rectangle4:setLeft(250);
     obj.rectangle4:setTop(25);
@@ -259,7 +260,7 @@ function newfrmExamples()
     obj.rectangle4:setColor("black");
     obj.rectangle4:setName("rectangle4");
 
-    obj.rclSelector = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclSelector = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclSelector:setParent(obj.scrollBox1);
     obj.rclSelector:setLeft(250);
     obj.rclSelector:setTop(25);
@@ -271,7 +272,7 @@ function newfrmExamples()
     obj.rclSelector:setLayout("vertical");
     obj.rclSelector:setSelectable(true);
 
-    obj.boxDetalhesDoItem = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.boxDetalhesDoItem = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.boxDetalhesDoItem:setParent(obj.scrollBox1);
     obj.boxDetalhesDoItem:setLeft(500);
     obj.boxDetalhesDoItem:setTop(25);
@@ -280,13 +281,13 @@ function newfrmExamples()
     obj.boxDetalhesDoItem:setName("boxDetalhesDoItem");
     obj.boxDetalhesDoItem:setVisible(false);
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.boxDetalhesDoItem);
     obj.rectangle5:setAlign("client");
     obj.rectangle5:setColor("black");
     obj.rectangle5:setName("rectangle5");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.boxDetalhesDoItem);
     obj.edit2:setLeft(5);
     obj.edit2:setTop(5);
@@ -295,7 +296,7 @@ function newfrmExamples()
     obj.edit2:setField("nome");
     obj.edit2:setName("edit2");
 
-    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
     obj.button5:setParent(obj.scrollBox1);
     obj.button5:setLeft(250);
     obj.button5:setTop(290);
@@ -304,13 +305,13 @@ function newfrmExamples()
     obj.button5:setHint("click to change image");
     obj.button5:setName("button5");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.button5);
     obj.dataLink1:setField("clickableImage");
     obj.dataLink1:setDefaultValue("http://firecast.blob.core.windows.net/blobs/KEMDMPRM_386214.png");
     obj.dataLink1:setName("dataLink1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.button5);
     obj.image1:setAlign("client");
     obj.image1:setField("clickableImage");
@@ -334,7 +335,7 @@ function newfrmExamples()
 				
 
 
-    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle6:setParent(obj.scrollBox1);
     obj.rectangle6:setLeft(375);
     obj.rectangle6:setTop(290);
@@ -345,7 +346,7 @@ function newfrmExamples()
     obj.rectangle6:setStrokeSize(1);
     obj.rectangle6:setName("rectangle6");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.rectangle6);
     obj.label5:setLeft(0);
     obj.label5:setTop(40);
@@ -355,7 +356,7 @@ function newfrmExamples()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.rectangle6);
     obj.image2:setAlign("client");
     obj.image2:setField("avatar");
@@ -365,7 +366,7 @@ function newfrmExamples()
     obj.image2:setName("image2");
 
     obj._e_event0 = obj.colorSelector:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             		                self.showColor.color = sheet.colorSelector or "#000000";
             		                self.colorSelector.visible = false;
@@ -373,18 +374,18 @@ function newfrmExamples()
         end, obj);
 
     obj._e_event1 = obj.showColor:addEventListener("onMouseDown",
-        function (self, event)
+        function (_, event)
             self.colorSelector:dropDown();
             		            self.colorSelector.visible = true;
         end, obj);
 
     obj._e_event2 = obj.showColor:addEventListener("onExit",
-        function (self)
+        function (_)
             self.colorSelector.visible = false;
         end, obj);
 
     obj._e_event3 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             -- Aumenta um contador enquanto adiciona um objeto
             				if sheet~=nil then
             					local objetos = ndb.getChildNodes(sheet.listaDe);
@@ -406,7 +407,7 @@ function newfrmExamples()
         end, obj);
 
     obj._e_event4 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             -- Aumenta um contador enquanto adiciona um objeto
             				if sheet~=nil then
             					local objetos = ndb.getChildNodes(sheet.listaDe);
@@ -422,7 +423,7 @@ function newfrmExamples()
         end, obj);
 
     obj._e_event5 = obj.rclName:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista. 
             		        if (tonumber(nodeA.contador) or 0) < (tonumber(nodeB.contador) or 0) then
             		            return -1;
@@ -434,7 +435,7 @@ function newfrmExamples()
         end, obj);
 
     obj._e_event6 = obj.popupButton:addEventListener("onClick",
-        function (self)
+        function (_)
             local pop = self:findControlByName("popExemplo");
             				
             				if pop ~= nil then
@@ -446,7 +447,7 @@ function newfrmExamples()
         end, obj);
 
     obj._e_event7 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             local roll = sheet.roll or "1d1-1";
             	    		local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
@@ -454,25 +455,25 @@ function newfrmExamples()
         end, obj);
 
     obj._e_event8 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclSelector:append();
         end, obj);
 
     obj._e_event9 = obj.rclSelector:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente. 
             		        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event10 = obj.rclSelector:addEventListener("onSelect",
-        function (self)
+        function (_)
             local node = self.rclSelector.selectedNode;
             					self.boxDetalhesDoItem.node = node; 
             					self.boxDetalhesDoItem.visible = (node ~= nil);
         end, obj);
 
     obj._e_event11 = obj.button5:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet.imageCounter == nil then
             					sheet.imageCounter = 0;
             				end;
@@ -483,7 +484,7 @@ function newfrmExamples()
         end, obj);
 
     obj._e_event12 = obj.image2:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
@@ -564,6 +565,6 @@ local _frmExamples = {
     description=""};
 
 frmExamples = _frmExamples;
-rrpg.registrarForm(_frmExamples);
+Firecast.registrarForm(_frmExamples);
 
 return _frmExamples;

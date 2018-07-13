@@ -54,9 +54,9 @@ luacheck.translated.321=acessando valor não inicializado da variável {name!}
 luacheck.translated.331=valor atribuído à variavel {name!} é alterado, mas nunca acessado
 luacheck.translated.341=alterando valor não inicializado da variável {name!}
 
-luacheck.translated.411=a variável {name!} foi previamente definida na linha {prev_line}
-luacheck.translated.412=a variável {name!} foi previamente definida como um argumento na linha {prev_line}
-luacheck.translated.413=a variável {name!} foi previamente definida como uma variável de loop na linha {prev_line}
+luacheck.translated.411=a variável {name!} já havia sido previamente definida na linha {prev_line}
+luacheck.translated.412=a variável {name!} já havia sido previamente definida como argumento na linha {prev_line}
+luacheck.translated.413=a variável {name!} já havia sido previamente definida como variável de loop na linha {prev_line}
 luacheck.translated.421=ocultando a definição da variável {name!} na linha {prev_line}
 luacheck.translated.422=ocultando a definição do argumento {name!} na linha {prev_line}
 luacheck.translated.423=ocultando a definição da variável de loop {name!} na linha {prev_line}

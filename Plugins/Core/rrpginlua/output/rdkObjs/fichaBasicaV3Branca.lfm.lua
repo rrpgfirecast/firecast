@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmFichaBasicaV3RichWhite()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -33,7 +34,7 @@ function newfrmFichaBasicaV3RichWhite()
     obj:setFormType("sheetTemplate");
     obj:setTheme("light");
 
-    obj.richEdit1 = gui.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit1:setParent(obj);
     obj.richEdit1:setAlign("client");
     lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "white");
@@ -77,7 +78,7 @@ local _frmFichaBasicaV3RichWhite = {
     description="Ficha Básica do RRPG v3 - Branca"};
 
 frmFichaBasicaV3RichWhite = _frmFichaBasicaV3RichWhite;
-rrpg.registrarForm(_frmFichaBasicaV3RichWhite);
-rrpg.registrarDataType(_frmFichaBasicaV3RichWhite);
+Firecast.registrarForm(_frmFichaBasicaV3RichWhite);
+Firecast.registrarDataType(_frmFichaBasicaV3RichWhite);
 
 return _frmFichaBasicaV3RichWhite;

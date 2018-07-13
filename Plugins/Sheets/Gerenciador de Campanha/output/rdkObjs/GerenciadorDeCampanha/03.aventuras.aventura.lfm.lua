@@ -1,14 +1,15 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
 
 function newfrmGerenciador03_AVENTURA()
     __o_rrpgObjs.beginObjectsLoading();
 
-    local obj = gui.fromHandle(_obj_newObject("form"));
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -32,7 +33,7 @@ function newfrmGerenciador03_AVENTURA()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
@@ -41,7 +42,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(5);
     obj.label1:setTop(0);
@@ -51,7 +52,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.rectangle1);
     obj.label2:setLeft(30);
     obj.label2:setTop(0);
@@ -61,7 +62,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.rectangle1);
     obj.label3:setLeft(230);
     obj.label3:setTop(0);
@@ -71,7 +72,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.rectangle1);
     obj.label4:setLeft(330);
     obj.label4:setTop(0);
@@ -81,7 +82,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.rectangle1);
     obj.label5:setLeft(430);
     obj.label5:setTop(0);
@@ -91,7 +92,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.rectangle1);
     obj.label6:setLeft(530);
     obj.label6:setTop(0);
@@ -101,7 +102,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.rectangle1);
     obj.label7:setLeft(630);
     obj.label7:setTop(0);
@@ -111,7 +112,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.label7:setHorzTextAlign("center");
     obj.label7:setName("label7");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.rectangle1);
     obj.label8:setLeft(5);
     obj.label8:setTop(50);
@@ -121,7 +122,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.label8:setHorzTextAlign("center");
     obj.label8:setName("label8");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.rectangle1);
     obj.label9:setLeft(405);
     obj.label9:setTop(50);
@@ -131,7 +132,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.label9:setHorzTextAlign("center");
     obj.label9:setName("label9");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setLeft(5);
     obj.edit1:setTop(25);
@@ -141,7 +142,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.edit1:setType("number");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.rectangle1);
     obj.edit2:setLeft(30);
     obj.edit2:setTop(25);
@@ -150,7 +151,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.edit2:setField("nome");
     obj.edit2:setName("edit2");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.rectangle1);
     obj.edit3:setLeft(230);
     obj.edit3:setTop(25);
@@ -159,7 +160,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.edit3:setField("dataInicio");
     obj.edit3:setName("edit3");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.rectangle1);
     obj.edit4:setLeft(330);
     obj.edit4:setTop(25);
@@ -168,7 +169,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.edit4:setField("dataFim");
     obj.edit4:setName("edit4");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.rectangle1);
     obj.edit5:setLeft(430);
     obj.edit5:setTop(25);
@@ -177,7 +178,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.edit5:setField("sessaoInicio");
     obj.edit5:setName("edit5");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.rectangle1);
     obj.edit6:setLeft(530);
     obj.edit6:setTop(25);
@@ -186,7 +187,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.edit6:setField("sessaoFim");
     obj.edit6:setName("edit6");
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.rectangle1);
     obj.comboBox1:setLeft(630);
     obj.comboBox1:setTop(25);
@@ -198,7 +199,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.comboBox1:setValue("0");
     obj.comboBox1:setName("comboBox1");
 
-    obj.cbxInvisivel = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.cbxInvisivel = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.cbxInvisivel:setParent(obj.rectangle1);
     obj.cbxInvisivel:setName("cbxInvisivel");
     obj.cbxInvisivel:setLeft(757);
@@ -210,7 +211,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.cbxInvisivel:setAutoChange(false);
     obj.cbxInvisivel:setHint("Alterna visibilidade para Jogadores e Espectadores.");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(780);
     obj.button1:setTop(25);
@@ -219,7 +220,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.rectangle1);
     obj.textEditor1:setLeft(5);
     obj.textEditor1:setTop(75);
@@ -228,7 +229,7 @@ function newfrmGerenciador03_AVENTURA()
     obj.textEditor1:setField("descricao");
     obj.textEditor1:setName("textEditor1");
 
-    obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.rectangle1);
     obj.textEditor2:setLeft(405);
     obj.textEditor2:setTop(75);
@@ -256,7 +257,7 @@ function newfrmGerenciador03_AVENTURA()
 
 
     obj._e_event0 = obj:addEventListener("onScopeNodeChanged",
-        function (self)
+        function (_)
             if self.observer ~= nil then   
             			self.observer.enabled = false;
             			self.observer = nil;
@@ -277,7 +278,7 @@ function newfrmGerenciador03_AVENTURA()
         end, obj);
 
     obj._e_event1 = obj.edit1:addEventListener("onChange",
-        function (self)
+        function (_)
             local rcl = self:findControlByName("rclAventuras");
             				if rcl~= nil then
             					rcl:sort();
@@ -285,12 +286,12 @@ function newfrmGerenciador03_AVENTURA()
         end, obj);
 
     obj._e_event2 = obj.cbxInvisivel:addEventListener("onClick",
-        function (self)
+        function (_)
             self:alternarVisibilidade();
         end, obj);
 
     obj._e_event3 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar essa aventura?",
             					function (confirmado)
             						if confirmado then
@@ -357,6 +358,6 @@ local _frmGerenciador03_AVENTURA = {
     description=""};
 
 frmGerenciador03_AVENTURA = _frmGerenciador03_AVENTURA;
-rrpg.registrarForm(_frmGerenciador03_AVENTURA);
+Firecast.registrarForm(_frmGerenciador03_AVENTURA);
 
 return _frmGerenciador03_AVENTURA;
