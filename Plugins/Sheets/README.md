@@ -30,6 +30,8 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 	- Ficha para o cenario e sistema Cyberpunk 2020
 - [Ficha GURPS 4E](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true): Ambesek
 	- Ficha feita para GURPS 4ª edição.
+- [Ficha Herois d20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/output/Ficha%20Avatar%20d20.rpk?raw=true): Ambesek
+	- Ficha feita para jogar campanhas de Súper-Herois usando o sistema d20/D&D3.5
 - [Ficha L5A](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20L5A/output/Ficha%20L5A.rpk?raw=true): Ruteski
 	- Ficha para o sistema e cenario A Lenda dos Cinco Aneis. 
 - [Ficha Multiaba](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true): Ambesek

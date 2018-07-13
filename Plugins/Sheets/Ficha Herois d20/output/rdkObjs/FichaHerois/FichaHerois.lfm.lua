@@ -18484,17 +18484,9 @@ function newfrmAvatar()
     obj.button107:setText("RPGmeister");
     obj.button107:setName("button107");
 
-    obj.button108 = gui.fromHandle(_obj_newObject("button"));
-    obj.button108:setParent(obj.scrollBox11);
-    obj.button108:setLeft(840);
-    obj.button108:setTop(525);
-    obj.button108:setWidth(100);
-    obj.button108:setText("Avatar");
-    obj.button108:setName("button108");
-
     obj._e_event0 = obj:addEventListener("onNodeReady",
         function (self)
-            internet.download("raw_download_link",
+            internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/output/Ficha%20Herois%20d20.rpk?raw=true",
                         function(stream, contentType)
                             local info = rrpg.plugins.getRPKDetails(stream);
                             sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
@@ -18513,7 +18505,7 @@ function newfrmAvatar()
                                 Dialogs.choose("Há uma nova versão ("..info.version..") desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                                     function(selected, selectedIndex, selectedText)
                                         if selected and selectedIndex == 1 then
-                                            gui.openInBrowser('raw_download_link');
+                                            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/output/Ficha%20Herois%20d20.rpk?raw=true');
                                         elseif selected and selectedIndex == 3 then
                                             sheet.noUpdate = true;
                                         end;
@@ -22082,12 +22074,12 @@ function newfrmAvatar()
 
     obj._e_event180 = obj.button103:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('readme')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/README.md')
         end, obj);
 
     obj._e_event181 = obj.button104:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('download')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/output/Ficha%20Herois%20d20.rpk?raw=true')
         end, obj);
 
     obj._e_event182 = obj.button105:addEventListener("onClick",
@@ -22097,7 +22089,7 @@ function newfrmAvatar()
 
     obj._e_event183 = obj.button106:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('jogo')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/Sistema.docx?raw=true')
         end, obj);
 
     obj._e_event184 = obj.button107:addEventListener("onClick",
@@ -22105,13 +22097,7 @@ function newfrmAvatar()
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event185 = obj.button108:addEventListener("onClick",
-        function (self)
-            gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=149962');
-        end, obj);
-
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event185);
         __o_rrpgObjs.removeEventListenerById(self._e_event184);
         __o_rrpgObjs.removeEventListenerById(self._e_event183);
         __o_rrpgObjs.removeEventListenerById(self._e_event182);
@@ -23437,7 +23423,6 @@ function newfrmAvatar()
         if self.label335 ~= nil then self.label335:destroy(); self.label335 = nil; end;
         if self.edit513 ~= nil then self.edit513:destroy(); self.edit513 = nil; end;
         if self.flowPart145 ~= nil then self.flowPart145:destroy(); self.flowPart145 = nil; end;
-        if self.button108 ~= nil then self.button108:destroy(); self.button108 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.flowPart125 ~= nil then self.flowPart125:destroy(); self.flowPart125 = nil; end;
         if self.edit27 ~= nil then self.edit27:destroy(); self.edit27 = nil; end;

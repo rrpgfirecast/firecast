@@ -189,22 +189,14 @@ function newfrmFichaRPGmeister11_svg()
     obj.button5:setText("RPGmeister");
     obj.button5:setName("button5");
 
-    obj.button6 = gui.fromHandle(_obj_newObject("button"));
-    obj.button6:setParent(obj.scrollBox1);
-    obj.button6:setLeft(840);
-    obj.button6:setTop(525);
-    obj.button6:setWidth(100);
-    obj.button6:setText("Avatar");
-    obj.button6:setName("button6");
-
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('readme')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/README.md')
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('download')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/output/Ficha%20Herois%20d20.rpk?raw=true')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
@@ -214,7 +206,7 @@ function newfrmFichaRPGmeister11_svg()
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('jogo')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/Sistema.docx?raw=true')
         end, obj);
 
     obj._e_event4 = obj.button5:addEventListener("onClick",
@@ -222,13 +214,7 @@ function newfrmFichaRPGmeister11_svg()
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event5 = obj.button6:addEventListener("onClick",
-        function (self)
-            gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=149962');
-        end, obj);
-
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
@@ -250,7 +236,6 @@ function newfrmFichaRPGmeister11_svg()
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;

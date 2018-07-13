@@ -1,6 +1,13 @@
 # Ficha Pathfinder
 * Mudar agarrar de companheiro para bmc e dmc.
 
+Talentos para Verificar:
+* Ataque Poderoso;
+* Tiro Multiplo;
+* Especialização em Combate;
+* Piranha Strike
+* Rajada de Golpes
+
 Versão 4:
 + Bug corrigido: quando o personagem está usando armadura não estava contabilizando o +3 em pericias de classe com graduações. 
 

@@ -18,14 +18,13 @@
 		<label left="630" top="400" width="200" height="20" text="SUA VERSÃO:" field="versionInstalled"/>
 		<label left="630" top="430" width="200" height="20" text="VERSÃO ATUAL:" field="versionDownloaded"/>
 		
-		<button left="620" top="475" width="100" text="Change Log" onClick="gui.openInBrowser('readme')" />
-		<button left="730" top="475" width="100" text="Atualizar" onClick="gui.openInBrowser('download')" />
+		<button left="620" top="475" width="100" text="Change Log" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/README.md')" />
+		<button left="730" top="475" width="100" text="Atualizar" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/output/Ficha%20Herois%20d20.rpk?raw=true')" />
 		<button left="840" top="475" width="100" text="Tutorial" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/__Tutorial/Ficha%20Avatar%20-%20Tutorial.docx')" />
-		<button left="950" top="475" width="100" text="Adaptação" onClick="gui.openInBrowser('jogo')" />
+		<button left="950" top="475" width="100" text="Adaptação" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/Sistema.docx?raw=true')" />
 		
 		<label left="620" top="525" width="120" height="20" text="CONHEÇA A MESA:" fontSize="11"/>
 		<button left="730" top="525" width="100" text="RPGmeister" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
-		<button left="840" top="525" width="100" text="Avatar" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=149962');" />
 		
     </scrollBox>
 </form>
