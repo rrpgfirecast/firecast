@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPoder" height="25" width="350" margins="{top=2}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
+								 function (confirmado)
+									if confirmado then
+										ndb.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showHabilidadePopup()
+			local pop = self:findControlByName("popPoder");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("right", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup para exibir");
+			end;				
+		end;
+	]]>
+	</script>
+
+	<rectangle align="client" color="#202020" hitTest="false"/>
+
+	<edit vertTextAlign="center" left="0" top="0" width="200" height="23" field="nome"/>
+	<edit vertTextAlign="center" left="200" top="0" width="50" height="23" field="custo" horzTextAlign="center"/>
+	<edit vertTextAlign="center" left="250" top="0" width="25" height="23" field="usoAtual" horzTextAlign="center"/>
+	<edit vertTextAlign="center" left="275" top="0" width="25" height="23" field="usoMax" horzTextAlign="center"/>
+	<button left="300" top="1" width="23" height="23" text="i" onClick="showHabilidadePopup();"/>
+	<button left="325" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+
+	<dataLink field="custo">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local node = ndb.getRoot(sheet);
+			
+			local custo = 0;
+			local objetos = ndb.getChildNodes(node.campoDosPoderes);
+			for i=1, #objetos, 1 do 
+				custo = custo + (tonumber(objetos[i].custo) or 0);
+			end;
+			node.sumPoderes = custo;
+		</event>
+	</dataLink>
+</form>
