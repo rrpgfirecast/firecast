@@ -33,6 +33,39 @@ function newfrmTemplate()
     obj:setAlign("client");
     obj:setTheme("dark");
 
+
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+        
+
+
     obj.popDetails = gui.fromHandle(_obj_newObject("popup"));
     obj.popDetails:setParent(obj);
     obj.popDetails:setName("popDetails");
@@ -210,7 +243,7 @@ function newfrmTemplate()
     obj.flowLayout3:setMaxControlsPerLine(2);
     obj.flowLayout3:setHorzAlign("center");
     obj.flowLayout3:setLineSpacing(10);
-    obj.flowLayout3:setMargins({left=2, top=2, right=16, bottom=4});
+    obj.flowLayout3:setMargins({left=2, top=0, right=16, bottom=4});
     obj.flowLayout3:setAvoidScale(true);
     obj.flowLayout3:setFrameStyle("frames/panel1/frame.xml");
     obj.flowLayout3:setName("flowLayout3");
@@ -1146,7 +1179,7 @@ function newfrmTemplate()
     obj.flowPart10:setParent(obj.flowLayout5);
     obj.flowPart10:setHeight(150);
     obj.flowPart10:setFrameStyle("frames/panel5/frame.xml");
-    obj.flowPart10:setMargins({left = 4, right = 4});
+    obj.flowPart10:setMargins({left = 4, right = 4, bottom = 7});
     obj.flowPart10:setName("flowPart10");
     obj.flowPart10:setStepSizes({});
     obj.flowPart10:setMinWidth(300);
@@ -1718,7 +1751,7 @@ self.upperGridMagicEditBox1._RecalcSize();
 
     obj.label32 = gui.fromHandle(_obj_newObject("label"));
     obj.label32:setParent(obj.flowPart13);
-    obj.label32:setAlign("top");
+    obj.label32:setAlign("bottom");
     obj.label32:setAutoSize(true);
     obj.label32:setText("APARÊNCIA");
     obj.label32:setFontSize(12);
@@ -1732,7 +1765,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.textEditor3:setParent(obj.flowPart13);
     obj.textEditor3:setAlign("client");
     obj.textEditor3:setField("aparencia");
-    obj.textEditor3:setMargins({top=2});
+    obj.textEditor3:setMargins({bottom=2});
     obj.textEditor3:setFontSize(16);
     obj.textEditor3:setName("textEditor3");
     obj.textEditor3:setTransparent(true);
@@ -1751,7 +1784,7 @@ self.upperGridMagicEditBox1._RecalcSize();
 
     obj.label33 = gui.fromHandle(_obj_newObject("label"));
     obj.label33:setParent(obj.flowPart14);
-    obj.label33:setAlign("top");
+    obj.label33:setAlign("bottom");
     obj.label33:setAutoSize(true);
     obj.label33:setText("QUALIDADES");
     obj.label33:setFontSize(12);
@@ -1765,7 +1798,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.textEditor4:setParent(obj.flowPart14);
     obj.textEditor4:setAlign("client");
     obj.textEditor4:setField("anotacoes");
-    obj.textEditor4:setMargins({top=2});
+    obj.textEditor4:setMargins({bottom=2});
     obj.textEditor4:setFontSize(16);
     obj.textEditor4:setName("textEditor4");
     obj.textEditor4:setTransparent(true);
@@ -1784,7 +1817,7 @@ self.upperGridMagicEditBox1._RecalcSize();
 
     obj.label34 = gui.fromHandle(_obj_newObject("label"));
     obj.label34:setParent(obj.flowPart15);
-    obj.label34:setAlign("top");
+    obj.label34:setAlign("bottom");
     obj.label34:setAutoSize(true);
     obj.label34:setText("PECULIARIDADES");
     obj.label34:setFontSize(12);
@@ -1798,7 +1831,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.textEditor5:setParent(obj.flowPart15);
     obj.textEditor5:setAlign("client");
     obj.textEditor5:setField("peculiaridades");
-    obj.textEditor5:setMargins({top=2});
+    obj.textEditor5:setMargins({bottom=2});
     obj.textEditor5:setFontSize(16);
     obj.textEditor5:setName("textEditor5");
     obj.textEditor5:setTransparent(true);
@@ -2303,43 +2336,25 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.label44:setParent(obj.scrollBox6);
     obj.label44:setLeft(555);
     obj.label44:setTop(300);
-    obj.label44:setWidth(100);
+    obj.label44:setWidth(200);
     obj.label44:setHeight(20);
     obj.label44:setText("Versão Atual: ");
     obj.label44:setHorzTextAlign("center");
+    obj.label44:setField("versionInstalled");
     obj.label44:setName("label44");
     obj.label44:setFontColor("white");
-
-    obj.image4 = gui.fromHandle(_obj_newObject("image"));
-    obj.image4:setParent(obj.scrollBox6);
-    obj.image4:setLeft(667);
-    obj.image4:setTop(300);
-    obj.image4:setWidth(100);
-    obj.image4:setHeight(20);
-    obj.image4:setStyle("autoFit");
-    obj.image4:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20GURPS%204E/release.png");
-    obj.image4:setName("image4");
 
     obj.label45 = gui.fromHandle(_obj_newObject("label"));
     obj.label45:setParent(obj.scrollBox6);
     obj.label45:setLeft(555);
     obj.label45:setTop(325);
-    obj.label45:setWidth(100);
+    obj.label45:setWidth(200);
     obj.label45:setHeight(20);
     obj.label45:setText("Sua Versão: ");
     obj.label45:setHorzTextAlign("center");
+    obj.label45:setField("versionDownloaded");
     obj.label45:setName("label45");
     obj.label45:setFontColor("white");
-
-    obj.image5 = gui.fromHandle(_obj_newObject("image"));
-    obj.image5:setParent(obj.scrollBox6);
-    obj.image5:setLeft(667);
-    obj.image5:setTop(325);
-    obj.image5:setWidth(100);
-    obj.image5:setHeight(20);
-    obj.image5:setStyle("autoFit");
-    obj.image5:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao06.png");
-    obj.image5:setName("image5");
 
     obj.button11 = gui.fromHandle(_obj_newObject("button"));
     obj.button11:setParent(obj.scrollBox6);
@@ -2383,7 +2398,44 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.button14:setText("[A] Homebound");
     obj.button14:setName("button14");
 
-    obj._e_event0 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event0 = obj:addEventListener("onNodeReady",
+        function (self)
+            internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true",
+                        function(stream, contentType)
+                            local info = rrpg.plugins.getRPKDetails(stream);
+                            sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+            
+                            local installed = rrpg.plugins.getInstalledPlugins();
+                            local myself;
+                            for i=1, #installed, 1 do
+                                if installed[i].moduleId == info.moduleId then
+                                    myself = installed[i];
+                                    sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                                end;
+                            end;
+            
+                            if sheet.noUpdate==true then return end;
+                            if myself~= nil and isNewVersion(myself.version, info.version) then
+                                Dialogs.choose("Há uma nova versão (" .. info.version .. ") do plugin de FURPS 4E. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                                    function(selected, selectedIndex, selectedText)
+                                        if selected and selectedIndex == 1 then
+                                            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true');
+                                        elseif selected and selectedIndex == 3 then
+                                            sheet.noUpdate = true;
+                                        end;
+                                    end);
+                            end;
+                        end,       
+                        function (errorMsg)
+                            --showMessage(errorMsg);
+                        end,       
+                        function (downloaded, total)
+                            -- esta função será chamada constantemente.
+                            -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+                        end);
+        end, obj);
+
+    obj._e_event1 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
                             if sheet.arquetipo ~= nil then
@@ -2403,14 +2455,14 @@ self.upperGridMagicEditBox1._RecalcSize();
                             end;
         end, obj);
 
-    obj._e_event1 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event2 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet == nil then return end;
             								local vel = math.floor(tonumber(sheet.atributos_mod_velocidade) or 0);
             								sheet.dodge = vel + 3;
         end, obj);
 
-    obj._e_event2 = obj.button1:addEventListener("onClick",
+    obj._e_event3 = obj.button1:addEventListener("onClick",
         function (self)
             local pop = self:findControlByName("popDetails");
             					
@@ -2431,7 +2483,7 @@ self.upperGridMagicEditBox1._RecalcSize();
             							end;
         end, obj);
 
-    obj._e_event3 = obj.button2:addEventListener("onClick",
+    obj._e_event4 = obj.button2:addEventListener("onClick",
         function (self)
             local pop = self:findControlByName("popDetails");
             				
@@ -2452,7 +2504,7 @@ self.upperGridMagicEditBox1._RecalcSize();
             						end;
         end, obj);
 
-    obj._e_event4 = obj.button3:addEventListener("onClick",
+    obj._e_event5 = obj.button3:addEventListener("onClick",
         function (self)
             local pop = self:findControlByName("popDetails");
             				
@@ -2473,7 +2525,7 @@ self.upperGridMagicEditBox1._RecalcSize();
             						end;
         end, obj);
 
-    obj._e_event5 = obj.button4:addEventListener("onClick",
+    obj._e_event6 = obj.button4:addEventListener("onClick",
         function (self)
             local pop = self:findControlByName("popDetails");
             					
@@ -2494,7 +2546,7 @@ self.upperGridMagicEditBox1._RecalcSize();
             							end;
         end, obj);
 
-    obj._e_event6 = obj.button5:addEventListener("onClick",
+    obj._e_event7 = obj.button5:addEventListener("onClick",
         function (self)
             local pop = self:findControlByName("popDetails");
             					
@@ -2515,12 +2567,12 @@ self.upperGridMagicEditBox1._RecalcSize();
             							end;
         end, obj);
 
-    obj._e_event7 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event8 = obj.dataLink5:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             pointCount();
         end, obj);
 
-    obj._e_event8 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event9 = obj.dataLink6:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -2533,7 +2585,7 @@ self.upperGridMagicEditBox1._RecalcSize();
             							sheet.bc_4 = "Muito Pesada (BCx10): " .. (carga*10);
         end, obj);
 
-    obj._e_event9 = obj.dataLink7:addEventListener("onChange",
+    obj._e_event10 = obj.dataLink7:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -2546,82 +2598,83 @@ self.upperGridMagicEditBox1._RecalcSize();
             							sheet.db_4 = "DBx0,2: " .. (velocidade*0.2);
         end, obj);
 
-    obj._e_event10 = obj.button6:addEventListener("onClick",
+    obj._e_event11 = obj.button6:addEventListener("onClick",
         function (self)
             self.rclSkillsNew:append();
         end, obj);
 
-    obj._e_event11 = obj.rclSkillsNew:addEventListener("onCompare",
+    obj._e_event12 = obj.rclSkillsNew:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
-    obj._e_event12 = obj.labupperGridMagicBox1:addEventListener("onResize",
+    obj._e_event13 = obj.labupperGridMagicBox1:addEventListener("onResize",
         function (self)
             self.upperGridMagicBox1._RecalcSize();
         end, obj);
 
-    obj._e_event13 = obj.labupperGridMagicEditBox1:addEventListener("onResize",
+    obj._e_event14 = obj.labupperGridMagicEditBox1:addEventListener("onResize",
         function (self)
             self.upperGridMagicEditBox1._RecalcSize();
         end, obj);
 
-    obj._e_event14 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event15 = obj.dataLink8:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             pointCount();
         end, obj);
 
-    obj._e_event15 = obj.button7:addEventListener("onClick",
+    obj._e_event16 = obj.button7:addEventListener("onClick",
         function (self)
             self.rclTech:append();
         end, obj);
 
-    obj._e_event16 = obj.rclTech:addEventListener("onCompare",
+    obj._e_event17 = obj.rclTech:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
-    obj._e_event17 = obj.button8:addEventListener("onClick",
+    obj._e_event18 = obj.button8:addEventListener("onClick",
         function (self)
             self.rclMagic:append();
         end, obj);
 
-    obj._e_event18 = obj.rclMagic:addEventListener("onCompare",
+    obj._e_event19 = obj.rclMagic:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
-    obj._e_event19 = obj.button9:addEventListener("onClick",
+    obj._e_event20 = obj.button9:addEventListener("onClick",
         function (self)
             self.rclBackpack:append();
         end, obj);
 
-    obj._e_event20 = obj.button10:addEventListener("onClick",
+    obj._e_event21 = obj.button10:addEventListener("onClick",
         function (self)
             self.rclEquipments:append();
         end, obj);
 
-    obj._e_event21 = obj.button11:addEventListener("onClick",
+    obj._e_event22 = obj.button11:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/README.md')
         end, obj);
 
-    obj._e_event22 = obj.button12:addEventListener("onClick",
+    obj._e_event23 = obj.button12:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20GURPS%204E/Ficha%20GURPS%204E.rpk')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true')
         end, obj);
 
-    obj._e_event23 = obj.button13:addEventListener("onClick",
+    obj._e_event24 = obj.button13:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event24 = obj.button14:addEventListener("onClick",
+    obj._e_event25 = obj.button14:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=131156');
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event25);
         __o_rrpgObjs.removeEventListenerById(self._e_event24);
         __o_rrpgObjs.removeEventListenerById(self._e_event23);
         __o_rrpgObjs.removeEventListenerById(self._e_event22);
@@ -2668,7 +2721,6 @@ self.upperGridMagicEditBox1._RecalcSize();
         if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
         if self.UpperGridCampo1 ~= nil then self.UpperGridCampo1:destroy(); self.UpperGridCampo1 = nil; end;
         if self.edit29 ~= nil then self.edit29:destroy(); self.edit29 = nil; end;
-        if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
         if self.labUpperGridCampo1 ~= nil then self.labUpperGridCampo1:destroy(); self.labUpperGridCampo1 = nil; end;
         if self.edit28 ~= nil then self.edit28:destroy(); self.edit28 = nil; end;
         if self.label45 ~= nil then self.label45:destroy(); self.label45 = nil; end;
@@ -2879,7 +2931,6 @@ self.upperGridMagicEditBox1._RecalcSize();
         if self.scrollBox4 ~= nil then self.scrollBox4:destroy(); self.scrollBox4 = nil; end;
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.fraInventarioLayout ~= nil then self.fraInventarioLayout:destroy(); self.fraInventarioLayout = nil; end;
-        if self.image4 ~= nil then self.image4:destroy(); self.image4 = nil; end;
         if self.button14 ~= nil then self.button14:destroy(); self.button14 = nil; end;
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
         if self.flowLineBreak4 ~= nil then self.flowLineBreak4:destroy(); self.flowLineBreak4 = nil; end;

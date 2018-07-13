@@ -18,7 +18,7 @@
 				end;
 			</event>
 		</button>
-		<button align="right" width="25" margins="{top = 12.5, bottom = 12.5, right = 5}">
+		<button align="right" width="25" name="removeButton" margins="{top = 12.5, bottom = 12.5, right = 5}">
 			<image align="client" showStyle="proportional" src="images/delete.png"/>
 			<event name="onClick">
 				Dialogs.confirmOkCancel("Deseja desinstalar esse plugin?",
@@ -40,6 +40,18 @@
 				self.downloadButton.visible = false;
 			else
 				self.downloadButton.visible = true;
+			end;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'enabled'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			if sheet.enabled then
+				self.removeButton.visible = true;
+			else
+				self.removeButton.visible = false;
 			end;
 		</event>
 	</dataLink>

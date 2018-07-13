@@ -84,7 +84,7 @@
 	<button left="385" top="1" width="23" height="23" text="i" onClick="showPericiaPopup();"/>
 	<button left="410" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
 
-	<dataLink fields="{'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'ajuste'}">
+	<dataLink fields="{'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'ajuste', 'penalidade'}">
 		<event name="onChange">
 			if sheet~= nil then
 				local node = ndb.getRoot(sheet);

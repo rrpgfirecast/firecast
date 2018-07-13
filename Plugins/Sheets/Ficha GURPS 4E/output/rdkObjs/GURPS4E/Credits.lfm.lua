@@ -109,41 +109,23 @@ function newfrmTemplateCreditos()
     obj.label3:setParent(obj.scrollBox1);
     obj.label3:setLeft(555);
     obj.label3:setTop(300);
-    obj.label3:setWidth(100);
+    obj.label3:setWidth(200);
     obj.label3:setHeight(20);
     obj.label3:setText("Versão Atual: ");
     obj.label3:setHorzTextAlign("center");
+    obj.label3:setField("versionInstalled");
     obj.label3:setName("label3");
-
-    obj.image4 = gui.fromHandle(_obj_newObject("image"));
-    obj.image4:setParent(obj.scrollBox1);
-    obj.image4:setLeft(667);
-    obj.image4:setTop(300);
-    obj.image4:setWidth(100);
-    obj.image4:setHeight(20);
-    obj.image4:setStyle("autoFit");
-    obj.image4:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20GURPS%204E/release.png");
-    obj.image4:setName("image4");
 
     obj.label4 = gui.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.scrollBox1);
     obj.label4:setLeft(555);
     obj.label4:setTop(325);
-    obj.label4:setWidth(100);
+    obj.label4:setWidth(200);
     obj.label4:setHeight(20);
     obj.label4:setText("Sua Versão: ");
     obj.label4:setHorzTextAlign("center");
+    obj.label4:setField("versionDownloaded");
     obj.label4:setName("label4");
-
-    obj.image5 = gui.fromHandle(_obj_newObject("image"));
-    obj.image5:setParent(obj.scrollBox1);
-    obj.image5:setLeft(667);
-    obj.image5:setTop(325);
-    obj.image5:setWidth(100);
-    obj.image5:setHeight(20);
-    obj.image5:setStyle("autoFit");
-    obj.image5:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao06.png");
-    obj.image5:setName("image5");
 
     obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
@@ -193,7 +175,7 @@ function newfrmTemplateCreditos()
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20GURPS%204E/Ficha%20GURPS%204E.rpk')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
@@ -229,13 +211,11 @@ function newfrmTemplateCreditos()
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
-        if self.image4 ~= nil then self.image4:destroy(); self.image4 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
-        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
-        if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;

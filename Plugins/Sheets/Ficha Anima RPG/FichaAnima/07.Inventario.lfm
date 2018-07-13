@@ -1,5 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister7_svg" align="client" theme="dark" margins="{top=1}">
+		<script>
+			local function getNumber(text)
+				local mod = "0";
+				if text~= nil then
+					mod = string.gsub(text, "%.", "");
+					mod = string.gsub(mod, "k", "000");
+					mod = string.gsub(mod, "K", "");
+					mod = string.gsub(mod, "g", "");
+					mod = string.gsub(mod, "P", "");
+					mod = string.gsub(mod, "p", "");
+					mod = string.gsub(mod, "O", "");
+					mod = string.gsub(mod, "o", "");
+					mod = string.gsub(mod, "X", "");
+					mod = string.gsub(mod, "x", "");
+					mod = string.gsub(mod, " ", "");
+					mod = string.gsub(mod, ",", ".");
+				end
+				return tonumber(mod);
+			end;
+
+			function EnviarMudanca(valor, valormax)
+				if sheet ~= nil then
+					local nome = sheet.AtributoBarrinha or "Equipamento";
+					local personagem = sheet.nome or "nome";
+					local text = "[§K2]" .. nome .. "[§K3] de [§K2]" .. personagem.. "[§K3]: ";
+					
+					if tonumber(valor) >= 0 then
+						valor = "+" .. tostring(valor);
+					end;
+					if tonumber(valormax) >= 0 then
+						valormax = "+" .. tostring(valormax);
+					end;
+					
+					if tonumber(valormax) == 0 then
+						text = text .. valor;
+					else
+						text = text .. valor .. "/" .. valormax;
+					end;
+					
+					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					if mesaDoPersonagem ~= nil then
+						   mesaDoPersonagem.activeChat:enviarMensagem(text);
+					end;
+				end;
+			end;
+			
+			function RequestReload(mode)
+				if sheet ~= nil then
+					if mode == "begin" then
+						self.rclListaDeNPC:beginUpdate();
+						self.rclListaDeNPC.visible = false;
+					elseif mode == "end" then
+						self.rclListaDeNPC.visible = true;
+						self.rclListaDeNPC:endUpdate();
+					end;
+				end;
+			end;
+
+			local function resetImgSlot()
+				if sheet==nil then return end;
+				sheet.imgSlots = "http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/slots.png";
+			end;
+		</script>
 	<scrollBox align="client">
 
 		<layout left="0" top="0" width="475" height="330">
@@ -61,14 +124,8 @@
 		<layout left="685" top="450" width="200" height="221">
 			<smallInventory title="IMOVEIS" field="moveis" field2="Imoveis"/>
 		</layout>
-		
-		<layout left="890" top="0" width="315" height="480">
-			<rectangle align="client" color="#0000007F"  strokeColor="black" strokeSize="1"/>
-			<button left="5" top="5" height="20" width="305" text="Novo Item" onClick="self.rclConsumiveis:append();"/>
-			<recordList left="5" top="30" width="305" height="445" name="rclConsumiveis" field="itensConsumiveis" templateForm="frmConsumiveis" />
-		</layout>
 
-		<layout left="890" top="485" width="155" height="185">
+		<layout left="890" top="0" width="155" height="185">
 			<rectangle align="client" color="black"/>
 			<label left="5" top="1" width="200" height="20" text="DINHEIRO"/>
 			<textEditor left="5" top="25" width="145" height="80" field="dinheiro"/>
@@ -131,7 +188,7 @@
 						end
 					mod = string.gsub(mod, ",", ".");
 					mod = string.gsub(mod, "_", ",");
-					sheet.gastos = mod .. "PO";
+					sheet.gastos = mod;
 
 					restante = string.gsub(restante, "%.", "_");
 					while true do  
@@ -142,14 +199,53 @@
 						end
 					restante = string.gsub(restante, ",", ".");
 					restante = string.gsub(restante, "_", ",");
-					sheet.dinheiroRestante = restante .. "PO";
-
-
+					sheet.dinheiroRestante = restante;
 				end;
 			</event>
 		</dataLink>
 
-		<layout left="1050" top="485" width="155" height="185">
+		<layout left="890" top="190" width="250" height="222">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="1" width="200" height="20" text="ARMADURA"/>
+			<edit vertTextAlign="center" left="5" top="20" width="240" height="25" field="equipamentoCorpo"/>
+
+			<label left="10" top="50" width="50" height="20" text="CA"/>
+			<edit vertTextAlign="center" left="45" top="50" width="40" height="20" field="equipamentoCorpoCA"/>
+			<label left="90" top="50" width="50" height="20" text="CAT"/>
+			<comboBox left="120" top="50" width="125" height="20" field="equipamentoCorpoCategoria" items="{'Leve', 'Média', 'Pesada', 'Massiva'}" fontColor="white"/>
+
+			<label left="10" top="75" width="50" height="20" text="DES"/>
+			<edit vertTextAlign="center" left="45" top="75" width="40" height="20" field="equipamentoCorpoDesMax"/>
+			<label left="90" top="75" width="50" height="20" text="PEN"/>
+			<edit vertTextAlign="center" left="125" top="75" width="40" height="20" field="penalidade"/>
+			<label left="170" top="75" width="50" height="20" text="Falha" fontSize="13"/>
+			<edit vertTextAlign="center" left="205" top="75" width="40" height="20" field="equipamentoCorpoFalha"/>
+
+			<dataLink field="penalidade">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					local penalidade = (tonumber(sheet.penalidade) or 0)
+					
+					local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+					for i=1, #nodes, 1 do
+						nodes[i].penalidade = penalidade;
+					end
+				</event>
+			</dataLink>
+			<label left="10" top="100" width="50" height="20" text="Desl"/>
+			<edit vertTextAlign="center" left="45" top="100" width="40" height="20" field="equipamentoCorpoDesl"/>
+			<label left="170" top="100" width="50" height="20" text="Correr" fontSize="12"/>
+			<edit vertTextAlign="center" left="205" top="100" width="40" height="20" field="equipamentoCorpoCorrer"/>
+
+			<textEditor left="5" top="122" width="240" height="65" field="descricaoCorpo"/>
+			<label left="70" top="193" width="50" height="20" text="Kg"/>
+			<edit horzTextAlign="center" vertTextAlign="center" left="90" top="190" width="50" height="25" field="pesoCorpo"/>
+			<label left="147" top="193" width="50" height="20" text="$"/>
+			<edit horzTextAlign="center" vertTextAlign="center" left="160" top="190" width="84" height="25" field="precoCorpo"/>
+		</layout>
+
+		<layout left="1050" top="0" width="155" height="185">
 			<rectangle align="client" color="black"/>
 			<label left="5" top="1" width="150" height="20" text="CARGA"/>
 			
@@ -242,6 +338,7 @@
 				end;
 			</event>
 		</dataLink>
+
 		<template name="weaponInfoField">
 			<flowPart minWidth="290" maxWidth="300" height="35">
 				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>

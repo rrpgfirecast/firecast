@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPoderes" align="client" theme="dark" margins="{top=1}">
+	<script> 
+		<![CDATA[	
+		local function rollTest()
+			local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+
+			local mod = (tonumber(sheet.testeDobra) or 0);
+			local rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+
+			mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Dobra de " .. (sheet.nome or "Nome"));
+		end;
+
+		]]>	
+	</script>
+	<template name="tecnicaSmallCenter">
+		<flowPart minWidth="45" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="tecnicaLarge">
+		<flowPart minWidth="125" maxWidth="250" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<popup name="popDescricao" width="250" height="250" backOpacity="0.4">
+		<textEditor align="client" field="descricao"/>
+	</popup>
+	<popup name="popPoder" width="250" height="250" backOpacity="0.4">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+			<tecnicaSmallCenter text="Nível" field="nivel"/>
+			<tecnicaSmallCenter text="Tema" field="tema"/>
+			<tecnicaSmallCenter text="Duração" field="duracao"/>
+			<tecnicaSmallCenter text="Alcance" field="alcance"/>
+			<tecnicaSmallCenter text="CD" field="cd"/>
+			<tecnicaSmallCenter text="Alvo" field="alvo"/>
+			<tecnicaSmallCenter text="Execução" field="execucao"/>
+			<tecnicaSmallCenter text="TR" field="resistencia"/>
+		</flowLayout>
+		<textEditor align="client" field="descricao"/>
+	</popup>
+
+	<scrollBox align="client">	
+
+		<layout left="0" top="0" width="335" height="135">
+			<rectangle align="client" color="#0000007F"/>
+
+			<label left="5" top="5" width="150" height="20" text="Poderes Total" horzTextAlign="center"/>
+			<rectangle left="155" top="5" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label field="sumPoderes" text="0" left="155" top="5" width="75" height="25" horzTextAlign="center"/>
+
+			<label left="5" top="35" width="150" height="20" text="Redução (%)" horzTextAlign="center"/>
+			<rectangle left="155" top="35" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label field="reduction" text="0" left="155" top="35" width="75" height="25" horzTextAlign="center"/>
+
+			<label left="5" top="65" width="150" height="20" text="Poderes Efetivo" horzTextAlign="center"/>
+			<rectangle left="155" top="65" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label field="efetPoderes" text="0" left="155" top="65" width="75" height="25" horzTextAlign="center"/>
+
+			<label left="5" top="95" width="150" height="20" text="Poderes Máximo" horzTextAlign="center"/>
+			<rectangle left="155" top="95" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label field="maxPoderes" text="0" left="155" top="95" width="75" height="25" horzTextAlign="center"/>
+
+			<dataLink fields="{'nep','classePoderes'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					local nep = (tonumber(sheet.nep) or 0);
+					local ajuste = (tonumber(sheet.classePoderes) or 0);
+					local np = nep + ajuste;
+
+					local ppTable = {1000,3000,6000,10000,15000,23000,33000,45000,59000,75000,101000,133000,175000,231000,305000,400000,525000,680000,865000,1080000,1325000,1600000,1905000,2240000,2605000,3000000,3425000,3880000,4365000};
+
+					sheet.maxPoderes = ppTable[np];
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'sumPoderes','reduction'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					local sumPoderes = (tonumber(sheet.sumPoderes) or 0);
+					local reduction = (tonumber(sheet.reduction) or 0);
+					local efetPoderes = math.floor(sumPoderes * (100 - reduction) / 100);
+
+					sheet.efetPoderes = efetPoderes;
+				</event>
+			</dataLink>
+		</layout>
+
+		<layout left="0" top="145" width="335" height="455">
+			<rectangle align="client" color="#0000007F"/>
+			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclListaDosTemas:append();"/>
+			<label left="0" top="0" width="335" height="20" text="TEMAS" horzTextAlign="center"/>
+
+			<label left="5" top="25" width="50" height="20" text="NÍVEL" horzTextAlign="center"/>
+			<label left="55" top="25" width="200" height="20" text="NOME" horzTextAlign="center"/>
+
+			<recordList name="rclListaDosTemas" field="campoDosTemas" templateForm="frmTema" left="5" top="50" width="320" height="400" layout="vertical">
+				<event name="onCompare">
+		            return ((tonumber(nodeA.nivel) or 0) - (tonumber(nodeB.nivel) or 0));
+		        </event>
+			</recordList>
+		</layout>
+
+		<layout left="345" top="0" width="335" height="600">
+			<rectangle align="client" color="#0000007F"/>
+			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclListaDosRedutores:append();"/>
+			<label left="0" top="0" width="335" height="20" text="REDUTORES" horzTextAlign="center"/>
+
+			<label left="5" top="25" width="200" height="20" text="NOME" horzTextAlign="center"/>
+			<label left="205" top="25" width="50" height="20" text="%" horzTextAlign="center"/>
+
+			<recordList name="rclListaDosRedutores" field="campoDosRedutores" templateForm="frmRedutor" left="5" top="50" width="320" height="545" layout="vertical">
+				<event name="onCompare">
+		            return ((tonumber(nodeA.nome) or 0) - (tonumber(nodeB.nome) or 0));
+		        </event>
+			</recordList>
+		</layout>
+			
+		<layout left="690" top="0" width="385" height="600">
+			<rectangle align="client" color="#0000007F"/>
+			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclListaDosPoderes:append();"/>
+			<label left="0" top="0" width="385" height="20" text="PODERES" horzTextAlign="center"/>
+
+			<label left="5" top="25" width="200" height="20" text="NOME" horzTextAlign="center"/>
+			<label left="205" top="25" width="50" height="20" text="CUSTO" horzTextAlign="center"/>
+			<label left="255" top="25" width="50" height="20" text="USOS" horzTextAlign="center"/>
+
+			<recordList name="rclListaDosPoderes" field="campoDosPoderes" templateForm="frmPoder" left="5" top="50" width="375" height="545" layout="vertical">
+				<event name="onCompare">
+		            return ((tonumber(nodeA.nivel) or 0) - (tonumber(nodeB.nivel) or 0));
+		        </event>
+			</recordList>
+		</layout>
+	 </scrollBox>
+</form>
