@@ -110,7 +110,7 @@
 				<periciaSmallCenter text="Racial" field="racialPericia"/>
 				<periciaSmallCenter text="Sinergia" field="sinergiaPericia"/>
 				<periciaSmallCenter text="Equipamentos" field="equipamentosPericia"/>
-				<periciaSmallCenter text="Magico" field="magicoPericia"/>
+				<periciaSmallCenter text="Poderes" field="magicoPericia"/>
 				<periciaSmallCenter text="Outros" field="outrosPericia"/>
 				<periciaSmallCenter text="Talentos" field="talentosPericia"/>
 				<periciaSmallCenter text="Classe" field="classePericia"/>

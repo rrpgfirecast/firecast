@@ -68,7 +68,7 @@ function newfrmPoderes()
     obj.flowLayout1:setParent(obj.popPoder);
     obj.flowLayout1:setAlign("top");
     obj.flowLayout1:setAutoHeight(true);
-    obj.flowLayout1:setMaxControlsPerLine(2);
+    obj.flowLayout1:setMaxControlsPerLine(3);
     obj.flowLayout1:setMargins({bottom=4});
     obj.flowLayout1:setHorzAlign("center");
     obj.flowLayout1:setName("flowLayout1");
@@ -97,7 +97,6 @@ function newfrmPoderes()
     obj.edit1:setField("nivel");
     obj.edit1:setHorzTextAlign("center");
     obj.edit1:setFontSize(12);
-    obj.edit1:setType("number");
     obj.edit1:setName("edit1");
 
     obj.flowPart2 = gui.fromHandle(_obj_newObject("flowPart"));
@@ -124,7 +123,6 @@ function newfrmPoderes()
     obj.edit2:setField("tema");
     obj.edit2:setHorzTextAlign("center");
     obj.edit2:setFontSize(12);
-    obj.edit2:setType("number");
     obj.edit2:setName("edit2");
 
     obj.flowPart3 = gui.fromHandle(_obj_newObject("flowPart"));
@@ -151,7 +149,6 @@ function newfrmPoderes()
     obj.edit3:setField("duracao");
     obj.edit3:setHorzTextAlign("center");
     obj.edit3:setFontSize(12);
-    obj.edit3:setType("number");
     obj.edit3:setName("edit3");
 
     obj.flowPart4 = gui.fromHandle(_obj_newObject("flowPart"));
@@ -178,7 +175,6 @@ function newfrmPoderes()
     obj.edit4:setField("alcance");
     obj.edit4:setHorzTextAlign("center");
     obj.edit4:setFontSize(12);
-    obj.edit4:setType("number");
     obj.edit4:setName("edit4");
 
     obj.flowPart5 = gui.fromHandle(_obj_newObject("flowPart"));
@@ -205,7 +201,6 @@ function newfrmPoderes()
     obj.edit5:setField("cd");
     obj.edit5:setHorzTextAlign("center");
     obj.edit5:setFontSize(12);
-    obj.edit5:setType("number");
     obj.edit5:setName("edit5");
 
     obj.flowPart6 = gui.fromHandle(_obj_newObject("flowPart"));
@@ -232,7 +227,6 @@ function newfrmPoderes()
     obj.edit6:setField("alvo");
     obj.edit6:setHorzTextAlign("center");
     obj.edit6:setFontSize(12);
-    obj.edit6:setType("number");
     obj.edit6:setName("edit6");
 
     obj.flowPart7 = gui.fromHandle(_obj_newObject("flowPart"));
@@ -259,7 +253,6 @@ function newfrmPoderes()
     obj.edit7:setField("execucao");
     obj.edit7:setHorzTextAlign("center");
     obj.edit7:setFontSize(12);
-    obj.edit7:setType("number");
     obj.edit7:setName("edit7");
 
     obj.flowPart8 = gui.fromHandle(_obj_newObject("flowPart"));
@@ -286,8 +279,33 @@ function newfrmPoderes()
     obj.edit8:setField("resistencia");
     obj.edit8:setHorzTextAlign("center");
     obj.edit8:setFontSize(12);
-    obj.edit8:setType("number");
     obj.edit8:setName("edit8");
+
+    obj.flowPart9 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart9:setParent(obj.flowLayout1);
+    obj.flowPart9:setMinWidth(45);
+    obj.flowPart9:setMaxWidth(100);
+    obj.flowPart9:setHeight(35);
+    obj.flowPart9:setName("flowPart9");
+
+    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9:setParent(obj.flowPart9);
+    obj.label9:setAlign("top");
+    obj.label9:setFontSize(10);
+    obj.label9:setText("Livro");
+    obj.label9:setHorzTextAlign("center");
+    obj.label9:setWordWrap(true);
+    obj.label9:setTextTrimming("none");
+    obj.label9:setAutoSize(true);
+    obj.label9:setName("label9");
+
+    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9:setParent(obj.flowPart9);
+    obj.edit9:setAlign("client");
+    obj.edit9:setField("livro");
+    obj.edit9:setHorzTextAlign("center");
+    obj.edit9:setFontSize(12);
+    obj.edit9:setName("edit9");
 
     obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.popPoder);
@@ -314,15 +332,15 @@ function newfrmPoderes()
     obj.rectangle1:setColor("#0000007F");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
-    obj.label9:setParent(obj.layout1);
-    obj.label9:setLeft(5);
-    obj.label9:setTop(5);
-    obj.label9:setWidth(150);
-    obj.label9:setHeight(20);
-    obj.label9:setText("Poderes Total");
-    obj.label9:setHorzTextAlign("center");
-    obj.label9:setName("label9");
+    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10:setParent(obj.layout1);
+    obj.label10:setLeft(5);
+    obj.label10:setTop(5);
+    obj.label10:setWidth(150);
+    obj.label10:setHeight(20);
+    obj.label10:setText("Poderes Total");
+    obj.label10:setHorzTextAlign("center");
+    obj.label10:setName("label10");
 
     obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout1);
@@ -335,26 +353,26 @@ function newfrmPoderes()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
-    obj.label10:setParent(obj.layout1);
-    obj.label10:setField("sumPoderes");
-    obj.label10:setText("0");
-    obj.label10:setLeft(155);
-    obj.label10:setTop(5);
-    obj.label10:setWidth(75);
-    obj.label10:setHeight(25);
-    obj.label10:setHorzTextAlign("center");
-    obj.label10:setName("label10");
-
     obj.label11 = gui.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout1);
-    obj.label11:setLeft(5);
-    obj.label11:setTop(35);
-    obj.label11:setWidth(150);
-    obj.label11:setHeight(20);
-    obj.label11:setText("Redução (%)");
+    obj.label11:setField("sumPoderes");
+    obj.label11:setText("0");
+    obj.label11:setLeft(155);
+    obj.label11:setTop(5);
+    obj.label11:setWidth(75);
+    obj.label11:setHeight(25);
     obj.label11:setHorzTextAlign("center");
     obj.label11:setName("label11");
+
+    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12:setParent(obj.layout1);
+    obj.label12:setLeft(5);
+    obj.label12:setTop(35);
+    obj.label12:setWidth(150);
+    obj.label12:setHeight(20);
+    obj.label12:setText("Redução (%)");
+    obj.label12:setHorzTextAlign("center");
+    obj.label12:setName("label12");
 
     obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout1);
@@ -367,26 +385,26 @@ function newfrmPoderes()
     obj.rectangle3:setStrokeSize(1);
     obj.rectangle3:setName("rectangle3");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
-    obj.label12:setParent(obj.layout1);
-    obj.label12:setField("reduction");
-    obj.label12:setText("0");
-    obj.label12:setLeft(155);
-    obj.label12:setTop(35);
-    obj.label12:setWidth(75);
-    obj.label12:setHeight(25);
-    obj.label12:setHorzTextAlign("center");
-    obj.label12:setName("label12");
-
     obj.label13 = gui.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout1);
-    obj.label13:setLeft(5);
-    obj.label13:setTop(65);
-    obj.label13:setWidth(150);
-    obj.label13:setHeight(20);
-    obj.label13:setText("Poderes Efetivo");
+    obj.label13:setField("reduction");
+    obj.label13:setText("0");
+    obj.label13:setLeft(155);
+    obj.label13:setTop(35);
+    obj.label13:setWidth(75);
+    obj.label13:setHeight(25);
     obj.label13:setHorzTextAlign("center");
     obj.label13:setName("label13");
+
+    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14:setParent(obj.layout1);
+    obj.label14:setLeft(5);
+    obj.label14:setTop(65);
+    obj.label14:setWidth(150);
+    obj.label14:setHeight(20);
+    obj.label14:setText("Poderes Efetivo");
+    obj.label14:setHorzTextAlign("center");
+    obj.label14:setName("label14");
 
     obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.layout1);
@@ -399,26 +417,26 @@ function newfrmPoderes()
     obj.rectangle4:setStrokeSize(1);
     obj.rectangle4:setName("rectangle4");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
-    obj.label14:setParent(obj.layout1);
-    obj.label14:setField("efetPoderes");
-    obj.label14:setText("0");
-    obj.label14:setLeft(155);
-    obj.label14:setTop(65);
-    obj.label14:setWidth(75);
-    obj.label14:setHeight(25);
-    obj.label14:setHorzTextAlign("center");
-    obj.label14:setName("label14");
-
     obj.label15 = gui.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.layout1);
-    obj.label15:setLeft(5);
-    obj.label15:setTop(95);
-    obj.label15:setWidth(150);
-    obj.label15:setHeight(20);
-    obj.label15:setText("Poderes Máximo");
+    obj.label15:setField("efetPoderes");
+    obj.label15:setText("0");
+    obj.label15:setLeft(155);
+    obj.label15:setTop(65);
+    obj.label15:setWidth(75);
+    obj.label15:setHeight(25);
     obj.label15:setHorzTextAlign("center");
     obj.label15:setName("label15");
+
+    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16:setParent(obj.layout1);
+    obj.label16:setLeft(5);
+    obj.label16:setTop(95);
+    obj.label16:setWidth(150);
+    obj.label16:setHeight(20);
+    obj.label16:setText("Poderes Máximo");
+    obj.label16:setHorzTextAlign("center");
+    obj.label16:setName("label16");
 
     obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.layout1);
@@ -431,16 +449,16 @@ function newfrmPoderes()
     obj.rectangle5:setStrokeSize(1);
     obj.rectangle5:setName("rectangle5");
 
-    obj.label16 = gui.fromHandle(_obj_newObject("label"));
-    obj.label16:setParent(obj.layout1);
-    obj.label16:setField("maxPoderes");
-    obj.label16:setText("0");
-    obj.label16:setLeft(155);
-    obj.label16:setTop(95);
-    obj.label16:setWidth(75);
-    obj.label16:setHeight(25);
-    obj.label16:setHorzTextAlign("center");
-    obj.label16:setName("label16");
+    obj.label17 = gui.fromHandle(_obj_newObject("label"));
+    obj.label17:setParent(obj.layout1);
+    obj.label17:setField("maxPoderes");
+    obj.label17:setText("0");
+    obj.label17:setLeft(155);
+    obj.label17:setTop(95);
+    obj.label17:setWidth(75);
+    obj.label17:setHeight(25);
+    obj.label17:setHorzTextAlign("center");
+    obj.label17:setName("label17");
 
     obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.layout1);
@@ -475,35 +493,35 @@ function newfrmPoderes()
     obj.button1:setHeight(25);
     obj.button1:setName("button1");
 
-    obj.label17 = gui.fromHandle(_obj_newObject("label"));
-    obj.label17:setParent(obj.layout2);
-    obj.label17:setLeft(0);
-    obj.label17:setTop(0);
-    obj.label17:setWidth(335);
-    obj.label17:setHeight(20);
-    obj.label17:setText("TEMAS");
-    obj.label17:setHorzTextAlign("center");
-    obj.label17:setName("label17");
-
     obj.label18 = gui.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.layout2);
-    obj.label18:setLeft(5);
-    obj.label18:setTop(25);
-    obj.label18:setWidth(50);
+    obj.label18:setLeft(0);
+    obj.label18:setTop(0);
+    obj.label18:setWidth(335);
     obj.label18:setHeight(20);
-    obj.label18:setText("NÍVEL");
+    obj.label18:setText("TEMAS");
     obj.label18:setHorzTextAlign("center");
     obj.label18:setName("label18");
 
     obj.label19 = gui.fromHandle(_obj_newObject("label"));
     obj.label19:setParent(obj.layout2);
-    obj.label19:setLeft(55);
+    obj.label19:setLeft(5);
     obj.label19:setTop(25);
-    obj.label19:setWidth(200);
+    obj.label19:setWidth(50);
     obj.label19:setHeight(20);
-    obj.label19:setText("NOME");
+    obj.label19:setText("NÍVEL");
     obj.label19:setHorzTextAlign("center");
     obj.label19:setName("label19");
+
+    obj.label20 = gui.fromHandle(_obj_newObject("label"));
+    obj.label20:setParent(obj.layout2);
+    obj.label20:setLeft(55);
+    obj.label20:setTop(25);
+    obj.label20:setWidth(200);
+    obj.label20:setHeight(20);
+    obj.label20:setText("NOME");
+    obj.label20:setHorzTextAlign("center");
+    obj.label20:setName("label20");
 
     obj.rclListaDosTemas = gui.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDosTemas:setParent(obj.layout2);
@@ -539,35 +557,35 @@ function newfrmPoderes()
     obj.button2:setHeight(25);
     obj.button2:setName("button2");
 
-    obj.label20 = gui.fromHandle(_obj_newObject("label"));
-    obj.label20:setParent(obj.layout3);
-    obj.label20:setLeft(0);
-    obj.label20:setTop(0);
-    obj.label20:setWidth(335);
-    obj.label20:setHeight(20);
-    obj.label20:setText("REDUTORES");
-    obj.label20:setHorzTextAlign("center");
-    obj.label20:setName("label20");
-
     obj.label21 = gui.fromHandle(_obj_newObject("label"));
     obj.label21:setParent(obj.layout3);
-    obj.label21:setLeft(5);
-    obj.label21:setTop(25);
-    obj.label21:setWidth(200);
+    obj.label21:setLeft(0);
+    obj.label21:setTop(0);
+    obj.label21:setWidth(335);
     obj.label21:setHeight(20);
-    obj.label21:setText("NOME");
+    obj.label21:setText("REDUTORES");
     obj.label21:setHorzTextAlign("center");
     obj.label21:setName("label21");
 
     obj.label22 = gui.fromHandle(_obj_newObject("label"));
     obj.label22:setParent(obj.layout3);
-    obj.label22:setLeft(205);
+    obj.label22:setLeft(5);
     obj.label22:setTop(25);
-    obj.label22:setWidth(50);
+    obj.label22:setWidth(200);
     obj.label22:setHeight(20);
-    obj.label22:setText("%");
+    obj.label22:setText("NOME");
     obj.label22:setHorzTextAlign("center");
     obj.label22:setName("label22");
+
+    obj.label23 = gui.fromHandle(_obj_newObject("label"));
+    obj.label23:setParent(obj.layout3);
+    obj.label23:setLeft(205);
+    obj.label23:setTop(25);
+    obj.label23:setWidth(50);
+    obj.label23:setHeight(20);
+    obj.label23:setText("%");
+    obj.label23:setHorzTextAlign("center");
+    obj.label23:setName("label23");
 
     obj.rclListaDosRedutores = gui.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDosRedutores:setParent(obj.layout3);
@@ -603,45 +621,45 @@ function newfrmPoderes()
     obj.button3:setHeight(25);
     obj.button3:setName("button3");
 
-    obj.label23 = gui.fromHandle(_obj_newObject("label"));
-    obj.label23:setParent(obj.layout4);
-    obj.label23:setLeft(0);
-    obj.label23:setTop(0);
-    obj.label23:setWidth(385);
-    obj.label23:setHeight(20);
-    obj.label23:setText("PODERES");
-    obj.label23:setHorzTextAlign("center");
-    obj.label23:setName("label23");
-
     obj.label24 = gui.fromHandle(_obj_newObject("label"));
     obj.label24:setParent(obj.layout4);
-    obj.label24:setLeft(5);
-    obj.label24:setTop(25);
-    obj.label24:setWidth(200);
+    obj.label24:setLeft(0);
+    obj.label24:setTop(0);
+    obj.label24:setWidth(385);
     obj.label24:setHeight(20);
-    obj.label24:setText("NOME");
+    obj.label24:setText("PODERES");
     obj.label24:setHorzTextAlign("center");
     obj.label24:setName("label24");
 
     obj.label25 = gui.fromHandle(_obj_newObject("label"));
     obj.label25:setParent(obj.layout4);
-    obj.label25:setLeft(205);
+    obj.label25:setLeft(5);
     obj.label25:setTop(25);
-    obj.label25:setWidth(50);
+    obj.label25:setWidth(200);
     obj.label25:setHeight(20);
-    obj.label25:setText("CUSTO");
+    obj.label25:setText("NOME");
     obj.label25:setHorzTextAlign("center");
     obj.label25:setName("label25");
 
     obj.label26 = gui.fromHandle(_obj_newObject("label"));
     obj.label26:setParent(obj.layout4);
-    obj.label26:setLeft(255);
+    obj.label26:setLeft(205);
     obj.label26:setTop(25);
     obj.label26:setWidth(50);
     obj.label26:setHeight(20);
-    obj.label26:setText("USOS");
+    obj.label26:setText("CUSTO");
     obj.label26:setHorzTextAlign("center");
     obj.label26:setName("label26");
+
+    obj.label27 = gui.fromHandle(_obj_newObject("label"));
+    obj.label27:setParent(obj.layout4);
+    obj.label27:setLeft(255);
+    obj.label27:setTop(25);
+    obj.label27:setWidth(50);
+    obj.label27:setHeight(20);
+    obj.label27:setText("USOS");
+    obj.label27:setHorzTextAlign("center");
+    obj.label27:setName("label27");
 
     obj.rclListaDosPoderes = gui.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDosPoderes:setParent(obj.layout4);
@@ -735,7 +753,9 @@ function newfrmPoderes()
         if self.layout4 ~= nil then self.layout4:destroy(); self.layout4 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
+        if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
         if self.flowPart5 ~= nil then self.flowPart5:destroy(); self.flowPart5 = nil; end;
+        if self.flowPart9 ~= nil then self.flowPart9:destroy(); self.flowPart9 = nil; end;
         if self.flowPart7 ~= nil then self.flowPart7:destroy(); self.flowPart7 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
@@ -762,6 +782,7 @@ function newfrmPoderes()
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.layout2 ~= nil then self.layout2:destroy(); self.layout2 = nil; end;
         if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
+        if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.flowPart3 ~= nil then self.flowPart3:destroy(); self.flowPart3 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;

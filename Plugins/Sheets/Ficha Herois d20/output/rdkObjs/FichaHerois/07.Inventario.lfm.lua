@@ -234,7 +234,7 @@ function newfrmFichaRPGmeister7_svg()
     obj.label9:setTop(1);
     obj.label9:setWidth(150);
     obj.label9:setHeight(20);
-    obj.label9:setText("PERMANENCIAS");
+    obj.label9:setText("MENSALIDADES");
     obj.label9:setName("label9");
 
     obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));

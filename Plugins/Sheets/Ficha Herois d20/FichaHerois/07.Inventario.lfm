@@ -44,7 +44,7 @@
 		</template>
 		
 		<layout left="480" top="0" width="200" height="220">
-			<smallInventory title="PERMANENCIAS" field="permanencias" field2="Permanencias"/>
+			<smallInventory title="MENSALIDADES" field="permanencias" field2="Permanencias"/>
 		</layout>
 		<layout left="685" top="0" width="200" height="220">
 			<smallInventory title="LIVRES" field="livres" field2="Livres"/>

@@ -16,7 +16,7 @@
 	<template name="tecnicaSmallCenter">
 		<flowPart minWidth="45" maxWidth="100" height="35">
 			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
-			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
 		</flowPart>
 	</template>
 	<template name="tecnicaLarge">
@@ -29,7 +29,7 @@
 		<textEditor align="client" field="descricao"/>
 	</popup>
 	<popup name="popPoder" width="250" height="250" backOpacity="0.4">
-		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
 			<tecnicaSmallCenter text="Nível" field="nivel"/>
 			<tecnicaSmallCenter text="Tema" field="tema"/>
 			<tecnicaSmallCenter text="Duração" field="duracao"/>
@@ -38,6 +38,7 @@
 			<tecnicaSmallCenter text="Alvo" field="alvo"/>
 			<tecnicaSmallCenter text="Execução" field="execucao"/>
 			<tecnicaSmallCenter text="TR" field="resistencia"/>
+			<tecnicaSmallCenter text="Livro" field="livro"/>
 		</flowLayout>
 		<textEditor align="client" field="descricao"/>
 	</popup>

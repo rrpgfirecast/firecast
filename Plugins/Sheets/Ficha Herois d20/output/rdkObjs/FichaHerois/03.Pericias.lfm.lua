@@ -265,7 +265,7 @@ function newfrmFichaRPGmeister3_svg()
     obj.label5:setParent(obj.flowPart5);
     obj.label5:setAlign("top");
     obj.label5:setFontSize(10);
-    obj.label5:setText("Magico");
+    obj.label5:setText("Poderes");
     obj.label5:setHorzTextAlign("center");
     obj.label5:setWordWrap(true);
     obj.label5:setTextTrimming("none");
