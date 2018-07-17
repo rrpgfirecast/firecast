@@ -296,6 +296,7 @@ function newfrmFichaRPGmeister3p_svg()
             				local deClasse = 0;
             				if not node.idiomasIsClass then
             					mod = mod + (tonumber(node.idiomasGrad) or 0);
+            				else
             					deClasse = 1;
             				end;
             				local path = 0;

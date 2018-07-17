@@ -112,7 +112,7 @@ function newfrmFichaRPGmeister3_svg()
 					ndb.deleteNode(nodes[i]);
 				end
 
-				for i=1, 42, 1 do
+				for i=1, 47, 1 do
 					local pericia = self.rclListaDasPericias:append();
 					pericia.nomePericia = dnd[i].nome;
 					pericia.chavePericia = dnd[i].chave;
@@ -757,7 +757,7 @@ function newfrmFichaRPGmeister3_svg()
 
     obj.button3 = gui.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.layout4);
-    obj.button3:setText("Padrão DnD3.5");
+    obj.button3:setText("Padrão d20");
     obj.button3:setLeft(0);
     obj.button3:setTop(50);
     obj.button3:setWidth(125);

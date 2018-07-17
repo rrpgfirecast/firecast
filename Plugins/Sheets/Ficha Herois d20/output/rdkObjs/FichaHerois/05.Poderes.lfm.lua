@@ -313,6 +313,11 @@ function newfrmPoderes()
     obj.textEditor2:setField("descricao");
     obj.textEditor2:setName("textEditor2");
 
+    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.popPoder);
+    obj.dataLink1:setFields({'nivel','nome','custocusto'});
+    obj.dataLink1:setName("dataLink1");
+
     obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
@@ -460,15 +465,15 @@ function newfrmPoderes()
     obj.label17:setHorzTextAlign("center");
     obj.label17:setName("label17");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink1:setParent(obj.layout1);
-    obj.dataLink1:setFields({'nep','classePoderes'});
-    obj.dataLink1:setName("dataLink1");
-
     obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.layout1);
-    obj.dataLink2:setFields({'sumPoderes','reduction'});
+    obj.dataLink2:setFields({'nep','classePoderes'});
     obj.dataLink2:setName("dataLink2");
+
+    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3:setParent(obj.layout1);
+    obj.dataLink3:setFields({'sumPoderes','reduction'});
+    obj.dataLink3:setName("dataLink3");
 
     obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.scrollBox1);
@@ -676,6 +681,17 @@ function newfrmPoderes()
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
+            				local rcl = self:findControlByName("rclListaDosPoderes");
+            
+            				if rcl ~= nil then
+            					rcl:sort();
+            				end;
+        end, obj);
+
+    obj._e_event1 = obj.dataLink2:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
             					local nep = (tonumber(sheet.nep) or 0);
             					local ajuste = (tonumber(sheet.classePoderes) or 0);
             					local np = nep + ajuste;
@@ -685,7 +701,7 @@ function newfrmPoderes()
             					sheet.maxPoderes = ppTable[np];
         end, obj);
 
-    obj._e_event1 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event2 = obj.dataLink3:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -696,37 +712,48 @@ function newfrmPoderes()
             					sheet.efetPoderes = efetPoderes;
         end, obj);
 
-    obj._e_event2 = obj.button1:addEventListener("onClick",
+    obj._e_event3 = obj.button1:addEventListener("onClick",
         function (self)
             self.rclListaDosTemas:append();
         end, obj);
 
-    obj._e_event3 = obj.rclListaDosTemas:addEventListener("onCompare",
+    obj._e_event4 = obj.rclListaDosTemas:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return ((tonumber(nodeA.nivel) or 0) - (tonumber(nodeB.nivel) or 0));
         end, obj);
 
-    obj._e_event4 = obj.button2:addEventListener("onClick",
+    obj._e_event5 = obj.button2:addEventListener("onClick",
         function (self)
             self.rclListaDosRedutores:append();
         end, obj);
 
-    obj._e_event5 = obj.rclListaDosRedutores:addEventListener("onCompare",
+    obj._e_event6 = obj.rclListaDosRedutores:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return ((tonumber(nodeA.nome) or 0) - (tonumber(nodeB.nome) or 0));
         end, obj);
 
-    obj._e_event6 = obj.button3:addEventListener("onClick",
+    obj._e_event7 = obj.button3:addEventListener("onClick",
         function (self)
             self.rclListaDosPoderes:append();
         end, obj);
 
-    obj._e_event7 = obj.rclListaDosPoderes:addEventListener("onCompare",
+    obj._e_event8 = obj.rclListaDosPoderes:addEventListener("onCompare",
         function (self, nodeA, nodeB)
-            return ((tonumber(nodeA.nivel) or 0) - (tonumber(nodeB.nivel) or 0));
+            local order = ((tonumber(nodeA.nivel) or 0) - (tonumber(nodeB.nivel) or 0));
+            
+            		            if order == 0 then
+            		            	order = ((tonumber(nodeA.custo) or 0) - (tonumber(nodeB.custo) or 0));
+            		            end;
+            
+            		            if order == 0 then
+            		            	order = utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            		            end;
+            
+            		            return order;
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event8);
         __o_rrpgObjs.removeEventListenerById(self._e_event7);
         __o_rrpgObjs.removeEventListenerById(self._e_event6);
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
@@ -761,6 +788,7 @@ function newfrmPoderes()
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.flowLayout1 ~= nil then self.flowLayout1:destroy(); self.flowLayout1 = nil; end;
         if self.rclListaDosTemas ~= nil then self.rclListaDosTemas:destroy(); self.rclListaDosTemas = nil; end;
+        if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;

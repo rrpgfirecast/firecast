@@ -79,7 +79,7 @@
 					ndb.deleteNode(nodes[i]);
 				end
 
-				for i=1, 42, 1 do
+				for i=1, 47, 1 do
 					local pericia = self.rclListaDasPericias:append();
 					pericia.nomePericia = dnd[i].nome;
 					pericia.chavePericia = dnd[i].chave;
@@ -179,7 +179,7 @@
 		<layout left="940" top="480" width="135" height="200">
 			<button text="Nova Perícia" left="0" top="0" width="125" height="25" onClick="self.rclListaDasPericias:append();"/>
 			<button text="Novo Idioma" left="0" top="25" width="125" height="25" onClick="self.rclListaDosIdiomas:append();"/>
-			<button text="Padrão DnD3.5" left="0" top="50" width="125" height="25" onClick="dndSkills();" hint="Vai apagar todas perícias atuais. "/>
+			<button text="Padrão d20" left="0" top="50" width="125" height="25" onClick="dndSkills();" hint="Vai apagar todas perícias atuais. "/>
 		</layout>
 	</scrollBox>
 </form>

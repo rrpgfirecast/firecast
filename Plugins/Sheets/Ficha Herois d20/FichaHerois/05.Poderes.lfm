@@ -41,6 +41,17 @@
 			<tecnicaSmallCenter text="Livro" field="livro"/>
 		</flowLayout>
 		<textEditor align="client" field="descricao"/>
+		<dataLink fields="{'nivel','nome','custocusto'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local rcl = self:findControlByName("rclListaDosPoderes");
+
+				if rcl ~= nil then
+					rcl:sort();
+				end;
+			</event>
+		</dataLink>
 	</popup>
 
 	<scrollBox align="client">	
@@ -132,7 +143,17 @@
 
 			<recordList name="rclListaDosPoderes" field="campoDosPoderes" templateForm="frmPoder" left="5" top="50" width="375" height="545" layout="vertical">
 				<event name="onCompare">
-		            return ((tonumber(nodeA.nivel) or 0) - (tonumber(nodeB.nivel) or 0));
+		            local order = ((tonumber(nodeA.nivel) or 0) - (tonumber(nodeB.nivel) or 0));
+
+		            if order == 0 then
+		            	order = ((tonumber(nodeA.custo) or 0) - (tonumber(nodeB.custo) or 0));
+		            end;
+
+		            if order == 0 then
+		            	order = utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+		            end;
+
+		            return order;
 		        </event>
 			</recordList>
 		</layout>

@@ -13168,7 +13168,7 @@ function newfrmAvatar()
 					ndb.deleteNode(nodes[i]);
 				end
 
-				for i=1, 42, 1 do
+				for i=1, 47, 1 do
 					local pericia = self.rclListaDasPericias:append();
 					pericia.nomePericia = dnd[i].nome;
 					pericia.chavePericia = dnd[i].chave;
@@ -13813,7 +13813,7 @@ function newfrmAvatar()
 
     obj.button81 = gui.fromHandle(_obj_newObject("button"));
     obj.button81:setParent(obj.layout47);
-    obj.button81:setText("Padrão DnD3.5");
+    obj.button81:setText("Padrão d20");
     obj.button81:setLeft(0);
     obj.button81:setTop(50);
     obj.button81:setWidth(125);
@@ -14651,6 +14651,11 @@ function newfrmAvatar()
     obj.textEditor7:setField("descricao");
     obj.textEditor7:setName("textEditor7");
 
+    obj.dataLink49 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink49:setParent(obj.popPoder);
+    obj.dataLink49:setFields({'nivel','nome','custocusto'});
+    obj.dataLink49:setName("dataLink49");
+
     obj.scrollBox6 = gui.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox6:setParent(obj.frmPoderes);
     obj.scrollBox6:setAlign("client");
@@ -14798,15 +14803,15 @@ function newfrmAvatar()
     obj.label386:setHorzTextAlign("center");
     obj.label386:setName("label386");
 
-    obj.dataLink49 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink49:setParent(obj.layout53);
-    obj.dataLink49:setFields({'nep','classePoderes'});
-    obj.dataLink49:setName("dataLink49");
-
     obj.dataLink50 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink50:setParent(obj.layout53);
-    obj.dataLink50:setFields({'sumPoderes','reduction'});
+    obj.dataLink50:setFields({'nep','classePoderes'});
     obj.dataLink50:setName("dataLink50");
+
+    obj.dataLink51 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink51:setParent(obj.layout53);
+    obj.dataLink51:setFields({'sumPoderes','reduction'});
+    obj.dataLink51:setName("dataLink51");
 
     obj.layout54 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout54:setParent(obj.scrollBox6);
@@ -15753,10 +15758,10 @@ function newfrmAvatar()
     obj.label428:setFontSize(11);
     obj.label428:setName("label428");
 
-    obj.dataLink51 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink51:setParent(obj.scrollBox7);
-    obj.dataLink51:setFields({'precoCabeca', 'precoOlhos', 'precoPescoco', 'precoOmbros', 'precoTorso', 'precoCorpo', 'precoPunhos', 'precoCintura', 'precoMaos', 'precoDedosI', 'precoDesdosII', 'precoPes', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal'});
-    obj.dataLink51:setName("dataLink51");
+    obj.dataLink52 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink52:setParent(obj.scrollBox7);
+    obj.dataLink52:setFields({'precoCabeca', 'precoOlhos', 'precoPescoco', 'precoOmbros', 'precoTorso', 'precoCorpo', 'precoPunhos', 'precoCintura', 'precoMaos', 'precoDedosI', 'precoDesdosII', 'precoPes', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal'});
+    obj.dataLink52:setName("dataLink52");
 
     obj.layout66 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout66:setParent(obj.scrollBox7);
@@ -16211,15 +16216,15 @@ function newfrmAvatar()
     obj.label453:setFontColor("white");
     obj.label453:setName("label453");
 
-    obj.dataLink52 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink52:setParent(obj.scrollBox7);
-    obj.dataLink52:setField("cargaPesada");
-    obj.dataLink52:setName("dataLink52");
-
     obj.dataLink53 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink53:setParent(obj.scrollBox7);
-    obj.dataLink53:setFields({'pesoCabeca', 'pesoOlhos', 'pesoPescoco', 'pesoOmbros', 'pesoTorso', 'pesoCorpo', 'pesoPunhos', 'pesoCintura', 'pesoMaos', 'pesoDedosI', 'pesoDesdosII', 'pesoPes', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp'});
+    obj.dataLink53:setField("cargaPesada");
     obj.dataLink53:setName("dataLink53");
+
+    obj.dataLink54 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink54:setParent(obj.scrollBox7);
+    obj.dataLink54:setFields({'pesoCabeca', 'pesoOlhos', 'pesoPescoco', 'pesoOmbros', 'pesoTorso', 'pesoCorpo', 'pesoPunhos', 'pesoCintura', 'pesoMaos', 'pesoDedosI', 'pesoDesdosII', 'pesoPes', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp'});
+    obj.dataLink54:setName("dataLink54");
 
     obj.popArma = gui.fromHandle(_obj_newObject("popup"));
     obj.popArma:setParent(obj.scrollBox7);
@@ -17662,10 +17667,10 @@ function newfrmAvatar()
     obj.edit608:setHorzTextAlign("center");
     obj.edit608:setName("edit608");
 
-    obj.dataLink54 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink54:setParent(obj.boxDetalhesDoCompanheiro);
-    obj.dataLink54:setField("precoInventorioComp");
-    obj.dataLink54:setName("dataLink54");
+    obj.dataLink55 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink55:setParent(obj.boxDetalhesDoCompanheiro);
+    obj.dataLink55:setField("precoInventorioComp");
+    obj.dataLink55:setName("dataLink55");
 
     obj.rectangle164 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle164:setParent(obj.boxDetalhesDoCompanheiro);
@@ -18104,10 +18109,10 @@ function newfrmAvatar()
     obj.edit619:setVertTextAlign("center");
     obj.edit619:setName("edit619");
 
-    obj.dataLink55 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink55:setParent(obj.scrollBox9);
-    obj.dataLink55:setFields({'tamanho', 'quadrupede', 'efetFor'});
-    obj.dataLink55:setName("dataLink55");
+    obj.dataLink56 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink56:setParent(obj.scrollBox9);
+    obj.dataLink56:setFields({'tamanho', 'quadrupede', 'efetFor'});
+    obj.dataLink56:setName("dataLink56");
 
     obj.layout77 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout77:setParent(obj.scrollBox9);
@@ -21507,6 +21512,17 @@ function newfrmAvatar()
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
+            				local rcl = self:findControlByName("rclListaDosPoderes");
+            
+            				if rcl ~= nil then
+            					rcl:sort();
+            				end;
+        end, obj);
+
+    obj._e_event144 = obj.dataLink50:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
             					local nep = (tonumber(sheet.nep) or 0);
             					local ajuste = (tonumber(sheet.classePoderes) or 0);
             					local np = nep + ajuste;
@@ -21516,7 +21532,7 @@ function newfrmAvatar()
             					sheet.maxPoderes = ppTable[np];
         end, obj);
 
-    obj._e_event144 = obj.dataLink50:addEventListener("onChange",
+    obj._e_event145 = obj.dataLink51:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -21527,42 +21543,52 @@ function newfrmAvatar()
             					sheet.efetPoderes = efetPoderes;
         end, obj);
 
-    obj._e_event145 = obj.button85:addEventListener("onClick",
+    obj._e_event146 = obj.button85:addEventListener("onClick",
         function (self)
             self.rclListaDosTemas:append();
         end, obj);
 
-    obj._e_event146 = obj.rclListaDosTemas:addEventListener("onCompare",
+    obj._e_event147 = obj.rclListaDosTemas:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return ((tonumber(nodeA.nivel) or 0) - (tonumber(nodeB.nivel) or 0));
         end, obj);
 
-    obj._e_event147 = obj.button86:addEventListener("onClick",
+    obj._e_event148 = obj.button86:addEventListener("onClick",
         function (self)
             self.rclListaDosRedutores:append();
         end, obj);
 
-    obj._e_event148 = obj.rclListaDosRedutores:addEventListener("onCompare",
+    obj._e_event149 = obj.rclListaDosRedutores:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return ((tonumber(nodeA.nome) or 0) - (tonumber(nodeB.nome) or 0));
         end, obj);
 
-    obj._e_event149 = obj.button87:addEventListener("onClick",
+    obj._e_event150 = obj.button87:addEventListener("onClick",
         function (self)
             self.rclListaDosPoderes:append();
         end, obj);
 
-    obj._e_event150 = obj.rclListaDosPoderes:addEventListener("onCompare",
+    obj._e_event151 = obj.rclListaDosPoderes:addEventListener("onCompare",
         function (self, nodeA, nodeB)
-            return ((tonumber(nodeA.nivel) or 0) - (tonumber(nodeB.nivel) or 0));
+            local order = ((tonumber(nodeA.nivel) or 0) - (tonumber(nodeB.nivel) or 0));
+            
+            		            if order == 0 then
+            		            	order = ((tonumber(nodeA.custo) or 0) - (tonumber(nodeB.custo) or 0));
+            		            end;
+            
+            		            if order == 0 then
+            		            	order = utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            		            end;
+            
+            		            return order;
         end, obj);
 
-    obj._e_event151 = obj.button88:addEventListener("onClick",
+    obj._e_event152 = obj.button88:addEventListener("onClick",
         function (self)
             self.rclListaDasArmas:append();
         end, obj);
 
-    obj._e_event152 = obj.dataLink51:addEventListener("onChange",
+    obj._e_event153 = obj.dataLink52:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
             					if debug then
@@ -21624,7 +21650,7 @@ function newfrmAvatar()
             				end;
         end, obj);
 
-    obj._e_event153 = obj.dataLink52:addEventListener("onChange",
+    obj._e_event154 = obj.dataLink53:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
             					if debug then
@@ -21649,7 +21675,7 @@ function newfrmAvatar()
             				end;
         end, obj);
 
-    obj._e_event154 = obj.dataLink53:addEventListener("onChange",
+    obj._e_event155 = obj.dataLink54:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~=nil then
             					if debug then
@@ -21688,7 +21714,7 @@ function newfrmAvatar()
             				end;
         end, obj);
 
-    obj._e_event155 = obj.button89:addEventListener("onClick",
+    obj._e_event156 = obj.button89:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             						local rolagem = rrpg.interpretarRolagem("1d20 + " .. (node.iniciativaComp or 0));
@@ -21696,7 +21722,7 @@ function newfrmAvatar()
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de iniciativa de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event156 = obj.button90:addEventListener("onClick",
+    obj._e_event157 = obj.button90:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             						local rolagem = rrpg.interpretarRolagem("1d20 + " .. (node.agarrarComp or 0));
@@ -21704,7 +21730,7 @@ function newfrmAvatar()
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de agarrar de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event157 = obj.button91:addEventListener("onClick",
+    obj._e_event158 = obj.button91:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21717,7 +21743,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de força de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event158 = obj.edit589:addEventListener("onChange",
+    obj._e_event159 = obj.edit589:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -21734,7 +21760,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event159 = obj.button92:addEventListener("onClick",
+    obj._e_event160 = obj.button92:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21747,7 +21773,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de destreza de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event160 = obj.edit591:addEventListener("onChange",
+    obj._e_event161 = obj.edit591:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -21764,7 +21790,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event161 = obj.button93:addEventListener("onClick",
+    obj._e_event162 = obj.button93:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21777,7 +21803,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de constituição de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event162 = obj.edit593:addEventListener("onChange",
+    obj._e_event163 = obj.edit593:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -21794,7 +21820,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event163 = obj.button94:addEventListener("onClick",
+    obj._e_event164 = obj.button94:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21807,7 +21833,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de inteligência de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event164 = obj.edit595:addEventListener("onChange",
+    obj._e_event165 = obj.edit595:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -21824,7 +21850,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event165 = obj.button95:addEventListener("onClick",
+    obj._e_event166 = obj.button95:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21837,7 +21863,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de sabedoria de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event166 = obj.edit597:addEventListener("onChange",
+    obj._e_event167 = obj.edit597:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -21854,7 +21880,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event167 = obj.button96:addEventListener("onClick",
+    obj._e_event168 = obj.button96:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21867,7 +21893,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de carisma de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event168 = obj.edit599:addEventListener("onChange",
+    obj._e_event169 = obj.edit599:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
@@ -21884,7 +21910,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event169 = obj.button97:addEventListener("onClick",
+    obj._e_event170 = obj.button97:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21897,7 +21923,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de fortitude de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event170 = obj.button98:addEventListener("onClick",
+    obj._e_event171 = obj.button98:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21910,7 +21936,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de reflexos de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event171 = obj.button99:addEventListener("onClick",
+    obj._e_event172 = obj.button99:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21923,7 +21949,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de vontade de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event172 = obj.dataLink54:addEventListener("onChange",
+    obj._e_event173 = obj.dataLink55:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -21935,7 +21961,7 @@ function newfrmAvatar()
             					sheet.precoInventorioComp = total;
         end, obj);
 
-    obj._e_event173 = obj.button100:addEventListener("onClick",
+    obj._e_event174 = obj.button100:addEventListener("onClick",
         function (self)
             local macro = self.boxDetalhesDoCompanheiro.node.macro;
             						if macro~=nil then
@@ -21947,24 +21973,24 @@ function newfrmAvatar()
             						end;
         end, obj);
 
-    obj._e_event174 = obj.image22:addEventListener("onStartDrag",
+    obj._e_event175 = obj.image22:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", self.rclListaDosCompanheiros.selectedNode.avatarComp);
         end, obj);
 
-    obj._e_event175 = obj.button101:addEventListener("onClick",
+    obj._e_event176 = obj.button101:addEventListener("onClick",
         function (self)
             self.rclListaDosCompanheiros:append();
         end, obj);
 
-    obj._e_event176 = obj.rclListaDosCompanheiros:addEventListener("onSelect",
+    obj._e_event177 = obj.rclListaDosCompanheiros:addEventListener("onSelect",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             				self.boxDetalhesDoCompanheiro.node = node;
             				self.boxDetalhesDoCompanheiro.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event177 = obj.rclListaDosCompanheiros:addEventListener("onEndEnumeration",
+    obj._e_event178 = obj.rclListaDosCompanheiros:addEventListener("onEndEnumeration",
         function (self)
             if self.rclListaDosCompanheiros.selectedNode == nil and sheet ~= nil then
             					local nodes = ndb.getChildNodes(sheet.campoDosCompanheiros);               
@@ -21974,7 +22000,7 @@ function newfrmAvatar()
             				end;
         end, obj);
 
-    obj._e_event178 = obj.dataLink55:addEventListener("onChange",
+    obj._e_event179 = obj.dataLink56:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~=nil then
             					if debug then
@@ -22085,37 +22111,38 @@ function newfrmAvatar()
             				end;
         end, obj);
 
-    obj._e_event179 = obj.button102:addEventListener("onClick",
+    obj._e_event180 = obj.button102:addEventListener("onClick",
         function (self)
             System.setClipboardText(sheet.historia);
         end, obj);
 
-    obj._e_event180 = obj.button103:addEventListener("onClick",
+    obj._e_event181 = obj.button103:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/README.md')
         end, obj);
 
-    obj._e_event181 = obj.button104:addEventListener("onClick",
+    obj._e_event182 = obj.button104:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/output/Ficha%20Herois%20d20.rpk?raw=true')
         end, obj);
 
-    obj._e_event182 = obj.button105:addEventListener("onClick",
+    obj._e_event183 = obj.button105:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/__Tutorial/Ficha%20Avatar%20-%20Tutorial.docx')
         end, obj);
 
-    obj._e_event183 = obj.button106:addEventListener("onClick",
+    obj._e_event184 = obj.button106:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/Sistema.docx?raw=true')
         end, obj);
 
-    obj._e_event184 = obj.button107:addEventListener("onClick",
+    obj._e_event185 = obj.button107:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event185);
         __o_rrpgObjs.removeEventListenerById(self._e_event184);
         __o_rrpgObjs.removeEventListenerById(self._e_event183);
         __o_rrpgObjs.removeEventListenerById(self._e_event182);
@@ -23170,6 +23197,7 @@ function newfrmAvatar()
         if self.textEditor21 ~= nil then self.textEditor21:destroy(); self.textEditor21 = nil; end;
         if self.rectangle60 ~= nil then self.rectangle60:destroy(); self.rectangle60 = nil; end;
         if self.label513 ~= nil then self.label513:destroy(); self.label513 = nil; end;
+        if self.dataLink56 ~= nil then self.dataLink56:destroy(); self.dataLink56 = nil; end;
         if self.edit49 ~= nil then self.edit49:destroy(); self.edit49 = nil; end;
         if self.rectangle32 ~= nil then self.rectangle32:destroy(); self.rectangle32 = nil; end;
         if self.edit406 ~= nil then self.edit406:destroy(); self.edit406 = nil; end;
