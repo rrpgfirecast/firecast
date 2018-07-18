@@ -153,9 +153,10 @@ local _globalLuaCheckStdForSDK = {};
 			return nil;
 		end;
 	end;
-
+	
 _globalLuaCheckStd.globals = generateGlobalsRecursivelyTableDefinitions(globalTable, nil, true);
 _globalLuaCheckStdForSDK.globals = generateGlobalsRecursivelyTableDefinitions(globalTable, nil, false);
+
 
 --[[ End of Mount _globalLuaCheckStd]]--
 

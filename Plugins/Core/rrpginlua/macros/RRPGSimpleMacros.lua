@@ -211,7 +211,7 @@ function globalExecutarMacro(macro, message, endCallback)
 	
 	if not retorno then
 		local dialogs = require("dialogs.lua");
-		dialogs.showMessageDlg(msg, dialogs.DT_ERROR, {dialogs.DB_OK});
+		Dialogs.showMessageDlg(msg, dialogs.DT_ERROR, {dialogs.DB_OK});
 		--(msg);
 	end	
 end;
@@ -311,3 +311,5 @@ local function inicializar()
 end;
 
 inicializar();
+
+require("plugins.lua");

@@ -1,4 +1,4 @@
-﻿require("GUI.lua");
+﻿require("gui.lua");
 local KG = {};
 
 function KG.newPanel()
