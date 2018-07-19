@@ -58,11 +58,6 @@
 			<dataLink fields="{'inicial$(atr)', 'raca$(atr)', 'nep$(atr)', 'inerente$(atr)', 'tamanho$(atr)', 'outros$(atr)', 'melhoria$(atr)', 'danoTemp$(atr)', 'danoPerm$(atr)', 'temporario$(atr)', 'magia$(atr)', 'classe$(atr)', 'isMelhoriaActive', 'isDnTempActive', 'isDnPermActive', 'isTempActive', 'isClasseActive', 'isMagiaActive'}">
 				<event name="onChange"><![CDATA[
 					if sheet~= nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando $(atr)");
-							index = index + 1;
-						end;
 						local real = 	(tonumber(sheet.inicial$(atr)) or 0) + 
 										(tonumber(sheet.raca$(atr)) or 0) + 
 										(tonumber(sheet.nep$(atr)) or 0) + 
@@ -111,11 +106,6 @@
 			<dataLink field="real$(atr)">
 				<event name="onChange">
 					if sheet ~= nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador real de $(atr)");
-							index = index + 1;
-						end;
 						sheet.realMod$(atr) = getMOD(sheet.real$(atr));  
 					end;
 				</event>
@@ -128,11 +118,6 @@
 			<dataLink field="efet$(atr)">
 				<event name="onChange">
 					if sheet ~= nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador efetivo de $(atr)");
-							index = index + 1;
-						end;
 						sheet.efetMod$(atr) = getMOD(sheet.efet$(atr));
 						updateAtributes($(num));
 					end;
@@ -141,11 +126,6 @@
 			
 			<script>
 				local function get$(atrU)()
-					if debug then
-						local mesa = rrpg.getMesaDe(sheet);
-						mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Captando $(atrU)");
-						index = index + 1;
-					end;
 					local mod = tonumber(sheet.efetMod$(atr)) or 0;
 					return mod;
 				end;
@@ -199,11 +179,6 @@
 			<dataLink field="desl$(mode)">
 				<event name="onChange">
 					if sheet ~= nil and sheet.desl$(mode) ~= nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Deslocamento em quadrados.");
-							index = index + 1;
-						end;
 
 						local mod = sheet.desl$(mode);
 						mod = string.gsub(mod, "m", "");

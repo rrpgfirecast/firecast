@@ -16,16 +16,11 @@
 			<textEditor left="10" top="25" width="380" height="320" field="anotacoes_do_mestre"/>
 		</layout>
 		
-		<label left="630" top="400" width="90" height="20" text="SUA VERSÃO:"/>
-		<rectangle left="724" top="399" width="102" height="22" color="white" strokeColor="black" strokeSize="1"/>
-		<image left="725" top="400" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao04.png"/>
-		
-		<label left="620" top="430" width="100" height="20" text="VERSÃO ATUAL:"/>
-		<rectangle left="724" top="429" width="102" height="22" color="white" strokeColor="black" strokeSize="1"/>
-		<image left="725" top="430" width="100" height="20" style="autoFit" src="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Avatar%20d20/release.png"/>
+		<label left="630" top="400" width="200" height="20" text="SUA VERSÃO:" field="versionInstalled"/>
+		<label left="630" top="430" width="200" height="20" text="VERSÃO ATUAL:" field="versionDownloaded"/>
 		
 		<button left="620" top="475" width="100" text="Change Log" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/README.md')" />
-		<button left="730" top="475" width="100" text="Atualizar" onClick="gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Avatar%20d20/Ficha%20Avatar%20d20.rpk')" />
+		<button left="730" top="475" width="100" text="Atualizar" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/output/Ficha%20Avatar%20d20.rpk?raw=true')" />
 		<button left="840" top="475" width="100" text="Tutorial" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/__Tutorial/Ficha%20Avatar%20-%20Tutorial.docx')" />
 		<button left="950" top="475" width="100" text="Adaptação" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/Dobra.docx')" />
 		

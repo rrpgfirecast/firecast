@@ -34,12 +34,6 @@ function newfrmAvatar()
     obj:setTheme("dark");
 
 
-        local debug = false;
-        local index = 1;
-    
-
-
-
         local function isNewVersion(installed, downloaded)
             local installedVersion = {};
             local installedIndex = 0;
@@ -3658,11 +3652,6 @@ function newfrmAvatar()
 
 
 				local function getFOR()
-					if debug then
-						local mesa = rrpg.getMesaDe(sheet);
-						mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Captando FOR");
-						index = index + 1;
-					end;
 					local mod = tonumber(sheet.efetModFor) or 0;
 					return mod;
 				end;
@@ -3779,11 +3768,6 @@ function newfrmAvatar()
 
 
 				local function getDES()
-					if debug then
-						local mesa = rrpg.getMesaDe(sheet);
-						mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Captando DES");
-						index = index + 1;
-					end;
 					local mod = tonumber(sheet.efetModDes) or 0;
 					return mod;
 				end;
@@ -3900,11 +3884,6 @@ function newfrmAvatar()
 
 
 				local function getCON()
-					if debug then
-						local mesa = rrpg.getMesaDe(sheet);
-						mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Captando CON");
-						index = index + 1;
-					end;
 					local mod = tonumber(sheet.efetModCon) or 0;
 					return mod;
 				end;
@@ -4021,11 +4000,6 @@ function newfrmAvatar()
 
 
 				local function getINT()
-					if debug then
-						local mesa = rrpg.getMesaDe(sheet);
-						mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Captando INT");
-						index = index + 1;
-					end;
 					local mod = tonumber(sheet.efetModInt) or 0;
 					return mod;
 				end;
@@ -4142,11 +4116,6 @@ function newfrmAvatar()
 
 
 				local function getSAB()
-					if debug then
-						local mesa = rrpg.getMesaDe(sheet);
-						mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Captando SAB");
-						index = index + 1;
-					end;
 					local mod = tonumber(sheet.efetModSab) or 0;
 					return mod;
 				end;
@@ -4263,11 +4232,6 @@ function newfrmAvatar()
 
 
 				local function getCAR()
-					if debug then
-						local mesa = rrpg.getMesaDe(sheet);
-						mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Captando CAR");
-						index = index + 1;
-					end;
 					local mod = tonumber(sheet.efetModCar) or 0;
 					return mod;
 				end;
@@ -13097,10 +13061,6 @@ function newfrmAvatar()
 			local dnd = ndb.load("dndskills.xml");
 
 			local function updateAtributes(num)
-				if debug then
-					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Atributos nas Pericias. ");
-					index = index + 1;
-				end;
 				local atr = "" .. num;
 				local mod = 0;
 				
@@ -13127,10 +13087,6 @@ function newfrmAvatar()
 			end;
 
 			local function updatePenalty()
-				if debug then
-					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Penalidade nas pericias.");
-					index = index + 1;
-				end;
 				if sheet~=nil then
 					local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
 					for i=1, #nodes, 1 do
@@ -18547,11 +18503,6 @@ function newfrmAvatar()
     obj._e_event1 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando For");
-            							index = index + 1;
-            						end;
             						local real = 	(tonumber(sheet.inicialFor) or 0) + 
             										(tonumber(sheet.racaFor) or 0) + 
             										(tonumber(sheet.nepFor) or 0) + 
@@ -18585,11 +18536,6 @@ function newfrmAvatar()
     obj._e_event2 = obj.dataLink4:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Des");
-            							index = index + 1;
-            						end;
             						local real = 	(tonumber(sheet.inicialDes) or 0) + 
             										(tonumber(sheet.racaDes) or 0) + 
             										(tonumber(sheet.nepDes) or 0) + 
@@ -18623,11 +18569,6 @@ function newfrmAvatar()
     obj._e_event3 = obj.dataLink6:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Con");
-            							index = index + 1;
-            						end;
             						local real = 	(tonumber(sheet.inicialCon) or 0) + 
             										(tonumber(sheet.racaCon) or 0) + 
             										(tonumber(sheet.nepCon) or 0) + 
@@ -18661,11 +18602,6 @@ function newfrmAvatar()
     obj._e_event4 = obj.dataLink8:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Int");
-            							index = index + 1;
-            						end;
             						local real = 	(tonumber(sheet.inicialInt) or 0) + 
             										(tonumber(sheet.racaInt) or 0) + 
             										(tonumber(sheet.nepInt) or 0) + 
@@ -18699,11 +18635,6 @@ function newfrmAvatar()
     obj._e_event5 = obj.dataLink10:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Sab");
-            							index = index + 1;
-            						end;
             						local real = 	(tonumber(sheet.inicialSab) or 0) + 
             										(tonumber(sheet.racaSab) or 0) + 
             										(tonumber(sheet.nepSab) or 0) + 
@@ -18737,11 +18668,6 @@ function newfrmAvatar()
     obj._e_event6 = obj.dataLink12:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Car");
-            							index = index + 1;
-            						end;
             						local real = 	(tonumber(sheet.inicialCar) or 0) + 
             										(tonumber(sheet.racaCar) or 0) + 
             										(tonumber(sheet.nepCar) or 0) + 
@@ -18775,10 +18701,6 @@ function newfrmAvatar()
     obj._e_event7 = obj.dataLink13:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando TRs. ");
-            							index = index + 1;
-            						end;
             						local tr = (tonumber(sheet.baseFort) or 0) + 
             										(tonumber(sheet.atrModFort) or 0) + 
             										(tonumber(sheet.magiaFort) or 0) + 
@@ -18792,10 +18714,6 @@ function newfrmAvatar()
     obj._e_event8 = obj.dataLink14:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando TRs. ");
-            							index = index + 1;
-            						end;
             						local tr = (tonumber(sheet.baseRef) or 0) + 
             										(tonumber(sheet.atrModRef) or 0) + 
             										(tonumber(sheet.magiaRef) or 0) + 
@@ -18809,10 +18727,6 @@ function newfrmAvatar()
     obj._e_event9 = obj.dataLink15:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando TRs. ");
-            							index = index + 1;
-            						end;
             						local tr = (tonumber(sheet.baseVon) or 0) + 
             										(tonumber(sheet.atrModVon) or 0) + 
             										(tonumber(sheet.magiaVon) or 0) + 
@@ -18842,11 +18756,6 @@ function newfrmAvatar()
     obj._e_event11 = obj.dataLink16:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando NEP");
-            							index = index + 1;
-            						end;
             						if sheet.xpAtual == nil then
             							sheet.xpAtual = 0;
             						end;
@@ -18914,11 +18823,6 @@ function newfrmAvatar()
     obj._e_event15 = obj.dataLink19:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador real de For");
-            							index = index + 1;
-            						end;
             						sheet.realModFor = getMOD(sheet.realFor);  
             					end;
         end, obj);
@@ -18926,11 +18830,6 @@ function newfrmAvatar()
     obj._e_event16 = obj.dataLink20:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador efetivo de For");
-            							index = index + 1;
-            						end;
             						sheet.efetModFor = getMOD(sheet.efetFor);
             						updateAtributes(1);
             					end;
@@ -18946,11 +18845,6 @@ function newfrmAvatar()
     obj._e_event18 = obj.dataLink21:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador real de Des");
-            							index = index + 1;
-            						end;
             						sheet.realModDes = getMOD(sheet.realDes);  
             					end;
         end, obj);
@@ -18958,11 +18852,6 @@ function newfrmAvatar()
     obj._e_event19 = obj.dataLink22:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador efetivo de Des");
-            							index = index + 1;
-            						end;
             						sheet.efetModDes = getMOD(sheet.efetDes);
             						updateAtributes(2);
             					end;
@@ -18978,11 +18867,6 @@ function newfrmAvatar()
     obj._e_event21 = obj.dataLink23:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador real de Con");
-            							index = index + 1;
-            						end;
             						sheet.realModCon = getMOD(sheet.realCon);  
             					end;
         end, obj);
@@ -18990,11 +18874,6 @@ function newfrmAvatar()
     obj._e_event22 = obj.dataLink24:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador efetivo de Con");
-            							index = index + 1;
-            						end;
             						sheet.efetModCon = getMOD(sheet.efetCon);
             						updateAtributes(3);
             					end;
@@ -19010,11 +18889,6 @@ function newfrmAvatar()
     obj._e_event24 = obj.dataLink25:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador real de Int");
-            							index = index + 1;
-            						end;
             						sheet.realModInt = getMOD(sheet.realInt);  
             					end;
         end, obj);
@@ -19022,11 +18896,6 @@ function newfrmAvatar()
     obj._e_event25 = obj.dataLink26:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador efetivo de Int");
-            							index = index + 1;
-            						end;
             						sheet.efetModInt = getMOD(sheet.efetInt);
             						updateAtributes(4);
             					end;
@@ -19042,11 +18911,6 @@ function newfrmAvatar()
     obj._e_event27 = obj.dataLink27:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador real de Sab");
-            							index = index + 1;
-            						end;
             						sheet.realModSab = getMOD(sheet.realSab);  
             					end;
         end, obj);
@@ -19054,11 +18918,6 @@ function newfrmAvatar()
     obj._e_event28 = obj.dataLink28:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador efetivo de Sab");
-            							index = index + 1;
-            						end;
             						sheet.efetModSab = getMOD(sheet.efetSab);
             						updateAtributes(5);
             					end;
@@ -19074,11 +18933,6 @@ function newfrmAvatar()
     obj._e_event30 = obj.dataLink29:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador real de Car");
-            							index = index + 1;
-            						end;
             						sheet.realModCar = getMOD(sheet.realCar);  
             					end;
         end, obj);
@@ -19086,11 +18940,6 @@ function newfrmAvatar()
     obj._e_event31 = obj.dataLink30:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador efetivo de Car");
-            							index = index + 1;
-            						end;
             						sheet.efetModCar = getMOD(sheet.efetCar);
             						updateAtributes(6);
             					end;
@@ -19111,11 +18960,6 @@ function newfrmAvatar()
     obj._e_event33 = obj.dataLink31:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslTerrestre ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Deslocamento em quadrados.");
-            							index = index + 1;
-            						end;
             
             						local mod = sheet.deslTerrestre;
             						mod = string.gsub(mod, "m", "");
@@ -19129,11 +18973,6 @@ function newfrmAvatar()
     obj._e_event34 = obj.dataLink32:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslVoo ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Deslocamento em quadrados.");
-            							index = index + 1;
-            						end;
             
             						local mod = sheet.deslVoo;
             						mod = string.gsub(mod, "m", "");
@@ -19147,11 +18986,6 @@ function newfrmAvatar()
     obj._e_event35 = obj.dataLink33:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslNatacao ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Deslocamento em quadrados.");
-            							index = index + 1;
-            						end;
             
             						local mod = sheet.deslNatacao;
             						mod = string.gsub(mod, "m", "");
@@ -19165,11 +18999,6 @@ function newfrmAvatar()
     obj._e_event36 = obj.dataLink34:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslEscalar ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Deslocamento em quadrados.");
-            							index = index + 1;
-            						end;
             
             						local mod = sheet.deslEscalar;
             						mod = string.gsub(mod, "m", "");
@@ -19183,11 +19012,6 @@ function newfrmAvatar()
     obj._e_event37 = obj.dataLink35:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslEscavar ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Deslocamento em quadrados.");
-            							index = index + 1;
-            						end;
             
             						local mod = sheet.deslEscavar;
             						mod = string.gsub(mod, "m", "");
@@ -19208,11 +19032,6 @@ function newfrmAvatar()
     obj._e_event39 = obj.dataLink36:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Iniciativa");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(sheet.efetModDes) or 0) + (tonumber(sheet.iniVariado) or 0);
             						if (mod >= 0) then
             								mod = "+" .. mod;
@@ -19236,11 +19055,6 @@ function newfrmAvatar()
     obj._e_event41 = obj.dataLink37:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CA");
-            							index = index + 1;
-            						end;
             						local armaduraCa = (tonumber(sheet.equipamentoCorpoCA) or 0);
             						local escudoCa = (tonumber(sheet.escudoCa) or 0);
             						local efetModDes = (tonumber(sheet.efetModDes) or 0);
@@ -19332,11 +19146,6 @@ function newfrmAvatar()
     obj._e_event42 = obj.dataLink39:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~=nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Penalidade de Armadura.");
-            							index = index + 1;
-            						end;
             						sheet.penalidade = (tonumber(sheet.equipamentoCorpoPen) or 0) + (tonumber(sheet.escudoPEn) or 0);
             						updatePenalty();
             					end;
@@ -19377,10 +19186,6 @@ function newfrmAvatar()
     obj._e_event45 = obj.edit125:addEventListener("onChange",
         function (self)
             if sheet~= nil then
-            						if debug then
-            							rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando BBA. ");
-            							index = index + 1;
-            						end;
             						local bba = tonumber(sheet.bba) or 0;
             						local text = "+" .. bba;
             						local l = 1;
@@ -19415,11 +19220,6 @@ function newfrmAvatar()
     obj._e_event48 = obj.dataLink40:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            							if debug then
-            								local mesa = rrpg.getMesaDe(sheet);
-            								mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Agarrar.");
-            								index = index + 1;
-            							end;
             							local agarrar = (tonumber(sheet.bba) or 0) + 
             										(tonumber(sheet.efetModFor) or 0) +  
             										(tonumber(sheet.agarrarTam) or 0) +   
@@ -19452,11 +19252,6 @@ function newfrmAvatar()
     obj._e_event52 = obj.dataLink44:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando TRs.");
-            							index = index + 1;
-            						end;
             						local atrModFort = 0;
             						local atrModRef = 0;
             						local atrModVon = 0;
@@ -21591,10 +21386,6 @@ function newfrmAvatar()
     obj._e_event153 = obj.dataLink52:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            					if debug then
-            						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Gastos em PO");
-            						index = index + 1;
-            					end;
             
             					-- Calculando todos gastos
             					local mod = 0;
@@ -21653,10 +21444,6 @@ function newfrmAvatar()
     obj._e_event154 = obj.dataLink53:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            					if debug then
-            						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Carga");
-            						index = index + 1;
-            					end;
             
             					local mod1 = sheet.cargaPesada;
             					if mod1==nil then
@@ -21678,10 +21465,6 @@ function newfrmAvatar()
     obj._e_event155 = obj.dataLink54:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~=nil then
-            					if debug then
-            						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Carga");
-            						index = index + 1;
-            					end;
             					local mod = 0;
             					mod = (getNumber(sheet.pesoCabeca) or 0) +
             								(getNumber(sheet.pesoOlhos) or 0) +
@@ -21747,10 +21530,6 @@ function newfrmAvatar()
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.forComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -21777,10 +21556,6 @@ function newfrmAvatar()
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.desComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -21807,10 +21582,6 @@ function newfrmAvatar()
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.conComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -21837,10 +21608,6 @@ function newfrmAvatar()
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.intComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -21867,10 +21634,6 @@ function newfrmAvatar()
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.sabComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -21897,10 +21660,6 @@ function newfrmAvatar()
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.carComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -22003,10 +21762,6 @@ function newfrmAvatar()
     obj._e_event179 = obj.dataLink56:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~=nil then
-            					if debug then
-            						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Tamanho. ");
-            						index = index + 1;
-            					end;
             					local str = tonumber(sheet.efetFor) or 1;
             					local size = tonumber(sheet.tamanho) or 0;
             					local quad = sheet.quadrupede;

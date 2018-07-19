@@ -270,10 +270,6 @@ function newfrmFichaRPGmeister3p_svg()
     obj._e_event6 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            				if debug then
-            					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Pontos de Pericia. ");
-            					index = index + 1;
-            				end;
             				local node = ndb.getRoot(sheet);
             				local mod = tonumber(node.idiomasGrad) or 0;
             				if not node.idiomasIsClass then

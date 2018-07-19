@@ -421,10 +421,6 @@ function newfrmFichaRPGmeister9_svg()
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~=nil then
-            					if debug then
-            						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Tamanho. ");
-            						index = index + 1;
-            					end;
             					local str = tonumber(sheet.efetFor) or 1;
             					local size = tonumber(sheet.tamanho) or 0;
             					local quad = sheet.quadrupede;

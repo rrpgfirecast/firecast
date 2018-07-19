@@ -58,11 +58,6 @@
 			<dataLink fields="{'inicial$(atr)', 'raca$(atr)', 'nep$(atr)', 'inerente$(atr)', 'tamanho$(atr)', 'outros$(atr)', 'melhoria$(atr)', 'danoTemp$(atr)', 'danoPerm$(atr)', 'temporario$(atr)', 'magia$(atr)', 'classe$(atr)', 'isMelhoriaActive', 'isDnTempActive', 'isDnPermActive', 'isTempActive', 'isClasseActive', 'isMagiaActive'}">
 				<event name="onChange"><![CDATA[
 					if sheet~= nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando $(atr)");
-							index = index + 1;
-						end;
 						local real = 	(tonumber(sheet.inicial$(atr)) or 0) + 
 										(tonumber(sheet.raca$(atr)) or 0) + 
 										(tonumber(sheet.nep$(atr)) or 0) + 
@@ -111,11 +106,6 @@
 			<dataLink field="real$(atr)">
 				<event name="onChange">
 					if sheet ~= nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador real de $(atr)");
-							index = index + 1;
-						end;
 						sheet.realMod$(atr) = getMOD(sheet.real$(atr));  
 					end;
 				</event>
@@ -128,11 +118,6 @@
 			<dataLink field="efet$(atr)">
 				<event name="onChange">
 					if sheet ~= nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador efetivo de $(atr)");
-							index = index + 1;
-						end;
 						sheet.efetMod$(atr) = getMOD(sheet.efet$(atr));
 						updateAtributes($(num));
 					end;
@@ -141,11 +126,6 @@
 			
 			<script>
 				local function get$(atrU)()
-					if debug then
-						local mesa = rrpg.getMesaDe(sheet);
-						mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Captando $(atrU)");
-						index = index + 1;
-					end;
 					local mod = tonumber(sheet.efetMod$(atr)) or 0;
 					return mod;
 				end;
@@ -165,10 +145,6 @@
 			<dataLink fields="{'base$(tr)', 'atrMod$(tr)', 'magia$(tr)', 'variavel$(tr)', 'temporario$(tr)', 'outros$(tr)'}">
 				<event name="onChange"><![CDATA[
 					if sheet~= nil then
-						if debug then
-							rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando TRs. ");
-							index = index + 1;
-						end;
 						local tr = (tonumber(sheet.base$(tr)) or 0) + 
 										(tonumber(sheet.atrMod$(tr)) or 0) + 
 										(tonumber(sheet.magia$(tr)) or 0) + 
@@ -202,11 +178,6 @@
 			<dataLink field="desl$(mode)">
 				<event name="onChange">
 					if sheet ~= nil and sheet.desl$(mode) ~= nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Deslocamento em quadrados.");
-							index = index + 1;
-						end;
 
 						local mod = sheet.desl$(mode);
 						mod = string.gsub(mod, "m", "");
@@ -406,11 +377,6 @@
 			<dataLink field="xpAtual">
 				<event name="onChange">
 					if sheet~= nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando NEP");
-							index = index + 1;
-						end;
 						if sheet.xpAtual == nil then
 							sheet.xpAtual = 0;
 						end;
@@ -562,11 +528,6 @@
 			<dataLink fields="{'efetModDes', 'iniVariado'}">
 				<event name="onChange">
 					if sheet~= nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Iniciativa");
-							index = index + 1;
-						end;
 						local mod = (tonumber(sheet.efetModDes) or 0) + (tonumber(sheet.iniVariado) or 0);
 						if (mod >= 0) then
 								mod = "+" .. mod;
@@ -613,11 +574,6 @@
 			<dataLink fields="{'equipamentoCorpoCA', 'escudoCa', 'efetModDes', 'tamanhoCa', 'naturalCa', 'deflexaoCa', 'esquivaCa', 'sorteCa', 'outrosCa', 'variadosCa', 'armaduraCaSurp', 'escudoCaSurp', 'destrezaCaSurp', 'tamanhoCaSurp', 'naturalCaSurp', 'deflexaoCaSurp', 'esquivaCaSurp', 'sorteCaSurp', 'outrosCaSurp', 'variadosCaSurp', 'armaduraCaToque', 'escudoCaToque', 'destrezaCaToque', 'tamanhoCaToque', 'naturalCaToque', 'deflexaoCaToque', 'esquivaCaToque', 'sorteCaToque', 'outrosCaToque', 'variadosCaToque'}">
 				<event name="onChange"><![CDATA[
 					if sheet~= nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CA");
-							index = index + 1;
-						end;
 						local armaduraCa = (tonumber(sheet.equipamentoCorpoCA) or 0);
 						local escudoCa = (tonumber(sheet.escudoCa) or 0);
 						local efetModDes = (tonumber(sheet.efetModDes) or 0);
@@ -713,11 +669,6 @@
 			<dataLink fields="{'equipamentoCorpoPen', 'escudoPen'}">
 				<event name="onChange"><![CDATA[
 					if sheet~=nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Penalidade de Armadura.");
-							index = index + 1;
-						end;
 						sheet.penalidade = (tonumber(sheet.equipamentoCorpoPen) or 0) + (tonumber(sheet.escudoPEn) or 0);
 						updatePenalty();
 					end;
@@ -840,10 +791,6 @@
 			<edit left="5" top="25" width="40" height="25" type="number" horzTextAlign="center" field="bba" transparent="true">
 				<event name="onChange"><![CDATA[
 					if sheet~= nil then
-						if debug then
-							rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando BBA. ");
-							index = index + 1;
-						end;
 						local bba = tonumber(sheet.bba) or 0;
 						local text = "+" .. bba;
 						local l = 1;
@@ -887,11 +834,6 @@
 				<dataLink fields="{'bba', 'efetModFor', 'agarrarTam', 'agarrarVar'}"> 
 					<event name="onChange">
 						if sheet~= nil then
-							if debug then
-								local mesa = rrpg.getMesaDe(sheet);
-								mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Agarrar.");
-								index = index + 1;
-							end;
 							local agarrar = (tonumber(sheet.bba) or 0) + 
 										(tonumber(sheet.efetModFor) or 0) +  
 										(tonumber(sheet.agarrarTam) or 0) +   
@@ -923,11 +865,6 @@
 			<dataLink fields="{'efetModFor', 'efetModDes', 'efetModCon', 'efetModInt', 'efetModSab', 'efetModCar', 'atrTrFort', 'atrTrRef', 'atrTrVon'}">
 				<event name="onChange">
 					if sheet ~= nil then
-						if debug then
-							local mesa = rrpg.getMesaDe(sheet);
-							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando TRs.");
-							index = index + 1;
-						end;
 						local atrModFort = 0;
 						local atrModRef = 0;
 						local atrModVon = 0;

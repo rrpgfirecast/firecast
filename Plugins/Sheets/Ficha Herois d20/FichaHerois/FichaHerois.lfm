@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmAvatar" formType="sheetTemplate" dataType="Ambesek.Herois.d20" title="Ficha Herois d20" align="client" theme="dark">
     <script>
-        local debug = false;
-        local index = 1;
-    </script>
-    <script>
         <![CDATA[
         local function isNewVersion(installed, downloaded)
             local installedVersion = {};

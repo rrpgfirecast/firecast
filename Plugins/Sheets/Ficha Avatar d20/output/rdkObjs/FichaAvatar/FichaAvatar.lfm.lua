@@ -34,9 +34,36 @@ function newfrmAvatar()
     obj:setTheme("dark");
 
 
-        local debug = false;
-        local index = 1;
-    
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+        
 
 
     obj.tabControl1 = gui.fromHandle(_obj_newObject("tabControl"));
@@ -3733,11 +3760,6 @@ function newfrmAvatar()
 
 
 				local function getFOR()
-					if debug then
-						local mesa = rrpg.getMesaDe(sheet);
-						mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Captando FOR");
-						index = index + 1;
-					end;
 					local mod = tonumber(sheet.efetModFor) or 0;
 					return mod;
 				end;
@@ -3854,11 +3876,6 @@ function newfrmAvatar()
 
 
 				local function getDES()
-					if debug then
-						local mesa = rrpg.getMesaDe(sheet);
-						mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Captando DES");
-						index = index + 1;
-					end;
 					local mod = tonumber(sheet.efetModDes) or 0;
 					return mod;
 				end;
@@ -3975,11 +3992,6 @@ function newfrmAvatar()
 
 
 				local function getCON()
-					if debug then
-						local mesa = rrpg.getMesaDe(sheet);
-						mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Captando CON");
-						index = index + 1;
-					end;
 					local mod = tonumber(sheet.efetModCon) or 0;
 					return mod;
 				end;
@@ -4096,11 +4108,6 @@ function newfrmAvatar()
 
 
 				local function getINT()
-					if debug then
-						local mesa = rrpg.getMesaDe(sheet);
-						mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Captando INT");
-						index = index + 1;
-					end;
 					local mod = tonumber(sheet.efetModInt) or 0;
 					return mod;
 				end;
@@ -4217,11 +4224,6 @@ function newfrmAvatar()
 
 
 				local function getSAB()
-					if debug then
-						local mesa = rrpg.getMesaDe(sheet);
-						mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Captando SAB");
-						index = index + 1;
-					end;
 					local mod = tonumber(sheet.efetModSab) or 0;
 					return mod;
 				end;
@@ -4338,11 +4340,6 @@ function newfrmAvatar()
 
 
 				local function getCAR()
-					if debug then
-						local mesa = rrpg.getMesaDe(sheet);
-						mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Captando CAR");
-						index = index + 1;
-					end;
 					local mod = tonumber(sheet.efetModCar) or 0;
 					return mod;
 				end;
@@ -13160,10 +13157,6 @@ function newfrmAvatar()
 			local dnd = ndb.load("dndskills.xml");
 
 			local function updateAtributes(num)
-				if debug then
-					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Atributos nas Pericias. ");
-					index = index + 1;
-				end;
 				local atr = "" .. num;
 				local mod = 0;
 				
@@ -13190,10 +13183,6 @@ function newfrmAvatar()
 			end;
 
 			local function updatePenalty()
-				if debug then
-					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Penalidade nas pericias.");
-					index = index + 1;
-				end;
 				if sheet~=nil then
 					local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
 					for i=1, #nodes, 1 do
@@ -18413,61 +18402,21 @@ function newfrmAvatar()
     obj.label521:setParent(obj.scrollBox11);
     obj.label521:setLeft(630);
     obj.label521:setTop(400);
-    obj.label521:setWidth(90);
+    obj.label521:setWidth(200);
     obj.label521:setHeight(20);
     obj.label521:setText("SUA VERSÃO:");
+    obj.label521:setField("versionInstalled");
     obj.label521:setName("label521");
-
-    obj.rectangle178 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle178:setParent(obj.scrollBox11);
-    obj.rectangle178:setLeft(724);
-    obj.rectangle178:setTop(399);
-    obj.rectangle178:setWidth(102);
-    obj.rectangle178:setHeight(22);
-    obj.rectangle178:setColor("white");
-    obj.rectangle178:setStrokeColor("black");
-    obj.rectangle178:setStrokeSize(1);
-    obj.rectangle178:setName("rectangle178");
-
-    obj.image24 = gui.fromHandle(_obj_newObject("image"));
-    obj.image24:setParent(obj.scrollBox11);
-    obj.image24:setLeft(725);
-    obj.image24:setTop(400);
-    obj.image24:setWidth(100);
-    obj.image24:setHeight(20);
-    obj.image24:setStyle("autoFit");
-    obj.image24:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao04.png");
-    obj.image24:setName("image24");
 
     obj.label522 = gui.fromHandle(_obj_newObject("label"));
     obj.label522:setParent(obj.scrollBox11);
-    obj.label522:setLeft(620);
+    obj.label522:setLeft(630);
     obj.label522:setTop(430);
-    obj.label522:setWidth(100);
+    obj.label522:setWidth(200);
     obj.label522:setHeight(20);
     obj.label522:setText("VERSÃO ATUAL:");
+    obj.label522:setField("versionDownloaded");
     obj.label522:setName("label522");
-
-    obj.rectangle179 = gui.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle179:setParent(obj.scrollBox11);
-    obj.rectangle179:setLeft(724);
-    obj.rectangle179:setTop(429);
-    obj.rectangle179:setWidth(102);
-    obj.rectangle179:setHeight(22);
-    obj.rectangle179:setColor("white");
-    obj.rectangle179:setStrokeColor("black");
-    obj.rectangle179:setStrokeSize(1);
-    obj.rectangle179:setName("rectangle179");
-
-    obj.image25 = gui.fromHandle(_obj_newObject("image"));
-    obj.image25:setParent(obj.scrollBox11);
-    obj.image25:setLeft(725);
-    obj.image25:setTop(430);
-    obj.image25:setWidth(100);
-    obj.image25:setHeight(20);
-    obj.image25:setStyle("autoFit");
-    obj.image25:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Avatar%20d20/release.png");
-    obj.image25:setName("image25");
 
     obj.button103 = gui.fromHandle(_obj_newObject("button"));
     obj.button103:setParent(obj.scrollBox11);
@@ -18527,14 +18476,46 @@ function newfrmAvatar()
     obj.button108:setText("Avatar");
     obj.button108:setName("button108");
 
-    obj._e_event0 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event0 = obj:addEventListener("onNodeReady",
+        function (self)
+            internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true",
+                        function(stream, contentType)
+                            local info = rrpg.plugins.getRPKDetails(stream);
+                            sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+            
+                            local installed = rrpg.plugins.getInstalledPlugins();
+                            local myself;
+                            for i=1, #installed, 1 do
+                                if installed[i].moduleId == info.moduleId then
+                                    myself = installed[i];
+                                    sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                                end;
+                            end;
+            
+                            if sheet.noUpdate==true then return end;
+                            if myself~= nil and isNewVersion(myself.version, info.version) then
+                                Dialogs.choose("Há uma nova versão(".. info.version .. ") da Ficha Pathfinder. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                                    function(selected, selectedIndex, selectedText)
+                                        if selected and selectedIndex == 1 then
+                                            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true');
+                                        elseif selected and selectedIndex == 3 then
+                                            sheet.noUpdate = true;
+                                        end;
+                                    end);
+                            end;
+                        end,       
+                        function (errorMsg)
+                            --showMessage(errorMsg);
+                        end,       
+                        function (downloaded, total)
+                            -- esta função será chamada constantemente.
+                            -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+                        end);
+        end, obj);
+
+    obj._e_event1 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando For");
-            							index = index + 1;
-            						end;
             						local real = 	(tonumber(sheet.inicialFor) or 0) + 
             										(tonumber(sheet.racaFor) or 0) + 
             										(tonumber(sheet.nepFor) or 0) + 
@@ -18565,14 +18546,9 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event1 = obj.dataLink4:addEventListener("onChange",
+    obj._e_event2 = obj.dataLink4:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Des");
-            							index = index + 1;
-            						end;
             						local real = 	(tonumber(sheet.inicialDes) or 0) + 
             										(tonumber(sheet.racaDes) or 0) + 
             										(tonumber(sheet.nepDes) or 0) + 
@@ -18603,14 +18579,9 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event2 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event3 = obj.dataLink6:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Con");
-            							index = index + 1;
-            						end;
             						local real = 	(tonumber(sheet.inicialCon) or 0) + 
             										(tonumber(sheet.racaCon) or 0) + 
             										(tonumber(sheet.nepCon) or 0) + 
@@ -18641,14 +18612,9 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event3 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event4 = obj.dataLink8:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Int");
-            							index = index + 1;
-            						end;
             						local real = 	(tonumber(sheet.inicialInt) or 0) + 
             										(tonumber(sheet.racaInt) or 0) + 
             										(tonumber(sheet.nepInt) or 0) + 
@@ -18679,14 +18645,9 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event4 = obj.dataLink10:addEventListener("onChange",
+    obj._e_event5 = obj.dataLink10:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Sab");
-            							index = index + 1;
-            						end;
             						local real = 	(tonumber(sheet.inicialSab) or 0) + 
             										(tonumber(sheet.racaSab) or 0) + 
             										(tonumber(sheet.nepSab) or 0) + 
@@ -18717,14 +18678,9 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event5 = obj.dataLink12:addEventListener("onChange",
+    obj._e_event6 = obj.dataLink12:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Car");
-            							index = index + 1;
-            						end;
             						local real = 	(tonumber(sheet.inicialCar) or 0) + 
             										(tonumber(sheet.racaCar) or 0) + 
             										(tonumber(sheet.nepCar) or 0) + 
@@ -18755,13 +18711,9 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event6 = obj.dataLink13:addEventListener("onChange",
+    obj._e_event7 = obj.dataLink13:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando TRs. ");
-            							index = index + 1;
-            						end;
             						local tr = (tonumber(sheet.baseFort) or 0) + 
             										(tonumber(sheet.atrModFort) or 0) + 
             										(tonumber(sheet.magiaFort) or 0) + 
@@ -18772,13 +18724,9 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event7 = obj.dataLink14:addEventListener("onChange",
+    obj._e_event8 = obj.dataLink14:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando TRs. ");
-            							index = index + 1;
-            						end;
             						local tr = (tonumber(sheet.baseRef) or 0) + 
             										(tonumber(sheet.atrModRef) or 0) + 
             										(tonumber(sheet.magiaRef) or 0) + 
@@ -18789,13 +18737,9 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event8 = obj.dataLink15:addEventListener("onChange",
+    obj._e_event9 = obj.dataLink15:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando TRs. ");
-            							index = index + 1;
-            						end;
             						local tr = (tonumber(sheet.baseVon) or 0) + 
             										(tonumber(sheet.atrModVon) or 0) + 
             										(tonumber(sheet.magiaVon) or 0) + 
@@ -18806,7 +18750,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event9 = obj.button1:addEventListener("onClick",
+    obj._e_event10 = obj.button1:addEventListener("onClick",
         function (self)
             local mod = (getNumber(sheet.xpAtual) or 0) + (getNumber(sheet.xpNova) or 0);
             						
@@ -18822,14 +18766,9 @@ function newfrmAvatar()
             						sheet.xpNova = "0";
         end, obj);
 
-    obj._e_event10 = obj.dataLink16:addEventListener("onChange",
+    obj._e_event11 = obj.dataLink16:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando NEP");
-            							index = index + 1;
-            						end;
             						if sheet.xpAtual == nil then
             							sheet.xpAtual = 0;
             						end;
@@ -18860,7 +18799,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event11 = obj.dataLink17:addEventListener("onChange",
+    obj._e_event12 = obj.dataLink17:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -18873,7 +18812,7 @@ function newfrmAvatar()
             					sheet.pt_total = pt;
         end, obj);
 
-    obj._e_event12 = obj.dataLink18:addEventListener("onChange",
+    obj._e_event13 = obj.dataLink18:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -18887,199 +18826,139 @@ function newfrmAvatar()
             					sheet.pt_gasto = pt_gasto;
         end, obj);
 
-    obj._e_event13 = obj.button2:addEventListener("onClick",
+    obj._e_event14 = obj.button2:addEventListener("onClick",
         function (self)
             local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModFor) or 0);
             					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Força de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event14 = obj.dataLink19:addEventListener("onChange",
+    obj._e_event15 = obj.dataLink19:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador real de For");
-            							index = index + 1;
-            						end;
             						sheet.realModFor = getMOD(sheet.realFor);  
             					end;
         end, obj);
 
-    obj._e_event15 = obj.dataLink20:addEventListener("onChange",
+    obj._e_event16 = obj.dataLink20:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador efetivo de For");
-            							index = index + 1;
-            						end;
             						sheet.efetModFor = getMOD(sheet.efetFor);
             						updateAtributes(1);
             					end;
         end, obj);
 
-    obj._e_event16 = obj.button3:addEventListener("onClick",
+    obj._e_event17 = obj.button3:addEventListener("onClick",
         function (self)
             local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModDes) or 0);
             					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Destreza de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event17 = obj.dataLink21:addEventListener("onChange",
+    obj._e_event18 = obj.dataLink21:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador real de Des");
-            							index = index + 1;
-            						end;
             						sheet.realModDes = getMOD(sheet.realDes);  
             					end;
         end, obj);
 
-    obj._e_event18 = obj.dataLink22:addEventListener("onChange",
+    obj._e_event19 = obj.dataLink22:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador efetivo de Des");
-            							index = index + 1;
-            						end;
             						sheet.efetModDes = getMOD(sheet.efetDes);
             						updateAtributes(2);
             					end;
         end, obj);
 
-    obj._e_event19 = obj.button4:addEventListener("onClick",
+    obj._e_event20 = obj.button4:addEventListener("onClick",
         function (self)
             local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModCon) or 0);
             					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Constituição de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event20 = obj.dataLink23:addEventListener("onChange",
+    obj._e_event21 = obj.dataLink23:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador real de Con");
-            							index = index + 1;
-            						end;
             						sheet.realModCon = getMOD(sheet.realCon);  
             					end;
         end, obj);
 
-    obj._e_event21 = obj.dataLink24:addEventListener("onChange",
+    obj._e_event22 = obj.dataLink24:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador efetivo de Con");
-            							index = index + 1;
-            						end;
             						sheet.efetModCon = getMOD(sheet.efetCon);
             						updateAtributes(3);
             					end;
         end, obj);
 
-    obj._e_event22 = obj.button5:addEventListener("onClick",
+    obj._e_event23 = obj.button5:addEventListener("onClick",
         function (self)
             local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModInt) or 0);
             					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Inteligência de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event23 = obj.dataLink25:addEventListener("onChange",
+    obj._e_event24 = obj.dataLink25:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador real de Int");
-            							index = index + 1;
-            						end;
             						sheet.realModInt = getMOD(sheet.realInt);  
             					end;
         end, obj);
 
-    obj._e_event24 = obj.dataLink26:addEventListener("onChange",
+    obj._e_event25 = obj.dataLink26:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador efetivo de Int");
-            							index = index + 1;
-            						end;
             						sheet.efetModInt = getMOD(sheet.efetInt);
             						updateAtributes(4);
             					end;
         end, obj);
 
-    obj._e_event25 = obj.button6:addEventListener("onClick",
+    obj._e_event26 = obj.button6:addEventListener("onClick",
         function (self)
             local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModSab) or 0);
             					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Sabedoria de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event26 = obj.dataLink27:addEventListener("onChange",
+    obj._e_event27 = obj.dataLink27:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador real de Sab");
-            							index = index + 1;
-            						end;
             						sheet.realModSab = getMOD(sheet.realSab);  
             					end;
         end, obj);
 
-    obj._e_event27 = obj.dataLink28:addEventListener("onChange",
+    obj._e_event28 = obj.dataLink28:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador efetivo de Sab");
-            							index = index + 1;
-            						end;
             						sheet.efetModSab = getMOD(sheet.efetSab);
             						updateAtributes(5);
             					end;
         end, obj);
 
-    obj._e_event28 = obj.button7:addEventListener("onClick",
+    obj._e_event29 = obj.button7:addEventListener("onClick",
         function (self)
             local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModCar) or 0);
             					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Carisma de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event29 = obj.dataLink29:addEventListener("onChange",
+    obj._e_event30 = obj.dataLink29:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador real de Car");
-            							index = index + 1;
-            						end;
             						sheet.realModCar = getMOD(sheet.realCar);  
             					end;
         end, obj);
 
-    obj._e_event30 = obj.dataLink30:addEventListener("onChange",
+    obj._e_event31 = obj.dataLink30:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador efetivo de Car");
-            							index = index + 1;
-            						end;
             						sheet.efetModCar = getMOD(sheet.efetCar);
             						updateAtributes(6);
             					end;
         end, obj);
 
-    obj._e_event31 = obj.AtrBut:addEventListener("onClick",
+    obj._e_event32 = obj.AtrBut:addEventListener("onClick",
         function (self)
             local pop = self:findControlByName("popAtributo");
             				
@@ -19091,14 +18970,9 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event32 = obj.dataLink31:addEventListener("onChange",
+    obj._e_event33 = obj.dataLink31:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslTerrestre ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Deslocamento em quadrados.");
-            							index = index + 1;
-            						end;
             
             						local mod = sheet.deslTerrestre;
             						mod = string.gsub(mod, "m", "");
@@ -19109,14 +18983,9 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event33 = obj.dataLink32:addEventListener("onChange",
+    obj._e_event34 = obj.dataLink32:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslVoo ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Deslocamento em quadrados.");
-            							index = index + 1;
-            						end;
             
             						local mod = sheet.deslVoo;
             						mod = string.gsub(mod, "m", "");
@@ -19127,14 +18996,9 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event34 = obj.dataLink33:addEventListener("onChange",
+    obj._e_event35 = obj.dataLink33:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslNatacao ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Deslocamento em quadrados.");
-            							index = index + 1;
-            						end;
             
             						local mod = sheet.deslNatacao;
             						mod = string.gsub(mod, "m", "");
@@ -19145,14 +19009,9 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event35 = obj.dataLink34:addEventListener("onChange",
+    obj._e_event36 = obj.dataLink34:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslEscalar ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Deslocamento em quadrados.");
-            							index = index + 1;
-            						end;
             
             						local mod = sheet.deslEscalar;
             						mod = string.gsub(mod, "m", "");
@@ -19163,14 +19022,9 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event36 = obj.dataLink35:addEventListener("onChange",
+    obj._e_event37 = obj.dataLink35:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslEscavar ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Deslocamento em quadrados.");
-            							index = index + 1;
-            						end;
             
             						local mod = sheet.deslEscavar;
             						mod = string.gsub(mod, "m", "");
@@ -19181,21 +19035,16 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event37 = obj.button8:addEventListener("onClick",
+    obj._e_event38 = obj.button8:addEventListener("onClick",
         function (self)
             local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.iniciativa or "+0"));
             					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event38 = obj.dataLink36:addEventListener("onChange",
+    obj._e_event39 = obj.dataLink36:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Iniciativa");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(sheet.efetModDes) or 0) + (tonumber(sheet.iniVariado) or 0);
             						if (mod >= 0) then
             								mod = "+" .. mod;
@@ -19204,7 +19053,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event39 = obj.caDetails:addEventListener("onClick",
+    obj._e_event40 = obj.caDetails:addEventListener("onClick",
         function (self)
             local pop = self:findControlByName("popCA");
             					
@@ -19216,14 +19065,9 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event40 = obj.dataLink37:addEventListener("onChange",
+    obj._e_event41 = obj.dataLink37:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CA");
-            							index = index + 1;
-            						end;
             						local armaduraCa = (tonumber(sheet.equipamentoCorpoCA) or 0);
             						local escudoCa = (tonumber(sheet.escudoCa) or 0);
             						local efetModDes = (tonumber(sheet.efetModDes) or 0);
@@ -19312,20 +19156,15 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event41 = obj.dataLink39:addEventListener("onChange",
+    obj._e_event42 = obj.dataLink39:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~=nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Penalidade de Armadura.");
-            							index = index + 1;
-            						end;
             						sheet.penalidade = (tonumber(sheet.equipamentoCorpoPen) or 0) + (tonumber(sheet.escudoPEn) or 0);
             						updatePenalty();
             					end;
         end, obj);
 
-    obj._e_event42 = obj.button9:addEventListener("onClick",
+    obj._e_event43 = obj.button9:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					sheet.modificador = sheet.modificador or 0;
@@ -19352,18 +19191,14 @@ function newfrmAvatar()
             						end);
         end, obj);
 
-    obj._e_event43 = obj.button10:addEventListener("onClick",
+    obj._e_event44 = obj.button10:addEventListener("onClick",
         function (self)
             caSecreta();
         end, obj);
 
-    obj._e_event44 = obj.edit129:addEventListener("onChange",
+    obj._e_event45 = obj.edit129:addEventListener("onChange",
         function (self)
             if sheet~= nil then
-            						if debug then
-            							rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando BBA. ");
-            							index = index + 1;
-            						end;
             						local bba = tonumber(sheet.bba) or 0;
             						local text = "+" .. bba;
             						local l = 1;
@@ -19376,14 +19211,14 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event45 = obj.button11:addEventListener("onClick",
+    obj._e_event46 = obj.button11:addEventListener("onClick",
         function (self)
             local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.agarrar or "0"));
             						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Agarrar de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event46 = obj.GrappleBt:addEventListener("onClick",
+    obj._e_event47 = obj.GrappleBt:addEventListener("onClick",
         function (self)
             local pop = self:findControlByName("popGrapple");
             					
@@ -19395,14 +19230,9 @@ function newfrmAvatar()
             						end;
         end, obj);
 
-    obj._e_event47 = obj.dataLink40:addEventListener("onChange",
+    obj._e_event48 = obj.dataLink40:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            							if debug then
-            								local mesa = rrpg.getMesaDe(sheet);
-            								mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Agarrar.");
-            								index = index + 1;
-            							end;
             							local agarrar = (tonumber(sheet.bba) or 0) + 
             										(tonumber(sheet.efetModFor) or 0) +  
             										(tonumber(sheet.agarrarTam) or 0) +   
@@ -19411,35 +19241,30 @@ function newfrmAvatar()
             						end;
         end, obj);
 
-    obj._e_event48 = obj.button12:addEventListener("onClick",
+    obj._e_event49 = obj.button12:addEventListener("onClick",
         function (self)
             local rolagem = rrpg.interpretarRolagem("1d20 +" .. (sheet.trFort) or "0");
             					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Fortitude de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event49 = obj.button13:addEventListener("onClick",
+    obj._e_event50 = obj.button13:addEventListener("onClick",
         function (self)
             local rolagem = rrpg.interpretarRolagem("1d20 +" .. (sheet.trRef) or "0");
             					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Reflexos de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event50 = obj.button14:addEventListener("onClick",
+    obj._e_event51 = obj.button14:addEventListener("onClick",
         function (self)
             local rolagem = rrpg.interpretarRolagem("1d20 +" .. (sheet.trVon) or "0");
             					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Vontade de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event51 = obj.dataLink44:addEventListener("onChange",
+    obj._e_event52 = obj.dataLink44:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet ~= nil then
-            						if debug then
-            							local mesa = rrpg.getMesaDe(sheet);
-            							mesa.activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando TRs.");
-            							index = index + 1;
-            						end;
             						local atrModFort = 0;
             						local atrModRef = 0;
             						local atrModVon = 0;
@@ -19498,7 +19323,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event52 = obj.TrBut:addEventListener("onClick",
+    obj._e_event53 = obj.TrBut:addEventListener("onClick",
         function (self)
             local pop = self:findControlByName("popResistencia");
             				
@@ -19510,12 +19335,12 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event53 = obj.image1:addEventListener("onStartDrag",
+    obj._e_event54 = obj.image1:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
-    obj._e_event54 = obj.button15:addEventListener("onClick",
+    obj._e_event55 = obj.button15:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -19566,7 +19391,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event55 = obj.button16:addEventListener("onClick",
+    obj._e_event56 = obj.button16:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano1);
@@ -19582,7 +19407,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event56 = obj.button17:addEventListener("onClick",
+    obj._e_event57 = obj.button17:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico1);
@@ -19598,7 +19423,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event57 = obj.button18:addEventListener("onClick",
+    obj._e_event58 = obj.button18:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -19649,7 +19474,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event58 = obj.button19:addEventListener("onClick",
+    obj._e_event59 = obj.button19:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano2);
@@ -19665,7 +19490,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event59 = obj.button20:addEventListener("onClick",
+    obj._e_event60 = obj.button20:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico2);
@@ -19681,7 +19506,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event60 = obj.button21:addEventListener("onClick",
+    obj._e_event61 = obj.button21:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -19732,7 +19557,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event61 = obj.button22:addEventListener("onClick",
+    obj._e_event62 = obj.button22:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano3);
@@ -19748,7 +19573,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event62 = obj.button23:addEventListener("onClick",
+    obj._e_event63 = obj.button23:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico3);
@@ -19764,7 +19589,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event63 = obj.button24:addEventListener("onClick",
+    obj._e_event64 = obj.button24:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -19815,7 +19640,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event64 = obj.button25:addEventListener("onClick",
+    obj._e_event65 = obj.button25:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano4);
@@ -19831,7 +19656,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event65 = obj.button26:addEventListener("onClick",
+    obj._e_event66 = obj.button26:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico4);
@@ -19847,7 +19672,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event66 = obj.button27:addEventListener("onClick",
+    obj._e_event67 = obj.button27:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -19898,7 +19723,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event67 = obj.button28:addEventListener("onClick",
+    obj._e_event68 = obj.button28:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano5);
@@ -19914,7 +19739,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event68 = obj.button29:addEventListener("onClick",
+    obj._e_event69 = obj.button29:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico5);
@@ -19930,7 +19755,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event69 = obj.button30:addEventListener("onClick",
+    obj._e_event70 = obj.button30:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -19981,7 +19806,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event70 = obj.button31:addEventListener("onClick",
+    obj._e_event71 = obj.button31:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano6);
@@ -19997,7 +19822,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event71 = obj.button32:addEventListener("onClick",
+    obj._e_event72 = obj.button32:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico6);
@@ -20013,7 +19838,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event72 = obj.button33:addEventListener("onClick",
+    obj._e_event73 = obj.button33:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -20064,7 +19889,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event73 = obj.button34:addEventListener("onClick",
+    obj._e_event74 = obj.button34:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano7);
@@ -20080,7 +19905,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event74 = obj.button35:addEventListener("onClick",
+    obj._e_event75 = obj.button35:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico7);
@@ -20096,7 +19921,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event75 = obj.button36:addEventListener("onClick",
+    obj._e_event76 = obj.button36:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -20147,7 +19972,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event76 = obj.button37:addEventListener("onClick",
+    obj._e_event77 = obj.button37:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano8);
@@ -20163,7 +19988,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event77 = obj.button38:addEventListener("onClick",
+    obj._e_event78 = obj.button38:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico8);
@@ -20179,7 +20004,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event78 = obj.button39:addEventListener("onClick",
+    obj._e_event79 = obj.button39:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -20230,7 +20055,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event79 = obj.button40:addEventListener("onClick",
+    obj._e_event80 = obj.button40:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano9);
@@ -20246,7 +20071,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event80 = obj.button41:addEventListener("onClick",
+    obj._e_event81 = obj.button41:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico9);
@@ -20262,7 +20087,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event81 = obj.button42:addEventListener("onClick",
+    obj._e_event82 = obj.button42:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -20313,7 +20138,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event82 = obj.button43:addEventListener("onClick",
+    obj._e_event83 = obj.button43:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano10);
@@ -20329,7 +20154,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event83 = obj.button44:addEventListener("onClick",
+    obj._e_event84 = obj.button44:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico10);
@@ -20345,7 +20170,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event84 = obj.button45:addEventListener("onClick",
+    obj._e_event85 = obj.button45:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -20396,7 +20221,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event85 = obj.button46:addEventListener("onClick",
+    obj._e_event86 = obj.button46:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano11);
@@ -20412,7 +20237,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event86 = obj.button47:addEventListener("onClick",
+    obj._e_event87 = obj.button47:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico11);
@@ -20428,7 +20253,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event87 = obj.button48:addEventListener("onClick",
+    obj._e_event88 = obj.button48:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -20479,7 +20304,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event88 = obj.button49:addEventListener("onClick",
+    obj._e_event89 = obj.button49:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano12);
@@ -20495,7 +20320,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event89 = obj.button50:addEventListener("onClick",
+    obj._e_event90 = obj.button50:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico12);
@@ -20511,7 +20336,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event90 = obj.button51:addEventListener("onClick",
+    obj._e_event91 = obj.button51:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -20562,7 +20387,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event91 = obj.button52:addEventListener("onClick",
+    obj._e_event92 = obj.button52:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano13);
@@ -20578,7 +20403,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event92 = obj.button53:addEventListener("onClick",
+    obj._e_event93 = obj.button53:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico13);
@@ -20594,7 +20419,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event93 = obj.button54:addEventListener("onClick",
+    obj._e_event94 = obj.button54:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -20645,7 +20470,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event94 = obj.button55:addEventListener("onClick",
+    obj._e_event95 = obj.button55:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano14);
@@ -20661,7 +20486,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event95 = obj.button56:addEventListener("onClick",
+    obj._e_event96 = obj.button56:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico14);
@@ -20677,7 +20502,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event96 = obj.button57:addEventListener("onClick",
+    obj._e_event97 = obj.button57:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -20728,7 +20553,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event97 = obj.button58:addEventListener("onClick",
+    obj._e_event98 = obj.button58:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano15);
@@ -20744,7 +20569,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event98 = obj.button59:addEventListener("onClick",
+    obj._e_event99 = obj.button59:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico15);
@@ -20760,7 +20585,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event99 = obj.button60:addEventListener("onClick",
+    obj._e_event100 = obj.button60:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -20811,7 +20636,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event100 = obj.button61:addEventListener("onClick",
+    obj._e_event101 = obj.button61:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano16);
@@ -20827,7 +20652,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event101 = obj.button62:addEventListener("onClick",
+    obj._e_event102 = obj.button62:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico16);
@@ -20843,7 +20668,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event102 = obj.button63:addEventListener("onClick",
+    obj._e_event103 = obj.button63:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -20894,7 +20719,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event103 = obj.button64:addEventListener("onClick",
+    obj._e_event104 = obj.button64:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano17);
@@ -20910,7 +20735,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event104 = obj.button65:addEventListener("onClick",
+    obj._e_event105 = obj.button65:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico17);
@@ -20926,7 +20751,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event105 = obj.button66:addEventListener("onClick",
+    obj._e_event106 = obj.button66:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -20977,7 +20802,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event106 = obj.button67:addEventListener("onClick",
+    obj._e_event107 = obj.button67:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano18);
@@ -20993,7 +20818,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event107 = obj.button68:addEventListener("onClick",
+    obj._e_event108 = obj.button68:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico18);
@@ -21009,7 +20834,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event108 = obj.button69:addEventListener("onClick",
+    obj._e_event109 = obj.button69:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -21060,7 +20885,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event109 = obj.button70:addEventListener("onClick",
+    obj._e_event110 = obj.button70:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano19);
@@ -21076,7 +20901,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event110 = obj.button71:addEventListener("onClick",
+    obj._e_event111 = obj.button71:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico19);
@@ -21092,7 +20917,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event111 = obj.button72:addEventListener("onClick",
+    obj._e_event112 = obj.button72:addEventListener("onClick",
         function (self)
             i = 1;
             					max = 1;
@@ -21143,7 +20968,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event112 = obj.button73:addEventListener("onClick",
+    obj._e_event113 = obj.button73:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local dano = rrpg.interpretarRolagem(sheet.dano20);
@@ -21159,7 +20984,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event113 = obj.button74:addEventListener("onClick",
+    obj._e_event114 = obj.button74:addEventListener("onClick",
         function (self)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico20);
@@ -21175,19 +21000,19 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event114 = obj.button75:addEventListener("onClick",
+    obj._e_event115 = obj.button75:addEventListener("onClick",
         function (self)
             self.rclListaDosAtaques:append();
         end, obj);
 
-    obj._e_event115 = obj.rclListaDosAtaques:addEventListener("onSelect",
+    obj._e_event116 = obj.rclListaDosAtaques:addEventListener("onSelect",
         function (self)
             local node = self.rclListaDosAtaques.selectedNode;
             				self.boxDetalhesDoAtaque.node = node;
             				self.boxDetalhesDoAtaque.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event116 = obj.rclListaDosAtaques:addEventListener("onEndEnumeration",
+    obj._e_event117 = obj.rclListaDosAtaques:addEventListener("onEndEnumeration",
         function (self)
             if self.rclListaDosAtaques.selectedNode == nil and sheet ~= nil then
             					local nodes = ndb.getChildNodes(sheet.campoDosAtaques);               
@@ -21197,12 +21022,12 @@ function newfrmAvatar()
             				end;
         end, obj);
 
-    obj._e_event117 = obj.button76:addEventListener("onClick",
+    obj._e_event118 = obj.button76:addEventListener("onClick",
         function (self)
             self.rclListaDeArmas:append();
         end, obj);
 
-    obj._e_event118 = obj.button77:addEventListener("onClick",
+    obj._e_event119 = obj.button77:addEventListener("onClick",
         function (self)
             if sheet==nil then
             							return;
@@ -21251,27 +21076,27 @@ function newfrmAvatar()
             						end);
         end, obj);
 
-    obj._e_event119 = obj.button78:addEventListener("onClick",
+    obj._e_event120 = obj.button78:addEventListener("onClick",
         function (self)
             rolando =false;
         end, obj);
 
-    obj._e_event120 = obj.rclListaDasPericias:addEventListener("onCompare",
+    obj._e_event121 = obj.rclListaDasPericias:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
         end, obj);
 
-    obj._e_event121 = obj.button79:addEventListener("onClick",
+    obj._e_event122 = obj.button79:addEventListener("onClick",
         function (self)
             self.rclListaDasPericias:append();
         end, obj);
 
-    obj._e_event122 = obj.button80:addEventListener("onClick",
+    obj._e_event123 = obj.button80:addEventListener("onClick",
         function (self)
             dndSkills();
         end, obj);
 
-    obj._e_event123 = obj.dataLink45:addEventListener("onChange",
+    obj._e_event124 = obj.dataLink45:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             local rcl = self:findControlByName("rclListaDosTalentos");
             						if rcl~= nil then
@@ -21287,22 +21112,22 @@ function newfrmAvatar()
             						end;
         end, obj);
 
-    obj._e_event124 = obj.rclListaDosTalentos:addEventListener("onCompare",
+    obj._e_event125 = obj.rclListaDosTalentos:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
-    obj._e_event125 = obj.rclListaDosOutros:addEventListener("onCompare",
+    obj._e_event126 = obj.rclListaDosOutros:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
-    obj._e_event126 = obj.rclListaDasCaracteristicasClasse:addEventListener("onCompare",
+    obj._e_event127 = obj.rclListaDasCaracteristicasClasse:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
         end, obj);
 
-    obj._e_event127 = obj.classeBBA:addEventListener("onChange",
+    obj._e_event128 = obj.classeBBA:addEventListener("onChange",
         function (self)
             if sheet==nil then return end;
             
@@ -21317,7 +21142,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event128 = obj.classeBBF:addEventListener("onChange",
+    obj._e_event129 = obj.classeBBF:addEventListener("onChange",
         function (self)
             if sheet==nil then return end;
             
@@ -21330,7 +21155,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event129 = obj.classeBBR:addEventListener("onChange",
+    obj._e_event130 = obj.classeBBR:addEventListener("onChange",
         function (self)
             if sheet==nil then return end;
             
@@ -21343,7 +21168,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event130 = obj.classeBBV:addEventListener("onChange",
+    obj._e_event131 = obj.classeBBV:addEventListener("onChange",
         function (self)
             if sheet==nil then return end;
             
@@ -21356,7 +21181,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event131 = obj.classePericia:addEventListener("onChange",
+    obj._e_event132 = obj.classePericia:addEventListener("onChange",
         function (self)
             if sheet==nil then return end;
             
@@ -21373,7 +21198,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event132 = obj.classeDVs:addEventListener("onChange",
+    obj._e_event133 = obj.classeDVs:addEventListener("onChange",
         function (self)
             if sheet==nil then return end;
             
@@ -21390,7 +21215,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event133 = obj.dataLink46:addEventListener("onChange",
+    obj._e_event134 = obj.dataLink46:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -21402,7 +21227,7 @@ function newfrmAvatar()
             											(tonumber(sheet.classeDVs) or 0);
         end, obj);
 
-    obj._e_event134 = obj.dataLink47:addEventListener("onChange",
+    obj._e_event135 = obj.dataLink47:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -21435,32 +21260,32 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event135 = obj.button81:addEventListener("onClick",
+    obj._e_event136 = obj.button81:addEventListener("onClick",
         function (self)
             self.rclListaDosTalentos:append();
         end, obj);
 
-    obj._e_event136 = obj.button82:addEventListener("onClick",
+    obj._e_event137 = obj.button82:addEventListener("onClick",
         function (self)
             self.rclListaDosOutros:append();
         end, obj);
 
-    obj._e_event137 = obj.button83:addEventListener("onClick",
+    obj._e_event138 = obj.button83:addEventListener("onClick",
         function (self)
             self.rclListaDasCaracteristicasClasse:append();
         end, obj);
 
-    obj._e_event138 = obj.button84:addEventListener("onClick",
+    obj._e_event139 = obj.button84:addEventListener("onClick",
         function (self)
             self.rclListaDasDobras:append();
         end, obj);
 
-    obj._e_event139 = obj.rclListaDasDobras:addEventListener("onCompare",
+    obj._e_event140 = obj.rclListaDasDobras:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return ((tonumber(nodeA.nome) or 0) - (tonumber(nodeB.nome) or 0));
         end, obj);
 
-    obj._e_event140 = obj.comboBox5:addEventListener("onChange",
+    obj._e_event141 = obj.comboBox5:addEventListener("onChange",
         function (self)
             if sheet==nil then return end;
             
@@ -21488,12 +21313,12 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event141 = obj.button85:addEventListener("onClick",
+    obj._e_event142 = obj.button85:addEventListener("onClick",
         function (self)
             rollTest();
         end, obj);
 
-    obj._e_event142 = obj.dataLink48:addEventListener("onChange",
+    obj._e_event143 = obj.dataLink48:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -21512,38 +21337,34 @@ function newfrmAvatar()
             										(tonumber(sheet.testeDobraOutros) or 0);
         end, obj);
 
-    obj._e_event143 = obj.button86:addEventListener("onClick",
+    obj._e_event144 = obj.button86:addEventListener("onClick",
         function (self)
             self.rclListaDasTecnicas:append();
         end, obj);
 
-    obj._e_event144 = obj.rclListaDasTecnicas:addEventListener("onCompare",
+    obj._e_event145 = obj.rclListaDasTecnicas:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return ((tonumber(nodeA.nome) or 0) - (tonumber(nodeB.nome) or 0));
         end, obj);
 
-    obj._e_event145 = obj.button87:addEventListener("onClick",
+    obj._e_event146 = obj.button87:addEventListener("onClick",
         function (self)
             self.rclListaDasTecnicasAvancadas:append();
         end, obj);
 
-    obj._e_event146 = obj.rclListaDasTecnicasAvancadas:addEventListener("onCompare",
+    obj._e_event147 = obj.rclListaDasTecnicasAvancadas:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return ((tonumber(nodeA.nome) or 0) - (tonumber(nodeB.nome) or 0));
         end, obj);
 
-    obj._e_event147 = obj.button88:addEventListener("onClick",
+    obj._e_event148 = obj.button88:addEventListener("onClick",
         function (self)
             self.rclListaDasArmas:append();
         end, obj);
 
-    obj._e_event148 = obj.dataLink49:addEventListener("onChange",
+    obj._e_event149 = obj.dataLink49:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            					if debug then
-            						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Gastos em PO");
-            						index = index + 1;
-            					end;
             
             					-- Calculando todos gastos
             					local mod = 0;
@@ -21599,13 +21420,9 @@ function newfrmAvatar()
             				end;
         end, obj);
 
-    obj._e_event149 = obj.dataLink50:addEventListener("onChange",
+    obj._e_event150 = obj.dataLink50:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            					if debug then
-            						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Carga");
-            						index = index + 1;
-            					end;
             
             					local mod1 = sheet.cargaPesada;
             					if mod1==nil then
@@ -21624,13 +21441,9 @@ function newfrmAvatar()
             				end;
         end, obj);
 
-    obj._e_event150 = obj.dataLink51:addEventListener("onChange",
+    obj._e_event151 = obj.dataLink51:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~=nil then
-            					if debug then
-            						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Carga");
-            						index = index + 1;
-            					end;
             					local mod = 0;
             					mod = (getNumber(sheet.pesoCabeca) or 0) +
             								(getNumber(sheet.pesoOlhos) or 0) +
@@ -21663,7 +21476,7 @@ function newfrmAvatar()
             				end;
         end, obj);
 
-    obj._e_event151 = obj.button89:addEventListener("onClick",
+    obj._e_event152 = obj.button89:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             						local rolagem = rrpg.interpretarRolagem("1d20 + " .. (node.iniciativaComp or 0));
@@ -21671,7 +21484,7 @@ function newfrmAvatar()
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de iniciativa de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event152 = obj.button90:addEventListener("onClick",
+    obj._e_event153 = obj.button90:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             						local rolagem = rrpg.interpretarRolagem("1d20 + " .. (node.agarrarComp or 0));
@@ -21679,7 +21492,7 @@ function newfrmAvatar()
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de agarrar de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event153 = obj.button91:addEventListener("onClick",
+    obj._e_event154 = obj.button91:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21692,14 +21505,10 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de força de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event154 = obj.edit594:addEventListener("onChange",
+    obj._e_event155 = obj.edit594:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.forComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -21709,7 +21518,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event155 = obj.button92:addEventListener("onClick",
+    obj._e_event156 = obj.button92:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21722,14 +21531,10 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de destreza de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event156 = obj.edit596:addEventListener("onChange",
+    obj._e_event157 = obj.edit596:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.desComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -21739,7 +21544,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event157 = obj.button93:addEventListener("onClick",
+    obj._e_event158 = obj.button93:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21752,14 +21557,10 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de constituição de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event158 = obj.edit598:addEventListener("onChange",
+    obj._e_event159 = obj.edit598:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.conComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -21769,7 +21570,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event159 = obj.button94:addEventListener("onClick",
+    obj._e_event160 = obj.button94:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21782,14 +21583,10 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de inteligência de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event160 = obj.edit600:addEventListener("onChange",
+    obj._e_event161 = obj.edit600:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.intComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -21799,7 +21596,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event161 = obj.button95:addEventListener("onClick",
+    obj._e_event162 = obj.button95:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21812,14 +21609,10 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de sabedoria de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event162 = obj.edit602:addEventListener("onChange",
+    obj._e_event163 = obj.edit602:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.sabComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -21829,7 +21622,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event163 = obj.button96:addEventListener("onClick",
+    obj._e_event164 = obj.button96:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21842,14 +21635,10 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de carisma de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event164 = obj.edit604:addEventListener("onChange",
+    obj._e_event165 = obj.edit604:addEventListener("onChange",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.carComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -21859,7 +21648,7 @@ function newfrmAvatar()
             					end;
         end, obj);
 
-    obj._e_event165 = obj.button97:addEventListener("onClick",
+    obj._e_event166 = obj.button97:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21872,7 +21661,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de fortitude de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event166 = obj.button98:addEventListener("onClick",
+    obj._e_event167 = obj.button98:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21885,7 +21674,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de reflexos de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event167 = obj.button99:addEventListener("onClick",
+    obj._e_event168 = obj.button99:addEventListener("onClick",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					local dado = "1d20 ";
@@ -21898,7 +21687,7 @@ function newfrmAvatar()
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de vontade de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
-    obj._e_event168 = obj.dataLink52:addEventListener("onChange",
+    obj._e_event169 = obj.dataLink52:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -21910,7 +21699,7 @@ function newfrmAvatar()
             					sheet.precoInventorioComp = total;
         end, obj);
 
-    obj._e_event169 = obj.button100:addEventListener("onClick",
+    obj._e_event170 = obj.button100:addEventListener("onClick",
         function (self)
             local macro = self.boxDetalhesDoCompanheiro.node.macro;
             						if macro~=nil then
@@ -21922,24 +21711,24 @@ function newfrmAvatar()
             						end;
         end, obj);
 
-    obj._e_event170 = obj.image22:addEventListener("onStartDrag",
+    obj._e_event171 = obj.image22:addEventListener("onStartDrag",
         function (self, drag, x, y)
             drag:addData("imageURL", self.rclListaDosCompanheiros.selectedNode.avatarComp);
         end, obj);
 
-    obj._e_event171 = obj.button101:addEventListener("onClick",
+    obj._e_event172 = obj.button101:addEventListener("onClick",
         function (self)
             self.rclListaDosCompanheiros:append();
         end, obj);
 
-    obj._e_event172 = obj.rclListaDosCompanheiros:addEventListener("onSelect",
+    obj._e_event173 = obj.rclListaDosCompanheiros:addEventListener("onSelect",
         function (self)
             local node = self.rclListaDosCompanheiros.selectedNode;
             				self.boxDetalhesDoCompanheiro.node = node;
             				self.boxDetalhesDoCompanheiro.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event173 = obj.rclListaDosCompanheiros:addEventListener("onEndEnumeration",
+    obj._e_event174 = obj.rclListaDosCompanheiros:addEventListener("onEndEnumeration",
         function (self)
             if self.rclListaDosCompanheiros.selectedNode == nil and sheet ~= nil then
             					local nodes = ndb.getChildNodes(sheet.campoDosCompanheiros);               
@@ -21949,13 +21738,9 @@ function newfrmAvatar()
             				end;
         end, obj);
 
-    obj._e_event174 = obj.dataLink53:addEventListener("onChange",
+    obj._e_event175 = obj.dataLink53:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~=nil then
-            					if debug then
-            						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Tamanho. ");
-            						index = index + 1;
-            					end;
             					local str = tonumber(sheet.efetFor) or 1;
             					local size = tonumber(sheet.tamanho) or 0;
             					local quad = sheet.quadrupede;
@@ -22060,42 +21845,43 @@ function newfrmAvatar()
             				end;
         end, obj);
 
-    obj._e_event175 = obj.button102:addEventListener("onClick",
+    obj._e_event176 = obj.button102:addEventListener("onClick",
         function (self)
             System.setClipboardText(sheet.historia);
         end, obj);
 
-    obj._e_event176 = obj.button103:addEventListener("onClick",
+    obj._e_event177 = obj.button103:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/README.md')
         end, obj);
 
-    obj._e_event177 = obj.button104:addEventListener("onClick",
+    obj._e_event178 = obj.button104:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Avatar%20d20/Ficha%20Avatar%20d20.rpk')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/output/Ficha%20Avatar%20d20.rpk?raw=true')
         end, obj);
 
-    obj._e_event178 = obj.button105:addEventListener("onClick",
+    obj._e_event179 = obj.button105:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/__Tutorial/Ficha%20Avatar%20-%20Tutorial.docx')
         end, obj);
 
-    obj._e_event179 = obj.button106:addEventListener("onClick",
+    obj._e_event180 = obj.button106:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/Dobra.docx')
         end, obj);
 
-    obj._e_event180 = obj.button107:addEventListener("onClick",
+    obj._e_event181 = obj.button107:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event181 = obj.button108:addEventListener("onClick",
+    obj._e_event182 = obj.button108:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=149962');
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event182);
         __o_rrpgObjs.removeEventListenerById(self._e_event181);
         __o_rrpgObjs.removeEventListenerById(self._e_event180);
         __o_rrpgObjs.removeEventListenerById(self._e_event179);
@@ -23111,7 +22897,6 @@ function newfrmAvatar()
         if self.rectangle166 ~= nil then self.rectangle166:destroy(); self.rectangle166 = nil; end;
         if self.label197 ~= nil then self.label197:destroy(); self.label197 = nil; end;
         if self.edit253 ~= nil then self.edit253:destroy(); self.edit253 = nil; end;
-        if self.rectangle179 ~= nil then self.rectangle179:destroy(); self.rectangle179 = nil; end;
         if self.label135 ~= nil then self.label135:destroy(); self.label135 = nil; end;
         if self.tab7 ~= nil then self.tab7:destroy(); self.tab7 = nil; end;
         if self.edit319 ~= nil then self.edit319:destroy(); self.edit319 = nil; end;
@@ -23214,7 +22999,6 @@ function newfrmAvatar()
         if self.label441 ~= nil then self.label441:destroy(); self.label441 = nil; end;
         if self.label476 ~= nil then self.label476:destroy(); self.label476 = nil; end;
         if self.dataLink41 ~= nil then self.dataLink41:destroy(); self.dataLink41 = nil; end;
-        if self.image24 ~= nil then self.image24:destroy(); self.image24 = nil; end;
         if self.dataLink19 ~= nil then self.dataLink19:destroy(); self.dataLink19 = nil; end;
         if self.flowPart182 ~= nil then self.flowPart182:destroy(); self.flowPart182 = nil; end;
         if self.button50 ~= nil then self.button50:destroy(); self.button50 = nil; end;
@@ -23694,7 +23478,6 @@ function newfrmAvatar()
         if self.checkBox8 ~= nil then self.checkBox8:destroy(); self.checkBox8 = nil; end;
         if self.label300 ~= nil then self.label300:destroy(); self.label300 = nil; end;
         if self.image6 ~= nil then self.image6:destroy(); self.image6 = nil; end;
-        if self.rectangle178 ~= nil then self.rectangle178:destroy(); self.rectangle178 = nil; end;
         if self.edit340 ~= nil then self.edit340:destroy(); self.edit340 = nil; end;
         if self.edit277 ~= nil then self.edit277:destroy(); self.edit277 = nil; end;
         if self.layout77 ~= nil then self.layout77:destroy(); self.layout77 = nil; end;
@@ -23943,7 +23726,6 @@ function newfrmAvatar()
         if self.button30 ~= nil then self.button30:destroy(); self.button30 = nil; end;
         if self.edit224 ~= nil then self.edit224:destroy(); self.edit224 = nil; end;
         if self.label93 ~= nil then self.label93:destroy(); self.label93 = nil; end;
-        if self.image25 ~= nil then self.image25:destroy(); self.image25 = nil; end;
         if self.textEditor16 ~= nil then self.textEditor16:destroy(); self.textEditor16 = nil; end;
         if self.edit198 ~= nil then self.edit198:destroy(); self.edit198 = nil; end;
         if self.label411 ~= nil then self.label411:destroy(); self.label411 = nil; end;

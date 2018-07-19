@@ -1521,10 +1521,6 @@ function newfrmFichaRPGmeister7_svg()
     obj._e_event2 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            					if debug then
-            						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Gastos em PO");
-            						index = index + 1;
-            					end;
             
             					-- Calculando todos gastos
             					local mod = 0;
@@ -1587,10 +1583,6 @@ function newfrmFichaRPGmeister7_svg()
     obj._e_event3 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
-            					if debug then
-            						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Carga");
-            						index = index + 1;
-            					end;
             
             					local mod1 = sheet.cargaPesada;
             					if mod1==nil then
@@ -1612,10 +1604,6 @@ function newfrmFichaRPGmeister7_svg()
     obj._e_event4 = obj.dataLink3:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~=nil then
-            					if debug then
-            						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Carga");
-            						index = index + 1;
-            					end;
             					local mod = 0;
             					mod = (getNumber(sheet.pesoCabeca) or 0) +
             								(getNumber(sheet.pesoOlhos) or 0) +

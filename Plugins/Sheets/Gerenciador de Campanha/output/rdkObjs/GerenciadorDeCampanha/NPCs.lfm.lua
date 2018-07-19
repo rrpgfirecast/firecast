@@ -3791,10 +3791,6 @@ function newCaixaFichaNPC()
     obj._e_event44 = obj.edit25:addEventListener("onChange",
         function (self)
             if sheet~=nil then
-            								if debug then
-            									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            									index = index + 1;
-            								end;
             								local mod = (tonumber(sheet.forComp) or 0);
             								mod = math.floor((mod-10)/2);
             								if mod >=0 then
@@ -3819,10 +3815,6 @@ function newCaixaFichaNPC()
     obj._e_event46 = obj.edit27:addEventListener("onChange",
         function (self)
             if sheet~=nil then
-            								if debug then
-            									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            									index = index + 1;
-            								end;
             								local mod = (tonumber(sheet.desComp) or 0);
             								mod = math.floor((mod-10)/2);
             								if mod >=0 then
@@ -3847,10 +3839,6 @@ function newCaixaFichaNPC()
     obj._e_event48 = obj.edit29:addEventListener("onChange",
         function (self)
             if sheet~=nil then
-            								if debug then
-            									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            									index = index + 1;
-            								end;
             								local mod = (tonumber(sheet.conComp) or 0);
             								mod = math.floor((mod-10)/2);
             								if mod >=0 then
@@ -3875,10 +3863,6 @@ function newCaixaFichaNPC()
     obj._e_event50 = obj.edit31:addEventListener("onChange",
         function (self)
             if sheet~=nil then
-            								if debug then
-            									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            									index = index + 1;
-            								end;
             								local mod = (tonumber(sheet.intComp) or 0);
             								mod = math.floor((mod-10)/2);
             								if mod >=0 then
@@ -3903,10 +3887,6 @@ function newCaixaFichaNPC()
     obj._e_event52 = obj.edit33:addEventListener("onChange",
         function (self)
             if sheet~=nil then
-            								if debug then
-            									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            									index = index + 1;
-            								end;
             								local mod = (tonumber(sheet.sabComp) or 0);
             								mod = math.floor((mod-10)/2);
             								if mod >=0 then
@@ -3931,10 +3911,6 @@ function newCaixaFichaNPC()
     obj._e_event54 = obj.edit35:addEventListener("onChange",
         function (self)
             if sheet~=nil then
-            								if debug then
-            									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            									index = index + 1;
-            								end;
             								local mod = (tonumber(sheet.carComp) or 0);
             								mod = math.floor((mod-10)/2);
             								if mod >=0 then

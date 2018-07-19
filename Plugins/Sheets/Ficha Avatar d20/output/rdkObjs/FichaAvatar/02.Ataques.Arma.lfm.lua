@@ -34,11 +34,6 @@ function newfrmFichaRPGmeister2Aar_svg()
 
 
 		local function updateAll()
-
-            if debug then
-                rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Ataque com Arma.");
-                index = index + 1;
-            end;
 			if sheet == nil then
 				return;
 			end;

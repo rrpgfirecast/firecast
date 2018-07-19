@@ -2,8 +2,6 @@
 <form name="frmFichaAnima" formType="sheetTemplate" dataType="Ambesek.Anima" title="Ficha Anima" align="client" theme="dark">
     <script>
         <![CDATA[
-        local debug = false;
-        local index = 1;
 
         local function isNewVersion(installed, downloaded)
             local installedVersion = {};
