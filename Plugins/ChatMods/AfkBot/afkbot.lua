@@ -23,6 +23,12 @@ end;
 if afkdb.diceTimes== nil then
 	afkdb.diceTimes = {};
 end;
+if afkdb.laughStatus== nil then
+	afkdb.laughStatus = {};
+end;
+if afkdb.laughTimes== nil then
+	afkdb.laughTimes = {};
+end;
 
 local config = ndb.load("config.xml");
 
@@ -94,6 +100,18 @@ rrpg.messaging.listen("HandleChatCommand",
 				afkdb.diceStatus[message.mesa.codigoInterno] = false;
 				afkdb.afkSpectator[message.mesa.codigoInterno] = false;
 				message.chat:escrever("Espectadores não serão alertados para não rolarem dados.");
+			end	
+
+			message.response = {handled = true};
+		elseif message.comando == "stoplaugh" or message.comando == "semrisada" then
+			if afkdb.laughStatus[message.mesa.codigoInterno] == false or afkdb.laughStatus[message.mesa.codigoInterno] == nil then
+				afkdb.laughStatus[message.mesa.codigoInterno] = true;
+				message.chat:escrever("Espectadores serão alertados para não usarem o comando /rir.");
+
+			else
+				afkdb.laughStatus[message.mesa.codigoInterno] = false;
+				afkdb.afkSpectator[message.mesa.codigoInterno] = false;
+				message.chat:escrever("Espectadores não serão alertados para não usarem o comando /rir.");
 			end	
 
 			message.response = {handled = true};
@@ -178,6 +196,33 @@ rrpg.messaging.listen("ChatMessage",
 		end
 	end);
 
+-- Escuta por risadas
+rrpg.messaging.listen("ChatMessage", 
+	function (message)
+		if afkdb.diceStatus[message.mesa.codigoInterno] == true then
+
+			if message.jogador == nil or message.mesa == nil then
+				return;
+			end;
+			if message.tipo ~= "rir" then
+				return;
+			end;
+
+			if message.mesa.meuJogador.isMestre and message.jogador.isEspectador then
+				afkdb.diceTimes[message.jogador.login] = (afkdb.diceTimes[message.jogador.login] or 0) + 1;
+
+				if afkdb.diceTimes[message.jogador.login] < 2 then
+					message.chat:enviarNarracao("Por favor, pare de usar/rir na mesa. Ou irá ser expulso da mesa. Se quiser testar algo abra um pvt consigo mesmo. Esse é será seu unico aviso. ");
+				else
+					message.chat:enviarNarracao("Você foi avisado. ");
+					message.jogador:requestKick();
+				end;
+			else
+				return;
+			end;
+		end
+	end);
+
 -- Enviar a mensagem de afk para todos espectadores, se ativo
 rrpg.messaging.listen("MesaJoined",
 	function(message)
@@ -198,9 +243,10 @@ rrpg.messaging.listen("ListChatCommands",
     function(message)
         message.response = {{comando="/msg <Vazio>", descricao="Mostra a mensagem atual salva no AfkBot."},
                             {comando="/msg <Texto>", descricao="Salva <Texto> como a mensagem automatica de resposta no AfkBot. "},
-                            {comando="/stopdice", descricao="Avisa a espectadores para pararem de rolar dados. E os expulsa na 4ª vez. "},
-                            {comando="/cleandice <login>", descricao="Limpa o contador de rolagens de um jogador. "},
-                            {comando="/afk <Boolean (opcional)>", descricao="Ativa ou desativa o AfkBot v0.6, opcionalmente passando true como parametro o bot avisa cada espectador que entrar na mesa. "}};
+                            {comando="/stopdice", descricao="Avisa a espectadores para pararem de rolar dados e os expulsa na 4ª vez que o fizerem."},
+                            {comando="/stoplaugh or /semrisada", descricao="Avisa a espectadores para pararem de usar o comando rir e os expulsa na 2ª vez que o fizerem."},
+                            {comando="/cleanwarn <login>", descricao="Limpa o contador de rolagens e risadas de um jogador. "},
+                            {comando="/afk <Boolean (opcional)>", descricao="Ativa ou desativa o AfkBot v0.8, opcionalmente passando true como parametro o bot avisa cada espectador que entrar na mesa. "}};
     end);
 
 -- auto-update

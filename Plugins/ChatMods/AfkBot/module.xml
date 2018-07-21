@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.4b" originalPluginFileName="afkbot.rpk">
 	<id>AfkBot</id>
-	<version>0.7</version>
+	<version>0.8</version>
 	<name>AfkBot</name>
 	<description>Crie uma mensagem padrão para responder quando estiver ocupado.</description>
 	<author>Ambesek</author>
