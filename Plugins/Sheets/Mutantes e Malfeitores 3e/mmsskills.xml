@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <__EHEX_31 ferramenta="0" chave="3" nome="Acrobacia" treino="True">
+        <__ndb__ id="1" t_ferramenta="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_31>
+    <__EHEX_32 ferramenta="0" chave="1" nome="Atletismo" treino="False">
+        <__ndb__ id="2" t_ferramenta="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_32>
+    <__EHEX_33 ferramenta="0" chave="4" nome="Combate à Distância" treino="False">
+        <__ndb__ id="3" t_ferramenta="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_33>
+    <__EHEX_34 ferramenta="0" chave="5" nome="Combate Corporal" treino="False">
+        <__ndb__ id="4" t_ferramenta="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_34>
+    <__EHEX_35 ferramenta="0" chave="8" nome="Enganação" treino="False">
+        <__ndb__ id="5" t_ferramenta="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_35>
+    <__EHEX_36 ferramenta="0" chave="6" nome="Especialidade" treino="true">
+        <__ndb__ id="6" t_ferramenta="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_36>
+    <__EHEX_37 ferramenta="0" chave="3" nome="Furtividade" treino="False">
+        <__ndb__ id="7" t_ferramenta="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_37>
+    <__EHEX_38 ferramenta="0" chave="8" nome="Intimidação" treino="False">
+        <__ndb__ id="8" t_ferramenta="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_38>
+    <__EHEX_39 ferramenta="0" chave="7" nome="Intuição" treino="False">
+        <__ndb__ id="9" t_ferramenta="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_39>
+    <__EHEX_3130 ferramenta="0" chave="6" nome="Investigação" treino="true">
+        <__ndb__ id="10" t_ferramenta="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_3130>
+    <__EHEX_3131 ferramenta="0" chave="7" nome="Percepção" treino="False">
+        <__ndb__ id="11" t_ferramenta="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_3131>
+    <__EHEX_3132 ferramenta="0" chave="8" nome="Persuasão" treino="False">
+        <__ndb__ id="12" t_ferramenta="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_3132>
+    <__EHEX_3133 ferramenta="0" chave="4" nome="Prestidigitação" treino="true">
+        <__ndb__ id="13" t_ferramenta="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_3133>
+    <__EHEX_3134 ferramenta="1" chave="6" nome="Tecnologia" treino="true">
+        <__ndb__ id="14" t_ferramenta="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_3134>
+    <__EHEX_3135 ferramenta="1" chave="6" nome="Tratamento" treino="true">
+        <__ndb__ id="15" t_ferramenta="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_3135>
+    <__EHEX_3136 ferramenta="0" chave="4" nome="Veículos" treino="true">
+        <__ndb__ id="16" t_ferramenta="6" t_chave="S" t_nome="S" t_treino="B" />
+    </__EHEX_3136>
+
+    <__EHEX_3137>
+        <__ndb__ id="16" />
+    </__EHEX_3137>
+    <__ndb__ id="1" idGenerator="16" />
+</database>
