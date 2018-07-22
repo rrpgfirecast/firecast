@@ -66,16 +66,21 @@
                 pen = pen + 2;
             end;
 
+            local automatico = 1;
+            if sheet.automatico then
+                automatico = tonumber(sheet.automaticoQtd) or 1;
+            end;
+
             local limite = tonumber(sheet.limiteQtd) or 4;
-    		if bba-5 > 0 and limite>1 then
+    		if (bba-5 > 0 and limite>1) or automatico > 1 then
     			acertos[i] = bba -5;
     			i = i + 1;
     		end;
-    		if bba-10 > 0 and limite>2 then
+    		if (bba-10 > 0 and limite>2) or automatico > 2 then
     			acertos[i] = bba -10;
     			i = i + 1;
     		end;
-    		if bba-15 > 0 and limite>3 then
+    		if (bba-15 > 0 and limite>3) or automatico > 3 then
     			acertos[i] = bba -15;
     			i = i + 1;
     		end;
@@ -374,7 +379,9 @@
 			<checkEdit top="100" text="Ataque Multiplo" field="ataqueMultiplo" num="1" prompt1="Qtd" hint="Coloque aqui quantos ataques naturais são feitos com essa arma. Já aplica as penalidades por ataques primarios ou secundarios."/>
 			<checkEdit top="125" text="Composto" field="composto" num="1" prompt1="Lim" hint="Bônus minimo de força necessario para usar esse arco composto. Se não possuir força minima a penalidade já é aplicada. "/>
             <checkEdit top="150" text="Limite" field="limite" num="1" prompt1="Qtd" hint="Limita a quantidade de ataques usados em um ataque total. Util para caso o personagem não tenha todos talentos de combater com duas armas. "/>
-			<checkEdit top="175" text="Alcance" field="alcance" num="2" prompt1="Mult" prompt2="Pen" hint="Coloque no primeiro campo a quantidade de vezes que você deseja multiplicar o incremento de distancia (até 5 para armas de arremesso e até 10 para outros). No segundo a penalidade que você quer adicionar ao ataque por isso (normalmente -2/incremento)."/>
+			<checkEdit top="175" text="Automatico" field="automatico" num="1" prompt1="Qtd" hint="Coloque a quantidade de disparos que a arma faz no modo automatico."/>
+            <checkEdit top="200" text="Rajada" field="disparos" num="1" prompt1="Qtd" hint="Quantidade de munição gasta por ataque."/>
+            <checkEdit top="225" text="Alcance" field="alcance" num="2" prompt1="Mult" prompt2="Pen" hint="Coloque no primeiro campo a quantidade de vezes que você deseja multiplicar o incremento de distancia (até 5 para armas de arremesso e até 10 para outros). No segundo a penalidade que você quer adicionar ao ataque por isso (normalmente -2/incremento)."/>
 		</layout>
 		<layout left="270" top="25" width="270" height="250">
 			<checkEdit top="0" text="Rajada de Golpes" field="rajada" num="2" prompt1="Qtd" prompt2="Pen" hint="Quantos golpes serão feitos na rajada de golpes e a penalidade aplicada neles. "/>
@@ -421,13 +428,17 @@
 					end;
 					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
 					if sheet.acertos[1] ~= nil then
-						
+                        local disparos = 1;
+                        if sheet.disparos then
+                            disparos = tonumber(sheet.disparosQtd) or 1;
+                        end;
+
 						if sheet.municao~= nil then
 							local municao = tonumber(sheet.municao) or 0;
 							if municao == 0 then
 								mesaDoPersonagem.activeChat:enviarMensagem("Esta arma está sem munição.");
 							else
-								sheet.municao = municao - 1;
+								sheet.municao = municao - disparos;
 							end;
 						end;
 
@@ -509,7 +520,7 @@
 				</event>
 			</button>
 		</layout> 
-		<dataLink fields="{'furtivo', 'ataquePoderoso', 'especializacaoCombate', 'tiroMultiplo', 'ataqueMultiplo', 'alcance', 'composto', 'limite', 'energia', 'rajada', 'tamanho', 'talentos', 'itens', 'magias', 'extra', 'outros', 'ambidestria', 'combate2armas', 'combate2armasLeve', 'velocidade', 'tiroRapido', 'tiroRapidoAprimorado', 'perspicaz', 'ataqueMultiploApr', 'forma', 'empunhadura', 'mao', 'zen', 'flanquear'}">
+		<dataLink fields="{'furtivo', 'ataquePoderoso', 'especializacaoCombate', 'tiroMultiplo', 'ataqueMultiplo', 'alcance', 'composto', 'limite', 'energia', 'rajada', 'tamanho', 'talentos', 'itens', 'magias', 'extra', 'outros', 'ambidestria', 'combate2armas', 'combate2armasLeve', 'velocidade', 'tiroRapido', 'tiroRapidoAprimorado', 'perspicaz', 'ataqueMultiploApr', 'forma', 'empunhadura', 'mao', 'zen', 'flanquear', 'automatico'}">
 	        <event name="onChange">                
 	            updateAll();
 	        </event>

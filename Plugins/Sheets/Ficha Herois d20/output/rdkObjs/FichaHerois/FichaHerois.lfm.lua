@@ -21042,12 +21042,20 @@ function newfrmAvatar()
             
             							if weapons[i].municao~= nil then
             								local municao = tonumber(weapons[i].municao) or 0;
+            								local disparos = 1;
+            								if weapons[i].disparos then
+            									disparos = tonumber(weapons[i].disparosQtd) or 1;
+            								end;
             								local multMunicao = tonumber(weapons[i].multMunicao) or 0;
-            								if numeroAtaques > municao then
+            								if (numeroAtaques * disparos) > municao then
             									weapons[i].municao = 0;
-            									mesaDoPersonagem.activeChat:enviarMensagem("Esta arma possui apenas " .. municao .. " das " .. numeroAtaques .. " munições necessarias para atacar.");
+            									mesaDoPersonagem.activeChat:enviarMensagem("Esta arma possui apenas " .. municao .. " das " .. (numeroAtaques * disparos) .. " munições necessarias para atacar.");
             								else
-            									weapons[i].municao = municao - numeroAtaques - multMunicao;
+            									weapons[i].municao = municao - (numeroAtaques * disparos) - multMunicao;
+            
+            									if weapons[i].municao == 0 then
+            										mesaDoPersonagem.activeChat:enviarMensagem("Arma descarregada.");
+            									end;
             								end;
             							end;
             						end;
@@ -21888,7 +21896,7 @@ function newfrmAvatar()
 
     obj._e_event184 = obj.button106:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/Sistema.docx?raw=true')
+            gui.openInBrowser('https://www.dropbox.com/s/ypxmwvxffof0hm8/Adapta%C3%A7%C3%A3o.docx?dl=0 ')
         end, obj);
 
     obj._e_event185 = obj.button107:addEventListener("onClick",

@@ -206,7 +206,7 @@ function newfrmFichaRPGmeister11_svg()
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
         function (self)
-            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/Sistema.docx?raw=true')
+            gui.openInBrowser('https://www.dropbox.com/s/ypxmwvxffof0hm8/Adapta%C3%A7%C3%A3o.docx?dl=0 ')
         end, obj);
 
     obj._e_event4 = obj.button5:addEventListener("onClick",

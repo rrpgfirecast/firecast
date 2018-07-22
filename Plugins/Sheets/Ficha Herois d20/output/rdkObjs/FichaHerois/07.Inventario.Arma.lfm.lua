@@ -111,7 +111,7 @@ function newfrmFichaRPGmeister7A_svg()
 				end
 				mod = string.gsub(mod, ",", ".");
 				mod = string.gsub(mod, "_", ",");
-				node.precoArmas = mod .. "PO";
+				node.precoArmas = mod;
 			end;
 		end;
 
