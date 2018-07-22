@@ -1,2 +1,35 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////
+//  Plugin Mutantes e Malfeitores 3ª Edição, usando os termos da tradução da Jambô Editora.    //
+//                                                                                             //
+//                                                                                             //
+//                                  CRÉDITOS DA PRIMEIRA VERSÃO                                //
+//                                        Arte: Gilgante                                       //
+//                                        Encode: Janus7l                                      //
+//                                                                                             //
+//                                  CRÉDITOS DAS VERSÕES 1.3 À 2.8                             //
+//                                    Arte e Encode: Gilgante                                  //
+//                                                                                             //
+//                            Os códigos base para cada função da ficha:                       //
+//                Aba de Perícias Adaptado de: Ficha RPG Meister V.2.9 - Vinny (Ambesek)       //
+//                      Aba de Poderes Estudado de: Help do SDK 3 by RRPG crew.                //
+//                  Roladores e Demais Funções da Ficha: Help do SDK 3 by RRPG crew.           //
+//                                                                                             //
+//              Mesmo sem ser programador, a linguagem instrucional fácil foi suficiente.      //
+//                Use o plugin livremente e aprimore os códigos e aprimore o plugin.           //
+//                                                                                             //
+//                                  \o/ É pra todo mundo! \o/                                  //
+//                                                                                             //
+//                                          BETA TESTERS                                       //
+//        Janus7l, Produtor, GodsCorpse, Black2828, Balth, Yan78, Thysson, Necro22, MW3        //
+//                                  e outros jogadores das salas                               //
+//        "M&M 3Ed - Cenário Próprio", "DC Universe - Terra ?" e "DC Universe - Earth N"       //
+//                                                                                             //
+//                                                                                             //
+//                Dúvidas, críticas e sugestões: adicione Gilgante no RRPG Firecast            //
+//                                                                                             //
+/////////////////////////////////////////////////////////////////////////////////////////////////
+Log:
+    2018-JUL-21 - BUG Conhecido: aba de perícias gera erro na função
+                  "rrpg.getMesaDe(sheet).activeChat:enviarMensagem" quando rodando
+                  a versão "RRPG 7.8 beta 2"
 
-Plugin Mutantes e Malfeitores 3ª Edição, usando os termos da tradução da Jambô Editora.
