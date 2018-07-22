@@ -1,0 +1,11 @@
+﻿local Locale = {};
+
+function Locale.lang(txtId)
+	return _system_locale_lang(txtId);
+end;
+
+function Locale.tryLang(txtId)
+	return _system_locale_tryLang(txtId);
+end;
+
+return Locale;
