@@ -44,7 +44,7 @@
 		</template>
 		
 		<layout left="480" top="0" width="200" height="220">
-			<smallInventory title="PERMANENCIAS" field="permanencias" field2="Permanencias"/>
+			<smallInventory title="MENSALIDADES" field="permanencias" field2="Permanencias"/>
 		</layout>
 		<layout left="685" top="0" width="200" height="220">
 			<smallInventory title="LIVRES" field="livres" field2="Livres"/>
@@ -81,10 +81,6 @@
 		<dataLink fields="{'precoCabeca', 'precoOlhos', 'precoPescoco', 'precoOmbros', 'precoTorso', 'precoCorpo', 'precoPunhos', 'precoCintura', 'precoMaos', 'precoDedosI', 'precoDesdosII', 'precoPes', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal'}">
 			<event name="onChange">
 				if sheet~= nil then
-					if debug then
-						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Gastos em PO");
-						index = index + 1;
-					end;
 
 					-- Calculando todos gastos
 					local mod = 0;
@@ -202,10 +198,6 @@
 		<dataLink field="cargaPesada">
 			<event name="onChange">
 				if sheet~= nil then
-					if debug then
-						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Carga");
-						index = index + 1;
-					end;
 
 					local mod1 = sheet.cargaPesada;
 					if mod1==nil then
@@ -227,10 +219,6 @@
 		<dataLink fields="{'pesoCabeca', 'pesoOlhos', 'pesoPescoco', 'pesoOmbros', 'pesoTorso', 'pesoCorpo', 'pesoPunhos', 'pesoCintura', 'pesoMaos', 'pesoDedosI', 'pesoDesdosII', 'pesoPes', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp'}">
 			<event name="onChange">
 				if sheet~=nil then
-					if debug then
-						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Carga");
-						index = index + 1;
-					end;
 					local mod = 0;
 					mod = (getNumber(sheet.pesoCabeca) or 0) +
 								(getNumber(sheet.pesoOlhos) or 0) +

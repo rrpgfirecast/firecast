@@ -5,10 +5,9 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFichaRPGmeister3p_svg()
-    __o_rrpgObjs.beginObjectsLoading();
-
+local function constructNew_frmFichaRPGmeister3p_svg()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -216,10 +215,6 @@ function newfrmFichaRPGmeister3p_svg()
     obj._e_event1 = obj.comboBox1:addEventListener("onChange",
         function (_)
             if sheet~= nil then
-            				if debug then
-            					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Atributo Pericia. ");
-            					index = index + 1;
-            				end;
             				local atributoPericia = 0;
             				local node = ndb.getRoot(sheet);
             
@@ -258,10 +253,6 @@ function newfrmFichaRPGmeister3p_svg()
     obj._e_event5 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
-            				if debug then
-            					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando total Pericia. ");
-            					index = index + 1;
-            				end;
             				local node = ndb.getRoot(sheet);
             				local pen = (tonumber(node.penalidade) or 0)
             
@@ -296,10 +287,6 @@ function newfrmFichaRPGmeister3p_svg()
     obj._e_event6 = obj.dataLink2:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
-            				if debug then
-            					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Pontos de Pericia. ");
-            					index = index + 1;
-            				end;
             				local node = ndb.getRoot(sheet);
             				local mod = tonumber(node.idiomasGrad) or 0;
             				if not node.idiomasIsClass then
@@ -360,9 +347,23 @@ function newfrmFichaRPGmeister3p_svg()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFichaRPGmeister3p_svg()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFichaRPGmeister3p_svg();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFichaRPGmeister3p_svg = {

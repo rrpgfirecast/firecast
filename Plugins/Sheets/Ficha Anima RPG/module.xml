@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5_prealpha_2">
+<module sdkVersion="3.5_prealpha_3">
 	<id>Ambesek.Anima</id>
-	<version>0.3.2</version>
+	<version>0.3.3</version>
 	<name>Ficha Anima</name>
 	<description>Ficha feita para o sistema Anima d20.</description>
 	<author>Ambesek</author>

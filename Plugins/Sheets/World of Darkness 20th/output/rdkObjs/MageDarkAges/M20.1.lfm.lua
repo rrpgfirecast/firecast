@@ -5,10 +5,9 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmMDA20_1()
-    __o_rrpgObjs.beginObjectsLoading();
-
+local function constructNew_frmMDA20_1()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -5441,9 +5440,23 @@ function newfrmMDA20_1()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmMDA20_1()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmMDA20_1();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmMDA20_1 = {

@@ -5,10 +5,9 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newCaixaFichaNPC()
-    __o_rrpgObjs.beginObjectsLoading();
-
+local function constructNew_CaixaFichaNPC()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -3792,10 +3791,6 @@ function newCaixaFichaNPC()
     obj._e_event44 = obj.edit25:addEventListener("onChange",
         function (_)
             if sheet~=nil then
-            								if debug then
-            									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            									index = index + 1;
-            								end;
             								local mod = (tonumber(sheet.forComp) or 0);
             								mod = math.floor((mod-10)/2);
             								if mod >=0 then
@@ -3820,10 +3815,6 @@ function newCaixaFichaNPC()
     obj._e_event46 = obj.edit27:addEventListener("onChange",
         function (_)
             if sheet~=nil then
-            								if debug then
-            									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            									index = index + 1;
-            								end;
             								local mod = (tonumber(sheet.desComp) or 0);
             								mod = math.floor((mod-10)/2);
             								if mod >=0 then
@@ -3848,10 +3839,6 @@ function newCaixaFichaNPC()
     obj._e_event48 = obj.edit29:addEventListener("onChange",
         function (_)
             if sheet~=nil then
-            								if debug then
-            									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            									index = index + 1;
-            								end;
             								local mod = (tonumber(sheet.conComp) or 0);
             								mod = math.floor((mod-10)/2);
             								if mod >=0 then
@@ -3876,10 +3863,6 @@ function newCaixaFichaNPC()
     obj._e_event50 = obj.edit31:addEventListener("onChange",
         function (_)
             if sheet~=nil then
-            								if debug then
-            									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            									index = index + 1;
-            								end;
             								local mod = (tonumber(sheet.intComp) or 0);
             								mod = math.floor((mod-10)/2);
             								if mod >=0 then
@@ -3904,10 +3887,6 @@ function newCaixaFichaNPC()
     obj._e_event52 = obj.edit33:addEventListener("onChange",
         function (_)
             if sheet~=nil then
-            								if debug then
-            									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            									index = index + 1;
-            								end;
             								local mod = (tonumber(sheet.sabComp) or 0);
             								mod = math.floor((mod-10)/2);
             								if mod >=0 then
@@ -3932,10 +3911,6 @@ function newCaixaFichaNPC()
     obj._e_event54 = obj.edit35:addEventListener("onChange",
         function (_)
             if sheet~=nil then
-            								if debug then
-            									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            									index = index + 1;
-            								end;
             								local mod = (tonumber(sheet.carComp) or 0);
             								mod = math.floor((mod-10)/2);
             								if mod >=0 then
@@ -4718,9 +4693,23 @@ function newCaixaFichaNPC()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newCaixaFichaNPC()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_CaixaFichaNPC();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _CaixaFichaNPC = {

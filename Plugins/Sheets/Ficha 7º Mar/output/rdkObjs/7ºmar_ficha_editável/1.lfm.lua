@@ -5,10 +5,9 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrm_7mar_ficha_editavel1_svg()
-    __o_rrpgObjs.beginObjectsLoading();
-
+local function constructNew_frm_7mar_ficha_editavel1_svg()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -2776,9 +2775,23 @@ function newfrm_7mar_ficha_editavel1_svg()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrm_7mar_ficha_editavel1_svg()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frm_7mar_ficha_editavel1_svg();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frm_7mar_ficha_editavel1_svg = {

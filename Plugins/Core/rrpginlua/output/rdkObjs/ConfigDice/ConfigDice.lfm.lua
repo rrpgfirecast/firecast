@@ -5,10 +5,9 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmConfigDice()
-    __o_rrpgObjs.beginObjectsLoading();
-
+local function constructNew_frmConfigDice()
     local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
@@ -412,9 +411,23 @@ self.btnFechar1.text = lang('fc.BottomClosePopupPanel.close');
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmConfigDice()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmConfigDice();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmConfigDice = {

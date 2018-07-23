@@ -444,6 +444,10 @@ function utils.openSharedStream(sharedId)
 	return utils.streamFromHandle(_util_openSharedStream(sharedId));
 end;
 
+function utils.generateUniqueString()
+	return _rrpg_generateUniqueStrID();
+end;
+
 utils.colorToRGBA = _gui_colorToRGBA;
 utils.RGBAToColor = _gui_RGBAToColor;
 

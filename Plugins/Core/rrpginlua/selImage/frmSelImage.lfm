@@ -23,7 +23,7 @@
 		self:adaptarTamanhoDaTela();
 	
 		local cUser = Firecast.getCurrentUser();
-		local canUseFireDrive = cUser.isGold or cUser.isGoldPlus or cUser.isRuby;		
+		local canUseFireDrive = cUser.isGold or cUser.isGoldPlus or cUser.isRuby;			
 		
 		if canUseFireDrive then							
 			self.navigator = require("/firedrive/firedriveNavigator.dlua").newFDNavigatorLayout();				

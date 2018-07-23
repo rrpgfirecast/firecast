@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmListaPoderes" height="50" theme="default"> 
+<script>
+			local function askForDelete()
+				dialogs.confirmYesNo("Deseja realmente apagar este item?",
+									 function (confirmado)
+										if confirmado then
+											ndb.deleteNode(self.sheet);
+										end;
+									 end);
+			end;
+</script>
+
+        <layout align="client" margins="{left=4, right=4, top=4, bottom=4}">
+                <!-- Botao para apagar o item da lista -->
+                <button align="left" width="32" text="X" onClick="askForDelete();"/>               
+
+                <!-- O titulo do item que aparece na lista -->
+                <label align="client" text="" field="PoderNome" margins="{left=4}"/>
+        </layout>
+</form>
+
+

@@ -87,10 +87,6 @@
 		<dataLink fields="{'precoCabeca', 'precoOlhos', 'precoPescoco', 'precoOmbros', 'precoTorso', 'precoCorpo', 'precoPunhos', 'precoCintura', 'precoMaos', 'precoDedosI', 'precoDesdosII', 'precoPes', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal', 'precoCorpo2', 'precoTesta'}">
 			<event name="onChange">
 				if sheet~= nil then
-					if debug then
-						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Gastos em PO");
-						index = index + 1;
-					end;
 
 					-- Calculando todos gastos
 					local mod = 0;
@@ -183,10 +179,6 @@
 		<dataLink field="cargaPesada">
 			<event name="onChange">
 				if sheet~= nil then
-					if debug then
-						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Carga");
-						index = index + 1;
-					end;
 
 					local mod1 = sheet.cargaPesada;
 					if mod1==nil then
@@ -208,10 +200,6 @@
 		<dataLink fields="{'pesoCabeca', 'pesoOlhos', 'pesoPescoco', 'pesoOmbros', 'pesoTorso', 'pesoCorpo', 'pesoPunhos', 'pesoCintura', 'pesoMaos', 'pesoDedosI', 'pesoDesdosII', 'pesoPes', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp', 'pesoTesta', 'pesoCorpo2'}">
 			<event name="onChange">
 				if sheet~=nil then
-					if debug then
-						rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Carga");
-						index = index + 1;
-					end;
 					local mod = 0;
 					mod = (getNumber(sheet.pesoCabeca) or 0) +
 								(getNumber(sheet.pesoOlhos) or 0) +

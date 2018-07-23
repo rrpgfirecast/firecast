@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFichaRPGmeister7A_svg()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmFichaRPGmeister7A_svg()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -111,7 +111,7 @@ function newfrmFichaRPGmeister7A_svg()
 				end
 				mod = string.gsub(mod, ",", ".");
 				mod = string.gsub(mod, "_", ",");
-				node.precoArmas = mod .. "PO";
+				node.precoArmas = mod;
 			end;
 		end;
 
@@ -162,7 +162,7 @@ function newfrmFichaRPGmeister7A_svg()
 		
 
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj);
     obj.edit1:setLeft(0);
     obj.edit1:setTop(1);
@@ -171,7 +171,7 @@ function newfrmFichaRPGmeister7A_svg()
     obj.edit1:setField("nome");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj);
     obj.edit2:setLeft(245);
     obj.edit2:setTop(1);
@@ -180,7 +180,7 @@ function newfrmFichaRPGmeister7A_svg()
     obj.edit2:setField("peso");
     obj.edit2:setName("edit2");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj);
     obj.edit3:setLeft(295);
     obj.edit3:setTop(1);
@@ -189,7 +189,7 @@ function newfrmFichaRPGmeister7A_svg()
     obj.edit3:setField("preco");
     obj.edit3:setName("edit3");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setLeft(370);
     obj.button1:setTop(1);
@@ -198,7 +198,7 @@ function newfrmFichaRPGmeister7A_svg()
     obj.button1:setText("i");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj);
     obj.button2:setLeft(395);
     obj.button2:setTop(1);
@@ -207,7 +207,7 @@ function newfrmFichaRPGmeister7A_svg()
     obj.button2:setText("N");
     obj.button2:setName("button2");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj);
     obj.button3:setLeft(420);
     obj.button3:setTop(1);
@@ -217,27 +217,27 @@ function newfrmFichaRPGmeister7A_svg()
     obj.button3:setName("button3");
 
     obj._e_event0 = obj.edit2:addEventListener("onUserChange",
-        function (self)
+        function (_)
             weaponWeight();
         end, obj);
 
     obj._e_event1 = obj.edit3:addEventListener("onUserChange",
-        function (self)
+        function (_)
             weaponPrice();
         end, obj);
 
     obj._e_event2 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             showArmaPopup();
         end, obj);
 
     obj._e_event3 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             createName();
         end, obj);
 
     obj._e_event4 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             askForDelete();
         end, obj);
 
@@ -269,9 +269,23 @@ function newfrmFichaRPGmeister7A_svg()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFichaRPGmeister7A_svg()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFichaRPGmeister7A_svg();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFichaRPGmeister7A_svg = {
@@ -285,6 +299,6 @@ local _frmFichaRPGmeister7A_svg = {
     description=""};
 
 frmFichaRPGmeister7A_svg = _frmFichaRPGmeister7A_svg;
-rrpg.registrarForm(_frmFichaRPGmeister7A_svg);
+Firecast.registrarForm(_frmFichaRPGmeister7A_svg);
 
 return _frmFichaRPGmeister7A_svg;

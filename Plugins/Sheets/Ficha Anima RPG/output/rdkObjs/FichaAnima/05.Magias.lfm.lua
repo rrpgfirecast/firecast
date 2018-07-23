@@ -5,10 +5,9 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFichaRPGmeister5M_svg()
-    __o_rrpgObjs.beginObjectsLoading();
-
+local function constructNew_frmFichaRPGmeister5M_svg()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -201,10 +200,6 @@ function newfrmFichaRPGmeister5M_svg()
 
 				local function limpar()
 					if self.boxDetalhesDoItem.node~= nil then
-						if debug then
-							rrpg.getMesaDe(self.boxDetalhesDoItem.node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Visibilidade da pagina de magias. ");
-							index = index + 1;
-						end;
 						local mod = self.boxDetalhesDoItem.node.tipoMagia;
 						if mod=='1' then
 							self.layoutMagias.visible = true;
@@ -6333,10 +6328,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event4 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~=nil then
-            								if debug then
-            									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Paginas do Grimorio.");
-            									index = index + 1;
-            								end;
             								local mod = (tonumber(self.boxDetalhesDoItem.node.conhecidas0) or 0) + 
             											(tonumber(self.boxDetalhesDoItem.node.conhecidas1) or 0) + 
             											(tonumber(self.boxDetalhesDoItem.node.conhecidas2) or 0)*2 + 
@@ -6365,10 +6356,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event6 = obj.dataLink3:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -6406,10 +6393,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event7 = obj.dataLink4:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -6449,10 +6432,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event9 = obj.dataLink6:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -6490,10 +6469,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event10 = obj.dataLink7:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -6533,10 +6508,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event12 = obj.dataLink9:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -6574,10 +6545,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event13 = obj.dataLink10:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -6617,10 +6584,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event15 = obj.dataLink12:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -6658,10 +6621,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event16 = obj.dataLink13:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -6701,10 +6660,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event18 = obj.dataLink15:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -6742,10 +6697,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event19 = obj.dataLink16:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -6785,10 +6736,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event21 = obj.dataLink18:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -6826,10 +6773,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event22 = obj.dataLink19:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -6869,10 +6812,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event24 = obj.dataLink21:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -6910,10 +6849,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event25 = obj.dataLink22:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -6953,10 +6888,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event27 = obj.dataLink24:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -6994,10 +6925,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event28 = obj.dataLink25:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -7037,10 +6964,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event30 = obj.dataLink27:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -7078,10 +7001,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event31 = obj.dataLink28:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -7121,10 +7040,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event33 = obj.dataLink30:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -7162,10 +7077,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event34 = obj.dataLink31:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -7194,10 +7105,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event35 = obj.dataLink32:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~=nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD signos");
-            								index = index + 1;
-            							end;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							if ctrl=='1' then
@@ -7221,10 +7128,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event36 = obj.dataLink33:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~=nil then
-            								if debug then
-            									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Paginas do grimorio.");
-            									index = index + 1;
-            								end;
             								local mod = (tonumber(self.boxDetalhesDoItem.node.conhecidas0) or 0) + 
             											(tonumber(self.boxDetalhesDoItem.node.conhecidas1) or 0) + 
             											(tonumber(self.boxDetalhesDoItem.node.conhecidas2) or 0)*2 + 
@@ -7253,10 +7156,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event38 = obj.dataLink35:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -7294,10 +7193,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event39 = obj.dataLink36:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -7337,10 +7232,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event41 = obj.dataLink38:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -7378,10 +7269,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event42 = obj.dataLink39:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -7421,10 +7308,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event44 = obj.dataLink41:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -7462,10 +7345,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event45 = obj.dataLink42:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -7505,10 +7384,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event47 = obj.dataLink44:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -7546,10 +7421,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event48 = obj.dataLink45:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -7589,10 +7460,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event50 = obj.dataLink47:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -7630,10 +7497,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event51 = obj.dataLink48:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -7673,10 +7536,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event53 = obj.dataLink50:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -7714,10 +7573,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event54 = obj.dataLink51:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -7757,10 +7612,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event56 = obj.dataLink53:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -7798,10 +7649,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event57 = obj.dataLink54:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -7841,10 +7688,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event59 = obj.dataLink56:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -7882,10 +7725,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event60 = obj.dataLink57:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -7925,10 +7764,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event62 = obj.dataLink59:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -7966,10 +7801,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event63 = obj.dataLink60:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -8009,10 +7840,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event65 = obj.dataLink62:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -8050,10 +7877,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event66 = obj.dataLink63:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -8253,10 +8076,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event88 = obj.dataLink65:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -8294,10 +8113,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event89 = obj.dataLink66:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -8337,10 +8152,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event91 = obj.dataLink68:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -8378,10 +8189,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event92 = obj.dataLink69:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -8421,10 +8228,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event94 = obj.dataLink71:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -8462,10 +8265,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event95 = obj.dataLink72:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -8505,10 +8304,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event97 = obj.dataLink74:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -8546,10 +8341,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event98 = obj.dataLink75:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -8589,10 +8380,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event100 = obj.dataLink77:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -8630,10 +8417,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event101 = obj.dataLink78:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -8673,10 +8456,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event103 = obj.dataLink80:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -8714,10 +8493,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event104 = obj.dataLink81:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -8757,10 +8532,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event106 = obj.dataLink83:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -8798,10 +8569,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event107 = obj.dataLink84:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -8841,10 +8608,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event109 = obj.dataLink86:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -8882,10 +8645,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event110 = obj.dataLink87:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -8925,10 +8684,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event112 = obj.dataLink89:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -8966,10 +8721,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event113 = obj.dataLink90:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -9009,10 +8760,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event115 = obj.dataLink92:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -9050,10 +8797,6 @@ function newfrmFichaRPGmeister5M_svg()
     obj._e_event116 = obj.dataLink93:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							if debug then
-            								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-            								index = index + 1;
-            							end;
             							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -9844,9 +9587,23 @@ function newfrmFichaRPGmeister5M_svg()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFichaRPGmeister5M_svg()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFichaRPGmeister5M_svg();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFichaRPGmeister5M_svg = {

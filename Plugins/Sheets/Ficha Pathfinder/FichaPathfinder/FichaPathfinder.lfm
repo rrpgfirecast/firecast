@@ -2,8 +2,6 @@
 <form name="frmFichaRPGmeister" formType="sheetTemplate" dataType="Ambesek.Nefertyne.FichaPathfinder" title="Ficha Pathfinder" align="client" theme="dark">
     <script>
         <![CDATA[
-        local debug = false;
-        local index = 1;
 
         local function isNewVersion(installed, downloaded)
             local installedVersion = {};

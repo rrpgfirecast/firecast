@@ -52,10 +52,6 @@
 			<script>
 				local function limpar()
 					if self.boxDetalhesDoItem.node~= nil then
-						if debug then
-							rrpg.getMesaDe(self.boxDetalhesDoItem.node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Visibilidade da pagina de magias. ");
-							index = index + 1;
-						end;
 						local mod = self.boxDetalhesDoItem.node.tipoMagia;
 						if mod=='1' then
 							self.layoutMagias.visible = true;
@@ -117,10 +113,6 @@
 				<dataLink fields="{'atributoBonus', 'efetModFor', 'efetModDes', 'efetModCon', 'efetModInt', 'efetModSab', 'efetModCar'}">
 					<event name="onChange">
 						if sheet ~= nil then
-							if debug then
-								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Bonus Magia.");
-								index = index + 1;
-							end;
 							local resultado = 0;
 							local mod = 0;
 							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
@@ -162,10 +154,6 @@
 				<dataLink fields="{'atributoCD', 'efetModFor', 'efetModDes', 'efetModCon', 'efetModInt', 'efetModSab', 'efetModCar'}">
 					<event name="onChange">
 						if sheet ~= nil then
-							if debug then
-								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD de Magia.");
-								index = index + 1;
-							end;
 							local resultado = 0;
 							local mod = 0;
 							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
@@ -249,10 +237,6 @@
 					<dataLink fields="{'conhecidas0', 'conhecidas1', 'conhecidas2', 'conhecidas3', 'conhecidas4', 'conhecidas5', 'conhecidas6', 'conhecidas7', 'conhecidas8', 'conhecidas9'}">
 						<event name="onChange">
 							if sheet~=nil then
-								if debug then
-									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Paginas do Grimorio.");
-									index = index + 1;
-								end;
 								local mod = (tonumber(self.boxDetalhesDoItem.node.conhecidas0) or 0) + 
 											(tonumber(self.boxDetalhesDoItem.node.conhecidas1) or 0) + 
 											(tonumber(self.boxDetalhesDoItem.node.conhecidas2) or 0)*2 + 
@@ -348,10 +332,6 @@
 				<dataLink fields="{'atributoCD', 'efetModFor', 'efetModDes', 'efetModCon', 'efetModInt', 'efetModSab', 'efetModCar'}">
 					<event name="onChange">
 						if sheet~=nil then
-							if debug then
-								rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando CD signos");
-								index = index + 1;
-							end;
 							local mod = 0;
 							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
 							if ctrl=='1' then
@@ -457,10 +437,6 @@
 					<dataLink fields="{'conhecidas0', 'conhecidas1', 'conhecidas2', 'conhecidas3', 'conhecidas4', 'conhecidas5', 'conhecidas6', 'conhecidas7', 'conhecidas8', 'conhecidas9'}">
 						<event name="onChange">
 							if sheet~=nil then
-								if debug then
-									rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Paginas do grimorio.");
-									index = index + 1;
-								end;
 								local mod = (tonumber(self.boxDetalhesDoItem.node.conhecidas0) or 0) + 
 											(tonumber(self.boxDetalhesDoItem.node.conhecidas1) or 0) + 
 											(tonumber(self.boxDetalhesDoItem.node.conhecidas2) or 0)*2 + 

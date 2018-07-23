@@ -5,10 +5,9 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmDnD5()
-    __o_rrpgObjs.beginObjectsLoading();
-
+local function constructNew_frmDnD5()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -3286,6 +3285,7 @@ function newfrmDnD5()
     obj.image1:setField("imagens.aparencia");
     obj.image1:setMargins({top=2});
     obj.image1:setEditable(true);
+    lfm_setPropAsString(obj.image1, "animate",  "true");
     obj.image1:setName("image1");
 
     obj.label76 = GUI.fromHandle(_obj_newObject("label"));
@@ -7700,9 +7700,23 @@ self.flwMagicRecordList10._recalcHeight();
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmDnD5()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmDnD5();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmDnD5 = {

@@ -5,10 +5,9 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFichaRPGmeister8_svg()
-    __o_rrpgObjs.beginObjectsLoading();
-
+local function constructNew_frmFichaRPGmeister8_svg()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -1189,10 +1188,6 @@ function newfrmFichaRPGmeister8_svg()
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.forComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -1219,10 +1214,6 @@ function newfrmFichaRPGmeister8_svg()
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.desComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -1249,10 +1240,6 @@ function newfrmFichaRPGmeister8_svg()
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.conComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -1279,10 +1266,6 @@ function newfrmFichaRPGmeister8_svg()
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.intComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -1309,10 +1292,6 @@ function newfrmFichaRPGmeister8_svg()
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.sabComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -1339,10 +1318,6 @@ function newfrmFichaRPGmeister8_svg()
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
             					if node~=nil then
-            						if debug then
-            							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-            							index = index + 1;
-            						end;
             						local mod = (tonumber(node.carComp) or 0);
             						mod = math.floor((mod-10)/2);
             						if mod >=0 then
@@ -1603,9 +1578,23 @@ function newfrmFichaRPGmeister8_svg()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFichaRPGmeister8_svg()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFichaRPGmeister8_svg();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFichaRPGmeister8_svg = {

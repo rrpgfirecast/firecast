@@ -55,10 +55,6 @@
 	<comboBox vertTextAlign="center" horzTextAlign="center" left="165" top="0" width="60" height="25" field="chavePericia" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" fontColor="white">
 		<event name="onChange">
 			if sheet~= nil then
-				if debug then
-					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Atributo Pericia. ");
-					index = index + 1;
-				end;
 				local atributoPericia = 0;
 				local node = ndb.getRoot(sheet);
 
@@ -92,10 +88,6 @@
 	<dataLink fields="{'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia'}">
 		<event name="onChange">
 			if sheet~= nil then
-				if debug then
-					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando total Pericia. ");
-					index = index + 1;
-				end;
 				local node = ndb.getRoot(sheet);
 				local pen = (tonumber(node.penalidade) or 0)
 
@@ -126,18 +118,16 @@
 	<dataLink fields="{'graduacaoPericia', 'isClass'}">
 		<event name="onChange">
 			if sheet~= nil then
-				if debug then
-					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Pontos de Pericia. ");
-					index = index + 1;
-				end;
 				local node = ndb.getRoot(sheet);
-				local mod = tonumber(node.idiomasGrad) or 0;
+				local mod = tonumber(node.idiomasGrad) or 0; 
+				local deClasse = 0;
 				if not node.idiomasIsClass then
 					mod = mod + (tonumber(node.idiomasGrad) or 0);
+				else
+					deClasse = 1;
 				end;
 				local path = 0;
-				local nodes = ndb.getChildNodes(node.campoDasPericias); 
-				local deClasse = 0;
+				local nodes = ndb.getChildNodes(node.campoDasPericias);
 				--showMessage(#nodes);
 				for i=1, #nodes, 1 do
 					local mult = 1;

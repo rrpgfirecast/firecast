@@ -2,11 +2,6 @@
 <form name="frmFichaRPGmeister2Aar_svg" width="1110" height="280" theme="dark"  margins="{top=1, bottom=1}">
 	<script>
 		local function updateAll()
-
-            if debug then
-                rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Ataque com Arma.");
-                index = index + 1;
-            end;
 			if sheet == nil then
 				return;
 			end;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.4b">
+<module sdkVersion="3.5_prealpha_3">
 	<id>Ambesek.Herois.d20</id>
-	<version>0.1.1</version>
+	<version>0.3</version>
 	<name>Ficha Herois d20</name>
 	<description>Ficha feita para jogar campanhas de Súper-Herois usando o sistema d20/D&amp;D3.5</description>
 	<author>Ambesek</author>

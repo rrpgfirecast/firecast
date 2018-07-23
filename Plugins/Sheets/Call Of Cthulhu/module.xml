@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5_prealpha_2" compilationDate="15032016203158" sdkApiVersion="7" originalPluginFileName="CALL1.rpk">
+<module sdkVersion="3.5_prealpha_3" compilationDate="15032016203158" sdkApiVersion="7" originalPluginFileName="CALL1.rpk">
 	<!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
 	<id>o_CHAMADO</id>
 	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->

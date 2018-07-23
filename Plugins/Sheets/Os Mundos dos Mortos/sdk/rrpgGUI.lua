@@ -838,8 +838,10 @@ local function imageFromHandle(handle)
 	image.props["showProgress"] = {setter = "setShowProgress", getter="getShowProgress", tipo="bool"};
 	image.props["field"] = {setter = "setField", getter="getField", tipo="string"};	
 	image.props["editable"] = {setter = "setEditable", getter="getEditable", tipo="bool"};		
+	image.props["naturalAnimated"] = {readProp="NaturalAnimated", tipo="bool"};				
 	image.props["naturalWidth"] = {getter="getNaturalWidth", tipo="double"};			
 	image.props["naturalHeight"] = {getter="getNaturalHeight", tipo="double"};			
+	image.props["animate"] = {readProp="Animate", writeProp="Animate", tipo="bool"};			
 	
 	image.eves["onPictureLoadedChange"] = "";
 	image.eves["onLoad"] = "";	

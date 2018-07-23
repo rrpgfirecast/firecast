@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5_prealpha_2">
+<module sdkVersion="3.5_prealpha_3">
     <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
     <id>Ambesek.Macro.Buttons</id>
     <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->

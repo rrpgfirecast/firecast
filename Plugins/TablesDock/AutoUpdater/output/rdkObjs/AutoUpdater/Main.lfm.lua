@@ -5,10 +5,9 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmTemplate()
-    __o_rrpgObjs.beginObjectsLoading();
-
+local function constructNew_frmTemplate()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -93,6 +92,13 @@ function newfrmTemplate()
                     -- o conteúdo do arquivo baixado está em stream.
                     local info = rrpg.plugins.getRPKDetails(stream);
 
+                    updaterSheet.loaded = updaterSheet.loaded + 1;
+                    updaterSheet.loading = "Carregando " .. updaterSheet.loaded .. "/" .. updaterSheet.toLoad;
+
+                    if updaterSheet.toLoad <= updaterSheet.loaded then
+                        self.loader.visible = false;
+                    end;
+
                     if myNode ~= nil then
                         myNode.versionAvailable = info.version;
                         myNode.url = url;
@@ -108,16 +114,16 @@ function newfrmTemplate()
                         item.enabled = true;
                     end;
                 end,       
-
                 function (errorMsg)
                     -- esta função será chamada quando ocorrer algum erro no download.
                     -- errorMsg possui a msg de erro
-                end,       
-
+                    showMessage(errorMsg);
+                end,
                 function (downloaded, total)
                     -- esta função será chamada constantemente.
                     -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
-                end);
+                end,
+                "checkForModification");
         end;
         
 
@@ -271,6 +277,33 @@ function newfrmTemplate()
     obj.button3:setText("RPGmeister");
     obj.button3:setName("button3");
 
+    obj.loader = GUI.fromHandle(_obj_newObject("layout"));
+    obj.loader:setParent(obj.scope);
+    obj.loader:setLeft(250);
+    obj.loader:setTop(0);
+    obj.loader:setHeight(25);
+    obj.loader:setWidth(150);
+    obj.loader:setName("loader");
+    obj.loader:setVisible(false);
+
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image1:setParent(obj.loader);
+    obj.image1:setLeft(0);
+    obj.image1:setTop(0);
+    obj.image1:setWidth(25);
+    obj.image1:setHeight(25);
+    obj.image1:setSRC("/AutoUpdater/images/hourglass.png");
+    obj.image1:setName("image1");
+
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label5:setParent(obj.loader);
+    obj.label5:setLeft(25);
+    obj.label5:setTop(0);
+    obj.label5:setWidth(140);
+    obj.label5:setHeight(25);
+    obj.label5:setField("loading");
+    obj.label5:setName("label5");
+
     obj._e_event0 = obj:addEventListener("onNodeReady",
         function (_)
             -- Carrega o local sheet para ser usado. 
@@ -317,6 +350,9 @@ function newfrmTemplate()
                     self.installedPluginsList:sort();
             
                     -- Inicia o download da lista de plugins do git
+            
+                    self.loader.visible = true;
+                    updaterSheet.loading = "Carregando ?/?";
                     internet.download("https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Plugins/plugins.xml",
                         function(stream, contentType)
                             if vhd.fileExists("import.xml") then
@@ -331,6 +367,9 @@ function newfrmTemplate()
             
                                     local list = ndb.getChildNodes(import);
             
+                                    updaterSheet.loaded = 0;
+                                    updaterSheet.toLoad = #list;
+                                    updaterSheet.loading = "Carregando 0/" .. updaterSheet.toLoad;
                                     for i=1, #list, 1 do
                                         -- Verifica se tem updates em cada plugin
                                         verifyUpdate(list[i].id, list[i].url);
@@ -339,20 +378,17 @@ function newfrmTemplate()
                                 end, 
                                 1000
                             );
-                            
-            
                         end,       
-            
                         function (errorMsg)
                             -- esta função será chamada quando ocorrer algum erro no download.
                             -- errorMsg possui a msg de erro
                             showMessage("Não consegui pegar a lista de plugins do githut :/ \n" .. errorMsg);
                         end,       
-            
                         function (downloaded, total)
                             -- esta função será chamada constantemente.
                             -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
-                    end);
+                        end,
+                        "alwaysDownload");
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onNodeReady",
@@ -394,7 +430,8 @@ function newfrmTemplate()
                         function (downloaded, total)
                             -- esta função será chamada constantemente.
                             -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
-                        end);
+                        end,
+                        "checkForModification");
         end, obj);
 
     obj._e_event2 = obj.installedPluginsList:addEventListener("onCompare",
@@ -462,36 +499,53 @@ function newfrmTemplate()
           self:setNodeDatabase(nil);
         end;
 
-        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
-        if self.downloadedPluginsList ~= nil then self.downloadedPluginsList:destroy(); self.downloadedPluginsList = nil; end;
         if self.tab3 ~= nil then self.tab3:destroy(); self.tab3 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.installedPluginsList ~= nil then self.installedPluginsList:destroy(); self.installedPluginsList = nil; end;
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
-        if self.frmTemplateCreditos ~= nil then self.frmTemplateCreditos:destroy(); self.frmTemplateCreditos = nil; end;
+        if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
-        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
+        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
+        if self.loader ~= nil then self.loader:destroy(); self.loader = nil; end;
+        if self.scope ~= nil then self.scope:destroy(); self.scope = nil; end;
+        if self.frmAvailable ~= nil then self.frmAvailable:destroy(); self.frmAvailable = nil; end;
+        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
+        if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
+        if self.downloadedPluginsList ~= nil then self.downloadedPluginsList:destroy(); self.downloadedPluginsList = nil; end;
+        if self.frmTemplateCreditos ~= nil then self.frmTemplateCreditos:destroy(); self.frmTemplateCreditos = nil; end;
+        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
         if self.tabControl1 ~= nil then self.tabControl1:destroy(); self.tabControl1 = nil; end;
         if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
-        if self.scope ~= nil then self.scope:destroy(); self.scope = nil; end;
         if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.frmInstalled ~= nil then self.frmInstalled:destroy(); self.frmInstalled = nil; end;
-        if self.frmAvailable ~= nil then self.frmAvailable:destroy(); self.frmAvailable = nil; end;
-        if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
         self:_oldLFMDestroy();
     end;
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmTemplate()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmTemplate();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmTemplate = {

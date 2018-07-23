@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFichaRPGmeister2a_svg()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmFichaRPGmeister2a_svg()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,12 +31,12 @@ function newfrmFichaRPGmeister2a_svg()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
     obj.button1:setText("Novo Ataque");
     obj.button1:setLeft(50);
@@ -45,7 +45,7 @@ function newfrmFichaRPGmeister2a_svg()
     obj.button1:setHeight(20);
     obj.button1:setName("button1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(25);
@@ -56,7 +56,7 @@ function newfrmFichaRPGmeister2a_svg()
     obj.rectangle1:setStrokeSize(1);
     obj.rectangle1:setName("rectangle1");
 
-    obj.rclListaDosAtaques = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclListaDosAtaques = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDosAtaques:setParent(obj.scrollBox1);
     obj.rclListaDosAtaques:setName("rclListaDosAtaques");
     obj.rclListaDosAtaques:setField("campoDosAtaques");
@@ -69,7 +69,7 @@ function newfrmFichaRPGmeister2a_svg()
     obj.rclListaDosAtaques:setLayout("vertical");
     obj.rclListaDosAtaques:setMinQt(1);
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.scrollBox1);
     obj.rectangle2:setLeft(208);
     obj.rectangle2:setTop(0);
@@ -80,7 +80,7 @@ function newfrmFichaRPGmeister2a_svg()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.boxDetalhesDoAtaque = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.boxDetalhesDoAtaque = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.boxDetalhesDoAtaque:setParent(obj.scrollBox1);
     obj.boxDetalhesDoAtaque:setName("boxDetalhesDoAtaque");
     obj.boxDetalhesDoAtaque:setVisible(false);
@@ -272,7 +272,7 @@ function newfrmFichaRPGmeister2a_svg()
 				
 
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.boxDetalhesDoAtaque);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -280,7 +280,7 @@ function newfrmFichaRPGmeister2a_svg()
     obj.layout1:setHeight(25);
     obj.layout1:setName("layout1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(5);
     obj.label1:setTop(5);
@@ -289,7 +289,7 @@ function newfrmFichaRPGmeister2a_svg()
     obj.label1:setText("Nome");
     obj.label1:setName("label1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setLeft(55);
     obj.edit1:setTop(5);
@@ -298,7 +298,7 @@ function newfrmFichaRPGmeister2a_svg()
     obj.edit1:setField("nomeAtaque");
     obj.edit1:setName("edit1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout1);
     obj.button2:setText("Nova Arma");
     obj.button2:setLeft(360);
@@ -307,7 +307,7 @@ function newfrmFichaRPGmeister2a_svg()
     obj.button2:setHeight(20);
     obj.button2:setName("button2");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.layout1);
     obj.button3:setText("Ataque Total");
     obj.button3:setLeft(465);
@@ -316,7 +316,7 @@ function newfrmFichaRPGmeister2a_svg()
     obj.button3:setHeight(20);
     obj.button3:setName("button3");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.layout1);
     obj.button4:setText("Cancelar");
     obj.button4:setLeft(570);
@@ -326,7 +326,7 @@ function newfrmFichaRPGmeister2a_svg()
     obj.button4:setHint("Libera a trava que evita multiplos ataques ao mesmo tempo manualmente. Sistema anti duplo clique. ");
     obj.button4:setName("button4");
 
-    obj.rclListaDeArmas = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclListaDeArmas = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDeArmas:setParent(obj.boxDetalhesDoAtaque);
     obj.rclListaDeArmas:setName("rclListaDeArmas");
     obj.rclListaDeArmas:setField("campoDeArmas");
@@ -339,19 +339,19 @@ function newfrmFichaRPGmeister2a_svg()
     obj.rclListaDeArmas:setMinQt(1);
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclListaDosAtaques:append();
         end, obj);
 
     obj._e_event1 = obj.rclListaDosAtaques:addEventListener("onSelect",
-        function (self)
+        function (_)
             local node = self.rclListaDosAtaques.selectedNode;
             				self.boxDetalhesDoAtaque.node = node;
             				self.boxDetalhesDoAtaque.visible = (node ~= nil);
         end, obj);
 
     obj._e_event2 = obj.rclListaDosAtaques:addEventListener("onEndEnumeration",
-        function (self)
+        function (_)
             if self.rclListaDosAtaques.selectedNode == nil and sheet ~= nil then
             					local nodes = ndb.getChildNodes(sheet.campoDosAtaques);               
             					if #nodes > 0 then
@@ -361,12 +361,12 @@ function newfrmFichaRPGmeister2a_svg()
         end, obj);
 
     obj._e_event3 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclListaDeArmas:append();
         end, obj);
 
     obj._e_event4 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet==nil then
             							return;
             						end;
@@ -393,12 +393,20 @@ function newfrmFichaRPGmeister2a_svg()
             
             							if weapons[i].municao~= nil then
             								local municao = tonumber(weapons[i].municao) or 0;
+            								local disparos = 1;
+            								if weapons[i].disparos then
+            									disparos = tonumber(weapons[i].disparosQtd) or 1;
+            								end;
             								local multMunicao = tonumber(weapons[i].multMunicao) or 0;
-            								if numeroAtaques > municao then
+            								if (numeroAtaques * disparos) > municao then
             									weapons[i].municao = 0;
-            									mesaDoPersonagem.activeChat:enviarMensagem("Esta arma possui apenas " .. municao .. " das " .. numeroAtaques .. " munições necessarias para atacar.");
+            									mesaDoPersonagem.activeChat:enviarMensagem("Esta arma possui apenas " .. municao .. " das " .. (numeroAtaques * disparos) .. " munições necessarias para atacar.");
             								else
-            									weapons[i].municao = municao - numeroAtaques - multMunicao;
+            									weapons[i].municao = municao - (numeroAtaques * disparos) - multMunicao;
+            
+            									if weapons[i].municao == 0 then
+            										mesaDoPersonagem.activeChat:enviarMensagem("Arma descarregada.");
+            									end;
             								end;
             							end;
             						end;
@@ -415,7 +423,7 @@ function newfrmFichaRPGmeister2a_svg()
         end, obj);
 
     obj._e_event5 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             rolando =false;
         end, obj);
 
@@ -455,9 +463,23 @@ function newfrmFichaRPGmeister2a_svg()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFichaRPGmeister2a_svg()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFichaRPGmeister2a_svg();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFichaRPGmeister2a_svg = {
@@ -471,6 +493,6 @@ local _frmFichaRPGmeister2a_svg = {
     description=""};
 
 frmFichaRPGmeister2a_svg = _frmFichaRPGmeister2a_svg;
-rrpg.registrarForm(_frmFichaRPGmeister2a_svg);
+Firecast.registrarForm(_frmFichaRPGmeister2a_svg);
 
 return _frmFichaRPGmeister2a_svg;

@@ -5,10 +5,9 @@ require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
 require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFichaRPGmeister11_svg()
-    __o_rrpgObjs.beginObjectsLoading();
-
+local function constructNew_frmFichaRPGmeister11_svg()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -134,61 +133,21 @@ function newfrmFichaRPGmeister11_svg()
     obj.label5:setParent(obj.scrollBox1);
     obj.label5:setLeft(630);
     obj.label5:setTop(400);
-    obj.label5:setWidth(90);
+    obj.label5:setWidth(200);
     obj.label5:setHeight(20);
     obj.label5:setText("SUA VERSÃO:");
+    obj.label5:setField("versionInstalled");
     obj.label5:setName("label5");
-
-    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle3:setParent(obj.scrollBox1);
-    obj.rectangle3:setLeft(724);
-    obj.rectangle3:setTop(399);
-    obj.rectangle3:setWidth(102);
-    obj.rectangle3:setHeight(22);
-    obj.rectangle3:setColor("white");
-    obj.rectangle3:setStrokeColor("black");
-    obj.rectangle3:setStrokeSize(1);
-    obj.rectangle3:setName("rectangle3");
-
-    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image2:setParent(obj.scrollBox1);
-    obj.image2:setLeft(725);
-    obj.image2:setTop(400);
-    obj.image2:setWidth(100);
-    obj.image2:setHeight(20);
-    obj.image2:setStyle("autoFit");
-    obj.image2:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao04.png");
-    obj.image2:setName("image2");
 
     obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.scrollBox1);
-    obj.label6:setLeft(620);
+    obj.label6:setLeft(630);
     obj.label6:setTop(430);
-    obj.label6:setWidth(100);
+    obj.label6:setWidth(200);
     obj.label6:setHeight(20);
     obj.label6:setText("VERSÃO ATUAL:");
+    obj.label6:setField("versionDownloaded");
     obj.label6:setName("label6");
-
-    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle4:setParent(obj.scrollBox1);
-    obj.rectangle4:setLeft(724);
-    obj.rectangle4:setTop(429);
-    obj.rectangle4:setWidth(102);
-    obj.rectangle4:setHeight(22);
-    obj.rectangle4:setColor("white");
-    obj.rectangle4:setStrokeColor("black");
-    obj.rectangle4:setStrokeSize(1);
-    obj.rectangle4:setName("rectangle4");
-
-    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image3:setParent(obj.scrollBox1);
-    obj.image3:setLeft(725);
-    obj.image3:setTop(430);
-    obj.image3:setWidth(100);
-    obj.image3:setHeight(20);
-    obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Avatar%20d20/release.png");
-    obj.image3:setName("image3");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
@@ -255,7 +214,7 @@ function newfrmFichaRPGmeister11_svg()
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Avatar%20d20/Ficha%20Avatar%20d20.rpk')
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/output/Ficha%20Avatar%20d20.rpk?raw=true')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
@@ -301,19 +260,15 @@ function newfrmFichaRPGmeister11_svg()
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
-        if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
+        if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
-        if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
-        if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
-        if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
@@ -325,9 +280,23 @@ function newfrmFichaRPGmeister11_svg()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFichaRPGmeister11_svg()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFichaRPGmeister11_svg();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFichaRPGmeister11_svg = {

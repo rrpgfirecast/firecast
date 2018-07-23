@@ -19,10 +19,6 @@
 				<event name="onChange">
 					local node = self.rclListaDosCompanheiros.selectedNode;
 					if node~=nil then
-						if debug then
-							rrpg.getMesaDe(node).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Modificador de Atributo do Companheiro. ");
-							index = index + 1;
-						end;
 						local mod = (tonumber(node.$(atr)Comp) or 0);
 						mod = math.floor((mod-10)/2);
 						if mod &gt;=0 then

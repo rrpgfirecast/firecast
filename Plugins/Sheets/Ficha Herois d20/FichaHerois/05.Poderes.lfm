@@ -16,7 +16,7 @@
 	<template name="tecnicaSmallCenter">
 		<flowPart minWidth="45" maxWidth="100" height="35">
 			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
-			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
 		</flowPart>
 	</template>
 	<template name="tecnicaLarge">
@@ -29,7 +29,7 @@
 		<textEditor align="client" field="descricao"/>
 	</popup>
 	<popup name="popPoder" width="250" height="250" backOpacity="0.4">
-		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
 			<tecnicaSmallCenter text="Nível" field="nivel"/>
 			<tecnicaSmallCenter text="Tema" field="tema"/>
 			<tecnicaSmallCenter text="Duração" field="duracao"/>
@@ -38,8 +38,20 @@
 			<tecnicaSmallCenter text="Alvo" field="alvo"/>
 			<tecnicaSmallCenter text="Execução" field="execucao"/>
 			<tecnicaSmallCenter text="TR" field="resistencia"/>
+			<tecnicaSmallCenter text="Livro" field="livro"/>
 		</flowLayout>
 		<textEditor align="client" field="descricao"/>
+		<dataLink fields="{'nivel','nome','custocusto'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+
+				local rcl = self:findControlByName("rclListaDosPoderes");
+
+				if rcl ~= nil then
+					rcl:sort();
+				end;
+			</event>
+		</dataLink>
 	</popup>
 
 	<scrollBox align="client">	
@@ -131,7 +143,17 @@
 
 			<recordList name="rclListaDosPoderes" field="campoDosPoderes" templateForm="frmPoder" left="5" top="50" width="375" height="545" layout="vertical">
 				<event name="onCompare">
-		            return ((tonumber(nodeA.nivel) or 0) - (tonumber(nodeB.nivel) or 0));
+		            local order = ((tonumber(nodeA.nivel) or 0) - (tonumber(nodeB.nivel) or 0));
+
+		            if order == 0 then
+		            	order = ((tonumber(nodeA.custo) or 0) - (tonumber(nodeB.custo) or 0));
+		            end;
+
+		            if order == 0 then
+		            	order = utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+		            end;
+
+		            return order;
 		        </event>
 			</recordList>
 		</layout>
