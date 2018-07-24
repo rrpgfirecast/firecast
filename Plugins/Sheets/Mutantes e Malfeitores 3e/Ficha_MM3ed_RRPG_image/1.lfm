@@ -903,7 +903,7 @@
                 <edit transparent="TRUE" fontSize="10" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="18" field="PPdefesas" compilerOrder="66"/>
             </layout>
             <layout left="593" top="1212" width="24" height="18" compilerOrder="67">
-                <label fontSize="10" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="24" height="18" field="PPpoderes" compilerOrder="68"/>
+                <edit transparent="true" fontSize="10" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="24" height="18" field="PPpoderes" compilerOrder="68"/>
             </layout>
             <layout left="630" top="1214" width="140" height="18" compilerOrder="69">
                 <label fontSize="12" fontColor="#000000" fontStyle="bold" vertTextAlign="center" left="0" top="0" width="140" height="18" field="PPsomatotal" compilerOrder="70"/>
