@@ -281,9 +281,9 @@ function newfrm_FM()
     obj.button3:setName("button3");
 
 
-			local default = ndb.load("defaults.xml");
+			local default;
 			local loaded = false;
-			--colocar algo para quando sheet terminar de carregar puxar os valores de default. 
+			--colocar algo para quando sheet terminar de carregar puxar os valores de default.room[rrpg.getMesaDe(sheet).codigoInterno]. 
 
 			local function dump(o)
 			   if type(o) == 'table' then
@@ -300,12 +300,13 @@ function newfrm_FM()
 
 		local function loadDefault()
 			if sheet==nil then return end;
+			if default==nil then return end;
 
-			if default.global then
-				sheet.showToolbar = default.showToolbar;
-				sheet.fontSize = default.fontSize;
-				sheet.fontColor = default.fontColor;
-				sheet.backgroundColor = default.backgroundColor;
+			if default.room[rrpg.getMesaDe(sheet).codigoInterno].global then
+				sheet.showToolbar = default.room[rrpg.getMesaDe(sheet).codigoInterno].showToolbar;
+				sheet.fontSize = default.room[rrpg.getMesaDe(sheet).codigoInterno].fontSize;
+				sheet.fontColor = default.room[rrpg.getMesaDe(sheet).codigoInterno].fontColor;
+				sheet.backgroundColor = default.room[rrpg.getMesaDe(sheet).codigoInterno].backgroundColor;
 				sheet.global = true;
 			end;
 
@@ -442,7 +443,17 @@ function newfrm_FM()
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
         function (self)
-            internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true",
+            default = ndb.load("defaults.xml");
+            		if default.room == nil then
+            			default.room = {};
+            		end;
+                    
+            		if default.room[rrpg.getMesaDe(sheet).codigoInterno] == nil then
+            			default.room[rrpg.getMesaDe(sheet).codigoInterno] = {};
+            		end;
+            
+            
+                    internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true",
                         function(stream, contentType)
                             local info = rrpg.plugins.getRPKDetails(stream);
                             sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
@@ -474,7 +485,8 @@ function newfrm_FM()
                         function (downloaded, total)
                             -- esta função será chamada constantemente.
                             -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
-                        end);
+                        end,
+                        "checkForModification");
         end, obj);
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
@@ -491,7 +503,7 @@ function newfrm_FM()
         function (self)
             if sheet~=nil then
             							self.txt.backgroundColor = sheet.backgroundColor;
-            							default.backgroundColor = sheet.backgroundColor;
+            							default.room[rrpg.getMesaDe(sheet).codigoInterno].backgroundColor = sheet.backgroundColor;
             						end;
         end, obj);
 
@@ -499,7 +511,7 @@ function newfrm_FM()
         function (self)
             if sheet~=nil then
             							self.txt.defaultFontColor = sheet.fontColor;
-            							default.fontColor = sheet.fontColor;
+            							default.room[rrpg.getMesaDe(sheet).codigoInterno].fontColor = sheet.fontColor;
             						end;
         end, obj);
 
@@ -507,7 +519,7 @@ function newfrm_FM()
         function (self)
             if sheet~=nil then
             							self.txt.defaultFontSize = sheet.fontSize;
-            							default.fontSize = sheet.fontSize;
+            							default.room[rrpg.getMesaDe(sheet).codigoInterno].fontSize = sheet.fontSize;
             						end;
         end, obj);
 
@@ -515,14 +527,14 @@ function newfrm_FM()
         function (self)
             if sheet~=nil then
             							self.txt.showToolbar = not sheet.showToolbar;
-            							default.showToolbar = sheet.showToolbar;
+            							default.room[rrpg.getMesaDe(sheet).codigoInterno].showToolbar = sheet.showToolbar;
             						end;
         end, obj);
 
     obj._e_event7 = obj.checkBox2:addEventListener("onChange",
         function (self)
             if sheet~=nil then
-            					default.global = sheet.global;
+            					default.room[rrpg.getMesaDe(sheet).codigoInterno].global = sheet.global;
             				end;
         end, obj);
 
@@ -531,16 +543,16 @@ function newfrm_FM()
             if sheet~=nil then
             							local default = ndb.load("defaults.xml");
             							
-            							sheet.showToolbar = default.showToolbar;
+            							sheet.showToolbar = default.room[rrpg.getMesaDe(sheet).codigoInterno].showToolbar;
             							self.txt.showToolbar = not sheet.showToolbar;
             
-            							sheet.fontSize = default.fontSize;
+            							sheet.fontSize = default.room[rrpg.getMesaDe(sheet).codigoInterno].fontSize;
             							self.txt.defaultFontSize = sheet.fontSize;
             
-            							sheet.fontColor = default.fontColor;
+            							sheet.fontColor = default.room[rrpg.getMesaDe(sheet).codigoInterno].fontColor;
             							self.txt.defaultFontColor = sheet.fontColor;
             							
-            							sheet.backgroundColor = default.backgroundColor;
+            							sheet.backgroundColor = default.room[rrpg.getMesaDe(sheet).codigoInterno].backgroundColor;
             							self.txt.backgroundColor = sheet.backgroundColor;
             						end;
         end, obj);
@@ -575,14 +587,25 @@ function newfrm_FM()
             						end;
         end, obj);
 
-    obj._e_event12 = obj.rclAbas:addEventListener("onSelect",
+    obj._e_event12 = obj.rclAbas:addEventListener("onCompare",
+        function (self, nodeA, nodeB)
+            local comp = ((tonumber(nodeA.index) or 0) - (tonumber(nodeB.index) or 0));
+            
+            						if comp == 0 then
+            							return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            						else
+            							return comp;
+            						end;
+        end, obj);
+
+    obj._e_event13 = obj.rclAbas:addEventListener("onSelect",
         function (self)
             local node = self.rclAbas.selectedNode;
             						self.boxTexto.node = node;
             						self.boxTexto.visible = (node ~= nil);
         end, obj);
 
-    obj._e_event13 = obj.rclAbas:addEventListener("onEndEnumeration",
+    obj._e_event14 = obj.rclAbas:addEventListener("onEndEnumeration",
         function (self)
             if self.rclAbas.selectedNode == nil and sheet ~= nil then
             							local nodes = ndb.getChildNodes(sheet.abas);			   
@@ -593,12 +616,13 @@ function newfrm_FM()
             						end;
         end, obj);
 
-    obj._e_event14 = obj.txt:addEventListener("onMouseMove",
+    obj._e_event15 = obj.txt:addEventListener("onMouseMove",
         function (self, event)
             loadDefault();
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event15);
         __o_rrpgObjs.removeEventListenerById(self._e_event14);
         __o_rrpgObjs.removeEventListenerById(self._e_event13);
         __o_rrpgObjs.removeEventListenerById(self._e_event12);
