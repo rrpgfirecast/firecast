@@ -61,7 +61,7 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 - [Malditos Goblins](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Malditos%20Goblins/output/mg.rpk?raw=true): Yiotoo
 	- Ficha para o sistema Malditos Goblins.
 - [Mighty Blade V6](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/MightyBladeV6/output/MightyBladeV6.rpk?raw=true): DanielMartinsLF
-- [Mutante e Malfeitores 3e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mutantes%20e%20Malfeitores%203e/output/MM3.rpk?raw=true): Janus71
+- [Mutante e Malfeitores 3e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mutantes%20e%20Malfeitores%203e/output/MM3.rpk?raw=true): Janus71 e Gilgante
 	- Ficha para o sistema Mutantes e Malfeitores. 
 - [Os Mundos dos Mortos ](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Os%20Mundos%20dos%20Mortos/output/Os%20Mundos%20dos%20Mortos.rpk?raw=true): Mestre_Stark
 - [Pokemon D20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Pokemon%20D20/output/Ficha%20PKMN.rpk?raw=true): Ambesek

@@ -1492,20 +1492,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout36:setHeight(18);
     obj.layout36:setName("layout36");
 
-    obj.label28 = gui.fromHandle(_obj_newObject("label"));
-    obj.label28:setParent(obj.layout36);
-    obj.label28:setFontSize(10);
-    obj.label28:setFontColor("#000000");
-    obj.label28:setVertTextAlign("center");
-    obj.label28:setLeft(0);
-    obj.label28:setTop(0);
-    obj.label28:setWidth(24);
-    obj.label28:setHeight(18);
-    obj.label28:setField("PPpoderes");
-    obj.label28:setName("label28");
-    obj.label28:setTextTrimming("none");
-    obj.label28:setWordWrap(false);
-    obj.label28:setAutoSize(true);
+    obj.edit38 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit38:setParent(obj.layout36);
+    obj.edit38:setTransparent(true);
+    obj.edit38:setFontSize(10);
+    obj.edit38:setFontColor("#000000");
+    obj.edit38:setVertTextAlign("center");
+    obj.edit38:setLeft(0);
+    obj.edit38:setTop(0);
+    obj.edit38:setWidth(24);
+    obj.edit38:setHeight(18);
+    obj.edit38:setField("PPpoderes");
+    obj.edit38:setName("edit38");
 
     obj.layout37 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout37:setParent(obj.rectangle1);
@@ -1515,21 +1513,21 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout37:setHeight(18);
     obj.layout37:setName("layout37");
 
-    obj.label29 = gui.fromHandle(_obj_newObject("label"));
-    obj.label29:setParent(obj.layout37);
-    obj.label29:setFontSize(12);
-    obj.label29:setFontColor("#000000");
-    lfm_setPropAsString(obj.label29, "fontStyle",  "bold");
-    obj.label29:setVertTextAlign("center");
-    obj.label29:setLeft(0);
-    obj.label29:setTop(0);
-    obj.label29:setWidth(140);
-    obj.label29:setHeight(18);
-    obj.label29:setField("PPsomatotal");
-    obj.label29:setName("label29");
-    obj.label29:setTextTrimming("none");
-    obj.label29:setWordWrap(false);
-    obj.label29:setAutoSize(true);
+    obj.label28 = gui.fromHandle(_obj_newObject("label"));
+    obj.label28:setParent(obj.layout37);
+    obj.label28:setFontSize(12);
+    obj.label28:setFontColor("#000000");
+    lfm_setPropAsString(obj.label28, "fontStyle",  "bold");
+    obj.label28:setVertTextAlign("center");
+    obj.label28:setLeft(0);
+    obj.label28:setTop(0);
+    obj.label28:setWidth(140);
+    obj.label28:setHeight(18);
+    obj.label28:setField("PPsomatotal");
+    obj.label28:setName("label28");
+    obj.label28:setTextTrimming("none");
+    obj.label28:setWordWrap(false);
+    obj.label28:setAutoSize(true);
 
     obj.layout38 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout38:setParent(obj.rectangle1);
@@ -1539,18 +1537,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout38:setHeight(18);
     obj.layout38:setName("layout38");
 
-    obj.edit38 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit38:setParent(obj.layout38);
-    obj.edit38:setTransparent(true);
-    obj.edit38:setFontSize(12);
-    obj.edit38:setFontColor("#000000");
-    obj.edit38:setVertTextAlign("center");
-    obj.edit38:setLeft(0);
-    obj.edit38:setTop(0);
-    obj.edit38:setWidth(188);
-    obj.edit38:setHeight(19);
-    obj.edit38:setField("ATK1");
-    obj.edit38:setName("edit38");
+    obj.edit39 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit39:setParent(obj.layout38);
+    obj.edit39:setTransparent(true);
+    obj.edit39:setFontSize(12);
+    obj.edit39:setFontColor("#000000");
+    obj.edit39:setVertTextAlign("center");
+    obj.edit39:setLeft(0);
+    obj.edit39:setTop(0);
+    obj.edit39:setWidth(188);
+    obj.edit39:setHeight(19);
+    obj.edit39:setField("ATK1");
+    obj.edit39:setName("edit39");
 
     obj.layout39 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout39:setParent(obj.rectangle1);
@@ -1560,18 +1558,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout39:setHeight(18);
     obj.layout39:setName("layout39");
 
-    obj.edit39 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit39:setParent(obj.layout39);
-    obj.edit39:setTransparent(true);
-    obj.edit39:setFontSize(12);
-    obj.edit39:setFontColor("#000000");
-    obj.edit39:setHorzTextAlign("center");
-    obj.edit39:setLeft(0);
-    obj.edit39:setTop(0);
-    obj.edit39:setWidth(27);
-    obj.edit39:setHeight(19);
-    obj.edit39:setField("ATK1mod");
-    obj.edit39:setName("edit39");
+    obj.edit40 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit40:setParent(obj.layout39);
+    obj.edit40:setTransparent(true);
+    obj.edit40:setFontSize(12);
+    obj.edit40:setFontColor("#000000");
+    obj.edit40:setHorzTextAlign("center");
+    obj.edit40:setLeft(0);
+    obj.edit40:setTop(0);
+    obj.edit40:setWidth(27);
+    obj.edit40:setHeight(19);
+    obj.edit40:setField("ATK1mod");
+    obj.edit40:setName("edit40");
 
     obj.dataLink30 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink30:setParent(obj.layout39);
@@ -1587,18 +1585,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout40:setHeight(18);
     obj.layout40:setName("layout40");
 
-    obj.edit40 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit40:setParent(obj.layout40);
-    obj.edit40:setTransparent(true);
-    obj.edit40:setFontSize(12);
-    obj.edit40:setFontColor("#000000");
-    obj.edit40:setHorzTextAlign("center");
-    obj.edit40:setLeft(0);
-    obj.edit40:setTop(0);
-    obj.edit40:setWidth(27);
-    obj.edit40:setHeight(19);
-    obj.edit40:setField("ATK1dano");
-    obj.edit40:setName("edit40");
+    obj.edit41 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit41:setParent(obj.layout40);
+    obj.edit41:setTransparent(true);
+    obj.edit41:setFontSize(12);
+    obj.edit41:setFontColor("#000000");
+    obj.edit41:setHorzTextAlign("center");
+    obj.edit41:setLeft(0);
+    obj.edit41:setTop(0);
+    obj.edit41:setWidth(27);
+    obj.edit41:setHeight(19);
+    obj.edit41:setField("ATK1dano");
+    obj.edit41:setName("edit41");
 
     obj.dataLink31 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink31:setParent(obj.layout40);
@@ -1614,18 +1612,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout41:setHeight(18);
     obj.layout41:setName("layout41");
 
-    obj.edit41 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit41:setParent(obj.layout41);
-    obj.edit41:setTransparent(true);
-    obj.edit41:setFontSize(12);
-    obj.edit41:setFontColor("#000000");
-    obj.edit41:setVertTextAlign("center");
-    obj.edit41:setLeft(0);
-    obj.edit41:setTop(0);
-    obj.edit41:setWidth(95);
-    obj.edit41:setHeight(19);
-    obj.edit41:setField("ATK1tipo");
-    obj.edit41:setName("edit41");
+    obj.edit42 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit42:setParent(obj.layout41);
+    obj.edit42:setTransparent(true);
+    obj.edit42:setFontSize(12);
+    obj.edit42:setFontColor("#000000");
+    obj.edit42:setVertTextAlign("center");
+    obj.edit42:setLeft(0);
+    obj.edit42:setTop(0);
+    obj.edit42:setWidth(95);
+    obj.edit42:setHeight(19);
+    obj.edit42:setField("ATK1tipo");
+    obj.edit42:setName("edit42");
 
     obj.dataLink32 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink32:setParent(obj.layout41);
@@ -1665,18 +1663,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout43:setHeight(18);
     obj.layout43:setName("layout43");
 
-    obj.edit42 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit42:setParent(obj.layout43);
-    obj.edit42:setTransparent(true);
-    obj.edit42:setFontSize(12);
-    obj.edit42:setFontColor("#000000");
-    obj.edit42:setHorzTextAlign("center");
-    obj.edit42:setLeft(0);
-    obj.edit42:setTop(0);
-    obj.edit42:setWidth(27);
-    obj.edit42:setHeight(19);
-    obj.edit42:setField("ATK2mod");
-    obj.edit42:setName("edit42");
+    obj.edit43 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit43:setParent(obj.layout43);
+    obj.edit43:setTransparent(true);
+    obj.edit43:setFontSize(12);
+    obj.edit43:setFontColor("#000000");
+    obj.edit43:setHorzTextAlign("center");
+    obj.edit43:setLeft(0);
+    obj.edit43:setTop(0);
+    obj.edit43:setWidth(27);
+    obj.edit43:setHeight(19);
+    obj.edit43:setField("ATK2mod");
+    obj.edit43:setName("edit43");
 
     obj.dataLink34 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink34:setParent(obj.layout43);
@@ -1692,18 +1690,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout44:setHeight(18);
     obj.layout44:setName("layout44");
 
-    obj.edit43 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit43:setParent(obj.layout44);
-    obj.edit43:setTransparent(true);
-    obj.edit43:setFontSize(12);
-    obj.edit43:setFontColor("#000000");
-    obj.edit43:setHorzTextAlign("center");
-    obj.edit43:setLeft(0);
-    obj.edit43:setTop(0);
-    obj.edit43:setWidth(27);
-    obj.edit43:setHeight(19);
-    obj.edit43:setField("ATK2dano");
-    obj.edit43:setName("edit43");
+    obj.edit44 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit44:setParent(obj.layout44);
+    obj.edit44:setTransparent(true);
+    obj.edit44:setFontSize(12);
+    obj.edit44:setFontColor("#000000");
+    obj.edit44:setHorzTextAlign("center");
+    obj.edit44:setLeft(0);
+    obj.edit44:setTop(0);
+    obj.edit44:setWidth(27);
+    obj.edit44:setHeight(19);
+    obj.edit44:setField("ATK2dano");
+    obj.edit44:setName("edit44");
 
     obj.dataLink35 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink35:setParent(obj.layout44);
@@ -1719,18 +1717,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout45:setHeight(18);
     obj.layout45:setName("layout45");
 
-    obj.edit44 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit44:setParent(obj.layout45);
-    obj.edit44:setTransparent(true);
-    obj.edit44:setFontSize(12);
-    obj.edit44:setFontColor("#000000");
-    obj.edit44:setVertTextAlign("center");
-    obj.edit44:setLeft(0);
-    obj.edit44:setTop(0);
-    obj.edit44:setWidth(102);
-    obj.edit44:setHeight(19);
-    obj.edit44:setField("ATK2tipo");
-    obj.edit44:setName("edit44");
+    obj.edit45 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit45:setParent(obj.layout45);
+    obj.edit45:setTransparent(true);
+    obj.edit45:setFontSize(12);
+    obj.edit45:setFontColor("#000000");
+    obj.edit45:setVertTextAlign("center");
+    obj.edit45:setLeft(0);
+    obj.edit45:setTop(0);
+    obj.edit45:setWidth(102);
+    obj.edit45:setHeight(19);
+    obj.edit45:setField("ATK2tipo");
+    obj.edit45:setName("edit45");
 
     obj.dataLink36 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink36:setParent(obj.layout45);
@@ -1770,18 +1768,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout47:setHeight(18);
     obj.layout47:setName("layout47");
 
-    obj.edit45 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit45:setParent(obj.layout47);
-    obj.edit45:setTransparent(true);
-    obj.edit45:setFontSize(12);
-    obj.edit45:setFontColor("#000000");
-    obj.edit45:setHorzTextAlign("center");
-    obj.edit45:setLeft(0);
-    obj.edit45:setTop(0);
-    obj.edit45:setWidth(27);
-    obj.edit45:setHeight(19);
-    obj.edit45:setField("ATK3mod");
-    obj.edit45:setName("edit45");
+    obj.edit46 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit46:setParent(obj.layout47);
+    obj.edit46:setTransparent(true);
+    obj.edit46:setFontSize(12);
+    obj.edit46:setFontColor("#000000");
+    obj.edit46:setHorzTextAlign("center");
+    obj.edit46:setLeft(0);
+    obj.edit46:setTop(0);
+    obj.edit46:setWidth(27);
+    obj.edit46:setHeight(19);
+    obj.edit46:setField("ATK3mod");
+    obj.edit46:setName("edit46");
 
     obj.dataLink38 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink38:setParent(obj.layout47);
@@ -1797,18 +1795,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout48:setHeight(18);
     obj.layout48:setName("layout48");
 
-    obj.edit46 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit46:setParent(obj.layout48);
-    obj.edit46:setTransparent(true);
-    obj.edit46:setFontSize(12);
-    obj.edit46:setFontColor("#000000");
-    obj.edit46:setHorzTextAlign("center");
-    obj.edit46:setLeft(0);
-    obj.edit46:setTop(0);
-    obj.edit46:setWidth(27);
-    obj.edit46:setHeight(19);
-    obj.edit46:setField("ATK3dano");
-    obj.edit46:setName("edit46");
+    obj.edit47 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit47:setParent(obj.layout48);
+    obj.edit47:setTransparent(true);
+    obj.edit47:setFontSize(12);
+    obj.edit47:setFontColor("#000000");
+    obj.edit47:setHorzTextAlign("center");
+    obj.edit47:setLeft(0);
+    obj.edit47:setTop(0);
+    obj.edit47:setWidth(27);
+    obj.edit47:setHeight(19);
+    obj.edit47:setField("ATK3dano");
+    obj.edit47:setName("edit47");
 
     obj.dataLink39 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink39:setParent(obj.layout48);
@@ -1824,18 +1822,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout49:setHeight(18);
     obj.layout49:setName("layout49");
 
-    obj.edit47 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit47:setParent(obj.layout49);
-    obj.edit47:setTransparent(true);
-    obj.edit47:setFontSize(12);
-    obj.edit47:setFontColor("#000000");
-    obj.edit47:setVertTextAlign("center");
-    obj.edit47:setLeft(0);
-    obj.edit47:setTop(0);
-    obj.edit47:setWidth(102);
-    obj.edit47:setHeight(19);
-    obj.edit47:setField("ATK3tipo");
-    obj.edit47:setName("edit47");
+    obj.edit48 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit48:setParent(obj.layout49);
+    obj.edit48:setTransparent(true);
+    obj.edit48:setFontSize(12);
+    obj.edit48:setFontColor("#000000");
+    obj.edit48:setVertTextAlign("center");
+    obj.edit48:setLeft(0);
+    obj.edit48:setTop(0);
+    obj.edit48:setWidth(102);
+    obj.edit48:setHeight(19);
+    obj.edit48:setField("ATK3tipo");
+    obj.edit48:setName("edit48");
 
     obj.dataLink40 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink40:setParent(obj.layout49);
@@ -1875,18 +1873,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout51:setHeight(18);
     obj.layout51:setName("layout51");
 
-    obj.edit48 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit48:setParent(obj.layout51);
-    obj.edit48:setTransparent(true);
-    obj.edit48:setFontSize(12);
-    obj.edit48:setFontColor("#000000");
-    obj.edit48:setHorzTextAlign("center");
-    obj.edit48:setLeft(0);
-    obj.edit48:setTop(0);
-    obj.edit48:setWidth(27);
-    obj.edit48:setHeight(19);
-    obj.edit48:setField("ATK4mod");
-    obj.edit48:setName("edit48");
+    obj.edit49 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit49:setParent(obj.layout51);
+    obj.edit49:setTransparent(true);
+    obj.edit49:setFontSize(12);
+    obj.edit49:setFontColor("#000000");
+    obj.edit49:setHorzTextAlign("center");
+    obj.edit49:setLeft(0);
+    obj.edit49:setTop(0);
+    obj.edit49:setWidth(27);
+    obj.edit49:setHeight(19);
+    obj.edit49:setField("ATK4mod");
+    obj.edit49:setName("edit49");
 
     obj.dataLink42 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink42:setParent(obj.layout51);
@@ -1902,18 +1900,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout52:setHeight(18);
     obj.layout52:setName("layout52");
 
-    obj.edit49 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit49:setParent(obj.layout52);
-    obj.edit49:setTransparent(true);
-    obj.edit49:setFontSize(12);
-    obj.edit49:setFontColor("#000000");
-    obj.edit49:setHorzTextAlign("center");
-    obj.edit49:setLeft(0);
-    obj.edit49:setTop(0);
-    obj.edit49:setWidth(27);
-    obj.edit49:setHeight(19);
-    obj.edit49:setField("ATK4dano");
-    obj.edit49:setName("edit49");
+    obj.edit50 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit50:setParent(obj.layout52);
+    obj.edit50:setTransparent(true);
+    obj.edit50:setFontSize(12);
+    obj.edit50:setFontColor("#000000");
+    obj.edit50:setHorzTextAlign("center");
+    obj.edit50:setLeft(0);
+    obj.edit50:setTop(0);
+    obj.edit50:setWidth(27);
+    obj.edit50:setHeight(19);
+    obj.edit50:setField("ATK4dano");
+    obj.edit50:setName("edit50");
 
     obj.dataLink43 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink43:setParent(obj.layout52);
@@ -1929,18 +1927,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout53:setHeight(18);
     obj.layout53:setName("layout53");
 
-    obj.edit50 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit50:setParent(obj.layout53);
-    obj.edit50:setTransparent(true);
-    obj.edit50:setFontSize(12);
-    obj.edit50:setFontColor("#000000");
-    obj.edit50:setVertTextAlign("center");
-    obj.edit50:setLeft(0);
-    obj.edit50:setTop(0);
-    obj.edit50:setWidth(102);
-    obj.edit50:setHeight(19);
-    obj.edit50:setField("ATK4tipo");
-    obj.edit50:setName("edit50");
+    obj.edit51 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit51:setParent(obj.layout53);
+    obj.edit51:setTransparent(true);
+    obj.edit51:setFontSize(12);
+    obj.edit51:setFontColor("#000000");
+    obj.edit51:setVertTextAlign("center");
+    obj.edit51:setLeft(0);
+    obj.edit51:setTop(0);
+    obj.edit51:setWidth(102);
+    obj.edit51:setHeight(19);
+    obj.edit51:setField("ATK4tipo");
+    obj.edit51:setName("edit51");
 
     obj.dataLink44 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink44:setParent(obj.layout53);
@@ -1980,18 +1978,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout55:setHeight(18);
     obj.layout55:setName("layout55");
 
-    obj.edit51 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit51:setParent(obj.layout55);
-    obj.edit51:setTransparent(true);
-    obj.edit51:setFontSize(12);
-    obj.edit51:setFontColor("#000000");
-    obj.edit51:setHorzTextAlign("center");
-    obj.edit51:setLeft(0);
-    obj.edit51:setTop(0);
-    obj.edit51:setWidth(27);
-    obj.edit51:setHeight(19);
-    obj.edit51:setField("ATK5mod");
-    obj.edit51:setName("edit51");
+    obj.edit52 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit52:setParent(obj.layout55);
+    obj.edit52:setTransparent(true);
+    obj.edit52:setFontSize(12);
+    obj.edit52:setFontColor("#000000");
+    obj.edit52:setHorzTextAlign("center");
+    obj.edit52:setLeft(0);
+    obj.edit52:setTop(0);
+    obj.edit52:setWidth(27);
+    obj.edit52:setHeight(19);
+    obj.edit52:setField("ATK5mod");
+    obj.edit52:setName("edit52");
 
     obj.dataLink46 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink46:setParent(obj.layout55);
@@ -2007,18 +2005,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout56:setHeight(18);
     obj.layout56:setName("layout56");
 
-    obj.edit52 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit52:setParent(obj.layout56);
-    obj.edit52:setTransparent(true);
-    obj.edit52:setFontSize(12);
-    obj.edit52:setFontColor("#000000");
-    obj.edit52:setHorzTextAlign("center");
-    obj.edit52:setLeft(0);
-    obj.edit52:setTop(0);
-    obj.edit52:setWidth(27);
-    obj.edit52:setHeight(19);
-    obj.edit52:setField("ATK5dano");
-    obj.edit52:setName("edit52");
+    obj.edit53 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit53:setParent(obj.layout56);
+    obj.edit53:setTransparent(true);
+    obj.edit53:setFontSize(12);
+    obj.edit53:setFontColor("#000000");
+    obj.edit53:setHorzTextAlign("center");
+    obj.edit53:setLeft(0);
+    obj.edit53:setTop(0);
+    obj.edit53:setWidth(27);
+    obj.edit53:setHeight(19);
+    obj.edit53:setField("ATK5dano");
+    obj.edit53:setName("edit53");
 
     obj.dataLink47 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink47:setParent(obj.layout56);
@@ -2034,18 +2032,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout57:setHeight(18);
     obj.layout57:setName("layout57");
 
-    obj.edit53 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit53:setParent(obj.layout57);
-    obj.edit53:setTransparent(true);
-    obj.edit53:setFontSize(12);
-    obj.edit53:setFontColor("#000000");
-    obj.edit53:setVertTextAlign("center");
-    obj.edit53:setLeft(0);
-    obj.edit53:setTop(0);
-    obj.edit53:setWidth(102);
-    obj.edit53:setHeight(19);
-    obj.edit53:setField("ATK5tipo");
-    obj.edit53:setName("edit53");
+    obj.edit54 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit54:setParent(obj.layout57);
+    obj.edit54:setTransparent(true);
+    obj.edit54:setFontSize(12);
+    obj.edit54:setFontColor("#000000");
+    obj.edit54:setVertTextAlign("center");
+    obj.edit54:setLeft(0);
+    obj.edit54:setTop(0);
+    obj.edit54:setWidth(102);
+    obj.edit54:setHeight(19);
+    obj.edit54:setField("ATK5tipo");
+    obj.edit54:setName("edit54");
 
     obj.dataLink48 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink48:setParent(obj.layout57);
@@ -2085,18 +2083,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout59:setHeight(18);
     obj.layout59:setName("layout59");
 
-    obj.edit54 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit54:setParent(obj.layout59);
-    obj.edit54:setTransparent(true);
-    obj.edit54:setFontSize(12);
-    obj.edit54:setFontColor("#000000");
-    obj.edit54:setHorzTextAlign("center");
-    obj.edit54:setLeft(0);
-    obj.edit54:setTop(0);
-    obj.edit54:setWidth(27);
-    obj.edit54:setHeight(19);
-    obj.edit54:setField("ATK6mod");
-    obj.edit54:setName("edit54");
+    obj.edit55 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit55:setParent(obj.layout59);
+    obj.edit55:setTransparent(true);
+    obj.edit55:setFontSize(12);
+    obj.edit55:setFontColor("#000000");
+    obj.edit55:setHorzTextAlign("center");
+    obj.edit55:setLeft(0);
+    obj.edit55:setTop(0);
+    obj.edit55:setWidth(27);
+    obj.edit55:setHeight(19);
+    obj.edit55:setField("ATK6mod");
+    obj.edit55:setName("edit55");
 
     obj.dataLink50 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink50:setParent(obj.layout59);
@@ -2112,18 +2110,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout60:setHeight(18);
     obj.layout60:setName("layout60");
 
-    obj.edit55 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit55:setParent(obj.layout60);
-    obj.edit55:setTransparent(true);
-    obj.edit55:setFontSize(12);
-    obj.edit55:setFontColor("#000000");
-    obj.edit55:setHorzTextAlign("center");
-    obj.edit55:setLeft(0);
-    obj.edit55:setTop(0);
-    obj.edit55:setWidth(27);
-    obj.edit55:setHeight(19);
-    obj.edit55:setField("ATK6dano");
-    obj.edit55:setName("edit55");
+    obj.edit56 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit56:setParent(obj.layout60);
+    obj.edit56:setTransparent(true);
+    obj.edit56:setFontSize(12);
+    obj.edit56:setFontColor("#000000");
+    obj.edit56:setHorzTextAlign("center");
+    obj.edit56:setLeft(0);
+    obj.edit56:setTop(0);
+    obj.edit56:setWidth(27);
+    obj.edit56:setHeight(19);
+    obj.edit56:setField("ATK6dano");
+    obj.edit56:setName("edit56");
 
     obj.dataLink51 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink51:setParent(obj.layout60);
@@ -2139,18 +2137,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout61:setHeight(18);
     obj.layout61:setName("layout61");
 
-    obj.edit56 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit56:setParent(obj.layout61);
-    obj.edit56:setTransparent(true);
-    obj.edit56:setFontSize(12);
-    obj.edit56:setFontColor("#000000");
-    obj.edit56:setVertTextAlign("center");
-    obj.edit56:setLeft(0);
-    obj.edit56:setTop(0);
-    obj.edit56:setWidth(102);
-    obj.edit56:setHeight(19);
-    obj.edit56:setField("ATK6tipo");
-    obj.edit56:setName("edit56");
+    obj.edit57 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit57:setParent(obj.layout61);
+    obj.edit57:setTransparent(true);
+    obj.edit57:setFontSize(12);
+    obj.edit57:setFontColor("#000000");
+    obj.edit57:setVertTextAlign("center");
+    obj.edit57:setLeft(0);
+    obj.edit57:setTop(0);
+    obj.edit57:setWidth(102);
+    obj.edit57:setHeight(19);
+    obj.edit57:setField("ATK6tipo");
+    obj.edit57:setName("edit57");
 
     obj.dataLink52 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink52:setParent(obj.layout61);
@@ -2190,18 +2188,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout63:setHeight(18);
     obj.layout63:setName("layout63");
 
-    obj.edit57 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit57:setParent(obj.layout63);
-    obj.edit57:setTransparent(true);
-    obj.edit57:setFontSize(12);
-    obj.edit57:setFontColor("#000000");
-    obj.edit57:setHorzTextAlign("center");
-    obj.edit57:setLeft(0);
-    obj.edit57:setTop(0);
-    obj.edit57:setWidth(27);
-    obj.edit57:setHeight(19);
-    obj.edit57:setField("ATK7mod");
-    obj.edit57:setName("edit57");
+    obj.edit58 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit58:setParent(obj.layout63);
+    obj.edit58:setTransparent(true);
+    obj.edit58:setFontSize(12);
+    obj.edit58:setFontColor("#000000");
+    obj.edit58:setHorzTextAlign("center");
+    obj.edit58:setLeft(0);
+    obj.edit58:setTop(0);
+    obj.edit58:setWidth(27);
+    obj.edit58:setHeight(19);
+    obj.edit58:setField("ATK7mod");
+    obj.edit58:setName("edit58");
 
     obj.dataLink54 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink54:setParent(obj.layout63);
@@ -2217,18 +2215,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout64:setHeight(18);
     obj.layout64:setName("layout64");
 
-    obj.edit58 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit58:setParent(obj.layout64);
-    obj.edit58:setTransparent(true);
-    obj.edit58:setFontSize(12);
-    obj.edit58:setFontColor("#000000");
-    obj.edit58:setHorzTextAlign("center");
-    obj.edit58:setLeft(0);
-    obj.edit58:setTop(0);
-    obj.edit58:setWidth(27);
-    obj.edit58:setHeight(19);
-    obj.edit58:setField("ATK7dano");
-    obj.edit58:setName("edit58");
+    obj.edit59 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit59:setParent(obj.layout64);
+    obj.edit59:setTransparent(true);
+    obj.edit59:setFontSize(12);
+    obj.edit59:setFontColor("#000000");
+    obj.edit59:setHorzTextAlign("center");
+    obj.edit59:setLeft(0);
+    obj.edit59:setTop(0);
+    obj.edit59:setWidth(27);
+    obj.edit59:setHeight(19);
+    obj.edit59:setField("ATK7dano");
+    obj.edit59:setName("edit59");
 
     obj.dataLink55 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink55:setParent(obj.layout64);
@@ -2244,18 +2242,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout65:setHeight(18);
     obj.layout65:setName("layout65");
 
-    obj.edit59 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit59:setParent(obj.layout65);
-    obj.edit59:setTransparent(true);
-    obj.edit59:setFontSize(12);
-    obj.edit59:setFontColor("#000000");
-    obj.edit59:setVertTextAlign("center");
-    obj.edit59:setLeft(0);
-    obj.edit59:setTop(0);
-    obj.edit59:setWidth(102);
-    obj.edit59:setHeight(19);
-    obj.edit59:setField("ATK7tipo");
-    obj.edit59:setName("edit59");
+    obj.edit60 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit60:setParent(obj.layout65);
+    obj.edit60:setTransparent(true);
+    obj.edit60:setFontSize(12);
+    obj.edit60:setFontColor("#000000");
+    obj.edit60:setVertTextAlign("center");
+    obj.edit60:setLeft(0);
+    obj.edit60:setTop(0);
+    obj.edit60:setWidth(102);
+    obj.edit60:setHeight(19);
+    obj.edit60:setField("ATK7tipo");
+    obj.edit60:setName("edit60");
 
     obj.dataLink56 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink56:setParent(obj.layout65);
@@ -2295,18 +2293,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout67:setHeight(18);
     obj.layout67:setName("layout67");
 
-    obj.edit60 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit60:setParent(obj.layout67);
-    obj.edit60:setTransparent(true);
-    obj.edit60:setFontSize(12);
-    obj.edit60:setFontColor("#000000");
-    obj.edit60:setHorzTextAlign("center");
-    obj.edit60:setLeft(0);
-    obj.edit60:setTop(0);
-    obj.edit60:setWidth(27);
-    obj.edit60:setHeight(19);
-    obj.edit60:setField("ATK8mod");
-    obj.edit60:setName("edit60");
+    obj.edit61 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit61:setParent(obj.layout67);
+    obj.edit61:setTransparent(true);
+    obj.edit61:setFontSize(12);
+    obj.edit61:setFontColor("#000000");
+    obj.edit61:setHorzTextAlign("center");
+    obj.edit61:setLeft(0);
+    obj.edit61:setTop(0);
+    obj.edit61:setWidth(27);
+    obj.edit61:setHeight(19);
+    obj.edit61:setField("ATK8mod");
+    obj.edit61:setName("edit61");
 
     obj.dataLink58 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink58:setParent(obj.layout67);
@@ -2322,18 +2320,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout68:setHeight(18);
     obj.layout68:setName("layout68");
 
-    obj.edit61 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit61:setParent(obj.layout68);
-    obj.edit61:setTransparent(true);
-    obj.edit61:setFontSize(12);
-    obj.edit61:setFontColor("#000000");
-    obj.edit61:setHorzTextAlign("center");
-    obj.edit61:setLeft(0);
-    obj.edit61:setTop(0);
-    obj.edit61:setWidth(27);
-    obj.edit61:setHeight(19);
-    obj.edit61:setField("ATK8dano");
-    obj.edit61:setName("edit61");
+    obj.edit62 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit62:setParent(obj.layout68);
+    obj.edit62:setTransparent(true);
+    obj.edit62:setFontSize(12);
+    obj.edit62:setFontColor("#000000");
+    obj.edit62:setHorzTextAlign("center");
+    obj.edit62:setLeft(0);
+    obj.edit62:setTop(0);
+    obj.edit62:setWidth(27);
+    obj.edit62:setHeight(19);
+    obj.edit62:setField("ATK8dano");
+    obj.edit62:setName("edit62");
 
     obj.dataLink59 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink59:setParent(obj.layout68);
@@ -2349,18 +2347,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout69:setHeight(18);
     obj.layout69:setName("layout69");
 
-    obj.edit62 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit62:setParent(obj.layout69);
-    obj.edit62:setTransparent(true);
-    obj.edit62:setFontSize(12);
-    obj.edit62:setFontColor("#000000");
-    obj.edit62:setVertTextAlign("center");
-    obj.edit62:setLeft(0);
-    obj.edit62:setTop(0);
-    obj.edit62:setWidth(102);
-    obj.edit62:setHeight(19);
-    obj.edit62:setField("ATK8tipo");
-    obj.edit62:setName("edit62");
+    obj.edit63 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit63:setParent(obj.layout69);
+    obj.edit63:setTransparent(true);
+    obj.edit63:setFontSize(12);
+    obj.edit63:setFontColor("#000000");
+    obj.edit63:setVertTextAlign("center");
+    obj.edit63:setLeft(0);
+    obj.edit63:setTop(0);
+    obj.edit63:setWidth(102);
+    obj.edit63:setHeight(19);
+    obj.edit63:setField("ATK8tipo");
+    obj.edit63:setName("edit63");
 
     obj.dataLink60 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink60:setParent(obj.layout69);
@@ -2400,18 +2398,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout71:setHeight(18);
     obj.layout71:setName("layout71");
 
-    obj.edit63 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit63:setParent(obj.layout71);
-    obj.edit63:setTransparent(true);
-    obj.edit63:setFontSize(12);
-    obj.edit63:setFontColor("#000000");
-    obj.edit63:setHorzTextAlign("center");
-    obj.edit63:setLeft(0);
-    obj.edit63:setTop(0);
-    obj.edit63:setWidth(27);
-    obj.edit63:setHeight(19);
-    obj.edit63:setField("ATK9mod");
-    obj.edit63:setName("edit63");
+    obj.edit64 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit64:setParent(obj.layout71);
+    obj.edit64:setTransparent(true);
+    obj.edit64:setFontSize(12);
+    obj.edit64:setFontColor("#000000");
+    obj.edit64:setHorzTextAlign("center");
+    obj.edit64:setLeft(0);
+    obj.edit64:setTop(0);
+    obj.edit64:setWidth(27);
+    obj.edit64:setHeight(19);
+    obj.edit64:setField("ATK9mod");
+    obj.edit64:setName("edit64");
 
     obj.dataLink62 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink62:setParent(obj.layout71);
@@ -2427,18 +2425,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout72:setHeight(18);
     obj.layout72:setName("layout72");
 
-    obj.edit64 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit64:setParent(obj.layout72);
-    obj.edit64:setTransparent(true);
-    obj.edit64:setFontSize(12);
-    obj.edit64:setFontColor("#000000");
-    obj.edit64:setHorzTextAlign("center");
-    obj.edit64:setLeft(0);
-    obj.edit64:setTop(0);
-    obj.edit64:setWidth(27);
-    obj.edit64:setHeight(19);
-    obj.edit64:setField("ATK9dano");
-    obj.edit64:setName("edit64");
+    obj.edit65 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit65:setParent(obj.layout72);
+    obj.edit65:setTransparent(true);
+    obj.edit65:setFontSize(12);
+    obj.edit65:setFontColor("#000000");
+    obj.edit65:setHorzTextAlign("center");
+    obj.edit65:setLeft(0);
+    obj.edit65:setTop(0);
+    obj.edit65:setWidth(27);
+    obj.edit65:setHeight(19);
+    obj.edit65:setField("ATK9dano");
+    obj.edit65:setName("edit65");
 
     obj.dataLink63 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink63:setParent(obj.layout72);
@@ -2454,18 +2452,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout73:setHeight(18);
     obj.layout73:setName("layout73");
 
-    obj.edit65 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit65:setParent(obj.layout73);
-    obj.edit65:setTransparent(true);
-    obj.edit65:setFontSize(12);
-    obj.edit65:setFontColor("#000000");
-    obj.edit65:setVertTextAlign("center");
-    obj.edit65:setLeft(0);
-    obj.edit65:setTop(0);
-    obj.edit65:setWidth(102);
-    obj.edit65:setHeight(19);
-    obj.edit65:setField("ATK9tipo");
-    obj.edit65:setName("edit65");
+    obj.edit66 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit66:setParent(obj.layout73);
+    obj.edit66:setTransparent(true);
+    obj.edit66:setFontSize(12);
+    obj.edit66:setFontColor("#000000");
+    obj.edit66:setVertTextAlign("center");
+    obj.edit66:setLeft(0);
+    obj.edit66:setTop(0);
+    obj.edit66:setWidth(102);
+    obj.edit66:setHeight(19);
+    obj.edit66:setField("ATK9tipo");
+    obj.edit66:setName("edit66");
 
     obj.dataLink64 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink64:setParent(obj.layout73);
@@ -2505,18 +2503,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout75:setHeight(18);
     obj.layout75:setName("layout75");
 
-    obj.edit66 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit66:setParent(obj.layout75);
-    obj.edit66:setTransparent(true);
-    obj.edit66:setFontSize(12);
-    obj.edit66:setFontColor("#000000");
-    obj.edit66:setHorzTextAlign("center");
-    obj.edit66:setLeft(0);
-    obj.edit66:setTop(0);
-    obj.edit66:setWidth(27);
-    obj.edit66:setHeight(19);
-    obj.edit66:setField("ATK10mod");
-    obj.edit66:setName("edit66");
+    obj.edit67 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit67:setParent(obj.layout75);
+    obj.edit67:setTransparent(true);
+    obj.edit67:setFontSize(12);
+    obj.edit67:setFontColor("#000000");
+    obj.edit67:setHorzTextAlign("center");
+    obj.edit67:setLeft(0);
+    obj.edit67:setTop(0);
+    obj.edit67:setWidth(27);
+    obj.edit67:setHeight(19);
+    obj.edit67:setField("ATK10mod");
+    obj.edit67:setName("edit67");
 
     obj.dataLink66 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink66:setParent(obj.layout75);
@@ -2532,18 +2530,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout76:setHeight(18);
     obj.layout76:setName("layout76");
 
-    obj.edit67 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit67:setParent(obj.layout76);
-    obj.edit67:setTransparent(true);
-    obj.edit67:setFontSize(12);
-    obj.edit67:setFontColor("#000000");
-    obj.edit67:setHorzTextAlign("center");
-    obj.edit67:setLeft(0);
-    obj.edit67:setTop(0);
-    obj.edit67:setWidth(27);
-    obj.edit67:setHeight(19);
-    obj.edit67:setField("ATK10dano");
-    obj.edit67:setName("edit67");
+    obj.edit68 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit68:setParent(obj.layout76);
+    obj.edit68:setTransparent(true);
+    obj.edit68:setFontSize(12);
+    obj.edit68:setFontColor("#000000");
+    obj.edit68:setHorzTextAlign("center");
+    obj.edit68:setLeft(0);
+    obj.edit68:setTop(0);
+    obj.edit68:setWidth(27);
+    obj.edit68:setHeight(19);
+    obj.edit68:setField("ATK10dano");
+    obj.edit68:setName("edit68");
 
     obj.dataLink67 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink67:setParent(obj.layout76);
@@ -2559,18 +2557,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout77:setHeight(18);
     obj.layout77:setName("layout77");
 
-    obj.edit68 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit68:setParent(obj.layout77);
-    obj.edit68:setTransparent(true);
-    obj.edit68:setFontSize(12);
-    obj.edit68:setFontColor("#000000");
-    obj.edit68:setVertTextAlign("center");
-    obj.edit68:setLeft(0);
-    obj.edit68:setTop(0);
-    obj.edit68:setWidth(102);
-    obj.edit68:setHeight(19);
-    obj.edit68:setField("ATK10tipo");
-    obj.edit68:setName("edit68");
+    obj.edit69 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit69:setParent(obj.layout77);
+    obj.edit69:setTransparent(true);
+    obj.edit69:setFontSize(12);
+    obj.edit69:setFontColor("#000000");
+    obj.edit69:setVertTextAlign("center");
+    obj.edit69:setLeft(0);
+    obj.edit69:setTop(0);
+    obj.edit69:setWidth(102);
+    obj.edit69:setHeight(19);
+    obj.edit69:setField("ATK10tipo");
+    obj.edit69:setName("edit69");
 
     obj.dataLink68 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink68:setParent(obj.layout77);
@@ -2610,18 +2608,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout79:setHeight(30);
     obj.layout79:setName("layout79");
 
-    obj.edit69 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit69:setParent(obj.layout79);
-    obj.edit69:setTransparent(true);
-    obj.edit69:setFontSize(20.3);
-    obj.edit69:setFontColor("#000000");
-    obj.edit69:setHorzTextAlign("center");
-    obj.edit69:setLeft(0);
-    obj.edit69:setTop(0);
-    obj.edit69:setWidth(52);
-    obj.edit69:setHeight(31);
-    obj.edit69:setField("IDADE");
-    obj.edit69:setName("edit69");
+    obj.edit70 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit70:setParent(obj.layout79);
+    obj.edit70:setTransparent(true);
+    obj.edit70:setFontSize(20.3);
+    obj.edit70:setFontColor("#000000");
+    obj.edit70:setHorzTextAlign("center");
+    obj.edit70:setLeft(0);
+    obj.edit70:setTop(0);
+    obj.edit70:setWidth(52);
+    obj.edit70:setHeight(31);
+    obj.edit70:setField("IDADE");
+    obj.edit70:setName("edit70");
 
     obj.layout80 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout80:setParent(obj.rectangle1);
@@ -2631,18 +2629,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout80:setHeight(18);
     obj.layout80:setName("layout80");
 
-    obj.edit70 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit70:setParent(obj.layout80);
-    obj.edit70:setTransparent(true);
-    obj.edit70:setFontSize(12);
-    obj.edit70:setFontColor("#000000");
-    obj.edit70:setVertTextAlign("center");
-    obj.edit70:setLeft(0);
-    obj.edit70:setTop(0);
-    obj.edit70:setWidth(188);
-    obj.edit70:setHeight(19);
-    obj.edit70:setField("ATK2");
-    obj.edit70:setName("edit70");
+    obj.edit71 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit71:setParent(obj.layout80);
+    obj.edit71:setTransparent(true);
+    obj.edit71:setFontSize(12);
+    obj.edit71:setFontColor("#000000");
+    obj.edit71:setVertTextAlign("center");
+    obj.edit71:setLeft(0);
+    obj.edit71:setTop(0);
+    obj.edit71:setWidth(188);
+    obj.edit71:setHeight(19);
+    obj.edit71:setField("ATK2");
+    obj.edit71:setName("edit71");
 
     obj.layout81 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout81:setParent(obj.rectangle1);
@@ -2652,18 +2650,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout81:setHeight(30);
     obj.layout81:setName("layout81");
 
-    obj.edit71 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit71:setParent(obj.layout81);
-    obj.edit71:setTransparent(true);
-    obj.edit71:setFontSize(20.3);
-    obj.edit71:setFontColor("#000000");
-    obj.edit71:setHorzTextAlign("center");
-    obj.edit71:setLeft(0);
-    obj.edit71:setTop(0);
-    obj.edit71:setWidth(68);
-    obj.edit71:setHeight(31);
-    obj.edit71:setField("ALTURA");
-    obj.edit71:setName("edit71");
+    obj.edit72 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit72:setParent(obj.layout81);
+    obj.edit72:setTransparent(true);
+    obj.edit72:setFontSize(20.3);
+    obj.edit72:setFontColor("#000000");
+    obj.edit72:setHorzTextAlign("center");
+    obj.edit72:setLeft(0);
+    obj.edit72:setTop(0);
+    obj.edit72:setWidth(68);
+    obj.edit72:setHeight(31);
+    obj.edit72:setField("ALTURA");
+    obj.edit72:setName("edit72");
 
     obj.layout82 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout82:setParent(obj.rectangle1);
@@ -2673,18 +2671,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout82:setHeight(18);
     obj.layout82:setName("layout82");
 
-    obj.edit72 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit72:setParent(obj.layout82);
-    obj.edit72:setTransparent(true);
-    obj.edit72:setFontSize(12);
-    obj.edit72:setFontColor("#000000");
-    obj.edit72:setVertTextAlign("center");
-    obj.edit72:setLeft(0);
-    obj.edit72:setTop(0);
-    obj.edit72:setWidth(188);
-    obj.edit72:setHeight(19);
-    obj.edit72:setField("ATK3");
-    obj.edit72:setName("edit72");
+    obj.edit73 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit73:setParent(obj.layout82);
+    obj.edit73:setTransparent(true);
+    obj.edit73:setFontSize(12);
+    obj.edit73:setFontColor("#000000");
+    obj.edit73:setVertTextAlign("center");
+    obj.edit73:setLeft(0);
+    obj.edit73:setTop(0);
+    obj.edit73:setWidth(188);
+    obj.edit73:setHeight(19);
+    obj.edit73:setField("ATK3");
+    obj.edit73:setName("edit73");
 
     obj.layout83 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout83:setParent(obj.rectangle1);
@@ -2694,18 +2692,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout83:setHeight(30);
     obj.layout83:setName("layout83");
 
-    obj.edit73 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit73:setParent(obj.layout83);
-    obj.edit73:setTransparent(true);
-    obj.edit73:setFontSize(20.3);
-    obj.edit73:setFontColor("#000000");
-    obj.edit73:setHorzTextAlign("center");
-    obj.edit73:setLeft(0);
-    obj.edit73:setTop(0);
-    obj.edit73:setWidth(68);
-    obj.edit73:setHeight(31);
-    obj.edit73:setField("PESO");
-    obj.edit73:setName("edit73");
+    obj.edit74 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit74:setParent(obj.layout83);
+    obj.edit74:setTransparent(true);
+    obj.edit74:setFontSize(20.3);
+    obj.edit74:setFontColor("#000000");
+    obj.edit74:setHorzTextAlign("center");
+    obj.edit74:setLeft(0);
+    obj.edit74:setTop(0);
+    obj.edit74:setWidth(68);
+    obj.edit74:setHeight(31);
+    obj.edit74:setField("PESO");
+    obj.edit74:setName("edit74");
 
     obj.layout84 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout84:setParent(obj.rectangle1);
@@ -2715,18 +2713,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout84:setHeight(18);
     obj.layout84:setName("layout84");
 
-    obj.edit74 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit74:setParent(obj.layout84);
-    obj.edit74:setTransparent(true);
-    obj.edit74:setFontSize(12);
-    obj.edit74:setFontColor("#000000");
-    obj.edit74:setVertTextAlign("center");
-    obj.edit74:setLeft(0);
-    obj.edit74:setTop(0);
-    obj.edit74:setWidth(188);
-    obj.edit74:setHeight(19);
-    obj.edit74:setField("ATK4");
-    obj.edit74:setName("edit74");
+    obj.edit75 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit75:setParent(obj.layout84);
+    obj.edit75:setTransparent(true);
+    obj.edit75:setFontSize(12);
+    obj.edit75:setFontColor("#000000");
+    obj.edit75:setVertTextAlign("center");
+    obj.edit75:setLeft(0);
+    obj.edit75:setTop(0);
+    obj.edit75:setWidth(188);
+    obj.edit75:setHeight(19);
+    obj.edit75:setField("ATK4");
+    obj.edit75:setName("edit75");
 
     obj.layout85 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout85:setParent(obj.rectangle1);
@@ -2751,19 +2749,19 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout86:setHeight(35);
     obj.layout86:setName("layout86");
 
-    obj.edit75 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit75:setParent(obj.layout86);
-    obj.edit75:setTransparent(true);
-    obj.edit75:setFontSize(10);
-    obj.edit75:setFontColor("#000000");
-    obj.edit75:setHorzTextAlign("center");
-    obj.edit75:setLeft(0);
-    obj.edit75:setTop(0);
-    obj.edit75:setWidth(202);
-    obj.edit75:setHeight(36);
-    obj.edit75:setField("ALIAS");
-    obj.edit75:setHint("Notas sobre a Identidade. ");
-    obj.edit75:setName("edit75");
+    obj.edit76 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit76:setParent(obj.layout86);
+    obj.edit76:setTransparent(true);
+    obj.edit76:setFontSize(10);
+    obj.edit76:setFontColor("#000000");
+    obj.edit76:setHorzTextAlign("center");
+    obj.edit76:setLeft(0);
+    obj.edit76:setTop(0);
+    obj.edit76:setWidth(202);
+    obj.edit76:setHeight(36);
+    obj.edit76:setField("ALIAS");
+    obj.edit76:setHint("Notas sobre a Identidade. ");
+    obj.edit76:setName("edit76");
 
     obj.layout87 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout87:setParent(obj.rectangle1);
@@ -2773,18 +2771,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout87:setHeight(18);
     obj.layout87:setName("layout87");
 
-    obj.edit76 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit76:setParent(obj.layout87);
-    obj.edit76:setTransparent(true);
-    obj.edit76:setFontSize(12);
-    obj.edit76:setFontColor("#000000");
-    obj.edit76:setVertTextAlign("center");
-    obj.edit76:setLeft(0);
-    obj.edit76:setTop(0);
-    obj.edit76:setWidth(188);
-    obj.edit76:setHeight(19);
-    obj.edit76:setField("ATK5");
-    obj.edit76:setName("edit76");
+    obj.edit77 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit77:setParent(obj.layout87);
+    obj.edit77:setTransparent(true);
+    obj.edit77:setFontSize(12);
+    obj.edit77:setFontColor("#000000");
+    obj.edit77:setVertTextAlign("center");
+    obj.edit77:setLeft(0);
+    obj.edit77:setTop(0);
+    obj.edit77:setWidth(188);
+    obj.edit77:setHeight(19);
+    obj.edit77:setField("ATK5");
+    obj.edit77:setName("edit77");
 
     obj.layout88 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout88:setParent(obj.rectangle1);
@@ -2794,18 +2792,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout88:setHeight(18);
     obj.layout88:setName("layout88");
 
-    obj.edit77 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit77:setParent(obj.layout88);
-    obj.edit77:setTransparent(true);
-    obj.edit77:setFontSize(12);
-    obj.edit77:setFontColor("#000000");
-    obj.edit77:setVertTextAlign("center");
-    obj.edit77:setLeft(0);
-    obj.edit77:setTop(0);
-    obj.edit77:setWidth(188);
-    obj.edit77:setHeight(19);
-    obj.edit77:setField("ATK6");
-    obj.edit77:setName("edit77");
+    obj.edit78 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit78:setParent(obj.layout88);
+    obj.edit78:setTransparent(true);
+    obj.edit78:setFontSize(12);
+    obj.edit78:setFontColor("#000000");
+    obj.edit78:setVertTextAlign("center");
+    obj.edit78:setLeft(0);
+    obj.edit78:setTop(0);
+    obj.edit78:setWidth(188);
+    obj.edit78:setHeight(19);
+    obj.edit78:setField("ATK6");
+    obj.edit78:setName("edit78");
 
     obj.layout89 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout89:setParent(obj.rectangle1);
@@ -2815,18 +2813,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout89:setHeight(18);
     obj.layout89:setName("layout89");
 
-    obj.edit78 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit78:setParent(obj.layout89);
-    obj.edit78:setTransparent(true);
-    obj.edit78:setFontSize(12);
-    obj.edit78:setFontColor("#000000");
-    obj.edit78:setVertTextAlign("center");
-    obj.edit78:setLeft(0);
-    obj.edit78:setTop(0);
-    obj.edit78:setWidth(188);
-    obj.edit78:setHeight(19);
-    obj.edit78:setField("ATK7");
-    obj.edit78:setName("edit78");
+    obj.edit79 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit79:setParent(obj.layout89);
+    obj.edit79:setTransparent(true);
+    obj.edit79:setFontSize(12);
+    obj.edit79:setFontColor("#000000");
+    obj.edit79:setVertTextAlign("center");
+    obj.edit79:setLeft(0);
+    obj.edit79:setTop(0);
+    obj.edit79:setWidth(188);
+    obj.edit79:setHeight(19);
+    obj.edit79:setField("ATK7");
+    obj.edit79:setName("edit79");
 
     obj.layout90 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout90:setParent(obj.rectangle1);
@@ -2836,18 +2834,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout90:setHeight(18);
     obj.layout90:setName("layout90");
 
-    obj.edit79 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit79:setParent(obj.layout90);
-    obj.edit79:setTransparent(true);
-    obj.edit79:setFontSize(12);
-    obj.edit79:setFontColor("#000000");
-    obj.edit79:setVertTextAlign("center");
-    obj.edit79:setLeft(0);
-    obj.edit79:setTop(0);
-    obj.edit79:setWidth(188);
-    obj.edit79:setHeight(19);
-    obj.edit79:setField("ATK8");
-    obj.edit79:setName("edit79");
+    obj.edit80 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit80:setParent(obj.layout90);
+    obj.edit80:setTransparent(true);
+    obj.edit80:setFontSize(12);
+    obj.edit80:setFontColor("#000000");
+    obj.edit80:setVertTextAlign("center");
+    obj.edit80:setLeft(0);
+    obj.edit80:setTop(0);
+    obj.edit80:setWidth(188);
+    obj.edit80:setHeight(19);
+    obj.edit80:setField("ATK8");
+    obj.edit80:setName("edit80");
 
     obj.layout91 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout91:setParent(obj.rectangle1);
@@ -2857,18 +2855,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout91:setHeight(18);
     obj.layout91:setName("layout91");
 
-    obj.edit80 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit80:setParent(obj.layout91);
-    obj.edit80:setTransparent(true);
-    obj.edit80:setFontSize(12);
-    obj.edit80:setFontColor("#000000");
-    obj.edit80:setVertTextAlign("center");
-    obj.edit80:setLeft(0);
-    obj.edit80:setTop(0);
-    obj.edit80:setWidth(188);
-    obj.edit80:setHeight(19);
-    obj.edit80:setField("ATK9");
-    obj.edit80:setName("edit80");
+    obj.edit81 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit81:setParent(obj.layout91);
+    obj.edit81:setTransparent(true);
+    obj.edit81:setFontSize(12);
+    obj.edit81:setFontColor("#000000");
+    obj.edit81:setVertTextAlign("center");
+    obj.edit81:setLeft(0);
+    obj.edit81:setTop(0);
+    obj.edit81:setWidth(188);
+    obj.edit81:setHeight(19);
+    obj.edit81:setField("ATK9");
+    obj.edit81:setName("edit81");
 
     obj.layout92 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout92:setParent(obj.rectangle1);
@@ -2878,18 +2876,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout92:setHeight(18);
     obj.layout92:setName("layout92");
 
-    obj.edit81 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit81:setParent(obj.layout92);
-    obj.edit81:setTransparent(true);
-    obj.edit81:setFontSize(12);
-    obj.edit81:setFontColor("#000000");
-    obj.edit81:setVertTextAlign("center");
-    obj.edit81:setLeft(0);
-    obj.edit81:setTop(0);
-    obj.edit81:setWidth(188);
-    obj.edit81:setHeight(19);
-    obj.edit81:setField("ATK10");
-    obj.edit81:setName("edit81");
+    obj.edit82 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit82:setParent(obj.layout92);
+    obj.edit82:setTransparent(true);
+    obj.edit82:setFontSize(12);
+    obj.edit82:setFontColor("#000000");
+    obj.edit82:setVertTextAlign("center");
+    obj.edit82:setLeft(0);
+    obj.edit82:setTop(0);
+    obj.edit82:setWidth(188);
+    obj.edit82:setHeight(19);
+    obj.edit82:setField("ATK10");
+    obj.edit82:setName("edit82");
 
     obj.layout93 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout93:setParent(obj.rectangle1);
@@ -2899,18 +2897,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout93:setHeight(242);
     obj.layout93:setName("layout93");
 
-    obj.edit82 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit82:setParent(obj.layout93);
-    obj.edit82:setTransparent(true);
-    obj.edit82:setFontSize(12);
-    obj.edit82:setFontColor("#000000");
-    obj.edit82:setVertTextAlign("center");
-    obj.edit82:setLeft(0);
-    obj.edit82:setTop(0);
-    obj.edit82:setWidth(180);
-    obj.edit82:setHeight(243);
-    obj.edit82:setField("untitled52");
-    obj.edit82:setName("edit82");
+    obj.edit83 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit83:setParent(obj.layout93);
+    obj.edit83:setTransparent(true);
+    obj.edit83:setFontSize(12);
+    obj.edit83:setFontColor("#000000");
+    obj.edit83:setVertTextAlign("center");
+    obj.edit83:setLeft(0);
+    obj.edit83:setTop(0);
+    obj.edit83:setWidth(180);
+    obj.edit83:setHeight(243);
+    obj.edit83:setField("untitled52");
+    obj.edit83:setName("edit83");
 
     obj.dataLink70 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink70:setParent(obj.rectangle1);
@@ -3120,18 +3118,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout94:setHeight(15);
     obj.layout94:setName("layout94");
 
-    obj.edit83 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit83:setParent(obj.layout94);
-    obj.edit83:setTransparent(true);
-    obj.edit83:setFontSize(9);
-    obj.edit83:setFontColor("#000000");
-    obj.edit83:setHorzTextAlign("center");
-    obj.edit83:setLeft(0);
-    obj.edit83:setTop(0);
-    obj.edit83:setWidth(24);
-    obj.edit83:setHeight(16);
-    obj.edit83:setField("DEFesq3");
-    obj.edit83:setName("edit83");
+    obj.edit84 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit84:setParent(obj.layout94);
+    obj.edit84:setTransparent(true);
+    obj.edit84:setFontSize(9);
+    obj.edit84:setFontColor("#000000");
+    obj.edit84:setHorzTextAlign("center");
+    obj.edit84:setLeft(0);
+    obj.edit84:setTop(0);
+    obj.edit84:setWidth(24);
+    obj.edit84:setHeight(16);
+    obj.edit84:setField("DEFesq3");
+    obj.edit84:setName("edit84");
 
     obj.dataLink78 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink78:setParent(obj.layout94);
@@ -3147,18 +3145,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout95:setHeight(15);
     obj.layout95:setName("layout95");
 
-    obj.edit84 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit84:setParent(obj.layout95);
-    obj.edit84:setTransparent(true);
-    obj.edit84:setFontSize(9);
-    obj.edit84:setFontColor("#000000");
-    obj.edit84:setHorzTextAlign("center");
-    obj.edit84:setLeft(0);
-    obj.edit84:setTop(0);
-    obj.edit84:setWidth(24);
-    obj.edit84:setHeight(16);
-    obj.edit84:setField("DEFesqTotal");
-    obj.edit84:setName("edit84");
+    obj.edit85 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit85:setParent(obj.layout95);
+    obj.edit85:setTransparent(true);
+    obj.edit85:setFontSize(9);
+    obj.edit85:setFontColor("#000000");
+    obj.edit85:setHorzTextAlign("center");
+    obj.edit85:setLeft(0);
+    obj.edit85:setTop(0);
+    obj.edit85:setWidth(24);
+    obj.edit85:setHeight(16);
+    obj.edit85:setField("DEFesqTotal");
+    obj.edit85:setName("edit85");
 
     obj.layout96 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout96:setParent(obj.rectangle1);
@@ -3168,18 +3166,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout96:setHeight(15);
     obj.layout96:setName("layout96");
 
-    obj.edit85 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit85:setParent(obj.layout96);
-    obj.edit85:setTransparent(true);
-    obj.edit85:setFontSize(9);
-    obj.edit85:setFontColor("#000000");
-    obj.edit85:setHorzTextAlign("center");
-    obj.edit85:setLeft(0);
-    obj.edit85:setTop(0);
-    obj.edit85:setWidth(24);
-    obj.edit85:setHeight(16);
-    obj.edit85:setField("DEFapa3");
-    obj.edit85:setName("edit85");
+    obj.edit86 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit86:setParent(obj.layout96);
+    obj.edit86:setTransparent(true);
+    obj.edit86:setFontSize(9);
+    obj.edit86:setFontColor("#000000");
+    obj.edit86:setHorzTextAlign("center");
+    obj.edit86:setLeft(0);
+    obj.edit86:setTop(0);
+    obj.edit86:setWidth(24);
+    obj.edit86:setHeight(16);
+    obj.edit86:setField("DEFapa3");
+    obj.edit86:setName("edit86");
 
     obj.dataLink79 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink79:setParent(obj.layout96);
@@ -3195,18 +3193,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout97:setHeight(15);
     obj.layout97:setName("layout97");
 
-    obj.edit86 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit86:setParent(obj.layout97);
-    obj.edit86:setTransparent(true);
-    obj.edit86:setFontSize(9);
-    obj.edit86:setFontColor("#000000");
-    obj.edit86:setHorzTextAlign("center");
-    obj.edit86:setLeft(0);
-    obj.edit86:setTop(0);
-    obj.edit86:setWidth(24);
-    obj.edit86:setHeight(16);
-    obj.edit86:setField("DEFapaTotal");
-    obj.edit86:setName("edit86");
+    obj.edit87 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit87:setParent(obj.layout97);
+    obj.edit87:setTransparent(true);
+    obj.edit87:setFontSize(9);
+    obj.edit87:setFontColor("#000000");
+    obj.edit87:setHorzTextAlign("center");
+    obj.edit87:setLeft(0);
+    obj.edit87:setTop(0);
+    obj.edit87:setWidth(24);
+    obj.edit87:setHeight(16);
+    obj.edit87:setField("DEFapaTotal");
+    obj.edit87:setName("edit87");
 
     obj.layout98 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout98:setParent(obj.rectangle1);
@@ -3216,18 +3214,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout98:setHeight(15);
     obj.layout98:setName("layout98");
 
-    obj.edit87 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit87:setParent(obj.layout98);
-    obj.edit87:setTransparent(true);
-    obj.edit87:setFontSize(9);
-    obj.edit87:setFontColor("#000000");
-    obj.edit87:setHorzTextAlign("center");
-    obj.edit87:setLeft(0);
-    obj.edit87:setTop(0);
-    obj.edit87:setWidth(24);
-    obj.edit87:setHeight(16);
-    obj.edit87:setField("DEFvon3");
-    obj.edit87:setName("edit87");
+    obj.edit88 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit88:setParent(obj.layout98);
+    obj.edit88:setTransparent(true);
+    obj.edit88:setFontSize(9);
+    obj.edit88:setFontColor("#000000");
+    obj.edit88:setHorzTextAlign("center");
+    obj.edit88:setLeft(0);
+    obj.edit88:setTop(0);
+    obj.edit88:setWidth(24);
+    obj.edit88:setHeight(16);
+    obj.edit88:setField("DEFvon3");
+    obj.edit88:setName("edit88");
 
     obj.dataLink80 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink80:setParent(obj.layout98);
@@ -3243,18 +3241,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout99:setHeight(15);
     obj.layout99:setName("layout99");
 
-    obj.edit88 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit88:setParent(obj.layout99);
-    obj.edit88:setTransparent(true);
-    obj.edit88:setFontSize(9);
-    obj.edit88:setFontColor("#000000");
-    obj.edit88:setHorzTextAlign("center");
-    obj.edit88:setLeft(0);
-    obj.edit88:setTop(0);
-    obj.edit88:setWidth(24);
-    obj.edit88:setHeight(16);
-    obj.edit88:setField("DEFvonTotal");
-    obj.edit88:setName("edit88");
+    obj.edit89 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit89:setParent(obj.layout99);
+    obj.edit89:setTransparent(true);
+    obj.edit89:setFontSize(9);
+    obj.edit89:setFontColor("#000000");
+    obj.edit89:setHorzTextAlign("center");
+    obj.edit89:setLeft(0);
+    obj.edit89:setTop(0);
+    obj.edit89:setWidth(24);
+    obj.edit89:setHeight(16);
+    obj.edit89:setField("DEFvonTotal");
+    obj.edit89:setName("edit89");
 
     obj.layout100 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout100:setParent(obj.rectangle1);
@@ -3264,18 +3262,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout100:setHeight(15);
     obj.layout100:setName("layout100");
 
-    obj.edit89 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit89:setParent(obj.layout100);
-    obj.edit89:setTransparent(true);
-    obj.edit89:setFontSize(9);
-    obj.edit89:setFontColor("#000000");
-    obj.edit89:setHorzTextAlign("center");
-    obj.edit89:setLeft(0);
-    obj.edit89:setTop(0);
-    obj.edit89:setWidth(24);
-    obj.edit89:setHeight(16);
-    obj.edit89:setField("DEFres2");
-    obj.edit89:setName("edit89");
+    obj.edit90 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit90:setParent(obj.layout100);
+    obj.edit90:setTransparent(true);
+    obj.edit90:setFontSize(9);
+    obj.edit90:setFontColor("#000000");
+    obj.edit90:setHorzTextAlign("center");
+    obj.edit90:setLeft(0);
+    obj.edit90:setTop(0);
+    obj.edit90:setWidth(24);
+    obj.edit90:setHeight(16);
+    obj.edit90:setField("DEFres2");
+    obj.edit90:setName("edit90");
 
     obj.dataLink81 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink81:setParent(obj.layout100);
@@ -3291,18 +3289,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout101:setHeight(15);
     obj.layout101:setName("layout101");
 
-    obj.edit90 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit90:setParent(obj.layout101);
-    obj.edit90:setTransparent(true);
-    obj.edit90:setFontSize(9);
-    obj.edit90:setFontColor("#000000");
-    obj.edit90:setHorzTextAlign("center");
-    obj.edit90:setLeft(0);
-    obj.edit90:setTop(0);
-    obj.edit90:setWidth(24);
-    obj.edit90:setHeight(16);
-    obj.edit90:setField("DEFres3");
-    obj.edit90:setName("edit90");
+    obj.edit91 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit91:setParent(obj.layout101);
+    obj.edit91:setTransparent(true);
+    obj.edit91:setFontSize(9);
+    obj.edit91:setFontColor("#000000");
+    obj.edit91:setHorzTextAlign("center");
+    obj.edit91:setLeft(0);
+    obj.edit91:setTop(0);
+    obj.edit91:setWidth(24);
+    obj.edit91:setHeight(16);
+    obj.edit91:setField("DEFres3");
+    obj.edit91:setName("edit91");
 
     obj.dataLink82 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink82:setParent(obj.layout101);
@@ -3318,18 +3316,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout102:setHeight(15);
     obj.layout102:setName("layout102");
 
-    obj.edit91 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit91:setParent(obj.layout102);
-    obj.edit91:setTransparent(true);
-    obj.edit91:setFontSize(9);
-    obj.edit91:setFontColor("#000000");
-    obj.edit91:setHorzTextAlign("center");
-    obj.edit91:setLeft(0);
-    obj.edit91:setTop(0);
-    obj.edit91:setWidth(24);
-    obj.edit91:setHeight(16);
-    obj.edit91:setField("DEFresTotal");
-    obj.edit91:setName("edit91");
+    obj.edit92 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit92:setParent(obj.layout102);
+    obj.edit92:setTransparent(true);
+    obj.edit92:setFontSize(9);
+    obj.edit92:setFontColor("#000000");
+    obj.edit92:setHorzTextAlign("center");
+    obj.edit92:setLeft(0);
+    obj.edit92:setTop(0);
+    obj.edit92:setWidth(24);
+    obj.edit92:setHeight(16);
+    obj.edit92:setField("DEFresTotal");
+    obj.edit92:setName("edit92");
 
     obj.layout103 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout103:setParent(obj.rectangle1);
@@ -3339,18 +3337,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout103:setHeight(15);
     obj.layout103:setName("layout103");
 
-    obj.edit92 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit92:setParent(obj.layout103);
-    obj.edit92:setTransparent(true);
-    obj.edit92:setFontSize(9);
-    obj.edit92:setFontColor("#000000");
-    obj.edit92:setHorzTextAlign("center");
-    obj.edit92:setLeft(0);
-    obj.edit92:setTop(0);
-    obj.edit92:setWidth(24);
-    obj.edit92:setHeight(16);
-    obj.edit92:setField("DEFextra1");
-    obj.edit92:setName("edit92");
+    obj.edit93 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit93:setParent(obj.layout103);
+    obj.edit93:setTransparent(true);
+    obj.edit93:setFontSize(9);
+    obj.edit93:setFontColor("#000000");
+    obj.edit93:setHorzTextAlign("center");
+    obj.edit93:setLeft(0);
+    obj.edit93:setTop(0);
+    obj.edit93:setWidth(24);
+    obj.edit93:setHeight(16);
+    obj.edit93:setField("DEFextra1");
+    obj.edit93:setName("edit93");
 
     obj.layout104 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout104:setParent(obj.rectangle1);
@@ -3360,18 +3358,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout104:setHeight(15);
     obj.layout104:setName("layout104");
 
-    obj.edit93 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit93:setParent(obj.layout104);
-    obj.edit93:setTransparent(true);
-    obj.edit93:setFontSize(9);
-    obj.edit93:setFontColor("#000000");
-    obj.edit93:setHorzTextAlign("center");
-    obj.edit93:setLeft(0);
-    obj.edit93:setTop(0);
-    obj.edit93:setWidth(24);
-    obj.edit93:setHeight(16);
-    obj.edit93:setField("DEFextra2");
-    obj.edit93:setName("edit93");
+    obj.edit94 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit94:setParent(obj.layout104);
+    obj.edit94:setTransparent(true);
+    obj.edit94:setFontSize(9);
+    obj.edit94:setFontColor("#000000");
+    obj.edit94:setHorzTextAlign("center");
+    obj.edit94:setLeft(0);
+    obj.edit94:setTop(0);
+    obj.edit94:setWidth(24);
+    obj.edit94:setHeight(16);
+    obj.edit94:setField("DEFextra2");
+    obj.edit94:setName("edit94");
 
     obj.dataLink83 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink83:setParent(obj.layout104);
@@ -3387,18 +3385,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout105:setHeight(15);
     obj.layout105:setName("layout105");
 
-    obj.edit94 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit94:setParent(obj.layout105);
-    obj.edit94:setTransparent(true);
-    obj.edit94:setFontSize(9);
-    obj.edit94:setFontColor("#000000");
-    obj.edit94:setHorzTextAlign("center");
-    obj.edit94:setLeft(0);
-    obj.edit94:setTop(0);
-    obj.edit94:setWidth(24);
-    obj.edit94:setHeight(16);
-    obj.edit94:setField("DEFextra3");
-    obj.edit94:setName("edit94");
+    obj.edit95 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit95:setParent(obj.layout105);
+    obj.edit95:setTransparent(true);
+    obj.edit95:setFontSize(9);
+    obj.edit95:setFontColor("#000000");
+    obj.edit95:setHorzTextAlign("center");
+    obj.edit95:setLeft(0);
+    obj.edit95:setTop(0);
+    obj.edit95:setWidth(24);
+    obj.edit95:setHeight(16);
+    obj.edit95:setField("DEFextra3");
+    obj.edit95:setName("edit95");
 
     obj.dataLink84 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink84:setParent(obj.layout105);
@@ -3414,18 +3412,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout106:setHeight(15);
     obj.layout106:setName("layout106");
 
-    obj.edit95 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit95:setParent(obj.layout106);
-    obj.edit95:setTransparent(true);
-    obj.edit95:setFontSize(9);
-    obj.edit95:setFontColor("#000000");
-    obj.edit95:setHorzTextAlign("center");
-    obj.edit95:setLeft(0);
-    obj.edit95:setTop(0);
-    obj.edit95:setWidth(24);
-    obj.edit95:setHeight(16);
-    obj.edit95:setField("DEFextraTotal");
-    obj.edit95:setName("edit95");
+    obj.edit96 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit96:setParent(obj.layout106);
+    obj.edit96:setTransparent(true);
+    obj.edit96:setFontSize(9);
+    obj.edit96:setFontColor("#000000");
+    obj.edit96:setHorzTextAlign("center");
+    obj.edit96:setLeft(0);
+    obj.edit96:setTop(0);
+    obj.edit96:setWidth(24);
+    obj.edit96:setHeight(16);
+    obj.edit96:setField("DEFextraTotal");
+    obj.edit96:setName("edit96");
 
     obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.rectangle1);
@@ -3725,18 +3723,18 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.image14:setStyle("proportional");
     obj.image14:setName("image14");
 
-    obj.label30 = gui.fromHandle(_obj_newObject("label"));
-    obj.label30:setParent(obj.rectangle3);
-    obj.label30:setLeft(600);
-    obj.label30:setTop(1240);
-    obj.label30:setWidth(33);
-    obj.label30:setHeight(20);
-    obj.label30:setText("GILGANTE E JANUS - VERSAO DA FICHA: 2.8");
-    obj.label30:setName("label30");
-    obj.label30:setFontColor("black");
-    obj.label30:setTextTrimming("none");
-    obj.label30:setWordWrap(false);
-    obj.label30:setAutoSize(true);
+    obj.label29 = gui.fromHandle(_obj_newObject("label"));
+    obj.label29:setParent(obj.rectangle3);
+    obj.label29:setLeft(600);
+    obj.label29:setTop(1240);
+    obj.label29:setWidth(33);
+    obj.label29:setHeight(20);
+    obj.label29:setText("GILGANTE E JANUS - VERSAO DA FICHA: 2.8");
+    obj.label29:setName("label29");
+    obj.label29:setFontColor("black");
+    obj.label29:setTextTrimming("none");
+    obj.label29:setWordWrap(false);
+    obj.label29:setAutoSize(true);
 
     obj.tab3 = gui.fromHandle(_obj_newObject("tab"));
     obj.tab3:setParent(obj.tabControl1);
@@ -3760,10 +3758,6 @@ function newfrmFicha_MM3ed_RRPG_image()
 			local mms = ndb.load("mmsskills.xml");
 
 			local function updateAtributes(num)
-				if debug then
-					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Atributos nas Pericias. ");
-					index = index + 1;
-				end;
 				local atr = "" .. num;
 				local mod = 0;
 				
@@ -3794,10 +3788,6 @@ function newfrmFicha_MM3ed_RRPG_image()
 			end;
 
 			local function updatePenalty()
-				if debug then
-					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Penalidade nas pericias.");
-					index = index + 1;
-				end;
 				if sheet~=nil then
 					local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
 					for i=1, #nodes, 1 do
@@ -3861,25 +3851,25 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.flowPart1:setHeight(35);
     obj.flowPart1:setName("flowPart1");
 
-    obj.label31 = gui.fromHandle(_obj_newObject("label"));
-    obj.label31:setParent(obj.flowPart1);
-    obj.label31:setAlign("top");
-    obj.label31:setFontSize(10);
-    obj.label31:setText("Penalidades");
-    obj.label31:setHorzTextAlign("center");
-    obj.label31:setWordWrap(true);
-    obj.label31:setTextTrimming("none");
-    obj.label31:setAutoSize(true);
-    obj.label31:setName("label31");
+    obj.label30 = gui.fromHandle(_obj_newObject("label"));
+    obj.label30:setParent(obj.flowPart1);
+    obj.label30:setAlign("top");
+    obj.label30:setFontSize(10);
+    obj.label30:setText("Penalidades");
+    obj.label30:setHorzTextAlign("center");
+    obj.label30:setWordWrap(true);
+    obj.label30:setTextTrimming("none");
+    obj.label30:setAutoSize(true);
+    obj.label30:setName("label30");
 
-    obj.edit96 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit96:setParent(obj.flowPart1);
-    obj.edit96:setAlign("client");
-    obj.edit96:setField("penalidesPericia");
-    obj.edit96:setHorzTextAlign("center");
-    obj.edit96:setFontSize(12);
-    obj.edit96:setType("number");
-    obj.edit96:setName("edit96");
+    obj.edit97 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit97:setParent(obj.flowPart1);
+    obj.edit97:setAlign("client");
+    obj.edit97:setField("penalidesPericia");
+    obj.edit97:setHorzTextAlign("center");
+    obj.edit97:setFontSize(12);
+    obj.edit97:setType("number");
+    obj.edit97:setName("edit97");
 
     obj.flowPart2 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart2:setParent(obj.flowLayout1);
@@ -3888,25 +3878,25 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.flowPart2:setHeight(35);
     obj.flowPart2:setName("flowPart2");
 
-    obj.label32 = gui.fromHandle(_obj_newObject("label"));
-    obj.label32:setParent(obj.flowPart2);
-    obj.label32:setAlign("top");
-    obj.label32:setFontSize(10);
-    obj.label32:setText("Poder/Equipamentos");
-    obj.label32:setHorzTextAlign("center");
-    obj.label32:setWordWrap(true);
-    obj.label32:setTextTrimming("none");
-    obj.label32:setAutoSize(true);
-    obj.label32:setName("label32");
+    obj.label31 = gui.fromHandle(_obj_newObject("label"));
+    obj.label31:setParent(obj.flowPart2);
+    obj.label31:setAlign("top");
+    obj.label31:setFontSize(10);
+    obj.label31:setText("Poder/Equipamentos");
+    obj.label31:setHorzTextAlign("center");
+    obj.label31:setWordWrap(true);
+    obj.label31:setTextTrimming("none");
+    obj.label31:setAutoSize(true);
+    obj.label31:setName("label31");
 
-    obj.edit97 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit97:setParent(obj.flowPart2);
-    obj.edit97:setAlign("client");
-    obj.edit97:setField("equipamentosPericia");
-    obj.edit97:setHorzTextAlign("center");
-    obj.edit97:setFontSize(12);
-    obj.edit97:setType("number");
-    obj.edit97:setName("edit97");
+    obj.edit98 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit98:setParent(obj.flowPart2);
+    obj.edit98:setAlign("client");
+    obj.edit98:setField("equipamentosPericia");
+    obj.edit98:setHorzTextAlign("center");
+    obj.edit98:setFontSize(12);
+    obj.edit98:setType("number");
+    obj.edit98:setName("edit98");
 
     obj.flowPart3 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart3:setParent(obj.flowLayout1);
@@ -3915,25 +3905,25 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.flowPart3:setHeight(35);
     obj.flowPart3:setName("flowPart3");
 
-    obj.label33 = gui.fromHandle(_obj_newObject("label"));
-    obj.label33:setParent(obj.flowPart3);
-    obj.label33:setAlign("top");
-    obj.label33:setFontSize(10);
-    obj.label33:setText("Condicional");
-    obj.label33:setHorzTextAlign("center");
-    obj.label33:setWordWrap(true);
-    obj.label33:setTextTrimming("none");
-    obj.label33:setAutoSize(true);
-    obj.label33:setName("label33");
+    obj.label32 = gui.fromHandle(_obj_newObject("label"));
+    obj.label32:setParent(obj.flowPart3);
+    obj.label32:setAlign("top");
+    obj.label32:setFontSize(10);
+    obj.label32:setText("Condicional");
+    obj.label32:setHorzTextAlign("center");
+    obj.label32:setWordWrap(true);
+    obj.label32:setTextTrimming("none");
+    obj.label32:setAutoSize(true);
+    obj.label32:setName("label32");
 
-    obj.edit98 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit98:setParent(obj.flowPart3);
-    obj.edit98:setAlign("client");
-    obj.edit98:setField("condicionalPericia");
-    obj.edit98:setHorzTextAlign("center");
-    obj.edit98:setFontSize(12);
-    obj.edit98:setType("number");
-    obj.edit98:setName("edit98");
+    obj.edit99 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit99:setParent(obj.flowPart3);
+    obj.edit99:setAlign("client");
+    obj.edit99:setField("condicionalPericia");
+    obj.edit99:setHorzTextAlign("center");
+    obj.edit99:setFontSize(12);
+    obj.edit99:setType("number");
+    obj.edit99:setName("edit99");
 
     obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.popPericia);
@@ -3985,30 +3975,40 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.rectangle6:setYradius(10);
     obj.rectangle6:setName("rectangle6");
 
+    obj.label33 = gui.fromHandle(_obj_newObject("label"));
+    obj.label33:setParent(obj.rectangle5);
+    obj.label33:setText("NOME DA PERÍCIA");
+    obj.label33:setLeft(20);
+    obj.label33:setTop(1);
+    obj.label33:setWidth(135);
+    obj.label33:setHeight(20);
+    obj.label33:setHorzTextAlign("center");
+    obj.label33:setName("label33");
+
     obj.label34 = gui.fromHandle(_obj_newObject("label"));
     obj.label34:setParent(obj.rectangle5);
-    obj.label34:setText("NOME DA PERÍCIA");
-    obj.label34:setLeft(20);
+    obj.label34:setText("HABILIDADE");
+    obj.label34:setLeft(190);
     obj.label34:setTop(1);
-    obj.label34:setWidth(135);
+    obj.label34:setWidth(100);
     obj.label34:setHeight(20);
     obj.label34:setHorzTextAlign("center");
     obj.label34:setName("label34");
 
     obj.label35 = gui.fromHandle(_obj_newObject("label"));
     obj.label35:setParent(obj.rectangle5);
-    obj.label35:setText("HABILIDADE");
-    obj.label35:setLeft(190);
+    obj.label35:setText("GRAD");
+    obj.label35:setLeft(294);
     obj.label35:setTop(1);
-    obj.label35:setWidth(100);
+    obj.label35:setWidth(40);
     obj.label35:setHeight(20);
     obj.label35:setHorzTextAlign("center");
     obj.label35:setName("label35");
 
     obj.label36 = gui.fromHandle(_obj_newObject("label"));
     obj.label36:setParent(obj.rectangle5);
-    obj.label36:setText("GRAD");
-    obj.label36:setLeft(294);
+    obj.label36:setText("VAR");
+    obj.label36:setLeft(333);
     obj.label36:setTop(1);
     obj.label36:setWidth(40);
     obj.label36:setHeight(20);
@@ -4017,23 +4017,13 @@ function newfrmFicha_MM3ed_RRPG_image()
 
     obj.label37 = gui.fromHandle(_obj_newObject("label"));
     obj.label37:setParent(obj.rectangle5);
-    obj.label37:setText("VAR");
-    obj.label37:setLeft(333);
+    obj.label37:setText("TOTAL");
+    obj.label37:setLeft(375);
     obj.label37:setTop(1);
     obj.label37:setWidth(40);
     obj.label37:setHeight(20);
     obj.label37:setHorzTextAlign("center");
     obj.label37:setName("label37");
-
-    obj.label38 = gui.fromHandle(_obj_newObject("label"));
-    obj.label38:setParent(obj.rectangle5);
-    obj.label38:setText("TOTAL");
-    obj.label38:setLeft(375);
-    obj.label38:setTop(1);
-    obj.label38:setWidth(40);
-    obj.label38:setHeight(20);
-    obj.label38:setHorzTextAlign("center");
-    obj.label38:setName("label38");
 
     obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle7:setParent(obj.rectangle5);
@@ -4046,30 +4036,40 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.rectangle7:setYradius(10);
     obj.rectangle7:setName("rectangle7");
 
+    obj.label38 = gui.fromHandle(_obj_newObject("label"));
+    obj.label38:setParent(obj.rectangle5);
+    obj.label38:setText("NOME DA PERÍCIA");
+    obj.label38:setLeft(475);
+    obj.label38:setTop(1);
+    obj.label38:setWidth(135);
+    obj.label38:setHeight(20);
+    obj.label38:setHorzTextAlign("center");
+    obj.label38:setName("label38");
+
     obj.label39 = gui.fromHandle(_obj_newObject("label"));
     obj.label39:setParent(obj.rectangle5);
-    obj.label39:setText("NOME DA PERÍCIA");
-    obj.label39:setLeft(475);
+    obj.label39:setText("HABILIDADE");
+    obj.label39:setLeft(635);
     obj.label39:setTop(1);
-    obj.label39:setWidth(135);
+    obj.label39:setWidth(100);
     obj.label39:setHeight(20);
     obj.label39:setHorzTextAlign("center");
     obj.label39:setName("label39");
 
     obj.label40 = gui.fromHandle(_obj_newObject("label"));
     obj.label40:setParent(obj.rectangle5);
-    obj.label40:setText("HABILIDADE");
-    obj.label40:setLeft(635);
+    obj.label40:setText("GRAD");
+    obj.label40:setLeft(735);
     obj.label40:setTop(1);
-    obj.label40:setWidth(100);
+    obj.label40:setWidth(40);
     obj.label40:setHeight(20);
     obj.label40:setHorzTextAlign("center");
     obj.label40:setName("label40");
 
     obj.label41 = gui.fromHandle(_obj_newObject("label"));
     obj.label41:setParent(obj.rectangle5);
-    obj.label41:setText("GRAD");
-    obj.label41:setLeft(735);
+    obj.label41:setText("VAR");
+    obj.label41:setLeft(774);
     obj.label41:setTop(1);
     obj.label41:setWidth(40);
     obj.label41:setHeight(20);
@@ -4078,23 +4078,13 @@ function newfrmFicha_MM3ed_RRPG_image()
 
     obj.label42 = gui.fromHandle(_obj_newObject("label"));
     obj.label42:setParent(obj.rectangle5);
-    obj.label42:setText("VAR");
-    obj.label42:setLeft(774);
+    obj.label42:setText("TOTAL");
+    obj.label42:setLeft(820);
     obj.label42:setTop(1);
     obj.label42:setWidth(40);
     obj.label42:setHeight(20);
     obj.label42:setHorzTextAlign("center");
     obj.label42:setName("label42");
-
-    obj.label43 = gui.fromHandle(_obj_newObject("label"));
-    obj.label43:setParent(obj.rectangle5);
-    obj.label43:setText("TOTAL");
-    obj.label43:setLeft(820);
-    obj.label43:setTop(1);
-    obj.label43:setWidth(40);
-    obj.label43:setHeight(20);
-    obj.label43:setHorzTextAlign("center");
-    obj.label43:setName("label43");
 
     obj.rclListaDasPericias = gui.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDasPericias:setParent(obj.rectangle5);
@@ -4131,27 +4121,27 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.rectangle9:setStrokeSize(1);
     obj.rectangle9:setName("rectangle9");
 
+    obj.label43 = gui.fromHandle(_obj_newObject("label"));
+    obj.label43:setParent(obj.rectangle9);
+    obj.label43:setText("PONTOS DE PODER");
+    lfm_setPropAsString(obj.label43, "fontStyle",  "bold");
+    obj.label43:setLeft(0);
+    obj.label43:setTop(0);
+    obj.label43:setWidth(135);
+    obj.label43:setHeight(20);
+    obj.label43:setHorzTextAlign("center");
+    obj.label43:setMargins({left=250});
+    obj.label43:setName("label43");
+
     obj.label44 = gui.fromHandle(_obj_newObject("label"));
     obj.label44:setParent(obj.rectangle9);
-    obj.label44:setText("PONTOS DE PODER");
-    lfm_setPropAsString(obj.label44, "fontStyle",  "bold");
-    obj.label44:setLeft(0);
-    obj.label44:setTop(0);
+    obj.label44:setField("pontosPericia");
+    obj.label44:setAlign("left");
     obj.label44:setWidth(135);
-    obj.label44:setHeight(20);
+    obj.label44:setHeight(25);
     obj.label44:setHorzTextAlign("center");
-    obj.label44:setMargins({left=250});
+    obj.label44:setMargins({top=5});
     obj.label44:setName("label44");
-
-    obj.label45 = gui.fromHandle(_obj_newObject("label"));
-    obj.label45:setParent(obj.rectangle9);
-    obj.label45:setField("pontosPericia");
-    obj.label45:setAlign("left");
-    obj.label45:setWidth(135);
-    obj.label45:setHeight(25);
-    obj.label45:setHorzTextAlign("center");
-    obj.label45:setMargins({top=5});
-    obj.label45:setName("label45");
 
     obj.button17 = gui.fromHandle(_obj_newObject("button"));
     obj.button17:setParent(obj.rectangle9);
@@ -4253,19 +4243,19 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout114:setMargins({bottom=4});
     obj.layout114:setName("layout114");
 
-    obj.edit99 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit99:setParent(obj.layout114);
-    obj.edit99:setTransparent(true);
-    obj.edit99:setAlign("top");
-    lfm_setPropAsString(obj.edit99, "fontStyle",  "bold");
-    obj.edit99:setHorzTextAlign("center");
-    obj.edit99:setLeft(0);
-    obj.edit99:setTop(0);
-    obj.edit99:setWidth(68);
-    obj.edit99:setHeight(31);
-    obj.edit99:setField("PoderNome");
-    obj.edit99:setFontColor("white");
-    obj.edit99:setName("edit99");
+    obj.edit100 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit100:setParent(obj.layout114);
+    obj.edit100:setTransparent(true);
+    obj.edit100:setAlign("top");
+    lfm_setPropAsString(obj.edit100, "fontStyle",  "bold");
+    obj.edit100:setHorzTextAlign("center");
+    obj.edit100:setLeft(0);
+    obj.edit100:setTop(0);
+    obj.edit100:setWidth(68);
+    obj.edit100:setHeight(31);
+    obj.edit100:setField("PoderNome");
+    obj.edit100:setFontColor("white");
+    obj.edit100:setName("edit100");
 
     obj.dataLink98 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink98:setParent(obj.layout114);
@@ -4297,16 +4287,16 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.rectangle12:setStrokeSize(1);
     obj.rectangle12:setName("rectangle12");
 
-    obj.label46 = gui.fromHandle(_obj_newObject("label"));
-    obj.label46:setParent(obj.rectangle12);
-    obj.label46:setAlign("top");
-    obj.label46:setFontSize(14);
-    obj.label46:setText("EFEITOS");
-    obj.label46:setFontColor("white");
-    lfm_setPropAsString(obj.label46, "fontStyle",  "bold");
-    obj.label46:setHorzTextAlign("center");
-    obj.label46:setMargins({top=1});
-    obj.label46:setName("label46");
+    obj.label45 = gui.fromHandle(_obj_newObject("label"));
+    obj.label45:setParent(obj.rectangle12);
+    obj.label45:setAlign("top");
+    obj.label45:setFontSize(14);
+    obj.label45:setText("EFEITOS");
+    obj.label45:setFontColor("white");
+    lfm_setPropAsString(obj.label45, "fontStyle",  "bold");
+    obj.label45:setHorzTextAlign("center");
+    obj.label45:setMargins({top=1});
+    obj.label45:setName("label45");
 
     obj.textEditor9 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor9:setParent(obj.rectangle12);
@@ -4348,16 +4338,16 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.rectangle13:setStrokeSize(1);
     obj.rectangle13:setName("rectangle13");
 
-    obj.label47 = gui.fromHandle(_obj_newObject("label"));
-    obj.label47:setParent(obj.rectangle13);
-    obj.label47:setLeft(5);
-    obj.label47:setFontSize(16);
-    obj.label47:setText("Notas");
-    lfm_setPropAsString(obj.label47, "fontStyle",  "bold");
-    obj.label47:setFontColor("white");
-    obj.label47:setVertTextAlign("center");
-    obj.label47:setMargins({left=2});
-    obj.label47:setName("label47");
+    obj.label46 = gui.fromHandle(_obj_newObject("label"));
+    obj.label46:setParent(obj.rectangle13);
+    obj.label46:setLeft(5);
+    obj.label46:setFontSize(16);
+    obj.label46:setText("Notas");
+    lfm_setPropAsString(obj.label46, "fontStyle",  "bold");
+    obj.label46:setFontColor("white");
+    obj.label46:setVertTextAlign("center");
+    obj.label46:setMargins({left=2});
+    obj.label46:setName("label46");
 
     obj.textEditor10 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor10:setParent(obj.rectangle13);
@@ -4398,16 +4388,16 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.rectangle14:setStrokeSize(1);
     obj.rectangle14:setName("rectangle14");
 
-    obj.label48 = gui.fromHandle(_obj_newObject("label"));
-    obj.label48:setParent(obj.rectangle14);
-    obj.label48:setLeft(5);
-    obj.label48:setFontSize(16);
-    obj.label48:setText("Custo");
-    lfm_setPropAsString(obj.label48, "fontStyle",  "bold");
-    obj.label48:setFontColor("white");
-    obj.label48:setVertTextAlign("center");
-    obj.label48:setMargins({left=10});
-    obj.label48:setName("label48");
+    obj.label47 = gui.fromHandle(_obj_newObject("label"));
+    obj.label47:setParent(obj.rectangle14);
+    obj.label47:setLeft(5);
+    obj.label47:setFontSize(16);
+    obj.label47:setText("Custo");
+    lfm_setPropAsString(obj.label47, "fontStyle",  "bold");
+    obj.label47:setFontColor("white");
+    obj.label47:setVertTextAlign("center");
+    obj.label47:setMargins({left=10});
+    obj.label47:setName("label47");
 
     obj.textEditor11 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor11:setParent(obj.rectangle14);
@@ -4441,16 +4431,16 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.rectangle15:setStrokeSize(1);
     obj.rectangle15:setName("rectangle15");
 
-    obj.label49 = gui.fromHandle(_obj_newObject("label"));
-    obj.label49:setParent(obj.rectangle15);
-    obj.label49:setAlign("bottom");
-    obj.label49:setFontSize(12);
-    obj.label49:setText("IMAGEM");
-    obj.label49:setFontColor("white");
-    lfm_setPropAsString(obj.label49, "fontStyle",  "bold");
-    obj.label49:setHorzTextAlign("center");
-    obj.label49:setMargins({bottom=1});
-    obj.label49:setName("label49");
+    obj.label48 = gui.fromHandle(_obj_newObject("label"));
+    obj.label48:setParent(obj.rectangle15);
+    obj.label48:setAlign("bottom");
+    obj.label48:setFontSize(12);
+    obj.label48:setText("IMAGEM");
+    obj.label48:setFontColor("white");
+    lfm_setPropAsString(obj.label48, "fontStyle",  "bold");
+    obj.label48:setHorzTextAlign("center");
+    obj.label48:setMargins({bottom=1});
+    obj.label48:setName("label48");
 
     obj.image17 = gui.fromHandle(_obj_newObject("image"));
     obj.image17:setParent(obj.rectangle15);
@@ -4479,15 +4469,15 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.rectangle16:setStrokeSize(1);
     obj.rectangle16:setName("rectangle16");
 
-    obj.label50 = gui.fromHandle(_obj_newObject("label"));
-    obj.label50:setParent(obj.rectangle16);
-    obj.label50:setAlign("top");
-    obj.label50:setFontSize(12);
-    lfm_setPropAsString(obj.label50, "fontStyle",  "bold");
-    obj.label50:setText("DEFESA");
-    obj.label50:setFontColor("white");
-    obj.label50:setHorzTextAlign("center");
-    obj.label50:setName("label50");
+    obj.label49 = gui.fromHandle(_obj_newObject("label"));
+    obj.label49:setParent(obj.rectangle16);
+    obj.label49:setAlign("top");
+    obj.label49:setFontSize(12);
+    lfm_setPropAsString(obj.label49, "fontStyle",  "bold");
+    obj.label49:setText("DEFESA");
+    obj.label49:setFontColor("white");
+    obj.label49:setHorzTextAlign("center");
+    obj.label49:setName("label49");
 
     obj.comboBox11 = gui.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox11:setParent(obj.rectangle16);
@@ -4521,15 +4511,15 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.rectangle17:setStrokeSize(1);
     obj.rectangle17:setName("rectangle17");
 
-    obj.label51 = gui.fromHandle(_obj_newObject("label"));
-    obj.label51:setParent(obj.rectangle17);
-    obj.label51:setAlign("top");
-    obj.label51:setFontSize(12);
-    lfm_setPropAsString(obj.label51, "fontStyle",  "bold");
-    obj.label51:setText("ACAO");
-    obj.label51:setFontColor("white");
-    obj.label51:setHorzTextAlign("center");
-    obj.label51:setName("label51");
+    obj.label50 = gui.fromHandle(_obj_newObject("label"));
+    obj.label50:setParent(obj.rectangle17);
+    obj.label50:setAlign("top");
+    obj.label50:setFontSize(12);
+    lfm_setPropAsString(obj.label50, "fontStyle",  "bold");
+    obj.label50:setText("ACAO");
+    obj.label50:setFontColor("white");
+    obj.label50:setHorzTextAlign("center");
+    obj.label50:setName("label50");
 
     obj.comboBox12 = gui.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox12:setParent(obj.rectangle17);
@@ -4562,15 +4552,15 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.rectangle18:setStrokeSize(1);
     obj.rectangle18:setName("rectangle18");
 
-    obj.label52 = gui.fromHandle(_obj_newObject("label"));
-    obj.label52:setParent(obj.rectangle18);
-    obj.label52:setAlign("top");
-    obj.label52:setFontSize(12);
-    lfm_setPropAsString(obj.label52, "fontStyle",  "bold");
-    obj.label52:setHorzTextAlign("center");
-    obj.label52:setText("ALCANCE");
-    obj.label52:setFontColor("white");
-    obj.label52:setName("label52");
+    obj.label51 = gui.fromHandle(_obj_newObject("label"));
+    obj.label51:setParent(obj.rectangle18);
+    obj.label51:setAlign("top");
+    obj.label51:setFontSize(12);
+    lfm_setPropAsString(obj.label51, "fontStyle",  "bold");
+    obj.label51:setHorzTextAlign("center");
+    obj.label51:setText("ALCANCE");
+    obj.label51:setFontColor("white");
+    obj.label51:setName("label51");
 
     obj.layout125 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout125:setParent(obj.rectangle11);
@@ -4580,12 +4570,12 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout125:setHeight(25);
     obj.layout125:setName("layout125");
 
-    obj.edit100 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit100:setParent(obj.layout125);
-    obj.edit100:setAlign("right");
-    obj.edit100:setWidth(130);
-    obj.edit100:setField("PoderAlcance");
-    obj.edit100:setName("edit100");
+    obj.edit101 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit101:setParent(obj.layout125);
+    obj.edit101:setAlign("right");
+    obj.edit101:setWidth(130);
+    obj.edit101:setField("PoderAlcance");
+    obj.edit101:setName("edit101");
 
     obj.dataLink104 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink104:setParent(obj.layout125);
@@ -4610,15 +4600,15 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.rectangle19:setStrokeSize(1);
     obj.rectangle19:setName("rectangle19");
 
-    obj.label53 = gui.fromHandle(_obj_newObject("label"));
-    obj.label53:setParent(obj.rectangle19);
-    obj.label53:setAlign("top");
-    obj.label53:setFontSize(12);
-    lfm_setPropAsString(obj.label53, "fontStyle",  "bold");
-    obj.label53:setHorzTextAlign("center");
-    obj.label53:setText("DURACAO");
-    obj.label53:setFontColor("white");
-    obj.label53:setName("label53");
+    obj.label52 = gui.fromHandle(_obj_newObject("label"));
+    obj.label52:setParent(obj.rectangle19);
+    obj.label52:setAlign("top");
+    obj.label52:setFontSize(12);
+    lfm_setPropAsString(obj.label52, "fontStyle",  "bold");
+    obj.label52:setHorzTextAlign("center");
+    obj.label52:setText("DURACAO");
+    obj.label52:setFontColor("white");
+    obj.label52:setName("label52");
 
     obj.layout127 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout127:setParent(obj.rectangle11);
@@ -4628,12 +4618,12 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout127:setHeight(25);
     obj.layout127:setName("layout127");
 
-    obj.edit101 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit101:setParent(obj.layout127);
-    obj.edit101:setAlign("right");
-    obj.edit101:setWidth(130);
-    obj.edit101:setField("PoderDuracao");
-    obj.edit101:setName("edit101");
+    obj.edit102 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit102:setParent(obj.layout127);
+    obj.edit102:setAlign("right");
+    obj.edit102:setWidth(130);
+    obj.edit102:setField("PoderDuracao");
+    obj.edit102:setName("edit102");
 
     obj.dataLink105 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink105:setParent(obj.layout127);
@@ -4658,15 +4648,15 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.rectangle20:setStrokeSize(1);
     obj.rectangle20:setName("rectangle20");
 
-    obj.label54 = gui.fromHandle(_obj_newObject("label"));
-    obj.label54:setParent(obj.rectangle20);
-    obj.label54:setAlign("top");
-    obj.label54:setFontSize(12);
-    lfm_setPropAsString(obj.label54, "fontStyle",  "bold");
-    obj.label54:setHorzTextAlign("center");
-    obj.label54:setText("REFERENCIA");
-    obj.label54:setFontColor("white");
-    obj.label54:setName("label54");
+    obj.label53 = gui.fromHandle(_obj_newObject("label"));
+    obj.label53:setParent(obj.rectangle20);
+    obj.label53:setAlign("top");
+    obj.label53:setFontSize(12);
+    lfm_setPropAsString(obj.label53, "fontStyle",  "bold");
+    obj.label53:setHorzTextAlign("center");
+    obj.label53:setText("REFERENCIA");
+    obj.label53:setFontColor("white");
+    obj.label53:setName("label53");
 
     obj.layout129 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout129:setParent(obj.rectangle11);
@@ -4676,12 +4666,12 @@ function newfrmFicha_MM3ed_RRPG_image()
     obj.layout129:setHeight(25);
     obj.layout129:setName("layout129");
 
-    obj.edit102 = gui.fromHandle(_obj_newObject("edit"));
-    obj.edit102:setParent(obj.layout129);
-    obj.edit102:setAlign("right");
-    obj.edit102:setWidth(130);
-    obj.edit102:setField("PoderReferencia");
-    obj.edit102:setName("edit102");
+    obj.edit103 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit103:setParent(obj.layout129);
+    obj.edit103:setAlign("right");
+    obj.edit103:setWidth(130);
+    obj.edit103:setField("PoderReferencia");
+    obj.edit103:setName("edit103");
 
     obj.dataLink106 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink106:setParent(obj.layout129);
@@ -5680,12 +5670,12 @@ function newfrmFicha_MM3ed_RRPG_image()
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
         if self.layout90 ~= nil then self.layout90:destroy(); self.layout90 = nil; end;
         if self.rectangle10 ~= nil then self.rectangle10:destroy(); self.rectangle10 = nil; end;
-        if self.layout118 ~= nil then self.layout118:destroy(); self.layout118 = nil; end;
+        if self.edit100 ~= nil then self.edit100:destroy(); self.edit100 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.edit61 ~= nil then self.edit61:destroy(); self.edit61 = nil; end;
         if self.edit84 ~= nil then self.edit84:destroy(); self.edit84 = nil; end;
         if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
-        if self.edit100 ~= nil then self.edit100:destroy(); self.edit100 = nil; end;
+        if self.layout118 ~= nil then self.layout118:destroy(); self.layout118 = nil; end;
         if self.layout111 ~= nil then self.layout111:destroy(); self.layout111 = nil; end;
         if self.edit24 ~= nil then self.edit24:destroy(); self.edit24 = nil; end;
         if self.edit59 ~= nil then self.edit59:destroy(); self.edit59 = nil; end;
@@ -5702,6 +5692,7 @@ function newfrmFicha_MM3ed_RRPG_image()
         if self.layout116 ~= nil then self.layout116:destroy(); self.layout116 = nil; end;
         if self.image12 ~= nil then self.image12:destroy(); self.image12 = nil; end;
         if self.dataLink45 ~= nil then self.dataLink45:destroy(); self.dataLink45 = nil; end;
+        if self.edit103 ~= nil then self.edit103:destroy(); self.edit103 = nil; end;
         if self.label37 ~= nil then self.label37:destroy(); self.label37 = nil; end;
         if self.dataLink43 ~= nil then self.dataLink43:destroy(); self.dataLink43 = nil; end;
         if self.layout26 ~= nil then self.layout26:destroy(); self.layout26 = nil; end;
@@ -5866,7 +5857,6 @@ function newfrmFicha_MM3ed_RRPG_image()
         if self.dataLink15 ~= nil then self.dataLink15:destroy(); self.dataLink15 = nil; end;
         if self.layout49 ~= nil then self.layout49:destroy(); self.layout49 = nil; end;
         if self.layout129 ~= nil then self.layout129:destroy(); self.layout129 = nil; end;
-        if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
         if self.dataLink37 ~= nil then self.dataLink37:destroy(); self.dataLink37 = nil; end;
         if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
         if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;

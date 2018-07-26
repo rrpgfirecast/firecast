@@ -41,10 +41,6 @@ function newfrmFichaRPGmeister3_svg()
 			local mms = ndb.load("mmsskills.xml");
 
 			local function updateAtributes(num)
-				if debug then
-					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Atributos nas Pericias. ");
-					index = index + 1;
-				end;
 				local atr = "" .. num;
 				local mod = 0;
 				
@@ -75,10 +71,6 @@ function newfrmFichaRPGmeister3_svg()
 			end;
 
 			local function updatePenalty()
-				if debug then
-					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Penalidade nas pericias.");
-					index = index + 1;
-				end;
 				if sheet~=nil then
 					local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
 					for i=1, #nodes, 1 do
