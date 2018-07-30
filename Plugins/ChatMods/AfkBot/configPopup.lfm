@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="afkbotPopup" formType="undefined" dataType="ambesek.afkbot" title="AfkBot" width="290" height ="500">
+	<tabControl align="client">
+		<tab title="Opções"> 
+			<checkBox field="botEnabled" left="10" top="10" width="270" text="Habilitar AfkBot"/>
+			<checkBox field="autoEnable" left="10" top="35" width="270" text="Autoligar quando ausente"/>
+			<checkBox field="spectator" left="10" top="60" width="270" text="Alertar automaticamente espectadores?"/>
+			<label left="10" top="85" width="190" text="Tempo entre mensagens (min)" horzTextAlign="center"/>
+			<edit left="200" top="85" width="50" height="25" field="delay" type="number" min="1" horzTextAlign="center"/>
+
+			<horzLine left="10" top="115" width="270"/>
+
+			<checkBox field="stopDice" left="10" top="120" width="270" text="Expulsar espectadores rolando dados."/>
+			<checkBox field="stopLaugh" left="10" top="145" width="270" text="Expulsar espectadores rindo."/>
+
+
+		</tab>
+		<tab title="AfkBot"> 
+			<recordList left="10" top="5" width="270" height="490" field="messagesList" name="messagesList" templateForm="frmMessageItem" layout="vertical" minQt="1">
+				<event name="onCompare">
+					if nodeA.enabled and nodeB.enabled then 
+						return 0;
+					elseif nodeA.enabled then
+						return -1;
+					elseif nodeB.enabled then
+						return 1;
+					end;
+	        	</event>
+			</recordList>
+
+			<dataLink field="addMessage">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local addMessage = tonumber(sheet.addMessage) or 0;
+					if addMessage>0 then
+						sheet.addMessage = 0;
+						local item = self.messagesList:append();
+						item.enabled = false;
+					end;
+				</event>
+			</dataLink>
+		</tab>
+		<tab title="AutoKick">
+
+		</tab>
+	</tabControl>
+</popupForm>

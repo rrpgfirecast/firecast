@@ -29,6 +29,9 @@ end;
 if afkdb.laughTimes== nil then
 	afkdb.laughTimes = {};
 end;
+if afkdb.config == nil then 
+	afkdb.config = {};
+end;
 
 local config = ndb.load("config.xml");
 
@@ -62,34 +65,79 @@ local function isNewVersion(installed, downloaded)
     end;
 end;
 
+local function initializeRoom(mesa)
+	if afkdb.config[mesa.codigoInterno] == nil then
+		afkdb.config[mesa.codigoInterno] = {};
+	end;
+end
+local function initializeClock(mesa)
+	if afkdb.config[mesa.codigoInterno].clock == nil then
+		local delay = tonumber(afkdb.config[mesa.codigoInterno].delay) or 5;
+		afkdb.config[mesa.codigoInterno].clock = os.clock() - (delay * 60);
+	end;
+end
+local function sendPersonalMessage(chat, mesa)
+	-- dia e hora atual
+	local date = os.date("*t");
+
+	-- Ache qual a mensagem para esse dia e hora. 
+	local node = afkdb.config[mesa.codigoInterno];
+	local messages = ndb.getChildNodes(afkdb.config[mesa.codigoInterno].messagesList);
+	local message = "";
+	for i=1, #messages, 1 do
+		local msg = messages[i];
+		local valid = true;
+		-- verifica se é do dia da semana certo. 
+		valid = valid and msg["d" .. date.wday];
+		-- verifica se é a hora certa. 
+		valid = valid and (msg.hourStart < date.hour or (msg.hourStart == date.hour and msg.minuteStart <= date.min));
+		valid = valid and (msg.hourEnd > date.hour or (msg.hourEnd == date.hour and msg.minuteEnd >= date.min));
+
+		if valid then
+			message = message .. msg.message;
+		end;
+	end;
+
+	-- Se tiver alguma mensagem envie
+	if message ~= "" then
+		chat:enviarNarracao(message);
+	end;
+end
+
+function getConfigWindow(mesa)
+	initializeRoom(mesa);
+
+	local cfgForm = gui.newForm("afkbotPopup");
+	cfgForm:setNodeObject(afkdb.config[mesa.codigoInterno]);
+	cfgForm.title = "AfkBot - " .. mesa.nome;
+	
+	return cfgForm;
+end
+
 -- Implementação dos comandos
 rrpg.messaging.listen("HandleChatCommand", 
 	function (message)
 		if message.comando == "afk" then
-			if afkdb.afkStatus[message.mesa.codigoInterno] == false or afkdb.afkStatus[message.mesa.codigoInterno] == nil then
-				afkdb.afkStatus[message.mesa.codigoInterno] = true;
-				afkdb.afkBotClock[message.mesa.codigoInterno] = os.clock() - 300;
+			initializeRoom(message.mesa);
+			if afkdb.config[message.mesa.codigoInterno].botEnabled == false or afkdb.config[message.mesa.codigoInterno].botEnabled == nil then
+				afkdb.config[message.mesa.codigoInterno].botEnabled = true;
+
+				local delay = tonumber(afkdb.config[message.mesa.codigoInterno].delay) or 5;
+
+				afkdb.config[message.mesa.codigoInterno].clock = os.clock() - (delay * 60);
 				if message.parametro == "true" then
-					afkdb.afkSpectator[message.mesa.codigoInterno] = true;
+					afkdb.config[message.mesa.codigoInterno].spectator = true;
 					message.chat:escrever("AfkBot habilitado! Espectadores serão automaticamente alertados!");
 				else
-					afkdb.afkSpectator[message.mesa.codigoInterno] = false;
+					afkdb.config[message.mesa.codigoInterno].spectator = false;
 					message.chat:escrever("AfkBot habilitado! Espectadores não serão automaticamente alertados!");
 				end;
 			else
-				afkdb.afkStatus[message.mesa.codigoInterno] = false;
-				afkdb.afkSpectator[message.mesa.codigoInterno] = false;
+				afkdb.config[message.mesa.codigoInterno].botEnabled = false;
+				afkdb.config[message.mesa.codigoInterno].spectator = false;
 				message.chat:escrever("AfkBot desabilitado!");
 			end		
 			
-			message.response = {handled = true};
-		elseif message.comando == "msg" then
-			if message.parametro == "" or message.parametro == nil then
-				message.chat:escrever("Sua mensagem salva é: [" .. (afkdb.afkMessage[message.mesa.codigoInterno] or "") .. "].");
-			else
-				afkdb.afkMessage[message.mesa.codigoInterno] = message.parametro;
-				message.chat:escrever("Sua mensagem: [" .. afkdb.afkMessage[message.mesa.codigoInterno] .. "] foi salva.");
-			end;
 			message.response = {handled = true};
 		elseif message.comando == "stopdice" then
 			if afkdb.diceStatus[message.mesa.codigoInterno] == false or afkdb.diceStatus[message.mesa.codigoInterno] == nil then
@@ -124,30 +172,42 @@ rrpg.messaging.listen("HandleChatCommand",
 			end;
 
 			message.response = {handled = true};
+		elseif message.comando == "afkbot" then
+			local cfgForm = getConfigWindow(message.mesa);
+
+			if (cfgForm) then
+				cfgForm:show();
+			end;
+
+			message.response = {handled = true};
 		end
 	end);
 
 -- Escuta das mensagens de chat padrão
 rrpg.messaging.listen("ChatMessage", 
 	function (message)
-		if afkdb.afkStatus[message.mesa.codigoInterno] == true then
-			local time = os.clock();
-			if afkdb.afkBotClock[message.mesa.codigoInterno]~=nil and afkdb.afkBotClock[message.mesa.codigoInterno]+300 > time then
-				return;
-			end;
+		initializeRoom(message.mesa);
+		initializeClock(message.mesa);
+		-- se o alerta está ativado
+		local alert = afkdb.config[message.mesa.codigoInterno].botEnabled;
+		-- ou o auto alerta está ativado e o usuario está ausente]
+		alert = alert or (afkdb.config[message.mesa.codigoInterno].autoEnable and message.mesa.meuJogador.isAusente);
 
+		-- e faz mais de X minutos desde o ultimo alerta
+		local delay = tonumber(afkdb.config[message.mesa.codigoInterno].delay) or 5;
+		alert = alert and not (afkdb.config[message.mesa.codigoInterno].clock + (delay * 60) > os.clock());
+
+		-- e o usuario é mestre
+		alert = alert and message.mesa.meuJogador.isMestre;
+		
+		if alert then
 			local text = utils.removerFmtChat(message.texto, true);
 			local login = message.mesa.meuJogador.login;
 			local nick = utils.removerFmtChat(message.mesa.meuJogador.nick, true);
 
-			if message.mesa.meuJogador.isMestre then
-				text = text:lower();
-				nick = nick:lower();
-				login = login:lower();
-			else
-				message.chat:escrever("Apenas mestres!");
-				return;
-			end;
+			text = text:lower();
+			nick = nick:lower();
+			login = login:lower();
 			
 			local isLogin = string.match(text, login) ~= nil;
 			local isNick = string.match(text, nick) ~= nil;
@@ -159,12 +219,44 @@ rrpg.messaging.listen("ChatMessage",
 			if isLogin or isNick or isMestre or isDia or isTarde or isNoite then
 				local info = "[§K1]AfkBot: Está é uma mensagem automatica de " .. message.mesa.meuJogador.nick .. "[§K1](" .. message.mesa.meuJogador.login .. ") que está ocupado e não pode responder.";
 
-				afkdb.afkBotClock[message.mesa.codigoInterno] = os.clock();
+				afkdb.config[message.mesa.codigoInterno].clock = os.clock();
 				message.chat:enviarNarracao(info);
-				message.chat:enviarNarracao(afkdb.afkMessage[message.mesa.codigoInterno]);
+				sendPersonalMessage(message.chat, message.mesa);
 				return;
 			end;
 		end
+	end);
+
+-- Enviar a mensagem de afk para todos espectadores, se ativo
+rrpg.messaging.listen("MesaJoined",
+	function(message)
+		initializeRoom(message.mesa);
+		initializeClock(message.mesa);
+		-- se o alerta está ativado
+		local alert = afkdb.config[message.mesa.codigoInterno].botEnabled;
+		-- ou o auto alerta está ativado e o usuario está ausente]
+		alert = alert or (afkdb.config[message.mesa.codigoInterno].autoEnable and message.mesa.meuJogador.isAusente);
+
+		-- e faz mais de X minutos desde o ultimo alerta
+		local delay = tonumber(afkdb.config[message.mesa.codigoInterno].delay) or 5;
+		alert = alert and not (afkdb.config[message.mesa.codigoInterno].clock + (delay * 60) > os.clock());
+
+		-- e o usuario é mestre
+		alert = alert and message.mesa.meuJogador.isMestre;
+
+		-- e está alerta a espectadores
+		alert = alert and afkdb.config[message.mesa.codigoInterno].spectator;
+
+		-- e entrou um espectador
+		alert = alert and message.jogador.isEspectador;
+
+		if alert then
+			afkdb.config[message.mesa.codigoInterno].clock = os.clock();
+
+			local info = "[§K1]AfkBot: Está é uma mensagem automatica de " .. message.mesa.meuJogador.nick .. "[§K1](" .. message.mesa.meuJogador.login .. ") que está ocupado e não pode responder.";
+			message.mesa.chat:enviarNarracao(info);
+			sendPersonalMessage(message.chat, message.mesa);
+		end;
 	end);
 
 -- Escuta por rolagens de dado
@@ -223,30 +315,13 @@ rrpg.messaging.listen("ChatMessage",
 		end
 	end);
 
--- Enviar a mensagem de afk para todos espectadores, se ativo
-rrpg.messaging.listen("MesaJoined",
-	function(message)
-		local time = os.clock();
-		if afkdb.afkBotClock[message.mesa.codigoInterno]~=nil and afkdb.afkBotClock[message.mesa.codigoInterno]+300 > time then
-			return;
-		end;
-		if afkdb.afkSpectator[message.mesa.codigoInterno] and message.jogador.isEspectador then
-			afkdb.afkBotClock[message.mesa.codigoInterno] = os.clock();
-
-			local info = "[§K1]AfkBot: Está é uma mensagem automatica de " .. message.mesa.meuJogador.nick .. "[§K1](" .. message.mesa.meuJogador.login .. ") que está ocupado e não pode responder.";
-			message.mesa.chat:enviarNarracao(info);
-			message.mesa.chat:enviarNarracao(afkdb.afkMessage[message.mesa.codigoInterno]);
-		end;
-	end);
-
 rrpg.messaging.listen("ListChatCommands",
     function(message)
-        message.response = {{comando="/msg <Vazio>", descricao="Mostra a mensagem atual salva no AfkBot."},
-                            {comando="/msg <Texto>", descricao="Salva <Texto> como a mensagem automatica de resposta no AfkBot. "},
+        message.response = {{comando="/afkbot", descricao="Exibe a janela de configuração do afkbot."},
                             {comando="/stopdice", descricao="Avisa a espectadores para pararem de rolar dados e os expulsa na 4ª vez que o fizerem."},
                             {comando="/stoplaugh or /semrisada", descricao="Avisa a espectadores para pararem de usar o comando rir e os expulsa na 2ª vez que o fizerem."},
                             {comando="/cleanwarn <login>", descricao="Limpa o contador de rolagens e risadas de um jogador. "},
-                            {comando="/afk <Boolean (opcional)>", descricao="Ativa ou desativa o AfkBot v0.8, opcionalmente passando true como parametro o bot avisa cada espectador que entrar na mesa. "}};
+                            {comando="/afk <Boolean (opcional)>", descricao="Ativa ou desativa o AfkBot v1.0, opcionalmente passando true como parametro o bot avisa cada espectador que entrar na mesa. "}};
     end);
 
 -- auto-update
