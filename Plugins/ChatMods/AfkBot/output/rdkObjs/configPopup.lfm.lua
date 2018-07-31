@@ -158,6 +158,15 @@ function newafkbotPopup()
     obj.edit3:setHorzTextAlign("center");
     obj.edit3:setName("edit3");
 
+    obj.checkBox6 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox6:setParent(obj.tab1);
+    obj.checkBox6:setField("noVoice");
+    obj.checkBox6:setLeft(10);
+    obj.checkBox6:setTop(215);
+    obj.checkBox6:setWidth(270);
+    obj.checkBox6:setText("Tirar voz de jogadores expulsos.");
+    obj.checkBox6:setName("checkBox6");
+
     obj.tab2 = gui.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.tabControl1);
     obj.tab2:setTitle("AfkBot");
@@ -269,6 +278,7 @@ function newafkbotPopup()
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.checkBox3 ~= nil then self.checkBox3:destroy(); self.checkBox3 = nil; end;
+        if self.checkBox6 ~= nil then self.checkBox6:destroy(); self.checkBox6 = nil; end;
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
         if self.tabControl1 ~= nil then self.tabControl1:destroy(); self.tabControl1 = nil; end;
         if self.checkBox4 ~= nil then self.checkBox4:destroy(); self.checkBox4 = nil; end;

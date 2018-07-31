@@ -16,6 +16,7 @@
 			<checkBox field="stopLaugh" left="10" top="170" width="270" text="Expulsar espectadores rindo."/>
 			<label left="10" top="195" width="190" text="Kickar na ocorrencia Nº" horzTextAlign="center"/>
 			<edit left="200" top="195" width="50" height="25" field="limitLaugh" type="number" min="1" horzTextAlign="center"/>
+			<checkBox field="noVoice" left="10" top="215" width="270" text="Tirar voz de jogadores expulsos."/>
 		</tab>
 		<tab title="AfkBot"> 
 			<recordList left="10" top="5" width="270" height="490" field="messagesList" name="messagesList" templateForm="frmMessageItem" layout="vertical" minQt="1">

@@ -9,6 +9,7 @@
 				if sheet==nil then return end;
 				sheet.dice = 0;
 				sheet.laugh = 0;
+				sheet.kicked = false;
 			</event>
 		</button>
 

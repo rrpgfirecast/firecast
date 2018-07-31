@@ -193,13 +193,14 @@ rrpg.messaging.listen("HandleChatCommand",
 			end	
 
 			message.response = {handled = true};
-		elseif message.comando == "cleandice" then
+		elseif message.comando == "cleanwarn" then
 			if message.parametro ~= "" and message.parametro ~= nil then
 				local user = findLogin(message.parametro, message.mesa);
 
 				if user~=nil then
 					user.dice = 0;
 					user.laugh = 0;
+					user.kicked = false;
 					message.chat:escrever("Jogador " .. message.parametro .. " perdoado.");
 				else
 					message.chat:escrever("Login não encontrado.");
@@ -273,17 +274,13 @@ rrpg.messaging.listen("MesaJoined",
 		local alert = afkdb.config[message.mesa.codigoInterno].botEnabled;
 		-- ou o auto alerta está ativado e o usuario está ausente]
 		alert = alert or (afkdb.config[message.mesa.codigoInterno].autoEnable and message.mesa.meuJogador.isAusente);
-
 		-- e faz mais de X minutos desde o ultimo alerta
 		local delay = tonumber(afkdb.config[message.mesa.codigoInterno].delay) or 5;
 		alert = alert and not (afkdb.config[message.mesa.codigoInterno].clock + (delay * 60) > os.clock());
-
 		-- e o usuario é mestre
 		alert = alert and message.mesa.meuJogador.isMestre;
-
 		-- e está alerta a espectadores
 		alert = alert and afkdb.config[message.mesa.codigoInterno].spectator;
-
 		-- e entrou um espectador
 		alert = alert and message.jogador.isEspectador;
 
@@ -293,6 +290,21 @@ rrpg.messaging.listen("MesaJoined",
 			local info = "[§K1]AfkBot: Está é uma mensagem automatica de " .. message.mesa.meuJogador.nick .. "[§K1](" .. message.mesa.meuJogador.login .. ") que está ocupado e não pode responder.";
 			message.mesa.chat:enviarNarracao(info);
 			sendPersonalMessage(message.chat, message.mesa);
+		end;
+
+		-- ver se espectador pode falar na mesa
+
+		local user = findLogin(message.jogador.login, message.mesa);
+		-- se noVoice está ativo
+		local noVoice = afkdb.config[message.mesa.codigoInterno].noVoice;
+		-- e o usuario é mestre
+		noVoice = noVoice and message.mesa.meuJogador.isMestre;
+		-- e entrou um espectador
+		noVoice = noVoice and message.jogador.isEspectador;
+		-- E o usuario já foi kickado.
+		noVoice = noVoice and user.kicked == true;
+		if noVoice then
+			message.jogador:requestSetMudo(true);
 		end;
 	end);
 
@@ -329,6 +341,7 @@ rrpg.messaging.listen("ChatMessage",
 			else
 				message.chat:enviarNarracao("Você foi avisado. ");
 				message.jogador:requestKick();
+				user.kicked = true;
 			end;
 		end
 	end);
@@ -366,6 +379,7 @@ rrpg.messaging.listen("ChatMessage",
 			else
 				message.chat:enviarNarracao("Você foi avisado. ");
 				message.jogador:requestKick();
+				user.kicked = true;
 			end;
 		end
 	end);

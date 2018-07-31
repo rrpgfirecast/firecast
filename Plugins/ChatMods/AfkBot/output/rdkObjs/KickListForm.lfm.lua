@@ -87,6 +87,7 @@ function newfrmKickItem()
             if sheet==nil then return end;
             				sheet.dice = 0;
             				sheet.laugh = 0;
+            				sheet.kicked = false;
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
