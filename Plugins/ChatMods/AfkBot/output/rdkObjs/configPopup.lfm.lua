@@ -67,7 +67,7 @@ function newafkbotPopup()
     obj.checkBox3:setLeft(10);
     obj.checkBox3:setTop(60);
     obj.checkBox3:setWidth(270);
-    obj.checkBox3:setText("Alertar automaticamente espectadores?");
+    obj.checkBox3:setText("Alertar automaticamente espectadores");
     obj.checkBox3:setName("checkBox3");
 
     obj.label1 = gui.fromHandle(_obj_newObject("label"));
@@ -107,14 +107,56 @@ function newafkbotPopup()
     obj.checkBox4:setText("Expulsar espectadores rolando dados.");
     obj.checkBox4:setName("checkBox4");
 
+    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2:setParent(obj.tab1);
+    obj.label2:setLeft(10);
+    obj.label2:setTop(145);
+    obj.label2:setWidth(190);
+    obj.label2:setText("Kickar na ocorrencia Nº");
+    obj.label2:setHorzTextAlign("center");
+    obj.label2:setName("label2");
+
+    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2:setParent(obj.tab1);
+    obj.edit2:setLeft(200);
+    obj.edit2:setTop(145);
+    obj.edit2:setWidth(50);
+    obj.edit2:setHeight(25);
+    obj.edit2:setField("limitDice");
+    obj.edit2:setType("number");
+    obj.edit2:setMin(1);
+    obj.edit2:setHorzTextAlign("center");
+    obj.edit2:setName("edit2");
+
     obj.checkBox5 = gui.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox5:setParent(obj.tab1);
     obj.checkBox5:setField("stopLaugh");
     obj.checkBox5:setLeft(10);
-    obj.checkBox5:setTop(145);
+    obj.checkBox5:setTop(170);
     obj.checkBox5:setWidth(270);
     obj.checkBox5:setText("Expulsar espectadores rindo.");
     obj.checkBox5:setName("checkBox5");
+
+    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3:setParent(obj.tab1);
+    obj.label3:setLeft(10);
+    obj.label3:setTop(195);
+    obj.label3:setWidth(190);
+    obj.label3:setText("Kickar na ocorrencia Nº");
+    obj.label3:setHorzTextAlign("center");
+    obj.label3:setName("label3");
+
+    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3:setParent(obj.tab1);
+    obj.edit3:setLeft(200);
+    obj.edit3:setTop(195);
+    obj.edit3:setWidth(50);
+    obj.edit3:setHeight(25);
+    obj.edit3:setField("limitLaugh");
+    obj.edit3:setType("number");
+    obj.edit3:setMin(1);
+    obj.edit3:setHorzTextAlign("center");
+    obj.edit3:setName("edit3");
 
     obj.tab2 = gui.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.tabControl1);
@@ -143,6 +185,21 @@ function newafkbotPopup()
     obj.tab3:setTitle("AutoKick");
     obj.tab3:setName("tab3");
 
+    obj.kickList = gui.fromHandle(_obj_newObject("recordList"));
+    obj.kickList:setParent(obj.tab3);
+    obj.kickList:setLeft(10);
+    obj.kickList:setTop(5);
+    obj.kickList:setWidth(270);
+    obj.kickList:setHeight(490);
+    obj.kickList:setField("kickList");
+    obj.kickList:setName("kickList");
+    obj.kickList:setTemplateForm("frmKickItem");
+
+    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2:setParent(obj.tab3);
+    obj.dataLink2:setField("addUser");
+    obj.dataLink2:setName("dataLink2");
+
     obj._e_event0 = obj.messagesList:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             if nodeA.enabled and nodeB.enabled then 
@@ -165,7 +222,31 @@ function newafkbotPopup()
             					end;
         end, obj);
 
+    obj._e_event2 = obj.kickList:addEventListener("onCompare",
+        function (self, nodeA, nodeB)
+            if nodeA.user and nodeB.user then 
+            						return utils.compareStringPtBr(nodeA.login, nodeB.login);
+            					elseif nodeA.user then
+            						return 1;
+            					elseif nodeB.user then
+            						return -1;
+            					end;
+        end, obj);
+
+    obj._e_event3 = obj.dataLink2:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            					local addUser = tonumber(sheet.addUser) or 0;
+            					if addUser>0 then
+            						sheet.addUser = 0;
+            						local item = self.messagesList:append();
+            						sheet.newUser = item;
+            					end;
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event3);
+        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
@@ -179,20 +260,26 @@ function newafkbotPopup()
           self:setNodeDatabase(nil);
         end;
 
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.checkBox2 ~= nil then self.checkBox2:destroy(); self.checkBox2 = nil; end;
         if self.checkBox5 ~= nil then self.checkBox5:destroy(); self.checkBox5 = nil; end;
+        if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
         if self.messagesList ~= nil then self.messagesList:destroy(); self.messagesList = nil; end;
         if self.tab3 ~= nil then self.tab3:destroy(); self.tab3 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.checkBox3 ~= nil then self.checkBox3:destroy(); self.checkBox3 = nil; end;
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
         if self.tabControl1 ~= nil then self.tabControl1:destroy(); self.tabControl1 = nil; end;
         if self.checkBox4 ~= nil then self.checkBox4:destroy(); self.checkBox4 = nil; end;
         if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
         if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
+        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
+        if self.kickList ~= nil then self.kickList:destroy(); self.kickList = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
-        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
+        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         self:_oldLFMDestroy();
     end;
 

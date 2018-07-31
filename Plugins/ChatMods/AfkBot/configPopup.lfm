@@ -4,16 +4,18 @@
 		<tab title="Opções"> 
 			<checkBox field="botEnabled" left="10" top="10" width="270" text="Habilitar AfkBot"/>
 			<checkBox field="autoEnable" left="10" top="35" width="270" text="Autoligar quando ausente"/>
-			<checkBox field="spectator" left="10" top="60" width="270" text="Alertar automaticamente espectadores?"/>
+			<checkBox field="spectator" left="10" top="60" width="270" text="Alertar automaticamente espectadores"/>
 			<label left="10" top="85" width="190" text="Tempo entre mensagens (min)" horzTextAlign="center"/>
 			<edit left="200" top="85" width="50" height="25" field="delay" type="number" min="1" horzTextAlign="center"/>
 
 			<horzLine left="10" top="115" width="270"/>
 
 			<checkBox field="stopDice" left="10" top="120" width="270" text="Expulsar espectadores rolando dados."/>
-			<checkBox field="stopLaugh" left="10" top="145" width="270" text="Expulsar espectadores rindo."/>
-
-
+			<label left="10" top="145" width="190" text="Kickar na ocorrencia Nº" horzTextAlign="center"/>
+			<edit left="200" top="145" width="50" height="25" field="limitDice" type="number" min="1" horzTextAlign="center"/>
+			<checkBox field="stopLaugh" left="10" top="170" width="270" text="Expulsar espectadores rindo."/>
+			<label left="10" top="195" width="190" text="Kickar na ocorrencia Nº" horzTextAlign="center"/>
+			<edit left="200" top="195" width="50" height="25" field="limitLaugh" type="number" min="1" horzTextAlign="center"/>
 		</tab>
 		<tab title="AfkBot"> 
 			<recordList left="10" top="5" width="270" height="490" field="messagesList" name="messagesList" templateForm="frmMessageItem" layout="vertical" minQt="1">
@@ -41,7 +43,29 @@
 			</dataLink>
 		</tab>
 		<tab title="AutoKick">
+			<recordList left="10" top="5" width="270" height="490" field="kickList" name="kickList" templateForm="frmKickItem">
+				<event name="onCompare">
+					if nodeA.user and nodeB.user then 
+						return utils.compareStringPtBr(nodeA.login, nodeB.login);
+					elseif nodeA.user then
+						return 1;
+					elseif nodeB.user then
+						return -1;
+					end;
+	        	</event>
+			</recordList>
 
+			<dataLink field="addUser">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local addUser = tonumber(sheet.addUser) or 0;
+					if addUser>0 then
+						sheet.addUser = 0;
+						local item = self.messagesList:append();
+						sheet.newUser = item;
+					end;
+				</event>
+			</dataLink>
 		</tab>
 	</tabControl>
 </popupForm>
