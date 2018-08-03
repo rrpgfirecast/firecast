@@ -1,0 +1,5 @@
+﻿[pt]
+sdk3.err.ndb.functionAssign=Tentativa de armazenar uma função Lua na propriedade "%s", porém não é possível salvar funções em NodeDatabases
+
+[en]
+sdk3.err.ndb.functionAssign=Attempting to store a Lua function in the property "%s", but it is not possible to store functions in NodeDatabases

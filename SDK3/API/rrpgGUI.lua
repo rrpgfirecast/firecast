@@ -390,6 +390,7 @@ local function formLayoutFromHandle(handle)
 	ctrl.eves["onHide"] = "";
 	ctrl.eves["onNodeReady"] = "";
 	ctrl.eves["onNodeUnready"] = "";
+	ctrl.eves["onNodeChanged"] = "";		
 	return ctrl;	
 end
 
@@ -1369,6 +1370,15 @@ local function dataScopeBoxFromHandle(handle)
 	ctrl.props["scopeNode"] = {setter = "setNodeObject", getter = "getNodeObject", tipo = "table"};		
 	ctrl.props["nodeObject"] = {setter = "setNodeObject", getter = "getNodeObject", tipo = "table"};		
 	ctrl.props["node"] = {setter = "setNodeObject", getter = "getNodeObject", tipo = "table"};		
+	
+	if ctrl.eves == nil then
+		ctrl.eves = {};
+	end;
+	
+	ctrl.eves["onNodeReady"] = "";
+	ctrl.eves["onNodeUnready"] = "";
+	ctrl.eves["onNodeChanged"] = "";
+	
 	return ctrl;	
 end
 
@@ -1458,6 +1468,10 @@ local function popupFromHandle(handle)
 	ctrl.eves["onClose"] = "canceled";	
 	ctrl.eves["onCanClose"] = "canceled";
 	ctrl.eves["onCalculateSize"] = "dueToResize, width, height";
+	
+	ctrl.eves["onNodeReady"] = "";
+	ctrl.eves["onNodeUnready"] = "";
+	ctrl.eves["onNodeChanged"] = "";	
 	return ctrl;	
 end
 

@@ -57,7 +57,7 @@
 		</recordList>
 	</layout>
 	
-	<event name="OnShow">
+	<event name="onNodeReady">
 		carregarTablesDock();
 		
 		listenerPInstall = Firecast.Messaging.listen("PluginInstalled", carregarTablesDock);

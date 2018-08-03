@@ -193,6 +193,8 @@ function localNDB.assignPropValueToNode(node, prop, value)
 
 	if type(value) == "function" then
 		-- Tipo inválido para setar
+		require("locale.lua");		
+		error(string.format(lang("sdk3.err.ndb.functionAssign"), tostring(prop)));
 		return;
 	end;
 	
