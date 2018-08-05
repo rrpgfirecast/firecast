@@ -19,6 +19,24 @@
 			</event>
 		</dataLink>
 	</template>
+	<template name="Resistencia">
+		<layout left="$(left)" top="$(top)" width="155" height="25"> 
+			<label left="0" top="0" width="100" height="25" horzTextAlign="center" text="$(text)"/>
+			<edit left="100" top="0" width="50" height="25" horzTextAlign="center" field="resistencia$(field)"/>
+		</layout>
+	</template>
+	<template name="Beneficio">
+		<layout left="$(left)" top="$(top)" width="155" height="25"> 
+			<label left="0" top="0" width="100" height="25" horzTextAlign="center" text="$(text)"/>
+			<edit left="100" top="0" width="50" height="25" horzTextAlign="center" field="beneficio$(field)"/>
+		</layout>
+	</template>
+	<template name="Redutor">
+		<layout left="$(left)" top="$(top)" width="75" height="25"> 
+			<label left="0" top="0" width="50" height="25" horzTextAlign="center" text="$(text)"/>
+			<edit left="50" top="0" width="25" height="25" horzTextAlign="center" field="redutor$(field)"/>
+		</layout>
+	</template>
 
 	<scrollBox align="client">
 		<rectangle left="0" top="0" width="600" height="60" color="black" strokeColor="white" strokeSize="1">
@@ -59,11 +77,36 @@
 						sheet.paranormalidade_inicial = 2;
 						sheet.sorte_inicial = 3;
 						local habilidades = ndb.getChildNodes(sheet.listaDeHabilidades);
-						habilidades[1].habilidade = "Optimização (Passiva)\nEstágio 1: Itens Consumíveis têm seus efeitos ampliados.\nEstágio 2: Recebe mais do mesmo Item.\nEstágio 3: Trocas exigem menos Materiais.";
-						habilidades[2].habilidade = "Círculo de Alquimia (Instantânea)\nEstágio 1: Cria uma área que concede Vigor ao Personagem sobre ela (1pt p/ Rodada).\nEstágio 2-3(+1): Copia a última Habilidade usada por um Aliado no Círculo (+ efeito).\nEstágio 3(+1): Receber Dano no Círculo restitui a Fadiga gasta na Rodada (+ efeito).";
-						habilidades[3].habilidade = "As Três Etapas\nEstágio 1: Mistura Itens Consumíveis para lhes dar novos efeitos (1pt).\nEstágio 2: Transmuta Itens liberando energia no processo (1pt).\nEstágio 3: Usa Cristais para fundir Itens iguais (1pt).";
-						habilidades[4].habilidade = "Colecionador (Passiva)\nEstágio 1: Aprimora o estaque de Itens iguais.\nEstágio 2: Recebe Itens extras de localidades e Tarefas.\nEstágio 3: Pode escolher o Item no teste de Drop.";
-						habilidades[5].habilidade = "Transmutação\nEstágio 1-3: Modifica a Arma que empunha para outra do mesmo tipo (1pt p/ Rodada).\nEstágio 2(+1): Pode usar Transmutação na Arma do Aliado no Círculo (+ efeito).\nEstágio 3(+1): Usa mais Fadiga para conceder Aprimoramentos à Arma (“x”pt). ";
+						if habilidades[1].habilidade == nil then
+							habilidades[1].habilidade = [[Optimização (Passiva)
+	Estágio 1-3: Itens Consumíveis têm seus efeitos ampliados a cada Estágio desta Habilidade. 
+	Estágio 2: Recebe mais do mesmo Item do tipo Consumível. 
+	Estágio 3: Equipamentos concedem 20% a mais de Resistência.]]
+						end;
+						if habilidades[2].habilidade == nil then
+							habilidades[2].habilidade = [[Círculo de Alquimia (Instantânea)
+	Estágio 1: Cria uma área que concede Vigor ao Personagem sobre ela (1-6pt + 1pt p/ Rodada). 
+	Estágio 2-3(+1): Copia a última Habilidade usada por um Aliado no Círculo (+ efeito). 
+	Estágio 3(+1): Receber Dano no Círculo restitui parte da Fadiga gasta na Rodada (+ efeito).]]
+						end;
+						if habilidades[3].habilidade == nil then
+							habilidades[3].habilidade = [[As Três Etapas
+	Estágio 1: Mistura Itens Consumíveis para lhes dar novos efeitos (1pt). 
+	Estágio 2: A mistura de Itens libera Dano Paranormal em área no processo (2pt). 
+	Estágio 3: Fundir Itens iguais concede a versão Superior que pode ser guardado (1pt).]]
+						end;
+						if habilidades[4].habilidade == nil then
+							habilidades[4].habilidade = [[Colecionador (Passiva)
+	Estágio 1: Aprimora o estaque de Itens iguais. 
+	Estágio 2: Recebe Itens extras de Drops. 
+	Estágio 3: Melhora as chances no texte de Drop. ]]
+						end;
+						if habilidades[5].habilidade == nil then
+							habilidades[5].habilidade = [[Transmutação
+	Estágio 1-3: Modifica a Arma que empunha para outra do mesmo tipo (1pt p/ Rodada). 
+	Estágio 2(+1): Pode usar Transmutação na Arma do Aliado no Círculo (+ efeito). 
+	Estágio 3(+1): Usa mais Fadiga para conceder Aprimoramentos à Arma (xpt). ]]
+						end;
 					
 					-- Arcanista
 					elseif sheet.aptidao=="2" then
@@ -74,11 +117,36 @@
 						sheet.paranormalidade_inicial = 4;
 						sheet.sorte_inicial = 2;
 						local habilidades = ndb.getChildNodes(sheet.listaDeHabilidades);
-						habilidades[1].habilidade = "Habilidade “6º Sentido” (Passiva):\nEstágio 1: Percebe nativamente atividade Paranormal em objetos e lugares.\nEstágio 2: Revela a intenção de ataque e detalhes específicos de Inimigos do tipo Espírito.\nEstágio 3: Concede passivamente Dano Paranormal ampliado.";
-						habilidades[2].habilidade = "Habilidade “Aura Protetora” (Instantânea):\nEstágio 1: Cria uma Aura que nega o Dano de qualquer ataque recebido (1pt).\nEstágio 2(+1): Cria mais Auras Protetoras na mesma ação (máx. 3pt).\nEstágio 3(+1): Aumenta a força das Aura Protetoras (+ efeito)(1pt p/ estaque)(máx. 3pt p/ Aura).";
-						habilidades[3].habilidade = "Habilidade “Símbolo Arcano”:\nEstágio 1: Concede uma marca de energia Paranormal a um Personagem (1pt p/ estaque)(máx. 3pt).\nEstágio 2(+1): A marca de energia Paranormal concede melhorias ao portador (+ efeito).\nEstágio 3(+1): A marca de energia nega Status Anormais no portador (+ efeito).";
-						habilidades[4].habilidade = "Habilidade “Essência Paranormal” (Passiva):\nEstágio 1: Crítico de Paranormalidade causa ainda mais Dano Paranormal.\nEstágio 2: Regenera Fadiga se receber Dano Paranormal na Rodada.\nEstágio 3: Recebe mais 25% de aumento da Fadiga máxima.";
-						habilidades[5].habilidade = "Habilidade “Conjuração Telecinética”:\nEstágio 1: Usa Telecinese para flutuar um Inimigo ou um objeto (1pt p/ Rodada).\nEstágio 2(+1): Telecinese Paralisa Inimigos e causa Dano Paranormal (2pt p/ Inimigo).\nEstágio 3(+2): Gastar mais Fadiga aumenta o Dano Paranormal da Telecinese (+ efeito)(máx. 3pt).";
+						if habilidades[1].habilidade == nil then
+							habilidades[1].habilidade = [[6º Sentido (Passiva):
+	Estágio 1-3: Ganha 2 pontos de Fadiga máximos a cada Estágio desta Habilidade.
+	Estágio 2: Concede bônus de Conjuração.
+	Estágio 3: Habilidades do Arcanista causam Dano Paranormal aumentado.]]
+						end;
+						if habilidades[2].habilidade == nil then
+							habilidades[2].habilidade = [[Aura Protetora (Instantânea):
+	Estágio 1: Concede uma Aura a um Personagem que nega Dano recebido (1pt).
+	Estágio 2(+1): Cria mais Auras Protetoras na mesma Ação (máx. 3pt).
+	Estágio 3(+1): Aumenta a força das Aura Protetoras (+ efeito)(máx. 3pt p/ Aura).]]
+						end;
+						if habilidades[3].habilidade == nil then
+							habilidades[3].habilidade = [[Símbolo Arcano:
+	Estágio 1: Concede uma marca de energia Paranormal a um Personagem (1pt p/ estaque)(máx. 3pt).
+	Estágio 2(+1): A marca concede bônus de Conjuração e Ampliação ao portador (+ efeito).
+	Estágio 3(+1): A marca concede Imunidade ao portador (+ efeito).]]
+						end;
+						if habilidades[4].habilidade == nil then
+							habilidades[4].habilidade = [[Essência Paranormal (Passiva):
+	Estágio 1: Concede Amplificação.
+	Estágio 2: Concede Negação passiva além de causar Negação escalável a cada Habilidade no mesmo Inimigo.
+	Estágio 3: Concede Regeneração de Fadiga baseado no Nível do Personagem.]]
+						end;
+						if habilidades[5].habilidade == nil then
+							habilidades[5].habilidade = [[Conjuração Telecinética:
+	Estágio 1: Usa Telecinese para flutuar um Inimigo ou um objeto (1pt p/ Rodada).
+	Estágio 2(+1): Telecinese Paralisa Inimigos e causa Dano Paranormal (2pt p/ Inimigo).
+	Estágio 3(+2): Gastar mais Fadiga aumenta o Dano Paranormal da Telecinese (+ efeito)(máx. 3pt p/ Telecinese).]]
+						end;
 					
 					-- Caçador
 					elseif sheet.aptidao=="3" then
@@ -89,11 +157,36 @@
 						sheet.paranormalidade_inicial = 1;
 						sheet.sorte_inicial = 2;
 						local habilidades = ndb.getChildNodes(sheet.listaDeHabilidades);
-						habilidades[1].habilidade = "Olhar Aguçado (Passiva)\nEstágio 1: Percebe passivamente detalhes em localidades e em Itens Chave.\nEstágio 2: Revela intenção de ataque e detalhes específicos de Inimigos não-Espíritos.\nEstágio 3: Concede passivamente Dano do tipo Projétil ampliado.";
-						habilidades[2].habilidade = "Armadilha\nEstágio 1: Em modo Furtivo posiciona até duas Armadilhas em campo (1 Mat.).\nEstágio 2-3(+1): Causa Paralisação em Inimigos que ativarem uma Armadilha (+ efeito).\nEstágio 3(+1): Confecciona Armadilhas mais fortes usando mais Materiais (+ efeito) (máx. 3 Mat.).";
-						habilidades[3].habilidade = "Veterano na Caçada (Passiva)\nEstágio 1: Materiais para Armadilha não consomem espaço no Inventário.\nEstágio 1-3: A cada Estágio melhora a técnica de Arrombamento de portas.\nEstágio 3: Amplifica os efeitos do modo Furtivo.";
-						habilidades[4].habilidade = "Furtividade (Instantânea)\nEstágio 1: Entra em modo Furtivo se não for alvo de ataques (1pt p/ Rodada).\nEstágio 2(+1): Entrar em modo Furtivo não consome a ação (+ efeito).\nEstágio 3(+1): Entrar em modo Furtivo retira Paralisação, Imobilização e Aturdido (+ efeito)(2pt).";
-						habilidades[5].habilidade = "Letalidade Silenciosa\nEstágio 1: Em modo Furtivo utiliza um ataque de Dano Físico elevado se estiver atrás do Inimigo (2pt).\nEstágio 2(+1): Se esta Habilidade derrotar o Inimigo seu custo de Fadiga é restituído (+ efeito)\nEstágio 3(+1): Se esta Habilidade derrotar o Inimigo Caçador não sai do modo Furtivo (+ efeito).";
+						if habilidades[1].habilidade == nil then
+							habilidades[1].habilidade = [[Focus (Passiva)
+	Estágio 1: O Caçador tem passivamente 40% de resistência a Desaceleração e Imobilização. 
+	Estágio 1-3: Concede aumento da chance de Esquiva a cada Estágio desta Habilidade.
+	Estágio 3: Concede passivamente Dano ampliado para lançamentos de Pontaria.]]
+						end;
+						if habilidades[2].habilidade == nil then
+							habilidades[2].habilidade = [[Armadilha
+	Estágio 1: Em modo Furtivo posiciona até duas Armadilhas em campo (1 Mat.).
+	Estágio 2-3(+1): Causa Atordoamento e Desaceleração em Inimigos que ativarem uma Armadilha (+ efeito).
+	Estágio 3(+1): Confecciona Armadilhas mais fortes usando mais Materiais (+ efeito)(máx. 3 Mat. p/ Armadilha).]]
+						end;
+						if habilidades[3].habilidade == nil then
+							habilidades[3].habilidade = [[Veterano na Caçada (Passiva)
+	Estágio 1: Materiais para Armadilha não consomem espaço no Inventário.
+	Estágio 1-3: A cada Estágio melhora a técnica de Arrombamento.
+	Estágio 3: Amplifica os efeitos do modo Furtivo.]]
+						end;
+						if habilidades[4].habilidade == nil then
+							habilidades[4].habilidade = [[Furtividade (Instantânea)
+	Estágio 1: Entra em modo Furtivo se não for alvo de ataques (1pt p/ Rodada).
+	Estágio 2(+1): Entrar em modo Furtivo não consome a Ação (+ efeito).
+	Estágio 3(+1): Entrar em modo Furtivo retira Desaceleração, Paralização, Imobilização e Atordoamento (+ efeito)(2pt).]]
+						end;
+						if habilidades[5].habilidade == nil then
+							habilidades[5].habilidade = [[Letalidade Silenciosa
+	Estágio 1: Em modo Furtivo utiliza um ataque de Dano Físico elevado se estiver atrás do Inimigo (2pt).
+	Estágio 2(+1): Se esta Habilidade derrotar o Inimigo seu custo de Fadiga é restituído (+ efeito)
+	Estágio 3(+1): Se esta Habilidade derrotar o Inimigo Caçador não sai do modo Furtivo (+ efeito).]]
+						end;
 
 					-- Cavaleiro
 					elseif sheet.aptidao=="4" then
@@ -104,12 +197,37 @@
 						sheet.paranormalidade_inicial = 1;
 						sheet.sorte_inicial = 2;
 						local habilidades = ndb.getChildNodes(sheet.listaDeHabilidades);
-						habilidades[1].habilidade = "Constituição (Passiva)\nEstágio 1: Ignora o primeiro Status Anormal recebido em Batalha.\nEstágio 1-3: Aumenta o limite de Itens do Inventário em 2 a cada Estágio desta Habilidade.\nEstágio 3: Concede passivamente Dano Físico ampliado utilizando Armas Brancas.";
-						habilidades[2].habilidade = "Brado de Glória\nEstágio 1: Provoca Inimigos Físicos em campo e recebe redução de Dano Físico (2pt).\nEstágio 2(+1): Concede Vigor de Corpo-a-Corpo contra Inimigos Provocados (+ efeito).\nEstágio 3(+1): Enquanto houver Inimigos Provocados amplifica efeitos de cura em si (+ efeito).";
-						habilidades[3].habilidade = "Força Destrutiva\nEstágio 1: Aplica um golpe com Dano Físico elevado (1pt).\nEstágio 2(+1): Pode concentrar mais Dano em Força Destrutiva (+ efeito)(máx. 3pt).\nEstágio 3(+1): Esta Habilidade causa Paralisação e Fratura ao alvo (+ efeito).";
-						habilidades[4].habilidade = "Mestre da Batalha (Passiva)\nEstágio 1: Reduz passivamente o Dano Físico recebido.\nEstágio 2: Crítico de Corpo-a-Corpo causa ainda mais Dano Físico.\nEstágio 3: Cavaleiro não pode perder mais de 50% da sua Vida máxima em uma Rodada. ";
-						habilidades[5].habilidade = "Defesa Absoluta (Instantânea)\nEstágio 1: Nega um ataque Físico já executado em si (1-3pt).\nEstágio 2: Defesa não consome a Ação. (+ efeito).\nEstágio 3: Concede Contra-Ataque após a Defesa. (+efeito).";
-
+						if habilidades[1].habilidade == nil then
+							habilidades[1].habilidade = [[Constituição (Passiva)
+	Estágio 1: É Imune à Paralisação, Impelimento e Atordoamento proveniente de ataques Físicos.
+	Estágio 1-3: Concede aumento de Resistência Física a cada Estágio desta Habilidade.
+	Estágio 3: Concede passivamente Dano ampliado para lançamentos de Corpo-a-Corpo.]]
+						end;
+						if habilidades[2].habilidade == nil then
+							habilidades[2].habilidade = [[Brado de Glória
+	Estágio 1: Provoca Inimigos Físicos em campo e recebe redução de Dano Físico (2pt).
+	Estágio 2(+1): Concede Vigor de Corpo-a-Corpo contra Inimigos Provocados (+ efeito).
+	Estágio 3(+1): Enquanto houver Inimigos Provocados pelo Brado de Glória, concede Amplificação (+ efeito).]]
+						end;
+						if habilidades[3].habilidade == nil then
+							habilidades[3].habilidade = [[Força Destrutiva
+	Estágio 1: Aplica um golpe com Dano Físico elevado (1pt).
+	Estágio 2(+1): Pode concentrar mais Dano em Força Destrutiva (+ efeito)(máx. 3pt).
+	Estágio 3(+1): Esta Habilidade causa Paralisação e Fratura ao alvo (+ efeito).]]
+						end;
+						if habilidades[4].habilidade == nil then
+							habilidades[4].habilidade = [[Mestre da Batalha (Passiva)
+	Estágio 1: Concede Regeneração de Vida baseado no Nível do Personagem. 
+	Estágio 2: Crítico de Corpo-a-Corpo causa ainda mais Dano Físico. 
+	Estágio 3: Cavaleiro não pode perder mais de 30% da sua Vida máxima em uma Rodada. ]]
+						end;
+						if habilidades[5].habilidade == nil then
+							habilidades[5].habilidade = [[Defesa Inabalável (Instantânea)
+	Estágio 1: Concede um teste que reduz muito o Dano Físico recebido (1pt).
+	Estágio 2: Defesa não consome a Ação. (+ efeito).
+	Estágio 3: Concede Contra-Ataque após a Defesa. (+efeito).]]
+						end;
+						
 					-- Monge
 					elseif sheet.aptidao=="5" then
 						sheet.agilidade_inicial = 4;
@@ -119,11 +237,36 @@
 						sheet.paranormalidade_inicial = 2;
 						sheet.sorte_inicial = 1;
 						local habilidades = ndb.getChildNodes(sheet.listaDeHabilidades);
-						habilidades[1].habilidade = "Taijutsu (Passiva)\nEstágio 1: Pode atacar sem usar Armas (1 de Dano Físico)(Sem Dano Crítico).\nEstágio 2: Atacar a curta distância ativa Acerto Crítico de Taijutsu (apenas para o primeiro ataque).\nEstágio 3: Aumenta o Dano do Taijutsu em 1 ponto.";
-						habilidades[2].habilidade = "O Estilo Secreto\nEstágio 1: Acerto Crítico de Taijutsu concede chance de usar Taijutsu novamente (1pt).\nEstágio 2-3(+1): O número de repetições desta Habilidade é o mesmo de seu Estágio (1pt p/ repetição).\nEstágio 3: Acerto Crítico da Palma do Dragão e do Estilo do Leopardo ativam o Estilo Secreto (+efeito).";
-						habilidades[3].habilidade = "Chacra (Passiva)\nEstágio 1: Concede Clarividência.\nEstágio 2: Concede Taijutsu Sacerdotal (Paranormalidade também ativa o Estilo Secreto).\nEstágio 3: Enquanto com menos de 20% de Vida recupera 1 ponto de Fadiga por Rodada. ";
-						habilidades[4].habilidade = "A Palma do Dragão (Instantânea)\nEstágio 1: Causa todo Dano Físico recebido em Dano a um Inimigo + Dano do Taijutsu (2pt).\nEstágio 2(+1): Palma do Dragão como contra-ataque não consome a Ação (+ efeito).\nEstágio 3(+1): Reverte Status Anormais recebidos no ataque Inimigo (+efeito). ";
-						habilidades[5].habilidade = "O Estilo do Leopardo\nEstágio 1: Ataca dois Inimigos com o Dano do Taijutsu (1pt).\nEstágio 2(+1): Pode encadear mais Inimigos nesta Habilidade (1pt p/ repetição).\nEstágio 3(+1): Encadear quatro Inimigos restitui toda Fadiga gasta com esta Habilidade (+ efeito). ";
+						if habilidades[1].habilidade == nil then
+							habilidades[1].habilidade = [[Taijutsu (Passiva)
+	Estágio 1: Pode atacar sem usar Armas (2 de Dano Físico)(sem Dano Crítico). 
+	Estágio 1-3: Aumenta a chance de Crítico para o lançamento de CaC a cada Estágio desta Habilidade.
+	Estágio 3: Consome menos Ação para dar Bloqueio.]]
+						end;
+						if habilidades[2].habilidade == nil then
+							habilidades[2].habilidade = [[O Estilo Secreto 
+	Estágio 1: Acerto Crítico de Taijutsu concede chance de usar Taijutsu novamente (1pt). 
+	Estágio 2-3(+1): O número de repetições desta Habilidade é o mesmo de seu Estágio (1pt p/ repetição). 
+	Estágio 3: Acerto Crítico da Palma do Dragão e do Estilo do Leopardo ativam o Estilo Secreto (+efeito). ]]
+						end;
+						if habilidades[3].habilidade == nil then
+							habilidades[3].habilidade = [[Chacra (Passiva)
+	Estágio 1: Ataques do Monge causam Impelimento escalável a cada golpe no mesmo Inimigo. 
+	Estágio 2: Concede Taijutsu Sacerdotal (Paranormalidade também ativa o Estilo Secreto). 
+	Estágio 3: Causar três vezes Dano a um Inimigo, na mesma Rodada, o deixa Silenciado. ]]
+						end;
+						if habilidades[4].habilidade == nil then
+							habilidades[4].habilidade = [[A Palma do Dragão (Instantânea)
+	Estágio 1: Causa todo Dano Físico recebido na Rodada em Dano a um Inimigo + Dano do Taijutsu (2pt). 
+	Estágio 2(+1): Palma do Dragão como Contra-Ataque não consome a Ação (+ efeito). 
+	Estágio 3(+1): Reverte Status Anormais recebidos no ataque Inimigo (+efeito). ]]
+						end;
+						if habilidades[5].habilidade == nil then
+							habilidades[5].habilidade = [[O Estilo do Leopardo
+	Estágio 1: Ataca dois Inimigos com o Dano do Taijutsu (1pt). 
+	Estágio 2(+1): Pode encadear mais Inimigos , porém, o lançamento fica mais difícil a cada golpe (1pt p/ repetição). 
+	Estágio 3(+1): Depois de atacar três Inimigos pode atacar novamente o primeiro o deixando Fragilizado (+ efeito). ]]
+						end;
 					
 					-- Necromante
 					elseif sheet.aptidao=="6" then
@@ -134,12 +277,37 @@
 						sheet.paranormalidade_inicial = 4;
 						sheet.sorte_inicial = 2;
 						local habilidades = ndb.getChildNodes(sheet.listaDeHabilidades);
-						habilidades[1].habilidade = "Profanador Sanguinolento (Passiva)\nEstágio 1: Ataques e Habilidades do Necromante causam Dano do tipo Corrosivo.\nEstágio 2: Reduz passivamente qualquer Dano do tipo Corrosivo recebido.\nEstágio 3: Inimigos com Sangramento recebem Dano ampliado do Necromante.";
-						habilidades[2].habilidade = "Reanimação\nEstágio 1: Reanima um Inimigo Inconsciente ao seu favor na Batalha (1 ponto de Vida p/ Rodada).\nEstágio 2(+1): Sacrifica o Inimigo reanimado para usar uma Habilidade sua (1-3pt).\nEstágio 3(+1): Reanima mais Inimigos Inconscientes em campo (máx. 3).";
-						habilidades[3].habilidade = "Colhedor de Almas (Instantânea)\nEstágio 1: Mata um Inimigo Inconsciente e recupera um pouco da Vida do Necromante (sem custo).\nEstágio 2(+1): Usar esta Habilidade retira Status Anormais do Necromante (+ efeito)\nEstágio 3(+1): Matar Espíritos recupera Fadiga do Necromante (+ efeito).";
-						habilidades[4].habilidade = "Hemodominus\nEstágio 1: Absorve parte da Vida de um Inimigo do tipo Físico em campo (1pt).\nEstágio 2: Inimigos atingidos pelo Hemodominus recebem Sangramento (+efeito).\nEstágio 3: Pode aumentar a quantidade de absorção de Vida (máx. 3pt).";
-						habilidades[5].habilidade = "Mors Imperiosa (Passiva)\nEstágio 1: Com 20% ou menos de Vida máxima o Necromante não gasta nada nas Habilidades.\nEstágio 2: Gasta pontos de Fadiga para não ficar Inconsciente, mas fica Exausto.\nEstágio 3(+1): Mors Imperiosa se ativa a partir de 40% de Vida.";
-					
+						if habilidades[1].habilidade == nil then
+							habilidades[1].habilidade = [[Profanador Sanguinolento (Passiva) 
+	Estágio 1: Ataques e Habilidades do Necromante causam Dano do tipo Corrosivo, caso queira.
+	Estágio 1-3: Concede 10% de resistência a Status Anormais a cada Estágio desta Habilidade.
+	Estágio 3: Inimigos com Sangramento e Envenenamento recebem Dano ampliado do Necromante. ]]
+						end;
+						if habilidades[2].habilidade == nil then
+							habilidades[2].habilidade = [[Reanimação
+	Estágio 1: Reanima um Inimigo Inconsciente ao seu favor na Batalha (x pontos de Vida + 1 ponto de Vida p/ Rodada).
+	Estágio 2(+1): Ordena o Inimigo reanimado a utilizar uma Habilidade sua, porém, ele morre em seguida (1-3pt).
+	Estágio 3(+1): Reanima mais Inimigos Inconscientes em campo (+ efeito)(x pontos de Vida p/ Inimigo).]]
+						end;
+						if habilidades[3].habilidade == nil then
+							habilidades[3].habilidade = [[Exército de Almas (Instantânea) 
+	Estágio 1: Invoca a alma dos Inimigos Inconscientes no campo para atacar adversários ou defender a si e Aliados (2pt).
+	Estágio 2(+1): Dependendo da quantidade de almas atacantes causa Status Anormais variados aos alvos (+ efeito)
+	Estágio 3(+1): Exército de Almas não consome a Ação  (+ efeito).]]
+						end;
+						if habilidades[4].habilidade == nil then
+							habilidades[4].habilidade = [[Hemodominus
+	Estágio 1: Absorve parte da Vida de um Inimigo do tipo Físico em campo (1pt).
+	Estágio 2: Inimigos atingidos pelo Hemodominus recebem Sangramento (+efeito).
+	Estágio 3: Pode aumentar a quantidade de absorção de Vida (máx. 3pt).]]
+						end;
+						if habilidades[5].habilidade == nil then
+							habilidades[5].habilidade = [[Senhor da Morte (Passiva)
+	Estágio 1: Concede Negação baseada no Nível do Personagem.
+	Estágio 2: Concede aumento dos efeitos causados pelos Status Anormais aplicados pelas Habilidades do Necromante.
+	Estágio 3: Concede Regeneração de Vida e Fadiga (não regenera caso esteja usando "Reanimação").]]
+						end;
+						
 					-- Xamã
 					elseif sheet.aptidao=="7" then
 						sheet.agilidade_inicial = 2;
@@ -149,11 +317,37 @@
 						sheet.paranormalidade_inicial = 3;
 						sheet.sorte_inicial = 1;
 						local habilidades = ndb.getChildNodes(sheet.listaDeHabilidades);
-						habilidades[1].habilidade = "Tatuagem Rúnica (Passiva)\nEstágio 1: Pode usar todos os pontos do Atributo nos testes de Resistência.\nEstágio 2: Sobre efeito de Status Anormais Xamã ganha redução de Dano aumentado.\nEstágio 1-3: Ganha 2 pontos de Vida máximos a cada Estágio desta Habilidade.";
-						habilidades[2].habilidade = "Oração Ancestral (Instantânea)\nEstágio 1: Um Aliado ganha Vigor em um lançamento, mas Xamã fica Aturdido (1pt p/ Rodada).\nEstágio 2(+1): O Aliado com Vigor desta Habilidade recebe redução de Dano aumentado (+ efeito).\nEstágio 3(+1): Esta Habilidade concede Tenacidade ao Aliado (+ efeito).";
-						habilidades[3].habilidade = "O Voo Sagrado do Condor\nEstágio 1: Colide contra um Inimigo o Paralisando e Provocando os demais (1pt).\nEstágio 2(+1): Inimigos Provocados ficam Aturdidos para ataques sobre o Xamã (+ efeito).\nEstágio 3(+1): O Inimigo colidido pelo Xamã perde Tenacidade e Aceleração (+ efeito).";
-						habilidades[4].habilidade = "O Chamado dos Espíritos (Passiva)\nEstágio 1: Inimigos derrotados com ajuda de Oração Ancestral curam um pouco da Vida do Xamã.\nEstágio 2: Curas excedentes desta Habilidade curam Aliados ao invés do Xamã.\nEstágio 3: Enquanto “Aturdido” Xamã ganha Tenacidade.";
-						habilidades[5].habilidade = "Chama Violeta\nEstágio 1: Cura um pouco da Vida de um Aliado (1pt).\nEstágio 2(+1): Aumenta a quantidade de Cura ou a quantidade de Aliados curados (máx. 3pt).\nEstágio 3(+1): Cura retira Status Anormais e prolonga Status Especiais de Aliados (+ efeito).";
+						if habilidades[1].habilidade == nil then
+							habilidades[1].habilidade = [[Tatuagem Rúnica (Passiva) 
+	Estágio 1: Pode usar todos os pontos do Atributo nos testes de Resistência.
+	Estágio 2: Sobre efeito de Status Anormais Xamã ganha redução de Dano aumentado.
+	Estágio 1-3: Ganha 3 pontos de Vida máximos a cada Estágio desta Habilidade.
+						]]end;
+						if habilidades[2].habilidade == nil then
+							habilidades[2].habilidade = [[Oração Ancestral (Instantânea) 
+	Estágio 1: Concede Vigor a Aliados, mas Xamã fica Atordoado (xpt + 1pt p/ Rodada).
+	Estágio 2(+1): Aliados com Vigor desta Habilidade recebem redução de Dano aumentado (+ efeito).
+	Estágio 3(+1): Aliados com Vigor desta Habilidade recebem Resistência a Status Anormais aumentado (+ efeito).]]
+						end;
+						if habilidades[3].habilidade == nil then
+							habilidades[3].habilidade = [[O Voo Sagrado do Condor
+	Estágio 1: Colide contra um Inimigo o Paralisando e Provocando os demais (1pt).
+	Estágio 2(+1): Inimigos Provocados ficam Atordoados para ataques sobre o Xamã (+ efeito).
+	Estágio 3(+1): O Inimigo colidido pelo Xamã perde Tenacidade, Aceleração e recebe Desaceleração (+ efeito).]]
+						end;
+						if habilidades[4].habilidade == nil then
+							habilidades[4].habilidade = [[O Chamado dos Espíritos (Passiva) 
+	Estágio 1: Inimigos derrotados com ajuda de Oração Ancestral curam um pouco da Vida do Xamã.
+	Estágio 2: Curas excedentes desta Habilidade curam Aliados ao invés do Xamã.
+	Estágio 3: A cura desta Habilidade remove Status Anormais.]]
+						end;
+						if habilidades[5].habilidade == nil then
+							habilidades[5].habilidade = [[Chama Violeta
+	Estágio 1: Cura um pouco da Vida de um Aliado (1pt).
+	Estágio 2(+1): Aumenta a quantidade de Cura ou a quantidade de Aliados curados (máx. 3pt).
+	Estágio 3(+1): Chama Violeta concede Ampliação (+ efeito).]]
+						end;
+						
 					end;
 				]]>
 				</event>
@@ -187,7 +381,7 @@
 					sheet.vidaBase = 5 + (nivel * 3);
 					sheet.fadigaBase = 1 + (nivel * 2);
 					sheet.atr_max = 64 + (nivel * 3);
-					sheet.habilidadesDisponivel = math.min((nivel * 2), 15);
+					sheet.habilidadesDisponivel = math.min((nivel * 2) + 1, 15);
 				</event>
 			</dataLink>
 		</rectangle>
@@ -237,12 +431,53 @@
 			<edit left="155" top="5" width="100" height="25" field="pecas" horzTextAlign="center" type="number"/>
 		</rectangle>
 
-		<rectangle left="0" top="195" width="310" height="490" color="black" strokeColor="white" strokeSize="1">
-			<label left="0" top="5" width="310" height="25" horzTextAlign="center" text="Bençãos e Sentinelas"/>
-			<label left="0" top="5" width="280" height="25" horzTextAlign="trailing" text="Custo" fontSize="11"/>
+		<rectangle left="0" top="195" width="310" height="35" color="black" strokeColor="white" strokeSize="1">
+			<label left="10" top="5" width="310" height="25" text="Carma"/>
+			<comboBox left="65" top="5" width="200" height="25" field="carma" items="{'Divino 2','Divino 1','Humano','Demoníaco 1','Demoníaco 2'}"/>
+		</rectangle>
 
-			<recordList left="5" top="30" width="300" height="273" name="rclBencaos" field="listaDeBencaos" templateForm="frmBlessing" layout="vertical" minQt="3"/>
-			<recordList left="5" top="303" width="300" height="182" name="rclSentinela" field="listaDeSentinelas" templateForm="frmSentinel" layout="vertical" minQt="2"/>
+		<rectangle left="0" top="235" width="310" height="85" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="5" width="310" height="25" horzTextAlign="center" text="Bençãos e Sentinelas"/>
+
+			<edit left="5" top="30" width="300" height="25" field="bencao1"/>
+			<edit left="5" top="55" width="300" height="25" field="bencao2"/>
+		</rectangle>
+
+		<rectangle left="0" top="325" width="310" height="355" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="5" width="310" height="20" horzTextAlign="center" text="Resistência"/>
+
+			<Resistencia left="0" top="25" text="Física" field="Fisica"/>
+			<Resistencia left="0" top="50" text="Desaceleração" field="Desaceleracao"/>
+			<Resistencia left="0" top="75" text="Sangramento" field="Sangramento"/>
+			<Resistencia left="0" top="100" text="Impelimento" field="Impelimento"/>
+			<Resistencia left="0" top="125" text="Imobilização" field="Imobilizacao"/>
+			<Resistencia left="0" top="150" text="Fratura" field="Fratura"/>
+			<Resistencia left="0" top="175" text="Fragilização" field="Fragilizacao"/>
+
+			<Resistencia left="155" top="25" text="Paranormal" field="Paranormal"/>
+			<Resistencia left="155" top="50" text="Envenenamento" field="Envenenamento"/>
+			<Resistencia left="155" top="75" text="Incendiado" field="Incendiado"/>
+			<Resistencia left="155" top="100" text="Atordoamento" field="Atordoamento"/>
+			<Resistencia left="155" top="125" text="Paralisação" field="Paralisacao"/>
+			<Resistencia left="155" top="150" text="Provocação" field="Provocacao"/>
+			<Resistencia left="155" top="175" text="Silenciado" field="Silenciado"/>
+
+			<label left="0" top="200" width="310" height="20" horzTextAlign="center" text="Benefícios"/>
+
+			<Beneficio left="0" top="225" text="Reg. de Vida" field="RegVida"/>
+			<Beneficio left="0" top="250" text="Reg. de Fadiga" field="RegFadiga"/>
+			<Beneficio left="0" top="275" text="Conjuração" field="Conjuração"/>
+
+			<Beneficio left="155" top="225" text="Ampliação" field="Ampliacao"/>
+			<Beneficio left="155" top="250" text="Negação" field="Negacao"/>
+			<Beneficio left="155" top="275" text="Esquiva" field="Esquiva"/>
+
+			<label left="0" top="300" width="310" height="20" horzTextAlign="center" text="Redutores"/>
+
+			<Redutor left="5" top="325" text="Físi." field="Fisico"/>
+			<Redutor left="80" top="325" text="Para." field="Paranormal"/>
+			<Redutor left="155" top="325" text="Corr." field="Corrosivo"/>
+			<Redutor left="230" top="325" text="Proj." field="Projetil"/>
 		</rectangle>
 
 		<rectangle left="315" top="65" width="285" height="240" color="black" strokeColor="white" strokeSize="1">
@@ -290,7 +525,6 @@
 					if sheet==nil then return end;
 					local res = (tonumber(sheet.cac_total) or 0);
 					res = math.floor(res/2);
-					sheet.resistenciaFisica = res;
 				</event>
 			</dataLink>
 			<dataLink fields="{'paranormalidade_total'}">
@@ -298,7 +532,6 @@
 					if sheet==nil then return end;
 					local res = (tonumber(sheet.paranormalidade_total) or 0);
 					res = math.floor(res/2);
-					sheet.resistenciaParanormal = res;
 				</event>
 			</dataLink>
 
@@ -336,42 +569,16 @@
 			</dataLink>
 		</rectangle>
 
-		<rectangle left="315" top="310" width="155" height="80" color="black" strokeColor="white" strokeSize="1">
-			<label left="75" top="5" width="75" height="20" horzTextAlign="center" text="Resistência"/>
+		<rectangle left="315" top="310" width="910" height="370" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="5" width="460" height="25" horzTextAlign="trailing" text="Habilidades"/>
+			<label left="0" top="5" width="870" height="25" horzTextAlign="trailing" text="Estágio" fontSize="11"/>
 
-			<label left="0" top="25" width="75" height="25" horzTextAlign="center" text="Física"/>
-			<rectangle left="90" top="25" width="45" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label left="90" top="25" width="45" height="25" horzTextAlign="center" field="resistenciaFisica"/>
+			<rectangle left="460" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="460" top="5" width="50" height="25" horzTextAlign="center" field="habilidadesNivel"/>
+			<rectangle left="510" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="510" top="5" width="50" height="25" horzTextAlign="center" field="habilidadesDisponivel"/>
 
-			<label left="0" top="50" width="75" height="25" horzTextAlign="center" text="Paranormal"/>
-			<rectangle left="90" top="50" width="45" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label left="90" top="50" width="45" height="25" horzTextAlign="center" field="resistenciaParanormal"/>
-		</rectangle>
-
-		<rectangle left="475" top="310" width="435" height="80" color="black" strokeColor="white" strokeSize="1">
-			<label left="0" top="5" width="435" height="20" horzTextAlign="center" text="Redutores"/>
-
-			<label left="5" top="25" width="135" height="25" horzTextAlign="center" text="Físico"/>
-			<edit left="140" top="25" width="75" height="25" field="redutorFisico"/>
-			<label left="220" top="25" width="135" height="25" horzTextAlign="center" text="Projétil"/>
-			<edit left="355" top="25" width="75" height="25" field="redutorProjetil"/>
-
-			<label left="5" top="50" width="135" height="25" horzTextAlign="center" text="Paranormal"/>
-			<edit left="140" top="50" width="75" height="25" field="redutorParanormal"/>
-			<label left="220" top="50" width="135" height="25" horzTextAlign="center" text="Corrosivo"/>
-			<edit left="355" top="50" width="75" height="25" field="redutorCorrosivo"/>
-		</rectangle>
-
-		<rectangle left="315" top="395" width="595" height="290" color="black" strokeColor="white" strokeSize="1">
-			<label left="0" top="5" width="535" height="25" horzTextAlign="center" text="Habilidades"/>
-			<label left="0" top="5" width="550" height="25" horzTextAlign="trailing" text="Estágio" fontSize="11"/>
-
-			<rectangle left="310" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label left="310" top="5" width="50" height="25" horzTextAlign="center" field="habilidadesNivel"/>
-			<rectangle left="360" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label left="360" top="5" width="50" height="25" horzTextAlign="center" field="habilidadesDisponivel"/>
-
-			<recordList left="5" top="30" width="585" height="255" name="rclHabilidades" field="listaDeHabilidades" templateForm="frmAbilities" layout="vertical" minQt="5">
+			<recordList left="5" top="30" width="900" height="335" name="rclHabilidades" field="listaDeHabilidades" templateForm="frmAbilities" layout="vertical" minQt="5">
 				<event name="onEndEnumeration"><![CDATA[
 				if sheet== nil then return end;
 				
@@ -391,25 +598,14 @@
 			</event>
 		</image>
 
-		<rectangle left="915" top="0" width="310" height="190" color="black" strokeColor="white" strokeSize="1">
-			<label left="0" top="5" width="310" height="25" horzTextAlign="center" text="Contratos"/>
-
-			<recordList left="5" top="30" width="300" height="155" name="rclContratos" field="listaDeContratos" templateForm="frmContract" layout="vertical" minQt="3"/>
-		</rectangle>
-
-		<rectangle left="915" top="195" width="310" height="195" color="black" strokeColor="white" strokeSize="1">
+		<rectangle left="915" top="0" width="310" height="195" color="black" strokeColor="white" strokeSize="1">
 			<label left="0" top="5" width="310" height="25" horzTextAlign="center" text="Ultimato"/>
 			<textEditor left="5" top="30" width="300" height="160" field="ultimato"/>
 		</rectangle>
 
-		<rectangle left="915" top="395" width="310" height="190" color="black" strokeColor="white" strokeSize="1">
+		<rectangle left="915" top="200" width="310" height="105" color="black" strokeColor="white" strokeSize="1">
 			<label left="0" top="5" width="310" height="25" horzTextAlign="center" text="Privilégio"/>
-			<textEditor left="5" top="30" width="300" height="155" field="privilegio"/>
-		</rectangle>
-
-		<rectangle left="915" top="590" width="310" height="60" color="black" strokeColor="white" strokeSize="1">
-			<label left="0" top="5" width="310" height="25" horzTextAlign="center" text="Carma"/>
-			<comboBox left="55" top="30" width="200" height="25" field="carma" items="{'Divino 2','Divino 1','Humano','Demoníaco 1','Demoníaco 2'}"/>
+			<textEditor left="5" top="30" width="300" height="70" field="privilegio"/>
 		</rectangle>
 	</scrollBox>
 </form>

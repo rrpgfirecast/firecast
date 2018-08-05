@@ -27,9 +27,9 @@ function newfrmAbilities()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmAbilities");
-    obj:setWidth(585);
-    obj:setHeight(50);
-    obj:setMargins({top=1});
+    obj:setWidth(910);
+    obj:setHeight(65);
+    obj:setMargins({top=2});
 
     obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
@@ -41,17 +41,17 @@ function newfrmAbilities()
     obj.textEditor1:setParent(obj.rectangle1);
     obj.textEditor1:setLeft(0);
     obj.textEditor1:setTop(0);
-    obj.textEditor1:setWidth(510);
-    obj.textEditor1:setHeight(50);
+    obj.textEditor1:setWidth(835);
+    obj.textEditor1:setHeight(65);
     obj.textEditor1:setField("habilidade");
     obj.textEditor1:setName("textEditor1");
 
     obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
-    obj.edit1:setLeft(510);
+    obj.edit1:setLeft(835);
     obj.edit1:setTop(0);
     obj.edit1:setWidth(50);
-    obj.edit1:setHeight(50);
+    obj.edit1:setHeight(65);
     obj.edit1:setField("nivel");
     obj.edit1:setType("number");
     obj.edit1:setFontSize(20);
