@@ -94,7 +94,7 @@ local function sendPersonalMessage(chat, mesa)
 		valid = valid and (msg.hourEnd > date.hour or (msg.hourEnd == date.hour and msg.minuteEnd >= date.min));
 
 		if valid then
-			message = message .. msg.message .. "/n";
+			message = message .. msg.message .. "\n";
 		end;
 	end;
 
@@ -302,7 +302,7 @@ rrpg.messaging.listen("MesaJoined",
 		-- e entrou um espectador
 		noVoice = noVoice and message.jogador.isEspectador;
 		-- E o usuario já foi kickado.
-		noVoice = noVoice and user.kicked == true;
+		noVoice = noVoice and user~=nil and user.kicked == true;
 		if noVoice then
 			message.jogador:requestSetMudo(true);
 		end;
