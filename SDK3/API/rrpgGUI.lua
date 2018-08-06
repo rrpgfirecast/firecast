@@ -1275,6 +1275,8 @@ local function dataLinkFromHandle(handle)
 	ctrl.props["defaultValues"] = {setter = "setDefaultValues", getter = "getDefaultValues", tipo = "table"};			
 	
 	ctrl.eves["onChange"] = "field, oldValue, newValue";
+	ctrl.eves["onPersistedChange"] = "field, oldValue, newValue";		
+	ctrl.eves["onUserChange"] = "field, oldValue, newValue";	
 	ctrl.eves["onChildAdded"] = "node";
 	ctrl.eves["onChildRemoved"] = "node";
 	return ctrl;	
