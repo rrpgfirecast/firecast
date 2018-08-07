@@ -115,6 +115,10 @@ function localNDB.nodeFromHandle(nodeHandle)
 		return _ndb_getNodeName(self.handle);
 	end;
 	
+	function ctrl:getPersistedAttributeValue(attributeName)
+		return _ndb_getPersistedAttributeValue(self.handle, attributeName);
+	end;	
+	
 	function ctrl:getLocalID()
 		return _obj_getProp(self.handle, "LocalID");
 	end;	
@@ -475,6 +479,20 @@ function ndb.getNodeName(nodeObj)
 	
 	if node ~= nil then
 		return node:getName();
+	else
+		return nil;
+	end;
+end;
+
+function ndb.getPersistedAttributeValue(nodeObj, attributeName)
+	if (nodeObj == nil) then
+		return nil;
+	end;
+
+	local node = localNDB.getNodeObjectFromFacade(nodeObj);
+	
+	if node ~= nil then
+		return node:getPersistedAttributeValue(attributeName);
 	else
 		return nil;
 	end;
