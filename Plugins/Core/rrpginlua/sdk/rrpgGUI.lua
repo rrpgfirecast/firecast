@@ -390,6 +390,7 @@ local function formLayoutFromHandle(handle)
 	ctrl.eves["onHide"] = "";
 	ctrl.eves["onNodeReady"] = "";
 	ctrl.eves["onNodeUnready"] = "";
+	ctrl.eves["onNodeChanged"] = "";		
 	return ctrl;	
 end
 
@@ -1274,6 +1275,8 @@ local function dataLinkFromHandle(handle)
 	ctrl.props["defaultValues"] = {setter = "setDefaultValues", getter = "getDefaultValues", tipo = "table"};			
 	
 	ctrl.eves["onChange"] = "field, oldValue, newValue";
+	ctrl.eves["onPersistedChange"] = "field, oldValue, newValue";		
+	ctrl.eves["onUserChange"] = "field, oldValue, newValue";	
 	ctrl.eves["onChildAdded"] = "node";
 	ctrl.eves["onChildRemoved"] = "node";
 	return ctrl;	
@@ -1369,6 +1372,15 @@ local function dataScopeBoxFromHandle(handle)
 	ctrl.props["scopeNode"] = {setter = "setNodeObject", getter = "getNodeObject", tipo = "table"};		
 	ctrl.props["nodeObject"] = {setter = "setNodeObject", getter = "getNodeObject", tipo = "table"};		
 	ctrl.props["node"] = {setter = "setNodeObject", getter = "getNodeObject", tipo = "table"};		
+	
+	if ctrl.eves == nil then
+		ctrl.eves = {};
+	end;
+	
+	ctrl.eves["onNodeReady"] = "";
+	ctrl.eves["onNodeUnready"] = "";
+	ctrl.eves["onNodeChanged"] = "";
+	
 	return ctrl;	
 end
 
@@ -1387,13 +1399,14 @@ local function richEditFromHandle(handle)
 	function ctrl:setField(v) _gui_setFieldName(self.handle, v); end;	
 	
 		
+	ctrl.props["animateImages"] = {readProp = "CanAnimateImages", writeProp = "CanAnimateImages", tipo = "bool"};			
 	ctrl.props["field"] = {setter = "setField", getter = "getField", tipo = "string"};		
 	ctrl.props["backgroundColor"] = {readProp = "BackgroundColor", writeProp = "BackgroundColor", tipo = "color"};
 	ctrl.props["defaultFontColor"] = {readProp = "DefaultFontColor", writeProp = "DefaultFontColor", tipo = "color"};
 	ctrl.props["defaultFontSize"] = {readProp = "DefaultFontSize", writeProp = "DefaultFontSize", tipo = "double"};	
 	ctrl.props["showToolbar"] = {readProp = "ShowToolbar", writeProp = "ShowToolbar", tipo = "bool"};
 	ctrl.props["readOnly"] = {readProp = "ReadOnly", writeProp = "ReadOnly", tipo = "bool"};
-	ctrl.props["hideSelection"] = {readProp = "HideSelectionNoFocus", writeProp = "HideSelectionNoFocus", tipo = "bool"};
+	ctrl.props["hideSelection"] = {readProp = "HideSelectionNoFocus", writeProp = "HideSelectionNoFocus", tipo = "bool"};	
 	return ctrl;	
 end
 
@@ -1458,6 +1471,10 @@ local function popupFromHandle(handle)
 	ctrl.eves["onClose"] = "canceled";	
 	ctrl.eves["onCanClose"] = "canceled";
 	ctrl.eves["onCalculateSize"] = "dueToResize, width, height";
+	
+	ctrl.eves["onNodeReady"] = "";
+	ctrl.eves["onNodeUnready"] = "";
+	ctrl.eves["onNodeChanged"] = "";	
 	return ctrl;	
 end
 
