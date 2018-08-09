@@ -41,6 +41,7 @@ local function constructNew_frmFichaBasicaV3RichWhite()
     obj.richEdit1:setField("txt");
     lfm_setPropAsString(obj.richEdit1, "hideSelection",  "false");
     lfm_setPropAsString(obj.richEdit1, "defaultFontSize",  "15");
+    lfm_setPropAsString(obj.richEdit1, "animateImages",  "true");
     obj.richEdit1:setName("richEdit1");
 
     function obj:_releaseEvents()

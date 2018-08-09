@@ -1,14 +1,14 @@
-require("firecast.lua");
+require("rrpg.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
-require("locale.lua");
-local __o_Utils = require("utils.lua");
 
-local function constructNew_frmTemplateCreditos()
-    local obj = GUI.fromHandle(_obj_newObject("form"));
+function newfrmTemplateCreditos()
+    __o_rrpgObjs.beginObjectsLoading();
+
+    local obj = gui.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -29,12 +29,12 @@ local function constructNew_frmTemplateCreditos()
     obj:setName("frmTemplateCreditos");
     obj:setAlign("client");
 
-    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image1 = gui.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.scrollBox1);
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
@@ -44,7 +44,7 @@ local function constructNew_frmTemplateCreditos()
     obj.image1:setSRC("logo");
     obj.image1:setName("image1");
 
-    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
+    obj.image2 = gui.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.scrollBox1);
     obj.image2:setLeft(550);
     obj.image2:setTop(0);
@@ -54,7 +54,7 @@ local function constructNew_frmTemplateCreditos()
     obj.image2:setSRC("/TheMaze/images/RPGmeister.jpg");
     obj.image2:setName("image2");
 
-    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(850);
     obj.layout1:setTop(0);
@@ -62,7 +62,7 @@ local function constructNew_frmTemplateCreditos()
     obj.layout1:setHeight(160);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
@@ -71,7 +71,7 @@ local function constructNew_frmTemplateCreditos()
     obj.rectangle1:setCornerType("round");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label1 = gui.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(0);
     obj.label1:setTop(10);
@@ -81,7 +81,7 @@ local function constructNew_frmTemplateCreditos()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label2 = gui.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout1);
     obj.label2:setLeft(0);
     obj.label2:setTop(35);
@@ -91,7 +91,7 @@ local function constructNew_frmTemplateCreditos()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label3 = gui.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout1);
     obj.label3:setLeft(0);
     obj.label3:setTop(60);
@@ -101,47 +101,39 @@ local function constructNew_frmTemplateCreditos()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label4 = gui.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.scrollBox1);
     obj.label4:setLeft(555);
-    obj.label4:setTop(300);
-    obj.label4:setWidth(100);
+    obj.label4:setTop(275);
+    obj.label4:setWidth(200);
     obj.label4:setHeight(20);
     obj.label4:setText("Versão Atual: ");
     obj.label4:setHorzTextAlign("center");
+    obj.label4:setField("versionInstalled");
     obj.label4:setName("label4");
 
-    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image3:setParent(obj.scrollBox1);
-    obj.image3:setLeft(667);
-    obj.image3:setTop(300);
-    obj.image3:setWidth(100);
-    obj.image3:setHeight(20);
-    obj.image3:setStyle("autoFit");
-    obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20The%20Maze/release.png");
-    obj.image3:setName("image3");
-
-    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label5 = gui.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.scrollBox1);
     obj.label5:setLeft(555);
-    obj.label5:setTop(325);
-    obj.label5:setWidth(100);
+    obj.label5:setTop(300);
+    obj.label5:setWidth(200);
     obj.label5:setHeight(20);
     obj.label5:setText("Sua Versão: ");
     obj.label5:setHorzTextAlign("center");
+    obj.label5:setField("versionDownloaded");
     obj.label5:setName("label5");
 
-    obj.image4 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image4:setParent(obj.scrollBox1);
-    obj.image4:setLeft(667);
-    obj.image4:setTop(325);
-    obj.image4:setWidth(100);
-    obj.image4:setHeight(20);
-    obj.image4:setStyle("autoFit");
-    obj.image4:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao01.png");
-    obj.image4:setName("image4");
+    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1:setParent(obj.scrollBox1);
+    obj.checkBox1:setLeft(555);
+    obj.checkBox1:setTop(325);
+    obj.checkBox1:setWidth(200);
+    obj.checkBox1:setHeight(20);
+    obj.checkBox1:setField("noUpdate");
+    obj.checkBox1:setText("Não pedir para atualizar.");
+    obj.checkBox1:setName("checkBox1");
 
-    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
     obj.button1:setLeft(555);
     obj.button1:setTop(350);
@@ -149,7 +141,7 @@ local function constructNew_frmTemplateCreditos()
     obj.button1:setText("Change Log");
     obj.button1:setName("button1");
 
-    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button2 = gui.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.scrollBox1);
     obj.button2:setLeft(667);
     obj.button2:setTop(350);
@@ -157,7 +149,7 @@ local function constructNew_frmTemplateCreditos()
     obj.button2:setText("Atualizar");
     obj.button2:setName("button2");
 
-    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label6 = gui.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.scrollBox1);
     obj.label6:setLeft(555);
     obj.label6:setTop(400);
@@ -166,7 +158,7 @@ local function constructNew_frmTemplateCreditos()
     obj.label6:setText("Conheça as Mesas:");
     obj.label6:setName("label6");
 
-    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button3 = gui.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.scrollBox1);
     obj.button3:setLeft(555);
     obj.button3:setTop(425);
@@ -174,7 +166,7 @@ local function constructNew_frmTemplateCreditos()
     obj.button3:setText("RPGmeister");
     obj.button3:setName("button3");
 
-    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button4 = gui.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.scrollBox1);
     obj.button4:setLeft(667);
     obj.button4:setTop(425);
@@ -183,22 +175,22 @@ local function constructNew_frmTemplateCreditos()
     obj.button4:setName("button4");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
-            gui.openInBrowser('link change log')
+        function (self)
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20The%20Maze/README.md')
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (_)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20The%20Maze/Ficha%20The%20Maze.rpk')
+        function (self)
+            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20The%20Maze/output/Ficha%20The%20Maze.rpk?raw=true')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
-        function (_)
+        function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
-        function (_)
+        function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=130746');
         end, obj);
 
@@ -225,12 +217,11 @@ local function constructNew_frmTemplateCreditos()
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
-        if self.image4 ~= nil then self.image4:destroy(); self.image4 = nil; end;
-        if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
-        if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
-        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
+        if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
+        if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
@@ -240,23 +231,9 @@ local function constructNew_frmTemplateCreditos()
 
     obj:endUpdate();
 
+     __o_rrpgObjs.endObjectsLoading();
+
     return obj;
-end;
-
-function newfrmTemplateCreditos()
-    local retObj = nil;
-    __o_rrpgObjs.beginObjectsLoading();
-
-    __o_Utils.tryFinally(
-      function()
-        retObj = constructNew_frmTemplateCreditos();
-      end,
-      function()
-        __o_rrpgObjs.endObjectsLoading();
-      end);
-
-    assert(retObj ~= nil);
-    return retObj;
 end;
 
 local _frmTemplateCreditos = {
@@ -270,6 +247,6 @@ local _frmTemplateCreditos = {
     description=""};
 
 frmTemplateCreditos = _frmTemplateCreditos;
-Firecast.registrarForm(_frmTemplateCreditos);
+rrpg.registrarForm(_frmTemplateCreditos);
 
 return _frmTemplateCreditos;

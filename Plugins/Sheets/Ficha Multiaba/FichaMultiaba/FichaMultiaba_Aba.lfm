@@ -1,63 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frm_FM_Aba" height="25" width="125" theme="dark" margins="{right=2}">
+	<popup name="popupConfig" width="210" height="160" backOpacity="0.4">
+		<layout left="5" top="5" width="200" height="160">
+			<label top="0" width="150" height="25" text="Ordem da Aba" horzTextAlign="center"/>
+			<edit left="125" top="0" width="50" height="25" field="index" type="number" horzTextAlign="center">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local rcl = self:findControlByName("rclAbas");
+					if rcl~= nil then rcl:sort() end;
+				</event>
+			</edit>
+
+			<label top="25" width="150" height="25" text="Visibilidade" horzTextAlign="center"/>
+			<imageCheckBox name="cbxInvisivel" left="125" top="27" width="20" height="20" checkedImage="images/invisivel.png" uncheckedImage="images/visivel.png" autoChange="false" onClick="self:alternarVisibilidade();" hint="Altera a visibilidade entre somente o mestre e todos. "/> 
+
+			<label top="50" width="150" height="25" text="Apagar" horzTextAlign="center"/>
+			<button left="125" top="50" width="25" height="25" text="X" opacity="0.5" hint="Apaga a aba. ">
+				<event name="onClick">
+					dialogs.confirmOkCancel("Tem certeza que quer apagar essa aba?",
+						function (confirmado)
+							if confirmado then
+								local pop = self:findControlByName("popupConfig");
+				
+								if pop ~= nil then
+									pop:closePopup();
+								end;
+								ndb.deleteNode(sheet);
+							end;
+					end);
+				</event>
+			</button>
+		</layout>
+	</popup>
+
 	<rectangle align="client" strokeColor="black" hitTest="false" strokeSize="2" color="#000000FF"/>
 
-    <edit left="0" top="0" width="75" height="25" field="nome_aba" name="name_aba" transparent="true" fontSize="10">
-    	<event name="onEnter">
+	<edit left="0" top="0" width="100" height="25" field="nome_aba" name="name_aba" transparent="true" fontSize="10">
+		<event name="onEnter">
 			self.name_aba.transparent = false;
 		</event>
 		<event name="onExit">
 			self.name_aba.transparent = true;
 		</event>
-    </edit>
+		<event name="onChange">
+			if sheet==nil then return end;
+			local rcl = self:findControlByName("rclAbas");
+			if rcl~= nil then rcl:sort() end;
+		</event>
+	</edit>
 
-    <imageCheckBox name="cbxInvisivel" left="77" top="2" width="20" height="20" checkedImage="images/invisivel.png" uncheckedImage="images/visivel.png" autoChange="false" onClick="self:alternarVisibilidade();" hint="Altera a visibilidade entre somente o mestre e todos. "/> 
-
-	<button left="100" top="0" width="25" height="25" text="X" opacity="0.5" hint="Apaga a aba. ">
+	<button left="100" top="0" width="25" height="25" text="i" opacity="0.5" hint="Abre popup de opções da aba. ">
 		<event name="onClick">
-			dialogs.confirmOkCancel("Tem certeza que quer apagar essa aba?",
-				function (confirmado)
-					if confirmado then
-						ndb.deleteNode(sheet);
-					end;
-			end);
+			local pop = self:findControlByName("popupConfig");
+			
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("center");
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de opções para exibir");
+			end;
 		</event>
 	</button>
 
-	<script>
-         function self:alternarVisibilidade()
-             if self.cbxInvisivel.checked then
-                  ndb.setPermission(sheet, "group", "jogadores", "read", nil);
-                  ndb.setPermission(sheet, "group", "espectadores", "read", nil);
-             else
-                  ndb.setPermission(sheet, "group", "jogadores", "read", "deny");
-                  ndb.setPermission(sheet, "group", "espectadores", "read", "deny");
-             end;
-         end; 
-         function self:atualizarCbxInvisivel()          
-             self.cbxInvisivel.checked = ndb.getPermission(sheet, "group", "espectadores", "read") == "deny" or
-                                         ndb.getPermission(sheet, "group", "jogadores", "read") == "deny"                                                                                    
-              self.cbxInvisivel.enabled = ndb.testPermission(sheet, "writePermissions");
-         end;
-    </script>
+	
 
-    <event name="onScopeNodeChanged">
-        if self.observer ~= nil then   
-            self.observer.enabled = false;
-            self.observer = nil;
-        end;
-         
-        if sheet ~= nil then   
-            self.observer = ndb.newObserver(sheet);
-            self.observer.onPermissionListChanged =
-                function(node)                 
-                    self:atualizarCbxInvisivel();
-                end;                               
-            self.observer.onFinalPermissionsCouldBeChanged =
-                function(node)
-                    self:atualizarCbxInvisivel();
-                end;                               
-            self:atualizarCbxInvisivel();  
-        end;
-    </event>
+	<script>
+		 function self:alternarVisibilidade()
+			 if self.cbxInvisivel.checked then
+				  ndb.setPermission(sheet, "group", "jogadores", "read", nil);
+				  ndb.setPermission(sheet, "group", "espectadores", "read", nil);
+			 else
+				  ndb.setPermission(sheet, "group", "jogadores", "read", "deny");
+				  ndb.setPermission(sheet, "group", "espectadores", "read", "deny");
+			 end;
+		 end; 
+		 function self:atualizarCbxInvisivel()		  
+			 self.cbxInvisivel.checked = ndb.getPermission(sheet, "group", "espectadores", "read") == "deny" or
+										 ndb.getPermission(sheet, "group", "jogadores", "read") == "deny"																					
+			  self.cbxInvisivel.enabled = ndb.testPermission(sheet, "writePermissions");
+		 end;
+	</script>
+
+	<event name="onScopeNodeChanged">
+		if self.observer ~= nil then   
+			self.observer.enabled = false;
+			self.observer = nil;
+		end;
+		 
+		if sheet ~= nil then   
+			self.observer = ndb.newObserver(sheet);
+			self.observer.onPermissionListChanged =
+				function(node)				 
+					self:atualizarCbxInvisivel();
+				end;							   
+			self.observer.onFinalPermissionsCouldBeChanged =
+				function(node)
+					self:atualizarCbxInvisivel();
+				end;							   
+			self:atualizarCbxInvisivel();  
+		end;
+	</event>
 </form>

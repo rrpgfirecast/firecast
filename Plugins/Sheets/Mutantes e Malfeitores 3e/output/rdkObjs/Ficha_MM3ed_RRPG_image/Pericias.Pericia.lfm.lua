@@ -275,10 +275,6 @@ local function constructNew_frmFichaRPGmeister3p_svg()
     obj._e_event3 = obj.comboBox1:addEventListener("onChange",
         function (_)
             if sheet ~= nil then
-            				if debug then
-            					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Atributo Pericia. ");
-            					index = index + 1;
-            				end;
             				local atributoPericia = 0;
             				local node = ndb.getRoot(sheet);
             
@@ -311,10 +307,6 @@ local function constructNew_frmFichaRPGmeister3p_svg()
     obj._e_event5 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
-            				if debug then
-            					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando total Pericia. ");
-            					index = index + 1;
-            				end;
             				local node = ndb.getRoot(sheet);
             				local pen = (tonumber(node.penalidade) or 0)
             

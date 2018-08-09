@@ -97,7 +97,7 @@ local function constructNew_frmGerTablesDock()
 	
 
 
-    obj._e_event0 = obj:addEventListener("onShow",
+    obj._e_event0 = obj:addEventListener("onNodeReady",
         function (_)
             carregarTablesDock();
             		

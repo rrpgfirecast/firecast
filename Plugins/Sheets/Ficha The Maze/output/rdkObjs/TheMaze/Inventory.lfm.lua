@@ -112,7 +112,7 @@ local function constructNew_frmInventory()
     obj.rclInventario:setField("listaDeItens");
     obj.rclInventario:setTemplateForm("frmItem");
     obj.rclInventario:setLayout("vertical");
-    obj.rclInventario:setMinQt(6);
+    obj.rclInventario:setMinQt(8);
 
     obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.scrollBox1);
@@ -142,8 +142,8 @@ local function constructNew_frmInventory()
     obj.comboBox1:setWidth(300);
     obj.comboBox1:setHeight(25);
     obj.comboBox1:setField("armazenamento1");
-    obj.comboBox1:setItems({'', 'Bolsa Pequena', 'Bolsa Grande', 'Mochila', 'Mochila Grande'});
-    obj.comboBox1:setValues({'0','4','5','6','7'});
+    obj.comboBox1:setItems({'', 'Coldre', 'Bolsa Grande'});
+    obj.comboBox1:setValues({'0','4','6'});
     obj.comboBox1:setName("comboBox1");
 
     obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
@@ -153,8 +153,8 @@ local function constructNew_frmInventory()
     obj.comboBox2:setWidth(300);
     obj.comboBox2:setHeight(25);
     obj.comboBox2:setField("armazenamento2");
-    obj.comboBox2:setItems({'', 'Bolsa Pequena', 'Bolsa Grande', 'Mochila', 'Mochila Grande'});
-    obj.comboBox2:setValues({'0','4','5','6','7'});
+    obj.comboBox2:setItems({'', 'Coldre', 'Bolsa Grande'});
+    obj.comboBox2:setValues({'0','4','6'});
     obj.comboBox2:setName("comboBox2");
 
     obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
@@ -179,7 +179,7 @@ local function constructNew_frmInventory()
             					local armazenamento1 = (tonumber(sheet.armazenamento1) or 0);
             					local armazenamento2 = (tonumber(sheet.armazenamento2) or 0);
             					local armazenamento3 = (tonumber(sheet.armazenamento3) or 0);
-            					local tamanho = 6 + armazenamento1 + armazenamento2 + armazenamento3;
+            					local tamanho = 8 + armazenamento1 + armazenamento2 + armazenamento3;
             					sheet.inventarioTamanho = tamanho;
             					self.rclInventario.minQt = tamanho;
             

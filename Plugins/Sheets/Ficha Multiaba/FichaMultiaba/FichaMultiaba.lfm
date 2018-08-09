@@ -27,7 +27,7 @@
 					<event name="onChange">
 						if sheet~=nil then
 							self.txt.backgroundColor = sheet.backgroundColor;
-							default.backgroundColor = sheet.backgroundColor;
+							default.room[rrpg.getMesaDe(sheet).codigoInterno].backgroundColor = sheet.backgroundColor;
 						end;
 					</event>
 				</colorComboBox>
@@ -37,7 +37,7 @@
 					<event name="onChange">
 						if sheet~=nil then
 							self.txt.defaultFontColor = sheet.fontColor;
-							default.fontColor = sheet.fontColor;
+							default.room[rrpg.getMesaDe(sheet).codigoInterno].fontColor = sheet.fontColor;
 						end;
 					</event>
 				</colorComboBox>
@@ -48,7 +48,7 @@
 					<event name="onChange">
 						if sheet~=nil then
 							self.txt.defaultFontSize = sheet.fontSize;
-							default.fontSize = sheet.fontSize;
+							default.room[rrpg.getMesaDe(sheet).codigoInterno].fontSize = sheet.fontSize;
 						end;
 					</event>
 				</edit>
@@ -58,7 +58,7 @@
 					<event name="onChange">
 						if sheet~=nil then
 							self.txt.showToolbar = not sheet.showToolbar;
-							default.showToolbar = sheet.showToolbar;
+							default.room[rrpg.getMesaDe(sheet).codigoInterno].showToolbar = sheet.showToolbar;
 						end;
 					</event>
 				</checkBox>
@@ -66,7 +66,7 @@
 				<checkBox top="100" width="200" height="25" text="Padrão Global." field="global" hint="Vai usar essas configurações em todas fichas multiabas abertas.">
 			  <event name="onChange">
 				if sheet~=nil then
-					default.global = sheet.global;
+					default.room[rrpg.getMesaDe(sheet).codigoInterno].global = sheet.global;
 				end;
 			  </event>
 			</checkBox>
@@ -76,16 +76,16 @@
 						if sheet~=nil then
 							local default = ndb.load("defaults.xml");
 							
-							sheet.showToolbar = default.showToolbar;
+							sheet.showToolbar = default.room[rrpg.getMesaDe(sheet).codigoInterno].showToolbar;
 							self.txt.showToolbar = not sheet.showToolbar;
 
-							sheet.fontSize = default.fontSize;
+							sheet.fontSize = default.room[rrpg.getMesaDe(sheet).codigoInterno].fontSize;
 							self.txt.defaultFontSize = sheet.fontSize;
 
-							sheet.fontColor = default.fontColor;
+							sheet.fontColor = default.room[rrpg.getMesaDe(sheet).codigoInterno].fontColor;
 							self.txt.defaultFontColor = sheet.fontColor;
 							
-							sheet.backgroundColor = default.backgroundColor;
+							sheet.backgroundColor = default.room[rrpg.getMesaDe(sheet).codigoInterno].backgroundColor;
 							self.txt.backgroundColor = sheet.backgroundColor;
 						end;
 					</event>
@@ -94,9 +94,9 @@
 			</layout>
 		</popup>
 		<script><![CDATA[
-			local default = ndb.load("defaults.xml");
+			local default;
 			local loaded = false;
-			--colocar algo para quando sheet terminar de carregar puxar os valores de default. 
+			--colocar algo para quando sheet terminar de carregar puxar os valores de default.room[rrpg.getMesaDe(sheet).codigoInterno]. 
 
 			local function dump(o)
 			   if type(o) == 'table' then
@@ -113,12 +113,13 @@
 
 		local function loadDefault()
 			if sheet==nil then return end;
+			if default==nil then return end;
 
-			if default.global then
-				sheet.showToolbar = default.showToolbar;
-				sheet.fontSize = default.fontSize;
-				sheet.fontColor = default.fontColor;
-				sheet.backgroundColor = default.backgroundColor;
+			if default.room[rrpg.getMesaDe(sheet).codigoInterno].global then
+				sheet.showToolbar = default.room[rrpg.getMesaDe(sheet).codigoInterno].showToolbar;
+				sheet.fontSize = default.room[rrpg.getMesaDe(sheet).codigoInterno].fontSize;
+				sheet.fontColor = default.room[rrpg.getMesaDe(sheet).codigoInterno].fontColor;
+				sheet.backgroundColor = default.room[rrpg.getMesaDe(sheet).codigoInterno].backgroundColor;
 				sheet.global = true;
 			end;
 
@@ -193,6 +194,15 @@
 			</layout>
 			<layout align="client">
 				<recordList name="rclAbas" field="abas" templateForm="frm_FM_Aba" align="top" height="46" selectable="true" layout="horizontal">
+					<event name="onCompare">
+						local comp = ((tonumber(nodeA.index) or 0) - (tonumber(nodeB.index) or 0));
+
+						if comp == 0 then
+							return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+						else
+							return comp;
+						end;
+					</event>
 					<event name="onSelect">
 						local node = self.rclAbas.selectedNode;
 						self.boxTexto.node = node;
@@ -221,6 +231,16 @@
 		</layout>
 	</scrollBox>
     <event name="onNodeReady">
+		default = ndb.load("defaults.xml");
+		if default.room == nil then
+			default.room = {};
+		end;
+        
+		if default.room[rrpg.getMesaDe(sheet).codigoInterno] == nil then
+			default.room[rrpg.getMesaDe(sheet).codigoInterno] = {};
+		end;
+
+
         internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true",
             function(stream, contentType)
                 local info = rrpg.plugins.getRPKDetails(stream);
@@ -253,6 +273,7 @@
             function (downloaded, total)
                 -- esta função será chamada constantemente.
                 -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
-            end);
+            end,
+            "checkForModification");
     </event>
 </form>
