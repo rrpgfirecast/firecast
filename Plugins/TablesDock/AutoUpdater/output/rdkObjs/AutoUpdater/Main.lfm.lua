@@ -97,6 +97,7 @@ local function constructNew_frmTemplate()
 
                     if updaterSheet.toLoad <= updaterSheet.loaded then
                         self.loader.visible = false;
+                        self.downloadedPluginsList:sort();
                     end;
 
                     if myNode ~= nil then

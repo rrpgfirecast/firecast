@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="Listade_NPC_Dock" align="client" theme="dark" >
 	<template name="corInfo">
 		<layout align="left" width="20" height="20" hitTest="true" >
@@ -190,7 +190,7 @@
 				</button>
 			</layout>
 			
-			<popup name="SelectCor" width="192" height="100">
+			<popup name="SelectCor" width="192" height="100" autoScopeNode="false">
 				<layout align="top" height="24">
 					<label align="client" text="Selecione a Cor:" horzTextAlign="center" fontStyle="Bold"/>
 				</layout>
@@ -284,7 +284,7 @@
 		</dataScopeBox>	
 	</rectangle>
 	
-	<popup name="dropDownFalso" width="128" height="128" backOpacity="0" node="sheet" hitTest="true" >
+	<popup name="dropDownFalso" width="128" height="128" backOpacity="0" node="sheet" hitTest="true" autoScopeNode="false">
 		<scrollBox align="client">
 			 <recordList visible="true" align="client" templateForm="OpcaoDaComboboxFalsa" field="opcoesFalsas" name="opcoesFalsas" layout="verticalTiles" autoHeight="true" selectable="true" minQt="1" >
 				<event name="onSelect">

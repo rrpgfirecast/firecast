@@ -42,6 +42,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
     obj.popHabilidade:setWidth(300);
     obj.popHabilidade:setHeight(240);
     obj.popHabilidade:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popHabilidade, "autoScopeNode",  "false");
 
     obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj.popHabilidade);

@@ -35,6 +35,7 @@ local function constructNew_frmGerenciarSimpleMacros()
     obj.popEditMacro = GUI.fromHandle(_obj_newObject("popup"));
     obj.popEditMacro:setParent(obj);
     obj.popEditMacro:setName("popEditMacro");
+    lfm_setPropAsString(obj.popEditMacro, "autoScopeNode",  "false");
 
     obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj.popEditMacro);

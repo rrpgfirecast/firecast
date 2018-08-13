@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister1_svg" align="client" theme="dark" margins="{top=1}">
 	<scrollBox align="client">
 		<template name="smallTitleCenter">
@@ -201,7 +201,7 @@
 			</flowPart>
 		</template>
 
-		<popup name="popAtributo" width="820" height="170" backOpacity="0.4">
+		<popup name="popAtributo" width="820" height="170" backOpacity="0.4" autoScopeNode="false">
 			<flowLayout align="top" autoHeight="true" maxControlsPerLine="13" margins="{bottom=4}" horzAlign="center">
 				<smallTitleCenter text="Inicial"/>
 				<smallTitleCenter text="Raça"/>
@@ -224,7 +224,7 @@
 			<atributeFlow atr="Sab"/>
 			<atributeFlow atr="Car"/>
 		</popup>
-		<popup name="popResistencia" width="380" height="150" backOpacity="0.4">
+		<popup name="popResistencia" width="380" height="150" backOpacity="0.4" autoScopeNode="false">
 			<flowLayout align="top" autoHeight="true" maxControlsPerLine="11" margins="{bottom=4}" horzAlign="center">
 				<smallTitleCenter text="Base"/>
 				<smallTitleCenter text="Atributo"/>
@@ -239,7 +239,7 @@
 			<resitenceFlow tr="Von"/>
 			<textEditor align="client" field="trCondicional"/>
 		</popup>
-		<popup name="popCA" width="600" height="210" backOpacity="0.4">
+		<popup name="popCA" width="600" height="210" backOpacity="0.4" autoScopeNode="false">
 			<flowLayout align="top" autoHeight="true" margins="{bottom=4}">
 				<Protection nome="Armadura" field="armaduraCa"/>
 				<flowPart minWidth="10" maxWidth="20" height="15"/>
@@ -284,7 +284,7 @@
 				<flowLineBreak/>
 			</flowLayout>
 		</popup>
-		<popup name="popGrapple" width="225" height="50" backOpacity="0.4">
+		<popup name="popGrapple" width="225" height="50" backOpacity="0.4" autoScopeNode="false">
 			<flowLayout align="top" autoHeight="true" maxControlsPerLine="4" margins="{bottom=4}" horzAlign="center">
 				<smallTitleCenter text="BBA"/>
 				<smallTitleCenter text="Força"/>
@@ -297,7 +297,7 @@
 				<smallFieldCenter field="agarrarVar"/>
 			</flowLayout>
 		</popup>
-		<popup name="popManeuver" width="380" height="65" backOpacity="0.4">
+		<popup name="popManeuver" width="380" height="65" backOpacity="0.4" autoScopeNode="false">
 			<flowLayout align="top" autoHeight="true" maxControlsPerLine="7" margins="{bottom=4}" horzAlign="center">
 				
 				<flowPart minWidth="50" maxWidth="50" height="15"/>

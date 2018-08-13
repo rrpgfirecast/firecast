@@ -16,7 +16,7 @@
 				<comboBox align="top" fontSize="10" field="$(field)" items="$(items)" horzTextAlign="center"/>
 			</flowPart>
 		</template>
-		<popup name="popClima" width="200" height="100" backOpacity="0.4">
+		<popup name="popClima" width="200" height="100" backOpacity="0.4" autoScopeNode="false">
 			<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
 				<smallTitleCenter text="Temperatura"/>
 				<longComboBox field="temperatura" items="{'Glacial', 'Frio', 'Temperado', 'Morno', 'Quente', 'Infernal'}"/>
@@ -32,7 +32,7 @@
 			</flowLayout>
 		</popup>
 
-		<popup name="popCelestial" width="200" height="190" backOpacity="0.4">
+		<popup name="popCelestial" width="200" height="190" backOpacity="0.4" autoScopeNode="false">
 			<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
 				<longTitleCenter text="Eventos Celestes"/>
 				<flowLineBreak/>

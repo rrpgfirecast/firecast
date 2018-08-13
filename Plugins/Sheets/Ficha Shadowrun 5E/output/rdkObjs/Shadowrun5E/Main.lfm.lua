@@ -54,6 +54,7 @@ local function constructNew_frmTemplate()
     obj.popupPhysical:setWidth(400);
     obj.popupPhysical:setHeight(130);
     obj.popupPhysical:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popupPhysical, "autoScopeNode",  "false");
 
     obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj.popupPhysical);
@@ -715,6 +716,7 @@ local function constructNew_frmTemplate()
     obj.popupMental:setWidth(400);
     obj.popupMental:setHeight(130);
     obj.popupMental:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popupMental, "autoScopeNode",  "false");
 
     obj.flowLayout6 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout6:setParent(obj.popupMental);
@@ -1376,6 +1378,7 @@ local function constructNew_frmTemplate()
     obj.popupSpecial:setWidth(400);
     obj.popupSpecial:setHeight(130);
     obj.popupSpecial:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popupSpecial, "autoScopeNode",  "false");
 
     obj.flowLayout11 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout11:setParent(obj.popupSpecial);
@@ -1909,6 +1912,7 @@ local function constructNew_frmTemplate()
     obj.popupActiveSkill:setWidth(350);
     obj.popupActiveSkill:setHeight(220);
     obj.popupActiveSkill:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popupActiveSkill, "autoScopeNode",  "false");
 
     obj.flowLayout15 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout15:setParent(obj.popupActiveSkill);
@@ -2358,6 +2362,7 @@ local function constructNew_frmTemplate()
     obj.popupKnowledgeSkill:setWidth(350);
     obj.popupKnowledgeSkill:setHeight(200);
     obj.popupKnowledgeSkill:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popupKnowledgeSkill, "autoScopeNode",  "false");
 
     obj.flowLayout23 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout23:setParent(obj.popupKnowledgeSkill);
@@ -2693,6 +2698,7 @@ local function constructNew_frmTemplate()
     obj.popupLanguageSkill:setWidth(350);
     obj.popupLanguageSkill:setHeight(160);
     obj.popupLanguageSkill:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popupLanguageSkill, "autoScopeNode",  "false");
 
     obj.flowLayout30 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout30:setParent(obj.popupLanguageSkill);

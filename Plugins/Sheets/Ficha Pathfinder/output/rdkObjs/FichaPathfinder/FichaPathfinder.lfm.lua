@@ -95,6 +95,7 @@ local function constructNew_frmFichaRPGmeister()
     obj.popAtributo:setWidth(820);
     obj.popAtributo:setHeight(170);
     obj.popAtributo:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popAtributo, "autoScopeNode",  "false");
 
     obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj.popAtributo);
@@ -1636,6 +1637,7 @@ local function constructNew_frmFichaRPGmeister()
     obj.popResistencia:setWidth(380);
     obj.popResistencia:setHeight(150);
     obj.popResistencia:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popResistencia, "autoScopeNode",  "false");
 
     obj.flowLayout8 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout8:setParent(obj.popResistencia);
@@ -2183,6 +2185,7 @@ local function constructNew_frmFichaRPGmeister()
     obj.popCA:setWidth(600);
     obj.popCA:setHeight(210);
     obj.popCA:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popCA, "autoScopeNode",  "false");
 
     obj.flowLayout12 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout12:setParent(obj.popCA);
@@ -3188,6 +3191,7 @@ local function constructNew_frmFichaRPGmeister()
     obj.popGrapple:setWidth(225);
     obj.popGrapple:setHeight(50);
     obj.popGrapple:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popGrapple, "autoScopeNode",  "false");
 
     obj.flowLayout13 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout13:setParent(obj.popGrapple);
@@ -3354,6 +3358,7 @@ local function constructNew_frmFichaRPGmeister()
     obj.popManeuver:setWidth(580);
     obj.popManeuver:setHeight(125);
     obj.popManeuver:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popManeuver, "autoScopeNode",  "false");
 
     obj.flowLayout14 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout14:setParent(obj.popManeuver);
@@ -14496,6 +14501,7 @@ local function constructNew_frmFichaRPGmeister()
     obj.popPericia:setWidth(300);
     obj.popPericia:setHeight(185);
     obj.popPericia:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popPericia, "autoScopeNode",  "false");
 
     obj.flowLayout15 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout15:setParent(obj.popPericia);
@@ -14783,6 +14789,7 @@ local function constructNew_frmFichaRPGmeister()
     obj.popIdioma:setWidth(200);
     obj.popIdioma:setHeight(100);
     obj.popIdioma:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popIdioma, "autoScopeNode",  "false");
 
     obj.checkBox51 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox51:setParent(obj.popIdioma);
@@ -15097,6 +15104,7 @@ local function constructNew_frmFichaRPGmeister()
     obj.popHabilidade:setWidth(300);
     obj.popHabilidade:setHeight(240);
     obj.popHabilidade:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popHabilidade, "autoScopeNode",  "false");
 
     obj.flowLayout16 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout16:setParent(obj.popHabilidade);
@@ -21403,6 +21411,7 @@ local function constructNew_frmFichaRPGmeister()
     obj.popMagia:setWidth(250);
     obj.popMagia:setHeight(350);
     obj.popMagia:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popMagia, "autoScopeNode",  "false");
 
     obj.flowLayout17 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout17:setParent(obj.popMagia);
@@ -21790,6 +21799,7 @@ local function constructNew_frmFichaRPGmeister()
     obj.BarrinhaPopup:setHeight(66);
     obj.BarrinhaPopup:setBackOpacity(0);
     obj.BarrinhaPopup:setMargins({left=4, right=4, top=4, bottom=4});
+    lfm_setPropAsString(obj.BarrinhaPopup, "autoScopeNode",  "false");
 
     obj.rectangle133 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle133:setParent(obj.BarrinhaPopup);
@@ -25197,6 +25207,7 @@ local function constructNew_frmFichaRPGmeister()
     obj.popArma:setWidth(300);
     obj.popArma:setHeight(400);
     obj.popArma:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popArma, "autoScopeNode",  "false");
 
     obj.flowLayout18 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout18:setParent(obj.popArma);

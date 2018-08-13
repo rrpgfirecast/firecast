@@ -120,6 +120,7 @@ local function constructNew_frmFichaRPGmeister6_svg()
     obj.BarrinhaPopup:setHeight(66);
     obj.BarrinhaPopup:setBackOpacity(0);
     obj.BarrinhaPopup:setMargins({left=4, right=4, top=4, bottom=4});
+    lfm_setPropAsString(obj.BarrinhaPopup, "autoScopeNode",  "false");
 
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.BarrinhaPopup);

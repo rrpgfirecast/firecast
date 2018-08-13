@@ -248,7 +248,7 @@ local function __lockFormWithActivity(form, msg)
 		thePopup.height = 50;		
 		thePopup.cancelable = false;
 		thePopup.drawContainer = false;
-		
+		thePopup.autoScopeNode = false;	
 		
 		thePopup.__indicator = gui.newActivityIndicator();
 		thePopup.__indicator.align = "client";
@@ -1467,6 +1467,7 @@ local function popupFromHandle(handle)
 	ctrl.props["nodeObject"] = {setter = "setNodeObject", getter = "getNodeObject", tipo = "table"};					
 	ctrl.props["node"] = ctrl.props["nodeObject"];
 	ctrl.props["scopeNode"] = ctrl.props["nodeObject"];
+	ctrl.props["autoScopeNode"] = {writeProp = "AutoScopeNode", readProp = "AutoScopeNode", tipo = "bool"};
 
 	ctrl.eves["onClose"] = "canceled";	
 	ctrl.eves["onCanClose"] = "canceled";

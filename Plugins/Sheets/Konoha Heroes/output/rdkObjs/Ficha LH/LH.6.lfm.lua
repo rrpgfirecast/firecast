@@ -41,6 +41,7 @@ local function constructNew_frmLH6()
     obj.popMeuPopup:setWidth(100);
     obj.popMeuPopup:setHeight(100);
     obj.popMeuPopup:setBackOpacity(0.5);
+    lfm_setPropAsString(obj.popMeuPopup, "autoScopeNode",  "false");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.popMeuPopup);

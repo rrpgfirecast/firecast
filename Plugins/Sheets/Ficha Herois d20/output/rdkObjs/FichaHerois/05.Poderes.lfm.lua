@@ -50,6 +50,7 @@ local function constructNew_frmPoderes()
     obj.popDescricao:setWidth(250);
     obj.popDescricao:setHeight(250);
     obj.popDescricao:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popDescricao, "autoScopeNode",  "false");
 
     obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.popDescricao);
@@ -63,6 +64,7 @@ local function constructNew_frmPoderes()
     obj.popPoder:setWidth(250);
     obj.popPoder:setHeight(250);
     obj.popPoder:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popPoder, "autoScopeNode",  "false");
 
     obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj.popPoder);

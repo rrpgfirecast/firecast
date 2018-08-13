@@ -658,6 +658,7 @@ local function constructNew_Listade_NPC_Dock()
     obj.SelectCor:setName("SelectCor");
     obj.SelectCor:setWidth(192);
     obj.SelectCor:setHeight(100);
+    lfm_setPropAsString(obj.SelectCor, "autoScopeNode",  "false");
 
     obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.SelectCor);
@@ -1360,6 +1361,7 @@ local function constructNew_Listade_NPC_Dock()
     obj.dropDownFalso:setBackOpacity(0);
     obj.dropDownFalso:setNodeObject({sheet});
     obj.dropDownFalso:setHitTest(true);
+    lfm_setPropAsString(obj.dropDownFalso, "autoScopeNode",  "false");
 
     obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox2:setParent(obj.dropDownFalso);

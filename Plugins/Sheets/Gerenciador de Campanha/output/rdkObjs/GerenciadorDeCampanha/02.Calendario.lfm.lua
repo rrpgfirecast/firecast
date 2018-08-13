@@ -42,6 +42,7 @@ local function constructNew_frmGerenciador02()
     obj.popClima:setWidth(200);
     obj.popClima:setHeight(100);
     obj.popClima:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popClima, "autoScopeNode",  "false");
 
     obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj.popClima);
@@ -194,6 +195,7 @@ local function constructNew_frmGerenciador02()
     obj.popCelestial:setWidth(200);
     obj.popCelestial:setHeight(190);
     obj.popCelestial:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popCelestial, "autoScopeNode",  "false");
 
     obj.flowLayout2 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout2:setParent(obj.popCelestial);

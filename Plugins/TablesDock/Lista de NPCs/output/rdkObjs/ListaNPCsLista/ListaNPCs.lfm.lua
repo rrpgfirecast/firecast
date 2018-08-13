@@ -207,6 +207,7 @@ local function constructNew_Listade_NPC_Ficha()
     obj.Config:setName("Config");
     obj.Config:setWidth(412);
     obj.Config:setHeight(190);
+    lfm_setPropAsString(obj.Config, "autoScopeNode",  "false");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.Config);
@@ -726,6 +727,7 @@ local function constructNew_Listade_NPC_Ficha()
     obj.SelectCor:setName("SelectCor");
     obj.SelectCor:setWidth(192);
     obj.SelectCor:setHeight(100);
+    lfm_setPropAsString(obj.SelectCor, "autoScopeNode",  "false");
 
     obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.SelectCor);
@@ -1062,6 +1064,7 @@ local function constructNew_Listade_NPC_Ficha()
     obj.dropDownFalso2:setWidth(128);
     obj.dropDownFalso2:setHeight(128);
     obj.dropDownFalso2:setBackOpacity(0);
+    lfm_setPropAsString(obj.dropDownFalso2, "autoScopeNode",  "false");
 
     obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj.dropDownFalso2);

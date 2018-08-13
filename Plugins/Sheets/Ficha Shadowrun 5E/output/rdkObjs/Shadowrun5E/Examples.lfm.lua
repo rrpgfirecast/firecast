@@ -179,6 +179,7 @@ local function constructNew_frmExamples()
     obj.popExemplo:setWidth(300);
     obj.popExemplo:setHeight(400);
     obj.popExemplo:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popExemplo, "autoScopeNode",  "false");
 
     obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.popExemplo);

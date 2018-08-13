@@ -3,7 +3,7 @@
 	<import file="../interfaceUtils.xml"/>
 
 	<!-- Popup de Edição da Macro -->
-	<popup name="popEditMacro">
+	<popup name="popEditMacro" autoScopeNode="false">
 		<event name="onClose">
 			self.popEditMacro:setNodeObject(nil);
 		</event>

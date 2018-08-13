@@ -638,6 +638,7 @@ local function constructNew_frmBibliotecaRPGmeister()
     obj.popClima:setWidth(200);
     obj.popClima:setHeight(100);
     obj.popClima:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popClima, "autoScopeNode",  "false");
 
     obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj.popClima);
@@ -790,6 +791,7 @@ local function constructNew_frmBibliotecaRPGmeister()
     obj.popCelestial:setWidth(200);
     obj.popCelestial:setHeight(190);
     obj.popCelestial:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popCelestial, "autoScopeNode",  "false");
 
     obj.flowLayout2 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout2:setParent(obj.popCelestial);
@@ -2383,6 +2385,7 @@ local function constructNew_frmBibliotecaRPGmeister()
     obj.SelectCor:setName("SelectCor");
     obj.SelectCor:setWidth(192);
     obj.SelectCor:setHeight(100);
+    lfm_setPropAsString(obj.SelectCor, "autoScopeNode",  "false");
 
     obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.SelectCor);
@@ -3085,6 +3088,7 @@ local function constructNew_frmBibliotecaRPGmeister()
     obj.dropDownFalso:setBackOpacity(0);
     obj.dropDownFalso:setNodeObject({sheet});
     obj.dropDownFalso:setHitTest(true);
+    lfm_setPropAsString(obj.dropDownFalso, "autoScopeNode",  "false");
 
     obj.scrollBox4 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox4:setParent(obj.dropDownFalso);

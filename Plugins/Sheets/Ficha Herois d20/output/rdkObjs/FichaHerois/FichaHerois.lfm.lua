@@ -94,6 +94,7 @@ local function constructNew_frmAvatar()
     obj.popAtributo:setWidth(820);
     obj.popAtributo:setHeight(170);
     obj.popAtributo:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popAtributo, "autoScopeNode",  "false");
 
     obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj.popAtributo);
@@ -1635,6 +1636,7 @@ local function constructNew_frmAvatar()
     obj.popResistencia:setWidth(380);
     obj.popResistencia:setHeight(150);
     obj.popResistencia:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popResistencia, "autoScopeNode",  "false");
 
     obj.flowLayout8 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout8:setParent(obj.popResistencia);
@@ -2203,6 +2205,7 @@ local function constructNew_frmAvatar()
     obj.popCA:setWidth(500);
     obj.popCA:setHeight(210);
     obj.popCA:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popCA, "autoScopeNode",  "false");
 
     obj.flowLayout12 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout12:setParent(obj.popCA);
@@ -3140,6 +3143,7 @@ local function constructNew_frmAvatar()
     obj.popGrapple:setWidth(225);
     obj.popGrapple:setHeight(50);
     obj.popGrapple:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popGrapple, "autoScopeNode",  "false");
 
     obj.flowLayout13 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout13:setParent(obj.popGrapple);
@@ -13148,6 +13152,7 @@ local function constructNew_frmAvatar()
     obj.popPericia:setWidth(300);
     obj.popPericia:setHeight(185);
     obj.popPericia:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popPericia, "autoScopeNode",  "false");
 
     obj.flowLayout14 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout14:setParent(obj.popPericia);
@@ -13435,6 +13440,7 @@ local function constructNew_frmAvatar()
     obj.popIdioma:setWidth(200);
     obj.popIdioma:setHeight(100);
     obj.popIdioma:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popIdioma, "autoScopeNode",  "false");
 
     obj.checkBox30 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox30:setParent(obj.popIdioma);
@@ -13800,6 +13806,7 @@ local function constructNew_frmAvatar()
     obj.popHabilidade:setWidth(300);
     obj.popHabilidade:setHeight(240);
     obj.popHabilidade:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popHabilidade, "autoScopeNode",  "false");
 
     obj.flowLayout15 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout15:setParent(obj.popHabilidade);
@@ -14344,6 +14351,7 @@ local function constructNew_frmAvatar()
     obj.popDescricao:setWidth(250);
     obj.popDescricao:setHeight(250);
     obj.popDescricao:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popDescricao, "autoScopeNode",  "false");
 
     obj.textEditor6 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor6:setParent(obj.popDescricao);
@@ -14357,6 +14365,7 @@ local function constructNew_frmAvatar()
     obj.popPoder:setWidth(250);
     obj.popPoder:setHeight(250);
     obj.popPoder:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popPoder, "autoScopeNode",  "false");
 
     obj.flowLayout16 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout16:setParent(obj.popPoder);
@@ -16188,6 +16197,7 @@ local function constructNew_frmAvatar()
     obj.popArma:setWidth(300);
     obj.popArma:setHeight(400);
     obj.popArma:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popArma, "autoScopeNode",  "false");
 
     obj.flowLayout17 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout17:setParent(obj.popArma);

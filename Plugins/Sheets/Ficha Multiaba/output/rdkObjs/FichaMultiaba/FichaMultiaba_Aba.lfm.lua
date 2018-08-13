@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrm_FM_Aba()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frm_FM_Aba()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -32,14 +32,15 @@ function newfrm_FM_Aba()
     obj:setTheme("dark");
     obj:setMargins({right=2});
 
-    obj.popupConfig = gui.fromHandle(_obj_newObject("popup"));
+    obj.popupConfig = GUI.fromHandle(_obj_newObject("popup"));
     obj.popupConfig:setParent(obj);
     obj.popupConfig:setName("popupConfig");
     obj.popupConfig:setWidth(210);
     obj.popupConfig:setHeight(160);
     obj.popupConfig:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popupConfig, "autoScopeNode",  "false");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.popupConfig);
     obj.layout1:setLeft(5);
     obj.layout1:setTop(5);
@@ -47,7 +48,7 @@ function newfrm_FM_Aba()
     obj.layout1:setHeight(160);
     obj.layout1:setName("layout1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setTop(0);
     obj.label1:setWidth(150);
@@ -56,7 +57,7 @@ function newfrm_FM_Aba()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setLeft(125);
     obj.edit1:setTop(0);
@@ -67,7 +68,7 @@ function newfrm_FM_Aba()
     obj.edit1:setHorzTextAlign("center");
     obj.edit1:setName("edit1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout1);
     obj.label2:setTop(25);
     obj.label2:setWidth(150);
@@ -76,7 +77,7 @@ function newfrm_FM_Aba()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.cbxInvisivel = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.cbxInvisivel = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.cbxInvisivel:setParent(obj.layout1);
     obj.cbxInvisivel:setName("cbxInvisivel");
     obj.cbxInvisivel:setLeft(125);
@@ -88,7 +89,7 @@ function newfrm_FM_Aba()
     obj.cbxInvisivel:setAutoChange(false);
     obj.cbxInvisivel:setHint("Altera a visibilidade entre somente o mestre e todos. ");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout1);
     obj.label3:setTop(50);
     obj.label3:setWidth(150);
@@ -97,7 +98,7 @@ function newfrm_FM_Aba()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout1);
     obj.button1:setLeft(125);
     obj.button1:setTop(50);
@@ -108,7 +109,7 @@ function newfrm_FM_Aba()
     obj.button1:setHint("Apaga a aba. ");
     obj.button1:setName("button1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setStrokeColor("black");
@@ -117,7 +118,7 @@ function newfrm_FM_Aba()
     obj.rectangle1:setColor("#000000FF");
     obj.rectangle1:setName("rectangle1");
 
-    obj.name_aba = gui.fromHandle(_obj_newObject("edit"));
+    obj.name_aba = GUI.fromHandle(_obj_newObject("edit"));
     obj.name_aba:setParent(obj);
     obj.name_aba:setLeft(0);
     obj.name_aba:setTop(0);
@@ -128,7 +129,7 @@ function newfrm_FM_Aba()
     obj.name_aba:setTransparent(true);
     obj.name_aba:setFontSize(10);
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj);
     obj.button2:setLeft(100);
     obj.button2:setTop(0);
@@ -158,7 +159,7 @@ function newfrm_FM_Aba()
 
 
     obj._e_event0 = obj:addEventListener("onScopeNodeChanged",
-        function (self)
+        function (_)
             if self.observer ~= nil then   
             			self.observer.enabled = false;
             			self.observer = nil;
@@ -179,19 +180,19 @@ function newfrm_FM_Aba()
         end, obj);
 
     obj._e_event1 = obj.edit1:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet==nil then return end;
             					local rcl = self:findControlByName("rclAbas");
             					if rcl~= nil then rcl:sort() end;
         end, obj);
 
     obj._e_event2 = obj.cbxInvisivel:addEventListener("onClick",
-        function (self)
+        function (_)
             self:alternarVisibilidade();
         end, obj);
 
     obj._e_event3 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar essa aba?",
             						function (confirmado)
             							if confirmado then
@@ -206,24 +207,24 @@ function newfrm_FM_Aba()
         end, obj);
 
     obj._e_event4 = obj.name_aba:addEventListener("onEnter",
-        function (self)
+        function (_)
             self.name_aba.transparent = false;
         end, obj);
 
     obj._e_event5 = obj.name_aba:addEventListener("onExit",
-        function (self)
+        function (_)
             self.name_aba.transparent = true;
         end, obj);
 
     obj._e_event6 = obj.name_aba:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet==nil then return end;
             			local rcl = self:findControlByName("rclAbas");
             			if rcl~= nil then rcl:sort() end;
         end, obj);
 
     obj._e_event7 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             local pop = self:findControlByName("popupConfig");
             			
             			if pop ~= nil then
@@ -270,9 +271,23 @@ function newfrm_FM_Aba()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrm_FM_Aba()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frm_FM_Aba();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frm_FM_Aba = {
@@ -286,6 +301,6 @@ local _frm_FM_Aba = {
     description=""};
 
 frm_FM_Aba = _frm_FM_Aba;
-rrpg.registrarForm(_frm_FM_Aba);
+Firecast.registrarForm(_frm_FM_Aba);
 
 return _frm_FM_Aba;

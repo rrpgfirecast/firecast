@@ -340,6 +340,7 @@ local function constructNew_CaixaFichaNPC()
     obj.MenuCor:setName("MenuCor");
     obj.MenuCor:setWidth(172);
     obj.MenuCor:setHeight(150);
+    lfm_setPropAsString(obj.MenuCor, "autoScopeNode",  "false");
 
     obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.MenuCor);
@@ -1334,6 +1335,7 @@ local function constructNew_CaixaFichaNPC()
     obj.BarrinhaPopup:setHeight(66);
     obj.BarrinhaPopup:setBackOpacity(0);
     obj.BarrinhaPopup:setMargins({left=4, right=4, top=4, bottom=4});
+    lfm_setPropAsString(obj.BarrinhaPopup, "autoScopeNode",  "false");
 
     obj.rectangle30 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle30:setParent(obj.BarrinhaPopup);
@@ -1549,6 +1551,7 @@ local function constructNew_CaixaFichaNPC()
     obj.popupDetails:setWidth(450);
     obj.popupDetails:setHeight(200);
     obj.popupDetails:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popupDetails, "autoScopeNode",  "false");
 
     obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.popupDetails);

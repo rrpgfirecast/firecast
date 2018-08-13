@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="CaixaFichaNPC2" width="270" height="109" theme="dark"> 
 	<script>
 		function pegarJogador()
@@ -156,7 +156,7 @@
 	</layout>
 	
 	<layout align="client" visible="false">
-		<popup name="TipoDeBarras" cancelable="false" width="208" height="108" backOpacity="0">
+		<popup name="TipoDeBarras" cancelable="false" width="208" height="108" backOpacity="0" autoScopeNode="false">
 			<label align="top" margins="{left=10, top=4}" fontStyle="bold" field="NomeGrande" height="16" />
 			<layout align="client">
 				<radioButton text="Aliado" groupName="AlinhamentoNPCs" vertTextAlign="center" field="alinhamentoNPC" fieldValue="Aliado" top="7" left="10"/>
@@ -339,7 +339,7 @@
 
 	<layout align="client" visible="false">
 		<popupForm title="Menu de Formatação de Mensagens" name="MensagemPopup" width="420" height="200" padding="{left=4, right=4, top=4, bottom=4}">
-			<popup name="MenuCor" width="172" height="150">
+			<popup name="MenuCor" width="172" height="150" autoScopeNode="false">
 				<layout align="top" height="24">
 					<label align="client" text="Informação de Cores:" horzTextAlign="center" fontStyle="Bold"/>
 				</layout>
@@ -533,7 +533,7 @@
 			end;
 		</event>
 	</dataLink>
-	<popup name="BarrinhaPopup" width="140" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}">
+	<popup name="BarrinhaPopup" width="140" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}" autoScopeNode="false">
 		<rectangle align="client" color="white" xradius="5" yradius="5">
 			<rectangle align="client" name="CorPopupBarrinhas" color="#808080" xradius="5" yradius="5" opacity="0.9">
 				<label fontColor="black" margins="{left=6, top=2}" align="top" text="Valor da Aba" field="AtributoBarrinha" fontSize="12" fontStyle="bold" autoSize="true"/>
@@ -702,7 +702,7 @@
 				</event>
 			</imageCheckBox>
 
-			<popup name="popupDetails" width="450" height="200" backOpacity="0.4">
+			<popup name="popupDetails" width="450" height="200" backOpacity="0.4" autoScopeNode="false">
 				<label left="10" top="0" width="150" height="25" text="Raça" horzTextAlign="center"/>
 				<label left="160" top="0" width="280" height="25" text="Classe" horzTextAlign="center"/>
 				

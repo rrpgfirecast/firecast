@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmTemplate" formType="sheetTemplate" dataType="Ambesek.Nefertyne.GURPS" title="Ficha GURPS 4E" align="client" theme="dark">
     <import file="../styles.xml"/>
     <import file="../templates.xml"/>
@@ -35,7 +35,7 @@
         end;
         ]]> 
     </script>
-    <popup name="popDetails" width="250" height="250" backOpacity="0.4">
+    <popup name="popDetails" width="250" height="250" backOpacity="0.4" autoScopeNode="false">
         <label align="top" field="title" horzTextAlign="center"/>
 
         <flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">

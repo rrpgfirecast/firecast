@@ -4030,6 +4030,7 @@ local function constructNew_frmDnD5()
     obj.popMagia:setWidth(250);
     obj.popMagia:setHeight(250);
     obj.popMagia:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popMagia, "autoScopeNode",  "false");
 
     obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit25:setParent(obj.popMagia);

@@ -50,6 +50,7 @@ local function constructNew_frmDobras()
     obj.popDobra:setWidth(250);
     obj.popDobra:setHeight(250);
     obj.popDobra:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popDobra, "autoScopeNode",  "false");
 
     obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.popDobra);
@@ -63,6 +64,7 @@ local function constructNew_frmDobras()
     obj.popTecnica:setWidth(250);
     obj.popTecnica:setHeight(250);
     obj.popTecnica:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popTecnica, "autoScopeNode",  "false");
 
     obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj.popTecnica);

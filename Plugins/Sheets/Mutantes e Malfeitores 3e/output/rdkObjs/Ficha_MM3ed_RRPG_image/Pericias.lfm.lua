@@ -117,6 +117,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.popPericia:setWidth(300);
     obj.popPericia:setHeight(85);
     obj.popPericia:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popPericia, "autoScopeNode",  "false");
 
     obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj.popPericia);

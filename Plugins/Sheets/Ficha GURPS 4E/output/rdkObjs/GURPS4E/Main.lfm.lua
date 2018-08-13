@@ -72,6 +72,7 @@ local function constructNew_frmTemplate()
     obj.popDetails:setWidth(250);
     obj.popDetails:setHeight(250);
     obj.popDetails:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popDetails, "autoScopeNode",  "false");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.popDetails);
@@ -1855,6 +1856,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.popPower:setWidth(250);
     obj.popPower:setHeight(250);
     obj.popPower:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popPower, "autoScopeNode",  "false");
 
     obj.edit27 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit27:setParent(obj.popPower);

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <rectangle class="fundo">
 	<style>
 		flowPart.magicHeader {
@@ -97,7 +97,7 @@
 		</flowPart>
 	</template>
 	
-	<popup name="popMagia" width="250" height="250" backOpacity="0.4">
+	<popup name="popMagia" width="250" height="250" backOpacity="0.4" autoScopeNode="false">
 		<edit align="top" class="" field="nome" textPrompt="NOME DA MAGIA" horzTextAlign="center"/>
 	
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">

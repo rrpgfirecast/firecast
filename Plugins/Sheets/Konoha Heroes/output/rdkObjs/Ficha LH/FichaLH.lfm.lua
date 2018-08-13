@@ -2619,6 +2619,7 @@ local function constructNew_frmFichaKH()
     obj.popMeuPopup:setWidth(100);
     obj.popMeuPopup:setHeight(100);
     obj.popMeuPopup:setBackOpacity(0.5);
+    lfm_setPropAsString(obj.popMeuPopup, "autoScopeNode",  "false");
 
     obj.label64 = GUI.fromHandle(_obj_newObject("label"));
     obj.label64:setParent(obj.popMeuPopup);

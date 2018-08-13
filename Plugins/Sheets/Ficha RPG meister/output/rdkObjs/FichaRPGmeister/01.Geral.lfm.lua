@@ -42,6 +42,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.popAtributo:setWidth(820);
     obj.popAtributo:setHeight(170);
     obj.popAtributo:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popAtributo, "autoScopeNode",  "false");
 
     obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj.popAtributo);
@@ -1583,6 +1584,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.popResistencia:setWidth(380);
     obj.popResistencia:setHeight(150);
     obj.popResistencia:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popResistencia, "autoScopeNode",  "false");
 
     obj.flowLayout8 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout8:setParent(obj.popResistencia);
@@ -2130,6 +2132,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.popCA:setWidth(600);
     obj.popCA:setHeight(210);
     obj.popCA:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popCA, "autoScopeNode",  "false");
 
     obj.flowLayout12 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout12:setParent(obj.popCA);
@@ -3135,6 +3138,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.popGrapple:setWidth(225);
     obj.popGrapple:setHeight(50);
     obj.popGrapple:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popGrapple, "autoScopeNode",  "false");
 
     obj.flowLayout13 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout13:setParent(obj.popGrapple);
@@ -3301,6 +3305,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.popManeuver:setWidth(380);
     obj.popManeuver:setHeight(65);
     obj.popManeuver:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popManeuver, "autoScopeNode",  "false");
 
     obj.flowLayout14 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout14:setParent(obj.popManeuver);

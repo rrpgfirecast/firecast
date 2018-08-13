@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmGeneral" align="client">
 	<template name="Atributo">
 		<label left="5" top="$(top)" width="50" height="25" horzTextAlign="center" text="$(text)"/>
@@ -42,7 +42,7 @@
 		</flowPart>
 	</template>
 
-	<popup name="popMagia" width="250" height="350" backOpacity="0.4">
+	<popup name="popMagia" width="250" height="350" backOpacity="0.4" autoScopeNode="false">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
 			<magicInfoField text="Nome" field="nome"/>
 			<magicInfoField text="Nível" field="nivel"/>

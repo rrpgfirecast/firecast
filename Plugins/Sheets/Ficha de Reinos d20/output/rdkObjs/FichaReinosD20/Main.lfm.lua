@@ -1775,6 +1775,7 @@ local function constructNew_frmTemplate()
     obj.SelectCor:setName("SelectCor");
     obj.SelectCor:setWidth(192);
     obj.SelectCor:setHeight(100);
+    lfm_setPropAsString(obj.SelectCor, "autoScopeNode",  "false");
 
     obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.SelectCor);
@@ -2477,6 +2478,7 @@ local function constructNew_frmTemplate()
     obj.dropDownFalso:setBackOpacity(0);
     obj.dropDownFalso:setNodeObject({sheet});
     obj.dropDownFalso:setHitTest(true);
+    lfm_setPropAsString(obj.dropDownFalso, "autoScopeNode",  "false");
 
     obj.scrollBox7 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox7:setParent(obj.dropDownFalso);
