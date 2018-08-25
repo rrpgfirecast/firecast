@@ -94,7 +94,7 @@ local function sendPersonalMessage(chat, mesa)
 		valid = valid and (msg.hourEnd > date.hour or (msg.hourEnd == date.hour and msg.minuteEnd >= date.min));
 
 		if valid then
-			message = message .. msg.message .. "\n";
+			message = message .. msg.message;
 		end;
 	end;
 
@@ -234,7 +234,6 @@ rrpg.messaging.listen("ChatMessage",
 		-- e faz mais de X minutos desde o ultimo alerta
 		local delay = tonumber(afkdb.config[message.mesa.codigoInterno].delay) or 5;
 		alert = alert and not (afkdb.config[message.mesa.codigoInterno].clock + (delay * 60) > os.clock());
-
 		-- e o usuario é mestre
 		alert = alert and message.mesa.meuJogador.isMestre;
 		
