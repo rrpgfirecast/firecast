@@ -73,7 +73,7 @@ end
 local function initializeClock(mesa)
 	if afkdb.config[mesa.codigoInterno].clock == nil then
 		local delay = tonumber(afkdb.config[mesa.codigoInterno].delay) or 5;
-		afkdb.config[mesa.codigoInterno].clock = os.clock() - (delay * 60);
+		afkdb.config[mesa.codigoInterno].clock = os.time() - (delay * 60);
 	end;
 end
 local function sendPersonalMessage(chat, mesa)
@@ -156,7 +156,7 @@ rrpg.messaging.listen("HandleChatCommand",
 
 				local delay = tonumber(afkdb.config[message.mesa.codigoInterno].delay) or 5;
 
-				afkdb.config[message.mesa.codigoInterno].clock = os.clock() - (delay * 60);
+				afkdb.config[message.mesa.codigoInterno].clock = os.time() - (delay * 60);
 				if message.parametro == "true" then
 					afkdb.config[message.mesa.codigoInterno].spectator = true;
 					message.chat:escrever("AfkBot habilitado! Espectadores serão automaticamente alertados!");
@@ -233,7 +233,7 @@ rrpg.messaging.listen("ChatMessage",
 
 		-- e faz mais de X minutos desde o ultimo alerta
 		local delay = tonumber(afkdb.config[message.mesa.codigoInterno].delay) or 5;
-		alert = alert and not (afkdb.config[message.mesa.codigoInterno].clock + (delay * 60) > os.clock());
+		alert = alert and not (afkdb.config[message.mesa.codigoInterno].clock + (delay * 60) > os.time());
 		-- e o usuario é mestre
 		alert = alert and message.mesa.meuJogador.isMestre;
 		
@@ -256,7 +256,7 @@ rrpg.messaging.listen("ChatMessage",
 			if isLogin or isNick or isMestre or isDia or isTarde or isNoite then
 				local info = "[§K1]AfkBot: Está é uma mensagem automatica de " .. message.mesa.meuJogador.nick .. "[§K1](" .. message.mesa.meuJogador.login .. ") que está ocupado e não pode responder.";
 
-				afkdb.config[message.mesa.codigoInterno].clock = os.clock();
+				afkdb.config[message.mesa.codigoInterno].clock = os.time();
 				message.chat:enviarNarracao(info);
 				sendPersonalMessage(message.chat, message.mesa);
 				return;
@@ -275,7 +275,7 @@ rrpg.messaging.listen("MesaJoined",
 		alert = alert or (afkdb.config[message.mesa.codigoInterno].autoEnable and message.mesa.meuJogador.isAusente);
 		-- e faz mais de X minutos desde o ultimo alerta
 		local delay = tonumber(afkdb.config[message.mesa.codigoInterno].delay) or 5;
-		alert = alert and not (afkdb.config[message.mesa.codigoInterno].clock + (delay * 60) > os.clock());
+		alert = alert and not (afkdb.config[message.mesa.codigoInterno].clock + (delay * 60) > os.time());
 		-- e o usuario é mestre
 		alert = alert and message.mesa.meuJogador.isMestre;
 		-- e está alerta a espectadores
@@ -284,7 +284,7 @@ rrpg.messaging.listen("MesaJoined",
 		alert = alert and message.jogador.isEspectador;
 
 		if alert then
-			afkdb.config[message.mesa.codigoInterno].clock = os.clock();
+			afkdb.config[message.mesa.codigoInterno].clock = os.time();
 
 			local info = "[§K1]AfkBot: Está é uma mensagem automatica de " .. message.mesa.meuJogador.nick .. "[§K1](" .. message.mesa.meuJogador.login .. ") que está ocupado e não pode responder.";
 			message.mesa.chat:enviarNarracao(info);
