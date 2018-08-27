@@ -29,6 +29,9 @@ end;
 if afkdb.laughTimes== nil then
 	afkdb.laughTimes = {};
 end;
+if afkdb.config == nil then 
+	afkdb.config = {};
+end;
 
 local config = ndb.load("config.xml");
 
@@ -62,92 +65,186 @@ local function isNewVersion(installed, downloaded)
     end;
 end;
 
+local function initializeRoom(mesa)
+	if afkdb.config[mesa.codigoInterno] == nil then
+		afkdb.config[mesa.codigoInterno] = {};
+	end;
+end
+local function initializeClock(mesa)
+	if afkdb.config[mesa.codigoInterno].clock == nil then
+		local delay = tonumber(afkdb.config[mesa.codigoInterno].delay) or 5;
+		afkdb.config[mesa.codigoInterno].clock = os.time() - (delay * 60);
+	end;
+end
+local function sendPersonalMessage(chat, mesa)
+	-- dia e hora atual
+	local date = os.date("*t");
+
+	-- Ache qual a mensagem para esse dia e hora. 
+	local node = afkdb.config[mesa.codigoInterno];
+	local messages = ndb.getChildNodes(afkdb.config[mesa.codigoInterno].messagesList);
+	local message = "";
+	for i=1, #messages, 1 do
+		local msg = messages[i];
+		local valid = true;
+		-- verifica se é do dia da semana certo. 
+		valid = valid and msg["d" .. date.wday];
+		-- verifica se é a hora certa. 
+		valid = valid and (msg.hourStart < date.hour or (msg.hourStart == date.hour and msg.minuteStart <= date.min));
+		valid = valid and (msg.hourEnd > date.hour or (msg.hourEnd == date.hour and msg.minuteEnd >= date.min));
+
+		if valid then
+			message = message .. msg.message;
+		end;
+	end;
+
+	-- Se tiver alguma mensagem envie
+	if message ~= "" then
+		chat:enviarNarracao(message);
+	end;
+end
+local function addUser(mesa)
+	local cfgForm = gui.newForm("afkbotPopup");
+	cfgForm:setNodeObject(afkdb.config[mesa.codigoInterno]);
+	cfgForm.title = "AfkBot - " .. mesa.nome;
+
+	local rcl = gui.findControlByName("kickList", cfgForm);
+	if rcl==nil then return end;
+
+	return rcl:append();
+end
+local function initializeKickList(mesa)
+	local list = ndb.getChildNodes(afkdb.config[mesa.codigoInterno].kickList);
+	if #list == 0 then
+		local item = addUser(mesa);
+		item.login = "Login";
+		item.dice = "Rolagens";
+		item.laugh = "Risadas";
+		item.user = false;
+	end;
+end
+local function findLogin(login, mesa)
+	local list = ndb.getChildNodes(afkdb.config[mesa.codigoInterno].kickList);
+	local user = nil;
+	for i=1, #list, 1 do 
+		local item = list[i];
+		if item.user and item.login == login then
+			user = item;
+		end;
+	end;
+	return user;
+end
+
+function getConfigWindow(mesa)
+	initializeRoom(mesa);
+
+	local cfgForm = gui.newForm("afkbotPopup");
+	cfgForm:setNodeObject(afkdb.config[mesa.codigoInterno]);
+	cfgForm.title = "AfkBot - " .. mesa.nome;
+	popup = cfgForm;
+	
+	return cfgForm;
+end
+
 -- Implementação dos comandos
 rrpg.messaging.listen("HandleChatCommand", 
 	function (message)
+		initializeRoom(message.mesa);
 		if message.comando == "afk" then
-			if afkdb.afkStatus[message.mesa.codigoInterno] == false or afkdb.afkStatus[message.mesa.codigoInterno] == nil then
-				afkdb.afkStatus[message.mesa.codigoInterno] = true;
-				afkdb.afkBotClock[message.mesa.codigoInterno] = os.clock() - 300;
+			if afkdb.config[message.mesa.codigoInterno].botEnabled == false or afkdb.config[message.mesa.codigoInterno].botEnabled == nil then
+				afkdb.config[message.mesa.codigoInterno].botEnabled = true;
+
+				local delay = tonumber(afkdb.config[message.mesa.codigoInterno].delay) or 5;
+
+				afkdb.config[message.mesa.codigoInterno].clock = os.time() - (delay * 60);
 				if message.parametro == "true" then
-					afkdb.afkSpectator[message.mesa.codigoInterno] = true;
+					afkdb.config[message.mesa.codigoInterno].spectator = true;
 					message.chat:escrever("AfkBot habilitado! Espectadores serão automaticamente alertados!");
 				else
-					afkdb.afkSpectator[message.mesa.codigoInterno] = false;
+					afkdb.config[message.mesa.codigoInterno].spectator = false;
 					message.chat:escrever("AfkBot habilitado! Espectadores não serão automaticamente alertados!");
 				end;
 			else
-				afkdb.afkStatus[message.mesa.codigoInterno] = false;
-				afkdb.afkSpectator[message.mesa.codigoInterno] = false;
+				afkdb.config[message.mesa.codigoInterno].botEnabled = false;
+				afkdb.config[message.mesa.codigoInterno].spectator = false;
 				message.chat:escrever("AfkBot desabilitado!");
 			end		
 			
 			message.response = {handled = true};
-		elseif message.comando == "msg" then
-			if message.parametro == "" or message.parametro == nil then
-				message.chat:escrever("Sua mensagem salva é: [" .. (afkdb.afkMessage[message.mesa.codigoInterno] or "") .. "].");
-			else
-				afkdb.afkMessage[message.mesa.codigoInterno] = message.parametro;
-				message.chat:escrever("Sua mensagem: [" .. afkdb.afkMessage[message.mesa.codigoInterno] .. "] foi salva.");
-			end;
-			message.response = {handled = true};
 		elseif message.comando == "stopdice" then
-			if afkdb.diceStatus[message.mesa.codigoInterno] == false or afkdb.diceStatus[message.mesa.codigoInterno] == nil then
-				afkdb.diceStatus[message.mesa.codigoInterno] = true;
+			if afkdb.config[message.mesa.codigoInterno].stopDice == false or afkdb.config[message.mesa.codigoInterno].stopDice == nil then
+				afkdb.config[message.mesa.codigoInterno].stopDice = true;
 				message.chat:escrever("Espectadores serão alertados para não rolarem dados.");
 
 			else
-				afkdb.diceStatus[message.mesa.codigoInterno] = false;
-				afkdb.afkSpectator[message.mesa.codigoInterno] = false;
+				afkdb.config[message.mesa.codigoInterno].stopDice = false;
 				message.chat:escrever("Espectadores não serão alertados para não rolarem dados.");
 			end	
 
 			message.response = {handled = true};
 		elseif message.comando == "stoplaugh" or message.comando == "semrisada" then
-			if afkdb.laughStatus[message.mesa.codigoInterno] == false or afkdb.laughStatus[message.mesa.codigoInterno] == nil then
-				afkdb.laughStatus[message.mesa.codigoInterno] = true;
+			if afkdb.config[message.mesa.codigoInterno].stopLaugh == false or afkdb.config[message.mesa.codigoInterno].stopLaugh == nil then
+				afkdb.config[message.mesa.codigoInterno].stopLaugh = true;
 				message.chat:escrever("Espectadores serão alertados para não usarem o comando /rir.");
 
 			else
-				afkdb.laughStatus[message.mesa.codigoInterno] = false;
-				afkdb.afkSpectator[message.mesa.codigoInterno] = false;
+				afkdb.config[message.mesa.codigoInterno].stopLaugh = false;
 				message.chat:escrever("Espectadores não serão alertados para não usarem o comando /rir.");
 			end	
 
 			message.response = {handled = true};
-		elseif message.comando == "cleandice" then
+		elseif message.comando == "cleanwarn" then
 			if message.parametro ~= "" and message.parametro ~= nil then
-				afkdb.diceTimes[message.parametro] = 0;
-				message.chat:escrever("Jogador " .. message.parametro .. " perdoado.");
+				local user = findLogin(message.parametro, message.mesa);
+
+				if user~=nil then
+					user.dice = 0;
+					user.laugh = 0;
+					user.kicked = false;
+					message.chat:escrever("Jogador " .. message.parametro .. " perdoado.");
+				else
+					message.chat:escrever("Login não encontrado.");
+				end;
 			else
 				message.chat:escrever("Login invalido.");
+			end;
+
+			message.response = {handled = true};
+		elseif message.comando == "afkbot" then
+			local cfgForm = getConfigWindow(message.mesa);
+
+			if (cfgForm) then
+				cfgForm:show();
 			end;
 
 			message.response = {handled = true};
 		end
 	end);
 
--- Escuta das mensagens de chat padrão
+-- Escuta das mensagens de chat padrão 
 rrpg.messaging.listen("ChatMessage", 
 	function (message)
-		if afkdb.afkStatus[message.mesa.codigoInterno] == true then
-			local time = os.clock();
-			if afkdb.afkBotClock[message.mesa.codigoInterno]~=nil and afkdb.afkBotClock[message.mesa.codigoInterno]+300 > time then
-				return;
-			end;
+		initializeRoom(message.mesa);
+		initializeClock(message.mesa);
+		-- se o alerta está ativado
+		local alert = afkdb.config[message.mesa.codigoInterno].botEnabled;
+		-- ou o auto alerta está ativado e o usuario está ausente]
+		alert = alert or (afkdb.config[message.mesa.codigoInterno].autoEnable and message.mesa.meuJogador.isAusente);
 
+		-- e faz mais de X minutos desde o ultimo alerta
+		local delay = tonumber(afkdb.config[message.mesa.codigoInterno].delay) or 5;
+		alert = alert and not (afkdb.config[message.mesa.codigoInterno].clock + (delay * 60) > os.time());
+		-- e o usuario é mestre
+		alert = alert and message.mesa.meuJogador.isMestre;
+		
+		if alert then
 			local text = utils.removerFmtChat(message.texto, true);
 			local login = message.mesa.meuJogador.login;
 			local nick = utils.removerFmtChat(message.mesa.meuJogador.nick, true);
 
-			if message.mesa.meuJogador.isMestre then
-				text = text:lower();
-				nick = nick:lower();
-				login = login:lower();
-			else
-				message.chat:escrever("Apenas mestres!");
-				return;
-			end;
+			text = text:lower();
+			nick = nick:lower();
+			login = login:lower();
 			
 			local isLogin = string.match(text, login) ~= nil;
 			local isNick = string.match(text, nick) ~= nil;
@@ -159,65 +256,9 @@ rrpg.messaging.listen("ChatMessage",
 			if isLogin or isNick or isMestre or isDia or isTarde or isNoite then
 				local info = "[§K1]AfkBot: Está é uma mensagem automatica de " .. message.mesa.meuJogador.nick .. "[§K1](" .. message.mesa.meuJogador.login .. ") que está ocupado e não pode responder.";
 
-				afkdb.afkBotClock[message.mesa.codigoInterno] = os.clock();
+				afkdb.config[message.mesa.codigoInterno].clock = os.time();
 				message.chat:enviarNarracao(info);
-				message.chat:enviarNarracao(afkdb.afkMessage[message.mesa.codigoInterno]);
-				return;
-			end;
-		end
-	end);
-
--- Escuta por rolagens de dado
-rrpg.messaging.listen("ChatMessage", 
-	function (message)
-		if afkdb.diceStatus[message.mesa.codigoInterno] == true then
-
-			if message.jogador == nil or message.mesa == nil then
-				return;
-			end;
-			if message.tipo ~= "dados" then
-				return;
-			end;
-
-			if message.mesa.meuJogador.isMestre and message.jogador.isEspectador then
-				afkdb.diceTimes[message.jogador.login] = (afkdb.diceTimes[message.jogador.login] or 0) + 1;
-
-				if afkdb.diceTimes[message.jogador.login] < 4 then
-					message.chat:enviarNarracao("Por favor, pare de rolar dados. Ou irá ser expulso da mesa. Se quiser testar algo abra um pvt consigo mesmo. Esse é seu " .. afkdb.diceTimes[message.jogador.login] .. "º aviso. ");
-				else
-					message.chat:enviarNarracao("Você foi avisado. ");
-					message.jogador:requestKick();
-				end;
-			else
-				return;
-			end;
-
-
-		end
-	end);
-
--- Escuta por risadas
-rrpg.messaging.listen("ChatMessage", 
-	function (message)
-		if afkdb.diceStatus[message.mesa.codigoInterno] == true then
-
-			if message.jogador == nil or message.mesa == nil then
-				return;
-			end;
-			if message.tipo ~= "rir" then
-				return;
-			end;
-
-			if message.mesa.meuJogador.isMestre and message.jogador.isEspectador then
-				afkdb.diceTimes[message.jogador.login] = (afkdb.diceTimes[message.jogador.login] or 0) + 1;
-
-				if afkdb.diceTimes[message.jogador.login] < 2 then
-					message.chat:enviarNarracao("Por favor, pare de usar/rir na mesa. Ou irá ser expulso da mesa. Se quiser testar algo abra um pvt consigo mesmo. Esse é será seu unico aviso. ");
-				else
-					message.chat:enviarNarracao("Você foi avisado. ");
-					message.jogador:requestKick();
-				end;
-			else
+				sendPersonalMessage(message.chat, message.mesa);
 				return;
 			end;
 		end
@@ -226,27 +267,129 @@ rrpg.messaging.listen("ChatMessage",
 -- Enviar a mensagem de afk para todos espectadores, se ativo
 rrpg.messaging.listen("MesaJoined",
 	function(message)
-		local time = os.clock();
-		if afkdb.afkBotClock[message.mesa.codigoInterno]~=nil and afkdb.afkBotClock[message.mesa.codigoInterno]+300 > time then
-			return;
-		end;
-		if afkdb.afkSpectator[message.mesa.codigoInterno] and message.jogador.isEspectador then
-			afkdb.afkBotClock[message.mesa.codigoInterno] = os.clock();
+		initializeRoom(message.mesa);
+		initializeClock(message.mesa);
+		-- se o alerta está ativado
+		local alert = afkdb.config[message.mesa.codigoInterno].botEnabled;
+		-- ou o auto alerta está ativado e o usuario está ausente]
+		alert = alert or (afkdb.config[message.mesa.codigoInterno].autoEnable and message.mesa.meuJogador.isAusente);
+		-- e faz mais de X minutos desde o ultimo alerta
+		local delay = tonumber(afkdb.config[message.mesa.codigoInterno].delay) or 5;
+		alert = alert and not (afkdb.config[message.mesa.codigoInterno].clock + (delay * 60) > os.time());
+		-- e o usuario é mestre
+		alert = alert and message.mesa.meuJogador.isMestre;
+		-- e está alerta a espectadores
+		alert = alert and afkdb.config[message.mesa.codigoInterno].spectator;
+		-- e entrou um espectador
+		alert = alert and message.jogador.isEspectador;
+
+		if alert then
+			afkdb.config[message.mesa.codigoInterno].clock = os.time();
 
 			local info = "[§K1]AfkBot: Está é uma mensagem automatica de " .. message.mesa.meuJogador.nick .. "[§K1](" .. message.mesa.meuJogador.login .. ") que está ocupado e não pode responder.";
 			message.mesa.chat:enviarNarracao(info);
-			message.mesa.chat:enviarNarracao(afkdb.afkMessage[message.mesa.codigoInterno]);
+			sendPersonalMessage(message.chat, message.mesa);
 		end;
+
+		-- ver se espectador pode falar na mesa
+
+		local user = findLogin(message.jogador.login, message.mesa);
+		-- se noVoice está ativo
+		local noVoice = afkdb.config[message.mesa.codigoInterno].noVoice;
+		-- e o usuario é mestre
+		noVoice = noVoice and message.mesa.meuJogador.isMestre;
+		-- e entrou um espectador
+		noVoice = noVoice and message.jogador.isEspectador;
+		-- E o usuario já foi kickado.
+		noVoice = noVoice and user~=nil and user.kicked == true;
+		if noVoice then
+			message.jogador:requestSetMudo(true);
+		end;
+	end);
+
+-- Escuta por rolagens de dado
+rrpg.messaging.listen("ChatMessage", 
+	function (message)
+		initializeRoom(message.mesa);
+		-- Ve se está ligado o autokick para dados
+		local valid = afkdb.config[message.mesa.codigoInterno].stopDice == true;
+		-- Ve se a mensagem de chat é de um jogador numa mesa
+		valid = valid and message.jogador ~= nil and message.mesa ~= nil;
+		-- Ve se é uma rolagem de dados
+		valid = valid and message.tipo == "dados";
+		-- Ve se o usuario é mestre da mesa
+		valid = valid and message.mesa.meuJogador.isMestre;
+		-- Ve se quem rolou o dado é espectador
+		valid = valid and message.jogador.isEspectador;
+
+		if valid then
+			initializeKickList(message.mesa);
+			local user = findLogin(message.jogador.login, message.mesa);
+			if user == nil then
+				user = addUser(message.mesa);
+				user.login = message.jogador.login;
+				user.dice = 0;
+				user.laugh = 0;
+				user.user = true;
+			end;
+
+			user.dice = (user.dice or 0) + 1;
+
+			if user.dice < (tonumber(afkdb.config[message.mesa.codigoInterno].limitDice) or 4) then
+				message.chat:enviarNarracao("Por favor, pare de rolar dados. Ou irá ser expulso da mesa. Se quiser testar algo abra um pvt consigo mesmo. Esse é seu " .. user.dice .. "º aviso. ");
+			else
+				message.chat:enviarNarracao("Você foi avisado. ");
+				message.jogador:requestKick();
+				user.kicked = true;
+			end;
+		end
+	end);
+
+-- Escuta por risadas
+rrpg.messaging.listen("ChatMessage", 
+	function (message)
+		initializeRoom(message.mesa);
+		-- Ve se está ligado o autokick para risadas
+		local valid = afkdb.config[message.mesa.codigoInterno].stopDice == true;
+		-- Ve se a mensagem de chat é de um jogador numa mesa
+		valid = valid and message.jogador ~= nil and message.mesa ~= nil;
+		-- Ve se é uma risada
+		valid = valid and message.tipo == "rir";
+		-- Ve se o usuario é mestre da mesa
+		valid = valid and message.mesa.meuJogador.isMestre;
+		-- Ve se quem rolou o dado é espectador
+		valid = valid and message.jogador.isEspectador;
+
+		if valid then
+			initializeKickList(message.mesa);
+			local user = findLogin(message.jogador.login, message.mesa);
+			if user == nil then
+				user = addUser(message.mesa);
+				user.login = message.jogador.login;
+				user.dice = 0;
+				user.laugh = 0;
+				user.user = true;
+			end;
+
+			user.laugh = (user.laugh or 0) + 1;
+
+			if user.laugh < (tonumber(afkdb.config[message.mesa.codigoInterno].limitLaugh) or 2) then
+				message.chat:enviarNarracao("Por favor, pare de usar /rir na mesa. Ou irá ser expulso da mesa. Se quiser testar algo abra um pvt consigo mesmo. Esse é seu " .. user.laugh .. "º aviso. ");
+			else
+				message.chat:enviarNarracao("Você foi avisado. ");
+				message.jogador:requestKick();
+				user.kicked = true;
+			end;
+		end
 	end);
 
 rrpg.messaging.listen("ListChatCommands",
     function(message)
-        message.response = {{comando="/msg <Vazio>", descricao="Mostra a mensagem atual salva no AfkBot."},
-                            {comando="/msg <Texto>", descricao="Salva <Texto> como a mensagem automatica de resposta no AfkBot. "},
+        message.response = {{comando="/afkbot", descricao="Exibe a janela de configuração do afkbot."},
                             {comando="/stopdice", descricao="Avisa a espectadores para pararem de rolar dados e os expulsa na 4ª vez que o fizerem."},
                             {comando="/stoplaugh or /semrisada", descricao="Avisa a espectadores para pararem de usar o comando rir e os expulsa na 2ª vez que o fizerem."},
                             {comando="/cleanwarn <login>", descricao="Limpa o contador de rolagens e risadas de um jogador. "},
-                            {comando="/afk <Boolean (opcional)>", descricao="Ativa ou desativa o AfkBot v0.8, opcionalmente passando true como parametro o bot avisa cada espectador que entrar na mesa. "}};
+                            {comando="/afk <Boolean (opcional)>", descricao="Ativa ou desativa o AfkBot v1.0, opcionalmente passando true como parametro o bot avisa cada espectador que entrar na mesa. "}};
     end);
 
 -- auto-update
