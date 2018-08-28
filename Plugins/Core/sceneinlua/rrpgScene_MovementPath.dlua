@@ -82,6 +82,10 @@ local function doDrawUsedCells(scene, viewport, cellsUsed, track)
 end;
 
 local function doDrawTrack(scene, track)
+	if scene.renderAsPlayer and (track.item ~= nil) and (not track.item.canBeRendered) then
+		return;
+	end;
+
 	local vp = scene.viewport;
 	local currPath = track.bPath;
 	local paths = track.paths;

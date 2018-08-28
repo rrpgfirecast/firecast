@@ -470,33 +470,36 @@ SceneLib.registerPlugin(
 	
 		local function drawSelection()
 			local viewport = scene.viewport;	
+			local renderAsPlayer = scene.renderAsPlayer;
 			
 			viewport:prepareDraw(QUADS_COLOR, 1);
 			
-			for k, v in pairs(selecao)	do
-				local left, top, right, bottom = k:getBounds();
-				local leftScreen, topScreen = viewport:worldToScreen(left, top);
-				local rightScreen, bottomScreen = viewport:worldToScreen(right, bottom);				
-				
-				v.quads = DRAWSELECTED_CalcWPosOfQuadsDaSelecao(k, scene, v.quads);
+			for k, v in pairs(selecao) do
+				if not renderAsPlayer or k.canBeRendered then					
+					local left, top, right, bottom = k:getBounds();
+					local leftScreen, topScreen = viewport:worldToScreen(left, top);
+					local rightScreen, bottomScreen = viewport:worldToScreen(right, bottom);				
+					
+					v.quads = DRAWSELECTED_CalcWPosOfQuadsDaSelecao(k, scene, v.quads);
 
-				viewport:pushRotationTransform(k.rotation, leftScreen + (rightScreen - leftScreen) / 2,
-												topScreen + (bottomScreen - topScreen) / 2);
-				viewport:drawRect(leftScreen, topScreen, rightScreen, bottomScreen, QUADS_OPACITY);
-				
-				local sx, sy = viewport:worldToScreen(v.quads[QUAD_CENTER_RIGHT][QUADRECT_CX], v.quads[QUAD_CENTER_RIGHT][QUADRECT_CY]);
-				local ex, ey = viewport:worldToScreen(v.quads[QUAD_ROTATION][QUADRECT_CX], v.quads[QUAD_ROTATION][QUADRECT_CY]);
-				viewport:drawLine(math.floor(sx), math.floor(sy), math.floor(ex), math.floor(ey), QUADS_OPACITY);
-		
-				DRAWSELECTED_DrawQuads(v.quads, viewport);	
-							
-				viewport:popTransform();				
-				
-				exibindoMenuInLoco = (qtSelecionado == 1) and inLocoMenuEnabled and canViewMenuOfToken;
-				
-				if exibindoMenuInLoco then
-					DRAWSELECTED_DrawMenuInLoco(v.quads, viewport, k);						
-				end;				
+					viewport:pushRotationTransform(k.rotation, leftScreen + (rightScreen - leftScreen) / 2,
+													topScreen + (bottomScreen - topScreen) / 2);
+					viewport:drawRect(leftScreen, topScreen, rightScreen, bottomScreen, QUADS_OPACITY);
+					
+					local sx, sy = viewport:worldToScreen(v.quads[QUAD_CENTER_RIGHT][QUADRECT_CX], v.quads[QUAD_CENTER_RIGHT][QUADRECT_CY]);
+					local ex, ey = viewport:worldToScreen(v.quads[QUAD_ROTATION][QUADRECT_CX], v.quads[QUAD_ROTATION][QUADRECT_CY]);
+					viewport:drawLine(math.floor(sx), math.floor(sy), math.floor(ex), math.floor(ey), QUADS_OPACITY);
+			
+					DRAWSELECTED_DrawQuads(v.quads, viewport);	
+								
+					viewport:popTransform();				
+					
+					exibindoMenuInLoco = (qtSelecionado == 1) and inLocoMenuEnabled and canViewMenuOfToken;
+					
+					if exibindoMenuInLoco then
+						DRAWSELECTED_DrawMenuInLoco(v.quads, viewport, k);						
+					end;
+				end;
 			end;
 		end;
 			
