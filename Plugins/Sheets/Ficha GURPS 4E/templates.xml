@@ -72,7 +72,7 @@
 		<flowPart height="$(height or 50)" minScaledWidth="$(minScaledWidth or minWidth or 100)" 
 				  minWidth="$(minWidth or 100)" maxWidth="$(maxWidth or 160)" 
 				  maxScaledWidth="$(maxScaledWidth or maxWidth or 160)" avoidScale="true"
-				  name="$(baseName)" vertAlign="leading" margins="$(margins or '{left=5, right=5, top=5, bottom=5}')">			  
+				  name="$(baseName)" vertAlign="leading" margins="$(margins or '{left=0, right=5, top=5, bottom=5}')">			  
 				
 				<script>								
 					rawset(self.$(baseName), "_RecalcSize", 

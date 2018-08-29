@@ -1093,7 +1093,7 @@ function newfrmTemplate()
     obj.upperGridMagicBox1:setAvoidScale(true);
     obj.upperGridMagicBox1:setName("upperGridMagicBox1");
     obj.upperGridMagicBox1:setVertAlign("leading");
-    obj.upperGridMagicBox1:setMargins({left=5, right=5, top=5, bottom=5});
+    obj.upperGridMagicBox1:setMargins({left=0, right=5, top=5, bottom=5});
 
 								
 					rawset(self.upperGridMagicBox1, "_RecalcSize", 
@@ -2318,7 +2318,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.label45 = gui.fromHandle(_obj_newObject("label"));
     obj.label45:setParent(obj.flowPart24);
     obj.label45:setFrameRegion("RegiaoConteudo");
-    obj.label45:setText("TECNICAS");
+    obj.label45:setText("TÉCNICAS");
     obj.label45:setFontSize(15);
     obj.label45:setHorzTextAlign("center");
     obj.label45:setVertTextAlign("center");
@@ -2365,7 +2365,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.btnNovoflwMagicRecordList1:setParent(obj.layBottomflwMagicRecordList1);
     obj.btnNovoflwMagicRecordList1:setName("btnNovoflwMagicRecordList1");
     obj.btnNovoflwMagicRecordList1:setAlign("left");
-    obj.btnNovoflwMagicRecordList1:setText("Nova Magia");
+    obj.btnNovoflwMagicRecordList1:setText("Nova Técnica");
     obj.btnNovoflwMagicRecordList1:setWidth(160);
     obj.btnNovoflwMagicRecordList1:setMargins({top=4, bottom=4, left=48});
 

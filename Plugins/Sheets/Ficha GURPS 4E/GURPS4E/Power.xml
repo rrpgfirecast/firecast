@@ -56,7 +56,7 @@
 						autoHeight="true" minHeight="5" onResize="self.$(baseName)._recalcHeight();" hitTest="false" margins="{left=10, right=10}"/>					
 						
 			<layout name="layBottom$(baseName)" align="top" height="36">			
-				<button name="btnNovo$(baseName)" align="left" onClick="self.rcl$(baseName):append();" text="Nova Magia" width="160" margins="{top=4, bottom=4, left=48}"/>								
+				<button name="btnNovo$(baseName)" align="left" onClick="self.rcl$(baseName):append();" text="Nova $(tipo)" width="160" margins="{top=4, bottom=4, left=48}"/>								
 			</layout>	
 			
 		</flowPart>
@@ -66,7 +66,7 @@
 	<template name="magicsLayout0">
 		<flowLayout class="halfTile3 magicTile" height="100" avoidScale="true" maxControlsPerLine="1" autoHeight="true">
 			<magicHeader0 text="$(text)" field="$(field2)"/>
-			<magicRecordList field="$(field)"/>
+			<magicRecordList field="$(field)" tipo="$(tipo)"/>
 		</flowLayout>	
 	</template>
 
@@ -89,8 +89,8 @@
 	<scrollBox align="client">
 		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraPoderesLayout">
 
-			<magicsLayout0 text="TECNICAS" field="listaDeTecnicas" field2="custoTecnicas"/>
-			<magicsLayout0 text="MAGIAS" field="listaDeMagias" field2="custoMagias"/>
+			<magicsLayout0 text="TÉCNICAS" field="listaDeTecnicas" field2="custoTecnicas" tipo="Técnica"/>
+			<magicsLayout0 text="MAGIAS" field="listaDeMagias" field2="custoMagias" tipo="Magia"/>
 
 		</flowLayout>
 	</scrollBox>
