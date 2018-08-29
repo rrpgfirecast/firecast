@@ -6,7 +6,7 @@
 			<!-- Primeira Linha -->
 			<flowLayout class="oneLineTile2" autoHeight="true" minScaledWidth="290" horzAlign="center">
 				<!-- NOME DO PERSONAGEM -->													
-				<flowPart class="tile2" minWidth="320" height="175" maxWidth="1600" frameStyle="frames/banner/dragon.xml" vertAlign="center" avoidScale="true">
+				<flowPart class="tile" minWidth="320" maxWidth="1600" frameStyle="frames/banner/dragon.xml" height="175" vertAlign="center" avoidScale="true">							
 					<layout align="client">
 						<edit field="nome" class="transparente center" fontSize="17" align="client"/>
 						<label align="bottom" text="NOME DO PERSONAGEM" class="tituloCampo" autoSize="true" margins="{left=3}"/>
@@ -14,47 +14,113 @@
 				</flowPart>				
 		
 				<!-- GRID DE INFORMACOES SUPERIORES DA FRENTE -->
-				<flowLayout class="tile2"  minWidth="320" maxWidth="1600" name="fraUpperGridCaracteristicas" avoidScale="true" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" vertAlign="trailing" maxControlsPerLine="3">								
+				<flowLayout class="tile"  minWidth="320" maxWidth="1600" name="fraUpperGridCaracteristicas" avoidScale="true" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" vertAlign="trailing" maxControlsPerLine="3">								
 					<upperGridCampo field="idade" minWidth="100" titulo="IDADE"/>
 					<upperGridCampo field="altura" titulo="ALTURA"/>
 					<upperGridCampo field="peso" titulo="PESO"/>									
 					<upperGridCampo field="olhos" minWidth="100" titulo="JOGADOR"/>
 					<upperGridCampo field="pele" titulo="TAMANHO"/>
-					<upperGridCampo field="cabelo" titulo="REAÇÃO"/>
+					<upperGridCampo field="cabelo" titulo="APARÊNCIA"/>
 				</flowLayout>	
-			</flowLayout>
+			</flowLayout>			
+	
+			<flowLineBreak/>
+		
+			<!-- SEGUNDA LINHA -->		
+			<flowLayout class="oneLineTile2" autoHeight="true" minScaledWidth="290" horzAlign="center" lineSpacing="10">
+				<!-- PRIMEIRA COLUNA -->
+				<flowLayout maxControlsPerLine="1" autoHeight="true" class="tileCarac" lineSpacing="10" margins="{left = 4, right = 4}">
+					<!-- IMAGEM -->
+					<flowPart class="tileCarac" height="390" frameStyle="frames/panel5/frame.xml" margins="{left = 0, right = 4}">
+						<image align="client" style="autoFit" field="imagens.aparencia" class="transparente" margins="{top=2}" editable="true"/>
+						<label align="bottom" autoSize="true" text="APARÊNCIA" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					</flowPart>		
+					
+					<!-- IDIOMAS -->			
+					<flowPart class="tileCarac" height="115" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 0}">
+						<textEditor align="client" field="idiomas" class="transparente" margins="{top=2}" fontSize="16"/>
+						<label align="bottom" autoSize="true" text="REAÇÃO" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					</flowPart>		
+				</flowLayout>
+			
+				<!-- TRACOS DE PERSONALIDADE, IDEAIS, VINCULOS, FRAQUEZAS -->					
+				<flowLayout maxControlsPerLine="1" autoHeight="true" class="tileCarac" lineSpacing="10" margins="{left=4, right=4}">
+				
+					<!-- TRAÇOS DE PERSONALIDADE -->				
+					<flowPart class="tileCarac" height="140" frameStyle="frames/panel5/topPanel.xml" margins="{left = 4, right = 4}">
+						<textEditor align="client" field="tracosPersonalidade" class="transparente" margins="{top=2}" fontSize="16"/>
+						<label align="bottom" autoSize="true" text="TRAÇOS DE PERSONALIDADE" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					</flowPart>	
+					
+					<!-- IDEAIS -->				
+					<flowPart class="tileCarac" height="115" frameStyle="frames/panel5/centerPanel.xml" margins="{left = 4, right = 4}">
+						<textEditor align="client" field="qualidades" class="transparente" margins="{top=2}" fontSize="16"/>
+						<label align="bottom" autoSize="true" text="QUALIDADES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					</flowPart>					
+					
+					<!-- IDEAIS -->				
+					<flowPart class="tileCarac" height="115" frameStyle="frames/panel5/centerPanel.xml" margins="{left = 4, right = 4}">
+						<textEditor align="client" field="peculiaridades" class="transparente" margins="{top=2}" fontSize="16"/>
+						<label align="bottom" autoSize="true" text="PECULIARIDADES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					</flowPart>			
 
+									
+					<!-- FRAQUEZAS -->				
+					<flowPart class="tileCarac" height="115" frameStyle="frames/panel5/bottomPanel.xml" margins="{left = 4, right = 4}">
+						<textEditor align="client" field="vinculos" class="transparente" margins="{top=2}" fontSize="16"/>
+						<label align="bottom" autoSize="true" text="VINCULOS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					</flowPart>	
+				</flowLayout>		
+
+				<!-- CARACTERISTICAS E TRACOS -->			
+				<flowPart class="tileCarac" height="515" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
+					<textEditor align="client" field="caracteristicasETracoes" class="transparente" margins="{top=2}" fontSize="16"/>
+					<label align="bottom" autoSize="true" text="CARACTERÍSTICAS E TRAÇOS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+				</flowPart>			
+			</flowLayout>
+			
 			<flowLineBreak/>
 			
-			<flowLayout class="oneLineTile2" autoHeight="true" minScaledWidth="290" horzAlign="center" lineSpacing="10">
-				<flowPart class="tileCarac" height="515" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
-					<richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
-
-					<label align="bottom" autoSize="true" text="HISTORIA" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
-				</flowPart>	
-
-				<flowLayout maxControlsPerLine="1" autoHeight="true" class="tileCarac" lineSpacing="10" margins="{left=4, right=4}">
-					<flowPart class="tileCarac" height="170" frameStyle="frames/panel5/topPanel.xml" margins="{left = 4, right = 4}">
-						<label align="bottom" autoSize="true" text="APARÊNCIA" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
-						<textEditor align="client" field="aparencia" class="transparente" margins="{bottom=2}" fontSize="16"/>
-					</flowPart>	
-
-					<flowPart class="tileCarac" height="170" frameStyle="frames/panel5/centerPanel.xml" margins="{left = 4, right = 4}">
-						<label align="bottom" autoSize="true" text="QUALIDADES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
-						<textEditor align="client" field="anotacoes" class="transparente" margins="{bottom=2}" fontSize="16"/>
-					</flowPart>	
-
-					<flowPart class="tileCarac" height="155" frameStyle="frames/panel5/bottomPanel.xml" margins="{left = 4, right = 4}">
-						<label align="bottom" autoSize="true" text="PECULIARIDADES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
-						<textEditor align="client" field="peculiaridades" class="transparente" margins="{bottom=2}" fontSize="16"/>
-					</flowPart>	
-				</flowLayout>
-
+			<!-- TERCEIRA LINHA -->		
+			<flowLayout class="oneLineTile2" autoHeight="true" minScaledWidth="290" horzAlign="center" lineSpacing="10" margins="{top=5}">
+				<!-- ALIADOS E ORGANIZAÇÕES -->					
+				<flowLayout name="fraAliadosOrganizacoes" class="tile" autoHeight="true" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}" horzAlign="center">
+					<event name="onBeforeLayoutCalc">
+						<![CDATA[
+								if self.fraAliadosOrganizacoes:getWidth() <= 500 then
+									self.prtAliados:setHeight(200);
+									self.prtFaccao:setHeight(200);									
+								else
+									self.prtAliados:setHeight(420);
+									self.prtFaccao:setHeight(350);
+								end;
+						]]>
+					</event>				
 				
-
-			</flowLayout>		
-	
-		</flowLayout>
-
+					<flowPart name="prtAliados" minWidth="300" maxWidth="1600" minScaledWidth="290" height="420" avoidScale="true">
+						<textEditor align="client" field="aliados.aliadosEOrganizacoes" class="transparente" margins="{top=2, left=4, right=4}" fontSize="16"/>
+					</flowPart>	
+					
+					<flowPart name ="prtFaccao" class="halfTile" stepSizes="{260, 310}" maxScaledWidth="310" avoidScale="true" height="350" frameStyle="frames/panel4transp/frame.xml" margins="{left=4, right=4, bottom=4, top=4}">
+						<label align="top" horzTextAlign="leading" text="FACÇÃO" fontSize="11" fontColor="gray" margins="{left=4, right=4}"/>
+						<edit align="top" field="aliados.faccao.nome" margins="{left=4, right=4}"/>
+						<image align="client" field="aliados.faccao.simbolo" editable="true" style="autoFit" margins="{left=4, right=4}"/>
+						<label align="bottom" autoSize="true" text="SÍMBOLO DA FACÇÃO" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					</flowPart>
+					
+					<flowLineBreak/>
+					
+					<flowPart minWidth="200" maxWidth="1800" height="16">
+						<label align="client" autoSize="true" text="ALIADOS E ORGANIZAÇÕES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					</flowPart>
+				</flowLayout>				
+				
+				<!-- HISTÓRIA DO PERSONAGEM -->		
+				<flowPart class="tile" height="515" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}" adjustHeightToLine="true">
+					<richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+					<label align="bottom" autoSize="true" text="HISTÓRIA" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+				</flowPart>	
+			</flowLayout>
+		</flowLayout>	
 	</scrollBox>
-</rectangle>
+</rectangle>	

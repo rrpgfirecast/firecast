@@ -199,7 +199,8 @@
 	
 	<template name="magiaItemContentEditAndLine2">
 		<edit name="edtNome" class="transparente" align="client" field="nome" margins="{left=4, right=4}" vertTextAlign="center"/>
-		<horzLine align="bottom" strokeColor="white"/>	
+		<horzLine align="bottom" strokeColor="white"/>
+		<button text="i" align="right" width="32" margins="{left=4, right=0, top=2, bottom=2}" onClick="showBagPopup();"/>	
 		<button text="X" align="right" width="30" margins="{left=4, right=4, top=2, bottom=2}" onClick="askForDelete();"/>		
 	</template>
 	
@@ -217,6 +218,17 @@
 
 			local function showMagiaPopup()
 				local pop = self:findControlByName("popPower");
+					
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:showPopupEx("bottomCenter", self.edtNome);
+				else
+					showMessage("Ops, bug.. nao encontrei o popup de magia para exibir");
+				end;				
+			end;
+
+			local function showBagPopup()
+				local pop = self:findControlByName("popBag");
 					
 				if pop ~= nil then
 					pop:setNodeObject(self.sheet);
@@ -252,6 +264,17 @@
 											ndb.deleteNode(self.sheet);
 										end;
 									 end);
+			end;
+
+			local function showBagPopup()
+				local pop = self:findControlByName("popBag");
+					
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:showPopupEx("bottomCenter", self.edtNome);
+				else
+					showMessage("Ops, bug.. nao encontrei o popup de magia para exibir");
+				end;				
 			end;
 
 			]]>		

@@ -99,6 +99,7 @@
                 for i=1, #objetos, 1 do
                     custo = custo + (tonumber(objetos[i].custo) or 0);
                 end;
+                sheet.custoTecnicas = custo;
                 pontos = pontos - custo;
 
                 local objetos = ndb.getChildNodes(sheet.listaDeMagias);
@@ -106,6 +107,7 @@
                 for i=1, #objetos, 1 do
                     custo = custo + (tonumber(objetos[i].custo) or 0);
                 end;
+                sheet.custoMagias = custo;
                 pontos = pontos - custo;
 
 

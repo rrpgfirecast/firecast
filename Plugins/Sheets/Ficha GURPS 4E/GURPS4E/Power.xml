@@ -1,5 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rectangle class="fundo">
+	<style>
+		flowPart.magicHeader {
+			avoidScale: true;
+			minScaledWidth: 280;
+			minWidth: 300;
+			maxWidth: 600;
+			height: 80;			
+		}
+		
+		label.magicLevelNumber {			
+			horzTextAlign: center;
+			vertTextAlign: center;
+			fontSize: 18;			
+		}
+		
+		edit.magicLevelInformation {
+			horzTextAlign: center;
+			vertTextAlign: center;
+			fontSize: 18;
+			transparent: true;
+		}
+		
+		flowLayout.magicTile, flowPart.magicTile {
+			margins: {left=10, right=10, top=4, bottom=4};
+		}
+	</style>
+
+	<template name="magicHeader0">
+		<flowPart class="magicHeader" frameStyle="frames/magicHeader/header0.xml">
+			<label frameRegion="RegiaoSmallTitulo" field="$(field)" class="magicLevelNumber"/>
+			<label frameRegion="RegiaoConteudo" text="$(text)" fontSize="15" horzTextAlign="center" vertTextAlign="center"/>
+		</flowPart>
+	</template>
+	<template name="magicRecordList">
+		<!-- baseName = uniqueName("flwMagicRecordList"); 
+		
+			templateFormForThisGroup = "frmMagiaItemSemCheckbox";
+			
+		-->
+	
+		<flowPart minWidth="300" maxWidth="600" minScaledWidth="280" name="$(baseName)">																			
+			<script>
+				<![CDATA[
+					rawset(self.$(baseName), "_recalcHeight", 					
+						function ()
+							self.$(baseName).height = self.rcl$(baseName).height +
+														self.layBottom$(baseName).height + 
+														self.$(baseName).padding.top + self.$(baseName).padding.bottom + 7;
+						end);
+				]]>
+			</script>			
+		
+			<recordList name="rcl$(baseName)" align="top" field="$(field)" templateForm="$(templateFormForThisGroup)" 
+						autoHeight="true" minHeight="5" onResize="self.$(baseName)._recalcHeight();" hitTest="false" margins="{left=10, right=10}"/>					
+						
+			<layout name="layBottom$(baseName)" align="top" height="36">			
+				<button name="btnNovo$(baseName)" align="left" onClick="self.rcl$(baseName):append();" text="Nova Magia" width="160" margins="{top=4, bottom=4, left=48}"/>								
+			</layout>	
+			
+		</flowPart>
+			
+		<script>self.$(baseName)._recalcHeight();</script>			
+	</template>
+	<template name="magicsLayout0">
+		<flowLayout class="halfTile3 magicTile" height="100" avoidScale="true" maxControlsPerLine="1" autoHeight="true">
+			<magicHeader0 text="$(text)" field="$(field2)"/>
+			<magicRecordList field="$(field)"/>
+		</flowLayout>	
+	</template>
+
 	<template name="magicInfoField">
 		<flowPart minWidth="30" maxWidth="400" height="35">
 			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
@@ -18,34 +88,9 @@
 	</popup>
 	<scrollBox align="client">
 		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraPoderesLayout">
-			
-			<flowPart class="tileCarac" height="600" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
 
-				<layout align="top" height="25">
-					<label align="top" autoSize="true" text="TECNICAS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
-					<button align="left" text="+" width="25" hint="Adiciona uma tecnica." horzTextAlign="center" onClick="self.rclTech:append();" margins="{top=-10}"/>
-				</layout>
-				
-				<recordList align="top" height="575" name="rclTech" field="listaDeTecnicas" templateForm="frmMagiaItemSemCheckbox" layout="vertical">
-					<event name="onCompare">
-				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
-					</event>
-				</recordList>
-			</flowPart>
-
-			<flowPart class="tileCarac" height="600" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
-
-				<layout align="top" height="25">
-					<label align="top" autoSize="true" text="MAGIAS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
-					<button align="left" text="+" width="25" hint="Adiciona uma tecnica." horzTextAlign="center" onClick="self.rclMagic:append();" margins="{top=-10}"/>
-				</layout>
-				
-				<recordList align="top" height="575" name="rclMagic" field="listaDeMagias" templateForm="frmMagiaItemSemCheckbox" layout="vertical">
-					<event name="onCompare">
-				        return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
-					</event>
-				</recordList>
-			</flowPart>
+			<magicsLayout0 text="TECNICAS" field="listaDeTecnicas" field2="custoTecnicas"/>
+			<magicsLayout0 text="MAGIAS" field="listaDeMagias" field2="custoMagias"/>
 
 		</flowLayout>
 	</scrollBox>

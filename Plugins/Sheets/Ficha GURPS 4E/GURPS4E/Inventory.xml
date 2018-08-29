@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rectangle class="fundo">
+	<script>
+		<![CDATA[
+			local function recalcularTamanhoEquipsEAtaques_()
+			end;
+			
+			local function recalcularTamanhoEquipsDefesa_()
+			end;
+		
+			local function recalcularTamanhoEquipsEAtaques()
+				self.flwPartEquipAtack.height = self.rclEquips.height + self.labEquipAtackTit.height +
+												self.layEquipAtackBottom.height + 
+												self.flwPartEquipAtack.padding.top + self.flwPartEquipAtack.padding.bottom + 7;
+			end;
+			
+			local function recalcularTamanhoEquipsDefesa()
+				self.flwPartEquipDefense.height = self.rclEquipsDefense.height + self.labEquipDefense.height +
+												self.layEquipDefenseBottom.height + 
+												self.flwPartEquipDefense.padding.top + self.flwPartEquipDefense.padding.bottom + 7;
+			end;			
+		]]>
+	</script>
+	<popup name="popBag" width="250" height="250" backOpacity="0.4">
+		<edit align="top" class="" field="nome" horzTextAlign="center"/>
+	
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+			<magicInfoField text="PESO" field="peso"/>
+			<magicInfoField text="CUSTO" field="custo"/>
+		</flowLayout>
+		
+		<textEditor align="client" field="descricao" class=""/>
+	</popup>
 	<scrollBox align="client">
-		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraInventarioLayout">
+		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraEquipamentoLayout">
 			
 			<flowPart class="tileCarac" height="600" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
 
@@ -27,6 +58,20 @@
 				<label align="top" autoSize="true" text="EQUIPAMENTOS E POSSES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 				
 				<textEditor align="client" field="outrosEquipamentos" class="transparente" margins="{top=2}" fontSize="16"/>
+			</flowPart>	
+
+			<flowLineBreak/>
+
+			<flowPart name="flwPartEquipAtack" class="tile" height="500" frameStyle="frames/panel5/frame.xml" minScaledWidth="290">	
+			
+				<label name="labEquipAtackTit" align="top" autoSize="true" text="EQUIPAMENTOS E ATAQUES" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold" onResize="recalcularTamanhoEquipsEAtaques();"/>										
+															
+				<recordList name="rclEquips" align="top" field="equipamentos.ataques" templateForm="frmEquipamentoItem" 
+							autoHeight="true" minHeight="5" onResize="recalcularTamanhoEquipsEAtaques();" minQt="1" hitTest="false"/>					
+							
+				<layout name="layEquipAtackBottom" align="top" height="40">
+					<button name="btnEquipAtackNew" align="left" onClick="self.rclEquips:append();" text="Novo Item" width="160" margins="{top=4, bottom=4}"/>								
+				</layout>															
 			</flowPart>	
 
 		</flowLayout>
