@@ -3,7 +3,7 @@
 	<id>NickSaver</id>
 	<version>1.0</version>
 	<name>NickSaver</name>
-	<description>Salva o nick e cor de fonte do usuario por mesa.</description>
+	<description>Salva o nick e cor de fonte do usuario por mesa. Use /nicksaver para abrir o popup de configuração. </description>
 	<author>Ambesek</author>
 	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
 	<contact>vinnyrpgmeister@gmail.com</contact>
