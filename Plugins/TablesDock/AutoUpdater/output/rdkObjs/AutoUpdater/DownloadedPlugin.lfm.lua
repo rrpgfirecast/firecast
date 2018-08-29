@@ -36,41 +36,44 @@ function newfrmDownloadedPlugin()
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
+    obj.pluginName = gui.fromHandle(_obj_newObject("label"));
+    obj.pluginName:setParent(obj.rectangle1);
+    obj.pluginName:setAlign("left");
+    obj.pluginName:setField("name");
+    obj.pluginName:setHorzTextAlign("center");
+    obj.pluginName:setTextTrimming("none");
+    obj.pluginName:setWordWrap(true);
+    obj.pluginName:setName("pluginName");
+    obj.pluginName:setHitTest(true);
+
+    obj.moduleId = gui.fromHandle(_obj_newObject("label"));
+    obj.moduleId:setParent(obj.rectangle1);
+    obj.moduleId:setAlign("left");
+    obj.moduleId:setField("moduleId");
+    obj.moduleId:setHorzTextAlign("center");
+    obj.moduleId:setTextTrimming("none");
+    obj.moduleId:setWordWrap(true);
+    obj.moduleId:setName("moduleId");
+    obj.moduleId:setHitTest(true);
+
+    obj.author = gui.fromHandle(_obj_newObject("label"));
+    obj.author:setParent(obj.rectangle1);
+    obj.author:setAlign("left");
+    obj.author:setField("author");
+    obj.author:setHorzTextAlign("center");
+    obj.author:setTextTrimming("none");
+    obj.author:setWordWrap(true);
+    obj.author:setName("author");
+    obj.author:setHitTest(true);
+
     obj.label1 = gui.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setAlign("left");
-    obj.label1:setField("name");
+    obj.label1:setField("version");
     obj.label1:setHorzTextAlign("center");
     obj.label1:setTextTrimming("none");
     obj.label1:setWordWrap(true);
     obj.label1:setName("label1");
-
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
-    obj.label2:setParent(obj.rectangle1);
-    obj.label2:setAlign("left");
-    obj.label2:setField("moduleId");
-    obj.label2:setHorzTextAlign("center");
-    obj.label2:setTextTrimming("none");
-    obj.label2:setWordWrap(true);
-    obj.label2:setName("label2");
-
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
-    obj.label3:setParent(obj.rectangle1);
-    obj.label3:setAlign("left");
-    obj.label3:setField("author");
-    obj.label3:setHorzTextAlign("center");
-    obj.label3:setTextTrimming("none");
-    obj.label3:setWordWrap(true);
-    obj.label3:setName("label3");
-
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
-    obj.label4:setParent(obj.rectangle1);
-    obj.label4:setAlign("left");
-    obj.label4:setField("version");
-    obj.label4:setHorzTextAlign("center");
-    obj.label4:setTextTrimming("none");
-    obj.label4:setWordWrap(true);
-    obj.label4:setName("label4");
 
     obj.downloadButton = gui.fromHandle(_obj_newObject("button"));
     obj.downloadButton:setParent(obj.rectangle1);
@@ -91,6 +94,16 @@ function newfrmDownloadedPlugin()
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setFields({'url'});
     obj.dataLink1:setName("dataLink1");
+
+    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2:setParent(obj);
+    obj.dataLink2:setFields({'description'});
+    obj.dataLink2:setName("dataLink2");
+
+    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3:setParent(obj);
+    obj.dataLink3:setFields({'contact'});
+    obj.dataLink3:setName("dataLink3");
 
     obj._e_event0 = obj.downloadButton:addEventListener("onClick",
         function (self)
@@ -114,7 +127,24 @@ function newfrmDownloadedPlugin()
             			end;
         end, obj);
 
+    obj._e_event2 = obj.dataLink2:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            			self.pluginName.hint = sheet.description;
+            			self.moduleId.hint = sheet.description;
+        end, obj);
+
+    obj._e_event3 = obj.dataLink3:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            			self.author.hint = sheet.contact;
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event3);
+        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
@@ -128,14 +158,16 @@ function newfrmDownloadedPlugin()
           self:setNodeDatabase(nil);
         end;
 
-        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.moduleId ~= nil then self.moduleId:destroy(); self.moduleId = nil; end;
+        if self.pluginName ~= nil then self.pluginName:destroy(); self.pluginName = nil; end;
+        if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
+        if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
-        if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.downloadButton ~= nil then self.downloadButton:destroy(); self.downloadButton = nil; end;
-        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.author ~= nil then self.author:destroy(); self.author = nil; end;
+        if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         self:_oldLFMDestroy();
     end;
 

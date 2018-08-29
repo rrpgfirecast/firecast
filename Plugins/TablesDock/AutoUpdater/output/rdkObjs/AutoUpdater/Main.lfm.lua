@@ -97,6 +97,7 @@ function newfrmTemplate()
 
                     if updaterSheet.toLoad <= updaterSheet.loaded then
                         self.loader.visible = false;
+                        self.downloadedPluginsList:sort();
                     end;
 
                     if myNode ~= nil then
@@ -112,6 +113,8 @@ function newfrmTemplate()
                         item.url = url;
                         item.stream = stream;
                         item.enabled = true;
+                        item.description = info.description;
+                        item.contact = info.contact;
                     end;
                 end,       
                 function (errorMsg)
@@ -329,6 +332,8 @@ function newfrmTemplate()
                         item.author = installed[i].author;
                         item.version = installed[i].version;
                         item.enabled = true;
+                        item.description = installed[i].description;
+                        item.contact = installed[i].contact;
                     end;
                     
                     -- Adiciona o nome das colunas as listas.

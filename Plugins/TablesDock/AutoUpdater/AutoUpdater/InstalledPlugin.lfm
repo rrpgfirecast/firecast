@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmInstalledPlugin" height="50" margins="{top=1}">
-	<rectangle align="client" color="#212121">
-		<label align="left" field="name" horzTextAlign="center" textTrimming="none" wordWrap="true"/>
-		<label align="left" field="moduleId" horzTextAlign="center" textTrimming="none" wordWrap="true"/>
-		<label align="left" field="author" horzTextAlign="center" textTrimming="none" wordWrap="true"/>
+	<rectangle align="client" color="#212121" hitTest="false">
+		<label align="left" field="name" horzTextAlign="center" textTrimming="none" wordWrap="true" name="pluginName" hitTest="true"/>
+		<label align="left" field="moduleId" horzTextAlign="center" textTrimming="none" wordWrap="true" name="moduleId" hitTest="true"/>
+		<label align="left" field="author" horzTextAlign="center" textTrimming="none" wordWrap="true" name="author" hitTest="true"/>
 		<label align="left" field="version" horzTextAlign="center" textTrimming="none" wordWrap="true"/>
 		<label align="left" field="versionAvailable" horzTextAlign="center" textTrimming="none" wordWrap="true"/>
 		<button align="right" width="25" name="downloadButton" visible="false" margins="{top = 12.5, bottom = 12.5, right = 5}">
@@ -53,6 +53,23 @@
 			else
 				self.removeButton.visible = false;
 			end;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'description'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			self.pluginName.hint = sheet.description;
+			self.moduleId.hint = sheet.description;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'contact'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			self.author.hint = sheet.contact;
 		</event>
 	</dataLink>
 </form>
