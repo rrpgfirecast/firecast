@@ -134,7 +134,6 @@ local function findLogin(login, mesa)
 	end;
 	return user;
 end
-
 function getConfigWindow(mesa)
 	initializeRoom(mesa);
 
