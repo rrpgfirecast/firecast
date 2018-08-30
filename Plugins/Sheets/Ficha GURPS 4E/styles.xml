@@ -88,7 +88,7 @@
 		}
 		
 		flowPart.tile, flowLayout.tile {
-			stepSizes: {320, 400};
+			stepSizes: {310, 420, 640, 760, 1150};
 			minScaledWidth: 150;
 		}
 		

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popupForm name="nicksaverPopup" formType="undefined" dataType="ambesek.afkbot" title="AfkBot" width="290" height ="300">
+	<template name="colorExample">
+		<rectangle left="$(left)" top="$(top)" width="20" height="20" color="$(color)"/>
+		<label left="$(left)" top="$(bottom)" width="20" height="20" text="$(num)" horzTextAlign="center"/>
+	</template>
+
+	<checkBox field="nickSaved" left="10" top="10" width="150" text="Nick nessa mesa: " horzTextAlign="center"/>
+	<edit left="160" top="10" width="120" height="25" field="nick"/>
+
+	<horzLine left="10" top="40" width="270"/>
+
+	<checkBox field="colorBaseSaved" left="10" top="45" width="150" text="Cor base: " horzTextAlign="center"/>
+	<edit left="160" top="45" width="50" height="25" field="colorBase" type="number" min="0" max="28" horzTextAlign="center"/>
+	<checkBox field="colorTalkSaved" left="10" top="70" width="150" text="Cor de fala: " horzTextAlign="center"/>
+	<edit left="160" top="70" width="50" height="25" field="colorTalk" type="number" min="0" max="28" horzTextAlign="center"/>
+	<checkBox field="colorActSaved" left="10" top="95" width="150" text="Cor de ação: " horzTextAlign="center"/>
+	<edit left="160" top="95" width="50" height="25" field="colorAct" type="number" min="0" max="28" horzTextAlign="center"/>
+	<checkBox field="colorThoughtSaved" left="10" top="120" width="150" text="Cor de pensamento: " horzTextAlign="center"/>
+	<edit left="160" top="120" width="50" height="25" field="colorThought" type="number" min="0" max="28" horzTextAlign="center"/>
+
+	<horzLine left="10" top="150" width="270"/>
+
+	<colorExample left="10" top="155" bottom="175" color="#000000" num="0"/>
+	<colorExample left="35" top="155" bottom="175" color="#FFFFFF" num="1"/>
+	<colorExample left="60" top="155" bottom="175" color="#7F7FFF" num="2"/>
+	<colorExample left="85" top="155" bottom="175" color="#7FFF7F" num="3"/>
+	<colorExample left="110" top="155" bottom="175" color="#FF0000" num="4"/>
+	<colorExample left="135" top="155" bottom="175" color="#FF7F7F" num="5"/>
+	<colorExample left="160" top="155" bottom="175" color="#FF7FFF" num="6"/>
+	<colorExample left="185" top="155" bottom="175" color="#FF7F00" num="7"/>
+	<colorExample left="210" top="155" bottom="175" color="#FFFF00" num="8"/>
+	<colorExample left="235" top="155" bottom="175" color="#00FF00" num="9"/>
+
+	<colorExample left="10" top="200" bottom="220" color="#7FFFFF" num="10"/>
+	<colorExample left="35" top="200" bottom="220" color="#00FFFF" num="11"/>
+	<colorExample left="60" top="200" bottom="220" color="#0000FF" num="12"/>
+	<colorExample left="85" top="200" bottom="220" color="#FF00FF" num="13"/>
+	<colorExample left="110" top="200" bottom="220" color="#7F7F7F" num="14"/>
+	<colorExample left="135" top="200" bottom="220" color="#3F3F3F" num="15"/>
+	<colorExample left="160" top="200" bottom="220" color="#0F0F0F" num="16"/>
+	<colorExample left="185" top="200" bottom="220" color="#1F1F1F" num="17"/>
+	<colorExample left="210" top="200" bottom="220" color="#777777" num="18"/>
+	<colorExample left="235" top="200" bottom="220" color="#111111" num="19"/>
+
+	<colorExample left="10" top="245" bottom="265" color="#292929" num="20"/>
+	<colorExample left="35" top="245" bottom="265" color="#191200" num="21"/>
+	<colorExample left="60" top="245" bottom="265" color="#6699FF" num="22"/>
+	<colorExample left="85" top="245" bottom="265" color="#F2B440" num="23"/>
+	<colorExample left="110" top="245" bottom="265" color="#D45252" num="24"/>
+	<colorExample left="135" top="245" bottom="265" color="#D396DC" num="25"/>
+	<colorExample left="160" top="245" bottom="265" color="#F47193" num="26"/>
+	<colorExample left="185" top="245" bottom="265" color="#6CECB3" num="27"/>
+	<colorExample left="210" top="245" bottom="265" color="#E54C27" num="28"/>
+
+</popupForm>

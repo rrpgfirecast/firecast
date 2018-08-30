@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.5_prealpha_5" originalPluginFileName="afkbot.rpk">
 	<id>AfkBot</id>
-	<version>0.8</version>
+	<version>1.0</version>
 	<name>AfkBot</name>
-	<description>Crie uma mensagem padrão para responder quando estiver ocupado.</description>
+	<description>Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração.</description>
 	<author>Ambesek</author>
 	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
 	<contact>vinnyrpgmeister@gmail.com</contact>

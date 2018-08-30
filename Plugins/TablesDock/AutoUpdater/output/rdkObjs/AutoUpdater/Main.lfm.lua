@@ -113,6 +113,8 @@ local function constructNew_frmTemplate()
                         item.url = url;
                         item.stream = stream;
                         item.enabled = true;
+                        item.description = info.description;
+                        item.contact = info.contact;
                     end;
                 end,       
                 function (errorMsg)
@@ -330,6 +332,8 @@ local function constructNew_frmTemplate()
                         item.author = installed[i].author;
                         item.version = installed[i].version;
                         item.enabled = true;
+                        item.description = installed[i].description;
+                        item.contact = installed[i].contact;
                     end;
                     
                     -- Adiciona o nome das colunas as listas.

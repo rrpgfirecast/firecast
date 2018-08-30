@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMessageItem" width="250" height="240" margins="{top=1}">	
+	<button width="250" height="240" fontSize="25" text="NOVA MENSAGEM" name="add">
+		<event name="onClick">
+			sheet.enabled = true;
+			local node = ndb.getParent(ndb.getParent(sheet));
+			node.addMessage = 1;
+		</event>
+	</button>
+	<rectangle align="client" color="#212121" name="message" visible="false">
+		<checkBox field="d1" left="10" top="10" text="DOM"/>
+		<checkBox field="d2" left="70" top="10" text="SEG"/>
+		<checkBox field="d3" left="130" top="10" text="TER"/>
+		<checkBox field="d4" left="190" top="10" text="QUA"/>
+		<checkBox field="d5" left="40" top="35" text="QUI"/>
+		<checkBox field="d6" left="100" top="35" text="SEX"/>
+		<checkBox field="d7" left="160" top="35" text="SAB"/>
+
+		<horzLine left="10" top="60" width="230"/>
+
+		<label left="10" top="70" width="90" height="25" text="Inicio" horzTextAlign="center"/>
+		<edit left="100" top="70" width="50" height="25" field="hourStart" type="number" min="0" max="23" horzTextAlign="center"/>
+		<edit left="160" top="70" width="50" height="25" field="minuteStart" type="number" min="0" max="59" horzTextAlign="center"/>
+		<label left="10" top="95" width="90" height="25" text="Fim" horzTextAlign="center"/>
+		<edit left="100" top="95" width="50" height="25" field="hourEnd" type="number" min="0" max="23" horzTextAlign="center"/>
+		<edit left="160" top="95" width="50" height="25" field="minuteEnd" type="number" min="0" max="59" horzTextAlign="center"/>
+
+		<horzLine left="10" top="130" width="230"/>
+
+		<textEditor left="10" top="135" width="205" height="100" field="message"/>
+
+		<!-- Botão que apaga o objeto da lista -->
+		<button left="215" top="135" width="25" height="100" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar essa mensagem?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+
+	<dataLink field="enabled">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			if sheet.enabled==true then
+				self.message.visible = true;
+				self.add.visible = false;
+			else
+				self.message.visible = false;
+				self.add.visible = true;
+			end;
+		</event>
+	</dataLink>
+</form>

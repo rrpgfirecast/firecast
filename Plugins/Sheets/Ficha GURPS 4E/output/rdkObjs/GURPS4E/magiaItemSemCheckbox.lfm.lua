@@ -48,6 +48,17 @@ local function constructNew_frmMagiaItemSemCheckbox()
 					showMessage("Ops, bug.. nao encontrei o popup de magia para exibir");
 				end;				
 			end;
+
+			local function showBagPopup()
+				local pop = self:findControlByName("popBag");
+					
+				if pop ~= nil then
+					pop:setNodeObject(self.sheet);
+					pop:showPopupEx("bottomCenter", self.edtNome);
+				else
+					showMessage("Ops, bug.. nao encontrei o popup de magia para exibir");
+				end;				
+			end;
 			
 
 

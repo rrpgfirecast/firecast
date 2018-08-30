@@ -3,7 +3,7 @@
 	<id>MemesSaver</id>
 	<version>0.2.1</version>
 	<name>Memes Saver</name>
-	<description>Permite criar e salvar seus proprios memes.</description>
+	<description>Permite criar e salvar seus proprios memes. Use /help para ver opções. </description>
 	<author>Vinny Ambesek</author>
 	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
 	<contact>vinnyrpgmeister@gmail.com</contact>

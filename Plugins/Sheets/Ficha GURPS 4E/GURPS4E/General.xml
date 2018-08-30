@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rectangle class="fundo">
+	<template name="header">
+		<flowPart class="magicHeader" frameStyle="frames/magicHeader/header1.xml">
+			<edit frameRegion="RegiaoConteudo1" class="magicLevelInformation" field="left_$(field)"/>
+			<edit frameRegion="RegiaoConteudo2" class="magicLevelInformation" field="right_$(field)"/>
+		</flowPart>	
+	</template>	
 	<scrollBox align="client">
 		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="2" name="fraFrenteLayoutNew" maxControlsPerLine="2">
 			<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center">
@@ -54,7 +60,7 @@
 						<label left="40" top="110" width="50" height="25" text="GdP" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 						<edit left="90" top="110" width="40" height="25" field="gdp" horzTextAlign="center" transparent="true"/>
 						
-						<label left="40" top="135" width="50" height="25" text="GdB" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<label left="40" top="135" width="50" height="25" text="GeB" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 						<edit left="90" top="135" width="40" height="25" field="gdb" horzTextAlign="center" transparent="true"/>
 					</flowPart>
 				</flowLayout>
@@ -224,28 +230,34 @@
 						<label left="15" top="85" width="90" height="25" field="db_3" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 						<label left="15" top="110" width="90" height="25" field="db_4" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 				</flowPart>
-				<dataLink field="atributos_mod_velocidade">
+				<dataLink field="atributos_mod_deslocamento">
 						<event name="onChange">
 							if sheet==nil then return end;
 
-							local velocidade = tonumber(sheet.atributos_mod_velocidade) or 0;
+							local velocidade = tonumber(sheet.atributos_mod_deslocamento) or 0;
 
 							sheet.db_0 = "DBx1: " .. (velocidade);
-							sheet.db_1 = "DBx0,8: " .. (velocidade*0.8);
-							sheet.db_2 = "DBx0,6: " .. (velocidade*0.6);
-							sheet.db_3 = "DBx0,4: " .. (velocidade*0.4);
-							sheet.db_4 = "DBx0,2: " .. (velocidade*0.2);
+							sheet.db_1 = "DBx0,8: " .. math.floor(velocidade*0.8);
+							sheet.db_2 = "DBx0,6: " .. math.floor(velocidade*0.6);
+							sheet.db_3 = "DBx0,4: " .. math.floor(velocidade*0.4);
+							sheet.db_4 = "DBx0,2: " .. math.floor(velocidade*0.2);
 						</event>
 				</dataLink>
 
 				<flowLineBreak/>
 
+				<upperGridMagicBox field="pontosRestantes" titulo="PONTOS RESTANTES"/>
+				<upperGridMagicEditBox field="totalPontos" titulo="TOTAL DE PONTOS"/>
+			</flowLayout>
+
+			<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center">
 				<flowPart minWidth="280" maxWidth="800" margins="{top=10}" height="64" frameStyle="frames/posCaptionEdit1/frame.xml">
 					<edit align="left" class="pericia" field="nt_total" width="65"/>
 					<label align="client" text="Nível Tecnológico" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
 				</flowPart>
-			</flowLayout>
-			<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center">
+
+				<flowLineBreak/>
+
 				<flowPart class="tileCarac" height="515" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
 					<layout align="top" height="25">
 						<label align="top" autoSize="true" text="PERÍCIAS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
@@ -261,14 +273,11 @@
 
 				<flowLineBreak/>
 
-				<flowPart class="tileCarac" height="150" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4, bottom = 7}">
-					<textEditor align="client" field="anotacoes_geral" class="transparente" margins="{top=2}" fontSize="16"/>
-				</flowPart>	
+				<header field="a"/>
 
 				<flowLineBreak/>
 
-				<upperGridMagicBox field="pontosRestantes" titulo="PONTOS RESTANTES"/>
-				<upperGridMagicEditBox field="totalPontos" titulo="TOTAL DE PONTOS"/>
+				<header field="b"/>
 
 				<dataLink fields="{'totalPontos', 'atributos_st', 'atributos_ht', 'atributos_dx', 'atributos_vt', 'atributos_iq', 'atributos_per', 'atributos_pv', 'atributos_pf', 'atributos_velocidade', 'atributos_deslocamento'}">
 					<event name="onChange">
