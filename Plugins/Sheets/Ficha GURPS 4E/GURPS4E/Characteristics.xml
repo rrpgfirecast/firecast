@@ -38,7 +38,7 @@
 					
 					<!-- IDIOMAS -->			
 					<flowPart class="tileCarac" height="115" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 0}">
-						<textEditor align="client" field="idiomas" class="transparente" margins="{top=2}" fontSize="16"/>
+						<textEditor align="client" field="reacao" class="transparente" margins="{top=2}" fontSize="16"/>
 						<label align="bottom" autoSize="true" text="REAÇÃO" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 					</flowPart>		
 				</flowLayout>
