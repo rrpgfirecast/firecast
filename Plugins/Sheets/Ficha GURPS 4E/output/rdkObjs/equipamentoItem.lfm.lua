@@ -65,7 +65,7 @@ function newfrmEquipamentoItem()
 						local danoStr = "Dano";
 						
 						if not rolagem.possuiAlgumDado then
-							rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
+							rolagem = rrpg.interpretarRolagem("3d6"):concatenar(rolagem);
 						end;
 										
 						if sheet.nome ~= nil then

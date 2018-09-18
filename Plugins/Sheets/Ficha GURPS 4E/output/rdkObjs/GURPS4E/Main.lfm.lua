@@ -1805,7 +1805,7 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.flowPart14);
     obj.textEditor2:setAlign("client");
-    obj.textEditor2:setField("idiomas");
+    obj.textEditor2:setField("reacao");
     obj.textEditor2:setMargins({top=2});
     obj.textEditor2:setFontSize(16);
     obj.textEditor2:setName("textEditor2");

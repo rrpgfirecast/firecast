@@ -101,6 +101,9 @@ local function sendPersonalMessage(chat, mesa)
 	-- Se tiver alguma mensagem envie
 	if message ~= "" then
 		chat:enviarNarracao(message);
+	else
+		local info = "[§K1]AfkBot: Está é uma mensagem automatica de " .. mesa.meuJogador.nick .. "[§K1](" .. mesa.meuJogador.login .. ") que está ocupado e não pode responder.";
+		chat:enviarNarracao(info);
 	end;
 end
 local function addUser(mesa)
@@ -253,10 +256,7 @@ rrpg.messaging.listen("ChatMessage",
 			local isNoite = string.match(text, "boa noite") ~= nil;
 
 			if isLogin or isNick or isMestre or isDia or isTarde or isNoite then
-				local info = "[§K1]AfkBot: Está é uma mensagem automatica de " .. message.mesa.meuJogador.nick .. "[§K1](" .. message.mesa.meuJogador.login .. ") que está ocupado e não pode responder.";
-
 				afkdb.config[message.mesa.codigoInterno].clock = os.time();
-				message.chat:enviarNarracao(info);
 				sendPersonalMessage(message.chat, message.mesa);
 				return;
 			end;
@@ -284,9 +284,6 @@ rrpg.messaging.listen("MesaJoined",
 
 		if alert then
 			afkdb.config[message.mesa.codigoInterno].clock = os.time();
-
-			local info = "[§K1]AfkBot: Está é uma mensagem automatica de " .. message.mesa.meuJogador.nick .. "[§K1](" .. message.mesa.meuJogador.login .. ") que está ocupado e não pode responder.";
-			message.mesa.chat:enviarNarracao(info);
 			sendPersonalMessage(message.chat, message.mesa);
 		end;
 
