@@ -28,7 +28,7 @@ local function constructNew_frmCombatTracker()
     obj:beginUpdate();
     obj:setName("frmCombatTracker");
     obj:setFormType("tablesDock");
-    obj:setDataType("Firecast.TB.COMBAT.TRACKER.v1");
+    obj:setDataType("RRPG.TB.COMBAT.TRACKER.v1");
     obj:setTitle("Tracker de Combate");
     obj:setHeight(300);
     obj:setWidth(300);
@@ -818,7 +818,7 @@ local _frmCombatTracker = {
     newEditor = newfrmCombatTracker, 
     new = newfrmCombatTracker, 
     name = "frmCombatTracker", 
-    dataType = "Firecast.TB.COMBAT.TRACKER.v1", 
+    dataType = "RRPG.TB.COMBAT.TRACKER.v1", 
     formType = "tablesDock", 
     formComponentName = "form", 
     title = "Tracker de Combate", 

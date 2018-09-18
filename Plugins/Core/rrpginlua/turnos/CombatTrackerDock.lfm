@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<form name="frmCombatTracker" formType="tablesDock" dataType="Firecast.TB.COMBAT.TRACKER.v1" title="Tracker de Combate" height="300" width="300">
+<form name="frmCombatTracker" formType="tablesDock" dataType="RRPG.TB.COMBAT.TRACKER.v1" title="Tracker de Combate" height="300" width="300">
 	<import file="combatTrackerGlobals.xml"/>
 	<import file="CombatTrackerScripts.xml"/>	
 
