@@ -41,7 +41,7 @@
 					<button align="left" text="+" width="25" hint="" horzTextAlign="center" onClick="self.rclBackpack:append();" margins="{top=-10}"/>
 				</layout>
 
-				<recordList align="client" name="rclBackpack" field="listaDeItens" templateForm="frmBackpackItem" layout="vertical" minQt="3">
+				<recordList align="client" name="rclBackpack" field="listaDeItens" templateForm="frmBackpackItem" layout="vertical">
 					<event name="onCompare">
 		                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
 			        </event>
