@@ -284,7 +284,7 @@ rrpg.messaging.listen("MesaJoined",
 
 		if alert then
 			afkdb.config[message.mesa.codigoInterno].clock = os.time();
-			sendPersonalMessage(message.chat, message.mesa);
+			sendPersonalMessage(message.mesa.chat, message.mesa);
 		end;
 
 		-- ver se espectador pode falar na mesa
