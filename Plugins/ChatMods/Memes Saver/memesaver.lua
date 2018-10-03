@@ -88,7 +88,7 @@ rrpg.listen('HandleChatTextInput',
 
 			local changed = false;
 			for i=1, #arg, 1 do
-				local token = arg[i];
+				local token = utils.removerFmtChat(arg[i]);
 
 				local dot1 = string.sub(token, 1, 1);
 				local dot2 = string.sub(token, token:len(), token:len());
