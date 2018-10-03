@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmKickItem" width="250" height="25" margins="{top=1}">	
 	<rectangle align="client" color="#212121">
-		<label left="5" top="0" width="70" height="25" field="login" horzTextAlign="center"/>
+		<label left="5" top="0" width="70" height="25" name="login" field="login" horzTextAlign="center" hitTest="true"/>
 		<label left="75" top="0" width="70" height="25" field="dice" horzTextAlign="center"/>
 		<label left="145" top="0" width="70" height="25" field="laugh" horzTextAlign="center"/>
 		<button left="220" width="25" height="25" fontSize="25" text="C" hint="Limpa o usuario." name="clean">
@@ -13,15 +13,22 @@
 			</event>
 		</button>
 
+		<dataLink field="login">
+			<event name="onChange">
+				if sheet==nil then return end;
+				self.login.hint = sheet.login;
+			</event>
+		</dataLink>
+
 		<dataLink field="user">
-				<event name="onChange">
-					if sheet==nil then return end;
-					if sheet.user then
-						self.clean.visible = true;
-					else
-						self.clean.visible = false;
-					end;
-				</event>
-			</dataLink>
+			<event name="onChange">
+				if sheet==nil then return end;
+				if sheet.user then
+					self.clean.visible = true;
+				else
+					self.clean.visible = false;
+				end;
+			</event>
+		</dataLink>
 	</rectangle>
 </form>
