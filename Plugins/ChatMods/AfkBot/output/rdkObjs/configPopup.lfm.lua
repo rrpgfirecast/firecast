@@ -227,6 +227,27 @@ function newafkbotPopup()
     obj.dataLink4:setField("addUser");
     obj.dataLink4:setName("dataLink4");
 
+    obj.tab4 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab4:setParent(obj.tabControl1);
+    obj.tab4:setTitle("AutoWelcome");
+    obj.tab4:setName("tab4");
+
+    obj.welcomeList = gui.fromHandle(_obj_newObject("recordList"));
+    obj.welcomeList:setParent(obj.tab4);
+    obj.welcomeList:setLeft(10);
+    obj.welcomeList:setTop(5);
+    obj.welcomeList:setWidth(270);
+    obj.welcomeList:setHeight(490);
+    obj.welcomeList:setField("welcomeList");
+    obj.welcomeList:setName("welcomeList");
+    obj.welcomeList:setTemplateForm("frmWelcomeItem");
+    obj.welcomeList:setMinQt(1);
+
+    obj.dataLink5 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5:setParent(obj.tab4);
+    obj.dataLink5:setField("addWelcome");
+    obj.dataLink5:setName("dataLink5");
+
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet==nil then return end;
@@ -290,7 +311,31 @@ function newafkbotPopup()
             					end;
         end, obj);
 
+    obj._e_event6 = obj.welcomeList:addEventListener("onCompare",
+        function (self, nodeA, nodeB)
+            if nodeA.user and nodeB.user then 
+            						return utils.compareStringPtBr(nodeA.login, nodeB.login);
+            					elseif nodeA.user then
+            						return 1;
+            					elseif nodeB.user then
+            						return -1;
+            					end;
+        end, obj);
+
+    obj._e_event7 = obj.dataLink5:addEventListener("onChange",
+        function (self, field, oldValue, newValue)
+            if sheet==nil then return end;
+            					local addWelcome = tonumber(sheet.addWelcome) or 0;
+            					if addWelcome>0 then
+            						sheet.addWelcome = 0;
+            						local item = self.welcomeList:append();
+            						item.enabled = false;
+            					end;
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event7);
+        __o_rrpgObjs.removeEventListenerById(self._e_event6);
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
@@ -308,17 +353,22 @@ function newafkbotPopup()
           self:setNodeDatabase(nil);
         end;
 
-        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.checkBox2 ~= nil then self.checkBox2:destroy(); self.checkBox2 = nil; end;
         if self.checkBox5 ~= nil then self.checkBox5:destroy(); self.checkBox5 = nil; end;
-        if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
-        if self.messagesList ~= nil then self.messagesList:destroy(); self.messagesList = nil; end;
-        if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
+        if self.tab4 ~= nil then self.tab4:destroy(); self.tab4 = nil; end;
+        if self.welcomeList ~= nil then self.welcomeList:destroy(); self.welcomeList = nil; end;
         if self.tab3 ~= nil then self.tab3:destroy(); self.tab3 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.checkBox3 ~= nil then self.checkBox3:destroy(); self.checkBox3 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
+        if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
+        if self.kickList ~= nil then self.kickList:destroy(); self.kickList = nil; end;
+        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
+        if self.messagesList ~= nil then self.messagesList:destroy(); self.messagesList = nil; end;
+        if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.checkBox6 ~= nil then self.checkBox6:destroy(); self.checkBox6 = nil; end;
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
         if self.tabControl1 ~= nil then self.tabControl1:destroy(); self.tabControl1 = nil; end;
@@ -329,9 +379,7 @@ function newafkbotPopup()
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
         if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
-        if self.kickList ~= nil then self.kickList:destroy(); self.kickList = nil; end;
-        if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
-        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
         self:_oldLFMDestroy();
     end;
 

@@ -137,6 +137,7 @@ local function findLogin(login, mesa)
 	end;
 	return user;
 end
+
 function getConfigWindow(mesa)
 	initializeRoom(mesa);
 
@@ -263,9 +264,10 @@ rrpg.messaging.listen("ChatMessage",
 		end
 	end);
 
--- Enviar a mensagem de afk para todos espectadores, se ativo
+-- Escuta de quem entra na sala
 rrpg.messaging.listen("MesaJoined",
 	function(message)
+		-- Enviar a mensagem de afk para todos espectadores, se ativo
 		initializeRoom(message.mesa);
 		initializeClock(message.mesa);
 		-- se o alerta está ativado
@@ -300,6 +302,20 @@ rrpg.messaging.listen("MesaJoined",
 		noVoice = noVoice and user~=nil and user.kicked == true;
 		if noVoice then
 			message.jogador:requestSetMudo(true);
+		end;
+
+		-- Enviar mensagem de bos vindas automatica.
+		local list = ndb.getChildNodes(afkdb.config[message.mesa.codigoInterno].welcomeList);
+		if (not message.mesa.isModerada) then
+			for i=1, #list, 1 do 
+				local item = list[i];
+				if item.login == message.jogador.login then
+					message.mesa.chat:enviarMensagem(item.message);
+					if not item.permanent then
+						ndb.deleteNode(item);
+					end
+				end;
+			end;
 		end;
 	end);
 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWelcomeItem" width="250" height="75" margins="{top=1}">
+	<button width="250" height="75" fontSize="25" text="NOVA MENSAGEM" name="add" visible="true">
+		<event name="onClick">
+			sheet.enabled = true;
+			local node = ndb.getParent(ndb.getParent(sheet));
+			node.addWelcome = 1;
+		</event>
+	</button>
+	<rectangle align="client" color="#212121" name="message" visible="false">
+		<edit left="5" top="5" width="140" height="20" field="login" fontSize="11"/>
+		<checkBox field="permanent" left="145" top="5" width="100" fontSize="11" text="Permanente"/>
+		
+		<!-- Botão que apaga o objeto da lista -->
+		<button left="225" top="5" width="20" height="20" text="X">
+			<event name="onClick">
+				dialogs.confirmOkCancel("Tem certeza que quer apagar essa mensagem?",
+					function (confirmado)
+						if confirmado then
+							ndb.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+		<textEditor left="5" top="25" width="240" height="50" field="message"/>
+	</rectangle>
+
+	<dataLink field="login" defaultValue="login"/>
+	<dataLink field="message" defaultValue="Mensagem."/>
+
+	<dataLink field="enabled">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			if sheet.enabled==true then
+				self.message.visible = true;
+				self.add.visible = false;
+			else
+				self.message.visible = false;
+				self.add.visible = true;
+			end;
+		</event>
+	</dataLink>
+</form>

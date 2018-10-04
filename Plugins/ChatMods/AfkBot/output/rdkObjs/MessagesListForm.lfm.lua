@@ -38,6 +38,7 @@ function newfrmMessageItem()
     obj.add:setFontSize(25);
     obj.add:setText("NOVA MENSAGEM");
     obj.add:setName("add");
+    obj.add:setVisible(true);
 
     obj.message = gui.fromHandle(_obj_newObject("rectangle"));
     obj.message:setParent(obj);
