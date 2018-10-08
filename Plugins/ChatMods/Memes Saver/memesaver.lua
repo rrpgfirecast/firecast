@@ -37,6 +37,7 @@ local function isNewVersion(installed, downloaded)
 end;
 
 memedb = ndb.load("memeData.xml");
+-- Criando lista padrão de memes. 
 if memedb.link==nil then
 	memedb.link = {};
 	memedb.link["rrpg"] = "http://blob.firecast.com.br/blobs/PGGSIDUU_468392/rrpg.png";
@@ -61,6 +62,17 @@ if memedb.link==nil then
 	memedb.link["yeah"] = "http://blob.firecast.com.br/blobs/PJSREAWF_468513/yeah.png";
 end;
 
+function getConfigWindow(mesa)
+	local cfgForm = gui.newForm("listPopup");
+	memedb.load = true;
+	cfgForm:setNodeObject(memedb);
+	cfgForm.title = "Meme Saver - " .. mesa.nome;
+	popup = cfgForm;
+	
+	return cfgForm;
+end
+
+-- Percorre a tabela de nodes, vendo os filhos. 
 function dump(o)
    if type(o) == 'table' then
       local s = '{ '
@@ -76,9 +88,11 @@ end
 
 rrpg.listen('HandleChatTextInput',
     function(message)
+    	-- Se tiver algum ":" na mensagem veja se é um meme salvo
     	if string.match(message.texto, ":") then
     		local text = "";
 
+    		-- Crie um array com cada palavra da frase separada por espaço
 			local arg = {};
 			local index = 0;
 			for i in string.gmatch(message.texto, "%S+") do
@@ -86,6 +100,7 @@ rrpg.listen('HandleChatTextInput',
 				arg[index] = i;
 			end;
 
+			-- Para cada palavra na frase veja
 			local changed = false;
 			for i=1, #arg, 1 do
 				local token = utils.removerFmtChat(arg[i]);
@@ -95,17 +110,20 @@ rrpg.listen('HandleChatTextInput',
 
 				local meme;
 
+				-- Se a palavra termina e começa em ":" veja se existe um url associado a palavra e salve o url
 				if dot1==":" and dot2==":" then
 					local tk = string.sub(token, 2, token:len()-1);
 					meme = memedb.link[tk];
 				end;
 
+				-- Se existe um url associado faça a troca da palavra por ele e marque que você alterou algo. 
 				if meme ~=nil then
 					changed = true;
 					arg[i] = "[§I " .. meme .. "]";
 				end;
 				text = text .. arg[i] .. " ";
 			end;
+			-- Se algo foi alterado envie esse texto alterado no lugar. 
 			if changed then
 				message.response = {newText = text};
 			end;
@@ -116,11 +134,20 @@ rrpg.listen('HandleChatTextInput',
 -- Implementação dos comandos
 rrpg.messaging.listen("HandleChatCommand", 
 	function (message)
-		if message.comando == "savedmemes" then
+		-- Exibe todos memes salvos. 
+		if message.comando == "memesaver" then
+			local cfgForm = getConfigWindow(message.mesa);
+
+			if (cfgForm) then
+				cfgForm:show();
+			end;
+
+			message.response = {handled = true};
+		elseif message.comando == "savedmemes" then
 			message.chat:escrever(lang("memes.savedMemes") .. ": ");
 
 			local list = {};
-
+			-- concatena palavras associadas ao mesmo url
 			for k,v in pairs(memedb.link) do
 		        if list[dump(v)] == nil then
 		        	list[dump(v)] = " = :" .. k .. ":";
@@ -129,6 +156,7 @@ rrpg.messaging.listen("HandleChatCommand",
 		        end
 		    end
 
+		    -- Envia no chat as imagens e suas palvras associadas.
 		    local s = "";
 			for k,v in pairs(list) do
 				s = s .. '[§I '..k..']' .. dump(v) .. '\n';
@@ -137,8 +165,11 @@ rrpg.messaging.listen("HandleChatCommand",
 		    message.chat:escrever(s);
 
 			message.response = {handled = true};
+
+		-- Quando quando quiser adicionar um nobo item a lista
 		elseif (message.comando == "addmeme") or (message.comando == "savememe") then
 
+			-- Quebra os parametros nos espaços
 			local arg = {};
 			local index = 0;
 			for i in string.gmatch(message.parametro, "%S+") do
@@ -146,14 +177,17 @@ rrpg.messaging.listen("HandleChatCommand",
 				arg[index] = i;
 			end;
 
+			-- Caso o comando tenha recibido parametros insuficientes, da instruções de uso
 			if index < 2 then
 				message.chat:escrever(lang("memes.addMeme.commandInstruction"));
 				message.response = {handled = true};
 				return;
 			end;
 
+			-- Pega o texto de feedback de sucesso e adiciona o url a ele
 			local text =  string.format(lang("memes.addMeme.successFeedback") .. ": ", arg[1]);
 			
+			-- salva o url para cada nome passado nos parametros
 			for i=2, #arg, 1 do
 				memedb.link[arg[i]] = arg[1];
 				text = text .. arg[i];
@@ -162,11 +196,14 @@ rrpg.messaging.listen("HandleChatCommand",
 				end;
 			end;
 
+			-- Da a mensagem de sucesso
 			message.chat:escrever(text);
 
 			message.response = {handled = true};
+		-- Trata o comando de remoção de meme
 		elseif (message.comando == "removermeme") or (message.comando == "removememe") then
 
+			-- Quebra os parametros nos espaços
 			local arg = {};
 			local index = 0;
 			for i in string.gmatch(message.parametro, "%S+") do
@@ -174,14 +211,17 @@ rrpg.messaging.listen("HandleChatCommand",
 				arg[index] = i;
 			end;
 
+			-- Caso o comando tenha recibido parametros insuficientes, da instruções de uso
 			if index < 1 then
 				message.chat:escrever(lang("memes.removeMeme.commandInstruction"));
 				message.response = {handled = true};
 				return;
 			end;
 
+			-- Pega o texto de feedback de sucesso e adiciona o url a ele
 			local text = string.format(lang("memes.removeMeme.successFeedback") .. ": ", memedb.link[arg[1]]);
 			
+			-- remove o link associado as palavras
 			for i=1, #arg, 1 do
 				memedb.link[arg[i]] = nil;
 				text = text .. arg[i];
@@ -193,11 +233,13 @@ rrpg.messaging.listen("HandleChatCommand",
 			message.chat:escrever(text);
 
 			message.response = {handled = true};
+		-- Exibe os memes salvos num formato util para compartilha-los
 		elseif message.comando == "memeshare" then
 			message.chat:escrever(lang("memes.savedMemes") .. ": ");
 
 			local list = {};
 
+			-- concatena palavras associadas ao mesmo url
 			for k,v in pairs(memedb.link) do
 		        if list[dump(v)] == nil then
 		        	list[dump(v)] = k;
@@ -206,6 +248,7 @@ rrpg.messaging.listen("HandleChatCommand",
 		        end
 		    end
 
+		    -- Exibe a lista ja com o comando para add os memes. Passe essa lista a um colega para ele copiar seus memes
 			local s = "";
 			for k,v in pairs(list) do
 		        s = s .. '/addmeme '..k..' ' .. dump(v) .. '\n';
