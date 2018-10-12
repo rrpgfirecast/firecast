@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle class="fundo">
+	<scrollBox align="client">
+		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="2" name="fraFrenteLayout">
+			<!-- PARTE SUPERIOR DA FRENTE -->
+			<flowLayout class="oneLineTile" autoHeight="true" minScaledWidth="290" horzAlign="center">
+				<!-- NOME DO PERSONAGEM -->				
+				
+				<flowPart name="flwNome1" minWidth="320" maxWidth="1600" frameStyle="frames/banner/dragon.xml" height="175" vertAlign="center" avoidScale="true">							
+					<layout align="client" name="layNomeHolderFrente">
+							<edit name="edtNome1" field="nome" class="transparente vcenter" fontSize="17" align="client"/>
+							<label margins="{left=3}" name="labNome1" align="bottom" text="NOME DO PERSONAGEM" class="tituloCampo" autoSize="true"/>
+					</layout>
+				</flowPart>								
+
+				<!-- GRID DE INFORMACOES SUPERIORES DA FRENTE -->
+				<flowLayout  minWidth="320" maxWidth="1600" name="fraUpperGridFrente" avoidScale="true" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" vertAlign="trailing" maxControlsPerLine="3">								
+						<upperGridCampo field="classeENivel" minWidth="100" titulo="CLASSE E NIVEL"/>
+						<upperGridCampo field="antecedentes" titulo="ANTECEDENTES"/>
+						<upperGridCampo field="nomeDoJogador" titulo="JOGADOR"/>									
+						<upperGridCampo field="raca" minWidth="100" titulo="RAÇA"/>
+						<upperGridCampo field="tendencia" titulo="TENDÊNCIA"/>
+						<upperGridCampo field="experiencia.valor" titulo="EXPERIÊNCIA"/>
+				</flowLayout>
+			</flowLayout>							
+			<flowLineBreak/>
+			
+			<!-- SEGUNDA PARTE -->
+			
+			<flowLayout class="oneLineTile" horzAlign="justify" autoHeight="true" avoidScale="true">
+				<!-- INSPIRACAO -->
+				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit1/frame.xml">
+					<edit align="left" class="pericia" field="inspiracao" width="65"/>
+					<label align="client" text="INSPIRAÇÃO" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+				</flowPart>
+				
+				
+				<!-- BONUS PROFICIENCIA -->
+				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
+					<edit align="left" class="pericia" field="bonusProficiencia" width="70"/>
+					<label align="client" text="BONUS DE PROFICIÊNCIA" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+				</flowPart>	
+
+				<!-- SABEDORIA PASSIVA / PERCEPCAO -->
+				<flowPart minWidth="280" maxWidth="800" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
+					<edit align="left" class="pericia" field="sabedoriaPassiva" width="70"/>
+					<label align="client" text="SABEDORIA PASSIVA (PERCEPÇÃO)" textTrimming="none" wordWrap="true" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
+				</flowPart>	
+			</flowLayout>
+			
+			<flowLineBreak/>
+			<!-- TERCEIRA PARTE -->
+			
+			<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center">
+			<!-- ATRIBUTOS -->
+			
+				<flowLayout name="fraLayAtributos" class="tile" vertAlign="leading" autoHeight="true" minScaledWidth="290" maxControlsPerLine="3" horzAlign="center"
+							lineSpacing="10" frameStyle="frames/panel1/frame.xml" 
+							margins="{left=2, top=2, right=16, bottom=4}" avoidScale="true">
+					<boxAtributo titulo="FORÇA" field="forca">		
+						{{"Atletismo", "atletismo"}}
+					</boxAtributo>
+					
+					<boxAtributo titulo="DESTREZA" field="destreza">									
+						{{"Acrobacia", "acrobacia"}, 
+						 {"Furtividade", "furtividade"},
+						 {"Prestidigitação", "prestidigitacao"}}
+					</boxAtributo>
+					
+					<boxAtributo titulo="CONSTITUIÇÃO" field="constituicao"/>								
+
+					<boxAtributo titulo="INTELIGÊNCIA" field="inteligencia">
+						{{"Arcanismo", "arcanismo"}, 
+						 {"História", "historia"},
+						 {"Investigação", "investigacao"},
+						 {"Natureza", "natureza"},
+						 {"Religião", "religiao"}}								
+					</boxAtributo>
+					
+					<boxAtributo titulo="SABEDORIA" field="sabedoria">
+						{{"Adestrar Animais", "adestrarAnimais"}, 
+						 {"Intuição", "intuicao"},
+						 {"Medicina", "medicina"},
+						 {"Percepção", "percepcao"},
+						 {"Sobrevivência", "sobrevivencia"}}									
+					</boxAtributo>
+					
+					<boxAtributo titulo="CARISMA" field="carisma">
+						{{"Atuação", "atuacao"}, 
+						 {"Enganação", "enganacao"},
+						 {"Intimidação", "intimidacao"},
+						 {"Persuasão", "persuasao"}}									 
+					</boxAtributo>
+				</flowLayout>
+				
+				<!-- segunda coluna -->
+				
+				<flowLayout autoHeight="true" horzAlign="center" vertAlign="leading" 
+							class="halfTile" maxControlsPerLine="1">
+					<!-- CA, Iniciativa e Deslocamento -->
+					
+					<flowLayout minWidth="235" maxWidth="475" autoHeight="true" avoidScale="false" vertAlign="center" horzAlign="justify">
+							<!-- CA -->
+							<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/shield/frame.xml">
+								<label align="top" text="CLASSE DE ARMADURA" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+								<edit align="client" class="atributo transparente" field="CA" fontSize="30"/>	
+							</flowPart>
+							
+							<!-- INICIATIVA -->
+							<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">
+								<label align="top" text="INICIATIVA" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+								<edit align="client" class="atributo transparente" field="iniciativa" fontSize="30"/>	
+							</flowPart>		
+
+							<!-- DESLOCAMENTO -->
+
+							<flowPart stepSizes="{105}" minScaledWidth="75" height="120" frameStyle="frames/panel4transp/frame.xml">
+								<label align="top" text="DESLOCAMENTO" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+								<edit align="client" class="atributo transparente" field="deslocamento" fontSize="30"/>	
+							</flowPart>	
+					</flowLayout>		
+
+					<!-- PONTOS DE VIDA -->
+					<flowPart minWidth="235" maxWidth="475" minScaledWidth="200" height="175" margins="{left=2, right=2, top=4, bottom=8}">
+					<!-- PONTOS DE VIDA ATUAL -->
+						<frame align="client" frameStyle="frames/panel5/topPanel.xml" margins="{left = 4, right = 4, bottom=4}">
+							<layout align="top" height="25">
+								<label align="left" class="tituloCampo" autoSize="true" text="PONTOS DE VIDA MÁXIMO:" textTrimming="none" wordWrap="false" fontSize="12" horzTextAlign="trailing"/>
+								<layout align="client" margins="{left=5, right=3}">
+									<edit align="client" class="transparente" field="PVMax" vertTextAlign="center" horzTextAlign="center"/>
+									<horzLine align="bottom" strokeColor="gray"/>
+								</layout>
+							</layout>
+							<edit align="client" field="PV" class="transparente" margins="{top=2}" horzTextAlign="center" vertTextAlign="center" fontSize="36" fontStyle="bold"/>
+							<label align="bottom" autoSize="true" text="PONTOS DE VIDA ATUAL" fontSize="11" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						</frame>	
+																			
+						<!-- PONTOS DE VIDA TEMPORARIO -->
+						<frame align="bottom" height="70" frameStyle="frames/panel5/bottomPanel.xml" margins="{left = 4, right = 4}">
+							<edit align="client" field="PVTemporario" class="transparente" margins="{top=2}" horzTextAlign="center" vertTextAlign="center" fontSize="36" fontStyle="bold"/>
+							<label align="bottom" autoSize="true" text="PONTOS DE VIDA TEMPORÁRIOS" fontSize="11" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+						</frame>		
+					</flowPart>		
+
+					<!-- TESTES DE VIDA -->
+					<flowLayout autoHeight="true" minWidth="235" maxWidth="475" minScaledWidth="235" horzAlign="justify">
+						<!-- DADOS DE VIDA -->
+						<flowPart frameStyle="frames/panel4transp/frame.xml" stepSizes="{130, 150, 160}" height="100">
+							<layout align="top" height="25">
+								<label align="left" class="tituloCampo" autoSize="true" text="TOTAL:" textTrimming="none" wordWrap="false" fontSize="10" horzTextAlign="trailing"/>
+								<layout align="client" margins="{left=5, right=3}">
+									<edit align="client" class="transparente" field="DadosDeVidaTotal" vertTextAlign="center" horzTextAlign="center"/>
+									<horzLine align="bottom" strokeColor="gray"/>
+								</layout>
+							</layout>
+							<edit align="client" field="DadosDeVida" class="transparente" margins="{top=2}" horzTextAlign="center" vertTextAlign="center" fontSize="21"/>
+							<label align="bottom" autoSize="true" text="DADOS DE VIDA" fontSize="11" vertTextAlign="center" horzTextAlign="center"/>
+						</flowPart>	
+																			
+						<!-- TESTES CONTRA MORTE -->
+						<flowPart frameStyle="frames/panel4transp/frame.xml" stepSizes="{170, 170}" height="100">
+							<layout align="top" height="25" margins="{left=2}">
+								<label align="client" autoSize="true" fontSize="10" text="SUCESSOS" wordWrap="false" vertTextAlign="center" horzTextAlign="trailing" margins="{right=6}"/>
+								<dndCheckBox align="right" width="25" field="testesContraMorte.s0" margins="{right=2}"/>
+								<dndCheckBox align="right" width="25" field="testesContraMorte.s1" margins="{right=2}"/>
+								<dndCheckBox align="right" width="25" field="testesContraMorte.s2" margins="{right=6}"/>
+							</layout>
+							
+							<layout align="top" height="25" margins="{left=2, top = 4}">
+								<label align="client" autoSize="true" fontSize="10" text="FALHAS" vertTextAlign="center" horzTextAlign="trailing" margins="{right=6}"/>
+								<dndCheckBox align="right" width="25" field="testesContraMorte.f0" margins="{right=2}"/>
+								<dndCheckBox align="right" width="25" field="testesContraMorte.f1" margins="{right=2}"/>
+								<dndCheckBox align="right" width="25" field="testesContraMorte.f2" margins="{right=6}"/>
+							</layout>
+							<label align="bottom" autoSize="true" text="TESTE CONTRA MORTE" fontSize="11" vertTextAlign="center" horzTextAlign="center" />
+						</flowPart>		
+					</flowLayout>										
+				</flowLayout>	
+			</flowLayout>
+		</flowLayout>	
+	</scrollBox>
+</rectangle>	

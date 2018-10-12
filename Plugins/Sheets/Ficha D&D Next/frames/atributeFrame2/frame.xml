@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame width="345" height="128" autoScaleY="true">
+	<borders left="6" top="8" bottom="12" right="6" />
+	<draw>	
+			<!-- QUADRADO -->
+			<image left="0" top="0" right="159" bottom="128" overflowX="stretch" overflowY="stretch" zOrder="-1">
+				<anchors left="true" top="true" bottom="true" right="false"/>
+				<source url="quadrado.png" left="0" right="159" top="0" bottom="128"/>
+			</image>		
+
+			<!-- LINHA SUPERIOR -->
+			<image left="159" top="0" right="337" bottom="6" overflowX="stretch" overflowY="stretch" zOrder="-1">
+				<anchors left="true" top="true" bottom="true" right="true"/>
+				<source url="linhaSup.png" left="0" right="159" top="0" bottom="6"/>
+			</image>	
+
+			<!-- Corner -->
+			<image left="337" top="0" right="345" bottom="6" overflowX="stretch" overflowY="stretch" zOrder="-1">
+				<anchors left="false" top="true" bottom="true" right="true"/>
+				<source url="corner.png" left="0" right="8" top="0" bottom="8"/>
+			</image>
+	</draw>
+	
+	<regions>
+		<region name="RegiaoDePericias" left="142" top="10" right="342" bottom="127">
+			<anchors left="true" top="true" bottom="true" right="true"/>		
+		</region>
+		
+		<region name="modificador" left="5" top="48" right="122" bottom="94">
+			<anchors left="true" top="true" bottom="true"/>		
+		</region>
+
+		<region name="titulo" left="5" top="94" right="122" bottom="118">
+			<anchors left="true" top="true" bottom="true"/>		
+		</region>		
+	</regions>
+</frame>

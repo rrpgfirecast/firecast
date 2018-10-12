@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rectangle class="fundo">
+	<style>
+		flowPart.magicHeader {
+			avoidScale: true;
+			minScaledWidth: 280;
+			minWidth: 300;
+			maxWidth: 600;
+			height: 80;			
+		}
+		
+		label.magicLevelNumber {			
+			horzTextAlign: center;
+			vertTextAlign: center;
+			fontSize: 18;			
+		}
+		
+		edit.magicLevelInformation {
+			horzTextAlign: center;
+			vertTextAlign: center;
+			fontSize: 18;
+			transparent: true;
+		}
+		
+		flowLayout.magicTile, flowPart.magicTile {
+			margins: {left=10, right=10, top=4, bottom=4};
+		}
+	</style>	
+
+	<template name="magicHeader0">
+		<flowPart class="magicHeader" frameStyle="frames/magicHeader/header0.xml">
+			<label frameRegion="RegiaoSmallTitulo" text="0" class="magicLevelNumber"/>
+			<label frameRegion="RegiaoConteudo" text="PRECES E TRUQUES" fontSize="15" horzTextAlign="center" vertTextAlign="center"/>
+		</flowPart>
+	</template>
+	
+	<template name="magicHeaderN">
+		<flowPart class="magicHeader" frameStyle="frames/magicHeader/header1.xml">
+			<label frameRegion="RegiaoSmallTitulo" text="$(level)" class="magicLevelNumber"/>
+			<edit frameRegion="RegiaoConteudo1" class="magicLevelInformation" field="magias.espacosTotais$(level)"/>
+			<edit frameRegion="RegiaoConteudo2" class="magicLevelInformation" field="magias.espacosGastos$(level)"/>
+		</flowPart>	
+	</template>	
+
+	<template name="magicRecordList">
+		<!-- baseName = uniqueName("flwMagicRecordList"); 
+		
+			if (tonumber(level) <= 0) then
+				templateFormForThisGroup = "frmMagiaItemSemCheckbox";
+			else
+				templateFormForThisGroup = "frmMagiaItemComCheckbox";
+			end;
+		-->
+	
+		<flowPart minWidth="300" maxWidth="600" minScaledWidth="280" name="$(baseName)">																			
+			<script>
+				<![CDATA[
+					rawset(self.$(baseName), "_recalcHeight", 					
+						function ()
+							self.$(baseName).height = self.rcl$(baseName).height +
+														self.layBottom$(baseName).height + 
+														self.$(baseName).padding.top + self.$(baseName).padding.bottom + 7;
+						end);
+				]]>
+			</script>			
+		
+			<recordList name="rcl$(baseName)" align="top" field="magias.magias.nivel$(level)" templateForm="$(templateFormForThisGroup)" 
+						autoHeight="true" minHeight="5" onResize="self.$(baseName)._recalcHeight();" hitTest="false" margins="{left=10, right=10}"/>					
+						
+			<layout name="layBottom$(baseName)" align="top" height="36">			
+				<button name="btnNovo$(baseName)" align="left" onClick="self.rcl$(baseName):append();" text="Nova Magia" width="160" margins="{top=4, bottom=4, left=48}"/>								
+			</layout>	
+			
+		</flowPart>
+			
+		<script>self.$(baseName)._recalcHeight();</script>			
+	</template>
+	
+	<template name="magicsLayout0">
+		<flowLayout class="halfTile3 magicTile" height="100" avoidScale="true" maxControlsPerLine="1" autoHeight="true">
+			<magicHeader0/>
+			<magicRecordList level="0"/>
+		</flowLayout>	
+	</template>
+	
+	<template name="magicsLayoutN">
+		<flowLayout class="halfTile3 magicTile" height="100" avoidScale="true" maxControlsPerLine="1" autoHeight="true">
+			<magicHeaderN level="$(level)"/>
+			<magicRecordList level="$(level)"/>			
+		</flowLayout>	
+	</template>	
+	
+	<template name="magicInfoField">
+		<flowPart minWidth="30" maxWidth="400" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+		</flowPart>
+	</template>
+	
+	<popup name="popMagia" width="250" height="250" backOpacity="0.4">
+		<edit align="top" class="" field="nome" textPrompt="NOME DA MAGIA" horzTextAlign="center"/>
+	
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+			<magicInfoField text="TEMPO FORMULAÇÃO" field="tempoDeFormulacao"/>
+			<magicInfoField text="ALCANCE" field="alcance"/>
+			<magicInfoField text="COMPONENTES" field="componentes"/>
+			<magicInfoField text="DURAÇÃO" field="duracao"/>
+		</flowLayout>
+		
+		<textEditor align="client" field="descricao" class=""/>
+	</popup>
+	
+	<scrollBox align="client">
+		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="3" name="fraMagiasLayout">
+			<!-- Primeira Linha -->
+			<flowLayout class="oneLineTile2" autoHeight="true" minScaledWidth="290" horzAlign="center">
+				<!-- CLASSE CONJURADORA -->													
+				<flowPart class="tile" minWidth="320" maxWidth="1600" frameStyle="frames/banner/magicGroup.xml" height="175" vertAlign="center" avoidScale="true">							
+					<layout align="client">
+							<edit field="magias.classeConjuradora" class="transparente vcenter" fontSize="17" align="client"/>
+							<label align="bottom" text="CLASSE CONJURADORA" class="tituloCampo" autoSize="true" margins="{left=3}"/>
+					</layout>
+				</flowPart>				
+		
+				<!-- GRID DE INFORMACOES SUPERIORES DA FRENTE -->
+				<flowLayout class="halfTile2"  minWidth="320" maxWidth="1600" name="fraUpperGridMagias" avoidScale="true" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" vertAlign="trailing" 
+						maxControlsPerLine="2" horzAlign="center" lineSpacing="8">								
+					<upperGridMagicComboBox minWidth="145" field="magias.habilidadeDeConjuracao" titulo="HABILIDADE DE CONJURAÇÃO" items="{'', 'INTELIGÊNCIA', 'SABEDORIA', 'CARISMA'}" values="{'', 'int', 'sab', 'car'}"/>
+					<upperGridMagicBox field="magias.cdDaMagia" titulo="CD DA MAGIA"/>
+					<upperGridMagicBox field="magias.bonusAtaqueSTR" titulo="BÔNUS DE ATAQUE DE MAGIA"/>									
+					<upperGridMagicEditBox field="magias.spKi" titulo="SP/Ki"/>					
+				</flowLayout>	
+			</flowLayout>			
+	
+			<dataLink fields="{'magias.habilidadeDeConjuracao', 'atributos.modInteligencia', 'atributos.modSabedoria', 'atributos.modCarisma', 'bonusProficiencia'}">
+				<event name="onChange">	<![CDATA[
+					local hab = nil;
+					local bonusProficiencia = nil;
+					local spellSaveValue = nil;
+					local spellAttackValue = nil;
+					local modHab = nil;
+					
+					if sheet.magias == nil then	
+						sheet.magias = {};											
+					end;
+					
+					if sheet.atributos == nil then
+						sheet.atributos = {};
+					end;
+					
+					hab = sheet.magias.habilidadeDeConjuracao;
+					
+					if hab == "int" then
+						modHab = tonumber(sheet.atributos.modInteligencia);
+					elseif hab == "sab" then
+						modHab = tonumber(sheet.atributos.modSabedoria);
+					elseif hab == "car" then
+						modHab = tonumber(sheet.atributos.modCarisma);
+					end;
+					
+					bonusProficiencia = tonumber(sheet.bonusProficiencia);
+					
+					if bonusProficiencia == nil then
+						bonusProficiencia = 0;
+					end;
+					
+					if modHab ~= nil then
+						spellSaveValue = 8 + modHab + bonusProficiencia;
+						spellAttackValue = modHab + bonusProficiencia;
+					end;
+					
+					sheet.magias.cdDaMagia = spellSaveValue;
+					sheet.magias.bonusAtaque = spellAttackValue;
+					
+					if spellAttackValue ~= nil then	
+						if spellAttackValue >= 0 then
+							sheet.magias.bonusAtaqueSTR = "+" .. spellAttackValue;
+						else
+							sheet.magias.bonusAtaqueSTR = spellAttackValue;
+						end;
+					else	
+						sheet.magias.bonusAtaqueSTR = nil;
+					end;
+					]]>
+				</event>
+			</dataLink>
+	
+			<flowLineBreak/>	
+
+			<!-- Itens de Magia -->
+			
+			<flowLayout class="oneLineTile2" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical">
+				<magicsLayout0/>
+				<magicsLayoutN level="1"/>			
+				<magicsLayoutN level="2"/>
+				<magicsLayoutN level="3"/>
+				<magicsLayoutN level="4"/>
+				<magicsLayoutN level="5"/>
+				<magicsLayoutN level="6"/>
+				<magicsLayoutN level="7"/>
+				<magicsLayoutN level="8"/>
+				<magicsLayoutN level="9"/>	
+			</flowLayout>			
+		</flowLayout>			
+	</scrollBox> 
+</rectangle>	

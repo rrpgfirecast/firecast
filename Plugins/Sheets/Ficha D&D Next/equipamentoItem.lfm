@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmEquipamentoItem">
+		<import file="templates.xml"/>
+		<import file="styles.xml"/>
+		
+		<style>
+			flowLayout, flowPart {
+				margins: {left=5, right=5, top=2, bottom=2};
+			}
+			
+			.contentLayout {
+				margins: {top=8, bottom=8};
+			}
+			
+			#layMenu button {
+				margins: {bottom=6};
+				height: 32;
+			}
+		</style>
+
+		<script> 
+			<![CDATA[
+			local function atualizarDesiredHeight()
+				local margins = self.layPrincipal.margins;
+				local h = self.fraLayout:getHeight() + 2 + margins.top + margins.bottom;
+				local ultObjMenu = self.btnRolarAtaque;
+				local mH = ultObjMenu.top + ultObjMenu.height + self.layMenu.top + self.layMenu.margins.bottom;
+				
+				if h < mH then
+					h = mH;
+				end;
+				
+				self.height = h;			
+			end;
+			
+			local function askForDelete()
+				dialogs.confirmYesNo("Deseja realmente apagar este item?",
+									 function (confirmado)
+										if confirmado then
+											ndb.deleteNode(self.sheet);
+										end;
+									 end);
+			end;
+			
+			local function rolarAtaque()
+				local personagem = rrpg.getPersonagemDe(sheet);				
+				
+				if (personagem ~= nil) then
+					local mesa = personagem.mesa;
+				
+					if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+						-- rollar						
+						local rolagem = rrpg.interpretarRolagem(sheet.ataque);
+						local rolagemDano = rrpg.interpretarRolagem(sheet.dano);
+						local ataqueStr = "Ataque";
+						local danoStr = "Dano";
+						
+						if not rolagem.possuiAlgumDado then
+							rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
+						end;
+										
+						if sheet.nome ~= nil then
+							ataqueStr = ataqueStr .. " - " .. sheet.nome .. "";
+							danoStr = danoStr .. " - " .. sheet.nome .. "";
+						end;
+										
+						mesa.chat:rolarDados(rolagem, ataqueStr);						
+						
+						if (#rolagemDano.ops > 0) and (rolagemDano.possuiAlgumDado) then					
+							mesa.chat:rolarDados(rolagemDano, danoStr);
+						end;
+					else
+						showMessage("Você não pode rolar dados por este personagem");
+					end;
+				end;
+			end;
+				
+			]]>		
+		</script>
+		
+		<layout align="left" width="64" margins="{top=10, left=3, bottom=10}" name="layMenu">
+			<button align="top" text="Apagar" name="btnApagar" onClick="askForDelete();"/>							
+			<button name="btnRolarAtaque" align="top" text="Rolar" onClick="rolarAtaque();"/>						
+		</layout>
+		
+		
+		<layout align="client" class="contentLayout" margins="{top=8, bottom=8}" name="layPrincipal">
+			<flowLayout class="tile" name="fraLayout" avoidScale="true" 
+						autoHeight="true" vertAlign="trailing" align="top" 
+						lineSpacing="2" horzAlign="justify" onResize="atualizarDesiredHeight();">	
+						
+						
+					<upperGridCampoSolido height="40" field="nome" minWidth="190" maxWidth="400" titulo="NOME"/>
+					<upperGridCampoSolido height="40" field="peso" minWidth="50" maxWidth="200" titulo="PESO"/>				
+					<upperGridCampoSolido height="40" field="ataque" minWidth="80" titulo="ATAQUE"/>
+					<upperGridCampoSolido height="40" field="dano" minWidth="80" titulo="DANO"/>									
+					<upperGridCampoSolido height="40" field="tipo" minWidth="100" titulo="TIPO"/>
+
+					<upperGridCampoSolido height="40" field="propriedades" minWidth="150" maxWidth="360" titulo="PROPRIEDADES"/>
+					<upperGridCampoSolido height="40" field="alcance" titulo="ALCANCE"/>
+					<upperGridCampoSolido height="40" field="municao" titulo="MUNIÇÃO"/>
+					<upperGridCampoSolido height="40" field="qtMunicao" titulo="QT MUN." maxWidth="80" minWidth="50"/>
+			</flowLayout>	
+		</layout>
+		
+	<event name="onScopeNodeChanged"><![CDATA[
+		local oldNode = rawget(self, "__attachedScopeNode");
+		local mesa = rawget(self, "__attachedMesa");
+		
+		if (oldNode ~= nil) then
+		
+		end;
+		
+		local newNode = self.scopeNode;
+		mesa = nil;
+		
+		if newNode ~= nil then
+			mesa = rrpg.getMesaDe(newNode);
+		end;
+		
+		if mesa ~= nil then
+			self.btnRolarAtaque.visible = true;
+		else
+			self.btnRolarAtaque.visible = false;
+		end;
+		
+		rawset(self, "__attachedScopeNode", newNode);
+		rawget(self, "__attachedMesa", mesa);
+		]]>
+	</event>
+</form>

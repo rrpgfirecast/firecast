@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmEquipamentoItemDefesa">
+		<import file="templates.xml"/>
+		<import file="styles.xml"/>
+		
+		<style>
+			flowLayout, flowPart {
+				margins: {left=5, right=5, top=2, bottom=2};
+			}
+			
+			.contentLayout {
+				margins: {top=8, bottom=8};
+			}
+			
+			#layMenu button {
+				margins: {bottom=6};
+				height: 32;
+			}
+		</style>
+
+		<script> 
+			<![CDATA[
+			local function atualizarDesiredHeight()
+				local margins = self.layPrincipal.margins;
+				local h = self.fraLayout:getHeight() + 2 + margins.top + margins.bottom;
+				local ultObjMenu = self.btnApagar;
+				local mH = ultObjMenu.top + ultObjMenu.height + self.layMenu.top + self.layMenu.margins.bottom;
+				
+				if h < mH then
+					h = mH;
+				end;
+				
+				self.height = h;			
+			end;
+			
+			local function askForDelete()
+				dialogs.confirmYesNo("Deseja realmente apagar este item?",
+									 function (confirmado)
+										if confirmado then
+											ndb.deleteNode(self.sheet);
+										end;
+									 end);
+			end;
+				
+			]]>		
+		</script>
+		
+		<layout align="left" width="64" margins="{top=10, left=3, bottom=10}" name="layMenu">		
+			<button align="top" text="Apagar" name="btnApagar" onClick="askForDelete();"/>							
+		</layout>
+		
+		
+		<layout align="client" class="contentLayout" margins="{top=8, bottom=8}" name="layPrincipal">
+			<flowLayout class="tile" name="fraLayout" avoidScale="true" 
+						autoHeight="true" vertAlign="trailing" align="top" 
+						lineSpacing="2" horzAlign="justify" onResize="atualizarDesiredHeight();">	
+						
+						
+					<upperGridCampoSolido height="40" field="nome" minWidth="190" maxWidth="400" titulo="NOME"/>
+					<upperGridCampoSolido height="40" field="peso" minWidth="50" maxWidth="200" titulo="PESO"/>											
+					<upperGridCampoSolido height="40" field="tipo" minWidth="100" titulo="TIPO"/>				
+					<upperGridCampoSolido height="40" field="caBonus" titulo="CA BÔNUS"/>									
+					<upperGridCampoSolidoCheckBox height="40" field="penalidade" titulo="PEN"/>
+					<upperGridCampoSolido height="40" field="propriedades" minWidth="150" maxWidth="360" titulo="PROPRIEDADES"/>
+			</flowLayout>	
+		</layout>
+</form>
