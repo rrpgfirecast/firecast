@@ -21,8 +21,8 @@
 		<label left="620" top="400" width="200" height="20" text="VERSÃO ATUAL:" field="versionDownloaded"/>
 		<checkBox left="620" top="425" width="200" height="20" field="noUpdate" text="Não pedir para atualizar."/>
 		
-		<button left="620" top="475" width="100" text="Change Log" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/README.md')" />
-		<button left="730" top="475" width="100" text="Atualizar" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true')"/>
+		<button left="620" top="475" width="100" text="Change Log" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20D%26D%20Next/README.md')" />
+		<button left="730" top="475" width="100" text="Atualizar" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20D&amp;D%20Next/output/Ficha%20D&amp;D%20Next.rpk?raw=true')"/>
 		<button left="840" top="475" width="100" text="Tutorial" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/__Tutorial/Ficha%20RPG%20meister%20-%20Tutorial.docx?raw=true')" />
 		
 		<label left="620" top="525" width="120" height="20" text="CONHEÇA A MESA:" fontSize="11"/>

@@ -57,39 +57,21 @@
 				<flowLayout name="fraLayAtributos" class="tile" vertAlign="leading" autoHeight="true" minScaledWidth="290" maxControlsPerLine="3" horzAlign="center"
 							lineSpacing="10" frameStyle="frames/panel1/frame.xml" 
 							margins="{left=2, top=2, right=16, bottom=4}" avoidScale="true">
-					<boxAtributo titulo="FORÇA" field="forca">		
-						{{"Atletismo", "atletismo"}}
+					<boxAtributo titulo="FORÇA" field="forca">
 					</boxAtributo>
 					
-					<boxAtributo titulo="DESTREZA" field="destreza">									
-						{{"Acrobacia", "acrobacia"}, 
-						 {"Furtividade", "furtividade"},
-						 {"Prestidigitação", "prestidigitacao"}}
+					<boxAtributo titulo="DESTREZA" field="destreza">
 					</boxAtributo>
 					
 					<boxAtributo titulo="CONSTITUIÇÃO" field="constituicao"/>								
 
-					<boxAtributo titulo="INTELIGÊNCIA" field="inteligencia">
-						{{"Arcanismo", "arcanismo"}, 
-						 {"História", "historia"},
-						 {"Investigação", "investigacao"},
-						 {"Natureza", "natureza"},
-						 {"Religião", "religiao"}}								
+					<boxAtributo titulo="INTELIGÊNCIA" field="inteligencia">							
 					</boxAtributo>
 					
-					<boxAtributo titulo="SABEDORIA" field="sabedoria">
-						{{"Adestrar Animais", "adestrarAnimais"}, 
-						 {"Intuição", "intuicao"},
-						 {"Medicina", "medicina"},
-						 {"Percepção", "percepcao"},
-						 {"Sobrevivência", "sobrevivencia"}}									
+					<boxAtributo titulo="SABEDORIA" field="sabedoria">									
 					</boxAtributo>
 					
-					<boxAtributo titulo="CARISMA" field="carisma">
-						{{"Atuação", "atuacao"}, 
-						 {"Enganação", "enganacao"},
-						 {"Intimidação", "intimidacao"},
-						 {"Persuasão", "persuasao"}}									 
+					<boxAtributo titulo="CARISMA" field="carisma">								 
 					</boxAtributo>
 				</flowLayout>
 				

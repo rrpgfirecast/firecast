@@ -8,4 +8,14 @@
 				<source url="fundo.png" left="0" right="128" top="0" bottom="123"/>
 			</image>				
 	</draw>
+	
+	<regions>
+		<region name="modificador" left="5" top="48" right="122" bottom="94">
+			<anchors left="true" top="true" bottom="true"/>		
+		</region>
+
+		<region name="titulo" left="5" top="94" right="122" bottom="118">
+			<anchors left="true" top="true" bottom="true"/>		
+		</region>		
+	</regions>
 </frame>

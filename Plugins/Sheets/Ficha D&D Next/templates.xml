@@ -185,119 +185,13 @@
 			</event>
 		</dataLink>
 		
-		<flowPart height="140" minWidth="320" maxWidth="420" minScaledWidth="305" frameStyle="frames/atributeFrame2/frame.xml">
+		<flowPart height="140" minWidth="128" maxWidth="128" minScaledWidth="128" frameStyle="frames/atributeFrame/frame.xml">
 			<layout left="6" top="12" width="116" height="115">
 				<edit class="atributo"  align="top" margins="{left=30, right=30}" field="atributos.$(field)" height="30" type="number" min="0" max="99"/>								
 			</layout>
 			
 			<label frameRegion="modificador" field="atributos.mod$(field)str" horzTextAlign="center" vertTextAlign="center" fontSize="46" fontStyle="bold"/>
 			<label frameRegion="titulo" text="$(titulo)" vertTextAlign="center" horzTextAlign="center"/>
-			
-			<flowLayout frameRegion="RegiaoDePericias" autoHeight="true" lineSpacing="0" horzAlign="leading">			
-				<boxPericia field="$('resistencias.' .. field)" fieldBonus="resistencias.bonus$(field)str" atributo="$(field)" titulo="Teste de Resistência" losango="true"/>
-				<dataLink fields="{'atributos.mod$(field)', 'bonusProficiencia', 'resistencias.$(field)'}">
-					<event name="onChange">
-							local modificador;
-							local temResistencia;
-									
-							if sheet.atributos ~= nil then
-								modificador = sheet.atributos.mod$(field);
-								
-								if modificador ~= nil then
-									modificador = tonumber(modificador);
-								end;
-							else
-								modificador = nil;
-							end;
-							
-							if sheet.resistencias ~= nil then
-								temResistencia = sheet.resistencias.$(field) or false;
-							else
-								temResistencia = false;
-								sheet.resistencias = {};
-							end;
-													
-							
-							if modificador ~= nil then
-								local valor;
-							
-								if temResistencia then
-									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
-								else
-									valor = modificador;
-								end;								
-								
-								valor = math.tointeger(valor);
-								
-								sheet.resistencias.bonus$(field) = valor;
-								
-								if valor >= 0 then
-									sheet.resistencias.bonus$(field)str = "+" .. valor;
-								else
-									sheet.resistencias.bonus$(field)str = "-" .. math.abs(valor);
-								end;
-							else
-								sheet.resistencias.bonus$(field) = nil;
-								sheet.resistencias.bonus$(field)str = nil;
-							end;	
-					</event>		
-				</dataLink>
-			
-				<!-- for i = 1, #pericias, 1 do 
-						objPericia = pericias[i];
-						periciaTitulo = objPericia[1];
-						periciaField = objPericia[2];
-					-->								
-					<boxPericia field="$('pericias.' .. periciaField)" fieldBonus="pericias.bonus$(periciaField)str" atributo="$('atributos.' .. field)" titulo="$(periciaTitulo)"/>
-					<dataLink fields="{'atributos.mod$(field)', 'bonusProficiencia', 'pericias.$(periciaField)'}">
-						<event name="onChange">
-							local modificador;
-							local temPericia;
-									
-							if sheet.atributos ~= nil then
-								modificador = sheet.atributos.mod$(field);
-								
-								if modificador ~= nil then
-									modificador = tonumber(modificador);
-								end;
-							else
-								modificador = nil;
-							end;
-							
-							if sheet.pericias ~= nil then
-								temPericia = sheet.pericias.$(periciaField) or false;
-							else
-								temPericia = false;
-								sheet.pericias = {};
-							end;
-													
-							
-							if modificador ~= nil then
-								local valor;
-							
-								if temPericia then
-									valor = modificador	+ (tonumber(sheet.bonusProficiencia) or 0)						
-								else
-									valor = modificador;
-								end;								
-								
-								valor = math.tointeger(valor);
-								
-								sheet.pericias.bonus$(periciaField)	= valor;
-								
-								if valor >= 0 then
-									sheet.pericias.bonus$(periciaField)str = "+" .. valor;
-								else
-									sheet.pericias.bonus$(periciaField)str = "-" .. math.abs(valor);
-								end;
-							else
-								sheet.pericias.bonus$(periciaField) = nil;
-								sheet.pericias.bonus$(periciaField)str = nil;
-							end;
-						</event>
-					</dataLink>
-				<!-- end; -->
-			</flowLayout>
 		</flowPart>
 	</template>
 	
