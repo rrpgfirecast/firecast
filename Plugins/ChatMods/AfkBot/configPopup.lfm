@@ -90,5 +90,30 @@
 				</event>
 			</dataLink>
 		</tab>
+		<tab title="AutoWelcome">
+			<recordList left="10" top="5" width="270" height="490" field="welcomeList" name="welcomeList" templateForm="frmWelcomeItem" minQt="1">
+				<event name="onCompare">
+					if nodeA.user and nodeB.user then 
+						return utils.compareStringPtBr(nodeA.login, nodeB.login);
+					elseif nodeA.user then
+						return 1;
+					elseif nodeB.user then
+						return -1;
+					end;
+	        	</event>
+			</recordList>
+
+			<dataLink field="addWelcome">
+				<event name="onChange">
+					if sheet==nil then return end;
+					local addWelcome = tonumber(sheet.addWelcome) or 0;
+					if addWelcome>0 then
+						sheet.addWelcome = 0;
+						local item = self.welcomeList:append();
+						item.enabled = false;
+					end;
+				</event>
+			</dataLink>
+		</tab>
 	</tabControl>
 </popupForm>

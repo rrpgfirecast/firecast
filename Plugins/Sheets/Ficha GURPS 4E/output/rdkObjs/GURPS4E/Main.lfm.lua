@@ -2655,7 +2655,6 @@ self.flwMagicRecordList2._recalcHeight();
     obj.rclBackpack:setField("listaDeItens");
     obj.rclBackpack:setTemplateForm("frmBackpackItem");
     obj.rclBackpack:setLayout("vertical");
-    obj.rclBackpack:setMinQt(3);
 
     obj.flowPart29 = gui.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart29:setParent(obj.fraEquipamentoLayout);
@@ -3209,82 +3208,94 @@ self.flwMagicRecordList2._recalcHeight();
             self.flwMagicRecordList1._recalcHeight();
         end, obj);
 
-    obj._e_event18 = obj.btnNovoflwMagicRecordList1:addEventListener("onClick",
+    obj._e_event18 = obj.rclflwMagicRecordList1:addEventListener("onCompare",
+        function (self, nodeA, nodeB)
+            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+        end, obj);
+
+    obj._e_event19 = obj.btnNovoflwMagicRecordList1:addEventListener("onClick",
         function (self)
             self.rclflwMagicRecordList1:append();
         end, obj);
 
-    obj._e_event19 = obj.rclflwMagicRecordList2:addEventListener("onResize",
+    obj._e_event20 = obj.rclflwMagicRecordList2:addEventListener("onResize",
         function (self)
             self.flwMagicRecordList2._recalcHeight();
         end, obj);
 
-    obj._e_event20 = obj.btnNovoflwMagicRecordList2:addEventListener("onClick",
+    obj._e_event21 = obj.rclflwMagicRecordList2:addEventListener("onCompare",
+        function (self, nodeA, nodeB)
+            return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+        end, obj);
+
+    obj._e_event22 = obj.btnNovoflwMagicRecordList2:addEventListener("onClick",
         function (self)
             self.rclflwMagicRecordList2:append();
         end, obj);
 
-    obj._e_event21 = obj.button7:addEventListener("onClick",
+    obj._e_event23 = obj.button7:addEventListener("onClick",
         function (self)
             self.rclBackpack:append();
         end, obj);
 
-    obj._e_event22 = obj.rclBackpack:addEventListener("onCompare",
+    obj._e_event24 = obj.rclBackpack:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
-    obj._e_event23 = obj.button8:addEventListener("onClick",
+    obj._e_event25 = obj.button8:addEventListener("onClick",
         function (self)
             self.rclEquipments:append();
         end, obj);
 
-    obj._e_event24 = obj.rclEquipments:addEventListener("onCompare",
+    obj._e_event26 = obj.rclEquipments:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
-    obj._e_event25 = obj.labEquipAtackTit:addEventListener("onResize",
+    obj._e_event27 = obj.labEquipAtackTit:addEventListener("onResize",
         function (self)
             recalcularTamanhoEquipsEAtaques();
         end, obj);
 
-    obj._e_event26 = obj.rclEquips:addEventListener("onResize",
+    obj._e_event28 = obj.rclEquips:addEventListener("onResize",
         function (self)
             recalcularTamanhoEquipsEAtaques();
         end, obj);
 
-    obj._e_event27 = obj.rclEquips:addEventListener("onCompare",
+    obj._e_event29 = obj.rclEquips:addEventListener("onCompare",
         function (self, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
-    obj._e_event28 = obj.btnEquipAtackNew:addEventListener("onClick",
+    obj._e_event30 = obj.btnEquipAtackNew:addEventListener("onClick",
         function (self)
             self.rclEquips:append();
         end, obj);
 
-    obj._e_event29 = obj.button9:addEventListener("onClick",
+    obj._e_event31 = obj.button9:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/README.md')
         end, obj);
 
-    obj._e_event30 = obj.button10:addEventListener("onClick",
+    obj._e_event32 = obj.button10:addEventListener("onClick",
         function (self)
             gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true')
         end, obj);
 
-    obj._e_event31 = obj.button11:addEventListener("onClick",
+    obj._e_event33 = obj.button11:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event32 = obj.button12:addEventListener("onClick",
+    obj._e_event34 = obj.button12:addEventListener("onClick",
         function (self)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=131156');
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event34);
+        __o_rrpgObjs.removeEventListenerById(self._e_event33);
         __o_rrpgObjs.removeEventListenerById(self._e_event32);
         __o_rrpgObjs.removeEventListenerById(self._e_event31);
         __o_rrpgObjs.removeEventListenerById(self._e_event30);

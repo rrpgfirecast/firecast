@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.5_prealpha_5">
 	<id>MemesSaver</id>
-	<version>0.2.1</version>
+	<version>0.3</version>
 	<name>Memes Saver</name>
 	<description>Permite criar e salvar seus proprios memes. Use /help para ver opções. </description>
 	<author>Vinny Ambesek</author>

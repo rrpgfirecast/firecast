@@ -53,7 +53,11 @@
 			</script>			
 		
 			<recordList name="rcl$(baseName)" align="top" field="$(field)" templateForm="$(templateFormForThisGroup)" 
-						autoHeight="true" minHeight="5" onResize="self.$(baseName)._recalcHeight();" hitTest="false" margins="{left=10, right=10}"/>					
+						autoHeight="true" minHeight="5" onResize="self.$(baseName)._recalcHeight();" hitTest="false" margins="{left=10, right=10}">
+				<event name="onCompare">
+	                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+	        	</event>
+			</recordList>			
 						
 			<layout name="layBottom$(baseName)" align="top" height="36">			
 				<button name="btnNovo$(baseName)" align="left" onClick="self.rcl$(baseName):append();" text="Nova $(tipo)" width="160" margins="{top=4, bottom=4, left=48}"/>								

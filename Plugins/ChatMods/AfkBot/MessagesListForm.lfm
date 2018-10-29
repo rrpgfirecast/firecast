@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmMessageItem" width="250" height="240" margins="{top=1}">	
-	<button width="250" height="240" fontSize="25" text="NOVA MENSAGEM" name="add">
+	<button width="250" height="240" fontSize="25" text="NOVA MENSAGEM" name="add" visible="true">
 		<event name="onClick">
 			sheet.enabled = true;
 			local node = ndb.getParent(ndb.getParent(sheet));
