@@ -28,7 +28,7 @@ function newnicksaverPopup()
     obj:beginUpdate();
     obj:setName("nicksaverPopup");
     obj:setFormType("undefined");
-    obj:setDataType("ambesek.afkbot");
+    obj:setDataType("ambesek.nicksaver");
     obj:setTitle("AfkBot");
     obj:setWidth(290);
     obj:setHeight(300);
@@ -805,7 +805,7 @@ local _nicksaverPopup = {
     newEditor = newnicksaverPopup, 
     new = newnicksaverPopup, 
     name = "nicksaverPopup", 
-    dataType = "ambesek.afkbot", 
+    dataType = "ambesek.nicksaver", 
     formType = "undefined", 
     formComponentName = "popupForm", 
     title = "AfkBot", 
