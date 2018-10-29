@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="nicksaverPopup" formType="undefined" dataType="ambesek.afkbot" title="AfkBot" width="290" height ="300">
+<popupForm name="nicksaverPopup" formType="undefined" dataType="ambesek.nicksaver" title="AfkBot" width="290" height ="300">
 	<template name="colorExample">
 		<rectangle left="$(left)" top="$(top)" width="20" height="20" color="$(color)"/>
 		<label left="$(left)" top="$(bottom)" width="20" height="20" text="$(num)" horzTextAlign="center"/>

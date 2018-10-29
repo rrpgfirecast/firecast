@@ -87,7 +87,7 @@
 				<textEditor left="105" top="30" width="90" height="75" field="caCompDesc"/>
 			</rectangle>
 
-			<rectangle left="0" top="251" width="200" height="110" color="black">
+			<rectangle left="0" top="251" width="200" height="60" color="black">
 				<button left="5" top="8" width="70" height="20" text="Iniciativa">
 					<event name="onClick">
 						local node = self.rclListaDosCompanheiros.selectedNode;
@@ -101,29 +101,9 @@
 
 				<label left="2" top="35" width="85" height="20" text="Deslocamento" fontSize="12"/>
 				<edit left="80" top="30" width="115" height="25" field="deslocamentoComp"/>
-
-				<label left="5" top="60" width="40" height="20" text="BBA"/>
-				<edit left="35" top="55" width="55" height="25" field="bbaComp"/>
-
-				<button left="90" top="58" width="60" height="20" text="Agarrar">
-					<event name="onClick">
-						local node = self.rclListaDosCompanheiros.selectedNode;
-						local rolagem = rrpg.interpretarRolagem("1d20 + " .. (node.agarrarComp or 0));
-						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de agarrar de " .. (node.nomeComp or "Companheiro"));
-					</event>
-				</button>
-				<edit left="150" top="55" width="45" height="25" field="agarrarComp"/>
-
-				<label left="5" top="85" width="40" height="20" text="Esp."/>
-				<edit left="35" top="80" width="35" height="25" field="esp1Comp"/>
-				<edit left="70" top="80" width="35" height="25" field="esp2Comp"/>
-
-				<label left="110" top="85" width="40" height="20" text="Alc."/>
-				<edit left="140" top="80" width="55" height="25" field="alcanceComp"/>
 			</rectangle>
 
-			<rectangle left="0" top="364" width="200" height="160" color="black">
+			<rectangle left="0" top="316" width="200" height="160" color="black">
 				<layout left="5" top="5" width="195" height="25">
 					<AtributoComp ATR="FOR" atr="for" nome="força"/>
 				</layout>
@@ -141,18 +121,6 @@
 				</layout>
 				<layout left="5" top="130" width="195" height="25">
 					<AtributoComp ATR="CAR" atr="car" nome="carisma"/>
-				</layout>
-			</rectangle>
-
-			<rectangle left="0" top="527" width="200" height="85" color="black">
-				<layout left="5" top="5" width="195" height="25">
-					<TRComp ATR="FORT" atr="fort" nome="fortitude"/>
-				</layout>
-				<layout left="5" top="30" width="195" height="25">
-					<TRComp ATR="REF" atr="ref" nome="reflexos"/>
-				</layout>
-				<layout left="5" top="55" width="195" height="25">
-					<TRComp ATR="VON" atr="von" nome="vontade"/>
 				</layout>
 			</rectangle>
 

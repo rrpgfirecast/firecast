@@ -14,14 +14,6 @@
 				</flowPart>								
 
 				<!-- GRID DE INFORMACOES SUPERIORES DA FRENTE -->
-				<flowLayout  minWidth="320" maxWidth="1600" name="fraUpperGridFrente" avoidScale="true" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" vertAlign="trailing" maxControlsPerLine="3">								
-						<upperGridCampo field="classeENivel" minWidth="100" titulo="CLASSE E NIVEL"/>
-						<upperGridCampo field="antecedentes" titulo="ANTECEDENTES"/>
-						<upperGridCampo field="nomeDoJogador" titulo="JOGADOR"/>									
-						<upperGridCampo field="raca" minWidth="100" titulo="RAÇA"/>
-						<upperGridCampo field="tendencia" titulo="TENDÊNCIA"/>
-						<upperGridCampo field="experiencia.valor" titulo="EXPERIÊNCIA"/>
-				</flowLayout>
 			</flowLayout>							
 			<flowLineBreak/>
 			
@@ -158,6 +150,21 @@
 						</flowPart>		
 					</flowLayout>										
 				</flowLayout>	
+
+				<!-- terceira coluna -->
+				
+				<flowLayout autoHeight="true" horzAlign="center" vertAlign="leading" class="halfTile" maxControlsPerLine="1">
+					<flowPart class="tileCarac" height="300" frameStyle="frames/panel5/frame.xml" margins="{left = 0, right = 4}">
+						<image align="client" style="autoFit" field="imagens.aparencia" class="transparente" margins="{top=2}" editable="true"/>
+						<label align="bottom" autoSize="true" text="APARÊNCIA" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					</flowPart>	
+
+					<flowPart class="tileCarac" height="300" frameStyle="frames/panel5/frame.xml" margins="{left = 0, right = 4}">
+						<image align="client" style="autoFit" field="imagens.aparencia2" class="transparente" margins="{top=2}" editable="true"/>
+						<label align="bottom" autoSize="true" text="" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
+					</flowPart>	
+				</flowLayout>
+
 			</flowLayout>
 		</flowLayout>	
 	</scrollBox>
