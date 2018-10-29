@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmAMZ1_4()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmAMZ1_4()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,12 +30,12 @@ function newfrmAMZ1_4()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -43,7 +43,7 @@ function newfrmAMZ1_4()
     obj.layout1:setHeight(245);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
@@ -52,7 +52,7 @@ function newfrmAMZ1_4()
     obj.rectangle1:setCornerType("round");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(0);
     obj.label1:setTop(0);
@@ -62,7 +62,7 @@ function newfrmAMZ1_4()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layout1);
     obj.layout2:setLeft(10);
     obj.layout2:setTop(25);
@@ -70,7 +70,7 @@ function newfrmAMZ1_4()
     obj.layout2:setHeight(200);
     obj.layout2:setName("layout2");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout2);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("#191919");
@@ -79,7 +79,7 @@ function newfrmAMZ1_4()
     obj.rectangle2:setCornerType("round");
     obj.rectangle2:setName("rectangle2");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout2);
     obj.layout3:setLeft(0);
     obj.layout3:setTop(0);
@@ -87,7 +87,7 @@ function newfrmAMZ1_4()
     obj.layout3:setHeight(25);
     obj.layout3:setName("layout3");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout3);
     obj.label2:setLeft(0);
     obj.label2:setTop(5);
@@ -97,7 +97,7 @@ function newfrmAMZ1_4()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.layout3);
     obj.comboBox1:setLeft(60);
     obj.comboBox1:setTop(0);
@@ -107,7 +107,7 @@ function newfrmAMZ1_4()
     obj.comboBox1:setItems({'Card: DESTRUCTION', 'Card: GILGAMESH', 'Card: GUNGNIR', 'Card: AVALON', 'Card: SAVITAR', 'Card: APOLO', 'Card: ÁRTEMIS', '-'});
     obj.comboBox1:setName("comboBox1");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout2);
     obj.layout4:setLeft(0);
     obj.layout4:setTop(25);
@@ -115,7 +115,7 @@ function newfrmAMZ1_4()
     obj.layout4:setHeight(25);
     obj.layout4:setName("layout4");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout4);
     obj.label3:setLeft(0);
     obj.label3:setTop(5);
@@ -125,7 +125,7 @@ function newfrmAMZ1_4()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.comboBox2 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox2:setParent(obj.layout4);
     obj.comboBox2:setLeft(60);
     obj.comboBox2:setTop(0);
@@ -135,7 +135,7 @@ function newfrmAMZ1_4()
     obj.comboBox2:setItems({'Card: DESTRUCTION', 'Card: GILGAMESH', 'Card: GUNGNIR', 'Card: AVALON', 'Card: SAVITAR', 'Card: APOLO', 'Card: ÁRTEMIS', '-'});
     obj.comboBox2:setName("comboBox2");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout2);
     obj.layout5:setLeft(0);
     obj.layout5:setTop(50);
@@ -143,7 +143,7 @@ function newfrmAMZ1_4()
     obj.layout5:setHeight(25);
     obj.layout5:setName("layout5");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout5);
     obj.label4:setLeft(0);
     obj.label4:setTop(5);
@@ -153,7 +153,7 @@ function newfrmAMZ1_4()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.comboBox3 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox3:setParent(obj.layout5);
     obj.comboBox3:setLeft(60);
     obj.comboBox3:setTop(0);
@@ -163,7 +163,7 @@ function newfrmAMZ1_4()
     obj.comboBox3:setItems({'Card: DESTRUCTION', 'Card: GILGAMESH', 'Card: GUNGNIR', 'Card: AVALON', 'Card: SAVITAR', 'Card: APOLO', 'Card: ÁRTEMIS', '-'});
     obj.comboBox3:setName("comboBox3");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout2);
     obj.layout6:setLeft(0);
     obj.layout6:setTop(75);
@@ -171,7 +171,7 @@ function newfrmAMZ1_4()
     obj.layout6:setHeight(25);
     obj.layout6:setName("layout6");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout6);
     obj.label5:setLeft(0);
     obj.label5:setTop(5);
@@ -181,7 +181,7 @@ function newfrmAMZ1_4()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.comboBox4 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox4:setParent(obj.layout6);
     obj.comboBox4:setLeft(60);
     obj.comboBox4:setTop(0);
@@ -191,7 +191,7 @@ function newfrmAMZ1_4()
     obj.comboBox4:setItems({'Card: DESTRUCTION', 'Card: GILGAMESH', 'Card: GUNGNIR', 'Card: AVALON', 'Card: SAVITAR', 'Card: APOLO', 'Card: ÁRTEMIS', '-'});
     obj.comboBox4:setName("comboBox4");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.layout2);
     obj.layout7:setLeft(0);
     obj.layout7:setTop(100);
@@ -199,7 +199,7 @@ function newfrmAMZ1_4()
     obj.layout7:setHeight(25);
     obj.layout7:setName("layout7");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout7);
     obj.label6:setLeft(0);
     obj.label6:setTop(5);
@@ -209,7 +209,7 @@ function newfrmAMZ1_4()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.comboBox5 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox5:setParent(obj.layout7);
     obj.comboBox5:setLeft(60);
     obj.comboBox5:setTop(0);
@@ -219,7 +219,7 @@ function newfrmAMZ1_4()
     obj.comboBox5:setItems({'Card: DESTRUCTION', 'Card: GILGAMESH', 'Card: GUNGNIR', 'Card: AVALON', 'Card: SAVITAR', 'Card: APOLO', 'Card: ÁRTEMIS', '-'});
     obj.comboBox5:setName("comboBox5");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.layout2);
     obj.layout8:setLeft(0);
     obj.layout8:setTop(125);
@@ -227,7 +227,7 @@ function newfrmAMZ1_4()
     obj.layout8:setHeight(25);
     obj.layout8:setName("layout8");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout8);
     obj.label7:setLeft(0);
     obj.label7:setTop(5);
@@ -237,7 +237,7 @@ function newfrmAMZ1_4()
     obj.label7:setHorzTextAlign("center");
     obj.label7:setName("label7");
 
-    obj.comboBox6 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox6 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox6:setParent(obj.layout8);
     obj.comboBox6:setLeft(60);
     obj.comboBox6:setTop(0);
@@ -247,7 +247,7 @@ function newfrmAMZ1_4()
     obj.comboBox6:setItems({'Card: DESTRUCTION', 'Card: GILGAMESH', 'Card: GUNGNIR', 'Card: AVALON', 'Card: SAVITAR', 'Card: APOLO', 'Card: ÁRTEMIS', '-'});
     obj.comboBox6:setName("comboBox6");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.layout2);
     obj.layout9:setLeft(0);
     obj.layout9:setTop(150);
@@ -255,7 +255,7 @@ function newfrmAMZ1_4()
     obj.layout9:setHeight(25);
     obj.layout9:setName("layout9");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout9);
     obj.label8:setLeft(0);
     obj.label8:setTop(5);
@@ -265,7 +265,7 @@ function newfrmAMZ1_4()
     obj.label8:setHorzTextAlign("center");
     obj.label8:setName("label8");
 
-    obj.comboBox7 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox7 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox7:setParent(obj.layout9);
     obj.comboBox7:setLeft(60);
     obj.comboBox7:setTop(0);
@@ -275,7 +275,7 @@ function newfrmAMZ1_4()
     obj.comboBox7:setItems({'Card: DESTRUCTION', 'Card: GILGAMESH', 'Card: GUNGNIR', 'Card: AVALON', 'Card: SAVITAR', 'Card: APOLO', 'Card: ÁRTEMIS', '-'});
     obj.comboBox7:setName("comboBox7");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.layout2);
     obj.layout10:setLeft(0);
     obj.layout10:setTop(175);
@@ -283,7 +283,7 @@ function newfrmAMZ1_4()
     obj.layout10:setHeight(25);
     obj.layout10:setName("layout10");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout10);
     obj.label9:setLeft(0);
     obj.label9:setTop(5);
@@ -293,7 +293,7 @@ function newfrmAMZ1_4()
     obj.label9:setHorzTextAlign("center");
     obj.label9:setName("label9");
 
-    obj.comboBox8 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox8 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox8:setParent(obj.layout10);
     obj.comboBox8:setLeft(60);
     obj.comboBox8:setTop(0);
@@ -303,7 +303,7 @@ function newfrmAMZ1_4()
     obj.comboBox8:setItems({'Card: DESTRUCTION', 'Card: GILGAMESH', 'Card: GUNGNIR', 'Card: AVALON', 'Card: SAVITAR', 'Card: APOLO', 'Card: ÁRTEMIS', '-'});
     obj.comboBox8:setName("comboBox8");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.layout1);
     obj.layout11:setLeft(250);
     obj.layout11:setTop(25);
@@ -311,7 +311,7 @@ function newfrmAMZ1_4()
     obj.layout11:setHeight(50);
     obj.layout11:setName("layout11");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout11);
     obj.rectangle3:setAlign("client");
     obj.rectangle3:setColor("#191919");
@@ -320,7 +320,7 @@ function newfrmAMZ1_4()
     obj.rectangle3:setCornerType("round");
     obj.rectangle3:setName("rectangle3");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.layout11);
     obj.layout12:setLeft(0);
     obj.layout12:setTop(0);
@@ -328,7 +328,7 @@ function newfrmAMZ1_4()
     obj.layout12:setHeight(25);
     obj.layout12:setName("layout12");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout12);
     obj.label10:setLeft(0);
     obj.label10:setTop(5);
@@ -338,7 +338,7 @@ function newfrmAMZ1_4()
     obj.label10:setHorzTextAlign("center");
     obj.label10:setName("label10");
 
-    obj.comboBox9 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox9 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox9:setParent(obj.layout12);
     obj.comboBox9:setLeft(60);
     obj.comboBox9:setTop(0);
@@ -348,7 +348,7 @@ function newfrmAMZ1_4()
     obj.comboBox9:setItems({'Estojo', 'Mochila', 'Bag', '-'});
     obj.comboBox9:setName("comboBox9");
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.layout11);
     obj.layout13:setLeft(0);
     obj.layout13:setTop(25);
@@ -356,7 +356,7 @@ function newfrmAMZ1_4()
     obj.layout13:setHeight(25);
     obj.layout13:setName("layout13");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout13);
     obj.label11:setLeft(0);
     obj.label11:setTop(5);
@@ -366,7 +366,7 @@ function newfrmAMZ1_4()
     obj.label11:setHorzTextAlign("center");
     obj.label11:setName("label11");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.layout13);
     obj.rectangle4:setLeft(60);
     obj.rectangle4:setTop(0);
@@ -377,7 +377,7 @@ function newfrmAMZ1_4()
     obj.rectangle4:setStrokeSize(1);
     obj.rectangle4:setName("rectangle4");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout13);
     obj.label12:setLeft(62);
     obj.label12:setTop(0);
@@ -386,12 +386,12 @@ function newfrmAMZ1_4()
     obj.label12:setField("device");
     obj.label12:setName("label12");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.layout11);
     obj.dataLink1:setField("inventario_9");
     obj.dataLink1:setName("dataLink1");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.layout1);
     obj.layout14:setLeft(490);
     obj.layout14:setTop(25);
@@ -399,7 +399,7 @@ function newfrmAMZ1_4()
     obj.layout14:setHeight(200);
     obj.layout14:setName("layout14");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.layout14);
     obj.rectangle5:setAlign("client");
     obj.rectangle5:setColor("#191919");
@@ -408,7 +408,7 @@ function newfrmAMZ1_4()
     obj.rectangle5:setCornerType("round");
     obj.rectangle5:setName("rectangle5");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.layout14);
     obj.layout15:setLeft(0);
     obj.layout15:setTop(0);
@@ -416,7 +416,7 @@ function newfrmAMZ1_4()
     obj.layout15:setHeight(25);
     obj.layout15:setName("layout15");
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout15);
     obj.label13:setLeft(0);
     obj.label13:setTop(5);
@@ -426,7 +426,7 @@ function newfrmAMZ1_4()
     obj.label13:setHorzTextAlign("center");
     obj.label13:setName("label13");
 
-    obj.inventario_11 = gui.fromHandle(_obj_newObject("edit"));
+    obj.inventario_11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.inventario_11:setParent(obj.layout15);
     obj.inventario_11:setLeft(60);
     obj.inventario_11:setTop(0);
@@ -435,7 +435,7 @@ function newfrmAMZ1_4()
     obj.inventario_11:setField("inventario_11");
     obj.inventario_11:setName("inventario_11");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.layout14);
     obj.layout16:setLeft(0);
     obj.layout16:setTop(25);
@@ -443,7 +443,7 @@ function newfrmAMZ1_4()
     obj.layout16:setHeight(25);
     obj.layout16:setName("layout16");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout16);
     obj.label14:setLeft(0);
     obj.label14:setTop(5);
@@ -453,7 +453,7 @@ function newfrmAMZ1_4()
     obj.label14:setHorzTextAlign("center");
     obj.label14:setName("label14");
 
-    obj.inventario_12 = gui.fromHandle(_obj_newObject("edit"));
+    obj.inventario_12 = GUI.fromHandle(_obj_newObject("edit"));
     obj.inventario_12:setParent(obj.layout16);
     obj.inventario_12:setLeft(60);
     obj.inventario_12:setTop(0);
@@ -462,7 +462,7 @@ function newfrmAMZ1_4()
     obj.inventario_12:setField("inventario_12");
     obj.inventario_12:setName("inventario_12");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.layout14);
     obj.layout17:setLeft(0);
     obj.layout17:setTop(50);
@@ -470,7 +470,7 @@ function newfrmAMZ1_4()
     obj.layout17:setHeight(25);
     obj.layout17:setName("layout17");
 
-    obj.label15 = gui.fromHandle(_obj_newObject("label"));
+    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.layout17);
     obj.label15:setLeft(0);
     obj.label15:setTop(5);
@@ -480,7 +480,7 @@ function newfrmAMZ1_4()
     obj.label15:setHorzTextAlign("center");
     obj.label15:setName("label15");
 
-    obj.inventario_13 = gui.fromHandle(_obj_newObject("edit"));
+    obj.inventario_13 = GUI.fromHandle(_obj_newObject("edit"));
     obj.inventario_13:setParent(obj.layout17);
     obj.inventario_13:setLeft(60);
     obj.inventario_13:setTop(0);
@@ -489,7 +489,7 @@ function newfrmAMZ1_4()
     obj.inventario_13:setField("inventario_13");
     obj.inventario_13:setName("inventario_13");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.layout14);
     obj.layout18:setLeft(0);
     obj.layout18:setTop(75);
@@ -497,7 +497,7 @@ function newfrmAMZ1_4()
     obj.layout18:setHeight(25);
     obj.layout18:setName("layout18");
 
-    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.layout18);
     obj.label16:setLeft(0);
     obj.label16:setTop(5);
@@ -507,7 +507,7 @@ function newfrmAMZ1_4()
     obj.label16:setHorzTextAlign("center");
     obj.label16:setName("label16");
 
-    obj.inventario_14 = gui.fromHandle(_obj_newObject("edit"));
+    obj.inventario_14 = GUI.fromHandle(_obj_newObject("edit"));
     obj.inventario_14:setParent(obj.layout18);
     obj.inventario_14:setLeft(60);
     obj.inventario_14:setTop(0);
@@ -516,7 +516,7 @@ function newfrmAMZ1_4()
     obj.inventario_14:setField("inventario_14");
     obj.inventario_14:setName("inventario_14");
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.layout14);
     obj.layout19:setLeft(0);
     obj.layout19:setTop(100);
@@ -524,7 +524,7 @@ function newfrmAMZ1_4()
     obj.layout19:setHeight(25);
     obj.layout19:setName("layout19");
 
-    obj.label17 = gui.fromHandle(_obj_newObject("label"));
+    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.layout19);
     obj.label17:setLeft(0);
     obj.label17:setTop(5);
@@ -534,7 +534,7 @@ function newfrmAMZ1_4()
     obj.label17:setHorzTextAlign("center");
     obj.label17:setName("label17");
 
-    obj.inventario_15 = gui.fromHandle(_obj_newObject("edit"));
+    obj.inventario_15 = GUI.fromHandle(_obj_newObject("edit"));
     obj.inventario_15:setParent(obj.layout19);
     obj.inventario_15:setLeft(60);
     obj.inventario_15:setTop(0);
@@ -543,7 +543,7 @@ function newfrmAMZ1_4()
     obj.inventario_15:setField("inventario_15");
     obj.inventario_15:setName("inventario_15");
 
-    obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.layout14);
     obj.layout20:setLeft(0);
     obj.layout20:setTop(125);
@@ -551,7 +551,7 @@ function newfrmAMZ1_4()
     obj.layout20:setHeight(25);
     obj.layout20:setName("layout20");
 
-    obj.label18 = gui.fromHandle(_obj_newObject("label"));
+    obj.label18 = GUI.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.layout20);
     obj.label18:setLeft(0);
     obj.label18:setTop(5);
@@ -561,7 +561,7 @@ function newfrmAMZ1_4()
     obj.label18:setHorzTextAlign("center");
     obj.label18:setName("label18");
 
-    obj.inventario_16 = gui.fromHandle(_obj_newObject("edit"));
+    obj.inventario_16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.inventario_16:setParent(obj.layout20);
     obj.inventario_16:setLeft(60);
     obj.inventario_16:setTop(0);
@@ -570,7 +570,7 @@ function newfrmAMZ1_4()
     obj.inventario_16:setField("inventario_16");
     obj.inventario_16:setName("inventario_16");
 
-    obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.layout14);
     obj.layout21:setLeft(0);
     obj.layout21:setTop(150);
@@ -578,7 +578,7 @@ function newfrmAMZ1_4()
     obj.layout21:setHeight(25);
     obj.layout21:setName("layout21");
 
-    obj.label19 = gui.fromHandle(_obj_newObject("label"));
+    obj.label19 = GUI.fromHandle(_obj_newObject("label"));
     obj.label19:setParent(obj.layout21);
     obj.label19:setLeft(0);
     obj.label19:setTop(5);
@@ -588,7 +588,7 @@ function newfrmAMZ1_4()
     obj.label19:setHorzTextAlign("center");
     obj.label19:setName("label19");
 
-    obj.inventario_17 = gui.fromHandle(_obj_newObject("edit"));
+    obj.inventario_17 = GUI.fromHandle(_obj_newObject("edit"));
     obj.inventario_17:setParent(obj.layout21);
     obj.inventario_17:setLeft(60);
     obj.inventario_17:setTop(0);
@@ -597,7 +597,7 @@ function newfrmAMZ1_4()
     obj.inventario_17:setField("inventario_17");
     obj.inventario_17:setName("inventario_17");
 
-    obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.layout14);
     obj.layout22:setLeft(0);
     obj.layout22:setTop(175);
@@ -605,7 +605,7 @@ function newfrmAMZ1_4()
     obj.layout22:setHeight(25);
     obj.layout22:setName("layout22");
 
-    obj.label20 = gui.fromHandle(_obj_newObject("label"));
+    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.layout22);
     obj.label20:setLeft(0);
     obj.label20:setTop(5);
@@ -615,7 +615,7 @@ function newfrmAMZ1_4()
     obj.label20:setHorzTextAlign("center");
     obj.label20:setName("label20");
 
-    obj.inventario_18 = gui.fromHandle(_obj_newObject("edit"));
+    obj.inventario_18 = GUI.fromHandle(_obj_newObject("edit"));
     obj.inventario_18:setParent(obj.layout22);
     obj.inventario_18:setLeft(60);
     obj.inventario_18:setTop(0);
@@ -624,7 +624,7 @@ function newfrmAMZ1_4()
     obj.inventario_18:setField("inventario_18");
     obj.inventario_18:setName("inventario_18");
 
-    obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.layout1);
     obj.layout23:setLeft(730);
     obj.layout23:setTop(25);
@@ -632,7 +632,7 @@ function newfrmAMZ1_4()
     obj.layout23:setHeight(200);
     obj.layout23:setName("layout23");
 
-    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle6:setParent(obj.layout23);
     obj.rectangle6:setAlign("client");
     obj.rectangle6:setColor("#191919");
@@ -641,7 +641,7 @@ function newfrmAMZ1_4()
     obj.rectangle6:setCornerType("round");
     obj.rectangle6:setName("rectangle6");
 
-    obj.label21 = gui.fromHandle(_obj_newObject("label"));
+    obj.label21 = GUI.fromHandle(_obj_newObject("label"));
     obj.label21:setParent(obj.layout23);
     obj.label21:setLeft(0);
     obj.label21:setTop(0);
@@ -651,7 +651,7 @@ function newfrmAMZ1_4()
     obj.label21:setHorzTextAlign("center");
     obj.label21:setName("label21");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout23);
     obj.textEditor1:setLeft(5);
     obj.textEditor1:setTop(20);
@@ -661,7 +661,7 @@ function newfrmAMZ1_4()
     obj.textEditor1:setName("textEditor1");
 
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             							if sheet.inventario_9 == "Estojo" then
             								self.inventario_11.visible = true;
@@ -791,9 +791,23 @@ function newfrmAMZ1_4()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmAMZ1_4()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmAMZ1_4();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmAMZ1_4 = {
@@ -807,6 +821,6 @@ local _frmAMZ1_4 = {
     description=""};
 
 frmAMZ1_4 = _frmAMZ1_4;
-rrpg.registrarForm(_frmAMZ1_4);
+Firecast.registrarForm(_frmAMZ1_4);
 
 return _frmAMZ1_4;

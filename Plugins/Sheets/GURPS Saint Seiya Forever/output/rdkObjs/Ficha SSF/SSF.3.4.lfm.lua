@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmSSF3_4()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmSSF3_4()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,7 +31,7 @@ function newfrmSSF3_4()
     obj:setHeight(110);
     obj:setTheme("dark");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setLeft(0);
     obj.button1:setTop(30);
@@ -40,7 +40,7 @@ function newfrmSSF3_4()
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setLeft(25);
     obj.rectangle1:setTop(1);
@@ -51,7 +51,7 @@ function newfrmSSF3_4()
     obj.rectangle1:setStrokeSize(1);
     obj.rectangle1:setName("rectangle1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setLeft(30);
     obj.layout1:setTop(5);
@@ -59,7 +59,7 @@ function newfrmSSF3_4()
     obj.layout1:setHeight(25);
     obj.layout1:setName("layout1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(0);
     obj.label1:setTop(5);
@@ -68,7 +68,7 @@ function newfrmSSF3_4()
     obj.label1:setText("Nome");
     obj.label1:setName("label1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setLeft(40);
     obj.edit1:setTop(0);
@@ -77,7 +77,7 @@ function newfrmSSF3_4()
     obj.edit1:setField("nome_arma");
     obj.edit1:setName("edit1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj);
     obj.layout2:setLeft(30);
     obj.layout2:setTop(30);
@@ -85,7 +85,7 @@ function newfrmSSF3_4()
     obj.layout2:setHeight(25);
     obj.layout2:setName("layout2");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout2);
     obj.button2:setLeft(0);
     obj.button2:setTop(2);
@@ -95,7 +95,7 @@ function newfrmSSF3_4()
     obj.button2:setText("Dano");
     obj.button2:setName("button2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout2);
     obj.edit2:setLeft(40);
     obj.edit2:setTop(0);
@@ -104,7 +104,7 @@ function newfrmSSF3_4()
     obj.edit2:setField("dano_arma");
     obj.edit2:setName("edit2");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout2);
     obj.label2:setLeft(100);
     obj.label2:setTop(5);
@@ -113,7 +113,7 @@ function newfrmSSF3_4()
     obj.label2:setText("Alcan.");
     obj.label2:setName("label2");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout2);
     obj.edit3:setLeft(145);
     obj.edit3:setTop(0);
@@ -122,7 +122,7 @@ function newfrmSSF3_4()
     obj.edit3:setField("alcance_arma");
     obj.edit3:setName("edit3");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout2);
     obj.label3:setLeft(205);
     obj.label3:setTop(5);
@@ -131,7 +131,7 @@ function newfrmSSF3_4()
     obj.label3:setText("Prec.");
     obj.label3:setName("label3");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout2);
     obj.edit4:setLeft(245);
     obj.edit4:setTop(0);
@@ -140,7 +140,7 @@ function newfrmSSF3_4()
     obj.edit4:setField("precisao_arma");
     obj.edit4:setName("edit4");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj);
     obj.layout3:setLeft(30);
     obj.layout3:setTop(55);
@@ -148,7 +148,7 @@ function newfrmSSF3_4()
     obj.layout3:setHeight(25);
     obj.layout3:setName("layout3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout3);
     obj.label4:setLeft(0);
     obj.label4:setTop(5);
@@ -157,7 +157,7 @@ function newfrmSSF3_4()
     obj.label4:setText("Tiros");
     obj.label4:setName("label4");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout3);
     obj.edit5:setLeft(40);
     obj.edit5:setTop(0);
@@ -166,7 +166,7 @@ function newfrmSSF3_4()
     obj.edit5:setField("tiros_arma");
     obj.edit5:setName("edit5");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout3);
     obj.label5:setLeft(100);
     obj.label5:setTop(5);
@@ -175,7 +175,7 @@ function newfrmSSF3_4()
     obj.label5:setText("Magnit.");
     obj.label5:setName("label5");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout3);
     obj.edit6:setLeft(145);
     obj.edit6:setTop(0);
@@ -184,7 +184,7 @@ function newfrmSSF3_4()
     obj.edit6:setField("magnitude_arma");
     obj.edit6:setName("edit6");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout3);
     obj.label6:setLeft(205);
     obj.label6:setTop(5);
@@ -193,7 +193,7 @@ function newfrmSSF3_4()
     obj.label6:setText("CdT");
     obj.label6:setName("label6");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout3);
     obj.edit7:setLeft(245);
     obj.edit7:setTop(0);
@@ -202,7 +202,7 @@ function newfrmSSF3_4()
     obj.edit7:setField("cdt_arma");
     obj.edit7:setName("edit7");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj);
     obj.layout4:setLeft(30);
     obj.layout4:setTop(80);
@@ -210,7 +210,7 @@ function newfrmSSF3_4()
     obj.layout4:setHeight(25);
     obj.layout4:setName("layout4");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout4);
     obj.label7:setLeft(0);
     obj.label7:setTop(5);
@@ -219,7 +219,7 @@ function newfrmSSF3_4()
     obj.label7:setText("Peso");
     obj.label7:setName("label7");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.layout4);
     obj.edit8:setLeft(40);
     obj.edit8:setTop(0);
@@ -228,7 +228,7 @@ function newfrmSSF3_4()
     obj.edit8:setField("peso_arma");
     obj.edit8:setName("edit8");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout4);
     obj.label8:setLeft(100);
     obj.label8:setTop(5);
@@ -237,7 +237,7 @@ function newfrmSSF3_4()
     obj.label8:setText("Aparar");
     obj.label8:setName("label8");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.layout4);
     obj.edit9:setLeft(145);
     obj.edit9:setTop(0);
@@ -246,7 +246,7 @@ function newfrmSSF3_4()
     obj.edit9:setField("aparar_arma");
     obj.edit9:setName("edit9");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout4);
     obj.label9:setLeft(205);
     obj.label9:setTop(5);
@@ -255,7 +255,7 @@ function newfrmSSF3_4()
     obj.label9:setText("ST");
     obj.label9:setName("label9");
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.layout4);
     obj.edit10:setLeft(245);
     obj.edit10:setTop(0);
@@ -265,7 +265,7 @@ function newfrmSSF3_4()
     obj.edit10:setName("edit10");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar essa arma?",
             				function (confirmado)
             					if confirmado then
@@ -275,7 +275,7 @@ function newfrmSSF3_4()
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             			
             				rolagem = rrpg.interpretarRolagem(sheet.dano_arma);
@@ -367,9 +367,23 @@ function newfrmSSF3_4()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmSSF3_4()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmSSF3_4();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmSSF3_4 = {
@@ -383,6 +397,6 @@ local _frmSSF3_4 = {
     description=""};
 
 frmSSF3_4 = _frmSSF3_4;
-rrpg.registrarForm(_frmSSF3_4);
+Firecast.registrarForm(_frmSSF3_4);
 
 return _frmSSF3_4;

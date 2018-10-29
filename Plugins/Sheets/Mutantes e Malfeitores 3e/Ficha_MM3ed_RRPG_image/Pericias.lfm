@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister3_svg" align="client" theme="light" margins="{top=1}">
 	<scrollBox align="client">
 
@@ -85,7 +85,7 @@
 			</flowPart>
 		</template>
 
-		<popup name="popPericia" width="300" height="85"  backOpacity="0.4">
+		<popup name="popPericia" width="300" height="85"  backOpacity="0.4" autoScopeNode="false">
 			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
 				<periciaSmallCenter text="Penalidades" field="penalidesPericia"/>
 				<periciaSmallCenter text="Poder/Equipamentos" field="equipamentosPericia"/>

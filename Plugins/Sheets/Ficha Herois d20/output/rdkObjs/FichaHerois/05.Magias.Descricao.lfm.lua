@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFichaRPGmeister5D_svg()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmFichaRPGmeister5D_svg()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -55,7 +55,7 @@ function newfrmFichaRPGmeister5D_svg()
 		
 
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj);
     obj.edit1:setLeft(0);
     obj.edit1:setTop(1);
@@ -64,7 +64,7 @@ function newfrmFichaRPGmeister5D_svg()
     obj.edit1:setField("nomeMagia");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj);
     obj.edit2:setLeft(140);
     obj.edit2:setTop(1);
@@ -73,7 +73,7 @@ function newfrmFichaRPGmeister5D_svg()
     obj.edit2:setField("dispMagia");
     obj.edit2:setName("edit2");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj);
     obj.edit3:setLeft(170);
     obj.edit3:setTop(1);
@@ -82,7 +82,7 @@ function newfrmFichaRPGmeister5D_svg()
     obj.edit3:setField("prepMagia");
     obj.edit3:setName("edit3");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setLeft(200);
     obj.button1:setTop(1);
@@ -91,7 +91,7 @@ function newfrmFichaRPGmeister5D_svg()
     obj.button1:setText("i");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj);
     obj.button2:setLeft(225);
     obj.button2:setTop(1);
@@ -101,7 +101,7 @@ function newfrmFichaRPGmeister5D_svg()
     obj.button2:setName("button2");
 
     obj._e_event0 = obj.edit2:addEventListener("onChange",
-        function (self)
+        function (_)
             local rcl = self:findControlByName("rclListaDasMagias0");
             			if rcl~= nil then
             				rcl:sort();
@@ -145,12 +145,12 @@ function newfrmFichaRPGmeister5D_svg()
         end, obj);
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             showMagiaPopup();
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             askForDelete();
         end, obj);
 
@@ -179,9 +179,23 @@ function newfrmFichaRPGmeister5D_svg()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFichaRPGmeister5D_svg()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFichaRPGmeister5D_svg();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFichaRPGmeister5D_svg = {
@@ -195,6 +209,6 @@ local _frmFichaRPGmeister5D_svg = {
     description=""};
 
 frmFichaRPGmeister5D_svg = _frmFichaRPGmeister5D_svg;
-rrpg.registrarForm(_frmFichaRPGmeister5D_svg);
+Firecast.registrarForm(_frmFichaRPGmeister5D_svg);
 
 return _frmFichaRPGmeister5D_svg;

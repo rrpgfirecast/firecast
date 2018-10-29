@@ -9,19 +9,19 @@ require("fireDriveGlobals.dlua");
 local nav = {};
 
 function nav.criarAddPopup(ctrl)
-	local pop = gui.newPopup();
+	local pop = GUI.newPopup();
 	pop.width = 150;
 	pop.height = 110;	
 	
 	
-	local btnDir = gui.newButton();
+	local btnDir = GUI.newButton();
 	btnDir.align = "top";
 	btnDir.margins = {left=5, right=5, top=5, bottom=5};
 	btnDir.text = "Novo diretório";
 	btnDir.height = 40;
 	btnDir.parent = pop;
 	
-	local btnUpload = gui.newButton();
+	local btnUpload = GUI.newButton();
 	btnUpload.align = "top";
 	btnUpload.margins = {left=5, right=5, top=5, bottom=5};
 	btnUpload.text = "";
@@ -31,7 +31,7 @@ function nav.criarAddPopup(ctrl)
 	local m = {left=5, right=2, top=5, bottom=5};
 	btnUpload.padding = m;
 		
-	local imgUpload = gui.newImage();
+	local imgUpload = GUI.newImage();
 	imgUpload.align = "left";
 	imgUpload.height = btnUpload.height - m.top - m.bottom;
 	imgUpload.width = imgUpload.height;
@@ -39,7 +39,7 @@ function nav.criarAddPopup(ctrl)
 	imgUpload.parent = btnUpload;
 	imgUpload.margins = {right=5};
 	
-	local labUpload = gui.newLabel();
+	local labUpload = GUI.newLabel();
 	labUpload.horzTextAlign = "leading";
 	labUpload.text = "Fazer Upload";
 	labUpload.align = "client";
@@ -97,7 +97,7 @@ function nav.criarAddPopup(ctrl)
 end;
 
 function nav.criarItemMenuPopup(ctrl)
-	local pop = gui.newPopup();
+	local pop = GUI.newPopup();
 	pop.width = 200;
 	pop.height = 130;
 	pop.backOpacity = 0.25; 
@@ -107,7 +107,7 @@ function nav.criarItemMenuPopup(ctrl)
 	local totalH = 0;
 	
 	local function newMenuBtn(text)
-		local btn = gui.newButton();
+		local btn = GUI.newButton();
 		local margins = {left=5, right=5, top=3, bottom=3};
 		local btnH = 35;
 		btn.text = text;
@@ -151,9 +151,7 @@ function nav.criarItemMenuPopup(ctrl)
 								end);
 						end;
 						
-	btnCopyURL.onClick = function()
-		local url = "";
-	
+	btnCopyURL.onClick = function()	
 		if itemNode ~= nil and itemNode.url ~= nil then
 			system.setClipboardText(itemNode.url);
 		end;		
@@ -215,7 +213,7 @@ function nav.criarItemMenuPopup(ctrl)
 end;
 
 function nav.newFDNavigatorLayout()
-	local ctrl = gui.newDataScopeBox();
+	local ctrl = GUI.newDataScopeBox();
 	
 	local layTop;
 	local layCenter;
@@ -229,11 +227,11 @@ function nav.newFDNavigatorLayout()
 	local _wasRclFocused = false;
 	local sheet = ndb.newMemNodeDatabase();
 	local labErro = nil;
-	local labSpaceInfo = nil;
+	local labSpaceInfo;
 	
 	scopeBox.node = sheet;
 	
-	layTop = gui.newRectangle();
+	layTop = GUI.newRectangle();
 	ctrl.layTop = layTop
 	layTop.align = "top";
 	layTop.height = 48;
@@ -241,7 +239,7 @@ function nav.newFDNavigatorLayout()
 	layTop.color = "#101010";
 	layTop.padding = {left=2, right=2, top = 2, bottom = 2};
 	
-	btnVoltar = gui.newButton();
+	btnVoltar = GUI.newButton();
 	ctrl.btnVoltar = btnVoltar;
 	btnVoltar.width = layTop.height;
 	btnVoltar.align = "left";
@@ -250,13 +248,13 @@ function nav.newFDNavigatorLayout()
 	btnVoltar.parent = layTop;
 	btnVoltar.canFocus = false;
 	
-	btnVoltar.imgBack = gui.newImage();
+	btnVoltar.imgBack = GUI.newImage();
 	btnVoltar.imgBack.align = "client";
 	btnVoltar.imgBack.url = "/firedrive/back.png";
 	btnVoltar.imgBack.margins = {left=4, right = 4, top = 4, bottom = 4};
 	btnVoltar.imgBack.parent = btnVoltar;
 	
-	btnAdd = gui.newButton();
+	btnAdd = GUI.newButton();
 	ctrl.btnAdd = btnAdd;
 	btnAdd.align = "right";
 	btnAdd.text = "";
@@ -264,13 +262,13 @@ function nav.newFDNavigatorLayout()
 	btnAdd.width = layTop.height;
 	btnAdd.parent = layTop;	
 	
-	btnAdd._img = gui.newImage();
+	btnAdd._img = GUI.newImage();
 	btnAdd._img.align = "client";
 	btnAdd._img.url = "/firedrive/icos/addIcon.png";	
 	--btnAdd._img.margins = {left=4, right = 4, top = 4, bottom = 4};	
 	btnAdd._img.parent = btnAdd;	
 	
-	labTitulo = gui.newLabel();
+	labTitulo = GUI.newLabel();
 	ctrl.labTitulo = labTitulo;
 	labTitulo.align = "client";
 	labTitulo.horzTextAlign = "center";
@@ -278,7 +276,7 @@ function nav.newFDNavigatorLayout()
 	labTitulo.fontSize = 15;
 	labTitulo.parent = layTop;
 	
-	labSpaceInfo = gui.newLabel();
+	labSpaceInfo = GUI.newLabel();
 	labSpaceInfo.align = "bottom";
 	labSpaceInfo.fontSize = 11;
 	labSpaceInfo.autoSize = true;
@@ -288,12 +286,12 @@ function nav.newFDNavigatorLayout()
 	labSpaceInfo.text = "";
 	labSpaceInfo.parent = ctrl;
 	
-	layCenter = gui.newLayout();
+	layCenter = GUI.newLayout();
 	ctrl.layCenter = layCenter;
 	layCenter.align = "client";
 	layCenter.parent = ctrl;
 	
-	rclItens = gui.newRecordList();
+	rclItens = GUI.newRecordList();
 	ctrl.rclItens = rclItens;
 	rclItens.align = "client";
 	rclItens.selectable = true;	
@@ -302,7 +300,7 @@ function nav.newFDNavigatorLayout()
 	rclItens.templateForm = "frmFireDriveNavigatorItem";
 	rclItens.layout = "horizontalTiles";
 	
-	indLoading = gui.newActivityIndicator();	
+	indLoading = GUI.newActivityIndicator();	
 	ctrl.indLoading = ctrl;
 	indLoading.enabled = false;
 	indLoading.width = 64;
@@ -415,7 +413,7 @@ function nav.newFDNavigatorLayout()
 
 	function ctrl:showLabErro(errMsg)
 		if labErro == nil then
-			labErro = gui.newLabel();
+			labErro = GUI.newLabel();
 			labErro.align = "client";
 			labErro.vertTextAlign = "center";
 			labErro.horzTextAlign = "center";	
@@ -649,17 +647,14 @@ function nav.newFDNavigatorLayout()
 							indLoading.top = layCenter.height / 2 - indLoading.height / 2;
 						end	;
 		
-	rclItens.onCompare = function(nodeA, nodeB)
-							local r = 0;
-							
+	rclItens.onCompare = function(nodeA, nodeB)							
 							if (nodeA.isDir) and (not nodeB.isDir) then
 								return -1;
 							elseif (not nodeA.isDir) and (nodeB.isDir) then
 								return 1;
 							end;
 							
-							r = utils.compareStringPtBr(nodeA.name, nodeB.name);								
-							return r;
+							return utils.compareStringPtBr(nodeA.name, nodeB.name);															
 						 end;
 		
 	rclItens.onItemAdded = function (node, form)

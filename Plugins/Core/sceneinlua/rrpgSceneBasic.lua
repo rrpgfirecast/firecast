@@ -13,8 +13,7 @@ SceneLib.registerPlugin(
 			viewport:beginUpdate();
 			
 			tryFinally(
-				function()
-					local scale;						
+				function()					
 					local d;					
 				
 					if event.ctrlKey then
@@ -32,13 +31,7 @@ SceneLib.registerPlugin(
 						viewport.worldX = oldWorldCenterX - (viewport.width / viewport.scale) / 2; 
 						viewport.worldY = oldWorldCenterY - (viewport.height / viewport.scale) / 2; 
 					else			
-						-- Movimento vertical
-						if event.delta > 0 then
-							d = -1;
-						else
-							d = 1;
-						end;	
-										
+						-- Movimento vertical		
 						local offset = viewport.height / 6;
 						offset = offset * -1 * (event.delta / 120);		
 						INERTIAL_pointerWheel(viewport, 0, offset);

@@ -40,6 +40,9 @@
         <tab title="Geral">
             <import file="01.Geral.xml"/>
         </tab>
+        <tab title="Proficiências">
+            <import file="02.Proficiencias.xml"/>
+        </tab>
         <tab title="Habilidades">
             <import file="04.Habilidades.lfm"/>
         </tab>
@@ -66,7 +69,7 @@
         </tab>
     </tabControl>
     <event name="onNodeReady">
-        internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true",
+        internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20D&amp;D%20Next/output/Ficha%20D&amp;D%20Next.rpk?raw=true",
             function(stream, contentType)
                 local info = rrpg.plugins.getRPKDetails(stream);
                 sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
@@ -85,7 +88,7 @@
                     Dialogs.choose("Há uma nova versão (".. info.version .. ") da Ficha RPG meister. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                         function(selected, selectedIndex, selectedText)
                             if selected and selectedIndex == 1 then
-                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true');
+                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20D&amp;D%20Next/output/Ficha%20D&amp;D%20Next.rpk?raw=true');
                             elseif selected and selectedIndex == 3 then
                                 sheet.noUpdate = true;
                             end;

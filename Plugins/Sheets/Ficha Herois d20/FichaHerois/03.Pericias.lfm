@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister3_svg" align="client" theme="dark" margins="{top=1}">
 	<scrollBox align="client">
 
@@ -96,7 +96,7 @@
 			</flowPart>
 		</template>
 
-		<popup name="popPericia" width="300" height="185" backOpacity="0.4">
+		<popup name="popPericia" width="300" height="185" backOpacity="0.4" autoScopeNode="false">
 			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
 				<periciaSmallCenter text="Penalidades" field="penalidesPericia"/>
 				<periciaSmallCenter text="Racial" field="racialPericia"/>
@@ -113,7 +113,7 @@
 			<checkBox align="right" text="Penalidade Armadura" field="penalidadeArmadura"/>
 			<checkBox align="right" width="20" text="" field="penalidadeArmadura2"/>
 		</popup>
-		<popup name="popIdioma" width="200" height="100" backOpacity="0.4">
+		<popup name="popIdioma" width="200" height="100" backOpacity="0.4" autoScopeNode="false">
 			<checkBox align="top" text="Falar/Entender" field="conversarIdioma"/>
 			<checkBox align="top" text="Escrever/Ler" field="escritaIdioma"/>
 			<textEditor align="client" field="descricao"/>

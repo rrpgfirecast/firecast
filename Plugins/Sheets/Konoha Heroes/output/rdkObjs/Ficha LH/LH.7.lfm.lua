@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmLH7()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmLH7()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,12 +30,12 @@ function newfrmLH7()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rclAnotacoes = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclAnotacoes = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclAnotacoes:setParent(obj.scrollBox1);
     obj.rclAnotacoes:setName("rclAnotacoes");
     obj.rclAnotacoes:setField("anotacoes");
@@ -65,9 +65,23 @@ function newfrmLH7()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmLH7()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmLH7();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmLH7 = {
@@ -81,6 +95,6 @@ local _frmLH7 = {
     description=""};
 
 frmLH7 = _frmLH7;
-rrpg.registrarForm(_frmLH7);
+Firecast.registrarForm(_frmLH7);
 
 return _frmLH7;

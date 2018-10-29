@@ -93,9 +93,7 @@ local function cloneRRPGObject(o)
 				else
 					retValues = table.pack(vF(par1, ...));
 				end;
-				
-				local i;
-				
+								
 				for i = 1, #retValues, 1 do
 					if type(retValues[i]) == "table" then
 						retValues[i] = cloneTable(retValues[i]);
@@ -199,7 +197,7 @@ end;
 function yieldedFunctions.yInvokeMacro(co, chat, macroName, parameter)	
 	local foundMacro = nil;
 	
-	if globalFindMacro ~= nil then -- declareted in rrpgsimplemacros.lua
+	if globalFindMacro ~= nil then -- declarated in rrpgsimplemacros.lua
 		foundMacro = globalFindMacro(macroName, rrpg.getMesaDe(chat));
 	end;
 	
@@ -234,8 +232,8 @@ function yieldedFunctions.yChoose(co, prompt, options, defaultOptionIndex, short
 		function(selected, index, text)
 			if selected then
 				handleCoResume(co, index, text);
-			else	
-				-- -- do nothing. coRoutine will be garbage collected
+			--else	
+			-- do nothing. coRoutine will be garbage collected
 			end;
 		end, 
 		
@@ -247,8 +245,8 @@ function yieldedFunctions.yChooseMultiple(co, prompt, options)
 		function(selected, indexes, texts)
 			if selected then
 				handleCoResume(co, indexes, texts);
-			else	
-				-- do nothing. coRoutine will be garbage collected
+			--else	
+			-- do nothing. coRoutine will be garbage collected
 			end;
 		end);
 end;
@@ -258,8 +256,8 @@ function yieldedFunctions.yGetSheetOfCharacter(co, character)
 		function(node)
 			if node ~= nil then
 				handleCoResume(co, node);
-			else	
-				-- do nothing. coRoutine will be garbage collected
+			--else	
+			-- do nothing. coRoutine will be garbage collected
 			end;
 		end);
 end;
@@ -366,20 +364,16 @@ local function createMacroEnvTable(chat)
 	env.send = env.enviar;
 	
 	function env.rolar(rolagem, msgAdicional)
-		local query = {};
-		query.chat = chat;
-		query.rolagem = rolagem;
-		query.msgAdicional = msgAdicional; 
-		local resultado, rolagem = coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yRolarDado', chat, rolagem, msgAdicional);
-		return resultado, rolagem;
+		local resultado, rolagemObj = coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yRolarDado', chat, rolagem, msgAdicional);
+		return resultado, rolagemObj;
 	end;
 	
 	env.roll = env.rolar;
 	
 	function env.rolarLocal(rolagem)
-		local rolagem = rrpg.interpretarRolagem(rolagem);
-		rolagem:rolarLocalmente();
-		return rolagem.resultado, rolagem;
+		local rolagemObj = rrpg.interpretarRolagem(rolagem);
+		rolagemObj:rolarLocalmente();
+		return rolagemObj.resultado, rolagemObj;
 	end;
 
 	env.rollLocal = env.rolarLocal;
@@ -497,10 +491,10 @@ local function createMacroEnvTable(chat)
 					return false;
 				end;
 				
-				local leftNick = removerAcentos(utils.removerFmtChat(left.nick));
-				local rightNick = removerAcentos(utils.removerFmtChat(right.nick));
+				local leftNick = removerAcentos(Utils.removerFmtChat(left.nick));
+				local rightNick = removerAcentos(Utils.removerFmtChat(right.nick));
 				
-				if utils.compareStringPtBr(leftNick, rightNick) < 0 then
+				if Utils.compareStringPtBr(leftNick, rightNick) < 0 then
 					return true;
 				else
 					return false;
@@ -519,7 +513,7 @@ local function createMacroEnvTable(chat)
 		
 		local chars = {};	
 		
-		local function recursiveEnumChars(bibItem, chars)
+		local function recursiveEnumChars(bibItem)
 			if bibItem == nil then
 				return;
 			end;
@@ -527,7 +521,7 @@ local function createMacroEnvTable(chat)
 			local tipo = bibItem.tipo;
 			
 			if tipo == "personagem" then						
-				local filtrado = false;
+				local filtrado;
 			
 				if filterFunction ~= nil then
 					filtrado = filterFunction(bibItem);
@@ -540,20 +534,19 @@ local function createMacroEnvTable(chat)
 				end;
 			elseif tipo == "diretorio" or tipo == "biblioteca" then
 				local filhos = bibItem.filhos;
-				local i;
-				
+					
 				for i = 1, #filhos, 1 do
-					recursiveEnumChars(filhos[i], chars);
+					recursiveEnumChars(filhos[i]);
 				end
 			end;
 		end;
 		
 		local bibRoot = mesa.biblioteca;
-		recursiveEnumChars(bibRoot, chars);	
+		recursiveEnumChars(bibRoot);	
 		
 		table.sort(chars,
 			function(left, right)
-				if utils.compareStringPtBr(left.nome, right.nome) < 0 then
+				if Utils.compareStringPtBr(left.nome, right.nome) < 0 then
 					return true;
 				else
 					return false;
@@ -585,7 +578,7 @@ local function createMacroEnvTable(chat)
 			elseif filter == "all" then	
 				return true;
 			elseif filter == "mine" then
-				return isPC and (utils.compareStringPtBr(loginDono, myLogin) == 0)
+				return isPC and (Utils.compareStringPtBr(loginDono, myLogin) == 0)
 			elseif filter == nil then
 				return true;
 			else
@@ -601,7 +594,7 @@ local function createMacroEnvTable(chat)
 		local playersText = {};
 		
 		for i = 1, #players, 1 do
-			playersText[i] = utils.removerFmtChat(players[i].nick) .. ' (' .. players[i].login .. ')';
+			playersText[i] = Utils.removerFmtChat(players[i].nick) .. ' (' .. players[i].login .. ')';
 		end;
 		
 		local index = env.choose(prompt, playersText, nil, shortCircuit);
@@ -615,7 +608,7 @@ local function createMacroEnvTable(chat)
 		local playersText = {};
 		
 		for i = 1, #players, 1 do
-			playersText[i] = utils.removerFmtChat(players[i].nick) .. ' (' .. players[i].login .. ')';
+			playersText[i] = Utils.removerFmtChat(players[i].nick) .. ' (' .. players[i].login .. ')';
 		end;
 		
 		local indexes = env.chooseMultiple(prompt, playersText);
@@ -649,9 +642,7 @@ local function createMacroEnvTable(chat)
 				error(lang("macros.error.noCharsForFilter") .. ": " .. (filter or "any"));
 			end;
 		end;
-		
-		local i;
-		
+				
 		for i = 1, #chars, 1 do
 			charsStr[i] = chars[i].nome;
 		end;
@@ -687,7 +678,7 @@ local function createMacroEnvTable(chat)
 	
 		local chars = _getAllCharactersSorted(
 			function(per)
-				if utils.compareStringPtBr(per.loginDono, loginToSeek) == 0 then
+				if Utils.compareStringPtBr(per.loginDono, loginToSeek) == 0 then
 					return true;					
 				else	
 					return false;
@@ -699,8 +690,6 @@ local function createMacroEnvTable(chat)
 		if #chars < 1 then
 			error(lang("macros.error.noCharsForFilter.specificPlayer"));
 		end;
-		
-		local i;
 		
 		for i = 1, #chars, 1 do
 			charsStr[i] = chars[i].nome;
@@ -730,9 +719,7 @@ local function createMacroEnvTable(chat)
 			else
 				error(lang("macros.error.noCharsForFilter") .. ": " .. (filter or "any"));
 			end;
-		end;
-		
-		local i;
+		end;		
 		
 		for i = 1, #chars, 1 do
 			charsStr[i] = chars[i].nome;
@@ -793,7 +780,7 @@ local function createMacroEnvTable(chat)
 		
 		local chars = _getAllCharactersSorted(
 			function(per)
-				if utils.compareStringPtBr(per.loginDono, loginToSeek) == 0 then
+				if Utils.compareStringPtBr(per.loginDono, loginToSeek) == 0 then
 					if playerObject ~= nil and playerObject.personagemPrincipal == per.codigoInterno then
 						mainPersonagem = per;
 					end;					
@@ -835,7 +822,7 @@ local function createMacroEnvTable(chat)
 	env.tonumber = tonumber;
 	env.tostring = tostring;
 	env.type = type;
-	env.unpack = unpack;
+	env.unpack = table.unpack;
 	env.xpcall = xpcall;
 	env.assert = assert;
 	env.error = error;
@@ -843,8 +830,10 @@ local function createMacroEnvTable(chat)
 	env.math = cloneTable(math);
 	env.string = cloneTable(string);	
 	env.coroutine = cloneTable(coroutine);
-	env.utils = cloneTable(utils);
+	env.utils = cloneTable(Utils);	
 	env.ndb = cloneTable(NDB);
+	
+	env.Utils = env.utils;	
 	env.NDB = env.ndb;
 	
 	local originalLoad = load;

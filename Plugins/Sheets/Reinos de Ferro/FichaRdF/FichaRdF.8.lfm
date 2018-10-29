@@ -15,9 +15,9 @@
 
 			<label left="0" top="160" width="200" height="20" text="Colaboradores:" horzTextAlign="center"/>
 			<label left="0" top="185" width="200" height="20" text="Lucas Stobbe (Stobbe)" horzTextAlign="center"/>
-			<label left="0" top="210" width="200" height="20" text="Felipe \&quot;Tanaka\&quot; (touhitsu)" horzTextAlign="center"/>
+			<label left="0" top="210" width="200" height="20" text="Felipe &quot;Tanaka&quot; (touhitsu)" horzTextAlign="center"/>
 			<label left="0" top="235" width="200" height="20" text="Pedro Marra (Baladash)" horzTextAlign="center"/>
-			<label left="0" top="260" width="200" height="20" text="Bruno \&quot;Ventania\&quot; (Lycan)" horzTextAlign="center"/>
+			<label left="0" top="260" width="200" height="20" text="Bruno &quot;Ventania&quot; (Lycan)" horzTextAlign="center"/>
 			<label left="0" top="285" width="200" height="20" text="Henrique Restivo (Psit)" horzTextAlign="center"/>
 
 		</layout>

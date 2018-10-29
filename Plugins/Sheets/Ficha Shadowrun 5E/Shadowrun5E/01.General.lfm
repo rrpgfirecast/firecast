@@ -224,7 +224,7 @@
 		</button>
 	</template>
 
-	<popup name="popupPhysical" width="400" height="130" backOpacity="0.4">
+	<popup name="popupPhysical" width="400" height="130" backOpacity="0.4" autoScopeNode="false">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="8" margins="{bottom=4}" horzAlign="center">
 			<smallTitleCenter text="Max"/>
 			<smallTitleCenter text="Base"/>
@@ -240,7 +240,7 @@
 		<atributeFlow field="reaction"/>
 		<atributeFlow field="strenght"/>
 	</popup>
-	<popup name="popupMental" width="400" height="130" backOpacity="0.4">
+	<popup name="popupMental" width="400" height="130" backOpacity="0.4" autoScopeNode="false">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="8" margins="{bottom=4}" horzAlign="center">
 			<smallTitleCenter text="Max"/>
 			<smallTitleCenter text="Base"/>
@@ -256,7 +256,7 @@
 		<atributeFlow field="logic"/>
 		<atributeFlow field="willpower"/>
 	</popup>
-	<popup name="popupSpecial" width="400" height="130" backOpacity="0.4">
+	<popup name="popupSpecial" width="400" height="130" backOpacity="0.4" autoScopeNode="false">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="8" margins="{bottom=4}" horzAlign="center">
 			<smallTitleCenter text="Max"/>
 			<smallTitleCenter text="Base"/>
@@ -271,7 +271,7 @@
 		<atributeFlow field="magic"/>
 		<atributeFlow field="ressonance"/>
 	</popup>
-	<popup name="popupActiveSkill" width="350" height="220" backOpacity="0.4">
+	<popup name="popupActiveSkill" width="350" height="220" backOpacity="0.4" autoScopeNode="false">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
 			<mediumTitleCenter text="Base"/>
 			<mediumTitleCenter text="Points"/>
@@ -352,7 +352,7 @@
 
 		<textEditor align="client" field="skils_especs"/>
 	</popup>
-	<popup name="popupKnowledgeSkill" width="350" height="200" backOpacity="0.4">
+	<popup name="popupKnowledgeSkill" width="350" height="200" backOpacity="0.4" autoScopeNode="false">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
 			<mediumTitleCenter text="Base"/>
 			<mediumTitleCenter text="Points"/>
@@ -404,7 +404,7 @@
 
 		<textEditor align="client" field="skils_especs"/>
 	</popup>
-	<popup name="popupLanguageSkill" width="350" height="160" backOpacity="0.4">
+	<popup name="popupLanguageSkill" width="350" height="160" backOpacity="0.4" autoScopeNode="false">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
 			<mediumCheckboxCenter text="Native" field="skill_native"/>
 			<mediumTitleCenter text="Points"/>

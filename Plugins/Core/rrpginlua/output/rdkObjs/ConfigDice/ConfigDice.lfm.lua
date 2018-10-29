@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmConfigDice()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+local function constructNew_frmConfigDice()
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -36,7 +36,7 @@ function newfrmConfigDice()
 		local DADOS = {"any", "d4", "d6", "d8", "d10", "d10cent", "d12", "d20", "fudge"};
 	
 		function self:podeEspecificarDados()
-			return rrpg.getCurrentUser().isRuby;
+			return Firecast.getCurrentUser().isRuby;
 		end;
 	
 		function self:updateSelectedDice()
@@ -100,19 +100,19 @@ function newfrmConfigDice()
 	
 
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setMargins({top=5, bottom=5, left = 5, right = 5});
     obj.layout1:setName("layout1");
     obj.layout1:setAlign("client");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layout1);
     obj.layout2:setAlign("top");
     obj.layout2:setHeight(30);
     obj.layout2:setName("layout2");
 
-    obj.labCDice = gui.fromHandle(_obj_newObject("label"));
+    obj.labCDice = GUI.fromHandle(_obj_newObject("label"));
     obj.labCDice:setParent(obj.layout2);
     obj.labCDice:setName("labCDice");
     obj.labCDice:setAlign("left");
@@ -122,45 +122,45 @@ function newfrmConfigDice()
     obj.labCDice:setHorzTextAlign("trailing");
     obj.labCDice:setWidth(50);
 
-    obj.cmbCDice = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.cmbCDice = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.cmbCDice:setParent(obj.layout2);
     obj.cmbCDice:setName("cmbCDice");
     obj.cmbCDice:setAlign("client");
 
-    obj.scbContent = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.scbContent = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.scbContent:setParent(obj.layout1);
     obj.scbContent:setName("scbContent");
     obj.scbContent:setAlign("client");
     obj.scbContent:setMargins({top=10, left=5, right=5});
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.scbContent);
     obj.layout3:setAlign("top");
     obj.layout3:setHeight(30);
     obj.layout3:setName("layout3");
 
-    obj.cbxCustomized = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.cbxCustomized = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.cbxCustomized:setParent(obj.layout3);
     obj.cbxCustomized:setName("cbxCustomized");
     obj.cbxCustomized:setLeft(55);
     obj.cbxCustomized:setField("enabled");
     obj.cbxCustomized:setWidth(200);
 
-    obj.layCustomization = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.layCustomization = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.layCustomization:setParent(obj.scbContent);
     obj.layCustomization:setName("layCustomization");
     obj.layCustomization:setAlign("client");
     obj.layCustomization:setVisible(false);
     obj.layCustomization:setMaxControlsPerLine(1);
 
-    obj.flowPart1 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart1 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart1:setParent(obj.layCustomization);
     obj.flowPart1:setAlign("top");
     obj.flowPart1:setHeight(35);
     obj.flowPart1:setMaxWidth(9999);
     obj.flowPart1:setName("flowPart1");
 
-    obj.labCorLetra = gui.fromHandle(_obj_newObject("label"));
+    obj.labCorLetra = GUI.fromHandle(_obj_newObject("label"));
     obj.labCorLetra:setParent(obj.flowPart1);
     obj.labCorLetra:setName("labCorLetra");
     obj.labCorLetra:setWordWrap(false);
@@ -169,14 +169,14 @@ function newfrmConfigDice()
     obj.labCorLetra:setHorzTextAlign("trailing");
     obj.labCorLetra:setMargins({right=5});
 
-    obj.colorComboBox1 = gui.fromHandle(_obj_newObject("colorComboBox"));
+    obj.colorComboBox1 = GUI.fromHandle(_obj_newObject("colorComboBox"));
     obj.colorComboBox1:setParent(obj.flowPart1);
     obj.colorComboBox1:setAlign("client");
     obj.colorComboBox1:setField("faceColor");
     obj.colorComboBox1:setUseAlpha(false);
     obj.colorComboBox1:setName("colorComboBox1");
 
-    obj.flowPart2 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart2 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart2:setParent(obj.layCustomization);
     obj.flowPart2:setAlign("top");
     obj.flowPart2:setHeight(40);
@@ -184,7 +184,7 @@ function newfrmConfigDice()
     obj.flowPart2:setMaxWidth(9999);
     obj.flowPart2:setName("flowPart2");
 
-    obj.labBkg = gui.fromHandle(_obj_newObject("label"));
+    obj.labBkg = GUI.fromHandle(_obj_newObject("label"));
     obj.labBkg:setParent(obj.flowPart2);
     obj.labBkg:setName("labBkg");
     obj.labBkg:setWordWrap(false);
@@ -193,26 +193,26 @@ function newfrmConfigDice()
     obj.labBkg:setHorzTextAlign("trailing");
     obj.labBkg:setMargins({right=5});
 
-    obj.layRadiosBkg = gui.fromHandle(_obj_newObject("layout"));
+    obj.layRadiosBkg = GUI.fromHandle(_obj_newObject("layout"));
     obj.layRadiosBkg:setParent(obj.flowPart2);
     obj.layRadiosBkg:setName("layRadiosBkg");
     obj.layRadiosBkg:setAlign("client");
 
-    obj.rdbCorSolida = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.rdbCorSolida = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.rdbCorSolida:setParent(obj.layRadiosBkg);
     obj.rdbCorSolida:setName("rdbCorSolida");
     obj.rdbCorSolida:setAlign("top");
     obj.rdbCorSolida:setField("bkgType");
     obj.rdbCorSolida:setFieldValue("color");
 
-    obj.rdbImagem = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.rdbImagem = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.rdbImagem:setParent(obj.layRadiosBkg);
     obj.rdbImagem:setName("rdbImagem");
     obj.rdbImagem:setAlign("top");
     obj.rdbImagem:setField("bkgType");
     obj.rdbImagem:setFieldValue("image");
 
-    obj.layCorSolida = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.layCorSolida = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.layCorSolida:setParent(obj.layCustomization);
     obj.layCorSolida:setName("layCorSolida");
     obj.layCorSolida:setAlign("top");
@@ -221,7 +221,7 @@ function newfrmConfigDice()
     obj.layCorSolida:setVisible(false);
     obj.layCorSolida:setMaxWidth(9999);
 
-    obj.labCorFundo = gui.fromHandle(_obj_newObject("label"));
+    obj.labCorFundo = GUI.fromHandle(_obj_newObject("label"));
     obj.labCorFundo:setParent(obj.layCorSolida);
     obj.labCorFundo:setName("labCorFundo");
     obj.labCorFundo:setWordWrap(false);
@@ -230,14 +230,14 @@ function newfrmConfigDice()
     obj.labCorFundo:setHorzTextAlign("trailing");
     obj.labCorFundo:setMargins({right=5});
 
-    obj.colorComboBox2 = gui.fromHandle(_obj_newObject("colorComboBox"));
+    obj.colorComboBox2 = GUI.fromHandle(_obj_newObject("colorComboBox"));
     obj.colorComboBox2:setParent(obj.layCorSolida);
     obj.colorComboBox2:setAlign("client");
     obj.colorComboBox2:setField("bkgColor");
     obj.colorComboBox2:setUseAlpha(false);
     obj.colorComboBox2:setName("colorComboBox2");
 
-    obj.layImagem = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.layImagem = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.layImagem:setParent(obj.layCustomization);
     obj.layImagem:setName("layImagem");
     obj.layImagem:setAlign("top");
@@ -246,7 +246,7 @@ function newfrmConfigDice()
     obj.layImagem:setVisible(false);
     obj.layImagem:setMaxWidth(9999);
 
-    obj.labImagem = gui.fromHandle(_obj_newObject("label"));
+    obj.labImagem = GUI.fromHandle(_obj_newObject("label"));
     obj.labImagem:setParent(obj.layImagem);
     obj.labImagem:setName("labImagem");
     obj.labImagem:setWordWrap(false);
@@ -255,7 +255,7 @@ function newfrmConfigDice()
     obj.labImagem:setHorzTextAlign("trailing");
     obj.labImagem:setMargins({right=5});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layImagem);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("null");
@@ -265,7 +265,7 @@ function newfrmConfigDice()
     obj.rectangle1:setYradius(5);
     obj.rectangle1:setName("rectangle1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.rectangle1);
     obj.image1:setAlign("client");
     obj.image1:setField("imageURL");
@@ -293,37 +293,37 @@ function newfrmConfigDice()
 			
 
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.scbContent);
     obj.dataLink1:setField("enabled");
     obj.dataLink1:setName("dataLink1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.scbContent);
     obj.dataLink2:setField("bkgType");
     obj.dataLink2:setName("dataLink2");
 
-    obj.layRubyOnly = gui.fromHandle(_obj_newObject("layout"));
+    obj.layRubyOnly = GUI.fromHandle(_obj_newObject("layout"));
     obj.layRubyOnly:setParent(obj.layout1);
     obj.layRubyOnly:setName("layRubyOnly");
     obj.layRubyOnly:setAlign("client");
     obj.layRubyOnly:setVisible(false);
 
-    obj.labRubyOnly = gui.fromHandle(_obj_newObject("label"));
+    obj.labRubyOnly = GUI.fromHandle(_obj_newObject("label"));
     obj.labRubyOnly:setParent(obj.layRubyOnly);
     obj.labRubyOnly:setName("labRubyOnly");
     obj.labRubyOnly:setAlign("client");
     obj.labRubyOnly:setHorzTextAlign("center");
     obj.labRubyOnly:setVertTextAlign("center");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj);
     obj.layout4:setName("layout4");
     obj.layout4:setAlign("bottom");
     obj.layout4:setMargins({top=2, bottom=2});
     obj.layout4:setHeight(40);
 
-    obj.btnFechar1 = gui.fromHandle(_obj_newObject("button"));
+    obj.btnFechar1 = GUI.fromHandle(_obj_newObject("button"));
     obj.btnFechar1:setParent(obj.layout4);
     obj.btnFechar1:setName("btnFechar1");
     obj.btnFechar1:setText("");
@@ -336,28 +336,28 @@ self.btnFechar1.text = lang('fc.BottomClosePopupPanel.close');
 
 
     obj._e_event0 = obj:addEventListener("onShow",
-        function (self)
+        function (_)
             self:configurarInterface();
         end, obj);
 
     obj._e_event1 = obj.cmbCDice:addEventListener("onChange",
-        function (self)
+        function (_)
             self:updateSelectedDice()
         end, obj);
 
     obj._e_event2 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.layCustomization.visible = self.scbContent.node.enabled;
         end, obj);
 
     obj._e_event3 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self:mostrarBkgType();
         end, obj);
 
     obj._e_event4 = obj.btnFechar1:addEventListener("onClick",
-        function (self)
-            gui.closePopup(self);
+        function (_)
+            GUI.closePopup(self);
         end, obj);
 
     function obj:_releaseEvents()
@@ -411,9 +411,23 @@ self.btnFechar1.text = lang('fc.BottomClosePopupPanel.close');
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmConfigDice()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmConfigDice();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmConfigDice = {
@@ -427,6 +441,6 @@ local _frmConfigDice = {
     description=""};
 
 frmConfigDice = _frmConfigDice;
-rrpg.registrarForm(_frmConfigDice);
+Firecast.registrarForm(_frmConfigDice);
 
 return _frmConfigDice;

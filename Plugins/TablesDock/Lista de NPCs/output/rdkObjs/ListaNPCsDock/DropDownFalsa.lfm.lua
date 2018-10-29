@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newOpcaoDaComboboxFalsa()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_OpcaoDaComboboxDockFalsa()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -26,12 +26,12 @@ function newOpcaoDaComboboxFalsa()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("OpcaoDaComboboxFalsa");
+    obj:setName("OpcaoDaComboboxDockFalsa");
     obj:setHeight(24);
     obj:setAlign("top");
     obj:setTheme("dark");
 
-    obj.imgApagar2 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imgApagar2 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imgApagar2:setParent(obj);
     obj.imgApagar2:setAlign("left");
     obj.imgApagar2:setWidth(20);
@@ -40,7 +40,7 @@ function newOpcaoDaComboboxFalsa()
     obj.imgApagar2:setImageChecked("/ListaNPCsDock/images/delete.png");
     obj.imgApagar2:setImageUnchecked("/ListaNPCsDock/images/delete.png");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
     obj.label1:setAlign("client");
     obj.label1:setField("NomeDaOpcao");
@@ -48,20 +48,20 @@ function newOpcaoDaComboboxFalsa()
     obj.label1:setText("Título da Aba");
     obj.label1:setName("label1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("TipoOrganizar");
     obj.dataLink1:setDefaultValue("Alfa");
     obj.dataLink1:setName("dataLink1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj);
     obj.dataLink2:setField("NomeDaOpcao");
     obj.dataLink2:setDefaultValue("Título da Aba");
     obj.dataLink2:setName("dataLink2");
 
     obj._e_event0 = obj.imgApagar2:addEventListener("onClick",
-        function (self)
+        function (_)
             if DonoMestre(sheet, false, "docksub10") then
             						dialogs.confirmYesNo("Deseja realmente apagar este item?",
             							function (confirmado)
@@ -75,7 +75,7 @@ function newOpcaoDaComboboxFalsa()
         end, obj);
 
     obj._e_event1 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
         end, obj);
 
     function obj:_releaseEvents()
@@ -101,22 +101,36 @@ function newOpcaoDaComboboxFalsa()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
 end;
 
-local _OpcaoDaComboboxFalsa = {
-    newEditor = newOpcaoDaComboboxFalsa, 
-    new = newOpcaoDaComboboxFalsa, 
-    name = "OpcaoDaComboboxFalsa", 
+function newOpcaoDaComboboxDockFalsa()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_OpcaoDaComboboxDockFalsa();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
+end;
+
+local _OpcaoDaComboboxDockFalsa = {
+    newEditor = newOpcaoDaComboboxDockFalsa, 
+    new = newOpcaoDaComboboxDockFalsa, 
+    name = "OpcaoDaComboboxDockFalsa", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
     title = "", 
     description=""};
 
-OpcaoDaComboboxFalsa = _OpcaoDaComboboxFalsa;
-rrpg.registrarForm(_OpcaoDaComboboxFalsa);
+OpcaoDaComboboxDockFalsa = _OpcaoDaComboboxDockFalsa;
+Firecast.registrarForm(_OpcaoDaComboboxDockFalsa);
 
-return _OpcaoDaComboboxFalsa;
+return _OpcaoDaComboboxDockFalsa;

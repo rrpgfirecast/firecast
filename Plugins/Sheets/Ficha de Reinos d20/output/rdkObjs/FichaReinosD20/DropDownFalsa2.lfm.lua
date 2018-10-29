@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newOpcaoDaComboboxFalsa2()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_OpcaoDaComboboxFalsa2()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,14 +31,14 @@ function newOpcaoDaComboboxFalsa2()
     obj:setAlign("top");
     obj:setTheme("dark");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
     obj.label1:setAlign("client");
     obj.label1:setField("NomeDaOpcao");
     obj.label1:setText("Nome da Opção");
     obj.label1:setName("label1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("NomeDaOpcao");
     obj.dataLink1:setDefaultValue("Nenhum");
@@ -63,9 +63,23 @@ function newOpcaoDaComboboxFalsa2()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newOpcaoDaComboboxFalsa2()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_OpcaoDaComboboxFalsa2();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _OpcaoDaComboboxFalsa2 = {
@@ -79,6 +93,6 @@ local _OpcaoDaComboboxFalsa2 = {
     description=""};
 
 OpcaoDaComboboxFalsa2 = _OpcaoDaComboboxFalsa2;
-rrpg.registrarForm(_OpcaoDaComboboxFalsa2);
+Firecast.registrarForm(_OpcaoDaComboboxFalsa2);
 
 return _OpcaoDaComboboxFalsa2;

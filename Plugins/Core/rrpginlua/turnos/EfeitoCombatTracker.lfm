@@ -8,7 +8,7 @@
 		end;		
 	
 		function self:apagarEfeito()
-			ndb.deleteNode(sheet);
+			NDB.deleteNode(sheet);
 		end;
 		
 		function self:doUsuarioAlterouDuracao()
@@ -37,7 +37,7 @@
 	</layout>
 	
 	<script>
-		if system.isMobile() then
+		if System.isMobile() then
 			self.height = 30;
 			self.imgEfeito.width = 30;
 			self.imgEfeito.style = "autoFit";			

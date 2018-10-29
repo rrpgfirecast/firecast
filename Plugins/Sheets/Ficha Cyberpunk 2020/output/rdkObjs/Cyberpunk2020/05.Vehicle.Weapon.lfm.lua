@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmVehicleWeapon()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmVehicleWeapon()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,13 +31,13 @@ function newfrmVehicleWeapon()
     obj:setHeight(25);
     obj:setMargins({top=1});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setLeft(0);
     obj.edit1:setTop(0);
@@ -46,7 +46,7 @@ function newfrmVehicleWeapon()
     obj.edit1:setField("nome");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.rectangle1);
     obj.edit2:setLeft(150);
     obj.edit2:setTop(0);
@@ -55,7 +55,7 @@ function newfrmVehicleWeapon()
     obj.edit2:setField("tipo");
     obj.edit2:setName("edit2");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.rectangle1);
     obj.edit3:setLeft(200);
     obj.edit3:setTop(0);
@@ -64,7 +64,7 @@ function newfrmVehicleWeapon()
     obj.edit3:setField("precisao");
     obj.edit3:setName("edit3");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.rectangle1);
     obj.edit4:setLeft(250);
     obj.edit4:setTop(0);
@@ -73,7 +73,7 @@ function newfrmVehicleWeapon()
     obj.edit4:setField("ocultamento");
     obj.edit4:setName("edit4");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.rectangle1);
     obj.edit5:setLeft(300);
     obj.edit5:setTop(0);
@@ -82,7 +82,7 @@ function newfrmVehicleWeapon()
     obj.edit5:setField("disponibilidade");
     obj.edit5:setName("edit5");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.rectangle1);
     obj.edit6:setLeft(350);
     obj.edit6:setTop(0);
@@ -91,7 +91,7 @@ function newfrmVehicleWeapon()
     obj.edit6:setField("dano");
     obj.edit6:setName("edit6");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.rectangle1);
     obj.edit7:setLeft(400);
     obj.edit7:setTop(0);
@@ -100,7 +100,7 @@ function newfrmVehicleWeapon()
     obj.edit7:setField("disparos");
     obj.edit7:setName("edit7");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.rectangle1);
     obj.edit8:setLeft(450);
     obj.edit8:setTop(0);
@@ -109,7 +109,7 @@ function newfrmVehicleWeapon()
     obj.edit8:setField("cadencia");
     obj.edit8:setName("edit8");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.rectangle1);
     obj.edit9:setLeft(500);
     obj.edit9:setTop(0);
@@ -118,7 +118,7 @@ function newfrmVehicleWeapon()
     obj.edit9:setField("confiabilidade");
     obj.edit9:setName("edit9");
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.rectangle1);
     obj.edit10:setLeft(550);
     obj.edit10:setTop(0);
@@ -127,7 +127,7 @@ function newfrmVehicleWeapon()
     obj.edit10:setField("alcance");
     obj.edit10:setName("edit10");
 
-    obj.edit11 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit11:setParent(obj.rectangle1);
     obj.edit11:setLeft(600);
     obj.edit11:setTop(0);
@@ -136,7 +136,7 @@ function newfrmVehicleWeapon()
     obj.edit11:setField("preco");
     obj.edit11:setName("edit11");
 
-    obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit12:setParent(obj.rectangle1);
     obj.edit12:setLeft(650);
     obj.edit12:setTop(0);
@@ -145,7 +145,7 @@ function newfrmVehicleWeapon()
     obj.edit12:setField("posicao");
     obj.edit12:setName("edit12");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(700);
     obj.button1:setTop(0);
@@ -154,13 +154,13 @@ function newfrmVehicleWeapon()
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.rectangle1);
     obj.dataLink1:setFields({'preco'});
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
             					function (confirmado)
             						if confirmado then
@@ -170,7 +170,7 @@ function newfrmVehicleWeapon()
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             				local node = ndb.getRoot(sheet);
@@ -218,9 +218,23 @@ function newfrmVehicleWeapon()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmVehicleWeapon()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmVehicleWeapon();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmVehicleWeapon = {
@@ -234,6 +248,6 @@ local _frmVehicleWeapon = {
     description=""};
 
 frmVehicleWeapon = _frmVehicleWeapon;
-rrpg.registrarForm(_frmVehicleWeapon);
+Firecast.registrarForm(_frmVehicleWeapon);
 
 return _frmVehicleWeapon;

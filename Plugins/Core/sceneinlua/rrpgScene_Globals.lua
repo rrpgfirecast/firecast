@@ -4,14 +4,14 @@ require("rrpg.lua");
 
 
 function UTIL_IsTokenMine(token)
-	local currentUser = rrpg.getCurrentUser();
+	local currentUser = Firecast.getCurrentUser();
 	
 	if currentUser.login ~= "" and currentUser.login ~= nil and currentUser.isLogged then
-		if string.lower(ownerUserID) == string.lower(currentUser.login) then
+		if string.lower(token.ownerUserID) == string.lower(currentUser.login) then
 			return true;
 		end;
 		
-		local mesa = rrpg.getMesaDe(token.scene);
+		local mesa = Firecast.getMesaDe(token.scene);
 		
 		if mesa ~= nil then
 			local personagem = mesa:findBibliotecaItem(token.ownerCharacter);		

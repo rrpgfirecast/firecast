@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister6_svg" align="client" theme="dark" margins="{top=1}">
 	<scrollBox align="client">
 		<script>
@@ -148,7 +148,7 @@
 			</dataLink>
 		</template>
 
-		<popup name="BarrinhaPopup" width="140" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}">
+		<popup name="BarrinhaPopup" width="140" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}" autoScopeNode="false">
 			<rectangle align="client" color="white" xradius="5" yradius="5">
 				<rectangle align="client" name="CorPopupBarrinhas" color="#808080" xradius="5" yradius="5" opacity="0.9">
 					<label fontColor="black" margins="{left=6, top=2}" align="top" text="Valor" field="AtributoBarrinha" fontSize="12" fontStyle="bold" textTrimming="character"/>

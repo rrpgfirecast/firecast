@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="OpcaoDaComboboxFalsa2" height="24" align="top" theme="dark"> 
+<form name="OpcaoDaComboboxDockFalsa2" height="24" align="top" theme="dark"> 
 	
 	 
 	 <label align="client" field="NomeDaOpcao" text="Nome da Opção" />

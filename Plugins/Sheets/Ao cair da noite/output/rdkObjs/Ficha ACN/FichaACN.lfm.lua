@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFichaACN()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmFichaACN()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -33,28 +33,28 @@ function newfrmFichaACN()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.tabControl1 = gui.fromHandle(_obj_newObject("tabControl"));
+    obj.tabControl1 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl1:setParent(obj);
     obj.tabControl1:setAlign("client");
     obj.tabControl1:setName("tabControl1");
 
-    obj.tab1 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab1 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab1:setParent(obj.tabControl1);
     obj.tab1:setTitle("Geral");
     obj.tab1:setName("tab1");
 
-    obj.frmACN1 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmACN1 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmACN1:setParent(obj.tab1);
     obj.frmACN1:setName("frmACN1");
     obj.frmACN1:setAlign("client");
     obj.frmACN1:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj.frmACN1);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -62,7 +62,7 @@ function newfrmFichaACN()
     obj.layout1:setHeight(70);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setLeft(5);
     obj.rectangle1:setTop(0);
@@ -74,7 +74,7 @@ function newfrmFichaACN()
     obj.rectangle1:setCornerType("round");
     obj.rectangle1:setName("rectangle1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layout1);
     obj.layout2:setLeft(5);
     obj.layout2:setTop(5);
@@ -82,7 +82,7 @@ function newfrmFichaACN()
     obj.layout2:setHeight(25);
     obj.layout2:setName("layout2");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout2);
     obj.label1:setLeft(0);
     obj.label1:setTop(5);
@@ -92,7 +92,7 @@ function newfrmFichaACN()
     obj.label1:setHorzTextAlign("trailing");
     obj.label1:setName("label1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout2);
     obj.edit1:setLeft(110);
     obj.edit1:setTop(0);
@@ -101,7 +101,7 @@ function newfrmFichaACN()
     obj.edit1:setField("nome");
     obj.edit1:setName("edit1");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout1);
     obj.layout3:setLeft(320);
     obj.layout3:setTop(5);
@@ -109,7 +109,7 @@ function newfrmFichaACN()
     obj.layout3:setHeight(25);
     obj.layout3:setName("layout3");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout3);
     obj.label2:setLeft(0);
     obj.label2:setTop(5);
@@ -119,7 +119,7 @@ function newfrmFichaACN()
     obj.label2:setHorzTextAlign("trailing");
     obj.label2:setName("label2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout3);
     obj.edit2:setLeft(110);
     obj.edit2:setTop(0);
@@ -128,7 +128,7 @@ function newfrmFichaACN()
     obj.edit2:setField("conceito");
     obj.edit2:setName("edit2");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout1);
     obj.layout4:setLeft(585);
     obj.layout4:setTop(5);
@@ -136,7 +136,7 @@ function newfrmFichaACN()
     obj.layout4:setHeight(25);
     obj.layout4:setName("layout4");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout4);
     obj.label3:setLeft(0);
     obj.label3:setTop(5);
@@ -146,7 +146,7 @@ function newfrmFichaACN()
     obj.label3:setHorzTextAlign("trailing");
     obj.label3:setName("label3");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout4);
     obj.edit3:setLeft(110);
     obj.edit3:setTop(0);
@@ -155,7 +155,7 @@ function newfrmFichaACN()
     obj.edit3:setField("faccao");
     obj.edit3:setName("edit3");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout1);
     obj.layout5:setLeft(5);
     obj.layout5:setTop(35);
@@ -163,7 +163,7 @@ function newfrmFichaACN()
     obj.layout5:setHeight(25);
     obj.layout5:setName("layout5");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout5);
     obj.label4:setLeft(0);
     obj.label4:setTop(5);
@@ -173,7 +173,7 @@ function newfrmFichaACN()
     obj.label4:setHorzTextAlign("trailing");
     obj.label4:setName("label4");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout5);
     obj.edit4:setLeft(110);
     obj.edit4:setTop(0);
@@ -182,7 +182,7 @@ function newfrmFichaACN()
     obj.edit4:setField("impeto");
     obj.edit4:setName("edit4");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout1);
     obj.layout6:setLeft(320);
     obj.layout6:setTop(35);
@@ -190,7 +190,7 @@ function newfrmFichaACN()
     obj.layout6:setHeight(25);
     obj.layout6:setName("layout6");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout6);
     obj.label5:setLeft(0);
     obj.label5:setTop(5);
@@ -200,7 +200,7 @@ function newfrmFichaACN()
     obj.label5:setHorzTextAlign("trailing");
     obj.label5:setName("label5");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout6);
     obj.edit5:setLeft(110);
     obj.edit5:setTop(0);
@@ -209,7 +209,7 @@ function newfrmFichaACN()
     obj.edit5:setField("comportamento");
     obj.edit5:setName("edit5");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.layout1);
     obj.layout7:setLeft(585);
     obj.layout7:setTop(35);
@@ -217,7 +217,7 @@ function newfrmFichaACN()
     obj.layout7:setHeight(25);
     obj.layout7:setName("layout7");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout7);
     obj.label6:setLeft(0);
     obj.label6:setTop(5);
@@ -227,7 +227,7 @@ function newfrmFichaACN()
     obj.label6:setHorzTextAlign("trailing");
     obj.label6:setName("label6");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout7);
     obj.edit6:setLeft(110);
     obj.edit6:setTop(0);
@@ -236,7 +236,7 @@ function newfrmFichaACN()
     obj.edit6:setField("direcao");
     obj.edit6:setName("edit6");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.scrollBox1);
     obj.layout8:setLeft(0);
     obj.layout8:setTop(75);
@@ -244,7 +244,7 @@ function newfrmFichaACN()
     obj.layout8:setHeight(245);
     obj.layout8:setName("layout8");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout8);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("black");
@@ -253,7 +253,7 @@ function newfrmFichaACN()
     obj.rectangle2:setCornerType("round");
     obj.rectangle2:setName("rectangle2");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout8);
     obj.label7:setLeft(5);
     obj.label7:setTop(0);
@@ -263,7 +263,7 @@ function newfrmFichaACN()
     obj.label7:setHorzTextAlign("center");
     obj.label7:setName("label7");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout8);
     obj.label8:setLeft(250);
     obj.label8:setTop(80);
@@ -274,7 +274,7 @@ function newfrmFichaACN()
     obj.label8:setRotationAngle(90);
     obj.label8:setName("label8");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout8);
     obj.label9:setLeft(250);
     obj.label9:setTop(175);
@@ -285,7 +285,7 @@ function newfrmFichaACN()
     obj.label9:setRotationAngle(90);
     obj.label9:setName("label9");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout8);
     obj.label10:setLeft(105);
     obj.label10:setTop(25);
@@ -294,7 +294,7 @@ function newfrmFichaACN()
     obj.label10:setText(" Total");
     obj.label10:setName("label10");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout8);
     obj.label11:setLeft(150);
     obj.label11:setTop(25);
@@ -303,7 +303,7 @@ function newfrmFichaACN()
     obj.label11:setText("Base");
     obj.label11:setName("label11");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout8);
     obj.label12:setLeft(185);
     obj.label12:setTop(25);
@@ -312,7 +312,7 @@ function newfrmFichaACN()
     obj.label12:setText(" Inic");
     obj.label12:setName("label12");
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout8);
     obj.label13:setLeft(220);
     obj.label13:setTop(25);
@@ -321,7 +321,7 @@ function newfrmFichaACN()
     obj.label13:setText(" Apr.");
     obj.label13:setName("label13");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout8);
     obj.label14:setLeft(255);
     obj.label14:setTop(25);
@@ -330,7 +330,7 @@ function newfrmFichaACN()
     obj.label14:setText("  XP");
     obj.label14:setName("label14");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.layout8);
     obj.layout9:setLeft(5);
     obj.layout9:setTop(50);
@@ -338,7 +338,7 @@ function newfrmFichaACN()
     obj.layout9:setHeight(30);
     obj.layout9:setName("layout9");
 
-    obj.radioButton1 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton1 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton1:setParent(obj.layout9);
     obj.radioButton1:setLeft(0);
     obj.radioButton1:setTop(0);
@@ -347,7 +347,7 @@ function newfrmFichaACN()
     obj.radioButton1:setFieldValue("testeforca");
     obj.radioButton1:setName("radioButton1");
 
-    obj.radioButton2 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton2 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton2:setParent(obj.layout9);
     obj.radioButton2:setLeft(0);
     obj.radioButton2:setTop(13);
@@ -356,7 +356,7 @@ function newfrmFichaACN()
     obj.radioButton2:setFieldValue("testeforca");
     obj.radioButton2:setName("radioButton2");
 
-    obj.label15 = gui.fromHandle(_obj_newObject("label"));
+    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.layout9);
     obj.label15:setLeft(20);
     obj.label15:setTop(5);
@@ -365,7 +365,7 @@ function newfrmFichaACN()
     obj.label15:setText("Força");
     obj.label15:setName("label15");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout9);
     obj.rectangle3:setLeft(100);
     obj.rectangle3:setTop(0);
@@ -376,7 +376,7 @@ function newfrmFichaACN()
     obj.rectangle3:setStrokeSize(1);
     obj.rectangle3:setName("rectangle3");
 
-    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.layout9);
     obj.label16:setLeft(100);
     obj.label16:setTop(3);
@@ -386,7 +386,7 @@ function newfrmFichaACN()
     obj.label16:setHorzTextAlign("center");
     obj.label16:setName("label16");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout9);
     obj.edit7:setLeft(145);
     obj.edit7:setTop(0);
@@ -396,7 +396,7 @@ function newfrmFichaACN()
     obj.edit7:setField("baseforca");
     obj.edit7:setName("edit7");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.layout9);
     obj.edit8:setLeft(180);
     obj.edit8:setTop(0);
@@ -406,7 +406,7 @@ function newfrmFichaACN()
     obj.edit8:setField("inicialforca");
     obj.edit8:setName("edit8");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.layout9);
     obj.edit9:setLeft(215);
     obj.edit9:setTop(0);
@@ -416,7 +416,7 @@ function newfrmFichaACN()
     obj.edit9:setField("bonusforca");
     obj.edit9:setName("edit9");
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.layout9);
     obj.edit10:setLeft(250);
     obj.edit10:setTop(0);
@@ -426,12 +426,12 @@ function newfrmFichaACN()
     obj.edit10:setField("xpforca");
     obj.edit10:setName("edit10");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.layout9);
     obj.dataLink1:setFields({'baseforca', 'inicialforca', 'bonusforca', 'xpforca', 'penalidadeEscudo', 'penalidadeArmadura'});
     obj.dataLink1:setName("dataLink1");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.layout8);
     obj.layout10:setLeft(5);
     obj.layout10:setTop(80);
@@ -439,7 +439,7 @@ function newfrmFichaACN()
     obj.layout10:setHeight(30);
     obj.layout10:setName("layout10");
 
-    obj.radioButton3 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton3 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton3:setParent(obj.layout10);
     obj.radioButton3:setLeft(0);
     obj.radioButton3:setTop(0);
@@ -448,7 +448,7 @@ function newfrmFichaACN()
     obj.radioButton3:setFieldValue("testeagilidade");
     obj.radioButton3:setName("radioButton3");
 
-    obj.radioButton4 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton4 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton4:setParent(obj.layout10);
     obj.radioButton4:setLeft(0);
     obj.radioButton4:setTop(13);
@@ -457,7 +457,7 @@ function newfrmFichaACN()
     obj.radioButton4:setFieldValue("testeagilidade");
     obj.radioButton4:setName("radioButton4");
 
-    obj.label17 = gui.fromHandle(_obj_newObject("label"));
+    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.layout10);
     obj.label17:setLeft(20);
     obj.label17:setTop(5);
@@ -466,7 +466,7 @@ function newfrmFichaACN()
     obj.label17:setText("Agilidade");
     obj.label17:setName("label17");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.layout10);
     obj.rectangle4:setLeft(100);
     obj.rectangle4:setTop(0);
@@ -477,7 +477,7 @@ function newfrmFichaACN()
     obj.rectangle4:setStrokeSize(1);
     obj.rectangle4:setName("rectangle4");
 
-    obj.label18 = gui.fromHandle(_obj_newObject("label"));
+    obj.label18 = GUI.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.layout10);
     obj.label18:setLeft(100);
     obj.label18:setTop(3);
@@ -487,7 +487,7 @@ function newfrmFichaACN()
     obj.label18:setHorzTextAlign("center");
     obj.label18:setName("label18");
 
-    obj.edit11 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit11:setParent(obj.layout10);
     obj.edit11:setLeft(145);
     obj.edit11:setTop(0);
@@ -497,7 +497,7 @@ function newfrmFichaACN()
     obj.edit11:setField("baseagilidade");
     obj.edit11:setName("edit11");
 
-    obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit12:setParent(obj.layout10);
     obj.edit12:setLeft(180);
     obj.edit12:setTop(0);
@@ -507,7 +507,7 @@ function newfrmFichaACN()
     obj.edit12:setField("inicialagilidade");
     obj.edit12:setName("edit12");
 
-    obj.edit13 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit13:setParent(obj.layout10);
     obj.edit13:setLeft(215);
     obj.edit13:setTop(0);
@@ -517,7 +517,7 @@ function newfrmFichaACN()
     obj.edit13:setField("bonusagilidade");
     obj.edit13:setName("edit13");
 
-    obj.edit14 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit14:setParent(obj.layout10);
     obj.edit14:setLeft(250);
     obj.edit14:setTop(0);
@@ -527,12 +527,12 @@ function newfrmFichaACN()
     obj.edit14:setField("xpagilidade");
     obj.edit14:setName("edit14");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.layout10);
     obj.dataLink2:setFields({'baseagilidade', 'inicialagilidade', 'bonusagilidade', 'xpagilidade', 'penalidadeEscudo', 'penalidadeArmadura'});
     obj.dataLink2:setName("dataLink2");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.layout8);
     obj.layout11:setLeft(5);
     obj.layout11:setTop(110);
@@ -540,7 +540,7 @@ function newfrmFichaACN()
     obj.layout11:setHeight(30);
     obj.layout11:setName("layout11");
 
-    obj.radioButton5 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton5 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton5:setParent(obj.layout11);
     obj.radioButton5:setLeft(0);
     obj.radioButton5:setTop(0);
@@ -549,7 +549,7 @@ function newfrmFichaACN()
     obj.radioButton5:setFieldValue("testeresiliencia");
     obj.radioButton5:setName("radioButton5");
 
-    obj.radioButton6 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton6 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton6:setParent(obj.layout11);
     obj.radioButton6:setLeft(0);
     obj.radioButton6:setTop(13);
@@ -558,7 +558,7 @@ function newfrmFichaACN()
     obj.radioButton6:setFieldValue("testeresiliencia");
     obj.radioButton6:setName("radioButton6");
 
-    obj.label19 = gui.fromHandle(_obj_newObject("label"));
+    obj.label19 = GUI.fromHandle(_obj_newObject("label"));
     obj.label19:setParent(obj.layout11);
     obj.label19:setLeft(20);
     obj.label19:setTop(5);
@@ -567,7 +567,7 @@ function newfrmFichaACN()
     obj.label19:setText("Resiliência");
     obj.label19:setName("label19");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.layout11);
     obj.rectangle5:setLeft(100);
     obj.rectangle5:setTop(0);
@@ -578,7 +578,7 @@ function newfrmFichaACN()
     obj.rectangle5:setStrokeSize(1);
     obj.rectangle5:setName("rectangle5");
 
-    obj.label20 = gui.fromHandle(_obj_newObject("label"));
+    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.layout11);
     obj.label20:setLeft(100);
     obj.label20:setTop(3);
@@ -588,7 +588,7 @@ function newfrmFichaACN()
     obj.label20:setHorzTextAlign("center");
     obj.label20:setName("label20");
 
-    obj.edit15 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit15:setParent(obj.layout11);
     obj.edit15:setLeft(145);
     obj.edit15:setTop(0);
@@ -598,7 +598,7 @@ function newfrmFichaACN()
     obj.edit15:setField("baseresiliencia");
     obj.edit15:setName("edit15");
 
-    obj.edit16 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit16:setParent(obj.layout11);
     obj.edit16:setLeft(180);
     obj.edit16:setTop(0);
@@ -608,7 +608,7 @@ function newfrmFichaACN()
     obj.edit16:setField("inicialresiliencia");
     obj.edit16:setName("edit16");
 
-    obj.edit17 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit17:setParent(obj.layout11);
     obj.edit17:setLeft(215);
     obj.edit17:setTop(0);
@@ -618,7 +618,7 @@ function newfrmFichaACN()
     obj.edit17:setField("bonusresiliencia");
     obj.edit17:setName("edit17");
 
-    obj.edit18 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit18:setParent(obj.layout11);
     obj.edit18:setLeft(250);
     obj.edit18:setTop(0);
@@ -628,12 +628,12 @@ function newfrmFichaACN()
     obj.edit18:setField("xpresiliencia");
     obj.edit18:setName("edit18");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj.layout11);
     obj.dataLink3:setFields({'baseresiliencia', 'inicialresiliencia', 'bonusresiliencia', 'xpresiliencia', 'penalidadeEscudo', 'penalidadeArmadura'});
     obj.dataLink3:setName("dataLink3");
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.layout8);
     obj.horzLine1:setLeft(0);
     obj.horzLine1:setTop(145);
@@ -641,7 +641,7 @@ function newfrmFichaACN()
     obj.horzLine1:setStrokeColor("white");
     obj.horzLine1:setName("horzLine1");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.layout8);
     obj.layout12:setLeft(5);
     obj.layout12:setTop(150);
@@ -649,7 +649,7 @@ function newfrmFichaACN()
     obj.layout12:setHeight(30);
     obj.layout12:setName("layout12");
 
-    obj.radioButton7 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton7 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton7:setParent(obj.layout12);
     obj.radioButton7:setLeft(0);
     obj.radioButton7:setTop(0);
@@ -658,7 +658,7 @@ function newfrmFichaACN()
     obj.radioButton7:setFieldValue("testecarisma");
     obj.radioButton7:setName("radioButton7");
 
-    obj.radioButton8 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton8 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton8:setParent(obj.layout12);
     obj.radioButton8:setLeft(0);
     obj.radioButton8:setTop(13);
@@ -667,7 +667,7 @@ function newfrmFichaACN()
     obj.radioButton8:setFieldValue("testecarisma");
     obj.radioButton8:setName("radioButton8");
 
-    obj.label21 = gui.fromHandle(_obj_newObject("label"));
+    obj.label21 = GUI.fromHandle(_obj_newObject("label"));
     obj.label21:setParent(obj.layout12);
     obj.label21:setLeft(20);
     obj.label21:setTop(5);
@@ -676,7 +676,7 @@ function newfrmFichaACN()
     obj.label21:setText("Carisma");
     obj.label21:setName("label21");
 
-    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle6:setParent(obj.layout12);
     obj.rectangle6:setLeft(100);
     obj.rectangle6:setTop(0);
@@ -687,7 +687,7 @@ function newfrmFichaACN()
     obj.rectangle6:setStrokeSize(1);
     obj.rectangle6:setName("rectangle6");
 
-    obj.label22 = gui.fromHandle(_obj_newObject("label"));
+    obj.label22 = GUI.fromHandle(_obj_newObject("label"));
     obj.label22:setParent(obj.layout12);
     obj.label22:setLeft(100);
     obj.label22:setTop(3);
@@ -697,7 +697,7 @@ function newfrmFichaACN()
     obj.label22:setHorzTextAlign("center");
     obj.label22:setName("label22");
 
-    obj.edit19 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit19:setParent(obj.layout12);
     obj.edit19:setLeft(145);
     obj.edit19:setTop(0);
@@ -707,7 +707,7 @@ function newfrmFichaACN()
     obj.edit19:setField("basecarisma");
     obj.edit19:setName("edit19");
 
-    obj.edit20 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit20:setParent(obj.layout12);
     obj.edit20:setLeft(180);
     obj.edit20:setTop(0);
@@ -717,7 +717,7 @@ function newfrmFichaACN()
     obj.edit20:setField("inicialcarisma");
     obj.edit20:setName("edit20");
 
-    obj.edit21 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit21:setParent(obj.layout12);
     obj.edit21:setLeft(215);
     obj.edit21:setTop(0);
@@ -727,7 +727,7 @@ function newfrmFichaACN()
     obj.edit21:setField("bonuscarisma");
     obj.edit21:setName("edit21");
 
-    obj.edit22 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit22:setParent(obj.layout12);
     obj.edit22:setLeft(250);
     obj.edit22:setTop(0);
@@ -737,12 +737,12 @@ function newfrmFichaACN()
     obj.edit22:setField("xpcarisma");
     obj.edit22:setName("edit22");
 
-    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink4:setParent(obj.layout12);
     obj.dataLink4:setFields({'basecarisma', 'inicialcarisma', 'bonuscarisma', 'xpcarisma', 'penalidadeEscudo', 'penalidadeArmadura'});
     obj.dataLink4:setName("dataLink4");
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.layout8);
     obj.layout13:setLeft(5);
     obj.layout13:setTop(180);
@@ -750,7 +750,7 @@ function newfrmFichaACN()
     obj.layout13:setHeight(30);
     obj.layout13:setName("layout13");
 
-    obj.radioButton9 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton9 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton9:setParent(obj.layout13);
     obj.radioButton9:setLeft(0);
     obj.radioButton9:setTop(0);
@@ -759,7 +759,7 @@ function newfrmFichaACN()
     obj.radioButton9:setFieldValue("testepercepcao");
     obj.radioButton9:setName("radioButton9");
 
-    obj.radioButton10 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton10 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton10:setParent(obj.layout13);
     obj.radioButton10:setLeft(0);
     obj.radioButton10:setTop(13);
@@ -768,7 +768,7 @@ function newfrmFichaACN()
     obj.radioButton10:setFieldValue("testepercepcao");
     obj.radioButton10:setName("radioButton10");
 
-    obj.label23 = gui.fromHandle(_obj_newObject("label"));
+    obj.label23 = GUI.fromHandle(_obj_newObject("label"));
     obj.label23:setParent(obj.layout13);
     obj.label23:setLeft(20);
     obj.label23:setTop(5);
@@ -777,7 +777,7 @@ function newfrmFichaACN()
     obj.label23:setText("Percepção");
     obj.label23:setName("label23");
 
-    obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle7 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle7:setParent(obj.layout13);
     obj.rectangle7:setLeft(100);
     obj.rectangle7:setTop(0);
@@ -788,7 +788,7 @@ function newfrmFichaACN()
     obj.rectangle7:setStrokeSize(1);
     obj.rectangle7:setName("rectangle7");
 
-    obj.label24 = gui.fromHandle(_obj_newObject("label"));
+    obj.label24 = GUI.fromHandle(_obj_newObject("label"));
     obj.label24:setParent(obj.layout13);
     obj.label24:setLeft(100);
     obj.label24:setTop(3);
@@ -798,7 +798,7 @@ function newfrmFichaACN()
     obj.label24:setHorzTextAlign("center");
     obj.label24:setName("label24");
 
-    obj.edit23 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit23:setParent(obj.layout13);
     obj.edit23:setLeft(145);
     obj.edit23:setTop(0);
@@ -808,7 +808,7 @@ function newfrmFichaACN()
     obj.edit23:setField("basepercepcao");
     obj.edit23:setName("edit23");
 
-    obj.edit24 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit24:setParent(obj.layout13);
     obj.edit24:setLeft(180);
     obj.edit24:setTop(0);
@@ -818,7 +818,7 @@ function newfrmFichaACN()
     obj.edit24:setField("inicialpercepcao");
     obj.edit24:setName("edit24");
 
-    obj.edit25 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit25:setParent(obj.layout13);
     obj.edit25:setLeft(215);
     obj.edit25:setTop(0);
@@ -828,7 +828,7 @@ function newfrmFichaACN()
     obj.edit25:setField("bonuspercepcao");
     obj.edit25:setName("edit25");
 
-    obj.edit26 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit26:setParent(obj.layout13);
     obj.edit26:setLeft(250);
     obj.edit26:setTop(0);
@@ -838,12 +838,12 @@ function newfrmFichaACN()
     obj.edit26:setField("xppercepcao");
     obj.edit26:setName("edit26");
 
-    obj.dataLink5 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink5:setParent(obj.layout13);
     obj.dataLink5:setFields({'basepercepcao', 'inicialpercepcao', 'bonuspercepcao', 'xppercepcao', 'penalidadeEscudo', 'penalidadeArmadura'});
     obj.dataLink5:setName("dataLink5");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.layout8);
     obj.layout14:setLeft(5);
     obj.layout14:setTop(210);
@@ -851,7 +851,7 @@ function newfrmFichaACN()
     obj.layout14:setHeight(30);
     obj.layout14:setName("layout14");
 
-    obj.radioButton11 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton11 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton11:setParent(obj.layout14);
     obj.radioButton11:setLeft(0);
     obj.radioButton11:setTop(0);
@@ -860,7 +860,7 @@ function newfrmFichaACN()
     obj.radioButton11:setFieldValue("testeperspicacia");
     obj.radioButton11:setName("radioButton11");
 
-    obj.radioButton12 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton12 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton12:setParent(obj.layout14);
     obj.radioButton12:setLeft(0);
     obj.radioButton12:setTop(13);
@@ -869,7 +869,7 @@ function newfrmFichaACN()
     obj.radioButton12:setFieldValue("testeperspicacia");
     obj.radioButton12:setName("radioButton12");
 
-    obj.label25 = gui.fromHandle(_obj_newObject("label"));
+    obj.label25 = GUI.fromHandle(_obj_newObject("label"));
     obj.label25:setParent(obj.layout14);
     obj.label25:setLeft(20);
     obj.label25:setTop(5);
@@ -878,7 +878,7 @@ function newfrmFichaACN()
     obj.label25:setText("Perspicácia");
     obj.label25:setName("label25");
 
-    obj.rectangle8 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle8 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle8:setParent(obj.layout14);
     obj.rectangle8:setLeft(100);
     obj.rectangle8:setTop(0);
@@ -889,7 +889,7 @@ function newfrmFichaACN()
     obj.rectangle8:setStrokeSize(1);
     obj.rectangle8:setName("rectangle8");
 
-    obj.label26 = gui.fromHandle(_obj_newObject("label"));
+    obj.label26 = GUI.fromHandle(_obj_newObject("label"));
     obj.label26:setParent(obj.layout14);
     obj.label26:setLeft(100);
     obj.label26:setTop(3);
@@ -899,7 +899,7 @@ function newfrmFichaACN()
     obj.label26:setHorzTextAlign("center");
     obj.label26:setName("label26");
 
-    obj.edit27 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit27 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit27:setParent(obj.layout14);
     obj.edit27:setLeft(145);
     obj.edit27:setTop(0);
@@ -909,7 +909,7 @@ function newfrmFichaACN()
     obj.edit27:setField("baseperspicacia");
     obj.edit27:setName("edit27");
 
-    obj.edit28 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit28 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit28:setParent(obj.layout14);
     obj.edit28:setLeft(180);
     obj.edit28:setTop(0);
@@ -919,7 +919,7 @@ function newfrmFichaACN()
     obj.edit28:setField("inicialperspicacia");
     obj.edit28:setName("edit28");
 
-    obj.edit29 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit29 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit29:setParent(obj.layout14);
     obj.edit29:setLeft(215);
     obj.edit29:setTop(0);
@@ -929,7 +929,7 @@ function newfrmFichaACN()
     obj.edit29:setField("bonusperspicacia");
     obj.edit29:setName("edit29");
 
-    obj.edit30 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit30 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit30:setParent(obj.layout14);
     obj.edit30:setLeft(250);
     obj.edit30:setTop(0);
@@ -939,7 +939,7 @@ function newfrmFichaACN()
     obj.edit30:setField("xpperspicacia");
     obj.edit30:setName("edit30");
 
-    obj.dataLink6 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink6:setParent(obj.layout14);
     obj.dataLink6:setFields({'baseperspicacia', 'inicialperspicacia', 'bonusperspicacia', 'xpperspicacia', 'penalidadeEscudo', 'penalidadeArmadura'});
     obj.dataLink6:setName("dataLink6");
@@ -978,7 +978,7 @@ function newfrmFichaACN()
 			
 
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.scrollBox1);
     obj.layout15:setLeft(0);
     obj.layout15:setTop(325);
@@ -986,7 +986,7 @@ function newfrmFichaACN()
     obj.layout15:setHeight(185);
     obj.layout15:setName("layout15");
 
-    obj.rectangle9 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle9 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle9:setParent(obj.layout15);
     obj.rectangle9:setAlign("client");
     obj.rectangle9:setColor("black");
@@ -995,7 +995,7 @@ function newfrmFichaACN()
     obj.rectangle9:setCornerType("round");
     obj.rectangle9:setName("rectangle9");
 
-    obj.label27 = gui.fromHandle(_obj_newObject("label"));
+    obj.label27 = GUI.fromHandle(_obj_newObject("label"));
     obj.label27:setParent(obj.layout15);
     obj.label27:setLeft(5);
     obj.label27:setTop(0);
@@ -1005,7 +1005,7 @@ function newfrmFichaACN()
     obj.label27:setHorzTextAlign("center");
     obj.label27:setName("label27");
 
-    obj.label28 = gui.fromHandle(_obj_newObject("label"));
+    obj.label28 = GUI.fromHandle(_obj_newObject("label"));
     obj.label28:setParent(obj.layout15);
     obj.label28:setLeft(105);
     obj.label28:setTop(25);
@@ -1014,7 +1014,7 @@ function newfrmFichaACN()
     obj.label28:setText(" Total");
     obj.label28:setName("label28");
 
-    obj.label29 = gui.fromHandle(_obj_newObject("label"));
+    obj.label29 = GUI.fromHandle(_obj_newObject("label"));
     obj.label29:setParent(obj.layout15);
     obj.label29:setLeft(150);
     obj.label29:setTop(25);
@@ -1023,7 +1023,7 @@ function newfrmFichaACN()
     obj.label29:setText("Base");
     obj.label29:setName("label29");
 
-    obj.label30 = gui.fromHandle(_obj_newObject("label"));
+    obj.label30 = GUI.fromHandle(_obj_newObject("label"));
     obj.label30:setParent(obj.layout15);
     obj.label30:setLeft(185);
     obj.label30:setTop(25);
@@ -1032,7 +1032,7 @@ function newfrmFichaACN()
     obj.label30:setText(" Inic");
     obj.label30:setName("label30");
 
-    obj.label31 = gui.fromHandle(_obj_newObject("label"));
+    obj.label31 = GUI.fromHandle(_obj_newObject("label"));
     obj.label31:setParent(obj.layout15);
     obj.label31:setLeft(220);
     obj.label31:setTop(25);
@@ -1041,7 +1041,7 @@ function newfrmFichaACN()
     obj.label31:setText(" Apr.");
     obj.label31:setName("label31");
 
-    obj.label32 = gui.fromHandle(_obj_newObject("label"));
+    obj.label32 = GUI.fromHandle(_obj_newObject("label"));
     obj.label32:setParent(obj.layout15);
     obj.label32:setLeft(255);
     obj.label32:setTop(25);
@@ -1050,7 +1050,7 @@ function newfrmFichaACN()
     obj.label32:setText("  XP");
     obj.label32:setName("label32");
 
-    obj.label33 = gui.fromHandle(_obj_newObject("label"));
+    obj.label33 = GUI.fromHandle(_obj_newObject("label"));
     obj.label33:setParent(obj.layout15);
     obj.label33:setLeft(250);
     obj.label33:setTop(80);
@@ -1061,7 +1061,7 @@ function newfrmFichaACN()
     obj.label33:setRotationAngle(90);
     obj.label33:setName("label33");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.layout15);
     obj.layout16:setLeft(5);
     obj.layout16:setTop(50);
@@ -1069,7 +1069,7 @@ function newfrmFichaACN()
     obj.layout16:setHeight(30);
     obj.layout16:setName("layout16");
 
-    obj.radioButton13 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton13 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton13:setParent(obj.layout16);
     obj.radioButton13:setLeft(0);
     obj.radioButton13:setTop(0);
@@ -1078,7 +1078,7 @@ function newfrmFichaACN()
     obj.radioButton13:setFieldValue("testeconsciencia");
     obj.radioButton13:setName("radioButton13");
 
-    obj.radioButton14 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton14 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton14:setParent(obj.layout16);
     obj.radioButton14:setLeft(0);
     obj.radioButton14:setTop(13);
@@ -1087,7 +1087,7 @@ function newfrmFichaACN()
     obj.radioButton14:setFieldValue("testeconsciencia");
     obj.radioButton14:setName("radioButton14");
 
-    obj.label34 = gui.fromHandle(_obj_newObject("label"));
+    obj.label34 = GUI.fromHandle(_obj_newObject("label"));
     obj.label34:setParent(obj.layout16);
     obj.label34:setLeft(20);
     obj.label34:setTop(5);
@@ -1096,7 +1096,7 @@ function newfrmFichaACN()
     obj.label34:setText("Consciência");
     obj.label34:setName("label34");
 
-    obj.rectangle10 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle10 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle10:setParent(obj.layout16);
     obj.rectangle10:setLeft(100);
     obj.rectangle10:setTop(0);
@@ -1107,7 +1107,7 @@ function newfrmFichaACN()
     obj.rectangle10:setStrokeSize(1);
     obj.rectangle10:setName("rectangle10");
 
-    obj.label35 = gui.fromHandle(_obj_newObject("label"));
+    obj.label35 = GUI.fromHandle(_obj_newObject("label"));
     obj.label35:setParent(obj.layout16);
     obj.label35:setLeft(100);
     obj.label35:setTop(3);
@@ -1117,7 +1117,7 @@ function newfrmFichaACN()
     obj.label35:setHorzTextAlign("center");
     obj.label35:setName("label35");
 
-    obj.edit31 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit31:setParent(obj.layout16);
     obj.edit31:setLeft(145);
     obj.edit31:setTop(0);
@@ -1127,7 +1127,7 @@ function newfrmFichaACN()
     obj.edit31:setField("baseconsciencia");
     obj.edit31:setName("edit31");
 
-    obj.edit32 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit32:setParent(obj.layout16);
     obj.edit32:setLeft(180);
     obj.edit32:setTop(0);
@@ -1137,7 +1137,7 @@ function newfrmFichaACN()
     obj.edit32:setField("inicialconsciencia");
     obj.edit32:setName("edit32");
 
-    obj.edit33 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit33 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit33:setParent(obj.layout16);
     obj.edit33:setLeft(215);
     obj.edit33:setTop(0);
@@ -1147,7 +1147,7 @@ function newfrmFichaACN()
     obj.edit33:setField("bonusconsciencia");
     obj.edit33:setName("edit33");
 
-    obj.edit34 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit34:setParent(obj.layout16);
     obj.edit34:setLeft(250);
     obj.edit34:setTop(0);
@@ -1157,12 +1157,12 @@ function newfrmFichaACN()
     obj.edit34:setField("xpconsciencia");
     obj.edit34:setName("edit34");
 
-    obj.dataLink7 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink7:setParent(obj.layout16);
     obj.dataLink7:setFields({'baseconsciencia', 'inicialconsciencia', 'bonusconsciencia', 'xpconsciencia', 'penalidadeEscudo', 'penalidadeArmadura'});
     obj.dataLink7:setName("dataLink7");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.layout15);
     obj.layout17:setLeft(5);
     obj.layout17:setTop(80);
@@ -1170,7 +1170,7 @@ function newfrmFichaACN()
     obj.layout17:setHeight(30);
     obj.layout17:setName("layout17");
 
-    obj.radioButton15 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton15 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton15:setParent(obj.layout17);
     obj.radioButton15:setLeft(0);
     obj.radioButton15:setTop(0);
@@ -1179,7 +1179,7 @@ function newfrmFichaACN()
     obj.radioButton15:setFieldValue("testeespirito");
     obj.radioButton15:setName("radioButton15");
 
-    obj.radioButton16 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton16 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton16:setParent(obj.layout17);
     obj.radioButton16:setLeft(0);
     obj.radioButton16:setTop(13);
@@ -1188,7 +1188,7 @@ function newfrmFichaACN()
     obj.radioButton16:setFieldValue("testeespirito");
     obj.radioButton16:setName("radioButton16");
 
-    obj.label36 = gui.fromHandle(_obj_newObject("label"));
+    obj.label36 = GUI.fromHandle(_obj_newObject("label"));
     obj.label36:setParent(obj.layout17);
     obj.label36:setLeft(20);
     obj.label36:setTop(5);
@@ -1197,7 +1197,7 @@ function newfrmFichaACN()
     obj.label36:setText("Espírito");
     obj.label36:setName("label36");
 
-    obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle11:setParent(obj.layout17);
     obj.rectangle11:setLeft(100);
     obj.rectangle11:setTop(0);
@@ -1208,7 +1208,7 @@ function newfrmFichaACN()
     obj.rectangle11:setStrokeSize(1);
     obj.rectangle11:setName("rectangle11");
 
-    obj.label37 = gui.fromHandle(_obj_newObject("label"));
+    obj.label37 = GUI.fromHandle(_obj_newObject("label"));
     obj.label37:setParent(obj.layout17);
     obj.label37:setLeft(100);
     obj.label37:setTop(3);
@@ -1218,7 +1218,7 @@ function newfrmFichaACN()
     obj.label37:setHorzTextAlign("center");
     obj.label37:setName("label37");
 
-    obj.edit35 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit35 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit35:setParent(obj.layout17);
     obj.edit35:setLeft(145);
     obj.edit35:setTop(0);
@@ -1228,7 +1228,7 @@ function newfrmFichaACN()
     obj.edit35:setField("baseespirito");
     obj.edit35:setName("edit35");
 
-    obj.edit36 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit36:setParent(obj.layout17);
     obj.edit36:setLeft(180);
     obj.edit36:setTop(0);
@@ -1238,7 +1238,7 @@ function newfrmFichaACN()
     obj.edit36:setField("inicialespirito");
     obj.edit36:setName("edit36");
 
-    obj.edit37 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit37 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit37:setParent(obj.layout17);
     obj.edit37:setLeft(215);
     obj.edit37:setTop(0);
@@ -1248,7 +1248,7 @@ function newfrmFichaACN()
     obj.edit37:setField("bonusespirito");
     obj.edit37:setName("edit37");
 
-    obj.edit38 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit38 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit38:setParent(obj.layout17);
     obj.edit38:setLeft(250);
     obj.edit38:setTop(0);
@@ -1258,12 +1258,12 @@ function newfrmFichaACN()
     obj.edit38:setField("xpespirito");
     obj.edit38:setName("edit38");
 
-    obj.dataLink8 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink8:setParent(obj.layout17);
     obj.dataLink8:setFields({'baseespirito', 'inicialespirito', 'bonusespirito', 'xpespirito', 'penalidadeEscudo', 'penalidadeArmadura'});
     obj.dataLink8:setName("dataLink8");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.layout15);
     obj.layout18:setLeft(5);
     obj.layout18:setTop(110);
@@ -1271,7 +1271,7 @@ function newfrmFichaACN()
     obj.layout18:setHeight(30);
     obj.layout18:setName("layout18");
 
-    obj.radioButton17 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton17 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton17:setParent(obj.layout18);
     obj.radioButton17:setLeft(0);
     obj.radioButton17:setTop(0);
@@ -1280,7 +1280,7 @@ function newfrmFichaACN()
     obj.radioButton17:setFieldValue("testeperseveranca");
     obj.radioButton17:setName("radioButton17");
 
-    obj.radioButton18 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton18 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton18:setParent(obj.layout18);
     obj.radioButton18:setLeft(0);
     obj.radioButton18:setTop(13);
@@ -1289,7 +1289,7 @@ function newfrmFichaACN()
     obj.radioButton18:setFieldValue("testeperseveranca");
     obj.radioButton18:setName("radioButton18");
 
-    obj.label38 = gui.fromHandle(_obj_newObject("label"));
+    obj.label38 = GUI.fromHandle(_obj_newObject("label"));
     obj.label38:setParent(obj.layout18);
     obj.label38:setLeft(20);
     obj.label38:setTop(5);
@@ -1298,7 +1298,7 @@ function newfrmFichaACN()
     obj.label38:setText("Perseverança");
     obj.label38:setName("label38");
 
-    obj.rectangle12 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle12 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle12:setParent(obj.layout18);
     obj.rectangle12:setLeft(100);
     obj.rectangle12:setTop(0);
@@ -1309,7 +1309,7 @@ function newfrmFichaACN()
     obj.rectangle12:setStrokeSize(1);
     obj.rectangle12:setName("rectangle12");
 
-    obj.label39 = gui.fromHandle(_obj_newObject("label"));
+    obj.label39 = GUI.fromHandle(_obj_newObject("label"));
     obj.label39:setParent(obj.layout18);
     obj.label39:setLeft(100);
     obj.label39:setTop(3);
@@ -1319,7 +1319,7 @@ function newfrmFichaACN()
     obj.label39:setHorzTextAlign("center");
     obj.label39:setName("label39");
 
-    obj.edit39 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit39 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit39:setParent(obj.layout18);
     obj.edit39:setLeft(145);
     obj.edit39:setTop(0);
@@ -1329,7 +1329,7 @@ function newfrmFichaACN()
     obj.edit39:setField("baseperseveranca");
     obj.edit39:setName("edit39");
 
-    obj.edit40 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit40 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit40:setParent(obj.layout18);
     obj.edit40:setLeft(180);
     obj.edit40:setTop(0);
@@ -1339,7 +1339,7 @@ function newfrmFichaACN()
     obj.edit40:setField("inicialperseveranca");
     obj.edit40:setName("edit40");
 
-    obj.edit41 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit41:setParent(obj.layout18);
     obj.edit41:setLeft(215);
     obj.edit41:setTop(0);
@@ -1349,7 +1349,7 @@ function newfrmFichaACN()
     obj.edit41:setField("bonusperseveranca");
     obj.edit41:setName("edit41");
 
-    obj.edit42 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit42:setParent(obj.layout18);
     obj.edit42:setLeft(250);
     obj.edit42:setTop(0);
@@ -1359,12 +1359,12 @@ function newfrmFichaACN()
     obj.edit42:setField("xpperseveranca");
     obj.edit42:setName("edit42");
 
-    obj.dataLink9 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink9:setParent(obj.layout18);
     obj.dataLink9:setFields({'baseperseveranca', 'inicialperseveranca', 'bonusperseveranca', 'xpperseveranca', 'penalidadeEscudo', 'penalidadeArmadura'});
     obj.dataLink9:setName("dataLink9");
 
-    obj.horzLine2 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine2 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine2:setParent(obj.layout15);
     obj.horzLine2:setLeft(0);
     obj.horzLine2:setTop(145);
@@ -1372,7 +1372,7 @@ function newfrmFichaACN()
     obj.horzLine2:setStrokeColor("white");
     obj.horzLine2:setName("horzLine2");
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.layout15);
     obj.layout19:setLeft(5);
     obj.layout19:setTop(150);
@@ -1380,7 +1380,7 @@ function newfrmFichaACN()
     obj.layout19:setHeight(30);
     obj.layout19:setName("layout19");
 
-    obj.label40 = gui.fromHandle(_obj_newObject("label"));
+    obj.label40 = GUI.fromHandle(_obj_newObject("label"));
     obj.label40:setParent(obj.layout19);
     obj.label40:setLeft(30);
     obj.label40:setTop(0);
@@ -1389,7 +1389,7 @@ function newfrmFichaACN()
     obj.label40:setText("Gladius");
     obj.label40:setName("label40");
 
-    obj.edit43 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit43 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit43:setParent(obj.layout19);
     obj.edit43:setLeft(175);
     obj.edit43:setTop(0);
@@ -1399,7 +1399,7 @@ function newfrmFichaACN()
     obj.edit43:setField("gladiusMin");
     obj.edit43:setName("edit43");
 
-    obj.edit44 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit44 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit44:setParent(obj.layout19);
     obj.edit44:setLeft(210);
     obj.edit44:setTop(0);
@@ -1409,7 +1409,7 @@ function newfrmFichaACN()
     obj.edit44:setField("gladiusMax");
     obj.edit44:setName("edit44");
 
-    obj.progressBar1 = gui.fromHandle(_obj_newObject("progressBar"));
+    obj.progressBar1 = GUI.fromHandle(_obj_newObject("progressBar"));
     obj.progressBar1:setParent(obj.layout19);
     obj.progressBar1:setLeft(100);
     obj.progressBar1:setTop(5);
@@ -1450,7 +1450,7 @@ function newfrmFichaACN()
 			
 
 
-    obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.scrollBox1);
     obj.layout20:setLeft(840);
     obj.layout20:setTop(530);
@@ -1458,7 +1458,7 @@ function newfrmFichaACN()
     obj.layout20:setHeight(65);
     obj.layout20:setName("layout20");
 
-    obj.rectangle13 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle13 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle13:setParent(obj.layout20);
     obj.rectangle13:setAlign("client");
     obj.rectangle13:setColor("black");
@@ -1467,7 +1467,7 @@ function newfrmFichaACN()
     obj.rectangle13:setCornerType("round");
     obj.rectangle13:setName("rectangle13");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout20);
     obj.button1:setLeft(65);
     obj.button1:setTop(10);
@@ -1475,7 +1475,7 @@ function newfrmFichaACN()
     obj.button1:setText("PADRÃO*");
     obj.button1:setName("button1");
 
-    obj.label41 = gui.fromHandle(_obj_newObject("label"));
+    obj.label41 = GUI.fromHandle(_obj_newObject("label"));
     obj.label41:setParent(obj.layout20);
     obj.label41:setLeft(35);
     obj.label41:setTop(35);
@@ -1484,7 +1484,7 @@ function newfrmFichaACN()
     obj.label41:setText("*Seta valores iniciais.");
     obj.label41:setName("label41");
 
-    obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.scrollBox1);
     obj.layout21:setLeft(625);
     obj.layout21:setTop(530);
@@ -1492,7 +1492,7 @@ function newfrmFichaACN()
     obj.layout21:setHeight(65);
     obj.layout21:setName("layout21");
 
-    obj.rectangle14 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle14 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle14:setParent(obj.layout21);
     obj.rectangle14:setAlign("client");
     obj.rectangle14:setColor("black");
@@ -1501,7 +1501,7 @@ function newfrmFichaACN()
     obj.rectangle14:setCornerType("round");
     obj.rectangle14:setName("rectangle14");
 
-    obj.label42 = gui.fromHandle(_obj_newObject("label"));
+    obj.label42 = GUI.fromHandle(_obj_newObject("label"));
     obj.label42:setParent(obj.layout21);
     obj.label42:setLeft(0);
     obj.label42:setTop(0);
@@ -1511,7 +1511,7 @@ function newfrmFichaACN()
     obj.label42:setHorzTextAlign("center");
     obj.label42:setName("label42");
 
-    obj.rectangle15 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle15 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle15:setParent(obj.layout21);
     obj.rectangle15:setLeft(10);
     obj.rectangle15:setTop(25);
@@ -1522,7 +1522,7 @@ function newfrmFichaACN()
     obj.rectangle15:setStrokeSize(1);
     obj.rectangle15:setName("rectangle15");
 
-    obj.label43 = gui.fromHandle(_obj_newObject("label"));
+    obj.label43 = GUI.fromHandle(_obj_newObject("label"));
     obj.label43:setParent(obj.layout21);
     obj.label43:setLeft(20);
     obj.label43:setTop(28);
@@ -1531,7 +1531,7 @@ function newfrmFichaACN()
     obj.label43:setField("XPgasta");
     obj.label43:setName("label43");
 
-    obj.label44 = gui.fromHandle(_obj_newObject("label"));
+    obj.label44 = GUI.fromHandle(_obj_newObject("label"));
     obj.label44:setParent(obj.layout21);
     obj.label44:setLeft(48);
     obj.label44:setTop(25);
@@ -1540,7 +1540,7 @@ function newfrmFichaACN()
     obj.label44:setText("+");
     obj.label44:setName("label44");
 
-    obj.edit45 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit45:setParent(obj.layout21);
     obj.edit45:setLeft(60);
     obj.edit45:setTop(25);
@@ -1550,7 +1550,7 @@ function newfrmFichaACN()
     obj.edit45:setField("XPgasta2");
     obj.edit45:setName("edit45");
 
-    obj.label45 = gui.fromHandle(_obj_newObject("label"));
+    obj.label45 = GUI.fromHandle(_obj_newObject("label"));
     obj.label45:setParent(obj.layout21);
     obj.label45:setLeft(93);
     obj.label45:setTop(25);
@@ -1559,7 +1559,7 @@ function newfrmFichaACN()
     obj.label45:setText("=");
     obj.label45:setName("label45");
 
-    obj.rectangle16 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle16 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle16:setParent(obj.layout21);
     obj.rectangle16:setLeft(105);
     obj.rectangle16:setTop(25);
@@ -1570,7 +1570,7 @@ function newfrmFichaACN()
     obj.rectangle16:setStrokeSize(1);
     obj.rectangle16:setName("rectangle16");
 
-    obj.label46 = gui.fromHandle(_obj_newObject("label"));
+    obj.label46 = GUI.fromHandle(_obj_newObject("label"));
     obj.label46:setParent(obj.layout21);
     obj.label46:setLeft(115);
     obj.label46:setTop(28);
@@ -1579,7 +1579,7 @@ function newfrmFichaACN()
     obj.label46:setField("XPgastaTotal");
     obj.label46:setName("label46");
 
-    obj.label47 = gui.fromHandle(_obj_newObject("label"));
+    obj.label47 = GUI.fromHandle(_obj_newObject("label"));
     obj.label47:setParent(obj.layout21);
     obj.label47:setLeft(148);
     obj.label47:setTop(25);
@@ -1588,7 +1588,7 @@ function newfrmFichaACN()
     obj.label47:setText("|");
     obj.label47:setName("label47");
 
-    obj.edit46 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit46:setParent(obj.layout21);
     obj.edit46:setLeft(160);
     obj.edit46:setTop(25);
@@ -1598,12 +1598,12 @@ function newfrmFichaACN()
     obj.edit46:setField("XP");
     obj.edit46:setName("edit46");
 
-    obj.dataLink10 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink10 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink10:setParent(obj.layout21);
     obj.dataLink10:setFields({'XPgasta', 'XPgasta2'});
     obj.dataLink10:setName("dataLink10");
 
-    obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.scrollBox1);
     obj.layout22:setLeft(320);
     obj.layout22:setTop(75);
@@ -1611,7 +1611,7 @@ function newfrmFichaACN()
     obj.layout22:setHeight(320);
     obj.layout22:setName("layout22");
 
-    obj.rectangle17 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle17 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle17:setParent(obj.layout22);
     obj.rectangle17:setAlign("client");
     obj.rectangle17:setColor("black");
@@ -1620,7 +1620,7 @@ function newfrmFichaACN()
     obj.rectangle17:setCornerType("round");
     obj.rectangle17:setName("rectangle17");
 
-    obj.label48 = gui.fromHandle(_obj_newObject("label"));
+    obj.label48 = GUI.fromHandle(_obj_newObject("label"));
     obj.label48:setParent(obj.layout22);
     obj.label48:setLeft(0);
     obj.label48:setTop(0);
@@ -1630,7 +1630,7 @@ function newfrmFichaACN()
     obj.label48:setHorzTextAlign("center");
     obj.label48:setName("label48");
 
-    obj.label49 = gui.fromHandle(_obj_newObject("label"));
+    obj.label49 = GUI.fromHandle(_obj_newObject("label"));
     obj.label49:setParent(obj.layout22);
     obj.label49:setLeft(25);
     obj.label49:setTop(20);
@@ -1639,7 +1639,7 @@ function newfrmFichaACN()
     obj.label49:setText(" Nome");
     obj.label49:setName("label49");
 
-    obj.label50 = gui.fromHandle(_obj_newObject("label"));
+    obj.label50 = GUI.fromHandle(_obj_newObject("label"));
     obj.label50:setParent(obj.layout22);
     obj.label50:setLeft(135);
     obj.label50:setTop(20);
@@ -1648,7 +1648,7 @@ function newfrmFichaACN()
     obj.label50:setText("Total");
     obj.label50:setName("label50");
 
-    obj.label51 = gui.fromHandle(_obj_newObject("label"));
+    obj.label51 = GUI.fromHandle(_obj_newObject("label"));
     obj.label51:setParent(obj.layout22);
     obj.label51:setLeft(170);
     obj.label51:setTop(20);
@@ -1657,7 +1657,7 @@ function newfrmFichaACN()
     obj.label51:setText(" Inic");
     obj.label51:setName("label51");
 
-    obj.label52 = gui.fromHandle(_obj_newObject("label"));
+    obj.label52 = GUI.fromHandle(_obj_newObject("label"));
     obj.label52:setParent(obj.layout22);
     obj.label52:setLeft(202);
     obj.label52:setTop(20);
@@ -1666,7 +1666,7 @@ function newfrmFichaACN()
     obj.label52:setText(" Apr.");
     obj.label52:setName("label52");
 
-    obj.label53 = gui.fromHandle(_obj_newObject("label"));
+    obj.label53 = GUI.fromHandle(_obj_newObject("label"));
     obj.label53:setParent(obj.layout22);
     obj.label53:setLeft(235);
     obj.label53:setTop(20);
@@ -1675,7 +1675,7 @@ function newfrmFichaACN()
     obj.label53:setText("  XP");
     obj.label53:setName("label53");
 
-    obj.scrollBox2 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox2:setParent(obj.layout22);
     obj.scrollBox2:setLeft(0);
     obj.scrollBox2:setTop(40);
@@ -1683,7 +1683,7 @@ function newfrmFichaACN()
     obj.scrollBox2:setHeight(260);
     obj.scrollBox2:setName("scrollBox2");
 
-    obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.scrollBox2);
     obj.layout23:setLeft(5);
     obj.layout23:setTop(0);
@@ -1691,7 +1691,7 @@ function newfrmFichaACN()
     obj.layout23:setHeight(35);
     obj.layout23:setName("layout23");
 
-    obj.radioButton19 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton19 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton19:setParent(obj.layout23);
     obj.radioButton19:setLeft(0);
     obj.radioButton19:setTop(0);
@@ -1700,7 +1700,7 @@ function newfrmFichaACN()
     obj.radioButton19:setFieldValue("historicoTotal1_1");
     obj.radioButton19:setName("radioButton19");
 
-    obj.radioButton20 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton20 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton20:setParent(obj.layout23);
     obj.radioButton20:setLeft(0);
     obj.radioButton20:setTop(15);
@@ -1709,7 +1709,7 @@ function newfrmFichaACN()
     obj.radioButton20:setFieldValue("historicoTotal1_1");
     obj.radioButton20:setName("radioButton20");
 
-    obj.edit47 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit47:setParent(obj.layout23);
     obj.edit47:setLeft(20);
     obj.edit47:setTop(0);
@@ -1718,7 +1718,7 @@ function newfrmFichaACN()
     obj.edit47:setField("historicoNome1_1");
     obj.edit47:setName("edit47");
 
-    obj.rectangle18 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle18 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle18:setParent(obj.layout23);
     obj.rectangle18:setLeft(125);
     obj.rectangle18:setTop(0);
@@ -1729,7 +1729,7 @@ function newfrmFichaACN()
     obj.rectangle18:setStrokeSize(1);
     obj.rectangle18:setName("rectangle18");
 
-    obj.label54 = gui.fromHandle(_obj_newObject("label"));
+    obj.label54 = GUI.fromHandle(_obj_newObject("label"));
     obj.label54:setParent(obj.layout23);
     obj.label54:setLeft(135);
     obj.label54:setTop(3);
@@ -1738,7 +1738,7 @@ function newfrmFichaACN()
     obj.label54:setField("historicoTotal1_1");
     obj.label54:setName("label54");
 
-    obj.edit48 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit48:setParent(obj.layout23);
     obj.edit48:setLeft(165);
     obj.edit48:setTop(0);
@@ -1749,7 +1749,7 @@ function newfrmFichaACN()
     obj.edit48:setField("historicoValor1_1");
     obj.edit48:setName("edit48");
 
-    obj.edit49 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit49 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit49:setParent(obj.layout23);
     obj.edit49:setLeft(200);
     obj.edit49:setTop(0);
@@ -1760,7 +1760,7 @@ function newfrmFichaACN()
     obj.edit49:setField("historicoBonus1_1");
     obj.edit49:setName("edit49");
 
-    obj.edit50 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit50:setParent(obj.layout23);
     obj.edit50:setLeft(235);
     obj.edit50:setTop(0);
@@ -1771,7 +1771,7 @@ function newfrmFichaACN()
     obj.edit50:setField("historicoXp1_1");
     obj.edit50:setName("edit50");
 
-    obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.scrollBox2);
     obj.layout24:setLeft(5);
     obj.layout24:setTop(35);
@@ -1779,7 +1779,7 @@ function newfrmFichaACN()
     obj.layout24:setHeight(35);
     obj.layout24:setName("layout24");
 
-    obj.radioButton21 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton21 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton21:setParent(obj.layout24);
     obj.radioButton21:setLeft(0);
     obj.radioButton21:setTop(0);
@@ -1788,7 +1788,7 @@ function newfrmFichaACN()
     obj.radioButton21:setFieldValue("historicoTotal1_2");
     obj.radioButton21:setName("radioButton21");
 
-    obj.radioButton22 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton22 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton22:setParent(obj.layout24);
     obj.radioButton22:setLeft(0);
     obj.radioButton22:setTop(15);
@@ -1797,7 +1797,7 @@ function newfrmFichaACN()
     obj.radioButton22:setFieldValue("historicoTotal1_2");
     obj.radioButton22:setName("radioButton22");
 
-    obj.edit51 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit51:setParent(obj.layout24);
     obj.edit51:setLeft(20);
     obj.edit51:setTop(0);
@@ -1806,7 +1806,7 @@ function newfrmFichaACN()
     obj.edit51:setField("historicoNome1_2");
     obj.edit51:setName("edit51");
 
-    obj.rectangle19 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle19 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle19:setParent(obj.layout24);
     obj.rectangle19:setLeft(125);
     obj.rectangle19:setTop(0);
@@ -1817,7 +1817,7 @@ function newfrmFichaACN()
     obj.rectangle19:setStrokeSize(1);
     obj.rectangle19:setName("rectangle19");
 
-    obj.label55 = gui.fromHandle(_obj_newObject("label"));
+    obj.label55 = GUI.fromHandle(_obj_newObject("label"));
     obj.label55:setParent(obj.layout24);
     obj.label55:setLeft(135);
     obj.label55:setTop(3);
@@ -1826,7 +1826,7 @@ function newfrmFichaACN()
     obj.label55:setField("historicoTotal1_2");
     obj.label55:setName("label55");
 
-    obj.edit52 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit52 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit52:setParent(obj.layout24);
     obj.edit52:setLeft(165);
     obj.edit52:setTop(0);
@@ -1837,7 +1837,7 @@ function newfrmFichaACN()
     obj.edit52:setField("historicoValor1_2");
     obj.edit52:setName("edit52");
 
-    obj.edit53 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit53 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit53:setParent(obj.layout24);
     obj.edit53:setLeft(200);
     obj.edit53:setTop(0);
@@ -1848,7 +1848,7 @@ function newfrmFichaACN()
     obj.edit53:setField("historicoBonus1_2");
     obj.edit53:setName("edit53");
 
-    obj.edit54 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit54:setParent(obj.layout24);
     obj.edit54:setLeft(235);
     obj.edit54:setTop(0);
@@ -1859,7 +1859,7 @@ function newfrmFichaACN()
     obj.edit54:setField("historicoXp1_2");
     obj.edit54:setName("edit54");
 
-    obj.layout25 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.scrollBox2);
     obj.layout25:setLeft(5);
     obj.layout25:setTop(70);
@@ -1867,7 +1867,7 @@ function newfrmFichaACN()
     obj.layout25:setHeight(35);
     obj.layout25:setName("layout25");
 
-    obj.radioButton23 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton23 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton23:setParent(obj.layout25);
     obj.radioButton23:setLeft(0);
     obj.radioButton23:setTop(0);
@@ -1876,7 +1876,7 @@ function newfrmFichaACN()
     obj.radioButton23:setFieldValue("historicoTotal1_3");
     obj.radioButton23:setName("radioButton23");
 
-    obj.radioButton24 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton24 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton24:setParent(obj.layout25);
     obj.radioButton24:setLeft(0);
     obj.radioButton24:setTop(15);
@@ -1885,7 +1885,7 @@ function newfrmFichaACN()
     obj.radioButton24:setFieldValue("historicoTotal1_3");
     obj.radioButton24:setName("radioButton24");
 
-    obj.edit55 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit55 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit55:setParent(obj.layout25);
     obj.edit55:setLeft(20);
     obj.edit55:setTop(0);
@@ -1894,7 +1894,7 @@ function newfrmFichaACN()
     obj.edit55:setField("historicoNome1_3");
     obj.edit55:setName("edit55");
 
-    obj.rectangle20 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle20 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle20:setParent(obj.layout25);
     obj.rectangle20:setLeft(125);
     obj.rectangle20:setTop(0);
@@ -1905,7 +1905,7 @@ function newfrmFichaACN()
     obj.rectangle20:setStrokeSize(1);
     obj.rectangle20:setName("rectangle20");
 
-    obj.label56 = gui.fromHandle(_obj_newObject("label"));
+    obj.label56 = GUI.fromHandle(_obj_newObject("label"));
     obj.label56:setParent(obj.layout25);
     obj.label56:setLeft(135);
     obj.label56:setTop(3);
@@ -1914,7 +1914,7 @@ function newfrmFichaACN()
     obj.label56:setField("historicoTotal1_3");
     obj.label56:setName("label56");
 
-    obj.edit56 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit56:setParent(obj.layout25);
     obj.edit56:setLeft(165);
     obj.edit56:setTop(0);
@@ -1925,7 +1925,7 @@ function newfrmFichaACN()
     obj.edit56:setField("historicoValor1_3");
     obj.edit56:setName("edit56");
 
-    obj.edit57 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit57 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit57:setParent(obj.layout25);
     obj.edit57:setLeft(200);
     obj.edit57:setTop(0);
@@ -1936,7 +1936,7 @@ function newfrmFichaACN()
     obj.edit57:setField("historicoBonus1_3");
     obj.edit57:setName("edit57");
 
-    obj.edit58 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit58 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit58:setParent(obj.layout25);
     obj.edit58:setLeft(235);
     obj.edit58:setTop(0);
@@ -1947,7 +1947,7 @@ function newfrmFichaACN()
     obj.edit58:setField("historicoXp1_3");
     obj.edit58:setName("edit58");
 
-    obj.layout26 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.scrollBox2);
     obj.layout26:setLeft(5);
     obj.layout26:setTop(105);
@@ -1955,7 +1955,7 @@ function newfrmFichaACN()
     obj.layout26:setHeight(35);
     obj.layout26:setName("layout26");
 
-    obj.radioButton25 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton25 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton25:setParent(obj.layout26);
     obj.radioButton25:setLeft(0);
     obj.radioButton25:setTop(0);
@@ -1964,7 +1964,7 @@ function newfrmFichaACN()
     obj.radioButton25:setFieldValue("historicoTotal1_4");
     obj.radioButton25:setName("radioButton25");
 
-    obj.radioButton26 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton26 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton26:setParent(obj.layout26);
     obj.radioButton26:setLeft(0);
     obj.radioButton26:setTop(15);
@@ -1973,7 +1973,7 @@ function newfrmFichaACN()
     obj.radioButton26:setFieldValue("historicoTotal1_4");
     obj.radioButton26:setName("radioButton26");
 
-    obj.edit59 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit59 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit59:setParent(obj.layout26);
     obj.edit59:setLeft(20);
     obj.edit59:setTop(0);
@@ -1982,7 +1982,7 @@ function newfrmFichaACN()
     obj.edit59:setField("historicoNome1_4");
     obj.edit59:setName("edit59");
 
-    obj.rectangle21 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle21:setParent(obj.layout26);
     obj.rectangle21:setLeft(125);
     obj.rectangle21:setTop(0);
@@ -1993,7 +1993,7 @@ function newfrmFichaACN()
     obj.rectangle21:setStrokeSize(1);
     obj.rectangle21:setName("rectangle21");
 
-    obj.label57 = gui.fromHandle(_obj_newObject("label"));
+    obj.label57 = GUI.fromHandle(_obj_newObject("label"));
     obj.label57:setParent(obj.layout26);
     obj.label57:setLeft(135);
     obj.label57:setTop(3);
@@ -2002,7 +2002,7 @@ function newfrmFichaACN()
     obj.label57:setField("historicoTotal1_4");
     obj.label57:setName("label57");
 
-    obj.edit60 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit60 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit60:setParent(obj.layout26);
     obj.edit60:setLeft(165);
     obj.edit60:setTop(0);
@@ -2013,7 +2013,7 @@ function newfrmFichaACN()
     obj.edit60:setField("historicoValor1_4");
     obj.edit60:setName("edit60");
 
-    obj.edit61 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit61 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit61:setParent(obj.layout26);
     obj.edit61:setLeft(200);
     obj.edit61:setTop(0);
@@ -2024,7 +2024,7 @@ function newfrmFichaACN()
     obj.edit61:setField("historicoBonus1_4");
     obj.edit61:setName("edit61");
 
-    obj.edit62 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit62 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit62:setParent(obj.layout26);
     obj.edit62:setLeft(235);
     obj.edit62:setTop(0);
@@ -2035,7 +2035,7 @@ function newfrmFichaACN()
     obj.edit62:setField("historicoXp1_4");
     obj.edit62:setName("edit62");
 
-    obj.layout27 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.scrollBox2);
     obj.layout27:setLeft(5);
     obj.layout27:setTop(140);
@@ -2043,7 +2043,7 @@ function newfrmFichaACN()
     obj.layout27:setHeight(35);
     obj.layout27:setName("layout27");
 
-    obj.radioButton27 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton27 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton27:setParent(obj.layout27);
     obj.radioButton27:setLeft(0);
     obj.radioButton27:setTop(0);
@@ -2052,7 +2052,7 @@ function newfrmFichaACN()
     obj.radioButton27:setFieldValue("historicoTotal1_5");
     obj.radioButton27:setName("radioButton27");
 
-    obj.radioButton28 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton28 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton28:setParent(obj.layout27);
     obj.radioButton28:setLeft(0);
     obj.radioButton28:setTop(15);
@@ -2061,7 +2061,7 @@ function newfrmFichaACN()
     obj.radioButton28:setFieldValue("historicoTotal1_5");
     obj.radioButton28:setName("radioButton28");
 
-    obj.edit63 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit63 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit63:setParent(obj.layout27);
     obj.edit63:setLeft(20);
     obj.edit63:setTop(0);
@@ -2070,7 +2070,7 @@ function newfrmFichaACN()
     obj.edit63:setField("historicoNome1_5");
     obj.edit63:setName("edit63");
 
-    obj.rectangle22 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle22 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle22:setParent(obj.layout27);
     obj.rectangle22:setLeft(125);
     obj.rectangle22:setTop(0);
@@ -2081,7 +2081,7 @@ function newfrmFichaACN()
     obj.rectangle22:setStrokeSize(1);
     obj.rectangle22:setName("rectangle22");
 
-    obj.label58 = gui.fromHandle(_obj_newObject("label"));
+    obj.label58 = GUI.fromHandle(_obj_newObject("label"));
     obj.label58:setParent(obj.layout27);
     obj.label58:setLeft(135);
     obj.label58:setTop(3);
@@ -2090,7 +2090,7 @@ function newfrmFichaACN()
     obj.label58:setField("historicoTotal1_5");
     obj.label58:setName("label58");
 
-    obj.edit64 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit64 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit64:setParent(obj.layout27);
     obj.edit64:setLeft(165);
     obj.edit64:setTop(0);
@@ -2101,7 +2101,7 @@ function newfrmFichaACN()
     obj.edit64:setField("historicoValor1_5");
     obj.edit64:setName("edit64");
 
-    obj.edit65 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit65 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit65:setParent(obj.layout27);
     obj.edit65:setLeft(200);
     obj.edit65:setTop(0);
@@ -2112,7 +2112,7 @@ function newfrmFichaACN()
     obj.edit65:setField("historicoBonus1_5");
     obj.edit65:setName("edit65");
 
-    obj.edit66 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit66 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit66:setParent(obj.layout27);
     obj.edit66:setLeft(235);
     obj.edit66:setTop(0);
@@ -2123,7 +2123,7 @@ function newfrmFichaACN()
     obj.edit66:setField("historicoXp1_5");
     obj.edit66:setName("edit66");
 
-    obj.layout28 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.scrollBox2);
     obj.layout28:setLeft(5);
     obj.layout28:setTop(175);
@@ -2131,7 +2131,7 @@ function newfrmFichaACN()
     obj.layout28:setHeight(35);
     obj.layout28:setName("layout28");
 
-    obj.radioButton29 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton29 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton29:setParent(obj.layout28);
     obj.radioButton29:setLeft(0);
     obj.radioButton29:setTop(0);
@@ -2140,7 +2140,7 @@ function newfrmFichaACN()
     obj.radioButton29:setFieldValue("historicoTotal1_6");
     obj.radioButton29:setName("radioButton29");
 
-    obj.radioButton30 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton30 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton30:setParent(obj.layout28);
     obj.radioButton30:setLeft(0);
     obj.radioButton30:setTop(15);
@@ -2149,7 +2149,7 @@ function newfrmFichaACN()
     obj.radioButton30:setFieldValue("historicoTotal1_6");
     obj.radioButton30:setName("radioButton30");
 
-    obj.edit67 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit67 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit67:setParent(obj.layout28);
     obj.edit67:setLeft(20);
     obj.edit67:setTop(0);
@@ -2158,7 +2158,7 @@ function newfrmFichaACN()
     obj.edit67:setField("historicoNome1_6");
     obj.edit67:setName("edit67");
 
-    obj.rectangle23 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle23:setParent(obj.layout28);
     obj.rectangle23:setLeft(125);
     obj.rectangle23:setTop(0);
@@ -2169,7 +2169,7 @@ function newfrmFichaACN()
     obj.rectangle23:setStrokeSize(1);
     obj.rectangle23:setName("rectangle23");
 
-    obj.label59 = gui.fromHandle(_obj_newObject("label"));
+    obj.label59 = GUI.fromHandle(_obj_newObject("label"));
     obj.label59:setParent(obj.layout28);
     obj.label59:setLeft(135);
     obj.label59:setTop(3);
@@ -2178,7 +2178,7 @@ function newfrmFichaACN()
     obj.label59:setField("historicoTotal1_6");
     obj.label59:setName("label59");
 
-    obj.edit68 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit68 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit68:setParent(obj.layout28);
     obj.edit68:setLeft(165);
     obj.edit68:setTop(0);
@@ -2189,7 +2189,7 @@ function newfrmFichaACN()
     obj.edit68:setField("historicoValor1_6");
     obj.edit68:setName("edit68");
 
-    obj.edit69 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit69 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit69:setParent(obj.layout28);
     obj.edit69:setLeft(200);
     obj.edit69:setTop(0);
@@ -2200,7 +2200,7 @@ function newfrmFichaACN()
     obj.edit69:setField("historicoBonus1_6");
     obj.edit69:setName("edit69");
 
-    obj.edit70 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit70 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit70:setParent(obj.layout28);
     obj.edit70:setLeft(235);
     obj.edit70:setTop(0);
@@ -2211,7 +2211,7 @@ function newfrmFichaACN()
     obj.edit70:setField("historicoXp1_6");
     obj.edit70:setName("edit70");
 
-    obj.layout29 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout29:setParent(obj.scrollBox2);
     obj.layout29:setLeft(5);
     obj.layout29:setTop(210);
@@ -2219,7 +2219,7 @@ function newfrmFichaACN()
     obj.layout29:setHeight(35);
     obj.layout29:setName("layout29");
 
-    obj.radioButton31 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton31 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton31:setParent(obj.layout29);
     obj.radioButton31:setLeft(0);
     obj.radioButton31:setTop(0);
@@ -2228,7 +2228,7 @@ function newfrmFichaACN()
     obj.radioButton31:setFieldValue("historicoTotal2_1");
     obj.radioButton31:setName("radioButton31");
 
-    obj.radioButton32 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton32 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton32:setParent(obj.layout29);
     obj.radioButton32:setLeft(0);
     obj.radioButton32:setTop(15);
@@ -2237,7 +2237,7 @@ function newfrmFichaACN()
     obj.radioButton32:setFieldValue("historicoTotal2_1");
     obj.radioButton32:setName("radioButton32");
 
-    obj.edit71 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit71 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit71:setParent(obj.layout29);
     obj.edit71:setLeft(20);
     obj.edit71:setTop(0);
@@ -2246,7 +2246,7 @@ function newfrmFichaACN()
     obj.edit71:setField("historicoNome2_1");
     obj.edit71:setName("edit71");
 
-    obj.rectangle24 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle24 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle24:setParent(obj.layout29);
     obj.rectangle24:setLeft(125);
     obj.rectangle24:setTop(0);
@@ -2257,7 +2257,7 @@ function newfrmFichaACN()
     obj.rectangle24:setStrokeSize(1);
     obj.rectangle24:setName("rectangle24");
 
-    obj.label60 = gui.fromHandle(_obj_newObject("label"));
+    obj.label60 = GUI.fromHandle(_obj_newObject("label"));
     obj.label60:setParent(obj.layout29);
     obj.label60:setLeft(135);
     obj.label60:setTop(3);
@@ -2266,7 +2266,7 @@ function newfrmFichaACN()
     obj.label60:setField("historicoTotal2_1");
     obj.label60:setName("label60");
 
-    obj.edit72 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit72 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit72:setParent(obj.layout29);
     obj.edit72:setLeft(165);
     obj.edit72:setTop(0);
@@ -2277,7 +2277,7 @@ function newfrmFichaACN()
     obj.edit72:setField("historicoValor2_1");
     obj.edit72:setName("edit72");
 
-    obj.edit73 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit73 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit73:setParent(obj.layout29);
     obj.edit73:setLeft(200);
     obj.edit73:setTop(0);
@@ -2288,7 +2288,7 @@ function newfrmFichaACN()
     obj.edit73:setField("historicoBonus2_1");
     obj.edit73:setName("edit73");
 
-    obj.edit74 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit74 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit74:setParent(obj.layout29);
     obj.edit74:setLeft(235);
     obj.edit74:setTop(0);
@@ -2299,7 +2299,7 @@ function newfrmFichaACN()
     obj.edit74:setField("historicoXp2_1");
     obj.edit74:setName("edit74");
 
-    obj.layout30 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout30:setParent(obj.scrollBox2);
     obj.layout30:setLeft(5);
     obj.layout30:setTop(245);
@@ -2307,7 +2307,7 @@ function newfrmFichaACN()
     obj.layout30:setHeight(35);
     obj.layout30:setName("layout30");
 
-    obj.radioButton33 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton33 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton33:setParent(obj.layout30);
     obj.radioButton33:setLeft(0);
     obj.radioButton33:setTop(0);
@@ -2316,7 +2316,7 @@ function newfrmFichaACN()
     obj.radioButton33:setFieldValue("historicoTotal2_2");
     obj.radioButton33:setName("radioButton33");
 
-    obj.radioButton34 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton34 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton34:setParent(obj.layout30);
     obj.radioButton34:setLeft(0);
     obj.radioButton34:setTop(15);
@@ -2325,7 +2325,7 @@ function newfrmFichaACN()
     obj.radioButton34:setFieldValue("historicoTotal2_2");
     obj.radioButton34:setName("radioButton34");
 
-    obj.edit75 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit75 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit75:setParent(obj.layout30);
     obj.edit75:setLeft(20);
     obj.edit75:setTop(0);
@@ -2334,7 +2334,7 @@ function newfrmFichaACN()
     obj.edit75:setField("historicoNome2_2");
     obj.edit75:setName("edit75");
 
-    obj.rectangle25 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle25:setParent(obj.layout30);
     obj.rectangle25:setLeft(125);
     obj.rectangle25:setTop(0);
@@ -2345,7 +2345,7 @@ function newfrmFichaACN()
     obj.rectangle25:setStrokeSize(1);
     obj.rectangle25:setName("rectangle25");
 
-    obj.label61 = gui.fromHandle(_obj_newObject("label"));
+    obj.label61 = GUI.fromHandle(_obj_newObject("label"));
     obj.label61:setParent(obj.layout30);
     obj.label61:setLeft(135);
     obj.label61:setTop(3);
@@ -2354,7 +2354,7 @@ function newfrmFichaACN()
     obj.label61:setField("historicoTotal2_2");
     obj.label61:setName("label61");
 
-    obj.edit76 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit76 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit76:setParent(obj.layout30);
     obj.edit76:setLeft(165);
     obj.edit76:setTop(0);
@@ -2365,7 +2365,7 @@ function newfrmFichaACN()
     obj.edit76:setField("historicoValor2_2");
     obj.edit76:setName("edit76");
 
-    obj.edit77 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit77 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit77:setParent(obj.layout30);
     obj.edit77:setLeft(200);
     obj.edit77:setTop(0);
@@ -2376,7 +2376,7 @@ function newfrmFichaACN()
     obj.edit77:setField("historicoBonus2_2");
     obj.edit77:setName("edit77");
 
-    obj.edit78 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit78 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit78:setParent(obj.layout30);
     obj.edit78:setLeft(235);
     obj.edit78:setTop(0);
@@ -2387,7 +2387,7 @@ function newfrmFichaACN()
     obj.edit78:setField("historicoXp2_2");
     obj.edit78:setName("edit78");
 
-    obj.layout31 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.scrollBox2);
     obj.layout31:setLeft(5);
     obj.layout31:setTop(280);
@@ -2395,7 +2395,7 @@ function newfrmFichaACN()
     obj.layout31:setHeight(35);
     obj.layout31:setName("layout31");
 
-    obj.radioButton35 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton35 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton35:setParent(obj.layout31);
     obj.radioButton35:setLeft(0);
     obj.radioButton35:setTop(0);
@@ -2404,7 +2404,7 @@ function newfrmFichaACN()
     obj.radioButton35:setFieldValue("historicoTotal2_3");
     obj.radioButton35:setName("radioButton35");
 
-    obj.radioButton36 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton36 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton36:setParent(obj.layout31);
     obj.radioButton36:setLeft(0);
     obj.radioButton36:setTop(15);
@@ -2413,7 +2413,7 @@ function newfrmFichaACN()
     obj.radioButton36:setFieldValue("historicoTotal2_3");
     obj.radioButton36:setName("radioButton36");
 
-    obj.edit79 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit79 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit79:setParent(obj.layout31);
     obj.edit79:setLeft(20);
     obj.edit79:setTop(0);
@@ -2422,7 +2422,7 @@ function newfrmFichaACN()
     obj.edit79:setField("historicoNome2_3");
     obj.edit79:setName("edit79");
 
-    obj.rectangle26 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle26 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle26:setParent(obj.layout31);
     obj.rectangle26:setLeft(125);
     obj.rectangle26:setTop(0);
@@ -2433,7 +2433,7 @@ function newfrmFichaACN()
     obj.rectangle26:setStrokeSize(1);
     obj.rectangle26:setName("rectangle26");
 
-    obj.label62 = gui.fromHandle(_obj_newObject("label"));
+    obj.label62 = GUI.fromHandle(_obj_newObject("label"));
     obj.label62:setParent(obj.layout31);
     obj.label62:setLeft(135);
     obj.label62:setTop(3);
@@ -2442,7 +2442,7 @@ function newfrmFichaACN()
     obj.label62:setField("historicoTotal2_3");
     obj.label62:setName("label62");
 
-    obj.edit80 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit80 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit80:setParent(obj.layout31);
     obj.edit80:setLeft(165);
     obj.edit80:setTop(0);
@@ -2453,7 +2453,7 @@ function newfrmFichaACN()
     obj.edit80:setField("historicoValor2_3");
     obj.edit80:setName("edit80");
 
-    obj.edit81 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit81 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit81:setParent(obj.layout31);
     obj.edit81:setLeft(200);
     obj.edit81:setTop(0);
@@ -2464,7 +2464,7 @@ function newfrmFichaACN()
     obj.edit81:setField("historicoBonus2_3");
     obj.edit81:setName("edit81");
 
-    obj.edit82 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit82 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit82:setParent(obj.layout31);
     obj.edit82:setLeft(235);
     obj.edit82:setTop(0);
@@ -2475,7 +2475,7 @@ function newfrmFichaACN()
     obj.edit82:setField("historicoXp2_3");
     obj.edit82:setName("edit82");
 
-    obj.layout32 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.scrollBox2);
     obj.layout32:setLeft(5);
     obj.layout32:setTop(315);
@@ -2483,7 +2483,7 @@ function newfrmFichaACN()
     obj.layout32:setHeight(35);
     obj.layout32:setName("layout32");
 
-    obj.radioButton37 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton37 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton37:setParent(obj.layout32);
     obj.radioButton37:setLeft(0);
     obj.radioButton37:setTop(0);
@@ -2492,7 +2492,7 @@ function newfrmFichaACN()
     obj.radioButton37:setFieldValue("historicoTotal2_4");
     obj.radioButton37:setName("radioButton37");
 
-    obj.radioButton38 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton38 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton38:setParent(obj.layout32);
     obj.radioButton38:setLeft(0);
     obj.radioButton38:setTop(15);
@@ -2501,7 +2501,7 @@ function newfrmFichaACN()
     obj.radioButton38:setFieldValue("historicoTotal2_4");
     obj.radioButton38:setName("radioButton38");
 
-    obj.edit83 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit83 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit83:setParent(obj.layout32);
     obj.edit83:setLeft(20);
     obj.edit83:setTop(0);
@@ -2510,7 +2510,7 @@ function newfrmFichaACN()
     obj.edit83:setField("historicoNome2_4");
     obj.edit83:setName("edit83");
 
-    obj.rectangle27 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle27 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle27:setParent(obj.layout32);
     obj.rectangle27:setLeft(125);
     obj.rectangle27:setTop(0);
@@ -2521,7 +2521,7 @@ function newfrmFichaACN()
     obj.rectangle27:setStrokeSize(1);
     obj.rectangle27:setName("rectangle27");
 
-    obj.label63 = gui.fromHandle(_obj_newObject("label"));
+    obj.label63 = GUI.fromHandle(_obj_newObject("label"));
     obj.label63:setParent(obj.layout32);
     obj.label63:setLeft(135);
     obj.label63:setTop(3);
@@ -2530,7 +2530,7 @@ function newfrmFichaACN()
     obj.label63:setField("historicoTotal2_4");
     obj.label63:setName("label63");
 
-    obj.edit84 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit84 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit84:setParent(obj.layout32);
     obj.edit84:setLeft(165);
     obj.edit84:setTop(0);
@@ -2541,7 +2541,7 @@ function newfrmFichaACN()
     obj.edit84:setField("historicoValor2_4");
     obj.edit84:setName("edit84");
 
-    obj.edit85 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit85 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit85:setParent(obj.layout32);
     obj.edit85:setLeft(200);
     obj.edit85:setTop(0);
@@ -2552,7 +2552,7 @@ function newfrmFichaACN()
     obj.edit85:setField("historicoBonus2_4");
     obj.edit85:setName("edit85");
 
-    obj.edit86 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit86:setParent(obj.layout32);
     obj.edit86:setLeft(235);
     obj.edit86:setTop(0);
@@ -2563,7 +2563,7 @@ function newfrmFichaACN()
     obj.edit86:setField("historicoXp2_4");
     obj.edit86:setName("edit86");
 
-    obj.layout33 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout33:setParent(obj.scrollBox2);
     obj.layout33:setLeft(5);
     obj.layout33:setTop(350);
@@ -2571,7 +2571,7 @@ function newfrmFichaACN()
     obj.layout33:setHeight(35);
     obj.layout33:setName("layout33");
 
-    obj.radioButton39 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton39 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton39:setParent(obj.layout33);
     obj.radioButton39:setLeft(0);
     obj.radioButton39:setTop(0);
@@ -2580,7 +2580,7 @@ function newfrmFichaACN()
     obj.radioButton39:setFieldValue("historicoTotal2_5");
     obj.radioButton39:setName("radioButton39");
 
-    obj.radioButton40 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton40 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton40:setParent(obj.layout33);
     obj.radioButton40:setLeft(0);
     obj.radioButton40:setTop(15);
@@ -2589,7 +2589,7 @@ function newfrmFichaACN()
     obj.radioButton40:setFieldValue("historicoTotal2_5");
     obj.radioButton40:setName("radioButton40");
 
-    obj.edit87 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit87 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit87:setParent(obj.layout33);
     obj.edit87:setLeft(20);
     obj.edit87:setTop(0);
@@ -2598,7 +2598,7 @@ function newfrmFichaACN()
     obj.edit87:setField("historicoNome2_5");
     obj.edit87:setName("edit87");
 
-    obj.rectangle28 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle28 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle28:setParent(obj.layout33);
     obj.rectangle28:setLeft(125);
     obj.rectangle28:setTop(0);
@@ -2609,7 +2609,7 @@ function newfrmFichaACN()
     obj.rectangle28:setStrokeSize(1);
     obj.rectangle28:setName("rectangle28");
 
-    obj.label64 = gui.fromHandle(_obj_newObject("label"));
+    obj.label64 = GUI.fromHandle(_obj_newObject("label"));
     obj.label64:setParent(obj.layout33);
     obj.label64:setLeft(135);
     obj.label64:setTop(3);
@@ -2618,7 +2618,7 @@ function newfrmFichaACN()
     obj.label64:setField("historicoTotal2_5");
     obj.label64:setName("label64");
 
-    obj.edit88 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit88 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit88:setParent(obj.layout33);
     obj.edit88:setLeft(165);
     obj.edit88:setTop(0);
@@ -2629,7 +2629,7 @@ function newfrmFichaACN()
     obj.edit88:setField("historicoValor2_5");
     obj.edit88:setName("edit88");
 
-    obj.edit89 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit89 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit89:setParent(obj.layout33);
     obj.edit89:setLeft(200);
     obj.edit89:setTop(0);
@@ -2640,7 +2640,7 @@ function newfrmFichaACN()
     obj.edit89:setField("historicoBonus2_5");
     obj.edit89:setName("edit89");
 
-    obj.edit90 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit90 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit90:setParent(obj.layout33);
     obj.edit90:setLeft(235);
     obj.edit90:setTop(0);
@@ -2651,7 +2651,7 @@ function newfrmFichaACN()
     obj.edit90:setField("historicoXp2_5");
     obj.edit90:setName("edit90");
 
-    obj.layout34 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout34 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout34:setParent(obj.scrollBox2);
     obj.layout34:setLeft(5);
     obj.layout34:setTop(385);
@@ -2659,7 +2659,7 @@ function newfrmFichaACN()
     obj.layout34:setHeight(35);
     obj.layout34:setName("layout34");
 
-    obj.radioButton41 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton41 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton41:setParent(obj.layout34);
     obj.radioButton41:setLeft(0);
     obj.radioButton41:setTop(0);
@@ -2668,7 +2668,7 @@ function newfrmFichaACN()
     obj.radioButton41:setFieldValue("historicoTotal2_6");
     obj.radioButton41:setName("radioButton41");
 
-    obj.radioButton42 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton42 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton42:setParent(obj.layout34);
     obj.radioButton42:setLeft(0);
     obj.radioButton42:setTop(15);
@@ -2677,7 +2677,7 @@ function newfrmFichaACN()
     obj.radioButton42:setFieldValue("historicoTotal2_6");
     obj.radioButton42:setName("radioButton42");
 
-    obj.edit91 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit91 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit91:setParent(obj.layout34);
     obj.edit91:setLeft(20);
     obj.edit91:setTop(0);
@@ -2686,7 +2686,7 @@ function newfrmFichaACN()
     obj.edit91:setField("historicoNome2_6");
     obj.edit91:setName("edit91");
 
-    obj.rectangle29 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle29 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle29:setParent(obj.layout34);
     obj.rectangle29:setLeft(125);
     obj.rectangle29:setTop(0);
@@ -2697,7 +2697,7 @@ function newfrmFichaACN()
     obj.rectangle29:setStrokeSize(1);
     obj.rectangle29:setName("rectangle29");
 
-    obj.label65 = gui.fromHandle(_obj_newObject("label"));
+    obj.label65 = GUI.fromHandle(_obj_newObject("label"));
     obj.label65:setParent(obj.layout34);
     obj.label65:setLeft(135);
     obj.label65:setTop(3);
@@ -2706,7 +2706,7 @@ function newfrmFichaACN()
     obj.label65:setField("historicoTotal2_6");
     obj.label65:setName("label65");
 
-    obj.edit92 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit92 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit92:setParent(obj.layout34);
     obj.edit92:setLeft(165);
     obj.edit92:setTop(0);
@@ -2717,7 +2717,7 @@ function newfrmFichaACN()
     obj.edit92:setField("historicoValor2_6");
     obj.edit92:setName("edit92");
 
-    obj.edit93 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit93 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit93:setParent(obj.layout34);
     obj.edit93:setLeft(200);
     obj.edit93:setTop(0);
@@ -2728,7 +2728,7 @@ function newfrmFichaACN()
     obj.edit93:setField("historicoBonus2_6");
     obj.edit93:setName("edit93");
 
-    obj.edit94 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit94 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit94:setParent(obj.layout34);
     obj.edit94:setLeft(235);
     obj.edit94:setTop(0);
@@ -2739,7 +2739,7 @@ function newfrmFichaACN()
     obj.edit94:setField("historicoXp2_6");
     obj.edit94:setName("edit94");
 
-    obj.layout35 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout35:setParent(obj.scrollBox2);
     obj.layout35:setLeft(5);
     obj.layout35:setTop(420);
@@ -2747,7 +2747,7 @@ function newfrmFichaACN()
     obj.layout35:setHeight(35);
     obj.layout35:setName("layout35");
 
-    obj.radioButton43 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton43 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton43:setParent(obj.layout35);
     obj.radioButton43:setLeft(0);
     obj.radioButton43:setTop(0);
@@ -2756,7 +2756,7 @@ function newfrmFichaACN()
     obj.radioButton43:setFieldValue("historicoTotal3_1");
     obj.radioButton43:setName("radioButton43");
 
-    obj.radioButton44 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton44 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton44:setParent(obj.layout35);
     obj.radioButton44:setLeft(0);
     obj.radioButton44:setTop(15);
@@ -2765,7 +2765,7 @@ function newfrmFichaACN()
     obj.radioButton44:setFieldValue("historicoTotal3_1");
     obj.radioButton44:setName("radioButton44");
 
-    obj.edit95 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit95 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit95:setParent(obj.layout35);
     obj.edit95:setLeft(20);
     obj.edit95:setTop(0);
@@ -2774,7 +2774,7 @@ function newfrmFichaACN()
     obj.edit95:setField("historicoNome3_1");
     obj.edit95:setName("edit95");
 
-    obj.rectangle30 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle30 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle30:setParent(obj.layout35);
     obj.rectangle30:setLeft(125);
     obj.rectangle30:setTop(0);
@@ -2785,7 +2785,7 @@ function newfrmFichaACN()
     obj.rectangle30:setStrokeSize(1);
     obj.rectangle30:setName("rectangle30");
 
-    obj.label66 = gui.fromHandle(_obj_newObject("label"));
+    obj.label66 = GUI.fromHandle(_obj_newObject("label"));
     obj.label66:setParent(obj.layout35);
     obj.label66:setLeft(135);
     obj.label66:setTop(3);
@@ -2794,7 +2794,7 @@ function newfrmFichaACN()
     obj.label66:setField("historicoTotal3_1");
     obj.label66:setName("label66");
 
-    obj.edit96 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit96 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit96:setParent(obj.layout35);
     obj.edit96:setLeft(165);
     obj.edit96:setTop(0);
@@ -2805,7 +2805,7 @@ function newfrmFichaACN()
     obj.edit96:setField("historicoValor3_1");
     obj.edit96:setName("edit96");
 
-    obj.edit97 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit97 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit97:setParent(obj.layout35);
     obj.edit97:setLeft(200);
     obj.edit97:setTop(0);
@@ -2816,7 +2816,7 @@ function newfrmFichaACN()
     obj.edit97:setField("historicoBonus3_1");
     obj.edit97:setName("edit97");
 
-    obj.edit98 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit98 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit98:setParent(obj.layout35);
     obj.edit98:setLeft(235);
     obj.edit98:setTop(0);
@@ -2827,7 +2827,7 @@ function newfrmFichaACN()
     obj.edit98:setField("historicoXp3_1");
     obj.edit98:setName("edit98");
 
-    obj.layout36 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout36:setParent(obj.scrollBox2);
     obj.layout36:setLeft(5);
     obj.layout36:setTop(455);
@@ -2835,7 +2835,7 @@ function newfrmFichaACN()
     obj.layout36:setHeight(35);
     obj.layout36:setName("layout36");
 
-    obj.radioButton45 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton45 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton45:setParent(obj.layout36);
     obj.radioButton45:setLeft(0);
     obj.radioButton45:setTop(0);
@@ -2844,7 +2844,7 @@ function newfrmFichaACN()
     obj.radioButton45:setFieldValue("historicoTotal3_2");
     obj.radioButton45:setName("radioButton45");
 
-    obj.radioButton46 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton46 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton46:setParent(obj.layout36);
     obj.radioButton46:setLeft(0);
     obj.radioButton46:setTop(15);
@@ -2853,7 +2853,7 @@ function newfrmFichaACN()
     obj.radioButton46:setFieldValue("historicoTotal3_2");
     obj.radioButton46:setName("radioButton46");
 
-    obj.edit99 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit99 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit99:setParent(obj.layout36);
     obj.edit99:setLeft(20);
     obj.edit99:setTop(0);
@@ -2862,7 +2862,7 @@ function newfrmFichaACN()
     obj.edit99:setField("historicoNome3_2");
     obj.edit99:setName("edit99");
 
-    obj.rectangle31 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle31 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle31:setParent(obj.layout36);
     obj.rectangle31:setLeft(125);
     obj.rectangle31:setTop(0);
@@ -2873,7 +2873,7 @@ function newfrmFichaACN()
     obj.rectangle31:setStrokeSize(1);
     obj.rectangle31:setName("rectangle31");
 
-    obj.label67 = gui.fromHandle(_obj_newObject("label"));
+    obj.label67 = GUI.fromHandle(_obj_newObject("label"));
     obj.label67:setParent(obj.layout36);
     obj.label67:setLeft(135);
     obj.label67:setTop(3);
@@ -2882,7 +2882,7 @@ function newfrmFichaACN()
     obj.label67:setField("historicoTotal3_2");
     obj.label67:setName("label67");
 
-    obj.edit100 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit100 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit100:setParent(obj.layout36);
     obj.edit100:setLeft(165);
     obj.edit100:setTop(0);
@@ -2893,7 +2893,7 @@ function newfrmFichaACN()
     obj.edit100:setField("historicoValor3_2");
     obj.edit100:setName("edit100");
 
-    obj.edit101 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit101 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit101:setParent(obj.layout36);
     obj.edit101:setLeft(200);
     obj.edit101:setTop(0);
@@ -2904,7 +2904,7 @@ function newfrmFichaACN()
     obj.edit101:setField("historicoBonus3_2");
     obj.edit101:setName("edit101");
 
-    obj.edit102 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit102 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit102:setParent(obj.layout36);
     obj.edit102:setLeft(235);
     obj.edit102:setTop(0);
@@ -2915,7 +2915,7 @@ function newfrmFichaACN()
     obj.edit102:setField("historicoXp3_2");
     obj.edit102:setName("edit102");
 
-    obj.layout37 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout37 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout37:setParent(obj.scrollBox2);
     obj.layout37:setLeft(5);
     obj.layout37:setTop(490);
@@ -2923,7 +2923,7 @@ function newfrmFichaACN()
     obj.layout37:setHeight(35);
     obj.layout37:setName("layout37");
 
-    obj.radioButton47 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton47 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton47:setParent(obj.layout37);
     obj.radioButton47:setLeft(0);
     obj.radioButton47:setTop(0);
@@ -2932,7 +2932,7 @@ function newfrmFichaACN()
     obj.radioButton47:setFieldValue("historicoTotal3_3");
     obj.radioButton47:setName("radioButton47");
 
-    obj.radioButton48 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton48 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton48:setParent(obj.layout37);
     obj.radioButton48:setLeft(0);
     obj.radioButton48:setTop(15);
@@ -2941,7 +2941,7 @@ function newfrmFichaACN()
     obj.radioButton48:setFieldValue("historicoTotal3_3");
     obj.radioButton48:setName("radioButton48");
 
-    obj.edit103 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit103 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit103:setParent(obj.layout37);
     obj.edit103:setLeft(20);
     obj.edit103:setTop(0);
@@ -2950,7 +2950,7 @@ function newfrmFichaACN()
     obj.edit103:setField("historicoNome3_3");
     obj.edit103:setName("edit103");
 
-    obj.rectangle32 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle32 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle32:setParent(obj.layout37);
     obj.rectangle32:setLeft(125);
     obj.rectangle32:setTop(0);
@@ -2961,7 +2961,7 @@ function newfrmFichaACN()
     obj.rectangle32:setStrokeSize(1);
     obj.rectangle32:setName("rectangle32");
 
-    obj.label68 = gui.fromHandle(_obj_newObject("label"));
+    obj.label68 = GUI.fromHandle(_obj_newObject("label"));
     obj.label68:setParent(obj.layout37);
     obj.label68:setLeft(135);
     obj.label68:setTop(3);
@@ -2970,7 +2970,7 @@ function newfrmFichaACN()
     obj.label68:setField("historicoTotal3_3");
     obj.label68:setName("label68");
 
-    obj.edit104 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit104 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit104:setParent(obj.layout37);
     obj.edit104:setLeft(165);
     obj.edit104:setTop(0);
@@ -2981,7 +2981,7 @@ function newfrmFichaACN()
     obj.edit104:setField("historicoValor3_3");
     obj.edit104:setName("edit104");
 
-    obj.edit105 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit105 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit105:setParent(obj.layout37);
     obj.edit105:setLeft(200);
     obj.edit105:setTop(0);
@@ -2992,7 +2992,7 @@ function newfrmFichaACN()
     obj.edit105:setField("historicoBonus3_3");
     obj.edit105:setName("edit105");
 
-    obj.edit106 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit106 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit106:setParent(obj.layout37);
     obj.edit106:setLeft(235);
     obj.edit106:setTop(0);
@@ -3003,7 +3003,7 @@ function newfrmFichaACN()
     obj.edit106:setField("historicoXp3_3");
     obj.edit106:setName("edit106");
 
-    obj.layout38 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout38 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout38:setParent(obj.scrollBox2);
     obj.layout38:setLeft(5);
     obj.layout38:setTop(525);
@@ -3011,7 +3011,7 @@ function newfrmFichaACN()
     obj.layout38:setHeight(35);
     obj.layout38:setName("layout38");
 
-    obj.radioButton49 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton49 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton49:setParent(obj.layout38);
     obj.radioButton49:setLeft(0);
     obj.radioButton49:setTop(0);
@@ -3020,7 +3020,7 @@ function newfrmFichaACN()
     obj.radioButton49:setFieldValue("historicoTotal3_4");
     obj.radioButton49:setName("radioButton49");
 
-    obj.radioButton50 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton50 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton50:setParent(obj.layout38);
     obj.radioButton50:setLeft(0);
     obj.radioButton50:setTop(15);
@@ -3029,7 +3029,7 @@ function newfrmFichaACN()
     obj.radioButton50:setFieldValue("historicoTotal3_4");
     obj.radioButton50:setName("radioButton50");
 
-    obj.edit107 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit107 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit107:setParent(obj.layout38);
     obj.edit107:setLeft(20);
     obj.edit107:setTop(0);
@@ -3038,7 +3038,7 @@ function newfrmFichaACN()
     obj.edit107:setField("historicoNome3_4");
     obj.edit107:setName("edit107");
 
-    obj.rectangle33 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle33 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle33:setParent(obj.layout38);
     obj.rectangle33:setLeft(125);
     obj.rectangle33:setTop(0);
@@ -3049,7 +3049,7 @@ function newfrmFichaACN()
     obj.rectangle33:setStrokeSize(1);
     obj.rectangle33:setName("rectangle33");
 
-    obj.label69 = gui.fromHandle(_obj_newObject("label"));
+    obj.label69 = GUI.fromHandle(_obj_newObject("label"));
     obj.label69:setParent(obj.layout38);
     obj.label69:setLeft(135);
     obj.label69:setTop(3);
@@ -3058,7 +3058,7 @@ function newfrmFichaACN()
     obj.label69:setField("historicoTotal3_4");
     obj.label69:setName("label69");
 
-    obj.edit108 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit108 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit108:setParent(obj.layout38);
     obj.edit108:setLeft(165);
     obj.edit108:setTop(0);
@@ -3069,7 +3069,7 @@ function newfrmFichaACN()
     obj.edit108:setField("historicoValor3_4");
     obj.edit108:setName("edit108");
 
-    obj.edit109 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit109 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit109:setParent(obj.layout38);
     obj.edit109:setLeft(200);
     obj.edit109:setTop(0);
@@ -3080,7 +3080,7 @@ function newfrmFichaACN()
     obj.edit109:setField("historicoBonus3_4");
     obj.edit109:setName("edit109");
 
-    obj.edit110 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit110 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit110:setParent(obj.layout38);
     obj.edit110:setLeft(235);
     obj.edit110:setTop(0);
@@ -3091,7 +3091,7 @@ function newfrmFichaACN()
     obj.edit110:setField("historicoXp3_4");
     obj.edit110:setName("edit110");
 
-    obj.layout39 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout39 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout39:setParent(obj.scrollBox2);
     obj.layout39:setLeft(5);
     obj.layout39:setTop(560);
@@ -3099,7 +3099,7 @@ function newfrmFichaACN()
     obj.layout39:setHeight(35);
     obj.layout39:setName("layout39");
 
-    obj.radioButton51 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton51 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton51:setParent(obj.layout39);
     obj.radioButton51:setLeft(0);
     obj.radioButton51:setTop(0);
@@ -3108,7 +3108,7 @@ function newfrmFichaACN()
     obj.radioButton51:setFieldValue("historicoTotal3_5");
     obj.radioButton51:setName("radioButton51");
 
-    obj.radioButton52 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton52 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton52:setParent(obj.layout39);
     obj.radioButton52:setLeft(0);
     obj.radioButton52:setTop(15);
@@ -3117,7 +3117,7 @@ function newfrmFichaACN()
     obj.radioButton52:setFieldValue("historicoTotal3_5");
     obj.radioButton52:setName("radioButton52");
 
-    obj.edit111 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit111 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit111:setParent(obj.layout39);
     obj.edit111:setLeft(20);
     obj.edit111:setTop(0);
@@ -3126,7 +3126,7 @@ function newfrmFichaACN()
     obj.edit111:setField("historicoNome3_5");
     obj.edit111:setName("edit111");
 
-    obj.rectangle34 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle34 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle34:setParent(obj.layout39);
     obj.rectangle34:setLeft(125);
     obj.rectangle34:setTop(0);
@@ -3137,7 +3137,7 @@ function newfrmFichaACN()
     obj.rectangle34:setStrokeSize(1);
     obj.rectangle34:setName("rectangle34");
 
-    obj.label70 = gui.fromHandle(_obj_newObject("label"));
+    obj.label70 = GUI.fromHandle(_obj_newObject("label"));
     obj.label70:setParent(obj.layout39);
     obj.label70:setLeft(135);
     obj.label70:setTop(3);
@@ -3146,7 +3146,7 @@ function newfrmFichaACN()
     obj.label70:setField("historicoTotal3_5");
     obj.label70:setName("label70");
 
-    obj.edit112 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit112 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit112:setParent(obj.layout39);
     obj.edit112:setLeft(165);
     obj.edit112:setTop(0);
@@ -3157,7 +3157,7 @@ function newfrmFichaACN()
     obj.edit112:setField("historicoValor3_5");
     obj.edit112:setName("edit112");
 
-    obj.edit113 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit113 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit113:setParent(obj.layout39);
     obj.edit113:setLeft(200);
     obj.edit113:setTop(0);
@@ -3168,7 +3168,7 @@ function newfrmFichaACN()
     obj.edit113:setField("historicoBonus3_5");
     obj.edit113:setName("edit113");
 
-    obj.edit114 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit114 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit114:setParent(obj.layout39);
     obj.edit114:setLeft(235);
     obj.edit114:setTop(0);
@@ -3179,7 +3179,7 @@ function newfrmFichaACN()
     obj.edit114:setField("historicoXp3_5");
     obj.edit114:setName("edit114");
 
-    obj.layout40 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout40 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout40:setParent(obj.scrollBox2);
     obj.layout40:setLeft(5);
     obj.layout40:setTop(595);
@@ -3187,7 +3187,7 @@ function newfrmFichaACN()
     obj.layout40:setHeight(35);
     obj.layout40:setName("layout40");
 
-    obj.radioButton53 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton53 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton53:setParent(obj.layout40);
     obj.radioButton53:setLeft(0);
     obj.radioButton53:setTop(0);
@@ -3196,7 +3196,7 @@ function newfrmFichaACN()
     obj.radioButton53:setFieldValue("historicoTotal3_6");
     obj.radioButton53:setName("radioButton53");
 
-    obj.radioButton54 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton54 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton54:setParent(obj.layout40);
     obj.radioButton54:setLeft(0);
     obj.radioButton54:setTop(15);
@@ -3205,7 +3205,7 @@ function newfrmFichaACN()
     obj.radioButton54:setFieldValue("historicoTotal3_6");
     obj.radioButton54:setName("radioButton54");
 
-    obj.edit115 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit115 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit115:setParent(obj.layout40);
     obj.edit115:setLeft(20);
     obj.edit115:setTop(0);
@@ -3214,7 +3214,7 @@ function newfrmFichaACN()
     obj.edit115:setField("historicoNome3_6");
     obj.edit115:setName("edit115");
 
-    obj.rectangle35 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle35 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle35:setParent(obj.layout40);
     obj.rectangle35:setLeft(125);
     obj.rectangle35:setTop(0);
@@ -3225,7 +3225,7 @@ function newfrmFichaACN()
     obj.rectangle35:setStrokeSize(1);
     obj.rectangle35:setName("rectangle35");
 
-    obj.label71 = gui.fromHandle(_obj_newObject("label"));
+    obj.label71 = GUI.fromHandle(_obj_newObject("label"));
     obj.label71:setParent(obj.layout40);
     obj.label71:setLeft(135);
     obj.label71:setTop(3);
@@ -3234,7 +3234,7 @@ function newfrmFichaACN()
     obj.label71:setField("historicoTotal3_6");
     obj.label71:setName("label71");
 
-    obj.edit116 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit116 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit116:setParent(obj.layout40);
     obj.edit116:setLeft(165);
     obj.edit116:setTop(0);
@@ -3245,7 +3245,7 @@ function newfrmFichaACN()
     obj.edit116:setField("historicoValor3_6");
     obj.edit116:setName("edit116");
 
-    obj.edit117 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit117 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit117:setParent(obj.layout40);
     obj.edit117:setLeft(200);
     obj.edit117:setTop(0);
@@ -3256,7 +3256,7 @@ function newfrmFichaACN()
     obj.edit117:setField("historicoBonus3_6");
     obj.edit117:setName("edit117");
 
-    obj.edit118 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit118 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit118:setParent(obj.layout40);
     obj.edit118:setLeft(235);
     obj.edit118:setTop(0);
@@ -3328,7 +3328,7 @@ function newfrmFichaACN()
 				
 
 
-    obj.layout41 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout41 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout41:setParent(obj.scrollBox1);
     obj.layout41:setLeft(320);
     obj.layout41:setTop(400);
@@ -3336,7 +3336,7 @@ function newfrmFichaACN()
     obj.layout41:setHeight(180);
     obj.layout41:setName("layout41");
 
-    obj.rectangle36 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle36 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle36:setParent(obj.layout41);
     obj.rectangle36:setAlign("client");
     obj.rectangle36:setColor("black");
@@ -3345,7 +3345,7 @@ function newfrmFichaACN()
     obj.rectangle36:setCornerType("round");
     obj.rectangle36:setName("rectangle36");
 
-    obj.label72 = gui.fromHandle(_obj_newObject("label"));
+    obj.label72 = GUI.fromHandle(_obj_newObject("label"));
     obj.label72:setParent(obj.layout41);
     obj.label72:setLeft(0);
     obj.label72:setTop(0);
@@ -3355,7 +3355,7 @@ function newfrmFichaACN()
     obj.label72:setHorzTextAlign("center");
     obj.label72:setName("label72");
 
-    obj.label73 = gui.fromHandle(_obj_newObject("label"));
+    obj.label73 = GUI.fromHandle(_obj_newObject("label"));
     obj.label73:setParent(obj.layout41);
     obj.label73:setLeft(25);
     obj.label73:setTop(20);
@@ -3364,7 +3364,7 @@ function newfrmFichaACN()
     obj.label73:setText(" Nome");
     obj.label73:setName("label73");
 
-    obj.label74 = gui.fromHandle(_obj_newObject("label"));
+    obj.label74 = GUI.fromHandle(_obj_newObject("label"));
     obj.label74:setParent(obj.layout41);
     obj.label74:setLeft(135);
     obj.label74:setTop(20);
@@ -3373,7 +3373,7 @@ function newfrmFichaACN()
     obj.label74:setText("Total");
     obj.label74:setName("label74");
 
-    obj.label75 = gui.fromHandle(_obj_newObject("label"));
+    obj.label75 = GUI.fromHandle(_obj_newObject("label"));
     obj.label75:setParent(obj.layout41);
     obj.label75:setLeft(170);
     obj.label75:setTop(20);
@@ -3382,7 +3382,7 @@ function newfrmFichaACN()
     obj.label75:setText(" Inic");
     obj.label75:setName("label75");
 
-    obj.label76 = gui.fromHandle(_obj_newObject("label"));
+    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
     obj.label76:setParent(obj.layout41);
     obj.label76:setLeft(202);
     obj.label76:setTop(20);
@@ -3391,7 +3391,7 @@ function newfrmFichaACN()
     obj.label76:setText(" Apr.");
     obj.label76:setName("label76");
 
-    obj.label77 = gui.fromHandle(_obj_newObject("label"));
+    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
     obj.label77:setParent(obj.layout41);
     obj.label77:setLeft(235);
     obj.label77:setTop(20);
@@ -3400,7 +3400,7 @@ function newfrmFichaACN()
     obj.label77:setText("  XP");
     obj.label77:setName("label77");
 
-    obj.scrollBox3 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox3 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox3:setParent(obj.layout41);
     obj.scrollBox3:setLeft(0);
     obj.scrollBox3:setTop(40);
@@ -3408,7 +3408,7 @@ function newfrmFichaACN()
     obj.scrollBox3:setHeight(120);
     obj.scrollBox3:setName("scrollBox3");
 
-    obj.layout42 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout42 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout42:setParent(obj.scrollBox3);
     obj.layout42:setLeft(5);
     obj.layout42:setTop(0);
@@ -3416,7 +3416,7 @@ function newfrmFichaACN()
     obj.layout42:setHeight(35);
     obj.layout42:setName("layout42");
 
-    obj.radioButton55 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton55 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton55:setParent(obj.layout42);
     obj.radioButton55:setLeft(0);
     obj.radioButton55:setTop(0);
@@ -3425,7 +3425,7 @@ function newfrmFichaACN()
     obj.radioButton55:setFieldValue("historicoTotal1_1_m");
     obj.radioButton55:setName("radioButton55");
 
-    obj.radioButton56 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton56 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton56:setParent(obj.layout42);
     obj.radioButton56:setLeft(0);
     obj.radioButton56:setTop(15);
@@ -3434,7 +3434,7 @@ function newfrmFichaACN()
     obj.radioButton56:setFieldValue("historicoTotal1_1_m");
     obj.radioButton56:setName("radioButton56");
 
-    obj.edit119 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit119 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit119:setParent(obj.layout42);
     obj.edit119:setLeft(20);
     obj.edit119:setTop(0);
@@ -3443,7 +3443,7 @@ function newfrmFichaACN()
     obj.edit119:setField("historicoNome1_1_m");
     obj.edit119:setName("edit119");
 
-    obj.rectangle37 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle37 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle37:setParent(obj.layout42);
     obj.rectangle37:setLeft(125);
     obj.rectangle37:setTop(0);
@@ -3454,7 +3454,7 @@ function newfrmFichaACN()
     obj.rectangle37:setStrokeSize(1);
     obj.rectangle37:setName("rectangle37");
 
-    obj.label78 = gui.fromHandle(_obj_newObject("label"));
+    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
     obj.label78:setParent(obj.layout42);
     obj.label78:setLeft(135);
     obj.label78:setTop(3);
@@ -3463,7 +3463,7 @@ function newfrmFichaACN()
     obj.label78:setField("historicoTotal1_1_m");
     obj.label78:setName("label78");
 
-    obj.edit120 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit120 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit120:setParent(obj.layout42);
     obj.edit120:setLeft(165);
     obj.edit120:setTop(0);
@@ -3474,7 +3474,7 @@ function newfrmFichaACN()
     obj.edit120:setField("historicoValor1_1_m");
     obj.edit120:setName("edit120");
 
-    obj.edit121 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit121 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit121:setParent(obj.layout42);
     obj.edit121:setLeft(200);
     obj.edit121:setTop(0);
@@ -3485,7 +3485,7 @@ function newfrmFichaACN()
     obj.edit121:setField("historicoBonus1_1_m");
     obj.edit121:setName("edit121");
 
-    obj.edit122 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit122 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit122:setParent(obj.layout42);
     obj.edit122:setLeft(235);
     obj.edit122:setTop(0);
@@ -3496,7 +3496,7 @@ function newfrmFichaACN()
     obj.edit122:setField("historicoXp1_1_m");
     obj.edit122:setName("edit122");
 
-    obj.layout43 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout43 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout43:setParent(obj.scrollBox3);
     obj.layout43:setLeft(5);
     obj.layout43:setTop(35);
@@ -3504,7 +3504,7 @@ function newfrmFichaACN()
     obj.layout43:setHeight(35);
     obj.layout43:setName("layout43");
 
-    obj.radioButton57 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton57 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton57:setParent(obj.layout43);
     obj.radioButton57:setLeft(0);
     obj.radioButton57:setTop(0);
@@ -3513,7 +3513,7 @@ function newfrmFichaACN()
     obj.radioButton57:setFieldValue("historicoTotal1_2_m");
     obj.radioButton57:setName("radioButton57");
 
-    obj.radioButton58 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton58 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton58:setParent(obj.layout43);
     obj.radioButton58:setLeft(0);
     obj.radioButton58:setTop(15);
@@ -3522,7 +3522,7 @@ function newfrmFichaACN()
     obj.radioButton58:setFieldValue("historicoTotal1_2_m");
     obj.radioButton58:setName("radioButton58");
 
-    obj.edit123 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit123 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit123:setParent(obj.layout43);
     obj.edit123:setLeft(20);
     obj.edit123:setTop(0);
@@ -3531,7 +3531,7 @@ function newfrmFichaACN()
     obj.edit123:setField("historicoNome1_2_m");
     obj.edit123:setName("edit123");
 
-    obj.rectangle38 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle38 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle38:setParent(obj.layout43);
     obj.rectangle38:setLeft(125);
     obj.rectangle38:setTop(0);
@@ -3542,7 +3542,7 @@ function newfrmFichaACN()
     obj.rectangle38:setStrokeSize(1);
     obj.rectangle38:setName("rectangle38");
 
-    obj.label79 = gui.fromHandle(_obj_newObject("label"));
+    obj.label79 = GUI.fromHandle(_obj_newObject("label"));
     obj.label79:setParent(obj.layout43);
     obj.label79:setLeft(135);
     obj.label79:setTop(3);
@@ -3551,7 +3551,7 @@ function newfrmFichaACN()
     obj.label79:setField("historicoTotal1_2_m");
     obj.label79:setName("label79");
 
-    obj.edit124 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit124 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit124:setParent(obj.layout43);
     obj.edit124:setLeft(165);
     obj.edit124:setTop(0);
@@ -3562,7 +3562,7 @@ function newfrmFichaACN()
     obj.edit124:setField("historicoValor1_2_m");
     obj.edit124:setName("edit124");
 
-    obj.edit125 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit125 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit125:setParent(obj.layout43);
     obj.edit125:setLeft(200);
     obj.edit125:setTop(0);
@@ -3573,7 +3573,7 @@ function newfrmFichaACN()
     obj.edit125:setField("historicoBonus1_2_m");
     obj.edit125:setName("edit125");
 
-    obj.edit126 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit126 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit126:setParent(obj.layout43);
     obj.edit126:setLeft(235);
     obj.edit126:setTop(0);
@@ -3584,7 +3584,7 @@ function newfrmFichaACN()
     obj.edit126:setField("historicoXp1_2_m");
     obj.edit126:setName("edit126");
 
-    obj.layout44 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout44 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout44:setParent(obj.scrollBox3);
     obj.layout44:setLeft(5);
     obj.layout44:setTop(70);
@@ -3592,7 +3592,7 @@ function newfrmFichaACN()
     obj.layout44:setHeight(35);
     obj.layout44:setName("layout44");
 
-    obj.radioButton59 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton59 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton59:setParent(obj.layout44);
     obj.radioButton59:setLeft(0);
     obj.radioButton59:setTop(0);
@@ -3601,7 +3601,7 @@ function newfrmFichaACN()
     obj.radioButton59:setFieldValue("historicoTotal1_3_m");
     obj.radioButton59:setName("radioButton59");
 
-    obj.radioButton60 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton60 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton60:setParent(obj.layout44);
     obj.radioButton60:setLeft(0);
     obj.radioButton60:setTop(15);
@@ -3610,7 +3610,7 @@ function newfrmFichaACN()
     obj.radioButton60:setFieldValue("historicoTotal1_3_m");
     obj.radioButton60:setName("radioButton60");
 
-    obj.edit127 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit127 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit127:setParent(obj.layout44);
     obj.edit127:setLeft(20);
     obj.edit127:setTop(0);
@@ -3619,7 +3619,7 @@ function newfrmFichaACN()
     obj.edit127:setField("historicoNome1_3_m");
     obj.edit127:setName("edit127");
 
-    obj.rectangle39 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle39 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle39:setParent(obj.layout44);
     obj.rectangle39:setLeft(125);
     obj.rectangle39:setTop(0);
@@ -3630,7 +3630,7 @@ function newfrmFichaACN()
     obj.rectangle39:setStrokeSize(1);
     obj.rectangle39:setName("rectangle39");
 
-    obj.label80 = gui.fromHandle(_obj_newObject("label"));
+    obj.label80 = GUI.fromHandle(_obj_newObject("label"));
     obj.label80:setParent(obj.layout44);
     obj.label80:setLeft(135);
     obj.label80:setTop(3);
@@ -3639,7 +3639,7 @@ function newfrmFichaACN()
     obj.label80:setField("historicoTotal1_3_m");
     obj.label80:setName("label80");
 
-    obj.edit128 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit128 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit128:setParent(obj.layout44);
     obj.edit128:setLeft(165);
     obj.edit128:setTop(0);
@@ -3650,7 +3650,7 @@ function newfrmFichaACN()
     obj.edit128:setField("historicoValor1_3_m");
     obj.edit128:setName("edit128");
 
-    obj.edit129 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit129 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit129:setParent(obj.layout44);
     obj.edit129:setLeft(200);
     obj.edit129:setTop(0);
@@ -3661,7 +3661,7 @@ function newfrmFichaACN()
     obj.edit129:setField("historicoBonus1_3_m");
     obj.edit129:setName("edit129");
 
-    obj.edit130 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit130 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit130:setParent(obj.layout44);
     obj.edit130:setLeft(235);
     obj.edit130:setTop(0);
@@ -3672,7 +3672,7 @@ function newfrmFichaACN()
     obj.edit130:setField("historicoXp1_3_m");
     obj.edit130:setName("edit130");
 
-    obj.layout45 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout45 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout45:setParent(obj.scrollBox3);
     obj.layout45:setLeft(5);
     obj.layout45:setTop(105);
@@ -3680,7 +3680,7 @@ function newfrmFichaACN()
     obj.layout45:setHeight(35);
     obj.layout45:setName("layout45");
 
-    obj.radioButton61 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton61 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton61:setParent(obj.layout45);
     obj.radioButton61:setLeft(0);
     obj.radioButton61:setTop(0);
@@ -3689,7 +3689,7 @@ function newfrmFichaACN()
     obj.radioButton61:setFieldValue("historicoTotal1_4_m");
     obj.radioButton61:setName("radioButton61");
 
-    obj.radioButton62 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton62 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton62:setParent(obj.layout45);
     obj.radioButton62:setLeft(0);
     obj.radioButton62:setTop(15);
@@ -3698,7 +3698,7 @@ function newfrmFichaACN()
     obj.radioButton62:setFieldValue("historicoTotal1_4_m");
     obj.radioButton62:setName("radioButton62");
 
-    obj.edit131 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit131 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit131:setParent(obj.layout45);
     obj.edit131:setLeft(20);
     obj.edit131:setTop(0);
@@ -3707,7 +3707,7 @@ function newfrmFichaACN()
     obj.edit131:setField("historicoNome1_4_m");
     obj.edit131:setName("edit131");
 
-    obj.rectangle40 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle40 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle40:setParent(obj.layout45);
     obj.rectangle40:setLeft(125);
     obj.rectangle40:setTop(0);
@@ -3718,7 +3718,7 @@ function newfrmFichaACN()
     obj.rectangle40:setStrokeSize(1);
     obj.rectangle40:setName("rectangle40");
 
-    obj.label81 = gui.fromHandle(_obj_newObject("label"));
+    obj.label81 = GUI.fromHandle(_obj_newObject("label"));
     obj.label81:setParent(obj.layout45);
     obj.label81:setLeft(135);
     obj.label81:setTop(3);
@@ -3727,7 +3727,7 @@ function newfrmFichaACN()
     obj.label81:setField("historicoTotal1_4_m");
     obj.label81:setName("label81");
 
-    obj.edit132 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit132 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit132:setParent(obj.layout45);
     obj.edit132:setLeft(165);
     obj.edit132:setTop(0);
@@ -3738,7 +3738,7 @@ function newfrmFichaACN()
     obj.edit132:setField("historicoValor1_4_m");
     obj.edit132:setName("edit132");
 
-    obj.edit133 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit133 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit133:setParent(obj.layout45);
     obj.edit133:setLeft(200);
     obj.edit133:setTop(0);
@@ -3749,7 +3749,7 @@ function newfrmFichaACN()
     obj.edit133:setField("historicoBonus1_4_m");
     obj.edit133:setName("edit133");
 
-    obj.edit134 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit134 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit134:setParent(obj.layout45);
     obj.edit134:setLeft(235);
     obj.edit134:setTop(0);
@@ -3760,7 +3760,7 @@ function newfrmFichaACN()
     obj.edit134:setField("historicoXp1_4_m");
     obj.edit134:setName("edit134");
 
-    obj.layout46 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout46 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout46:setParent(obj.scrollBox3);
     obj.layout46:setLeft(5);
     obj.layout46:setTop(140);
@@ -3768,7 +3768,7 @@ function newfrmFichaACN()
     obj.layout46:setHeight(35);
     obj.layout46:setName("layout46");
 
-    obj.radioButton63 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton63 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton63:setParent(obj.layout46);
     obj.radioButton63:setLeft(0);
     obj.radioButton63:setTop(0);
@@ -3777,7 +3777,7 @@ function newfrmFichaACN()
     obj.radioButton63:setFieldValue("historicoTotal1_5_m");
     obj.radioButton63:setName("radioButton63");
 
-    obj.radioButton64 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton64 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton64:setParent(obj.layout46);
     obj.radioButton64:setLeft(0);
     obj.radioButton64:setTop(15);
@@ -3786,7 +3786,7 @@ function newfrmFichaACN()
     obj.radioButton64:setFieldValue("historicoTotal1_5_m");
     obj.radioButton64:setName("radioButton64");
 
-    obj.edit135 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit135 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit135:setParent(obj.layout46);
     obj.edit135:setLeft(20);
     obj.edit135:setTop(0);
@@ -3795,7 +3795,7 @@ function newfrmFichaACN()
     obj.edit135:setField("historicoNome1_5_m");
     obj.edit135:setName("edit135");
 
-    obj.rectangle41 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle41 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle41:setParent(obj.layout46);
     obj.rectangle41:setLeft(125);
     obj.rectangle41:setTop(0);
@@ -3806,7 +3806,7 @@ function newfrmFichaACN()
     obj.rectangle41:setStrokeSize(1);
     obj.rectangle41:setName("rectangle41");
 
-    obj.label82 = gui.fromHandle(_obj_newObject("label"));
+    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
     obj.label82:setParent(obj.layout46);
     obj.label82:setLeft(135);
     obj.label82:setTop(3);
@@ -3815,7 +3815,7 @@ function newfrmFichaACN()
     obj.label82:setField("historicoTotal1_5_m");
     obj.label82:setName("label82");
 
-    obj.edit136 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit136 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit136:setParent(obj.layout46);
     obj.edit136:setLeft(165);
     obj.edit136:setTop(0);
@@ -3826,7 +3826,7 @@ function newfrmFichaACN()
     obj.edit136:setField("historicoValor1_5_m");
     obj.edit136:setName("edit136");
 
-    obj.edit137 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit137 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit137:setParent(obj.layout46);
     obj.edit137:setLeft(200);
     obj.edit137:setTop(0);
@@ -3837,7 +3837,7 @@ function newfrmFichaACN()
     obj.edit137:setField("historicoBonus1_5_m");
     obj.edit137:setName("edit137");
 
-    obj.edit138 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit138 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit138:setParent(obj.layout46);
     obj.edit138:setLeft(235);
     obj.edit138:setTop(0);
@@ -3848,7 +3848,7 @@ function newfrmFichaACN()
     obj.edit138:setField("historicoXp1_5_m");
     obj.edit138:setName("edit138");
 
-    obj.layout47 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout47 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout47:setParent(obj.scrollBox3);
     obj.layout47:setLeft(5);
     obj.layout47:setTop(175);
@@ -3856,7 +3856,7 @@ function newfrmFichaACN()
     obj.layout47:setHeight(35);
     obj.layout47:setName("layout47");
 
-    obj.radioButton65 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton65 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton65:setParent(obj.layout47);
     obj.radioButton65:setLeft(0);
     obj.radioButton65:setTop(0);
@@ -3865,7 +3865,7 @@ function newfrmFichaACN()
     obj.radioButton65:setFieldValue("historicoTotal1_6_m");
     obj.radioButton65:setName("radioButton65");
 
-    obj.radioButton66 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton66 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton66:setParent(obj.layout47);
     obj.radioButton66:setLeft(0);
     obj.radioButton66:setTop(15);
@@ -3874,7 +3874,7 @@ function newfrmFichaACN()
     obj.radioButton66:setFieldValue("historicoTotal1_6_m");
     obj.radioButton66:setName("radioButton66");
 
-    obj.edit139 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit139 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit139:setParent(obj.layout47);
     obj.edit139:setLeft(20);
     obj.edit139:setTop(0);
@@ -3883,7 +3883,7 @@ function newfrmFichaACN()
     obj.edit139:setField("historicoNome1_6_m");
     obj.edit139:setName("edit139");
 
-    obj.rectangle42 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle42 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle42:setParent(obj.layout47);
     obj.rectangle42:setLeft(125);
     obj.rectangle42:setTop(0);
@@ -3894,7 +3894,7 @@ function newfrmFichaACN()
     obj.rectangle42:setStrokeSize(1);
     obj.rectangle42:setName("rectangle42");
 
-    obj.label83 = gui.fromHandle(_obj_newObject("label"));
+    obj.label83 = GUI.fromHandle(_obj_newObject("label"));
     obj.label83:setParent(obj.layout47);
     obj.label83:setLeft(135);
     obj.label83:setTop(3);
@@ -3903,7 +3903,7 @@ function newfrmFichaACN()
     obj.label83:setField("historicoTotal1_6_m");
     obj.label83:setName("label83");
 
-    obj.edit140 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit140 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit140:setParent(obj.layout47);
     obj.edit140:setLeft(165);
     obj.edit140:setTop(0);
@@ -3914,7 +3914,7 @@ function newfrmFichaACN()
     obj.edit140:setField("historicoValor1_6_m");
     obj.edit140:setName("edit140");
 
-    obj.edit141 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit141 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit141:setParent(obj.layout47);
     obj.edit141:setLeft(200);
     obj.edit141:setTop(0);
@@ -3925,7 +3925,7 @@ function newfrmFichaACN()
     obj.edit141:setField("historicoBonus1_6_m");
     obj.edit141:setName("edit141");
 
-    obj.edit142 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit142 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit142:setParent(obj.layout47);
     obj.edit142:setLeft(235);
     obj.edit142:setTop(0);
@@ -3936,7 +3936,7 @@ function newfrmFichaACN()
     obj.edit142:setField("historicoXp1_6_m");
     obj.edit142:setName("edit142");
 
-    obj.layout48 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout48 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout48:setParent(obj.scrollBox3);
     obj.layout48:setLeft(5);
     obj.layout48:setTop(210);
@@ -3944,7 +3944,7 @@ function newfrmFichaACN()
     obj.layout48:setHeight(35);
     obj.layout48:setName("layout48");
 
-    obj.radioButton67 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton67 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton67:setParent(obj.layout48);
     obj.radioButton67:setLeft(0);
     obj.radioButton67:setTop(0);
@@ -3953,7 +3953,7 @@ function newfrmFichaACN()
     obj.radioButton67:setFieldValue("historicoTotal2_1_m");
     obj.radioButton67:setName("radioButton67");
 
-    obj.radioButton68 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton68 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton68:setParent(obj.layout48);
     obj.radioButton68:setLeft(0);
     obj.radioButton68:setTop(15);
@@ -3962,7 +3962,7 @@ function newfrmFichaACN()
     obj.radioButton68:setFieldValue("historicoTotal2_1_m");
     obj.radioButton68:setName("radioButton68");
 
-    obj.edit143 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit143 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit143:setParent(obj.layout48);
     obj.edit143:setLeft(20);
     obj.edit143:setTop(0);
@@ -3971,7 +3971,7 @@ function newfrmFichaACN()
     obj.edit143:setField("historicoNome2_1_m");
     obj.edit143:setName("edit143");
 
-    obj.rectangle43 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle43 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle43:setParent(obj.layout48);
     obj.rectangle43:setLeft(125);
     obj.rectangle43:setTop(0);
@@ -3982,7 +3982,7 @@ function newfrmFichaACN()
     obj.rectangle43:setStrokeSize(1);
     obj.rectangle43:setName("rectangle43");
 
-    obj.label84 = gui.fromHandle(_obj_newObject("label"));
+    obj.label84 = GUI.fromHandle(_obj_newObject("label"));
     obj.label84:setParent(obj.layout48);
     obj.label84:setLeft(135);
     obj.label84:setTop(3);
@@ -3991,7 +3991,7 @@ function newfrmFichaACN()
     obj.label84:setField("historicoTotal2_1_m");
     obj.label84:setName("label84");
 
-    obj.edit144 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit144 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit144:setParent(obj.layout48);
     obj.edit144:setLeft(165);
     obj.edit144:setTop(0);
@@ -4002,7 +4002,7 @@ function newfrmFichaACN()
     obj.edit144:setField("historicoValor2_1_m");
     obj.edit144:setName("edit144");
 
-    obj.edit145 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit145 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit145:setParent(obj.layout48);
     obj.edit145:setLeft(200);
     obj.edit145:setTop(0);
@@ -4013,7 +4013,7 @@ function newfrmFichaACN()
     obj.edit145:setField("historicoBonus2_1_m");
     obj.edit145:setName("edit145");
 
-    obj.edit146 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit146 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit146:setParent(obj.layout48);
     obj.edit146:setLeft(235);
     obj.edit146:setTop(0);
@@ -4024,7 +4024,7 @@ function newfrmFichaACN()
     obj.edit146:setField("historicoXp2_1_m");
     obj.edit146:setName("edit146");
 
-    obj.layout49 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout49:setParent(obj.scrollBox3);
     obj.layout49:setLeft(5);
     obj.layout49:setTop(245);
@@ -4032,7 +4032,7 @@ function newfrmFichaACN()
     obj.layout49:setHeight(35);
     obj.layout49:setName("layout49");
 
-    obj.radioButton69 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton69 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton69:setParent(obj.layout49);
     obj.radioButton69:setLeft(0);
     obj.radioButton69:setTop(0);
@@ -4041,7 +4041,7 @@ function newfrmFichaACN()
     obj.radioButton69:setFieldValue("historicoTotal2_2_m");
     obj.radioButton69:setName("radioButton69");
 
-    obj.radioButton70 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton70 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton70:setParent(obj.layout49);
     obj.radioButton70:setLeft(0);
     obj.radioButton70:setTop(15);
@@ -4050,7 +4050,7 @@ function newfrmFichaACN()
     obj.radioButton70:setFieldValue("historicoTotal2_2_m");
     obj.radioButton70:setName("radioButton70");
 
-    obj.edit147 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit147 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit147:setParent(obj.layout49);
     obj.edit147:setLeft(20);
     obj.edit147:setTop(0);
@@ -4059,7 +4059,7 @@ function newfrmFichaACN()
     obj.edit147:setField("historicoNome2_2_m");
     obj.edit147:setName("edit147");
 
-    obj.rectangle44 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle44 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle44:setParent(obj.layout49);
     obj.rectangle44:setLeft(125);
     obj.rectangle44:setTop(0);
@@ -4070,7 +4070,7 @@ function newfrmFichaACN()
     obj.rectangle44:setStrokeSize(1);
     obj.rectangle44:setName("rectangle44");
 
-    obj.label85 = gui.fromHandle(_obj_newObject("label"));
+    obj.label85 = GUI.fromHandle(_obj_newObject("label"));
     obj.label85:setParent(obj.layout49);
     obj.label85:setLeft(135);
     obj.label85:setTop(3);
@@ -4079,7 +4079,7 @@ function newfrmFichaACN()
     obj.label85:setField("historicoTotal2_2_m");
     obj.label85:setName("label85");
 
-    obj.edit148 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit148 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit148:setParent(obj.layout49);
     obj.edit148:setLeft(165);
     obj.edit148:setTop(0);
@@ -4090,7 +4090,7 @@ function newfrmFichaACN()
     obj.edit148:setField("historicoValor2_2_m");
     obj.edit148:setName("edit148");
 
-    obj.edit149 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit149 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit149:setParent(obj.layout49);
     obj.edit149:setLeft(200);
     obj.edit149:setTop(0);
@@ -4101,7 +4101,7 @@ function newfrmFichaACN()
     obj.edit149:setField("historicoBonus2_2_m");
     obj.edit149:setName("edit149");
 
-    obj.edit150 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit150 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit150:setParent(obj.layout49);
     obj.edit150:setLeft(235);
     obj.edit150:setTop(0);
@@ -4112,7 +4112,7 @@ function newfrmFichaACN()
     obj.edit150:setField("historicoXp2_2_m");
     obj.edit150:setName("edit150");
 
-    obj.layout50 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout50 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout50:setParent(obj.scrollBox3);
     obj.layout50:setLeft(5);
     obj.layout50:setTop(280);
@@ -4120,7 +4120,7 @@ function newfrmFichaACN()
     obj.layout50:setHeight(35);
     obj.layout50:setName("layout50");
 
-    obj.radioButton71 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton71 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton71:setParent(obj.layout50);
     obj.radioButton71:setLeft(0);
     obj.radioButton71:setTop(0);
@@ -4129,7 +4129,7 @@ function newfrmFichaACN()
     obj.radioButton71:setFieldValue("historicoTotal2_3_m");
     obj.radioButton71:setName("radioButton71");
 
-    obj.radioButton72 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton72 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton72:setParent(obj.layout50);
     obj.radioButton72:setLeft(0);
     obj.radioButton72:setTop(15);
@@ -4138,7 +4138,7 @@ function newfrmFichaACN()
     obj.radioButton72:setFieldValue("historicoTotal2_3_m");
     obj.radioButton72:setName("radioButton72");
 
-    obj.edit151 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit151 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit151:setParent(obj.layout50);
     obj.edit151:setLeft(20);
     obj.edit151:setTop(0);
@@ -4147,7 +4147,7 @@ function newfrmFichaACN()
     obj.edit151:setField("historicoNome2_3_m");
     obj.edit151:setName("edit151");
 
-    obj.rectangle45 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle45 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle45:setParent(obj.layout50);
     obj.rectangle45:setLeft(125);
     obj.rectangle45:setTop(0);
@@ -4158,7 +4158,7 @@ function newfrmFichaACN()
     obj.rectangle45:setStrokeSize(1);
     obj.rectangle45:setName("rectangle45");
 
-    obj.label86 = gui.fromHandle(_obj_newObject("label"));
+    obj.label86 = GUI.fromHandle(_obj_newObject("label"));
     obj.label86:setParent(obj.layout50);
     obj.label86:setLeft(135);
     obj.label86:setTop(3);
@@ -4167,7 +4167,7 @@ function newfrmFichaACN()
     obj.label86:setField("historicoTotal2_3_m");
     obj.label86:setName("label86");
 
-    obj.edit152 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit152 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit152:setParent(obj.layout50);
     obj.edit152:setLeft(165);
     obj.edit152:setTop(0);
@@ -4178,7 +4178,7 @@ function newfrmFichaACN()
     obj.edit152:setField("historicoValor2_3_m");
     obj.edit152:setName("edit152");
 
-    obj.edit153 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit153 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit153:setParent(obj.layout50);
     obj.edit153:setLeft(200);
     obj.edit153:setTop(0);
@@ -4189,7 +4189,7 @@ function newfrmFichaACN()
     obj.edit153:setField("historicoBonus2_3_m");
     obj.edit153:setName("edit153");
 
-    obj.edit154 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit154 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit154:setParent(obj.layout50);
     obj.edit154:setLeft(235);
     obj.edit154:setTop(0);
@@ -4200,7 +4200,7 @@ function newfrmFichaACN()
     obj.edit154:setField("historicoXp2_3_m");
     obj.edit154:setName("edit154");
 
-    obj.layout51 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout51 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout51:setParent(obj.scrollBox3);
     obj.layout51:setLeft(5);
     obj.layout51:setTop(315);
@@ -4208,7 +4208,7 @@ function newfrmFichaACN()
     obj.layout51:setHeight(35);
     obj.layout51:setName("layout51");
 
-    obj.radioButton73 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton73 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton73:setParent(obj.layout51);
     obj.radioButton73:setLeft(0);
     obj.radioButton73:setTop(0);
@@ -4217,7 +4217,7 @@ function newfrmFichaACN()
     obj.radioButton73:setFieldValue("historicoTotal2_4_m");
     obj.radioButton73:setName("radioButton73");
 
-    obj.radioButton74 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton74 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton74:setParent(obj.layout51);
     obj.radioButton74:setLeft(0);
     obj.radioButton74:setTop(15);
@@ -4226,7 +4226,7 @@ function newfrmFichaACN()
     obj.radioButton74:setFieldValue("historicoTotal2_4_m");
     obj.radioButton74:setName("radioButton74");
 
-    obj.edit155 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit155 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit155:setParent(obj.layout51);
     obj.edit155:setLeft(20);
     obj.edit155:setTop(0);
@@ -4235,7 +4235,7 @@ function newfrmFichaACN()
     obj.edit155:setField("historicoNome2_4_m");
     obj.edit155:setName("edit155");
 
-    obj.rectangle46 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle46 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle46:setParent(obj.layout51);
     obj.rectangle46:setLeft(125);
     obj.rectangle46:setTop(0);
@@ -4246,7 +4246,7 @@ function newfrmFichaACN()
     obj.rectangle46:setStrokeSize(1);
     obj.rectangle46:setName("rectangle46");
 
-    obj.label87 = gui.fromHandle(_obj_newObject("label"));
+    obj.label87 = GUI.fromHandle(_obj_newObject("label"));
     obj.label87:setParent(obj.layout51);
     obj.label87:setLeft(135);
     obj.label87:setTop(3);
@@ -4255,7 +4255,7 @@ function newfrmFichaACN()
     obj.label87:setField("historicoTotal2_4_m");
     obj.label87:setName("label87");
 
-    obj.edit156 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit156 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit156:setParent(obj.layout51);
     obj.edit156:setLeft(165);
     obj.edit156:setTop(0);
@@ -4266,7 +4266,7 @@ function newfrmFichaACN()
     obj.edit156:setField("historicoValor2_4_m");
     obj.edit156:setName("edit156");
 
-    obj.edit157 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit157 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit157:setParent(obj.layout51);
     obj.edit157:setLeft(200);
     obj.edit157:setTop(0);
@@ -4277,7 +4277,7 @@ function newfrmFichaACN()
     obj.edit157:setField("historicoBonus2_4_m");
     obj.edit157:setName("edit157");
 
-    obj.edit158 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit158 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit158:setParent(obj.layout51);
     obj.edit158:setLeft(235);
     obj.edit158:setTop(0);
@@ -4288,7 +4288,7 @@ function newfrmFichaACN()
     obj.edit158:setField("historicoXp2_4_m");
     obj.edit158:setName("edit158");
 
-    obj.layout52 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout52 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout52:setParent(obj.scrollBox3);
     obj.layout52:setLeft(5);
     obj.layout52:setTop(350);
@@ -4296,7 +4296,7 @@ function newfrmFichaACN()
     obj.layout52:setHeight(35);
     obj.layout52:setName("layout52");
 
-    obj.radioButton75 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton75 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton75:setParent(obj.layout52);
     obj.radioButton75:setLeft(0);
     obj.radioButton75:setTop(0);
@@ -4305,7 +4305,7 @@ function newfrmFichaACN()
     obj.radioButton75:setFieldValue("historicoTotal2_5_m");
     obj.radioButton75:setName("radioButton75");
 
-    obj.radioButton76 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton76 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton76:setParent(obj.layout52);
     obj.radioButton76:setLeft(0);
     obj.radioButton76:setTop(15);
@@ -4314,7 +4314,7 @@ function newfrmFichaACN()
     obj.radioButton76:setFieldValue("historicoTotal2_5_m");
     obj.radioButton76:setName("radioButton76");
 
-    obj.edit159 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit159 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit159:setParent(obj.layout52);
     obj.edit159:setLeft(20);
     obj.edit159:setTop(0);
@@ -4323,7 +4323,7 @@ function newfrmFichaACN()
     obj.edit159:setField("historicoNome2_5_m");
     obj.edit159:setName("edit159");
 
-    obj.rectangle47 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle47 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle47:setParent(obj.layout52);
     obj.rectangle47:setLeft(125);
     obj.rectangle47:setTop(0);
@@ -4334,7 +4334,7 @@ function newfrmFichaACN()
     obj.rectangle47:setStrokeSize(1);
     obj.rectangle47:setName("rectangle47");
 
-    obj.label88 = gui.fromHandle(_obj_newObject("label"));
+    obj.label88 = GUI.fromHandle(_obj_newObject("label"));
     obj.label88:setParent(obj.layout52);
     obj.label88:setLeft(135);
     obj.label88:setTop(3);
@@ -4343,7 +4343,7 @@ function newfrmFichaACN()
     obj.label88:setField("historicoTotal2_5_m");
     obj.label88:setName("label88");
 
-    obj.edit160 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit160 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit160:setParent(obj.layout52);
     obj.edit160:setLeft(165);
     obj.edit160:setTop(0);
@@ -4354,7 +4354,7 @@ function newfrmFichaACN()
     obj.edit160:setField("historicoValor2_5_m");
     obj.edit160:setName("edit160");
 
-    obj.edit161 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit161 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit161:setParent(obj.layout52);
     obj.edit161:setLeft(200);
     obj.edit161:setTop(0);
@@ -4365,7 +4365,7 @@ function newfrmFichaACN()
     obj.edit161:setField("historicoBonus2_5_m");
     obj.edit161:setName("edit161");
 
-    obj.edit162 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit162 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit162:setParent(obj.layout52);
     obj.edit162:setLeft(235);
     obj.edit162:setTop(0);
@@ -4376,7 +4376,7 @@ function newfrmFichaACN()
     obj.edit162:setField("historicoXp2_5_m");
     obj.edit162:setName("edit162");
 
-    obj.layout53 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout53 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout53:setParent(obj.scrollBox3);
     obj.layout53:setLeft(5);
     obj.layout53:setTop(385);
@@ -4384,7 +4384,7 @@ function newfrmFichaACN()
     obj.layout53:setHeight(35);
     obj.layout53:setName("layout53");
 
-    obj.radioButton77 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton77 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton77:setParent(obj.layout53);
     obj.radioButton77:setLeft(0);
     obj.radioButton77:setTop(0);
@@ -4393,7 +4393,7 @@ function newfrmFichaACN()
     obj.radioButton77:setFieldValue("historicoTotal2_6_m");
     obj.radioButton77:setName("radioButton77");
 
-    obj.radioButton78 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton78 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton78:setParent(obj.layout53);
     obj.radioButton78:setLeft(0);
     obj.radioButton78:setTop(15);
@@ -4402,7 +4402,7 @@ function newfrmFichaACN()
     obj.radioButton78:setFieldValue("historicoTotal2_6_m");
     obj.radioButton78:setName("radioButton78");
 
-    obj.edit163 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit163 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit163:setParent(obj.layout53);
     obj.edit163:setLeft(20);
     obj.edit163:setTop(0);
@@ -4411,7 +4411,7 @@ function newfrmFichaACN()
     obj.edit163:setField("historicoNome2_6_m");
     obj.edit163:setName("edit163");
 
-    obj.rectangle48 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle48 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle48:setParent(obj.layout53);
     obj.rectangle48:setLeft(125);
     obj.rectangle48:setTop(0);
@@ -4422,7 +4422,7 @@ function newfrmFichaACN()
     obj.rectangle48:setStrokeSize(1);
     obj.rectangle48:setName("rectangle48");
 
-    obj.label89 = gui.fromHandle(_obj_newObject("label"));
+    obj.label89 = GUI.fromHandle(_obj_newObject("label"));
     obj.label89:setParent(obj.layout53);
     obj.label89:setLeft(135);
     obj.label89:setTop(3);
@@ -4431,7 +4431,7 @@ function newfrmFichaACN()
     obj.label89:setField("historicoTotal2_6_m");
     obj.label89:setName("label89");
 
-    obj.edit164 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit164 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit164:setParent(obj.layout53);
     obj.edit164:setLeft(165);
     obj.edit164:setTop(0);
@@ -4442,7 +4442,7 @@ function newfrmFichaACN()
     obj.edit164:setField("historicoValor2_6_m");
     obj.edit164:setName("edit164");
 
-    obj.edit165 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit165 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit165:setParent(obj.layout53);
     obj.edit165:setLeft(200);
     obj.edit165:setTop(0);
@@ -4453,7 +4453,7 @@ function newfrmFichaACN()
     obj.edit165:setField("historicoBonus2_6_m");
     obj.edit165:setName("edit165");
 
-    obj.edit166 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit166 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit166:setParent(obj.layout53);
     obj.edit166:setLeft(235);
     obj.edit166:setTop(0);
@@ -4464,7 +4464,7 @@ function newfrmFichaACN()
     obj.edit166:setField("historicoXp2_6_m");
     obj.edit166:setName("edit166");
 
-    obj.layout54 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout54 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout54:setParent(obj.scrollBox3);
     obj.layout54:setLeft(5);
     obj.layout54:setTop(420);
@@ -4472,7 +4472,7 @@ function newfrmFichaACN()
     obj.layout54:setHeight(35);
     obj.layout54:setName("layout54");
 
-    obj.radioButton79 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton79 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton79:setParent(obj.layout54);
     obj.radioButton79:setLeft(0);
     obj.radioButton79:setTop(0);
@@ -4481,7 +4481,7 @@ function newfrmFichaACN()
     obj.radioButton79:setFieldValue("historicoTotal3_1_m");
     obj.radioButton79:setName("radioButton79");
 
-    obj.radioButton80 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton80 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton80:setParent(obj.layout54);
     obj.radioButton80:setLeft(0);
     obj.radioButton80:setTop(15);
@@ -4490,7 +4490,7 @@ function newfrmFichaACN()
     obj.radioButton80:setFieldValue("historicoTotal3_1_m");
     obj.radioButton80:setName("radioButton80");
 
-    obj.edit167 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit167 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit167:setParent(obj.layout54);
     obj.edit167:setLeft(20);
     obj.edit167:setTop(0);
@@ -4499,7 +4499,7 @@ function newfrmFichaACN()
     obj.edit167:setField("historicoNome3_1_m");
     obj.edit167:setName("edit167");
 
-    obj.rectangle49 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle49 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle49:setParent(obj.layout54);
     obj.rectangle49:setLeft(125);
     obj.rectangle49:setTop(0);
@@ -4510,7 +4510,7 @@ function newfrmFichaACN()
     obj.rectangle49:setStrokeSize(1);
     obj.rectangle49:setName("rectangle49");
 
-    obj.label90 = gui.fromHandle(_obj_newObject("label"));
+    obj.label90 = GUI.fromHandle(_obj_newObject("label"));
     obj.label90:setParent(obj.layout54);
     obj.label90:setLeft(135);
     obj.label90:setTop(3);
@@ -4519,7 +4519,7 @@ function newfrmFichaACN()
     obj.label90:setField("historicoTotal3_1_m");
     obj.label90:setName("label90");
 
-    obj.edit168 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit168 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit168:setParent(obj.layout54);
     obj.edit168:setLeft(165);
     obj.edit168:setTop(0);
@@ -4530,7 +4530,7 @@ function newfrmFichaACN()
     obj.edit168:setField("historicoValor3_1_m");
     obj.edit168:setName("edit168");
 
-    obj.edit169 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit169 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit169:setParent(obj.layout54);
     obj.edit169:setLeft(200);
     obj.edit169:setTop(0);
@@ -4541,7 +4541,7 @@ function newfrmFichaACN()
     obj.edit169:setField("historicoBonus3_1_m");
     obj.edit169:setName("edit169");
 
-    obj.edit170 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit170 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit170:setParent(obj.layout54);
     obj.edit170:setLeft(235);
     obj.edit170:setTop(0);
@@ -4552,7 +4552,7 @@ function newfrmFichaACN()
     obj.edit170:setField("historicoXp3_1_m");
     obj.edit170:setName("edit170");
 
-    obj.layout55 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout55 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout55:setParent(obj.scrollBox3);
     obj.layout55:setLeft(5);
     obj.layout55:setTop(455);
@@ -4560,7 +4560,7 @@ function newfrmFichaACN()
     obj.layout55:setHeight(35);
     obj.layout55:setName("layout55");
 
-    obj.radioButton81 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton81 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton81:setParent(obj.layout55);
     obj.radioButton81:setLeft(0);
     obj.radioButton81:setTop(0);
@@ -4569,7 +4569,7 @@ function newfrmFichaACN()
     obj.radioButton81:setFieldValue("historicoTotal3_2_m");
     obj.radioButton81:setName("radioButton81");
 
-    obj.radioButton82 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton82 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton82:setParent(obj.layout55);
     obj.radioButton82:setLeft(0);
     obj.radioButton82:setTop(15);
@@ -4578,7 +4578,7 @@ function newfrmFichaACN()
     obj.radioButton82:setFieldValue("historicoTotal3_2_m");
     obj.radioButton82:setName("radioButton82");
 
-    obj.edit171 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit171 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit171:setParent(obj.layout55);
     obj.edit171:setLeft(20);
     obj.edit171:setTop(0);
@@ -4587,7 +4587,7 @@ function newfrmFichaACN()
     obj.edit171:setField("historicoNome3_2_m");
     obj.edit171:setName("edit171");
 
-    obj.rectangle50 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle50 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle50:setParent(obj.layout55);
     obj.rectangle50:setLeft(125);
     obj.rectangle50:setTop(0);
@@ -4598,7 +4598,7 @@ function newfrmFichaACN()
     obj.rectangle50:setStrokeSize(1);
     obj.rectangle50:setName("rectangle50");
 
-    obj.label91 = gui.fromHandle(_obj_newObject("label"));
+    obj.label91 = GUI.fromHandle(_obj_newObject("label"));
     obj.label91:setParent(obj.layout55);
     obj.label91:setLeft(135);
     obj.label91:setTop(3);
@@ -4607,7 +4607,7 @@ function newfrmFichaACN()
     obj.label91:setField("historicoTotal3_2_m");
     obj.label91:setName("label91");
 
-    obj.edit172 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit172 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit172:setParent(obj.layout55);
     obj.edit172:setLeft(165);
     obj.edit172:setTop(0);
@@ -4618,7 +4618,7 @@ function newfrmFichaACN()
     obj.edit172:setField("historicoValor3_2_m");
     obj.edit172:setName("edit172");
 
-    obj.edit173 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit173 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit173:setParent(obj.layout55);
     obj.edit173:setLeft(200);
     obj.edit173:setTop(0);
@@ -4629,7 +4629,7 @@ function newfrmFichaACN()
     obj.edit173:setField("historicoBonus3_2_m");
     obj.edit173:setName("edit173");
 
-    obj.edit174 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit174 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit174:setParent(obj.layout55);
     obj.edit174:setLeft(235);
     obj.edit174:setTop(0);
@@ -4640,7 +4640,7 @@ function newfrmFichaACN()
     obj.edit174:setField("historicoXp3_2_m");
     obj.edit174:setName("edit174");
 
-    obj.layout56 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout56 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout56:setParent(obj.scrollBox3);
     obj.layout56:setLeft(5);
     obj.layout56:setTop(490);
@@ -4648,7 +4648,7 @@ function newfrmFichaACN()
     obj.layout56:setHeight(35);
     obj.layout56:setName("layout56");
 
-    obj.radioButton83 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton83 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton83:setParent(obj.layout56);
     obj.radioButton83:setLeft(0);
     obj.radioButton83:setTop(0);
@@ -4657,7 +4657,7 @@ function newfrmFichaACN()
     obj.radioButton83:setFieldValue("historicoTotal3_3_m");
     obj.radioButton83:setName("radioButton83");
 
-    obj.radioButton84 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton84 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton84:setParent(obj.layout56);
     obj.radioButton84:setLeft(0);
     obj.radioButton84:setTop(15);
@@ -4666,7 +4666,7 @@ function newfrmFichaACN()
     obj.radioButton84:setFieldValue("historicoTotal3_3_m");
     obj.radioButton84:setName("radioButton84");
 
-    obj.edit175 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit175 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit175:setParent(obj.layout56);
     obj.edit175:setLeft(20);
     obj.edit175:setTop(0);
@@ -4675,7 +4675,7 @@ function newfrmFichaACN()
     obj.edit175:setField("historicoNome3_3_m");
     obj.edit175:setName("edit175");
 
-    obj.rectangle51 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle51 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle51:setParent(obj.layout56);
     obj.rectangle51:setLeft(125);
     obj.rectangle51:setTop(0);
@@ -4686,7 +4686,7 @@ function newfrmFichaACN()
     obj.rectangle51:setStrokeSize(1);
     obj.rectangle51:setName("rectangle51");
 
-    obj.label92 = gui.fromHandle(_obj_newObject("label"));
+    obj.label92 = GUI.fromHandle(_obj_newObject("label"));
     obj.label92:setParent(obj.layout56);
     obj.label92:setLeft(135);
     obj.label92:setTop(3);
@@ -4695,7 +4695,7 @@ function newfrmFichaACN()
     obj.label92:setField("historicoTotal3_3_m");
     obj.label92:setName("label92");
 
-    obj.edit176 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit176 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit176:setParent(obj.layout56);
     obj.edit176:setLeft(165);
     obj.edit176:setTop(0);
@@ -4706,7 +4706,7 @@ function newfrmFichaACN()
     obj.edit176:setField("historicoValor3_3_m");
     obj.edit176:setName("edit176");
 
-    obj.edit177 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit177 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit177:setParent(obj.layout56);
     obj.edit177:setLeft(200);
     obj.edit177:setTop(0);
@@ -4717,7 +4717,7 @@ function newfrmFichaACN()
     obj.edit177:setField("historicoBonus3_3_m");
     obj.edit177:setName("edit177");
 
-    obj.edit178 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit178 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit178:setParent(obj.layout56);
     obj.edit178:setLeft(235);
     obj.edit178:setTop(0);
@@ -4728,7 +4728,7 @@ function newfrmFichaACN()
     obj.edit178:setField("historicoXp3_3_m");
     obj.edit178:setName("edit178");
 
-    obj.layout57 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout57 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout57:setParent(obj.scrollBox3);
     obj.layout57:setLeft(5);
     obj.layout57:setTop(525);
@@ -4736,7 +4736,7 @@ function newfrmFichaACN()
     obj.layout57:setHeight(35);
     obj.layout57:setName("layout57");
 
-    obj.radioButton85 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton85 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton85:setParent(obj.layout57);
     obj.radioButton85:setLeft(0);
     obj.radioButton85:setTop(0);
@@ -4745,7 +4745,7 @@ function newfrmFichaACN()
     obj.radioButton85:setFieldValue("historicoTotal3_4_m");
     obj.radioButton85:setName("radioButton85");
 
-    obj.radioButton86 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton86 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton86:setParent(obj.layout57);
     obj.radioButton86:setLeft(0);
     obj.radioButton86:setTop(15);
@@ -4754,7 +4754,7 @@ function newfrmFichaACN()
     obj.radioButton86:setFieldValue("historicoTotal3_4_m");
     obj.radioButton86:setName("radioButton86");
 
-    obj.edit179 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit179 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit179:setParent(obj.layout57);
     obj.edit179:setLeft(20);
     obj.edit179:setTop(0);
@@ -4763,7 +4763,7 @@ function newfrmFichaACN()
     obj.edit179:setField("historicoNome3_4_m");
     obj.edit179:setName("edit179");
 
-    obj.rectangle52 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle52 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle52:setParent(obj.layout57);
     obj.rectangle52:setLeft(125);
     obj.rectangle52:setTop(0);
@@ -4774,7 +4774,7 @@ function newfrmFichaACN()
     obj.rectangle52:setStrokeSize(1);
     obj.rectangle52:setName("rectangle52");
 
-    obj.label93 = gui.fromHandle(_obj_newObject("label"));
+    obj.label93 = GUI.fromHandle(_obj_newObject("label"));
     obj.label93:setParent(obj.layout57);
     obj.label93:setLeft(135);
     obj.label93:setTop(3);
@@ -4783,7 +4783,7 @@ function newfrmFichaACN()
     obj.label93:setField("historicoTotal3_4_m");
     obj.label93:setName("label93");
 
-    obj.edit180 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit180 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit180:setParent(obj.layout57);
     obj.edit180:setLeft(165);
     obj.edit180:setTop(0);
@@ -4794,7 +4794,7 @@ function newfrmFichaACN()
     obj.edit180:setField("historicoValor3_4_m");
     obj.edit180:setName("edit180");
 
-    obj.edit181 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit181 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit181:setParent(obj.layout57);
     obj.edit181:setLeft(200);
     obj.edit181:setTop(0);
@@ -4805,7 +4805,7 @@ function newfrmFichaACN()
     obj.edit181:setField("historicoBonus3_4_m");
     obj.edit181:setName("edit181");
 
-    obj.edit182 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit182 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit182:setParent(obj.layout57);
     obj.edit182:setLeft(235);
     obj.edit182:setTop(0);
@@ -4816,7 +4816,7 @@ function newfrmFichaACN()
     obj.edit182:setField("historicoXp3_4_m");
     obj.edit182:setName("edit182");
 
-    obj.layout58 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout58 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout58:setParent(obj.scrollBox3);
     obj.layout58:setLeft(5);
     obj.layout58:setTop(560);
@@ -4824,7 +4824,7 @@ function newfrmFichaACN()
     obj.layout58:setHeight(35);
     obj.layout58:setName("layout58");
 
-    obj.radioButton87 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton87 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton87:setParent(obj.layout58);
     obj.radioButton87:setLeft(0);
     obj.radioButton87:setTop(0);
@@ -4833,7 +4833,7 @@ function newfrmFichaACN()
     obj.radioButton87:setFieldValue("historicoTotal3_5_m");
     obj.radioButton87:setName("radioButton87");
 
-    obj.radioButton88 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton88 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton88:setParent(obj.layout58);
     obj.radioButton88:setLeft(0);
     obj.radioButton88:setTop(15);
@@ -4842,7 +4842,7 @@ function newfrmFichaACN()
     obj.radioButton88:setFieldValue("historicoTotal3_5_m");
     obj.radioButton88:setName("radioButton88");
 
-    obj.edit183 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit183 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit183:setParent(obj.layout58);
     obj.edit183:setLeft(20);
     obj.edit183:setTop(0);
@@ -4851,7 +4851,7 @@ function newfrmFichaACN()
     obj.edit183:setField("historicoNome3_5_m");
     obj.edit183:setName("edit183");
 
-    obj.rectangle53 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle53 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle53:setParent(obj.layout58);
     obj.rectangle53:setLeft(125);
     obj.rectangle53:setTop(0);
@@ -4862,7 +4862,7 @@ function newfrmFichaACN()
     obj.rectangle53:setStrokeSize(1);
     obj.rectangle53:setName("rectangle53");
 
-    obj.label94 = gui.fromHandle(_obj_newObject("label"));
+    obj.label94 = GUI.fromHandle(_obj_newObject("label"));
     obj.label94:setParent(obj.layout58);
     obj.label94:setLeft(135);
     obj.label94:setTop(3);
@@ -4871,7 +4871,7 @@ function newfrmFichaACN()
     obj.label94:setField("historicoTotal3_5_m");
     obj.label94:setName("label94");
 
-    obj.edit184 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit184 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit184:setParent(obj.layout58);
     obj.edit184:setLeft(165);
     obj.edit184:setTop(0);
@@ -4882,7 +4882,7 @@ function newfrmFichaACN()
     obj.edit184:setField("historicoValor3_5_m");
     obj.edit184:setName("edit184");
 
-    obj.edit185 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit185 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit185:setParent(obj.layout58);
     obj.edit185:setLeft(200);
     obj.edit185:setTop(0);
@@ -4893,7 +4893,7 @@ function newfrmFichaACN()
     obj.edit185:setField("historicoBonus3_5_m");
     obj.edit185:setName("edit185");
 
-    obj.edit186 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit186 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit186:setParent(obj.layout58);
     obj.edit186:setLeft(235);
     obj.edit186:setTop(0);
@@ -4904,7 +4904,7 @@ function newfrmFichaACN()
     obj.edit186:setField("historicoXp3_5_m");
     obj.edit186:setName("edit186");
 
-    obj.layout59 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout59 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout59:setParent(obj.scrollBox3);
     obj.layout59:setLeft(5);
     obj.layout59:setTop(595);
@@ -4912,7 +4912,7 @@ function newfrmFichaACN()
     obj.layout59:setHeight(35);
     obj.layout59:setName("layout59");
 
-    obj.radioButton89 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton89 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton89:setParent(obj.layout59);
     obj.radioButton89:setLeft(0);
     obj.radioButton89:setTop(0);
@@ -4921,7 +4921,7 @@ function newfrmFichaACN()
     obj.radioButton89:setFieldValue("historicoTotal3_6_m");
     obj.radioButton89:setName("radioButton89");
 
-    obj.radioButton90 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton90 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton90:setParent(obj.layout59);
     obj.radioButton90:setLeft(0);
     obj.radioButton90:setTop(15);
@@ -4930,7 +4930,7 @@ function newfrmFichaACN()
     obj.radioButton90:setFieldValue("historicoTotal3_6_m");
     obj.radioButton90:setName("radioButton90");
 
-    obj.edit187 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit187 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit187:setParent(obj.layout59);
     obj.edit187:setLeft(20);
     obj.edit187:setTop(0);
@@ -4939,7 +4939,7 @@ function newfrmFichaACN()
     obj.edit187:setField("historicoNome3_6_m");
     obj.edit187:setName("edit187");
 
-    obj.rectangle54 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle54 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle54:setParent(obj.layout59);
     obj.rectangle54:setLeft(125);
     obj.rectangle54:setTop(0);
@@ -4950,7 +4950,7 @@ function newfrmFichaACN()
     obj.rectangle54:setStrokeSize(1);
     obj.rectangle54:setName("rectangle54");
 
-    obj.label95 = gui.fromHandle(_obj_newObject("label"));
+    obj.label95 = GUI.fromHandle(_obj_newObject("label"));
     obj.label95:setParent(obj.layout59);
     obj.label95:setLeft(135);
     obj.label95:setTop(3);
@@ -4959,7 +4959,7 @@ function newfrmFichaACN()
     obj.label95:setField("historicoTotal3_6_m");
     obj.label95:setName("label95");
 
-    obj.edit188 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit188 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit188:setParent(obj.layout59);
     obj.edit188:setLeft(165);
     obj.edit188:setTop(0);
@@ -4970,7 +4970,7 @@ function newfrmFichaACN()
     obj.edit188:setField("historicoValor3_6_m");
     obj.edit188:setName("edit188");
 
-    obj.edit189 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit189 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit189:setParent(obj.layout59);
     obj.edit189:setLeft(200);
     obj.edit189:setTop(0);
@@ -4981,7 +4981,7 @@ function newfrmFichaACN()
     obj.edit189:setField("historicoBonus3_6_m");
     obj.edit189:setName("edit189");
 
-    obj.edit190 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit190 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit190:setParent(obj.layout59);
     obj.edit190:setLeft(235);
     obj.edit190:setTop(0);
@@ -5053,7 +5053,7 @@ function newfrmFichaACN()
 				
 
 
-    obj.layout60 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout60 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout60:setParent(obj.scrollBox1);
     obj.layout60:setLeft(625);
     obj.layout60:setTop(75);
@@ -5061,7 +5061,7 @@ function newfrmFichaACN()
     obj.layout60:setHeight(450);
     obj.layout60:setName("layout60");
 
-    obj.rectangle55 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle55 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle55:setParent(obj.layout60);
     obj.rectangle55:setAlign("client");
     obj.rectangle55:setColor("black");
@@ -5070,7 +5070,7 @@ function newfrmFichaACN()
     obj.rectangle55:setCornerType("round");
     obj.rectangle55:setName("rectangle55");
 
-    obj.label96 = gui.fromHandle(_obj_newObject("label"));
+    obj.label96 = GUI.fromHandle(_obj_newObject("label"));
     obj.label96:setParent(obj.layout60);
     obj.label96:setLeft(5);
     obj.label96:setTop(0);
@@ -5080,7 +5080,7 @@ function newfrmFichaACN()
     obj.label96:setHorzTextAlign("center");
     obj.label96:setName("label96");
 
-    obj.horzLine3 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine3 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine3:setParent(obj.layout60);
     obj.horzLine3:setLeft(0);
     obj.horzLine3:setTop(25);
@@ -5088,7 +5088,7 @@ function newfrmFichaACN()
     obj.horzLine3:setStrokeColor("white");
     obj.horzLine3:setName("horzLine3");
 
-    obj.layout61 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout61 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout61:setParent(obj.layout60);
     obj.layout61:setLeft(0);
     obj.layout61:setTop(30);
@@ -5096,7 +5096,7 @@ function newfrmFichaACN()
     obj.layout61:setHeight(60);
     obj.layout61:setName("layout61");
 
-    obj.label97 = gui.fromHandle(_obj_newObject("label"));
+    obj.label97 = GUI.fromHandle(_obj_newObject("label"));
     obj.label97:setParent(obj.layout61);
     obj.label97:setLeft(10);
     obj.label97:setTop(0);
@@ -5105,7 +5105,7 @@ function newfrmFichaACN()
     obj.label97:setText("LEVE");
     obj.label97:setName("label97");
 
-    obj.flowLayout1 = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj.layout61);
     obj.flowLayout1:setLeft(100);
     obj.flowLayout1:setTop(0);
@@ -5113,82 +5113,82 @@ function newfrmFichaACN()
     obj.flowLayout1:setWidth(60);
     obj.flowLayout1:setName("flowLayout1");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.flowLayout1);
     obj.checkBox1:setAlign("left");
     obj.checkBox1:setWidth(20);
     obj.checkBox1:setField("check1_1_1");
     obj.checkBox1:setName("checkBox1");
 
-    obj.checkBox2 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox2 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox2:setParent(obj.flowLayout1);
     obj.checkBox2:setAlign("left");
     obj.checkBox2:setWidth(20);
     obj.checkBox2:setField("check2_1_1");
     obj.checkBox2:setName("checkBox2");
 
-    obj.checkBox3 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox3 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox3:setParent(obj.flowLayout1);
     obj.checkBox3:setAlign("left");
     obj.checkBox3:setWidth(20);
     obj.checkBox3:setField("check3_1_1");
     obj.checkBox3:setName("checkBox3");
 
-    obj.flowLineBreak1 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak1 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak1:setParent(obj.flowLayout1);
     obj.flowLineBreak1:setName("flowLineBreak1");
 
-    obj.checkBox4 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox4 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox4:setParent(obj.flowLayout1);
     obj.checkBox4:setAlign("left");
     obj.checkBox4:setWidth(20);
     obj.checkBox4:setField("check1_2_1");
     obj.checkBox4:setName("checkBox4");
 
-    obj.checkBox5 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox5 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox5:setParent(obj.flowLayout1);
     obj.checkBox5:setAlign("left");
     obj.checkBox5:setWidth(20);
     obj.checkBox5:setField("check2_2_1");
     obj.checkBox5:setName("checkBox5");
 
-    obj.checkBox6 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox6 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox6:setParent(obj.flowLayout1);
     obj.checkBox6:setAlign("left");
     obj.checkBox6:setWidth(20);
     obj.checkBox6:setField("check3_2_1");
     obj.checkBox6:setName("checkBox6");
 
-    obj.flowLineBreak2 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak2 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak2:setParent(obj.flowLayout1);
     obj.flowLineBreak2:setName("flowLineBreak2");
 
-    obj.checkBox7 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox7 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox7:setParent(obj.flowLayout1);
     obj.checkBox7:setAlign("left");
     obj.checkBox7:setWidth(20);
     obj.checkBox7:setField("check1_3_1");
     obj.checkBox7:setName("checkBox7");
 
-    obj.checkBox8 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox8 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox8:setParent(obj.flowLayout1);
     obj.checkBox8:setAlign("left");
     obj.checkBox8:setWidth(20);
     obj.checkBox8:setField("check2_3_1");
     obj.checkBox8:setName("checkBox8");
 
-    obj.checkBox9 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox9 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox9:setParent(obj.flowLayout1);
     obj.checkBox9:setAlign("left");
     obj.checkBox9:setWidth(20);
     obj.checkBox9:setField("check3_3_1");
     obj.checkBox9:setName("checkBox9");
 
-    obj.flowLineBreak3 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak3 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak3:setParent(obj.flowLayout1);
     obj.flowLineBreak3:setName("flowLineBreak3");
 
-    obj.edit191 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit191 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit191:setParent(obj.layout61);
     obj.edit191:setLeft(170);
     obj.edit191:setTop(0);
@@ -5218,7 +5218,7 @@ function newfrmFichaACN()
 			
 
 
-    obj.horzLine4 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine4 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine4:setParent(obj.layout60);
     obj.horzLine4:setLeft(0);
     obj.horzLine4:setTop(95);
@@ -5226,7 +5226,7 @@ function newfrmFichaACN()
     obj.horzLine4:setStrokeColor("white");
     obj.horzLine4:setName("horzLine4");
 
-    obj.layout62 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout62 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout62:setParent(obj.layout60);
     obj.layout62:setLeft(0);
     obj.layout62:setTop(100);
@@ -5234,7 +5234,7 @@ function newfrmFichaACN()
     obj.layout62:setHeight(40);
     obj.layout62:setName("layout62");
 
-    obj.label98 = gui.fromHandle(_obj_newObject("label"));
+    obj.label98 = GUI.fromHandle(_obj_newObject("label"));
     obj.label98:setParent(obj.layout62);
     obj.label98:setLeft(10);
     obj.label98:setTop(0);
@@ -5243,7 +5243,7 @@ function newfrmFichaACN()
     obj.label98:setText("MEDIO");
     obj.label98:setName("label98");
 
-    obj.flowLayout2 = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout2 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout2:setParent(obj.layout62);
     obj.flowLayout2:setLeft(100);
     obj.flowLayout2:setTop(0);
@@ -5251,57 +5251,57 @@ function newfrmFichaACN()
     obj.flowLayout2:setWidth(60);
     obj.flowLayout2:setName("flowLayout2");
 
-    obj.checkBox10 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox10 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox10:setParent(obj.flowLayout2);
     obj.checkBox10:setAlign("left");
     obj.checkBox10:setWidth(20);
     obj.checkBox10:setField("check1_1_2");
     obj.checkBox10:setName("checkBox10");
 
-    obj.checkBox11 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox11 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox11:setParent(obj.flowLayout2);
     obj.checkBox11:setAlign("left");
     obj.checkBox11:setWidth(20);
     obj.checkBox11:setField("check2_1_2");
     obj.checkBox11:setName("checkBox11");
 
-    obj.checkBox12 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox12 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox12:setParent(obj.flowLayout2);
     obj.checkBox12:setAlign("left");
     obj.checkBox12:setWidth(20);
     obj.checkBox12:setField("check3_1_2");
     obj.checkBox12:setName("checkBox12");
 
-    obj.flowLineBreak4 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak4 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak4:setParent(obj.flowLayout2);
     obj.flowLineBreak4:setName("flowLineBreak4");
 
-    obj.checkBox13 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox13 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox13:setParent(obj.flowLayout2);
     obj.checkBox13:setAlign("left");
     obj.checkBox13:setWidth(20);
     obj.checkBox13:setField("check1_2_2");
     obj.checkBox13:setName("checkBox13");
 
-    obj.checkBox14 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox14 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox14:setParent(obj.flowLayout2);
     obj.checkBox14:setAlign("left");
     obj.checkBox14:setWidth(20);
     obj.checkBox14:setField("check2_2_2");
     obj.checkBox14:setName("checkBox14");
 
-    obj.checkBox15 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox15 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox15:setParent(obj.flowLayout2);
     obj.checkBox15:setAlign("left");
     obj.checkBox15:setWidth(20);
     obj.checkBox15:setField("check3_2_2");
     obj.checkBox15:setName("checkBox15");
 
-    obj.flowLineBreak5 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak5 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak5:setParent(obj.flowLayout2);
     obj.flowLineBreak5:setName("flowLineBreak5");
 
-    obj.edit192 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit192 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit192:setParent(obj.layout62);
     obj.edit192:setLeft(170);
     obj.edit192:setTop(0);
@@ -5331,7 +5331,7 @@ function newfrmFichaACN()
 			
 
 
-    obj.horzLine5 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine5 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine5:setParent(obj.layout60);
     obj.horzLine5:setLeft(0);
     obj.horzLine5:setTop(145);
@@ -5339,7 +5339,7 @@ function newfrmFichaACN()
     obj.horzLine5:setStrokeColor("white");
     obj.horzLine5:setName("horzLine5");
 
-    obj.layout63 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout63 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout63:setParent(obj.layout60);
     obj.layout63:setLeft(0);
     obj.layout63:setTop(150);
@@ -5347,7 +5347,7 @@ function newfrmFichaACN()
     obj.layout63:setHeight(40);
     obj.layout63:setName("layout63");
 
-    obj.label99 = gui.fromHandle(_obj_newObject("label"));
+    obj.label99 = GUI.fromHandle(_obj_newObject("label"));
     obj.label99:setParent(obj.layout63);
     obj.label99:setLeft(10);
     obj.label99:setTop(0);
@@ -5356,7 +5356,7 @@ function newfrmFichaACN()
     obj.label99:setText("SERIO");
     obj.label99:setName("label99");
 
-    obj.flowLayout3 = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout3 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout3:setParent(obj.layout63);
     obj.flowLayout3:setLeft(100);
     obj.flowLayout3:setTop(0);
@@ -5364,57 +5364,57 @@ function newfrmFichaACN()
     obj.flowLayout3:setWidth(60);
     obj.flowLayout3:setName("flowLayout3");
 
-    obj.checkBox16 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox16 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox16:setParent(obj.flowLayout3);
     obj.checkBox16:setAlign("left");
     obj.checkBox16:setWidth(20);
     obj.checkBox16:setField("check1_1_3");
     obj.checkBox16:setName("checkBox16");
 
-    obj.checkBox17 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox17 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox17:setParent(obj.flowLayout3);
     obj.checkBox17:setAlign("left");
     obj.checkBox17:setWidth(20);
     obj.checkBox17:setField("check2_1_3");
     obj.checkBox17:setName("checkBox17");
 
-    obj.checkBox18 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox18 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox18:setParent(obj.flowLayout3);
     obj.checkBox18:setAlign("left");
     obj.checkBox18:setWidth(20);
     obj.checkBox18:setField("check3_1_3");
     obj.checkBox18:setName("checkBox18");
 
-    obj.flowLineBreak6 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak6 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak6:setParent(obj.flowLayout3);
     obj.flowLineBreak6:setName("flowLineBreak6");
 
-    obj.checkBox19 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox19 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox19:setParent(obj.flowLayout3);
     obj.checkBox19:setAlign("left");
     obj.checkBox19:setWidth(20);
     obj.checkBox19:setField("check1_2_3");
     obj.checkBox19:setName("checkBox19");
 
-    obj.checkBox20 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox20 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox20:setParent(obj.flowLayout3);
     obj.checkBox20:setAlign("left");
     obj.checkBox20:setWidth(20);
     obj.checkBox20:setField("check2_2_3");
     obj.checkBox20:setName("checkBox20");
 
-    obj.checkBox21 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox21 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox21:setParent(obj.flowLayout3);
     obj.checkBox21:setAlign("left");
     obj.checkBox21:setWidth(20);
     obj.checkBox21:setField("check3_2_3");
     obj.checkBox21:setName("checkBox21");
 
-    obj.flowLineBreak7 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak7 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak7:setParent(obj.flowLayout3);
     obj.flowLineBreak7:setName("flowLineBreak7");
 
-    obj.edit193 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit193 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit193:setParent(obj.layout63);
     obj.edit193:setLeft(170);
     obj.edit193:setTop(0);
@@ -5444,7 +5444,7 @@ function newfrmFichaACN()
 			
 
 
-    obj.horzLine6 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine6 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine6:setParent(obj.layout60);
     obj.horzLine6:setLeft(0);
     obj.horzLine6:setTop(195);
@@ -5452,7 +5452,7 @@ function newfrmFichaACN()
     obj.horzLine6:setStrokeColor("white");
     obj.horzLine6:setName("horzLine6");
 
-    obj.layout64 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout64 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout64:setParent(obj.layout60);
     obj.layout64:setLeft(0);
     obj.layout64:setTop(200);
@@ -5460,7 +5460,7 @@ function newfrmFichaACN()
     obj.layout64:setHeight(40);
     obj.layout64:setName("layout64");
 
-    obj.label100 = gui.fromHandle(_obj_newObject("label"));
+    obj.label100 = GUI.fromHandle(_obj_newObject("label"));
     obj.label100:setParent(obj.layout64);
     obj.label100:setLeft(10);
     obj.label100:setTop(0);
@@ -5469,7 +5469,7 @@ function newfrmFichaACN()
     obj.label100:setText("GRAVE");
     obj.label100:setName("label100");
 
-    obj.flowLayout4 = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout4 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout4:setParent(obj.layout64);
     obj.flowLayout4:setLeft(100);
     obj.flowLayout4:setTop(0);
@@ -5477,57 +5477,57 @@ function newfrmFichaACN()
     obj.flowLayout4:setWidth(60);
     obj.flowLayout4:setName("flowLayout4");
 
-    obj.checkBox22 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox22 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox22:setParent(obj.flowLayout4);
     obj.checkBox22:setAlign("left");
     obj.checkBox22:setWidth(20);
     obj.checkBox22:setField("check1_1_4");
     obj.checkBox22:setName("checkBox22");
 
-    obj.checkBox23 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox23 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox23:setParent(obj.flowLayout4);
     obj.checkBox23:setAlign("left");
     obj.checkBox23:setWidth(20);
     obj.checkBox23:setField("check2_1_4");
     obj.checkBox23:setName("checkBox23");
 
-    obj.checkBox24 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox24 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox24:setParent(obj.flowLayout4);
     obj.checkBox24:setAlign("left");
     obj.checkBox24:setWidth(20);
     obj.checkBox24:setField("check3_1_4");
     obj.checkBox24:setName("checkBox24");
 
-    obj.flowLineBreak8 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak8 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak8:setParent(obj.flowLayout4);
     obj.flowLineBreak8:setName("flowLineBreak8");
 
-    obj.checkBox25 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox25 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox25:setParent(obj.flowLayout4);
     obj.checkBox25:setAlign("left");
     obj.checkBox25:setWidth(20);
     obj.checkBox25:setField("check1_2_4");
     obj.checkBox25:setName("checkBox25");
 
-    obj.checkBox26 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox26 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox26:setParent(obj.flowLayout4);
     obj.checkBox26:setAlign("left");
     obj.checkBox26:setWidth(20);
     obj.checkBox26:setField("check2_2_4");
     obj.checkBox26:setName("checkBox26");
 
-    obj.checkBox27 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox27 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox27:setParent(obj.flowLayout4);
     obj.checkBox27:setAlign("left");
     obj.checkBox27:setWidth(20);
     obj.checkBox27:setField("check3_2_4");
     obj.checkBox27:setName("checkBox27");
 
-    obj.flowLineBreak9 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak9 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak9:setParent(obj.flowLayout4);
     obj.flowLineBreak9:setName("flowLineBreak9");
 
-    obj.edit194 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit194 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit194:setParent(obj.layout64);
     obj.edit194:setLeft(170);
     obj.edit194:setTop(0);
@@ -5557,7 +5557,7 @@ function newfrmFichaACN()
 			
 
 
-    obj.horzLine7 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine7 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine7:setParent(obj.layout60);
     obj.horzLine7:setLeft(0);
     obj.horzLine7:setTop(245);
@@ -5565,7 +5565,7 @@ function newfrmFichaACN()
     obj.horzLine7:setStrokeColor("white");
     obj.horzLine7:setName("horzLine7");
 
-    obj.layout65 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout65 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout65:setParent(obj.layout60);
     obj.layout65:setLeft(0);
     obj.layout65:setTop(250);
@@ -5573,7 +5573,7 @@ function newfrmFichaACN()
     obj.layout65:setHeight(25);
     obj.layout65:setName("layout65");
 
-    obj.label101 = gui.fromHandle(_obj_newObject("label"));
+    obj.label101 = GUI.fromHandle(_obj_newObject("label"));
     obj.label101:setParent(obj.layout65);
     obj.label101:setLeft(10);
     obj.label101:setTop(0);
@@ -5582,7 +5582,7 @@ function newfrmFichaACN()
     obj.label101:setText("INCAPACITADO");
     obj.label101:setName("label101");
 
-    obj.flowLayout5 = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout5 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout5:setParent(obj.layout65);
     obj.flowLayout5:setLeft(100);
     obj.flowLayout5:setTop(0);
@@ -5590,32 +5590,32 @@ function newfrmFichaACN()
     obj.flowLayout5:setWidth(60);
     obj.flowLayout5:setName("flowLayout5");
 
-    obj.checkBox28 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox28 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox28:setParent(obj.flowLayout5);
     obj.checkBox28:setAlign("left");
     obj.checkBox28:setWidth(20);
     obj.checkBox28:setField("check1_1_5");
     obj.checkBox28:setName("checkBox28");
 
-    obj.checkBox29 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox29 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox29:setParent(obj.flowLayout5);
     obj.checkBox29:setAlign("left");
     obj.checkBox29:setWidth(20);
     obj.checkBox29:setField("check2_1_5");
     obj.checkBox29:setName("checkBox29");
 
-    obj.checkBox30 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox30 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox30:setParent(obj.flowLayout5);
     obj.checkBox30:setAlign("left");
     obj.checkBox30:setWidth(20);
     obj.checkBox30:setField("check3_1_5");
     obj.checkBox30:setName("checkBox30");
 
-    obj.flowLineBreak10 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak10 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak10:setParent(obj.flowLayout5);
     obj.flowLineBreak10:setName("flowLineBreak10");
 
-    obj.edit195 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit195 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit195:setParent(obj.layout65);
     obj.edit195:setLeft(170);
     obj.edit195:setTop(0);
@@ -5645,7 +5645,7 @@ function newfrmFichaACN()
 			
 
 
-    obj.horzLine8 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine8 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine8:setParent(obj.layout60);
     obj.horzLine8:setLeft(0);
     obj.horzLine8:setTop(280);
@@ -5653,7 +5653,7 @@ function newfrmFichaACN()
     obj.horzLine8:setStrokeColor("white");
     obj.horzLine8:setName("horzLine8");
 
-    obj.layout66 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout66 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout66:setParent(obj.layout60);
     obj.layout66:setLeft(0);
     obj.layout66:setTop(285);
@@ -5661,7 +5661,7 @@ function newfrmFichaACN()
     obj.layout66:setHeight(100);
     obj.layout66:setName("layout66");
 
-    obj.label102 = gui.fromHandle(_obj_newObject("label"));
+    obj.label102 = GUI.fromHandle(_obj_newObject("label"));
     obj.label102:setParent(obj.layout66);
     obj.label102:setLeft(10);
     obj.label102:setTop(0);
@@ -5670,7 +5670,7 @@ function newfrmFichaACN()
     obj.label102:setText("INCOSCIENTE");
     obj.label102:setName("label102");
 
-    obj.flowLayout6 = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout6 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout6:setParent(obj.layout66);
     obj.flowLayout6:setLeft(100);
     obj.flowLayout6:setTop(0);
@@ -5678,132 +5678,132 @@ function newfrmFichaACN()
     obj.flowLayout6:setWidth(60);
     obj.flowLayout6:setName("flowLayout6");
 
-    obj.checkBox31 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox31 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox31:setParent(obj.flowLayout6);
     obj.checkBox31:setAlign("left");
     obj.checkBox31:setWidth(20);
     obj.checkBox31:setField("check1_1_6");
     obj.checkBox31:setName("checkBox31");
 
-    obj.checkBox32 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox32 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox32:setParent(obj.flowLayout6);
     obj.checkBox32:setAlign("left");
     obj.checkBox32:setWidth(20);
     obj.checkBox32:setField("check2_1_6");
     obj.checkBox32:setName("checkBox32");
 
-    obj.checkBox33 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox33 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox33:setParent(obj.flowLayout6);
     obj.checkBox33:setAlign("left");
     obj.checkBox33:setWidth(20);
     obj.checkBox33:setField("check3_1_6");
     obj.checkBox33:setName("checkBox33");
 
-    obj.flowLineBreak11 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak11 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak11:setParent(obj.flowLayout6);
     obj.flowLineBreak11:setName("flowLineBreak11");
 
-    obj.checkBox34 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox34 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox34:setParent(obj.flowLayout6);
     obj.checkBox34:setAlign("left");
     obj.checkBox34:setWidth(20);
     obj.checkBox34:setField("check1_2_6");
     obj.checkBox34:setName("checkBox34");
 
-    obj.checkBox35 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox35 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox35:setParent(obj.flowLayout6);
     obj.checkBox35:setAlign("left");
     obj.checkBox35:setWidth(20);
     obj.checkBox35:setField("check2_2_6");
     obj.checkBox35:setName("checkBox35");
 
-    obj.checkBox36 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox36 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox36:setParent(obj.flowLayout6);
     obj.checkBox36:setAlign("left");
     obj.checkBox36:setWidth(20);
     obj.checkBox36:setField("check3_2_6");
     obj.checkBox36:setName("checkBox36");
 
-    obj.flowLineBreak12 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak12 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak12:setParent(obj.flowLayout6);
     obj.flowLineBreak12:setName("flowLineBreak12");
 
-    obj.checkBox37 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox37 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox37:setParent(obj.flowLayout6);
     obj.checkBox37:setAlign("left");
     obj.checkBox37:setWidth(20);
     obj.checkBox37:setField("check1_3_6");
     obj.checkBox37:setName("checkBox37");
 
-    obj.checkBox38 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox38 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox38:setParent(obj.flowLayout6);
     obj.checkBox38:setAlign("left");
     obj.checkBox38:setWidth(20);
     obj.checkBox38:setField("check2_3_6");
     obj.checkBox38:setName("checkBox38");
 
-    obj.checkBox39 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox39 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox39:setParent(obj.flowLayout6);
     obj.checkBox39:setAlign("left");
     obj.checkBox39:setWidth(20);
     obj.checkBox39:setField("check3_3_6");
     obj.checkBox39:setName("checkBox39");
 
-    obj.flowLineBreak13 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak13 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak13:setParent(obj.flowLayout6);
     obj.flowLineBreak13:setName("flowLineBreak13");
 
-    obj.checkBox40 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox40 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox40:setParent(obj.flowLayout6);
     obj.checkBox40:setAlign("left");
     obj.checkBox40:setWidth(20);
     obj.checkBox40:setField("check1_4_6");
     obj.checkBox40:setName("checkBox40");
 
-    obj.checkBox41 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox41 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox41:setParent(obj.flowLayout6);
     obj.checkBox41:setAlign("left");
     obj.checkBox41:setWidth(20);
     obj.checkBox41:setField("check2_4_6");
     obj.checkBox41:setName("checkBox41");
 
-    obj.checkBox42 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox42 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox42:setParent(obj.flowLayout6);
     obj.checkBox42:setAlign("left");
     obj.checkBox42:setWidth(20);
     obj.checkBox42:setField("check3_4_6");
     obj.checkBox42:setName("checkBox42");
 
-    obj.flowLineBreak14 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak14 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak14:setParent(obj.flowLayout6);
     obj.flowLineBreak14:setName("flowLineBreak14");
 
-    obj.checkBox43 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox43 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox43:setParent(obj.flowLayout6);
     obj.checkBox43:setAlign("left");
     obj.checkBox43:setWidth(20);
     obj.checkBox43:setField("check1_5_6");
     obj.checkBox43:setName("checkBox43");
 
-    obj.checkBox44 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox44 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox44:setParent(obj.flowLayout6);
     obj.checkBox44:setAlign("left");
     obj.checkBox44:setWidth(20);
     obj.checkBox44:setField("check2_5_6");
     obj.checkBox44:setName("checkBox44");
 
-    obj.checkBox45 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox45 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox45:setParent(obj.flowLayout6);
     obj.checkBox45:setAlign("left");
     obj.checkBox45:setWidth(20);
     obj.checkBox45:setField("check3_5_6");
     obj.checkBox45:setName("checkBox45");
 
-    obj.flowLineBreak15 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak15 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak15:setParent(obj.flowLayout6);
     obj.flowLineBreak15:setName("flowLineBreak15");
 
-    obj.edit196 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit196 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit196:setParent(obj.layout66);
     obj.edit196:setLeft(170);
     obj.edit196:setTop(0);
@@ -5833,7 +5833,7 @@ function newfrmFichaACN()
 			
 
 
-    obj.horzLine9 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine9 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine9:setParent(obj.layout60);
     obj.horzLine9:setLeft(0);
     obj.horzLine9:setTop(385);
@@ -5841,7 +5841,7 @@ function newfrmFichaACN()
     obj.horzLine9:setStrokeColor("white");
     obj.horzLine9:setName("horzLine9");
 
-    obj.label103 = gui.fromHandle(_obj_newObject("label"));
+    obj.label103 = GUI.fromHandle(_obj_newObject("label"));
     obj.label103:setParent(obj.layout60);
     obj.label103:setLeft(5);
     obj.label103:setTop(415);
@@ -5850,7 +5850,7 @@ function newfrmFichaACN()
     obj.label103:setText("Absorção");
     obj.label103:setName("label103");
 
-    obj.label104 = gui.fromHandle(_obj_newObject("label"));
+    obj.label104 = GUI.fromHandle(_obj_newObject("label"));
     obj.label104:setParent(obj.layout60);
     obj.label104:setLeft(65);
     obj.label104:setTop(390);
@@ -5860,7 +5860,7 @@ function newfrmFichaACN()
     obj.label104:setHorzTextAlign("center");
     obj.label104:setName("label104");
 
-    obj.rectangle56 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle56 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle56:setParent(obj.layout60);
     obj.rectangle56:setLeft(65);
     obj.rectangle56:setTop(415);
@@ -5871,7 +5871,7 @@ function newfrmFichaACN()
     obj.rectangle56:setStrokeSize(1);
     obj.rectangle56:setName("rectangle56");
 
-    obj.label105 = gui.fromHandle(_obj_newObject("label"));
+    obj.label105 = GUI.fromHandle(_obj_newObject("label"));
     obj.label105:setParent(obj.layout60);
     obj.label105:setLeft(65);
     obj.label105:setTop(415);
@@ -5881,7 +5881,7 @@ function newfrmFichaACN()
     obj.label105:setHorzTextAlign("center");
     obj.label105:setName("label105");
 
-    obj.label106 = gui.fromHandle(_obj_newObject("label"));
+    obj.label106 = GUI.fromHandle(_obj_newObject("label"));
     obj.label106:setParent(obj.layout60);
     obj.label106:setLeft(100);
     obj.label106:setTop(390);
@@ -5891,7 +5891,7 @@ function newfrmFichaACN()
     obj.label106:setHorzTextAlign("center");
     obj.label106:setName("label106");
 
-    obj.rectangle57 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle57 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle57:setParent(obj.layout60);
     obj.rectangle57:setLeft(100);
     obj.rectangle57:setTop(415);
@@ -5902,7 +5902,7 @@ function newfrmFichaACN()
     obj.rectangle57:setStrokeSize(1);
     obj.rectangle57:setName("rectangle57");
 
-    obj.label107 = gui.fromHandle(_obj_newObject("label"));
+    obj.label107 = GUI.fromHandle(_obj_newObject("label"));
     obj.label107:setParent(obj.layout60);
     obj.label107:setLeft(100);
     obj.label107:setTop(415);
@@ -5912,12 +5912,12 @@ function newfrmFichaACN()
     obj.label107:setHorzTextAlign("center");
     obj.label107:setName("label107");
 
-    obj.dataLink11 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink11 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink11:setParent(obj.layout60);
     obj.dataLink11:setField("totalresiliencia");
     obj.dataLink11:setName("dataLink11");
 
-    obj.label108 = gui.fromHandle(_obj_newObject("label"));
+    obj.label108 = GUI.fromHandle(_obj_newObject("label"));
     obj.label108:setParent(obj.layout60);
     obj.label108:setLeft(135);
     obj.label108:setTop(390);
@@ -5927,7 +5927,7 @@ function newfrmFichaACN()
     obj.label108:setHorzTextAlign("center");
     obj.label108:setName("label108");
 
-    obj.rectangle58 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle58 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle58:setParent(obj.layout60);
     obj.rectangle58:setLeft(135);
     obj.rectangle58:setTop(415);
@@ -5938,7 +5938,7 @@ function newfrmFichaACN()
     obj.rectangle58:setStrokeSize(1);
     obj.rectangle58:setName("rectangle58");
 
-    obj.label109 = gui.fromHandle(_obj_newObject("label"));
+    obj.label109 = GUI.fromHandle(_obj_newObject("label"));
     obj.label109:setParent(obj.layout60);
     obj.label109:setLeft(135);
     obj.label109:setTop(415);
@@ -5948,7 +5948,7 @@ function newfrmFichaACN()
     obj.label109:setHorzTextAlign("center");
     obj.label109:setName("label109");
 
-    obj.label110 = gui.fromHandle(_obj_newObject("label"));
+    obj.label110 = GUI.fromHandle(_obj_newObject("label"));
     obj.label110:setParent(obj.layout60);
     obj.label110:setLeft(170);
     obj.label110:setTop(390);
@@ -5958,7 +5958,7 @@ function newfrmFichaACN()
     obj.label110:setHorzTextAlign("center");
     obj.label110:setName("label110");
 
-    obj.edit197 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit197 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit197:setParent(obj.layout60);
     obj.edit197:setLeft(170);
     obj.edit197:setTop(415);
@@ -5968,12 +5968,12 @@ function newfrmFichaACN()
     obj.edit197:setField("absOutros");
     obj.edit197:setName("edit197");
 
-    obj.dataLink12 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink12 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink12:setParent(obj.layout60);
     obj.dataLink12:setFields({'absRes', 'indiceArmadura', 'absOutros'});
     obj.dataLink12:setName("dataLink12");
 
-    obj.layout67 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout67 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout67:setParent(obj.scrollBox1);
     obj.layout67:setLeft(0);
     obj.layout67:setTop(515);
@@ -5981,7 +5981,7 @@ function newfrmFichaACN()
     obj.layout67:setHeight(70);
     obj.layout67:setName("layout67");
 
-    obj.rectangle59 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle59 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle59:setParent(obj.layout67);
     obj.rectangle59:setAlign("client");
     obj.rectangle59:setColor("black");
@@ -5990,7 +5990,7 @@ function newfrmFichaACN()
     obj.rectangle59:setCornerType("round");
     obj.rectangle59:setName("rectangle59");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout67);
     obj.button2:setLeft(10);
     obj.button2:setTop(10);
@@ -5999,7 +5999,7 @@ function newfrmFichaACN()
     obj.button2:setText("Iniciativa");
     obj.button2:setName("button2");
 
-    obj.rectangle60 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle60 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle60:setParent(obj.layout67);
     obj.rectangle60:setLeft(90);
     obj.rectangle60:setTop(10);
@@ -6010,7 +6010,7 @@ function newfrmFichaACN()
     obj.rectangle60:setStrokeSize(1);
     obj.rectangle60:setName("rectangle60");
 
-    obj.label111 = gui.fromHandle(_obj_newObject("label"));
+    obj.label111 = GUI.fromHandle(_obj_newObject("label"));
     obj.label111:setParent(obj.layout67);
     obj.label111:setLeft(100);
     obj.label111:setTop(10);
@@ -6019,7 +6019,7 @@ function newfrmFichaACN()
     obj.label111:setField("iniciativa");
     obj.label111:setName("label111");
 
-    obj.edit198 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit198 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit198:setParent(obj.layout67);
     obj.edit198:setLeft(135);
     obj.edit198:setTop(10);
@@ -6029,7 +6029,7 @@ function newfrmFichaACN()
     obj.edit198:setField("iniciativaBonus");
     obj.edit198:setName("edit198");
 
-    obj.label112 = gui.fromHandle(_obj_newObject("label"));
+    obj.label112 = GUI.fromHandle(_obj_newObject("label"));
     obj.label112:setParent(obj.layout67);
     obj.label112:setLeft(190);
     obj.label112:setTop(10);
@@ -6038,7 +6038,7 @@ function newfrmFichaACN()
     obj.label112:setField("ms");
     obj.label112:setName("label112");
 
-    obj.label113 = gui.fromHandle(_obj_newObject("label"));
+    obj.label113 = GUI.fromHandle(_obj_newObject("label"));
     obj.label113:setParent(obj.layout67);
     obj.label113:setLeft(10);
     obj.label113:setTop(40);
@@ -6047,7 +6047,7 @@ function newfrmFichaACN()
     obj.label113:setText("Velocidade");
     obj.label113:setName("label113");
 
-    obj.rectangle61 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle61 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle61:setParent(obj.layout67);
     obj.rectangle61:setLeft(90);
     obj.rectangle61:setTop(40);
@@ -6058,7 +6058,7 @@ function newfrmFichaACN()
     obj.rectangle61:setStrokeSize(1);
     obj.rectangle61:setName("rectangle61");
 
-    obj.label114 = gui.fromHandle(_obj_newObject("label"));
+    obj.label114 = GUI.fromHandle(_obj_newObject("label"));
     obj.label114:setParent(obj.layout67);
     obj.label114:setLeft(100);
     obj.label114:setTop(40);
@@ -6067,7 +6067,7 @@ function newfrmFichaACN()
     obj.label114:setField("velocidade");
     obj.label114:setName("label114");
 
-    obj.edit199 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit199 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit199:setParent(obj.layout67);
     obj.edit199:setLeft(135);
     obj.edit199:setTop(40);
@@ -6077,7 +6077,7 @@ function newfrmFichaACN()
     obj.edit199:setField("velocidadeBonus");
     obj.edit199:setName("edit199");
 
-    obj.label115 = gui.fromHandle(_obj_newObject("label"));
+    obj.label115 = GUI.fromHandle(_obj_newObject("label"));
     obj.label115:setParent(obj.layout67);
     obj.label115:setLeft(190);
     obj.label115:setTop(40);
@@ -6086,12 +6086,12 @@ function newfrmFichaACN()
     obj.label115:setField("kmh");
     obj.label115:setName("label115");
 
-    obj.dataLink13 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink13 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink13:setParent(obj.layout67);
     obj.dataLink13:setFields({'totalforca', 'totalagilidade', 'totalperspicacia', 'iniciativaBonus', 'velocidadeBonus'});
     obj.dataLink13:setName("dataLink13");
 
-    obj.layout68 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout68 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout68:setParent(obj.scrollBox1);
     obj.layout68:setLeft(840);
     obj.layout68:setTop(455);
@@ -6099,7 +6099,7 @@ function newfrmFichaACN()
     obj.layout68:setHeight(70);
     obj.layout68:setName("layout68");
 
-    obj.rectangle62 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle62 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle62:setParent(obj.layout68);
     obj.rectangle62:setLeft(0);
     obj.rectangle62:setTop(0);
@@ -6111,7 +6111,7 @@ function newfrmFichaACN()
     obj.rectangle62:setCornerType("round");
     obj.rectangle62:setName("rectangle62");
 
-    obj.rectangle63 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle63 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle63:setParent(obj.layout68);
     obj.rectangle63:setLeft(10);
     obj.rectangle63:setTop(30);
@@ -6122,7 +6122,7 @@ function newfrmFichaACN()
     obj.rectangle63:setStrokeSize(1);
     obj.rectangle63:setName("rectangle63");
 
-    obj.label116 = gui.fromHandle(_obj_newObject("label"));
+    obj.label116 = GUI.fromHandle(_obj_newObject("label"));
     obj.label116:setParent(obj.layout68);
     obj.label116:setLeft(5);
     obj.label116:setTop(10);
@@ -6131,7 +6131,7 @@ function newfrmFichaACN()
     obj.label116:setText("Dado 1");
     obj.label116:setName("label116");
 
-    obj.label117 = gui.fromHandle(_obj_newObject("label"));
+    obj.label117 = GUI.fromHandle(_obj_newObject("label"));
     obj.label117:setParent(obj.layout68);
     obj.label117:setLeft(20);
     obj.label117:setTop(32);
@@ -6141,7 +6141,7 @@ function newfrmFichaACN()
     obj.label117:setText("val");
     obj.label117:setName("label117");
 
-    obj.label118 = gui.fromHandle(_obj_newObject("label"));
+    obj.label118 = GUI.fromHandle(_obj_newObject("label"));
     obj.label118:setParent(obj.layout68);
     obj.label118:setLeft(46);
     obj.label118:setTop(32);
@@ -6150,7 +6150,7 @@ function newfrmFichaACN()
     obj.label118:setText("+");
     obj.label118:setName("label118");
 
-    obj.rectangle64 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle64 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle64:setParent(obj.layout68);
     obj.rectangle64:setLeft(55);
     obj.rectangle64:setTop(30);
@@ -6161,7 +6161,7 @@ function newfrmFichaACN()
     obj.rectangle64:setStrokeSize(1);
     obj.rectangle64:setName("rectangle64");
 
-    obj.label119 = gui.fromHandle(_obj_newObject("label"));
+    obj.label119 = GUI.fromHandle(_obj_newObject("label"));
     obj.label119:setParent(obj.layout68);
     obj.label119:setLeft(50);
     obj.label119:setTop(10);
@@ -6170,7 +6170,7 @@ function newfrmFichaACN()
     obj.label119:setText("Dado 2");
     obj.label119:setName("label119");
 
-    obj.label120 = gui.fromHandle(_obj_newObject("label"));
+    obj.label120 = GUI.fromHandle(_obj_newObject("label"));
     obj.label120:setParent(obj.layout68);
     obj.label120:setLeft(65);
     obj.label120:setTop(32);
@@ -6180,7 +6180,7 @@ function newfrmFichaACN()
     obj.label120:setText("val");
     obj.label120:setName("label120");
 
-    obj.label121 = gui.fromHandle(_obj_newObject("label"));
+    obj.label121 = GUI.fromHandle(_obj_newObject("label"));
     obj.label121:setParent(obj.layout68);
     obj.label121:setLeft(92);
     obj.label121:setTop(32);
@@ -6189,7 +6189,7 @@ function newfrmFichaACN()
     obj.label121:setText("+");
     obj.label121:setName("label121");
 
-    obj.label122 = gui.fromHandle(_obj_newObject("label"));
+    obj.label122 = GUI.fromHandle(_obj_newObject("label"));
     obj.label122:setParent(obj.layout68);
     obj.label122:setLeft(105);
     obj.label122:setTop(10);
@@ -6198,7 +6198,7 @@ function newfrmFichaACN()
     obj.label122:setText("Especs");
     obj.label122:setName("label122");
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.layout68);
     obj.comboBox1:setLeft(105);
     obj.comboBox1:setTop(30);
@@ -6209,7 +6209,7 @@ function newfrmFichaACN()
     obj.comboBox1:setField("especBonus");
     obj.comboBox1:setName("comboBox1");
 
-    obj.label123 = gui.fromHandle(_obj_newObject("label"));
+    obj.label123 = GUI.fromHandle(_obj_newObject("label"));
     obj.label123:setParent(obj.layout68);
     obj.label123:setLeft(160);
     obj.label123:setTop(10);
@@ -6218,7 +6218,7 @@ function newfrmFichaACN()
     obj.label123:setText("Extra");
     obj.label123:setName("label123");
 
-    obj.edit200 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit200 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit200:setParent(obj.layout68);
     obj.edit200:setLeft(160);
     obj.edit200:setTop(30);
@@ -6227,7 +6227,7 @@ function newfrmFichaACN()
     obj.edit200:setField("extra");
     obj.edit200:setName("edit200");
 
-    obj.label124 = gui.fromHandle(_obj_newObject("label"));
+    obj.label124 = GUI.fromHandle(_obj_newObject("label"));
     obj.label124:setParent(obj.layout68);
     obj.label124:setLeft(195);
     obj.label124:setTop(10);
@@ -6236,7 +6236,7 @@ function newfrmFichaACN()
     obj.label124:setText("Dific.");
     obj.label124:setName("label124");
 
-    obj.edit201 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit201 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit201:setParent(obj.layout68);
     obj.edit201:setLeft(195);
     obj.edit201:setTop(30);
@@ -6246,7 +6246,7 @@ function newfrmFichaACN()
     obj.edit201:setType("number");
     obj.edit201:setName("edit201");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.layout68);
     obj.button3:setLeft(230);
     obj.button3:setTop(30);
@@ -6254,7 +6254,7 @@ function newfrmFichaACN()
     obj.button3:setText("ROLAR");
     obj.button3:setName("button3");
 
-    obj.rectangle65 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle65 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle65:setParent(obj.scrollBox1);
     obj.rectangle65:setLeft(840);
     obj.rectangle65:setTop(90);
@@ -6266,7 +6266,7 @@ function newfrmFichaACN()
     obj.rectangle65:setCornerType("innerLine");
     obj.rectangle65:setName("rectangle65");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.scrollBox1);
     obj.image1:setLeft(840);
     obj.image1:setTop(90);
@@ -6277,7 +6277,7 @@ function newfrmFichaACN()
     obj.image1:setStyle("autoFit");
     obj.image1:setName("image1");
 
-    obj.label125 = gui.fromHandle(_obj_newObject("label"));
+    obj.label125 = GUI.fromHandle(_obj_newObject("label"));
     obj.label125:setParent(obj.scrollBox1);
     obj.label125:setLeft(0);
     obj.label125:setTop(595);
@@ -6286,7 +6286,7 @@ function newfrmFichaACN()
     obj.label125:setField("audit");
     obj.label125:setName("label125");
 
-    obj.dataLink14 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink14 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink14:setParent(obj.scrollBox1);
     obj.dataLink14:setFields({'inicialconsciencia', 'inicialespirito', 'inicialperseveranca', 'inicialforca', 'inicialagilidade', 'inicialresiliencia', 'inicialcarisma', 'inicialpercepcao', 'inicialperspicacia', 'base0_1', 'base0_2', 'base0_3', 'base0_4', 'base0_5', 'base0_6', 'base0_7', 'base0_8', 'base0_9', 'base0_10', 'base0_11', 'base0_12', 'base1_1', 'base1_2', 'base1_3', 'base1_4', 'base1_5', 'base1_6', 'base1_7', 'base1_8', 'base1_9', 'base1_10', 'base1_11', 'base1_12', 'base2_1', 'base2_2', 'base2_3', 'base2_4', 'base2_5', 'base2_6', 'base2_7', 'base2_8', 'base2_9', 'base2_10', 'base2_11', 'base2_12', 'base3_1', 'base3_2', 'base3_3', 'base3_4', 'base3_5', 'base3_6', 'base3_7', 'base3_8', 'base3_9', 'base3_10', 'base3_11', 'base3_12', 'historicoValor1_1', 'historicoValor1_2', 'historicoValor1_3', 'historicoValor1_4', 'historicoValor1_5', 'historicoValor1_6', 'historicoValor2_1', 'historicoValor2_2', 'historicoValor2_3', 'historicoValor2_4', 'historicoValor2_5', 'historicoValor2_6', 'historicoValor3_1', 'historicoValor3_2', 'historicoValor3_3', 'historicoValor3_4', 'historicoValor3_5', 'historicoValor3_6'});
     obj.dataLink14:setName("dataLink14");
@@ -6393,19 +6393,19 @@ function newfrmFichaACN()
 		
 
 
-    obj.tab2 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.tabControl1);
     obj.tab2:setTitle("Aptidões");
     obj.tab2:setName("tab2");
 
-    obj.frmACN2 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmACN2 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmACN2:setParent(obj.tab2);
     obj.frmACN2:setName("frmACN2");
     obj.frmACN2:setAlign("client");
     obj.frmACN2:setTheme("dark");
     obj.frmACN2:setMargins({top=1});
 
-    obj.scrollBox4 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox4 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox4:setParent(obj.frmACN2);
     obj.scrollBox4:setAlign("client");
     obj.scrollBox4:setName("scrollBox4");
@@ -6531,7 +6531,7 @@ function newfrmFichaACN()
 		
 
 
-    obj.layout69 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout69 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout69:setParent(obj.scrollBox4);
     obj.layout69:setLeft(0);
     obj.layout69:setTop(0);
@@ -6539,7 +6539,7 @@ function newfrmFichaACN()
     obj.layout69:setHeight(630);
     obj.layout69:setName("layout69");
 
-    obj.rectangle66 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle66 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle66:setParent(obj.layout69);
     obj.rectangle66:setLeft(0);
     obj.rectangle66:setTop(0);
@@ -6551,7 +6551,7 @@ function newfrmFichaACN()
     obj.rectangle66:setCornerType("round");
     obj.rectangle66:setName("rectangle66");
 
-    obj.label126 = gui.fromHandle(_obj_newObject("label"));
+    obj.label126 = GUI.fromHandle(_obj_newObject("label"));
     obj.label126:setParent(obj.layout69);
     obj.label126:setLeft(5);
     obj.label126:setTop(0);
@@ -6561,7 +6561,7 @@ function newfrmFichaACN()
     obj.label126:setHorzTextAlign("center");
     obj.label126:setName("label126");
 
-    obj.label127 = gui.fromHandle(_obj_newObject("label"));
+    obj.label127 = GUI.fromHandle(_obj_newObject("label"));
     obj.label127:setParent(obj.layout69);
     obj.label127:setLeft(25);
     obj.label127:setTop(25);
@@ -6570,7 +6570,7 @@ function newfrmFichaACN()
     obj.label127:setText(" Nome");
     obj.label127:setName("label127");
 
-    obj.label128 = gui.fromHandle(_obj_newObject("label"));
+    obj.label128 = GUI.fromHandle(_obj_newObject("label"));
     obj.label128:setParent(obj.layout69);
     obj.label128:setLeft(135);
     obj.label128:setTop(25);
@@ -6579,7 +6579,7 @@ function newfrmFichaACN()
     obj.label128:setText("Total");
     obj.label128:setName("label128");
 
-    obj.label129 = gui.fromHandle(_obj_newObject("label"));
+    obj.label129 = GUI.fromHandle(_obj_newObject("label"));
     obj.label129:setParent(obj.layout69);
     obj.label129:setLeft(170);
     obj.label129:setTop(25);
@@ -6588,7 +6588,7 @@ function newfrmFichaACN()
     obj.label129:setText(" Inic");
     obj.label129:setName("label129");
 
-    obj.label130 = gui.fromHandle(_obj_newObject("label"));
+    obj.label130 = GUI.fromHandle(_obj_newObject("label"));
     obj.label130:setParent(obj.layout69);
     obj.label130:setLeft(202);
     obj.label130:setTop(25);
@@ -6597,7 +6597,7 @@ function newfrmFichaACN()
     obj.label130:setText(" Apr.");
     obj.label130:setName("label130");
 
-    obj.label131 = gui.fromHandle(_obj_newObject("label"));
+    obj.label131 = GUI.fromHandle(_obj_newObject("label"));
     obj.label131:setParent(obj.layout69);
     obj.label131:setLeft(235);
     obj.label131:setTop(25);
@@ -6606,7 +6606,7 @@ function newfrmFichaACN()
     obj.label131:setText("  XP");
     obj.label131:setName("label131");
 
-    obj.layout70 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout70 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout70:setParent(obj.layout69);
     obj.layout70:setLeft(5);
     obj.layout70:setTop(50);
@@ -6614,7 +6614,7 @@ function newfrmFichaACN()
     obj.layout70:setHeight(50);
     obj.layout70:setName("layout70");
 
-    obj.radioButton91 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton91 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton91:setParent(obj.layout70);
     obj.radioButton91:setLeft(0);
     obj.radioButton91:setTop(0);
@@ -6623,7 +6623,7 @@ function newfrmFichaACN()
     obj.radioButton91:setFieldValue("total0_1");
     obj.radioButton91:setName("radioButton91");
 
-    obj.radioButton92 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton92 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton92:setParent(obj.layout70);
     obj.radioButton92:setLeft(0);
     obj.radioButton92:setTop(15);
@@ -6632,7 +6632,7 @@ function newfrmFichaACN()
     obj.radioButton92:setFieldValue("total0_1");
     obj.radioButton92:setName("radioButton92");
 
-    obj.edit202 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit202 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit202:setParent(obj.layout70);
     obj.edit202:setLeft(20);
     obj.edit202:setTop(0);
@@ -6641,7 +6641,7 @@ function newfrmFichaACN()
     obj.edit202:setField("nome0_1");
     obj.edit202:setName("edit202");
 
-    obj.rectangle67 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle67 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle67:setParent(obj.layout70);
     obj.rectangle67:setLeft(125);
     obj.rectangle67:setTop(0);
@@ -6652,7 +6652,7 @@ function newfrmFichaACN()
     obj.rectangle67:setStrokeSize(1);
     obj.rectangle67:setName("rectangle67");
 
-    obj.label132 = gui.fromHandle(_obj_newObject("label"));
+    obj.label132 = GUI.fromHandle(_obj_newObject("label"));
     obj.label132:setParent(obj.layout70);
     obj.label132:setLeft(125);
     obj.label132:setTop(3);
@@ -6662,7 +6662,7 @@ function newfrmFichaACN()
     obj.label132:setHorzTextAlign("center");
     obj.label132:setName("label132");
 
-    obj.edit203 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit203 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit203:setParent(obj.layout70);
     obj.edit203:setLeft(170);
     obj.edit203:setTop(0);
@@ -6673,7 +6673,7 @@ function newfrmFichaACN()
     obj.edit203:setField("base0_1");
     obj.edit203:setName("edit203");
 
-    obj.edit204 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit204 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit204:setParent(obj.layout70);
     obj.edit204:setLeft(205);
     obj.edit204:setTop(0);
@@ -6684,7 +6684,7 @@ function newfrmFichaACN()
     obj.edit204:setField("bonus0_1");
     obj.edit204:setName("edit204");
 
-    obj.edit205 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit205 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit205:setParent(obj.layout70);
     obj.edit205:setLeft(240);
     obj.edit205:setTop(0);
@@ -6695,7 +6695,7 @@ function newfrmFichaACN()
     obj.edit205:setField("xp0_1");
     obj.edit205:setName("edit205");
 
-    obj.edit206 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit206 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit206:setParent(obj.layout70);
     obj.edit206:setLeft(20);
     obj.edit206:setTop(28);
@@ -6704,7 +6704,7 @@ function newfrmFichaACN()
     obj.edit206:setField("espec0_1");
     obj.edit206:setName("edit206");
 
-    obj.layout71 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout71 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout71:setParent(obj.layout69);
     obj.layout71:setLeft(5);
     obj.layout71:setTop(100);
@@ -6712,7 +6712,7 @@ function newfrmFichaACN()
     obj.layout71:setHeight(50);
     obj.layout71:setName("layout71");
 
-    obj.radioButton93 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton93 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton93:setParent(obj.layout71);
     obj.radioButton93:setLeft(0);
     obj.radioButton93:setTop(0);
@@ -6721,7 +6721,7 @@ function newfrmFichaACN()
     obj.radioButton93:setFieldValue("total0_2");
     obj.radioButton93:setName("radioButton93");
 
-    obj.radioButton94 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton94 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton94:setParent(obj.layout71);
     obj.radioButton94:setLeft(0);
     obj.radioButton94:setTop(15);
@@ -6730,7 +6730,7 @@ function newfrmFichaACN()
     obj.radioButton94:setFieldValue("total0_2");
     obj.radioButton94:setName("radioButton94");
 
-    obj.edit207 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit207 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit207:setParent(obj.layout71);
     obj.edit207:setLeft(20);
     obj.edit207:setTop(0);
@@ -6739,7 +6739,7 @@ function newfrmFichaACN()
     obj.edit207:setField("nome0_2");
     obj.edit207:setName("edit207");
 
-    obj.rectangle68 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle68 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle68:setParent(obj.layout71);
     obj.rectangle68:setLeft(125);
     obj.rectangle68:setTop(0);
@@ -6750,7 +6750,7 @@ function newfrmFichaACN()
     obj.rectangle68:setStrokeSize(1);
     obj.rectangle68:setName("rectangle68");
 
-    obj.label133 = gui.fromHandle(_obj_newObject("label"));
+    obj.label133 = GUI.fromHandle(_obj_newObject("label"));
     obj.label133:setParent(obj.layout71);
     obj.label133:setLeft(125);
     obj.label133:setTop(3);
@@ -6760,7 +6760,7 @@ function newfrmFichaACN()
     obj.label133:setHorzTextAlign("center");
     obj.label133:setName("label133");
 
-    obj.edit208 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit208 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit208:setParent(obj.layout71);
     obj.edit208:setLeft(170);
     obj.edit208:setTop(0);
@@ -6771,7 +6771,7 @@ function newfrmFichaACN()
     obj.edit208:setField("base0_2");
     obj.edit208:setName("edit208");
 
-    obj.edit209 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit209 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit209:setParent(obj.layout71);
     obj.edit209:setLeft(205);
     obj.edit209:setTop(0);
@@ -6782,7 +6782,7 @@ function newfrmFichaACN()
     obj.edit209:setField("bonus0_2");
     obj.edit209:setName("edit209");
 
-    obj.edit210 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit210 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit210:setParent(obj.layout71);
     obj.edit210:setLeft(240);
     obj.edit210:setTop(0);
@@ -6793,7 +6793,7 @@ function newfrmFichaACN()
     obj.edit210:setField("xp0_2");
     obj.edit210:setName("edit210");
 
-    obj.edit211 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit211 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit211:setParent(obj.layout71);
     obj.edit211:setLeft(20);
     obj.edit211:setTop(28);
@@ -6802,7 +6802,7 @@ function newfrmFichaACN()
     obj.edit211:setField("espec0_2");
     obj.edit211:setName("edit211");
 
-    obj.layout72 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout72 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout72:setParent(obj.layout69);
     obj.layout72:setLeft(5);
     obj.layout72:setTop(150);
@@ -6810,7 +6810,7 @@ function newfrmFichaACN()
     obj.layout72:setHeight(50);
     obj.layout72:setName("layout72");
 
-    obj.radioButton95 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton95 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton95:setParent(obj.layout72);
     obj.radioButton95:setLeft(0);
     obj.radioButton95:setTop(0);
@@ -6819,7 +6819,7 @@ function newfrmFichaACN()
     obj.radioButton95:setFieldValue("total0_3");
     obj.radioButton95:setName("radioButton95");
 
-    obj.radioButton96 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton96 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton96:setParent(obj.layout72);
     obj.radioButton96:setLeft(0);
     obj.radioButton96:setTop(15);
@@ -6828,7 +6828,7 @@ function newfrmFichaACN()
     obj.radioButton96:setFieldValue("total0_3");
     obj.radioButton96:setName("radioButton96");
 
-    obj.edit212 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit212 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit212:setParent(obj.layout72);
     obj.edit212:setLeft(20);
     obj.edit212:setTop(0);
@@ -6837,7 +6837,7 @@ function newfrmFichaACN()
     obj.edit212:setField("nome0_3");
     obj.edit212:setName("edit212");
 
-    obj.rectangle69 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle69 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle69:setParent(obj.layout72);
     obj.rectangle69:setLeft(125);
     obj.rectangle69:setTop(0);
@@ -6848,7 +6848,7 @@ function newfrmFichaACN()
     obj.rectangle69:setStrokeSize(1);
     obj.rectangle69:setName("rectangle69");
 
-    obj.label134 = gui.fromHandle(_obj_newObject("label"));
+    obj.label134 = GUI.fromHandle(_obj_newObject("label"));
     obj.label134:setParent(obj.layout72);
     obj.label134:setLeft(125);
     obj.label134:setTop(3);
@@ -6858,7 +6858,7 @@ function newfrmFichaACN()
     obj.label134:setHorzTextAlign("center");
     obj.label134:setName("label134");
 
-    obj.edit213 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit213 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit213:setParent(obj.layout72);
     obj.edit213:setLeft(170);
     obj.edit213:setTop(0);
@@ -6869,7 +6869,7 @@ function newfrmFichaACN()
     obj.edit213:setField("base0_3");
     obj.edit213:setName("edit213");
 
-    obj.edit214 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit214 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit214:setParent(obj.layout72);
     obj.edit214:setLeft(205);
     obj.edit214:setTop(0);
@@ -6880,7 +6880,7 @@ function newfrmFichaACN()
     obj.edit214:setField("bonus0_3");
     obj.edit214:setName("edit214");
 
-    obj.edit215 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit215 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit215:setParent(obj.layout72);
     obj.edit215:setLeft(240);
     obj.edit215:setTop(0);
@@ -6891,7 +6891,7 @@ function newfrmFichaACN()
     obj.edit215:setField("xp0_3");
     obj.edit215:setName("edit215");
 
-    obj.edit216 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit216 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit216:setParent(obj.layout72);
     obj.edit216:setLeft(20);
     obj.edit216:setTop(28);
@@ -6900,7 +6900,7 @@ function newfrmFichaACN()
     obj.edit216:setField("espec0_3");
     obj.edit216:setName("edit216");
 
-    obj.layout73 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout73 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout73:setParent(obj.layout69);
     obj.layout73:setLeft(5);
     obj.layout73:setTop(200);
@@ -6908,7 +6908,7 @@ function newfrmFichaACN()
     obj.layout73:setHeight(50);
     obj.layout73:setName("layout73");
 
-    obj.radioButton97 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton97 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton97:setParent(obj.layout73);
     obj.radioButton97:setLeft(0);
     obj.radioButton97:setTop(0);
@@ -6917,7 +6917,7 @@ function newfrmFichaACN()
     obj.radioButton97:setFieldValue("total0_4");
     obj.radioButton97:setName("radioButton97");
 
-    obj.radioButton98 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton98 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton98:setParent(obj.layout73);
     obj.radioButton98:setLeft(0);
     obj.radioButton98:setTop(15);
@@ -6926,7 +6926,7 @@ function newfrmFichaACN()
     obj.radioButton98:setFieldValue("total0_4");
     obj.radioButton98:setName("radioButton98");
 
-    obj.edit217 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit217 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit217:setParent(obj.layout73);
     obj.edit217:setLeft(20);
     obj.edit217:setTop(0);
@@ -6935,7 +6935,7 @@ function newfrmFichaACN()
     obj.edit217:setField("nome0_4");
     obj.edit217:setName("edit217");
 
-    obj.rectangle70 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle70 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle70:setParent(obj.layout73);
     obj.rectangle70:setLeft(125);
     obj.rectangle70:setTop(0);
@@ -6946,7 +6946,7 @@ function newfrmFichaACN()
     obj.rectangle70:setStrokeSize(1);
     obj.rectangle70:setName("rectangle70");
 
-    obj.label135 = gui.fromHandle(_obj_newObject("label"));
+    obj.label135 = GUI.fromHandle(_obj_newObject("label"));
     obj.label135:setParent(obj.layout73);
     obj.label135:setLeft(125);
     obj.label135:setTop(3);
@@ -6956,7 +6956,7 @@ function newfrmFichaACN()
     obj.label135:setHorzTextAlign("center");
     obj.label135:setName("label135");
 
-    obj.edit218 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit218 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit218:setParent(obj.layout73);
     obj.edit218:setLeft(170);
     obj.edit218:setTop(0);
@@ -6967,7 +6967,7 @@ function newfrmFichaACN()
     obj.edit218:setField("base0_4");
     obj.edit218:setName("edit218");
 
-    obj.edit219 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit219 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit219:setParent(obj.layout73);
     obj.edit219:setLeft(205);
     obj.edit219:setTop(0);
@@ -6978,7 +6978,7 @@ function newfrmFichaACN()
     obj.edit219:setField("bonus0_4");
     obj.edit219:setName("edit219");
 
-    obj.edit220 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit220 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit220:setParent(obj.layout73);
     obj.edit220:setLeft(240);
     obj.edit220:setTop(0);
@@ -6989,7 +6989,7 @@ function newfrmFichaACN()
     obj.edit220:setField("xp0_4");
     obj.edit220:setName("edit220");
 
-    obj.edit221 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit221 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit221:setParent(obj.layout73);
     obj.edit221:setLeft(20);
     obj.edit221:setTop(28);
@@ -6998,7 +6998,7 @@ function newfrmFichaACN()
     obj.edit221:setField("espec0_4");
     obj.edit221:setName("edit221");
 
-    obj.layout74 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout74 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout74:setParent(obj.layout69);
     obj.layout74:setLeft(5);
     obj.layout74:setTop(250);
@@ -7006,7 +7006,7 @@ function newfrmFichaACN()
     obj.layout74:setHeight(50);
     obj.layout74:setName("layout74");
 
-    obj.radioButton99 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton99 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton99:setParent(obj.layout74);
     obj.radioButton99:setLeft(0);
     obj.radioButton99:setTop(0);
@@ -7015,7 +7015,7 @@ function newfrmFichaACN()
     obj.radioButton99:setFieldValue("total0_5");
     obj.radioButton99:setName("radioButton99");
 
-    obj.radioButton100 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton100 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton100:setParent(obj.layout74);
     obj.radioButton100:setLeft(0);
     obj.radioButton100:setTop(15);
@@ -7024,7 +7024,7 @@ function newfrmFichaACN()
     obj.radioButton100:setFieldValue("total0_5");
     obj.radioButton100:setName("radioButton100");
 
-    obj.edit222 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit222 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit222:setParent(obj.layout74);
     obj.edit222:setLeft(20);
     obj.edit222:setTop(0);
@@ -7033,7 +7033,7 @@ function newfrmFichaACN()
     obj.edit222:setField("nome0_5");
     obj.edit222:setName("edit222");
 
-    obj.rectangle71 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle71 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle71:setParent(obj.layout74);
     obj.rectangle71:setLeft(125);
     obj.rectangle71:setTop(0);
@@ -7044,7 +7044,7 @@ function newfrmFichaACN()
     obj.rectangle71:setStrokeSize(1);
     obj.rectangle71:setName("rectangle71");
 
-    obj.label136 = gui.fromHandle(_obj_newObject("label"));
+    obj.label136 = GUI.fromHandle(_obj_newObject("label"));
     obj.label136:setParent(obj.layout74);
     obj.label136:setLeft(125);
     obj.label136:setTop(3);
@@ -7054,7 +7054,7 @@ function newfrmFichaACN()
     obj.label136:setHorzTextAlign("center");
     obj.label136:setName("label136");
 
-    obj.edit223 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit223 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit223:setParent(obj.layout74);
     obj.edit223:setLeft(170);
     obj.edit223:setTop(0);
@@ -7065,7 +7065,7 @@ function newfrmFichaACN()
     obj.edit223:setField("base0_5");
     obj.edit223:setName("edit223");
 
-    obj.edit224 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit224 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit224:setParent(obj.layout74);
     obj.edit224:setLeft(205);
     obj.edit224:setTop(0);
@@ -7076,7 +7076,7 @@ function newfrmFichaACN()
     obj.edit224:setField("bonus0_5");
     obj.edit224:setName("edit224");
 
-    obj.edit225 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit225 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit225:setParent(obj.layout74);
     obj.edit225:setLeft(240);
     obj.edit225:setTop(0);
@@ -7087,7 +7087,7 @@ function newfrmFichaACN()
     obj.edit225:setField("xp0_5");
     obj.edit225:setName("edit225");
 
-    obj.edit226 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit226 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit226:setParent(obj.layout74);
     obj.edit226:setLeft(20);
     obj.edit226:setTop(28);
@@ -7096,7 +7096,7 @@ function newfrmFichaACN()
     obj.edit226:setField("espec0_5");
     obj.edit226:setName("edit226");
 
-    obj.layout75 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout75 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout75:setParent(obj.layout69);
     obj.layout75:setLeft(5);
     obj.layout75:setTop(300);
@@ -7104,7 +7104,7 @@ function newfrmFichaACN()
     obj.layout75:setHeight(50);
     obj.layout75:setName("layout75");
 
-    obj.radioButton101 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton101 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton101:setParent(obj.layout75);
     obj.radioButton101:setLeft(0);
     obj.radioButton101:setTop(0);
@@ -7113,7 +7113,7 @@ function newfrmFichaACN()
     obj.radioButton101:setFieldValue("total0_6");
     obj.radioButton101:setName("radioButton101");
 
-    obj.radioButton102 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton102 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton102:setParent(obj.layout75);
     obj.radioButton102:setLeft(0);
     obj.radioButton102:setTop(15);
@@ -7122,7 +7122,7 @@ function newfrmFichaACN()
     obj.radioButton102:setFieldValue("total0_6");
     obj.radioButton102:setName("radioButton102");
 
-    obj.edit227 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit227 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit227:setParent(obj.layout75);
     obj.edit227:setLeft(20);
     obj.edit227:setTop(0);
@@ -7131,7 +7131,7 @@ function newfrmFichaACN()
     obj.edit227:setField("nome0_6");
     obj.edit227:setName("edit227");
 
-    obj.rectangle72 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle72 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle72:setParent(obj.layout75);
     obj.rectangle72:setLeft(125);
     obj.rectangle72:setTop(0);
@@ -7142,7 +7142,7 @@ function newfrmFichaACN()
     obj.rectangle72:setStrokeSize(1);
     obj.rectangle72:setName("rectangle72");
 
-    obj.label137 = gui.fromHandle(_obj_newObject("label"));
+    obj.label137 = GUI.fromHandle(_obj_newObject("label"));
     obj.label137:setParent(obj.layout75);
     obj.label137:setLeft(125);
     obj.label137:setTop(3);
@@ -7152,7 +7152,7 @@ function newfrmFichaACN()
     obj.label137:setHorzTextAlign("center");
     obj.label137:setName("label137");
 
-    obj.edit228 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit228 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit228:setParent(obj.layout75);
     obj.edit228:setLeft(170);
     obj.edit228:setTop(0);
@@ -7163,7 +7163,7 @@ function newfrmFichaACN()
     obj.edit228:setField("base0_6");
     obj.edit228:setName("edit228");
 
-    obj.edit229 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit229 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit229:setParent(obj.layout75);
     obj.edit229:setLeft(205);
     obj.edit229:setTop(0);
@@ -7174,7 +7174,7 @@ function newfrmFichaACN()
     obj.edit229:setField("bonus0_6");
     obj.edit229:setName("edit229");
 
-    obj.edit230 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit230 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit230:setParent(obj.layout75);
     obj.edit230:setLeft(240);
     obj.edit230:setTop(0);
@@ -7185,7 +7185,7 @@ function newfrmFichaACN()
     obj.edit230:setField("xp0_6");
     obj.edit230:setName("edit230");
 
-    obj.edit231 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit231 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit231:setParent(obj.layout75);
     obj.edit231:setLeft(20);
     obj.edit231:setTop(28);
@@ -7194,7 +7194,7 @@ function newfrmFichaACN()
     obj.edit231:setField("espec0_6");
     obj.edit231:setName("edit231");
 
-    obj.layout76 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout76 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout76:setParent(obj.layout69);
     obj.layout76:setLeft(5);
     obj.layout76:setTop(350);
@@ -7202,7 +7202,7 @@ function newfrmFichaACN()
     obj.layout76:setHeight(50);
     obj.layout76:setName("layout76");
 
-    obj.radioButton103 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton103 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton103:setParent(obj.layout76);
     obj.radioButton103:setLeft(0);
     obj.radioButton103:setTop(0);
@@ -7211,7 +7211,7 @@ function newfrmFichaACN()
     obj.radioButton103:setFieldValue("total0_7");
     obj.radioButton103:setName("radioButton103");
 
-    obj.radioButton104 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton104 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton104:setParent(obj.layout76);
     obj.radioButton104:setLeft(0);
     obj.radioButton104:setTop(15);
@@ -7220,7 +7220,7 @@ function newfrmFichaACN()
     obj.radioButton104:setFieldValue("total0_7");
     obj.radioButton104:setName("radioButton104");
 
-    obj.edit232 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit232 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit232:setParent(obj.layout76);
     obj.edit232:setLeft(20);
     obj.edit232:setTop(0);
@@ -7229,7 +7229,7 @@ function newfrmFichaACN()
     obj.edit232:setField("nome0_7");
     obj.edit232:setName("edit232");
 
-    obj.rectangle73 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle73 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle73:setParent(obj.layout76);
     obj.rectangle73:setLeft(125);
     obj.rectangle73:setTop(0);
@@ -7240,7 +7240,7 @@ function newfrmFichaACN()
     obj.rectangle73:setStrokeSize(1);
     obj.rectangle73:setName("rectangle73");
 
-    obj.label138 = gui.fromHandle(_obj_newObject("label"));
+    obj.label138 = GUI.fromHandle(_obj_newObject("label"));
     obj.label138:setParent(obj.layout76);
     obj.label138:setLeft(125);
     obj.label138:setTop(3);
@@ -7250,7 +7250,7 @@ function newfrmFichaACN()
     obj.label138:setHorzTextAlign("center");
     obj.label138:setName("label138");
 
-    obj.edit233 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit233 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit233:setParent(obj.layout76);
     obj.edit233:setLeft(170);
     obj.edit233:setTop(0);
@@ -7261,7 +7261,7 @@ function newfrmFichaACN()
     obj.edit233:setField("base0_7");
     obj.edit233:setName("edit233");
 
-    obj.edit234 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit234 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit234:setParent(obj.layout76);
     obj.edit234:setLeft(205);
     obj.edit234:setTop(0);
@@ -7272,7 +7272,7 @@ function newfrmFichaACN()
     obj.edit234:setField("bonus0_7");
     obj.edit234:setName("edit234");
 
-    obj.edit235 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit235 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit235:setParent(obj.layout76);
     obj.edit235:setLeft(240);
     obj.edit235:setTop(0);
@@ -7283,7 +7283,7 @@ function newfrmFichaACN()
     obj.edit235:setField("xp0_7");
     obj.edit235:setName("edit235");
 
-    obj.edit236 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit236 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit236:setParent(obj.layout76);
     obj.edit236:setLeft(20);
     obj.edit236:setTop(28);
@@ -7292,7 +7292,7 @@ function newfrmFichaACN()
     obj.edit236:setField("espec0_7");
     obj.edit236:setName("edit236");
 
-    obj.layout77 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout77 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout77:setParent(obj.layout69);
     obj.layout77:setLeft(5);
     obj.layout77:setTop(400);
@@ -7300,7 +7300,7 @@ function newfrmFichaACN()
     obj.layout77:setHeight(50);
     obj.layout77:setName("layout77");
 
-    obj.radioButton105 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton105 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton105:setParent(obj.layout77);
     obj.radioButton105:setLeft(0);
     obj.radioButton105:setTop(0);
@@ -7309,7 +7309,7 @@ function newfrmFichaACN()
     obj.radioButton105:setFieldValue("total0_8");
     obj.radioButton105:setName("radioButton105");
 
-    obj.radioButton106 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton106 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton106:setParent(obj.layout77);
     obj.radioButton106:setLeft(0);
     obj.radioButton106:setTop(15);
@@ -7318,7 +7318,7 @@ function newfrmFichaACN()
     obj.radioButton106:setFieldValue("total0_8");
     obj.radioButton106:setName("radioButton106");
 
-    obj.edit237 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit237 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit237:setParent(obj.layout77);
     obj.edit237:setLeft(20);
     obj.edit237:setTop(0);
@@ -7327,7 +7327,7 @@ function newfrmFichaACN()
     obj.edit237:setField("nome0_8");
     obj.edit237:setName("edit237");
 
-    obj.rectangle74 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle74 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle74:setParent(obj.layout77);
     obj.rectangle74:setLeft(125);
     obj.rectangle74:setTop(0);
@@ -7338,7 +7338,7 @@ function newfrmFichaACN()
     obj.rectangle74:setStrokeSize(1);
     obj.rectangle74:setName("rectangle74");
 
-    obj.label139 = gui.fromHandle(_obj_newObject("label"));
+    obj.label139 = GUI.fromHandle(_obj_newObject("label"));
     obj.label139:setParent(obj.layout77);
     obj.label139:setLeft(125);
     obj.label139:setTop(3);
@@ -7348,7 +7348,7 @@ function newfrmFichaACN()
     obj.label139:setHorzTextAlign("center");
     obj.label139:setName("label139");
 
-    obj.edit238 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit238 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit238:setParent(obj.layout77);
     obj.edit238:setLeft(170);
     obj.edit238:setTop(0);
@@ -7359,7 +7359,7 @@ function newfrmFichaACN()
     obj.edit238:setField("base0_8");
     obj.edit238:setName("edit238");
 
-    obj.edit239 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit239 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit239:setParent(obj.layout77);
     obj.edit239:setLeft(205);
     obj.edit239:setTop(0);
@@ -7370,7 +7370,7 @@ function newfrmFichaACN()
     obj.edit239:setField("bonus0_8");
     obj.edit239:setName("edit239");
 
-    obj.edit240 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit240 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit240:setParent(obj.layout77);
     obj.edit240:setLeft(240);
     obj.edit240:setTop(0);
@@ -7381,7 +7381,7 @@ function newfrmFichaACN()
     obj.edit240:setField("xp0_8");
     obj.edit240:setName("edit240");
 
-    obj.edit241 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit241 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit241:setParent(obj.layout77);
     obj.edit241:setLeft(20);
     obj.edit241:setTop(28);
@@ -7390,7 +7390,7 @@ function newfrmFichaACN()
     obj.edit241:setField("espec0_8");
     obj.edit241:setName("edit241");
 
-    obj.layout78 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout78 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout78:setParent(obj.layout69);
     obj.layout78:setLeft(5);
     obj.layout78:setTop(450);
@@ -7398,7 +7398,7 @@ function newfrmFichaACN()
     obj.layout78:setHeight(50);
     obj.layout78:setName("layout78");
 
-    obj.radioButton107 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton107 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton107:setParent(obj.layout78);
     obj.radioButton107:setLeft(0);
     obj.radioButton107:setTop(0);
@@ -7407,7 +7407,7 @@ function newfrmFichaACN()
     obj.radioButton107:setFieldValue("total0_9");
     obj.radioButton107:setName("radioButton107");
 
-    obj.radioButton108 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton108 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton108:setParent(obj.layout78);
     obj.radioButton108:setLeft(0);
     obj.radioButton108:setTop(15);
@@ -7416,7 +7416,7 @@ function newfrmFichaACN()
     obj.radioButton108:setFieldValue("total0_9");
     obj.radioButton108:setName("radioButton108");
 
-    obj.edit242 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit242 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit242:setParent(obj.layout78);
     obj.edit242:setLeft(20);
     obj.edit242:setTop(0);
@@ -7425,7 +7425,7 @@ function newfrmFichaACN()
     obj.edit242:setField("nome0_9");
     obj.edit242:setName("edit242");
 
-    obj.rectangle75 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle75 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle75:setParent(obj.layout78);
     obj.rectangle75:setLeft(125);
     obj.rectangle75:setTop(0);
@@ -7436,7 +7436,7 @@ function newfrmFichaACN()
     obj.rectangle75:setStrokeSize(1);
     obj.rectangle75:setName("rectangle75");
 
-    obj.label140 = gui.fromHandle(_obj_newObject("label"));
+    obj.label140 = GUI.fromHandle(_obj_newObject("label"));
     obj.label140:setParent(obj.layout78);
     obj.label140:setLeft(125);
     obj.label140:setTop(3);
@@ -7446,7 +7446,7 @@ function newfrmFichaACN()
     obj.label140:setHorzTextAlign("center");
     obj.label140:setName("label140");
 
-    obj.edit243 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit243 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit243:setParent(obj.layout78);
     obj.edit243:setLeft(170);
     obj.edit243:setTop(0);
@@ -7457,7 +7457,7 @@ function newfrmFichaACN()
     obj.edit243:setField("base0_9");
     obj.edit243:setName("edit243");
 
-    obj.edit244 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit244 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit244:setParent(obj.layout78);
     obj.edit244:setLeft(205);
     obj.edit244:setTop(0);
@@ -7468,7 +7468,7 @@ function newfrmFichaACN()
     obj.edit244:setField("bonus0_9");
     obj.edit244:setName("edit244");
 
-    obj.edit245 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit245 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit245:setParent(obj.layout78);
     obj.edit245:setLeft(240);
     obj.edit245:setTop(0);
@@ -7479,7 +7479,7 @@ function newfrmFichaACN()
     obj.edit245:setField("xp0_9");
     obj.edit245:setName("edit245");
 
-    obj.edit246 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit246 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit246:setParent(obj.layout78);
     obj.edit246:setLeft(20);
     obj.edit246:setTop(28);
@@ -7488,7 +7488,7 @@ function newfrmFichaACN()
     obj.edit246:setField("espec0_9");
     obj.edit246:setName("edit246");
 
-    obj.layout79 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout79 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout79:setParent(obj.layout69);
     obj.layout79:setLeft(5);
     obj.layout79:setTop(500);
@@ -7496,7 +7496,7 @@ function newfrmFichaACN()
     obj.layout79:setHeight(50);
     obj.layout79:setName("layout79");
 
-    obj.radioButton109 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton109 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton109:setParent(obj.layout79);
     obj.radioButton109:setLeft(0);
     obj.radioButton109:setTop(0);
@@ -7505,7 +7505,7 @@ function newfrmFichaACN()
     obj.radioButton109:setFieldValue("total0_10");
     obj.radioButton109:setName("radioButton109");
 
-    obj.radioButton110 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton110 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton110:setParent(obj.layout79);
     obj.radioButton110:setLeft(0);
     obj.radioButton110:setTop(15);
@@ -7514,7 +7514,7 @@ function newfrmFichaACN()
     obj.radioButton110:setFieldValue("total0_10");
     obj.radioButton110:setName("radioButton110");
 
-    obj.edit247 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit247 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit247:setParent(obj.layout79);
     obj.edit247:setLeft(20);
     obj.edit247:setTop(0);
@@ -7523,7 +7523,7 @@ function newfrmFichaACN()
     obj.edit247:setField("nome0_10");
     obj.edit247:setName("edit247");
 
-    obj.rectangle76 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle76 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle76:setParent(obj.layout79);
     obj.rectangle76:setLeft(125);
     obj.rectangle76:setTop(0);
@@ -7534,7 +7534,7 @@ function newfrmFichaACN()
     obj.rectangle76:setStrokeSize(1);
     obj.rectangle76:setName("rectangle76");
 
-    obj.label141 = gui.fromHandle(_obj_newObject("label"));
+    obj.label141 = GUI.fromHandle(_obj_newObject("label"));
     obj.label141:setParent(obj.layout79);
     obj.label141:setLeft(125);
     obj.label141:setTop(3);
@@ -7544,7 +7544,7 @@ function newfrmFichaACN()
     obj.label141:setHorzTextAlign("center");
     obj.label141:setName("label141");
 
-    obj.edit248 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit248 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit248:setParent(obj.layout79);
     obj.edit248:setLeft(170);
     obj.edit248:setTop(0);
@@ -7555,7 +7555,7 @@ function newfrmFichaACN()
     obj.edit248:setField("base0_10");
     obj.edit248:setName("edit248");
 
-    obj.edit249 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit249 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit249:setParent(obj.layout79);
     obj.edit249:setLeft(205);
     obj.edit249:setTop(0);
@@ -7566,7 +7566,7 @@ function newfrmFichaACN()
     obj.edit249:setField("bonus0_10");
     obj.edit249:setName("edit249");
 
-    obj.edit250 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit250 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit250:setParent(obj.layout79);
     obj.edit250:setLeft(240);
     obj.edit250:setTop(0);
@@ -7577,7 +7577,7 @@ function newfrmFichaACN()
     obj.edit250:setField("xp0_10");
     obj.edit250:setName("edit250");
 
-    obj.edit251 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit251 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit251:setParent(obj.layout79);
     obj.edit251:setLeft(20);
     obj.edit251:setTop(28);
@@ -7586,7 +7586,7 @@ function newfrmFichaACN()
     obj.edit251:setField("espec0_10");
     obj.edit251:setName("edit251");
 
-    obj.layout80 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout80 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout80:setParent(obj.layout69);
     obj.layout80:setLeft(5);
     obj.layout80:setTop(550);
@@ -7594,7 +7594,7 @@ function newfrmFichaACN()
     obj.layout80:setHeight(50);
     obj.layout80:setName("layout80");
 
-    obj.radioButton111 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton111 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton111:setParent(obj.layout80);
     obj.radioButton111:setLeft(0);
     obj.radioButton111:setTop(0);
@@ -7603,7 +7603,7 @@ function newfrmFichaACN()
     obj.radioButton111:setFieldValue("total0_11");
     obj.radioButton111:setName("radioButton111");
 
-    obj.radioButton112 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton112 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton112:setParent(obj.layout80);
     obj.radioButton112:setLeft(0);
     obj.radioButton112:setTop(15);
@@ -7612,7 +7612,7 @@ function newfrmFichaACN()
     obj.radioButton112:setFieldValue("total0_11");
     obj.radioButton112:setName("radioButton112");
 
-    obj.edit252 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit252 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit252:setParent(obj.layout80);
     obj.edit252:setLeft(20);
     obj.edit252:setTop(0);
@@ -7621,7 +7621,7 @@ function newfrmFichaACN()
     obj.edit252:setField("nome0_11");
     obj.edit252:setName("edit252");
 
-    obj.rectangle77 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle77 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle77:setParent(obj.layout80);
     obj.rectangle77:setLeft(125);
     obj.rectangle77:setTop(0);
@@ -7632,7 +7632,7 @@ function newfrmFichaACN()
     obj.rectangle77:setStrokeSize(1);
     obj.rectangle77:setName("rectangle77");
 
-    obj.label142 = gui.fromHandle(_obj_newObject("label"));
+    obj.label142 = GUI.fromHandle(_obj_newObject("label"));
     obj.label142:setParent(obj.layout80);
     obj.label142:setLeft(125);
     obj.label142:setTop(3);
@@ -7642,7 +7642,7 @@ function newfrmFichaACN()
     obj.label142:setHorzTextAlign("center");
     obj.label142:setName("label142");
 
-    obj.edit253 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit253 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit253:setParent(obj.layout80);
     obj.edit253:setLeft(170);
     obj.edit253:setTop(0);
@@ -7653,7 +7653,7 @@ function newfrmFichaACN()
     obj.edit253:setField("base0_11");
     obj.edit253:setName("edit253");
 
-    obj.edit254 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit254 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit254:setParent(obj.layout80);
     obj.edit254:setLeft(205);
     obj.edit254:setTop(0);
@@ -7664,7 +7664,7 @@ function newfrmFichaACN()
     obj.edit254:setField("bonus0_11");
     obj.edit254:setName("edit254");
 
-    obj.edit255 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit255 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit255:setParent(obj.layout80);
     obj.edit255:setLeft(240);
     obj.edit255:setTop(0);
@@ -7675,7 +7675,7 @@ function newfrmFichaACN()
     obj.edit255:setField("xp0_11");
     obj.edit255:setName("edit255");
 
-    obj.edit256 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit256 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit256:setParent(obj.layout80);
     obj.edit256:setLeft(20);
     obj.edit256:setTop(28);
@@ -7684,7 +7684,7 @@ function newfrmFichaACN()
     obj.edit256:setField("espec0_11");
     obj.edit256:setName("edit256");
 
-    obj.layout81 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout81 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout81:setParent(obj.layout69);
     obj.layout81:setLeft(5);
     obj.layout81:setTop(600);
@@ -7692,7 +7692,7 @@ function newfrmFichaACN()
     obj.layout81:setHeight(50);
     obj.layout81:setName("layout81");
 
-    obj.radioButton113 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton113 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton113:setParent(obj.layout81);
     obj.radioButton113:setLeft(0);
     obj.radioButton113:setTop(0);
@@ -7701,7 +7701,7 @@ function newfrmFichaACN()
     obj.radioButton113:setFieldValue("total0_12");
     obj.radioButton113:setName("radioButton113");
 
-    obj.radioButton114 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton114 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton114:setParent(obj.layout81);
     obj.radioButton114:setLeft(0);
     obj.radioButton114:setTop(15);
@@ -7710,7 +7710,7 @@ function newfrmFichaACN()
     obj.radioButton114:setFieldValue("total0_12");
     obj.radioButton114:setName("radioButton114");
 
-    obj.edit257 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit257 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit257:setParent(obj.layout81);
     obj.edit257:setLeft(20);
     obj.edit257:setTop(0);
@@ -7719,7 +7719,7 @@ function newfrmFichaACN()
     obj.edit257:setField("nome0_12");
     obj.edit257:setName("edit257");
 
-    obj.rectangle78 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle78 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle78:setParent(obj.layout81);
     obj.rectangle78:setLeft(125);
     obj.rectangle78:setTop(0);
@@ -7730,7 +7730,7 @@ function newfrmFichaACN()
     obj.rectangle78:setStrokeSize(1);
     obj.rectangle78:setName("rectangle78");
 
-    obj.label143 = gui.fromHandle(_obj_newObject("label"));
+    obj.label143 = GUI.fromHandle(_obj_newObject("label"));
     obj.label143:setParent(obj.layout81);
     obj.label143:setLeft(125);
     obj.label143:setTop(3);
@@ -7740,7 +7740,7 @@ function newfrmFichaACN()
     obj.label143:setHorzTextAlign("center");
     obj.label143:setName("label143");
 
-    obj.edit258 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit258 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit258:setParent(obj.layout81);
     obj.edit258:setLeft(170);
     obj.edit258:setTop(0);
@@ -7751,7 +7751,7 @@ function newfrmFichaACN()
     obj.edit258:setField("base0_12");
     obj.edit258:setName("edit258");
 
-    obj.edit259 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit259 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit259:setParent(obj.layout81);
     obj.edit259:setLeft(205);
     obj.edit259:setTop(0);
@@ -7762,7 +7762,7 @@ function newfrmFichaACN()
     obj.edit259:setField("bonus0_12");
     obj.edit259:setName("edit259");
 
-    obj.edit260 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit260 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit260:setParent(obj.layout81);
     obj.edit260:setLeft(240);
     obj.edit260:setTop(0);
@@ -7773,7 +7773,7 @@ function newfrmFichaACN()
     obj.edit260:setField("xp0_12");
     obj.edit260:setName("edit260");
 
-    obj.edit261 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit261 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit261:setParent(obj.layout81);
     obj.edit261:setLeft(20);
     obj.edit261:setTop(28);
@@ -7782,7 +7782,7 @@ function newfrmFichaACN()
     obj.edit261:setField("espec0_12");
     obj.edit261:setName("edit261");
 
-    obj.layout82 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout82 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout82:setParent(obj.scrollBox4);
     obj.layout82:setLeft(300);
     obj.layout82:setTop(0);
@@ -7790,7 +7790,7 @@ function newfrmFichaACN()
     obj.layout82:setHeight(630);
     obj.layout82:setName("layout82");
 
-    obj.rectangle79 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle79 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle79:setParent(obj.layout82);
     obj.rectangle79:setLeft(0);
     obj.rectangle79:setTop(0);
@@ -7802,7 +7802,7 @@ function newfrmFichaACN()
     obj.rectangle79:setCornerType("round");
     obj.rectangle79:setName("rectangle79");
 
-    obj.label144 = gui.fromHandle(_obj_newObject("label"));
+    obj.label144 = GUI.fromHandle(_obj_newObject("label"));
     obj.label144:setParent(obj.layout82);
     obj.label144:setLeft(5);
     obj.label144:setTop(0);
@@ -7812,7 +7812,7 @@ function newfrmFichaACN()
     obj.label144:setHorzTextAlign("center");
     obj.label144:setName("label144");
 
-    obj.label145 = gui.fromHandle(_obj_newObject("label"));
+    obj.label145 = GUI.fromHandle(_obj_newObject("label"));
     obj.label145:setParent(obj.layout82);
     obj.label145:setLeft(25);
     obj.label145:setTop(25);
@@ -7821,7 +7821,7 @@ function newfrmFichaACN()
     obj.label145:setText(" Nome");
     obj.label145:setName("label145");
 
-    obj.label146 = gui.fromHandle(_obj_newObject("label"));
+    obj.label146 = GUI.fromHandle(_obj_newObject("label"));
     obj.label146:setParent(obj.layout82);
     obj.label146:setLeft(135);
     obj.label146:setTop(25);
@@ -7830,7 +7830,7 @@ function newfrmFichaACN()
     obj.label146:setText("Total");
     obj.label146:setName("label146");
 
-    obj.label147 = gui.fromHandle(_obj_newObject("label"));
+    obj.label147 = GUI.fromHandle(_obj_newObject("label"));
     obj.label147:setParent(obj.layout82);
     obj.label147:setLeft(170);
     obj.label147:setTop(25);
@@ -7839,7 +7839,7 @@ function newfrmFichaACN()
     obj.label147:setText(" Inic");
     obj.label147:setName("label147");
 
-    obj.label148 = gui.fromHandle(_obj_newObject("label"));
+    obj.label148 = GUI.fromHandle(_obj_newObject("label"));
     obj.label148:setParent(obj.layout82);
     obj.label148:setLeft(202);
     obj.label148:setTop(25);
@@ -7848,7 +7848,7 @@ function newfrmFichaACN()
     obj.label148:setText(" Apr.");
     obj.label148:setName("label148");
 
-    obj.label149 = gui.fromHandle(_obj_newObject("label"));
+    obj.label149 = GUI.fromHandle(_obj_newObject("label"));
     obj.label149:setParent(obj.layout82);
     obj.label149:setLeft(235);
     obj.label149:setTop(25);
@@ -7857,7 +7857,7 @@ function newfrmFichaACN()
     obj.label149:setText("  XP");
     obj.label149:setName("label149");
 
-    obj.layout83 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout83 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout83:setParent(obj.layout82);
     obj.layout83:setLeft(5);
     obj.layout83:setTop(50);
@@ -7865,7 +7865,7 @@ function newfrmFichaACN()
     obj.layout83:setHeight(50);
     obj.layout83:setName("layout83");
 
-    obj.radioButton115 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton115 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton115:setParent(obj.layout83);
     obj.radioButton115:setLeft(0);
     obj.radioButton115:setTop(0);
@@ -7874,7 +7874,7 @@ function newfrmFichaACN()
     obj.radioButton115:setFieldValue("total2_1");
     obj.radioButton115:setName("radioButton115");
 
-    obj.radioButton116 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton116 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton116:setParent(obj.layout83);
     obj.radioButton116:setLeft(0);
     obj.radioButton116:setTop(15);
@@ -7883,7 +7883,7 @@ function newfrmFichaACN()
     obj.radioButton116:setFieldValue("total2_1");
     obj.radioButton116:setName("radioButton116");
 
-    obj.edit262 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit262 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit262:setParent(obj.layout83);
     obj.edit262:setLeft(20);
     obj.edit262:setTop(0);
@@ -7892,7 +7892,7 @@ function newfrmFichaACN()
     obj.edit262:setField("nome2_1");
     obj.edit262:setName("edit262");
 
-    obj.rectangle80 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle80 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle80:setParent(obj.layout83);
     obj.rectangle80:setLeft(125);
     obj.rectangle80:setTop(0);
@@ -7903,7 +7903,7 @@ function newfrmFichaACN()
     obj.rectangle80:setStrokeSize(1);
     obj.rectangle80:setName("rectangle80");
 
-    obj.label150 = gui.fromHandle(_obj_newObject("label"));
+    obj.label150 = GUI.fromHandle(_obj_newObject("label"));
     obj.label150:setParent(obj.layout83);
     obj.label150:setLeft(125);
     obj.label150:setTop(3);
@@ -7913,7 +7913,7 @@ function newfrmFichaACN()
     obj.label150:setHorzTextAlign("center");
     obj.label150:setName("label150");
 
-    obj.edit263 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit263 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit263:setParent(obj.layout83);
     obj.edit263:setLeft(170);
     obj.edit263:setTop(0);
@@ -7924,7 +7924,7 @@ function newfrmFichaACN()
     obj.edit263:setField("base2_1");
     obj.edit263:setName("edit263");
 
-    obj.edit264 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit264 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit264:setParent(obj.layout83);
     obj.edit264:setLeft(205);
     obj.edit264:setTop(0);
@@ -7935,7 +7935,7 @@ function newfrmFichaACN()
     obj.edit264:setField("bonus2_1");
     obj.edit264:setName("edit264");
 
-    obj.edit265 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit265 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit265:setParent(obj.layout83);
     obj.edit265:setLeft(240);
     obj.edit265:setTop(0);
@@ -7946,7 +7946,7 @@ function newfrmFichaACN()
     obj.edit265:setField("xp2_1");
     obj.edit265:setName("edit265");
 
-    obj.edit266 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit266 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit266:setParent(obj.layout83);
     obj.edit266:setLeft(20);
     obj.edit266:setTop(28);
@@ -7955,7 +7955,7 @@ function newfrmFichaACN()
     obj.edit266:setField("espec2_1");
     obj.edit266:setName("edit266");
 
-    obj.layout84 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout84 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout84:setParent(obj.layout82);
     obj.layout84:setLeft(5);
     obj.layout84:setTop(100);
@@ -7963,7 +7963,7 @@ function newfrmFichaACN()
     obj.layout84:setHeight(50);
     obj.layout84:setName("layout84");
 
-    obj.radioButton117 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton117 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton117:setParent(obj.layout84);
     obj.radioButton117:setLeft(0);
     obj.radioButton117:setTop(0);
@@ -7972,7 +7972,7 @@ function newfrmFichaACN()
     obj.radioButton117:setFieldValue("total2_2");
     obj.radioButton117:setName("radioButton117");
 
-    obj.radioButton118 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton118 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton118:setParent(obj.layout84);
     obj.radioButton118:setLeft(0);
     obj.radioButton118:setTop(15);
@@ -7981,7 +7981,7 @@ function newfrmFichaACN()
     obj.radioButton118:setFieldValue("total2_2");
     obj.radioButton118:setName("radioButton118");
 
-    obj.edit267 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit267 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit267:setParent(obj.layout84);
     obj.edit267:setLeft(20);
     obj.edit267:setTop(0);
@@ -7990,7 +7990,7 @@ function newfrmFichaACN()
     obj.edit267:setField("nome2_2");
     obj.edit267:setName("edit267");
 
-    obj.rectangle81 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle81 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle81:setParent(obj.layout84);
     obj.rectangle81:setLeft(125);
     obj.rectangle81:setTop(0);
@@ -8001,7 +8001,7 @@ function newfrmFichaACN()
     obj.rectangle81:setStrokeSize(1);
     obj.rectangle81:setName("rectangle81");
 
-    obj.label151 = gui.fromHandle(_obj_newObject("label"));
+    obj.label151 = GUI.fromHandle(_obj_newObject("label"));
     obj.label151:setParent(obj.layout84);
     obj.label151:setLeft(125);
     obj.label151:setTop(3);
@@ -8011,7 +8011,7 @@ function newfrmFichaACN()
     obj.label151:setHorzTextAlign("center");
     obj.label151:setName("label151");
 
-    obj.edit268 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit268 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit268:setParent(obj.layout84);
     obj.edit268:setLeft(170);
     obj.edit268:setTop(0);
@@ -8022,7 +8022,7 @@ function newfrmFichaACN()
     obj.edit268:setField("base2_2");
     obj.edit268:setName("edit268");
 
-    obj.edit269 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit269 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit269:setParent(obj.layout84);
     obj.edit269:setLeft(205);
     obj.edit269:setTop(0);
@@ -8033,7 +8033,7 @@ function newfrmFichaACN()
     obj.edit269:setField("bonus2_2");
     obj.edit269:setName("edit269");
 
-    obj.edit270 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit270 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit270:setParent(obj.layout84);
     obj.edit270:setLeft(240);
     obj.edit270:setTop(0);
@@ -8044,7 +8044,7 @@ function newfrmFichaACN()
     obj.edit270:setField("xp2_2");
     obj.edit270:setName("edit270");
 
-    obj.edit271 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit271 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit271:setParent(obj.layout84);
     obj.edit271:setLeft(20);
     obj.edit271:setTop(28);
@@ -8053,7 +8053,7 @@ function newfrmFichaACN()
     obj.edit271:setField("espec2_2");
     obj.edit271:setName("edit271");
 
-    obj.layout85 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout85 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout85:setParent(obj.layout82);
     obj.layout85:setLeft(5);
     obj.layout85:setTop(150);
@@ -8061,7 +8061,7 @@ function newfrmFichaACN()
     obj.layout85:setHeight(50);
     obj.layout85:setName("layout85");
 
-    obj.radioButton119 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton119 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton119:setParent(obj.layout85);
     obj.radioButton119:setLeft(0);
     obj.radioButton119:setTop(0);
@@ -8070,7 +8070,7 @@ function newfrmFichaACN()
     obj.radioButton119:setFieldValue("total2_3");
     obj.radioButton119:setName("radioButton119");
 
-    obj.radioButton120 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton120 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton120:setParent(obj.layout85);
     obj.radioButton120:setLeft(0);
     obj.radioButton120:setTop(15);
@@ -8079,7 +8079,7 @@ function newfrmFichaACN()
     obj.radioButton120:setFieldValue("total2_3");
     obj.radioButton120:setName("radioButton120");
 
-    obj.edit272 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit272 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit272:setParent(obj.layout85);
     obj.edit272:setLeft(20);
     obj.edit272:setTop(0);
@@ -8088,7 +8088,7 @@ function newfrmFichaACN()
     obj.edit272:setField("nome2_3");
     obj.edit272:setName("edit272");
 
-    obj.rectangle82 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle82 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle82:setParent(obj.layout85);
     obj.rectangle82:setLeft(125);
     obj.rectangle82:setTop(0);
@@ -8099,7 +8099,7 @@ function newfrmFichaACN()
     obj.rectangle82:setStrokeSize(1);
     obj.rectangle82:setName("rectangle82");
 
-    obj.label152 = gui.fromHandle(_obj_newObject("label"));
+    obj.label152 = GUI.fromHandle(_obj_newObject("label"));
     obj.label152:setParent(obj.layout85);
     obj.label152:setLeft(125);
     obj.label152:setTop(3);
@@ -8109,7 +8109,7 @@ function newfrmFichaACN()
     obj.label152:setHorzTextAlign("center");
     obj.label152:setName("label152");
 
-    obj.edit273 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit273 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit273:setParent(obj.layout85);
     obj.edit273:setLeft(170);
     obj.edit273:setTop(0);
@@ -8120,7 +8120,7 @@ function newfrmFichaACN()
     obj.edit273:setField("base2_3");
     obj.edit273:setName("edit273");
 
-    obj.edit274 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit274 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit274:setParent(obj.layout85);
     obj.edit274:setLeft(205);
     obj.edit274:setTop(0);
@@ -8131,7 +8131,7 @@ function newfrmFichaACN()
     obj.edit274:setField("bonus2_3");
     obj.edit274:setName("edit274");
 
-    obj.edit275 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit275 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit275:setParent(obj.layout85);
     obj.edit275:setLeft(240);
     obj.edit275:setTop(0);
@@ -8142,7 +8142,7 @@ function newfrmFichaACN()
     obj.edit275:setField("xp2_3");
     obj.edit275:setName("edit275");
 
-    obj.edit276 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit276 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit276:setParent(obj.layout85);
     obj.edit276:setLeft(20);
     obj.edit276:setTop(28);
@@ -8151,7 +8151,7 @@ function newfrmFichaACN()
     obj.edit276:setField("espec2_3");
     obj.edit276:setName("edit276");
 
-    obj.layout86 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout86 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout86:setParent(obj.layout82);
     obj.layout86:setLeft(5);
     obj.layout86:setTop(200);
@@ -8159,7 +8159,7 @@ function newfrmFichaACN()
     obj.layout86:setHeight(50);
     obj.layout86:setName("layout86");
 
-    obj.radioButton121 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton121 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton121:setParent(obj.layout86);
     obj.radioButton121:setLeft(0);
     obj.radioButton121:setTop(0);
@@ -8168,7 +8168,7 @@ function newfrmFichaACN()
     obj.radioButton121:setFieldValue("total2_4");
     obj.radioButton121:setName("radioButton121");
 
-    obj.radioButton122 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton122 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton122:setParent(obj.layout86);
     obj.radioButton122:setLeft(0);
     obj.radioButton122:setTop(15);
@@ -8177,7 +8177,7 @@ function newfrmFichaACN()
     obj.radioButton122:setFieldValue("total2_4");
     obj.radioButton122:setName("radioButton122");
 
-    obj.edit277 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit277 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit277:setParent(obj.layout86);
     obj.edit277:setLeft(20);
     obj.edit277:setTop(0);
@@ -8186,7 +8186,7 @@ function newfrmFichaACN()
     obj.edit277:setField("nome2_4");
     obj.edit277:setName("edit277");
 
-    obj.rectangle83 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle83 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle83:setParent(obj.layout86);
     obj.rectangle83:setLeft(125);
     obj.rectangle83:setTop(0);
@@ -8197,7 +8197,7 @@ function newfrmFichaACN()
     obj.rectangle83:setStrokeSize(1);
     obj.rectangle83:setName("rectangle83");
 
-    obj.label153 = gui.fromHandle(_obj_newObject("label"));
+    obj.label153 = GUI.fromHandle(_obj_newObject("label"));
     obj.label153:setParent(obj.layout86);
     obj.label153:setLeft(125);
     obj.label153:setTop(3);
@@ -8207,7 +8207,7 @@ function newfrmFichaACN()
     obj.label153:setHorzTextAlign("center");
     obj.label153:setName("label153");
 
-    obj.edit278 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit278 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit278:setParent(obj.layout86);
     obj.edit278:setLeft(170);
     obj.edit278:setTop(0);
@@ -8218,7 +8218,7 @@ function newfrmFichaACN()
     obj.edit278:setField("base2_4");
     obj.edit278:setName("edit278");
 
-    obj.edit279 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit279 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit279:setParent(obj.layout86);
     obj.edit279:setLeft(205);
     obj.edit279:setTop(0);
@@ -8229,7 +8229,7 @@ function newfrmFichaACN()
     obj.edit279:setField("bonus2_4");
     obj.edit279:setName("edit279");
 
-    obj.edit280 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit280 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit280:setParent(obj.layout86);
     obj.edit280:setLeft(240);
     obj.edit280:setTop(0);
@@ -8240,7 +8240,7 @@ function newfrmFichaACN()
     obj.edit280:setField("xp2_4");
     obj.edit280:setName("edit280");
 
-    obj.edit281 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit281 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit281:setParent(obj.layout86);
     obj.edit281:setLeft(20);
     obj.edit281:setTop(28);
@@ -8249,7 +8249,7 @@ function newfrmFichaACN()
     obj.edit281:setField("espec2_4");
     obj.edit281:setName("edit281");
 
-    obj.layout87 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout87 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout87:setParent(obj.layout82);
     obj.layout87:setLeft(5);
     obj.layout87:setTop(250);
@@ -8257,7 +8257,7 @@ function newfrmFichaACN()
     obj.layout87:setHeight(50);
     obj.layout87:setName("layout87");
 
-    obj.radioButton123 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton123 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton123:setParent(obj.layout87);
     obj.radioButton123:setLeft(0);
     obj.radioButton123:setTop(0);
@@ -8266,7 +8266,7 @@ function newfrmFichaACN()
     obj.radioButton123:setFieldValue("total2_5");
     obj.radioButton123:setName("radioButton123");
 
-    obj.radioButton124 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton124 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton124:setParent(obj.layout87);
     obj.radioButton124:setLeft(0);
     obj.radioButton124:setTop(15);
@@ -8275,7 +8275,7 @@ function newfrmFichaACN()
     obj.radioButton124:setFieldValue("total2_5");
     obj.radioButton124:setName("radioButton124");
 
-    obj.edit282 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit282 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit282:setParent(obj.layout87);
     obj.edit282:setLeft(20);
     obj.edit282:setTop(0);
@@ -8284,7 +8284,7 @@ function newfrmFichaACN()
     obj.edit282:setField("nome2_5");
     obj.edit282:setName("edit282");
 
-    obj.rectangle84 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle84 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle84:setParent(obj.layout87);
     obj.rectangle84:setLeft(125);
     obj.rectangle84:setTop(0);
@@ -8295,7 +8295,7 @@ function newfrmFichaACN()
     obj.rectangle84:setStrokeSize(1);
     obj.rectangle84:setName("rectangle84");
 
-    obj.label154 = gui.fromHandle(_obj_newObject("label"));
+    obj.label154 = GUI.fromHandle(_obj_newObject("label"));
     obj.label154:setParent(obj.layout87);
     obj.label154:setLeft(125);
     obj.label154:setTop(3);
@@ -8305,7 +8305,7 @@ function newfrmFichaACN()
     obj.label154:setHorzTextAlign("center");
     obj.label154:setName("label154");
 
-    obj.edit283 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit283 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit283:setParent(obj.layout87);
     obj.edit283:setLeft(170);
     obj.edit283:setTop(0);
@@ -8316,7 +8316,7 @@ function newfrmFichaACN()
     obj.edit283:setField("base2_5");
     obj.edit283:setName("edit283");
 
-    obj.edit284 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit284 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit284:setParent(obj.layout87);
     obj.edit284:setLeft(205);
     obj.edit284:setTop(0);
@@ -8327,7 +8327,7 @@ function newfrmFichaACN()
     obj.edit284:setField("bonus2_5");
     obj.edit284:setName("edit284");
 
-    obj.edit285 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit285 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit285:setParent(obj.layout87);
     obj.edit285:setLeft(240);
     obj.edit285:setTop(0);
@@ -8338,7 +8338,7 @@ function newfrmFichaACN()
     obj.edit285:setField("xp2_5");
     obj.edit285:setName("edit285");
 
-    obj.edit286 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit286 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit286:setParent(obj.layout87);
     obj.edit286:setLeft(20);
     obj.edit286:setTop(28);
@@ -8347,7 +8347,7 @@ function newfrmFichaACN()
     obj.edit286:setField("espec2_5");
     obj.edit286:setName("edit286");
 
-    obj.layout88 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout88 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout88:setParent(obj.layout82);
     obj.layout88:setLeft(5);
     obj.layout88:setTop(300);
@@ -8355,7 +8355,7 @@ function newfrmFichaACN()
     obj.layout88:setHeight(50);
     obj.layout88:setName("layout88");
 
-    obj.radioButton125 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton125 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton125:setParent(obj.layout88);
     obj.radioButton125:setLeft(0);
     obj.radioButton125:setTop(0);
@@ -8364,7 +8364,7 @@ function newfrmFichaACN()
     obj.radioButton125:setFieldValue("total2_6");
     obj.radioButton125:setName("radioButton125");
 
-    obj.radioButton126 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton126 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton126:setParent(obj.layout88);
     obj.radioButton126:setLeft(0);
     obj.radioButton126:setTop(15);
@@ -8373,7 +8373,7 @@ function newfrmFichaACN()
     obj.radioButton126:setFieldValue("total2_6");
     obj.radioButton126:setName("radioButton126");
 
-    obj.edit287 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit287 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit287:setParent(obj.layout88);
     obj.edit287:setLeft(20);
     obj.edit287:setTop(0);
@@ -8382,7 +8382,7 @@ function newfrmFichaACN()
     obj.edit287:setField("nome2_6");
     obj.edit287:setName("edit287");
 
-    obj.rectangle85 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle85 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle85:setParent(obj.layout88);
     obj.rectangle85:setLeft(125);
     obj.rectangle85:setTop(0);
@@ -8393,7 +8393,7 @@ function newfrmFichaACN()
     obj.rectangle85:setStrokeSize(1);
     obj.rectangle85:setName("rectangle85");
 
-    obj.label155 = gui.fromHandle(_obj_newObject("label"));
+    obj.label155 = GUI.fromHandle(_obj_newObject("label"));
     obj.label155:setParent(obj.layout88);
     obj.label155:setLeft(125);
     obj.label155:setTop(3);
@@ -8403,7 +8403,7 @@ function newfrmFichaACN()
     obj.label155:setHorzTextAlign("center");
     obj.label155:setName("label155");
 
-    obj.edit288 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit288 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit288:setParent(obj.layout88);
     obj.edit288:setLeft(170);
     obj.edit288:setTop(0);
@@ -8414,7 +8414,7 @@ function newfrmFichaACN()
     obj.edit288:setField("base2_6");
     obj.edit288:setName("edit288");
 
-    obj.edit289 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit289 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit289:setParent(obj.layout88);
     obj.edit289:setLeft(205);
     obj.edit289:setTop(0);
@@ -8425,7 +8425,7 @@ function newfrmFichaACN()
     obj.edit289:setField("bonus2_6");
     obj.edit289:setName("edit289");
 
-    obj.edit290 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit290 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit290:setParent(obj.layout88);
     obj.edit290:setLeft(240);
     obj.edit290:setTop(0);
@@ -8436,7 +8436,7 @@ function newfrmFichaACN()
     obj.edit290:setField("xp2_6");
     obj.edit290:setName("edit290");
 
-    obj.edit291 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit291 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit291:setParent(obj.layout88);
     obj.edit291:setLeft(20);
     obj.edit291:setTop(28);
@@ -8445,7 +8445,7 @@ function newfrmFichaACN()
     obj.edit291:setField("espec2_6");
     obj.edit291:setName("edit291");
 
-    obj.layout89 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout89 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout89:setParent(obj.layout82);
     obj.layout89:setLeft(5);
     obj.layout89:setTop(350);
@@ -8453,7 +8453,7 @@ function newfrmFichaACN()
     obj.layout89:setHeight(50);
     obj.layout89:setName("layout89");
 
-    obj.radioButton127 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton127 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton127:setParent(obj.layout89);
     obj.radioButton127:setLeft(0);
     obj.radioButton127:setTop(0);
@@ -8462,7 +8462,7 @@ function newfrmFichaACN()
     obj.radioButton127:setFieldValue("total2_7");
     obj.radioButton127:setName("radioButton127");
 
-    obj.radioButton128 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton128 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton128:setParent(obj.layout89);
     obj.radioButton128:setLeft(0);
     obj.radioButton128:setTop(15);
@@ -8471,7 +8471,7 @@ function newfrmFichaACN()
     obj.radioButton128:setFieldValue("total2_7");
     obj.radioButton128:setName("radioButton128");
 
-    obj.edit292 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit292 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit292:setParent(obj.layout89);
     obj.edit292:setLeft(20);
     obj.edit292:setTop(0);
@@ -8480,7 +8480,7 @@ function newfrmFichaACN()
     obj.edit292:setField("nome2_7");
     obj.edit292:setName("edit292");
 
-    obj.rectangle86 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle86 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle86:setParent(obj.layout89);
     obj.rectangle86:setLeft(125);
     obj.rectangle86:setTop(0);
@@ -8491,7 +8491,7 @@ function newfrmFichaACN()
     obj.rectangle86:setStrokeSize(1);
     obj.rectangle86:setName("rectangle86");
 
-    obj.label156 = gui.fromHandle(_obj_newObject("label"));
+    obj.label156 = GUI.fromHandle(_obj_newObject("label"));
     obj.label156:setParent(obj.layout89);
     obj.label156:setLeft(125);
     obj.label156:setTop(3);
@@ -8501,7 +8501,7 @@ function newfrmFichaACN()
     obj.label156:setHorzTextAlign("center");
     obj.label156:setName("label156");
 
-    obj.edit293 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit293 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit293:setParent(obj.layout89);
     obj.edit293:setLeft(170);
     obj.edit293:setTop(0);
@@ -8512,7 +8512,7 @@ function newfrmFichaACN()
     obj.edit293:setField("base2_7");
     obj.edit293:setName("edit293");
 
-    obj.edit294 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit294 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit294:setParent(obj.layout89);
     obj.edit294:setLeft(205);
     obj.edit294:setTop(0);
@@ -8523,7 +8523,7 @@ function newfrmFichaACN()
     obj.edit294:setField("bonus2_7");
     obj.edit294:setName("edit294");
 
-    obj.edit295 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit295 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit295:setParent(obj.layout89);
     obj.edit295:setLeft(240);
     obj.edit295:setTop(0);
@@ -8534,7 +8534,7 @@ function newfrmFichaACN()
     obj.edit295:setField("xp2_7");
     obj.edit295:setName("edit295");
 
-    obj.edit296 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit296 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit296:setParent(obj.layout89);
     obj.edit296:setLeft(20);
     obj.edit296:setTop(28);
@@ -8543,7 +8543,7 @@ function newfrmFichaACN()
     obj.edit296:setField("espec2_7");
     obj.edit296:setName("edit296");
 
-    obj.layout90 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout90 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout90:setParent(obj.layout82);
     obj.layout90:setLeft(5);
     obj.layout90:setTop(400);
@@ -8551,7 +8551,7 @@ function newfrmFichaACN()
     obj.layout90:setHeight(50);
     obj.layout90:setName("layout90");
 
-    obj.radioButton129 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton129 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton129:setParent(obj.layout90);
     obj.radioButton129:setLeft(0);
     obj.radioButton129:setTop(0);
@@ -8560,7 +8560,7 @@ function newfrmFichaACN()
     obj.radioButton129:setFieldValue("total2_8");
     obj.radioButton129:setName("radioButton129");
 
-    obj.radioButton130 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton130 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton130:setParent(obj.layout90);
     obj.radioButton130:setLeft(0);
     obj.radioButton130:setTop(15);
@@ -8569,7 +8569,7 @@ function newfrmFichaACN()
     obj.radioButton130:setFieldValue("total2_8");
     obj.radioButton130:setName("radioButton130");
 
-    obj.edit297 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit297 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit297:setParent(obj.layout90);
     obj.edit297:setLeft(20);
     obj.edit297:setTop(0);
@@ -8578,7 +8578,7 @@ function newfrmFichaACN()
     obj.edit297:setField("nome2_8");
     obj.edit297:setName("edit297");
 
-    obj.rectangle87 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle87 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle87:setParent(obj.layout90);
     obj.rectangle87:setLeft(125);
     obj.rectangle87:setTop(0);
@@ -8589,7 +8589,7 @@ function newfrmFichaACN()
     obj.rectangle87:setStrokeSize(1);
     obj.rectangle87:setName("rectangle87");
 
-    obj.label157 = gui.fromHandle(_obj_newObject("label"));
+    obj.label157 = GUI.fromHandle(_obj_newObject("label"));
     obj.label157:setParent(obj.layout90);
     obj.label157:setLeft(125);
     obj.label157:setTop(3);
@@ -8599,7 +8599,7 @@ function newfrmFichaACN()
     obj.label157:setHorzTextAlign("center");
     obj.label157:setName("label157");
 
-    obj.edit298 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit298 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit298:setParent(obj.layout90);
     obj.edit298:setLeft(170);
     obj.edit298:setTop(0);
@@ -8610,7 +8610,7 @@ function newfrmFichaACN()
     obj.edit298:setField("base2_8");
     obj.edit298:setName("edit298");
 
-    obj.edit299 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit299 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit299:setParent(obj.layout90);
     obj.edit299:setLeft(205);
     obj.edit299:setTop(0);
@@ -8621,7 +8621,7 @@ function newfrmFichaACN()
     obj.edit299:setField("bonus2_8");
     obj.edit299:setName("edit299");
 
-    obj.edit300 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit300 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit300:setParent(obj.layout90);
     obj.edit300:setLeft(240);
     obj.edit300:setTop(0);
@@ -8632,7 +8632,7 @@ function newfrmFichaACN()
     obj.edit300:setField("xp2_8");
     obj.edit300:setName("edit300");
 
-    obj.edit301 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit301 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit301:setParent(obj.layout90);
     obj.edit301:setLeft(20);
     obj.edit301:setTop(28);
@@ -8641,7 +8641,7 @@ function newfrmFichaACN()
     obj.edit301:setField("espec2_8");
     obj.edit301:setName("edit301");
 
-    obj.layout91 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout91 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout91:setParent(obj.layout82);
     obj.layout91:setLeft(5);
     obj.layout91:setTop(450);
@@ -8649,7 +8649,7 @@ function newfrmFichaACN()
     obj.layout91:setHeight(50);
     obj.layout91:setName("layout91");
 
-    obj.radioButton131 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton131 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton131:setParent(obj.layout91);
     obj.radioButton131:setLeft(0);
     obj.radioButton131:setTop(0);
@@ -8658,7 +8658,7 @@ function newfrmFichaACN()
     obj.radioButton131:setFieldValue("total2_9");
     obj.radioButton131:setName("radioButton131");
 
-    obj.radioButton132 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton132 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton132:setParent(obj.layout91);
     obj.radioButton132:setLeft(0);
     obj.radioButton132:setTop(15);
@@ -8667,7 +8667,7 @@ function newfrmFichaACN()
     obj.radioButton132:setFieldValue("total2_9");
     obj.radioButton132:setName("radioButton132");
 
-    obj.edit302 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit302 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit302:setParent(obj.layout91);
     obj.edit302:setLeft(20);
     obj.edit302:setTop(0);
@@ -8676,7 +8676,7 @@ function newfrmFichaACN()
     obj.edit302:setField("nome2_9");
     obj.edit302:setName("edit302");
 
-    obj.rectangle88 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle88 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle88:setParent(obj.layout91);
     obj.rectangle88:setLeft(125);
     obj.rectangle88:setTop(0);
@@ -8687,7 +8687,7 @@ function newfrmFichaACN()
     obj.rectangle88:setStrokeSize(1);
     obj.rectangle88:setName("rectangle88");
 
-    obj.label158 = gui.fromHandle(_obj_newObject("label"));
+    obj.label158 = GUI.fromHandle(_obj_newObject("label"));
     obj.label158:setParent(obj.layout91);
     obj.label158:setLeft(125);
     obj.label158:setTop(3);
@@ -8697,7 +8697,7 @@ function newfrmFichaACN()
     obj.label158:setHorzTextAlign("center");
     obj.label158:setName("label158");
 
-    obj.edit303 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit303 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit303:setParent(obj.layout91);
     obj.edit303:setLeft(170);
     obj.edit303:setTop(0);
@@ -8708,7 +8708,7 @@ function newfrmFichaACN()
     obj.edit303:setField("base2_9");
     obj.edit303:setName("edit303");
 
-    obj.edit304 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit304 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit304:setParent(obj.layout91);
     obj.edit304:setLeft(205);
     obj.edit304:setTop(0);
@@ -8719,7 +8719,7 @@ function newfrmFichaACN()
     obj.edit304:setField("bonus2_9");
     obj.edit304:setName("edit304");
 
-    obj.edit305 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit305 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit305:setParent(obj.layout91);
     obj.edit305:setLeft(240);
     obj.edit305:setTop(0);
@@ -8730,7 +8730,7 @@ function newfrmFichaACN()
     obj.edit305:setField("xp2_9");
     obj.edit305:setName("edit305");
 
-    obj.edit306 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit306 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit306:setParent(obj.layout91);
     obj.edit306:setLeft(20);
     obj.edit306:setTop(28);
@@ -8739,7 +8739,7 @@ function newfrmFichaACN()
     obj.edit306:setField("espec2_9");
     obj.edit306:setName("edit306");
 
-    obj.layout92 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout92 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout92:setParent(obj.layout82);
     obj.layout92:setLeft(5);
     obj.layout92:setTop(500);
@@ -8747,7 +8747,7 @@ function newfrmFichaACN()
     obj.layout92:setHeight(50);
     obj.layout92:setName("layout92");
 
-    obj.radioButton133 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton133 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton133:setParent(obj.layout92);
     obj.radioButton133:setLeft(0);
     obj.radioButton133:setTop(0);
@@ -8756,7 +8756,7 @@ function newfrmFichaACN()
     obj.radioButton133:setFieldValue("total2_10");
     obj.radioButton133:setName("radioButton133");
 
-    obj.radioButton134 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton134 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton134:setParent(obj.layout92);
     obj.radioButton134:setLeft(0);
     obj.radioButton134:setTop(15);
@@ -8765,7 +8765,7 @@ function newfrmFichaACN()
     obj.radioButton134:setFieldValue("total2_10");
     obj.radioButton134:setName("radioButton134");
 
-    obj.edit307 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit307 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit307:setParent(obj.layout92);
     obj.edit307:setLeft(20);
     obj.edit307:setTop(0);
@@ -8774,7 +8774,7 @@ function newfrmFichaACN()
     obj.edit307:setField("nome2_10");
     obj.edit307:setName("edit307");
 
-    obj.rectangle89 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle89 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle89:setParent(obj.layout92);
     obj.rectangle89:setLeft(125);
     obj.rectangle89:setTop(0);
@@ -8785,7 +8785,7 @@ function newfrmFichaACN()
     obj.rectangle89:setStrokeSize(1);
     obj.rectangle89:setName("rectangle89");
 
-    obj.label159 = gui.fromHandle(_obj_newObject("label"));
+    obj.label159 = GUI.fromHandle(_obj_newObject("label"));
     obj.label159:setParent(obj.layout92);
     obj.label159:setLeft(125);
     obj.label159:setTop(3);
@@ -8795,7 +8795,7 @@ function newfrmFichaACN()
     obj.label159:setHorzTextAlign("center");
     obj.label159:setName("label159");
 
-    obj.edit308 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit308 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit308:setParent(obj.layout92);
     obj.edit308:setLeft(170);
     obj.edit308:setTop(0);
@@ -8806,7 +8806,7 @@ function newfrmFichaACN()
     obj.edit308:setField("base2_10");
     obj.edit308:setName("edit308");
 
-    obj.edit309 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit309 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit309:setParent(obj.layout92);
     obj.edit309:setLeft(205);
     obj.edit309:setTop(0);
@@ -8817,7 +8817,7 @@ function newfrmFichaACN()
     obj.edit309:setField("bonus2_10");
     obj.edit309:setName("edit309");
 
-    obj.edit310 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit310 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit310:setParent(obj.layout92);
     obj.edit310:setLeft(240);
     obj.edit310:setTop(0);
@@ -8828,7 +8828,7 @@ function newfrmFichaACN()
     obj.edit310:setField("xp2_10");
     obj.edit310:setName("edit310");
 
-    obj.edit311 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit311 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit311:setParent(obj.layout92);
     obj.edit311:setLeft(20);
     obj.edit311:setTop(28);
@@ -8837,7 +8837,7 @@ function newfrmFichaACN()
     obj.edit311:setField("espec2_10");
     obj.edit311:setName("edit311");
 
-    obj.layout93 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout93 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout93:setParent(obj.layout82);
     obj.layout93:setLeft(5);
     obj.layout93:setTop(550);
@@ -8845,7 +8845,7 @@ function newfrmFichaACN()
     obj.layout93:setHeight(50);
     obj.layout93:setName("layout93");
 
-    obj.radioButton135 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton135 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton135:setParent(obj.layout93);
     obj.radioButton135:setLeft(0);
     obj.radioButton135:setTop(0);
@@ -8854,7 +8854,7 @@ function newfrmFichaACN()
     obj.radioButton135:setFieldValue("total2_11");
     obj.radioButton135:setName("radioButton135");
 
-    obj.radioButton136 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton136 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton136:setParent(obj.layout93);
     obj.radioButton136:setLeft(0);
     obj.radioButton136:setTop(15);
@@ -8863,7 +8863,7 @@ function newfrmFichaACN()
     obj.radioButton136:setFieldValue("total2_11");
     obj.radioButton136:setName("radioButton136");
 
-    obj.edit312 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit312 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit312:setParent(obj.layout93);
     obj.edit312:setLeft(20);
     obj.edit312:setTop(0);
@@ -8872,7 +8872,7 @@ function newfrmFichaACN()
     obj.edit312:setField("nome2_11");
     obj.edit312:setName("edit312");
 
-    obj.rectangle90 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle90 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle90:setParent(obj.layout93);
     obj.rectangle90:setLeft(125);
     obj.rectangle90:setTop(0);
@@ -8883,7 +8883,7 @@ function newfrmFichaACN()
     obj.rectangle90:setStrokeSize(1);
     obj.rectangle90:setName("rectangle90");
 
-    obj.label160 = gui.fromHandle(_obj_newObject("label"));
+    obj.label160 = GUI.fromHandle(_obj_newObject("label"));
     obj.label160:setParent(obj.layout93);
     obj.label160:setLeft(125);
     obj.label160:setTop(3);
@@ -8893,7 +8893,7 @@ function newfrmFichaACN()
     obj.label160:setHorzTextAlign("center");
     obj.label160:setName("label160");
 
-    obj.edit313 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit313 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit313:setParent(obj.layout93);
     obj.edit313:setLeft(170);
     obj.edit313:setTop(0);
@@ -8904,7 +8904,7 @@ function newfrmFichaACN()
     obj.edit313:setField("base2_11");
     obj.edit313:setName("edit313");
 
-    obj.edit314 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit314 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit314:setParent(obj.layout93);
     obj.edit314:setLeft(205);
     obj.edit314:setTop(0);
@@ -8915,7 +8915,7 @@ function newfrmFichaACN()
     obj.edit314:setField("bonus2_11");
     obj.edit314:setName("edit314");
 
-    obj.edit315 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit315 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit315:setParent(obj.layout93);
     obj.edit315:setLeft(240);
     obj.edit315:setTop(0);
@@ -8926,7 +8926,7 @@ function newfrmFichaACN()
     obj.edit315:setField("xp2_11");
     obj.edit315:setName("edit315");
 
-    obj.edit316 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit316 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit316:setParent(obj.layout93);
     obj.edit316:setLeft(20);
     obj.edit316:setTop(28);
@@ -8935,7 +8935,7 @@ function newfrmFichaACN()
     obj.edit316:setField("espec2_11");
     obj.edit316:setName("edit316");
 
-    obj.layout94 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout94 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout94:setParent(obj.layout82);
     obj.layout94:setLeft(5);
     obj.layout94:setTop(600);
@@ -8943,7 +8943,7 @@ function newfrmFichaACN()
     obj.layout94:setHeight(50);
     obj.layout94:setName("layout94");
 
-    obj.radioButton137 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton137 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton137:setParent(obj.layout94);
     obj.radioButton137:setLeft(0);
     obj.radioButton137:setTop(0);
@@ -8952,7 +8952,7 @@ function newfrmFichaACN()
     obj.radioButton137:setFieldValue("total2_12");
     obj.radioButton137:setName("radioButton137");
 
-    obj.radioButton138 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton138 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton138:setParent(obj.layout94);
     obj.radioButton138:setLeft(0);
     obj.radioButton138:setTop(15);
@@ -8961,7 +8961,7 @@ function newfrmFichaACN()
     obj.radioButton138:setFieldValue("total2_12");
     obj.radioButton138:setName("radioButton138");
 
-    obj.edit317 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit317 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit317:setParent(obj.layout94);
     obj.edit317:setLeft(20);
     obj.edit317:setTop(0);
@@ -8970,7 +8970,7 @@ function newfrmFichaACN()
     obj.edit317:setField("nome2_12");
     obj.edit317:setName("edit317");
 
-    obj.rectangle91 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle91 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle91:setParent(obj.layout94);
     obj.rectangle91:setLeft(125);
     obj.rectangle91:setTop(0);
@@ -8981,7 +8981,7 @@ function newfrmFichaACN()
     obj.rectangle91:setStrokeSize(1);
     obj.rectangle91:setName("rectangle91");
 
-    obj.label161 = gui.fromHandle(_obj_newObject("label"));
+    obj.label161 = GUI.fromHandle(_obj_newObject("label"));
     obj.label161:setParent(obj.layout94);
     obj.label161:setLeft(125);
     obj.label161:setTop(3);
@@ -8991,7 +8991,7 @@ function newfrmFichaACN()
     obj.label161:setHorzTextAlign("center");
     obj.label161:setName("label161");
 
-    obj.edit318 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit318 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit318:setParent(obj.layout94);
     obj.edit318:setLeft(170);
     obj.edit318:setTop(0);
@@ -9002,7 +9002,7 @@ function newfrmFichaACN()
     obj.edit318:setField("base2_12");
     obj.edit318:setName("edit318");
 
-    obj.edit319 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit319 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit319:setParent(obj.layout94);
     obj.edit319:setLeft(205);
     obj.edit319:setTop(0);
@@ -9013,7 +9013,7 @@ function newfrmFichaACN()
     obj.edit319:setField("bonus2_12");
     obj.edit319:setName("edit319");
 
-    obj.edit320 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit320 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit320:setParent(obj.layout94);
     obj.edit320:setLeft(240);
     obj.edit320:setTop(0);
@@ -9024,7 +9024,7 @@ function newfrmFichaACN()
     obj.edit320:setField("xp2_12");
     obj.edit320:setName("edit320");
 
-    obj.edit321 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit321 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit321:setParent(obj.layout94);
     obj.edit321:setLeft(20);
     obj.edit321:setTop(28);
@@ -9033,7 +9033,7 @@ function newfrmFichaACN()
     obj.edit321:setField("espec2_12");
     obj.edit321:setName("edit321");
 
-    obj.layout95 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout95 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout95:setParent(obj.scrollBox4);
     obj.layout95:setLeft(600);
     obj.layout95:setTop(0);
@@ -9041,7 +9041,7 @@ function newfrmFichaACN()
     obj.layout95:setHeight(630);
     obj.layout95:setName("layout95");
 
-    obj.rectangle92 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle92 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle92:setParent(obj.layout95);
     obj.rectangle92:setLeft(0);
     obj.rectangle92:setTop(0);
@@ -9053,7 +9053,7 @@ function newfrmFichaACN()
     obj.rectangle92:setCornerType("round");
     obj.rectangle92:setName("rectangle92");
 
-    obj.label162 = gui.fromHandle(_obj_newObject("label"));
+    obj.label162 = GUI.fromHandle(_obj_newObject("label"));
     obj.label162:setParent(obj.layout95);
     obj.label162:setLeft(5);
     obj.label162:setTop(0);
@@ -9063,7 +9063,7 @@ function newfrmFichaACN()
     obj.label162:setHorzTextAlign("center");
     obj.label162:setName("label162");
 
-    obj.label163 = gui.fromHandle(_obj_newObject("label"));
+    obj.label163 = GUI.fromHandle(_obj_newObject("label"));
     obj.label163:setParent(obj.layout95);
     obj.label163:setLeft(25);
     obj.label163:setTop(25);
@@ -9072,7 +9072,7 @@ function newfrmFichaACN()
     obj.label163:setText(" Nome");
     obj.label163:setName("label163");
 
-    obj.label164 = gui.fromHandle(_obj_newObject("label"));
+    obj.label164 = GUI.fromHandle(_obj_newObject("label"));
     obj.label164:setParent(obj.layout95);
     obj.label164:setLeft(135);
     obj.label164:setTop(25);
@@ -9081,7 +9081,7 @@ function newfrmFichaACN()
     obj.label164:setText("Total");
     obj.label164:setName("label164");
 
-    obj.label165 = gui.fromHandle(_obj_newObject("label"));
+    obj.label165 = GUI.fromHandle(_obj_newObject("label"));
     obj.label165:setParent(obj.layout95);
     obj.label165:setLeft(170);
     obj.label165:setTop(25);
@@ -9090,7 +9090,7 @@ function newfrmFichaACN()
     obj.label165:setText(" Inic");
     obj.label165:setName("label165");
 
-    obj.label166 = gui.fromHandle(_obj_newObject("label"));
+    obj.label166 = GUI.fromHandle(_obj_newObject("label"));
     obj.label166:setParent(obj.layout95);
     obj.label166:setLeft(202);
     obj.label166:setTop(25);
@@ -9099,7 +9099,7 @@ function newfrmFichaACN()
     obj.label166:setText(" Apr.");
     obj.label166:setName("label166");
 
-    obj.label167 = gui.fromHandle(_obj_newObject("label"));
+    obj.label167 = GUI.fromHandle(_obj_newObject("label"));
     obj.label167:setParent(obj.layout95);
     obj.label167:setLeft(235);
     obj.label167:setTop(25);
@@ -9108,7 +9108,7 @@ function newfrmFichaACN()
     obj.label167:setText("  XP");
     obj.label167:setName("label167");
 
-    obj.layout96 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout96 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout96:setParent(obj.layout95);
     obj.layout96:setLeft(5);
     obj.layout96:setTop(50);
@@ -9116,7 +9116,7 @@ function newfrmFichaACN()
     obj.layout96:setHeight(50);
     obj.layout96:setName("layout96");
 
-    obj.radioButton139 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton139 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton139:setParent(obj.layout96);
     obj.radioButton139:setLeft(0);
     obj.radioButton139:setTop(0);
@@ -9125,7 +9125,7 @@ function newfrmFichaACN()
     obj.radioButton139:setFieldValue("total1_1");
     obj.radioButton139:setName("radioButton139");
 
-    obj.radioButton140 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton140 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton140:setParent(obj.layout96);
     obj.radioButton140:setLeft(0);
     obj.radioButton140:setTop(15);
@@ -9134,7 +9134,7 @@ function newfrmFichaACN()
     obj.radioButton140:setFieldValue("total1_1");
     obj.radioButton140:setName("radioButton140");
 
-    obj.edit322 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit322 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit322:setParent(obj.layout96);
     obj.edit322:setLeft(20);
     obj.edit322:setTop(0);
@@ -9143,7 +9143,7 @@ function newfrmFichaACN()
     obj.edit322:setField("nome1_1");
     obj.edit322:setName("edit322");
 
-    obj.rectangle93 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle93 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle93:setParent(obj.layout96);
     obj.rectangle93:setLeft(125);
     obj.rectangle93:setTop(0);
@@ -9154,7 +9154,7 @@ function newfrmFichaACN()
     obj.rectangle93:setStrokeSize(1);
     obj.rectangle93:setName("rectangle93");
 
-    obj.label168 = gui.fromHandle(_obj_newObject("label"));
+    obj.label168 = GUI.fromHandle(_obj_newObject("label"));
     obj.label168:setParent(obj.layout96);
     obj.label168:setLeft(125);
     obj.label168:setTop(3);
@@ -9164,7 +9164,7 @@ function newfrmFichaACN()
     obj.label168:setHorzTextAlign("center");
     obj.label168:setName("label168");
 
-    obj.edit323 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit323 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit323:setParent(obj.layout96);
     obj.edit323:setLeft(170);
     obj.edit323:setTop(0);
@@ -9175,7 +9175,7 @@ function newfrmFichaACN()
     obj.edit323:setField("base1_1");
     obj.edit323:setName("edit323");
 
-    obj.edit324 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit324 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit324:setParent(obj.layout96);
     obj.edit324:setLeft(205);
     obj.edit324:setTop(0);
@@ -9186,7 +9186,7 @@ function newfrmFichaACN()
     obj.edit324:setField("bonus1_1");
     obj.edit324:setName("edit324");
 
-    obj.edit325 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit325 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit325:setParent(obj.layout96);
     obj.edit325:setLeft(240);
     obj.edit325:setTop(0);
@@ -9197,7 +9197,7 @@ function newfrmFichaACN()
     obj.edit325:setField("xp1_1");
     obj.edit325:setName("edit325");
 
-    obj.edit326 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit326 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit326:setParent(obj.layout96);
     obj.edit326:setLeft(20);
     obj.edit326:setTop(28);
@@ -9206,7 +9206,7 @@ function newfrmFichaACN()
     obj.edit326:setField("espec1_1");
     obj.edit326:setName("edit326");
 
-    obj.layout97 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout97 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout97:setParent(obj.layout95);
     obj.layout97:setLeft(5);
     obj.layout97:setTop(100);
@@ -9214,7 +9214,7 @@ function newfrmFichaACN()
     obj.layout97:setHeight(50);
     obj.layout97:setName("layout97");
 
-    obj.radioButton141 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton141 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton141:setParent(obj.layout97);
     obj.radioButton141:setLeft(0);
     obj.radioButton141:setTop(0);
@@ -9223,7 +9223,7 @@ function newfrmFichaACN()
     obj.radioButton141:setFieldValue("total1_2");
     obj.radioButton141:setName("radioButton141");
 
-    obj.radioButton142 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton142 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton142:setParent(obj.layout97);
     obj.radioButton142:setLeft(0);
     obj.radioButton142:setTop(15);
@@ -9232,7 +9232,7 @@ function newfrmFichaACN()
     obj.radioButton142:setFieldValue("total1_2");
     obj.radioButton142:setName("radioButton142");
 
-    obj.edit327 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit327 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit327:setParent(obj.layout97);
     obj.edit327:setLeft(20);
     obj.edit327:setTop(0);
@@ -9241,7 +9241,7 @@ function newfrmFichaACN()
     obj.edit327:setField("nome1_2");
     obj.edit327:setName("edit327");
 
-    obj.rectangle94 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle94 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle94:setParent(obj.layout97);
     obj.rectangle94:setLeft(125);
     obj.rectangle94:setTop(0);
@@ -9252,7 +9252,7 @@ function newfrmFichaACN()
     obj.rectangle94:setStrokeSize(1);
     obj.rectangle94:setName("rectangle94");
 
-    obj.label169 = gui.fromHandle(_obj_newObject("label"));
+    obj.label169 = GUI.fromHandle(_obj_newObject("label"));
     obj.label169:setParent(obj.layout97);
     obj.label169:setLeft(125);
     obj.label169:setTop(3);
@@ -9262,7 +9262,7 @@ function newfrmFichaACN()
     obj.label169:setHorzTextAlign("center");
     obj.label169:setName("label169");
 
-    obj.edit328 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit328 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit328:setParent(obj.layout97);
     obj.edit328:setLeft(170);
     obj.edit328:setTop(0);
@@ -9273,7 +9273,7 @@ function newfrmFichaACN()
     obj.edit328:setField("base1_2");
     obj.edit328:setName("edit328");
 
-    obj.edit329 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit329 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit329:setParent(obj.layout97);
     obj.edit329:setLeft(205);
     obj.edit329:setTop(0);
@@ -9284,7 +9284,7 @@ function newfrmFichaACN()
     obj.edit329:setField("bonus1_2");
     obj.edit329:setName("edit329");
 
-    obj.edit330 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit330 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit330:setParent(obj.layout97);
     obj.edit330:setLeft(240);
     obj.edit330:setTop(0);
@@ -9295,7 +9295,7 @@ function newfrmFichaACN()
     obj.edit330:setField("xp1_2");
     obj.edit330:setName("edit330");
 
-    obj.edit331 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit331 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit331:setParent(obj.layout97);
     obj.edit331:setLeft(20);
     obj.edit331:setTop(28);
@@ -9304,7 +9304,7 @@ function newfrmFichaACN()
     obj.edit331:setField("espec1_2");
     obj.edit331:setName("edit331");
 
-    obj.layout98 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout98 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout98:setParent(obj.layout95);
     obj.layout98:setLeft(5);
     obj.layout98:setTop(150);
@@ -9312,7 +9312,7 @@ function newfrmFichaACN()
     obj.layout98:setHeight(50);
     obj.layout98:setName("layout98");
 
-    obj.radioButton143 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton143 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton143:setParent(obj.layout98);
     obj.radioButton143:setLeft(0);
     obj.radioButton143:setTop(0);
@@ -9321,7 +9321,7 @@ function newfrmFichaACN()
     obj.radioButton143:setFieldValue("total1_3");
     obj.radioButton143:setName("radioButton143");
 
-    obj.radioButton144 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton144 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton144:setParent(obj.layout98);
     obj.radioButton144:setLeft(0);
     obj.radioButton144:setTop(15);
@@ -9330,7 +9330,7 @@ function newfrmFichaACN()
     obj.radioButton144:setFieldValue("total1_3");
     obj.radioButton144:setName("radioButton144");
 
-    obj.edit332 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit332 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit332:setParent(obj.layout98);
     obj.edit332:setLeft(20);
     obj.edit332:setTop(0);
@@ -9339,7 +9339,7 @@ function newfrmFichaACN()
     obj.edit332:setField("nome1_3");
     obj.edit332:setName("edit332");
 
-    obj.rectangle95 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle95 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle95:setParent(obj.layout98);
     obj.rectangle95:setLeft(125);
     obj.rectangle95:setTop(0);
@@ -9350,7 +9350,7 @@ function newfrmFichaACN()
     obj.rectangle95:setStrokeSize(1);
     obj.rectangle95:setName("rectangle95");
 
-    obj.label170 = gui.fromHandle(_obj_newObject("label"));
+    obj.label170 = GUI.fromHandle(_obj_newObject("label"));
     obj.label170:setParent(obj.layout98);
     obj.label170:setLeft(125);
     obj.label170:setTop(3);
@@ -9360,7 +9360,7 @@ function newfrmFichaACN()
     obj.label170:setHorzTextAlign("center");
     obj.label170:setName("label170");
 
-    obj.edit333 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit333 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit333:setParent(obj.layout98);
     obj.edit333:setLeft(170);
     obj.edit333:setTop(0);
@@ -9371,7 +9371,7 @@ function newfrmFichaACN()
     obj.edit333:setField("base1_3");
     obj.edit333:setName("edit333");
 
-    obj.edit334 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit334 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit334:setParent(obj.layout98);
     obj.edit334:setLeft(205);
     obj.edit334:setTop(0);
@@ -9382,7 +9382,7 @@ function newfrmFichaACN()
     obj.edit334:setField("bonus1_3");
     obj.edit334:setName("edit334");
 
-    obj.edit335 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit335 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit335:setParent(obj.layout98);
     obj.edit335:setLeft(240);
     obj.edit335:setTop(0);
@@ -9393,7 +9393,7 @@ function newfrmFichaACN()
     obj.edit335:setField("xp1_3");
     obj.edit335:setName("edit335");
 
-    obj.edit336 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit336 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit336:setParent(obj.layout98);
     obj.edit336:setLeft(20);
     obj.edit336:setTop(28);
@@ -9402,7 +9402,7 @@ function newfrmFichaACN()
     obj.edit336:setField("espec1_3");
     obj.edit336:setName("edit336");
 
-    obj.layout99 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout99 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout99:setParent(obj.layout95);
     obj.layout99:setLeft(5);
     obj.layout99:setTop(200);
@@ -9410,7 +9410,7 @@ function newfrmFichaACN()
     obj.layout99:setHeight(50);
     obj.layout99:setName("layout99");
 
-    obj.radioButton145 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton145 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton145:setParent(obj.layout99);
     obj.radioButton145:setLeft(0);
     obj.radioButton145:setTop(0);
@@ -9419,7 +9419,7 @@ function newfrmFichaACN()
     obj.radioButton145:setFieldValue("total1_4");
     obj.radioButton145:setName("radioButton145");
 
-    obj.radioButton146 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton146 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton146:setParent(obj.layout99);
     obj.radioButton146:setLeft(0);
     obj.radioButton146:setTop(15);
@@ -9428,7 +9428,7 @@ function newfrmFichaACN()
     obj.radioButton146:setFieldValue("total1_4");
     obj.radioButton146:setName("radioButton146");
 
-    obj.edit337 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit337 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit337:setParent(obj.layout99);
     obj.edit337:setLeft(20);
     obj.edit337:setTop(0);
@@ -9437,7 +9437,7 @@ function newfrmFichaACN()
     obj.edit337:setField("nome1_4");
     obj.edit337:setName("edit337");
 
-    obj.rectangle96 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle96 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle96:setParent(obj.layout99);
     obj.rectangle96:setLeft(125);
     obj.rectangle96:setTop(0);
@@ -9448,7 +9448,7 @@ function newfrmFichaACN()
     obj.rectangle96:setStrokeSize(1);
     obj.rectangle96:setName("rectangle96");
 
-    obj.label171 = gui.fromHandle(_obj_newObject("label"));
+    obj.label171 = GUI.fromHandle(_obj_newObject("label"));
     obj.label171:setParent(obj.layout99);
     obj.label171:setLeft(125);
     obj.label171:setTop(3);
@@ -9458,7 +9458,7 @@ function newfrmFichaACN()
     obj.label171:setHorzTextAlign("center");
     obj.label171:setName("label171");
 
-    obj.edit338 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit338 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit338:setParent(obj.layout99);
     obj.edit338:setLeft(170);
     obj.edit338:setTop(0);
@@ -9469,7 +9469,7 @@ function newfrmFichaACN()
     obj.edit338:setField("base1_4");
     obj.edit338:setName("edit338");
 
-    obj.edit339 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit339 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit339:setParent(obj.layout99);
     obj.edit339:setLeft(205);
     obj.edit339:setTop(0);
@@ -9480,7 +9480,7 @@ function newfrmFichaACN()
     obj.edit339:setField("bonus1_4");
     obj.edit339:setName("edit339");
 
-    obj.edit340 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit340 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit340:setParent(obj.layout99);
     obj.edit340:setLeft(240);
     obj.edit340:setTop(0);
@@ -9491,7 +9491,7 @@ function newfrmFichaACN()
     obj.edit340:setField("xp1_4");
     obj.edit340:setName("edit340");
 
-    obj.edit341 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit341 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit341:setParent(obj.layout99);
     obj.edit341:setLeft(20);
     obj.edit341:setTop(28);
@@ -9500,7 +9500,7 @@ function newfrmFichaACN()
     obj.edit341:setField("espec1_4");
     obj.edit341:setName("edit341");
 
-    obj.layout100 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout100 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout100:setParent(obj.layout95);
     obj.layout100:setLeft(5);
     obj.layout100:setTop(250);
@@ -9508,7 +9508,7 @@ function newfrmFichaACN()
     obj.layout100:setHeight(50);
     obj.layout100:setName("layout100");
 
-    obj.radioButton147 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton147 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton147:setParent(obj.layout100);
     obj.radioButton147:setLeft(0);
     obj.radioButton147:setTop(0);
@@ -9517,7 +9517,7 @@ function newfrmFichaACN()
     obj.radioButton147:setFieldValue("total1_5");
     obj.radioButton147:setName("radioButton147");
 
-    obj.radioButton148 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton148 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton148:setParent(obj.layout100);
     obj.radioButton148:setLeft(0);
     obj.radioButton148:setTop(15);
@@ -9526,7 +9526,7 @@ function newfrmFichaACN()
     obj.radioButton148:setFieldValue("total1_5");
     obj.radioButton148:setName("radioButton148");
 
-    obj.edit342 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit342 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit342:setParent(obj.layout100);
     obj.edit342:setLeft(20);
     obj.edit342:setTop(0);
@@ -9535,7 +9535,7 @@ function newfrmFichaACN()
     obj.edit342:setField("nome1_5");
     obj.edit342:setName("edit342");
 
-    obj.rectangle97 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle97 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle97:setParent(obj.layout100);
     obj.rectangle97:setLeft(125);
     obj.rectangle97:setTop(0);
@@ -9546,7 +9546,7 @@ function newfrmFichaACN()
     obj.rectangle97:setStrokeSize(1);
     obj.rectangle97:setName("rectangle97");
 
-    obj.label172 = gui.fromHandle(_obj_newObject("label"));
+    obj.label172 = GUI.fromHandle(_obj_newObject("label"));
     obj.label172:setParent(obj.layout100);
     obj.label172:setLeft(125);
     obj.label172:setTop(3);
@@ -9556,7 +9556,7 @@ function newfrmFichaACN()
     obj.label172:setHorzTextAlign("center");
     obj.label172:setName("label172");
 
-    obj.edit343 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit343 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit343:setParent(obj.layout100);
     obj.edit343:setLeft(170);
     obj.edit343:setTop(0);
@@ -9567,7 +9567,7 @@ function newfrmFichaACN()
     obj.edit343:setField("base1_5");
     obj.edit343:setName("edit343");
 
-    obj.edit344 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit344 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit344:setParent(obj.layout100);
     obj.edit344:setLeft(205);
     obj.edit344:setTop(0);
@@ -9578,7 +9578,7 @@ function newfrmFichaACN()
     obj.edit344:setField("bonus1_5");
     obj.edit344:setName("edit344");
 
-    obj.edit345 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit345 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit345:setParent(obj.layout100);
     obj.edit345:setLeft(240);
     obj.edit345:setTop(0);
@@ -9589,7 +9589,7 @@ function newfrmFichaACN()
     obj.edit345:setField("xp1_5");
     obj.edit345:setName("edit345");
 
-    obj.edit346 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit346 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit346:setParent(obj.layout100);
     obj.edit346:setLeft(20);
     obj.edit346:setTop(28);
@@ -9598,7 +9598,7 @@ function newfrmFichaACN()
     obj.edit346:setField("espec1_5");
     obj.edit346:setName("edit346");
 
-    obj.layout101 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout101 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout101:setParent(obj.layout95);
     obj.layout101:setLeft(5);
     obj.layout101:setTop(300);
@@ -9606,7 +9606,7 @@ function newfrmFichaACN()
     obj.layout101:setHeight(50);
     obj.layout101:setName("layout101");
 
-    obj.radioButton149 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton149 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton149:setParent(obj.layout101);
     obj.radioButton149:setLeft(0);
     obj.radioButton149:setTop(0);
@@ -9615,7 +9615,7 @@ function newfrmFichaACN()
     obj.radioButton149:setFieldValue("total1_6");
     obj.radioButton149:setName("radioButton149");
 
-    obj.radioButton150 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton150 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton150:setParent(obj.layout101);
     obj.radioButton150:setLeft(0);
     obj.radioButton150:setTop(15);
@@ -9624,7 +9624,7 @@ function newfrmFichaACN()
     obj.radioButton150:setFieldValue("total1_6");
     obj.radioButton150:setName("radioButton150");
 
-    obj.edit347 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit347 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit347:setParent(obj.layout101);
     obj.edit347:setLeft(20);
     obj.edit347:setTop(0);
@@ -9633,7 +9633,7 @@ function newfrmFichaACN()
     obj.edit347:setField("nome1_6");
     obj.edit347:setName("edit347");
 
-    obj.rectangle98 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle98 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle98:setParent(obj.layout101);
     obj.rectangle98:setLeft(125);
     obj.rectangle98:setTop(0);
@@ -9644,7 +9644,7 @@ function newfrmFichaACN()
     obj.rectangle98:setStrokeSize(1);
     obj.rectangle98:setName("rectangle98");
 
-    obj.label173 = gui.fromHandle(_obj_newObject("label"));
+    obj.label173 = GUI.fromHandle(_obj_newObject("label"));
     obj.label173:setParent(obj.layout101);
     obj.label173:setLeft(125);
     obj.label173:setTop(3);
@@ -9654,7 +9654,7 @@ function newfrmFichaACN()
     obj.label173:setHorzTextAlign("center");
     obj.label173:setName("label173");
 
-    obj.edit348 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit348 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit348:setParent(obj.layout101);
     obj.edit348:setLeft(170);
     obj.edit348:setTop(0);
@@ -9665,7 +9665,7 @@ function newfrmFichaACN()
     obj.edit348:setField("base1_6");
     obj.edit348:setName("edit348");
 
-    obj.edit349 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit349 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit349:setParent(obj.layout101);
     obj.edit349:setLeft(205);
     obj.edit349:setTop(0);
@@ -9676,7 +9676,7 @@ function newfrmFichaACN()
     obj.edit349:setField("bonus1_6");
     obj.edit349:setName("edit349");
 
-    obj.edit350 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit350 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit350:setParent(obj.layout101);
     obj.edit350:setLeft(240);
     obj.edit350:setTop(0);
@@ -9687,7 +9687,7 @@ function newfrmFichaACN()
     obj.edit350:setField("xp1_6");
     obj.edit350:setName("edit350");
 
-    obj.edit351 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit351 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit351:setParent(obj.layout101);
     obj.edit351:setLeft(20);
     obj.edit351:setTop(28);
@@ -9696,7 +9696,7 @@ function newfrmFichaACN()
     obj.edit351:setField("espec1_6");
     obj.edit351:setName("edit351");
 
-    obj.layout102 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout102 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout102:setParent(obj.layout95);
     obj.layout102:setLeft(5);
     obj.layout102:setTop(350);
@@ -9704,7 +9704,7 @@ function newfrmFichaACN()
     obj.layout102:setHeight(50);
     obj.layout102:setName("layout102");
 
-    obj.radioButton151 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton151 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton151:setParent(obj.layout102);
     obj.radioButton151:setLeft(0);
     obj.radioButton151:setTop(0);
@@ -9713,7 +9713,7 @@ function newfrmFichaACN()
     obj.radioButton151:setFieldValue("total1_7");
     obj.radioButton151:setName("radioButton151");
 
-    obj.radioButton152 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton152 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton152:setParent(obj.layout102);
     obj.radioButton152:setLeft(0);
     obj.radioButton152:setTop(15);
@@ -9722,7 +9722,7 @@ function newfrmFichaACN()
     obj.radioButton152:setFieldValue("total1_7");
     obj.radioButton152:setName("radioButton152");
 
-    obj.edit352 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit352 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit352:setParent(obj.layout102);
     obj.edit352:setLeft(20);
     obj.edit352:setTop(0);
@@ -9731,7 +9731,7 @@ function newfrmFichaACN()
     obj.edit352:setField("nome1_7");
     obj.edit352:setName("edit352");
 
-    obj.rectangle99 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle99 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle99:setParent(obj.layout102);
     obj.rectangle99:setLeft(125);
     obj.rectangle99:setTop(0);
@@ -9742,7 +9742,7 @@ function newfrmFichaACN()
     obj.rectangle99:setStrokeSize(1);
     obj.rectangle99:setName("rectangle99");
 
-    obj.label174 = gui.fromHandle(_obj_newObject("label"));
+    obj.label174 = GUI.fromHandle(_obj_newObject("label"));
     obj.label174:setParent(obj.layout102);
     obj.label174:setLeft(125);
     obj.label174:setTop(3);
@@ -9752,7 +9752,7 @@ function newfrmFichaACN()
     obj.label174:setHorzTextAlign("center");
     obj.label174:setName("label174");
 
-    obj.edit353 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit353 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit353:setParent(obj.layout102);
     obj.edit353:setLeft(170);
     obj.edit353:setTop(0);
@@ -9763,7 +9763,7 @@ function newfrmFichaACN()
     obj.edit353:setField("base1_7");
     obj.edit353:setName("edit353");
 
-    obj.edit354 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit354 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit354:setParent(obj.layout102);
     obj.edit354:setLeft(205);
     obj.edit354:setTop(0);
@@ -9774,7 +9774,7 @@ function newfrmFichaACN()
     obj.edit354:setField("bonus1_7");
     obj.edit354:setName("edit354");
 
-    obj.edit355 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit355 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit355:setParent(obj.layout102);
     obj.edit355:setLeft(240);
     obj.edit355:setTop(0);
@@ -9785,7 +9785,7 @@ function newfrmFichaACN()
     obj.edit355:setField("xp1_7");
     obj.edit355:setName("edit355");
 
-    obj.edit356 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit356 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit356:setParent(obj.layout102);
     obj.edit356:setLeft(20);
     obj.edit356:setTop(28);
@@ -9794,7 +9794,7 @@ function newfrmFichaACN()
     obj.edit356:setField("espec1_7");
     obj.edit356:setName("edit356");
 
-    obj.layout103 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout103 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout103:setParent(obj.layout95);
     obj.layout103:setLeft(5);
     obj.layout103:setTop(400);
@@ -9802,7 +9802,7 @@ function newfrmFichaACN()
     obj.layout103:setHeight(50);
     obj.layout103:setName("layout103");
 
-    obj.radioButton153 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton153 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton153:setParent(obj.layout103);
     obj.radioButton153:setLeft(0);
     obj.radioButton153:setTop(0);
@@ -9811,7 +9811,7 @@ function newfrmFichaACN()
     obj.radioButton153:setFieldValue("total1_8");
     obj.radioButton153:setName("radioButton153");
 
-    obj.radioButton154 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton154 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton154:setParent(obj.layout103);
     obj.radioButton154:setLeft(0);
     obj.radioButton154:setTop(15);
@@ -9820,7 +9820,7 @@ function newfrmFichaACN()
     obj.radioButton154:setFieldValue("total1_8");
     obj.radioButton154:setName("radioButton154");
 
-    obj.edit357 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit357 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit357:setParent(obj.layout103);
     obj.edit357:setLeft(20);
     obj.edit357:setTop(0);
@@ -9829,7 +9829,7 @@ function newfrmFichaACN()
     obj.edit357:setField("nome1_8");
     obj.edit357:setName("edit357");
 
-    obj.rectangle100 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle100 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle100:setParent(obj.layout103);
     obj.rectangle100:setLeft(125);
     obj.rectangle100:setTop(0);
@@ -9840,7 +9840,7 @@ function newfrmFichaACN()
     obj.rectangle100:setStrokeSize(1);
     obj.rectangle100:setName("rectangle100");
 
-    obj.label175 = gui.fromHandle(_obj_newObject("label"));
+    obj.label175 = GUI.fromHandle(_obj_newObject("label"));
     obj.label175:setParent(obj.layout103);
     obj.label175:setLeft(125);
     obj.label175:setTop(3);
@@ -9850,7 +9850,7 @@ function newfrmFichaACN()
     obj.label175:setHorzTextAlign("center");
     obj.label175:setName("label175");
 
-    obj.edit358 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit358 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit358:setParent(obj.layout103);
     obj.edit358:setLeft(170);
     obj.edit358:setTop(0);
@@ -9861,7 +9861,7 @@ function newfrmFichaACN()
     obj.edit358:setField("base1_8");
     obj.edit358:setName("edit358");
 
-    obj.edit359 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit359 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit359:setParent(obj.layout103);
     obj.edit359:setLeft(205);
     obj.edit359:setTop(0);
@@ -9872,7 +9872,7 @@ function newfrmFichaACN()
     obj.edit359:setField("bonus1_8");
     obj.edit359:setName("edit359");
 
-    obj.edit360 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit360 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit360:setParent(obj.layout103);
     obj.edit360:setLeft(240);
     obj.edit360:setTop(0);
@@ -9883,7 +9883,7 @@ function newfrmFichaACN()
     obj.edit360:setField("xp1_8");
     obj.edit360:setName("edit360");
 
-    obj.edit361 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit361 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit361:setParent(obj.layout103);
     obj.edit361:setLeft(20);
     obj.edit361:setTop(28);
@@ -9892,7 +9892,7 @@ function newfrmFichaACN()
     obj.edit361:setField("espec1_8");
     obj.edit361:setName("edit361");
 
-    obj.layout104 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout104 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout104:setParent(obj.layout95);
     obj.layout104:setLeft(5);
     obj.layout104:setTop(450);
@@ -9900,7 +9900,7 @@ function newfrmFichaACN()
     obj.layout104:setHeight(50);
     obj.layout104:setName("layout104");
 
-    obj.radioButton155 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton155 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton155:setParent(obj.layout104);
     obj.radioButton155:setLeft(0);
     obj.radioButton155:setTop(0);
@@ -9909,7 +9909,7 @@ function newfrmFichaACN()
     obj.radioButton155:setFieldValue("total1_9");
     obj.radioButton155:setName("radioButton155");
 
-    obj.radioButton156 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton156 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton156:setParent(obj.layout104);
     obj.radioButton156:setLeft(0);
     obj.radioButton156:setTop(15);
@@ -9918,7 +9918,7 @@ function newfrmFichaACN()
     obj.radioButton156:setFieldValue("total1_9");
     obj.radioButton156:setName("radioButton156");
 
-    obj.edit362 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit362 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit362:setParent(obj.layout104);
     obj.edit362:setLeft(20);
     obj.edit362:setTop(0);
@@ -9927,7 +9927,7 @@ function newfrmFichaACN()
     obj.edit362:setField("nome1_9");
     obj.edit362:setName("edit362");
 
-    obj.rectangle101 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle101 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle101:setParent(obj.layout104);
     obj.rectangle101:setLeft(125);
     obj.rectangle101:setTop(0);
@@ -9938,7 +9938,7 @@ function newfrmFichaACN()
     obj.rectangle101:setStrokeSize(1);
     obj.rectangle101:setName("rectangle101");
 
-    obj.label176 = gui.fromHandle(_obj_newObject("label"));
+    obj.label176 = GUI.fromHandle(_obj_newObject("label"));
     obj.label176:setParent(obj.layout104);
     obj.label176:setLeft(125);
     obj.label176:setTop(3);
@@ -9948,7 +9948,7 @@ function newfrmFichaACN()
     obj.label176:setHorzTextAlign("center");
     obj.label176:setName("label176");
 
-    obj.edit363 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit363 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit363:setParent(obj.layout104);
     obj.edit363:setLeft(170);
     obj.edit363:setTop(0);
@@ -9959,7 +9959,7 @@ function newfrmFichaACN()
     obj.edit363:setField("base1_9");
     obj.edit363:setName("edit363");
 
-    obj.edit364 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit364 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit364:setParent(obj.layout104);
     obj.edit364:setLeft(205);
     obj.edit364:setTop(0);
@@ -9970,7 +9970,7 @@ function newfrmFichaACN()
     obj.edit364:setField("bonus1_9");
     obj.edit364:setName("edit364");
 
-    obj.edit365 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit365 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit365:setParent(obj.layout104);
     obj.edit365:setLeft(240);
     obj.edit365:setTop(0);
@@ -9981,7 +9981,7 @@ function newfrmFichaACN()
     obj.edit365:setField("xp1_9");
     obj.edit365:setName("edit365");
 
-    obj.edit366 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit366 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit366:setParent(obj.layout104);
     obj.edit366:setLeft(20);
     obj.edit366:setTop(28);
@@ -9990,7 +9990,7 @@ function newfrmFichaACN()
     obj.edit366:setField("espec1_9");
     obj.edit366:setName("edit366");
 
-    obj.layout105 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout105 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout105:setParent(obj.layout95);
     obj.layout105:setLeft(5);
     obj.layout105:setTop(500);
@@ -9998,7 +9998,7 @@ function newfrmFichaACN()
     obj.layout105:setHeight(50);
     obj.layout105:setName("layout105");
 
-    obj.radioButton157 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton157 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton157:setParent(obj.layout105);
     obj.radioButton157:setLeft(0);
     obj.radioButton157:setTop(0);
@@ -10007,7 +10007,7 @@ function newfrmFichaACN()
     obj.radioButton157:setFieldValue("total1_10");
     obj.radioButton157:setName("radioButton157");
 
-    obj.radioButton158 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton158 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton158:setParent(obj.layout105);
     obj.radioButton158:setLeft(0);
     obj.radioButton158:setTop(15);
@@ -10016,7 +10016,7 @@ function newfrmFichaACN()
     obj.radioButton158:setFieldValue("total1_10");
     obj.radioButton158:setName("radioButton158");
 
-    obj.edit367 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit367 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit367:setParent(obj.layout105);
     obj.edit367:setLeft(20);
     obj.edit367:setTop(0);
@@ -10025,7 +10025,7 @@ function newfrmFichaACN()
     obj.edit367:setField("nome1_10");
     obj.edit367:setName("edit367");
 
-    obj.rectangle102 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle102 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle102:setParent(obj.layout105);
     obj.rectangle102:setLeft(125);
     obj.rectangle102:setTop(0);
@@ -10036,7 +10036,7 @@ function newfrmFichaACN()
     obj.rectangle102:setStrokeSize(1);
     obj.rectangle102:setName("rectangle102");
 
-    obj.label177 = gui.fromHandle(_obj_newObject("label"));
+    obj.label177 = GUI.fromHandle(_obj_newObject("label"));
     obj.label177:setParent(obj.layout105);
     obj.label177:setLeft(125);
     obj.label177:setTop(3);
@@ -10046,7 +10046,7 @@ function newfrmFichaACN()
     obj.label177:setHorzTextAlign("center");
     obj.label177:setName("label177");
 
-    obj.edit368 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit368 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit368:setParent(obj.layout105);
     obj.edit368:setLeft(170);
     obj.edit368:setTop(0);
@@ -10057,7 +10057,7 @@ function newfrmFichaACN()
     obj.edit368:setField("base1_10");
     obj.edit368:setName("edit368");
 
-    obj.edit369 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit369 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit369:setParent(obj.layout105);
     obj.edit369:setLeft(205);
     obj.edit369:setTop(0);
@@ -10068,7 +10068,7 @@ function newfrmFichaACN()
     obj.edit369:setField("bonus1_10");
     obj.edit369:setName("edit369");
 
-    obj.edit370 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit370 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit370:setParent(obj.layout105);
     obj.edit370:setLeft(240);
     obj.edit370:setTop(0);
@@ -10079,7 +10079,7 @@ function newfrmFichaACN()
     obj.edit370:setField("xp1_10");
     obj.edit370:setName("edit370");
 
-    obj.edit371 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit371 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit371:setParent(obj.layout105);
     obj.edit371:setLeft(20);
     obj.edit371:setTop(28);
@@ -10088,7 +10088,7 @@ function newfrmFichaACN()
     obj.edit371:setField("espec1_10");
     obj.edit371:setName("edit371");
 
-    obj.layout106 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout106 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout106:setParent(obj.layout95);
     obj.layout106:setLeft(5);
     obj.layout106:setTop(550);
@@ -10096,7 +10096,7 @@ function newfrmFichaACN()
     obj.layout106:setHeight(50);
     obj.layout106:setName("layout106");
 
-    obj.radioButton159 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton159 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton159:setParent(obj.layout106);
     obj.radioButton159:setLeft(0);
     obj.radioButton159:setTop(0);
@@ -10105,7 +10105,7 @@ function newfrmFichaACN()
     obj.radioButton159:setFieldValue("total1_11");
     obj.radioButton159:setName("radioButton159");
 
-    obj.radioButton160 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton160 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton160:setParent(obj.layout106);
     obj.radioButton160:setLeft(0);
     obj.radioButton160:setTop(15);
@@ -10114,7 +10114,7 @@ function newfrmFichaACN()
     obj.radioButton160:setFieldValue("total1_11");
     obj.radioButton160:setName("radioButton160");
 
-    obj.edit372 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit372 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit372:setParent(obj.layout106);
     obj.edit372:setLeft(20);
     obj.edit372:setTop(0);
@@ -10123,7 +10123,7 @@ function newfrmFichaACN()
     obj.edit372:setField("nome1_11");
     obj.edit372:setName("edit372");
 
-    obj.rectangle103 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle103 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle103:setParent(obj.layout106);
     obj.rectangle103:setLeft(125);
     obj.rectangle103:setTop(0);
@@ -10134,7 +10134,7 @@ function newfrmFichaACN()
     obj.rectangle103:setStrokeSize(1);
     obj.rectangle103:setName("rectangle103");
 
-    obj.label178 = gui.fromHandle(_obj_newObject("label"));
+    obj.label178 = GUI.fromHandle(_obj_newObject("label"));
     obj.label178:setParent(obj.layout106);
     obj.label178:setLeft(125);
     obj.label178:setTop(3);
@@ -10144,7 +10144,7 @@ function newfrmFichaACN()
     obj.label178:setHorzTextAlign("center");
     obj.label178:setName("label178");
 
-    obj.edit373 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit373 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit373:setParent(obj.layout106);
     obj.edit373:setLeft(170);
     obj.edit373:setTop(0);
@@ -10155,7 +10155,7 @@ function newfrmFichaACN()
     obj.edit373:setField("base1_11");
     obj.edit373:setName("edit373");
 
-    obj.edit374 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit374 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit374:setParent(obj.layout106);
     obj.edit374:setLeft(205);
     obj.edit374:setTop(0);
@@ -10166,7 +10166,7 @@ function newfrmFichaACN()
     obj.edit374:setField("bonus1_11");
     obj.edit374:setName("edit374");
 
-    obj.edit375 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit375 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit375:setParent(obj.layout106);
     obj.edit375:setLeft(240);
     obj.edit375:setTop(0);
@@ -10177,7 +10177,7 @@ function newfrmFichaACN()
     obj.edit375:setField("xp1_11");
     obj.edit375:setName("edit375");
 
-    obj.edit376 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit376 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit376:setParent(obj.layout106);
     obj.edit376:setLeft(20);
     obj.edit376:setTop(28);
@@ -10186,7 +10186,7 @@ function newfrmFichaACN()
     obj.edit376:setField("espec1_11");
     obj.edit376:setName("edit376");
 
-    obj.layout107 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout107 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout107:setParent(obj.layout95);
     obj.layout107:setLeft(5);
     obj.layout107:setTop(600);
@@ -10194,7 +10194,7 @@ function newfrmFichaACN()
     obj.layout107:setHeight(50);
     obj.layout107:setName("layout107");
 
-    obj.radioButton161 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton161 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton161:setParent(obj.layout107);
     obj.radioButton161:setLeft(0);
     obj.radioButton161:setTop(0);
@@ -10203,7 +10203,7 @@ function newfrmFichaACN()
     obj.radioButton161:setFieldValue("total1_12");
     obj.radioButton161:setName("radioButton161");
 
-    obj.radioButton162 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton162 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton162:setParent(obj.layout107);
     obj.radioButton162:setLeft(0);
     obj.radioButton162:setTop(15);
@@ -10212,7 +10212,7 @@ function newfrmFichaACN()
     obj.radioButton162:setFieldValue("total1_12");
     obj.radioButton162:setName("radioButton162");
 
-    obj.edit377 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit377 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit377:setParent(obj.layout107);
     obj.edit377:setLeft(20);
     obj.edit377:setTop(0);
@@ -10221,7 +10221,7 @@ function newfrmFichaACN()
     obj.edit377:setField("nome1_12");
     obj.edit377:setName("edit377");
 
-    obj.rectangle104 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle104 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle104:setParent(obj.layout107);
     obj.rectangle104:setLeft(125);
     obj.rectangle104:setTop(0);
@@ -10232,7 +10232,7 @@ function newfrmFichaACN()
     obj.rectangle104:setStrokeSize(1);
     obj.rectangle104:setName("rectangle104");
 
-    obj.label179 = gui.fromHandle(_obj_newObject("label"));
+    obj.label179 = GUI.fromHandle(_obj_newObject("label"));
     obj.label179:setParent(obj.layout107);
     obj.label179:setLeft(125);
     obj.label179:setTop(3);
@@ -10242,7 +10242,7 @@ function newfrmFichaACN()
     obj.label179:setHorzTextAlign("center");
     obj.label179:setName("label179");
 
-    obj.edit378 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit378 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit378:setParent(obj.layout107);
     obj.edit378:setLeft(170);
     obj.edit378:setTop(0);
@@ -10253,7 +10253,7 @@ function newfrmFichaACN()
     obj.edit378:setField("base1_12");
     obj.edit378:setName("edit378");
 
-    obj.edit379 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit379 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit379:setParent(obj.layout107);
     obj.edit379:setLeft(205);
     obj.edit379:setTop(0);
@@ -10264,7 +10264,7 @@ function newfrmFichaACN()
     obj.edit379:setField("bonus1_12");
     obj.edit379:setName("edit379");
 
-    obj.edit380 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit380 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit380:setParent(obj.layout107);
     obj.edit380:setLeft(240);
     obj.edit380:setTop(0);
@@ -10275,7 +10275,7 @@ function newfrmFichaACN()
     obj.edit380:setField("xp1_12");
     obj.edit380:setName("edit380");
 
-    obj.edit381 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit381 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit381:setParent(obj.layout107);
     obj.edit381:setLeft(20);
     obj.edit381:setTop(28);
@@ -10284,7 +10284,7 @@ function newfrmFichaACN()
     obj.edit381:setField("espec1_12");
     obj.edit381:setName("edit381");
 
-    obj.layout108 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout108 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout108:setParent(obj.scrollBox4);
     obj.layout108:setLeft(900);
     obj.layout108:setTop(0);
@@ -10292,7 +10292,7 @@ function newfrmFichaACN()
     obj.layout108:setHeight(630);
     obj.layout108:setName("layout108");
 
-    obj.rectangle105 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle105 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle105:setParent(obj.layout108);
     obj.rectangle105:setLeft(0);
     obj.rectangle105:setTop(0);
@@ -10304,7 +10304,7 @@ function newfrmFichaACN()
     obj.rectangle105:setCornerType("round");
     obj.rectangle105:setName("rectangle105");
 
-    obj.label180 = gui.fromHandle(_obj_newObject("label"));
+    obj.label180 = GUI.fromHandle(_obj_newObject("label"));
     obj.label180:setParent(obj.layout108);
     obj.label180:setLeft(5);
     obj.label180:setTop(0);
@@ -10314,7 +10314,7 @@ function newfrmFichaACN()
     obj.label180:setHorzTextAlign("center");
     obj.label180:setName("label180");
 
-    obj.label181 = gui.fromHandle(_obj_newObject("label"));
+    obj.label181 = GUI.fromHandle(_obj_newObject("label"));
     obj.label181:setParent(obj.layout108);
     obj.label181:setLeft(25);
     obj.label181:setTop(25);
@@ -10323,7 +10323,7 @@ function newfrmFichaACN()
     obj.label181:setText(" Nome");
     obj.label181:setName("label181");
 
-    obj.label182 = gui.fromHandle(_obj_newObject("label"));
+    obj.label182 = GUI.fromHandle(_obj_newObject("label"));
     obj.label182:setParent(obj.layout108);
     obj.label182:setLeft(135);
     obj.label182:setTop(25);
@@ -10332,7 +10332,7 @@ function newfrmFichaACN()
     obj.label182:setText("Total");
     obj.label182:setName("label182");
 
-    obj.label183 = gui.fromHandle(_obj_newObject("label"));
+    obj.label183 = GUI.fromHandle(_obj_newObject("label"));
     obj.label183:setParent(obj.layout108);
     obj.label183:setLeft(170);
     obj.label183:setTop(25);
@@ -10341,7 +10341,7 @@ function newfrmFichaACN()
     obj.label183:setText(" Inic");
     obj.label183:setName("label183");
 
-    obj.label184 = gui.fromHandle(_obj_newObject("label"));
+    obj.label184 = GUI.fromHandle(_obj_newObject("label"));
     obj.label184:setParent(obj.layout108);
     obj.label184:setLeft(202);
     obj.label184:setTop(25);
@@ -10350,7 +10350,7 @@ function newfrmFichaACN()
     obj.label184:setText(" Apr.");
     obj.label184:setName("label184");
 
-    obj.label185 = gui.fromHandle(_obj_newObject("label"));
+    obj.label185 = GUI.fromHandle(_obj_newObject("label"));
     obj.label185:setParent(obj.layout108);
     obj.label185:setLeft(235);
     obj.label185:setTop(25);
@@ -10359,7 +10359,7 @@ function newfrmFichaACN()
     obj.label185:setText("  XP");
     obj.label185:setName("label185");
 
-    obj.layout109 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout109 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout109:setParent(obj.layout108);
     obj.layout109:setLeft(5);
     obj.layout109:setTop(50);
@@ -10367,7 +10367,7 @@ function newfrmFichaACN()
     obj.layout109:setHeight(50);
     obj.layout109:setName("layout109");
 
-    obj.radioButton163 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton163 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton163:setParent(obj.layout109);
     obj.radioButton163:setLeft(0);
     obj.radioButton163:setTop(0);
@@ -10376,7 +10376,7 @@ function newfrmFichaACN()
     obj.radioButton163:setFieldValue("total3_1");
     obj.radioButton163:setName("radioButton163");
 
-    obj.radioButton164 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton164 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton164:setParent(obj.layout109);
     obj.radioButton164:setLeft(0);
     obj.radioButton164:setTop(15);
@@ -10385,7 +10385,7 @@ function newfrmFichaACN()
     obj.radioButton164:setFieldValue("total3_1");
     obj.radioButton164:setName("radioButton164");
 
-    obj.edit382 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit382 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit382:setParent(obj.layout109);
     obj.edit382:setLeft(20);
     obj.edit382:setTop(0);
@@ -10394,7 +10394,7 @@ function newfrmFichaACN()
     obj.edit382:setField("nome3_1");
     obj.edit382:setName("edit382");
 
-    obj.rectangle106 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle106 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle106:setParent(obj.layout109);
     obj.rectangle106:setLeft(125);
     obj.rectangle106:setTop(0);
@@ -10405,7 +10405,7 @@ function newfrmFichaACN()
     obj.rectangle106:setStrokeSize(1);
     obj.rectangle106:setName("rectangle106");
 
-    obj.label186 = gui.fromHandle(_obj_newObject("label"));
+    obj.label186 = GUI.fromHandle(_obj_newObject("label"));
     obj.label186:setParent(obj.layout109);
     obj.label186:setLeft(125);
     obj.label186:setTop(3);
@@ -10415,7 +10415,7 @@ function newfrmFichaACN()
     obj.label186:setHorzTextAlign("center");
     obj.label186:setName("label186");
 
-    obj.edit383 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit383 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit383:setParent(obj.layout109);
     obj.edit383:setLeft(170);
     obj.edit383:setTop(0);
@@ -10426,7 +10426,7 @@ function newfrmFichaACN()
     obj.edit383:setField("base3_1");
     obj.edit383:setName("edit383");
 
-    obj.edit384 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit384 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit384:setParent(obj.layout109);
     obj.edit384:setLeft(205);
     obj.edit384:setTop(0);
@@ -10437,7 +10437,7 @@ function newfrmFichaACN()
     obj.edit384:setField("bonus3_1");
     obj.edit384:setName("edit384");
 
-    obj.edit385 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit385 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit385:setParent(obj.layout109);
     obj.edit385:setLeft(240);
     obj.edit385:setTop(0);
@@ -10448,7 +10448,7 @@ function newfrmFichaACN()
     obj.edit385:setField("xp3_1");
     obj.edit385:setName("edit385");
 
-    obj.edit386 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit386 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit386:setParent(obj.layout109);
     obj.edit386:setLeft(20);
     obj.edit386:setTop(28);
@@ -10457,7 +10457,7 @@ function newfrmFichaACN()
     obj.edit386:setField("espec3_1");
     obj.edit386:setName("edit386");
 
-    obj.layout110 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout110 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout110:setParent(obj.layout108);
     obj.layout110:setLeft(5);
     obj.layout110:setTop(100);
@@ -10465,7 +10465,7 @@ function newfrmFichaACN()
     obj.layout110:setHeight(50);
     obj.layout110:setName("layout110");
 
-    obj.radioButton165 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton165 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton165:setParent(obj.layout110);
     obj.radioButton165:setLeft(0);
     obj.radioButton165:setTop(0);
@@ -10474,7 +10474,7 @@ function newfrmFichaACN()
     obj.radioButton165:setFieldValue("total3_2");
     obj.radioButton165:setName("radioButton165");
 
-    obj.radioButton166 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton166 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton166:setParent(obj.layout110);
     obj.radioButton166:setLeft(0);
     obj.radioButton166:setTop(15);
@@ -10483,7 +10483,7 @@ function newfrmFichaACN()
     obj.radioButton166:setFieldValue("total3_2");
     obj.radioButton166:setName("radioButton166");
 
-    obj.edit387 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit387 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit387:setParent(obj.layout110);
     obj.edit387:setLeft(20);
     obj.edit387:setTop(0);
@@ -10492,7 +10492,7 @@ function newfrmFichaACN()
     obj.edit387:setField("nome3_2");
     obj.edit387:setName("edit387");
 
-    obj.rectangle107 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle107 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle107:setParent(obj.layout110);
     obj.rectangle107:setLeft(125);
     obj.rectangle107:setTop(0);
@@ -10503,7 +10503,7 @@ function newfrmFichaACN()
     obj.rectangle107:setStrokeSize(1);
     obj.rectangle107:setName("rectangle107");
 
-    obj.label187 = gui.fromHandle(_obj_newObject("label"));
+    obj.label187 = GUI.fromHandle(_obj_newObject("label"));
     obj.label187:setParent(obj.layout110);
     obj.label187:setLeft(125);
     obj.label187:setTop(3);
@@ -10513,7 +10513,7 @@ function newfrmFichaACN()
     obj.label187:setHorzTextAlign("center");
     obj.label187:setName("label187");
 
-    obj.edit388 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit388 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit388:setParent(obj.layout110);
     obj.edit388:setLeft(170);
     obj.edit388:setTop(0);
@@ -10524,7 +10524,7 @@ function newfrmFichaACN()
     obj.edit388:setField("base3_2");
     obj.edit388:setName("edit388");
 
-    obj.edit389 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit389 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit389:setParent(obj.layout110);
     obj.edit389:setLeft(205);
     obj.edit389:setTop(0);
@@ -10535,7 +10535,7 @@ function newfrmFichaACN()
     obj.edit389:setField("bonus3_2");
     obj.edit389:setName("edit389");
 
-    obj.edit390 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit390 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit390:setParent(obj.layout110);
     obj.edit390:setLeft(240);
     obj.edit390:setTop(0);
@@ -10546,7 +10546,7 @@ function newfrmFichaACN()
     obj.edit390:setField("xp3_2");
     obj.edit390:setName("edit390");
 
-    obj.edit391 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit391 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit391:setParent(obj.layout110);
     obj.edit391:setLeft(20);
     obj.edit391:setTop(28);
@@ -10555,7 +10555,7 @@ function newfrmFichaACN()
     obj.edit391:setField("espec3_2");
     obj.edit391:setName("edit391");
 
-    obj.layout111 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout111 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout111:setParent(obj.layout108);
     obj.layout111:setLeft(5);
     obj.layout111:setTop(150);
@@ -10563,7 +10563,7 @@ function newfrmFichaACN()
     obj.layout111:setHeight(50);
     obj.layout111:setName("layout111");
 
-    obj.radioButton167 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton167 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton167:setParent(obj.layout111);
     obj.radioButton167:setLeft(0);
     obj.radioButton167:setTop(0);
@@ -10572,7 +10572,7 @@ function newfrmFichaACN()
     obj.radioButton167:setFieldValue("total3_3");
     obj.radioButton167:setName("radioButton167");
 
-    obj.radioButton168 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton168 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton168:setParent(obj.layout111);
     obj.radioButton168:setLeft(0);
     obj.radioButton168:setTop(15);
@@ -10581,7 +10581,7 @@ function newfrmFichaACN()
     obj.radioButton168:setFieldValue("total3_3");
     obj.radioButton168:setName("radioButton168");
 
-    obj.edit392 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit392 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit392:setParent(obj.layout111);
     obj.edit392:setLeft(20);
     obj.edit392:setTop(0);
@@ -10590,7 +10590,7 @@ function newfrmFichaACN()
     obj.edit392:setField("nome3_3");
     obj.edit392:setName("edit392");
 
-    obj.rectangle108 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle108 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle108:setParent(obj.layout111);
     obj.rectangle108:setLeft(125);
     obj.rectangle108:setTop(0);
@@ -10601,7 +10601,7 @@ function newfrmFichaACN()
     obj.rectangle108:setStrokeSize(1);
     obj.rectangle108:setName("rectangle108");
 
-    obj.label188 = gui.fromHandle(_obj_newObject("label"));
+    obj.label188 = GUI.fromHandle(_obj_newObject("label"));
     obj.label188:setParent(obj.layout111);
     obj.label188:setLeft(125);
     obj.label188:setTop(3);
@@ -10611,7 +10611,7 @@ function newfrmFichaACN()
     obj.label188:setHorzTextAlign("center");
     obj.label188:setName("label188");
 
-    obj.edit393 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit393 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit393:setParent(obj.layout111);
     obj.edit393:setLeft(170);
     obj.edit393:setTop(0);
@@ -10622,7 +10622,7 @@ function newfrmFichaACN()
     obj.edit393:setField("base3_3");
     obj.edit393:setName("edit393");
 
-    obj.edit394 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit394 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit394:setParent(obj.layout111);
     obj.edit394:setLeft(205);
     obj.edit394:setTop(0);
@@ -10633,7 +10633,7 @@ function newfrmFichaACN()
     obj.edit394:setField("bonus3_3");
     obj.edit394:setName("edit394");
 
-    obj.edit395 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit395 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit395:setParent(obj.layout111);
     obj.edit395:setLeft(240);
     obj.edit395:setTop(0);
@@ -10644,7 +10644,7 @@ function newfrmFichaACN()
     obj.edit395:setField("xp3_3");
     obj.edit395:setName("edit395");
 
-    obj.edit396 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit396 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit396:setParent(obj.layout111);
     obj.edit396:setLeft(20);
     obj.edit396:setTop(28);
@@ -10653,7 +10653,7 @@ function newfrmFichaACN()
     obj.edit396:setField("espec3_3");
     obj.edit396:setName("edit396");
 
-    obj.layout112 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout112 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout112:setParent(obj.layout108);
     obj.layout112:setLeft(5);
     obj.layout112:setTop(200);
@@ -10661,7 +10661,7 @@ function newfrmFichaACN()
     obj.layout112:setHeight(50);
     obj.layout112:setName("layout112");
 
-    obj.radioButton169 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton169 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton169:setParent(obj.layout112);
     obj.radioButton169:setLeft(0);
     obj.radioButton169:setTop(0);
@@ -10670,7 +10670,7 @@ function newfrmFichaACN()
     obj.radioButton169:setFieldValue("total3_4");
     obj.radioButton169:setName("radioButton169");
 
-    obj.radioButton170 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton170 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton170:setParent(obj.layout112);
     obj.radioButton170:setLeft(0);
     obj.radioButton170:setTop(15);
@@ -10679,7 +10679,7 @@ function newfrmFichaACN()
     obj.radioButton170:setFieldValue("total3_4");
     obj.radioButton170:setName("radioButton170");
 
-    obj.edit397 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit397 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit397:setParent(obj.layout112);
     obj.edit397:setLeft(20);
     obj.edit397:setTop(0);
@@ -10688,7 +10688,7 @@ function newfrmFichaACN()
     obj.edit397:setField("nome3_4");
     obj.edit397:setName("edit397");
 
-    obj.rectangle109 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle109 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle109:setParent(obj.layout112);
     obj.rectangle109:setLeft(125);
     obj.rectangle109:setTop(0);
@@ -10699,7 +10699,7 @@ function newfrmFichaACN()
     obj.rectangle109:setStrokeSize(1);
     obj.rectangle109:setName("rectangle109");
 
-    obj.label189 = gui.fromHandle(_obj_newObject("label"));
+    obj.label189 = GUI.fromHandle(_obj_newObject("label"));
     obj.label189:setParent(obj.layout112);
     obj.label189:setLeft(125);
     obj.label189:setTop(3);
@@ -10709,7 +10709,7 @@ function newfrmFichaACN()
     obj.label189:setHorzTextAlign("center");
     obj.label189:setName("label189");
 
-    obj.edit398 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit398 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit398:setParent(obj.layout112);
     obj.edit398:setLeft(170);
     obj.edit398:setTop(0);
@@ -10720,7 +10720,7 @@ function newfrmFichaACN()
     obj.edit398:setField("base3_4");
     obj.edit398:setName("edit398");
 
-    obj.edit399 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit399 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit399:setParent(obj.layout112);
     obj.edit399:setLeft(205);
     obj.edit399:setTop(0);
@@ -10731,7 +10731,7 @@ function newfrmFichaACN()
     obj.edit399:setField("bonus3_4");
     obj.edit399:setName("edit399");
 
-    obj.edit400 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit400 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit400:setParent(obj.layout112);
     obj.edit400:setLeft(240);
     obj.edit400:setTop(0);
@@ -10742,7 +10742,7 @@ function newfrmFichaACN()
     obj.edit400:setField("xp3_4");
     obj.edit400:setName("edit400");
 
-    obj.edit401 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit401 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit401:setParent(obj.layout112);
     obj.edit401:setLeft(20);
     obj.edit401:setTop(28);
@@ -10751,7 +10751,7 @@ function newfrmFichaACN()
     obj.edit401:setField("espec3_4");
     obj.edit401:setName("edit401");
 
-    obj.layout113 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout113 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout113:setParent(obj.layout108);
     obj.layout113:setLeft(5);
     obj.layout113:setTop(250);
@@ -10759,7 +10759,7 @@ function newfrmFichaACN()
     obj.layout113:setHeight(50);
     obj.layout113:setName("layout113");
 
-    obj.radioButton171 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton171 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton171:setParent(obj.layout113);
     obj.radioButton171:setLeft(0);
     obj.radioButton171:setTop(0);
@@ -10768,7 +10768,7 @@ function newfrmFichaACN()
     obj.radioButton171:setFieldValue("total3_5");
     obj.radioButton171:setName("radioButton171");
 
-    obj.radioButton172 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton172 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton172:setParent(obj.layout113);
     obj.radioButton172:setLeft(0);
     obj.radioButton172:setTop(15);
@@ -10777,7 +10777,7 @@ function newfrmFichaACN()
     obj.radioButton172:setFieldValue("total3_5");
     obj.radioButton172:setName("radioButton172");
 
-    obj.edit402 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit402 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit402:setParent(obj.layout113);
     obj.edit402:setLeft(20);
     obj.edit402:setTop(0);
@@ -10786,7 +10786,7 @@ function newfrmFichaACN()
     obj.edit402:setField("nome3_5");
     obj.edit402:setName("edit402");
 
-    obj.rectangle110 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle110 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle110:setParent(obj.layout113);
     obj.rectangle110:setLeft(125);
     obj.rectangle110:setTop(0);
@@ -10797,7 +10797,7 @@ function newfrmFichaACN()
     obj.rectangle110:setStrokeSize(1);
     obj.rectangle110:setName("rectangle110");
 
-    obj.label190 = gui.fromHandle(_obj_newObject("label"));
+    obj.label190 = GUI.fromHandle(_obj_newObject("label"));
     obj.label190:setParent(obj.layout113);
     obj.label190:setLeft(125);
     obj.label190:setTop(3);
@@ -10807,7 +10807,7 @@ function newfrmFichaACN()
     obj.label190:setHorzTextAlign("center");
     obj.label190:setName("label190");
 
-    obj.edit403 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit403 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit403:setParent(obj.layout113);
     obj.edit403:setLeft(170);
     obj.edit403:setTop(0);
@@ -10818,7 +10818,7 @@ function newfrmFichaACN()
     obj.edit403:setField("base3_5");
     obj.edit403:setName("edit403");
 
-    obj.edit404 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit404 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit404:setParent(obj.layout113);
     obj.edit404:setLeft(205);
     obj.edit404:setTop(0);
@@ -10829,7 +10829,7 @@ function newfrmFichaACN()
     obj.edit404:setField("bonus3_5");
     obj.edit404:setName("edit404");
 
-    obj.edit405 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit405 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit405:setParent(obj.layout113);
     obj.edit405:setLeft(240);
     obj.edit405:setTop(0);
@@ -10840,7 +10840,7 @@ function newfrmFichaACN()
     obj.edit405:setField("xp3_5");
     obj.edit405:setName("edit405");
 
-    obj.edit406 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit406 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit406:setParent(obj.layout113);
     obj.edit406:setLeft(20);
     obj.edit406:setTop(28);
@@ -10849,7 +10849,7 @@ function newfrmFichaACN()
     obj.edit406:setField("espec3_5");
     obj.edit406:setName("edit406");
 
-    obj.layout114 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout114 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout114:setParent(obj.layout108);
     obj.layout114:setLeft(5);
     obj.layout114:setTop(300);
@@ -10857,7 +10857,7 @@ function newfrmFichaACN()
     obj.layout114:setHeight(50);
     obj.layout114:setName("layout114");
 
-    obj.radioButton173 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton173 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton173:setParent(obj.layout114);
     obj.radioButton173:setLeft(0);
     obj.radioButton173:setTop(0);
@@ -10866,7 +10866,7 @@ function newfrmFichaACN()
     obj.radioButton173:setFieldValue("total3_6");
     obj.radioButton173:setName("radioButton173");
 
-    obj.radioButton174 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton174 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton174:setParent(obj.layout114);
     obj.radioButton174:setLeft(0);
     obj.radioButton174:setTop(15);
@@ -10875,7 +10875,7 @@ function newfrmFichaACN()
     obj.radioButton174:setFieldValue("total3_6");
     obj.radioButton174:setName("radioButton174");
 
-    obj.edit407 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit407 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit407:setParent(obj.layout114);
     obj.edit407:setLeft(20);
     obj.edit407:setTop(0);
@@ -10884,7 +10884,7 @@ function newfrmFichaACN()
     obj.edit407:setField("nome3_6");
     obj.edit407:setName("edit407");
 
-    obj.rectangle111 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle111 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle111:setParent(obj.layout114);
     obj.rectangle111:setLeft(125);
     obj.rectangle111:setTop(0);
@@ -10895,7 +10895,7 @@ function newfrmFichaACN()
     obj.rectangle111:setStrokeSize(1);
     obj.rectangle111:setName("rectangle111");
 
-    obj.label191 = gui.fromHandle(_obj_newObject("label"));
+    obj.label191 = GUI.fromHandle(_obj_newObject("label"));
     obj.label191:setParent(obj.layout114);
     obj.label191:setLeft(125);
     obj.label191:setTop(3);
@@ -10905,7 +10905,7 @@ function newfrmFichaACN()
     obj.label191:setHorzTextAlign("center");
     obj.label191:setName("label191");
 
-    obj.edit408 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit408 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit408:setParent(obj.layout114);
     obj.edit408:setLeft(170);
     obj.edit408:setTop(0);
@@ -10916,7 +10916,7 @@ function newfrmFichaACN()
     obj.edit408:setField("base3_6");
     obj.edit408:setName("edit408");
 
-    obj.edit409 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit409 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit409:setParent(obj.layout114);
     obj.edit409:setLeft(205);
     obj.edit409:setTop(0);
@@ -10927,7 +10927,7 @@ function newfrmFichaACN()
     obj.edit409:setField("bonus3_6");
     obj.edit409:setName("edit409");
 
-    obj.edit410 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit410 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit410:setParent(obj.layout114);
     obj.edit410:setLeft(240);
     obj.edit410:setTop(0);
@@ -10938,7 +10938,7 @@ function newfrmFichaACN()
     obj.edit410:setField("xp3_6");
     obj.edit410:setName("edit410");
 
-    obj.edit411 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit411 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit411:setParent(obj.layout114);
     obj.edit411:setLeft(20);
     obj.edit411:setTop(28);
@@ -10947,7 +10947,7 @@ function newfrmFichaACN()
     obj.edit411:setField("espec3_6");
     obj.edit411:setName("edit411");
 
-    obj.layout115 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout115 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout115:setParent(obj.layout108);
     obj.layout115:setLeft(5);
     obj.layout115:setTop(350);
@@ -10955,7 +10955,7 @@ function newfrmFichaACN()
     obj.layout115:setHeight(50);
     obj.layout115:setName("layout115");
 
-    obj.radioButton175 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton175 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton175:setParent(obj.layout115);
     obj.radioButton175:setLeft(0);
     obj.radioButton175:setTop(0);
@@ -10964,7 +10964,7 @@ function newfrmFichaACN()
     obj.radioButton175:setFieldValue("total3_7");
     obj.radioButton175:setName("radioButton175");
 
-    obj.radioButton176 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton176 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton176:setParent(obj.layout115);
     obj.radioButton176:setLeft(0);
     obj.radioButton176:setTop(15);
@@ -10973,7 +10973,7 @@ function newfrmFichaACN()
     obj.radioButton176:setFieldValue("total3_7");
     obj.radioButton176:setName("radioButton176");
 
-    obj.edit412 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit412 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit412:setParent(obj.layout115);
     obj.edit412:setLeft(20);
     obj.edit412:setTop(0);
@@ -10982,7 +10982,7 @@ function newfrmFichaACN()
     obj.edit412:setField("nome3_7");
     obj.edit412:setName("edit412");
 
-    obj.rectangle112 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle112 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle112:setParent(obj.layout115);
     obj.rectangle112:setLeft(125);
     obj.rectangle112:setTop(0);
@@ -10993,7 +10993,7 @@ function newfrmFichaACN()
     obj.rectangle112:setStrokeSize(1);
     obj.rectangle112:setName("rectangle112");
 
-    obj.label192 = gui.fromHandle(_obj_newObject("label"));
+    obj.label192 = GUI.fromHandle(_obj_newObject("label"));
     obj.label192:setParent(obj.layout115);
     obj.label192:setLeft(125);
     obj.label192:setTop(3);
@@ -11003,7 +11003,7 @@ function newfrmFichaACN()
     obj.label192:setHorzTextAlign("center");
     obj.label192:setName("label192");
 
-    obj.edit413 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit413 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit413:setParent(obj.layout115);
     obj.edit413:setLeft(170);
     obj.edit413:setTop(0);
@@ -11014,7 +11014,7 @@ function newfrmFichaACN()
     obj.edit413:setField("base3_7");
     obj.edit413:setName("edit413");
 
-    obj.edit414 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit414 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit414:setParent(obj.layout115);
     obj.edit414:setLeft(205);
     obj.edit414:setTop(0);
@@ -11025,7 +11025,7 @@ function newfrmFichaACN()
     obj.edit414:setField("bonus3_7");
     obj.edit414:setName("edit414");
 
-    obj.edit415 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit415 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit415:setParent(obj.layout115);
     obj.edit415:setLeft(240);
     obj.edit415:setTop(0);
@@ -11036,7 +11036,7 @@ function newfrmFichaACN()
     obj.edit415:setField("xp3_7");
     obj.edit415:setName("edit415");
 
-    obj.edit416 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit416 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit416:setParent(obj.layout115);
     obj.edit416:setLeft(20);
     obj.edit416:setTop(28);
@@ -11045,7 +11045,7 @@ function newfrmFichaACN()
     obj.edit416:setField("espec3_7");
     obj.edit416:setName("edit416");
 
-    obj.layout116 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout116 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout116:setParent(obj.layout108);
     obj.layout116:setLeft(5);
     obj.layout116:setTop(400);
@@ -11053,7 +11053,7 @@ function newfrmFichaACN()
     obj.layout116:setHeight(50);
     obj.layout116:setName("layout116");
 
-    obj.radioButton177 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton177 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton177:setParent(obj.layout116);
     obj.radioButton177:setLeft(0);
     obj.radioButton177:setTop(0);
@@ -11062,7 +11062,7 @@ function newfrmFichaACN()
     obj.radioButton177:setFieldValue("total3_8");
     obj.radioButton177:setName("radioButton177");
 
-    obj.radioButton178 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton178 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton178:setParent(obj.layout116);
     obj.radioButton178:setLeft(0);
     obj.radioButton178:setTop(15);
@@ -11071,7 +11071,7 @@ function newfrmFichaACN()
     obj.radioButton178:setFieldValue("total3_8");
     obj.radioButton178:setName("radioButton178");
 
-    obj.edit417 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit417 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit417:setParent(obj.layout116);
     obj.edit417:setLeft(20);
     obj.edit417:setTop(0);
@@ -11080,7 +11080,7 @@ function newfrmFichaACN()
     obj.edit417:setField("nome3_8");
     obj.edit417:setName("edit417");
 
-    obj.rectangle113 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle113 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle113:setParent(obj.layout116);
     obj.rectangle113:setLeft(125);
     obj.rectangle113:setTop(0);
@@ -11091,7 +11091,7 @@ function newfrmFichaACN()
     obj.rectangle113:setStrokeSize(1);
     obj.rectangle113:setName("rectangle113");
 
-    obj.label193 = gui.fromHandle(_obj_newObject("label"));
+    obj.label193 = GUI.fromHandle(_obj_newObject("label"));
     obj.label193:setParent(obj.layout116);
     obj.label193:setLeft(125);
     obj.label193:setTop(3);
@@ -11101,7 +11101,7 @@ function newfrmFichaACN()
     obj.label193:setHorzTextAlign("center");
     obj.label193:setName("label193");
 
-    obj.edit418 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit418 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit418:setParent(obj.layout116);
     obj.edit418:setLeft(170);
     obj.edit418:setTop(0);
@@ -11112,7 +11112,7 @@ function newfrmFichaACN()
     obj.edit418:setField("base3_8");
     obj.edit418:setName("edit418");
 
-    obj.edit419 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit419 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit419:setParent(obj.layout116);
     obj.edit419:setLeft(205);
     obj.edit419:setTop(0);
@@ -11123,7 +11123,7 @@ function newfrmFichaACN()
     obj.edit419:setField("bonus3_8");
     obj.edit419:setName("edit419");
 
-    obj.edit420 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit420 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit420:setParent(obj.layout116);
     obj.edit420:setLeft(240);
     obj.edit420:setTop(0);
@@ -11134,7 +11134,7 @@ function newfrmFichaACN()
     obj.edit420:setField("xp3_8");
     obj.edit420:setName("edit420");
 
-    obj.edit421 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit421 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit421:setParent(obj.layout116);
     obj.edit421:setLeft(20);
     obj.edit421:setTop(28);
@@ -11143,7 +11143,7 @@ function newfrmFichaACN()
     obj.edit421:setField("espec3_8");
     obj.edit421:setName("edit421");
 
-    obj.layout117 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout117 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout117:setParent(obj.layout108);
     obj.layout117:setLeft(5);
     obj.layout117:setTop(450);
@@ -11151,7 +11151,7 @@ function newfrmFichaACN()
     obj.layout117:setHeight(50);
     obj.layout117:setName("layout117");
 
-    obj.radioButton179 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton179 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton179:setParent(obj.layout117);
     obj.radioButton179:setLeft(0);
     obj.radioButton179:setTop(0);
@@ -11160,7 +11160,7 @@ function newfrmFichaACN()
     obj.radioButton179:setFieldValue("total3_9");
     obj.radioButton179:setName("radioButton179");
 
-    obj.radioButton180 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton180 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton180:setParent(obj.layout117);
     obj.radioButton180:setLeft(0);
     obj.radioButton180:setTop(15);
@@ -11169,7 +11169,7 @@ function newfrmFichaACN()
     obj.radioButton180:setFieldValue("total3_9");
     obj.radioButton180:setName("radioButton180");
 
-    obj.edit422 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit422 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit422:setParent(obj.layout117);
     obj.edit422:setLeft(20);
     obj.edit422:setTop(0);
@@ -11178,7 +11178,7 @@ function newfrmFichaACN()
     obj.edit422:setField("nome3_9");
     obj.edit422:setName("edit422");
 
-    obj.rectangle114 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle114 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle114:setParent(obj.layout117);
     obj.rectangle114:setLeft(125);
     obj.rectangle114:setTop(0);
@@ -11189,7 +11189,7 @@ function newfrmFichaACN()
     obj.rectangle114:setStrokeSize(1);
     obj.rectangle114:setName("rectangle114");
 
-    obj.label194 = gui.fromHandle(_obj_newObject("label"));
+    obj.label194 = GUI.fromHandle(_obj_newObject("label"));
     obj.label194:setParent(obj.layout117);
     obj.label194:setLeft(125);
     obj.label194:setTop(3);
@@ -11199,7 +11199,7 @@ function newfrmFichaACN()
     obj.label194:setHorzTextAlign("center");
     obj.label194:setName("label194");
 
-    obj.edit423 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit423 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit423:setParent(obj.layout117);
     obj.edit423:setLeft(170);
     obj.edit423:setTop(0);
@@ -11210,7 +11210,7 @@ function newfrmFichaACN()
     obj.edit423:setField("base3_9");
     obj.edit423:setName("edit423");
 
-    obj.edit424 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit424 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit424:setParent(obj.layout117);
     obj.edit424:setLeft(205);
     obj.edit424:setTop(0);
@@ -11221,7 +11221,7 @@ function newfrmFichaACN()
     obj.edit424:setField("bonus3_9");
     obj.edit424:setName("edit424");
 
-    obj.edit425 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit425 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit425:setParent(obj.layout117);
     obj.edit425:setLeft(240);
     obj.edit425:setTop(0);
@@ -11232,7 +11232,7 @@ function newfrmFichaACN()
     obj.edit425:setField("xp3_9");
     obj.edit425:setName("edit425");
 
-    obj.edit426 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit426 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit426:setParent(obj.layout117);
     obj.edit426:setLeft(20);
     obj.edit426:setTop(28);
@@ -11241,7 +11241,7 @@ function newfrmFichaACN()
     obj.edit426:setField("espec3_9");
     obj.edit426:setName("edit426");
 
-    obj.layout118 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout118 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout118:setParent(obj.layout108);
     obj.layout118:setLeft(5);
     obj.layout118:setTop(500);
@@ -11249,7 +11249,7 @@ function newfrmFichaACN()
     obj.layout118:setHeight(50);
     obj.layout118:setName("layout118");
 
-    obj.radioButton181 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton181 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton181:setParent(obj.layout118);
     obj.radioButton181:setLeft(0);
     obj.radioButton181:setTop(0);
@@ -11258,7 +11258,7 @@ function newfrmFichaACN()
     obj.radioButton181:setFieldValue("total3_10");
     obj.radioButton181:setName("radioButton181");
 
-    obj.radioButton182 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton182 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton182:setParent(obj.layout118);
     obj.radioButton182:setLeft(0);
     obj.radioButton182:setTop(15);
@@ -11267,7 +11267,7 @@ function newfrmFichaACN()
     obj.radioButton182:setFieldValue("total3_10");
     obj.radioButton182:setName("radioButton182");
 
-    obj.edit427 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit427 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit427:setParent(obj.layout118);
     obj.edit427:setLeft(20);
     obj.edit427:setTop(0);
@@ -11276,7 +11276,7 @@ function newfrmFichaACN()
     obj.edit427:setField("nome3_10");
     obj.edit427:setName("edit427");
 
-    obj.rectangle115 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle115 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle115:setParent(obj.layout118);
     obj.rectangle115:setLeft(125);
     obj.rectangle115:setTop(0);
@@ -11287,7 +11287,7 @@ function newfrmFichaACN()
     obj.rectangle115:setStrokeSize(1);
     obj.rectangle115:setName("rectangle115");
 
-    obj.label195 = gui.fromHandle(_obj_newObject("label"));
+    obj.label195 = GUI.fromHandle(_obj_newObject("label"));
     obj.label195:setParent(obj.layout118);
     obj.label195:setLeft(125);
     obj.label195:setTop(3);
@@ -11297,7 +11297,7 @@ function newfrmFichaACN()
     obj.label195:setHorzTextAlign("center");
     obj.label195:setName("label195");
 
-    obj.edit428 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit428 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit428:setParent(obj.layout118);
     obj.edit428:setLeft(170);
     obj.edit428:setTop(0);
@@ -11308,7 +11308,7 @@ function newfrmFichaACN()
     obj.edit428:setField("base3_10");
     obj.edit428:setName("edit428");
 
-    obj.edit429 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit429 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit429:setParent(obj.layout118);
     obj.edit429:setLeft(205);
     obj.edit429:setTop(0);
@@ -11319,7 +11319,7 @@ function newfrmFichaACN()
     obj.edit429:setField("bonus3_10");
     obj.edit429:setName("edit429");
 
-    obj.edit430 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit430 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit430:setParent(obj.layout118);
     obj.edit430:setLeft(240);
     obj.edit430:setTop(0);
@@ -11330,7 +11330,7 @@ function newfrmFichaACN()
     obj.edit430:setField("xp3_10");
     obj.edit430:setName("edit430");
 
-    obj.edit431 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit431 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit431:setParent(obj.layout118);
     obj.edit431:setLeft(20);
     obj.edit431:setTop(28);
@@ -11339,7 +11339,7 @@ function newfrmFichaACN()
     obj.edit431:setField("espec3_10");
     obj.edit431:setName("edit431");
 
-    obj.layout119 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout119 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout119:setParent(obj.layout108);
     obj.layout119:setLeft(5);
     obj.layout119:setTop(550);
@@ -11347,7 +11347,7 @@ function newfrmFichaACN()
     obj.layout119:setHeight(50);
     obj.layout119:setName("layout119");
 
-    obj.radioButton183 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton183 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton183:setParent(obj.layout119);
     obj.radioButton183:setLeft(0);
     obj.radioButton183:setTop(0);
@@ -11356,7 +11356,7 @@ function newfrmFichaACN()
     obj.radioButton183:setFieldValue("total3_11");
     obj.radioButton183:setName("radioButton183");
 
-    obj.radioButton184 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton184 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton184:setParent(obj.layout119);
     obj.radioButton184:setLeft(0);
     obj.radioButton184:setTop(15);
@@ -11365,7 +11365,7 @@ function newfrmFichaACN()
     obj.radioButton184:setFieldValue("total3_11");
     obj.radioButton184:setName("radioButton184");
 
-    obj.edit432 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit432 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit432:setParent(obj.layout119);
     obj.edit432:setLeft(20);
     obj.edit432:setTop(0);
@@ -11374,7 +11374,7 @@ function newfrmFichaACN()
     obj.edit432:setField("nome3_11");
     obj.edit432:setName("edit432");
 
-    obj.rectangle116 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle116 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle116:setParent(obj.layout119);
     obj.rectangle116:setLeft(125);
     obj.rectangle116:setTop(0);
@@ -11385,7 +11385,7 @@ function newfrmFichaACN()
     obj.rectangle116:setStrokeSize(1);
     obj.rectangle116:setName("rectangle116");
 
-    obj.label196 = gui.fromHandle(_obj_newObject("label"));
+    obj.label196 = GUI.fromHandle(_obj_newObject("label"));
     obj.label196:setParent(obj.layout119);
     obj.label196:setLeft(125);
     obj.label196:setTop(3);
@@ -11395,7 +11395,7 @@ function newfrmFichaACN()
     obj.label196:setHorzTextAlign("center");
     obj.label196:setName("label196");
 
-    obj.edit433 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit433 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit433:setParent(obj.layout119);
     obj.edit433:setLeft(170);
     obj.edit433:setTop(0);
@@ -11406,7 +11406,7 @@ function newfrmFichaACN()
     obj.edit433:setField("base3_11");
     obj.edit433:setName("edit433");
 
-    obj.edit434 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit434 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit434:setParent(obj.layout119);
     obj.edit434:setLeft(205);
     obj.edit434:setTop(0);
@@ -11417,7 +11417,7 @@ function newfrmFichaACN()
     obj.edit434:setField("bonus3_11");
     obj.edit434:setName("edit434");
 
-    obj.edit435 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit435 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit435:setParent(obj.layout119);
     obj.edit435:setLeft(240);
     obj.edit435:setTop(0);
@@ -11428,7 +11428,7 @@ function newfrmFichaACN()
     obj.edit435:setField("xp3_11");
     obj.edit435:setName("edit435");
 
-    obj.edit436 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit436 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit436:setParent(obj.layout119);
     obj.edit436:setLeft(20);
     obj.edit436:setTop(28);
@@ -11437,7 +11437,7 @@ function newfrmFichaACN()
     obj.edit436:setField("espec3_11");
     obj.edit436:setName("edit436");
 
-    obj.layout120 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout120 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout120:setParent(obj.layout108);
     obj.layout120:setLeft(5);
     obj.layout120:setTop(600);
@@ -11445,7 +11445,7 @@ function newfrmFichaACN()
     obj.layout120:setHeight(50);
     obj.layout120:setName("layout120");
 
-    obj.radioButton185 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton185 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton185:setParent(obj.layout120);
     obj.radioButton185:setLeft(0);
     obj.radioButton185:setTop(0);
@@ -11454,7 +11454,7 @@ function newfrmFichaACN()
     obj.radioButton185:setFieldValue("total3_12");
     obj.radioButton185:setName("radioButton185");
 
-    obj.radioButton186 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton186 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton186:setParent(obj.layout120);
     obj.radioButton186:setLeft(0);
     obj.radioButton186:setTop(15);
@@ -11463,7 +11463,7 @@ function newfrmFichaACN()
     obj.radioButton186:setFieldValue("total3_12");
     obj.radioButton186:setName("radioButton186");
 
-    obj.edit437 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit437 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit437:setParent(obj.layout120);
     obj.edit437:setLeft(20);
     obj.edit437:setTop(0);
@@ -11472,7 +11472,7 @@ function newfrmFichaACN()
     obj.edit437:setField("nome3_12");
     obj.edit437:setName("edit437");
 
-    obj.rectangle117 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle117 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle117:setParent(obj.layout120);
     obj.rectangle117:setLeft(125);
     obj.rectangle117:setTop(0);
@@ -11483,7 +11483,7 @@ function newfrmFichaACN()
     obj.rectangle117:setStrokeSize(1);
     obj.rectangle117:setName("rectangle117");
 
-    obj.label197 = gui.fromHandle(_obj_newObject("label"));
+    obj.label197 = GUI.fromHandle(_obj_newObject("label"));
     obj.label197:setParent(obj.layout120);
     obj.label197:setLeft(125);
     obj.label197:setTop(3);
@@ -11493,7 +11493,7 @@ function newfrmFichaACN()
     obj.label197:setHorzTextAlign("center");
     obj.label197:setName("label197");
 
-    obj.edit438 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit438 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit438:setParent(obj.layout120);
     obj.edit438:setLeft(170);
     obj.edit438:setTop(0);
@@ -11504,7 +11504,7 @@ function newfrmFichaACN()
     obj.edit438:setField("base3_12");
     obj.edit438:setName("edit438");
 
-    obj.edit439 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit439 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit439:setParent(obj.layout120);
     obj.edit439:setLeft(205);
     obj.edit439:setTop(0);
@@ -11515,7 +11515,7 @@ function newfrmFichaACN()
     obj.edit439:setField("bonus3_12");
     obj.edit439:setName("edit439");
 
-    obj.edit440 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit440 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit440:setParent(obj.layout120);
     obj.edit440:setLeft(240);
     obj.edit440:setTop(0);
@@ -11526,7 +11526,7 @@ function newfrmFichaACN()
     obj.edit440:setField("xp3_12");
     obj.edit440:setName("edit440");
 
-    obj.edit441 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit441 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit441:setParent(obj.layout120);
     obj.edit441:setLeft(20);
     obj.edit441:setTop(28);
@@ -11535,7 +11535,7 @@ function newfrmFichaACN()
     obj.edit441:setField("espec3_12");
     obj.edit441:setName("edit441");
 
-    obj.layout121 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout121 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout121:setParent(obj.scrollBox4);
     obj.layout121:setLeft(1200);
     obj.layout121:setTop(0);
@@ -11543,7 +11543,7 @@ function newfrmFichaACN()
     obj.layout121:setHeight(230);
     obj.layout121:setName("layout121");
 
-    obj.rectangle118 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle118 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle118:setParent(obj.layout121);
     obj.rectangle118:setLeft(0);
     obj.rectangle118:setTop(0);
@@ -11555,7 +11555,7 @@ function newfrmFichaACN()
     obj.rectangle118:setCornerType("round");
     obj.rectangle118:setName("rectangle118");
 
-    obj.label198 = gui.fromHandle(_obj_newObject("label"));
+    obj.label198 = GUI.fromHandle(_obj_newObject("label"));
     obj.label198:setParent(obj.layout121);
     obj.label198:setLeft(5);
     obj.label198:setTop(10);
@@ -11564,7 +11564,7 @@ function newfrmFichaACN()
     obj.label198:setText("Dado 1");
     obj.label198:setName("label198");
 
-    obj.rectangle119 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle119 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle119:setParent(obj.layout121);
     obj.rectangle119:setLeft(50);
     obj.rectangle119:setTop(8);
@@ -11575,7 +11575,7 @@ function newfrmFichaACN()
     obj.rectangle119:setStrokeSize(1);
     obj.rectangle119:setName("rectangle119");
 
-    obj.label199 = gui.fromHandle(_obj_newObject("label"));
+    obj.label199 = GUI.fromHandle(_obj_newObject("label"));
     obj.label199:setParent(obj.layout121);
     obj.label199:setLeft(60);
     obj.label199:setTop(10);
@@ -11585,7 +11585,7 @@ function newfrmFichaACN()
     obj.label199:setText("val");
     obj.label199:setName("label199");
 
-    obj.label200 = gui.fromHandle(_obj_newObject("label"));
+    obj.label200 = GUI.fromHandle(_obj_newObject("label"));
     obj.label200:setParent(obj.layout121);
     obj.label200:setLeft(63);
     obj.label200:setTop(35);
@@ -11594,7 +11594,7 @@ function newfrmFichaACN()
     obj.label200:setText("+");
     obj.label200:setName("label200");
 
-    obj.label201 = gui.fromHandle(_obj_newObject("label"));
+    obj.label201 = GUI.fromHandle(_obj_newObject("label"));
     obj.label201:setParent(obj.layout121);
     obj.label201:setLeft(5);
     obj.label201:setTop(60);
@@ -11603,7 +11603,7 @@ function newfrmFichaACN()
     obj.label201:setText("Dado 2");
     obj.label201:setName("label201");
 
-    obj.rectangle120 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle120 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle120:setParent(obj.layout121);
     obj.rectangle120:setLeft(50);
     obj.rectangle120:setTop(58);
@@ -11614,7 +11614,7 @@ function newfrmFichaACN()
     obj.rectangle120:setStrokeSize(1);
     obj.rectangle120:setName("rectangle120");
 
-    obj.label202 = gui.fromHandle(_obj_newObject("label"));
+    obj.label202 = GUI.fromHandle(_obj_newObject("label"));
     obj.label202:setParent(obj.layout121);
     obj.label202:setLeft(60);
     obj.label202:setTop(60);
@@ -11624,7 +11624,7 @@ function newfrmFichaACN()
     obj.label202:setText("val");
     obj.label202:setName("label202");
 
-    obj.label203 = gui.fromHandle(_obj_newObject("label"));
+    obj.label203 = GUI.fromHandle(_obj_newObject("label"));
     obj.label203:setParent(obj.layout121);
     obj.label203:setLeft(63);
     obj.label203:setTop(85);
@@ -11633,7 +11633,7 @@ function newfrmFichaACN()
     obj.label203:setText("+");
     obj.label203:setName("label203");
 
-    obj.label204 = gui.fromHandle(_obj_newObject("label"));
+    obj.label204 = GUI.fromHandle(_obj_newObject("label"));
     obj.label204:setParent(obj.layout121);
     obj.label204:setLeft(5);
     obj.label204:setTop(110);
@@ -11642,7 +11642,7 @@ function newfrmFichaACN()
     obj.label204:setText("Especs");
     obj.label204:setName("label204");
 
-    obj.comboBox2 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox2:setParent(obj.layout121);
     obj.comboBox2:setLeft(50);
     obj.comboBox2:setTop(110);
@@ -11653,7 +11653,7 @@ function newfrmFichaACN()
     obj.comboBox2:setField("especBonus");
     obj.comboBox2:setName("comboBox2");
 
-    obj.label205 = gui.fromHandle(_obj_newObject("label"));
+    obj.label205 = GUI.fromHandle(_obj_newObject("label"));
     obj.label205:setParent(obj.layout121);
     obj.label205:setLeft(5);
     obj.label205:setTop(135);
@@ -11662,7 +11662,7 @@ function newfrmFichaACN()
     obj.label205:setText("Extra");
     obj.label205:setName("label205");
 
-    obj.edit442 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit442 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit442:setParent(obj.layout121);
     obj.edit442:setLeft(50);
     obj.edit442:setTop(135);
@@ -11671,7 +11671,7 @@ function newfrmFichaACN()
     obj.edit442:setField("extra");
     obj.edit442:setName("edit442");
 
-    obj.label206 = gui.fromHandle(_obj_newObject("label"));
+    obj.label206 = GUI.fromHandle(_obj_newObject("label"));
     obj.label206:setParent(obj.layout121);
     obj.label206:setLeft(5);
     obj.label206:setTop(165);
@@ -11680,7 +11680,7 @@ function newfrmFichaACN()
     obj.label206:setText("Dific.");
     obj.label206:setName("label206");
 
-    obj.edit443 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit443 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit443:setParent(obj.layout121);
     obj.edit443:setLeft(50);
     obj.edit443:setTop(165);
@@ -11690,7 +11690,7 @@ function newfrmFichaACN()
     obj.edit443:setType("number");
     obj.edit443:setName("edit443");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.layout121);
     obj.button4:setLeft(30);
     obj.button4:setTop(195);
@@ -11698,24 +11698,24 @@ function newfrmFichaACN()
     obj.button4:setText("ROLAR");
     obj.button4:setName("button4");
 
-    obj.tab3 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab3 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab3:setParent(obj.tabControl1);
     obj.tab3:setTitle("Inventario");
     obj.tab3:setName("tab3");
 
-    obj.frmACN3 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmACN3 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmACN3:setParent(obj.tab3);
     obj.frmACN3:setName("frmACN3");
     obj.frmACN3:setAlign("client");
     obj.frmACN3:setTheme("dark");
     obj.frmACN3:setMargins({top=1});
 
-    obj.scrollBox5 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox5 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox5:setParent(obj.frmACN3);
     obj.scrollBox5:setAlign("client");
     obj.scrollBox5:setName("scrollBox5");
 
-    obj.layout122 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout122 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout122:setParent(obj.scrollBox5);
     obj.layout122:setLeft(0);
     obj.layout122:setTop(0);
@@ -11723,7 +11723,7 @@ function newfrmFichaACN()
     obj.layout122:setHeight(600);
     obj.layout122:setName("layout122");
 
-    obj.rectangle121 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle121 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle121:setParent(obj.layout122);
     obj.rectangle121:setLeft(0);
     obj.rectangle121:setTop(0);
@@ -11735,7 +11735,7 @@ function newfrmFichaACN()
     obj.rectangle121:setCornerType("round");
     obj.rectangle121:setName("rectangle121");
 
-    obj.label207 = gui.fromHandle(_obj_newObject("label"));
+    obj.label207 = GUI.fromHandle(_obj_newObject("label"));
     obj.label207:setParent(obj.layout122);
     obj.label207:setLeft(0);
     obj.label207:setTop(0);
@@ -11745,7 +11745,7 @@ function newfrmFichaACN()
     obj.label207:setHorzTextAlign("center");
     obj.label207:setName("label207");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout122);
     obj.textEditor1:setLeft(10);
     obj.textEditor1:setTop(25);
@@ -11754,7 +11754,7 @@ function newfrmFichaACN()
     obj.textEditor1:setField("equipamentos");
     obj.textEditor1:setName("textEditor1");
 
-    obj.layout123 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout123 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout123:setParent(obj.scrollBox5);
     obj.layout123:setLeft(410);
     obj.layout123:setTop(0);
@@ -11762,7 +11762,7 @@ function newfrmFichaACN()
     obj.layout123:setHeight(250);
     obj.layout123:setName("layout123");
 
-    obj.rectangle122 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle122 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle122:setParent(obj.layout123);
     obj.rectangle122:setLeft(0);
     obj.rectangle122:setTop(0);
@@ -11774,7 +11774,7 @@ function newfrmFichaACN()
     obj.rectangle122:setCornerType("round");
     obj.rectangle122:setName("rectangle122");
 
-    obj.label208 = gui.fromHandle(_obj_newObject("label"));
+    obj.label208 = GUI.fromHandle(_obj_newObject("label"));
     obj.label208:setParent(obj.layout123);
     obj.label208:setLeft(0);
     obj.label208:setTop(0);
@@ -11784,7 +11784,7 @@ function newfrmFichaACN()
     obj.label208:setHorzTextAlign("center");
     obj.label208:setName("label208");
 
-    obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.layout123);
     obj.textEditor2:setLeft(10);
     obj.textEditor2:setTop(25);
@@ -11793,7 +11793,7 @@ function newfrmFichaACN()
     obj.textEditor2:setField("bens");
     obj.textEditor2:setName("textEditor2");
 
-    obj.layout124 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout124 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout124:setParent(obj.scrollBox5);
     obj.layout124:setLeft(820);
     obj.layout124:setTop(0);
@@ -11801,7 +11801,7 @@ function newfrmFichaACN()
     obj.layout124:setHeight(250);
     obj.layout124:setName("layout124");
 
-    obj.rectangle123 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle123 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle123:setParent(obj.layout124);
     obj.rectangle123:setLeft(0);
     obj.rectangle123:setTop(0);
@@ -11813,7 +11813,7 @@ function newfrmFichaACN()
     obj.rectangle123:setCornerType("round");
     obj.rectangle123:setName("rectangle123");
 
-    obj.label209 = gui.fromHandle(_obj_newObject("label"));
+    obj.label209 = GUI.fromHandle(_obj_newObject("label"));
     obj.label209:setParent(obj.layout124);
     obj.label209:setLeft(0);
     obj.label209:setTop(0);
@@ -11823,7 +11823,7 @@ function newfrmFichaACN()
     obj.label209:setHorzTextAlign("center");
     obj.label209:setName("label209");
 
-    obj.textEditor3 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor3:setParent(obj.layout124);
     obj.textEditor3:setLeft(10);
     obj.textEditor3:setTop(25);
@@ -11832,7 +11832,7 @@ function newfrmFichaACN()
     obj.textEditor3:setField("outrosItens");
     obj.textEditor3:setName("textEditor3");
 
-    obj.layout125 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout125 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout125:setParent(obj.scrollBox5);
     obj.layout125:setLeft(410);
     obj.layout125:setTop(260);
@@ -11840,7 +11840,7 @@ function newfrmFichaACN()
     obj.layout125:setHeight(245);
     obj.layout125:setName("layout125");
 
-    obj.rectangle124 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle124 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle124:setParent(obj.layout125);
     obj.rectangle124:setLeft(0);
     obj.rectangle124:setTop(0);
@@ -11852,7 +11852,7 @@ function newfrmFichaACN()
     obj.rectangle124:setCornerType("round");
     obj.rectangle124:setName("rectangle124");
 
-    obj.label210 = gui.fromHandle(_obj_newObject("label"));
+    obj.label210 = GUI.fromHandle(_obj_newObject("label"));
     obj.label210:setParent(obj.layout125);
     obj.label210:setLeft(0);
     obj.label210:setTop(0);
@@ -11862,7 +11862,7 @@ function newfrmFichaACN()
     obj.label210:setHorzTextAlign("center");
     obj.label210:setName("label210");
 
-    obj.label211 = gui.fromHandle(_obj_newObject("label"));
+    obj.label211 = GUI.fromHandle(_obj_newObject("label"));
     obj.label211:setParent(obj.layout125);
     obj.label211:setLeft(10);
     obj.label211:setTop(25);
@@ -11871,7 +11871,7 @@ function newfrmFichaACN()
     obj.label211:setText("Nome");
     obj.label211:setName("label211");
 
-    obj.label212 = gui.fromHandle(_obj_newObject("label"));
+    obj.label212 = GUI.fromHandle(_obj_newObject("label"));
     obj.label212:setParent(obj.layout125);
     obj.label212:setLeft(170);
     obj.label212:setTop(25);
@@ -11880,7 +11880,7 @@ function newfrmFichaACN()
     obj.label212:setText("Teste");
     obj.label212:setName("label212");
 
-    obj.label213 = gui.fromHandle(_obj_newObject("label"));
+    obj.label213 = GUI.fromHandle(_obj_newObject("label"));
     obj.label213:setParent(obj.layout125);
     obj.label213:setLeft(330);
     obj.label213:setTop(25);
@@ -11889,7 +11889,7 @@ function newfrmFichaACN()
     obj.label213:setText("Dific");
     obj.label213:setName("label213");
 
-    obj.label214 = gui.fromHandle(_obj_newObject("label"));
+    obj.label214 = GUI.fromHandle(_obj_newObject("label"));
     obj.label214:setParent(obj.layout125);
     obj.label214:setLeft(370);
     obj.label214:setTop(25);
@@ -11898,7 +11898,7 @@ function newfrmFichaACN()
     obj.label214:setText("Dano");
     obj.label214:setName("label214");
 
-    obj.label215 = gui.fromHandle(_obj_newObject("label"));
+    obj.label215 = GUI.fromHandle(_obj_newObject("label"));
     obj.label215:setParent(obj.layout125);
     obj.label215:setLeft(410);
     obj.label215:setTop(25);
@@ -11907,7 +11907,7 @@ function newfrmFichaACN()
     obj.label215:setText("Mun.");
     obj.label215:setName("label215");
 
-    obj.label216 = gui.fromHandle(_obj_newObject("label"));
+    obj.label216 = GUI.fromHandle(_obj_newObject("label"));
     obj.label216:setParent(obj.layout125);
     obj.label216:setLeft(450);
     obj.label216:setTop(25);
@@ -11916,7 +11916,7 @@ function newfrmFichaACN()
     obj.label216:setText("Outros");
     obj.label216:setName("label216");
 
-    obj.edit444 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit444 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit444:setParent(obj.layout125);
     obj.edit444:setLeft(10);
     obj.edit444:setTop(50);
@@ -11925,7 +11925,7 @@ function newfrmFichaACN()
     obj.edit444:setField("nome1");
     obj.edit444:setName("edit444");
 
-    obj.edit445 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit445 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit445:setParent(obj.layout125);
     obj.edit445:setLeft(170);
     obj.edit445:setTop(50);
@@ -11934,7 +11934,7 @@ function newfrmFichaACN()
     obj.edit445:setField("teste1");
     obj.edit445:setName("edit445");
 
-    obj.edit446 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit446 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit446:setParent(obj.layout125);
     obj.edit446:setLeft(330);
     obj.edit446:setTop(50);
@@ -11943,7 +11943,7 @@ function newfrmFichaACN()
     obj.edit446:setField("dificuldade1");
     obj.edit446:setName("edit446");
 
-    obj.edit447 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit447 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit447:setParent(obj.layout125);
     obj.edit447:setLeft(370);
     obj.edit447:setTop(50);
@@ -11952,7 +11952,7 @@ function newfrmFichaACN()
     obj.edit447:setField("dano1");
     obj.edit447:setName("edit447");
 
-    obj.edit448 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit448 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit448:setParent(obj.layout125);
     obj.edit448:setLeft(410);
     obj.edit448:setTop(50);
@@ -11961,7 +11961,7 @@ function newfrmFichaACN()
     obj.edit448:setField("municao1");
     obj.edit448:setName("edit448");
 
-    obj.edit449 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit449 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit449:setParent(obj.layout125);
     obj.edit449:setLeft(450);
     obj.edit449:setTop(50);
@@ -11970,7 +11970,7 @@ function newfrmFichaACN()
     obj.edit449:setField("outros1");
     obj.edit449:setName("edit449");
 
-    obj.edit450 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit450 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit450:setParent(obj.layout125);
     obj.edit450:setLeft(10);
     obj.edit450:setTop(80);
@@ -11979,7 +11979,7 @@ function newfrmFichaACN()
     obj.edit450:setField("nome2");
     obj.edit450:setName("edit450");
 
-    obj.edit451 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit451 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit451:setParent(obj.layout125);
     obj.edit451:setLeft(170);
     obj.edit451:setTop(80);
@@ -11988,7 +11988,7 @@ function newfrmFichaACN()
     obj.edit451:setField("teste2");
     obj.edit451:setName("edit451");
 
-    obj.edit452 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit452 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit452:setParent(obj.layout125);
     obj.edit452:setLeft(330);
     obj.edit452:setTop(80);
@@ -11997,7 +11997,7 @@ function newfrmFichaACN()
     obj.edit452:setField("dificuldade2");
     obj.edit452:setName("edit452");
 
-    obj.edit453 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit453 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit453:setParent(obj.layout125);
     obj.edit453:setLeft(370);
     obj.edit453:setTop(80);
@@ -12006,7 +12006,7 @@ function newfrmFichaACN()
     obj.edit453:setField("dano2");
     obj.edit453:setName("edit453");
 
-    obj.edit454 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit454 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit454:setParent(obj.layout125);
     obj.edit454:setLeft(410);
     obj.edit454:setTop(80);
@@ -12015,7 +12015,7 @@ function newfrmFichaACN()
     obj.edit454:setField("municao2");
     obj.edit454:setName("edit454");
 
-    obj.edit455 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit455 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit455:setParent(obj.layout125);
     obj.edit455:setLeft(450);
     obj.edit455:setTop(80);
@@ -12024,7 +12024,7 @@ function newfrmFichaACN()
     obj.edit455:setField("outros2");
     obj.edit455:setName("edit455");
 
-    obj.edit456 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit456 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit456:setParent(obj.layout125);
     obj.edit456:setLeft(10);
     obj.edit456:setTop(110);
@@ -12033,7 +12033,7 @@ function newfrmFichaACN()
     obj.edit456:setField("nome3");
     obj.edit456:setName("edit456");
 
-    obj.edit457 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit457 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit457:setParent(obj.layout125);
     obj.edit457:setLeft(170);
     obj.edit457:setTop(110);
@@ -12042,7 +12042,7 @@ function newfrmFichaACN()
     obj.edit457:setField("teste3");
     obj.edit457:setName("edit457");
 
-    obj.edit458 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit458 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit458:setParent(obj.layout125);
     obj.edit458:setLeft(330);
     obj.edit458:setTop(110);
@@ -12051,7 +12051,7 @@ function newfrmFichaACN()
     obj.edit458:setField("dificuldade3");
     obj.edit458:setName("edit458");
 
-    obj.edit459 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit459 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit459:setParent(obj.layout125);
     obj.edit459:setLeft(370);
     obj.edit459:setTop(110);
@@ -12060,7 +12060,7 @@ function newfrmFichaACN()
     obj.edit459:setField("dano3");
     obj.edit459:setName("edit459");
 
-    obj.edit460 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit460 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit460:setParent(obj.layout125);
     obj.edit460:setLeft(410);
     obj.edit460:setTop(110);
@@ -12069,7 +12069,7 @@ function newfrmFichaACN()
     obj.edit460:setField("municao3");
     obj.edit460:setName("edit460");
 
-    obj.edit461 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit461 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit461:setParent(obj.layout125);
     obj.edit461:setLeft(450);
     obj.edit461:setTop(110);
@@ -12078,7 +12078,7 @@ function newfrmFichaACN()
     obj.edit461:setField("outros3");
     obj.edit461:setName("edit461");
 
-    obj.edit462 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit462 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit462:setParent(obj.layout125);
     obj.edit462:setLeft(10);
     obj.edit462:setTop(140);
@@ -12087,7 +12087,7 @@ function newfrmFichaACN()
     obj.edit462:setField("nome4");
     obj.edit462:setName("edit462");
 
-    obj.edit463 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit463 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit463:setParent(obj.layout125);
     obj.edit463:setLeft(170);
     obj.edit463:setTop(140);
@@ -12096,7 +12096,7 @@ function newfrmFichaACN()
     obj.edit463:setField("teste4");
     obj.edit463:setName("edit463");
 
-    obj.edit464 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit464 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit464:setParent(obj.layout125);
     obj.edit464:setLeft(330);
     obj.edit464:setTop(140);
@@ -12105,7 +12105,7 @@ function newfrmFichaACN()
     obj.edit464:setField("dificuldade4");
     obj.edit464:setName("edit464");
 
-    obj.edit465 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit465 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit465:setParent(obj.layout125);
     obj.edit465:setLeft(370);
     obj.edit465:setTop(140);
@@ -12114,7 +12114,7 @@ function newfrmFichaACN()
     obj.edit465:setField("dano4");
     obj.edit465:setName("edit465");
 
-    obj.edit466 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit466 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit466:setParent(obj.layout125);
     obj.edit466:setLeft(410);
     obj.edit466:setTop(140);
@@ -12123,7 +12123,7 @@ function newfrmFichaACN()
     obj.edit466:setField("municao4");
     obj.edit466:setName("edit466");
 
-    obj.edit467 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit467 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit467:setParent(obj.layout125);
     obj.edit467:setLeft(450);
     obj.edit467:setTop(140);
@@ -12132,7 +12132,7 @@ function newfrmFichaACN()
     obj.edit467:setField("outros4");
     obj.edit467:setName("edit467");
 
-    obj.edit468 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit468 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit468:setParent(obj.layout125);
     obj.edit468:setLeft(10);
     obj.edit468:setTop(170);
@@ -12141,7 +12141,7 @@ function newfrmFichaACN()
     obj.edit468:setField("nome5");
     obj.edit468:setName("edit468");
 
-    obj.edit469 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit469 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit469:setParent(obj.layout125);
     obj.edit469:setLeft(170);
     obj.edit469:setTop(170);
@@ -12150,7 +12150,7 @@ function newfrmFichaACN()
     obj.edit469:setField("teste5");
     obj.edit469:setName("edit469");
 
-    obj.edit470 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit470 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit470:setParent(obj.layout125);
     obj.edit470:setLeft(330);
     obj.edit470:setTop(170);
@@ -12159,7 +12159,7 @@ function newfrmFichaACN()
     obj.edit470:setField("dificuldade5");
     obj.edit470:setName("edit470");
 
-    obj.edit471 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit471 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit471:setParent(obj.layout125);
     obj.edit471:setLeft(370);
     obj.edit471:setTop(170);
@@ -12168,7 +12168,7 @@ function newfrmFichaACN()
     obj.edit471:setField("dano5");
     obj.edit471:setName("edit471");
 
-    obj.edit472 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit472 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit472:setParent(obj.layout125);
     obj.edit472:setLeft(410);
     obj.edit472:setTop(170);
@@ -12177,7 +12177,7 @@ function newfrmFichaACN()
     obj.edit472:setField("municao5");
     obj.edit472:setName("edit472");
 
-    obj.edit473 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit473 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit473:setParent(obj.layout125);
     obj.edit473:setLeft(450);
     obj.edit473:setTop(170);
@@ -12186,7 +12186,7 @@ function newfrmFichaACN()
     obj.edit473:setField("outros5");
     obj.edit473:setName("edit473");
 
-    obj.edit474 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit474 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit474:setParent(obj.layout125);
     obj.edit474:setLeft(10);
     obj.edit474:setTop(200);
@@ -12195,7 +12195,7 @@ function newfrmFichaACN()
     obj.edit474:setField("nome6");
     obj.edit474:setName("edit474");
 
-    obj.edit475 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit475 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit475:setParent(obj.layout125);
     obj.edit475:setLeft(170);
     obj.edit475:setTop(200);
@@ -12204,7 +12204,7 @@ function newfrmFichaACN()
     obj.edit475:setField("teste6");
     obj.edit475:setName("edit475");
 
-    obj.edit476 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit476 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit476:setParent(obj.layout125);
     obj.edit476:setLeft(330);
     obj.edit476:setTop(200);
@@ -12213,7 +12213,7 @@ function newfrmFichaACN()
     obj.edit476:setField("dificuldade6");
     obj.edit476:setName("edit476");
 
-    obj.edit477 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit477 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit477:setParent(obj.layout125);
     obj.edit477:setLeft(370);
     obj.edit477:setTop(200);
@@ -12222,7 +12222,7 @@ function newfrmFichaACN()
     obj.edit477:setField("dano6");
     obj.edit477:setName("edit477");
 
-    obj.edit478 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit478 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit478:setParent(obj.layout125);
     obj.edit478:setLeft(410);
     obj.edit478:setTop(200);
@@ -12231,7 +12231,7 @@ function newfrmFichaACN()
     obj.edit478:setField("municao6");
     obj.edit478:setName("edit478");
 
-    obj.edit479 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit479 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit479:setParent(obj.layout125);
     obj.edit479:setLeft(450);
     obj.edit479:setTop(200);
@@ -12240,7 +12240,7 @@ function newfrmFichaACN()
     obj.edit479:setField("outros6");
     obj.edit479:setName("edit479");
 
-    obj.layout126 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout126 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout126:setParent(obj.scrollBox5);
     obj.layout126:setLeft(410);
     obj.layout126:setTop(515);
@@ -12248,7 +12248,7 @@ function newfrmFichaACN()
     obj.layout126:setHeight(85);
     obj.layout126:setName("layout126");
 
-    obj.rectangle125 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle125 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle125:setParent(obj.layout126);
     obj.rectangle125:setLeft(0);
     obj.rectangle125:setTop(0);
@@ -12260,7 +12260,7 @@ function newfrmFichaACN()
     obj.rectangle125:setCornerType("round");
     obj.rectangle125:setName("rectangle125");
 
-    obj.label217 = gui.fromHandle(_obj_newObject("label"));
+    obj.label217 = GUI.fromHandle(_obj_newObject("label"));
     obj.label217:setParent(obj.layout126);
     obj.label217:setLeft(0);
     obj.label217:setTop(0);
@@ -12270,7 +12270,7 @@ function newfrmFichaACN()
     obj.label217:setHorzTextAlign("center");
     obj.label217:setName("label217");
 
-    obj.label218 = gui.fromHandle(_obj_newObject("label"));
+    obj.label218 = GUI.fromHandle(_obj_newObject("label"));
     obj.label218:setParent(obj.layout126);
     obj.label218:setLeft(10);
     obj.label218:setTop(30);
@@ -12279,7 +12279,7 @@ function newfrmFichaACN()
     obj.label218:setText("Tipo");
     obj.label218:setName("label218");
 
-    obj.edit480 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit480 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit480:setParent(obj.layout126);
     obj.edit480:setLeft(55);
     obj.edit480:setTop(25);
@@ -12288,7 +12288,7 @@ function newfrmFichaACN()
     obj.edit480:setField("tipoArmadura");
     obj.edit480:setName("edit480");
 
-    obj.label219 = gui.fromHandle(_obj_newObject("label"));
+    obj.label219 = GUI.fromHandle(_obj_newObject("label"));
     obj.label219:setParent(obj.layout126);
     obj.label219:setLeft(195);
     obj.label219:setTop(30);
@@ -12297,7 +12297,7 @@ function newfrmFichaACN()
     obj.label219:setText("Índice");
     obj.label219:setName("label219");
 
-    obj.edit481 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit481 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit481:setParent(obj.layout126);
     obj.edit481:setLeft(240);
     obj.edit481:setTop(25);
@@ -12306,7 +12306,7 @@ function newfrmFichaACN()
     obj.edit481:setField("indiceArmadura");
     obj.edit481:setName("edit481");
 
-    obj.label220 = gui.fromHandle(_obj_newObject("label"));
+    obj.label220 = GUI.fromHandle(_obj_newObject("label"));
     obj.label220:setParent(obj.layout126);
     obj.label220:setLeft(285);
     obj.label220:setTop(30);
@@ -12315,7 +12315,7 @@ function newfrmFichaACN()
     obj.label220:setText("Penalidade");
     obj.label220:setName("label220");
 
-    obj.edit482 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit482 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit482:setParent(obj.layout126);
     obj.edit482:setLeft(355);
     obj.edit482:setTop(25);
@@ -12324,7 +12324,7 @@ function newfrmFichaACN()
     obj.edit482:setField("penalidadeArmadura");
     obj.edit482:setName("edit482");
 
-    obj.label221 = gui.fromHandle(_obj_newObject("label"));
+    obj.label221 = GUI.fromHandle(_obj_newObject("label"));
     obj.label221:setParent(obj.layout126);
     obj.label221:setLeft(10);
     obj.label221:setTop(55);
@@ -12333,7 +12333,7 @@ function newfrmFichaACN()
     obj.label221:setText("Outros");
     obj.label221:setName("label221");
 
-    obj.edit483 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit483 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit483:setParent(obj.layout126);
     obj.edit483:setLeft(55);
     obj.edit483:setTop(50);
@@ -12342,7 +12342,7 @@ function newfrmFichaACN()
     obj.edit483:setField("outrosArmadura");
     obj.edit483:setName("edit483");
 
-    obj.label222 = gui.fromHandle(_obj_newObject("label"));
+    obj.label222 = GUI.fromHandle(_obj_newObject("label"));
     obj.label222:setParent(obj.layout126);
     obj.label222:setLeft(195);
     obj.label222:setTop(55);
@@ -12351,7 +12351,7 @@ function newfrmFichaACN()
     obj.label222:setText("Força");
     obj.label222:setName("label222");
 
-    obj.edit484 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit484 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit484:setParent(obj.layout126);
     obj.edit484:setLeft(240);
     obj.edit484:setTop(50);
@@ -12360,7 +12360,7 @@ function newfrmFichaACN()
     obj.edit484:setField("forcaMinArmadura");
     obj.edit484:setName("edit484");
 
-    obj.label223 = gui.fromHandle(_obj_newObject("label"));
+    obj.label223 = GUI.fromHandle(_obj_newObject("label"));
     obj.label223:setParent(obj.layout126);
     obj.label223:setLeft(285);
     obj.label223:setTop(55);
@@ -12369,7 +12369,7 @@ function newfrmFichaACN()
     obj.label223:setText("Eficácia");
     obj.label223:setName("label223");
 
-    obj.edit485 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit485 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit485:setParent(obj.layout126);
     obj.edit485:setLeft(355);
     obj.edit485:setTop(50);
@@ -12378,7 +12378,7 @@ function newfrmFichaACN()
     obj.edit485:setField("eficaciaArmadura");
     obj.edit485:setName("edit485");
 
-    obj.layout127 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout127 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout127:setParent(obj.scrollBox5);
     obj.layout127:setLeft(820);
     obj.layout127:setTop(515);
@@ -12386,7 +12386,7 @@ function newfrmFichaACN()
     obj.layout127:setHeight(85);
     obj.layout127:setName("layout127");
 
-    obj.rectangle126 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle126 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle126:setParent(obj.layout127);
     obj.rectangle126:setLeft(0);
     obj.rectangle126:setTop(0);
@@ -12398,7 +12398,7 @@ function newfrmFichaACN()
     obj.rectangle126:setCornerType("round");
     obj.rectangle126:setName("rectangle126");
 
-    obj.label224 = gui.fromHandle(_obj_newObject("label"));
+    obj.label224 = GUI.fromHandle(_obj_newObject("label"));
     obj.label224:setParent(obj.layout127);
     obj.label224:setLeft(0);
     obj.label224:setTop(0);
@@ -12408,7 +12408,7 @@ function newfrmFichaACN()
     obj.label224:setHorzTextAlign("center");
     obj.label224:setName("label224");
 
-    obj.label225 = gui.fromHandle(_obj_newObject("label"));
+    obj.label225 = GUI.fromHandle(_obj_newObject("label"));
     obj.label225:setParent(obj.layout127);
     obj.label225:setLeft(10);
     obj.label225:setTop(30);
@@ -12417,7 +12417,7 @@ function newfrmFichaACN()
     obj.label225:setText("Tipo");
     obj.label225:setName("label225");
 
-    obj.edit486 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit486 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit486:setParent(obj.layout127);
     obj.edit486:setLeft(55);
     obj.edit486:setTop(25);
@@ -12426,7 +12426,7 @@ function newfrmFichaACN()
     obj.edit486:setField("tipoEscudo");
     obj.edit486:setName("edit486");
 
-    obj.label226 = gui.fromHandle(_obj_newObject("label"));
+    obj.label226 = GUI.fromHandle(_obj_newObject("label"));
     obj.label226:setParent(obj.layout127);
     obj.label226:setLeft(195);
     obj.label226:setTop(30);
@@ -12435,7 +12435,7 @@ function newfrmFichaACN()
     obj.label226:setText("Aparar");
     obj.label226:setName("label226");
 
-    obj.edit487 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit487 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit487:setParent(obj.layout127);
     obj.edit487:setLeft(240);
     obj.edit487:setTop(25);
@@ -12444,7 +12444,7 @@ function newfrmFichaACN()
     obj.edit487:setField("apararEscudo");
     obj.edit487:setName("edit487");
 
-    obj.label227 = gui.fromHandle(_obj_newObject("label"));
+    obj.label227 = GUI.fromHandle(_obj_newObject("label"));
     obj.label227:setParent(obj.layout127);
     obj.label227:setLeft(285);
     obj.label227:setTop(30);
@@ -12453,7 +12453,7 @@ function newfrmFichaACN()
     obj.label227:setText("Penalidade");
     obj.label227:setName("label227");
 
-    obj.edit488 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit488 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit488:setParent(obj.layout127);
     obj.edit488:setLeft(355);
     obj.edit488:setTop(25);
@@ -12462,7 +12462,7 @@ function newfrmFichaACN()
     obj.edit488:setField("penalidadeEscudo");
     obj.edit488:setName("edit488");
 
-    obj.label228 = gui.fromHandle(_obj_newObject("label"));
+    obj.label228 = GUI.fromHandle(_obj_newObject("label"));
     obj.label228:setParent(obj.layout127);
     obj.label228:setLeft(10);
     obj.label228:setTop(55);
@@ -12471,7 +12471,7 @@ function newfrmFichaACN()
     obj.label228:setText("Outros");
     obj.label228:setName("label228");
 
-    obj.edit489 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit489 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit489:setParent(obj.layout127);
     obj.edit489:setLeft(55);
     obj.edit489:setTop(50);
@@ -12480,7 +12480,7 @@ function newfrmFichaACN()
     obj.edit489:setField("outrosEscudo");
     obj.edit489:setName("edit489");
 
-    obj.label229 = gui.fromHandle(_obj_newObject("label"));
+    obj.label229 = GUI.fromHandle(_obj_newObject("label"));
     obj.label229:setParent(obj.layout127);
     obj.label229:setLeft(195);
     obj.label229:setTop(55);
@@ -12489,7 +12489,7 @@ function newfrmFichaACN()
     obj.label229:setText("Força");
     obj.label229:setName("label229");
 
-    obj.edit490 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit490 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit490:setParent(obj.layout127);
     obj.edit490:setLeft(240);
     obj.edit490:setTop(50);
@@ -12498,7 +12498,7 @@ function newfrmFichaACN()
     obj.edit490:setField("forcaMinEscudo");
     obj.edit490:setName("edit490");
 
-    obj.label230 = gui.fromHandle(_obj_newObject("label"));
+    obj.label230 = GUI.fromHandle(_obj_newObject("label"));
     obj.label230:setParent(obj.layout127);
     obj.label230:setLeft(285);
     obj.label230:setTop(55);
@@ -12507,7 +12507,7 @@ function newfrmFichaACN()
     obj.label230:setText("Cobertura");
     obj.label230:setName("label230");
 
-    obj.edit491 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit491 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit491:setParent(obj.layout127);
     obj.edit491:setLeft(355);
     obj.edit491:setTop(50);
@@ -12516,24 +12516,24 @@ function newfrmFichaACN()
     obj.edit491:setField("coberturaEscudo");
     obj.edit491:setName("edit491");
 
-    obj.tab4 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab4 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab4:setParent(obj.tabControl1);
     obj.tab4:setTitle("Descrições");
     obj.tab4:setName("tab4");
 
-    obj.frmACN4 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmACN4 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmACN4:setParent(obj.tab4);
     obj.frmACN4:setName("frmACN4");
     obj.frmACN4:setAlign("client");
     obj.frmACN4:setTheme("dark");
     obj.frmACN4:setMargins({top=1});
 
-    obj.scrollBox6 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox6 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox6:setParent(obj.frmACN4);
     obj.scrollBox6:setAlign("client");
     obj.scrollBox6:setName("scrollBox6");
 
-    obj.layout128 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout128 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout128:setParent(obj.scrollBox6);
     obj.layout128:setLeft(0);
     obj.layout128:setTop(0);
@@ -12541,7 +12541,7 @@ function newfrmFichaACN()
     obj.layout128:setHeight(70);
     obj.layout128:setName("layout128");
 
-    obj.rectangle127 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle127 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle127:setParent(obj.layout128);
     obj.rectangle127:setLeft(5);
     obj.rectangle127:setTop(0);
@@ -12553,7 +12553,7 @@ function newfrmFichaACN()
     obj.rectangle127:setCornerType("round");
     obj.rectangle127:setName("rectangle127");
 
-    obj.layout129 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout129 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout129:setParent(obj.layout128);
     obj.layout129:setLeft(5);
     obj.layout129:setTop(5);
@@ -12561,7 +12561,7 @@ function newfrmFichaACN()
     obj.layout129:setHeight(25);
     obj.layout129:setName("layout129");
 
-    obj.label231 = gui.fromHandle(_obj_newObject("label"));
+    obj.label231 = GUI.fromHandle(_obj_newObject("label"));
     obj.label231:setParent(obj.layout129);
     obj.label231:setLeft(0);
     obj.label231:setTop(5);
@@ -12571,7 +12571,7 @@ function newfrmFichaACN()
     obj.label231:setHorzTextAlign("trailing");
     obj.label231:setName("label231");
 
-    obj.edit492 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit492 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit492:setParent(obj.layout129);
     obj.edit492:setLeft(110);
     obj.edit492:setTop(0);
@@ -12580,7 +12580,7 @@ function newfrmFichaACN()
     obj.edit492:setField("desc_sexo");
     obj.edit492:setName("edit492");
 
-    obj.layout130 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout130 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout130:setParent(obj.layout128);
     obj.layout130:setLeft(320);
     obj.layout130:setTop(5);
@@ -12588,7 +12588,7 @@ function newfrmFichaACN()
     obj.layout130:setHeight(25);
     obj.layout130:setName("layout130");
 
-    obj.label232 = gui.fromHandle(_obj_newObject("label"));
+    obj.label232 = GUI.fromHandle(_obj_newObject("label"));
     obj.label232:setParent(obj.layout130);
     obj.label232:setLeft(0);
     obj.label232:setTop(5);
@@ -12598,7 +12598,7 @@ function newfrmFichaACN()
     obj.label232:setHorzTextAlign("trailing");
     obj.label232:setName("label232");
 
-    obj.edit493 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit493 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit493:setParent(obj.layout130);
     obj.edit493:setLeft(110);
     obj.edit493:setTop(0);
@@ -12607,7 +12607,7 @@ function newfrmFichaACN()
     obj.edit493:setField("desc_altura");
     obj.edit493:setName("edit493");
 
-    obj.layout131 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout131 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout131:setParent(obj.layout128);
     obj.layout131:setLeft(585);
     obj.layout131:setTop(5);
@@ -12615,7 +12615,7 @@ function newfrmFichaACN()
     obj.layout131:setHeight(25);
     obj.layout131:setName("layout131");
 
-    obj.label233 = gui.fromHandle(_obj_newObject("label"));
+    obj.label233 = GUI.fromHandle(_obj_newObject("label"));
     obj.label233:setParent(obj.layout131);
     obj.label233:setLeft(0);
     obj.label233:setTop(5);
@@ -12625,7 +12625,7 @@ function newfrmFichaACN()
     obj.label233:setHorzTextAlign("trailing");
     obj.label233:setName("label233");
 
-    obj.edit494 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit494 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit494:setParent(obj.layout131);
     obj.edit494:setLeft(110);
     obj.edit494:setTop(0);
@@ -12634,7 +12634,7 @@ function newfrmFichaACN()
     obj.edit494:setField("desc_olhos");
     obj.edit494:setName("edit494");
 
-    obj.layout132 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout132 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout132:setParent(obj.layout128);
     obj.layout132:setLeft(5);
     obj.layout132:setTop(35);
@@ -12642,7 +12642,7 @@ function newfrmFichaACN()
     obj.layout132:setHeight(25);
     obj.layout132:setName("layout132");
 
-    obj.label234 = gui.fromHandle(_obj_newObject("label"));
+    obj.label234 = GUI.fromHandle(_obj_newObject("label"));
     obj.label234:setParent(obj.layout132);
     obj.label234:setLeft(0);
     obj.label234:setTop(5);
@@ -12652,7 +12652,7 @@ function newfrmFichaACN()
     obj.label234:setHorzTextAlign("trailing");
     obj.label234:setName("label234");
 
-    obj.edit495 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit495 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit495:setParent(obj.layout132);
     obj.edit495:setLeft(110);
     obj.edit495:setTop(0);
@@ -12661,7 +12661,7 @@ function newfrmFichaACN()
     obj.edit495:setField("desc_raca");
     obj.edit495:setName("edit495");
 
-    obj.layout133 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout133 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout133:setParent(obj.layout128);
     obj.layout133:setLeft(320);
     obj.layout133:setTop(35);
@@ -12669,7 +12669,7 @@ function newfrmFichaACN()
     obj.layout133:setHeight(25);
     obj.layout133:setName("layout133");
 
-    obj.label235 = gui.fromHandle(_obj_newObject("label"));
+    obj.label235 = GUI.fromHandle(_obj_newObject("label"));
     obj.label235:setParent(obj.layout133);
     obj.label235:setLeft(0);
     obj.label235:setTop(5);
@@ -12679,7 +12679,7 @@ function newfrmFichaACN()
     obj.label235:setHorzTextAlign("trailing");
     obj.label235:setName("label235");
 
-    obj.edit496 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit496 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit496:setParent(obj.layout133);
     obj.edit496:setLeft(110);
     obj.edit496:setTop(0);
@@ -12688,7 +12688,7 @@ function newfrmFichaACN()
     obj.edit496:setField("desc_nascimento");
     obj.edit496:setName("edit496");
 
-    obj.layout134 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout134 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout134:setParent(obj.layout128);
     obj.layout134:setLeft(585);
     obj.layout134:setTop(35);
@@ -12696,7 +12696,7 @@ function newfrmFichaACN()
     obj.layout134:setHeight(25);
     obj.layout134:setName("layout134");
 
-    obj.label236 = gui.fromHandle(_obj_newObject("label"));
+    obj.label236 = GUI.fromHandle(_obj_newObject("label"));
     obj.label236:setParent(obj.layout134);
     obj.label236:setLeft(0);
     obj.label236:setTop(5);
@@ -12706,7 +12706,7 @@ function newfrmFichaACN()
     obj.label236:setHorzTextAlign("trailing");
     obj.label236:setName("label236");
 
-    obj.edit497 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit497 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit497:setParent(obj.layout134);
     obj.edit497:setLeft(110);
     obj.edit497:setTop(0);
@@ -12715,7 +12715,7 @@ function newfrmFichaACN()
     obj.edit497:setField("desc_cabelo");
     obj.edit497:setName("edit497");
 
-    obj.layout135 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout135 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout135:setParent(obj.scrollBox6);
     obj.layout135:setLeft(0);
     obj.layout135:setTop(80);
@@ -12723,7 +12723,7 @@ function newfrmFichaACN()
     obj.layout135:setHeight(175);
     obj.layout135:setName("layout135");
 
-    obj.rectangle128 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle128 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle128:setParent(obj.layout135);
     obj.rectangle128:setLeft(0);
     obj.rectangle128:setTop(0);
@@ -12735,7 +12735,7 @@ function newfrmFichaACN()
     obj.rectangle128:setCornerType("round");
     obj.rectangle128:setName("rectangle128");
 
-    obj.label237 = gui.fromHandle(_obj_newObject("label"));
+    obj.label237 = GUI.fromHandle(_obj_newObject("label"));
     obj.label237:setParent(obj.layout135);
     obj.label237:setLeft(0);
     obj.label237:setTop(0);
@@ -12745,7 +12745,7 @@ function newfrmFichaACN()
     obj.label237:setHorzTextAlign("center");
     obj.label237:setName("label237");
 
-    obj.textEditor4 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor4:setParent(obj.layout135);
     obj.textEditor4:setLeft(10);
     obj.textEditor4:setTop(25);
@@ -12754,7 +12754,7 @@ function newfrmFichaACN()
     obj.textEditor4:setField("aparencia");
     obj.textEditor4:setName("textEditor4");
 
-    obj.layout136 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout136 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout136:setParent(obj.scrollBox6);
     obj.layout136:setLeft(0);
     obj.layout136:setTop(260);
@@ -12762,7 +12762,7 @@ function newfrmFichaACN()
     obj.layout136:setHeight(175);
     obj.layout136:setName("layout136");
 
-    obj.rectangle129 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle129 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle129:setParent(obj.layout136);
     obj.rectangle129:setLeft(0);
     obj.rectangle129:setTop(0);
@@ -12774,7 +12774,7 @@ function newfrmFichaACN()
     obj.rectangle129:setCornerType("round");
     obj.rectangle129:setName("rectangle129");
 
-    obj.label238 = gui.fromHandle(_obj_newObject("label"));
+    obj.label238 = GUI.fromHandle(_obj_newObject("label"));
     obj.label238:setParent(obj.layout136);
     obj.label238:setLeft(0);
     obj.label238:setTop(0);
@@ -12784,7 +12784,7 @@ function newfrmFichaACN()
     obj.label238:setHorzTextAlign("center");
     obj.label238:setName("label238");
 
-    obj.textEditor5 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor5:setParent(obj.layout136);
     obj.textEditor5:setLeft(10);
     obj.textEditor5:setTop(25);
@@ -12793,7 +12793,7 @@ function newfrmFichaACN()
     obj.textEditor5:setField("personalidade");
     obj.textEditor5:setName("textEditor5");
 
-    obj.layout137 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout137 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout137:setParent(obj.scrollBox6);
     obj.layout137:setLeft(0);
     obj.layout137:setTop(440);
@@ -12801,7 +12801,7 @@ function newfrmFichaACN()
     obj.layout137:setHeight(175);
     obj.layout137:setName("layout137");
 
-    obj.rectangle130 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle130 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle130:setParent(obj.layout137);
     obj.rectangle130:setLeft(0);
     obj.rectangle130:setTop(0);
@@ -12813,7 +12813,7 @@ function newfrmFichaACN()
     obj.rectangle130:setCornerType("round");
     obj.rectangle130:setName("rectangle130");
 
-    obj.label239 = gui.fromHandle(_obj_newObject("label"));
+    obj.label239 = GUI.fromHandle(_obj_newObject("label"));
     obj.label239:setParent(obj.layout137);
     obj.label239:setLeft(0);
     obj.label239:setTop(0);
@@ -12823,7 +12823,7 @@ function newfrmFichaACN()
     obj.label239:setHorzTextAlign("center");
     obj.label239:setName("label239");
 
-    obj.textEditor6 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor6 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor6:setParent(obj.layout137);
     obj.textEditor6:setLeft(10);
     obj.textEditor6:setTop(25);
@@ -12832,7 +12832,7 @@ function newfrmFichaACN()
     obj.textEditor6:setField("idiomas");
     obj.textEditor6:setName("textEditor6");
 
-    obj.layout138 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout138 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout138:setParent(obj.scrollBox6);
     obj.layout138:setLeft(410);
     obj.layout138:setTop(80);
@@ -12840,7 +12840,7 @@ function newfrmFichaACN()
     obj.layout138:setHeight(535);
     obj.layout138:setName("layout138");
 
-    obj.rectangle131 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle131 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle131:setParent(obj.layout138);
     obj.rectangle131:setLeft(0);
     obj.rectangle131:setTop(0);
@@ -12852,7 +12852,7 @@ function newfrmFichaACN()
     obj.rectangle131:setCornerType("round");
     obj.rectangle131:setName("rectangle131");
 
-    obj.label240 = gui.fromHandle(_obj_newObject("label"));
+    obj.label240 = GUI.fromHandle(_obj_newObject("label"));
     obj.label240:setParent(obj.layout138);
     obj.label240:setLeft(0);
     obj.label240:setTop(0);
@@ -12862,7 +12862,7 @@ function newfrmFichaACN()
     obj.label240:setHorzTextAlign("center");
     obj.label240:setName("label240");
 
-    obj.textEditor7 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor7 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor7:setParent(obj.layout138);
     obj.textEditor7:setLeft(10);
     obj.textEditor7:setTop(25);
@@ -12871,24 +12871,24 @@ function newfrmFichaACN()
     obj.textEditor7:setField("historia");
     obj.textEditor7:setName("textEditor7");
 
-    obj.tab5 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab5 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab5:setParent(obj.tabControl1);
     obj.tab5:setTitle("Anotações");
     obj.tab5:setName("tab5");
 
-    obj.frmACN5 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmACN5 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmACN5:setParent(obj.tab5);
     obj.frmACN5:setName("frmACN5");
     obj.frmACN5:setAlign("client");
     obj.frmACN5:setTheme("dark");
     obj.frmACN5:setMargins({top=1});
 
-    obj.scrollBox7 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox7 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox7:setParent(obj.frmACN5);
     obj.scrollBox7:setAlign("client");
     obj.scrollBox7:setName("scrollBox7");
 
-    obj.layout139 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout139 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout139:setParent(obj.scrollBox7);
     obj.layout139:setLeft(0);
     obj.layout139:setTop(0);
@@ -12896,7 +12896,7 @@ function newfrmFichaACN()
     obj.layout139:setHeight(580);
     obj.layout139:setName("layout139");
 
-    obj.rectangle132 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle132 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle132:setParent(obj.layout139);
     obj.rectangle132:setLeft(0);
     obj.rectangle132:setTop(0);
@@ -12908,7 +12908,7 @@ function newfrmFichaACN()
     obj.rectangle132:setCornerType("round");
     obj.rectangle132:setName("rectangle132");
 
-    obj.label241 = gui.fromHandle(_obj_newObject("label"));
+    obj.label241 = GUI.fromHandle(_obj_newObject("label"));
     obj.label241:setParent(obj.layout139);
     obj.label241:setLeft(0);
     obj.label241:setTop(0);
@@ -12918,7 +12918,7 @@ function newfrmFichaACN()
     obj.label241:setHorzTextAlign("center");
     obj.label241:setName("label241");
 
-    obj.textEditor8 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor8 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor8:setParent(obj.layout139);
     obj.textEditor8:setLeft(10);
     obj.textEditor8:setTop(25);
@@ -12927,7 +12927,7 @@ function newfrmFichaACN()
     obj.textEditor8:setField("anotacoes1");
     obj.textEditor8:setName("textEditor8");
 
-    obj.layout140 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout140 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout140:setParent(obj.scrollBox7);
     obj.layout140:setLeft(410);
     obj.layout140:setTop(0);
@@ -12935,7 +12935,7 @@ function newfrmFichaACN()
     obj.layout140:setHeight(580);
     obj.layout140:setName("layout140");
 
-    obj.rectangle133 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle133 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle133:setParent(obj.layout140);
     obj.rectangle133:setLeft(0);
     obj.rectangle133:setTop(0);
@@ -12947,7 +12947,7 @@ function newfrmFichaACN()
     obj.rectangle133:setCornerType("round");
     obj.rectangle133:setName("rectangle133");
 
-    obj.label242 = gui.fromHandle(_obj_newObject("label"));
+    obj.label242 = GUI.fromHandle(_obj_newObject("label"));
     obj.label242:setParent(obj.layout140);
     obj.label242:setLeft(0);
     obj.label242:setTop(0);
@@ -12957,7 +12957,7 @@ function newfrmFichaACN()
     obj.label242:setHorzTextAlign("center");
     obj.label242:setName("label242");
 
-    obj.textEditor9 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor9 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor9:setParent(obj.layout140);
     obj.textEditor9:setLeft(10);
     obj.textEditor9:setTop(25);
@@ -12966,7 +12966,7 @@ function newfrmFichaACN()
     obj.textEditor9:setField("anotacoes2");
     obj.textEditor9:setName("textEditor9");
 
-    obj.layout141 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout141 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout141:setParent(obj.scrollBox7);
     obj.layout141:setLeft(820);
     obj.layout141:setTop(0);
@@ -12974,7 +12974,7 @@ function newfrmFichaACN()
     obj.layout141:setHeight(580);
     obj.layout141:setName("layout141");
 
-    obj.rectangle134 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle134 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle134:setParent(obj.layout141);
     obj.rectangle134:setLeft(0);
     obj.rectangle134:setTop(0);
@@ -12986,7 +12986,7 @@ function newfrmFichaACN()
     obj.rectangle134:setCornerType("round");
     obj.rectangle134:setName("rectangle134");
 
-    obj.label243 = gui.fromHandle(_obj_newObject("label"));
+    obj.label243 = GUI.fromHandle(_obj_newObject("label"));
     obj.label243:setParent(obj.layout141);
     obj.label243:setLeft(0);
     obj.label243:setTop(0);
@@ -12996,7 +12996,7 @@ function newfrmFichaACN()
     obj.label243:setHorzTextAlign("center");
     obj.label243:setName("label243");
 
-    obj.textEditor10 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor10 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor10:setParent(obj.layout141);
     obj.textEditor10:setLeft(10);
     obj.textEditor10:setTop(25);
@@ -13005,24 +13005,24 @@ function newfrmFichaACN()
     obj.textEditor10:setField("anotacoes3");
     obj.textEditor10:setName("textEditor10");
 
-    obj.tab6 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab6 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab6:setParent(obj.tabControl1);
     obj.tab6:setTitle("Creditos");
     obj.tab6:setName("tab6");
 
-    obj.frmACN6 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmACN6 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmACN6:setParent(obj.tab6);
     obj.frmACN6:setName("frmACN6");
     obj.frmACN6:setAlign("client");
     obj.frmACN6:setTheme("dark");
     obj.frmACN6:setMargins({top=1});
 
-    obj.scrollBox8 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox8 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox8:setParent(obj.frmACN6);
     obj.scrollBox8:setAlign("client");
     obj.scrollBox8:setName("scrollBox8");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.scrollBox8);
     obj.image2:setLeft(0);
     obj.image2:setTop(0);
@@ -13032,7 +13032,7 @@ function newfrmFichaACN()
     obj.image2:setSRC("/Ficha ACN/images/RPGmeister.jpg");
     obj.image2:setName("image2");
 
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
     obj.image3:setParent(obj.scrollBox8);
     obj.image3:setLeft(550);
     obj.image3:setTop(0);
@@ -13042,7 +13042,7 @@ function newfrmFichaACN()
     obj.image3:setSRC("/Ficha ACN/images/SALEM.png");
     obj.image3:setName("image3");
 
-    obj.layout142 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout142 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout142:setParent(obj.scrollBox8);
     obj.layout142:setLeft(550);
     obj.layout142:setTop(300);
@@ -13050,7 +13050,7 @@ function newfrmFichaACN()
     obj.layout142:setHeight(150);
     obj.layout142:setName("layout142");
 
-    obj.rectangle135 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle135 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle135:setParent(obj.layout142);
     obj.rectangle135:setLeft(0);
     obj.rectangle135:setTop(0);
@@ -13062,7 +13062,7 @@ function newfrmFichaACN()
     obj.rectangle135:setCornerType("round");
     obj.rectangle135:setName("rectangle135");
 
-    obj.label244 = gui.fromHandle(_obj_newObject("label"));
+    obj.label244 = GUI.fromHandle(_obj_newObject("label"));
     obj.label244:setParent(obj.layout142);
     obj.label244:setLeft(0);
     obj.label244:setTop(10);
@@ -13072,7 +13072,7 @@ function newfrmFichaACN()
     obj.label244:setHorzTextAlign("center");
     obj.label244:setName("label244");
 
-    obj.label245 = gui.fromHandle(_obj_newObject("label"));
+    obj.label245 = GUI.fromHandle(_obj_newObject("label"));
     obj.label245:setParent(obj.layout142);
     obj.label245:setLeft(0);
     obj.label245:setTop(35);
@@ -13082,7 +13082,7 @@ function newfrmFichaACN()
     obj.label245:setHorzTextAlign("center");
     obj.label245:setName("label245");
 
-    obj.label246 = gui.fromHandle(_obj_newObject("label"));
+    obj.label246 = GUI.fromHandle(_obj_newObject("label"));
     obj.label246:setParent(obj.layout142);
     obj.label246:setLeft(0);
     obj.label246:setTop(60);
@@ -13092,7 +13092,7 @@ function newfrmFichaACN()
     obj.label246:setHorzTextAlign("center");
     obj.label246:setName("label246");
 
-    obj.label247 = gui.fromHandle(_obj_newObject("label"));
+    obj.label247 = GUI.fromHandle(_obj_newObject("label"));
     obj.label247:setParent(obj.layout142);
     obj.label247:setLeft(0);
     obj.label247:setTop(95);
@@ -13102,7 +13102,7 @@ function newfrmFichaACN()
     obj.label247:setHorzTextAlign("center");
     obj.label247:setName("label247");
 
-    obj.label248 = gui.fromHandle(_obj_newObject("label"));
+    obj.label248 = GUI.fromHandle(_obj_newObject("label"));
     obj.label248:setParent(obj.layout142);
     obj.label248:setLeft(0);
     obj.label248:setTop(120);
@@ -13112,7 +13112,7 @@ function newfrmFichaACN()
     obj.label248:setHorzTextAlign("center");
     obj.label248:setName("label248");
 
-    obj.label249 = gui.fromHandle(_obj_newObject("label"));
+    obj.label249 = GUI.fromHandle(_obj_newObject("label"));
     obj.label249:setParent(obj.scrollBox8);
     obj.label249:setLeft(755);
     obj.label249:setTop(300);
@@ -13122,7 +13122,7 @@ function newfrmFichaACN()
     obj.label249:setHorzTextAlign("center");
     obj.label249:setName("label249");
 
-    obj.image4 = gui.fromHandle(_obj_newObject("image"));
+    obj.image4 = GUI.fromHandle(_obj_newObject("image"));
     obj.image4:setParent(obj.scrollBox8);
     obj.image4:setLeft(867);
     obj.image4:setTop(300);
@@ -13132,7 +13132,7 @@ function newfrmFichaACN()
     obj.image4:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao04.png");
     obj.image4:setName("image4");
 
-    obj.label250 = gui.fromHandle(_obj_newObject("label"));
+    obj.label250 = GUI.fromHandle(_obj_newObject("label"));
     obj.label250:setParent(obj.scrollBox8);
     obj.label250:setLeft(755);
     obj.label250:setTop(325);
@@ -13142,7 +13142,7 @@ function newfrmFichaACN()
     obj.label250:setHorzTextAlign("center");
     obj.label250:setName("label250");
 
-    obj.image5 = gui.fromHandle(_obj_newObject("image"));
+    obj.image5 = GUI.fromHandle(_obj_newObject("image"));
     obj.image5:setParent(obj.scrollBox8);
     obj.image5:setLeft(867);
     obj.image5:setTop(325);
@@ -13152,7 +13152,7 @@ function newfrmFichaACN()
     obj.image5:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20ACN%20releases/release.png");
     obj.image5:setName("image5");
 
-    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
     obj.button5:setParent(obj.scrollBox8);
     obj.button5:setLeft(755);
     obj.button5:setTop(350);
@@ -13160,7 +13160,7 @@ function newfrmFichaACN()
     obj.button5:setText("Change Log");
     obj.button5:setName("button5");
 
-    obj.button6 = gui.fromHandle(_obj_newObject("button"));
+    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
     obj.button6:setParent(obj.scrollBox8);
     obj.button6:setLeft(867);
     obj.button6:setTop(350);
@@ -13168,7 +13168,7 @@ function newfrmFichaACN()
     obj.button6:setText("Atualizar");
     obj.button6:setName("button6");
 
-    obj.label251 = gui.fromHandle(_obj_newObject("label"));
+    obj.label251 = GUI.fromHandle(_obj_newObject("label"));
     obj.label251:setParent(obj.scrollBox8);
     obj.label251:setLeft(755);
     obj.label251:setTop(400);
@@ -13177,7 +13177,7 @@ function newfrmFichaACN()
     obj.label251:setText("Conheça as Mesas:");
     obj.label251:setName("label251");
 
-    obj.button7 = gui.fromHandle(_obj_newObject("button"));
+    obj.button7 = GUI.fromHandle(_obj_newObject("button"));
     obj.button7:setParent(obj.scrollBox8);
     obj.button7:setLeft(755);
     obj.button7:setTop(425);
@@ -13185,7 +13185,7 @@ function newfrmFichaACN()
     obj.button7:setText("RPGmeister");
     obj.button7:setName("button7");
 
-    obj.button8 = gui.fromHandle(_obj_newObject("button"));
+    obj.button8 = GUI.fromHandle(_obj_newObject("button"));
     obj.button8:setParent(obj.scrollBox8);
     obj.button8:setLeft(867);
     obj.button8:setTop(425);
@@ -13194,21 +13194,21 @@ function newfrmFichaACN()
     obj.button8:setName("button8");
 
     obj._e_event0 = obj.radioButton1:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event1 = obj.radioButton2:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event2 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod = (tonumber(sheet.baseforca) or 0)+
             									(tonumber(sheet.inicialforca) or 0)+
@@ -13233,21 +13233,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event3 = obj.radioButton3:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event4 = obj.radioButton4:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event5 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod = (tonumber(sheet.baseagilidade) or 0)+
             									(tonumber(sheet.inicialagilidade) or 0)+
@@ -13272,21 +13272,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event6 = obj.radioButton5:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event7 = obj.radioButton6:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event8 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod = (tonumber(sheet.baseresiliencia) or 0)+
             									(tonumber(sheet.inicialresiliencia) or 0)+
@@ -13311,21 +13311,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event9 = obj.radioButton7:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event10 = obj.radioButton8:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event11 = obj.dataLink4:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod = (tonumber(sheet.basecarisma) or 0)+
             									(tonumber(sheet.inicialcarisma) or 0)+
@@ -13350,21 +13350,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event12 = obj.radioButton9:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event13 = obj.radioButton10:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event14 = obj.dataLink5:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod = (tonumber(sheet.basepercepcao) or 0)+
             									(tonumber(sheet.inicialpercepcao) or 0)+
@@ -13389,21 +13389,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event15 = obj.radioButton11:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event16 = obj.radioButton12:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event17 = obj.dataLink6:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod = (tonumber(sheet.baseperspicacia) or 0)+
             									(tonumber(sheet.inicialperspicacia) or 0)+
@@ -13428,21 +13428,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event18 = obj.radioButton13:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event19 = obj.radioButton14:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event20 = obj.dataLink7:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod = (tonumber(sheet.baseconsciencia) or 0)+
             									(tonumber(sheet.inicialconsciencia) or 0)+
@@ -13467,21 +13467,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event21 = obj.radioButton15:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event22 = obj.radioButton16:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event23 = obj.dataLink8:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod = (tonumber(sheet.baseespirito) or 0)+
             									(tonumber(sheet.inicialespirito) or 0)+
@@ -13506,21 +13506,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event24 = obj.radioButton17:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event25 = obj.radioButton18:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event26 = obj.dataLink9:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod = (tonumber(sheet.baseperseveranca) or 0)+
             									(tonumber(sheet.inicialperseveranca) or 0)+
@@ -13545,47 +13545,47 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event27 = obj.edit43:addEventListener("onUserChange",
-        function (self)
+        function (_)
             if sheet.gladiusMin~=nil and sheet.gladiusMax~=nil then
             							sheet.gladius = sheet.gladiusMin/sheet.gladiusMax;
             						end;
         end, obj);
 
     obj._e_event28 = obj.edit44:addEventListener("onUserChange",
-        function (self)
+        function (_)
             if sheet.gladiusMin~=nil and sheet.gladiusMax~=nil then
             							sheet.gladius = sheet.gladiusMin/sheet.gladiusMax;
             						end;
         end, obj);
 
     obj._e_event29 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             default();
         end, obj);
 
     obj._e_event30 = obj.dataLink10:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet ~= nil then
             						sheet.XPgastaTotal = (tonumber(sheet.XPgasta) or 0) + (tonumber(sheet.XPgasta2) or 0);
             					end;
         end, obj);
 
     obj._e_event31 = obj.radioButton19:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event32 = obj.radioButton20:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event33 = obj.edit48:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_1) or 0)+
             											(tonumber(sheet.historicoBonus1_1) or 0)+
             											(tonumber(sheet.historicoXp1_1) or 0);
@@ -13593,7 +13593,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event34 = obj.edit49:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_1) or 0)+
             											(tonumber(sheet.historicoBonus1_1) or 0)+
             											(tonumber(sheet.historicoXp1_1) or 0);
@@ -13601,7 +13601,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event35 = obj.edit50:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_1) or 0)+
             											(tonumber(sheet.historicoBonus1_1) or 0)+
             											(tonumber(sheet.historicoXp1_1) or 0);
@@ -13611,21 +13611,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event36 = obj.radioButton21:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event37 = obj.radioButton22:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event38 = obj.edit52:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_2) or 0)+
             											(tonumber(sheet.historicoBonus1_2) or 0)+
             											(tonumber(sheet.historicoXp1_2) or 0);
@@ -13633,7 +13633,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event39 = obj.edit53:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_2) or 0)+
             											(tonumber(sheet.historicoBonus1_2) or 0)+
             											(tonumber(sheet.historicoXp1_2) or 0);
@@ -13641,7 +13641,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event40 = obj.edit54:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_2) or 0)+
             											(tonumber(sheet.historicoBonus1_2) or 0)+
             											(tonumber(sheet.historicoXp1_2) or 0);
@@ -13651,21 +13651,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event41 = obj.radioButton23:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event42 = obj.radioButton24:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event43 = obj.edit56:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_3) or 0)+
             											(tonumber(sheet.historicoBonus1_3) or 0)+
             											(tonumber(sheet.historicoXp1_3) or 0);
@@ -13673,7 +13673,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event44 = obj.edit57:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_3) or 0)+
             											(tonumber(sheet.historicoBonus1_3) or 0)+
             											(tonumber(sheet.historicoXp1_3) or 0);
@@ -13681,7 +13681,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event45 = obj.edit58:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_3) or 0)+
             											(tonumber(sheet.historicoBonus1_3) or 0)+
             											(tonumber(sheet.historicoXp1_3) or 0);
@@ -13691,21 +13691,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event46 = obj.radioButton25:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event47 = obj.radioButton26:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event48 = obj.edit60:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_4) or 0)+
             											(tonumber(sheet.historicoBonus1_4) or 0)+
             											(tonumber(sheet.historicoXp1_4) or 0);
@@ -13713,7 +13713,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event49 = obj.edit61:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_4) or 0)+
             											(tonumber(sheet.historicoBonus1_4) or 0)+
             											(tonumber(sheet.historicoXp1_4) or 0);
@@ -13721,7 +13721,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event50 = obj.edit62:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_4) or 0)+
             											(tonumber(sheet.historicoBonus1_4) or 0)+
             											(tonumber(sheet.historicoXp1_4) or 0);
@@ -13731,21 +13731,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event51 = obj.radioButton27:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event52 = obj.radioButton28:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event53 = obj.edit64:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_5) or 0)+
             											(tonumber(sheet.historicoBonus1_5) or 0)+
             											(tonumber(sheet.historicoXp1_5) or 0);
@@ -13753,7 +13753,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event54 = obj.edit65:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_5) or 0)+
             											(tonumber(sheet.historicoBonus1_5) or 0)+
             											(tonumber(sheet.historicoXp1_5) or 0);
@@ -13761,7 +13761,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event55 = obj.edit66:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_5) or 0)+
             											(tonumber(sheet.historicoBonus1_5) or 0)+
             											(tonumber(sheet.historicoXp1_5) or 0);
@@ -13771,21 +13771,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event56 = obj.radioButton29:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event57 = obj.radioButton30:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event58 = obj.edit68:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_6) or 0)+
             											(tonumber(sheet.historicoBonus1_6) or 0)+
             											(tonumber(sheet.historicoXp1_6) or 0);
@@ -13793,7 +13793,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event59 = obj.edit69:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_6) or 0)+
             											(tonumber(sheet.historicoBonus1_6) or 0)+
             											(tonumber(sheet.historicoXp1_6) or 0);
@@ -13801,7 +13801,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event60 = obj.edit70:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_6) or 0)+
             											(tonumber(sheet.historicoBonus1_6) or 0)+
             											(tonumber(sheet.historicoXp1_6) or 0);
@@ -13811,21 +13811,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event61 = obj.radioButton31:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event62 = obj.radioButton32:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event63 = obj.edit72:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_1) or 0)+
             											(tonumber(sheet.historicoBonus2_1) or 0)+
             											(tonumber(sheet.historicoXp2_1) or 0);
@@ -13833,7 +13833,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event64 = obj.edit73:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_1) or 0)+
             											(tonumber(sheet.historicoBonus2_1) or 0)+
             											(tonumber(sheet.historicoXp2_1) or 0);
@@ -13841,7 +13841,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event65 = obj.edit74:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_1) or 0)+
             											(tonumber(sheet.historicoBonus2_1) or 0)+
             											(tonumber(sheet.historicoXp2_1) or 0);
@@ -13851,21 +13851,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event66 = obj.radioButton33:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event67 = obj.radioButton34:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event68 = obj.edit76:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_2) or 0)+
             											(tonumber(sheet.historicoBonus2_2) or 0)+
             											(tonumber(sheet.historicoXp2_2) or 0);
@@ -13873,7 +13873,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event69 = obj.edit77:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_2) or 0)+
             											(tonumber(sheet.historicoBonus2_2) or 0)+
             											(tonumber(sheet.historicoXp2_2) or 0);
@@ -13881,7 +13881,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event70 = obj.edit78:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_2) or 0)+
             											(tonumber(sheet.historicoBonus2_2) or 0)+
             											(tonumber(sheet.historicoXp2_2) or 0);
@@ -13891,21 +13891,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event71 = obj.radioButton35:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event72 = obj.radioButton36:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event73 = obj.edit80:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_3) or 0)+
             											(tonumber(sheet.historicoBonus2_3) or 0)+
             											(tonumber(sheet.historicoXp2_3) or 0);
@@ -13913,7 +13913,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event74 = obj.edit81:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_3) or 0)+
             											(tonumber(sheet.historicoBonus2_3) or 0)+
             											(tonumber(sheet.historicoXp2_3) or 0);
@@ -13921,7 +13921,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event75 = obj.edit82:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_3) or 0)+
             											(tonumber(sheet.historicoBonus2_3) or 0)+
             											(tonumber(sheet.historicoXp2_3) or 0);
@@ -13931,21 +13931,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event76 = obj.radioButton37:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event77 = obj.radioButton38:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event78 = obj.edit84:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_4) or 0)+
             											(tonumber(sheet.historicoBonus2_4) or 0)+
             											(tonumber(sheet.historicoXp2_4) or 0);
@@ -13953,7 +13953,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event79 = obj.edit85:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_4) or 0)+
             											(tonumber(sheet.historicoBonus2_4) or 0)+
             											(tonumber(sheet.historicoXp2_4) or 0);
@@ -13961,7 +13961,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event80 = obj.edit86:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_4) or 0)+
             											(tonumber(sheet.historicoBonus2_4) or 0)+
             											(tonumber(sheet.historicoXp2_4) or 0);
@@ -13971,21 +13971,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event81 = obj.radioButton39:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event82 = obj.radioButton40:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event83 = obj.edit88:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_5) or 0)+
             											(tonumber(sheet.historicoBonus2_5) or 0)+
             											(tonumber(sheet.historicoXp2_5) or 0);
@@ -13993,7 +13993,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event84 = obj.edit89:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_5) or 0)+
             											(tonumber(sheet.historicoBonus2_5) or 0)+
             											(tonumber(sheet.historicoXp2_5) or 0);
@@ -14001,7 +14001,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event85 = obj.edit90:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_5) or 0)+
             											(tonumber(sheet.historicoBonus2_5) or 0)+
             											(tonumber(sheet.historicoXp2_5) or 0);
@@ -14011,21 +14011,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event86 = obj.radioButton41:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event87 = obj.radioButton42:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event88 = obj.edit92:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_6) or 0)+
             											(tonumber(sheet.historicoBonus2_6) or 0)+
             											(tonumber(sheet.historicoXp2_6) or 0);
@@ -14033,7 +14033,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event89 = obj.edit93:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_6) or 0)+
             											(tonumber(sheet.historicoBonus2_6) or 0)+
             											(tonumber(sheet.historicoXp2_6) or 0);
@@ -14041,7 +14041,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event90 = obj.edit94:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_6) or 0)+
             											(tonumber(sheet.historicoBonus2_6) or 0)+
             											(tonumber(sheet.historicoXp2_6) or 0);
@@ -14051,21 +14051,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event91 = obj.radioButton43:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event92 = obj.radioButton44:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event93 = obj.edit96:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_1) or 0)+
             											(tonumber(sheet.historicoBonus3_1) or 0)+
             											(tonumber(sheet.historicoXp3_1) or 0);
@@ -14073,7 +14073,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event94 = obj.edit97:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_1) or 0)+
             											(tonumber(sheet.historicoBonus3_1) or 0)+
             											(tonumber(sheet.historicoXp3_1) or 0);
@@ -14081,7 +14081,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event95 = obj.edit98:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_1) or 0)+
             											(tonumber(sheet.historicoBonus3_1) or 0)+
             											(tonumber(sheet.historicoXp3_1) or 0);
@@ -14091,21 +14091,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event96 = obj.radioButton45:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event97 = obj.radioButton46:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event98 = obj.edit100:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_2) or 0)+
             											(tonumber(sheet.historicoBonus3_2) or 0)+
             											(tonumber(sheet.historicoXp3_2) or 0);
@@ -14113,7 +14113,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event99 = obj.edit101:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_2) or 0)+
             											(tonumber(sheet.historicoBonus3_2) or 0)+
             											(tonumber(sheet.historicoXp3_2) or 0);
@@ -14121,7 +14121,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event100 = obj.edit102:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_2) or 0)+
             											(tonumber(sheet.historicoBonus3_2) or 0)+
             											(tonumber(sheet.historicoXp3_2) or 0);
@@ -14131,21 +14131,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event101 = obj.radioButton47:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event102 = obj.radioButton48:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event103 = obj.edit104:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_3) or 0)+
             											(tonumber(sheet.historicoBonus3_3) or 0)+
             											(tonumber(sheet.historicoXp3_3) or 0);
@@ -14153,7 +14153,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event104 = obj.edit105:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_3) or 0)+
             											(tonumber(sheet.historicoBonus3_3) or 0)+
             											(tonumber(sheet.historicoXp3_3) or 0);
@@ -14161,7 +14161,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event105 = obj.edit106:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_3) or 0)+
             											(tonumber(sheet.historicoBonus3_3) or 0)+
             											(tonumber(sheet.historicoXp3_3) or 0);
@@ -14171,21 +14171,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event106 = obj.radioButton49:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event107 = obj.radioButton50:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event108 = obj.edit108:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_4) or 0)+
             											(tonumber(sheet.historicoBonus3_4) or 0)+
             											(tonumber(sheet.historicoXp3_4) or 0);
@@ -14193,7 +14193,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event109 = obj.edit109:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_4) or 0)+
             											(tonumber(sheet.historicoBonus3_4) or 0)+
             											(tonumber(sheet.historicoXp3_4) or 0);
@@ -14201,7 +14201,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event110 = obj.edit110:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_4) or 0)+
             											(tonumber(sheet.historicoBonus3_4) or 0)+
             											(tonumber(sheet.historicoXp3_4) or 0);
@@ -14211,21 +14211,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event111 = obj.radioButton51:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event112 = obj.radioButton52:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event113 = obj.edit112:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_5) or 0)+
             											(tonumber(sheet.historicoBonus3_5) or 0)+
             											(tonumber(sheet.historicoXp3_5) or 0);
@@ -14233,7 +14233,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event114 = obj.edit113:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_5) or 0)+
             											(tonumber(sheet.historicoBonus3_5) or 0)+
             											(tonumber(sheet.historicoXp3_5) or 0);
@@ -14241,7 +14241,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event115 = obj.edit114:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_5) or 0)+
             											(tonumber(sheet.historicoBonus3_5) or 0)+
             											(tonumber(sheet.historicoXp3_5) or 0);
@@ -14251,21 +14251,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event116 = obj.radioButton53:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event117 = obj.radioButton54:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event118 = obj.edit116:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_6) or 0)+
             											(tonumber(sheet.historicoBonus3_6) or 0)+
             											(tonumber(sheet.historicoXp3_6) or 0);
@@ -14273,7 +14273,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event119 = obj.edit117:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_6) or 0)+
             											(tonumber(sheet.historicoBonus3_6) or 0)+
             											(tonumber(sheet.historicoXp3_6) or 0);
@@ -14281,7 +14281,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event120 = obj.edit118:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_6) or 0)+
             											(tonumber(sheet.historicoBonus3_6) or 0)+
             											(tonumber(sheet.historicoXp3_6) or 0);
@@ -14291,21 +14291,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event121 = obj.radioButton55:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event122 = obj.radioButton56:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event123 = obj.edit120:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_1_m) or 0)+
             											(tonumber(sheet.historicoBonus1_1_m) or 0)+
             											(tonumber(sheet.historicoXp1_1_m) or 0);
@@ -14313,7 +14313,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event124 = obj.edit121:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_1_m) or 0)+
             											(tonumber(sheet.historicoBonus1_1_m) or 0)+
             											(tonumber(sheet.historicoXp1_1_m) or 0);
@@ -14321,7 +14321,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event125 = obj.edit122:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_1_m) or 0)+
             											(tonumber(sheet.historicoBonus1_1_m) or 0)+
             											(tonumber(sheet.historicoXp1_1_m) or 0);
@@ -14331,21 +14331,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event126 = obj.radioButton57:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event127 = obj.radioButton58:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event128 = obj.edit124:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_2_m) or 0)+
             											(tonumber(sheet.historicoBonus1_2_m) or 0)+
             											(tonumber(sheet.historicoXp1_2_m) or 0);
@@ -14353,7 +14353,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event129 = obj.edit125:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_2_m) or 0)+
             											(tonumber(sheet.historicoBonus1_2_m) or 0)+
             											(tonumber(sheet.historicoXp1_2_m) or 0);
@@ -14361,7 +14361,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event130 = obj.edit126:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_2_m) or 0)+
             											(tonumber(sheet.historicoBonus1_2_m) or 0)+
             											(tonumber(sheet.historicoXp1_2_m) or 0);
@@ -14371,21 +14371,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event131 = obj.radioButton59:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event132 = obj.radioButton60:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event133 = obj.edit128:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_3_m) or 0)+
             											(tonumber(sheet.historicoBonus1_3_m) or 0)+
             											(tonumber(sheet.historicoXp1_3_m) or 0);
@@ -14393,7 +14393,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event134 = obj.edit129:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_3_m) or 0)+
             											(tonumber(sheet.historicoBonus1_3_m) or 0)+
             											(tonumber(sheet.historicoXp1_3_m) or 0);
@@ -14401,7 +14401,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event135 = obj.edit130:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_3_m) or 0)+
             											(tonumber(sheet.historicoBonus1_3_m) or 0)+
             											(tonumber(sheet.historicoXp1_3_m) or 0);
@@ -14411,21 +14411,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event136 = obj.radioButton61:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event137 = obj.radioButton62:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event138 = obj.edit132:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_4_m) or 0)+
             											(tonumber(sheet.historicoBonus1_4_m) or 0)+
             											(tonumber(sheet.historicoXp1_4_m) or 0);
@@ -14433,7 +14433,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event139 = obj.edit133:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_4_m) or 0)+
             											(tonumber(sheet.historicoBonus1_4_m) or 0)+
             											(tonumber(sheet.historicoXp1_4_m) or 0);
@@ -14441,7 +14441,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event140 = obj.edit134:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_4_m) or 0)+
             											(tonumber(sheet.historicoBonus1_4_m) or 0)+
             											(tonumber(sheet.historicoXp1_4_m) or 0);
@@ -14451,21 +14451,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event141 = obj.radioButton63:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event142 = obj.radioButton64:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event143 = obj.edit136:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_5_m) or 0)+
             											(tonumber(sheet.historicoBonus1_5_m) or 0)+
             											(tonumber(sheet.historicoXp1_5_m) or 0);
@@ -14473,7 +14473,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event144 = obj.edit137:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_5_m) or 0)+
             											(tonumber(sheet.historicoBonus1_5_m) or 0)+
             											(tonumber(sheet.historicoXp1_5_m) or 0);
@@ -14481,7 +14481,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event145 = obj.edit138:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_5_m) or 0)+
             											(tonumber(sheet.historicoBonus1_5_m) or 0)+
             											(tonumber(sheet.historicoXp1_5_m) or 0);
@@ -14491,21 +14491,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event146 = obj.radioButton65:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event147 = obj.radioButton66:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event148 = obj.edit140:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_6_m) or 0)+
             											(tonumber(sheet.historicoBonus1_6_m) or 0)+
             											(tonumber(sheet.historicoXp1_6_m) or 0);
@@ -14513,7 +14513,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event149 = obj.edit141:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_6_m) or 0)+
             											(tonumber(sheet.historicoBonus1_6_m) or 0)+
             											(tonumber(sheet.historicoXp1_6_m) or 0);
@@ -14521,7 +14521,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event150 = obj.edit142:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor1_6_m) or 0)+
             											(tonumber(sheet.historicoBonus1_6_m) or 0)+
             											(tonumber(sheet.historicoXp1_6_m) or 0);
@@ -14531,21 +14531,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event151 = obj.radioButton67:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event152 = obj.radioButton68:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event153 = obj.edit144:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_1_m) or 0)+
             											(tonumber(sheet.historicoBonus2_1_m) or 0)+
             											(tonumber(sheet.historicoXp2_1_m) or 0);
@@ -14553,7 +14553,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event154 = obj.edit145:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_1_m) or 0)+
             											(tonumber(sheet.historicoBonus2_1_m) or 0)+
             											(tonumber(sheet.historicoXp2_1_m) or 0);
@@ -14561,7 +14561,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event155 = obj.edit146:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_1_m) or 0)+
             											(tonumber(sheet.historicoBonus2_1_m) or 0)+
             											(tonumber(sheet.historicoXp2_1_m) or 0);
@@ -14571,21 +14571,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event156 = obj.radioButton69:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event157 = obj.radioButton70:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event158 = obj.edit148:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_2_m) or 0)+
             											(tonumber(sheet.historicoBonus2_2_m) or 0)+
             											(tonumber(sheet.historicoXp2_2_m) or 0);
@@ -14593,7 +14593,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event159 = obj.edit149:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_2_m) or 0)+
             											(tonumber(sheet.historicoBonus2_2_m) or 0)+
             											(tonumber(sheet.historicoXp2_2_m) or 0);
@@ -14601,7 +14601,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event160 = obj.edit150:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_2_m) or 0)+
             											(tonumber(sheet.historicoBonus2_2_m) or 0)+
             											(tonumber(sheet.historicoXp2_2_m) or 0);
@@ -14611,21 +14611,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event161 = obj.radioButton71:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event162 = obj.radioButton72:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event163 = obj.edit152:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_3_m) or 0)+
             											(tonumber(sheet.historicoBonus2_3_m) or 0)+
             											(tonumber(sheet.historicoXp2_3_m) or 0);
@@ -14633,7 +14633,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event164 = obj.edit153:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_3_m) or 0)+
             											(tonumber(sheet.historicoBonus2_3_m) or 0)+
             											(tonumber(sheet.historicoXp2_3_m) or 0);
@@ -14641,7 +14641,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event165 = obj.edit154:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_3_m) or 0)+
             											(tonumber(sheet.historicoBonus2_3_m) or 0)+
             											(tonumber(sheet.historicoXp2_3_m) or 0);
@@ -14651,21 +14651,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event166 = obj.radioButton73:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event167 = obj.radioButton74:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event168 = obj.edit156:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_4_m) or 0)+
             											(tonumber(sheet.historicoBonus2_4_m) or 0)+
             											(tonumber(sheet.historicoXp2_4_m) or 0);
@@ -14673,7 +14673,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event169 = obj.edit157:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_4_m) or 0)+
             											(tonumber(sheet.historicoBonus2_4_m) or 0)+
             											(tonumber(sheet.historicoXp2_4_m) or 0);
@@ -14681,7 +14681,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event170 = obj.edit158:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_4_m) or 0)+
             											(tonumber(sheet.historicoBonus2_4_m) or 0)+
             											(tonumber(sheet.historicoXp2_4_m) or 0);
@@ -14691,21 +14691,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event171 = obj.radioButton75:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event172 = obj.radioButton76:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event173 = obj.edit160:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_5_m) or 0)+
             											(tonumber(sheet.historicoBonus2_5_m) or 0)+
             											(tonumber(sheet.historicoXp2_5_m) or 0);
@@ -14713,7 +14713,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event174 = obj.edit161:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_5_m) or 0)+
             											(tonumber(sheet.historicoBonus2_5_m) or 0)+
             											(tonumber(sheet.historicoXp2_5_m) or 0);
@@ -14721,7 +14721,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event175 = obj.edit162:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_5_m) or 0)+
             											(tonumber(sheet.historicoBonus2_5_m) or 0)+
             											(tonumber(sheet.historicoXp2_5_m) or 0);
@@ -14731,21 +14731,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event176 = obj.radioButton77:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event177 = obj.radioButton78:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event178 = obj.edit164:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_6_m) or 0)+
             											(tonumber(sheet.historicoBonus2_6_m) or 0)+
             											(tonumber(sheet.historicoXp2_6_m) or 0);
@@ -14753,7 +14753,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event179 = obj.edit165:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_6_m) or 0)+
             											(tonumber(sheet.historicoBonus2_6_m) or 0)+
             											(tonumber(sheet.historicoXp2_6_m) or 0);
@@ -14761,7 +14761,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event180 = obj.edit166:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor2_6_m) or 0)+
             											(tonumber(sheet.historicoBonus2_6_m) or 0)+
             											(tonumber(sheet.historicoXp2_6_m) or 0);
@@ -14771,21 +14771,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event181 = obj.radioButton79:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event182 = obj.radioButton80:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event183 = obj.edit168:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_1_m) or 0)+
             											(tonumber(sheet.historicoBonus3_1_m) or 0)+
             											(tonumber(sheet.historicoXp3_1_m) or 0);
@@ -14793,7 +14793,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event184 = obj.edit169:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_1_m) or 0)+
             											(tonumber(sheet.historicoBonus3_1_m) or 0)+
             											(tonumber(sheet.historicoXp3_1_m) or 0);
@@ -14801,7 +14801,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event185 = obj.edit170:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_1_m) or 0)+
             											(tonumber(sheet.historicoBonus3_1_m) or 0)+
             											(tonumber(sheet.historicoXp3_1_m) or 0);
@@ -14811,21 +14811,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event186 = obj.radioButton81:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event187 = obj.radioButton82:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event188 = obj.edit172:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_2_m) or 0)+
             											(tonumber(sheet.historicoBonus3_2_m) or 0)+
             											(tonumber(sheet.historicoXp3_2_m) or 0);
@@ -14833,7 +14833,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event189 = obj.edit173:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_2_m) or 0)+
             											(tonumber(sheet.historicoBonus3_2_m) or 0)+
             											(tonumber(sheet.historicoXp3_2_m) or 0);
@@ -14841,7 +14841,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event190 = obj.edit174:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_2_m) or 0)+
             											(tonumber(sheet.historicoBonus3_2_m) or 0)+
             											(tonumber(sheet.historicoXp3_2_m) or 0);
@@ -14851,21 +14851,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event191 = obj.radioButton83:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event192 = obj.radioButton84:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event193 = obj.edit176:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_3_m) or 0)+
             											(tonumber(sheet.historicoBonus3_3_m) or 0)+
             											(tonumber(sheet.historicoXp3_3_m) or 0);
@@ -14873,7 +14873,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event194 = obj.edit177:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_3_m) or 0)+
             											(tonumber(sheet.historicoBonus3_3_m) or 0)+
             											(tonumber(sheet.historicoXp3_3_m) or 0);
@@ -14881,7 +14881,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event195 = obj.edit178:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_3_m) or 0)+
             											(tonumber(sheet.historicoBonus3_3_m) or 0)+
             											(tonumber(sheet.historicoXp3_3_m) or 0);
@@ -14891,21 +14891,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event196 = obj.radioButton85:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event197 = obj.radioButton86:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event198 = obj.edit180:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_4_m) or 0)+
             											(tonumber(sheet.historicoBonus3_4_m) or 0)+
             											(tonumber(sheet.historicoXp3_4_m) or 0);
@@ -14913,7 +14913,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event199 = obj.edit181:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_4_m) or 0)+
             											(tonumber(sheet.historicoBonus3_4_m) or 0)+
             											(tonumber(sheet.historicoXp3_4_m) or 0);
@@ -14921,7 +14921,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event200 = obj.edit182:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_4_m) or 0)+
             											(tonumber(sheet.historicoBonus3_4_m) or 0)+
             											(tonumber(sheet.historicoXp3_4_m) or 0);
@@ -14931,21 +14931,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event201 = obj.radioButton87:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event202 = obj.radioButton88:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event203 = obj.edit184:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_5_m) or 0)+
             											(tonumber(sheet.historicoBonus3_5_m) or 0)+
             											(tonumber(sheet.historicoXp3_5_m) or 0);
@@ -14953,7 +14953,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event204 = obj.edit185:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_5_m) or 0)+
             											(tonumber(sheet.historicoBonus3_5_m) or 0)+
             											(tonumber(sheet.historicoXp3_5_m) or 0);
@@ -14961,7 +14961,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event205 = obj.edit186:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_5_m) or 0)+
             											(tonumber(sheet.historicoBonus3_5_m) or 0)+
             											(tonumber(sheet.historicoXp3_5_m) or 0);
@@ -14971,21 +14971,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event206 = obj.radioButton89:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event207 = obj.radioButton90:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event208 = obj.edit188:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_6_m) or 0)+
             											(tonumber(sheet.historicoBonus3_6_m) or 0)+
             											(tonumber(sheet.historicoXp3_6_m) or 0);
@@ -14993,7 +14993,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event209 = obj.edit189:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_6_m) or 0)+
             											(tonumber(sheet.historicoBonus3_6_m) or 0)+
             											(tonumber(sheet.historicoXp3_6_m) or 0);
@@ -15001,7 +15001,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event210 = obj.edit190:addEventListener("onUserChange",
-        function (self)
+        function (_)
             local mod = (tonumber(sheet.historicoValor3_6_m) or 0)+
             											(tonumber(sheet.historicoBonus3_6_m) or 0)+
             											(tonumber(sheet.historicoXp3_6_m) or 0);
@@ -15011,21 +15011,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event211 = obj.dataLink11:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet ~= nil then
             						sheet.absRes = math.floor(tonumber(sheet.testeresiliencia) or 0);
             					end;
         end, obj);
 
     obj._e_event212 = obj.dataLink12:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet ~= nil then
             						sheet.absorcao = (tonumber(sheet.absRes) or 0) + (tonumber(sheet.absOutros) or 0) + (tonumber(sheet.indiceArmadura) or 0);
             					end;
         end, obj);
 
     obj._e_event213 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					
             					rolagem = rrpg.interpretarRolagem("1d10 + " .. (sheet.iniciativa or 0));
@@ -15033,7 +15033,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event214 = obj.dataLink13:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet ~= nil then
             						sheet.iniciativa = ((tonumber(sheet.testeagilidade) or 0) + (tonumber(sheet.testeperspicacia) or 0)) * 2 + (tonumber(sheet.iniciativaBonus) or 0);
             						sheet.velocidade = ((tonumber(sheet.testeagilidade) or 0) + (tonumber(sheet.testeforca) or 0) + 2) * 2 + (tonumber(sheet.velocidadeBonus) or 0);
@@ -15045,12 +15045,12 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event215 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             rolar();
         end, obj);
 
     obj._e_event216 = obj.dataLink14:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local mod = "Atributos: ";
             					local fisicos = (tonumber(sheet.inicialforca) or 0) + (tonumber(sheet.inicialagilidade) or 0) + (tonumber(sheet.inicialresiliencia) or 0);
@@ -15074,21 +15074,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event217 = obj.radioButton91:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event218 = obj.radioButton92:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event219 = obj.edit203:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_1) or 0)+
             												(tonumber(sheet.bonus0_1) or 0)+
@@ -15099,7 +15099,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event220 = obj.edit204:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_1) or 0)+
             												(tonumber(sheet.bonus0_1) or 0)+
@@ -15110,7 +15110,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event221 = obj.edit205:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_1) or 0)+
             												(tonumber(sheet.bonus0_1) or 0)+
@@ -15122,21 +15122,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event222 = obj.radioButton93:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event223 = obj.radioButton94:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event224 = obj.edit208:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_2) or 0)+
             												(tonumber(sheet.bonus0_2) or 0)+
@@ -15147,7 +15147,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event225 = obj.edit209:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_2) or 0)+
             												(tonumber(sheet.bonus0_2) or 0)+
@@ -15158,7 +15158,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event226 = obj.edit210:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_2) or 0)+
             												(tonumber(sheet.bonus0_2) or 0)+
@@ -15170,21 +15170,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event227 = obj.radioButton95:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event228 = obj.radioButton96:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event229 = obj.edit213:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_3) or 0)+
             												(tonumber(sheet.bonus0_3) or 0)+
@@ -15195,7 +15195,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event230 = obj.edit214:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_3) or 0)+
             												(tonumber(sheet.bonus0_3) or 0)+
@@ -15206,7 +15206,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event231 = obj.edit215:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_3) or 0)+
             												(tonumber(sheet.bonus0_3) or 0)+
@@ -15218,21 +15218,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event232 = obj.radioButton97:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event233 = obj.radioButton98:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event234 = obj.edit218:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_4) or 0)+
             												(tonumber(sheet.bonus0_4) or 0)+
@@ -15243,7 +15243,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event235 = obj.edit219:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_4) or 0)+
             												(tonumber(sheet.bonus0_4) or 0)+
@@ -15254,7 +15254,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event236 = obj.edit220:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_4) or 0)+
             												(tonumber(sheet.bonus0_4) or 0)+
@@ -15266,21 +15266,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event237 = obj.radioButton99:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event238 = obj.radioButton100:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event239 = obj.edit223:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_5) or 0)+
             												(tonumber(sheet.bonus0_5) or 0)+
@@ -15291,7 +15291,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event240 = obj.edit224:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_5) or 0)+
             												(tonumber(sheet.bonus0_5) or 0)+
@@ -15302,7 +15302,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event241 = obj.edit225:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_5) or 0)+
             												(tonumber(sheet.bonus0_5) or 0)+
@@ -15314,21 +15314,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event242 = obj.radioButton101:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event243 = obj.radioButton102:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event244 = obj.edit228:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_6) or 0)+
             												(tonumber(sheet.bonus0_6) or 0)+
@@ -15339,7 +15339,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event245 = obj.edit229:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_6) or 0)+
             												(tonumber(sheet.bonus0_6) or 0)+
@@ -15350,7 +15350,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event246 = obj.edit230:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_6) or 0)+
             												(tonumber(sheet.bonus0_6) or 0)+
@@ -15362,21 +15362,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event247 = obj.radioButton103:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event248 = obj.radioButton104:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event249 = obj.edit233:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_7) or 0)+
             												(tonumber(sheet.bonus0_7) or 0)+
@@ -15387,7 +15387,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event250 = obj.edit234:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_7) or 0)+
             												(tonumber(sheet.bonus0_7) or 0)+
@@ -15398,7 +15398,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event251 = obj.edit235:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_7) or 0)+
             												(tonumber(sheet.bonus0_7) or 0)+
@@ -15410,21 +15410,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event252 = obj.radioButton105:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event253 = obj.radioButton106:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event254 = obj.edit238:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_8) or 0)+
             												(tonumber(sheet.bonus0_8) or 0)+
@@ -15435,7 +15435,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event255 = obj.edit239:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_8) or 0)+
             												(tonumber(sheet.bonus0_8) or 0)+
@@ -15446,7 +15446,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event256 = obj.edit240:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_8) or 0)+
             												(tonumber(sheet.bonus0_8) or 0)+
@@ -15458,21 +15458,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event257 = obj.radioButton107:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event258 = obj.radioButton108:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event259 = obj.edit243:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_9) or 0)+
             												(tonumber(sheet.bonus0_9) or 0)+
@@ -15483,7 +15483,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event260 = obj.edit244:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_9) or 0)+
             												(tonumber(sheet.bonus0_9) or 0)+
@@ -15494,7 +15494,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event261 = obj.edit245:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_9) or 0)+
             												(tonumber(sheet.bonus0_9) or 0)+
@@ -15506,21 +15506,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event262 = obj.radioButton109:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event263 = obj.radioButton110:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event264 = obj.edit248:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_10) or 0)+
             												(tonumber(sheet.bonus0_10) or 0)+
@@ -15531,7 +15531,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event265 = obj.edit249:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_10) or 0)+
             												(tonumber(sheet.bonus0_10) or 0)+
@@ -15542,7 +15542,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event266 = obj.edit250:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_10) or 0)+
             												(tonumber(sheet.bonus0_10) or 0)+
@@ -15554,21 +15554,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event267 = obj.radioButton111:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event268 = obj.radioButton112:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event269 = obj.edit253:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_11) or 0)+
             												(tonumber(sheet.bonus0_11) or 0)+
@@ -15579,7 +15579,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event270 = obj.edit254:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_11) or 0)+
             												(tonumber(sheet.bonus0_11) or 0)+
@@ -15590,7 +15590,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event271 = obj.edit255:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_11) or 0)+
             												(tonumber(sheet.bonus0_11) or 0)+
@@ -15602,21 +15602,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event272 = obj.radioButton113:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event273 = obj.radioButton114:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event274 = obj.edit258:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_12) or 0)+
             												(tonumber(sheet.bonus0_12) or 0)+
@@ -15627,7 +15627,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event275 = obj.edit259:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_12) or 0)+
             												(tonumber(sheet.bonus0_12) or 0)+
@@ -15638,7 +15638,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event276 = obj.edit260:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base0_12) or 0)+
             												(tonumber(sheet.bonus0_12) or 0)+
@@ -15650,21 +15650,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event277 = obj.radioButton115:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event278 = obj.radioButton116:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event279 = obj.edit263:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_1) or 0)+
             												(tonumber(sheet.bonus2_1) or 0)+
@@ -15675,7 +15675,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event280 = obj.edit264:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_1) or 0)+
             												(tonumber(sheet.bonus2_1) or 0)+
@@ -15686,7 +15686,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event281 = obj.edit265:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_1) or 0)+
             												(tonumber(sheet.bonus2_1) or 0)+
@@ -15698,21 +15698,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event282 = obj.radioButton117:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event283 = obj.radioButton118:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event284 = obj.edit268:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_2) or 0)+
             												(tonumber(sheet.bonus2_2) or 0)+
@@ -15723,7 +15723,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event285 = obj.edit269:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_2) or 0)+
             												(tonumber(sheet.bonus2_2) or 0)+
@@ -15734,7 +15734,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event286 = obj.edit270:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_2) or 0)+
             												(tonumber(sheet.bonus2_2) or 0)+
@@ -15746,21 +15746,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event287 = obj.radioButton119:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event288 = obj.radioButton120:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event289 = obj.edit273:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_3) or 0)+
             												(tonumber(sheet.bonus2_3) or 0)+
@@ -15771,7 +15771,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event290 = obj.edit274:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_3) or 0)+
             												(tonumber(sheet.bonus2_3) or 0)+
@@ -15782,7 +15782,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event291 = obj.edit275:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_3) or 0)+
             												(tonumber(sheet.bonus2_3) or 0)+
@@ -15794,21 +15794,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event292 = obj.radioButton121:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event293 = obj.radioButton122:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event294 = obj.edit278:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_4) or 0)+
             												(tonumber(sheet.bonus2_4) or 0)+
@@ -15819,7 +15819,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event295 = obj.edit279:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_4) or 0)+
             												(tonumber(sheet.bonus2_4) or 0)+
@@ -15830,7 +15830,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event296 = obj.edit280:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_4) or 0)+
             												(tonumber(sheet.bonus2_4) or 0)+
@@ -15842,21 +15842,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event297 = obj.radioButton123:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event298 = obj.radioButton124:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event299 = obj.edit283:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_5) or 0)+
             												(tonumber(sheet.bonus2_5) or 0)+
@@ -15867,7 +15867,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event300 = obj.edit284:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_5) or 0)+
             												(tonumber(sheet.bonus2_5) or 0)+
@@ -15878,7 +15878,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event301 = obj.edit285:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_5) or 0)+
             												(tonumber(sheet.bonus2_5) or 0)+
@@ -15890,21 +15890,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event302 = obj.radioButton125:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event303 = obj.radioButton126:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event304 = obj.edit288:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_6) or 0)+
             												(tonumber(sheet.bonus2_6) or 0)+
@@ -15915,7 +15915,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event305 = obj.edit289:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_6) or 0)+
             												(tonumber(sheet.bonus2_6) or 0)+
@@ -15926,7 +15926,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event306 = obj.edit290:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_6) or 0)+
             												(tonumber(sheet.bonus2_6) or 0)+
@@ -15938,21 +15938,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event307 = obj.radioButton127:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event308 = obj.radioButton128:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event309 = obj.edit293:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_7) or 0)+
             												(tonumber(sheet.bonus2_7) or 0)+
@@ -15963,7 +15963,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event310 = obj.edit294:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_7) or 0)+
             												(tonumber(sheet.bonus2_7) or 0)+
@@ -15974,7 +15974,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event311 = obj.edit295:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_7) or 0)+
             												(tonumber(sheet.bonus2_7) or 0)+
@@ -15986,21 +15986,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event312 = obj.radioButton129:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event313 = obj.radioButton130:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event314 = obj.edit298:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_8) or 0)+
             												(tonumber(sheet.bonus2_8) or 0)+
@@ -16011,7 +16011,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event315 = obj.edit299:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_8) or 0)+
             												(tonumber(sheet.bonus2_8) or 0)+
@@ -16022,7 +16022,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event316 = obj.edit300:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_8) or 0)+
             												(tonumber(sheet.bonus2_8) or 0)+
@@ -16034,21 +16034,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event317 = obj.radioButton131:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event318 = obj.radioButton132:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event319 = obj.edit303:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_9) or 0)+
             												(tonumber(sheet.bonus2_9) or 0)+
@@ -16059,7 +16059,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event320 = obj.edit304:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_9) or 0)+
             												(tonumber(sheet.bonus2_9) or 0)+
@@ -16070,7 +16070,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event321 = obj.edit305:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_9) or 0)+
             												(tonumber(sheet.bonus2_9) or 0)+
@@ -16082,21 +16082,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event322 = obj.radioButton133:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event323 = obj.radioButton134:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event324 = obj.edit308:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_10) or 0)+
             												(tonumber(sheet.bonus2_10) or 0)+
@@ -16107,7 +16107,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event325 = obj.edit309:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_10) or 0)+
             												(tonumber(sheet.bonus2_10) or 0)+
@@ -16118,7 +16118,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event326 = obj.edit310:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_10) or 0)+
             												(tonumber(sheet.bonus2_10) or 0)+
@@ -16130,21 +16130,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event327 = obj.radioButton135:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event328 = obj.radioButton136:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event329 = obj.edit313:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_11) or 0)+
             												(tonumber(sheet.bonus2_11) or 0)+
@@ -16155,7 +16155,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event330 = obj.edit314:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_11) or 0)+
             												(tonumber(sheet.bonus2_11) or 0)+
@@ -16166,7 +16166,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event331 = obj.edit315:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_11) or 0)+
             												(tonumber(sheet.bonus2_11) or 0)+
@@ -16178,21 +16178,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event332 = obj.radioButton137:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event333 = obj.radioButton138:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event334 = obj.edit318:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_12) or 0)+
             												(tonumber(sheet.bonus2_12) or 0)+
@@ -16203,7 +16203,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event335 = obj.edit319:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_12) or 0)+
             												(tonumber(sheet.bonus2_12) or 0)+
@@ -16214,7 +16214,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event336 = obj.edit320:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base2_12) or 0)+
             												(tonumber(sheet.bonus2_12) or 0)+
@@ -16226,21 +16226,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event337 = obj.radioButton139:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event338 = obj.radioButton140:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event339 = obj.edit323:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_1) or 0)+
             												(tonumber(sheet.bonus1_1) or 0)+
@@ -16251,7 +16251,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event340 = obj.edit324:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_1) or 0)+
             												(tonumber(sheet.bonus1_1) or 0)+
@@ -16262,7 +16262,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event341 = obj.edit325:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_1) or 0)+
             												(tonumber(sheet.bonus1_1) or 0)+
@@ -16274,21 +16274,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event342 = obj.radioButton141:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event343 = obj.radioButton142:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event344 = obj.edit328:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_2) or 0)+
             												(tonumber(sheet.bonus1_2) or 0)+
@@ -16299,7 +16299,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event345 = obj.edit329:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_2) or 0)+
             												(tonumber(sheet.bonus1_2) or 0)+
@@ -16310,7 +16310,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event346 = obj.edit330:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_2) or 0)+
             												(tonumber(sheet.bonus1_2) or 0)+
@@ -16322,21 +16322,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event347 = obj.radioButton143:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event348 = obj.radioButton144:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event349 = obj.edit333:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_3) or 0)+
             												(tonumber(sheet.bonus1_3) or 0)+
@@ -16347,7 +16347,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event350 = obj.edit334:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_3) or 0)+
             												(tonumber(sheet.bonus1_3) or 0)+
@@ -16358,7 +16358,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event351 = obj.edit335:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_3) or 0)+
             												(tonumber(sheet.bonus1_3) or 0)+
@@ -16370,21 +16370,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event352 = obj.radioButton145:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event353 = obj.radioButton146:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event354 = obj.edit338:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_4) or 0)+
             												(tonumber(sheet.bonus1_4) or 0)+
@@ -16395,7 +16395,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event355 = obj.edit339:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_4) or 0)+
             												(tonumber(sheet.bonus1_4) or 0)+
@@ -16406,7 +16406,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event356 = obj.edit340:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_4) or 0)+
             												(tonumber(sheet.bonus1_4) or 0)+
@@ -16418,21 +16418,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event357 = obj.radioButton147:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event358 = obj.radioButton148:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event359 = obj.edit343:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_5) or 0)+
             												(tonumber(sheet.bonus1_5) or 0)+
@@ -16443,7 +16443,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event360 = obj.edit344:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_5) or 0)+
             												(tonumber(sheet.bonus1_5) or 0)+
@@ -16454,7 +16454,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event361 = obj.edit345:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_5) or 0)+
             												(tonumber(sheet.bonus1_5) or 0)+
@@ -16466,21 +16466,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event362 = obj.radioButton149:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event363 = obj.radioButton150:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event364 = obj.edit348:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_6) or 0)+
             												(tonumber(sheet.bonus1_6) or 0)+
@@ -16491,7 +16491,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event365 = obj.edit349:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_6) or 0)+
             												(tonumber(sheet.bonus1_6) or 0)+
@@ -16502,7 +16502,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event366 = obj.edit350:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_6) or 0)+
             												(tonumber(sheet.bonus1_6) or 0)+
@@ -16514,21 +16514,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event367 = obj.radioButton151:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event368 = obj.radioButton152:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event369 = obj.edit353:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_7) or 0)+
             												(tonumber(sheet.bonus1_7) or 0)+
@@ -16539,7 +16539,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event370 = obj.edit354:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_7) or 0)+
             												(tonumber(sheet.bonus1_7) or 0)+
@@ -16550,7 +16550,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event371 = obj.edit355:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_7) or 0)+
             												(tonumber(sheet.bonus1_7) or 0)+
@@ -16562,21 +16562,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event372 = obj.radioButton153:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event373 = obj.radioButton154:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event374 = obj.edit358:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_8) or 0)+
             												(tonumber(sheet.bonus1_8) or 0)+
@@ -16587,7 +16587,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event375 = obj.edit359:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_8) or 0)+
             												(tonumber(sheet.bonus1_8) or 0)+
@@ -16598,7 +16598,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event376 = obj.edit360:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_8) or 0)+
             												(tonumber(sheet.bonus1_8) or 0)+
@@ -16610,21 +16610,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event377 = obj.radioButton155:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event378 = obj.radioButton156:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event379 = obj.edit363:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_9) or 0)+
             												(tonumber(sheet.bonus1_9) or 0)+
@@ -16635,7 +16635,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event380 = obj.edit364:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_9) or 0)+
             												(tonumber(sheet.bonus1_9) or 0)+
@@ -16646,7 +16646,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event381 = obj.edit365:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_9) or 0)+
             												(tonumber(sheet.bonus1_9) or 0)+
@@ -16658,21 +16658,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event382 = obj.radioButton157:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event383 = obj.radioButton158:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event384 = obj.edit368:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_10) or 0)+
             												(tonumber(sheet.bonus1_10) or 0)+
@@ -16683,7 +16683,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event385 = obj.edit369:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_10) or 0)+
             												(tonumber(sheet.bonus1_10) or 0)+
@@ -16694,7 +16694,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event386 = obj.edit370:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_10) or 0)+
             												(tonumber(sheet.bonus1_10) or 0)+
@@ -16706,21 +16706,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event387 = obj.radioButton159:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event388 = obj.radioButton160:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event389 = obj.edit373:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_11) or 0)+
             												(tonumber(sheet.bonus1_11) or 0)+
@@ -16731,7 +16731,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event390 = obj.edit374:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_11) or 0)+
             												(tonumber(sheet.bonus1_11) or 0)+
@@ -16742,7 +16742,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event391 = obj.edit375:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_11) or 0)+
             												(tonumber(sheet.bonus1_11) or 0)+
@@ -16754,21 +16754,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event392 = obj.radioButton161:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event393 = obj.radioButton162:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event394 = obj.edit378:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_12) or 0)+
             												(tonumber(sheet.bonus1_12) or 0)+
@@ -16779,7 +16779,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event395 = obj.edit379:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_12) or 0)+
             												(tonumber(sheet.bonus1_12) or 0)+
@@ -16790,7 +16790,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event396 = obj.edit380:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base1_12) or 0)+
             												(tonumber(sheet.bonus1_12) or 0)+
@@ -16802,21 +16802,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event397 = obj.radioButton163:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event398 = obj.radioButton164:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event399 = obj.edit383:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_1) or 0)+
             												(tonumber(sheet.bonus3_1) or 0)+
@@ -16827,7 +16827,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event400 = obj.edit384:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_1) or 0)+
             												(tonumber(sheet.bonus3_1) or 0)+
@@ -16838,7 +16838,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event401 = obj.edit385:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_1) or 0)+
             												(tonumber(sheet.bonus3_1) or 0)+
@@ -16850,21 +16850,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event402 = obj.radioButton165:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event403 = obj.radioButton166:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event404 = obj.edit388:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_2) or 0)+
             												(tonumber(sheet.bonus3_2) or 0)+
@@ -16875,7 +16875,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event405 = obj.edit389:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_2) or 0)+
             												(tonumber(sheet.bonus3_2) or 0)+
@@ -16886,7 +16886,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event406 = obj.edit390:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_2) or 0)+
             												(tonumber(sheet.bonus3_2) or 0)+
@@ -16898,21 +16898,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event407 = obj.radioButton167:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event408 = obj.radioButton168:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event409 = obj.edit393:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_3) or 0)+
             												(tonumber(sheet.bonus3_3) or 0)+
@@ -16923,7 +16923,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event410 = obj.edit394:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_3) or 0)+
             												(tonumber(sheet.bonus3_3) or 0)+
@@ -16934,7 +16934,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event411 = obj.edit395:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_3) or 0)+
             												(tonumber(sheet.bonus3_3) or 0)+
@@ -16946,21 +16946,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event412 = obj.radioButton169:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event413 = obj.radioButton170:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event414 = obj.edit398:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_4) or 0)+
             												(tonumber(sheet.bonus3_4) or 0)+
@@ -16971,7 +16971,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event415 = obj.edit399:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_4) or 0)+
             												(tonumber(sheet.bonus3_4) or 0)+
@@ -16982,7 +16982,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event416 = obj.edit400:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_4) or 0)+
             												(tonumber(sheet.bonus3_4) or 0)+
@@ -16994,21 +16994,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event417 = obj.radioButton171:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event418 = obj.radioButton172:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event419 = obj.edit403:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_5) or 0)+
             												(tonumber(sheet.bonus3_5) or 0)+
@@ -17019,7 +17019,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event420 = obj.edit404:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_5) or 0)+
             												(tonumber(sheet.bonus3_5) or 0)+
@@ -17030,7 +17030,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event421 = obj.edit405:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_5) or 0)+
             												(tonumber(sheet.bonus3_5) or 0)+
@@ -17042,21 +17042,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event422 = obj.radioButton173:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event423 = obj.radioButton174:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event424 = obj.edit408:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_6) or 0)+
             												(tonumber(sheet.bonus3_6) or 0)+
@@ -17067,7 +17067,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event425 = obj.edit409:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_6) or 0)+
             												(tonumber(sheet.bonus3_6) or 0)+
@@ -17078,7 +17078,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event426 = obj.edit410:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_6) or 0)+
             												(tonumber(sheet.bonus3_6) or 0)+
@@ -17090,21 +17090,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event427 = obj.radioButton175:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event428 = obj.radioButton176:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event429 = obj.edit413:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_7) or 0)+
             												(tonumber(sheet.bonus3_7) or 0)+
@@ -17115,7 +17115,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event430 = obj.edit414:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_7) or 0)+
             												(tonumber(sheet.bonus3_7) or 0)+
@@ -17126,7 +17126,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event431 = obj.edit415:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_7) or 0)+
             												(tonumber(sheet.bonus3_7) or 0)+
@@ -17138,21 +17138,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event432 = obj.radioButton177:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event433 = obj.radioButton178:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event434 = obj.edit418:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_8) or 0)+
             												(tonumber(sheet.bonus3_8) or 0)+
@@ -17163,7 +17163,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event435 = obj.edit419:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_8) or 0)+
             												(tonumber(sheet.bonus3_8) or 0)+
@@ -17174,7 +17174,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event436 = obj.edit420:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_8) or 0)+
             												(tonumber(sheet.bonus3_8) or 0)+
@@ -17186,21 +17186,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event437 = obj.radioButton179:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event438 = obj.radioButton180:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event439 = obj.edit423:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_9) or 0)+
             												(tonumber(sheet.bonus3_9) or 0)+
@@ -17211,7 +17211,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event440 = obj.edit424:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_9) or 0)+
             												(tonumber(sheet.bonus3_9) or 0)+
@@ -17222,7 +17222,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event441 = obj.edit425:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_9) or 0)+
             												(tonumber(sheet.bonus3_9) or 0)+
@@ -17234,21 +17234,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event442 = obj.radioButton181:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event443 = obj.radioButton182:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event444 = obj.edit428:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_10) or 0)+
             												(tonumber(sheet.bonus3_10) or 0)+
@@ -17259,7 +17259,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event445 = obj.edit429:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_10) or 0)+
             												(tonumber(sheet.bonus3_10) or 0)+
@@ -17270,7 +17270,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event446 = obj.edit430:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_10) or 0)+
             												(tonumber(sheet.bonus3_10) or 0)+
@@ -17282,21 +17282,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event447 = obj.radioButton183:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event448 = obj.radioButton184:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event449 = obj.edit433:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_11) or 0)+
             												(tonumber(sheet.bonus3_11) or 0)+
@@ -17307,7 +17307,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event450 = obj.edit434:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_11) or 0)+
             												(tonumber(sheet.bonus3_11) or 0)+
@@ -17318,7 +17318,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event451 = obj.edit435:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_11) or 0)+
             												(tonumber(sheet.bonus3_11) or 0)+
@@ -17330,21 +17330,21 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event452 = obj.radioButton185:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num1 = (tonumber(sheet[sheet.dado1]) or 0);
             					end;
         end, obj);
 
     obj._e_event453 = obj.radioButton186:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~=nil then
             						sheet.num2 = (tonumber(sheet[sheet.dado2]) or 0);
             					end;
         end, obj);
 
     obj._e_event454 = obj.edit438:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_12) or 0)+
             												(tonumber(sheet.bonus3_12) or 0)+
@@ -17355,7 +17355,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event455 = obj.edit439:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_12) or 0)+
             												(tonumber(sheet.bonus3_12) or 0)+
@@ -17366,7 +17366,7 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event456 = obj.edit440:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             						local mod = (tonumber(sheet.base3_12) or 0)+
             												(tonumber(sheet.bonus3_12) or 0)+
@@ -17378,27 +17378,27 @@ function newfrmFichaACN()
         end, obj);
 
     obj._e_event457 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             rolar();
         end, obj);
 
     obj._e_event458 = obj.button5:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20ACN%20releases/Change%20Log.txt')
         end, obj);
 
     obj._e_event459 = obj.button6:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20ACN%20releases/Ficha%20ACN.rpk')
         end, obj);
 
     obj._e_event460 = obj.button7:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     obj._e_event461 = obj.button8:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=97151');
         end, obj);
 
@@ -19228,9 +19228,23 @@ function newfrmFichaACN()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFichaACN()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFichaACN();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFichaACN = {
@@ -19244,7 +19258,7 @@ local _frmFichaACN = {
     description=""};
 
 frmFichaACN = _frmFichaACN;
-rrpg.registrarForm(_frmFichaACN);
-rrpg.registrarDataType(_frmFichaACN);
+Firecast.registrarForm(_frmFichaACN);
+Firecast.registrarDataType(_frmFichaACN);
 
 return _frmFichaACN;

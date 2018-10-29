@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmGerenciadorNPCs()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmGerenciadorNPCs()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,12 +31,12 @@ function newfrmGerenciadorNPCs()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
@@ -45,7 +45,7 @@ function newfrmGerenciadorNPCs()
     obj.rectangle1:setColor("Black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(40);
     obj.button1:setTop(0);
@@ -54,7 +54,7 @@ function newfrmGerenciadorNPCs()
     obj.button1:setText("N");
     obj.button1:setName("button1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(0);
     obj.label1:setTop(0);
@@ -64,7 +64,7 @@ function newfrmGerenciadorNPCs()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.rclListaNPCs = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclListaNPCs = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclListaNPCs:setParent(obj.rectangle1);
     obj.rclListaNPCs:setName("rclListaNPCs");
     obj.rclListaNPCs:setField("listaNPCs");
@@ -77,7 +77,7 @@ function newfrmGerenciadorNPCs()
     obj.rclListaNPCs:setLayout("horizontal");
     obj.rclListaNPCs:setMinQt(1);
 
-    obj.boxNPCs = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.boxNPCs = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.boxNPCs:setParent(obj.scrollBox1);
     obj.boxNPCs:setName("boxNPCs");
     obj.boxNPCs:setVisible(false);
@@ -86,7 +86,7 @@ function newfrmGerenciadorNPCs()
     obj.boxNPCs:setWidth(1320);
     obj.boxNPCs:setHeight(615);
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.boxNPCs);
     obj.button2:setLeft(0);
     obj.button2:setTop(0);
@@ -95,7 +95,7 @@ function newfrmGerenciadorNPCs()
     obj.button2:setText("+");
     obj.button2:setName("button2");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.boxNPCs);
     obj.button3:setLeft(20);
     obj.button3:setTop(0);
@@ -104,7 +104,7 @@ function newfrmGerenciadorNPCs()
     obj.button3:setText("O");
     obj.button3:setName("button3");
 
-    obj.rclNPCs = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclNPCs = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclNPCs:setParent(obj.boxNPCs);
     obj.rclNPCs:setLeft(0);
     obj.rclNPCs:setTop(65);
@@ -117,19 +117,19 @@ function newfrmGerenciadorNPCs()
     obj.rclNPCs:setTemplateForm("frmGerenciador02_NPC");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclListaNPCs:append();
         end, obj);
 
     obj._e_event1 = obj.rclListaNPCs:addEventListener("onSelect",
-        function (self)
+        function (_)
             local node = self.rclListaNPCs.selectedNode;
             					self.boxNPCs.node = node;
             					self.boxNPCs.visible = (node ~= nil);
         end, obj);
 
     obj._e_event2 = obj.rclListaNPCs:addEventListener("onEndEnumeration",
-        function (self)
+        function (_)
             if self.rclListaNPCs.selectedNode == nil and sheet ~= nil then
             						local nodes = ndb.getChildNodes(sheet.listaNPCs);               
             						if #nodes > 0 then
@@ -139,17 +139,17 @@ function newfrmGerenciadorNPCs()
         end, obj);
 
     obj._e_event3 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclNPCs:append();
         end, obj);
 
     obj._e_event4 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclNPCs:sort();
         end, obj);
 
     obj._e_event5 = obj.rclNPCs:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             local mod1 = nodeA.relacao;
             						local mod2 = nodeB.relacao;
             						local modR = utils.compareStringPtBr(mod1, mod2);
@@ -193,9 +193,23 @@ function newfrmGerenciadorNPCs()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmGerenciadorNPCs()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmGerenciadorNPCs();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmGerenciadorNPCs = {
@@ -209,6 +223,6 @@ local _frmGerenciadorNPCs = {
     description=""};
 
 frmGerenciadorNPCs = _frmGerenciadorNPCs;
-rrpg.registrarForm(_frmGerenciadorNPCs);
+Firecast.registrarForm(_frmGerenciadorNPCs);
 
 return _frmGerenciadorNPCs;

@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmUserDrawingDetails()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+local function constructNew_frmUserDrawingDetails()
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -50,7 +50,7 @@ function newfrmUserDrawingDetails()
 				rectAsClient = true;
 			end;
 		
-			local fPart = gui.newFlowPart();
+			local fPart = GUI.newFlowPart();
 			fPart.minWidth = 10;
 			fPart.maxWidth = 1000;
 			fPart.parent = flowLayout;
@@ -60,7 +60,7 @@ function newfrmUserDrawingDetails()
 			local fRect = nil;
 			
 			if rectAsClient then
-				fRect = gui.newRectangle();
+				fRect = GUI.newRectangle();
 				fRect.align = "client";
 				fRect.parent = fPart;
 				fRect.color = item.backColor;
@@ -71,13 +71,13 @@ function newfrmUserDrawingDetails()
 				item.client = fPart;
 			end;
 						
-			local fHorzLine = gui.newHorzLine();
+			local fHorzLine = GUI.newHorzLine();
 			fHorzLine.strokeColor = "gray";
 			fHorzLine.align = "bottom";
 			fHorzLine.parent = fPart;
 			item.horzLine = fHorzLine;
 			
-			local fBreakLine = gui.newFlowLineBreak();
+			local fBreakLine = GUI.newFlowLineBreak();
 			fBreakLine.parent = flowLayout;
 			item.breakLine = fBreakLine;
 			
@@ -112,7 +112,7 @@ function newfrmUserDrawingDetails()
 			local fPart = item.flowPart;
 			fPart.height = 8;
 			
-			local fHorzLineSep = gui.newHorzLine();
+			local fHorzLineSep = GUI.newHorzLine();
 			fHorzLineSep.strokeColor = "gray";
 			fHorzLineSep.strokeSize = 3;
 			fHorzLineSep.align = "top";
@@ -126,15 +126,17 @@ function newfrmUserDrawingDetails()
 			
 			return fPart, item;
 		end;
+		
+		self.newMenuSeparatorItem = newMenuSeparatorItem;
 				
 		local function newMenuItem(caption, flowLayout, onClick)
 			local item = newBaseMenuItem(flowLayout);
 			item.isHover = false;
 		
-			local fPart = item.flowPart;			
+			--local fPart = item.flowPart;			
 			local fRect = item.client;
 			
-			local fLabel = gui.newLabel();
+			local fLabel = GUI.newLabel();
 			fLabel.align = "client";
 			fLabel.parent = fRect;
 			fLabel.hitTest = true;
@@ -159,7 +161,9 @@ function newfrmUserDrawingDetails()
 			return fLabel, item;
 		end;
 		
+		self.newMenuItem = newMenuItem;
 		
+	
 		local function newMultiActionMenuItem(caption, flowLayout, maxActPorLinha)
 			local item = newBaseMenuItem(flowLayout, false);
 			item.isHover = false;
@@ -170,7 +174,7 @@ function newfrmUserDrawingDetails()
 			local fClient = item.client;
 			fPart.height = fPart.height + 5;
 			
-			local fLabel = gui.newLabel();
+			local fLabel = GUI.newLabel();
 			fLabel.align = "client";
 			fLabel.width = 1;
 			fLabel.wordWrap = false;
@@ -190,7 +194,9 @@ function newfrmUserDrawingDetails()
 			local ACTION_MARGIN = 2;
 			local ALTURA_MINIMA = fPart.height; 
 			
-			local fFlowActions = gui.newFlowLayout();
+			self.ALTURA_MINIMA = ALTURA_MINIMA;
+			
+			local fFlowActions = GUI.newFlowLayout();
 			fFlowActions.orientation = "horizontal";
 			
 			if caption ~= "" then
@@ -215,7 +221,7 @@ function newfrmUserDrawingDetails()
 				action.defaultBackCheckedColor = item.defaultBackCheckedColor;
 				action.defaultHoverkCheckedColor = item.defaultHoverkCheckedColor;				
 				
-				local fRect = gui.newRectangle();
+				local fRect = GUI.newRectangle();
 				fRect.parent = fFlowActions;
 				fRect.width = ACTION_WIDTH;
 				fRect.height = ACTION_HEIGHT;				
@@ -225,7 +231,7 @@ function newfrmUserDrawingDetails()
 				action.rect = fRect;
 				action.client = fRect;				
 				
-				local fImg = gui.newImage();								
+				local fImg = GUI.newImage();								
 				fImg.hitTest = true;
 				fImg.cursor = "handPoint";
 				fImg.align = "client";
@@ -245,7 +251,7 @@ function newfrmUserDrawingDetails()
 					action.isHover = false;
 				end;			
 								
-				function action:setColor(backColor, hoverColor)
+				function action.setColor(actionSelf, backColor, hoverColor)
 					action.backColor = backColor or action.defaultBackColor;
 					action.hoverColor = hoverColor or action.defaultHoverColor;
 					
@@ -256,7 +262,7 @@ function newfrmUserDrawingDetails()
 					end;
 				end;
 				
-				function action:setChecked(value)
+				function action.setChecked(actionSelf, value)
 					if value then
 						action:setColor(action.defaultBackCheckedColor, action.defaultHoverCheckedColor);
 					else
@@ -277,10 +283,10 @@ function newfrmUserDrawingDetails()
 				return action, fImg;
 			end;
 			
-			function item:addCheckBoxAction(imageURL, hint)
+			function item.addCheckBoxAction(itemSelf, imageURL, hint)
 				local action, fImg = item:addActionBase(imageURL, hint);
 				
-				local fImgCheckbox = gui.newImage();
+				local fImgCheckbox = GUI.newImage();
 				
 				local fPai = fImg.parent;
 				
@@ -304,10 +310,10 @@ function newfrmUserDrawingDetails()
 				return fImg, action;
 			end;
 			
-			function item:addRadioButtonAction(imageURL, hint)
+			function item.addRadioButtonAction(itemSelf, imageURL, hint)
 				local action, fImg = item:addActionBase(imageURL, hint);
 				
-				local fImgRadio = gui.newImage();
+				local fImgRadio = GUI.newImage();
 				
 				local fPai = fImg.parent;
 				
@@ -339,6 +345,8 @@ function newfrmUserDrawingDetails()
 			
 			return item;
 		end;		
+		
+		self.newMultiActionMenuItem = newMultiActionMenuItem;
 	
 
 
@@ -449,12 +457,12 @@ function newfrmUserDrawingDetails()
 	
 
 
-    obj.flaLayout = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flaLayout = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flaLayout:setParent(obj);
     obj.flaLayout:setName("flaLayout");
     obj.flaLayout:setAlign("client");
 
-    obj.cbxStroke = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.cbxStroke = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.cbxStroke:setParent(obj.flaLayout);
     obj.cbxStroke:setName("cbxStroke");
     obj.cbxStroke:setWidth(100);
@@ -462,18 +470,18 @@ function newfrmUserDrawingDetails()
     obj.cbxStroke:setMargins({left=4, right=4});
     obj.cbxStroke:setFontSize(11);
 
-    obj.cmbStroke = gui.fromHandle(_obj_newObject("colorComboBox"));
+    obj.cmbStroke = GUI.fromHandle(_obj_newObject("colorComboBox"));
     obj.cmbStroke:setParent(obj.flaLayout);
     obj.cmbStroke:setName("cmbStroke");
     obj.cmbStroke:setUseAlpha(false);
     obj.cmbStroke:setHeight(30);
     obj.cmbStroke:setWidth(50);
 
-    obj.flowLineBreak1 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak1 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak1:setParent(obj.flaLayout);
     obj.flowLineBreak1:setName("flowLineBreak1");
 
-    obj.cbxFill = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.cbxFill = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.cbxFill:setParent(obj.flaLayout);
     obj.cbxFill:setName("cbxFill");
     obj.cbxFill:setWidth(100);
@@ -481,18 +489,18 @@ function newfrmUserDrawingDetails()
     obj.cbxFill:setMargins({left=4, right=4});
     obj.cbxFill:setFontSize(11);
 
-    obj.cmbFill = gui.fromHandle(_obj_newObject("colorComboBox"));
+    obj.cmbFill = GUI.fromHandle(_obj_newObject("colorComboBox"));
     obj.cmbFill:setParent(obj.flaLayout);
     obj.cmbFill:setName("cmbFill");
     obj.cmbFill:setUseAlpha(false);
     obj.cmbFill:setHeight(30);
     obj.cmbFill:setWidth(50);
 
-    obj.flowLineBreak2 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak2 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak2:setParent(obj.flaLayout);
     obj.flowLineBreak2:setName("flowLineBreak2");
 
-    obj.cbxSnapToGrid = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.cbxSnapToGrid = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.cbxSnapToGrid:setParent(obj.flaLayout);
     obj.cbxSnapToGrid:setName("cbxSnapToGrid");
     obj.cbxSnapToGrid:setWidth(100);
@@ -550,31 +558,31 @@ function newfrmUserDrawingDetails()
 
 
     obj._e_event0 = obj:addEventListener("onKeyUp",
-        function (self, event)
+        function (_, event)
         end, obj);
 
     obj._e_event1 = obj.cbxStroke:addEventListener("onChange",
-        function (self)
+        function (_)
             self:doStrokeChanged(false)
         end, obj);
 
     obj._e_event2 = obj.cmbStroke:addEventListener("onChange",
-        function (self)
+        function (_)
             self:doStrokeChanged(true)
         end, obj);
 
     obj._e_event3 = obj.cbxFill:addEventListener("onChange",
-        function (self)
+        function (_)
             self:doFillChanged(false)
         end, obj);
 
     obj._e_event4 = obj.cmbFill:addEventListener("onChange",
-        function (self)
+        function (_)
             self:doFillChanged(true)
         end, obj);
 
     obj._e_event5 = obj.cbxSnapToGrid:addEventListener("onChange",
-        function (self)
+        function (_)
             self:doSnapToGridChanged()
         end, obj);
 
@@ -609,9 +617,23 @@ function newfrmUserDrawingDetails()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmUserDrawingDetails()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmUserDrawingDetails();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmUserDrawingDetails = {
@@ -625,6 +647,6 @@ local _frmUserDrawingDetails = {
     description=""};
 
 frmUserDrawingDetails = _frmUserDrawingDetails;
-rrpg.registrarForm(_frmUserDrawingDetails);
+Firecast.registrarForm(_frmUserDrawingDetails);
 
 return _frmUserDrawingDetails;

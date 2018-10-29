@@ -1,4 +1,5 @@
 ﻿local utils = require("utils.lua");
+local SharedObjects = require("rrpgSharedObjects.lua");
 
 local serializer = {};
 
@@ -7,6 +8,7 @@ local TYPE_NUMBER = 2;
 local TYPE_BOOLEAN = 3;
 local TYPE_TABLE = 4;
 local TYPE_NIL = 5;
+local TYPE_NUMBER_AS_INTEGER = 10;
 
 local typeToId = {string=TYPE_STRING, number=TYPE_NUMBER, boolean=TYPE_BOOLEAN, table=TYPE_TABLE};
 typeToId["nil"] = TYPE_NIL;
@@ -52,8 +54,23 @@ end;
 function serializer.outputValue(value, scope)
 	local idType = typeToId[type(value)];
 	
+	if idType == TYPE_TABLE then
+		local conseguiu, so = serializer.tryPackSharedObject(value);
+		
+		if conseguiu then
+			value = so;
+			idType = typeToId[type(value)];
+		end;
+	end;
+	
 	if idType == nil then
 		error("Tipo não tratado");
+	elseif idType == TYPE_NUMBER then
+		local numberType = math.type(value);
+		
+		if numberType == "integer" then
+			idType = TYPE_NUMBER_AS_INTEGER;
+		end;
 	end;
 	
 	binaryWrite("u8", idType, scope);
@@ -62,6 +79,8 @@ function serializer.outputValue(value, scope)
 		binaryWriteString(value, scope);
 	elseif idType == TYPE_NUMBER then	
 		binaryWrite("double", value, scope);
+	elseif idType == TYPE_NUMBER_AS_INTEGER then	
+		binaryWrite("s64", value, scope);
 	elseif idType == TYPE_BOOLEAN then
 		if value then	
 			binaryWrite("u8", 1, scope);
@@ -69,11 +88,11 @@ function serializer.outputValue(value, scope)
 			binaryWrite("u8", 0, scope);
 		end;
 	elseif idType == TYPE_TABLE then
-		serializer.outputTable(value, scope);
-	elseif idType == TYPE_NIL then
-		-- não grava nada;
+		serializer.outputTable(value, scope);	
 	else	
-		error("Tipo desconhecido");
+		if idType ~= TYPE_NIL then 	
+			error("Tipo desconhecido");
+		end;		
 	end;
 end;
 
@@ -145,13 +164,22 @@ end;
 
 function serializer.inputValue(scope)
 	local tipo = binaryRead("u8", scope);
-	
+		
 	if tipo == TYPE_STRING then
-		return binaryReadString(scope);
+		local vstr = binaryReadString(scope); 
+		local conseguiu, so = serializer.tryUnpackSharedObject(vstr);
+		
+		if conseguiu then
+			return so;
+		else
+			return vstr;
+		end;
 	elseif tipo == TYPE_NIL then	
 		return nil;
 	elseif tipo == TYPE_NUMBER then
 		return binaryRead("double", scope);
+	elseif tipo == TYPE_NUMBER_AS_INTEGER then
+		return binaryRead("s64", scope);
 	elseif tipo == TYPE_TABLE then
 		return serializer.inputTable(scope);
 	elseif tipo == TYPE_BOOLEAN then
@@ -212,7 +240,7 @@ function serializer.serialize(value)
 		-- Não compactar
 		stream2.position = 0;
 		local buffer = {0};
-		stream2:write(buffer, 1); -- sinalizar que está compactado
+		stream2:write(buffer, 1); -- sinalizar que não está compactado
 		
 		stream2:copyFrom(stream, stream.size);			
 	end;	
@@ -254,6 +282,58 @@ function serializer.deserialize(base64str)
 	end;	
 	
 	return ret;
+end;
+
+function serializer.tryPackSharedObject(tabela)
+	return SharedObjects.tryPack(tabela);
+end;
+
+function serializer.tryUnpackSharedObject(str)
+	return SharedObjects.tryUnpack(str);
+end;
+
+local _SERIALIZER_PREFIX = "###SERIALIZER_";
+local _SERIALIZER_SUFIX = "_###";
+local _SERIALIZER_MATCH_MASK = _SERIALIZER_PREFIX .. "(.+)" .. _SERIALIZER_SUFIX;
+
+function serializer.packData(data)
+	local typeId = typeToId[type(data)];
+	
+	if typeId ~= nil then
+		if typeId == TYPE_TABLE then
+			local conseguiu, so = serializer.tryPackSharedObject(data);
+			
+			if conseguiu then
+				return so;
+			else			
+				return _SERIALIZER_PREFIX .. serializer.serialize(data) ..  _SERIALIZER_SUFIX;
+			end;
+		else
+			return data;
+		end;
+	else
+		return nil;
+	end
+end;
+
+function serializer.unpackData(data)
+	if type(data) == "string" then
+		local conseguiu, so = serializer.tryUnpackSharedObject(data);
+		
+		if conseguiu then
+			return so;
+		else
+			local mData = string.match(data, _SERIALIZER_MATCH_MASK);
+			
+			if mData ~= nil then
+				return serializer.deserialize(mData);
+			else
+				return data;
+			end; 
+		end;
+	else
+		return data;
+	end;
 end;
 
 return serializer;

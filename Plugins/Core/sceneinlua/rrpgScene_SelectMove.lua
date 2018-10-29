@@ -35,16 +35,12 @@ SceneLib.registerPlugin(
 		-- Variáveis para armazenar informações sobre o "arrastar" dos itens
 		local objMouseDown = nil;  -- Qual objeto está sendo arrastado		
 		local isMouseDown = false;
-		local oldCursor;
 		local transaction = scene:newTransaction();
 		local vkEscape = 27;
-		local vkDelete = 46;
-		local isPanning = false;		
+		local vkDelete = 46;	
 		
-		local trackViewportPosToMouse = false;
 		
-		-- rect selection	
-		local inRectSelection = false;
+		-- rect selection			
 		local rectSelectionSX, rectSelectionSY; -- Start X e Start Y do rect Selection, em coordenadas de mundo
 		local rectSelectionEX, rectSelectionEY; -- EndX e End Y do rect Selection,  em coordenadas de mundo
 		local rectSelectionPainterListener = nil;
@@ -129,7 +125,7 @@ SceneLib.registerPlugin(
 			
 			__informandoValorBarra = true;
 			
-			dialogs.inputQuery(LANG("scene.digiteUmValor"), lang("scene.valor"),
+			Dialogs.inputQuery(LANG("scene.digiteUmValor"), lang("scene.valor"),
 							   currValue,							
 							   function (valorInformado)
 								 __informandoValorBarra = false;
@@ -140,8 +136,7 @@ SceneLib.registerPlugin(
 										local oldValor = objeto["barValue" .. idxBarrinha];
 										local valorInformadoAsNumber = tonumber(valorInformado);										
 									
-										if type(valorInformado) == "string" and valorInformadoAsNumber ~= nil then
-											local oldValorAsNumber = tonumber(oldValor) or 0;
+										if type(valorInformado) == "string" and valorInformadoAsNumber ~= nil then	
 											local operador = string.sub(valorInformado, 1, 1);					
 											
 											if (operador == "+") or (operador == "-") then
@@ -176,8 +171,7 @@ SceneLib.registerPlugin(
 				-- Cancelar o movimento atual
 				transaction:rollback();
 				objMouseDown = nil;	
-				isMouseDown = false;
-				inRectSelection = false;
+				isMouseDown = false;				
 				event.keyCode = 0;
 				event.key = "";
 				cancelarMovementTrack();
@@ -193,7 +187,7 @@ SceneLib.registerPlugin(
 						msg = string.format(LANG("scene.ask.deleteMultiItem"), #sel);						
 					end;
 					
-					dialogs.confirmYesNo(msg, 
+					Dialogs.confirmYesNo(msg, 
 						function(confirmado)
 							if confirmado then
 								SC3UNDO_Capture(scene,
@@ -246,7 +240,7 @@ SceneLib.registerPlugin(
 				end;
 			end;
 			
-			local item, idQuad, quad, angleOfQuad = DRAWSELECTED_HitTest(scene, event.x, event.y, expansion);
+			local item, idQuad, _, angleOfQuad = DRAWSELECTED_HitTest(scene, event.x, event.y, expansion);
 							
 			if item ~= nil then
 				local cursor = "default";				
@@ -281,10 +275,7 @@ SceneLib.registerPlugin(
 				return;
 			end;
 		
-			isMouseDown = true;
-			isPanning = false;
-			inRectSelection = false;
-			trackViewportPosToMouse = false;
+			isMouseDown = true;					
 			mouseDownMoveu = false;
 			mouseDownX = event.x;
 			mouseDownY = event.y;
@@ -371,9 +362,7 @@ SceneLib.registerPlugin(
 					tipoSelMov = MOVSEL_PAN;				
 					scene.items:clearSelection();				
 					INERTIAL_pointerDown(scene.viewport, event);
-				else		
-					inRectSelection = false;
-					
+				else												
 					if not event.shiftKey and not event.ctrlKey then
 						scene.items:clearSelection();
 					end;	
@@ -418,7 +407,7 @@ SceneLib.registerPlugin(
 					setTimeout(
 						function()
 							local selecao = {objDblClick};
-							local frm = gui.newForm("frmTokenProps");
+							local frm = GUI.newForm("frmTokenProps");
 							frm:prepareForShow(selecao, scene);									  
 							frm:show();
 						end, 1);
@@ -437,7 +426,7 @@ SceneLib.registerPlugin(
 					
 					if textOp ~= nil then
 						-- Editar o texto de um user drawing
-						dialogs.inputQuery('Texto', 'Digite o texto', textOp.text, 
+						Dialogs.inputQuery('Texto', 'Digite o texto', textOp.text, 
 							function(texto)
 								SC3UNDO_Capture(scene,
 									function()
@@ -461,8 +450,7 @@ SceneLib.registerPlugin(
 					objMouseDown.selected = true;
 				end;
 				
-				local wx, wy = scene.viewport:screenToWorld(event.x, event.y);
-				trackViewportPosToMouse = true;		
+				local wx, wy = scene.viewport:screenToWorld(event.x, event.y);				
 
 				objsMoving = {};
 				objsMovingTrackPath = false;
@@ -493,21 +481,18 @@ SceneLib.registerPlugin(
 				if not event.shiftKey and not event.ctrlKey then
 					scene.items:clearSelection();
 				end;
-												
-				inRectSelection = true;
+																
 				rectSelectionSX, rectSelectionSY = scene.viewport:screenToWorld(mouseDownX, mouseDownY);
 				rectSelectionEX, rectSelectionEY = scene.viewport:screenToWorld(event.x, event.y);				 
 				
 				if rectSelectionPainterListener == nil then
 					rectSelectionPainterListener = scene.viewport:listen("onAfterDrawLayers", paintRectSelection);
 				end;
-				
-				trackViewportPosToMouse = true;				
+								
 			end;
 					local __resizeInfos = nil; -- Tabela contendo informações sobre redimensionamento de cada item selecionado
 					
-			local function iniciarREDIMENSIONAMENTO(event)			
-				trackViewportPosToMouse = true;					
+			local function iniciarREDIMENSIONAMENTO(event)							
 
 				__resizeInfos = {};
 				local startWx, startWy = scene.viewport:screenToWorld(mouseDownX, mouseDownY);
@@ -577,8 +562,8 @@ SceneLib.registerPlugin(
 				-- Para cada objeto sendo redimensionado
 				
 				for k, v in pairs(__resizeInfos) do
-					local objResizing = k;				
-					local info = v;
+					objResizing = k;				
+					info = v;
 										
 					local newLeft = info.startBounds.left;
 					local newTop = info.startBounds.top;
@@ -683,15 +668,13 @@ SceneLib.registerPlugin(
 							end;
 						end;
 						
-			local function finalizarREDIMENSIONAMENTO(event)			
-				trackViewportPosToMouse = false;
+			local function finalizarREDIMENSIONAMENTO(event)							
 
 				if __resizeInfos ~= nil then	
 					local ctrlZStuff = {};
 				
 					for k, v in pairs(__resizeInfos) do
 						local objResizing = k;				
-						local info = v;
 						local undoItem = {};
 						
 						if objResizing.snapToGrid then
@@ -794,8 +777,8 @@ SceneLib.registerPlugin(
 				-- Para cada objeto sendo redimensionado
 				
 				for k, v in pairs(__rotateInfos) do
-					local objRotating = k;				
-					local info = v;
+					objRotating = k;				
+					info = v;
 
 					doInTransaction(
 						function()
@@ -1013,9 +996,7 @@ SceneLib.registerPlugin(
 					end
 					
 					v.selected = true;					
-				end;			
-				
-				inRectSelection = false;
+				end;										
 				
 				if deveAtivarInLocoMenu then
 					DRAWSELECTED_EnableInLocoMenu(scene, true);				
@@ -1037,7 +1018,10 @@ SceneLib.registerPlugin(
 				else
 					for k, v in pairs(selection) do
 						itemAtPoint = v;
-						break;
+						
+						if itemAtPoint ~= nil then
+							break;
+						end;											
 					end;
 				end;
 				
@@ -1215,8 +1199,7 @@ SceneLib.registerPlugin(
 					end;
 				end;
 			end;	
-						
-			trackViewportPosToMouse = false;
+									
 			
 			if rectSelectionPainterListener ~= nil then
 				scene.viewport:unlisten(rectSelectionPainterListener);

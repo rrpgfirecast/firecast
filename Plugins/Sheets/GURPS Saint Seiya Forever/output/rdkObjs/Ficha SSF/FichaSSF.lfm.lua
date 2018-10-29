@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFichaSSF()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmFichaSSF()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -33,23 +33,23 @@ function newfrmFichaSSF()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.tabControl1 = gui.fromHandle(_obj_newObject("tabControl"));
+    obj.tabControl1 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl1:setParent(obj);
     obj.tabControl1:setAlign("client");
     obj.tabControl1:setName("tabControl1");
 
-    obj.tab1 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab1 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab1:setParent(obj.tabControl1);
     obj.tab1:setTitle("Geral");
     obj.tab1:setName("tab1");
 
-    obj.frmSSF1 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmSSF1 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmSSF1:setParent(obj.tab1);
     obj.frmSSF1:setName("frmSSF1");
     obj.frmSSF1:setAlign("client");
     obj.frmSSF1:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj.frmSSF1);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
@@ -121,7 +121,7 @@ function newfrmFichaSSF()
 		
 
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -129,7 +129,7 @@ function newfrmFichaSSF()
     obj.layout1:setHeight(85);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
@@ -138,7 +138,7 @@ function newfrmFichaSSF()
     obj.rectangle1:setCornerType("round");
     obj.rectangle1:setName("rectangle1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layout1);
     obj.layout2:setLeft(0);
     obj.layout2:setTop(5);
@@ -146,7 +146,7 @@ function newfrmFichaSSF()
     obj.layout2:setHeight(25);
     obj.layout2:setName("layout2");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout2);
     obj.label1:setLeft(0);
     obj.label1:setTop(5);
@@ -156,7 +156,7 @@ function newfrmFichaSSF()
     obj.label1:setHorzTextAlign("trailing");
     obj.label1:setName("label1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout2);
     obj.edit1:setLeft(110);
     obj.edit1:setTop(0);
@@ -165,7 +165,7 @@ function newfrmFichaSSF()
     obj.edit1:setField("nome");
     obj.edit1:setName("edit1");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout1);
     obj.layout3:setLeft(0);
     obj.layout3:setTop(30);
@@ -173,7 +173,7 @@ function newfrmFichaSSF()
     obj.layout3:setHeight(25);
     obj.layout3:setName("layout3");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout3);
     obj.label2:setLeft(0);
     obj.label2:setTop(5);
@@ -183,7 +183,7 @@ function newfrmFichaSSF()
     obj.label2:setHorzTextAlign("trailing");
     obj.label2:setName("label2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout3);
     obj.edit2:setLeft(110);
     obj.edit2:setTop(0);
@@ -192,7 +192,7 @@ function newfrmFichaSSF()
     obj.edit2:setField("divindade");
     obj.edit2:setName("edit2");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout1);
     obj.layout4:setLeft(0);
     obj.layout4:setTop(55);
@@ -200,7 +200,7 @@ function newfrmFichaSSF()
     obj.layout4:setHeight(25);
     obj.layout4:setName("layout4");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout4);
     obj.label3:setLeft(0);
     obj.label3:setTop(5);
@@ -210,7 +210,7 @@ function newfrmFichaSSF()
     obj.label3:setHorzTextAlign("trailing");
     obj.label3:setName("label3");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout4);
     obj.rectangle2:setLeft(110);
     obj.rectangle2:setTop(0);
@@ -221,7 +221,7 @@ function newfrmFichaSSF()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout4);
     obj.label4:setLeft(110);
     obj.label4:setTop(3);
@@ -231,7 +231,7 @@ function newfrmFichaSSF()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout4);
     obj.edit3:setLeft(160);
     obj.edit3:setTop(0);
@@ -240,7 +240,7 @@ function newfrmFichaSSF()
     obj.edit3:setField("xpc_total");
     obj.edit3:setName("edit3");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout4);
     obj.label5:setLeft(210);
     obj.label5:setTop(5);
@@ -249,7 +249,7 @@ function newfrmFichaSSF()
     obj.label5:setText("Elevar");
     obj.label5:setName("label5");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout4);
     obj.edit4:setLeft(270);
     obj.edit4:setTop(0);
@@ -258,12 +258,12 @@ function newfrmFichaSSF()
     obj.edit4:setField("xpc_elevado");
     obj.edit4:setName("edit4");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.layout4);
     obj.dataLink1:setFields({'xpc_total', 'armadura_equipada', 'tipo_armadura', 'xpc_elevado'});
     obj.dataLink1:setName("dataLink1");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout1);
     obj.layout5:setLeft(300);
     obj.layout5:setTop(5);
@@ -271,7 +271,7 @@ function newfrmFichaSSF()
     obj.layout5:setHeight(25);
     obj.layout5:setName("layout5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout5);
     obj.label6:setLeft(0);
     obj.label6:setTop(5);
@@ -281,7 +281,7 @@ function newfrmFichaSSF()
     obj.label6:setHorzTextAlign("trailing");
     obj.label6:setName("label6");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout5);
     obj.edit5:setLeft(110);
     obj.edit5:setTop(0);
@@ -290,7 +290,7 @@ function newfrmFichaSSF()
     obj.edit5:setField("armadura");
     obj.edit5:setName("edit5");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout1);
     obj.layout6:setLeft(300);
     obj.layout6:setTop(30);
@@ -298,7 +298,7 @@ function newfrmFichaSSF()
     obj.layout6:setHeight(25);
     obj.layout6:setName("layout6");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout6);
     obj.label7:setLeft(0);
     obj.label7:setTop(5);
@@ -308,7 +308,7 @@ function newfrmFichaSSF()
     obj.label7:setHorzTextAlign("trailing");
     obj.label7:setName("label7");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout6);
     obj.edit6:setLeft(110);
     obj.edit6:setTop(0);
@@ -317,7 +317,7 @@ function newfrmFichaSSF()
     obj.edit6:setField("constelacao");
     obj.edit6:setName("edit6");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.layout1);
     obj.layout7:setLeft(300);
     obj.layout7:setTop(55);
@@ -325,7 +325,7 @@ function newfrmFichaSSF()
     obj.layout7:setHeight(25);
     obj.layout7:setName("layout7");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout7);
     obj.label8:setLeft(0);
     obj.label8:setTop(5);
@@ -335,7 +335,7 @@ function newfrmFichaSSF()
     obj.label8:setHorzTextAlign("trailing");
     obj.label8:setName("label8");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout7);
     obj.edit7:setLeft(110);
     obj.edit7:setTop(0);
@@ -344,7 +344,7 @@ function newfrmFichaSSF()
     obj.edit7:setField("signo");
     obj.edit7:setName("edit7");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.layout1);
     obj.layout8:setLeft(600);
     obj.layout8:setTop(5);
@@ -352,7 +352,7 @@ function newfrmFichaSSF()
     obj.layout8:setHeight(25);
     obj.layout8:setName("layout8");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout8);
     obj.label9:setLeft(0);
     obj.label9:setTop(5);
@@ -362,7 +362,7 @@ function newfrmFichaSSF()
     obj.label9:setHorzTextAlign("trailing");
     obj.label9:setName("label9");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.layout8);
     obj.edit8:setLeft(110);
     obj.edit8:setTop(0);
@@ -371,7 +371,7 @@ function newfrmFichaSSF()
     obj.edit8:setField("classificacao");
     obj.edit8:setName("edit8");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.layout1);
     obj.layout9:setLeft(600);
     obj.layout9:setTop(30);
@@ -379,7 +379,7 @@ function newfrmFichaSSF()
     obj.layout9:setHeight(25);
     obj.layout9:setName("layout9");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout9);
     obj.label10:setLeft(0);
     obj.label10:setTop(5);
@@ -389,7 +389,7 @@ function newfrmFichaSSF()
     obj.label10:setHorzTextAlign("trailing");
     obj.label10:setName("label10");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.layout9);
     obj.edit9:setLeft(110);
     obj.edit9:setTop(0);
@@ -398,7 +398,7 @@ function newfrmFichaSSF()
     obj.edit9:setField("titulo");
     obj.edit9:setName("edit9");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.layout1);
     obj.layout10:setLeft(600);
     obj.layout10:setTop(55);
@@ -406,7 +406,7 @@ function newfrmFichaSSF()
     obj.layout10:setHeight(25);
     obj.layout10:setName("layout10");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout10);
     obj.label11:setLeft(0);
     obj.label11:setTop(5);
@@ -416,7 +416,7 @@ function newfrmFichaSSF()
     obj.label11:setHorzTextAlign("trailing");
     obj.label11:setName("label11");
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.layout10);
     obj.edit10:setLeft(110);
     obj.edit10:setTop(0);
@@ -425,7 +425,7 @@ function newfrmFichaSSF()
     obj.edit10:setField("idade");
     obj.edit10:setName("edit10");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.scrollBox1);
     obj.layout11:setLeft(0);
     obj.layout11:setTop(95);
@@ -433,7 +433,7 @@ function newfrmFichaSSF()
     obj.layout11:setHeight(160);
     obj.layout11:setName("layout11");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout11);
     obj.rectangle3:setAlign("client");
     obj.rectangle3:setColor("black");
@@ -442,7 +442,7 @@ function newfrmFichaSSF()
     obj.rectangle3:setCornerType("round");
     obj.rectangle3:setName("rectangle3");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout11);
     obj.label12:setLeft(0);
     obj.label12:setTop(5);
@@ -452,7 +452,7 @@ function newfrmFichaSSF()
     obj.label12:setHorzTextAlign("center");
     obj.label12:setName("label12");
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout11);
     obj.label13:setLeft(50);
     obj.label13:setTop(30);
@@ -461,7 +461,7 @@ function newfrmFichaSSF()
     obj.label13:setText("Total");
     obj.label13:setName("label13");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout11);
     obj.label14:setLeft(100);
     obj.label14:setTop(30);
@@ -471,7 +471,7 @@ function newfrmFichaSSF()
     obj.label14:setFontSize(11);
     obj.label14:setName("label14");
 
-    obj.label15 = gui.fromHandle(_obj_newObject("label"));
+    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.layout11);
     obj.label15:setLeft(131);
     obj.label15:setTop(30);
@@ -481,7 +481,7 @@ function newfrmFichaSSF()
     obj.label15:setFontSize(10);
     obj.label15:setName("label15");
 
-    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.layout11);
     obj.label16:setLeft(164);
     obj.label16:setTop(30);
@@ -491,7 +491,7 @@ function newfrmFichaSSF()
     obj.label16:setFontSize(10);
     obj.label16:setName("label16");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.layout11);
     obj.layout12:setLeft(10);
     obj.layout12:setTop(50);
@@ -499,7 +499,7 @@ function newfrmFichaSSF()
     obj.layout12:setHeight(25);
     obj.layout12:setName("layout12");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout12);
     obj.button1:setLeft(5);
     obj.button1:setTop(2);
@@ -508,7 +508,7 @@ function newfrmFichaSSF()
     obj.button1:setText("ST");
     obj.button1:setName("button1");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.layout12);
     obj.rectangle4:setLeft(40);
     obj.rectangle4:setTop(0);
@@ -519,7 +519,7 @@ function newfrmFichaSSF()
     obj.rectangle4:setStrokeSize(1);
     obj.rectangle4:setName("rectangle4");
 
-    obj.label17 = gui.fromHandle(_obj_newObject("label"));
+    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.layout12);
     obj.label17:setLeft(40);
     obj.label17:setTop(3);
@@ -529,7 +529,7 @@ function newfrmFichaSSF()
     obj.label17:setHorzTextAlign("center");
     obj.label17:setName("label17");
 
-    obj.edit11 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit11:setParent(obj.layout12);
     obj.edit11:setLeft(90);
     obj.edit11:setTop(0);
@@ -539,7 +539,7 @@ function newfrmFichaSSF()
     obj.edit11:setField("inicial_st");
     obj.edit11:setName("edit11");
 
-    obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit12:setParent(obj.layout12);
     obj.edit12:setLeft(120);
     obj.edit12:setTop(0);
@@ -549,7 +549,7 @@ function newfrmFichaSSF()
     obj.edit12:setField("cosmo_st");
     obj.edit12:setName("edit12");
 
-    obj.edit13 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit13:setParent(obj.layout12);
     obj.edit13:setLeft(150);
     obj.edit13:setTop(0);
@@ -559,12 +559,12 @@ function newfrmFichaSSF()
     obj.edit13:setField("xp_st");
     obj.edit13:setName("edit13");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.layout12);
     obj.dataLink2:setFields({'inicial_st', 'cosmo_st', 'xp_st'});
     obj.dataLink2:setName("dataLink2");
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.layout11);
     obj.layout13:setLeft(10);
     obj.layout13:setTop(75);
@@ -572,7 +572,7 @@ function newfrmFichaSSF()
     obj.layout13:setHeight(25);
     obj.layout13:setName("layout13");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout13);
     obj.button2:setLeft(5);
     obj.button2:setTop(2);
@@ -581,7 +581,7 @@ function newfrmFichaSSF()
     obj.button2:setText("DX");
     obj.button2:setName("button2");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.layout13);
     obj.rectangle5:setLeft(40);
     obj.rectangle5:setTop(0);
@@ -592,7 +592,7 @@ function newfrmFichaSSF()
     obj.rectangle5:setStrokeSize(1);
     obj.rectangle5:setName("rectangle5");
 
-    obj.label18 = gui.fromHandle(_obj_newObject("label"));
+    obj.label18 = GUI.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.layout13);
     obj.label18:setLeft(40);
     obj.label18:setTop(3);
@@ -602,7 +602,7 @@ function newfrmFichaSSF()
     obj.label18:setHorzTextAlign("center");
     obj.label18:setName("label18");
 
-    obj.edit14 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit14:setParent(obj.layout13);
     obj.edit14:setLeft(90);
     obj.edit14:setTop(0);
@@ -612,7 +612,7 @@ function newfrmFichaSSF()
     obj.edit14:setField("inicial_dx");
     obj.edit14:setName("edit14");
 
-    obj.edit15 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit15:setParent(obj.layout13);
     obj.edit15:setLeft(120);
     obj.edit15:setTop(0);
@@ -622,7 +622,7 @@ function newfrmFichaSSF()
     obj.edit15:setField("cosmo_dx");
     obj.edit15:setName("edit15");
 
-    obj.edit16 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit16:setParent(obj.layout13);
     obj.edit16:setLeft(150);
     obj.edit16:setTop(0);
@@ -632,12 +632,12 @@ function newfrmFichaSSF()
     obj.edit16:setField("xp_dx");
     obj.edit16:setName("edit16");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj.layout13);
     obj.dataLink3:setFields({'inicial_dx', 'cosmo_dx', 'xp_dx'});
     obj.dataLink3:setName("dataLink3");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.layout11);
     obj.layout14:setLeft(10);
     obj.layout14:setTop(100);
@@ -645,7 +645,7 @@ function newfrmFichaSSF()
     obj.layout14:setHeight(25);
     obj.layout14:setName("layout14");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.layout14);
     obj.button3:setLeft(5);
     obj.button3:setTop(2);
@@ -654,7 +654,7 @@ function newfrmFichaSSF()
     obj.button3:setText("IQ");
     obj.button3:setName("button3");
 
-    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle6:setParent(obj.layout14);
     obj.rectangle6:setLeft(40);
     obj.rectangle6:setTop(0);
@@ -665,7 +665,7 @@ function newfrmFichaSSF()
     obj.rectangle6:setStrokeSize(1);
     obj.rectangle6:setName("rectangle6");
 
-    obj.label19 = gui.fromHandle(_obj_newObject("label"));
+    obj.label19 = GUI.fromHandle(_obj_newObject("label"));
     obj.label19:setParent(obj.layout14);
     obj.label19:setLeft(40);
     obj.label19:setTop(3);
@@ -675,7 +675,7 @@ function newfrmFichaSSF()
     obj.label19:setHorzTextAlign("center");
     obj.label19:setName("label19");
 
-    obj.edit17 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit17:setParent(obj.layout14);
     obj.edit17:setLeft(90);
     obj.edit17:setTop(0);
@@ -685,7 +685,7 @@ function newfrmFichaSSF()
     obj.edit17:setField("inicial_iq");
     obj.edit17:setName("edit17");
 
-    obj.edit18 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit18:setParent(obj.layout14);
     obj.edit18:setLeft(120);
     obj.edit18:setTop(0);
@@ -695,7 +695,7 @@ function newfrmFichaSSF()
     obj.edit18:setField("cosmo_iq");
     obj.edit18:setName("edit18");
 
-    obj.edit19 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit19:setParent(obj.layout14);
     obj.edit19:setLeft(150);
     obj.edit19:setTop(0);
@@ -705,12 +705,12 @@ function newfrmFichaSSF()
     obj.edit19:setField("xp_iq");
     obj.edit19:setName("edit19");
 
-    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink4:setParent(obj.layout14);
     obj.dataLink4:setFields({'inicial_iq', 'cosmo_iq', 'xp_iq'});
     obj.dataLink4:setName("dataLink4");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.layout11);
     obj.layout15:setLeft(10);
     obj.layout15:setTop(125);
@@ -718,7 +718,7 @@ function newfrmFichaSSF()
     obj.layout15:setHeight(25);
     obj.layout15:setName("layout15");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.layout15);
     obj.button4:setLeft(5);
     obj.button4:setTop(2);
@@ -727,7 +727,7 @@ function newfrmFichaSSF()
     obj.button4:setText("HT");
     obj.button4:setName("button4");
 
-    obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle7 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle7:setParent(obj.layout15);
     obj.rectangle7:setLeft(40);
     obj.rectangle7:setTop(0);
@@ -738,7 +738,7 @@ function newfrmFichaSSF()
     obj.rectangle7:setStrokeSize(1);
     obj.rectangle7:setName("rectangle7");
 
-    obj.label20 = gui.fromHandle(_obj_newObject("label"));
+    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.layout15);
     obj.label20:setLeft(40);
     obj.label20:setTop(3);
@@ -748,7 +748,7 @@ function newfrmFichaSSF()
     obj.label20:setHorzTextAlign("center");
     obj.label20:setName("label20");
 
-    obj.edit20 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit20:setParent(obj.layout15);
     obj.edit20:setLeft(90);
     obj.edit20:setTop(0);
@@ -758,7 +758,7 @@ function newfrmFichaSSF()
     obj.edit20:setField("inicial_ht");
     obj.edit20:setName("edit20");
 
-    obj.edit21 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit21:setParent(obj.layout15);
     obj.edit21:setLeft(120);
     obj.edit21:setTop(0);
@@ -768,7 +768,7 @@ function newfrmFichaSSF()
     obj.edit21:setField("cosmo_ht");
     obj.edit21:setName("edit21");
 
-    obj.edit22 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit22:setParent(obj.layout15);
     obj.edit22:setLeft(150);
     obj.edit22:setTop(0);
@@ -778,12 +778,12 @@ function newfrmFichaSSF()
     obj.edit22:setField("xp_ht");
     obj.edit22:setName("edit22");
 
-    obj.dataLink5 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink5:setParent(obj.layout15);
     obj.dataLink5:setFields({'inicial_ht', 'cosmo_ht', 'xp_ht'});
     obj.dataLink5:setName("dataLink5");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.scrollBox1);
     obj.layout16:setLeft(210);
     obj.layout16:setTop(95);
@@ -791,7 +791,7 @@ function newfrmFichaSSF()
     obj.layout16:setHeight(160);
     obj.layout16:setName("layout16");
 
-    obj.rectangle8 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle8 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle8:setParent(obj.layout16);
     obj.rectangle8:setAlign("client");
     obj.rectangle8:setColor("black");
@@ -800,7 +800,7 @@ function newfrmFichaSSF()
     obj.rectangle8:setCornerType("round");
     obj.rectangle8:setName("rectangle8");
 
-    obj.label21 = gui.fromHandle(_obj_newObject("label"));
+    obj.label21 = GUI.fromHandle(_obj_newObject("label"));
     obj.label21:setParent(obj.layout16);
     obj.label21:setLeft(50);
     obj.label21:setTop(30);
@@ -809,7 +809,7 @@ function newfrmFichaSSF()
     obj.label21:setText("Total");
     obj.label21:setName("label21");
 
-    obj.label22 = gui.fromHandle(_obj_newObject("label"));
+    obj.label22 = GUI.fromHandle(_obj_newObject("label"));
     obj.label22:setParent(obj.layout16);
     obj.label22:setLeft(96);
     obj.label22:setTop(30);
@@ -819,7 +819,7 @@ function newfrmFichaSSF()
     obj.label22:setFontSize(12);
     obj.label22:setName("label22");
 
-    obj.label23 = gui.fromHandle(_obj_newObject("label"));
+    obj.label23 = GUI.fromHandle(_obj_newObject("label"));
     obj.label23:setParent(obj.layout16);
     obj.label23:setLeft(126);
     obj.label23:setTop(30);
@@ -829,7 +829,7 @@ function newfrmFichaSSF()
     obj.label23:setFontSize(10);
     obj.label23:setName("label23");
 
-    obj.label24 = gui.fromHandle(_obj_newObject("label"));
+    obj.label24 = GUI.fromHandle(_obj_newObject("label"));
     obj.label24:setParent(obj.layout16);
     obj.label24:setLeft(163);
     obj.label24:setTop(30);
@@ -839,7 +839,7 @@ function newfrmFichaSSF()
     obj.label24:setFontSize(10);
     obj.label24:setName("label24");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.layout16);
     obj.layout17:setLeft(5);
     obj.layout17:setTop(50);
@@ -847,7 +847,7 @@ function newfrmFichaSSF()
     obj.layout17:setHeight(25);
     obj.layout17:setName("layout17");
 
-    obj.label25 = gui.fromHandle(_obj_newObject("label"));
+    obj.label25 = GUI.fromHandle(_obj_newObject("label"));
     obj.label25:setParent(obj.layout17);
     obj.label25:setLeft(5);
     obj.label25:setTop(5);
@@ -857,7 +857,7 @@ function newfrmFichaSSF()
     obj.label25:setVisible(true);
     obj.label25:setName("label25");
 
-    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
     obj.button5:setParent(obj.layout17);
     obj.button5:setLeft(0);
     obj.button5:setTop(2);
@@ -867,7 +867,7 @@ function newfrmFichaSSF()
     obj.button5:setVisible(false);
     obj.button5:setName("button5");
 
-    obj.rectangle9 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle9 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle9:setParent(obj.layout17);
     obj.rectangle9:setLeft(45);
     obj.rectangle9:setTop(0);
@@ -878,7 +878,7 @@ function newfrmFichaSSF()
     obj.rectangle9:setStrokeSize(1);
     obj.rectangle9:setName("rectangle9");
 
-    obj.label26 = gui.fromHandle(_obj_newObject("label"));
+    obj.label26 = GUI.fromHandle(_obj_newObject("label"));
     obj.label26:setParent(obj.layout17);
     obj.label26:setLeft(45);
     obj.label26:setTop(3);
@@ -888,7 +888,7 @@ function newfrmFichaSSF()
     obj.label26:setHorzTextAlign("center");
     obj.label26:setName("label26");
 
-    obj.rectangle10 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle10 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle10:setParent(obj.layout17);
     obj.rectangle10:setLeft(90);
     obj.rectangle10:setTop(0);
@@ -899,7 +899,7 @@ function newfrmFichaSSF()
     obj.rectangle10:setStrokeSize(1);
     obj.rectangle10:setName("rectangle10");
 
-    obj.label27 = gui.fromHandle(_obj_newObject("label"));
+    obj.label27 = GUI.fromHandle(_obj_newObject("label"));
     obj.label27:setParent(obj.layout17);
     obj.label27:setLeft(90);
     obj.label27:setTop(3);
@@ -909,7 +909,7 @@ function newfrmFichaSSF()
     obj.label27:setHorzTextAlign("center");
     obj.label27:setName("label27");
 
-    obj.edit23 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit23:setParent(obj.layout17);
     obj.edit23:setLeft(120);
     obj.edit23:setTop(0);
@@ -919,7 +919,7 @@ function newfrmFichaSSF()
     obj.edit23:setField("cosmo_pv");
     obj.edit23:setName("edit23");
 
-    obj.edit24 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit24:setParent(obj.layout17);
     obj.edit24:setLeft(150);
     obj.edit24:setTop(0);
@@ -929,12 +929,12 @@ function newfrmFichaSSF()
     obj.edit24:setField("xp_pv");
     obj.edit24:setName("edit24");
 
-    obj.dataLink6 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink6:setParent(obj.layout17);
     obj.dataLink6:setFields({'total_st', 'cosmo_pv', 'xp_pv'});
     obj.dataLink6:setName("dataLink6");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.layout16);
     obj.layout18:setLeft(5);
     obj.layout18:setTop(75);
@@ -942,7 +942,7 @@ function newfrmFichaSSF()
     obj.layout18:setHeight(25);
     obj.layout18:setName("layout18");
 
-    obj.label28 = gui.fromHandle(_obj_newObject("label"));
+    obj.label28 = GUI.fromHandle(_obj_newObject("label"));
     obj.label28:setParent(obj.layout18);
     obj.label28:setLeft(5);
     obj.label28:setTop(5);
@@ -952,7 +952,7 @@ function newfrmFichaSSF()
     obj.label28:setVisible(false);
     obj.label28:setName("label28");
 
-    obj.button6 = gui.fromHandle(_obj_newObject("button"));
+    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
     obj.button6:setParent(obj.layout18);
     obj.button6:setLeft(0);
     obj.button6:setTop(2);
@@ -962,7 +962,7 @@ function newfrmFichaSSF()
     obj.button6:setVisible(true);
     obj.button6:setName("button6");
 
-    obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle11:setParent(obj.layout18);
     obj.rectangle11:setLeft(45);
     obj.rectangle11:setTop(0);
@@ -973,7 +973,7 @@ function newfrmFichaSSF()
     obj.rectangle11:setStrokeSize(1);
     obj.rectangle11:setName("rectangle11");
 
-    obj.label29 = gui.fromHandle(_obj_newObject("label"));
+    obj.label29 = GUI.fromHandle(_obj_newObject("label"));
     obj.label29:setParent(obj.layout18);
     obj.label29:setLeft(45);
     obj.label29:setTop(3);
@@ -983,7 +983,7 @@ function newfrmFichaSSF()
     obj.label29:setHorzTextAlign("center");
     obj.label29:setName("label29");
 
-    obj.rectangle12 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle12 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle12:setParent(obj.layout18);
     obj.rectangle12:setLeft(90);
     obj.rectangle12:setTop(0);
@@ -994,7 +994,7 @@ function newfrmFichaSSF()
     obj.rectangle12:setStrokeSize(1);
     obj.rectangle12:setName("rectangle12");
 
-    obj.label30 = gui.fromHandle(_obj_newObject("label"));
+    obj.label30 = GUI.fromHandle(_obj_newObject("label"));
     obj.label30:setParent(obj.layout18);
     obj.label30:setLeft(90);
     obj.label30:setTop(3);
@@ -1004,7 +1004,7 @@ function newfrmFichaSSF()
     obj.label30:setHorzTextAlign("center");
     obj.label30:setName("label30");
 
-    obj.edit25 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit25:setParent(obj.layout18);
     obj.edit25:setLeft(120);
     obj.edit25:setTop(0);
@@ -1014,7 +1014,7 @@ function newfrmFichaSSF()
     obj.edit25:setField("cosmo_von");
     obj.edit25:setName("edit25");
 
-    obj.edit26 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit26:setParent(obj.layout18);
     obj.edit26:setLeft(150);
     obj.edit26:setTop(0);
@@ -1024,12 +1024,12 @@ function newfrmFichaSSF()
     obj.edit26:setField("xp_von");
     obj.edit26:setName("edit26");
 
-    obj.dataLink7 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink7:setParent(obj.layout18);
     obj.dataLink7:setFields({'total_iq', 'cosmo_von', 'xp_von'});
     obj.dataLink7:setName("dataLink7");
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.layout16);
     obj.layout19:setLeft(5);
     obj.layout19:setTop(100);
@@ -1037,7 +1037,7 @@ function newfrmFichaSSF()
     obj.layout19:setHeight(25);
     obj.layout19:setName("layout19");
 
-    obj.label31 = gui.fromHandle(_obj_newObject("label"));
+    obj.label31 = GUI.fromHandle(_obj_newObject("label"));
     obj.label31:setParent(obj.layout19);
     obj.label31:setLeft(5);
     obj.label31:setTop(5);
@@ -1047,7 +1047,7 @@ function newfrmFichaSSF()
     obj.label31:setVisible(false);
     obj.label31:setName("label31");
 
-    obj.button7 = gui.fromHandle(_obj_newObject("button"));
+    obj.button7 = GUI.fromHandle(_obj_newObject("button"));
     obj.button7:setParent(obj.layout19);
     obj.button7:setLeft(0);
     obj.button7:setTop(2);
@@ -1057,7 +1057,7 @@ function newfrmFichaSSF()
     obj.button7:setVisible(true);
     obj.button7:setName("button7");
 
-    obj.rectangle13 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle13 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle13:setParent(obj.layout19);
     obj.rectangle13:setLeft(45);
     obj.rectangle13:setTop(0);
@@ -1068,7 +1068,7 @@ function newfrmFichaSSF()
     obj.rectangle13:setStrokeSize(1);
     obj.rectangle13:setName("rectangle13");
 
-    obj.label32 = gui.fromHandle(_obj_newObject("label"));
+    obj.label32 = GUI.fromHandle(_obj_newObject("label"));
     obj.label32:setParent(obj.layout19);
     obj.label32:setLeft(45);
     obj.label32:setTop(3);
@@ -1078,7 +1078,7 @@ function newfrmFichaSSF()
     obj.label32:setHorzTextAlign("center");
     obj.label32:setName("label32");
 
-    obj.rectangle14 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle14 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle14:setParent(obj.layout19);
     obj.rectangle14:setLeft(90);
     obj.rectangle14:setTop(0);
@@ -1089,7 +1089,7 @@ function newfrmFichaSSF()
     obj.rectangle14:setStrokeSize(1);
     obj.rectangle14:setName("rectangle14");
 
-    obj.label33 = gui.fromHandle(_obj_newObject("label"));
+    obj.label33 = GUI.fromHandle(_obj_newObject("label"));
     obj.label33:setParent(obj.layout19);
     obj.label33:setLeft(90);
     obj.label33:setTop(3);
@@ -1099,7 +1099,7 @@ function newfrmFichaSSF()
     obj.label33:setHorzTextAlign("center");
     obj.label33:setName("label33");
 
-    obj.edit27 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit27 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit27:setParent(obj.layout19);
     obj.edit27:setLeft(120);
     obj.edit27:setTop(0);
@@ -1109,7 +1109,7 @@ function newfrmFichaSSF()
     obj.edit27:setField("cosmo_per");
     obj.edit27:setName("edit27");
 
-    obj.edit28 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit28 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit28:setParent(obj.layout19);
     obj.edit28:setLeft(150);
     obj.edit28:setTop(0);
@@ -1119,12 +1119,12 @@ function newfrmFichaSSF()
     obj.edit28:setField("xp_per");
     obj.edit28:setName("edit28");
 
-    obj.dataLink8 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink8:setParent(obj.layout19);
     obj.dataLink8:setFields({'total_iq', 'cosmo_per', 'xp_per'});
     obj.dataLink8:setName("dataLink8");
 
-    obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.layout16);
     obj.layout20:setLeft(5);
     obj.layout20:setTop(125);
@@ -1132,7 +1132,7 @@ function newfrmFichaSSF()
     obj.layout20:setHeight(25);
     obj.layout20:setName("layout20");
 
-    obj.label34 = gui.fromHandle(_obj_newObject("label"));
+    obj.label34 = GUI.fromHandle(_obj_newObject("label"));
     obj.label34:setParent(obj.layout20);
     obj.label34:setLeft(5);
     obj.label34:setTop(5);
@@ -1142,7 +1142,7 @@ function newfrmFichaSSF()
     obj.label34:setVisible(true);
     obj.label34:setName("label34");
 
-    obj.button8 = gui.fromHandle(_obj_newObject("button"));
+    obj.button8 = GUI.fromHandle(_obj_newObject("button"));
     obj.button8:setParent(obj.layout20);
     obj.button8:setLeft(0);
     obj.button8:setTop(2);
@@ -1152,7 +1152,7 @@ function newfrmFichaSSF()
     obj.button8:setVisible(false);
     obj.button8:setName("button8");
 
-    obj.rectangle15 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle15 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle15:setParent(obj.layout20);
     obj.rectangle15:setLeft(45);
     obj.rectangle15:setTop(0);
@@ -1163,7 +1163,7 @@ function newfrmFichaSSF()
     obj.rectangle15:setStrokeSize(1);
     obj.rectangle15:setName("rectangle15");
 
-    obj.label35 = gui.fromHandle(_obj_newObject("label"));
+    obj.label35 = GUI.fromHandle(_obj_newObject("label"));
     obj.label35:setParent(obj.layout20);
     obj.label35:setLeft(45);
     obj.label35:setTop(3);
@@ -1173,7 +1173,7 @@ function newfrmFichaSSF()
     obj.label35:setHorzTextAlign("center");
     obj.label35:setName("label35");
 
-    obj.rectangle16 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle16 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle16:setParent(obj.layout20);
     obj.rectangle16:setLeft(90);
     obj.rectangle16:setTop(0);
@@ -1184,7 +1184,7 @@ function newfrmFichaSSF()
     obj.rectangle16:setStrokeSize(1);
     obj.rectangle16:setName("rectangle16");
 
-    obj.label36 = gui.fromHandle(_obj_newObject("label"));
+    obj.label36 = GUI.fromHandle(_obj_newObject("label"));
     obj.label36:setParent(obj.layout20);
     obj.label36:setLeft(90);
     obj.label36:setTop(3);
@@ -1194,7 +1194,7 @@ function newfrmFichaSSF()
     obj.label36:setHorzTextAlign("center");
     obj.label36:setName("label36");
 
-    obj.edit29 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit29 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit29:setParent(obj.layout20);
     obj.edit29:setLeft(120);
     obj.edit29:setTop(0);
@@ -1204,7 +1204,7 @@ function newfrmFichaSSF()
     obj.edit29:setField("cosmo_pf");
     obj.edit29:setName("edit29");
 
-    obj.edit30 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit30 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit30:setParent(obj.layout20);
     obj.edit30:setLeft(150);
     obj.edit30:setTop(0);
@@ -1214,12 +1214,12 @@ function newfrmFichaSSF()
     obj.edit30:setField("xp_pf");
     obj.edit30:setName("edit30");
 
-    obj.dataLink9 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink9:setParent(obj.layout20);
     obj.dataLink9:setFields({'total_ht', 'cosmo_pf', 'xp_pf'});
     obj.dataLink9:setName("dataLink9");
 
-    obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.scrollBox1);
     obj.layout21:setLeft(420);
     obj.layout21:setTop(95);
@@ -1227,7 +1227,7 @@ function newfrmFichaSSF()
     obj.layout21:setHeight(185);
     obj.layout21:setName("layout21");
 
-    obj.rectangle17 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle17 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle17:setParent(obj.layout21);
     obj.rectangle17:setAlign("client");
     obj.rectangle17:setColor("black");
@@ -1236,7 +1236,7 @@ function newfrmFichaSSF()
     obj.rectangle17:setCornerType("round");
     obj.rectangle17:setName("rectangle17");
 
-    obj.label37 = gui.fromHandle(_obj_newObject("label"));
+    obj.label37 = GUI.fromHandle(_obj_newObject("label"));
     obj.label37:setParent(obj.layout21);
     obj.label37:setLeft(60);
     obj.label37:setTop(5);
@@ -1245,7 +1245,7 @@ function newfrmFichaSSF()
     obj.label37:setText("Total");
     obj.label37:setName("label37");
 
-    obj.label38 = gui.fromHandle(_obj_newObject("label"));
+    obj.label38 = GUI.fromHandle(_obj_newObject("label"));
     obj.label38:setParent(obj.layout21);
     obj.label38:setLeft(120);
     obj.label38:setTop(5);
@@ -1254,7 +1254,7 @@ function newfrmFichaSSF()
     obj.label38:setText("Outros");
     obj.label38:setName("label38");
 
-    obj.label39 = gui.fromHandle(_obj_newObject("label"));
+    obj.label39 = GUI.fromHandle(_obj_newObject("label"));
     obj.label39:setParent(obj.layout21);
     obj.label39:setLeft(170);
     obj.label39:setTop(5);
@@ -1263,7 +1263,7 @@ function newfrmFichaSSF()
     obj.label39:setText("NH");
     obj.label39:setName("label39");
 
-    obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.layout21);
     obj.layout22:setLeft(0);
     obj.layout22:setTop(25);
@@ -1271,7 +1271,7 @@ function newfrmFichaSSF()
     obj.layout22:setHeight(25);
     obj.layout22:setName("layout22");
 
-    obj.button9 = gui.fromHandle(_obj_newObject("button"));
+    obj.button9 = GUI.fromHandle(_obj_newObject("button"));
     obj.button9:setParent(obj.layout22);
     obj.button9:setLeft(5);
     obj.button9:setTop(2);
@@ -1281,7 +1281,7 @@ function newfrmFichaSSF()
     obj.button9:setText("Desl.");
     obj.button9:setName("button9");
 
-    obj.rectangle18 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle18 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle18:setParent(obj.layout22);
     obj.rectangle18:setLeft(60);
     obj.rectangle18:setTop(0);
@@ -1292,7 +1292,7 @@ function newfrmFichaSSF()
     obj.rectangle18:setStrokeSize(1);
     obj.rectangle18:setName("rectangle18");
 
-    obj.label40 = gui.fromHandle(_obj_newObject("label"));
+    obj.label40 = GUI.fromHandle(_obj_newObject("label"));
     obj.label40:setParent(obj.layout22);
     obj.label40:setLeft(60);
     obj.label40:setTop(3);
@@ -1302,7 +1302,7 @@ function newfrmFichaSSF()
     obj.label40:setHorzTextAlign("center");
     obj.label40:setName("label40");
 
-    obj.edit31 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit31:setParent(obj.layout22);
     obj.edit31:setLeft(120);
     obj.edit31:setTop(0);
@@ -1312,12 +1312,12 @@ function newfrmFichaSSF()
     obj.edit31:setField("out_desl");
     obj.edit31:setName("edit31");
 
-    obj.dataLink10 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink10 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink10:setParent(obj.layout22);
     obj.dataLink10:setFields({'total_dx', 'total_ht', 'out_desl'});
     obj.dataLink10:setName("dataLink10");
 
-    obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.layout21);
     obj.layout23:setLeft(0);
     obj.layout23:setTop(50);
@@ -1325,7 +1325,7 @@ function newfrmFichaSSF()
     obj.layout23:setHeight(25);
     obj.layout23:setName("layout23");
 
-    obj.button10 = gui.fromHandle(_obj_newObject("button"));
+    obj.button10 = GUI.fromHandle(_obj_newObject("button"));
     obj.button10:setParent(obj.layout23);
     obj.button10:setLeft(5);
     obj.button10:setTop(2);
@@ -1335,7 +1335,7 @@ function newfrmFichaSSF()
     obj.button10:setText("Bloqueio");
     obj.button10:setName("button10");
 
-    obj.rectangle19 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle19 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle19:setParent(obj.layout23);
     obj.rectangle19:setLeft(60);
     obj.rectangle19:setTop(0);
@@ -1346,7 +1346,7 @@ function newfrmFichaSSF()
     obj.rectangle19:setStrokeSize(1);
     obj.rectangle19:setName("rectangle19");
 
-    obj.label41 = gui.fromHandle(_obj_newObject("label"));
+    obj.label41 = GUI.fromHandle(_obj_newObject("label"));
     obj.label41:setParent(obj.layout23);
     obj.label41:setLeft(60);
     obj.label41:setTop(3);
@@ -1356,7 +1356,7 @@ function newfrmFichaSSF()
     obj.label41:setHorzTextAlign("center");
     obj.label41:setName("label41");
 
-    obj.edit32 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit32:setParent(obj.layout23);
     obj.edit32:setLeft(120);
     obj.edit32:setTop(0);
@@ -1366,12 +1366,12 @@ function newfrmFichaSSF()
     obj.edit32:setField("out_bloqueio");
     obj.edit32:setName("edit32");
 
-    obj.dataLink11 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink11 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink11:setParent(obj.layout23);
     obj.dataLink11:setFields({'out_bloqueio', 'nh_2_2'});
     obj.dataLink11:setName("dataLink11");
 
-    obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.layout21);
     obj.layout24:setLeft(0);
     obj.layout24:setTop(75);
@@ -1379,7 +1379,7 @@ function newfrmFichaSSF()
     obj.layout24:setHeight(25);
     obj.layout24:setName("layout24");
 
-    obj.button11 = gui.fromHandle(_obj_newObject("button"));
+    obj.button11 = GUI.fromHandle(_obj_newObject("button"));
     obj.button11:setParent(obj.layout24);
     obj.button11:setLeft(5);
     obj.button11:setTop(2);
@@ -1389,7 +1389,7 @@ function newfrmFichaSSF()
     obj.button11:setText("Esquiva");
     obj.button11:setName("button11");
 
-    obj.rectangle20 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle20 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle20:setParent(obj.layout24);
     obj.rectangle20:setLeft(60);
     obj.rectangle20:setTop(0);
@@ -1400,7 +1400,7 @@ function newfrmFichaSSF()
     obj.rectangle20:setStrokeSize(1);
     obj.rectangle20:setName("rectangle20");
 
-    obj.label42 = gui.fromHandle(_obj_newObject("label"));
+    obj.label42 = GUI.fromHandle(_obj_newObject("label"));
     obj.label42:setParent(obj.layout24);
     obj.label42:setLeft(60);
     obj.label42:setTop(3);
@@ -1410,7 +1410,7 @@ function newfrmFichaSSF()
     obj.label42:setHorzTextAlign("center");
     obj.label42:setName("label42");
 
-    obj.edit33 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit33 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit33:setParent(obj.layout24);
     obj.edit33:setLeft(120);
     obj.edit33:setTop(0);
@@ -1420,12 +1420,12 @@ function newfrmFichaSSF()
     obj.edit33:setField("out_esq");
     obj.edit33:setName("edit33");
 
-    obj.dataLink12 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink12 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink12:setParent(obj.layout24);
     obj.dataLink12:setFields({'total_desl', 'out_esq'});
     obj.dataLink12:setName("dataLink12");
 
-    obj.layout25 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.layout21);
     obj.layout25:setLeft(0);
     obj.layout25:setTop(100);
@@ -1433,7 +1433,7 @@ function newfrmFichaSSF()
     obj.layout25:setHeight(25);
     obj.layout25:setName("layout25");
 
-    obj.button12 = gui.fromHandle(_obj_newObject("button"));
+    obj.button12 = GUI.fromHandle(_obj_newObject("button"));
     obj.button12:setParent(obj.layout25);
     obj.button12:setLeft(5);
     obj.button12:setTop(2);
@@ -1443,7 +1443,7 @@ function newfrmFichaSSF()
     obj.button12:setText("Aparar");
     obj.button12:setName("button12");
 
-    obj.rectangle21 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle21:setParent(obj.layout25);
     obj.rectangle21:setLeft(60);
     obj.rectangle21:setTop(0);
@@ -1454,7 +1454,7 @@ function newfrmFichaSSF()
     obj.rectangle21:setStrokeSize(1);
     obj.rectangle21:setName("rectangle21");
 
-    obj.label43 = gui.fromHandle(_obj_newObject("label"));
+    obj.label43 = GUI.fromHandle(_obj_newObject("label"));
     obj.label43:setParent(obj.layout25);
     obj.label43:setLeft(60);
     obj.label43:setTop(3);
@@ -1464,7 +1464,7 @@ function newfrmFichaSSF()
     obj.label43:setHorzTextAlign("center");
     obj.label43:setName("label43");
 
-    obj.edit34 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit34:setParent(obj.layout25);
     obj.edit34:setLeft(120);
     obj.edit34:setTop(0);
@@ -1474,12 +1474,12 @@ function newfrmFichaSSF()
     obj.edit34:setField("out_aparar");
     obj.edit34:setName("edit34");
 
-    obj.dataLink13 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink13 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink13:setParent(obj.layout25);
     obj.dataLink13:setFields({'out_aparar', 'nh_1_9'});
     obj.dataLink13:setName("dataLink13");
 
-    obj.layout26 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.layout21);
     obj.layout26:setLeft(0);
     obj.layout26:setTop(125);
@@ -1487,7 +1487,7 @@ function newfrmFichaSSF()
     obj.layout26:setHeight(25);
     obj.layout26:setName("layout26");
 
-    obj.button13 = gui.fromHandle(_obj_newObject("button"));
+    obj.button13 = GUI.fromHandle(_obj_newObject("button"));
     obj.button13:setParent(obj.layout26);
     obj.button13:setLeft(5);
     obj.button13:setTop(2);
@@ -1497,7 +1497,7 @@ function newfrmFichaSSF()
     obj.button13:setText("S. Aparar");
     obj.button13:setName("button13");
 
-    obj.rectangle22 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle22 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle22:setParent(obj.layout26);
     obj.rectangle22:setLeft(60);
     obj.rectangle22:setTop(0);
@@ -1508,7 +1508,7 @@ function newfrmFichaSSF()
     obj.rectangle22:setStrokeSize(1);
     obj.rectangle22:setName("rectangle22");
 
-    obj.label44 = gui.fromHandle(_obj_newObject("label"));
+    obj.label44 = GUI.fromHandle(_obj_newObject("label"));
     obj.label44:setParent(obj.layout26);
     obj.label44:setLeft(60);
     obj.label44:setTop(3);
@@ -1518,7 +1518,7 @@ function newfrmFichaSSF()
     obj.label44:setHorzTextAlign("center");
     obj.label44:setName("label44");
 
-    obj.edit35 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit35 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit35:setParent(obj.layout26);
     obj.edit35:setLeft(120);
     obj.edit35:setTop(0);
@@ -1528,7 +1528,7 @@ function newfrmFichaSSF()
     obj.edit35:setField("out_super_aparar");
     obj.edit35:setName("edit35");
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.layout26);
     obj.comboBox1:setLeft(160);
     obj.comboBox1:setTop(0);
@@ -1539,12 +1539,12 @@ function newfrmFichaSSF()
     obj.comboBox1:setValues({'1', '2', '3'});
     obj.comboBox1:setName("comboBox1");
 
-    obj.dataLink14 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink14 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink14:setParent(obj.layout26);
     obj.dataLink14:setFields({'out_super_aparar', 'nh_3_16', 'nh_3_17', 'nh_3_18', 'nh_super_aparar'});
     obj.dataLink14:setName("dataLink14");
 
-    obj.layout27 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.layout21);
     obj.layout27:setLeft(0);
     obj.layout27:setTop(150);
@@ -1552,7 +1552,7 @@ function newfrmFichaSSF()
     obj.layout27:setHeight(25);
     obj.layout27:setName("layout27");
 
-    obj.button14 = gui.fromHandle(_obj_newObject("button"));
+    obj.button14 = GUI.fromHandle(_obj_newObject("button"));
     obj.button14:setParent(obj.layout27);
     obj.button14:setLeft(5);
     obj.button14:setTop(2);
@@ -1562,7 +1562,7 @@ function newfrmFichaSSF()
     obj.button14:setText("T.Defesa");
     obj.button14:setName("button14");
 
-    obj.rectangle23 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle23:setParent(obj.layout27);
     obj.rectangle23:setLeft(60);
     obj.rectangle23:setTop(0);
@@ -1573,7 +1573,7 @@ function newfrmFichaSSF()
     obj.rectangle23:setStrokeSize(1);
     obj.rectangle23:setName("rectangle23");
 
-    obj.label45 = gui.fromHandle(_obj_newObject("label"));
+    obj.label45 = GUI.fromHandle(_obj_newObject("label"));
     obj.label45:setParent(obj.layout27);
     obj.label45:setLeft(60);
     obj.label45:setTop(3);
@@ -1583,7 +1583,7 @@ function newfrmFichaSSF()
     obj.label45:setHorzTextAlign("center");
     obj.label45:setName("label45");
 
-    obj.edit36 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit36:setParent(obj.layout27);
     obj.edit36:setLeft(120);
     obj.edit36:setTop(0);
@@ -1593,7 +1593,7 @@ function newfrmFichaSSF()
     obj.edit36:setField("out_tecnica_defesa");
     obj.edit36:setName("edit36");
 
-    obj.comboBox2 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox2:setParent(obj.layout27);
     obj.comboBox2:setLeft(160);
     obj.comboBox2:setTop(0);
@@ -1604,12 +1604,12 @@ function newfrmFichaSSF()
     obj.comboBox2:setValues({'1', '2'});
     obj.comboBox2:setName("comboBox2");
 
-    obj.dataLink15 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink15 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink15:setParent(obj.layout27);
     obj.dataLink15:setFields({'out_tecnica_defesa', 'nh_3_19', 'nh_3_20', 'nh_tecnica_defesa'});
     obj.dataLink15:setName("dataLink15");
 
-    obj.rectangle24 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle24 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle24:setParent(obj.scrollBox1);
     obj.rectangle24:setLeft(680);
     obj.rectangle24:setTop(95);
@@ -1621,7 +1621,7 @@ function newfrmFichaSSF()
     obj.rectangle24:setCornerType("innerLine");
     obj.rectangle24:setName("rectangle24");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.scrollBox1);
     obj.image1:setLeft(680);
     obj.image1:setTop(95);
@@ -1632,7 +1632,7 @@ function newfrmFichaSSF()
     obj.image1:setStyle("autoFit");
     obj.image1:setName("image1");
 
-    obj.layout28 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.scrollBox1);
     obj.layout28:setLeft(680);
     obj.layout28:setTop(355);
@@ -1640,7 +1640,7 @@ function newfrmFichaSSF()
     obj.layout28:setHeight(250);
     obj.layout28:setName("layout28");
 
-    obj.rectangle25 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle25:setParent(obj.layout28);
     obj.rectangle25:setAlign("client");
     obj.rectangle25:setColor("black");
@@ -1649,7 +1649,7 @@ function newfrmFichaSSF()
     obj.rectangle25:setCornerType("round");
     obj.rectangle25:setName("rectangle25");
 
-    obj.label46 = gui.fromHandle(_obj_newObject("label"));
+    obj.label46 = GUI.fromHandle(_obj_newObject("label"));
     obj.label46:setParent(obj.layout28);
     obj.label46:setLeft(0);
     obj.label46:setTop(5);
@@ -1659,7 +1659,7 @@ function newfrmFichaSSF()
     obj.label46:setHorzTextAlign("center");
     obj.label46:setName("label46");
 
-    obj.layout29 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout29:setParent(obj.layout28);
     obj.layout29:setLeft(0);
     obj.layout29:setTop(30);
@@ -1667,7 +1667,7 @@ function newfrmFichaSSF()
     obj.layout29:setHeight(25);
     obj.layout29:setName("layout29");
 
-    obj.label47 = gui.fromHandle(_obj_newObject("label"));
+    obj.label47 = GUI.fromHandle(_obj_newObject("label"));
     obj.label47:setParent(obj.layout29);
     obj.label47:setLeft(10);
     obj.label47:setTop(5);
@@ -1677,7 +1677,7 @@ function newfrmFichaSSF()
     obj.label47:setFontSize(10);
     obj.label47:setName("label47");
 
-    obj.edit37 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit37 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit37:setParent(obj.layout29);
     obj.edit37:setLeft(60);
     obj.edit37:setTop(0);
@@ -1686,7 +1686,7 @@ function newfrmFichaSSF()
     obj.edit37:setField("aparencia");
     obj.edit37:setName("edit37");
 
-    obj.layout30 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout30:setParent(obj.layout28);
     obj.layout30:setLeft(0);
     obj.layout30:setTop(55);
@@ -1694,7 +1694,7 @@ function newfrmFichaSSF()
     obj.layout30:setHeight(25);
     obj.layout30:setName("layout30");
 
-    obj.label48 = gui.fromHandle(_obj_newObject("label"));
+    obj.label48 = GUI.fromHandle(_obj_newObject("label"));
     obj.label48:setParent(obj.layout30);
     obj.label48:setLeft(10);
     obj.label48:setTop(5);
@@ -1704,7 +1704,7 @@ function newfrmFichaSSF()
     obj.label48:setFontSize(10);
     obj.label48:setName("label48");
 
-    obj.edit38 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit38 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit38:setParent(obj.layout30);
     obj.edit38:setLeft(60);
     obj.edit38:setTop(0);
@@ -1713,7 +1713,7 @@ function newfrmFichaSSF()
     obj.edit38:setField("status");
     obj.edit38:setName("edit38");
 
-    obj.layout31 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.layout28);
     obj.layout31:setLeft(0);
     obj.layout31:setTop(80);
@@ -1721,7 +1721,7 @@ function newfrmFichaSSF()
     obj.layout31:setHeight(25);
     obj.layout31:setName("layout31");
 
-    obj.label49 = gui.fromHandle(_obj_newObject("label"));
+    obj.label49 = GUI.fromHandle(_obj_newObject("label"));
     obj.label49:setParent(obj.layout31);
     obj.label49:setLeft(10);
     obj.label49:setTop(5);
@@ -1731,7 +1731,7 @@ function newfrmFichaSSF()
     obj.label49:setFontSize(10);
     obj.label49:setName("label49");
 
-    obj.edit39 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit39 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit39:setParent(obj.layout31);
     obj.edit39:setLeft(60);
     obj.edit39:setTop(0);
@@ -1740,7 +1740,7 @@ function newfrmFichaSSF()
     obj.edit39:setField("reputacao");
     obj.edit39:setName("edit39");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout28);
     obj.textEditor1:setLeft(10);
     obj.textEditor1:setTop(105);
@@ -1749,7 +1749,7 @@ function newfrmFichaSSF()
     obj.textEditor1:setField("reputacao_descricao");
     obj.textEditor1:setName("textEditor1");
 
-    obj.layout32 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.layout28);
     obj.layout32:setLeft(0);
     obj.layout32:setTop(210);
@@ -1757,7 +1757,7 @@ function newfrmFichaSSF()
     obj.layout32:setHeight(25);
     obj.layout32:setName("layout32");
 
-    obj.label50 = gui.fromHandle(_obj_newObject("label"));
+    obj.label50 = GUI.fromHandle(_obj_newObject("label"));
     obj.label50:setParent(obj.layout32);
     obj.label50:setLeft(5);
     obj.label50:setTop(5);
@@ -1767,7 +1767,7 @@ function newfrmFichaSSF()
     obj.label50:setFontSize(10);
     obj.label50:setName("label50");
 
-    obj.edit40 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit40 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit40:setParent(obj.layout32);
     obj.edit40:setLeft(60);
     obj.edit40:setTop(0);
@@ -1776,12 +1776,12 @@ function newfrmFichaSSF()
     obj.edit40:setField("mod");
     obj.edit40:setName("edit40");
 
-    obj.dataLink16 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink16 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink16:setParent(obj.layout32);
     obj.dataLink16:setField("mod");
     obj.dataLink16:setName("dataLink16");
 
-    obj.layout33 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout33:setParent(obj.scrollBox1);
     obj.layout33:setLeft(0);
     obj.layout33:setTop(265);
@@ -1789,7 +1789,7 @@ function newfrmFichaSSF()
     obj.layout33:setHeight(345);
     obj.layout33:setName("layout33");
 
-    obj.rectangle26 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle26 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle26:setParent(obj.layout33);
     obj.rectangle26:setAlign("client");
     obj.rectangle26:setColor("black");
@@ -1798,7 +1798,7 @@ function newfrmFichaSSF()
     obj.rectangle26:setCornerType("round");
     obj.rectangle26:setName("rectangle26");
 
-    obj.label51 = gui.fromHandle(_obj_newObject("label"));
+    obj.label51 = GUI.fromHandle(_obj_newObject("label"));
     obj.label51:setParent(obj.layout33);
     obj.label51:setLeft(0);
     obj.label51:setTop(5);
@@ -1808,7 +1808,7 @@ function newfrmFichaSSF()
     obj.label51:setHorzTextAlign("center");
     obj.label51:setName("label51");
 
-    obj.button15 = gui.fromHandle(_obj_newObject("button"));
+    obj.button15 = GUI.fromHandle(_obj_newObject("button"));
     obj.button15:setParent(obj.layout33);
     obj.button15:setText("+");
     obj.button15:setLeft(175);
@@ -1817,7 +1817,7 @@ function newfrmFichaSSF()
     obj.button15:setHeight(20);
     obj.button15:setName("button15");
 
-    obj.rectangle27 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle27 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle27:setParent(obj.layout33);
     obj.rectangle27:setLeft(5);
     obj.rectangle27:setTop(30);
@@ -1826,7 +1826,7 @@ function newfrmFichaSSF()
     obj.rectangle27:setColor("#101010");
     obj.rectangle27:setName("rectangle27");
 
-    obj.rclListaDasVantagens = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclListaDasVantagens = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDasVantagens:setParent(obj.layout33);
     obj.rclListaDasVantagens:setName("rclListaDasVantagens");
     obj.rclListaDasVantagens:setField("listaVantagens");
@@ -1839,7 +1839,7 @@ function newfrmFichaSSF()
     obj.rclListaDasVantagens:setLayout("vertical");
     obj.rclListaDasVantagens:setMinQt(1);
 
-    obj.boxDetalhesDasVantagens = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.boxDetalhesDasVantagens = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.boxDetalhesDasVantagens:setParent(obj.scrollBox1);
     obj.boxDetalhesDasVantagens:setName("boxDetalhesDasVantagens");
     obj.boxDetalhesDasVantagens:setVisible(false);
@@ -1848,7 +1848,7 @@ function newfrmFichaSSF()
     obj.boxDetalhesDasVantagens:setWidth(200);
     obj.boxDetalhesDasVantagens:setHeight(345);
 
-    obj.rectangle28 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle28 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle28:setParent(obj.boxDetalhesDasVantagens);
     obj.rectangle28:setAlign("client");
     obj.rectangle28:setColor("black");
@@ -1857,7 +1857,7 @@ function newfrmFichaSSF()
     obj.rectangle28:setCornerType("round");
     obj.rectangle28:setName("rectangle28");
 
-    obj.layout34 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout34 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout34:setParent(obj.boxDetalhesDasVantagens);
     obj.layout34:setLeft(0);
     obj.layout34:setTop(5);
@@ -1865,7 +1865,7 @@ function newfrmFichaSSF()
     obj.layout34:setHeight(25);
     obj.layout34:setName("layout34");
 
-    obj.label52 = gui.fromHandle(_obj_newObject("label"));
+    obj.label52 = GUI.fromHandle(_obj_newObject("label"));
     obj.label52:setParent(obj.layout34);
     obj.label52:setLeft(5);
     obj.label52:setTop(5);
@@ -1874,7 +1874,7 @@ function newfrmFichaSSF()
     obj.label52:setText("Nome");
     obj.label52:setName("label52");
 
-    obj.edit41 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit41:setParent(obj.layout34);
     obj.edit41:setLeft(55);
     obj.edit41:setTop(0);
@@ -1883,7 +1883,7 @@ function newfrmFichaSSF()
     obj.edit41:setField("nome_vantagem");
     obj.edit41:setName("edit41");
 
-    obj.layout35 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout35:setParent(obj.boxDetalhesDasVantagens);
     obj.layout35:setLeft(0);
     obj.layout35:setTop(30);
@@ -1891,7 +1891,7 @@ function newfrmFichaSSF()
     obj.layout35:setHeight(25);
     obj.layout35:setName("layout35");
 
-    obj.label53 = gui.fromHandle(_obj_newObject("label"));
+    obj.label53 = GUI.fromHandle(_obj_newObject("label"));
     obj.label53:setParent(obj.layout35);
     obj.label53:setLeft(5);
     obj.label53:setTop(5);
@@ -1900,7 +1900,7 @@ function newfrmFichaSSF()
     obj.label53:setText("Nível");
     obj.label53:setName("label53");
 
-    obj.edit42 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit42:setParent(obj.layout35);
     obj.edit42:setLeft(55);
     obj.edit42:setTop(0);
@@ -1909,7 +1909,7 @@ function newfrmFichaSSF()
     obj.edit42:setField("nivel_vantagem");
     obj.edit42:setName("edit42");
 
-    obj.layout36 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout36:setParent(obj.boxDetalhesDasVantagens);
     obj.layout36:setLeft(100);
     obj.layout36:setTop(30);
@@ -1917,7 +1917,7 @@ function newfrmFichaSSF()
     obj.layout36:setHeight(25);
     obj.layout36:setName("layout36");
 
-    obj.label54 = gui.fromHandle(_obj_newObject("label"));
+    obj.label54 = GUI.fromHandle(_obj_newObject("label"));
     obj.label54:setParent(obj.layout36);
     obj.label54:setLeft(5);
     obj.label54:setTop(5);
@@ -1926,7 +1926,7 @@ function newfrmFichaSSF()
     obj.label54:setText("Custo");
     obj.label54:setName("label54");
 
-    obj.edit43 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit43 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit43:setParent(obj.layout36);
     obj.edit43:setLeft(55);
     obj.edit43:setTop(0);
@@ -1935,7 +1935,7 @@ function newfrmFichaSSF()
     obj.edit43:setField("custo_vantagem");
     obj.edit43:setName("edit43");
 
-    obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.boxDetalhesDasVantagens);
     obj.textEditor2:setLeft(5);
     obj.textEditor2:setTop(60);
@@ -1944,12 +1944,12 @@ function newfrmFichaSSF()
     obj.textEditor2:setField("descricao_vantagem");
     obj.textEditor2:setName("textEditor2");
 
-    obj.dataLink17 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink17 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink17:setParent(obj.boxDetalhesDasVantagens);
     obj.dataLink17:setField("custo_vantagem");
     obj.dataLink17:setName("dataLink17");
 
-    obj.layout37 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout37 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout37:setParent(obj.scrollBox1);
     obj.layout37:setLeft(420);
     obj.layout37:setTop(290);
@@ -1957,7 +1957,7 @@ function newfrmFichaSSF()
     obj.layout37:setHeight(210);
     obj.layout37:setName("layout37");
 
-    obj.rectangle29 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle29 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle29:setParent(obj.layout37);
     obj.rectangle29:setAlign("client");
     obj.rectangle29:setColor("black");
@@ -1966,7 +1966,7 @@ function newfrmFichaSSF()
     obj.rectangle29:setCornerType("round");
     obj.rectangle29:setName("rectangle29");
 
-    obj.label55 = gui.fromHandle(_obj_newObject("label"));
+    obj.label55 = GUI.fromHandle(_obj_newObject("label"));
     obj.label55:setParent(obj.layout37);
     obj.label55:setLeft(0);
     obj.label55:setTop(5);
@@ -1976,7 +1976,7 @@ function newfrmFichaSSF()
     obj.label55:setHorzTextAlign("center");
     obj.label55:setName("label55");
 
-    obj.layout38 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout38 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout38:setParent(obj.layout37);
     obj.layout38:setLeft(0);
     obj.layout38:setTop(30);
@@ -1984,7 +1984,7 @@ function newfrmFichaSSF()
     obj.layout38:setHeight(25);
     obj.layout38:setName("layout38");
 
-    obj.label56 = gui.fromHandle(_obj_newObject("label"));
+    obj.label56 = GUI.fromHandle(_obj_newObject("label"));
     obj.label56:setParent(obj.layout38);
     obj.label56:setLeft(5);
     obj.label56:setTop(5);
@@ -1993,7 +1993,7 @@ function newfrmFichaSSF()
     obj.label56:setText("ATRIBUTOS");
     obj.label56:setName("label56");
 
-    obj.rectangle30 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle30 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle30:setParent(obj.layout38);
     obj.rectangle30:setLeft(85);
     obj.rectangle30:setTop(0);
@@ -2004,7 +2004,7 @@ function newfrmFichaSSF()
     obj.rectangle30:setStrokeSize(1);
     obj.rectangle30:setName("rectangle30");
 
-    obj.label57 = gui.fromHandle(_obj_newObject("label"));
+    obj.label57 = GUI.fromHandle(_obj_newObject("label"));
     obj.label57:setParent(obj.layout38);
     obj.label57:setLeft(85);
     obj.label57:setTop(3);
@@ -2014,12 +2014,12 @@ function newfrmFichaSSF()
     obj.label57:setHorzTextAlign("center");
     obj.label57:setName("label57");
 
-    obj.dataLink18 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink18 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink18:setParent(obj.layout38);
     obj.dataLink18:setFields({'xp_st', 'xp_dx', 'xp_iq', 'xp_ht', 'xp_pv', 'xp_von', 'xp_per', 'xp_pf'});
     obj.dataLink18:setName("dataLink18");
 
-    obj.layout39 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout39 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout39:setParent(obj.layout37);
     obj.layout39:setLeft(125);
     obj.layout39:setTop(30);
@@ -2027,7 +2027,7 @@ function newfrmFichaSSF()
     obj.layout39:setHeight(25);
     obj.layout39:setName("layout39");
 
-    obj.label58 = gui.fromHandle(_obj_newObject("label"));
+    obj.label58 = GUI.fromHandle(_obj_newObject("label"));
     obj.label58:setParent(obj.layout39);
     obj.label58:setLeft(5);
     obj.label58:setTop(5);
@@ -2036,7 +2036,7 @@ function newfrmFichaSSF()
     obj.label58:setText("PERÍCIAS");
     obj.label58:setName("label58");
 
-    obj.rectangle31 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle31 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle31:setParent(obj.layout39);
     obj.rectangle31:setLeft(75);
     obj.rectangle31:setTop(0);
@@ -2047,7 +2047,7 @@ function newfrmFichaSSF()
     obj.rectangle31:setStrokeSize(1);
     obj.rectangle31:setName("rectangle31");
 
-    obj.label59 = gui.fromHandle(_obj_newObject("label"));
+    obj.label59 = GUI.fromHandle(_obj_newObject("label"));
     obj.label59:setParent(obj.layout39);
     obj.label59:setLeft(75);
     obj.label59:setTop(3);
@@ -2057,13 +2057,13 @@ function newfrmFichaSSF()
     obj.label59:setHorzTextAlign("center");
     obj.label59:setName("label59");
 
-    obj.dataLink19 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink19 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink19:setParent(obj.layout39);
     obj.dataLink19:setField("xp_pericias");
     obj.dataLink19:setDefaultValue("0");
     obj.dataLink19:setName("dataLink19");
 
-    obj.layout40 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout40 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout40:setParent(obj.layout37);
     obj.layout40:setLeft(0);
     obj.layout40:setTop(55);
@@ -2071,7 +2071,7 @@ function newfrmFichaSSF()
     obj.layout40:setHeight(25);
     obj.layout40:setName("layout40");
 
-    obj.label60 = gui.fromHandle(_obj_newObject("label"));
+    obj.label60 = GUI.fromHandle(_obj_newObject("label"));
     obj.label60:setParent(obj.layout40);
     obj.label60:setLeft(5);
     obj.label60:setTop(5);
@@ -2080,7 +2080,7 @@ function newfrmFichaSSF()
     obj.label60:setText("VANTAGENS");
     obj.label60:setName("label60");
 
-    obj.rectangle32 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle32 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle32:setParent(obj.layout40);
     obj.rectangle32:setLeft(85);
     obj.rectangle32:setTop(0);
@@ -2091,7 +2091,7 @@ function newfrmFichaSSF()
     obj.rectangle32:setStrokeSize(1);
     obj.rectangle32:setName("rectangle32");
 
-    obj.label61 = gui.fromHandle(_obj_newObject("label"));
+    obj.label61 = GUI.fromHandle(_obj_newObject("label"));
     obj.label61:setParent(obj.layout40);
     obj.label61:setLeft(85);
     obj.label61:setTop(3);
@@ -2101,7 +2101,7 @@ function newfrmFichaSSF()
     obj.label61:setHorzTextAlign("center");
     obj.label61:setName("label61");
 
-    obj.layout41 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout41 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout41:setParent(obj.layout37);
     obj.layout41:setLeft(125);
     obj.layout41:setTop(55);
@@ -2109,7 +2109,7 @@ function newfrmFichaSSF()
     obj.layout41:setHeight(25);
     obj.layout41:setName("layout41");
 
-    obj.label62 = gui.fromHandle(_obj_newObject("label"));
+    obj.label62 = GUI.fromHandle(_obj_newObject("label"));
     obj.label62:setParent(obj.layout41);
     obj.label62:setLeft(5);
     obj.label62:setTop(5);
@@ -2118,7 +2118,7 @@ function newfrmFichaSSF()
     obj.label62:setText("TECNICAS");
     obj.label62:setName("label62");
 
-    obj.rectangle33 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle33 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle33:setParent(obj.layout41);
     obj.rectangle33:setLeft(75);
     obj.rectangle33:setTop(0);
@@ -2129,7 +2129,7 @@ function newfrmFichaSSF()
     obj.rectangle33:setStrokeSize(1);
     obj.rectangle33:setName("rectangle33");
 
-    obj.label63 = gui.fromHandle(_obj_newObject("label"));
+    obj.label63 = GUI.fromHandle(_obj_newObject("label"));
     obj.label63:setParent(obj.layout41);
     obj.label63:setLeft(75);
     obj.label63:setTop(3);
@@ -2139,7 +2139,7 @@ function newfrmFichaSSF()
     obj.label63:setHorzTextAlign("center");
     obj.label63:setName("label63");
 
-    obj.label64 = gui.fromHandle(_obj_newObject("label"));
+    obj.label64 = GUI.fromHandle(_obj_newObject("label"));
     obj.label64:setParent(obj.layout37);
     obj.label64:setLeft(0);
     obj.label64:setTop(85);
@@ -2149,7 +2149,7 @@ function newfrmFichaSSF()
     obj.label64:setHorzTextAlign("center");
     obj.label64:setName("label64");
 
-    obj.layout42 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout42 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout42:setParent(obj.layout37);
     obj.layout42:setLeft(0);
     obj.layout42:setTop(105);
@@ -2157,7 +2157,7 @@ function newfrmFichaSSF()
     obj.layout42:setHeight(25);
     obj.layout42:setName("layout42");
 
-    obj.label65 = gui.fromHandle(_obj_newObject("label"));
+    obj.label65 = GUI.fromHandle(_obj_newObject("label"));
     obj.label65:setParent(obj.layout42);
     obj.label65:setLeft(60);
     obj.label65:setTop(5);
@@ -2167,7 +2167,7 @@ function newfrmFichaSSF()
     obj.label65:setFontSize(11);
     obj.label65:setName("label65");
 
-    obj.label66 = gui.fromHandle(_obj_newObject("label"));
+    obj.label66 = GUI.fromHandle(_obj_newObject("label"));
     obj.label66:setParent(obj.layout42);
     obj.label66:setLeft(105);
     obj.label66:setTop(5);
@@ -2176,7 +2176,7 @@ function newfrmFichaSSF()
     obj.label66:setText("Ganho");
     obj.label66:setName("label66");
 
-    obj.label67 = gui.fromHandle(_obj_newObject("label"));
+    obj.label67 = GUI.fromHandle(_obj_newObject("label"));
     obj.label67:setParent(obj.layout42);
     obj.label67:setLeft(150);
     obj.label67:setTop(5);
@@ -2185,7 +2185,7 @@ function newfrmFichaSSF()
     obj.label67:setText("Gasta");
     obj.label67:setName("label67");
 
-    obj.label68 = gui.fromHandle(_obj_newObject("label"));
+    obj.label68 = GUI.fromHandle(_obj_newObject("label"));
     obj.label68:setParent(obj.layout42);
     obj.label68:setLeft(195);
     obj.label68:setTop(5);
@@ -2194,7 +2194,7 @@ function newfrmFichaSSF()
     obj.label68:setText("Sobra");
     obj.label68:setName("label68");
 
-    obj.layout43 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout43 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout43:setParent(obj.layout37);
     obj.layout43:setLeft(5);
     obj.layout43:setTop(130);
@@ -2202,7 +2202,7 @@ function newfrmFichaSSF()
     obj.layout43:setHeight(25);
     obj.layout43:setName("layout43");
 
-    obj.label69 = gui.fromHandle(_obj_newObject("label"));
+    obj.label69 = GUI.fromHandle(_obj_newObject("label"));
     obj.label69:setParent(obj.layout43);
     obj.label69:setLeft(5);
     obj.label69:setTop(5);
@@ -2211,7 +2211,7 @@ function newfrmFichaSSF()
     obj.label69:setText("PERS");
     obj.label69:setName("label69");
 
-    obj.edit44 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit44 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit44:setParent(obj.layout43);
     obj.edit44:setLeft(55);
     obj.edit44:setTop(0);
@@ -2220,7 +2220,7 @@ function newfrmFichaSSF()
     obj.edit44:setField("xpp_inicial");
     obj.edit44:setName("edit44");
 
-    obj.edit45 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit45:setParent(obj.layout43);
     obj.edit45:setLeft(100);
     obj.edit45:setTop(0);
@@ -2229,7 +2229,7 @@ function newfrmFichaSSF()
     obj.edit45:setField("xpp_ganha");
     obj.edit45:setName("edit45");
 
-    obj.rectangle34 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle34 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle34:setParent(obj.layout43);
     obj.rectangle34:setLeft(145);
     obj.rectangle34:setTop(0);
@@ -2240,7 +2240,7 @@ function newfrmFichaSSF()
     obj.rectangle34:setStrokeSize(1);
     obj.rectangle34:setName("rectangle34");
 
-    obj.label70 = gui.fromHandle(_obj_newObject("label"));
+    obj.label70 = GUI.fromHandle(_obj_newObject("label"));
     obj.label70:setParent(obj.layout43);
     obj.label70:setLeft(145);
     obj.label70:setTop(3);
@@ -2250,7 +2250,7 @@ function newfrmFichaSSF()
     obj.label70:setHorzTextAlign("center");
     obj.label70:setName("label70");
 
-    obj.rectangle35 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle35 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle35:setParent(obj.layout43);
     obj.rectangle35:setLeft(190);
     obj.rectangle35:setTop(0);
@@ -2261,7 +2261,7 @@ function newfrmFichaSSF()
     obj.rectangle35:setStrokeSize(1);
     obj.rectangle35:setName("rectangle35");
 
-    obj.label71 = gui.fromHandle(_obj_newObject("label"));
+    obj.label71 = GUI.fromHandle(_obj_newObject("label"));
     obj.label71:setParent(obj.layout43);
     obj.label71:setLeft(190);
     obj.label71:setTop(3);
@@ -2271,17 +2271,17 @@ function newfrmFichaSSF()
     obj.label71:setHorzTextAlign("center");
     obj.label71:setName("label71");
 
-    obj.dataLink20 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink20 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink20:setParent(obj.layout43);
     obj.dataLink20:setFields({'xp_atributos', 'xp_pericias', 'xp_vantagens'});
     obj.dataLink20:setName("dataLink20");
 
-    obj.dataLink21 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink21 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink21:setParent(obj.layout43);
     obj.dataLink21:setFields({'xpp_inicial', 'xpp_gasta', 'xpp_ganha'});
     obj.dataLink21:setName("dataLink21");
 
-    obj.layout44 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout44 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout44:setParent(obj.layout37);
     obj.layout44:setLeft(5);
     obj.layout44:setTop(155);
@@ -2289,7 +2289,7 @@ function newfrmFichaSSF()
     obj.layout44:setHeight(25);
     obj.layout44:setName("layout44");
 
-    obj.label72 = gui.fromHandle(_obj_newObject("label"));
+    obj.label72 = GUI.fromHandle(_obj_newObject("label"));
     obj.label72:setParent(obj.layout44);
     obj.label72:setLeft(5);
     obj.label72:setTop(5);
@@ -2298,7 +2298,7 @@ function newfrmFichaSSF()
     obj.label72:setText("TEC");
     obj.label72:setName("label72");
 
-    obj.edit46 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit46:setParent(obj.layout44);
     obj.edit46:setLeft(55);
     obj.edit46:setTop(0);
@@ -2307,7 +2307,7 @@ function newfrmFichaSSF()
     obj.edit46:setField("xpt_inicial");
     obj.edit46:setName("edit46");
 
-    obj.edit47 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit47:setParent(obj.layout44);
     obj.edit47:setLeft(100);
     obj.edit47:setTop(0);
@@ -2316,7 +2316,7 @@ function newfrmFichaSSF()
     obj.edit47:setField("xpt_ganha");
     obj.edit47:setName("edit47");
 
-    obj.rectangle36 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle36 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle36:setParent(obj.layout44);
     obj.rectangle36:setLeft(145);
     obj.rectangle36:setTop(0);
@@ -2327,7 +2327,7 @@ function newfrmFichaSSF()
     obj.rectangle36:setStrokeSize(1);
     obj.rectangle36:setName("rectangle36");
 
-    obj.label73 = gui.fromHandle(_obj_newObject("label"));
+    obj.label73 = GUI.fromHandle(_obj_newObject("label"));
     obj.label73:setParent(obj.layout44);
     obj.label73:setLeft(145);
     obj.label73:setTop(3);
@@ -2337,7 +2337,7 @@ function newfrmFichaSSF()
     obj.label73:setHorzTextAlign("center");
     obj.label73:setName("label73");
 
-    obj.rectangle37 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle37 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle37:setParent(obj.layout44);
     obj.rectangle37:setLeft(190);
     obj.rectangle37:setTop(0);
@@ -2348,7 +2348,7 @@ function newfrmFichaSSF()
     obj.rectangle37:setStrokeSize(1);
     obj.rectangle37:setName("rectangle37");
 
-    obj.label74 = gui.fromHandle(_obj_newObject("label"));
+    obj.label74 = GUI.fromHandle(_obj_newObject("label"));
     obj.label74:setParent(obj.layout44);
     obj.label74:setLeft(190);
     obj.label74:setTop(3);
@@ -2358,12 +2358,12 @@ function newfrmFichaSSF()
     obj.label74:setHorzTextAlign("center");
     obj.label74:setName("label74");
 
-    obj.dataLink22 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink22 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink22:setParent(obj.layout44);
     obj.dataLink22:setFields({'xpt_inicial', 'xp_tecnicas', 'xpt_ganha'});
     obj.dataLink22:setName("dataLink22");
 
-    obj.layout45 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout45 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout45:setParent(obj.layout37);
     obj.layout45:setLeft(5);
     obj.layout45:setTop(180);
@@ -2371,7 +2371,7 @@ function newfrmFichaSSF()
     obj.layout45:setHeight(25);
     obj.layout45:setName("layout45");
 
-    obj.label75 = gui.fromHandle(_obj_newObject("label"));
+    obj.label75 = GUI.fromHandle(_obj_newObject("label"));
     obj.label75:setParent(obj.layout45);
     obj.label75:setLeft(5);
     obj.label75:setTop(5);
@@ -2380,7 +2380,7 @@ function newfrmFichaSSF()
     obj.label75:setText("TOTAL");
     obj.label75:setName("label75");
 
-    obj.rectangle38 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle38 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle38:setParent(obj.layout45);
     obj.rectangle38:setLeft(55);
     obj.rectangle38:setTop(0);
@@ -2391,7 +2391,7 @@ function newfrmFichaSSF()
     obj.rectangle38:setStrokeSize(1);
     obj.rectangle38:setName("rectangle38");
 
-    obj.label76 = gui.fromHandle(_obj_newObject("label"));
+    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
     obj.label76:setParent(obj.layout45);
     obj.label76:setLeft(55);
     obj.label76:setTop(3);
@@ -2401,12 +2401,12 @@ function newfrmFichaSSF()
     obj.label76:setHorzTextAlign("center");
     obj.label76:setName("label76");
 
-    obj.dataLink23 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink23 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink23:setParent(obj.layout45);
     obj.dataLink23:setFields({'xpt_inicial', 'xpp_inicial'});
     obj.dataLink23:setName("dataLink23");
 
-    obj.rectangle39 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle39 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle39:setParent(obj.layout45);
     obj.rectangle39:setLeft(100);
     obj.rectangle39:setTop(0);
@@ -2417,7 +2417,7 @@ function newfrmFichaSSF()
     obj.rectangle39:setStrokeSize(1);
     obj.rectangle39:setName("rectangle39");
 
-    obj.label77 = gui.fromHandle(_obj_newObject("label"));
+    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
     obj.label77:setParent(obj.layout45);
     obj.label77:setLeft(100);
     obj.label77:setTop(3);
@@ -2427,12 +2427,12 @@ function newfrmFichaSSF()
     obj.label77:setHorzTextAlign("center");
     obj.label77:setName("label77");
 
-    obj.dataLink24 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink24 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink24:setParent(obj.layout45);
     obj.dataLink24:setFields({'xpt_ganha', 'xpp_ganha'});
     obj.dataLink24:setName("dataLink24");
 
-    obj.rectangle40 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle40 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle40:setParent(obj.layout45);
     obj.rectangle40:setLeft(145);
     obj.rectangle40:setTop(0);
@@ -2443,7 +2443,7 @@ function newfrmFichaSSF()
     obj.rectangle40:setStrokeSize(1);
     obj.rectangle40:setName("rectangle40");
 
-    obj.label78 = gui.fromHandle(_obj_newObject("label"));
+    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
     obj.label78:setParent(obj.layout45);
     obj.label78:setLeft(145);
     obj.label78:setTop(3);
@@ -2453,12 +2453,12 @@ function newfrmFichaSSF()
     obj.label78:setHorzTextAlign("center");
     obj.label78:setName("label78");
 
-    obj.dataLink25 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink25 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink25:setParent(obj.layout45);
     obj.dataLink25:setFields({'xpp_gasta', 'xp_tecnicas'});
     obj.dataLink25:setName("dataLink25");
 
-    obj.layout46 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout46 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout46:setParent(obj.scrollBox1);
     obj.layout46:setLeft(420);
     obj.layout46:setTop(510);
@@ -2466,7 +2466,7 @@ function newfrmFichaSSF()
     obj.layout46:setHeight(85);
     obj.layout46:setName("layout46");
 
-    obj.rectangle41 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle41 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle41:setParent(obj.layout46);
     obj.rectangle41:setAlign("client");
     obj.rectangle41:setColor("black");
@@ -2475,7 +2475,7 @@ function newfrmFichaSSF()
     obj.rectangle41:setCornerType("round");
     obj.rectangle41:setName("rectangle41");
 
-    obj.label79 = gui.fromHandle(_obj_newObject("label"));
+    obj.label79 = GUI.fromHandle(_obj_newObject("label"));
     obj.label79:setParent(obj.layout46);
     obj.label79:setLeft(0);
     obj.label79:setTop(5);
@@ -2485,7 +2485,7 @@ function newfrmFichaSSF()
     obj.label79:setHorzTextAlign("center");
     obj.label79:setName("label79");
 
-    obj.layout47 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout47 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout47:setParent(obj.layout46);
     obj.layout47:setLeft(0);
     obj.layout47:setTop(30);
@@ -2493,7 +2493,7 @@ function newfrmFichaSSF()
     obj.layout47:setHeight(25);
     obj.layout47:setName("layout47");
 
-    obj.label80 = gui.fromHandle(_obj_newObject("label"));
+    obj.label80 = GUI.fromHandle(_obj_newObject("label"));
     obj.label80:setParent(obj.layout47);
     obj.label80:setLeft(10);
     obj.label80:setTop(5);
@@ -2502,7 +2502,7 @@ function newfrmFichaSSF()
     obj.label80:setText("Vel:");
     obj.label80:setName("label80");
 
-    obj.edit48 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit48:setParent(obj.layout47);
     obj.edit48:setLeft(50);
     obj.edit48:setTop(0);
@@ -2511,7 +2511,7 @@ function newfrmFichaSSF()
     obj.edit48:setField("descricao_velocidade");
     obj.edit48:setName("edit48");
 
-    obj.label81 = gui.fromHandle(_obj_newObject("label"));
+    obj.label81 = GUI.fromHandle(_obj_newObject("label"));
     obj.label81:setParent(obj.layout47);
     obj.label81:setLeft(172);
     obj.label81:setTop(5);
@@ -2520,7 +2520,7 @@ function newfrmFichaSSF()
     obj.label81:setText("Nível");
     obj.label81:setName("label81");
 
-    obj.edit49 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit49 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit49:setParent(obj.layout47);
     obj.edit49:setLeft(205);
     obj.edit49:setTop(0);
@@ -2529,7 +2529,7 @@ function newfrmFichaSSF()
     obj.edit49:setField("nivel_velocidade");
     obj.edit49:setName("edit49");
 
-    obj.layout48 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout48 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout48:setParent(obj.layout46);
     obj.layout48:setLeft(0);
     obj.layout48:setTop(55);
@@ -2537,7 +2537,7 @@ function newfrmFichaSSF()
     obj.layout48:setHeight(25);
     obj.layout48:setName("layout48");
 
-    obj.label82 = gui.fromHandle(_obj_newObject("label"));
+    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
     obj.label82:setParent(obj.layout48);
     obj.label82:setLeft(10);
     obj.label82:setTop(5);
@@ -2546,7 +2546,7 @@ function newfrmFichaSSF()
     obj.label82:setText("Sent:");
     obj.label82:setName("label82");
 
-    obj.edit50 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit50:setParent(obj.layout48);
     obj.edit50:setLeft(50);
     obj.edit50:setTop(0);
@@ -2555,7 +2555,7 @@ function newfrmFichaSSF()
     obj.edit50:setField("descricao_sentido");
     obj.edit50:setName("edit50");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.scrollBox1);
     obj.image2:setLeft(0);
     obj.image2:setTop(0);
@@ -2565,23 +2565,23 @@ function newfrmFichaSSF()
     obj.image2:setSRC("https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20SSF%20releases/imagens/ABA0.png");
     obj.image2:setName("image2");
 
-    obj.tab2 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.tabControl1);
     obj.tab2:setTitle("Perícias");
     obj.tab2:setName("tab2");
 
-    obj.frmSSF2 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmSSF2 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmSSF2:setParent(obj.tab2);
     obj.frmSSF2:setName("frmSSF2");
     obj.frmSSF2:setAlign("client");
     obj.frmSSF2:setTheme("dark");
 
-    obj.scrollBox2 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox2:setParent(obj.frmSSF2);
     obj.scrollBox2:setAlign("client");
     obj.scrollBox2:setName("scrollBox2");
 
-    obj.layout49 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout49:setParent(obj.scrollBox2);
     obj.layout49:setLeft(0);
     obj.layout49:setTop(0);
@@ -2589,7 +2589,7 @@ function newfrmFichaSSF()
     obj.layout49:setHeight(615);
     obj.layout49:setName("layout49");
 
-    obj.rectangle42 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle42 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle42:setParent(obj.layout49);
     obj.rectangle42:setAlign("client");
     obj.rectangle42:setColor("black");
@@ -2598,7 +2598,7 @@ function newfrmFichaSSF()
     obj.rectangle42:setCornerType("round");
     obj.rectangle42:setName("rectangle42");
 
-    obj.label83 = gui.fromHandle(_obj_newObject("label"));
+    obj.label83 = GUI.fromHandle(_obj_newObject("label"));
     obj.label83:setParent(obj.layout49);
     obj.label83:setLeft(0);
     obj.label83:setTop(5);
@@ -2607,7 +2607,7 @@ function newfrmFichaSSF()
     obj.label83:setText("     NOME            NH        AT     +  BN       DF        PT");
     obj.label83:setName("label83");
 
-    obj.layout50 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout50 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout50:setParent(obj.layout49);
     obj.layout50:setLeft(0);
     obj.layout50:setTop(30);
@@ -2615,7 +2615,7 @@ function newfrmFichaSSF()
     obj.layout50:setHeight(25);
     obj.layout50:setName("layout50");
 
-    obj.edit51 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit51:setParent(obj.layout50);
     obj.edit51:setLeft(5);
     obj.edit51:setTop(0);
@@ -2624,13 +2624,13 @@ function newfrmFichaSSF()
     obj.edit51:setField("pericia_1_1");
     obj.edit51:setName("edit51");
 
-    obj.dataLink26 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink26 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink26:setParent(obj.layout50);
     obj.dataLink26:setField("pericia_1_1");
     obj.dataLink26:setDefaultValue("Atuação");
     obj.dataLink26:setName("dataLink26");
 
-    obj.rectangle43 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle43 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle43:setParent(obj.layout50);
     obj.rectangle43:setLeft(90);
     obj.rectangle43:setTop(0);
@@ -2641,7 +2641,7 @@ function newfrmFichaSSF()
     obj.rectangle43:setStrokeSize(1);
     obj.rectangle43:setName("rectangle43");
 
-    obj.label84 = gui.fromHandle(_obj_newObject("label"));
+    obj.label84 = GUI.fromHandle(_obj_newObject("label"));
     obj.label84:setParent(obj.layout50);
     obj.label84:setLeft(90);
     obj.label84:setTop(3);
@@ -2651,7 +2651,7 @@ function newfrmFichaSSF()
     obj.label84:setHorzTextAlign("center");
     obj.label84:setName("label84");
 
-    obj.comboBox3 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox3:setParent(obj.layout50);
     obj.comboBox3:setLeft(130);
     obj.comboBox3:setTop(0);
@@ -2662,13 +2662,13 @@ function newfrmFichaSSF()
     obj.comboBox3:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox3:setName("comboBox3");
 
-    obj.dataLink27 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink27 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink27:setParent(obj.layout50);
     obj.dataLink27:setField("atr_1_1");
     obj.dataLink27:setDefaultValue("IQ");
     obj.dataLink27:setName("dataLink27");
 
-    obj.label85 = gui.fromHandle(_obj_newObject("label"));
+    obj.label85 = GUI.fromHandle(_obj_newObject("label"));
     obj.label85:setParent(obj.layout50);
     obj.label85:setLeft(180);
     obj.label85:setTop(3);
@@ -2678,7 +2678,7 @@ function newfrmFichaSSF()
     obj.label85:setHorzTextAlign("center");
     obj.label85:setName("label85");
 
-    obj.edit52 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit52 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit52:setParent(obj.layout50);
     obj.edit52:setLeft(190);
     obj.edit52:setTop(0);
@@ -2688,7 +2688,7 @@ function newfrmFichaSSF()
     obj.edit52:setField("bonus_1_1");
     obj.edit52:setName("edit52");
 
-    obj.comboBox4 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox4:setParent(obj.layout50);
     obj.comboBox4:setLeft(220);
     obj.comboBox4:setTop(0);
@@ -2699,13 +2699,13 @@ function newfrmFichaSSF()
     obj.comboBox4:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox4:setName("comboBox4");
 
-    obj.dataLink28 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink28 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink28:setParent(obj.layout50);
     obj.dataLink28:setField("dificuldade_1_1");
     obj.dataLink28:setDefaultValue("M");
     obj.dataLink28:setName("dataLink28");
 
-    obj.rectangle44 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle44 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle44:setParent(obj.layout50);
     obj.rectangle44:setLeft(275);
     obj.rectangle44:setTop(0);
@@ -2716,7 +2716,7 @@ function newfrmFichaSSF()
     obj.rectangle44:setStrokeSize(1);
     obj.rectangle44:setName("rectangle44");
 
-    obj.label86 = gui.fromHandle(_obj_newObject("label"));
+    obj.label86 = GUI.fromHandle(_obj_newObject("label"));
     obj.label86:setParent(obj.layout50);
     obj.label86:setLeft(275);
     obj.label86:setTop(3);
@@ -2726,7 +2726,7 @@ function newfrmFichaSSF()
     obj.label86:setHorzTextAlign("center");
     obj.label86:setName("label86");
 
-    obj.button16 = gui.fromHandle(_obj_newObject("button"));
+    obj.button16 = GUI.fromHandle(_obj_newObject("button"));
     obj.button16:setParent(obj.layout50);
     obj.button16:setLeft(300);
     obj.button16:setTop(3);
@@ -2735,12 +2735,12 @@ function newfrmFichaSSF()
     obj.button16:setText("R");
     obj.button16:setName("button16");
 
-    obj.dataLink29 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink29 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink29:setParent(obj.layout50);
     obj.dataLink29:setFields({'atr_1_1', 'dificuldade_1_1', 'bonus_1_1', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink29:setName("dataLink29");
 
-    obj.layout51 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout51 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout51:setParent(obj.layout49);
     obj.layout51:setLeft(0);
     obj.layout51:setTop(55);
@@ -2748,7 +2748,7 @@ function newfrmFichaSSF()
     obj.layout51:setHeight(25);
     obj.layout51:setName("layout51");
 
-    obj.edit53 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit53 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit53:setParent(obj.layout51);
     obj.edit53:setLeft(5);
     obj.edit53:setTop(0);
@@ -2757,13 +2757,13 @@ function newfrmFichaSSF()
     obj.edit53:setField("pericia_1_2");
     obj.edit53:setName("edit53");
 
-    obj.dataLink30 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink30 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink30:setParent(obj.layout51);
     obj.dataLink30:setField("pericia_1_2");
     obj.dataLink30:setDefaultValue("Arremesso");
     obj.dataLink30:setName("dataLink30");
 
-    obj.rectangle45 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle45 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle45:setParent(obj.layout51);
     obj.rectangle45:setLeft(90);
     obj.rectangle45:setTop(0);
@@ -2774,7 +2774,7 @@ function newfrmFichaSSF()
     obj.rectangle45:setStrokeSize(1);
     obj.rectangle45:setName("rectangle45");
 
-    obj.label87 = gui.fromHandle(_obj_newObject("label"));
+    obj.label87 = GUI.fromHandle(_obj_newObject("label"));
     obj.label87:setParent(obj.layout51);
     obj.label87:setLeft(90);
     obj.label87:setTop(3);
@@ -2784,7 +2784,7 @@ function newfrmFichaSSF()
     obj.label87:setHorzTextAlign("center");
     obj.label87:setName("label87");
 
-    obj.comboBox5 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox5:setParent(obj.layout51);
     obj.comboBox5:setLeft(130);
     obj.comboBox5:setTop(0);
@@ -2795,13 +2795,13 @@ function newfrmFichaSSF()
     obj.comboBox5:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox5:setName("comboBox5");
 
-    obj.dataLink31 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink31 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink31:setParent(obj.layout51);
     obj.dataLink31:setField("atr_1_2");
     obj.dataLink31:setDefaultValue("DX");
     obj.dataLink31:setName("dataLink31");
 
-    obj.label88 = gui.fromHandle(_obj_newObject("label"));
+    obj.label88 = GUI.fromHandle(_obj_newObject("label"));
     obj.label88:setParent(obj.layout51);
     obj.label88:setLeft(180);
     obj.label88:setTop(3);
@@ -2811,7 +2811,7 @@ function newfrmFichaSSF()
     obj.label88:setHorzTextAlign("center");
     obj.label88:setName("label88");
 
-    obj.edit54 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit54:setParent(obj.layout51);
     obj.edit54:setLeft(190);
     obj.edit54:setTop(0);
@@ -2821,7 +2821,7 @@ function newfrmFichaSSF()
     obj.edit54:setField("bonus_1_2");
     obj.edit54:setName("edit54");
 
-    obj.comboBox6 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox6 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox6:setParent(obj.layout51);
     obj.comboBox6:setLeft(220);
     obj.comboBox6:setTop(0);
@@ -2832,13 +2832,13 @@ function newfrmFichaSSF()
     obj.comboBox6:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox6:setName("comboBox6");
 
-    obj.dataLink32 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink32 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink32:setParent(obj.layout51);
     obj.dataLink32:setField("dificuldade_1_2");
     obj.dataLink32:setDefaultValue("M");
     obj.dataLink32:setName("dataLink32");
 
-    obj.rectangle46 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle46 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle46:setParent(obj.layout51);
     obj.rectangle46:setLeft(275);
     obj.rectangle46:setTop(0);
@@ -2849,7 +2849,7 @@ function newfrmFichaSSF()
     obj.rectangle46:setStrokeSize(1);
     obj.rectangle46:setName("rectangle46");
 
-    obj.label89 = gui.fromHandle(_obj_newObject("label"));
+    obj.label89 = GUI.fromHandle(_obj_newObject("label"));
     obj.label89:setParent(obj.layout51);
     obj.label89:setLeft(275);
     obj.label89:setTop(3);
@@ -2859,7 +2859,7 @@ function newfrmFichaSSF()
     obj.label89:setHorzTextAlign("center");
     obj.label89:setName("label89");
 
-    obj.button17 = gui.fromHandle(_obj_newObject("button"));
+    obj.button17 = GUI.fromHandle(_obj_newObject("button"));
     obj.button17:setParent(obj.layout51);
     obj.button17:setLeft(300);
     obj.button17:setTop(3);
@@ -2868,12 +2868,12 @@ function newfrmFichaSSF()
     obj.button17:setText("R");
     obj.button17:setName("button17");
 
-    obj.dataLink33 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink33 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink33:setParent(obj.layout51);
     obj.dataLink33:setFields({'atr_1_2', 'dificuldade_1_2', 'bonus_1_2', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink33:setName("dataLink33");
 
-    obj.layout52 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout52 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout52:setParent(obj.layout49);
     obj.layout52:setLeft(0);
     obj.layout52:setTop(80);
@@ -2881,7 +2881,7 @@ function newfrmFichaSSF()
     obj.layout52:setHeight(25);
     obj.layout52:setName("layout52");
 
-    obj.edit55 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit55 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit55:setParent(obj.layout52);
     obj.edit55:setLeft(5);
     obj.edit55:setTop(0);
@@ -2890,13 +2890,13 @@ function newfrmFichaSSF()
     obj.edit55:setField("pericia_1_3");
     obj.edit55:setName("edit55");
 
-    obj.dataLink34 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink34 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink34:setParent(obj.layout52);
     obj.dataLink34:setField("pericia_1_3");
     obj.dataLink34:setDefaultValue("Arma de Arremesso");
     obj.dataLink34:setName("dataLink34");
 
-    obj.rectangle47 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle47 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle47:setParent(obj.layout52);
     obj.rectangle47:setLeft(90);
     obj.rectangle47:setTop(0);
@@ -2907,7 +2907,7 @@ function newfrmFichaSSF()
     obj.rectangle47:setStrokeSize(1);
     obj.rectangle47:setName("rectangle47");
 
-    obj.label90 = gui.fromHandle(_obj_newObject("label"));
+    obj.label90 = GUI.fromHandle(_obj_newObject("label"));
     obj.label90:setParent(obj.layout52);
     obj.label90:setLeft(90);
     obj.label90:setTop(3);
@@ -2917,7 +2917,7 @@ function newfrmFichaSSF()
     obj.label90:setHorzTextAlign("center");
     obj.label90:setName("label90");
 
-    obj.comboBox7 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox7 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox7:setParent(obj.layout52);
     obj.comboBox7:setLeft(130);
     obj.comboBox7:setTop(0);
@@ -2928,13 +2928,13 @@ function newfrmFichaSSF()
     obj.comboBox7:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox7:setName("comboBox7");
 
-    obj.dataLink35 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink35 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink35:setParent(obj.layout52);
     obj.dataLink35:setField("atr_1_3");
     obj.dataLink35:setDefaultValue("DX");
     obj.dataLink35:setName("dataLink35");
 
-    obj.label91 = gui.fromHandle(_obj_newObject("label"));
+    obj.label91 = GUI.fromHandle(_obj_newObject("label"));
     obj.label91:setParent(obj.layout52);
     obj.label91:setLeft(180);
     obj.label91:setTop(3);
@@ -2944,7 +2944,7 @@ function newfrmFichaSSF()
     obj.label91:setHorzTextAlign("center");
     obj.label91:setName("label91");
 
-    obj.edit56 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit56:setParent(obj.layout52);
     obj.edit56:setLeft(190);
     obj.edit56:setTop(0);
@@ -2954,7 +2954,7 @@ function newfrmFichaSSF()
     obj.edit56:setField("bonus_1_3");
     obj.edit56:setName("edit56");
 
-    obj.comboBox8 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox8 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox8:setParent(obj.layout52);
     obj.comboBox8:setLeft(220);
     obj.comboBox8:setTop(0);
@@ -2965,13 +2965,13 @@ function newfrmFichaSSF()
     obj.comboBox8:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox8:setName("comboBox8");
 
-    obj.dataLink36 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink36 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink36:setParent(obj.layout52);
     obj.dataLink36:setField("dificuldade_1_3");
     obj.dataLink36:setDefaultValue("F");
     obj.dataLink36:setName("dataLink36");
 
-    obj.rectangle48 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle48 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle48:setParent(obj.layout52);
     obj.rectangle48:setLeft(275);
     obj.rectangle48:setTop(0);
@@ -2982,7 +2982,7 @@ function newfrmFichaSSF()
     obj.rectangle48:setStrokeSize(1);
     obj.rectangle48:setName("rectangle48");
 
-    obj.label92 = gui.fromHandle(_obj_newObject("label"));
+    obj.label92 = GUI.fromHandle(_obj_newObject("label"));
     obj.label92:setParent(obj.layout52);
     obj.label92:setLeft(275);
     obj.label92:setTop(3);
@@ -2992,7 +2992,7 @@ function newfrmFichaSSF()
     obj.label92:setHorzTextAlign("center");
     obj.label92:setName("label92");
 
-    obj.button18 = gui.fromHandle(_obj_newObject("button"));
+    obj.button18 = GUI.fromHandle(_obj_newObject("button"));
     obj.button18:setParent(obj.layout52);
     obj.button18:setLeft(300);
     obj.button18:setTop(3);
@@ -3001,12 +3001,12 @@ function newfrmFichaSSF()
     obj.button18:setText("R");
     obj.button18:setName("button18");
 
-    obj.dataLink37 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink37 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink37:setParent(obj.layout52);
     obj.dataLink37:setFields({'atr_1_3', 'dificuldade_1_3', 'bonus_1_3', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink37:setName("dataLink37");
 
-    obj.layout53 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout53 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout53:setParent(obj.layout49);
     obj.layout53:setLeft(0);
     obj.layout53:setTop(105);
@@ -3014,7 +3014,7 @@ function newfrmFichaSSF()
     obj.layout53:setHeight(25);
     obj.layout53:setName("layout53");
 
-    obj.edit57 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit57 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit57:setParent(obj.layout53);
     obj.edit57:setLeft(5);
     obj.edit57:setTop(0);
@@ -3023,13 +3023,13 @@ function newfrmFichaSSF()
     obj.edit57:setField("pericia_1_4");
     obj.edit57:setName("edit57");
 
-    obj.dataLink38 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink38 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink38:setParent(obj.layout53);
     obj.dataLink38:setField("pericia_1_4");
     obj.dataLink38:setDefaultValue("Alquimia (Arma S.)");
     obj.dataLink38:setName("dataLink38");
 
-    obj.rectangle49 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle49 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle49:setParent(obj.layout53);
     obj.rectangle49:setLeft(90);
     obj.rectangle49:setTop(0);
@@ -3040,7 +3040,7 @@ function newfrmFichaSSF()
     obj.rectangle49:setStrokeSize(1);
     obj.rectangle49:setName("rectangle49");
 
-    obj.label93 = gui.fromHandle(_obj_newObject("label"));
+    obj.label93 = GUI.fromHandle(_obj_newObject("label"));
     obj.label93:setParent(obj.layout53);
     obj.label93:setLeft(90);
     obj.label93:setTop(3);
@@ -3050,7 +3050,7 @@ function newfrmFichaSSF()
     obj.label93:setHorzTextAlign("center");
     obj.label93:setName("label93");
 
-    obj.comboBox9 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox9 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox9:setParent(obj.layout53);
     obj.comboBox9:setLeft(130);
     obj.comboBox9:setTop(0);
@@ -3061,13 +3061,13 @@ function newfrmFichaSSF()
     obj.comboBox9:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox9:setName("comboBox9");
 
-    obj.dataLink39 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink39 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink39:setParent(obj.layout53);
     obj.dataLink39:setField("atr_1_4");
     obj.dataLink39:setDefaultValue("IQ");
     obj.dataLink39:setName("dataLink39");
 
-    obj.label94 = gui.fromHandle(_obj_newObject("label"));
+    obj.label94 = GUI.fromHandle(_obj_newObject("label"));
     obj.label94:setParent(obj.layout53);
     obj.label94:setLeft(180);
     obj.label94:setTop(3);
@@ -3077,7 +3077,7 @@ function newfrmFichaSSF()
     obj.label94:setHorzTextAlign("center");
     obj.label94:setName("label94");
 
-    obj.edit58 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit58 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit58:setParent(obj.layout53);
     obj.edit58:setLeft(190);
     obj.edit58:setTop(0);
@@ -3087,7 +3087,7 @@ function newfrmFichaSSF()
     obj.edit58:setField("bonus_1_4");
     obj.edit58:setName("edit58");
 
-    obj.comboBox10 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox10 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox10:setParent(obj.layout53);
     obj.comboBox10:setLeft(220);
     obj.comboBox10:setTop(0);
@@ -3098,13 +3098,13 @@ function newfrmFichaSSF()
     obj.comboBox10:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox10:setName("comboBox10");
 
-    obj.dataLink40 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink40 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink40:setParent(obj.layout53);
     obj.dataLink40:setField("dificuldade_1_4");
     obj.dataLink40:setDefaultValue("MD");
     obj.dataLink40:setName("dataLink40");
 
-    obj.rectangle50 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle50 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle50:setParent(obj.layout53);
     obj.rectangle50:setLeft(275);
     obj.rectangle50:setTop(0);
@@ -3115,7 +3115,7 @@ function newfrmFichaSSF()
     obj.rectangle50:setStrokeSize(1);
     obj.rectangle50:setName("rectangle50");
 
-    obj.label95 = gui.fromHandle(_obj_newObject("label"));
+    obj.label95 = GUI.fromHandle(_obj_newObject("label"));
     obj.label95:setParent(obj.layout53);
     obj.label95:setLeft(275);
     obj.label95:setTop(3);
@@ -3125,7 +3125,7 @@ function newfrmFichaSSF()
     obj.label95:setHorzTextAlign("center");
     obj.label95:setName("label95");
 
-    obj.button19 = gui.fromHandle(_obj_newObject("button"));
+    obj.button19 = GUI.fromHandle(_obj_newObject("button"));
     obj.button19:setParent(obj.layout53);
     obj.button19:setLeft(300);
     obj.button19:setTop(3);
@@ -3134,12 +3134,12 @@ function newfrmFichaSSF()
     obj.button19:setText("R");
     obj.button19:setName("button19");
 
-    obj.dataLink41 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink41 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink41:setParent(obj.layout53);
     obj.dataLink41:setFields({'atr_1_4', 'dificuldade_1_4', 'bonus_1_4', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink41:setName("dataLink41");
 
-    obj.layout54 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout54 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout54:setParent(obj.layout49);
     obj.layout54:setLeft(0);
     obj.layout54:setTop(130);
@@ -3147,7 +3147,7 @@ function newfrmFichaSSF()
     obj.layout54:setHeight(25);
     obj.layout54:setName("layout54");
 
-    obj.edit59 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit59 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit59:setParent(obj.layout54);
     obj.edit59:setLeft(5);
     obj.edit59:setTop(0);
@@ -3156,13 +3156,13 @@ function newfrmFichaSSF()
     obj.edit59:setField("pericia_1_5");
     obj.edit59:setName("edit59");
 
-    obj.dataLink42 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink42 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink42:setParent(obj.layout54);
     obj.dataLink42:setField("pericia_1_5");
     obj.dataLink42:setDefaultValue("Armeiro (Arma S.)");
     obj.dataLink42:setName("dataLink42");
 
-    obj.rectangle51 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle51 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle51:setParent(obj.layout54);
     obj.rectangle51:setLeft(90);
     obj.rectangle51:setTop(0);
@@ -3173,7 +3173,7 @@ function newfrmFichaSSF()
     obj.rectangle51:setStrokeSize(1);
     obj.rectangle51:setName("rectangle51");
 
-    obj.label96 = gui.fromHandle(_obj_newObject("label"));
+    obj.label96 = GUI.fromHandle(_obj_newObject("label"));
     obj.label96:setParent(obj.layout54);
     obj.label96:setLeft(90);
     obj.label96:setTop(3);
@@ -3183,7 +3183,7 @@ function newfrmFichaSSF()
     obj.label96:setHorzTextAlign("center");
     obj.label96:setName("label96");
 
-    obj.comboBox11 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox11 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox11:setParent(obj.layout54);
     obj.comboBox11:setLeft(130);
     obj.comboBox11:setTop(0);
@@ -3194,13 +3194,13 @@ function newfrmFichaSSF()
     obj.comboBox11:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox11:setName("comboBox11");
 
-    obj.dataLink43 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink43 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink43:setParent(obj.layout54);
     obj.dataLink43:setField("atr_1_5");
     obj.dataLink43:setDefaultValue("IQ");
     obj.dataLink43:setName("dataLink43");
 
-    obj.label97 = gui.fromHandle(_obj_newObject("label"));
+    obj.label97 = GUI.fromHandle(_obj_newObject("label"));
     obj.label97:setParent(obj.layout54);
     obj.label97:setLeft(180);
     obj.label97:setTop(3);
@@ -3210,7 +3210,7 @@ function newfrmFichaSSF()
     obj.label97:setHorzTextAlign("center");
     obj.label97:setName("label97");
 
-    obj.edit60 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit60 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit60:setParent(obj.layout54);
     obj.edit60:setLeft(190);
     obj.edit60:setTop(0);
@@ -3220,7 +3220,7 @@ function newfrmFichaSSF()
     obj.edit60:setField("bonus_1_5");
     obj.edit60:setName("edit60");
 
-    obj.comboBox12 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox12 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox12:setParent(obj.layout54);
     obj.comboBox12:setLeft(220);
     obj.comboBox12:setTop(0);
@@ -3231,13 +3231,13 @@ function newfrmFichaSSF()
     obj.comboBox12:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox12:setName("comboBox12");
 
-    obj.dataLink44 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink44 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink44:setParent(obj.layout54);
     obj.dataLink44:setField("dificuldade_1_5");
     obj.dataLink44:setDefaultValue("M");
     obj.dataLink44:setName("dataLink44");
 
-    obj.rectangle52 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle52 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle52:setParent(obj.layout54);
     obj.rectangle52:setLeft(275);
     obj.rectangle52:setTop(0);
@@ -3248,7 +3248,7 @@ function newfrmFichaSSF()
     obj.rectangle52:setStrokeSize(1);
     obj.rectangle52:setName("rectangle52");
 
-    obj.label98 = gui.fromHandle(_obj_newObject("label"));
+    obj.label98 = GUI.fromHandle(_obj_newObject("label"));
     obj.label98:setParent(obj.layout54);
     obj.label98:setLeft(275);
     obj.label98:setTop(3);
@@ -3258,7 +3258,7 @@ function newfrmFichaSSF()
     obj.label98:setHorzTextAlign("center");
     obj.label98:setName("label98");
 
-    obj.button20 = gui.fromHandle(_obj_newObject("button"));
+    obj.button20 = GUI.fromHandle(_obj_newObject("button"));
     obj.button20:setParent(obj.layout54);
     obj.button20:setLeft(300);
     obj.button20:setTop(3);
@@ -3267,12 +3267,12 @@ function newfrmFichaSSF()
     obj.button20:setText("R");
     obj.button20:setName("button20");
 
-    obj.dataLink45 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink45 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink45:setParent(obj.layout54);
     obj.dataLink45:setFields({'atr_1_5', 'dificuldade_1_5', 'bonus_1_5', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink45:setName("dataLink45");
 
-    obj.layout55 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout55 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout55:setParent(obj.layout49);
     obj.layout55:setLeft(0);
     obj.layout55:setTop(155);
@@ -3280,7 +3280,7 @@ function newfrmFichaSSF()
     obj.layout55:setHeight(25);
     obj.layout55:setName("layout55");
 
-    obj.edit61 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit61 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit61:setParent(obj.layout55);
     obj.edit61:setLeft(5);
     obj.edit61:setTop(0);
@@ -3289,13 +3289,13 @@ function newfrmFichaSSF()
     obj.edit61:setField("pericia_1_6");
     obj.edit61:setName("edit61");
 
-    obj.dataLink46 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink46 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink46:setParent(obj.layout55);
     obj.dataLink46:setField("pericia_1_6");
     obj.dataLink46:setDefaultValue("Acrobacia");
     obj.dataLink46:setName("dataLink46");
 
-    obj.rectangle53 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle53 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle53:setParent(obj.layout55);
     obj.rectangle53:setLeft(90);
     obj.rectangle53:setTop(0);
@@ -3306,7 +3306,7 @@ function newfrmFichaSSF()
     obj.rectangle53:setStrokeSize(1);
     obj.rectangle53:setName("rectangle53");
 
-    obj.label99 = gui.fromHandle(_obj_newObject("label"));
+    obj.label99 = GUI.fromHandle(_obj_newObject("label"));
     obj.label99:setParent(obj.layout55);
     obj.label99:setLeft(90);
     obj.label99:setTop(3);
@@ -3316,7 +3316,7 @@ function newfrmFichaSSF()
     obj.label99:setHorzTextAlign("center");
     obj.label99:setName("label99");
 
-    obj.comboBox13 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox13 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox13:setParent(obj.layout55);
     obj.comboBox13:setLeft(130);
     obj.comboBox13:setTop(0);
@@ -3327,13 +3327,13 @@ function newfrmFichaSSF()
     obj.comboBox13:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox13:setName("comboBox13");
 
-    obj.dataLink47 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink47 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink47:setParent(obj.layout55);
     obj.dataLink47:setField("atr_1_6");
     obj.dataLink47:setDefaultValue("DX");
     obj.dataLink47:setName("dataLink47");
 
-    obj.label100 = gui.fromHandle(_obj_newObject("label"));
+    obj.label100 = GUI.fromHandle(_obj_newObject("label"));
     obj.label100:setParent(obj.layout55);
     obj.label100:setLeft(180);
     obj.label100:setTop(3);
@@ -3343,7 +3343,7 @@ function newfrmFichaSSF()
     obj.label100:setHorzTextAlign("center");
     obj.label100:setName("label100");
 
-    obj.edit62 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit62 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit62:setParent(obj.layout55);
     obj.edit62:setLeft(190);
     obj.edit62:setTop(0);
@@ -3353,7 +3353,7 @@ function newfrmFichaSSF()
     obj.edit62:setField("bonus_1_6");
     obj.edit62:setName("edit62");
 
-    obj.comboBox14 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox14 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox14:setParent(obj.layout55);
     obj.comboBox14:setLeft(220);
     obj.comboBox14:setTop(0);
@@ -3364,13 +3364,13 @@ function newfrmFichaSSF()
     obj.comboBox14:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox14:setName("comboBox14");
 
-    obj.dataLink48 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink48 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink48:setParent(obj.layout55);
     obj.dataLink48:setField("dificuldade_1_6");
     obj.dataLink48:setDefaultValue("D");
     obj.dataLink48:setName("dataLink48");
 
-    obj.rectangle54 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle54 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle54:setParent(obj.layout55);
     obj.rectangle54:setLeft(275);
     obj.rectangle54:setTop(0);
@@ -3381,7 +3381,7 @@ function newfrmFichaSSF()
     obj.rectangle54:setStrokeSize(1);
     obj.rectangle54:setName("rectangle54");
 
-    obj.label101 = gui.fromHandle(_obj_newObject("label"));
+    obj.label101 = GUI.fromHandle(_obj_newObject("label"));
     obj.label101:setParent(obj.layout55);
     obj.label101:setLeft(275);
     obj.label101:setTop(3);
@@ -3391,7 +3391,7 @@ function newfrmFichaSSF()
     obj.label101:setHorzTextAlign("center");
     obj.label101:setName("label101");
 
-    obj.button21 = gui.fromHandle(_obj_newObject("button"));
+    obj.button21 = GUI.fromHandle(_obj_newObject("button"));
     obj.button21:setParent(obj.layout55);
     obj.button21:setLeft(300);
     obj.button21:setTop(3);
@@ -3400,12 +3400,12 @@ function newfrmFichaSSF()
     obj.button21:setText("R");
     obj.button21:setName("button21");
 
-    obj.dataLink49 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink49 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink49:setParent(obj.layout55);
     obj.dataLink49:setFields({'atr_1_6', 'dificuldade_1_6', 'bonus_1_6', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink49:setName("dataLink49");
 
-    obj.layout56 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout56 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout56:setParent(obj.layout49);
     obj.layout56:setLeft(0);
     obj.layout56:setTop(180);
@@ -3413,7 +3413,7 @@ function newfrmFichaSSF()
     obj.layout56:setHeight(25);
     obj.layout56:setName("layout56");
 
-    obj.edit63 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit63 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit63:setParent(obj.layout56);
     obj.edit63:setLeft(5);
     obj.edit63:setTop(0);
@@ -3422,13 +3422,13 @@ function newfrmFichaSSF()
     obj.edit63:setField("pericia_1_7");
     obj.edit63:setName("edit63");
 
-    obj.dataLink50 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink50 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink50:setParent(obj.layout56);
     obj.dataLink50:setField("pericia_1_7");
     obj.dataLink50:setDefaultValue("Bloqueio Mental");
     obj.dataLink50:setName("dataLink50");
 
-    obj.rectangle55 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle55 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle55:setParent(obj.layout56);
     obj.rectangle55:setLeft(90);
     obj.rectangle55:setTop(0);
@@ -3439,7 +3439,7 @@ function newfrmFichaSSF()
     obj.rectangle55:setStrokeSize(1);
     obj.rectangle55:setName("rectangle55");
 
-    obj.label102 = gui.fromHandle(_obj_newObject("label"));
+    obj.label102 = GUI.fromHandle(_obj_newObject("label"));
     obj.label102:setParent(obj.layout56);
     obj.label102:setLeft(90);
     obj.label102:setTop(3);
@@ -3449,7 +3449,7 @@ function newfrmFichaSSF()
     obj.label102:setHorzTextAlign("center");
     obj.label102:setName("label102");
 
-    obj.comboBox15 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox15 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox15:setParent(obj.layout56);
     obj.comboBox15:setLeft(130);
     obj.comboBox15:setTop(0);
@@ -3460,13 +3460,13 @@ function newfrmFichaSSF()
     obj.comboBox15:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox15:setName("comboBox15");
 
-    obj.dataLink51 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink51 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink51:setParent(obj.layout56);
     obj.dataLink51:setField("atr_1_7");
     obj.dataLink51:setDefaultValue("VT");
     obj.dataLink51:setName("dataLink51");
 
-    obj.label103 = gui.fromHandle(_obj_newObject("label"));
+    obj.label103 = GUI.fromHandle(_obj_newObject("label"));
     obj.label103:setParent(obj.layout56);
     obj.label103:setLeft(180);
     obj.label103:setTop(3);
@@ -3476,7 +3476,7 @@ function newfrmFichaSSF()
     obj.label103:setHorzTextAlign("center");
     obj.label103:setName("label103");
 
-    obj.edit64 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit64 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit64:setParent(obj.layout56);
     obj.edit64:setLeft(190);
     obj.edit64:setTop(0);
@@ -3486,7 +3486,7 @@ function newfrmFichaSSF()
     obj.edit64:setField("bonus_1_7");
     obj.edit64:setName("edit64");
 
-    obj.comboBox16 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox16 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox16:setParent(obj.layout56);
     obj.comboBox16:setLeft(220);
     obj.comboBox16:setTop(0);
@@ -3497,13 +3497,13 @@ function newfrmFichaSSF()
     obj.comboBox16:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox16:setName("comboBox16");
 
-    obj.dataLink52 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink52 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink52:setParent(obj.layout56);
     obj.dataLink52:setField("dificuldade_1_7");
     obj.dataLink52:setDefaultValue("M");
     obj.dataLink52:setName("dataLink52");
 
-    obj.rectangle56 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle56 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle56:setParent(obj.layout56);
     obj.rectangle56:setLeft(275);
     obj.rectangle56:setTop(0);
@@ -3514,7 +3514,7 @@ function newfrmFichaSSF()
     obj.rectangle56:setStrokeSize(1);
     obj.rectangle56:setName("rectangle56");
 
-    obj.label104 = gui.fromHandle(_obj_newObject("label"));
+    obj.label104 = GUI.fromHandle(_obj_newObject("label"));
     obj.label104:setParent(obj.layout56);
     obj.label104:setLeft(275);
     obj.label104:setTop(3);
@@ -3524,7 +3524,7 @@ function newfrmFichaSSF()
     obj.label104:setHorzTextAlign("center");
     obj.label104:setName("label104");
 
-    obj.button22 = gui.fromHandle(_obj_newObject("button"));
+    obj.button22 = GUI.fromHandle(_obj_newObject("button"));
     obj.button22:setParent(obj.layout56);
     obj.button22:setLeft(300);
     obj.button22:setTop(3);
@@ -3533,12 +3533,12 @@ function newfrmFichaSSF()
     obj.button22:setText("R");
     obj.button22:setName("button22");
 
-    obj.dataLink53 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink53 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink53:setParent(obj.layout56);
     obj.dataLink53:setFields({'atr_1_7', 'dificuldade_1_7', 'bonus_1_7', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink53:setName("dataLink53");
 
-    obj.layout57 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout57 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout57:setParent(obj.layout49);
     obj.layout57:setLeft(0);
     obj.layout57:setTop(205);
@@ -3546,7 +3546,7 @@ function newfrmFichaSSF()
     obj.layout57:setHeight(25);
     obj.layout57:setName("layout57");
 
-    obj.edit65 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit65 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit65:setParent(obj.layout57);
     obj.edit65:setLeft(5);
     obj.edit65:setTop(0);
@@ -3555,13 +3555,13 @@ function newfrmFichaSSF()
     obj.edit65:setField("pericia_1_8");
     obj.edit65:setName("edit65");
 
-    obj.dataLink54 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink54 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink54:setParent(obj.layout57);
     obj.dataLink54:setField("pericia_1_8");
     obj.dataLink54:setDefaultValue("Briga");
     obj.dataLink54:setName("dataLink54");
 
-    obj.rectangle57 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle57 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle57:setParent(obj.layout57);
     obj.rectangle57:setLeft(90);
     obj.rectangle57:setTop(0);
@@ -3572,7 +3572,7 @@ function newfrmFichaSSF()
     obj.rectangle57:setStrokeSize(1);
     obj.rectangle57:setName("rectangle57");
 
-    obj.label105 = gui.fromHandle(_obj_newObject("label"));
+    obj.label105 = GUI.fromHandle(_obj_newObject("label"));
     obj.label105:setParent(obj.layout57);
     obj.label105:setLeft(90);
     obj.label105:setTop(3);
@@ -3582,7 +3582,7 @@ function newfrmFichaSSF()
     obj.label105:setHorzTextAlign("center");
     obj.label105:setName("label105");
 
-    obj.comboBox17 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox17 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox17:setParent(obj.layout57);
     obj.comboBox17:setLeft(130);
     obj.comboBox17:setTop(0);
@@ -3593,13 +3593,13 @@ function newfrmFichaSSF()
     obj.comboBox17:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox17:setName("comboBox17");
 
-    obj.dataLink55 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink55 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink55:setParent(obj.layout57);
     obj.dataLink55:setField("atr_1_8");
     obj.dataLink55:setDefaultValue("DX");
     obj.dataLink55:setName("dataLink55");
 
-    obj.label106 = gui.fromHandle(_obj_newObject("label"));
+    obj.label106 = GUI.fromHandle(_obj_newObject("label"));
     obj.label106:setParent(obj.layout57);
     obj.label106:setLeft(180);
     obj.label106:setTop(3);
@@ -3609,7 +3609,7 @@ function newfrmFichaSSF()
     obj.label106:setHorzTextAlign("center");
     obj.label106:setName("label106");
 
-    obj.edit66 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit66 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit66:setParent(obj.layout57);
     obj.edit66:setLeft(190);
     obj.edit66:setTop(0);
@@ -3619,7 +3619,7 @@ function newfrmFichaSSF()
     obj.edit66:setField("bonus_1_8");
     obj.edit66:setName("edit66");
 
-    obj.comboBox18 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox18 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox18:setParent(obj.layout57);
     obj.comboBox18:setLeft(220);
     obj.comboBox18:setTop(0);
@@ -3630,13 +3630,13 @@ function newfrmFichaSSF()
     obj.comboBox18:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox18:setName("comboBox18");
 
-    obj.dataLink56 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink56 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink56:setParent(obj.layout57);
     obj.dataLink56:setField("dificuldade_1_8");
     obj.dataLink56:setDefaultValue("F");
     obj.dataLink56:setName("dataLink56");
 
-    obj.rectangle58 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle58 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle58:setParent(obj.layout57);
     obj.rectangle58:setLeft(275);
     obj.rectangle58:setTop(0);
@@ -3647,7 +3647,7 @@ function newfrmFichaSSF()
     obj.rectangle58:setStrokeSize(1);
     obj.rectangle58:setName("rectangle58");
 
-    obj.label107 = gui.fromHandle(_obj_newObject("label"));
+    obj.label107 = GUI.fromHandle(_obj_newObject("label"));
     obj.label107:setParent(obj.layout57);
     obj.label107:setLeft(275);
     obj.label107:setTop(3);
@@ -3657,7 +3657,7 @@ function newfrmFichaSSF()
     obj.label107:setHorzTextAlign("center");
     obj.label107:setName("label107");
 
-    obj.button23 = gui.fromHandle(_obj_newObject("button"));
+    obj.button23 = GUI.fromHandle(_obj_newObject("button"));
     obj.button23:setParent(obj.layout57);
     obj.button23:setLeft(300);
     obj.button23:setTop(3);
@@ -3666,12 +3666,12 @@ function newfrmFichaSSF()
     obj.button23:setText("R");
     obj.button23:setName("button23");
 
-    obj.dataLink57 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink57 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink57:setParent(obj.layout57);
     obj.dataLink57:setFields({'atr_1_8', 'dificuldade_1_8', 'bonus_1_8', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink57:setName("dataLink57");
 
-    obj.layout58 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout58 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout58:setParent(obj.layout49);
     obj.layout58:setLeft(0);
     obj.layout58:setTop(230);
@@ -3679,7 +3679,7 @@ function newfrmFichaSSF()
     obj.layout58:setHeight(25);
     obj.layout58:setName("layout58");
 
-    obj.edit67 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit67 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit67:setParent(obj.layout58);
     obj.edit67:setLeft(5);
     obj.edit67:setTop(0);
@@ -3688,13 +3688,13 @@ function newfrmFichaSSF()
     obj.edit67:setField("pericia_1_9");
     obj.edit67:setName("edit67");
 
-    obj.dataLink58 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink58 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink58:setParent(obj.layout58);
     obj.dataLink58:setField("pericia_1_9");
     obj.dataLink58:setDefaultValue("Caratê");
     obj.dataLink58:setName("dataLink58");
 
-    obj.rectangle59 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle59 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle59:setParent(obj.layout58);
     obj.rectangle59:setLeft(90);
     obj.rectangle59:setTop(0);
@@ -3705,7 +3705,7 @@ function newfrmFichaSSF()
     obj.rectangle59:setStrokeSize(1);
     obj.rectangle59:setName("rectangle59");
 
-    obj.label108 = gui.fromHandle(_obj_newObject("label"));
+    obj.label108 = GUI.fromHandle(_obj_newObject("label"));
     obj.label108:setParent(obj.layout58);
     obj.label108:setLeft(90);
     obj.label108:setTop(3);
@@ -3715,7 +3715,7 @@ function newfrmFichaSSF()
     obj.label108:setHorzTextAlign("center");
     obj.label108:setName("label108");
 
-    obj.comboBox19 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox19 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox19:setParent(obj.layout58);
     obj.comboBox19:setLeft(130);
     obj.comboBox19:setTop(0);
@@ -3726,13 +3726,13 @@ function newfrmFichaSSF()
     obj.comboBox19:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox19:setName("comboBox19");
 
-    obj.dataLink59 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink59 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink59:setParent(obj.layout58);
     obj.dataLink59:setField("atr_1_9");
     obj.dataLink59:setDefaultValue("DX");
     obj.dataLink59:setName("dataLink59");
 
-    obj.label109 = gui.fromHandle(_obj_newObject("label"));
+    obj.label109 = GUI.fromHandle(_obj_newObject("label"));
     obj.label109:setParent(obj.layout58);
     obj.label109:setLeft(180);
     obj.label109:setTop(3);
@@ -3742,7 +3742,7 @@ function newfrmFichaSSF()
     obj.label109:setHorzTextAlign("center");
     obj.label109:setName("label109");
 
-    obj.edit68 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit68 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit68:setParent(obj.layout58);
     obj.edit68:setLeft(190);
     obj.edit68:setTop(0);
@@ -3752,7 +3752,7 @@ function newfrmFichaSSF()
     obj.edit68:setField("bonus_1_9");
     obj.edit68:setName("edit68");
 
-    obj.comboBox20 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox20 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox20:setParent(obj.layout58);
     obj.comboBox20:setLeft(220);
     obj.comboBox20:setTop(0);
@@ -3763,13 +3763,13 @@ function newfrmFichaSSF()
     obj.comboBox20:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox20:setName("comboBox20");
 
-    obj.dataLink60 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink60 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink60:setParent(obj.layout58);
     obj.dataLink60:setField("dificuldade_1_9");
     obj.dataLink60:setDefaultValue("D");
     obj.dataLink60:setName("dataLink60");
 
-    obj.rectangle60 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle60 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle60:setParent(obj.layout58);
     obj.rectangle60:setLeft(275);
     obj.rectangle60:setTop(0);
@@ -3780,7 +3780,7 @@ function newfrmFichaSSF()
     obj.rectangle60:setStrokeSize(1);
     obj.rectangle60:setName("rectangle60");
 
-    obj.label110 = gui.fromHandle(_obj_newObject("label"));
+    obj.label110 = GUI.fromHandle(_obj_newObject("label"));
     obj.label110:setParent(obj.layout58);
     obj.label110:setLeft(275);
     obj.label110:setTop(3);
@@ -3790,7 +3790,7 @@ function newfrmFichaSSF()
     obj.label110:setHorzTextAlign("center");
     obj.label110:setName("label110");
 
-    obj.button24 = gui.fromHandle(_obj_newObject("button"));
+    obj.button24 = GUI.fromHandle(_obj_newObject("button"));
     obj.button24:setParent(obj.layout58);
     obj.button24:setLeft(300);
     obj.button24:setTop(3);
@@ -3799,12 +3799,12 @@ function newfrmFichaSSF()
     obj.button24:setText("R");
     obj.button24:setName("button24");
 
-    obj.dataLink61 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink61 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink61:setParent(obj.layout58);
     obj.dataLink61:setFields({'atr_1_9', 'dificuldade_1_9', 'bonus_1_9', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink61:setName("dataLink61");
 
-    obj.layout59 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout59 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout59:setParent(obj.layout49);
     obj.layout59:setLeft(0);
     obj.layout59:setTop(255);
@@ -3812,7 +3812,7 @@ function newfrmFichaSSF()
     obj.layout59:setHeight(25);
     obj.layout59:setName("layout59");
 
-    obj.edit69 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit69 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit69:setParent(obj.layout59);
     obj.edit69:setLeft(5);
     obj.edit69:setTop(0);
@@ -3821,13 +3821,13 @@ function newfrmFichaSSF()
     obj.edit69:setField("pericia_1_10");
     obj.edit69:setName("edit69");
 
-    obj.dataLink62 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink62 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink62:setParent(obj.layout59);
     obj.dataLink62:setField("pericia_1_10");
     obj.dataLink62:setDefaultValue("Cativar");
     obj.dataLink62:setName("dataLink62");
 
-    obj.rectangle61 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle61 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle61:setParent(obj.layout59);
     obj.rectangle61:setLeft(90);
     obj.rectangle61:setTop(0);
@@ -3838,7 +3838,7 @@ function newfrmFichaSSF()
     obj.rectangle61:setStrokeSize(1);
     obj.rectangle61:setName("rectangle61");
 
-    obj.label111 = gui.fromHandle(_obj_newObject("label"));
+    obj.label111 = GUI.fromHandle(_obj_newObject("label"));
     obj.label111:setParent(obj.layout59);
     obj.label111:setLeft(90);
     obj.label111:setTop(3);
@@ -3848,7 +3848,7 @@ function newfrmFichaSSF()
     obj.label111:setHorzTextAlign("center");
     obj.label111:setName("label111");
 
-    obj.comboBox21 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox21 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox21:setParent(obj.layout59);
     obj.comboBox21:setLeft(130);
     obj.comboBox21:setTop(0);
@@ -3859,13 +3859,13 @@ function newfrmFichaSSF()
     obj.comboBox21:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox21:setName("comboBox21");
 
-    obj.dataLink63 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink63 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink63:setParent(obj.layout59);
     obj.dataLink63:setField("atr_1_10");
     obj.dataLink63:setDefaultValue("VT");
     obj.dataLink63:setName("dataLink63");
 
-    obj.label112 = gui.fromHandle(_obj_newObject("label"));
+    obj.label112 = GUI.fromHandle(_obj_newObject("label"));
     obj.label112:setParent(obj.layout59);
     obj.label112:setLeft(180);
     obj.label112:setTop(3);
@@ -3875,7 +3875,7 @@ function newfrmFichaSSF()
     obj.label112:setHorzTextAlign("center");
     obj.label112:setName("label112");
 
-    obj.edit70 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit70 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit70:setParent(obj.layout59);
     obj.edit70:setLeft(190);
     obj.edit70:setTop(0);
@@ -3885,7 +3885,7 @@ function newfrmFichaSSF()
     obj.edit70:setField("bonus_1_10");
     obj.edit70:setName("edit70");
 
-    obj.comboBox22 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox22 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox22:setParent(obj.layout59);
     obj.comboBox22:setLeft(220);
     obj.comboBox22:setTop(0);
@@ -3896,13 +3896,13 @@ function newfrmFichaSSF()
     obj.comboBox22:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox22:setName("comboBox22");
 
-    obj.dataLink64 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink64 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink64:setParent(obj.layout59);
     obj.dataLink64:setField("dificuldade_1_10");
     obj.dataLink64:setDefaultValue("D");
     obj.dataLink64:setName("dataLink64");
 
-    obj.rectangle62 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle62 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle62:setParent(obj.layout59);
     obj.rectangle62:setLeft(275);
     obj.rectangle62:setTop(0);
@@ -3913,7 +3913,7 @@ function newfrmFichaSSF()
     obj.rectangle62:setStrokeSize(1);
     obj.rectangle62:setName("rectangle62");
 
-    obj.label113 = gui.fromHandle(_obj_newObject("label"));
+    obj.label113 = GUI.fromHandle(_obj_newObject("label"));
     obj.label113:setParent(obj.layout59);
     obj.label113:setLeft(275);
     obj.label113:setTop(3);
@@ -3923,7 +3923,7 @@ function newfrmFichaSSF()
     obj.label113:setHorzTextAlign("center");
     obj.label113:setName("label113");
 
-    obj.button25 = gui.fromHandle(_obj_newObject("button"));
+    obj.button25 = GUI.fromHandle(_obj_newObject("button"));
     obj.button25:setParent(obj.layout59);
     obj.button25:setLeft(300);
     obj.button25:setTop(3);
@@ -3932,12 +3932,12 @@ function newfrmFichaSSF()
     obj.button25:setText("R");
     obj.button25:setName("button25");
 
-    obj.dataLink65 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink65 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink65:setParent(obj.layout59);
     obj.dataLink65:setFields({'atr_1_10', 'dificuldade_1_10', 'bonus_1_10', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink65:setName("dataLink65");
 
-    obj.layout60 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout60 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout60:setParent(obj.layout49);
     obj.layout60:setLeft(0);
     obj.layout60:setTop(280);
@@ -3945,7 +3945,7 @@ function newfrmFichaSSF()
     obj.layout60:setHeight(25);
     obj.layout60:setName("layout60");
 
-    obj.edit71 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit71 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit71:setParent(obj.layout60);
     obj.edit71:setLeft(5);
     obj.edit71:setTop(0);
@@ -3954,13 +3954,13 @@ function newfrmFichaSSF()
     obj.edit71:setField("pericia_1_11");
     obj.edit71:setName("edit71");
 
-    obj.dataLink66 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink66 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink66:setParent(obj.layout60);
     obj.dataLink66:setField("pericia_1_11");
     obj.dataLink66:setDefaultValue("Cartografia");
     obj.dataLink66:setName("dataLink66");
 
-    obj.rectangle63 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle63 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle63:setParent(obj.layout60);
     obj.rectangle63:setLeft(90);
     obj.rectangle63:setTop(0);
@@ -3971,7 +3971,7 @@ function newfrmFichaSSF()
     obj.rectangle63:setStrokeSize(1);
     obj.rectangle63:setName("rectangle63");
 
-    obj.label114 = gui.fromHandle(_obj_newObject("label"));
+    obj.label114 = GUI.fromHandle(_obj_newObject("label"));
     obj.label114:setParent(obj.layout60);
     obj.label114:setLeft(90);
     obj.label114:setTop(3);
@@ -3981,7 +3981,7 @@ function newfrmFichaSSF()
     obj.label114:setHorzTextAlign("center");
     obj.label114:setName("label114");
 
-    obj.comboBox23 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox23 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox23:setParent(obj.layout60);
     obj.comboBox23:setLeft(130);
     obj.comboBox23:setTop(0);
@@ -3992,13 +3992,13 @@ function newfrmFichaSSF()
     obj.comboBox23:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox23:setName("comboBox23");
 
-    obj.dataLink67 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink67 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink67:setParent(obj.layout60);
     obj.dataLink67:setField("atr_1_11");
     obj.dataLink67:setDefaultValue("IQ");
     obj.dataLink67:setName("dataLink67");
 
-    obj.label115 = gui.fromHandle(_obj_newObject("label"));
+    obj.label115 = GUI.fromHandle(_obj_newObject("label"));
     obj.label115:setParent(obj.layout60);
     obj.label115:setLeft(180);
     obj.label115:setTop(3);
@@ -4008,7 +4008,7 @@ function newfrmFichaSSF()
     obj.label115:setHorzTextAlign("center");
     obj.label115:setName("label115");
 
-    obj.edit72 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit72 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit72:setParent(obj.layout60);
     obj.edit72:setLeft(190);
     obj.edit72:setTop(0);
@@ -4018,7 +4018,7 @@ function newfrmFichaSSF()
     obj.edit72:setField("bonus_1_11");
     obj.edit72:setName("edit72");
 
-    obj.comboBox24 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox24 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox24:setParent(obj.layout60);
     obj.comboBox24:setLeft(220);
     obj.comboBox24:setTop(0);
@@ -4029,13 +4029,13 @@ function newfrmFichaSSF()
     obj.comboBox24:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox24:setName("comboBox24");
 
-    obj.dataLink68 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink68 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink68:setParent(obj.layout60);
     obj.dataLink68:setField("dificuldade_1_11");
     obj.dataLink68:setDefaultValue("M");
     obj.dataLink68:setName("dataLink68");
 
-    obj.rectangle64 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle64 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle64:setParent(obj.layout60);
     obj.rectangle64:setLeft(275);
     obj.rectangle64:setTop(0);
@@ -4046,7 +4046,7 @@ function newfrmFichaSSF()
     obj.rectangle64:setStrokeSize(1);
     obj.rectangle64:setName("rectangle64");
 
-    obj.label116 = gui.fromHandle(_obj_newObject("label"));
+    obj.label116 = GUI.fromHandle(_obj_newObject("label"));
     obj.label116:setParent(obj.layout60);
     obj.label116:setLeft(275);
     obj.label116:setTop(3);
@@ -4056,7 +4056,7 @@ function newfrmFichaSSF()
     obj.label116:setHorzTextAlign("center");
     obj.label116:setName("label116");
 
-    obj.button26 = gui.fromHandle(_obj_newObject("button"));
+    obj.button26 = GUI.fromHandle(_obj_newObject("button"));
     obj.button26:setParent(obj.layout60);
     obj.button26:setLeft(300);
     obj.button26:setTop(3);
@@ -4065,12 +4065,12 @@ function newfrmFichaSSF()
     obj.button26:setText("R");
     obj.button26:setName("button26");
 
-    obj.dataLink69 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink69 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink69:setParent(obj.layout60);
     obj.dataLink69:setFields({'atr_1_11', 'dificuldade_1_11', 'bonus_1_11', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink69:setName("dataLink69");
 
-    obj.layout61 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout61 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout61:setParent(obj.layout49);
     obj.layout61:setLeft(0);
     obj.layout61:setTop(305);
@@ -4078,7 +4078,7 @@ function newfrmFichaSSF()
     obj.layout61:setHeight(25);
     obj.layout61:setName("layout61");
 
-    obj.edit73 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit73 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit73:setParent(obj.layout61);
     obj.edit73:setLeft(5);
     obj.edit73:setTop(0);
@@ -4087,13 +4087,13 @@ function newfrmFichaSSF()
     obj.edit73:setField("pericia_1_12");
     obj.edit73:setName("edit73");
 
-    obj.dataLink70 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink70 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink70:setParent(obj.layout61);
     obj.dataLink70:setField("pericia_1_12");
     obj.dataLink70:setDefaultValue("Canto");
     obj.dataLink70:setName("dataLink70");
 
-    obj.rectangle65 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle65 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle65:setParent(obj.layout61);
     obj.rectangle65:setLeft(90);
     obj.rectangle65:setTop(0);
@@ -4104,7 +4104,7 @@ function newfrmFichaSSF()
     obj.rectangle65:setStrokeSize(1);
     obj.rectangle65:setName("rectangle65");
 
-    obj.label117 = gui.fromHandle(_obj_newObject("label"));
+    obj.label117 = GUI.fromHandle(_obj_newObject("label"));
     obj.label117:setParent(obj.layout61);
     obj.label117:setLeft(90);
     obj.label117:setTop(3);
@@ -4114,7 +4114,7 @@ function newfrmFichaSSF()
     obj.label117:setHorzTextAlign("center");
     obj.label117:setName("label117");
 
-    obj.comboBox25 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox25 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox25:setParent(obj.layout61);
     obj.comboBox25:setLeft(130);
     obj.comboBox25:setTop(0);
@@ -4125,13 +4125,13 @@ function newfrmFichaSSF()
     obj.comboBox25:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox25:setName("comboBox25");
 
-    obj.dataLink71 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink71 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink71:setParent(obj.layout61);
     obj.dataLink71:setField("atr_1_12");
     obj.dataLink71:setDefaultValue("HT");
     obj.dataLink71:setName("dataLink71");
 
-    obj.label118 = gui.fromHandle(_obj_newObject("label"));
+    obj.label118 = GUI.fromHandle(_obj_newObject("label"));
     obj.label118:setParent(obj.layout61);
     obj.label118:setLeft(180);
     obj.label118:setTop(3);
@@ -4141,7 +4141,7 @@ function newfrmFichaSSF()
     obj.label118:setHorzTextAlign("center");
     obj.label118:setName("label118");
 
-    obj.edit74 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit74 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit74:setParent(obj.layout61);
     obj.edit74:setLeft(190);
     obj.edit74:setTop(0);
@@ -4151,7 +4151,7 @@ function newfrmFichaSSF()
     obj.edit74:setField("bonus_1_12");
     obj.edit74:setName("edit74");
 
-    obj.comboBox26 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox26 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox26:setParent(obj.layout61);
     obj.comboBox26:setLeft(220);
     obj.comboBox26:setTop(0);
@@ -4162,13 +4162,13 @@ function newfrmFichaSSF()
     obj.comboBox26:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox26:setName("comboBox26");
 
-    obj.dataLink72 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink72 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink72:setParent(obj.layout61);
     obj.dataLink72:setField("dificuldade_1_12");
     obj.dataLink72:setDefaultValue("F");
     obj.dataLink72:setName("dataLink72");
 
-    obj.rectangle66 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle66 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle66:setParent(obj.layout61);
     obj.rectangle66:setLeft(275);
     obj.rectangle66:setTop(0);
@@ -4179,7 +4179,7 @@ function newfrmFichaSSF()
     obj.rectangle66:setStrokeSize(1);
     obj.rectangle66:setName("rectangle66");
 
-    obj.label119 = gui.fromHandle(_obj_newObject("label"));
+    obj.label119 = GUI.fromHandle(_obj_newObject("label"));
     obj.label119:setParent(obj.layout61);
     obj.label119:setLeft(275);
     obj.label119:setTop(3);
@@ -4189,7 +4189,7 @@ function newfrmFichaSSF()
     obj.label119:setHorzTextAlign("center");
     obj.label119:setName("label119");
 
-    obj.button27 = gui.fromHandle(_obj_newObject("button"));
+    obj.button27 = GUI.fromHandle(_obj_newObject("button"));
     obj.button27:setParent(obj.layout61);
     obj.button27:setLeft(300);
     obj.button27:setTop(3);
@@ -4198,12 +4198,12 @@ function newfrmFichaSSF()
     obj.button27:setText("R");
     obj.button27:setName("button27");
 
-    obj.dataLink73 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink73 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink73:setParent(obj.layout61);
     obj.dataLink73:setFields({'atr_1_12', 'dificuldade_1_12', 'bonus_1_12', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink73:setName("dataLink73");
 
-    obj.layout62 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout62 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout62:setParent(obj.layout49);
     obj.layout62:setLeft(0);
     obj.layout62:setTop(330);
@@ -4211,7 +4211,7 @@ function newfrmFichaSSF()
     obj.layout62:setHeight(25);
     obj.layout62:setName("layout62");
 
-    obj.edit75 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit75 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit75:setParent(obj.layout62);
     obj.edit75:setLeft(5);
     obj.edit75:setTop(0);
@@ -4220,13 +4220,13 @@ function newfrmFichaSSF()
     obj.edit75:setField("pericia_1_13");
     obj.edit75:setName("edit75");
 
-    obj.dataLink74 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink74 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink74:setParent(obj.layout62);
     obj.dataLink74:setField("pericia_1_13");
     obj.dataLink74:setDefaultValue("Controle Corporal");
     obj.dataLink74:setName("dataLink74");
 
-    obj.rectangle67 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle67 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle67:setParent(obj.layout62);
     obj.rectangle67:setLeft(90);
     obj.rectangle67:setTop(0);
@@ -4237,7 +4237,7 @@ function newfrmFichaSSF()
     obj.rectangle67:setStrokeSize(1);
     obj.rectangle67:setName("rectangle67");
 
-    obj.label120 = gui.fromHandle(_obj_newObject("label"));
+    obj.label120 = GUI.fromHandle(_obj_newObject("label"));
     obj.label120:setParent(obj.layout62);
     obj.label120:setLeft(90);
     obj.label120:setTop(3);
@@ -4247,7 +4247,7 @@ function newfrmFichaSSF()
     obj.label120:setHorzTextAlign("center");
     obj.label120:setName("label120");
 
-    obj.comboBox27 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox27 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox27:setParent(obj.layout62);
     obj.comboBox27:setLeft(130);
     obj.comboBox27:setTop(0);
@@ -4258,13 +4258,13 @@ function newfrmFichaSSF()
     obj.comboBox27:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox27:setName("comboBox27");
 
-    obj.dataLink75 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink75 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink75:setParent(obj.layout62);
     obj.dataLink75:setField("atr_1_13");
     obj.dataLink75:setDefaultValue("HT");
     obj.dataLink75:setName("dataLink75");
 
-    obj.label121 = gui.fromHandle(_obj_newObject("label"));
+    obj.label121 = GUI.fromHandle(_obj_newObject("label"));
     obj.label121:setParent(obj.layout62);
     obj.label121:setLeft(180);
     obj.label121:setTop(3);
@@ -4274,7 +4274,7 @@ function newfrmFichaSSF()
     obj.label121:setHorzTextAlign("center");
     obj.label121:setName("label121");
 
-    obj.edit76 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit76 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit76:setParent(obj.layout62);
     obj.edit76:setLeft(190);
     obj.edit76:setTop(0);
@@ -4284,7 +4284,7 @@ function newfrmFichaSSF()
     obj.edit76:setField("bonus_1_13");
     obj.edit76:setName("edit76");
 
-    obj.comboBox28 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox28 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox28:setParent(obj.layout62);
     obj.comboBox28:setLeft(220);
     obj.comboBox28:setTop(0);
@@ -4295,13 +4295,13 @@ function newfrmFichaSSF()
     obj.comboBox28:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox28:setName("comboBox28");
 
-    obj.dataLink76 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink76 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink76:setParent(obj.layout62);
     obj.dataLink76:setField("dificuldade_1_13");
     obj.dataLink76:setDefaultValue("MD");
     obj.dataLink76:setName("dataLink76");
 
-    obj.rectangle68 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle68 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle68:setParent(obj.layout62);
     obj.rectangle68:setLeft(275);
     obj.rectangle68:setTop(0);
@@ -4312,7 +4312,7 @@ function newfrmFichaSSF()
     obj.rectangle68:setStrokeSize(1);
     obj.rectangle68:setName("rectangle68");
 
-    obj.label122 = gui.fromHandle(_obj_newObject("label"));
+    obj.label122 = GUI.fromHandle(_obj_newObject("label"));
     obj.label122:setParent(obj.layout62);
     obj.label122:setLeft(275);
     obj.label122:setTop(3);
@@ -4322,7 +4322,7 @@ function newfrmFichaSSF()
     obj.label122:setHorzTextAlign("center");
     obj.label122:setName("label122");
 
-    obj.button28 = gui.fromHandle(_obj_newObject("button"));
+    obj.button28 = GUI.fromHandle(_obj_newObject("button"));
     obj.button28:setParent(obj.layout62);
     obj.button28:setLeft(300);
     obj.button28:setTop(3);
@@ -4331,12 +4331,12 @@ function newfrmFichaSSF()
     obj.button28:setText("R");
     obj.button28:setName("button28");
 
-    obj.dataLink77 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink77 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink77:setParent(obj.layout62);
     obj.dataLink77:setFields({'atr_1_13', 'dificuldade_1_13', 'bonus_1_13', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink77:setName("dataLink77");
 
-    obj.layout63 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout63 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout63:setParent(obj.layout49);
     obj.layout63:setLeft(0);
     obj.layout63:setTop(355);
@@ -4344,7 +4344,7 @@ function newfrmFichaSSF()
     obj.layout63:setHeight(25);
     obj.layout63:setName("layout63");
 
-    obj.edit77 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit77 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit77:setParent(obj.layout63);
     obj.edit77:setLeft(5);
     obj.edit77:setTop(0);
@@ -4353,13 +4353,13 @@ function newfrmFichaSSF()
     obj.edit77:setField("pericia_1_14");
     obj.edit77:setName("edit77");
 
-    obj.dataLink78 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink78 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink78:setParent(obj.layout63);
     obj.dataLink78:setField("pericia_1_14");
     obj.dataLink78:setDefaultValue("Controle da Respiração");
     obj.dataLink78:setName("dataLink78");
 
-    obj.rectangle69 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle69 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle69:setParent(obj.layout63);
     obj.rectangle69:setLeft(90);
     obj.rectangle69:setTop(0);
@@ -4370,7 +4370,7 @@ function newfrmFichaSSF()
     obj.rectangle69:setStrokeSize(1);
     obj.rectangle69:setName("rectangle69");
 
-    obj.label123 = gui.fromHandle(_obj_newObject("label"));
+    obj.label123 = GUI.fromHandle(_obj_newObject("label"));
     obj.label123:setParent(obj.layout63);
     obj.label123:setLeft(90);
     obj.label123:setTop(3);
@@ -4380,7 +4380,7 @@ function newfrmFichaSSF()
     obj.label123:setHorzTextAlign("center");
     obj.label123:setName("label123");
 
-    obj.comboBox29 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox29 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox29:setParent(obj.layout63);
     obj.comboBox29:setLeft(130);
     obj.comboBox29:setTop(0);
@@ -4391,13 +4391,13 @@ function newfrmFichaSSF()
     obj.comboBox29:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox29:setName("comboBox29");
 
-    obj.dataLink79 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink79 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink79:setParent(obj.layout63);
     obj.dataLink79:setField("atr_1_14");
     obj.dataLink79:setDefaultValue("HT");
     obj.dataLink79:setName("dataLink79");
 
-    obj.label124 = gui.fromHandle(_obj_newObject("label"));
+    obj.label124 = GUI.fromHandle(_obj_newObject("label"));
     obj.label124:setParent(obj.layout63);
     obj.label124:setLeft(180);
     obj.label124:setTop(3);
@@ -4407,7 +4407,7 @@ function newfrmFichaSSF()
     obj.label124:setHorzTextAlign("center");
     obj.label124:setName("label124");
 
-    obj.edit78 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit78 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit78:setParent(obj.layout63);
     obj.edit78:setLeft(190);
     obj.edit78:setTop(0);
@@ -4417,7 +4417,7 @@ function newfrmFichaSSF()
     obj.edit78:setField("bonus_1_14");
     obj.edit78:setName("edit78");
 
-    obj.comboBox30 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox30 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox30:setParent(obj.layout63);
     obj.comboBox30:setLeft(220);
     obj.comboBox30:setTop(0);
@@ -4428,13 +4428,13 @@ function newfrmFichaSSF()
     obj.comboBox30:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox30:setName("comboBox30");
 
-    obj.dataLink80 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink80 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink80:setParent(obj.layout63);
     obj.dataLink80:setField("dificuldade_1_14");
     obj.dataLink80:setDefaultValue("D");
     obj.dataLink80:setName("dataLink80");
 
-    obj.rectangle70 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle70 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle70:setParent(obj.layout63);
     obj.rectangle70:setLeft(275);
     obj.rectangle70:setTop(0);
@@ -4445,7 +4445,7 @@ function newfrmFichaSSF()
     obj.rectangle70:setStrokeSize(1);
     obj.rectangle70:setName("rectangle70");
 
-    obj.label125 = gui.fromHandle(_obj_newObject("label"));
+    obj.label125 = GUI.fromHandle(_obj_newObject("label"));
     obj.label125:setParent(obj.layout63);
     obj.label125:setLeft(275);
     obj.label125:setTop(3);
@@ -4455,7 +4455,7 @@ function newfrmFichaSSF()
     obj.label125:setHorzTextAlign("center");
     obj.label125:setName("label125");
 
-    obj.button29 = gui.fromHandle(_obj_newObject("button"));
+    obj.button29 = GUI.fromHandle(_obj_newObject("button"));
     obj.button29:setParent(obj.layout63);
     obj.button29:setLeft(300);
     obj.button29:setTop(3);
@@ -4464,12 +4464,12 @@ function newfrmFichaSSF()
     obj.button29:setText("R");
     obj.button29:setName("button29");
 
-    obj.dataLink81 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink81 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink81:setParent(obj.layout63);
     obj.dataLink81:setFields({'atr_1_14', 'dificuldade_1_14', 'bonus_1_14', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink81:setName("dataLink81");
 
-    obj.layout64 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout64 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout64:setParent(obj.layout49);
     obj.layout64:setLeft(0);
     obj.layout64:setTop(380);
@@ -4477,7 +4477,7 @@ function newfrmFichaSSF()
     obj.layout64:setHeight(25);
     obj.layout64:setName("layout64");
 
-    obj.edit79 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit79 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit79:setParent(obj.layout64);
     obj.edit79:setLeft(5);
     obj.edit79:setTop(0);
@@ -4486,13 +4486,13 @@ function newfrmFichaSSF()
     obj.edit79:setField("pericia_1_15");
     obj.edit79:setName("edit79");
 
-    obj.dataLink82 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink82 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink82:setParent(obj.layout64);
     obj.dataLink82:setField("pericia_1_15");
     obj.dataLink82:setDefaultValue("Conhecimento de Ervas");
     obj.dataLink82:setName("dataLink82");
 
-    obj.rectangle71 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle71 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle71:setParent(obj.layout64);
     obj.rectangle71:setLeft(90);
     obj.rectangle71:setTop(0);
@@ -4503,7 +4503,7 @@ function newfrmFichaSSF()
     obj.rectangle71:setStrokeSize(1);
     obj.rectangle71:setName("rectangle71");
 
-    obj.label126 = gui.fromHandle(_obj_newObject("label"));
+    obj.label126 = GUI.fromHandle(_obj_newObject("label"));
     obj.label126:setParent(obj.layout64);
     obj.label126:setLeft(90);
     obj.label126:setTop(3);
@@ -4513,7 +4513,7 @@ function newfrmFichaSSF()
     obj.label126:setHorzTextAlign("center");
     obj.label126:setName("label126");
 
-    obj.comboBox31 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox31 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox31:setParent(obj.layout64);
     obj.comboBox31:setLeft(130);
     obj.comboBox31:setTop(0);
@@ -4524,13 +4524,13 @@ function newfrmFichaSSF()
     obj.comboBox31:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox31:setName("comboBox31");
 
-    obj.dataLink83 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink83 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink83:setParent(obj.layout64);
     obj.dataLink83:setField("atr_1_15");
     obj.dataLink83:setDefaultValue("IQ");
     obj.dataLink83:setName("dataLink83");
 
-    obj.label127 = gui.fromHandle(_obj_newObject("label"));
+    obj.label127 = GUI.fromHandle(_obj_newObject("label"));
     obj.label127:setParent(obj.layout64);
     obj.label127:setLeft(180);
     obj.label127:setTop(3);
@@ -4540,7 +4540,7 @@ function newfrmFichaSSF()
     obj.label127:setHorzTextAlign("center");
     obj.label127:setName("label127");
 
-    obj.edit80 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit80 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit80:setParent(obj.layout64);
     obj.edit80:setLeft(190);
     obj.edit80:setTop(0);
@@ -4550,7 +4550,7 @@ function newfrmFichaSSF()
     obj.edit80:setField("bonus_1_15");
     obj.edit80:setName("edit80");
 
-    obj.comboBox32 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox32 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox32:setParent(obj.layout64);
     obj.comboBox32:setLeft(220);
     obj.comboBox32:setTop(0);
@@ -4561,13 +4561,13 @@ function newfrmFichaSSF()
     obj.comboBox32:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox32:setName("comboBox32");
 
-    obj.dataLink84 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink84 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink84:setParent(obj.layout64);
     obj.dataLink84:setField("dificuldade_1_15");
     obj.dataLink84:setDefaultValue("MD");
     obj.dataLink84:setName("dataLink84");
 
-    obj.rectangle72 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle72 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle72:setParent(obj.layout64);
     obj.rectangle72:setLeft(275);
     obj.rectangle72:setTop(0);
@@ -4578,7 +4578,7 @@ function newfrmFichaSSF()
     obj.rectangle72:setStrokeSize(1);
     obj.rectangle72:setName("rectangle72");
 
-    obj.label128 = gui.fromHandle(_obj_newObject("label"));
+    obj.label128 = GUI.fromHandle(_obj_newObject("label"));
     obj.label128:setParent(obj.layout64);
     obj.label128:setLeft(275);
     obj.label128:setTop(3);
@@ -4588,7 +4588,7 @@ function newfrmFichaSSF()
     obj.label128:setHorzTextAlign("center");
     obj.label128:setName("label128");
 
-    obj.button30 = gui.fromHandle(_obj_newObject("button"));
+    obj.button30 = GUI.fromHandle(_obj_newObject("button"));
     obj.button30:setParent(obj.layout64);
     obj.button30:setLeft(300);
     obj.button30:setTop(3);
@@ -4597,12 +4597,12 @@ function newfrmFichaSSF()
     obj.button30:setText("R");
     obj.button30:setName("button30");
 
-    obj.dataLink85 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink85 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink85:setParent(obj.layout64);
     obj.dataLink85:setFields({'atr_1_15', 'dificuldade_1_15', 'bonus_1_15', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink85:setName("dataLink85");
 
-    obj.layout65 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout65 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout65:setParent(obj.layout49);
     obj.layout65:setLeft(0);
     obj.layout65:setTop(405);
@@ -4610,7 +4610,7 @@ function newfrmFichaSSF()
     obj.layout65:setHeight(25);
     obj.layout65:setName("layout65");
 
-    obj.edit81 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit81 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit81:setParent(obj.layout65);
     obj.edit81:setLeft(5);
     obj.edit81:setTop(0);
@@ -4619,13 +4619,13 @@ function newfrmFichaSSF()
     obj.edit81:setField("pericia_1_16");
     obj.edit81:setName("edit81");
 
-    obj.dataLink86 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink86 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink86:setParent(obj.layout65);
     obj.dataLink86:setField("pericia_1_16");
     obj.dataLink86:setDefaultValue("Detecção de Mentiras");
     obj.dataLink86:setName("dataLink86");
 
-    obj.rectangle73 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle73 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle73:setParent(obj.layout65);
     obj.rectangle73:setLeft(90);
     obj.rectangle73:setTop(0);
@@ -4636,7 +4636,7 @@ function newfrmFichaSSF()
     obj.rectangle73:setStrokeSize(1);
     obj.rectangle73:setName("rectangle73");
 
-    obj.label129 = gui.fromHandle(_obj_newObject("label"));
+    obj.label129 = GUI.fromHandle(_obj_newObject("label"));
     obj.label129:setParent(obj.layout65);
     obj.label129:setLeft(90);
     obj.label129:setTop(3);
@@ -4646,7 +4646,7 @@ function newfrmFichaSSF()
     obj.label129:setHorzTextAlign("center");
     obj.label129:setName("label129");
 
-    obj.comboBox33 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox33 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox33:setParent(obj.layout65);
     obj.comboBox33:setLeft(130);
     obj.comboBox33:setTop(0);
@@ -4657,13 +4657,13 @@ function newfrmFichaSSF()
     obj.comboBox33:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox33:setName("comboBox33");
 
-    obj.dataLink87 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink87 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink87:setParent(obj.layout65);
     obj.dataLink87:setField("atr_1_16");
     obj.dataLink87:setDefaultValue("PR");
     obj.dataLink87:setName("dataLink87");
 
-    obj.label130 = gui.fromHandle(_obj_newObject("label"));
+    obj.label130 = GUI.fromHandle(_obj_newObject("label"));
     obj.label130:setParent(obj.layout65);
     obj.label130:setLeft(180);
     obj.label130:setTop(3);
@@ -4673,7 +4673,7 @@ function newfrmFichaSSF()
     obj.label130:setHorzTextAlign("center");
     obj.label130:setName("label130");
 
-    obj.edit82 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit82 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit82:setParent(obj.layout65);
     obj.edit82:setLeft(190);
     obj.edit82:setTop(0);
@@ -4683,7 +4683,7 @@ function newfrmFichaSSF()
     obj.edit82:setField("bonus_1_16");
     obj.edit82:setName("edit82");
 
-    obj.comboBox34 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox34 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox34:setParent(obj.layout65);
     obj.comboBox34:setLeft(220);
     obj.comboBox34:setTop(0);
@@ -4694,13 +4694,13 @@ function newfrmFichaSSF()
     obj.comboBox34:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox34:setName("comboBox34");
 
-    obj.dataLink88 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink88 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink88:setParent(obj.layout65);
     obj.dataLink88:setField("dificuldade_1_16");
     obj.dataLink88:setDefaultValue("D");
     obj.dataLink88:setName("dataLink88");
 
-    obj.rectangle74 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle74 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle74:setParent(obj.layout65);
     obj.rectangle74:setLeft(275);
     obj.rectangle74:setTop(0);
@@ -4711,7 +4711,7 @@ function newfrmFichaSSF()
     obj.rectangle74:setStrokeSize(1);
     obj.rectangle74:setName("rectangle74");
 
-    obj.label131 = gui.fromHandle(_obj_newObject("label"));
+    obj.label131 = GUI.fromHandle(_obj_newObject("label"));
     obj.label131:setParent(obj.layout65);
     obj.label131:setLeft(275);
     obj.label131:setTop(3);
@@ -4721,7 +4721,7 @@ function newfrmFichaSSF()
     obj.label131:setHorzTextAlign("center");
     obj.label131:setName("label131");
 
-    obj.button31 = gui.fromHandle(_obj_newObject("button"));
+    obj.button31 = GUI.fromHandle(_obj_newObject("button"));
     obj.button31:setParent(obj.layout65);
     obj.button31:setLeft(300);
     obj.button31:setTop(3);
@@ -4730,12 +4730,12 @@ function newfrmFichaSSF()
     obj.button31:setText("R");
     obj.button31:setName("button31");
 
-    obj.dataLink89 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink89 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink89:setParent(obj.layout65);
     obj.dataLink89:setFields({'atr_1_16', 'dificuldade_1_16', 'bonus_1_16', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink89:setName("dataLink89");
 
-    obj.layout66 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout66 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout66:setParent(obj.layout49);
     obj.layout66:setLeft(0);
     obj.layout66:setTop(430);
@@ -4743,7 +4743,7 @@ function newfrmFichaSSF()
     obj.layout66:setHeight(25);
     obj.layout66:setName("layout66");
 
-    obj.edit83 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit83 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit83:setParent(obj.layout66);
     obj.edit83:setLeft(5);
     obj.edit83:setTop(0);
@@ -4752,13 +4752,13 @@ function newfrmFichaSSF()
     obj.edit83:setField("pericia_1_17");
     obj.edit83:setName("edit83");
 
-    obj.dataLink90 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink90 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink90:setParent(obj.layout66);
     obj.dataLink90:setField("pericia_1_17");
     obj.dataLink90:setDefaultValue("Diplomacia");
     obj.dataLink90:setName("dataLink90");
 
-    obj.rectangle75 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle75 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle75:setParent(obj.layout66);
     obj.rectangle75:setLeft(90);
     obj.rectangle75:setTop(0);
@@ -4769,7 +4769,7 @@ function newfrmFichaSSF()
     obj.rectangle75:setStrokeSize(1);
     obj.rectangle75:setName("rectangle75");
 
-    obj.label132 = gui.fromHandle(_obj_newObject("label"));
+    obj.label132 = GUI.fromHandle(_obj_newObject("label"));
     obj.label132:setParent(obj.layout66);
     obj.label132:setLeft(90);
     obj.label132:setTop(3);
@@ -4779,7 +4779,7 @@ function newfrmFichaSSF()
     obj.label132:setHorzTextAlign("center");
     obj.label132:setName("label132");
 
-    obj.comboBox35 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox35 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox35:setParent(obj.layout66);
     obj.comboBox35:setLeft(130);
     obj.comboBox35:setTop(0);
@@ -4790,13 +4790,13 @@ function newfrmFichaSSF()
     obj.comboBox35:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox35:setName("comboBox35");
 
-    obj.dataLink91 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink91 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink91:setParent(obj.layout66);
     obj.dataLink91:setField("atr_1_17");
     obj.dataLink91:setDefaultValue("IQ");
     obj.dataLink91:setName("dataLink91");
 
-    obj.label133 = gui.fromHandle(_obj_newObject("label"));
+    obj.label133 = GUI.fromHandle(_obj_newObject("label"));
     obj.label133:setParent(obj.layout66);
     obj.label133:setLeft(180);
     obj.label133:setTop(3);
@@ -4806,7 +4806,7 @@ function newfrmFichaSSF()
     obj.label133:setHorzTextAlign("center");
     obj.label133:setName("label133");
 
-    obj.edit84 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit84 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit84:setParent(obj.layout66);
     obj.edit84:setLeft(190);
     obj.edit84:setTop(0);
@@ -4816,7 +4816,7 @@ function newfrmFichaSSF()
     obj.edit84:setField("bonus_1_17");
     obj.edit84:setName("edit84");
 
-    obj.comboBox36 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox36 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox36:setParent(obj.layout66);
     obj.comboBox36:setLeft(220);
     obj.comboBox36:setTop(0);
@@ -4827,13 +4827,13 @@ function newfrmFichaSSF()
     obj.comboBox36:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox36:setName("comboBox36");
 
-    obj.dataLink92 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink92 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink92:setParent(obj.layout66);
     obj.dataLink92:setField("dificuldade_1_17");
     obj.dataLink92:setDefaultValue("D");
     obj.dataLink92:setName("dataLink92");
 
-    obj.rectangle76 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle76 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle76:setParent(obj.layout66);
     obj.rectangle76:setLeft(275);
     obj.rectangle76:setTop(0);
@@ -4844,7 +4844,7 @@ function newfrmFichaSSF()
     obj.rectangle76:setStrokeSize(1);
     obj.rectangle76:setName("rectangle76");
 
-    obj.label134 = gui.fromHandle(_obj_newObject("label"));
+    obj.label134 = GUI.fromHandle(_obj_newObject("label"));
     obj.label134:setParent(obj.layout66);
     obj.label134:setLeft(275);
     obj.label134:setTop(3);
@@ -4854,7 +4854,7 @@ function newfrmFichaSSF()
     obj.label134:setHorzTextAlign("center");
     obj.label134:setName("label134");
 
-    obj.button32 = gui.fromHandle(_obj_newObject("button"));
+    obj.button32 = GUI.fromHandle(_obj_newObject("button"));
     obj.button32:setParent(obj.layout66);
     obj.button32:setLeft(300);
     obj.button32:setTop(3);
@@ -4863,12 +4863,12 @@ function newfrmFichaSSF()
     obj.button32:setText("R");
     obj.button32:setName("button32");
 
-    obj.dataLink93 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink93 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink93:setParent(obj.layout66);
     obj.dataLink93:setFields({'atr_1_17', 'dificuldade_1_17', 'bonus_1_17', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink93:setName("dataLink93");
 
-    obj.layout67 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout67 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout67:setParent(obj.layout49);
     obj.layout67:setLeft(0);
     obj.layout67:setTop(455);
@@ -4876,7 +4876,7 @@ function newfrmFichaSSF()
     obj.layout67:setHeight(25);
     obj.layout67:setName("layout67");
 
-    obj.edit85 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit85 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit85:setParent(obj.layout67);
     obj.edit85:setLeft(5);
     obj.edit85:setTop(0);
@@ -4885,13 +4885,13 @@ function newfrmFichaSSF()
     obj.edit85:setField("pericia_1_18");
     obj.edit85:setName("edit85");
 
-    obj.dataLink94 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink94 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink94:setParent(obj.layout67);
     obj.dataLink94:setField("pericia_1_18");
     obj.dataLink94:setDefaultValue("Diagnose");
     obj.dataLink94:setName("dataLink94");
 
-    obj.rectangle77 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle77 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle77:setParent(obj.layout67);
     obj.rectangle77:setLeft(90);
     obj.rectangle77:setTop(0);
@@ -4902,7 +4902,7 @@ function newfrmFichaSSF()
     obj.rectangle77:setStrokeSize(1);
     obj.rectangle77:setName("rectangle77");
 
-    obj.label135 = gui.fromHandle(_obj_newObject("label"));
+    obj.label135 = GUI.fromHandle(_obj_newObject("label"));
     obj.label135:setParent(obj.layout67);
     obj.label135:setLeft(90);
     obj.label135:setTop(3);
@@ -4912,7 +4912,7 @@ function newfrmFichaSSF()
     obj.label135:setHorzTextAlign("center");
     obj.label135:setName("label135");
 
-    obj.comboBox37 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox37 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox37:setParent(obj.layout67);
     obj.comboBox37:setLeft(130);
     obj.comboBox37:setTop(0);
@@ -4923,13 +4923,13 @@ function newfrmFichaSSF()
     obj.comboBox37:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox37:setName("comboBox37");
 
-    obj.dataLink95 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink95 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink95:setParent(obj.layout67);
     obj.dataLink95:setField("atr_1_18");
     obj.dataLink95:setDefaultValue("IQ");
     obj.dataLink95:setName("dataLink95");
 
-    obj.label136 = gui.fromHandle(_obj_newObject("label"));
+    obj.label136 = GUI.fromHandle(_obj_newObject("label"));
     obj.label136:setParent(obj.layout67);
     obj.label136:setLeft(180);
     obj.label136:setTop(3);
@@ -4939,7 +4939,7 @@ function newfrmFichaSSF()
     obj.label136:setHorzTextAlign("center");
     obj.label136:setName("label136");
 
-    obj.edit86 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit86:setParent(obj.layout67);
     obj.edit86:setLeft(190);
     obj.edit86:setTop(0);
@@ -4949,7 +4949,7 @@ function newfrmFichaSSF()
     obj.edit86:setField("bonus_1_18");
     obj.edit86:setName("edit86");
 
-    obj.comboBox38 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox38 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox38:setParent(obj.layout67);
     obj.comboBox38:setLeft(220);
     obj.comboBox38:setTop(0);
@@ -4960,13 +4960,13 @@ function newfrmFichaSSF()
     obj.comboBox38:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox38:setName("comboBox38");
 
-    obj.dataLink96 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink96 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink96:setParent(obj.layout67);
     obj.dataLink96:setField("dificuldade_1_18");
     obj.dataLink96:setDefaultValue("D");
     obj.dataLink96:setName("dataLink96");
 
-    obj.rectangle78 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle78 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle78:setParent(obj.layout67);
     obj.rectangle78:setLeft(275);
     obj.rectangle78:setTop(0);
@@ -4977,7 +4977,7 @@ function newfrmFichaSSF()
     obj.rectangle78:setStrokeSize(1);
     obj.rectangle78:setName("rectangle78");
 
-    obj.label137 = gui.fromHandle(_obj_newObject("label"));
+    obj.label137 = GUI.fromHandle(_obj_newObject("label"));
     obj.label137:setParent(obj.layout67);
     obj.label137:setLeft(275);
     obj.label137:setTop(3);
@@ -4987,7 +4987,7 @@ function newfrmFichaSSF()
     obj.label137:setHorzTextAlign("center");
     obj.label137:setName("label137");
 
-    obj.button33 = gui.fromHandle(_obj_newObject("button"));
+    obj.button33 = GUI.fromHandle(_obj_newObject("button"));
     obj.button33:setParent(obj.layout67);
     obj.button33:setLeft(300);
     obj.button33:setTop(3);
@@ -4996,12 +4996,12 @@ function newfrmFichaSSF()
     obj.button33:setText("R");
     obj.button33:setName("button33");
 
-    obj.dataLink97 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink97 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink97:setParent(obj.layout67);
     obj.dataLink97:setFields({'atr_1_18', 'dificuldade_1_18', 'bonus_1_18', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink97:setName("dataLink97");
 
-    obj.layout68 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout68 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout68:setParent(obj.layout49);
     obj.layout68:setLeft(0);
     obj.layout68:setTop(480);
@@ -5009,7 +5009,7 @@ function newfrmFichaSSF()
     obj.layout68:setHeight(25);
     obj.layout68:setName("layout68");
 
-    obj.edit87 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit87 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit87:setParent(obj.layout68);
     obj.edit87:setLeft(5);
     obj.edit87:setTop(0);
@@ -5018,13 +5018,13 @@ function newfrmFichaSSF()
     obj.edit87:setField("pericia_1_19");
     obj.edit87:setName("edit87");
 
-    obj.dataLink98 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink98 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink98:setParent(obj.layout68);
     obj.dataLink98:setField("pericia_1_19");
     obj.dataLink98:setDefaultValue("Dissimulação");
     obj.dataLink98:setName("dataLink98");
 
-    obj.rectangle79 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle79 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle79:setParent(obj.layout68);
     obj.rectangle79:setLeft(90);
     obj.rectangle79:setTop(0);
@@ -5035,7 +5035,7 @@ function newfrmFichaSSF()
     obj.rectangle79:setStrokeSize(1);
     obj.rectangle79:setName("rectangle79");
 
-    obj.label138 = gui.fromHandle(_obj_newObject("label"));
+    obj.label138 = GUI.fromHandle(_obj_newObject("label"));
     obj.label138:setParent(obj.layout68);
     obj.label138:setLeft(90);
     obj.label138:setTop(3);
@@ -5045,7 +5045,7 @@ function newfrmFichaSSF()
     obj.label138:setHorzTextAlign("center");
     obj.label138:setName("label138");
 
-    obj.comboBox39 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox39 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox39:setParent(obj.layout68);
     obj.comboBox39:setLeft(130);
     obj.comboBox39:setTop(0);
@@ -5056,13 +5056,13 @@ function newfrmFichaSSF()
     obj.comboBox39:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox39:setName("comboBox39");
 
-    obj.dataLink99 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink99 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink99:setParent(obj.layout68);
     obj.dataLink99:setField("atr_1_19");
     obj.dataLink99:setDefaultValue("IQ");
     obj.dataLink99:setName("dataLink99");
 
-    obj.label139 = gui.fromHandle(_obj_newObject("label"));
+    obj.label139 = GUI.fromHandle(_obj_newObject("label"));
     obj.label139:setParent(obj.layout68);
     obj.label139:setLeft(180);
     obj.label139:setTop(3);
@@ -5072,7 +5072,7 @@ function newfrmFichaSSF()
     obj.label139:setHorzTextAlign("center");
     obj.label139:setName("label139");
 
-    obj.edit88 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit88 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit88:setParent(obj.layout68);
     obj.edit88:setLeft(190);
     obj.edit88:setTop(0);
@@ -5082,7 +5082,7 @@ function newfrmFichaSSF()
     obj.edit88:setField("bonus_1_19");
     obj.edit88:setName("edit88");
 
-    obj.comboBox40 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox40 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox40:setParent(obj.layout68);
     obj.comboBox40:setLeft(220);
     obj.comboBox40:setTop(0);
@@ -5093,13 +5093,13 @@ function newfrmFichaSSF()
     obj.comboBox40:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox40:setName("comboBox40");
 
-    obj.dataLink100 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink100 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink100:setParent(obj.layout68);
     obj.dataLink100:setField("dificuldade_1_19");
     obj.dataLink100:setDefaultValue("M");
     obj.dataLink100:setName("dataLink100");
 
-    obj.rectangle80 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle80 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle80:setParent(obj.layout68);
     obj.rectangle80:setLeft(275);
     obj.rectangle80:setTop(0);
@@ -5110,7 +5110,7 @@ function newfrmFichaSSF()
     obj.rectangle80:setStrokeSize(1);
     obj.rectangle80:setName("rectangle80");
 
-    obj.label140 = gui.fromHandle(_obj_newObject("label"));
+    obj.label140 = GUI.fromHandle(_obj_newObject("label"));
     obj.label140:setParent(obj.layout68);
     obj.label140:setLeft(275);
     obj.label140:setTop(3);
@@ -5120,7 +5120,7 @@ function newfrmFichaSSF()
     obj.label140:setHorzTextAlign("center");
     obj.label140:setName("label140");
 
-    obj.button34 = gui.fromHandle(_obj_newObject("button"));
+    obj.button34 = GUI.fromHandle(_obj_newObject("button"));
     obj.button34:setParent(obj.layout68);
     obj.button34:setLeft(300);
     obj.button34:setTop(3);
@@ -5129,12 +5129,12 @@ function newfrmFichaSSF()
     obj.button34:setText("R");
     obj.button34:setName("button34");
 
-    obj.dataLink101 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink101 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink101:setParent(obj.layout68);
     obj.dataLink101:setFields({'atr_1_19', 'dificuldade_1_19', 'bonus_1_19', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink101:setName("dataLink101");
 
-    obj.layout69 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout69 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout69:setParent(obj.layout49);
     obj.layout69:setLeft(0);
     obj.layout69:setTop(505);
@@ -5142,7 +5142,7 @@ function newfrmFichaSSF()
     obj.layout69:setHeight(25);
     obj.layout69:setName("layout69");
 
-    obj.edit89 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit89 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit89:setParent(obj.layout69);
     obj.edit89:setLeft(5);
     obj.edit89:setTop(0);
@@ -5151,13 +5151,13 @@ function newfrmFichaSSF()
     obj.edit89:setField("pericia_1_20");
     obj.edit89:setName("edit89");
 
-    obj.dataLink102 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink102 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink102:setParent(obj.layout69);
     obj.dataLink102:setField("pericia_1_20");
     obj.dataLink102:setDefaultValue("Escalada");
     obj.dataLink102:setName("dataLink102");
 
-    obj.rectangle81 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle81 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle81:setParent(obj.layout69);
     obj.rectangle81:setLeft(90);
     obj.rectangle81:setTop(0);
@@ -5168,7 +5168,7 @@ function newfrmFichaSSF()
     obj.rectangle81:setStrokeSize(1);
     obj.rectangle81:setName("rectangle81");
 
-    obj.label141 = gui.fromHandle(_obj_newObject("label"));
+    obj.label141 = GUI.fromHandle(_obj_newObject("label"));
     obj.label141:setParent(obj.layout69);
     obj.label141:setLeft(90);
     obj.label141:setTop(3);
@@ -5178,7 +5178,7 @@ function newfrmFichaSSF()
     obj.label141:setHorzTextAlign("center");
     obj.label141:setName("label141");
 
-    obj.comboBox41 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox41 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox41:setParent(obj.layout69);
     obj.comboBox41:setLeft(130);
     obj.comboBox41:setTop(0);
@@ -5189,13 +5189,13 @@ function newfrmFichaSSF()
     obj.comboBox41:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox41:setName("comboBox41");
 
-    obj.dataLink103 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink103 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink103:setParent(obj.layout69);
     obj.dataLink103:setField("atr_1_20");
     obj.dataLink103:setDefaultValue("DX");
     obj.dataLink103:setName("dataLink103");
 
-    obj.label142 = gui.fromHandle(_obj_newObject("label"));
+    obj.label142 = GUI.fromHandle(_obj_newObject("label"));
     obj.label142:setParent(obj.layout69);
     obj.label142:setLeft(180);
     obj.label142:setTop(3);
@@ -5205,7 +5205,7 @@ function newfrmFichaSSF()
     obj.label142:setHorzTextAlign("center");
     obj.label142:setName("label142");
 
-    obj.edit90 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit90 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit90:setParent(obj.layout69);
     obj.edit90:setLeft(190);
     obj.edit90:setTop(0);
@@ -5215,7 +5215,7 @@ function newfrmFichaSSF()
     obj.edit90:setField("bonus_1_20");
     obj.edit90:setName("edit90");
 
-    obj.comboBox42 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox42 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox42:setParent(obj.layout69);
     obj.comboBox42:setLeft(220);
     obj.comboBox42:setTop(0);
@@ -5226,13 +5226,13 @@ function newfrmFichaSSF()
     obj.comboBox42:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox42:setName("comboBox42");
 
-    obj.dataLink104 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink104 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink104:setParent(obj.layout69);
     obj.dataLink104:setField("dificuldade_1_20");
     obj.dataLink104:setDefaultValue("M");
     obj.dataLink104:setName("dataLink104");
 
-    obj.rectangle82 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle82 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle82:setParent(obj.layout69);
     obj.rectangle82:setLeft(275);
     obj.rectangle82:setTop(0);
@@ -5243,7 +5243,7 @@ function newfrmFichaSSF()
     obj.rectangle82:setStrokeSize(1);
     obj.rectangle82:setName("rectangle82");
 
-    obj.label143 = gui.fromHandle(_obj_newObject("label"));
+    obj.label143 = GUI.fromHandle(_obj_newObject("label"));
     obj.label143:setParent(obj.layout69);
     obj.label143:setLeft(275);
     obj.label143:setTop(3);
@@ -5253,7 +5253,7 @@ function newfrmFichaSSF()
     obj.label143:setHorzTextAlign("center");
     obj.label143:setName("label143");
 
-    obj.button35 = gui.fromHandle(_obj_newObject("button"));
+    obj.button35 = GUI.fromHandle(_obj_newObject("button"));
     obj.button35:setParent(obj.layout69);
     obj.button35:setLeft(300);
     obj.button35:setTop(3);
@@ -5262,12 +5262,12 @@ function newfrmFichaSSF()
     obj.button35:setText("R");
     obj.button35:setName("button35");
 
-    obj.dataLink105 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink105 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink105:setParent(obj.layout69);
     obj.dataLink105:setFields({'atr_1_20', 'dificuldade_1_20', 'bonus_1_20', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink105:setName("dataLink105");
 
-    obj.layout70 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout70 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout70:setParent(obj.layout49);
     obj.layout70:setLeft(0);
     obj.layout70:setTop(550);
@@ -5275,7 +5275,7 @@ function newfrmFichaSSF()
     obj.layout70:setHeight(25);
     obj.layout70:setName("layout70");
 
-    obj.label144 = gui.fromHandle(_obj_newObject("label"));
+    obj.label144 = GUI.fromHandle(_obj_newObject("label"));
     obj.label144:setParent(obj.layout70);
     obj.label144:setLeft(5);
     obj.label144:setTop(5);
@@ -5285,7 +5285,7 @@ function newfrmFichaSSF()
     obj.label144:setFontSize(10);
     obj.label144:setName("label144");
 
-    obj.edit91 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit91 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit91:setParent(obj.layout70);
     obj.edit91:setLeft(60);
     obj.edit91:setTop(0);
@@ -5294,7 +5294,7 @@ function newfrmFichaSSF()
     obj.edit91:setField("mod");
     obj.edit91:setName("edit91");
 
-    obj.layout71 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout71 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout71:setParent(obj.scrollBox2);
     obj.layout71:setLeft(330);
     obj.layout71:setTop(0);
@@ -5302,7 +5302,7 @@ function newfrmFichaSSF()
     obj.layout71:setHeight(615);
     obj.layout71:setName("layout71");
 
-    obj.rectangle83 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle83 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle83:setParent(obj.layout71);
     obj.rectangle83:setAlign("client");
     obj.rectangle83:setColor("black");
@@ -5311,7 +5311,7 @@ function newfrmFichaSSF()
     obj.rectangle83:setCornerType("round");
     obj.rectangle83:setName("rectangle83");
 
-    obj.label145 = gui.fromHandle(_obj_newObject("label"));
+    obj.label145 = GUI.fromHandle(_obj_newObject("label"));
     obj.label145:setParent(obj.layout71);
     obj.label145:setLeft(0);
     obj.label145:setTop(5);
@@ -5320,7 +5320,7 @@ function newfrmFichaSSF()
     obj.label145:setText("     NOME            NH        AT     +  BN       DF        PT");
     obj.label145:setName("label145");
 
-    obj.layout72 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout72 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout72:setParent(obj.layout71);
     obj.layout72:setLeft(0);
     obj.layout72:setTop(30);
@@ -5328,7 +5328,7 @@ function newfrmFichaSSF()
     obj.layout72:setHeight(25);
     obj.layout72:setName("layout72");
 
-    obj.edit92 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit92 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit92:setParent(obj.layout72);
     obj.edit92:setLeft(5);
     obj.edit92:setTop(0);
@@ -5337,13 +5337,13 @@ function newfrmFichaSSF()
     obj.edit92:setField("pericia_2_1");
     obj.edit92:setName("edit92");
 
-    obj.dataLink106 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink106 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink106:setParent(obj.layout72);
     obj.dataLink106:setField("pericia_2_1");
     obj.dataLink106:setDefaultValue("Estratégia");
     obj.dataLink106:setName("dataLink106");
 
-    obj.rectangle84 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle84 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle84:setParent(obj.layout72);
     obj.rectangle84:setLeft(90);
     obj.rectangle84:setTop(0);
@@ -5354,7 +5354,7 @@ function newfrmFichaSSF()
     obj.rectangle84:setStrokeSize(1);
     obj.rectangle84:setName("rectangle84");
 
-    obj.label146 = gui.fromHandle(_obj_newObject("label"));
+    obj.label146 = GUI.fromHandle(_obj_newObject("label"));
     obj.label146:setParent(obj.layout72);
     obj.label146:setLeft(90);
     obj.label146:setTop(3);
@@ -5364,7 +5364,7 @@ function newfrmFichaSSF()
     obj.label146:setHorzTextAlign("center");
     obj.label146:setName("label146");
 
-    obj.comboBox43 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox43 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox43:setParent(obj.layout72);
     obj.comboBox43:setLeft(130);
     obj.comboBox43:setTop(0);
@@ -5375,13 +5375,13 @@ function newfrmFichaSSF()
     obj.comboBox43:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox43:setName("comboBox43");
 
-    obj.dataLink107 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink107 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink107:setParent(obj.layout72);
     obj.dataLink107:setField("atr_2_1");
     obj.dataLink107:setDefaultValue("IQ");
     obj.dataLink107:setName("dataLink107");
 
-    obj.label147 = gui.fromHandle(_obj_newObject("label"));
+    obj.label147 = GUI.fromHandle(_obj_newObject("label"));
     obj.label147:setParent(obj.layout72);
     obj.label147:setLeft(180);
     obj.label147:setTop(3);
@@ -5391,7 +5391,7 @@ function newfrmFichaSSF()
     obj.label147:setHorzTextAlign("center");
     obj.label147:setName("label147");
 
-    obj.edit93 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit93 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit93:setParent(obj.layout72);
     obj.edit93:setLeft(190);
     obj.edit93:setTop(0);
@@ -5401,7 +5401,7 @@ function newfrmFichaSSF()
     obj.edit93:setField("bonus_2_1");
     obj.edit93:setName("edit93");
 
-    obj.comboBox44 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox44 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox44:setParent(obj.layout72);
     obj.comboBox44:setLeft(220);
     obj.comboBox44:setTop(0);
@@ -5412,13 +5412,13 @@ function newfrmFichaSSF()
     obj.comboBox44:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox44:setName("comboBox44");
 
-    obj.dataLink108 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink108 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink108:setParent(obj.layout72);
     obj.dataLink108:setField("dificuldade_2_1");
     obj.dataLink108:setDefaultValue("D");
     obj.dataLink108:setName("dataLink108");
 
-    obj.rectangle85 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle85 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle85:setParent(obj.layout72);
     obj.rectangle85:setLeft(275);
     obj.rectangle85:setTop(0);
@@ -5429,7 +5429,7 @@ function newfrmFichaSSF()
     obj.rectangle85:setStrokeSize(1);
     obj.rectangle85:setName("rectangle85");
 
-    obj.label148 = gui.fromHandle(_obj_newObject("label"));
+    obj.label148 = GUI.fromHandle(_obj_newObject("label"));
     obj.label148:setParent(obj.layout72);
     obj.label148:setLeft(275);
     obj.label148:setTop(3);
@@ -5439,7 +5439,7 @@ function newfrmFichaSSF()
     obj.label148:setHorzTextAlign("center");
     obj.label148:setName("label148");
 
-    obj.button36 = gui.fromHandle(_obj_newObject("button"));
+    obj.button36 = GUI.fromHandle(_obj_newObject("button"));
     obj.button36:setParent(obj.layout72);
     obj.button36:setLeft(300);
     obj.button36:setTop(3);
@@ -5448,12 +5448,12 @@ function newfrmFichaSSF()
     obj.button36:setText("R");
     obj.button36:setName("button36");
 
-    obj.dataLink109 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink109 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink109:setParent(obj.layout72);
     obj.dataLink109:setFields({'atr_2_1', 'dificuldade_2_1', 'bonus_2_1', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink109:setName("dataLink109");
 
-    obj.layout73 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout73 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout73:setParent(obj.layout71);
     obj.layout73:setLeft(0);
     obj.layout73:setTop(55);
@@ -5461,7 +5461,7 @@ function newfrmFichaSSF()
     obj.layout73:setHeight(25);
     obj.layout73:setName("layout73");
 
-    obj.edit94 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit94 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit94:setParent(obj.layout73);
     obj.edit94:setLeft(5);
     obj.edit94:setTop(0);
@@ -5470,13 +5470,13 @@ function newfrmFichaSSF()
     obj.edit94:setField("pericia_2_2");
     obj.edit94:setName("edit94");
 
-    obj.dataLink110 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink110 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink110:setParent(obj.layout73);
     obj.dataLink110:setField("pericia_2_2");
     obj.dataLink110:setDefaultValue("Escudo");
     obj.dataLink110:setName("dataLink110");
 
-    obj.rectangle86 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle86 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle86:setParent(obj.layout73);
     obj.rectangle86:setLeft(90);
     obj.rectangle86:setTop(0);
@@ -5487,7 +5487,7 @@ function newfrmFichaSSF()
     obj.rectangle86:setStrokeSize(1);
     obj.rectangle86:setName("rectangle86");
 
-    obj.label149 = gui.fromHandle(_obj_newObject("label"));
+    obj.label149 = GUI.fromHandle(_obj_newObject("label"));
     obj.label149:setParent(obj.layout73);
     obj.label149:setLeft(90);
     obj.label149:setTop(3);
@@ -5497,7 +5497,7 @@ function newfrmFichaSSF()
     obj.label149:setHorzTextAlign("center");
     obj.label149:setName("label149");
 
-    obj.comboBox45 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox45 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox45:setParent(obj.layout73);
     obj.comboBox45:setLeft(130);
     obj.comboBox45:setTop(0);
@@ -5508,13 +5508,13 @@ function newfrmFichaSSF()
     obj.comboBox45:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox45:setName("comboBox45");
 
-    obj.dataLink111 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink111 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink111:setParent(obj.layout73);
     obj.dataLink111:setField("atr_2_2");
     obj.dataLink111:setDefaultValue("DX");
     obj.dataLink111:setName("dataLink111");
 
-    obj.label150 = gui.fromHandle(_obj_newObject("label"));
+    obj.label150 = GUI.fromHandle(_obj_newObject("label"));
     obj.label150:setParent(obj.layout73);
     obj.label150:setLeft(180);
     obj.label150:setTop(3);
@@ -5524,7 +5524,7 @@ function newfrmFichaSSF()
     obj.label150:setHorzTextAlign("center");
     obj.label150:setName("label150");
 
-    obj.edit95 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit95 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit95:setParent(obj.layout73);
     obj.edit95:setLeft(190);
     obj.edit95:setTop(0);
@@ -5534,7 +5534,7 @@ function newfrmFichaSSF()
     obj.edit95:setField("bonus_2_2");
     obj.edit95:setName("edit95");
 
-    obj.comboBox46 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox46 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox46:setParent(obj.layout73);
     obj.comboBox46:setLeft(220);
     obj.comboBox46:setTop(0);
@@ -5545,13 +5545,13 @@ function newfrmFichaSSF()
     obj.comboBox46:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox46:setName("comboBox46");
 
-    obj.dataLink112 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink112 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink112:setParent(obj.layout73);
     obj.dataLink112:setField("dificuldade_2_2");
     obj.dataLink112:setDefaultValue("F");
     obj.dataLink112:setName("dataLink112");
 
-    obj.rectangle87 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle87 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle87:setParent(obj.layout73);
     obj.rectangle87:setLeft(275);
     obj.rectangle87:setTop(0);
@@ -5562,7 +5562,7 @@ function newfrmFichaSSF()
     obj.rectangle87:setStrokeSize(1);
     obj.rectangle87:setName("rectangle87");
 
-    obj.label151 = gui.fromHandle(_obj_newObject("label"));
+    obj.label151 = GUI.fromHandle(_obj_newObject("label"));
     obj.label151:setParent(obj.layout73);
     obj.label151:setLeft(275);
     obj.label151:setTop(3);
@@ -5572,7 +5572,7 @@ function newfrmFichaSSF()
     obj.label151:setHorzTextAlign("center");
     obj.label151:setName("label151");
 
-    obj.button37 = gui.fromHandle(_obj_newObject("button"));
+    obj.button37 = GUI.fromHandle(_obj_newObject("button"));
     obj.button37:setParent(obj.layout73);
     obj.button37:setLeft(300);
     obj.button37:setTop(3);
@@ -5581,12 +5581,12 @@ function newfrmFichaSSF()
     obj.button37:setText("R");
     obj.button37:setName("button37");
 
-    obj.dataLink113 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink113 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink113:setParent(obj.layout73);
     obj.dataLink113:setFields({'atr_2_2', 'dificuldade_2_2', 'bonus_2_2', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink113:setName("dataLink113");
 
-    obj.layout74 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout74 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout74:setParent(obj.layout71);
     obj.layout74:setLeft(0);
     obj.layout74:setTop(80);
@@ -5594,7 +5594,7 @@ function newfrmFichaSSF()
     obj.layout74:setHeight(25);
     obj.layout74:setName("layout74");
 
-    obj.edit96 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit96 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit96:setParent(obj.layout74);
     obj.edit96:setLeft(5);
     obj.edit96:setTop(0);
@@ -5603,13 +5603,13 @@ function newfrmFichaSSF()
     obj.edit96:setField("pericia_2_3");
     obj.edit96:setName("edit96");
 
-    obj.dataLink114 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink114 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink114:setParent(obj.layout74);
     obj.dataLink114:setField("pericia_2_3");
     obj.dataLink114:setDefaultValue("Fisiologia");
     obj.dataLink114:setName("dataLink114");
 
-    obj.rectangle88 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle88 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle88:setParent(obj.layout74);
     obj.rectangle88:setLeft(90);
     obj.rectangle88:setTop(0);
@@ -5620,7 +5620,7 @@ function newfrmFichaSSF()
     obj.rectangle88:setStrokeSize(1);
     obj.rectangle88:setName("rectangle88");
 
-    obj.label152 = gui.fromHandle(_obj_newObject("label"));
+    obj.label152 = GUI.fromHandle(_obj_newObject("label"));
     obj.label152:setParent(obj.layout74);
     obj.label152:setLeft(90);
     obj.label152:setTop(3);
@@ -5630,7 +5630,7 @@ function newfrmFichaSSF()
     obj.label152:setHorzTextAlign("center");
     obj.label152:setName("label152");
 
-    obj.comboBox47 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox47 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox47:setParent(obj.layout74);
     obj.comboBox47:setLeft(130);
     obj.comboBox47:setTop(0);
@@ -5641,13 +5641,13 @@ function newfrmFichaSSF()
     obj.comboBox47:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox47:setName("comboBox47");
 
-    obj.dataLink115 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink115 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink115:setParent(obj.layout74);
     obj.dataLink115:setField("atr_2_3");
     obj.dataLink115:setDefaultValue("IQ");
     obj.dataLink115:setName("dataLink115");
 
-    obj.label153 = gui.fromHandle(_obj_newObject("label"));
+    obj.label153 = GUI.fromHandle(_obj_newObject("label"));
     obj.label153:setParent(obj.layout74);
     obj.label153:setLeft(180);
     obj.label153:setTop(3);
@@ -5657,7 +5657,7 @@ function newfrmFichaSSF()
     obj.label153:setHorzTextAlign("center");
     obj.label153:setName("label153");
 
-    obj.edit97 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit97 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit97:setParent(obj.layout74);
     obj.edit97:setLeft(190);
     obj.edit97:setTop(0);
@@ -5667,7 +5667,7 @@ function newfrmFichaSSF()
     obj.edit97:setField("bonus_2_3");
     obj.edit97:setName("edit97");
 
-    obj.comboBox48 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox48 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox48:setParent(obj.layout74);
     obj.comboBox48:setLeft(220);
     obj.comboBox48:setTop(0);
@@ -5678,13 +5678,13 @@ function newfrmFichaSSF()
     obj.comboBox48:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox48:setName("comboBox48");
 
-    obj.dataLink116 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink116 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink116:setParent(obj.layout74);
     obj.dataLink116:setField("dificuldade_2_3");
     obj.dataLink116:setDefaultValue("D");
     obj.dataLink116:setName("dataLink116");
 
-    obj.rectangle89 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle89 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle89:setParent(obj.layout74);
     obj.rectangle89:setLeft(275);
     obj.rectangle89:setTop(0);
@@ -5695,7 +5695,7 @@ function newfrmFichaSSF()
     obj.rectangle89:setStrokeSize(1);
     obj.rectangle89:setName("rectangle89");
 
-    obj.label154 = gui.fromHandle(_obj_newObject("label"));
+    obj.label154 = GUI.fromHandle(_obj_newObject("label"));
     obj.label154:setParent(obj.layout74);
     obj.label154:setLeft(275);
     obj.label154:setTop(3);
@@ -5705,7 +5705,7 @@ function newfrmFichaSSF()
     obj.label154:setHorzTextAlign("center");
     obj.label154:setName("label154");
 
-    obj.button38 = gui.fromHandle(_obj_newObject("button"));
+    obj.button38 = GUI.fromHandle(_obj_newObject("button"));
     obj.button38:setParent(obj.layout74);
     obj.button38:setLeft(300);
     obj.button38:setTop(3);
@@ -5714,12 +5714,12 @@ function newfrmFichaSSF()
     obj.button38:setText("R");
     obj.button38:setName("button38");
 
-    obj.dataLink117 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink117 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink117:setParent(obj.layout74);
     obj.dataLink117:setFields({'atr_2_3', 'dificuldade_2_3', 'bonus_2_3', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink117:setName("dataLink117");
 
-    obj.layout75 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout75 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout75:setParent(obj.layout71);
     obj.layout75:setLeft(0);
     obj.layout75:setTop(105);
@@ -5727,7 +5727,7 @@ function newfrmFichaSSF()
     obj.layout75:setHeight(25);
     obj.layout75:setName("layout75");
 
-    obj.edit98 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit98 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit98:setParent(obj.layout75);
     obj.edit98:setLeft(5);
     obj.edit98:setTop(0);
@@ -5736,13 +5736,13 @@ function newfrmFichaSSF()
     obj.edit98:setField("pericia_2_4");
     obj.edit98:setName("edit98");
 
-    obj.dataLink118 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink118 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink118:setParent(obj.layout75);
     obj.dataLink118:setField("pericia_2_4");
     obj.dataLink118:setDefaultValue("Força Mental");
     obj.dataLink118:setName("dataLink118");
 
-    obj.rectangle90 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle90 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle90:setParent(obj.layout75);
     obj.rectangle90:setLeft(90);
     obj.rectangle90:setTop(0);
@@ -5753,7 +5753,7 @@ function newfrmFichaSSF()
     obj.rectangle90:setStrokeSize(1);
     obj.rectangle90:setName("rectangle90");
 
-    obj.label155 = gui.fromHandle(_obj_newObject("label"));
+    obj.label155 = GUI.fromHandle(_obj_newObject("label"));
     obj.label155:setParent(obj.layout75);
     obj.label155:setLeft(90);
     obj.label155:setTop(3);
@@ -5763,7 +5763,7 @@ function newfrmFichaSSF()
     obj.label155:setHorzTextAlign("center");
     obj.label155:setName("label155");
 
-    obj.comboBox49 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox49 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox49:setParent(obj.layout75);
     obj.comboBox49:setLeft(130);
     obj.comboBox49:setTop(0);
@@ -5774,13 +5774,13 @@ function newfrmFichaSSF()
     obj.comboBox49:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox49:setName("comboBox49");
 
-    obj.dataLink119 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink119 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink119:setParent(obj.layout75);
     obj.dataLink119:setField("atr_2_4");
     obj.dataLink119:setDefaultValue("VT");
     obj.dataLink119:setName("dataLink119");
 
-    obj.label156 = gui.fromHandle(_obj_newObject("label"));
+    obj.label156 = GUI.fromHandle(_obj_newObject("label"));
     obj.label156:setParent(obj.layout75);
     obj.label156:setLeft(180);
     obj.label156:setTop(3);
@@ -5790,7 +5790,7 @@ function newfrmFichaSSF()
     obj.label156:setHorzTextAlign("center");
     obj.label156:setName("label156");
 
-    obj.edit99 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit99 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit99:setParent(obj.layout75);
     obj.edit99:setLeft(190);
     obj.edit99:setTop(0);
@@ -5800,7 +5800,7 @@ function newfrmFichaSSF()
     obj.edit99:setField("bonus_2_4");
     obj.edit99:setName("edit99");
 
-    obj.comboBox50 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox50 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox50:setParent(obj.layout75);
     obj.comboBox50:setLeft(220);
     obj.comboBox50:setTop(0);
@@ -5811,13 +5811,13 @@ function newfrmFichaSSF()
     obj.comboBox50:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox50:setName("comboBox50");
 
-    obj.dataLink120 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink120 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink120:setParent(obj.layout75);
     obj.dataLink120:setField("dificuldade_2_4");
     obj.dataLink120:setDefaultValue("F");
     obj.dataLink120:setName("dataLink120");
 
-    obj.rectangle91 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle91 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle91:setParent(obj.layout75);
     obj.rectangle91:setLeft(275);
     obj.rectangle91:setTop(0);
@@ -5828,7 +5828,7 @@ function newfrmFichaSSF()
     obj.rectangle91:setStrokeSize(1);
     obj.rectangle91:setName("rectangle91");
 
-    obj.label157 = gui.fromHandle(_obj_newObject("label"));
+    obj.label157 = GUI.fromHandle(_obj_newObject("label"));
     obj.label157:setParent(obj.layout75);
     obj.label157:setLeft(275);
     obj.label157:setTop(3);
@@ -5838,7 +5838,7 @@ function newfrmFichaSSF()
     obj.label157:setHorzTextAlign("center");
     obj.label157:setName("label157");
 
-    obj.button39 = gui.fromHandle(_obj_newObject("button"));
+    obj.button39 = GUI.fromHandle(_obj_newObject("button"));
     obj.button39:setParent(obj.layout75);
     obj.button39:setLeft(300);
     obj.button39:setTop(3);
@@ -5847,12 +5847,12 @@ function newfrmFichaSSF()
     obj.button39:setText("R");
     obj.button39:setName("button39");
 
-    obj.dataLink121 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink121 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink121:setParent(obj.layout75);
     obj.dataLink121:setFields({'atr_2_4', 'dificuldade_2_4', 'bonus_2_4', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink121:setName("dataLink121");
 
-    obj.layout76 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout76 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout76:setParent(obj.layout71);
     obj.layout76:setLeft(0);
     obj.layout76:setTop(130);
@@ -5860,7 +5860,7 @@ function newfrmFichaSSF()
     obj.layout76:setHeight(25);
     obj.layout76:setName("layout76");
 
-    obj.edit100 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit100 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit100:setParent(obj.layout76);
     obj.edit100:setLeft(5);
     obj.edit100:setTop(0);
@@ -5869,13 +5869,13 @@ function newfrmFichaSSF()
     obj.edit100:setField("pericia_2_5");
     obj.edit100:setName("edit100");
 
-    obj.dataLink122 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink122 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink122:setParent(obj.layout76);
     obj.dataLink122:setField("pericia_2_5");
     obj.dataLink122:setDefaultValue("Furtividade");
     obj.dataLink122:setName("dataLink122");
 
-    obj.rectangle92 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle92 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle92:setParent(obj.layout76);
     obj.rectangle92:setLeft(90);
     obj.rectangle92:setTop(0);
@@ -5886,7 +5886,7 @@ function newfrmFichaSSF()
     obj.rectangle92:setStrokeSize(1);
     obj.rectangle92:setName("rectangle92");
 
-    obj.label158 = gui.fromHandle(_obj_newObject("label"));
+    obj.label158 = GUI.fromHandle(_obj_newObject("label"));
     obj.label158:setParent(obj.layout76);
     obj.label158:setLeft(90);
     obj.label158:setTop(3);
@@ -5896,7 +5896,7 @@ function newfrmFichaSSF()
     obj.label158:setHorzTextAlign("center");
     obj.label158:setName("label158");
 
-    obj.comboBox51 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox51 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox51:setParent(obj.layout76);
     obj.comboBox51:setLeft(130);
     obj.comboBox51:setTop(0);
@@ -5907,13 +5907,13 @@ function newfrmFichaSSF()
     obj.comboBox51:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox51:setName("comboBox51");
 
-    obj.dataLink123 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink123 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink123:setParent(obj.layout76);
     obj.dataLink123:setField("atr_2_5");
     obj.dataLink123:setDefaultValue("DX");
     obj.dataLink123:setName("dataLink123");
 
-    obj.label159 = gui.fromHandle(_obj_newObject("label"));
+    obj.label159 = GUI.fromHandle(_obj_newObject("label"));
     obj.label159:setParent(obj.layout76);
     obj.label159:setLeft(180);
     obj.label159:setTop(3);
@@ -5923,7 +5923,7 @@ function newfrmFichaSSF()
     obj.label159:setHorzTextAlign("center");
     obj.label159:setName("label159");
 
-    obj.edit101 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit101 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit101:setParent(obj.layout76);
     obj.edit101:setLeft(190);
     obj.edit101:setTop(0);
@@ -5933,7 +5933,7 @@ function newfrmFichaSSF()
     obj.edit101:setField("bonus_2_5");
     obj.edit101:setName("edit101");
 
-    obj.comboBox52 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox52 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox52:setParent(obj.layout76);
     obj.comboBox52:setLeft(220);
     obj.comboBox52:setTop(0);
@@ -5944,13 +5944,13 @@ function newfrmFichaSSF()
     obj.comboBox52:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox52:setName("comboBox52");
 
-    obj.dataLink124 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink124 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink124:setParent(obj.layout76);
     obj.dataLink124:setField("dificuldade_2_5");
     obj.dataLink124:setDefaultValue("M");
     obj.dataLink124:setName("dataLink124");
 
-    obj.rectangle93 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle93 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle93:setParent(obj.layout76);
     obj.rectangle93:setLeft(275);
     obj.rectangle93:setTop(0);
@@ -5961,7 +5961,7 @@ function newfrmFichaSSF()
     obj.rectangle93:setStrokeSize(1);
     obj.rectangle93:setName("rectangle93");
 
-    obj.label160 = gui.fromHandle(_obj_newObject("label"));
+    obj.label160 = GUI.fromHandle(_obj_newObject("label"));
     obj.label160:setParent(obj.layout76);
     obj.label160:setLeft(275);
     obj.label160:setTop(3);
@@ -5971,7 +5971,7 @@ function newfrmFichaSSF()
     obj.label160:setHorzTextAlign("center");
     obj.label160:setName("label160");
 
-    obj.button40 = gui.fromHandle(_obj_newObject("button"));
+    obj.button40 = GUI.fromHandle(_obj_newObject("button"));
     obj.button40:setParent(obj.layout76);
     obj.button40:setLeft(300);
     obj.button40:setTop(3);
@@ -5980,12 +5980,12 @@ function newfrmFichaSSF()
     obj.button40:setText("R");
     obj.button40:setName("button40");
 
-    obj.dataLink125 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink125 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink125:setParent(obj.layout76);
     obj.dataLink125:setFields({'atr_2_5', 'dificuldade_2_5', 'bonus_2_5', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink125:setName("dataLink125");
 
-    obj.layout77 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout77 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout77:setParent(obj.layout71);
     obj.layout77:setLeft(0);
     obj.layout77:setTop(155);
@@ -5993,7 +5993,7 @@ function newfrmFichaSSF()
     obj.layout77:setHeight(25);
     obj.layout77:setName("layout77");
 
-    obj.edit102 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit102 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit102:setParent(obj.layout77);
     obj.edit102:setLeft(5);
     obj.edit102:setTop(0);
@@ -6002,13 +6002,13 @@ function newfrmFichaSSF()
     obj.edit102:setField("pericia_2_6");
     obj.edit102:setName("edit102");
 
-    obj.dataLink126 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink126 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink126:setParent(obj.layout77);
     obj.dataLink126:setField("pericia_2_6");
     obj.dataLink126:setDefaultValue("Fuga");
     obj.dataLink126:setName("dataLink126");
 
-    obj.rectangle94 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle94 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle94:setParent(obj.layout77);
     obj.rectangle94:setLeft(90);
     obj.rectangle94:setTop(0);
@@ -6019,7 +6019,7 @@ function newfrmFichaSSF()
     obj.rectangle94:setStrokeSize(1);
     obj.rectangle94:setName("rectangle94");
 
-    obj.label161 = gui.fromHandle(_obj_newObject("label"));
+    obj.label161 = GUI.fromHandle(_obj_newObject("label"));
     obj.label161:setParent(obj.layout77);
     obj.label161:setLeft(90);
     obj.label161:setTop(3);
@@ -6029,7 +6029,7 @@ function newfrmFichaSSF()
     obj.label161:setHorzTextAlign("center");
     obj.label161:setName("label161");
 
-    obj.comboBox53 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox53 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox53:setParent(obj.layout77);
     obj.comboBox53:setLeft(130);
     obj.comboBox53:setTop(0);
@@ -6040,13 +6040,13 @@ function newfrmFichaSSF()
     obj.comboBox53:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox53:setName("comboBox53");
 
-    obj.dataLink127 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink127 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink127:setParent(obj.layout77);
     obj.dataLink127:setField("atr_2_6");
     obj.dataLink127:setDefaultValue("DX");
     obj.dataLink127:setName("dataLink127");
 
-    obj.label162 = gui.fromHandle(_obj_newObject("label"));
+    obj.label162 = GUI.fromHandle(_obj_newObject("label"));
     obj.label162:setParent(obj.layout77);
     obj.label162:setLeft(180);
     obj.label162:setTop(3);
@@ -6056,7 +6056,7 @@ function newfrmFichaSSF()
     obj.label162:setHorzTextAlign("center");
     obj.label162:setName("label162");
 
-    obj.edit103 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit103 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit103:setParent(obj.layout77);
     obj.edit103:setLeft(190);
     obj.edit103:setTop(0);
@@ -6066,7 +6066,7 @@ function newfrmFichaSSF()
     obj.edit103:setField("bonus_2_6");
     obj.edit103:setName("edit103");
 
-    obj.comboBox54 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox54 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox54:setParent(obj.layout77);
     obj.comboBox54:setLeft(220);
     obj.comboBox54:setTop(0);
@@ -6077,13 +6077,13 @@ function newfrmFichaSSF()
     obj.comboBox54:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox54:setName("comboBox54");
 
-    obj.dataLink128 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink128 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink128:setParent(obj.layout77);
     obj.dataLink128:setField("dificuldade_2_6");
     obj.dataLink128:setDefaultValue("D");
     obj.dataLink128:setName("dataLink128");
 
-    obj.rectangle95 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle95 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle95:setParent(obj.layout77);
     obj.rectangle95:setLeft(275);
     obj.rectangle95:setTop(0);
@@ -6094,7 +6094,7 @@ function newfrmFichaSSF()
     obj.rectangle95:setStrokeSize(1);
     obj.rectangle95:setName("rectangle95");
 
-    obj.label163 = gui.fromHandle(_obj_newObject("label"));
+    obj.label163 = GUI.fromHandle(_obj_newObject("label"));
     obj.label163:setParent(obj.layout77);
     obj.label163:setLeft(275);
     obj.label163:setTop(3);
@@ -6104,7 +6104,7 @@ function newfrmFichaSSF()
     obj.label163:setHorzTextAlign("center");
     obj.label163:setName("label163");
 
-    obj.button41 = gui.fromHandle(_obj_newObject("button"));
+    obj.button41 = GUI.fromHandle(_obj_newObject("button"));
     obj.button41:setParent(obj.layout77);
     obj.button41:setLeft(300);
     obj.button41:setTop(3);
@@ -6113,12 +6113,12 @@ function newfrmFichaSSF()
     obj.button41:setText("R");
     obj.button41:setName("button41");
 
-    obj.dataLink129 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink129 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink129:setParent(obj.layout77);
     obj.dataLink129:setFields({'atr_2_6', 'dificuldade_2_6', 'bonus_2_6', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink129:setName("dataLink129");
 
-    obj.layout78 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout78 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout78:setParent(obj.layout71);
     obj.layout78:setLeft(0);
     obj.layout78:setTop(180);
@@ -6126,7 +6126,7 @@ function newfrmFichaSSF()
     obj.layout78:setHeight(25);
     obj.layout78:setName("layout78");
 
-    obj.edit104 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit104 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit104:setParent(obj.layout78);
     obj.edit104:setLeft(5);
     obj.edit104:setTop(0);
@@ -6135,13 +6135,13 @@ function newfrmFichaSSF()
     obj.edit104:setField("pericia_2_7");
     obj.edit104:setName("edit104");
 
-    obj.dataLink130 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink130 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink130:setParent(obj.layout78);
     obj.dataLink130:setField("pericia_2_7");
     obj.dataLink130:setDefaultValue("Geografia");
     obj.dataLink130:setName("dataLink130");
 
-    obj.rectangle96 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle96 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle96:setParent(obj.layout78);
     obj.rectangle96:setLeft(90);
     obj.rectangle96:setTop(0);
@@ -6152,7 +6152,7 @@ function newfrmFichaSSF()
     obj.rectangle96:setStrokeSize(1);
     obj.rectangle96:setName("rectangle96");
 
-    obj.label164 = gui.fromHandle(_obj_newObject("label"));
+    obj.label164 = GUI.fromHandle(_obj_newObject("label"));
     obj.label164:setParent(obj.layout78);
     obj.label164:setLeft(90);
     obj.label164:setTop(3);
@@ -6162,7 +6162,7 @@ function newfrmFichaSSF()
     obj.label164:setHorzTextAlign("center");
     obj.label164:setName("label164");
 
-    obj.comboBox55 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox55 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox55:setParent(obj.layout78);
     obj.comboBox55:setLeft(130);
     obj.comboBox55:setTop(0);
@@ -6173,13 +6173,13 @@ function newfrmFichaSSF()
     obj.comboBox55:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox55:setName("comboBox55");
 
-    obj.dataLink131 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink131 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink131:setParent(obj.layout78);
     obj.dataLink131:setField("atr_2_7");
     obj.dataLink131:setDefaultValue("IQ");
     obj.dataLink131:setName("dataLink131");
 
-    obj.label165 = gui.fromHandle(_obj_newObject("label"));
+    obj.label165 = GUI.fromHandle(_obj_newObject("label"));
     obj.label165:setParent(obj.layout78);
     obj.label165:setLeft(180);
     obj.label165:setTop(3);
@@ -6189,7 +6189,7 @@ function newfrmFichaSSF()
     obj.label165:setHorzTextAlign("center");
     obj.label165:setName("label165");
 
-    obj.edit105 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit105 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit105:setParent(obj.layout78);
     obj.edit105:setLeft(190);
     obj.edit105:setTop(0);
@@ -6199,7 +6199,7 @@ function newfrmFichaSSF()
     obj.edit105:setField("bonus_2_7");
     obj.edit105:setName("edit105");
 
-    obj.comboBox56 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox56 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox56:setParent(obj.layout78);
     obj.comboBox56:setLeft(220);
     obj.comboBox56:setTop(0);
@@ -6210,13 +6210,13 @@ function newfrmFichaSSF()
     obj.comboBox56:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox56:setName("comboBox56");
 
-    obj.dataLink132 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink132 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink132:setParent(obj.layout78);
     obj.dataLink132:setField("dificuldade_2_7");
     obj.dataLink132:setDefaultValue("D");
     obj.dataLink132:setName("dataLink132");
 
-    obj.rectangle97 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle97 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle97:setParent(obj.layout78);
     obj.rectangle97:setLeft(275);
     obj.rectangle97:setTop(0);
@@ -6227,7 +6227,7 @@ function newfrmFichaSSF()
     obj.rectangle97:setStrokeSize(1);
     obj.rectangle97:setName("rectangle97");
 
-    obj.label166 = gui.fromHandle(_obj_newObject("label"));
+    obj.label166 = GUI.fromHandle(_obj_newObject("label"));
     obj.label166:setParent(obj.layout78);
     obj.label166:setLeft(275);
     obj.label166:setTop(3);
@@ -6237,7 +6237,7 @@ function newfrmFichaSSF()
     obj.label166:setHorzTextAlign("center");
     obj.label166:setName("label166");
 
-    obj.button42 = gui.fromHandle(_obj_newObject("button"));
+    obj.button42 = GUI.fromHandle(_obj_newObject("button"));
     obj.button42:setParent(obj.layout78);
     obj.button42:setLeft(300);
     obj.button42:setTop(3);
@@ -6246,12 +6246,12 @@ function newfrmFichaSSF()
     obj.button42:setText("R");
     obj.button42:setName("button42");
 
-    obj.dataLink133 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink133 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink133:setParent(obj.layout78);
     obj.dataLink133:setFields({'atr_2_7', 'dificuldade_2_7', 'bonus_2_7', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink133:setName("dataLink133");
 
-    obj.layout79 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout79 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout79:setParent(obj.layout71);
     obj.layout79:setLeft(0);
     obj.layout79:setTop(205);
@@ -6259,7 +6259,7 @@ function newfrmFichaSSF()
     obj.layout79:setHeight(25);
     obj.layout79:setName("layout79");
 
-    obj.edit106 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit106 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit106:setParent(obj.layout79);
     obj.edit106:setLeft(5);
     obj.edit106:setTop(0);
@@ -6268,13 +6268,13 @@ function newfrmFichaSSF()
     obj.edit106:setField("pericia_2_8");
     obj.edit106:setName("edit106");
 
-    obj.dataLink134 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink134 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink134:setParent(obj.layout79);
     obj.dataLink134:setField("pericia_2_8");
     obj.dataLink134:setDefaultValue("História");
     obj.dataLink134:setName("dataLink134");
 
-    obj.rectangle98 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle98 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle98:setParent(obj.layout79);
     obj.rectangle98:setLeft(90);
     obj.rectangle98:setTop(0);
@@ -6285,7 +6285,7 @@ function newfrmFichaSSF()
     obj.rectangle98:setStrokeSize(1);
     obj.rectangle98:setName("rectangle98");
 
-    obj.label167 = gui.fromHandle(_obj_newObject("label"));
+    obj.label167 = GUI.fromHandle(_obj_newObject("label"));
     obj.label167:setParent(obj.layout79);
     obj.label167:setLeft(90);
     obj.label167:setTop(3);
@@ -6295,7 +6295,7 @@ function newfrmFichaSSF()
     obj.label167:setHorzTextAlign("center");
     obj.label167:setName("label167");
 
-    obj.comboBox57 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox57 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox57:setParent(obj.layout79);
     obj.comboBox57:setLeft(130);
     obj.comboBox57:setTop(0);
@@ -6306,13 +6306,13 @@ function newfrmFichaSSF()
     obj.comboBox57:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox57:setName("comboBox57");
 
-    obj.dataLink135 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink135 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink135:setParent(obj.layout79);
     obj.dataLink135:setField("atr_2_8");
     obj.dataLink135:setDefaultValue("IQ");
     obj.dataLink135:setName("dataLink135");
 
-    obj.label168 = gui.fromHandle(_obj_newObject("label"));
+    obj.label168 = GUI.fromHandle(_obj_newObject("label"));
     obj.label168:setParent(obj.layout79);
     obj.label168:setLeft(180);
     obj.label168:setTop(3);
@@ -6322,7 +6322,7 @@ function newfrmFichaSSF()
     obj.label168:setHorzTextAlign("center");
     obj.label168:setName("label168");
 
-    obj.edit107 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit107 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit107:setParent(obj.layout79);
     obj.edit107:setLeft(190);
     obj.edit107:setTop(0);
@@ -6332,7 +6332,7 @@ function newfrmFichaSSF()
     obj.edit107:setField("bonus_2_8");
     obj.edit107:setName("edit107");
 
-    obj.comboBox58 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox58 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox58:setParent(obj.layout79);
     obj.comboBox58:setLeft(220);
     obj.comboBox58:setTop(0);
@@ -6343,13 +6343,13 @@ function newfrmFichaSSF()
     obj.comboBox58:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox58:setName("comboBox58");
 
-    obj.dataLink136 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink136 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink136:setParent(obj.layout79);
     obj.dataLink136:setField("dificuldade_2_8");
     obj.dataLink136:setDefaultValue("D");
     obj.dataLink136:setName("dataLink136");
 
-    obj.rectangle99 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle99 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle99:setParent(obj.layout79);
     obj.rectangle99:setLeft(275);
     obj.rectangle99:setTop(0);
@@ -6360,7 +6360,7 @@ function newfrmFichaSSF()
     obj.rectangle99:setStrokeSize(1);
     obj.rectangle99:setName("rectangle99");
 
-    obj.label169 = gui.fromHandle(_obj_newObject("label"));
+    obj.label169 = GUI.fromHandle(_obj_newObject("label"));
     obj.label169:setParent(obj.layout79);
     obj.label169:setLeft(275);
     obj.label169:setTop(3);
@@ -6370,7 +6370,7 @@ function newfrmFichaSSF()
     obj.label169:setHorzTextAlign("center");
     obj.label169:setName("label169");
 
-    obj.button43 = gui.fromHandle(_obj_newObject("button"));
+    obj.button43 = GUI.fromHandle(_obj_newObject("button"));
     obj.button43:setParent(obj.layout79);
     obj.button43:setLeft(300);
     obj.button43:setTop(3);
@@ -6379,12 +6379,12 @@ function newfrmFichaSSF()
     obj.button43:setText("R");
     obj.button43:setName("button43");
 
-    obj.dataLink137 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink137 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink137:setParent(obj.layout79);
     obj.dataLink137:setFields({'atr_2_8', 'dificuldade_2_8', 'bonus_2_8', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink137:setName("dataLink137");
 
-    obj.layout80 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout80 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout80:setParent(obj.layout71);
     obj.layout80:setLeft(0);
     obj.layout80:setTop(230);
@@ -6392,7 +6392,7 @@ function newfrmFichaSSF()
     obj.layout80:setHeight(25);
     obj.layout80:setName("layout80");
 
-    obj.edit108 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit108 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit108:setParent(obj.layout80);
     obj.edit108:setLeft(5);
     obj.edit108:setTop(0);
@@ -6401,13 +6401,13 @@ function newfrmFichaSSF()
     obj.edit108:setField("pericia_2_9");
     obj.edit108:setName("edit108");
 
-    obj.dataLink138 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink138 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink138:setParent(obj.layout80);
     obj.dataLink138:setField("pericia_2_9");
     obj.dataLink138:setDefaultValue("Interrogatório");
     obj.dataLink138:setName("dataLink138");
 
-    obj.rectangle100 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle100 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle100:setParent(obj.layout80);
     obj.rectangle100:setLeft(90);
     obj.rectangle100:setTop(0);
@@ -6418,7 +6418,7 @@ function newfrmFichaSSF()
     obj.rectangle100:setStrokeSize(1);
     obj.rectangle100:setName("rectangle100");
 
-    obj.label170 = gui.fromHandle(_obj_newObject("label"));
+    obj.label170 = GUI.fromHandle(_obj_newObject("label"));
     obj.label170:setParent(obj.layout80);
     obj.label170:setLeft(90);
     obj.label170:setTop(3);
@@ -6428,7 +6428,7 @@ function newfrmFichaSSF()
     obj.label170:setHorzTextAlign("center");
     obj.label170:setName("label170");
 
-    obj.comboBox59 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox59 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox59:setParent(obj.layout80);
     obj.comboBox59:setLeft(130);
     obj.comboBox59:setTop(0);
@@ -6439,13 +6439,13 @@ function newfrmFichaSSF()
     obj.comboBox59:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox59:setName("comboBox59");
 
-    obj.dataLink139 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink139 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink139:setParent(obj.layout80);
     obj.dataLink139:setField("atr_2_9");
     obj.dataLink139:setDefaultValue("IQ");
     obj.dataLink139:setName("dataLink139");
 
-    obj.label171 = gui.fromHandle(_obj_newObject("label"));
+    obj.label171 = GUI.fromHandle(_obj_newObject("label"));
     obj.label171:setParent(obj.layout80);
     obj.label171:setLeft(180);
     obj.label171:setTop(3);
@@ -6455,7 +6455,7 @@ function newfrmFichaSSF()
     obj.label171:setHorzTextAlign("center");
     obj.label171:setName("label171");
 
-    obj.edit109 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit109 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit109:setParent(obj.layout80);
     obj.edit109:setLeft(190);
     obj.edit109:setTop(0);
@@ -6465,7 +6465,7 @@ function newfrmFichaSSF()
     obj.edit109:setField("bonus_2_9");
     obj.edit109:setName("edit109");
 
-    obj.comboBox60 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox60 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox60:setParent(obj.layout80);
     obj.comboBox60:setLeft(220);
     obj.comboBox60:setTop(0);
@@ -6476,13 +6476,13 @@ function newfrmFichaSSF()
     obj.comboBox60:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox60:setName("comboBox60");
 
-    obj.dataLink140 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink140 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink140:setParent(obj.layout80);
     obj.dataLink140:setField("dificuldade_2_9");
     obj.dataLink140:setDefaultValue("M");
     obj.dataLink140:setName("dataLink140");
 
-    obj.rectangle101 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle101 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle101:setParent(obj.layout80);
     obj.rectangle101:setLeft(275);
     obj.rectangle101:setTop(0);
@@ -6493,7 +6493,7 @@ function newfrmFichaSSF()
     obj.rectangle101:setStrokeSize(1);
     obj.rectangle101:setName("rectangle101");
 
-    obj.label172 = gui.fromHandle(_obj_newObject("label"));
+    obj.label172 = GUI.fromHandle(_obj_newObject("label"));
     obj.label172:setParent(obj.layout80);
     obj.label172:setLeft(275);
     obj.label172:setTop(3);
@@ -6503,7 +6503,7 @@ function newfrmFichaSSF()
     obj.label172:setHorzTextAlign("center");
     obj.label172:setName("label172");
 
-    obj.button44 = gui.fromHandle(_obj_newObject("button"));
+    obj.button44 = GUI.fromHandle(_obj_newObject("button"));
     obj.button44:setParent(obj.layout80);
     obj.button44:setLeft(300);
     obj.button44:setTop(3);
@@ -6512,12 +6512,12 @@ function newfrmFichaSSF()
     obj.button44:setText("R");
     obj.button44:setName("button44");
 
-    obj.dataLink141 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink141 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink141:setParent(obj.layout80);
     obj.dataLink141:setFields({'atr_2_9', 'dificuldade_2_9', 'bonus_2_9', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink141:setName("dataLink141");
 
-    obj.layout81 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout81 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout81:setParent(obj.layout71);
     obj.layout81:setLeft(0);
     obj.layout81:setTop(255);
@@ -6525,7 +6525,7 @@ function newfrmFichaSSF()
     obj.layout81:setHeight(25);
     obj.layout81:setName("layout81");
 
-    obj.edit110 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit110 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit110:setParent(obj.layout81);
     obj.edit110:setLeft(5);
     obj.edit110:setTop(0);
@@ -6534,13 +6534,13 @@ function newfrmFichaSSF()
     obj.edit110:setField("pericia_2_10");
     obj.edit110:setName("edit110");
 
-    obj.dataLink142 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink142 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink142:setParent(obj.layout81);
     obj.dataLink142:setField("pericia_2_10");
     obj.dataLink142:setDefaultValue("Intimidação");
     obj.dataLink142:setName("dataLink142");
 
-    obj.rectangle102 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle102 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle102:setParent(obj.layout81);
     obj.rectangle102:setLeft(90);
     obj.rectangle102:setTop(0);
@@ -6551,7 +6551,7 @@ function newfrmFichaSSF()
     obj.rectangle102:setStrokeSize(1);
     obj.rectangle102:setName("rectangle102");
 
-    obj.label173 = gui.fromHandle(_obj_newObject("label"));
+    obj.label173 = GUI.fromHandle(_obj_newObject("label"));
     obj.label173:setParent(obj.layout81);
     obj.label173:setLeft(90);
     obj.label173:setTop(3);
@@ -6561,7 +6561,7 @@ function newfrmFichaSSF()
     obj.label173:setHorzTextAlign("center");
     obj.label173:setName("label173");
 
-    obj.comboBox61 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox61 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox61:setParent(obj.layout81);
     obj.comboBox61:setLeft(130);
     obj.comboBox61:setTop(0);
@@ -6572,13 +6572,13 @@ function newfrmFichaSSF()
     obj.comboBox61:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox61:setName("comboBox61");
 
-    obj.dataLink143 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink143 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink143:setParent(obj.layout81);
     obj.dataLink143:setField("atr_2_10");
     obj.dataLink143:setDefaultValue("VT");
     obj.dataLink143:setName("dataLink143");
 
-    obj.label174 = gui.fromHandle(_obj_newObject("label"));
+    obj.label174 = GUI.fromHandle(_obj_newObject("label"));
     obj.label174:setParent(obj.layout81);
     obj.label174:setLeft(180);
     obj.label174:setTop(3);
@@ -6588,7 +6588,7 @@ function newfrmFichaSSF()
     obj.label174:setHorzTextAlign("center");
     obj.label174:setName("label174");
 
-    obj.edit111 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit111 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit111:setParent(obj.layout81);
     obj.edit111:setLeft(190);
     obj.edit111:setTop(0);
@@ -6598,7 +6598,7 @@ function newfrmFichaSSF()
     obj.edit111:setField("bonus_2_10");
     obj.edit111:setName("edit111");
 
-    obj.comboBox62 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox62 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox62:setParent(obj.layout81);
     obj.comboBox62:setLeft(220);
     obj.comboBox62:setTop(0);
@@ -6609,13 +6609,13 @@ function newfrmFichaSSF()
     obj.comboBox62:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox62:setName("comboBox62");
 
-    obj.dataLink144 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink144 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink144:setParent(obj.layout81);
     obj.dataLink144:setField("dificuldade_2_10");
     obj.dataLink144:setDefaultValue("M");
     obj.dataLink144:setName("dataLink144");
 
-    obj.rectangle103 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle103 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle103:setParent(obj.layout81);
     obj.rectangle103:setLeft(275);
     obj.rectangle103:setTop(0);
@@ -6626,7 +6626,7 @@ function newfrmFichaSSF()
     obj.rectangle103:setStrokeSize(1);
     obj.rectangle103:setName("rectangle103");
 
-    obj.label175 = gui.fromHandle(_obj_newObject("label"));
+    obj.label175 = GUI.fromHandle(_obj_newObject("label"));
     obj.label175:setParent(obj.layout81);
     obj.label175:setLeft(275);
     obj.label175:setTop(3);
@@ -6636,7 +6636,7 @@ function newfrmFichaSSF()
     obj.label175:setHorzTextAlign("center");
     obj.label175:setName("label175");
 
-    obj.button45 = gui.fromHandle(_obj_newObject("button"));
+    obj.button45 = GUI.fromHandle(_obj_newObject("button"));
     obj.button45:setParent(obj.layout81);
     obj.button45:setLeft(300);
     obj.button45:setTop(3);
@@ -6645,12 +6645,12 @@ function newfrmFichaSSF()
     obj.button45:setText("R");
     obj.button45:setName("button45");
 
-    obj.dataLink145 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink145 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink145:setParent(obj.layout81);
     obj.dataLink145:setFields({'atr_2_10', 'dificuldade_2_10', 'bonus_2_10', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink145:setName("dataLink145");
 
-    obj.layout82 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout82 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout82:setParent(obj.layout71);
     obj.layout82:setLeft(0);
     obj.layout82:setTop(280);
@@ -6658,7 +6658,7 @@ function newfrmFichaSSF()
     obj.layout82:setHeight(25);
     obj.layout82:setName("layout82");
 
-    obj.edit112 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit112 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit112:setParent(obj.layout82);
     obj.edit112:setLeft(5);
     obj.edit112:setTop(0);
@@ -6667,13 +6667,13 @@ function newfrmFichaSSF()
     obj.edit112:setField("pericia_2_11");
     obj.edit112:setName("edit112");
 
-    obj.dataLink146 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink146 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink146:setParent(obj.layout82);
     obj.dataLink146:setField("pericia_2_11");
     obj.dataLink146:setDefaultValue("Lábia");
     obj.dataLink146:setName("dataLink146");
 
-    obj.rectangle104 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle104 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle104:setParent(obj.layout82);
     obj.rectangle104:setLeft(90);
     obj.rectangle104:setTop(0);
@@ -6684,7 +6684,7 @@ function newfrmFichaSSF()
     obj.rectangle104:setStrokeSize(1);
     obj.rectangle104:setName("rectangle104");
 
-    obj.label176 = gui.fromHandle(_obj_newObject("label"));
+    obj.label176 = GUI.fromHandle(_obj_newObject("label"));
     obj.label176:setParent(obj.layout82);
     obj.label176:setLeft(90);
     obj.label176:setTop(3);
@@ -6694,7 +6694,7 @@ function newfrmFichaSSF()
     obj.label176:setHorzTextAlign("center");
     obj.label176:setName("label176");
 
-    obj.comboBox63 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox63 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox63:setParent(obj.layout82);
     obj.comboBox63:setLeft(130);
     obj.comboBox63:setTop(0);
@@ -6705,13 +6705,13 @@ function newfrmFichaSSF()
     obj.comboBox63:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox63:setName("comboBox63");
 
-    obj.dataLink147 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink147 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink147:setParent(obj.layout82);
     obj.dataLink147:setField("atr_2_11");
     obj.dataLink147:setDefaultValue("IQ");
     obj.dataLink147:setName("dataLink147");
 
-    obj.label177 = gui.fromHandle(_obj_newObject("label"));
+    obj.label177 = GUI.fromHandle(_obj_newObject("label"));
     obj.label177:setParent(obj.layout82);
     obj.label177:setLeft(180);
     obj.label177:setTop(3);
@@ -6721,7 +6721,7 @@ function newfrmFichaSSF()
     obj.label177:setHorzTextAlign("center");
     obj.label177:setName("label177");
 
-    obj.edit113 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit113 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit113:setParent(obj.layout82);
     obj.edit113:setLeft(190);
     obj.edit113:setTop(0);
@@ -6731,7 +6731,7 @@ function newfrmFichaSSF()
     obj.edit113:setField("bonus_2_11");
     obj.edit113:setName("edit113");
 
-    obj.comboBox64 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox64 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox64:setParent(obj.layout82);
     obj.comboBox64:setLeft(220);
     obj.comboBox64:setTop(0);
@@ -6742,13 +6742,13 @@ function newfrmFichaSSF()
     obj.comboBox64:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox64:setName("comboBox64");
 
-    obj.dataLink148 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink148 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink148:setParent(obj.layout82);
     obj.dataLink148:setField("dificuldade_2_11");
     obj.dataLink148:setDefaultValue("M");
     obj.dataLink148:setName("dataLink148");
 
-    obj.rectangle105 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle105 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle105:setParent(obj.layout82);
     obj.rectangle105:setLeft(275);
     obj.rectangle105:setTop(0);
@@ -6759,7 +6759,7 @@ function newfrmFichaSSF()
     obj.rectangle105:setStrokeSize(1);
     obj.rectangle105:setName("rectangle105");
 
-    obj.label178 = gui.fromHandle(_obj_newObject("label"));
+    obj.label178 = GUI.fromHandle(_obj_newObject("label"));
     obj.label178:setParent(obj.layout82);
     obj.label178:setLeft(275);
     obj.label178:setTop(3);
@@ -6769,7 +6769,7 @@ function newfrmFichaSSF()
     obj.label178:setHorzTextAlign("center");
     obj.label178:setName("label178");
 
-    obj.button46 = gui.fromHandle(_obj_newObject("button"));
+    obj.button46 = GUI.fromHandle(_obj_newObject("button"));
     obj.button46:setParent(obj.layout82);
     obj.button46:setLeft(300);
     obj.button46:setTop(3);
@@ -6778,12 +6778,12 @@ function newfrmFichaSSF()
     obj.button46:setText("R");
     obj.button46:setName("button46");
 
-    obj.dataLink149 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink149 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink149:setParent(obj.layout82);
     obj.dataLink149:setFields({'atr_2_11', 'dificuldade_2_11', 'bonus_2_11', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink149:setName("dataLink149");
 
-    obj.layout83 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout83 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout83:setParent(obj.layout71);
     obj.layout83:setLeft(0);
     obj.layout83:setTop(305);
@@ -6791,7 +6791,7 @@ function newfrmFichaSSF()
     obj.layout83:setHeight(25);
     obj.layout83:setName("layout83");
 
-    obj.edit114 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit114 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit114:setParent(obj.layout83);
     obj.edit114:setLeft(5);
     obj.edit114:setTop(0);
@@ -6800,13 +6800,13 @@ function newfrmFichaSSF()
     obj.edit114:setField("pericia_2_12");
     obj.edit114:setName("edit114");
 
-    obj.dataLink150 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink150 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink150:setParent(obj.layout83);
     obj.dataLink150:setField("pericia_2_12");
     obj.dataLink150:setDefaultValue("Leitura Lábial");
     obj.dataLink150:setName("dataLink150");
 
-    obj.rectangle106 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle106 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle106:setParent(obj.layout83);
     obj.rectangle106:setLeft(90);
     obj.rectangle106:setTop(0);
@@ -6817,7 +6817,7 @@ function newfrmFichaSSF()
     obj.rectangle106:setStrokeSize(1);
     obj.rectangle106:setName("rectangle106");
 
-    obj.label179 = gui.fromHandle(_obj_newObject("label"));
+    obj.label179 = GUI.fromHandle(_obj_newObject("label"));
     obj.label179:setParent(obj.layout83);
     obj.label179:setLeft(90);
     obj.label179:setTop(3);
@@ -6827,7 +6827,7 @@ function newfrmFichaSSF()
     obj.label179:setHorzTextAlign("center");
     obj.label179:setName("label179");
 
-    obj.comboBox65 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox65 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox65:setParent(obj.layout83);
     obj.comboBox65:setLeft(130);
     obj.comboBox65:setTop(0);
@@ -6838,13 +6838,13 @@ function newfrmFichaSSF()
     obj.comboBox65:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox65:setName("comboBox65");
 
-    obj.dataLink151 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink151 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink151:setParent(obj.layout83);
     obj.dataLink151:setField("atr_2_12");
     obj.dataLink151:setDefaultValue("PR");
     obj.dataLink151:setName("dataLink151");
 
-    obj.label180 = gui.fromHandle(_obj_newObject("label"));
+    obj.label180 = GUI.fromHandle(_obj_newObject("label"));
     obj.label180:setParent(obj.layout83);
     obj.label180:setLeft(180);
     obj.label180:setTop(3);
@@ -6854,7 +6854,7 @@ function newfrmFichaSSF()
     obj.label180:setHorzTextAlign("center");
     obj.label180:setName("label180");
 
-    obj.edit115 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit115 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit115:setParent(obj.layout83);
     obj.edit115:setLeft(190);
     obj.edit115:setTop(0);
@@ -6864,7 +6864,7 @@ function newfrmFichaSSF()
     obj.edit115:setField("bonus_2_12");
     obj.edit115:setName("edit115");
 
-    obj.comboBox66 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox66 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox66:setParent(obj.layout83);
     obj.comboBox66:setLeft(220);
     obj.comboBox66:setTop(0);
@@ -6875,13 +6875,13 @@ function newfrmFichaSSF()
     obj.comboBox66:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox66:setName("comboBox66");
 
-    obj.dataLink152 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink152 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink152:setParent(obj.layout83);
     obj.dataLink152:setField("dificuldade_2_12");
     obj.dataLink152:setDefaultValue("M");
     obj.dataLink152:setName("dataLink152");
 
-    obj.rectangle107 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle107 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle107:setParent(obj.layout83);
     obj.rectangle107:setLeft(275);
     obj.rectangle107:setTop(0);
@@ -6892,7 +6892,7 @@ function newfrmFichaSSF()
     obj.rectangle107:setStrokeSize(1);
     obj.rectangle107:setName("rectangle107");
 
-    obj.label181 = gui.fromHandle(_obj_newObject("label"));
+    obj.label181 = GUI.fromHandle(_obj_newObject("label"));
     obj.label181:setParent(obj.layout83);
     obj.label181:setLeft(275);
     obj.label181:setTop(3);
@@ -6902,7 +6902,7 @@ function newfrmFichaSSF()
     obj.label181:setHorzTextAlign("center");
     obj.label181:setName("label181");
 
-    obj.button47 = gui.fromHandle(_obj_newObject("button"));
+    obj.button47 = GUI.fromHandle(_obj_newObject("button"));
     obj.button47:setParent(obj.layout83);
     obj.button47:setLeft(300);
     obj.button47:setTop(3);
@@ -6911,12 +6911,12 @@ function newfrmFichaSSF()
     obj.button47:setText("R");
     obj.button47:setName("button47");
 
-    obj.dataLink153 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink153 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink153:setParent(obj.layout83);
     obj.dataLink153:setFields({'atr_2_12', 'dificuldade_2_12', 'bonus_2_12', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink153:setName("dataLink153");
 
-    obj.layout84 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout84 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout84:setParent(obj.layout71);
     obj.layout84:setLeft(0);
     obj.layout84:setTop(330);
@@ -6924,7 +6924,7 @@ function newfrmFichaSSF()
     obj.layout84:setHeight(25);
     obj.layout84:setName("layout84");
 
-    obj.edit116 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit116 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit116:setParent(obj.layout84);
     obj.edit116:setLeft(5);
     obj.edit116:setTop(0);
@@ -6933,13 +6933,13 @@ function newfrmFichaSSF()
     obj.edit116:setField("pericia_2_13");
     obj.edit116:setName("edit116");
 
-    obj.dataLink154 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink154 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink154:setParent(obj.layout84);
     obj.dataLink154:setField("pericia_2_13");
     obj.dataLink154:setDefaultValue("Liderança");
     obj.dataLink154:setName("dataLink154");
 
-    obj.rectangle108 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle108 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle108:setParent(obj.layout84);
     obj.rectangle108:setLeft(90);
     obj.rectangle108:setTop(0);
@@ -6950,7 +6950,7 @@ function newfrmFichaSSF()
     obj.rectangle108:setStrokeSize(1);
     obj.rectangle108:setName("rectangle108");
 
-    obj.label182 = gui.fromHandle(_obj_newObject("label"));
+    obj.label182 = GUI.fromHandle(_obj_newObject("label"));
     obj.label182:setParent(obj.layout84);
     obj.label182:setLeft(90);
     obj.label182:setTop(3);
@@ -6960,7 +6960,7 @@ function newfrmFichaSSF()
     obj.label182:setHorzTextAlign("center");
     obj.label182:setName("label182");
 
-    obj.comboBox67 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox67 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox67:setParent(obj.layout84);
     obj.comboBox67:setLeft(130);
     obj.comboBox67:setTop(0);
@@ -6971,13 +6971,13 @@ function newfrmFichaSSF()
     obj.comboBox67:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox67:setName("comboBox67");
 
-    obj.dataLink155 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink155 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink155:setParent(obj.layout84);
     obj.dataLink155:setField("atr_2_13");
     obj.dataLink155:setDefaultValue("IQ");
     obj.dataLink155:setName("dataLink155");
 
-    obj.label183 = gui.fromHandle(_obj_newObject("label"));
+    obj.label183 = GUI.fromHandle(_obj_newObject("label"));
     obj.label183:setParent(obj.layout84);
     obj.label183:setLeft(180);
     obj.label183:setTop(3);
@@ -6987,7 +6987,7 @@ function newfrmFichaSSF()
     obj.label183:setHorzTextAlign("center");
     obj.label183:setName("label183");
 
-    obj.edit117 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit117 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit117:setParent(obj.layout84);
     obj.edit117:setLeft(190);
     obj.edit117:setTop(0);
@@ -6997,7 +6997,7 @@ function newfrmFichaSSF()
     obj.edit117:setField("bonus_2_13");
     obj.edit117:setName("edit117");
 
-    obj.comboBox68 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox68 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox68:setParent(obj.layout84);
     obj.comboBox68:setLeft(220);
     obj.comboBox68:setTop(0);
@@ -7008,13 +7008,13 @@ function newfrmFichaSSF()
     obj.comboBox68:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox68:setName("comboBox68");
 
-    obj.dataLink156 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink156 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink156:setParent(obj.layout84);
     obj.dataLink156:setField("dificuldade_2_13");
     obj.dataLink156:setDefaultValue("M");
     obj.dataLink156:setName("dataLink156");
 
-    obj.rectangle109 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle109 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle109:setParent(obj.layout84);
     obj.rectangle109:setLeft(275);
     obj.rectangle109:setTop(0);
@@ -7025,7 +7025,7 @@ function newfrmFichaSSF()
     obj.rectangle109:setStrokeSize(1);
     obj.rectangle109:setName("rectangle109");
 
-    obj.label184 = gui.fromHandle(_obj_newObject("label"));
+    obj.label184 = GUI.fromHandle(_obj_newObject("label"));
     obj.label184:setParent(obj.layout84);
     obj.label184:setLeft(275);
     obj.label184:setTop(3);
@@ -7035,7 +7035,7 @@ function newfrmFichaSSF()
     obj.label184:setHorzTextAlign("center");
     obj.label184:setName("label184");
 
-    obj.button48 = gui.fromHandle(_obj_newObject("button"));
+    obj.button48 = GUI.fromHandle(_obj_newObject("button"));
     obj.button48:setParent(obj.layout84);
     obj.button48:setLeft(300);
     obj.button48:setTop(3);
@@ -7044,12 +7044,12 @@ function newfrmFichaSSF()
     obj.button48:setText("R");
     obj.button48:setName("button48");
 
-    obj.dataLink157 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink157 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink157:setParent(obj.layout84);
     obj.dataLink157:setFields({'atr_2_13', 'dificuldade_2_13', 'bonus_2_13', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink157:setName("dataLink157");
 
-    obj.layout85 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout85 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout85:setParent(obj.layout71);
     obj.layout85:setLeft(0);
     obj.layout85:setTop(355);
@@ -7057,7 +7057,7 @@ function newfrmFichaSSF()
     obj.layout85:setHeight(25);
     obj.layout85:setName("layout85");
 
-    obj.edit118 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit118 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit118:setParent(obj.layout85);
     obj.edit118:setLeft(5);
     obj.edit118:setTop(0);
@@ -7066,13 +7066,13 @@ function newfrmFichaSSF()
     obj.edit118:setField("pericia_2_14");
     obj.edit118:setName("edit118");
 
-    obj.dataLink158 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink158 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink158:setParent(obj.layout85);
     obj.dataLink158:setField("pericia_2_14");
     obj.dataLink158:setDefaultValue("Linguagem Corporal");
     obj.dataLink158:setName("dataLink158");
 
-    obj.rectangle110 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle110 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle110:setParent(obj.layout85);
     obj.rectangle110:setLeft(90);
     obj.rectangle110:setTop(0);
@@ -7083,7 +7083,7 @@ function newfrmFichaSSF()
     obj.rectangle110:setStrokeSize(1);
     obj.rectangle110:setName("rectangle110");
 
-    obj.label185 = gui.fromHandle(_obj_newObject("label"));
+    obj.label185 = GUI.fromHandle(_obj_newObject("label"));
     obj.label185:setParent(obj.layout85);
     obj.label185:setLeft(90);
     obj.label185:setTop(3);
@@ -7093,7 +7093,7 @@ function newfrmFichaSSF()
     obj.label185:setHorzTextAlign("center");
     obj.label185:setName("label185");
 
-    obj.comboBox69 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox69 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox69:setParent(obj.layout85);
     obj.comboBox69:setLeft(130);
     obj.comboBox69:setTop(0);
@@ -7104,13 +7104,13 @@ function newfrmFichaSSF()
     obj.comboBox69:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox69:setName("comboBox69");
 
-    obj.dataLink159 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink159 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink159:setParent(obj.layout85);
     obj.dataLink159:setField("atr_2_14");
     obj.dataLink159:setDefaultValue("DX");
     obj.dataLink159:setName("dataLink159");
 
-    obj.label186 = gui.fromHandle(_obj_newObject("label"));
+    obj.label186 = GUI.fromHandle(_obj_newObject("label"));
     obj.label186:setParent(obj.layout85);
     obj.label186:setLeft(180);
     obj.label186:setTop(3);
@@ -7120,7 +7120,7 @@ function newfrmFichaSSF()
     obj.label186:setHorzTextAlign("center");
     obj.label186:setName("label186");
 
-    obj.edit119 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit119 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit119:setParent(obj.layout85);
     obj.edit119:setLeft(190);
     obj.edit119:setTop(0);
@@ -7130,7 +7130,7 @@ function newfrmFichaSSF()
     obj.edit119:setField("bonus_2_14");
     obj.edit119:setName("edit119");
 
-    obj.comboBox70 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox70 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox70:setParent(obj.layout85);
     obj.comboBox70:setLeft(220);
     obj.comboBox70:setTop(0);
@@ -7141,13 +7141,13 @@ function newfrmFichaSSF()
     obj.comboBox70:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox70:setName("comboBox70");
 
-    obj.dataLink160 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink160 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink160:setParent(obj.layout85);
     obj.dataLink160:setField("dificuldade_2_14");
     obj.dataLink160:setDefaultValue("D");
     obj.dataLink160:setName("dataLink160");
 
-    obj.rectangle111 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle111 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle111:setParent(obj.layout85);
     obj.rectangle111:setLeft(275);
     obj.rectangle111:setTop(0);
@@ -7158,7 +7158,7 @@ function newfrmFichaSSF()
     obj.rectangle111:setStrokeSize(1);
     obj.rectangle111:setName("rectangle111");
 
-    obj.label187 = gui.fromHandle(_obj_newObject("label"));
+    obj.label187 = GUI.fromHandle(_obj_newObject("label"));
     obj.label187:setParent(obj.layout85);
     obj.label187:setLeft(275);
     obj.label187:setTop(3);
@@ -7168,7 +7168,7 @@ function newfrmFichaSSF()
     obj.label187:setHorzTextAlign("center");
     obj.label187:setName("label187");
 
-    obj.button49 = gui.fromHandle(_obj_newObject("button"));
+    obj.button49 = GUI.fromHandle(_obj_newObject("button"));
     obj.button49:setParent(obj.layout85);
     obj.button49:setLeft(300);
     obj.button49:setTop(3);
@@ -7177,12 +7177,12 @@ function newfrmFichaSSF()
     obj.button49:setText("R");
     obj.button49:setName("button49");
 
-    obj.dataLink161 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink161 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink161:setParent(obj.layout85);
     obj.dataLink161:setFields({'atr_2_14', 'dificuldade_2_14', 'bonus_2_14', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink161:setName("dataLink161");
 
-    obj.layout86 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout86 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout86:setParent(obj.layout71);
     obj.layout86:setLeft(0);
     obj.layout86:setTop(380);
@@ -7190,7 +7190,7 @@ function newfrmFichaSSF()
     obj.layout86:setHeight(25);
     obj.layout86:setName("layout86");
 
-    obj.edit120 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit120 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit120:setParent(obj.layout86);
     obj.edit120:setLeft(5);
     obj.edit120:setTop(0);
@@ -7199,13 +7199,13 @@ function newfrmFichaSSF()
     obj.edit120:setField("pericia_2_15");
     obj.edit120:setName("edit120");
 
-    obj.dataLink162 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink162 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink162:setParent(obj.layout86);
     obj.dataLink162:setField("pericia_2_15");
     obj.dataLink162:setDefaultValue("Lutas às Cegas");
     obj.dataLink162:setName("dataLink162");
 
-    obj.rectangle112 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle112 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle112:setParent(obj.layout86);
     obj.rectangle112:setLeft(90);
     obj.rectangle112:setTop(0);
@@ -7216,7 +7216,7 @@ function newfrmFichaSSF()
     obj.rectangle112:setStrokeSize(1);
     obj.rectangle112:setName("rectangle112");
 
-    obj.label188 = gui.fromHandle(_obj_newObject("label"));
+    obj.label188 = GUI.fromHandle(_obj_newObject("label"));
     obj.label188:setParent(obj.layout86);
     obj.label188:setLeft(90);
     obj.label188:setTop(3);
@@ -7226,7 +7226,7 @@ function newfrmFichaSSF()
     obj.label188:setHorzTextAlign("center");
     obj.label188:setName("label188");
 
-    obj.comboBox71 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox71 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox71:setParent(obj.layout86);
     obj.comboBox71:setLeft(130);
     obj.comboBox71:setTop(0);
@@ -7237,13 +7237,13 @@ function newfrmFichaSSF()
     obj.comboBox71:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox71:setName("comboBox71");
 
-    obj.dataLink163 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink163 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink163:setParent(obj.layout86);
     obj.dataLink163:setField("atr_2_15");
     obj.dataLink163:setDefaultValue("PR");
     obj.dataLink163:setName("dataLink163");
 
-    obj.label189 = gui.fromHandle(_obj_newObject("label"));
+    obj.label189 = GUI.fromHandle(_obj_newObject("label"));
     obj.label189:setParent(obj.layout86);
     obj.label189:setLeft(180);
     obj.label189:setTop(3);
@@ -7253,7 +7253,7 @@ function newfrmFichaSSF()
     obj.label189:setHorzTextAlign("center");
     obj.label189:setName("label189");
 
-    obj.edit121 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit121 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit121:setParent(obj.layout86);
     obj.edit121:setLeft(190);
     obj.edit121:setTop(0);
@@ -7263,7 +7263,7 @@ function newfrmFichaSSF()
     obj.edit121:setField("bonus_2_15");
     obj.edit121:setName("edit121");
 
-    obj.comboBox72 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox72 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox72:setParent(obj.layout86);
     obj.comboBox72:setLeft(220);
     obj.comboBox72:setTop(0);
@@ -7274,13 +7274,13 @@ function newfrmFichaSSF()
     obj.comboBox72:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox72:setName("comboBox72");
 
-    obj.dataLink164 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink164 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink164:setParent(obj.layout86);
     obj.dataLink164:setField("dificuldade_2_15");
     obj.dataLink164:setDefaultValue("MD");
     obj.dataLink164:setName("dataLink164");
 
-    obj.rectangle113 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle113 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle113:setParent(obj.layout86);
     obj.rectangle113:setLeft(275);
     obj.rectangle113:setTop(0);
@@ -7291,7 +7291,7 @@ function newfrmFichaSSF()
     obj.rectangle113:setStrokeSize(1);
     obj.rectangle113:setName("rectangle113");
 
-    obj.label190 = gui.fromHandle(_obj_newObject("label"));
+    obj.label190 = GUI.fromHandle(_obj_newObject("label"));
     obj.label190:setParent(obj.layout86);
     obj.label190:setLeft(275);
     obj.label190:setTop(3);
@@ -7301,7 +7301,7 @@ function newfrmFichaSSF()
     obj.label190:setHorzTextAlign("center");
     obj.label190:setName("label190");
 
-    obj.button50 = gui.fromHandle(_obj_newObject("button"));
+    obj.button50 = GUI.fromHandle(_obj_newObject("button"));
     obj.button50:setParent(obj.layout86);
     obj.button50:setLeft(300);
     obj.button50:setTop(3);
@@ -7310,12 +7310,12 @@ function newfrmFichaSSF()
     obj.button50:setText("R");
     obj.button50:setName("button50");
 
-    obj.dataLink165 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink165 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink165:setParent(obj.layout86);
     obj.dataLink165:setFields({'atr_2_15', 'dificuldade_2_15', 'bonus_2_15', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink165:setName("dataLink165");
 
-    obj.layout87 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout87 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout87:setParent(obj.layout71);
     obj.layout87:setLeft(0);
     obj.layout87:setTop(405);
@@ -7323,7 +7323,7 @@ function newfrmFichaSSF()
     obj.layout87:setHeight(25);
     obj.layout87:setName("layout87");
 
-    obj.edit122 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit122 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit122:setParent(obj.layout87);
     obj.edit122:setLeft(5);
     obj.edit122:setTop(0);
@@ -7332,13 +7332,13 @@ function newfrmFichaSSF()
     obj.edit122:setField("pericia_2_16");
     obj.edit122:setName("edit122");
 
-    obj.dataLink166 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink166 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink166:setParent(obj.layout87);
     obj.dataLink166:setField("pericia_2_16");
     obj.dataLink166:setDefaultValue("Medicina (Cosmo)");
     obj.dataLink166:setName("dataLink166");
 
-    obj.rectangle114 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle114 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle114:setParent(obj.layout87);
     obj.rectangle114:setLeft(90);
     obj.rectangle114:setTop(0);
@@ -7349,7 +7349,7 @@ function newfrmFichaSSF()
     obj.rectangle114:setStrokeSize(1);
     obj.rectangle114:setName("rectangle114");
 
-    obj.label191 = gui.fromHandle(_obj_newObject("label"));
+    obj.label191 = GUI.fromHandle(_obj_newObject("label"));
     obj.label191:setParent(obj.layout87);
     obj.label191:setLeft(90);
     obj.label191:setTop(3);
@@ -7359,7 +7359,7 @@ function newfrmFichaSSF()
     obj.label191:setHorzTextAlign("center");
     obj.label191:setName("label191");
 
-    obj.comboBox73 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox73 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox73:setParent(obj.layout87);
     obj.comboBox73:setLeft(130);
     obj.comboBox73:setTop(0);
@@ -7370,13 +7370,13 @@ function newfrmFichaSSF()
     obj.comboBox73:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox73:setName("comboBox73");
 
-    obj.dataLink167 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink167 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink167:setParent(obj.layout87);
     obj.dataLink167:setField("atr_2_16");
     obj.dataLink167:setDefaultValue("IQ");
     obj.dataLink167:setName("dataLink167");
 
-    obj.label192 = gui.fromHandle(_obj_newObject("label"));
+    obj.label192 = GUI.fromHandle(_obj_newObject("label"));
     obj.label192:setParent(obj.layout87);
     obj.label192:setLeft(180);
     obj.label192:setTop(3);
@@ -7386,7 +7386,7 @@ function newfrmFichaSSF()
     obj.label192:setHorzTextAlign("center");
     obj.label192:setName("label192");
 
-    obj.edit123 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit123 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit123:setParent(obj.layout87);
     obj.edit123:setLeft(190);
     obj.edit123:setTop(0);
@@ -7396,7 +7396,7 @@ function newfrmFichaSSF()
     obj.edit123:setField("bonus_2_16");
     obj.edit123:setName("edit123");
 
-    obj.comboBox74 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox74 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox74:setParent(obj.layout87);
     obj.comboBox74:setLeft(220);
     obj.comboBox74:setTop(0);
@@ -7407,13 +7407,13 @@ function newfrmFichaSSF()
     obj.comboBox74:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox74:setName("comboBox74");
 
-    obj.dataLink168 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink168 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink168:setParent(obj.layout87);
     obj.dataLink168:setField("dificuldade_2_16");
     obj.dataLink168:setDefaultValue("D");
     obj.dataLink168:setName("dataLink168");
 
-    obj.rectangle115 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle115 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle115:setParent(obj.layout87);
     obj.rectangle115:setLeft(275);
     obj.rectangle115:setTop(0);
@@ -7424,7 +7424,7 @@ function newfrmFichaSSF()
     obj.rectangle115:setStrokeSize(1);
     obj.rectangle115:setName("rectangle115");
 
-    obj.label193 = gui.fromHandle(_obj_newObject("label"));
+    obj.label193 = GUI.fromHandle(_obj_newObject("label"));
     obj.label193:setParent(obj.layout87);
     obj.label193:setLeft(275);
     obj.label193:setTop(3);
@@ -7434,7 +7434,7 @@ function newfrmFichaSSF()
     obj.label193:setHorzTextAlign("center");
     obj.label193:setName("label193");
 
-    obj.button51 = gui.fromHandle(_obj_newObject("button"));
+    obj.button51 = GUI.fromHandle(_obj_newObject("button"));
     obj.button51:setParent(obj.layout87);
     obj.button51:setLeft(300);
     obj.button51:setTop(3);
@@ -7443,12 +7443,12 @@ function newfrmFichaSSF()
     obj.button51:setText("R");
     obj.button51:setName("button51");
 
-    obj.dataLink169 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink169 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink169:setParent(obj.layout87);
     obj.dataLink169:setFields({'atr_2_16', 'dificuldade_2_16', 'bonus_2_16', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink169:setName("dataLink169");
 
-    obj.layout88 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout88 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout88:setParent(obj.layout71);
     obj.layout88:setLeft(0);
     obj.layout88:setTop(430);
@@ -7456,7 +7456,7 @@ function newfrmFichaSSF()
     obj.layout88:setHeight(25);
     obj.layout88:setName("layout88");
 
-    obj.edit124 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit124 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit124:setParent(obj.layout88);
     obj.edit124:setLeft(5);
     obj.edit124:setTop(0);
@@ -7465,13 +7465,13 @@ function newfrmFichaSSF()
     obj.edit124:setField("pericia_2_17");
     obj.edit124:setName("edit124");
 
-    obj.dataLink170 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink170 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink170:setParent(obj.layout88);
     obj.dataLink170:setField("pericia_2_17");
     obj.dataLink170:setDefaultValue("Meditação");
     obj.dataLink170:setName("dataLink170");
 
-    obj.rectangle116 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle116 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle116:setParent(obj.layout88);
     obj.rectangle116:setLeft(90);
     obj.rectangle116:setTop(0);
@@ -7482,7 +7482,7 @@ function newfrmFichaSSF()
     obj.rectangle116:setStrokeSize(1);
     obj.rectangle116:setName("rectangle116");
 
-    obj.label194 = gui.fromHandle(_obj_newObject("label"));
+    obj.label194 = GUI.fromHandle(_obj_newObject("label"));
     obj.label194:setParent(obj.layout88);
     obj.label194:setLeft(90);
     obj.label194:setTop(3);
@@ -7492,7 +7492,7 @@ function newfrmFichaSSF()
     obj.label194:setHorzTextAlign("center");
     obj.label194:setName("label194");
 
-    obj.comboBox75 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox75 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox75:setParent(obj.layout88);
     obj.comboBox75:setLeft(130);
     obj.comboBox75:setTop(0);
@@ -7503,13 +7503,13 @@ function newfrmFichaSSF()
     obj.comboBox75:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox75:setName("comboBox75");
 
-    obj.dataLink171 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink171 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink171:setParent(obj.layout88);
     obj.dataLink171:setField("atr_2_17");
     obj.dataLink171:setDefaultValue("VT");
     obj.dataLink171:setName("dataLink171");
 
-    obj.label195 = gui.fromHandle(_obj_newObject("label"));
+    obj.label195 = GUI.fromHandle(_obj_newObject("label"));
     obj.label195:setParent(obj.layout88);
     obj.label195:setLeft(180);
     obj.label195:setTop(3);
@@ -7519,7 +7519,7 @@ function newfrmFichaSSF()
     obj.label195:setHorzTextAlign("center");
     obj.label195:setName("label195");
 
-    obj.edit125 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit125 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit125:setParent(obj.layout88);
     obj.edit125:setLeft(190);
     obj.edit125:setTop(0);
@@ -7529,7 +7529,7 @@ function newfrmFichaSSF()
     obj.edit125:setField("bonus_2_17");
     obj.edit125:setName("edit125");
 
-    obj.comboBox76 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox76 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox76:setParent(obj.layout88);
     obj.comboBox76:setLeft(220);
     obj.comboBox76:setTop(0);
@@ -7540,13 +7540,13 @@ function newfrmFichaSSF()
     obj.comboBox76:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox76:setName("comboBox76");
 
-    obj.dataLink172 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink172 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink172:setParent(obj.layout88);
     obj.dataLink172:setField("dificuldade_2_17");
     obj.dataLink172:setDefaultValue("D");
     obj.dataLink172:setName("dataLink172");
 
-    obj.rectangle117 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle117 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle117:setParent(obj.layout88);
     obj.rectangle117:setLeft(275);
     obj.rectangle117:setTop(0);
@@ -7557,7 +7557,7 @@ function newfrmFichaSSF()
     obj.rectangle117:setStrokeSize(1);
     obj.rectangle117:setName("rectangle117");
 
-    obj.label196 = gui.fromHandle(_obj_newObject("label"));
+    obj.label196 = GUI.fromHandle(_obj_newObject("label"));
     obj.label196:setParent(obj.layout88);
     obj.label196:setLeft(275);
     obj.label196:setTop(3);
@@ -7567,7 +7567,7 @@ function newfrmFichaSSF()
     obj.label196:setHorzTextAlign("center");
     obj.label196:setName("label196");
 
-    obj.button52 = gui.fromHandle(_obj_newObject("button"));
+    obj.button52 = GUI.fromHandle(_obj_newObject("button"));
     obj.button52:setParent(obj.layout88);
     obj.button52:setLeft(300);
     obj.button52:setTop(3);
@@ -7576,12 +7576,12 @@ function newfrmFichaSSF()
     obj.button52:setText("R");
     obj.button52:setName("button52");
 
-    obj.dataLink173 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink173 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink173:setParent(obj.layout88);
     obj.dataLink173:setFields({'atr_2_17', 'dificuldade_2_17', 'bonus_2_17', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink173:setName("dataLink173");
 
-    obj.layout89 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout89 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout89:setParent(obj.layout71);
     obj.layout89:setLeft(0);
     obj.layout89:setTop(455);
@@ -7589,7 +7589,7 @@ function newfrmFichaSSF()
     obj.layout89:setHeight(25);
     obj.layout89:setName("layout89");
 
-    obj.edit126 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit126 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit126:setParent(obj.layout89);
     obj.edit126:setLeft(5);
     obj.edit126:setTop(0);
@@ -7598,13 +7598,13 @@ function newfrmFichaSSF()
     obj.edit126:setField("pericia_2_18");
     obj.edit126:setName("edit126");
 
-    obj.dataLink174 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink174 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink174:setParent(obj.layout89);
     obj.dataLink174:setField("pericia_2_18");
     obj.dataLink174:setDefaultValue("Natação");
     obj.dataLink174:setName("dataLink174");
 
-    obj.rectangle118 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle118 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle118:setParent(obj.layout89);
     obj.rectangle118:setLeft(90);
     obj.rectangle118:setTop(0);
@@ -7615,7 +7615,7 @@ function newfrmFichaSSF()
     obj.rectangle118:setStrokeSize(1);
     obj.rectangle118:setName("rectangle118");
 
-    obj.label197 = gui.fromHandle(_obj_newObject("label"));
+    obj.label197 = GUI.fromHandle(_obj_newObject("label"));
     obj.label197:setParent(obj.layout89);
     obj.label197:setLeft(90);
     obj.label197:setTop(3);
@@ -7625,7 +7625,7 @@ function newfrmFichaSSF()
     obj.label197:setHorzTextAlign("center");
     obj.label197:setName("label197");
 
-    obj.comboBox77 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox77 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox77:setParent(obj.layout89);
     obj.comboBox77:setLeft(130);
     obj.comboBox77:setTop(0);
@@ -7636,13 +7636,13 @@ function newfrmFichaSSF()
     obj.comboBox77:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox77:setName("comboBox77");
 
-    obj.dataLink175 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink175 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink175:setParent(obj.layout89);
     obj.dataLink175:setField("atr_2_18");
     obj.dataLink175:setDefaultValue("HT");
     obj.dataLink175:setName("dataLink175");
 
-    obj.label198 = gui.fromHandle(_obj_newObject("label"));
+    obj.label198 = GUI.fromHandle(_obj_newObject("label"));
     obj.label198:setParent(obj.layout89);
     obj.label198:setLeft(180);
     obj.label198:setTop(3);
@@ -7652,7 +7652,7 @@ function newfrmFichaSSF()
     obj.label198:setHorzTextAlign("center");
     obj.label198:setName("label198");
 
-    obj.edit127 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit127 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit127:setParent(obj.layout89);
     obj.edit127:setLeft(190);
     obj.edit127:setTop(0);
@@ -7662,7 +7662,7 @@ function newfrmFichaSSF()
     obj.edit127:setField("bonus_2_18");
     obj.edit127:setName("edit127");
 
-    obj.comboBox78 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox78 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox78:setParent(obj.layout89);
     obj.comboBox78:setLeft(220);
     obj.comboBox78:setTop(0);
@@ -7673,13 +7673,13 @@ function newfrmFichaSSF()
     obj.comboBox78:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox78:setName("comboBox78");
 
-    obj.dataLink176 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink176 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink176:setParent(obj.layout89);
     obj.dataLink176:setField("dificuldade_2_18");
     obj.dataLink176:setDefaultValue("F");
     obj.dataLink176:setName("dataLink176");
 
-    obj.rectangle119 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle119 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle119:setParent(obj.layout89);
     obj.rectangle119:setLeft(275);
     obj.rectangle119:setTop(0);
@@ -7690,7 +7690,7 @@ function newfrmFichaSSF()
     obj.rectangle119:setStrokeSize(1);
     obj.rectangle119:setName("rectangle119");
 
-    obj.label199 = gui.fromHandle(_obj_newObject("label"));
+    obj.label199 = GUI.fromHandle(_obj_newObject("label"));
     obj.label199:setParent(obj.layout89);
     obj.label199:setLeft(275);
     obj.label199:setTop(3);
@@ -7700,7 +7700,7 @@ function newfrmFichaSSF()
     obj.label199:setHorzTextAlign("center");
     obj.label199:setName("label199");
 
-    obj.button53 = gui.fromHandle(_obj_newObject("button"));
+    obj.button53 = GUI.fromHandle(_obj_newObject("button"));
     obj.button53:setParent(obj.layout89);
     obj.button53:setLeft(300);
     obj.button53:setTop(3);
@@ -7709,12 +7709,12 @@ function newfrmFichaSSF()
     obj.button53:setText("R");
     obj.button53:setName("button53");
 
-    obj.dataLink177 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink177 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink177:setParent(obj.layout89);
     obj.dataLink177:setFields({'atr_2_18', 'dificuldade_2_18', 'bonus_2_18', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink177:setName("dataLink177");
 
-    obj.layout90 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout90 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout90:setParent(obj.layout71);
     obj.layout90:setLeft(0);
     obj.layout90:setTop(480);
@@ -7722,7 +7722,7 @@ function newfrmFichaSSF()
     obj.layout90:setHeight(25);
     obj.layout90:setName("layout90");
 
-    obj.edit128 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit128 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit128:setParent(obj.layout90);
     obj.edit128:setLeft(5);
     obj.edit128:setTop(0);
@@ -7731,13 +7731,13 @@ function newfrmFichaSSF()
     obj.edit128:setField("pericia_2_19");
     obj.edit128:setName("edit128");
 
-    obj.dataLink178 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink178 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink178:setParent(obj.layout90);
     obj.dataLink178:setField("pericia_2_19");
     obj.dataLink178:setDefaultValue("Naturalista");
     obj.dataLink178:setName("dataLink178");
 
-    obj.rectangle120 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle120 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle120:setParent(obj.layout90);
     obj.rectangle120:setLeft(90);
     obj.rectangle120:setTop(0);
@@ -7748,7 +7748,7 @@ function newfrmFichaSSF()
     obj.rectangle120:setStrokeSize(1);
     obj.rectangle120:setName("rectangle120");
 
-    obj.label200 = gui.fromHandle(_obj_newObject("label"));
+    obj.label200 = GUI.fromHandle(_obj_newObject("label"));
     obj.label200:setParent(obj.layout90);
     obj.label200:setLeft(90);
     obj.label200:setTop(3);
@@ -7758,7 +7758,7 @@ function newfrmFichaSSF()
     obj.label200:setHorzTextAlign("center");
     obj.label200:setName("label200");
 
-    obj.comboBox79 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox79 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox79:setParent(obj.layout90);
     obj.comboBox79:setLeft(130);
     obj.comboBox79:setTop(0);
@@ -7769,13 +7769,13 @@ function newfrmFichaSSF()
     obj.comboBox79:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox79:setName("comboBox79");
 
-    obj.dataLink179 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink179 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink179:setParent(obj.layout90);
     obj.dataLink179:setField("atr_2_19");
     obj.dataLink179:setDefaultValue("IQ");
     obj.dataLink179:setName("dataLink179");
 
-    obj.label201 = gui.fromHandle(_obj_newObject("label"));
+    obj.label201 = GUI.fromHandle(_obj_newObject("label"));
     obj.label201:setParent(obj.layout90);
     obj.label201:setLeft(180);
     obj.label201:setTop(3);
@@ -7785,7 +7785,7 @@ function newfrmFichaSSF()
     obj.label201:setHorzTextAlign("center");
     obj.label201:setName("label201");
 
-    obj.edit129 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit129 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit129:setParent(obj.layout90);
     obj.edit129:setLeft(190);
     obj.edit129:setTop(0);
@@ -7795,7 +7795,7 @@ function newfrmFichaSSF()
     obj.edit129:setField("bonus_2_19");
     obj.edit129:setName("edit129");
 
-    obj.comboBox80 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox80 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox80:setParent(obj.layout90);
     obj.comboBox80:setLeft(220);
     obj.comboBox80:setTop(0);
@@ -7806,13 +7806,13 @@ function newfrmFichaSSF()
     obj.comboBox80:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox80:setName("comboBox80");
 
-    obj.dataLink180 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink180 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink180:setParent(obj.layout90);
     obj.dataLink180:setField("dificuldade_2_19");
     obj.dataLink180:setDefaultValue("D");
     obj.dataLink180:setName("dataLink180");
 
-    obj.rectangle121 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle121 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle121:setParent(obj.layout90);
     obj.rectangle121:setLeft(275);
     obj.rectangle121:setTop(0);
@@ -7823,7 +7823,7 @@ function newfrmFichaSSF()
     obj.rectangle121:setStrokeSize(1);
     obj.rectangle121:setName("rectangle121");
 
-    obj.label202 = gui.fromHandle(_obj_newObject("label"));
+    obj.label202 = GUI.fromHandle(_obj_newObject("label"));
     obj.label202:setParent(obj.layout90);
     obj.label202:setLeft(275);
     obj.label202:setTop(3);
@@ -7833,7 +7833,7 @@ function newfrmFichaSSF()
     obj.label202:setHorzTextAlign("center");
     obj.label202:setName("label202");
 
-    obj.button54 = gui.fromHandle(_obj_newObject("button"));
+    obj.button54 = GUI.fromHandle(_obj_newObject("button"));
     obj.button54:setParent(obj.layout90);
     obj.button54:setLeft(300);
     obj.button54:setTop(3);
@@ -7842,12 +7842,12 @@ function newfrmFichaSSF()
     obj.button54:setText("R");
     obj.button54:setName("button54");
 
-    obj.dataLink181 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink181 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink181:setParent(obj.layout90);
     obj.dataLink181:setFields({'atr_2_19', 'dificuldade_2_19', 'bonus_2_19', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink181:setName("dataLink181");
 
-    obj.layout91 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout91 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout91:setParent(obj.layout71);
     obj.layout91:setLeft(0);
     obj.layout91:setTop(505);
@@ -7855,7 +7855,7 @@ function newfrmFichaSSF()
     obj.layout91:setHeight(25);
     obj.layout91:setName("layout91");
 
-    obj.edit130 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit130 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit130:setParent(obj.layout91);
     obj.edit130:setLeft(5);
     obj.edit130:setTop(0);
@@ -7864,13 +7864,13 @@ function newfrmFichaSSF()
     obj.edit130:setField("pericia_2_20");
     obj.edit130:setName("edit130");
 
-    obj.dataLink182 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink182 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink182:setParent(obj.layout91);
     obj.dataLink182:setField("pericia_2_20");
     obj.dataLink182:setDefaultValue("Observação");
     obj.dataLink182:setName("dataLink182");
 
-    obj.rectangle122 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle122 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle122:setParent(obj.layout91);
     obj.rectangle122:setLeft(90);
     obj.rectangle122:setTop(0);
@@ -7881,7 +7881,7 @@ function newfrmFichaSSF()
     obj.rectangle122:setStrokeSize(1);
     obj.rectangle122:setName("rectangle122");
 
-    obj.label203 = gui.fromHandle(_obj_newObject("label"));
+    obj.label203 = GUI.fromHandle(_obj_newObject("label"));
     obj.label203:setParent(obj.layout91);
     obj.label203:setLeft(90);
     obj.label203:setTop(3);
@@ -7891,7 +7891,7 @@ function newfrmFichaSSF()
     obj.label203:setHorzTextAlign("center");
     obj.label203:setName("label203");
 
-    obj.comboBox81 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox81 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox81:setParent(obj.layout91);
     obj.comboBox81:setLeft(130);
     obj.comboBox81:setTop(0);
@@ -7902,13 +7902,13 @@ function newfrmFichaSSF()
     obj.comboBox81:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox81:setName("comboBox81");
 
-    obj.dataLink183 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink183 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink183:setParent(obj.layout91);
     obj.dataLink183:setField("atr_2_20");
     obj.dataLink183:setDefaultValue("PR");
     obj.dataLink183:setName("dataLink183");
 
-    obj.label204 = gui.fromHandle(_obj_newObject("label"));
+    obj.label204 = GUI.fromHandle(_obj_newObject("label"));
     obj.label204:setParent(obj.layout91);
     obj.label204:setLeft(180);
     obj.label204:setTop(3);
@@ -7918,7 +7918,7 @@ function newfrmFichaSSF()
     obj.label204:setHorzTextAlign("center");
     obj.label204:setName("label204");
 
-    obj.edit131 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit131 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit131:setParent(obj.layout91);
     obj.edit131:setLeft(190);
     obj.edit131:setTop(0);
@@ -7928,7 +7928,7 @@ function newfrmFichaSSF()
     obj.edit131:setField("bonus_2_20");
     obj.edit131:setName("edit131");
 
-    obj.comboBox82 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox82 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox82:setParent(obj.layout91);
     obj.comboBox82:setLeft(220);
     obj.comboBox82:setTop(0);
@@ -7939,13 +7939,13 @@ function newfrmFichaSSF()
     obj.comboBox82:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox82:setName("comboBox82");
 
-    obj.dataLink184 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink184 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink184:setParent(obj.layout91);
     obj.dataLink184:setField("dificuldade_2_20");
     obj.dataLink184:setDefaultValue("M");
     obj.dataLink184:setName("dataLink184");
 
-    obj.rectangle123 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle123 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle123:setParent(obj.layout91);
     obj.rectangle123:setLeft(275);
     obj.rectangle123:setTop(0);
@@ -7956,7 +7956,7 @@ function newfrmFichaSSF()
     obj.rectangle123:setStrokeSize(1);
     obj.rectangle123:setName("rectangle123");
 
-    obj.label205 = gui.fromHandle(_obj_newObject("label"));
+    obj.label205 = GUI.fromHandle(_obj_newObject("label"));
     obj.label205:setParent(obj.layout91);
     obj.label205:setLeft(275);
     obj.label205:setTop(3);
@@ -7966,7 +7966,7 @@ function newfrmFichaSSF()
     obj.label205:setHorzTextAlign("center");
     obj.label205:setName("label205");
 
-    obj.button55 = gui.fromHandle(_obj_newObject("button"));
+    obj.button55 = GUI.fromHandle(_obj_newObject("button"));
     obj.button55:setParent(obj.layout91);
     obj.button55:setLeft(300);
     obj.button55:setTop(3);
@@ -7975,12 +7975,12 @@ function newfrmFichaSSF()
     obj.button55:setText("R");
     obj.button55:setName("button55");
 
-    obj.dataLink185 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink185 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink185:setParent(obj.layout91);
     obj.dataLink185:setFields({'atr_2_20', 'dificuldade_2_20', 'bonus_2_20', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink185:setName("dataLink185");
 
-    obj.layout92 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout92 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout92:setParent(obj.scrollBox2);
     obj.layout92:setLeft(660);
     obj.layout92:setTop(0);
@@ -7988,7 +7988,7 @@ function newfrmFichaSSF()
     obj.layout92:setHeight(615);
     obj.layout92:setName("layout92");
 
-    obj.rectangle124 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle124 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle124:setParent(obj.layout92);
     obj.rectangle124:setAlign("client");
     obj.rectangle124:setColor("black");
@@ -7997,7 +7997,7 @@ function newfrmFichaSSF()
     obj.rectangle124:setCornerType("round");
     obj.rectangle124:setName("rectangle124");
 
-    obj.label206 = gui.fromHandle(_obj_newObject("label"));
+    obj.label206 = GUI.fromHandle(_obj_newObject("label"));
     obj.label206:setParent(obj.layout92);
     obj.label206:setLeft(0);
     obj.label206:setTop(5);
@@ -8006,7 +8006,7 @@ function newfrmFichaSSF()
     obj.label206:setText("     NOME            NH        AT     +  BN       DF        PT");
     obj.label206:setName("label206");
 
-    obj.layout93 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout93 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout93:setParent(obj.layout92);
     obj.layout93:setLeft(0);
     obj.layout93:setTop(30);
@@ -8014,7 +8014,7 @@ function newfrmFichaSSF()
     obj.layout93:setHeight(25);
     obj.layout93:setName("layout93");
 
-    obj.edit132 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit132 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit132:setParent(obj.layout93);
     obj.edit132:setLeft(5);
     obj.edit132:setTop(0);
@@ -8023,13 +8023,13 @@ function newfrmFichaSSF()
     obj.edit132:setField("pericia_3_1");
     obj.edit132:setName("edit132");
 
-    obj.dataLink186 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink186 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink186:setParent(obj.layout93);
     obj.dataLink186:setField("pericia_3_1");
     obj.dataLink186:setDefaultValue("Ocultismo");
     obj.dataLink186:setName("dataLink186");
 
-    obj.rectangle125 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle125 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle125:setParent(obj.layout93);
     obj.rectangle125:setLeft(90);
     obj.rectangle125:setTop(0);
@@ -8040,7 +8040,7 @@ function newfrmFichaSSF()
     obj.rectangle125:setStrokeSize(1);
     obj.rectangle125:setName("rectangle125");
 
-    obj.label207 = gui.fromHandle(_obj_newObject("label"));
+    obj.label207 = GUI.fromHandle(_obj_newObject("label"));
     obj.label207:setParent(obj.layout93);
     obj.label207:setLeft(90);
     obj.label207:setTop(3);
@@ -8050,7 +8050,7 @@ function newfrmFichaSSF()
     obj.label207:setHorzTextAlign("center");
     obj.label207:setName("label207");
 
-    obj.comboBox83 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox83 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox83:setParent(obj.layout93);
     obj.comboBox83:setLeft(130);
     obj.comboBox83:setTop(0);
@@ -8061,13 +8061,13 @@ function newfrmFichaSSF()
     obj.comboBox83:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox83:setName("comboBox83");
 
-    obj.dataLink187 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink187 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink187:setParent(obj.layout93);
     obj.dataLink187:setField("atr_3_1");
     obj.dataLink187:setDefaultValue("IQ");
     obj.dataLink187:setName("dataLink187");
 
-    obj.label208 = gui.fromHandle(_obj_newObject("label"));
+    obj.label208 = GUI.fromHandle(_obj_newObject("label"));
     obj.label208:setParent(obj.layout93);
     obj.label208:setLeft(180);
     obj.label208:setTop(3);
@@ -8077,7 +8077,7 @@ function newfrmFichaSSF()
     obj.label208:setHorzTextAlign("center");
     obj.label208:setName("label208");
 
-    obj.edit133 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit133 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit133:setParent(obj.layout93);
     obj.edit133:setLeft(190);
     obj.edit133:setTop(0);
@@ -8087,7 +8087,7 @@ function newfrmFichaSSF()
     obj.edit133:setField("bonus_3_1");
     obj.edit133:setName("edit133");
 
-    obj.comboBox84 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox84 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox84:setParent(obj.layout93);
     obj.comboBox84:setLeft(220);
     obj.comboBox84:setTop(0);
@@ -8098,13 +8098,13 @@ function newfrmFichaSSF()
     obj.comboBox84:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox84:setName("comboBox84");
 
-    obj.dataLink188 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink188 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink188:setParent(obj.layout93);
     obj.dataLink188:setField("dificuldade_3_1");
     obj.dataLink188:setDefaultValue("M");
     obj.dataLink188:setName("dataLink188");
 
-    obj.rectangle126 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle126 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle126:setParent(obj.layout93);
     obj.rectangle126:setLeft(275);
     obj.rectangle126:setTop(0);
@@ -8115,7 +8115,7 @@ function newfrmFichaSSF()
     obj.rectangle126:setStrokeSize(1);
     obj.rectangle126:setName("rectangle126");
 
-    obj.label209 = gui.fromHandle(_obj_newObject("label"));
+    obj.label209 = GUI.fromHandle(_obj_newObject("label"));
     obj.label209:setParent(obj.layout93);
     obj.label209:setLeft(275);
     obj.label209:setTop(3);
@@ -8125,7 +8125,7 @@ function newfrmFichaSSF()
     obj.label209:setHorzTextAlign("center");
     obj.label209:setName("label209");
 
-    obj.button56 = gui.fromHandle(_obj_newObject("button"));
+    obj.button56 = GUI.fromHandle(_obj_newObject("button"));
     obj.button56:setParent(obj.layout93);
     obj.button56:setLeft(300);
     obj.button56:setTop(3);
@@ -8134,12 +8134,12 @@ function newfrmFichaSSF()
     obj.button56:setText("R");
     obj.button56:setName("button56");
 
-    obj.dataLink189 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink189 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink189:setParent(obj.layout93);
     obj.dataLink189:setFields({'atr_3_1', 'dificuldade_3_1', 'bonus_3_1', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink189:setName("dataLink189");
 
-    obj.layout94 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout94 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout94:setParent(obj.layout92);
     obj.layout94:setLeft(0);
     obj.layout94:setTop(55);
@@ -8147,7 +8147,7 @@ function newfrmFichaSSF()
     obj.layout94:setHeight(25);
     obj.layout94:setName("layout94");
 
-    obj.edit134 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit134 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit134:setParent(obj.layout94);
     obj.edit134:setLeft(5);
     obj.edit134:setTop(0);
@@ -8156,13 +8156,13 @@ function newfrmFichaSSF()
     obj.edit134:setField("pericia_3_2");
     obj.edit134:setName("edit134");
 
-    obj.dataLink190 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink190 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink190:setParent(obj.layout94);
     obj.dataLink190:setField("pericia_3_2");
     obj.dataLink190:setDefaultValue("Primeiros Socorros");
     obj.dataLink190:setName("dataLink190");
 
-    obj.rectangle127 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle127 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle127:setParent(obj.layout94);
     obj.rectangle127:setLeft(90);
     obj.rectangle127:setTop(0);
@@ -8173,7 +8173,7 @@ function newfrmFichaSSF()
     obj.rectangle127:setStrokeSize(1);
     obj.rectangle127:setName("rectangle127");
 
-    obj.label210 = gui.fromHandle(_obj_newObject("label"));
+    obj.label210 = GUI.fromHandle(_obj_newObject("label"));
     obj.label210:setParent(obj.layout94);
     obj.label210:setLeft(90);
     obj.label210:setTop(3);
@@ -8183,7 +8183,7 @@ function newfrmFichaSSF()
     obj.label210:setHorzTextAlign("center");
     obj.label210:setName("label210");
 
-    obj.comboBox85 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox85 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox85:setParent(obj.layout94);
     obj.comboBox85:setLeft(130);
     obj.comboBox85:setTop(0);
@@ -8194,13 +8194,13 @@ function newfrmFichaSSF()
     obj.comboBox85:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox85:setName("comboBox85");
 
-    obj.dataLink191 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink191 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink191:setParent(obj.layout94);
     obj.dataLink191:setField("atr_3_2");
     obj.dataLink191:setDefaultValue("IQ");
     obj.dataLink191:setName("dataLink191");
 
-    obj.label211 = gui.fromHandle(_obj_newObject("label"));
+    obj.label211 = GUI.fromHandle(_obj_newObject("label"));
     obj.label211:setParent(obj.layout94);
     obj.label211:setLeft(180);
     obj.label211:setTop(3);
@@ -8210,7 +8210,7 @@ function newfrmFichaSSF()
     obj.label211:setHorzTextAlign("center");
     obj.label211:setName("label211");
 
-    obj.edit135 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit135 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit135:setParent(obj.layout94);
     obj.edit135:setLeft(190);
     obj.edit135:setTop(0);
@@ -8220,7 +8220,7 @@ function newfrmFichaSSF()
     obj.edit135:setField("bonus_3_2");
     obj.edit135:setName("edit135");
 
-    obj.comboBox86 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox86 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox86:setParent(obj.layout94);
     obj.comboBox86:setLeft(220);
     obj.comboBox86:setTop(0);
@@ -8231,13 +8231,13 @@ function newfrmFichaSSF()
     obj.comboBox86:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox86:setName("comboBox86");
 
-    obj.dataLink192 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink192 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink192:setParent(obj.layout94);
     obj.dataLink192:setField("dificuldade_3_2");
     obj.dataLink192:setDefaultValue("F");
     obj.dataLink192:setName("dataLink192");
 
-    obj.rectangle128 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle128 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle128:setParent(obj.layout94);
     obj.rectangle128:setLeft(275);
     obj.rectangle128:setTop(0);
@@ -8248,7 +8248,7 @@ function newfrmFichaSSF()
     obj.rectangle128:setStrokeSize(1);
     obj.rectangle128:setName("rectangle128");
 
-    obj.label212 = gui.fromHandle(_obj_newObject("label"));
+    obj.label212 = GUI.fromHandle(_obj_newObject("label"));
     obj.label212:setParent(obj.layout94);
     obj.label212:setLeft(275);
     obj.label212:setTop(3);
@@ -8258,7 +8258,7 @@ function newfrmFichaSSF()
     obj.label212:setHorzTextAlign("center");
     obj.label212:setName("label212");
 
-    obj.button57 = gui.fromHandle(_obj_newObject("button"));
+    obj.button57 = GUI.fromHandle(_obj_newObject("button"));
     obj.button57:setParent(obj.layout94);
     obj.button57:setLeft(300);
     obj.button57:setTop(3);
@@ -8267,12 +8267,12 @@ function newfrmFichaSSF()
     obj.button57:setText("R");
     obj.button57:setName("button57");
 
-    obj.dataLink193 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink193 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink193:setParent(obj.layout94);
     obj.dataLink193:setFields({'atr_3_2', 'dificuldade_3_2', 'bonus_3_2', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink193:setName("dataLink193");
 
-    obj.layout95 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout95 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout95:setParent(obj.layout92);
     obj.layout95:setLeft(0);
     obj.layout95:setTop(80);
@@ -8280,7 +8280,7 @@ function newfrmFichaSSF()
     obj.layout95:setHeight(25);
     obj.layout95:setName("layout95");
 
-    obj.edit136 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit136 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit136:setParent(obj.layout95);
     obj.edit136:setLeft(5);
     obj.edit136:setTop(0);
@@ -8289,13 +8289,13 @@ function newfrmFichaSSF()
     obj.edit136:setField("pericia_3_3");
     obj.edit136:setName("edit136");
 
-    obj.dataLink194 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink194 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink194:setParent(obj.layout95);
     obj.dataLink194:setField("pericia_3_3");
     obj.dataLink194:setDefaultValue("Persuadir");
     obj.dataLink194:setName("dataLink194");
 
-    obj.rectangle129 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle129 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle129:setParent(obj.layout95);
     obj.rectangle129:setLeft(90);
     obj.rectangle129:setTop(0);
@@ -8306,7 +8306,7 @@ function newfrmFichaSSF()
     obj.rectangle129:setStrokeSize(1);
     obj.rectangle129:setName("rectangle129");
 
-    obj.label213 = gui.fromHandle(_obj_newObject("label"));
+    obj.label213 = GUI.fromHandle(_obj_newObject("label"));
     obj.label213:setParent(obj.layout95);
     obj.label213:setLeft(90);
     obj.label213:setTop(3);
@@ -8316,7 +8316,7 @@ function newfrmFichaSSF()
     obj.label213:setHorzTextAlign("center");
     obj.label213:setName("label213");
 
-    obj.comboBox87 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox87 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox87:setParent(obj.layout95);
     obj.comboBox87:setLeft(130);
     obj.comboBox87:setTop(0);
@@ -8327,13 +8327,13 @@ function newfrmFichaSSF()
     obj.comboBox87:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox87:setName("comboBox87");
 
-    obj.dataLink195 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink195 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink195:setParent(obj.layout95);
     obj.dataLink195:setField("atr_3_3");
     obj.dataLink195:setDefaultValue("VT");
     obj.dataLink195:setName("dataLink195");
 
-    obj.label214 = gui.fromHandle(_obj_newObject("label"));
+    obj.label214 = GUI.fromHandle(_obj_newObject("label"));
     obj.label214:setParent(obj.layout95);
     obj.label214:setLeft(180);
     obj.label214:setTop(3);
@@ -8343,7 +8343,7 @@ function newfrmFichaSSF()
     obj.label214:setHorzTextAlign("center");
     obj.label214:setName("label214");
 
-    obj.edit137 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit137 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit137:setParent(obj.layout95);
     obj.edit137:setLeft(190);
     obj.edit137:setTop(0);
@@ -8353,7 +8353,7 @@ function newfrmFichaSSF()
     obj.edit137:setField("bonus_3_3");
     obj.edit137:setName("edit137");
 
-    obj.comboBox88 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox88 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox88:setParent(obj.layout95);
     obj.comboBox88:setLeft(220);
     obj.comboBox88:setTop(0);
@@ -8364,13 +8364,13 @@ function newfrmFichaSSF()
     obj.comboBox88:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox88:setName("comboBox88");
 
-    obj.dataLink196 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink196 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink196:setParent(obj.layout95);
     obj.dataLink196:setField("dificuldade_3_3");
     obj.dataLink196:setDefaultValue("D");
     obj.dataLink196:setName("dataLink196");
 
-    obj.rectangle130 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle130 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle130:setParent(obj.layout95);
     obj.rectangle130:setLeft(275);
     obj.rectangle130:setTop(0);
@@ -8381,7 +8381,7 @@ function newfrmFichaSSF()
     obj.rectangle130:setStrokeSize(1);
     obj.rectangle130:setName("rectangle130");
 
-    obj.label215 = gui.fromHandle(_obj_newObject("label"));
+    obj.label215 = GUI.fromHandle(_obj_newObject("label"));
     obj.label215:setParent(obj.layout95);
     obj.label215:setLeft(275);
     obj.label215:setTop(3);
@@ -8391,7 +8391,7 @@ function newfrmFichaSSF()
     obj.label215:setHorzTextAlign("center");
     obj.label215:setName("label215");
 
-    obj.button58 = gui.fromHandle(_obj_newObject("button"));
+    obj.button58 = GUI.fromHandle(_obj_newObject("button"));
     obj.button58:setParent(obj.layout95);
     obj.button58:setLeft(300);
     obj.button58:setTop(3);
@@ -8400,12 +8400,12 @@ function newfrmFichaSSF()
     obj.button58:setText("R");
     obj.button58:setName("button58");
 
-    obj.dataLink197 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink197 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink197:setParent(obj.layout95);
     obj.dataLink197:setFields({'atr_3_3', 'dificuldade_3_3', 'bonus_3_3', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink197:setName("dataLink197");
 
-    obj.layout96 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout96 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout96:setParent(obj.layout92);
     obj.layout96:setLeft(0);
     obj.layout96:setTop(105);
@@ -8413,7 +8413,7 @@ function newfrmFichaSSF()
     obj.layout96:setHeight(25);
     obj.layout96:setName("layout96");
 
-    obj.edit138 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit138 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit138:setParent(obj.layout96);
     obj.edit138:setLeft(5);
     obj.edit138:setTop(0);
@@ -8422,13 +8422,13 @@ function newfrmFichaSSF()
     obj.edit138:setField("pericia_3_4");
     obj.edit138:setName("edit138");
 
-    obj.dataLink198 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink198 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink198:setParent(obj.layout96);
     obj.dataLink198:setField("pericia_3_4");
     obj.dataLink198:setDefaultValue("Postura Imóvel");
     obj.dataLink198:setName("dataLink198");
 
-    obj.rectangle131 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle131 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle131:setParent(obj.layout96);
     obj.rectangle131:setLeft(90);
     obj.rectangle131:setTop(0);
@@ -8439,7 +8439,7 @@ function newfrmFichaSSF()
     obj.rectangle131:setStrokeSize(1);
     obj.rectangle131:setName("rectangle131");
 
-    obj.label216 = gui.fromHandle(_obj_newObject("label"));
+    obj.label216 = GUI.fromHandle(_obj_newObject("label"));
     obj.label216:setParent(obj.layout96);
     obj.label216:setLeft(90);
     obj.label216:setTop(3);
@@ -8449,7 +8449,7 @@ function newfrmFichaSSF()
     obj.label216:setHorzTextAlign("center");
     obj.label216:setName("label216");
 
-    obj.comboBox89 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox89 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox89:setParent(obj.layout96);
     obj.comboBox89:setLeft(130);
     obj.comboBox89:setTop(0);
@@ -8460,13 +8460,13 @@ function newfrmFichaSSF()
     obj.comboBox89:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox89:setName("comboBox89");
 
-    obj.dataLink199 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink199 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink199:setParent(obj.layout96);
     obj.dataLink199:setField("atr_3_4");
     obj.dataLink199:setDefaultValue("DX");
     obj.dataLink199:setName("dataLink199");
 
-    obj.label217 = gui.fromHandle(_obj_newObject("label"));
+    obj.label217 = GUI.fromHandle(_obj_newObject("label"));
     obj.label217:setParent(obj.layout96);
     obj.label217:setLeft(180);
     obj.label217:setTop(3);
@@ -8476,7 +8476,7 @@ function newfrmFichaSSF()
     obj.label217:setHorzTextAlign("center");
     obj.label217:setName("label217");
 
-    obj.edit139 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit139 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit139:setParent(obj.layout96);
     obj.edit139:setLeft(190);
     obj.edit139:setTop(0);
@@ -8486,7 +8486,7 @@ function newfrmFichaSSF()
     obj.edit139:setField("bonus_3_4");
     obj.edit139:setName("edit139");
 
-    obj.comboBox90 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox90 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox90:setParent(obj.layout96);
     obj.comboBox90:setLeft(220);
     obj.comboBox90:setTop(0);
@@ -8497,13 +8497,13 @@ function newfrmFichaSSF()
     obj.comboBox90:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox90:setName("comboBox90");
 
-    obj.dataLink200 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink200 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink200:setParent(obj.layout96);
     obj.dataLink200:setField("dificuldade_3_4");
     obj.dataLink200:setDefaultValue("D");
     obj.dataLink200:setName("dataLink200");
 
-    obj.rectangle132 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle132 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle132:setParent(obj.layout96);
     obj.rectangle132:setLeft(275);
     obj.rectangle132:setTop(0);
@@ -8514,7 +8514,7 @@ function newfrmFichaSSF()
     obj.rectangle132:setStrokeSize(1);
     obj.rectangle132:setName("rectangle132");
 
-    obj.label218 = gui.fromHandle(_obj_newObject("label"));
+    obj.label218 = GUI.fromHandle(_obj_newObject("label"));
     obj.label218:setParent(obj.layout96);
     obj.label218:setLeft(275);
     obj.label218:setTop(3);
@@ -8524,7 +8524,7 @@ function newfrmFichaSSF()
     obj.label218:setHorzTextAlign("center");
     obj.label218:setName("label218");
 
-    obj.button59 = gui.fromHandle(_obj_newObject("button"));
+    obj.button59 = GUI.fromHandle(_obj_newObject("button"));
     obj.button59:setParent(obj.layout96);
     obj.button59:setLeft(300);
     obj.button59:setTop(3);
@@ -8533,12 +8533,12 @@ function newfrmFichaSSF()
     obj.button59:setText("R");
     obj.button59:setName("button59");
 
-    obj.dataLink201 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink201 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink201:setParent(obj.layout96);
     obj.dataLink201:setFields({'atr_3_4', 'dificuldade_3_4', 'bonus_3_4', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink201:setName("dataLink201");
 
-    obj.layout97 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout97 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout97:setParent(obj.layout92);
     obj.layout97:setLeft(0);
     obj.layout97:setTop(130);
@@ -8546,7 +8546,7 @@ function newfrmFichaSSF()
     obj.layout97:setHeight(25);
     obj.layout97:setName("layout97");
 
-    obj.edit140 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit140 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit140:setParent(obj.layout97);
     obj.edit140:setLeft(5);
     obj.edit140:setTop(0);
@@ -8555,13 +8555,13 @@ function newfrmFichaSSF()
     obj.edit140:setField("pericia_3_5");
     obj.edit140:setName("edit140");
 
-    obj.dataLink202 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink202 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink202:setParent(obj.layout97);
     obj.dataLink202:setField("pericia_3_5");
     obj.dataLink202:setDefaultValue("Perseguição");
     obj.dataLink202:setName("dataLink202");
 
-    obj.rectangle133 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle133 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle133:setParent(obj.layout97);
     obj.rectangle133:setLeft(90);
     obj.rectangle133:setTop(0);
@@ -8572,7 +8572,7 @@ function newfrmFichaSSF()
     obj.rectangle133:setStrokeSize(1);
     obj.rectangle133:setName("rectangle133");
 
-    obj.label219 = gui.fromHandle(_obj_newObject("label"));
+    obj.label219 = GUI.fromHandle(_obj_newObject("label"));
     obj.label219:setParent(obj.layout97);
     obj.label219:setLeft(90);
     obj.label219:setTop(3);
@@ -8582,7 +8582,7 @@ function newfrmFichaSSF()
     obj.label219:setHorzTextAlign("center");
     obj.label219:setName("label219");
 
-    obj.comboBox91 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox91 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox91:setParent(obj.layout97);
     obj.comboBox91:setLeft(130);
     obj.comboBox91:setTop(0);
@@ -8593,13 +8593,13 @@ function newfrmFichaSSF()
     obj.comboBox91:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox91:setName("comboBox91");
 
-    obj.dataLink203 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink203 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink203:setParent(obj.layout97);
     obj.dataLink203:setField("atr_3_5");
     obj.dataLink203:setDefaultValue("IQ");
     obj.dataLink203:setName("dataLink203");
 
-    obj.label220 = gui.fromHandle(_obj_newObject("label"));
+    obj.label220 = GUI.fromHandle(_obj_newObject("label"));
     obj.label220:setParent(obj.layout97);
     obj.label220:setLeft(180);
     obj.label220:setTop(3);
@@ -8609,7 +8609,7 @@ function newfrmFichaSSF()
     obj.label220:setHorzTextAlign("center");
     obj.label220:setName("label220");
 
-    obj.edit141 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit141 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit141:setParent(obj.layout97);
     obj.edit141:setLeft(190);
     obj.edit141:setTop(0);
@@ -8619,7 +8619,7 @@ function newfrmFichaSSF()
     obj.edit141:setField("bonus_3_5");
     obj.edit141:setName("edit141");
 
-    obj.comboBox92 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox92 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox92:setParent(obj.layout97);
     obj.comboBox92:setLeft(220);
     obj.comboBox92:setTop(0);
@@ -8630,13 +8630,13 @@ function newfrmFichaSSF()
     obj.comboBox92:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox92:setName("comboBox92");
 
-    obj.dataLink204 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink204 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink204:setParent(obj.layout97);
     obj.dataLink204:setField("dificuldade_3_5");
     obj.dataLink204:setDefaultValue("M");
     obj.dataLink204:setName("dataLink204");
 
-    obj.rectangle134 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle134 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle134:setParent(obj.layout97);
     obj.rectangle134:setLeft(275);
     obj.rectangle134:setTop(0);
@@ -8647,7 +8647,7 @@ function newfrmFichaSSF()
     obj.rectangle134:setStrokeSize(1);
     obj.rectangle134:setName("rectangle134");
 
-    obj.label221 = gui.fromHandle(_obj_newObject("label"));
+    obj.label221 = GUI.fromHandle(_obj_newObject("label"));
     obj.label221:setParent(obj.layout97);
     obj.label221:setLeft(275);
     obj.label221:setTop(3);
@@ -8657,7 +8657,7 @@ function newfrmFichaSSF()
     obj.label221:setHorzTextAlign("center");
     obj.label221:setName("label221");
 
-    obj.button60 = gui.fromHandle(_obj_newObject("button"));
+    obj.button60 = GUI.fromHandle(_obj_newObject("button"));
     obj.button60:setParent(obj.layout97);
     obj.button60:setLeft(300);
     obj.button60:setTop(3);
@@ -8666,12 +8666,12 @@ function newfrmFichaSSF()
     obj.button60:setText("R");
     obj.button60:setName("button60");
 
-    obj.dataLink205 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink205 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink205:setParent(obj.layout97);
     obj.dataLink205:setFields({'atr_3_5', 'dificuldade_3_5', 'bonus_3_5', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink205:setName("dataLink205");
 
-    obj.layout98 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout98 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout98:setParent(obj.layout92);
     obj.layout98:setLeft(0);
     obj.layout98:setTop(155);
@@ -8679,7 +8679,7 @@ function newfrmFichaSSF()
     obj.layout98:setHeight(25);
     obj.layout98:setName("layout98");
 
-    obj.edit142 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit142 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit142:setParent(obj.layout98);
     obj.edit142:setLeft(5);
     obj.edit142:setTop(0);
@@ -8688,13 +8688,13 @@ function newfrmFichaSSF()
     obj.edit142:setField("pericia_3_6");
     obj.edit142:setName("edit142");
 
-    obj.dataLink206 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink206 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink206:setParent(obj.layout98);
     obj.dataLink206:setField("pericia_3_6");
     obj.dataLink206:setDefaultValue("Rastreamento");
     obj.dataLink206:setName("dataLink206");
 
-    obj.rectangle135 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle135 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle135:setParent(obj.layout98);
     obj.rectangle135:setLeft(90);
     obj.rectangle135:setTop(0);
@@ -8705,7 +8705,7 @@ function newfrmFichaSSF()
     obj.rectangle135:setStrokeSize(1);
     obj.rectangle135:setName("rectangle135");
 
-    obj.label222 = gui.fromHandle(_obj_newObject("label"));
+    obj.label222 = GUI.fromHandle(_obj_newObject("label"));
     obj.label222:setParent(obj.layout98);
     obj.label222:setLeft(90);
     obj.label222:setTop(3);
@@ -8715,7 +8715,7 @@ function newfrmFichaSSF()
     obj.label222:setHorzTextAlign("center");
     obj.label222:setName("label222");
 
-    obj.comboBox93 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox93 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox93:setParent(obj.layout98);
     obj.comboBox93:setLeft(130);
     obj.comboBox93:setTop(0);
@@ -8726,13 +8726,13 @@ function newfrmFichaSSF()
     obj.comboBox93:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox93:setName("comboBox93");
 
-    obj.dataLink207 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink207 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink207:setParent(obj.layout98);
     obj.dataLink207:setField("atr_3_6");
     obj.dataLink207:setDefaultValue("IQ");
     obj.dataLink207:setName("dataLink207");
 
-    obj.label223 = gui.fromHandle(_obj_newObject("label"));
+    obj.label223 = GUI.fromHandle(_obj_newObject("label"));
     obj.label223:setParent(obj.layout98);
     obj.label223:setLeft(180);
     obj.label223:setTop(3);
@@ -8742,7 +8742,7 @@ function newfrmFichaSSF()
     obj.label223:setHorzTextAlign("center");
     obj.label223:setName("label223");
 
-    obj.edit143 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit143 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit143:setParent(obj.layout98);
     obj.edit143:setLeft(190);
     obj.edit143:setTop(0);
@@ -8752,7 +8752,7 @@ function newfrmFichaSSF()
     obj.edit143:setField("bonus_3_6");
     obj.edit143:setName("edit143");
 
-    obj.comboBox94 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox94 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox94:setParent(obj.layout98);
     obj.comboBox94:setLeft(220);
     obj.comboBox94:setTop(0);
@@ -8763,13 +8763,13 @@ function newfrmFichaSSF()
     obj.comboBox94:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox94:setName("comboBox94");
 
-    obj.dataLink208 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink208 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink208:setParent(obj.layout98);
     obj.dataLink208:setField("dificuldade_3_6");
     obj.dataLink208:setDefaultValue("M");
     obj.dataLink208:setName("dataLink208");
 
-    obj.rectangle136 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle136 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle136:setParent(obj.layout98);
     obj.rectangle136:setLeft(275);
     obj.rectangle136:setTop(0);
@@ -8780,7 +8780,7 @@ function newfrmFichaSSF()
     obj.rectangle136:setStrokeSize(1);
     obj.rectangle136:setName("rectangle136");
 
-    obj.label224 = gui.fromHandle(_obj_newObject("label"));
+    obj.label224 = GUI.fromHandle(_obj_newObject("label"));
     obj.label224:setParent(obj.layout98);
     obj.label224:setLeft(275);
     obj.label224:setTop(3);
@@ -8790,7 +8790,7 @@ function newfrmFichaSSF()
     obj.label224:setHorzTextAlign("center");
     obj.label224:setName("label224");
 
-    obj.button61 = gui.fromHandle(_obj_newObject("button"));
+    obj.button61 = GUI.fromHandle(_obj_newObject("button"));
     obj.button61:setParent(obj.layout98);
     obj.button61:setLeft(300);
     obj.button61:setTop(3);
@@ -8799,12 +8799,12 @@ function newfrmFichaSSF()
     obj.button61:setText("R");
     obj.button61:setName("button61");
 
-    obj.dataLink209 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink209 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink209:setParent(obj.layout98);
     obj.dataLink209:setFields({'atr_3_6', 'dificuldade_3_6', 'bonus_3_6', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink209:setName("dataLink209");
 
-    obj.layout99 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout99 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout99:setParent(obj.layout92);
     obj.layout99:setLeft(0);
     obj.layout99:setTop(180);
@@ -8812,7 +8812,7 @@ function newfrmFichaSSF()
     obj.layout99:setHeight(25);
     obj.layout99:setName("layout99");
 
-    obj.edit144 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit144 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit144:setParent(obj.layout99);
     obj.edit144:setLeft(5);
     obj.edit144:setTop(0);
@@ -8821,13 +8821,13 @@ function newfrmFichaSSF()
     obj.edit144:setField("pericia_3_7");
     obj.edit144:setName("edit144");
 
-    obj.dataLink210 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink210 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink210:setParent(obj.layout99);
     obj.dataLink210:setField("pericia_3_7");
     obj.dataLink210:setDefaultValue("Salto");
     obj.dataLink210:setName("dataLink210");
 
-    obj.rectangle137 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle137 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle137:setParent(obj.layout99);
     obj.rectangle137:setLeft(90);
     obj.rectangle137:setTop(0);
@@ -8838,7 +8838,7 @@ function newfrmFichaSSF()
     obj.rectangle137:setStrokeSize(1);
     obj.rectangle137:setName("rectangle137");
 
-    obj.label225 = gui.fromHandle(_obj_newObject("label"));
+    obj.label225 = GUI.fromHandle(_obj_newObject("label"));
     obj.label225:setParent(obj.layout99);
     obj.label225:setLeft(90);
     obj.label225:setTop(3);
@@ -8848,7 +8848,7 @@ function newfrmFichaSSF()
     obj.label225:setHorzTextAlign("center");
     obj.label225:setName("label225");
 
-    obj.comboBox95 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox95 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox95:setParent(obj.layout99);
     obj.comboBox95:setLeft(130);
     obj.comboBox95:setTop(0);
@@ -8859,13 +8859,13 @@ function newfrmFichaSSF()
     obj.comboBox95:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox95:setName("comboBox95");
 
-    obj.dataLink211 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink211 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink211:setParent(obj.layout99);
     obj.dataLink211:setField("atr_3_7");
     obj.dataLink211:setDefaultValue("DX");
     obj.dataLink211:setName("dataLink211");
 
-    obj.label226 = gui.fromHandle(_obj_newObject("label"));
+    obj.label226 = GUI.fromHandle(_obj_newObject("label"));
     obj.label226:setParent(obj.layout99);
     obj.label226:setLeft(180);
     obj.label226:setTop(3);
@@ -8875,7 +8875,7 @@ function newfrmFichaSSF()
     obj.label226:setHorzTextAlign("center");
     obj.label226:setName("label226");
 
-    obj.edit145 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit145 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit145:setParent(obj.layout99);
     obj.edit145:setLeft(190);
     obj.edit145:setTop(0);
@@ -8885,7 +8885,7 @@ function newfrmFichaSSF()
     obj.edit145:setField("bonus_3_7");
     obj.edit145:setName("edit145");
 
-    obj.comboBox96 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox96 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox96:setParent(obj.layout99);
     obj.comboBox96:setLeft(220);
     obj.comboBox96:setTop(0);
@@ -8896,13 +8896,13 @@ function newfrmFichaSSF()
     obj.comboBox96:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox96:setName("comboBox96");
 
-    obj.dataLink212 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink212 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink212:setParent(obj.layout99);
     obj.dataLink212:setField("dificuldade_3_7");
     obj.dataLink212:setDefaultValue("F");
     obj.dataLink212:setName("dataLink212");
 
-    obj.rectangle138 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle138 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle138:setParent(obj.layout99);
     obj.rectangle138:setLeft(275);
     obj.rectangle138:setTop(0);
@@ -8913,7 +8913,7 @@ function newfrmFichaSSF()
     obj.rectangle138:setStrokeSize(1);
     obj.rectangle138:setName("rectangle138");
 
-    obj.label227 = gui.fromHandle(_obj_newObject("label"));
+    obj.label227 = GUI.fromHandle(_obj_newObject("label"));
     obj.label227:setParent(obj.layout99);
     obj.label227:setLeft(275);
     obj.label227:setTop(3);
@@ -8923,7 +8923,7 @@ function newfrmFichaSSF()
     obj.label227:setHorzTextAlign("center");
     obj.label227:setName("label227");
 
-    obj.button62 = gui.fromHandle(_obj_newObject("button"));
+    obj.button62 = GUI.fromHandle(_obj_newObject("button"));
     obj.button62:setParent(obj.layout99);
     obj.button62:setLeft(300);
     obj.button62:setTop(3);
@@ -8932,12 +8932,12 @@ function newfrmFichaSSF()
     obj.button62:setText("R");
     obj.button62:setName("button62");
 
-    obj.dataLink213 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink213 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink213:setParent(obj.layout99);
     obj.dataLink213:setFields({'atr_3_7', 'dificuldade_3_7', 'bonus_3_7', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink213:setName("dataLink213");
 
-    obj.layout100 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout100 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout100:setParent(obj.layout92);
     obj.layout100:setLeft(0);
     obj.layout100:setTop(205);
@@ -8945,7 +8945,7 @@ function newfrmFichaSSF()
     obj.layout100:setHeight(25);
     obj.layout100:setName("layout100");
 
-    obj.edit146 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit146 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit146:setParent(obj.layout100);
     obj.edit146:setLeft(5);
     obj.edit146:setTop(0);
@@ -8954,13 +8954,13 @@ function newfrmFichaSSF()
     obj.edit146:setField("pericia_3_8");
     obj.edit146:setName("edit146");
 
-    obj.dataLink214 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink214 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink214:setParent(obj.layout100);
     obj.dataLink214:setField("pericia_3_8");
     obj.dataLink214:setDefaultValue("Sobrevivência");
     obj.dataLink214:setName("dataLink214");
 
-    obj.rectangle139 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle139 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle139:setParent(obj.layout100);
     obj.rectangle139:setLeft(90);
     obj.rectangle139:setTop(0);
@@ -8971,7 +8971,7 @@ function newfrmFichaSSF()
     obj.rectangle139:setStrokeSize(1);
     obj.rectangle139:setName("rectangle139");
 
-    obj.label228 = gui.fromHandle(_obj_newObject("label"));
+    obj.label228 = GUI.fromHandle(_obj_newObject("label"));
     obj.label228:setParent(obj.layout100);
     obj.label228:setLeft(90);
     obj.label228:setTop(3);
@@ -8981,7 +8981,7 @@ function newfrmFichaSSF()
     obj.label228:setHorzTextAlign("center");
     obj.label228:setName("label228");
 
-    obj.comboBox97 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox97 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox97:setParent(obj.layout100);
     obj.comboBox97:setLeft(130);
     obj.comboBox97:setTop(0);
@@ -8992,13 +8992,13 @@ function newfrmFichaSSF()
     obj.comboBox97:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox97:setName("comboBox97");
 
-    obj.dataLink215 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink215 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink215:setParent(obj.layout100);
     obj.dataLink215:setField("atr_3_8");
     obj.dataLink215:setDefaultValue("IQ");
     obj.dataLink215:setName("dataLink215");
 
-    obj.label229 = gui.fromHandle(_obj_newObject("label"));
+    obj.label229 = GUI.fromHandle(_obj_newObject("label"));
     obj.label229:setParent(obj.layout100);
     obj.label229:setLeft(180);
     obj.label229:setTop(3);
@@ -9008,7 +9008,7 @@ function newfrmFichaSSF()
     obj.label229:setHorzTextAlign("center");
     obj.label229:setName("label229");
 
-    obj.edit147 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit147 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit147:setParent(obj.layout100);
     obj.edit147:setLeft(190);
     obj.edit147:setTop(0);
@@ -9018,7 +9018,7 @@ function newfrmFichaSSF()
     obj.edit147:setField("bonus_3_8");
     obj.edit147:setName("edit147");
 
-    obj.comboBox98 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox98 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox98:setParent(obj.layout100);
     obj.comboBox98:setLeft(220);
     obj.comboBox98:setTop(0);
@@ -9029,13 +9029,13 @@ function newfrmFichaSSF()
     obj.comboBox98:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox98:setName("comboBox98");
 
-    obj.dataLink216 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink216 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink216:setParent(obj.layout100);
     obj.dataLink216:setField("dificuldade_3_8");
     obj.dataLink216:setDefaultValue("M");
     obj.dataLink216:setName("dataLink216");
 
-    obj.rectangle140 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle140 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle140:setParent(obj.layout100);
     obj.rectangle140:setLeft(275);
     obj.rectangle140:setTop(0);
@@ -9046,7 +9046,7 @@ function newfrmFichaSSF()
     obj.rectangle140:setStrokeSize(1);
     obj.rectangle140:setName("rectangle140");
 
-    obj.label230 = gui.fromHandle(_obj_newObject("label"));
+    obj.label230 = GUI.fromHandle(_obj_newObject("label"));
     obj.label230:setParent(obj.layout100);
     obj.label230:setLeft(275);
     obj.label230:setTop(3);
@@ -9056,7 +9056,7 @@ function newfrmFichaSSF()
     obj.label230:setHorzTextAlign("center");
     obj.label230:setName("label230");
 
-    obj.button63 = gui.fromHandle(_obj_newObject("button"));
+    obj.button63 = GUI.fromHandle(_obj_newObject("button"));
     obj.button63:setParent(obj.layout100);
     obj.button63:setLeft(300);
     obj.button63:setTop(3);
@@ -9065,12 +9065,12 @@ function newfrmFichaSSF()
     obj.button63:setText("R");
     obj.button63:setName("button63");
 
-    obj.dataLink217 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink217 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink217:setParent(obj.layout100);
     obj.dataLink217:setFields({'atr_3_8', 'dificuldade_3_8', 'bonus_3_8', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink217:setName("dataLink217");
 
-    obj.layout101 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout101 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout101:setParent(obj.layout92);
     obj.layout101:setLeft(0);
     obj.layout101:setTop(230);
@@ -9078,7 +9078,7 @@ function newfrmFichaSSF()
     obj.layout101:setHeight(25);
     obj.layout101:setName("layout101");
 
-    obj.edit148 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit148 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit148:setParent(obj.layout101);
     obj.edit148:setLeft(5);
     obj.edit148:setTop(0);
@@ -9087,13 +9087,13 @@ function newfrmFichaSSF()
     obj.edit148:setField("pericia_3_9");
     obj.edit148:setName("edit148");
 
-    obj.dataLink218 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink218 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink218:setParent(obj.layout101);
     obj.dataLink218:setField("pericia_3_9");
     obj.dataLink218:setDefaultValue("Trato Social (Nobreza)");
     obj.dataLink218:setName("dataLink218");
 
-    obj.rectangle141 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle141 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle141:setParent(obj.layout101);
     obj.rectangle141:setLeft(90);
     obj.rectangle141:setTop(0);
@@ -9104,7 +9104,7 @@ function newfrmFichaSSF()
     obj.rectangle141:setStrokeSize(1);
     obj.rectangle141:setName("rectangle141");
 
-    obj.label231 = gui.fromHandle(_obj_newObject("label"));
+    obj.label231 = GUI.fromHandle(_obj_newObject("label"));
     obj.label231:setParent(obj.layout101);
     obj.label231:setLeft(90);
     obj.label231:setTop(3);
@@ -9114,7 +9114,7 @@ function newfrmFichaSSF()
     obj.label231:setHorzTextAlign("center");
     obj.label231:setName("label231");
 
-    obj.comboBox99 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox99 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox99:setParent(obj.layout101);
     obj.comboBox99:setLeft(130);
     obj.comboBox99:setTop(0);
@@ -9125,13 +9125,13 @@ function newfrmFichaSSF()
     obj.comboBox99:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox99:setName("comboBox99");
 
-    obj.dataLink219 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink219 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink219:setParent(obj.layout101);
     obj.dataLink219:setField("atr_3_9");
     obj.dataLink219:setDefaultValue("IQ");
     obj.dataLink219:setName("dataLink219");
 
-    obj.label232 = gui.fromHandle(_obj_newObject("label"));
+    obj.label232 = GUI.fromHandle(_obj_newObject("label"));
     obj.label232:setParent(obj.layout101);
     obj.label232:setLeft(180);
     obj.label232:setTop(3);
@@ -9141,7 +9141,7 @@ function newfrmFichaSSF()
     obj.label232:setHorzTextAlign("center");
     obj.label232:setName("label232");
 
-    obj.edit149 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit149 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit149:setParent(obj.layout101);
     obj.edit149:setLeft(190);
     obj.edit149:setTop(0);
@@ -9151,7 +9151,7 @@ function newfrmFichaSSF()
     obj.edit149:setField("bonus_3_9");
     obj.edit149:setName("edit149");
 
-    obj.comboBox100 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox100 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox100:setParent(obj.layout101);
     obj.comboBox100:setLeft(220);
     obj.comboBox100:setTop(0);
@@ -9162,13 +9162,13 @@ function newfrmFichaSSF()
     obj.comboBox100:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox100:setName("comboBox100");
 
-    obj.dataLink220 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink220 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink220:setParent(obj.layout101);
     obj.dataLink220:setField("dificuldade_3_9");
     obj.dataLink220:setDefaultValue("F");
     obj.dataLink220:setName("dataLink220");
 
-    obj.rectangle142 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle142 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle142:setParent(obj.layout101);
     obj.rectangle142:setLeft(275);
     obj.rectangle142:setTop(0);
@@ -9179,7 +9179,7 @@ function newfrmFichaSSF()
     obj.rectangle142:setStrokeSize(1);
     obj.rectangle142:setName("rectangle142");
 
-    obj.label233 = gui.fromHandle(_obj_newObject("label"));
+    obj.label233 = GUI.fromHandle(_obj_newObject("label"));
     obj.label233:setParent(obj.layout101);
     obj.label233:setLeft(275);
     obj.label233:setTop(3);
@@ -9189,7 +9189,7 @@ function newfrmFichaSSF()
     obj.label233:setHorzTextAlign("center");
     obj.label233:setName("label233");
 
-    obj.button64 = gui.fromHandle(_obj_newObject("button"));
+    obj.button64 = GUI.fromHandle(_obj_newObject("button"));
     obj.button64:setParent(obj.layout101);
     obj.button64:setLeft(300);
     obj.button64:setTop(3);
@@ -9198,12 +9198,12 @@ function newfrmFichaSSF()
     obj.button64:setText("R");
     obj.button64:setName("button64");
 
-    obj.dataLink221 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink221 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink221:setParent(obj.layout101);
     obj.dataLink221:setFields({'atr_3_9', 'dificuldade_3_9', 'bonus_3_9', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink221:setName("dataLink221");
 
-    obj.layout102 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout102 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout102:setParent(obj.layout92);
     obj.layout102:setLeft(0);
     obj.layout102:setTop(255);
@@ -9211,7 +9211,7 @@ function newfrmFichaSSF()
     obj.layout102:setHeight(25);
     obj.layout102:setName("layout102");
 
-    obj.edit150 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit150 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit150:setParent(obj.layout102);
     obj.edit150:setLeft(5);
     obj.edit150:setTop(0);
@@ -9220,13 +9220,13 @@ function newfrmFichaSSF()
     obj.edit150:setField("pericia_3_10");
     obj.edit150:setName("edit150");
 
-    obj.dataLink222 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink222 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink222:setParent(obj.layout102);
     obj.dataLink222:setField("pericia_3_10");
     obj.dataLink222:setDefaultValue("Trato Social (Espectro)");
     obj.dataLink222:setName("dataLink222");
 
-    obj.rectangle143 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle143 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle143:setParent(obj.layout102);
     obj.rectangle143:setLeft(90);
     obj.rectangle143:setTop(0);
@@ -9237,7 +9237,7 @@ function newfrmFichaSSF()
     obj.rectangle143:setStrokeSize(1);
     obj.rectangle143:setName("rectangle143");
 
-    obj.label234 = gui.fromHandle(_obj_newObject("label"));
+    obj.label234 = GUI.fromHandle(_obj_newObject("label"));
     obj.label234:setParent(obj.layout102);
     obj.label234:setLeft(90);
     obj.label234:setTop(3);
@@ -9247,7 +9247,7 @@ function newfrmFichaSSF()
     obj.label234:setHorzTextAlign("center");
     obj.label234:setName("label234");
 
-    obj.comboBox101 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox101 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox101:setParent(obj.layout102);
     obj.comboBox101:setLeft(130);
     obj.comboBox101:setTop(0);
@@ -9258,13 +9258,13 @@ function newfrmFichaSSF()
     obj.comboBox101:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox101:setName("comboBox101");
 
-    obj.dataLink223 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink223 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink223:setParent(obj.layout102);
     obj.dataLink223:setField("atr_3_10");
     obj.dataLink223:setDefaultValue("IQ");
     obj.dataLink223:setName("dataLink223");
 
-    obj.label235 = gui.fromHandle(_obj_newObject("label"));
+    obj.label235 = GUI.fromHandle(_obj_newObject("label"));
     obj.label235:setParent(obj.layout102);
     obj.label235:setLeft(180);
     obj.label235:setTop(3);
@@ -9274,7 +9274,7 @@ function newfrmFichaSSF()
     obj.label235:setHorzTextAlign("center");
     obj.label235:setName("label235");
 
-    obj.edit151 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit151 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit151:setParent(obj.layout102);
     obj.edit151:setLeft(190);
     obj.edit151:setTop(0);
@@ -9284,7 +9284,7 @@ function newfrmFichaSSF()
     obj.edit151:setField("bonus_3_10");
     obj.edit151:setName("edit151");
 
-    obj.comboBox102 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox102 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox102:setParent(obj.layout102);
     obj.comboBox102:setLeft(220);
     obj.comboBox102:setTop(0);
@@ -9295,13 +9295,13 @@ function newfrmFichaSSF()
     obj.comboBox102:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox102:setName("comboBox102");
 
-    obj.dataLink224 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink224 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink224:setParent(obj.layout102);
     obj.dataLink224:setField("dificuldade_3_10");
     obj.dataLink224:setDefaultValue("F");
     obj.dataLink224:setName("dataLink224");
 
-    obj.rectangle144 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle144 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle144:setParent(obj.layout102);
     obj.rectangle144:setLeft(275);
     obj.rectangle144:setTop(0);
@@ -9312,7 +9312,7 @@ function newfrmFichaSSF()
     obj.rectangle144:setStrokeSize(1);
     obj.rectangle144:setName("rectangle144");
 
-    obj.label236 = gui.fromHandle(_obj_newObject("label"));
+    obj.label236 = GUI.fromHandle(_obj_newObject("label"));
     obj.label236:setParent(obj.layout102);
     obj.label236:setLeft(275);
     obj.label236:setTop(3);
@@ -9322,7 +9322,7 @@ function newfrmFichaSSF()
     obj.label236:setHorzTextAlign("center");
     obj.label236:setName("label236");
 
-    obj.button65 = gui.fromHandle(_obj_newObject("button"));
+    obj.button65 = GUI.fromHandle(_obj_newObject("button"));
     obj.button65:setParent(obj.layout102);
     obj.button65:setLeft(300);
     obj.button65:setTop(3);
@@ -9331,12 +9331,12 @@ function newfrmFichaSSF()
     obj.button65:setText("R");
     obj.button65:setName("button65");
 
-    obj.dataLink225 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink225 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink225:setParent(obj.layout102);
     obj.dataLink225:setFields({'atr_3_10', 'dificuldade_3_10', 'bonus_3_10', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink225:setName("dataLink225");
 
-    obj.layout103 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout103 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout103:setParent(obj.layout92);
     obj.layout103:setLeft(0);
     obj.layout103:setTop(280);
@@ -9344,7 +9344,7 @@ function newfrmFichaSSF()
     obj.layout103:setHeight(25);
     obj.layout103:setName("layout103");
 
-    obj.edit152 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit152 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit152:setParent(obj.layout103);
     obj.edit152:setLeft(5);
     obj.edit152:setTop(0);
@@ -9353,13 +9353,13 @@ function newfrmFichaSSF()
     obj.edit152:setField("pericia_3_11");
     obj.edit152:setName("edit152");
 
-    obj.dataLink226 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink226 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink226:setParent(obj.layout103);
     obj.dataLink226:setField("pericia_3_11");
     obj.dataLink226:setDefaultValue("Trato Social (Guerreiro)");
     obj.dataLink226:setName("dataLink226");
 
-    obj.rectangle145 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle145 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle145:setParent(obj.layout103);
     obj.rectangle145:setLeft(90);
     obj.rectangle145:setTop(0);
@@ -9370,7 +9370,7 @@ function newfrmFichaSSF()
     obj.rectangle145:setStrokeSize(1);
     obj.rectangle145:setName("rectangle145");
 
-    obj.label237 = gui.fromHandle(_obj_newObject("label"));
+    obj.label237 = GUI.fromHandle(_obj_newObject("label"));
     obj.label237:setParent(obj.layout103);
     obj.label237:setLeft(90);
     obj.label237:setTop(3);
@@ -9380,7 +9380,7 @@ function newfrmFichaSSF()
     obj.label237:setHorzTextAlign("center");
     obj.label237:setName("label237");
 
-    obj.comboBox103 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox103 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox103:setParent(obj.layout103);
     obj.comboBox103:setLeft(130);
     obj.comboBox103:setTop(0);
@@ -9391,13 +9391,13 @@ function newfrmFichaSSF()
     obj.comboBox103:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox103:setName("comboBox103");
 
-    obj.dataLink227 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink227 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink227:setParent(obj.layout103);
     obj.dataLink227:setField("atr_3_11");
     obj.dataLink227:setDefaultValue("IQ");
     obj.dataLink227:setName("dataLink227");
 
-    obj.label238 = gui.fromHandle(_obj_newObject("label"));
+    obj.label238 = GUI.fromHandle(_obj_newObject("label"));
     obj.label238:setParent(obj.layout103);
     obj.label238:setLeft(180);
     obj.label238:setTop(3);
@@ -9407,7 +9407,7 @@ function newfrmFichaSSF()
     obj.label238:setHorzTextAlign("center");
     obj.label238:setName("label238");
 
-    obj.edit153 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit153 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit153:setParent(obj.layout103);
     obj.edit153:setLeft(190);
     obj.edit153:setTop(0);
@@ -9417,7 +9417,7 @@ function newfrmFichaSSF()
     obj.edit153:setField("bonus_3_11");
     obj.edit153:setName("edit153");
 
-    obj.comboBox104 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox104 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox104:setParent(obj.layout103);
     obj.comboBox104:setLeft(220);
     obj.comboBox104:setTop(0);
@@ -9428,13 +9428,13 @@ function newfrmFichaSSF()
     obj.comboBox104:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox104:setName("comboBox104");
 
-    obj.dataLink228 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink228 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink228:setParent(obj.layout103);
     obj.dataLink228:setField("dificuldade_3_11");
     obj.dataLink228:setDefaultValue("F");
     obj.dataLink228:setName("dataLink228");
 
-    obj.rectangle146 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle146 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle146:setParent(obj.layout103);
     obj.rectangle146:setLeft(275);
     obj.rectangle146:setTop(0);
@@ -9445,7 +9445,7 @@ function newfrmFichaSSF()
     obj.rectangle146:setStrokeSize(1);
     obj.rectangle146:setName("rectangle146");
 
-    obj.label239 = gui.fromHandle(_obj_newObject("label"));
+    obj.label239 = GUI.fromHandle(_obj_newObject("label"));
     obj.label239:setParent(obj.layout103);
     obj.label239:setLeft(275);
     obj.label239:setTop(3);
@@ -9455,7 +9455,7 @@ function newfrmFichaSSF()
     obj.label239:setHorzTextAlign("center");
     obj.label239:setName("label239");
 
-    obj.button66 = gui.fromHandle(_obj_newObject("button"));
+    obj.button66 = GUI.fromHandle(_obj_newObject("button"));
     obj.button66:setParent(obj.layout103);
     obj.button66:setLeft(300);
     obj.button66:setTop(3);
@@ -9464,12 +9464,12 @@ function newfrmFichaSSF()
     obj.button66:setText("R");
     obj.button66:setName("button66");
 
-    obj.dataLink229 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink229 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink229:setParent(obj.layout103);
     obj.dataLink229:setFields({'atr_3_11', 'dificuldade_3_11', 'bonus_3_11', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink229:setName("dataLink229");
 
-    obj.layout104 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout104 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout104:setParent(obj.layout92);
     obj.layout104:setLeft(0);
     obj.layout104:setTop(305);
@@ -9477,7 +9477,7 @@ function newfrmFichaSSF()
     obj.layout104:setHeight(25);
     obj.layout104:setName("layout104");
 
-    obj.edit154 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit154 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit154:setParent(obj.layout104);
     obj.edit154:setLeft(5);
     obj.edit154:setTop(0);
@@ -9486,13 +9486,13 @@ function newfrmFichaSSF()
     obj.edit154:setField("pericia_3_12");
     obj.edit154:setName("edit154");
 
-    obj.dataLink230 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink230 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink230:setParent(obj.layout104);
     obj.dataLink230:setField("pericia_3_12");
     obj.dataLink230:setDefaultValue("Trato Social (Berserk)");
     obj.dataLink230:setName("dataLink230");
 
-    obj.rectangle147 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle147 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle147:setParent(obj.layout104);
     obj.rectangle147:setLeft(90);
     obj.rectangle147:setTop(0);
@@ -9503,7 +9503,7 @@ function newfrmFichaSSF()
     obj.rectangle147:setStrokeSize(1);
     obj.rectangle147:setName("rectangle147");
 
-    obj.label240 = gui.fromHandle(_obj_newObject("label"));
+    obj.label240 = GUI.fromHandle(_obj_newObject("label"));
     obj.label240:setParent(obj.layout104);
     obj.label240:setLeft(90);
     obj.label240:setTop(3);
@@ -9513,7 +9513,7 @@ function newfrmFichaSSF()
     obj.label240:setHorzTextAlign("center");
     obj.label240:setName("label240");
 
-    obj.comboBox105 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox105 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox105:setParent(obj.layout104);
     obj.comboBox105:setLeft(130);
     obj.comboBox105:setTop(0);
@@ -9524,13 +9524,13 @@ function newfrmFichaSSF()
     obj.comboBox105:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox105:setName("comboBox105");
 
-    obj.dataLink231 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink231 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink231:setParent(obj.layout104);
     obj.dataLink231:setField("atr_3_12");
     obj.dataLink231:setDefaultValue("IQ");
     obj.dataLink231:setName("dataLink231");
 
-    obj.label241 = gui.fromHandle(_obj_newObject("label"));
+    obj.label241 = GUI.fromHandle(_obj_newObject("label"));
     obj.label241:setParent(obj.layout104);
     obj.label241:setLeft(180);
     obj.label241:setTop(3);
@@ -9540,7 +9540,7 @@ function newfrmFichaSSF()
     obj.label241:setHorzTextAlign("center");
     obj.label241:setName("label241");
 
-    obj.edit155 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit155 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit155:setParent(obj.layout104);
     obj.edit155:setLeft(190);
     obj.edit155:setTop(0);
@@ -9550,7 +9550,7 @@ function newfrmFichaSSF()
     obj.edit155:setField("bonus_3_12");
     obj.edit155:setName("edit155");
 
-    obj.comboBox106 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox106 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox106:setParent(obj.layout104);
     obj.comboBox106:setLeft(220);
     obj.comboBox106:setTop(0);
@@ -9561,13 +9561,13 @@ function newfrmFichaSSF()
     obj.comboBox106:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox106:setName("comboBox106");
 
-    obj.dataLink232 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink232 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink232:setParent(obj.layout104);
     obj.dataLink232:setField("dificuldade_3_12");
     obj.dataLink232:setDefaultValue("F");
     obj.dataLink232:setName("dataLink232");
 
-    obj.rectangle148 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle148 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle148:setParent(obj.layout104);
     obj.rectangle148:setLeft(275);
     obj.rectangle148:setTop(0);
@@ -9578,7 +9578,7 @@ function newfrmFichaSSF()
     obj.rectangle148:setStrokeSize(1);
     obj.rectangle148:setName("rectangle148");
 
-    obj.label242 = gui.fromHandle(_obj_newObject("label"));
+    obj.label242 = GUI.fromHandle(_obj_newObject("label"));
     obj.label242:setParent(obj.layout104);
     obj.label242:setLeft(275);
     obj.label242:setTop(3);
@@ -9588,7 +9588,7 @@ function newfrmFichaSSF()
     obj.label242:setHorzTextAlign("center");
     obj.label242:setName("label242");
 
-    obj.button67 = gui.fromHandle(_obj_newObject("button"));
+    obj.button67 = GUI.fromHandle(_obj_newObject("button"));
     obj.button67:setParent(obj.layout104);
     obj.button67:setLeft(300);
     obj.button67:setTop(3);
@@ -9597,12 +9597,12 @@ function newfrmFichaSSF()
     obj.button67:setText("R");
     obj.button67:setName("button67");
 
-    obj.dataLink233 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink233 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink233:setParent(obj.layout104);
     obj.dataLink233:setFields({'atr_3_12', 'dificuldade_3_12', 'bonus_3_12', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink233:setName("dataLink233");
 
-    obj.layout105 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout105 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout105:setParent(obj.layout92);
     obj.layout105:setLeft(0);
     obj.layout105:setTop(330);
@@ -9610,7 +9610,7 @@ function newfrmFichaSSF()
     obj.layout105:setHeight(25);
     obj.layout105:setName("layout105");
 
-    obj.edit156 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit156 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit156:setParent(obj.layout105);
     obj.edit156:setLeft(5);
     obj.edit156:setTop(0);
@@ -9619,13 +9619,13 @@ function newfrmFichaSSF()
     obj.edit156:setField("pericia_3_13");
     obj.edit156:setName("edit156");
 
-    obj.dataLink234 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink234 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink234:setParent(obj.layout105);
     obj.dataLink234:setField("pericia_3_13");
     obj.dataLink234:setDefaultValue("Trato Social (Marinas)");
     obj.dataLink234:setName("dataLink234");
 
-    obj.rectangle149 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle149 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle149:setParent(obj.layout105);
     obj.rectangle149:setLeft(90);
     obj.rectangle149:setTop(0);
@@ -9636,7 +9636,7 @@ function newfrmFichaSSF()
     obj.rectangle149:setStrokeSize(1);
     obj.rectangle149:setName("rectangle149");
 
-    obj.label243 = gui.fromHandle(_obj_newObject("label"));
+    obj.label243 = GUI.fromHandle(_obj_newObject("label"));
     obj.label243:setParent(obj.layout105);
     obj.label243:setLeft(90);
     obj.label243:setTop(3);
@@ -9646,7 +9646,7 @@ function newfrmFichaSSF()
     obj.label243:setHorzTextAlign("center");
     obj.label243:setName("label243");
 
-    obj.comboBox107 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox107 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox107:setParent(obj.layout105);
     obj.comboBox107:setLeft(130);
     obj.comboBox107:setTop(0);
@@ -9657,13 +9657,13 @@ function newfrmFichaSSF()
     obj.comboBox107:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox107:setName("comboBox107");
 
-    obj.dataLink235 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink235 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink235:setParent(obj.layout105);
     obj.dataLink235:setField("atr_3_13");
     obj.dataLink235:setDefaultValue("IQ");
     obj.dataLink235:setName("dataLink235");
 
-    obj.label244 = gui.fromHandle(_obj_newObject("label"));
+    obj.label244 = GUI.fromHandle(_obj_newObject("label"));
     obj.label244:setParent(obj.layout105);
     obj.label244:setLeft(180);
     obj.label244:setTop(3);
@@ -9673,7 +9673,7 @@ function newfrmFichaSSF()
     obj.label244:setHorzTextAlign("center");
     obj.label244:setName("label244");
 
-    obj.edit157 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit157 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit157:setParent(obj.layout105);
     obj.edit157:setLeft(190);
     obj.edit157:setTop(0);
@@ -9683,7 +9683,7 @@ function newfrmFichaSSF()
     obj.edit157:setField("bonus_3_13");
     obj.edit157:setName("edit157");
 
-    obj.comboBox108 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox108 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox108:setParent(obj.layout105);
     obj.comboBox108:setLeft(220);
     obj.comboBox108:setTop(0);
@@ -9694,13 +9694,13 @@ function newfrmFichaSSF()
     obj.comboBox108:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox108:setName("comboBox108");
 
-    obj.dataLink236 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink236 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink236:setParent(obj.layout105);
     obj.dataLink236:setField("dificuldade_3_13");
     obj.dataLink236:setDefaultValue("F");
     obj.dataLink236:setName("dataLink236");
 
-    obj.rectangle150 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle150 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle150:setParent(obj.layout105);
     obj.rectangle150:setLeft(275);
     obj.rectangle150:setTop(0);
@@ -9711,7 +9711,7 @@ function newfrmFichaSSF()
     obj.rectangle150:setStrokeSize(1);
     obj.rectangle150:setName("rectangle150");
 
-    obj.label245 = gui.fromHandle(_obj_newObject("label"));
+    obj.label245 = GUI.fromHandle(_obj_newObject("label"));
     obj.label245:setParent(obj.layout105);
     obj.label245:setLeft(275);
     obj.label245:setTop(3);
@@ -9721,7 +9721,7 @@ function newfrmFichaSSF()
     obj.label245:setHorzTextAlign("center");
     obj.label245:setName("label245");
 
-    obj.button68 = gui.fromHandle(_obj_newObject("button"));
+    obj.button68 = GUI.fromHandle(_obj_newObject("button"));
     obj.button68:setParent(obj.layout105);
     obj.button68:setLeft(300);
     obj.button68:setTop(3);
@@ -9730,12 +9730,12 @@ function newfrmFichaSSF()
     obj.button68:setText("R");
     obj.button68:setName("button68");
 
-    obj.dataLink237 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink237 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink237:setParent(obj.layout105);
     obj.dataLink237:setFields({'atr_3_13', 'dificuldade_3_13', 'bonus_3_13', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink237:setName("dataLink237");
 
-    obj.layout106 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout106 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout106:setParent(obj.layout92);
     obj.layout106:setLeft(0);
     obj.layout106:setTop(355);
@@ -9743,7 +9743,7 @@ function newfrmFichaSSF()
     obj.layout106:setHeight(25);
     obj.layout106:setName("layout106");
 
-    obj.edit158 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit158 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit158:setParent(obj.layout106);
     obj.edit158:setLeft(5);
     obj.edit158:setTop(0);
@@ -9752,13 +9752,13 @@ function newfrmFichaSSF()
     obj.edit158:setField("pericia_3_14");
     obj.edit158:setName("edit158");
 
-    obj.dataLink238 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink238 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink238:setParent(obj.layout106);
     obj.dataLink238:setField("pericia_3_14");
     obj.dataLink238:setDefaultValue("Trato Social (Santos)");
     obj.dataLink238:setName("dataLink238");
 
-    obj.rectangle151 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle151 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle151:setParent(obj.layout106);
     obj.rectangle151:setLeft(90);
     obj.rectangle151:setTop(0);
@@ -9769,7 +9769,7 @@ function newfrmFichaSSF()
     obj.rectangle151:setStrokeSize(1);
     obj.rectangle151:setName("rectangle151");
 
-    obj.label246 = gui.fromHandle(_obj_newObject("label"));
+    obj.label246 = GUI.fromHandle(_obj_newObject("label"));
     obj.label246:setParent(obj.layout106);
     obj.label246:setLeft(90);
     obj.label246:setTop(3);
@@ -9779,7 +9779,7 @@ function newfrmFichaSSF()
     obj.label246:setHorzTextAlign("center");
     obj.label246:setName("label246");
 
-    obj.comboBox109 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox109 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox109:setParent(obj.layout106);
     obj.comboBox109:setLeft(130);
     obj.comboBox109:setTop(0);
@@ -9790,13 +9790,13 @@ function newfrmFichaSSF()
     obj.comboBox109:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox109:setName("comboBox109");
 
-    obj.dataLink239 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink239 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink239:setParent(obj.layout106);
     obj.dataLink239:setField("atr_3_14");
     obj.dataLink239:setDefaultValue("IQ");
     obj.dataLink239:setName("dataLink239");
 
-    obj.label247 = gui.fromHandle(_obj_newObject("label"));
+    obj.label247 = GUI.fromHandle(_obj_newObject("label"));
     obj.label247:setParent(obj.layout106);
     obj.label247:setLeft(180);
     obj.label247:setTop(3);
@@ -9806,7 +9806,7 @@ function newfrmFichaSSF()
     obj.label247:setHorzTextAlign("center");
     obj.label247:setName("label247");
 
-    obj.edit159 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit159 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit159:setParent(obj.layout106);
     obj.edit159:setLeft(190);
     obj.edit159:setTop(0);
@@ -9816,7 +9816,7 @@ function newfrmFichaSSF()
     obj.edit159:setField("bonus_3_14");
     obj.edit159:setName("edit159");
 
-    obj.comboBox110 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox110 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox110:setParent(obj.layout106);
     obj.comboBox110:setLeft(220);
     obj.comboBox110:setTop(0);
@@ -9827,13 +9827,13 @@ function newfrmFichaSSF()
     obj.comboBox110:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox110:setName("comboBox110");
 
-    obj.dataLink240 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink240 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink240:setParent(obj.layout106);
     obj.dataLink240:setField("dificuldade_3_14");
     obj.dataLink240:setDefaultValue("F");
     obj.dataLink240:setName("dataLink240");
 
-    obj.rectangle152 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle152 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle152:setParent(obj.layout106);
     obj.rectangle152:setLeft(275);
     obj.rectangle152:setTop(0);
@@ -9844,7 +9844,7 @@ function newfrmFichaSSF()
     obj.rectangle152:setStrokeSize(1);
     obj.rectangle152:setName("rectangle152");
 
-    obj.label248 = gui.fromHandle(_obj_newObject("label"));
+    obj.label248 = GUI.fromHandle(_obj_newObject("label"));
     obj.label248:setParent(obj.layout106);
     obj.label248:setLeft(275);
     obj.label248:setTop(3);
@@ -9854,7 +9854,7 @@ function newfrmFichaSSF()
     obj.label248:setHorzTextAlign("center");
     obj.label248:setName("label248");
 
-    obj.button69 = gui.fromHandle(_obj_newObject("button"));
+    obj.button69 = GUI.fromHandle(_obj_newObject("button"));
     obj.button69:setParent(obj.layout106);
     obj.button69:setLeft(300);
     obj.button69:setTop(3);
@@ -9863,12 +9863,12 @@ function newfrmFichaSSF()
     obj.button69:setText("R");
     obj.button69:setName("button69");
 
-    obj.dataLink241 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink241 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink241:setParent(obj.layout106);
     obj.dataLink241:setFields({'atr_3_14', 'dificuldade_3_14', 'bonus_3_14', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink241:setName("dataLink241");
 
-    obj.layout107 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout107 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout107:setParent(obj.layout92);
     obj.layout107:setLeft(0);
     obj.layout107:setTop(380);
@@ -9876,7 +9876,7 @@ function newfrmFichaSSF()
     obj.layout107:setHeight(25);
     obj.layout107:setName("layout107");
 
-    obj.edit160 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit160 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit160:setParent(obj.layout107);
     obj.edit160:setLeft(5);
     obj.edit160:setTop(0);
@@ -9885,13 +9885,13 @@ function newfrmFichaSSF()
     obj.edit160:setField("pericia_3_15");
     obj.edit160:setName("edit160");
 
-    obj.dataLink242 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink242 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink242:setParent(obj.layout107);
     obj.dataLink242:setField("pericia_3_15");
     obj.dataLink242:setDefaultValue("Teologia (Hipermito)");
     obj.dataLink242:setName("dataLink242");
 
-    obj.rectangle153 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle153 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle153:setParent(obj.layout107);
     obj.rectangle153:setLeft(90);
     obj.rectangle153:setTop(0);
@@ -9902,7 +9902,7 @@ function newfrmFichaSSF()
     obj.rectangle153:setStrokeSize(1);
     obj.rectangle153:setName("rectangle153");
 
-    obj.label249 = gui.fromHandle(_obj_newObject("label"));
+    obj.label249 = GUI.fromHandle(_obj_newObject("label"));
     obj.label249:setParent(obj.layout107);
     obj.label249:setLeft(90);
     obj.label249:setTop(3);
@@ -9912,7 +9912,7 @@ function newfrmFichaSSF()
     obj.label249:setHorzTextAlign("center");
     obj.label249:setName("label249");
 
-    obj.comboBox111 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox111 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox111:setParent(obj.layout107);
     obj.comboBox111:setLeft(130);
     obj.comboBox111:setTop(0);
@@ -9923,13 +9923,13 @@ function newfrmFichaSSF()
     obj.comboBox111:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox111:setName("comboBox111");
 
-    obj.dataLink243 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink243 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink243:setParent(obj.layout107);
     obj.dataLink243:setField("atr_3_15");
     obj.dataLink243:setDefaultValue("IQ");
     obj.dataLink243:setName("dataLink243");
 
-    obj.label250 = gui.fromHandle(_obj_newObject("label"));
+    obj.label250 = GUI.fromHandle(_obj_newObject("label"));
     obj.label250:setParent(obj.layout107);
     obj.label250:setLeft(180);
     obj.label250:setTop(3);
@@ -9939,7 +9939,7 @@ function newfrmFichaSSF()
     obj.label250:setHorzTextAlign("center");
     obj.label250:setName("label250");
 
-    obj.edit161 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit161 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit161:setParent(obj.layout107);
     obj.edit161:setLeft(190);
     obj.edit161:setTop(0);
@@ -9949,7 +9949,7 @@ function newfrmFichaSSF()
     obj.edit161:setField("bonus_3_15");
     obj.edit161:setName("edit161");
 
-    obj.comboBox112 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox112 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox112:setParent(obj.layout107);
     obj.comboBox112:setLeft(220);
     obj.comboBox112:setTop(0);
@@ -9960,13 +9960,13 @@ function newfrmFichaSSF()
     obj.comboBox112:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox112:setName("comboBox112");
 
-    obj.dataLink244 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink244 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink244:setParent(obj.layout107);
     obj.dataLink244:setField("dificuldade_3_15");
     obj.dataLink244:setDefaultValue("D");
     obj.dataLink244:setName("dataLink244");
 
-    obj.rectangle154 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle154 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle154:setParent(obj.layout107);
     obj.rectangle154:setLeft(275);
     obj.rectangle154:setTop(0);
@@ -9977,7 +9977,7 @@ function newfrmFichaSSF()
     obj.rectangle154:setStrokeSize(1);
     obj.rectangle154:setName("rectangle154");
 
-    obj.label251 = gui.fromHandle(_obj_newObject("label"));
+    obj.label251 = GUI.fromHandle(_obj_newObject("label"));
     obj.label251:setParent(obj.layout107);
     obj.label251:setLeft(275);
     obj.label251:setTop(3);
@@ -9987,7 +9987,7 @@ function newfrmFichaSSF()
     obj.label251:setHorzTextAlign("center");
     obj.label251:setName("label251");
 
-    obj.button70 = gui.fromHandle(_obj_newObject("button"));
+    obj.button70 = GUI.fromHandle(_obj_newObject("button"));
     obj.button70:setParent(obj.layout107);
     obj.button70:setLeft(300);
     obj.button70:setTop(3);
@@ -9996,12 +9996,12 @@ function newfrmFichaSSF()
     obj.button70:setText("R");
     obj.button70:setName("button70");
 
-    obj.dataLink245 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink245 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink245:setParent(obj.layout107);
     obj.dataLink245:setFields({'atr_3_15', 'dificuldade_3_15', 'bonus_3_15', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink245:setName("dataLink245");
 
-    obj.layout108 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout108 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout108:setParent(obj.layout92);
     obj.layout108:setLeft(0);
     obj.layout108:setTop(405);
@@ -10009,7 +10009,7 @@ function newfrmFichaSSF()
     obj.layout108:setHeight(25);
     obj.layout108:setName("layout108");
 
-    obj.edit162 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit162 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit162:setParent(obj.layout108);
     obj.edit162:setLeft(5);
     obj.edit162:setTop(0);
@@ -10018,13 +10018,13 @@ function newfrmFichaSSF()
     obj.edit162:setField("pericia_3_16");
     obj.edit162:setName("edit162");
 
-    obj.dataLink246 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink246 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink246:setParent(obj.layout108);
     obj.dataLink246:setField("pericia_3_16");
     obj.dataLink246:setDefaultValue("Técnica de Ataque 1");
     obj.dataLink246:setName("dataLink246");
 
-    obj.rectangle155 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle155 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle155:setParent(obj.layout108);
     obj.rectangle155:setLeft(90);
     obj.rectangle155:setTop(0);
@@ -10035,7 +10035,7 @@ function newfrmFichaSSF()
     obj.rectangle155:setStrokeSize(1);
     obj.rectangle155:setName("rectangle155");
 
-    obj.label252 = gui.fromHandle(_obj_newObject("label"));
+    obj.label252 = GUI.fromHandle(_obj_newObject("label"));
     obj.label252:setParent(obj.layout108);
     obj.label252:setLeft(90);
     obj.label252:setTop(3);
@@ -10045,7 +10045,7 @@ function newfrmFichaSSF()
     obj.label252:setHorzTextAlign("center");
     obj.label252:setName("label252");
 
-    obj.comboBox113 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox113 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox113:setParent(obj.layout108);
     obj.comboBox113:setLeft(130);
     obj.comboBox113:setTop(0);
@@ -10056,13 +10056,13 @@ function newfrmFichaSSF()
     obj.comboBox113:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox113:setName("comboBox113");
 
-    obj.dataLink247 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink247 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink247:setParent(obj.layout108);
     obj.dataLink247:setField("atr_3_16");
     obj.dataLink247:setDefaultValue("DX");
     obj.dataLink247:setName("dataLink247");
 
-    obj.label253 = gui.fromHandle(_obj_newObject("label"));
+    obj.label253 = GUI.fromHandle(_obj_newObject("label"));
     obj.label253:setParent(obj.layout108);
     obj.label253:setLeft(180);
     obj.label253:setTop(3);
@@ -10072,7 +10072,7 @@ function newfrmFichaSSF()
     obj.label253:setHorzTextAlign("center");
     obj.label253:setName("label253");
 
-    obj.edit163 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit163 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit163:setParent(obj.layout108);
     obj.edit163:setLeft(190);
     obj.edit163:setTop(0);
@@ -10082,7 +10082,7 @@ function newfrmFichaSSF()
     obj.edit163:setField("bonus_3_16");
     obj.edit163:setName("edit163");
 
-    obj.comboBox114 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox114 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox114:setParent(obj.layout108);
     obj.comboBox114:setLeft(220);
     obj.comboBox114:setTop(0);
@@ -10093,13 +10093,13 @@ function newfrmFichaSSF()
     obj.comboBox114:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox114:setName("comboBox114");
 
-    obj.dataLink248 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink248 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink248:setParent(obj.layout108);
     obj.dataLink248:setField("dificuldade_3_16");
     obj.dataLink248:setDefaultValue("F");
     obj.dataLink248:setName("dataLink248");
 
-    obj.rectangle156 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle156 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle156:setParent(obj.layout108);
     obj.rectangle156:setLeft(275);
     obj.rectangle156:setTop(0);
@@ -10110,7 +10110,7 @@ function newfrmFichaSSF()
     obj.rectangle156:setStrokeSize(1);
     obj.rectangle156:setName("rectangle156");
 
-    obj.label254 = gui.fromHandle(_obj_newObject("label"));
+    obj.label254 = GUI.fromHandle(_obj_newObject("label"));
     obj.label254:setParent(obj.layout108);
     obj.label254:setLeft(275);
     obj.label254:setTop(3);
@@ -10120,7 +10120,7 @@ function newfrmFichaSSF()
     obj.label254:setHorzTextAlign("center");
     obj.label254:setName("label254");
 
-    obj.button71 = gui.fromHandle(_obj_newObject("button"));
+    obj.button71 = GUI.fromHandle(_obj_newObject("button"));
     obj.button71:setParent(obj.layout108);
     obj.button71:setLeft(300);
     obj.button71:setTop(3);
@@ -10129,12 +10129,12 @@ function newfrmFichaSSF()
     obj.button71:setText("R");
     obj.button71:setName("button71");
 
-    obj.dataLink249 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink249 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink249:setParent(obj.layout108);
     obj.dataLink249:setFields({'atr_3_16', 'dificuldade_3_16', 'bonus_3_16', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink249:setName("dataLink249");
 
-    obj.layout109 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout109 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout109:setParent(obj.layout92);
     obj.layout109:setLeft(0);
     obj.layout109:setTop(430);
@@ -10142,7 +10142,7 @@ function newfrmFichaSSF()
     obj.layout109:setHeight(25);
     obj.layout109:setName("layout109");
 
-    obj.edit164 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit164 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit164:setParent(obj.layout109);
     obj.edit164:setLeft(5);
     obj.edit164:setTop(0);
@@ -10151,13 +10151,13 @@ function newfrmFichaSSF()
     obj.edit164:setField("pericia_3_17");
     obj.edit164:setName("edit164");
 
-    obj.dataLink250 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink250 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink250:setParent(obj.layout109);
     obj.dataLink250:setField("pericia_3_17");
     obj.dataLink250:setDefaultValue("Técnica de Ataque 2");
     obj.dataLink250:setName("dataLink250");
 
-    obj.rectangle157 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle157 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle157:setParent(obj.layout109);
     obj.rectangle157:setLeft(90);
     obj.rectangle157:setTop(0);
@@ -10168,7 +10168,7 @@ function newfrmFichaSSF()
     obj.rectangle157:setStrokeSize(1);
     obj.rectangle157:setName("rectangle157");
 
-    obj.label255 = gui.fromHandle(_obj_newObject("label"));
+    obj.label255 = GUI.fromHandle(_obj_newObject("label"));
     obj.label255:setParent(obj.layout109);
     obj.label255:setLeft(90);
     obj.label255:setTop(3);
@@ -10178,7 +10178,7 @@ function newfrmFichaSSF()
     obj.label255:setHorzTextAlign("center");
     obj.label255:setName("label255");
 
-    obj.comboBox115 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox115 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox115:setParent(obj.layout109);
     obj.comboBox115:setLeft(130);
     obj.comboBox115:setTop(0);
@@ -10189,13 +10189,13 @@ function newfrmFichaSSF()
     obj.comboBox115:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox115:setName("comboBox115");
 
-    obj.dataLink251 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink251 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink251:setParent(obj.layout109);
     obj.dataLink251:setField("atr_3_17");
     obj.dataLink251:setDefaultValue("DX");
     obj.dataLink251:setName("dataLink251");
 
-    obj.label256 = gui.fromHandle(_obj_newObject("label"));
+    obj.label256 = GUI.fromHandle(_obj_newObject("label"));
     obj.label256:setParent(obj.layout109);
     obj.label256:setLeft(180);
     obj.label256:setTop(3);
@@ -10205,7 +10205,7 @@ function newfrmFichaSSF()
     obj.label256:setHorzTextAlign("center");
     obj.label256:setName("label256");
 
-    obj.edit165 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit165 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit165:setParent(obj.layout109);
     obj.edit165:setLeft(190);
     obj.edit165:setTop(0);
@@ -10215,7 +10215,7 @@ function newfrmFichaSSF()
     obj.edit165:setField("bonus_3_17");
     obj.edit165:setName("edit165");
 
-    obj.comboBox116 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox116 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox116:setParent(obj.layout109);
     obj.comboBox116:setLeft(220);
     obj.comboBox116:setTop(0);
@@ -10226,13 +10226,13 @@ function newfrmFichaSSF()
     obj.comboBox116:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox116:setName("comboBox116");
 
-    obj.dataLink252 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink252 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink252:setParent(obj.layout109);
     obj.dataLink252:setField("dificuldade_3_17");
     obj.dataLink252:setDefaultValue("F");
     obj.dataLink252:setName("dataLink252");
 
-    obj.rectangle158 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle158 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle158:setParent(obj.layout109);
     obj.rectangle158:setLeft(275);
     obj.rectangle158:setTop(0);
@@ -10243,7 +10243,7 @@ function newfrmFichaSSF()
     obj.rectangle158:setStrokeSize(1);
     obj.rectangle158:setName("rectangle158");
 
-    obj.label257 = gui.fromHandle(_obj_newObject("label"));
+    obj.label257 = GUI.fromHandle(_obj_newObject("label"));
     obj.label257:setParent(obj.layout109);
     obj.label257:setLeft(275);
     obj.label257:setTop(3);
@@ -10253,7 +10253,7 @@ function newfrmFichaSSF()
     obj.label257:setHorzTextAlign("center");
     obj.label257:setName("label257");
 
-    obj.button72 = gui.fromHandle(_obj_newObject("button"));
+    obj.button72 = GUI.fromHandle(_obj_newObject("button"));
     obj.button72:setParent(obj.layout109);
     obj.button72:setLeft(300);
     obj.button72:setTop(3);
@@ -10262,12 +10262,12 @@ function newfrmFichaSSF()
     obj.button72:setText("R");
     obj.button72:setName("button72");
 
-    obj.dataLink253 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink253 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink253:setParent(obj.layout109);
     obj.dataLink253:setFields({'atr_3_17', 'dificuldade_3_17', 'bonus_3_17', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink253:setName("dataLink253");
 
-    obj.layout110 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout110 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout110:setParent(obj.layout92);
     obj.layout110:setLeft(0);
     obj.layout110:setTop(455);
@@ -10275,7 +10275,7 @@ function newfrmFichaSSF()
     obj.layout110:setHeight(25);
     obj.layout110:setName("layout110");
 
-    obj.edit166 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit166 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit166:setParent(obj.layout110);
     obj.edit166:setLeft(5);
     obj.edit166:setTop(0);
@@ -10284,13 +10284,13 @@ function newfrmFichaSSF()
     obj.edit166:setField("pericia_3_18");
     obj.edit166:setName("edit166");
 
-    obj.dataLink254 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink254 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink254:setParent(obj.layout110);
     obj.dataLink254:setField("pericia_3_18");
     obj.dataLink254:setDefaultValue("Técnica de Ataque 3");
     obj.dataLink254:setName("dataLink254");
 
-    obj.rectangle159 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle159 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle159:setParent(obj.layout110);
     obj.rectangle159:setLeft(90);
     obj.rectangle159:setTop(0);
@@ -10301,7 +10301,7 @@ function newfrmFichaSSF()
     obj.rectangle159:setStrokeSize(1);
     obj.rectangle159:setName("rectangle159");
 
-    obj.label258 = gui.fromHandle(_obj_newObject("label"));
+    obj.label258 = GUI.fromHandle(_obj_newObject("label"));
     obj.label258:setParent(obj.layout110);
     obj.label258:setLeft(90);
     obj.label258:setTop(3);
@@ -10311,7 +10311,7 @@ function newfrmFichaSSF()
     obj.label258:setHorzTextAlign("center");
     obj.label258:setName("label258");
 
-    obj.comboBox117 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox117 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox117:setParent(obj.layout110);
     obj.comboBox117:setLeft(130);
     obj.comboBox117:setTop(0);
@@ -10322,13 +10322,13 @@ function newfrmFichaSSF()
     obj.comboBox117:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox117:setName("comboBox117");
 
-    obj.dataLink255 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink255 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink255:setParent(obj.layout110);
     obj.dataLink255:setField("atr_3_18");
     obj.dataLink255:setDefaultValue("DX");
     obj.dataLink255:setName("dataLink255");
 
-    obj.label259 = gui.fromHandle(_obj_newObject("label"));
+    obj.label259 = GUI.fromHandle(_obj_newObject("label"));
     obj.label259:setParent(obj.layout110);
     obj.label259:setLeft(180);
     obj.label259:setTop(3);
@@ -10338,7 +10338,7 @@ function newfrmFichaSSF()
     obj.label259:setHorzTextAlign("center");
     obj.label259:setName("label259");
 
-    obj.edit167 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit167 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit167:setParent(obj.layout110);
     obj.edit167:setLeft(190);
     obj.edit167:setTop(0);
@@ -10348,7 +10348,7 @@ function newfrmFichaSSF()
     obj.edit167:setField("bonus_3_18");
     obj.edit167:setName("edit167");
 
-    obj.comboBox118 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox118 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox118:setParent(obj.layout110);
     obj.comboBox118:setLeft(220);
     obj.comboBox118:setTop(0);
@@ -10359,13 +10359,13 @@ function newfrmFichaSSF()
     obj.comboBox118:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox118:setName("comboBox118");
 
-    obj.dataLink256 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink256 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink256:setParent(obj.layout110);
     obj.dataLink256:setField("dificuldade_3_18");
     obj.dataLink256:setDefaultValue("F");
     obj.dataLink256:setName("dataLink256");
 
-    obj.rectangle160 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle160 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle160:setParent(obj.layout110);
     obj.rectangle160:setLeft(275);
     obj.rectangle160:setTop(0);
@@ -10376,7 +10376,7 @@ function newfrmFichaSSF()
     obj.rectangle160:setStrokeSize(1);
     obj.rectangle160:setName("rectangle160");
 
-    obj.label260 = gui.fromHandle(_obj_newObject("label"));
+    obj.label260 = GUI.fromHandle(_obj_newObject("label"));
     obj.label260:setParent(obj.layout110);
     obj.label260:setLeft(275);
     obj.label260:setTop(3);
@@ -10386,7 +10386,7 @@ function newfrmFichaSSF()
     obj.label260:setHorzTextAlign("center");
     obj.label260:setName("label260");
 
-    obj.button73 = gui.fromHandle(_obj_newObject("button"));
+    obj.button73 = GUI.fromHandle(_obj_newObject("button"));
     obj.button73:setParent(obj.layout110);
     obj.button73:setLeft(300);
     obj.button73:setTop(3);
@@ -10395,12 +10395,12 @@ function newfrmFichaSSF()
     obj.button73:setText("R");
     obj.button73:setName("button73");
 
-    obj.dataLink257 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink257 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink257:setParent(obj.layout110);
     obj.dataLink257:setFields({'atr_3_18', 'dificuldade_3_18', 'bonus_3_18', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink257:setName("dataLink257");
 
-    obj.layout111 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout111 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout111:setParent(obj.layout92);
     obj.layout111:setLeft(0);
     obj.layout111:setTop(480);
@@ -10408,7 +10408,7 @@ function newfrmFichaSSF()
     obj.layout111:setHeight(25);
     obj.layout111:setName("layout111");
 
-    obj.edit168 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit168 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit168:setParent(obj.layout111);
     obj.edit168:setLeft(5);
     obj.edit168:setTop(0);
@@ -10417,13 +10417,13 @@ function newfrmFichaSSF()
     obj.edit168:setField("pericia_3_19");
     obj.edit168:setName("edit168");
 
-    obj.dataLink258 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink258 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink258:setParent(obj.layout111);
     obj.dataLink258:setField("pericia_3_19");
     obj.dataLink258:setDefaultValue("Técnica de Defesa 1");
     obj.dataLink258:setName("dataLink258");
 
-    obj.rectangle161 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle161 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle161:setParent(obj.layout111);
     obj.rectangle161:setLeft(90);
     obj.rectangle161:setTop(0);
@@ -10434,7 +10434,7 @@ function newfrmFichaSSF()
     obj.rectangle161:setStrokeSize(1);
     obj.rectangle161:setName("rectangle161");
 
-    obj.label261 = gui.fromHandle(_obj_newObject("label"));
+    obj.label261 = GUI.fromHandle(_obj_newObject("label"));
     obj.label261:setParent(obj.layout111);
     obj.label261:setLeft(90);
     obj.label261:setTop(3);
@@ -10444,7 +10444,7 @@ function newfrmFichaSSF()
     obj.label261:setHorzTextAlign("center");
     obj.label261:setName("label261");
 
-    obj.comboBox119 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox119 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox119:setParent(obj.layout111);
     obj.comboBox119:setLeft(130);
     obj.comboBox119:setTop(0);
@@ -10455,13 +10455,13 @@ function newfrmFichaSSF()
     obj.comboBox119:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox119:setName("comboBox119");
 
-    obj.dataLink259 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink259 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink259:setParent(obj.layout111);
     obj.dataLink259:setField("atr_3_19");
     obj.dataLink259:setDefaultValue("DX");
     obj.dataLink259:setName("dataLink259");
 
-    obj.label262 = gui.fromHandle(_obj_newObject("label"));
+    obj.label262 = GUI.fromHandle(_obj_newObject("label"));
     obj.label262:setParent(obj.layout111);
     obj.label262:setLeft(180);
     obj.label262:setTop(3);
@@ -10471,7 +10471,7 @@ function newfrmFichaSSF()
     obj.label262:setHorzTextAlign("center");
     obj.label262:setName("label262");
 
-    obj.edit169 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit169 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit169:setParent(obj.layout111);
     obj.edit169:setLeft(190);
     obj.edit169:setTop(0);
@@ -10481,7 +10481,7 @@ function newfrmFichaSSF()
     obj.edit169:setField("bonus_3_19");
     obj.edit169:setName("edit169");
 
-    obj.comboBox120 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox120 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox120:setParent(obj.layout111);
     obj.comboBox120:setLeft(220);
     obj.comboBox120:setTop(0);
@@ -10492,13 +10492,13 @@ function newfrmFichaSSF()
     obj.comboBox120:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox120:setName("comboBox120");
 
-    obj.dataLink260 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink260 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink260:setParent(obj.layout111);
     obj.dataLink260:setField("dificuldade_3_19");
     obj.dataLink260:setDefaultValue("D");
     obj.dataLink260:setName("dataLink260");
 
-    obj.rectangle162 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle162 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle162:setParent(obj.layout111);
     obj.rectangle162:setLeft(275);
     obj.rectangle162:setTop(0);
@@ -10509,7 +10509,7 @@ function newfrmFichaSSF()
     obj.rectangle162:setStrokeSize(1);
     obj.rectangle162:setName("rectangle162");
 
-    obj.label263 = gui.fromHandle(_obj_newObject("label"));
+    obj.label263 = GUI.fromHandle(_obj_newObject("label"));
     obj.label263:setParent(obj.layout111);
     obj.label263:setLeft(275);
     obj.label263:setTop(3);
@@ -10519,7 +10519,7 @@ function newfrmFichaSSF()
     obj.label263:setHorzTextAlign("center");
     obj.label263:setName("label263");
 
-    obj.button74 = gui.fromHandle(_obj_newObject("button"));
+    obj.button74 = GUI.fromHandle(_obj_newObject("button"));
     obj.button74:setParent(obj.layout111);
     obj.button74:setLeft(300);
     obj.button74:setTop(3);
@@ -10528,12 +10528,12 @@ function newfrmFichaSSF()
     obj.button74:setText("R");
     obj.button74:setName("button74");
 
-    obj.dataLink261 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink261 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink261:setParent(obj.layout111);
     obj.dataLink261:setFields({'atr_3_19', 'dificuldade_3_19', 'bonus_3_19', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink261:setName("dataLink261");
 
-    obj.layout112 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout112 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout112:setParent(obj.layout92);
     obj.layout112:setLeft(0);
     obj.layout112:setTop(505);
@@ -10541,7 +10541,7 @@ function newfrmFichaSSF()
     obj.layout112:setHeight(25);
     obj.layout112:setName("layout112");
 
-    obj.edit170 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit170 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit170:setParent(obj.layout112);
     obj.edit170:setLeft(5);
     obj.edit170:setTop(0);
@@ -10550,13 +10550,13 @@ function newfrmFichaSSF()
     obj.edit170:setField("pericia_3_20");
     obj.edit170:setName("edit170");
 
-    obj.dataLink262 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink262 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink262:setParent(obj.layout112);
     obj.dataLink262:setField("pericia_3_20");
     obj.dataLink262:setDefaultValue("Técnica de Defesa 2");
     obj.dataLink262:setName("dataLink262");
 
-    obj.rectangle163 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle163 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle163:setParent(obj.layout112);
     obj.rectangle163:setLeft(90);
     obj.rectangle163:setTop(0);
@@ -10567,7 +10567,7 @@ function newfrmFichaSSF()
     obj.rectangle163:setStrokeSize(1);
     obj.rectangle163:setName("rectangle163");
 
-    obj.label264 = gui.fromHandle(_obj_newObject("label"));
+    obj.label264 = GUI.fromHandle(_obj_newObject("label"));
     obj.label264:setParent(obj.layout112);
     obj.label264:setLeft(90);
     obj.label264:setTop(3);
@@ -10577,7 +10577,7 @@ function newfrmFichaSSF()
     obj.label264:setHorzTextAlign("center");
     obj.label264:setName("label264");
 
-    obj.comboBox121 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox121 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox121:setParent(obj.layout112);
     obj.comboBox121:setLeft(130);
     obj.comboBox121:setTop(0);
@@ -10588,13 +10588,13 @@ function newfrmFichaSSF()
     obj.comboBox121:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox121:setName("comboBox121");
 
-    obj.dataLink263 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink263 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink263:setParent(obj.layout112);
     obj.dataLink263:setField("atr_3_20");
     obj.dataLink263:setDefaultValue("DX");
     obj.dataLink263:setName("dataLink263");
 
-    obj.label265 = gui.fromHandle(_obj_newObject("label"));
+    obj.label265 = GUI.fromHandle(_obj_newObject("label"));
     obj.label265:setParent(obj.layout112);
     obj.label265:setLeft(180);
     obj.label265:setTop(3);
@@ -10604,7 +10604,7 @@ function newfrmFichaSSF()
     obj.label265:setHorzTextAlign("center");
     obj.label265:setName("label265");
 
-    obj.edit171 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit171 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit171:setParent(obj.layout112);
     obj.edit171:setLeft(190);
     obj.edit171:setTop(0);
@@ -10614,7 +10614,7 @@ function newfrmFichaSSF()
     obj.edit171:setField("bonus_3_20");
     obj.edit171:setName("edit171");
 
-    obj.comboBox122 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox122 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox122:setParent(obj.layout112);
     obj.comboBox122:setLeft(220);
     obj.comboBox122:setTop(0);
@@ -10625,13 +10625,13 @@ function newfrmFichaSSF()
     obj.comboBox122:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox122:setName("comboBox122");
 
-    obj.dataLink264 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink264 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink264:setParent(obj.layout112);
     obj.dataLink264:setField("dificuldade_3_20");
     obj.dataLink264:setDefaultValue("D");
     obj.dataLink264:setName("dataLink264");
 
-    obj.rectangle164 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle164 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle164:setParent(obj.layout112);
     obj.rectangle164:setLeft(275);
     obj.rectangle164:setTop(0);
@@ -10642,7 +10642,7 @@ function newfrmFichaSSF()
     obj.rectangle164:setStrokeSize(1);
     obj.rectangle164:setName("rectangle164");
 
-    obj.label266 = gui.fromHandle(_obj_newObject("label"));
+    obj.label266 = GUI.fromHandle(_obj_newObject("label"));
     obj.label266:setParent(obj.layout112);
     obj.label266:setLeft(275);
     obj.label266:setTop(3);
@@ -10652,7 +10652,7 @@ function newfrmFichaSSF()
     obj.label266:setHorzTextAlign("center");
     obj.label266:setName("label266");
 
-    obj.button75 = gui.fromHandle(_obj_newObject("button"));
+    obj.button75 = GUI.fromHandle(_obj_newObject("button"));
     obj.button75:setParent(obj.layout112);
     obj.button75:setLeft(300);
     obj.button75:setTop(3);
@@ -10661,12 +10661,12 @@ function newfrmFichaSSF()
     obj.button75:setText("R");
     obj.button75:setName("button75");
 
-    obj.dataLink265 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink265 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink265:setParent(obj.layout112);
     obj.dataLink265:setFields({'atr_3_20', 'dificuldade_3_20', 'bonus_3_20', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink265:setName("dataLink265");
 
-    obj.layout113 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout113 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout113:setParent(obj.scrollBox2);
     obj.layout113:setLeft(990);
     obj.layout113:setTop(0);
@@ -10674,7 +10674,7 @@ function newfrmFichaSSF()
     obj.layout113:setHeight(615);
     obj.layout113:setName("layout113");
 
-    obj.rectangle165 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle165 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle165:setParent(obj.layout113);
     obj.rectangle165:setAlign("client");
     obj.rectangle165:setColor("black");
@@ -10683,7 +10683,7 @@ function newfrmFichaSSF()
     obj.rectangle165:setCornerType("round");
     obj.rectangle165:setName("rectangle165");
 
-    obj.label267 = gui.fromHandle(_obj_newObject("label"));
+    obj.label267 = GUI.fromHandle(_obj_newObject("label"));
     obj.label267:setParent(obj.layout113);
     obj.label267:setLeft(0);
     obj.label267:setTop(5);
@@ -10692,7 +10692,7 @@ function newfrmFichaSSF()
     obj.label267:setText("     NOME            NH        AT     +  BN       DF        PT");
     obj.label267:setName("label267");
 
-    obj.layout114 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout114 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout114:setParent(obj.layout113);
     obj.layout114:setLeft(0);
     obj.layout114:setTop(30);
@@ -10700,7 +10700,7 @@ function newfrmFichaSSF()
     obj.layout114:setHeight(25);
     obj.layout114:setName("layout114");
 
-    obj.edit172 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit172 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit172:setParent(obj.layout114);
     obj.edit172:setLeft(5);
     obj.edit172:setTop(0);
@@ -10709,13 +10709,13 @@ function newfrmFichaSSF()
     obj.edit172:setField("pericia_4_1");
     obj.edit172:setName("edit172");
 
-    obj.dataLink266 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink266 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink266:setParent(obj.layout114);
     obj.dataLink266:setField("pericia_4_1");
     obj.dataLink266:setDefaultValue("");
     obj.dataLink266:setName("dataLink266");
 
-    obj.rectangle166 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle166 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle166:setParent(obj.layout114);
     obj.rectangle166:setLeft(90);
     obj.rectangle166:setTop(0);
@@ -10726,7 +10726,7 @@ function newfrmFichaSSF()
     obj.rectangle166:setStrokeSize(1);
     obj.rectangle166:setName("rectangle166");
 
-    obj.label268 = gui.fromHandle(_obj_newObject("label"));
+    obj.label268 = GUI.fromHandle(_obj_newObject("label"));
     obj.label268:setParent(obj.layout114);
     obj.label268:setLeft(90);
     obj.label268:setTop(3);
@@ -10736,7 +10736,7 @@ function newfrmFichaSSF()
     obj.label268:setHorzTextAlign("center");
     obj.label268:setName("label268");
 
-    obj.comboBox123 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox123 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox123:setParent(obj.layout114);
     obj.comboBox123:setLeft(130);
     obj.comboBox123:setTop(0);
@@ -10747,13 +10747,13 @@ function newfrmFichaSSF()
     obj.comboBox123:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox123:setName("comboBox123");
 
-    obj.dataLink267 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink267 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink267:setParent(obj.layout114);
     obj.dataLink267:setField("atr_4_1");
     obj.dataLink267:setDefaultValue("");
     obj.dataLink267:setName("dataLink267");
 
-    obj.label269 = gui.fromHandle(_obj_newObject("label"));
+    obj.label269 = GUI.fromHandle(_obj_newObject("label"));
     obj.label269:setParent(obj.layout114);
     obj.label269:setLeft(180);
     obj.label269:setTop(3);
@@ -10763,7 +10763,7 @@ function newfrmFichaSSF()
     obj.label269:setHorzTextAlign("center");
     obj.label269:setName("label269");
 
-    obj.edit173 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit173 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit173:setParent(obj.layout114);
     obj.edit173:setLeft(190);
     obj.edit173:setTop(0);
@@ -10773,7 +10773,7 @@ function newfrmFichaSSF()
     obj.edit173:setField("bonus_4_1");
     obj.edit173:setName("edit173");
 
-    obj.comboBox124 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox124 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox124:setParent(obj.layout114);
     obj.comboBox124:setLeft(220);
     obj.comboBox124:setTop(0);
@@ -10784,13 +10784,13 @@ function newfrmFichaSSF()
     obj.comboBox124:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox124:setName("comboBox124");
 
-    obj.dataLink268 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink268 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink268:setParent(obj.layout114);
     obj.dataLink268:setField("dificuldade_4_1");
     obj.dataLink268:setDefaultValue("");
     obj.dataLink268:setName("dataLink268");
 
-    obj.rectangle167 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle167 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle167:setParent(obj.layout114);
     obj.rectangle167:setLeft(275);
     obj.rectangle167:setTop(0);
@@ -10801,7 +10801,7 @@ function newfrmFichaSSF()
     obj.rectangle167:setStrokeSize(1);
     obj.rectangle167:setName("rectangle167");
 
-    obj.label270 = gui.fromHandle(_obj_newObject("label"));
+    obj.label270 = GUI.fromHandle(_obj_newObject("label"));
     obj.label270:setParent(obj.layout114);
     obj.label270:setLeft(275);
     obj.label270:setTop(3);
@@ -10811,7 +10811,7 @@ function newfrmFichaSSF()
     obj.label270:setHorzTextAlign("center");
     obj.label270:setName("label270");
 
-    obj.button76 = gui.fromHandle(_obj_newObject("button"));
+    obj.button76 = GUI.fromHandle(_obj_newObject("button"));
     obj.button76:setParent(obj.layout114);
     obj.button76:setLeft(300);
     obj.button76:setTop(3);
@@ -10820,12 +10820,12 @@ function newfrmFichaSSF()
     obj.button76:setText("R");
     obj.button76:setName("button76");
 
-    obj.dataLink269 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink269 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink269:setParent(obj.layout114);
     obj.dataLink269:setFields({'atr_4_1', 'dificuldade_4_1', 'bonus_4_1', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink269:setName("dataLink269");
 
-    obj.layout115 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout115 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout115:setParent(obj.layout113);
     obj.layout115:setLeft(0);
     obj.layout115:setTop(55);
@@ -10833,7 +10833,7 @@ function newfrmFichaSSF()
     obj.layout115:setHeight(25);
     obj.layout115:setName("layout115");
 
-    obj.edit174 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit174 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit174:setParent(obj.layout115);
     obj.edit174:setLeft(5);
     obj.edit174:setTop(0);
@@ -10842,13 +10842,13 @@ function newfrmFichaSSF()
     obj.edit174:setField("pericia_4_2");
     obj.edit174:setName("edit174");
 
-    obj.dataLink270 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink270 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink270:setParent(obj.layout115);
     obj.dataLink270:setField("pericia_4_2");
     obj.dataLink270:setDefaultValue("");
     obj.dataLink270:setName("dataLink270");
 
-    obj.rectangle168 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle168 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle168:setParent(obj.layout115);
     obj.rectangle168:setLeft(90);
     obj.rectangle168:setTop(0);
@@ -10859,7 +10859,7 @@ function newfrmFichaSSF()
     obj.rectangle168:setStrokeSize(1);
     obj.rectangle168:setName("rectangle168");
 
-    obj.label271 = gui.fromHandle(_obj_newObject("label"));
+    obj.label271 = GUI.fromHandle(_obj_newObject("label"));
     obj.label271:setParent(obj.layout115);
     obj.label271:setLeft(90);
     obj.label271:setTop(3);
@@ -10869,7 +10869,7 @@ function newfrmFichaSSF()
     obj.label271:setHorzTextAlign("center");
     obj.label271:setName("label271");
 
-    obj.comboBox125 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox125 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox125:setParent(obj.layout115);
     obj.comboBox125:setLeft(130);
     obj.comboBox125:setTop(0);
@@ -10880,13 +10880,13 @@ function newfrmFichaSSF()
     obj.comboBox125:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox125:setName("comboBox125");
 
-    obj.dataLink271 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink271 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink271:setParent(obj.layout115);
     obj.dataLink271:setField("atr_4_2");
     obj.dataLink271:setDefaultValue("");
     obj.dataLink271:setName("dataLink271");
 
-    obj.label272 = gui.fromHandle(_obj_newObject("label"));
+    obj.label272 = GUI.fromHandle(_obj_newObject("label"));
     obj.label272:setParent(obj.layout115);
     obj.label272:setLeft(180);
     obj.label272:setTop(3);
@@ -10896,7 +10896,7 @@ function newfrmFichaSSF()
     obj.label272:setHorzTextAlign("center");
     obj.label272:setName("label272");
 
-    obj.edit175 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit175 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit175:setParent(obj.layout115);
     obj.edit175:setLeft(190);
     obj.edit175:setTop(0);
@@ -10906,7 +10906,7 @@ function newfrmFichaSSF()
     obj.edit175:setField("bonus_4_2");
     obj.edit175:setName("edit175");
 
-    obj.comboBox126 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox126 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox126:setParent(obj.layout115);
     obj.comboBox126:setLeft(220);
     obj.comboBox126:setTop(0);
@@ -10917,13 +10917,13 @@ function newfrmFichaSSF()
     obj.comboBox126:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox126:setName("comboBox126");
 
-    obj.dataLink272 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink272 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink272:setParent(obj.layout115);
     obj.dataLink272:setField("dificuldade_4_2");
     obj.dataLink272:setDefaultValue("");
     obj.dataLink272:setName("dataLink272");
 
-    obj.rectangle169 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle169 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle169:setParent(obj.layout115);
     obj.rectangle169:setLeft(275);
     obj.rectangle169:setTop(0);
@@ -10934,7 +10934,7 @@ function newfrmFichaSSF()
     obj.rectangle169:setStrokeSize(1);
     obj.rectangle169:setName("rectangle169");
 
-    obj.label273 = gui.fromHandle(_obj_newObject("label"));
+    obj.label273 = GUI.fromHandle(_obj_newObject("label"));
     obj.label273:setParent(obj.layout115);
     obj.label273:setLeft(275);
     obj.label273:setTop(3);
@@ -10944,7 +10944,7 @@ function newfrmFichaSSF()
     obj.label273:setHorzTextAlign("center");
     obj.label273:setName("label273");
 
-    obj.button77 = gui.fromHandle(_obj_newObject("button"));
+    obj.button77 = GUI.fromHandle(_obj_newObject("button"));
     obj.button77:setParent(obj.layout115);
     obj.button77:setLeft(300);
     obj.button77:setTop(3);
@@ -10953,12 +10953,12 @@ function newfrmFichaSSF()
     obj.button77:setText("R");
     obj.button77:setName("button77");
 
-    obj.dataLink273 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink273 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink273:setParent(obj.layout115);
     obj.dataLink273:setFields({'atr_4_2', 'dificuldade_4_2', 'bonus_4_2', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink273:setName("dataLink273");
 
-    obj.layout116 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout116 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout116:setParent(obj.layout113);
     obj.layout116:setLeft(0);
     obj.layout116:setTop(80);
@@ -10966,7 +10966,7 @@ function newfrmFichaSSF()
     obj.layout116:setHeight(25);
     obj.layout116:setName("layout116");
 
-    obj.edit176 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit176 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit176:setParent(obj.layout116);
     obj.edit176:setLeft(5);
     obj.edit176:setTop(0);
@@ -10975,13 +10975,13 @@ function newfrmFichaSSF()
     obj.edit176:setField("pericia_4_3");
     obj.edit176:setName("edit176");
 
-    obj.dataLink274 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink274 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink274:setParent(obj.layout116);
     obj.dataLink274:setField("pericia_4_3");
     obj.dataLink274:setDefaultValue("");
     obj.dataLink274:setName("dataLink274");
 
-    obj.rectangle170 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle170 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle170:setParent(obj.layout116);
     obj.rectangle170:setLeft(90);
     obj.rectangle170:setTop(0);
@@ -10992,7 +10992,7 @@ function newfrmFichaSSF()
     obj.rectangle170:setStrokeSize(1);
     obj.rectangle170:setName("rectangle170");
 
-    obj.label274 = gui.fromHandle(_obj_newObject("label"));
+    obj.label274 = GUI.fromHandle(_obj_newObject("label"));
     obj.label274:setParent(obj.layout116);
     obj.label274:setLeft(90);
     obj.label274:setTop(3);
@@ -11002,7 +11002,7 @@ function newfrmFichaSSF()
     obj.label274:setHorzTextAlign("center");
     obj.label274:setName("label274");
 
-    obj.comboBox127 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox127 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox127:setParent(obj.layout116);
     obj.comboBox127:setLeft(130);
     obj.comboBox127:setTop(0);
@@ -11013,13 +11013,13 @@ function newfrmFichaSSF()
     obj.comboBox127:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox127:setName("comboBox127");
 
-    obj.dataLink275 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink275 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink275:setParent(obj.layout116);
     obj.dataLink275:setField("atr_4_3");
     obj.dataLink275:setDefaultValue("");
     obj.dataLink275:setName("dataLink275");
 
-    obj.label275 = gui.fromHandle(_obj_newObject("label"));
+    obj.label275 = GUI.fromHandle(_obj_newObject("label"));
     obj.label275:setParent(obj.layout116);
     obj.label275:setLeft(180);
     obj.label275:setTop(3);
@@ -11029,7 +11029,7 @@ function newfrmFichaSSF()
     obj.label275:setHorzTextAlign("center");
     obj.label275:setName("label275");
 
-    obj.edit177 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit177 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit177:setParent(obj.layout116);
     obj.edit177:setLeft(190);
     obj.edit177:setTop(0);
@@ -11039,7 +11039,7 @@ function newfrmFichaSSF()
     obj.edit177:setField("bonus_4_3");
     obj.edit177:setName("edit177");
 
-    obj.comboBox128 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox128 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox128:setParent(obj.layout116);
     obj.comboBox128:setLeft(220);
     obj.comboBox128:setTop(0);
@@ -11050,13 +11050,13 @@ function newfrmFichaSSF()
     obj.comboBox128:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox128:setName("comboBox128");
 
-    obj.dataLink276 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink276 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink276:setParent(obj.layout116);
     obj.dataLink276:setField("dificuldade_4_3");
     obj.dataLink276:setDefaultValue("");
     obj.dataLink276:setName("dataLink276");
 
-    obj.rectangle171 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle171 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle171:setParent(obj.layout116);
     obj.rectangle171:setLeft(275);
     obj.rectangle171:setTop(0);
@@ -11067,7 +11067,7 @@ function newfrmFichaSSF()
     obj.rectangle171:setStrokeSize(1);
     obj.rectangle171:setName("rectangle171");
 
-    obj.label276 = gui.fromHandle(_obj_newObject("label"));
+    obj.label276 = GUI.fromHandle(_obj_newObject("label"));
     obj.label276:setParent(obj.layout116);
     obj.label276:setLeft(275);
     obj.label276:setTop(3);
@@ -11077,7 +11077,7 @@ function newfrmFichaSSF()
     obj.label276:setHorzTextAlign("center");
     obj.label276:setName("label276");
 
-    obj.button78 = gui.fromHandle(_obj_newObject("button"));
+    obj.button78 = GUI.fromHandle(_obj_newObject("button"));
     obj.button78:setParent(obj.layout116);
     obj.button78:setLeft(300);
     obj.button78:setTop(3);
@@ -11086,12 +11086,12 @@ function newfrmFichaSSF()
     obj.button78:setText("R");
     obj.button78:setName("button78");
 
-    obj.dataLink277 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink277 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink277:setParent(obj.layout116);
     obj.dataLink277:setFields({'atr_4_3', 'dificuldade_4_3', 'bonus_4_3', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink277:setName("dataLink277");
 
-    obj.layout117 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout117 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout117:setParent(obj.layout113);
     obj.layout117:setLeft(0);
     obj.layout117:setTop(105);
@@ -11099,7 +11099,7 @@ function newfrmFichaSSF()
     obj.layout117:setHeight(25);
     obj.layout117:setName("layout117");
 
-    obj.edit178 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit178 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit178:setParent(obj.layout117);
     obj.edit178:setLeft(5);
     obj.edit178:setTop(0);
@@ -11108,13 +11108,13 @@ function newfrmFichaSSF()
     obj.edit178:setField("pericia_4_4");
     obj.edit178:setName("edit178");
 
-    obj.dataLink278 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink278 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink278:setParent(obj.layout117);
     obj.dataLink278:setField("pericia_4_4");
     obj.dataLink278:setDefaultValue("");
     obj.dataLink278:setName("dataLink278");
 
-    obj.rectangle172 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle172 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle172:setParent(obj.layout117);
     obj.rectangle172:setLeft(90);
     obj.rectangle172:setTop(0);
@@ -11125,7 +11125,7 @@ function newfrmFichaSSF()
     obj.rectangle172:setStrokeSize(1);
     obj.rectangle172:setName("rectangle172");
 
-    obj.label277 = gui.fromHandle(_obj_newObject("label"));
+    obj.label277 = GUI.fromHandle(_obj_newObject("label"));
     obj.label277:setParent(obj.layout117);
     obj.label277:setLeft(90);
     obj.label277:setTop(3);
@@ -11135,7 +11135,7 @@ function newfrmFichaSSF()
     obj.label277:setHorzTextAlign("center");
     obj.label277:setName("label277");
 
-    obj.comboBox129 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox129 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox129:setParent(obj.layout117);
     obj.comboBox129:setLeft(130);
     obj.comboBox129:setTop(0);
@@ -11146,13 +11146,13 @@ function newfrmFichaSSF()
     obj.comboBox129:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox129:setName("comboBox129");
 
-    obj.dataLink279 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink279 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink279:setParent(obj.layout117);
     obj.dataLink279:setField("atr_4_4");
     obj.dataLink279:setDefaultValue("");
     obj.dataLink279:setName("dataLink279");
 
-    obj.label278 = gui.fromHandle(_obj_newObject("label"));
+    obj.label278 = GUI.fromHandle(_obj_newObject("label"));
     obj.label278:setParent(obj.layout117);
     obj.label278:setLeft(180);
     obj.label278:setTop(3);
@@ -11162,7 +11162,7 @@ function newfrmFichaSSF()
     obj.label278:setHorzTextAlign("center");
     obj.label278:setName("label278");
 
-    obj.edit179 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit179 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit179:setParent(obj.layout117);
     obj.edit179:setLeft(190);
     obj.edit179:setTop(0);
@@ -11172,7 +11172,7 @@ function newfrmFichaSSF()
     obj.edit179:setField("bonus_4_4");
     obj.edit179:setName("edit179");
 
-    obj.comboBox130 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox130 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox130:setParent(obj.layout117);
     obj.comboBox130:setLeft(220);
     obj.comboBox130:setTop(0);
@@ -11183,13 +11183,13 @@ function newfrmFichaSSF()
     obj.comboBox130:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox130:setName("comboBox130");
 
-    obj.dataLink280 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink280 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink280:setParent(obj.layout117);
     obj.dataLink280:setField("dificuldade_4_4");
     obj.dataLink280:setDefaultValue("");
     obj.dataLink280:setName("dataLink280");
 
-    obj.rectangle173 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle173 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle173:setParent(obj.layout117);
     obj.rectangle173:setLeft(275);
     obj.rectangle173:setTop(0);
@@ -11200,7 +11200,7 @@ function newfrmFichaSSF()
     obj.rectangle173:setStrokeSize(1);
     obj.rectangle173:setName("rectangle173");
 
-    obj.label279 = gui.fromHandle(_obj_newObject("label"));
+    obj.label279 = GUI.fromHandle(_obj_newObject("label"));
     obj.label279:setParent(obj.layout117);
     obj.label279:setLeft(275);
     obj.label279:setTop(3);
@@ -11210,7 +11210,7 @@ function newfrmFichaSSF()
     obj.label279:setHorzTextAlign("center");
     obj.label279:setName("label279");
 
-    obj.button79 = gui.fromHandle(_obj_newObject("button"));
+    obj.button79 = GUI.fromHandle(_obj_newObject("button"));
     obj.button79:setParent(obj.layout117);
     obj.button79:setLeft(300);
     obj.button79:setTop(3);
@@ -11219,12 +11219,12 @@ function newfrmFichaSSF()
     obj.button79:setText("R");
     obj.button79:setName("button79");
 
-    obj.dataLink281 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink281 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink281:setParent(obj.layout117);
     obj.dataLink281:setFields({'atr_4_4', 'dificuldade_4_4', 'bonus_4_4', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink281:setName("dataLink281");
 
-    obj.layout118 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout118 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout118:setParent(obj.layout113);
     obj.layout118:setLeft(0);
     obj.layout118:setTop(130);
@@ -11232,7 +11232,7 @@ function newfrmFichaSSF()
     obj.layout118:setHeight(25);
     obj.layout118:setName("layout118");
 
-    obj.edit180 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit180 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit180:setParent(obj.layout118);
     obj.edit180:setLeft(5);
     obj.edit180:setTop(0);
@@ -11241,13 +11241,13 @@ function newfrmFichaSSF()
     obj.edit180:setField("pericia_4_5");
     obj.edit180:setName("edit180");
 
-    obj.dataLink282 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink282 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink282:setParent(obj.layout118);
     obj.dataLink282:setField("pericia_4_5");
     obj.dataLink282:setDefaultValue("");
     obj.dataLink282:setName("dataLink282");
 
-    obj.rectangle174 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle174 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle174:setParent(obj.layout118);
     obj.rectangle174:setLeft(90);
     obj.rectangle174:setTop(0);
@@ -11258,7 +11258,7 @@ function newfrmFichaSSF()
     obj.rectangle174:setStrokeSize(1);
     obj.rectangle174:setName("rectangle174");
 
-    obj.label280 = gui.fromHandle(_obj_newObject("label"));
+    obj.label280 = GUI.fromHandle(_obj_newObject("label"));
     obj.label280:setParent(obj.layout118);
     obj.label280:setLeft(90);
     obj.label280:setTop(3);
@@ -11268,7 +11268,7 @@ function newfrmFichaSSF()
     obj.label280:setHorzTextAlign("center");
     obj.label280:setName("label280");
 
-    obj.comboBox131 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox131 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox131:setParent(obj.layout118);
     obj.comboBox131:setLeft(130);
     obj.comboBox131:setTop(0);
@@ -11279,13 +11279,13 @@ function newfrmFichaSSF()
     obj.comboBox131:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox131:setName("comboBox131");
 
-    obj.dataLink283 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink283 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink283:setParent(obj.layout118);
     obj.dataLink283:setField("atr_4_5");
     obj.dataLink283:setDefaultValue("");
     obj.dataLink283:setName("dataLink283");
 
-    obj.label281 = gui.fromHandle(_obj_newObject("label"));
+    obj.label281 = GUI.fromHandle(_obj_newObject("label"));
     obj.label281:setParent(obj.layout118);
     obj.label281:setLeft(180);
     obj.label281:setTop(3);
@@ -11295,7 +11295,7 @@ function newfrmFichaSSF()
     obj.label281:setHorzTextAlign("center");
     obj.label281:setName("label281");
 
-    obj.edit181 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit181 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit181:setParent(obj.layout118);
     obj.edit181:setLeft(190);
     obj.edit181:setTop(0);
@@ -11305,7 +11305,7 @@ function newfrmFichaSSF()
     obj.edit181:setField("bonus_4_5");
     obj.edit181:setName("edit181");
 
-    obj.comboBox132 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox132 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox132:setParent(obj.layout118);
     obj.comboBox132:setLeft(220);
     obj.comboBox132:setTop(0);
@@ -11316,13 +11316,13 @@ function newfrmFichaSSF()
     obj.comboBox132:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox132:setName("comboBox132");
 
-    obj.dataLink284 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink284 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink284:setParent(obj.layout118);
     obj.dataLink284:setField("dificuldade_4_5");
     obj.dataLink284:setDefaultValue("");
     obj.dataLink284:setName("dataLink284");
 
-    obj.rectangle175 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle175 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle175:setParent(obj.layout118);
     obj.rectangle175:setLeft(275);
     obj.rectangle175:setTop(0);
@@ -11333,7 +11333,7 @@ function newfrmFichaSSF()
     obj.rectangle175:setStrokeSize(1);
     obj.rectangle175:setName("rectangle175");
 
-    obj.label282 = gui.fromHandle(_obj_newObject("label"));
+    obj.label282 = GUI.fromHandle(_obj_newObject("label"));
     obj.label282:setParent(obj.layout118);
     obj.label282:setLeft(275);
     obj.label282:setTop(3);
@@ -11343,7 +11343,7 @@ function newfrmFichaSSF()
     obj.label282:setHorzTextAlign("center");
     obj.label282:setName("label282");
 
-    obj.button80 = gui.fromHandle(_obj_newObject("button"));
+    obj.button80 = GUI.fromHandle(_obj_newObject("button"));
     obj.button80:setParent(obj.layout118);
     obj.button80:setLeft(300);
     obj.button80:setTop(3);
@@ -11352,12 +11352,12 @@ function newfrmFichaSSF()
     obj.button80:setText("R");
     obj.button80:setName("button80");
 
-    obj.dataLink285 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink285 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink285:setParent(obj.layout118);
     obj.dataLink285:setFields({'atr_4_5', 'dificuldade_4_5', 'bonus_4_5', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink285:setName("dataLink285");
 
-    obj.layout119 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout119 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout119:setParent(obj.layout113);
     obj.layout119:setLeft(0);
     obj.layout119:setTop(155);
@@ -11365,7 +11365,7 @@ function newfrmFichaSSF()
     obj.layout119:setHeight(25);
     obj.layout119:setName("layout119");
 
-    obj.edit182 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit182 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit182:setParent(obj.layout119);
     obj.edit182:setLeft(5);
     obj.edit182:setTop(0);
@@ -11374,13 +11374,13 @@ function newfrmFichaSSF()
     obj.edit182:setField("pericia_4_6");
     obj.edit182:setName("edit182");
 
-    obj.dataLink286 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink286 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink286:setParent(obj.layout119);
     obj.dataLink286:setField("pericia_4_6");
     obj.dataLink286:setDefaultValue("");
     obj.dataLink286:setName("dataLink286");
 
-    obj.rectangle176 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle176 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle176:setParent(obj.layout119);
     obj.rectangle176:setLeft(90);
     obj.rectangle176:setTop(0);
@@ -11391,7 +11391,7 @@ function newfrmFichaSSF()
     obj.rectangle176:setStrokeSize(1);
     obj.rectangle176:setName("rectangle176");
 
-    obj.label283 = gui.fromHandle(_obj_newObject("label"));
+    obj.label283 = GUI.fromHandle(_obj_newObject("label"));
     obj.label283:setParent(obj.layout119);
     obj.label283:setLeft(90);
     obj.label283:setTop(3);
@@ -11401,7 +11401,7 @@ function newfrmFichaSSF()
     obj.label283:setHorzTextAlign("center");
     obj.label283:setName("label283");
 
-    obj.comboBox133 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox133 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox133:setParent(obj.layout119);
     obj.comboBox133:setLeft(130);
     obj.comboBox133:setTop(0);
@@ -11412,13 +11412,13 @@ function newfrmFichaSSF()
     obj.comboBox133:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox133:setName("comboBox133");
 
-    obj.dataLink287 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink287 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink287:setParent(obj.layout119);
     obj.dataLink287:setField("atr_4_6");
     obj.dataLink287:setDefaultValue("");
     obj.dataLink287:setName("dataLink287");
 
-    obj.label284 = gui.fromHandle(_obj_newObject("label"));
+    obj.label284 = GUI.fromHandle(_obj_newObject("label"));
     obj.label284:setParent(obj.layout119);
     obj.label284:setLeft(180);
     obj.label284:setTop(3);
@@ -11428,7 +11428,7 @@ function newfrmFichaSSF()
     obj.label284:setHorzTextAlign("center");
     obj.label284:setName("label284");
 
-    obj.edit183 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit183 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit183:setParent(obj.layout119);
     obj.edit183:setLeft(190);
     obj.edit183:setTop(0);
@@ -11438,7 +11438,7 @@ function newfrmFichaSSF()
     obj.edit183:setField("bonus_4_6");
     obj.edit183:setName("edit183");
 
-    obj.comboBox134 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox134 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox134:setParent(obj.layout119);
     obj.comboBox134:setLeft(220);
     obj.comboBox134:setTop(0);
@@ -11449,13 +11449,13 @@ function newfrmFichaSSF()
     obj.comboBox134:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox134:setName("comboBox134");
 
-    obj.dataLink288 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink288 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink288:setParent(obj.layout119);
     obj.dataLink288:setField("dificuldade_4_6");
     obj.dataLink288:setDefaultValue("");
     obj.dataLink288:setName("dataLink288");
 
-    obj.rectangle177 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle177 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle177:setParent(obj.layout119);
     obj.rectangle177:setLeft(275);
     obj.rectangle177:setTop(0);
@@ -11466,7 +11466,7 @@ function newfrmFichaSSF()
     obj.rectangle177:setStrokeSize(1);
     obj.rectangle177:setName("rectangle177");
 
-    obj.label285 = gui.fromHandle(_obj_newObject("label"));
+    obj.label285 = GUI.fromHandle(_obj_newObject("label"));
     obj.label285:setParent(obj.layout119);
     obj.label285:setLeft(275);
     obj.label285:setTop(3);
@@ -11476,7 +11476,7 @@ function newfrmFichaSSF()
     obj.label285:setHorzTextAlign("center");
     obj.label285:setName("label285");
 
-    obj.button81 = gui.fromHandle(_obj_newObject("button"));
+    obj.button81 = GUI.fromHandle(_obj_newObject("button"));
     obj.button81:setParent(obj.layout119);
     obj.button81:setLeft(300);
     obj.button81:setTop(3);
@@ -11485,12 +11485,12 @@ function newfrmFichaSSF()
     obj.button81:setText("R");
     obj.button81:setName("button81");
 
-    obj.dataLink289 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink289 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink289:setParent(obj.layout119);
     obj.dataLink289:setFields({'atr_4_6', 'dificuldade_4_6', 'bonus_4_6', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink289:setName("dataLink289");
 
-    obj.layout120 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout120 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout120:setParent(obj.layout113);
     obj.layout120:setLeft(0);
     obj.layout120:setTop(180);
@@ -11498,7 +11498,7 @@ function newfrmFichaSSF()
     obj.layout120:setHeight(25);
     obj.layout120:setName("layout120");
 
-    obj.edit184 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit184 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit184:setParent(obj.layout120);
     obj.edit184:setLeft(5);
     obj.edit184:setTop(0);
@@ -11507,13 +11507,13 @@ function newfrmFichaSSF()
     obj.edit184:setField("pericia_4_7");
     obj.edit184:setName("edit184");
 
-    obj.dataLink290 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink290 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink290:setParent(obj.layout120);
     obj.dataLink290:setField("pericia_4_7");
     obj.dataLink290:setDefaultValue("");
     obj.dataLink290:setName("dataLink290");
 
-    obj.rectangle178 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle178 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle178:setParent(obj.layout120);
     obj.rectangle178:setLeft(90);
     obj.rectangle178:setTop(0);
@@ -11524,7 +11524,7 @@ function newfrmFichaSSF()
     obj.rectangle178:setStrokeSize(1);
     obj.rectangle178:setName("rectangle178");
 
-    obj.label286 = gui.fromHandle(_obj_newObject("label"));
+    obj.label286 = GUI.fromHandle(_obj_newObject("label"));
     obj.label286:setParent(obj.layout120);
     obj.label286:setLeft(90);
     obj.label286:setTop(3);
@@ -11534,7 +11534,7 @@ function newfrmFichaSSF()
     obj.label286:setHorzTextAlign("center");
     obj.label286:setName("label286");
 
-    obj.comboBox135 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox135 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox135:setParent(obj.layout120);
     obj.comboBox135:setLeft(130);
     obj.comboBox135:setTop(0);
@@ -11545,13 +11545,13 @@ function newfrmFichaSSF()
     obj.comboBox135:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox135:setName("comboBox135");
 
-    obj.dataLink291 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink291 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink291:setParent(obj.layout120);
     obj.dataLink291:setField("atr_4_7");
     obj.dataLink291:setDefaultValue("");
     obj.dataLink291:setName("dataLink291");
 
-    obj.label287 = gui.fromHandle(_obj_newObject("label"));
+    obj.label287 = GUI.fromHandle(_obj_newObject("label"));
     obj.label287:setParent(obj.layout120);
     obj.label287:setLeft(180);
     obj.label287:setTop(3);
@@ -11561,7 +11561,7 @@ function newfrmFichaSSF()
     obj.label287:setHorzTextAlign("center");
     obj.label287:setName("label287");
 
-    obj.edit185 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit185 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit185:setParent(obj.layout120);
     obj.edit185:setLeft(190);
     obj.edit185:setTop(0);
@@ -11571,7 +11571,7 @@ function newfrmFichaSSF()
     obj.edit185:setField("bonus_4_7");
     obj.edit185:setName("edit185");
 
-    obj.comboBox136 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox136 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox136:setParent(obj.layout120);
     obj.comboBox136:setLeft(220);
     obj.comboBox136:setTop(0);
@@ -11582,13 +11582,13 @@ function newfrmFichaSSF()
     obj.comboBox136:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox136:setName("comboBox136");
 
-    obj.dataLink292 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink292 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink292:setParent(obj.layout120);
     obj.dataLink292:setField("dificuldade_4_7");
     obj.dataLink292:setDefaultValue("");
     obj.dataLink292:setName("dataLink292");
 
-    obj.rectangle179 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle179 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle179:setParent(obj.layout120);
     obj.rectangle179:setLeft(275);
     obj.rectangle179:setTop(0);
@@ -11599,7 +11599,7 @@ function newfrmFichaSSF()
     obj.rectangle179:setStrokeSize(1);
     obj.rectangle179:setName("rectangle179");
 
-    obj.label288 = gui.fromHandle(_obj_newObject("label"));
+    obj.label288 = GUI.fromHandle(_obj_newObject("label"));
     obj.label288:setParent(obj.layout120);
     obj.label288:setLeft(275);
     obj.label288:setTop(3);
@@ -11609,7 +11609,7 @@ function newfrmFichaSSF()
     obj.label288:setHorzTextAlign("center");
     obj.label288:setName("label288");
 
-    obj.button82 = gui.fromHandle(_obj_newObject("button"));
+    obj.button82 = GUI.fromHandle(_obj_newObject("button"));
     obj.button82:setParent(obj.layout120);
     obj.button82:setLeft(300);
     obj.button82:setTop(3);
@@ -11618,12 +11618,12 @@ function newfrmFichaSSF()
     obj.button82:setText("R");
     obj.button82:setName("button82");
 
-    obj.dataLink293 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink293 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink293:setParent(obj.layout120);
     obj.dataLink293:setFields({'atr_4_7', 'dificuldade_4_7', 'bonus_4_7', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink293:setName("dataLink293");
 
-    obj.layout121 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout121 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout121:setParent(obj.layout113);
     obj.layout121:setLeft(0);
     obj.layout121:setTop(205);
@@ -11631,7 +11631,7 @@ function newfrmFichaSSF()
     obj.layout121:setHeight(25);
     obj.layout121:setName("layout121");
 
-    obj.edit186 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit186 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit186:setParent(obj.layout121);
     obj.edit186:setLeft(5);
     obj.edit186:setTop(0);
@@ -11640,13 +11640,13 @@ function newfrmFichaSSF()
     obj.edit186:setField("pericia_4_8");
     obj.edit186:setName("edit186");
 
-    obj.dataLink294 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink294 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink294:setParent(obj.layout121);
     obj.dataLink294:setField("pericia_4_8");
     obj.dataLink294:setDefaultValue("");
     obj.dataLink294:setName("dataLink294");
 
-    obj.rectangle180 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle180 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle180:setParent(obj.layout121);
     obj.rectangle180:setLeft(90);
     obj.rectangle180:setTop(0);
@@ -11657,7 +11657,7 @@ function newfrmFichaSSF()
     obj.rectangle180:setStrokeSize(1);
     obj.rectangle180:setName("rectangle180");
 
-    obj.label289 = gui.fromHandle(_obj_newObject("label"));
+    obj.label289 = GUI.fromHandle(_obj_newObject("label"));
     obj.label289:setParent(obj.layout121);
     obj.label289:setLeft(90);
     obj.label289:setTop(3);
@@ -11667,7 +11667,7 @@ function newfrmFichaSSF()
     obj.label289:setHorzTextAlign("center");
     obj.label289:setName("label289");
 
-    obj.comboBox137 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox137 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox137:setParent(obj.layout121);
     obj.comboBox137:setLeft(130);
     obj.comboBox137:setTop(0);
@@ -11678,13 +11678,13 @@ function newfrmFichaSSF()
     obj.comboBox137:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox137:setName("comboBox137");
 
-    obj.dataLink295 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink295 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink295:setParent(obj.layout121);
     obj.dataLink295:setField("atr_4_8");
     obj.dataLink295:setDefaultValue("");
     obj.dataLink295:setName("dataLink295");
 
-    obj.label290 = gui.fromHandle(_obj_newObject("label"));
+    obj.label290 = GUI.fromHandle(_obj_newObject("label"));
     obj.label290:setParent(obj.layout121);
     obj.label290:setLeft(180);
     obj.label290:setTop(3);
@@ -11694,7 +11694,7 @@ function newfrmFichaSSF()
     obj.label290:setHorzTextAlign("center");
     obj.label290:setName("label290");
 
-    obj.edit187 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit187 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit187:setParent(obj.layout121);
     obj.edit187:setLeft(190);
     obj.edit187:setTop(0);
@@ -11704,7 +11704,7 @@ function newfrmFichaSSF()
     obj.edit187:setField("bonus_4_8");
     obj.edit187:setName("edit187");
 
-    obj.comboBox138 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox138 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox138:setParent(obj.layout121);
     obj.comboBox138:setLeft(220);
     obj.comboBox138:setTop(0);
@@ -11715,13 +11715,13 @@ function newfrmFichaSSF()
     obj.comboBox138:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox138:setName("comboBox138");
 
-    obj.dataLink296 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink296 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink296:setParent(obj.layout121);
     obj.dataLink296:setField("dificuldade_4_8");
     obj.dataLink296:setDefaultValue("");
     obj.dataLink296:setName("dataLink296");
 
-    obj.rectangle181 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle181 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle181:setParent(obj.layout121);
     obj.rectangle181:setLeft(275);
     obj.rectangle181:setTop(0);
@@ -11732,7 +11732,7 @@ function newfrmFichaSSF()
     obj.rectangle181:setStrokeSize(1);
     obj.rectangle181:setName("rectangle181");
 
-    obj.label291 = gui.fromHandle(_obj_newObject("label"));
+    obj.label291 = GUI.fromHandle(_obj_newObject("label"));
     obj.label291:setParent(obj.layout121);
     obj.label291:setLeft(275);
     obj.label291:setTop(3);
@@ -11742,7 +11742,7 @@ function newfrmFichaSSF()
     obj.label291:setHorzTextAlign("center");
     obj.label291:setName("label291");
 
-    obj.button83 = gui.fromHandle(_obj_newObject("button"));
+    obj.button83 = GUI.fromHandle(_obj_newObject("button"));
     obj.button83:setParent(obj.layout121);
     obj.button83:setLeft(300);
     obj.button83:setTop(3);
@@ -11751,12 +11751,12 @@ function newfrmFichaSSF()
     obj.button83:setText("R");
     obj.button83:setName("button83");
 
-    obj.dataLink297 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink297 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink297:setParent(obj.layout121);
     obj.dataLink297:setFields({'atr_4_8', 'dificuldade_4_8', 'bonus_4_8', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink297:setName("dataLink297");
 
-    obj.layout122 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout122 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout122:setParent(obj.layout113);
     obj.layout122:setLeft(0);
     obj.layout122:setTop(230);
@@ -11764,7 +11764,7 @@ function newfrmFichaSSF()
     obj.layout122:setHeight(25);
     obj.layout122:setName("layout122");
 
-    obj.edit188 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit188 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit188:setParent(obj.layout122);
     obj.edit188:setLeft(5);
     obj.edit188:setTop(0);
@@ -11773,13 +11773,13 @@ function newfrmFichaSSF()
     obj.edit188:setField("pericia_4_9");
     obj.edit188:setName("edit188");
 
-    obj.dataLink298 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink298 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink298:setParent(obj.layout122);
     obj.dataLink298:setField("pericia_4_9");
     obj.dataLink298:setDefaultValue("");
     obj.dataLink298:setName("dataLink298");
 
-    obj.rectangle182 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle182 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle182:setParent(obj.layout122);
     obj.rectangle182:setLeft(90);
     obj.rectangle182:setTop(0);
@@ -11790,7 +11790,7 @@ function newfrmFichaSSF()
     obj.rectangle182:setStrokeSize(1);
     obj.rectangle182:setName("rectangle182");
 
-    obj.label292 = gui.fromHandle(_obj_newObject("label"));
+    obj.label292 = GUI.fromHandle(_obj_newObject("label"));
     obj.label292:setParent(obj.layout122);
     obj.label292:setLeft(90);
     obj.label292:setTop(3);
@@ -11800,7 +11800,7 @@ function newfrmFichaSSF()
     obj.label292:setHorzTextAlign("center");
     obj.label292:setName("label292");
 
-    obj.comboBox139 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox139 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox139:setParent(obj.layout122);
     obj.comboBox139:setLeft(130);
     obj.comboBox139:setTop(0);
@@ -11811,13 +11811,13 @@ function newfrmFichaSSF()
     obj.comboBox139:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox139:setName("comboBox139");
 
-    obj.dataLink299 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink299 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink299:setParent(obj.layout122);
     obj.dataLink299:setField("atr_4_9");
     obj.dataLink299:setDefaultValue("");
     obj.dataLink299:setName("dataLink299");
 
-    obj.label293 = gui.fromHandle(_obj_newObject("label"));
+    obj.label293 = GUI.fromHandle(_obj_newObject("label"));
     obj.label293:setParent(obj.layout122);
     obj.label293:setLeft(180);
     obj.label293:setTop(3);
@@ -11827,7 +11827,7 @@ function newfrmFichaSSF()
     obj.label293:setHorzTextAlign("center");
     obj.label293:setName("label293");
 
-    obj.edit189 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit189 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit189:setParent(obj.layout122);
     obj.edit189:setLeft(190);
     obj.edit189:setTop(0);
@@ -11837,7 +11837,7 @@ function newfrmFichaSSF()
     obj.edit189:setField("bonus_4_9");
     obj.edit189:setName("edit189");
 
-    obj.comboBox140 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox140 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox140:setParent(obj.layout122);
     obj.comboBox140:setLeft(220);
     obj.comboBox140:setTop(0);
@@ -11848,13 +11848,13 @@ function newfrmFichaSSF()
     obj.comboBox140:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox140:setName("comboBox140");
 
-    obj.dataLink300 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink300 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink300:setParent(obj.layout122);
     obj.dataLink300:setField("dificuldade_4_9");
     obj.dataLink300:setDefaultValue("");
     obj.dataLink300:setName("dataLink300");
 
-    obj.rectangle183 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle183 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle183:setParent(obj.layout122);
     obj.rectangle183:setLeft(275);
     obj.rectangle183:setTop(0);
@@ -11865,7 +11865,7 @@ function newfrmFichaSSF()
     obj.rectangle183:setStrokeSize(1);
     obj.rectangle183:setName("rectangle183");
 
-    obj.label294 = gui.fromHandle(_obj_newObject("label"));
+    obj.label294 = GUI.fromHandle(_obj_newObject("label"));
     obj.label294:setParent(obj.layout122);
     obj.label294:setLeft(275);
     obj.label294:setTop(3);
@@ -11875,7 +11875,7 @@ function newfrmFichaSSF()
     obj.label294:setHorzTextAlign("center");
     obj.label294:setName("label294");
 
-    obj.button84 = gui.fromHandle(_obj_newObject("button"));
+    obj.button84 = GUI.fromHandle(_obj_newObject("button"));
     obj.button84:setParent(obj.layout122);
     obj.button84:setLeft(300);
     obj.button84:setTop(3);
@@ -11884,12 +11884,12 @@ function newfrmFichaSSF()
     obj.button84:setText("R");
     obj.button84:setName("button84");
 
-    obj.dataLink301 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink301 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink301:setParent(obj.layout122);
     obj.dataLink301:setFields({'atr_4_9', 'dificuldade_4_9', 'bonus_4_9', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink301:setName("dataLink301");
 
-    obj.layout123 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout123 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout123:setParent(obj.layout113);
     obj.layout123:setLeft(0);
     obj.layout123:setTop(255);
@@ -11897,7 +11897,7 @@ function newfrmFichaSSF()
     obj.layout123:setHeight(25);
     obj.layout123:setName("layout123");
 
-    obj.edit190 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit190 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit190:setParent(obj.layout123);
     obj.edit190:setLeft(5);
     obj.edit190:setTop(0);
@@ -11906,13 +11906,13 @@ function newfrmFichaSSF()
     obj.edit190:setField("pericia_4_10");
     obj.edit190:setName("edit190");
 
-    obj.dataLink302 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink302 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink302:setParent(obj.layout123);
     obj.dataLink302:setField("pericia_4_10");
     obj.dataLink302:setDefaultValue("");
     obj.dataLink302:setName("dataLink302");
 
-    obj.rectangle184 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle184 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle184:setParent(obj.layout123);
     obj.rectangle184:setLeft(90);
     obj.rectangle184:setTop(0);
@@ -11923,7 +11923,7 @@ function newfrmFichaSSF()
     obj.rectangle184:setStrokeSize(1);
     obj.rectangle184:setName("rectangle184");
 
-    obj.label295 = gui.fromHandle(_obj_newObject("label"));
+    obj.label295 = GUI.fromHandle(_obj_newObject("label"));
     obj.label295:setParent(obj.layout123);
     obj.label295:setLeft(90);
     obj.label295:setTop(3);
@@ -11933,7 +11933,7 @@ function newfrmFichaSSF()
     obj.label295:setHorzTextAlign("center");
     obj.label295:setName("label295");
 
-    obj.comboBox141 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox141 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox141:setParent(obj.layout123);
     obj.comboBox141:setLeft(130);
     obj.comboBox141:setTop(0);
@@ -11944,13 +11944,13 @@ function newfrmFichaSSF()
     obj.comboBox141:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox141:setName("comboBox141");
 
-    obj.dataLink303 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink303 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink303:setParent(obj.layout123);
     obj.dataLink303:setField("atr_4_10");
     obj.dataLink303:setDefaultValue("");
     obj.dataLink303:setName("dataLink303");
 
-    obj.label296 = gui.fromHandle(_obj_newObject("label"));
+    obj.label296 = GUI.fromHandle(_obj_newObject("label"));
     obj.label296:setParent(obj.layout123);
     obj.label296:setLeft(180);
     obj.label296:setTop(3);
@@ -11960,7 +11960,7 @@ function newfrmFichaSSF()
     obj.label296:setHorzTextAlign("center");
     obj.label296:setName("label296");
 
-    obj.edit191 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit191 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit191:setParent(obj.layout123);
     obj.edit191:setLeft(190);
     obj.edit191:setTop(0);
@@ -11970,7 +11970,7 @@ function newfrmFichaSSF()
     obj.edit191:setField("bonus_4_10");
     obj.edit191:setName("edit191");
 
-    obj.comboBox142 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox142 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox142:setParent(obj.layout123);
     obj.comboBox142:setLeft(220);
     obj.comboBox142:setTop(0);
@@ -11981,13 +11981,13 @@ function newfrmFichaSSF()
     obj.comboBox142:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox142:setName("comboBox142");
 
-    obj.dataLink304 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink304 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink304:setParent(obj.layout123);
     obj.dataLink304:setField("dificuldade_4_10");
     obj.dataLink304:setDefaultValue("");
     obj.dataLink304:setName("dataLink304");
 
-    obj.rectangle185 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle185 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle185:setParent(obj.layout123);
     obj.rectangle185:setLeft(275);
     obj.rectangle185:setTop(0);
@@ -11998,7 +11998,7 @@ function newfrmFichaSSF()
     obj.rectangle185:setStrokeSize(1);
     obj.rectangle185:setName("rectangle185");
 
-    obj.label297 = gui.fromHandle(_obj_newObject("label"));
+    obj.label297 = GUI.fromHandle(_obj_newObject("label"));
     obj.label297:setParent(obj.layout123);
     obj.label297:setLeft(275);
     obj.label297:setTop(3);
@@ -12008,7 +12008,7 @@ function newfrmFichaSSF()
     obj.label297:setHorzTextAlign("center");
     obj.label297:setName("label297");
 
-    obj.button85 = gui.fromHandle(_obj_newObject("button"));
+    obj.button85 = GUI.fromHandle(_obj_newObject("button"));
     obj.button85:setParent(obj.layout123);
     obj.button85:setLeft(300);
     obj.button85:setTop(3);
@@ -12017,12 +12017,12 @@ function newfrmFichaSSF()
     obj.button85:setText("R");
     obj.button85:setName("button85");
 
-    obj.dataLink305 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink305 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink305:setParent(obj.layout123);
     obj.dataLink305:setFields({'atr_4_10', 'dificuldade_4_10', 'bonus_4_10', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink305:setName("dataLink305");
 
-    obj.layout124 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout124 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout124:setParent(obj.layout113);
     obj.layout124:setLeft(0);
     obj.layout124:setTop(280);
@@ -12030,7 +12030,7 @@ function newfrmFichaSSF()
     obj.layout124:setHeight(25);
     obj.layout124:setName("layout124");
 
-    obj.edit192 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit192 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit192:setParent(obj.layout124);
     obj.edit192:setLeft(5);
     obj.edit192:setTop(0);
@@ -12039,13 +12039,13 @@ function newfrmFichaSSF()
     obj.edit192:setField("pericia_4_11");
     obj.edit192:setName("edit192");
 
-    obj.dataLink306 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink306 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink306:setParent(obj.layout124);
     obj.dataLink306:setField("pericia_4_11");
     obj.dataLink306:setDefaultValue("");
     obj.dataLink306:setName("dataLink306");
 
-    obj.rectangle186 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle186 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle186:setParent(obj.layout124);
     obj.rectangle186:setLeft(90);
     obj.rectangle186:setTop(0);
@@ -12056,7 +12056,7 @@ function newfrmFichaSSF()
     obj.rectangle186:setStrokeSize(1);
     obj.rectangle186:setName("rectangle186");
 
-    obj.label298 = gui.fromHandle(_obj_newObject("label"));
+    obj.label298 = GUI.fromHandle(_obj_newObject("label"));
     obj.label298:setParent(obj.layout124);
     obj.label298:setLeft(90);
     obj.label298:setTop(3);
@@ -12066,7 +12066,7 @@ function newfrmFichaSSF()
     obj.label298:setHorzTextAlign("center");
     obj.label298:setName("label298");
 
-    obj.comboBox143 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox143 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox143:setParent(obj.layout124);
     obj.comboBox143:setLeft(130);
     obj.comboBox143:setTop(0);
@@ -12077,13 +12077,13 @@ function newfrmFichaSSF()
     obj.comboBox143:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox143:setName("comboBox143");
 
-    obj.dataLink307 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink307 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink307:setParent(obj.layout124);
     obj.dataLink307:setField("atr_4_11");
     obj.dataLink307:setDefaultValue("");
     obj.dataLink307:setName("dataLink307");
 
-    obj.label299 = gui.fromHandle(_obj_newObject("label"));
+    obj.label299 = GUI.fromHandle(_obj_newObject("label"));
     obj.label299:setParent(obj.layout124);
     obj.label299:setLeft(180);
     obj.label299:setTop(3);
@@ -12093,7 +12093,7 @@ function newfrmFichaSSF()
     obj.label299:setHorzTextAlign("center");
     obj.label299:setName("label299");
 
-    obj.edit193 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit193 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit193:setParent(obj.layout124);
     obj.edit193:setLeft(190);
     obj.edit193:setTop(0);
@@ -12103,7 +12103,7 @@ function newfrmFichaSSF()
     obj.edit193:setField("bonus_4_11");
     obj.edit193:setName("edit193");
 
-    obj.comboBox144 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox144 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox144:setParent(obj.layout124);
     obj.comboBox144:setLeft(220);
     obj.comboBox144:setTop(0);
@@ -12114,13 +12114,13 @@ function newfrmFichaSSF()
     obj.comboBox144:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox144:setName("comboBox144");
 
-    obj.dataLink308 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink308 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink308:setParent(obj.layout124);
     obj.dataLink308:setField("dificuldade_4_11");
     obj.dataLink308:setDefaultValue("");
     obj.dataLink308:setName("dataLink308");
 
-    obj.rectangle187 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle187 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle187:setParent(obj.layout124);
     obj.rectangle187:setLeft(275);
     obj.rectangle187:setTop(0);
@@ -12131,7 +12131,7 @@ function newfrmFichaSSF()
     obj.rectangle187:setStrokeSize(1);
     obj.rectangle187:setName("rectangle187");
 
-    obj.label300 = gui.fromHandle(_obj_newObject("label"));
+    obj.label300 = GUI.fromHandle(_obj_newObject("label"));
     obj.label300:setParent(obj.layout124);
     obj.label300:setLeft(275);
     obj.label300:setTop(3);
@@ -12141,7 +12141,7 @@ function newfrmFichaSSF()
     obj.label300:setHorzTextAlign("center");
     obj.label300:setName("label300");
 
-    obj.button86 = gui.fromHandle(_obj_newObject("button"));
+    obj.button86 = GUI.fromHandle(_obj_newObject("button"));
     obj.button86:setParent(obj.layout124);
     obj.button86:setLeft(300);
     obj.button86:setTop(3);
@@ -12150,12 +12150,12 @@ function newfrmFichaSSF()
     obj.button86:setText("R");
     obj.button86:setName("button86");
 
-    obj.dataLink309 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink309 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink309:setParent(obj.layout124);
     obj.dataLink309:setFields({'atr_4_11', 'dificuldade_4_11', 'bonus_4_11', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink309:setName("dataLink309");
 
-    obj.layout125 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout125 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout125:setParent(obj.layout113);
     obj.layout125:setLeft(0);
     obj.layout125:setTop(305);
@@ -12163,7 +12163,7 @@ function newfrmFichaSSF()
     obj.layout125:setHeight(25);
     obj.layout125:setName("layout125");
 
-    obj.edit194 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit194 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit194:setParent(obj.layout125);
     obj.edit194:setLeft(5);
     obj.edit194:setTop(0);
@@ -12172,13 +12172,13 @@ function newfrmFichaSSF()
     obj.edit194:setField("pericia_4_12");
     obj.edit194:setName("edit194");
 
-    obj.dataLink310 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink310 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink310:setParent(obj.layout125);
     obj.dataLink310:setField("pericia_4_12");
     obj.dataLink310:setDefaultValue("");
     obj.dataLink310:setName("dataLink310");
 
-    obj.rectangle188 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle188 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle188:setParent(obj.layout125);
     obj.rectangle188:setLeft(90);
     obj.rectangle188:setTop(0);
@@ -12189,7 +12189,7 @@ function newfrmFichaSSF()
     obj.rectangle188:setStrokeSize(1);
     obj.rectangle188:setName("rectangle188");
 
-    obj.label301 = gui.fromHandle(_obj_newObject("label"));
+    obj.label301 = GUI.fromHandle(_obj_newObject("label"));
     obj.label301:setParent(obj.layout125);
     obj.label301:setLeft(90);
     obj.label301:setTop(3);
@@ -12199,7 +12199,7 @@ function newfrmFichaSSF()
     obj.label301:setHorzTextAlign("center");
     obj.label301:setName("label301");
 
-    obj.comboBox145 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox145 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox145:setParent(obj.layout125);
     obj.comboBox145:setLeft(130);
     obj.comboBox145:setTop(0);
@@ -12210,13 +12210,13 @@ function newfrmFichaSSF()
     obj.comboBox145:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox145:setName("comboBox145");
 
-    obj.dataLink311 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink311 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink311:setParent(obj.layout125);
     obj.dataLink311:setField("atr_4_12");
     obj.dataLink311:setDefaultValue("");
     obj.dataLink311:setName("dataLink311");
 
-    obj.label302 = gui.fromHandle(_obj_newObject("label"));
+    obj.label302 = GUI.fromHandle(_obj_newObject("label"));
     obj.label302:setParent(obj.layout125);
     obj.label302:setLeft(180);
     obj.label302:setTop(3);
@@ -12226,7 +12226,7 @@ function newfrmFichaSSF()
     obj.label302:setHorzTextAlign("center");
     obj.label302:setName("label302");
 
-    obj.edit195 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit195 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit195:setParent(obj.layout125);
     obj.edit195:setLeft(190);
     obj.edit195:setTop(0);
@@ -12236,7 +12236,7 @@ function newfrmFichaSSF()
     obj.edit195:setField("bonus_4_12");
     obj.edit195:setName("edit195");
 
-    obj.comboBox146 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox146 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox146:setParent(obj.layout125);
     obj.comboBox146:setLeft(220);
     obj.comboBox146:setTop(0);
@@ -12247,13 +12247,13 @@ function newfrmFichaSSF()
     obj.comboBox146:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox146:setName("comboBox146");
 
-    obj.dataLink312 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink312 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink312:setParent(obj.layout125);
     obj.dataLink312:setField("dificuldade_4_12");
     obj.dataLink312:setDefaultValue("");
     obj.dataLink312:setName("dataLink312");
 
-    obj.rectangle189 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle189 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle189:setParent(obj.layout125);
     obj.rectangle189:setLeft(275);
     obj.rectangle189:setTop(0);
@@ -12264,7 +12264,7 @@ function newfrmFichaSSF()
     obj.rectangle189:setStrokeSize(1);
     obj.rectangle189:setName("rectangle189");
 
-    obj.label303 = gui.fromHandle(_obj_newObject("label"));
+    obj.label303 = GUI.fromHandle(_obj_newObject("label"));
     obj.label303:setParent(obj.layout125);
     obj.label303:setLeft(275);
     obj.label303:setTop(3);
@@ -12274,7 +12274,7 @@ function newfrmFichaSSF()
     obj.label303:setHorzTextAlign("center");
     obj.label303:setName("label303");
 
-    obj.button87 = gui.fromHandle(_obj_newObject("button"));
+    obj.button87 = GUI.fromHandle(_obj_newObject("button"));
     obj.button87:setParent(obj.layout125);
     obj.button87:setLeft(300);
     obj.button87:setTop(3);
@@ -12283,12 +12283,12 @@ function newfrmFichaSSF()
     obj.button87:setText("R");
     obj.button87:setName("button87");
 
-    obj.dataLink313 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink313 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink313:setParent(obj.layout125);
     obj.dataLink313:setFields({'atr_4_12', 'dificuldade_4_12', 'bonus_4_12', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink313:setName("dataLink313");
 
-    obj.layout126 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout126 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout126:setParent(obj.layout113);
     obj.layout126:setLeft(0);
     obj.layout126:setTop(330);
@@ -12296,7 +12296,7 @@ function newfrmFichaSSF()
     obj.layout126:setHeight(25);
     obj.layout126:setName("layout126");
 
-    obj.edit196 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit196 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit196:setParent(obj.layout126);
     obj.edit196:setLeft(5);
     obj.edit196:setTop(0);
@@ -12305,13 +12305,13 @@ function newfrmFichaSSF()
     obj.edit196:setField("pericia_4_13");
     obj.edit196:setName("edit196");
 
-    obj.dataLink314 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink314 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink314:setParent(obj.layout126);
     obj.dataLink314:setField("pericia_4_13");
     obj.dataLink314:setDefaultValue("");
     obj.dataLink314:setName("dataLink314");
 
-    obj.rectangle190 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle190 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle190:setParent(obj.layout126);
     obj.rectangle190:setLeft(90);
     obj.rectangle190:setTop(0);
@@ -12322,7 +12322,7 @@ function newfrmFichaSSF()
     obj.rectangle190:setStrokeSize(1);
     obj.rectangle190:setName("rectangle190");
 
-    obj.label304 = gui.fromHandle(_obj_newObject("label"));
+    obj.label304 = GUI.fromHandle(_obj_newObject("label"));
     obj.label304:setParent(obj.layout126);
     obj.label304:setLeft(90);
     obj.label304:setTop(3);
@@ -12332,7 +12332,7 @@ function newfrmFichaSSF()
     obj.label304:setHorzTextAlign("center");
     obj.label304:setName("label304");
 
-    obj.comboBox147 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox147 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox147:setParent(obj.layout126);
     obj.comboBox147:setLeft(130);
     obj.comboBox147:setTop(0);
@@ -12343,13 +12343,13 @@ function newfrmFichaSSF()
     obj.comboBox147:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox147:setName("comboBox147");
 
-    obj.dataLink315 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink315 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink315:setParent(obj.layout126);
     obj.dataLink315:setField("atr_4_13");
     obj.dataLink315:setDefaultValue("");
     obj.dataLink315:setName("dataLink315");
 
-    obj.label305 = gui.fromHandle(_obj_newObject("label"));
+    obj.label305 = GUI.fromHandle(_obj_newObject("label"));
     obj.label305:setParent(obj.layout126);
     obj.label305:setLeft(180);
     obj.label305:setTop(3);
@@ -12359,7 +12359,7 @@ function newfrmFichaSSF()
     obj.label305:setHorzTextAlign("center");
     obj.label305:setName("label305");
 
-    obj.edit197 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit197 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit197:setParent(obj.layout126);
     obj.edit197:setLeft(190);
     obj.edit197:setTop(0);
@@ -12369,7 +12369,7 @@ function newfrmFichaSSF()
     obj.edit197:setField("bonus_4_13");
     obj.edit197:setName("edit197");
 
-    obj.comboBox148 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox148 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox148:setParent(obj.layout126);
     obj.comboBox148:setLeft(220);
     obj.comboBox148:setTop(0);
@@ -12380,13 +12380,13 @@ function newfrmFichaSSF()
     obj.comboBox148:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox148:setName("comboBox148");
 
-    obj.dataLink316 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink316 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink316:setParent(obj.layout126);
     obj.dataLink316:setField("dificuldade_4_13");
     obj.dataLink316:setDefaultValue("");
     obj.dataLink316:setName("dataLink316");
 
-    obj.rectangle191 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle191 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle191:setParent(obj.layout126);
     obj.rectangle191:setLeft(275);
     obj.rectangle191:setTop(0);
@@ -12397,7 +12397,7 @@ function newfrmFichaSSF()
     obj.rectangle191:setStrokeSize(1);
     obj.rectangle191:setName("rectangle191");
 
-    obj.label306 = gui.fromHandle(_obj_newObject("label"));
+    obj.label306 = GUI.fromHandle(_obj_newObject("label"));
     obj.label306:setParent(obj.layout126);
     obj.label306:setLeft(275);
     obj.label306:setTop(3);
@@ -12407,7 +12407,7 @@ function newfrmFichaSSF()
     obj.label306:setHorzTextAlign("center");
     obj.label306:setName("label306");
 
-    obj.button88 = gui.fromHandle(_obj_newObject("button"));
+    obj.button88 = GUI.fromHandle(_obj_newObject("button"));
     obj.button88:setParent(obj.layout126);
     obj.button88:setLeft(300);
     obj.button88:setTop(3);
@@ -12416,12 +12416,12 @@ function newfrmFichaSSF()
     obj.button88:setText("R");
     obj.button88:setName("button88");
 
-    obj.dataLink317 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink317 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink317:setParent(obj.layout126);
     obj.dataLink317:setFields({'atr_4_13', 'dificuldade_4_13', 'bonus_4_13', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink317:setName("dataLink317");
 
-    obj.layout127 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout127 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout127:setParent(obj.layout113);
     obj.layout127:setLeft(0);
     obj.layout127:setTop(355);
@@ -12429,7 +12429,7 @@ function newfrmFichaSSF()
     obj.layout127:setHeight(25);
     obj.layout127:setName("layout127");
 
-    obj.edit198 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit198 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit198:setParent(obj.layout127);
     obj.edit198:setLeft(5);
     obj.edit198:setTop(0);
@@ -12438,13 +12438,13 @@ function newfrmFichaSSF()
     obj.edit198:setField("pericia_4_14");
     obj.edit198:setName("edit198");
 
-    obj.dataLink318 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink318 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink318:setParent(obj.layout127);
     obj.dataLink318:setField("pericia_4_14");
     obj.dataLink318:setDefaultValue("");
     obj.dataLink318:setName("dataLink318");
 
-    obj.rectangle192 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle192 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle192:setParent(obj.layout127);
     obj.rectangle192:setLeft(90);
     obj.rectangle192:setTop(0);
@@ -12455,7 +12455,7 @@ function newfrmFichaSSF()
     obj.rectangle192:setStrokeSize(1);
     obj.rectangle192:setName("rectangle192");
 
-    obj.label307 = gui.fromHandle(_obj_newObject("label"));
+    obj.label307 = GUI.fromHandle(_obj_newObject("label"));
     obj.label307:setParent(obj.layout127);
     obj.label307:setLeft(90);
     obj.label307:setTop(3);
@@ -12465,7 +12465,7 @@ function newfrmFichaSSF()
     obj.label307:setHorzTextAlign("center");
     obj.label307:setName("label307");
 
-    obj.comboBox149 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox149 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox149:setParent(obj.layout127);
     obj.comboBox149:setLeft(130);
     obj.comboBox149:setTop(0);
@@ -12476,13 +12476,13 @@ function newfrmFichaSSF()
     obj.comboBox149:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox149:setName("comboBox149");
 
-    obj.dataLink319 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink319 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink319:setParent(obj.layout127);
     obj.dataLink319:setField("atr_4_14");
     obj.dataLink319:setDefaultValue("");
     obj.dataLink319:setName("dataLink319");
 
-    obj.label308 = gui.fromHandle(_obj_newObject("label"));
+    obj.label308 = GUI.fromHandle(_obj_newObject("label"));
     obj.label308:setParent(obj.layout127);
     obj.label308:setLeft(180);
     obj.label308:setTop(3);
@@ -12492,7 +12492,7 @@ function newfrmFichaSSF()
     obj.label308:setHorzTextAlign("center");
     obj.label308:setName("label308");
 
-    obj.edit199 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit199 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit199:setParent(obj.layout127);
     obj.edit199:setLeft(190);
     obj.edit199:setTop(0);
@@ -12502,7 +12502,7 @@ function newfrmFichaSSF()
     obj.edit199:setField("bonus_4_14");
     obj.edit199:setName("edit199");
 
-    obj.comboBox150 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox150 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox150:setParent(obj.layout127);
     obj.comboBox150:setLeft(220);
     obj.comboBox150:setTop(0);
@@ -12513,13 +12513,13 @@ function newfrmFichaSSF()
     obj.comboBox150:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox150:setName("comboBox150");
 
-    obj.dataLink320 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink320 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink320:setParent(obj.layout127);
     obj.dataLink320:setField("dificuldade_4_14");
     obj.dataLink320:setDefaultValue("");
     obj.dataLink320:setName("dataLink320");
 
-    obj.rectangle193 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle193 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle193:setParent(obj.layout127);
     obj.rectangle193:setLeft(275);
     obj.rectangle193:setTop(0);
@@ -12530,7 +12530,7 @@ function newfrmFichaSSF()
     obj.rectangle193:setStrokeSize(1);
     obj.rectangle193:setName("rectangle193");
 
-    obj.label309 = gui.fromHandle(_obj_newObject("label"));
+    obj.label309 = GUI.fromHandle(_obj_newObject("label"));
     obj.label309:setParent(obj.layout127);
     obj.label309:setLeft(275);
     obj.label309:setTop(3);
@@ -12540,7 +12540,7 @@ function newfrmFichaSSF()
     obj.label309:setHorzTextAlign("center");
     obj.label309:setName("label309");
 
-    obj.button89 = gui.fromHandle(_obj_newObject("button"));
+    obj.button89 = GUI.fromHandle(_obj_newObject("button"));
     obj.button89:setParent(obj.layout127);
     obj.button89:setLeft(300);
     obj.button89:setTop(3);
@@ -12549,12 +12549,12 @@ function newfrmFichaSSF()
     obj.button89:setText("R");
     obj.button89:setName("button89");
 
-    obj.dataLink321 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink321 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink321:setParent(obj.layout127);
     obj.dataLink321:setFields({'atr_4_14', 'dificuldade_4_14', 'bonus_4_14', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink321:setName("dataLink321");
 
-    obj.layout128 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout128 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout128:setParent(obj.layout113);
     obj.layout128:setLeft(0);
     obj.layout128:setTop(380);
@@ -12562,7 +12562,7 @@ function newfrmFichaSSF()
     obj.layout128:setHeight(25);
     obj.layout128:setName("layout128");
 
-    obj.edit200 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit200 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit200:setParent(obj.layout128);
     obj.edit200:setLeft(5);
     obj.edit200:setTop(0);
@@ -12571,13 +12571,13 @@ function newfrmFichaSSF()
     obj.edit200:setField("pericia_4_15");
     obj.edit200:setName("edit200");
 
-    obj.dataLink322 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink322 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink322:setParent(obj.layout128);
     obj.dataLink322:setField("pericia_4_15");
     obj.dataLink322:setDefaultValue("");
     obj.dataLink322:setName("dataLink322");
 
-    obj.rectangle194 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle194 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle194:setParent(obj.layout128);
     obj.rectangle194:setLeft(90);
     obj.rectangle194:setTop(0);
@@ -12588,7 +12588,7 @@ function newfrmFichaSSF()
     obj.rectangle194:setStrokeSize(1);
     obj.rectangle194:setName("rectangle194");
 
-    obj.label310 = gui.fromHandle(_obj_newObject("label"));
+    obj.label310 = GUI.fromHandle(_obj_newObject("label"));
     obj.label310:setParent(obj.layout128);
     obj.label310:setLeft(90);
     obj.label310:setTop(3);
@@ -12598,7 +12598,7 @@ function newfrmFichaSSF()
     obj.label310:setHorzTextAlign("center");
     obj.label310:setName("label310");
 
-    obj.comboBox151 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox151 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox151:setParent(obj.layout128);
     obj.comboBox151:setLeft(130);
     obj.comboBox151:setTop(0);
@@ -12609,13 +12609,13 @@ function newfrmFichaSSF()
     obj.comboBox151:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox151:setName("comboBox151");
 
-    obj.dataLink323 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink323 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink323:setParent(obj.layout128);
     obj.dataLink323:setField("atr_4_15");
     obj.dataLink323:setDefaultValue("");
     obj.dataLink323:setName("dataLink323");
 
-    obj.label311 = gui.fromHandle(_obj_newObject("label"));
+    obj.label311 = GUI.fromHandle(_obj_newObject("label"));
     obj.label311:setParent(obj.layout128);
     obj.label311:setLeft(180);
     obj.label311:setTop(3);
@@ -12625,7 +12625,7 @@ function newfrmFichaSSF()
     obj.label311:setHorzTextAlign("center");
     obj.label311:setName("label311");
 
-    obj.edit201 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit201 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit201:setParent(obj.layout128);
     obj.edit201:setLeft(190);
     obj.edit201:setTop(0);
@@ -12635,7 +12635,7 @@ function newfrmFichaSSF()
     obj.edit201:setField("bonus_4_15");
     obj.edit201:setName("edit201");
 
-    obj.comboBox152 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox152 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox152:setParent(obj.layout128);
     obj.comboBox152:setLeft(220);
     obj.comboBox152:setTop(0);
@@ -12646,13 +12646,13 @@ function newfrmFichaSSF()
     obj.comboBox152:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox152:setName("comboBox152");
 
-    obj.dataLink324 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink324 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink324:setParent(obj.layout128);
     obj.dataLink324:setField("dificuldade_4_15");
     obj.dataLink324:setDefaultValue("");
     obj.dataLink324:setName("dataLink324");
 
-    obj.rectangle195 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle195 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle195:setParent(obj.layout128);
     obj.rectangle195:setLeft(275);
     obj.rectangle195:setTop(0);
@@ -12663,7 +12663,7 @@ function newfrmFichaSSF()
     obj.rectangle195:setStrokeSize(1);
     obj.rectangle195:setName("rectangle195");
 
-    obj.label312 = gui.fromHandle(_obj_newObject("label"));
+    obj.label312 = GUI.fromHandle(_obj_newObject("label"));
     obj.label312:setParent(obj.layout128);
     obj.label312:setLeft(275);
     obj.label312:setTop(3);
@@ -12673,7 +12673,7 @@ function newfrmFichaSSF()
     obj.label312:setHorzTextAlign("center");
     obj.label312:setName("label312");
 
-    obj.button90 = gui.fromHandle(_obj_newObject("button"));
+    obj.button90 = GUI.fromHandle(_obj_newObject("button"));
     obj.button90:setParent(obj.layout128);
     obj.button90:setLeft(300);
     obj.button90:setTop(3);
@@ -12682,12 +12682,12 @@ function newfrmFichaSSF()
     obj.button90:setText("R");
     obj.button90:setName("button90");
 
-    obj.dataLink325 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink325 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink325:setParent(obj.layout128);
     obj.dataLink325:setFields({'atr_4_15', 'dificuldade_4_15', 'bonus_4_15', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink325:setName("dataLink325");
 
-    obj.layout129 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout129 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout129:setParent(obj.layout113);
     obj.layout129:setLeft(0);
     obj.layout129:setTop(405);
@@ -12695,7 +12695,7 @@ function newfrmFichaSSF()
     obj.layout129:setHeight(25);
     obj.layout129:setName("layout129");
 
-    obj.edit202 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit202 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit202:setParent(obj.layout129);
     obj.edit202:setLeft(5);
     obj.edit202:setTop(0);
@@ -12704,13 +12704,13 @@ function newfrmFichaSSF()
     obj.edit202:setField("pericia_4_16");
     obj.edit202:setName("edit202");
 
-    obj.dataLink326 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink326 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink326:setParent(obj.layout129);
     obj.dataLink326:setField("pericia_4_16");
     obj.dataLink326:setDefaultValue("");
     obj.dataLink326:setName("dataLink326");
 
-    obj.rectangle196 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle196 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle196:setParent(obj.layout129);
     obj.rectangle196:setLeft(90);
     obj.rectangle196:setTop(0);
@@ -12721,7 +12721,7 @@ function newfrmFichaSSF()
     obj.rectangle196:setStrokeSize(1);
     obj.rectangle196:setName("rectangle196");
 
-    obj.label313 = gui.fromHandle(_obj_newObject("label"));
+    obj.label313 = GUI.fromHandle(_obj_newObject("label"));
     obj.label313:setParent(obj.layout129);
     obj.label313:setLeft(90);
     obj.label313:setTop(3);
@@ -12731,7 +12731,7 @@ function newfrmFichaSSF()
     obj.label313:setHorzTextAlign("center");
     obj.label313:setName("label313");
 
-    obj.comboBox153 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox153 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox153:setParent(obj.layout129);
     obj.comboBox153:setLeft(130);
     obj.comboBox153:setTop(0);
@@ -12742,13 +12742,13 @@ function newfrmFichaSSF()
     obj.comboBox153:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox153:setName("comboBox153");
 
-    obj.dataLink327 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink327 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink327:setParent(obj.layout129);
     obj.dataLink327:setField("atr_4_16");
     obj.dataLink327:setDefaultValue("");
     obj.dataLink327:setName("dataLink327");
 
-    obj.label314 = gui.fromHandle(_obj_newObject("label"));
+    obj.label314 = GUI.fromHandle(_obj_newObject("label"));
     obj.label314:setParent(obj.layout129);
     obj.label314:setLeft(180);
     obj.label314:setTop(3);
@@ -12758,7 +12758,7 @@ function newfrmFichaSSF()
     obj.label314:setHorzTextAlign("center");
     obj.label314:setName("label314");
 
-    obj.edit203 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit203 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit203:setParent(obj.layout129);
     obj.edit203:setLeft(190);
     obj.edit203:setTop(0);
@@ -12768,7 +12768,7 @@ function newfrmFichaSSF()
     obj.edit203:setField("bonus_4_16");
     obj.edit203:setName("edit203");
 
-    obj.comboBox154 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox154 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox154:setParent(obj.layout129);
     obj.comboBox154:setLeft(220);
     obj.comboBox154:setTop(0);
@@ -12779,13 +12779,13 @@ function newfrmFichaSSF()
     obj.comboBox154:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox154:setName("comboBox154");
 
-    obj.dataLink328 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink328 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink328:setParent(obj.layout129);
     obj.dataLink328:setField("dificuldade_4_16");
     obj.dataLink328:setDefaultValue("");
     obj.dataLink328:setName("dataLink328");
 
-    obj.rectangle197 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle197 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle197:setParent(obj.layout129);
     obj.rectangle197:setLeft(275);
     obj.rectangle197:setTop(0);
@@ -12796,7 +12796,7 @@ function newfrmFichaSSF()
     obj.rectangle197:setStrokeSize(1);
     obj.rectangle197:setName("rectangle197");
 
-    obj.label315 = gui.fromHandle(_obj_newObject("label"));
+    obj.label315 = GUI.fromHandle(_obj_newObject("label"));
     obj.label315:setParent(obj.layout129);
     obj.label315:setLeft(275);
     obj.label315:setTop(3);
@@ -12806,7 +12806,7 @@ function newfrmFichaSSF()
     obj.label315:setHorzTextAlign("center");
     obj.label315:setName("label315");
 
-    obj.button91 = gui.fromHandle(_obj_newObject("button"));
+    obj.button91 = GUI.fromHandle(_obj_newObject("button"));
     obj.button91:setParent(obj.layout129);
     obj.button91:setLeft(300);
     obj.button91:setTop(3);
@@ -12815,12 +12815,12 @@ function newfrmFichaSSF()
     obj.button91:setText("R");
     obj.button91:setName("button91");
 
-    obj.dataLink329 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink329 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink329:setParent(obj.layout129);
     obj.dataLink329:setFields({'atr_4_16', 'dificuldade_4_16', 'bonus_4_16', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink329:setName("dataLink329");
 
-    obj.layout130 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout130 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout130:setParent(obj.layout113);
     obj.layout130:setLeft(0);
     obj.layout130:setTop(430);
@@ -12828,7 +12828,7 @@ function newfrmFichaSSF()
     obj.layout130:setHeight(25);
     obj.layout130:setName("layout130");
 
-    obj.edit204 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit204 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit204:setParent(obj.layout130);
     obj.edit204:setLeft(5);
     obj.edit204:setTop(0);
@@ -12837,13 +12837,13 @@ function newfrmFichaSSF()
     obj.edit204:setField("pericia_4_17");
     obj.edit204:setName("edit204");
 
-    obj.dataLink330 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink330 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink330:setParent(obj.layout130);
     obj.dataLink330:setField("pericia_4_17");
     obj.dataLink330:setDefaultValue("");
     obj.dataLink330:setName("dataLink330");
 
-    obj.rectangle198 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle198 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle198:setParent(obj.layout130);
     obj.rectangle198:setLeft(90);
     obj.rectangle198:setTop(0);
@@ -12854,7 +12854,7 @@ function newfrmFichaSSF()
     obj.rectangle198:setStrokeSize(1);
     obj.rectangle198:setName("rectangle198");
 
-    obj.label316 = gui.fromHandle(_obj_newObject("label"));
+    obj.label316 = GUI.fromHandle(_obj_newObject("label"));
     obj.label316:setParent(obj.layout130);
     obj.label316:setLeft(90);
     obj.label316:setTop(3);
@@ -12864,7 +12864,7 @@ function newfrmFichaSSF()
     obj.label316:setHorzTextAlign("center");
     obj.label316:setName("label316");
 
-    obj.comboBox155 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox155 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox155:setParent(obj.layout130);
     obj.comboBox155:setLeft(130);
     obj.comboBox155:setTop(0);
@@ -12875,13 +12875,13 @@ function newfrmFichaSSF()
     obj.comboBox155:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox155:setName("comboBox155");
 
-    obj.dataLink331 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink331 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink331:setParent(obj.layout130);
     obj.dataLink331:setField("atr_4_17");
     obj.dataLink331:setDefaultValue("");
     obj.dataLink331:setName("dataLink331");
 
-    obj.label317 = gui.fromHandle(_obj_newObject("label"));
+    obj.label317 = GUI.fromHandle(_obj_newObject("label"));
     obj.label317:setParent(obj.layout130);
     obj.label317:setLeft(180);
     obj.label317:setTop(3);
@@ -12891,7 +12891,7 @@ function newfrmFichaSSF()
     obj.label317:setHorzTextAlign("center");
     obj.label317:setName("label317");
 
-    obj.edit205 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit205 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit205:setParent(obj.layout130);
     obj.edit205:setLeft(190);
     obj.edit205:setTop(0);
@@ -12901,7 +12901,7 @@ function newfrmFichaSSF()
     obj.edit205:setField("bonus_4_17");
     obj.edit205:setName("edit205");
 
-    obj.comboBox156 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox156 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox156:setParent(obj.layout130);
     obj.comboBox156:setLeft(220);
     obj.comboBox156:setTop(0);
@@ -12912,13 +12912,13 @@ function newfrmFichaSSF()
     obj.comboBox156:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox156:setName("comboBox156");
 
-    obj.dataLink332 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink332 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink332:setParent(obj.layout130);
     obj.dataLink332:setField("dificuldade_4_17");
     obj.dataLink332:setDefaultValue("");
     obj.dataLink332:setName("dataLink332");
 
-    obj.rectangle199 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle199 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle199:setParent(obj.layout130);
     obj.rectangle199:setLeft(275);
     obj.rectangle199:setTop(0);
@@ -12929,7 +12929,7 @@ function newfrmFichaSSF()
     obj.rectangle199:setStrokeSize(1);
     obj.rectangle199:setName("rectangle199");
 
-    obj.label318 = gui.fromHandle(_obj_newObject("label"));
+    obj.label318 = GUI.fromHandle(_obj_newObject("label"));
     obj.label318:setParent(obj.layout130);
     obj.label318:setLeft(275);
     obj.label318:setTop(3);
@@ -12939,7 +12939,7 @@ function newfrmFichaSSF()
     obj.label318:setHorzTextAlign("center");
     obj.label318:setName("label318");
 
-    obj.button92 = gui.fromHandle(_obj_newObject("button"));
+    obj.button92 = GUI.fromHandle(_obj_newObject("button"));
     obj.button92:setParent(obj.layout130);
     obj.button92:setLeft(300);
     obj.button92:setTop(3);
@@ -12948,12 +12948,12 @@ function newfrmFichaSSF()
     obj.button92:setText("R");
     obj.button92:setName("button92");
 
-    obj.dataLink333 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink333 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink333:setParent(obj.layout130);
     obj.dataLink333:setFields({'atr_4_17', 'dificuldade_4_17', 'bonus_4_17', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink333:setName("dataLink333");
 
-    obj.layout131 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout131 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout131:setParent(obj.layout113);
     obj.layout131:setLeft(0);
     obj.layout131:setTop(455);
@@ -12961,7 +12961,7 @@ function newfrmFichaSSF()
     obj.layout131:setHeight(25);
     obj.layout131:setName("layout131");
 
-    obj.edit206 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit206 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit206:setParent(obj.layout131);
     obj.edit206:setLeft(5);
     obj.edit206:setTop(0);
@@ -12970,13 +12970,13 @@ function newfrmFichaSSF()
     obj.edit206:setField("pericia_4_18");
     obj.edit206:setName("edit206");
 
-    obj.dataLink334 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink334 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink334:setParent(obj.layout131);
     obj.dataLink334:setField("pericia_4_18");
     obj.dataLink334:setDefaultValue("");
     obj.dataLink334:setName("dataLink334");
 
-    obj.rectangle200 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle200 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle200:setParent(obj.layout131);
     obj.rectangle200:setLeft(90);
     obj.rectangle200:setTop(0);
@@ -12987,7 +12987,7 @@ function newfrmFichaSSF()
     obj.rectangle200:setStrokeSize(1);
     obj.rectangle200:setName("rectangle200");
 
-    obj.label319 = gui.fromHandle(_obj_newObject("label"));
+    obj.label319 = GUI.fromHandle(_obj_newObject("label"));
     obj.label319:setParent(obj.layout131);
     obj.label319:setLeft(90);
     obj.label319:setTop(3);
@@ -12997,7 +12997,7 @@ function newfrmFichaSSF()
     obj.label319:setHorzTextAlign("center");
     obj.label319:setName("label319");
 
-    obj.comboBox157 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox157 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox157:setParent(obj.layout131);
     obj.comboBox157:setLeft(130);
     obj.comboBox157:setTop(0);
@@ -13008,13 +13008,13 @@ function newfrmFichaSSF()
     obj.comboBox157:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox157:setName("comboBox157");
 
-    obj.dataLink335 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink335 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink335:setParent(obj.layout131);
     obj.dataLink335:setField("atr_4_18");
     obj.dataLink335:setDefaultValue("");
     obj.dataLink335:setName("dataLink335");
 
-    obj.label320 = gui.fromHandle(_obj_newObject("label"));
+    obj.label320 = GUI.fromHandle(_obj_newObject("label"));
     obj.label320:setParent(obj.layout131);
     obj.label320:setLeft(180);
     obj.label320:setTop(3);
@@ -13024,7 +13024,7 @@ function newfrmFichaSSF()
     obj.label320:setHorzTextAlign("center");
     obj.label320:setName("label320");
 
-    obj.edit207 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit207 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit207:setParent(obj.layout131);
     obj.edit207:setLeft(190);
     obj.edit207:setTop(0);
@@ -13034,7 +13034,7 @@ function newfrmFichaSSF()
     obj.edit207:setField("bonus_4_18");
     obj.edit207:setName("edit207");
 
-    obj.comboBox158 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox158 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox158:setParent(obj.layout131);
     obj.comboBox158:setLeft(220);
     obj.comboBox158:setTop(0);
@@ -13045,13 +13045,13 @@ function newfrmFichaSSF()
     obj.comboBox158:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox158:setName("comboBox158");
 
-    obj.dataLink336 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink336 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink336:setParent(obj.layout131);
     obj.dataLink336:setField("dificuldade_4_18");
     obj.dataLink336:setDefaultValue("");
     obj.dataLink336:setName("dataLink336");
 
-    obj.rectangle201 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle201 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle201:setParent(obj.layout131);
     obj.rectangle201:setLeft(275);
     obj.rectangle201:setTop(0);
@@ -13062,7 +13062,7 @@ function newfrmFichaSSF()
     obj.rectangle201:setStrokeSize(1);
     obj.rectangle201:setName("rectangle201");
 
-    obj.label321 = gui.fromHandle(_obj_newObject("label"));
+    obj.label321 = GUI.fromHandle(_obj_newObject("label"));
     obj.label321:setParent(obj.layout131);
     obj.label321:setLeft(275);
     obj.label321:setTop(3);
@@ -13072,7 +13072,7 @@ function newfrmFichaSSF()
     obj.label321:setHorzTextAlign("center");
     obj.label321:setName("label321");
 
-    obj.button93 = gui.fromHandle(_obj_newObject("button"));
+    obj.button93 = GUI.fromHandle(_obj_newObject("button"));
     obj.button93:setParent(obj.layout131);
     obj.button93:setLeft(300);
     obj.button93:setTop(3);
@@ -13081,12 +13081,12 @@ function newfrmFichaSSF()
     obj.button93:setText("R");
     obj.button93:setName("button93");
 
-    obj.dataLink337 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink337 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink337:setParent(obj.layout131);
     obj.dataLink337:setFields({'atr_4_18', 'dificuldade_4_18', 'bonus_4_18', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink337:setName("dataLink337");
 
-    obj.layout132 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout132 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout132:setParent(obj.layout113);
     obj.layout132:setLeft(0);
     obj.layout132:setTop(480);
@@ -13094,7 +13094,7 @@ function newfrmFichaSSF()
     obj.layout132:setHeight(25);
     obj.layout132:setName("layout132");
 
-    obj.edit208 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit208 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit208:setParent(obj.layout132);
     obj.edit208:setLeft(5);
     obj.edit208:setTop(0);
@@ -13103,13 +13103,13 @@ function newfrmFichaSSF()
     obj.edit208:setField("pericia_4_19");
     obj.edit208:setName("edit208");
 
-    obj.dataLink338 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink338 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink338:setParent(obj.layout132);
     obj.dataLink338:setField("pericia_4_19");
     obj.dataLink338:setDefaultValue("");
     obj.dataLink338:setName("dataLink338");
 
-    obj.rectangle202 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle202 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle202:setParent(obj.layout132);
     obj.rectangle202:setLeft(90);
     obj.rectangle202:setTop(0);
@@ -13120,7 +13120,7 @@ function newfrmFichaSSF()
     obj.rectangle202:setStrokeSize(1);
     obj.rectangle202:setName("rectangle202");
 
-    obj.label322 = gui.fromHandle(_obj_newObject("label"));
+    obj.label322 = GUI.fromHandle(_obj_newObject("label"));
     obj.label322:setParent(obj.layout132);
     obj.label322:setLeft(90);
     obj.label322:setTop(3);
@@ -13130,7 +13130,7 @@ function newfrmFichaSSF()
     obj.label322:setHorzTextAlign("center");
     obj.label322:setName("label322");
 
-    obj.comboBox159 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox159 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox159:setParent(obj.layout132);
     obj.comboBox159:setLeft(130);
     obj.comboBox159:setTop(0);
@@ -13141,13 +13141,13 @@ function newfrmFichaSSF()
     obj.comboBox159:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox159:setName("comboBox159");
 
-    obj.dataLink339 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink339 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink339:setParent(obj.layout132);
     obj.dataLink339:setField("atr_4_19");
     obj.dataLink339:setDefaultValue("");
     obj.dataLink339:setName("dataLink339");
 
-    obj.label323 = gui.fromHandle(_obj_newObject("label"));
+    obj.label323 = GUI.fromHandle(_obj_newObject("label"));
     obj.label323:setParent(obj.layout132);
     obj.label323:setLeft(180);
     obj.label323:setTop(3);
@@ -13157,7 +13157,7 @@ function newfrmFichaSSF()
     obj.label323:setHorzTextAlign("center");
     obj.label323:setName("label323");
 
-    obj.edit209 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit209 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit209:setParent(obj.layout132);
     obj.edit209:setLeft(190);
     obj.edit209:setTop(0);
@@ -13167,7 +13167,7 @@ function newfrmFichaSSF()
     obj.edit209:setField("bonus_4_19");
     obj.edit209:setName("edit209");
 
-    obj.comboBox160 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox160 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox160:setParent(obj.layout132);
     obj.comboBox160:setLeft(220);
     obj.comboBox160:setTop(0);
@@ -13178,13 +13178,13 @@ function newfrmFichaSSF()
     obj.comboBox160:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox160:setName("comboBox160");
 
-    obj.dataLink340 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink340 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink340:setParent(obj.layout132);
     obj.dataLink340:setField("dificuldade_4_19");
     obj.dataLink340:setDefaultValue("");
     obj.dataLink340:setName("dataLink340");
 
-    obj.rectangle203 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle203 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle203:setParent(obj.layout132);
     obj.rectangle203:setLeft(275);
     obj.rectangle203:setTop(0);
@@ -13195,7 +13195,7 @@ function newfrmFichaSSF()
     obj.rectangle203:setStrokeSize(1);
     obj.rectangle203:setName("rectangle203");
 
-    obj.label324 = gui.fromHandle(_obj_newObject("label"));
+    obj.label324 = GUI.fromHandle(_obj_newObject("label"));
     obj.label324:setParent(obj.layout132);
     obj.label324:setLeft(275);
     obj.label324:setTop(3);
@@ -13205,7 +13205,7 @@ function newfrmFichaSSF()
     obj.label324:setHorzTextAlign("center");
     obj.label324:setName("label324");
 
-    obj.button94 = gui.fromHandle(_obj_newObject("button"));
+    obj.button94 = GUI.fromHandle(_obj_newObject("button"));
     obj.button94:setParent(obj.layout132);
     obj.button94:setLeft(300);
     obj.button94:setTop(3);
@@ -13214,12 +13214,12 @@ function newfrmFichaSSF()
     obj.button94:setText("R");
     obj.button94:setName("button94");
 
-    obj.dataLink341 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink341 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink341:setParent(obj.layout132);
     obj.dataLink341:setFields({'atr_4_19', 'dificuldade_4_19', 'bonus_4_19', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink341:setName("dataLink341");
 
-    obj.layout133 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout133 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout133:setParent(obj.layout113);
     obj.layout133:setLeft(0);
     obj.layout133:setTop(505);
@@ -13227,7 +13227,7 @@ function newfrmFichaSSF()
     obj.layout133:setHeight(25);
     obj.layout133:setName("layout133");
 
-    obj.edit210 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit210 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit210:setParent(obj.layout133);
     obj.edit210:setLeft(5);
     obj.edit210:setTop(0);
@@ -13236,13 +13236,13 @@ function newfrmFichaSSF()
     obj.edit210:setField("pericia_4_20");
     obj.edit210:setName("edit210");
 
-    obj.dataLink342 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink342 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink342:setParent(obj.layout133);
     obj.dataLink342:setField("pericia_4_20");
     obj.dataLink342:setDefaultValue("");
     obj.dataLink342:setName("dataLink342");
 
-    obj.rectangle204 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle204 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle204:setParent(obj.layout133);
     obj.rectangle204:setLeft(90);
     obj.rectangle204:setTop(0);
@@ -13253,7 +13253,7 @@ function newfrmFichaSSF()
     obj.rectangle204:setStrokeSize(1);
     obj.rectangle204:setName("rectangle204");
 
-    obj.label325 = gui.fromHandle(_obj_newObject("label"));
+    obj.label325 = GUI.fromHandle(_obj_newObject("label"));
     obj.label325:setParent(obj.layout133);
     obj.label325:setLeft(90);
     obj.label325:setTop(3);
@@ -13263,7 +13263,7 @@ function newfrmFichaSSF()
     obj.label325:setHorzTextAlign("center");
     obj.label325:setName("label325");
 
-    obj.comboBox161 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox161 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox161:setParent(obj.layout133);
     obj.comboBox161:setLeft(130);
     obj.comboBox161:setTop(0);
@@ -13274,13 +13274,13 @@ function newfrmFichaSSF()
     obj.comboBox161:setValues({'ST', 'DX', 'IQ', 'HT', 'VT', 'PR'});
     obj.comboBox161:setName("comboBox161");
 
-    obj.dataLink343 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink343 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink343:setParent(obj.layout133);
     obj.dataLink343:setField("atr_4_20");
     obj.dataLink343:setDefaultValue("");
     obj.dataLink343:setName("dataLink343");
 
-    obj.label326 = gui.fromHandle(_obj_newObject("label"));
+    obj.label326 = GUI.fromHandle(_obj_newObject("label"));
     obj.label326:setParent(obj.layout133);
     obj.label326:setLeft(180);
     obj.label326:setTop(3);
@@ -13290,7 +13290,7 @@ function newfrmFichaSSF()
     obj.label326:setHorzTextAlign("center");
     obj.label326:setName("label326");
 
-    obj.edit211 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit211 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit211:setParent(obj.layout133);
     obj.edit211:setLeft(190);
     obj.edit211:setTop(0);
@@ -13300,7 +13300,7 @@ function newfrmFichaSSF()
     obj.edit211:setField("bonus_4_20");
     obj.edit211:setName("edit211");
 
-    obj.comboBox162 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox162 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox162:setParent(obj.layout133);
     obj.comboBox162:setLeft(220);
     obj.comboBox162:setTop(0);
@@ -13311,13 +13311,13 @@ function newfrmFichaSSF()
     obj.comboBox162:setValues({'F', 'M', 'D', 'MD'});
     obj.comboBox162:setName("comboBox162");
 
-    obj.dataLink344 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink344 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink344:setParent(obj.layout133);
     obj.dataLink344:setField("dificuldade_4_20");
     obj.dataLink344:setDefaultValue("");
     obj.dataLink344:setName("dataLink344");
 
-    obj.rectangle205 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle205 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle205:setParent(obj.layout133);
     obj.rectangle205:setLeft(275);
     obj.rectangle205:setTop(0);
@@ -13328,7 +13328,7 @@ function newfrmFichaSSF()
     obj.rectangle205:setStrokeSize(1);
     obj.rectangle205:setName("rectangle205");
 
-    obj.label327 = gui.fromHandle(_obj_newObject("label"));
+    obj.label327 = GUI.fromHandle(_obj_newObject("label"));
     obj.label327:setParent(obj.layout133);
     obj.label327:setLeft(275);
     obj.label327:setTop(3);
@@ -13338,7 +13338,7 @@ function newfrmFichaSSF()
     obj.label327:setHorzTextAlign("center");
     obj.label327:setName("label327");
 
-    obj.button95 = gui.fromHandle(_obj_newObject("button"));
+    obj.button95 = GUI.fromHandle(_obj_newObject("button"));
     obj.button95:setParent(obj.layout133);
     obj.button95:setLeft(300);
     obj.button95:setTop(3);
@@ -13347,12 +13347,12 @@ function newfrmFichaSSF()
     obj.button95:setText("R");
     obj.button95:setName("button95");
 
-    obj.dataLink345 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink345 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink345:setParent(obj.layout133);
     obj.dataLink345:setFields({'atr_4_20', 'dificuldade_4_20', 'bonus_4_20', 'total_st', 'total_dx', 'total_iq', 'total_ht', 'total_von', 'total_per'});
     obj.dataLink345:setName("dataLink345");
 
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
     obj.image3:setParent(obj.scrollBox2);
     obj.image3:setLeft(0);
     obj.image3:setTop(0);
@@ -13362,23 +13362,23 @@ function newfrmFichaSSF()
     obj.image3:setSRC("https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20SSF%20releases/imagens/ABA0.png");
     obj.image3:setName("image3");
 
-    obj.tab3 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab3 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab3:setParent(obj.tabControl1);
     obj.tab3:setTitle("Combate");
     obj.tab3:setName("tab3");
 
-    obj.frmSSF3 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmSSF3 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmSSF3:setParent(obj.tab3);
     obj.frmSSF3:setName("frmSSF3");
     obj.frmSSF3:setAlign("client");
     obj.frmSSF3:setTheme("dark");
 
-    obj.scrollBox3 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox3 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox3:setParent(obj.frmSSF3);
     obj.scrollBox3:setAlign("client");
     obj.scrollBox3:setName("scrollBox3");
 
-    obj.layout134 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout134 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout134:setParent(obj.scrollBox3);
     obj.layout134:setLeft(0);
     obj.layout134:setTop(0);
@@ -13386,7 +13386,7 @@ function newfrmFichaSSF()
     obj.layout134:setHeight(615);
     obj.layout134:setName("layout134");
 
-    obj.rectangle206 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle206 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle206:setParent(obj.layout134);
     obj.rectangle206:setAlign("client");
     obj.rectangle206:setColor("black");
@@ -13395,7 +13395,7 @@ function newfrmFichaSSF()
     obj.rectangle206:setCornerType("round");
     obj.rectangle206:setName("rectangle206");
 
-    obj.label328 = gui.fromHandle(_obj_newObject("label"));
+    obj.label328 = GUI.fromHandle(_obj_newObject("label"));
     obj.label328:setParent(obj.layout134);
     obj.label328:setLeft(0);
     obj.label328:setTop(5);
@@ -13405,7 +13405,7 @@ function newfrmFichaSSF()
     obj.label328:setHorzTextAlign("center");
     obj.label328:setName("label328");
 
-    obj.button96 = gui.fromHandle(_obj_newObject("button"));
+    obj.button96 = GUI.fromHandle(_obj_newObject("button"));
     obj.button96:setParent(obj.layout134);
     obj.button96:setText("+");
     obj.button96:setLeft(185);
@@ -13414,7 +13414,7 @@ function newfrmFichaSSF()
     obj.button96:setHeight(20);
     obj.button96:setName("button96");
 
-    obj.rectangle207 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle207 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle207:setParent(obj.layout134);
     obj.rectangle207:setLeft(5);
     obj.rectangle207:setTop(30);
@@ -13423,7 +13423,7 @@ function newfrmFichaSSF()
     obj.rectangle207:setColor("#101010");
     obj.rectangle207:setName("rectangle207");
 
-    obj.rclListaDasTecnicas = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclListaDasTecnicas = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDasTecnicas:setParent(obj.layout134);
     obj.rclListaDasTecnicas:setName("rclListaDasTecnicas");
     obj.rclListaDasTecnicas:setField("listaTecnicas");
@@ -13436,7 +13436,7 @@ function newfrmFichaSSF()
     obj.rclListaDasTecnicas:setLayout("vertical");
     obj.rclListaDasTecnicas:setMinQt(1);
 
-    obj.boxDetalhesDasTecnicas = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.boxDetalhesDasTecnicas = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.boxDetalhesDasTecnicas:setParent(obj.scrollBox3);
     obj.boxDetalhesDasTecnicas:setName("boxDetalhesDasTecnicas");
     obj.boxDetalhesDasTecnicas:setVisible(false);
@@ -13445,7 +13445,7 @@ function newfrmFichaSSF()
     obj.boxDetalhesDasTecnicas:setWidth(400);
     obj.boxDetalhesDasTecnicas:setHeight(615);
 
-    obj.rectangle208 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle208 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle208:setParent(obj.boxDetalhesDasTecnicas);
     obj.rectangle208:setAlign("client");
     obj.rectangle208:setColor("black");
@@ -13485,7 +13485,7 @@ function newfrmFichaSSF()
 			
 
 
-    obj.layout135 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout135 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout135:setParent(obj.boxDetalhesDasTecnicas);
     obj.layout135:setLeft(0);
     obj.layout135:setTop(5);
@@ -13493,7 +13493,7 @@ function newfrmFichaSSF()
     obj.layout135:setHeight(25);
     obj.layout135:setName("layout135");
 
-    obj.label329 = gui.fromHandle(_obj_newObject("label"));
+    obj.label329 = GUI.fromHandle(_obj_newObject("label"));
     obj.label329:setParent(obj.layout135);
     obj.label329:setLeft(5);
     obj.label329:setTop(5);
@@ -13502,7 +13502,7 @@ function newfrmFichaSSF()
     obj.label329:setText("Nome");
     obj.label329:setName("label329");
 
-    obj.edit212 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit212 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit212:setParent(obj.layout135);
     obj.edit212:setLeft(55);
     obj.edit212:setTop(0);
@@ -13511,7 +13511,7 @@ function newfrmFichaSSF()
     obj.edit212:setField("nome_tecnica");
     obj.edit212:setName("edit212");
 
-    obj.layout136 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout136 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout136:setParent(obj.boxDetalhesDasTecnicas);
     obj.layout136:setLeft(200);
     obj.layout136:setTop(5);
@@ -13519,7 +13519,7 @@ function newfrmFichaSSF()
     obj.layout136:setHeight(25);
     obj.layout136:setName("layout136");
 
-    obj.label330 = gui.fromHandle(_obj_newObject("label"));
+    obj.label330 = GUI.fromHandle(_obj_newObject("label"));
     obj.label330:setParent(obj.layout136);
     obj.label330:setLeft(5);
     obj.label330:setTop(5);
@@ -13528,7 +13528,7 @@ function newfrmFichaSSF()
     obj.label330:setText("Nível");
     obj.label330:setName("label330");
 
-    obj.edit213 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit213 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit213:setParent(obj.layout136);
     obj.edit213:setLeft(55);
     obj.edit213:setTop(0);
@@ -13537,7 +13537,7 @@ function newfrmFichaSSF()
     obj.edit213:setField("nivel_tecnica");
     obj.edit213:setName("edit213");
 
-    obj.layout137 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout137 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout137:setParent(obj.boxDetalhesDasTecnicas);
     obj.layout137:setLeft(0);
     obj.layout137:setTop(30);
@@ -13545,7 +13545,7 @@ function newfrmFichaSSF()
     obj.layout137:setHeight(25);
     obj.layout137:setName("layout137");
 
-    obj.label331 = gui.fromHandle(_obj_newObject("label"));
+    obj.label331 = GUI.fromHandle(_obj_newObject("label"));
     obj.label331:setParent(obj.layout137);
     obj.label331:setLeft(5);
     obj.label331:setTop(5);
@@ -13554,7 +13554,7 @@ function newfrmFichaSSF()
     obj.label331:setText("Custo");
     obj.label331:setName("label331");
 
-    obj.rectangle209 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle209 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle209:setParent(obj.layout137);
     obj.rectangle209:setLeft(55);
     obj.rectangle209:setTop(0);
@@ -13565,7 +13565,7 @@ function newfrmFichaSSF()
     obj.rectangle209:setStrokeSize(1);
     obj.rectangle209:setName("rectangle209");
 
-    obj.label332 = gui.fromHandle(_obj_newObject("label"));
+    obj.label332 = GUI.fromHandle(_obj_newObject("label"));
     obj.label332:setParent(obj.layout137);
     obj.label332:setLeft(55);
     obj.label332:setTop(3);
@@ -13575,7 +13575,7 @@ function newfrmFichaSSF()
     obj.label332:setHorzTextAlign("center");
     obj.label332:setName("label332");
 
-    obj.layout138 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout138 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout138:setParent(obj.boxDetalhesDasTecnicas);
     obj.layout138:setLeft(200);
     obj.layout138:setTop(30);
@@ -13583,7 +13583,7 @@ function newfrmFichaSSF()
     obj.layout138:setHeight(25);
     obj.layout138:setName("layout138");
 
-    obj.label333 = gui.fromHandle(_obj_newObject("label"));
+    obj.label333 = GUI.fromHandle(_obj_newObject("label"));
     obj.label333:setParent(obj.layout138);
     obj.label333:setLeft(5);
     obj.label333:setTop(5);
@@ -13592,7 +13592,7 @@ function newfrmFichaSSF()
     obj.label333:setText("Fadiga");
     obj.label333:setName("label333");
 
-    obj.edit214 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit214 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit214:setParent(obj.layout138);
     obj.edit214:setLeft(55);
     obj.edit214:setTop(0);
@@ -13601,7 +13601,7 @@ function newfrmFichaSSF()
     obj.edit214:setField("fadiga_tecnica");
     obj.edit214:setName("edit214");
 
-    obj.layout139 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout139 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout139:setParent(obj.boxDetalhesDasTecnicas);
     obj.layout139:setLeft(0);
     obj.layout139:setTop(55);
@@ -13609,7 +13609,7 @@ function newfrmFichaSSF()
     obj.layout139:setHeight(25);
     obj.layout139:setName("layout139");
 
-    obj.button97 = gui.fromHandle(_obj_newObject("button"));
+    obj.button97 = GUI.fromHandle(_obj_newObject("button"));
     obj.button97:setParent(obj.layout139);
     obj.button97:setLeft(5);
     obj.button97:setTop(2);
@@ -13618,7 +13618,7 @@ function newfrmFichaSSF()
     obj.button97:setText("Dados");
     obj.button97:setName("button97");
 
-    obj.edit215 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit215 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit215:setParent(obj.layout139);
     obj.edit215:setLeft(55);
     obj.edit215:setTop(0);
@@ -13627,7 +13627,7 @@ function newfrmFichaSSF()
     obj.edit215:setField("dados_tecnica");
     obj.edit215:setName("edit215");
 
-    obj.layout140 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout140 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout140:setParent(obj.boxDetalhesDasTecnicas);
     obj.layout140:setLeft(200);
     obj.layout140:setTop(55);
@@ -13635,7 +13635,7 @@ function newfrmFichaSSF()
     obj.layout140:setHeight(25);
     obj.layout140:setName("layout140");
 
-    obj.label334 = gui.fromHandle(_obj_newObject("label"));
+    obj.label334 = GUI.fromHandle(_obj_newObject("label"));
     obj.label334:setParent(obj.layout140);
     obj.label334:setLeft(5);
     obj.label334:setTop(5);
@@ -13644,7 +13644,7 @@ function newfrmFichaSSF()
     obj.label334:setText("Tipo");
     obj.label334:setName("label334");
 
-    obj.comboBox163 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox163 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox163:setParent(obj.layout140);
     obj.comboBox163:setLeft(55);
     obj.comboBox163:setTop(0);
@@ -13655,12 +13655,12 @@ function newfrmFichaSSF()
     obj.comboBox163:setValues({'0', '75', '100'});
     obj.comboBox163:setName("comboBox163");
 
-    obj.dataLink346 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink346 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink346:setParent(obj.layout140);
     obj.dataLink346:setField("tipo_tecnica");
     obj.dataLink346:setName("dataLink346");
 
-    obj.textEditor3 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor3:setParent(obj.boxDetalhesDasTecnicas);
     obj.textEditor3:setLeft(5);
     obj.textEditor3:setTop(80);
@@ -13669,7 +13669,7 @@ function newfrmFichaSSF()
     obj.textEditor3:setField("descricao_tecnica");
     obj.textEditor3:setName("textEditor3");
 
-    obj.button98 = gui.fromHandle(_obj_newObject("button"));
+    obj.button98 = GUI.fromHandle(_obj_newObject("button"));
     obj.button98:setParent(obj.boxDetalhesDasTecnicas);
     obj.button98:setLeft(160);
     obj.button98:setTop(295);
@@ -13678,7 +13678,7 @@ function newfrmFichaSSF()
     obj.button98:setText("EFEITOS");
     obj.button98:setName("button98");
 
-    obj.layout141 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout141 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout141:setParent(obj.boxDetalhesDasTecnicas);
     obj.layout141:setLeft(5);
     obj.layout141:setTop(315);
@@ -13686,7 +13686,7 @@ function newfrmFichaSSF()
     obj.layout141:setHeight(295);
     obj.layout141:setName("layout141");
 
-    obj.label335 = gui.fromHandle(_obj_newObject("label"));
+    obj.label335 = GUI.fromHandle(_obj_newObject("label"));
     obj.label335:setParent(obj.layout141);
     obj.label335:setLeft(0);
     obj.label335:setTop(5);
@@ -13696,7 +13696,7 @@ function newfrmFichaSSF()
     obj.label335:setHorzTextAlign("center");
     obj.label335:setName("label335");
 
-    obj.button99 = gui.fromHandle(_obj_newObject("button"));
+    obj.button99 = GUI.fromHandle(_obj_newObject("button"));
     obj.button99:setParent(obj.layout141);
     obj.button99:setText("+");
     obj.button99:setLeft(165);
@@ -13705,7 +13705,7 @@ function newfrmFichaSSF()
     obj.button99:setHeight(20);
     obj.button99:setName("button99");
 
-    obj.label336 = gui.fromHandle(_obj_newObject("label"));
+    obj.label336 = GUI.fromHandle(_obj_newObject("label"));
     obj.label336:setParent(obj.layout141);
     obj.label336:setLeft(25);
     obj.label336:setTop(30);
@@ -13714,7 +13714,7 @@ function newfrmFichaSSF()
     obj.label336:setText("  E    Nome               Custo");
     obj.label336:setName("label336");
 
-    obj.rectangle210 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle210 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle210:setParent(obj.layout141);
     obj.rectangle210:setLeft(0);
     obj.rectangle210:setTop(50);
@@ -13723,7 +13723,7 @@ function newfrmFichaSSF()
     obj.rectangle210:setColor("#101010");
     obj.rectangle210:setName("rectangle210");
 
-    obj.rclListaDosEfeitosPositivos = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclListaDosEfeitosPositivos = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDosEfeitosPositivos:setParent(obj.layout141);
     obj.rclListaDosEfeitosPositivos:setName("rclListaDosEfeitosPositivos");
     obj.rclListaDosEfeitosPositivos:setField("listaDosEfeitosPositivos");
@@ -13736,7 +13736,7 @@ function newfrmFichaSSF()
     obj.rclListaDosEfeitosPositivos:setMinQt(1);
     obj.rclListaDosEfeitosPositivos:setSelectable(true);
 
-    obj.layout142 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout142 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout142:setParent(obj.boxDetalhesDasTecnicas);
     obj.layout142:setLeft(205);
     obj.layout142:setTop(315);
@@ -13744,7 +13744,7 @@ function newfrmFichaSSF()
     obj.layout142:setHeight(295);
     obj.layout142:setName("layout142");
 
-    obj.label337 = gui.fromHandle(_obj_newObject("label"));
+    obj.label337 = GUI.fromHandle(_obj_newObject("label"));
     obj.label337:setParent(obj.layout142);
     obj.label337:setLeft(0);
     obj.label337:setTop(5);
@@ -13754,7 +13754,7 @@ function newfrmFichaSSF()
     obj.label337:setHorzTextAlign("center");
     obj.label337:setName("label337");
 
-    obj.button100 = gui.fromHandle(_obj_newObject("button"));
+    obj.button100 = GUI.fromHandle(_obj_newObject("button"));
     obj.button100:setParent(obj.layout142);
     obj.button100:setText("+");
     obj.button100:setLeft(165);
@@ -13763,7 +13763,7 @@ function newfrmFichaSSF()
     obj.button100:setHeight(20);
     obj.button100:setName("button100");
 
-    obj.label338 = gui.fromHandle(_obj_newObject("label"));
+    obj.label338 = GUI.fromHandle(_obj_newObject("label"));
     obj.label338:setParent(obj.layout142);
     obj.label338:setLeft(25);
     obj.label338:setTop(30);
@@ -13772,7 +13772,7 @@ function newfrmFichaSSF()
     obj.label338:setText("  E    Nome               Custo");
     obj.label338:setName("label338");
 
-    obj.rectangle211 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle211 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle211:setParent(obj.layout142);
     obj.rectangle211:setLeft(0);
     obj.rectangle211:setTop(50);
@@ -13781,7 +13781,7 @@ function newfrmFichaSSF()
     obj.rectangle211:setColor("#101010");
     obj.rectangle211:setName("rectangle211");
 
-    obj.rclListaDosEfeitosNegativos = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclListaDosEfeitosNegativos = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDosEfeitosNegativos:setParent(obj.layout142);
     obj.rclListaDosEfeitosNegativos:setName("rclListaDosEfeitosNegativos");
     obj.rclListaDosEfeitosNegativos:setField("listaDosEfeitosNegativos");
@@ -13793,7 +13793,7 @@ function newfrmFichaSSF()
     obj.rclListaDosEfeitosNegativos:setLayout("vertical");
     obj.rclListaDosEfeitosNegativos:setMinQt(1);
 
-    obj.rectangle212 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle212 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle212:setParent(obj.scrollBox3);
     obj.rectangle212:setLeft(630);
     obj.rectangle212:setTop(0);
@@ -13805,7 +13805,7 @@ function newfrmFichaSSF()
     obj.rectangle212:setCornerType("innerLine");
     obj.rectangle212:setName("rectangle212");
 
-    obj.image4 = gui.fromHandle(_obj_newObject("image"));
+    obj.image4 = GUI.fromHandle(_obj_newObject("image"));
     obj.image4:setParent(obj.scrollBox3);
     obj.image4:setLeft(630);
     obj.image4:setTop(0);
@@ -13816,7 +13816,7 @@ function newfrmFichaSSF()
     obj.image4:setStyle("stretch");
     obj.image4:setName("image4");
 
-    obj.layout143 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout143 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout143:setParent(obj.scrollBox3);
     obj.layout143:setLeft(630);
     obj.layout143:setTop(310);
@@ -13824,7 +13824,7 @@ function newfrmFichaSSF()
     obj.layout143:setHeight(300);
     obj.layout143:setName("layout143");
 
-    obj.rectangle213 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle213 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle213:setParent(obj.layout143);
     obj.rectangle213:setAlign("client");
     obj.rectangle213:setColor("black");
@@ -13833,7 +13833,7 @@ function newfrmFichaSSF()
     obj.rectangle213:setCornerType("round");
     obj.rectangle213:setName("rectangle213");
 
-    obj.label339 = gui.fromHandle(_obj_newObject("label"));
+    obj.label339 = GUI.fromHandle(_obj_newObject("label"));
     obj.label339:setParent(obj.layout143);
     obj.label339:setLeft(0);
     obj.label339:setTop(5);
@@ -13843,7 +13843,7 @@ function newfrmFichaSSF()
     obj.label339:setHorzTextAlign("center");
     obj.label339:setName("label339");
 
-    obj.label340 = gui.fromHandle(_obj_newObject("label"));
+    obj.label340 = GUI.fromHandle(_obj_newObject("label"));
     obj.label340:setParent(obj.layout143);
     obj.label340:setLeft(0);
     obj.label340:setTop(30);
@@ -13852,7 +13852,7 @@ function newfrmFichaSSF()
     obj.label340:setText("          TIPO                       MODIFICADORES");
     obj.label340:setName("label340");
 
-    obj.comboBox164 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox164 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox164:setParent(obj.layout143);
     obj.comboBox164:setLeft(5);
     obj.comboBox164:setTop(55);
@@ -13863,12 +13863,12 @@ function newfrmFichaSSF()
     obj.comboBox164:setValues({'1', '2', '3'});
     obj.comboBox164:setName("comboBox164");
 
-    obj.dataLink347 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink347 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink347:setParent(obj.layout143);
     obj.dataLink347:setField("tipo_armadura");
     obj.dataLink347:setName("dataLink347");
 
-    obj.rectangle214 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle214 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle214:setParent(obj.layout143);
     obj.rectangle214:setLeft(5);
     obj.rectangle214:setTop(80);
@@ -13879,7 +13879,7 @@ function newfrmFichaSSF()
     obj.rectangle214:setStrokeSize(1);
     obj.rectangle214:setName("rectangle214");
 
-    obj.label341 = gui.fromHandle(_obj_newObject("label"));
+    obj.label341 = GUI.fromHandle(_obj_newObject("label"));
     obj.label341:setParent(obj.layout143);
     obj.label341:setLeft(5);
     obj.label341:setTop(80);
@@ -13889,7 +13889,7 @@ function newfrmFichaSSF()
     obj.label341:setHorzTextAlign("center");
     obj.label341:setName("label341");
 
-    obj.rectangle215 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle215 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle215:setParent(obj.layout143);
     obj.rectangle215:setLeft(5);
     obj.rectangle215:setTop(110);
@@ -13900,7 +13900,7 @@ function newfrmFichaSSF()
     obj.rectangle215:setStrokeSize(1);
     obj.rectangle215:setName("rectangle215");
 
-    obj.label342 = gui.fromHandle(_obj_newObject("label"));
+    obj.label342 = GUI.fromHandle(_obj_newObject("label"));
     obj.label342:setParent(obj.layout143);
     obj.label342:setLeft(5);
     obj.label342:setTop(110);
@@ -13910,7 +13910,7 @@ function newfrmFichaSSF()
     obj.label342:setHorzTextAlign("center");
     obj.label342:setName("label342");
 
-    obj.rectangle216 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle216 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle216:setParent(obj.layout143);
     obj.rectangle216:setLeft(5);
     obj.rectangle216:setTop(140);
@@ -13921,7 +13921,7 @@ function newfrmFichaSSF()
     obj.rectangle216:setStrokeSize(1);
     obj.rectangle216:setName("rectangle216");
 
-    obj.label343 = gui.fromHandle(_obj_newObject("label"));
+    obj.label343 = GUI.fromHandle(_obj_newObject("label"));
     obj.label343:setParent(obj.layout143);
     obj.label343:setLeft(5);
     obj.label343:setTop(140);
@@ -13931,7 +13931,7 @@ function newfrmFichaSSF()
     obj.label343:setHorzTextAlign("center");
     obj.label343:setName("label343");
 
-    obj.rectangle217 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle217 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle217:setParent(obj.layout143);
     obj.rectangle217:setLeft(5);
     obj.rectangle217:setTop(170);
@@ -13942,7 +13942,7 @@ function newfrmFichaSSF()
     obj.rectangle217:setStrokeSize(1);
     obj.rectangle217:setName("rectangle217");
 
-    obj.label344 = gui.fromHandle(_obj_newObject("label"));
+    obj.label344 = GUI.fromHandle(_obj_newObject("label"));
     obj.label344:setParent(obj.layout143);
     obj.label344:setLeft(5);
     obj.label344:setTop(170);
@@ -13952,7 +13952,7 @@ function newfrmFichaSSF()
     obj.label344:setHorzTextAlign("center");
     obj.label344:setName("label344");
 
-    obj.rectangle218 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle218 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle218:setParent(obj.layout143);
     obj.rectangle218:setLeft(5);
     obj.rectangle218:setTop(200);
@@ -13963,7 +13963,7 @@ function newfrmFichaSSF()
     obj.rectangle218:setStrokeSize(1);
     obj.rectangle218:setName("rectangle218");
 
-    obj.label345 = gui.fromHandle(_obj_newObject("label"));
+    obj.label345 = GUI.fromHandle(_obj_newObject("label"));
     obj.label345:setParent(obj.layout143);
     obj.label345:setLeft(5);
     obj.label345:setTop(200);
@@ -13973,7 +13973,7 @@ function newfrmFichaSSF()
     obj.label345:setHorzTextAlign("center");
     obj.label345:setName("label345");
 
-    obj.rectangle219 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle219 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle219:setParent(obj.layout143);
     obj.rectangle219:setLeft(5);
     obj.rectangle219:setTop(230);
@@ -13984,7 +13984,7 @@ function newfrmFichaSSF()
     obj.rectangle219:setStrokeSize(1);
     obj.rectangle219:setName("rectangle219");
 
-    obj.label346 = gui.fromHandle(_obj_newObject("label"));
+    obj.label346 = GUI.fromHandle(_obj_newObject("label"));
     obj.label346:setParent(obj.layout143);
     obj.label346:setLeft(5);
     obj.label346:setTop(230);
@@ -13994,7 +13994,7 @@ function newfrmFichaSSF()
     obj.label346:setHorzTextAlign("center");
     obj.label346:setName("label346");
 
-    obj.rectangle220 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle220 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle220:setParent(obj.layout143);
     obj.rectangle220:setLeft(110);
     obj.rectangle220:setTop(80);
@@ -14005,7 +14005,7 @@ function newfrmFichaSSF()
     obj.rectangle220:setStrokeSize(1);
     obj.rectangle220:setName("rectangle220");
 
-    obj.label347 = gui.fromHandle(_obj_newObject("label"));
+    obj.label347 = GUI.fromHandle(_obj_newObject("label"));
     obj.label347:setParent(obj.layout143);
     obj.label347:setLeft(110);
     obj.label347:setTop(80);
@@ -14015,7 +14015,7 @@ function newfrmFichaSSF()
     obj.label347:setHorzTextAlign("center");
     obj.label347:setName("label347");
 
-    obj.rectangle221 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle221 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle221:setParent(obj.layout143);
     obj.rectangle221:setLeft(110);
     obj.rectangle221:setTop(110);
@@ -14026,7 +14026,7 @@ function newfrmFichaSSF()
     obj.rectangle221:setStrokeSize(1);
     obj.rectangle221:setName("rectangle221");
 
-    obj.label348 = gui.fromHandle(_obj_newObject("label"));
+    obj.label348 = GUI.fromHandle(_obj_newObject("label"));
     obj.label348:setParent(obj.layout143);
     obj.label348:setLeft(110);
     obj.label348:setTop(110);
@@ -14036,7 +14036,7 @@ function newfrmFichaSSF()
     obj.label348:setHorzTextAlign("center");
     obj.label348:setName("label348");
 
-    obj.rectangle222 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle222 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle222:setParent(obj.layout143);
     obj.rectangle222:setLeft(110);
     obj.rectangle222:setTop(140);
@@ -14047,7 +14047,7 @@ function newfrmFichaSSF()
     obj.rectangle222:setStrokeSize(1);
     obj.rectangle222:setName("rectangle222");
 
-    obj.label349 = gui.fromHandle(_obj_newObject("label"));
+    obj.label349 = GUI.fromHandle(_obj_newObject("label"));
     obj.label349:setParent(obj.layout143);
     obj.label349:setLeft(110);
     obj.label349:setTop(140);
@@ -14057,7 +14057,7 @@ function newfrmFichaSSF()
     obj.label349:setHorzTextAlign("center");
     obj.label349:setName("label349");
 
-    obj.rectangle223 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle223 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle223:setParent(obj.layout143);
     obj.rectangle223:setLeft(110);
     obj.rectangle223:setTop(170);
@@ -14068,7 +14068,7 @@ function newfrmFichaSSF()
     obj.rectangle223:setStrokeSize(1);
     obj.rectangle223:setName("rectangle223");
 
-    obj.label350 = gui.fromHandle(_obj_newObject("label"));
+    obj.label350 = GUI.fromHandle(_obj_newObject("label"));
     obj.label350:setParent(obj.layout143);
     obj.label350:setLeft(110);
     obj.label350:setTop(170);
@@ -14078,7 +14078,7 @@ function newfrmFichaSSF()
     obj.label350:setHorzTextAlign("center");
     obj.label350:setName("label350");
 
-    obj.rectangle224 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle224 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle224:setParent(obj.layout143);
     obj.rectangle224:setLeft(110);
     obj.rectangle224:setTop(200);
@@ -14089,7 +14089,7 @@ function newfrmFichaSSF()
     obj.rectangle224:setStrokeSize(1);
     obj.rectangle224:setName("rectangle224");
 
-    obj.label351 = gui.fromHandle(_obj_newObject("label"));
+    obj.label351 = GUI.fromHandle(_obj_newObject("label"));
     obj.label351:setParent(obj.layout143);
     obj.label351:setLeft(110);
     obj.label351:setTop(200);
@@ -14099,7 +14099,7 @@ function newfrmFichaSSF()
     obj.label351:setHorzTextAlign("center");
     obj.label351:setName("label351");
 
-    obj.rectangle225 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle225 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle225:setParent(obj.layout143);
     obj.rectangle225:setLeft(110);
     obj.rectangle225:setTop(230);
@@ -14110,7 +14110,7 @@ function newfrmFichaSSF()
     obj.rectangle225:setStrokeSize(1);
     obj.rectangle225:setName("rectangle225");
 
-    obj.label352 = gui.fromHandle(_obj_newObject("label"));
+    obj.label352 = GUI.fromHandle(_obj_newObject("label"));
     obj.label352:setParent(obj.layout143);
     obj.label352:setLeft(110);
     obj.label352:setTop(230);
@@ -14120,7 +14120,7 @@ function newfrmFichaSSF()
     obj.label352:setHorzTextAlign("center");
     obj.label352:setName("label352");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.layout143);
     obj.checkBox1:setLeft(10);
     obj.checkBox1:setTop(255);
@@ -14128,7 +14128,7 @@ function newfrmFichaSSF()
     obj.checkBox1:setField("armadura_equipada");
     obj.checkBox1:setName("checkBox1");
 
-    obj.layout144 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout144 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout144:setParent(obj.scrollBox3);
     obj.layout144:setLeft(940);
     obj.layout144:setTop(0);
@@ -14136,7 +14136,7 @@ function newfrmFichaSSF()
     obj.layout144:setHeight(135);
     obj.layout144:setName("layout144");
 
-    obj.rectangle226 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle226 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle226:setParent(obj.layout144);
     obj.rectangle226:setAlign("client");
     obj.rectangle226:setColor("black");
@@ -14145,7 +14145,7 @@ function newfrmFichaSSF()
     obj.rectangle226:setCornerType("round");
     obj.rectangle226:setName("rectangle226");
 
-    obj.layout145 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout145 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout145:setParent(obj.layout144);
     obj.layout145:setLeft(5);
     obj.layout145:setTop(5);
@@ -14153,7 +14153,7 @@ function newfrmFichaSSF()
     obj.layout145:setHeight(25);
     obj.layout145:setName("layout145");
 
-    obj.label353 = gui.fromHandle(_obj_newObject("label"));
+    obj.label353 = GUI.fromHandle(_obj_newObject("label"));
     obj.label353:setParent(obj.layout145);
     obj.label353:setLeft(5);
     obj.label353:setTop(5);
@@ -14162,7 +14162,7 @@ function newfrmFichaSSF()
     obj.label353:setText("Nome");
     obj.label353:setName("label353");
 
-    obj.edit216 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit216 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit216:setParent(obj.layout145);
     obj.edit216:setLeft(55);
     obj.edit216:setTop(0);
@@ -14171,7 +14171,7 @@ function newfrmFichaSSF()
     obj.edit216:setField("nome_armadura");
     obj.edit216:setName("edit216");
 
-    obj.layout146 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout146 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout146:setParent(obj.layout144);
     obj.layout146:setLeft(5);
     obj.layout146:setTop(30);
@@ -14179,7 +14179,7 @@ function newfrmFichaSSF()
     obj.layout146:setHeight(25);
     obj.layout146:setName("layout146");
 
-    obj.label354 = gui.fromHandle(_obj_newObject("label"));
+    obj.label354 = GUI.fromHandle(_obj_newObject("label"));
     obj.label354:setParent(obj.layout146);
     obj.label354:setLeft(5);
     obj.label354:setTop(5);
@@ -14188,7 +14188,7 @@ function newfrmFichaSSF()
     obj.label354:setText("RD Bas.");
     obj.label354:setName("label354");
 
-    obj.edit217 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit217 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit217:setParent(obj.layout146);
     obj.edit217:setLeft(55);
     obj.edit217:setTop(0);
@@ -14197,7 +14197,7 @@ function newfrmFichaSSF()
     obj.edit217:setField("rdb_armadura");
     obj.edit217:setName("edit217");
 
-    obj.edit218 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit218 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit218:setParent(obj.layout146);
     obj.edit218:setLeft(125);
     obj.edit218:setTop(0);
@@ -14206,7 +14206,7 @@ function newfrmFichaSSF()
     obj.edit218:setField("rdb_armadura_atual");
     obj.edit218:setName("edit218");
 
-    obj.layout147 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout147 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout147:setParent(obj.layout144);
     obj.layout147:setLeft(5);
     obj.layout147:setTop(55);
@@ -14214,7 +14214,7 @@ function newfrmFichaSSF()
     obj.layout147:setHeight(25);
     obj.layout147:setName("layout147");
 
-    obj.label355 = gui.fromHandle(_obj_newObject("label"));
+    obj.label355 = GUI.fromHandle(_obj_newObject("label"));
     obj.label355:setParent(obj.layout147);
     obj.label355:setLeft(5);
     obj.label355:setTop(5);
@@ -14223,7 +14223,7 @@ function newfrmFichaSSF()
     obj.label355:setText("RD Abl.");
     obj.label355:setName("label355");
 
-    obj.edit219 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit219 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit219:setParent(obj.layout147);
     obj.edit219:setLeft(55);
     obj.edit219:setTop(0);
@@ -14232,7 +14232,7 @@ function newfrmFichaSSF()
     obj.edit219:setField("rda_armadura");
     obj.edit219:setName("edit219");
 
-    obj.edit220 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit220 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit220:setParent(obj.layout147);
     obj.edit220:setLeft(125);
     obj.edit220:setTop(0);
@@ -14241,7 +14241,7 @@ function newfrmFichaSSF()
     obj.edit220:setField("rda_armadura_atual");
     obj.edit220:setName("edit220");
 
-    obj.layout148 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout148 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout148:setParent(obj.layout144);
     obj.layout148:setLeft(5);
     obj.layout148:setTop(80);
@@ -14249,7 +14249,7 @@ function newfrmFichaSSF()
     obj.layout148:setHeight(25);
     obj.layout148:setName("layout148");
 
-    obj.label356 = gui.fromHandle(_obj_newObject("label"));
+    obj.label356 = GUI.fromHandle(_obj_newObject("label"));
     obj.label356:setParent(obj.layout148);
     obj.label356:setLeft(5);
     obj.label356:setTop(5);
@@ -14258,7 +14258,7 @@ function newfrmFichaSSF()
     obj.label356:setText("HT");
     obj.label356:setName("label356");
 
-    obj.edit221 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit221 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit221:setParent(obj.layout148);
     obj.edit221:setLeft(55);
     obj.edit221:setTop(0);
@@ -14267,7 +14267,7 @@ function newfrmFichaSSF()
     obj.edit221:setField("ht_armadura");
     obj.edit221:setName("edit221");
 
-    obj.edit222 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit222 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit222:setParent(obj.layout148);
     obj.edit222:setLeft(125);
     obj.edit222:setTop(0);
@@ -14276,7 +14276,7 @@ function newfrmFichaSSF()
     obj.edit222:setField("ht_armadura_atual");
     obj.edit222:setName("edit222");
 
-    obj.layout149 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout149 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout149:setParent(obj.layout144);
     obj.layout149:setLeft(5);
     obj.layout149:setTop(105);
@@ -14284,7 +14284,7 @@ function newfrmFichaSSF()
     obj.layout149:setHeight(25);
     obj.layout149:setName("layout149");
 
-    obj.label357 = gui.fromHandle(_obj_newObject("label"));
+    obj.label357 = GUI.fromHandle(_obj_newObject("label"));
     obj.label357:setParent(obj.layout149);
     obj.label357:setLeft(5);
     obj.label357:setTop(5);
@@ -14293,7 +14293,7 @@ function newfrmFichaSSF()
     obj.label357:setText("PV");
     obj.label357:setName("label357");
 
-    obj.edit223 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit223 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit223:setParent(obj.layout149);
     obj.edit223:setLeft(55);
     obj.edit223:setTop(0);
@@ -14302,7 +14302,7 @@ function newfrmFichaSSF()
     obj.edit223:setField("pv_armadura");
     obj.edit223:setName("edit223");
 
-    obj.edit224 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit224 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit224:setParent(obj.layout149);
     obj.edit224:setLeft(125);
     obj.edit224:setTop(0);
@@ -14311,7 +14311,7 @@ function newfrmFichaSSF()
     obj.edit224:setField("pv_armadura_atual");
     obj.edit224:setName("edit224");
 
-    obj.layout150 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout150 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout150:setParent(obj.scrollBox3);
     obj.layout150:setLeft(940);
     obj.layout150:setTop(145);
@@ -14319,7 +14319,7 @@ function newfrmFichaSSF()
     obj.layout150:setHeight(435);
     obj.layout150:setName("layout150");
 
-    obj.rectangle227 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle227 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle227:setParent(obj.layout150);
     obj.rectangle227:setAlign("client");
     obj.rectangle227:setColor("black");
@@ -14328,7 +14328,7 @@ function newfrmFichaSSF()
     obj.rectangle227:setCornerType("round");
     obj.rectangle227:setName("rectangle227");
 
-    obj.label358 = gui.fromHandle(_obj_newObject("label"));
+    obj.label358 = GUI.fromHandle(_obj_newObject("label"));
     obj.label358:setParent(obj.layout150);
     obj.label358:setLeft(0);
     obj.label358:setTop(5);
@@ -14338,7 +14338,7 @@ function newfrmFichaSSF()
     obj.label358:setHorzTextAlign("center");
     obj.label358:setName("label358");
 
-    obj.button101 = gui.fromHandle(_obj_newObject("button"));
+    obj.button101 = GUI.fromHandle(_obj_newObject("button"));
     obj.button101:setParent(obj.layout150);
     obj.button101:setText("+");
     obj.button101:setLeft(325);
@@ -14347,7 +14347,7 @@ function newfrmFichaSSF()
     obj.button101:setHeight(20);
     obj.button101:setName("button101");
 
-    obj.rectangle228 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle228 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle228:setParent(obj.layout150);
     obj.rectangle228:setLeft(5);
     obj.rectangle228:setTop(30);
@@ -14356,7 +14356,7 @@ function newfrmFichaSSF()
     obj.rectangle228:setColor("#101010");
     obj.rectangle228:setName("rectangle228");
 
-    obj.rclListaDasArmas = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclListaDasArmas = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDasArmas:setParent(obj.layout150);
     obj.rclListaDasArmas:setName("rclListaDasArmas");
     obj.rclListaDasArmas:setField("listaDasArmas");
@@ -14368,7 +14368,7 @@ function newfrmFichaSSF()
     obj.rclListaDasArmas:setLayout("vertical");
     obj.rclListaDasArmas:setMinQt(1);
 
-    obj.image5 = gui.fromHandle(_obj_newObject("image"));
+    obj.image5 = GUI.fromHandle(_obj_newObject("image"));
     obj.image5:setParent(obj.scrollBox3);
     obj.image5:setLeft(0);
     obj.image5:setTop(0);
@@ -14378,23 +14378,23 @@ function newfrmFichaSSF()
     obj.image5:setSRC("https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20SSF%20releases/imagens/ABA0.png");
     obj.image5:setName("image5");
 
-    obj.tab4 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab4 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab4:setParent(obj.tabControl1);
     obj.tab4:setTitle("Descrições");
     obj.tab4:setName("tab4");
 
-    obj.frmSSF5 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmSSF5 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmSSF5:setParent(obj.tab4);
     obj.frmSSF5:setName("frmSSF5");
     obj.frmSSF5:setAlign("client");
     obj.frmSSF5:setTheme("dark");
 
-    obj.scrollBox4 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox4 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox4:setParent(obj.frmSSF5);
     obj.scrollBox4:setAlign("client");
     obj.scrollBox4:setName("scrollBox4");
 
-    obj.layout151 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout151 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout151:setParent(obj.scrollBox4);
     obj.layout151:setLeft(0);
     obj.layout151:setTop(0);
@@ -14402,7 +14402,7 @@ function newfrmFichaSSF()
     obj.layout151:setHeight(70);
     obj.layout151:setName("layout151");
 
-    obj.rectangle229 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle229 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle229:setParent(obj.layout151);
     obj.rectangle229:setLeft(5);
     obj.rectangle229:setTop(0);
@@ -14414,7 +14414,7 @@ function newfrmFichaSSF()
     obj.rectangle229:setCornerType("round");
     obj.rectangle229:setName("rectangle229");
 
-    obj.layout152 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout152 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout152:setParent(obj.layout151);
     obj.layout152:setLeft(5);
     obj.layout152:setTop(5);
@@ -14422,7 +14422,7 @@ function newfrmFichaSSF()
     obj.layout152:setHeight(25);
     obj.layout152:setName("layout152");
 
-    obj.label359 = gui.fromHandle(_obj_newObject("label"));
+    obj.label359 = GUI.fromHandle(_obj_newObject("label"));
     obj.label359:setParent(obj.layout152);
     obj.label359:setLeft(0);
     obj.label359:setTop(5);
@@ -14432,7 +14432,7 @@ function newfrmFichaSSF()
     obj.label359:setHorzTextAlign("trailing");
     obj.label359:setName("label359");
 
-    obj.edit225 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit225 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit225:setParent(obj.layout152);
     obj.edit225:setLeft(110);
     obj.edit225:setTop(0);
@@ -14441,7 +14441,7 @@ function newfrmFichaSSF()
     obj.edit225:setField("desc_sexo");
     obj.edit225:setName("edit225");
 
-    obj.layout153 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout153 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout153:setParent(obj.layout151);
     obj.layout153:setLeft(320);
     obj.layout153:setTop(5);
@@ -14449,7 +14449,7 @@ function newfrmFichaSSF()
     obj.layout153:setHeight(25);
     obj.layout153:setName("layout153");
 
-    obj.label360 = gui.fromHandle(_obj_newObject("label"));
+    obj.label360 = GUI.fromHandle(_obj_newObject("label"));
     obj.label360:setParent(obj.layout153);
     obj.label360:setLeft(0);
     obj.label360:setTop(5);
@@ -14459,7 +14459,7 @@ function newfrmFichaSSF()
     obj.label360:setHorzTextAlign("trailing");
     obj.label360:setName("label360");
 
-    obj.edit226 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit226 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit226:setParent(obj.layout153);
     obj.edit226:setLeft(110);
     obj.edit226:setTop(0);
@@ -14468,7 +14468,7 @@ function newfrmFichaSSF()
     obj.edit226:setField("desc_altura");
     obj.edit226:setName("edit226");
 
-    obj.layout154 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout154 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout154:setParent(obj.layout151);
     obj.layout154:setLeft(585);
     obj.layout154:setTop(5);
@@ -14476,7 +14476,7 @@ function newfrmFichaSSF()
     obj.layout154:setHeight(25);
     obj.layout154:setName("layout154");
 
-    obj.label361 = gui.fromHandle(_obj_newObject("label"));
+    obj.label361 = GUI.fromHandle(_obj_newObject("label"));
     obj.label361:setParent(obj.layout154);
     obj.label361:setLeft(0);
     obj.label361:setTop(5);
@@ -14486,7 +14486,7 @@ function newfrmFichaSSF()
     obj.label361:setHorzTextAlign("trailing");
     obj.label361:setName("label361");
 
-    obj.edit227 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit227 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit227:setParent(obj.layout154);
     obj.edit227:setLeft(110);
     obj.edit227:setTop(0);
@@ -14495,7 +14495,7 @@ function newfrmFichaSSF()
     obj.edit227:setField("desc_olhos");
     obj.edit227:setName("edit227");
 
-    obj.layout155 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout155 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout155:setParent(obj.layout151);
     obj.layout155:setLeft(5);
     obj.layout155:setTop(35);
@@ -14503,7 +14503,7 @@ function newfrmFichaSSF()
     obj.layout155:setHeight(25);
     obj.layout155:setName("layout155");
 
-    obj.label362 = gui.fromHandle(_obj_newObject("label"));
+    obj.label362 = GUI.fromHandle(_obj_newObject("label"));
     obj.label362:setParent(obj.layout155);
     obj.label362:setLeft(0);
     obj.label362:setTop(5);
@@ -14513,7 +14513,7 @@ function newfrmFichaSSF()
     obj.label362:setHorzTextAlign("trailing");
     obj.label362:setName("label362");
 
-    obj.edit228 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit228 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit228:setParent(obj.layout155);
     obj.edit228:setLeft(110);
     obj.edit228:setTop(0);
@@ -14522,7 +14522,7 @@ function newfrmFichaSSF()
     obj.edit228:setField("desc_origem");
     obj.edit228:setName("edit228");
 
-    obj.layout156 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout156 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout156:setParent(obj.layout151);
     obj.layout156:setLeft(320);
     obj.layout156:setTop(35);
@@ -14530,7 +14530,7 @@ function newfrmFichaSSF()
     obj.layout156:setHeight(25);
     obj.layout156:setName("layout156");
 
-    obj.label363 = gui.fromHandle(_obj_newObject("label"));
+    obj.label363 = GUI.fromHandle(_obj_newObject("label"));
     obj.label363:setParent(obj.layout156);
     obj.label363:setLeft(0);
     obj.label363:setTop(5);
@@ -14540,7 +14540,7 @@ function newfrmFichaSSF()
     obj.label363:setHorzTextAlign("trailing");
     obj.label363:setName("label363");
 
-    obj.edit229 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit229 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit229:setParent(obj.layout156);
     obj.edit229:setLeft(110);
     obj.edit229:setTop(0);
@@ -14549,7 +14549,7 @@ function newfrmFichaSSF()
     obj.edit229:setField("desc_nascimento");
     obj.edit229:setName("edit229");
 
-    obj.layout157 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout157 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout157:setParent(obj.layout151);
     obj.layout157:setLeft(585);
     obj.layout157:setTop(35);
@@ -14557,7 +14557,7 @@ function newfrmFichaSSF()
     obj.layout157:setHeight(25);
     obj.layout157:setName("layout157");
 
-    obj.label364 = gui.fromHandle(_obj_newObject("label"));
+    obj.label364 = GUI.fromHandle(_obj_newObject("label"));
     obj.label364:setParent(obj.layout157);
     obj.label364:setLeft(0);
     obj.label364:setTop(5);
@@ -14567,7 +14567,7 @@ function newfrmFichaSSF()
     obj.label364:setHorzTextAlign("trailing");
     obj.label364:setName("label364");
 
-    obj.edit230 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit230 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit230:setParent(obj.layout157);
     obj.edit230:setLeft(110);
     obj.edit230:setTop(0);
@@ -14576,7 +14576,7 @@ function newfrmFichaSSF()
     obj.edit230:setField("desc_cabelo");
     obj.edit230:setName("edit230");
 
-    obj.layout158 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout158 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout158:setParent(obj.scrollBox4);
     obj.layout158:setLeft(0);
     obj.layout158:setTop(80);
@@ -14584,7 +14584,7 @@ function newfrmFichaSSF()
     obj.layout158:setHeight(175);
     obj.layout158:setName("layout158");
 
-    obj.rectangle230 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle230 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle230:setParent(obj.layout158);
     obj.rectangle230:setLeft(0);
     obj.rectangle230:setTop(0);
@@ -14596,7 +14596,7 @@ function newfrmFichaSSF()
     obj.rectangle230:setCornerType("round");
     obj.rectangle230:setName("rectangle230");
 
-    obj.label365 = gui.fromHandle(_obj_newObject("label"));
+    obj.label365 = GUI.fromHandle(_obj_newObject("label"));
     obj.label365:setParent(obj.layout158);
     obj.label365:setLeft(0);
     obj.label365:setTop(0);
@@ -14606,7 +14606,7 @@ function newfrmFichaSSF()
     obj.label365:setHorzTextAlign("center");
     obj.label365:setName("label365");
 
-    obj.textEditor4 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor4:setParent(obj.layout158);
     obj.textEditor4:setLeft(10);
     obj.textEditor4:setTop(25);
@@ -14615,7 +14615,7 @@ function newfrmFichaSSF()
     obj.textEditor4:setField("aparencia");
     obj.textEditor4:setName("textEditor4");
 
-    obj.layout159 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout159 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout159:setParent(obj.scrollBox4);
     obj.layout159:setLeft(0);
     obj.layout159:setTop(260);
@@ -14623,7 +14623,7 @@ function newfrmFichaSSF()
     obj.layout159:setHeight(175);
     obj.layout159:setName("layout159");
 
-    obj.rectangle231 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle231 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle231:setParent(obj.layout159);
     obj.rectangle231:setLeft(0);
     obj.rectangle231:setTop(0);
@@ -14635,7 +14635,7 @@ function newfrmFichaSSF()
     obj.rectangle231:setCornerType("round");
     obj.rectangle231:setName("rectangle231");
 
-    obj.label366 = gui.fromHandle(_obj_newObject("label"));
+    obj.label366 = GUI.fromHandle(_obj_newObject("label"));
     obj.label366:setParent(obj.layout159);
     obj.label366:setLeft(0);
     obj.label366:setTop(0);
@@ -14645,7 +14645,7 @@ function newfrmFichaSSF()
     obj.label366:setHorzTextAlign("center");
     obj.label366:setName("label366");
 
-    obj.textEditor5 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor5:setParent(obj.layout159);
     obj.textEditor5:setLeft(10);
     obj.textEditor5:setTop(25);
@@ -14654,7 +14654,7 @@ function newfrmFichaSSF()
     obj.textEditor5:setField("personalidade");
     obj.textEditor5:setName("textEditor5");
 
-    obj.layout160 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout160 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout160:setParent(obj.scrollBox4);
     obj.layout160:setLeft(0);
     obj.layout160:setTop(440);
@@ -14662,7 +14662,7 @@ function newfrmFichaSSF()
     obj.layout160:setHeight(175);
     obj.layout160:setName("layout160");
 
-    obj.rectangle232 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle232 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle232:setParent(obj.layout160);
     obj.rectangle232:setLeft(0);
     obj.rectangle232:setTop(0);
@@ -14674,7 +14674,7 @@ function newfrmFichaSSF()
     obj.rectangle232:setCornerType("round");
     obj.rectangle232:setName("rectangle232");
 
-    obj.label367 = gui.fromHandle(_obj_newObject("label"));
+    obj.label367 = GUI.fromHandle(_obj_newObject("label"));
     obj.label367:setParent(obj.layout160);
     obj.label367:setLeft(0);
     obj.label367:setTop(0);
@@ -14684,7 +14684,7 @@ function newfrmFichaSSF()
     obj.label367:setHorzTextAlign("center");
     obj.label367:setName("label367");
 
-    obj.textEditor6 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor6 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor6:setParent(obj.layout160);
     obj.textEditor6:setLeft(10);
     obj.textEditor6:setTop(25);
@@ -14693,7 +14693,7 @@ function newfrmFichaSSF()
     obj.textEditor6:setField("idiomas");
     obj.textEditor6:setName("textEditor6");
 
-    obj.layout161 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout161 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout161:setParent(obj.scrollBox4);
     obj.layout161:setLeft(410);
     obj.layout161:setTop(80);
@@ -14701,7 +14701,7 @@ function newfrmFichaSSF()
     obj.layout161:setHeight(535);
     obj.layout161:setName("layout161");
 
-    obj.rectangle233 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle233 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle233:setParent(obj.layout161);
     obj.rectangle233:setLeft(0);
     obj.rectangle233:setTop(0);
@@ -14713,7 +14713,7 @@ function newfrmFichaSSF()
     obj.rectangle233:setCornerType("round");
     obj.rectangle233:setName("rectangle233");
 
-    obj.label368 = gui.fromHandle(_obj_newObject("label"));
+    obj.label368 = GUI.fromHandle(_obj_newObject("label"));
     obj.label368:setParent(obj.layout161);
     obj.label368:setLeft(0);
     obj.label368:setTop(0);
@@ -14723,7 +14723,7 @@ function newfrmFichaSSF()
     obj.label368:setHorzTextAlign("center");
     obj.label368:setName("label368");
 
-    obj.textEditor7 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor7 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor7:setParent(obj.layout161);
     obj.textEditor7:setLeft(10);
     obj.textEditor7:setTop(25);
@@ -14732,7 +14732,7 @@ function newfrmFichaSSF()
     obj.textEditor7:setField("historia");
     obj.textEditor7:setName("textEditor7");
 
-    obj.image6 = gui.fromHandle(_obj_newObject("image"));
+    obj.image6 = GUI.fromHandle(_obj_newObject("image"));
     obj.image6:setParent(obj.scrollBox4);
     obj.image6:setLeft(0);
     obj.image6:setTop(0);
@@ -14742,23 +14742,23 @@ function newfrmFichaSSF()
     obj.image6:setSRC("https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20SSF%20releases/imagens/ABA0.png");
     obj.image6:setName("image6");
 
-    obj.tab5 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab5 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab5:setParent(obj.tabControl1);
     obj.tab5:setTitle("Anotações");
     obj.tab5:setName("tab5");
 
-    obj.frmSSF6 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmSSF6 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmSSF6:setParent(obj.tab5);
     obj.frmSSF6:setName("frmSSF6");
     obj.frmSSF6:setAlign("client");
     obj.frmSSF6:setTheme("dark");
 
-    obj.scrollBox5 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox5 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox5:setParent(obj.frmSSF6);
     obj.scrollBox5:setAlign("client");
     obj.scrollBox5:setName("scrollBox5");
 
-    obj.layout162 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout162 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout162:setParent(obj.scrollBox5);
     obj.layout162:setLeft(0);
     obj.layout162:setTop(0);
@@ -14766,7 +14766,7 @@ function newfrmFichaSSF()
     obj.layout162:setHeight(580);
     obj.layout162:setName("layout162");
 
-    obj.rectangle234 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle234 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle234:setParent(obj.layout162);
     obj.rectangle234:setLeft(0);
     obj.rectangle234:setTop(0);
@@ -14778,7 +14778,7 @@ function newfrmFichaSSF()
     obj.rectangle234:setCornerType("round");
     obj.rectangle234:setName("rectangle234");
 
-    obj.label369 = gui.fromHandle(_obj_newObject("label"));
+    obj.label369 = GUI.fromHandle(_obj_newObject("label"));
     obj.label369:setParent(obj.layout162);
     obj.label369:setLeft(0);
     obj.label369:setTop(0);
@@ -14788,7 +14788,7 @@ function newfrmFichaSSF()
     obj.label369:setHorzTextAlign("center");
     obj.label369:setName("label369");
 
-    obj.textEditor8 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor8 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor8:setParent(obj.layout162);
     obj.textEditor8:setLeft(10);
     obj.textEditor8:setTop(25);
@@ -14797,7 +14797,7 @@ function newfrmFichaSSF()
     obj.textEditor8:setField("anotacoes1");
     obj.textEditor8:setName("textEditor8");
 
-    obj.layout163 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout163 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout163:setParent(obj.scrollBox5);
     obj.layout163:setLeft(410);
     obj.layout163:setTop(0);
@@ -14805,7 +14805,7 @@ function newfrmFichaSSF()
     obj.layout163:setHeight(580);
     obj.layout163:setName("layout163");
 
-    obj.rectangle235 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle235 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle235:setParent(obj.layout163);
     obj.rectangle235:setLeft(0);
     obj.rectangle235:setTop(0);
@@ -14817,7 +14817,7 @@ function newfrmFichaSSF()
     obj.rectangle235:setCornerType("round");
     obj.rectangle235:setName("rectangle235");
 
-    obj.label370 = gui.fromHandle(_obj_newObject("label"));
+    obj.label370 = GUI.fromHandle(_obj_newObject("label"));
     obj.label370:setParent(obj.layout163);
     obj.label370:setLeft(0);
     obj.label370:setTop(0);
@@ -14827,7 +14827,7 @@ function newfrmFichaSSF()
     obj.label370:setHorzTextAlign("center");
     obj.label370:setName("label370");
 
-    obj.textEditor9 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor9 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor9:setParent(obj.layout163);
     obj.textEditor9:setLeft(10);
     obj.textEditor9:setTop(25);
@@ -14836,7 +14836,7 @@ function newfrmFichaSSF()
     obj.textEditor9:setField("anotacoes2");
     obj.textEditor9:setName("textEditor9");
 
-    obj.layout164 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout164 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout164:setParent(obj.scrollBox5);
     obj.layout164:setLeft(820);
     obj.layout164:setTop(0);
@@ -14844,7 +14844,7 @@ function newfrmFichaSSF()
     obj.layout164:setHeight(580);
     obj.layout164:setName("layout164");
 
-    obj.rectangle236 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle236 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle236:setParent(obj.layout164);
     obj.rectangle236:setLeft(0);
     obj.rectangle236:setTop(0);
@@ -14856,7 +14856,7 @@ function newfrmFichaSSF()
     obj.rectangle236:setCornerType("round");
     obj.rectangle236:setName("rectangle236");
 
-    obj.label371 = gui.fromHandle(_obj_newObject("label"));
+    obj.label371 = GUI.fromHandle(_obj_newObject("label"));
     obj.label371:setParent(obj.layout164);
     obj.label371:setLeft(0);
     obj.label371:setTop(0);
@@ -14866,7 +14866,7 @@ function newfrmFichaSSF()
     obj.label371:setHorzTextAlign("center");
     obj.label371:setName("label371");
 
-    obj.textEditor10 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor10 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor10:setParent(obj.layout164);
     obj.textEditor10:setLeft(10);
     obj.textEditor10:setTop(25);
@@ -14875,7 +14875,7 @@ function newfrmFichaSSF()
     obj.textEditor10:setField("anotacoes3");
     obj.textEditor10:setName("textEditor10");
 
-    obj.image7 = gui.fromHandle(_obj_newObject("image"));
+    obj.image7 = GUI.fromHandle(_obj_newObject("image"));
     obj.image7:setParent(obj.scrollBox5);
     obj.image7:setLeft(0);
     obj.image7:setTop(0);
@@ -14885,23 +14885,23 @@ function newfrmFichaSSF()
     obj.image7:setSRC("https://dl.dropboxusercontent.com/u/31086811/Plugins/Ficha%20SSF%20releases/imagens/ABA0.png");
     obj.image7:setName("image7");
 
-    obj.tab6 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab6 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab6:setParent(obj.tabControl1);
     obj.tab6:setTitle("Creditos");
     obj.tab6:setName("tab6");
 
-    obj.frmSSF7 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmSSF7 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmSSF7:setParent(obj.tab6);
     obj.frmSSF7:setName("frmSSF7");
     obj.frmSSF7:setAlign("client");
     obj.frmSSF7:setTheme("dark");
 
-    obj.scrollBox6 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox6 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox6:setParent(obj.frmSSF7);
     obj.scrollBox6:setAlign("client");
     obj.scrollBox6:setName("scrollBox6");
 
-    obj.image8 = gui.fromHandle(_obj_newObject("image"));
+    obj.image8 = GUI.fromHandle(_obj_newObject("image"));
     obj.image8:setParent(obj.scrollBox6);
     obj.image8:setLeft(0);
     obj.image8:setTop(0);
@@ -14911,7 +14911,7 @@ function newfrmFichaSSF()
     obj.image8:setSRC("/Ficha SSF/images/SSF.jpg");
     obj.image8:setName("image8");
 
-    obj.image9 = gui.fromHandle(_obj_newObject("image"));
+    obj.image9 = GUI.fromHandle(_obj_newObject("image"));
     obj.image9:setParent(obj.scrollBox6);
     obj.image9:setLeft(550);
     obj.image9:setTop(0);
@@ -14921,7 +14921,7 @@ function newfrmFichaSSF()
     obj.image9:setSRC("/Ficha SSF/images/RPGmeister.jpg");
     obj.image9:setName("image9");
 
-    obj.layout165 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout165 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout165:setParent(obj.scrollBox6);
     obj.layout165:setLeft(850);
     obj.layout165:setTop(0);
@@ -14929,7 +14929,7 @@ function newfrmFichaSSF()
     obj.layout165:setHeight(400);
     obj.layout165:setName("layout165");
 
-    obj.rectangle237 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle237 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle237:setParent(obj.layout165);
     obj.rectangle237:setAlign("client");
     obj.rectangle237:setColor("black");
@@ -14938,7 +14938,7 @@ function newfrmFichaSSF()
     obj.rectangle237:setCornerType("round");
     obj.rectangle237:setName("rectangle237");
 
-    obj.label372 = gui.fromHandle(_obj_newObject("label"));
+    obj.label372 = GUI.fromHandle(_obj_newObject("label"));
     obj.label372:setParent(obj.layout165);
     obj.label372:setLeft(0);
     obj.label372:setTop(10);
@@ -14948,7 +14948,7 @@ function newfrmFichaSSF()
     obj.label372:setHorzTextAlign("center");
     obj.label372:setName("label372");
 
-    obj.label373 = gui.fromHandle(_obj_newObject("label"));
+    obj.label373 = GUI.fromHandle(_obj_newObject("label"));
     obj.label373:setParent(obj.layout165);
     obj.label373:setLeft(0);
     obj.label373:setTop(35);
@@ -14958,7 +14958,7 @@ function newfrmFichaSSF()
     obj.label373:setHorzTextAlign("center");
     obj.label373:setName("label373");
 
-    obj.label374 = gui.fromHandle(_obj_newObject("label"));
+    obj.label374 = GUI.fromHandle(_obj_newObject("label"));
     obj.label374:setParent(obj.layout165);
     obj.label374:setLeft(0);
     obj.label374:setTop(60);
@@ -14968,7 +14968,7 @@ function newfrmFichaSSF()
     obj.label374:setHorzTextAlign("center");
     obj.label374:setName("label374");
 
-    obj.label375 = gui.fromHandle(_obj_newObject("label"));
+    obj.label375 = GUI.fromHandle(_obj_newObject("label"));
     obj.label375:setParent(obj.layout165);
     obj.label375:setLeft(0);
     obj.label375:setTop(95);
@@ -14978,7 +14978,7 @@ function newfrmFichaSSF()
     obj.label375:setHorzTextAlign("center");
     obj.label375:setName("label375");
 
-    obj.label376 = gui.fromHandle(_obj_newObject("label"));
+    obj.label376 = GUI.fromHandle(_obj_newObject("label"));
     obj.label376:setParent(obj.layout165);
     obj.label376:setLeft(0);
     obj.label376:setTop(120);
@@ -14988,7 +14988,7 @@ function newfrmFichaSSF()
     obj.label376:setHorzTextAlign("center");
     obj.label376:setName("label376");
 
-    obj.label377 = gui.fromHandle(_obj_newObject("label"));
+    obj.label377 = GUI.fromHandle(_obj_newObject("label"));
     obj.label377:setParent(obj.layout165);
     obj.label377:setLeft(0);
     obj.label377:setTop(145);
@@ -14998,7 +14998,7 @@ function newfrmFichaSSF()
     obj.label377:setHorzTextAlign("center");
     obj.label377:setName("label377");
 
-    obj.label378 = gui.fromHandle(_obj_newObject("label"));
+    obj.label378 = GUI.fromHandle(_obj_newObject("label"));
     obj.label378:setParent(obj.layout165);
     obj.label378:setLeft(0);
     obj.label378:setTop(195);
@@ -15008,7 +15008,7 @@ function newfrmFichaSSF()
     obj.label378:setHorzTextAlign("center");
     obj.label378:setName("label378");
 
-    obj.label379 = gui.fromHandle(_obj_newObject("label"));
+    obj.label379 = GUI.fromHandle(_obj_newObject("label"));
     obj.label379:setParent(obj.layout165);
     obj.label379:setLeft(0);
     obj.label379:setTop(220);
@@ -15018,7 +15018,7 @@ function newfrmFichaSSF()
     obj.label379:setHorzTextAlign("center");
     obj.label379:setName("label379");
 
-    obj.label380 = gui.fromHandle(_obj_newObject("label"));
+    obj.label380 = GUI.fromHandle(_obj_newObject("label"));
     obj.label380:setParent(obj.layout165);
     obj.label380:setLeft(0);
     obj.label380:setTop(245);
@@ -15028,7 +15028,7 @@ function newfrmFichaSSF()
     obj.label380:setHorzTextAlign("center");
     obj.label380:setName("label380");
 
-    obj.label381 = gui.fromHandle(_obj_newObject("label"));
+    obj.label381 = GUI.fromHandle(_obj_newObject("label"));
     obj.label381:setParent(obj.layout165);
     obj.label381:setLeft(0);
     obj.label381:setTop(270);
@@ -15038,7 +15038,7 @@ function newfrmFichaSSF()
     obj.label381:setHorzTextAlign("center");
     obj.label381:setName("label381");
 
-    obj.label382 = gui.fromHandle(_obj_newObject("label"));
+    obj.label382 = GUI.fromHandle(_obj_newObject("label"));
     obj.label382:setParent(obj.layout165);
     obj.label382:setLeft(0);
     obj.label382:setTop(295);
@@ -15048,7 +15048,7 @@ function newfrmFichaSSF()
     obj.label382:setHorzTextAlign("center");
     obj.label382:setName("label382");
 
-    obj.label383 = gui.fromHandle(_obj_newObject("label"));
+    obj.label383 = GUI.fromHandle(_obj_newObject("label"));
     obj.label383:setParent(obj.scrollBox6);
     obj.label383:setLeft(550);
     obj.label383:setTop(300);
@@ -15058,7 +15058,7 @@ function newfrmFichaSSF()
     obj.label383:setHorzTextAlign("center");
     obj.label383:setName("label383");
 
-    obj.image10 = gui.fromHandle(_obj_newObject("image"));
+    obj.image10 = GUI.fromHandle(_obj_newObject("image"));
     obj.image10:setParent(obj.scrollBox6);
     obj.image10:setLeft(662);
     obj.image10:setTop(300);
@@ -15068,7 +15068,7 @@ function newfrmFichaSSF()
     obj.image10:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao05.png");
     obj.image10:setName("image10");
 
-    obj.label384 = gui.fromHandle(_obj_newObject("label"));
+    obj.label384 = GUI.fromHandle(_obj_newObject("label"));
     obj.label384:setParent(obj.scrollBox6);
     obj.label384:setLeft(550);
     obj.label384:setTop(325);
@@ -15078,7 +15078,7 @@ function newfrmFichaSSF()
     obj.label384:setHorzTextAlign("center");
     obj.label384:setName("label384");
 
-    obj.image11 = gui.fromHandle(_obj_newObject("image"));
+    obj.image11 = GUI.fromHandle(_obj_newObject("image"));
     obj.image11:setParent(obj.scrollBox6);
     obj.image11:setLeft(662);
     obj.image11:setTop(325);
@@ -15088,7 +15088,7 @@ function newfrmFichaSSF()
     obj.image11:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20SSF%20releases/release.png");
     obj.image11:setName("image11");
 
-    obj.button102 = gui.fromHandle(_obj_newObject("button"));
+    obj.button102 = GUI.fromHandle(_obj_newObject("button"));
     obj.button102:setParent(obj.scrollBox6);
     obj.button102:setLeft(550);
     obj.button102:setTop(350);
@@ -15096,7 +15096,7 @@ function newfrmFichaSSF()
     obj.button102:setText("Change Log");
     obj.button102:setName("button102");
 
-    obj.button103 = gui.fromHandle(_obj_newObject("button"));
+    obj.button103 = GUI.fromHandle(_obj_newObject("button"));
     obj.button103:setParent(obj.scrollBox6);
     obj.button103:setLeft(662);
     obj.button103:setTop(350);
@@ -15104,7 +15104,7 @@ function newfrmFichaSSF()
     obj.button103:setText("Atualizar");
     obj.button103:setName("button103");
 
-    obj.label385 = gui.fromHandle(_obj_newObject("label"));
+    obj.label385 = GUI.fromHandle(_obj_newObject("label"));
     obj.label385:setParent(obj.scrollBox6);
     obj.label385:setLeft(550);
     obj.label385:setTop(400);
@@ -15113,7 +15113,7 @@ function newfrmFichaSSF()
     obj.label385:setText("Conheça as Mesas:");
     obj.label385:setName("label385");
 
-    obj.button104 = gui.fromHandle(_obj_newObject("button"));
+    obj.button104 = GUI.fromHandle(_obj_newObject("button"));
     obj.button104:setParent(obj.scrollBox6);
     obj.button104:setLeft(550);
     obj.button104:setTop(425);
@@ -15121,7 +15121,7 @@ function newfrmFichaSSF()
     obj.button104:setText("RPGmeister");
     obj.button104:setName("button104");
 
-    obj.button105 = gui.fromHandle(_obj_newObject("button"));
+    obj.button105 = GUI.fromHandle(_obj_newObject("button"));
     obj.button105:setParent(obj.scrollBox6);
     obj.button105:setLeft(662);
     obj.button105:setTop(425);
@@ -15129,7 +15129,7 @@ function newfrmFichaSSF()
     obj.button105:setText("Saint Seiya Forever");
     obj.button105:setName("button105");
 
-    obj.image12 = gui.fromHandle(_obj_newObject("image"));
+    obj.image12 = GUI.fromHandle(_obj_newObject("image"));
     obj.image12:setParent(obj.scrollBox6);
     obj.image12:setLeft(0);
     obj.image12:setTop(0);
@@ -15140,7 +15140,7 @@ function newfrmFichaSSF()
     obj.image12:setName("image12");
 
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod = (tonumber(sheet.xpc_total) or 0);
             						local cosmo = 0;
@@ -15183,7 +15183,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -15195,7 +15195,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event2 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local xp = (tonumber(sheet.xp_st) or 0);
             						xp = xp/(1*10);
@@ -15209,7 +15209,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event3 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -15221,7 +15221,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event4 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local xp = (tonumber(sheet.xp_dx) or 0);
             						xp = xp/(2*10);
@@ -15235,7 +15235,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event5 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -15247,7 +15247,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event6 = obj.dataLink4:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local xp = (tonumber(sheet.xp_iq) or 0);
             						xp = xp/(2*10);
@@ -15261,7 +15261,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event7 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -15273,7 +15273,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event8 = obj.dataLink5:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local xp = (tonumber(sheet.xp_ht) or 0);
             						xp = xp/(1*10);
@@ -15287,7 +15287,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event9 = obj.button5:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -15299,7 +15299,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event10 = obj.dataLink6:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local xp = (tonumber(sheet.xp_pv) or 0);
             						xp = xp/(2);
@@ -15313,7 +15313,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event11 = obj.button6:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -15325,7 +15325,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event12 = obj.dataLink7:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local xp = (tonumber(sheet.xp_von) or 0);
             						xp = xp/(5);
@@ -15339,7 +15339,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event13 = obj.button7:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -15351,7 +15351,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event14 = obj.dataLink8:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local xp = (tonumber(sheet.xp_per) or 0);
             						xp = xp/(5);
@@ -15365,7 +15365,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event15 = obj.button8:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -15377,7 +15377,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event16 = obj.dataLink9:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local xp = (tonumber(sheet.xp_pf) or 0);
             						xp = xp/(3);
@@ -15391,7 +15391,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event17 = obj.button9:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					
             						rolagem = rrpg.interpretarRolagem("1d6+" .. (math.floor(sheet.total_desl) or 0));
@@ -15399,7 +15399,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event18 = obj.dataLink10:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             							local mod = (tonumber(sheet.total_dx) or 0)+
             										(tonumber(sheet.total_ht) or 0);
@@ -15411,7 +15411,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event19 = obj.button10:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					
             						rolagem = rrpg.interpretarRolagem("3d6");
@@ -15423,7 +15423,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event20 = obj.dataLink11:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             							local mod = (tonumber(sheet.out_bloqueio) or 0) +
             										(tonumber(sheet.nh_2_2) or 0)/2 +
@@ -15433,7 +15433,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event21 = obj.button11:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					
             						rolagem = rrpg.interpretarRolagem("3d6");
@@ -15445,7 +15445,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event22 = obj.dataLink12:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             							local mod = (tonumber(sheet.total_desl) or 0) +
             										(tonumber(sheet.out_esq) or 0) + 
@@ -15455,7 +15455,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event23 = obj.button12:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					
             						rolagem = rrpg.interpretarRolagem("3d6");
@@ -15467,7 +15467,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event24 = obj.dataLink13:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             							local mod = (tonumber(sheet.out_aparar) or 0) +
             										(tonumber(sheet.nh_1_9) or 0)/2 +
@@ -15477,7 +15477,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event25 = obj.button13:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             
             						local tecnica;
@@ -15502,7 +15502,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event26 = obj.dataLink14:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             							local mod = (tonumber(sheet.out_super_aparar) or 0) + 2;
             
@@ -15519,7 +15519,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event27 = obj.button14:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             
             						local tecnica;
@@ -15542,7 +15542,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event28 = obj.dataLink15:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             							local mod = (tonumber(sheet.out_tecnica_defesa) or 0) + 3;
             
@@ -15557,7 +15557,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event29 = obj.dataLink16:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             							if (tonumber(sheet.mod) or 0) >= 0 then
             								sheet.sinal = "+";
@@ -15568,19 +15568,19 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event30 = obj.button15:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclListaDasVantagens:append();
         end, obj);
 
     obj._e_event31 = obj.rclListaDasVantagens:addEventListener("onSelect",
-        function (self)
+        function (_)
             local node = self.rclListaDasVantagens.selectedNode;
             					self.boxDetalhesDasVantagens.node = node;
             					self.boxDetalhesDasVantagens.visible = (node ~= nil);
         end, obj);
 
     obj._e_event32 = obj.rclListaDasVantagens:addEventListener("onEndEnumeration",
-        function (self)
+        function (_)
             if self.rclListaDasVantagens.selectedNode == nil and sheet ~= nil then
             						local nodes = ndb.getChildNodes(sheet.listaVantagens);               
             						if #nodes > 0 then
@@ -15590,7 +15590,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event33 = obj.dataLink17:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod = 0;
             						local nodes = ndb.getChildNodes(sheet.listaVantagens);   
@@ -15602,7 +15602,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event34 = obj.dataLink18:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             
             							local mod = (tonumber(sheet.xp_st) or 0)+
@@ -15618,7 +15618,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event35 = obj.dataLink20:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             
             							local mod = (tonumber(sheet.xp_atributos) or 0)+
@@ -15629,7 +15629,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event36 = obj.dataLink21:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             							local mod = (tonumber(sheet.xpp_inicial) or 0)+
             										(tonumber(sheet.xpp_ganha) or 0)-
@@ -15639,7 +15639,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event37 = obj.dataLink22:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             
             							local mod = (tonumber(sheet.xpt_inicial) or 0)+
@@ -15650,7 +15650,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event38 = obj.dataLink23:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             
             							local mod = (tonumber(sheet.xpt_inicial) or 0)+
@@ -15660,7 +15660,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event39 = obj.dataLink24:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             
             							local mod = (tonumber(sheet.xpt_ganha) or 0)+
@@ -15670,7 +15670,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event40 = obj.dataLink25:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             
             							local mod = (tonumber(sheet.xpp_gasta) or 0)+
@@ -15680,7 +15680,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event41 = obj.button16:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -15699,7 +15699,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event42 = obj.dataLink29:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -15770,7 +15770,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event43 = obj.button17:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -15789,7 +15789,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event44 = obj.dataLink33:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -15860,7 +15860,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event45 = obj.button18:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -15879,7 +15879,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event46 = obj.dataLink37:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -15950,7 +15950,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event47 = obj.button19:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -15969,7 +15969,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event48 = obj.dataLink41:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -16040,7 +16040,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event49 = obj.button20:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -16059,7 +16059,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event50 = obj.dataLink45:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -16130,7 +16130,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event51 = obj.button21:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -16149,7 +16149,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event52 = obj.dataLink49:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -16220,7 +16220,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event53 = obj.button22:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -16239,7 +16239,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event54 = obj.dataLink53:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -16310,7 +16310,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event55 = obj.button23:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -16329,7 +16329,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event56 = obj.dataLink57:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -16400,7 +16400,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event57 = obj.button24:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -16419,7 +16419,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event58 = obj.dataLink61:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -16490,7 +16490,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event59 = obj.button25:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -16509,7 +16509,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event60 = obj.dataLink65:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -16580,7 +16580,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event61 = obj.button26:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -16599,7 +16599,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event62 = obj.dataLink69:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -16670,7 +16670,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event63 = obj.button27:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -16689,7 +16689,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event64 = obj.dataLink73:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -16760,7 +16760,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event65 = obj.button28:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -16779,7 +16779,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event66 = obj.dataLink77:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -16850,7 +16850,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event67 = obj.button29:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -16869,7 +16869,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event68 = obj.dataLink81:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -16940,7 +16940,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event69 = obj.button30:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -16959,7 +16959,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event70 = obj.dataLink85:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -17030,7 +17030,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event71 = obj.button31:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -17049,7 +17049,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event72 = obj.dataLink89:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -17120,7 +17120,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event73 = obj.button32:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -17139,7 +17139,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event74 = obj.dataLink93:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -17210,7 +17210,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event75 = obj.button33:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -17229,7 +17229,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event76 = obj.dataLink97:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -17300,7 +17300,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event77 = obj.button34:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -17319,7 +17319,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event78 = obj.dataLink101:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -17390,7 +17390,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event79 = obj.button35:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -17409,7 +17409,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event80 = obj.dataLink105:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -17480,7 +17480,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event81 = obj.button36:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -17499,7 +17499,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event82 = obj.dataLink109:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -17570,7 +17570,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event83 = obj.button37:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -17589,7 +17589,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event84 = obj.dataLink113:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -17660,7 +17660,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event85 = obj.button38:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -17679,7 +17679,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event86 = obj.dataLink117:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -17750,7 +17750,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event87 = obj.button39:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -17769,7 +17769,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event88 = obj.dataLink121:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -17840,7 +17840,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event89 = obj.button40:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -17859,7 +17859,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event90 = obj.dataLink125:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -17930,7 +17930,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event91 = obj.button41:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -17949,7 +17949,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event92 = obj.dataLink129:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -18020,7 +18020,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event93 = obj.button42:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -18039,7 +18039,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event94 = obj.dataLink133:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -18110,7 +18110,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event95 = obj.button43:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -18129,7 +18129,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event96 = obj.dataLink137:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -18200,7 +18200,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event97 = obj.button44:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -18219,7 +18219,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event98 = obj.dataLink141:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -18290,7 +18290,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event99 = obj.button45:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -18309,7 +18309,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event100 = obj.dataLink145:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -18380,7 +18380,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event101 = obj.button46:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -18399,7 +18399,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event102 = obj.dataLink149:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -18470,7 +18470,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event103 = obj.button47:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -18489,7 +18489,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event104 = obj.dataLink153:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -18560,7 +18560,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event105 = obj.button48:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -18579,7 +18579,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event106 = obj.dataLink157:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -18650,7 +18650,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event107 = obj.button49:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -18669,7 +18669,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event108 = obj.dataLink161:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -18740,7 +18740,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event109 = obj.button50:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -18759,7 +18759,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event110 = obj.dataLink165:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -18830,7 +18830,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event111 = obj.button51:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -18849,7 +18849,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event112 = obj.dataLink169:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -18920,7 +18920,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event113 = obj.button52:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -18939,7 +18939,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event114 = obj.dataLink173:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -19010,7 +19010,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event115 = obj.button53:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -19029,7 +19029,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event116 = obj.dataLink177:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -19100,7 +19100,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event117 = obj.button54:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -19119,7 +19119,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event118 = obj.dataLink181:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -19190,7 +19190,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event119 = obj.button55:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -19209,7 +19209,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event120 = obj.dataLink185:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -19280,7 +19280,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event121 = obj.button56:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -19299,7 +19299,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event122 = obj.dataLink189:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -19370,7 +19370,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event123 = obj.button57:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -19389,7 +19389,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event124 = obj.dataLink193:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -19460,7 +19460,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event125 = obj.button58:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -19479,7 +19479,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event126 = obj.dataLink197:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -19550,7 +19550,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event127 = obj.button59:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -19569,7 +19569,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event128 = obj.dataLink201:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -19640,7 +19640,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event129 = obj.button60:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -19659,7 +19659,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event130 = obj.dataLink205:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -19730,7 +19730,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event131 = obj.button61:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -19749,7 +19749,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event132 = obj.dataLink209:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -19820,7 +19820,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event133 = obj.button62:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -19839,7 +19839,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event134 = obj.dataLink213:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -19910,7 +19910,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event135 = obj.button63:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -19929,7 +19929,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event136 = obj.dataLink217:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -20000,7 +20000,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event137 = obj.button64:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -20019,7 +20019,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event138 = obj.dataLink221:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -20090,7 +20090,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event139 = obj.button65:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -20109,7 +20109,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event140 = obj.dataLink225:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -20180,7 +20180,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event141 = obj.button66:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -20199,7 +20199,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event142 = obj.dataLink229:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -20270,7 +20270,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event143 = obj.button67:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -20289,7 +20289,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event144 = obj.dataLink233:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -20360,7 +20360,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event145 = obj.button68:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -20379,7 +20379,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event146 = obj.dataLink237:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -20450,7 +20450,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event147 = obj.button69:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -20469,7 +20469,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event148 = obj.dataLink241:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -20540,7 +20540,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event149 = obj.button70:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -20559,7 +20559,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event150 = obj.dataLink245:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -20630,7 +20630,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event151 = obj.button71:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -20649,7 +20649,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event152 = obj.dataLink249:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -20720,7 +20720,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event153 = obj.button72:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -20739,7 +20739,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event154 = obj.dataLink253:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -20810,7 +20810,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event155 = obj.button73:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -20829,7 +20829,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event156 = obj.dataLink257:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -20900,7 +20900,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event157 = obj.button74:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -20919,7 +20919,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event158 = obj.dataLink261:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -20990,7 +20990,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event159 = obj.button75:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -21009,7 +21009,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event160 = obj.dataLink265:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -21080,7 +21080,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event161 = obj.button76:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -21099,7 +21099,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event162 = obj.dataLink269:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -21170,7 +21170,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event163 = obj.button77:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -21189,7 +21189,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event164 = obj.dataLink273:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -21260,7 +21260,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event165 = obj.button78:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -21279,7 +21279,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event166 = obj.dataLink277:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -21350,7 +21350,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event167 = obj.button79:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -21369,7 +21369,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event168 = obj.dataLink281:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -21440,7 +21440,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event169 = obj.button80:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -21459,7 +21459,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event170 = obj.dataLink285:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -21530,7 +21530,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event171 = obj.button81:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -21549,7 +21549,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event172 = obj.dataLink289:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -21620,7 +21620,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event173 = obj.button82:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -21639,7 +21639,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event174 = obj.dataLink293:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -21710,7 +21710,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event175 = obj.button83:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -21729,7 +21729,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event176 = obj.dataLink297:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -21800,7 +21800,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event177 = obj.button84:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -21819,7 +21819,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event178 = obj.dataLink301:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -21890,7 +21890,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event179 = obj.button85:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -21909,7 +21909,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event180 = obj.dataLink305:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -21980,7 +21980,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event181 = obj.button86:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -21999,7 +21999,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event182 = obj.dataLink309:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -22070,7 +22070,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event183 = obj.button87:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -22089,7 +22089,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event184 = obj.dataLink313:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -22160,7 +22160,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event185 = obj.button88:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -22179,7 +22179,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event186 = obj.dataLink317:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -22250,7 +22250,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event187 = obj.button89:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -22269,7 +22269,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event188 = obj.dataLink321:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -22340,7 +22340,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event189 = obj.button90:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -22359,7 +22359,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event190 = obj.dataLink325:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -22430,7 +22430,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event191 = obj.button91:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -22449,7 +22449,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event192 = obj.dataLink329:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -22520,7 +22520,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event193 = obj.button92:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -22539,7 +22539,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event194 = obj.dataLink333:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -22610,7 +22610,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event195 = obj.button93:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -22629,7 +22629,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event196 = obj.dataLink337:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -22700,7 +22700,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event197 = obj.button94:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -22719,7 +22719,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event198 = obj.dataLink341:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -22790,7 +22790,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event199 = obj.button95:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             				
             					rolagem = rrpg.interpretarRolagem("3d6");
@@ -22809,7 +22809,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event200 = obj.dataLink345:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local mod2 = 0;
             						local tabela_custo;
@@ -22880,13 +22880,13 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event201 = obj.button96:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclListaDasTecnicas:append();
             					custoTecnica();
         end, obj);
 
     obj._e_event202 = obj.rclListaDasTecnicas:addEventListener("onSelect",
-        function (self)
+        function (_)
             local node = self.rclListaDasTecnicas.selectedNode;
             					self.boxDetalhesDasTecnicas.node = node;
             					self.boxDetalhesDasTecnicas.visible = (node ~= nil);
@@ -22894,7 +22894,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event203 = obj.rclListaDasTecnicas:addEventListener("onEndEnumeration",
-        function (self)
+        function (_)
             if self.rclListaDasTecnicas.selectedNode == nil and sheet ~= nil then
             						local nodes = ndb.getChildNodes(sheet.listaTecnicas);               
             						if #nodes > 0 then
@@ -22904,7 +22904,7 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event204 = obj.button97:addEventListener("onClick",
-        function (self)
+        function (_)
             local mesaDoPersonagem = rrpg.getMesaDe(sheet);
             					
             						rolagem = rrpg.interpretarRolagem(self.boxDetalhesDasTecnicas.node.dados_tecnica);
@@ -22975,14 +22975,14 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event205 = obj.dataLink346:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             							custoTecnica();
             						end;
         end, obj);
 
     obj._e_event206 = obj.button98:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet~=nil then
             						local mod = "[§K1]Efeitos: [§K12]";
             						local node = self.boxDetalhesDasTecnicas.node;
@@ -23011,33 +23011,33 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event207 = obj.button99:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclListaDosEfeitosPositivos:append();
             						custoTecnica();
         end, obj);
 
     obj._e_event208 = obj.rclListaDosEfeitosPositivos:addEventListener("onSelect",
-        function (self)
+        function (_)
             if sheet~=nil then
             							custoTecnica();
             						end;
         end, obj);
 
     obj._e_event209 = obj.button100:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclListaDosEfeitosNegativos:append();
             						custoTecnica();
         end, obj);
 
     obj._e_event210 = obj.rclListaDosEfeitosNegativos:addEventListener("onSelect",
-        function (self)
+        function (_)
             if sheet~=nil then
             							custoTecnica();
             						end;
         end, obj);
 
     obj._e_event211 = obj.dataLink347:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             						if sheet.tipo_armadura == "1" then
             							sheet.dano_armadura6 = "1.000";
@@ -23065,27 +23065,27 @@ function newfrmFichaSSF()
         end, obj);
 
     obj._e_event212 = obj.button101:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclListaDasArmas:append();
         end, obj);
 
     obj._e_event213 = obj.button102:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20SSF%20releases/Change%20Log.txt')
         end, obj);
 
     obj._e_event214 = obj.button103:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20SSF%20releases/Ficha%20SSF.rpk')
         end, obj);
 
     obj._e_event215 = obj.button104:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     obj._e_event216 = obj.button105:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=99187');
         end, obj);
 
@@ -25005,9 +25005,23 @@ function newfrmFichaSSF()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFichaSSF()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFichaSSF();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFichaSSF = {
@@ -25021,7 +25035,7 @@ local _frmFichaSSF = {
     description=""};
 
 frmFichaSSF = _frmFichaSSF;
-rrpg.registrarForm(_frmFichaSSF);
-rrpg.registrarDataType(_frmFichaSSF);
+Firecast.registrarForm(_frmFichaSSF);
+Firecast.registrarDataType(_frmFichaSSF);
 
 return _frmFichaSSF;

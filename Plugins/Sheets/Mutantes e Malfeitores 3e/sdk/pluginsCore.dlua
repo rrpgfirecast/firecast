@@ -1,6 +1,6 @@
 ﻿require("rrpgObjs.lua");
-local utils = require("utils.lua");
-local rrpg = require("rrpg.lua");
+require("utils.lua");
+require("rrpg.lua");
 local plugins = {};
 local serializer = nil;
 
@@ -49,9 +49,6 @@ local pmListenersByName = {};
 local pmGeneratorId = 0;
 local pmPrefixID = _rrpg_generateUniqueStrID() .. "_";
 local pmSent = {};
-local _LUATABLE_PREFIX = "###LUATABLE_";
-local _LUATABLE_SUFIX = "_###";
-local _LUATABLE_MATCH_MASK = _LUATABLE_PREFIX .. "(.+)" .. _LUATABLE_SUFIX;
 
 local function __convertIncomingPMData(data)
 	if serializer == nil then

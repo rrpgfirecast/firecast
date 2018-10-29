@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmExamples" align="client">
 	<scrollBox align="client">
 		<rectangle color="#FFFFFFFF" width="1363" height="686"/>
@@ -111,7 +111,7 @@
 		</button>
 
 		<!-- Popup de exemplo -->
-		<popup name="popExemplo" width="300" height="400" backOpacity="0.4">
+		<popup name="popExemplo" width="300" height="400" backOpacity="0.4" autoScopeNode="false">
 			<label left="0" top="5" width="300" height="20" text="Exemplo de PopUp" horzTextAlign="center"/>
 		</popup>
 

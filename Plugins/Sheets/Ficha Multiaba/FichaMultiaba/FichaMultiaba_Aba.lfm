@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frm_FM_Aba" height="25" width="125" theme="dark" margins="{right=2}">
-	<popup name="popupConfig" width="210" height="160" backOpacity="0.4">
+	<popup name="popupConfig" width="210" height="160" backOpacity="0.4" autoScopeNode="false">
 		<layout left="5" top="5" width="200" height="160">
 			<label top="0" width="150" height="25" text="Ordem da Aba" horzTextAlign="center"/>
 			<edit left="125" top="0" width="50" height="25" field="index" type="number" horzTextAlign="center">

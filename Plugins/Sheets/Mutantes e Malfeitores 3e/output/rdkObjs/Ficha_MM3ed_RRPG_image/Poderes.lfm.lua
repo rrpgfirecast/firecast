@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFicha_MM3ed_RRPG_Power()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmFicha_MM3ed_RRPG_Power()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,19 +31,19 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj:setTheme("light");
     obj:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setWidth(700);
     obj.rectangle1:setHeight(1263);
     obj.rectangle1:setColor("#50a48d");
     obj.rectangle1:setName("rectangle1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.rectangle1);
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
@@ -54,21 +54,21 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.image1:setOptimize(true);
     obj.image1:setName("image1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.rectangle1);
     obj.layout1:setAlign("top");
     obj.layout1:setHeight(30);
     obj.layout1:setMargins({bottom=4});
     obj.layout1:setName("layout1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout1);
     obj.button1:setText("NOVO PODER");
     obj.button1:setWidth(150);
     obj.button1:setAlign("left");
     obj.button1:setName("button1");
 
-    obj.rclListaDosItens = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclListaDosItens = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclListaDosItens:setParent(obj.rectangle1);
     obj.rclListaDosItens:setName("rclListaDosItens");
     obj.rclListaDosItens:setField("campoDosItens");
@@ -77,7 +77,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.rclListaDosItens:setHeight(30);
     obj.rclListaDosItens:setSelectable(true);
 
-    obj.boxDetalhesDoItem = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.boxDetalhesDoItem = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.boxDetalhesDoItem:setParent(obj.rectangle1);
     obj.boxDetalhesDoItem:setName("boxDetalhesDoItem");
     obj.boxDetalhesDoItem:setVisible(false);
@@ -85,7 +85,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.boxDetalhesDoItem:setWidth(400);
     obj.boxDetalhesDoItem:setMargins({left=14, right=14});
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.boxDetalhesDoItem);
     obj.rectangle2:setAlign("top");
     obj.rectangle2:setColor("#6cb098");
@@ -95,14 +95,14 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.rectangle2:setPadding({top=7, left=7, right=7, bottom=7});
     obj.rectangle2:setName("rectangle2");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.rectangle2);
     obj.layout2:setAlign("top");
     obj.layout2:setHeight(30);
     obj.layout2:setMargins({bottom=4});
     obj.layout2:setName("layout2");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout2);
     obj.edit1:setTransparent(true);
     obj.edit1:setAlign("top");
@@ -116,13 +116,13 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.edit1:setFontColor("white");
     obj.edit1:setName("edit1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.layout2);
     obj.dataLink1:setFields({'PoderNome'});
     obj.dataLink1:setDefaultValues({'NOME DO PODER'});
     obj.dataLink1:setName("dataLink1");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.rectangle2);
     obj.layout3:setLeft(10);
     obj.layout3:setTop(40);
@@ -130,13 +130,13 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.layout3:setHeight(600);
     obj.layout3:setName("layout3");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout3);
     obj.layout4:setAlign("left");
     obj.layout4:setWidth(240);
     obj.layout4:setName("layout4");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout4);
     obj.rectangle3:setAlign("top");
     obj.rectangle3:setWidth(240);
@@ -146,7 +146,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.rectangle3:setStrokeSize(1);
     obj.rectangle3:setName("rectangle3");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle3);
     obj.label1:setAlign("top");
     obj.label1:setFontSize(14);
@@ -157,7 +157,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.label1:setMargins({top=1});
     obj.label1:setName("label1");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.rectangle3);
     obj.textEditor1:setAlign("top");
     obj.textEditor1:setField("PoderEfeito");
@@ -167,13 +167,13 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.textEditor1:setMargins({left=10, right=10});
     obj.textEditor1:setName("textEditor1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.rectangle3);
     obj.dataLink2:setFields({'PoderEfeito'});
     obj.dataLink2:setDefaultValues({'Descreva os efeitos que estao associados a este Poder. Aproveite o espaco para anotar detalhes para nao precisar olhar o livro o tempo todo.'});
     obj.dataLink2:setName("dataLink2");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.rectangle2);
     obj.layout5:setLeft(10);
     obj.layout5:setTop(348);
@@ -181,13 +181,13 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.layout5:setHeight(400);
     obj.layout5:setName("layout5");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout5);
     obj.layout6:setAlign("left");
     obj.layout6:setWidth(240);
     obj.layout6:setName("layout6");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.layout6);
     obj.rectangle4:setAlign("top");
     obj.rectangle4:setWidth(240);
@@ -197,7 +197,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.rectangle4:setStrokeSize(1);
     obj.rectangle4:setName("rectangle4");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.rectangle4);
     obj.label2:setLeft(5);
     obj.label2:setFontSize(16);
@@ -208,7 +208,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.label2:setMargins({left=2});
     obj.label2:setName("label2");
 
-    obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.rectangle4);
     obj.textEditor2:setAlign("top");
     obj.textEditor2:setField("PoderNotas");
@@ -218,13 +218,13 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.textEditor2:setHeight(82);
     obj.textEditor2:setName("textEditor2");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj.rectangle4);
     obj.dataLink3:setFields({'PoderNotas'});
     obj.dataLink3:setDefaultValues({'Descreva como o poder funciona na pratica e seus descritores'});
     obj.dataLink3:setName("dataLink3");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.rectangle2);
     obj.layout7:setLeft(10);
     obj.layout7:setTop(441);
@@ -232,13 +232,13 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.layout7:setHeight(300);
     obj.layout7:setName("layout7");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.layout7);
     obj.layout8:setAlign("left");
     obj.layout8:setWidth(240);
     obj.layout8:setName("layout8");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.layout8);
     obj.rectangle5:setAlign("top");
     obj.rectangle5:setWidth(240);
@@ -247,7 +247,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.rectangle5:setStrokeSize(1);
     obj.rectangle5:setName("rectangle5");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.rectangle5);
     obj.label3:setLeft(5);
     obj.label3:setFontSize(16);
@@ -258,7 +258,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.label3:setMargins({left=10});
     obj.label3:setName("label3");
 
-    obj.textEditor3 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor3:setParent(obj.rectangle5);
     obj.textEditor3:setAlign("top");
     obj.textEditor3:setField("PoderCusto");
@@ -267,13 +267,13 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.textEditor3:setMargins({left=50});
     obj.textEditor3:setName("textEditor3");
 
-    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink4:setParent(obj.rectangle5);
     obj.dataLink4:setFields({'PoderCusto'});
     obj.dataLink4:setDefaultValues({'Total de Pontos de Poder investidos = (Grad + Extras - Falhas) x Custo + Extras Fixos - Falhas Fixas.'});
     obj.dataLink4:setName("dataLink4");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.rectangle2);
     obj.layout9:setLeft(140);
     obj.layout9:setTop(40);
@@ -281,7 +281,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.layout9:setHeight(200);
     obj.layout9:setName("layout9");
 
-    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle6:setParent(obj.layout9);
     obj.rectangle6:setAlign("right");
     obj.rectangle6:setWidth(130);
@@ -290,7 +290,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.rectangle6:setStrokeSize(1);
     obj.rectangle6:setName("rectangle6");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.rectangle6);
     obj.label4:setAlign("bottom");
     obj.label4:setFontSize(12);
@@ -301,7 +301,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.label4:setMargins({bottom=1});
     obj.label4:setName("label4");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.rectangle6);
     obj.image2:setAlign("right");
     obj.image2:setEditable(true);
@@ -310,7 +310,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.image2:setMargins({top=1});
     obj.image2:setName("image2");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.rectangle2);
     obj.layout10:setLeft(260);
     obj.layout10:setTop(252);
@@ -318,7 +318,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.layout10:setHeight(38);
     obj.layout10:setName("layout10");
 
-    obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle7 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle7:setParent(obj.layout10);
     obj.rectangle7:setAlign("right");
     obj.rectangle7:setWidth(130);
@@ -328,7 +328,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.rectangle7:setStrokeSize(1);
     obj.rectangle7:setName("rectangle7");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.rectangle7);
     obj.label5:setAlign("top");
     obj.label5:setFontSize(12);
@@ -338,7 +338,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.rectangle7);
     obj.comboBox1:setAlign("top");
     obj.comboBox1:setField("PoderDefesa");
@@ -346,13 +346,13 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.comboBox1:setItems({'NENHUMA', 'ESQUIVA', 'APARAR', 'FORTITUDE', 'VONTADE', 'RESISTENCIA'});
     obj.comboBox1:setName("comboBox1");
 
-    obj.dataLink5 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink5:setParent(obj.rectangle7);
     obj.dataLink5:setFields({'PoderDefesa'});
     obj.dataLink5:setDefaultValues({'NENHUMA'});
     obj.dataLink5:setName("dataLink5");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.rectangle2);
     obj.layout11:setLeft(260);
     obj.layout11:setTop(300);
@@ -360,7 +360,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.layout11:setHeight(38);
     obj.layout11:setName("layout11");
 
-    obj.rectangle8 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle8 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle8:setParent(obj.layout11);
     obj.rectangle8:setAlign("right");
     obj.rectangle8:setWidth(130);
@@ -370,7 +370,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.rectangle8:setStrokeSize(1);
     obj.rectangle8:setName("rectangle8");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.rectangle8);
     obj.label6:setAlign("top");
     obj.label6:setFontSize(12);
@@ -380,7 +380,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.comboBox2 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox2:setParent(obj.rectangle8);
     obj.comboBox2:setAlign("top");
     obj.comboBox2:setField("PoderAcao");
@@ -388,13 +388,13 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.comboBox2:setItems({'NENHUMA', 'LIVRE', 'REACAO', 'MOVIMENTO', 'PADRAO'});
     obj.comboBox2:setName("comboBox2");
 
-    obj.dataLink6 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink6:setParent(obj.rectangle8);
     obj.dataLink6:setFields({'PoderAcao'});
     obj.dataLink6:setDefaultValues({'NENHUMA'});
     obj.dataLink6:setName("dataLink6");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.rectangle2);
     obj.layout12:setLeft(140);
     obj.layout12:setTop(348);
@@ -402,7 +402,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.layout12:setHeight(18);
     obj.layout12:setName("layout12");
 
-    obj.rectangle9 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle9 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle9:setParent(obj.layout12);
     obj.rectangle9:setAlign("right");
     obj.rectangle9:setWidth(130);
@@ -411,7 +411,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.rectangle9:setStrokeSize(1);
     obj.rectangle9:setName("rectangle9");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.rectangle9);
     obj.label7:setAlign("top");
     obj.label7:setFontSize(12);
@@ -421,7 +421,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.label7:setFontColor("white");
     obj.label7:setName("label7");
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.rectangle2);
     obj.layout13:setLeft(140);
     obj.layout13:setTop(364);
@@ -429,20 +429,20 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.layout13:setHeight(25);
     obj.layout13:setName("layout13");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout13);
     obj.edit2:setAlign("right");
     obj.edit2:setWidth(130);
     obj.edit2:setField("PoderAlcance");
     obj.edit2:setName("edit2");
 
-    obj.dataLink7 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink7:setParent(obj.layout13);
     obj.dataLink7:setFields({'PoderAlcance'});
     obj.dataLink7:setDefaultValues({'Pessoal, Perto, Percepcao, ou o valor da tabela de referencia'});
     obj.dataLink7:setName("dataLink7");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.rectangle2);
     obj.layout14:setLeft(140);
     obj.layout14:setTop(398);
@@ -450,7 +450,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.layout14:setHeight(18);
     obj.layout14:setName("layout14");
 
-    obj.rectangle10 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle10 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle10:setParent(obj.layout14);
     obj.rectangle10:setAlign("right");
     obj.rectangle10:setWidth(130);
@@ -459,7 +459,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.rectangle10:setStrokeSize(1);
     obj.rectangle10:setName("rectangle10");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.rectangle10);
     obj.label8:setAlign("top");
     obj.label8:setFontSize(12);
@@ -469,7 +469,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.label8:setFontColor("white");
     obj.label8:setName("label8");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.rectangle2);
     obj.layout15:setLeft(140);
     obj.layout15:setTop(414);
@@ -477,20 +477,20 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.layout15:setHeight(25);
     obj.layout15:setName("layout15");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout15);
     obj.edit3:setAlign("right");
     obj.edit3:setWidth(130);
     obj.edit3:setField("PoderDuracao");
     obj.edit3:setName("edit3");
 
-    obj.dataLink8 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink8:setParent(obj.layout15);
     obj.dataLink8:setFields({'PoderDuracao'});
     obj.dataLink8:setDefaultValues({'Instantaneo, Sustentado, Continuo ou Permanente'});
     obj.dataLink8:setName("dataLink8");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.rectangle2);
     obj.layout16:setLeft(140);
     obj.layout16:setTop(449);
@@ -498,7 +498,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.layout16:setHeight(18);
     obj.layout16:setName("layout16");
 
-    obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle11:setParent(obj.layout16);
     obj.rectangle11:setAlign("right");
     obj.rectangle11:setWidth(130);
@@ -507,7 +507,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.rectangle11:setStrokeSize(1);
     obj.rectangle11:setName("rectangle11");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.rectangle11);
     obj.label9:setAlign("top");
     obj.label9:setFontSize(12);
@@ -517,7 +517,7 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.label9:setFontColor("white");
     obj.label9:setName("label9");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.rectangle2);
     obj.layout17:setLeft(140);
     obj.layout17:setTop(466);
@@ -525,26 +525,26 @@ function newfrmFicha_MM3ed_RRPG_Power()
     obj.layout17:setHeight(25);
     obj.layout17:setName("layout17");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout17);
     obj.edit4:setAlign("right");
     obj.edit4:setWidth(130);
     obj.edit4:setField("PoderReferencia");
     obj.edit4:setName("edit4");
 
-    obj.dataLink9 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink9:setParent(obj.layout17);
     obj.dataLink9:setFields({'PoderReferencia'});
     obj.dataLink9:setDefaultValues({'Pagina e Livro de Ref'});
     obj.dataLink9:setName("dataLink9");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclListaDosItens:append();
         end, obj);
 
     obj._e_event1 = obj.rclListaDosItens:addEventListener("onSelect",
-        function (self)
+        function (_)
             local node = self.rclListaDosItens.selectedNode; 
                                          self.boxDetalhesDoItem.node = node;                       
             
@@ -631,9 +631,23 @@ function newfrmFicha_MM3ed_RRPG_Power()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFicha_MM3ed_RRPG_Power()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFicha_MM3ed_RRPG_Power();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFicha_MM3ed_RRPG_Power = {
@@ -647,6 +661,6 @@ local _frmFicha_MM3ed_RRPG_Power = {
     description=""};
 
 frmFicha_MM3ed_RRPG_Power = _frmFicha_MM3ed_RRPG_Power;
-rrpg.registrarForm(_frmFicha_MM3ed_RRPG_Power);
+Firecast.registrarForm(_frmFicha_MM3ed_RRPG_Power);
 
 return _frmFicha_MM3ed_RRPG_Power;

@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmL5A3_svg()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmL5A3_svg()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,19 +31,19 @@ function newfrmL5A3_svg()
     obj:setTheme("light");
     obj:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setWidth(918);
     obj.rectangle1:setHeight(1188);
     obj.rectangle1:setColor("white");
     obj.rectangle1:setName("rectangle1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.rectangle1);
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
@@ -54,7 +54,7 @@ function newfrmL5A3_svg()
     obj.image1:setOptimize(true);
     obj.image1:setName("image1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.rectangle1);
     obj.layout1:setLeft(105);
     obj.layout1:setTop(108);
@@ -62,7 +62,7 @@ function newfrmL5A3_svg()
     obj.layout1:setHeight(20);
     obj.layout1:setName("layout1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setTransparent(true);
     obj.edit1:setFontSize(12.8);
@@ -76,7 +76,7 @@ function newfrmL5A3_svg()
     obj.edit1:setField("ESCOLA_3");
     obj.edit1:setName("edit1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.rectangle1);
     obj.layout2:setLeft(381);
     obj.layout2:setTop(108);
@@ -84,7 +84,7 @@ function newfrmL5A3_svg()
     obj.layout2:setHeight(20);
     obj.layout2:setName("layout2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout2);
     obj.edit2:setTransparent(true);
     obj.edit2:setFontSize(12.8);
@@ -98,7 +98,7 @@ function newfrmL5A3_svg()
     obj.edit2:setField("ESCOLA_4");
     obj.edit2:setName("edit2");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.rectangle1);
     obj.layout3:setLeft(661);
     obj.layout3:setTop(108);
@@ -106,7 +106,7 @@ function newfrmL5A3_svg()
     obj.layout3:setHeight(20);
     obj.layout3:setName("layout3");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout3);
     obj.edit3:setTransparent(true);
     obj.edit3:setFontSize(12.8);
@@ -120,7 +120,7 @@ function newfrmL5A3_svg()
     obj.edit3:setField("ESCOLA_5");
     obj.edit3:setName("edit3");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.rectangle1);
     obj.layout4:setLeft(105);
     obj.layout4:setTop(133);
@@ -128,7 +128,7 @@ function newfrmL5A3_svg()
     obj.layout4:setHeight(32);
     obj.layout4:setName("layout4");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout4);
     obj.edit4:setTransparent(true);
     obj.edit4:setFontSize(14.2);
@@ -142,7 +142,7 @@ function newfrmL5A3_svg()
     obj.edit4:setField("APRENDIDONÍVEL_1_2");
     obj.edit4:setName("edit4");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.rectangle1);
     obj.layout5:setLeft(280);
     obj.layout5:setTop(135);
@@ -150,7 +150,7 @@ function newfrmL5A3_svg()
     obj.layout5:setHeight(27);
     obj.layout5:setName("layout5");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.layout5);
     obj.checkBox1:setLeft(0);
     obj.checkBox1:setTop(0);
@@ -159,7 +159,7 @@ function newfrmL5A3_svg()
     obj.checkBox1:setField("Check_Box108");
     obj.checkBox1:setName("checkBox1");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.rectangle1);
     obj.layout6:setLeft(383);
     obj.layout6:setTop(133);
@@ -167,7 +167,7 @@ function newfrmL5A3_svg()
     obj.layout6:setHeight(32);
     obj.layout6:setName("layout6");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout6);
     obj.edit5:setTransparent(true);
     obj.edit5:setFontSize(14.2);
@@ -181,7 +181,7 @@ function newfrmL5A3_svg()
     obj.edit5:setField("APRENDIDONÍVEL_1_4");
     obj.edit5:setName("edit5");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.rectangle1);
     obj.layout7:setLeft(558);
     obj.layout7:setTop(135);
@@ -189,7 +189,7 @@ function newfrmL5A3_svg()
     obj.layout7:setHeight(27);
     obj.layout7:setName("layout7");
 
-    obj.checkBox2 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox2 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox2:setParent(obj.layout7);
     obj.checkBox2:setLeft(0);
     obj.checkBox2:setTop(0);
@@ -198,7 +198,7 @@ function newfrmL5A3_svg()
     obj.checkBox2:setField("Check_Box113");
     obj.checkBox2:setName("checkBox2");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.rectangle1);
     obj.layout8:setLeft(661);
     obj.layout8:setTop(133);
@@ -206,7 +206,7 @@ function newfrmL5A3_svg()
     obj.layout8:setHeight(32);
     obj.layout8:setName("layout8");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout8);
     obj.edit6:setTransparent(true);
     obj.edit6:setFontSize(14.2);
@@ -220,7 +220,7 @@ function newfrmL5A3_svg()
     obj.edit6:setField("APRENDIDONÍVEL_1_6");
     obj.edit6:setName("edit6");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.rectangle1);
     obj.layout9:setLeft(836);
     obj.layout9:setTop(136);
@@ -228,7 +228,7 @@ function newfrmL5A3_svg()
     obj.layout9:setHeight(27);
     obj.layout9:setName("layout9");
 
-    obj.checkBox3 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox3 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox3:setParent(obj.layout9);
     obj.checkBox3:setLeft(0);
     obj.checkBox3:setTop(0);
@@ -237,7 +237,7 @@ function newfrmL5A3_svg()
     obj.checkBox3:setField("Check_Box118");
     obj.checkBox3:setName("checkBox3");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.rectangle1);
     obj.layout10:setLeft(105);
     obj.layout10:setTop(178);
@@ -245,7 +245,7 @@ function newfrmL5A3_svg()
     obj.layout10:setHeight(89);
     obj.layout10:setName("layout10");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout10);
     obj.textEditor1:setLeft(0);
     obj.textEditor1:setTop(0);
@@ -257,7 +257,7 @@ function newfrmL5A3_svg()
     obj.textEditor1:setTransparent(true);
     obj.textEditor1:setName("textEditor1");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.rectangle1);
     obj.layout11:setLeft(382);
     obj.layout11:setTop(178);
@@ -265,7 +265,7 @@ function newfrmL5A3_svg()
     obj.layout11:setHeight(89);
     obj.layout11:setName("layout11");
 
-    obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.layout11);
     obj.textEditor2:setLeft(0);
     obj.textEditor2:setTop(0);
@@ -277,7 +277,7 @@ function newfrmL5A3_svg()
     obj.textEditor2:setTransparent(true);
     obj.textEditor2:setName("textEditor2");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.rectangle1);
     obj.layout12:setLeft(660);
     obj.layout12:setTop(178);
@@ -285,7 +285,7 @@ function newfrmL5A3_svg()
     obj.layout12:setHeight(89);
     obj.layout12:setName("layout12");
 
-    obj.textEditor3 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor3:setParent(obj.layout12);
     obj.textEditor3:setLeft(0);
     obj.textEditor3:setTop(0);
@@ -297,7 +297,7 @@ function newfrmL5A3_svg()
     obj.textEditor3:setTransparent(true);
     obj.textEditor3:setName("textEditor3");
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.rectangle1);
     obj.layout13:setLeft(105);
     obj.layout13:setTop(272);
@@ -305,7 +305,7 @@ function newfrmL5A3_svg()
     obj.layout13:setHeight(32);
     obj.layout13:setName("layout13");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout13);
     obj.edit7:setTransparent(true);
     obj.edit7:setFontSize(14.2);
@@ -319,7 +319,7 @@ function newfrmL5A3_svg()
     obj.edit7:setField("NÍVEL_2_2");
     obj.edit7:setName("edit7");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.rectangle1);
     obj.layout14:setLeft(280);
     obj.layout14:setTop(275);
@@ -327,7 +327,7 @@ function newfrmL5A3_svg()
     obj.layout14:setHeight(27);
     obj.layout14:setName("layout14");
 
-    obj.checkBox4 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox4 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox4:setParent(obj.layout14);
     obj.checkBox4:setLeft(0);
     obj.checkBox4:setTop(0);
@@ -336,7 +336,7 @@ function newfrmL5A3_svg()
     obj.checkBox4:setField("Check_Box109");
     obj.checkBox4:setName("checkBox4");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.rectangle1);
     obj.layout15:setLeft(383);
     obj.layout15:setTop(272);
@@ -344,7 +344,7 @@ function newfrmL5A3_svg()
     obj.layout15:setHeight(32);
     obj.layout15:setName("layout15");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.layout15);
     obj.edit8:setTransparent(true);
     obj.edit8:setFontSize(14.2);
@@ -358,7 +358,7 @@ function newfrmL5A3_svg()
     obj.edit8:setField("NÍVEL_2_3");
     obj.edit8:setName("edit8");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.rectangle1);
     obj.layout16:setLeft(558);
     obj.layout16:setTop(274);
@@ -366,7 +366,7 @@ function newfrmL5A3_svg()
     obj.layout16:setHeight(27);
     obj.layout16:setName("layout16");
 
-    obj.checkBox5 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox5 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox5:setParent(obj.layout16);
     obj.checkBox5:setLeft(0);
     obj.checkBox5:setTop(0);
@@ -375,7 +375,7 @@ function newfrmL5A3_svg()
     obj.checkBox5:setField("Check_Box114");
     obj.checkBox5:setName("checkBox5");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.rectangle1);
     obj.layout17:setLeft(661);
     obj.layout17:setTop(272);
@@ -383,7 +383,7 @@ function newfrmL5A3_svg()
     obj.layout17:setHeight(32);
     obj.layout17:setName("layout17");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.layout17);
     obj.edit9:setTransparent(true);
     obj.edit9:setFontSize(14.2);
@@ -397,7 +397,7 @@ function newfrmL5A3_svg()
     obj.edit9:setField("NÍVEL_2_4");
     obj.edit9:setName("edit9");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.rectangle1);
     obj.layout18:setLeft(837);
     obj.layout18:setTop(275);
@@ -405,7 +405,7 @@ function newfrmL5A3_svg()
     obj.layout18:setHeight(27);
     obj.layout18:setName("layout18");
 
-    obj.checkBox6 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox6 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox6:setParent(obj.layout18);
     obj.checkBox6:setLeft(0);
     obj.checkBox6:setTop(0);
@@ -414,7 +414,7 @@ function newfrmL5A3_svg()
     obj.checkBox6:setField("Check_Box119");
     obj.checkBox6:setName("checkBox6");
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.rectangle1);
     obj.layout19:setLeft(104);
     obj.layout19:setTop(317);
@@ -422,7 +422,7 @@ function newfrmL5A3_svg()
     obj.layout19:setHeight(90);
     obj.layout19:setName("layout19");
 
-    obj.textEditor4 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor4:setParent(obj.layout19);
     obj.textEditor4:setLeft(0);
     obj.textEditor4:setTop(0);
@@ -434,7 +434,7 @@ function newfrmL5A3_svg()
     obj.textEditor4:setTransparent(true);
     obj.textEditor4:setName("textEditor4");
 
-    obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.rectangle1);
     obj.layout20:setLeft(383);
     obj.layout20:setTop(317);
@@ -442,7 +442,7 @@ function newfrmL5A3_svg()
     obj.layout20:setHeight(90);
     obj.layout20:setName("layout20");
 
-    obj.textEditor5 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor5:setParent(obj.layout20);
     obj.textEditor5:setLeft(0);
     obj.textEditor5:setTop(0);
@@ -454,7 +454,7 @@ function newfrmL5A3_svg()
     obj.textEditor5:setTransparent(true);
     obj.textEditor5:setName("textEditor5");
 
-    obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.rectangle1);
     obj.layout21:setLeft(660);
     obj.layout21:setTop(317);
@@ -462,7 +462,7 @@ function newfrmL5A3_svg()
     obj.layout21:setHeight(89);
     obj.layout21:setName("layout21");
 
-    obj.textEditor6 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor6 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor6:setParent(obj.layout21);
     obj.textEditor6:setLeft(0);
     obj.textEditor6:setTop(0);
@@ -474,7 +474,7 @@ function newfrmL5A3_svg()
     obj.textEditor6:setTransparent(true);
     obj.textEditor6:setName("textEditor6");
 
-    obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.rectangle1);
     obj.layout22:setLeft(105);
     obj.layout22:setTop(411);
@@ -482,7 +482,7 @@ function newfrmL5A3_svg()
     obj.layout22:setHeight(32);
     obj.layout22:setName("layout22");
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.layout22);
     obj.edit10:setTransparent(true);
     obj.edit10:setFontSize(14.2);
@@ -496,7 +496,7 @@ function newfrmL5A3_svg()
     obj.edit10:setField("NÍVEL_3_2");
     obj.edit10:setName("edit10");
 
-    obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.rectangle1);
     obj.layout23:setLeft(279);
     obj.layout23:setTop(413);
@@ -504,7 +504,7 @@ function newfrmL5A3_svg()
     obj.layout23:setHeight(27);
     obj.layout23:setName("layout23");
 
-    obj.checkBox7 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox7 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox7:setParent(obj.layout23);
     obj.checkBox7:setLeft(0);
     obj.checkBox7:setTop(0);
@@ -513,7 +513,7 @@ function newfrmL5A3_svg()
     obj.checkBox7:setField("Check_Box110");
     obj.checkBox7:setName("checkBox7");
 
-    obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.rectangle1);
     obj.layout24:setLeft(383);
     obj.layout24:setTop(411);
@@ -521,7 +521,7 @@ function newfrmL5A3_svg()
     obj.layout24:setHeight(32);
     obj.layout24:setName("layout24");
 
-    obj.edit11 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit11:setParent(obj.layout24);
     obj.edit11:setTransparent(true);
     obj.edit11:setFontSize(14.2);
@@ -535,7 +535,7 @@ function newfrmL5A3_svg()
     obj.edit11:setField("NÍVEL_3_3");
     obj.edit11:setName("edit11");
 
-    obj.layout25 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.rectangle1);
     obj.layout25:setLeft(559);
     obj.layout25:setTop(412);
@@ -543,7 +543,7 @@ function newfrmL5A3_svg()
     obj.layout25:setHeight(27);
     obj.layout25:setName("layout25");
 
-    obj.checkBox8 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox8 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox8:setParent(obj.layout25);
     obj.checkBox8:setLeft(0);
     obj.checkBox8:setTop(0);
@@ -552,7 +552,7 @@ function newfrmL5A3_svg()
     obj.checkBox8:setField("Check_Box115");
     obj.checkBox8:setName("checkBox8");
 
-    obj.layout26 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.rectangle1);
     obj.layout26:setLeft(661);
     obj.layout26:setTop(411);
@@ -560,7 +560,7 @@ function newfrmL5A3_svg()
     obj.layout26:setHeight(32);
     obj.layout26:setName("layout26");
 
-    obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit12:setParent(obj.layout26);
     obj.edit12:setTransparent(true);
     obj.edit12:setFontSize(14.2);
@@ -574,7 +574,7 @@ function newfrmL5A3_svg()
     obj.edit12:setField("NÍVEL_3_4");
     obj.edit12:setName("edit12");
 
-    obj.layout27 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.rectangle1);
     obj.layout27:setLeft(837);
     obj.layout27:setTop(413);
@@ -582,7 +582,7 @@ function newfrmL5A3_svg()
     obj.layout27:setHeight(27);
     obj.layout27:setName("layout27");
 
-    obj.checkBox9 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox9 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox9:setParent(obj.layout27);
     obj.checkBox9:setLeft(0);
     obj.checkBox9:setTop(0);
@@ -591,7 +591,7 @@ function newfrmL5A3_svg()
     obj.checkBox9:setField("Check_Box120");
     obj.checkBox9:setName("checkBox9");
 
-    obj.layout28 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.rectangle1);
     obj.layout28:setLeft(104);
     obj.layout28:setTop(456);
@@ -599,7 +599,7 @@ function newfrmL5A3_svg()
     obj.layout28:setHeight(89);
     obj.layout28:setName("layout28");
 
-    obj.textEditor7 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor7 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor7:setParent(obj.layout28);
     obj.textEditor7:setLeft(0);
     obj.textEditor7:setTop(0);
@@ -611,7 +611,7 @@ function newfrmL5A3_svg()
     obj.textEditor7:setTransparent(true);
     obj.textEditor7:setName("textEditor7");
 
-    obj.layout29 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout29:setParent(obj.rectangle1);
     obj.layout29:setLeft(383);
     obj.layout29:setTop(456);
@@ -619,7 +619,7 @@ function newfrmL5A3_svg()
     obj.layout29:setHeight(89);
     obj.layout29:setName("layout29");
 
-    obj.textEditor8 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor8 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor8:setParent(obj.layout29);
     obj.textEditor8:setLeft(0);
     obj.textEditor8:setTop(0);
@@ -631,7 +631,7 @@ function newfrmL5A3_svg()
     obj.textEditor8:setTransparent(true);
     obj.textEditor8:setName("textEditor8");
 
-    obj.layout30 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout30:setParent(obj.rectangle1);
     obj.layout30:setLeft(661);
     obj.layout30:setTop(456);
@@ -639,7 +639,7 @@ function newfrmL5A3_svg()
     obj.layout30:setHeight(89);
     obj.layout30:setName("layout30");
 
-    obj.textEditor9 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor9 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor9:setParent(obj.layout30);
     obj.textEditor9:setLeft(0);
     obj.textEditor9:setTop(0);
@@ -651,7 +651,7 @@ function newfrmL5A3_svg()
     obj.textEditor9:setTransparent(true);
     obj.textEditor9:setName("textEditor9");
 
-    obj.layout31 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.rectangle1);
     obj.layout31:setLeft(105);
     obj.layout31:setTop(550);
@@ -659,7 +659,7 @@ function newfrmL5A3_svg()
     obj.layout31:setHeight(32);
     obj.layout31:setName("layout31");
 
-    obj.edit13 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit13:setParent(obj.layout31);
     obj.edit13:setTransparent(true);
     obj.edit13:setFontSize(14.2);
@@ -673,7 +673,7 @@ function newfrmL5A3_svg()
     obj.edit13:setField("NÍVEL_4_2");
     obj.edit13:setName("edit13");
 
-    obj.layout32 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.rectangle1);
     obj.layout32:setLeft(280);
     obj.layout32:setTop(552);
@@ -681,7 +681,7 @@ function newfrmL5A3_svg()
     obj.layout32:setHeight(27);
     obj.layout32:setName("layout32");
 
-    obj.checkBox10 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox10 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox10:setParent(obj.layout32);
     obj.checkBox10:setLeft(0);
     obj.checkBox10:setTop(0);
@@ -690,7 +690,7 @@ function newfrmL5A3_svg()
     obj.checkBox10:setField("Check_Box111");
     obj.checkBox10:setName("checkBox10");
 
-    obj.layout33 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout33:setParent(obj.rectangle1);
     obj.layout33:setLeft(383);
     obj.layout33:setTop(550);
@@ -698,7 +698,7 @@ function newfrmL5A3_svg()
     obj.layout33:setHeight(32);
     obj.layout33:setName("layout33");
 
-    obj.edit14 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit14:setParent(obj.layout33);
     obj.edit14:setTransparent(true);
     obj.edit14:setFontSize(14.2);
@@ -712,7 +712,7 @@ function newfrmL5A3_svg()
     obj.edit14:setField("NÍVEL_4_3");
     obj.edit14:setName("edit14");
 
-    obj.layout34 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout34 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout34:setParent(obj.rectangle1);
     obj.layout34:setLeft(559);
     obj.layout34:setTop(552);
@@ -720,7 +720,7 @@ function newfrmL5A3_svg()
     obj.layout34:setHeight(27);
     obj.layout34:setName("layout34");
 
-    obj.checkBox11 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox11 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox11:setParent(obj.layout34);
     obj.checkBox11:setLeft(0);
     obj.checkBox11:setTop(0);
@@ -729,7 +729,7 @@ function newfrmL5A3_svg()
     obj.checkBox11:setField("Check_Box116");
     obj.checkBox11:setName("checkBox11");
 
-    obj.layout35 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout35:setParent(obj.rectangle1);
     obj.layout35:setLeft(661);
     obj.layout35:setTop(550);
@@ -737,7 +737,7 @@ function newfrmL5A3_svg()
     obj.layout35:setHeight(32);
     obj.layout35:setName("layout35");
 
-    obj.edit15 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit15:setParent(obj.layout35);
     obj.edit15:setTransparent(true);
     obj.edit15:setFontSize(14.2);
@@ -751,7 +751,7 @@ function newfrmL5A3_svg()
     obj.edit15:setField("NÍVEL_4_4");
     obj.edit15:setName("edit15");
 
-    obj.layout36 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout36:setParent(obj.rectangle1);
     obj.layout36:setLeft(837);
     obj.layout36:setTop(552);
@@ -759,7 +759,7 @@ function newfrmL5A3_svg()
     obj.layout36:setHeight(27);
     obj.layout36:setName("layout36");
 
-    obj.checkBox12 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox12 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox12:setParent(obj.layout36);
     obj.checkBox12:setLeft(0);
     obj.checkBox12:setTop(0);
@@ -768,7 +768,7 @@ function newfrmL5A3_svg()
     obj.checkBox12:setField("Check_Box121");
     obj.checkBox12:setName("checkBox12");
 
-    obj.layout37 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout37 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout37:setParent(obj.rectangle1);
     obj.layout37:setLeft(104);
     obj.layout37:setTop(595);
@@ -776,7 +776,7 @@ function newfrmL5A3_svg()
     obj.layout37:setHeight(89);
     obj.layout37:setName("layout37");
 
-    obj.textEditor10 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor10 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor10:setParent(obj.layout37);
     obj.textEditor10:setLeft(0);
     obj.textEditor10:setTop(0);
@@ -788,7 +788,7 @@ function newfrmL5A3_svg()
     obj.textEditor10:setTransparent(true);
     obj.textEditor10:setName("textEditor10");
 
-    obj.layout38 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout38 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout38:setParent(obj.rectangle1);
     obj.layout38:setLeft(383);
     obj.layout38:setTop(595);
@@ -796,7 +796,7 @@ function newfrmL5A3_svg()
     obj.layout38:setHeight(90);
     obj.layout38:setName("layout38");
 
-    obj.textEditor11 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor11 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor11:setParent(obj.layout38);
     obj.textEditor11:setLeft(0);
     obj.textEditor11:setTop(0);
@@ -808,7 +808,7 @@ function newfrmL5A3_svg()
     obj.textEditor11:setTransparent(true);
     obj.textEditor11:setName("textEditor11");
 
-    obj.layout39 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout39 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout39:setParent(obj.rectangle1);
     obj.layout39:setLeft(660);
     obj.layout39:setTop(595);
@@ -816,7 +816,7 @@ function newfrmL5A3_svg()
     obj.layout39:setHeight(90);
     obj.layout39:setName("layout39");
 
-    obj.textEditor12 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor12 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor12:setParent(obj.layout39);
     obj.textEditor12:setLeft(0);
     obj.textEditor12:setTop(0);
@@ -828,7 +828,7 @@ function newfrmL5A3_svg()
     obj.textEditor12:setTransparent(true);
     obj.textEditor12:setName("textEditor12");
 
-    obj.layout40 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout40 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout40:setParent(obj.rectangle1);
     obj.layout40:setLeft(105);
     obj.layout40:setTop(689);
@@ -836,7 +836,7 @@ function newfrmL5A3_svg()
     obj.layout40:setHeight(32);
     obj.layout40:setName("layout40");
 
-    obj.edit16 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit16:setParent(obj.layout40);
     obj.edit16:setTransparent(true);
     obj.edit16:setFontSize(14.2);
@@ -850,7 +850,7 @@ function newfrmL5A3_svg()
     obj.edit16:setField("NÍVEL_5_2");
     obj.edit16:setName("edit16");
 
-    obj.layout41 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout41 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout41:setParent(obj.rectangle1);
     obj.layout41:setLeft(280);
     obj.layout41:setTop(691);
@@ -858,7 +858,7 @@ function newfrmL5A3_svg()
     obj.layout41:setHeight(27);
     obj.layout41:setName("layout41");
 
-    obj.checkBox13 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox13 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox13:setParent(obj.layout41);
     obj.checkBox13:setLeft(0);
     obj.checkBox13:setTop(0);
@@ -867,7 +867,7 @@ function newfrmL5A3_svg()
     obj.checkBox13:setField("Check_Box112");
     obj.checkBox13:setName("checkBox13");
 
-    obj.layout42 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout42 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout42:setParent(obj.rectangle1);
     obj.layout42:setLeft(383);
     obj.layout42:setTop(689);
@@ -875,7 +875,7 @@ function newfrmL5A3_svg()
     obj.layout42:setHeight(32);
     obj.layout42:setName("layout42");
 
-    obj.edit17 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit17:setParent(obj.layout42);
     obj.edit17:setTransparent(true);
     obj.edit17:setFontSize(14.2);
@@ -889,7 +889,7 @@ function newfrmL5A3_svg()
     obj.edit17:setField("NÍVEL_5_3");
     obj.edit17:setName("edit17");
 
-    obj.layout43 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout43 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout43:setParent(obj.rectangle1);
     obj.layout43:setLeft(559);
     obj.layout43:setTop(692);
@@ -897,7 +897,7 @@ function newfrmL5A3_svg()
     obj.layout43:setHeight(27);
     obj.layout43:setName("layout43");
 
-    obj.checkBox14 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox14 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox14:setParent(obj.layout43);
     obj.checkBox14:setLeft(0);
     obj.checkBox14:setTop(0);
@@ -906,7 +906,7 @@ function newfrmL5A3_svg()
     obj.checkBox14:setField("Check_Box117");
     obj.checkBox14:setName("checkBox14");
 
-    obj.layout44 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout44 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout44:setParent(obj.rectangle1);
     obj.layout44:setLeft(661);
     obj.layout44:setTop(689);
@@ -914,7 +914,7 @@ function newfrmL5A3_svg()
     obj.layout44:setHeight(32);
     obj.layout44:setName("layout44");
 
-    obj.edit18 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit18:setParent(obj.layout44);
     obj.edit18:setTransparent(true);
     obj.edit18:setFontSize(14.2);
@@ -928,7 +928,7 @@ function newfrmL5A3_svg()
     obj.edit18:setField("NÍVEL_5_4");
     obj.edit18:setName("edit18");
 
-    obj.layout45 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout45 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout45:setParent(obj.rectangle1);
     obj.layout45:setLeft(837);
     obj.layout45:setTop(692);
@@ -936,7 +936,7 @@ function newfrmL5A3_svg()
     obj.layout45:setHeight(27);
     obj.layout45:setName("layout45");
 
-    obj.checkBox15 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox15 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox15:setParent(obj.layout45);
     obj.checkBox15:setLeft(0);
     obj.checkBox15:setTop(0);
@@ -945,7 +945,7 @@ function newfrmL5A3_svg()
     obj.checkBox15:setField("Check_Box122");
     obj.checkBox15:setName("checkBox15");
 
-    obj.layout46 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout46 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout46:setParent(obj.rectangle1);
     obj.layout46:setLeft(105);
     obj.layout46:setTop(733);
@@ -953,7 +953,7 @@ function newfrmL5A3_svg()
     obj.layout46:setHeight(92);
     obj.layout46:setName("layout46");
 
-    obj.textEditor13 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor13 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor13:setParent(obj.layout46);
     obj.textEditor13:setLeft(0);
     obj.textEditor13:setTop(0);
@@ -965,7 +965,7 @@ function newfrmL5A3_svg()
     obj.textEditor13:setTransparent(true);
     obj.textEditor13:setName("textEditor13");
 
-    obj.layout47 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout47 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout47:setParent(obj.rectangle1);
     obj.layout47:setLeft(382);
     obj.layout47:setTop(734);
@@ -973,7 +973,7 @@ function newfrmL5A3_svg()
     obj.layout47:setHeight(91);
     obj.layout47:setName("layout47");
 
-    obj.textEditor14 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor14 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor14:setParent(obj.layout47);
     obj.textEditor14:setLeft(0);
     obj.textEditor14:setTop(0);
@@ -985,7 +985,7 @@ function newfrmL5A3_svg()
     obj.textEditor14:setTransparent(true);
     obj.textEditor14:setName("textEditor14");
 
-    obj.layout48 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout48 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout48:setParent(obj.rectangle1);
     obj.layout48:setLeft(660);
     obj.layout48:setTop(734);
@@ -993,7 +993,7 @@ function newfrmL5A3_svg()
     obj.layout48:setHeight(91);
     obj.layout48:setName("layout48");
 
-    obj.textEditor15 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor15 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor15:setParent(obj.layout48);
     obj.textEditor15:setLeft(0);
     obj.textEditor15:setTop(0);
@@ -1005,7 +1005,7 @@ function newfrmL5A3_svg()
     obj.textEditor15:setTransparent(true);
     obj.textEditor15:setName("textEditor15");
 
-    obj.layout49 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout49:setParent(obj.rectangle1);
     obj.layout49:setLeft(105);
     obj.layout49:setTop(861);
@@ -1013,7 +1013,7 @@ function newfrmL5A3_svg()
     obj.layout49:setHeight(21);
     obj.layout49:setName("layout49");
 
-    obj.edit19 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit19:setParent(obj.layout49);
     obj.edit19:setTransparent(true);
     obj.edit19:setFontSize(13.5);
@@ -1027,7 +1027,7 @@ function newfrmL5A3_svg()
     obj.edit19:setField("NOME_5");
     obj.edit19:setName("edit19");
 
-    obj.layout50 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout50 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout50:setParent(obj.rectangle1);
     obj.layout50:setLeft(382);
     obj.layout50:setTop(861);
@@ -1035,7 +1035,7 @@ function newfrmL5A3_svg()
     obj.layout50:setHeight(21);
     obj.layout50:setName("layout50");
 
-    obj.edit20 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit20:setParent(obj.layout50);
     obj.edit20:setTransparent(true);
     obj.edit20:setFontSize(13.5);
@@ -1049,7 +1049,7 @@ function newfrmL5A3_svg()
     obj.edit20:setField("NOME_6");
     obj.edit20:setName("edit20");
 
-    obj.layout51 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout51 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout51:setParent(obj.rectangle1);
     obj.layout51:setLeft(661);
     obj.layout51:setTop(861);
@@ -1057,7 +1057,7 @@ function newfrmL5A3_svg()
     obj.layout51:setHeight(21);
     obj.layout51:setName("layout51");
 
-    obj.edit21 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit21:setParent(obj.layout51);
     obj.edit21:setTransparent(true);
     obj.edit21:setFontSize(13.5);
@@ -1071,7 +1071,7 @@ function newfrmL5A3_svg()
     obj.edit21:setField("NOME_7");
     obj.edit21:setName("edit21");
 
-    obj.layout52 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout52 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout52:setParent(obj.rectangle1);
     obj.layout52:setLeft(104);
     obj.layout52:setTop(883);
@@ -1079,7 +1079,7 @@ function newfrmL5A3_svg()
     obj.layout52:setHeight(41);
     obj.layout52:setName("layout52");
 
-    obj.edit22 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit22:setParent(obj.layout52);
     obj.edit22:setTransparent(true);
     obj.edit22:setFontSize(14.2);
@@ -1093,7 +1093,7 @@ function newfrmL5A3_svg()
     obj.edit22:setField("ANEL_MAESTRIA");
     obj.edit22:setName("edit22");
 
-    obj.layout53 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout53 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout53:setParent(obj.rectangle1);
     obj.layout53:setLeft(234);
     obj.layout53:setTop(883);
@@ -1101,7 +1101,7 @@ function newfrmL5A3_svg()
     obj.layout53:setHeight(41);
     obj.layout53:setName("layout53");
 
-    obj.edit23 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit23:setParent(obj.layout53);
     obj.edit23:setTransparent(true);
     obj.edit23:setFontSize(14.2);
@@ -1115,7 +1115,7 @@ function newfrmL5A3_svg()
     obj.edit23:setField("DURAÇÃO_4");
     obj.edit23:setName("edit23");
 
-    obj.layout54 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout54 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout54:setParent(obj.rectangle1);
     obj.layout54:setLeft(383);
     obj.layout54:setTop(883);
@@ -1123,7 +1123,7 @@ function newfrmL5A3_svg()
     obj.layout54:setHeight(41);
     obj.layout54:setName("layout54");
 
-    obj.edit24 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit24:setParent(obj.layout54);
     obj.edit24:setTransparent(true);
     obj.edit24:setFontSize(14.2);
@@ -1137,7 +1137,7 @@ function newfrmL5A3_svg()
     obj.edit24:setField("ANEL_MAESTRIA_2");
     obj.edit24:setName("edit24");
 
-    obj.layout55 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout55 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout55:setParent(obj.rectangle1);
     obj.layout55:setLeft(512);
     obj.layout55:setTop(882);
@@ -1145,7 +1145,7 @@ function newfrmL5A3_svg()
     obj.layout55:setHeight(42);
     obj.layout55:setName("layout55");
 
-    obj.edit25 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit25:setParent(obj.layout55);
     obj.edit25:setTransparent(true);
     obj.edit25:setFontSize(14.2);
@@ -1159,7 +1159,7 @@ function newfrmL5A3_svg()
     obj.edit25:setField("DURAÇÃO_5");
     obj.edit25:setName("edit25");
 
-    obj.layout56 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout56 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout56:setParent(obj.rectangle1);
     obj.layout56:setLeft(660);
     obj.layout56:setTop(883);
@@ -1167,7 +1167,7 @@ function newfrmL5A3_svg()
     obj.layout56:setHeight(41);
     obj.layout56:setName("layout56");
 
-    obj.edit26 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit26:setParent(obj.layout56);
     obj.edit26:setTransparent(true);
     obj.edit26:setFontSize(14.2);
@@ -1181,7 +1181,7 @@ function newfrmL5A3_svg()
     obj.edit26:setField("ANEL_MAESTRIA_3");
     obj.edit26:setName("edit26");
 
-    obj.layout57 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout57 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout57:setParent(obj.rectangle1);
     obj.layout57:setLeft(790);
     obj.layout57:setTop(882);
@@ -1189,7 +1189,7 @@ function newfrmL5A3_svg()
     obj.layout57:setHeight(42);
     obj.layout57:setName("layout57");
 
-    obj.edit27 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit27 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit27:setParent(obj.layout57);
     obj.edit27:setTransparent(true);
     obj.edit27:setFontSize(14.2);
@@ -1203,7 +1203,7 @@ function newfrmL5A3_svg()
     obj.edit27:setField("DURAÇÃO_6");
     obj.edit27:setName("edit27");
 
-    obj.layout58 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout58 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout58:setParent(obj.rectangle1);
     obj.layout58:setLeft(104);
     obj.layout58:setTop(925);
@@ -1211,7 +1211,7 @@ function newfrmL5A3_svg()
     obj.layout58:setHeight(28);
     obj.layout58:setName("layout58");
 
-    obj.edit28 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit28 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit28:setParent(obj.layout58);
     obj.edit28:setTransparent(true);
     obj.edit28:setFontSize(14.2);
@@ -1225,7 +1225,7 @@ function newfrmL5A3_svg()
     obj.edit28:setField("EFEITO_19");
     obj.edit28:setName("edit28");
 
-    obj.layout59 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout59 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout59:setParent(obj.rectangle1);
     obj.layout59:setLeft(382);
     obj.layout59:setTop(925);
@@ -1233,7 +1233,7 @@ function newfrmL5A3_svg()
     obj.layout59:setHeight(28);
     obj.layout59:setName("layout59");
 
-    obj.edit29 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit29 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit29:setParent(obj.layout59);
     obj.edit29:setTransparent(true);
     obj.edit29:setFontSize(14.2);
@@ -1247,7 +1247,7 @@ function newfrmL5A3_svg()
     obj.edit29:setField("EFEITO_20");
     obj.edit29:setName("edit29");
 
-    obj.layout60 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout60 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout60:setParent(obj.rectangle1);
     obj.layout60:setLeft(661);
     obj.layout60:setTop(925);
@@ -1255,7 +1255,7 @@ function newfrmL5A3_svg()
     obj.layout60:setHeight(28);
     obj.layout60:setName("layout60");
 
-    obj.edit30 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit30 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit30:setParent(obj.layout60);
     obj.edit30:setTransparent(true);
     obj.edit30:setFontSize(14.2);
@@ -1269,7 +1269,7 @@ function newfrmL5A3_svg()
     obj.edit30:setField("EFEITO_21");
     obj.edit30:setName("edit30");
 
-    obj.layout61 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout61 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout61:setParent(obj.rectangle1);
     obj.layout61:setLeft(104);
     obj.layout61:setTop(957);
@@ -1277,7 +1277,7 @@ function newfrmL5A3_svg()
     obj.layout61:setHeight(20);
     obj.layout61:setName("layout61");
 
-    obj.edit31 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit31:setParent(obj.layout61);
     obj.edit31:setTransparent(true);
     obj.edit31:setFontSize(12.8);
@@ -1291,7 +1291,7 @@ function newfrmL5A3_svg()
     obj.edit31:setField("NOME_8");
     obj.edit31:setName("edit31");
 
-    obj.layout62 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout62 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout62:setParent(obj.rectangle1);
     obj.layout62:setLeft(383);
     obj.layout62:setTop(957);
@@ -1299,7 +1299,7 @@ function newfrmL5A3_svg()
     obj.layout62:setHeight(20);
     obj.layout62:setName("layout62");
 
-    obj.edit32 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit32:setParent(obj.layout62);
     obj.edit32:setTransparent(true);
     obj.edit32:setFontSize(12.8);
@@ -1313,7 +1313,7 @@ function newfrmL5A3_svg()
     obj.edit32:setField("NOME_9");
     obj.edit32:setName("edit32");
 
-    obj.layout63 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout63 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout63:setParent(obj.rectangle1);
     obj.layout63:setLeft(661);
     obj.layout63:setTop(957);
@@ -1321,7 +1321,7 @@ function newfrmL5A3_svg()
     obj.layout63:setHeight(20);
     obj.layout63:setName("layout63");
 
-    obj.edit33 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit33 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit33:setParent(obj.layout63);
     obj.edit33:setTransparent(true);
     obj.edit33:setFontSize(12.8);
@@ -1335,7 +1335,7 @@ function newfrmL5A3_svg()
     obj.edit33:setField("NOME_10");
     obj.edit33:setName("edit33");
 
-    obj.layout64 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout64 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout64:setParent(obj.rectangle1);
     obj.layout64:setLeft(105);
     obj.layout64:setTop(979);
@@ -1343,7 +1343,7 @@ function newfrmL5A3_svg()
     obj.layout64:setHeight(41);
     obj.layout64:setName("layout64");
 
-    obj.edit34 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit34:setParent(obj.layout64);
     obj.edit34:setTransparent(true);
     obj.edit34:setFontSize(14.2);
@@ -1357,7 +1357,7 @@ function newfrmL5A3_svg()
     obj.edit34:setField("ANEL_MAESTRIA_4");
     obj.edit34:setName("edit34");
 
-    obj.layout65 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout65 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout65:setParent(obj.rectangle1);
     obj.layout65:setLeft(234);
     obj.layout65:setTop(978);
@@ -1365,7 +1365,7 @@ function newfrmL5A3_svg()
     obj.layout65:setHeight(42);
     obj.layout65:setName("layout65");
 
-    obj.edit35 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit35 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit35:setParent(obj.layout65);
     obj.edit35:setTransparent(true);
     obj.edit35:setFontSize(14.2);
@@ -1379,7 +1379,7 @@ function newfrmL5A3_svg()
     obj.edit35:setField("DURAÇÃO_7");
     obj.edit35:setName("edit35");
 
-    obj.layout66 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout66 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout66:setParent(obj.rectangle1);
     obj.layout66:setLeft(382);
     obj.layout66:setTop(979);
@@ -1387,7 +1387,7 @@ function newfrmL5A3_svg()
     obj.layout66:setHeight(41);
     obj.layout66:setName("layout66");
 
-    obj.edit36 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit36:setParent(obj.layout66);
     obj.edit36:setTransparent(true);
     obj.edit36:setFontSize(14.2);
@@ -1401,7 +1401,7 @@ function newfrmL5A3_svg()
     obj.edit36:setField("ANEL_MAESTRIA_5");
     obj.edit36:setName("edit36");
 
-    obj.layout67 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout67 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout67:setParent(obj.rectangle1);
     obj.layout67:setLeft(512);
     obj.layout67:setTop(979);
@@ -1409,7 +1409,7 @@ function newfrmL5A3_svg()
     obj.layout67:setHeight(41);
     obj.layout67:setName("layout67");
 
-    obj.edit37 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit37 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit37:setParent(obj.layout67);
     obj.edit37:setTransparent(true);
     obj.edit37:setFontSize(14.2);
@@ -1423,7 +1423,7 @@ function newfrmL5A3_svg()
     obj.edit37:setField("DURAÇÃO_8");
     obj.edit37:setName("edit37");
 
-    obj.layout68 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout68 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout68:setParent(obj.rectangle1);
     obj.layout68:setLeft(661);
     obj.layout68:setTop(979);
@@ -1431,7 +1431,7 @@ function newfrmL5A3_svg()
     obj.layout68:setHeight(41);
     obj.layout68:setName("layout68");
 
-    obj.edit38 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit38 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit38:setParent(obj.layout68);
     obj.edit38:setTransparent(true);
     obj.edit38:setFontSize(14.2);
@@ -1445,7 +1445,7 @@ function newfrmL5A3_svg()
     obj.edit38:setField("ANEL_MAESTRIA_6");
     obj.edit38:setName("edit38");
 
-    obj.layout69 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout69 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout69:setParent(obj.rectangle1);
     obj.layout69:setLeft(790);
     obj.layout69:setTop(979);
@@ -1453,7 +1453,7 @@ function newfrmL5A3_svg()
     obj.layout69:setHeight(41);
     obj.layout69:setName("layout69");
 
-    obj.edit39 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit39 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit39:setParent(obj.layout69);
     obj.edit39:setTransparent(true);
     obj.edit39:setFontSize(14.2);
@@ -1467,7 +1467,7 @@ function newfrmL5A3_svg()
     obj.edit39:setField("DURAÇÃO_9");
     obj.edit39:setName("edit39");
 
-    obj.layout70 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout70 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout70:setParent(obj.rectangle1);
     obj.layout70:setLeft(104);
     obj.layout70:setTop(1021);
@@ -1475,7 +1475,7 @@ function newfrmL5A3_svg()
     obj.layout70:setHeight(28);
     obj.layout70:setName("layout70");
 
-    obj.edit40 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit40 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit40:setParent(obj.layout70);
     obj.edit40:setTransparent(true);
     obj.edit40:setFontSize(14.2);
@@ -1489,7 +1489,7 @@ function newfrmL5A3_svg()
     obj.edit40:setField("EFEITO_22");
     obj.edit40:setName("edit40");
 
-    obj.layout71 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout71 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout71:setParent(obj.rectangle1);
     obj.layout71:setLeft(383);
     obj.layout71:setTop(1021);
@@ -1497,7 +1497,7 @@ function newfrmL5A3_svg()
     obj.layout71:setHeight(28);
     obj.layout71:setName("layout71");
 
-    obj.edit41 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit41:setParent(obj.layout71);
     obj.edit41:setTransparent(true);
     obj.edit41:setFontSize(14.2);
@@ -1511,7 +1511,7 @@ function newfrmL5A3_svg()
     obj.edit41:setField("EFEITO_23");
     obj.edit41:setName("edit41");
 
-    obj.layout72 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout72 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout72:setParent(obj.rectangle1);
     obj.layout72:setLeft(661);
     obj.layout72:setTop(1021);
@@ -1519,7 +1519,7 @@ function newfrmL5A3_svg()
     obj.layout72:setHeight(28);
     obj.layout72:setName("layout72");
 
-    obj.edit42 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit42:setParent(obj.layout72);
     obj.edit42:setTransparent(true);
     obj.edit42:setFontSize(14.2);
@@ -1533,7 +1533,7 @@ function newfrmL5A3_svg()
     obj.edit42:setField("EFEITO_24");
     obj.edit42:setName("edit42");
 
-    obj.layout73 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout73 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout73:setParent(obj.rectangle1);
     obj.layout73:setLeft(105);
     obj.layout73:setTop(1054);
@@ -1541,7 +1541,7 @@ function newfrmL5A3_svg()
     obj.layout73:setHeight(20);
     obj.layout73:setName("layout73");
 
-    obj.edit43 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit43 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit43:setParent(obj.layout73);
     obj.edit43:setTransparent(true);
     obj.edit43:setFontSize(12.8);
@@ -1555,7 +1555,7 @@ function newfrmL5A3_svg()
     obj.edit43:setField("NOME_11");
     obj.edit43:setName("edit43");
 
-    obj.layout74 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout74 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout74:setParent(obj.rectangle1);
     obj.layout74:setLeft(383);
     obj.layout74:setTop(1054);
@@ -1563,7 +1563,7 @@ function newfrmL5A3_svg()
     obj.layout74:setHeight(20);
     obj.layout74:setName("layout74");
 
-    obj.edit44 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit44 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit44:setParent(obj.layout74);
     obj.edit44:setTransparent(true);
     obj.edit44:setFontSize(12.8);
@@ -1577,7 +1577,7 @@ function newfrmL5A3_svg()
     obj.edit44:setField("NOME_12");
     obj.edit44:setName("edit44");
 
-    obj.layout75 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout75 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout75:setParent(obj.rectangle1);
     obj.layout75:setLeft(661);
     obj.layout75:setTop(1054);
@@ -1585,7 +1585,7 @@ function newfrmL5A3_svg()
     obj.layout75:setHeight(20);
     obj.layout75:setName("layout75");
 
-    obj.edit45 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit45:setParent(obj.layout75);
     obj.edit45:setTransparent(true);
     obj.edit45:setFontSize(12.8);
@@ -1599,7 +1599,7 @@ function newfrmL5A3_svg()
     obj.edit45:setField("NOME_13");
     obj.edit45:setName("edit45");
 
-    obj.layout76 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout76 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout76:setParent(obj.rectangle1);
     obj.layout76:setLeft(104);
     obj.layout76:setTop(1075);
@@ -1607,7 +1607,7 @@ function newfrmL5A3_svg()
     obj.layout76:setHeight(41);
     obj.layout76:setName("layout76");
 
-    obj.edit46 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit46:setParent(obj.layout76);
     obj.edit46:setTransparent(true);
     obj.edit46:setFontSize(14.2);
@@ -1621,7 +1621,7 @@ function newfrmL5A3_svg()
     obj.edit46:setField("ANEL_MAESTRIA_7");
     obj.edit46:setName("edit46");
 
-    obj.layout77 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout77 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout77:setParent(obj.rectangle1);
     obj.layout77:setLeft(234);
     obj.layout77:setTop(1075);
@@ -1629,7 +1629,7 @@ function newfrmL5A3_svg()
     obj.layout77:setHeight(41);
     obj.layout77:setName("layout77");
 
-    obj.edit47 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit47:setParent(obj.layout77);
     obj.edit47:setTransparent(true);
     obj.edit47:setFontSize(14.2);
@@ -1643,7 +1643,7 @@ function newfrmL5A3_svg()
     obj.edit47:setField("DURAÇÃO_10");
     obj.edit47:setName("edit47");
 
-    obj.layout78 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout78 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout78:setParent(obj.rectangle1);
     obj.layout78:setLeft(382);
     obj.layout78:setTop(1075);
@@ -1651,7 +1651,7 @@ function newfrmL5A3_svg()
     obj.layout78:setHeight(41);
     obj.layout78:setName("layout78");
 
-    obj.edit48 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit48:setParent(obj.layout78);
     obj.edit48:setTransparent(true);
     obj.edit48:setFontSize(14.2);
@@ -1665,7 +1665,7 @@ function newfrmL5A3_svg()
     obj.edit48:setField("ANEL_MAESTRIA_8");
     obj.edit48:setName("edit48");
 
-    obj.layout79 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout79 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout79:setParent(obj.rectangle1);
     obj.layout79:setLeft(512);
     obj.layout79:setTop(1075);
@@ -1673,7 +1673,7 @@ function newfrmL5A3_svg()
     obj.layout79:setHeight(41);
     obj.layout79:setName("layout79");
 
-    obj.edit49 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit49 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit49:setParent(obj.layout79);
     obj.edit49:setTransparent(true);
     obj.edit49:setFontSize(14.2);
@@ -1687,7 +1687,7 @@ function newfrmL5A3_svg()
     obj.edit49:setField("DURAÇÃO_11");
     obj.edit49:setName("edit49");
 
-    obj.layout80 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout80 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout80:setParent(obj.rectangle1);
     obj.layout80:setLeft(660);
     obj.layout80:setTop(1075);
@@ -1695,7 +1695,7 @@ function newfrmL5A3_svg()
     obj.layout80:setHeight(41);
     obj.layout80:setName("layout80");
 
-    obj.edit50 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit50:setParent(obj.layout80);
     obj.edit50:setTransparent(true);
     obj.edit50:setFontSize(14.2);
@@ -1709,7 +1709,7 @@ function newfrmL5A3_svg()
     obj.edit50:setField("ANEL_MAESTRIA_9");
     obj.edit50:setName("edit50");
 
-    obj.layout81 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout81 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout81:setParent(obj.rectangle1);
     obj.layout81:setLeft(790);
     obj.layout81:setTop(1075);
@@ -1717,7 +1717,7 @@ function newfrmL5A3_svg()
     obj.layout81:setHeight(41);
     obj.layout81:setName("layout81");
 
-    obj.edit51 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit51:setParent(obj.layout81);
     obj.edit51:setTransparent(true);
     obj.edit51:setFontSize(14.2);
@@ -1731,7 +1731,7 @@ function newfrmL5A3_svg()
     obj.edit51:setField("DURAÇÃO_12");
     obj.edit51:setName("edit51");
 
-    obj.layout82 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout82 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout82:setParent(obj.rectangle1);
     obj.layout82:setLeft(105);
     obj.layout82:setTop(1117);
@@ -1739,7 +1739,7 @@ function newfrmL5A3_svg()
     obj.layout82:setHeight(31);
     obj.layout82:setName("layout82");
 
-    obj.edit52 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit52 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit52:setParent(obj.layout82);
     obj.edit52:setTransparent(true);
     obj.edit52:setFontSize(14.2);
@@ -1753,7 +1753,7 @@ function newfrmL5A3_svg()
     obj.edit52:setField("EFEITO_25");
     obj.edit52:setName("edit52");
 
-    obj.layout83 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout83 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout83:setParent(obj.rectangle1);
     obj.layout83:setLeft(382);
     obj.layout83:setTop(1117);
@@ -1761,7 +1761,7 @@ function newfrmL5A3_svg()
     obj.layout83:setHeight(31);
     obj.layout83:setName("layout83");
 
-    obj.edit53 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit53 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit53:setParent(obj.layout83);
     obj.edit53:setTransparent(true);
     obj.edit53:setFontSize(14.2);
@@ -1775,7 +1775,7 @@ function newfrmL5A3_svg()
     obj.edit53:setField("EFEITO_26");
     obj.edit53:setName("edit53");
 
-    obj.layout84 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout84 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout84:setParent(obj.rectangle1);
     obj.layout84:setLeft(661);
     obj.layout84:setTop(1117);
@@ -1783,7 +1783,7 @@ function newfrmL5A3_svg()
     obj.layout84:setHeight(31);
     obj.layout84:setName("layout84");
 
-    obj.edit54 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit54:setParent(obj.layout84);
     obj.edit54:setTransparent(true);
     obj.edit54:setFontSize(14.2);
@@ -1985,9 +1985,23 @@ function newfrmL5A3_svg()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmL5A3_svg()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmL5A3_svg();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmL5A3_svg = {
@@ -2001,6 +2015,6 @@ local _frmL5A3_svg = {
     description=""};
 
 frmL5A3_svg = _frmL5A3_svg;
-rrpg.registrarForm(_frmL5A3_svg);
+Firecast.registrarForm(_frmL5A3_svg);
 
 return _frmL5A3_svg;

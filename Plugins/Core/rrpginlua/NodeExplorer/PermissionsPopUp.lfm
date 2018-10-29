@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <popupForm name="frmNodePermissions" width="400" height="280" title="Node Explorer" theme="dark" resizable="true">
 	<script><![CDATA[
+		local ndb = require("ndb.lua");	
 		local ndbTemporario = ndb.newMemNodeDatabase();
 	
 		local nodeRaiz; -- Node raiz que o usuario pediu para editar
-		local node; -- Node Atual que o usuario está editando
+		local node = nil; -- Node Atual que o usuario está editando
 		local currentChildNodes = {}; -- Array com os child nodes do node atual
-		local ndb = require("ndb.lua");
-		local depth;	
+
+		local depth = 0;	
 		
 		if sheet~=nil and node==nil then
 			node = sheet;
-		end;
-		
-		if depth==nil then
-			depth = 0;
 		end;
 
 		local trPermissions = nil;
@@ -102,7 +99,7 @@
 			
 			table.sort(currentChildNodes,
 				function(left, right)
-					return utils.compareStringPtBr(ndb.getNodeName(left), ndb.getNodeName(right)) < 0;
+					return Utils.compareStringPtBr(ndb.getNodeName(left), ndb.getNodeName(right)) < 0;
 				end);
 			
 			refreshList();			
@@ -383,7 +380,7 @@
 		<button left="125" top="250" width="80" height="25" text="Desfazer">
 			<event name="onClick">
 				if sheet~= nil then
-					dialogs.confirmOkCancel("Tem certeza que deseja desfazer as alterações?",
+					Dialogs.confirmOkCancel("Tem certeza que deseja desfazer as alterações?",
 						function (confirmado)
 							if confirmado then
 								trPermissions:rollback();
@@ -397,7 +394,7 @@
 		<button left="215" top="250" width="80" height="25" text="Salvar">
 			<event name="onClick">
 				if sheet~= nil then
-					dialogs.confirmOkCancel("Tem certeza que deseja salvar as alterações?",
+					Dialogs.confirmOkCancel("Tem certeza que deseja salvar as alterações?",
 						function (confirmado)
 							if confirmado then
 								trPermissions:commit();
@@ -410,7 +407,7 @@
 		<button left="305" top="250" width="80" height="25" text="Ajuda">
 			<event name="onClick">
 				if sheet~= nil then
-					gui.openInBrowser('http://wiki.rrpg.com.br/index.php?title=Editor_de_Permiss%C3%B5es_de_Node');
+					GUI.openInBrowser('http://wiki.rrpg.com.br/index.php?title=Editor_de_Permiss%C3%B5es_de_Node');
 				end;
 			</event>
 		</button>

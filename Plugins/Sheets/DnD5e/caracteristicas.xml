@@ -32,7 +32,7 @@
 				<flowLayout maxControlsPerLine="1" autoHeight="true" class="tileCarac" lineSpacing="10" margins="{left = 4, right = 4}">
 					<!-- IMAGEM -->
 					<flowPart class="tileCarac" height="390" frameStyle="frames/panel5/frame.xml" margins="{left = 0, right = 4}">
-						<image align="client" style="autoFit" field="imagens.aparencia" class="transparente" margins="{top=2}" editable="true"/>
+						<image align="client" style="autoFit" field="imagens.aparencia" class="transparente" margins="{top=2}" editable="true" animate="true"/>
 						<label align="bottom" autoSize="true" text="APARÊNCIA" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 					</flowPart>		
 					

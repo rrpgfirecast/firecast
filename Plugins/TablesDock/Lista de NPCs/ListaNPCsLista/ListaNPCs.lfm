@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="Listade_NPC_Ficha" formType="sheetTemplate" dataType="Lista.de.NPC.Ficha" title="Lista de NPCs (Ficha)" align="client" theme="dark">
 	<template name="corInfo">
 		<layout align="left" width="20" height="20" hitTest="true" >
@@ -222,7 +222,7 @@
 	</script>
 	
 	<layout align="client" visible="false">
-		<popup name="Config" width="412" height="190">
+		<popup name="Config" width="412" height="190" autoScopeNode="false">
 			<label align="top" height="18" horzTextAlign="center" text="Configurações de Barrinhas" fontStyle="bold" fontColor="white"/>
 			<layout name="dcsTituloEAbas" align="top" height="18">
 				<label left="5" fontSize="12" autoSize="true" text="Título da Aba:"/>
@@ -259,7 +259,7 @@
 				</button>
 			</layout>
 			
-			<popup name="SelectCor" width="192" height="100">
+			<popup name="SelectCor" width="192" height="100" autoScopeNode="false">
 				<layout align="top" height="24">
 					<label align="client" text="Selecione a Cor:" horzTextAlign="center" fontStyle="Bold"/>
 				</layout>
@@ -330,7 +330,7 @@
 	<dataScopeBox name="recordNode" visible="false" />
 
 	<layout visible="false">
-		<popup name="dropDownFalso2" width="128" height="128" backOpacity="0" >
+		<popup name="dropDownFalso2" width="128" height="128" backOpacity="0" autoScopeNode="false">
 			<scrollBox align="client">
 				 <recordList visible="true" align="top" templateForm="OpcaoDaComboboxFalsa2" field="opcoesFalsas2" name="opcoesFalsas2" layout="verticalTiles" autoHeight="true" selectable="true" minQt="0" >
 					<event name="onSelect">

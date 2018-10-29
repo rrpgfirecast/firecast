@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newataques()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_ataques()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,14 +30,14 @@ function newataques()
     obj:setHeight(180);
     obj:setWidth(632);
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setWidth(632);
     obj.rectangle1:setHeight(150);
     obj.rectangle1:setColor("white");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setText("Ataque");
     obj.label1:setWidth(158);
@@ -46,7 +46,7 @@ function newataques()
     obj.label1:setFontColor("black");
     obj.label1:setName("label1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setWidth(158);
     obj.edit1:setField("ataque");
@@ -56,7 +56,7 @@ function newataques()
     obj.edit1:setFontColor("black");
     obj.edit1:setName("edit1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.rectangle1);
     obj.label2:setText("Bônus de Ataque");
     obj.label2:setWidth(158);
@@ -66,7 +66,7 @@ function newataques()
     obj.label2:setFontColor("black");
     obj.label2:setName("label2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.rectangle1);
     obj.edit2:setWidth(158);
     obj.edit2:setField("bonus");
@@ -77,7 +77,7 @@ function newataques()
     obj.edit2:setFontColor("black");
     obj.edit2:setName("edit2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.rectangle1);
     obj.label3:setText("Dano");
     obj.label3:setWidth(158);
@@ -87,7 +87,7 @@ function newataques()
     obj.label3:setFontColor("black");
     obj.label3:setName("label3");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.rectangle1);
     obj.edit3:setWidth(158);
     obj.edit3:setField("dano");
@@ -98,7 +98,7 @@ function newataques()
     obj.edit3:setFontColor("black");
     obj.edit3:setName("edit3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.rectangle1);
     obj.label4:setText("Sucesso Decisivo");
     obj.label4:setWidth(158);
@@ -108,7 +108,7 @@ function newataques()
     obj.label4:setFontColor("black");
     obj.label4:setName("label4");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.rectangle1);
     obj.edit4:setWidth(158);
     obj.edit4:setField("decisivo");
@@ -119,7 +119,7 @@ function newataques()
     obj.edit4:setFontColor("black");
     obj.edit4:setName("edit4");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.rectangle1);
     obj.label5:setText("Alcance");
     obj.label5:setWidth(80);
@@ -129,7 +129,7 @@ function newataques()
     obj.label5:setFontColor("black");
     obj.label5:setName("label5");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.rectangle1);
     obj.edit5:setWidth(80);
     obj.edit5:setField("alcance");
@@ -139,7 +139,7 @@ function newataques()
     obj.edit5:setFontColor("black");
     obj.edit5:setName("edit5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.rectangle1);
     obj.label6:setText("Tipo");
     obj.label6:setWidth(80);
@@ -150,7 +150,7 @@ function newataques()
     obj.label6:setFontColor("black");
     obj.label6:setName("label6");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.rectangle1);
     obj.edit6:setWidth(80);
     obj.edit6:setField("tipo");
@@ -161,7 +161,7 @@ function newataques()
     obj.edit6:setFontColor("black");
     obj.edit6:setName("edit6");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.rectangle1);
     obj.label7:setText("Observações");
     obj.label7:setWidth(472);
@@ -172,7 +172,7 @@ function newataques()
     obj.label7:setFontColor("black");
     obj.label7:setName("label7");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.rectangle1);
     obj.edit7:setWidth(472);
     obj.edit7:setField("observacoes");
@@ -183,7 +183,7 @@ function newataques()
     obj.edit7:setFontColor("black");
     obj.edit7:setName("edit7");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setText("Apagar");
     obj.button1:setWidth(100);
@@ -192,7 +192,7 @@ function newataques()
     obj.button1:setName("button1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             ndb.deleteNode(sheet);
         end, obj);
 
@@ -230,9 +230,23 @@ function newataques()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newataques()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_ataques();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _ataques = {
@@ -246,6 +260,6 @@ local _ataques = {
     description=""};
 
 ataques = _ataques;
-rrpg.registrarForm(_ataques);
+Firecast.registrarForm(_ataques);
 
 return _ataques;

@@ -13,11 +13,11 @@
 				local internetDownloadId = sheet.internetDownloadId;
 				
 				if internetDownloadId ~= nil then
-					internet.stopDownload(internetDownloadId);
+					Internet.stopDownload(internetDownloadId);
 					sheet.internetDownloadId = nil;
 				end;		
 				
-				ndb.deleteNode(sheet);
+				NDB.deleteNode(sheet);
 			end;
 		end;
 		
@@ -29,7 +29,7 @@
 			local indicatorId = sheet.indicatorId;
 		
 			if sheet.errorMsg == nil then
-				dialogs.confirmYesNo(lang("plugins.mgr.cancelConfirmation"),
+				Dialogs.confirmYesNo(lang("plugins.mgr.cancelConfirmation"),
 					function(confirmado)
 						if confirmado then
 							realmenteCancelarDownload(indicatorId);

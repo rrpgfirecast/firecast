@@ -6,7 +6,7 @@
 	
 	<!--
 	<script>
-		system.isMobile = function() return true; end;
+		System.isMobile = function() return true; end;
 	</script> -->
 	
 	<layout name="layTopTracker" align="top" height="18" margins="{left=2, right=2, top=2}">
@@ -15,13 +15,13 @@
 		</button>
 		<button name="btnRoll" text="R" onClick="" class="combatHeaderButton" hint="Rola todas iniciativas">
 			<event name="onClick">
-				local atores = ndb.getChildNodes(sheet.atores);
-				local mesa = rrpg.getMesaDe(self);
+				local atores = NDB.getChildNodes(sheet.atores);
+				local mesa = Firecast.getMesaDe(self);
 
 				for i=1, #atores, 1 do 
 				local ator = atores[i];
 					if ator.iniciativaRolagem~= nil then
-						local rolagem = rrpg.interpretarRolagem(ator.iniciativaRolagem);
+						local rolagem = Firecast.interpretarRolagem(ator.iniciativaRolagem);
 
 						if rolagem.possuiAlgumDado then
 							mesa.activeChat:rolarDados(rolagem, "Iniciativa de " .. (ator.nome or "ator"), 
@@ -36,7 +36,7 @@
 		</button>
 		<button name="btnAddAll" text="T" onClick="" class="combatHeaderButton" hint="Rola Adiciona todos com +Jogador a lista">
 			<event name="onClick">
-				local mesa = rrpg.getMesaDe(self);
+				local mesa = Firecast.getMesaDe(self);
 				local jogadores = mesa.jogadores;
 
 				for i=1, #jogadores, 1 do
@@ -44,7 +44,7 @@
 					if jogador.isJogador then
 						local ator = self:criarNovoAtor();
 						if ator ~= nil then
-							ator.nome = utils.removerFmtChat(jogador.nick);
+							ator.nome = Utils.removerFmtChat(jogador.nick);
 							ator.fof = 1;
 						end;
 					end;
@@ -70,7 +70,7 @@
 	</layout>
 	
 	<script>
-		if system.isMobile() then
+		if System.isMobile() then
 			self.layTopTracker.height = 32;
 			self.btnAddAtor.width = self.layTopTracker.height;
 			self.layHeader0.width = 32;
@@ -97,7 +97,7 @@
 	</layout>
 	
 	<script>
-		if system.isMobile() then
+		if System.isMobile() then
 			self.layTrackerBottom.height = 32;
 		end;
 		

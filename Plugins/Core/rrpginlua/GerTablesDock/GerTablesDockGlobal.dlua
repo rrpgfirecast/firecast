@@ -5,7 +5,7 @@ local tdNDB = nil;
 
 function tdGlobal.getDocksInfoNDB()
 	if tdNDB == nil then
-		tdNDB = ndb.load("tablesDockNDB.xml");
+		tdNDB = NDB.load("tablesDockNDB.xml");
 	end;
 	
 	return tdNDB;

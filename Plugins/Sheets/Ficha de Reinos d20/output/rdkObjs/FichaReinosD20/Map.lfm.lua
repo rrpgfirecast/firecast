@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmMap()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmMap()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -29,12 +29,12 @@ function newfrmMap()
     obj:setName("frmMap");
     obj:setAlign("client");
 
-    obj.mapa = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.mapa = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.mapa:setParent(obj);
     obj.mapa:setAlign("client");
     obj.mapa:setName("mapa");
 
-    obj.sizeLayout = gui.fromHandle(_obj_newObject("layout"));
+    obj.sizeLayout = GUI.fromHandle(_obj_newObject("layout"));
     obj.sizeLayout:setParent(obj.mapa);
     obj.sizeLayout:setName("sizeLayout");
     obj.sizeLayout:setLeft(1160);
@@ -42,13 +42,13 @@ function newfrmMap()
     obj.sizeLayout:setWidth(110);
     obj.sizeLayout:setHeight(200);
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.sizeLayout);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.sizeLayout);
     obj.label1:setLeft(0);
     obj.label1:setTop(5);
@@ -60,7 +60,7 @@ function newfrmMap()
     obj.label1:setHitTest(true);
     obj.label1:setName("label1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.sizeLayout);
     obj.edit1:setLeft(5);
     obj.edit1:setTop(25);
@@ -72,13 +72,13 @@ function newfrmMap()
     obj.edit1:setType("number");
     obj.edit1:setName("edit1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.sizeLayout);
     obj.dataLink1:setField("altura");
     obj.dataLink1:setDefaultValue("25");
     obj.dataLink1:setName("dataLink1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.sizeLayout);
     obj.label2:setLeft(0);
     obj.label2:setTop(55);
@@ -90,7 +90,7 @@ function newfrmMap()
     obj.label2:setHitTest(true);
     obj.label2:setName("label2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.sizeLayout);
     obj.edit2:setLeft(5);
     obj.edit2:setTop(75);
@@ -102,13 +102,13 @@ function newfrmMap()
     obj.edit2:setType("number");
     obj.edit2:setName("edit2");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.sizeLayout);
     obj.dataLink2:setField("largura");
     obj.dataLink2:setDefaultValue("25");
     obj.dataLink2:setName("dataLink2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.sizeLayout);
     obj.label3:setLeft(0);
     obj.label3:setTop(105);
@@ -120,7 +120,7 @@ function newfrmMap()
     obj.label3:setHitTest(true);
     obj.label3:setName("label3");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.sizeLayout);
     obj.edit3:setLeft(5);
     obj.edit3:setTop(125);
@@ -132,13 +132,13 @@ function newfrmMap()
     obj.edit3:setType("number");
     obj.edit3:setName("edit3");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj.sizeLayout);
     obj.dataLink3:setField("altura2");
     obj.dataLink3:setDefaultValue("30");
     obj.dataLink3:setName("dataLink3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.sizeLayout);
     obj.label4:setLeft(0);
     obj.label4:setTop(155);
@@ -150,7 +150,7 @@ function newfrmMap()
     obj.label4:setHitTest(true);
     obj.label4:setName("label4");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.sizeLayout);
     obj.edit4:setLeft(5);
     obj.edit4:setTop(175);
@@ -162,13 +162,13 @@ function newfrmMap()
     obj.edit4:setType("number");
     obj.edit4:setName("edit4");
 
-    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink4:setParent(obj.sizeLayout);
     obj.dataLink4:setField("largura2");
     obj.dataLink4:setDefaultValue("30");
     obj.dataLink4:setName("dataLink4");
 
-    obj.mapRectangle = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.mapRectangle = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.mapRectangle:setParent(obj.mapa);
     obj.mapRectangle:setLeft(0);
     obj.mapRectangle:setTop(0);
@@ -177,7 +177,7 @@ function newfrmMap()
     obj.mapRectangle:setColor("black");
     obj.mapRectangle:setName("mapRectangle");
 
-    obj.mapImage = gui.fromHandle(_obj_newObject("image"));
+    obj.mapImage = GUI.fromHandle(_obj_newObject("image"));
     obj.mapImage:setParent(obj.mapa);
     obj.mapImage:setWidth(1152);
     obj.mapImage:setHeight(648);
@@ -193,7 +193,7 @@ function newfrmMap()
 
 
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
             
             					for i=1, #cidades, 1 do
@@ -210,7 +210,7 @@ function newfrmMap()
         end, obj);
 
     obj._e_event1 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local cidades = ndb.getChildNodes(sheet.listaDeDestalhesDaCidade);
             
             					for i=1, #cidades, 1 do
@@ -227,7 +227,7 @@ function newfrmMap()
         end, obj);
 
     obj._e_event2 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
             
             					for i=1, #lugares, 1 do
@@ -244,7 +244,7 @@ function newfrmMap()
         end, obj);
 
     obj._e_event3 = obj.dataLink4:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local lugares = ndb.getChildNodes(sheet.listaDeDestalhesDaGeografia);
             
             					for i=1, #lugares, 1 do
@@ -261,7 +261,7 @@ function newfrmMap()
         end, obj);
 
     obj._e_event4 = obj.mapImage:addEventListener("onMouseDown",
-        function (self, event)
+        function (_, event)
             sheet.button = event.button;
             				sheet.x = event.x;
             				sheet.y = event.y;
@@ -271,7 +271,7 @@ function newfrmMap()
         end, obj);
 
     obj._e_event5 = obj.mapImage:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet==nil then return end;
             				
             				local mesa = rrpg.getMesaDe(sheet);
@@ -530,9 +530,23 @@ function newfrmMap()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmMap()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmMap();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmMap = {
@@ -546,6 +560,6 @@ local _frmMap = {
     description=""};
 
 frmMap = _frmMap;
-rrpg.registrarForm(_frmMap);
+Firecast.registrarForm(_frmMap);
 
 return _frmMap;

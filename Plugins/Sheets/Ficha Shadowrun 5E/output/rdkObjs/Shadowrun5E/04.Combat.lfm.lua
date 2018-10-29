@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmCombat()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmCombat()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -29,12 +29,12 @@ function newfrmCombat()
     obj:setName("frmCombat");
     obj:setAlign("client");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -42,13 +42,13 @@ function newfrmCombat()
     obj.layout1:setHeight(340);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(5);
     obj.label1:setTop(0);
@@ -58,7 +58,7 @@ function newfrmCombat()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout1);
     obj.button1:setText("+");
     obj.button1:setLeft(5);
@@ -67,7 +67,7 @@ function newfrmCombat()
     obj.button1:setHeight(25);
     obj.button1:setName("button1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout1);
     obj.label2:setText("WEAPON");
     obj.label2:setLeft(5);
@@ -77,7 +77,7 @@ function newfrmCombat()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout1);
     obj.label3:setText("DMG");
     obj.label3:setLeft(155);
@@ -87,7 +87,7 @@ function newfrmCombat()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout1);
     obj.label4:setText("ACC");
     obj.label4:setLeft(195);
@@ -97,7 +97,7 @@ function newfrmCombat()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout1);
     obj.label5:setText("AP");
     obj.label5:setLeft(235);
@@ -107,7 +107,7 @@ function newfrmCombat()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout1);
     obj.label6:setText("MODE");
     obj.label6:setLeft(275);
@@ -117,7 +117,7 @@ function newfrmCombat()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout1);
     obj.label7:setText("RC");
     obj.label7:setLeft(315);
@@ -127,7 +127,7 @@ function newfrmCombat()
     obj.label7:setHorzTextAlign("center");
     obj.label7:setName("label7");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout1);
     obj.label8:setText("AMMO");
     obj.label8:setLeft(355);
@@ -138,7 +138,7 @@ function newfrmCombat()
     obj.label8:setFontSize(11);
     obj.label8:setName("label8");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout1);
     obj.label9:setText("PRICE");
     obj.label9:setLeft(395);
@@ -149,7 +149,7 @@ function newfrmCombat()
     obj.label9:setFontSize(12);
     obj.label9:setName("label9");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout1);
     obj.label10:setText("WEIGHT");
     obj.label10:setLeft(435);
@@ -160,7 +160,7 @@ function newfrmCombat()
     obj.label10:setFontSize(11);
     obj.label10:setName("label10");
 
-    obj.rclRangedWeapons = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclRangedWeapons = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclRangedWeapons:setParent(obj.layout1);
     obj.rclRangedWeapons:setName("rclRangedWeapons");
     obj.rclRangedWeapons:setField("rangedWeaponsList");
@@ -171,7 +171,7 @@ function newfrmCombat()
     obj.rclRangedWeapons:setHeight(280);
     obj.rclRangedWeapons:setLayout("vertical");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.scrollBox1);
     obj.layout2:setLeft(545);
     obj.layout2:setTop(0);
@@ -179,13 +179,13 @@ function newfrmCombat()
     obj.layout2:setHeight(340);
     obj.layout2:setName("layout2");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout2);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("black");
     obj.rectangle2:setName("rectangle2");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout2);
     obj.label11:setLeft(5);
     obj.label11:setTop(0);
@@ -195,7 +195,7 @@ function newfrmCombat()
     obj.label11:setHorzTextAlign("center");
     obj.label11:setName("label11");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout2);
     obj.button2:setText("+");
     obj.button2:setLeft(5);
@@ -204,7 +204,7 @@ function newfrmCombat()
     obj.button2:setHeight(25);
     obj.button2:setName("button2");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout2);
     obj.label12:setText("WEAPON");
     obj.label12:setLeft(5);
@@ -214,7 +214,7 @@ function newfrmCombat()
     obj.label12:setHorzTextAlign("center");
     obj.label12:setName("label12");
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout2);
     obj.label13:setText("REACH");
     obj.label13:setLeft(155);
@@ -225,7 +225,7 @@ function newfrmCombat()
     obj.label13:setFontSize(11);
     obj.label13:setName("label13");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout2);
     obj.label14:setText("DMG");
     obj.label14:setLeft(195);
@@ -235,7 +235,7 @@ function newfrmCombat()
     obj.label14:setHorzTextAlign("center");
     obj.label14:setName("label14");
 
-    obj.label15 = gui.fromHandle(_obj_newObject("label"));
+    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.layout2);
     obj.label15:setText("ACC");
     obj.label15:setLeft(235);
@@ -245,7 +245,7 @@ function newfrmCombat()
     obj.label15:setHorzTextAlign("center");
     obj.label15:setName("label15");
 
-    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.layout2);
     obj.label16:setText("AP");
     obj.label16:setLeft(275);
@@ -255,7 +255,7 @@ function newfrmCombat()
     obj.label16:setHorzTextAlign("center");
     obj.label16:setName("label16");
 
-    obj.label17 = gui.fromHandle(_obj_newObject("label"));
+    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.layout2);
     obj.label17:setText("PRICE");
     obj.label17:setLeft(315);
@@ -266,7 +266,7 @@ function newfrmCombat()
     obj.label17:setFontSize(12);
     obj.label17:setName("label17");
 
-    obj.label18 = gui.fromHandle(_obj_newObject("label"));
+    obj.label18 = GUI.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.layout2);
     obj.label18:setText("WEIGHT");
     obj.label18:setLeft(355);
@@ -277,7 +277,7 @@ function newfrmCombat()
     obj.label18:setFontSize(11);
     obj.label18:setName("label18");
 
-    obj.rclMeleeWeapons = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclMeleeWeapons = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclMeleeWeapons:setParent(obj.layout2);
     obj.rclMeleeWeapons:setName("rclMeleeWeapons");
     obj.rclMeleeWeapons:setField("meleeWeaponsList");
@@ -288,7 +288,7 @@ function newfrmCombat()
     obj.rclMeleeWeapons:setHeight(280);
     obj.rclMeleeWeapons:setLayout("vertical");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.scrollBox1);
     obj.layout3:setLeft(0);
     obj.layout3:setTop(345);
@@ -296,13 +296,13 @@ function newfrmCombat()
     obj.layout3:setHeight(340);
     obj.layout3:setName("layout3");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout3);
     obj.rectangle3:setAlign("client");
     obj.rectangle3:setColor("black");
     obj.rectangle3:setName("rectangle3");
 
-    obj.label19 = gui.fromHandle(_obj_newObject("label"));
+    obj.label19 = GUI.fromHandle(_obj_newObject("label"));
     obj.label19:setParent(obj.layout3);
     obj.label19:setLeft(5);
     obj.label19:setTop(0);
@@ -312,7 +312,7 @@ function newfrmCombat()
     obj.label19:setHorzTextAlign("center");
     obj.label19:setName("label19");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.layout3);
     obj.button3:setText("+");
     obj.button3:setLeft(5);
@@ -321,7 +321,7 @@ function newfrmCombat()
     obj.button3:setHeight(25);
     obj.button3:setName("button3");
 
-    obj.label20 = gui.fromHandle(_obj_newObject("label"));
+    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.layout3);
     obj.label20:setText("AUGMENTATION");
     obj.label20:setLeft(5);
@@ -331,7 +331,7 @@ function newfrmCombat()
     obj.label20:setHorzTextAlign("center");
     obj.label20:setName("label20");
 
-    obj.label21 = gui.fromHandle(_obj_newObject("label"));
+    obj.label21 = GUI.fromHandle(_obj_newObject("label"));
     obj.label21:setParent(obj.layout3);
     obj.label21:setText("RATING");
     obj.label21:setLeft(155);
@@ -342,7 +342,7 @@ function newfrmCombat()
     obj.label21:setFontSize(11);
     obj.label21:setName("label21");
 
-    obj.label22 = gui.fromHandle(_obj_newObject("label"));
+    obj.label22 = GUI.fromHandle(_obj_newObject("label"));
     obj.label22:setParent(obj.layout3);
     obj.label22:setText("NOTES");
     obj.label22:setLeft(205);
@@ -352,7 +352,7 @@ function newfrmCombat()
     obj.label22:setHorzTextAlign("center");
     obj.label22:setName("label22");
 
-    obj.label23 = gui.fromHandle(_obj_newObject("label"));
+    obj.label23 = GUI.fromHandle(_obj_newObject("label"));
     obj.label23:setParent(obj.layout3);
     obj.label23:setText("ESSENCE");
     obj.label23:setLeft(305);
@@ -363,7 +363,7 @@ function newfrmCombat()
     obj.label23:setFontSize(11);
     obj.label23:setName("label23");
 
-    obj.label24 = gui.fromHandle(_obj_newObject("label"));
+    obj.label24 = GUI.fromHandle(_obj_newObject("label"));
     obj.label24:setParent(obj.layout3);
     obj.label24:setText("PRICE");
     obj.label24:setLeft(355);
@@ -374,7 +374,7 @@ function newfrmCombat()
     obj.label24:setFontSize(12);
     obj.label24:setName("label24");
 
-    obj.rclAugmentations = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclAugmentations = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclAugmentations:setParent(obj.layout3);
     obj.rclAugmentations:setName("rclAugmentations");
     obj.rclAugmentations:setField("augmentationsList");
@@ -385,7 +385,7 @@ function newfrmCombat()
     obj.rclAugmentations:setHeight(280);
     obj.rclAugmentations:setLayout("vertical");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.scrollBox1);
     obj.layout4:setLeft(465);
     obj.layout4:setTop(345);
@@ -393,13 +393,13 @@ function newfrmCombat()
     obj.layout4:setHeight(340);
     obj.layout4:setName("layout4");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.layout4);
     obj.rectangle4:setAlign("client");
     obj.rectangle4:setColor("black");
     obj.rectangle4:setName("rectangle4");
 
-    obj.label25 = gui.fromHandle(_obj_newObject("label"));
+    obj.label25 = GUI.fromHandle(_obj_newObject("label"));
     obj.label25:setParent(obj.layout4);
     obj.label25:setLeft(5);
     obj.label25:setTop(0);
@@ -409,7 +409,7 @@ function newfrmCombat()
     obj.label25:setHorzTextAlign("center");
     obj.label25:setName("label25");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.layout4);
     obj.button4:setText("+");
     obj.button4:setLeft(5);
@@ -418,7 +418,7 @@ function newfrmCombat()
     obj.button4:setHeight(25);
     obj.button4:setName("button4");
 
-    obj.label26 = gui.fromHandle(_obj_newObject("label"));
+    obj.label26 = GUI.fromHandle(_obj_newObject("label"));
     obj.label26:setParent(obj.layout4);
     obj.label26:setText("ARMOR");
     obj.label26:setLeft(5);
@@ -428,7 +428,7 @@ function newfrmCombat()
     obj.label26:setHorzTextAlign("center");
     obj.label26:setName("label26");
 
-    obj.label27 = gui.fromHandle(_obj_newObject("label"));
+    obj.label27 = GUI.fromHandle(_obj_newObject("label"));
     obj.label27:setParent(obj.layout4);
     obj.label27:setText("RATING");
     obj.label27:setLeft(105);
@@ -439,7 +439,7 @@ function newfrmCombat()
     obj.label27:setFontSize(11);
     obj.label27:setName("label27");
 
-    obj.label28 = gui.fromHandle(_obj_newObject("label"));
+    obj.label28 = GUI.fromHandle(_obj_newObject("label"));
     obj.label28:setParent(obj.layout4);
     obj.label28:setText("NOTES");
     obj.label28:setLeft(145);
@@ -449,7 +449,7 @@ function newfrmCombat()
     obj.label28:setHorzTextAlign("center");
     obj.label28:setName("label28");
 
-    obj.label29 = gui.fromHandle(_obj_newObject("label"));
+    obj.label29 = GUI.fromHandle(_obj_newObject("label"));
     obj.label29:setParent(obj.layout4);
     obj.label29:setText("PRICE");
     obj.label29:setLeft(225);
@@ -460,7 +460,7 @@ function newfrmCombat()
     obj.label29:setFontSize(12);
     obj.label29:setName("label29");
 
-    obj.label30 = gui.fromHandle(_obj_newObject("label"));
+    obj.label30 = GUI.fromHandle(_obj_newObject("label"));
     obj.label30:setParent(obj.layout4);
     obj.label30:setText("WEIGHT");
     obj.label30:setLeft(265);
@@ -471,7 +471,7 @@ function newfrmCombat()
     obj.label30:setFontSize(11);
     obj.label30:setName("label30");
 
-    obj.rclArmor = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclArmor = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclArmor:setParent(obj.layout4);
     obj.rclArmor:setName("rclArmor");
     obj.rclArmor:setField("armorList");
@@ -483,42 +483,42 @@ function newfrmCombat()
     obj.rclArmor:setLayout("vertical");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclRangedWeapons:append();
         end, obj);
 
     obj._e_event1 = obj.rclRangedWeapons:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.ranged_weapon, nodeB.ranged_weapon);
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclMeleeWeapons:append();
         end, obj);
 
     obj._e_event3 = obj.rclMeleeWeapons:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.melee_weapon, nodeB.melee_weapon);
         end, obj);
 
     obj._e_event4 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclAugmentations:append();
         end, obj);
 
     obj._e_event5 = obj.rclAugmentations:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.augmentation_name, nodeB.augmentation_name);
         end, obj);
 
     obj._e_event6 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclArmor:append();
         end, obj);
 
     obj._e_event7 = obj.rclArmor:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             return utils.compareStringPtBr(nodeA.armor_name, nodeB.armor_name);
         end, obj);
 
@@ -594,9 +594,23 @@ function newfrmCombat()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmCombat()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmCombat();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmCombat = {
@@ -610,6 +624,6 @@ local _frmCombat = {
     description=""};
 
 frmCombat = _frmCombat;
-rrpg.registrarForm(_frmCombat);
+Firecast.registrarForm(_frmCombat);
 
 return _frmCombat;

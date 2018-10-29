@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmMagiaItemSemCheckbox()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmMagiaItemSemCheckbox()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -62,7 +62,7 @@ function newfrmMagiaItemSemCheckbox()
 			
 
 
-    obj.edtNome = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtNome = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtNome:setParent(obj);
     obj.edtNome:setName("edtNome");
     obj.edtNome:setAlign("client");
@@ -73,13 +73,13 @@ function newfrmMagiaItemSemCheckbox()
     obj.edtNome:setFontColor("white");
     obj.edtNome:setTransparent(true);
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj);
     obj.horzLine1:setAlign("bottom");
     obj.horzLine1:setStrokeColor("white");
     obj.horzLine1:setName("horzLine1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setText("i");
     obj.button1:setAlign("right");
@@ -87,7 +87,7 @@ function newfrmMagiaItemSemCheckbox()
     obj.button1:setMargins({left=4, right=0, top=2, bottom=2});
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj);
     obj.button2:setText("X");
     obj.button2:setAlign("right");
@@ -98,23 +98,23 @@ function newfrmMagiaItemSemCheckbox()
 self.height=32;
 
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("custo");
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             showMagiaPopup();
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             askForDelete();
         end, obj);
 
     obj._e_event2 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             pointCount();
         end, obj);
 
@@ -143,9 +143,23 @@ self.height=32;
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmMagiaItemSemCheckbox()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmMagiaItemSemCheckbox();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmMagiaItemSemCheckbox = {
@@ -159,6 +173,6 @@ local _frmMagiaItemSemCheckbox = {
     description=""};
 
 frmMagiaItemSemCheckbox = _frmMagiaItemSemCheckbox;
-rrpg.registrarForm(_frmMagiaItemSemCheckbox);
+Firecast.registrarForm(_frmMagiaItemSemCheckbox);
 
 return _frmMagiaItemSemCheckbox;

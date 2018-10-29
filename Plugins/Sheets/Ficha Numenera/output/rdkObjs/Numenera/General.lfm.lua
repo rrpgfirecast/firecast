@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmGeneral()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmGeneral()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -29,12 +29,12 @@ function newfrmGeneral()
     obj:setName("frmGeneral");
     obj:setAlign("client");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
@@ -43,7 +43,7 @@ function newfrmGeneral()
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(5);
     obj.label1:setTop(5);
@@ -52,7 +52,7 @@ function newfrmGeneral()
     obj.label1:setText("NOME");
     obj.label1:setName("label1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setVertTextAlign("center");
     obj.edit1:setLeft(100);
@@ -62,7 +62,7 @@ function newfrmGeneral()
     obj.edit1:setField("nome");
     obj.edit1:setName("edit1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.rectangle1);
     obj.label2:setLeft(5);
     obj.label2:setTop(30);
@@ -71,7 +71,7 @@ function newfrmGeneral()
     obj.label2:setText("TIPO");
     obj.label2:setName("label2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.rectangle1);
     obj.edit2:setVertTextAlign("center");
     obj.edit2:setLeft(100);
@@ -81,7 +81,7 @@ function newfrmGeneral()
     obj.edit2:setField("tipo");
     obj.edit2:setName("edit2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.rectangle1);
     obj.label3:setLeft(5);
     obj.label3:setTop(55);
@@ -90,7 +90,7 @@ function newfrmGeneral()
     obj.label3:setText("DESCRITOR");
     obj.label3:setName("label3");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.rectangle1);
     obj.edit3:setVertTextAlign("center");
     obj.edit3:setLeft(100);
@@ -100,7 +100,7 @@ function newfrmGeneral()
     obj.edit3:setField("descritor");
     obj.edit3:setName("edit3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.rectangle1);
     obj.label4:setLeft(5);
     obj.label4:setTop(80);
@@ -109,7 +109,7 @@ function newfrmGeneral()
     obj.label4:setText("FOCO");
     obj.label4:setName("label4");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.rectangle1);
     obj.edit4:setVertTextAlign("center");
     obj.edit4:setLeft(100);
@@ -119,7 +119,7 @@ function newfrmGeneral()
     obj.edit4:setField("foco");
     obj.edit4:setName("edit4");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.scrollBox1);
     obj.rectangle2:setLeft(0);
     obj.rectangle2:setTop(120);
@@ -128,7 +128,7 @@ function newfrmGeneral()
     obj.rectangle2:setColor("black");
     obj.rectangle2:setName("rectangle2");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle2);
     obj.button1:setLeft(5);
     obj.button1:setTop(5);
@@ -138,7 +138,7 @@ function newfrmGeneral()
     obj.button1:setHint("Adicionar Antecedente");
     obj.button1:setName("button1");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.rectangle2);
     obj.label5:setLeft(35);
     obj.label5:setTop(5);
@@ -147,7 +147,7 @@ function newfrmGeneral()
     obj.label5:setText("ANTECEDENTE");
     obj.label5:setName("label5");
 
-    obj.rclAntecedente = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclAntecedente = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclAntecedente:setParent(obj.rectangle2);
     obj.rclAntecedente:setLeft(5);
     obj.rclAntecedente:setTop(30);
@@ -158,7 +158,7 @@ function newfrmGeneral()
     obj.rclAntecedente:setTemplateForm("frmSimpleListItem");
     obj.rclAntecedente:setLayout("verticalTiles");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.scrollBox1);
     obj.rectangle3:setLeft(420);
     obj.rectangle3:setTop(0);
@@ -167,7 +167,7 @@ function newfrmGeneral()
     obj.rectangle3:setColor("black");
     obj.rectangle3:setName("rectangle3");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.rectangle3);
     obj.button2:setLeft(5);
     obj.button2:setTop(5);
@@ -177,7 +177,7 @@ function newfrmGeneral()
     obj.button2:setHint("Adicionar Habilidade Especial");
     obj.button2:setName("button2");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.rectangle3);
     obj.label6:setLeft(35);
     obj.label6:setTop(5);
@@ -186,7 +186,7 @@ function newfrmGeneral()
     obj.label6:setText("HABILIDADES ESPECIAIS");
     obj.label6:setName("label6");
 
-    obj.rclHabilidadesEspeciais = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclHabilidadesEspeciais = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclHabilidadesEspeciais:setParent(obj.rectangle3);
     obj.rclHabilidadesEspeciais:setLeft(5);
     obj.rclHabilidadesEspeciais:setTop(30);
@@ -197,7 +197,7 @@ function newfrmGeneral()
     obj.rclHabilidadesEspeciais:setTemplateForm("frmSimpleListItem");
     obj.rclHabilidadesEspeciais:setLayout("verticalTiles");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.scrollBox1);
     obj.rectangle4:setLeft(420);
     obj.rectangle4:setTop(310);
@@ -206,7 +206,7 @@ function newfrmGeneral()
     obj.rectangle4:setColor("black");
     obj.rectangle4:setName("rectangle4");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.rectangle4);
     obj.label7:setLeft(35);
     obj.label7:setTop(5);
@@ -215,7 +215,7 @@ function newfrmGeneral()
     obj.label7:setText("DESENVOLVIMENTO");
     obj.label7:setName("label7");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.rectangle4);
     obj.checkBox1:setField("desenvolvimento0");
     obj.checkBox1:setLeft(5);
@@ -225,7 +225,7 @@ function newfrmGeneral()
     obj.checkBox1:setHint("4 pontos nos atributos.");
     obj.checkBox1:setName("checkBox1");
 
-    obj.checkBox2 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox2 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox2:setParent(obj.rectangle4);
     obj.checkBox2:setField("desenvolvimento1");
     obj.checkBox2:setLeft(5);
@@ -235,7 +235,7 @@ function newfrmGeneral()
     obj.checkBox2:setHint("Adicione um a uma de suas margens. ");
     obj.checkBox2:setName("checkBox2");
 
-    obj.checkBox3 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox3 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox3:setParent(obj.rectangle4);
     obj.checkBox3:setField("desenvolvimento2");
     obj.checkBox3:setLeft(5);
@@ -245,7 +245,7 @@ function newfrmGeneral()
     obj.checkBox3:setHint("Aumente esforço em 1.");
     obj.checkBox3:setName("checkBox3");
 
-    obj.checkBox4 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox4 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox4:setParent(obj.rectangle4);
     obj.checkBox4:setField("desenvolvimento3");
     obj.checkBox4:setLeft(5);
@@ -255,7 +255,7 @@ function newfrmGeneral()
     obj.checkBox4:setHint("Torne-se treinado em uma perícia a sua escolha, ou especialize-se em uma que já for treinado. ");
     obj.checkBox4:setName("checkBox4");
 
-    obj.checkBox5 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox5 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox5:setParent(obj.rectangle4);
     obj.checkBox5:setField("desenvolvimento4");
     obj.checkBox5:setLeft(205);
@@ -264,7 +264,7 @@ function newfrmGeneral()
     obj.checkBox5:setText("OUTRO");
     obj.checkBox5:setName("checkBox5");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.rectangle4);
     obj.edit5:setLeft(275);
     obj.edit5:setTop(35);
@@ -274,7 +274,7 @@ function newfrmGeneral()
     obj.edit5:setFontSize(11);
     obj.edit5:setName("edit5");
 
-    obj.checkBox6 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox6 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox6:setParent(obj.rectangle4);
     obj.checkBox6:setField("desenvolvimento5");
     obj.checkBox6:setLeft(205);
@@ -283,7 +283,7 @@ function newfrmGeneral()
     obj.checkBox6:setText("OUTRO");
     obj.checkBox6:setName("checkBox6");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.rectangle4);
     obj.edit6:setLeft(275);
     obj.edit6:setTop(55);
@@ -293,7 +293,7 @@ function newfrmGeneral()
     obj.edit6:setFontSize(11);
     obj.edit6:setName("edit6");
 
-    obj.checkBox7 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox7 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox7:setParent(obj.rectangle4);
     obj.checkBox7:setField("desenvolvimento6");
     obj.checkBox7:setLeft(205);
@@ -302,7 +302,7 @@ function newfrmGeneral()
     obj.checkBox7:setText("OUTRO");
     obj.checkBox7:setName("checkBox7");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.rectangle4);
     obj.edit7:setLeft(275);
     obj.edit7:setTop(75);
@@ -312,7 +312,7 @@ function newfrmGeneral()
     obj.edit7:setFontSize(11);
     obj.edit7:setName("edit7");
 
-    obj.checkBox8 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox8 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox8:setParent(obj.rectangle4);
     obj.checkBox8:setField("desenvolvimento7");
     obj.checkBox8:setLeft(205);
@@ -321,7 +321,7 @@ function newfrmGeneral()
     obj.checkBox8:setText("OUTRO");
     obj.checkBox8:setName("checkBox8");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.rectangle4);
     obj.edit8:setLeft(275);
     obj.edit8:setTop(95);
@@ -331,7 +331,7 @@ function newfrmGeneral()
     obj.edit8:setFontSize(11);
     obj.edit8:setName("edit8");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.scrollBox1);
     obj.rectangle5:setLeft(840);
     obj.rectangle5:setTop(0);
@@ -342,7 +342,7 @@ function newfrmGeneral()
     obj.rectangle5:setStrokeSize(1);
     obj.rectangle5:setName("rectangle5");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.scrollBox1);
     obj.image1:setLeft(841);
     obj.image1:setTop(1);
@@ -354,29 +354,29 @@ function newfrmGeneral()
     obj.image1:setName("image1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclAntecedente:append();
         end, obj);
 
     obj._e_event1 = obj.rclAntecedente:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
             					return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclHabilidadesEspeciais:append();
         end, obj);
 
     obj._e_event3 = obj.rclHabilidadesEspeciais:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             -- Esse codigo organiza a ordem dos objetos da lista alfabeticamente.
             					return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
     obj._e_event4 = obj.image1:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
@@ -436,9 +436,23 @@ function newfrmGeneral()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmGeneral()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmGeneral();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmGeneral = {
@@ -452,6 +466,6 @@ local _frmGeneral = {
     description=""};
 
 frmGeneral = _frmGeneral;
-rrpg.registrarForm(_frmGeneral);
+Firecast.registrarForm(_frmGeneral);
 
 return _frmGeneral;

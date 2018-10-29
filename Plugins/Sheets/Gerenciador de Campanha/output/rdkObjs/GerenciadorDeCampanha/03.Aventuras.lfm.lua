@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmGerenciador03()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmGerenciador03()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,12 +31,12 @@ function newfrmGerenciador03()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
@@ -45,7 +45,7 @@ function newfrmGerenciador03()
     obj.rectangle1:setColor("Black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(0);
     obj.label1:setTop(0);
@@ -55,7 +55,7 @@ function newfrmGerenciador03()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(0);
     obj.button1:setTop(0);
@@ -65,7 +65,7 @@ function newfrmGerenciador03()
     obj.button1:setHint("Nova Aventura");
     obj.button1:setName("button1");
 
-    obj.scrollBox2 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox2:setParent(obj.scrollBox1);
     obj.scrollBox2:setLeft(0);
     obj.scrollBox2:setTop(20);
@@ -73,7 +73,7 @@ function newfrmGerenciador03()
     obj.scrollBox2:setHeight(590);
     obj.scrollBox2:setName("scrollBox2");
 
-    obj.rclAventuras = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclAventuras = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclAventuras:setParent(obj.scrollBox2);
     obj.rclAventuras:setLeft(0);
     obj.rclAventuras:setTop(0);
@@ -86,7 +86,7 @@ function newfrmGerenciador03()
     obj.rclAventuras:setField("aventuras");
     obj.rclAventuras:setTemplateForm("frmGerenciador03_AVENTURA");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.scrollBox1);
     obj.rectangle2:setLeft(835);
     obj.rectangle2:setTop(0);
@@ -95,7 +95,7 @@ function newfrmGerenciador03()
     obj.rectangle2:setColor("Black");
     obj.rectangle2:setName("rectangle2");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.rectangle2);
     obj.label2:setLeft(5);
     obj.label2:setTop(5);
@@ -105,7 +105,7 @@ function newfrmGerenciador03()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.rectangle2);
     obj.label3:setLeft(5);
     obj.label3:setTop(30);
@@ -115,7 +115,7 @@ function newfrmGerenciador03()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.rectangle2);
     obj.label4:setLeft(35);
     obj.label4:setTop(30);
@@ -125,7 +125,7 @@ function newfrmGerenciador03()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.rectangle2);
     obj.label5:setLeft(165);
     obj.label5:setTop(30);
@@ -135,7 +135,7 @@ function newfrmGerenciador03()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.rectangle2);
     obj.button2:setLeft(265);
     obj.button2:setTop(5);
@@ -145,7 +145,7 @@ function newfrmGerenciador03()
     obj.button2:setHint("Novo");
     obj.button2:setName("button2");
 
-    obj.rclSessoes = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclSessoes = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclSessoes:setParent(obj.rectangle2);
     obj.rclSessoes:setLeft(0);
     obj.rclSessoes:setTop(55);
@@ -157,7 +157,7 @@ function newfrmGerenciador03()
     obj.rclSessoes:setTemplateForm("frmGerenciador01_Sessao");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet~=nil then
             						local aventuras = ndb.getChildNodes(sheet.aventuras);
             						local num = #aventuras + 1;
@@ -172,7 +172,7 @@ function newfrmGerenciador03()
         end, obj);
 
     obj._e_event1 = obj.rclAventuras:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             if (tonumber(nodeA.numero) or 0) < (tonumber(nodeB.numero) or 0) then
             		                return 1;
             		            elseif (tonumber(nodeA.numero) or 0) > (tonumber(nodeB.numero) or 0) then
@@ -183,7 +183,7 @@ function newfrmGerenciador03()
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet~=nil then
             						local sessoes = ndb.getChildNodes(sheet.sessoes);
             						local num = 1;
@@ -203,7 +203,7 @@ function newfrmGerenciador03()
         end, obj);
 
     obj._e_event3 = obj.rclSessoes:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             if (tonumber(nodeA.numero) or 0) < (tonumber(nodeB.numero) or 0) then
             		                return 1;
             		            elseif (tonumber(nodeA.numero) or 0) > (tonumber(nodeB.numero) or 0) then
@@ -247,9 +247,23 @@ function newfrmGerenciador03()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmGerenciador03()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmGerenciador03();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmGerenciador03 = {
@@ -263,6 +277,6 @@ local _frmGerenciador03 = {
     description=""};
 
 frmGerenciador03 = _frmGerenciador03;
-rrpg.registrarForm(_frmGerenciador03);
+Firecast.registrarForm(_frmGerenciador03);
 
 return _frmGerenciador03;

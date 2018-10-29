@@ -126,7 +126,7 @@
 								
 								self:close();
 								
-								dialogs.confirmYesNo(msg, 
+								Dialogs.confirmYesNo(msg, 
 									function(confirmado)
 										if confirmado then
 											SC3UNDO_Capture(theScene, 
@@ -160,7 +160,10 @@
 			
 			for k, v in pairs(selection) do
 				firstItem = v;
-				break;
+				
+				if firstItem ~= nil then
+					break;
+				end;
 			end;
 			
 			if firstItem ~= nil then
@@ -182,7 +185,7 @@
 			self:setActiveMenu(self.flaLayout);		
 			theSelection = selection;
 			
-			local estaVisible = true;
+			local estaVisible;
 			
 			if #theSelection > 0 then
 				local umDrawing = theSelection[1];

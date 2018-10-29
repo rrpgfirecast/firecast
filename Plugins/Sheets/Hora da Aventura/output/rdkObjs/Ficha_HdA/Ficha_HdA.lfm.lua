@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFicha_HdA()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmFicha_HdA()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -33,36 +33,36 @@ function newfrmFicha_HdA()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.tabControl1 = gui.fromHandle(_obj_newObject("tabControl"));
+    obj.tabControl1 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl1:setParent(obj);
     obj.tabControl1:setAlign("client");
     obj.tabControl1:setName("tabControl1");
 
-    obj.tab1 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab1 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab1:setParent(obj.tabControl1);
     obj.tab1:setTitle("Frente");
     obj.tab1:setName("tab1");
 
-    obj.frmFicha_HdA1_svg = gui.fromHandle(_obj_newObject("form"));
+    obj.frmFicha_HdA1_svg = GUI.fromHandle(_obj_newObject("form"));
     obj.frmFicha_HdA1_svg:setParent(obj.tab1);
     obj.frmFicha_HdA1_svg:setName("frmFicha_HdA1_svg");
     obj.frmFicha_HdA1_svg:setAlign("client");
     obj.frmFicha_HdA1_svg:setTheme("light");
     obj.frmFicha_HdA1_svg:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj.frmFicha_HdA1_svg);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setWidth(1077);
     obj.rectangle1:setHeight(1474);
     obj.rectangle1:setColor("white");
     obj.rectangle1:setName("rectangle1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.rectangle1);
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
@@ -73,7 +73,7 @@ function newfrmFicha_HdA()
     obj.image1:setOptimize(true);
     obj.image1:setName("image1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.rectangle1);
     obj.layout1:setLeft(58);
     obj.layout1:setTop(90);
@@ -81,7 +81,7 @@ function newfrmFicha_HdA()
     obj.layout1:setHeight(53);
     obj.layout1:setName("layout1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setTransparent(true);
     lfm_setPropAsString(obj.edit1, "fontStyle",  "bold");
@@ -96,7 +96,7 @@ function newfrmFicha_HdA()
     obj.edit1:setField("NOME");
     obj.edit1:setName("edit1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.rectangle1);
     obj.layout2:setLeft(57);
     obj.layout2:setTop(216);
@@ -104,7 +104,7 @@ function newfrmFicha_HdA()
     obj.layout2:setHeight(57);
     obj.layout2:setName("layout2");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout2);
     obj.textEditor1:setTransparent(true);
     obj.textEditor1:setFontSize(18);
@@ -116,7 +116,7 @@ function newfrmFicha_HdA()
     obj.textEditor1:setField("CONCEITO");
     obj.textEditor1:setName("textEditor1");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.rectangle1);
     obj.layout3:setLeft(593);
     obj.layout3:setTop(305);
@@ -124,7 +124,7 @@ function newfrmFicha_HdA()
     obj.layout3:setHeight(147);
     obj.layout3:setName("layout3");
 
-    obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.layout3);
     obj.textEditor2:setTransparent(true);
     obj.textEditor2:setFontSize(18);
@@ -136,7 +136,7 @@ function newfrmFicha_HdA()
     obj.textEditor2:setField("HISTORICO");
     obj.textEditor2:setName("textEditor2");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.rectangle1);
     obj.layout4:setLeft(595);
     obj.layout4:setTop(526);
@@ -144,7 +144,7 @@ function newfrmFicha_HdA()
     obj.layout4:setHeight(140);
     obj.layout4:setName("layout4");
 
-    obj.textEditor3 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor3:setParent(obj.layout4);
     obj.textEditor3:setTransparent(true);
     obj.textEditor3:setFontSize(18);
@@ -156,7 +156,7 @@ function newfrmFicha_HdA()
     obj.textEditor3:setField("EQUIPAMENTO");
     obj.textEditor3:setName("textEditor3");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.rectangle1);
     obj.layout5:setLeft(315);
     obj.layout5:setTop(695);
@@ -164,7 +164,7 @@ function newfrmFicha_HdA()
     obj.layout5:setHeight(80);
     obj.layout5:setName("layout5");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout5);
     obj.edit2:setTransparent(true);
     obj.edit2:setFontSize(50);
@@ -179,7 +179,7 @@ function newfrmFicha_HdA()
     obj.edit2:setField("ATRIBUTO1_5");
     obj.edit2:setName("edit2");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.rectangle1);
     obj.layout6:setLeft(636);
     obj.layout6:setTop(695);
@@ -187,7 +187,7 @@ function newfrmFicha_HdA()
     obj.layout6:setHeight(80);
     obj.layout6:setName("layout6");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout6);
     obj.edit3:setTransparent(true);
     obj.edit3:setFontSize(50);
@@ -202,7 +202,7 @@ function newfrmFicha_HdA()
     obj.edit3:setField("ATRIBUTO2_4");
     obj.edit3:setName("edit3");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.rectangle1);
     obj.layout7:setLeft(962);
     obj.layout7:setTop(695);
@@ -210,7 +210,7 @@ function newfrmFicha_HdA()
     obj.layout7:setHeight(80);
     obj.layout7:setName("layout7");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout7);
     obj.edit4:setTransparent(true);
     obj.edit4:setFontSize(50);
@@ -225,7 +225,7 @@ function newfrmFicha_HdA()
     obj.edit4:setField("ATRIBUTO3_3");
     obj.edit4:setName("edit4");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.rectangle1);
     obj.layout8:setLeft(120);
     obj.layout8:setTop(761);
@@ -233,7 +233,7 @@ function newfrmFicha_HdA()
     obj.layout8:setHeight(46);
     obj.layout8:setName("layout8");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout8);
     obj.edit5:setTransparent(true);
     obj.edit5:setFontSize(28);
@@ -247,7 +247,7 @@ function newfrmFicha_HdA()
     obj.edit5:setField("ATRIBUTO1");
     obj.edit5:setName("edit5");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.rectangle1);
     obj.layout9:setLeft(446);
     obj.layout9:setTop(760);
@@ -255,7 +255,7 @@ function newfrmFicha_HdA()
     obj.layout9:setHeight(46);
     obj.layout9:setName("layout9");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout9);
     obj.edit6:setTransparent(true);
     obj.edit6:setFontSize(28);
@@ -269,7 +269,7 @@ function newfrmFicha_HdA()
     obj.edit6:setField("ATRIBUTO2");
     obj.edit6:setName("edit6");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.rectangle1);
     obj.layout10:setLeft(769);
     obj.layout10:setTop(756);
@@ -277,7 +277,7 @@ function newfrmFicha_HdA()
     obj.layout10:setHeight(46);
     obj.layout10:setName("layout10");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout10);
     obj.edit7:setTransparent(true);
     obj.edit7:setFontSize(28);
@@ -291,7 +291,7 @@ function newfrmFicha_HdA()
     obj.edit7:setField("ATRIBUTO3");
     obj.edit7:setName("edit7");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.rectangle1);
     obj.layout11:setLeft(867);
     obj.layout11:setTop(1138);
@@ -299,7 +299,7 @@ function newfrmFicha_HdA()
     obj.layout11:setHeight(27);
     obj.layout11:setName("layout11");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.layout11);
     obj.edit8:setTransparent(true);
     obj.edit8:setFontSize(20);
@@ -314,7 +314,7 @@ function newfrmFicha_HdA()
     obj.edit8:setField("PE");
     obj.edit8:setName("edit8");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.rectangle1);
     obj.layout12:setLeft(67);
     obj.layout12:setTop(886);
@@ -322,7 +322,7 @@ function newfrmFicha_HdA()
     obj.layout12:setHeight(196);
     obj.layout12:setName("layout12");
 
-    obj.textEditor4 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor4:setParent(obj.layout12);
     obj.textEditor4:setLeft(0);
     obj.textEditor4:setTop(0);
@@ -334,7 +334,7 @@ function newfrmFicha_HdA()
     obj.textEditor4:setField("PROEZA1");
     obj.textEditor4:setName("textEditor4");
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.rectangle1);
     obj.layout13:setLeft(393);
     obj.layout13:setTop(888);
@@ -342,7 +342,7 @@ function newfrmFicha_HdA()
     obj.layout13:setHeight(196);
     obj.layout13:setName("layout13");
 
-    obj.textEditor5 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor5:setParent(obj.layout13);
     obj.textEditor5:setLeft(0);
     obj.textEditor5:setTop(0);
@@ -354,7 +354,7 @@ function newfrmFicha_HdA()
     obj.textEditor5:setField("PROEZA2");
     obj.textEditor5:setName("textEditor5");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.rectangle1);
     obj.layout14:setLeft(717);
     obj.layout14:setTop(886);
@@ -362,7 +362,7 @@ function newfrmFicha_HdA()
     obj.layout14:setHeight(196);
     obj.layout14:setName("layout14");
 
-    obj.textEditor6 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor6 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor6:setParent(obj.layout14);
     obj.textEditor6:setLeft(0);
     obj.textEditor6:setTop(0);
@@ -374,7 +374,7 @@ function newfrmFicha_HdA()
     obj.textEditor6:setField("PROEZA3");
     obj.textEditor6:setName("textEditor6");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.rectangle1);
     obj.layout15:setLeft(54);
     obj.layout15:setTop(1158);
@@ -382,7 +382,7 @@ function newfrmFicha_HdA()
     obj.layout15:setHeight(130);
     obj.layout15:setName("layout15");
 
-    obj.textEditor7 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor7 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor7:setParent(obj.layout15);
     obj.textEditor7:setLeft(0);
     obj.textEditor7:setTop(0);
@@ -394,7 +394,7 @@ function newfrmFicha_HdA()
     obj.textEditor7:setField("DEFEITO");
     obj.textEditor7:setName("textEditor7");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.rectangle1);
     obj.layout16:setLeft(492);
     obj.layout16:setTop(1195);
@@ -402,7 +402,7 @@ function newfrmFicha_HdA()
     obj.layout16:setHeight(50);
     obj.layout16:setName("layout16");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.layout16);
     obj.edit9:setTransparent(true);
     obj.edit9:setFontSize(36);
@@ -417,7 +417,7 @@ function newfrmFicha_HdA()
     obj.edit9:setField("PH");
     obj.edit9:setName("edit9");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.rectangle1);
     obj.layout17:setLeft(798);
     obj.layout17:setTop(1248);
@@ -425,7 +425,7 @@ function newfrmFicha_HdA()
     obj.layout17:setHeight(20);
     obj.layout17:setName("layout17");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.layout17);
     obj.checkBox1:setLeft(0);
     obj.checkBox1:setTop(0);
@@ -434,7 +434,7 @@ function newfrmFicha_HdA()
     obj.checkBox1:setField("VIDA1");
     obj.checkBox1:setName("checkBox1");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.rectangle1);
     obj.layout18:setLeft(857);
     obj.layout18:setTop(1248);
@@ -442,7 +442,7 @@ function newfrmFicha_HdA()
     obj.layout18:setHeight(20);
     obj.layout18:setName("layout18");
 
-    obj.checkBox2 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox2 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox2:setParent(obj.layout18);
     obj.checkBox2:setLeft(0);
     obj.checkBox2:setTop(0);
@@ -451,7 +451,7 @@ function newfrmFicha_HdA()
     obj.checkBox2:setField("VIDA2");
     obj.checkBox2:setName("checkBox2");
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.rectangle1);
     obj.layout19:setLeft(916);
     obj.layout19:setTop(1248);
@@ -459,7 +459,7 @@ function newfrmFicha_HdA()
     obj.layout19:setHeight(20);
     obj.layout19:setName("layout19");
 
-    obj.checkBox3 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox3 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox3:setParent(obj.layout19);
     obj.checkBox3:setLeft(0);
     obj.checkBox3:setTop(0);
@@ -468,7 +468,7 @@ function newfrmFicha_HdA()
     obj.checkBox3:setField("VIDA3");
     obj.checkBox3:setName("checkBox3");
 
-    obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.rectangle1);
     obj.layout20:setLeft(974);
     obj.layout20:setTop(1248);
@@ -476,7 +476,7 @@ function newfrmFicha_HdA()
     obj.layout20:setHeight(20);
     obj.layout20:setName("layout20");
 
-    obj.checkBox4 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox4 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox4:setParent(obj.layout20);
     obj.checkBox4:setLeft(0);
     obj.checkBox4:setTop(0);
@@ -485,7 +485,7 @@ function newfrmFicha_HdA()
     obj.checkBox4:setField("VIDA4");
     obj.checkBox4:setName("checkBox4");
 
-    obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.rectangle1);
     obj.layout21:setLeft(115);
     obj.layout21:setTop(1387);
@@ -493,7 +493,7 @@ function newfrmFicha_HdA()
     obj.layout21:setHeight(25);
     obj.layout21:setName("layout21");
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.layout21);
     obj.edit10:setTransparent(true);
     obj.edit10:setFontSize(16.5);
@@ -507,7 +507,7 @@ function newfrmFicha_HdA()
     obj.edit10:setField("ESTADO1");
     obj.edit10:setName("edit10");
 
-    obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.rectangle1);
     obj.layout22:setLeft(431);
     obj.layout22:setTop(1387);
@@ -515,7 +515,7 @@ function newfrmFicha_HdA()
     obj.layout22:setHeight(25);
     obj.layout22:setName("layout22");
 
-    obj.edit11 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit11:setParent(obj.layout22);
     obj.edit11:setTransparent(true);
     obj.edit11:setFontSize(16.5);
@@ -529,7 +529,7 @@ function newfrmFicha_HdA()
     obj.edit11:setField("ESTADO2");
     obj.edit11:setName("edit11");
 
-    obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.rectangle1);
     obj.layout23:setLeft(744);
     obj.layout23:setTop(1387);
@@ -537,7 +537,7 @@ function newfrmFicha_HdA()
     obj.layout23:setHeight(25);
     obj.layout23:setName("layout23");
 
-    obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit12:setParent(obj.layout23);
     obj.edit12:setTransparent(true);
     obj.edit12:setFontSize(16.5);
@@ -551,7 +551,7 @@ function newfrmFicha_HdA()
     obj.edit12:setField("ESTADO3");
     obj.edit12:setName("edit12");
 
-    obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.rectangle1);
     obj.layout24:setLeft(190);
     obj.layout24:setTop(340);
@@ -559,7 +559,7 @@ function newfrmFicha_HdA()
     obj.layout24:setHeight(290);
     obj.layout24:setName("layout24");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.layout24);
     obj.image2:setEditable(true);
     obj.image2:setLeft(0);
@@ -570,31 +570,31 @@ function newfrmFicha_HdA()
     obj.image2:setField("IMG");
     obj.image2:setName("image2");
 
-    obj.tab2 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.tabControl1);
     obj.tab2:setTitle("Verso");
     obj.tab2:setName("tab2");
 
-    obj.frmFicha_HdA2_svg = gui.fromHandle(_obj_newObject("form"));
+    obj.frmFicha_HdA2_svg = GUI.fromHandle(_obj_newObject("form"));
     obj.frmFicha_HdA2_svg:setParent(obj.tab2);
     obj.frmFicha_HdA2_svg:setName("frmFicha_HdA2_svg");
     obj.frmFicha_HdA2_svg:setAlign("client");
     obj.frmFicha_HdA2_svg:setTheme("light");
     obj.frmFicha_HdA2_svg:setMargins({top=1});
 
-    obj.scrollBox2 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox2:setParent(obj.frmFicha_HdA2_svg);
     obj.scrollBox2:setAlign("client");
     obj.scrollBox2:setName("scrollBox2");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.scrollBox2);
     obj.rectangle2:setWidth(1077);
     obj.rectangle2:setHeight(1474);
     obj.rectangle2:setColor("white");
     obj.rectangle2:setName("rectangle2");
 
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
     obj.image3:setParent(obj.rectangle2);
     obj.image3:setLeft(0);
     obj.image3:setTop(0);
@@ -605,7 +605,7 @@ function newfrmFicha_HdA()
     obj.image3:setOptimize(true);
     obj.image3:setName("image3");
 
-    obj.layout25 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.rectangle2);
     obj.layout25:setLeft(75);
     obj.layout25:setTop(119);
@@ -613,7 +613,7 @@ function newfrmFicha_HdA()
     obj.layout25:setHeight(748);
     obj.layout25:setName("layout25");
 
-    obj.textEditor8 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor8 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor8:setParent(obj.layout25);
     obj.textEditor8:setLeft(0);
     obj.textEditor8:setTop(0);
@@ -625,7 +625,7 @@ function newfrmFicha_HdA()
     obj.textEditor8:setTransparent(true);
     obj.textEditor8:setName("textEditor8");
 
-    obj.layout26 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.rectangle2);
     obj.layout26:setLeft(561);
     obj.layout26:setTop(119);
@@ -633,7 +633,7 @@ function newfrmFicha_HdA()
     obj.layout26:setHeight(348);
     obj.layout26:setName("layout26");
 
-    obj.textEditor9 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor9 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor9:setParent(obj.layout26);
     obj.textEditor9:setLeft(0);
     obj.textEditor9:setTop(0);
@@ -645,7 +645,7 @@ function newfrmFicha_HdA()
     obj.textEditor9:setTransparent(true);
     obj.textEditor9:setName("textEditor9");
 
-    obj.layout27 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.rectangle2);
     obj.layout27:setLeft(562);
     obj.layout27:setTop(547);
@@ -653,7 +653,7 @@ function newfrmFicha_HdA()
     obj.layout27:setHeight(317);
     obj.layout27:setName("layout27");
 
-    obj.textEditor10 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor10 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor10:setParent(obj.layout27);
     obj.textEditor10:setLeft(0);
     obj.textEditor10:setTop(0);
@@ -665,7 +665,7 @@ function newfrmFicha_HdA()
     obj.textEditor10:setTransparent(true);
     obj.textEditor10:setName("textEditor10");
 
-    obj.layout28 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.rectangle2);
     obj.layout28:setLeft(76);
     obj.layout28:setTop(941);
@@ -673,7 +673,7 @@ function newfrmFicha_HdA()
     obj.layout28:setHeight(463);
     obj.layout28:setName("layout28");
 
-    obj.textEditor11 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor11 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor11:setParent(obj.layout28);
     obj.textEditor11:setLeft(0);
     obj.textEditor11:setTop(0);
@@ -769,9 +769,23 @@ function newfrmFicha_HdA()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFicha_HdA()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFicha_HdA();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFicha_HdA = {
@@ -785,7 +799,7 @@ local _frmFicha_HdA = {
     description=""};
 
 frmFicha_HdA = _frmFicha_HdA;
-rrpg.registrarForm(_frmFicha_HdA);
-rrpg.registrarDataType(_frmFicha_HdA);
+Firecast.registrarForm(_frmFicha_HdA);
+Firecast.registrarDataType(_frmFicha_HdA);
 
 return _frmFicha_HdA;

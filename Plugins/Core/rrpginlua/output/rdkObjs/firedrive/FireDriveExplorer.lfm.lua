@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFireDriveExplorer()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+local function constructNew_frmFireDriveExplorer()
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -34,7 +34,7 @@ function newfrmFireDriveExplorer()
 
 
 		function self:adaptarTamanhoDaTela()
-			local sw, sh = system.getScreenSize();
+			local sw, sh = System.getScreenSize();
 			local dw = 650;
 			local dh = 600;
 		
@@ -52,7 +52,7 @@ function newfrmFireDriveExplorer()
 	
 		self:adaptarTamanhoDaTela();	
 	
-		local cUser = rrpg.getCurrentUser();
+		local cUser = Firecast.getCurrentUser();
 		local canUseFireDrive = cUser.isGold or cUser.isGoldPlus or cUser.isRuby;		
 
 		if canUseFireDrive then							
@@ -61,7 +61,7 @@ function newfrmFireDriveExplorer()
 	
 
 
-    obj.layCentro = gui.fromHandle(_obj_newObject("layout"));
+    obj.layCentro = GUI.fromHandle(_obj_newObject("layout"));
     obj.layCentro:setParent(obj);
     obj.layCentro:setName("layCentro");
     obj.layCentro:setAlign("client");
@@ -106,9 +106,23 @@ function newfrmFireDriveExplorer()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFireDriveExplorer()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFireDriveExplorer();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFireDriveExplorer = {
@@ -122,6 +136,6 @@ local _frmFireDriveExplorer = {
     description=""};
 
 frmFireDriveExplorer = _frmFireDriveExplorer;
-rrpg.registrarForm(_frmFireDriveExplorer);
+Firecast.registrarForm(_frmFireDriveExplorer);
 
 return _frmFireDriveExplorer;

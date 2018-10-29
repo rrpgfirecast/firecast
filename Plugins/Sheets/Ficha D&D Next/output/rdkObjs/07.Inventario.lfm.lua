@@ -713,6 +713,12 @@ function newfrmFichaRPGmeister7_svg()
     obj.textEditor8:setField("dinheiro");
     obj.textEditor8:setName("textEditor8");
 
+    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.layout10);
+    obj.dataLink1:setField("dinheiro");
+    obj.dataLink1:setDefaultValue("PC: \nPP: \nPO: \nPL: \nPD: ");
+    obj.dataLink1:setName("dataLink1");
+
     obj.label28 = gui.fromHandle(_obj_newObject("label"));
     obj.label28:setParent(obj.layout10);
     obj.label28:setLeft(10);
@@ -797,10 +803,10 @@ function newfrmFichaRPGmeister7_svg()
     obj.label32:setFontSize(11);
     obj.label32:setName("label32");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink1:setParent(obj.scrollBox1);
-    obj.dataLink1:setFields({'precoCabeca', 'precoOlhos', 'precoPescoco', 'precoOmbros', 'precoTorso', 'precoCorpo', 'precoPunhos', 'precoCintura', 'precoMaos', 'precoDedosI', 'precoDesdosII', 'precoPes', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal'});
-    obj.dataLink1:setName("dataLink1");
+    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2:setParent(obj.scrollBox1);
+    obj.dataLink2:setFields({'precoCabeca', 'precoOlhos', 'precoPescoco', 'precoOmbros', 'precoTorso', 'precoCorpo', 'precoPunhos', 'precoCintura', 'precoMaos', 'precoDedosI', 'precoDesdosII', 'precoPes', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal'});
+    obj.dataLink2:setName("dataLink2");
 
     obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.scrollBox1);
@@ -1037,15 +1043,15 @@ function newfrmFichaRPGmeister7_svg()
     obj.label47:setFontColor("white");
     obj.label47:setName("label47");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink2:setParent(obj.scrollBox1);
-    obj.dataLink2:setField("cargaPesada");
-    obj.dataLink2:setName("dataLink2");
-
     obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj.scrollBox1);
-    obj.dataLink3:setFields({'pesoCabeca', 'pesoOlhos', 'pesoPescoco', 'pesoOmbros', 'pesoTorso', 'pesoCorpo', 'pesoPunhos', 'pesoCintura', 'pesoMaos', 'pesoDedosI', 'pesoDesdosII', 'pesoPes', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp'});
+    obj.dataLink3:setField("cargaPesada");
     obj.dataLink3:setName("dataLink3");
+
+    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4:setParent(obj.scrollBox1);
+    obj.dataLink4:setFields({'pesoCabeca', 'pesoOlhos', 'pesoPescoco', 'pesoOmbros', 'pesoTorso', 'pesoCorpo', 'pesoPunhos', 'pesoCintura', 'pesoMaos', 'pesoDedosI', 'pesoDesdosII', 'pesoPes', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp'});
+    obj.dataLink4:setName("dataLink4");
 
     obj.popArma = gui.fromHandle(_obj_newObject("popup"));
     obj.popArma:setParent(obj.scrollBox1);
@@ -1518,7 +1524,7 @@ function newfrmFichaRPGmeister7_svg()
             self.rclConsumiveis:append();
         end, obj);
 
-    obj._e_event2 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event2 = obj.dataLink2:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
             
@@ -1578,7 +1584,7 @@ function newfrmFichaRPGmeister7_svg()
             				end;
         end, obj);
 
-    obj._e_event3 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event3 = obj.dataLink3:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~= nil then
             
@@ -1599,7 +1605,7 @@ function newfrmFichaRPGmeister7_svg()
             				end;
         end, obj);
 
-    obj._e_event4 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event4 = obj.dataLink4:addEventListener("onChange",
         function (self, field, oldValue, newValue)
             if sheet~=nil then
             					local mod = 0;
@@ -1664,6 +1670,7 @@ function newfrmFichaRPGmeister7_svg()
         if self.edit9 ~= nil then self.edit9:destroy(); self.edit9 = nil; end;
         if self.label40 ~= nil then self.label40:destroy(); self.label40 = nil; end;
         if self.label43 ~= nil then self.label43:destroy(); self.label43 = nil; end;
+        if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
         if self.edit29 ~= nil then self.edit29:destroy(); self.edit29 = nil; end;
         if self.edit28 ~= nil then self.edit28:destroy(); self.edit28 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;

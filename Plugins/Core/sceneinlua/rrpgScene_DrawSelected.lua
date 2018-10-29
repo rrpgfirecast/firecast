@@ -124,7 +124,6 @@ function DRAWSELECTED_CalcWPosOfQuadsBox(boxLeft, boxTop, boxRight, boxBottom, r
 	t[QUAD_SIZE] = quadSize;
 	t[QUAD_ROTATION_ANGLE] = rotation;
 			
-	local r;	
 	local boxWidth = boxRight - boxLeft;
 	local boxHeight = boxBottom - boxTop;
 	local boxWidthDiv2 = boxWidth / 2;
@@ -191,6 +190,7 @@ local function __DRAWSELECTED_DrawSingleQuad(aQuad, viewport)
 	viewport:fillRect(sLeft, sTop, sRight, sBottom, QUADS_OPACITY);
 end;
 
+--[[
 local function __DRAWSELECTED_DrawSingleQuadScreenCords(aQuad, viewport)
 	if aQuad == nil then
 		return;
@@ -200,7 +200,7 @@ local function __DRAWSELECTED_DrawSingleQuadScreenCords(aQuad, viewport)
 	local sRight, sBottom = aQuad[QUADRECT_RIGHT], aQuad[QUADRECT_BOTTOM];
 
 	viewport:fillRect(sLeft, sTop, sRight, sBottom, QUADS_OPACITY);
-end;
+end;]]--
 
 function DRAWSELECTED_DrawQuads(quads, viewport)	
 	viewport:prepareFill(QUADS_COLOR);
@@ -308,7 +308,7 @@ function DRAWSELECTED_HitTest(scene, screenX, screenY, expansion)
 		return nil;
 	end;
 	
-	local selecao, qtSelecionado = tabelaExterna.getSelecao();
+	local selecao = tabelaExterna.getSelecao();
 	local viewport = scene.viewport;
 	local wx, wy = viewport:screenToWorld(screenX, screenY);
 	
@@ -331,7 +331,7 @@ function DRAWSELECTED_HitTest(scene, screenX, screenY, expansion)
 									
 					if deuHitTest then									
 						if (menorDISTANCIA == nil) or (distancia < menorDISTANCIA) then												
-							local angle = v.quads[QUAD_ROTATION_ANGLE] + DS_BASE_ANGLE[ALL_QUADS[i]];;
+							local angle = v.quads[QUAD_ROTATION_ANGLE] + DS_BASE_ANGLE[ALL_QUADS[i]];
 							
 							if angle >= 0 then
 								angle = angle - math.floor(angle / 360) * 360;
@@ -380,7 +380,7 @@ function DRAWSELECTED_HitTest(scene, screenX, screenY, expansion)
 					local aQuad = v.quads[ALL_QUADS[i]];
 									
 					if __DRAWSELECTED_isPointInQuadNoExpansion(aQuad, tx, ty) then									
-						local angle = v.quads[QUAD_ROTATION_ANGLE] + DS_BASE_ANGLE[ALL_QUADS[i]];;
+						local angle = v.quads[QUAD_ROTATION_ANGLE] + DS_BASE_ANGLE[ALL_QUADS[i]];
 						
 						if angle >= 0 then
 							angle = angle - math.floor(angle / 360) * 360;
@@ -409,6 +409,7 @@ function DRAWSELECTED_HitTest(scene, screenX, screenY, expansion)
 	end;
 end;
 	
+--[[
 local function desenharCellsDoItem(scene, item, viewport)	
 	local cells = item:getCellsOccupied();
 	local grid = scene.grid;
@@ -423,7 +424,7 @@ local function desenharCellsDoItem(scene, item, viewport)
 		local r, b = viewport:worldToScreen(cx + size, cy + size);
 		viewport:fillRect(l, t, r, b);
 	end;
-end;
+end;]]--
 	
 function DRAWSELECTED_EnableInLocoMenu(scene, enable)	
 	local tabelaExterna = _DS_Scenes[scene];
@@ -469,33 +470,36 @@ SceneLib.registerPlugin(
 	
 		local function drawSelection()
 			local viewport = scene.viewport;	
+			local renderAsPlayer = scene.renderAsPlayer;
 			
 			viewport:prepareDraw(QUADS_COLOR, 1);
 			
-			for k, v in pairs(selecao)	do
-				local left, top, right, bottom, angle = k:getBounds();
-				local leftScreen, topScreen = viewport:worldToScreen(left, top);
-				local rightScreen, bottomScreen = viewport:worldToScreen(right, bottom);				
-				
-				v.quads = DRAWSELECTED_CalcWPosOfQuadsDaSelecao(k, scene, v.quads);
+			for k, v in pairs(selecao) do
+				if not renderAsPlayer or k.canBeRendered then					
+					local left, top, right, bottom = k:getBounds();
+					local leftScreen, topScreen = viewport:worldToScreen(left, top);
+					local rightScreen, bottomScreen = viewport:worldToScreen(right, bottom);				
+					
+					v.quads = DRAWSELECTED_CalcWPosOfQuadsDaSelecao(k, scene, v.quads);
 
-				viewport:pushRotationTransform(k.rotation, leftScreen + (rightScreen - leftScreen) / 2,
-												topScreen + (bottomScreen - topScreen) / 2);
-				viewport:drawRect(leftScreen, topScreen, rightScreen, bottomScreen, QUADS_OPACITY);
-				
-				local sx, sy = viewport:worldToScreen(v.quads[QUAD_CENTER_RIGHT][QUADRECT_CX], v.quads[QUAD_CENTER_RIGHT][QUADRECT_CY]);
-				local ex, ey = viewport:worldToScreen(v.quads[QUAD_ROTATION][QUADRECT_CX], v.quads[QUAD_ROTATION][QUADRECT_CY]);
-				viewport:drawLine(math.floor(sx), math.floor(sy), math.floor(ex), math.floor(ey), QUADS_OPACITY);
-		
-				DRAWSELECTED_DrawQuads(v.quads, viewport);	
-							
-				viewport:popTransform();				
-				
-				exibindoMenuInLoco = (qtSelecionado == 1) and inLocoMenuEnabled and canViewMenuOfToken;
-				
-				if exibindoMenuInLoco then
-					DRAWSELECTED_DrawMenuInLoco(v.quads, viewport, k);						
-				end;				
+					viewport:pushRotationTransform(k.rotation, leftScreen + (rightScreen - leftScreen) / 2,
+													topScreen + (bottomScreen - topScreen) / 2);
+					viewport:drawRect(leftScreen, topScreen, rightScreen, bottomScreen, QUADS_OPACITY);
+					
+					local sx, sy = viewport:worldToScreen(v.quads[QUAD_CENTER_RIGHT][QUADRECT_CX], v.quads[QUAD_CENTER_RIGHT][QUADRECT_CY]);
+					local ex, ey = viewport:worldToScreen(v.quads[QUAD_ROTATION][QUADRECT_CX], v.quads[QUAD_ROTATION][QUADRECT_CY]);
+					viewport:drawLine(math.floor(sx), math.floor(sy), math.floor(ex), math.floor(ey), QUADS_OPACITY);
+			
+					DRAWSELECTED_DrawQuads(v.quads, viewport);	
+								
+					viewport:popTransform();				
+					
+					exibindoMenuInLoco = (qtSelecionado == 1) and inLocoMenuEnabled and canViewMenuOfToken;
+					
+					if exibindoMenuInLoco then
+						DRAWSELECTED_DrawMenuInLoco(v.quads, viewport, k);						
+					end;
+				end;
 			end;
 		end;
 			

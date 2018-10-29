@@ -25,7 +25,7 @@ function MOVHIST_MONITOR_start(scene, movHist)
 			end;			
 			
 			m.evtBoundsChange = item:listen("onBoundsChange",
-				function(item)
+				function(aItem)
 					movHist:scheduleRevalidateHistsToDraw();
 				end);
 						

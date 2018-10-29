@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmMageDarkAges()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmMageDarkAges()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -33,28 +33,28 @@ function newfrmMageDarkAges()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.tabControl1 = gui.fromHandle(_obj_newObject("tabControl"));
+    obj.tabControl1 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl1:setParent(obj);
     obj.tabControl1:setAlign("client");
     obj.tabControl1:setName("tabControl1");
 
-    obj.tab1 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab1 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab1:setParent(obj.tabControl1);
     obj.tab1:setTitle("Main");
     obj.tab1:setName("tab1");
 
-    obj.frmMDA20_1 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmMDA20_1 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmMDA20_1:setParent(obj.tab1);
     obj.frmMDA20_1:setName("frmMDA20_1");
     obj.frmMDA20_1:setAlign("client");
     obj.frmMDA20_1:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj.frmMDA20_1);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -62,7 +62,7 @@ function newfrmMageDarkAges()
     obj.layout1:setHeight(100);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
@@ -71,7 +71,7 @@ function newfrmMageDarkAges()
     obj.rectangle1:setCornerType("innerLine");
     obj.rectangle1:setName("rectangle1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layout1);
     obj.layout2:setLeft(5);
     obj.layout2:setTop(5);
@@ -79,7 +79,7 @@ function newfrmMageDarkAges()
     obj.layout2:setHeight(25);
     obj.layout2:setName("layout2");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout2);
     obj.label1:setLeft(0);
     obj.label1:setTop(5);
@@ -89,7 +89,7 @@ function newfrmMageDarkAges()
     obj.label1:setHorzTextAlign("trailing");
     obj.label1:setName("label1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout2);
     obj.edit1:setLeft(90);
     obj.edit1:setTop(0);
@@ -98,7 +98,7 @@ function newfrmMageDarkAges()
     obj.edit1:setField("name");
     obj.edit1:setName("edit1");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout1);
     obj.layout3:setLeft(290);
     obj.layout3:setTop(5);
@@ -106,7 +106,7 @@ function newfrmMageDarkAges()
     obj.layout3:setHeight(25);
     obj.layout3:setName("layout3");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout3);
     obj.label2:setLeft(0);
     obj.label2:setTop(5);
@@ -116,7 +116,7 @@ function newfrmMageDarkAges()
     obj.label2:setHorzTextAlign("trailing");
     obj.label2:setName("label2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout3);
     obj.edit2:setLeft(90);
     obj.edit2:setTop(0);
@@ -125,7 +125,7 @@ function newfrmMageDarkAges()
     obj.edit2:setField("nature");
     obj.edit2:setName("edit2");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout1);
     obj.layout4:setLeft(580);
     obj.layout4:setTop(5);
@@ -133,7 +133,7 @@ function newfrmMageDarkAges()
     obj.layout4:setHeight(25);
     obj.layout4:setName("layout4");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout4);
     obj.label3:setLeft(0);
     obj.label3:setTop(5);
@@ -143,7 +143,7 @@ function newfrmMageDarkAges()
     obj.label3:setHorzTextAlign("trailing");
     obj.label3:setName("label3");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout4);
     obj.edit3:setLeft(90);
     obj.edit3:setTop(0);
@@ -152,7 +152,7 @@ function newfrmMageDarkAges()
     obj.edit3:setField("fellowship");
     obj.edit3:setName("edit3");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout1);
     obj.layout5:setLeft(5);
     obj.layout5:setTop(35);
@@ -160,7 +160,7 @@ function newfrmMageDarkAges()
     obj.layout5:setHeight(25);
     obj.layout5:setName("layout5");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout5);
     obj.label4:setLeft(0);
     obj.label4:setTop(5);
@@ -170,7 +170,7 @@ function newfrmMageDarkAges()
     obj.label4:setHorzTextAlign("trailing");
     obj.label4:setName("label4");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout5);
     obj.edit4:setLeft(90);
     obj.edit4:setTop(0);
@@ -179,7 +179,7 @@ function newfrmMageDarkAges()
     obj.edit4:setField("player");
     obj.edit4:setName("edit4");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout1);
     obj.layout6:setLeft(290);
     obj.layout6:setTop(35);
@@ -187,7 +187,7 @@ function newfrmMageDarkAges()
     obj.layout6:setHeight(25);
     obj.layout6:setName("layout6");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout6);
     obj.label5:setLeft(0);
     obj.label5:setTop(5);
@@ -197,7 +197,7 @@ function newfrmMageDarkAges()
     obj.label5:setHorzTextAlign("trailing");
     obj.label5:setName("label5");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout6);
     obj.edit5:setLeft(90);
     obj.edit5:setTop(0);
@@ -206,7 +206,7 @@ function newfrmMageDarkAges()
     obj.edit5:setField("demeanor");
     obj.edit5:setName("edit5");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.layout1);
     obj.layout7:setLeft(580);
     obj.layout7:setTop(35);
@@ -214,7 +214,7 @@ function newfrmMageDarkAges()
     obj.layout7:setHeight(25);
     obj.layout7:setName("layout7");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout7);
     obj.label6:setLeft(0);
     obj.label6:setTop(5);
@@ -224,7 +224,7 @@ function newfrmMageDarkAges()
     obj.label6:setHorzTextAlign("trailing");
     obj.label6:setName("label6");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout7);
     obj.edit6:setLeft(90);
     obj.edit6:setTop(0);
@@ -233,7 +233,7 @@ function newfrmMageDarkAges()
     obj.edit6:setField("rank");
     obj.edit6:setName("edit6");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.layout1);
     obj.layout8:setLeft(5);
     obj.layout8:setTop(65);
@@ -241,7 +241,7 @@ function newfrmMageDarkAges()
     obj.layout8:setHeight(25);
     obj.layout8:setName("layout8");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout8);
     obj.label7:setLeft(0);
     obj.label7:setTop(5);
@@ -251,7 +251,7 @@ function newfrmMageDarkAges()
     obj.label7:setHorzTextAlign("trailing");
     obj.label7:setName("label7");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout8);
     obj.edit7:setLeft(90);
     obj.edit7:setTop(0);
@@ -260,7 +260,7 @@ function newfrmMageDarkAges()
     obj.edit7:setField("chronicle");
     obj.edit7:setName("edit7");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.layout1);
     obj.layout9:setLeft(290);
     obj.layout9:setTop(65);
@@ -268,7 +268,7 @@ function newfrmMageDarkAges()
     obj.layout9:setHeight(25);
     obj.layout9:setName("layout9");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout9);
     obj.label8:setLeft(0);
     obj.label8:setTop(5);
@@ -278,7 +278,7 @@ function newfrmMageDarkAges()
     obj.label8:setHorzTextAlign("trailing");
     obj.label8:setName("label8");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.layout9);
     obj.edit8:setLeft(90);
     obj.edit8:setTop(0);
@@ -287,7 +287,7 @@ function newfrmMageDarkAges()
     obj.edit8:setField("concept");
     obj.edit8:setName("edit8");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.layout1);
     obj.layout10:setLeft(580);
     obj.layout10:setTop(65);
@@ -295,7 +295,7 @@ function newfrmMageDarkAges()
     obj.layout10:setHeight(25);
     obj.layout10:setName("layout10");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout10);
     obj.label9:setLeft(0);
     obj.label9:setTop(5);
@@ -305,7 +305,7 @@ function newfrmMageDarkAges()
     obj.label9:setHorzTextAlign("trailing");
     obj.label9:setName("label9");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.layout10);
     obj.edit9:setLeft(90);
     obj.edit9:setTop(0);
@@ -314,7 +314,7 @@ function newfrmMageDarkAges()
     obj.edit9:setField("cabal");
     obj.edit9:setName("edit9");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.scrollBox1);
     obj.layout11:setLeft(910);
     obj.layout11:setTop(0);
@@ -322,7 +322,7 @@ function newfrmMageDarkAges()
     obj.layout11:setHeight(100);
     obj.layout11:setName("layout11");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout11);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("black");
@@ -331,7 +331,7 @@ function newfrmMageDarkAges()
     obj.rectangle2:setCornerType("innerLine");
     obj.rectangle2:setName("rectangle2");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout11);
     obj.label10:setLeft(0);
     obj.label10:setTop(0);
@@ -341,7 +341,7 @@ function newfrmMageDarkAges()
     obj.label10:setHorzTextAlign("center");
     obj.label10:setName("label10");
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.layout11);
     obj.edit10:setLeft(20);
     obj.edit10:setTop(25);
@@ -352,7 +352,7 @@ function newfrmMageDarkAges()
     obj.edit10:setField("experience");
     obj.edit10:setName("edit10");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.scrollBox1);
     obj.layout12:setLeft(0);
     obj.layout12:setTop(110);
@@ -360,7 +360,7 @@ function newfrmMageDarkAges()
     obj.layout12:setHeight(285);
     obj.layout12:setName("layout12");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout12);
     obj.rectangle3:setAlign("client");
     obj.rectangle3:setColor("black");
@@ -369,7 +369,7 @@ function newfrmMageDarkAges()
     obj.rectangle3:setCornerType("innerLine");
     obj.rectangle3:setName("rectangle3");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout12);
     obj.label11:setLeft(5);
     obj.label11:setTop(0);
@@ -379,7 +379,7 @@ function newfrmMageDarkAges()
     obj.label11:setHorzTextAlign("center");
     obj.label11:setName("label11");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout12);
     obj.label12:setLeft(-35);
     obj.label12:setTop(60);
@@ -390,7 +390,7 @@ function newfrmMageDarkAges()
     obj.label12:setRotationAngle(270);
     obj.label12:setName("label12");
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.layout12);
     obj.layout13:setLeft(50);
     obj.layout13:setTop(25);
@@ -398,7 +398,7 @@ function newfrmMageDarkAges()
     obj.layout13:setHeight(25);
     obj.layout13:setName("layout13");
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout13);
     obj.label13:setLeft(0);
     obj.label13:setTop(5);
@@ -407,7 +407,7 @@ function newfrmMageDarkAges()
     obj.label13:setText("Strength");
     obj.label13:setName("label13");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.layout13);
     obj.image1:setLeft(80);
     obj.image1:setTop(0);
@@ -417,7 +417,7 @@ function newfrmMageDarkAges()
     obj.image1:setSRC("/MageDarkAges/images/prime_on.png");
     obj.image1:setName("image1");
 
-    obj.imageCheckBox1 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox1 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox1:setParent(obj.layout13);
     obj.imageCheckBox1:setLeft(105);
     obj.imageCheckBox1:setTop(0);
@@ -428,7 +428,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox1:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox1:setName("imageCheckBox1");
 
-    obj.imageCheckBox2 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox2 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox2:setParent(obj.layout13);
     obj.imageCheckBox2:setLeft(130);
     obj.imageCheckBox2:setTop(0);
@@ -439,7 +439,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox2:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox2:setName("imageCheckBox2");
 
-    obj.imageCheckBox3 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox3 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox3:setParent(obj.layout13);
     obj.imageCheckBox3:setLeft(155);
     obj.imageCheckBox3:setTop(0);
@@ -450,7 +450,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox3:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox3:setName("imageCheckBox3");
 
-    obj.imageCheckBox4 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox4 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox4:setParent(obj.layout13);
     obj.imageCheckBox4:setLeft(180);
     obj.imageCheckBox4:setTop(0);
@@ -461,7 +461,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox4:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox4:setName("imageCheckBox4");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.layout12);
     obj.layout14:setLeft(50);
     obj.layout14:setTop(50);
@@ -469,7 +469,7 @@ function newfrmMageDarkAges()
     obj.layout14:setHeight(25);
     obj.layout14:setName("layout14");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout14);
     obj.label14:setLeft(0);
     obj.label14:setTop(5);
@@ -478,7 +478,7 @@ function newfrmMageDarkAges()
     obj.label14:setText("Dexterity");
     obj.label14:setName("label14");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.layout14);
     obj.image2:setLeft(80);
     obj.image2:setTop(0);
@@ -488,7 +488,7 @@ function newfrmMageDarkAges()
     obj.image2:setSRC("/MageDarkAges/images/prime_on.png");
     obj.image2:setName("image2");
 
-    obj.imageCheckBox5 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox5 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox5:setParent(obj.layout14);
     obj.imageCheckBox5:setLeft(105);
     obj.imageCheckBox5:setTop(0);
@@ -499,7 +499,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox5:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox5:setName("imageCheckBox5");
 
-    obj.imageCheckBox6 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox6 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox6:setParent(obj.layout14);
     obj.imageCheckBox6:setLeft(130);
     obj.imageCheckBox6:setTop(0);
@@ -510,7 +510,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox6:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox6:setName("imageCheckBox6");
 
-    obj.imageCheckBox7 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox7 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox7:setParent(obj.layout14);
     obj.imageCheckBox7:setLeft(155);
     obj.imageCheckBox7:setTop(0);
@@ -521,7 +521,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox7:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox7:setName("imageCheckBox7");
 
-    obj.imageCheckBox8 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox8 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox8:setParent(obj.layout14);
     obj.imageCheckBox8:setLeft(180);
     obj.imageCheckBox8:setTop(0);
@@ -532,7 +532,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox8:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox8:setName("imageCheckBox8");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.layout12);
     obj.layout15:setLeft(50);
     obj.layout15:setTop(75);
@@ -540,7 +540,7 @@ function newfrmMageDarkAges()
     obj.layout15:setHeight(25);
     obj.layout15:setName("layout15");
 
-    obj.label15 = gui.fromHandle(_obj_newObject("label"));
+    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.layout15);
     obj.label15:setLeft(0);
     obj.label15:setTop(5);
@@ -549,7 +549,7 @@ function newfrmMageDarkAges()
     obj.label15:setText("Stamina");
     obj.label15:setName("label15");
 
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
     obj.image3:setParent(obj.layout15);
     obj.image3:setLeft(80);
     obj.image3:setTop(0);
@@ -559,7 +559,7 @@ function newfrmMageDarkAges()
     obj.image3:setSRC("/MageDarkAges/images/prime_on.png");
     obj.image3:setName("image3");
 
-    obj.imageCheckBox9 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox9 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox9:setParent(obj.layout15);
     obj.imageCheckBox9:setLeft(105);
     obj.imageCheckBox9:setTop(0);
@@ -570,7 +570,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox9:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox9:setName("imageCheckBox9");
 
-    obj.imageCheckBox10 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox10 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox10:setParent(obj.layout15);
     obj.imageCheckBox10:setLeft(130);
     obj.imageCheckBox10:setTop(0);
@@ -581,7 +581,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox10:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox10:setName("imageCheckBox10");
 
-    obj.imageCheckBox11 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox11 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox11:setParent(obj.layout15);
     obj.imageCheckBox11:setLeft(155);
     obj.imageCheckBox11:setTop(0);
@@ -592,7 +592,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox11:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox11:setName("imageCheckBox11");
 
-    obj.imageCheckBox12 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox12 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox12:setParent(obj.layout15);
     obj.imageCheckBox12:setLeft(180);
     obj.imageCheckBox12:setTop(0);
@@ -603,7 +603,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox12:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox12:setName("imageCheckBox12");
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.layout12);
     obj.horzLine1:setLeft(5);
     obj.horzLine1:setTop(105);
@@ -611,7 +611,7 @@ function newfrmMageDarkAges()
     obj.horzLine1:setStrokeColor("white");
     obj.horzLine1:setName("horzLine1");
 
-    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.layout12);
     obj.label16:setLeft(-35);
     obj.label16:setTop(145);
@@ -622,7 +622,7 @@ function newfrmMageDarkAges()
     obj.label16:setRotationAngle(270);
     obj.label16:setName("label16");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.layout12);
     obj.layout16:setLeft(50);
     obj.layout16:setTop(110);
@@ -630,7 +630,7 @@ function newfrmMageDarkAges()
     obj.layout16:setHeight(25);
     obj.layout16:setName("layout16");
 
-    obj.label17 = gui.fromHandle(_obj_newObject("label"));
+    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.layout16);
     obj.label17:setLeft(0);
     obj.label17:setTop(5);
@@ -639,7 +639,7 @@ function newfrmMageDarkAges()
     obj.label17:setText("Charisma");
     obj.label17:setName("label17");
 
-    obj.image4 = gui.fromHandle(_obj_newObject("image"));
+    obj.image4 = GUI.fromHandle(_obj_newObject("image"));
     obj.image4:setParent(obj.layout16);
     obj.image4:setLeft(80);
     obj.image4:setTop(0);
@@ -649,7 +649,7 @@ function newfrmMageDarkAges()
     obj.image4:setSRC("/MageDarkAges/images/prime_on.png");
     obj.image4:setName("image4");
 
-    obj.imageCheckBox13 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox13 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox13:setParent(obj.layout16);
     obj.imageCheckBox13:setLeft(105);
     obj.imageCheckBox13:setTop(0);
@@ -660,7 +660,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox13:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox13:setName("imageCheckBox13");
 
-    obj.imageCheckBox14 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox14 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox14:setParent(obj.layout16);
     obj.imageCheckBox14:setLeft(130);
     obj.imageCheckBox14:setTop(0);
@@ -671,7 +671,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox14:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox14:setName("imageCheckBox14");
 
-    obj.imageCheckBox15 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox15 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox15:setParent(obj.layout16);
     obj.imageCheckBox15:setLeft(155);
     obj.imageCheckBox15:setTop(0);
@@ -682,7 +682,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox15:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox15:setName("imageCheckBox15");
 
-    obj.imageCheckBox16 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox16 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox16:setParent(obj.layout16);
     obj.imageCheckBox16:setLeft(180);
     obj.imageCheckBox16:setTop(0);
@@ -693,7 +693,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox16:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox16:setName("imageCheckBox16");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.layout12);
     obj.layout17:setLeft(50);
     obj.layout17:setTop(135);
@@ -701,7 +701,7 @@ function newfrmMageDarkAges()
     obj.layout17:setHeight(25);
     obj.layout17:setName("layout17");
 
-    obj.label18 = gui.fromHandle(_obj_newObject("label"));
+    obj.label18 = GUI.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.layout17);
     obj.label18:setLeft(0);
     obj.label18:setTop(5);
@@ -710,7 +710,7 @@ function newfrmMageDarkAges()
     obj.label18:setText("Manipulation");
     obj.label18:setName("label18");
 
-    obj.image5 = gui.fromHandle(_obj_newObject("image"));
+    obj.image5 = GUI.fromHandle(_obj_newObject("image"));
     obj.image5:setParent(obj.layout17);
     obj.image5:setLeft(80);
     obj.image5:setTop(0);
@@ -720,7 +720,7 @@ function newfrmMageDarkAges()
     obj.image5:setSRC("/MageDarkAges/images/prime_on.png");
     obj.image5:setName("image5");
 
-    obj.imageCheckBox17 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox17 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox17:setParent(obj.layout17);
     obj.imageCheckBox17:setLeft(105);
     obj.imageCheckBox17:setTop(0);
@@ -731,7 +731,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox17:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox17:setName("imageCheckBox17");
 
-    obj.imageCheckBox18 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox18 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox18:setParent(obj.layout17);
     obj.imageCheckBox18:setLeft(130);
     obj.imageCheckBox18:setTop(0);
@@ -742,7 +742,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox18:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox18:setName("imageCheckBox18");
 
-    obj.imageCheckBox19 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox19 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox19:setParent(obj.layout17);
     obj.imageCheckBox19:setLeft(155);
     obj.imageCheckBox19:setTop(0);
@@ -753,7 +753,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox19:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox19:setName("imageCheckBox19");
 
-    obj.imageCheckBox20 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox20 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox20:setParent(obj.layout17);
     obj.imageCheckBox20:setLeft(180);
     obj.imageCheckBox20:setTop(0);
@@ -764,7 +764,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox20:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox20:setName("imageCheckBox20");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.layout12);
     obj.layout18:setLeft(50);
     obj.layout18:setTop(160);
@@ -772,7 +772,7 @@ function newfrmMageDarkAges()
     obj.layout18:setHeight(25);
     obj.layout18:setName("layout18");
 
-    obj.label19 = gui.fromHandle(_obj_newObject("label"));
+    obj.label19 = GUI.fromHandle(_obj_newObject("label"));
     obj.label19:setParent(obj.layout18);
     obj.label19:setLeft(0);
     obj.label19:setTop(5);
@@ -781,7 +781,7 @@ function newfrmMageDarkAges()
     obj.label19:setText("Appearance");
     obj.label19:setName("label19");
 
-    obj.image6 = gui.fromHandle(_obj_newObject("image"));
+    obj.image6 = GUI.fromHandle(_obj_newObject("image"));
     obj.image6:setParent(obj.layout18);
     obj.image6:setLeft(80);
     obj.image6:setTop(0);
@@ -791,7 +791,7 @@ function newfrmMageDarkAges()
     obj.image6:setSRC("/MageDarkAges/images/prime_on.png");
     obj.image6:setName("image6");
 
-    obj.imageCheckBox21 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox21 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox21:setParent(obj.layout18);
     obj.imageCheckBox21:setLeft(105);
     obj.imageCheckBox21:setTop(0);
@@ -802,7 +802,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox21:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox21:setName("imageCheckBox21");
 
-    obj.imageCheckBox22 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox22 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox22:setParent(obj.layout18);
     obj.imageCheckBox22:setLeft(130);
     obj.imageCheckBox22:setTop(0);
@@ -813,7 +813,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox22:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox22:setName("imageCheckBox22");
 
-    obj.imageCheckBox23 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox23 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox23:setParent(obj.layout18);
     obj.imageCheckBox23:setLeft(155);
     obj.imageCheckBox23:setTop(0);
@@ -824,7 +824,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox23:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox23:setName("imageCheckBox23");
 
-    obj.imageCheckBox24 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox24 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox24:setParent(obj.layout18);
     obj.imageCheckBox24:setLeft(180);
     obj.imageCheckBox24:setTop(0);
@@ -835,7 +835,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox24:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox24:setName("imageCheckBox24");
 
-    obj.horzLine2 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine2 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine2:setParent(obj.layout12);
     obj.horzLine2:setLeft(5);
     obj.horzLine2:setTop(190);
@@ -843,7 +843,7 @@ function newfrmMageDarkAges()
     obj.horzLine2:setStrokeColor("white");
     obj.horzLine2:setName("horzLine2");
 
-    obj.label20 = gui.fromHandle(_obj_newObject("label"));
+    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.layout12);
     obj.label20:setLeft(-35);
     obj.label20:setTop(230);
@@ -854,7 +854,7 @@ function newfrmMageDarkAges()
     obj.label20:setRotationAngle(270);
     obj.label20:setName("label20");
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.layout12);
     obj.layout19:setLeft(50);
     obj.layout19:setTop(195);
@@ -862,7 +862,7 @@ function newfrmMageDarkAges()
     obj.layout19:setHeight(25);
     obj.layout19:setName("layout19");
 
-    obj.label21 = gui.fromHandle(_obj_newObject("label"));
+    obj.label21 = GUI.fromHandle(_obj_newObject("label"));
     obj.label21:setParent(obj.layout19);
     obj.label21:setLeft(0);
     obj.label21:setTop(5);
@@ -871,7 +871,7 @@ function newfrmMageDarkAges()
     obj.label21:setText("Perception");
     obj.label21:setName("label21");
 
-    obj.image7 = gui.fromHandle(_obj_newObject("image"));
+    obj.image7 = GUI.fromHandle(_obj_newObject("image"));
     obj.image7:setParent(obj.layout19);
     obj.image7:setLeft(80);
     obj.image7:setTop(0);
@@ -881,7 +881,7 @@ function newfrmMageDarkAges()
     obj.image7:setSRC("/MageDarkAges/images/prime_on.png");
     obj.image7:setName("image7");
 
-    obj.imageCheckBox25 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox25 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox25:setParent(obj.layout19);
     obj.imageCheckBox25:setLeft(105);
     obj.imageCheckBox25:setTop(0);
@@ -892,7 +892,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox25:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox25:setName("imageCheckBox25");
 
-    obj.imageCheckBox26 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox26 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox26:setParent(obj.layout19);
     obj.imageCheckBox26:setLeft(130);
     obj.imageCheckBox26:setTop(0);
@@ -903,7 +903,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox26:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox26:setName("imageCheckBox26");
 
-    obj.imageCheckBox27 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox27 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox27:setParent(obj.layout19);
     obj.imageCheckBox27:setLeft(155);
     obj.imageCheckBox27:setTop(0);
@@ -914,7 +914,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox27:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox27:setName("imageCheckBox27");
 
-    obj.imageCheckBox28 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox28 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox28:setParent(obj.layout19);
     obj.imageCheckBox28:setLeft(180);
     obj.imageCheckBox28:setTop(0);
@@ -925,7 +925,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox28:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox28:setName("imageCheckBox28");
 
-    obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.layout12);
     obj.layout20:setLeft(50);
     obj.layout20:setTop(220);
@@ -933,7 +933,7 @@ function newfrmMageDarkAges()
     obj.layout20:setHeight(25);
     obj.layout20:setName("layout20");
 
-    obj.label22 = gui.fromHandle(_obj_newObject("label"));
+    obj.label22 = GUI.fromHandle(_obj_newObject("label"));
     obj.label22:setParent(obj.layout20);
     obj.label22:setLeft(0);
     obj.label22:setTop(5);
@@ -942,7 +942,7 @@ function newfrmMageDarkAges()
     obj.label22:setText("Inteligence");
     obj.label22:setName("label22");
 
-    obj.image8 = gui.fromHandle(_obj_newObject("image"));
+    obj.image8 = GUI.fromHandle(_obj_newObject("image"));
     obj.image8:setParent(obj.layout20);
     obj.image8:setLeft(80);
     obj.image8:setTop(0);
@@ -952,7 +952,7 @@ function newfrmMageDarkAges()
     obj.image8:setSRC("/MageDarkAges/images/prime_on.png");
     obj.image8:setName("image8");
 
-    obj.imageCheckBox29 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox29 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox29:setParent(obj.layout20);
     obj.imageCheckBox29:setLeft(105);
     obj.imageCheckBox29:setTop(0);
@@ -963,7 +963,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox29:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox29:setName("imageCheckBox29");
 
-    obj.imageCheckBox30 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox30 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox30:setParent(obj.layout20);
     obj.imageCheckBox30:setLeft(130);
     obj.imageCheckBox30:setTop(0);
@@ -974,7 +974,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox30:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox30:setName("imageCheckBox30");
 
-    obj.imageCheckBox31 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox31 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox31:setParent(obj.layout20);
     obj.imageCheckBox31:setLeft(155);
     obj.imageCheckBox31:setTop(0);
@@ -985,7 +985,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox31:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox31:setName("imageCheckBox31");
 
-    obj.imageCheckBox32 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox32 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox32:setParent(obj.layout20);
     obj.imageCheckBox32:setLeft(180);
     obj.imageCheckBox32:setTop(0);
@@ -996,7 +996,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox32:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox32:setName("imageCheckBox32");
 
-    obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.layout12);
     obj.layout21:setLeft(50);
     obj.layout21:setTop(245);
@@ -1004,7 +1004,7 @@ function newfrmMageDarkAges()
     obj.layout21:setHeight(25);
     obj.layout21:setName("layout21");
 
-    obj.label23 = gui.fromHandle(_obj_newObject("label"));
+    obj.label23 = GUI.fromHandle(_obj_newObject("label"));
     obj.label23:setParent(obj.layout21);
     obj.label23:setLeft(0);
     obj.label23:setTop(5);
@@ -1013,7 +1013,7 @@ function newfrmMageDarkAges()
     obj.label23:setText("Wits");
     obj.label23:setName("label23");
 
-    obj.image9 = gui.fromHandle(_obj_newObject("image"));
+    obj.image9 = GUI.fromHandle(_obj_newObject("image"));
     obj.image9:setParent(obj.layout21);
     obj.image9:setLeft(80);
     obj.image9:setTop(0);
@@ -1023,7 +1023,7 @@ function newfrmMageDarkAges()
     obj.image9:setSRC("/MageDarkAges/images/prime_on.png");
     obj.image9:setName("image9");
 
-    obj.imageCheckBox33 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox33 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox33:setParent(obj.layout21);
     obj.imageCheckBox33:setLeft(105);
     obj.imageCheckBox33:setTop(0);
@@ -1034,7 +1034,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox33:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox33:setName("imageCheckBox33");
 
-    obj.imageCheckBox34 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox34 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox34:setParent(obj.layout21);
     obj.imageCheckBox34:setLeft(130);
     obj.imageCheckBox34:setTop(0);
@@ -1045,7 +1045,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox34:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox34:setName("imageCheckBox34");
 
-    obj.imageCheckBox35 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox35 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox35:setParent(obj.layout21);
     obj.imageCheckBox35:setLeft(155);
     obj.imageCheckBox35:setTop(0);
@@ -1056,7 +1056,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox35:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox35:setName("imageCheckBox35");
 
-    obj.imageCheckBox36 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox36 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox36:setParent(obj.layout21);
     obj.imageCheckBox36:setLeft(180);
     obj.imageCheckBox36:setTop(0);
@@ -1067,7 +1067,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox36:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox36:setName("imageCheckBox36");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.scrollBox1);
     obj.rectangle4:setLeft(0);
     obj.rectangle4:setTop(405);
@@ -1079,7 +1079,7 @@ function newfrmMageDarkAges()
     obj.rectangle4:setCornerType("innerLine");
     obj.rectangle4:setName("rectangle4");
 
-    obj.image10 = gui.fromHandle(_obj_newObject("image"));
+    obj.image10 = GUI.fromHandle(_obj_newObject("image"));
     obj.image10:setParent(obj.scrollBox1);
     obj.image10:setLeft(0);
     obj.image10:setTop(405);
@@ -1090,7 +1090,7 @@ function newfrmMageDarkAges()
     obj.image10:setStyle("autoFit");
     obj.image10:setName("image10");
 
-    obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.scrollBox1);
     obj.layout22:setLeft(280);
     obj.layout22:setTop(110);
@@ -1098,7 +1098,7 @@ function newfrmMageDarkAges()
     obj.layout22:setHeight(380);
     obj.layout22:setName("layout22");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.layout22);
     obj.rectangle5:setAlign("client");
     obj.rectangle5:setColor("#FFFFFF00");
@@ -1109,7 +1109,7 @@ function newfrmMageDarkAges()
     obj.rectangle5:setCornerType("innerLine");
     obj.rectangle5:setName("rectangle5");
 
-    obj.label24 = gui.fromHandle(_obj_newObject("label"));
+    obj.label24 = GUI.fromHandle(_obj_newObject("label"));
     obj.label24:setParent(obj.layout22);
     obj.label24:setLeft(5);
     obj.label24:setTop(1);
@@ -1119,7 +1119,7 @@ function newfrmMageDarkAges()
     obj.label24:setHorzTextAlign("center");
     obj.label24:setName("label24");
 
-    obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.layout22);
     obj.layout23:setLeft(10);
     obj.layout23:setTop(30);
@@ -1127,7 +1127,7 @@ function newfrmMageDarkAges()
     obj.layout23:setHeight(340);
     obj.layout23:setName("layout23");
 
-    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle6:setParent(obj.layout23);
     obj.rectangle6:setAlign("client");
     obj.rectangle6:setColor("black");
@@ -1136,7 +1136,7 @@ function newfrmMageDarkAges()
     obj.rectangle6:setCornerType("innerLine");
     obj.rectangle6:setName("rectangle6");
 
-    obj.label25 = gui.fromHandle(_obj_newObject("label"));
+    obj.label25 = GUI.fromHandle(_obj_newObject("label"));
     obj.label25:setParent(obj.layout23);
     obj.label25:setLeft(5);
     obj.label25:setTop(0);
@@ -1146,7 +1146,7 @@ function newfrmMageDarkAges()
     obj.label25:setHorzTextAlign("center");
     obj.label25:setName("label25");
 
-    obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.layout23);
     obj.layout24:setLeft(15);
     obj.layout24:setTop(25);
@@ -1154,7 +1154,7 @@ function newfrmMageDarkAges()
     obj.layout24:setHeight(25);
     obj.layout24:setName("layout24");
 
-    obj.label26 = gui.fromHandle(_obj_newObject("label"));
+    obj.label26 = GUI.fromHandle(_obj_newObject("label"));
     obj.label26:setParent(obj.layout24);
     obj.label26:setLeft(0);
     obj.label26:setTop(5);
@@ -1163,7 +1163,7 @@ function newfrmMageDarkAges()
     obj.label26:setText("Alertness");
     obj.label26:setName("label26");
 
-    obj.imageCheckBox37 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox37 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox37:setParent(obj.layout24);
     obj.imageCheckBox37:setLeft(80);
     obj.imageCheckBox37:setTop(0);
@@ -1174,7 +1174,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox37:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox37:setName("imageCheckBox37");
 
-    obj.imageCheckBox38 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox38 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox38:setParent(obj.layout24);
     obj.imageCheckBox38:setLeft(105);
     obj.imageCheckBox38:setTop(0);
@@ -1185,7 +1185,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox38:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox38:setName("imageCheckBox38");
 
-    obj.imageCheckBox39 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox39 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox39:setParent(obj.layout24);
     obj.imageCheckBox39:setLeft(130);
     obj.imageCheckBox39:setTop(0);
@@ -1196,7 +1196,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox39:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox39:setName("imageCheckBox39");
 
-    obj.imageCheckBox40 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox40 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox40:setParent(obj.layout24);
     obj.imageCheckBox40:setLeft(155);
     obj.imageCheckBox40:setTop(0);
@@ -1207,7 +1207,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox40:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox40:setName("imageCheckBox40");
 
-    obj.imageCheckBox41 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox41 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox41:setParent(obj.layout24);
     obj.imageCheckBox41:setLeft(180);
     obj.imageCheckBox41:setTop(0);
@@ -1218,7 +1218,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox41:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox41:setName("imageCheckBox41");
 
-    obj.layout25 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.layout23);
     obj.layout25:setLeft(15);
     obj.layout25:setTop(50);
@@ -1226,7 +1226,7 @@ function newfrmMageDarkAges()
     obj.layout25:setHeight(25);
     obj.layout25:setName("layout25");
 
-    obj.label27 = gui.fromHandle(_obj_newObject("label"));
+    obj.label27 = GUI.fromHandle(_obj_newObject("label"));
     obj.label27:setParent(obj.layout25);
     obj.label27:setLeft(0);
     obj.label27:setTop(5);
@@ -1235,7 +1235,7 @@ function newfrmMageDarkAges()
     obj.label27:setText("Athetics");
     obj.label27:setName("label27");
 
-    obj.imageCheckBox42 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox42 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox42:setParent(obj.layout25);
     obj.imageCheckBox42:setLeft(80);
     obj.imageCheckBox42:setTop(0);
@@ -1246,7 +1246,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox42:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox42:setName("imageCheckBox42");
 
-    obj.imageCheckBox43 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox43 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox43:setParent(obj.layout25);
     obj.imageCheckBox43:setLeft(105);
     obj.imageCheckBox43:setTop(0);
@@ -1257,7 +1257,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox43:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox43:setName("imageCheckBox43");
 
-    obj.imageCheckBox44 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox44 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox44:setParent(obj.layout25);
     obj.imageCheckBox44:setLeft(130);
     obj.imageCheckBox44:setTop(0);
@@ -1268,7 +1268,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox44:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox44:setName("imageCheckBox44");
 
-    obj.imageCheckBox45 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox45 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox45:setParent(obj.layout25);
     obj.imageCheckBox45:setLeft(155);
     obj.imageCheckBox45:setTop(0);
@@ -1279,7 +1279,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox45:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox45:setName("imageCheckBox45");
 
-    obj.imageCheckBox46 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox46 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox46:setParent(obj.layout25);
     obj.imageCheckBox46:setLeft(180);
     obj.imageCheckBox46:setTop(0);
@@ -1290,7 +1290,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox46:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox46:setName("imageCheckBox46");
 
-    obj.layout26 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.layout23);
     obj.layout26:setLeft(15);
     obj.layout26:setTop(75);
@@ -1298,7 +1298,7 @@ function newfrmMageDarkAges()
     obj.layout26:setHeight(25);
     obj.layout26:setName("layout26");
 
-    obj.label28 = gui.fromHandle(_obj_newObject("label"));
+    obj.label28 = GUI.fromHandle(_obj_newObject("label"));
     obj.label28:setParent(obj.layout26);
     obj.label28:setLeft(0);
     obj.label28:setTop(5);
@@ -1307,7 +1307,7 @@ function newfrmMageDarkAges()
     obj.label28:setText("Awareness");
     obj.label28:setName("label28");
 
-    obj.imageCheckBox47 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox47 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox47:setParent(obj.layout26);
     obj.imageCheckBox47:setLeft(80);
     obj.imageCheckBox47:setTop(0);
@@ -1318,7 +1318,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox47:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox47:setName("imageCheckBox47");
 
-    obj.imageCheckBox48 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox48 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox48:setParent(obj.layout26);
     obj.imageCheckBox48:setLeft(105);
     obj.imageCheckBox48:setTop(0);
@@ -1329,7 +1329,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox48:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox48:setName("imageCheckBox48");
 
-    obj.imageCheckBox49 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox49 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox49:setParent(obj.layout26);
     obj.imageCheckBox49:setLeft(130);
     obj.imageCheckBox49:setTop(0);
@@ -1340,7 +1340,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox49:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox49:setName("imageCheckBox49");
 
-    obj.imageCheckBox50 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox50 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox50:setParent(obj.layout26);
     obj.imageCheckBox50:setLeft(155);
     obj.imageCheckBox50:setTop(0);
@@ -1351,7 +1351,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox50:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox50:setName("imageCheckBox50");
 
-    obj.imageCheckBox51 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox51 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox51:setParent(obj.layout26);
     obj.imageCheckBox51:setLeft(180);
     obj.imageCheckBox51:setTop(0);
@@ -1362,7 +1362,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox51:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox51:setName("imageCheckBox51");
 
-    obj.layout27 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.layout23);
     obj.layout27:setLeft(15);
     obj.layout27:setTop(100);
@@ -1370,7 +1370,7 @@ function newfrmMageDarkAges()
     obj.layout27:setHeight(25);
     obj.layout27:setName("layout27");
 
-    obj.label29 = gui.fromHandle(_obj_newObject("label"));
+    obj.label29 = GUI.fromHandle(_obj_newObject("label"));
     obj.label29:setParent(obj.layout27);
     obj.label29:setLeft(0);
     obj.label29:setTop(5);
@@ -1379,7 +1379,7 @@ function newfrmMageDarkAges()
     obj.label29:setText("Brawl");
     obj.label29:setName("label29");
 
-    obj.imageCheckBox52 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox52 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox52:setParent(obj.layout27);
     obj.imageCheckBox52:setLeft(80);
     obj.imageCheckBox52:setTop(0);
@@ -1390,7 +1390,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox52:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox52:setName("imageCheckBox52");
 
-    obj.imageCheckBox53 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox53 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox53:setParent(obj.layout27);
     obj.imageCheckBox53:setLeft(105);
     obj.imageCheckBox53:setTop(0);
@@ -1401,7 +1401,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox53:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox53:setName("imageCheckBox53");
 
-    obj.imageCheckBox54 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox54 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox54:setParent(obj.layout27);
     obj.imageCheckBox54:setLeft(130);
     obj.imageCheckBox54:setTop(0);
@@ -1412,7 +1412,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox54:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox54:setName("imageCheckBox54");
 
-    obj.imageCheckBox55 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox55 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox55:setParent(obj.layout27);
     obj.imageCheckBox55:setLeft(155);
     obj.imageCheckBox55:setTop(0);
@@ -1423,7 +1423,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox55:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox55:setName("imageCheckBox55");
 
-    obj.imageCheckBox56 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox56 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox56:setParent(obj.layout27);
     obj.imageCheckBox56:setLeft(180);
     obj.imageCheckBox56:setTop(0);
@@ -1434,7 +1434,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox56:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox56:setName("imageCheckBox56");
 
-    obj.layout28 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.layout23);
     obj.layout28:setLeft(15);
     obj.layout28:setTop(125);
@@ -1442,7 +1442,7 @@ function newfrmMageDarkAges()
     obj.layout28:setHeight(25);
     obj.layout28:setName("layout28");
 
-    obj.label30 = gui.fromHandle(_obj_newObject("label"));
+    obj.label30 = GUI.fromHandle(_obj_newObject("label"));
     obj.label30:setParent(obj.layout28);
     obj.label30:setLeft(0);
     obj.label30:setTop(5);
@@ -1451,7 +1451,7 @@ function newfrmMageDarkAges()
     obj.label30:setText("Dodge");
     obj.label30:setName("label30");
 
-    obj.imageCheckBox57 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox57 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox57:setParent(obj.layout28);
     obj.imageCheckBox57:setLeft(80);
     obj.imageCheckBox57:setTop(0);
@@ -1462,7 +1462,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox57:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox57:setName("imageCheckBox57");
 
-    obj.imageCheckBox58 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox58 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox58:setParent(obj.layout28);
     obj.imageCheckBox58:setLeft(105);
     obj.imageCheckBox58:setTop(0);
@@ -1473,7 +1473,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox58:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox58:setName("imageCheckBox58");
 
-    obj.imageCheckBox59 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox59 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox59:setParent(obj.layout28);
     obj.imageCheckBox59:setLeft(130);
     obj.imageCheckBox59:setTop(0);
@@ -1484,7 +1484,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox59:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox59:setName("imageCheckBox59");
 
-    obj.imageCheckBox60 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox60 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox60:setParent(obj.layout28);
     obj.imageCheckBox60:setLeft(155);
     obj.imageCheckBox60:setTop(0);
@@ -1495,7 +1495,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox60:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox60:setName("imageCheckBox60");
 
-    obj.imageCheckBox61 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox61 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox61:setParent(obj.layout28);
     obj.imageCheckBox61:setLeft(180);
     obj.imageCheckBox61:setTop(0);
@@ -1506,7 +1506,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox61:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox61:setName("imageCheckBox61");
 
-    obj.layout29 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout29:setParent(obj.layout23);
     obj.layout29:setLeft(15);
     obj.layout29:setTop(150);
@@ -1514,7 +1514,7 @@ function newfrmMageDarkAges()
     obj.layout29:setHeight(25);
     obj.layout29:setName("layout29");
 
-    obj.label31 = gui.fromHandle(_obj_newObject("label"));
+    obj.label31 = GUI.fromHandle(_obj_newObject("label"));
     obj.label31:setParent(obj.layout29);
     obj.label31:setLeft(0);
     obj.label31:setTop(5);
@@ -1523,7 +1523,7 @@ function newfrmMageDarkAges()
     obj.label31:setText("Empathy");
     obj.label31:setName("label31");
 
-    obj.imageCheckBox62 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox62 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox62:setParent(obj.layout29);
     obj.imageCheckBox62:setLeft(80);
     obj.imageCheckBox62:setTop(0);
@@ -1534,7 +1534,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox62:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox62:setName("imageCheckBox62");
 
-    obj.imageCheckBox63 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox63 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox63:setParent(obj.layout29);
     obj.imageCheckBox63:setLeft(105);
     obj.imageCheckBox63:setTop(0);
@@ -1545,7 +1545,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox63:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox63:setName("imageCheckBox63");
 
-    obj.imageCheckBox64 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox64 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox64:setParent(obj.layout29);
     obj.imageCheckBox64:setLeft(130);
     obj.imageCheckBox64:setTop(0);
@@ -1556,7 +1556,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox64:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox64:setName("imageCheckBox64");
 
-    obj.imageCheckBox65 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox65 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox65:setParent(obj.layout29);
     obj.imageCheckBox65:setLeft(155);
     obj.imageCheckBox65:setTop(0);
@@ -1567,7 +1567,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox65:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox65:setName("imageCheckBox65");
 
-    obj.imageCheckBox66 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox66 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox66:setParent(obj.layout29);
     obj.imageCheckBox66:setLeft(180);
     obj.imageCheckBox66:setTop(0);
@@ -1578,7 +1578,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox66:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox66:setName("imageCheckBox66");
 
-    obj.layout30 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout30:setParent(obj.layout23);
     obj.layout30:setLeft(15);
     obj.layout30:setTop(175);
@@ -1586,7 +1586,7 @@ function newfrmMageDarkAges()
     obj.layout30:setHeight(25);
     obj.layout30:setName("layout30");
 
-    obj.label32 = gui.fromHandle(_obj_newObject("label"));
+    obj.label32 = GUI.fromHandle(_obj_newObject("label"));
     obj.label32:setParent(obj.layout30);
     obj.label32:setLeft(0);
     obj.label32:setTop(5);
@@ -1595,7 +1595,7 @@ function newfrmMageDarkAges()
     obj.label32:setText("Expression");
     obj.label32:setName("label32");
 
-    obj.imageCheckBox67 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox67 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox67:setParent(obj.layout30);
     obj.imageCheckBox67:setLeft(80);
     obj.imageCheckBox67:setTop(0);
@@ -1606,7 +1606,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox67:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox67:setName("imageCheckBox67");
 
-    obj.imageCheckBox68 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox68 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox68:setParent(obj.layout30);
     obj.imageCheckBox68:setLeft(105);
     obj.imageCheckBox68:setTop(0);
@@ -1617,7 +1617,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox68:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox68:setName("imageCheckBox68");
 
-    obj.imageCheckBox69 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox69 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox69:setParent(obj.layout30);
     obj.imageCheckBox69:setLeft(130);
     obj.imageCheckBox69:setTop(0);
@@ -1628,7 +1628,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox69:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox69:setName("imageCheckBox69");
 
-    obj.imageCheckBox70 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox70 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox70:setParent(obj.layout30);
     obj.imageCheckBox70:setLeft(155);
     obj.imageCheckBox70:setTop(0);
@@ -1639,7 +1639,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox70:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox70:setName("imageCheckBox70");
 
-    obj.imageCheckBox71 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox71 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox71:setParent(obj.layout30);
     obj.imageCheckBox71:setLeft(180);
     obj.imageCheckBox71:setTop(0);
@@ -1650,7 +1650,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox71:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox71:setName("imageCheckBox71");
 
-    obj.layout31 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.layout23);
     obj.layout31:setLeft(15);
     obj.layout31:setTop(200);
@@ -1658,7 +1658,7 @@ function newfrmMageDarkAges()
     obj.layout31:setHeight(25);
     obj.layout31:setName("layout31");
 
-    obj.label33 = gui.fromHandle(_obj_newObject("label"));
+    obj.label33 = GUI.fromHandle(_obj_newObject("label"));
     obj.label33:setParent(obj.layout31);
     obj.label33:setLeft(0);
     obj.label33:setTop(5);
@@ -1667,7 +1667,7 @@ function newfrmMageDarkAges()
     obj.label33:setText("Intimidation");
     obj.label33:setName("label33");
 
-    obj.imageCheckBox72 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox72 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox72:setParent(obj.layout31);
     obj.imageCheckBox72:setLeft(80);
     obj.imageCheckBox72:setTop(0);
@@ -1678,7 +1678,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox72:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox72:setName("imageCheckBox72");
 
-    obj.imageCheckBox73 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox73 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox73:setParent(obj.layout31);
     obj.imageCheckBox73:setLeft(105);
     obj.imageCheckBox73:setTop(0);
@@ -1689,7 +1689,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox73:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox73:setName("imageCheckBox73");
 
-    obj.imageCheckBox74 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox74 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox74:setParent(obj.layout31);
     obj.imageCheckBox74:setLeft(130);
     obj.imageCheckBox74:setTop(0);
@@ -1700,7 +1700,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox74:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox74:setName("imageCheckBox74");
 
-    obj.imageCheckBox75 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox75 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox75:setParent(obj.layout31);
     obj.imageCheckBox75:setLeft(155);
     obj.imageCheckBox75:setTop(0);
@@ -1711,7 +1711,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox75:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox75:setName("imageCheckBox75");
 
-    obj.imageCheckBox76 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox76 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox76:setParent(obj.layout31);
     obj.imageCheckBox76:setLeft(180);
     obj.imageCheckBox76:setTop(0);
@@ -1722,7 +1722,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox76:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox76:setName("imageCheckBox76");
 
-    obj.layout32 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.layout23);
     obj.layout32:setLeft(15);
     obj.layout32:setTop(225);
@@ -1730,7 +1730,7 @@ function newfrmMageDarkAges()
     obj.layout32:setHeight(25);
     obj.layout32:setName("layout32");
 
-    obj.label34 = gui.fromHandle(_obj_newObject("label"));
+    obj.label34 = GUI.fromHandle(_obj_newObject("label"));
     obj.label34:setParent(obj.layout32);
     obj.label34:setLeft(0);
     obj.label34:setTop(5);
@@ -1739,7 +1739,7 @@ function newfrmMageDarkAges()
     obj.label34:setText("Leadership");
     obj.label34:setName("label34");
 
-    obj.imageCheckBox77 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox77 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox77:setParent(obj.layout32);
     obj.imageCheckBox77:setLeft(80);
     obj.imageCheckBox77:setTop(0);
@@ -1750,7 +1750,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox77:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox77:setName("imageCheckBox77");
 
-    obj.imageCheckBox78 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox78 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox78:setParent(obj.layout32);
     obj.imageCheckBox78:setLeft(105);
     obj.imageCheckBox78:setTop(0);
@@ -1761,7 +1761,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox78:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox78:setName("imageCheckBox78");
 
-    obj.imageCheckBox79 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox79 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox79:setParent(obj.layout32);
     obj.imageCheckBox79:setLeft(130);
     obj.imageCheckBox79:setTop(0);
@@ -1772,7 +1772,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox79:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox79:setName("imageCheckBox79");
 
-    obj.imageCheckBox80 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox80 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox80:setParent(obj.layout32);
     obj.imageCheckBox80:setLeft(155);
     obj.imageCheckBox80:setTop(0);
@@ -1783,7 +1783,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox80:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox80:setName("imageCheckBox80");
 
-    obj.imageCheckBox81 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox81 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox81:setParent(obj.layout32);
     obj.imageCheckBox81:setLeft(180);
     obj.imageCheckBox81:setTop(0);
@@ -1794,7 +1794,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox81:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox81:setName("imageCheckBox81");
 
-    obj.layout33 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout33:setParent(obj.layout23);
     obj.layout33:setLeft(15);
     obj.layout33:setTop(250);
@@ -1802,7 +1802,7 @@ function newfrmMageDarkAges()
     obj.layout33:setHeight(25);
     obj.layout33:setName("layout33");
 
-    obj.label35 = gui.fromHandle(_obj_newObject("label"));
+    obj.label35 = GUI.fromHandle(_obj_newObject("label"));
     obj.label35:setParent(obj.layout33);
     obj.label35:setLeft(0);
     obj.label35:setTop(5);
@@ -1811,7 +1811,7 @@ function newfrmMageDarkAges()
     obj.label35:setText("Subterfuge");
     obj.label35:setName("label35");
 
-    obj.imageCheckBox82 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox82 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox82:setParent(obj.layout33);
     obj.imageCheckBox82:setLeft(80);
     obj.imageCheckBox82:setTop(0);
@@ -1822,7 +1822,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox82:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox82:setName("imageCheckBox82");
 
-    obj.imageCheckBox83 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox83 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox83:setParent(obj.layout33);
     obj.imageCheckBox83:setLeft(105);
     obj.imageCheckBox83:setTop(0);
@@ -1833,7 +1833,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox83:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox83:setName("imageCheckBox83");
 
-    obj.imageCheckBox84 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox84 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox84:setParent(obj.layout33);
     obj.imageCheckBox84:setLeft(130);
     obj.imageCheckBox84:setTop(0);
@@ -1844,7 +1844,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox84:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox84:setName("imageCheckBox84");
 
-    obj.imageCheckBox85 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox85 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox85:setParent(obj.layout33);
     obj.imageCheckBox85:setLeft(155);
     obj.imageCheckBox85:setTop(0);
@@ -1855,7 +1855,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox85:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox85:setName("imageCheckBox85");
 
-    obj.imageCheckBox86 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox86 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox86:setParent(obj.layout33);
     obj.imageCheckBox86:setLeft(180);
     obj.imageCheckBox86:setTop(0);
@@ -1866,7 +1866,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox86:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox86:setName("imageCheckBox86");
 
-    obj.layout34 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout34 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout34:setParent(obj.layout23);
     obj.layout34:setLeft(15);
     obj.layout34:setTop(275);
@@ -1874,7 +1874,7 @@ function newfrmMageDarkAges()
     obj.layout34:setHeight(25);
     obj.layout34:setName("layout34");
 
-    obj.edit11 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit11:setParent(obj.layout34);
     obj.edit11:setLeft(0);
     obj.edit11:setTop(5);
@@ -1884,7 +1884,7 @@ function newfrmMageDarkAges()
     obj.edit11:setFontSize(12);
     obj.edit11:setName("edit11");
 
-    obj.imageCheckBox87 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox87 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox87:setParent(obj.layout34);
     obj.imageCheckBox87:setLeft(80);
     obj.imageCheckBox87:setTop(0);
@@ -1895,7 +1895,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox87:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox87:setName("imageCheckBox87");
 
-    obj.imageCheckBox88 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox88 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox88:setParent(obj.layout34);
     obj.imageCheckBox88:setLeft(105);
     obj.imageCheckBox88:setTop(0);
@@ -1906,7 +1906,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox88:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox88:setName("imageCheckBox88");
 
-    obj.imageCheckBox89 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox89 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox89:setParent(obj.layout34);
     obj.imageCheckBox89:setLeft(130);
     obj.imageCheckBox89:setTop(0);
@@ -1917,7 +1917,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox89:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox89:setName("imageCheckBox89");
 
-    obj.imageCheckBox90 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox90 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox90:setParent(obj.layout34);
     obj.imageCheckBox90:setLeft(155);
     obj.imageCheckBox90:setTop(0);
@@ -1928,7 +1928,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox90:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox90:setName("imageCheckBox90");
 
-    obj.imageCheckBox91 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox91 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox91:setParent(obj.layout34);
     obj.imageCheckBox91:setLeft(180);
     obj.imageCheckBox91:setTop(0);
@@ -1939,7 +1939,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox91:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox91:setName("imageCheckBox91");
 
-    obj.layout35 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout35:setParent(obj.layout23);
     obj.layout35:setLeft(15);
     obj.layout35:setTop(300);
@@ -1947,7 +1947,7 @@ function newfrmMageDarkAges()
     obj.layout35:setHeight(25);
     obj.layout35:setName("layout35");
 
-    obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit12:setParent(obj.layout35);
     obj.edit12:setLeft(0);
     obj.edit12:setTop(5);
@@ -1957,7 +1957,7 @@ function newfrmMageDarkAges()
     obj.edit12:setFontSize(12);
     obj.edit12:setName("edit12");
 
-    obj.imageCheckBox92 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox92 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox92:setParent(obj.layout35);
     obj.imageCheckBox92:setLeft(80);
     obj.imageCheckBox92:setTop(0);
@@ -1968,7 +1968,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox92:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox92:setName("imageCheckBox92");
 
-    obj.imageCheckBox93 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox93 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox93:setParent(obj.layout35);
     obj.imageCheckBox93:setLeft(105);
     obj.imageCheckBox93:setTop(0);
@@ -1979,7 +1979,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox93:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox93:setName("imageCheckBox93");
 
-    obj.imageCheckBox94 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox94 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox94:setParent(obj.layout35);
     obj.imageCheckBox94:setLeft(130);
     obj.imageCheckBox94:setTop(0);
@@ -1990,7 +1990,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox94:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox94:setName("imageCheckBox94");
 
-    obj.imageCheckBox95 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox95 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox95:setParent(obj.layout35);
     obj.imageCheckBox95:setLeft(155);
     obj.imageCheckBox95:setTop(0);
@@ -2001,7 +2001,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox95:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox95:setName("imageCheckBox95");
 
-    obj.imageCheckBox96 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox96 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox96:setParent(obj.layout35);
     obj.imageCheckBox96:setLeft(180);
     obj.imageCheckBox96:setTop(0);
@@ -2012,7 +2012,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox96:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox96:setName("imageCheckBox96");
 
-    obj.layout36 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout36:setParent(obj.layout22);
     obj.layout36:setLeft(260);
     obj.layout36:setTop(30);
@@ -2020,7 +2020,7 @@ function newfrmMageDarkAges()
     obj.layout36:setHeight(340);
     obj.layout36:setName("layout36");
 
-    obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle7 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle7:setParent(obj.layout36);
     obj.rectangle7:setAlign("client");
     obj.rectangle7:setColor("black");
@@ -2029,7 +2029,7 @@ function newfrmMageDarkAges()
     obj.rectangle7:setCornerType("innerLine");
     obj.rectangle7:setName("rectangle7");
 
-    obj.label36 = gui.fromHandle(_obj_newObject("label"));
+    obj.label36 = GUI.fromHandle(_obj_newObject("label"));
     obj.label36:setParent(obj.layout36);
     obj.label36:setLeft(5);
     obj.label36:setTop(0);
@@ -2039,7 +2039,7 @@ function newfrmMageDarkAges()
     obj.label36:setHorzTextAlign("center");
     obj.label36:setName("label36");
 
-    obj.layout37 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout37 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout37:setParent(obj.layout36);
     obj.layout37:setLeft(15);
     obj.layout37:setTop(25);
@@ -2047,7 +2047,7 @@ function newfrmMageDarkAges()
     obj.layout37:setHeight(25);
     obj.layout37:setName("layout37");
 
-    obj.label37 = gui.fromHandle(_obj_newObject("label"));
+    obj.label37 = GUI.fromHandle(_obj_newObject("label"));
     obj.label37:setParent(obj.layout37);
     obj.label37:setLeft(0);
     obj.label37:setTop(5);
@@ -2056,7 +2056,7 @@ function newfrmMageDarkAges()
     obj.label37:setText("Animal Ken");
     obj.label37:setName("label37");
 
-    obj.imageCheckBox97 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox97 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox97:setParent(obj.layout37);
     obj.imageCheckBox97:setLeft(80);
     obj.imageCheckBox97:setTop(0);
@@ -2067,7 +2067,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox97:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox97:setName("imageCheckBox97");
 
-    obj.imageCheckBox98 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox98 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox98:setParent(obj.layout37);
     obj.imageCheckBox98:setLeft(105);
     obj.imageCheckBox98:setTop(0);
@@ -2078,7 +2078,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox98:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox98:setName("imageCheckBox98");
 
-    obj.imageCheckBox99 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox99 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox99:setParent(obj.layout37);
     obj.imageCheckBox99:setLeft(130);
     obj.imageCheckBox99:setTop(0);
@@ -2089,7 +2089,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox99:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox99:setName("imageCheckBox99");
 
-    obj.imageCheckBox100 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox100 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox100:setParent(obj.layout37);
     obj.imageCheckBox100:setLeft(155);
     obj.imageCheckBox100:setTop(0);
@@ -2100,7 +2100,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox100:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox100:setName("imageCheckBox100");
 
-    obj.imageCheckBox101 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox101 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox101:setParent(obj.layout37);
     obj.imageCheckBox101:setLeft(180);
     obj.imageCheckBox101:setTop(0);
@@ -2111,7 +2111,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox101:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox101:setName("imageCheckBox101");
 
-    obj.layout38 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout38 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout38:setParent(obj.layout36);
     obj.layout38:setLeft(15);
     obj.layout38:setTop(50);
@@ -2119,7 +2119,7 @@ function newfrmMageDarkAges()
     obj.layout38:setHeight(25);
     obj.layout38:setName("layout38");
 
-    obj.label38 = gui.fromHandle(_obj_newObject("label"));
+    obj.label38 = GUI.fromHandle(_obj_newObject("label"));
     obj.label38:setParent(obj.layout38);
     obj.label38:setLeft(0);
     obj.label38:setTop(5);
@@ -2128,7 +2128,7 @@ function newfrmMageDarkAges()
     obj.label38:setText("Archery");
     obj.label38:setName("label38");
 
-    obj.imageCheckBox102 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox102 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox102:setParent(obj.layout38);
     obj.imageCheckBox102:setLeft(80);
     obj.imageCheckBox102:setTop(0);
@@ -2139,7 +2139,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox102:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox102:setName("imageCheckBox102");
 
-    obj.imageCheckBox103 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox103 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox103:setParent(obj.layout38);
     obj.imageCheckBox103:setLeft(105);
     obj.imageCheckBox103:setTop(0);
@@ -2150,7 +2150,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox103:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox103:setName("imageCheckBox103");
 
-    obj.imageCheckBox104 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox104 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox104:setParent(obj.layout38);
     obj.imageCheckBox104:setLeft(130);
     obj.imageCheckBox104:setTop(0);
@@ -2161,7 +2161,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox104:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox104:setName("imageCheckBox104");
 
-    obj.imageCheckBox105 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox105 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox105:setParent(obj.layout38);
     obj.imageCheckBox105:setLeft(155);
     obj.imageCheckBox105:setTop(0);
@@ -2172,7 +2172,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox105:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox105:setName("imageCheckBox105");
 
-    obj.imageCheckBox106 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox106 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox106:setParent(obj.layout38);
     obj.imageCheckBox106:setLeft(180);
     obj.imageCheckBox106:setTop(0);
@@ -2183,7 +2183,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox106:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox106:setName("imageCheckBox106");
 
-    obj.layout39 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout39 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout39:setParent(obj.layout36);
     obj.layout39:setLeft(15);
     obj.layout39:setTop(75);
@@ -2191,7 +2191,7 @@ function newfrmMageDarkAges()
     obj.layout39:setHeight(25);
     obj.layout39:setName("layout39");
 
-    obj.label39 = gui.fromHandle(_obj_newObject("label"));
+    obj.label39 = GUI.fromHandle(_obj_newObject("label"));
     obj.label39:setParent(obj.layout39);
     obj.label39:setLeft(0);
     obj.label39:setTop(5);
@@ -2200,7 +2200,7 @@ function newfrmMageDarkAges()
     obj.label39:setText("Crafts");
     obj.label39:setName("label39");
 
-    obj.imageCheckBox107 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox107 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox107:setParent(obj.layout39);
     obj.imageCheckBox107:setLeft(80);
     obj.imageCheckBox107:setTop(0);
@@ -2211,7 +2211,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox107:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox107:setName("imageCheckBox107");
 
-    obj.imageCheckBox108 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox108 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox108:setParent(obj.layout39);
     obj.imageCheckBox108:setLeft(105);
     obj.imageCheckBox108:setTop(0);
@@ -2222,7 +2222,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox108:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox108:setName("imageCheckBox108");
 
-    obj.imageCheckBox109 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox109 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox109:setParent(obj.layout39);
     obj.imageCheckBox109:setLeft(130);
     obj.imageCheckBox109:setTop(0);
@@ -2233,7 +2233,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox109:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox109:setName("imageCheckBox109");
 
-    obj.imageCheckBox110 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox110 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox110:setParent(obj.layout39);
     obj.imageCheckBox110:setLeft(155);
     obj.imageCheckBox110:setTop(0);
@@ -2244,7 +2244,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox110:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox110:setName("imageCheckBox110");
 
-    obj.imageCheckBox111 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox111 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox111:setParent(obj.layout39);
     obj.imageCheckBox111:setLeft(180);
     obj.imageCheckBox111:setTop(0);
@@ -2255,7 +2255,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox111:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox111:setName("imageCheckBox111");
 
-    obj.layout40 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout40 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout40:setParent(obj.layout36);
     obj.layout40:setLeft(15);
     obj.layout40:setTop(100);
@@ -2263,7 +2263,7 @@ function newfrmMageDarkAges()
     obj.layout40:setHeight(25);
     obj.layout40:setName("layout40");
 
-    obj.label40 = gui.fromHandle(_obj_newObject("label"));
+    obj.label40 = GUI.fromHandle(_obj_newObject("label"));
     obj.label40:setParent(obj.layout40);
     obj.label40:setLeft(0);
     obj.label40:setTop(5);
@@ -2272,7 +2272,7 @@ function newfrmMageDarkAges()
     obj.label40:setText("Etiquette");
     obj.label40:setName("label40");
 
-    obj.imageCheckBox112 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox112 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox112:setParent(obj.layout40);
     obj.imageCheckBox112:setLeft(80);
     obj.imageCheckBox112:setTop(0);
@@ -2283,7 +2283,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox112:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox112:setName("imageCheckBox112");
 
-    obj.imageCheckBox113 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox113 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox113:setParent(obj.layout40);
     obj.imageCheckBox113:setLeft(105);
     obj.imageCheckBox113:setTop(0);
@@ -2294,7 +2294,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox113:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox113:setName("imageCheckBox113");
 
-    obj.imageCheckBox114 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox114 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox114:setParent(obj.layout40);
     obj.imageCheckBox114:setLeft(130);
     obj.imageCheckBox114:setTop(0);
@@ -2305,7 +2305,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox114:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox114:setName("imageCheckBox114");
 
-    obj.imageCheckBox115 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox115 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox115:setParent(obj.layout40);
     obj.imageCheckBox115:setLeft(155);
     obj.imageCheckBox115:setTop(0);
@@ -2316,7 +2316,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox115:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox115:setName("imageCheckBox115");
 
-    obj.imageCheckBox116 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox116 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox116:setParent(obj.layout40);
     obj.imageCheckBox116:setLeft(180);
     obj.imageCheckBox116:setTop(0);
@@ -2327,7 +2327,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox116:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox116:setName("imageCheckBox116");
 
-    obj.layout41 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout41 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout41:setParent(obj.layout36);
     obj.layout41:setLeft(15);
     obj.layout41:setTop(125);
@@ -2335,7 +2335,7 @@ function newfrmMageDarkAges()
     obj.layout41:setHeight(25);
     obj.layout41:setName("layout41");
 
-    obj.label41 = gui.fromHandle(_obj_newObject("label"));
+    obj.label41 = GUI.fromHandle(_obj_newObject("label"));
     obj.label41:setParent(obj.layout41);
     obj.label41:setLeft(0);
     obj.label41:setTop(5);
@@ -2344,7 +2344,7 @@ function newfrmMageDarkAges()
     obj.label41:setText("Herbalism");
     obj.label41:setName("label41");
 
-    obj.imageCheckBox117 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox117 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox117:setParent(obj.layout41);
     obj.imageCheckBox117:setLeft(80);
     obj.imageCheckBox117:setTop(0);
@@ -2355,7 +2355,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox117:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox117:setName("imageCheckBox117");
 
-    obj.imageCheckBox118 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox118 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox118:setParent(obj.layout41);
     obj.imageCheckBox118:setLeft(105);
     obj.imageCheckBox118:setTop(0);
@@ -2366,7 +2366,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox118:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox118:setName("imageCheckBox118");
 
-    obj.imageCheckBox119 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox119 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox119:setParent(obj.layout41);
     obj.imageCheckBox119:setLeft(130);
     obj.imageCheckBox119:setTop(0);
@@ -2377,7 +2377,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox119:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox119:setName("imageCheckBox119");
 
-    obj.imageCheckBox120 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox120 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox120:setParent(obj.layout41);
     obj.imageCheckBox120:setLeft(155);
     obj.imageCheckBox120:setTop(0);
@@ -2388,7 +2388,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox120:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox120:setName("imageCheckBox120");
 
-    obj.imageCheckBox121 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox121 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox121:setParent(obj.layout41);
     obj.imageCheckBox121:setLeft(180);
     obj.imageCheckBox121:setTop(0);
@@ -2399,7 +2399,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox121:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox121:setName("imageCheckBox121");
 
-    obj.layout42 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout42 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout42:setParent(obj.layout36);
     obj.layout42:setLeft(15);
     obj.layout42:setTop(150);
@@ -2407,7 +2407,7 @@ function newfrmMageDarkAges()
     obj.layout42:setHeight(25);
     obj.layout42:setName("layout42");
 
-    obj.label42 = gui.fromHandle(_obj_newObject("label"));
+    obj.label42 = GUI.fromHandle(_obj_newObject("label"));
     obj.label42:setParent(obj.layout42);
     obj.label42:setLeft(0);
     obj.label42:setTop(5);
@@ -2416,7 +2416,7 @@ function newfrmMageDarkAges()
     obj.label42:setText("Melee");
     obj.label42:setName("label42");
 
-    obj.imageCheckBox122 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox122 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox122:setParent(obj.layout42);
     obj.imageCheckBox122:setLeft(80);
     obj.imageCheckBox122:setTop(0);
@@ -2427,7 +2427,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox122:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox122:setName("imageCheckBox122");
 
-    obj.imageCheckBox123 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox123 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox123:setParent(obj.layout42);
     obj.imageCheckBox123:setLeft(105);
     obj.imageCheckBox123:setTop(0);
@@ -2438,7 +2438,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox123:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox123:setName("imageCheckBox123");
 
-    obj.imageCheckBox124 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox124 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox124:setParent(obj.layout42);
     obj.imageCheckBox124:setLeft(130);
     obj.imageCheckBox124:setTop(0);
@@ -2449,7 +2449,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox124:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox124:setName("imageCheckBox124");
 
-    obj.imageCheckBox125 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox125 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox125:setParent(obj.layout42);
     obj.imageCheckBox125:setLeft(155);
     obj.imageCheckBox125:setTop(0);
@@ -2460,7 +2460,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox125:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox125:setName("imageCheckBox125");
 
-    obj.imageCheckBox126 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox126 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox126:setParent(obj.layout42);
     obj.imageCheckBox126:setLeft(180);
     obj.imageCheckBox126:setTop(0);
@@ -2471,7 +2471,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox126:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox126:setName("imageCheckBox126");
 
-    obj.layout43 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout43 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout43:setParent(obj.layout36);
     obj.layout43:setLeft(15);
     obj.layout43:setTop(175);
@@ -2479,7 +2479,7 @@ function newfrmMageDarkAges()
     obj.layout43:setHeight(25);
     obj.layout43:setName("layout43");
 
-    obj.label43 = gui.fromHandle(_obj_newObject("label"));
+    obj.label43 = GUI.fromHandle(_obj_newObject("label"));
     obj.label43:setParent(obj.layout43);
     obj.label43:setLeft(0);
     obj.label43:setTop(5);
@@ -2488,7 +2488,7 @@ function newfrmMageDarkAges()
     obj.label43:setText("Performance");
     obj.label43:setName("label43");
 
-    obj.imageCheckBox127 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox127 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox127:setParent(obj.layout43);
     obj.imageCheckBox127:setLeft(80);
     obj.imageCheckBox127:setTop(0);
@@ -2499,7 +2499,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox127:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox127:setName("imageCheckBox127");
 
-    obj.imageCheckBox128 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox128 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox128:setParent(obj.layout43);
     obj.imageCheckBox128:setLeft(105);
     obj.imageCheckBox128:setTop(0);
@@ -2510,7 +2510,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox128:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox128:setName("imageCheckBox128");
 
-    obj.imageCheckBox129 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox129 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox129:setParent(obj.layout43);
     obj.imageCheckBox129:setLeft(130);
     obj.imageCheckBox129:setTop(0);
@@ -2521,7 +2521,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox129:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox129:setName("imageCheckBox129");
 
-    obj.imageCheckBox130 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox130 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox130:setParent(obj.layout43);
     obj.imageCheckBox130:setLeft(155);
     obj.imageCheckBox130:setTop(0);
@@ -2532,7 +2532,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox130:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox130:setName("imageCheckBox130");
 
-    obj.imageCheckBox131 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox131 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox131:setParent(obj.layout43);
     obj.imageCheckBox131:setLeft(180);
     obj.imageCheckBox131:setTop(0);
@@ -2543,7 +2543,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox131:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox131:setName("imageCheckBox131");
 
-    obj.layout44 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout44 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout44:setParent(obj.layout36);
     obj.layout44:setLeft(15);
     obj.layout44:setTop(200);
@@ -2551,7 +2551,7 @@ function newfrmMageDarkAges()
     obj.layout44:setHeight(25);
     obj.layout44:setName("layout44");
 
-    obj.label44 = gui.fromHandle(_obj_newObject("label"));
+    obj.label44 = GUI.fromHandle(_obj_newObject("label"));
     obj.label44:setParent(obj.layout44);
     obj.label44:setLeft(0);
     obj.label44:setTop(5);
@@ -2560,7 +2560,7 @@ function newfrmMageDarkAges()
     obj.label44:setText("Ride");
     obj.label44:setName("label44");
 
-    obj.imageCheckBox132 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox132 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox132:setParent(obj.layout44);
     obj.imageCheckBox132:setLeft(80);
     obj.imageCheckBox132:setTop(0);
@@ -2571,7 +2571,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox132:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox132:setName("imageCheckBox132");
 
-    obj.imageCheckBox133 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox133 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox133:setParent(obj.layout44);
     obj.imageCheckBox133:setLeft(105);
     obj.imageCheckBox133:setTop(0);
@@ -2582,7 +2582,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox133:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox133:setName("imageCheckBox133");
 
-    obj.imageCheckBox134 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox134 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox134:setParent(obj.layout44);
     obj.imageCheckBox134:setLeft(130);
     obj.imageCheckBox134:setTop(0);
@@ -2593,7 +2593,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox134:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox134:setName("imageCheckBox134");
 
-    obj.imageCheckBox135 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox135 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox135:setParent(obj.layout44);
     obj.imageCheckBox135:setLeft(155);
     obj.imageCheckBox135:setTop(0);
@@ -2604,7 +2604,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox135:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox135:setName("imageCheckBox135");
 
-    obj.imageCheckBox136 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox136 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox136:setParent(obj.layout44);
     obj.imageCheckBox136:setLeft(180);
     obj.imageCheckBox136:setTop(0);
@@ -2615,7 +2615,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox136:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox136:setName("imageCheckBox136");
 
-    obj.layout45 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout45 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout45:setParent(obj.layout36);
     obj.layout45:setLeft(15);
     obj.layout45:setTop(225);
@@ -2623,7 +2623,7 @@ function newfrmMageDarkAges()
     obj.layout45:setHeight(25);
     obj.layout45:setName("layout45");
 
-    obj.label45 = gui.fromHandle(_obj_newObject("label"));
+    obj.label45 = GUI.fromHandle(_obj_newObject("label"));
     obj.label45:setParent(obj.layout45);
     obj.label45:setLeft(0);
     obj.label45:setTop(5);
@@ -2632,7 +2632,7 @@ function newfrmMageDarkAges()
     obj.label45:setText("Stealth");
     obj.label45:setName("label45");
 
-    obj.imageCheckBox137 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox137 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox137:setParent(obj.layout45);
     obj.imageCheckBox137:setLeft(80);
     obj.imageCheckBox137:setTop(0);
@@ -2643,7 +2643,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox137:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox137:setName("imageCheckBox137");
 
-    obj.imageCheckBox138 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox138 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox138:setParent(obj.layout45);
     obj.imageCheckBox138:setLeft(105);
     obj.imageCheckBox138:setTop(0);
@@ -2654,7 +2654,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox138:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox138:setName("imageCheckBox138");
 
-    obj.imageCheckBox139 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox139 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox139:setParent(obj.layout45);
     obj.imageCheckBox139:setLeft(130);
     obj.imageCheckBox139:setTop(0);
@@ -2665,7 +2665,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox139:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox139:setName("imageCheckBox139");
 
-    obj.imageCheckBox140 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox140 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox140:setParent(obj.layout45);
     obj.imageCheckBox140:setLeft(155);
     obj.imageCheckBox140:setTop(0);
@@ -2676,7 +2676,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox140:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox140:setName("imageCheckBox140");
 
-    obj.imageCheckBox141 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox141 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox141:setParent(obj.layout45);
     obj.imageCheckBox141:setLeft(180);
     obj.imageCheckBox141:setTop(0);
@@ -2687,7 +2687,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox141:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox141:setName("imageCheckBox141");
 
-    obj.layout46 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout46 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout46:setParent(obj.layout36);
     obj.layout46:setLeft(15);
     obj.layout46:setTop(250);
@@ -2695,7 +2695,7 @@ function newfrmMageDarkAges()
     obj.layout46:setHeight(25);
     obj.layout46:setName("layout46");
 
-    obj.label46 = gui.fromHandle(_obj_newObject("label"));
+    obj.label46 = GUI.fromHandle(_obj_newObject("label"));
     obj.label46:setParent(obj.layout46);
     obj.label46:setLeft(0);
     obj.label46:setTop(5);
@@ -2704,7 +2704,7 @@ function newfrmMageDarkAges()
     obj.label46:setText("Survival");
     obj.label46:setName("label46");
 
-    obj.imageCheckBox142 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox142 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox142:setParent(obj.layout46);
     obj.imageCheckBox142:setLeft(80);
     obj.imageCheckBox142:setTop(0);
@@ -2715,7 +2715,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox142:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox142:setName("imageCheckBox142");
 
-    obj.imageCheckBox143 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox143 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox143:setParent(obj.layout46);
     obj.imageCheckBox143:setLeft(105);
     obj.imageCheckBox143:setTop(0);
@@ -2726,7 +2726,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox143:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox143:setName("imageCheckBox143");
 
-    obj.imageCheckBox144 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox144 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox144:setParent(obj.layout46);
     obj.imageCheckBox144:setLeft(130);
     obj.imageCheckBox144:setTop(0);
@@ -2737,7 +2737,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox144:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox144:setName("imageCheckBox144");
 
-    obj.imageCheckBox145 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox145 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox145:setParent(obj.layout46);
     obj.imageCheckBox145:setLeft(155);
     obj.imageCheckBox145:setTop(0);
@@ -2748,7 +2748,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox145:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox145:setName("imageCheckBox145");
 
-    obj.imageCheckBox146 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox146 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox146:setParent(obj.layout46);
     obj.imageCheckBox146:setLeft(180);
     obj.imageCheckBox146:setTop(0);
@@ -2759,7 +2759,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox146:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox146:setName("imageCheckBox146");
 
-    obj.layout47 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout47 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout47:setParent(obj.layout36);
     obj.layout47:setLeft(15);
     obj.layout47:setTop(275);
@@ -2767,7 +2767,7 @@ function newfrmMageDarkAges()
     obj.layout47:setHeight(25);
     obj.layout47:setName("layout47");
 
-    obj.edit13 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit13:setParent(obj.layout47);
     obj.edit13:setLeft(0);
     obj.edit13:setTop(5);
@@ -2777,7 +2777,7 @@ function newfrmMageDarkAges()
     obj.edit13:setFontSize(12);
     obj.edit13:setName("edit13");
 
-    obj.imageCheckBox147 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox147 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox147:setParent(obj.layout47);
     obj.imageCheckBox147:setLeft(80);
     obj.imageCheckBox147:setTop(0);
@@ -2788,7 +2788,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox147:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox147:setName("imageCheckBox147");
 
-    obj.imageCheckBox148 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox148 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox148:setParent(obj.layout47);
     obj.imageCheckBox148:setLeft(105);
     obj.imageCheckBox148:setTop(0);
@@ -2799,7 +2799,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox148:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox148:setName("imageCheckBox148");
 
-    obj.imageCheckBox149 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox149 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox149:setParent(obj.layout47);
     obj.imageCheckBox149:setLeft(130);
     obj.imageCheckBox149:setTop(0);
@@ -2810,7 +2810,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox149:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox149:setName("imageCheckBox149");
 
-    obj.imageCheckBox150 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox150 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox150:setParent(obj.layout47);
     obj.imageCheckBox150:setLeft(155);
     obj.imageCheckBox150:setTop(0);
@@ -2821,7 +2821,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox150:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox150:setName("imageCheckBox150");
 
-    obj.imageCheckBox151 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox151 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox151:setParent(obj.layout47);
     obj.imageCheckBox151:setLeft(180);
     obj.imageCheckBox151:setTop(0);
@@ -2832,7 +2832,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox151:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox151:setName("imageCheckBox151");
 
-    obj.layout48 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout48 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout48:setParent(obj.layout36);
     obj.layout48:setLeft(15);
     obj.layout48:setTop(300);
@@ -2840,7 +2840,7 @@ function newfrmMageDarkAges()
     obj.layout48:setHeight(25);
     obj.layout48:setName("layout48");
 
-    obj.edit14 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit14:setParent(obj.layout48);
     obj.edit14:setLeft(0);
     obj.edit14:setTop(5);
@@ -2850,7 +2850,7 @@ function newfrmMageDarkAges()
     obj.edit14:setFontSize(12);
     obj.edit14:setName("edit14");
 
-    obj.imageCheckBox152 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox152 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox152:setParent(obj.layout48);
     obj.imageCheckBox152:setLeft(80);
     obj.imageCheckBox152:setTop(0);
@@ -2861,7 +2861,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox152:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox152:setName("imageCheckBox152");
 
-    obj.imageCheckBox153 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox153 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox153:setParent(obj.layout48);
     obj.imageCheckBox153:setLeft(105);
     obj.imageCheckBox153:setTop(0);
@@ -2872,7 +2872,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox153:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox153:setName("imageCheckBox153");
 
-    obj.imageCheckBox154 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox154 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox154:setParent(obj.layout48);
     obj.imageCheckBox154:setLeft(130);
     obj.imageCheckBox154:setTop(0);
@@ -2883,7 +2883,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox154:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox154:setName("imageCheckBox154");
 
-    obj.imageCheckBox155 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox155 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox155:setParent(obj.layout48);
     obj.imageCheckBox155:setLeft(155);
     obj.imageCheckBox155:setTop(0);
@@ -2894,7 +2894,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox155:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox155:setName("imageCheckBox155");
 
-    obj.imageCheckBox156 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox156 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox156:setParent(obj.layout48);
     obj.imageCheckBox156:setLeft(180);
     obj.imageCheckBox156:setTop(0);
@@ -2905,7 +2905,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox156:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox156:setName("imageCheckBox156");
 
-    obj.layout49 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout49:setParent(obj.layout22);
     obj.layout49:setLeft(510);
     obj.layout49:setTop(30);
@@ -2913,7 +2913,7 @@ function newfrmMageDarkAges()
     obj.layout49:setHeight(340);
     obj.layout49:setName("layout49");
 
-    obj.rectangle8 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle8 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle8:setParent(obj.layout49);
     obj.rectangle8:setAlign("client");
     obj.rectangle8:setColor("black");
@@ -2922,7 +2922,7 @@ function newfrmMageDarkAges()
     obj.rectangle8:setCornerType("innerLine");
     obj.rectangle8:setName("rectangle8");
 
-    obj.label47 = gui.fromHandle(_obj_newObject("label"));
+    obj.label47 = GUI.fromHandle(_obj_newObject("label"));
     obj.label47:setParent(obj.layout49);
     obj.label47:setLeft(5);
     obj.label47:setTop(0);
@@ -2932,7 +2932,7 @@ function newfrmMageDarkAges()
     obj.label47:setHorzTextAlign("center");
     obj.label47:setName("label47");
 
-    obj.layout50 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout50 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout50:setParent(obj.layout49);
     obj.layout50:setLeft(15);
     obj.layout50:setTop(25);
@@ -2940,7 +2940,7 @@ function newfrmMageDarkAges()
     obj.layout50:setHeight(25);
     obj.layout50:setName("layout50");
 
-    obj.label48 = gui.fromHandle(_obj_newObject("label"));
+    obj.label48 = GUI.fromHandle(_obj_newObject("label"));
     obj.label48:setParent(obj.layout50);
     obj.label48:setLeft(0);
     obj.label48:setTop(5);
@@ -2949,7 +2949,7 @@ function newfrmMageDarkAges()
     obj.label48:setText("Academics");
     obj.label48:setName("label48");
 
-    obj.imageCheckBox157 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox157 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox157:setParent(obj.layout50);
     obj.imageCheckBox157:setLeft(80);
     obj.imageCheckBox157:setTop(0);
@@ -2960,7 +2960,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox157:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox157:setName("imageCheckBox157");
 
-    obj.imageCheckBox158 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox158 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox158:setParent(obj.layout50);
     obj.imageCheckBox158:setLeft(105);
     obj.imageCheckBox158:setTop(0);
@@ -2971,7 +2971,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox158:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox158:setName("imageCheckBox158");
 
-    obj.imageCheckBox159 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox159 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox159:setParent(obj.layout50);
     obj.imageCheckBox159:setLeft(130);
     obj.imageCheckBox159:setTop(0);
@@ -2982,7 +2982,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox159:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox159:setName("imageCheckBox159");
 
-    obj.imageCheckBox160 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox160 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox160:setParent(obj.layout50);
     obj.imageCheckBox160:setLeft(155);
     obj.imageCheckBox160:setTop(0);
@@ -2993,7 +2993,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox160:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox160:setName("imageCheckBox160");
 
-    obj.imageCheckBox161 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox161 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox161:setParent(obj.layout50);
     obj.imageCheckBox161:setLeft(180);
     obj.imageCheckBox161:setTop(0);
@@ -3004,7 +3004,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox161:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox161:setName("imageCheckBox161");
 
-    obj.layout51 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout51 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout51:setParent(obj.layout49);
     obj.layout51:setLeft(15);
     obj.layout51:setTop(50);
@@ -3012,7 +3012,7 @@ function newfrmMageDarkAges()
     obj.layout51:setHeight(25);
     obj.layout51:setName("layout51");
 
-    obj.label49 = gui.fromHandle(_obj_newObject("label"));
+    obj.label49 = GUI.fromHandle(_obj_newObject("label"));
     obj.label49:setParent(obj.layout51);
     obj.label49:setLeft(0);
     obj.label49:setTop(5);
@@ -3021,7 +3021,7 @@ function newfrmMageDarkAges()
     obj.label49:setText("Cosmology");
     obj.label49:setName("label49");
 
-    obj.imageCheckBox162 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox162 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox162:setParent(obj.layout51);
     obj.imageCheckBox162:setLeft(80);
     obj.imageCheckBox162:setTop(0);
@@ -3032,7 +3032,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox162:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox162:setName("imageCheckBox162");
 
-    obj.imageCheckBox163 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox163 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox163:setParent(obj.layout51);
     obj.imageCheckBox163:setLeft(105);
     obj.imageCheckBox163:setTop(0);
@@ -3043,7 +3043,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox163:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox163:setName("imageCheckBox163");
 
-    obj.imageCheckBox164 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox164 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox164:setParent(obj.layout51);
     obj.imageCheckBox164:setLeft(130);
     obj.imageCheckBox164:setTop(0);
@@ -3054,7 +3054,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox164:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox164:setName("imageCheckBox164");
 
-    obj.imageCheckBox165 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox165 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox165:setParent(obj.layout51);
     obj.imageCheckBox165:setLeft(155);
     obj.imageCheckBox165:setTop(0);
@@ -3065,7 +3065,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox165:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox165:setName("imageCheckBox165");
 
-    obj.imageCheckBox166 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox166 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox166:setParent(obj.layout51);
     obj.imageCheckBox166:setLeft(180);
     obj.imageCheckBox166:setTop(0);
@@ -3076,7 +3076,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox166:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox166:setName("imageCheckBox166");
 
-    obj.layout52 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout52 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout52:setParent(obj.layout49);
     obj.layout52:setLeft(15);
     obj.layout52:setTop(75);
@@ -3084,7 +3084,7 @@ function newfrmMageDarkAges()
     obj.layout52:setHeight(25);
     obj.layout52:setName("layout52");
 
-    obj.label50 = gui.fromHandle(_obj_newObject("label"));
+    obj.label50 = GUI.fromHandle(_obj_newObject("label"));
     obj.label50:setParent(obj.layout52);
     obj.label50:setLeft(0);
     obj.label50:setTop(5);
@@ -3093,7 +3093,7 @@ function newfrmMageDarkAges()
     obj.label50:setText("Enigmas");
     obj.label50:setName("label50");
 
-    obj.imageCheckBox167 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox167 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox167:setParent(obj.layout52);
     obj.imageCheckBox167:setLeft(80);
     obj.imageCheckBox167:setTop(0);
@@ -3104,7 +3104,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox167:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox167:setName("imageCheckBox167");
 
-    obj.imageCheckBox168 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox168 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox168:setParent(obj.layout52);
     obj.imageCheckBox168:setLeft(105);
     obj.imageCheckBox168:setTop(0);
@@ -3115,7 +3115,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox168:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox168:setName("imageCheckBox168");
 
-    obj.imageCheckBox169 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox169 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox169:setParent(obj.layout52);
     obj.imageCheckBox169:setLeft(130);
     obj.imageCheckBox169:setTop(0);
@@ -3126,7 +3126,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox169:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox169:setName("imageCheckBox169");
 
-    obj.imageCheckBox170 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox170 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox170:setParent(obj.layout52);
     obj.imageCheckBox170:setLeft(155);
     obj.imageCheckBox170:setTop(0);
@@ -3137,7 +3137,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox170:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox170:setName("imageCheckBox170");
 
-    obj.imageCheckBox171 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox171 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox171:setParent(obj.layout52);
     obj.imageCheckBox171:setLeft(180);
     obj.imageCheckBox171:setTop(0);
@@ -3148,7 +3148,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox171:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox171:setName("imageCheckBox171");
 
-    obj.layout53 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout53 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout53:setParent(obj.layout49);
     obj.layout53:setLeft(15);
     obj.layout53:setTop(100);
@@ -3156,7 +3156,7 @@ function newfrmMageDarkAges()
     obj.layout53:setHeight(25);
     obj.layout53:setName("layout53");
 
-    obj.label51 = gui.fromHandle(_obj_newObject("label"));
+    obj.label51 = GUI.fromHandle(_obj_newObject("label"));
     obj.label51:setParent(obj.layout53);
     obj.label51:setLeft(0);
     obj.label51:setTop(5);
@@ -3165,7 +3165,7 @@ function newfrmMageDarkAges()
     obj.label51:setText("Hearth Wisdom");
     obj.label51:setName("label51");
 
-    obj.imageCheckBox172 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox172 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox172:setParent(obj.layout53);
     obj.imageCheckBox172:setLeft(80);
     obj.imageCheckBox172:setTop(0);
@@ -3176,7 +3176,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox172:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox172:setName("imageCheckBox172");
 
-    obj.imageCheckBox173 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox173 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox173:setParent(obj.layout53);
     obj.imageCheckBox173:setLeft(105);
     obj.imageCheckBox173:setTop(0);
@@ -3187,7 +3187,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox173:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox173:setName("imageCheckBox173");
 
-    obj.imageCheckBox174 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox174 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox174:setParent(obj.layout53);
     obj.imageCheckBox174:setLeft(130);
     obj.imageCheckBox174:setTop(0);
@@ -3198,7 +3198,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox174:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox174:setName("imageCheckBox174");
 
-    obj.imageCheckBox175 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox175 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox175:setParent(obj.layout53);
     obj.imageCheckBox175:setLeft(155);
     obj.imageCheckBox175:setTop(0);
@@ -3209,7 +3209,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox175:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox175:setName("imageCheckBox175");
 
-    obj.imageCheckBox176 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox176 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox176:setParent(obj.layout53);
     obj.imageCheckBox176:setLeft(180);
     obj.imageCheckBox176:setTop(0);
@@ -3220,7 +3220,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox176:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox176:setName("imageCheckBox176");
 
-    obj.layout54 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout54 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout54:setParent(obj.layout49);
     obj.layout54:setLeft(15);
     obj.layout54:setTop(125);
@@ -3228,7 +3228,7 @@ function newfrmMageDarkAges()
     obj.layout54:setHeight(25);
     obj.layout54:setName("layout54");
 
-    obj.label52 = gui.fromHandle(_obj_newObject("label"));
+    obj.label52 = GUI.fromHandle(_obj_newObject("label"));
     obj.label52:setParent(obj.layout54);
     obj.label52:setLeft(0);
     obj.label52:setTop(5);
@@ -3237,7 +3237,7 @@ function newfrmMageDarkAges()
     obj.label52:setText("Investigation");
     obj.label52:setName("label52");
 
-    obj.imageCheckBox177 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox177 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox177:setParent(obj.layout54);
     obj.imageCheckBox177:setLeft(80);
     obj.imageCheckBox177:setTop(0);
@@ -3248,7 +3248,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox177:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox177:setName("imageCheckBox177");
 
-    obj.imageCheckBox178 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox178 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox178:setParent(obj.layout54);
     obj.imageCheckBox178:setLeft(105);
     obj.imageCheckBox178:setTop(0);
@@ -3259,7 +3259,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox178:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox178:setName("imageCheckBox178");
 
-    obj.imageCheckBox179 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox179 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox179:setParent(obj.layout54);
     obj.imageCheckBox179:setLeft(130);
     obj.imageCheckBox179:setTop(0);
@@ -3270,7 +3270,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox179:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox179:setName("imageCheckBox179");
 
-    obj.imageCheckBox180 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox180 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox180:setParent(obj.layout54);
     obj.imageCheckBox180:setLeft(155);
     obj.imageCheckBox180:setTop(0);
@@ -3281,7 +3281,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox180:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox180:setName("imageCheckBox180");
 
-    obj.imageCheckBox181 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox181 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox181:setParent(obj.layout54);
     obj.imageCheckBox181:setLeft(180);
     obj.imageCheckBox181:setTop(0);
@@ -3292,7 +3292,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox181:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox181:setName("imageCheckBox181");
 
-    obj.layout55 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout55 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout55:setParent(obj.layout49);
     obj.layout55:setLeft(15);
     obj.layout55:setTop(150);
@@ -3300,7 +3300,7 @@ function newfrmMageDarkAges()
     obj.layout55:setHeight(25);
     obj.layout55:setName("layout55");
 
-    obj.label53 = gui.fromHandle(_obj_newObject("label"));
+    obj.label53 = GUI.fromHandle(_obj_newObject("label"));
     obj.label53:setParent(obj.layout55);
     obj.label53:setLeft(0);
     obj.label53:setTop(5);
@@ -3309,7 +3309,7 @@ function newfrmMageDarkAges()
     obj.label53:setText("Linguistics");
     obj.label53:setName("label53");
 
-    obj.imageCheckBox182 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox182 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox182:setParent(obj.layout55);
     obj.imageCheckBox182:setLeft(80);
     obj.imageCheckBox182:setTop(0);
@@ -3320,7 +3320,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox182:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox182:setName("imageCheckBox182");
 
-    obj.imageCheckBox183 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox183 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox183:setParent(obj.layout55);
     obj.imageCheckBox183:setLeft(105);
     obj.imageCheckBox183:setTop(0);
@@ -3331,7 +3331,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox183:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox183:setName("imageCheckBox183");
 
-    obj.imageCheckBox184 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox184 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox184:setParent(obj.layout55);
     obj.imageCheckBox184:setLeft(130);
     obj.imageCheckBox184:setTop(0);
@@ -3342,7 +3342,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox184:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox184:setName("imageCheckBox184");
 
-    obj.imageCheckBox185 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox185 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox185:setParent(obj.layout55);
     obj.imageCheckBox185:setLeft(155);
     obj.imageCheckBox185:setTop(0);
@@ -3353,7 +3353,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox185:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox185:setName("imageCheckBox185");
 
-    obj.imageCheckBox186 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox186 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox186:setParent(obj.layout55);
     obj.imageCheckBox186:setLeft(180);
     obj.imageCheckBox186:setTop(0);
@@ -3364,7 +3364,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox186:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox186:setName("imageCheckBox186");
 
-    obj.layout56 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout56 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout56:setParent(obj.layout49);
     obj.layout56:setLeft(15);
     obj.layout56:setTop(175);
@@ -3372,7 +3372,7 @@ function newfrmMageDarkAges()
     obj.layout56:setHeight(25);
     obj.layout56:setName("layout56");
 
-    obj.label54 = gui.fromHandle(_obj_newObject("label"));
+    obj.label54 = GUI.fromHandle(_obj_newObject("label"));
     obj.label54:setParent(obj.layout56);
     obj.label54:setLeft(0);
     obj.label54:setTop(5);
@@ -3381,7 +3381,7 @@ function newfrmMageDarkAges()
     obj.label54:setText("Medicine");
     obj.label54:setName("label54");
 
-    obj.imageCheckBox187 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox187 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox187:setParent(obj.layout56);
     obj.imageCheckBox187:setLeft(80);
     obj.imageCheckBox187:setTop(0);
@@ -3392,7 +3392,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox187:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox187:setName("imageCheckBox187");
 
-    obj.imageCheckBox188 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox188 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox188:setParent(obj.layout56);
     obj.imageCheckBox188:setLeft(105);
     obj.imageCheckBox188:setTop(0);
@@ -3403,7 +3403,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox188:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox188:setName("imageCheckBox188");
 
-    obj.imageCheckBox189 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox189 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox189:setParent(obj.layout56);
     obj.imageCheckBox189:setLeft(130);
     obj.imageCheckBox189:setTop(0);
@@ -3414,7 +3414,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox189:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox189:setName("imageCheckBox189");
 
-    obj.imageCheckBox190 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox190 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox190:setParent(obj.layout56);
     obj.imageCheckBox190:setLeft(155);
     obj.imageCheckBox190:setTop(0);
@@ -3425,7 +3425,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox190:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox190:setName("imageCheckBox190");
 
-    obj.imageCheckBox191 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox191 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox191:setParent(obj.layout56);
     obj.imageCheckBox191:setLeft(180);
     obj.imageCheckBox191:setTop(0);
@@ -3436,7 +3436,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox191:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox191:setName("imageCheckBox191");
 
-    obj.layout57 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout57 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout57:setParent(obj.layout49);
     obj.layout57:setLeft(15);
     obj.layout57:setTop(200);
@@ -3444,7 +3444,7 @@ function newfrmMageDarkAges()
     obj.layout57:setHeight(25);
     obj.layout57:setName("layout57");
 
-    obj.label55 = gui.fromHandle(_obj_newObject("label"));
+    obj.label55 = GUI.fromHandle(_obj_newObject("label"));
     obj.label55:setParent(obj.layout57);
     obj.label55:setLeft(0);
     obj.label55:setTop(5);
@@ -3453,7 +3453,7 @@ function newfrmMageDarkAges()
     obj.label55:setText("Occult");
     obj.label55:setName("label55");
 
-    obj.imageCheckBox192 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox192 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox192:setParent(obj.layout57);
     obj.imageCheckBox192:setLeft(80);
     obj.imageCheckBox192:setTop(0);
@@ -3464,7 +3464,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox192:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox192:setName("imageCheckBox192");
 
-    obj.imageCheckBox193 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox193 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox193:setParent(obj.layout57);
     obj.imageCheckBox193:setLeft(105);
     obj.imageCheckBox193:setTop(0);
@@ -3475,7 +3475,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox193:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox193:setName("imageCheckBox193");
 
-    obj.imageCheckBox194 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox194 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox194:setParent(obj.layout57);
     obj.imageCheckBox194:setLeft(130);
     obj.imageCheckBox194:setTop(0);
@@ -3486,7 +3486,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox194:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox194:setName("imageCheckBox194");
 
-    obj.imageCheckBox195 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox195 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox195:setParent(obj.layout57);
     obj.imageCheckBox195:setLeft(155);
     obj.imageCheckBox195:setTop(0);
@@ -3497,7 +3497,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox195:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox195:setName("imageCheckBox195");
 
-    obj.imageCheckBox196 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox196 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox196:setParent(obj.layout57);
     obj.imageCheckBox196:setLeft(180);
     obj.imageCheckBox196:setTop(0);
@@ -3508,7 +3508,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox196:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox196:setName("imageCheckBox196");
 
-    obj.layout58 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout58 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout58:setParent(obj.layout49);
     obj.layout58:setLeft(15);
     obj.layout58:setTop(225);
@@ -3516,7 +3516,7 @@ function newfrmMageDarkAges()
     obj.layout58:setHeight(25);
     obj.layout58:setName("layout58");
 
-    obj.label56 = gui.fromHandle(_obj_newObject("label"));
+    obj.label56 = GUI.fromHandle(_obj_newObject("label"));
     obj.label56:setParent(obj.layout58);
     obj.label56:setLeft(0);
     obj.label56:setTop(5);
@@ -3525,7 +3525,7 @@ function newfrmMageDarkAges()
     obj.label56:setText("Politics");
     obj.label56:setName("label56");
 
-    obj.imageCheckBox197 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox197 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox197:setParent(obj.layout58);
     obj.imageCheckBox197:setLeft(80);
     obj.imageCheckBox197:setTop(0);
@@ -3536,7 +3536,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox197:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox197:setName("imageCheckBox197");
 
-    obj.imageCheckBox198 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox198 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox198:setParent(obj.layout58);
     obj.imageCheckBox198:setLeft(105);
     obj.imageCheckBox198:setTop(0);
@@ -3547,7 +3547,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox198:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox198:setName("imageCheckBox198");
 
-    obj.imageCheckBox199 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox199 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox199:setParent(obj.layout58);
     obj.imageCheckBox199:setLeft(130);
     obj.imageCheckBox199:setTop(0);
@@ -3558,7 +3558,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox199:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox199:setName("imageCheckBox199");
 
-    obj.imageCheckBox200 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox200 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox200:setParent(obj.layout58);
     obj.imageCheckBox200:setLeft(155);
     obj.imageCheckBox200:setTop(0);
@@ -3569,7 +3569,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox200:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox200:setName("imageCheckBox200");
 
-    obj.imageCheckBox201 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox201 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox201:setParent(obj.layout58);
     obj.imageCheckBox201:setLeft(180);
     obj.imageCheckBox201:setTop(0);
@@ -3580,7 +3580,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox201:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox201:setName("imageCheckBox201");
 
-    obj.layout59 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout59 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout59:setParent(obj.layout49);
     obj.layout59:setLeft(15);
     obj.layout59:setTop(250);
@@ -3588,7 +3588,7 @@ function newfrmMageDarkAges()
     obj.layout59:setHeight(25);
     obj.layout59:setName("layout59");
 
-    obj.label57 = gui.fromHandle(_obj_newObject("label"));
+    obj.label57 = GUI.fromHandle(_obj_newObject("label"));
     obj.label57:setParent(obj.layout59);
     obj.label57:setLeft(0);
     obj.label57:setTop(5);
@@ -3597,7 +3597,7 @@ function newfrmMageDarkAges()
     obj.label57:setText("Theology");
     obj.label57:setName("label57");
 
-    obj.imageCheckBox202 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox202 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox202:setParent(obj.layout59);
     obj.imageCheckBox202:setLeft(80);
     obj.imageCheckBox202:setTop(0);
@@ -3608,7 +3608,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox202:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox202:setName("imageCheckBox202");
 
-    obj.imageCheckBox203 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox203 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox203:setParent(obj.layout59);
     obj.imageCheckBox203:setLeft(105);
     obj.imageCheckBox203:setTop(0);
@@ -3619,7 +3619,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox203:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox203:setName("imageCheckBox203");
 
-    obj.imageCheckBox204 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox204 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox204:setParent(obj.layout59);
     obj.imageCheckBox204:setLeft(130);
     obj.imageCheckBox204:setTop(0);
@@ -3630,7 +3630,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox204:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox204:setName("imageCheckBox204");
 
-    obj.imageCheckBox205 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox205 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox205:setParent(obj.layout59);
     obj.imageCheckBox205:setLeft(155);
     obj.imageCheckBox205:setTop(0);
@@ -3641,7 +3641,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox205:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox205:setName("imageCheckBox205");
 
-    obj.imageCheckBox206 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox206 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox206:setParent(obj.layout59);
     obj.imageCheckBox206:setLeft(180);
     obj.imageCheckBox206:setTop(0);
@@ -3652,7 +3652,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox206:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox206:setName("imageCheckBox206");
 
-    obj.layout60 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout60 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout60:setParent(obj.layout49);
     obj.layout60:setLeft(15);
     obj.layout60:setTop(275);
@@ -3660,7 +3660,7 @@ function newfrmMageDarkAges()
     obj.layout60:setHeight(25);
     obj.layout60:setName("layout60");
 
-    obj.edit15 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit15:setParent(obj.layout60);
     obj.edit15:setLeft(0);
     obj.edit15:setTop(5);
@@ -3670,7 +3670,7 @@ function newfrmMageDarkAges()
     obj.edit15:setFontSize(12);
     obj.edit15:setName("edit15");
 
-    obj.imageCheckBox207 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox207 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox207:setParent(obj.layout60);
     obj.imageCheckBox207:setLeft(80);
     obj.imageCheckBox207:setTop(0);
@@ -3681,7 +3681,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox207:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox207:setName("imageCheckBox207");
 
-    obj.imageCheckBox208 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox208 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox208:setParent(obj.layout60);
     obj.imageCheckBox208:setLeft(105);
     obj.imageCheckBox208:setTop(0);
@@ -3692,7 +3692,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox208:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox208:setName("imageCheckBox208");
 
-    obj.imageCheckBox209 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox209 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox209:setParent(obj.layout60);
     obj.imageCheckBox209:setLeft(130);
     obj.imageCheckBox209:setTop(0);
@@ -3703,7 +3703,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox209:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox209:setName("imageCheckBox209");
 
-    obj.imageCheckBox210 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox210 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox210:setParent(obj.layout60);
     obj.imageCheckBox210:setLeft(155);
     obj.imageCheckBox210:setTop(0);
@@ -3714,7 +3714,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox210:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox210:setName("imageCheckBox210");
 
-    obj.imageCheckBox211 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox211 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox211:setParent(obj.layout60);
     obj.imageCheckBox211:setLeft(180);
     obj.imageCheckBox211:setTop(0);
@@ -3725,7 +3725,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox211:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox211:setName("imageCheckBox211");
 
-    obj.layout61 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout61 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout61:setParent(obj.layout49);
     obj.layout61:setLeft(15);
     obj.layout61:setTop(300);
@@ -3733,7 +3733,7 @@ function newfrmMageDarkAges()
     obj.layout61:setHeight(25);
     obj.layout61:setName("layout61");
 
-    obj.edit16 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit16:setParent(obj.layout61);
     obj.edit16:setLeft(0);
     obj.edit16:setTop(5);
@@ -3743,7 +3743,7 @@ function newfrmMageDarkAges()
     obj.edit16:setFontSize(12);
     obj.edit16:setName("edit16");
 
-    obj.imageCheckBox212 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox212 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox212:setParent(obj.layout61);
     obj.imageCheckBox212:setLeft(80);
     obj.imageCheckBox212:setTop(0);
@@ -3754,7 +3754,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox212:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox212:setName("imageCheckBox212");
 
-    obj.imageCheckBox213 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox213 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox213:setParent(obj.layout61);
     obj.imageCheckBox213:setLeft(105);
     obj.imageCheckBox213:setTop(0);
@@ -3765,7 +3765,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox213:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox213:setName("imageCheckBox213");
 
-    obj.imageCheckBox214 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox214 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox214:setParent(obj.layout61);
     obj.imageCheckBox214:setLeft(130);
     obj.imageCheckBox214:setTop(0);
@@ -3776,7 +3776,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox214:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox214:setName("imageCheckBox214");
 
-    obj.imageCheckBox215 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox215 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox215:setParent(obj.layout61);
     obj.imageCheckBox215:setLeft(155);
     obj.imageCheckBox215:setTop(0);
@@ -3787,7 +3787,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox215:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox215:setName("imageCheckBox215");
 
-    obj.imageCheckBox216 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox216 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox216:setParent(obj.layout61);
     obj.imageCheckBox216:setLeft(180);
     obj.imageCheckBox216:setTop(0);
@@ -3798,7 +3798,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox216:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox216:setName("imageCheckBox216");
 
-    obj.layout62 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout62 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout62:setParent(obj.scrollBox1);
     obj.layout62:setLeft(280);
     obj.layout62:setTop(500);
@@ -3806,7 +3806,7 @@ function newfrmMageDarkAges()
     obj.layout62:setHeight(175);
     obj.layout62:setName("layout62");
 
-    obj.rectangle9 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle9 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle9:setParent(obj.layout62);
     obj.rectangle9:setAlign("client");
     obj.rectangle9:setColor("black");
@@ -3815,7 +3815,7 @@ function newfrmMageDarkAges()
     obj.rectangle9:setCornerType("innerLine");
     obj.rectangle9:setName("rectangle9");
 
-    obj.layout63 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout63 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout63:setParent(obj.layout62);
     obj.layout63:setLeft(15);
     obj.layout63:setTop(5);
@@ -3823,7 +3823,7 @@ function newfrmMageDarkAges()
     obj.layout63:setHeight(25);
     obj.layout63:setName("layout63");
 
-    obj.label58 = gui.fromHandle(_obj_newObject("label"));
+    obj.label58 = GUI.fromHandle(_obj_newObject("label"));
     obj.label58:setParent(obj.layout63);
     obj.label58:setLeft(0);
     obj.label58:setTop(5);
@@ -3833,7 +3833,7 @@ function newfrmMageDarkAges()
     obj.label58:setFontSize(9);
     obj.label58:setName("label58");
 
-    obj.edit17 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit17:setParent(obj.layout63);
     obj.edit17:setLeft(60);
     obj.edit17:setTop(5);
@@ -3843,7 +3843,7 @@ function newfrmMageDarkAges()
     obj.edit17:setFontSize(12);
     obj.edit17:setName("edit17");
 
-    obj.imageCheckBox217 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox217 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox217:setParent(obj.layout63);
     obj.imageCheckBox217:setLeft(185);
     obj.imageCheckBox217:setTop(0);
@@ -3854,7 +3854,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox217:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox217:setName("imageCheckBox217");
 
-    obj.imageCheckBox218 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox218 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox218:setParent(obj.layout63);
     obj.imageCheckBox218:setLeft(210);
     obj.imageCheckBox218:setTop(0);
@@ -3865,7 +3865,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox218:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox218:setName("imageCheckBox218");
 
-    obj.imageCheckBox219 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox219 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox219:setParent(obj.layout63);
     obj.imageCheckBox219:setLeft(235);
     obj.imageCheckBox219:setTop(0);
@@ -3876,7 +3876,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox219:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox219:setName("imageCheckBox219");
 
-    obj.imageCheckBox220 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox220 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox220:setParent(obj.layout63);
     obj.imageCheckBox220:setLeft(260);
     obj.imageCheckBox220:setTop(0);
@@ -3887,7 +3887,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox220:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox220:setName("imageCheckBox220");
 
-    obj.imageCheckBox221 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox221 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox221:setParent(obj.layout63);
     obj.imageCheckBox221:setLeft(285);
     obj.imageCheckBox221:setTop(0);
@@ -3898,7 +3898,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox221:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox221:setName("imageCheckBox221");
 
-    obj.layout64 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout64 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout64:setParent(obj.layout62);
     obj.layout64:setLeft(15);
     obj.layout64:setTop(30);
@@ -3906,7 +3906,7 @@ function newfrmMageDarkAges()
     obj.layout64:setHeight(25);
     obj.layout64:setName("layout64");
 
-    obj.label59 = gui.fromHandle(_obj_newObject("label"));
+    obj.label59 = GUI.fromHandle(_obj_newObject("label"));
     obj.label59:setParent(obj.layout64);
     obj.label59:setLeft(0);
     obj.label59:setTop(5);
@@ -3916,7 +3916,7 @@ function newfrmMageDarkAges()
     obj.label59:setFontSize(11);
     obj.label59:setName("label59");
 
-    obj.edit18 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit18:setParent(obj.layout64);
     obj.edit18:setLeft(60);
     obj.edit18:setTop(5);
@@ -3926,7 +3926,7 @@ function newfrmMageDarkAges()
     obj.edit18:setFontSize(12);
     obj.edit18:setName("edit18");
 
-    obj.edit19 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit19:setParent(obj.layout64);
     obj.edit19:setLeft(190);
     obj.edit19:setTop(5);
@@ -3936,7 +3936,7 @@ function newfrmMageDarkAges()
     obj.edit19:setFontSize(12);
     obj.edit19:setName("edit19");
 
-    obj.layout65 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout65 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout65:setParent(obj.layout62);
     obj.layout65:setLeft(15);
     obj.layout65:setTop(55);
@@ -3944,7 +3944,7 @@ function newfrmMageDarkAges()
     obj.layout65:setHeight(25);
     obj.layout65:setName("layout65");
 
-    obj.label60 = gui.fromHandle(_obj_newObject("label"));
+    obj.label60 = GUI.fromHandle(_obj_newObject("label"));
     obj.label60:setParent(obj.layout65);
     obj.label60:setLeft(0);
     obj.label60:setTop(5);
@@ -3954,7 +3954,7 @@ function newfrmMageDarkAges()
     obj.label60:setFontSize(11);
     obj.label60:setName("label60");
 
-    obj.edit20 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit20:setParent(obj.layout65);
     obj.edit20:setLeft(60);
     obj.edit20:setTop(5);
@@ -3964,7 +3964,7 @@ function newfrmMageDarkAges()
     obj.edit20:setFontSize(12);
     obj.edit20:setName("edit20");
 
-    obj.layout66 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout66 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout66:setParent(obj.layout62);
     obj.layout66:setLeft(15);
     obj.layout66:setTop(77);
@@ -3972,7 +3972,7 @@ function newfrmMageDarkAges()
     obj.layout66:setHeight(45);
     obj.layout66:setName("layout66");
 
-    obj.label61 = gui.fromHandle(_obj_newObject("label"));
+    obj.label61 = GUI.fromHandle(_obj_newObject("label"));
     obj.label61:setParent(obj.layout66);
     obj.label61:setLeft(0);
     obj.label61:setTop(0);
@@ -3983,7 +3983,7 @@ function newfrmMageDarkAges()
     obj.label61:setFontSize(8);
     obj.label61:setName("label61");
 
-    obj.edit21 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit21:setParent(obj.layout66);
     obj.edit21:setLeft(15);
     obj.edit21:setTop(20);
@@ -3993,7 +3993,7 @@ function newfrmMageDarkAges()
     obj.edit21:setFontSize(12);
     obj.edit21:setName("edit21");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.layout66);
     obj.checkBox1:setLeft(62);
     obj.checkBox1:setTop(0);
@@ -4002,7 +4002,7 @@ function newfrmMageDarkAges()
     obj.checkBox1:setField("quintessence_1");
     obj.checkBox1:setName("checkBox1");
 
-    obj.checkBox2 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox2 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox2:setParent(obj.layout66);
     obj.checkBox2:setLeft(87);
     obj.checkBox2:setTop(0);
@@ -4011,7 +4011,7 @@ function newfrmMageDarkAges()
     obj.checkBox2:setField("quintessence_2");
     obj.checkBox2:setName("checkBox2");
 
-    obj.checkBox3 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox3 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox3:setParent(obj.layout66);
     obj.checkBox3:setLeft(112);
     obj.checkBox3:setTop(0);
@@ -4020,7 +4020,7 @@ function newfrmMageDarkAges()
     obj.checkBox3:setField("quintessence_3");
     obj.checkBox3:setName("checkBox3");
 
-    obj.checkBox4 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox4 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox4:setParent(obj.layout66);
     obj.checkBox4:setLeft(137);
     obj.checkBox4:setTop(0);
@@ -4029,7 +4029,7 @@ function newfrmMageDarkAges()
     obj.checkBox4:setField("quintessence_4");
     obj.checkBox4:setName("checkBox4");
 
-    obj.checkBox5 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox5 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox5:setParent(obj.layout66);
     obj.checkBox5:setLeft(162);
     obj.checkBox5:setTop(0);
@@ -4038,7 +4038,7 @@ function newfrmMageDarkAges()
     obj.checkBox5:setField("quintessence_5");
     obj.checkBox5:setName("checkBox5");
 
-    obj.checkBox6 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox6 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox6:setParent(obj.layout66);
     obj.checkBox6:setLeft(187);
     obj.checkBox6:setTop(0);
@@ -4047,7 +4047,7 @@ function newfrmMageDarkAges()
     obj.checkBox6:setField("quintessence_6");
     obj.checkBox6:setName("checkBox6");
 
-    obj.checkBox7 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox7 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox7:setParent(obj.layout66);
     obj.checkBox7:setLeft(212);
     obj.checkBox7:setTop(0);
@@ -4056,7 +4056,7 @@ function newfrmMageDarkAges()
     obj.checkBox7:setField("quintessence_7");
     obj.checkBox7:setName("checkBox7");
 
-    obj.checkBox8 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox8 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox8:setParent(obj.layout66);
     obj.checkBox8:setLeft(237);
     obj.checkBox8:setTop(0);
@@ -4065,7 +4065,7 @@ function newfrmMageDarkAges()
     obj.checkBox8:setField("quintessence_8");
     obj.checkBox8:setName("checkBox8");
 
-    obj.checkBox9 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox9 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox9:setParent(obj.layout66);
     obj.checkBox9:setLeft(262);
     obj.checkBox9:setTop(0);
@@ -4074,7 +4074,7 @@ function newfrmMageDarkAges()
     obj.checkBox9:setField("quintessence_9");
     obj.checkBox9:setName("checkBox9");
 
-    obj.checkBox10 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox10 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox10:setParent(obj.layout66);
     obj.checkBox10:setLeft(287);
     obj.checkBox10:setTop(0);
@@ -4083,7 +4083,7 @@ function newfrmMageDarkAges()
     obj.checkBox10:setField("quintessence_10");
     obj.checkBox10:setName("checkBox10");
 
-    obj.checkBox11 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox11 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox11:setParent(obj.layout66);
     obj.checkBox11:setLeft(62);
     obj.checkBox11:setTop(20);
@@ -4092,7 +4092,7 @@ function newfrmMageDarkAges()
     obj.checkBox11:setField("quintessence_c1");
     obj.checkBox11:setName("checkBox11");
 
-    obj.checkBox12 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox12 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox12:setParent(obj.layout66);
     obj.checkBox12:setLeft(87);
     obj.checkBox12:setTop(20);
@@ -4101,7 +4101,7 @@ function newfrmMageDarkAges()
     obj.checkBox12:setField("quintessence_c2");
     obj.checkBox12:setName("checkBox12");
 
-    obj.checkBox13 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox13 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox13:setParent(obj.layout66);
     obj.checkBox13:setLeft(112);
     obj.checkBox13:setTop(20);
@@ -4110,7 +4110,7 @@ function newfrmMageDarkAges()
     obj.checkBox13:setField("quintessence_c3");
     obj.checkBox13:setName("checkBox13");
 
-    obj.checkBox14 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox14 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox14:setParent(obj.layout66);
     obj.checkBox14:setLeft(137);
     obj.checkBox14:setTop(20);
@@ -4119,7 +4119,7 @@ function newfrmMageDarkAges()
     obj.checkBox14:setField("quintessence_c4");
     obj.checkBox14:setName("checkBox14");
 
-    obj.checkBox15 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox15 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox15:setParent(obj.layout66);
     obj.checkBox15:setLeft(162);
     obj.checkBox15:setTop(20);
@@ -4128,7 +4128,7 @@ function newfrmMageDarkAges()
     obj.checkBox15:setField("quintessence_c5");
     obj.checkBox15:setName("checkBox15");
 
-    obj.checkBox16 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox16 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox16:setParent(obj.layout66);
     obj.checkBox16:setLeft(187);
     obj.checkBox16:setTop(20);
@@ -4137,7 +4137,7 @@ function newfrmMageDarkAges()
     obj.checkBox16:setField("quintessence_c6");
     obj.checkBox16:setName("checkBox16");
 
-    obj.checkBox17 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox17 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox17:setParent(obj.layout66);
     obj.checkBox17:setLeft(212);
     obj.checkBox17:setTop(20);
@@ -4146,7 +4146,7 @@ function newfrmMageDarkAges()
     obj.checkBox17:setField("quintessence_c7");
     obj.checkBox17:setName("checkBox17");
 
-    obj.checkBox18 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox18 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox18:setParent(obj.layout66);
     obj.checkBox18:setLeft(237);
     obj.checkBox18:setTop(20);
@@ -4155,7 +4155,7 @@ function newfrmMageDarkAges()
     obj.checkBox18:setField("quintessence_c8");
     obj.checkBox18:setName("checkBox18");
 
-    obj.checkBox19 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox19 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox19:setParent(obj.layout66);
     obj.checkBox19:setLeft(262);
     obj.checkBox19:setTop(20);
@@ -4164,7 +4164,7 @@ function newfrmMageDarkAges()
     obj.checkBox19:setField("quintessence_c9");
     obj.checkBox19:setName("checkBox19");
 
-    obj.checkBox20 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox20 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox20:setParent(obj.layout66);
     obj.checkBox20:setLeft(287);
     obj.checkBox20:setTop(20);
@@ -4173,7 +4173,7 @@ function newfrmMageDarkAges()
     obj.checkBox20:setField("quintessence_c10");
     obj.checkBox20:setName("checkBox20");
 
-    obj.layout67 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout67 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout67:setParent(obj.layout62);
     obj.layout67:setLeft(15);
     obj.layout67:setTop(120);
@@ -4181,7 +4181,7 @@ function newfrmMageDarkAges()
     obj.layout67:setHeight(45);
     obj.layout67:setName("layout67");
 
-    obj.label62 = gui.fromHandle(_obj_newObject("label"));
+    obj.label62 = GUI.fromHandle(_obj_newObject("label"));
     obj.label62:setParent(obj.layout67);
     obj.label62:setLeft(0);
     obj.label62:setTop(15);
@@ -4192,7 +4192,7 @@ function newfrmMageDarkAges()
     obj.label62:setFontSize(10);
     obj.label62:setName("label62");
 
-    obj.imageCheckBox222 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox222 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox222:setParent(obj.layout67);
     obj.imageCheckBox222:setLeft(60);
     obj.imageCheckBox222:setTop(0);
@@ -4203,7 +4203,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox222:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox222:setName("imageCheckBox222");
 
-    obj.imageCheckBox223 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox223 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox223:setParent(obj.layout67);
     obj.imageCheckBox223:setLeft(85);
     obj.imageCheckBox223:setTop(0);
@@ -4214,7 +4214,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox223:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox223:setName("imageCheckBox223");
 
-    obj.imageCheckBox224 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox224 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox224:setParent(obj.layout67);
     obj.imageCheckBox224:setLeft(110);
     obj.imageCheckBox224:setTop(0);
@@ -4225,7 +4225,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox224:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox224:setName("imageCheckBox224");
 
-    obj.imageCheckBox225 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox225 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox225:setParent(obj.layout67);
     obj.imageCheckBox225:setLeft(135);
     obj.imageCheckBox225:setTop(0);
@@ -4236,7 +4236,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox225:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox225:setName("imageCheckBox225");
 
-    obj.imageCheckBox226 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox226 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox226:setParent(obj.layout67);
     obj.imageCheckBox226:setLeft(160);
     obj.imageCheckBox226:setTop(0);
@@ -4247,7 +4247,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox226:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox226:setName("imageCheckBox226");
 
-    obj.imageCheckBox227 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox227 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox227:setParent(obj.layout67);
     obj.imageCheckBox227:setLeft(185);
     obj.imageCheckBox227:setTop(0);
@@ -4258,7 +4258,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox227:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox227:setName("imageCheckBox227");
 
-    obj.imageCheckBox228 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox228 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox228:setParent(obj.layout67);
     obj.imageCheckBox228:setLeft(210);
     obj.imageCheckBox228:setTop(0);
@@ -4269,7 +4269,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox228:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox228:setName("imageCheckBox228");
 
-    obj.imageCheckBox229 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox229 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox229:setParent(obj.layout67);
     obj.imageCheckBox229:setLeft(235);
     obj.imageCheckBox229:setTop(0);
@@ -4280,7 +4280,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox229:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox229:setName("imageCheckBox229");
 
-    obj.imageCheckBox230 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox230 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox230:setParent(obj.layout67);
     obj.imageCheckBox230:setLeft(260);
     obj.imageCheckBox230:setTop(0);
@@ -4291,7 +4291,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox230:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox230:setName("imageCheckBox230");
 
-    obj.imageCheckBox231 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox231 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox231:setParent(obj.layout67);
     obj.imageCheckBox231:setLeft(285);
     obj.imageCheckBox231:setTop(0);
@@ -4302,7 +4302,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox231:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox231:setName("imageCheckBox231");
 
-    obj.checkBox21 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox21 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox21:setParent(obj.layout67);
     obj.checkBox21:setLeft(62);
     obj.checkBox21:setTop(20);
@@ -4311,7 +4311,7 @@ function newfrmMageDarkAges()
     obj.checkBox21:setField("willpower_c1");
     obj.checkBox21:setName("checkBox21");
 
-    obj.checkBox22 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox22 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox22:setParent(obj.layout67);
     obj.checkBox22:setLeft(87);
     obj.checkBox22:setTop(20);
@@ -4320,7 +4320,7 @@ function newfrmMageDarkAges()
     obj.checkBox22:setField("willpower_c2");
     obj.checkBox22:setName("checkBox22");
 
-    obj.checkBox23 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox23 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox23:setParent(obj.layout67);
     obj.checkBox23:setLeft(112);
     obj.checkBox23:setTop(20);
@@ -4329,7 +4329,7 @@ function newfrmMageDarkAges()
     obj.checkBox23:setField("willpower_c3");
     obj.checkBox23:setName("checkBox23");
 
-    obj.checkBox24 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox24 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox24:setParent(obj.layout67);
     obj.checkBox24:setLeft(137);
     obj.checkBox24:setTop(20);
@@ -4338,7 +4338,7 @@ function newfrmMageDarkAges()
     obj.checkBox24:setField("willpower_c4");
     obj.checkBox24:setName("checkBox24");
 
-    obj.checkBox25 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox25 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox25:setParent(obj.layout67);
     obj.checkBox25:setLeft(162);
     obj.checkBox25:setTop(20);
@@ -4347,7 +4347,7 @@ function newfrmMageDarkAges()
     obj.checkBox25:setField("willpower_c5");
     obj.checkBox25:setName("checkBox25");
 
-    obj.checkBox26 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox26 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox26:setParent(obj.layout67);
     obj.checkBox26:setLeft(187);
     obj.checkBox26:setTop(20);
@@ -4356,7 +4356,7 @@ function newfrmMageDarkAges()
     obj.checkBox26:setField("willpower_c6");
     obj.checkBox26:setName("checkBox26");
 
-    obj.checkBox27 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox27 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox27:setParent(obj.layout67);
     obj.checkBox27:setLeft(212);
     obj.checkBox27:setTop(20);
@@ -4365,7 +4365,7 @@ function newfrmMageDarkAges()
     obj.checkBox27:setField("willpower_c7");
     obj.checkBox27:setName("checkBox27");
 
-    obj.checkBox28 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox28 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox28:setParent(obj.layout67);
     obj.checkBox28:setLeft(237);
     obj.checkBox28:setTop(20);
@@ -4374,7 +4374,7 @@ function newfrmMageDarkAges()
     obj.checkBox28:setField("willpower_c8");
     obj.checkBox28:setName("checkBox28");
 
-    obj.checkBox29 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox29 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox29:setParent(obj.layout67);
     obj.checkBox29:setLeft(262);
     obj.checkBox29:setTop(20);
@@ -4383,7 +4383,7 @@ function newfrmMageDarkAges()
     obj.checkBox29:setField("willpower_c9");
     obj.checkBox29:setName("checkBox29");
 
-    obj.checkBox30 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox30 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox30:setParent(obj.layout67);
     obj.checkBox30:setLeft(287);
     obj.checkBox30:setTop(20);
@@ -4392,7 +4392,7 @@ function newfrmMageDarkAges()
     obj.checkBox30:setField("willpower_c10");
     obj.checkBox30:setName("checkBox30");
 
-    obj.layout68 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout68 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout68:setParent(obj.scrollBox1);
     obj.layout68:setLeft(640);
     obj.layout68:setTop(500);
@@ -4400,7 +4400,7 @@ function newfrmMageDarkAges()
     obj.layout68:setHeight(175);
     obj.layout68:setName("layout68");
 
-    obj.rectangle10 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle10 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle10:setParent(obj.layout68);
     obj.rectangle10:setAlign("client");
     obj.rectangle10:setColor("black");
@@ -4409,7 +4409,7 @@ function newfrmMageDarkAges()
     obj.rectangle10:setCornerType("innerLine");
     obj.rectangle10:setName("rectangle10");
 
-    obj.label63 = gui.fromHandle(_obj_newObject("label"));
+    obj.label63 = GUI.fromHandle(_obj_newObject("label"));
     obj.label63:setParent(obj.layout68);
     obj.label63:setLeft(0);
     obj.label63:setTop(0);
@@ -4419,7 +4419,7 @@ function newfrmMageDarkAges()
     obj.label63:setHorzTextAlign("center");
     obj.label63:setName("label63");
 
-    obj.checkBox31 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox31 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox31:setParent(obj.layout68);
     obj.checkBox31:setLeft(20);
     obj.checkBox31:setTop(25);
@@ -4429,7 +4429,7 @@ function newfrmMageDarkAges()
     obj.checkBox31:setText("Bruised");
     obj.checkBox31:setName("checkBox31");
 
-    obj.checkBox32 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox32 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox32:setParent(obj.layout68);
     obj.checkBox32:setLeft(20);
     obj.checkBox32:setTop(45);
@@ -4439,7 +4439,7 @@ function newfrmMageDarkAges()
     obj.checkBox32:setText("Hurt (-1)");
     obj.checkBox32:setName("checkBox32");
 
-    obj.checkBox33 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox33 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox33:setParent(obj.layout68);
     obj.checkBox33:setLeft(20);
     obj.checkBox33:setTop(65);
@@ -4449,7 +4449,7 @@ function newfrmMageDarkAges()
     obj.checkBox33:setText("Injured (-1)");
     obj.checkBox33:setName("checkBox33");
 
-    obj.checkBox34 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox34 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox34:setParent(obj.layout68);
     obj.checkBox34:setLeft(20);
     obj.checkBox34:setTop(85);
@@ -4459,7 +4459,7 @@ function newfrmMageDarkAges()
     obj.checkBox34:setText("Wounded (-2)");
     obj.checkBox34:setName("checkBox34");
 
-    obj.checkBox35 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox35 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox35:setParent(obj.layout68);
     obj.checkBox35:setLeft(20);
     obj.checkBox35:setTop(105);
@@ -4469,7 +4469,7 @@ function newfrmMageDarkAges()
     obj.checkBox35:setText("Mauled (-2)");
     obj.checkBox35:setName("checkBox35");
 
-    obj.checkBox36 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox36 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox36:setParent(obj.layout68);
     obj.checkBox36:setLeft(20);
     obj.checkBox36:setTop(125);
@@ -4479,7 +4479,7 @@ function newfrmMageDarkAges()
     obj.checkBox36:setText("Crippled (-5)");
     obj.checkBox36:setName("checkBox36");
 
-    obj.checkBox37 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox37 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox37:setParent(obj.layout68);
     obj.checkBox37:setLeft(20);
     obj.checkBox37:setTop(145);
@@ -4489,7 +4489,7 @@ function newfrmMageDarkAges()
     obj.checkBox37:setText("Incapacitated");
     obj.checkBox37:setName("checkBox37");
 
-    obj.layout69 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout69 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout69:setParent(obj.scrollBox1);
     obj.layout69:setLeft(800);
     obj.layout69:setTop(500);
@@ -4497,7 +4497,7 @@ function newfrmMageDarkAges()
     obj.layout69:setHeight(205);
     obj.layout69:setName("layout69");
 
-    obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle11:setParent(obj.layout69);
     obj.rectangle11:setAlign("client");
     obj.rectangle11:setColor("black");
@@ -4506,7 +4506,7 @@ function newfrmMageDarkAges()
     obj.rectangle11:setCornerType("innerLine");
     obj.rectangle11:setName("rectangle11");
 
-    obj.label64 = gui.fromHandle(_obj_newObject("label"));
+    obj.label64 = GUI.fromHandle(_obj_newObject("label"));
     obj.label64:setParent(obj.layout69);
     obj.label64:setLeft(5);
     obj.label64:setTop(0);
@@ -4516,7 +4516,7 @@ function newfrmMageDarkAges()
     obj.label64:setHorzTextAlign("center");
     obj.label64:setName("label64");
 
-    obj.layout70 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout70 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout70:setParent(obj.layout69);
     obj.layout70:setLeft(15);
     obj.layout70:setTop(25);
@@ -4524,7 +4524,7 @@ function newfrmMageDarkAges()
     obj.layout70:setHeight(25);
     obj.layout70:setName("layout70");
 
-    obj.edit22 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit22:setParent(obj.layout70);
     obj.edit22:setLeft(0);
     obj.edit22:setTop(5);
@@ -4534,7 +4534,7 @@ function newfrmMageDarkAges()
     obj.edit22:setFontSize(12);
     obj.edit22:setName("edit22");
 
-    obj.imageCheckBox232 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox232 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox232:setParent(obj.layout70);
     obj.imageCheckBox232:setLeft(80);
     obj.imageCheckBox232:setTop(0);
@@ -4545,7 +4545,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox232:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox232:setName("imageCheckBox232");
 
-    obj.imageCheckBox233 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox233 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox233:setParent(obj.layout70);
     obj.imageCheckBox233:setLeft(105);
     obj.imageCheckBox233:setTop(0);
@@ -4556,7 +4556,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox233:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox233:setName("imageCheckBox233");
 
-    obj.imageCheckBox234 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox234 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox234:setParent(obj.layout70);
     obj.imageCheckBox234:setLeft(130);
     obj.imageCheckBox234:setTop(0);
@@ -4567,7 +4567,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox234:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox234:setName("imageCheckBox234");
 
-    obj.imageCheckBox235 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox235 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox235:setParent(obj.layout70);
     obj.imageCheckBox235:setLeft(155);
     obj.imageCheckBox235:setTop(0);
@@ -4578,7 +4578,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox235:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox235:setName("imageCheckBox235");
 
-    obj.imageCheckBox236 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox236 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox236:setParent(obj.layout70);
     obj.imageCheckBox236:setLeft(180);
     obj.imageCheckBox236:setTop(0);
@@ -4589,7 +4589,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox236:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox236:setName("imageCheckBox236");
 
-    obj.layout71 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout71 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout71:setParent(obj.layout69);
     obj.layout71:setLeft(15);
     obj.layout71:setTop(50);
@@ -4597,7 +4597,7 @@ function newfrmMageDarkAges()
     obj.layout71:setHeight(25);
     obj.layout71:setName("layout71");
 
-    obj.edit23 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit23:setParent(obj.layout71);
     obj.edit23:setLeft(0);
     obj.edit23:setTop(5);
@@ -4607,7 +4607,7 @@ function newfrmMageDarkAges()
     obj.edit23:setFontSize(12);
     obj.edit23:setName("edit23");
 
-    obj.imageCheckBox237 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox237 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox237:setParent(obj.layout71);
     obj.imageCheckBox237:setLeft(80);
     obj.imageCheckBox237:setTop(0);
@@ -4618,7 +4618,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox237:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox237:setName("imageCheckBox237");
 
-    obj.imageCheckBox238 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox238 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox238:setParent(obj.layout71);
     obj.imageCheckBox238:setLeft(105);
     obj.imageCheckBox238:setTop(0);
@@ -4629,7 +4629,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox238:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox238:setName("imageCheckBox238");
 
-    obj.imageCheckBox239 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox239 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox239:setParent(obj.layout71);
     obj.imageCheckBox239:setLeft(130);
     obj.imageCheckBox239:setTop(0);
@@ -4640,7 +4640,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox239:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox239:setName("imageCheckBox239");
 
-    obj.imageCheckBox240 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox240 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox240:setParent(obj.layout71);
     obj.imageCheckBox240:setLeft(155);
     obj.imageCheckBox240:setTop(0);
@@ -4651,7 +4651,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox240:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox240:setName("imageCheckBox240");
 
-    obj.imageCheckBox241 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox241 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox241:setParent(obj.layout71);
     obj.imageCheckBox241:setLeft(180);
     obj.imageCheckBox241:setTop(0);
@@ -4662,7 +4662,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox241:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox241:setName("imageCheckBox241");
 
-    obj.layout72 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout72 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout72:setParent(obj.layout69);
     obj.layout72:setLeft(15);
     obj.layout72:setTop(75);
@@ -4670,7 +4670,7 @@ function newfrmMageDarkAges()
     obj.layout72:setHeight(25);
     obj.layout72:setName("layout72");
 
-    obj.edit24 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit24:setParent(obj.layout72);
     obj.edit24:setLeft(0);
     obj.edit24:setTop(5);
@@ -4680,7 +4680,7 @@ function newfrmMageDarkAges()
     obj.edit24:setFontSize(12);
     obj.edit24:setName("edit24");
 
-    obj.imageCheckBox242 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox242 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox242:setParent(obj.layout72);
     obj.imageCheckBox242:setLeft(80);
     obj.imageCheckBox242:setTop(0);
@@ -4691,7 +4691,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox242:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox242:setName("imageCheckBox242");
 
-    obj.imageCheckBox243 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox243 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox243:setParent(obj.layout72);
     obj.imageCheckBox243:setLeft(105);
     obj.imageCheckBox243:setTop(0);
@@ -4702,7 +4702,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox243:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox243:setName("imageCheckBox243");
 
-    obj.imageCheckBox244 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox244 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox244:setParent(obj.layout72);
     obj.imageCheckBox244:setLeft(130);
     obj.imageCheckBox244:setTop(0);
@@ -4713,7 +4713,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox244:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox244:setName("imageCheckBox244");
 
-    obj.imageCheckBox245 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox245 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox245:setParent(obj.layout72);
     obj.imageCheckBox245:setLeft(155);
     obj.imageCheckBox245:setTop(0);
@@ -4724,7 +4724,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox245:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox245:setName("imageCheckBox245");
 
-    obj.imageCheckBox246 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox246 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox246:setParent(obj.layout72);
     obj.imageCheckBox246:setLeft(180);
     obj.imageCheckBox246:setTop(0);
@@ -4735,7 +4735,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox246:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox246:setName("imageCheckBox246");
 
-    obj.layout73 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout73 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout73:setParent(obj.layout69);
     obj.layout73:setLeft(15);
     obj.layout73:setTop(100);
@@ -4743,7 +4743,7 @@ function newfrmMageDarkAges()
     obj.layout73:setHeight(25);
     obj.layout73:setName("layout73");
 
-    obj.edit25 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit25:setParent(obj.layout73);
     obj.edit25:setLeft(0);
     obj.edit25:setTop(5);
@@ -4753,7 +4753,7 @@ function newfrmMageDarkAges()
     obj.edit25:setFontSize(12);
     obj.edit25:setName("edit25");
 
-    obj.imageCheckBox247 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox247 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox247:setParent(obj.layout73);
     obj.imageCheckBox247:setLeft(80);
     obj.imageCheckBox247:setTop(0);
@@ -4764,7 +4764,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox247:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox247:setName("imageCheckBox247");
 
-    obj.imageCheckBox248 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox248 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox248:setParent(obj.layout73);
     obj.imageCheckBox248:setLeft(105);
     obj.imageCheckBox248:setTop(0);
@@ -4775,7 +4775,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox248:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox248:setName("imageCheckBox248");
 
-    obj.imageCheckBox249 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox249 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox249:setParent(obj.layout73);
     obj.imageCheckBox249:setLeft(130);
     obj.imageCheckBox249:setTop(0);
@@ -4786,7 +4786,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox249:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox249:setName("imageCheckBox249");
 
-    obj.imageCheckBox250 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox250 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox250:setParent(obj.layout73);
     obj.imageCheckBox250:setLeft(155);
     obj.imageCheckBox250:setTop(0);
@@ -4797,7 +4797,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox250:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox250:setName("imageCheckBox250");
 
-    obj.imageCheckBox251 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox251 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox251:setParent(obj.layout73);
     obj.imageCheckBox251:setLeft(180);
     obj.imageCheckBox251:setTop(0);
@@ -4808,7 +4808,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox251:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox251:setName("imageCheckBox251");
 
-    obj.layout74 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout74 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout74:setParent(obj.layout69);
     obj.layout74:setLeft(15);
     obj.layout74:setTop(125);
@@ -4816,7 +4816,7 @@ function newfrmMageDarkAges()
     obj.layout74:setHeight(25);
     obj.layout74:setName("layout74");
 
-    obj.edit26 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit26:setParent(obj.layout74);
     obj.edit26:setLeft(0);
     obj.edit26:setTop(5);
@@ -4826,7 +4826,7 @@ function newfrmMageDarkAges()
     obj.edit26:setFontSize(12);
     obj.edit26:setName("edit26");
 
-    obj.imageCheckBox252 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox252 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox252:setParent(obj.layout74);
     obj.imageCheckBox252:setLeft(80);
     obj.imageCheckBox252:setTop(0);
@@ -4837,7 +4837,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox252:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox252:setName("imageCheckBox252");
 
-    obj.imageCheckBox253 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox253 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox253:setParent(obj.layout74);
     obj.imageCheckBox253:setLeft(105);
     obj.imageCheckBox253:setTop(0);
@@ -4848,7 +4848,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox253:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox253:setName("imageCheckBox253");
 
-    obj.imageCheckBox254 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox254 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox254:setParent(obj.layout74);
     obj.imageCheckBox254:setLeft(130);
     obj.imageCheckBox254:setTop(0);
@@ -4859,7 +4859,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox254:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox254:setName("imageCheckBox254");
 
-    obj.imageCheckBox255 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox255 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox255:setParent(obj.layout74);
     obj.imageCheckBox255:setLeft(155);
     obj.imageCheckBox255:setTop(0);
@@ -4870,7 +4870,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox255:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox255:setName("imageCheckBox255");
 
-    obj.imageCheckBox256 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox256 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox256:setParent(obj.layout74);
     obj.imageCheckBox256:setLeft(180);
     obj.imageCheckBox256:setTop(0);
@@ -4881,7 +4881,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox256:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox256:setName("imageCheckBox256");
 
-    obj.layout75 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout75 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout75:setParent(obj.layout69);
     obj.layout75:setLeft(15);
     obj.layout75:setTop(150);
@@ -4889,7 +4889,7 @@ function newfrmMageDarkAges()
     obj.layout75:setHeight(25);
     obj.layout75:setName("layout75");
 
-    obj.edit27 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit27 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit27:setParent(obj.layout75);
     obj.edit27:setLeft(0);
     obj.edit27:setTop(5);
@@ -4899,7 +4899,7 @@ function newfrmMageDarkAges()
     obj.edit27:setFontSize(12);
     obj.edit27:setName("edit27");
 
-    obj.imageCheckBox257 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox257 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox257:setParent(obj.layout75);
     obj.imageCheckBox257:setLeft(80);
     obj.imageCheckBox257:setTop(0);
@@ -4910,7 +4910,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox257:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox257:setName("imageCheckBox257");
 
-    obj.imageCheckBox258 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox258 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox258:setParent(obj.layout75);
     obj.imageCheckBox258:setLeft(105);
     obj.imageCheckBox258:setTop(0);
@@ -4921,7 +4921,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox258:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox258:setName("imageCheckBox258");
 
-    obj.imageCheckBox259 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox259 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox259:setParent(obj.layout75);
     obj.imageCheckBox259:setLeft(130);
     obj.imageCheckBox259:setTop(0);
@@ -4932,7 +4932,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox259:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox259:setName("imageCheckBox259");
 
-    obj.imageCheckBox260 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox260 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox260:setParent(obj.layout75);
     obj.imageCheckBox260:setLeft(155);
     obj.imageCheckBox260:setTop(0);
@@ -4943,7 +4943,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox260:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox260:setName("imageCheckBox260");
 
-    obj.imageCheckBox261 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox261 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox261:setParent(obj.layout75);
     obj.imageCheckBox261:setLeft(180);
     obj.imageCheckBox261:setTop(0);
@@ -4954,23 +4954,23 @@ function newfrmMageDarkAges()
     obj.imageCheckBox261:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox261:setName("imageCheckBox261");
 
-    obj.tab2 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.tabControl1);
     obj.tab2:setTitle("Traits");
     obj.tab2:setName("tab2");
 
-    obj.frmMDA20_2 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmMDA20_2 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmMDA20_2:setParent(obj.tab2);
     obj.frmMDA20_2:setName("frmMDA20_2");
     obj.frmMDA20_2:setAlign("client");
     obj.frmMDA20_2:setTheme("dark");
 
-    obj.scrollBox2 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox2:setParent(obj.frmMDA20_2);
     obj.scrollBox2:setAlign("client");
     obj.scrollBox2:setName("scrollBox2");
 
-    obj.layout76 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout76 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout76:setParent(obj.scrollBox2);
     obj.layout76:setLeft(0);
     obj.layout76:setTop(0);
@@ -4978,7 +4978,7 @@ function newfrmMageDarkAges()
     obj.layout76:setHeight(355);
     obj.layout76:setName("layout76");
 
-    obj.rectangle12 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle12 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle12:setParent(obj.layout76);
     obj.rectangle12:setAlign("client");
     obj.rectangle12:setColor("black");
@@ -4987,7 +4987,7 @@ function newfrmMageDarkAges()
     obj.rectangle12:setCornerType("innerLine");
     obj.rectangle12:setName("rectangle12");
 
-    obj.label65 = gui.fromHandle(_obj_newObject("label"));
+    obj.label65 = GUI.fromHandle(_obj_newObject("label"));
     obj.label65:setParent(obj.layout76);
     obj.label65:setLeft(5);
     obj.label65:setTop(0);
@@ -4997,7 +4997,7 @@ function newfrmMageDarkAges()
     obj.label65:setHorzTextAlign("center");
     obj.label65:setName("label65");
 
-    obj.layout77 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout77 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout77:setParent(obj.layout76);
     obj.layout77:setLeft(15);
     obj.layout77:setTop(25);
@@ -5005,7 +5005,7 @@ function newfrmMageDarkAges()
     obj.layout77:setHeight(25);
     obj.layout77:setName("layout77");
 
-    obj.edit28 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit28 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit28:setParent(obj.layout77);
     obj.edit28:setLeft(0);
     obj.edit28:setTop(5);
@@ -5015,7 +5015,7 @@ function newfrmMageDarkAges()
     obj.edit28:setFontSize(12);
     obj.edit28:setName("edit28");
 
-    obj.imageCheckBox262 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox262 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox262:setParent(obj.layout77);
     obj.imageCheckBox262:setLeft(100);
     obj.imageCheckBox262:setTop(0);
@@ -5026,7 +5026,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox262:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox262:setName("imageCheckBox262");
 
-    obj.imageCheckBox263 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox263 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox263:setParent(obj.layout77);
     obj.imageCheckBox263:setLeft(125);
     obj.imageCheckBox263:setTop(0);
@@ -5037,7 +5037,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox263:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox263:setName("imageCheckBox263");
 
-    obj.imageCheckBox264 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox264 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox264:setParent(obj.layout77);
     obj.imageCheckBox264:setLeft(150);
     obj.imageCheckBox264:setTop(0);
@@ -5048,7 +5048,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox264:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox264:setName("imageCheckBox264");
 
-    obj.imageCheckBox265 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox265 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox265:setParent(obj.layout77);
     obj.imageCheckBox265:setLeft(175);
     obj.imageCheckBox265:setTop(0);
@@ -5059,7 +5059,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox265:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox265:setName("imageCheckBox265");
 
-    obj.imageCheckBox266 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox266 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox266:setParent(obj.layout77);
     obj.imageCheckBox266:setLeft(200);
     obj.imageCheckBox266:setTop(0);
@@ -5070,7 +5070,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox266:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox266:setName("imageCheckBox266");
 
-    obj.layout78 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout78 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout78:setParent(obj.layout76);
     obj.layout78:setLeft(15);
     obj.layout78:setTop(50);
@@ -5078,7 +5078,7 @@ function newfrmMageDarkAges()
     obj.layout78:setHeight(25);
     obj.layout78:setName("layout78");
 
-    obj.edit29 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit29 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit29:setParent(obj.layout78);
     obj.edit29:setLeft(0);
     obj.edit29:setTop(5);
@@ -5088,7 +5088,7 @@ function newfrmMageDarkAges()
     obj.edit29:setFontSize(12);
     obj.edit29:setName("edit29");
 
-    obj.imageCheckBox267 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox267 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox267:setParent(obj.layout78);
     obj.imageCheckBox267:setLeft(100);
     obj.imageCheckBox267:setTop(0);
@@ -5099,7 +5099,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox267:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox267:setName("imageCheckBox267");
 
-    obj.imageCheckBox268 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox268 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox268:setParent(obj.layout78);
     obj.imageCheckBox268:setLeft(125);
     obj.imageCheckBox268:setTop(0);
@@ -5110,7 +5110,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox268:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox268:setName("imageCheckBox268");
 
-    obj.imageCheckBox269 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox269 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox269:setParent(obj.layout78);
     obj.imageCheckBox269:setLeft(150);
     obj.imageCheckBox269:setTop(0);
@@ -5121,7 +5121,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox269:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox269:setName("imageCheckBox269");
 
-    obj.imageCheckBox270 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox270 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox270:setParent(obj.layout78);
     obj.imageCheckBox270:setLeft(175);
     obj.imageCheckBox270:setTop(0);
@@ -5132,7 +5132,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox270:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox270:setName("imageCheckBox270");
 
-    obj.imageCheckBox271 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox271 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox271:setParent(obj.layout78);
     obj.imageCheckBox271:setLeft(200);
     obj.imageCheckBox271:setTop(0);
@@ -5143,7 +5143,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox271:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox271:setName("imageCheckBox271");
 
-    obj.layout79 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout79 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout79:setParent(obj.layout76);
     obj.layout79:setLeft(15);
     obj.layout79:setTop(75);
@@ -5151,7 +5151,7 @@ function newfrmMageDarkAges()
     obj.layout79:setHeight(25);
     obj.layout79:setName("layout79");
 
-    obj.edit30 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit30 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit30:setParent(obj.layout79);
     obj.edit30:setLeft(0);
     obj.edit30:setTop(5);
@@ -5161,7 +5161,7 @@ function newfrmMageDarkAges()
     obj.edit30:setFontSize(12);
     obj.edit30:setName("edit30");
 
-    obj.imageCheckBox272 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox272 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox272:setParent(obj.layout79);
     obj.imageCheckBox272:setLeft(100);
     obj.imageCheckBox272:setTop(0);
@@ -5172,7 +5172,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox272:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox272:setName("imageCheckBox272");
 
-    obj.imageCheckBox273 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox273 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox273:setParent(obj.layout79);
     obj.imageCheckBox273:setLeft(125);
     obj.imageCheckBox273:setTop(0);
@@ -5183,7 +5183,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox273:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox273:setName("imageCheckBox273");
 
-    obj.imageCheckBox274 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox274 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox274:setParent(obj.layout79);
     obj.imageCheckBox274:setLeft(150);
     obj.imageCheckBox274:setTop(0);
@@ -5194,7 +5194,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox274:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox274:setName("imageCheckBox274");
 
-    obj.imageCheckBox275 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox275 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox275:setParent(obj.layout79);
     obj.imageCheckBox275:setLeft(175);
     obj.imageCheckBox275:setTop(0);
@@ -5205,7 +5205,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox275:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox275:setName("imageCheckBox275");
 
-    obj.imageCheckBox276 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox276 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox276:setParent(obj.layout79);
     obj.imageCheckBox276:setLeft(200);
     obj.imageCheckBox276:setTop(0);
@@ -5216,7 +5216,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox276:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox276:setName("imageCheckBox276");
 
-    obj.layout80 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout80 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout80:setParent(obj.layout76);
     obj.layout80:setLeft(15);
     obj.layout80:setTop(100);
@@ -5224,7 +5224,7 @@ function newfrmMageDarkAges()
     obj.layout80:setHeight(25);
     obj.layout80:setName("layout80");
 
-    obj.edit31 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit31:setParent(obj.layout80);
     obj.edit31:setLeft(0);
     obj.edit31:setTop(5);
@@ -5234,7 +5234,7 @@ function newfrmMageDarkAges()
     obj.edit31:setFontSize(12);
     obj.edit31:setName("edit31");
 
-    obj.imageCheckBox277 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox277 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox277:setParent(obj.layout80);
     obj.imageCheckBox277:setLeft(100);
     obj.imageCheckBox277:setTop(0);
@@ -5245,7 +5245,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox277:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox277:setName("imageCheckBox277");
 
-    obj.imageCheckBox278 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox278 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox278:setParent(obj.layout80);
     obj.imageCheckBox278:setLeft(125);
     obj.imageCheckBox278:setTop(0);
@@ -5256,7 +5256,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox278:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox278:setName("imageCheckBox278");
 
-    obj.imageCheckBox279 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox279 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox279:setParent(obj.layout80);
     obj.imageCheckBox279:setLeft(150);
     obj.imageCheckBox279:setTop(0);
@@ -5267,7 +5267,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox279:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox279:setName("imageCheckBox279");
 
-    obj.imageCheckBox280 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox280 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox280:setParent(obj.layout80);
     obj.imageCheckBox280:setLeft(175);
     obj.imageCheckBox280:setTop(0);
@@ -5278,7 +5278,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox280:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox280:setName("imageCheckBox280");
 
-    obj.imageCheckBox281 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox281 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox281:setParent(obj.layout80);
     obj.imageCheckBox281:setLeft(200);
     obj.imageCheckBox281:setTop(0);
@@ -5289,7 +5289,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox281:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox281:setName("imageCheckBox281");
 
-    obj.layout81 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout81 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout81:setParent(obj.layout76);
     obj.layout81:setLeft(15);
     obj.layout81:setTop(125);
@@ -5297,7 +5297,7 @@ function newfrmMageDarkAges()
     obj.layout81:setHeight(25);
     obj.layout81:setName("layout81");
 
-    obj.edit32 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit32:setParent(obj.layout81);
     obj.edit32:setLeft(0);
     obj.edit32:setTop(5);
@@ -5307,7 +5307,7 @@ function newfrmMageDarkAges()
     obj.edit32:setFontSize(12);
     obj.edit32:setName("edit32");
 
-    obj.imageCheckBox282 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox282 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox282:setParent(obj.layout81);
     obj.imageCheckBox282:setLeft(100);
     obj.imageCheckBox282:setTop(0);
@@ -5318,7 +5318,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox282:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox282:setName("imageCheckBox282");
 
-    obj.imageCheckBox283 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox283 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox283:setParent(obj.layout81);
     obj.imageCheckBox283:setLeft(125);
     obj.imageCheckBox283:setTop(0);
@@ -5329,7 +5329,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox283:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox283:setName("imageCheckBox283");
 
-    obj.imageCheckBox284 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox284 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox284:setParent(obj.layout81);
     obj.imageCheckBox284:setLeft(150);
     obj.imageCheckBox284:setTop(0);
@@ -5340,7 +5340,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox284:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox284:setName("imageCheckBox284");
 
-    obj.imageCheckBox285 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox285 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox285:setParent(obj.layout81);
     obj.imageCheckBox285:setLeft(175);
     obj.imageCheckBox285:setTop(0);
@@ -5351,7 +5351,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox285:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox285:setName("imageCheckBox285");
 
-    obj.imageCheckBox286 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox286 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox286:setParent(obj.layout81);
     obj.imageCheckBox286:setLeft(200);
     obj.imageCheckBox286:setTop(0);
@@ -5362,7 +5362,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox286:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox286:setName("imageCheckBox286");
 
-    obj.layout82 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout82 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout82:setParent(obj.layout76);
     obj.layout82:setLeft(15);
     obj.layout82:setTop(150);
@@ -5370,7 +5370,7 @@ function newfrmMageDarkAges()
     obj.layout82:setHeight(25);
     obj.layout82:setName("layout82");
 
-    obj.edit33 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit33 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit33:setParent(obj.layout82);
     obj.edit33:setLeft(0);
     obj.edit33:setTop(5);
@@ -5380,7 +5380,7 @@ function newfrmMageDarkAges()
     obj.edit33:setFontSize(12);
     obj.edit33:setName("edit33");
 
-    obj.imageCheckBox287 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox287 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox287:setParent(obj.layout82);
     obj.imageCheckBox287:setLeft(100);
     obj.imageCheckBox287:setTop(0);
@@ -5391,7 +5391,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox287:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox287:setName("imageCheckBox287");
 
-    obj.imageCheckBox288 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox288 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox288:setParent(obj.layout82);
     obj.imageCheckBox288:setLeft(125);
     obj.imageCheckBox288:setTop(0);
@@ -5402,7 +5402,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox288:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox288:setName("imageCheckBox288");
 
-    obj.imageCheckBox289 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox289 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox289:setParent(obj.layout82);
     obj.imageCheckBox289:setLeft(150);
     obj.imageCheckBox289:setTop(0);
@@ -5413,7 +5413,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox289:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox289:setName("imageCheckBox289");
 
-    obj.imageCheckBox290 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox290 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox290:setParent(obj.layout82);
     obj.imageCheckBox290:setLeft(175);
     obj.imageCheckBox290:setTop(0);
@@ -5424,7 +5424,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox290:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox290:setName("imageCheckBox290");
 
-    obj.imageCheckBox291 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox291 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox291:setParent(obj.layout82);
     obj.imageCheckBox291:setLeft(200);
     obj.imageCheckBox291:setTop(0);
@@ -5435,7 +5435,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox291:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox291:setName("imageCheckBox291");
 
-    obj.layout83 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout83 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout83:setParent(obj.layout76);
     obj.layout83:setLeft(15);
     obj.layout83:setTop(175);
@@ -5443,7 +5443,7 @@ function newfrmMageDarkAges()
     obj.layout83:setHeight(25);
     obj.layout83:setName("layout83");
 
-    obj.edit34 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit34:setParent(obj.layout83);
     obj.edit34:setLeft(0);
     obj.edit34:setTop(5);
@@ -5453,7 +5453,7 @@ function newfrmMageDarkAges()
     obj.edit34:setFontSize(12);
     obj.edit34:setName("edit34");
 
-    obj.imageCheckBox292 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox292 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox292:setParent(obj.layout83);
     obj.imageCheckBox292:setLeft(100);
     obj.imageCheckBox292:setTop(0);
@@ -5464,7 +5464,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox292:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox292:setName("imageCheckBox292");
 
-    obj.imageCheckBox293 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox293 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox293:setParent(obj.layout83);
     obj.imageCheckBox293:setLeft(125);
     obj.imageCheckBox293:setTop(0);
@@ -5475,7 +5475,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox293:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox293:setName("imageCheckBox293");
 
-    obj.imageCheckBox294 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox294 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox294:setParent(obj.layout83);
     obj.imageCheckBox294:setLeft(150);
     obj.imageCheckBox294:setTop(0);
@@ -5486,7 +5486,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox294:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox294:setName("imageCheckBox294");
 
-    obj.imageCheckBox295 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox295 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox295:setParent(obj.layout83);
     obj.imageCheckBox295:setLeft(175);
     obj.imageCheckBox295:setTop(0);
@@ -5497,7 +5497,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox295:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox295:setName("imageCheckBox295");
 
-    obj.imageCheckBox296 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox296 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox296:setParent(obj.layout83);
     obj.imageCheckBox296:setLeft(200);
     obj.imageCheckBox296:setTop(0);
@@ -5508,7 +5508,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox296:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox296:setName("imageCheckBox296");
 
-    obj.layout84 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout84 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout84:setParent(obj.layout76);
     obj.layout84:setLeft(15);
     obj.layout84:setTop(200);
@@ -5516,7 +5516,7 @@ function newfrmMageDarkAges()
     obj.layout84:setHeight(25);
     obj.layout84:setName("layout84");
 
-    obj.edit35 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit35 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit35:setParent(obj.layout84);
     obj.edit35:setLeft(0);
     obj.edit35:setTop(5);
@@ -5526,7 +5526,7 @@ function newfrmMageDarkAges()
     obj.edit35:setFontSize(12);
     obj.edit35:setName("edit35");
 
-    obj.imageCheckBox297 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox297 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox297:setParent(obj.layout84);
     obj.imageCheckBox297:setLeft(100);
     obj.imageCheckBox297:setTop(0);
@@ -5537,7 +5537,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox297:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox297:setName("imageCheckBox297");
 
-    obj.imageCheckBox298 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox298 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox298:setParent(obj.layout84);
     obj.imageCheckBox298:setLeft(125);
     obj.imageCheckBox298:setTop(0);
@@ -5548,7 +5548,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox298:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox298:setName("imageCheckBox298");
 
-    obj.imageCheckBox299 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox299 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox299:setParent(obj.layout84);
     obj.imageCheckBox299:setLeft(150);
     obj.imageCheckBox299:setTop(0);
@@ -5559,7 +5559,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox299:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox299:setName("imageCheckBox299");
 
-    obj.imageCheckBox300 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox300 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox300:setParent(obj.layout84);
     obj.imageCheckBox300:setLeft(175);
     obj.imageCheckBox300:setTop(0);
@@ -5570,7 +5570,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox300:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox300:setName("imageCheckBox300");
 
-    obj.imageCheckBox301 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox301 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox301:setParent(obj.layout84);
     obj.imageCheckBox301:setLeft(200);
     obj.imageCheckBox301:setTop(0);
@@ -5581,7 +5581,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox301:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox301:setName("imageCheckBox301");
 
-    obj.layout85 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout85 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout85:setParent(obj.layout76);
     obj.layout85:setLeft(15);
     obj.layout85:setTop(225);
@@ -5589,7 +5589,7 @@ function newfrmMageDarkAges()
     obj.layout85:setHeight(25);
     obj.layout85:setName("layout85");
 
-    obj.edit36 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit36:setParent(obj.layout85);
     obj.edit36:setLeft(0);
     obj.edit36:setTop(5);
@@ -5599,7 +5599,7 @@ function newfrmMageDarkAges()
     obj.edit36:setFontSize(12);
     obj.edit36:setName("edit36");
 
-    obj.imageCheckBox302 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox302 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox302:setParent(obj.layout85);
     obj.imageCheckBox302:setLeft(100);
     obj.imageCheckBox302:setTop(0);
@@ -5610,7 +5610,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox302:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox302:setName("imageCheckBox302");
 
-    obj.imageCheckBox303 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox303 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox303:setParent(obj.layout85);
     obj.imageCheckBox303:setLeft(125);
     obj.imageCheckBox303:setTop(0);
@@ -5621,7 +5621,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox303:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox303:setName("imageCheckBox303");
 
-    obj.imageCheckBox304 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox304 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox304:setParent(obj.layout85);
     obj.imageCheckBox304:setLeft(150);
     obj.imageCheckBox304:setTop(0);
@@ -5632,7 +5632,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox304:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox304:setName("imageCheckBox304");
 
-    obj.imageCheckBox305 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox305 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox305:setParent(obj.layout85);
     obj.imageCheckBox305:setLeft(175);
     obj.imageCheckBox305:setTop(0);
@@ -5643,7 +5643,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox305:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox305:setName("imageCheckBox305");
 
-    obj.imageCheckBox306 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox306 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox306:setParent(obj.layout85);
     obj.imageCheckBox306:setLeft(200);
     obj.imageCheckBox306:setTop(0);
@@ -5654,7 +5654,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox306:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox306:setName("imageCheckBox306");
 
-    obj.layout86 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout86 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout86:setParent(obj.layout76);
     obj.layout86:setLeft(15);
     obj.layout86:setTop(250);
@@ -5662,7 +5662,7 @@ function newfrmMageDarkAges()
     obj.layout86:setHeight(25);
     obj.layout86:setName("layout86");
 
-    obj.edit37 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit37 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit37:setParent(obj.layout86);
     obj.edit37:setLeft(0);
     obj.edit37:setTop(5);
@@ -5672,7 +5672,7 @@ function newfrmMageDarkAges()
     obj.edit37:setFontSize(12);
     obj.edit37:setName("edit37");
 
-    obj.imageCheckBox307 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox307 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox307:setParent(obj.layout86);
     obj.imageCheckBox307:setLeft(100);
     obj.imageCheckBox307:setTop(0);
@@ -5683,7 +5683,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox307:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox307:setName("imageCheckBox307");
 
-    obj.imageCheckBox308 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox308 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox308:setParent(obj.layout86);
     obj.imageCheckBox308:setLeft(125);
     obj.imageCheckBox308:setTop(0);
@@ -5694,7 +5694,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox308:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox308:setName("imageCheckBox308");
 
-    obj.imageCheckBox309 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox309 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox309:setParent(obj.layout86);
     obj.imageCheckBox309:setLeft(150);
     obj.imageCheckBox309:setTop(0);
@@ -5705,7 +5705,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox309:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox309:setName("imageCheckBox309");
 
-    obj.imageCheckBox310 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox310 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox310:setParent(obj.layout86);
     obj.imageCheckBox310:setLeft(175);
     obj.imageCheckBox310:setTop(0);
@@ -5716,7 +5716,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox310:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox310:setName("imageCheckBox310");
 
-    obj.imageCheckBox311 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox311 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox311:setParent(obj.layout86);
     obj.imageCheckBox311:setLeft(200);
     obj.imageCheckBox311:setTop(0);
@@ -5727,7 +5727,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox311:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox311:setName("imageCheckBox311");
 
-    obj.layout87 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout87 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout87:setParent(obj.layout76);
     obj.layout87:setLeft(15);
     obj.layout87:setTop(275);
@@ -5735,7 +5735,7 @@ function newfrmMageDarkAges()
     obj.layout87:setHeight(25);
     obj.layout87:setName("layout87");
 
-    obj.edit38 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit38 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit38:setParent(obj.layout87);
     obj.edit38:setLeft(0);
     obj.edit38:setTop(5);
@@ -5745,7 +5745,7 @@ function newfrmMageDarkAges()
     obj.edit38:setFontSize(12);
     obj.edit38:setName("edit38");
 
-    obj.imageCheckBox312 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox312 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox312:setParent(obj.layout87);
     obj.imageCheckBox312:setLeft(100);
     obj.imageCheckBox312:setTop(0);
@@ -5756,7 +5756,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox312:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox312:setName("imageCheckBox312");
 
-    obj.imageCheckBox313 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox313 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox313:setParent(obj.layout87);
     obj.imageCheckBox313:setLeft(125);
     obj.imageCheckBox313:setTop(0);
@@ -5767,7 +5767,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox313:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox313:setName("imageCheckBox313");
 
-    obj.imageCheckBox314 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox314 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox314:setParent(obj.layout87);
     obj.imageCheckBox314:setLeft(150);
     obj.imageCheckBox314:setTop(0);
@@ -5778,7 +5778,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox314:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox314:setName("imageCheckBox314");
 
-    obj.imageCheckBox315 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox315 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox315:setParent(obj.layout87);
     obj.imageCheckBox315:setLeft(175);
     obj.imageCheckBox315:setTop(0);
@@ -5789,7 +5789,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox315:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox315:setName("imageCheckBox315");
 
-    obj.imageCheckBox316 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox316 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox316:setParent(obj.layout87);
     obj.imageCheckBox316:setLeft(200);
     obj.imageCheckBox316:setTop(0);
@@ -5800,7 +5800,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox316:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox316:setName("imageCheckBox316");
 
-    obj.layout88 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout88 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout88:setParent(obj.layout76);
     obj.layout88:setLeft(15);
     obj.layout88:setTop(300);
@@ -5808,7 +5808,7 @@ function newfrmMageDarkAges()
     obj.layout88:setHeight(25);
     obj.layout88:setName("layout88");
 
-    obj.edit39 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit39 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit39:setParent(obj.layout88);
     obj.edit39:setLeft(0);
     obj.edit39:setTop(5);
@@ -5818,7 +5818,7 @@ function newfrmMageDarkAges()
     obj.edit39:setFontSize(12);
     obj.edit39:setName("edit39");
 
-    obj.imageCheckBox317 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox317 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox317:setParent(obj.layout88);
     obj.imageCheckBox317:setLeft(100);
     obj.imageCheckBox317:setTop(0);
@@ -5829,7 +5829,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox317:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox317:setName("imageCheckBox317");
 
-    obj.imageCheckBox318 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox318 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox318:setParent(obj.layout88);
     obj.imageCheckBox318:setLeft(125);
     obj.imageCheckBox318:setTop(0);
@@ -5840,7 +5840,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox318:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox318:setName("imageCheckBox318");
 
-    obj.imageCheckBox319 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox319 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox319:setParent(obj.layout88);
     obj.imageCheckBox319:setLeft(150);
     obj.imageCheckBox319:setTop(0);
@@ -5851,7 +5851,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox319:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox319:setName("imageCheckBox319");
 
-    obj.imageCheckBox320 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox320 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox320:setParent(obj.layout88);
     obj.imageCheckBox320:setLeft(175);
     obj.imageCheckBox320:setTop(0);
@@ -5862,7 +5862,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox320:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox320:setName("imageCheckBox320");
 
-    obj.imageCheckBox321 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox321 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox321:setParent(obj.layout88);
     obj.imageCheckBox321:setLeft(200);
     obj.imageCheckBox321:setTop(0);
@@ -5873,7 +5873,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox321:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox321:setName("imageCheckBox321");
 
-    obj.layout89 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout89 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout89:setParent(obj.scrollBox2);
     obj.layout89:setLeft(265);
     obj.layout89:setTop(0);
@@ -5881,7 +5881,7 @@ function newfrmMageDarkAges()
     obj.layout89:setHeight(355);
     obj.layout89:setName("layout89");
 
-    obj.rectangle13 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle13 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle13:setParent(obj.layout89);
     obj.rectangle13:setAlign("client");
     obj.rectangle13:setColor("black");
@@ -5890,7 +5890,7 @@ function newfrmMageDarkAges()
     obj.rectangle13:setCornerType("innerLine");
     obj.rectangle13:setName("rectangle13");
 
-    obj.label66 = gui.fromHandle(_obj_newObject("label"));
+    obj.label66 = GUI.fromHandle(_obj_newObject("label"));
     obj.label66:setParent(obj.layout89);
     obj.label66:setLeft(5);
     obj.label66:setTop(0);
@@ -5900,7 +5900,7 @@ function newfrmMageDarkAges()
     obj.label66:setHorzTextAlign("center");
     obj.label66:setName("label66");
 
-    obj.layout90 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout90 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout90:setParent(obj.layout89);
     obj.layout90:setLeft(15);
     obj.layout90:setTop(25);
@@ -5908,7 +5908,7 @@ function newfrmMageDarkAges()
     obj.layout90:setHeight(25);
     obj.layout90:setName("layout90");
 
-    obj.edit40 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit40 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit40:setParent(obj.layout90);
     obj.edit40:setLeft(0);
     obj.edit40:setTop(5);
@@ -5917,7 +5917,7 @@ function newfrmMageDarkAges()
     obj.edit40:setField("rotes_1");
     obj.edit40:setName("edit40");
 
-    obj.layout91 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout91 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout91:setParent(obj.layout89);
     obj.layout91:setLeft(15);
     obj.layout91:setTop(50);
@@ -5925,7 +5925,7 @@ function newfrmMageDarkAges()
     obj.layout91:setHeight(25);
     obj.layout91:setName("layout91");
 
-    obj.edit41 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit41:setParent(obj.layout91);
     obj.edit41:setLeft(0);
     obj.edit41:setTop(5);
@@ -5934,7 +5934,7 @@ function newfrmMageDarkAges()
     obj.edit41:setField("rotes_2");
     obj.edit41:setName("edit41");
 
-    obj.layout92 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout92 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout92:setParent(obj.layout89);
     obj.layout92:setLeft(15);
     obj.layout92:setTop(75);
@@ -5942,7 +5942,7 @@ function newfrmMageDarkAges()
     obj.layout92:setHeight(25);
     obj.layout92:setName("layout92");
 
-    obj.edit42 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit42:setParent(obj.layout92);
     obj.edit42:setLeft(0);
     obj.edit42:setTop(5);
@@ -5951,7 +5951,7 @@ function newfrmMageDarkAges()
     obj.edit42:setField("rotes_3");
     obj.edit42:setName("edit42");
 
-    obj.layout93 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout93 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout93:setParent(obj.layout89);
     obj.layout93:setLeft(15);
     obj.layout93:setTop(100);
@@ -5959,7 +5959,7 @@ function newfrmMageDarkAges()
     obj.layout93:setHeight(25);
     obj.layout93:setName("layout93");
 
-    obj.edit43 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit43 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit43:setParent(obj.layout93);
     obj.edit43:setLeft(0);
     obj.edit43:setTop(5);
@@ -5968,7 +5968,7 @@ function newfrmMageDarkAges()
     obj.edit43:setField("rotes_4");
     obj.edit43:setName("edit43");
 
-    obj.layout94 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout94 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout94:setParent(obj.layout89);
     obj.layout94:setLeft(15);
     obj.layout94:setTop(125);
@@ -5976,7 +5976,7 @@ function newfrmMageDarkAges()
     obj.layout94:setHeight(25);
     obj.layout94:setName("layout94");
 
-    obj.edit44 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit44 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit44:setParent(obj.layout94);
     obj.edit44:setLeft(0);
     obj.edit44:setTop(5);
@@ -5985,7 +5985,7 @@ function newfrmMageDarkAges()
     obj.edit44:setField("rotes_5");
     obj.edit44:setName("edit44");
 
-    obj.layout95 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout95 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout95:setParent(obj.layout89);
     obj.layout95:setLeft(15);
     obj.layout95:setTop(150);
@@ -5993,7 +5993,7 @@ function newfrmMageDarkAges()
     obj.layout95:setHeight(25);
     obj.layout95:setName("layout95");
 
-    obj.edit45 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit45:setParent(obj.layout95);
     obj.edit45:setLeft(0);
     obj.edit45:setTop(5);
@@ -6002,7 +6002,7 @@ function newfrmMageDarkAges()
     obj.edit45:setField("rotes_6");
     obj.edit45:setName("edit45");
 
-    obj.layout96 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout96 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout96:setParent(obj.layout89);
     obj.layout96:setLeft(15);
     obj.layout96:setTop(175);
@@ -6010,7 +6010,7 @@ function newfrmMageDarkAges()
     obj.layout96:setHeight(25);
     obj.layout96:setName("layout96");
 
-    obj.edit46 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit46:setParent(obj.layout96);
     obj.edit46:setLeft(0);
     obj.edit46:setTop(5);
@@ -6019,7 +6019,7 @@ function newfrmMageDarkAges()
     obj.edit46:setField("rotes_7");
     obj.edit46:setName("edit46");
 
-    obj.layout97 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout97 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout97:setParent(obj.layout89);
     obj.layout97:setLeft(15);
     obj.layout97:setTop(200);
@@ -6027,7 +6027,7 @@ function newfrmMageDarkAges()
     obj.layout97:setHeight(25);
     obj.layout97:setName("layout97");
 
-    obj.edit47 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit47:setParent(obj.layout97);
     obj.edit47:setLeft(0);
     obj.edit47:setTop(5);
@@ -6036,7 +6036,7 @@ function newfrmMageDarkAges()
     obj.edit47:setField("rotes_8");
     obj.edit47:setName("edit47");
 
-    obj.layout98 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout98 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout98:setParent(obj.layout89);
     obj.layout98:setLeft(15);
     obj.layout98:setTop(225);
@@ -6044,7 +6044,7 @@ function newfrmMageDarkAges()
     obj.layout98:setHeight(25);
     obj.layout98:setName("layout98");
 
-    obj.edit48 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit48:setParent(obj.layout98);
     obj.edit48:setLeft(0);
     obj.edit48:setTop(5);
@@ -6053,7 +6053,7 @@ function newfrmMageDarkAges()
     obj.edit48:setField("rotes_9");
     obj.edit48:setName("edit48");
 
-    obj.layout99 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout99 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout99:setParent(obj.layout89);
     obj.layout99:setLeft(15);
     obj.layout99:setTop(250);
@@ -6061,7 +6061,7 @@ function newfrmMageDarkAges()
     obj.layout99:setHeight(25);
     obj.layout99:setName("layout99");
 
-    obj.edit49 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit49 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit49:setParent(obj.layout99);
     obj.edit49:setLeft(0);
     obj.edit49:setTop(5);
@@ -6070,7 +6070,7 @@ function newfrmMageDarkAges()
     obj.edit49:setField("rotes_10");
     obj.edit49:setName("edit49");
 
-    obj.layout100 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout100 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout100:setParent(obj.layout89);
     obj.layout100:setLeft(15);
     obj.layout100:setTop(275);
@@ -6078,7 +6078,7 @@ function newfrmMageDarkAges()
     obj.layout100:setHeight(25);
     obj.layout100:setName("layout100");
 
-    obj.edit50 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit50:setParent(obj.layout100);
     obj.edit50:setLeft(0);
     obj.edit50:setTop(5);
@@ -6087,7 +6087,7 @@ function newfrmMageDarkAges()
     obj.edit50:setField("rotes_11");
     obj.edit50:setName("edit50");
 
-    obj.layout101 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout101 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout101:setParent(obj.layout89);
     obj.layout101:setLeft(15);
     obj.layout101:setTop(300);
@@ -6095,7 +6095,7 @@ function newfrmMageDarkAges()
     obj.layout101:setHeight(25);
     obj.layout101:setName("layout101");
 
-    obj.edit51 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit51:setParent(obj.layout101);
     obj.edit51:setLeft(0);
     obj.edit51:setTop(5);
@@ -6104,7 +6104,7 @@ function newfrmMageDarkAges()
     obj.edit51:setField("rotes_12");
     obj.edit51:setName("edit51");
 
-    obj.layout102 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout102 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout102:setParent(obj.scrollBox2);
     obj.layout102:setLeft(530);
     obj.layout102:setTop(0);
@@ -6112,7 +6112,7 @@ function newfrmMageDarkAges()
     obj.layout102:setHeight(355);
     obj.layout102:setName("layout102");
 
-    obj.rectangle14 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle14 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle14:setParent(obj.layout102);
     obj.rectangle14:setAlign("client");
     obj.rectangle14:setColor("black");
@@ -6121,7 +6121,7 @@ function newfrmMageDarkAges()
     obj.rectangle14:setCornerType("innerLine");
     obj.rectangle14:setName("rectangle14");
 
-    obj.label67 = gui.fromHandle(_obj_newObject("label"));
+    obj.label67 = GUI.fromHandle(_obj_newObject("label"));
     obj.label67:setParent(obj.layout102);
     obj.label67:setLeft(0);
     obj.label67:setTop(0);
@@ -6131,7 +6131,7 @@ function newfrmMageDarkAges()
     obj.label67:setHorzTextAlign("center");
     obj.label67:setName("label67");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout102);
     obj.button1:setLeft(185);
     obj.button1:setTop(0);
@@ -6140,7 +6140,7 @@ function newfrmMageDarkAges()
     obj.button1:setText("+");
     obj.button1:setName("button1");
 
-    obj.rectangle15 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle15 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle15:setParent(obj.layout102);
     obj.rectangle15:setLeft(5);
     obj.rectangle15:setTop(25);
@@ -6149,7 +6149,7 @@ function newfrmMageDarkAges()
     obj.rectangle15:setColor("black");
     obj.rectangle15:setName("rectangle15");
 
-    obj.rclTalismans = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclTalismans = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclTalismans:setParent(obj.layout102);
     obj.rclTalismans:setLeft(5);
     obj.rclTalismans:setTop(25);
@@ -6160,7 +6160,7 @@ function newfrmMageDarkAges()
     obj.rclTalismans:setTemplateForm("frmM20_2_1");
     obj.rclTalismans:setLayout("vertical");
 
-    obj.layout103 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout103 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout103:setParent(obj.scrollBox2);
     obj.layout103:setLeft(840);
     obj.layout103:setTop(0);
@@ -6168,7 +6168,7 @@ function newfrmMageDarkAges()
     obj.layout103:setHeight(355);
     obj.layout103:setName("layout103");
 
-    obj.rectangle16 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle16 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle16:setParent(obj.layout103);
     obj.rectangle16:setAlign("client");
     obj.rectangle16:setColor("black");
@@ -6177,7 +6177,7 @@ function newfrmMageDarkAges()
     obj.rectangle16:setCornerType("innerLine");
     obj.rectangle16:setName("rectangle16");
 
-    obj.label68 = gui.fromHandle(_obj_newObject("label"));
+    obj.label68 = GUI.fromHandle(_obj_newObject("label"));
     obj.label68:setParent(obj.layout103);
     obj.label68:setLeft(0);
     obj.label68:setTop(0);
@@ -6187,7 +6187,7 @@ function newfrmMageDarkAges()
     obj.label68:setHorzTextAlign("center");
     obj.label68:setName("label68");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout103);
     obj.button2:setLeft(195);
     obj.button2:setTop(0);
@@ -6196,7 +6196,7 @@ function newfrmMageDarkAges()
     obj.button2:setText("+");
     obj.button2:setName("button2");
 
-    obj.rectangle17 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle17 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle17:setParent(obj.layout103);
     obj.rectangle17:setLeft(5);
     obj.rectangle17:setTop(25);
@@ -6205,7 +6205,7 @@ function newfrmMageDarkAges()
     obj.rectangle17:setColor("black");
     obj.rectangle17:setName("rectangle17");
 
-    obj.rclAides = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclAides = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclAides:setParent(obj.layout103);
     obj.rclAides:setLeft(5);
     obj.rclAides:setTop(25);
@@ -6216,7 +6216,7 @@ function newfrmMageDarkAges()
     obj.rclAides:setTemplateForm("frmM20_2_1");
     obj.rclAides:setLayout("vertical");
 
-    obj.layout104 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout104 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout104:setParent(obj.scrollBox2);
     obj.layout104:setLeft(0);
     obj.layout104:setTop(365);
@@ -6224,7 +6224,7 @@ function newfrmMageDarkAges()
     obj.layout104:setHeight(270);
     obj.layout104:setName("layout104");
 
-    obj.rectangle18 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle18 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle18:setParent(obj.layout104);
     obj.rectangle18:setAlign("client");
     obj.rectangle18:setColor("#FFFFFF00");
@@ -6235,7 +6235,7 @@ function newfrmMageDarkAges()
     obj.rectangle18:setCornerType("innerLine");
     obj.rectangle18:setName("rectangle18");
 
-    obj.label69 = gui.fromHandle(_obj_newObject("label"));
+    obj.label69 = GUI.fromHandle(_obj_newObject("label"));
     obj.label69:setParent(obj.layout104);
     obj.label69:setLeft(0);
     obj.label69:setTop(0);
@@ -6245,7 +6245,7 @@ function newfrmMageDarkAges()
     obj.label69:setHorzTextAlign("center");
     obj.label69:setName("label69");
 
-    obj.layout105 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout105 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout105:setParent(obj.layout104);
     obj.layout105:setLeft(15);
     obj.layout105:setTop(25);
@@ -6253,7 +6253,7 @@ function newfrmMageDarkAges()
     obj.layout105:setHeight(240);
     obj.layout105:setName("layout105");
 
-    obj.rectangle19 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle19 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle19:setParent(obj.layout105);
     obj.rectangle19:setAlign("client");
     obj.rectangle19:setColor("black");
@@ -6262,7 +6262,7 @@ function newfrmMageDarkAges()
     obj.rectangle19:setCornerType("innerLine");
     obj.rectangle19:setName("rectangle19");
 
-    obj.label70 = gui.fromHandle(_obj_newObject("label"));
+    obj.label70 = GUI.fromHandle(_obj_newObject("label"));
     obj.label70:setParent(obj.layout105);
     obj.label70:setLeft(15);
     obj.label70:setTop(0);
@@ -6272,7 +6272,7 @@ function newfrmMageDarkAges()
     obj.label70:setHorzTextAlign("center");
     obj.label70:setName("label70");
 
-    obj.label71 = gui.fromHandle(_obj_newObject("label"));
+    obj.label71 = GUI.fromHandle(_obj_newObject("label"));
     obj.label71:setParent(obj.layout105);
     obj.label71:setLeft(215);
     obj.label71:setTop(0);
@@ -6282,7 +6282,7 @@ function newfrmMageDarkAges()
     obj.label71:setHorzTextAlign("center");
     obj.label71:setName("label71");
 
-    obj.label72 = gui.fromHandle(_obj_newObject("label"));
+    obj.label72 = GUI.fromHandle(_obj_newObject("label"));
     obj.label72:setParent(obj.layout105);
     obj.label72:setLeft(315);
     obj.label72:setTop(0);
@@ -6292,7 +6292,7 @@ function newfrmMageDarkAges()
     obj.label72:setHorzTextAlign("center");
     obj.label72:setName("label72");
 
-    obj.layout106 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout106 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout106:setParent(obj.layout105);
     obj.layout106:setLeft(15);
     obj.layout106:setTop(25);
@@ -6300,7 +6300,7 @@ function newfrmMageDarkAges()
     obj.layout106:setHeight(25);
     obj.layout106:setName("layout106");
 
-    obj.edit52 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit52 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit52:setParent(obj.layout106);
     obj.edit52:setLeft(0);
     obj.edit52:setTop(0);
@@ -6309,7 +6309,7 @@ function newfrmMageDarkAges()
     obj.edit52:setField("merit_m1");
     obj.edit52:setName("edit52");
 
-    obj.edit53 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit53 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit53:setParent(obj.layout106);
     obj.edit53:setLeft(200);
     obj.edit53:setTop(0);
@@ -6318,7 +6318,7 @@ function newfrmMageDarkAges()
     obj.edit53:setField("type_m1");
     obj.edit53:setName("edit53");
 
-    obj.edit54 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit54:setParent(obj.layout106);
     obj.edit54:setLeft(300);
     obj.edit54:setTop(0);
@@ -6327,7 +6327,7 @@ function newfrmMageDarkAges()
     obj.edit54:setField("costy_m1");
     obj.edit54:setName("edit54");
 
-    obj.layout107 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout107 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout107:setParent(obj.layout105);
     obj.layout107:setLeft(15);
     obj.layout107:setTop(50);
@@ -6335,7 +6335,7 @@ function newfrmMageDarkAges()
     obj.layout107:setHeight(25);
     obj.layout107:setName("layout107");
 
-    obj.edit55 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit55 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit55:setParent(obj.layout107);
     obj.edit55:setLeft(0);
     obj.edit55:setTop(0);
@@ -6344,7 +6344,7 @@ function newfrmMageDarkAges()
     obj.edit55:setField("merit_m2");
     obj.edit55:setName("edit55");
 
-    obj.edit56 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit56:setParent(obj.layout107);
     obj.edit56:setLeft(200);
     obj.edit56:setTop(0);
@@ -6353,7 +6353,7 @@ function newfrmMageDarkAges()
     obj.edit56:setField("type_m2");
     obj.edit56:setName("edit56");
 
-    obj.edit57 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit57 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit57:setParent(obj.layout107);
     obj.edit57:setLeft(300);
     obj.edit57:setTop(0);
@@ -6362,7 +6362,7 @@ function newfrmMageDarkAges()
     obj.edit57:setField("costy_m2");
     obj.edit57:setName("edit57");
 
-    obj.layout108 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout108 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout108:setParent(obj.layout105);
     obj.layout108:setLeft(15);
     obj.layout108:setTop(75);
@@ -6370,7 +6370,7 @@ function newfrmMageDarkAges()
     obj.layout108:setHeight(25);
     obj.layout108:setName("layout108");
 
-    obj.edit58 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit58 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit58:setParent(obj.layout108);
     obj.edit58:setLeft(0);
     obj.edit58:setTop(0);
@@ -6379,7 +6379,7 @@ function newfrmMageDarkAges()
     obj.edit58:setField("merit_m3");
     obj.edit58:setName("edit58");
 
-    obj.edit59 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit59 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit59:setParent(obj.layout108);
     obj.edit59:setLeft(200);
     obj.edit59:setTop(0);
@@ -6388,7 +6388,7 @@ function newfrmMageDarkAges()
     obj.edit59:setField("type_m3");
     obj.edit59:setName("edit59");
 
-    obj.edit60 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit60 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit60:setParent(obj.layout108);
     obj.edit60:setLeft(300);
     obj.edit60:setTop(0);
@@ -6397,7 +6397,7 @@ function newfrmMageDarkAges()
     obj.edit60:setField("costy_m3");
     obj.edit60:setName("edit60");
 
-    obj.layout109 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout109 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout109:setParent(obj.layout105);
     obj.layout109:setLeft(15);
     obj.layout109:setTop(100);
@@ -6405,7 +6405,7 @@ function newfrmMageDarkAges()
     obj.layout109:setHeight(25);
     obj.layout109:setName("layout109");
 
-    obj.edit61 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit61 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit61:setParent(obj.layout109);
     obj.edit61:setLeft(0);
     obj.edit61:setTop(0);
@@ -6414,7 +6414,7 @@ function newfrmMageDarkAges()
     obj.edit61:setField("merit_m4");
     obj.edit61:setName("edit61");
 
-    obj.edit62 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit62 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit62:setParent(obj.layout109);
     obj.edit62:setLeft(200);
     obj.edit62:setTop(0);
@@ -6423,7 +6423,7 @@ function newfrmMageDarkAges()
     obj.edit62:setField("type_m4");
     obj.edit62:setName("edit62");
 
-    obj.edit63 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit63 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit63:setParent(obj.layout109);
     obj.edit63:setLeft(300);
     obj.edit63:setTop(0);
@@ -6432,7 +6432,7 @@ function newfrmMageDarkAges()
     obj.edit63:setField("costy_m4");
     obj.edit63:setName("edit63");
 
-    obj.layout110 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout110 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout110:setParent(obj.layout105);
     obj.layout110:setLeft(15);
     obj.layout110:setTop(125);
@@ -6440,7 +6440,7 @@ function newfrmMageDarkAges()
     obj.layout110:setHeight(25);
     obj.layout110:setName("layout110");
 
-    obj.edit64 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit64 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit64:setParent(obj.layout110);
     obj.edit64:setLeft(0);
     obj.edit64:setTop(0);
@@ -6449,7 +6449,7 @@ function newfrmMageDarkAges()
     obj.edit64:setField("merit_m5");
     obj.edit64:setName("edit64");
 
-    obj.edit65 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit65 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit65:setParent(obj.layout110);
     obj.edit65:setLeft(200);
     obj.edit65:setTop(0);
@@ -6458,7 +6458,7 @@ function newfrmMageDarkAges()
     obj.edit65:setField("type_m5");
     obj.edit65:setName("edit65");
 
-    obj.edit66 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit66 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit66:setParent(obj.layout110);
     obj.edit66:setLeft(300);
     obj.edit66:setTop(0);
@@ -6467,7 +6467,7 @@ function newfrmMageDarkAges()
     obj.edit66:setField("costy_m5");
     obj.edit66:setName("edit66");
 
-    obj.layout111 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout111 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout111:setParent(obj.layout105);
     obj.layout111:setLeft(15);
     obj.layout111:setTop(150);
@@ -6475,7 +6475,7 @@ function newfrmMageDarkAges()
     obj.layout111:setHeight(25);
     obj.layout111:setName("layout111");
 
-    obj.edit67 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit67 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit67:setParent(obj.layout111);
     obj.edit67:setLeft(0);
     obj.edit67:setTop(0);
@@ -6484,7 +6484,7 @@ function newfrmMageDarkAges()
     obj.edit67:setField("merit_m6");
     obj.edit67:setName("edit67");
 
-    obj.edit68 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit68 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit68:setParent(obj.layout111);
     obj.edit68:setLeft(200);
     obj.edit68:setTop(0);
@@ -6493,7 +6493,7 @@ function newfrmMageDarkAges()
     obj.edit68:setField("type_m6");
     obj.edit68:setName("edit68");
 
-    obj.edit69 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit69 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit69:setParent(obj.layout111);
     obj.edit69:setLeft(300);
     obj.edit69:setTop(0);
@@ -6502,7 +6502,7 @@ function newfrmMageDarkAges()
     obj.edit69:setField("costy_m6");
     obj.edit69:setName("edit69");
 
-    obj.layout112 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout112 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout112:setParent(obj.layout105);
     obj.layout112:setLeft(15);
     obj.layout112:setTop(175);
@@ -6510,7 +6510,7 @@ function newfrmMageDarkAges()
     obj.layout112:setHeight(25);
     obj.layout112:setName("layout112");
 
-    obj.edit70 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit70 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit70:setParent(obj.layout112);
     obj.edit70:setLeft(0);
     obj.edit70:setTop(0);
@@ -6519,7 +6519,7 @@ function newfrmMageDarkAges()
     obj.edit70:setField("merit_m7");
     obj.edit70:setName("edit70");
 
-    obj.edit71 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit71 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit71:setParent(obj.layout112);
     obj.edit71:setLeft(200);
     obj.edit71:setTop(0);
@@ -6528,7 +6528,7 @@ function newfrmMageDarkAges()
     obj.edit71:setField("type_m7");
     obj.edit71:setName("edit71");
 
-    obj.edit72 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit72 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit72:setParent(obj.layout112);
     obj.edit72:setLeft(300);
     obj.edit72:setTop(0);
@@ -6537,7 +6537,7 @@ function newfrmMageDarkAges()
     obj.edit72:setField("costy_m7");
     obj.edit72:setName("edit72");
 
-    obj.layout113 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout113 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout113:setParent(obj.layout105);
     obj.layout113:setLeft(15);
     obj.layout113:setTop(200);
@@ -6545,7 +6545,7 @@ function newfrmMageDarkAges()
     obj.layout113:setHeight(25);
     obj.layout113:setName("layout113");
 
-    obj.edit73 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit73 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit73:setParent(obj.layout113);
     obj.edit73:setLeft(0);
     obj.edit73:setTop(0);
@@ -6554,7 +6554,7 @@ function newfrmMageDarkAges()
     obj.edit73:setField("merit_m8");
     obj.edit73:setName("edit73");
 
-    obj.edit74 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit74 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit74:setParent(obj.layout113);
     obj.edit74:setLeft(200);
     obj.edit74:setTop(0);
@@ -6563,7 +6563,7 @@ function newfrmMageDarkAges()
     obj.edit74:setField("type_m8");
     obj.edit74:setName("edit74");
 
-    obj.edit75 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit75 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit75:setParent(obj.layout113);
     obj.edit75:setLeft(300);
     obj.edit75:setTop(0);
@@ -6572,7 +6572,7 @@ function newfrmMageDarkAges()
     obj.edit75:setField("costy_m8");
     obj.edit75:setName("edit75");
 
-    obj.layout114 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout114 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout114:setParent(obj.layout104);
     obj.layout114:setLeft(405);
     obj.layout114:setTop(25);
@@ -6580,7 +6580,7 @@ function newfrmMageDarkAges()
     obj.layout114:setHeight(240);
     obj.layout114:setName("layout114");
 
-    obj.rectangle20 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle20 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle20:setParent(obj.layout114);
     obj.rectangle20:setAlign("client");
     obj.rectangle20:setColor("black");
@@ -6589,7 +6589,7 @@ function newfrmMageDarkAges()
     obj.rectangle20:setCornerType("innerLine");
     obj.rectangle20:setName("rectangle20");
 
-    obj.label73 = gui.fromHandle(_obj_newObject("label"));
+    obj.label73 = GUI.fromHandle(_obj_newObject("label"));
     obj.label73:setParent(obj.layout114);
     obj.label73:setLeft(15);
     obj.label73:setTop(0);
@@ -6599,7 +6599,7 @@ function newfrmMageDarkAges()
     obj.label73:setHorzTextAlign("center");
     obj.label73:setName("label73");
 
-    obj.label74 = gui.fromHandle(_obj_newObject("label"));
+    obj.label74 = GUI.fromHandle(_obj_newObject("label"));
     obj.label74:setParent(obj.layout114);
     obj.label74:setLeft(215);
     obj.label74:setTop(0);
@@ -6609,7 +6609,7 @@ function newfrmMageDarkAges()
     obj.label74:setHorzTextAlign("center");
     obj.label74:setName("label74");
 
-    obj.label75 = gui.fromHandle(_obj_newObject("label"));
+    obj.label75 = GUI.fromHandle(_obj_newObject("label"));
     obj.label75:setParent(obj.layout114);
     obj.label75:setLeft(315);
     obj.label75:setTop(0);
@@ -6619,7 +6619,7 @@ function newfrmMageDarkAges()
     obj.label75:setHorzTextAlign("center");
     obj.label75:setName("label75");
 
-    obj.layout115 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout115 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout115:setParent(obj.layout114);
     obj.layout115:setLeft(15);
     obj.layout115:setTop(25);
@@ -6627,7 +6627,7 @@ function newfrmMageDarkAges()
     obj.layout115:setHeight(25);
     obj.layout115:setName("layout115");
 
-    obj.edit76 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit76 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit76:setParent(obj.layout115);
     obj.edit76:setLeft(0);
     obj.edit76:setTop(0);
@@ -6636,7 +6636,7 @@ function newfrmMageDarkAges()
     obj.edit76:setField("merit_f1");
     obj.edit76:setName("edit76");
 
-    obj.edit77 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit77 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit77:setParent(obj.layout115);
     obj.edit77:setLeft(200);
     obj.edit77:setTop(0);
@@ -6645,7 +6645,7 @@ function newfrmMageDarkAges()
     obj.edit77:setField("type_f1");
     obj.edit77:setName("edit77");
 
-    obj.edit78 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit78 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit78:setParent(obj.layout115);
     obj.edit78:setLeft(300);
     obj.edit78:setTop(0);
@@ -6654,7 +6654,7 @@ function newfrmMageDarkAges()
     obj.edit78:setField("costy_f1");
     obj.edit78:setName("edit78");
 
-    obj.layout116 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout116 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout116:setParent(obj.layout114);
     obj.layout116:setLeft(15);
     obj.layout116:setTop(50);
@@ -6662,7 +6662,7 @@ function newfrmMageDarkAges()
     obj.layout116:setHeight(25);
     obj.layout116:setName("layout116");
 
-    obj.edit79 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit79 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit79:setParent(obj.layout116);
     obj.edit79:setLeft(0);
     obj.edit79:setTop(0);
@@ -6671,7 +6671,7 @@ function newfrmMageDarkAges()
     obj.edit79:setField("merit_f2");
     obj.edit79:setName("edit79");
 
-    obj.edit80 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit80 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit80:setParent(obj.layout116);
     obj.edit80:setLeft(200);
     obj.edit80:setTop(0);
@@ -6680,7 +6680,7 @@ function newfrmMageDarkAges()
     obj.edit80:setField("type_f2");
     obj.edit80:setName("edit80");
 
-    obj.edit81 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit81 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit81:setParent(obj.layout116);
     obj.edit81:setLeft(300);
     obj.edit81:setTop(0);
@@ -6689,7 +6689,7 @@ function newfrmMageDarkAges()
     obj.edit81:setField("costy_f2");
     obj.edit81:setName("edit81");
 
-    obj.layout117 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout117 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout117:setParent(obj.layout114);
     obj.layout117:setLeft(15);
     obj.layout117:setTop(75);
@@ -6697,7 +6697,7 @@ function newfrmMageDarkAges()
     obj.layout117:setHeight(25);
     obj.layout117:setName("layout117");
 
-    obj.edit82 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit82 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit82:setParent(obj.layout117);
     obj.edit82:setLeft(0);
     obj.edit82:setTop(0);
@@ -6706,7 +6706,7 @@ function newfrmMageDarkAges()
     obj.edit82:setField("merit_f3");
     obj.edit82:setName("edit82");
 
-    obj.edit83 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit83 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit83:setParent(obj.layout117);
     obj.edit83:setLeft(200);
     obj.edit83:setTop(0);
@@ -6715,7 +6715,7 @@ function newfrmMageDarkAges()
     obj.edit83:setField("type_f3");
     obj.edit83:setName("edit83");
 
-    obj.edit84 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit84 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit84:setParent(obj.layout117);
     obj.edit84:setLeft(300);
     obj.edit84:setTop(0);
@@ -6724,7 +6724,7 @@ function newfrmMageDarkAges()
     obj.edit84:setField("costy_f3");
     obj.edit84:setName("edit84");
 
-    obj.layout118 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout118 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout118:setParent(obj.layout114);
     obj.layout118:setLeft(15);
     obj.layout118:setTop(100);
@@ -6732,7 +6732,7 @@ function newfrmMageDarkAges()
     obj.layout118:setHeight(25);
     obj.layout118:setName("layout118");
 
-    obj.edit85 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit85 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit85:setParent(obj.layout118);
     obj.edit85:setLeft(0);
     obj.edit85:setTop(0);
@@ -6741,7 +6741,7 @@ function newfrmMageDarkAges()
     obj.edit85:setField("merit_f4");
     obj.edit85:setName("edit85");
 
-    obj.edit86 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit86:setParent(obj.layout118);
     obj.edit86:setLeft(200);
     obj.edit86:setTop(0);
@@ -6750,7 +6750,7 @@ function newfrmMageDarkAges()
     obj.edit86:setField("type_f4");
     obj.edit86:setName("edit86");
 
-    obj.edit87 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit87 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit87:setParent(obj.layout118);
     obj.edit87:setLeft(300);
     obj.edit87:setTop(0);
@@ -6759,7 +6759,7 @@ function newfrmMageDarkAges()
     obj.edit87:setField("costy_f4");
     obj.edit87:setName("edit87");
 
-    obj.layout119 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout119 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout119:setParent(obj.layout114);
     obj.layout119:setLeft(15);
     obj.layout119:setTop(125);
@@ -6767,7 +6767,7 @@ function newfrmMageDarkAges()
     obj.layout119:setHeight(25);
     obj.layout119:setName("layout119");
 
-    obj.edit88 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit88 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit88:setParent(obj.layout119);
     obj.edit88:setLeft(0);
     obj.edit88:setTop(0);
@@ -6776,7 +6776,7 @@ function newfrmMageDarkAges()
     obj.edit88:setField("merit_f5");
     obj.edit88:setName("edit88");
 
-    obj.edit89 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit89 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit89:setParent(obj.layout119);
     obj.edit89:setLeft(200);
     obj.edit89:setTop(0);
@@ -6785,7 +6785,7 @@ function newfrmMageDarkAges()
     obj.edit89:setField("type_f5");
     obj.edit89:setName("edit89");
 
-    obj.edit90 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit90 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit90:setParent(obj.layout119);
     obj.edit90:setLeft(300);
     obj.edit90:setTop(0);
@@ -6794,7 +6794,7 @@ function newfrmMageDarkAges()
     obj.edit90:setField("costy_f5");
     obj.edit90:setName("edit90");
 
-    obj.layout120 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout120 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout120:setParent(obj.layout114);
     obj.layout120:setLeft(15);
     obj.layout120:setTop(150);
@@ -6802,7 +6802,7 @@ function newfrmMageDarkAges()
     obj.layout120:setHeight(25);
     obj.layout120:setName("layout120");
 
-    obj.edit91 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit91 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit91:setParent(obj.layout120);
     obj.edit91:setLeft(0);
     obj.edit91:setTop(0);
@@ -6811,7 +6811,7 @@ function newfrmMageDarkAges()
     obj.edit91:setField("merit_f6");
     obj.edit91:setName("edit91");
 
-    obj.edit92 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit92 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit92:setParent(obj.layout120);
     obj.edit92:setLeft(200);
     obj.edit92:setTop(0);
@@ -6820,7 +6820,7 @@ function newfrmMageDarkAges()
     obj.edit92:setField("type_f6");
     obj.edit92:setName("edit92");
 
-    obj.edit93 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit93 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit93:setParent(obj.layout120);
     obj.edit93:setLeft(300);
     obj.edit93:setTop(0);
@@ -6829,7 +6829,7 @@ function newfrmMageDarkAges()
     obj.edit93:setField("costy_f6");
     obj.edit93:setName("edit93");
 
-    obj.layout121 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout121 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout121:setParent(obj.layout114);
     obj.layout121:setLeft(15);
     obj.layout121:setTop(175);
@@ -6837,7 +6837,7 @@ function newfrmMageDarkAges()
     obj.layout121:setHeight(25);
     obj.layout121:setName("layout121");
 
-    obj.edit94 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit94 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit94:setParent(obj.layout121);
     obj.edit94:setLeft(0);
     obj.edit94:setTop(0);
@@ -6846,7 +6846,7 @@ function newfrmMageDarkAges()
     obj.edit94:setField("merit_f7");
     obj.edit94:setName("edit94");
 
-    obj.edit95 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit95 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit95:setParent(obj.layout121);
     obj.edit95:setLeft(200);
     obj.edit95:setTop(0);
@@ -6855,7 +6855,7 @@ function newfrmMageDarkAges()
     obj.edit95:setField("type_f7");
     obj.edit95:setName("edit95");
 
-    obj.edit96 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit96 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit96:setParent(obj.layout121);
     obj.edit96:setLeft(300);
     obj.edit96:setTop(0);
@@ -6864,7 +6864,7 @@ function newfrmMageDarkAges()
     obj.edit96:setField("costy_f7");
     obj.edit96:setName("edit96");
 
-    obj.layout122 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout122 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout122:setParent(obj.layout114);
     obj.layout122:setLeft(15);
     obj.layout122:setTop(200);
@@ -6872,7 +6872,7 @@ function newfrmMageDarkAges()
     obj.layout122:setHeight(25);
     obj.layout122:setName("layout122");
 
-    obj.edit97 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit97 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit97:setParent(obj.layout122);
     obj.edit97:setLeft(0);
     obj.edit97:setTop(0);
@@ -6881,7 +6881,7 @@ function newfrmMageDarkAges()
     obj.edit97:setField("merit_f8");
     obj.edit97:setName("edit97");
 
-    obj.edit98 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit98 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit98:setParent(obj.layout122);
     obj.edit98:setLeft(200);
     obj.edit98:setTop(0);
@@ -6890,7 +6890,7 @@ function newfrmMageDarkAges()
     obj.edit98:setField("type_f8");
     obj.edit98:setName("edit98");
 
-    obj.edit99 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit99 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit99:setParent(obj.layout122);
     obj.edit99:setLeft(300);
     obj.edit99:setTop(0);
@@ -6899,7 +6899,7 @@ function newfrmMageDarkAges()
     obj.edit99:setField("costy_f8");
     obj.edit99:setName("edit99");
 
-    obj.layout123 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout123 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout123:setParent(obj.scrollBox2);
     obj.layout123:setLeft(810);
     obj.layout123:setTop(365);
@@ -6907,7 +6907,7 @@ function newfrmMageDarkAges()
     obj.layout123:setHeight(135);
     obj.layout123:setName("layout123");
 
-    obj.rectangle21 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle21:setParent(obj.layout123);
     obj.rectangle21:setAlign("client");
     obj.rectangle21:setColor("black");
@@ -6916,7 +6916,7 @@ function newfrmMageDarkAges()
     obj.rectangle21:setCornerType("innerLine");
     obj.rectangle21:setName("rectangle21");
 
-    obj.label76 = gui.fromHandle(_obj_newObject("label"));
+    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
     obj.label76:setParent(obj.layout123);
     obj.label76:setLeft(5);
     obj.label76:setTop(0);
@@ -6926,7 +6926,7 @@ function newfrmMageDarkAges()
     obj.label76:setHorzTextAlign("center");
     obj.label76:setName("label76");
 
-    obj.layout124 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout124 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout124:setParent(obj.layout123);
     obj.layout124:setLeft(15);
     obj.layout124:setTop(25);
@@ -6934,7 +6934,7 @@ function newfrmMageDarkAges()
     obj.layout124:setHeight(25);
     obj.layout124:setName("layout124");
 
-    obj.edit100 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit100 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit100:setParent(obj.layout124);
     obj.edit100:setLeft(0);
     obj.edit100:setTop(5);
@@ -6944,7 +6944,7 @@ function newfrmMageDarkAges()
     obj.edit100:setFontSize(12);
     obj.edit100:setName("edit100");
 
-    obj.imageCheckBox322 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox322 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox322:setParent(obj.layout124);
     obj.imageCheckBox322:setLeft(100);
     obj.imageCheckBox322:setTop(0);
@@ -6955,7 +6955,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox322:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox322:setName("imageCheckBox322");
 
-    obj.imageCheckBox323 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox323 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox323:setParent(obj.layout124);
     obj.imageCheckBox323:setLeft(125);
     obj.imageCheckBox323:setTop(0);
@@ -6966,7 +6966,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox323:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox323:setName("imageCheckBox323");
 
-    obj.imageCheckBox324 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox324 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox324:setParent(obj.layout124);
     obj.imageCheckBox324:setLeft(150);
     obj.imageCheckBox324:setTop(0);
@@ -6977,7 +6977,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox324:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox324:setName("imageCheckBox324");
 
-    obj.imageCheckBox325 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox325 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox325:setParent(obj.layout124);
     obj.imageCheckBox325:setLeft(175);
     obj.imageCheckBox325:setTop(0);
@@ -6988,7 +6988,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox325:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox325:setName("imageCheckBox325");
 
-    obj.imageCheckBox326 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox326 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox326:setParent(obj.layout124);
     obj.imageCheckBox326:setLeft(200);
     obj.imageCheckBox326:setTop(0);
@@ -6999,7 +6999,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox326:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox326:setName("imageCheckBox326");
 
-    obj.layout125 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout125 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout125:setParent(obj.layout123);
     obj.layout125:setLeft(15);
     obj.layout125:setTop(50);
@@ -7007,7 +7007,7 @@ function newfrmMageDarkAges()
     obj.layout125:setHeight(25);
     obj.layout125:setName("layout125");
 
-    obj.edit101 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit101 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit101:setParent(obj.layout125);
     obj.edit101:setLeft(0);
     obj.edit101:setTop(5);
@@ -7017,7 +7017,7 @@ function newfrmMageDarkAges()
     obj.edit101:setFontSize(12);
     obj.edit101:setName("edit101");
 
-    obj.imageCheckBox327 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox327 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox327:setParent(obj.layout125);
     obj.imageCheckBox327:setLeft(100);
     obj.imageCheckBox327:setTop(0);
@@ -7028,7 +7028,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox327:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox327:setName("imageCheckBox327");
 
-    obj.imageCheckBox328 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox328 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox328:setParent(obj.layout125);
     obj.imageCheckBox328:setLeft(125);
     obj.imageCheckBox328:setTop(0);
@@ -7039,7 +7039,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox328:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox328:setName("imageCheckBox328");
 
-    obj.imageCheckBox329 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox329 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox329:setParent(obj.layout125);
     obj.imageCheckBox329:setLeft(150);
     obj.imageCheckBox329:setTop(0);
@@ -7050,7 +7050,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox329:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox329:setName("imageCheckBox329");
 
-    obj.imageCheckBox330 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox330 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox330:setParent(obj.layout125);
     obj.imageCheckBox330:setLeft(175);
     obj.imageCheckBox330:setTop(0);
@@ -7061,7 +7061,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox330:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox330:setName("imageCheckBox330");
 
-    obj.imageCheckBox331 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox331 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox331:setParent(obj.layout125);
     obj.imageCheckBox331:setLeft(200);
     obj.imageCheckBox331:setTop(0);
@@ -7072,7 +7072,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox331:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox331:setName("imageCheckBox331");
 
-    obj.layout126 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout126 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout126:setParent(obj.layout123);
     obj.layout126:setLeft(15);
     obj.layout126:setTop(75);
@@ -7080,7 +7080,7 @@ function newfrmMageDarkAges()
     obj.layout126:setHeight(25);
     obj.layout126:setName("layout126");
 
-    obj.edit102 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit102 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit102:setParent(obj.layout126);
     obj.edit102:setLeft(0);
     obj.edit102:setTop(5);
@@ -7090,7 +7090,7 @@ function newfrmMageDarkAges()
     obj.edit102:setFontSize(12);
     obj.edit102:setName("edit102");
 
-    obj.imageCheckBox332 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox332 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox332:setParent(obj.layout126);
     obj.imageCheckBox332:setLeft(100);
     obj.imageCheckBox332:setTop(0);
@@ -7101,7 +7101,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox332:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox332:setName("imageCheckBox332");
 
-    obj.imageCheckBox333 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox333 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox333:setParent(obj.layout126);
     obj.imageCheckBox333:setLeft(125);
     obj.imageCheckBox333:setTop(0);
@@ -7112,7 +7112,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox333:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox333:setName("imageCheckBox333");
 
-    obj.imageCheckBox334 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox334 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox334:setParent(obj.layout126);
     obj.imageCheckBox334:setLeft(150);
     obj.imageCheckBox334:setTop(0);
@@ -7123,7 +7123,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox334:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox334:setName("imageCheckBox334");
 
-    obj.imageCheckBox335 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox335 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox335:setParent(obj.layout126);
     obj.imageCheckBox335:setLeft(175);
     obj.imageCheckBox335:setTop(0);
@@ -7134,7 +7134,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox335:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox335:setName("imageCheckBox335");
 
-    obj.imageCheckBox336 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox336 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox336:setParent(obj.layout126);
     obj.imageCheckBox336:setLeft(200);
     obj.imageCheckBox336:setTop(0);
@@ -7145,7 +7145,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox336:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox336:setName("imageCheckBox336");
 
-    obj.layout127 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout127 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout127:setParent(obj.layout123);
     obj.layout127:setLeft(15);
     obj.layout127:setTop(100);
@@ -7153,7 +7153,7 @@ function newfrmMageDarkAges()
     obj.layout127:setHeight(25);
     obj.layout127:setName("layout127");
 
-    obj.edit103 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit103 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit103:setParent(obj.layout127);
     obj.edit103:setLeft(0);
     obj.edit103:setTop(5);
@@ -7163,7 +7163,7 @@ function newfrmMageDarkAges()
     obj.edit103:setFontSize(12);
     obj.edit103:setName("edit103");
 
-    obj.imageCheckBox337 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox337 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox337:setParent(obj.layout127);
     obj.imageCheckBox337:setLeft(100);
     obj.imageCheckBox337:setTop(0);
@@ -7174,7 +7174,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox337:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox337:setName("imageCheckBox337");
 
-    obj.imageCheckBox338 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox338 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox338:setParent(obj.layout127);
     obj.imageCheckBox338:setLeft(125);
     obj.imageCheckBox338:setTop(0);
@@ -7185,7 +7185,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox338:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox338:setName("imageCheckBox338");
 
-    obj.imageCheckBox339 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox339 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox339:setParent(obj.layout127);
     obj.imageCheckBox339:setLeft(150);
     obj.imageCheckBox339:setTop(0);
@@ -7196,7 +7196,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox339:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox339:setName("imageCheckBox339");
 
-    obj.imageCheckBox340 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox340 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox340:setParent(obj.layout127);
     obj.imageCheckBox340:setLeft(175);
     obj.imageCheckBox340:setTop(0);
@@ -7207,7 +7207,7 @@ function newfrmMageDarkAges()
     obj.imageCheckBox340:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox340:setName("imageCheckBox340");
 
-    obj.imageCheckBox341 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox341 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox341:setParent(obj.layout127);
     obj.imageCheckBox341:setLeft(200);
     obj.imageCheckBox341:setTop(0);
@@ -7218,23 +7218,23 @@ function newfrmMageDarkAges()
     obj.imageCheckBox341:setImageUnchecked("/MageDarkAges/images/prime_off.png");
     obj.imageCheckBox341:setName("imageCheckBox341");
 
-    obj.tab3 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab3 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab3:setParent(obj.tabControl1);
     obj.tab3:setTitle("Inventory");
     obj.tab3:setName("tab3");
 
-    obj.frmMDA20_3 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmMDA20_3 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmMDA20_3:setParent(obj.tab3);
     obj.frmMDA20_3:setName("frmMDA20_3");
     obj.frmMDA20_3:setAlign("client");
     obj.frmMDA20_3:setTheme("dark");
 
-    obj.scrollBox3 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox3 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox3:setParent(obj.frmMDA20_3);
     obj.scrollBox3:setAlign("client");
     obj.scrollBox3:setName("scrollBox3");
 
-    obj.layout128 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout128 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout128:setParent(obj.scrollBox3);
     obj.layout128:setLeft(0);
     obj.layout128:setTop(0);
@@ -7242,7 +7242,7 @@ function newfrmMageDarkAges()
     obj.layout128:setHeight(330);
     obj.layout128:setName("layout128");
 
-    obj.rectangle22 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle22 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle22:setParent(obj.layout128);
     obj.rectangle22:setAlign("client");
     obj.rectangle22:setColor("black");
@@ -7251,7 +7251,7 @@ function newfrmMageDarkAges()
     obj.rectangle22:setCornerType("innerLine");
     obj.rectangle22:setName("rectangle22");
 
-    obj.label77 = gui.fromHandle(_obj_newObject("label"));
+    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
     obj.label77:setParent(obj.layout128);
     obj.label77:setLeft(0);
     obj.label77:setTop(0);
@@ -7261,7 +7261,7 @@ function newfrmMageDarkAges()
     obj.label77:setHorzTextAlign("center");
     obj.label77:setName("label77");
 
-    obj.label78 = gui.fromHandle(_obj_newObject("label"));
+    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
     obj.label78:setParent(obj.layout128);
     obj.label78:setLeft(15);
     obj.label78:setTop(25);
@@ -7270,7 +7270,7 @@ function newfrmMageDarkAges()
     obj.label78:setText("Weapon/Attack                                          Roll              Diff.    Damage   Range     Rate        Clip    Conceal");
     obj.label78:setName("label78");
 
-    obj.layout129 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout129 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout129:setParent(obj.layout128);
     obj.layout129:setLeft(15);
     obj.layout129:setTop(50);
@@ -7278,7 +7278,7 @@ function newfrmMageDarkAges()
     obj.layout129:setHeight(25);
     obj.layout129:setName("layout129");
 
-    obj.edit104 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit104 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit104:setParent(obj.layout129);
     obj.edit104:setLeft(0);
     obj.edit104:setTop(0);
@@ -7287,7 +7287,7 @@ function newfrmMageDarkAges()
     obj.edit104:setField("attack_1");
     obj.edit104:setName("edit104");
 
-    obj.edit105 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit105 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit105:setParent(obj.layout129);
     obj.edit105:setLeft(200);
     obj.edit105:setTop(0);
@@ -7296,7 +7296,7 @@ function newfrmMageDarkAges()
     obj.edit105:setField("roll_1");
     obj.edit105:setName("edit105");
 
-    obj.edit106 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit106 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit106:setParent(obj.layout129);
     obj.edit106:setLeft(300);
     obj.edit106:setTop(0);
@@ -7305,7 +7305,7 @@ function newfrmMageDarkAges()
     obj.edit106:setField("difficulty_1");
     obj.edit106:setName("edit106");
 
-    obj.edit107 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit107 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit107:setParent(obj.layout129);
     obj.edit107:setLeft(350);
     obj.edit107:setTop(0);
@@ -7314,7 +7314,7 @@ function newfrmMageDarkAges()
     obj.edit107:setField("damage_1");
     obj.edit107:setName("edit107");
 
-    obj.edit108 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit108 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit108:setParent(obj.layout129);
     obj.edit108:setLeft(400);
     obj.edit108:setTop(0);
@@ -7323,7 +7323,7 @@ function newfrmMageDarkAges()
     obj.edit108:setField("range_1");
     obj.edit108:setName("edit108");
 
-    obj.edit109 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit109 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit109:setParent(obj.layout129);
     obj.edit109:setLeft(450);
     obj.edit109:setTop(0);
@@ -7332,7 +7332,7 @@ function newfrmMageDarkAges()
     obj.edit109:setField("rate_1");
     obj.edit109:setName("edit109");
 
-    obj.edit110 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit110 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit110:setParent(obj.layout129);
     obj.edit110:setLeft(500);
     obj.edit110:setTop(0);
@@ -7341,7 +7341,7 @@ function newfrmMageDarkAges()
     obj.edit110:setField("clip_1");
     obj.edit110:setName("edit110");
 
-    obj.edit111 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit111 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit111:setParent(obj.layout129);
     obj.edit111:setLeft(550);
     obj.edit111:setTop(0);
@@ -7350,7 +7350,7 @@ function newfrmMageDarkAges()
     obj.edit111:setField("conceal_1");
     obj.edit111:setName("edit111");
 
-    obj.layout130 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout130 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout130:setParent(obj.layout128);
     obj.layout130:setLeft(15);
     obj.layout130:setTop(75);
@@ -7358,7 +7358,7 @@ function newfrmMageDarkAges()
     obj.layout130:setHeight(25);
     obj.layout130:setName("layout130");
 
-    obj.edit112 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit112 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit112:setParent(obj.layout130);
     obj.edit112:setLeft(0);
     obj.edit112:setTop(0);
@@ -7367,7 +7367,7 @@ function newfrmMageDarkAges()
     obj.edit112:setField("attack_2");
     obj.edit112:setName("edit112");
 
-    obj.edit113 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit113 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit113:setParent(obj.layout130);
     obj.edit113:setLeft(200);
     obj.edit113:setTop(0);
@@ -7376,7 +7376,7 @@ function newfrmMageDarkAges()
     obj.edit113:setField("roll_2");
     obj.edit113:setName("edit113");
 
-    obj.edit114 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit114 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit114:setParent(obj.layout130);
     obj.edit114:setLeft(300);
     obj.edit114:setTop(0);
@@ -7385,7 +7385,7 @@ function newfrmMageDarkAges()
     obj.edit114:setField("difficulty_2");
     obj.edit114:setName("edit114");
 
-    obj.edit115 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit115 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit115:setParent(obj.layout130);
     obj.edit115:setLeft(350);
     obj.edit115:setTop(0);
@@ -7394,7 +7394,7 @@ function newfrmMageDarkAges()
     obj.edit115:setField("damage_2");
     obj.edit115:setName("edit115");
 
-    obj.edit116 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit116 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit116:setParent(obj.layout130);
     obj.edit116:setLeft(400);
     obj.edit116:setTop(0);
@@ -7403,7 +7403,7 @@ function newfrmMageDarkAges()
     obj.edit116:setField("range_2");
     obj.edit116:setName("edit116");
 
-    obj.edit117 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit117 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit117:setParent(obj.layout130);
     obj.edit117:setLeft(450);
     obj.edit117:setTop(0);
@@ -7412,7 +7412,7 @@ function newfrmMageDarkAges()
     obj.edit117:setField("rate_2");
     obj.edit117:setName("edit117");
 
-    obj.edit118 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit118 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit118:setParent(obj.layout130);
     obj.edit118:setLeft(500);
     obj.edit118:setTop(0);
@@ -7421,7 +7421,7 @@ function newfrmMageDarkAges()
     obj.edit118:setField("clip_2");
     obj.edit118:setName("edit118");
 
-    obj.edit119 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit119 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit119:setParent(obj.layout130);
     obj.edit119:setLeft(550);
     obj.edit119:setTop(0);
@@ -7430,7 +7430,7 @@ function newfrmMageDarkAges()
     obj.edit119:setField("conceal_2");
     obj.edit119:setName("edit119");
 
-    obj.layout131 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout131 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout131:setParent(obj.layout128);
     obj.layout131:setLeft(15);
     obj.layout131:setTop(100);
@@ -7438,7 +7438,7 @@ function newfrmMageDarkAges()
     obj.layout131:setHeight(25);
     obj.layout131:setName("layout131");
 
-    obj.edit120 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit120 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit120:setParent(obj.layout131);
     obj.edit120:setLeft(0);
     obj.edit120:setTop(0);
@@ -7447,7 +7447,7 @@ function newfrmMageDarkAges()
     obj.edit120:setField("attack_3");
     obj.edit120:setName("edit120");
 
-    obj.edit121 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit121 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit121:setParent(obj.layout131);
     obj.edit121:setLeft(200);
     obj.edit121:setTop(0);
@@ -7456,7 +7456,7 @@ function newfrmMageDarkAges()
     obj.edit121:setField("roll_3");
     obj.edit121:setName("edit121");
 
-    obj.edit122 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit122 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit122:setParent(obj.layout131);
     obj.edit122:setLeft(300);
     obj.edit122:setTop(0);
@@ -7465,7 +7465,7 @@ function newfrmMageDarkAges()
     obj.edit122:setField("difficulty_3");
     obj.edit122:setName("edit122");
 
-    obj.edit123 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit123 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit123:setParent(obj.layout131);
     obj.edit123:setLeft(350);
     obj.edit123:setTop(0);
@@ -7474,7 +7474,7 @@ function newfrmMageDarkAges()
     obj.edit123:setField("damage_3");
     obj.edit123:setName("edit123");
 
-    obj.edit124 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit124 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit124:setParent(obj.layout131);
     obj.edit124:setLeft(400);
     obj.edit124:setTop(0);
@@ -7483,7 +7483,7 @@ function newfrmMageDarkAges()
     obj.edit124:setField("range_3");
     obj.edit124:setName("edit124");
 
-    obj.edit125 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit125 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit125:setParent(obj.layout131);
     obj.edit125:setLeft(450);
     obj.edit125:setTop(0);
@@ -7492,7 +7492,7 @@ function newfrmMageDarkAges()
     obj.edit125:setField("rate_3");
     obj.edit125:setName("edit125");
 
-    obj.edit126 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit126 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit126:setParent(obj.layout131);
     obj.edit126:setLeft(500);
     obj.edit126:setTop(0);
@@ -7501,7 +7501,7 @@ function newfrmMageDarkAges()
     obj.edit126:setField("clip_3");
     obj.edit126:setName("edit126");
 
-    obj.edit127 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit127 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit127:setParent(obj.layout131);
     obj.edit127:setLeft(550);
     obj.edit127:setTop(0);
@@ -7510,7 +7510,7 @@ function newfrmMageDarkAges()
     obj.edit127:setField("conceal_3");
     obj.edit127:setName("edit127");
 
-    obj.layout132 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout132 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout132:setParent(obj.layout128);
     obj.layout132:setLeft(15);
     obj.layout132:setTop(125);
@@ -7518,7 +7518,7 @@ function newfrmMageDarkAges()
     obj.layout132:setHeight(25);
     obj.layout132:setName("layout132");
 
-    obj.edit128 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit128 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit128:setParent(obj.layout132);
     obj.edit128:setLeft(0);
     obj.edit128:setTop(0);
@@ -7527,7 +7527,7 @@ function newfrmMageDarkAges()
     obj.edit128:setField("attack_4");
     obj.edit128:setName("edit128");
 
-    obj.edit129 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit129 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit129:setParent(obj.layout132);
     obj.edit129:setLeft(200);
     obj.edit129:setTop(0);
@@ -7536,7 +7536,7 @@ function newfrmMageDarkAges()
     obj.edit129:setField("roll_4");
     obj.edit129:setName("edit129");
 
-    obj.edit130 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit130 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit130:setParent(obj.layout132);
     obj.edit130:setLeft(300);
     obj.edit130:setTop(0);
@@ -7545,7 +7545,7 @@ function newfrmMageDarkAges()
     obj.edit130:setField("difficulty_4");
     obj.edit130:setName("edit130");
 
-    obj.edit131 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit131 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit131:setParent(obj.layout132);
     obj.edit131:setLeft(350);
     obj.edit131:setTop(0);
@@ -7554,7 +7554,7 @@ function newfrmMageDarkAges()
     obj.edit131:setField("damage_4");
     obj.edit131:setName("edit131");
 
-    obj.edit132 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit132 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit132:setParent(obj.layout132);
     obj.edit132:setLeft(400);
     obj.edit132:setTop(0);
@@ -7563,7 +7563,7 @@ function newfrmMageDarkAges()
     obj.edit132:setField("range_4");
     obj.edit132:setName("edit132");
 
-    obj.edit133 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit133 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit133:setParent(obj.layout132);
     obj.edit133:setLeft(450);
     obj.edit133:setTop(0);
@@ -7572,7 +7572,7 @@ function newfrmMageDarkAges()
     obj.edit133:setField("rate_4");
     obj.edit133:setName("edit133");
 
-    obj.edit134 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit134 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit134:setParent(obj.layout132);
     obj.edit134:setLeft(500);
     obj.edit134:setTop(0);
@@ -7581,7 +7581,7 @@ function newfrmMageDarkAges()
     obj.edit134:setField("clip_4");
     obj.edit134:setName("edit134");
 
-    obj.edit135 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit135 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit135:setParent(obj.layout132);
     obj.edit135:setLeft(550);
     obj.edit135:setTop(0);
@@ -7590,7 +7590,7 @@ function newfrmMageDarkAges()
     obj.edit135:setField("conceal_4");
     obj.edit135:setName("edit135");
 
-    obj.layout133 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout133 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout133:setParent(obj.layout128);
     obj.layout133:setLeft(15);
     obj.layout133:setTop(150);
@@ -7598,7 +7598,7 @@ function newfrmMageDarkAges()
     obj.layout133:setHeight(25);
     obj.layout133:setName("layout133");
 
-    obj.edit136 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit136 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit136:setParent(obj.layout133);
     obj.edit136:setLeft(0);
     obj.edit136:setTop(0);
@@ -7607,7 +7607,7 @@ function newfrmMageDarkAges()
     obj.edit136:setField("attack_5");
     obj.edit136:setName("edit136");
 
-    obj.edit137 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit137 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit137:setParent(obj.layout133);
     obj.edit137:setLeft(200);
     obj.edit137:setTop(0);
@@ -7616,7 +7616,7 @@ function newfrmMageDarkAges()
     obj.edit137:setField("roll_5");
     obj.edit137:setName("edit137");
 
-    obj.edit138 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit138 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit138:setParent(obj.layout133);
     obj.edit138:setLeft(300);
     obj.edit138:setTop(0);
@@ -7625,7 +7625,7 @@ function newfrmMageDarkAges()
     obj.edit138:setField("difficulty_5");
     obj.edit138:setName("edit138");
 
-    obj.edit139 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit139 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit139:setParent(obj.layout133);
     obj.edit139:setLeft(350);
     obj.edit139:setTop(0);
@@ -7634,7 +7634,7 @@ function newfrmMageDarkAges()
     obj.edit139:setField("damage_5");
     obj.edit139:setName("edit139");
 
-    obj.edit140 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit140 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit140:setParent(obj.layout133);
     obj.edit140:setLeft(400);
     obj.edit140:setTop(0);
@@ -7643,7 +7643,7 @@ function newfrmMageDarkAges()
     obj.edit140:setField("range_5");
     obj.edit140:setName("edit140");
 
-    obj.edit141 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit141 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit141:setParent(obj.layout133);
     obj.edit141:setLeft(450);
     obj.edit141:setTop(0);
@@ -7652,7 +7652,7 @@ function newfrmMageDarkAges()
     obj.edit141:setField("rate_5");
     obj.edit141:setName("edit141");
 
-    obj.edit142 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit142 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit142:setParent(obj.layout133);
     obj.edit142:setLeft(500);
     obj.edit142:setTop(0);
@@ -7661,7 +7661,7 @@ function newfrmMageDarkAges()
     obj.edit142:setField("clip_5");
     obj.edit142:setName("edit142");
 
-    obj.edit143 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit143 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit143:setParent(obj.layout133);
     obj.edit143:setLeft(550);
     obj.edit143:setTop(0);
@@ -7670,7 +7670,7 @@ function newfrmMageDarkAges()
     obj.edit143:setField("conceal_5");
     obj.edit143:setName("edit143");
 
-    obj.layout134 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout134 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout134:setParent(obj.layout128);
     obj.layout134:setLeft(15);
     obj.layout134:setTop(175);
@@ -7678,7 +7678,7 @@ function newfrmMageDarkAges()
     obj.layout134:setHeight(25);
     obj.layout134:setName("layout134");
 
-    obj.edit144 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit144 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit144:setParent(obj.layout134);
     obj.edit144:setLeft(0);
     obj.edit144:setTop(0);
@@ -7687,7 +7687,7 @@ function newfrmMageDarkAges()
     obj.edit144:setField("attack_6");
     obj.edit144:setName("edit144");
 
-    obj.edit145 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit145 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit145:setParent(obj.layout134);
     obj.edit145:setLeft(200);
     obj.edit145:setTop(0);
@@ -7696,7 +7696,7 @@ function newfrmMageDarkAges()
     obj.edit145:setField("roll_6");
     obj.edit145:setName("edit145");
 
-    obj.edit146 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit146 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit146:setParent(obj.layout134);
     obj.edit146:setLeft(300);
     obj.edit146:setTop(0);
@@ -7705,7 +7705,7 @@ function newfrmMageDarkAges()
     obj.edit146:setField("difficulty_6");
     obj.edit146:setName("edit146");
 
-    obj.edit147 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit147 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit147:setParent(obj.layout134);
     obj.edit147:setLeft(350);
     obj.edit147:setTop(0);
@@ -7714,7 +7714,7 @@ function newfrmMageDarkAges()
     obj.edit147:setField("damage_6");
     obj.edit147:setName("edit147");
 
-    obj.edit148 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit148 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit148:setParent(obj.layout134);
     obj.edit148:setLeft(400);
     obj.edit148:setTop(0);
@@ -7723,7 +7723,7 @@ function newfrmMageDarkAges()
     obj.edit148:setField("range_6");
     obj.edit148:setName("edit148");
 
-    obj.edit149 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit149 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit149:setParent(obj.layout134);
     obj.edit149:setLeft(450);
     obj.edit149:setTop(0);
@@ -7732,7 +7732,7 @@ function newfrmMageDarkAges()
     obj.edit149:setField("rate_6");
     obj.edit149:setName("edit149");
 
-    obj.edit150 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit150 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit150:setParent(obj.layout134);
     obj.edit150:setLeft(500);
     obj.edit150:setTop(0);
@@ -7741,7 +7741,7 @@ function newfrmMageDarkAges()
     obj.edit150:setField("clip_6");
     obj.edit150:setName("edit150");
 
-    obj.edit151 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit151 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit151:setParent(obj.layout134);
     obj.edit151:setLeft(550);
     obj.edit151:setTop(0);
@@ -7750,7 +7750,7 @@ function newfrmMageDarkAges()
     obj.edit151:setField("conceal_6");
     obj.edit151:setName("edit151");
 
-    obj.layout135 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout135 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout135:setParent(obj.layout128);
     obj.layout135:setLeft(15);
     obj.layout135:setTop(200);
@@ -7758,7 +7758,7 @@ function newfrmMageDarkAges()
     obj.layout135:setHeight(25);
     obj.layout135:setName("layout135");
 
-    obj.edit152 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit152 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit152:setParent(obj.layout135);
     obj.edit152:setLeft(0);
     obj.edit152:setTop(0);
@@ -7767,7 +7767,7 @@ function newfrmMageDarkAges()
     obj.edit152:setField("attack_7");
     obj.edit152:setName("edit152");
 
-    obj.edit153 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit153 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit153:setParent(obj.layout135);
     obj.edit153:setLeft(200);
     obj.edit153:setTop(0);
@@ -7776,7 +7776,7 @@ function newfrmMageDarkAges()
     obj.edit153:setField("roll_7");
     obj.edit153:setName("edit153");
 
-    obj.edit154 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit154 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit154:setParent(obj.layout135);
     obj.edit154:setLeft(300);
     obj.edit154:setTop(0);
@@ -7785,7 +7785,7 @@ function newfrmMageDarkAges()
     obj.edit154:setField("difficulty_7");
     obj.edit154:setName("edit154");
 
-    obj.edit155 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit155 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit155:setParent(obj.layout135);
     obj.edit155:setLeft(350);
     obj.edit155:setTop(0);
@@ -7794,7 +7794,7 @@ function newfrmMageDarkAges()
     obj.edit155:setField("damage_7");
     obj.edit155:setName("edit155");
 
-    obj.edit156 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit156 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit156:setParent(obj.layout135);
     obj.edit156:setLeft(400);
     obj.edit156:setTop(0);
@@ -7803,7 +7803,7 @@ function newfrmMageDarkAges()
     obj.edit156:setField("range_7");
     obj.edit156:setName("edit156");
 
-    obj.edit157 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit157 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit157:setParent(obj.layout135);
     obj.edit157:setLeft(450);
     obj.edit157:setTop(0);
@@ -7812,7 +7812,7 @@ function newfrmMageDarkAges()
     obj.edit157:setField("rate_7");
     obj.edit157:setName("edit157");
 
-    obj.edit158 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit158 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit158:setParent(obj.layout135);
     obj.edit158:setLeft(500);
     obj.edit158:setTop(0);
@@ -7821,7 +7821,7 @@ function newfrmMageDarkAges()
     obj.edit158:setField("clip_7");
     obj.edit158:setName("edit158");
 
-    obj.edit159 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit159 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit159:setParent(obj.layout135);
     obj.edit159:setLeft(550);
     obj.edit159:setTop(0);
@@ -7830,7 +7830,7 @@ function newfrmMageDarkAges()
     obj.edit159:setField("conceal_7");
     obj.edit159:setName("edit159");
 
-    obj.layout136 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout136 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout136:setParent(obj.layout128);
     obj.layout136:setLeft(15);
     obj.layout136:setTop(225);
@@ -7838,7 +7838,7 @@ function newfrmMageDarkAges()
     obj.layout136:setHeight(25);
     obj.layout136:setName("layout136");
 
-    obj.edit160 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit160 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit160:setParent(obj.layout136);
     obj.edit160:setLeft(0);
     obj.edit160:setTop(0);
@@ -7847,7 +7847,7 @@ function newfrmMageDarkAges()
     obj.edit160:setField("attack_8");
     obj.edit160:setName("edit160");
 
-    obj.edit161 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit161 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit161:setParent(obj.layout136);
     obj.edit161:setLeft(200);
     obj.edit161:setTop(0);
@@ -7856,7 +7856,7 @@ function newfrmMageDarkAges()
     obj.edit161:setField("roll_8");
     obj.edit161:setName("edit161");
 
-    obj.edit162 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit162 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit162:setParent(obj.layout136);
     obj.edit162:setLeft(300);
     obj.edit162:setTop(0);
@@ -7865,7 +7865,7 @@ function newfrmMageDarkAges()
     obj.edit162:setField("difficulty_8");
     obj.edit162:setName("edit162");
 
-    obj.edit163 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit163 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit163:setParent(obj.layout136);
     obj.edit163:setLeft(350);
     obj.edit163:setTop(0);
@@ -7874,7 +7874,7 @@ function newfrmMageDarkAges()
     obj.edit163:setField("damage_8");
     obj.edit163:setName("edit163");
 
-    obj.edit164 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit164 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit164:setParent(obj.layout136);
     obj.edit164:setLeft(400);
     obj.edit164:setTop(0);
@@ -7883,7 +7883,7 @@ function newfrmMageDarkAges()
     obj.edit164:setField("range_8");
     obj.edit164:setName("edit164");
 
-    obj.edit165 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit165 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit165:setParent(obj.layout136);
     obj.edit165:setLeft(450);
     obj.edit165:setTop(0);
@@ -7892,7 +7892,7 @@ function newfrmMageDarkAges()
     obj.edit165:setField("rate_8");
     obj.edit165:setName("edit165");
 
-    obj.edit166 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit166 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit166:setParent(obj.layout136);
     obj.edit166:setLeft(500);
     obj.edit166:setTop(0);
@@ -7901,7 +7901,7 @@ function newfrmMageDarkAges()
     obj.edit166:setField("clip_8");
     obj.edit166:setName("edit166");
 
-    obj.edit167 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit167 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit167:setParent(obj.layout136);
     obj.edit167:setLeft(550);
     obj.edit167:setTop(0);
@@ -7910,7 +7910,7 @@ function newfrmMageDarkAges()
     obj.edit167:setField("conceal_8");
     obj.edit167:setName("edit167");
 
-    obj.layout137 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout137 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout137:setParent(obj.layout128);
     obj.layout137:setLeft(15);
     obj.layout137:setTop(250);
@@ -7918,7 +7918,7 @@ function newfrmMageDarkAges()
     obj.layout137:setHeight(25);
     obj.layout137:setName("layout137");
 
-    obj.edit168 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit168 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit168:setParent(obj.layout137);
     obj.edit168:setLeft(0);
     obj.edit168:setTop(0);
@@ -7927,7 +7927,7 @@ function newfrmMageDarkAges()
     obj.edit168:setField("attack_9");
     obj.edit168:setName("edit168");
 
-    obj.edit169 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit169 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit169:setParent(obj.layout137);
     obj.edit169:setLeft(200);
     obj.edit169:setTop(0);
@@ -7936,7 +7936,7 @@ function newfrmMageDarkAges()
     obj.edit169:setField("roll_9");
     obj.edit169:setName("edit169");
 
-    obj.edit170 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit170 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit170:setParent(obj.layout137);
     obj.edit170:setLeft(300);
     obj.edit170:setTop(0);
@@ -7945,7 +7945,7 @@ function newfrmMageDarkAges()
     obj.edit170:setField("difficulty_9");
     obj.edit170:setName("edit170");
 
-    obj.edit171 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit171 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit171:setParent(obj.layout137);
     obj.edit171:setLeft(350);
     obj.edit171:setTop(0);
@@ -7954,7 +7954,7 @@ function newfrmMageDarkAges()
     obj.edit171:setField("damage_9");
     obj.edit171:setName("edit171");
 
-    obj.edit172 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit172 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit172:setParent(obj.layout137);
     obj.edit172:setLeft(400);
     obj.edit172:setTop(0);
@@ -7963,7 +7963,7 @@ function newfrmMageDarkAges()
     obj.edit172:setField("range_9");
     obj.edit172:setName("edit172");
 
-    obj.edit173 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit173 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit173:setParent(obj.layout137);
     obj.edit173:setLeft(450);
     obj.edit173:setTop(0);
@@ -7972,7 +7972,7 @@ function newfrmMageDarkAges()
     obj.edit173:setField("rate_9");
     obj.edit173:setName("edit173");
 
-    obj.edit174 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit174 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit174:setParent(obj.layout137);
     obj.edit174:setLeft(500);
     obj.edit174:setTop(0);
@@ -7981,7 +7981,7 @@ function newfrmMageDarkAges()
     obj.edit174:setField("clip_9");
     obj.edit174:setName("edit174");
 
-    obj.edit175 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit175 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit175:setParent(obj.layout137);
     obj.edit175:setLeft(550);
     obj.edit175:setTop(0);
@@ -7990,7 +7990,7 @@ function newfrmMageDarkAges()
     obj.edit175:setField("conceal_9");
     obj.edit175:setName("edit175");
 
-    obj.layout138 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout138 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout138:setParent(obj.layout128);
     obj.layout138:setLeft(15);
     obj.layout138:setTop(275);
@@ -7998,7 +7998,7 @@ function newfrmMageDarkAges()
     obj.layout138:setHeight(25);
     obj.layout138:setName("layout138");
 
-    obj.edit176 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit176 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit176:setParent(obj.layout138);
     obj.edit176:setLeft(0);
     obj.edit176:setTop(0);
@@ -8007,7 +8007,7 @@ function newfrmMageDarkAges()
     obj.edit176:setField("attack_10");
     obj.edit176:setName("edit176");
 
-    obj.edit177 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit177 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit177:setParent(obj.layout138);
     obj.edit177:setLeft(200);
     obj.edit177:setTop(0);
@@ -8016,7 +8016,7 @@ function newfrmMageDarkAges()
     obj.edit177:setField("roll_10");
     obj.edit177:setName("edit177");
 
-    obj.edit178 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit178 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit178:setParent(obj.layout138);
     obj.edit178:setLeft(300);
     obj.edit178:setTop(0);
@@ -8025,7 +8025,7 @@ function newfrmMageDarkAges()
     obj.edit178:setField("difficulty_10");
     obj.edit178:setName("edit178");
 
-    obj.edit179 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit179 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit179:setParent(obj.layout138);
     obj.edit179:setLeft(350);
     obj.edit179:setTop(0);
@@ -8034,7 +8034,7 @@ function newfrmMageDarkAges()
     obj.edit179:setField("damage_10");
     obj.edit179:setName("edit179");
 
-    obj.edit180 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit180 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit180:setParent(obj.layout138);
     obj.edit180:setLeft(400);
     obj.edit180:setTop(0);
@@ -8043,7 +8043,7 @@ function newfrmMageDarkAges()
     obj.edit180:setField("range_10");
     obj.edit180:setName("edit180");
 
-    obj.edit181 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit181 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit181:setParent(obj.layout138);
     obj.edit181:setLeft(450);
     obj.edit181:setTop(0);
@@ -8052,7 +8052,7 @@ function newfrmMageDarkAges()
     obj.edit181:setField("rate_10");
     obj.edit181:setName("edit181");
 
-    obj.edit182 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit182 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit182:setParent(obj.layout138);
     obj.edit182:setLeft(500);
     obj.edit182:setTop(0);
@@ -8061,7 +8061,7 @@ function newfrmMageDarkAges()
     obj.edit182:setField("clip_10");
     obj.edit182:setName("edit182");
 
-    obj.edit183 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit183 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit183:setParent(obj.layout138);
     obj.edit183:setLeft(550);
     obj.edit183:setTop(0);
@@ -8070,7 +8070,7 @@ function newfrmMageDarkAges()
     obj.edit183:setField("conceal_10");
     obj.edit183:setName("edit183");
 
-    obj.layout139 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout139 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout139:setParent(obj.scrollBox3);
     obj.layout139:setLeft(640);
     obj.layout139:setTop(0);
@@ -8078,7 +8078,7 @@ function newfrmMageDarkAges()
     obj.layout139:setHeight(330);
     obj.layout139:setName("layout139");
 
-    obj.rectangle23 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle23:setParent(obj.layout139);
     obj.rectangle23:setAlign("client");
     obj.rectangle23:setColor("black");
@@ -8087,7 +8087,7 @@ function newfrmMageDarkAges()
     obj.rectangle23:setCornerType("innerLine");
     obj.rectangle23:setName("rectangle23");
 
-    obj.label79 = gui.fromHandle(_obj_newObject("label"));
+    obj.label79 = GUI.fromHandle(_obj_newObject("label"));
     obj.label79:setParent(obj.layout139);
     obj.label79:setLeft(0);
     obj.label79:setTop(0);
@@ -8097,7 +8097,7 @@ function newfrmMageDarkAges()
     obj.label79:setHorzTextAlign("center");
     obj.label79:setName("label79");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout139);
     obj.textEditor1:setLeft(15);
     obj.textEditor1:setTop(25);
@@ -8106,7 +8106,7 @@ function newfrmMageDarkAges()
     obj.textEditor1:setField("items");
     obj.textEditor1:setName("textEditor1");
 
-    obj.layout140 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout140 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout140:setParent(obj.scrollBox3);
     obj.layout140:setLeft(0);
     obj.layout140:setTop(340);
@@ -8114,7 +8114,7 @@ function newfrmMageDarkAges()
     obj.layout140:setHeight(230);
     obj.layout140:setName("layout140");
 
-    obj.rectangle24 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle24 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle24:setParent(obj.layout140);
     obj.rectangle24:setAlign("client");
     obj.rectangle24:setColor("black");
@@ -8123,7 +8123,7 @@ function newfrmMageDarkAges()
     obj.rectangle24:setCornerType("innerLine");
     obj.rectangle24:setName("rectangle24");
 
-    obj.label80 = gui.fromHandle(_obj_newObject("label"));
+    obj.label80 = GUI.fromHandle(_obj_newObject("label"));
     obj.label80:setParent(obj.layout140);
     obj.label80:setLeft(0);
     obj.label80:setTop(0);
@@ -8133,7 +8133,7 @@ function newfrmMageDarkAges()
     obj.label80:setHorzTextAlign("center");
     obj.label80:setName("label80");
 
-    obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.layout140);
     obj.textEditor2:setLeft(15);
     obj.textEditor2:setTop(25);
@@ -8142,7 +8142,7 @@ function newfrmMageDarkAges()
     obj.textEditor2:setField("gear");
     obj.textEditor2:setName("textEditor2");
 
-    obj.layout141 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout141 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout141:setParent(obj.scrollBox3);
     obj.layout141:setLeft(240);
     obj.layout141:setTop(340);
@@ -8150,7 +8150,7 @@ function newfrmMageDarkAges()
     obj.layout141:setHeight(230);
     obj.layout141:setName("layout141");
 
-    obj.rectangle25 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle25:setParent(obj.layout141);
     obj.rectangle25:setAlign("client");
     obj.rectangle25:setColor("black");
@@ -8159,7 +8159,7 @@ function newfrmMageDarkAges()
     obj.rectangle25:setCornerType("innerLine");
     obj.rectangle25:setName("rectangle25");
 
-    obj.label81 = gui.fromHandle(_obj_newObject("label"));
+    obj.label81 = GUI.fromHandle(_obj_newObject("label"));
     obj.label81:setParent(obj.layout141);
     obj.label81:setLeft(0);
     obj.label81:setTop(0);
@@ -8169,7 +8169,7 @@ function newfrmMageDarkAges()
     obj.label81:setHorzTextAlign("center");
     obj.label81:setName("label81");
 
-    obj.textEditor3 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor3:setParent(obj.layout141);
     obj.textEditor3:setLeft(15);
     obj.textEditor3:setTop(25);
@@ -8178,7 +8178,7 @@ function newfrmMageDarkAges()
     obj.textEditor3:setField("equipment");
     obj.textEditor3:setName("textEditor3");
 
-    obj.layout142 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout142 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout142:setParent(obj.scrollBox3);
     obj.layout142:setLeft(480);
     obj.layout142:setTop(340);
@@ -8186,7 +8186,7 @@ function newfrmMageDarkAges()
     obj.layout142:setHeight(230);
     obj.layout142:setName("layout142");
 
-    obj.rectangle26 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle26 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle26:setParent(obj.layout142);
     obj.rectangle26:setAlign("client");
     obj.rectangle26:setColor("black");
@@ -8195,7 +8195,7 @@ function newfrmMageDarkAges()
     obj.rectangle26:setCornerType("innerLine");
     obj.rectangle26:setName("rectangle26");
 
-    obj.label82 = gui.fromHandle(_obj_newObject("label"));
+    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
     obj.label82:setParent(obj.layout142);
     obj.label82:setLeft(0);
     obj.label82:setTop(0);
@@ -8205,7 +8205,7 @@ function newfrmMageDarkAges()
     obj.label82:setHorzTextAlign("center");
     obj.label82:setName("label82");
 
-    obj.textEditor4 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor4:setParent(obj.layout142);
     obj.textEditor4:setLeft(15);
     obj.textEditor4:setTop(25);
@@ -8214,7 +8214,7 @@ function newfrmMageDarkAges()
     obj.textEditor4:setField("foci");
     obj.textEditor4:setName("textEditor4");
 
-    obj.layout143 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout143 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout143:setParent(obj.scrollBox3);
     obj.layout143:setLeft(720);
     obj.layout143:setTop(340);
@@ -8222,7 +8222,7 @@ function newfrmMageDarkAges()
     obj.layout143:setHeight(230);
     obj.layout143:setName("layout143");
 
-    obj.rectangle27 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle27 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle27:setParent(obj.layout143);
     obj.rectangle27:setAlign("client");
     obj.rectangle27:setColor("black");
@@ -8231,7 +8231,7 @@ function newfrmMageDarkAges()
     obj.rectangle27:setCornerType("innerLine");
     obj.rectangle27:setName("rectangle27");
 
-    obj.label83 = gui.fromHandle(_obj_newObject("label"));
+    obj.label83 = GUI.fromHandle(_obj_newObject("label"));
     obj.label83:setParent(obj.layout143);
     obj.label83:setLeft(0);
     obj.label83:setTop(0);
@@ -8241,7 +8241,7 @@ function newfrmMageDarkAges()
     obj.label83:setHorzTextAlign("center");
     obj.label83:setName("label83");
 
-    obj.textEditor5 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor5:setParent(obj.layout143);
     obj.textEditor5:setLeft(15);
     obj.textEditor5:setTop(25);
@@ -8250,7 +8250,7 @@ function newfrmMageDarkAges()
     obj.textEditor5:setField("misc");
     obj.textEditor5:setName("textEditor5");
 
-    obj.layout144 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout144 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout144:setParent(obj.scrollBox3);
     obj.layout144:setLeft(880);
     obj.layout144:setTop(0);
@@ -8258,7 +8258,7 @@ function newfrmMageDarkAges()
     obj.layout144:setHeight(230);
     obj.layout144:setName("layout144");
 
-    obj.rectangle28 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle28 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle28:setParent(obj.layout144);
     obj.rectangle28:setAlign("client");
     obj.rectangle28:setColor("black");
@@ -8267,7 +8267,7 @@ function newfrmMageDarkAges()
     obj.rectangle28:setCornerType("innerLine");
     obj.rectangle28:setName("rectangle28");
 
-    obj.label84 = gui.fromHandle(_obj_newObject("label"));
+    obj.label84 = GUI.fromHandle(_obj_newObject("label"));
     obj.label84:setParent(obj.layout144);
     obj.label84:setLeft(0);
     obj.label84:setTop(0);
@@ -8277,7 +8277,7 @@ function newfrmMageDarkAges()
     obj.label84:setHorzTextAlign("center");
     obj.label84:setName("label84");
 
-    obj.layout145 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout145 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout145:setParent(obj.layout144);
     obj.layout145:setLeft(15);
     obj.layout145:setTop(25);
@@ -8285,7 +8285,7 @@ function newfrmMageDarkAges()
     obj.layout145:setHeight(25);
     obj.layout145:setName("layout145");
 
-    obj.label85 = gui.fromHandle(_obj_newObject("label"));
+    obj.label85 = GUI.fromHandle(_obj_newObject("label"));
     obj.label85:setParent(obj.layout145);
     obj.label85:setLeft(0);
     obj.label85:setTop(5);
@@ -8295,7 +8295,7 @@ function newfrmMageDarkAges()
     obj.label85:setHorzTextAlign("trailing");
     obj.label85:setName("label85");
 
-    obj.edit184 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit184 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit184:setParent(obj.layout145);
     obj.edit184:setLeft(55);
     obj.edit184:setTop(0);
@@ -8304,7 +8304,7 @@ function newfrmMageDarkAges()
     obj.edit184:setField("armorClass");
     obj.edit184:setName("edit184");
 
-    obj.layout146 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout146 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout146:setParent(obj.layout144);
     obj.layout146:setLeft(15);
     obj.layout146:setTop(50);
@@ -8312,7 +8312,7 @@ function newfrmMageDarkAges()
     obj.layout146:setHeight(25);
     obj.layout146:setName("layout146");
 
-    obj.label86 = gui.fromHandle(_obj_newObject("label"));
+    obj.label86 = GUI.fromHandle(_obj_newObject("label"));
     obj.label86:setParent(obj.layout146);
     obj.label86:setLeft(0);
     obj.label86:setTop(5);
@@ -8322,7 +8322,7 @@ function newfrmMageDarkAges()
     obj.label86:setHorzTextAlign("trailing");
     obj.label86:setName("label86");
 
-    obj.edit185 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit185 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit185:setParent(obj.layout146);
     obj.edit185:setLeft(55);
     obj.edit185:setTop(0);
@@ -8331,7 +8331,7 @@ function newfrmMageDarkAges()
     obj.edit185:setField("armorRating");
     obj.edit185:setName("edit185");
 
-    obj.layout147 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout147 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout147:setParent(obj.layout144);
     obj.layout147:setLeft(15);
     obj.layout147:setTop(75);
@@ -8339,7 +8339,7 @@ function newfrmMageDarkAges()
     obj.layout147:setHeight(25);
     obj.layout147:setName("layout147");
 
-    obj.label87 = gui.fromHandle(_obj_newObject("label"));
+    obj.label87 = GUI.fromHandle(_obj_newObject("label"));
     obj.label87:setParent(obj.layout147);
     obj.label87:setLeft(0);
     obj.label87:setTop(5);
@@ -8349,7 +8349,7 @@ function newfrmMageDarkAges()
     obj.label87:setHorzTextAlign("trailing");
     obj.label87:setName("label87");
 
-    obj.edit186 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit186 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit186:setParent(obj.layout147);
     obj.edit186:setLeft(55);
     obj.edit186:setTop(0);
@@ -8358,7 +8358,7 @@ function newfrmMageDarkAges()
     obj.edit186:setField("armorPenalty");
     obj.edit186:setName("edit186");
 
-    obj.textEditor6 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor6 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor6:setParent(obj.layout144);
     obj.textEditor6:setLeft(15);
     obj.textEditor6:setTop(100);
@@ -8367,23 +8367,23 @@ function newfrmMageDarkAges()
     obj.textEditor6:setField("armorDescription");
     obj.textEditor6:setName("textEditor6");
 
-    obj.tab4 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab4 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab4:setParent(obj.tabControl1);
     obj.tab4:setTitle("Details");
     obj.tab4:setName("tab4");
 
-    obj.frmMDA20_4 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmMDA20_4 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmMDA20_4:setParent(obj.tab4);
     obj.frmMDA20_4:setName("frmMDA20_4");
     obj.frmMDA20_4:setAlign("client");
     obj.frmMDA20_4:setTheme("dark");
 
-    obj.scrollBox4 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox4 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox4:setParent(obj.frmMDA20_4);
     obj.scrollBox4:setAlign("client");
     obj.scrollBox4:setName("scrollBox4");
 
-    obj.layout148 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout148 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout148:setParent(obj.scrollBox4);
     obj.layout148:setLeft(0);
     obj.layout148:setTop(0);
@@ -8391,7 +8391,7 @@ function newfrmMageDarkAges()
     obj.layout148:setHeight(165);
     obj.layout148:setName("layout148");
 
-    obj.rectangle29 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle29 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle29:setParent(obj.layout148);
     obj.rectangle29:setAlign("client");
     obj.rectangle29:setColor("black");
@@ -8400,7 +8400,7 @@ function newfrmMageDarkAges()
     obj.rectangle29:setCornerType("innerLine");
     obj.rectangle29:setName("rectangle29");
 
-    obj.label88 = gui.fromHandle(_obj_newObject("label"));
+    obj.label88 = GUI.fromHandle(_obj_newObject("label"));
     obj.label88:setParent(obj.layout148);
     obj.label88:setLeft(0);
     obj.label88:setTop(0);
@@ -8410,7 +8410,7 @@ function newfrmMageDarkAges()
     obj.label88:setHorzTextAlign("center");
     obj.label88:setName("label88");
 
-    obj.textEditor7 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor7 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor7:setParent(obj.layout148);
     obj.textEditor7:setLeft(15);
     obj.textEditor7:setTop(25);
@@ -8419,7 +8419,7 @@ function newfrmMageDarkAges()
     obj.textEditor7:setField("allies");
     obj.textEditor7:setName("textEditor7");
 
-    obj.layout149 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout149 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout149:setParent(obj.scrollBox4);
     obj.layout149:setLeft(0);
     obj.layout149:setTop(175);
@@ -8427,7 +8427,7 @@ function newfrmMageDarkAges()
     obj.layout149:setHeight(165);
     obj.layout149:setName("layout149");
 
-    obj.rectangle30 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle30 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle30:setParent(obj.layout149);
     obj.rectangle30:setAlign("client");
     obj.rectangle30:setColor("black");
@@ -8436,7 +8436,7 @@ function newfrmMageDarkAges()
     obj.rectangle30:setCornerType("innerLine");
     obj.rectangle30:setName("rectangle30");
 
-    obj.label89 = gui.fromHandle(_obj_newObject("label"));
+    obj.label89 = GUI.fromHandle(_obj_newObject("label"));
     obj.label89:setParent(obj.layout149);
     obj.label89:setLeft(0);
     obj.label89:setTop(0);
@@ -8446,7 +8446,7 @@ function newfrmMageDarkAges()
     obj.label89:setHorzTextAlign("center");
     obj.label89:setName("label89");
 
-    obj.textEditor8 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor8 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor8:setParent(obj.layout149);
     obj.textEditor8:setLeft(15);
     obj.textEditor8:setTop(25);
@@ -8455,7 +8455,7 @@ function newfrmMageDarkAges()
     obj.textEditor8:setField("mentor");
     obj.textEditor8:setName("textEditor8");
 
-    obj.layout150 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout150 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout150:setParent(obj.scrollBox4);
     obj.layout150:setLeft(250);
     obj.layout150:setTop(0);
@@ -8463,7 +8463,7 @@ function newfrmMageDarkAges()
     obj.layout150:setHeight(165);
     obj.layout150:setName("layout150");
 
-    obj.rectangle31 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle31 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle31:setParent(obj.layout150);
     obj.rectangle31:setAlign("client");
     obj.rectangle31:setColor("black");
@@ -8472,7 +8472,7 @@ function newfrmMageDarkAges()
     obj.rectangle31:setCornerType("innerLine");
     obj.rectangle31:setName("rectangle31");
 
-    obj.label90 = gui.fromHandle(_obj_newObject("label"));
+    obj.label90 = GUI.fromHandle(_obj_newObject("label"));
     obj.label90:setParent(obj.layout150);
     obj.label90:setLeft(0);
     obj.label90:setTop(0);
@@ -8482,7 +8482,7 @@ function newfrmMageDarkAges()
     obj.label90:setHorzTextAlign("center");
     obj.label90:setName("label90");
 
-    obj.textEditor9 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor9 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor9:setParent(obj.layout150);
     obj.textEditor9:setLeft(15);
     obj.textEditor9:setTop(25);
@@ -8491,7 +8491,7 @@ function newfrmMageDarkAges()
     obj.textEditor9:setField("contacts");
     obj.textEditor9:setName("textEditor9");
 
-    obj.layout151 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout151 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout151:setParent(obj.scrollBox4);
     obj.layout151:setLeft(250);
     obj.layout151:setTop(175);
@@ -8499,7 +8499,7 @@ function newfrmMageDarkAges()
     obj.layout151:setHeight(165);
     obj.layout151:setName("layout151");
 
-    obj.rectangle32 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle32 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle32:setParent(obj.layout151);
     obj.rectangle32:setAlign("client");
     obj.rectangle32:setColor("black");
@@ -8508,7 +8508,7 @@ function newfrmMageDarkAges()
     obj.rectangle32:setCornerType("innerLine");
     obj.rectangle32:setName("rectangle32");
 
-    obj.label91 = gui.fromHandle(_obj_newObject("label"));
+    obj.label91 = GUI.fromHandle(_obj_newObject("label"));
     obj.label91:setParent(obj.layout151);
     obj.label91:setLeft(0);
     obj.label91:setTop(0);
@@ -8518,7 +8518,7 @@ function newfrmMageDarkAges()
     obj.label91:setHorzTextAlign("center");
     obj.label91:setName("label91");
 
-    obj.textEditor10 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor10 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor10:setParent(obj.layout151);
     obj.textEditor10:setLeft(15);
     obj.textEditor10:setTop(25);
@@ -8527,7 +8527,7 @@ function newfrmMageDarkAges()
     obj.textEditor10:setField("resources");
     obj.textEditor10:setName("textEditor10");
 
-    obj.layout152 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout152 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout152:setParent(obj.scrollBox4);
     obj.layout152:setLeft(500);
     obj.layout152:setTop(0);
@@ -8535,7 +8535,7 @@ function newfrmMageDarkAges()
     obj.layout152:setHeight(165);
     obj.layout152:setName("layout152");
 
-    obj.rectangle33 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle33 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle33:setParent(obj.layout152);
     obj.rectangle33:setAlign("client");
     obj.rectangle33:setColor("black");
@@ -8544,7 +8544,7 @@ function newfrmMageDarkAges()
     obj.rectangle33:setCornerType("innerLine");
     obj.rectangle33:setName("rectangle33");
 
-    obj.label92 = gui.fromHandle(_obj_newObject("label"));
+    obj.label92 = GUI.fromHandle(_obj_newObject("label"));
     obj.label92:setParent(obj.layout152);
     obj.label92:setLeft(0);
     obj.label92:setTop(0);
@@ -8554,7 +8554,7 @@ function newfrmMageDarkAges()
     obj.label92:setHorzTextAlign("center");
     obj.label92:setName("label92");
 
-    obj.textEditor11 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor11 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor11:setParent(obj.layout152);
     obj.textEditor11:setLeft(15);
     obj.textEditor11:setTop(25);
@@ -8563,7 +8563,7 @@ function newfrmMageDarkAges()
     obj.textEditor11:setField("library");
     obj.textEditor11:setName("textEditor11");
 
-    obj.layout153 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout153 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout153:setParent(obj.scrollBox4);
     obj.layout153:setLeft(500);
     obj.layout153:setTop(175);
@@ -8571,7 +8571,7 @@ function newfrmMageDarkAges()
     obj.layout153:setHeight(165);
     obj.layout153:setName("layout153");
 
-    obj.rectangle34 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle34 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle34:setParent(obj.layout153);
     obj.rectangle34:setAlign("client");
     obj.rectangle34:setColor("black");
@@ -8580,7 +8580,7 @@ function newfrmMageDarkAges()
     obj.rectangle34:setCornerType("innerLine");
     obj.rectangle34:setName("rectangle34");
 
-    obj.label93 = gui.fromHandle(_obj_newObject("label"));
+    obj.label93 = GUI.fromHandle(_obj_newObject("label"));
     obj.label93:setParent(obj.layout153);
     obj.label93:setLeft(0);
     obj.label93:setTop(0);
@@ -8590,7 +8590,7 @@ function newfrmMageDarkAges()
     obj.label93:setHorzTextAlign("center");
     obj.label93:setName("label93");
 
-    obj.textEditor12 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor12 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor12:setParent(obj.layout153);
     obj.textEditor12:setLeft(15);
     obj.textEditor12:setTop(25);
@@ -8599,7 +8599,7 @@ function newfrmMageDarkAges()
     obj.textEditor12:setField("familiars");
     obj.textEditor12:setName("textEditor12");
 
-    obj.layout154 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout154 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout154:setParent(obj.scrollBox4);
     obj.layout154:setLeft(750);
     obj.layout154:setTop(0);
@@ -8607,7 +8607,7 @@ function newfrmMageDarkAges()
     obj.layout154:setHeight(165);
     obj.layout154:setName("layout154");
 
-    obj.rectangle35 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle35 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle35:setParent(obj.layout154);
     obj.rectangle35:setAlign("client");
     obj.rectangle35:setColor("black");
@@ -8616,7 +8616,7 @@ function newfrmMageDarkAges()
     obj.rectangle35:setCornerType("innerLine");
     obj.rectangle35:setName("rectangle35");
 
-    obj.label94 = gui.fromHandle(_obj_newObject("label"));
+    obj.label94 = GUI.fromHandle(_obj_newObject("label"));
     obj.label94:setParent(obj.layout154);
     obj.label94:setLeft(0);
     obj.label94:setTop(0);
@@ -8626,7 +8626,7 @@ function newfrmMageDarkAges()
     obj.label94:setHorzTextAlign("center");
     obj.label94:setName("label94");
 
-    obj.textEditor13 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor13 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor13:setParent(obj.layout154);
     obj.textEditor13:setLeft(15);
     obj.textEditor13:setTop(25);
@@ -8635,7 +8635,7 @@ function newfrmMageDarkAges()
     obj.textEditor13:setField("cray");
     obj.textEditor13:setName("textEditor13");
 
-    obj.layout155 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout155 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout155:setParent(obj.scrollBox4);
     obj.layout155:setLeft(750);
     obj.layout155:setTop(175);
@@ -8643,7 +8643,7 @@ function newfrmMageDarkAges()
     obj.layout155:setHeight(165);
     obj.layout155:setName("layout155");
 
-    obj.rectangle36 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle36 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle36:setParent(obj.layout155);
     obj.rectangle36:setAlign("client");
     obj.rectangle36:setColor("black");
@@ -8652,7 +8652,7 @@ function newfrmMageDarkAges()
     obj.rectangle36:setCornerType("innerLine");
     obj.rectangle36:setName("rectangle36");
 
-    obj.label95 = gui.fromHandle(_obj_newObject("label"));
+    obj.label95 = GUI.fromHandle(_obj_newObject("label"));
     obj.label95:setParent(obj.layout155);
     obj.label95:setLeft(0);
     obj.label95:setTop(0);
@@ -8662,7 +8662,7 @@ function newfrmMageDarkAges()
     obj.label95:setHorzTextAlign("center");
     obj.label95:setName("label95");
 
-    obj.textEditor14 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor14 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor14:setParent(obj.layout155);
     obj.textEditor14:setLeft(15);
     obj.textEditor14:setTop(25);
@@ -8671,7 +8671,7 @@ function newfrmMageDarkAges()
     obj.textEditor14:setField("servants");
     obj.textEditor14:setName("textEditor14");
 
-    obj.layout156 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout156 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout156:setParent(obj.scrollBox4);
     obj.layout156:setLeft(1000);
     obj.layout156:setTop(0);
@@ -8679,7 +8679,7 @@ function newfrmMageDarkAges()
     obj.layout156:setHeight(165);
     obj.layout156:setName("layout156");
 
-    obj.rectangle37 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle37 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle37:setParent(obj.layout156);
     obj.rectangle37:setAlign("client");
     obj.rectangle37:setColor("black");
@@ -8688,7 +8688,7 @@ function newfrmMageDarkAges()
     obj.rectangle37:setCornerType("innerLine");
     obj.rectangle37:setName("rectangle37");
 
-    obj.label96 = gui.fromHandle(_obj_newObject("label"));
+    obj.label96 = GUI.fromHandle(_obj_newObject("label"));
     obj.label96:setParent(obj.layout156);
     obj.label96:setLeft(0);
     obj.label96:setTop(0);
@@ -8698,7 +8698,7 @@ function newfrmMageDarkAges()
     obj.label96:setHorzTextAlign("center");
     obj.label96:setName("label96");
 
-    obj.textEditor15 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor15 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor15:setParent(obj.layout156);
     obj.textEditor15:setLeft(15);
     obj.textEditor15:setTop(25);
@@ -8707,7 +8707,7 @@ function newfrmMageDarkAges()
     obj.textEditor15:setField("influence");
     obj.textEditor15:setName("textEditor15");
 
-    obj.layout157 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout157 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout157:setParent(obj.scrollBox4);
     obj.layout157:setLeft(1000);
     obj.layout157:setTop(175);
@@ -8715,7 +8715,7 @@ function newfrmMageDarkAges()
     obj.layout157:setHeight(165);
     obj.layout157:setName("layout157");
 
-    obj.rectangle38 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle38 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle38:setParent(obj.layout157);
     obj.rectangle38:setAlign("client");
     obj.rectangle38:setColor("black");
@@ -8724,7 +8724,7 @@ function newfrmMageDarkAges()
     obj.rectangle38:setCornerType("innerLine");
     obj.rectangle38:setName("rectangle38");
 
-    obj.label97 = gui.fromHandle(_obj_newObject("label"));
+    obj.label97 = GUI.fromHandle(_obj_newObject("label"));
     obj.label97:setParent(obj.layout157);
     obj.label97:setLeft(0);
     obj.label97:setTop(0);
@@ -8734,7 +8734,7 @@ function newfrmMageDarkAges()
     obj.label97:setHorzTextAlign("center");
     obj.label97:setName("label97");
 
-    obj.textEditor16 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor16 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor16:setParent(obj.layout157);
     obj.textEditor16:setLeft(15);
     obj.textEditor16:setTop(25);
@@ -8743,7 +8743,7 @@ function newfrmMageDarkAges()
     obj.textEditor16:setField("other");
     obj.textEditor16:setName("textEditor16");
 
-    obj.layout158 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout158 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout158:setParent(obj.scrollBox4);
     obj.layout158:setLeft(0);
     obj.layout158:setTop(350);
@@ -8751,7 +8751,7 @@ function newfrmMageDarkAges()
     obj.layout158:setHeight(215);
     obj.layout158:setName("layout158");
 
-    obj.rectangle39 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle39 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle39:setParent(obj.layout158);
     obj.rectangle39:setAlign("client");
     obj.rectangle39:setColor("black");
@@ -8760,7 +8760,7 @@ function newfrmMageDarkAges()
     obj.rectangle39:setCornerType("innerLine");
     obj.rectangle39:setName("rectangle39");
 
-    obj.label98 = gui.fromHandle(_obj_newObject("label"));
+    obj.label98 = GUI.fromHandle(_obj_newObject("label"));
     obj.label98:setParent(obj.layout158);
     obj.label98:setLeft(0);
     obj.label98:setTop(0);
@@ -8770,7 +8770,7 @@ function newfrmMageDarkAges()
     obj.label98:setHorzTextAlign("center");
     obj.label98:setName("label98");
 
-    obj.label99 = gui.fromHandle(_obj_newObject("label"));
+    obj.label99 = GUI.fromHandle(_obj_newObject("label"));
     obj.label99:setParent(obj.layout158);
     obj.label99:setLeft(10);
     obj.label99:setTop(25);
@@ -8780,7 +8780,7 @@ function newfrmMageDarkAges()
     obj.label99:setHorzTextAlign("center");
     obj.label99:setName("label99");
 
-    obj.label100 = gui.fromHandle(_obj_newObject("label"));
+    obj.label100 = GUI.fromHandle(_obj_newObject("label"));
     obj.label100:setParent(obj.layout158);
     obj.label100:setLeft(210);
     obj.label100:setTop(25);
@@ -8790,7 +8790,7 @@ function newfrmMageDarkAges()
     obj.label100:setHorzTextAlign("center");
     obj.label100:setName("label100");
 
-    obj.layout159 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout159 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout159:setParent(obj.layout158);
     obj.layout159:setLeft(0);
     obj.layout159:setTop(50);
@@ -8798,7 +8798,7 @@ function newfrmMageDarkAges()
     obj.layout159:setHeight(25);
     obj.layout159:setName("layout159");
 
-    obj.edit187 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit187 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit187:setParent(obj.layout159);
     obj.edit187:setLeft(10);
     obj.edit187:setTop(0);
@@ -8807,7 +8807,7 @@ function newfrmMageDarkAges()
     obj.edit187:setField("place_location_1");
     obj.edit187:setName("edit187");
 
-    obj.edit188 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit188 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit188:setParent(obj.layout159);
     obj.edit188:setLeft(210);
     obj.edit188:setTop(0);
@@ -8816,7 +8816,7 @@ function newfrmMageDarkAges()
     obj.edit188:setField("place_description_1");
     obj.edit188:setName("edit188");
 
-    obj.layout160 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout160 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout160:setParent(obj.layout158);
     obj.layout160:setLeft(0);
     obj.layout160:setTop(75);
@@ -8824,7 +8824,7 @@ function newfrmMageDarkAges()
     obj.layout160:setHeight(25);
     obj.layout160:setName("layout160");
 
-    obj.edit189 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit189 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit189:setParent(obj.layout160);
     obj.edit189:setLeft(10);
     obj.edit189:setTop(0);
@@ -8833,7 +8833,7 @@ function newfrmMageDarkAges()
     obj.edit189:setField("place_location_2");
     obj.edit189:setName("edit189");
 
-    obj.edit190 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit190 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit190:setParent(obj.layout160);
     obj.edit190:setLeft(210);
     obj.edit190:setTop(0);
@@ -8842,7 +8842,7 @@ function newfrmMageDarkAges()
     obj.edit190:setField("place_description_2");
     obj.edit190:setName("edit190");
 
-    obj.layout161 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout161 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout161:setParent(obj.layout158);
     obj.layout161:setLeft(0);
     obj.layout161:setTop(100);
@@ -8850,7 +8850,7 @@ function newfrmMageDarkAges()
     obj.layout161:setHeight(25);
     obj.layout161:setName("layout161");
 
-    obj.edit191 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit191 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit191:setParent(obj.layout161);
     obj.edit191:setLeft(10);
     obj.edit191:setTop(0);
@@ -8859,7 +8859,7 @@ function newfrmMageDarkAges()
     obj.edit191:setField("place_location_3");
     obj.edit191:setName("edit191");
 
-    obj.edit192 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit192 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit192:setParent(obj.layout161);
     obj.edit192:setLeft(210);
     obj.edit192:setTop(0);
@@ -8868,7 +8868,7 @@ function newfrmMageDarkAges()
     obj.edit192:setField("place_description_3");
     obj.edit192:setName("edit192");
 
-    obj.layout162 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout162 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout162:setParent(obj.layout158);
     obj.layout162:setLeft(0);
     obj.layout162:setTop(125);
@@ -8876,7 +8876,7 @@ function newfrmMageDarkAges()
     obj.layout162:setHeight(25);
     obj.layout162:setName("layout162");
 
-    obj.edit193 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit193 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit193:setParent(obj.layout162);
     obj.edit193:setLeft(10);
     obj.edit193:setTop(0);
@@ -8885,7 +8885,7 @@ function newfrmMageDarkAges()
     obj.edit193:setField("place_location_4");
     obj.edit193:setName("edit193");
 
-    obj.edit194 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit194 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit194:setParent(obj.layout162);
     obj.edit194:setLeft(210);
     obj.edit194:setTop(0);
@@ -8894,7 +8894,7 @@ function newfrmMageDarkAges()
     obj.edit194:setField("place_description_4");
     obj.edit194:setName("edit194");
 
-    obj.layout163 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout163 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout163:setParent(obj.layout158);
     obj.layout163:setLeft(0);
     obj.layout163:setTop(150);
@@ -8902,7 +8902,7 @@ function newfrmMageDarkAges()
     obj.layout163:setHeight(25);
     obj.layout163:setName("layout163");
 
-    obj.edit195 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit195 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit195:setParent(obj.layout163);
     obj.edit195:setLeft(10);
     obj.edit195:setTop(0);
@@ -8911,7 +8911,7 @@ function newfrmMageDarkAges()
     obj.edit195:setField("place_location_5");
     obj.edit195:setName("edit195");
 
-    obj.edit196 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit196 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit196:setParent(obj.layout163);
     obj.edit196:setLeft(210);
     obj.edit196:setTop(0);
@@ -8920,7 +8920,7 @@ function newfrmMageDarkAges()
     obj.edit196:setField("place_description_5");
     obj.edit196:setName("edit196");
 
-    obj.layout164 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout164 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout164:setParent(obj.layout158);
     obj.layout164:setLeft(0);
     obj.layout164:setTop(175);
@@ -8928,7 +8928,7 @@ function newfrmMageDarkAges()
     obj.layout164:setHeight(25);
     obj.layout164:setName("layout164");
 
-    obj.edit197 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit197 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit197:setParent(obj.layout164);
     obj.edit197:setLeft(10);
     obj.edit197:setTop(0);
@@ -8937,7 +8937,7 @@ function newfrmMageDarkAges()
     obj.edit197:setField("place_location_6");
     obj.edit197:setName("edit197");
 
-    obj.edit198 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit198 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit198:setParent(obj.layout164);
     obj.edit198:setLeft(210);
     obj.edit198:setTop(0);
@@ -8946,7 +8946,7 @@ function newfrmMageDarkAges()
     obj.edit198:setField("place_description_6");
     obj.edit198:setName("edit198");
 
-    obj.layout165 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout165 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout165:setParent(obj.scrollBox4);
     obj.layout165:setLeft(625);
     obj.layout165:setTop(350);
@@ -8954,7 +8954,7 @@ function newfrmMageDarkAges()
     obj.layout165:setHeight(215);
     obj.layout165:setName("layout165");
 
-    obj.rectangle40 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle40 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle40:setParent(obj.layout165);
     obj.rectangle40:setAlign("client");
     obj.rectangle40:setColor("black");
@@ -8963,7 +8963,7 @@ function newfrmMageDarkAges()
     obj.rectangle40:setCornerType("innerLine");
     obj.rectangle40:setName("rectangle40");
 
-    obj.label101 = gui.fromHandle(_obj_newObject("label"));
+    obj.label101 = GUI.fromHandle(_obj_newObject("label"));
     obj.label101:setParent(obj.layout165);
     obj.label101:setLeft(0);
     obj.label101:setTop(0);
@@ -8973,7 +8973,7 @@ function newfrmMageDarkAges()
     obj.label101:setHorzTextAlign("center");
     obj.label101:setName("label101");
 
-    obj.label102 = gui.fromHandle(_obj_newObject("label"));
+    obj.label102 = GUI.fromHandle(_obj_newObject("label"));
     obj.label102:setParent(obj.layout165);
     obj.label102:setLeft(10);
     obj.label102:setTop(25);
@@ -8983,7 +8983,7 @@ function newfrmMageDarkAges()
     obj.label102:setHorzTextAlign("center");
     obj.label102:setName("label102");
 
-    obj.label103 = gui.fromHandle(_obj_newObject("label"));
+    obj.label103 = GUI.fromHandle(_obj_newObject("label"));
     obj.label103:setParent(obj.layout165);
     obj.label103:setLeft(210);
     obj.label103:setTop(25);
@@ -8993,7 +8993,7 @@ function newfrmMageDarkAges()
     obj.label103:setHorzTextAlign("center");
     obj.label103:setName("label103");
 
-    obj.layout166 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout166 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout166:setParent(obj.layout165);
     obj.layout166:setLeft(0);
     obj.layout166:setTop(50);
@@ -9001,7 +9001,7 @@ function newfrmMageDarkAges()
     obj.layout166:setHeight(25);
     obj.layout166:setName("layout166");
 
-    obj.edit199 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit199 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit199:setParent(obj.layout166);
     obj.edit199:setLeft(10);
     obj.edit199:setTop(0);
@@ -9010,7 +9010,7 @@ function newfrmMageDarkAges()
     obj.edit199:setField("place_location_7");
     obj.edit199:setName("edit199");
 
-    obj.edit200 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit200 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit200:setParent(obj.layout166);
     obj.edit200:setLeft(210);
     obj.edit200:setTop(0);
@@ -9019,7 +9019,7 @@ function newfrmMageDarkAges()
     obj.edit200:setField("place_description_7");
     obj.edit200:setName("edit200");
 
-    obj.layout167 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout167 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout167:setParent(obj.layout165);
     obj.layout167:setLeft(0);
     obj.layout167:setTop(75);
@@ -9027,7 +9027,7 @@ function newfrmMageDarkAges()
     obj.layout167:setHeight(25);
     obj.layout167:setName("layout167");
 
-    obj.edit201 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit201 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit201:setParent(obj.layout167);
     obj.edit201:setLeft(10);
     obj.edit201:setTop(0);
@@ -9036,7 +9036,7 @@ function newfrmMageDarkAges()
     obj.edit201:setField("place_location_8");
     obj.edit201:setName("edit201");
 
-    obj.edit202 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit202 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit202:setParent(obj.layout167);
     obj.edit202:setLeft(210);
     obj.edit202:setTop(0);
@@ -9045,7 +9045,7 @@ function newfrmMageDarkAges()
     obj.edit202:setField("place_description_8");
     obj.edit202:setName("edit202");
 
-    obj.layout168 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout168 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout168:setParent(obj.layout165);
     obj.layout168:setLeft(0);
     obj.layout168:setTop(100);
@@ -9053,7 +9053,7 @@ function newfrmMageDarkAges()
     obj.layout168:setHeight(25);
     obj.layout168:setName("layout168");
 
-    obj.edit203 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit203 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit203:setParent(obj.layout168);
     obj.edit203:setLeft(10);
     obj.edit203:setTop(0);
@@ -9062,7 +9062,7 @@ function newfrmMageDarkAges()
     obj.edit203:setField("place_location_9");
     obj.edit203:setName("edit203");
 
-    obj.edit204 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit204 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit204:setParent(obj.layout168);
     obj.edit204:setLeft(210);
     obj.edit204:setTop(0);
@@ -9071,7 +9071,7 @@ function newfrmMageDarkAges()
     obj.edit204:setField("place_description_9");
     obj.edit204:setName("edit204");
 
-    obj.layout169 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout169 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout169:setParent(obj.layout165);
     obj.layout169:setLeft(0);
     obj.layout169:setTop(125);
@@ -9079,7 +9079,7 @@ function newfrmMageDarkAges()
     obj.layout169:setHeight(25);
     obj.layout169:setName("layout169");
 
-    obj.edit205 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit205 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit205:setParent(obj.layout169);
     obj.edit205:setLeft(10);
     obj.edit205:setTop(0);
@@ -9088,7 +9088,7 @@ function newfrmMageDarkAges()
     obj.edit205:setField("place_location_10");
     obj.edit205:setName("edit205");
 
-    obj.edit206 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit206 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit206:setParent(obj.layout169);
     obj.edit206:setLeft(210);
     obj.edit206:setTop(0);
@@ -9097,7 +9097,7 @@ function newfrmMageDarkAges()
     obj.edit206:setField("place_description_10");
     obj.edit206:setName("edit206");
 
-    obj.layout170 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout170 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout170:setParent(obj.layout165);
     obj.layout170:setLeft(0);
     obj.layout170:setTop(150);
@@ -9105,7 +9105,7 @@ function newfrmMageDarkAges()
     obj.layout170:setHeight(25);
     obj.layout170:setName("layout170");
 
-    obj.edit207 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit207 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit207:setParent(obj.layout170);
     obj.edit207:setLeft(10);
     obj.edit207:setTop(0);
@@ -9114,7 +9114,7 @@ function newfrmMageDarkAges()
     obj.edit207:setField("place_location_11");
     obj.edit207:setName("edit207");
 
-    obj.edit208 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit208 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit208:setParent(obj.layout170);
     obj.edit208:setLeft(210);
     obj.edit208:setTop(0);
@@ -9123,7 +9123,7 @@ function newfrmMageDarkAges()
     obj.edit208:setField("place_description_11");
     obj.edit208:setName("edit208");
 
-    obj.layout171 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout171 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout171:setParent(obj.layout165);
     obj.layout171:setLeft(0);
     obj.layout171:setTop(175);
@@ -9131,7 +9131,7 @@ function newfrmMageDarkAges()
     obj.layout171:setHeight(25);
     obj.layout171:setName("layout171");
 
-    obj.edit209 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit209 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit209:setParent(obj.layout171);
     obj.edit209:setLeft(10);
     obj.edit209:setTop(0);
@@ -9140,7 +9140,7 @@ function newfrmMageDarkAges()
     obj.edit209:setField("place_location_12");
     obj.edit209:setName("edit209");
 
-    obj.edit210 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit210 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit210:setParent(obj.layout171);
     obj.edit210:setLeft(210);
     obj.edit210:setTop(0);
@@ -9149,23 +9149,23 @@ function newfrmMageDarkAges()
     obj.edit210:setField("place_description_12");
     obj.edit210:setName("edit210");
 
-    obj.tab5 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab5 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab5:setParent(obj.tabControl1);
     obj.tab5:setTitle("Background");
     obj.tab5:setName("tab5");
 
-    obj.frmMDA20_5 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmMDA20_5 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmMDA20_5:setParent(obj.tab5);
     obj.frmMDA20_5:setName("frmMDA20_5");
     obj.frmMDA20_5:setAlign("client");
     obj.frmMDA20_5:setTheme("dark");
 
-    obj.scrollBox5 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox5 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox5:setParent(obj.frmMDA20_5);
     obj.scrollBox5:setAlign("client");
     obj.scrollBox5:setName("scrollBox5");
 
-    obj.layout172 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout172 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout172:setParent(obj.scrollBox5);
     obj.layout172:setLeft(0);
     obj.layout172:setTop(0);
@@ -9173,7 +9173,7 @@ function newfrmMageDarkAges()
     obj.layout172:setHeight(95);
     obj.layout172:setName("layout172");
 
-    obj.rectangle41 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle41 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle41:setParent(obj.layout172);
     obj.rectangle41:setAlign("client");
     obj.rectangle41:setColor("black");
@@ -9182,7 +9182,7 @@ function newfrmMageDarkAges()
     obj.rectangle41:setCornerType("innerLine");
     obj.rectangle41:setName("rectangle41");
 
-    obj.layout173 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout173 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout173:setParent(obj.layout172);
     obj.layout173:setLeft(5);
     obj.layout173:setTop(5);
@@ -9190,7 +9190,7 @@ function newfrmMageDarkAges()
     obj.layout173:setHeight(25);
     obj.layout173:setName("layout173");
 
-    obj.label104 = gui.fromHandle(_obj_newObject("label"));
+    obj.label104 = GUI.fromHandle(_obj_newObject("label"));
     obj.label104:setParent(obj.layout173);
     obj.label104:setLeft(0);
     obj.label104:setTop(5);
@@ -9200,7 +9200,7 @@ function newfrmMageDarkAges()
     obj.label104:setHorzTextAlign("trailing");
     obj.label104:setName("label104");
 
-    obj.edit211 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit211 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit211:setParent(obj.layout173);
     obj.edit211:setLeft(110);
     obj.edit211:setTop(0);
@@ -9209,7 +9209,7 @@ function newfrmMageDarkAges()
     obj.edit211:setField("desc_sexo");
     obj.edit211:setName("edit211");
 
-    obj.layout174 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout174 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout174:setParent(obj.layout172);
     obj.layout174:setLeft(320);
     obj.layout174:setTop(5);
@@ -9217,7 +9217,7 @@ function newfrmMageDarkAges()
     obj.layout174:setHeight(25);
     obj.layout174:setName("layout174");
 
-    obj.label105 = gui.fromHandle(_obj_newObject("label"));
+    obj.label105 = GUI.fromHandle(_obj_newObject("label"));
     obj.label105:setParent(obj.layout174);
     obj.label105:setLeft(0);
     obj.label105:setTop(5);
@@ -9227,7 +9227,7 @@ function newfrmMageDarkAges()
     obj.label105:setHorzTextAlign("trailing");
     obj.label105:setName("label105");
 
-    obj.edit212 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit212 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit212:setParent(obj.layout174);
     obj.edit212:setLeft(110);
     obj.edit212:setTop(0);
@@ -9236,7 +9236,7 @@ function newfrmMageDarkAges()
     obj.edit212:setField("desc_altura");
     obj.edit212:setName("edit212");
 
-    obj.layout175 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout175 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout175:setParent(obj.layout172);
     obj.layout175:setLeft(585);
     obj.layout175:setTop(5);
@@ -9244,7 +9244,7 @@ function newfrmMageDarkAges()
     obj.layout175:setHeight(25);
     obj.layout175:setName("layout175");
 
-    obj.label106 = gui.fromHandle(_obj_newObject("label"));
+    obj.label106 = GUI.fromHandle(_obj_newObject("label"));
     obj.label106:setParent(obj.layout175);
     obj.label106:setLeft(0);
     obj.label106:setTop(5);
@@ -9254,7 +9254,7 @@ function newfrmMageDarkAges()
     obj.label106:setHorzTextAlign("trailing");
     obj.label106:setName("label106");
 
-    obj.edit213 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit213 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit213:setParent(obj.layout175);
     obj.edit213:setLeft(110);
     obj.edit213:setTop(0);
@@ -9263,7 +9263,7 @@ function newfrmMageDarkAges()
     obj.edit213:setField("desc_olhos");
     obj.edit213:setName("edit213");
 
-    obj.layout176 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout176 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout176:setParent(obj.layout172);
     obj.layout176:setLeft(5);
     obj.layout176:setTop(35);
@@ -9271,7 +9271,7 @@ function newfrmMageDarkAges()
     obj.layout176:setHeight(25);
     obj.layout176:setName("layout176");
 
-    obj.label107 = gui.fromHandle(_obj_newObject("label"));
+    obj.label107 = GUI.fromHandle(_obj_newObject("label"));
     obj.label107:setParent(obj.layout176);
     obj.label107:setLeft(0);
     obj.label107:setTop(5);
@@ -9281,7 +9281,7 @@ function newfrmMageDarkAges()
     obj.label107:setHorzTextAlign("trailing");
     obj.label107:setName("label107");
 
-    obj.edit214 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit214 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit214:setParent(obj.layout176);
     obj.edit214:setLeft(110);
     obj.edit214:setTop(0);
@@ -9290,7 +9290,7 @@ function newfrmMageDarkAges()
     obj.edit214:setField("desc_idade");
     obj.edit214:setName("edit214");
 
-    obj.layout177 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout177 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout177:setParent(obj.layout172);
     obj.layout177:setLeft(320);
     obj.layout177:setTop(35);
@@ -9298,7 +9298,7 @@ function newfrmMageDarkAges()
     obj.layout177:setHeight(25);
     obj.layout177:setName("layout177");
 
-    obj.label108 = gui.fromHandle(_obj_newObject("label"));
+    obj.label108 = GUI.fromHandle(_obj_newObject("label"));
     obj.label108:setParent(obj.layout177);
     obj.label108:setLeft(0);
     obj.label108:setTop(5);
@@ -9308,7 +9308,7 @@ function newfrmMageDarkAges()
     obj.label108:setHorzTextAlign("trailing");
     obj.label108:setName("label108");
 
-    obj.edit215 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit215 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit215:setParent(obj.layout177);
     obj.edit215:setLeft(110);
     obj.edit215:setTop(0);
@@ -9317,7 +9317,7 @@ function newfrmMageDarkAges()
     obj.edit215:setField("desc_peso");
     obj.edit215:setName("edit215");
 
-    obj.layout178 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout178 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout178:setParent(obj.layout172);
     obj.layout178:setLeft(585);
     obj.layout178:setTop(35);
@@ -9325,7 +9325,7 @@ function newfrmMageDarkAges()
     obj.layout178:setHeight(25);
     obj.layout178:setName("layout178");
 
-    obj.label109 = gui.fromHandle(_obj_newObject("label"));
+    obj.label109 = GUI.fromHandle(_obj_newObject("label"));
     obj.label109:setParent(obj.layout178);
     obj.label109:setLeft(0);
     obj.label109:setTop(5);
@@ -9335,7 +9335,7 @@ function newfrmMageDarkAges()
     obj.label109:setHorzTextAlign("trailing");
     obj.label109:setName("label109");
 
-    obj.edit216 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit216 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit216:setParent(obj.layout178);
     obj.edit216:setLeft(110);
     obj.edit216:setTop(0);
@@ -9344,7 +9344,7 @@ function newfrmMageDarkAges()
     obj.edit216:setField("desc_cabelo");
     obj.edit216:setName("edit216");
 
-    obj.layout179 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout179 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout179:setParent(obj.layout172);
     obj.layout179:setLeft(5);
     obj.layout179:setTop(65);
@@ -9352,7 +9352,7 @@ function newfrmMageDarkAges()
     obj.layout179:setHeight(25);
     obj.layout179:setName("layout179");
 
-    obj.label110 = gui.fromHandle(_obj_newObject("label"));
+    obj.label110 = GUI.fromHandle(_obj_newObject("label"));
     obj.label110:setParent(obj.layout179);
     obj.label110:setLeft(0);
     obj.label110:setTop(5);
@@ -9362,7 +9362,7 @@ function newfrmMageDarkAges()
     obj.label110:setHorzTextAlign("trailing");
     obj.label110:setName("label110");
 
-    obj.edit217 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit217 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit217:setParent(obj.layout179);
     obj.edit217:setLeft(110);
     obj.edit217:setTop(0);
@@ -9371,7 +9371,7 @@ function newfrmMageDarkAges()
     obj.edit217:setField("desc_idadeAparente");
     obj.edit217:setName("edit217");
 
-    obj.layout180 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout180 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout180:setParent(obj.layout172);
     obj.layout180:setLeft(320);
     obj.layout180:setTop(65);
@@ -9379,7 +9379,7 @@ function newfrmMageDarkAges()
     obj.layout180:setHeight(25);
     obj.layout180:setName("layout180");
 
-    obj.label111 = gui.fromHandle(_obj_newObject("label"));
+    obj.label111 = GUI.fromHandle(_obj_newObject("label"));
     obj.label111:setParent(obj.layout180);
     obj.label111:setLeft(0);
     obj.label111:setTop(5);
@@ -9389,7 +9389,7 @@ function newfrmMageDarkAges()
     obj.label111:setHorzTextAlign("trailing");
     obj.label111:setName("label111");
 
-    obj.edit218 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit218 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit218:setParent(obj.layout180);
     obj.edit218:setLeft(110);
     obj.edit218:setTop(0);
@@ -9398,7 +9398,7 @@ function newfrmMageDarkAges()
     obj.edit218:setField("desc_nationality");
     obj.edit218:setName("edit218");
 
-    obj.layout181 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout181 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout181:setParent(obj.layout172);
     obj.layout181:setLeft(585);
     obj.layout181:setTop(65);
@@ -9406,7 +9406,7 @@ function newfrmMageDarkAges()
     obj.layout181:setHeight(25);
     obj.layout181:setName("layout181");
 
-    obj.label112 = gui.fromHandle(_obj_newObject("label"));
+    obj.label112 = GUI.fromHandle(_obj_newObject("label"));
     obj.label112:setParent(obj.layout181);
     obj.label112:setLeft(0);
     obj.label112:setTop(5);
@@ -9416,7 +9416,7 @@ function newfrmMageDarkAges()
     obj.label112:setHorzTextAlign("trailing");
     obj.label112:setName("label112");
 
-    obj.edit219 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit219 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit219:setParent(obj.layout181);
     obj.edit219:setLeft(110);
     obj.edit219:setTop(0);
@@ -9425,7 +9425,7 @@ function newfrmMageDarkAges()
     obj.edit219:setField("desc_race");
     obj.edit219:setName("edit219");
 
-    obj.layout182 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout182 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout182:setParent(obj.scrollBox5);
     obj.layout182:setLeft(0);
     obj.layout182:setTop(105);
@@ -9433,7 +9433,7 @@ function newfrmMageDarkAges()
     obj.layout182:setHeight(175);
     obj.layout182:setName("layout182");
 
-    obj.rectangle42 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle42 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle42:setParent(obj.layout182);
     obj.rectangle42:setLeft(0);
     obj.rectangle42:setTop(0);
@@ -9445,7 +9445,7 @@ function newfrmMageDarkAges()
     obj.rectangle42:setCornerType("innerLine");
     obj.rectangle42:setName("rectangle42");
 
-    obj.label113 = gui.fromHandle(_obj_newObject("label"));
+    obj.label113 = GUI.fromHandle(_obj_newObject("label"));
     obj.label113:setParent(obj.layout182);
     obj.label113:setLeft(0);
     obj.label113:setTop(0);
@@ -9455,7 +9455,7 @@ function newfrmMageDarkAges()
     obj.label113:setHorzTextAlign("center");
     obj.label113:setName("label113");
 
-    obj.textEditor17 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor17 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor17:setParent(obj.layout182);
     obj.textEditor17:setLeft(10);
     obj.textEditor17:setTop(25);
@@ -9464,7 +9464,7 @@ function newfrmMageDarkAges()
     obj.textEditor17:setField("aparencia");
     obj.textEditor17:setName("textEditor17");
 
-    obj.layout183 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout183 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout183:setParent(obj.scrollBox5);
     obj.layout183:setLeft(0);
     obj.layout183:setTop(285);
@@ -9472,7 +9472,7 @@ function newfrmMageDarkAges()
     obj.layout183:setHeight(175);
     obj.layout183:setName("layout183");
 
-    obj.rectangle43 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle43 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle43:setParent(obj.layout183);
     obj.rectangle43:setLeft(0);
     obj.rectangle43:setTop(0);
@@ -9484,7 +9484,7 @@ function newfrmMageDarkAges()
     obj.rectangle43:setCornerType("innerLine");
     obj.rectangle43:setName("rectangle43");
 
-    obj.label114 = gui.fromHandle(_obj_newObject("label"));
+    obj.label114 = GUI.fromHandle(_obj_newObject("label"));
     obj.label114:setParent(obj.layout183);
     obj.label114:setLeft(0);
     obj.label114:setTop(0);
@@ -9494,7 +9494,7 @@ function newfrmMageDarkAges()
     obj.label114:setHorzTextAlign("center");
     obj.label114:setName("label114");
 
-    obj.textEditor18 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor18 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor18:setParent(obj.layout183);
     obj.textEditor18:setLeft(15);
     obj.textEditor18:setTop(25);
@@ -9503,7 +9503,7 @@ function newfrmMageDarkAges()
     obj.textEditor18:setField("derangements");
     obj.textEditor18:setName("textEditor18");
 
-    obj.layout184 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout184 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout184:setParent(obj.scrollBox5);
     obj.layout184:setLeft(205);
     obj.layout184:setTop(285);
@@ -9511,7 +9511,7 @@ function newfrmMageDarkAges()
     obj.layout184:setHeight(175);
     obj.layout184:setName("layout184");
 
-    obj.rectangle44 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle44 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle44:setParent(obj.layout184);
     obj.rectangle44:setLeft(0);
     obj.rectangle44:setTop(0);
@@ -9523,7 +9523,7 @@ function newfrmMageDarkAges()
     obj.rectangle44:setCornerType("innerLine");
     obj.rectangle44:setName("rectangle44");
 
-    obj.label115 = gui.fromHandle(_obj_newObject("label"));
+    obj.label115 = GUI.fromHandle(_obj_newObject("label"));
     obj.label115:setParent(obj.layout184);
     obj.label115:setLeft(0);
     obj.label115:setTop(0);
@@ -9533,7 +9533,7 @@ function newfrmMageDarkAges()
     obj.label115:setHorzTextAlign("center");
     obj.label115:setName("label115");
 
-    obj.textEditor19 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor19 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor19:setParent(obj.layout184);
     obj.textEditor19:setLeft(15);
     obj.textEditor19:setTop(25);
@@ -9542,7 +9542,7 @@ function newfrmMageDarkAges()
     obj.textEditor19:setField("goals");
     obj.textEditor19:setName("textEditor19");
 
-    obj.layout185 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout185 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout185:setParent(obj.scrollBox5);
     obj.layout185:setLeft(0);
     obj.layout185:setTop(465);
@@ -9550,7 +9550,7 @@ function newfrmMageDarkAges()
     obj.layout185:setHeight(175);
     obj.layout185:setName("layout185");
 
-    obj.rectangle45 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle45 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle45:setParent(obj.layout185);
     obj.rectangle45:setLeft(0);
     obj.rectangle45:setTop(0);
@@ -9562,7 +9562,7 @@ function newfrmMageDarkAges()
     obj.rectangle45:setCornerType("innerLine");
     obj.rectangle45:setName("rectangle45");
 
-    obj.label116 = gui.fromHandle(_obj_newObject("label"));
+    obj.label116 = GUI.fromHandle(_obj_newObject("label"));
     obj.label116:setParent(obj.layout185);
     obj.label116:setLeft(0);
     obj.label116:setTop(0);
@@ -9572,7 +9572,7 @@ function newfrmMageDarkAges()
     obj.label116:setHorzTextAlign("center");
     obj.label116:setName("label116");
 
-    obj.textEditor20 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor20 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor20:setParent(obj.layout185);
     obj.textEditor20:setLeft(10);
     obj.textEditor20:setTop(25);
@@ -9581,7 +9581,7 @@ function newfrmMageDarkAges()
     obj.textEditor20:setField("idiomas");
     obj.textEditor20:setName("textEditor20");
 
-    obj.layout186 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout186 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout186:setParent(obj.scrollBox5);
     obj.layout186:setLeft(410);
     obj.layout186:setTop(105);
@@ -9589,7 +9589,7 @@ function newfrmMageDarkAges()
     obj.layout186:setHeight(535);
     obj.layout186:setName("layout186");
 
-    obj.rectangle46 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle46 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle46:setParent(obj.layout186);
     obj.rectangle46:setAlign("client");
     obj.rectangle46:setColor("black");
@@ -9598,7 +9598,7 @@ function newfrmMageDarkAges()
     obj.rectangle46:setCornerType("innerLine");
     obj.rectangle46:setName("rectangle46");
 
-    obj.label117 = gui.fromHandle(_obj_newObject("label"));
+    obj.label117 = GUI.fromHandle(_obj_newObject("label"));
     obj.label117:setParent(obj.layout186);
     obj.label117:setLeft(0);
     obj.label117:setTop(0);
@@ -9608,7 +9608,7 @@ function newfrmMageDarkAges()
     obj.label117:setHorzTextAlign("center");
     obj.label117:setName("label117");
 
-    obj.richEdit1 = gui.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit1:setParent(obj.layout186);
     obj.richEdit1:setLeft(10);
     obj.richEdit1:setTop(25);
@@ -9620,23 +9620,23 @@ function newfrmMageDarkAges()
     lfm_setPropAsString(obj.richEdit1, "defaultFontColor",  "white");
     obj.richEdit1:setName("richEdit1");
 
-    obj.tab6 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab6 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab6:setParent(obj.tabControl1);
     obj.tab6:setTitle("Notes");
     obj.tab6:setName("tab6");
 
-    obj.frmMDA20_6 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmMDA20_6 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmMDA20_6:setParent(obj.tab6);
     obj.frmMDA20_6:setName("frmMDA20_6");
     obj.frmMDA20_6:setAlign("client");
     obj.frmMDA20_6:setTheme("dark");
 
-    obj.scrollBox6 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox6 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox6:setParent(obj.frmMDA20_6);
     obj.scrollBox6:setAlign("client");
     obj.scrollBox6:setName("scrollBox6");
 
-    obj.layout187 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout187 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout187:setParent(obj.scrollBox6);
     obj.layout187:setLeft(0);
     obj.layout187:setTop(0);
@@ -9644,7 +9644,7 @@ function newfrmMageDarkAges()
     obj.layout187:setHeight(580);
     obj.layout187:setName("layout187");
 
-    obj.rectangle47 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle47 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle47:setParent(obj.layout187);
     obj.rectangle47:setLeft(0);
     obj.rectangle47:setTop(0);
@@ -9656,7 +9656,7 @@ function newfrmMageDarkAges()
     obj.rectangle47:setCornerType("innerLine");
     obj.rectangle47:setName("rectangle47");
 
-    obj.label118 = gui.fromHandle(_obj_newObject("label"));
+    obj.label118 = GUI.fromHandle(_obj_newObject("label"));
     obj.label118:setParent(obj.layout187);
     obj.label118:setLeft(0);
     obj.label118:setTop(0);
@@ -9666,7 +9666,7 @@ function newfrmMageDarkAges()
     obj.label118:setHorzTextAlign("center");
     obj.label118:setName("label118");
 
-    obj.textEditor21 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor21 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor21:setParent(obj.layout187);
     obj.textEditor21:setLeft(10);
     obj.textEditor21:setTop(25);
@@ -9675,7 +9675,7 @@ function newfrmMageDarkAges()
     obj.textEditor21:setField("anotacoes1");
     obj.textEditor21:setName("textEditor21");
 
-    obj.layout188 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout188 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout188:setParent(obj.scrollBox6);
     obj.layout188:setLeft(410);
     obj.layout188:setTop(0);
@@ -9683,7 +9683,7 @@ function newfrmMageDarkAges()
     obj.layout188:setHeight(580);
     obj.layout188:setName("layout188");
 
-    obj.rectangle48 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle48 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle48:setParent(obj.layout188);
     obj.rectangle48:setLeft(0);
     obj.rectangle48:setTop(0);
@@ -9695,7 +9695,7 @@ function newfrmMageDarkAges()
     obj.rectangle48:setCornerType("innerLine");
     obj.rectangle48:setName("rectangle48");
 
-    obj.label119 = gui.fromHandle(_obj_newObject("label"));
+    obj.label119 = GUI.fromHandle(_obj_newObject("label"));
     obj.label119:setParent(obj.layout188);
     obj.label119:setLeft(0);
     obj.label119:setTop(0);
@@ -9705,7 +9705,7 @@ function newfrmMageDarkAges()
     obj.label119:setHorzTextAlign("center");
     obj.label119:setName("label119");
 
-    obj.textEditor22 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor22 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor22:setParent(obj.layout188);
     obj.textEditor22:setLeft(10);
     obj.textEditor22:setTop(25);
@@ -9714,7 +9714,7 @@ function newfrmMageDarkAges()
     obj.textEditor22:setField("anotacoes2");
     obj.textEditor22:setName("textEditor22");
 
-    obj.layout189 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout189 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout189:setParent(obj.scrollBox6);
     obj.layout189:setLeft(820);
     obj.layout189:setTop(0);
@@ -9722,7 +9722,7 @@ function newfrmMageDarkAges()
     obj.layout189:setHeight(580);
     obj.layout189:setName("layout189");
 
-    obj.rectangle49 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle49 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle49:setParent(obj.layout189);
     obj.rectangle49:setLeft(0);
     obj.rectangle49:setTop(0);
@@ -9734,7 +9734,7 @@ function newfrmMageDarkAges()
     obj.rectangle49:setCornerType("innerLine");
     obj.rectangle49:setName("rectangle49");
 
-    obj.label120 = gui.fromHandle(_obj_newObject("label"));
+    obj.label120 = GUI.fromHandle(_obj_newObject("label"));
     obj.label120:setParent(obj.layout189);
     obj.label120:setLeft(0);
     obj.label120:setTop(0);
@@ -9744,7 +9744,7 @@ function newfrmMageDarkAges()
     obj.label120:setHorzTextAlign("center");
     obj.label120:setName("label120");
 
-    obj.textEditor23 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor23 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor23:setParent(obj.layout189);
     obj.textEditor23:setLeft(10);
     obj.textEditor23:setTop(25);
@@ -9753,23 +9753,23 @@ function newfrmMageDarkAges()
     obj.textEditor23:setField("anotacoes3");
     obj.textEditor23:setName("textEditor23");
 
-    obj.tab7 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab7 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab7:setParent(obj.tabControl1);
     obj.tab7:setTitle("Credits");
     obj.tab7:setName("tab7");
 
-    obj.frmMDA20_7 = gui.fromHandle(_obj_newObject("form"));
+    obj.frmMDA20_7 = GUI.fromHandle(_obj_newObject("form"));
     obj.frmMDA20_7:setParent(obj.tab7);
     obj.frmMDA20_7:setName("frmMDA20_7");
     obj.frmMDA20_7:setAlign("client");
     obj.frmMDA20_7:setTheme("dark");
 
-    obj.scrollBox7 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox7 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox7:setParent(obj.frmMDA20_7);
     obj.scrollBox7:setAlign("client");
     obj.scrollBox7:setName("scrollBox7");
 
-    obj.image11 = gui.fromHandle(_obj_newObject("image"));
+    obj.image11 = GUI.fromHandle(_obj_newObject("image"));
     obj.image11:setParent(obj.scrollBox7);
     obj.image11:setLeft(0);
     obj.image11:setTop(0);
@@ -9779,7 +9779,7 @@ function newfrmMageDarkAges()
     obj.image11:setSRC("/MageDarkAges/images/mage.png");
     obj.image11:setName("image11");
 
-    obj.image12 = gui.fromHandle(_obj_newObject("image"));
+    obj.image12 = GUI.fromHandle(_obj_newObject("image"));
     obj.image12:setParent(obj.scrollBox7);
     obj.image12:setLeft(550);
     obj.image12:setTop(0);
@@ -9789,7 +9789,7 @@ function newfrmMageDarkAges()
     obj.image12:setSRC("/MageDarkAges/images/RPGmeister.jpg");
     obj.image12:setName("image12");
 
-    obj.layout190 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout190 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout190:setParent(obj.scrollBox7);
     obj.layout190:setLeft(850);
     obj.layout190:setTop(0);
@@ -9797,7 +9797,7 @@ function newfrmMageDarkAges()
     obj.layout190:setHeight(310);
     obj.layout190:setName("layout190");
 
-    obj.rectangle50 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle50 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle50:setParent(obj.layout190);
     obj.rectangle50:setAlign("client");
     obj.rectangle50:setColor("black");
@@ -9806,7 +9806,7 @@ function newfrmMageDarkAges()
     obj.rectangle50:setCornerType("innerLine");
     obj.rectangle50:setName("rectangle50");
 
-    obj.label121 = gui.fromHandle(_obj_newObject("label"));
+    obj.label121 = GUI.fromHandle(_obj_newObject("label"));
     obj.label121:setParent(obj.layout190);
     obj.label121:setLeft(0);
     obj.label121:setTop(10);
@@ -9816,7 +9816,7 @@ function newfrmMageDarkAges()
     obj.label121:setHorzTextAlign("center");
     obj.label121:setName("label121");
 
-    obj.label122 = gui.fromHandle(_obj_newObject("label"));
+    obj.label122 = GUI.fromHandle(_obj_newObject("label"));
     obj.label122:setParent(obj.layout190);
     obj.label122:setLeft(0);
     obj.label122:setTop(35);
@@ -9826,7 +9826,7 @@ function newfrmMageDarkAges()
     obj.label122:setHorzTextAlign("center");
     obj.label122:setName("label122");
 
-    obj.label123 = gui.fromHandle(_obj_newObject("label"));
+    obj.label123 = GUI.fromHandle(_obj_newObject("label"));
     obj.label123:setParent(obj.layout190);
     obj.label123:setLeft(0);
     obj.label123:setTop(60);
@@ -9837,7 +9837,7 @@ function newfrmMageDarkAges()
     obj.label123:setFontSize(13);
     obj.label123:setName("label123");
 
-    obj.label124 = gui.fromHandle(_obj_newObject("label"));
+    obj.label124 = GUI.fromHandle(_obj_newObject("label"));
     obj.label124:setParent(obj.layout190);
     obj.label124:setLeft(0);
     obj.label124:setTop(85);
@@ -9847,7 +9847,7 @@ function newfrmMageDarkAges()
     obj.label124:setHorzTextAlign("center");
     obj.label124:setName("label124");
 
-    obj.label125 = gui.fromHandle(_obj_newObject("label"));
+    obj.label125 = GUI.fromHandle(_obj_newObject("label"));
     obj.label125:setParent(obj.layout190);
     obj.label125:setLeft(0);
     obj.label125:setTop(110);
@@ -9857,7 +9857,7 @@ function newfrmMageDarkAges()
     obj.label125:setHorzTextAlign("center");
     obj.label125:setName("label125");
 
-    obj.label126 = gui.fromHandle(_obj_newObject("label"));
+    obj.label126 = GUI.fromHandle(_obj_newObject("label"));
     obj.label126:setParent(obj.layout190);
     obj.label126:setLeft(0);
     obj.label126:setTop(160);
@@ -9867,7 +9867,7 @@ function newfrmMageDarkAges()
     obj.label126:setHorzTextAlign("center");
     obj.label126:setName("label126");
 
-    obj.label127 = gui.fromHandle(_obj_newObject("label"));
+    obj.label127 = GUI.fromHandle(_obj_newObject("label"));
     obj.label127:setParent(obj.layout190);
     obj.label127:setLeft(0);
     obj.label127:setTop(185);
@@ -9877,7 +9877,7 @@ function newfrmMageDarkAges()
     obj.label127:setHorzTextAlign("center");
     obj.label127:setName("label127");
 
-    obj.label128 = gui.fromHandle(_obj_newObject("label"));
+    obj.label128 = GUI.fromHandle(_obj_newObject("label"));
     obj.label128:setParent(obj.layout190);
     obj.label128:setLeft(0);
     obj.label128:setTop(210);
@@ -9887,7 +9887,7 @@ function newfrmMageDarkAges()
     obj.label128:setHorzTextAlign("center");
     obj.label128:setName("label128");
 
-    obj.label129 = gui.fromHandle(_obj_newObject("label"));
+    obj.label129 = GUI.fromHandle(_obj_newObject("label"));
     obj.label129:setParent(obj.scrollBox7);
     obj.label129:setLeft(555);
     obj.label129:setTop(300);
@@ -9897,7 +9897,7 @@ function newfrmMageDarkAges()
     obj.label129:setHorzTextAlign("center");
     obj.label129:setName("label129");
 
-    obj.image13 = gui.fromHandle(_obj_newObject("image"));
+    obj.image13 = GUI.fromHandle(_obj_newObject("image"));
     obj.image13:setParent(obj.scrollBox7);
     obj.image13:setLeft(667);
     obj.image13:setTop(300);
@@ -9907,7 +9907,7 @@ function newfrmMageDarkAges()
     obj.image13:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao04.png");
     obj.image13:setName("image13");
 
-    obj.label130 = gui.fromHandle(_obj_newObject("label"));
+    obj.label130 = GUI.fromHandle(_obj_newObject("label"));
     obj.label130:setParent(obj.scrollBox7);
     obj.label130:setLeft(555);
     obj.label130:setTop(325);
@@ -9917,7 +9917,7 @@ function newfrmMageDarkAges()
     obj.label130:setHorzTextAlign("center");
     obj.label130:setName("label130");
 
-    obj.image14 = gui.fromHandle(_obj_newObject("image"));
+    obj.image14 = GUI.fromHandle(_obj_newObject("image"));
     obj.image14:setParent(obj.scrollBox7);
     obj.image14:setLeft(667);
     obj.image14:setTop(325);
@@ -9927,7 +9927,7 @@ function newfrmMageDarkAges()
     obj.image14:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/WoD20th/release.png");
     obj.image14:setName("image14");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.scrollBox7);
     obj.button3:setLeft(555);
     obj.button3:setTop(350);
@@ -9935,7 +9935,7 @@ function newfrmMageDarkAges()
     obj.button3:setText("Change Log");
     obj.button3:setName("button3");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.scrollBox7);
     obj.button4:setLeft(667);
     obj.button4:setTop(350);
@@ -9943,7 +9943,7 @@ function newfrmMageDarkAges()
     obj.button4:setText("Atualizar");
     obj.button4:setName("button4");
 
-    obj.label131 = gui.fromHandle(_obj_newObject("label"));
+    obj.label131 = GUI.fromHandle(_obj_newObject("label"));
     obj.label131:setParent(obj.scrollBox7);
     obj.label131:setLeft(555);
     obj.label131:setTop(400);
@@ -9952,7 +9952,7 @@ function newfrmMageDarkAges()
     obj.label131:setText("Conheça a Mesa:");
     obj.label131:setName("label131");
 
-    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
     obj.button5:setParent(obj.scrollBox7);
     obj.button5:setLeft(555);
     obj.button5:setTop(425);
@@ -9961,27 +9961,27 @@ function newfrmMageDarkAges()
     obj.button5:setName("button5");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclTalismans:append();
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclAides:append();
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/WoD20th/Change%20Log.txt')
         end, obj);
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/WoD20th/World%20of%20Darkness%2020th.rpk')
         end, obj);
 
     obj._e_event4 = obj.button5:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
@@ -11044,9 +11044,23 @@ function newfrmMageDarkAges()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmMageDarkAges()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmMageDarkAges();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmMageDarkAges = {
@@ -11060,7 +11074,7 @@ local _frmMageDarkAges = {
     description=""};
 
 frmMageDarkAges = _frmMageDarkAges;
-rrpg.registrarForm(_frmMageDarkAges);
-rrpg.registrarDataType(_frmMageDarkAges);
+Firecast.registrarForm(_frmMageDarkAges);
+Firecast.registrarDataType(_frmMageDarkAges);
 
 return _frmMageDarkAges;

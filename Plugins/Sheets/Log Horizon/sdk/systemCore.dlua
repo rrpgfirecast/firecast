@@ -16,4 +16,8 @@ function system.isMobile()
 	return _system_isMobile();
 end;
 
+function system.getTickCount()
+	return _system_getTickCount();
+end;
+
 return system;

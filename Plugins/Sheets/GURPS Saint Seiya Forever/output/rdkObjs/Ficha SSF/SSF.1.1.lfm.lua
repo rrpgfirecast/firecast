@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmSSF1_1()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmSSF1_1()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,14 +31,14 @@ function newfrmSSF1_1()
     obj:setHeight(25);
     obj:setTheme("dark");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setWidth(25);
     obj.button1:setHeight(25);
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
     obj.label1:setLeft(35);
     obj.label1:setTop(5);
@@ -47,7 +47,7 @@ function newfrmSSF1_1()
     obj.label1:setField("nome_vantagem");
     obj.label1:setName("label1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setLeft(140);
     obj.rectangle1:setTop(0);
@@ -58,7 +58,7 @@ function newfrmSSF1_1()
     obj.rectangle1:setStrokeSize(1);
     obj.rectangle1:setName("rectangle1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj);
     obj.label2:setLeft(140);
     obj.label2:setTop(0);
@@ -68,14 +68,14 @@ function newfrmSSF1_1()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("nome_vantagem");
     obj.dataLink1:setDefaultValue("Vantagem");
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar essa vantagem?",
             				function (confirmado)
             					if confirmado then
@@ -107,9 +107,23 @@ function newfrmSSF1_1()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmSSF1_1()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmSSF1_1();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmSSF1_1 = {
@@ -123,6 +137,6 @@ local _frmSSF1_1 = {
     description=""};
 
 frmSSF1_1 = _frmSSF1_1;
-rrpg.registrarForm(_frmSSF1_1);
+Firecast.registrarForm(_frmSSF1_1);
 
 return _frmSSF1_1;

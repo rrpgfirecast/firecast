@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmGeographySelection()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmGeographySelection()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,14 +31,14 @@ function newfrmGeographySelection()
     obj:setHeight(25);
     obj:setMargins({top=5, left=5, right=5});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setHitTest(false);
     obj.rectangle1:setName("rectangle1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setLeft(0);
     obj.edit1:setTop(0);
@@ -48,7 +48,7 @@ function newfrmGeographySelection()
     obj.edit1:setType("number");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.rectangle1);
     obj.edit2:setLeft(30);
     obj.edit2:setTop(0);
@@ -57,7 +57,7 @@ function newfrmGeographySelection()
     obj.edit2:setField("nome");
     obj.edit2:setName("edit2");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(165);
     obj.button1:setTop(0);
@@ -67,7 +67,7 @@ function newfrmGeographySelection()
     obj.button1:setName("button1");
 
     obj._e_event0 = obj.edit1:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet~= nil then
             					-- Atualiza a ordem lista a cada alteração
             					local rcl = self:findControlByName("rclDestalhesDaGeografia");
@@ -78,7 +78,7 @@ function newfrmGeographySelection()
         end, obj);
 
     obj._e_event1 = obj.edit2:addEventListener("onChange",
-        function (self)
+        function (_)
             if sheet==nil then return end;
             				if sheet.name ~= nil then
             					local btn = self:findControlByName(sheet.name);
@@ -89,7 +89,7 @@ function newfrmGeographySelection()
         end, obj);
 
     obj._e_event2 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse ponto de interesse?",
             					function (confirmado)
             						if confirmado then
@@ -129,9 +129,23 @@ function newfrmGeographySelection()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmGeographySelection()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmGeographySelection();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmGeographySelection = {
@@ -145,6 +159,6 @@ local _frmGeographySelection = {
     description=""};
 
 frmGeographySelection = _frmGeographySelection;
-rrpg.registrarForm(_frmGeographySelection);
+Firecast.registrarForm(_frmGeographySelection);
 
 return _frmGeographySelection;

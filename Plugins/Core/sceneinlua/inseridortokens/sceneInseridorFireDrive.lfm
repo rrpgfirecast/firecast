@@ -78,22 +78,14 @@
 		require("fireDrive.lua");
 		require("rrpgScene_Globals.lua");
 		local scene = nil;	
-		local ignoreRecalcWH = false;
-		local realCellWidth = 1;
-		local realCellHeight = 1;
-		local offsetCellsW = 1;
-		local offsetCellsH = 1;
-		local exibindoFOW = false;
 		
 		if not System.isMobile() then
 			self.height = 485;
 		end;
 		
 		function self:checkVisibilityOfTabControl()
-			local mustBeVisible = false;
-			local selected = self.rclListaDosTokens.selectedNode;  
-			
-			mustBeVisible = selected ~= nil;
+			local selected = self.rclListaDosTokens.selectedNode;  			
+			local mustBeVisible = selected ~= nil;
 			
 			self.dsbToken.visible = mustBeVisible;
 			self.layInfoSelectOrCreateToken.visible = not mustBeVisible; 
@@ -117,7 +109,7 @@
 						self:checkVisibilityOfTabControl();						
 					</event>
 					<event name="onCompare">               
-							return utils.compareStringPtBr(nodeA.name, nodeB.name);
+							return Utils.compareStringPtBr(nodeA.name, nodeB.name);
 					</event>
 				</recordList>
 			</rectangle>
@@ -311,9 +303,7 @@
 	</layout>
 	
 	<script><![CDATA[
-		local node = ndb.load("inseridorOptions.xml");
-
-		local oldName;
+		local node = NDB.load("inseridorOptions.xml");
 
 		if node.tokens == nil then
 			node.tokens = {};
@@ -388,14 +378,14 @@
 		end;
 
 		function self:listAllCharacters()
-			local mesa = rrpg.getMesaDe(scene);
+			local mesa = Firecast.getMesaDe(scene);
 
 			local personagens = {};
 			recursiveEnumPersonagensEmBibItem(mesa.biblioteca, personagens);
 			
 			table.sort(personagens,
 				function(left, right)
-					return utils.compareStringPtBr(left.nome, right.nome) < 0;
+					return Utils.compareStringPtBr(left.nome, right.nome) < 0;
 				end);
 				
 			local nomes = {};
@@ -428,23 +418,23 @@
 		end;
 
 		function self:openFile()
-			local node = self.rclListaDosTokens.selectedNode;
+			local selNode = self.rclListaDosTokens.selectedNode;
 			
-			if node == nil then
+			if selNode == nil then
 				return;
 			end;
 		
-			dialogs.openFile("Selecione o arquivo de imagem", "image/*", false,
+			Dialogs.openFile("Selecione o arquivo de imagem", "image/*", false,
 		        function(arquivos)
 		                local arq = arquivos[1];
 		                -- arq.name possui o nome do arquivo
 		                -- arq.stream possui o objeto stream do conteúdo 
 
-		                fireDrive.createDirectory("/uploads");
-		                fireDrive.upload("/uploads/" .. arq.name, arq.stream,
+		                FireDrive.createDirectory("/uploads");
+		                FireDrive.upload("/uploads/" .. arq.name, arq.stream,
 		                	function(fditem)
-								if node ~= nil then
-									node.image = fditem.url;
+								if selNode ~= nil then
+									selNode.image = fditem.url;
 								end;		                		
 		                	end);          
 		        end);
@@ -455,10 +445,10 @@
 			
 			if nodeToDelete ~= nil then
 		
-				dialogs.confirmYesNo(lang('scene.inseridor.labels.deleteConfirm'),
+				Dialogs.confirmYesNo(lang('scene.inseridor.labels.deleteConfirm'),
 					function (confirmado)
 						if confirmado then				
-							ndb.deleteNode(nodeToDelete);
+							NDB.deleteNode(nodeToDelete);
 							self:checkVisibilityOfTabControl();
 						end;
 					end);

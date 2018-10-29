@@ -1,4 +1,4 @@
-﻿require("rrpg.lua");
+﻿require("firecast.lua");
 require("utils.lua");
 
 --[[--------------------------------
@@ -18,7 +18,7 @@ local tempoRodadaRoleta = 35000;
 
 -- Verifica se todos os espectadores já rolaram 1d100. Se sim, automaticamente encerra o turno da roleta
 function verificarSePodeEncerrarRoundDeRoletaRussa(chat)
-	local mesa = rrpg.getMesaDe(chat);
+	local mesa = Firecast.getMesaDe(chat);
 	local roleta = chat.__roletaRussa;	-- informações da roleta ligadas ao chat.
 	
 	if mesa ~= nil and roleta ~= nil then
@@ -63,7 +63,7 @@ function comecarRoundRoletaRussa(chat)
 	chat.__roletaRussa.resultados = {};
 	
 	-- "escutar" todas as rolagens de dados que são feitas neste chat.
-	chat.__roletaRussa.idListener = rrpg.messaging.listen("ChatMessage",
+	chat.__roletaRussa.idListener = Firecast.Messaging.listen("ChatMessage",
 		function(message)
 			-- Esta pequena função é chamada toda vez que alguém rolar um dado no chat que está rodando a roleta russa
 			-- Veja na documentação do SDK3 sobre a mensagem evento "ChatMessage"
@@ -141,7 +141,7 @@ function comecarRoundRoletaRussa(chat)
 						"Rolem 1d" .. facesRoleta .."!!!!\n" ..
 						"-------------------------------------------------------------------");
 	
-	local mesa = rrpg.getMesaDe(chat);
+	local mesa = Firecast.getMesaDe(chat);
 	
 	if mesa ~= nil then
 		-- Tentar desativar a moderação da mesa.
@@ -162,7 +162,7 @@ local function getStatsRoletaRussa(chat)
 	ret.menores = {};
 	ret.naoRolaram = {};
 	ret.chat = chat;
-	ret.mesa = rrpg.getMesaDe(chat);
+	ret.mesa = Firecast.getMesaDe(chat);
 	
 	for k, v in pairs(chat.__roletaRussa.resultados) do
 		rOrd[#rOrd + 1] = {login=k, valor=v};
@@ -207,7 +207,7 @@ local function getStatsRoletaRussa(chat)
 	end;
 	
 	-- obter Não Rolaram
-	local mesa = rrpg.getMesaDe(chat);
+	local mesa = Firecast.getMesaDe(chat);
 	
 	if mesa ~= nil then
 		local jogadores = mesa.jogadores;
@@ -231,7 +231,7 @@ local function genStringIdUsuario(login, stats)
 		local jogador = stats.mesa:findJogador(login);  -- tentar localizar o jogador na mesa por login
 		
 		if jogador ~= nil then
-			return utils.removerFmtChat(jogador.nick) .. " (" .. login .. ")";  -- achou, vamos incluir o nick dele na msg.
+			return Utils.removerFmtChat(jogador.nick) .. " (" .. login .. ")";  -- achou, vamos incluir o nick dele na msg.
 		else
 			return login;
 		end;
@@ -242,7 +242,7 @@ end;
 
 -- Dado uma tabela de Estatisticas retornada pela função getStatsRoletaRussa acima, retorna um texto descrevendo os vencedores da rodada 
 local function genMaioresStr(stats)
-	local r = "";
+	local r;
 	local qt = #stats.maiores;
 	
 	if qt <= 0 then	
@@ -274,7 +274,7 @@ end;
 
 -- Dado uma tabela de Estatisticas retornada pela função getStatsRoletaRussa acima, retorna um texto descrevendo os perdedores da rodada
 local function genMenoresStr(stats)
-	local r = "";
+	local r;
 	local qt = #stats.menores;
 	
 	if qt <= 0 then	
@@ -307,7 +307,7 @@ end;
 -- Dado uma tabela de Estatisticas retornada pela função getStatsRoletaRussa acima, retorna um texto descrevendo aqueles que não rolaram dado..
 local function genNaoRolaramStr(stats)
 	local qt = #stats.naoRolaram;
-	local r = "";
+	local r;
 	
 	if qt <= 0 then
 		return "";
@@ -365,7 +365,7 @@ function finalizarRoundRoletaRussa(chat)
 		roleta.idTimeout = nil;
 		
 		-- Vamos desativar nosso "escutador" de dados da mesa
-		rrpg.messaging.unlisten(roleta.idListener);
+		Firecast.Messaging.unlisten(roleta.idListener);
 		roleta.idListener = nil;		
 	end;
 	
@@ -376,7 +376,7 @@ function finalizarRoundRoletaRussa(chat)
 		local perdStr = genMenoresStr(stats);
 		local naoRolaramStr = genNaoRolaramStr(stats);
 
-		local mesa = rrpg.getMesaDe(chat);
+		local mesa = Firecast.getMesaDe(chat);
 		
 		if mesa ~= nil then
 			mesa:requestSetModerada(true);  -- Tentar ativar a moderação da mesa...
@@ -396,7 +396,7 @@ function finalizarRoundRoletaRussa(chat)
 end;
 
 -- Abaixo, o tratador dos comandos /roleta , /fimRoleta e /statRoleta
-rrpg.messaging.listen("HandleChatCommand",
+Firecast.Messaging.listen("HandleChatCommand",
 	function(message)
 		-- o usuário digita /comando na mesa.... vamos ver se é um dos que conseguimos tratar!
 		--local comando = string.upper(removerAcentos(message.comando));
@@ -415,7 +415,7 @@ rrpg.messaging.listen("HandleChatCommand",
 	end);
 	
 -- Abaixo, quando o usuário digitar /help ou /?, vamos informar que existem os seguintes comandos também...
-rrpg.messaging.listen("ListChatCommands",
+Firecast.Messaging.listen("ListChatCommands",
 	function(message)
 		message.response = {{comando="/roleta", descricao="Inicia nova Rodada do jogo Roleta Russa"},
 							{comando="/fimRoleta", descricao="Força o fim da rodada do jogo Roleta Russa"},

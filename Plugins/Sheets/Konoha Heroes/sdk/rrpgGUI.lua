@@ -2,8 +2,8 @@ local objs = require("rrpgObjs.lua");
 local ndb = require("ndb.lua");
 
 gui = {}
+GUI = gui;
 
-local localGui = gui;
 local guiLoaders = {};
 
 gui.guiLoaders = guiLoaders;
@@ -248,7 +248,7 @@ local function __lockFormWithActivity(form, msg)
 		thePopup.height = 50;		
 		thePopup.cancelable = false;
 		thePopup.drawContainer = false;
-		
+		thePopup.autoScopeNode = false;	
 		
 		thePopup.__indicator = gui.newActivityIndicator();
 		thePopup.__indicator.align = "client";
@@ -318,7 +318,6 @@ end;
 
 local function formLayoutFromHandle(handle)
 	local ctrl = layoutFromHandle(handle);
-	local self = ctrl;
 	
 	rawset(ctrl, "__isFormFlag", true);
 	
@@ -391,6 +390,7 @@ local function formLayoutFromHandle(handle)
 	ctrl.eves["onHide"] = "";
 	ctrl.eves["onNodeReady"] = "";
 	ctrl.eves["onNodeUnready"] = "";
+	ctrl.eves["onNodeChanged"] = "";		
 	return ctrl;	
 end
 
@@ -404,7 +404,6 @@ guiLoaders["form"] = formLayoutFromHandle;
 
 local function popupFormFromHandle(handle)
 	local ctrl = formLayoutFromHandle(handle);
-	local self = ctrl;
 	
 	function ctrl:getDrawContainer() return _obj_getProp(self.handle, "DrawContainer"); end;
 	function ctrl:setDrawContainer(v) _obj_setProp(self.handle, "DrawContainer", v); end;	
@@ -663,12 +662,14 @@ local function labelFromHandle(handle)
 	function ctrl:getField() return _gui_getFieldName(self.handle); end;
 	function ctrl:setField(v) _gui_setFieldName(self.handle, v); end;
 	
-	function ctrl:getFrameRegion() return obj_getProp(self.handle, "FrameRegion"); end;
+	function ctrl:getFrameRegion() return _obj_getProp(self.handle, "FrameRegion"); end;
 	function ctrl:setFrameRegion(v) _obj_setProp(self.handle, "FrameRegion", v); end;	
 					
 	ctrl.props["autoSize"] = {setter = "setAutoSize", getter = "getAutoSize", tipo = "bool"};		
 	ctrl.props["field"] = {setter = "setField", getter = "getField", tipo = "string"};		
 	ctrl.props["frameRegion"] = {setter = "setFrameRegion", getter = "getFrameRegion", tipo = "string"};			
+	ctrl.props["format"] = {writeProp = "StringFormat", readProp = "StringFormat", tipo = "string"};		
+	ctrl.props["formatFloat"] = {writeProp = "StringFormatFloat", readProp = "StringFormatFloat", tipo = "string"};			
 	return ctrl;	
 end
 
@@ -838,8 +839,10 @@ local function imageFromHandle(handle)
 	image.props["showProgress"] = {setter = "setShowProgress", getter="getShowProgress", tipo="bool"};
 	image.props["field"] = {setter = "setField", getter="getField", tipo="string"};	
 	image.props["editable"] = {setter = "setEditable", getter="getEditable", tipo="bool"};		
+	image.props["naturalAnimated"] = {readProp="NaturalAnimated", tipo="bool"};				
 	image.props["naturalWidth"] = {getter="getNaturalWidth", tipo="double"};			
 	image.props["naturalHeight"] = {getter="getNaturalHeight", tipo="double"};			
+	image.props["animate"] = {readProp="Animate", writeProp="Animate", tipo="bool"};			
 	
 	image.eves["onPictureLoadedChange"] = "";
 	image.eves["onLoad"] = "";	
@@ -1272,6 +1275,8 @@ local function dataLinkFromHandle(handle)
 	ctrl.props["defaultValues"] = {setter = "setDefaultValues", getter = "getDefaultValues", tipo = "table"};			
 	
 	ctrl.eves["onChange"] = "field, oldValue, newValue";
+	ctrl.eves["onPersistedChange"] = "field, oldValue, newValue";		
+	ctrl.eves["onUserChange"] = "field, oldValue, newValue";	
 	ctrl.eves["onChildAdded"] = "node";
 	ctrl.eves["onChildRemoved"] = "node";
 	return ctrl;	
@@ -1367,6 +1372,15 @@ local function dataScopeBoxFromHandle(handle)
 	ctrl.props["scopeNode"] = {setter = "setNodeObject", getter = "getNodeObject", tipo = "table"};		
 	ctrl.props["nodeObject"] = {setter = "setNodeObject", getter = "getNodeObject", tipo = "table"};		
 	ctrl.props["node"] = {setter = "setNodeObject", getter = "getNodeObject", tipo = "table"};		
+	
+	if ctrl.eves == nil then
+		ctrl.eves = {};
+	end;
+	
+	ctrl.eves["onNodeReady"] = "";
+	ctrl.eves["onNodeUnready"] = "";
+	ctrl.eves["onNodeChanged"] = "";
+	
 	return ctrl;	
 end
 
@@ -1385,13 +1399,14 @@ local function richEditFromHandle(handle)
 	function ctrl:setField(v) _gui_setFieldName(self.handle, v); end;	
 	
 		
+	ctrl.props["animateImages"] = {readProp = "CanAnimateImages", writeProp = "CanAnimateImages", tipo = "bool"};			
 	ctrl.props["field"] = {setter = "setField", getter = "getField", tipo = "string"};		
 	ctrl.props["backgroundColor"] = {readProp = "BackgroundColor", writeProp = "BackgroundColor", tipo = "color"};
 	ctrl.props["defaultFontColor"] = {readProp = "DefaultFontColor", writeProp = "DefaultFontColor", tipo = "color"};
 	ctrl.props["defaultFontSize"] = {readProp = "DefaultFontSize", writeProp = "DefaultFontSize", tipo = "double"};	
 	ctrl.props["showToolbar"] = {readProp = "ShowToolbar", writeProp = "ShowToolbar", tipo = "bool"};
 	ctrl.props["readOnly"] = {readProp = "ReadOnly", writeProp = "ReadOnly", tipo = "bool"};
-	ctrl.props["hideSelection"] = {readProp = "HideSelectionNoFocus", writeProp = "HideSelectionNoFocus", tipo = "bool"};
+	ctrl.props["hideSelection"] = {readProp = "HideSelectionNoFocus", writeProp = "HideSelectionNoFocus", tipo = "bool"};	
 	return ctrl;	
 end
 
@@ -1452,10 +1467,15 @@ local function popupFromHandle(handle)
 	ctrl.props["nodeObject"] = {setter = "setNodeObject", getter = "getNodeObject", tipo = "table"};					
 	ctrl.props["node"] = ctrl.props["nodeObject"];
 	ctrl.props["scopeNode"] = ctrl.props["nodeObject"];
+	ctrl.props["autoScopeNode"] = {writeProp = "AutoScopeNode", readProp = "AutoScopeNode", tipo = "bool"};
 
 	ctrl.eves["onClose"] = "canceled";	
 	ctrl.eves["onCanClose"] = "canceled";
 	ctrl.eves["onCalculateSize"] = "dueToResize, width, height";
+	
+	ctrl.eves["onNodeReady"] = "";
+	ctrl.eves["onNodeUnready"] = "";
+	ctrl.eves["onNodeChanged"] = "";	
 	return ctrl;	
 end
 

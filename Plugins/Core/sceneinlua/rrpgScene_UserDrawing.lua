@@ -26,9 +26,9 @@ SceneLib.registerPlugin(
 		local defSnapToGrid = false;
 		
 		local function adicionarComPath(maker, pathData, minX, minY, maxX, maxY, ignoreAjustSize)
-			local r, g, b, aStroke, aFill;
-			r, g, b, aStroke = colorToRGBA(maker.strokeColor);
-			r, g, b, aFill = colorToRGBA(maker.fillColor);
+			local _, aStroke, aFill;
+			_, _, _, aStroke = colorToRGBA(maker.strokeColor);
+			_, _, _, aFill = colorToRGBA(maker.fillColor);
 			
 			if aFill < 0.5 and aStroke < 0.5 then
 				return;
@@ -39,7 +39,6 @@ SceneLib.registerPlugin(
 					local ud = scene.items:addUserDrawing();
 					ud:markAsMyDrawing();
 					local path = ud.canvas:addPath();
-					local scale = viewport.scale;
 										
 					local largura = (maxX - minX);
 					local altura = (maxY - minY);	
@@ -116,7 +115,7 @@ SceneLib.registerPlugin(
 		end;
 				
 		local function adicionarEllipse(maker, x, y, x2, y2)
-			local pData = nil;
+			local pData;
 			local minX = math.min(x, x2);
 			local maxX = math.max(x, x2);
 			local minY = math.min(y, y2);
@@ -148,9 +147,7 @@ SceneLib.registerPlugin(
 				function()
 					local ud = scene.items:addUserDrawing();
 					ud:markAsMyDrawing();
-					local txt = ud.canvas:addText();
-					local scale = viewport.scale;
-										
+					local txt = ud.canvas:addText();									
 						
 					txt.text = texto;
 					txt.color = cor;
@@ -180,11 +177,11 @@ SceneLib.registerPlugin(
 				if x2 ~= nil then
 					adicionarEllipse(shapeMaker, x, y, x2, y2);
 				elseif shapeMaker.shape == SHAPE_TEXT_POINT then
-					local x, y = shapeMaker:getPoint();
+					local x3, y3 = shapeMaker:getPoint();
 					
-					dialogs.inputQuery('Texto', 'Digite o texto', '', 
+					Dialogs.inputQuery('Texto', 'Digite o texto', '', 
 						function(texto)
-							adicionarTexto(shapeMaker, x, y, texto);						
+							adicionarTexto(shapeMaker, x3, y3, texto);						
 						end);
 				end;
 			end;
@@ -299,9 +296,9 @@ SceneLib.registerPlugin(
 		local transactionForColorChange = nil;
 			
 		local function applyUserDrawingDetailsColorForSelection(strokeColor, fillColor, snapToGrid)
-			local r, g, b, aStroke, aFill;
-			r, g, b, aStroke = colorToRGBA(strokeColor);
-			r, g, b, aFill = colorToRGBA(fillColor);
+			local _, aStroke, aFill;
+			_, _, _, aStroke = colorToRGBA(strokeColor);
+			_, _, _, aFill = colorToRGBA(fillColor);
 			
 			if aFill < 0.5 and aStroke < 0.5 then
 				return;

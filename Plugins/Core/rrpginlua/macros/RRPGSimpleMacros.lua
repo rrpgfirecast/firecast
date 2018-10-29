@@ -1,14 +1,13 @@
-﻿require("rrpg.lua");
+﻿require("firecast.lua");
 require("ndb.lua");
 require("utils.lua");
+require("locale.lua");
 
 globalMacrosInvalido = true;
 
 local macrosPreparado = {};
 local _mesasAnexadas = {};  -- macros de mesa (NDB de mesa).. o indice é o objeto mesa
 setmetatable(_mesasAnexadas, {__mode="k"});
-
-local _macros = {};
 
 function globalPrepareMacroName(name)
 	if type(name) == "string" then
@@ -19,11 +18,11 @@ function globalPrepareMacroName(name)
 end;
 
 function globalPrepareMacroNameForFind(name)
-	return string.upper(utils.removerAcentos(name));
+	return string.upper(Utils.removerAcentos(name));
 end;
 
 local function prepareNodeDeMacrosEm(nodoDeMacros, nodoDestino)
-	local macrosInNDB = ndb.getChildNodes(nodoDeMacros);
+	local macrosInNDB = NDB.getChildNodes(nodoDeMacros);
 	
 	for i = 1, #macrosInNDB, 1 do
 		local macroNode = macrosInNDB[i];
@@ -53,7 +52,7 @@ local function prepararMacrosParaUso()
 	end;
 	
 	if globalSimpleMacrosNDB.mesas ~= nil then	
-		local nodosDeMesas = ndb.getChildNodes(globalSimpleMacrosNDB.mesas);
+		local nodosDeMesas = NDB.getChildNodes(globalSimpleMacrosNDB.mesas);
 		
 		for i = 1, #nodosDeMesas, 1 do
 			local nodoDaMesa = nodosDeMesas[i];
@@ -61,10 +60,68 @@ local function prepararMacrosParaUso()
 			if nodoDaMesa.macros ~= nil then
 				local macrosPreparadosDeUmaMesa = {};
 				prepareNodeDeMacrosEm(nodoDaMesa.macros, macrosPreparadosDeUmaMesa);
-				macrosPreparado.mesas[ndb.getNodeName(nodoDaMesa)] = macrosPreparadosDeUmaMesa;
+				macrosPreparado.mesas[NDB.getNodeName(nodoDaMesa)] = macrosPreparadosDeUmaMesa;
 			end;	
 		end;
 	end;
+end;
+
+-- MACROS armazenados no servidor RRPG, refente à mesa
+
+local function anexarMacrosAMesa(mesa)	
+	local o = {};
+	o.invalid = true;
+		
+	mesa:abrirNDBDeMesa("RRPG_Macros",
+		function(n)
+			if n ~= nil then
+				-- Abriu!
+				o.node = n;
+				o.invalid = true;
+								
+				local obs = NDB.newObserver(n);				
+				o.observer = obs;
+							
+				obs.onDeepChildAdded = function(x)
+					o.invalid = true;
+				end;
+				
+				obs.onDeepChildRemoved = function(x)
+					o.invalid = true;
+				end;
+				
+				obs.onDeepChanged = function(node, attr, oldV)									
+					o.invalid = true;
+				end;
+				
+				obs.onStateChanged = function ()
+					o.invalid = true;
+				end;
+			end;
+		end, {criar=true});
+	
+	function o:needPrepared()
+		if o.invalid then						
+			if o.node ~= nil and o.node.macros ~= nil then
+				local macrosPreparados = {};
+				prepareNodeDeMacrosEm(o.node.macros, macrosPreparados);
+				o.macrosPreparados = macrosPreparados;				
+				o.invalid = false;
+			end;			
+		end;
+	end;
+	
+	function o:acharMacro(comando)
+		o:needPrepared();
+		
+		if o.macrosPreparados ~= nil then
+			return o.macrosPreparados[comando];
+		else
+			return nil;
+		end;
+	end;
+	
+	_mesasAnexadas[mesa] = o;
 end;
 
 function globalFindMacro(comando, mesa)
@@ -74,7 +131,7 @@ function globalFindMacro(comando, mesa)
 	
 	comando = globalPrepareMacroNameForFind(comando or "");
 	
-	local macroAchado = nil;
+	local macroAchado;
 
 	if mesa ~= nil then	
 		local codigoAsStr = tostring(mesa.codigoInterno);
@@ -154,27 +211,27 @@ function globalExecutarMacro(macro, message, endCallback)
 	
 	if not retorno then
 		local dialogs = require("dialogs.lua");
-		dialogs.showMessageDlg(msg, dialogs.DT_ERROR, {dialogs.DB_OK});
+		Dialogs.showMessageDlg(msg, dialogs.DT_ERROR, {dialogs.DB_OK});
 		--(msg);
 	end	
 end;
 
 function globalGerenciarMacros(mesa)
 	if globalSimpleMacrosNDB == nil then
-		globalSimpleMacrosNDB = ndb.load("simpleMacros.xml");
+		globalSimpleMacrosNDB = NDB.load("simpleMacros.xml");
 	end;	
 	
-	local frm = gui.newForm("frmGerenciarSimpleMacros");
+	local frm = GUI.newForm("frmGerenciarSimpleMacros");
 	frm._mesa = mesa;			
-	gui.showPopup(frm);	
+	GUI.showPopup(frm);	
 end;
 
-rrpg.messaging.listen("HandleChatCommand",
+Firecast.Messaging.listen("HandleChatCommand",
 	function(message)
 		local comando = globalPrepareMacroNameForFind(message.command or "");
 	
 		if globalSimpleMacrosNDB == nil then
-			globalSimpleMacrosNDB = ndb.load("simpleMacros.xml");
+			globalSimpleMacrosNDB = NDB.load("simpleMacros.xml");
 		end;		
 	
 		if comando == "MACROS" then
@@ -190,68 +247,10 @@ rrpg.messaging.listen("HandleChatCommand",
 		end
 	end);	
 
-rrpg.messaging.listen("ListChatCommands",
+Firecast.Messaging.listen("ListChatCommands",
 	function(message)
 		message.response = {{command="/macros", description=lang("macros.command.description")}};
 	end);
-
--- MACROS armazenados no servidor RRPG, refente à mesa
-
-local function anexarMacrosAMesa(mesa)	
-	local o = {};
-	o.invalid = true;
-		
-	mesa:abrirNDBDeMesa("RRPG_Macros",
-		function(n)
-			if n ~= nil then
-				-- Abriu!
-				o.node = n;
-				o.invalid = true;
-								
-				local obs = ndb.newObserver(n);				
-				o.observer = obs;
-							
-				obs.onDeepChildAdded = function(x)
-					o.invalid = true;
-				end;
-				
-				obs.onDeepChildRemoved = function(x)
-					o.invalid = true;
-				end;
-				
-				obs.onDeepChanged = function(node, attr, oldV)									
-					o.invalid = true;
-				end;
-				
-				obs.onStateChanged = function ()
-					o.invalid = true;
-				end;
-			end;
-		end, {criar=true});
-	
-	function o:needPrepared()
-		if o.invalid then						
-			if o.node ~= nil and o.node.macros ~= nil then
-				local macrosPreparados = {};
-				prepareNodeDeMacrosEm(o.node.macros, macrosPreparados);
-				o.macrosPreparados = macrosPreparados;				
-				o.invalid = false;
-			end;			
-		end;
-	end;
-	
-	function o:acharMacro(comando)
-		o:needPrepared();
-		
-		if o.macrosPreparados ~= nil then
-			return o.macrosPreparados[comando];
-		else
-			return nil;
-		end;
-	end;
-	
-	_mesasAnexadas[mesa] = o;
-end;
 
 local function desanexarMacrosDaMesa(mesa)
 	local o = _mesasAnexadas[mesa];
@@ -265,7 +264,7 @@ local function desanexarMacrosDaMesa(mesa)
 	end;	
 end;
 
-rrpg.messaging.listen("MesaJoined",
+Firecast.Messaging.listen("MesaJoined",
 	function(msg)
 		local mesa = msg.mesa;
 		
@@ -274,14 +273,14 @@ rrpg.messaging.listen("MesaJoined",
 		end;
 	end, {eu=true})	;
 	
-rrpg.messaging.listen("MesaParted",
+Firecast.Messaging.listen("MesaParted",
 	function(msg)
 			desanexarMacrosDaMesa(msg.mesa);
 	end, {eu=true});	
 	
-rrpg.messaging.listen("SessionLost",
+Firecast.Messaging.listen("SessionLost",
 	function(msg)
-		local mesas = rrpg.getMesas();
+		local mesas = Firecast.getMesas();
 		
 		for i = 1, #mesas, 1 do
 			desanexarMacrosDaMesa(mesas[i]);
@@ -290,11 +289,27 @@ rrpg.messaging.listen("SessionLost",
 	
 	
 local function inicializar()
-	local mesas = rrpg.getMesas();
+	local mesas = Firecast.getMesas();
 
 	for i = 1, #mesas, 1 do
 		anexarMacrosAMesa(mesas[i]);
 	end;	
+	
+	-- Register Chat Tool Button
+	
+	local macroButton = {};
+	macroButton.hint = lang("macros.ui.manageMacros");
+	macroButton.icon = "/macros/icons/scriptIcon.xml";
+	macroButton.group = "macros";
+	
+	macroButton.callback = 
+		function (chat)
+			globalGerenciarMacros(chat.room);
+		end;
+		
+	Firecast.registerChatToolButton(macroButton);
 end;
 
 inicializar();
+
+require("plugins.lua");

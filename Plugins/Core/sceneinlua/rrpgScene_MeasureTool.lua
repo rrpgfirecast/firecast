@@ -12,10 +12,7 @@ local MODO_FILL_CELL = true;
 ---------- Ferramentas de Camadas	
 	
 SceneLib.registerPlugin(
-	function (scene, attachment)			
-		local btn_Measure;	
-		
-
+	function (scene, attachment)				
 		local listenerMouseDown;
 		local listenerMouseMove;
 		local listenerMouseUp;
@@ -26,9 +23,7 @@ SceneLib.registerPlugin(
 		local currMeasure = nil;
 		
 		local usedCells = nil;  -- used Cells consolidado
-		
-		local cMouseX = 0; 
-		local cMouseY = 0;
+						
 		local isPanningRightButton = false;
 					
 		scene.viewport:setupToolCategory(TOOLS_CATEGORY, lang("scene.toolcategory.tools"), -6);
@@ -95,9 +90,7 @@ SceneLib.registerPlugin(
 								
 				m.distanceStr = string.format(formatoAUsar, totalDistancia, 
 											  tryLang("metric." .. scene.worldMetricName) or scene.worldMetricName);
-				
-				local startLineX, startLineY;
-				local currLineX, currLineY;		
+												
 				local oldLine = nil;
 								
 				for i = 1, #steps, 1 do
@@ -337,10 +330,7 @@ SceneLib.registerPlugin(
 				end;	
             elseif isPanningRightButton then
 				INERTIAL_pointerMove(scene.viewport, event);				
-			end;
-			
-			cMouseX = event.x;
-			cMouseY = event.y;
+			end;				
 		end;
 		
 		local function mouseUp(event)	
@@ -353,12 +343,11 @@ SceneLib.registerPlugin(
 			scene.viewport:needRepaint();
 		end;
 		
-		btn_Measure = 
-			scene.viewport:addToolButton(TOOLS_CATEGORY, 
-										lang("scene.menu.measureDistance"), 
-										"/icos/measure.png",
-										-5,
-										{selectable=true},
+		scene.viewport:addToolButton(TOOLS_CATEGORY, 
+									lang("scene.menu.measureDistance"), 
+									"/icos/measure.png",
+									-5,
+									{selectable=true},
 									 
 				function()
 					-- Activated Measure

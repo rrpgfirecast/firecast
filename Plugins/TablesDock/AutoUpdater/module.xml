@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.4b">
+<module sdkVersion="3.5">
     <id>Ambesek.Auto.Updater</id>
     <version>0.4</version>
     <name>Plugin Auto Updater</name>

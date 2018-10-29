@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmLH6" align="client" theme="dark">
 	<scrollBox align="client">
 		        <!-- Popup -->          
-        <popup name="popMeuPopup" width="100" height="100" backOpacity="0.5">
+        <popup name="popMeuPopup" width="100" height="100" backOpacity="0.5" autoScopeNode="false">
                 <label align="client" horzTextAlign="center" text="Você não é o mestre ou o dono da ficha!" />             
         </popup> 
       	

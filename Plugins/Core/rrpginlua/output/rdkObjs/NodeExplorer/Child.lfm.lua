@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmChildNodePerms()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmChildNodePerms()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,7 +31,7 @@ function newfrmChildNodePerms()
     obj:setHeight(25);
     obj:setMargins({top=1,bottom=1});
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
     obj.label1:setLeft(1);
     obj.label1:setWidth(83);
@@ -39,7 +39,7 @@ function newfrmChildNodePerms()
     obj.label1:setField("child_name");
     obj.label1:setName("label1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("child_name");
     obj.dataLink1:setDefaultValue("Child");
@@ -64,9 +64,23 @@ function newfrmChildNodePerms()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmChildNodePerms()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmChildNodePerms();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmChildNodePerms = {
@@ -80,6 +94,6 @@ local _frmChildNodePerms = {
     description=""};
 
 frmChildNodePerms = _frmChildNodePerms;
-rrpg.registrarForm(_frmChildNodePerms);
+Firecast.registrarForm(_frmChildNodePerms);
 
 return _frmChildNodePerms;

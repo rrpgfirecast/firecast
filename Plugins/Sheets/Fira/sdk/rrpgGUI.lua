@@ -2,8 +2,8 @@ local objs = require("rrpgObjs.lua");
 local ndb = require("ndb.lua");
 
 gui = {}
+GUI = gui;
 
-local localGui = gui;
 local guiLoaders = {};
 
 gui.guiLoaders = guiLoaders;
@@ -151,7 +151,7 @@ local function controlFromHandle(handle)
 	ctrl.props["scale"] = {setter = "setScale", getter = "getScale", tipo="double"};				
 	ctrl.props["parent"] = {setter = "setParent", getter = "getParent", tipo="table"};		
 	ctrl.props["cursor"] = {setter = "setCursor", getter = "getCursor", tipo="enum",
-							values={'default', 'handPoint', 'hourGlass',
+							values={'default', 'arrow', 'handPoint', 'hourGlass',
    								    'IBeam', 'size', 'sizeNESW', 'sizeNS',
 								    'sizeNWSE', 'sizeWE', 'upArrow',
 								    'drag', 'noDrop', 'hSplit', 'vSplit',
@@ -194,12 +194,16 @@ local function controlFromHandle(handle)
 	ctrl.eves["onKeyDown"] = "event";
 	ctrl.eves["onKeyUp"] = "event";
 	ctrl.eves["onMenu"] = 'x, y';
+	ctrl.eves["onStartDrag"] = 'drag, x, y';	
+	ctrl.eves["onStartDrop"] = 'drop, x, y, drag';	
 	--ctrl.eves["onTap"] = "x, y";
 	
 	ctrl:setParent(ctrl:getParent()); -- trabalhar as questões de referências
 	
 	return ctrl;
 end
+
+gui.controlFromHandle = controlFromHandle;
 
 --[[ Objeto Layout ]]--
 
@@ -244,7 +248,7 @@ local function __lockFormWithActivity(form, msg)
 		thePopup.height = 50;		
 		thePopup.cancelable = false;
 		thePopup.drawContainer = false;
-		
+		thePopup.autoScopeNode = false;	
 		
 		thePopup.__indicator = gui.newActivityIndicator();
 		thePopup.__indicator.align = "client";
@@ -314,7 +318,6 @@ end;
 
 local function formLayoutFromHandle(handle)
 	local ctrl = layoutFromHandle(handle);
-	local self = ctrl;
 	
 	rawset(ctrl, "__isFormFlag", true);
 	
@@ -380,10 +383,14 @@ local function formLayoutFromHandle(handle)
 	ctrl.props["scopeNode"] = {setter = "setScopeNode", getter = "getScopeNode", tipo = "table"};						   	
 	ctrl.props["minWidth"] = {setter = "setMinWidth", getter = "getMinWidth", tipo = "double"};	
 	ctrl.props["maxWidth"] = {setter = "setMaxWidth", getter = "getMaxWidth", tipo = "double"};		
+	ctrl.props["isShowing"] = {readProp = "IsShowing", tipo = "bool"};			
 	
 	ctrl.eves["onScopeNodeChanged"] = "";	
 	ctrl.eves["onShow"] = "";
 	ctrl.eves["onHide"] = "";
+	ctrl.eves["onNodeReady"] = "";
+	ctrl.eves["onNodeUnready"] = "";
+	ctrl.eves["onNodeChanged"] = "";		
 	return ctrl;	
 end
 
@@ -397,7 +404,6 @@ guiLoaders["form"] = formLayoutFromHandle;
 
 local function popupFormFromHandle(handle)
 	local ctrl = formLayoutFromHandle(handle);
-	local self = ctrl;
 	
 	function ctrl:getDrawContainer() return _obj_getProp(self.handle, "DrawContainer"); end;
 	function ctrl:setDrawContainer(v) _obj_setProp(self.handle, "DrawContainer", v); end;	
@@ -495,7 +501,9 @@ local function flowLayoutFromHandle(handle)
 	function layout:setOrientation(value) _obj_setProp(self.handle, "Orientation", value) end;			
 
 	function layout:getMaxColumns() return _obj_getProp(self.handle, "MaxColumns"); end;
-	function layout:setMaxColumns(value) _obj_setProp(self.handle, "MaxColumns", value) end;				
+	function layout:setMaxColumns(value) _obj_setProp(self.handle, "MaxColumns", value) end;	
+
+	function layout:needRealign() _obj_invoke(self.handle, "NeedRealign"); end;
 	
 	layout.props["autoHeight"] = {setter = "setAutoHeight", getter = "getAutoHeight", tipo = "bool"};	
 	layout.props["horzAlign"] = {setter = "setHorzAlign", getter = "getHorzAlign", tipo = "enum",
@@ -506,6 +514,8 @@ local function flowLayoutFromHandle(handle)
 	layout.props["orientation"] = {setter = "setOrientation", getter = "getOrientation", tipo = "enum",
 							       values={"horizontal", "vertical"}};									 	
 	layout.props["maxColumns"] = {setter = "setMaxColumns", getter = "getMaxColumns", tipo = "int"};									 								   
+	layout.props["contentWidth"] = {readProp = "ContentWidth", tipo = "double"};		
+	layout.props["contentHeight"] = {readProp = "ContentHeight", tipo = "double"};		
 	
 	layout.eves["onBeforeLayoutCalc"] = "";	
 	layout.eves["onAfterLayoutCalc"] = "";		
@@ -652,12 +662,14 @@ local function labelFromHandle(handle)
 	function ctrl:getField() return _gui_getFieldName(self.handle); end;
 	function ctrl:setField(v) _gui_setFieldName(self.handle, v); end;
 	
-	function ctrl:getFrameRegion() return obj_getProp(self.handle, "FrameRegion"); end;
+	function ctrl:getFrameRegion() return _obj_getProp(self.handle, "FrameRegion"); end;
 	function ctrl:setFrameRegion(v) _obj_setProp(self.handle, "FrameRegion", v); end;	
 					
 	ctrl.props["autoSize"] = {setter = "setAutoSize", getter = "getAutoSize", tipo = "bool"};		
 	ctrl.props["field"] = {setter = "setField", getter = "getField", tipo = "string"};		
 	ctrl.props["frameRegion"] = {setter = "setFrameRegion", getter = "getFrameRegion", tipo = "string"};			
+	ctrl.props["format"] = {writeProp = "StringFormat", readProp = "StringFormat", tipo = "string"};		
+	ctrl.props["formatFloat"] = {writeProp = "StringFormatFloat", readProp = "StringFormatFloat", tipo = "string"};			
 	return ctrl;	
 end
 
@@ -827,8 +839,10 @@ local function imageFromHandle(handle)
 	image.props["showProgress"] = {setter = "setShowProgress", getter="getShowProgress", tipo="bool"};
 	image.props["field"] = {setter = "setField", getter="getField", tipo="string"};	
 	image.props["editable"] = {setter = "setEditable", getter="getEditable", tipo="bool"};		
+	image.props["naturalAnimated"] = {readProp="NaturalAnimated", tipo="bool"};				
 	image.props["naturalWidth"] = {getter="getNaturalWidth", tipo="double"};			
 	image.props["naturalHeight"] = {getter="getNaturalHeight", tipo="double"};			
+	image.props["animate"] = {readProp="Animate", writeProp="Animate", tipo="bool"};			
 	
 	image.eves["onPictureLoadedChange"] = "";
 	image.eves["onLoad"] = "";	
@@ -878,6 +892,12 @@ local function editFromHandle(handle)
 	
 	function edit:getMax() return _obj_getProp(self.handle, "MaxValue"); end;
 	function edit:setMax(v) _obj_setProp(self.handle, "MaxValue", v) end;		
+	
+	function edit:getDecimalPlaces() return _obj_getProp(self.handle, "DecimalPlaces"); end;
+	function edit:setDecimalPlaces(v) _obj_setProp(self.handle, "DecimalPlaces", v) end;			
+	
+	function edit:getAsNumber() return _obj_getProp(self.handle, "AsNumber"); end;
+	function edit:setAsNumber(v) _obj_setProp(self.handle, "AsNumber", v) end;			
 			
 	edit.props["textPrompt"] = {setter="setTextPrompt", getter="getTextPrompt", tipo="string"};
 	edit.props["transparent"] = {setter="setTransparent", getter="getTransparent", tipo="bool"};	
@@ -893,9 +913,11 @@ local function editFromHandle(handle)
 	edit.props["field"] = {setter="setField", getter="getField", tipo="string"};	
 	edit.props["frameRegion"] = {setter = "setFrameRegion", getter = "getFrameRegion", tipo = "string"};			
 	edit.props["type"] = {setter = "setType", getter = "getType", tipo = "enum",
-						  values = {"text", "number"}};	
+						  values = {"text", "number", "float"}};	
 	edit.props["min"] = {setter = "setMin", getter = "getMin", tipo = "double"};								  
-	edit.props["max"] = {setter = "setMax", getter = "getMax", tipo = "double"};								  
+	edit.props["max"] = {setter = "setMax", getter = "getMax", tipo = "double"};			
+	edit.props["decimalPlaces"] = {setter = "setDecimalPlaces", getter = "getDecimalPlaces", tipo = "int"};			
+	edit.props["asNumber"] = {setter = "setAsNumber", getter = "getAsNumber", tipo = "double"};				
 	
 	edit.eves["onUserChange"] = "";	
 	return edit;	
@@ -956,6 +978,43 @@ end;
 
 guiLoaders["comboBox"] = comboBoxFromHandle;
 
+--[[ Objeto ColorComboBox ]]--
+
+local function colorComboBoxFromHandle(handle)	
+	local edit = controlFromHandle(handle);
+		
+	function edit:getColor() return _obj_getProp(self.handle, "Color"); end;
+	function edit:setColor(v) _obj_setProp(self.handle, "Color", v); end;
+	
+	function edit:getUseAlpha() return _obj_getProp(self.handle, "UseAlpha"); end;
+	function edit:setUseAlpha(v) _obj_setProp(self.handle, "UseAlpha", v); end;	
+				
+	function edit:getField() return _gui_getFieldName(self.handle); end;
+	function edit:setField(field) _gui_setFieldName(self.handle, field); end;
+			
+	function edit:getFrameRegion() return _obj_getProp(self.handle, "FrameRegion"); end;
+	function edit:setFrameRegion(frameRegion) _obj_setProp(self.handle, "FrameRegion", frameRegion) end;			
+					
+	function edit:dropDown() _obj_invoke(self.handle, "InvokeDropDown"); end;
+				
+	edit.props["color"] = {setter="setColor", getter="getColor", tipo="color"};													
+	edit.props["useAlpha"] = {setter = "setUseAlpha", getter = "getUseAlpha", tipo = "bool"};				
+	edit.props["field"] = {setter="setField", getter="getField", tipo="string"};	
+	edit.props["frameRegion"] = {setter = "setFrameRegion", getter = "getFrameRegion", tipo = "string"};				
+	
+	
+	edit.eves["onChange"] = "";
+	edit.eves["onUserChange"] = "";
+	return edit;	
+end
+
+function gui.newColorComboBox()
+  return gui.fromHandle(_obj_newObject("colorComboBox"));
+end;
+
+guiLoaders["colorComboBox"] = colorComboBoxFromHandle;
+
+
 --[[ Objeto TextEditor ]]--
 
 local function textEditorFromHandle(handle)
@@ -1007,6 +1066,7 @@ local function tabItemFromHandle(handle)
 	
 	function ctrl:getTitle() return _obj_getProp(self.handle, "Title"); end;
 	function ctrl:setTitle(title) _obj_setProp(self.handle, "Title", title); end;	
+	function ctrl:activate() _obj_invoke(self.handle, "Activate"); end;		
 	
 	ctrl.props["text"] = {setter="setText", getter="getText", tipo="string"};
 	ctrl.props["title"] = {setter="setTitle", getter="getTitle", tipo="string"};
@@ -1073,7 +1133,7 @@ local function shapeFromHandle(handle)
 
 	ctrl.props["strokeDash"] = {setter="setStrokeDash", getter="getStrokeDash", tipo="enum",
 							   values={"solid", "dash", "dot", "dashDot", "dashDotDot"}};		
-					
+		
 	return ctrl;	
 end
 
@@ -1127,6 +1187,9 @@ local function pathFromHandle(handle)
 	
 	function ctrl:getMode() return _obj_getProp(self.handle, "WrapMode"); end;
 	function ctrl:setMode(v) _obj_setProp(self.handle, "WrapMode", v); end;	
+	
+	function ctrl:getRoundToPixel() return _obj_getProp(self.handle, "RoundToPixels"); end;
+	function ctrl:setRoundToPixel(v) _obj_setProp(self.handle, "RoundToPixels", v); end;		
 									   
 	ctrl.props["data"] = {setter="setPathData", getter="getPathData", tipo="string"};						   
 	ctrl.props["pathData"] = ctrl.props["data"];
@@ -1134,6 +1197,7 @@ local function pathFromHandle(handle)
 	ctrl.props["mode"] = {setter="setMode", getter="getMode", tipo="enum",
 						  values={"original", "fit", "stretch", "tile"}};						   							 				
 	ctrl.props["wrapMode"] = ctrl.props["mode"];					   							 										  
+	ctrl.props["roundToPixel"] = {setter="setRoundToPixel", getter="getRoundToPixel", tipo="bool"};						   							 					
 	return ctrl;	
 end
 
@@ -1211,6 +1275,10 @@ local function dataLinkFromHandle(handle)
 	ctrl.props["defaultValues"] = {setter = "setDefaultValues", getter = "getDefaultValues", tipo = "table"};			
 	
 	ctrl.eves["onChange"] = "field, oldValue, newValue";
+	ctrl.eves["onPersistedChange"] = "field, oldValue, newValue";		
+	ctrl.eves["onUserChange"] = "field, oldValue, newValue";	
+	ctrl.eves["onChildAdded"] = "node";
+	ctrl.eves["onChildRemoved"] = "node";
 	return ctrl;	
 end
 
@@ -1304,6 +1372,15 @@ local function dataScopeBoxFromHandle(handle)
 	ctrl.props["scopeNode"] = {setter = "setNodeObject", getter = "getNodeObject", tipo = "table"};		
 	ctrl.props["nodeObject"] = {setter = "setNodeObject", getter = "getNodeObject", tipo = "table"};		
 	ctrl.props["node"] = {setter = "setNodeObject", getter = "getNodeObject", tipo = "table"};		
+	
+	if ctrl.eves == nil then
+		ctrl.eves = {};
+	end;
+	
+	ctrl.eves["onNodeReady"] = "";
+	ctrl.eves["onNodeUnready"] = "";
+	ctrl.eves["onNodeChanged"] = "";
+	
 	return ctrl;	
 end
 
@@ -1312,6 +1389,32 @@ function gui.newDataScopeBox()
 end;
 
 guiLoaders["dataScopeBox"] = dataScopeBoxFromHandle;
+
+--[[ Objeto RichEdit ]]--
+
+local function richEditFromHandle(handle)
+	local ctrl = controlFromHandle(handle);
+	
+	function ctrl:getField() return _gui_getFieldName(self.handle); end;
+	function ctrl:setField(v) _gui_setFieldName(self.handle, v); end;	
+	
+		
+	ctrl.props["animateImages"] = {readProp = "CanAnimateImages", writeProp = "CanAnimateImages", tipo = "bool"};			
+	ctrl.props["field"] = {setter = "setField", getter = "getField", tipo = "string"};		
+	ctrl.props["backgroundColor"] = {readProp = "BackgroundColor", writeProp = "BackgroundColor", tipo = "color"};
+	ctrl.props["defaultFontColor"] = {readProp = "DefaultFontColor", writeProp = "DefaultFontColor", tipo = "color"};
+	ctrl.props["defaultFontSize"] = {readProp = "DefaultFontSize", writeProp = "DefaultFontSize", tipo = "double"};	
+	ctrl.props["showToolbar"] = {readProp = "ShowToolbar", writeProp = "ShowToolbar", tipo = "bool"};
+	ctrl.props["readOnly"] = {readProp = "ReadOnly", writeProp = "ReadOnly", tipo = "bool"};
+	ctrl.props["hideSelection"] = {readProp = "HideSelectionNoFocus", writeProp = "HideSelectionNoFocus", tipo = "bool"};	
+	return ctrl;	
+end
+
+function gui.newRichEdit()
+  return gui.fromHandle(_obj_newObject("richEdit"));
+end;
+
+guiLoaders["richEdit"] = richEditFromHandle;
 
 
 --[[ Objeto Popup ]]--
@@ -1364,10 +1467,15 @@ local function popupFromHandle(handle)
 	ctrl.props["nodeObject"] = {setter = "setNodeObject", getter = "getNodeObject", tipo = "table"};					
 	ctrl.props["node"] = ctrl.props["nodeObject"];
 	ctrl.props["scopeNode"] = ctrl.props["nodeObject"];
+	ctrl.props["autoScopeNode"] = {writeProp = "AutoScopeNode", readProp = "AutoScopeNode", tipo = "bool"};
 
 	ctrl.eves["onClose"] = "canceled";	
 	ctrl.eves["onCanClose"] = "canceled";
 	ctrl.eves["onCalculateSize"] = "dueToResize, width, height";
+	
+	ctrl.eves["onNodeReady"] = "";
+	ctrl.eves["onNodeUnready"] = "";
+	ctrl.eves["onNodeChanged"] = "";	
 	return ctrl;	
 end
 
@@ -1455,6 +1563,172 @@ function gui.newActivityIndicator()
 end;
 
 guiLoaders["activityIndicator"] = activityIndicatorFromHandle;
+
+--[[ Objeto InertialMovement ]]--
+
+local __inertMovProps = {active = {tipo = "boolean", readProp = "Active", writeProp="Active"},
+						 animated = {tipo = "boolean", readProp = "Animated", writeProp="Animated"},
+						 decelerationRate = {tipo = "double", readProp = "DecelerationRate", writeProp="DecelerationRate"}
+						 };
+						 
+local __inertMovMethods = 
+						{
+							setPos = function(m, x, y) _obj_invoke(m.handle, "SetPosition", x, y);	end,
+							getPos = function (m) return _obj_invokeEx(m.handle, "ExGetPosition"); end,
+							setBounds = function (m, minX, minY, maxX, maxY) _obj_invoke(m.handle, "SetBounds", minX, minY, maxX, maxY); end,
+							pointerDown = function(m, x, y) _obj_invoke(m.handle, "PointerDown", x, y) end,
+							pointerMove = function(m, x, y) _obj_invoke(m.handle, "PointerMove", x, y) end,
+							pointerUp = function(m, x, y) _obj_invoke(m.handle, "PointerUp", x, y) end,
+							pointerLeave = function(m) _obj_invoke(m.handle, "PointerLeave") end,
+							pointerWheel = function(m, deltaX, deltaY) _obj_invoke(m.handle, "PointerWheel", deltaX, deltaY) end							
+						};
+								
+local __inertMovEvents = {onChange = ""};	
+
+local function inertialMovementFromHandle(handle)
+	local obj = objs.objectFromHandle(handle);
+	
+	if obj.props == nil then
+		obj.props = {};
+	end;
+	
+	for k, v in pairs(__inertMovProps) do
+		obj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__inertMovMethods) do
+		rawset(obj, k, v);		
+	end;	
+	
+	obj.eves = __inertMovEvents;		
+	return obj;
+end
+
+function gui.newInertialMovement()
+  return gui.fromHandle(_obj_newObject("TInertialMovement"));
+end;
+
+guiLoaders["TInertialMovement"] = inertialMovementFromHandle;
+
+
+--[[ Objeto Drag n Drop ]]--
+
+local Serializer = nil;
+
+local __DragDropDataProps = {dataCount = {tipo = "int", readProp = "DataCount"}};
+
+local __DragDropDataMethods = 
+						{
+							addData = function(d, dataType, dataValue)
+										_obj_invokeEx(d.handle, "AddData", dataType, Serializer.packData(dataValue));	
+									end,
+
+							getData = function(d, dataType)
+										return Serializer.unpackData(_obj_invokeEx(d.handle, "GetData", dataType));	
+									end		
+						};
+
+local __DragProps = {actionCount = {tipo = "int", readProp = "ActionCount"}};
+						 
+local __DragMethods = 
+						{
+							addAction = function(d, dataType, callback) 
+								if type(callback) == "function" then
+									_gui_addDragAction(d.handle, dataType, callback);
+								end;
+							end	
+						};
+								
+local __DragEvents = {};	
+
+local __DropProps = {actionCount = {tipo = "int", readProp = "ActionCount"}};
+						 
+local __DropMethods = 
+						{
+							addAction = function(d, dataType, callback) 
+								if type(callback) == "function" then
+									_gui_addDropAction(d.handle, dataType, callback);
+								end;
+							end							
+						};
+								
+local __DropEvents = {};	
+
+local function dragDropDataObjectFromHandle(handle)
+	if Serializer == nil then
+		Serializer = require("utils.serializer.dlua");
+	end;
+
+	local obj = objs.objectFromHandle(handle);
+	
+	if obj.props == nil then
+		obj.props = {};
+	end;
+	
+	for k, v in pairs(__DragDropDataProps) do
+		obj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__DragDropDataMethods) do
+		rawset(obj, k, v);		
+	end;	
+		
+	return obj;
+end;
+
+local function dragObjectFromHandle(handle)
+	local obj = dragDropDataObjectFromHandle(handle);
+		
+	for k, v in pairs(__DragProps) do
+		obj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__DragMethods) do
+		rawset(obj, k, v);		
+	end;	
+	
+	obj.eves = __DragEvents;		
+	return obj;
+end
+
+function gui.newDrag()
+  return gui.fromHandle(_obj_newObject("TDragObject"));
+end;
+
+guiLoaders["TDragObject"] = dragObjectFromHandle;
+
+local function dropObjectFromHandle(handle)
+	local obj = dragDropDataObjectFromHandle(handle);
+		
+	for k, v in pairs(__DropProps) do
+		obj.props[k] = v;
+	end;
+	
+	for k, v in pairs(__DropMethods) do
+		rawset(obj, k, v);		
+	end;	
+	
+	obj.eves = __DropEvents;		
+	return obj;
+end
+
+function gui.newDrop()
+  return gui.fromHandle(_obj_newObject("TDropObject"));
+end;
+
+guiLoaders["TDropObject"] = dropObjectFromHandle;
+
+function __export__guiInitDropObject(dropUserData)
+	local d = gui.newDrop();
+	_gui_initDragDropDataObject(d.handle, dropUserData);
+	return d;
+end;
+
+function __export__guiInitDragObject(dragUserData)
+	local d = gui.newDrag();
+	_gui_initDragDropDataObject(d.handle, dragUserData);
+	return d;
+end;
 
 --[[ API gui ]]--
 
@@ -1556,7 +1830,7 @@ function gui.newForm(formName)
   return nil;
 end;
 
-function gui.newPopupForm(popupFormName)
+function gui.newPopupForm(formName)
   if (formName == nil) then
 	return gui.fromHandle(_obj_newObject("popupForm"));
   end;
@@ -1568,6 +1842,8 @@ function gui.newPopupForm(popupFormName)
 		local frm = formFactory.newEditor();
 		rawset(frm, "__formName", formName);			
 		return frm;
+	  else
+		error("PopupForm name not found: '" .. formName .. "'");	
 	  end;
   end;  
   

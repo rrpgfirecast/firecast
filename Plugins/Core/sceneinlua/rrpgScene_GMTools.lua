@@ -29,10 +29,8 @@ SceneLib.registerPlugin(
 		local shapeMaker = nil;
 		local lastShapeUsed = SHAPE_RECTANGLE;	
 		local mustSeeWalls = false;		
-		
-		local frmFOW = nil;
-									
-		local function doRevealArea(shapeMaker, pol)
+											
+		local function doRevealArea(theShapeMaker, pol)
 			SC3UNDO_Capture(scene,
 					function()
 						scene.fogOfWar.enabled = true;
@@ -40,7 +38,7 @@ SceneLib.registerPlugin(
 					end);						
 		end;
 		
-		local function doHideArea(shapeMaker, pol)
+		local function doHideArea(theShapeMaker, pol)
 			SC3UNDO_Capture(scene,
 					function()
 						scene.fogOfWar.enabled = true;
@@ -49,7 +47,7 @@ SceneLib.registerPlugin(
 			
 		end;			
 		
-		local function doSemiRevealArea(shapeMaker, pol)
+		local function doSemiRevealArea(theShapeMaker, pol)
 			SC3UNDO_Capture(scene,
 					function()
 						scene.fogOfWar.enabled = true;
@@ -58,7 +56,7 @@ SceneLib.registerPlugin(
 			
 		end;
 		
-		local function doSetExplorableArea(shapeMaker, pol)
+		local function doSetExplorableArea(theShapeMaker, pol)
 			SC3UNDO_Capture(scene,
 					function()
 						scene.fogOfWar.enabled = true;
@@ -71,7 +69,7 @@ SceneLib.registerPlugin(
 				return novoPol;
 			end;
 		
-		local function doAddWall(shapeMaker, pol)
+		local function doAddWall(theShapeMaker, pol)
 			SC3UNDO_Capture(scene,
 					function()
 						scene.fogOfWar.enabled = true;
@@ -79,7 +77,7 @@ SceneLib.registerPlugin(
 					end);						
 		end;
 		
-		local function doRemoveWall(shapeMaker, pol)
+		local function doRemoveWall(theShapeMaker, pol)
 			SC3UNDO_Capture(scene,
 					function()
 						scene.fogOfWar.enabled = true;
@@ -102,7 +100,7 @@ SceneLib.registerPlugin(
 								end;
 									
 			if fillable then
-				local r, g, b, a = colorToRGBA("yellow");
+				local r, g, b = colorToRGBA("yellow");
 				shapeMaker.fillColor = RGBAToColor(r, g, b, 0.5);
 			else
 				shapeMaker.fillColor = "none";

@@ -6,7 +6,7 @@ require("rrpgScene_MovementPath.dlua");
 local MAX_HISTORY_CHILDS = 7;	
 	
 local function removerExcessoMovHist(node)
-	local childs = ndb.getChildNodes(node);
+	local childs = NDB.getChildNodes(node);
 		
 	if #childs > MAX_HISTORY_CHILDS then
 		local qtRemover = #childs - MAX_HISTORY_CHILDS;
@@ -17,14 +17,15 @@ local function removerExcessoMovHist(node)
 			end);
 			
 		for i = 1, qtRemover, 1 do
-			ndb.deleteNode(childs[i]);
+			NDB.deleteNode(childs[i]);
 		end;		
 	end;		
 end;
 
 function MOVHIST_AddTrackHistory(token, track)
 	local userData = token.userData;
-	ndb.beginUpdate(userData);
+	local novoHistoryNode = nil;
+	NDB.beginUpdate(userData);
 	
 	tryFinally(
 		function()
@@ -36,20 +37,20 @@ function MOVHIST_AddTrackHistory(token, track)
 			end;
 				
 			if movHist ~= nil then				
-				local novoHistoryNode = ndb.createChildNode(movHist, "h");
+				novoHistoryNode = NDB.createChildNode(movHist, "h");
 				local trackTable = track:save();
 				
 				for k2, v2 in pairs(trackTable) do
 					novoHistoryNode[k2] = v2;
 				end;
 				
-				novoHistoryNode.date = ndb.getServerUTCTime(userData);	
+				novoHistoryNode.date = NDB.getServerUTCTime(userData);	
 				removerExcessoMovHist(movHist);	
 			end;
 		end,
 		
 		function()
-			ndb.endUpdate(userData);		
+			NDB.endUpdate(userData);		
 		end);
 	
 	return novoHistoryNode;
@@ -131,11 +132,10 @@ end;
 --[[   PLUGIN para histórico de movimento de tokens  ]]--	
 
 local MOV_HIST_CATEGORY = 'movHist';
-local nodeOptions = ndb.load("/options.xml");
+local nodeOptions = NDB.load("/options.xml");
 	
 SceneLib.registerPlugin(
 	function (scene, attachment)		
-		local movHist = MOVHIST_get(scene);
 		local REASON_FOR_OPTION = 'userOption';
 		
 		scene.viewport:setupToolCategory(MOV_HIST_CATEGORY, lang("scene.toolcategory.movHistory"), -5);		

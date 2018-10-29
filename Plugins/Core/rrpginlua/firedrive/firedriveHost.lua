@@ -4,6 +4,7 @@ local host = {drive={}};
 local internet = require("internet.lua");
 local utils = require("utils.lua");
 require("fireDriveGlobals.dlua");
+require("locale.lua");
 
 local _DIRTY_NEED_REFRESH = true;
 local ITEM_KIND_DIR = "dir";
@@ -157,6 +158,47 @@ function host.removeKnownFireDriveItem(itemId)
 		host.drive.itensById[itemId] = nil;
 		host.removeChildRelation(item.parentId, item.id, item.name);		
 	end;
+end;
+
+
+function host.interpretQuickUploadResponse(itemTag)
+	local attr = itemTag.attr;
+	local id = tostring(attr["id"]);
+	local item;
+					
+	if id == nil then
+		error("Servidor retornou um id inválido para um item do firedrive");
+	end;	
+	
+	item = {};	
+	
+	item.id = id;
+	item.name = attr["name"];
+	item.isDir = attr["kind"] == "D";	
+	item.parentId = tonumber(attr["parent"]);
+	item.size = tonumber(attr["size"]) or 0;
+	item.isShared = attr["shared"] == "S";
+	item.isMine = attr["mine"] == "S";
+	item.keyWords = attr["keywords"];
+	item.description = attr["description"];
+	item.url = attr["URL"];	
+	item.mimeType = attr["mimeType"];
+	item.sharedId = tonumber(attr["sharedId"]);
+	item.urlThumb64 = attr["thumb64URL"];	
+		
+	local kind = string.upper(attr["kind"]);
+	
+	if kind == "D" then
+		item.kind = ITEM_KIND_DIR;
+	elseif kind == "P" then
+		item.kind = ITEM_KIND_PLUGIN;
+	elseif kind == "I" then
+		item.kind = ITEM_KIND_IMAGE;		
+	else
+		item.kind = ITEM_KIND_FILE;
+	end;
+			
+	return item;
 end;
 
 function host.breakPathIntoParts(path)
@@ -343,7 +385,7 @@ function host.findBlobs(upload, onSuccess, onFailure)
 		return;
 	end;
 	
-	local req, reqId = upload.newRequest("findBlobs");	
+	local req = upload.newRequest("findBlobs");	
 	req:setRequestHeader('X-RRPG-Blob-Count', tostring(#upload.blobs));
 	
 	for i = 1, #upload.blobs, 1 do
@@ -400,11 +442,21 @@ function host.findBlobs(upload, onSuccess, onFailure)
 end;
 
 function host.step2ManageItem(upload, onSuccess, onProgress, onFailure)
-	local req = upload.newRequest("manageItem", 'POST');
+	local metadata = upload.metadata;
+
+	local remoteActionStr;
+	
+	if type(metadata) == "table" and type(metadata.headers) == "table" and 
+		(metadata.headers.operation == "quickUpload") then
+		remoteActionStr = "manageQuickUploadItem";
+	else
+		remoteActionStr = "manageItem";
+	end;
+	
+	local req = upload.newRequest(remoteActionStr, 'POST');
 	local reqStream = utils.newTempFileStream();
 	local buffer = {};
 	local buffer2 = {};
-	local metadata = upload.metadata;
 	local size = nil;
 	local size2 = nil;
 	
@@ -475,18 +527,19 @@ function host.step2ManageItem(upload, onSuccess, onProgress, onFailure)
 		function()			
 			local xml = getXMLResponse(req);
 			local resp = nil;
-			local addedItem = nil;
 						
 			for i = 1, #xml.el, 1 do
 				local el = xml.el[i];
 				
 				if el.name == "item" then					
-					addedItem = host.addKnownFireDriveItem(el);
+					local addedItem = host.addKnownFireDriveItem(el);
 					resp = addedItem;
 				elseif el.name == "deletedItem" then
 					host.removeKnownFireDriveItem(tonumber(el.attr["id"]));
 				elseif el.name == "space" then
 					host.treatSpaceResponse(el);
+				elseif el.name == "quickUploadItem" then
+					resp = host.interpretQuickUploadResponse(el);
 				end;
 			end;
 					
@@ -626,6 +679,19 @@ function host.manageItem(destItemName, metadata, onSuccess, onProgress, onFailur
 		end)
 end;
 
+function host.langMessage(msg)
+	local seekStr = utils.removerAcentos(tostring(msg) or "") or "";
+	seekStr = "fireDrive.msg." .. string.gsub(seekStr, "%s", "_");
+	
+	local translated = tryLang(seekStr);
+	
+	if translated ~= nil then
+		return translated;
+	else
+		return msg;
+	end;
+end;
+
 host.setDirty();
 
 ----------------- Funções de comunicação com plugins ------------------
@@ -759,7 +825,7 @@ plugins.listenPM("fireDrive:manageItem",
 		local msgX = {};
 		msgX.kind = "uploadId";
 		msgX.uploadId = uploadId;
-		plugins.sendPM(message.moduleId, message.pmListener, m);				
+		plugins.sendPM(message.moduleId, message.pmListener, msgX);				
 	end);	
 
 plugins.listenPM("fireDrive:abortOperation",
@@ -769,3 +835,5 @@ plugins.listenPM("fireDrive:abortOperation",
 	
 rrpg.messaging.listen("SessionLost",  function(message) host.setDirty(); end);		
 rrpg.messaging.listen("SessionStarted",  function(message) host.setDirty(); end);		
+
+return host;

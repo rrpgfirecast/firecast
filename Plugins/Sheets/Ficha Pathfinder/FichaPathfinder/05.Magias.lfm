@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister5M_svg" align="client" theme="dark" margins="{top=1}">
 	<style>#frmFichaRPGmeister5M_svg path {color: black; strokeColor: black; mode: stretch;} #frmFichaRPGmeister5M_svg label {fontColor: white; textTrimming: none; wordWrap: false; autoSize: true;}</style>
 	<scrollBox align="client">
@@ -689,7 +689,7 @@
 				</flowPart>
 			</template>
 
-			<popup name="popMagia" width="250" height="350" backOpacity="0.4">
+			<popup name="popMagia" width="250" height="350" backOpacity="0.4" autoScopeNode="false">
 				<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
 					<magicInfoField text="ESCOLA" field="escola"/>
 					<magicInfoField text="COMPONENTES" field="componentes"/>
