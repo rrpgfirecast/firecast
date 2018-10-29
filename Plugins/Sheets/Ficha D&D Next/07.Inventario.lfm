@@ -72,6 +72,7 @@
 			<rectangle align="client" color="black"/>
 			<label left="5" top="1" width="200" height="20" text="DINHEIRO"/>
 			<textEditor left="5" top="25" width="145" height="80" field="dinheiro"/>
+			<dataLink field="dinheiro" defaultValue="PC: \nPP: \nPO: \nPL: \nPD: "/>
 
 			<label left="10" top="110" width="50" height="20" text="TOTAL"/>
 			<edit field="dinheiroTotal"  left="65" top="110" width="85" height="20" fontSize="11"/>

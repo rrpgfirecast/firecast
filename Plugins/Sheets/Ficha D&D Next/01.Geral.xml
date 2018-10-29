@@ -361,13 +361,13 @@
 			<edit vertTextAlign="center" left="60" top="80" width="380" height="25" field="subtipo"/>
 			
 			
-			<label left="445" top="5" width="50" height="25" text="NOME"/>
+			<label left="445" top="5" width="70" height="25" text="JOGADOR" fontSize="13"/>
 			<edit vertTextAlign="center" left="520" top="5" width="290" height="25" field="nome"/>
 			
 			<label left="445" top="30" width="70" height="25" text="TENDÊNCIA"/>
 			<edit vertTextAlign="center" left="520" top="30" width="290" height="25" field="tendencia"/>
 			
-			<label left="445" top="55" width="70" height="25" text="CULTO"/>
+			<label left="445" top="55" width="70" height="25" text="ANTECEDENTES" fontSize="9"/>
 			<edit vertTextAlign="center" left="520" top="55" width="290" height="25" field="culto"/>
 			
 			<label left="445" top="80" width="70" height="25" text="TITULO"/>
