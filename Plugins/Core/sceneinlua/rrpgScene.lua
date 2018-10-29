@@ -11,7 +11,7 @@ SceneLib.registerPlugin(
 									 {},
 									function()
 										require("gui.lua");
-										gui.openInBrowser("http://wiki.rrpg.com.br/index.php?title=Tabuleiro_de_Combate");
+										GUI.openInBrowser("http://wiki.rrpg.com.br/index.php?title=Tabuleiro_de_Combate");
 									end);		
 				
 	end);

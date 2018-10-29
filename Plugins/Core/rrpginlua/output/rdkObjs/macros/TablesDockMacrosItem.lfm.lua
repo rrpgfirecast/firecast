@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmMacroItemTablesDock()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmMacroItemTablesDock()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -45,7 +45,7 @@ function newfrmMacroItemTablesDock()
 	
 
 
-    obj.labMacro = gui.fromHandle(_obj_newObject("label"));
+    obj.labMacro = GUI.fromHandle(_obj_newObject("label"));
     obj.labMacro:setParent(obj);
     obj.labMacro:setName("labMacro");
     obj.labMacro:setField("macro");
@@ -57,7 +57,7 @@ function newfrmMacroItemTablesDock()
     obj.labMacro:setFontSize(13);
 
 
-		if system.isMobile() then
+		if System.isMobile() then
 			self.labMacro.fontSize = 20;
 			innerspacing = 8;
 		end;
@@ -68,22 +68,22 @@ function newfrmMacroItemTablesDock()
 
 
     obj._e_event0 = obj.labMacro:addEventListener("onResize",
-        function (self)
+        function (_)
             self.width = self.labMacro.width + innerSpacing * 2; self.height = self.labMacro.height + innerSpacing * 2;
         end, obj);
 
     obj._e_event1 = obj.labMacro:addEventListener("onMouseEnter",
-        function (self)
+        function (_)
             self.labMacro.fontStyle = {'underline'};
         end, obj);
 
     obj._e_event2 = obj.labMacro:addEventListener("onMouseLeave",
-        function (self)
+        function (_)
             self.labMacro.fontStyle = '';
         end, obj);
 
     obj._e_event3 = obj.labMacro:addEventListener("onClick",
-        function (self)
+        function (_)
             executarMacro()
         end, obj);
 
@@ -109,9 +109,23 @@ function newfrmMacroItemTablesDock()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmMacroItemTablesDock()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmMacroItemTablesDock();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmMacroItemTablesDock = {
@@ -125,6 +139,6 @@ local _frmMacroItemTablesDock = {
     description=""};
 
 frmMacroItemTablesDock = _frmMacroItemTablesDock;
-rrpg.registrarForm(_frmMacroItemTablesDock);
+Firecast.registrarForm(_frmMacroItemTablesDock);
 
 return _frmMacroItemTablesDock;

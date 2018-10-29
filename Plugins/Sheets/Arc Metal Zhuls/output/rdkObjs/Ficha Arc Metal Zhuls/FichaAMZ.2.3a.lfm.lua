@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmAMZ2_3a()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmAMZ2_3a()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,12 +30,12 @@ function newfrmAMZ2_3a()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -43,7 +43,7 @@ function newfrmAMZ2_3a()
     obj.layout1:setHeight(625);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
@@ -52,7 +52,7 @@ function newfrmAMZ2_3a()
     obj.rectangle1:setCornerType("round");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(0);
     obj.label1:setTop(0);
@@ -62,7 +62,7 @@ function newfrmAMZ2_3a()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.rclHabilidadesUnicas = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclHabilidadesUnicas = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclHabilidadesUnicas:setParent(obj.layout1);
     obj.rclHabilidadesUnicas:setName("rclHabilidadesUnicas");
     obj.rclHabilidadesUnicas:setField("campoDasHabilidadesUnicas");
@@ -96,9 +96,23 @@ function newfrmAMZ2_3a()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmAMZ2_3a()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmAMZ2_3a();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmAMZ2_3a = {
@@ -112,6 +126,6 @@ local _frmAMZ2_3a = {
     description=""};
 
 frmAMZ2_3a = _frmAMZ2_3a;
-rrpg.registrarForm(_frmAMZ2_3a);
+Firecast.registrarForm(_frmAMZ2_3a);
 
 return _frmAMZ2_3a;

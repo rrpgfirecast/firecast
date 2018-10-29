@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmItemDeMagia()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmItemDeMagia()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,7 +30,7 @@ function newfrmItemDeMagia()
     obj:setHeight(30);
     obj:setWidth(270);
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj);
     obj.edit1:setField("name");
     obj.edit1:setWidth(150);
@@ -38,7 +38,7 @@ function newfrmItemDeMagia()
     obj.edit1:setFontColor("white");
     obj.edit1:setName("edit1");
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj);
     obj.comboBox1:setField("campo");
     obj.comboBox1:setItems({'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'});
@@ -48,7 +48,7 @@ function newfrmItemDeMagia()
     obj.comboBox1:setFontColor("white");
     obj.comboBox1:setName("comboBox1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setAlign("right");
     obj.button1:setText("Apagar");
@@ -58,7 +58,7 @@ function newfrmItemDeMagia()
     obj.button1:setName("button1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             ndb.deleteNode(sheet);
         end, obj);
 
@@ -83,9 +83,23 @@ function newfrmItemDeMagia()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmItemDeMagia()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmItemDeMagia();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmItemDeMagia = {
@@ -99,6 +113,6 @@ local _frmItemDeMagia = {
     description=""};
 
 frmItemDeMagia = _frmItemDeMagia;
-rrpg.registrarForm(_frmItemDeMagia);
+Firecast.registrarForm(_frmItemDeMagia);
 
 return _frmItemDeMagia;

@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmNPCListAba()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmNPCListAba()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -32,7 +32,7 @@ function newfrmNPCListAba()
     obj:setTheme("dark");
     obj:setMargins({right=2});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setStrokeColor("black");
@@ -40,7 +40,7 @@ function newfrmNPCListAba()
     obj.rectangle1:setColor("#000000FF");
     obj.rectangle1:setName("rectangle1");
 
-    obj.name_aba = gui.fromHandle(_obj_newObject("edit"));
+    obj.name_aba = GUI.fromHandle(_obj_newObject("edit"));
     obj.name_aba:setParent(obj);
     obj.name_aba:setLeft(0);
     obj.name_aba:setTop(0);
@@ -50,7 +50,7 @@ function newfrmNPCListAba()
     obj.name_aba:setName("name_aba");
     obj.name_aba:setTransparent(true);
 
-    obj.cbxInvisivel = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.cbxInvisivel = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.cbxInvisivel:setParent(obj);
     obj.cbxInvisivel:setName("cbxInvisivel");
     obj.cbxInvisivel:setLeft(77);
@@ -62,7 +62,7 @@ function newfrmNPCListAba()
     obj.cbxInvisivel:setAutoChange(false);
     obj.cbxInvisivel:setHint("Altera a visibilidade entre somente o mestre e todos. ");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setLeft(100);
     obj.button1:setTop(0);
@@ -92,7 +92,7 @@ function newfrmNPCListAba()
 
 
     obj._e_event0 = obj:addEventListener("onScopeNodeChanged",
-        function (self)
+        function (_)
             if self.observer ~= nil then   
                         self.observer.enabled = false;
                         self.observer = nil;
@@ -113,22 +113,22 @@ function newfrmNPCListAba()
         end, obj);
 
     obj._e_event1 = obj.name_aba:addEventListener("onEnter",
-        function (self)
+        function (_)
             self.name_aba.transparent = false;
         end, obj);
 
     obj._e_event2 = obj.name_aba:addEventListener("onExit",
-        function (self)
+        function (_)
             self.name_aba.transparent = true;
         end, obj);
 
     obj._e_event3 = obj.cbxInvisivel:addEventListener("onClick",
-        function (self)
+        function (_)
             self:alternarVisibilidade();
         end, obj);
 
     obj._e_event4 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar essa aba?",
             				function (confirmado)
             					if confirmado then
@@ -163,9 +163,23 @@ function newfrmNPCListAba()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmNPCListAba()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmNPCListAba();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmNPCListAba = {
@@ -179,6 +193,6 @@ local _frmNPCListAba = {
     description=""};
 
 frmNPCListAba = _frmNPCListAba;
-rrpg.registrarForm(_frmNPCListAba);
+Firecast.registrarForm(_frmNPCListAba);
 
 return _frmNPCListAba;

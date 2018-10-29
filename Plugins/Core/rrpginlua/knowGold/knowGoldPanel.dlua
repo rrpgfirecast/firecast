@@ -2,11 +2,11 @@
 local KG = {};
 
 function KG.newPanel()
-	local pan = gui.newLayout();
-	local labInfo = gui.newLabel();
-	local btnGoGold = gui.newButton();
-	local layCentro = gui.newLayout();
-	local imgGold = gui.newImage();
+	local pan = GUI.newLayout();
+	local labInfo = GUI.newLabel();
+	local btnGoGold = GUI.newButton();
+	local layCentro = GUI.newLayout();
+	local imgGold = GUI.newImage();
 	pan.align = "client";
 	
 	imgGold.src = "/knowGold/gold64.png";
@@ -70,8 +70,8 @@ function KG.newPanel()
 	
 	btnGoGold.onClick = function ()		
 		require("internet.lua");
-		local url = "http://firecast.rrpg.com.br:92/p?p=pagGoldNaoLogado&Usuario=" .. internet.httpEncode(rrpg.getCurrentUser().login);
-		gui.openInBrowser(url);
+		local url = "http://my.firecast.app/p?p=pagGoldNaoLogado&Usuario=" .. Internet.httpEncode(Firecast.getCurrentUser().login);
+		GUI.openInBrowser(url);
 	end;
 	
 	pan:setInfo("Recurso exclusivo para assinantes Gold");

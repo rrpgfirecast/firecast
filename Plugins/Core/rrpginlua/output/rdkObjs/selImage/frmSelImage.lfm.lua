@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmSelImagemURL()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+local function constructNew_frmSelImagemURL()
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -34,7 +34,7 @@ function newfrmSelImagemURL()
 
 		
 		function self:adaptarTamanhoDaTela()
-			local sw, sh = system.getScreenSize();
+			local sw, sh = System.getScreenSize();
 			local dw = 650;
 			local dh = 600;
 		
@@ -52,8 +52,8 @@ function newfrmSelImagemURL()
 	
 		self:adaptarTamanhoDaTela();
 	
-		local cUser = rrpg.getCurrentUser();
-		local canUseFireDrive = cUser.isGold or cUser.isGoldPlus or cUser.isRuby;		
+		local cUser = Firecast.getCurrentUser();
+		local canUseFireDrive = cUser.isGold or cUser.isGoldPlus or cUser.isRuby;			
 		
 		if canUseFireDrive then							
 			self.navigator = require("/firedrive/firedriveNavigator.dlua").newFDNavigatorLayout();				
@@ -78,7 +78,7 @@ function newfrmSelImagemURL()
 		end;
 		
 		function self:retornarCancel(deveFecharForm)
-			if not self.__retornouOK and self._cancelCallback ~= ni then
+			if not self.__retornouOK and self._cancelCallback ~= nil then
 				self._cancelCallback();
 			end;
 			
@@ -123,7 +123,7 @@ function newfrmSelImagemURL()
      
 
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
     obj.label1:setText("Selecione uma imagem");
     obj.label1:setName("label1");
@@ -134,13 +134,13 @@ function newfrmSelImagemURL()
     obj.label1:setAlign("top");
     obj.label1:setAutoSize(true);
 
-    obj.flwMain = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flwMain = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flwMain:setParent(obj);
     obj.flwMain:setAlign("client");
     obj.flwMain:setName("flwMain");
     obj.flwMain:setMargins({left=12, right=12, top=1, bottom=5});
 
-    obj.flpImgSite = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flpImgSite = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flpImgSite:setParent(obj.flwMain);
     obj.flpImgSite:setName("flpImgSite");
     obj.flpImgSite:setHeight(20);
@@ -148,7 +148,7 @@ function newfrmSelImagemURL()
     obj.flpImgSite:setMaxWidth(99999);
     obj.flpImgSite:setMargins({top=10});
 
-    obj.rdbURL = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.rdbURL = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.rdbURL:setParent(obj.flpImgSite);
     obj.rdbURL:setName("rdbURL");
     obj.rdbURL:setText("Uma imagem de um site ");
@@ -156,16 +156,16 @@ function newfrmSelImagemURL()
     obj.rdbURL:setAlign("left");
     obj.rdbURL:setVertTextAlign("center");
 
-    obj.linha1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.linha1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.linha1:setParent(obj.flpImgSite);
     obj.linha1:setName("linha1");
     obj.linha1:setStrokeColor("white");
 
-    obj.flowLineBreak1 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak1 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak1:setParent(obj.flwMain);
     obj.flowLineBreak1:setName("flowLineBreak1");
 
-    obj.flowPart1 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart1 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart1:setParent(obj.flwMain);
     obj.flowPart1:setMargins({left=20, top=5});
     obj.flowPart1:setMinWidth(180);
@@ -173,7 +173,7 @@ function newfrmSelImagemURL()
     obj.flowPart1:setHeight(30);
     obj.flowPart1:setName("flowPart1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.flowPart1);
     obj.label2:setText("URL da imagem: ");
     obj.label2:setAlign("left");
@@ -181,17 +181,17 @@ function newfrmSelImagemURL()
     obj.label2:setWordWrap(false);
     obj.label2:setName("label2");
 
-    obj.edtURL = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtURL = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtURL:setParent(obj.flowPart1);
     obj.edtURL:setName("edtURL");
     obj.edtURL:setAlign("client");
     obj.edtURL:setMargins({left=4});
 
-    obj.flowLineBreak2 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak2 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak2:setParent(obj.flwMain);
     obj.flowLineBreak2:setName("flowLineBreak2");
 
-    obj.flpImgFireDrive = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flpImgFireDrive = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flpImgFireDrive:setParent(obj.flwMain);
     obj.flpImgFireDrive:setName("flpImgFireDrive");
     obj.flpImgFireDrive:setHeight(20);
@@ -199,7 +199,7 @@ function newfrmSelImagemURL()
     obj.flpImgFireDrive:setMaxWidth(99999);
     obj.flpImgFireDrive:setMargins({top=25});
 
-    obj.rdbFireDrive = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.rdbFireDrive = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.rdbFireDrive:setParent(obj.flpImgFireDrive);
     obj.rdbFireDrive:setName("rdbFireDrive");
     obj.rdbFireDrive:setText("Uma imagem do FireDrive ");
@@ -207,16 +207,16 @@ function newfrmSelImagemURL()
     obj.rdbFireDrive:setAlign("left");
     obj.rdbFireDrive:setVertTextAlign("center");
 
-    obj.linha2 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.linha2 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.linha2:setParent(obj.flpImgFireDrive);
     obj.linha2:setName("linha2");
     obj.linha2:setStrokeColor("white");
 
-    obj.flowLineBreak3 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak3 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak3:setParent(obj.flwMain);
     obj.flowLineBreak3:setName("flowLineBreak3");
 
-    obj.fireDriveNavigatorContent = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.fireDriveNavigatorContent = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.fireDriveNavigatorContent:setParent(obj.flwMain);
     obj.fireDriveNavigatorContent:setName("fireDriveNavigatorContent");
     obj.fireDriveNavigatorContent:setMargins({left=20, top=5});
@@ -224,14 +224,14 @@ function newfrmSelImagemURL()
     obj.fireDriveNavigatorContent:setMaxWidth(9999);
     obj.fireDriveNavigatorContent:setHeight(80);
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setName("layout1");
     obj.layout1:setAlign("bottom");
     obj.layout1:setMargins({top=2, bottom=2});
     obj.layout1:setHeight(40);
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout1);
     obj.button1:setText("Ok");
     obj.button1:setWidth(100);
@@ -240,7 +240,7 @@ function newfrmSelImagemURL()
     obj.button1:setName("button1");
     obj.button1:setMargins({left=4, right=4});
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout1);
     obj.button2:setText("Cancelar");
     obj.button2:setHorzTextAlign("center");
@@ -283,7 +283,7 @@ function newfrmSelImagemURL()
 
 
     obj._e_event0 = obj.flwMain:addEventListener("onAfterLayoutCalc",
-        function (self)
+        function (_)
             local fdCH = self.flwMain.height - self.fireDriveNavigatorContent.top - self.flwMain.padding.bottom;
             			
             			if fdCH < 10 then
@@ -296,19 +296,19 @@ function newfrmSelImagemURL()
         end, obj);
 
     obj._e_event1 = obj.flpImgSite:addEventListener("onResize",
-        function (self)
+        function (_)
             self.linha1.left = self.rdbURL.width;
             				self.linha1.width = self.flpImgSite.width - self.rdbURL.width;
             				self.linha1.top = self.flpImgSite.height / 2 - self.linha1.height / 2;
         end, obj);
 
     obj._e_event2 = obj.edtURL:addEventListener("onEnter",
-        function (self)
+        function (_)
             self.rdbURL.checked = true;
         end, obj);
 
     obj._e_event3 = obj.edtURL:addEventListener("onKeyDown",
-        function (self, event)
+        function (_, event)
             if event.keyCode == 13 or event.key == "\n" then
             						event.keyCode = 0;
             						event.key = "";
@@ -321,19 +321,19 @@ function newfrmSelImagemURL()
         end, obj);
 
     obj._e_event4 = obj.flpImgFireDrive:addEventListener("onResize",
-        function (self)
+        function (_)
             self.linha2.left = self.rdbFireDrive.width;
             				self.linha2.width = self.flpImgFireDrive.width - self.rdbFireDrive.width;
             				self.linha2.top = self.flpImgFireDrive.height / 2 - self.linha2.height / 2;
         end, obj);
 
     obj._e_event5 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self:tryDespacharOK()
         end, obj);
 
     obj._e_event6 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             self:retornarCancel(true)
         end, obj);
 
@@ -379,9 +379,23 @@ function newfrmSelImagemURL()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmSelImagemURL()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmSelImagemURL();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmSelImagemURL = {
@@ -395,6 +409,6 @@ local _frmSelImagemURL = {
     description=""};
 
 frmSelImagemURL = _frmSelImagemURL;
-rrpg.registrarForm(_frmSelImagemURL);
+Firecast.registrarForm(_frmSelImagemURL);
 
 return _frmSelImagemURL;

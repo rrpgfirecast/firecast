@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmActiveSkill()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmActiveSkill()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,13 +31,13 @@ function newfrmActiveSkill()
     obj:setHeight(25);
     obj:setMargins({top=1});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setLeft(0);
     obj.edit1:setTop(0);
@@ -46,7 +46,7 @@ function newfrmActiveSkill()
     obj.edit1:setField("skill_name");
     obj.edit1:setName("edit1");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.rectangle1);
     obj.rectangle2:setLeft(150);
     obj.rectangle2:setTop(0);
@@ -57,7 +57,7 @@ function newfrmActiveSkill()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(150);
     obj.label1:setTop(0);
@@ -68,7 +68,7 @@ function newfrmActiveSkill()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(200);
     obj.button1:setTop(0);
@@ -77,7 +77,7 @@ function newfrmActiveSkill()
     obj.button1:setText("i");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.rectangle1);
     obj.button2:setLeft(225);
     obj.button2:setTop(0);
@@ -86,27 +86,27 @@ function newfrmActiveSkill()
     obj.button2:setText("X");
     obj.button2:setName("button2");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.rectangle1);
     obj.dataLink1:setFields({'skill_base', 'skill_points', 'skill_karma_bonus', 'skill_group_points', 'skill_group_karma_bonus', 'skill_other'});
     obj.dataLink1:setName("dataLink1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.rectangle1);
     obj.dataLink2:setFields({'skill_karma_spent', 'skill_espec_karma', 'skill_group_karma_spent'});
     obj.dataLink2:setName("dataLink2");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj.rectangle1);
     obj.dataLink3:setFields({'skill_group_points'});
     obj.dataLink3:setName("dataLink3");
 
-    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink4:setParent(obj.rectangle1);
     obj.dataLink4:setFields({'skill_points'});
     obj.dataLink4:setName("dataLink4");
 
-    obj.dataLink5 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink5:setParent(obj.rectangle1);
     obj.dataLink5:setFields({'skill_base'});
     obj.dataLink5:setName("dataLink5");
@@ -127,7 +127,7 @@ function newfrmActiveSkill()
 
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             local pop = self:findControlByName("popupActiveSkill");
             				
             				if pop ~= nil then
@@ -139,7 +139,7 @@ function newfrmActiveSkill()
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
             					function (confirmado)
             						if confirmado then
@@ -149,7 +149,7 @@ function newfrmActiveSkill()
         end, obj);
 
     obj._e_event2 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             				sheet.skill_total = 	(tonumber(sheet.skill_base) or 0) + 
             										(tonumber(sheet.skill_points) or 0) + 
@@ -160,7 +160,7 @@ function newfrmActiveSkill()
         end, obj);
 
     obj._e_event3 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             				local node = ndb.getRoot(sheet);
@@ -181,7 +181,7 @@ function newfrmActiveSkill()
         end, obj);
 
     obj._e_event4 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             				local node = ndb.getRoot(sheet);
@@ -200,7 +200,7 @@ function newfrmActiveSkill()
         end, obj);
 
     obj._e_event5 = obj.dataLink4:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             				local node = ndb.getRoot(sheet);
@@ -215,7 +215,7 @@ function newfrmActiveSkill()
         end, obj);
 
     obj._e_event6 = obj.dataLink5:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             				local node = ndb.getRoot(sheet);
@@ -264,9 +264,23 @@ function newfrmActiveSkill()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmActiveSkill()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmActiveSkill();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmActiveSkill = {
@@ -280,6 +294,6 @@ local _frmActiveSkill = {
     description=""};
 
 frmActiveSkill = _frmActiveSkill;
-rrpg.registrarForm(_frmActiveSkill);
+Firecast.registrarForm(_frmActiveSkill);
 
 return _frmActiveSkill;

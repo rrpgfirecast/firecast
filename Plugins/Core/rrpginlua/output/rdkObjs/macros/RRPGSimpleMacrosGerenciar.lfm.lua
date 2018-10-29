@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmGerenciarSimpleMacros()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+local function constructNew_frmGerenciarSimpleMacros()
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -27,77 +27,78 @@ function newfrmGerenciarSimpleMacros()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmGerenciarSimpleMacros");
-    obj:setTitle("Gerenciar Macros");
+    obj:setTitle(lang("macros.ui.manageMacros"));
     obj:setWidth(450);
     obj:setHeight(450);
     obj:setResizable(true);
 
-    obj.popEditMacro = gui.fromHandle(_obj_newObject("popup"));
+    obj.popEditMacro = GUI.fromHandle(_obj_newObject("popup"));
     obj.popEditMacro:setParent(obj);
     obj.popEditMacro:setName("popEditMacro");
+    lfm_setPropAsString(obj.popEditMacro, "autoScopeNode",  "false");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj.popEditMacro);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setAlign("top");
     obj.layout1:setHeight(25);
     obj.layout1:setPadding({left=2, right=2});
     obj.layout1:setName("layout1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
-    obj.label1:setText("Editar Macro");
+    obj.label1:setText(lang("macros.ui.editLabel"));
     obj.label1:setAlign("client");
     obj.label1:setMargins({right=2});
     obj.label1:setHorzTextAlign("center");
     obj.label1:setFontSize(16);
     obj.label1:setName("label1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout1);
-    obj.button1:setText("Fechar");
+    obj.button1:setText(lang("macros.ui.closeButton"));
     obj.button1:setAlign("right");
     obj.button1:setWidth(80);
     obj.button1:setName("button1");
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.scrollBox1);
     obj.horzLine1:setAlign("top");
     obj.horzLine1:setMargins({top=4, bottom=2, left=16, right=16});
     obj.horzLine1:setStrokeColor("white");
     obj.horzLine1:setName("horzLine1");
 
-    obj.flowLayout1 = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj.scrollBox1);
     obj.flowLayout1:setAlign("top");
     obj.flowLayout1:setAutoHeight(true);
     obj.flowLayout1:setMargins({left=5,right=5, top=8});
     obj.flowLayout1:setName("flowLayout1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.flowLayout1);
-    obj.label2:setText("Nome ");
+    obj.label2:setText(lang("macros.ui.nameLabel"));
     obj.label2:setAutoSize(true);
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.flowLayout1);
-    obj.label3:setText("(Não inclua o caracter '/' nem espaços!)");
+    obj.label3:setText(lang("macros.ui.nameLabel.Orientation"));
     obj.label3:setAutoSize(true);
     obj.label3:setFontSize(12);
     obj.label3:setFontColor("gray");
     obj.label3:setWordWrap(false);
     obj.label3:setName("label3");
 
-    obj.flowLineBreak1 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak1 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak1:setParent(obj.flowLayout1);
     obj.flowLineBreak1:setName("flowLineBreak1");
 
-    obj.flowPart1 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart1 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart1:setParent(obj.flowLayout1);
     obj.flowPart1:setMinWidth(100);
     obj.flowPart1:setMaxWidth(250);
@@ -105,66 +106,66 @@ function newfrmGerenciarSimpleMacros()
     obj.flowPart1:setMargins({bottom=12, top=-2});
     obj.flowPart1:setName("flowPart1");
 
-    obj.edtNomeDaMacro = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtNomeDaMacro = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtNomeDaMacro:setParent(obj.flowPart1);
     obj.edtNomeDaMacro:setName("edtNomeDaMacro");
     obj.edtNomeDaMacro:setAlign("client");
     obj.edtNomeDaMacro:setField("macro");
-    obj.edtNomeDaMacro:setTextPrompt("Exemplo: Atacar");
+    obj.edtNomeDaMacro:setTextPrompt(lang("macros.ui.macroName.example"));
 
-    obj.flowLineBreak2 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak2 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak2:setParent(obj.flowLayout1);
     obj.flowLineBreak2:setName("flowLineBreak2");
 
-    obj.radioButton1 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton1 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton1:setParent(obj.flowLayout1);
     obj.radioButton1:setGroupName("tipoMacro");
     obj.radioButton1:setField("tipoMacro");
     obj.radioButton1:setFieldValue("S");
-    obj.radioButton1:setText("Macro Simples");
+    obj.radioButton1:setText(lang("macros.ui.macroType.simple"));
     obj.radioButton1:setName("radioButton1");
 
-    obj.radioButton2 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton2 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton2:setParent(obj.flowLayout1);
     obj.radioButton2:setGroupName("tipoMacro");
     obj.radioButton2:setField("tipoMacro");
     obj.radioButton2:setFieldValue("L");
-    obj.radioButton2:setText("Macro em Lua");
+    obj.radioButton2:setText(lang("macros.ui.macroType.lua"));
     obj.radioButton2:setMargins({bottom=12, right=8});
     obj.radioButton2:setName("radioButton2");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.flowLayout1);
     obj.button2:setText("??");
     obj.button2:setWidth(45);
     obj.button2:setName("button2");
 
-    obj.flowLineBreak3 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak3 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak3:setParent(obj.flowLayout1);
     obj.flowLineBreak3:setName("flowLineBreak3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.flowLayout1);
-    obj.label4:setText("Ações ");
+    obj.label4:setText(lang("macros.ui.actionsTitle"));
     obj.label4:setAutoSize(true);
     obj.label4:setVertTextAlign("trailing");
     obj.label4:setName("label4");
 
-    obj.labExtraInfoAcoes = gui.fromHandle(_obj_newObject("label"));
+    obj.labExtraInfoAcoes = GUI.fromHandle(_obj_newObject("label"));
     obj.labExtraInfoAcoes:setParent(obj.flowLayout1);
     obj.labExtraInfoAcoes:setName("labExtraInfoAcoes");
-    obj.labExtraInfoAcoes:setText("(Uma por linha)");
+    obj.labExtraInfoAcoes:setText(lang("macros.ui.macroType.onePerLine"));
     obj.labExtraInfoAcoes:setAutoSize(true);
     obj.labExtraInfoAcoes:setFontSize(12);
     obj.labExtraInfoAcoes:setFontColor("gray");
     obj.labExtraInfoAcoes:setWordWrap(false);
     obj.labExtraInfoAcoes:setVertTextAlign("trailing");
 
-    obj.flowLineBreak4 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak4 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak4:setParent(obj.flowLayout1);
     obj.flowLineBreak4:setName("flowLineBreak4");
 
-    obj.flpCode = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flpCode = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flpCode:setParent(obj.flowLayout1);
     obj.flpCode:setName("flpCode");
     obj.flpCode:setMinWidth(100);
@@ -172,37 +173,37 @@ function newfrmGerenciarSimpleMacros()
     obj.flpCode:setHeight(100);
     obj.flpCode:setMargins({bottom=12, top=-2});
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.flpCode);
     obj.textEditor1:setAlign("client");
     obj.textEditor1:setField("acoes");
     obj.textEditor1:setWordWrap(false);
     obj.textEditor1:setName("textEditor1");
 
-    obj.flowLineBreak5 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak5 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak5:setParent(obj.flowLayout1);
     obj.flowLineBreak5:setName("flowLineBreak5");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.flowLayout1);
-    obj.button3:setText("Apagar Macro");
+    obj.button3:setText(lang("macros.ui.deleteMacro"));
     obj.button3:setWidth(150);
     obj.button3:setMargins({top=8, right=15, bottom=15});
     obj.button3:setHeight(30);
     obj.button3:setName("button3");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.popEditMacro);
     obj.dataLink1:setFields({'macro', 'acoes'});
     obj.dataLink1:setName("dataLink1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.popEditMacro);
     obj.dataLink2:setField("tipoMacro");
     obj.dataLink2:setDefaultValue("S");
     obj.dataLink2:setName("dataLink2");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj.popEditMacro);
     obj.dataLink3:setField("macro");
     obj.dataLink3:setName("dataLink3");
@@ -224,58 +225,58 @@ function newfrmGerenciarSimpleMacros()
 	
 
 
-    obj.tabControl1 = gui.fromHandle(_obj_newObject("tabControl"));
+    obj.tabControl1 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl1:setParent(obj);
     obj.tabControl1:setAlign("client");
     obj.tabControl1:setName("tabControl1");
 
-    obj.tabMacroMesa = gui.fromHandle(_obj_newObject("tab"));
+    obj.tabMacroMesa = GUI.fromHandle(_obj_newObject("tab"));
     obj.tabMacroMesa:setParent(obj.tabControl1);
-    obj.tabMacroMesa:setTitle("Macros para todos da mesa");
+    obj.tabMacroMesa:setTitle(lang("macros.ui.title.macrosForEveryoneOnRoom"));
     obj.tabMacroMesa:setName("tabMacroMesa");
 
-    obj.dsbMacrosMesaGlobal = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.dsbMacrosMesaGlobal = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.dsbMacrosMesaGlobal:setParent(obj.tabMacroMesa);
     obj.dsbMacrosMesaGlobal:setName("dsbMacrosMesaGlobal");
     obj.dsbMacrosMesaGlobal:setAlign("client");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.dsbMacrosMesaGlobal);
     obj.layout2:setAlign("client");
     obj.layout2:setMargins({left=2, top=2, right=2, bottom=2});
     obj.layout2:setName("layout2");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout2);
     obj.layout3:setAlign("top");
     obj.layout3:setHeight(25);
     obj.layout3:setMargins({left=2, right=2, bottom=8});
     obj.layout3:setName("layout3");
 
-    obj.labTitMesa2 = gui.fromHandle(_obj_newObject("label"));
+    obj.labTitMesa2 = GUI.fromHandle(_obj_newObject("label"));
     obj.labTitMesa2:setParent(obj.layout3);
     obj.labTitMesa2:setName("labTitMesa2");
-    obj.labTitMesa2:setText("Mesa");
+    obj.labTitMesa2:setText(lang("macros.ui.room"));
     obj.labTitMesa2:setAlign("client");
     obj.labTitMesa2:setHorzTextAlign("center");
     obj.labTitMesa2:setFontSize(16);
     lfm_setPropAsString(obj.labTitMesa2, "fontStyle",  "bold");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout2);
     obj.layout4:setAlign("top");
     obj.layout4:setHeight(28);
     obj.layout4:setMargins({bottom=5, top=5, left=5});
     obj.layout4:setName("layout4");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.layout4);
-    obj.button4:setText("Nova macro para todos");
+    obj.button4:setText(lang("macros.ui.roomMacro.newTitle"));
     obj.button4:setAlign("left");
     obj.button4:setWidth(150);
     obj.button4:setName("button4");
 
-    obj.rclMacrosDaMesaGlobal = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclMacrosDaMesaGlobal = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclMacrosDaMesaGlobal:setParent(obj.layout2);
     obj.rclMacrosDaMesaGlobal:setName("rclMacrosDaMesaGlobal");
     obj.rclMacrosDaMesaGlobal:setAlign("client");
@@ -283,42 +284,42 @@ function newfrmGerenciarSimpleMacros()
     obj.rclMacrosDaMesaGlobal:setTemplateForm("frmGerenciarSimpleMacrosItem");
     obj.rclMacrosDaMesaGlobal:setSelectable(true);
 
-    obj.tab1 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab1 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab1:setParent(obj.tabControl1);
-    obj.tab1:setTitle("Minhas macros");
+    obj.tab1:setTitle(lang("macros.ui.myMacros.title"));
     obj.tab1:setName("tab1");
 
-    obj.tabControl2 = gui.fromHandle(_obj_newObject("tabControl"));
+    obj.tabControl2 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl2:setParent(obj.tab1);
     obj.tabControl2:setAlign("client");
     obj.tabControl2:setName("tabControl2");
 
-    obj.tab2 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.tabControl2);
-    obj.tab2:setTitle("Globais");
+    obj.tab2:setTitle(lang("macros.ui.myMacros.global.title"));
     obj.tab2:setName("tab2");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.tab2);
     obj.layout5:setAlign("client");
     obj.layout5:setMargins({left=2, top=2, right=2, bottom=2});
     obj.layout5:setName("layout5");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout5);
     obj.layout6:setAlign("top");
     obj.layout6:setHeight(28);
     obj.layout6:setMargins({bottom=5, top=5, left=5});
     obj.layout6:setName("layout6");
 
-    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
     obj.button5:setParent(obj.layout6);
-    obj.button5:setText("Nova macro global");
+    obj.button5:setText(lang("macros.ui.myMacros.global.new.title"));
     obj.button5:setAlign("left");
     obj.button5:setWidth(150);
     obj.button5:setName("button5");
 
-    obj.rclMacrosGlobais = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclMacrosGlobais = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclMacrosGlobais:setParent(obj.layout5);
     obj.rclMacrosGlobais:setName("rclMacrosGlobais");
     obj.rclMacrosGlobais:setAlign("client");
@@ -326,53 +327,53 @@ function newfrmGerenciarSimpleMacros()
     obj.rclMacrosGlobais:setTemplateForm("frmGerenciarSimpleMacrosItem");
     obj.rclMacrosGlobais:setSelectable(true);
 
-    obj.tabMacrosDaMesa = gui.fromHandle(_obj_newObject("tab"));
+    obj.tabMacrosDaMesa = GUI.fromHandle(_obj_newObject("tab"));
     obj.tabMacrosDaMesa:setParent(obj.tabControl2);
     obj.tabMacrosDaMesa:setName("tabMacrosDaMesa");
-    obj.tabMacrosDaMesa:setTitle("Desta mesa");
+    obj.tabMacrosDaMesa:setTitle(lang("macros.ui.myMacros.thisroom.title"));
 
-    obj.dsbMacrosDaMesa = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.dsbMacrosDaMesa = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.dsbMacrosDaMesa:setParent(obj.tabMacrosDaMesa);
     obj.dsbMacrosDaMesa:setName("dsbMacrosDaMesa");
     obj.dsbMacrosDaMesa:setAlign("client");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.dsbMacrosDaMesa);
     obj.layout7:setAlign("client");
     obj.layout7:setMargins({left=2, top=2, right=2, bottom=2});
     obj.layout7:setName("layout7");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.layout7);
     obj.layout8:setAlign("top");
     obj.layout8:setHeight(25);
     obj.layout8:setMargins({left=2, right=2, bottom=8});
     obj.layout8:setName("layout8");
 
-    obj.labTitMesa = gui.fromHandle(_obj_newObject("label"));
+    obj.labTitMesa = GUI.fromHandle(_obj_newObject("label"));
     obj.labTitMesa:setParent(obj.layout8);
     obj.labTitMesa:setName("labTitMesa");
-    obj.labTitMesa:setText("Mesa");
+    obj.labTitMesa:setText(lang("macros.ui.room"));
     obj.labTitMesa:setAlign("client");
     obj.labTitMesa:setHorzTextAlign("center");
     obj.labTitMesa:setFontSize(16);
     lfm_setPropAsString(obj.labTitMesa, "fontStyle",  "bold");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.layout7);
     obj.layout9:setAlign("top");
     obj.layout9:setHeight(28);
     obj.layout9:setMargins({bottom=3});
     obj.layout9:setName("layout9");
 
-    obj.button6 = gui.fromHandle(_obj_newObject("button"));
+    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
     obj.button6:setParent(obj.layout9);
-    obj.button6:setText("Nova macro desta mesa");
+    obj.button6:setText(lang("macros.ui.myMacros.thisroom.new.title"));
     obj.button6:setAlign("left");
     obj.button6:setWidth(180);
     obj.button6:setName("button6");
 
-    obj.rclMacrosDaMesa = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclMacrosDaMesa = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclMacrosDaMesa:setParent(obj.layout7);
     obj.rclMacrosDaMesa:setName("rclMacrosDaMesa");
     obj.rclMacrosDaMesa:setAlign("client");
@@ -381,9 +382,9 @@ function newfrmGerenciarSimpleMacros()
     obj.rclMacrosDaMesa:setSelectable(true);
 
     obj._e_event0 = obj:addEventListener("onShow",
-        function (self)
+        function (_)
             if globalSimpleMacrosNDB == nil then
-            			globalSimpleMacrosNDB = ndb.load("simpleMacros.xml");
+            			globalSimpleMacrosNDB = NDB.load("simpleMacros.xml");
             		end;			
             	
             		if globalSimpleMacrosNDB.global == nil then
@@ -411,7 +412,7 @@ function newfrmGerenciarSimpleMacros()
             			local travouForm = false;
             			opcoes.criar = true;
             			opcoes.callbackDeCarga = function()
-            										self:lockWithActivity("Carregando Macros da Mesa");
+            										self:lockWithActivity(lang("macros.ui.loadingMacrosForRoom"));
             										travouForm = true;
             									 end;
             			
@@ -436,23 +437,23 @@ function newfrmGerenciarSimpleMacros()
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onHide",
-        function (self)
+        function (_)
             self.dsbMacrosDaMesa.node = nil;
             		self:setNodeObject(nil);
         end, obj);
 
     obj._e_event2 = obj.popEditMacro:addEventListener("onClose",
-        function (self, canceled)
+        function (_, canceled)
             self.popEditMacro:setNodeObject(nil);
         end, obj);
 
     obj._e_event3 = obj.popEditMacro:addEventListener("onResize",
-        function (self)
+        function (_)
             self.flpCode.height = self.popEditMacro.height - 220;
         end, obj);
 
     obj._e_event4 = obj.popEditMacro:addEventListener("onCalculateSize",
-        function (self, dueToResize, width, height)
+        function (_, dueToResize, width, height)
             local w = (self.width or 0) * 0.8;
             			local h = (self.height or 0) * 0.8;
             				
@@ -472,25 +473,25 @@ function newfrmGerenciarSimpleMacros()
         end, obj);
 
     obj._e_event5 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.popEditMacro:close();
         end, obj);
 
     obj._e_event6 = obj.button2:addEventListener("onClick",
-        function (self)
-            gui.openInBrowser('http://rrpg.com.br/sdk3beta/RRPG%20SDK%203.html?Macros.html');
+        function (_)
+            GUI.openInBrowser('http://rrpg.com.br/sdk3beta/RRPG%20SDK%203.html?Macros.html');
         end, obj);
 
     obj._e_event7 = obj.button3:addEventListener("onClick",
-        function (self)
-            dialogs.confirmYesNo("Deseja realmente apagar esta macro?",
+        function (_)
+            Dialogs.confirmYesNo(lang("macros.ui.deleteConfirmation"),
             							function (confirmado)
             								if confirmado then
             									local node = self.popEditMacro:getNodeObject();								
             									self.popEditMacro:close();						
             									
             									if node ~= nil then
-            										ndb.deleteNode(node);
+            										NDB.deleteNode(node);
             										globalMacrosInvalido = true;
             									end;
             								end;
@@ -498,32 +499,32 @@ function newfrmGerenciarSimpleMacros()
         end, obj);
 
     obj._e_event8 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             globalMacrosInvalido = true;
         end, obj);
 
     obj._e_event9 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.labExtraInfoAcoes.visible = self.popEditMacro:getNodeObject().tipoMacro ~= "L";
         end, obj);
 
     obj._e_event10 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self.popEditMacro:getNodeObject().macro = globalPrepareMacroName(self.popEditMacro:getNodeObject().macro);
         end, obj);
 
     obj._e_event11 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             self.editarMacroNode(self.rclMacrosDaMesaGlobal:append());
         end, obj);
 
     obj._e_event12 = obj.button5:addEventListener("onClick",
-        function (self)
+        function (_)
             self.editarMacroNode(self.rclMacrosGlobais:append());
         end, obj);
 
     obj._e_event13 = obj.button6:addEventListener("onClick",
-        function (self)
+        function (_)
             self.editarMacroNode(self.rclMacrosDaMesa:append());
         end, obj);
 
@@ -609,9 +610,23 @@ function newfrmGerenciarSimpleMacros()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmGerenciarSimpleMacros()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmGerenciarSimpleMacros();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmGerenciarSimpleMacros = {
@@ -621,10 +636,10 @@ local _frmGerenciarSimpleMacros = {
     dataType = "", 
     formType = "undefined", 
     formComponentName = "popupForm", 
-    title = "Gerenciar Macros", 
+    title = "@@macros.ui.manageMacros", 
     description=""};
 
 frmGerenciarSimpleMacros = _frmGerenciarSimpleMacros;
-rrpg.registrarForm(_frmGerenciarSimpleMacros);
+Firecast.registrarForm(_frmGerenciarSimpleMacros);
 
 return _frmGerenciarSimpleMacros;

@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmW20_3()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmW20_3()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,12 +30,12 @@ function newfrmW20_3()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -43,7 +43,7 @@ function newfrmW20_3()
     obj.layout1:setHeight(330);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
@@ -52,7 +52,7 @@ function newfrmW20_3()
     obj.rectangle1:setCornerType("innerLine");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(5);
     obj.label1:setTop(0);
@@ -62,7 +62,7 @@ function newfrmW20_3()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout1);
     obj.label2:setLeft(15);
     obj.label2:setTop(25);
@@ -71,7 +71,7 @@ function newfrmW20_3()
     obj.label2:setText("Weapon/Attack                                          Roll              Diff.    Damage   Range     Rate        Clip");
     obj.label2:setName("label2");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layout1);
     obj.layout2:setLeft(15);
     obj.layout2:setTop(50);
@@ -79,7 +79,7 @@ function newfrmW20_3()
     obj.layout2:setHeight(25);
     obj.layout2:setName("layout2");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout2);
     obj.edit1:setLeft(0);
     obj.edit1:setTop(0);
@@ -88,7 +88,7 @@ function newfrmW20_3()
     obj.edit1:setField("attack_1");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout2);
     obj.edit2:setLeft(200);
     obj.edit2:setTop(0);
@@ -97,7 +97,7 @@ function newfrmW20_3()
     obj.edit2:setField("roll_1");
     obj.edit2:setName("edit2");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout2);
     obj.edit3:setLeft(300);
     obj.edit3:setTop(0);
@@ -106,7 +106,7 @@ function newfrmW20_3()
     obj.edit3:setField("difficulty_1");
     obj.edit3:setName("edit3");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout2);
     obj.edit4:setLeft(350);
     obj.edit4:setTop(0);
@@ -115,7 +115,7 @@ function newfrmW20_3()
     obj.edit4:setField("damage_1");
     obj.edit4:setName("edit4");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout2);
     obj.edit5:setLeft(400);
     obj.edit5:setTop(0);
@@ -124,7 +124,7 @@ function newfrmW20_3()
     obj.edit5:setField("range_1");
     obj.edit5:setName("edit5");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout2);
     obj.edit6:setLeft(450);
     obj.edit6:setTop(0);
@@ -133,7 +133,7 @@ function newfrmW20_3()
     obj.edit6:setField("rate_1");
     obj.edit6:setName("edit6");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout2);
     obj.edit7:setLeft(500);
     obj.edit7:setTop(0);
@@ -142,7 +142,7 @@ function newfrmW20_3()
     obj.edit7:setField("clip_1");
     obj.edit7:setName("edit7");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout1);
     obj.layout3:setLeft(15);
     obj.layout3:setTop(75);
@@ -150,7 +150,7 @@ function newfrmW20_3()
     obj.layout3:setHeight(25);
     obj.layout3:setName("layout3");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.layout3);
     obj.edit8:setLeft(0);
     obj.edit8:setTop(0);
@@ -159,7 +159,7 @@ function newfrmW20_3()
     obj.edit8:setField("attack_2");
     obj.edit8:setName("edit8");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.layout3);
     obj.edit9:setLeft(200);
     obj.edit9:setTop(0);
@@ -168,7 +168,7 @@ function newfrmW20_3()
     obj.edit9:setField("roll_2");
     obj.edit9:setName("edit9");
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.layout3);
     obj.edit10:setLeft(300);
     obj.edit10:setTop(0);
@@ -177,7 +177,7 @@ function newfrmW20_3()
     obj.edit10:setField("difficulty_2");
     obj.edit10:setName("edit10");
 
-    obj.edit11 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit11:setParent(obj.layout3);
     obj.edit11:setLeft(350);
     obj.edit11:setTop(0);
@@ -186,7 +186,7 @@ function newfrmW20_3()
     obj.edit11:setField("damage_2");
     obj.edit11:setName("edit11");
 
-    obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit12:setParent(obj.layout3);
     obj.edit12:setLeft(400);
     obj.edit12:setTop(0);
@@ -195,7 +195,7 @@ function newfrmW20_3()
     obj.edit12:setField("range_2");
     obj.edit12:setName("edit12");
 
-    obj.edit13 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit13:setParent(obj.layout3);
     obj.edit13:setLeft(450);
     obj.edit13:setTop(0);
@@ -204,7 +204,7 @@ function newfrmW20_3()
     obj.edit13:setField("rate_2");
     obj.edit13:setName("edit13");
 
-    obj.edit14 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit14:setParent(obj.layout3);
     obj.edit14:setLeft(500);
     obj.edit14:setTop(0);
@@ -213,7 +213,7 @@ function newfrmW20_3()
     obj.edit14:setField("clip_2");
     obj.edit14:setName("edit14");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout1);
     obj.layout4:setLeft(15);
     obj.layout4:setTop(100);
@@ -221,7 +221,7 @@ function newfrmW20_3()
     obj.layout4:setHeight(25);
     obj.layout4:setName("layout4");
 
-    obj.edit15 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit15:setParent(obj.layout4);
     obj.edit15:setLeft(0);
     obj.edit15:setTop(0);
@@ -230,7 +230,7 @@ function newfrmW20_3()
     obj.edit15:setField("attack_3");
     obj.edit15:setName("edit15");
 
-    obj.edit16 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit16:setParent(obj.layout4);
     obj.edit16:setLeft(200);
     obj.edit16:setTop(0);
@@ -239,7 +239,7 @@ function newfrmW20_3()
     obj.edit16:setField("roll_3");
     obj.edit16:setName("edit16");
 
-    obj.edit17 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit17:setParent(obj.layout4);
     obj.edit17:setLeft(300);
     obj.edit17:setTop(0);
@@ -248,7 +248,7 @@ function newfrmW20_3()
     obj.edit17:setField("difficulty_3");
     obj.edit17:setName("edit17");
 
-    obj.edit18 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit18:setParent(obj.layout4);
     obj.edit18:setLeft(350);
     obj.edit18:setTop(0);
@@ -257,7 +257,7 @@ function newfrmW20_3()
     obj.edit18:setField("damage_3");
     obj.edit18:setName("edit18");
 
-    obj.edit19 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit19:setParent(obj.layout4);
     obj.edit19:setLeft(400);
     obj.edit19:setTop(0);
@@ -266,7 +266,7 @@ function newfrmW20_3()
     obj.edit19:setField("range_3");
     obj.edit19:setName("edit19");
 
-    obj.edit20 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit20:setParent(obj.layout4);
     obj.edit20:setLeft(450);
     obj.edit20:setTop(0);
@@ -275,7 +275,7 @@ function newfrmW20_3()
     obj.edit20:setField("rate_3");
     obj.edit20:setName("edit20");
 
-    obj.edit21 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit21:setParent(obj.layout4);
     obj.edit21:setLeft(500);
     obj.edit21:setTop(0);
@@ -284,7 +284,7 @@ function newfrmW20_3()
     obj.edit21:setField("clip_3");
     obj.edit21:setName("edit21");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout1);
     obj.layout5:setLeft(15);
     obj.layout5:setTop(125);
@@ -292,7 +292,7 @@ function newfrmW20_3()
     obj.layout5:setHeight(25);
     obj.layout5:setName("layout5");
 
-    obj.edit22 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit22:setParent(obj.layout5);
     obj.edit22:setLeft(0);
     obj.edit22:setTop(0);
@@ -301,7 +301,7 @@ function newfrmW20_3()
     obj.edit22:setField("attack_4");
     obj.edit22:setName("edit22");
 
-    obj.edit23 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit23:setParent(obj.layout5);
     obj.edit23:setLeft(200);
     obj.edit23:setTop(0);
@@ -310,7 +310,7 @@ function newfrmW20_3()
     obj.edit23:setField("roll_4");
     obj.edit23:setName("edit23");
 
-    obj.edit24 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit24:setParent(obj.layout5);
     obj.edit24:setLeft(300);
     obj.edit24:setTop(0);
@@ -319,7 +319,7 @@ function newfrmW20_3()
     obj.edit24:setField("difficulty_4");
     obj.edit24:setName("edit24");
 
-    obj.edit25 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit25:setParent(obj.layout5);
     obj.edit25:setLeft(350);
     obj.edit25:setTop(0);
@@ -328,7 +328,7 @@ function newfrmW20_3()
     obj.edit25:setField("damage_4");
     obj.edit25:setName("edit25");
 
-    obj.edit26 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit26:setParent(obj.layout5);
     obj.edit26:setLeft(400);
     obj.edit26:setTop(0);
@@ -337,7 +337,7 @@ function newfrmW20_3()
     obj.edit26:setField("range_4");
     obj.edit26:setName("edit26");
 
-    obj.edit27 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit27 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit27:setParent(obj.layout5);
     obj.edit27:setLeft(450);
     obj.edit27:setTop(0);
@@ -346,7 +346,7 @@ function newfrmW20_3()
     obj.edit27:setField("rate_4");
     obj.edit27:setName("edit27");
 
-    obj.edit28 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit28 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit28:setParent(obj.layout5);
     obj.edit28:setLeft(500);
     obj.edit28:setTop(0);
@@ -355,7 +355,7 @@ function newfrmW20_3()
     obj.edit28:setField("clip_4");
     obj.edit28:setName("edit28");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout1);
     obj.layout6:setLeft(15);
     obj.layout6:setTop(150);
@@ -363,7 +363,7 @@ function newfrmW20_3()
     obj.layout6:setHeight(25);
     obj.layout6:setName("layout6");
 
-    obj.edit29 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit29 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit29:setParent(obj.layout6);
     obj.edit29:setLeft(0);
     obj.edit29:setTop(0);
@@ -372,7 +372,7 @@ function newfrmW20_3()
     obj.edit29:setField("attack_5");
     obj.edit29:setName("edit29");
 
-    obj.edit30 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit30 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit30:setParent(obj.layout6);
     obj.edit30:setLeft(200);
     obj.edit30:setTop(0);
@@ -381,7 +381,7 @@ function newfrmW20_3()
     obj.edit30:setField("roll_5");
     obj.edit30:setName("edit30");
 
-    obj.edit31 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit31:setParent(obj.layout6);
     obj.edit31:setLeft(300);
     obj.edit31:setTop(0);
@@ -390,7 +390,7 @@ function newfrmW20_3()
     obj.edit31:setField("difficulty_5");
     obj.edit31:setName("edit31");
 
-    obj.edit32 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit32:setParent(obj.layout6);
     obj.edit32:setLeft(350);
     obj.edit32:setTop(0);
@@ -399,7 +399,7 @@ function newfrmW20_3()
     obj.edit32:setField("damage_5");
     obj.edit32:setName("edit32");
 
-    obj.edit33 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit33 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit33:setParent(obj.layout6);
     obj.edit33:setLeft(400);
     obj.edit33:setTop(0);
@@ -408,7 +408,7 @@ function newfrmW20_3()
     obj.edit33:setField("range_5");
     obj.edit33:setName("edit33");
 
-    obj.edit34 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit34:setParent(obj.layout6);
     obj.edit34:setLeft(450);
     obj.edit34:setTop(0);
@@ -417,7 +417,7 @@ function newfrmW20_3()
     obj.edit34:setField("rate_5");
     obj.edit34:setName("edit34");
 
-    obj.edit35 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit35 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit35:setParent(obj.layout6);
     obj.edit35:setLeft(500);
     obj.edit35:setTop(0);
@@ -426,7 +426,7 @@ function newfrmW20_3()
     obj.edit35:setField("clip_5");
     obj.edit35:setName("edit35");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.layout1);
     obj.layout7:setLeft(15);
     obj.layout7:setTop(175);
@@ -434,7 +434,7 @@ function newfrmW20_3()
     obj.layout7:setHeight(25);
     obj.layout7:setName("layout7");
 
-    obj.edit36 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit36:setParent(obj.layout7);
     obj.edit36:setLeft(0);
     obj.edit36:setTop(0);
@@ -443,7 +443,7 @@ function newfrmW20_3()
     obj.edit36:setField("attack_6");
     obj.edit36:setName("edit36");
 
-    obj.edit37 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit37 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit37:setParent(obj.layout7);
     obj.edit37:setLeft(200);
     obj.edit37:setTop(0);
@@ -452,7 +452,7 @@ function newfrmW20_3()
     obj.edit37:setField("roll_6");
     obj.edit37:setName("edit37");
 
-    obj.edit38 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit38 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit38:setParent(obj.layout7);
     obj.edit38:setLeft(300);
     obj.edit38:setTop(0);
@@ -461,7 +461,7 @@ function newfrmW20_3()
     obj.edit38:setField("difficulty_6");
     obj.edit38:setName("edit38");
 
-    obj.edit39 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit39 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit39:setParent(obj.layout7);
     obj.edit39:setLeft(350);
     obj.edit39:setTop(0);
@@ -470,7 +470,7 @@ function newfrmW20_3()
     obj.edit39:setField("damage_6");
     obj.edit39:setName("edit39");
 
-    obj.edit40 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit40 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit40:setParent(obj.layout7);
     obj.edit40:setLeft(400);
     obj.edit40:setTop(0);
@@ -479,7 +479,7 @@ function newfrmW20_3()
     obj.edit40:setField("range_6");
     obj.edit40:setName("edit40");
 
-    obj.edit41 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit41:setParent(obj.layout7);
     obj.edit41:setLeft(450);
     obj.edit41:setTop(0);
@@ -488,7 +488,7 @@ function newfrmW20_3()
     obj.edit41:setField("rate_6");
     obj.edit41:setName("edit41");
 
-    obj.edit42 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit42:setParent(obj.layout7);
     obj.edit42:setLeft(500);
     obj.edit42:setTop(0);
@@ -497,7 +497,7 @@ function newfrmW20_3()
     obj.edit42:setField("clip_6");
     obj.edit42:setName("edit42");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.layout1);
     obj.layout8:setLeft(15);
     obj.layout8:setTop(200);
@@ -505,7 +505,7 @@ function newfrmW20_3()
     obj.layout8:setHeight(25);
     obj.layout8:setName("layout8");
 
-    obj.edit43 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit43 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit43:setParent(obj.layout8);
     obj.edit43:setLeft(0);
     obj.edit43:setTop(0);
@@ -514,7 +514,7 @@ function newfrmW20_3()
     obj.edit43:setField("attack_7");
     obj.edit43:setName("edit43");
 
-    obj.edit44 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit44 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit44:setParent(obj.layout8);
     obj.edit44:setLeft(200);
     obj.edit44:setTop(0);
@@ -523,7 +523,7 @@ function newfrmW20_3()
     obj.edit44:setField("roll_7");
     obj.edit44:setName("edit44");
 
-    obj.edit45 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit45:setParent(obj.layout8);
     obj.edit45:setLeft(300);
     obj.edit45:setTop(0);
@@ -532,7 +532,7 @@ function newfrmW20_3()
     obj.edit45:setField("difficulty_7");
     obj.edit45:setName("edit45");
 
-    obj.edit46 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit46:setParent(obj.layout8);
     obj.edit46:setLeft(350);
     obj.edit46:setTop(0);
@@ -541,7 +541,7 @@ function newfrmW20_3()
     obj.edit46:setField("damage_7");
     obj.edit46:setName("edit46");
 
-    obj.edit47 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit47:setParent(obj.layout8);
     obj.edit47:setLeft(400);
     obj.edit47:setTop(0);
@@ -550,7 +550,7 @@ function newfrmW20_3()
     obj.edit47:setField("range_7");
     obj.edit47:setName("edit47");
 
-    obj.edit48 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit48:setParent(obj.layout8);
     obj.edit48:setLeft(450);
     obj.edit48:setTop(0);
@@ -559,7 +559,7 @@ function newfrmW20_3()
     obj.edit48:setField("rate_7");
     obj.edit48:setName("edit48");
 
-    obj.edit49 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit49 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit49:setParent(obj.layout8);
     obj.edit49:setLeft(500);
     obj.edit49:setTop(0);
@@ -568,7 +568,7 @@ function newfrmW20_3()
     obj.edit49:setField("clip_7");
     obj.edit49:setName("edit49");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.layout1);
     obj.layout9:setLeft(15);
     obj.layout9:setTop(225);
@@ -576,7 +576,7 @@ function newfrmW20_3()
     obj.layout9:setHeight(25);
     obj.layout9:setName("layout9");
 
-    obj.edit50 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit50:setParent(obj.layout9);
     obj.edit50:setLeft(0);
     obj.edit50:setTop(0);
@@ -585,7 +585,7 @@ function newfrmW20_3()
     obj.edit50:setField("attack_8");
     obj.edit50:setName("edit50");
 
-    obj.edit51 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit51:setParent(obj.layout9);
     obj.edit51:setLeft(200);
     obj.edit51:setTop(0);
@@ -594,7 +594,7 @@ function newfrmW20_3()
     obj.edit51:setField("roll_8");
     obj.edit51:setName("edit51");
 
-    obj.edit52 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit52 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit52:setParent(obj.layout9);
     obj.edit52:setLeft(300);
     obj.edit52:setTop(0);
@@ -603,7 +603,7 @@ function newfrmW20_3()
     obj.edit52:setField("difficulty_8");
     obj.edit52:setName("edit52");
 
-    obj.edit53 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit53 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit53:setParent(obj.layout9);
     obj.edit53:setLeft(350);
     obj.edit53:setTop(0);
@@ -612,7 +612,7 @@ function newfrmW20_3()
     obj.edit53:setField("damage_8");
     obj.edit53:setName("edit53");
 
-    obj.edit54 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit54:setParent(obj.layout9);
     obj.edit54:setLeft(400);
     obj.edit54:setTop(0);
@@ -621,7 +621,7 @@ function newfrmW20_3()
     obj.edit54:setField("range_8");
     obj.edit54:setName("edit54");
 
-    obj.edit55 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit55 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit55:setParent(obj.layout9);
     obj.edit55:setLeft(450);
     obj.edit55:setTop(0);
@@ -630,7 +630,7 @@ function newfrmW20_3()
     obj.edit55:setField("rate_8");
     obj.edit55:setName("edit55");
 
-    obj.edit56 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit56:setParent(obj.layout9);
     obj.edit56:setLeft(500);
     obj.edit56:setTop(0);
@@ -639,7 +639,7 @@ function newfrmW20_3()
     obj.edit56:setField("clip_8");
     obj.edit56:setName("edit56");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.layout1);
     obj.layout10:setLeft(15);
     obj.layout10:setTop(250);
@@ -647,7 +647,7 @@ function newfrmW20_3()
     obj.layout10:setHeight(25);
     obj.layout10:setName("layout10");
 
-    obj.edit57 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit57 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit57:setParent(obj.layout10);
     obj.edit57:setLeft(0);
     obj.edit57:setTop(0);
@@ -656,7 +656,7 @@ function newfrmW20_3()
     obj.edit57:setField("attack_9");
     obj.edit57:setName("edit57");
 
-    obj.edit58 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit58 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit58:setParent(obj.layout10);
     obj.edit58:setLeft(200);
     obj.edit58:setTop(0);
@@ -665,7 +665,7 @@ function newfrmW20_3()
     obj.edit58:setField("roll_9");
     obj.edit58:setName("edit58");
 
-    obj.edit59 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit59 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit59:setParent(obj.layout10);
     obj.edit59:setLeft(300);
     obj.edit59:setTop(0);
@@ -674,7 +674,7 @@ function newfrmW20_3()
     obj.edit59:setField("difficulty_9");
     obj.edit59:setName("edit59");
 
-    obj.edit60 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit60 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit60:setParent(obj.layout10);
     obj.edit60:setLeft(350);
     obj.edit60:setTop(0);
@@ -683,7 +683,7 @@ function newfrmW20_3()
     obj.edit60:setField("damage_9");
     obj.edit60:setName("edit60");
 
-    obj.edit61 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit61 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit61:setParent(obj.layout10);
     obj.edit61:setLeft(400);
     obj.edit61:setTop(0);
@@ -692,7 +692,7 @@ function newfrmW20_3()
     obj.edit61:setField("range_9");
     obj.edit61:setName("edit61");
 
-    obj.edit62 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit62 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit62:setParent(obj.layout10);
     obj.edit62:setLeft(450);
     obj.edit62:setTop(0);
@@ -701,7 +701,7 @@ function newfrmW20_3()
     obj.edit62:setField("rate_9");
     obj.edit62:setName("edit62");
 
-    obj.edit63 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit63 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit63:setParent(obj.layout10);
     obj.edit63:setLeft(500);
     obj.edit63:setTop(0);
@@ -710,7 +710,7 @@ function newfrmW20_3()
     obj.edit63:setField("clip_9");
     obj.edit63:setName("edit63");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.layout1);
     obj.layout11:setLeft(15);
     obj.layout11:setTop(275);
@@ -718,7 +718,7 @@ function newfrmW20_3()
     obj.layout11:setHeight(25);
     obj.layout11:setName("layout11");
 
-    obj.edit64 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit64 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit64:setParent(obj.layout11);
     obj.edit64:setLeft(0);
     obj.edit64:setTop(0);
@@ -727,7 +727,7 @@ function newfrmW20_3()
     obj.edit64:setField("attack_10");
     obj.edit64:setName("edit64");
 
-    obj.edit65 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit65 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit65:setParent(obj.layout11);
     obj.edit65:setLeft(200);
     obj.edit65:setTop(0);
@@ -736,7 +736,7 @@ function newfrmW20_3()
     obj.edit65:setField("roll_10");
     obj.edit65:setName("edit65");
 
-    obj.edit66 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit66 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit66:setParent(obj.layout11);
     obj.edit66:setLeft(300);
     obj.edit66:setTop(0);
@@ -745,7 +745,7 @@ function newfrmW20_3()
     obj.edit66:setField("difficulty_10");
     obj.edit66:setName("edit66");
 
-    obj.edit67 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit67 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit67:setParent(obj.layout11);
     obj.edit67:setLeft(350);
     obj.edit67:setTop(0);
@@ -754,7 +754,7 @@ function newfrmW20_3()
     obj.edit67:setField("damage_10");
     obj.edit67:setName("edit67");
 
-    obj.edit68 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit68 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit68:setParent(obj.layout11);
     obj.edit68:setLeft(400);
     obj.edit68:setTop(0);
@@ -763,7 +763,7 @@ function newfrmW20_3()
     obj.edit68:setField("range_10");
     obj.edit68:setName("edit68");
 
-    obj.edit69 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit69 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit69:setParent(obj.layout11);
     obj.edit69:setLeft(450);
     obj.edit69:setTop(0);
@@ -772,7 +772,7 @@ function newfrmW20_3()
     obj.edit69:setField("rate_10");
     obj.edit69:setName("edit69");
 
-    obj.edit70 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit70 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit70:setParent(obj.layout11);
     obj.edit70:setLeft(500);
     obj.edit70:setTop(0);
@@ -781,7 +781,7 @@ function newfrmW20_3()
     obj.edit70:setField("clip_10");
     obj.edit70:setName("edit70");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.scrollBox1);
     obj.layout12:setLeft(0);
     obj.layout12:setTop(340);
@@ -789,7 +789,7 @@ function newfrmW20_3()
     obj.layout12:setHeight(330);
     obj.layout12:setName("layout12");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout12);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("black");
@@ -798,7 +798,7 @@ function newfrmW20_3()
     obj.rectangle2:setCornerType("innerLine");
     obj.rectangle2:setName("rectangle2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout12);
     obj.label3:setLeft(5);
     obj.label3:setTop(0);
@@ -808,7 +808,7 @@ function newfrmW20_3()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout12);
     obj.label4:setLeft(15);
     obj.label4:setTop(25);
@@ -817,7 +817,7 @@ function newfrmW20_3()
     obj.label4:setText("Item                                                    Level    Gnosis                                Power");
     obj.label4:setName("label4");
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.layout12);
     obj.layout13:setLeft(15);
     obj.layout13:setTop(50);
@@ -825,7 +825,7 @@ function newfrmW20_3()
     obj.layout13:setHeight(25);
     obj.layout13:setName("layout13");
 
-    obj.edit71 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit71 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit71:setParent(obj.layout13);
     obj.edit71:setLeft(0);
     obj.edit71:setTop(0);
@@ -834,7 +834,7 @@ function newfrmW20_3()
     obj.edit71:setField("item_1");
     obj.edit71:setName("edit71");
 
-    obj.edit72 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit72 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit72:setParent(obj.layout13);
     obj.edit72:setLeft(200);
     obj.edit72:setTop(0);
@@ -843,7 +843,7 @@ function newfrmW20_3()
     obj.edit72:setField("level_1");
     obj.edit72:setName("edit72");
 
-    obj.edit73 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit73 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit73:setParent(obj.layout13);
     obj.edit73:setLeft(250);
     obj.edit73:setTop(0);
@@ -852,7 +852,7 @@ function newfrmW20_3()
     obj.edit73:setField("gnosis_1");
     obj.edit73:setName("edit73");
 
-    obj.edit74 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit74 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit74:setParent(obj.layout13);
     obj.edit74:setLeft(300);
     obj.edit74:setTop(0);
@@ -861,7 +861,7 @@ function newfrmW20_3()
     obj.edit74:setField("power_1");
     obj.edit74:setName("edit74");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.layout12);
     obj.layout14:setLeft(15);
     obj.layout14:setTop(75);
@@ -869,7 +869,7 @@ function newfrmW20_3()
     obj.layout14:setHeight(25);
     obj.layout14:setName("layout14");
 
-    obj.edit75 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit75 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit75:setParent(obj.layout14);
     obj.edit75:setLeft(0);
     obj.edit75:setTop(0);
@@ -878,7 +878,7 @@ function newfrmW20_3()
     obj.edit75:setField("item_2");
     obj.edit75:setName("edit75");
 
-    obj.edit76 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit76 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit76:setParent(obj.layout14);
     obj.edit76:setLeft(200);
     obj.edit76:setTop(0);
@@ -887,7 +887,7 @@ function newfrmW20_3()
     obj.edit76:setField("level_2");
     obj.edit76:setName("edit76");
 
-    obj.edit77 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit77 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit77:setParent(obj.layout14);
     obj.edit77:setLeft(250);
     obj.edit77:setTop(0);
@@ -896,7 +896,7 @@ function newfrmW20_3()
     obj.edit77:setField("gnosis_2");
     obj.edit77:setName("edit77");
 
-    obj.edit78 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit78 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit78:setParent(obj.layout14);
     obj.edit78:setLeft(300);
     obj.edit78:setTop(0);
@@ -905,7 +905,7 @@ function newfrmW20_3()
     obj.edit78:setField("power_2");
     obj.edit78:setName("edit78");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.layout12);
     obj.layout15:setLeft(15);
     obj.layout15:setTop(100);
@@ -913,7 +913,7 @@ function newfrmW20_3()
     obj.layout15:setHeight(25);
     obj.layout15:setName("layout15");
 
-    obj.edit79 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit79 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit79:setParent(obj.layout15);
     obj.edit79:setLeft(0);
     obj.edit79:setTop(0);
@@ -922,7 +922,7 @@ function newfrmW20_3()
     obj.edit79:setField("item_3");
     obj.edit79:setName("edit79");
 
-    obj.edit80 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit80 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit80:setParent(obj.layout15);
     obj.edit80:setLeft(200);
     obj.edit80:setTop(0);
@@ -931,7 +931,7 @@ function newfrmW20_3()
     obj.edit80:setField("level_3");
     obj.edit80:setName("edit80");
 
-    obj.edit81 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit81 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit81:setParent(obj.layout15);
     obj.edit81:setLeft(250);
     obj.edit81:setTop(0);
@@ -940,7 +940,7 @@ function newfrmW20_3()
     obj.edit81:setField("gnosis_3");
     obj.edit81:setName("edit81");
 
-    obj.edit82 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit82 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit82:setParent(obj.layout15);
     obj.edit82:setLeft(300);
     obj.edit82:setTop(0);
@@ -949,7 +949,7 @@ function newfrmW20_3()
     obj.edit82:setField("power_3");
     obj.edit82:setName("edit82");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.layout12);
     obj.layout16:setLeft(15);
     obj.layout16:setTop(125);
@@ -957,7 +957,7 @@ function newfrmW20_3()
     obj.layout16:setHeight(25);
     obj.layout16:setName("layout16");
 
-    obj.edit83 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit83 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit83:setParent(obj.layout16);
     obj.edit83:setLeft(0);
     obj.edit83:setTop(0);
@@ -966,7 +966,7 @@ function newfrmW20_3()
     obj.edit83:setField("item_4");
     obj.edit83:setName("edit83");
 
-    obj.edit84 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit84 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit84:setParent(obj.layout16);
     obj.edit84:setLeft(200);
     obj.edit84:setTop(0);
@@ -975,7 +975,7 @@ function newfrmW20_3()
     obj.edit84:setField("level_4");
     obj.edit84:setName("edit84");
 
-    obj.edit85 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit85 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit85:setParent(obj.layout16);
     obj.edit85:setLeft(250);
     obj.edit85:setTop(0);
@@ -984,7 +984,7 @@ function newfrmW20_3()
     obj.edit85:setField("gnosis_4");
     obj.edit85:setName("edit85");
 
-    obj.edit86 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit86:setParent(obj.layout16);
     obj.edit86:setLeft(300);
     obj.edit86:setTop(0);
@@ -993,7 +993,7 @@ function newfrmW20_3()
     obj.edit86:setField("power_4");
     obj.edit86:setName("edit86");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.layout12);
     obj.layout17:setLeft(15);
     obj.layout17:setTop(150);
@@ -1001,7 +1001,7 @@ function newfrmW20_3()
     obj.layout17:setHeight(25);
     obj.layout17:setName("layout17");
 
-    obj.edit87 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit87 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit87:setParent(obj.layout17);
     obj.edit87:setLeft(0);
     obj.edit87:setTop(0);
@@ -1010,7 +1010,7 @@ function newfrmW20_3()
     obj.edit87:setField("item_5");
     obj.edit87:setName("edit87");
 
-    obj.edit88 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit88 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit88:setParent(obj.layout17);
     obj.edit88:setLeft(200);
     obj.edit88:setTop(0);
@@ -1019,7 +1019,7 @@ function newfrmW20_3()
     obj.edit88:setField("level_5");
     obj.edit88:setName("edit88");
 
-    obj.edit89 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit89 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit89:setParent(obj.layout17);
     obj.edit89:setLeft(250);
     obj.edit89:setTop(0);
@@ -1028,7 +1028,7 @@ function newfrmW20_3()
     obj.edit89:setField("gnosis_5");
     obj.edit89:setName("edit89");
 
-    obj.edit90 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit90 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit90:setParent(obj.layout17);
     obj.edit90:setLeft(300);
     obj.edit90:setTop(0);
@@ -1037,7 +1037,7 @@ function newfrmW20_3()
     obj.edit90:setField("power_5");
     obj.edit90:setName("edit90");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.layout12);
     obj.layout18:setLeft(15);
     obj.layout18:setTop(175);
@@ -1045,7 +1045,7 @@ function newfrmW20_3()
     obj.layout18:setHeight(25);
     obj.layout18:setName("layout18");
 
-    obj.edit91 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit91 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit91:setParent(obj.layout18);
     obj.edit91:setLeft(0);
     obj.edit91:setTop(0);
@@ -1054,7 +1054,7 @@ function newfrmW20_3()
     obj.edit91:setField("item_6");
     obj.edit91:setName("edit91");
 
-    obj.edit92 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit92 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit92:setParent(obj.layout18);
     obj.edit92:setLeft(200);
     obj.edit92:setTop(0);
@@ -1063,7 +1063,7 @@ function newfrmW20_3()
     obj.edit92:setField("level_6");
     obj.edit92:setName("edit92");
 
-    obj.edit93 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit93 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit93:setParent(obj.layout18);
     obj.edit93:setLeft(250);
     obj.edit93:setTop(0);
@@ -1072,7 +1072,7 @@ function newfrmW20_3()
     obj.edit93:setField("gnosis_6");
     obj.edit93:setName("edit93");
 
-    obj.edit94 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit94 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit94:setParent(obj.layout18);
     obj.edit94:setLeft(300);
     obj.edit94:setTop(0);
@@ -1081,7 +1081,7 @@ function newfrmW20_3()
     obj.edit94:setField("power_6");
     obj.edit94:setName("edit94");
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.layout12);
     obj.layout19:setLeft(15);
     obj.layout19:setTop(200);
@@ -1089,7 +1089,7 @@ function newfrmW20_3()
     obj.layout19:setHeight(25);
     obj.layout19:setName("layout19");
 
-    obj.edit95 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit95 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit95:setParent(obj.layout19);
     obj.edit95:setLeft(0);
     obj.edit95:setTop(0);
@@ -1098,7 +1098,7 @@ function newfrmW20_3()
     obj.edit95:setField("item_7");
     obj.edit95:setName("edit95");
 
-    obj.edit96 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit96 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit96:setParent(obj.layout19);
     obj.edit96:setLeft(200);
     obj.edit96:setTop(0);
@@ -1107,7 +1107,7 @@ function newfrmW20_3()
     obj.edit96:setField("level_7");
     obj.edit96:setName("edit96");
 
-    obj.edit97 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit97 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit97:setParent(obj.layout19);
     obj.edit97:setLeft(250);
     obj.edit97:setTop(0);
@@ -1116,7 +1116,7 @@ function newfrmW20_3()
     obj.edit97:setField("gnosis_7");
     obj.edit97:setName("edit97");
 
-    obj.edit98 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit98 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit98:setParent(obj.layout19);
     obj.edit98:setLeft(300);
     obj.edit98:setTop(0);
@@ -1125,7 +1125,7 @@ function newfrmW20_3()
     obj.edit98:setField("power_7");
     obj.edit98:setName("edit98");
 
-    obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.layout12);
     obj.layout20:setLeft(15);
     obj.layout20:setTop(225);
@@ -1133,7 +1133,7 @@ function newfrmW20_3()
     obj.layout20:setHeight(25);
     obj.layout20:setName("layout20");
 
-    obj.edit99 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit99 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit99:setParent(obj.layout20);
     obj.edit99:setLeft(0);
     obj.edit99:setTop(0);
@@ -1142,7 +1142,7 @@ function newfrmW20_3()
     obj.edit99:setField("item_8");
     obj.edit99:setName("edit99");
 
-    obj.edit100 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit100 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit100:setParent(obj.layout20);
     obj.edit100:setLeft(200);
     obj.edit100:setTop(0);
@@ -1151,7 +1151,7 @@ function newfrmW20_3()
     obj.edit100:setField("level_8");
     obj.edit100:setName("edit100");
 
-    obj.edit101 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit101 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit101:setParent(obj.layout20);
     obj.edit101:setLeft(250);
     obj.edit101:setTop(0);
@@ -1160,7 +1160,7 @@ function newfrmW20_3()
     obj.edit101:setField("gnosis_8");
     obj.edit101:setName("edit101");
 
-    obj.edit102 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit102 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit102:setParent(obj.layout20);
     obj.edit102:setLeft(300);
     obj.edit102:setTop(0);
@@ -1169,7 +1169,7 @@ function newfrmW20_3()
     obj.edit102:setField("power_8");
     obj.edit102:setName("edit102");
 
-    obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.layout12);
     obj.layout21:setLeft(15);
     obj.layout21:setTop(250);
@@ -1177,7 +1177,7 @@ function newfrmW20_3()
     obj.layout21:setHeight(25);
     obj.layout21:setName("layout21");
 
-    obj.edit103 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit103 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit103:setParent(obj.layout21);
     obj.edit103:setLeft(0);
     obj.edit103:setTop(0);
@@ -1186,7 +1186,7 @@ function newfrmW20_3()
     obj.edit103:setField("item_9");
     obj.edit103:setName("edit103");
 
-    obj.edit104 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit104 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit104:setParent(obj.layout21);
     obj.edit104:setLeft(200);
     obj.edit104:setTop(0);
@@ -1195,7 +1195,7 @@ function newfrmW20_3()
     obj.edit104:setField("level_9");
     obj.edit104:setName("edit104");
 
-    obj.edit105 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit105 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit105:setParent(obj.layout21);
     obj.edit105:setLeft(250);
     obj.edit105:setTop(0);
@@ -1204,7 +1204,7 @@ function newfrmW20_3()
     obj.edit105:setField("gnosis_9");
     obj.edit105:setName("edit105");
 
-    obj.edit106 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit106 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit106:setParent(obj.layout21);
     obj.edit106:setLeft(300);
     obj.edit106:setTop(0);
@@ -1213,7 +1213,7 @@ function newfrmW20_3()
     obj.edit106:setField("power_9");
     obj.edit106:setName("edit106");
 
-    obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.layout12);
     obj.layout22:setLeft(15);
     obj.layout22:setTop(275);
@@ -1221,7 +1221,7 @@ function newfrmW20_3()
     obj.layout22:setHeight(25);
     obj.layout22:setName("layout22");
 
-    obj.edit107 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit107 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit107:setParent(obj.layout22);
     obj.edit107:setLeft(0);
     obj.edit107:setTop(0);
@@ -1230,7 +1230,7 @@ function newfrmW20_3()
     obj.edit107:setField("item_10");
     obj.edit107:setName("edit107");
 
-    obj.edit108 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit108 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit108:setParent(obj.layout22);
     obj.edit108:setLeft(200);
     obj.edit108:setTop(0);
@@ -1239,7 +1239,7 @@ function newfrmW20_3()
     obj.edit108:setField("level_10");
     obj.edit108:setName("edit108");
 
-    obj.edit109 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit109 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit109:setParent(obj.layout22);
     obj.edit109:setLeft(250);
     obj.edit109:setTop(0);
@@ -1248,7 +1248,7 @@ function newfrmW20_3()
     obj.edit109:setField("gnosis_10");
     obj.edit109:setName("edit109");
 
-    obj.edit110 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit110 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit110:setParent(obj.layout22);
     obj.edit110:setLeft(300);
     obj.edit110:setTop(0);
@@ -1257,7 +1257,7 @@ function newfrmW20_3()
     obj.edit110:setField("power_10");
     obj.edit110:setName("edit110");
 
-    obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.scrollBox1);
     obj.layout23:setLeft(590);
     obj.layout23:setTop(0);
@@ -1265,7 +1265,7 @@ function newfrmW20_3()
     obj.layout23:setHeight(245);
     obj.layout23:setName("layout23");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout23);
     obj.rectangle3:setAlign("client");
     obj.rectangle3:setColor("black");
@@ -1274,7 +1274,7 @@ function newfrmW20_3()
     obj.rectangle3:setCornerType("innerLine");
     obj.rectangle3:setName("rectangle3");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout23);
     obj.label5:setLeft(0);
     obj.label5:setTop(0);
@@ -1284,7 +1284,7 @@ function newfrmW20_3()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout23);
     obj.label6:setLeft(15);
     obj.label6:setTop(30);
@@ -1293,7 +1293,7 @@ function newfrmW20_3()
     obj.label6:setText("Maneuver       Roll               Diff     Damage");
     obj.label6:setName("label6");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout23);
     obj.label7:setLeft(15);
     obj.label7:setTop(60);
@@ -1302,7 +1302,7 @@ function newfrmW20_3()
     obj.label7:setText("Bite                Dex + Brawl    5        Strength + 1/A");
     obj.label7:setName("label7");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout23);
     obj.label8:setLeft(15);
     obj.label8:setTop(80);
@@ -1311,7 +1311,7 @@ function newfrmW20_3()
     obj.label8:setText("Body Tackle   Dex + Brawl    7        Special/B");
     obj.label8:setName("label8");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout23);
     obj.label9:setLeft(15);
     obj.label9:setTop(100);
@@ -1320,7 +1320,7 @@ function newfrmW20_3()
     obj.label9:setText("Claw               Dex + Brawl    6        Strength + 1/A");
     obj.label9:setName("label9");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout23);
     obj.label10:setLeft(15);
     obj.label10:setTop(120);
@@ -1329,7 +1329,7 @@ function newfrmW20_3()
     obj.label10:setText("Grapple          Dex + Brawl    6        Strength/B");
     obj.label10:setName("label10");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout23);
     obj.label11:setLeft(15);
     obj.label11:setTop(140);
@@ -1338,7 +1338,7 @@ function newfrmW20_3()
     obj.label11:setText("Kick                Dex + Brawl    7        Strength + 1/B");
     obj.label11:setName("label11");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout23);
     obj.label12:setLeft(15);
     obj.label12:setTop(160);
@@ -1347,7 +1347,7 @@ function newfrmW20_3()
     obj.label12:setText("Punch             Dex + Brawl    6        Strength/B");
     obj.label12:setName("label12");
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout23);
     obj.label13:setLeft(15);
     obj.label13:setTop(180);
@@ -1357,7 +1357,7 @@ function newfrmW20_3()
     obj.label13:setFontSize(11);
     obj.label13:setName("label13");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout23);
     obj.label14:setLeft(15);
     obj.label14:setTop(210);
@@ -1367,7 +1367,7 @@ function newfrmW20_3()
     obj.label14:setHorzTextAlign("center");
     obj.label14:setName("label14");
 
-    obj.edit111 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit111 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit111:setParent(obj.layout23);
     obj.edit111:setLeft(65);
     obj.edit111:setTop(210);
@@ -1376,7 +1376,7 @@ function newfrmW20_3()
     obj.edit111:setField("armor");
     obj.edit111:setName("edit111");
 
-    obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.scrollBox1);
     obj.layout24:setLeft(590);
     obj.layout24:setTop(255);
@@ -1384,7 +1384,7 @@ function newfrmW20_3()
     obj.layout24:setHeight(415);
     obj.layout24:setName("layout24");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.layout24);
     obj.rectangle4:setAlign("client");
     obj.rectangle4:setColor("black");
@@ -1393,7 +1393,7 @@ function newfrmW20_3()
     obj.rectangle4:setCornerType("innerLine");
     obj.rectangle4:setName("rectangle4");
 
-    obj.label15 = gui.fromHandle(_obj_newObject("label"));
+    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.layout24);
     obj.label15:setLeft(0);
     obj.label15:setTop(0);
@@ -1403,7 +1403,7 @@ function newfrmW20_3()
     obj.label15:setHorzTextAlign("center");
     obj.label15:setName("label15");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout24);
     obj.textEditor1:setLeft(15);
     obj.textEditor1:setTop(25);
@@ -1585,9 +1585,23 @@ function newfrmW20_3()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmW20_3()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmW20_3();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmW20_3 = {
@@ -1601,6 +1615,6 @@ local _frmW20_3 = {
     description=""};
 
 frmW20_3 = _frmW20_3;
-rrpg.registrarForm(_frmW20_3);
+Firecast.registrarForm(_frmW20_3);
 
 return _frmW20_3;

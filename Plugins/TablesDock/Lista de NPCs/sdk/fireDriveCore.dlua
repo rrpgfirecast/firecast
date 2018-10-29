@@ -1,4 +1,4 @@
-﻿local rrpg = require("rrpg.lua");
+﻿require("rrpg.lua");
 local plugins = require("plugins.lua");
 local fdmodule = "RRPG.FIRECAST.FMXModule";
 
@@ -33,27 +33,27 @@ local function fdManageItem(destName, metadata, onSuccess, onProgress, onFailure
 	esteUpload.onFailure = onFailure;
 	esteUpload.pmListener = "L" .. _rrpg_generateUniqueStrID();
 	esteUpload.pmListenerId = plugins.listenPM(esteUpload.pmListener,
-		function (msg)
-			plugins.replyPM(msg, nil);
+		function (receivedMsg)
+			plugins.replyPM(receivedMsg, nil);
 		
-			if msg.kind == "progress" then
+			if receivedMsg.kind == "progress" then
 				if onProgress ~= nil then
-					onProgress(msg.currentBytes, msg.maxBytes);
+					onProgress(receivedMsg.currentBytes, receivedMsg.maxBytes);
 				end;
-			elseif msg.kind == "error" then				
+			elseif receivedMsg.kind == "error" then				
 				unsetupUpload(esteId);		
 
 				if onFailure ~= nil then
-					onFailure(msg.errorMsg);
+					onFailure(receivedMsg.errorMsg);
 				end;
-			elseif msg.kind == "end" then
+			elseif receivedMsg.kind == "end" then
 				unsetupUpload(esteId);								
 				
 				if onSuccess ~= nil then
-					onSuccess(msg.successData);
+					onSuccess(receivedMsg.successData);
 				end;
-			elseif msg.kind == "uploadId" then
-				esteUpload.remoteUploadId = msg.uploadId;
+			elseif receivedMsg.kind == "uploadId" then
+				esteUpload.remoteUploadId = receivedMsg.uploadId;
 			end;
 		end);
 	
@@ -63,7 +63,7 @@ local function fdManageItem(destName, metadata, onSuccess, onProgress, onFailure
 	msg.pmListener = esteUpload.pmListener;
 		
 	plugins.sendPM(fdmodule, "fireDrive:manageItem", msg, 
-		function (r)
+		function (_)
 
 		end,
 		
@@ -93,40 +93,75 @@ local function tryGetMimeFromFileName(fileName)
 	end;
 end;
 
-function fireDrive.uploadFile(destName, stream, onSuccess, onProgress, onFailure, mimeType)
-	local metadata = {};
-	stream.position = 0;
+local function fdExecuteUpload(params)
+	if type(params) ~= "table" then
+		error("fdExecuteUpload - params was not informed");
+	end;
+
+	if type(params.stream) ~= "table" then
+		error("fireDrive upload - stream was not informed");
+	end;
 	
-	if stream.size > 6 * 1024 * 1024 then
-		if onFailure then
-			onFailure("FILE TOO BIG");
+	local metadata = {};
+	params.stream.position = 0;
+	
+	if params.stream.size > 15 * 1024 * 1024 then
+		if params.onFailure then
+			params.onFailure("FILE TOO BIG");
 		end;
 	
 		return nil;
 	end;
-	
+		
 	metadata.headers = {};
-	metadata.headers.operation = "create";
-	metadata.headers.kind = "file";	
-	metadata.blobs = {};
-	metadata.blobs[1] = {name="content", streamSharedId = stream:share(), mimeType = mimeType or tryGetMimeFromFileName(destName)};		
+		
+	if params.isQuickUpload then
+		params.destName = params.suggestedFileName;	
+		metadata.headers.operation = "quickUpload";
+	else	
+		metadata.headers.operation = "create";
+		metadata.headers.kind = "file";	
+	end;	
 	
-	local ret = fdManageItem(destName, metadata, onSuccess, onProgress, onFailure);
+	metadata.blobs = {};
+	metadata.blobs[1] = {name="content", streamSharedId = params.stream:share(), mimeType = params.mimeType or tryGetMimeFromFileName(params.destName)};		
+	
+	if params.isQuickUpload and not _util_isValidMimeType(metadata.blobs[1].mimeType) then
+		error("INVALID MIME TYPE: " .. tostring(metadata.blobs[1].mimeType));
+	end;
+	
+	local ret = fdManageItem(params.destName, metadata, params.onSuccess, params.onProgress, params.onFailure);
 	metadata.blobs[1].data = nil;
 	return ret;
 end;
 
-function fireDrive.uploadImage(destName, stream, onSuccess, onProgress, onFailure, mimeType)
-	--[[local metadata = {};
-	metadata.kind = "image";
-	metadata.mimeType = mimeType or tryGetMimeFromFileName(destName);	
-	metadata.thumb64 = {mimeType=metadata.mimeType};	
-	
-	return fdManageItem(destName, stream, metadata, onSuccess, onProgress, onFailure);]]
+function fireDrive.uploadFile(destName, stream, onSuccess, onProgress, onFailure, mimeType)
+	local params = {};
+	params.destName = destName;
+	params.stream = stream;
+	params.onSuccess = onSuccess;
+	params.onProgress = onProgress;
+	params.onFailure = onFailure;
+	params.mimeType = mimeType;
+
+	return fdExecuteUpload(params);
 end;
 
 function fireDrive.upload(...)
 	return fireDrive.uploadFile(...);
+end;
+
+function fireDrive.quickUpload(suggestedFileName, mimeType, stream, onSuccess, onProgress, onFailure)
+	local params = {};
+	params.stream = stream;
+	params.onSuccess = onSuccess;
+	params.onProgress = onProgress;
+	params.onFailure = onFailure;
+	params.mimeType = mimeType;
+	params.isQuickUpload = true;
+	params.suggestedFileName = suggestedFileName;
+	
+	return fdExecuteUpload(params);
 end;
 
 function fireDrive.abortOperation(operationId)

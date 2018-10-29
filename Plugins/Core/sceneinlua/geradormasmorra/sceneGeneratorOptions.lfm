@@ -42,12 +42,6 @@
 		require("system.lua");
 		require("rrpgScene_Undo.dlua");
 		local scene = nil;	
-		local ignoreRecalcWH = false;
-		local realCellWidth = 1;
-		local realCellHeight = 1;
-		local offsetCellsW = 1;
-		local offsetCellsH = 1;
-		local exibindoFOW = false;
 		
 		if not System.isMobile() then
 			self.height = 450;
@@ -605,7 +599,7 @@
 	<BottomActionCancelPopupPanel actionClick="self:processarOK()" cancelClick="self:processarCancel()"/>
 	
 	<script><![CDATA[
-		local node = ndb.load("generatorOptions.xml");
+		local node = NDB.load("generatorOptions.xml");
 		self.tabOptions.text = lang('scene.generator.tab.options');
 		self.tabTiles.text = lang('scene.generator.tab.tiles');
 		self.tabName.text = lang('scene.generator.tabName');
@@ -630,7 +624,7 @@
 		self.natural.text = lang('scene.generator.natural.text');
 		self.natural.hint = lang('scene.generator.natural.hint');
 
-		if node.salas == mil then
+		if node.salas == nil then
 			node.salas = 20;
 			node.tamMax = 5;
 			node.tamMin = 3;
@@ -685,7 +679,17 @@
 		self.thick.value = node.thick;
 
 		self.style.text = lang('scene.generator.tiles.style');
-		self.styleOptions.items = {lang("scene.generator.tiles.style1"), lang("scene.generator.tiles.style2"), lang("scene.generator.tiles.style3"), lang("scene.generator.tiles.style4"), lang("scene.generator.tiles.style5"), lang("scene.generator.tiles.style6"), lang("scene.generator.tiles.style10"), lang("scene.generator.tiles.style7"), lang("scene.generator.tiles.style8"), lang("scene.generator.tiles.style9")};
+		
+		self.styleOptions.items = {lang("scene.generator.tiles.style1"), 
+								  lang("scene.generator.tiles.style2"), 
+								  lang("scene.generator.tiles.style3"), 
+								  lang("scene.generator.tiles.style4"), 
+								  lang("scene.generator.tiles.style5"), 
+								  lang("scene.generator.tiles.style6"), 
+								  lang("scene.generator.tiles.style10"), 
+								  lang("scene.generator.tiles.style7"), 
+								  lang("scene.generator.tiles.style8"), 
+								  lang("scene.generator.tiles.style9")};
 
 		self.tiles1.text = lang('scene.generator.tiles.door');
 		self.tiles2.text = lang('scene.generator.tiles.floor');
@@ -773,7 +777,7 @@
 				tamMin = 3;
 				tamMax = 4;
 			end;
-			local dif = tamMax - tamMin + 1;
+
 			local entradas = self.entradas.asNumber or 0;
 			local escadas = self.escadas.asNumber or 0;
 			local becos = self.becos.asNumber or 0;
@@ -781,7 +785,7 @@
 			local passagens = self.passagens.asNumber or 0;
 
 			-- Gera entradas [ENTRADA]
-			for i=1, entradas, 1 do
+			for _ = 1, entradas, 1 do
 				local side = math.floor(math.random() * 4);
 				local x = 0;
 				local y = 0;
@@ -810,7 +814,7 @@
 
 			--self.status.text = lang('scene.generator.status.message') .. lang('scene.generator.status.room');
 			-- Gerar Salas [SALA]
-			for i=1, salas, 1 do
+			for _ = 1, salas, 1 do
 				local width = math.random(tamMin, tamMax);
 				local height = math.random(tamMin, tamMax);
 				local posx = math.random(2, (horzSquare-1));
@@ -947,21 +951,25 @@
 					local y2 = centros[i+1].y;
 
 					local horz = x2 - x1;
-					local dirx = 0;
+					local dirx;
+					
 					if horz > 0 then
 						dirx = 1;
 					else 
 						dirx = -1;
 					end;
+					
 					horz = math.abs(horz);
 
 					local vert = y2 - y1;
-					local diry = 0;
+					local diry;
+					
 					if vert > 0 then
 						diry = 1;
 					else 
 						diry = -1;
 					end;
+					
 					vert = math.abs(vert);
 
 					--showMessage(horz .. "|" .. vert);
@@ -997,28 +1005,29 @@
 					horz = horz - expand;
 
 					local x = x1 + (dirx * horz);
-					local aux = 0;
+					aux = 0;
+					
 					for j=1, vert, 1 do
-						local y = y1 + (diry * (j+aux)); 
-						if map[x][y] == "parede" then
-							if map[x][y+diry] == "parede" and map[x][y+diry+diry] == "parede" then
+						local yJ = y1 + (diry * (j+aux)); 
+						if map[x][yJ] == "parede" then
+							if map[x][yJ+diry] == "parede" and map[x][yJ+diry+diry] == "parede" then
 								x = x + dirx;
 								dirx = dirx * -1;
 								aux = aux - 2;
 								vert = vert + 2;
 							else
-								map[x][y] = "porta";
+								map[x][yJ] = "porta";
 								corredoresNum = corredoresNum +1;
-								corredores[corredoresNum] = {x=x, y=y};
+								corredores[corredoresNum] = {x=x, y=yJ};
 
 								secretsNum = secretsNum +1;
-								secrets[secretsNum] = {x=x, y=y};
+								secrets[secretsNum] = {x=x, y=yJ};
 							end;
 						elseif map[x][y] == "nada" then
 							map[x][y] = "corredor";
 
 							corredoresNum = corredoresNum +1;
-							corredores[corredoresNum] = {x=x, y=y};
+							corredores[corredoresNum] = {x=x, y=yJ};
 						end;
 					end;
 				end;
@@ -1030,7 +1039,7 @@
 					local y1 = centros[i].y;
 					local y2 = centros[i+1].y;
 
-					local success, distance, path = scene.grid:shortestPath(x1, y1, x2, y2);
+					local _, _, path = scene.grid:shortestPath(x1, y1, x2, y2);
 
 					for j=1, #path, 1 do
 						local x = path[j].i;
@@ -1773,17 +1782,8 @@
 				local x = secrets[i].x;
 				local y = secrets[i].y;
 				if map[x][y] == "parede"then
-					local tl, t, tr, l, r, bl, b, br;
-					if map[x-1]~= nil then
-						tl =  map[x-1][y-1];
-						l =  map[x-1][y];
-						bl =  map[x-1][y+1];
-					end;
-					if map[x+1]~= nil then
-						tr =  map[x+1][y-1];
-						r =  map[x+1][y];
-						br =  map[x+1][y+1];
-					end;
+					local t, b;
+					
 					t = map[x][y-1];
 					b = map[x][y+1];
 

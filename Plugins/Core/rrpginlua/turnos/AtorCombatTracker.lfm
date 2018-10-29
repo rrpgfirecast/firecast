@@ -4,7 +4,7 @@
 
 	<script><![CDATA[
 		local preparedVez = false;
-	
+		
 		local ATOR_VIEW_STATE_VISIVEL = 0;
 		local ATOR_VIEW_STATE_PARC_VISIVEL = 1;
 		local ATOR_VIEW_STATE_INVISIVEL = 2;
@@ -12,7 +12,7 @@
 		local function getTracker()
 			return self:findControlByName("frmCombatTracker");
 		end;	
-	
+		
 		function self:atualizarInterfaceFriendOrFoe()
 			local f = sheet.fof;
 				
@@ -93,14 +93,14 @@
 		function self:apagarAtor()
 			local n = sheet;
 			
-			dialogs.confirmYesNo("Deseja realmente apagar este ator?",
+			Dialogs.confirmYesNo("Deseja realmente apagar este ator?",
 				function(confirmado)
 					if confirmado then
 						if n.vez then
 							getTracker():proximoTurno();
 						end;
 						
-						ndb.deleteNode(n);
+						NDB.deleteNode(n);
 					end;
 				end);
 		end;
@@ -126,8 +126,8 @@
 		end;
 		
 		function self:getCurrentViewState()
-			local estaInvisivel = (ndb.getPermission(sheet, "group", "espectadores", "read") == "deny" or
-			                       ndb.getPermission(sheet, "group", "jogadores", "read") == "deny");
+			local estaInvisivel = (NDB.getPermission(sheet, "group", "espectadores", "read") == "deny" or
+			                       NDB.getPermission(sheet, "group", "jogadores", "read") == "deny");
 								   
 			local estaParcialmenteVisivel;
 			estaParcialmenteVisivel = sheet.visibilityState == ATOR_VIEW_STATE_PARC_VISIVEL;
@@ -154,7 +154,7 @@
 				urlImg = "/turnos/images/visivelParcial.png"
 				hintAUsar = "Ator visível a todos, porém anotações e efeitos escondidos";
 				
-				local mesa = rrpg.getMesaDe(sheet);
+				local mesa = Firecast.getMesaDe(sheet);
 				local meuJogador;
 				
 				if mesa ~= nil then
@@ -183,11 +183,11 @@
 		end;
 		
 		function self:alternarVisibilidade()						
-			if ndb.testPermission(sheet, "writePermissions") and ndb.testPermission(sheet, "write") then		
+			if NDB.testPermission(sheet, "writePermissions") and NDB.testPermission(sheet, "write") then		
 				local dadosSensiveisNode = sheet.dadosSensiveis;
 				
 				if dadosSensiveisNode == nil then
-					if not ndb.testPermission(sheet, "createChild") then
+					if not NDB.testPermission(sheet, "createChild") then
 						-- não há permissao para crair nodes
 						return;
 					end;
@@ -195,7 +195,7 @@
 					sheet.dadosSensiveis = {};
 					dadosSensiveisNode = sheet.dadosSensiveis;
 				else
-					if not ndb.testPermission(dadosSensiveisNode, "writePermissions") then
+					if not NDB.testPermission(dadosSensiveisNode, "writePermissions") then
 						-- Não há permissão para escreve permissoes neste sub-node
 						return;
 					end;
@@ -206,28 +206,28 @@
 				if currViewState == ATOR_VIEW_STATE_PARC_VISIVEL then
 					-- tornar invisivel
 					sheet.visibilityState = ATOR_VIEW_STATE_INVISIVEL;					
-					ndb.setPermission(sheet, "group", "espectadores", "read", "deny");
-					ndb.setPermission(sheet, "group", "jogadores", "read", "deny");		
-					ndb.setPermission(sheet, "group", "espectadores", "createChild", "deny");
-					ndb.setPermission(sheet, "group", "jogadores", "createChild", "deny");	
+					NDB.setPermission(sheet, "group", "espectadores", "read", "deny");
+					NDB.setPermission(sheet, "group", "jogadores", "read", "deny");		
+					NDB.setPermission(sheet, "group", "espectadores", "createChild", "deny");
+					NDB.setPermission(sheet, "group", "jogadores", "createChild", "deny");	
 				elseif currViewState == ATOR_VIEW_STATE_INVISIVEL then
 					-- tornar visivel
 					sheet.visibilityState = ATOR_VIEW_STATE_VISIVEL;	
-					ndb.setPermission(dadosSensiveisNode, "group", "espectadores", "read", nil);
-					ndb.setPermission(dadosSensiveisNode, "group", "jogadores", "read", nil);						
-					ndb.setPermission(sheet, "group", "espectadores", "createChild", nil);
-					ndb.setPermission(sheet, "group", "jogadores", "createChild", nil);		
-					ndb.setPermission(sheet, "group", "espectadores", "read", nil);
-					ndb.setPermission(sheet, "group", "jogadores", "read", nil);				
+					NDB.setPermission(dadosSensiveisNode, "group", "espectadores", "read", nil);
+					NDB.setPermission(dadosSensiveisNode, "group", "jogadores", "read", nil);						
+					NDB.setPermission(sheet, "group", "espectadores", "createChild", nil);
+					NDB.setPermission(sheet, "group", "jogadores", "createChild", nil);		
+					NDB.setPermission(sheet, "group", "espectadores", "read", nil);
+					NDB.setPermission(sheet, "group", "jogadores", "read", nil);				
 				else
 					-- tornar parcialmente visivel
 					sheet.visibilityState = ATOR_VIEW_STATE_PARC_VISIVEL;
-					ndb.setPermission(dadosSensiveisNode, "group", "espectadores", "read", "deny");
-					ndb.setPermission(dadosSensiveisNode, "group", "jogadores", "read", "deny");						
-					ndb.setPermission(sheet, "group", "espectadores", "createChild", "deny");
-					ndb.setPermission(sheet, "group", "jogadores", "createChild", "deny");							
-					ndb.setPermission(sheet, "group", "espectadores", "read", nil);
-					ndb.setPermission(sheet, "group", "jogadores", "read", nil);																									
+					NDB.setPermission(dadosSensiveisNode, "group", "espectadores", "read", "deny");
+					NDB.setPermission(dadosSensiveisNode, "group", "jogadores", "read", "deny");						
+					NDB.setPermission(sheet, "group", "espectadores", "createChild", "deny");
+					NDB.setPermission(sheet, "group", "jogadores", "createChild", "deny");							
+					NDB.setPermission(sheet, "group", "espectadores", "read", nil);
+					NDB.setPermission(sheet, "group", "jogadores", "read", nil);																									
 				end;
 			end;
 		end;		
@@ -274,7 +274,7 @@
 		<recordList margins="{left=28, top=1, right=14}" name="rclEfeitos" align="top" autoHeight="true" field="dadosSensiveis.efeitos" templateForm="frmEfeitoCombatTracker" onResize="self:recalcularAlturaDoAtor()"/>		
 
 		<script>
-			if system.isMobile() then
+			if System.isMobile() then
 				self.layPrimeiraLinha.height = 32;
 				self.rctVez.width = 32;
 				self.edtNome.fontSize = 13;					
@@ -350,7 +350,7 @@
 		end;		
 		
 		if sheet ~= nil then			
-			self._observer = ndb.newObserver(sheet);
+			self._observer = NDB.newObserver(sheet);
 			
 			self._observer.onDeepPermissionListChanged = 
 				function(node) 
@@ -360,7 +360,7 @@
 			self._observer.onFinalPermissionsCouldBeChanged = 
 					function(node)						
 						local souMestre = false;												
-						local mesa = rrpg.getMesaDe(sheet);
+						local mesa = Firecast.getMesaDe(sheet);
 						
 						if mesa ~= nil then
 							local meuJogador = mesa.meuJogador;
@@ -370,10 +370,10 @@
 							end;
 						end;
 						
-						self.imgInvisivel.enabled = (ndb.testPermission(sheet, "writePermissions") and 
-													 ndb.testPermission(sheet, "readPermissions") and 
-													 ndb.testPermission(sheet, "write") and 
-													 ndb.testPermission(sheet, "createChild")) and
+						self.imgInvisivel.enabled = (NDB.testPermission(sheet, "writePermissions") and 
+													 NDB.testPermission(sheet, "readPermissions") and 
+													 NDB.testPermission(sheet, "write") and 
+													 NDB.testPermission(sheet, "createChild")) and
 													 souMestre;	
 						self.imgAddEfeito.enabled = self.imgInvisivel.enabled;								
 						self:atualizarIndicacaoVisibilidade(); 

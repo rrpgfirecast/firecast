@@ -1,5 +1,6 @@
 local rrpgObjs = require("rrpgObjs.lua");
 utils = {};
+Utils = utils;
 
 function lowercase(s)
 	return string.lower(s);
@@ -283,7 +284,7 @@ function utils.streamFromHandle(handle)
 	
 	function stream:readBinary(format, qt)
 		local qtBytesPorItem = utils.getBinarySize(format);
-		local qtBytesALer = 0;
+		local qtBytesALer;
 			
 		if type(qt) ~= "number" then
 			qt = 1;
@@ -343,14 +344,14 @@ function utils.streamFromHandle(handle)
 		return _obj_invoke(self.handle, "WriteBase64", tostring(str));
 	end;
 	
-	function stream:copyFrom(stream, qtBytes)
+	function stream:copyFrom(sourceStream, qtBytes)
 		qtBytes = tonumber(qtBytes);
 	
-		if (type(stream) ~= "table") or (stream.handle == nil) or (qtBytes == nil) or (qtBytes <= 0) then
+		if (type(sourceStream) ~= "table") or (sourceStream.handle == nil) or (qtBytes == nil) or (qtBytes <= 0) then
 			return 0;
 		end;				
 
-		return _obj_invokeEx(self.handle, "CopyFrom", stream.handle, qtBytes);
+		return _obj_invokeEx(self.handle, "CopyFrom", sourceStream.handle, qtBytes);
 	end;	
 	
 	function stream:share() return _obj_invoke(self.handle, "ShareStream"); end;
@@ -427,7 +428,7 @@ function utils.zlibCompressAsync(sourceStream, destStream, level, qtBytesInSourc
 end;
 
 function utils.zlibDecompressAsync(sourceStream, destStream, onFinish, onError)
-	local decompressObject = require("rrpgUtil_async.dlua").newAsyncZLibObject();
+	local compressObject = require("rrpgUtil_async.dlua").newAsyncZLibObject();
 	compressObject:zlibDecompressAsync(sourceStream, destStream, onFinish, onError);	
 end;
 
@@ -441,6 +442,10 @@ end;
 
 function utils.openSharedStream(sharedId)
 	return utils.streamFromHandle(_util_openSharedStream(sharedId));
+end;
+
+function utils.generateUniqueString()
+	return _rrpg_generateUniqueStrID();
 end;
 
 utils.colorToRGBA = _gui_colorToRGBA;

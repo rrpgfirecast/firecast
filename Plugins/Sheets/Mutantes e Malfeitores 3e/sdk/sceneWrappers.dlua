@@ -1,4 +1,5 @@
 ﻿local Objs = require("rrpgObjs.lua");
+local objs = Objs;
 local NDB = require("ndb.lua");
 local GUI = nil;
 
@@ -71,7 +72,8 @@ local __sceneProps = {worldWidth = {tipo = "double", readProp = "WorldWidth", wr
 					  isGM = {tipo="bool", readProp="IsGM"},
 					  currentUserID = {tipo="string", readProp="CurrentUserID"},
 					  isViewingAsGM = {tipo="bool", readProp="IsViewingAsGM", writeProp = "IsViewingAsGM"},
-					  isViewingWalls = {tipo="bool", readProp="IsViewingWalls", writeProp = "IsViewingWalls"},};
+					  isViewingWalls = {tipo="bool", readProp="IsViewingWalls", writeProp = "IsViewingWalls"},
+					  renderAsPlayer = {tipo="bool", readProp="RenderAsPlayer"}};
 
 local __sceneEvents	= {onWorkingLayerChange="",
 					   onGMStateChange=""};
@@ -82,23 +84,23 @@ local __sceneMethods = {
 			Objs.registerHandle(tr.handle, tr);
 			_obj_invoke(tr.handle, "Initialize", scene.objectID);
 			
-			tr.commit = function(tr)
-				_obj_invoke(tr.handle, "Commit");
+			tr.commit = function(trObj)
+				_obj_invoke(trObj.handle, "Commit");
 			end;
 			
-			tr.rollback = function(tr)
-				_obj_invoke(tr.handle, "Rollback");
+			tr.rollback = function(trObj)
+				_obj_invoke(trObj.handle, "Rollback");
 			end;
 			
-			tr.createUndoData =  function (tr)
-				local handle = _obj_invoke(tr.handle, "CreateUndoData");
+			tr.createUndoData =  function (trObj)
+				local handle = _obj_invoke(trObj.handle, "CreateUndoData");
 				local obj = objs.objectFromHandle(handle);
 				objs.registerHandle(handle, obj);	
 				return obj;
 			end;
 
-			tr.applyUndoData = function(tr, undoData)
-				_obj_invoke(tr.handle, "ApplyUndoData", undoData.handle);
+			tr.applyUndoData = function(trObj, undoData)
+				_obj_invoke(trObj.handle, "ApplyUndoData", undoData.handle);
 			end;					
 			
 			return tr;
@@ -137,9 +139,9 @@ local __sceneMethods = {
 								
 									if node ~= nil then
 										return NDB.newBroadcastListener(node, messageId, 
-											function(sender, messageId, message)
+											function(sender, returnedMessageId, message)
 												if scene.isObjectAlive and (callback ~= nil) then
-													callback(sender, messageId, message);
+													callback(sender, returnedMessageId, message);
 												end;
 											end);
 									end;
@@ -264,11 +266,7 @@ local __viewportMethods = {screenToWorld =
 									if tblTools ~= nil then
 										local o = tblTools[toolID];
 										
-										if o ~= nil then
-											if checked == nil then
-												checked = true;
-											end;
-										
+										if o ~= nil then                          
 											return _obj_getProp(o.handle, "IsChecked");
 										end;
 									end;
@@ -482,7 +480,7 @@ local __GILProps = {count = {tipo = "int", readProp = "Count"},
 					selection = {tipo="table", getter="getSelection"}};
 						 
 local __GILMethods = {	get = function(t, idx) 	
-								local objID = _obj_invoke(t.handle, "GetItemObjectID", k - 1);
+								local objID = _obj_invoke(t.handle, "GetItemObjectID", idx - 1);
 								local o = SceneWrappers.objectFromID(objID);
 								
 								if o == nil then
@@ -493,30 +491,30 @@ local __GILMethods = {	get = function(t, idx)
 							end,
 							
 						enumInRect = function(t, rect, layer)
-							local objs = _obj_invokeEx(t.handle, "EnumInRect", rect, layer);
+							local retObjs = _obj_invokeEx(t.handle, "EnumInRect", rect, layer);
 							
-							for i = 1, #objs, 1 do
-								objs[i] = SceneWrappers.objectFromID(objs[i]);
+							for i = 1, #retObjs, 1 do
+								retObjs[i] = SceneWrappers.objectFromID(retObjs[i]);
 							end;
 							
-							return objs;
+							return retObjs;
 						end,
 						
 						enumAtPoint = function(t, worldX, worldY, layer)
-							local objs = _obj_invokeEx(t.handle, "EnumInPoint", worldX, worldY, layer);
+							local retObjs = _obj_invokeEx(t.handle, "EnumInPoint", worldX, worldY, layer);
 							
-							for i = 1, #objs, 1 do
-								objs[i] = SceneWrappers.objectFromID(objs[i]);
+							for i = 1, #retObjs, 1 do
+								retObjs[i] = SceneWrappers.objectFromID(retObjs[i]);
 							end;
 							
-							return objs;
+							return retObjs;
 						end,
 						
 						itemAtPoint = function(t, worldX, worldY, layer)
-							local objs = t:enumAtPoint(worldX, worldY, layer);
+							local retObjs = t:enumAtPoint(worldX, worldY, layer);
 							
-							if #objs > 0 then
-								return objs[#objs];
+							if #retObjs > 0 then
+								return retObjs[#retObjs];
 							else
 								return nil;
 							end;
@@ -646,7 +644,8 @@ local __graphicItemProps = {width = {tipo = "double", readProp = "Width", writeP
 							selected = {tipo = "bool", readProp = "Selected", writeProp = "Selected"},
 							isHover = {tipo = "bool", readProp = "IsHover", writeProp = "IsHover"},
 							layer = {tipo = "enum", readProp = "Layer", writeProp = "Layer", values={"background", "objects", "token"}},
-						    isMine = {tipo = "bool", readProp = "IsMine"},		
+						    isMine = {tipo = "bool", readProp = "IsMine"},	
+						    canBeRendered = {tipo = "bool", readProp = "CanBeRendered"},							
 							ownerUserID = {tipo = "string", readProp = "OwnerUserID", writeProp="OwnerUserID"},	
 							canvas = {tipo = "table", getter = function(obj) return SceneWrappers.objectFromID(_obj_getProp(obj.handle, "CanvasObjectID")); end;},
 							scene = {tipo = "table", getter = function(obj) return SceneWrappers.objectFromID(_obj_getProp(obj.handle, "SceneObjectID")); end;}};

@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFireDriveNavigatorItem()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmFireDriveNavigatorItem()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -113,7 +113,7 @@ function newfrmFireDriveNavigatorItem()
 		
 		
 		local function criarUploadStatusComp()
-			local ret = gui.newRectangle();
+			local ret = GUI.newRectangle();
 			ret.xradius = 10;
 			ret.yradius = 10;
 			ret.color = "#000000C0";
@@ -122,7 +122,7 @@ function newfrmFireDriveNavigatorItem()
 			ret.hitTest = false;
 			ret.canFocus = false;
 			
-			local aniInd = gui.newActivityIndicator();
+			local aniInd = GUI.newActivityIndicator();
 			aniInd.align = "client";
 			aniInd.visible = true;
 			aniInd.enabled = true;
@@ -131,13 +131,13 @@ function newfrmFireDriveNavigatorItem()
 			aniInd.canFocus = false;
 			aniInd.margins = {left=10, right=10, bottom=10, top=10};
 			
-			local labPercent = gui.newLabel();
+			local labPercent = GUI.newLabel();
 			labPercent.align = "top";
 			labPercent.horzTextAlign = "center";
 			labPercent.wordWrap = false;
 			labPercent.autoSize = true;	
 			
-			local barra = gui.newProgressBar();
+			local barra = GUI.newProgressBar();
 			barra.visible = true;
 			barra.hitTest = false;
 			barra.height = 20;
@@ -145,8 +145,8 @@ function newfrmFireDriveNavigatorItem()
 			
 			local imgState = nil;
 			
-			local function criarImgState();
-				imgState = gui.newImage();
+			local function criarImgState()
+				imgState = GUI.newImage();
 				imgState.margins = {left=10, right=10, bottom=10, top=10};
 				imgState.align = "client";
 				imgState.hitTest = false;
@@ -248,7 +248,7 @@ function newfrmFireDriveNavigatorItem()
 		
 
 
-    obj.imgIco = gui.fromHandle(_obj_newObject("image"));
+    obj.imgIco = GUI.fromHandle(_obj_newObject("image"));
     obj.imgIco:setParent(obj);
     obj.imgIco:setName("imgIco");
     obj.imgIco:setAlign("top");
@@ -257,7 +257,7 @@ function newfrmFireDriveNavigatorItem()
 local p = self.padding; self.imgIco.height = self.width - p.left - p.right - 20;
 
 
-    obj.labNome = gui.fromHandle(_obj_newObject("label"));
+    obj.labNome = GUI.fromHandle(_obj_newObject("label"));
     obj.labNome:setParent(obj);
     obj.labNome:setName("labNome");
     obj.labNome:setAlign("top");
@@ -268,33 +268,33 @@ local p = self.padding; self.imgIco.height = self.width - p.left - p.right - 20;
     obj.labNome:setAutoSize(true);
     obj.labNome:setTextTrimming("none");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("urlThumb64");
     obj.dataLink1:setName("dataLink1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj);
     obj.dataLink2:setFields({'uploading', 'uploadSent', 'uploadMax', 'errorMsg'});
     obj.dataLink2:setName("dataLink2");
 
     obj._e_event0 = obj:addEventListener("onScopeNodeChanged",
-        function (self)
+        function (_)
             verificarTipoDoItem();
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onDblClick",
-        function (self)
+        function (_)
             abrir();
         end, obj);
 
     obj._e_event2 = obj:addEventListener("onMenu",
-        function (self, x, y)
+        function (_, x, y)
             exibirMenu();
         end, obj);
 
     obj._e_event3 = obj:addEventListener("onKeyDown",
-        function (self, event)
+        function (_, event)
             if event.keyCode == 13 or event.key == "\13" then
             			-- ENTER
             			event.key = 0;
@@ -316,24 +316,24 @@ local p = self.padding; self.imgIco.height = self.width - p.left - p.right - 20;
         end, obj);
 
     obj._e_event4 = obj:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             if _imageURL ~= nil then
             			drag:addData("imageURL", _imageURL);
             		end;
         end, obj);
 
     obj._e_event5 = obj.labNome:addEventListener("onResize",
-        function (self)
+        function (_)
             checkSelfSize();
         end, obj);
 
     obj._e_event6 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             verificarTipoDoItem();
         end, obj);
 
     obj._e_event7 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local status = self._uploadStatus;
             		
             			if sheet.uploading then		
@@ -385,9 +385,23 @@ local p = self.padding; self.imgIco.height = self.width - p.left - p.right - 20;
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFireDriveNavigatorItem()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFireDriveNavigatorItem();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFireDriveNavigatorItem = {
@@ -401,6 +415,6 @@ local _frmFireDriveNavigatorItem = {
     description=""};
 
 frmFireDriveNavigatorItem = _frmFireDriveNavigatorItem;
-rrpg.registrarForm(_frmFireDriveNavigatorItem);
+Firecast.registrarForm(_frmFireDriveNavigatorItem);
 
 return _frmFireDriveNavigatorItem;

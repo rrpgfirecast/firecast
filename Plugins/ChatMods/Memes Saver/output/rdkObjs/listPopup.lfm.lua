@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newlistPopup()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+local function constructNew_listPopup()
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -33,7 +33,7 @@ function newlistPopup()
     obj:setWidth(500);
     obj:setHeight(325);
 
-    obj.memeList = gui.fromHandle(_obj_newObject("recordList"));
+    obj.memeList = GUI.fromHandle(_obj_newObject("recordList"));
     obj.memeList:setParent(obj);
     obj.memeList:setLeft(0);
     obj.memeList:setTop(0);
@@ -43,7 +43,7 @@ function newlistPopup()
     obj.memeList:setName("memeList");
     obj.memeList:setTemplateForm("frmMemeItem");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setLeft(0);
     obj.button1:setTop(300);
@@ -53,7 +53,7 @@ function newlistPopup()
     obj.button1:setHint("Cria novo meme");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj);
     obj.button2:setLeft(100);
     obj.button2:setTop(300);
@@ -63,7 +63,7 @@ function newlistPopup()
     obj.button2:setHint("adiciona novo atalho ao meme selecionado");
     obj.button2:setName("button2");
 
-    obj.boxDetalhesDoItem = gui.fromHandle(_obj_newObject("dataScopeBox"));
+    obj.boxDetalhesDoItem = GUI.fromHandle(_obj_newObject("dataScopeBox"));
     obj.boxDetalhesDoItem:setParent(obj);
     obj.boxDetalhesDoItem:setLeft(200);
     obj.boxDetalhesDoItem:setTop(0);
@@ -72,14 +72,14 @@ function newlistPopup()
     obj.boxDetalhesDoItem:setName("boxDetalhesDoItem");
     obj.boxDetalhesDoItem:setVisible(false);
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.boxDetalhesDoItem);
     obj.image1:setAlign("client");
     obj.image1:setEditable(false);
     obj.image1:setField("meme");
     obj.image1:setName("image1");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj);
     obj.button3:setLeft(200);
     obj.button3:setTop(300);
@@ -89,7 +89,7 @@ function newlistPopup()
     obj.button3:setHint("troca o url do meme");
     obj.button3:setName("button3");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj);
     obj.button4:setLeft(350);
     obj.button4:setTop(300);
@@ -99,12 +99,12 @@ function newlistPopup()
     obj.button4:setHint("remove o meme");
     obj.button4:setName("button4");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("load");
     obj.dataLink1:setName("dataLink1");
 
-    obj.refresh = gui.fromHandle(_obj_newObject("button"));
+    obj.refresh = GUI.fromHandle(_obj_newObject("button"));
     obj.refresh:setParent(obj);
     obj.refresh:setLeft(0);
     obj.refresh:setTop(0);
@@ -116,7 +116,7 @@ function newlistPopup()
     obj.refresh:setName("refresh");
 
     obj._e_event0 = obj.memeList:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             if nodeA.nome and nodeB.nome then 
             				return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
             			elseif nodeA.nome then
@@ -127,7 +127,7 @@ function newlistPopup()
         end, obj);
 
     obj._e_event1 = obj.memeList:addEventListener("onSelect",
-        function (self)
+        function (_)
             local node = self.memeList.selectedNode;  
                         self.boxDetalhesDoItem.node = node;                       
                     
@@ -135,7 +135,7 @@ function newlistPopup()
         end, obj);
 
     obj._e_event2 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             Dialogs.inputQuery("Adiciona novo meme", "Informe o atalho", "",
             				function (atalho)
             				    Dialogs.selectImageURL("",
@@ -154,7 +154,7 @@ function newlistPopup()
         end, obj);
 
     obj._e_event3 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             local node = self.memeList.selectedNode; 
             			if node==nil then return end;
             
@@ -166,12 +166,12 @@ function newlistPopup()
         end, obj);
 
     obj._e_event4 = obj.image1:addEventListener("onLoad",
-        function (self)
+        function (_)
             --showMessage("onload");
         end, obj);
 
     obj._e_event5 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             local node = self.memeList.selectedNode; 
             			if node==nil then return end;
             
@@ -185,7 +185,7 @@ function newlistPopup()
         end, obj);
 
     obj._e_event6 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             local node = self.memeList.selectedNode; 
             			if node==nil then return end;
             
@@ -202,7 +202,7 @@ function newlistPopup()
         end, obj);
 
     obj._e_event7 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			if sheet.load then
             				sheet.load = false;
@@ -238,7 +238,7 @@ function newlistPopup()
         end, obj);
 
     obj._e_event8 = obj.refresh:addEventListener("onClick",
-        function (self)
+        function (_)
             if sheet==nil then return end;
             			self.refresh.visible = false;
             			sheet.load = true;
@@ -279,9 +279,23 @@ function newlistPopup()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newlistPopup()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_listPopup();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _listPopup = {
@@ -295,7 +309,7 @@ local _listPopup = {
     description=""};
 
 listPopup = _listPopup;
-rrpg.registrarForm(_listPopup);
-rrpg.registrarDataType(_listPopup);
+Firecast.registrarForm(_listPopup);
+Firecast.registrarDataType(_listPopup);
 
 return _listPopup;

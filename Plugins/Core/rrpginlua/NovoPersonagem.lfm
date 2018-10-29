@@ -65,7 +65,7 @@
 			
 			saveStateToNodeDatabase();
 								
-			rrpg.requests.criarPersonagem(self._bibMae, nomePersonagem, dataType, self.rdbTodos.checked, self._mesa:findJogador(loginDono), 
+			Firecast.Requests.criarPersonagem(self._bibMae, nomePersonagem, dataType, self.rdbTodos.checked, self._mesa:findJogador(loginDono), 
 				function()
 					self._estaAguardandoResposta = false;
 					self:unlockWithActivity();
@@ -97,12 +97,12 @@
 				end;
 			end;
 			
-			utils.sortPtBrArray(jogadoresStrings);
+			Utils.sortPtBrArray(jogadoresStrings);
 			self.cmbJogador.items = jogadoresStrings;		
 		end;
 		
 		local function carregarComboDeTemplates()
-			local dts = rrpg.plugins.getInstalledDataTypes();
+			local dts = Firecast.Plugins.getInstalledDataTypes();
 			
 			local dtsToShow = {};
 			
@@ -116,7 +116,7 @@
 			
 		
 			table.sort(dtsToShow, function (esquerda, direita)
-									return utils.compareStringPtBr(esquerda.title, direita.title) < 0;
+									return Utils.compareStringPtBr(esquerda.title, direita.title) < 0;
 								  end);									  						 
 
 			local titles = {};
@@ -132,7 +132,7 @@
 		end;		
 				
 		local function configurarNodeDatabase()		
-			local node = ndb.load("config.xml");
+			local node = NDB.load("config.xml");
 					
 			if type(node.novoPersonagem) ~= "table" then
 				node.novoPersonagem = {};
@@ -176,7 +176,7 @@
 				local temAlgoPreenchido = (self.edtNome.text ~= '') or (self.rdbJogador.checked and self.cmbJogador.text ~= '');	
 
 				if temAlgoPreenchido then
-					dialogs.confirmYesNo('Deseja realmente cancelar a criação do personagem?',
+					Dialogs.confirmYesNo('Deseja realmente cancelar a criação do personagem?',
 						function (confirmado)
 							if confirmado then
 								self:close();

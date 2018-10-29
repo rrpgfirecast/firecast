@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmBibliotecaRPGmeister03()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmBibliotecaRPGmeister03()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,12 +31,12 @@ function newfrmBibliotecaRPGmeister03()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
@@ -45,7 +45,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.rectangle1:setColor("Black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(5);
     obj.label1:setTop(5);
@@ -55,7 +55,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.rectangle1);
     obj.label2:setLeft(5);
     obj.label2:setTop(50);
@@ -64,7 +64,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.label2:setText("Usos Diferentes");
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.rectangle1);
     obj.label3:setLeft(5);
     obj.label3:setTop(75);
@@ -74,7 +74,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.label3:setText(" - Algumas perícias podem ter uso diferente do padrão.");
     obj.label3:setName("label3");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(55);
     obj.button1:setTop(100);
@@ -82,7 +82,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button1:setText("Diplomacia");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.rectangle1);
     obj.button2:setLeft(55);
     obj.button2:setTop(125);
@@ -90,7 +90,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button2:setText("Falar Idioma");
     obj.button2:setName("button2");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.rectangle1);
     obj.button3:setLeft(5);
     obj.button3:setTop(150);
@@ -98,7 +98,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button3:setText("Perícias Raciais");
     obj.button3:setName("button3");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.scrollBox1);
     obj.rectangle2:setLeft(0);
     obj.rectangle2:setTop(205);
@@ -107,7 +107,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.rectangle2:setColor("Black");
     obj.rectangle2:setName("rectangle2");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.rectangle2);
     obj.label4:setLeft(5);
     obj.label4:setTop(5);
@@ -117,7 +117,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.rectangle2);
     obj.button4:setLeft(5);
     obj.button4:setTop(50);
@@ -125,7 +125,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button4:setText("Novos Talentos");
     obj.button4:setName("button4");
 
-    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
     obj.button5:setParent(obj.rectangle2);
     obj.button5:setLeft(5);
     obj.button5:setTop(100);
@@ -133,7 +133,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button5:setText("Novos Talentos Épicos");
     obj.button5:setName("button5");
 
-    obj.button6 = gui.fromHandle(_obj_newObject("button"));
+    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
     obj.button6:setParent(obj.rectangle2);
     obj.button6:setLeft(5);
     obj.button6:setTop(150);
@@ -141,7 +141,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button6:setText("Talentos Equivalentes");
     obj.button6:setName("button6");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.rectangle2);
     obj.label5:setLeft(5);
     obj.label5:setTop(170);
@@ -151,7 +151,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.label5:setText(" - Regras para habilidades pegas múltiplas vezes por conta de características de classe duplicadas.");
     obj.label5:setName("label5");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.scrollBox1);
     obj.rectangle3:setLeft(405);
     obj.rectangle3:setTop(0);
@@ -160,7 +160,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.rectangle3:setColor("Black");
     obj.rectangle3:setName("rectangle3");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.rectangle3);
     obj.label6:setLeft(5);
     obj.label6:setTop(5);
@@ -170,7 +170,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.button7 = gui.fromHandle(_obj_newObject("button"));
+    obj.button7 = GUI.fromHandle(_obj_newObject("button"));
     obj.button7:setParent(obj.rectangle3);
     obj.button7:setLeft(5);
     obj.button7:setTop(50);
@@ -178,7 +178,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button7:setText("Signos");
     obj.button7:setName("button7");
 
-    obj.button8 = gui.fromHandle(_obj_newObject("button"));
+    obj.button8 = GUI.fromHandle(_obj_newObject("button"));
     obj.button8:setParent(obj.rectangle3);
     obj.button8:setLeft(55);
     obj.button8:setTop(75);
@@ -186,7 +186,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button8:setText("Doutrinas");
     obj.button8:setName("button8");
 
-    obj.button9 = gui.fromHandle(_obj_newObject("button"));
+    obj.button9 = GUI.fromHandle(_obj_newObject("button"));
     obj.button9:setParent(obj.rectangle3);
     obj.button9:setLeft(5);
     obj.button9:setTop(125);
@@ -194,7 +194,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button9:setText("Domínios");
     obj.button9:setName("button9");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.rectangle3);
     obj.label7:setLeft(5);
     obj.label7:setTop(175);
@@ -203,7 +203,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.label7:setText("Listas de Magias de Classe");
     obj.label7:setName("label7");
 
-    obj.button10 = gui.fromHandle(_obj_newObject("button"));
+    obj.button10 = GUI.fromHandle(_obj_newObject("button"));
     obj.button10:setParent(obj.rectangle3);
     obj.button10:setLeft(55);
     obj.button10:setTop(200);
@@ -211,7 +211,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button10:setText("Alquimista");
     obj.button10:setName("button10");
 
-    obj.button11 = gui.fromHandle(_obj_newObject("button"));
+    obj.button11 = GUI.fromHandle(_obj_newObject("button"));
     obj.button11:setParent(obj.rectangle3);
     obj.button11:setLeft(55);
     obj.button11:setTop(225);
@@ -219,7 +219,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button11:setText("Cultivador");
     obj.button11:setName("button11");
 
-    obj.button12 = gui.fromHandle(_obj_newObject("button"));
+    obj.button12 = GUI.fromHandle(_obj_newObject("button"));
     obj.button12:setParent(obj.rectangle3);
     obj.button12:setLeft(55);
     obj.button12:setTop(250);
@@ -227,7 +227,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button12:setText("Duelista Arcano");
     obj.button12:setName("button12");
 
-    obj.button13 = gui.fromHandle(_obj_newObject("button"));
+    obj.button13 = GUI.fromHandle(_obj_newObject("button"));
     obj.button13:setParent(obj.rectangle3);
     obj.button13:setLeft(55);
     obj.button13:setTop(275);
@@ -235,7 +235,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button13:setText("Elementalista");
     obj.button13:setName("button13");
 
-    obj.button14 = gui.fromHandle(_obj_newObject("button"));
+    obj.button14 = GUI.fromHandle(_obj_newObject("button"));
     obj.button14:setParent(obj.rectangle3);
     obj.button14:setLeft(55);
     obj.button14:setTop(300);
@@ -243,7 +243,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button14:setText("Execrador");
     obj.button14:setName("button14");
 
-    obj.button15 = gui.fromHandle(_obj_newObject("button"));
+    obj.button15 = GUI.fromHandle(_obj_newObject("button"));
     obj.button15:setParent(obj.rectangle3);
     obj.button15:setLeft(55);
     obj.button15:setTop(325);
@@ -251,7 +251,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button15:setText("Executor");
     obj.button15:setName("button15");
 
-    obj.button16 = gui.fromHandle(_obj_newObject("button"));
+    obj.button16 = GUI.fromHandle(_obj_newObject("button"));
     obj.button16:setParent(obj.rectangle3);
     obj.button16:setLeft(55);
     obj.button16:setTop(350);
@@ -259,7 +259,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button16:setText("Lâmina Arcana");
     obj.button16:setName("button16");
 
-    obj.button17 = gui.fromHandle(_obj_newObject("button"));
+    obj.button17 = GUI.fromHandle(_obj_newObject("button"));
     obj.button17:setParent(obj.rectangle3);
     obj.button17:setLeft(55);
     obj.button17:setTop(375);
@@ -267,7 +267,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button17:setText("Mestre dos Itens Mágicos");
     obj.button17:setName("button17");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.scrollBox1);
     obj.rectangle4:setLeft(810);
     obj.rectangle4:setTop(0);
@@ -276,7 +276,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.rectangle4:setColor("Black");
     obj.rectangle4:setName("rectangle4");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.rectangle4);
     obj.label8:setLeft(5);
     obj.label8:setTop(5);
@@ -286,7 +286,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.label8:setHorzTextAlign("center");
     obj.label8:setName("label8");
 
-    obj.button18 = gui.fromHandle(_obj_newObject("button"));
+    obj.button18 = GUI.fromHandle(_obj_newObject("button"));
     obj.button18:setParent(obj.rectangle4);
     obj.button18:setLeft(5);
     obj.button18:setTop(50);
@@ -294,7 +294,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button18:setText("Tendência");
     obj.button18:setName("button18");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.rectangle4);
     obj.label9:setLeft(5);
     obj.label9:setTop(100);
@@ -303,7 +303,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.label9:setText("Religião");
     obj.label9:setName("label9");
 
-    obj.button19 = gui.fromHandle(_obj_newObject("button"));
+    obj.button19 = GUI.fromHandle(_obj_newObject("button"));
     obj.button19:setParent(obj.rectangle4);
     obj.button19:setLeft(55);
     obj.button19:setTop(125);
@@ -311,7 +311,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button19:setText("Cultos");
     obj.button19:setName("button19");
 
-    obj.button20 = gui.fromHandle(_obj_newObject("button"));
+    obj.button20 = GUI.fromHandle(_obj_newObject("button"));
     obj.button20:setParent(obj.rectangle4);
     obj.button20:setLeft(55);
     obj.button20:setTop(150);
@@ -319,7 +319,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button20:setText("Relações entre Cultos");
     obj.button20:setName("button20");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.rectangle4);
     obj.label10:setLeft(55);
     obj.label10:setTop(170);
@@ -329,7 +329,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.label10:setText(" - A tabela está incompleta.");
     obj.label10:setName("label10");
 
-    obj.button21 = gui.fromHandle(_obj_newObject("button"));
+    obj.button21 = GUI.fromHandle(_obj_newObject("button"));
     obj.button21:setParent(obj.rectangle4);
     obj.button21:setLeft(55);
     obj.button21:setTop(200);
@@ -337,7 +337,7 @@ function newfrmBibliotecaRPGmeister03()
     obj.button21:setText("Panteões");
     obj.button21:setName("button21");
 
-    obj.button22 = gui.fromHandle(_obj_newObject("button"));
+    obj.button22 = GUI.fromHandle(_obj_newObject("button"));
     obj.button22:setParent(obj.rectangle4);
     obj.button22:setLeft(5);
     obj.button22:setTop(250);
@@ -346,112 +346,112 @@ function newfrmBibliotecaRPGmeister03()
     obj.button22:setName("button22");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/9tfqbf4hwcu0j6t/Diplomacia.docx?dl=0');
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/16l6yd03ksqikcg/Idiomas.docx?dl=0');
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/ifavh0i1ysypxqm/Pericias%20Raciais.docx?dl=0');
         end, obj);
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/alp56fyooxhaks0/Novos%20Talentos.docx?dl=0');
         end, obj);
 
     obj._e_event4 = obj.button5:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/p2ipjp3z88to50h/Novos%20Talentos%20%C3%89picos.docx?dl=0');
         end, obj);
 
     obj._e_event5 = obj.button6:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/ikiwxpl01h7cvqn/Talentos%20equivalentes.docx?dl=0');
         end, obj);
 
     obj._e_event6 = obj.button7:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/c0iuyky0cpsdedv/Signos.docx?dl=0');
         end, obj);
 
     obj._e_event7 = obj.button8:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/jimcg230bymgqv4/Doutrinas.docx?dl=0');
         end, obj);
 
     obj._e_event8 = obj.button9:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/v6p4wgd4z6391a4/Novos%20dominios.docx?dl=0');
         end, obj);
 
     obj._e_event9 = obj.button10:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/yym7ur8l7ogire8/Lista%20de%20formulas%20do%20alquimista.docx?dl=0');
         end, obj);
 
     obj._e_event10 = obj.button11:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/30q95h1mw2mvbky/Extratos%20de%20Essencias.docx?dl=0');
         end, obj);
 
     obj._e_event11 = obj.button12:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/risnouhziu69oj4/Magias%20do%20Duelista%20Arcano.docx?dl=0');
         end, obj);
 
     obj._e_event12 = obj.button13:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/ptdzac0l271e7jv/Elementalismo.docx?dl=0');
         end, obj);
 
     obj._e_event13 = obj.button14:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/ydb523lhcmn768q/Magias%20do%20Execrador.docx?dl=0');
         end, obj);
 
     obj._e_event14 = obj.button15:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/izeyj7s6i5s0dq4/Lista%20de%20formulas%20do%20executor.docx?dl=0');
         end, obj);
 
     obj._e_event15 = obj.button16:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/bkr407bs379n2pt/Magias%20do%20L%C3%A2mina%20Arcana.docx?dl=0');
         end, obj);
 
     obj._e_event16 = obj.button17:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/skdiw7e179audqy/Magias%20do%20Mestre%20dos%20Itens%20Magicos.docx?dl=0');
         end, obj);
 
     obj._e_event17 = obj.button18:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/8tyws2w55r8yirw/Tend%C3%AAncias.docx?dl=0');
         end, obj);
 
     obj._e_event18 = obj.button19:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/1t2alvgjonoad3y/Religi%C3%A3o.docx?dl=0');
         end, obj);
 
     obj._e_event19 = obj.button20:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/2vpa4samjs0moxk/Rela%C3%A7%C3%B5es.docx?dl=0');
         end, obj);
 
     obj._e_event20 = obj.button21:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/j2o8ucsmjuv9smy/Pante%C3%B5es.docx?dl=0');
         end, obj);
 
     obj._e_event21 = obj.button22:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('https://www.dropbox.com/s/wnkzixhjjfyte3m/Idades.docx?dl=0');
         end, obj);
 
@@ -531,9 +531,23 @@ function newfrmBibliotecaRPGmeister03()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmBibliotecaRPGmeister03()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmBibliotecaRPGmeister03();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmBibliotecaRPGmeister03 = {
@@ -547,6 +561,6 @@ local _frmBibliotecaRPGmeister03 = {
     description=""};
 
 frmBibliotecaRPGmeister03 = _frmBibliotecaRPGmeister03;
-rrpg.registrarForm(_frmBibliotecaRPGmeister03);
+Firecast.registrarForm(_frmBibliotecaRPGmeister03);
 
 return _frmBibliotecaRPGmeister03;

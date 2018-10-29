@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFichaRPGmeister5MM_svg()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmFichaRPGmeister5MM_svg()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,7 +31,7 @@ function newfrmFichaRPGmeister5MM_svg()
     obj:setHeight(30);
     obj:setTheme("dark");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setTop(0);
     obj.button1:setWidth(32);
@@ -39,7 +39,7 @@ function newfrmFichaRPGmeister5MM_svg()
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
     obj.label1:setLeft(35);
     obj.label1:setWidth(165);
@@ -48,14 +48,14 @@ function newfrmFichaRPGmeister5MM_svg()
     obj.label1:setField("classeMagia");
     obj.label1:setName("label1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("classeMagia");
     obj.dataLink1:setDefaultValue("Classe");
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar suas magias?",
             				function (confirmado)
             					if confirmado then
@@ -85,9 +85,23 @@ function newfrmFichaRPGmeister5MM_svg()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFichaRPGmeister5MM_svg()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFichaRPGmeister5MM_svg();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFichaRPGmeister5MM_svg = {
@@ -101,6 +115,6 @@ local _frmFichaRPGmeister5MM_svg = {
     description=""};
 
 frmFichaRPGmeister5MM_svg = _frmFichaRPGmeister5MM_svg;
-rrpg.registrarForm(_frmFichaRPGmeister5MM_svg);
+Firecast.registrarForm(_frmFichaRPGmeister5MM_svg);
 
 return _frmFichaRPGmeister5MM_svg;

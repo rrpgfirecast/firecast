@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmMagicTokens()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+local function constructNew_frmMagicTokens()
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -40,28 +40,22 @@ function newfrmMagicTokens()
 		require("dialogs.lua");
 		require("fireDrive.lua");
 		local scene = nil;	
-		local ignoreRecalcWH = false;
-		local realCellWidth = 1;
-		local realCellHeight = 1;
-		local offsetCellsW = 1;
-		local offsetCellsH = 1;
-		local exibindoFOW = false;
 	
 
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.flaContent = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flaContent = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flaContent:setParent(obj.scrollBox1);
     obj.flaContent:setAlign("top");
     obj.flaContent:setAutoHeight(true);
     obj.flaContent:setMaxControlsPerLine(1);
     obj.flaContent:setName("flaContent");
 
-    obj.flowPart1 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart1 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart1:setParent(obj.flaContent);
     obj.flowPart1:setName("flowPart1");
     obj.flowPart1:setHeight(30);
@@ -69,7 +63,7 @@ function newfrmMagicTokens()
     obj.flowPart1:setMaxWidth(5000);
     obj.flowPart1:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labGroupHeader1 = gui.fromHandle(_obj_newObject("label"));
+    obj.labGroupHeader1 = GUI.fromHandle(_obj_newObject("label"));
     obj.labGroupHeader1:setParent(obj.flowPart1);
     obj.labGroupHeader1:setName("labGroupHeader1");
     obj.labGroupHeader1:setAlign("left");
@@ -81,7 +75,7 @@ function newfrmMagicTokens()
     obj.labGroupHeader1:setFontSize(15);
     obj.labGroupHeader1:setFontColor("#FFCC66");
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.flowPart1);
     obj.horzLine1:setAlign("bottom");
     obj.horzLine1:setStrokeColor("#FFCC6670");
@@ -93,7 +87,7 @@ function newfrmMagicTokens()
 		
 
 
-    obj.flowPart2 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart2 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart2:setParent(obj.flaContent);
     obj.flowPart2:setName("flowPart2");
     obj.flowPart2:setHeight(30);
@@ -101,7 +95,7 @@ function newfrmMagicTokens()
     obj.flowPart2:setMaxWidth(5000);
     obj.flowPart2:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.areaLabel = gui.fromHandle(_obj_newObject("label"));
+    obj.areaLabel = GUI.fromHandle(_obj_newObject("label"));
     obj.areaLabel:setParent(obj.flowPart2);
     obj.areaLabel:setName("areaLabel");
     obj.areaLabel:setAlign("left");
@@ -111,13 +105,13 @@ function newfrmMagicTokens()
     obj.areaLabel:setVertTextAlign("center");
     obj.areaLabel:setMargins({right=5});
 
-    obj.areaType = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.areaType = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.areaType:setParent(obj.flowPart2);
     obj.areaType:setName("areaType");
     obj.areaType:setAlign("client");
     obj.areaType:setMargins({right=5});
 
-    obj.flowPart3 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart3 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart3:setParent(obj.flaContent);
     obj.flowPart3:setName("flowPart3");
     obj.flowPart3:setHeight(30);
@@ -125,7 +119,7 @@ function newfrmMagicTokens()
     obj.flowPart3:setMaxWidth(5000);
     obj.flowPart3:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.reachLabel = gui.fromHandle(_obj_newObject("label"));
+    obj.reachLabel = GUI.fromHandle(_obj_newObject("label"));
     obj.reachLabel:setParent(obj.flowPart3);
     obj.reachLabel:setName("reachLabel");
     obj.reachLabel:setAlign("left");
@@ -135,7 +129,7 @@ function newfrmMagicTokens()
     obj.reachLabel:setVertTextAlign("center");
     obj.reachLabel:setMargins({right=5});
 
-    obj.square = gui.fromHandle(_obj_newObject("label"));
+    obj.square = GUI.fromHandle(_obj_newObject("label"));
     obj.square:setParent(obj.flowPart3);
     obj.square:setName("square");
     obj.square:setAlign("right");
@@ -145,7 +139,7 @@ function newfrmMagicTokens()
     obj.square:setVertTextAlign("center");
     obj.square:setMargins({right=5});
 
-    obj.reachVal = gui.fromHandle(_obj_newObject("edit"));
+    obj.reachVal = GUI.fromHandle(_obj_newObject("edit"));
     obj.reachVal:setParent(obj.flowPart3);
     obj.reachVal:setName("reachVal");
     obj.reachVal:setType("number");
@@ -153,7 +147,7 @@ function newfrmMagicTokens()
     obj.reachVal:setAlign("client");
     obj.reachVal:setMargins({right=5});
 
-    obj.flowPart4 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart4 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart4:setParent(obj.flaContent);
     obj.flowPart4:setName("flowPart4");
     obj.flowPart4:setHeight(30);
@@ -161,7 +155,7 @@ function newfrmMagicTokens()
     obj.flowPart4:setMaxWidth(5000);
     obj.flowPart4:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.colorLabel = gui.fromHandle(_obj_newObject("label"));
+    obj.colorLabel = GUI.fromHandle(_obj_newObject("label"));
     obj.colorLabel:setParent(obj.flowPart4);
     obj.colorLabel:setName("colorLabel");
     obj.colorLabel:setAlign("left");
@@ -171,21 +165,21 @@ function newfrmMagicTokens()
     obj.colorLabel:setVertTextAlign("center");
     obj.colorLabel:setMargins({right=5});
 
-    obj.colorBox = gui.fromHandle(_obj_newObject("colorComboBox"));
+    obj.colorBox = GUI.fromHandle(_obj_newObject("colorComboBox"));
     obj.colorBox:setParent(obj.flowPart4);
     obj.colorBox:setName("colorBox");
     obj.colorBox:setWidth(50);
     obj.colorBox:setUseAlpha(true);
     obj.colorBox:setAlign("left");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setName("layout1");
     obj.layout1:setAlign("bottom");
     obj.layout1:setMargins({top=2, bottom=2});
     obj.layout1:setHeight(40);
 
-    obj.btnInsert = gui.fromHandle(_obj_newObject("button"));
+    obj.btnInsert = GUI.fromHandle(_obj_newObject("button"));
     obj.btnInsert:setParent(obj.layout1);
     obj.btnInsert:setWidth(80);
     obj.btnInsert:setHorzTextAlign("center");
@@ -193,7 +187,7 @@ function newfrmMagicTokens()
     obj.btnInsert:setName("btnInsert");
     obj.btnInsert:setMargins({left=4, right=4});
 
-    obj.btnCancelName = gui.fromHandle(_obj_newObject("button"));
+    obj.btnCancelName = GUI.fromHandle(_obj_newObject("button"));
     obj.btnCancelName:setParent(obj.layout1);
     obj.btnCancelName:setWidth(80);
     obj.btnCancelName:setHorzTextAlign("center");
@@ -688,7 +682,7 @@ function newfrmMagicTokens()
 			token.selected = true;			
 		end;
 
-		function round(num, numDecimalPlaces)
+		local function round(num, numDecimalPlaces)
 			local mult = 10^(numDecimalPlaces or 0)
 			return math.floor(num * mult + 0.5) / mult
 		end
@@ -731,7 +725,7 @@ function newfrmMagicTokens()
 
 
     obj._e_event0 = obj:addEventListener("onKeyUp",
-        function (self, event)
+        function (_, event)
             if (event.keyCode == 0x89) or (event.keyCode == 0x1B) then
             			setTimeout(
             				function()
@@ -744,17 +738,17 @@ function newfrmMagicTokens()
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onCancelRequest",
-        function (self)
+        function (_)
             self:processarCancel();
         end, obj);
 
     obj._e_event2 = obj.btnInsert:addEventListener("onClick",
-        function (self)
+        function (_)
             self:processarOK()
         end, obj);
 
     obj._e_event3 = obj.btnCancelName:addEventListener("onClick",
-        function (self)
+        function (_)
             self:processarCancel()
         end, obj);
 
@@ -797,9 +791,23 @@ function newfrmMagicTokens()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmMagicTokens()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmMagicTokens();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmMagicTokens = {
@@ -813,6 +821,6 @@ local _frmMagicTokens = {
     description=""};
 
 frmMagicTokens = _frmMagicTokens;
-rrpg.registrarForm(_frmMagicTokens);
+Firecast.registrarForm(_frmMagicTokens);
 
 return _frmMagicTokens;

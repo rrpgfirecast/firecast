@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmWelcomeItem()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmWelcomeItem()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,7 +31,7 @@ function newfrmWelcomeItem()
     obj:setHeight(75);
     obj:setMargins({top=1});
 
-    obj.add = gui.fromHandle(_obj_newObject("button"));
+    obj.add = GUI.fromHandle(_obj_newObject("button"));
     obj.add:setParent(obj);
     obj.add:setWidth(250);
     obj.add:setHeight(75);
@@ -40,14 +40,14 @@ function newfrmWelcomeItem()
     obj.add:setName("add");
     obj.add:setVisible(true);
 
-    obj.message = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.message = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.message:setParent(obj);
     obj.message:setAlign("client");
     obj.message:setColor("#212121");
     obj.message:setName("message");
     obj.message:setVisible(false);
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.message);
     obj.edit1:setLeft(5);
     obj.edit1:setTop(5);
@@ -57,7 +57,7 @@ function newfrmWelcomeItem()
     obj.edit1:setFontSize(11);
     obj.edit1:setName("edit1");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.message);
     obj.checkBox1:setField("permanent");
     obj.checkBox1:setLeft(145);
@@ -67,7 +67,7 @@ function newfrmWelcomeItem()
     obj.checkBox1:setText("Permanente");
     obj.checkBox1:setName("checkBox1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.message);
     obj.button1:setLeft(225);
     obj.button1:setTop(5);
@@ -76,7 +76,7 @@ function newfrmWelcomeItem()
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.message);
     obj.textEditor1:setLeft(5);
     obj.textEditor1:setTop(25);
@@ -85,32 +85,32 @@ function newfrmWelcomeItem()
     obj.textEditor1:setField("message");
     obj.textEditor1:setName("textEditor1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("login");
     obj.dataLink1:setDefaultValue("login");
     obj.dataLink1:setName("dataLink1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj);
     obj.dataLink2:setField("message");
     obj.dataLink2:setDefaultValue("Mensagem.");
     obj.dataLink2:setName("dataLink2");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj);
     obj.dataLink3:setField("enabled");
     obj.dataLink3:setName("dataLink3");
 
     obj._e_event0 = obj.add:addEventListener("onClick",
-        function (self)
+        function (_)
             sheet.enabled = true;
             			local node = ndb.getParent(ndb.getParent(sheet));
             			node.addWelcome = 1;
         end, obj);
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar essa mensagem?",
             					function (confirmado)
             						if confirmado then
@@ -120,7 +120,7 @@ function newfrmWelcomeItem()
         end, obj);
 
     obj._e_event2 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             			if sheet.enabled==true then
@@ -161,9 +161,23 @@ function newfrmWelcomeItem()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmWelcomeItem()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmWelcomeItem();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmWelcomeItem = {
@@ -177,6 +191,6 @@ local _frmWelcomeItem = {
     description=""};
 
 frmWelcomeItem = _frmWelcomeItem;
-rrpg.registrarForm(_frmWelcomeItem);
+Firecast.registrarForm(_frmWelcomeItem);
 
 return _frmWelcomeItem;

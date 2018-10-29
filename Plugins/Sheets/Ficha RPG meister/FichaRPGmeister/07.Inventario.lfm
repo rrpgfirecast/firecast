@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister7_svg" align="client" theme="dark" margins="{top=1}">
 	<scrollBox align="client">
 
@@ -248,7 +248,7 @@
 				<edit align="client" class="" field="$(field)" fontSize="12"/>
 			</flowPart>
 		</template>
-		<popup name="popArma" width="300" height="400" backOpacity="0.4">
+		<popup name="popArma" width="300" height="400" backOpacity="0.4" autoScopeNode="false">
 			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
 				<weaponInfoFieldSmall text="NOME" field="batismo" hint="Se a arma possui um nome de batismo ponha ele aqui."/>
 				<weaponInfoFieldSmall text="ARMA" field="arma" hint="Qual a arma? Espada Longa? Machado de Batalha? Arco Longo?"/>

@@ -1,5 +1,7 @@
 ﻿local qJobs = {};
 
+local __jobIdGenerator = 0;
+
 function qJobs.newQueue(maxJobs)
 	local fila = {};
 	local workingJobsCount = 0;
@@ -7,7 +9,7 @@ function qJobs.newQueue(maxJobs)
 	local ultJob = nil;
 	
 	function fila:startJob(job)
-		function job:endJob()
+		function job.endJob(aSelfObject)
 			fila:endJob(job);
 		end;
 	
@@ -45,6 +47,9 @@ function qJobs.newQueue(maxJobs)
 	end
 	
 	function fila:addJob(callback)		
+		local esteId = __jobIdGenerator;
+		__jobIdGenerator = __jobIdGenerator + 1;
+	
 		local job = {};
 		job.id = esteId;
 		job.callback = callback;	

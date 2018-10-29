@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmGeneratorOptions()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+local function constructNew_frmGeneratorOptions()
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -38,12 +38,6 @@ function newfrmGeneratorOptions()
 		require("system.lua");
 		require("rrpgScene_Undo.dlua");
 		local scene = nil;	
-		local ignoreRecalcWH = false;
-		local realCellWidth = 1;
-		local realCellHeight = 1;
-		local offsetCellsW = 1;
-		local offsetCellsH = 1;
-		local exibindoFOW = false;
 		
 		if not System.isMobile() then
 			self.height = 450;
@@ -51,21 +45,21 @@ function newfrmGeneratorOptions()
 	
 
 
-    obj.tabControl1 = gui.fromHandle(_obj_newObject("tabControl"));
+    obj.tabControl1 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl1:setParent(obj);
     obj.tabControl1:setAlign("client");
     obj.tabControl1:setName("tabControl1");
 
-    obj.tabOptions = gui.fromHandle(_obj_newObject("tab"));
+    obj.tabOptions = GUI.fromHandle(_obj_newObject("tab"));
     obj.tabOptions:setParent(obj.tabControl1);
     obj.tabOptions:setName("tabOptions");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj.tabOptions);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.tabName = gui.fromHandle(_obj_newObject("label"));
+    obj.tabName = GUI.fromHandle(_obj_newObject("label"));
     obj.tabName:setParent(obj.scrollBox1);
     obj.tabName:setText("");
     obj.tabName:setName("tabName");
@@ -74,14 +68,14 @@ function newfrmGeneratorOptions()
     obj.tabName:setFontSize(15);
     obj.tabName:setFontColor("#FFCC66");
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.scrollBox1);
     obj.horzLine1:setAlign("top");
     obj.horzLine1:setStrokeColor("#FFCC6670");
     obj.horzLine1:setMargins({left=10});
     obj.horzLine1:setName("horzLine1");
 
-    obj.salasText = gui.fromHandle(_obj_newObject("label"));
+    obj.salasText = GUI.fromHandle(_obj_newObject("label"));
     obj.salasText:setParent(obj.scrollBox1);
     obj.salasText:setName("salasText");
     obj.salasText:setLeft(10);
@@ -93,7 +87,7 @@ function newfrmGeneratorOptions()
     obj.salasText:setHint("Quantidade Maxima de Salas.");
     obj.salasText:setHorzTextAlign("trailing");
 
-    obj.salas = gui.fromHandle(_obj_newObject("edit"));
+    obj.salas = GUI.fromHandle(_obj_newObject("edit"));
     obj.salas:setParent(obj.scrollBox1);
     obj.salas:setLeft(140);
     obj.salas:setTop(30);
@@ -102,7 +96,7 @@ function newfrmGeneratorOptions()
     obj.salas:setName("salas");
     obj.salas:setType("number");
 
-    obj.tamMaxText = gui.fromHandle(_obj_newObject("label"));
+    obj.tamMaxText = GUI.fromHandle(_obj_newObject("label"));
     obj.tamMaxText:setParent(obj.scrollBox1);
     obj.tamMaxText:setName("tamMaxText");
     obj.tamMaxText:setLeft(10);
@@ -114,7 +108,7 @@ function newfrmGeneratorOptions()
     obj.tamMaxText:setHint("Tamanho maximo da sala (min. 4)");
     obj.tamMaxText:setHorzTextAlign("trailing");
 
-    obj.tamMax = gui.fromHandle(_obj_newObject("edit"));
+    obj.tamMax = GUI.fromHandle(_obj_newObject("edit"));
     obj.tamMax:setParent(obj.scrollBox1);
     obj.tamMax:setLeft(140);
     obj.tamMax:setTop(55);
@@ -123,7 +117,7 @@ function newfrmGeneratorOptions()
     obj.tamMax:setName("tamMax");
     obj.tamMax:setType("number");
 
-    obj.tamMinText = gui.fromHandle(_obj_newObject("label"));
+    obj.tamMinText = GUI.fromHandle(_obj_newObject("label"));
     obj.tamMinText:setParent(obj.scrollBox1);
     obj.tamMinText:setName("tamMinText");
     obj.tamMinText:setLeft(10);
@@ -135,7 +129,7 @@ function newfrmGeneratorOptions()
     obj.tamMinText:setHint("Tamanho minimo da sala (min. 3)");
     obj.tamMinText:setHorzTextAlign("trailing");
 
-    obj.tamMin = gui.fromHandle(_obj_newObject("edit"));
+    obj.tamMin = GUI.fromHandle(_obj_newObject("edit"));
     obj.tamMin:setParent(obj.scrollBox1);
     obj.tamMin:setLeft(140);
     obj.tamMin:setTop(80);
@@ -144,7 +138,7 @@ function newfrmGeneratorOptions()
     obj.tamMin:setName("tamMin");
     obj.tamMin:setType("number");
 
-    obj.entradasText = gui.fromHandle(_obj_newObject("label"));
+    obj.entradasText = GUI.fromHandle(_obj_newObject("label"));
     obj.entradasText:setParent(obj.scrollBox1);
     obj.entradasText:setName("entradasText");
     obj.entradasText:setLeft(10);
@@ -156,7 +150,7 @@ function newfrmGeneratorOptions()
     obj.entradasText:setHint("Quantidade de entradas");
     obj.entradasText:setHorzTextAlign("trailing");
 
-    obj.entradas = gui.fromHandle(_obj_newObject("edit"));
+    obj.entradas = GUI.fromHandle(_obj_newObject("edit"));
     obj.entradas:setParent(obj.scrollBox1);
     obj.entradas:setLeft(140);
     obj.entradas:setTop(105);
@@ -165,7 +159,7 @@ function newfrmGeneratorOptions()
     obj.entradas:setName("entradas");
     obj.entradas:setType("number");
 
-    obj.escadasText = gui.fromHandle(_obj_newObject("label"));
+    obj.escadasText = GUI.fromHandle(_obj_newObject("label"));
     obj.escadasText:setParent(obj.scrollBox1);
     obj.escadasText:setName("escadasText");
     obj.escadasText:setLeft(10);
@@ -177,7 +171,7 @@ function newfrmGeneratorOptions()
     obj.escadasText:setHint("Quantidade de escadas");
     obj.escadasText:setHorzTextAlign("trailing");
 
-    obj.escadas = gui.fromHandle(_obj_newObject("edit"));
+    obj.escadas = GUI.fromHandle(_obj_newObject("edit"));
     obj.escadas:setParent(obj.scrollBox1);
     obj.escadas:setLeft(140);
     obj.escadas:setTop(130);
@@ -186,7 +180,7 @@ function newfrmGeneratorOptions()
     obj.escadas:setName("escadas");
     obj.escadas:setType("number");
 
-    obj.becosText = gui.fromHandle(_obj_newObject("label"));
+    obj.becosText = GUI.fromHandle(_obj_newObject("label"));
     obj.becosText:setParent(obj.scrollBox1);
     obj.becosText:setName("becosText");
     obj.becosText:setLeft(10);
@@ -198,7 +192,7 @@ function newfrmGeneratorOptions()
     obj.becosText:setHint("Quantidade de becos");
     obj.becosText:setHorzTextAlign("trailing");
 
-    obj.becos = gui.fromHandle(_obj_newObject("edit"));
+    obj.becos = GUI.fromHandle(_obj_newObject("edit"));
     obj.becos:setParent(obj.scrollBox1);
     obj.becos:setLeft(140);
     obj.becos:setTop(155);
@@ -207,7 +201,7 @@ function newfrmGeneratorOptions()
     obj.becos:setName("becos");
     obj.becos:setType("number");
 
-    obj.armadilhasText = gui.fromHandle(_obj_newObject("label"));
+    obj.armadilhasText = GUI.fromHandle(_obj_newObject("label"));
     obj.armadilhasText:setParent(obj.scrollBox1);
     obj.armadilhasText:setName("armadilhasText");
     obj.armadilhasText:setLeft(10);
@@ -219,7 +213,7 @@ function newfrmGeneratorOptions()
     obj.armadilhasText:setHint("");
     obj.armadilhasText:setHorzTextAlign("trailing");
 
-    obj.armadilhas = gui.fromHandle(_obj_newObject("edit"));
+    obj.armadilhas = GUI.fromHandle(_obj_newObject("edit"));
     obj.armadilhas:setParent(obj.scrollBox1);
     obj.armadilhas:setLeft(140);
     obj.armadilhas:setTop(180);
@@ -228,7 +222,7 @@ function newfrmGeneratorOptions()
     obj.armadilhas:setName("armadilhas");
     obj.armadilhas:setType("number");
 
-    obj.passagensText = gui.fromHandle(_obj_newObject("label"));
+    obj.passagensText = GUI.fromHandle(_obj_newObject("label"));
     obj.passagensText:setParent(obj.scrollBox1);
     obj.passagensText:setName("passagensText");
     obj.passagensText:setLeft(10);
@@ -240,7 +234,7 @@ function newfrmGeneratorOptions()
     obj.passagensText:setHint("");
     obj.passagensText:setHorzTextAlign("trailing");
 
-    obj.passagens = gui.fromHandle(_obj_newObject("edit"));
+    obj.passagens = GUI.fromHandle(_obj_newObject("edit"));
     obj.passagens:setParent(obj.scrollBox1);
     obj.passagens:setLeft(140);
     obj.passagens:setTop(205);
@@ -249,7 +243,7 @@ function newfrmGeneratorOptions()
     obj.passagens:setName("passagens");
     obj.passagens:setType("number");
 
-    obj.thickness = gui.fromHandle(_obj_newObject("label"));
+    obj.thickness = GUI.fromHandle(_obj_newObject("label"));
     obj.thickness:setParent(obj.scrollBox1);
     obj.thickness:setLeft(5);
     obj.thickness:setTop(230);
@@ -258,7 +252,7 @@ function newfrmGeneratorOptions()
     obj.thickness:setHorzTextAlign("trailing");
     obj.thickness:setHitTest(true);
 
-    obj.thick = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.thick = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.thick:setParent(obj.scrollBox1);
     obj.thick:setLeft(140);
     obj.thick:setTop(230);
@@ -266,7 +260,7 @@ function newfrmGeneratorOptions()
     obj.thick:setName("thick");
     obj.thick:setItems({'1','1.5','2', '3'});
 
-    obj.natural = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.natural = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.natural:setParent(obj.scrollBox1);
     obj.natural:setLeft(120);
     obj.natural:setTop(255);
@@ -274,16 +268,16 @@ function newfrmGeneratorOptions()
     obj.natural:setName("natural");
     obj.natural:setHitTest(true);
 
-    obj.tabTiles = gui.fromHandle(_obj_newObject("tab"));
+    obj.tabTiles = GUI.fromHandle(_obj_newObject("tab"));
     obj.tabTiles:setParent(obj.tabControl1);
     obj.tabTiles:setName("tabTiles");
 
-    obj.scrollBox2 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox2:setParent(obj.tabTiles);
     obj.scrollBox2:setAlign("client");
     obj.scrollBox2:setName("scrollBox2");
 
-    obj.style = gui.fromHandle(_obj_newObject("label"));
+    obj.style = GUI.fromHandle(_obj_newObject("label"));
     obj.style:setParent(obj.scrollBox2);
     obj.style:setLeft(5);
     obj.style:setTop(5);
@@ -292,14 +286,14 @@ function newfrmGeneratorOptions()
     obj.style:setFontSize(15);
     obj.style:setFontColor("#FFCC66");
 
-    obj.styleOptions = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.styleOptions = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.styleOptions:setParent(obj.scrollBox2);
     obj.styleOptions:setLeft(75);
     obj.styleOptions:setTop(5);
     obj.styleOptions:setWidth(175);
     obj.styleOptions:setName("styleOptions");
 
-    obj.saves = gui.fromHandle(_obj_newObject("label"));
+    obj.saves = GUI.fromHandle(_obj_newObject("label"));
     obj.saves:setParent(obj.scrollBox2);
     obj.saves:setLeft(5);
     obj.saves:setTop(30);
@@ -309,7 +303,7 @@ function newfrmGeneratorOptions()
     obj.saves:setFontColor("#FFCC66");
     obj.saves:setHitTest(true);
 
-    obj.saveTile = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.saveTile = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.saveTile:setParent(obj.scrollBox2);
     obj.saveTile:setLeft(75);
     obj.saveTile:setTop(30);
@@ -317,7 +311,7 @@ function newfrmGeneratorOptions()
     obj.saveTile:setName("saveTile");
     obj.saveTile:setItems({'1', '2', '3'});
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox2);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(55);
@@ -325,7 +319,7 @@ function newfrmGeneratorOptions()
     obj.layout1:setWidth(300);
     obj.layout1:setName("layout1");
 
-    obj.tiles1 = gui.fromHandle(_obj_newObject("label"));
+    obj.tiles1 = GUI.fromHandle(_obj_newObject("label"));
     obj.tiles1:setParent(obj.layout1);
     obj.tiles1:setText("");
     obj.tiles1:setName("tiles1");
@@ -333,14 +327,14 @@ function newfrmGeneratorOptions()
     obj.tiles1:setFontSize(15);
     obj.tiles1:setFontColor("#FFCC66");
 
-    obj.horzLine2 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine2 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine2:setParent(obj.layout1);
     obj.horzLine2:setAlign("top");
     obj.horzLine2:setStrokeColor("#FFCC6670");
     obj.horzLine2:setMargins({left=10});
     obj.horzLine2:setName("horzLine2");
 
-    obj.door_light = gui.fromHandle(_obj_newObject("image"));
+    obj.door_light = GUI.fromHandle(_obj_newObject("image"));
     obj.door_light:setParent(obj.layout1);
     obj.door_light:setLeft(5);
     obj.door_light:setTop(30);
@@ -350,7 +344,7 @@ function newfrmGeneratorOptions()
     obj.door_light:setName("door_light");
     obj.door_light:setEditable(true);
 
-    obj.door_heavy = gui.fromHandle(_obj_newObject("image"));
+    obj.door_heavy = GUI.fromHandle(_obj_newObject("image"));
     obj.door_heavy:setParent(obj.layout1);
     obj.door_heavy:setLeft(74);
     obj.door_heavy:setTop(30);
@@ -360,7 +354,7 @@ function newfrmGeneratorOptions()
     obj.door_heavy:setName("door_heavy");
     obj.door_heavy:setEditable(true);
 
-    obj.trap = gui.fromHandle(_obj_newObject("image"));
+    obj.trap = GUI.fromHandle(_obj_newObject("image"));
     obj.trap:setParent(obj.layout1);
     obj.trap:setLeft(143);
     obj.trap:setTop(30);
@@ -370,7 +364,7 @@ function newfrmGeneratorOptions()
     obj.trap:setName("trap");
     obj.trap:setEditable(true);
 
-    obj.passage = gui.fromHandle(_obj_newObject("image"));
+    obj.passage = GUI.fromHandle(_obj_newObject("image"));
     obj.passage:setParent(obj.layout1);
     obj.passage:setLeft(212);
     obj.passage:setTop(30);
@@ -380,7 +374,7 @@ function newfrmGeneratorOptions()
     obj.passage:setName("passage");
     obj.passage:setEditable(true);
 
-    obj.tiles2 = gui.fromHandle(_obj_newObject("label"));
+    obj.tiles2 = GUI.fromHandle(_obj_newObject("label"));
     obj.tiles2:setParent(obj.layout1);
     obj.tiles2:setText("");
     obj.tiles2:setName("tiles2");
@@ -389,7 +383,7 @@ function newfrmGeneratorOptions()
     obj.tiles2:setFontSize(15);
     obj.tiles2:setFontColor("#FFCC66");
 
-    obj.horzLine3 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine3 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine3:setParent(obj.layout1);
     obj.horzLine3:setTop(130);
     obj.horzLine3:setWidth(250);
@@ -397,7 +391,7 @@ function newfrmGeneratorOptions()
     obj.horzLine3:setMargins({left=10});
     obj.horzLine3:setName("horzLine3");
 
-    obj.floor_deadend = gui.fromHandle(_obj_newObject("image"));
+    obj.floor_deadend = GUI.fromHandle(_obj_newObject("image"));
     obj.floor_deadend:setParent(obj.layout1);
     obj.floor_deadend:setLeft(5);
     obj.floor_deadend:setTop(140);
@@ -407,7 +401,7 @@ function newfrmGeneratorOptions()
     obj.floor_deadend:setName("floor_deadend");
     obj.floor_deadend:setEditable(true);
 
-    obj.floor_line = gui.fromHandle(_obj_newObject("image"));
+    obj.floor_line = GUI.fromHandle(_obj_newObject("image"));
     obj.floor_line:setParent(obj.layout1);
     obj.floor_line:setLeft(74);
     obj.floor_line:setTop(140);
@@ -417,7 +411,7 @@ function newfrmGeneratorOptions()
     obj.floor_line:setName("floor_line");
     obj.floor_line:setEditable(true);
 
-    obj.floor_curve = gui.fromHandle(_obj_newObject("image"));
+    obj.floor_curve = GUI.fromHandle(_obj_newObject("image"));
     obj.floor_curve:setParent(obj.layout1);
     obj.floor_curve:setLeft(143);
     obj.floor_curve:setTop(140);
@@ -427,7 +421,7 @@ function newfrmGeneratorOptions()
     obj.floor_curve:setName("floor_curve");
     obj.floor_curve:setEditable(true);
 
-    obj.floor_tip = gui.fromHandle(_obj_newObject("image"));
+    obj.floor_tip = GUI.fromHandle(_obj_newObject("image"));
     obj.floor_tip:setParent(obj.layout1);
     obj.floor_tip:setLeft(212);
     obj.floor_tip:setTop(140);
@@ -437,7 +431,7 @@ function newfrmGeneratorOptions()
     obj.floor_tip:setName("floor_tip");
     obj.floor_tip:setEditable(true);
 
-    obj.floor_t = gui.fromHandle(_obj_newObject("image"));
+    obj.floor_t = GUI.fromHandle(_obj_newObject("image"));
     obj.floor_t:setParent(obj.layout1);
     obj.floor_t:setLeft(5);
     obj.floor_t:setTop(209);
@@ -447,7 +441,7 @@ function newfrmGeneratorOptions()
     obj.floor_t:setName("floor_t");
     obj.floor_t:setEditable(true);
 
-    obj.floor_coneright = gui.fromHandle(_obj_newObject("image"));
+    obj.floor_coneright = GUI.fromHandle(_obj_newObject("image"));
     obj.floor_coneright:setParent(obj.layout1);
     obj.floor_coneright:setLeft(74);
     obj.floor_coneright:setTop(209);
@@ -457,7 +451,7 @@ function newfrmGeneratorOptions()
     obj.floor_coneright:setName("floor_coneright");
     obj.floor_coneright:setEditable(true);
 
-    obj.floor_coneleft = gui.fromHandle(_obj_newObject("image"));
+    obj.floor_coneleft = GUI.fromHandle(_obj_newObject("image"));
     obj.floor_coneleft:setParent(obj.layout1);
     obj.floor_coneleft:setLeft(143);
     obj.floor_coneleft:setTop(209);
@@ -467,7 +461,7 @@ function newfrmGeneratorOptions()
     obj.floor_coneleft:setName("floor_coneleft");
     obj.floor_coneleft:setEditable(true);
 
-    obj.floor_side = gui.fromHandle(_obj_newObject("image"));
+    obj.floor_side = GUI.fromHandle(_obj_newObject("image"));
     obj.floor_side:setParent(obj.layout1);
     obj.floor_side:setLeft(212);
     obj.floor_side:setTop(209);
@@ -477,7 +471,7 @@ function newfrmGeneratorOptions()
     obj.floor_side:setName("floor_side");
     obj.floor_side:setEditable(true);
 
-    obj.floor_cross = gui.fromHandle(_obj_newObject("image"));
+    obj.floor_cross = GUI.fromHandle(_obj_newObject("image"));
     obj.floor_cross:setParent(obj.layout1);
     obj.floor_cross:setLeft(5);
     obj.floor_cross:setTop(278);
@@ -487,7 +481,7 @@ function newfrmGeneratorOptions()
     obj.floor_cross:setName("floor_cross");
     obj.floor_cross:setEditable(true);
 
-    obj.floor_twoway = gui.fromHandle(_obj_newObject("image"));
+    obj.floor_twoway = GUI.fromHandle(_obj_newObject("image"));
     obj.floor_twoway:setParent(obj.layout1);
     obj.floor_twoway:setLeft(74);
     obj.floor_twoway:setTop(278);
@@ -497,7 +491,7 @@ function newfrmGeneratorOptions()
     obj.floor_twoway:setName("floor_twoway");
     obj.floor_twoway:setEditable(true);
 
-    obj.floor_opositeway = gui.fromHandle(_obj_newObject("image"));
+    obj.floor_opositeway = GUI.fromHandle(_obj_newObject("image"));
     obj.floor_opositeway:setParent(obj.layout1);
     obj.floor_opositeway:setLeft(143);
     obj.floor_opositeway:setTop(278);
@@ -507,7 +501,7 @@ function newfrmGeneratorOptions()
     obj.floor_opositeway:setName("floor_opositeway");
     obj.floor_opositeway:setEditable(true);
 
-    obj.floor_exit = gui.fromHandle(_obj_newObject("image"));
+    obj.floor_exit = GUI.fromHandle(_obj_newObject("image"));
     obj.floor_exit:setParent(obj.layout1);
     obj.floor_exit:setLeft(212);
     obj.floor_exit:setTop(278);
@@ -517,7 +511,7 @@ function newfrmGeneratorOptions()
     obj.floor_exit:setName("floor_exit");
     obj.floor_exit:setEditable(true);
 
-    obj.floor_opencurve = gui.fromHandle(_obj_newObject("image"));
+    obj.floor_opencurve = GUI.fromHandle(_obj_newObject("image"));
     obj.floor_opencurve:setParent(obj.layout1);
     obj.floor_opencurve:setLeft(5);
     obj.floor_opencurve:setTop(347);
@@ -527,7 +521,7 @@ function newfrmGeneratorOptions()
     obj.floor_opencurve:setName("floor_opencurve");
     obj.floor_opencurve:setEditable(true);
 
-    obj.floor_inside = gui.fromHandle(_obj_newObject("image"));
+    obj.floor_inside = GUI.fromHandle(_obj_newObject("image"));
     obj.floor_inside:setParent(obj.layout1);
     obj.floor_inside:setLeft(74);
     obj.floor_inside:setTop(347);
@@ -537,7 +531,7 @@ function newfrmGeneratorOptions()
     obj.floor_inside:setName("floor_inside");
     obj.floor_inside:setEditable(true);
 
-    obj.floor_stair = gui.fromHandle(_obj_newObject("image"));
+    obj.floor_stair = GUI.fromHandle(_obj_newObject("image"));
     obj.floor_stair:setParent(obj.layout1);
     obj.floor_stair:setLeft(143);
     obj.floor_stair:setTop(347);
@@ -547,7 +541,7 @@ function newfrmGeneratorOptions()
     obj.floor_stair:setName("floor_stair");
     obj.floor_stair:setEditable(true);
 
-    obj.tiles3 = gui.fromHandle(_obj_newObject("label"));
+    obj.tiles3 = GUI.fromHandle(_obj_newObject("label"));
     obj.tiles3:setParent(obj.layout1);
     obj.tiles3:setText("");
     obj.tiles3:setName("tiles3");
@@ -556,7 +550,7 @@ function newfrmGeneratorOptions()
     obj.tiles3:setFontSize(15);
     obj.tiles3:setFontColor("#FFCC66");
 
-    obj.horzLine4 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine4 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine4:setParent(obj.layout1);
     obj.horzLine4:setTop(467);
     obj.horzLine4:setWidth(250);
@@ -564,7 +558,7 @@ function newfrmGeneratorOptions()
     obj.horzLine4:setMargins({left=10});
     obj.horzLine4:setName("horzLine4");
 
-    obj.wall_cross = gui.fromHandle(_obj_newObject("image"));
+    obj.wall_cross = GUI.fromHandle(_obj_newObject("image"));
     obj.wall_cross:setParent(obj.layout1);
     obj.wall_cross:setLeft(5);
     obj.wall_cross:setTop(487);
@@ -574,7 +568,7 @@ function newfrmGeneratorOptions()
     obj.wall_cross:setName("wall_cross");
     obj.wall_cross:setEditable(true);
 
-    obj.wall_t = gui.fromHandle(_obj_newObject("image"));
+    obj.wall_t = GUI.fromHandle(_obj_newObject("image"));
     obj.wall_t:setParent(obj.layout1);
     obj.wall_t:setLeft(74);
     obj.wall_t:setTop(487);
@@ -584,7 +578,7 @@ function newfrmGeneratorOptions()
     obj.wall_t:setName("wall_t");
     obj.wall_t:setEditable(true);
 
-    obj.wall_line = gui.fromHandle(_obj_newObject("image"));
+    obj.wall_line = GUI.fromHandle(_obj_newObject("image"));
     obj.wall_line:setParent(obj.layout1);
     obj.wall_line:setLeft(143);
     obj.wall_line:setTop(487);
@@ -594,7 +588,7 @@ function newfrmGeneratorOptions()
     obj.wall_line:setName("wall_line");
     obj.wall_line:setEditable(true);
 
-    obj.wall_curve = gui.fromHandle(_obj_newObject("image"));
+    obj.wall_curve = GUI.fromHandle(_obj_newObject("image"));
     obj.wall_curve:setParent(obj.layout1);
     obj.wall_curve:setLeft(212);
     obj.wall_curve:setTop(487);
@@ -604,7 +598,7 @@ function newfrmGeneratorOptions()
     obj.wall_curve:setName("wall_curve");
     obj.wall_curve:setEditable(true);
 
-    obj.wall_deadend = gui.fromHandle(_obj_newObject("image"));
+    obj.wall_deadend = GUI.fromHandle(_obj_newObject("image"));
     obj.wall_deadend:setParent(obj.layout1);
     obj.wall_deadend:setLeft(5);
     obj.wall_deadend:setTop(556);
@@ -614,7 +608,7 @@ function newfrmGeneratorOptions()
     obj.wall_deadend:setName("wall_deadend");
     obj.wall_deadend:setEditable(true);
 
-    obj.wall_pilar = gui.fromHandle(_obj_newObject("image"));
+    obj.wall_pilar = GUI.fromHandle(_obj_newObject("image"));
     obj.wall_pilar:setParent(obj.layout1);
     obj.wall_pilar:setLeft(74);
     obj.wall_pilar:setTop(556);
@@ -624,14 +618,14 @@ function newfrmGeneratorOptions()
     obj.wall_pilar:setName("wall_pilar");
     obj.wall_pilar:setEditable(true);
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj);
     obj.layout2:setName("layout2");
     obj.layout2:setAlign("bottom");
     obj.layout2:setMargins({top=2, bottom=2});
     obj.layout2:setHeight(40);
 
-    obj.btnOk1 = gui.fromHandle(_obj_newObject("button"));
+    obj.btnOk1 = GUI.fromHandle(_obj_newObject("button"));
     obj.btnOk1:setParent(obj.layout2);
     obj.btnOk1:setWidth(100);
     obj.btnOk1:setHorzTextAlign("center");
@@ -639,7 +633,7 @@ function newfrmGeneratorOptions()
     obj.btnOk1:setName("btnOk1");
     obj.btnOk1:setMargins({left=4, right=4});
 
-    obj.btnCancel1 = gui.fromHandle(_obj_newObject("button"));
+    obj.btnCancel1 = GUI.fromHandle(_obj_newObject("button"));
     obj.btnCancel1:setParent(obj.layout2);
     obj.btnCancel1:setHorzTextAlign("center");
     obj.btnCancel1:setAlign("right");
@@ -654,7 +648,7 @@ function newfrmGeneratorOptions()
 
 
 
-		local node = ndb.load("generatorOptions.xml");
+		local node = NDB.load("generatorOptions.xml");
 		self.tabOptions.text = lang('scene.generator.tab.options');
 		self.tabTiles.text = lang('scene.generator.tab.tiles');
 		self.tabName.text = lang('scene.generator.tabName');
@@ -679,7 +673,7 @@ function newfrmGeneratorOptions()
 		self.natural.text = lang('scene.generator.natural.text');
 		self.natural.hint = lang('scene.generator.natural.hint');
 
-		if node.salas == mil then
+		if node.salas == nil then
 			node.salas = 20;
 			node.tamMax = 5;
 			node.tamMin = 3;
@@ -734,7 +728,17 @@ function newfrmGeneratorOptions()
 		self.thick.value = node.thick;
 
 		self.style.text = lang('scene.generator.tiles.style');
-		self.styleOptions.items = {lang("scene.generator.tiles.style1"), lang("scene.generator.tiles.style2"), lang("scene.generator.tiles.style3"), lang("scene.generator.tiles.style4"), lang("scene.generator.tiles.style5"), lang("scene.generator.tiles.style6"), lang("scene.generator.tiles.style10"), lang("scene.generator.tiles.style7"), lang("scene.generator.tiles.style8"), lang("scene.generator.tiles.style9")};
+		
+		self.styleOptions.items = {lang("scene.generator.tiles.style1"), 
+								  lang("scene.generator.tiles.style2"), 
+								  lang("scene.generator.tiles.style3"), 
+								  lang("scene.generator.tiles.style4"), 
+								  lang("scene.generator.tiles.style5"), 
+								  lang("scene.generator.tiles.style6"), 
+								  lang("scene.generator.tiles.style10"), 
+								  lang("scene.generator.tiles.style7"), 
+								  lang("scene.generator.tiles.style8"), 
+								  lang("scene.generator.tiles.style9")};
 
 		self.tiles1.text = lang('scene.generator.tiles.door');
 		self.tiles2.text = lang('scene.generator.tiles.floor');
@@ -822,7 +826,7 @@ function newfrmGeneratorOptions()
 				tamMin = 3;
 				tamMax = 4;
 			end;
-			local dif = tamMax - tamMin + 1;
+
 			local entradas = self.entradas.asNumber or 0;
 			local escadas = self.escadas.asNumber or 0;
 			local becos = self.becos.asNumber or 0;
@@ -830,7 +834,7 @@ function newfrmGeneratorOptions()
 			local passagens = self.passagens.asNumber or 0;
 
 			-- Gera entradas [ENTRADA]
-			for i=1, entradas, 1 do
+			for _ = 1, entradas, 1 do
 				local side = math.floor(math.random() * 4);
 				local x = 0;
 				local y = 0;
@@ -859,7 +863,7 @@ function newfrmGeneratorOptions()
 
 			--self.status.text = lang('scene.generator.status.message') .. lang('scene.generator.status.room');
 			-- Gerar Salas [SALA]
-			for i=1, salas, 1 do
+			for _ = 1, salas, 1 do
 				local width = math.random(tamMin, tamMax);
 				local height = math.random(tamMin, tamMax);
 				local posx = math.random(2, (horzSquare-1));
@@ -996,21 +1000,25 @@ function newfrmGeneratorOptions()
 					local y2 = centros[i+1].y;
 
 					local horz = x2 - x1;
-					local dirx = 0;
+					local dirx;
+					
 					if horz > 0 then
 						dirx = 1;
 					else 
 						dirx = -1;
 					end;
+					
 					horz = math.abs(horz);
 
 					local vert = y2 - y1;
-					local diry = 0;
+					local diry;
+					
 					if vert > 0 then
 						diry = 1;
 					else 
 						diry = -1;
 					end;
+					
 					vert = math.abs(vert);
 
 					--showMessage(horz .. "|" .. vert);
@@ -1046,28 +1054,29 @@ function newfrmGeneratorOptions()
 					horz = horz - expand;
 
 					local x = x1 + (dirx * horz);
-					local aux = 0;
+					aux = 0;
+					
 					for j=1, vert, 1 do
-						local y = y1 + (diry * (j+aux)); 
-						if map[x][y] == "parede" then
-							if map[x][y+diry] == "parede" and map[x][y+diry+diry] == "parede" then
+						local yJ = y1 + (diry * (j+aux)); 
+						if map[x][yJ] == "parede" then
+							if map[x][yJ+diry] == "parede" and map[x][yJ+diry+diry] == "parede" then
 								x = x + dirx;
 								dirx = dirx * -1;
 								aux = aux - 2;
 								vert = vert + 2;
 							else
-								map[x][y] = "porta";
+								map[x][yJ] = "porta";
 								corredoresNum = corredoresNum +1;
-								corredores[corredoresNum] = {x=x, y=y};
+								corredores[corredoresNum] = {x=x, y=yJ};
 
 								secretsNum = secretsNum +1;
-								secrets[secretsNum] = {x=x, y=y};
+								secrets[secretsNum] = {x=x, y=yJ};
 							end;
 						elseif map[x][y] == "nada" then
 							map[x][y] = "corredor";
 
 							corredoresNum = corredoresNum +1;
-							corredores[corredoresNum] = {x=x, y=y};
+							corredores[corredoresNum] = {x=x, y=yJ};
 						end;
 					end;
 				end;
@@ -1079,7 +1088,7 @@ function newfrmGeneratorOptions()
 					local y1 = centros[i].y;
 					local y2 = centros[i+1].y;
 
-					local success, distance, path = scene.grid:shortestPath(x1, y1, x2, y2);
+					local _, _, path = scene.grid:shortestPath(x1, y1, x2, y2);
 
 					for j=1, #path, 1 do
 						local x = path[j].i;
@@ -1822,17 +1831,8 @@ function newfrmGeneratorOptions()
 				local x = secrets[i].x;
 				local y = secrets[i].y;
 				if map[x][y] == "parede"then
-					local tl, t, tr, l, r, bl, b, br;
-					if map[x-1]~= nil then
-						tl =  map[x-1][y-1];
-						l =  map[x-1][y];
-						bl =  map[x-1][y+1];
-					end;
-					if map[x+1]~= nil then
-						tr =  map[x+1][y-1];
-						r =  map[x+1][y];
-						br =  map[x+1][y+1];
-					end;
+					local t, b;
+					
 					t = map[x][y-1];
 					b = map[x][y+1];
 
@@ -1938,7 +1938,7 @@ function newfrmGeneratorOptions()
 
 
     obj._e_event0 = obj:addEventListener("onKeyUp",
-        function (self, event)
+        function (_, event)
             if (event.keyCode == 0x89) or (event.keyCode == 0x1B) then
             			setTimeout(
             				function()
@@ -1951,12 +1951,12 @@ function newfrmGeneratorOptions()
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onCancelRequest",
-        function (self)
+        function (_)
             self:processarCancel();
         end, obj);
 
     obj._e_event2 = obj.styleOptions:addEventListener("onChange",
-        function (self)
+        function (_)
             if self.styleOptions.value == lang('scene.generator.tiles.style1') then
             							self.door_light.url = "http://firecast.blob.core.windows.net/blobs/LLBKLNNN_328371.png";
             							self.door_heavy.url = "http://firecast.blob.core.windows.net/blobs/NSVRSNLG_328370.png";
@@ -2233,7 +2233,7 @@ function newfrmGeneratorOptions()
         end, obj);
 
     obj._e_event3 = obj.saveTile:addEventListener("onChange",
-        function (self)
+        function (_)
             if self.saveTile.value == "1" then
             							node.save1 = {};
             							node.save1[1] = self.door_light.url;
@@ -2319,137 +2319,137 @@ function newfrmGeneratorOptions()
         end, obj);
 
     obj._e_event4 = obj.door_light:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.door_light.url);
         end, obj);
 
     obj._e_event5 = obj.door_heavy:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.door_heavy.url);
         end, obj);
 
     obj._e_event6 = obj.trap:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.trap.url);
         end, obj);
 
     obj._e_event7 = obj.passage:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.passage.url);
         end, obj);
 
     obj._e_event8 = obj.floor_deadend:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.floor_deadend.url);
         end, obj);
 
     obj._e_event9 = obj.floor_line:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.floor_line.url);
         end, obj);
 
     obj._e_event10 = obj.floor_curve:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.floor_curve.url);
         end, obj);
 
     obj._e_event11 = obj.floor_tip:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.floor_tip.url);
         end, obj);
 
     obj._e_event12 = obj.floor_t:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.floor_t.url);
         end, obj);
 
     obj._e_event13 = obj.floor_coneright:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.floor_coneright.url);
         end, obj);
 
     obj._e_event14 = obj.floor_coneleft:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.floor_coneleft.url);
         end, obj);
 
     obj._e_event15 = obj.floor_side:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.floor_side.url);
         end, obj);
 
     obj._e_event16 = obj.floor_cross:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.floor_cross.url);
         end, obj);
 
     obj._e_event17 = obj.floor_twoway:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.floor_twoway.url);
         end, obj);
 
     obj._e_event18 = obj.floor_opositeway:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.floor_opositeway.url);
         end, obj);
 
     obj._e_event19 = obj.floor_exit:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.floor_exit.url);
         end, obj);
 
     obj._e_event20 = obj.floor_opencurve:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.floor_opencurve.url);
         end, obj);
 
     obj._e_event21 = obj.floor_inside:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.floor_inside.url);
         end, obj);
 
     obj._e_event22 = obj.floor_stair:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.floor_stair.url);
         end, obj);
 
     obj._e_event23 = obj.wall_cross:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.wall_cross.url);
         end, obj);
 
     obj._e_event24 = obj.wall_t:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.wall_t.url);
         end, obj);
 
     obj._e_event25 = obj.wall_line:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.wall_line.url);
         end, obj);
 
     obj._e_event26 = obj.wall_curve:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.wall_curve.url);
         end, obj);
 
     obj._e_event27 = obj.wall_deadend:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.wall_deadend.url);
         end, obj);
 
     obj._e_event28 = obj.wall_pilar:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", self.wall_pilar.url);
         end, obj);
 
     obj._e_event29 = obj.btnOk1:addEventListener("onClick",
-        function (self)
+        function (_)
             self:processarOK()
         end, obj);
 
     obj._e_event30 = obj.btnCancel1:addEventListener("onClick",
-        function (self)
+        function (_)
             self:processarCancel()
         end, obj);
 
@@ -2566,9 +2566,23 @@ function newfrmGeneratorOptions()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmGeneratorOptions()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmGeneratorOptions();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmGeneratorOptions = {
@@ -2582,6 +2596,6 @@ local _frmGeneratorOptions = {
     description=""};
 
 frmGeneratorOptions = _frmGeneratorOptions;
-rrpg.registrarForm(_frmGeneratorOptions);
+Firecast.registrarForm(_frmGeneratorOptions);
 
 return _frmGeneratorOptions;

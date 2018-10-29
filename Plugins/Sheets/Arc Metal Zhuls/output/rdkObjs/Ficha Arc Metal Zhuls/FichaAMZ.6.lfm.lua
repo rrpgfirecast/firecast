@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmAMZ6()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmAMZ6()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,12 +30,12 @@ function newfrmAMZ6()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.scrollBox1);
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
@@ -45,7 +45,7 @@ function newfrmAMZ6()
     obj.image1:setSRC("/Ficha Arc Metal Zhuls/images/arc.jpg");
     obj.image1:setName("image1");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.scrollBox1);
     obj.image2:setLeft(550);
     obj.image2:setTop(0);
@@ -55,7 +55,7 @@ function newfrmAMZ6()
     obj.image2:setSRC("/Ficha Arc Metal Zhuls/images/RPGmeister.jpg");
     obj.image2:setName("image2");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(850);
     obj.layout1:setTop(0);
@@ -63,7 +63,7 @@ function newfrmAMZ6()
     obj.layout1:setHeight(160);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
@@ -72,7 +72,7 @@ function newfrmAMZ6()
     obj.rectangle1:setCornerType("round");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(0);
     obj.label1:setTop(10);
@@ -82,7 +82,7 @@ function newfrmAMZ6()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout1);
     obj.label2:setLeft(0);
     obj.label2:setTop(35);
@@ -92,7 +92,7 @@ function newfrmAMZ6()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout1);
     obj.label3:setLeft(0);
     obj.label3:setTop(60);
@@ -103,7 +103,7 @@ function newfrmAMZ6()
     obj.label3:setFontSize(11);
     obj.label3:setName("label3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout1);
     obj.label4:setLeft(0);
     obj.label4:setTop(85);
@@ -113,7 +113,7 @@ function newfrmAMZ6()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout1);
     obj.label5:setLeft(0);
     obj.label5:setTop(110);
@@ -123,7 +123,7 @@ function newfrmAMZ6()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout1);
     obj.label6:setLeft(0);
     obj.label6:setTop(135);
@@ -133,7 +133,7 @@ function newfrmAMZ6()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.scrollBox1);
     obj.label7:setLeft(555);
     obj.label7:setTop(300);
@@ -143,7 +143,7 @@ function newfrmAMZ6()
     obj.label7:setHorzTextAlign("center");
     obj.label7:setName("label7");
 
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
     obj.image3:setParent(obj.scrollBox1);
     obj.image3:setLeft(667);
     obj.image3:setTop(300);
@@ -153,7 +153,7 @@ function newfrmAMZ6()
     obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Arc%20Metal%20Zhuls/release.png");
     obj.image3:setName("image3");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.scrollBox1);
     obj.label8:setLeft(555);
     obj.label8:setTop(325);
@@ -163,7 +163,7 @@ function newfrmAMZ6()
     obj.label8:setHorzTextAlign("center");
     obj.label8:setName("label8");
 
-    obj.image4 = gui.fromHandle(_obj_newObject("image"));
+    obj.image4 = GUI.fromHandle(_obj_newObject("image"));
     obj.image4:setParent(obj.scrollBox1);
     obj.image4:setLeft(667);
     obj.image4:setTop(325);
@@ -173,7 +173,7 @@ function newfrmAMZ6()
     obj.image4:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao03.png");
     obj.image4:setName("image4");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
     obj.button1:setLeft(555);
     obj.button1:setTop(350);
@@ -181,7 +181,7 @@ function newfrmAMZ6()
     obj.button1:setText("Change Log");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.scrollBox1);
     obj.button2:setLeft(667);
     obj.button2:setTop(350);
@@ -189,7 +189,7 @@ function newfrmAMZ6()
     obj.button2:setText("Atualizar");
     obj.button2:setName("button2");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.scrollBox1);
     obj.label9:setLeft(555);
     obj.label9:setTop(400);
@@ -198,7 +198,7 @@ function newfrmAMZ6()
     obj.label9:setText("Conheça as Mesas:");
     obj.label9:setName("label9");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.scrollBox1);
     obj.button3:setLeft(555);
     obj.button3:setTop(425);
@@ -206,7 +206,7 @@ function newfrmAMZ6()
     obj.button3:setText("RPGmeister");
     obj.button3:setName("button3");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.scrollBox1);
     obj.button4:setLeft(667);
     obj.button4:setTop(425);
@@ -215,22 +215,22 @@ function newfrmAMZ6()
     obj.button4:setName("button4");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Arc%20Metal%20Zhuls/changelog.txt')
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Arc%20Metal%20Zhuls/Ficha%20Arc%20Metal%20Zhuls.rpk')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=131903');
         end, obj);
 
@@ -275,9 +275,23 @@ function newfrmAMZ6()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmAMZ6()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmAMZ6();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmAMZ6 = {
@@ -291,6 +305,6 @@ local _frmAMZ6 = {
     description=""};
 
 frmAMZ6 = _frmAMZ6;
-rrpg.registrarForm(_frmAMZ6);
+Firecast.registrarForm(_frmAMZ6);
 
 return _frmAMZ6;

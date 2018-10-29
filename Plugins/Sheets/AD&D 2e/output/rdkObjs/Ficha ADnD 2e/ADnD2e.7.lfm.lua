@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmADnD7()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmADnD7()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,12 +30,12 @@ function newfrmADnD7()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.scrollBox1);
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
@@ -45,7 +45,7 @@ function newfrmADnD7()
     obj.image1:setSRC("/Ficha ADnD 2e/images/ADnD.png");
     obj.image1:setName("image1");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.scrollBox1);
     obj.image2:setLeft(550);
     obj.image2:setTop(0);
@@ -55,7 +55,7 @@ function newfrmADnD7()
     obj.image2:setSRC("/Ficha ADnD 2e/images/RPGmeister.jpg");
     obj.image2:setName("image2");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(550);
     obj.layout1:setTop(300);
@@ -63,7 +63,7 @@ function newfrmADnD7()
     obj.layout1:setHeight(150);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setLeft(0);
     obj.rectangle1:setTop(0);
@@ -75,7 +75,7 @@ function newfrmADnD7()
     obj.rectangle1:setCornerType("round");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(0);
     obj.label1:setTop(10);
@@ -85,7 +85,7 @@ function newfrmADnD7()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout1);
     obj.label2:setLeft(0);
     obj.label2:setTop(35);
@@ -95,7 +95,7 @@ function newfrmADnD7()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout1);
     obj.label3:setLeft(0);
     obj.label3:setTop(60);
@@ -105,7 +105,7 @@ function newfrmADnD7()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout1);
     obj.label4:setLeft(0);
     obj.label4:setTop(95);
@@ -115,7 +115,7 @@ function newfrmADnD7()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout1);
     obj.label5:setLeft(0);
     obj.label5:setTop(120);
@@ -125,7 +125,7 @@ function newfrmADnD7()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.scrollBox1);
     obj.label6:setLeft(755);
     obj.label6:setTop(300);
@@ -135,7 +135,7 @@ function newfrmADnD7()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
     obj.image3:setParent(obj.scrollBox1);
     obj.image3:setLeft(867);
     obj.image3:setTop(300);
@@ -145,7 +145,7 @@ function newfrmADnD7()
     obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao02.png");
     obj.image3:setName("image3");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.scrollBox1);
     obj.label7:setLeft(755);
     obj.label7:setTop(325);
@@ -155,7 +155,7 @@ function newfrmADnD7()
     obj.label7:setHorzTextAlign("center");
     obj.label7:setName("label7");
 
-    obj.image4 = gui.fromHandle(_obj_newObject("image"));
+    obj.image4 = GUI.fromHandle(_obj_newObject("image"));
     obj.image4:setParent(obj.scrollBox1);
     obj.image4:setLeft(867);
     obj.image4:setTop(325);
@@ -165,7 +165,7 @@ function newfrmADnD7()
     obj.image4:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20ADnD%20releases/release.png");
     obj.image4:setName("image4");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
     obj.button1:setLeft(755);
     obj.button1:setTop(350);
@@ -173,7 +173,7 @@ function newfrmADnD7()
     obj.button1:setText("Change Log");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.scrollBox1);
     obj.button2:setLeft(867);
     obj.button2:setTop(350);
@@ -181,7 +181,7 @@ function newfrmADnD7()
     obj.button2:setText("Atualizar");
     obj.button2:setName("button2");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.scrollBox1);
     obj.label8:setLeft(755);
     obj.label8:setTop(400);
@@ -190,7 +190,7 @@ function newfrmADnD7()
     obj.label8:setText("Conheça as Mesas:");
     obj.label8:setName("label8");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.scrollBox1);
     obj.button3:setLeft(755);
     obj.button3:setTop(425);
@@ -198,7 +198,7 @@ function newfrmADnD7()
     obj.button3:setText("RPGmeister");
     obj.button3:setName("button3");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.scrollBox1);
     obj.button4:setLeft(867);
     obj.button4:setTop(425);
@@ -207,22 +207,22 @@ function newfrmADnD7()
     obj.button4:setName("button4");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20ADnD%20releases/Change%20Log.txt');
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20ADnD%20releases/Ficha%20AD&D%202e.rpk');
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=116028');
         end, obj);
 
@@ -266,9 +266,23 @@ function newfrmADnD7()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmADnD7()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmADnD7();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmADnD7 = {
@@ -282,6 +296,6 @@ local _frmADnD7 = {
     description=""};
 
 frmADnD7 = _frmADnD7;
-rrpg.registrarForm(_frmADnD7);
+Firecast.registrarForm(_frmADnD7);
 
 return _frmADnD7;

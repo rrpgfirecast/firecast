@@ -1,6 +1,6 @@
 ﻿require("scene.lua");
 require("utils.lua");
-require("rrpg.lua")
+require("firecast.lua")
 
 
 PING_NOTIFICATION_BROADCAST_MESSAGE = "sc3_ping_notify";
@@ -143,7 +143,6 @@ local function newSinglePing(scene, pinger, worldX, worldY, centralizeScreen, te
 		else
 			-- Ping center is outside of current scroll/zoom view
 			-- Letz draw a little different
-			local vpWorldX, vpWorldY = viewport.worldX, viewport.worldY;
 			local screenCenterX, screenCenterY = (viewportWidth / 2), (viewportHeight / 2);
 			local angle = math.atan(sy - screenCenterY, sx - screenCenterX);
 			local invAngle = angle - math.pi;
@@ -167,7 +166,6 @@ local function newSinglePing(scene, pinger, worldX, worldY, centralizeScreen, te
 			local arrowHeadX, arrowHeadY = newSX + invCos * ARROW_SPACE_HEAD, newSY + invSin * ARROW_SPACE_HEAD;
 			local arrowBaseX, arrowBaseY = arrowHeadX + invCos * arrowSize, arrowHeadY + invSin * arrowSize;
 			local arrowAngleHeadLines = (30 * math.pi) / 180;
-			local arrowSideX, arrowSideY;
 			local angleTemp;
 			local sideSin, sideCos;
 			local sideSize = arrowSize * 0.5;
@@ -304,7 +302,7 @@ end;
 function NEW_PingerEngine(scene)
 	local pinger = {};
 	local buildingPing = nil;	
-	local mesa = rrpg.getMesaDe(scene);
+	local mesa = Firecast.getMesaDe(scene);
 	local intervalScroll = nil;
 	local timeoutStopScroll = nil;
 	local myPingerID = _rrpg_generateUniqueStrID() .. tostring(_pinger_id_generator);	
@@ -376,7 +374,7 @@ function NEW_PingerEngine(scene)
 			end;
 		end;
 		
-		local cUser = rrpg.getCurrentUser();
+		local cUser = Firecast.getCurrentUser();
 		
 		if cUser ~= nil and cUser.isLogged then
 			return cUser.login;

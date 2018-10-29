@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmAMZ3()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmAMZ3()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,12 +30,12 @@ function newfrmAMZ3()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(270);
     obj.layout1:setTop(0);
@@ -43,13 +43,13 @@ function newfrmAMZ3()
     obj.layout1:setHeight(180);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(0);
     obj.label1:setTop(5);
@@ -59,7 +59,7 @@ function newfrmAMZ3()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layout1);
     obj.layout2:setLeft(5);
     obj.layout2:setTop(25);
@@ -67,7 +67,7 @@ function newfrmAMZ3()
     obj.layout2:setHeight(25);
     obj.layout2:setName("layout2");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout2);
     obj.label2:setLeft(110);
     obj.label2:setTop(5);
@@ -77,7 +77,7 @@ function newfrmAMZ3()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout2);
     obj.label3:setLeft(160);
     obj.label3:setTop(5);
@@ -87,7 +87,7 @@ function newfrmAMZ3()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout1);
     obj.layout3:setLeft(5);
     obj.layout3:setTop(50);
@@ -111,7 +111,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout3);
     obj.button1:setLeft(0);
     obj.button1:setTop(0);
@@ -122,7 +122,7 @@ function newfrmAMZ3()
     obj.button1:setFontSize(13);
     obj.button1:setName("button1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout3);
     obj.edit1:setLeft(110);
     obj.edit1:setTop(0);
@@ -132,7 +132,7 @@ function newfrmAMZ3()
     obj.edit1:setType("number");
     obj.edit1:setName("edit1");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout3);
     obj.rectangle2:setLeft(160);
     obj.rectangle2:setTop(0);
@@ -143,7 +143,7 @@ function newfrmAMZ3()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout3);
     obj.label4:setLeft(160);
     obj.label4:setTop(0);
@@ -153,12 +153,12 @@ function newfrmAMZ3()
     obj.label4:setField("atr_efetivo_des");
     obj.label4:setName("label4");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.layout3);
     obj.dataLink1:setFields({'atr_total_des', 'atr_bonus_des'});
     obj.dataLink1:setName("dataLink1");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout1);
     obj.layout4:setLeft(5);
     obj.layout4:setTop(75);
@@ -182,7 +182,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout4);
     obj.button2:setLeft(0);
     obj.button2:setTop(0);
@@ -193,7 +193,7 @@ function newfrmAMZ3()
     obj.button2:setFontSize(13);
     obj.button2:setName("button2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout4);
     obj.edit2:setLeft(110);
     obj.edit2:setTop(0);
@@ -203,7 +203,7 @@ function newfrmAMZ3()
     obj.edit2:setType("number");
     obj.edit2:setName("edit2");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout4);
     obj.rectangle3:setLeft(160);
     obj.rectangle3:setTop(0);
@@ -214,7 +214,7 @@ function newfrmAMZ3()
     obj.rectangle3:setStrokeSize(1);
     obj.rectangle3:setName("rectangle3");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout4);
     obj.label5:setLeft(160);
     obj.label5:setTop(0);
@@ -224,12 +224,12 @@ function newfrmAMZ3()
     obj.label5:setField("atr_efetivo_per");
     obj.label5:setName("label5");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.layout4);
     obj.dataLink2:setFields({'atr_total_per', 'atr_bonus_per'});
     obj.dataLink2:setName("dataLink2");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout1);
     obj.layout5:setLeft(5);
     obj.layout5:setTop(100);
@@ -253,7 +253,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.layout5);
     obj.button3:setLeft(0);
     obj.button3:setTop(0);
@@ -264,7 +264,7 @@ function newfrmAMZ3()
     obj.button3:setFontSize(13);
     obj.button3:setName("button3");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout5);
     obj.edit3:setLeft(110);
     obj.edit3:setTop(0);
@@ -274,7 +274,7 @@ function newfrmAMZ3()
     obj.edit3:setType("number");
     obj.edit3:setName("edit3");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.layout5);
     obj.rectangle4:setLeft(160);
     obj.rectangle4:setTop(0);
@@ -285,7 +285,7 @@ function newfrmAMZ3()
     obj.rectangle4:setStrokeSize(1);
     obj.rectangle4:setName("rectangle4");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout5);
     obj.label6:setLeft(160);
     obj.label6:setTop(0);
@@ -295,12 +295,12 @@ function newfrmAMZ3()
     obj.label6:setField("atr_efetivo_int");
     obj.label6:setName("label6");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj.layout5);
     obj.dataLink3:setFields({'atr_total_int', 'atr_bonus_int'});
     obj.dataLink3:setName("dataLink3");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout1);
     obj.layout6:setLeft(5);
     obj.layout6:setTop(125);
@@ -324,7 +324,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.layout6);
     obj.button4:setLeft(0);
     obj.button4:setTop(0);
@@ -335,7 +335,7 @@ function newfrmAMZ3()
     obj.button4:setFontSize(11);
     obj.button4:setName("button4");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout6);
     obj.edit4:setLeft(110);
     obj.edit4:setTop(0);
@@ -345,7 +345,7 @@ function newfrmAMZ3()
     obj.edit4:setType("number");
     obj.edit4:setName("edit4");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.layout6);
     obj.rectangle5:setLeft(160);
     obj.rectangle5:setTop(0);
@@ -356,7 +356,7 @@ function newfrmAMZ3()
     obj.rectangle5:setStrokeSize(1);
     obj.rectangle5:setName("rectangle5");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout6);
     obj.label7:setLeft(160);
     obj.label7:setTop(0);
@@ -366,12 +366,12 @@ function newfrmAMZ3()
     obj.label7:setField("atr_efetivo_con");
     obj.label7:setName("label7");
 
-    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink4:setParent(obj.layout6);
     obj.dataLink4:setFields({'atr_total_con', 'atr_bonus_con'});
     obj.dataLink4:setName("dataLink4");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.layout1);
     obj.layout7:setLeft(5);
     obj.layout7:setTop(150);
@@ -395,7 +395,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
     obj.button5:setParent(obj.layout7);
     obj.button5:setLeft(0);
     obj.button5:setTop(0);
@@ -406,7 +406,7 @@ function newfrmAMZ3()
     obj.button5:setFontSize(10);
     obj.button5:setName("button5");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout7);
     obj.edit5:setLeft(110);
     obj.edit5:setTop(0);
@@ -416,7 +416,7 @@ function newfrmAMZ3()
     obj.edit5:setType("number");
     obj.edit5:setName("edit5");
 
-    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle6:setParent(obj.layout7);
     obj.rectangle6:setLeft(160);
     obj.rectangle6:setTop(0);
@@ -427,7 +427,7 @@ function newfrmAMZ3()
     obj.rectangle6:setStrokeSize(1);
     obj.rectangle6:setName("rectangle6");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout7);
     obj.label8:setLeft(160);
     obj.label8:setTop(0);
@@ -437,12 +437,12 @@ function newfrmAMZ3()
     obj.label8:setField("atr_efetivo_fv");
     obj.label8:setName("label8");
 
-    obj.dataLink5 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink5:setParent(obj.layout7);
     obj.dataLink5:setFields({'atr_total_fv', 'atr_bonus_fv'});
     obj.dataLink5:setName("dataLink5");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.scrollBox1);
     obj.layout8:setLeft(500);
     obj.layout8:setTop(0);
@@ -450,7 +450,7 @@ function newfrmAMZ3()
     obj.layout8:setHeight(180);
     obj.layout8:setName("layout8");
 
-    obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle7 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle7:setParent(obj.layout8);
     obj.rectangle7:setAlign("client");
     obj.rectangle7:setColor("black");
@@ -459,7 +459,7 @@ function newfrmAMZ3()
     obj.rectangle7:setCornerType("round");
     obj.rectangle7:setName("rectangle7");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout8);
     obj.label9:setLeft(0);
     obj.label9:setTop(0);
@@ -469,7 +469,7 @@ function newfrmAMZ3()
     obj.label9:setHorzTextAlign("center");
     obj.label9:setName("label9");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.layout8);
     obj.layout9:setLeft(5);
     obj.layout9:setTop(25);
@@ -477,7 +477,7 @@ function newfrmAMZ3()
     obj.layout9:setHeight(25);
     obj.layout9:setName("layout9");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout9);
     obj.label10:setLeft(110);
     obj.label10:setTop(5);
@@ -487,7 +487,7 @@ function newfrmAMZ3()
     obj.label10:setHorzTextAlign("center");
     obj.label10:setName("label10");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout9);
     obj.label11:setLeft(160);
     obj.label11:setTop(5);
@@ -497,7 +497,7 @@ function newfrmAMZ3()
     obj.label11:setHorzTextAlign("center");
     obj.label11:setName("label11");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.layout8);
     obj.layout10:setLeft(5);
     obj.layout10:setTop(50);
@@ -521,7 +521,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button6 = gui.fromHandle(_obj_newObject("button"));
+    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
     obj.button6:setParent(obj.layout10);
     obj.button6:setLeft(0);
     obj.button6:setTop(0);
@@ -532,7 +532,7 @@ function newfrmAMZ3()
     obj.button6:setFontSize(13);
     obj.button6:setName("button6");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout10);
     obj.edit6:setLeft(110);
     obj.edit6:setTop(0);
@@ -542,7 +542,7 @@ function newfrmAMZ3()
     obj.edit6:setType("number");
     obj.edit6:setName("edit6");
 
-    obj.rectangle8 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle8 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle8:setParent(obj.layout10);
     obj.rectangle8:setLeft(160);
     obj.rectangle8:setTop(0);
@@ -553,7 +553,7 @@ function newfrmAMZ3()
     obj.rectangle8:setStrokeSize(1);
     obj.rectangle8:setName("rectangle8");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout10);
     obj.label12:setLeft(160);
     obj.label12:setTop(0);
@@ -563,12 +563,12 @@ function newfrmAMZ3()
     obj.label12:setField("atr_efetivo_mir");
     obj.label12:setName("label12");
 
-    obj.dataLink6 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink6:setParent(obj.layout10);
     obj.dataLink6:setFields({'atr_total_mir', 'atr_bonus_mir'});
     obj.dataLink6:setName("dataLink6");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.layout8);
     obj.layout11:setLeft(5);
     obj.layout11:setTop(75);
@@ -592,7 +592,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button7 = gui.fromHandle(_obj_newObject("button"));
+    obj.button7 = GUI.fromHandle(_obj_newObject("button"));
     obj.button7:setParent(obj.layout11);
     obj.button7:setLeft(0);
     obj.button7:setTop(0);
@@ -603,7 +603,7 @@ function newfrmAMZ3()
     obj.button7:setFontSize(13);
     obj.button7:setName("button7");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout11);
     obj.edit7:setLeft(110);
     obj.edit7:setTop(0);
@@ -613,7 +613,7 @@ function newfrmAMZ3()
     obj.edit7:setType("number");
     obj.edit7:setName("edit7");
 
-    obj.rectangle9 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle9 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle9:setParent(obj.layout11);
     obj.rectangle9:setLeft(160);
     obj.rectangle9:setTop(0);
@@ -624,7 +624,7 @@ function newfrmAMZ3()
     obj.rectangle9:setStrokeSize(1);
     obj.rectangle9:setName("rectangle9");
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout11);
     obj.label13:setLeft(160);
     obj.label13:setTop(0);
@@ -634,12 +634,12 @@ function newfrmAMZ3()
     obj.label13:setField("atr_efetivo_rac");
     obj.label13:setName("label13");
 
-    obj.dataLink7 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink7:setParent(obj.layout11);
     obj.dataLink7:setFields({'atr_total_rac', 'atr_bonus_rac'});
     obj.dataLink7:setName("dataLink7");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.layout8);
     obj.layout12:setLeft(5);
     obj.layout12:setTop(100);
@@ -663,7 +663,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button8 = gui.fromHandle(_obj_newObject("button"));
+    obj.button8 = GUI.fromHandle(_obj_newObject("button"));
     obj.button8:setParent(obj.layout12);
     obj.button8:setLeft(0);
     obj.button8:setTop(0);
@@ -674,7 +674,7 @@ function newfrmAMZ3()
     obj.button8:setFontSize(13);
     obj.button8:setName("button8");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.layout12);
     obj.edit8:setLeft(110);
     obj.edit8:setTop(0);
@@ -684,7 +684,7 @@ function newfrmAMZ3()
     obj.edit8:setType("number");
     obj.edit8:setName("edit8");
 
-    obj.rectangle10 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle10 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle10:setParent(obj.layout12);
     obj.rectangle10:setLeft(160);
     obj.rectangle10:setTop(0);
@@ -695,7 +695,7 @@ function newfrmAMZ3()
     obj.rectangle10:setStrokeSize(1);
     obj.rectangle10:setName("rectangle10");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout12);
     obj.label14:setLeft(160);
     obj.label14:setTop(0);
@@ -705,12 +705,12 @@ function newfrmAMZ3()
     obj.label14:setField("atr_efetivo_ref");
     obj.label14:setName("label14");
 
-    obj.dataLink8 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink8:setParent(obj.layout12);
     obj.dataLink8:setFields({'atr_total_ref', 'atr_bonus_ref'});
     obj.dataLink8:setName("dataLink8");
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.layout8);
     obj.layout13:setLeft(5);
     obj.layout13:setTop(125);
@@ -734,7 +734,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button9 = gui.fromHandle(_obj_newObject("button"));
+    obj.button9 = GUI.fromHandle(_obj_newObject("button"));
     obj.button9:setParent(obj.layout13);
     obj.button9:setLeft(0);
     obj.button9:setTop(0);
@@ -745,7 +745,7 @@ function newfrmAMZ3()
     obj.button9:setFontSize(13);
     obj.button9:setName("button9");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.layout13);
     obj.edit9:setLeft(110);
     obj.edit9:setTop(0);
@@ -755,7 +755,7 @@ function newfrmAMZ3()
     obj.edit9:setType("number");
     obj.edit9:setName("edit9");
 
-    obj.rectangle11 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle11:setParent(obj.layout13);
     obj.rectangle11:setLeft(160);
     obj.rectangle11:setTop(0);
@@ -766,7 +766,7 @@ function newfrmAMZ3()
     obj.rectangle11:setStrokeSize(1);
     obj.rectangle11:setName("rectangle11");
 
-    obj.label15 = gui.fromHandle(_obj_newObject("label"));
+    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.layout13);
     obj.label15:setLeft(160);
     obj.label15:setTop(0);
@@ -776,12 +776,12 @@ function newfrmAMZ3()
     obj.label15:setField("atr_efetivo_hab");
     obj.label15:setName("label15");
 
-    obj.dataLink9 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink9:setParent(obj.layout13);
     obj.dataLink9:setFields({'atr_total_hab', 'atr_bonus_hab'});
     obj.dataLink9:setName("dataLink9");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.scrollBox1);
     obj.layout14:setLeft(730);
     obj.layout14:setTop(0);
@@ -789,7 +789,7 @@ function newfrmAMZ3()
     obj.layout14:setHeight(180);
     obj.layout14:setName("layout14");
 
-    obj.rectangle12 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle12 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle12:setParent(obj.layout14);
     obj.rectangle12:setAlign("client");
     obj.rectangle12:setColor("black");
@@ -798,7 +798,7 @@ function newfrmAMZ3()
     obj.rectangle12:setCornerType("round");
     obj.rectangle12:setName("rectangle12");
 
-    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.layout14);
     obj.label16:setLeft(0);
     obj.label16:setTop(0);
@@ -808,7 +808,7 @@ function newfrmAMZ3()
     obj.label16:setHorzTextAlign("center");
     obj.label16:setName("label16");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.layout14);
     obj.layout15:setLeft(5);
     obj.layout15:setTop(25);
@@ -816,7 +816,7 @@ function newfrmAMZ3()
     obj.layout15:setHeight(25);
     obj.layout15:setName("layout15");
 
-    obj.label17 = gui.fromHandle(_obj_newObject("label"));
+    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.layout15);
     obj.label17:setLeft(110);
     obj.label17:setTop(5);
@@ -826,7 +826,7 @@ function newfrmAMZ3()
     obj.label17:setHorzTextAlign("center");
     obj.label17:setName("label17");
 
-    obj.label18 = gui.fromHandle(_obj_newObject("label"));
+    obj.label18 = GUI.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.layout15);
     obj.label18:setLeft(160);
     obj.label18:setTop(5);
@@ -836,7 +836,7 @@ function newfrmAMZ3()
     obj.label18:setHorzTextAlign("center");
     obj.label18:setName("label18");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.layout14);
     obj.layout16:setLeft(5);
     obj.layout16:setTop(50);
@@ -860,7 +860,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button10 = gui.fromHandle(_obj_newObject("button"));
+    obj.button10 = GUI.fromHandle(_obj_newObject("button"));
     obj.button10:setParent(obj.layout16);
     obj.button10:setLeft(0);
     obj.button10:setTop(0);
@@ -871,7 +871,7 @@ function newfrmAMZ3()
     obj.button10:setFontSize(13);
     obj.button10:setName("button10");
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.layout16);
     obj.edit10:setLeft(110);
     obj.edit10:setTop(0);
@@ -881,7 +881,7 @@ function newfrmAMZ3()
     obj.edit10:setType("number");
     obj.edit10:setName("edit10");
 
-    obj.rectangle13 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle13 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle13:setParent(obj.layout16);
     obj.rectangle13:setLeft(160);
     obj.rectangle13:setTop(0);
@@ -892,7 +892,7 @@ function newfrmAMZ3()
     obj.rectangle13:setStrokeSize(1);
     obj.rectangle13:setName("rectangle13");
 
-    obj.label19 = gui.fromHandle(_obj_newObject("label"));
+    obj.label19 = GUI.fromHandle(_obj_newObject("label"));
     obj.label19:setParent(obj.layout16);
     obj.label19:setLeft(160);
     obj.label19:setTop(0);
@@ -902,12 +902,12 @@ function newfrmAMZ3()
     obj.label19:setField("atr_efetivo_for");
     obj.label19:setName("label19");
 
-    obj.dataLink10 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink10 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink10:setParent(obj.layout16);
     obj.dataLink10:setFields({'atr_total_for', 'atr_bonus_for'});
     obj.dataLink10:setName("dataLink10");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.layout14);
     obj.layout17:setLeft(5);
     obj.layout17:setTop(75);
@@ -931,7 +931,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button11 = gui.fromHandle(_obj_newObject("button"));
+    obj.button11 = GUI.fromHandle(_obj_newObject("button"));
     obj.button11:setParent(obj.layout17);
     obj.button11:setLeft(0);
     obj.button11:setTop(0);
@@ -942,7 +942,7 @@ function newfrmAMZ3()
     obj.button11:setFontSize(13);
     obj.button11:setName("button11");
 
-    obj.edit11 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit11:setParent(obj.layout17);
     obj.edit11:setLeft(110);
     obj.edit11:setTop(0);
@@ -952,7 +952,7 @@ function newfrmAMZ3()
     obj.edit11:setType("number");
     obj.edit11:setName("edit11");
 
-    obj.rectangle14 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle14 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle14:setParent(obj.layout17);
     obj.rectangle14:setLeft(160);
     obj.rectangle14:setTop(0);
@@ -963,7 +963,7 @@ function newfrmAMZ3()
     obj.rectangle14:setStrokeSize(1);
     obj.rectangle14:setName("rectangle14");
 
-    obj.label20 = gui.fromHandle(_obj_newObject("label"));
+    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.layout17);
     obj.label20:setLeft(160);
     obj.label20:setTop(0);
@@ -973,12 +973,12 @@ function newfrmAMZ3()
     obj.label20:setField("atr_efetivo_vel");
     obj.label20:setName("label20");
 
-    obj.dataLink11 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink11 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink11:setParent(obj.layout17);
     obj.dataLink11:setFields({'atr_total_vel', 'atr_bonus_vel'});
     obj.dataLink11:setName("dataLink11");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.layout14);
     obj.layout18:setLeft(5);
     obj.layout18:setTop(100);
@@ -1002,7 +1002,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button12 = gui.fromHandle(_obj_newObject("button"));
+    obj.button12 = GUI.fromHandle(_obj_newObject("button"));
     obj.button12:setParent(obj.layout18);
     obj.button12:setLeft(0);
     obj.button12:setTop(0);
@@ -1013,7 +1013,7 @@ function newfrmAMZ3()
     obj.button12:setFontSize(13);
     obj.button12:setName("button12");
 
-    obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit12:setParent(obj.layout18);
     obj.edit12:setLeft(110);
     obj.edit12:setTop(0);
@@ -1023,7 +1023,7 @@ function newfrmAMZ3()
     obj.edit12:setType("number");
     obj.edit12:setName("edit12");
 
-    obj.rectangle15 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle15 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle15:setParent(obj.layout18);
     obj.rectangle15:setLeft(160);
     obj.rectangle15:setTop(0);
@@ -1034,7 +1034,7 @@ function newfrmAMZ3()
     obj.rectangle15:setStrokeSize(1);
     obj.rectangle15:setName("rectangle15");
 
-    obj.label21 = gui.fromHandle(_obj_newObject("label"));
+    obj.label21 = GUI.fromHandle(_obj_newObject("label"));
     obj.label21:setParent(obj.layout18);
     obj.label21:setLeft(160);
     obj.label21:setTop(0);
@@ -1044,12 +1044,12 @@ function newfrmAMZ3()
     obj.label21:setField("atr_efetivo_maq");
     obj.label21:setName("label21");
 
-    obj.dataLink12 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink12 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink12:setParent(obj.layout18);
     obj.dataLink12:setFields({'atr_total_maq', 'atr_bonus_maq'});
     obj.dataLink12:setName("dataLink12");
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.layout14);
     obj.layout19:setLeft(5);
     obj.layout19:setTop(125);
@@ -1073,7 +1073,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button13 = gui.fromHandle(_obj_newObject("button"));
+    obj.button13 = GUI.fromHandle(_obj_newObject("button"));
     obj.button13:setParent(obj.layout19);
     obj.button13:setLeft(0);
     obj.button13:setTop(0);
@@ -1084,7 +1084,7 @@ function newfrmAMZ3()
     obj.button13:setFontSize(8);
     obj.button13:setName("button13");
 
-    obj.edit13 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit13:setParent(obj.layout19);
     obj.edit13:setLeft(110);
     obj.edit13:setTop(0);
@@ -1094,7 +1094,7 @@ function newfrmAMZ3()
     obj.edit13:setType("number");
     obj.edit13:setName("edit13");
 
-    obj.rectangle16 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle16 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle16:setParent(obj.layout19);
     obj.rectangle16:setLeft(160);
     obj.rectangle16:setTop(0);
@@ -1105,7 +1105,7 @@ function newfrmAMZ3()
     obj.rectangle16:setStrokeSize(1);
     obj.rectangle16:setName("rectangle16");
 
-    obj.label22 = gui.fromHandle(_obj_newObject("label"));
+    obj.label22 = GUI.fromHandle(_obj_newObject("label"));
     obj.label22:setParent(obj.layout19);
     obj.label22:setLeft(160);
     obj.label22:setTop(0);
@@ -1115,12 +1115,12 @@ function newfrmAMZ3()
     obj.label22:setField("atr_efetivo_ce");
     obj.label22:setName("label22");
 
-    obj.dataLink13 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink13 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink13:setParent(obj.layout19);
     obj.dataLink13:setFields({'atr_total_ce', 'atr_bonus_ce'});
     obj.dataLink13:setName("dataLink13");
 
-    obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.scrollBox1);
     obj.layout20:setLeft(960);
     obj.layout20:setTop(0);
@@ -1128,7 +1128,7 @@ function newfrmAMZ3()
     obj.layout20:setHeight(180);
     obj.layout20:setName("layout20");
 
-    obj.rectangle17 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle17 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle17:setParent(obj.layout20);
     obj.rectangle17:setAlign("client");
     obj.rectangle17:setColor("black");
@@ -1137,7 +1137,7 @@ function newfrmAMZ3()
     obj.rectangle17:setCornerType("round");
     obj.rectangle17:setName("rectangle17");
 
-    obj.label23 = gui.fromHandle(_obj_newObject("label"));
+    obj.label23 = GUI.fromHandle(_obj_newObject("label"));
     obj.label23:setParent(obj.layout20);
     obj.label23:setLeft(0);
     obj.label23:setTop(0);
@@ -1147,7 +1147,7 @@ function newfrmAMZ3()
     obj.label23:setHorzTextAlign("center");
     obj.label23:setName("label23");
 
-    obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.layout20);
     obj.layout21:setLeft(5);
     obj.layout21:setTop(25);
@@ -1155,7 +1155,7 @@ function newfrmAMZ3()
     obj.layout21:setHeight(25);
     obj.layout21:setName("layout21");
 
-    obj.label24 = gui.fromHandle(_obj_newObject("label"));
+    obj.label24 = GUI.fromHandle(_obj_newObject("label"));
     obj.label24:setParent(obj.layout21);
     obj.label24:setLeft(110);
     obj.label24:setTop(5);
@@ -1165,7 +1165,7 @@ function newfrmAMZ3()
     obj.label24:setHorzTextAlign("center");
     obj.label24:setName("label24");
 
-    obj.label25 = gui.fromHandle(_obj_newObject("label"));
+    obj.label25 = GUI.fromHandle(_obj_newObject("label"));
     obj.label25:setParent(obj.layout21);
     obj.label25:setLeft(160);
     obj.label25:setTop(5);
@@ -1175,7 +1175,7 @@ function newfrmAMZ3()
     obj.label25:setHorzTextAlign("center");
     obj.label25:setName("label25");
 
-    obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.layout20);
     obj.layout22:setLeft(5);
     obj.layout22:setTop(50);
@@ -1199,7 +1199,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button14 = gui.fromHandle(_obj_newObject("button"));
+    obj.button14 = GUI.fromHandle(_obj_newObject("button"));
     obj.button14:setParent(obj.layout22);
     obj.button14:setLeft(0);
     obj.button14:setTop(0);
@@ -1210,7 +1210,7 @@ function newfrmAMZ3()
     obj.button14:setFontSize(11);
     obj.button14:setName("button14");
 
-    obj.edit14 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit14:setParent(obj.layout22);
     obj.edit14:setLeft(110);
     obj.edit14:setTop(0);
@@ -1220,7 +1220,7 @@ function newfrmAMZ3()
     obj.edit14:setType("number");
     obj.edit14:setName("edit14");
 
-    obj.rectangle18 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle18 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle18:setParent(obj.layout22);
     obj.rectangle18:setLeft(160);
     obj.rectangle18:setTop(0);
@@ -1231,7 +1231,7 @@ function newfrmAMZ3()
     obj.rectangle18:setStrokeSize(1);
     obj.rectangle18:setName("rectangle18");
 
-    obj.label26 = gui.fromHandle(_obj_newObject("label"));
+    obj.label26 = GUI.fromHandle(_obj_newObject("label"));
     obj.label26:setParent(obj.layout22);
     obj.label26:setLeft(160);
     obj.label26:setTop(0);
@@ -1241,12 +1241,12 @@ function newfrmAMZ3()
     obj.label26:setField("atr_efetivo_pf");
     obj.label26:setName("label26");
 
-    obj.dataLink14 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink14 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink14:setParent(obj.layout22);
     obj.dataLink14:setFields({'atr_total_pf', 'atr_bonus_pf'});
     obj.dataLink14:setName("dataLink14");
 
-    obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.layout20);
     obj.layout23:setLeft(5);
     obj.layout23:setTop(75);
@@ -1270,7 +1270,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button15 = gui.fromHandle(_obj_newObject("button"));
+    obj.button15 = GUI.fromHandle(_obj_newObject("button"));
     obj.button15:setParent(obj.layout23);
     obj.button15:setLeft(0);
     obj.button15:setTop(0);
@@ -1281,7 +1281,7 @@ function newfrmAMZ3()
     obj.button15:setFontSize(13);
     obj.button15:setName("button15");
 
-    obj.edit15 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit15:setParent(obj.layout23);
     obj.edit15:setLeft(110);
     obj.edit15:setTop(0);
@@ -1291,7 +1291,7 @@ function newfrmAMZ3()
     obj.edit15:setType("number");
     obj.edit15:setName("edit15");
 
-    obj.rectangle19 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle19 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle19:setParent(obj.layout23);
     obj.rectangle19:setLeft(160);
     obj.rectangle19:setTop(0);
@@ -1302,7 +1302,7 @@ function newfrmAMZ3()
     obj.rectangle19:setStrokeSize(1);
     obj.rectangle19:setName("rectangle19");
 
-    obj.label27 = gui.fromHandle(_obj_newObject("label"));
+    obj.label27 = GUI.fromHandle(_obj_newObject("label"));
     obj.label27:setParent(obj.layout23);
     obj.label27:setLeft(160);
     obj.label27:setTop(0);
@@ -1312,12 +1312,12 @@ function newfrmAMZ3()
     obj.label27:setField("atr_efetivo_agi");
     obj.label27:setName("label27");
 
-    obj.dataLink15 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink15 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink15:setParent(obj.layout23);
     obj.dataLink15:setFields({'atr_total_agi', 'atr_bonus_agi'});
     obj.dataLink15:setName("dataLink15");
 
-    obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.layout20);
     obj.layout24:setLeft(5);
     obj.layout24:setTop(100);
@@ -1341,7 +1341,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button16 = gui.fromHandle(_obj_newObject("button"));
+    obj.button16 = GUI.fromHandle(_obj_newObject("button"));
     obj.button16:setParent(obj.layout24);
     obj.button16:setLeft(0);
     obj.button16:setTop(0);
@@ -1352,7 +1352,7 @@ function newfrmAMZ3()
     obj.button16:setFontSize(13);
     obj.button16:setName("button16");
 
-    obj.edit16 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit16:setParent(obj.layout24);
     obj.edit16:setLeft(110);
     obj.edit16:setTop(0);
@@ -1362,7 +1362,7 @@ function newfrmAMZ3()
     obj.edit16:setType("number");
     obj.edit16:setName("edit16");
 
-    obj.rectangle20 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle20 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle20:setParent(obj.layout24);
     obj.rectangle20:setLeft(160);
     obj.rectangle20:setTop(0);
@@ -1373,7 +1373,7 @@ function newfrmAMZ3()
     obj.rectangle20:setStrokeSize(1);
     obj.rectangle20:setName("rectangle20");
 
-    obj.label28 = gui.fromHandle(_obj_newObject("label"));
+    obj.label28 = GUI.fromHandle(_obj_newObject("label"));
     obj.label28:setParent(obj.layout24);
     obj.label28:setLeft(160);
     obj.label28:setTop(0);
@@ -1383,12 +1383,12 @@ function newfrmAMZ3()
     obj.label28:setField("atr_efetivo_res");
     obj.label28:setName("label28");
 
-    obj.dataLink16 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink16 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink16:setParent(obj.layout24);
     obj.dataLink16:setFields({'atr_total_res', 'atr_bonus_res'});
     obj.dataLink16:setName("dataLink16");
 
-    obj.layout25 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.layout20);
     obj.layout25:setLeft(5);
     obj.layout25:setTop(125);
@@ -1412,7 +1412,7 @@ function newfrmAMZ3()
 			
 
 
-    obj.button17 = gui.fromHandle(_obj_newObject("button"));
+    obj.button17 = GUI.fromHandle(_obj_newObject("button"));
     obj.button17:setParent(obj.layout25);
     obj.button17:setLeft(0);
     obj.button17:setTop(0);
@@ -1423,7 +1423,7 @@ function newfrmAMZ3()
     obj.button17:setFontSize(13);
     obj.button17:setName("button17");
 
-    obj.edit17 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit17:setParent(obj.layout25);
     obj.edit17:setLeft(110);
     obj.edit17:setTop(0);
@@ -1433,7 +1433,7 @@ function newfrmAMZ3()
     obj.edit17:setType("number");
     obj.edit17:setName("edit17");
 
-    obj.rectangle21 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle21:setParent(obj.layout25);
     obj.rectangle21:setLeft(160);
     obj.rectangle21:setTop(0);
@@ -1444,7 +1444,7 @@ function newfrmAMZ3()
     obj.rectangle21:setStrokeSize(1);
     obj.rectangle21:setName("rectangle21");
 
-    obj.label29 = gui.fromHandle(_obj_newObject("label"));
+    obj.label29 = GUI.fromHandle(_obj_newObject("label"));
     obj.label29:setParent(obj.layout25);
     obj.label29:setLeft(160);
     obj.label29:setTop(0);
@@ -1454,12 +1454,12 @@ function newfrmAMZ3()
     obj.label29:setField("atr_efetivo_voo");
     obj.label29:setName("label29");
 
-    obj.dataLink17 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink17 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink17:setParent(obj.layout25);
     obj.dataLink17:setFields({'atr_total_voo', 'atr_bonus_voo'});
     obj.dataLink17:setName("dataLink17");
 
-    obj.layout26 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.scrollBox1);
     obj.layout26:setLeft(0);
     obj.layout26:setTop(0);
@@ -1467,13 +1467,13 @@ function newfrmAMZ3()
     obj.layout26:setHeight(305);
     obj.layout26:setName("layout26");
 
-    obj.rectangle22 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle22 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle22:setParent(obj.layout26);
     obj.rectangle22:setAlign("client");
     obj.rectangle22:setColor("black");
     obj.rectangle22:setName("rectangle22");
 
-    obj.label30 = gui.fromHandle(_obj_newObject("label"));
+    obj.label30 = GUI.fromHandle(_obj_newObject("label"));
     obj.label30:setParent(obj.layout26);
     obj.label30:setLeft(0);
     obj.label30:setTop(5);
@@ -1483,7 +1483,7 @@ function newfrmAMZ3()
     obj.label30:setHorzTextAlign("center");
     obj.label30:setName("label30");
 
-    obj.layout27 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.layout26);
     obj.layout27:setLeft(5);
     obj.layout27:setTop(25);
@@ -1491,7 +1491,7 @@ function newfrmAMZ3()
     obj.layout27:setHeight(25);
     obj.layout27:setName("layout27");
 
-    obj.button18 = gui.fromHandle(_obj_newObject("button"));
+    obj.button18 = GUI.fromHandle(_obj_newObject("button"));
     obj.button18:setParent(obj.layout27);
     obj.button18:setLeft(0);
     obj.button18:setTop(0);
@@ -1502,7 +1502,7 @@ function newfrmAMZ3()
     obj.button18:setFontSize(13);
     obj.button18:setName("button18");
 
-    obj.rectangle23 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle23:setParent(obj.layout27);
     obj.rectangle23:setLeft(110);
     obj.rectangle23:setTop(0);
@@ -1513,7 +1513,7 @@ function newfrmAMZ3()
     obj.rectangle23:setStrokeSize(1);
     obj.rectangle23:setName("rectangle23");
 
-    obj.label31 = gui.fromHandle(_obj_newObject("label"));
+    obj.label31 = GUI.fromHandle(_obj_newObject("label"));
     obj.label31:setParent(obj.layout27);
     obj.label31:setLeft(110);
     obj.label31:setTop(0);
@@ -1523,7 +1523,7 @@ function newfrmAMZ3()
     obj.label31:setField("roll_iniciativa");
     obj.label31:setName("label31");
 
-    obj.edit18 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit18:setParent(obj.layout27);
     obj.edit18:setLeft(210);
     obj.edit18:setTop(0);
@@ -1533,12 +1533,12 @@ function newfrmAMZ3()
     obj.edit18:setField("extra_iniciativa");
     obj.edit18:setName("edit18");
 
-    obj.dataLink18 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink18 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink18:setParent(obj.layout27);
     obj.dataLink18:setFields({'atr_efetivo_ref', 'atr_efetivo_agi', 'extra_iniciativa'});
     obj.dataLink18:setName("dataLink18");
 
-    obj.label32 = gui.fromHandle(_obj_newObject("label"));
+    obj.label32 = GUI.fromHandle(_obj_newObject("label"));
     obj.label32:setParent(obj.layout26);
     obj.label32:setLeft(0);
     obj.label32:setTop(55);
@@ -1548,7 +1548,7 @@ function newfrmAMZ3()
     obj.label32:setHorzTextAlign("center");
     obj.label32:setName("label32");
 
-    obj.layout28 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.layout26);
     obj.layout28:setLeft(5);
     obj.layout28:setTop(75);
@@ -1556,7 +1556,7 @@ function newfrmAMZ3()
     obj.layout28:setHeight(25);
     obj.layout28:setName("layout28");
 
-    obj.button19 = gui.fromHandle(_obj_newObject("button"));
+    obj.button19 = GUI.fromHandle(_obj_newObject("button"));
     obj.button19:setParent(obj.layout28);
     obj.button19:setLeft(0);
     obj.button19:setTop(0);
@@ -1567,7 +1567,7 @@ function newfrmAMZ3()
     obj.button19:setFontSize(13);
     obj.button19:setName("button19");
 
-    obj.rectangle24 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle24 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle24:setParent(obj.layout28);
     obj.rectangle24:setLeft(110);
     obj.rectangle24:setTop(0);
@@ -1578,7 +1578,7 @@ function newfrmAMZ3()
     obj.rectangle24:setStrokeSize(1);
     obj.rectangle24:setName("rectangle24");
 
-    obj.label33 = gui.fromHandle(_obj_newObject("label"));
+    obj.label33 = GUI.fromHandle(_obj_newObject("label"));
     obj.label33:setParent(obj.layout28);
     obj.label33:setLeft(110);
     obj.label33:setTop(0);
@@ -1588,7 +1588,7 @@ function newfrmAMZ3()
     obj.label33:setField("roll_acertos_cac");
     obj.label33:setName("label33");
 
-    obj.edit19 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit19:setParent(obj.layout28);
     obj.edit19:setLeft(210);
     obj.edit19:setTop(0);
@@ -1598,12 +1598,12 @@ function newfrmAMZ3()
     obj.edit19:setField("extra_acertos_cac");
     obj.edit19:setName("edit19");
 
-    obj.dataLink19 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink19 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink19:setParent(obj.layout28);
     obj.dataLink19:setFields({'atr_efetivo_des', 'atr_efetivo_vel', 'extra_acertos_cac'});
     obj.dataLink19:setName("dataLink19");
 
-    obj.layout29 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout29:setParent(obj.layout26);
     obj.layout29:setLeft(5);
     obj.layout29:setTop(100);
@@ -1611,7 +1611,7 @@ function newfrmAMZ3()
     obj.layout29:setHeight(25);
     obj.layout29:setName("layout29");
 
-    obj.button20 = gui.fromHandle(_obj_newObject("button"));
+    obj.button20 = GUI.fromHandle(_obj_newObject("button"));
     obj.button20:setParent(obj.layout29);
     obj.button20:setLeft(0);
     obj.button20:setTop(0);
@@ -1622,7 +1622,7 @@ function newfrmAMZ3()
     obj.button20:setFontSize(13);
     obj.button20:setName("button20");
 
-    obj.rectangle25 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle25:setParent(obj.layout29);
     obj.rectangle25:setLeft(110);
     obj.rectangle25:setTop(0);
@@ -1633,7 +1633,7 @@ function newfrmAMZ3()
     obj.rectangle25:setStrokeSize(1);
     obj.rectangle25:setName("rectangle25");
 
-    obj.label34 = gui.fromHandle(_obj_newObject("label"));
+    obj.label34 = GUI.fromHandle(_obj_newObject("label"));
     obj.label34:setParent(obj.layout29);
     obj.label34:setLeft(110);
     obj.label34:setTop(0);
@@ -1643,7 +1643,7 @@ function newfrmAMZ3()
     obj.label34:setField("roll_acertos_dist");
     obj.label34:setName("label34");
 
-    obj.edit20 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit20:setParent(obj.layout29);
     obj.edit20:setLeft(210);
     obj.edit20:setTop(0);
@@ -1653,12 +1653,12 @@ function newfrmAMZ3()
     obj.edit20:setField("extra_acertos_dist");
     obj.edit20:setName("edit20");
 
-    obj.dataLink20 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink20 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink20:setParent(obj.layout29);
     obj.dataLink20:setFields({'atr_efetivo_mir', 'atr_efetivo_agi', 'extra_acertos_dist'});
     obj.dataLink20:setName("dataLink20");
 
-    obj.layout30 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout30:setParent(obj.layout26);
     obj.layout30:setLeft(5);
     obj.layout30:setTop(125);
@@ -1666,7 +1666,7 @@ function newfrmAMZ3()
     obj.layout30:setHeight(25);
     obj.layout30:setName("layout30");
 
-    obj.button21 = gui.fromHandle(_obj_newObject("button"));
+    obj.button21 = GUI.fromHandle(_obj_newObject("button"));
     obj.button21:setParent(obj.layout30);
     obj.button21:setLeft(0);
     obj.button21:setTop(0);
@@ -1677,7 +1677,7 @@ function newfrmAMZ3()
     obj.button21:setFontSize(13);
     obj.button21:setName("button21");
 
-    obj.rectangle26 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle26 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle26:setParent(obj.layout30);
     obj.rectangle26:setLeft(110);
     obj.rectangle26:setTop(0);
@@ -1688,7 +1688,7 @@ function newfrmAMZ3()
     obj.rectangle26:setStrokeSize(1);
     obj.rectangle26:setName("rectangle26");
 
-    obj.label35 = gui.fromHandle(_obj_newObject("label"));
+    obj.label35 = GUI.fromHandle(_obj_newObject("label"));
     obj.label35:setParent(obj.layout30);
     obj.label35:setLeft(110);
     obj.label35:setTop(0);
@@ -1698,7 +1698,7 @@ function newfrmAMZ3()
     obj.label35:setField("roll_acertos_bloqueio");
     obj.label35:setName("label35");
 
-    obj.edit21 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit21:setParent(obj.layout30);
     obj.edit21:setLeft(210);
     obj.edit21:setTop(0);
@@ -1708,12 +1708,12 @@ function newfrmAMZ3()
     obj.edit21:setField("extra_acertos_bloqueio");
     obj.edit21:setName("edit21");
 
-    obj.dataLink21 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink21 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink21:setParent(obj.layout30);
     obj.dataLink21:setFields({'atr_efetivo_ref', 'atr_efetivo_vel', 'extra_acertos_bloqueio'});
     obj.dataLink21:setName("dataLink21");
 
-    obj.layout31 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.layout26);
     obj.layout31:setLeft(5);
     obj.layout31:setTop(150);
@@ -1721,7 +1721,7 @@ function newfrmAMZ3()
     obj.layout31:setHeight(25);
     obj.layout31:setName("layout31");
 
-    obj.button22 = gui.fromHandle(_obj_newObject("button"));
+    obj.button22 = GUI.fromHandle(_obj_newObject("button"));
     obj.button22:setParent(obj.layout31);
     obj.button22:setLeft(0);
     obj.button22:setTop(0);
@@ -1732,7 +1732,7 @@ function newfrmAMZ3()
     obj.button22:setFontSize(13);
     obj.button22:setName("button22");
 
-    obj.rectangle27 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle27 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle27:setParent(obj.layout31);
     obj.rectangle27:setLeft(110);
     obj.rectangle27:setTop(0);
@@ -1743,7 +1743,7 @@ function newfrmAMZ3()
     obj.rectangle27:setStrokeSize(1);
     obj.rectangle27:setName("rectangle27");
 
-    obj.label36 = gui.fromHandle(_obj_newObject("label"));
+    obj.label36 = GUI.fromHandle(_obj_newObject("label"));
     obj.label36:setParent(obj.layout31);
     obj.label36:setLeft(110);
     obj.label36:setTop(0);
@@ -1753,7 +1753,7 @@ function newfrmAMZ3()
     obj.label36:setField("roll_acertos_escape");
     obj.label36:setName("label36");
 
-    obj.edit22 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit22:setParent(obj.layout31);
     obj.edit22:setLeft(210);
     obj.edit22:setTop(0);
@@ -1763,12 +1763,12 @@ function newfrmAMZ3()
     obj.edit22:setField("extra_acertos_escape");
     obj.edit22:setName("edit22");
 
-    obj.dataLink22 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink22 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink22:setParent(obj.layout31);
     obj.dataLink22:setFields({'atr_efetivo_per', 'atr_efetivo_agi', 'extra_acertos_escape'});
     obj.dataLink22:setName("dataLink22");
 
-    obj.layout32 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.layout26);
     obj.layout32:setLeft(5);
     obj.layout32:setTop(175);
@@ -1776,7 +1776,7 @@ function newfrmAMZ3()
     obj.layout32:setHeight(25);
     obj.layout32:setName("layout32");
 
-    obj.button23 = gui.fromHandle(_obj_newObject("button"));
+    obj.button23 = GUI.fromHandle(_obj_newObject("button"));
     obj.button23:setParent(obj.layout32);
     obj.button23:setLeft(0);
     obj.button23:setTop(0);
@@ -1787,7 +1787,7 @@ function newfrmAMZ3()
     obj.button23:setFontSize(13);
     obj.button23:setName("button23");
 
-    obj.rectangle28 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle28 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle28:setParent(obj.layout32);
     obj.rectangle28:setLeft(110);
     obj.rectangle28:setTop(0);
@@ -1798,7 +1798,7 @@ function newfrmAMZ3()
     obj.rectangle28:setStrokeSize(1);
     obj.rectangle28:setName("rectangle28");
 
-    obj.label37 = gui.fromHandle(_obj_newObject("label"));
+    obj.label37 = GUI.fromHandle(_obj_newObject("label"));
     obj.label37:setParent(obj.layout32);
     obj.label37:setLeft(110);
     obj.label37:setTop(0);
@@ -1808,7 +1808,7 @@ function newfrmAMZ3()
     obj.label37:setField("roll_acertos_agarrao");
     obj.label37:setName("label37");
 
-    obj.edit23 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit23:setParent(obj.layout32);
     obj.edit23:setLeft(210);
     obj.edit23:setTop(0);
@@ -1818,12 +1818,12 @@ function newfrmAMZ3()
     obj.edit23:setField("extra_acertos_agarrao");
     obj.edit23:setName("edit23");
 
-    obj.dataLink23 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink23 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink23:setParent(obj.layout32);
     obj.dataLink23:setFields({'atr_efetivo_for', 'atr_efetivo_des', 'extra_acertos_agarrao'});
     obj.dataLink23:setName("dataLink23");
 
-    obj.layout33 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout33:setParent(obj.layout26);
     obj.layout33:setLeft(5);
     obj.layout33:setTop(200);
@@ -1831,7 +1831,7 @@ function newfrmAMZ3()
     obj.layout33:setHeight(25);
     obj.layout33:setName("layout33");
 
-    obj.button24 = gui.fromHandle(_obj_newObject("button"));
+    obj.button24 = GUI.fromHandle(_obj_newObject("button"));
     obj.button24:setParent(obj.layout33);
     obj.button24:setLeft(0);
     obj.button24:setTop(0);
@@ -1842,7 +1842,7 @@ function newfrmAMZ3()
     obj.button24:setFontSize(13);
     obj.button24:setName("button24");
 
-    obj.rectangle29 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle29 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle29:setParent(obj.layout33);
     obj.rectangle29:setLeft(110);
     obj.rectangle29:setTop(0);
@@ -1853,7 +1853,7 @@ function newfrmAMZ3()
     obj.rectangle29:setStrokeSize(1);
     obj.rectangle29:setName("rectangle29");
 
-    obj.label38 = gui.fromHandle(_obj_newObject("label"));
+    obj.label38 = GUI.fromHandle(_obj_newObject("label"));
     obj.label38:setParent(obj.layout33);
     obj.label38:setLeft(110);
     obj.label38:setTop(0);
@@ -1863,7 +1863,7 @@ function newfrmAMZ3()
     obj.label38:setField("roll_acertos_counter");
     obj.label38:setName("label38");
 
-    obj.edit24 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit24:setParent(obj.layout33);
     obj.edit24:setLeft(210);
     obj.edit24:setTop(0);
@@ -1873,12 +1873,12 @@ function newfrmAMZ3()
     obj.edit24:setField("extra_acertos_counter");
     obj.edit24:setName("edit24");
 
-    obj.dataLink24 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink24 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink24:setParent(obj.layout33);
     obj.dataLink24:setFields({'atr_efetivo_hab', 'atr_efetivo_vel', 'extra_acertos_counter'});
     obj.dataLink24:setName("dataLink24");
 
-    obj.label39 = gui.fromHandle(_obj_newObject("label"));
+    obj.label39 = GUI.fromHandle(_obj_newObject("label"));
     obj.label39:setParent(obj.layout26);
     obj.label39:setLeft(0);
     obj.label39:setTop(230);
@@ -1888,7 +1888,7 @@ function newfrmAMZ3()
     obj.label39:setHorzTextAlign("center");
     obj.label39:setName("label39");
 
-    obj.layout34 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout34 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout34:setParent(obj.layout26);
     obj.layout34:setLeft(5);
     obj.layout34:setTop(250);
@@ -1896,7 +1896,7 @@ function newfrmAMZ3()
     obj.layout34:setHeight(25);
     obj.layout34:setName("layout34");
 
-    obj.button25 = gui.fromHandle(_obj_newObject("button"));
+    obj.button25 = GUI.fromHandle(_obj_newObject("button"));
     obj.button25:setParent(obj.layout34);
     obj.button25:setLeft(0);
     obj.button25:setTop(0);
@@ -1907,7 +1907,7 @@ function newfrmAMZ3()
     obj.button25:setFontSize(13);
     obj.button25:setName("button25");
 
-    obj.rectangle30 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle30 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle30:setParent(obj.layout34);
     obj.rectangle30:setLeft(110);
     obj.rectangle30:setTop(0);
@@ -1918,7 +1918,7 @@ function newfrmAMZ3()
     obj.rectangle30:setStrokeSize(1);
     obj.rectangle30:setName("rectangle30");
 
-    obj.label40 = gui.fromHandle(_obj_newObject("label"));
+    obj.label40 = GUI.fromHandle(_obj_newObject("label"));
     obj.label40:setParent(obj.layout34);
     obj.label40:setLeft(110);
     obj.label40:setTop(0);
@@ -1928,7 +1928,7 @@ function newfrmAMZ3()
     obj.label40:setField("roll_ataques_cac");
     obj.label40:setName("label40");
 
-    obj.edit25 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit25:setParent(obj.layout34);
     obj.edit25:setLeft(210);
     obj.edit25:setTop(0);
@@ -1938,12 +1938,12 @@ function newfrmAMZ3()
     obj.edit25:setField("extra_ataques_cac");
     obj.edit25:setName("edit25");
 
-    obj.dataLink25 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink25 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink25:setParent(obj.layout34);
     obj.dataLink25:setFields({'atr_efetivo_for', 'empty', 'extra_ataques_cac'});
     obj.dataLink25:setName("dataLink25");
 
-    obj.layout35 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout35:setParent(obj.layout26);
     obj.layout35:setLeft(5);
     obj.layout35:setTop(275);
@@ -1951,7 +1951,7 @@ function newfrmAMZ3()
     obj.layout35:setHeight(25);
     obj.layout35:setName("layout35");
 
-    obj.button26 = gui.fromHandle(_obj_newObject("button"));
+    obj.button26 = GUI.fromHandle(_obj_newObject("button"));
     obj.button26:setParent(obj.layout35);
     obj.button26:setLeft(0);
     obj.button26:setTop(0);
@@ -1962,7 +1962,7 @@ function newfrmAMZ3()
     obj.button26:setFontSize(13);
     obj.button26:setName("button26");
 
-    obj.rectangle31 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle31 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle31:setParent(obj.layout35);
     obj.rectangle31:setLeft(110);
     obj.rectangle31:setTop(0);
@@ -1973,7 +1973,7 @@ function newfrmAMZ3()
     obj.rectangle31:setStrokeSize(1);
     obj.rectangle31:setName("rectangle31");
 
-    obj.label41 = gui.fromHandle(_obj_newObject("label"));
+    obj.label41 = GUI.fromHandle(_obj_newObject("label"));
     obj.label41:setParent(obj.layout35);
     obj.label41:setLeft(110);
     obj.label41:setTop(0);
@@ -1983,7 +1983,7 @@ function newfrmAMZ3()
     obj.label41:setField("roll_ataques_dist");
     obj.label41:setName("label41");
 
-    obj.edit26 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit26:setParent(obj.layout35);
     obj.edit26:setLeft(210);
     obj.edit26:setTop(0);
@@ -1993,12 +1993,12 @@ function newfrmAMZ3()
     obj.edit26:setField("extra_ataques_dist");
     obj.edit26:setName("edit26");
 
-    obj.dataLink26 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink26 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink26:setParent(obj.layout35);
     obj.dataLink26:setFields({'atr_efetivo_pf', 'empty', 'extra_ataques_dist'});
     obj.dataLink26:setName("dataLink26");
 
-    obj.layout36 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout36:setParent(obj.scrollBox1);
     obj.layout36:setLeft(270);
     obj.layout36:setTop(190);
@@ -2006,7 +2006,7 @@ function newfrmAMZ3()
     obj.layout36:setHeight(425);
     obj.layout36:setName("layout36");
 
-    obj.rectangle32 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle32 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle32:setParent(obj.layout36);
     obj.rectangle32:setAlign("client");
     obj.rectangle32:setColor("black");
@@ -2015,7 +2015,7 @@ function newfrmAMZ3()
     obj.rectangle32:setCornerType("round");
     obj.rectangle32:setName("rectangle32");
 
-    obj.label42 = gui.fromHandle(_obj_newObject("label"));
+    obj.label42 = GUI.fromHandle(_obj_newObject("label"));
     obj.label42:setParent(obj.layout36);
     obj.label42:setLeft(0);
     obj.label42:setTop(0);
@@ -2025,7 +2025,7 @@ function newfrmAMZ3()
     obj.label42:setHorzTextAlign("center");
     obj.label42:setName("label42");
 
-    obj.rclHabilidadesIniciaisPequeno = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclHabilidadesIniciaisPequeno = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclHabilidadesIniciaisPequeno:setParent(obj.layout36);
     obj.rclHabilidadesIniciaisPequeno:setName("rclHabilidadesIniciaisPequeno");
     obj.rclHabilidadesIniciaisPequeno:setField("campoDosHabilidadesIniciais");
@@ -2037,7 +2037,7 @@ function newfrmAMZ3()
     obj.rclHabilidadesIniciaisPequeno:setLayout("vertical");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_des) or 0);
             
             				local chance = 30;
@@ -2060,7 +2060,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_des) or 0) +
             									(tonumber(sheet.atr_bonus_des) or 0);
@@ -2069,7 +2069,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_per) or 0);
             
             				local chance = 30;
@@ -2092,7 +2092,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event3 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_per) or 0) +
             									(tonumber(sheet.atr_bonus_per) or 0);
@@ -2101,7 +2101,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event4 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_int) or 0);
             
             				local chance = 30;
@@ -2124,7 +2124,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event5 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_int) or 0) +
             									(tonumber(sheet.atr_bonus_int) or 0);
@@ -2133,7 +2133,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event6 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_con) or 0);
             
             				local chance = 30;
@@ -2156,7 +2156,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event7 = obj.dataLink4:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_con) or 0) +
             									(tonumber(sheet.atr_bonus_con) or 0);
@@ -2165,7 +2165,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event8 = obj.button5:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_fv) or 0);
             
             				local chance = 30;
@@ -2188,7 +2188,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event9 = obj.dataLink5:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_fv) or 0) +
             									(tonumber(sheet.atr_bonus_fv) or 0);
@@ -2197,7 +2197,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event10 = obj.button6:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_mir) or 0);
             
             				local chance = 30;
@@ -2220,7 +2220,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event11 = obj.dataLink6:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_mir) or 0) +
             									(tonumber(sheet.atr_bonus_mir) or 0);
@@ -2229,7 +2229,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event12 = obj.button7:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_rac) or 0);
             
             				local chance = 30;
@@ -2252,7 +2252,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event13 = obj.dataLink7:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_rac) or 0) +
             									(tonumber(sheet.atr_bonus_rac) or 0);
@@ -2261,7 +2261,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event14 = obj.button8:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_ref) or 0);
             
             				local chance = 30;
@@ -2284,7 +2284,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event15 = obj.dataLink8:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_ref) or 0) +
             									(tonumber(sheet.atr_bonus_ref) or 0);
@@ -2293,7 +2293,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event16 = obj.button9:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_hab) or 0);
             
             				local chance = 30;
@@ -2316,7 +2316,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event17 = obj.dataLink9:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_hab) or 0) +
             									(tonumber(sheet.atr_bonus_hab) or 0);
@@ -2325,7 +2325,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event18 = obj.button10:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_for) or 0);
             
             				local chance = 30;
@@ -2348,7 +2348,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event19 = obj.dataLink10:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_for) or 0) +
             									(tonumber(sheet.atr_bonus_for) or 0);
@@ -2357,7 +2357,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event20 = obj.button11:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_vel) or 0);
             
             				local chance = 30;
@@ -2380,7 +2380,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event21 = obj.dataLink11:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_vel) or 0) +
             									(tonumber(sheet.atr_bonus_vel) or 0);
@@ -2389,7 +2389,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event22 = obj.button12:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_maq) or 0);
             
             				local chance = 30;
@@ -2412,7 +2412,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event23 = obj.dataLink12:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_maq) or 0) +
             									(tonumber(sheet.atr_bonus_maq) or 0);
@@ -2421,7 +2421,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event24 = obj.button13:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_ce) or 0);
             
             				local chance = 30;
@@ -2444,7 +2444,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event25 = obj.dataLink13:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_ce) or 0) +
             									(tonumber(sheet.atr_bonus_ce) or 0);
@@ -2453,7 +2453,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event26 = obj.button14:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_pf) or 0);
             
             				local chance = 30;
@@ -2476,7 +2476,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event27 = obj.dataLink14:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_pf) or 0) +
             									(tonumber(sheet.atr_bonus_pf) or 0);
@@ -2485,7 +2485,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event28 = obj.button15:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_agi) or 0);
             
             				local chance = 30;
@@ -2508,7 +2508,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event29 = obj.dataLink15:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_agi) or 0) +
             									(tonumber(sheet.atr_bonus_agi) or 0);
@@ -2517,7 +2517,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event30 = obj.button16:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_res) or 0);
             
             				local chance = 30;
@@ -2540,7 +2540,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event31 = obj.dataLink16:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_res) or 0) +
             									(tonumber(sheet.atr_bonus_res) or 0);
@@ -2549,7 +2549,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event32 = obj.button17:addEventListener("onClick",
-        function (self)
+        function (_)
             local atributo = (tonumber(sheet.atr_efetivo_voo) or 0);
             
             				local chance = 30;
@@ -2572,7 +2572,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event33 = obj.dataLink17:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet~=nil then
             					local total = 	(tonumber(sheet.atr_total_voo) or 0) +
             									(tonumber(sheet.atr_bonus_voo) or 0);
@@ -2581,7 +2581,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event34 = obj.button18:addEventListener("onClick",
-        function (self)
+        function (_)
             local roll = sheet.roll_iniciativa or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
@@ -2589,7 +2589,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event35 = obj.dataLink18:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet == nil then return end;
             
             				local f1 = tonumber(sheet.atr_efetivo_ref) or 0;
@@ -2601,7 +2601,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event36 = obj.button19:addEventListener("onClick",
-        function (self)
+        function (_)
             local roll = sheet.roll_acertos_cac or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
@@ -2609,7 +2609,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event37 = obj.dataLink19:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet == nil then return end;
             
             				local f1 = tonumber(sheet.atr_efetivo_des) or 0;
@@ -2621,7 +2621,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event38 = obj.button20:addEventListener("onClick",
-        function (self)
+        function (_)
             local roll = sheet.roll_acertos_dist or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
@@ -2629,7 +2629,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event39 = obj.dataLink20:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet == nil then return end;
             
             				local f1 = tonumber(sheet.atr_efetivo_mir) or 0;
@@ -2641,7 +2641,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event40 = obj.button21:addEventListener("onClick",
-        function (self)
+        function (_)
             local roll = sheet.roll_acertos_bloqueio or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
@@ -2649,7 +2649,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event41 = obj.dataLink21:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet == nil then return end;
             
             				local f1 = tonumber(sheet.atr_efetivo_ref) or 0;
@@ -2661,7 +2661,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event42 = obj.button22:addEventListener("onClick",
-        function (self)
+        function (_)
             local roll = sheet.roll_acertos_escape or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
@@ -2669,7 +2669,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event43 = obj.dataLink22:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet == nil then return end;
             
             				local f1 = tonumber(sheet.atr_efetivo_per) or 0;
@@ -2681,7 +2681,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event44 = obj.button23:addEventListener("onClick",
-        function (self)
+        function (_)
             local roll = sheet.roll_acertos_agarrao or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
@@ -2689,7 +2689,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event45 = obj.dataLink23:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet == nil then return end;
             
             				local f1 = tonumber(sheet.atr_efetivo_for) or 0;
@@ -2701,7 +2701,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event46 = obj.button24:addEventListener("onClick",
-        function (self)
+        function (_)
             local roll = sheet.roll_acertos_counter or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
@@ -2709,7 +2709,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event47 = obj.dataLink24:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet == nil then return end;
             
             				local f1 = tonumber(sheet.atr_efetivo_hab) or 0;
@@ -2721,7 +2721,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event48 = obj.button25:addEventListener("onClick",
-        function (self)
+        function (_)
             local roll = sheet.roll_ataques_cac or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
@@ -2729,7 +2729,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event49 = obj.dataLink25:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet == nil then return end;
             
             				local f1 = tonumber(sheet.atr_efetivo_for) or 0;
@@ -2741,7 +2741,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event50 = obj.button26:addEventListener("onClick",
-        function (self)
+        function (_)
             local roll = sheet.roll_ataques_dist or "1d1-1";
             				local rolagem = rrpg.interpretarRolagem(roll);
             				local mesa = rrpg.getMesaDe(sheet);
@@ -2749,7 +2749,7 @@ function newfrmAMZ3()
         end, obj);
 
     obj._e_event51 = obj.dataLink26:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet == nil then return end;
             
             				local f1 = tonumber(sheet.atr_efetivo_pf) or 0;
@@ -3019,9 +3019,23 @@ function newfrmAMZ3()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmAMZ3()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmAMZ3();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmAMZ3 = {
@@ -3035,6 +3049,6 @@ local _frmAMZ3 = {
     description=""};
 
 frmAMZ3 = _frmAMZ3;
-rrpg.registrarForm(_frmAMZ3);
+Firecast.registrarForm(_frmAMZ3);
 
 return _frmAMZ3;

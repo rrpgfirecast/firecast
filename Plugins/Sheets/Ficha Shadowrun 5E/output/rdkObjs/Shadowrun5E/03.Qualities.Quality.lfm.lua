@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmQuality()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmQuality()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,13 +31,13 @@ function newfrmQuality()
     obj:setHeight(25);
     obj:setMargins({top=1});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setLeft(0);
     obj.edit1:setTop(0);
@@ -46,7 +46,7 @@ function newfrmQuality()
     obj.edit1:setField("quality_name");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.rectangle1);
     obj.edit2:setLeft(150);
     obj.edit2:setTop(0);
@@ -55,7 +55,7 @@ function newfrmQuality()
     obj.edit2:setField("quality_notes");
     obj.edit2:setName("edit2");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.rectangle1);
     obj.edit3:setLeft(300);
     obj.edit3:setTop(0);
@@ -66,7 +66,7 @@ function newfrmQuality()
     obj.edit3:setType("number");
     obj.edit3:setName("edit3");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(350);
     obj.button1:setTop(0);
@@ -75,13 +75,13 @@ function newfrmQuality()
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.rectangle1);
     obj.dataLink1:setField("quality_karma");
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
             					function (confirmado)
             						if confirmado then
@@ -91,7 +91,7 @@ function newfrmQuality()
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             				local node = ndb.getRoot(sheet);
@@ -136,9 +136,23 @@ function newfrmQuality()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmQuality()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmQuality();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmQuality = {
@@ -152,6 +166,6 @@ local _frmQuality = {
     description=""};
 
 frmQuality = _frmQuality;
-rrpg.registrarForm(_frmQuality);
+Firecast.registrarForm(_frmQuality);
 
 return _frmQuality;

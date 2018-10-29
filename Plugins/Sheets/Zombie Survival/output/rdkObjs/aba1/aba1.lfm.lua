@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmaba1()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmaba1()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -33,38 +33,38 @@ function newfrmaba1()
     obj:setAlign("client");
     obj:setTheme("light");
 
-    obj.frmaba11_svg = gui.fromHandle(_obj_newObject("form"));
+    obj.frmaba11_svg = GUI.fromHandle(_obj_newObject("form"));
     obj.frmaba11_svg:setParent(obj);
     obj.frmaba11_svg:setName("frmaba11_svg");
     obj.frmaba11_svg:setAlign("client");
     obj.frmaba11_svg:setTheme("light");
     obj.frmaba11_svg:setMargins({top=1});
 
-    obj.tabControl1 = gui.fromHandle(_obj_newObject("tabControl"));
+    obj.tabControl1 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl1:setParent(obj.frmaba11_svg);
     obj.tabControl1:setLeft(0);
     obj.tabControl1:setTop(0);
     obj.tabControl1:setAlign("client");
     obj.tabControl1:setName("tabControl1");
 
-    obj.tab1 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab1 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab1:setParent(obj.tabControl1);
     obj.tab1:setTitle("Personagem");
     obj.tab1:setName("tab1");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj.tab1);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setWidth(918);
     obj.rectangle1:setHeight(1188);
     obj.rectangle1:setColor("white");
     obj.rectangle1:setName("rectangle1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.rectangle1);
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
@@ -75,7 +75,7 @@ function newfrmaba1()
     obj.image1:setOptimize(true);
     obj.image1:setName("image1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.rectangle1);
     obj.layout1:setLeft(187);
     obj.layout1:setTop(189);
@@ -83,7 +83,7 @@ function newfrmaba1()
     obj.layout1:setHeight(29);
     obj.layout1:setName("layout1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setTransparent(true);
     obj.edit1:setFontSize(25);
@@ -96,7 +96,7 @@ function newfrmaba1()
     obj.edit1:setField("untitled1");
     obj.edit1:setName("edit1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.rectangle1);
     obj.layout2:setLeft(181);
     obj.layout2:setTop(227);
@@ -104,7 +104,7 @@ function newfrmaba1()
     obj.layout2:setHeight(29);
     obj.layout2:setName("layout2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout2);
     obj.edit2:setTransparent(true);
     obj.edit2:setFontSize(25);
@@ -117,7 +117,7 @@ function newfrmaba1()
     obj.edit2:setField("untitled2");
     obj.edit2:setName("edit2");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.rectangle1);
     obj.layout3:setLeft(226);
     obj.layout3:setTop(267);
@@ -125,7 +125,7 @@ function newfrmaba1()
     obj.layout3:setHeight(29);
     obj.layout3:setName("layout3");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout3);
     obj.edit3:setTransparent(true);
     obj.edit3:setFontSize(25);
@@ -138,7 +138,7 @@ function newfrmaba1()
     obj.edit3:setField("untitled3");
     obj.edit3:setName("edit3");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.rectangle1);
     obj.layout4:setLeft(87);
     obj.layout4:setTop(375);
@@ -146,7 +146,7 @@ function newfrmaba1()
     obj.layout4:setHeight(140);
     obj.layout4:setName("layout4");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout4);
     obj.textEditor1:setLeft(0);
     obj.textEditor1:setTop(0);
@@ -158,7 +158,7 @@ function newfrmaba1()
     obj.textEditor1:setTransparent(true);
     obj.textEditor1:setName("textEditor1");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.rectangle1);
     obj.layout5:setLeft(491);
     obj.layout5:setTop(181);
@@ -166,7 +166,7 @@ function newfrmaba1()
     obj.layout5:setHeight(325);
     obj.layout5:setName("layout5");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.layout5);
     obj.image2:setField("imagemDoPersonagem");
     obj.image2:setEditable(true);
@@ -177,7 +177,7 @@ function newfrmaba1()
     obj.image2:setHeight(325);
     obj.image2:setName("image2");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.rectangle1);
     obj.layout6:setLeft(181);
     obj.layout6:setTop(596);
@@ -185,7 +185,7 @@ function newfrmaba1()
     obj.layout6:setHeight(27);
     obj.layout6:setName("layout6");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout6);
     obj.edit4:setTransparent(true);
     obj.edit4:setFontSize(25);
@@ -198,7 +198,7 @@ function newfrmaba1()
     obj.edit4:setField("untitled6");
     obj.edit4:setName("edit4");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.rectangle1);
     obj.layout7:setLeft(183);
     obj.layout7:setTop(635);
@@ -206,7 +206,7 @@ function newfrmaba1()
     obj.layout7:setHeight(27);
     obj.layout7:setName("layout7");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout7);
     obj.edit5:setTransparent(true);
     obj.edit5:setFontSize(25);
@@ -219,7 +219,7 @@ function newfrmaba1()
     obj.edit5:setField("untitled7");
     obj.edit5:setName("edit5");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.rectangle1);
     obj.layout8:setLeft(259);
     obj.layout8:setTop(675);
@@ -227,7 +227,7 @@ function newfrmaba1()
     obj.layout8:setHeight(28);
     obj.layout8:setName("layout8");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout8);
     obj.edit6:setTransparent(true);
     obj.edit6:setFontSize(25);
@@ -240,7 +240,7 @@ function newfrmaba1()
     obj.edit6:setField("untitled8");
     obj.edit6:setName("edit6");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.rectangle1);
     obj.layout9:setLeft(542);
     obj.layout9:setTop(595);
@@ -248,7 +248,7 @@ function newfrmaba1()
     obj.layout9:setHeight(28);
     obj.layout9:setName("layout9");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout9);
     obj.edit7:setTransparent(true);
     obj.edit7:setFontSize(25);
@@ -261,7 +261,7 @@ function newfrmaba1()
     obj.edit7:setField("untitled9");
     obj.edit7:setName("edit7");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.rectangle1);
     obj.layout10:setLeft(624);
     obj.layout10:setTop(635);
@@ -269,7 +269,7 @@ function newfrmaba1()
     obj.layout10:setHeight(28);
     obj.layout10:setName("layout10");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.layout10);
     obj.edit8:setTransparent(true);
     obj.edit8:setFontSize(25);
@@ -282,7 +282,7 @@ function newfrmaba1()
     obj.edit8:setField("untitled10");
     obj.edit8:setName("edit8");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.rectangle1);
     obj.layout11:setLeft(340);
     obj.layout11:setTop(794);
@@ -290,7 +290,7 @@ function newfrmaba1()
     obj.layout11:setHeight(29);
     obj.layout11:setName("layout11");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.layout11);
     obj.edit9:setTransparent(true);
     obj.edit9:setFontSize(25);
@@ -303,7 +303,7 @@ function newfrmaba1()
     obj.edit9:setField("untitled11");
     obj.edit9:setName("edit9");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.rectangle1);
     obj.layout12:setLeft(407);
     obj.layout12:setTop(794);
@@ -311,7 +311,7 @@ function newfrmaba1()
     obj.layout12:setHeight(29);
     obj.layout12:setName("layout12");
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.layout12);
     obj.edit10:setTransparent(true);
     obj.edit10:setFontSize(25);
@@ -324,7 +324,7 @@ function newfrmaba1()
     obj.edit10:setField("untitled12");
     obj.edit10:setName("edit10");
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.rectangle1);
     obj.layout13:setLeft(341);
     obj.layout13:setTop(833);
@@ -332,7 +332,7 @@ function newfrmaba1()
     obj.layout13:setHeight(29);
     obj.layout13:setName("layout13");
 
-    obj.edit11 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit11:setParent(obj.layout13);
     obj.edit11:setTransparent(true);
     obj.edit11:setFontSize(25);
@@ -345,7 +345,7 @@ function newfrmaba1()
     obj.edit11:setField("untitled13");
     obj.edit11:setName("edit11");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.rectangle1);
     obj.layout14:setLeft(407);
     obj.layout14:setTop(834);
@@ -353,7 +353,7 @@ function newfrmaba1()
     obj.layout14:setHeight(29);
     obj.layout14:setName("layout14");
 
-    obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit12:setParent(obj.layout14);
     obj.edit12:setTransparent(true);
     obj.edit12:setFontSize(25);
@@ -366,7 +366,7 @@ function newfrmaba1()
     obj.edit12:setField("untitled14");
     obj.edit12:setName("edit12");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.rectangle1);
     obj.layout15:setLeft(342);
     obj.layout15:setTop(873);
@@ -374,7 +374,7 @@ function newfrmaba1()
     obj.layout15:setHeight(29);
     obj.layout15:setName("layout15");
 
-    obj.edit13 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit13:setParent(obj.layout15);
     obj.edit13:setTransparent(true);
     obj.edit13:setFontSize(25);
@@ -387,7 +387,7 @@ function newfrmaba1()
     obj.edit13:setField("untitled15");
     obj.edit13:setName("edit13");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.rectangle1);
     obj.layout16:setLeft(406);
     obj.layout16:setTop(872);
@@ -395,7 +395,7 @@ function newfrmaba1()
     obj.layout16:setHeight(29);
     obj.layout16:setName("layout16");
 
-    obj.edit14 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit14:setParent(obj.layout16);
     obj.edit14:setTransparent(true);
     obj.edit14:setFontSize(25);
@@ -408,7 +408,7 @@ function newfrmaba1()
     obj.edit14:setField("untitled16");
     obj.edit14:setName("edit14");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.rectangle1);
     obj.layout17:setLeft(342);
     obj.layout17:setTop(910);
@@ -416,7 +416,7 @@ function newfrmaba1()
     obj.layout17:setHeight(29);
     obj.layout17:setName("layout17");
 
-    obj.edit15 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit15:setParent(obj.layout17);
     obj.edit15:setTransparent(true);
     obj.edit15:setFontSize(25);
@@ -429,7 +429,7 @@ function newfrmaba1()
     obj.edit15:setField("untitled17");
     obj.edit15:setName("edit15");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.rectangle1);
     obj.layout18:setLeft(406);
     obj.layout18:setTop(912);
@@ -437,7 +437,7 @@ function newfrmaba1()
     obj.layout18:setHeight(29);
     obj.layout18:setName("layout18");
 
-    obj.edit16 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit16:setParent(obj.layout18);
     obj.edit16:setTransparent(true);
     obj.edit16:setFontSize(25);
@@ -450,7 +450,7 @@ function newfrmaba1()
     obj.edit16:setField("untitled18");
     obj.edit16:setName("edit16");
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.rectangle1);
     obj.layout19:setLeft(340);
     obj.layout19:setTop(949);
@@ -458,7 +458,7 @@ function newfrmaba1()
     obj.layout19:setHeight(29);
     obj.layout19:setName("layout19");
 
-    obj.edit17 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit17:setParent(obj.layout19);
     obj.edit17:setTransparent(true);
     obj.edit17:setFontSize(25);
@@ -471,7 +471,7 @@ function newfrmaba1()
     obj.edit17:setField("untitled19");
     obj.edit17:setName("edit17");
 
-    obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.rectangle1);
     obj.layout20:setLeft(408);
     obj.layout20:setTop(949);
@@ -479,7 +479,7 @@ function newfrmaba1()
     obj.layout20:setHeight(29);
     obj.layout20:setName("layout20");
 
-    obj.edit18 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit18:setParent(obj.layout20);
     obj.edit18:setTransparent(true);
     obj.edit18:setFontSize(25);
@@ -492,7 +492,7 @@ function newfrmaba1()
     obj.edit18:setField("untitled20");
     obj.edit18:setName("edit18");
 
-    obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.rectangle1);
     obj.layout21:setLeft(343);
     obj.layout21:setTop(988);
@@ -500,7 +500,7 @@ function newfrmaba1()
     obj.layout21:setHeight(29);
     obj.layout21:setName("layout21");
 
-    obj.edit19 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit19:setParent(obj.layout21);
     obj.edit19:setTransparent(true);
     obj.edit19:setFontSize(25);
@@ -513,7 +513,7 @@ function newfrmaba1()
     obj.edit19:setField("untitled21");
     obj.edit19:setName("edit19");
 
-    obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.rectangle1);
     obj.layout22:setLeft(405);
     obj.layout22:setTop(988);
@@ -521,7 +521,7 @@ function newfrmaba1()
     obj.layout22:setHeight(29);
     obj.layout22:setName("layout22");
 
-    obj.edit20 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit20:setParent(obj.layout22);
     obj.edit20:setTransparent(true);
     obj.edit20:setFontSize(25);
@@ -534,7 +534,7 @@ function newfrmaba1()
     obj.edit20:setField("untitled22");
     obj.edit20:setName("edit20");
 
-    obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.rectangle1);
     obj.layout23:setLeft(340);
     obj.layout23:setTop(1028);
@@ -542,7 +542,7 @@ function newfrmaba1()
     obj.layout23:setHeight(29);
     obj.layout23:setName("layout23");
 
-    obj.edit21 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit21:setParent(obj.layout23);
     obj.edit21:setTransparent(true);
     obj.edit21:setFontSize(25);
@@ -555,7 +555,7 @@ function newfrmaba1()
     obj.edit21:setField("untitled23");
     obj.edit21:setName("edit21");
 
-    obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.rectangle1);
     obj.layout24:setLeft(406);
     obj.layout24:setTop(1027);
@@ -563,7 +563,7 @@ function newfrmaba1()
     obj.layout24:setHeight(29);
     obj.layout24:setName("layout24");
 
-    obj.edit22 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit22:setParent(obj.layout24);
     obj.edit22:setTransparent(true);
     obj.edit22:setFontSize(25);
@@ -576,7 +576,7 @@ function newfrmaba1()
     obj.edit22:setField("untitled24");
     obj.edit22:setName("edit22");
 
-    obj.layout25 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.rectangle1);
     obj.layout25:setLeft(342);
     obj.layout25:setTop(1068);
@@ -584,7 +584,7 @@ function newfrmaba1()
     obj.layout25:setHeight(29);
     obj.layout25:setName("layout25");
 
-    obj.edit23 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit23:setParent(obj.layout25);
     obj.edit23:setTransparent(true);
     obj.edit23:setFontSize(25);
@@ -597,7 +597,7 @@ function newfrmaba1()
     obj.edit23:setField("untitled25");
     obj.edit23:setName("edit23");
 
-    obj.layout26 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.rectangle1);
     obj.layout26:setLeft(406);
     obj.layout26:setTop(1067);
@@ -605,7 +605,7 @@ function newfrmaba1()
     obj.layout26:setHeight(29);
     obj.layout26:setName("layout26");
 
-    obj.edit24 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit24:setParent(obj.layout26);
     obj.edit24:setTransparent(true);
     obj.edit24:setFontSize(25);
@@ -618,7 +618,7 @@ function newfrmaba1()
     obj.edit24:setField("untitled26");
     obj.edit24:setName("edit24");
 
-    obj.layout27 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.rectangle1);
     obj.layout27:setLeft(696);
     obj.layout27:setTop(795);
@@ -626,7 +626,7 @@ function newfrmaba1()
     obj.layout27:setHeight(29);
     obj.layout27:setName("layout27");
 
-    obj.edit25 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit25:setParent(obj.layout27);
     obj.edit25:setTransparent(true);
     obj.edit25:setFontSize(25);
@@ -639,7 +639,7 @@ function newfrmaba1()
     obj.edit25:setField("untitled27");
     obj.edit25:setName("edit25");
 
-    obj.layout28 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.rectangle1);
     obj.layout28:setLeft(758);
     obj.layout28:setTop(794);
@@ -647,7 +647,7 @@ function newfrmaba1()
     obj.layout28:setHeight(29);
     obj.layout28:setName("layout28");
 
-    obj.edit26 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit26:setParent(obj.layout28);
     obj.edit26:setTransparent(true);
     obj.edit26:setFontSize(25);
@@ -660,7 +660,7 @@ function newfrmaba1()
     obj.edit26:setField("untitled28");
     obj.edit26:setName("edit26");
 
-    obj.layout29 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout29:setParent(obj.rectangle1);
     obj.layout29:setLeft(695);
     obj.layout29:setTop(834);
@@ -668,7 +668,7 @@ function newfrmaba1()
     obj.layout29:setHeight(29);
     obj.layout29:setName("layout29");
 
-    obj.edit27 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit27 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit27:setParent(obj.layout29);
     obj.edit27:setTransparent(true);
     obj.edit27:setFontSize(25);
@@ -681,7 +681,7 @@ function newfrmaba1()
     obj.edit27:setField("untitled29");
     obj.edit27:setName("edit27");
 
-    obj.layout30 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout30:setParent(obj.rectangle1);
     obj.layout30:setLeft(761);
     obj.layout30:setTop(834);
@@ -689,7 +689,7 @@ function newfrmaba1()
     obj.layout30:setHeight(29);
     obj.layout30:setName("layout30");
 
-    obj.edit28 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit28 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit28:setParent(obj.layout30);
     obj.edit28:setTransparent(true);
     obj.edit28:setFontSize(25);
@@ -702,7 +702,7 @@ function newfrmaba1()
     obj.edit28:setField("untitled30");
     obj.edit28:setName("edit28");
 
-    obj.layout31 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.rectangle1);
     obj.layout31:setLeft(695);
     obj.layout31:setTop(874);
@@ -710,7 +710,7 @@ function newfrmaba1()
     obj.layout31:setHeight(29);
     obj.layout31:setName("layout31");
 
-    obj.edit29 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit29 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit29:setParent(obj.layout31);
     obj.edit29:setTransparent(true);
     obj.edit29:setFontSize(25);
@@ -723,7 +723,7 @@ function newfrmaba1()
     obj.edit29:setField("untitled31");
     obj.edit29:setName("edit29");
 
-    obj.layout32 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.rectangle1);
     obj.layout32:setLeft(760);
     obj.layout32:setTop(874);
@@ -731,7 +731,7 @@ function newfrmaba1()
     obj.layout32:setHeight(29);
     obj.layout32:setName("layout32");
 
-    obj.edit30 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit30 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit30:setParent(obj.layout32);
     obj.edit30:setTransparent(true);
     obj.edit30:setFontSize(25);
@@ -744,7 +744,7 @@ function newfrmaba1()
     obj.edit30:setField("untitled32");
     obj.edit30:setName("edit30");
 
-    obj.layout33 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout33:setParent(obj.rectangle1);
     obj.layout33:setLeft(695);
     obj.layout33:setTop(912);
@@ -752,7 +752,7 @@ function newfrmaba1()
     obj.layout33:setHeight(29);
     obj.layout33:setName("layout33");
 
-    obj.edit31 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit31:setParent(obj.layout33);
     obj.edit31:setTransparent(true);
     obj.edit31:setFontSize(25);
@@ -765,7 +765,7 @@ function newfrmaba1()
     obj.edit31:setField("untitled33");
     obj.edit31:setName("edit31");
 
-    obj.layout34 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout34 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout34:setParent(obj.rectangle1);
     obj.layout34:setLeft(760);
     obj.layout34:setTop(912);
@@ -773,7 +773,7 @@ function newfrmaba1()
     obj.layout34:setHeight(29);
     obj.layout34:setName("layout34");
 
-    obj.edit32 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit32:setParent(obj.layout34);
     obj.edit32:setTransparent(true);
     obj.edit32:setFontSize(25);
@@ -786,7 +786,7 @@ function newfrmaba1()
     obj.edit32:setField("untitled34");
     obj.edit32:setName("edit32");
 
-    obj.layout35 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout35:setParent(obj.rectangle1);
     obj.layout35:setLeft(694);
     obj.layout35:setTop(949);
@@ -794,7 +794,7 @@ function newfrmaba1()
     obj.layout35:setHeight(29);
     obj.layout35:setName("layout35");
 
-    obj.edit33 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit33 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit33:setParent(obj.layout35);
     obj.edit33:setTransparent(true);
     obj.edit33:setFontSize(25);
@@ -807,7 +807,7 @@ function newfrmaba1()
     obj.edit33:setField("untitled35");
     obj.edit33:setName("edit33");
 
-    obj.layout36 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout36:setParent(obj.rectangle1);
     obj.layout36:setLeft(758);
     obj.layout36:setTop(949);
@@ -815,7 +815,7 @@ function newfrmaba1()
     obj.layout36:setHeight(29);
     obj.layout36:setName("layout36");
 
-    obj.edit34 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit34:setParent(obj.layout36);
     obj.edit34:setTransparent(true);
     obj.edit34:setFontSize(25);
@@ -828,7 +828,7 @@ function newfrmaba1()
     obj.edit34:setField("untitled36");
     obj.edit34:setName("edit34");
 
-    obj.layout37 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout37 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout37:setParent(obj.rectangle1);
     obj.layout37:setLeft(696);
     obj.layout37:setTop(988);
@@ -836,7 +836,7 @@ function newfrmaba1()
     obj.layout37:setHeight(29);
     obj.layout37:setName("layout37");
 
-    obj.edit35 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit35 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit35:setParent(obj.layout37);
     obj.edit35:setTransparent(true);
     obj.edit35:setFontSize(25);
@@ -849,7 +849,7 @@ function newfrmaba1()
     obj.edit35:setField("untitled37");
     obj.edit35:setName("edit35");
 
-    obj.layout38 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout38 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout38:setParent(obj.rectangle1);
     obj.layout38:setLeft(761);
     obj.layout38:setTop(988);
@@ -857,7 +857,7 @@ function newfrmaba1()
     obj.layout38:setHeight(29);
     obj.layout38:setName("layout38");
 
-    obj.edit36 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit36:setParent(obj.layout38);
     obj.edit36:setTransparent(true);
     obj.edit36:setFontSize(25);
@@ -870,7 +870,7 @@ function newfrmaba1()
     obj.edit36:setField("untitled38");
     obj.edit36:setName("edit36");
 
-    obj.layout39 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout39 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout39:setParent(obj.rectangle1);
     obj.layout39:setLeft(696);
     obj.layout39:setTop(1028);
@@ -878,7 +878,7 @@ function newfrmaba1()
     obj.layout39:setHeight(29);
     obj.layout39:setName("layout39");
 
-    obj.edit37 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit37 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit37:setParent(obj.layout39);
     obj.edit37:setTransparent(true);
     obj.edit37:setFontSize(25);
@@ -891,7 +891,7 @@ function newfrmaba1()
     obj.edit37:setField("untitled39");
     obj.edit37:setName("edit37");
 
-    obj.layout40 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout40 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout40:setParent(obj.rectangle1);
     obj.layout40:setLeft(759);
     obj.layout40:setTop(1028);
@@ -899,7 +899,7 @@ function newfrmaba1()
     obj.layout40:setHeight(29);
     obj.layout40:setName("layout40");
 
-    obj.edit38 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit38 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit38:setParent(obj.layout40);
     obj.edit38:setTransparent(true);
     obj.edit38:setFontSize(25);
@@ -912,7 +912,7 @@ function newfrmaba1()
     obj.edit38:setField("untitled40");
     obj.edit38:setName("edit38");
 
-    obj.layout41 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout41 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout41:setParent(obj.rectangle1);
     obj.layout41:setLeft(694);
     obj.layout41:setTop(1068);
@@ -920,7 +920,7 @@ function newfrmaba1()
     obj.layout41:setHeight(29);
     obj.layout41:setName("layout41");
 
-    obj.edit39 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit39 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit39:setParent(obj.layout41);
     obj.edit39:setTransparent(true);
     obj.edit39:setFontSize(25);
@@ -933,7 +933,7 @@ function newfrmaba1()
     obj.edit39:setField("untitled41");
     obj.edit39:setName("edit39");
 
-    obj.layout42 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout42 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout42:setParent(obj.rectangle1);
     obj.layout42:setLeft(759);
     obj.layout42:setTop(1067);
@@ -941,7 +941,7 @@ function newfrmaba1()
     obj.layout42:setHeight(29);
     obj.layout42:setName("layout42");
 
-    obj.edit40 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit40 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit40:setParent(obj.layout42);
     obj.edit40:setTransparent(true);
     obj.edit40:setFontSize(25);
@@ -954,24 +954,24 @@ function newfrmaba1()
     obj.edit40:setField("untitled42");
     obj.edit40:setName("edit40");
 
-    obj.tab2 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.tabControl1);
     obj.tab2:setTitle("Equipamentos");
     obj.tab2:setName("tab2");
 
-    obj.scrollBox2 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox2:setParent(obj.tab2);
     obj.scrollBox2:setAlign("client");
     obj.scrollBox2:setName("scrollBox2");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.scrollBox2);
     obj.rectangle2:setWidth(918);
     obj.rectangle2:setHeight(1188);
     obj.rectangle2:setColor("white");
     obj.rectangle2:setName("rectangle2");
 
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
     obj.image3:setParent(obj.rectangle2);
     obj.image3:setLeft(0);
     obj.image3:setTop(0);
@@ -982,7 +982,7 @@ function newfrmaba1()
     obj.image3:setOptimize(true);
     obj.image3:setName("image3");
 
-    obj.layout43 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout43 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout43:setParent(obj.rectangle2);
     obj.layout43:setLeft(85);
     obj.layout43:setTop(215);
@@ -990,7 +990,7 @@ function newfrmaba1()
     obj.layout43:setHeight(230);
     obj.layout43:setName("layout43");
 
-    obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.layout43);
     obj.textEditor2:setLeft(0);
     obj.textEditor2:setTop(0);
@@ -1002,7 +1002,7 @@ function newfrmaba1()
     obj.textEditor2:setTransparent(true);
     obj.textEditor2:setName("textEditor2");
 
-    obj.layout44 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout44 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout44:setParent(obj.rectangle2);
     obj.layout44:setLeft(90);
     obj.layout44:setTop(720);
@@ -1010,7 +1010,7 @@ function newfrmaba1()
     obj.layout44:setHeight(164);
     obj.layout44:setName("layout44");
 
-    obj.textEditor3 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor3:setParent(obj.layout44);
     obj.textEditor3:setLeft(0);
     obj.textEditor3:setTop(0);
@@ -1022,7 +1022,7 @@ function newfrmaba1()
     obj.textEditor3:setTransparent(true);
     obj.textEditor3:setName("textEditor3");
 
-    obj.layout45 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout45 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout45:setParent(obj.rectangle2);
     obj.layout45:setLeft(490);
     obj.layout45:setTop(720);
@@ -1030,7 +1030,7 @@ function newfrmaba1()
     obj.layout45:setHeight(167);
     obj.layout45:setName("layout45");
 
-    obj.textEditor4 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor4:setParent(obj.layout45);
     obj.textEditor4:setLeft(0);
     obj.textEditor4:setTop(0);
@@ -1042,7 +1042,7 @@ function newfrmaba1()
     obj.textEditor4:setTransparent(true);
     obj.textEditor4:setName("textEditor4");
 
-    obj.layout46 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout46 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout46:setParent(obj.rectangle2);
     obj.layout46:setLeft(87);
     obj.layout46:setTop(960);
@@ -1050,7 +1050,7 @@ function newfrmaba1()
     obj.layout46:setHeight(217);
     obj.layout46:setName("layout46");
 
-    obj.textEditor5 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor5:setParent(obj.layout46);
     obj.textEditor5:setLeft(0);
     obj.textEditor5:setTop(0);
@@ -1062,7 +1062,7 @@ function newfrmaba1()
     obj.textEditor5:setTransparent(true);
     obj.textEditor5:setName("textEditor5");
 
-    obj.layout47 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout47 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout47:setParent(obj.rectangle2);
     obj.layout47:setLeft(201);
     obj.layout47:setTop(497);
@@ -1070,7 +1070,7 @@ function newfrmaba1()
     obj.layout47:setHeight(35);
     obj.layout47:setName("layout47");
 
-    obj.edit41 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit41:setParent(obj.layout47);
     obj.edit41:setTransparent(true);
     obj.edit41:setFontSize(25);
@@ -1083,7 +1083,7 @@ function newfrmaba1()
     obj.edit41:setField("untitled47");
     obj.edit41:setName("edit41");
 
-    obj.layout48 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout48 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout48:setParent(obj.rectangle2);
     obj.layout48:setLeft(194);
     obj.layout48:setTop(534);
@@ -1091,7 +1091,7 @@ function newfrmaba1()
     obj.layout48:setHeight(35);
     obj.layout48:setName("layout48");
 
-    obj.edit42 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit42:setParent(obj.layout48);
     obj.edit42:setTransparent(true);
     obj.edit42:setFontSize(25);
@@ -1104,7 +1104,7 @@ function newfrmaba1()
     obj.edit42:setField("untitled48");
     obj.edit42:setName("edit42");
 
-    obj.layout49 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout49:setParent(obj.rectangle2);
     obj.layout49:setLeft(150);
     obj.layout49:setTop(572);
@@ -1112,7 +1112,7 @@ function newfrmaba1()
     obj.layout49:setHeight(36);
     obj.layout49:setName("layout49");
 
-    obj.edit43 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit43 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit43:setParent(obj.layout49);
     obj.edit43:setTransparent(true);
     obj.edit43:setFontSize(25);
@@ -1125,7 +1125,7 @@ function newfrmaba1()
     obj.edit43:setField("untitled49");
     obj.edit43:setName("edit43");
 
-    obj.layout50 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout50 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout50:setParent(obj.rectangle2);
     obj.layout50:setLeft(654);
     obj.layout50:setTop(494);
@@ -1133,7 +1133,7 @@ function newfrmaba1()
     obj.layout50:setHeight(38);
     obj.layout50:setName("layout50");
 
-    obj.edit44 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit44 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit44:setParent(obj.layout50);
     obj.edit44:setTransparent(true);
     obj.edit44:setFontSize(25);
@@ -1146,7 +1146,7 @@ function newfrmaba1()
     obj.edit44:setField("untitled50");
     obj.edit44:setName("edit44");
 
-    obj.layout51 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout51 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout51:setParent(obj.rectangle2);
     obj.layout51:setLeft(623);
     obj.layout51:setTop(534);
@@ -1154,7 +1154,7 @@ function newfrmaba1()
     obj.layout51:setHeight(35);
     obj.layout51:setName("layout51");
 
-    obj.edit45 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit45:setParent(obj.layout51);
     obj.edit45:setTransparent(true);
     obj.edit45:setFontSize(25);
@@ -1167,7 +1167,7 @@ function newfrmaba1()
     obj.edit45:setField("untitled51");
     obj.edit45:setName("edit45");
 
-    obj.layout52 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout52 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout52:setParent(obj.rectangle2);
     obj.layout52:setLeft(550);
     obj.layout52:setTop(575);
@@ -1175,7 +1175,7 @@ function newfrmaba1()
     obj.layout52:setHeight(36);
     obj.layout52:setName("layout52");
 
-    obj.edit46 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit46:setParent(obj.layout52);
     obj.edit46:setTransparent(true);
     obj.edit46:setFontSize(25);
@@ -1188,7 +1188,7 @@ function newfrmaba1()
     obj.edit46:setField("untitled52");
     obj.edit46:setName("edit46");
 
-    obj.layout53 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout53 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout53:setParent(obj.rectangle2);
     obj.layout53:setLeft(607);
     obj.layout53:setTop(615);
@@ -1196,7 +1196,7 @@ function newfrmaba1()
     obj.layout53:setHeight(32);
     obj.layout53:setName("layout53");
 
-    obj.edit47 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit47:setParent(obj.layout53);
     obj.edit47:setTransparent(true);
     obj.edit47:setFontSize(25);
@@ -1342,9 +1342,23 @@ function newfrmaba1()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmaba1()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmaba1();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmaba1 = {
@@ -1358,7 +1372,7 @@ local _frmaba1 = {
     description=""};
 
 frmaba1 = _frmaba1;
-rrpg.registrarForm(_frmaba1);
-rrpg.registrarDataType(_frmaba1);
+Firecast.registrarForm(_frmaba1);
+Firecast.registrarDataType(_frmaba1);
 
 return _frmaba1;

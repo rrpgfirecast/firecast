@@ -1,7 +1,10 @@
 ﻿local objs = require("rrpgObjs.lua");
+local SharedObjects = require("rrpgSharedObjects.lua");
 local rrpgWrappers = {};
 local localStrongRefContextoObjects = {};	
 
+
+local SHARED_OBJECT_TYPE = "rrpgObject";
 
 --[ Anti Flood System ]--						
 
@@ -86,6 +89,8 @@ local function initWrappedObjectFromHandle(handle)
 	function wObj:getIsObjectAlive() return _obj_getProp(self.handle, "IsObjectAlive"); end;
 	function wObj:isType(typeName) return _rrpg_IsWrapperOfType(self.handle, typeName); end;
 	
+	function wObj:getShareID() return {objectType=SHARED_OBJECT_TYPE, objectID=tostring(self:getObjectID())} end;
+	
 	wObj.props["objectType"] = {getter = "getObjectType", tipo = "string"};
 	wObj.props["isObjectAlive"] = {getter = "getIsObjectAlive", tipo = "bool"};
 	wObj.props["objectID"] = {getter = "getObjectID", tipo = "int"};
@@ -150,7 +155,7 @@ local function initMesaWrappedObjectFromHandle(handle)
     function mesa:getLogotipo() return _obj_getProp(self.handle, "Logotipo"); end;    	
 	function mesa:getSistema() return _obj_getProp(self.handle, "Sistema"); end;
     function mesa:getMsgBoasVindas() return _obj_getProp(self.handle, "MsgBoasVindas"); end;    
-    function mesa:getCodigoInterno() return _obj_getProp(self.handle, "CodigoInterno"); end;    
+    function mesa:getCodigoInterno() return math.tointeger(_obj_getProp(self.handle, "CodigoInterno")); end;    
     function mesa:getIsRestrito18Anos() return _obj_getProp(self.handle, "IsRestrito18Anos"); end;  	
 	function mesa:getHaVagas() return _obj_getProp(self.handle, "HaVagas"); end;  		
     function mesa:getIsModerada() return _obj_getProp(self.handle, "IsModerada"); end;   
@@ -290,8 +295,11 @@ local function initJogadorWrappedObjectFromHandle(handle)
 	function jogador:requestSetMudo(mudo) self:__innerRequestSetMode("mudo", mudo); end;
 	function jogador:requestSetVoz(voz) self:__innerRequestSetMode("voz", voz); end;
 	function jogador:requestSetJogador(isJogador) self:__innerRequestSetMode("jogador", isJogador); end;
-	function jogador:requestKick() __serverRequestQueue:addJob(function() _obj_invoke(self.handle, "RequestKick", ""); end); end;
-	
+	function jogador:requestKick() __serverRequestQueue:addJob(function() _obj_invoke(self.handle, "RequestKick", ""); end); end;	
+	function jogador:getBarValue(index) return _obj_invokeEx(self.handle, "LuaGetBarValue", index); end;
+	function jogador:requestSetBarValue(index, currentValue, maxValue) __serverRequestQueue:addJob(function() _obj_invokeEx(self.handle, "LuaRequestSetBarValue", index, currentValue, maxValue); end); end;
+	function jogador:getEditableLine(index) return _obj_invokeEx(self.handle, "LuaGetEditableLine", index); end;
+	function jogador:requestSetEditableLine(index, text) __serverRequestQueue:addJob(function() _obj_invokeEx(self.handle, "LuaRequestSetEditableLine", index, text); end); end;	
 		
 	wObj.props["mesa"] = {getter = "getMesa", tipo = "table"};
 	wObj.props["nick"] = {getter = "getNick", tipo = "string"};
@@ -312,6 +320,7 @@ local function initJogadorWrappedObjectFromHandle(handle)
 	wObj.props["haveVoice"] = {getter = "getHaveVoice", tipo = "bool"};
 	wObj.props["haveVoz"] = {getter = "getHaveVoice", tipo = "bool"};
 	wObj.props["codigoInterno"] = {getter = "getCodigoInterno", tipo = "int"};
+	wObj.props["personagemPrincipal"] = {readProp="PersonagemPrincipal", tipo = "int"};
 	
 	return wObj;
 end;		
@@ -372,11 +381,110 @@ local function initBibPersonagemWrappedObjectFromHandle(handle)
 	function bibItem:getDataType() return rrpgWrappers.objectFromID(_obj_getProp(self.handle, "DataType")); end;
 	function bibItem:getEscritaBloqueada() return _obj_getProp(self.handle, "EscritaBloqueada"); end;	
 	
+	function bibItem:loadSheetNDB(callback)
+		local ndbBib = require("ndb.lua");
+		local ndbHandle = _obj_invokeEx(self.handle, 'GetOrCreateSheetNDB');
+		
+		local function scheduleFailReturn()
+			if callback ~= nil then
+				setTimeout(callback, 1, nil);
+			end;
+		end;
+		
+		if ndbHandle == nil then
+			scheduleFailReturn();		
+			return;
+		end;
+		
+		local ndbObj = nil;
+		local rootNode = nil;
+		
+		if ndbHandle ~= nil then
+			ndbObj = ndbBib.openNodeDatabaseFromHandle(ndbHandle); 										
+		end;
+		
+		if ndbObj ~= nil then
+			rootNode = ndbBib.getRoot(ndbObj);
+		end;	
+
+		if rootNode == nil then
+			scheduleFailReturn();		
+			return;		
+		end;	
+		
+		local state = ndbBib.getState(rootNode);
+		
+		if state == "open" then
+			-- Already loaded
+			if callback ~= nil then
+				callback(rootNode);
+				--setTimeout(callback, 1, rootNode);
+			end;
+			
+			return;
+		end;
+		
+		-- Not loaded yet, letz monitor
+		
+		local jaNotificou = false;
+		local listenerProvider = nil;
+		local listenerLoaded = nil;
+		
+		local function checkState()
+			if not jaNotificou then
+				state = ndbBib.getState(rootNode);
+			
+				if state == "open" then
+					jaNotificou = true;
+					
+					if callback ~= nil then
+						setTimeout(callback, 1, rootNode);
+					end;
+				elseif state == "closed" then
+					jaNotificou = true;					
+					scheduleFailReturn();
+				end;
+				
+				if jaNotificou then
+					ndbObj:removeEventListener(listenerProvider);
+					ndbObj:removeEventListener(listenerLoaded);
+				end;						
+			end;						
+		end;
+				
+		listenerProvider = ndbObj:addEventListener("OnProviderStateChange", checkState);
+		listenerLoaded = ndbObj:addEventListener("OnLoaded", checkState);
+				
+		checkState();		
+	end;
+	
 	wObj.props["dataType"] = {getter = "getDataType", tipo = "string"};	
 	wObj.props["escritaBloqueada"] = {getter = "getEscritaBloqueada", tipo = "bool"};
+	wObj.props["avatar"] = {readProp="Avatar", tipo = "string"};
 	
 	return wObj;
-end;					
+end;			
+
+--[ OBJETO SceneUnitClass ]--			
+		
+local function initBibSceneUnitClassWrappedObjectFromHandle(handle)
+	local wObj = initBibliotecaItemWrappedObjectFromHandle(handle); 
+	
+	wObj.props["tamanhoX"] = {readProp = "TamanhoX", tipo = "double"};	
+	wObj.props["tamanhoY"] = {readProp = "TamanhoY", tipo = "double"};	
+	wObj.props["camada"] = {readProp = "Camada", tipo = "enum", values={"tokens", "objects", "background"}};	
+	wObj.props["descricao"] = {readProp = "Descricao", tipo = "string"};	
+	wObj.props["urlImg"] = {readProp = "URLImg", tipo = "string"};	
+	wObj.props["facing"] = {readProp = "Facing", tipo = "enum", values={"rotate", "drawArrow"}};	
+	wObj.props["snapToGrid"] = {readProp = "SnapToGrid", tipo = "bool"};	
+	wObj.props["direcaoImg"] = {readProp = "DirecaoImg", tipo = "double"};	
+	wObj.props["layoutCenterX"] = {readProp = "LayoutCenterX", tipo = "double"};	
+	wObj.props["layoutCenterY"] = {readProp = "LayoutCenterY", tipo = "double"};	
+	wObj.props["layoutTamX"] = {readProp = "LayoutTamX", tipo = "double"};	
+	wObj.props["layoutTamY"] = {readProp = "LayoutTamY", tipo = "double"};	
+	
+	return wObj;
+end;			
 				
 				
 --[ OBJETO CHAT ]--				
@@ -532,7 +640,25 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 			end;
 		end;
 	end;	
+	
+	function wChat:getRoom()
+		local selfHandle = rawget(self, "handle");
+		
+		if selfHandle ~= nil then
+			mesaObjectID = _rrpg_tryGetMesaObjectIDRelatedToHandle(selfHandle);		
 			
+			if (mesaObjectID ~= nil) then
+				mesaObjectID = tonumber(mesaObjectID);
+			end;
+			
+			if mesaObjectID ~= nil then
+				return rrpgWrappers.contextObjectFromID(mesaObjectID);
+			end;
+		end;			
+	end;
+			
+				
+	wChat.props["room"] = {getter = "getRoom", tipo = "table"};	
 	return wObj;
 end;
 		
@@ -567,6 +693,8 @@ function rrpgWrappers.contextObjectFromID(objectID)
 		ctxObj = initJogadorWrappedObjectFromHandle(objWrapperHandle); 
 	elseif _rrpg_IsWrapperOfType(objWrapperHandle, "personagem") then		
 		ctxObj = initBibPersonagemWrappedObjectFromHandle(objWrapperHandle); 	
+	elseif _rrpg_IsWrapperOfType(objWrapperHandle, "sceneUnitClass") then		
+		ctxObj = initBibSceneUnitClassWrappedObjectFromHandle(objWrapperHandle); 			
 	elseif _rrpg_IsWrapperOfType(objWrapperHandle, "bibliotecaItem") then  -- Deve ser o ultimo dos IFs dos Wrappers dos tipos de item de biblioteca
 		ctxObj = initBibliotecaItemWrappedObjectFromHandle(objWrapperHandle); 		
 	elseif _rrpg_IsWrapperOfType(objWrapperHandle, "chatBase") then  -- Deve ser o ultimo dos IFs dos Wrappers dos tipos de CHAT
@@ -591,5 +719,20 @@ end;
 function _INTERNAL_EVE_OnWrappedObjectWasDestroyed(objectID)					
 	localStrongRefContextoObjects[objectID] = nil;  -- Permitir o Garbage Collector coletar este objeto
 end;
+
+function _INTERNAL_AUX_ContextObjectFromID(objectID)
+	return rrpgWrappers.contextObjectFromID(objectID);
+end;
+
+SharedObjects.registerUnpacker(SHARED_OBJECT_TYPE,
+	function (sid)
+		local objectIdN = tonumber(sid.objectID);
+		
+		if objectIdN ~= nil then
+			return rrpgWrappers.contextObjectFromID(objectIdN);
+		else
+			return nil;
+		end;
+	end);
 
 return rrpgWrappers;

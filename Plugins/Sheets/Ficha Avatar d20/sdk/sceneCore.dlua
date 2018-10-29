@@ -43,7 +43,7 @@ function SceneLib.registerPlugin(attachCallback)
 			return;
 		end;
 						
-		local att = Objs.objectFromHandle(_obj_invoke(plug.handle, "LuaCreatePluginAttachment", oID));
+		att = Objs.objectFromHandle(_obj_invoke(plug.handle, "LuaCreatePluginAttachment", oID));
 		
 		if att ~= nil then		
 			Objs.registerHandle(att.handle, att);	

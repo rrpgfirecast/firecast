@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmW20_2()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmW20_2()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,12 +30,12 @@ function newfrmW20_2()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -43,7 +43,7 @@ function newfrmW20_2()
     obj.layout1:setHeight(205);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
@@ -52,7 +52,7 @@ function newfrmW20_2()
     obj.rectangle1:setCornerType("innerLine");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setLeft(5);
     obj.label1:setTop(0);
@@ -62,7 +62,7 @@ function newfrmW20_2()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layout1);
     obj.layout2:setLeft(15);
     obj.layout2:setTop(25);
@@ -70,7 +70,7 @@ function newfrmW20_2()
     obj.layout2:setHeight(25);
     obj.layout2:setName("layout2");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout2);
     obj.edit1:setLeft(0);
     obj.edit1:setTop(5);
@@ -80,7 +80,7 @@ function newfrmW20_2()
     obj.edit1:setFontSize(12);
     obj.edit1:setName("edit1");
 
-    obj.imageCheckBox1 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox1 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox1:setParent(obj.layout2);
     obj.imageCheckBox1:setLeft(100);
     obj.imageCheckBox1:setTop(0);
@@ -91,7 +91,7 @@ function newfrmW20_2()
     obj.imageCheckBox1:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox1:setName("imageCheckBox1");
 
-    obj.imageCheckBox2 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox2 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox2:setParent(obj.layout2);
     obj.imageCheckBox2:setLeft(125);
     obj.imageCheckBox2:setTop(0);
@@ -102,7 +102,7 @@ function newfrmW20_2()
     obj.imageCheckBox2:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox2:setName("imageCheckBox2");
 
-    obj.imageCheckBox3 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox3 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox3:setParent(obj.layout2);
     obj.imageCheckBox3:setLeft(150);
     obj.imageCheckBox3:setTop(0);
@@ -113,7 +113,7 @@ function newfrmW20_2()
     obj.imageCheckBox3:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox3:setName("imageCheckBox3");
 
-    obj.imageCheckBox4 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox4 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox4:setParent(obj.layout2);
     obj.imageCheckBox4:setLeft(175);
     obj.imageCheckBox4:setTop(0);
@@ -124,7 +124,7 @@ function newfrmW20_2()
     obj.imageCheckBox4:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox4:setName("imageCheckBox4");
 
-    obj.imageCheckBox5 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox5 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox5:setParent(obj.layout2);
     obj.imageCheckBox5:setLeft(200);
     obj.imageCheckBox5:setTop(0);
@@ -135,7 +135,7 @@ function newfrmW20_2()
     obj.imageCheckBox5:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox5:setName("imageCheckBox5");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout1);
     obj.layout3:setLeft(15);
     obj.layout3:setTop(50);
@@ -143,7 +143,7 @@ function newfrmW20_2()
     obj.layout3:setHeight(25);
     obj.layout3:setName("layout3");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout3);
     obj.edit2:setLeft(0);
     obj.edit2:setTop(5);
@@ -153,7 +153,7 @@ function newfrmW20_2()
     obj.edit2:setFontSize(12);
     obj.edit2:setName("edit2");
 
-    obj.imageCheckBox6 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox6 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox6:setParent(obj.layout3);
     obj.imageCheckBox6:setLeft(100);
     obj.imageCheckBox6:setTop(0);
@@ -164,7 +164,7 @@ function newfrmW20_2()
     obj.imageCheckBox6:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox6:setName("imageCheckBox6");
 
-    obj.imageCheckBox7 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox7 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox7:setParent(obj.layout3);
     obj.imageCheckBox7:setLeft(125);
     obj.imageCheckBox7:setTop(0);
@@ -175,7 +175,7 @@ function newfrmW20_2()
     obj.imageCheckBox7:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox7:setName("imageCheckBox7");
 
-    obj.imageCheckBox8 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox8 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox8:setParent(obj.layout3);
     obj.imageCheckBox8:setLeft(150);
     obj.imageCheckBox8:setTop(0);
@@ -186,7 +186,7 @@ function newfrmW20_2()
     obj.imageCheckBox8:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox8:setName("imageCheckBox8");
 
-    obj.imageCheckBox9 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox9 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox9:setParent(obj.layout3);
     obj.imageCheckBox9:setLeft(175);
     obj.imageCheckBox9:setTop(0);
@@ -197,7 +197,7 @@ function newfrmW20_2()
     obj.imageCheckBox9:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox9:setName("imageCheckBox9");
 
-    obj.imageCheckBox10 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox10 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox10:setParent(obj.layout3);
     obj.imageCheckBox10:setLeft(200);
     obj.imageCheckBox10:setTop(0);
@@ -208,7 +208,7 @@ function newfrmW20_2()
     obj.imageCheckBox10:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox10:setName("imageCheckBox10");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout1);
     obj.layout4:setLeft(15);
     obj.layout4:setTop(75);
@@ -216,7 +216,7 @@ function newfrmW20_2()
     obj.layout4:setHeight(25);
     obj.layout4:setName("layout4");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout4);
     obj.edit3:setLeft(0);
     obj.edit3:setTop(5);
@@ -226,7 +226,7 @@ function newfrmW20_2()
     obj.edit3:setFontSize(12);
     obj.edit3:setName("edit3");
 
-    obj.imageCheckBox11 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox11 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox11:setParent(obj.layout4);
     obj.imageCheckBox11:setLeft(100);
     obj.imageCheckBox11:setTop(0);
@@ -237,7 +237,7 @@ function newfrmW20_2()
     obj.imageCheckBox11:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox11:setName("imageCheckBox11");
 
-    obj.imageCheckBox12 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox12 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox12:setParent(obj.layout4);
     obj.imageCheckBox12:setLeft(125);
     obj.imageCheckBox12:setTop(0);
@@ -248,7 +248,7 @@ function newfrmW20_2()
     obj.imageCheckBox12:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox12:setName("imageCheckBox12");
 
-    obj.imageCheckBox13 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox13 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox13:setParent(obj.layout4);
     obj.imageCheckBox13:setLeft(150);
     obj.imageCheckBox13:setTop(0);
@@ -259,7 +259,7 @@ function newfrmW20_2()
     obj.imageCheckBox13:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox13:setName("imageCheckBox13");
 
-    obj.imageCheckBox14 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox14 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox14:setParent(obj.layout4);
     obj.imageCheckBox14:setLeft(175);
     obj.imageCheckBox14:setTop(0);
@@ -270,7 +270,7 @@ function newfrmW20_2()
     obj.imageCheckBox14:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox14:setName("imageCheckBox14");
 
-    obj.imageCheckBox15 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox15 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox15:setParent(obj.layout4);
     obj.imageCheckBox15:setLeft(200);
     obj.imageCheckBox15:setTop(0);
@@ -281,7 +281,7 @@ function newfrmW20_2()
     obj.imageCheckBox15:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox15:setName("imageCheckBox15");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout1);
     obj.layout5:setLeft(15);
     obj.layout5:setTop(100);
@@ -289,7 +289,7 @@ function newfrmW20_2()
     obj.layout5:setHeight(25);
     obj.layout5:setName("layout5");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout5);
     obj.edit4:setLeft(0);
     obj.edit4:setTop(5);
@@ -299,7 +299,7 @@ function newfrmW20_2()
     obj.edit4:setFontSize(12);
     obj.edit4:setName("edit4");
 
-    obj.imageCheckBox16 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox16 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox16:setParent(obj.layout5);
     obj.imageCheckBox16:setLeft(100);
     obj.imageCheckBox16:setTop(0);
@@ -310,7 +310,7 @@ function newfrmW20_2()
     obj.imageCheckBox16:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox16:setName("imageCheckBox16");
 
-    obj.imageCheckBox17 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox17 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox17:setParent(obj.layout5);
     obj.imageCheckBox17:setLeft(125);
     obj.imageCheckBox17:setTop(0);
@@ -321,7 +321,7 @@ function newfrmW20_2()
     obj.imageCheckBox17:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox17:setName("imageCheckBox17");
 
-    obj.imageCheckBox18 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox18 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox18:setParent(obj.layout5);
     obj.imageCheckBox18:setLeft(150);
     obj.imageCheckBox18:setTop(0);
@@ -332,7 +332,7 @@ function newfrmW20_2()
     obj.imageCheckBox18:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox18:setName("imageCheckBox18");
 
-    obj.imageCheckBox19 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox19 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox19:setParent(obj.layout5);
     obj.imageCheckBox19:setLeft(175);
     obj.imageCheckBox19:setTop(0);
@@ -343,7 +343,7 @@ function newfrmW20_2()
     obj.imageCheckBox19:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox19:setName("imageCheckBox19");
 
-    obj.imageCheckBox20 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox20 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox20:setParent(obj.layout5);
     obj.imageCheckBox20:setLeft(200);
     obj.imageCheckBox20:setTop(0);
@@ -354,7 +354,7 @@ function newfrmW20_2()
     obj.imageCheckBox20:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox20:setName("imageCheckBox20");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout1);
     obj.layout6:setLeft(15);
     obj.layout6:setTop(125);
@@ -362,7 +362,7 @@ function newfrmW20_2()
     obj.layout6:setHeight(25);
     obj.layout6:setName("layout6");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout6);
     obj.edit5:setLeft(0);
     obj.edit5:setTop(5);
@@ -372,7 +372,7 @@ function newfrmW20_2()
     obj.edit5:setFontSize(12);
     obj.edit5:setName("edit5");
 
-    obj.imageCheckBox21 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox21 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox21:setParent(obj.layout6);
     obj.imageCheckBox21:setLeft(100);
     obj.imageCheckBox21:setTop(0);
@@ -383,7 +383,7 @@ function newfrmW20_2()
     obj.imageCheckBox21:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox21:setName("imageCheckBox21");
 
-    obj.imageCheckBox22 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox22 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox22:setParent(obj.layout6);
     obj.imageCheckBox22:setLeft(125);
     obj.imageCheckBox22:setTop(0);
@@ -394,7 +394,7 @@ function newfrmW20_2()
     obj.imageCheckBox22:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox22:setName("imageCheckBox22");
 
-    obj.imageCheckBox23 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox23 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox23:setParent(obj.layout6);
     obj.imageCheckBox23:setLeft(150);
     obj.imageCheckBox23:setTop(0);
@@ -405,7 +405,7 @@ function newfrmW20_2()
     obj.imageCheckBox23:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox23:setName("imageCheckBox23");
 
-    obj.imageCheckBox24 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox24 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox24:setParent(obj.layout6);
     obj.imageCheckBox24:setLeft(175);
     obj.imageCheckBox24:setTop(0);
@@ -416,7 +416,7 @@ function newfrmW20_2()
     obj.imageCheckBox24:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox24:setName("imageCheckBox24");
 
-    obj.imageCheckBox25 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox25 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox25:setParent(obj.layout6);
     obj.imageCheckBox25:setLeft(200);
     obj.imageCheckBox25:setTop(0);
@@ -427,7 +427,7 @@ function newfrmW20_2()
     obj.imageCheckBox25:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox25:setName("imageCheckBox25");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.layout1);
     obj.layout7:setLeft(15);
     obj.layout7:setTop(150);
@@ -435,7 +435,7 @@ function newfrmW20_2()
     obj.layout7:setHeight(25);
     obj.layout7:setName("layout7");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout7);
     obj.edit6:setLeft(0);
     obj.edit6:setTop(5);
@@ -445,7 +445,7 @@ function newfrmW20_2()
     obj.edit6:setFontSize(12);
     obj.edit6:setName("edit6");
 
-    obj.imageCheckBox26 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox26 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox26:setParent(obj.layout7);
     obj.imageCheckBox26:setLeft(100);
     obj.imageCheckBox26:setTop(0);
@@ -456,7 +456,7 @@ function newfrmW20_2()
     obj.imageCheckBox26:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox26:setName("imageCheckBox26");
 
-    obj.imageCheckBox27 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox27 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox27:setParent(obj.layout7);
     obj.imageCheckBox27:setLeft(125);
     obj.imageCheckBox27:setTop(0);
@@ -467,7 +467,7 @@ function newfrmW20_2()
     obj.imageCheckBox27:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox27:setName("imageCheckBox27");
 
-    obj.imageCheckBox28 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox28 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox28:setParent(obj.layout7);
     obj.imageCheckBox28:setLeft(150);
     obj.imageCheckBox28:setTop(0);
@@ -478,7 +478,7 @@ function newfrmW20_2()
     obj.imageCheckBox28:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox28:setName("imageCheckBox28");
 
-    obj.imageCheckBox29 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox29 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox29:setParent(obj.layout7);
     obj.imageCheckBox29:setLeft(175);
     obj.imageCheckBox29:setTop(0);
@@ -489,7 +489,7 @@ function newfrmW20_2()
     obj.imageCheckBox29:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox29:setName("imageCheckBox29");
 
-    obj.imageCheckBox30 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox30 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox30:setParent(obj.layout7);
     obj.imageCheckBox30:setLeft(200);
     obj.imageCheckBox30:setTop(0);
@@ -500,7 +500,7 @@ function newfrmW20_2()
     obj.imageCheckBox30:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox30:setName("imageCheckBox30");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.scrollBox1);
     obj.layout8:setLeft(0);
     obj.layout8:setTop(215);
@@ -508,7 +508,7 @@ function newfrmW20_2()
     obj.layout8:setHeight(355);
     obj.layout8:setName("layout8");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout8);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("black");
@@ -517,7 +517,7 @@ function newfrmW20_2()
     obj.rectangle2:setCornerType("innerLine");
     obj.rectangle2:setName("rectangle2");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout8);
     obj.label2:setLeft(5);
     obj.label2:setTop(0);
@@ -527,7 +527,7 @@ function newfrmW20_2()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.layout8);
     obj.layout9:setLeft(15);
     obj.layout9:setTop(25);
@@ -535,7 +535,7 @@ function newfrmW20_2()
     obj.layout9:setHeight(25);
     obj.layout9:setName("layout9");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout9);
     obj.edit7:setLeft(0);
     obj.edit7:setTop(5);
@@ -544,7 +544,7 @@ function newfrmW20_2()
     obj.edit7:setField("gift_1");
     obj.edit7:setName("edit7");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.layout8);
     obj.layout10:setLeft(15);
     obj.layout10:setTop(50);
@@ -552,7 +552,7 @@ function newfrmW20_2()
     obj.layout10:setHeight(25);
     obj.layout10:setName("layout10");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.layout10);
     obj.edit8:setLeft(0);
     obj.edit8:setTop(5);
@@ -561,7 +561,7 @@ function newfrmW20_2()
     obj.edit8:setField("gift_2");
     obj.edit8:setName("edit8");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.layout8);
     obj.layout11:setLeft(15);
     obj.layout11:setTop(75);
@@ -569,7 +569,7 @@ function newfrmW20_2()
     obj.layout11:setHeight(25);
     obj.layout11:setName("layout11");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.layout11);
     obj.edit9:setLeft(0);
     obj.edit9:setTop(5);
@@ -578,7 +578,7 @@ function newfrmW20_2()
     obj.edit9:setField("gift_3");
     obj.edit9:setName("edit9");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.layout8);
     obj.layout12:setLeft(15);
     obj.layout12:setTop(100);
@@ -586,7 +586,7 @@ function newfrmW20_2()
     obj.layout12:setHeight(25);
     obj.layout12:setName("layout12");
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.layout12);
     obj.edit10:setLeft(0);
     obj.edit10:setTop(5);
@@ -595,7 +595,7 @@ function newfrmW20_2()
     obj.edit10:setField("gift_4");
     obj.edit10:setName("edit10");
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.layout8);
     obj.layout13:setLeft(15);
     obj.layout13:setTop(125);
@@ -603,7 +603,7 @@ function newfrmW20_2()
     obj.layout13:setHeight(25);
     obj.layout13:setName("layout13");
 
-    obj.edit11 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit11:setParent(obj.layout13);
     obj.edit11:setLeft(0);
     obj.edit11:setTop(5);
@@ -612,7 +612,7 @@ function newfrmW20_2()
     obj.edit11:setField("gift_5");
     obj.edit11:setName("edit11");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.layout8);
     obj.layout14:setLeft(15);
     obj.layout14:setTop(150);
@@ -620,7 +620,7 @@ function newfrmW20_2()
     obj.layout14:setHeight(25);
     obj.layout14:setName("layout14");
 
-    obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit12:setParent(obj.layout14);
     obj.edit12:setLeft(0);
     obj.edit12:setTop(5);
@@ -629,7 +629,7 @@ function newfrmW20_2()
     obj.edit12:setField("gift_6");
     obj.edit12:setName("edit12");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.layout8);
     obj.layout15:setLeft(15);
     obj.layout15:setTop(175);
@@ -637,7 +637,7 @@ function newfrmW20_2()
     obj.layout15:setHeight(25);
     obj.layout15:setName("layout15");
 
-    obj.edit13 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit13:setParent(obj.layout15);
     obj.edit13:setLeft(0);
     obj.edit13:setTop(5);
@@ -646,7 +646,7 @@ function newfrmW20_2()
     obj.edit13:setField("gift_7");
     obj.edit13:setName("edit13");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.layout8);
     obj.layout16:setLeft(15);
     obj.layout16:setTop(200);
@@ -654,7 +654,7 @@ function newfrmW20_2()
     obj.layout16:setHeight(25);
     obj.layout16:setName("layout16");
 
-    obj.edit14 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit14:setParent(obj.layout16);
     obj.edit14:setLeft(0);
     obj.edit14:setTop(5);
@@ -663,7 +663,7 @@ function newfrmW20_2()
     obj.edit14:setField("gift_8");
     obj.edit14:setName("edit14");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.layout8);
     obj.layout17:setLeft(15);
     obj.layout17:setTop(225);
@@ -671,7 +671,7 @@ function newfrmW20_2()
     obj.layout17:setHeight(25);
     obj.layout17:setName("layout17");
 
-    obj.edit15 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit15:setParent(obj.layout17);
     obj.edit15:setLeft(0);
     obj.edit15:setTop(5);
@@ -680,7 +680,7 @@ function newfrmW20_2()
     obj.edit15:setField("gift_9");
     obj.edit15:setName("edit15");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.layout8);
     obj.layout18:setLeft(15);
     obj.layout18:setTop(250);
@@ -688,7 +688,7 @@ function newfrmW20_2()
     obj.layout18:setHeight(25);
     obj.layout18:setName("layout18");
 
-    obj.edit16 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit16:setParent(obj.layout18);
     obj.edit16:setLeft(0);
     obj.edit16:setTop(5);
@@ -697,7 +697,7 @@ function newfrmW20_2()
     obj.edit16:setField("gift_10");
     obj.edit16:setName("edit16");
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.layout8);
     obj.layout19:setLeft(15);
     obj.layout19:setTop(275);
@@ -705,7 +705,7 @@ function newfrmW20_2()
     obj.layout19:setHeight(25);
     obj.layout19:setName("layout19");
 
-    obj.edit17 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit17:setParent(obj.layout19);
     obj.edit17:setLeft(0);
     obj.edit17:setTop(5);
@@ -714,7 +714,7 @@ function newfrmW20_2()
     obj.edit17:setField("gift_11");
     obj.edit17:setName("edit17");
 
-    obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.layout8);
     obj.layout20:setLeft(15);
     obj.layout20:setTop(300);
@@ -722,7 +722,7 @@ function newfrmW20_2()
     obj.layout20:setHeight(25);
     obj.layout20:setName("layout20");
 
-    obj.edit18 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit18:setParent(obj.layout20);
     obj.edit18:setLeft(0);
     obj.edit18:setTop(5);
@@ -731,7 +731,7 @@ function newfrmW20_2()
     obj.edit18:setField("gift_12");
     obj.edit18:setName("edit18");
 
-    obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.scrollBox1);
     obj.layout21:setLeft(265);
     obj.layout21:setTop(0);
@@ -739,7 +739,7 @@ function newfrmW20_2()
     obj.layout21:setHeight(205);
     obj.layout21:setName("layout21");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout21);
     obj.rectangle3:setAlign("client");
     obj.rectangle3:setColor("black");
@@ -748,7 +748,7 @@ function newfrmW20_2()
     obj.rectangle3:setCornerType("innerLine");
     obj.rectangle3:setName("rectangle3");
 
-    obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.layout21);
     obj.layout22:setLeft(15);
     obj.layout22:setTop(0);
@@ -756,7 +756,7 @@ function newfrmW20_2()
     obj.layout22:setHeight(175);
     obj.layout22:setName("layout22");
 
-    obj.radioButton1 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton1 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton1:setParent(obj.layout22);
     obj.radioButton1:setLeft(25);
     obj.radioButton1:setTop(0);
@@ -768,7 +768,7 @@ function newfrmW20_2()
     obj.radioButton1:setField("shape");
     obj.radioButton1:setName("radioButton1");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout22);
     obj.label3:setLeft(0);
     obj.label3:setTop(70);
@@ -778,7 +778,7 @@ function newfrmW20_2()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout22);
     obj.label4:setLeft(0);
     obj.label4:setTop(130);
@@ -788,7 +788,7 @@ function newfrmW20_2()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.layout21);
     obj.layout23:setLeft(150);
     obj.layout23:setTop(0);
@@ -796,7 +796,7 @@ function newfrmW20_2()
     obj.layout23:setHeight(190);
     obj.layout23:setName("layout23");
 
-    obj.radioButton2 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton2 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton2:setParent(obj.layout23);
     obj.radioButton2:setLeft(25);
     obj.radioButton2:setTop(0);
@@ -808,7 +808,7 @@ function newfrmW20_2()
     obj.radioButton2:setField("shape");
     obj.radioButton2:setName("radioButton2");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout23);
     obj.label5:setLeft(0);
     obj.label5:setTop(30);
@@ -818,7 +818,7 @@ function newfrmW20_2()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout23);
     obj.label6:setLeft(0);
     obj.label6:setTop(50);
@@ -828,7 +828,7 @@ function newfrmW20_2()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout23);
     obj.label7:setLeft(0);
     obj.label7:setTop(70);
@@ -838,7 +838,7 @@ function newfrmW20_2()
     obj.label7:setHorzTextAlign("center");
     obj.label7:setName("label7");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout23);
     obj.label8:setLeft(0);
     obj.label8:setTop(90);
@@ -848,7 +848,7 @@ function newfrmW20_2()
     obj.label8:setHorzTextAlign("center");
     obj.label8:setName("label8");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout23);
     obj.label9:setLeft(0);
     obj.label9:setTop(130);
@@ -858,7 +858,7 @@ function newfrmW20_2()
     obj.label9:setHorzTextAlign("center");
     obj.label9:setName("label9");
 
-    obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.layout21);
     obj.layout24:setLeft(285);
     obj.layout24:setTop(0);
@@ -866,7 +866,7 @@ function newfrmW20_2()
     obj.layout24:setHeight(190);
     obj.layout24:setName("layout24");
 
-    obj.radioButton3 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton3 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton3:setParent(obj.layout24);
     obj.radioButton3:setLeft(25);
     obj.radioButton3:setTop(0);
@@ -878,7 +878,7 @@ function newfrmW20_2()
     obj.radioButton3:setField("shape");
     obj.radioButton3:setName("radioButton3");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout24);
     obj.label10:setLeft(0);
     obj.label10:setTop(30);
@@ -888,7 +888,7 @@ function newfrmW20_2()
     obj.label10:setHorzTextAlign("center");
     obj.label10:setName("label10");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout24);
     obj.label11:setLeft(0);
     obj.label11:setTop(50);
@@ -898,7 +898,7 @@ function newfrmW20_2()
     obj.label11:setHorzTextAlign("center");
     obj.label11:setName("label11");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout24);
     obj.label12:setLeft(0);
     obj.label12:setTop(70);
@@ -908,7 +908,7 @@ function newfrmW20_2()
     obj.label12:setHorzTextAlign("center");
     obj.label12:setName("label12");
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout24);
     obj.label13:setLeft(0);
     obj.label13:setTop(90);
@@ -918,7 +918,7 @@ function newfrmW20_2()
     obj.label13:setHorzTextAlign("center");
     obj.label13:setName("label13");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout24);
     obj.label14:setLeft(0);
     obj.label14:setTop(110);
@@ -928,7 +928,7 @@ function newfrmW20_2()
     obj.label14:setHorzTextAlign("center");
     obj.label14:setName("label14");
 
-    obj.label15 = gui.fromHandle(_obj_newObject("label"));
+    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.layout24);
     obj.label15:setLeft(0);
     obj.label15:setTop(130);
@@ -938,7 +938,7 @@ function newfrmW20_2()
     obj.label15:setHorzTextAlign("center");
     obj.label15:setName("label15");
 
-    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.layout24);
     obj.label16:setLeft(0);
     obj.label16:setTop(150);
@@ -948,7 +948,7 @@ function newfrmW20_2()
     obj.label16:setHorzTextAlign("center");
     obj.label16:setName("label16");
 
-    obj.label17 = gui.fromHandle(_obj_newObject("label"));
+    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.layout24);
     obj.label17:setLeft(0);
     obj.label17:setTop(170);
@@ -958,7 +958,7 @@ function newfrmW20_2()
     obj.label17:setHorzTextAlign("center");
     obj.label17:setName("label17");
 
-    obj.layout25 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.layout21);
     obj.layout25:setLeft(420);
     obj.layout25:setTop(0);
@@ -966,7 +966,7 @@ function newfrmW20_2()
     obj.layout25:setHeight(190);
     obj.layout25:setName("layout25");
 
-    obj.radioButton4 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton4 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton4:setParent(obj.layout25);
     obj.radioButton4:setLeft(25);
     obj.radioButton4:setTop(0);
@@ -978,7 +978,7 @@ function newfrmW20_2()
     obj.radioButton4:setField("shape");
     obj.radioButton4:setName("radioButton4");
 
-    obj.label18 = gui.fromHandle(_obj_newObject("label"));
+    obj.label18 = GUI.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.layout25);
     obj.label18:setLeft(0);
     obj.label18:setTop(30);
@@ -988,7 +988,7 @@ function newfrmW20_2()
     obj.label18:setHorzTextAlign("center");
     obj.label18:setName("label18");
 
-    obj.label19 = gui.fromHandle(_obj_newObject("label"));
+    obj.label19 = GUI.fromHandle(_obj_newObject("label"));
     obj.label19:setParent(obj.layout25);
     obj.label19:setLeft(0);
     obj.label19:setTop(50);
@@ -998,7 +998,7 @@ function newfrmW20_2()
     obj.label19:setHorzTextAlign("center");
     obj.label19:setName("label19");
 
-    obj.label20 = gui.fromHandle(_obj_newObject("label"));
+    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.layout25);
     obj.label20:setLeft(0);
     obj.label20:setTop(70);
@@ -1008,7 +1008,7 @@ function newfrmW20_2()
     obj.label20:setHorzTextAlign("center");
     obj.label20:setName("label20");
 
-    obj.label21 = gui.fromHandle(_obj_newObject("label"));
+    obj.label21 = GUI.fromHandle(_obj_newObject("label"));
     obj.label21:setParent(obj.layout25);
     obj.label21:setLeft(0);
     obj.label21:setTop(90);
@@ -1018,7 +1018,7 @@ function newfrmW20_2()
     obj.label21:setHorzTextAlign("center");
     obj.label21:setName("label21");
 
-    obj.label22 = gui.fromHandle(_obj_newObject("label"));
+    obj.label22 = GUI.fromHandle(_obj_newObject("label"));
     obj.label22:setParent(obj.layout25);
     obj.label22:setLeft(0);
     obj.label22:setTop(110);
@@ -1029,7 +1029,7 @@ function newfrmW20_2()
     obj.label22:setFontSize(11);
     obj.label22:setName("label22");
 
-    obj.label23 = gui.fromHandle(_obj_newObject("label"));
+    obj.label23 = GUI.fromHandle(_obj_newObject("label"));
     obj.label23:setParent(obj.layout25);
     obj.label23:setLeft(0);
     obj.label23:setTop(130);
@@ -1039,7 +1039,7 @@ function newfrmW20_2()
     obj.label23:setHorzTextAlign("center");
     obj.label23:setName("label23");
 
-    obj.layout26 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.layout21);
     obj.layout26:setLeft(555);
     obj.layout26:setTop(0);
@@ -1047,7 +1047,7 @@ function newfrmW20_2()
     obj.layout26:setHeight(190);
     obj.layout26:setName("layout26");
 
-    obj.radioButton5 = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.radioButton5 = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.radioButton5:setParent(obj.layout26);
     obj.radioButton5:setLeft(25);
     obj.radioButton5:setTop(0);
@@ -1059,7 +1059,7 @@ function newfrmW20_2()
     obj.radioButton5:setField("shape");
     obj.radioButton5:setName("radioButton5");
 
-    obj.label24 = gui.fromHandle(_obj_newObject("label"));
+    obj.label24 = GUI.fromHandle(_obj_newObject("label"));
     obj.label24:setParent(obj.layout26);
     obj.label24:setLeft(0);
     obj.label24:setTop(30);
@@ -1069,7 +1069,7 @@ function newfrmW20_2()
     obj.label24:setHorzTextAlign("center");
     obj.label24:setName("label24");
 
-    obj.label25 = gui.fromHandle(_obj_newObject("label"));
+    obj.label25 = GUI.fromHandle(_obj_newObject("label"));
     obj.label25:setParent(obj.layout26);
     obj.label25:setLeft(0);
     obj.label25:setTop(50);
@@ -1079,7 +1079,7 @@ function newfrmW20_2()
     obj.label25:setHorzTextAlign("center");
     obj.label25:setName("label25");
 
-    obj.label26 = gui.fromHandle(_obj_newObject("label"));
+    obj.label26 = GUI.fromHandle(_obj_newObject("label"));
     obj.label26:setParent(obj.layout26);
     obj.label26:setLeft(0);
     obj.label26:setTop(70);
@@ -1089,7 +1089,7 @@ function newfrmW20_2()
     obj.label26:setHorzTextAlign("center");
     obj.label26:setName("label26");
 
-    obj.label27 = gui.fromHandle(_obj_newObject("label"));
+    obj.label27 = GUI.fromHandle(_obj_newObject("label"));
     obj.label27:setParent(obj.layout26);
     obj.label27:setLeft(0);
     obj.label27:setTop(90);
@@ -1099,7 +1099,7 @@ function newfrmW20_2()
     obj.label27:setHorzTextAlign("center");
     obj.label27:setName("label27");
 
-    obj.label28 = gui.fromHandle(_obj_newObject("label"));
+    obj.label28 = GUI.fromHandle(_obj_newObject("label"));
     obj.label28:setParent(obj.layout26);
     obj.label28:setLeft(0);
     obj.label28:setTop(110);
@@ -1110,7 +1110,7 @@ function newfrmW20_2()
     obj.label28:setFontSize(11);
     obj.label28:setName("label28");
 
-    obj.label29 = gui.fromHandle(_obj_newObject("label"));
+    obj.label29 = GUI.fromHandle(_obj_newObject("label"));
     obj.label29:setParent(obj.layout26);
     obj.label29:setLeft(0);
     obj.label29:setTop(130);
@@ -1120,7 +1120,7 @@ function newfrmW20_2()
     obj.label29:setHorzTextAlign("center");
     obj.label29:setName("label29");
 
-    obj.layout27 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.scrollBox1);
     obj.layout27:setLeft(265);
     obj.layout27:setTop(215);
@@ -1128,7 +1128,7 @@ function newfrmW20_2()
     obj.layout27:setHeight(355);
     obj.layout27:setName("layout27");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.layout27);
     obj.rectangle4:setAlign("client");
     obj.rectangle4:setColor("black");
@@ -1137,7 +1137,7 @@ function newfrmW20_2()
     obj.rectangle4:setCornerType("innerLine");
     obj.rectangle4:setName("rectangle4");
 
-    obj.label30 = gui.fromHandle(_obj_newObject("label"));
+    obj.label30 = GUI.fromHandle(_obj_newObject("label"));
     obj.label30:setParent(obj.layout27);
     obj.label30:setLeft(5);
     obj.label30:setTop(0);
@@ -1147,7 +1147,7 @@ function newfrmW20_2()
     obj.label30:setHorzTextAlign("center");
     obj.label30:setName("label30");
 
-    obj.layout28 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.layout27);
     obj.layout28:setLeft(15);
     obj.layout28:setTop(25);
@@ -1155,7 +1155,7 @@ function newfrmW20_2()
     obj.layout28:setHeight(25);
     obj.layout28:setName("layout28");
 
-    obj.edit19 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit19:setParent(obj.layout28);
     obj.edit19:setLeft(0);
     obj.edit19:setTop(5);
@@ -1165,7 +1165,7 @@ function newfrmW20_2()
     obj.edit19:setFontSize(12);
     obj.edit19:setName("edit19");
 
-    obj.imageCheckBox31 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox31 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox31:setParent(obj.layout28);
     obj.imageCheckBox31:setLeft(100);
     obj.imageCheckBox31:setTop(0);
@@ -1176,7 +1176,7 @@ function newfrmW20_2()
     obj.imageCheckBox31:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox31:setName("imageCheckBox31");
 
-    obj.imageCheckBox32 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox32 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox32:setParent(obj.layout28);
     obj.imageCheckBox32:setLeft(125);
     obj.imageCheckBox32:setTop(0);
@@ -1187,7 +1187,7 @@ function newfrmW20_2()
     obj.imageCheckBox32:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox32:setName("imageCheckBox32");
 
-    obj.imageCheckBox33 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox33 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox33:setParent(obj.layout28);
     obj.imageCheckBox33:setLeft(150);
     obj.imageCheckBox33:setTop(0);
@@ -1198,7 +1198,7 @@ function newfrmW20_2()
     obj.imageCheckBox33:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox33:setName("imageCheckBox33");
 
-    obj.imageCheckBox34 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox34 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox34:setParent(obj.layout28);
     obj.imageCheckBox34:setLeft(175);
     obj.imageCheckBox34:setTop(0);
@@ -1209,7 +1209,7 @@ function newfrmW20_2()
     obj.imageCheckBox34:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox34:setName("imageCheckBox34");
 
-    obj.imageCheckBox35 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox35 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox35:setParent(obj.layout28);
     obj.imageCheckBox35:setLeft(200);
     obj.imageCheckBox35:setTop(0);
@@ -1220,7 +1220,7 @@ function newfrmW20_2()
     obj.imageCheckBox35:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox35:setName("imageCheckBox35");
 
-    obj.layout29 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout29:setParent(obj.layout27);
     obj.layout29:setLeft(15);
     obj.layout29:setTop(50);
@@ -1228,7 +1228,7 @@ function newfrmW20_2()
     obj.layout29:setHeight(25);
     obj.layout29:setName("layout29");
 
-    obj.edit20 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit20:setParent(obj.layout29);
     obj.edit20:setLeft(0);
     obj.edit20:setTop(5);
@@ -1238,7 +1238,7 @@ function newfrmW20_2()
     obj.edit20:setFontSize(12);
     obj.edit20:setName("edit20");
 
-    obj.imageCheckBox36 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox36 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox36:setParent(obj.layout29);
     obj.imageCheckBox36:setLeft(100);
     obj.imageCheckBox36:setTop(0);
@@ -1249,7 +1249,7 @@ function newfrmW20_2()
     obj.imageCheckBox36:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox36:setName("imageCheckBox36");
 
-    obj.imageCheckBox37 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox37 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox37:setParent(obj.layout29);
     obj.imageCheckBox37:setLeft(125);
     obj.imageCheckBox37:setTop(0);
@@ -1260,7 +1260,7 @@ function newfrmW20_2()
     obj.imageCheckBox37:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox37:setName("imageCheckBox37");
 
-    obj.imageCheckBox38 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox38 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox38:setParent(obj.layout29);
     obj.imageCheckBox38:setLeft(150);
     obj.imageCheckBox38:setTop(0);
@@ -1271,7 +1271,7 @@ function newfrmW20_2()
     obj.imageCheckBox38:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox38:setName("imageCheckBox38");
 
-    obj.imageCheckBox39 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox39 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox39:setParent(obj.layout29);
     obj.imageCheckBox39:setLeft(175);
     obj.imageCheckBox39:setTop(0);
@@ -1282,7 +1282,7 @@ function newfrmW20_2()
     obj.imageCheckBox39:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox39:setName("imageCheckBox39");
 
-    obj.imageCheckBox40 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox40 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox40:setParent(obj.layout29);
     obj.imageCheckBox40:setLeft(200);
     obj.imageCheckBox40:setTop(0);
@@ -1293,7 +1293,7 @@ function newfrmW20_2()
     obj.imageCheckBox40:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox40:setName("imageCheckBox40");
 
-    obj.layout30 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout30:setParent(obj.layout27);
     obj.layout30:setLeft(15);
     obj.layout30:setTop(75);
@@ -1301,7 +1301,7 @@ function newfrmW20_2()
     obj.layout30:setHeight(25);
     obj.layout30:setName("layout30");
 
-    obj.edit21 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit21:setParent(obj.layout30);
     obj.edit21:setLeft(0);
     obj.edit21:setTop(5);
@@ -1311,7 +1311,7 @@ function newfrmW20_2()
     obj.edit21:setFontSize(12);
     obj.edit21:setName("edit21");
 
-    obj.imageCheckBox41 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox41 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox41:setParent(obj.layout30);
     obj.imageCheckBox41:setLeft(100);
     obj.imageCheckBox41:setTop(0);
@@ -1322,7 +1322,7 @@ function newfrmW20_2()
     obj.imageCheckBox41:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox41:setName("imageCheckBox41");
 
-    obj.imageCheckBox42 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox42 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox42:setParent(obj.layout30);
     obj.imageCheckBox42:setLeft(125);
     obj.imageCheckBox42:setTop(0);
@@ -1333,7 +1333,7 @@ function newfrmW20_2()
     obj.imageCheckBox42:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox42:setName("imageCheckBox42");
 
-    obj.imageCheckBox43 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox43 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox43:setParent(obj.layout30);
     obj.imageCheckBox43:setLeft(150);
     obj.imageCheckBox43:setTop(0);
@@ -1344,7 +1344,7 @@ function newfrmW20_2()
     obj.imageCheckBox43:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox43:setName("imageCheckBox43");
 
-    obj.imageCheckBox44 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox44 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox44:setParent(obj.layout30);
     obj.imageCheckBox44:setLeft(175);
     obj.imageCheckBox44:setTop(0);
@@ -1355,7 +1355,7 @@ function newfrmW20_2()
     obj.imageCheckBox44:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox44:setName("imageCheckBox44");
 
-    obj.imageCheckBox45 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox45 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox45:setParent(obj.layout30);
     obj.imageCheckBox45:setLeft(200);
     obj.imageCheckBox45:setTop(0);
@@ -1366,7 +1366,7 @@ function newfrmW20_2()
     obj.imageCheckBox45:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox45:setName("imageCheckBox45");
 
-    obj.layout31 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.layout27);
     obj.layout31:setLeft(15);
     obj.layout31:setTop(100);
@@ -1374,7 +1374,7 @@ function newfrmW20_2()
     obj.layout31:setHeight(25);
     obj.layout31:setName("layout31");
 
-    obj.edit22 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit22:setParent(obj.layout31);
     obj.edit22:setLeft(0);
     obj.edit22:setTop(5);
@@ -1384,7 +1384,7 @@ function newfrmW20_2()
     obj.edit22:setFontSize(12);
     obj.edit22:setName("edit22");
 
-    obj.imageCheckBox46 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox46 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox46:setParent(obj.layout31);
     obj.imageCheckBox46:setLeft(100);
     obj.imageCheckBox46:setTop(0);
@@ -1395,7 +1395,7 @@ function newfrmW20_2()
     obj.imageCheckBox46:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox46:setName("imageCheckBox46");
 
-    obj.imageCheckBox47 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox47 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox47:setParent(obj.layout31);
     obj.imageCheckBox47:setLeft(125);
     obj.imageCheckBox47:setTop(0);
@@ -1406,7 +1406,7 @@ function newfrmW20_2()
     obj.imageCheckBox47:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox47:setName("imageCheckBox47");
 
-    obj.imageCheckBox48 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox48 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox48:setParent(obj.layout31);
     obj.imageCheckBox48:setLeft(150);
     obj.imageCheckBox48:setTop(0);
@@ -1417,7 +1417,7 @@ function newfrmW20_2()
     obj.imageCheckBox48:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox48:setName("imageCheckBox48");
 
-    obj.imageCheckBox49 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox49 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox49:setParent(obj.layout31);
     obj.imageCheckBox49:setLeft(175);
     obj.imageCheckBox49:setTop(0);
@@ -1428,7 +1428,7 @@ function newfrmW20_2()
     obj.imageCheckBox49:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox49:setName("imageCheckBox49");
 
-    obj.imageCheckBox50 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox50 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox50:setParent(obj.layout31);
     obj.imageCheckBox50:setLeft(200);
     obj.imageCheckBox50:setTop(0);
@@ -1439,7 +1439,7 @@ function newfrmW20_2()
     obj.imageCheckBox50:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox50:setName("imageCheckBox50");
 
-    obj.layout32 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.layout27);
     obj.layout32:setLeft(15);
     obj.layout32:setTop(125);
@@ -1447,7 +1447,7 @@ function newfrmW20_2()
     obj.layout32:setHeight(25);
     obj.layout32:setName("layout32");
 
-    obj.edit23 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit23:setParent(obj.layout32);
     obj.edit23:setLeft(0);
     obj.edit23:setTop(5);
@@ -1457,7 +1457,7 @@ function newfrmW20_2()
     obj.edit23:setFontSize(12);
     obj.edit23:setName("edit23");
 
-    obj.imageCheckBox51 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox51 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox51:setParent(obj.layout32);
     obj.imageCheckBox51:setLeft(100);
     obj.imageCheckBox51:setTop(0);
@@ -1468,7 +1468,7 @@ function newfrmW20_2()
     obj.imageCheckBox51:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox51:setName("imageCheckBox51");
 
-    obj.imageCheckBox52 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox52 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox52:setParent(obj.layout32);
     obj.imageCheckBox52:setLeft(125);
     obj.imageCheckBox52:setTop(0);
@@ -1479,7 +1479,7 @@ function newfrmW20_2()
     obj.imageCheckBox52:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox52:setName("imageCheckBox52");
 
-    obj.imageCheckBox53 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox53 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox53:setParent(obj.layout32);
     obj.imageCheckBox53:setLeft(150);
     obj.imageCheckBox53:setTop(0);
@@ -1490,7 +1490,7 @@ function newfrmW20_2()
     obj.imageCheckBox53:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox53:setName("imageCheckBox53");
 
-    obj.imageCheckBox54 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox54 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox54:setParent(obj.layout32);
     obj.imageCheckBox54:setLeft(175);
     obj.imageCheckBox54:setTop(0);
@@ -1501,7 +1501,7 @@ function newfrmW20_2()
     obj.imageCheckBox54:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox54:setName("imageCheckBox54");
 
-    obj.imageCheckBox55 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox55 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox55:setParent(obj.layout32);
     obj.imageCheckBox55:setLeft(200);
     obj.imageCheckBox55:setTop(0);
@@ -1512,7 +1512,7 @@ function newfrmW20_2()
     obj.imageCheckBox55:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox55:setName("imageCheckBox55");
 
-    obj.layout33 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout33:setParent(obj.layout27);
     obj.layout33:setLeft(15);
     obj.layout33:setTop(150);
@@ -1520,7 +1520,7 @@ function newfrmW20_2()
     obj.layout33:setHeight(25);
     obj.layout33:setName("layout33");
 
-    obj.edit24 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit24:setParent(obj.layout33);
     obj.edit24:setLeft(0);
     obj.edit24:setTop(5);
@@ -1530,7 +1530,7 @@ function newfrmW20_2()
     obj.edit24:setFontSize(12);
     obj.edit24:setName("edit24");
 
-    obj.imageCheckBox56 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox56 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox56:setParent(obj.layout33);
     obj.imageCheckBox56:setLeft(100);
     obj.imageCheckBox56:setTop(0);
@@ -1541,7 +1541,7 @@ function newfrmW20_2()
     obj.imageCheckBox56:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox56:setName("imageCheckBox56");
 
-    obj.imageCheckBox57 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox57 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox57:setParent(obj.layout33);
     obj.imageCheckBox57:setLeft(125);
     obj.imageCheckBox57:setTop(0);
@@ -1552,7 +1552,7 @@ function newfrmW20_2()
     obj.imageCheckBox57:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox57:setName("imageCheckBox57");
 
-    obj.imageCheckBox58 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox58 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox58:setParent(obj.layout33);
     obj.imageCheckBox58:setLeft(150);
     obj.imageCheckBox58:setTop(0);
@@ -1563,7 +1563,7 @@ function newfrmW20_2()
     obj.imageCheckBox58:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox58:setName("imageCheckBox58");
 
-    obj.imageCheckBox59 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox59 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox59:setParent(obj.layout33);
     obj.imageCheckBox59:setLeft(175);
     obj.imageCheckBox59:setTop(0);
@@ -1574,7 +1574,7 @@ function newfrmW20_2()
     obj.imageCheckBox59:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox59:setName("imageCheckBox59");
 
-    obj.imageCheckBox60 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox60 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox60:setParent(obj.layout33);
     obj.imageCheckBox60:setLeft(200);
     obj.imageCheckBox60:setTop(0);
@@ -1585,7 +1585,7 @@ function newfrmW20_2()
     obj.imageCheckBox60:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox60:setName("imageCheckBox60");
 
-    obj.layout34 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout34 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout34:setParent(obj.layout27);
     obj.layout34:setLeft(15);
     obj.layout34:setTop(175);
@@ -1593,7 +1593,7 @@ function newfrmW20_2()
     obj.layout34:setHeight(25);
     obj.layout34:setName("layout34");
 
-    obj.edit25 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit25:setParent(obj.layout34);
     obj.edit25:setLeft(0);
     obj.edit25:setTop(5);
@@ -1603,7 +1603,7 @@ function newfrmW20_2()
     obj.edit25:setFontSize(12);
     obj.edit25:setName("edit25");
 
-    obj.imageCheckBox61 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox61 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox61:setParent(obj.layout34);
     obj.imageCheckBox61:setLeft(100);
     obj.imageCheckBox61:setTop(0);
@@ -1614,7 +1614,7 @@ function newfrmW20_2()
     obj.imageCheckBox61:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox61:setName("imageCheckBox61");
 
-    obj.imageCheckBox62 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox62 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox62:setParent(obj.layout34);
     obj.imageCheckBox62:setLeft(125);
     obj.imageCheckBox62:setTop(0);
@@ -1625,7 +1625,7 @@ function newfrmW20_2()
     obj.imageCheckBox62:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox62:setName("imageCheckBox62");
 
-    obj.imageCheckBox63 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox63 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox63:setParent(obj.layout34);
     obj.imageCheckBox63:setLeft(150);
     obj.imageCheckBox63:setTop(0);
@@ -1636,7 +1636,7 @@ function newfrmW20_2()
     obj.imageCheckBox63:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox63:setName("imageCheckBox63");
 
-    obj.imageCheckBox64 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox64 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox64:setParent(obj.layout34);
     obj.imageCheckBox64:setLeft(175);
     obj.imageCheckBox64:setTop(0);
@@ -1647,7 +1647,7 @@ function newfrmW20_2()
     obj.imageCheckBox64:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox64:setName("imageCheckBox64");
 
-    obj.imageCheckBox65 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox65 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox65:setParent(obj.layout34);
     obj.imageCheckBox65:setLeft(200);
     obj.imageCheckBox65:setTop(0);
@@ -1658,7 +1658,7 @@ function newfrmW20_2()
     obj.imageCheckBox65:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox65:setName("imageCheckBox65");
 
-    obj.layout35 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout35:setParent(obj.layout27);
     obj.layout35:setLeft(15);
     obj.layout35:setTop(200);
@@ -1666,7 +1666,7 @@ function newfrmW20_2()
     obj.layout35:setHeight(25);
     obj.layout35:setName("layout35");
 
-    obj.edit26 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit26:setParent(obj.layout35);
     obj.edit26:setLeft(0);
     obj.edit26:setTop(5);
@@ -1676,7 +1676,7 @@ function newfrmW20_2()
     obj.edit26:setFontSize(12);
     obj.edit26:setName("edit26");
 
-    obj.imageCheckBox66 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox66 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox66:setParent(obj.layout35);
     obj.imageCheckBox66:setLeft(100);
     obj.imageCheckBox66:setTop(0);
@@ -1687,7 +1687,7 @@ function newfrmW20_2()
     obj.imageCheckBox66:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox66:setName("imageCheckBox66");
 
-    obj.imageCheckBox67 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox67 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox67:setParent(obj.layout35);
     obj.imageCheckBox67:setLeft(125);
     obj.imageCheckBox67:setTop(0);
@@ -1698,7 +1698,7 @@ function newfrmW20_2()
     obj.imageCheckBox67:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox67:setName("imageCheckBox67");
 
-    obj.imageCheckBox68 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox68 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox68:setParent(obj.layout35);
     obj.imageCheckBox68:setLeft(150);
     obj.imageCheckBox68:setTop(0);
@@ -1709,7 +1709,7 @@ function newfrmW20_2()
     obj.imageCheckBox68:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox68:setName("imageCheckBox68");
 
-    obj.imageCheckBox69 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox69 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox69:setParent(obj.layout35);
     obj.imageCheckBox69:setLeft(175);
     obj.imageCheckBox69:setTop(0);
@@ -1720,7 +1720,7 @@ function newfrmW20_2()
     obj.imageCheckBox69:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox69:setName("imageCheckBox69");
 
-    obj.imageCheckBox70 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox70 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox70:setParent(obj.layout35);
     obj.imageCheckBox70:setLeft(200);
     obj.imageCheckBox70:setTop(0);
@@ -1731,7 +1731,7 @@ function newfrmW20_2()
     obj.imageCheckBox70:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox70:setName("imageCheckBox70");
 
-    obj.layout36 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout36:setParent(obj.layout27);
     obj.layout36:setLeft(15);
     obj.layout36:setTop(225);
@@ -1739,7 +1739,7 @@ function newfrmW20_2()
     obj.layout36:setHeight(25);
     obj.layout36:setName("layout36");
 
-    obj.edit27 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit27 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit27:setParent(obj.layout36);
     obj.edit27:setLeft(0);
     obj.edit27:setTop(5);
@@ -1749,7 +1749,7 @@ function newfrmW20_2()
     obj.edit27:setFontSize(12);
     obj.edit27:setName("edit27");
 
-    obj.imageCheckBox71 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox71 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox71:setParent(obj.layout36);
     obj.imageCheckBox71:setLeft(100);
     obj.imageCheckBox71:setTop(0);
@@ -1760,7 +1760,7 @@ function newfrmW20_2()
     obj.imageCheckBox71:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox71:setName("imageCheckBox71");
 
-    obj.imageCheckBox72 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox72 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox72:setParent(obj.layout36);
     obj.imageCheckBox72:setLeft(125);
     obj.imageCheckBox72:setTop(0);
@@ -1771,7 +1771,7 @@ function newfrmW20_2()
     obj.imageCheckBox72:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox72:setName("imageCheckBox72");
 
-    obj.imageCheckBox73 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox73 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox73:setParent(obj.layout36);
     obj.imageCheckBox73:setLeft(150);
     obj.imageCheckBox73:setTop(0);
@@ -1782,7 +1782,7 @@ function newfrmW20_2()
     obj.imageCheckBox73:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox73:setName("imageCheckBox73");
 
-    obj.imageCheckBox74 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox74 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox74:setParent(obj.layout36);
     obj.imageCheckBox74:setLeft(175);
     obj.imageCheckBox74:setTop(0);
@@ -1793,7 +1793,7 @@ function newfrmW20_2()
     obj.imageCheckBox74:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox74:setName("imageCheckBox74");
 
-    obj.imageCheckBox75 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox75 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox75:setParent(obj.layout36);
     obj.imageCheckBox75:setLeft(200);
     obj.imageCheckBox75:setTop(0);
@@ -1804,7 +1804,7 @@ function newfrmW20_2()
     obj.imageCheckBox75:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox75:setName("imageCheckBox75");
 
-    obj.layout37 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout37 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout37:setParent(obj.layout27);
     obj.layout37:setLeft(15);
     obj.layout37:setTop(250);
@@ -1812,7 +1812,7 @@ function newfrmW20_2()
     obj.layout37:setHeight(25);
     obj.layout37:setName("layout37");
 
-    obj.edit28 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit28 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit28:setParent(obj.layout37);
     obj.edit28:setLeft(0);
     obj.edit28:setTop(5);
@@ -1822,7 +1822,7 @@ function newfrmW20_2()
     obj.edit28:setFontSize(12);
     obj.edit28:setName("edit28");
 
-    obj.imageCheckBox76 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox76 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox76:setParent(obj.layout37);
     obj.imageCheckBox76:setLeft(100);
     obj.imageCheckBox76:setTop(0);
@@ -1833,7 +1833,7 @@ function newfrmW20_2()
     obj.imageCheckBox76:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox76:setName("imageCheckBox76");
 
-    obj.imageCheckBox77 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox77 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox77:setParent(obj.layout37);
     obj.imageCheckBox77:setLeft(125);
     obj.imageCheckBox77:setTop(0);
@@ -1844,7 +1844,7 @@ function newfrmW20_2()
     obj.imageCheckBox77:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox77:setName("imageCheckBox77");
 
-    obj.imageCheckBox78 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox78 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox78:setParent(obj.layout37);
     obj.imageCheckBox78:setLeft(150);
     obj.imageCheckBox78:setTop(0);
@@ -1855,7 +1855,7 @@ function newfrmW20_2()
     obj.imageCheckBox78:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox78:setName("imageCheckBox78");
 
-    obj.imageCheckBox79 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox79 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox79:setParent(obj.layout37);
     obj.imageCheckBox79:setLeft(175);
     obj.imageCheckBox79:setTop(0);
@@ -1866,7 +1866,7 @@ function newfrmW20_2()
     obj.imageCheckBox79:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox79:setName("imageCheckBox79");
 
-    obj.imageCheckBox80 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox80 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox80:setParent(obj.layout37);
     obj.imageCheckBox80:setLeft(200);
     obj.imageCheckBox80:setTop(0);
@@ -1877,7 +1877,7 @@ function newfrmW20_2()
     obj.imageCheckBox80:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox80:setName("imageCheckBox80");
 
-    obj.layout38 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout38 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout38:setParent(obj.layout27);
     obj.layout38:setLeft(15);
     obj.layout38:setTop(275);
@@ -1885,7 +1885,7 @@ function newfrmW20_2()
     obj.layout38:setHeight(25);
     obj.layout38:setName("layout38");
 
-    obj.edit29 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit29 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit29:setParent(obj.layout38);
     obj.edit29:setLeft(0);
     obj.edit29:setTop(5);
@@ -1895,7 +1895,7 @@ function newfrmW20_2()
     obj.edit29:setFontSize(12);
     obj.edit29:setName("edit29");
 
-    obj.imageCheckBox81 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox81 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox81:setParent(obj.layout38);
     obj.imageCheckBox81:setLeft(100);
     obj.imageCheckBox81:setTop(0);
@@ -1906,7 +1906,7 @@ function newfrmW20_2()
     obj.imageCheckBox81:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox81:setName("imageCheckBox81");
 
-    obj.imageCheckBox82 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox82 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox82:setParent(obj.layout38);
     obj.imageCheckBox82:setLeft(125);
     obj.imageCheckBox82:setTop(0);
@@ -1917,7 +1917,7 @@ function newfrmW20_2()
     obj.imageCheckBox82:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox82:setName("imageCheckBox82");
 
-    obj.imageCheckBox83 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox83 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox83:setParent(obj.layout38);
     obj.imageCheckBox83:setLeft(150);
     obj.imageCheckBox83:setTop(0);
@@ -1928,7 +1928,7 @@ function newfrmW20_2()
     obj.imageCheckBox83:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox83:setName("imageCheckBox83");
 
-    obj.imageCheckBox84 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox84 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox84:setParent(obj.layout38);
     obj.imageCheckBox84:setLeft(175);
     obj.imageCheckBox84:setTop(0);
@@ -1939,7 +1939,7 @@ function newfrmW20_2()
     obj.imageCheckBox84:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox84:setName("imageCheckBox84");
 
-    obj.imageCheckBox85 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox85 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox85:setParent(obj.layout38);
     obj.imageCheckBox85:setLeft(200);
     obj.imageCheckBox85:setTop(0);
@@ -1950,7 +1950,7 @@ function newfrmW20_2()
     obj.imageCheckBox85:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox85:setName("imageCheckBox85");
 
-    obj.layout39 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout39 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout39:setParent(obj.layout27);
     obj.layout39:setLeft(15);
     obj.layout39:setTop(300);
@@ -1958,7 +1958,7 @@ function newfrmW20_2()
     obj.layout39:setHeight(25);
     obj.layout39:setName("layout39");
 
-    obj.edit30 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit30 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit30:setParent(obj.layout39);
     obj.edit30:setLeft(0);
     obj.edit30:setTop(5);
@@ -1968,7 +1968,7 @@ function newfrmW20_2()
     obj.edit30:setFontSize(12);
     obj.edit30:setName("edit30");
 
-    obj.imageCheckBox86 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox86 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox86:setParent(obj.layout39);
     obj.imageCheckBox86:setLeft(100);
     obj.imageCheckBox86:setTop(0);
@@ -1979,7 +1979,7 @@ function newfrmW20_2()
     obj.imageCheckBox86:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox86:setName("imageCheckBox86");
 
-    obj.imageCheckBox87 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox87 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox87:setParent(obj.layout39);
     obj.imageCheckBox87:setLeft(125);
     obj.imageCheckBox87:setTop(0);
@@ -1990,7 +1990,7 @@ function newfrmW20_2()
     obj.imageCheckBox87:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox87:setName("imageCheckBox87");
 
-    obj.imageCheckBox88 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox88 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox88:setParent(obj.layout39);
     obj.imageCheckBox88:setLeft(150);
     obj.imageCheckBox88:setTop(0);
@@ -2001,7 +2001,7 @@ function newfrmW20_2()
     obj.imageCheckBox88:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox88:setName("imageCheckBox88");
 
-    obj.imageCheckBox89 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox89 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox89:setParent(obj.layout39);
     obj.imageCheckBox89:setLeft(175);
     obj.imageCheckBox89:setTop(0);
@@ -2012,7 +2012,7 @@ function newfrmW20_2()
     obj.imageCheckBox89:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox89:setName("imageCheckBox89");
 
-    obj.imageCheckBox90 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox90 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox90:setParent(obj.layout39);
     obj.imageCheckBox90:setLeft(200);
     obj.imageCheckBox90:setTop(0);
@@ -2023,7 +2023,7 @@ function newfrmW20_2()
     obj.imageCheckBox90:setImageUnchecked("/Werewolf20th/images/paw_off.png");
     obj.imageCheckBox90:setName("imageCheckBox90");
 
-    obj.layout40 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout40 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout40:setParent(obj.scrollBox1);
     obj.layout40:setLeft(530);
     obj.layout40:setTop(215);
@@ -2031,7 +2031,7 @@ function newfrmW20_2()
     obj.layout40:setHeight(355);
     obj.layout40:setName("layout40");
 
-    obj.rectangle5 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.layout40);
     obj.rectangle5:setAlign("client");
     obj.rectangle5:setColor("black");
@@ -2040,7 +2040,7 @@ function newfrmW20_2()
     obj.rectangle5:setCornerType("innerLine");
     obj.rectangle5:setName("rectangle5");
 
-    obj.label31 = gui.fromHandle(_obj_newObject("label"));
+    obj.label31 = GUI.fromHandle(_obj_newObject("label"));
     obj.label31:setParent(obj.layout40);
     obj.label31:setLeft(5);
     obj.label31:setTop(0);
@@ -2050,7 +2050,7 @@ function newfrmW20_2()
     obj.label31:setHorzTextAlign("center");
     obj.label31:setName("label31");
 
-    obj.layout41 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout41 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout41:setParent(obj.layout40);
     obj.layout41:setLeft(15);
     obj.layout41:setTop(25);
@@ -2058,7 +2058,7 @@ function newfrmW20_2()
     obj.layout41:setHeight(25);
     obj.layout41:setName("layout41");
 
-    obj.edit31 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit31:setParent(obj.layout41);
     obj.edit31:setLeft(0);
     obj.edit31:setTop(5);
@@ -2067,7 +2067,7 @@ function newfrmW20_2()
     obj.edit31:setField("rites_1");
     obj.edit31:setName("edit31");
 
-    obj.layout42 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout42 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout42:setParent(obj.layout40);
     obj.layout42:setLeft(15);
     obj.layout42:setTop(50);
@@ -2075,7 +2075,7 @@ function newfrmW20_2()
     obj.layout42:setHeight(25);
     obj.layout42:setName("layout42");
 
-    obj.edit32 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit32:setParent(obj.layout42);
     obj.edit32:setLeft(0);
     obj.edit32:setTop(5);
@@ -2084,7 +2084,7 @@ function newfrmW20_2()
     obj.edit32:setField("rites_2");
     obj.edit32:setName("edit32");
 
-    obj.layout43 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout43 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout43:setParent(obj.layout40);
     obj.layout43:setLeft(15);
     obj.layout43:setTop(75);
@@ -2092,7 +2092,7 @@ function newfrmW20_2()
     obj.layout43:setHeight(25);
     obj.layout43:setName("layout43");
 
-    obj.edit33 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit33 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit33:setParent(obj.layout43);
     obj.edit33:setLeft(0);
     obj.edit33:setTop(5);
@@ -2101,7 +2101,7 @@ function newfrmW20_2()
     obj.edit33:setField("rites_3");
     obj.edit33:setName("edit33");
 
-    obj.layout44 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout44 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout44:setParent(obj.layout40);
     obj.layout44:setLeft(15);
     obj.layout44:setTop(100);
@@ -2109,7 +2109,7 @@ function newfrmW20_2()
     obj.layout44:setHeight(25);
     obj.layout44:setName("layout44");
 
-    obj.edit34 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit34:setParent(obj.layout44);
     obj.edit34:setLeft(0);
     obj.edit34:setTop(5);
@@ -2118,7 +2118,7 @@ function newfrmW20_2()
     obj.edit34:setField("rites_4");
     obj.edit34:setName("edit34");
 
-    obj.layout45 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout45 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout45:setParent(obj.layout40);
     obj.layout45:setLeft(15);
     obj.layout45:setTop(125);
@@ -2126,7 +2126,7 @@ function newfrmW20_2()
     obj.layout45:setHeight(25);
     obj.layout45:setName("layout45");
 
-    obj.edit35 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit35 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit35:setParent(obj.layout45);
     obj.edit35:setLeft(0);
     obj.edit35:setTop(5);
@@ -2135,7 +2135,7 @@ function newfrmW20_2()
     obj.edit35:setField("rites_5");
     obj.edit35:setName("edit35");
 
-    obj.layout46 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout46 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout46:setParent(obj.layout40);
     obj.layout46:setLeft(15);
     obj.layout46:setTop(150);
@@ -2143,7 +2143,7 @@ function newfrmW20_2()
     obj.layout46:setHeight(25);
     obj.layout46:setName("layout46");
 
-    obj.edit36 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit36:setParent(obj.layout46);
     obj.edit36:setLeft(0);
     obj.edit36:setTop(5);
@@ -2152,7 +2152,7 @@ function newfrmW20_2()
     obj.edit36:setField("rites_6");
     obj.edit36:setName("edit36");
 
-    obj.layout47 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout47 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout47:setParent(obj.layout40);
     obj.layout47:setLeft(15);
     obj.layout47:setTop(175);
@@ -2160,7 +2160,7 @@ function newfrmW20_2()
     obj.layout47:setHeight(25);
     obj.layout47:setName("layout47");
 
-    obj.edit37 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit37 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit37:setParent(obj.layout47);
     obj.edit37:setLeft(0);
     obj.edit37:setTop(5);
@@ -2169,7 +2169,7 @@ function newfrmW20_2()
     obj.edit37:setField("rites_7");
     obj.edit37:setName("edit37");
 
-    obj.layout48 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout48 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout48:setParent(obj.layout40);
     obj.layout48:setLeft(15);
     obj.layout48:setTop(200);
@@ -2177,7 +2177,7 @@ function newfrmW20_2()
     obj.layout48:setHeight(25);
     obj.layout48:setName("layout48");
 
-    obj.edit38 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit38 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit38:setParent(obj.layout48);
     obj.edit38:setLeft(0);
     obj.edit38:setTop(5);
@@ -2186,7 +2186,7 @@ function newfrmW20_2()
     obj.edit38:setField("rites_8");
     obj.edit38:setName("edit38");
 
-    obj.layout49 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout49:setParent(obj.layout40);
     obj.layout49:setLeft(15);
     obj.layout49:setTop(225);
@@ -2194,7 +2194,7 @@ function newfrmW20_2()
     obj.layout49:setHeight(25);
     obj.layout49:setName("layout49");
 
-    obj.edit39 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit39 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit39:setParent(obj.layout49);
     obj.edit39:setLeft(0);
     obj.edit39:setTop(5);
@@ -2203,7 +2203,7 @@ function newfrmW20_2()
     obj.edit39:setField("rites_9");
     obj.edit39:setName("edit39");
 
-    obj.layout50 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout50 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout50:setParent(obj.layout40);
     obj.layout50:setLeft(15);
     obj.layout50:setTop(250);
@@ -2211,7 +2211,7 @@ function newfrmW20_2()
     obj.layout50:setHeight(25);
     obj.layout50:setName("layout50");
 
-    obj.edit40 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit40 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit40:setParent(obj.layout50);
     obj.edit40:setLeft(0);
     obj.edit40:setTop(5);
@@ -2220,7 +2220,7 @@ function newfrmW20_2()
     obj.edit40:setField("rites_10");
     obj.edit40:setName("edit40");
 
-    obj.layout51 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout51 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout51:setParent(obj.layout40);
     obj.layout51:setLeft(15);
     obj.layout51:setTop(275);
@@ -2228,7 +2228,7 @@ function newfrmW20_2()
     obj.layout51:setHeight(25);
     obj.layout51:setName("layout51");
 
-    obj.edit41 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit41:setParent(obj.layout51);
     obj.edit41:setLeft(0);
     obj.edit41:setTop(5);
@@ -2237,7 +2237,7 @@ function newfrmW20_2()
     obj.edit41:setField("rites_11");
     obj.edit41:setName("edit41");
 
-    obj.layout52 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout52 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout52:setParent(obj.layout40);
     obj.layout52:setLeft(15);
     obj.layout52:setTop(300);
@@ -2245,7 +2245,7 @@ function newfrmW20_2()
     obj.layout52:setHeight(25);
     obj.layout52:setName("layout52");
 
-    obj.edit42 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit42:setParent(obj.layout52);
     obj.edit42:setLeft(0);
     obj.edit42:setTop(5);
@@ -2254,7 +2254,7 @@ function newfrmW20_2()
     obj.edit42:setField("rites_12");
     obj.edit42:setName("edit42");
 
-    obj.layout53 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout53 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout53:setParent(obj.scrollBox1);
     obj.layout53:setLeft(795);
     obj.layout53:setTop(215);
@@ -2262,7 +2262,7 @@ function newfrmW20_2()
     obj.layout53:setHeight(170);
     obj.layout53:setName("layout53");
 
-    obj.rectangle6 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle6 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle6:setParent(obj.layout53);
     obj.rectangle6:setAlign("client");
     obj.rectangle6:setColor("black");
@@ -2271,7 +2271,7 @@ function newfrmW20_2()
     obj.rectangle6:setCornerType("innerLine");
     obj.rectangle6:setName("rectangle6");
 
-    obj.label32 = gui.fromHandle(_obj_newObject("label"));
+    obj.label32 = GUI.fromHandle(_obj_newObject("label"));
     obj.label32:setParent(obj.layout53);
     obj.label32:setLeft(5);
     obj.label32:setTop(0);
@@ -2281,7 +2281,7 @@ function newfrmW20_2()
     obj.label32:setHorzTextAlign("center");
     obj.label32:setName("label32");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout53);
     obj.textEditor1:setLeft(15);
     obj.textEditor1:setTop(25);
@@ -2290,7 +2290,7 @@ function newfrmW20_2()
     obj.textEditor1:setField("scars");
     obj.textEditor1:setName("textEditor1");
 
-    obj.layout54 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout54 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout54:setParent(obj.scrollBox1);
     obj.layout54:setLeft(795);
     obj.layout54:setTop(400);
@@ -2298,7 +2298,7 @@ function newfrmW20_2()
     obj.layout54:setHeight(170);
     obj.layout54:setName("layout54");
 
-    obj.rectangle7 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle7 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle7:setParent(obj.layout54);
     obj.rectangle7:setAlign("client");
     obj.rectangle7:setColor("black");
@@ -2307,7 +2307,7 @@ function newfrmW20_2()
     obj.rectangle7:setCornerType("innerLine");
     obj.rectangle7:setName("rectangle7");
 
-    obj.label33 = gui.fromHandle(_obj_newObject("label"));
+    obj.label33 = GUI.fromHandle(_obj_newObject("label"));
     obj.label33:setParent(obj.layout54);
     obj.label33:setLeft(5);
     obj.label33:setTop(0);
@@ -2317,7 +2317,7 @@ function newfrmW20_2()
     obj.label33:setHorzTextAlign("center");
     obj.label33:setName("label33");
 
-    obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.layout54);
     obj.textEditor2:setLeft(15);
     obj.textEditor2:setTop(25);
@@ -2577,9 +2577,23 @@ function newfrmW20_2()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmW20_2()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmW20_2();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmW20_2 = {
@@ -2593,6 +2607,6 @@ local _frmW20_2 = {
     description=""};
 
 frmW20_2 = _frmW20_2;
-rrpg.registrarForm(_frmW20_2);
+Firecast.registrarForm(_frmW20_2);
 
 return _frmW20_2;

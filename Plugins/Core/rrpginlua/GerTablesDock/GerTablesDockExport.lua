@@ -1,9 +1,9 @@
 ﻿require("gui.lua");
-require("rrpg.lua");
+require("firecast.lua");
 require("plugins.lua");
 
 local function td_carregarTD(mesa, tdInstalado)
-	if mesa.podeTablesDock and not rrpg.plugins.getIsTablesDockActive(mesa, tdInstalado.moduleId, tdInstalado.name) then
+	if mesa.podeTablesDock and not Firecast.Plugins.getIsTablesDockActive(mesa, tdInstalado.moduleId, tdInstalado.name) then
 	
 		local tdGlobal = require("/GerTablesDock/GerTablesDockGlobal.dlua");
 		local tdN = tdGlobal.getNDBForMesaTablesDock(mesa, tdInstalado.moduleId, tdInstalado.name, false);
@@ -13,7 +13,7 @@ local function td_carregarTD(mesa, tdInstalado)
 			si = tdN.storedInfo;
 		end;
 	
-		rrpg.plugins.activateTablesDock(mesa, tdInstalado.moduleId, tdInstalado.name, si);
+		Firecast.Plugins.activateTablesDock(mesa, tdInstalado.moduleId, tdInstalado.name, si);
 	end;
 end;
 
@@ -37,18 +37,18 @@ local function td_salvarStoredInfo(mesa, tdInstalado)
 	local n = tdGlobal.getNDBForMesaTablesDock(mesa, tdInstalado.moduleId, tdInstalado.name, true);	
 			
 	if n ~= nil then
-		n.storedInfo = rrpg.plugins.getActiveTablesDockStoredInfo(mesa, tdInstalado.moduleId, tdInstalado.name);
+		n.storedInfo = Firecast.Plugins.getActiveTablesDockStoredInfo(mesa, tdInstalado.moduleId, tdInstalado.name);
 	end;
 end;
 
 local function td_descarregarTDSeNecessario(mesa, tdInstalado)
-	if rrpg.plugins.getIsTablesDockActive(mesa, tdInstalado.moduleId, tdInstalado.name) then
-		rrpg.plugins.deactivateTablesDock(mesa, tdInstalado.moduleId, tdInstalado.name);
+	if Firecast.Plugins.getIsTablesDockActive(mesa, tdInstalado.moduleId, tdInstalado.name) then
+		Firecast.Plugins.deactivateTablesDock(mesa, tdInstalado.moduleId, tdInstalado.name);
 	end;
 end;
 
 local function td_anexarAMesa(mesa)	
-	local tdsInstalados = rrpg.plugins.getInstalledTablesDock();
+	local tdsInstalados = Firecast.Plugins.getInstalledTablesDock();
 	
 	for i = 1, #tdsInstalados, 1 do
 		td_carregarTDSeNecessario(mesa, tdsInstalados[i]);
@@ -56,7 +56,7 @@ local function td_anexarAMesa(mesa)
 end;
 
 local function td_salvarStoredInfoDaMesa(mesa)
-	local tds = rrpg.plugins.getListOfActiveTablesDockOnMesa(mesa);
+	local tds = Firecast.Plugins.getListOfActiveTablesDockOnMesa(mesa);
 	
 	for i = 1, #tds, 1 do
 		td_salvarStoredInfo(mesa, tds[i]);
@@ -69,17 +69,17 @@ end;
 
 local jaInicializou = false;
 
-rrpg.messaging.listen("MesaJoined", 
+Firecast.Messaging.listen("MesaJoined", 
 	function(msg)
 		if jaInicializou then
 			td_anexarAMesa(msg.mesa)
 		end;
 	end, {eu=true});
 	
-rrpg.messaging.listen("SpecialFormRegistered",
+Firecast.Messaging.listen("SpecialFormRegistered",
 	function(msg)
 		if jaInicializou then
-			local mesas = rrpg.getMesas();
+			local mesas = Firecast.getMesas();
 		
 			for i = 1, #mesas, 1 do
 				td_carregarTDSeNecessario(mesas[i], msg);
@@ -87,15 +87,15 @@ rrpg.messaging.listen("SpecialFormRegistered",
 		end;
 	end, {formType="tablesDock"});		
 	
-rrpg.messaging.listen("MesaParted", 
+Firecast.Messaging.listen("MesaParted", 
 	function(msg)
 		td_desanexarDaMesa(msg.mesa);		
 	end, {eu=true});	
 		
-rrpg.messaging.listen("SessionLost", 
+Firecast.Messaging.listen("SessionLost", 
 	function(msg)
 		if jaInicializou then
-			local mesas = rrpg.getMesas();
+			local mesas = Firecast.getMesas();
 		
 			for i = 1, #mesas, 1 do
 				td_desanexarDaMesa(mesas[i]);
@@ -103,7 +103,7 @@ rrpg.messaging.listen("SessionLost",
 		end;
 	end);	
 
-rrpg.messaging.listen("TablesDockClosedByUser", 
+Firecast.Messaging.listen("TablesDockClosedByUser", 
 	function(msg)
 		local tdGlobal = require("/GerTablesDock/GerTablesDockGlobal.dlua");
 		local tdN = tdGlobal.getNDBForMesaTablesDock(msg.mesa, msg.moduleId, msg.name, false);
@@ -116,7 +116,7 @@ rrpg.messaging.listen("TablesDockClosedByUser",
 	
 local _scheduledForSave = {};
 	
-rrpg.messaging.listen("TablesDockPosChanged", 
+Firecast.Messaging.listen("TablesDockPosChanged", 
 	function(msg)
 		local id = tostring(msg.mesa.objectID) .. tostring(msg.moduleId) .. tostring(msg.name);
 		
@@ -126,7 +126,7 @@ rrpg.messaging.listen("TablesDockPosChanged",
 			setTimeout(function()
 					_scheduledForSave[id] = nil;
 					
-					if rrpg.plugins.getIsTablesDockActive(msg.mesa, msg.moduleId, msg.name) then
+					if Firecast.Plugins.getIsTablesDockActive(msg.mesa, msg.moduleId, msg.name) then
 						td_salvarStoredInfo(msg.mesa, msg);					
 					end;
 				end, 10000);
@@ -135,7 +135,7 @@ rrpg.messaging.listen("TablesDockPosChanged",
 				
 local function inicializar()
 	jaInicializou = true;
-	local mesas = rrpg.getMesas();
+	local mesas = Firecast.getMesas();
 	
 	for i = 1, #mesas, 1 do
 		td_anexarAMesa(mesas[i]);
@@ -143,10 +143,10 @@ local function inicializar()
 end;
 
 function RRPG_GerTablesDock(chaveSal)
-	local mesa = rrpg.getMesaDe(chaveSal);
+	local mesa = Firecast.getMesaDe(chaveSal);
 	
 	if mesa ~= nil then
-		local frm = gui.newForm("frmGerTablesDock");
+		local frm = GUI.newForm("frmGerTablesDock");
 		frm.mesa = mesa;
 		frm.loadTDFunction = td_carregarTD;
 		frm.unloadTDFunction = td_descarregarTDSeNecessario;

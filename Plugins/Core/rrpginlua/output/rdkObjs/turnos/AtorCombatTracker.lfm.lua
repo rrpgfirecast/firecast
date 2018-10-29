@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmAtorCombatTracker()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmAtorCombatTracker()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,7 +31,7 @@ function newfrmAtorCombatTracker()
 
 
 		local preparedVez = false;
-	
+		
 		local ATOR_VIEW_STATE_VISIVEL = 0;
 		local ATOR_VIEW_STATE_PARC_VISIVEL = 1;
 		local ATOR_VIEW_STATE_INVISIVEL = 2;
@@ -39,7 +39,7 @@ function newfrmAtorCombatTracker()
 		local function getTracker()
 			return self:findControlByName("frmCombatTracker");
 		end;	
-	
+		
 		function self:atualizarInterfaceFriendOrFoe()
 			local f = sheet.fof;
 				
@@ -120,14 +120,14 @@ function newfrmAtorCombatTracker()
 		function self:apagarAtor()
 			local n = sheet;
 			
-			dialogs.confirmYesNo("Deseja realmente apagar este ator?",
+			Dialogs.confirmYesNo("Deseja realmente apagar este ator?",
 				function(confirmado)
 					if confirmado then
 						if n.vez then
 							getTracker():proximoTurno();
 						end;
 						
-						ndb.deleteNode(n);
+						NDB.deleteNode(n);
 					end;
 				end);
 		end;
@@ -153,8 +153,8 @@ function newfrmAtorCombatTracker()
 		end;
 		
 		function self:getCurrentViewState()
-			local estaInvisivel = (ndb.getPermission(sheet, "group", "espectadores", "read") == "deny" or
-			                       ndb.getPermission(sheet, "group", "jogadores", "read") == "deny");
+			local estaInvisivel = (NDB.getPermission(sheet, "group", "espectadores", "read") == "deny" or
+			                       NDB.getPermission(sheet, "group", "jogadores", "read") == "deny");
 								   
 			local estaParcialmenteVisivel;
 			estaParcialmenteVisivel = sheet.visibilityState == ATOR_VIEW_STATE_PARC_VISIVEL;
@@ -181,7 +181,7 @@ function newfrmAtorCombatTracker()
 				urlImg = "/turnos/images/visivelParcial.png"
 				hintAUsar = "Ator visível a todos, porém anotações e efeitos escondidos";
 				
-				local mesa = rrpg.getMesaDe(sheet);
+				local mesa = Firecast.getMesaDe(sheet);
 				local meuJogador;
 				
 				if mesa ~= nil then
@@ -210,11 +210,11 @@ function newfrmAtorCombatTracker()
 		end;
 		
 		function self:alternarVisibilidade()						
-			if ndb.testPermission(sheet, "writePermissions") and ndb.testPermission(sheet, "write") then		
+			if NDB.testPermission(sheet, "writePermissions") and NDB.testPermission(sheet, "write") then		
 				local dadosSensiveisNode = sheet.dadosSensiveis;
 				
 				if dadosSensiveisNode == nil then
-					if not ndb.testPermission(sheet, "createChild") then
+					if not NDB.testPermission(sheet, "createChild") then
 						-- não há permissao para crair nodes
 						return;
 					end;
@@ -222,7 +222,7 @@ function newfrmAtorCombatTracker()
 					sheet.dadosSensiveis = {};
 					dadosSensiveisNode = sheet.dadosSensiveis;
 				else
-					if not ndb.testPermission(dadosSensiveisNode, "writePermissions") then
+					if not NDB.testPermission(dadosSensiveisNode, "writePermissions") then
 						-- Não há permissão para escreve permissoes neste sub-node
 						return;
 					end;
@@ -233,35 +233,35 @@ function newfrmAtorCombatTracker()
 				if currViewState == ATOR_VIEW_STATE_PARC_VISIVEL then
 					-- tornar invisivel
 					sheet.visibilityState = ATOR_VIEW_STATE_INVISIVEL;					
-					ndb.setPermission(sheet, "group", "espectadores", "read", "deny");
-					ndb.setPermission(sheet, "group", "jogadores", "read", "deny");		
-					ndb.setPermission(sheet, "group", "espectadores", "createChild", "deny");
-					ndb.setPermission(sheet, "group", "jogadores", "createChild", "deny");	
+					NDB.setPermission(sheet, "group", "espectadores", "read", "deny");
+					NDB.setPermission(sheet, "group", "jogadores", "read", "deny");		
+					NDB.setPermission(sheet, "group", "espectadores", "createChild", "deny");
+					NDB.setPermission(sheet, "group", "jogadores", "createChild", "deny");	
 				elseif currViewState == ATOR_VIEW_STATE_INVISIVEL then
 					-- tornar visivel
 					sheet.visibilityState = ATOR_VIEW_STATE_VISIVEL;	
-					ndb.setPermission(dadosSensiveisNode, "group", "espectadores", "read", nil);
-					ndb.setPermission(dadosSensiveisNode, "group", "jogadores", "read", nil);						
-					ndb.setPermission(sheet, "group", "espectadores", "createChild", nil);
-					ndb.setPermission(sheet, "group", "jogadores", "createChild", nil);		
-					ndb.setPermission(sheet, "group", "espectadores", "read", nil);
-					ndb.setPermission(sheet, "group", "jogadores", "read", nil);				
+					NDB.setPermission(dadosSensiveisNode, "group", "espectadores", "read", nil);
+					NDB.setPermission(dadosSensiveisNode, "group", "jogadores", "read", nil);						
+					NDB.setPermission(sheet, "group", "espectadores", "createChild", nil);
+					NDB.setPermission(sheet, "group", "jogadores", "createChild", nil);		
+					NDB.setPermission(sheet, "group", "espectadores", "read", nil);
+					NDB.setPermission(sheet, "group", "jogadores", "read", nil);				
 				else
 					-- tornar parcialmente visivel
 					sheet.visibilityState = ATOR_VIEW_STATE_PARC_VISIVEL;
-					ndb.setPermission(dadosSensiveisNode, "group", "espectadores", "read", "deny");
-					ndb.setPermission(dadosSensiveisNode, "group", "jogadores", "read", "deny");						
-					ndb.setPermission(sheet, "group", "espectadores", "createChild", "deny");
-					ndb.setPermission(sheet, "group", "jogadores", "createChild", "deny");							
-					ndb.setPermission(sheet, "group", "espectadores", "read", nil);
-					ndb.setPermission(sheet, "group", "jogadores", "read", nil);																									
+					NDB.setPermission(dadosSensiveisNode, "group", "espectadores", "read", "deny");
+					NDB.setPermission(dadosSensiveisNode, "group", "jogadores", "read", "deny");						
+					NDB.setPermission(sheet, "group", "espectadores", "createChild", "deny");
+					NDB.setPermission(sheet, "group", "jogadores", "createChild", "deny");							
+					NDB.setPermission(sheet, "group", "espectadores", "read", nil);
+					NDB.setPermission(sheet, "group", "jogadores", "read", nil);																									
 				end;
 			end;
 		end;		
 	
 
 
-    obj.rctOuter = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rctOuter = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rctOuter:setParent(obj);
     obj.rctOuter:setName("rctOuter");
     obj.rctOuter:setAlign("client");
@@ -271,14 +271,14 @@ function newfrmAtorCombatTracker()
     obj.rctOuter:setPadding({left=3, top=3, right=2, bottom=3});
     obj.rctOuter:setHitTest(true);
 
-    obj.layPrimeiraLinha = gui.fromHandle(_obj_newObject("layout"));
+    obj.layPrimeiraLinha = GUI.fromHandle(_obj_newObject("layout"));
     obj.layPrimeiraLinha:setParent(obj.rctOuter);
     obj.layPrimeiraLinha:setName("layPrimeiraLinha");
     obj.layPrimeiraLinha:setAlign("top");
     obj.layPrimeiraLinha:setHeight(20);
     obj.layPrimeiraLinha:setMargins({left=2, right=2});
 
-    obj.rctVez = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rctVez = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rctVez:setParent(obj.layPrimeiraLinha);
     obj.rctVez:setName("rctVez");
     obj.rctVez:setColor("#00000000");
@@ -291,7 +291,7 @@ function newfrmAtorCombatTracker()
     obj.rctVez:setWidth(23);
     obj.rctVez:setAlign("left");
 
-    obj.imgVez = gui.fromHandle(_obj_newObject("image"));
+    obj.imgVez = GUI.fromHandle(_obj_newObject("image"));
     obj.imgVez:setParent(obj.rctVez);
     obj.imgVez:setName("imgVez");
     obj.imgVez:setAlign("client");
@@ -299,7 +299,7 @@ function newfrmAtorCombatTracker()
     obj.imgVez:setVisible(false);
     obj.imgVez:setSRC("/turnos/images/vez.png");
 
-    obj.edtIniciativaRolagem = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtIniciativaRolagem = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtIniciativaRolagem:setParent(obj.layPrimeiraLinha);
     obj.edtIniciativaRolagem:setName("edtIniciativaRolagem");
     obj.edtIniciativaRolagem:setField("iniciativaRolagem");
@@ -309,7 +309,7 @@ function newfrmAtorCombatTracker()
     obj.edtIniciativaRolagem:setWidth(50);
     obj.edtIniciativaRolagem:setAlign("left");
 
-    obj.edtNome = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtNome = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtNome:setParent(obj.layPrimeiraLinha);
     obj.edtNome:setName("edtNome");
     obj.edtNome:setField("nome");
@@ -318,13 +318,13 @@ function newfrmAtorCombatTracker()
     obj.edtNome:setWidth(28);
     obj.edtNome:setAlign("client");
 
-    obj.layRightAlinedComps = gui.fromHandle(_obj_newObject("layout"));
+    obj.layRightAlinedComps = GUI.fromHandle(_obj_newObject("layout"));
     obj.layRightAlinedComps:setParent(obj.layPrimeiraLinha);
     obj.layRightAlinedComps:setName("layRightAlinedComps");
     obj.layRightAlinedComps:setAlign("right");
     obj.layRightAlinedComps:setWidth(78);
 
-    obj.edtIniciativa = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtIniciativa = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtIniciativa:setParent(obj.layRightAlinedComps);
     obj.edtIniciativa:setName("edtIniciativa");
     obj.edtIniciativa:setField("iniciativa");
@@ -335,7 +335,7 @@ function newfrmAtorCombatTracker()
     obj.edtIniciativa:setWidth(28);
     obj.edtIniciativa:setAlign("left");
 
-    obj.rctFriendOrFoe = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rctFriendOrFoe = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rctFriendOrFoe:setParent(obj.layRightAlinedComps);
     obj.rctFriendOrFoe:setName("rctFriendOrFoe");
     obj.rctFriendOrFoe:setColor("#00000000");
@@ -350,7 +350,7 @@ function newfrmAtorCombatTracker()
     obj.rctFriendOrFoe:setWidth(25);
     obj.rctFriendOrFoe:setAlign("left");
 
-    obj.imgDeleteAtor = gui.fromHandle(_obj_newObject("image"));
+    obj.imgDeleteAtor = GUI.fromHandle(_obj_newObject("image"));
     obj.imgDeleteAtor:setParent(obj.layRightAlinedComps);
     obj.imgDeleteAtor:setName("imgDeleteAtor");
     obj.imgDeleteAtor:setHitTest(true);
@@ -360,14 +360,14 @@ function newfrmAtorCombatTracker()
     obj.imgDeleteAtor:setWidth(15);
     obj.imgDeleteAtor:setAlign("left");
 
-    obj.laySegundaLinha = gui.fromHandle(_obj_newObject("layout"));
+    obj.laySegundaLinha = GUI.fromHandle(_obj_newObject("layout"));
     obj.laySegundaLinha:setParent(obj.rctOuter);
     obj.laySegundaLinha:setName("laySegundaLinha");
     obj.laySegundaLinha:setAlign("top");
     obj.laySegundaLinha:setHeight(20);
     obj.laySegundaLinha:setMargins({top=1, left=28, right=10});
 
-    obj.edtAnotacoes = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtAnotacoes = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtAnotacoes:setParent(obj.laySegundaLinha);
     obj.edtAnotacoes:setAlign("client");
     obj.edtAnotacoes:setField("dadosSensiveis.notas");
@@ -376,14 +376,14 @@ function newfrmAtorCombatTracker()
     obj.edtAnotacoes:setName("edtAnotacoes");
     obj.edtAnotacoes:setFontSize(11);
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.edtAnotacoes);
     obj.horzLine1:setAlign("bottom");
     obj.horzLine1:setStrokeColor("black");
     obj.horzLine1:setStrokeSize(1);
     obj.horzLine1:setName("horzLine1");
 
-    obj.imgInvisivel = gui.fromHandle(_obj_newObject("image"));
+    obj.imgInvisivel = GUI.fromHandle(_obj_newObject("image"));
     obj.imgInvisivel:setParent(obj.laySegundaLinha);
     obj.imgInvisivel:setAlign("right");
     obj.imgInvisivel:setName("imgInvisivel");
@@ -393,7 +393,7 @@ function newfrmAtorCombatTracker()
     obj.imgInvisivel:setCursor("handPoint");
     obj.imgInvisivel:setSRC("/turnos/images/visivel.png");
 
-    obj.imgAddEfeito = gui.fromHandle(_obj_newObject("image"));
+    obj.imgAddEfeito = GUI.fromHandle(_obj_newObject("image"));
     obj.imgAddEfeito:setParent(obj.laySegundaLinha);
     obj.imgAddEfeito:setAlign("right");
     obj.imgAddEfeito:setHitTest(true);
@@ -404,7 +404,7 @@ function newfrmAtorCombatTracker()
     obj.imgAddEfeito:setMargins({left=4});
     obj.imgAddEfeito:setName("imgAddEfeito");
 
-    obj.rclEfeitos = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclEfeitos = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclEfeitos:setParent(obj.rctOuter);
     obj.rclEfeitos:setMargins({left=28, top=1, right=14});
     obj.rclEfeitos:setName("rclEfeitos");
@@ -414,7 +414,7 @@ function newfrmAtorCombatTracker()
     obj.rclEfeitos:setTemplateForm("frmEfeitoCombatTracker");
 
 
-			if system.isMobile() then
+			if System.isMobile() then
 				self.layPrimeiraLinha.height = 32;
 				self.rctVez.width = 32;
 				self.edtNome.fontSize = 13;					
@@ -440,17 +440,17 @@ function newfrmAtorCombatTracker()
 		
 
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("fof");
     obj.dataLink1:setName("dataLink1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj);
     obj.dataLink2:setField("vez");
     obj.dataLink2:setName("dataLink2");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj);
     obj.dataLink3:setFields({'iniciativa', '_id'});
     obj.dataLink3:setName("dataLink3");
@@ -485,24 +485,24 @@ function newfrmAtorCombatTracker()
 
 
     obj._e_event0 = obj:addEventListener("onMenu",
-        function (self, x, y)
+        function (_, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onShow",
-        function (self)
+        function (_)
             self:recalcularAlturaDoAtor();
         end, obj);
 
     obj._e_event2 = obj:addEventListener("onScopeNodeChanged",
-        function (self)
+        function (_)
             if self._observer ~= nil then
             			self._observer.enabled = false;
             			self._observer = nil;
             		end;		
             		
             		if sheet ~= nil then			
-            			self._observer = ndb.newObserver(sheet);
+            			self._observer = NDB.newObserver(sheet);
             			
             			self._observer.onDeepPermissionListChanged = 
             				function(node) 
@@ -512,7 +512,7 @@ function newfrmAtorCombatTracker()
             			self._observer.onFinalPermissionsCouldBeChanged = 
             					function(node)						
             						local souMestre = false;												
-            						local mesa = rrpg.getMesaDe(sheet);
+            						local mesa = Firecast.getMesaDe(sheet);
             						
             						if mesa ~= nil then
             							local meuJogador = mesa.meuJogador;
@@ -522,10 +522,10 @@ function newfrmAtorCombatTracker()
             							end;
             						end;
             						
-            						self.imgInvisivel.enabled = (ndb.testPermission(sheet, "writePermissions") and 
-            													 ndb.testPermission(sheet, "readPermissions") and 
-            													 ndb.testPermission(sheet, "write") and 
-            													 ndb.testPermission(sheet, "createChild")) and
+            						self.imgInvisivel.enabled = (NDB.testPermission(sheet, "writePermissions") and 
+            													 NDB.testPermission(sheet, "readPermissions") and 
+            													 NDB.testPermission(sheet, "write") and 
+            													 NDB.testPermission(sheet, "createChild")) and
             													 souMestre;	
             						self.imgAddEfeito.enabled = self.imgInvisivel.enabled;								
             						self:atualizarIndicacaoVisibilidade(); 
@@ -548,82 +548,82 @@ function newfrmAtorCombatTracker()
         end, obj);
 
     obj._e_event3 = obj.rctOuter:addEventListener("onMenu",
-        function (self, x, y)
+        function (_, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
     obj._e_event4 = obj.rctVez:addEventListener("onMouseUp",
-        function (self, event)
+        function (_, event)
             self:setarTurnoDesteAtor();
         end, obj);
 
     obj._e_event5 = obj.rctVez:addEventListener("onMenu",
-        function (self, x, y)
+        function (_, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
     obj._e_event6 = obj.edtIniciativaRolagem:addEventListener("onMenu",
-        function (self, x, y)
+        function (_, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
     obj._e_event7 = obj.edtNome:addEventListener("onMenu",
-        function (self, x, y)
+        function (_, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
     obj._e_event8 = obj.edtIniciativa:addEventListener("onMenu",
-        function (self, x, y)
+        function (_, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
     obj._e_event9 = obj.rctFriendOrFoe:addEventListener("onMouseUp",
-        function (self, event)
+        function (_, event)
             if event.button == 'left' then self:nextFriendOrFoeFlag(); end;
         end, obj);
 
     obj._e_event10 = obj.rctFriendOrFoe:addEventListener("onMenu",
-        function (self, x, y)
+        function (_, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
     obj._e_event11 = obj.imgDeleteAtor:addEventListener("onMouseUp",
-        function (self, event)
+        function (_, event)
             if event.button == 'left' then self:apagarAtor(); end;
         end, obj);
 
     obj._e_event12 = obj.imgDeleteAtor:addEventListener("onMenu",
-        function (self, x, y)
+        function (_, x, y)
             self:exibirMenuDoAtor();
         end, obj);
 
     obj._e_event13 = obj.imgInvisivel:addEventListener("onMouseUp",
-        function (self, event)
+        function (_, event)
             if event.button =='left' then self:alternarVisibilidade(); end;
         end, obj);
 
     obj._e_event14 = obj.imgAddEfeito:addEventListener("onMouseUp",
-        function (self, event)
+        function (_, event)
             if event.button =='left' then self:adicionarEfeito() end;
         end, obj);
 
     obj._e_event15 = obj.rclEfeitos:addEventListener("onResize",
-        function (self)
+        function (_)
             self:recalcularAlturaDoAtor()
         end, obj);
 
     obj._e_event16 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self:atualizarInterfaceFriendOrFoe();
         end, obj);
 
     obj._e_event17 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             self:atualizarInterfaceVez();
         end, obj);
 
     obj._e_event18 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             agendarReordenacao();
         end, obj);
 
@@ -682,9 +682,23 @@ function newfrmAtorCombatTracker()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmAtorCombatTracker()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmAtorCombatTracker();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmAtorCombatTracker = {
@@ -698,6 +712,6 @@ local _frmAtorCombatTracker = {
     description=""};
 
 frmAtorCombatTracker = _frmAtorCombatTracker;
-rrpg.registrarForm(_frmAtorCombatTracker);
+Firecast.registrarForm(_frmAtorCombatTracker);
 
 return _frmAtorCombatTracker;

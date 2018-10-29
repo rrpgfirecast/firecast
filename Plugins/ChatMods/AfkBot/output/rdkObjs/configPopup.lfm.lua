@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newafkbotPopup()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+local function constructNew_afkbotPopup()
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -33,17 +33,17 @@ function newafkbotPopup()
     obj:setWidth(290);
     obj:setHeight(500);
 
-    obj.tabControl1 = gui.fromHandle(_obj_newObject("tabControl"));
+    obj.tabControl1 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl1:setParent(obj);
     obj.tabControl1:setAlign("client");
     obj.tabControl1:setName("tabControl1");
 
-    obj.tab1 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab1 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab1:setParent(obj.tabControl1);
     obj.tab1:setTitle("Opções");
     obj.tab1:setName("tab1");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.tab1);
     obj.checkBox1:setField("botEnabled");
     obj.checkBox1:setLeft(10);
@@ -52,7 +52,7 @@ function newafkbotPopup()
     obj.checkBox1:setText("Habilitar AfkBot");
     obj.checkBox1:setName("checkBox1");
 
-    obj.checkBox2 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox2 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox2:setParent(obj.tab1);
     obj.checkBox2:setField("autoEnable");
     obj.checkBox2:setLeft(10);
@@ -61,7 +61,7 @@ function newafkbotPopup()
     obj.checkBox2:setText("Autoligar quando ausente");
     obj.checkBox2:setName("checkBox2");
 
-    obj.checkBox3 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox3 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox3:setParent(obj.tab1);
     obj.checkBox3:setField("spectator");
     obj.checkBox3:setLeft(10);
@@ -70,7 +70,7 @@ function newafkbotPopup()
     obj.checkBox3:setText("Alertar automaticamente espectadores");
     obj.checkBox3:setName("checkBox3");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.tab1);
     obj.label1:setLeft(10);
     obj.label1:setTop(85);
@@ -79,7 +79,7 @@ function newafkbotPopup()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.tab1);
     obj.edit1:setLeft(200);
     obj.edit1:setTop(85);
@@ -91,7 +91,7 @@ function newafkbotPopup()
     obj.edit1:setHorzTextAlign("center");
     obj.edit1:setName("edit1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.tab1);
     obj.label2:setLeft(10);
     obj.label2:setTop(110);
@@ -99,14 +99,14 @@ function newafkbotPopup()
     obj.label2:setField("lastAlert");
     obj.label2:setName("label2");
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.tab1);
     obj.horzLine1:setLeft(10);
     obj.horzLine1:setTop(140);
     obj.horzLine1:setWidth(270);
     obj.horzLine1:setName("horzLine1");
 
-    obj.checkBox4 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox4 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox4:setParent(obj.tab1);
     obj.checkBox4:setField("stopDice");
     obj.checkBox4:setLeft(10);
@@ -115,7 +115,7 @@ function newafkbotPopup()
     obj.checkBox4:setText("Expulsar espectadores rolando dados.");
     obj.checkBox4:setName("checkBox4");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.tab1);
     obj.label3:setLeft(10);
     obj.label3:setTop(170);
@@ -124,7 +124,7 @@ function newafkbotPopup()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.tab1);
     obj.edit2:setLeft(200);
     obj.edit2:setTop(170);
@@ -136,7 +136,7 @@ function newafkbotPopup()
     obj.edit2:setHorzTextAlign("center");
     obj.edit2:setName("edit2");
 
-    obj.checkBox5 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox5 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox5:setParent(obj.tab1);
     obj.checkBox5:setField("stopLaugh");
     obj.checkBox5:setLeft(10);
@@ -145,7 +145,7 @@ function newafkbotPopup()
     obj.checkBox5:setText("Expulsar espectadores rindo.");
     obj.checkBox5:setName("checkBox5");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.tab1);
     obj.label4:setLeft(10);
     obj.label4:setTop(220);
@@ -154,7 +154,7 @@ function newafkbotPopup()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.tab1);
     obj.edit3:setLeft(200);
     obj.edit3:setTop(220);
@@ -166,7 +166,7 @@ function newafkbotPopup()
     obj.edit3:setHorzTextAlign("center");
     obj.edit3:setName("edit3");
 
-    obj.checkBox6 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox6 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox6:setParent(obj.tab1);
     obj.checkBox6:setField("noVoice");
     obj.checkBox6:setLeft(10);
@@ -175,22 +175,22 @@ function newafkbotPopup()
     obj.checkBox6:setText("Tirar voz de jogadores expulsos.");
     obj.checkBox6:setName("checkBox6");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.tab1);
     obj.dataLink1:setFields({'botEnabled','autoEnable'});
     obj.dataLink1:setName("dataLink1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.tab1);
     obj.dataLink2:setFields({'clock'});
     obj.dataLink2:setName("dataLink2");
 
-    obj.tab2 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.tabControl1);
     obj.tab2:setTitle("AfkBot");
     obj.tab2:setName("tab2");
 
-    obj.messagesList = gui.fromHandle(_obj_newObject("recordList"));
+    obj.messagesList = GUI.fromHandle(_obj_newObject("recordList"));
     obj.messagesList:setParent(obj.tab2);
     obj.messagesList:setLeft(10);
     obj.messagesList:setTop(5);
@@ -202,17 +202,17 @@ function newafkbotPopup()
     obj.messagesList:setLayout("vertical");
     obj.messagesList:setMinQt(1);
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj.tab2);
     obj.dataLink3:setField("addMessage");
     obj.dataLink3:setName("dataLink3");
 
-    obj.tab3 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab3 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab3:setParent(obj.tabControl1);
     obj.tab3:setTitle("AutoKick");
     obj.tab3:setName("tab3");
 
-    obj.kickList = gui.fromHandle(_obj_newObject("recordList"));
+    obj.kickList = GUI.fromHandle(_obj_newObject("recordList"));
     obj.kickList:setParent(obj.tab3);
     obj.kickList:setLeft(10);
     obj.kickList:setTop(5);
@@ -222,17 +222,17 @@ function newafkbotPopup()
     obj.kickList:setName("kickList");
     obj.kickList:setTemplateForm("frmKickItem");
 
-    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink4:setParent(obj.tab3);
     obj.dataLink4:setField("addUser");
     obj.dataLink4:setName("dataLink4");
 
-    obj.tab4 = gui.fromHandle(_obj_newObject("tab"));
+    obj.tab4 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab4:setParent(obj.tabControl1);
     obj.tab4:setTitle("AutoWelcome");
     obj.tab4:setName("tab4");
 
-    obj.welcomeList = gui.fromHandle(_obj_newObject("recordList"));
+    obj.welcomeList = GUI.fromHandle(_obj_newObject("recordList"));
     obj.welcomeList:setParent(obj.tab4);
     obj.welcomeList:setLeft(10);
     obj.welcomeList:setTop(5);
@@ -243,13 +243,13 @@ function newafkbotPopup()
     obj.welcomeList:setTemplateForm("frmWelcomeItem");
     obj.welcomeList:setMinQt(1);
 
-    obj.dataLink5 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink5:setParent(obj.tab4);
     obj.dataLink5:setField("addWelcome");
     obj.dataLink5:setName("dataLink5");
 
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             					if oldValue == nil then return end;
             					if sheet.botEnabled then 
@@ -259,7 +259,7 @@ function newafkbotPopup()
         end, obj);
 
     obj._e_event1 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             					if sheet.clock == nil then sheet.clock = os.time() end;
             					local clock = os.date("*t", sheet.clock);
@@ -268,7 +268,7 @@ function newafkbotPopup()
         end, obj);
 
     obj._e_event2 = obj.messagesList:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             if nodeA.enabled and nodeB.enabled then 
             						return 0;
             					elseif nodeA.enabled then
@@ -279,7 +279,7 @@ function newafkbotPopup()
         end, obj);
 
     obj._e_event3 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             					local addMessage = tonumber(sheet.addMessage) or 0;
             					if addMessage>0 then
@@ -290,7 +290,7 @@ function newafkbotPopup()
         end, obj);
 
     obj._e_event4 = obj.kickList:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             if nodeA.user and nodeB.user then 
             						return utils.compareStringPtBr(nodeA.login, nodeB.login);
             					elseif nodeA.user then
@@ -301,7 +301,7 @@ function newafkbotPopup()
         end, obj);
 
     obj._e_event5 = obj.dataLink4:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             					local addUser = tonumber(sheet.addUser) or 0;
             					if addUser>0 then
@@ -312,7 +312,7 @@ function newafkbotPopup()
         end, obj);
 
     obj._e_event6 = obj.welcomeList:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             if nodeA.user and nodeB.user then 
             						return utils.compareStringPtBr(nodeA.login, nodeB.login);
             					elseif nodeA.user then
@@ -323,7 +323,7 @@ function newafkbotPopup()
         end, obj);
 
     obj._e_event7 = obj.dataLink5:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             					local addWelcome = tonumber(sheet.addWelcome) or 0;
             					if addWelcome>0 then
@@ -385,9 +385,23 @@ function newafkbotPopup()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newafkbotPopup()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_afkbotPopup();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _afkbotPopup = {
@@ -401,7 +415,7 @@ local _afkbotPopup = {
     description=""};
 
 afkbotPopup = _afkbotPopup;
-rrpg.registrarForm(_afkbotPopup);
-rrpg.registrarDataType(_afkbotPopup);
+Firecast.registrarForm(_afkbotPopup);
+Firecast.registrarDataType(_afkbotPopup);
 
 return _afkbotPopup;

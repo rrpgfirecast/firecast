@@ -6,6 +6,9 @@ local rrpgWrappers = require("rrpgWrappers.lua");
 --[[ API do RRPG ]]--
 
 rrpg = objs.objectFromHandle(_obj_newObject("TRRPGMainWrapper"));
+RRPG = rrpg;
+Firecast = rrpg;
+
 local localRRPG = rrpg;
 objs.registerHandle(rrpg.handle);
 
@@ -57,7 +60,7 @@ local function newRolagemObject()
 			
 		while (not _obj_getProp(self.handle, "IsNavigatorEOF")) do
 			local sOp = {};			
-			sOp.tipo = string.lower(_obj_getProp(self.handle, "NavigatorTipoOperacao", i));
+			sOp.tipo = string.lower(_obj_getProp(self.handle, "NavigatorTipoOperacao"));
 			
 			if sOp.tipo == "dado" then
 				sOp.quantidade = _obj_getProp(self.handle, "NavigatorDadosQuantidade");
@@ -133,7 +136,7 @@ local function newRolagemObject()
 	end;	
 	
 	function rolObj:rolarLocalmente() _obj_invoke(self.handle, "RolarLocalmente"); self:_readOps(); end;
-	function rolObj:loadFromBase64EncodedString(str) _obj_invoke(self.handle, "LoadFromBase64EncodedString", str); self:_readOps(); return ret; end;		
+	function rolObj:loadFromBase64EncodedString(str) _obj_invoke(self.handle, "LoadFromBase64EncodedString", str); self:_readOps(); end;		
 		
 	rolObj.props = propsRolagem;
 	objs.registerHandle(rolObj.handle, rolObj);	
@@ -191,7 +194,7 @@ function rrpg.getMesaDe(object)
 	end;
 		
 	local handle = rawget(object, "handle");
-	local mesaObjectID = nil;
+	local mesaObjectID;
 	
 	if handle == nil then
 		if ndb.isNodeObject(object) then
@@ -213,6 +216,8 @@ function rrpg.getMesaDe(object)
 	
 	return nil;
 end;
+
+rrpg.getRoomOf = rrpg.getMesaDe;
 	
 function rrpg.getBibliotecaItemDe(object)		
 	if (type(object) ~= "table") then
@@ -220,7 +225,7 @@ function rrpg.getBibliotecaItemDe(object)
 	end;
 		
 	local handle = rawget(object, "handle");
-	local bibObjectID = nil;
+	local bibObjectID;
 	
 	if handle == nil then
 		if ndb.isNodeObject(object) then
@@ -322,6 +327,66 @@ function rrpg.registrarSpecialForm(frm)
   if (type(frm) == 'table') and (frm.name ~= nil) then		
   		_rrpg_Forms_RegistrarSpecial(frm);  	
   end;
+end;
+	
+local __registeredToolButtons = nil;
+	
+function rrpg.registerChatToolButton(params)
+	if type(params) ~= "table" then
+		error("registerChatToolButton: params must be a table");
+	end;
+	
+	local regClass = objs.objectFromHandle(_obj_newObject("TRRPGLuaRegisteredChatToolButton"));
+	objs.registerHandle(regClass.handle);	
+	
+	regClass.eves = {};
+	regClass.eves["onCallback"] = "";
+	
+	_obj_setProp(regClass.handle, "Hint", params.hint);
+	_obj_setProp(regClass.handle, "IconURL", params.icon);
+	
+	local p = tonumber(params.priority);
+	
+	if p ~= nil then
+		_obj_setProp(regClass.handle, "Priority", math.floor(p));
+	end;
+	
+	local group = tostring(params.group) or "";
+
+	if group ~= "" then	
+		_obj_setProp(regClass.handle, "Group", tostring(params.group) or "");
+		
+		p = tonumber(params.groupPriority);
+		
+		if p ~= nil then
+			_obj_setProp(regClass.handle, "GroupPriority", math.floor(p));		
+		end;
+	end;	
+	
+	
+	if params.callback ~= nil then
+		regClass.onCallback = params.callback;		
+	end;
+	
+	_obj_invoke(regClass.handle, "Activate");
+	
+	if __registeredToolButtons == nil then
+		__registeredToolButtons = {};
+	end;
+	
+	__registeredToolButtons[regClass.handle] = regClass; -- strong reference
+	return regClass.handle;
+end;
+
+function rrpg.unregisterChatToolButton(toolButtonId)
+	if __registeredToolButtons ~= nil then
+		local regClass = __registeredToolButtons[toolButtonId];
+		
+		if regClass ~= nil then
+			__registeredToolButtons[toolButtonId] = nil;
+			_obj_invoke(regClass.handle, "Deactivate");
+		end;
+	end;
 end;
 		
 rrpg.messaging = require("rrpgEventMessages.lua");

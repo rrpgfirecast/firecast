@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <group>
 	<script><![CDATA[
-		local ATOR_VIEW_STATE_VISIVEL = 0;
+		--local ATOR_VIEW_STATE_VISIVEL = 0;
 		local ATOR_VIEW_STATE_PARC_VISIVEL = 1;
-		local ATOR_VIEW_STATE_INVISIVEL = 2;
+		--local ATOR_VIEW_STATE_INVISIVEL = 2;
 	
 		local function getAtoresNDB()
 			if sheet.atores == nil then
@@ -15,11 +15,11 @@
 
 		local function getAtoresNodes()
 			local atores = getAtoresNDB();
-			return ndb.getChildNodes(atores);
+			return NDB.getChildNodes(atores);
 		end;
 		
 		function self:souMestre()
-			local mesa = rrpg.getMesaDe(self);
+			local mesa = Firecast.getMesaDe(self);
 			
 			if mesa ~= nil then
 				local j = mesa.meuJogador;
@@ -35,7 +35,7 @@
 		end;
 		
 		function self:narrar(msg)
-			local mesa = rrpg.getMesaDe(sheet);
+			local mesa = Firecast.getMesaDe(sheet);
 			
 			if mesa ~= nil then
 				local chat = mesa.chat;
@@ -47,7 +47,7 @@
 		end;
 		
 		function self:escrever(msg)
-			local mesa = rrpg.getMesaDe(sheet);
+			local mesa = Firecast.getMesaDe(sheet);
 			
 			if mesa ~= nil then
 				local chat = mesa.chat;
@@ -102,7 +102,7 @@
 				local footerTralha = "";
 				local notificacaoDeTurno = "[§K1]" .. headerTralha .. "[§K1] Turno de " .. self:getNomeColoridoDe(node) .. "[§K1] " .. footerTralha;
 			
-				if (ndb.getPermission(node, "group", "espectadores", "read") ~= "deny") then			   
+				if (NDB.getPermission(node, "group", "espectadores", "read") ~= "deny") then			   
 					self:narrar(notificacaoDeTurno);
 				else					
 					self:escrever(notificacaoDeTurno);
@@ -142,7 +142,7 @@
 		
 		function self:avancarRelogioDeAtor(ator, relogioAtual, relogioOld)
 			if ator.dadosSensiveis ~= nil and ator.dadosSensiveis.efeitos ~= nil then
-				local lEfeitos = ndb.getChildNodes(ator.dadosSensiveis.efeitos);
+				local lEfeitos = NDB.getChildNodes(ator.dadosSensiveis.efeitos);
 				
 				for i = 1, #lEfeitos, 1 do
 					local ef = lEfeitos[i];
@@ -161,11 +161,11 @@
 																		
 						if duracaoRealRestante < constanteMargemSuperior then
 							local nomeEfeito = ef.descricao;
-							ndb.deleteNode(ef);
+							NDB.deleteNode(ef);
 							
 							if nomeEfeito ~= nil and ator.nome ~= nil then
 								local fof = ator.fof or 0;
-								local enviarNarracao = (ndb.getPermission(ator, "group", "espectadores", "read") ~= "deny") and
+								local enviarNarracao = (NDB.getPermission(ator, "group", "espectadores", "read") ~= "deny") and
 								                       (fof ~= 3) and (ator.visibilityState ~= ATOR_VIEW_STATE_PARC_VISIVEL); -- não é inimigo;
 													   
 								local notificacao = "[§K15] >> [§K1]O efeito [§K7]" .. nomeEfeito .. "[§K1] de " .. self:getNomeColoridoDe(ator) .. "[§K1] chegou ao fim";
@@ -215,7 +215,6 @@
 			end;
 		
 			local atores = getAtoresNodes();
-			local atorComVez = nil;
 			local idxAtorComVez = nil;
 			local novaRodada = false;
 			
@@ -229,7 +228,6 @@
 					local a = atores[i];
 					
 					if a.vez then
-						atorComVez = a;
 						idxAtorComVez = i;	
 						break;					
 					end;
@@ -276,7 +274,7 @@
 		
 		function self:criarNovoAtor()
 			local novoNode = nil;
-			ndb.beginUpdate(sheet);
+			NDB.beginUpdate(sheet);
 			
 			tryFinally(function()
 					novoNode = self.rclAtores:append();
@@ -284,7 +282,7 @@
 				end,
 				
 				function()
-					ndb.endUpdate(sheet);
+					NDB.endUpdate(sheet);
 				end);
 				
 			return novoNode;
@@ -293,7 +291,7 @@
 		function self:limpar()		
 			local n = sheet;
 			
-			dialogs.confirmYesNo("Deseja realmente limpar o Tracker de Combate?",
+			Dialogs.confirmYesNo("Deseja realmente limpar o Tracker de Combate?",
 				function(confirmado)
 					if confirmado then
 						n.atores = {};
@@ -321,14 +319,14 @@
 			
 		local function verificarEstadoMsgEvents()			
 			local deveUsarListeners = self.visible and sheet ~= nil;
-			local mesaAcoplada = rrpg.getMesaDe(sheet);
+			local mesaAcoplada = Firecast.getMesaDe(sheet);
 			
 			if deveUsarListeners and not self.listenersAtivo and mesaAcoplada ~= nil then				
 			
 				-- ativar listeners
 				self.listenersAtivo = true;
 				
-				self.listenerHandleChatCommand = rrpg.messaging.listen("HandleChatCommand", 
+				self.listenerHandleChatCommand = Firecast.Messaging.listen("HandleChatCommand", 
 					function(msg)
 						if (msg.comando == ">>") and (self:souMestre()) then
 							self:proximoTurno();
@@ -336,7 +334,7 @@
 						end;					
 					end, {mesa = mesaAcoplada});
 					
-				self.listenerListChatCommands = rrpg.messaging.listen("ListChatCommands", 
+				self.listenerListChatCommands = Firecast.Messaging.listen("ListChatCommands", 
 					function(msg)
 						if self:souMestre() then
 							msg.response = {{comando="/>>", descricao="Iniciar o próximo turno (Tracker de Combate)"}};
@@ -346,8 +344,8 @@
 			elseif not deveUsarListeners and self.listenersAtivo then
 				-- desativar listeners;				
 				self.listenersAtivo = false;
-				rrpg.messaging.unlisten(self.listenerHandleChatCommand);
-				rrpg.messaging.unlisten(self.listenerListChatCommands);				
+				Firecast.Messaging.unlisten(self.listenerHandleChatCommand);
+				Firecast.Messaging.unlisten(self.listenerListChatCommands);				
 				self.listenerHandleChatCommand = nil;
 				self.listenerListChatCommands = nil;				
 			end
@@ -362,7 +360,7 @@
 				return;
 			end;
 		
-			local atores = ndb.getChildNodes(getAtoresNDB());
+			local atores = NDB.getChildNodes(getAtoresNDB());
 			local atorDoPersonagem = nil;	
 		    local chavePer = personagem.codigoInterno;
 
@@ -392,7 +390,7 @@
 		end;
 		
 		local function dropJogadorActor(jogador)					
-			local mesa = rrpg.getMesaDe(jogador);
+			local mesa = Firecast.getMesaDe(jogador);
 			
 			if mesa ~= nil then
 				local chavePer = jogador.personagemPrincipal;
@@ -403,7 +401,7 @@
 				end;							
 			end;
 		
-			local atores = ndb.getChildNodes(getAtoresNDB());
+			local atores = NDB.getChildNodes(getAtoresNDB());
 			local atorDoJogador = nil;
 			local loginJogador = string.lower(jogador.login);
 
@@ -458,7 +456,7 @@
 		
 			return function(drag, x, y)
 					  drag:addData('text', tostring(ator.nome));
-					  local mesa = rrpg.getMesaDe(tracker);
+					  local mesa = Firecast.getMesaDe(tracker);
 					  
 					  if mesa ~= nil then
 						local jogador = mesa:findJogador(tostring(ator.login or ""));

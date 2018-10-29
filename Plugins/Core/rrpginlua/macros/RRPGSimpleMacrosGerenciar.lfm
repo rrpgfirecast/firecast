@@ -3,7 +3,7 @@
 	<import file="../interfaceUtils.xml"/>
 
 	<!-- Popup de Edição da Macro -->
-	<popup name="popEditMacro">
+	<popup name="popEditMacro" autoScopeNode="false">
 		<event name="onClose">
 			self.popEditMacro:setNodeObject(nil);
 		</event>
@@ -28,7 +28,7 @@
 				
 				<radioButton groupName="tipoMacro" field="tipoMacro" fieldValue="S" text="@@macros.ui.macroType.simple"/>
 				<radioButton groupName="tipoMacro" field="tipoMacro" fieldValue="L" text="@@macros.ui.macroType.lua" margins="{bottom=12, right=8}"/>
-				<button  text="??" width="45" onClick="gui.openInBrowser('http://rrpg.com.br/sdk3beta/RRPG%20SDK%203.html?Macros.html');"/>
+				<button  text="??" width="45" onClick="GUI.openInBrowser('http://rrpg.com.br/sdk3beta/RRPG%20SDK%203.html?Macros.html');"/>
 				<flowLineBreak/>
 				
 				<label text="@@macros.ui.actionsTitle" autoSize="true" vertTextAlign="trailing"/>
@@ -43,14 +43,14 @@
 				<flowLineBreak/>	
 				<button text="@@macros.ui.deleteMacro" width="150" margins="{top=8, right=15, bottom=15}" height="30">
 					<event name="OnClick">
-						dialogs.confirmYesNo(lang("macros.ui.deleteConfirmation"),
+						Dialogs.confirmYesNo(lang("macros.ui.deleteConfirmation"),
 							function (confirmado)
 								if confirmado then
 									local node = self.popEditMacro:getNodeObject();								
 									self.popEditMacro:close();						
 									
 									if node ~= nil then
-										ndb.deleteNode(node);
+										NDB.deleteNode(node);
 										globalMacrosInvalido = true;
 									end;
 								end;
@@ -170,7 +170,7 @@
 	
 	<event name="onShow">
 		if globalSimpleMacrosNDB == nil then
-			globalSimpleMacrosNDB = ndb.load("simpleMacros.xml");
+			globalSimpleMacrosNDB = NDB.load("simpleMacros.xml");
 		end;			
 	
 		if globalSimpleMacrosNDB.global == nil then

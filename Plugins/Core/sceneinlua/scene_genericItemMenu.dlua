@@ -46,16 +46,6 @@ local function redistribuirZ(lista)
 	end;
 end;
 
-local function showMsgZ(lista)
-	local s = "";
-	
-	for i = 1, #lista, 1 do
-		s = s .. " " .. lista[i].z;
-	end
-	
-	showMessage(s);
-end;
-
 function GENERICItem_SendToBack(scene, selection)
 	if #selection <= 0 then
 		return;

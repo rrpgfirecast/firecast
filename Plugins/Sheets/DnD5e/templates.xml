@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <group>
 	<!-- TEMPLATES -->
 	<template name="panAtribsEx">
@@ -157,9 +157,9 @@
 		<dataLink field="atributos.$(field)">
 			<event name="onChange">		
 				local numAsStr = tostring(newValue);
-				local numero = nil;
+				local numero;
 				
-				if numAsStrg ~= "" then
+				if numAsStr ~= "" then
 					numero = tonumber(newValue);
 				else
 					numero = nil;
@@ -345,10 +345,10 @@
 		<script> 
 			<![CDATA[			
 			local function askForDelete()
-				dialogs.confirmYesNo("Deseja realmente apagar este item?",
+				Dialogs.confirmYesNo("Deseja realmente apagar este item?",
 									 function (confirmado)
 										if confirmado then
-											ndb.deleteNode(self.sheet);
+											NDB.deleteNode(self.sheet);
 										end;
 									 end);
 			end;

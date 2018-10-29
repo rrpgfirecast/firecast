@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFichaBasicaV3Rich()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmFichaBasicaV3Rich()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -33,7 +33,7 @@ function newfrmFichaBasicaV3Rich()
     obj:setFormType("sheetTemplate");
     obj:setTheme("dark");
 
-    obj.richEdit1 = gui.fromHandle(_obj_newObject("richEdit"));
+    obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
     obj.richEdit1:setParent(obj);
     obj.richEdit1:setAlign("client");
     lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "#363B45");
@@ -41,6 +41,7 @@ function newfrmFichaBasicaV3Rich()
     obj.richEdit1:setField("txt");
     lfm_setPropAsString(obj.richEdit1, "hideSelection",  "false");
     lfm_setPropAsString(obj.richEdit1, "defaultFontSize",  "15");
+    lfm_setPropAsString(obj.richEdit1, "animateImages",  "true");
     obj.richEdit1:setName("richEdit1");
 
     function obj:_releaseEvents()
@@ -61,9 +62,23 @@ function newfrmFichaBasicaV3Rich()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFichaBasicaV3Rich()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFichaBasicaV3Rich();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFichaBasicaV3Rich = {
@@ -77,7 +92,7 @@ local _frmFichaBasicaV3Rich = {
     description="Ficha Básica do RRPG v3"};
 
 frmFichaBasicaV3Rich = _frmFichaBasicaV3Rich;
-rrpg.registrarForm(_frmFichaBasicaV3Rich);
-rrpg.registrarDataType(_frmFichaBasicaV3Rich);
+Firecast.registrarForm(_frmFichaBasicaV3Rich);
+Firecast.registrarDataType(_frmFichaBasicaV3Rich);
 
 return _frmFichaBasicaV3Rich;

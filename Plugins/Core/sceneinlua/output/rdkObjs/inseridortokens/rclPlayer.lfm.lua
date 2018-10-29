@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newrclPlayer_svg()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_rclPlayer_svg()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,7 +31,7 @@ function newrclPlayer_svg()
     obj:setHeight(30);
     obj:setTheme("dark");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
     obj.label1:setLeft(5);
     obj.label1:setTop(5);
@@ -58,9 +58,23 @@ function newrclPlayer_svg()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newrclPlayer_svg()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_rclPlayer_svg();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _rclPlayer_svg = {
@@ -74,6 +88,6 @@ local _rclPlayer_svg = {
     description=""};
 
 rclPlayer_svg = _rclPlayer_svg;
-rrpg.registrarForm(_rclPlayer_svg);
+Firecast.registrarForm(_rclPlayer_svg);
 
 return _rclPlayer_svg;

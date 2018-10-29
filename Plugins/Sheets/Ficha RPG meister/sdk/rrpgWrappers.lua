@@ -432,7 +432,7 @@ local function initBibPersonagemWrappedObjectFromHandle(handle)
 		
 		local function checkState()
 			if not jaNotificou then
-				local state = ndbBib.getState(rootNode);
+				state = ndbBib.getState(rootNode);
 			
 				if state == "open" then
 					jaNotificou = true;
@@ -469,7 +469,6 @@ end;
 		
 local function initBibSceneUnitClassWrappedObjectFromHandle(handle)
 	local wObj = initBibliotecaItemWrappedObjectFromHandle(handle); 
-	local bibItem = wObj;
 	
 	wObj.props["tamanhoX"] = {readProp = "TamanhoX", tipo = "double"};	
 	wObj.props["tamanhoY"] = {readProp = "TamanhoY", tipo = "double"};	
@@ -641,7 +640,25 @@ local function initBaseChatWrappedObjectFromHandle(handle)
 			end;
 		end;
 	end;	
+	
+	function wChat:getRoom()
+		local selfHandle = rawget(self, "handle");
+		
+		if selfHandle ~= nil then
+			mesaObjectID = _rrpg_tryGetMesaObjectIDRelatedToHandle(selfHandle);		
 			
+			if (mesaObjectID ~= nil) then
+				mesaObjectID = tonumber(mesaObjectID);
+			end;
+			
+			if mesaObjectID ~= nil then
+				return rrpgWrappers.contextObjectFromID(mesaObjectID);
+			end;
+		end;			
+	end;
+			
+				
+	wChat.props["room"] = {getter = "getRoom", tipo = "table"};	
 	return wObj;
 end;
 		
@@ -701,6 +718,10 @@ end;
 
 function _INTERNAL_EVE_OnWrappedObjectWasDestroyed(objectID)					
 	localStrongRefContextoObjects[objectID] = nil;  -- Permitir o Garbage Collector coletar este objeto
+end;
+
+function _INTERNAL_AUX_ContextObjectFromID(objectID)
+	return rrpgWrappers.contextObjectFromID(objectID);
 end;
 
 SharedObjects.registerUnpacker(SHARED_OBJECT_TYPE,

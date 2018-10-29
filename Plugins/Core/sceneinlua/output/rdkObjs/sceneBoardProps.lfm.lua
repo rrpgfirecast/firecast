@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmBoardProps()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("popupForm"));
+local function constructNew_frmBoardProps()
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -48,7 +48,7 @@ function newfrmBoardProps()
 		local _maxH = 450;
 		local _minH = 300;
 		local _useHeight;
-		local _screenSafeW, _screenSafeH = System.getScreenSize();
+		local _, _screenSafeH = System.getScreenSize();
 		_screenSafeH = _screenSafeH - 40;
 				
 		_useHeight = _screenSafeH;
@@ -63,28 +63,28 @@ function newfrmBoardProps()
 		
 
 
-    obj.tabControl1 = gui.fromHandle(_obj_newObject("tabControl"));
+    obj.tabControl1 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl1:setParent(obj);
     obj.tabControl1:setAlign("client");
     obj.tabControl1:setName("tabControl1");
 
-    obj.tabPrincipal = gui.fromHandle(_obj_newObject("tab"));
+    obj.tabPrincipal = GUI.fromHandle(_obj_newObject("tab"));
     obj.tabPrincipal:setParent(obj.tabControl1);
     obj.tabPrincipal:setName("tabPrincipal");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj.tabPrincipal);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.flaContent = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flaContent = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flaContent:setParent(obj.scrollBox1);
     obj.flaContent:setAlign("top");
     obj.flaContent:setAutoHeight(true);
     obj.flaContent:setMaxControlsPerLine(1);
     obj.flaContent:setName("flaContent");
 
-    obj.flowPart1 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart1 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart1:setParent(obj.flaContent);
     obj.flowPart1:setName("flowPart1");
     obj.flowPart1:setHeight(30);
@@ -92,7 +92,7 @@ function newfrmBoardProps()
     obj.flowPart1:setMaxWidth(5000);
     obj.flowPart1:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labGroupHeader1 = gui.fromHandle(_obj_newObject("label"));
+    obj.labGroupHeader1 = GUI.fromHandle(_obj_newObject("label"));
     obj.labGroupHeader1:setParent(obj.flowPart1);
     obj.labGroupHeader1:setName("labGroupHeader1");
     obj.labGroupHeader1:setAlign("left");
@@ -104,7 +104,7 @@ function newfrmBoardProps()
     obj.labGroupHeader1:setFontSize(15);
     obj.labGroupHeader1:setFontColor("#FFCC66");
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.flowPart1);
     obj.horzLine1:setAlign("bottom");
     obj.horzLine1:setStrokeColor("#FFCC6670");
@@ -116,7 +116,7 @@ function newfrmBoardProps()
 		
 
 
-    obj.partTipoCelula = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.partTipoCelula = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.partTipoCelula:setParent(obj.flaContent);
     obj.partTipoCelula:setName("partTipoCelula");
     obj.partTipoCelula:setHeight(30);
@@ -124,7 +124,7 @@ function newfrmBoardProps()
     obj.partTipoCelula:setMaxWidth(5000);
     obj.partTipoCelula:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labTipoDeCelula = gui.fromHandle(_obj_newObject("label"));
+    obj.labTipoDeCelula = GUI.fromHandle(_obj_newObject("label"));
     obj.labTipoDeCelula:setParent(obj.partTipoCelula);
     obj.labTipoDeCelula:setName("labTipoDeCelula");
     obj.labTipoDeCelula:setAlign("left");
@@ -134,13 +134,13 @@ function newfrmBoardProps()
     obj.labTipoDeCelula:setVertTextAlign("center");
     obj.labTipoDeCelula:setMargins({right=5});
 
-    obj.flaTipoDeCelula = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flaTipoDeCelula = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flaTipoDeCelula:setParent(obj.partTipoCelula);
     obj.flaTipoDeCelula:setName("flaTipoDeCelula");
     obj.flaTipoDeCelula:setAlign("client");
     obj.flaTipoDeCelula:setMargins({right=5});
 
-    obj.flowPart2 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart2 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart2:setParent(obj.flaTipoDeCelula);
     obj.flowPart2:setName("flowPart2");
     obj.flowPart2:setMinWidth(50);
@@ -149,14 +149,14 @@ function newfrmBoardProps()
     obj.flowPart2:setMargins({left=3, right=3, top=3, bottom=3});
     obj.flowPart2:setHitTest(true);
 
-    obj.rbtCellTypeQuad = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.rbtCellTypeQuad = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.rbtCellTypeQuad:setParent(obj.flowPart2);
     obj.rbtCellTypeQuad:setName("rbtCellTypeQuad");
     obj.rbtCellTypeQuad:setAlign("left");
     obj.rbtCellTypeQuad:setWidth(20);
     obj.rbtCellTypeQuad:setGroupName("sceneCellType");
 
-    obj.path1 = gui.fromHandle(_obj_newObject("path"));
+    obj.path1 = GUI.fromHandle(_obj_newObject("path"));
     obj.path1:setParent(obj.flowPart2);
     obj.path1:setPathData("M 0 0 L 1 0 L 1 1 L 0 1 z");
     obj.path1:setName("path1");
@@ -168,7 +168,7 @@ function newfrmBoardProps()
     obj.path1:setHitTest(false);
     obj.path1:setRoundToPixel(true);
 
-    obj.flowPart3 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart3 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart3:setParent(obj.flaTipoDeCelula);
     obj.flowPart3:setName("flowPart3");
     obj.flowPart3:setMinWidth(50);
@@ -177,14 +177,14 @@ function newfrmBoardProps()
     obj.flowPart3:setMargins({left=3, right=3, top=3, bottom=3});
     obj.flowPart3:setHitTest(true);
 
-    obj.rbtCellTypeVertHex = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.rbtCellTypeVertHex = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.rbtCellTypeVertHex:setParent(obj.flowPart3);
     obj.rbtCellTypeVertHex:setName("rbtCellTypeVertHex");
     obj.rbtCellTypeVertHex:setAlign("left");
     obj.rbtCellTypeVertHex:setWidth(20);
     obj.rbtCellTypeVertHex:setGroupName("sceneCellType");
 
-    obj.path2 = gui.fromHandle(_obj_newObject("path"));
+    obj.path2 = GUI.fromHandle(_obj_newObject("path"));
     obj.path2:setParent(obj.flowPart3);
     obj.path2:setPathData("M 84 0 L 168 50 L 168 140 L 84 190 L 0 140 L 0 50 z");
     obj.path2:setName("path2");
@@ -196,7 +196,7 @@ function newfrmBoardProps()
     obj.path2:setHitTest(false);
     obj.path2:setRoundToPixel(true);
 
-    obj.flowPart4 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart4 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart4:setParent(obj.flaTipoDeCelula);
     obj.flowPart4:setName("flowPart4");
     obj.flowPart4:setMinWidth(50);
@@ -205,14 +205,14 @@ function newfrmBoardProps()
     obj.flowPart4:setMargins({left=3, right=3, top=3, bottom=3});
     obj.flowPart4:setHitTest(true);
 
-    obj.rbtCellTypeHorzHex = gui.fromHandle(_obj_newObject("radioButton"));
+    obj.rbtCellTypeHorzHex = GUI.fromHandle(_obj_newObject("radioButton"));
     obj.rbtCellTypeHorzHex:setParent(obj.flowPart4);
     obj.rbtCellTypeHorzHex:setName("rbtCellTypeHorzHex");
     obj.rbtCellTypeHorzHex:setAlign("left");
     obj.rbtCellTypeHorzHex:setWidth(20);
     obj.rbtCellTypeHorzHex:setGroupName("sceneCellType");
 
-    obj.path3 = gui.fromHandle(_obj_newObject("path"));
+    obj.path3 = GUI.fromHandle(_obj_newObject("path"));
     obj.path3:setParent(obj.flowPart4);
     obj.path3:setPathData("M 0 84 L 50 0 L 140 0 L 190 84 L 140 168 L 50 168 Z");
     obj.path3:setName("path3");
@@ -224,7 +224,7 @@ function newfrmBoardProps()
     obj.path3:setHitTest(false);
     obj.path3:setRoundToPixel(true);
 
-    obj.partSquareDiagonals = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.partSquareDiagonals = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.partSquareDiagonals:setParent(obj.flaContent);
     obj.partSquareDiagonals:setName("partSquareDiagonals");
     obj.partSquareDiagonals:setHeight(30);
@@ -232,7 +232,7 @@ function newfrmBoardProps()
     obj.partSquareDiagonals:setMaxWidth(5000);
     obj.partSquareDiagonals:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labDiagonais = gui.fromHandle(_obj_newObject("label"));
+    obj.labDiagonais = GUI.fromHandle(_obj_newObject("label"));
     obj.labDiagonais:setParent(obj.partSquareDiagonals);
     obj.labDiagonais:setName("labDiagonais");
     obj.labDiagonais:setAlign("left");
@@ -242,13 +242,13 @@ function newfrmBoardProps()
     obj.labDiagonais:setVertTextAlign("center");
     obj.labDiagonais:setMargins({right=5});
 
-    obj.cmbDiagonais = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.cmbDiagonais = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.cmbDiagonais:setParent(obj.partSquareDiagonals);
     obj.cmbDiagonais:setName("cmbDiagonais");
     obj.cmbDiagonais:setAlign("client");
     obj.cmbDiagonais:setMargins({right=5});
 
-    obj.flowPart5 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart5 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart5:setParent(obj.flaContent);
     obj.flowPart5:setName("flowPart5");
     obj.flowPart5:setHeight(30);
@@ -256,7 +256,7 @@ function newfrmBoardProps()
     obj.flowPart5:setMaxWidth(5000);
     obj.flowPart5:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labCellSize = gui.fromHandle(_obj_newObject("label"));
+    obj.labCellSize = GUI.fromHandle(_obj_newObject("label"));
     obj.labCellSize:setParent(obj.flowPart5);
     obj.labCellSize:setName("labCellSize");
     obj.labCellSize:setAlign("left");
@@ -266,13 +266,13 @@ function newfrmBoardProps()
     obj.labCellSize:setVertTextAlign("center");
     obj.labCellSize:setMargins({right=5});
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.flowPart5);
     obj.layout1:setName("layout1");
     obj.layout1:setAlign("client");
     obj.layout1:setMargins({right=5});
 
-    obj.edtCellSize = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtCellSize = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtCellSize:setParent(obj.layout1);
     obj.edtCellSize:setName("edtCellSize");
     obj.edtCellSize:setType("float");
@@ -280,14 +280,14 @@ function newfrmBoardProps()
     obj.edtCellSize:setDecimalPlaces(1);
     obj.edtCellSize:setMin(0.1);
 
-    obj.cmbMetric = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.cmbMetric = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.cmbMetric:setParent(obj.layout1);
     obj.cmbMetric:setName("cmbMetric");
     obj.cmbMetric:setAlign("right");
     obj.cmbMetric:setWidth(90);
     obj.cmbMetric:setMargins({left=5});
 
-    obj.partDimensoes = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.partDimensoes = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.partDimensoes:setParent(obj.flaContent);
     obj.partDimensoes:setName("partDimensoes");
     obj.partDimensoes:setMargins({left=2, right=2, top=3, bottom=3});
@@ -295,7 +295,7 @@ function newfrmBoardProps()
     obj.partDimensoes:setMinWidth(50);
     obj.partDimensoes:setMaxWidth(5000);
 
-    obj.labDimensoes = gui.fromHandle(_obj_newObject("label"));
+    obj.labDimensoes = GUI.fromHandle(_obj_newObject("label"));
     obj.labDimensoes:setParent(obj.partDimensoes);
     obj.labDimensoes:setName("labDimensoes");
     obj.labDimensoes:setWordWrap(true);
@@ -306,19 +306,19 @@ function newfrmBoardProps()
     obj.labDimensoes:setVertTextAlign("center");
     obj.labDimensoes:setMargins({right=5});
 
-    obj.layContentDimensions = gui.fromHandle(_obj_newObject("layout"));
+    obj.layContentDimensions = GUI.fromHandle(_obj_newObject("layout"));
     obj.layContentDimensions:setParent(obj.partDimensoes);
     obj.layContentDimensions:setName("layContentDimensions");
     obj.layContentDimensions:setAlign("client");
     obj.layContentDimensions:setMargins({right=5});
 
-    obj.flaContentDimensions = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flaContentDimensions = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flaContentDimensions:setParent(obj.layContentDimensions);
     obj.flaContentDimensions:setName("flaContentDimensions");
     obj.flaContentDimensions:setAlign("top");
     obj.flaContentDimensions:setAutoHeight(true);
 
-    obj.edtLargura = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtLargura = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtLargura:setParent(obj.flaContentDimensions);
     obj.edtLargura:setName("edtLargura");
     obj.edtLargura:setWidth(50);
@@ -326,7 +326,7 @@ function newfrmBoardProps()
     obj.edtLargura:setDecimalPlaces(1);
     obj.edtLargura:setMin(0.1);
 
-    obj.labLarguraXAltura = gui.fromHandle(_obj_newObject("label"));
+    obj.labLarguraXAltura = GUI.fromHandle(_obj_newObject("label"));
     obj.labLarguraXAltura:setParent(obj.flaContentDimensions);
     obj.labLarguraXAltura:setName("labLarguraXAltura");
     obj.labLarguraXAltura:setAutoSize(true);
@@ -335,7 +335,7 @@ function newfrmBoardProps()
     obj.labLarguraXAltura:setText("x");
     obj.labLarguraXAltura:setHorzTextAlign("center");
 
-    obj.edtAltura = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtAltura = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtAltura:setParent(obj.flaContentDimensions);
     obj.edtAltura:setName("edtAltura");
     obj.edtAltura:setWidth(50);
@@ -343,7 +343,7 @@ function newfrmBoardProps()
     obj.edtAltura:setDecimalPlaces(1);
     obj.edtAltura:setMin(0.1);
 
-    obj.labLarguraAlturaMetric = gui.fromHandle(_obj_newObject("label"));
+    obj.labLarguraAlturaMetric = GUI.fromHandle(_obj_newObject("label"));
     obj.labLarguraAlturaMetric:setParent(obj.flaContentDimensions);
     obj.labLarguraAlturaMetric:setName("labLarguraAlturaMetric");
     obj.labLarguraAlturaMetric:setAutoSize(true);
@@ -351,11 +351,11 @@ function newfrmBoardProps()
     obj.labLarguraAlturaMetric:setWordWrap(false);
     obj.labLarguraAlturaMetric:setFontSize(11);
 
-    obj.flowLineBreak1 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak1 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak1:setParent(obj.flaContentDimensions);
     obj.flowLineBreak1:setName("flowLineBreak1");
 
-    obj.labLarguraAlturaOr = gui.fromHandle(_obj_newObject("label"));
+    obj.labLarguraAlturaOr = GUI.fromHandle(_obj_newObject("label"));
     obj.labLarguraAlturaOr:setParent(obj.flaContentDimensions);
     obj.labLarguraAlturaOr:setName("labLarguraAlturaOr");
     obj.labLarguraAlturaOr:setAutoSize(true);
@@ -363,11 +363,11 @@ function newfrmBoardProps()
     obj.labLarguraAlturaOr:setWordWrap(false);
     obj.labLarguraAlturaOr:setMargins({left=55});
 
-    obj.flowLineBreak2 = gui.fromHandle(_obj_newObject("flowLineBreak"));
+    obj.flowLineBreak2 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
     obj.flowLineBreak2:setParent(obj.flaContentDimensions);
     obj.flowLineBreak2:setName("flowLineBreak2");
 
-    obj.edtLarguraCells = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtLarguraCells = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtLarguraCells:setParent(obj.flaContentDimensions);
     obj.edtLarguraCells:setName("edtLarguraCells");
     obj.edtLarguraCells:setWidth(50);
@@ -375,7 +375,7 @@ function newfrmBoardProps()
     obj.edtLarguraCells:setDecimalPlaces(1);
     obj.edtLarguraCells:setMin(1);
 
-    obj.labLarguraXAlturaCells = gui.fromHandle(_obj_newObject("label"));
+    obj.labLarguraXAlturaCells = GUI.fromHandle(_obj_newObject("label"));
     obj.labLarguraXAlturaCells:setParent(obj.flaContentDimensions);
     obj.labLarguraXAlturaCells:setName("labLarguraXAlturaCells");
     obj.labLarguraXAlturaCells:setAutoSize(true);
@@ -384,7 +384,7 @@ function newfrmBoardProps()
     obj.labLarguraXAlturaCells:setText("x");
     obj.labLarguraXAlturaCells:setHorzTextAlign("center");
 
-    obj.edtAlturaCells = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtAlturaCells = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtAlturaCells:setParent(obj.flaContentDimensions);
     obj.edtAlturaCells:setName("edtAlturaCells");
     obj.edtAlturaCells:setWidth(50);
@@ -392,7 +392,7 @@ function newfrmBoardProps()
     obj.edtAlturaCells:setDecimalPlaces(1);
     obj.edtAlturaCells:setMin(1);
 
-    obj.labLarguraAlturaMetricCells = gui.fromHandle(_obj_newObject("label"));
+    obj.labLarguraAlturaMetricCells = GUI.fromHandle(_obj_newObject("label"));
     obj.labLarguraAlturaMetricCells:setParent(obj.flaContentDimensions);
     obj.labLarguraAlturaMetricCells:setName("labLarguraAlturaMetricCells");
     obj.labLarguraAlturaMetricCells:setAutoSize(true);
@@ -400,7 +400,7 @@ function newfrmBoardProps()
     obj.labLarguraAlturaMetricCells:setWordWrap(false);
     obj.labLarguraAlturaMetricCells:setFontSize(10);
 
-    obj.flowPart6 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart6 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart6:setParent(obj.flaContent);
     obj.flowPart6:setName("flowPart6");
     obj.flowPart6:setHeight(30);
@@ -408,7 +408,7 @@ function newfrmBoardProps()
     obj.flowPart6:setMaxWidth(5000);
     obj.flowPart6:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labCorDeFundo = gui.fromHandle(_obj_newObject("label"));
+    obj.labCorDeFundo = GUI.fromHandle(_obj_newObject("label"));
     obj.labCorDeFundo:setParent(obj.flowPart6);
     obj.labCorDeFundo:setName("labCorDeFundo");
     obj.labCorDeFundo:setAlign("left");
@@ -418,14 +418,14 @@ function newfrmBoardProps()
     obj.labCorDeFundo:setVertTextAlign("center");
     obj.labCorDeFundo:setMargins({right=5});
 
-    obj.cmbCorFundo = gui.fromHandle(_obj_newObject("colorComboBox"));
+    obj.cmbCorFundo = GUI.fromHandle(_obj_newObject("colorComboBox"));
     obj.cmbCorFundo:setParent(obj.flowPart6);
     obj.cmbCorFundo:setName("cmbCorFundo");
     obj.cmbCorFundo:setUseAlpha(false);
     obj.cmbCorFundo:setAlign("client");
     obj.cmbCorFundo:setMargins({right=5});
 
-    obj.flowPart7 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart7 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart7:setParent(obj.flaContent);
     obj.flowPart7:setName("flowPart7");
     obj.flowPart7:setHeight(30);
@@ -433,7 +433,7 @@ function newfrmBoardProps()
     obj.flowPart7:setMaxWidth(5000);
     obj.flowPart7:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labGroupHeader2 = gui.fromHandle(_obj_newObject("label"));
+    obj.labGroupHeader2 = GUI.fromHandle(_obj_newObject("label"));
     obj.labGroupHeader2:setParent(obj.flowPart7);
     obj.labGroupHeader2:setName("labGroupHeader2");
     obj.labGroupHeader2:setAlign("left");
@@ -445,7 +445,7 @@ function newfrmBoardProps()
     obj.labGroupHeader2:setFontSize(15);
     obj.labGroupHeader2:setFontColor("#FFCC66");
 
-    obj.horzLine2 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine2 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine2:setParent(obj.flowPart7);
     obj.horzLine2:setAlign("bottom");
     obj.horzLine2:setStrokeColor("#FFCC6670");
@@ -457,7 +457,7 @@ function newfrmBoardProps()
 		
 
 
-    obj.flowPart8 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart8 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart8:setParent(obj.flaContent);
     obj.flowPart8:setName("flowPart8");
     obj.flowPart8:setHeight(30);
@@ -465,7 +465,7 @@ function newfrmBoardProps()
     obj.flowPart8:setMaxWidth(5000);
     obj.flowPart8:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labDrawGridLines = gui.fromHandle(_obj_newObject("label"));
+    obj.labDrawGridLines = GUI.fromHandle(_obj_newObject("label"));
     obj.labDrawGridLines:setParent(obj.flowPart8);
     obj.labDrawGridLines:setName("labDrawGridLines");
     obj.labDrawGridLines:setAlign("left");
@@ -475,13 +475,13 @@ function newfrmBoardProps()
     obj.labDrawGridLines:setVertTextAlign("center");
     obj.labDrawGridLines:setMargins({right=5});
 
-    obj.cbxDrawGrid = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.cbxDrawGrid = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.cbxDrawGrid:setParent(obj.flowPart8);
     obj.cbxDrawGrid:setName("cbxDrawGrid");
     obj.cbxDrawGrid:setAlign("client");
     obj.cbxDrawGrid:setMargins({right=5});
 
-    obj.flowPart9 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart9 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart9:setParent(obj.flaContent);
     obj.flowPart9:setName("flowPart9");
     obj.flowPart9:setHeight(30);
@@ -489,7 +489,7 @@ function newfrmBoardProps()
     obj.flowPart9:setMaxWidth(5000);
     obj.flowPart9:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labCorGrid = gui.fromHandle(_obj_newObject("label"));
+    obj.labCorGrid = GUI.fromHandle(_obj_newObject("label"));
     obj.labCorGrid:setParent(obj.flowPart9);
     obj.labCorGrid:setName("labCorGrid");
     obj.labCorGrid:setAlign("left");
@@ -499,13 +499,13 @@ function newfrmBoardProps()
     obj.labCorGrid:setVertTextAlign("center");
     obj.labCorGrid:setMargins({right=5});
 
-    obj.cmbCorGrid = gui.fromHandle(_obj_newObject("colorComboBox"));
+    obj.cmbCorGrid = GUI.fromHandle(_obj_newObject("colorComboBox"));
     obj.cmbCorGrid:setParent(obj.flowPart9);
     obj.cmbCorGrid:setName("cmbCorGrid");
     obj.cmbCorGrid:setAlign("client");
     obj.cmbCorGrid:setMargins({right=5});
 
-    obj.partGridOffset = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.partGridOffset = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.partGridOffset:setParent(obj.flaContent);
     obj.partGridOffset:setName("partGridOffset");
     obj.partGridOffset:setHeight(30);
@@ -513,7 +513,7 @@ function newfrmBoardProps()
     obj.partGridOffset:setMaxWidth(5000);
     obj.partGridOffset:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labDeslocamentoGrid = gui.fromHandle(_obj_newObject("label"));
+    obj.labDeslocamentoGrid = GUI.fromHandle(_obj_newObject("label"));
     obj.labDeslocamentoGrid:setParent(obj.partGridOffset);
     obj.labDeslocamentoGrid:setName("labDeslocamentoGrid");
     obj.labDeslocamentoGrid:setAlign("left");
@@ -523,20 +523,20 @@ function newfrmBoardProps()
     obj.labDeslocamentoGrid:setVertTextAlign("center");
     obj.labDeslocamentoGrid:setMargins({right=5});
 
-    obj.flaContentOffset = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flaContentOffset = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flaContentOffset:setParent(obj.partGridOffset);
     obj.flaContentOffset:setName("flaContentOffset");
     obj.flaContentOffset:setAlign("client");
     obj.flaContentOffset:setMargins({right=5});
 
-    obj.edtOffsetX = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtOffsetX = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtOffsetX:setParent(obj.flaContentOffset);
     obj.edtOffsetX:setName("edtOffsetX");
     obj.edtOffsetX:setWidth(50);
     obj.edtOffsetX:setType("float");
     obj.edtOffsetX:setDecimalPlaces(2);
 
-    obj.labOffsetXOffsetY = gui.fromHandle(_obj_newObject("label"));
+    obj.labOffsetXOffsetY = GUI.fromHandle(_obj_newObject("label"));
     obj.labOffsetXOffsetY:setParent(obj.flaContentOffset);
     obj.labOffsetXOffsetY:setName("labOffsetXOffsetY");
     obj.labOffsetXOffsetY:setAutoSize(true);
@@ -545,14 +545,14 @@ function newfrmBoardProps()
     obj.labOffsetXOffsetY:setText("x");
     obj.labOffsetXOffsetY:setHorzTextAlign("center");
 
-    obj.edtOffsetY = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtOffsetY = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtOffsetY:setParent(obj.flaContentOffset);
     obj.edtOffsetY:setName("edtOffsetY");
     obj.edtOffsetY:setWidth(50);
     obj.edtOffsetY:setType("float");
     obj.edtOffsetY:setDecimalPlaces(2);
 
-    obj.labOffsetMetric = gui.fromHandle(_obj_newObject("label"));
+    obj.labOffsetMetric = GUI.fromHandle(_obj_newObject("label"));
     obj.labOffsetMetric:setParent(obj.flaContentOffset);
     obj.labOffsetMetric:setName("labOffsetMetric");
     obj.labOffsetMetric:setAutoSize(true);
@@ -560,23 +560,23 @@ function newfrmBoardProps()
     obj.labOffsetMetric:setWordWrap(false);
     obj.labOffsetMetric:setFontSize(11);
 
-    obj.tabBkgImg = gui.fromHandle(_obj_newObject("tab"));
+    obj.tabBkgImg = GUI.fromHandle(_obj_newObject("tab"));
     obj.tabBkgImg:setParent(obj.tabControl1);
     obj.tabBkgImg:setName("tabBkgImg");
 
-    obj.scrollBox2 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox2 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox2:setParent(obj.tabBkgImg);
     obj.scrollBox2:setAlign("client");
     obj.scrollBox2:setName("scrollBox2");
 
-    obj.flaContentBkg = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flaContentBkg = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flaContentBkg:setParent(obj.scrollBox2);
     obj.flaContentBkg:setAlign("top");
     obj.flaContentBkg:setAutoHeight(true);
     obj.flaContentBkg:setMaxControlsPerLine(1);
     obj.flaContentBkg:setName("flaContentBkg");
 
-    obj.flowPart10 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart10 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart10:setParent(obj.flaContentBkg);
     obj.flowPart10:setName("flowPart10");
     obj.flowPart10:setHeight(30);
@@ -584,7 +584,7 @@ function newfrmBoardProps()
     obj.flowPart10:setMaxWidth(5000);
     obj.flowPart10:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labGroupHeader3 = gui.fromHandle(_obj_newObject("label"));
+    obj.labGroupHeader3 = GUI.fromHandle(_obj_newObject("label"));
     obj.labGroupHeader3:setParent(obj.flowPart10);
     obj.labGroupHeader3:setName("labGroupHeader3");
     obj.labGroupHeader3:setAlign("left");
@@ -596,7 +596,7 @@ function newfrmBoardProps()
     obj.labGroupHeader3:setFontSize(15);
     obj.labGroupHeader3:setFontColor("#FFCC66");
 
-    obj.horzLine3 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine3 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine3:setParent(obj.flowPart10);
     obj.horzLine3:setAlign("bottom");
     obj.horzLine3:setStrokeColor("#FFCC6670");
@@ -608,7 +608,7 @@ function newfrmBoardProps()
 		
 
 
-    obj.flowPart11 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart11 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart11:setParent(obj.flaContentBkg);
     obj.flowPart11:setHeight(200);
     obj.flowPart11:setName("flowPart11");
@@ -616,7 +616,7 @@ function newfrmBoardProps()
     obj.flowPart11:setMaxWidth(5000);
     obj.flowPart11:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labBkgImg = gui.fromHandle(_obj_newObject("label"));
+    obj.labBkgImg = GUI.fromHandle(_obj_newObject("label"));
     obj.labBkgImg:setParent(obj.flowPart11);
     obj.labBkgImg:setName("labBkgImg");
     obj.labBkgImg:setVisible(false);
@@ -627,7 +627,7 @@ function newfrmBoardProps()
     obj.labBkgImg:setVertTextAlign("center");
     obj.labBkgImg:setMargins({right=5});
 
-    obj.rctBkgImg = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rctBkgImg = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rctBkgImg:setParent(obj.flowPart11);
     obj.rctBkgImg:setName("rctBkgImg");
     obj.rctBkgImg:setStrokeColor("white");
@@ -636,7 +636,7 @@ function newfrmBoardProps()
     obj.rctBkgImg:setAlign("client");
     obj.rctBkgImg:setMargins({right=5});
 
-    obj.imgBkgImg = gui.fromHandle(_obj_newObject("image"));
+    obj.imgBkgImg = GUI.fromHandle(_obj_newObject("image"));
     obj.imgBkgImg:setParent(obj.rctBkgImg);
     obj.imgBkgImg:setName("imgBkgImg");
     obj.imgBkgImg:setAlign("client");
@@ -645,7 +645,7 @@ function newfrmBoardProps()
     obj.imgBkgImg:setEditable(true);
     obj.imgBkgImg:setMargins({top=2, left=2, right=2});
 
-    obj.labOrientBkgImg = gui.fromHandle(_obj_newObject("label"));
+    obj.labOrientBkgImg = GUI.fromHandle(_obj_newObject("label"));
     obj.labOrientBkgImg:setParent(obj.rctBkgImg);
     obj.labOrientBkgImg:setName("labOrientBkgImg");
     obj.labOrientBkgImg:setAlign("bottom");
@@ -660,23 +660,23 @@ function newfrmBoardProps()
 						 
 
 
-    obj.tabFOW = gui.fromHandle(_obj_newObject("tab"));
+    obj.tabFOW = GUI.fromHandle(_obj_newObject("tab"));
     obj.tabFOW:setParent(obj.tabControl1);
     obj.tabFOW:setName("tabFOW");
 
-    obj.scrollBox3 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox3 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox3:setParent(obj.tabFOW);
     obj.scrollBox3:setAlign("client");
     obj.scrollBox3:setName("scrollBox3");
 
-    obj.flaContentFOW = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flaContentFOW = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flaContentFOW:setParent(obj.scrollBox3);
     obj.flaContentFOW:setAlign("top");
     obj.flaContentFOW:setAutoHeight(true);
     obj.flaContentFOW:setMaxControlsPerLine(1);
     obj.flaContentFOW:setName("flaContentFOW");
 
-    obj.flowPart12 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart12 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart12:setParent(obj.flaContentFOW);
     obj.flowPart12:setName("flowPart12");
     obj.flowPart12:setHeight(30);
@@ -684,7 +684,7 @@ function newfrmBoardProps()
     obj.flowPart12:setMaxWidth(5000);
     obj.flowPart12:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labGroupHeader4 = gui.fromHandle(_obj_newObject("label"));
+    obj.labGroupHeader4 = GUI.fromHandle(_obj_newObject("label"));
     obj.labGroupHeader4:setParent(obj.flowPart12);
     obj.labGroupHeader4:setName("labGroupHeader4");
     obj.labGroupHeader4:setAlign("left");
@@ -696,7 +696,7 @@ function newfrmBoardProps()
     obj.labGroupHeader4:setFontSize(15);
     obj.labGroupHeader4:setFontColor("#FFCC66");
 
-    obj.horzLine4 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine4 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine4:setParent(obj.flowPart12);
     obj.horzLine4:setAlign("bottom");
     obj.horzLine4:setStrokeColor("#FFCC6670");
@@ -708,7 +708,7 @@ function newfrmBoardProps()
 		
 
 
-    obj.flowPart13 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart13 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart13:setParent(obj.flaContentFOW);
     obj.flowPart13:setName("flowPart13");
     obj.flowPart13:setHeight(30);
@@ -716,7 +716,7 @@ function newfrmBoardProps()
     obj.flowPart13:setMaxWidth(5000);
     obj.flowPart13:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labEnableFoW = gui.fromHandle(_obj_newObject("label"));
+    obj.labEnableFoW = GUI.fromHandle(_obj_newObject("label"));
     obj.labEnableFoW:setParent(obj.flowPart13);
     obj.labEnableFoW:setName("labEnableFoW");
     obj.labEnableFoW:setAlign("left");
@@ -726,13 +726,13 @@ function newfrmBoardProps()
     obj.labEnableFoW:setVertTextAlign("center");
     obj.labEnableFoW:setMargins({right=5});
 
-    obj.cbxEnableFoW = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.cbxEnableFoW = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.cbxEnableFoW:setParent(obj.flowPart13);
     obj.cbxEnableFoW:setName("cbxEnableFoW");
     obj.cbxEnableFoW:setAlign("client");
     obj.cbxEnableFoW:setMargins({right=5});
 
-    obj.flowPart14 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart14 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart14:setParent(obj.flaContentFOW);
     obj.flowPart14:setName("flowPart14");
     obj.flowPart14:setHeight(30);
@@ -740,7 +740,7 @@ function newfrmBoardProps()
     obj.flowPart14:setMaxWidth(5000);
     obj.flowPart14:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labAmbientLight = gui.fromHandle(_obj_newObject("label"));
+    obj.labAmbientLight = GUI.fromHandle(_obj_newObject("label"));
     obj.labAmbientLight:setParent(obj.flowPart14);
     obj.labAmbientLight:setName("labAmbientLight");
     obj.labAmbientLight:setAlign("left");
@@ -750,13 +750,13 @@ function newfrmBoardProps()
     obj.labAmbientLight:setVertTextAlign("center");
     obj.labAmbientLight:setMargins({right=5});
 
-    obj.cmbAmbientLight = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.cmbAmbientLight = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.cmbAmbientLight:setParent(obj.flowPart14);
     obj.cmbAmbientLight:setName("cmbAmbientLight");
     obj.cmbAmbientLight:setAlign("client");
     obj.cmbAmbientLight:setMargins({right=5});
 
-    obj.flowPart15 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.flowPart15 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart15:setParent(obj.flaContentFOW);
     obj.flowPart15:setName("flowPart15");
     obj.flowPart15:setHeight(30);
@@ -764,7 +764,7 @@ function newfrmBoardProps()
     obj.flowPart15:setMaxWidth(5000);
     obj.flowPart15:setMargins({left=2, right=2, top=2, bottom=2});
 
-    obj.labFogSharing = gui.fromHandle(_obj_newObject("label"));
+    obj.labFogSharing = GUI.fromHandle(_obj_newObject("label"));
     obj.labFogSharing:setParent(obj.flowPart15);
     obj.labFogSharing:setName("labFogSharing");
     obj.labFogSharing:setAlign("left");
@@ -774,20 +774,20 @@ function newfrmBoardProps()
     obj.labFogSharing:setVertTextAlign("center");
     obj.labFogSharing:setMargins({right=5});
 
-    obj.cmbFogSharing = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.cmbFogSharing = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.cmbFogSharing:setParent(obj.flowPart15);
     obj.cmbFogSharing:setName("cmbFogSharing");
     obj.cmbFogSharing:setAlign("client");
     obj.cmbFogSharing:setMargins({right=5});
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj);
     obj.layout2:setName("layout2");
     obj.layout2:setAlign("bottom");
     obj.layout2:setMargins({top=2, bottom=2});
     obj.layout2:setHeight(40);
 
-    obj.btnOk1 = gui.fromHandle(_obj_newObject("button"));
+    obj.btnOk1 = GUI.fromHandle(_obj_newObject("button"));
     obj.btnOk1:setParent(obj.layout2);
     obj.btnOk1:setWidth(100);
     obj.btnOk1:setHorzTextAlign("center");
@@ -795,7 +795,7 @@ function newfrmBoardProps()
     obj.btnOk1:setName("btnOk1");
     obj.btnOk1:setMargins({left=4, right=4});
 
-    obj.btnCancel1 = gui.fromHandle(_obj_newObject("button"));
+    obj.btnCancel1 = GUI.fromHandle(_obj_newObject("button"));
     obj.btnCancel1:setParent(obj.layout2);
     obj.btnCancel1:setHorzTextAlign("center");
     obj.btnCancel1:setAlign("right");
@@ -1058,7 +1058,7 @@ function newfrmBoardProps()
 
 
     obj._e_event0 = obj:addEventListener("onKeyUp",
-        function (self, event)
+        function (_, event)
             if (event.keyCode == 0x89) or (event.keyCode == 0x1B) then
             			setTimeout(
             				function()
@@ -1071,47 +1071,47 @@ function newfrmBoardProps()
         end, obj);
 
     obj._e_event1 = obj:addEventListener("onCancelRequest",
-        function (self)
+        function (_)
             self:processarCancel();
         end, obj);
 
     obj._e_event2 = obj.flaTipoDeCelula:addEventListener("onAfterLayoutCalc",
-        function (self)
+        function (_)
             self.partTipoCelula.height = math.max(30, self.flaTipoDeCelula.contentHeight)
         end, obj);
 
     obj._e_event3 = obj.flowPart2:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rbtCellTypeQuad.checked = true
         end, obj);
 
     obj._e_event4 = obj.rbtCellTypeQuad:addEventListener("onChange",
-        function (self)
+        function (_)
             self:rbtCellTypeChanged()
         end, obj);
 
     obj._e_event5 = obj.flowPart3:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rbtCellTypeVertHex.checked = true
         end, obj);
 
     obj._e_event6 = obj.rbtCellTypeVertHex:addEventListener("onChange",
-        function (self)
+        function (_)
             self:rbtCellTypeChanged()
         end, obj);
 
     obj._e_event7 = obj.flowPart4:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rbtCellTypeHorzHex.checked = true
         end, obj);
 
     obj._e_event8 = obj.rbtCellTypeHorzHex:addEventListener("onChange",
-        function (self)
+        function (_)
             self:rbtCellTypeChanged()
         end, obj);
 
     obj._e_event9 = obj.edtCellSize:addEventListener("onChange",
-        function (self)
+        function (_)
             ignoreRecalcWH = true;
             									self:recalculateRealCellSize();
             									self.edtLargura.min = realCellWidth;
@@ -1122,27 +1122,27 @@ function newfrmBoardProps()
         end, obj);
 
     obj._e_event10 = obj.cmbMetric:addEventListener("onChange",
-        function (self)
+        function (_)
             self:atualizarTitulosLarguraAltura()
         end, obj);
 
     obj._e_event11 = obj.flaContentDimensions:addEventListener("onAfterLayoutCalc",
-        function (self)
+        function (_)
             self.partDimensoes.height = self.flaContentDimensions.height;
         end, obj);
 
     obj._e_event12 = obj.flaContentOffset:addEventListener("onAfterLayoutCalc",
-        function (self)
+        function (_)
             self.partGridOffset.height = math.max(self.flaContentOffset.contentHeight, 30);
         end, obj);
 
     obj._e_event13 = obj.btnOk1:addEventListener("onClick",
-        function (self)
+        function (_)
             self:processarOK()
         end, obj);
 
     obj._e_event14 = obj.btnCancel1:addEventListener("onClick",
-        function (self)
+        function (_)
             self:processarCancel()
         end, obj);
 
@@ -1268,9 +1268,23 @@ function newfrmBoardProps()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmBoardProps()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmBoardProps();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmBoardProps = {
@@ -1284,6 +1298,6 @@ local _frmBoardProps = {
     description=""};
 
 frmBoardProps = _frmBoardProps;
-rrpg.registrarForm(_frmBoardProps);
+Firecast.registrarForm(_frmBoardProps);
 
 return _frmBoardProps;

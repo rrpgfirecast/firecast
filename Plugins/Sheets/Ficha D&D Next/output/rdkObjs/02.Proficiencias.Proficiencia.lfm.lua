@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmDnDNext_proficiencias_proficiencia()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmDnDNext_proficiencias_proficiencia()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -43,14 +43,14 @@ function newfrmDnDNext_proficiencias_proficiencia()
 	
 
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#202020");
     obj.rectangle1:setHitTest(false);
     obj.rectangle1:setName("rectangle1");
 
-    obj.x1 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.x1 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.x1:setParent(obj);
     obj.x1:setAlign("left");
     obj.x1:setWidth(20);
@@ -61,7 +61,7 @@ function newfrmDnDNext_proficiencias_proficiencia()
     obj.x1:setImageUnchecked("images/checkbox1_unchecked.png");
     obj.x1:setHeight(20);
 
-    obj.x2 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.x2 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.x2:setParent(obj);
     obj.x2:setAlign("left");
     obj.x2:setWidth(20);
@@ -72,7 +72,7 @@ function newfrmDnDNext_proficiencias_proficiencia()
     obj.x2:setImageUnchecked("images/checkbox1_unchecked.png");
     obj.x2:setHeight(20);
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj);
     obj.comboBox1:setAlign("left");
     obj.comboBox1:setField("atr");
@@ -81,14 +81,14 @@ function newfrmDnDNext_proficiencias_proficiencia()
     obj.comboBox1:setValues({'1', '2', '3', '4', '5', '6', '7'});
     obj.comboBox1:setName("comboBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setAlign("left");
     obj.layout1:setWidth(26);
     obj.layout1:setMargins({left=2});
     obj.layout1:setName("layout1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout1);
     obj.label1:setField("total");
     obj.label1:setAlign("client");
@@ -97,14 +97,14 @@ function newfrmDnDNext_proficiencias_proficiencia()
     obj.label1:setTextTrimming("none");
     obj.label1:setName("label1");
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.layout1);
     obj.horzLine1:setStrokeColor("white");
     obj.horzLine1:setStrokeSize(1);
     obj.horzLine1:setAlign("bottom");
     obj.horzLine1:setName("horzLine1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj);
     obj.edit1:setAlign("client");
     obj.edit1:setField("nome");
@@ -113,40 +113,40 @@ function newfrmDnDNext_proficiencias_proficiencia()
     obj.edit1:setWordWrap(false);
     obj.edit1:setName("edit1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setAlign("right");
     obj.button1:setWidth(25);
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setFields({'x1','x2','atr'});
     obj.dataLink1:setName("dataLink1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj);
     obj.dataLink2:setField("losango");
     obj.dataLink2:setName("dataLink2");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj);
     obj.dataLink3:setField("x1");
     obj.dataLink3:setName("dataLink3");
 
-    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink4:setParent(obj);
     obj.dataLink4:setField("x2");
     obj.dataLink4:setName("dataLink4");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             askForDelete();
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			local node = ndb.getRoot(sheet);
             
@@ -164,7 +164,7 @@ function newfrmDnDNext_proficiencias_proficiencia()
         end, obj);
 
     obj._e_event2 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             			if sheet.losango then 
@@ -181,7 +181,7 @@ function newfrmDnDNext_proficiencias_proficiencia()
         end, obj);
 
     obj._e_event3 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             			if sheet.x1 then
@@ -190,7 +190,7 @@ function newfrmDnDNext_proficiencias_proficiencia()
         end, obj);
 
     obj._e_event4 = obj.dataLink4:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             			if sheet.x2 then
@@ -233,9 +233,23 @@ function newfrmDnDNext_proficiencias_proficiencia()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmDnDNext_proficiencias_proficiencia()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmDnDNext_proficiencias_proficiencia();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmDnDNext_proficiencias_proficiencia = {
@@ -249,6 +263,6 @@ local _frmDnDNext_proficiencias_proficiencia = {
     description=""};
 
 frmDnDNext_proficiencias_proficiencia = _frmDnDNext_proficiencias_proficiencia;
-rrpg.registrarForm(_frmDnDNext_proficiencias_proficiencia);
+Firecast.registrarForm(_frmDnDNext_proficiencias_proficiencia);
 
 return _frmDnDNext_proficiencias_proficiencia;

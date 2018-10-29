@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFicha_MM3e_RRPG1_svg()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmFicha_MM3e_RRPG1_svg()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,19 +31,19 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj:setTheme("light");
     obj:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setWidth(893);
     obj.rectangle1:setHeight(1263);
     obj.rectangle1:setColor("white");
     obj.rectangle1:setName("rectangle1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.rectangle1);
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
@@ -54,7 +54,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.image1:setOptimize(true);
     obj.image1:setName("image1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.rectangle1);
     obj.layout1:setLeft(43);
     obj.layout1:setTop(105);
@@ -62,7 +62,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout1:setHeight(35);
     obj.layout1:setName("layout1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout1);
     obj.edit1:setTransparent(true);
     obj.edit1:setFontSize(18);
@@ -75,7 +75,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit1:setField("JOGADOR");
     obj.edit1:setName("edit1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.rectangle1);
     obj.layout2:setLeft(44);
     obj.layout2:setTop(285);
@@ -83,7 +83,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout2:setHeight(40);
     obj.layout2:setName("layout2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout2);
     obj.edit2:setTransparent(true);
     obj.edit2:setFontSize(22);
@@ -97,7 +97,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit2:setField("CODINOME");
     obj.edit2:setName("edit2");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.rectangle1);
     obj.layout3:setLeft(381);
     obj.layout3:setTop(291);
@@ -105,7 +105,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout3:setHeight(53);
     obj.layout3:setName("layout3");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout3);
     obj.edit3:setTransparent(true);
     obj.edit3:setFontSize(37.6);
@@ -118,7 +118,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit3:setField("NP");
     obj.edit3:setName("edit3");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.rectangle1);
     obj.layout4:setLeft(43);
     obj.layout4:setTop(186);
@@ -126,7 +126,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout4:setHeight(35);
     obj.layout4:setName("layout4");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout4);
     obj.edit4:setTransparent(true);
     obj.edit4:setFontSize(18);
@@ -139,7 +139,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit4:setField("IDENTIDADE");
     obj.edit4:setName("edit4");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.rectangle1);
     obj.layout5:setLeft(62);
     obj.layout5:setTop(486);
@@ -147,7 +147,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout5:setHeight(30);
     obj.layout5:setName("layout5");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout5);
     obj.edit5:setTransparent(true);
     obj.edit5:setFontSize(20.3);
@@ -160,13 +160,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit5:setField("FOR");
     obj.edit5:setName("edit5");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.layout5);
     obj.dataLink1:setFields({'FOR'});
     obj.dataLink1:setDefaultValues({'0'});
     obj.dataLink1:setName("dataLink1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout5);
     obj.label1:setVisible(false);
     obj.label1:setFontSize(20.3);
@@ -182,7 +182,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label1:setWordWrap(false);
     obj.label1:setAutoSize(true);
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout5);
     obj.edit6:setTransparent(true);
     obj.edit6:setFontSize(12);
@@ -196,13 +196,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit6:setField("varFORvalor");
     obj.edit6:setName("edit6");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.layout5);
     obj.dataLink2:setFields({'varFORvalor'});
     obj.dataLink2:setDefaultValues({'0'});
     obj.dataLink2:setName("dataLink2");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout5);
     obj.label2:setFontSize(12);
     obj.label2:setFontColor("#264d43");
@@ -218,13 +218,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label2:setWordWrap(false);
     obj.label2:setAutoSize(true);
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj.layout5);
     obj.dataLink3:setFields({'varFOR'});
     obj.dataLink3:setDefaultValues({'0'});
     obj.dataLink3:setName("dataLink3");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout5);
     obj.label3:setFontSize(8);
     obj.label3:setFontColor("#264d43");
@@ -240,7 +240,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label3:setWordWrap(false);
     obj.label3:setAutoSize(true);
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.rectangle1);
     obj.layout6:setLeft(63);
     obj.layout6:setTop(557);
@@ -248,7 +248,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout6:setHeight(30);
     obj.layout6:setName("layout6");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout6);
     obj.edit7:setTransparent(true);
     obj.edit7:setFontSize(20.3);
@@ -261,13 +261,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit7:setField("VIG");
     obj.edit7:setName("edit7");
 
-    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink4:setParent(obj.layout6);
     obj.dataLink4:setFields({'VIG'});
     obj.dataLink4:setDefaultValues({'0'});
     obj.dataLink4:setName("dataLink4");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout6);
     obj.label4:setVisible(false);
     obj.label4:setFontSize(20.3);
@@ -283,7 +283,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label4:setWordWrap(false);
     obj.label4:setAutoSize(true);
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.layout6);
     obj.edit8:setTransparent(true);
     obj.edit8:setFontSize(12);
@@ -297,13 +297,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit8:setField("varVIGvalor");
     obj.edit8:setName("edit8");
 
-    obj.dataLink5 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink5:setParent(obj.layout6);
     obj.dataLink5:setFields({'varVIGvalor'});
     obj.dataLink5:setDefaultValues({'0'});
     obj.dataLink5:setName("dataLink5");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout6);
     obj.label5:setFontSize(12);
     obj.label5:setFontColor("#264d43");
@@ -319,13 +319,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label5:setWordWrap(false);
     obj.label5:setAutoSize(true);
 
-    obj.dataLink6 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink6:setParent(obj.layout6);
     obj.dataLink6:setFields({'varVIG'});
     obj.dataLink6:setDefaultValues({'0'});
     obj.dataLink6:setName("dataLink6");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout6);
     obj.label6:setFontSize(8);
     obj.label6:setFontColor("#264d43");
@@ -341,7 +341,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label6:setWordWrap(false);
     obj.label6:setAutoSize(true);
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.rectangle1);
     obj.layout7:setLeft(162);
     obj.layout7:setTop(557);
@@ -349,7 +349,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout7:setHeight(30);
     obj.layout7:setName("layout7");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.layout7);
     obj.edit9:setTransparent(true);
     obj.edit9:setFontSize(20.3);
@@ -362,13 +362,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit9:setField("DES");
     obj.edit9:setName("edit9");
 
-    obj.dataLink7 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink7:setParent(obj.layout7);
     obj.dataLink7:setFields({'DES'});
     obj.dataLink7:setDefaultValues({'0'});
     obj.dataLink7:setName("dataLink7");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout7);
     obj.label7:setVisible(false);
     obj.label7:setFontSize(20.3);
@@ -384,7 +384,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label7:setWordWrap(false);
     obj.label7:setAutoSize(true);
 
-    obj.edit10 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit10 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit10:setParent(obj.layout7);
     obj.edit10:setTransparent(true);
     obj.edit10:setFontSize(12);
@@ -398,13 +398,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit10:setField("varDESvalor");
     obj.edit10:setName("edit10");
 
-    obj.dataLink8 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink8:setParent(obj.layout7);
     obj.dataLink8:setFields({'varDESvalor'});
     obj.dataLink8:setDefaultValues({'0'});
     obj.dataLink8:setName("dataLink8");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout7);
     obj.label8:setFontSize(12);
     obj.label8:setFontColor("#264d43");
@@ -420,13 +420,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label8:setWordWrap(false);
     obj.label8:setAutoSize(true);
 
-    obj.dataLink9 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink9:setParent(obj.layout7);
     obj.dataLink9:setFields({'varDES'});
     obj.dataLink9:setDefaultValues({'0'});
     obj.dataLink9:setName("dataLink9");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout7);
     obj.label9:setFontSize(8);
     obj.label9:setFontColor("#264d43");
@@ -442,7 +442,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label9:setWordWrap(false);
     obj.label9:setAutoSize(true);
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.rectangle1);
     obj.layout8:setLeft(262);
     obj.layout8:setTop(557);
@@ -450,7 +450,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout8:setHeight(30);
     obj.layout8:setName("layout8");
 
-    obj.edit11 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit11 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit11:setParent(obj.layout8);
     obj.edit11:setTransparent(true);
     obj.edit11:setFontSize(20.3);
@@ -463,13 +463,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit11:setField("INT");
     obj.edit11:setName("edit11");
 
-    obj.dataLink10 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink10 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink10:setParent(obj.layout8);
     obj.dataLink10:setFields({'INT'});
     obj.dataLink10:setDefaultValues({'0'});
     obj.dataLink10:setName("dataLink10");
 
-    obj.label10 = gui.fromHandle(_obj_newObject("label"));
+    obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout8);
     obj.label10:setVisible(false);
     obj.label10:setFontSize(20.3);
@@ -485,7 +485,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label10:setWordWrap(false);
     obj.label10:setAutoSize(true);
 
-    obj.edit12 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit12 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit12:setParent(obj.layout8);
     obj.edit12:setTransparent(true);
     obj.edit12:setFontSize(12);
@@ -499,13 +499,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit12:setField("varINTvalor");
     obj.edit12:setName("edit12");
 
-    obj.dataLink11 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink11 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink11:setParent(obj.layout8);
     obj.dataLink11:setFields({'varINTvalor'});
     obj.dataLink11:setDefaultValues({'0'});
     obj.dataLink11:setName("dataLink11");
 
-    obj.label11 = gui.fromHandle(_obj_newObject("label"));
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout8);
     obj.label11:setFontSize(12);
     obj.label11:setFontColor("#264d43");
@@ -521,13 +521,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label11:setWordWrap(false);
     obj.label11:setAutoSize(true);
 
-    obj.dataLink12 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink12 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink12:setParent(obj.layout8);
     obj.dataLink12:setFields({'varINT'});
     obj.dataLink12:setDefaultValues({'0'});
     obj.dataLink12:setName("dataLink12");
 
-    obj.label12 = gui.fromHandle(_obj_newObject("label"));
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
     obj.label12:setParent(obj.layout8);
     obj.label12:setFontSize(8);
     obj.label12:setFontColor("#264d43");
@@ -543,7 +543,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label12:setWordWrap(false);
     obj.label12:setAutoSize(true);
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.rectangle1);
     obj.layout9:setLeft(364);
     obj.layout9:setTop(557);
@@ -551,7 +551,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout9:setHeight(30);
     obj.layout9:setName("layout9");
 
-    obj.edit13 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit13:setParent(obj.layout9);
     obj.edit13:setTransparent(true);
     obj.edit13:setFontSize(20.3);
@@ -564,13 +564,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit13:setField("PRE");
     obj.edit13:setName("edit13");
 
-    obj.dataLink13 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink13 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink13:setParent(obj.layout9);
     obj.dataLink13:setFields({'PRE'});
     obj.dataLink13:setDefaultValues({'0'});
     obj.dataLink13:setName("dataLink13");
 
-    obj.label13 = gui.fromHandle(_obj_newObject("label"));
+    obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout9);
     obj.label13:setVisible(false);
     obj.label13:setFontSize(20.3);
@@ -586,7 +586,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label13:setWordWrap(false);
     obj.label13:setAutoSize(true);
 
-    obj.edit14 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit14:setParent(obj.layout9);
     obj.edit14:setTransparent(true);
     obj.edit14:setFontSize(12);
@@ -600,13 +600,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit14:setField("varPREvalor");
     obj.edit14:setName("edit14");
 
-    obj.dataLink14 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink14 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink14:setParent(obj.layout9);
     obj.dataLink14:setFields({'varPREvalor'});
     obj.dataLink14:setDefaultValues({'0'});
     obj.dataLink14:setName("dataLink14");
 
-    obj.label14 = gui.fromHandle(_obj_newObject("label"));
+    obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout9);
     obj.label14:setFontSize(12);
     obj.label14:setFontColor("#264d43");
@@ -622,13 +622,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label14:setWordWrap(false);
     obj.label14:setAutoSize(true);
 
-    obj.dataLink15 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink15 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink15:setParent(obj.layout9);
     obj.dataLink15:setFields({'varPRE'});
     obj.dataLink15:setDefaultValues({'0'});
     obj.dataLink15:setName("dataLink15");
 
-    obj.label15 = gui.fromHandle(_obj_newObject("label"));
+    obj.label15 = GUI.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.layout9);
     obj.label15:setFontSize(8);
     obj.label15:setFontColor("#264d43");
@@ -644,7 +644,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label15:setWordWrap(false);
     obj.label15:setAutoSize(true);
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.rectangle1);
     obj.layout10:setLeft(364);
     obj.layout10:setTop(486);
@@ -652,7 +652,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout10:setHeight(30);
     obj.layout10:setName("layout10");
 
-    obj.edit15 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit15:setParent(obj.layout10);
     obj.edit15:setTransparent(true);
     obj.edit15:setFontSize(20.3);
@@ -665,13 +665,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit15:setField("PRO");
     obj.edit15:setName("edit15");
 
-    obj.dataLink16 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink16 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink16:setParent(obj.layout10);
     obj.dataLink16:setFields({'PRO'});
     obj.dataLink16:setDefaultValues({'0'});
     obj.dataLink16:setName("dataLink16");
 
-    obj.label16 = gui.fromHandle(_obj_newObject("label"));
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.layout10);
     obj.label16:setVisible(false);
     obj.label16:setFontSize(20.3);
@@ -687,7 +687,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label16:setWordWrap(false);
     obj.label16:setAutoSize(true);
 
-    obj.edit16 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit16:setParent(obj.layout10);
     obj.edit16:setTransparent(true);
     obj.edit16:setFontSize(12);
@@ -701,13 +701,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit16:setField("varPROvalor");
     obj.edit16:setName("edit16");
 
-    obj.dataLink17 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink17 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink17:setParent(obj.layout10);
     obj.dataLink17:setFields({'varPROvalor'});
     obj.dataLink17:setDefaultValues({'0'});
     obj.dataLink17:setName("dataLink17");
 
-    obj.label17 = gui.fromHandle(_obj_newObject("label"));
+    obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.layout10);
     obj.label17:setFontSize(12);
     obj.label17:setFontColor("#264d43");
@@ -723,13 +723,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label17:setWordWrap(false);
     obj.label17:setAutoSize(true);
 
-    obj.dataLink18 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink18 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink18:setParent(obj.layout10);
     obj.dataLink18:setFields({'varPRO'});
     obj.dataLink18:setDefaultValues({'0'});
     obj.dataLink18:setName("dataLink18");
 
-    obj.label18 = gui.fromHandle(_obj_newObject("label"));
+    obj.label18 = GUI.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.layout10);
     obj.label18:setFontSize(8);
     obj.label18:setFontColor("#264d43");
@@ -745,7 +745,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label18:setWordWrap(false);
     obj.label18:setAutoSize(true);
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.rectangle1);
     obj.layout11:setLeft(263);
     obj.layout11:setTop(486);
@@ -753,7 +753,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout11:setHeight(30);
     obj.layout11:setName("layout11");
 
-    obj.edit17 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit17:setParent(obj.layout11);
     obj.edit17:setTransparent(true);
     obj.edit17:setFontSize(20.3);
@@ -766,13 +766,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit17:setField("LUT");
     obj.edit17:setName("edit17");
 
-    obj.dataLink19 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink19 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink19:setParent(obj.layout11);
     obj.dataLink19:setFields({'LUT'});
     obj.dataLink19:setDefaultValues({'0'});
     obj.dataLink19:setName("dataLink19");
 
-    obj.label19 = gui.fromHandle(_obj_newObject("label"));
+    obj.label19 = GUI.fromHandle(_obj_newObject("label"));
     obj.label19:setParent(obj.layout11);
     obj.label19:setVisible(false);
     obj.label19:setFontSize(20.3);
@@ -788,7 +788,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label19:setWordWrap(false);
     obj.label19:setAutoSize(true);
 
-    obj.edit18 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit18:setParent(obj.layout11);
     obj.edit18:setTransparent(true);
     obj.edit18:setFontSize(12);
@@ -802,13 +802,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit18:setField("varLUTvalor");
     obj.edit18:setName("edit18");
 
-    obj.dataLink20 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink20 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink20:setParent(obj.layout11);
     obj.dataLink20:setFields({'varLUTvalor'});
     obj.dataLink20:setDefaultValues({'0'});
     obj.dataLink20:setName("dataLink20");
 
-    obj.label20 = gui.fromHandle(_obj_newObject("label"));
+    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.layout11);
     obj.label20:setFontSize(12);
     obj.label20:setFontColor("#264d43");
@@ -824,13 +824,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label20:setWordWrap(false);
     obj.label20:setAutoSize(true);
 
-    obj.dataLink21 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink21 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink21:setParent(obj.layout11);
     obj.dataLink21:setFields({'varLUT'});
     obj.dataLink21:setDefaultValues({'0'});
     obj.dataLink21:setName("dataLink21");
 
-    obj.label21 = gui.fromHandle(_obj_newObject("label"));
+    obj.label21 = GUI.fromHandle(_obj_newObject("label"));
     obj.label21:setParent(obj.layout11);
     obj.label21:setFontSize(8);
     obj.label21:setFontColor("#264d43");
@@ -846,7 +846,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label21:setWordWrap(false);
     obj.label21:setAutoSize(true);
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.rectangle1);
     obj.layout12:setLeft(162);
     obj.layout12:setTop(486);
@@ -854,7 +854,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout12:setHeight(30);
     obj.layout12:setName("layout12");
 
-    obj.edit19 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit19 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit19:setParent(obj.layout12);
     obj.edit19:setTransparent(true);
     obj.edit19:setFontSize(20.3);
@@ -867,13 +867,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit19:setField("AGI");
     obj.edit19:setName("edit19");
 
-    obj.dataLink22 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink22 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink22:setParent(obj.layout12);
     obj.dataLink22:setFields({'AGI'});
     obj.dataLink22:setDefaultValues({'0'});
     obj.dataLink22:setName("dataLink22");
 
-    obj.label22 = gui.fromHandle(_obj_newObject("label"));
+    obj.label22 = GUI.fromHandle(_obj_newObject("label"));
     obj.label22:setParent(obj.layout12);
     obj.label22:setVisible(false);
     obj.label22:setFontSize(20.3);
@@ -889,7 +889,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label22:setWordWrap(false);
     obj.label22:setAutoSize(true);
 
-    obj.edit20 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit20 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit20:setParent(obj.layout12);
     obj.edit20:setTransparent(true);
     obj.edit20:setFontSize(12);
@@ -903,13 +903,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit20:setField("varAGIvalor");
     obj.edit20:setName("edit20");
 
-    obj.dataLink23 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink23 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink23:setParent(obj.layout12);
     obj.dataLink23:setFields({'varAGIvalor'});
     obj.dataLink23:setDefaultValues({'0'});
     obj.dataLink23:setName("dataLink23");
 
-    obj.label23 = gui.fromHandle(_obj_newObject("label"));
+    obj.label23 = GUI.fromHandle(_obj_newObject("label"));
     obj.label23:setParent(obj.layout12);
     obj.label23:setFontSize(12);
     obj.label23:setFontColor("#264d43");
@@ -925,13 +925,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label23:setWordWrap(false);
     obj.label23:setAutoSize(true);
 
-    obj.dataLink24 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink24 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink24:setParent(obj.layout12);
     obj.dataLink24:setFields({'varAGI'});
     obj.dataLink24:setDefaultValues({'0'});
     obj.dataLink24:setName("dataLink24");
 
-    obj.label24 = gui.fromHandle(_obj_newObject("label"));
+    obj.label24 = GUI.fromHandle(_obj_newObject("label"));
     obj.label24:setParent(obj.layout12);
     obj.label24:setFontSize(8);
     obj.label24:setFontColor("#264d43");
@@ -947,7 +947,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label24:setWordWrap(false);
     obj.label24:setAutoSize(true);
 
-    obj.layout13 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.rectangle1);
     obj.layout13:setLeft(377);
     obj.layout13:setTop(360);
@@ -955,7 +955,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout13:setHeight(33);
     obj.layout13:setName("layout13");
 
-    obj.edit21 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit21 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit21:setParent(obj.layout13);
     obj.edit21:setTransparent(true);
     obj.edit21:setFontSize(22.6);
@@ -968,7 +968,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit21:setField("PONTOSDEPODER");
     obj.edit21:setName("edit21");
 
-    obj.layout14 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.rectangle1);
     obj.layout14:setLeft(377);
     obj.layout14:setTop(405);
@@ -976,7 +976,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout14:setHeight(33);
     obj.layout14:setName("layout14");
 
-    obj.edit22 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit22 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit22:setParent(obj.layout14);
     obj.edit22:setTransparent(true);
     obj.edit22:setFontSize(22.6);
@@ -989,7 +989,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit22:setField("PONTOSHEROICOS");
     obj.edit22:setName("edit22");
 
-    obj.layout15 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.rectangle1);
     obj.layout15:setLeft(43);
     obj.layout15:setTop(630);
@@ -997,7 +997,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout15:setHeight(262);
     obj.layout15:setName("layout15");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout15);
     obj.textEditor1:setLeft(0);
     obj.textEditor1:setTop(0);
@@ -1009,7 +1009,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.textEditor1:setTransparent(true);
     obj.textEditor1:setName("textEditor1");
 
-    obj.layout16 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.rectangle1);
     obj.layout16:setLeft(43);
     obj.layout16:setTop(933);
@@ -1017,7 +1017,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout16:setHeight(302);
     obj.layout16:setName("layout16");
 
-    obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.layout16);
     obj.textEditor2:setLeft(0);
     obj.textEditor2:setTop(0);
@@ -1029,7 +1029,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.textEditor2:setTransparent(true);
     obj.textEditor2:setName("textEditor2");
 
-    obj.layout17 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.rectangle1);
     obj.layout17:setLeft(459);
     obj.layout17:setTop(470);
@@ -1037,7 +1037,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout17:setHeight(714);
     obj.layout17:setName("layout17");
 
-    obj.textEditor3 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor3:setParent(obj.layout17);
     obj.textEditor3:setLeft(0);
     obj.textEditor3:setTop(0);
@@ -1049,7 +1049,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.textEditor3:setTransparent(true);
     obj.textEditor3:setName("textEditor3");
 
-    obj.layout18 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.rectangle1);
     obj.layout18:setLeft(688);
     obj.layout18:setTop(171);
@@ -1057,7 +1057,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout18:setHeight(16);
     obj.layout18:setName("layout18");
 
-    obj.edit23 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit23:setParent(obj.layout18);
     obj.edit23:setTransparent(true);
     obj.edit23:setFontSize(12);
@@ -1071,7 +1071,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit23:setField("Iniciativa");
     obj.edit23:setName("edit23");
 
-    obj.layout19 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.rectangle1);
     obj.layout19:setLeft(568);
     obj.layout19:setTop(78);
@@ -1079,7 +1079,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout19:setHeight(15);
     obj.layout19:setName("layout19");
 
-    obj.edit24 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit24 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit24:setParent(obj.layout19);
     obj.edit24:setTransparent(true);
     obj.edit24:setFontSize(9);
@@ -1092,13 +1092,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit24:setField("DEFesq2");
     obj.edit24:setName("edit24");
 
-    obj.dataLink25 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink25 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink25:setParent(obj.layout19);
     obj.dataLink25:setFields({'DEFesq2'});
     obj.dataLink25:setDefaultValues({'0'});
     obj.dataLink25:setName("dataLink25");
 
-    obj.layout20 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.rectangle1);
     obj.layout20:setLeft(541);
     obj.layout20:setTop(78);
@@ -1106,7 +1106,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout20:setHeight(15);
     obj.layout20:setName("layout20");
 
-    obj.edit25 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit25:setParent(obj.layout20);
     obj.edit25:setTransparent(true);
     obj.edit25:setFontSize(9);
@@ -1119,7 +1119,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit25:setField("DEFesq1");
     obj.edit25:setName("edit25");
 
-    obj.layout21 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.rectangle1);
     obj.layout21:setLeft(541);
     obj.layout21:setTop(99);
@@ -1127,7 +1127,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout21:setHeight(15);
     obj.layout21:setName("layout21");
 
-    obj.edit26 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit26:setParent(obj.layout21);
     obj.edit26:setTransparent(true);
     obj.edit26:setFontSize(9);
@@ -1140,7 +1140,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit26:setField("DEFapa1");
     obj.edit26:setName("edit26");
 
-    obj.layout22 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.rectangle1);
     obj.layout22:setLeft(568);
     obj.layout22:setTop(99);
@@ -1148,7 +1148,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout22:setHeight(15);
     obj.layout22:setName("layout22");
 
-    obj.edit27 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit27 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit27:setParent(obj.layout22);
     obj.edit27:setTransparent(true);
     obj.edit27:setFontSize(9);
@@ -1161,13 +1161,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit27:setField("DEFapa2");
     obj.edit27:setName("edit27");
 
-    obj.dataLink26 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink26 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink26:setParent(obj.layout22);
     obj.dataLink26:setFields({'DEFapa2'});
     obj.dataLink26:setDefaultValues({'0'});
     obj.dataLink26:setName("dataLink26");
 
-    obj.layout23 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.rectangle1);
     obj.layout23:setLeft(568);
     obj.layout23:setTop(120);
@@ -1175,7 +1175,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout23:setHeight(15);
     obj.layout23:setName("layout23");
 
-    obj.edit28 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit28 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit28:setParent(obj.layout23);
     obj.edit28:setTransparent(true);
     obj.edit28:setFontSize(9);
@@ -1188,13 +1188,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit28:setField("DEFvon2");
     obj.edit28:setName("edit28");
 
-    obj.dataLink27 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink27 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink27:setParent(obj.layout23);
     obj.dataLink27:setFields({'DEFvon2'});
     obj.dataLink27:setDefaultValues({'0'});
     obj.dataLink27:setName("dataLink27");
 
-    obj.layout24 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.rectangle1);
     obj.layout24:setLeft(541);
     obj.layout24:setTop(120);
@@ -1202,7 +1202,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout24:setHeight(15);
     obj.layout24:setName("layout24");
 
-    obj.edit29 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit29 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit29:setParent(obj.layout24);
     obj.edit29:setTransparent(true);
     obj.edit29:setFontSize(9);
@@ -1215,7 +1215,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit29:setField("DEFvon1");
     obj.edit29:setName("edit29");
 
-    obj.layout25 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.rectangle1);
     obj.layout25:setLeft(750);
     obj.layout25:setTop(99);
@@ -1223,7 +1223,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout25:setHeight(15);
     obj.layout25:setName("layout25");
 
-    obj.edit30 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit30 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit30:setParent(obj.layout25);
     obj.edit30:setTransparent(true);
     obj.edit30:setFontSize(9);
@@ -1236,7 +1236,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit30:setField("DEFres1");
     obj.edit30:setName("edit30");
 
-    obj.layout26 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.rectangle1);
     obj.layout26:setLeft(750);
     obj.layout26:setTop(78);
@@ -1244,7 +1244,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout26:setHeight(15);
     obj.layout26:setName("layout26");
 
-    obj.edit31 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit31:setParent(obj.layout26);
     obj.edit31:setTransparent(true);
     obj.edit31:setFontSize(9);
@@ -1257,7 +1257,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit31:setField("DEFforti1");
     obj.edit31:setName("edit31");
 
-    obj.layout27 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.rectangle1);
     obj.layout27:setLeft(777);
     obj.layout27:setTop(78);
@@ -1265,7 +1265,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout27:setHeight(15);
     obj.layout27:setName("layout27");
 
-    obj.edit32 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit32:setParent(obj.layout27);
     obj.edit32:setTransparent(true);
     obj.edit32:setFontSize(9);
@@ -1278,13 +1278,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit32:setField("DEFforti2");
     obj.edit32:setName("edit32");
 
-    obj.dataLink28 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink28 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink28:setParent(obj.layout27);
     obj.dataLink28:setFields({'DEFforti2'});
     obj.dataLink28:setDefaultValues({'0'});
     obj.dataLink28:setName("dataLink28");
 
-    obj.layout28 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.rectangle1);
     obj.layout28:setLeft(804);
     obj.layout28:setTop(78);
@@ -1292,7 +1292,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout28:setHeight(15);
     obj.layout28:setName("layout28");
 
-    obj.edit33 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit33 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit33:setParent(obj.layout28);
     obj.edit33:setTransparent(true);
     obj.edit33:setFontSize(9);
@@ -1305,13 +1305,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit33:setField("DEFforti3");
     obj.edit33:setName("edit33");
 
-    obj.dataLink29 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink29 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink29:setParent(obj.layout28);
     obj.dataLink29:setFields({'DEFforti3'});
     obj.dataLink29:setDefaultValues({'0'});
     obj.dataLink29:setName("dataLink29");
 
-    obj.layout29 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout29:setParent(obj.rectangle1);
     obj.layout29:setLeft(831);
     obj.layout29:setTop(78);
@@ -1319,7 +1319,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout29:setHeight(15);
     obj.layout29:setName("layout29");
 
-    obj.edit34 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit34:setParent(obj.layout29);
     obj.edit34:setTransparent(true);
     obj.edit34:setFontSize(9);
@@ -1332,7 +1332,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit34:setField("DEFfortiTotal");
     obj.edit34:setName("edit34");
 
-    obj.layout30 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout30:setParent(obj.rectangle1);
     obj.layout30:setLeft(650);
     obj.layout30:setTop(117);
@@ -1340,7 +1340,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout30:setHeight(24);
     obj.layout30:setName("layout30");
 
-    obj.edit35 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit35 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit35:setParent(obj.layout30);
     obj.edit35:setTransparent(true);
     obj.edit35:setFontSize(14);
@@ -1354,7 +1354,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit35:setField("DEFextraName");
     obj.edit35:setName("edit35");
 
-    obj.layout31 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout31:setParent(obj.rectangle1);
     obj.layout31:setLeft(540);
     obj.layout31:setTop(1196);
@@ -1362,7 +1362,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout31:setHeight(18);
     obj.layout31:setName("layout31");
 
-    obj.label25 = gui.fromHandle(_obj_newObject("label"));
+    obj.label25 = GUI.fromHandle(_obj_newObject("label"));
     obj.label25:setParent(obj.layout31);
     obj.label25:setFontSize(10);
     obj.label25:setFontColor("#000000");
@@ -1377,7 +1377,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label25:setWordWrap(false);
     obj.label25:setAutoSize(true);
 
-    obj.layout32 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.rectangle1);
     obj.layout32:setLeft(618);
     obj.layout32:setTop(1196);
@@ -1385,7 +1385,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout32:setHeight(18);
     obj.layout32:setName("layout32");
 
-    obj.label26 = gui.fromHandle(_obj_newObject("label"));
+    obj.label26 = GUI.fromHandle(_obj_newObject("label"));
     obj.label26:setParent(obj.layout32);
     obj.label26:setFontSize(10);
     obj.label26:setFontColor("#000000");
@@ -1400,7 +1400,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label26:setWordWrap(false);
     obj.label26:setAutoSize(true);
 
-    obj.layout33 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout33:setParent(obj.rectangle1);
     obj.layout33:setLeft(641);
     obj.layout33:setTop(1197);
@@ -1408,7 +1408,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout33:setHeight(14);
     obj.layout33:setName("layout33");
 
-    obj.label27 = gui.fromHandle(_obj_newObject("label"));
+    obj.label27 = GUI.fromHandle(_obj_newObject("label"));
     obj.label27:setParent(obj.layout33);
     obj.label27:setFontSize(9);
     obj.label27:setFontColor("#000000");
@@ -1423,7 +1423,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label27:setWordWrap(false);
     obj.label27:setAutoSize(true);
 
-    obj.layout34 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout34 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout34:setParent(obj.rectangle1);
     obj.layout34:setLeft(811);
     obj.layout34:setTop(1194);
@@ -1431,7 +1431,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout34:setHeight(18);
     obj.layout34:setName("layout34");
 
-    obj.edit36 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit36:setParent(obj.layout34);
     obj.edit36:setTransparent(true);
     obj.edit36:setFontSize(10);
@@ -1444,7 +1444,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit36:setField("PPvantagens");
     obj.edit36:setName("edit36");
 
-    obj.layout35 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout35:setParent(obj.rectangle1);
     obj.layout35:setLeft(512);
     obj.layout35:setTop(1212);
@@ -1452,7 +1452,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout35:setHeight(14);
     obj.layout35:setName("layout35");
 
-    obj.edit37 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit37 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit37:setParent(obj.layout35);
     obj.edit37:setTransparent(true);
     obj.edit37:setFontSize(10);
@@ -1465,7 +1465,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit37:setField("PPdefesas");
     obj.edit37:setName("edit37");
 
-    obj.layout36 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout36:setParent(obj.rectangle1);
     obj.layout36:setLeft(593);
     obj.layout36:setTop(1212);
@@ -1473,7 +1473,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout36:setHeight(18);
     obj.layout36:setName("layout36");
 
-    obj.edit38 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit38 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit38:setParent(obj.layout36);
     obj.edit38:setTransparent(true);
     obj.edit38:setFontSize(10);
@@ -1486,7 +1486,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit38:setField("PPpoderes");
     obj.edit38:setName("edit38");
 
-    obj.layout37 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout37 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout37:setParent(obj.rectangle1);
     obj.layout37:setLeft(630);
     obj.layout37:setTop(1214);
@@ -1494,7 +1494,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout37:setHeight(18);
     obj.layout37:setName("layout37");
 
-    obj.label28 = gui.fromHandle(_obj_newObject("label"));
+    obj.label28 = GUI.fromHandle(_obj_newObject("label"));
     obj.label28:setParent(obj.layout37);
     obj.label28:setFontSize(12);
     obj.label28:setFontColor("#000000");
@@ -1510,7 +1510,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.label28:setWordWrap(false);
     obj.label28:setAutoSize(true);
 
-    obj.layout38 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout38 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout38:setParent(obj.rectangle1);
     obj.layout38:setTop(215);
     obj.layout38:setLeft(458);
@@ -1518,7 +1518,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout38:setHeight(18);
     obj.layout38:setName("layout38");
 
-    obj.edit39 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit39 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit39:setParent(obj.layout38);
     obj.edit39:setTransparent(true);
     obj.edit39:setFontSize(12);
@@ -1531,7 +1531,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit39:setField("ATK1");
     obj.edit39:setName("edit39");
 
-    obj.layout39 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout39 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout39:setParent(obj.rectangle1);
     obj.layout39:setTop(215);
     obj.layout39:setLeft(651);
@@ -1539,7 +1539,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout39:setHeight(18);
     obj.layout39:setName("layout39");
 
-    obj.edit40 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit40 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit40:setParent(obj.layout39);
     obj.edit40:setTransparent(true);
     obj.edit40:setFontSize(12);
@@ -1552,13 +1552,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit40:setField("ATK1mod");
     obj.edit40:setName("edit40");
 
-    obj.dataLink30 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink30 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink30:setParent(obj.layout39);
     obj.dataLink30:setFields({'ATK1mod'});
     obj.dataLink30:setDefaultValues({'0'});
     obj.dataLink30:setName("dataLink30");
 
-    obj.layout40 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout40 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout40:setParent(obj.rectangle1);
     obj.layout40:setTop(215);
     obj.layout40:setLeft(681);
@@ -1566,7 +1566,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout40:setHeight(18);
     obj.layout40:setName("layout40");
 
-    obj.edit41 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit41:setParent(obj.layout40);
     obj.edit41:setTransparent(true);
     obj.edit41:setFontSize(12);
@@ -1579,13 +1579,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit41:setField("ATK1dano");
     obj.edit41:setName("edit41");
 
-    obj.dataLink31 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink31 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink31:setParent(obj.layout40);
     obj.dataLink31:setFields({'ATK1dano'});
     obj.dataLink31:setDefaultValues({'0'});
     obj.dataLink31:setName("dataLink31");
 
-    obj.layout41 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout41 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout41:setParent(obj.rectangle1);
     obj.layout41:setTop(215);
     obj.layout41:setLeft(710);
@@ -1593,7 +1593,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout41:setHeight(18);
     obj.layout41:setName("layout41");
 
-    obj.edit42 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit42:setParent(obj.layout41);
     obj.edit42:setTransparent(true);
     obj.edit42:setFontSize(12);
@@ -1606,19 +1606,19 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit42:setField("ATK1tipo");
     obj.edit42:setName("edit42");
 
-    obj.dataLink32 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink32 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink32:setParent(obj.layout41);
     obj.dataLink32:setFields({'ATK1tipo'});
     obj.dataLink32:setDefaultValues({'-'});
     obj.dataLink32:setName("dataLink32");
 
-    obj.layout42 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout42 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout42:setParent(obj.rectangle1);
     obj.layout42:setTop(214);
     obj.layout42:setLeft(807);
     obj.layout42:setName("layout42");
 
-    obj.comboBox1 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.layout42);
     obj.comboBox1:setAlign("top");
     obj.comboBox1:setField("ATK1TesteCD");
@@ -1630,13 +1630,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.comboBox1:setHint("Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares");
     obj.comboBox1:setName("comboBox1");
 
-    obj.dataLink33 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink33 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink33:setParent(obj.layout42);
     obj.dataLink33:setFields({'ATK1TesteCD'});
     obj.dataLink33:setDefaultValues({'+15'});
     obj.dataLink33:setName("dataLink33");
 
-    obj.layout43 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout43 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout43:setParent(obj.rectangle1);
     obj.layout43:setTop(238);
     obj.layout43:setLeft(651);
@@ -1644,7 +1644,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout43:setHeight(18);
     obj.layout43:setName("layout43");
 
-    obj.edit43 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit43 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit43:setParent(obj.layout43);
     obj.edit43:setTransparent(true);
     obj.edit43:setFontSize(12);
@@ -1657,13 +1657,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit43:setField("ATK2mod");
     obj.edit43:setName("edit43");
 
-    obj.dataLink34 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink34 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink34:setParent(obj.layout43);
     obj.dataLink34:setFields({'ATK2mod'});
     obj.dataLink34:setDefaultValues({'0'});
     obj.dataLink34:setName("dataLink34");
 
-    obj.layout44 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout44 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout44:setParent(obj.rectangle1);
     obj.layout44:setTop(238);
     obj.layout44:setLeft(681);
@@ -1671,7 +1671,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout44:setHeight(18);
     obj.layout44:setName("layout44");
 
-    obj.edit44 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit44 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit44:setParent(obj.layout44);
     obj.edit44:setTransparent(true);
     obj.edit44:setFontSize(12);
@@ -1684,13 +1684,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit44:setField("ATK2dano");
     obj.edit44:setName("edit44");
 
-    obj.dataLink35 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink35 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink35:setParent(obj.layout44);
     obj.dataLink35:setFields({'ATK2dano'});
     obj.dataLink35:setDefaultValues({'0'});
     obj.dataLink35:setName("dataLink35");
 
-    obj.layout45 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout45 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout45:setParent(obj.rectangle1);
     obj.layout45:setTop(238);
     obj.layout45:setLeft(710);
@@ -1698,7 +1698,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout45:setHeight(18);
     obj.layout45:setName("layout45");
 
-    obj.edit45 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit45:setParent(obj.layout45);
     obj.edit45:setTransparent(true);
     obj.edit45:setFontSize(12);
@@ -1711,19 +1711,19 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit45:setField("ATK2tipo");
     obj.edit45:setName("edit45");
 
-    obj.dataLink36 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink36 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink36:setParent(obj.layout45);
     obj.dataLink36:setFields({'ATK2tipo'});
     obj.dataLink36:setDefaultValues({'-'});
     obj.dataLink36:setName("dataLink36");
 
-    obj.layout46 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout46 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout46:setParent(obj.rectangle1);
     obj.layout46:setTop(236);
     obj.layout46:setLeft(807);
     obj.layout46:setName("layout46");
 
-    obj.comboBox2 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox2:setParent(obj.layout46);
     obj.comboBox2:setAlign("top");
     obj.comboBox2:setField("ATK2TesteCD");
@@ -1735,13 +1735,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.comboBox2:setHint("Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares");
     obj.comboBox2:setName("comboBox2");
 
-    obj.dataLink37 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink37 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink37:setParent(obj.layout46);
     obj.dataLink37:setFields({'ATK2TesteCD'});
     obj.dataLink37:setDefaultValues({'+15'});
     obj.dataLink37:setName("dataLink37");
 
-    obj.layout47 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout47 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout47:setParent(obj.rectangle1);
     obj.layout47:setTop(259);
     obj.layout47:setLeft(651);
@@ -1749,7 +1749,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout47:setHeight(18);
     obj.layout47:setName("layout47");
 
-    obj.edit46 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit46:setParent(obj.layout47);
     obj.edit46:setTransparent(true);
     obj.edit46:setFontSize(12);
@@ -1762,13 +1762,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit46:setField("ATK3mod");
     obj.edit46:setName("edit46");
 
-    obj.dataLink38 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink38 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink38:setParent(obj.layout47);
     obj.dataLink38:setFields({'ATK3mod'});
     obj.dataLink38:setDefaultValues({'0'});
     obj.dataLink38:setName("dataLink38");
 
-    obj.layout48 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout48 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout48:setParent(obj.rectangle1);
     obj.layout48:setTop(259);
     obj.layout48:setLeft(681);
@@ -1776,7 +1776,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout48:setHeight(18);
     obj.layout48:setName("layout48");
 
-    obj.edit47 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit47:setParent(obj.layout48);
     obj.edit47:setTransparent(true);
     obj.edit47:setFontSize(12);
@@ -1789,13 +1789,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit47:setField("ATK3dano");
     obj.edit47:setName("edit47");
 
-    obj.dataLink39 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink39 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink39:setParent(obj.layout48);
     obj.dataLink39:setFields({'ATK3dano'});
     obj.dataLink39:setDefaultValues({'0'});
     obj.dataLink39:setName("dataLink39");
 
-    obj.layout49 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout49:setParent(obj.rectangle1);
     obj.layout49:setTop(259);
     obj.layout49:setLeft(710);
@@ -1803,7 +1803,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout49:setHeight(18);
     obj.layout49:setName("layout49");
 
-    obj.edit48 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit48:setParent(obj.layout49);
     obj.edit48:setTransparent(true);
     obj.edit48:setFontSize(12);
@@ -1816,19 +1816,19 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit48:setField("ATK3tipo");
     obj.edit48:setName("edit48");
 
-    obj.dataLink40 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink40 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink40:setParent(obj.layout49);
     obj.dataLink40:setFields({'ATK3tipo'});
     obj.dataLink40:setDefaultValues({'-'});
     obj.dataLink40:setName("dataLink40");
 
-    obj.layout50 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout50 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout50:setParent(obj.rectangle1);
     obj.layout50:setTop(258);
     obj.layout50:setLeft(807);
     obj.layout50:setName("layout50");
 
-    obj.comboBox3 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox3:setParent(obj.layout50);
     obj.comboBox3:setAlign("top");
     obj.comboBox3:setField("ATK3TesteCD");
@@ -1840,13 +1840,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.comboBox3:setHint("Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares");
     obj.comboBox3:setName("comboBox3");
 
-    obj.dataLink41 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink41 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink41:setParent(obj.layout50);
     obj.dataLink41:setFields({'ATK3TesteCD'});
     obj.dataLink41:setDefaultValues({'+15'});
     obj.dataLink41:setName("dataLink41");
 
-    obj.layout51 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout51 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout51:setParent(obj.rectangle1);
     obj.layout51:setTop(280);
     obj.layout51:setLeft(651);
@@ -1854,7 +1854,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout51:setHeight(18);
     obj.layout51:setName("layout51");
 
-    obj.edit49 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit49 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit49:setParent(obj.layout51);
     obj.edit49:setTransparent(true);
     obj.edit49:setFontSize(12);
@@ -1867,13 +1867,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit49:setField("ATK4mod");
     obj.edit49:setName("edit49");
 
-    obj.dataLink42 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink42 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink42:setParent(obj.layout51);
     obj.dataLink42:setFields({'ATK4mod'});
     obj.dataLink42:setDefaultValues({'0'});
     obj.dataLink42:setName("dataLink42");
 
-    obj.layout52 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout52 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout52:setParent(obj.rectangle1);
     obj.layout52:setTop(280);
     obj.layout52:setLeft(681);
@@ -1881,7 +1881,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout52:setHeight(18);
     obj.layout52:setName("layout52");
 
-    obj.edit50 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit50:setParent(obj.layout52);
     obj.edit50:setTransparent(true);
     obj.edit50:setFontSize(12);
@@ -1894,13 +1894,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit50:setField("ATK4dano");
     obj.edit50:setName("edit50");
 
-    obj.dataLink43 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink43 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink43:setParent(obj.layout52);
     obj.dataLink43:setFields({'ATK4dano'});
     obj.dataLink43:setDefaultValues({'0'});
     obj.dataLink43:setName("dataLink43");
 
-    obj.layout53 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout53 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout53:setParent(obj.rectangle1);
     obj.layout53:setTop(280);
     obj.layout53:setLeft(710);
@@ -1908,7 +1908,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout53:setHeight(18);
     obj.layout53:setName("layout53");
 
-    obj.edit51 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit51:setParent(obj.layout53);
     obj.edit51:setTransparent(true);
     obj.edit51:setFontSize(12);
@@ -1921,19 +1921,19 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit51:setField("ATK4tipo");
     obj.edit51:setName("edit51");
 
-    obj.dataLink44 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink44 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink44:setParent(obj.layout53);
     obj.dataLink44:setFields({'ATK4tipo'});
     obj.dataLink44:setDefaultValues({'-'});
     obj.dataLink44:setName("dataLink44");
 
-    obj.layout54 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout54 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout54:setParent(obj.rectangle1);
     obj.layout54:setTop(279);
     obj.layout54:setLeft(807);
     obj.layout54:setName("layout54");
 
-    obj.comboBox4 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox4:setParent(obj.layout54);
     obj.comboBox4:setAlign("top");
     obj.comboBox4:setField("ATK4TesteCD");
@@ -1945,13 +1945,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.comboBox4:setHint("Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares");
     obj.comboBox4:setName("comboBox4");
 
-    obj.dataLink45 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink45 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink45:setParent(obj.layout54);
     obj.dataLink45:setFields({'ATK4TesteCD'});
     obj.dataLink45:setDefaultValues({'+15'});
     obj.dataLink45:setName("dataLink45");
 
-    obj.layout55 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout55 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout55:setParent(obj.rectangle1);
     obj.layout55:setTop(302);
     obj.layout55:setLeft(651);
@@ -1959,7 +1959,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout55:setHeight(18);
     obj.layout55:setName("layout55");
 
-    obj.edit52 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit52 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit52:setParent(obj.layout55);
     obj.edit52:setTransparent(true);
     obj.edit52:setFontSize(12);
@@ -1972,13 +1972,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit52:setField("ATK5mod");
     obj.edit52:setName("edit52");
 
-    obj.dataLink46 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink46 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink46:setParent(obj.layout55);
     obj.dataLink46:setFields({'ATK5mod'});
     obj.dataLink46:setDefaultValues({'0'});
     obj.dataLink46:setName("dataLink46");
 
-    obj.layout56 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout56 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout56:setParent(obj.rectangle1);
     obj.layout56:setTop(302);
     obj.layout56:setLeft(681);
@@ -1986,7 +1986,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout56:setHeight(18);
     obj.layout56:setName("layout56");
 
-    obj.edit53 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit53 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit53:setParent(obj.layout56);
     obj.edit53:setTransparent(true);
     obj.edit53:setFontSize(12);
@@ -1999,13 +1999,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit53:setField("ATK5dano");
     obj.edit53:setName("edit53");
 
-    obj.dataLink47 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink47 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink47:setParent(obj.layout56);
     obj.dataLink47:setFields({'ATK5dano'});
     obj.dataLink47:setDefaultValues({'0'});
     obj.dataLink47:setName("dataLink47");
 
-    obj.layout57 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout57 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout57:setParent(obj.rectangle1);
     obj.layout57:setTop(302);
     obj.layout57:setLeft(710);
@@ -2013,7 +2013,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout57:setHeight(18);
     obj.layout57:setName("layout57");
 
-    obj.edit54 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit54:setParent(obj.layout57);
     obj.edit54:setTransparent(true);
     obj.edit54:setFontSize(12);
@@ -2026,19 +2026,19 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit54:setField("ATK5tipo");
     obj.edit54:setName("edit54");
 
-    obj.dataLink48 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink48 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink48:setParent(obj.layout57);
     obj.dataLink48:setFields({'ATK5tipo'});
     obj.dataLink48:setDefaultValues({'-'});
     obj.dataLink48:setName("dataLink48");
 
-    obj.layout58 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout58 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout58:setParent(obj.rectangle1);
     obj.layout58:setTop(301);
     obj.layout58:setLeft(807);
     obj.layout58:setName("layout58");
 
-    obj.comboBox5 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox5 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox5:setParent(obj.layout58);
     obj.comboBox5:setAlign("top");
     obj.comboBox5:setField("ATK5TesteCD");
@@ -2050,13 +2050,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.comboBox5:setHint("Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares");
     obj.comboBox5:setName("comboBox5");
 
-    obj.dataLink49 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink49 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink49:setParent(obj.layout58);
     obj.dataLink49:setFields({'ATK5TesteCD'});
     obj.dataLink49:setDefaultValues({'+15'});
     obj.dataLink49:setName("dataLink49");
 
-    obj.layout59 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout59 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout59:setParent(obj.rectangle1);
     obj.layout59:setTop(323);
     obj.layout59:setLeft(651);
@@ -2064,7 +2064,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout59:setHeight(18);
     obj.layout59:setName("layout59");
 
-    obj.edit55 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit55 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit55:setParent(obj.layout59);
     obj.edit55:setTransparent(true);
     obj.edit55:setFontSize(12);
@@ -2077,13 +2077,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit55:setField("ATK6mod");
     obj.edit55:setName("edit55");
 
-    obj.dataLink50 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink50 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink50:setParent(obj.layout59);
     obj.dataLink50:setFields({'ATK6mod'});
     obj.dataLink50:setDefaultValues({'0'});
     obj.dataLink50:setName("dataLink50");
 
-    obj.layout60 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout60 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout60:setParent(obj.rectangle1);
     obj.layout60:setTop(323);
     obj.layout60:setLeft(681);
@@ -2091,7 +2091,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout60:setHeight(18);
     obj.layout60:setName("layout60");
 
-    obj.edit56 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit56:setParent(obj.layout60);
     obj.edit56:setTransparent(true);
     obj.edit56:setFontSize(12);
@@ -2104,13 +2104,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit56:setField("ATK6dano");
     obj.edit56:setName("edit56");
 
-    obj.dataLink51 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink51 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink51:setParent(obj.layout60);
     obj.dataLink51:setFields({'ATK6dano'});
     obj.dataLink51:setDefaultValues({'0'});
     obj.dataLink51:setName("dataLink51");
 
-    obj.layout61 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout61 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout61:setParent(obj.rectangle1);
     obj.layout61:setTop(323);
     obj.layout61:setLeft(710);
@@ -2118,7 +2118,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout61:setHeight(18);
     obj.layout61:setName("layout61");
 
-    obj.edit57 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit57 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit57:setParent(obj.layout61);
     obj.edit57:setTransparent(true);
     obj.edit57:setFontSize(12);
@@ -2131,19 +2131,19 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit57:setField("ATK6tipo");
     obj.edit57:setName("edit57");
 
-    obj.dataLink52 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink52 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink52:setParent(obj.layout61);
     obj.dataLink52:setFields({'ATK6tipo'});
     obj.dataLink52:setDefaultValues({'-'});
     obj.dataLink52:setName("dataLink52");
 
-    obj.layout62 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout62 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout62:setParent(obj.rectangle1);
     obj.layout62:setTop(322);
     obj.layout62:setLeft(807);
     obj.layout62:setName("layout62");
 
-    obj.comboBox6 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox6 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox6:setParent(obj.layout62);
     obj.comboBox6:setAlign("top");
     obj.comboBox6:setField("ATK6TesteCD");
@@ -2155,13 +2155,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.comboBox6:setHint("Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares");
     obj.comboBox6:setName("comboBox6");
 
-    obj.dataLink53 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink53 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink53:setParent(obj.layout62);
     obj.dataLink53:setFields({'ATK6TesteCD'});
     obj.dataLink53:setDefaultValues({'+15'});
     obj.dataLink53:setName("dataLink53");
 
-    obj.layout63 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout63 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout63:setParent(obj.rectangle1);
     obj.layout63:setTop(345);
     obj.layout63:setLeft(651);
@@ -2169,7 +2169,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout63:setHeight(18);
     obj.layout63:setName("layout63");
 
-    obj.edit58 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit58 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit58:setParent(obj.layout63);
     obj.edit58:setTransparent(true);
     obj.edit58:setFontSize(12);
@@ -2182,13 +2182,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit58:setField("ATK7mod");
     obj.edit58:setName("edit58");
 
-    obj.dataLink54 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink54 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink54:setParent(obj.layout63);
     obj.dataLink54:setFields({'ATK7mod'});
     obj.dataLink54:setDefaultValues({'0'});
     obj.dataLink54:setName("dataLink54");
 
-    obj.layout64 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout64 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout64:setParent(obj.rectangle1);
     obj.layout64:setTop(345);
     obj.layout64:setLeft(681);
@@ -2196,7 +2196,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout64:setHeight(18);
     obj.layout64:setName("layout64");
 
-    obj.edit59 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit59 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit59:setParent(obj.layout64);
     obj.edit59:setTransparent(true);
     obj.edit59:setFontSize(12);
@@ -2209,13 +2209,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit59:setField("ATK7dano");
     obj.edit59:setName("edit59");
 
-    obj.dataLink55 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink55 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink55:setParent(obj.layout64);
     obj.dataLink55:setFields({'ATK7dano'});
     obj.dataLink55:setDefaultValues({'0'});
     obj.dataLink55:setName("dataLink55");
 
-    obj.layout65 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout65 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout65:setParent(obj.rectangle1);
     obj.layout65:setTop(345);
     obj.layout65:setLeft(710);
@@ -2223,7 +2223,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout65:setHeight(18);
     obj.layout65:setName("layout65");
 
-    obj.edit60 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit60 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit60:setParent(obj.layout65);
     obj.edit60:setTransparent(true);
     obj.edit60:setFontSize(12);
@@ -2236,19 +2236,19 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit60:setField("ATK7tipo");
     obj.edit60:setName("edit60");
 
-    obj.dataLink56 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink56 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink56:setParent(obj.layout65);
     obj.dataLink56:setFields({'ATK7tipo'});
     obj.dataLink56:setDefaultValues({'-'});
     obj.dataLink56:setName("dataLink56");
 
-    obj.layout66 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout66 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout66:setParent(obj.rectangle1);
     obj.layout66:setTop(344);
     obj.layout66:setLeft(807);
     obj.layout66:setName("layout66");
 
-    obj.comboBox7 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox7 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox7:setParent(obj.layout66);
     obj.comboBox7:setAlign("top");
     obj.comboBox7:setField("ATK7TesteCD");
@@ -2260,13 +2260,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.comboBox7:setHint("Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares");
     obj.comboBox7:setName("comboBox7");
 
-    obj.dataLink57 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink57 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink57:setParent(obj.layout66);
     obj.dataLink57:setFields({'ATK7TesteCD'});
     obj.dataLink57:setDefaultValues({'+15'});
     obj.dataLink57:setName("dataLink57");
 
-    obj.layout67 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout67 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout67:setParent(obj.rectangle1);
     obj.layout67:setTop(366);
     obj.layout67:setLeft(651);
@@ -2274,7 +2274,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout67:setHeight(18);
     obj.layout67:setName("layout67");
 
-    obj.edit61 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit61 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit61:setParent(obj.layout67);
     obj.edit61:setTransparent(true);
     obj.edit61:setFontSize(12);
@@ -2287,13 +2287,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit61:setField("ATK8mod");
     obj.edit61:setName("edit61");
 
-    obj.dataLink58 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink58 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink58:setParent(obj.layout67);
     obj.dataLink58:setFields({'ATK8mod'});
     obj.dataLink58:setDefaultValues({'0'});
     obj.dataLink58:setName("dataLink58");
 
-    obj.layout68 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout68 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout68:setParent(obj.rectangle1);
     obj.layout68:setTop(366);
     obj.layout68:setLeft(681);
@@ -2301,7 +2301,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout68:setHeight(18);
     obj.layout68:setName("layout68");
 
-    obj.edit62 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit62 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit62:setParent(obj.layout68);
     obj.edit62:setTransparent(true);
     obj.edit62:setFontSize(12);
@@ -2314,13 +2314,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit62:setField("ATK8dano");
     obj.edit62:setName("edit62");
 
-    obj.dataLink59 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink59 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink59:setParent(obj.layout68);
     obj.dataLink59:setFields({'ATK8dano'});
     obj.dataLink59:setDefaultValues({'0'});
     obj.dataLink59:setName("dataLink59");
 
-    obj.layout69 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout69 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout69:setParent(obj.rectangle1);
     obj.layout69:setTop(366);
     obj.layout69:setLeft(710);
@@ -2328,7 +2328,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout69:setHeight(18);
     obj.layout69:setName("layout69");
 
-    obj.edit63 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit63 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit63:setParent(obj.layout69);
     obj.edit63:setTransparent(true);
     obj.edit63:setFontSize(12);
@@ -2341,19 +2341,19 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit63:setField("ATK8tipo");
     obj.edit63:setName("edit63");
 
-    obj.dataLink60 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink60 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink60:setParent(obj.layout69);
     obj.dataLink60:setFields({'ATK8tipo'});
     obj.dataLink60:setDefaultValues({'-'});
     obj.dataLink60:setName("dataLink60");
 
-    obj.layout70 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout70 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout70:setParent(obj.rectangle1);
     obj.layout70:setTop(365);
     obj.layout70:setLeft(807);
     obj.layout70:setName("layout70");
 
-    obj.comboBox8 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox8 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox8:setParent(obj.layout70);
     obj.comboBox8:setAlign("top");
     obj.comboBox8:setField("ATK8TesteCD");
@@ -2365,13 +2365,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.comboBox8:setHint("Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares");
     obj.comboBox8:setName("comboBox8");
 
-    obj.dataLink61 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink61 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink61:setParent(obj.layout70);
     obj.dataLink61:setFields({'ATK8TesteCD'});
     obj.dataLink61:setDefaultValues({'+15'});
     obj.dataLink61:setName("dataLink61");
 
-    obj.layout71 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout71 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout71:setParent(obj.rectangle1);
     obj.layout71:setTop(388);
     obj.layout71:setLeft(651);
@@ -2379,7 +2379,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout71:setHeight(18);
     obj.layout71:setName("layout71");
 
-    obj.edit64 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit64 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit64:setParent(obj.layout71);
     obj.edit64:setTransparent(true);
     obj.edit64:setFontSize(12);
@@ -2392,13 +2392,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit64:setField("ATK9mod");
     obj.edit64:setName("edit64");
 
-    obj.dataLink62 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink62 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink62:setParent(obj.layout71);
     obj.dataLink62:setFields({'ATK9mod'});
     obj.dataLink62:setDefaultValues({'0'});
     obj.dataLink62:setName("dataLink62");
 
-    obj.layout72 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout72 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout72:setParent(obj.rectangle1);
     obj.layout72:setTop(388);
     obj.layout72:setLeft(681);
@@ -2406,7 +2406,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout72:setHeight(18);
     obj.layout72:setName("layout72");
 
-    obj.edit65 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit65 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit65:setParent(obj.layout72);
     obj.edit65:setTransparent(true);
     obj.edit65:setFontSize(12);
@@ -2419,13 +2419,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit65:setField("ATK9dano");
     obj.edit65:setName("edit65");
 
-    obj.dataLink63 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink63 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink63:setParent(obj.layout72);
     obj.dataLink63:setFields({'ATK9dano'});
     obj.dataLink63:setDefaultValues({'0'});
     obj.dataLink63:setName("dataLink63");
 
-    obj.layout73 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout73 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout73:setParent(obj.rectangle1);
     obj.layout73:setTop(388);
     obj.layout73:setLeft(710);
@@ -2433,7 +2433,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout73:setHeight(18);
     obj.layout73:setName("layout73");
 
-    obj.edit66 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit66 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit66:setParent(obj.layout73);
     obj.edit66:setTransparent(true);
     obj.edit66:setFontSize(12);
@@ -2446,19 +2446,19 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit66:setField("ATK9tipo");
     obj.edit66:setName("edit66");
 
-    obj.dataLink64 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink64 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink64:setParent(obj.layout73);
     obj.dataLink64:setFields({'ATK9tipo'});
     obj.dataLink64:setDefaultValues({'-'});
     obj.dataLink64:setName("dataLink64");
 
-    obj.layout74 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout74 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout74:setParent(obj.rectangle1);
     obj.layout74:setTop(387);
     obj.layout74:setLeft(807);
     obj.layout74:setName("layout74");
 
-    obj.comboBox9 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox9 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox9:setParent(obj.layout74);
     obj.comboBox9:setAlign("top");
     obj.comboBox9:setField("ATK9TesteCD");
@@ -2470,13 +2470,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.comboBox9:setHint("Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares");
     obj.comboBox9:setName("comboBox9");
 
-    obj.dataLink65 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink65 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink65:setParent(obj.layout74);
     obj.dataLink65:setFields({'ATK9TesteCD'});
     obj.dataLink65:setDefaultValues({'+15'});
     obj.dataLink65:setName("dataLink65");
 
-    obj.layout75 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout75 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout75:setParent(obj.rectangle1);
     obj.layout75:setTop(409);
     obj.layout75:setLeft(651);
@@ -2484,7 +2484,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout75:setHeight(18);
     obj.layout75:setName("layout75");
 
-    obj.edit67 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit67 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit67:setParent(obj.layout75);
     obj.edit67:setTransparent(true);
     obj.edit67:setFontSize(12);
@@ -2497,13 +2497,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit67:setField("ATK10mod");
     obj.edit67:setName("edit67");
 
-    obj.dataLink66 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink66 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink66:setParent(obj.layout75);
     obj.dataLink66:setFields({'ATK10mod'});
     obj.dataLink66:setDefaultValues({'0'});
     obj.dataLink66:setName("dataLink66");
 
-    obj.layout76 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout76 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout76:setParent(obj.rectangle1);
     obj.layout76:setTop(409);
     obj.layout76:setLeft(681);
@@ -2511,7 +2511,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout76:setHeight(18);
     obj.layout76:setName("layout76");
 
-    obj.edit68 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit68 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit68:setParent(obj.layout76);
     obj.edit68:setTransparent(true);
     obj.edit68:setFontSize(12);
@@ -2524,13 +2524,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit68:setField("ATK10dano");
     obj.edit68:setName("edit68");
 
-    obj.dataLink67 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink67 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink67:setParent(obj.layout76);
     obj.dataLink67:setFields({'ATK10dano'});
     obj.dataLink67:setDefaultValues({'0'});
     obj.dataLink67:setName("dataLink67");
 
-    obj.layout77 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout77 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout77:setParent(obj.rectangle1);
     obj.layout77:setTop(409);
     obj.layout77:setLeft(710);
@@ -2538,7 +2538,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout77:setHeight(18);
     obj.layout77:setName("layout77");
 
-    obj.edit69 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit69 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit69:setParent(obj.layout77);
     obj.edit69:setTransparent(true);
     obj.edit69:setFontSize(12);
@@ -2551,19 +2551,19 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit69:setField("ATK10tipo");
     obj.edit69:setName("edit69");
 
-    obj.dataLink68 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink68 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink68:setParent(obj.layout77);
     obj.dataLink68:setFields({'ATK10tipo'});
     obj.dataLink68:setDefaultValues({'-'});
     obj.dataLink68:setName("dataLink68");
 
-    obj.layout78 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout78 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout78:setParent(obj.rectangle1);
     obj.layout78:setTop(408);
     obj.layout78:setLeft(807);
     obj.layout78:setName("layout78");
 
-    obj.comboBox10 = gui.fromHandle(_obj_newObject("comboBox"));
+    obj.comboBox10 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox10:setParent(obj.layout78);
     obj.comboBox10:setAlign("top");
     obj.comboBox10:setField("ATK10TesteCD");
@@ -2575,13 +2575,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.comboBox10:setHint("Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares");
     obj.comboBox10:setName("comboBox10");
 
-    obj.dataLink69 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink69 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink69:setParent(obj.layout78);
     obj.dataLink69:setFields({'ATK10TesteCD'});
     obj.dataLink69:setDefaultValues({'+15'});
     obj.dataLink69:setName("dataLink69");
 
-    obj.layout79 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout79 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout79:setParent(obj.rectangle1);
     obj.layout79:setLeft(52);
     obj.layout79:setTop(373);
@@ -2589,7 +2589,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout79:setHeight(30);
     obj.layout79:setName("layout79");
 
-    obj.edit70 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit70 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit70:setParent(obj.layout79);
     obj.edit70:setTransparent(true);
     obj.edit70:setFontSize(20.3);
@@ -2602,7 +2602,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit70:setField("IDADE");
     obj.edit70:setName("edit70");
 
-    obj.layout80 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout80 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout80:setParent(obj.rectangle1);
     obj.layout80:setTop(238);
     obj.layout80:setLeft(458);
@@ -2610,7 +2610,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout80:setHeight(18);
     obj.layout80:setName("layout80");
 
-    obj.edit71 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit71 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit71:setParent(obj.layout80);
     obj.edit71:setTransparent(true);
     obj.edit71:setFontSize(12);
@@ -2623,7 +2623,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit71:setField("ATK2");
     obj.edit71:setName("edit71");
 
-    obj.layout81 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout81 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout81:setParent(obj.rectangle1);
     obj.layout81:setLeft(125);
     obj.layout81:setTop(373);
@@ -2631,7 +2631,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout81:setHeight(30);
     obj.layout81:setName("layout81");
 
-    obj.edit72 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit72 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit72:setParent(obj.layout81);
     obj.edit72:setTransparent(true);
     obj.edit72:setFontSize(20.3);
@@ -2644,7 +2644,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit72:setField("ALTURA");
     obj.edit72:setName("edit72");
 
-    obj.layout82 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout82 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout82:setParent(obj.rectangle1);
     obj.layout82:setTop(259);
     obj.layout82:setLeft(458);
@@ -2652,7 +2652,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout82:setHeight(18);
     obj.layout82:setName("layout82");
 
-    obj.edit73 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit73 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit73:setParent(obj.layout82);
     obj.edit73:setTransparent(true);
     obj.edit73:setFontSize(12);
@@ -2665,7 +2665,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit73:setField("ATK3");
     obj.edit73:setName("edit73");
 
-    obj.layout83 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout83 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout83:setParent(obj.rectangle1);
     obj.layout83:setLeft(207);
     obj.layout83:setTop(373);
@@ -2673,7 +2673,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout83:setHeight(30);
     obj.layout83:setName("layout83");
 
-    obj.edit74 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit74 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit74:setParent(obj.layout83);
     obj.edit74:setTransparent(true);
     obj.edit74:setFontSize(20.3);
@@ -2686,7 +2686,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit74:setField("PESO");
     obj.edit74:setName("edit74");
 
-    obj.layout84 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout84 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout84:setParent(obj.rectangle1);
     obj.layout84:setTop(280);
     obj.layout84:setLeft(458);
@@ -2694,7 +2694,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout84:setHeight(18);
     obj.layout84:setName("layout84");
 
-    obj.edit75 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit75 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit75:setParent(obj.layout84);
     obj.edit75:setTransparent(true);
     obj.edit75:setFontSize(12);
@@ -2707,7 +2707,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit75:setField("ATK4");
     obj.edit75:setName("edit75");
 
-    obj.layout85 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout85 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout85:setParent(obj.rectangle1);
     obj.layout85:setLeft(117);
     obj.layout85:setTop(216);
@@ -2715,14 +2715,14 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout85:setHeight(35);
     obj.layout85:setName("layout85");
 
-    obj.imageCheckBox1 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox1 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox1:setParent(obj.layout85);
     obj.imageCheckBox1:setField("CheckIDENTIDADE");
     obj.imageCheckBox1:setImageChecked("/Ficha_MM3ed_RRPG_image/images/PUBLICA.png");
     obj.imageCheckBox1:setImageUnchecked("/Ficha_MM3ed_RRPG_image/images/SECRETA.png");
     obj.imageCheckBox1:setName("imageCheckBox1");
 
-    obj.layout86 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout86 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout86:setParent(obj.rectangle1);
     obj.layout86:setLeft(43);
     obj.layout86:setTop(243);
@@ -2730,7 +2730,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout86:setHeight(35);
     obj.layout86:setName("layout86");
 
-    obj.edit76 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit76 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit76:setParent(obj.layout86);
     obj.edit76:setTransparent(true);
     obj.edit76:setFontSize(10);
@@ -2744,7 +2744,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit76:setHint("Notas sobre a Identidade. ");
     obj.edit76:setName("edit76");
 
-    obj.layout87 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout87 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout87:setParent(obj.rectangle1);
     obj.layout87:setTop(302);
     obj.layout87:setLeft(458);
@@ -2752,7 +2752,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout87:setHeight(18);
     obj.layout87:setName("layout87");
 
-    obj.edit77 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit77 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit77:setParent(obj.layout87);
     obj.edit77:setTransparent(true);
     obj.edit77:setFontSize(12);
@@ -2765,7 +2765,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit77:setField("ATK5");
     obj.edit77:setName("edit77");
 
-    obj.layout88 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout88 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout88:setParent(obj.rectangle1);
     obj.layout88:setTop(323);
     obj.layout88:setLeft(458);
@@ -2773,7 +2773,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout88:setHeight(18);
     obj.layout88:setName("layout88");
 
-    obj.edit78 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit78 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit78:setParent(obj.layout88);
     obj.edit78:setTransparent(true);
     obj.edit78:setFontSize(12);
@@ -2786,7 +2786,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit78:setField("ATK6");
     obj.edit78:setName("edit78");
 
-    obj.layout89 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout89 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout89:setParent(obj.rectangle1);
     obj.layout89:setTop(345);
     obj.layout89:setLeft(458);
@@ -2794,7 +2794,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout89:setHeight(18);
     obj.layout89:setName("layout89");
 
-    obj.edit79 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit79 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit79:setParent(obj.layout89);
     obj.edit79:setTransparent(true);
     obj.edit79:setFontSize(12);
@@ -2807,7 +2807,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit79:setField("ATK7");
     obj.edit79:setName("edit79");
 
-    obj.layout90 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout90 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout90:setParent(obj.rectangle1);
     obj.layout90:setTop(366);
     obj.layout90:setLeft(458);
@@ -2815,7 +2815,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout90:setHeight(18);
     obj.layout90:setName("layout90");
 
-    obj.edit80 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit80 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit80:setParent(obj.layout90);
     obj.edit80:setTransparent(true);
     obj.edit80:setFontSize(12);
@@ -2828,7 +2828,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit80:setField("ATK8");
     obj.edit80:setName("edit80");
 
-    obj.layout91 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout91 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout91:setParent(obj.rectangle1);
     obj.layout91:setTop(388);
     obj.layout91:setLeft(458);
@@ -2836,7 +2836,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout91:setHeight(18);
     obj.layout91:setName("layout91");
 
-    obj.edit81 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit81 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit81:setParent(obj.layout91);
     obj.edit81:setTransparent(true);
     obj.edit81:setFontSize(12);
@@ -2849,7 +2849,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit81:setField("ATK9");
     obj.edit81:setName("edit81");
 
-    obj.layout92 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout92 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout92:setParent(obj.rectangle1);
     obj.layout92:setTop(409);
     obj.layout92:setLeft(458);
@@ -2857,7 +2857,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout92:setHeight(18);
     obj.layout92:setName("layout92");
 
-    obj.edit82 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit82 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit82:setParent(obj.layout92);
     obj.edit82:setTransparent(true);
     obj.edit82:setFontSize(12);
@@ -2870,7 +2870,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit82:setField("ATK10");
     obj.edit82:setName("edit82");
 
-    obj.layout93 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout93 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout93:setParent(obj.rectangle1);
     obj.layout93:setLeft(257);
     obj.layout93:setTop(28);
@@ -2878,7 +2878,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout93:setHeight(242);
     obj.layout93:setName("layout93");
 
-    obj.edit83 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit83 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit83:setParent(obj.layout93);
     obj.edit83:setTransparent(true);
     obj.edit83:setFontSize(12);
@@ -2891,47 +2891,47 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit83:setField("untitled52");
     obj.edit83:setName("edit83");
 
-    obj.dataLink70 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink70 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink70:setParent(obj.rectangle1);
     obj.dataLink70:setFields({'varFOR', 'varFORvalor'});
     obj.dataLink70:setName("dataLink70");
 
-    obj.dataLink71 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink71 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink71:setParent(obj.rectangle1);
     obj.dataLink71:setFields({'varAGI', 'varAGIvalor'});
     obj.dataLink71:setName("dataLink71");
 
-    obj.dataLink72 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink72 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink72:setParent(obj.rectangle1);
     obj.dataLink72:setFields({'varLUT', 'varLUTvalor'});
     obj.dataLink72:setName("dataLink72");
 
-    obj.dataLink73 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink73 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink73:setParent(obj.rectangle1);
     obj.dataLink73:setFields({'varPRO', 'varPROvalor'});
     obj.dataLink73:setName("dataLink73");
 
-    obj.dataLink74 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink74 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink74:setParent(obj.rectangle1);
     obj.dataLink74:setFields({'varVIG', 'varVIGvalor'});
     obj.dataLink74:setName("dataLink74");
 
-    obj.dataLink75 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink75 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink75:setParent(obj.rectangle1);
     obj.dataLink75:setFields({'varDES', 'varDESvalor'});
     obj.dataLink75:setName("dataLink75");
 
-    obj.dataLink76 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink76 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink76:setParent(obj.rectangle1);
     obj.dataLink76:setFields({'varINT', 'varINTvalor'});
     obj.dataLink76:setName("dataLink76");
 
-    obj.dataLink77 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink77 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink77:setParent(obj.rectangle1);
     obj.dataLink77:setFields({'varPRE', 'varPREvalor'});
     obj.dataLink77:setName("dataLink77");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setTop(214);
     obj.button1:setLeft(834);
@@ -2939,7 +2939,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.button1:setHeight(20);
     obj.button1:setName("button1");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.button1);
     obj.image2:setLeft(1);
     obj.image2:setWidth(20);
@@ -2947,7 +2947,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.image2:setSRC("/Ficha_MM3ed_RRPG_image/images/dice.png");
     obj.image2:setName("image2");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.rectangle1);
     obj.button2:setTop(236);
     obj.button2:setLeft(834);
@@ -2955,7 +2955,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.button2:setHeight(20);
     obj.button2:setName("button2");
 
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
     obj.image3:setParent(obj.button2);
     obj.image3:setLeft(1);
     obj.image3:setWidth(20);
@@ -2963,7 +2963,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.image3:setSRC("/Ficha_MM3ed_RRPG_image/images/dice.png");
     obj.image3:setName("image3");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.rectangle1);
     obj.button3:setTop(258);
     obj.button3:setLeft(834);
@@ -2971,7 +2971,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.button3:setHeight(20);
     obj.button3:setName("button3");
 
-    obj.image4 = gui.fromHandle(_obj_newObject("image"));
+    obj.image4 = GUI.fromHandle(_obj_newObject("image"));
     obj.image4:setParent(obj.button3);
     obj.image4:setLeft(1);
     obj.image4:setWidth(20);
@@ -2979,7 +2979,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.image4:setSRC("/Ficha_MM3ed_RRPG_image/images/dice.png");
     obj.image4:setName("image4");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.rectangle1);
     obj.button4:setTop(279);
     obj.button4:setLeft(834);
@@ -2987,7 +2987,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.button4:setHeight(20);
     obj.button4:setName("button4");
 
-    obj.image5 = gui.fromHandle(_obj_newObject("image"));
+    obj.image5 = GUI.fromHandle(_obj_newObject("image"));
     obj.image5:setParent(obj.button4);
     obj.image5:setLeft(1);
     obj.image5:setWidth(20);
@@ -2995,7 +2995,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.image5:setSRC("/Ficha_MM3ed_RRPG_image/images/dice.png");
     obj.image5:setName("image5");
 
-    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
     obj.button5:setParent(obj.rectangle1);
     obj.button5:setTop(301);
     obj.button5:setLeft(834);
@@ -3003,7 +3003,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.button5:setHeight(20);
     obj.button5:setName("button5");
 
-    obj.image6 = gui.fromHandle(_obj_newObject("image"));
+    obj.image6 = GUI.fromHandle(_obj_newObject("image"));
     obj.image6:setParent(obj.button5);
     obj.image6:setLeft(1);
     obj.image6:setWidth(20);
@@ -3011,7 +3011,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.image6:setSRC("/Ficha_MM3ed_RRPG_image/images/dice.png");
     obj.image6:setName("image6");
 
-    obj.button6 = gui.fromHandle(_obj_newObject("button"));
+    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
     obj.button6:setParent(obj.rectangle1);
     obj.button6:setTop(322);
     obj.button6:setLeft(834);
@@ -3019,7 +3019,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.button6:setHeight(20);
     obj.button6:setName("button6");
 
-    obj.image7 = gui.fromHandle(_obj_newObject("image"));
+    obj.image7 = GUI.fromHandle(_obj_newObject("image"));
     obj.image7:setParent(obj.button6);
     obj.image7:setLeft(1);
     obj.image7:setWidth(20);
@@ -3027,7 +3027,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.image7:setSRC("/Ficha_MM3ed_RRPG_image/images/dice.png");
     obj.image7:setName("image7");
 
-    obj.button7 = gui.fromHandle(_obj_newObject("button"));
+    obj.button7 = GUI.fromHandle(_obj_newObject("button"));
     obj.button7:setParent(obj.rectangle1);
     obj.button7:setTop(344);
     obj.button7:setLeft(834);
@@ -3035,7 +3035,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.button7:setHeight(20);
     obj.button7:setName("button7");
 
-    obj.image8 = gui.fromHandle(_obj_newObject("image"));
+    obj.image8 = GUI.fromHandle(_obj_newObject("image"));
     obj.image8:setParent(obj.button7);
     obj.image8:setLeft(1);
     obj.image8:setWidth(20);
@@ -3043,7 +3043,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.image8:setSRC("/Ficha_MM3ed_RRPG_image/images/dice.png");
     obj.image8:setName("image8");
 
-    obj.button8 = gui.fromHandle(_obj_newObject("button"));
+    obj.button8 = GUI.fromHandle(_obj_newObject("button"));
     obj.button8:setParent(obj.rectangle1);
     obj.button8:setTop(365);
     obj.button8:setLeft(834);
@@ -3051,7 +3051,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.button8:setHeight(20);
     obj.button8:setName("button8");
 
-    obj.image9 = gui.fromHandle(_obj_newObject("image"));
+    obj.image9 = GUI.fromHandle(_obj_newObject("image"));
     obj.image9:setParent(obj.button8);
     obj.image9:setLeft(1);
     obj.image9:setWidth(20);
@@ -3059,7 +3059,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.image9:setSRC("/Ficha_MM3ed_RRPG_image/images/dice.png");
     obj.image9:setName("image9");
 
-    obj.button9 = gui.fromHandle(_obj_newObject("button"));
+    obj.button9 = GUI.fromHandle(_obj_newObject("button"));
     obj.button9:setParent(obj.rectangle1);
     obj.button9:setTop(387);
     obj.button9:setLeft(834);
@@ -3067,7 +3067,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.button9:setHeight(20);
     obj.button9:setName("button9");
 
-    obj.image10 = gui.fromHandle(_obj_newObject("image"));
+    obj.image10 = GUI.fromHandle(_obj_newObject("image"));
     obj.image10:setParent(obj.button9);
     obj.image10:setLeft(1);
     obj.image10:setWidth(20);
@@ -3075,7 +3075,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.image10:setSRC("/Ficha_MM3ed_RRPG_image/images/dice.png");
     obj.image10:setName("image10");
 
-    obj.button10 = gui.fromHandle(_obj_newObject("button"));
+    obj.button10 = GUI.fromHandle(_obj_newObject("button"));
     obj.button10:setParent(obj.rectangle1);
     obj.button10:setTop(408);
     obj.button10:setLeft(834);
@@ -3083,7 +3083,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.button10:setHeight(20);
     obj.button10:setName("button10");
 
-    obj.image11 = gui.fromHandle(_obj_newObject("image"));
+    obj.image11 = GUI.fromHandle(_obj_newObject("image"));
     obj.image11:setParent(obj.button10);
     obj.image11:setLeft(1);
     obj.image11:setWidth(20);
@@ -3091,7 +3091,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.image11:setSRC("/Ficha_MM3ed_RRPG_image/images/dice.png");
     obj.image11:setName("image11");
 
-    obj.layout94 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout94 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout94:setParent(obj.rectangle1);
     obj.layout94:setLeft(595);
     obj.layout94:setTop(78);
@@ -3099,7 +3099,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout94:setHeight(15);
     obj.layout94:setName("layout94");
 
-    obj.edit84 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit84 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit84:setParent(obj.layout94);
     obj.edit84:setTransparent(true);
     obj.edit84:setFontSize(9);
@@ -3112,13 +3112,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit84:setField("DEFesq3");
     obj.edit84:setName("edit84");
 
-    obj.dataLink78 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink78 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink78:setParent(obj.layout94);
     obj.dataLink78:setFields({'DEFesq3'});
     obj.dataLink78:setDefaultValues({'0'});
     obj.dataLink78:setName("dataLink78");
 
-    obj.layout95 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout95 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout95:setParent(obj.rectangle1);
     obj.layout95:setLeft(621);
     obj.layout95:setTop(78);
@@ -3126,7 +3126,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout95:setHeight(15);
     obj.layout95:setName("layout95");
 
-    obj.edit85 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit85 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit85:setParent(obj.layout95);
     obj.edit85:setTransparent(true);
     obj.edit85:setFontSize(9);
@@ -3139,7 +3139,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit85:setField("DEFesqTotal");
     obj.edit85:setName("edit85");
 
-    obj.layout96 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout96 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout96:setParent(obj.rectangle1);
     obj.layout96:setLeft(595);
     obj.layout96:setTop(99);
@@ -3147,7 +3147,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout96:setHeight(15);
     obj.layout96:setName("layout96");
 
-    obj.edit86 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit86:setParent(obj.layout96);
     obj.edit86:setTransparent(true);
     obj.edit86:setFontSize(9);
@@ -3160,13 +3160,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit86:setField("DEFapa3");
     obj.edit86:setName("edit86");
 
-    obj.dataLink79 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink79 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink79:setParent(obj.layout96);
     obj.dataLink79:setFields({'DEFapa3'});
     obj.dataLink79:setDefaultValues({'0'});
     obj.dataLink79:setName("dataLink79");
 
-    obj.layout97 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout97 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout97:setParent(obj.rectangle1);
     obj.layout97:setLeft(621);
     obj.layout97:setTop(99);
@@ -3174,7 +3174,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout97:setHeight(15);
     obj.layout97:setName("layout97");
 
-    obj.edit87 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit87 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit87:setParent(obj.layout97);
     obj.edit87:setTransparent(true);
     obj.edit87:setFontSize(9);
@@ -3187,7 +3187,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit87:setField("DEFapaTotal");
     obj.edit87:setName("edit87");
 
-    obj.layout98 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout98 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout98:setParent(obj.rectangle1);
     obj.layout98:setLeft(595);
     obj.layout98:setTop(120);
@@ -3195,7 +3195,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout98:setHeight(15);
     obj.layout98:setName("layout98");
 
-    obj.edit88 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit88 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit88:setParent(obj.layout98);
     obj.edit88:setTransparent(true);
     obj.edit88:setFontSize(9);
@@ -3208,13 +3208,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit88:setField("DEFvon3");
     obj.edit88:setName("edit88");
 
-    obj.dataLink80 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink80 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink80:setParent(obj.layout98);
     obj.dataLink80:setFields({'DEFvon3'});
     obj.dataLink80:setDefaultValues({'0'});
     obj.dataLink80:setName("dataLink80");
 
-    obj.layout99 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout99 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout99:setParent(obj.rectangle1);
     obj.layout99:setLeft(621);
     obj.layout99:setTop(120);
@@ -3222,7 +3222,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout99:setHeight(15);
     obj.layout99:setName("layout99");
 
-    obj.edit89 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit89 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit89:setParent(obj.layout99);
     obj.edit89:setTransparent(true);
     obj.edit89:setFontSize(9);
@@ -3235,7 +3235,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit89:setField("DEFvonTotal");
     obj.edit89:setName("edit89");
 
-    obj.layout100 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout100 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout100:setParent(obj.rectangle1);
     obj.layout100:setLeft(777);
     obj.layout100:setTop(99);
@@ -3243,7 +3243,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout100:setHeight(15);
     obj.layout100:setName("layout100");
 
-    obj.edit90 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit90 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit90:setParent(obj.layout100);
     obj.edit90:setTransparent(true);
     obj.edit90:setFontSize(9);
@@ -3256,13 +3256,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit90:setField("DEFres2");
     obj.edit90:setName("edit90");
 
-    obj.dataLink81 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink81 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink81:setParent(obj.layout100);
     obj.dataLink81:setFields({'DEFres2'});
     obj.dataLink81:setDefaultValues({'0'});
     obj.dataLink81:setName("dataLink81");
 
-    obj.layout101 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout101 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout101:setParent(obj.rectangle1);
     obj.layout101:setLeft(804);
     obj.layout101:setTop(99);
@@ -3270,7 +3270,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout101:setHeight(15);
     obj.layout101:setName("layout101");
 
-    obj.edit91 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit91 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit91:setParent(obj.layout101);
     obj.edit91:setTransparent(true);
     obj.edit91:setFontSize(9);
@@ -3283,13 +3283,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit91:setField("DEFres3");
     obj.edit91:setName("edit91");
 
-    obj.dataLink82 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink82 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink82:setParent(obj.layout101);
     obj.dataLink82:setFields({'DEFres3'});
     obj.dataLink82:setDefaultValues({'0'});
     obj.dataLink82:setName("dataLink82");
 
-    obj.layout102 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout102 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout102:setParent(obj.rectangle1);
     obj.layout102:setLeft(831);
     obj.layout102:setTop(99);
@@ -3297,7 +3297,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout102:setHeight(15);
     obj.layout102:setName("layout102");
 
-    obj.edit92 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit92 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit92:setParent(obj.layout102);
     obj.edit92:setTransparent(true);
     obj.edit92:setFontSize(9);
@@ -3310,7 +3310,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit92:setField("DEFresTotal");
     obj.edit92:setName("edit92");
 
-    obj.layout103 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout103 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout103:setParent(obj.rectangle1);
     obj.layout103:setLeft(750);
     obj.layout103:setTop(120);
@@ -3318,7 +3318,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout103:setHeight(15);
     obj.layout103:setName("layout103");
 
-    obj.edit93 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit93 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit93:setParent(obj.layout103);
     obj.edit93:setTransparent(true);
     obj.edit93:setFontSize(9);
@@ -3331,7 +3331,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit93:setField("DEFextra1");
     obj.edit93:setName("edit93");
 
-    obj.layout104 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout104 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout104:setParent(obj.rectangle1);
     obj.layout104:setLeft(777);
     obj.layout104:setTop(120);
@@ -3339,7 +3339,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout104:setHeight(15);
     obj.layout104:setName("layout104");
 
-    obj.edit94 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit94 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit94:setParent(obj.layout104);
     obj.edit94:setTransparent(true);
     obj.edit94:setFontSize(9);
@@ -3352,13 +3352,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit94:setField("DEFextra2");
     obj.edit94:setName("edit94");
 
-    obj.dataLink83 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink83 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink83:setParent(obj.layout104);
     obj.dataLink83:setFields({'DEFextra2'});
     obj.dataLink83:setDefaultValues({'0'});
     obj.dataLink83:setName("dataLink83");
 
-    obj.layout105 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout105 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout105:setParent(obj.rectangle1);
     obj.layout105:setLeft(804);
     obj.layout105:setTop(120);
@@ -3366,7 +3366,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout105:setHeight(15);
     obj.layout105:setName("layout105");
 
-    obj.edit95 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit95 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit95:setParent(obj.layout105);
     obj.edit95:setTransparent(true);
     obj.edit95:setFontSize(9);
@@ -3379,13 +3379,13 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit95:setField("DEFextra3");
     obj.edit95:setName("edit95");
 
-    obj.dataLink84 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink84 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink84:setParent(obj.layout105);
     obj.dataLink84:setFields({'DEFextra3'});
     obj.dataLink84:setDefaultValues({'0'});
     obj.dataLink84:setName("dataLink84");
 
-    obj.layout106 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout106 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout106:setParent(obj.rectangle1);
     obj.layout106:setLeft(831);
     obj.layout106:setTop(120);
@@ -3393,7 +3393,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.layout106:setHeight(15);
     obj.layout106:setName("layout106");
 
-    obj.edit96 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit96 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit96:setParent(obj.layout106);
     obj.edit96:setTransparent(true);
     obj.edit96:setFontSize(9);
@@ -3406,7 +3406,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.edit96:setField("DEFextraTotal");
     obj.edit96:setName("edit96");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.rectangle1);
     obj.rectangle2:setLeft(254);
     obj.rectangle2:setTop(26);
@@ -3417,7 +3417,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.image12 = gui.fromHandle(_obj_newObject("image"));
+    obj.image12 = GUI.fromHandle(_obj_newObject("image"));
     obj.image12:setParent(obj.rectangle1);
     obj.image12:setLeft(255);
     obj.image12:setTop(27);
@@ -3428,47 +3428,47 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.image12:setStyle("autoFit");
     obj.image12:setName("image12");
 
-    obj.dataLink85 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink85 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink85:setParent(obj.rectangle1);
     obj.dataLink85:setFields({'FOR', 'VIG', 'AGI', 'DES', 'LUT', 'INT', 'PRO', 'PRE', 'varFORvalor', 'varVIGvalor', 'varAGIvalor', 'varDESvalor', 'varLUTvalor', 'varINTvalor', 'varPROvalor', 'varPREvalor'});
     obj.dataLink85:setName("dataLink85");
 
-    obj.dataLink86 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink86 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink86:setParent(obj.rectangle1);
     obj.dataLink86:setFields({'FOR', 'VIG', 'AGI', 'DES', 'LUT', 'INT', 'PRO', 'PRE', 'varFORvalor', 'varVIGvalor', 'varAGIvalor', 'varDESvalor', 'varLUTvalor', 'varINTvalor', 'varPROvalor', 'varPREvalor'});
     obj.dataLink86:setName("dataLink86");
 
-    obj.dataLink87 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink87 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink87:setParent(obj.rectangle1);
     obj.dataLink87:setFields({'DEFesq1', 'DEFesq2', 'DEFesq3'});
     obj.dataLink87:setName("dataLink87");
 
-    obj.dataLink88 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink88 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink88:setParent(obj.rectangle1);
     obj.dataLink88:setFields({'DEFapa1', 'DEFapa2', 'DEFapa3'});
     obj.dataLink88:setName("dataLink88");
 
-    obj.dataLink89 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink89 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink89:setParent(obj.rectangle1);
     obj.dataLink89:setFields({'DEFvon1', 'DEFvon2', 'DEFvon3'});
     obj.dataLink89:setName("dataLink89");
 
-    obj.dataLink90 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink90 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink90:setParent(obj.rectangle1);
     obj.dataLink90:setFields({'DEFforti1', 'DEFforti2', 'DEFforti3'});
     obj.dataLink90:setName("dataLink90");
 
-    obj.dataLink91 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink91 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink91:setParent(obj.rectangle1);
     obj.dataLink91:setFields({'DEFres1', 'DEFres2', 'DEFres3'});
     obj.dataLink91:setName("dataLink91");
 
-    obj.dataLink92 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink92 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink92:setParent(obj.rectangle1);
     obj.dataLink92:setFields({'DEFextra1', 'DEFextra2', 'DEFextra3'});
     obj.dataLink92:setName("dataLink92");
 
-    obj.button11 = gui.fromHandle(_obj_newObject("button"));
+    obj.button11 = GUI.fromHandle(_obj_newObject("button"));
     obj.button11:setParent(obj.rectangle1);
     obj.button11:setLeft(454);
     obj.button11:setTop(74);
@@ -3477,7 +3477,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.button11:setText("ESQUIVAR");
     obj.button11:setName("button11");
 
-    obj.button12 = gui.fromHandle(_obj_newObject("button"));
+    obj.button12 = GUI.fromHandle(_obj_newObject("button"));
     obj.button12:setParent(obj.rectangle1);
     obj.button12:setLeft(454);
     obj.button12:setTop(96);
@@ -3486,7 +3486,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.button12:setText("APARAR");
     obj.button12:setName("button12");
 
-    obj.button13 = gui.fromHandle(_obj_newObject("button"));
+    obj.button13 = GUI.fromHandle(_obj_newObject("button"));
     obj.button13:setParent(obj.rectangle1);
     obj.button13:setLeft(454);
     obj.button13:setTop(118);
@@ -3495,7 +3495,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.button13:setText("VONTADE");
     obj.button13:setName("button13");
 
-    obj.button14 = gui.fromHandle(_obj_newObject("button"));
+    obj.button14 = GUI.fromHandle(_obj_newObject("button"));
     obj.button14:setParent(obj.rectangle1);
     obj.button14:setLeft(651);
     obj.button14:setTop(74);
@@ -3504,7 +3504,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.button14:setText("FORTITUDE");
     obj.button14:setName("button14");
 
-    obj.button15 = gui.fromHandle(_obj_newObject("button"));
+    obj.button15 = GUI.fromHandle(_obj_newObject("button"));
     obj.button15:setParent(obj.rectangle1);
     obj.button15:setLeft(651);
     obj.button15:setTop(96);
@@ -3513,7 +3513,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.button15:setText("RESISTENCIA");
     obj.button15:setName("button15");
 
-    obj.button16 = gui.fromHandle(_obj_newObject("button"));
+    obj.button16 = GUI.fromHandle(_obj_newObject("button"));
     obj.button16:setParent(obj.rectangle1);
     obj.button16:setLeft(590);
     obj.button16:setTop(171);
@@ -3522,33 +3522,33 @@ function newfrmFicha_MM3e_RRPG1_svg()
     obj.button16:setText("INICIATIVA");
     obj.button16:setName("button16");
 
-    obj.dataLink93 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink93 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink93:setParent(obj.rectangle1);
     obj.dataLink93:setFields({'FOR', 'VIG', 'AGI', 'DES', 'LUT', 'INT', 'PRO', 'PRE'});
     obj.dataLink93:setName("dataLink93");
 
-    obj.dataLink94 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink94 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink94:setParent(obj.rectangle1);
     obj.dataLink94:setField("PPpericias");
     obj.dataLink94:setName("dataLink94");
 
-    obj.dataLink95 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink95 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink95:setParent(obj.rectangle1);
     obj.dataLink95:setField("pontosPericia");
     obj.dataLink95:setName("dataLink95");
 
-    obj.dataLink96 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink96 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink96:setParent(obj.rectangle1);
     obj.dataLink96:setFields({'DEFesq2', 'DEFapa2', 'DEFvon2', 'DEFforti2', 'DEFres2', 'DEFextra2'});
     obj.dataLink96:setName("dataLink96");
 
-    obj.dataLink97 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink97 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink97:setParent(obj.rectangle1);
     obj.dataLink97:setFields({'PPhabilidades', 'PPpericias', 'PPvantagens', 'PPdefesas', 'PPpoderes'});
     obj.dataLink97:setName("dataLink97");
 
     obj._e_event0 = obj.dataLink70:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local bonus = tonumber(sheet.varFORvalor or 0);								
             					sheet.varFOR = bonus;	
             				
@@ -3560,7 +3560,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event1 = obj.dataLink71:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local bonus = tonumber(sheet.varAGIvalor or 0);								
             					sheet.varAGI = bonus;	
             				
@@ -3572,7 +3572,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event2 = obj.dataLink72:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local bonus = tonumber(sheet.varLUTvalor or 0);								
             					sheet.varLUT = bonus;	
             				
@@ -3584,7 +3584,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event3 = obj.dataLink73:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local bonus = tonumber(sheet.varPROvalor or 0);								
             					sheet.varPRO = bonus;	
             				
@@ -3596,7 +3596,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event4 = obj.dataLink74:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local bonus = tonumber(sheet.varVIGvalor or 0);								
             					sheet.varVIG = bonus;	
             				
@@ -3608,7 +3608,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event5 = obj.dataLink75:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local bonus = tonumber(sheet.varDESvalor or 0);								
             					sheet.varDES = bonus;	
             				
@@ -3620,7 +3620,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event6 = obj.dataLink76:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local bonus = tonumber(sheet.varINTvalor or 0);								
             					sheet.varINT = bonus;	
             				
@@ -3632,7 +3632,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event7 = obj.dataLink77:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             local bonus = tonumber(sheet.varPREvalor or 0);								
             					sheet.varPRE = bonus;	
             				
@@ -3644,7 +3644,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event8 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             local personagem = rrpg.getPersonagemDe(sheet);                                
             
             						if (personagem ~= nil) then
@@ -3685,7 +3685,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event9 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             local personagem = rrpg.getPersonagemDe(sheet);                                
             
             						if (personagem ~= nil) then
@@ -3725,7 +3725,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event10 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             local personagem = rrpg.getPersonagemDe(sheet);                                
             
             						if (personagem ~= nil) then
@@ -3766,7 +3766,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event11 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             local personagem = rrpg.getPersonagemDe(sheet);                                
             
             						if (personagem ~= nil) then
@@ -3807,7 +3807,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event12 = obj.button5:addEventListener("onClick",
-        function (self)
+        function (_)
             local personagem = rrpg.getPersonagemDe(sheet);                                
             
             						if (personagem ~= nil) then
@@ -3848,7 +3848,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event13 = obj.button6:addEventListener("onClick",
-        function (self)
+        function (_)
             local personagem = rrpg.getPersonagemDe(sheet);                                
             
             						if (personagem ~= nil) then
@@ -3889,7 +3889,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event14 = obj.button7:addEventListener("onClick",
-        function (self)
+        function (_)
             local personagem = rrpg.getPersonagemDe(sheet);                                
             
             						if (personagem ~= nil) then
@@ -3930,7 +3930,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event15 = obj.button8:addEventListener("onClick",
-        function (self)
+        function (_)
             local personagem = rrpg.getPersonagemDe(sheet);                                
             
             						if (personagem ~= nil) then
@@ -3971,7 +3971,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event16 = obj.button9:addEventListener("onClick",
-        function (self)
+        function (_)
             local personagem = rrpg.getPersonagemDe(sheet);                                
             
             						if (personagem ~= nil) then
@@ -4012,7 +4012,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event17 = obj.button10:addEventListener("onClick",
-        function (self)
+        function (_)
             local personagem = rrpg.getPersonagemDe(sheet);                                
             
             						if (personagem ~= nil) then
@@ -4053,12 +4053,12 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event18 = obj.image12:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
     obj._e_event19 = obj.dataLink85:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             sheet.DEFesq1 = (tonumber(sheet.AGI) or 0) + (tonumber(sheet.varAGIvalor) or 0);
                            sheet.DEFapa1 = (tonumber(sheet.LUT) or 0) + (tonumber(sheet.varLUTvalor) or 0);
                            sheet.DEFvon1 = (tonumber(sheet.PRO) or 0) + (tonumber(sheet.varPROvalor) or 0);
@@ -4067,7 +4067,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event20 = obj.dataLink86:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             sheet.FORtotal = (tonumber(sheet.FOR) or 0) + (tonumber(sheet.varFORvalor) or 0);
                            sheet.VIGtotal = (tonumber(sheet.VIG) or 0) + (tonumber(sheet.varVIGvalor) or 0);
             			   sheet.AGItotal = (tonumber(sheet.AGI) or 0) + (tonumber(sheet.varAGIvalor) or 0);
@@ -4079,37 +4079,37 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event21 = obj.dataLink87:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             sheet.DEFesqTotal = (tonumber(sheet.DEFesq1) or 0) + (tonumber(sheet.DEFesq2) or 0) + (tonumber(sheet.DEFesq3) or 0);
         end, obj);
 
     obj._e_event22 = obj.dataLink88:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             sheet.DEFapaTotal = (tonumber(sheet.DEFapa1) or 0) + (tonumber(sheet.DEFapa2) or 0) + (tonumber(sheet.DEFapa3) or 0);
         end, obj);
 
     obj._e_event23 = obj.dataLink89:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             sheet.DEFvonTotal = (tonumber(sheet.DEFvon1) or 0) + (tonumber(sheet.DEFvon2) or 0) + (tonumber(sheet.DEFvon3) or 0);
         end, obj);
 
     obj._e_event24 = obj.dataLink90:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             sheet.DEFfortiTotal = (tonumber(sheet.DEFforti1) or 0) + (tonumber(sheet.DEFforti2) or 0) + (tonumber(sheet.DEFforti3) or 0);
         end, obj);
 
     obj._e_event25 = obj.dataLink91:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             sheet.DEFresTotal = (tonumber(sheet.DEFres1) or 0) + (tonumber(sheet.DEFres2) or 0) + (tonumber(sheet.DEFres3) or 0);
         end, obj);
 
     obj._e_event26 = obj.dataLink92:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             sheet.DEFextraTotal = (tonumber(sheet.DEFextra1) or 0) + (tonumber(sheet.DEFextra2) or 0) + (tonumber(sheet.DEFextra3) or 0);
         end, obj);
 
     obj._e_event27 = obj.button11:addEventListener("onClick",
-        function (self)
+        function (_)
             local personagem = rrpg.getPersonagemDe(sheet);                                
             
                             if (personagem ~= nil) then
@@ -4133,7 +4133,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event28 = obj.button12:addEventListener("onClick",
-        function (self)
+        function (_)
             local personagem = rrpg.getPersonagemDe(sheet);                                
             
                             if (personagem ~= nil) then
@@ -4157,7 +4157,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event29 = obj.button13:addEventListener("onClick",
-        function (self)
+        function (_)
             local personagem = rrpg.getPersonagemDe(sheet);                                
             
                             if (personagem ~= nil) then
@@ -4181,7 +4181,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event30 = obj.button14:addEventListener("onClick",
-        function (self)
+        function (_)
             local personagem = rrpg.getPersonagemDe(sheet);                                
             
                             if (personagem ~= nil) then
@@ -4205,7 +4205,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event31 = obj.button15:addEventListener("onClick",
-        function (self)
+        function (_)
             local personagem = rrpg.getPersonagemDe(sheet);                                
             
                             if (personagem ~= nil) then
@@ -4229,7 +4229,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event32 = obj.button16:addEventListener("onClick",
-        function (self)
+        function (_)
             local personagem = rrpg.getPersonagemDe(sheet);                                
             
                             if (personagem ~= nil) then
@@ -4253,7 +4253,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event33 = obj.dataLink93:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             sheet.PPhabilidades = ((tonumber(sheet.FOR) or 0) +
                                                       (tonumber(sheet.VIG) or 0) +
                                                       (tonumber(sheet.AGI) or 0) +
@@ -4265,17 +4265,17 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event34 = obj.dataLink94:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             sheet.PPpericiasgrad = math.floor(sheet.PPpericias or 0) * 2;
         end, obj);
 
     obj._e_event35 = obj.dataLink95:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             sheet.PPpericias = math.floor(sheet.pontosPericia or 0) ;
         end, obj);
 
     obj._e_event36 = obj.dataLink96:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             sheet.PPdefesas = (tonumber(sheet.DEFesq2) or 0) +
             								 (tonumber(sheet.DEFapa2) or 0) +
             								 (tonumber(sheet.DEFvon2) or 0) +
@@ -4285,7 +4285,7 @@ function newfrmFicha_MM3e_RRPG1_svg()
         end, obj);
 
     obj._e_event37 = obj.dataLink97:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             sheet.PPsomatotal = (tonumber(sheet.PPhabilidades) or 0) +
                                                     (tonumber(sheet.PPpericias) or 0) +
                                                     (tonumber(sheet.PPvantagens) or 0) +
@@ -4724,9 +4724,23 @@ function newfrmFicha_MM3e_RRPG1_svg()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFicha_MM3e_RRPG1_svg()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFicha_MM3e_RRPG1_svg();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFicha_MM3e_RRPG1_svg = {
@@ -4740,6 +4754,6 @@ local _frmFicha_MM3e_RRPG1_svg = {
     description=""};
 
 frmFicha_MM3e_RRPG1_svg = _frmFicha_MM3e_RRPG1_svg;
-rrpg.registrarForm(_frmFicha_MM3e_RRPG1_svg);
+Firecast.registrarForm(_frmFicha_MM3e_RRPG1_svg);
 
 return _frmFicha_MM3e_RRPG1_svg;

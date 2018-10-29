@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmAMZ2_4()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmAMZ2_4()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,12 +30,12 @@ function newfrmAMZ2_4()
     obj:setAlign("client");
     obj:setTheme("dark");
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
@@ -43,7 +43,7 @@ function newfrmAMZ2_4()
     obj.layout1:setHeight(175);
     obj.layout1:setName("layout1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.layout1);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
@@ -52,7 +52,7 @@ function newfrmAMZ2_4()
     obj.rectangle1:setCornerType("round");
     obj.rectangle1:setName("rectangle1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.layout1);
     obj.layout2:setLeft(5);
     obj.layout2:setTop(25);
@@ -60,7 +60,7 @@ function newfrmAMZ2_4()
     obj.layout2:setHeight(25);
     obj.layout2:setName("layout2");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout2);
     obj.label1:setLeft(0);
     obj.label1:setTop(0);
@@ -70,7 +70,7 @@ function newfrmAMZ2_4()
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.layout2);
     obj.edit1:setLeft(100);
     obj.edit1:setTop(0);
@@ -79,7 +79,7 @@ function newfrmAMZ2_4()
     obj.edit1:setField("zhul_arma1");
     obj.edit1:setName("edit1");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout1);
     obj.layout3:setLeft(5);
     obj.layout3:setTop(75);
@@ -87,7 +87,7 @@ function newfrmAMZ2_4()
     obj.layout3:setHeight(25);
     obj.layout3:setName("layout3");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout3);
     obj.label2:setLeft(0);
     obj.label2:setTop(0);
@@ -97,7 +97,7 @@ function newfrmAMZ2_4()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.layout3);
     obj.edit2:setLeft(100);
     obj.edit2:setTop(0);
@@ -106,7 +106,7 @@ function newfrmAMZ2_4()
     obj.edit2:setField("zhul_arma2");
     obj.edit2:setName("edit2");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout1);
     obj.layout4:setLeft(5);
     obj.layout4:setTop(125);
@@ -114,7 +114,7 @@ function newfrmAMZ2_4()
     obj.layout4:setHeight(25);
     obj.layout4:setName("layout4");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.layout4);
     obj.label3:setLeft(0);
     obj.label3:setTop(0);
@@ -124,7 +124,7 @@ function newfrmAMZ2_4()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.layout4);
     obj.edit3:setLeft(100);
     obj.edit3:setTop(0);
@@ -133,7 +133,7 @@ function newfrmAMZ2_4()
     obj.edit3:setField("zhul_arma3");
     obj.edit3:setName("edit3");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.scrollBox1);
     obj.layout5:setLeft(315);
     obj.layout5:setTop(0);
@@ -141,7 +141,7 @@ function newfrmAMZ2_4()
     obj.layout5:setHeight(175);
     obj.layout5:setName("layout5");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout5);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("black");
@@ -150,7 +150,7 @@ function newfrmAMZ2_4()
     obj.rectangle2:setCornerType("round");
     obj.rectangle2:setName("rectangle2");
 
-    obj.layout6 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout5);
     obj.layout6:setLeft(5);
     obj.layout6:setTop(25);
@@ -158,7 +158,7 @@ function newfrmAMZ2_4()
     obj.layout6:setHeight(25);
     obj.layout6:setName("layout6");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.layout6);
     obj.label4:setLeft(0);
     obj.label4:setTop(0);
@@ -168,7 +168,7 @@ function newfrmAMZ2_4()
     obj.label4:setHorzTextAlign("center");
     obj.label4:setName("label4");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.layout6);
     obj.edit4:setLeft(100);
     obj.edit4:setTop(0);
@@ -177,7 +177,7 @@ function newfrmAMZ2_4()
     obj.edit4:setField("zhul_equip1");
     obj.edit4:setName("edit4");
 
-    obj.layout7 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.layout5);
     obj.layout7:setLeft(5);
     obj.layout7:setTop(75);
@@ -185,7 +185,7 @@ function newfrmAMZ2_4()
     obj.layout7:setHeight(25);
     obj.layout7:setName("layout7");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout7);
     obj.label5:setLeft(0);
     obj.label5:setTop(0);
@@ -195,7 +195,7 @@ function newfrmAMZ2_4()
     obj.label5:setHorzTextAlign("center");
     obj.label5:setName("label5");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.layout7);
     obj.edit5:setLeft(100);
     obj.edit5:setTop(0);
@@ -204,7 +204,7 @@ function newfrmAMZ2_4()
     obj.edit5:setField("zhul_equip2");
     obj.edit5:setName("edit5");
 
-    obj.layout8 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.layout5);
     obj.layout8:setLeft(5);
     obj.layout8:setTop(125);
@@ -212,7 +212,7 @@ function newfrmAMZ2_4()
     obj.layout8:setHeight(25);
     obj.layout8:setName("layout8");
 
-    obj.label6 = gui.fromHandle(_obj_newObject("label"));
+    obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout8);
     obj.label6:setLeft(0);
     obj.label6:setTop(0);
@@ -222,7 +222,7 @@ function newfrmAMZ2_4()
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.layout8);
     obj.edit6:setLeft(100);
     obj.edit6:setTop(0);
@@ -231,7 +231,7 @@ function newfrmAMZ2_4()
     obj.edit6:setField("zhul_equip3");
     obj.edit6:setName("edit6");
 
-    obj.layout9 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.scrollBox1);
     obj.layout9:setLeft(630);
     obj.layout9:setTop(0);
@@ -239,7 +239,7 @@ function newfrmAMZ2_4()
     obj.layout9:setHeight(175);
     obj.layout9:setName("layout9");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout9);
     obj.rectangle3:setAlign("client");
     obj.rectangle3:setColor("black");
@@ -248,7 +248,7 @@ function newfrmAMZ2_4()
     obj.rectangle3:setCornerType("round");
     obj.rectangle3:setName("rectangle3");
 
-    obj.layout10 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.layout9);
     obj.layout10:setLeft(5);
     obj.layout10:setTop(25);
@@ -256,7 +256,7 @@ function newfrmAMZ2_4()
     obj.layout10:setHeight(25);
     obj.layout10:setName("layout10");
 
-    obj.label7 = gui.fromHandle(_obj_newObject("label"));
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
     obj.label7:setParent(obj.layout10);
     obj.label7:setLeft(0);
     obj.label7:setTop(0);
@@ -266,7 +266,7 @@ function newfrmAMZ2_4()
     obj.label7:setHorzTextAlign("center");
     obj.label7:setName("label7");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.layout10);
     obj.edit7:setLeft(100);
     obj.edit7:setTop(0);
@@ -275,7 +275,7 @@ function newfrmAMZ2_4()
     obj.edit7:setField("zhul_ee1");
     obj.edit7:setName("edit7");
 
-    obj.layout11 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.layout9);
     obj.layout11:setLeft(5);
     obj.layout11:setTop(75);
@@ -283,7 +283,7 @@ function newfrmAMZ2_4()
     obj.layout11:setHeight(25);
     obj.layout11:setName("layout11");
 
-    obj.label8 = gui.fromHandle(_obj_newObject("label"));
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
     obj.label8:setParent(obj.layout11);
     obj.label8:setLeft(0);
     obj.label8:setTop(0);
@@ -293,7 +293,7 @@ function newfrmAMZ2_4()
     obj.label8:setHorzTextAlign("center");
     obj.label8:setName("label8");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.layout11);
     obj.edit8:setLeft(100);
     obj.edit8:setTop(0);
@@ -302,7 +302,7 @@ function newfrmAMZ2_4()
     obj.edit8:setField("zhul_ee2");
     obj.edit8:setName("edit8");
 
-    obj.layout12 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.layout9);
     obj.layout12:setLeft(5);
     obj.layout12:setTop(125);
@@ -310,7 +310,7 @@ function newfrmAMZ2_4()
     obj.layout12:setHeight(25);
     obj.layout12:setName("layout12");
 
-    obj.label9 = gui.fromHandle(_obj_newObject("label"));
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout12);
     obj.label9:setLeft(0);
     obj.label9:setTop(0);
@@ -320,7 +320,7 @@ function newfrmAMZ2_4()
     obj.label9:setHorzTextAlign("center");
     obj.label9:setName("label9");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.layout12);
     obj.edit9:setLeft(100);
     obj.edit9:setTop(0);
@@ -380,9 +380,23 @@ function newfrmAMZ2_4()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmAMZ2_4()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmAMZ2_4();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmAMZ2_4 = {
@@ -396,6 +410,6 @@ local _frmAMZ2_4 = {
     description=""};
 
 frmAMZ2_4 = _frmAMZ2_4;
-rrpg.registrarForm(_frmAMZ2_4);
+Firecast.registrarForm(_frmAMZ2_4);
 
 return _frmAMZ2_4;

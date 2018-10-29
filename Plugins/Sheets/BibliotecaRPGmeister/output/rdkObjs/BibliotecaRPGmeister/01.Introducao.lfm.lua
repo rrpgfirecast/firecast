@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmBibliotecaRPGmeister01()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmBibliotecaRPGmeister01()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,12 +31,12 @@ function newfrmBibliotecaRPGmeister01()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.scrollBox1);
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
@@ -47,7 +47,7 @@ function newfrmBibliotecaRPGmeister01()
     obj.image1:setOptimize(true);
     obj.image1:setName("image1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setLeft(620);
     obj.rectangle1:setTop(0);
@@ -56,7 +56,7 @@ function newfrmBibliotecaRPGmeister01()
     obj.rectangle1:setColor("Black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(10);
     obj.label1:setTop(5);
@@ -65,7 +65,7 @@ function newfrmBibliotecaRPGmeister01()
     obj.label1:setText("Sumario:\nAba 2: Racas e Classes\nAba 3: Pericias, Talentos, Magias e Descricoes\nAba 4: Equipamentos, Combates e Aventuras\nAba 5: Cenario e Monstros.");
     obj.label1:setName("label1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(620);
     obj.layout1:setTop(450);
@@ -73,13 +73,13 @@ function newfrmBibliotecaRPGmeister01()
     obj.layout1:setHeight(150);
     obj.layout1:setName("layout1");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.layout1);
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("black");
     obj.rectangle2:setName("rectangle2");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout1);
     obj.label2:setLeft(5);
     obj.label2:setTop(5);
@@ -90,7 +90,7 @@ function newfrmBibliotecaRPGmeister01()
     obj.label2:setText(" Programador: Vinny (Ambesek)\n\n  Esse plugin foi criando tanto para\n  facilitar o acesso aos links do\n  dropbox quanto para permitir o\n  acesso por jogadores mobile da\n  biblioteca do cenario.");
     obj.label2:setName("label2");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.scrollBox1);
     obj.button1:setLeft(840);
     obj.button1:setTop(475);
@@ -98,7 +98,7 @@ function newfrmBibliotecaRPGmeister01()
     obj.button1:setText("Plugin Ficha");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.scrollBox1);
     obj.button2:setLeft(950);
     obj.button2:setTop(475);
@@ -106,7 +106,7 @@ function newfrmBibliotecaRPGmeister01()
     obj.button2:setText("Copiar Link");
     obj.button2:setName("button2");
 
-    obj.label3 = gui.fromHandle(_obj_newObject("label"));
+    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj.scrollBox1);
     obj.label3:setLeft(851);
     obj.label3:setTop(500);
@@ -115,7 +115,7 @@ function newfrmBibliotecaRPGmeister01()
     obj.label3:setText("SUA VERSAO:");
     obj.label3:setName("label3");
 
-    obj.rectangle3 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.scrollBox1);
     obj.rectangle3:setLeft(950);
     obj.rectangle3:setTop(499);
@@ -126,7 +126,7 @@ function newfrmBibliotecaRPGmeister01()
     obj.rectangle3:setStrokeSize(1);
     obj.rectangle3:setName("rectangle3");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.scrollBox1);
     obj.image2:setLeft(951);
     obj.image2:setTop(500);
@@ -136,7 +136,7 @@ function newfrmBibliotecaRPGmeister01()
     obj.image2:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao02.png");
     obj.image2:setName("image2");
 
-    obj.label4 = gui.fromHandle(_obj_newObject("label"));
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj.scrollBox1);
     obj.label4:setLeft(851);
     obj.label4:setTop(525);
@@ -145,7 +145,7 @@ function newfrmBibliotecaRPGmeister01()
     obj.label4:setText("VERSAO ATUAL:");
     obj.label4:setName("label4");
 
-    obj.rectangle4 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.scrollBox1);
     obj.rectangle4:setLeft(950);
     obj.rectangle4:setTop(524);
@@ -156,7 +156,7 @@ function newfrmBibliotecaRPGmeister01()
     obj.rectangle4:setStrokeSize(1);
     obj.rectangle4:setName("rectangle4");
 
-    obj.image3 = gui.fromHandle(_obj_newObject("image"));
+    obj.image3 = GUI.fromHandle(_obj_newObject("image"));
     obj.image3:setParent(obj.scrollBox1);
     obj.image3:setLeft(951);
     obj.image3:setTop(525);
@@ -166,7 +166,7 @@ function newfrmBibliotecaRPGmeister01()
     obj.image3:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Biblioteca%20RPG%20meister%20releases/release.png");
     obj.image3:setName("image3");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.scrollBox1);
     obj.button3:setLeft(840);
     obj.button3:setTop(550);
@@ -174,7 +174,7 @@ function newfrmBibliotecaRPGmeister01()
     obj.button3:setText("Change Log");
     obj.button3:setName("button3");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.scrollBox1);
     obj.button4:setLeft(950);
     obj.button4:setTop(550);
@@ -182,7 +182,7 @@ function newfrmBibliotecaRPGmeister01()
     obj.button4:setText("Atualizar");
     obj.button4:setName("button4");
 
-    obj.label5 = gui.fromHandle(_obj_newObject("label"));
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.scrollBox1);
     obj.label5:setLeft(830);
     obj.label5:setTop(575);
@@ -191,7 +191,7 @@ function newfrmBibliotecaRPGmeister01()
     obj.label5:setText("CONHECA A MESA:");
     obj.label5:setName("label5");
 
-    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
     obj.button5:setParent(obj.scrollBox1);
     obj.button5:setLeft(950);
     obj.button5:setTop(575);
@@ -200,27 +200,27 @@ function newfrmBibliotecaRPGmeister01()
     obj.button5:setName("button5");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/Ficha%20RPG%20meister.rpk')
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             system.setClipboardText('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/Ficha%20RPG%20meister.rpk')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Biblioteca%20RPG%20meister%20releases/Change%20Log.txt')
         end, obj);
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Biblioteca%20RPG%20meister%20releases/BibliotecaRPGmeister.rpk')
         end, obj);
 
     obj._e_event4 = obj.button5:addEventListener("onClick",
-        function (self)
+        function (_)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
@@ -265,9 +265,23 @@ function newfrmBibliotecaRPGmeister01()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmBibliotecaRPGmeister01()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmBibliotecaRPGmeister01();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmBibliotecaRPGmeister01 = {
@@ -281,6 +295,6 @@ local _frmBibliotecaRPGmeister01 = {
     description=""};
 
 frmBibliotecaRPGmeister01 = _frmBibliotecaRPGmeister01;
-rrpg.registrarForm(_frmBibliotecaRPGmeister01);
+Firecast.registrarForm(_frmBibliotecaRPGmeister01);
 
 return _frmBibliotecaRPGmeister01;

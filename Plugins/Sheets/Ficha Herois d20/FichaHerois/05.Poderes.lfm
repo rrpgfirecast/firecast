@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmPoderes" align="client" theme="dark" margins="{top=1}">
 	<script> 
 		<![CDATA[	
@@ -25,10 +25,10 @@
 			<edit align="client" class="" field="$(field)" fontSize="12"/>
 		</flowPart>
 	</template>
-	<popup name="popDescricao" width="250" height="250" backOpacity="0.4">
+	<popup name="popDescricao" width="250" height="250" backOpacity="0.4" autoScopeNode="false">
 		<textEditor align="client" field="descricao"/>
 	</popup>
-	<popup name="popPoder" width="250" height="250" backOpacity="0.4">
+	<popup name="popPoder" width="250" height="250" backOpacity="0.4" autoScopeNode="false">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
 			<tecnicaSmallCenter text="Nível" field="nivel"/>
 			<tecnicaSmallCenter text="Tema" field="tema"/>

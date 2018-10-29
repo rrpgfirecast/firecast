@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmGerenciarSimpleMacrosItem()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmGerenciarSimpleMacrosItem()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -42,45 +42,51 @@ function newfrmGerenciarSimpleMacrosItem()
 		
 
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setAlign("client");
     obj.layout1:setMargins({top=2, left=2});
     obj.layout1:setName("layout1");
 
-    obj.labMacro = gui.fromHandle(_obj_newObject("label"));
+    obj.labMacro = GUI.fromHandle(_obj_newObject("label"));
     obj.labMacro:setParent(obj.layout1);
     obj.labMacro:setName("labMacro");
     obj.labMacro:setAlign("client");
     obj.labMacro:setText("(Macro Vazia)");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
-    obj.button1:setParent(obj.layout1);
-    obj.button1:setAlign("right");
-    obj.button1:setText("Editar...");
-    obj.button1:setMargins({left=4, right=4, top=1, bottom=1});
-    obj.button1:setWidth(75);
-    obj.button1:setName("button1");
+    obj.btnEdit = GUI.fromHandle(_obj_newObject("button"));
+    obj.btnEdit:setParent(obj.layout1);
+    obj.btnEdit:setName("btnEdit");
+    obj.btnEdit:setAlign("right");
+    obj.btnEdit:setText("Editar...");
+    obj.btnEdit:setMargins({left=4, right=4, top=1, bottom=1});
+    obj.btnEdit:setWidth(75);
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj);
     obj.horzLine1:setAlign("bottom");
     obj.horzLine1:setMargins({top=2});
     obj.horzLine1:setName("horzLine1");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setField("macro");
     obj.dataLink1:setName("dataLink1");
 
-    obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+
+		self.labMacro.text = "(" .. lang("macros.ui.emptyMacro") ..")";
+		self.btnEdit.text = lang("macros.ui.editButton");
+	
+
+
+    obj._e_event0 = obj.btnEdit:addEventListener("onClick",
+        function (_)
             editarMacro();
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
-            self.labMacro.text = sheet.macro or "(Macro Vazia)";
+        function (_, field, oldValue, newValue)
+            self.labMacro.text = sheet.macro or "(" .. lang("macros.ui.emptyMacro") ..")";
         end, obj);
 
     function obj:_releaseEvents()
@@ -99,7 +105,7 @@ function newfrmGerenciarSimpleMacrosItem()
 
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.labMacro ~= nil then self.labMacro:destroy(); self.labMacro = nil; end;
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.btnEdit ~= nil then self.btnEdit:destroy(); self.btnEdit = nil; end;
         if self.horzLine1 ~= nil then self.horzLine1:destroy(); self.horzLine1 = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         self:_oldLFMDestroy();
@@ -107,9 +113,23 @@ function newfrmGerenciarSimpleMacrosItem()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmGerenciarSimpleMacrosItem()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmGerenciarSimpleMacrosItem();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmGerenciarSimpleMacrosItem = {
@@ -123,6 +143,6 @@ local _frmGerenciarSimpleMacrosItem = {
     description=""};
 
 frmGerenciarSimpleMacrosItem = _frmGerenciarSimpleMacrosItem;
-rrpg.registrarForm(_frmGerenciarSimpleMacrosItem);
+Firecast.registrarForm(_frmGerenciarSimpleMacrosItem);
 
 return _frmGerenciarSimpleMacrosItem;

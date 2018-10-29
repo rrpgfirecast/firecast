@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmSSF3_2()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmSSF3_2()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,14 +31,14 @@ function newfrmSSF3_2()
     obj:setHeight(25);
     obj:setTheme("dark");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setWidth(25);
     obj.button1:setHeight(25);
     obj.button1:setText("X");
     obj.button1:setName("button1");
 
-    obj.checkBox1 = gui.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj);
     obj.checkBox1:setLeft(25);
     obj.checkBox1:setTop(1);
@@ -46,7 +46,7 @@ function newfrmSSF3_2()
     obj.checkBox1:setField("show_efeito_positivo");
     obj.checkBox1:setName("checkBox1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj);
     obj.edit1:setLeft(44);
     obj.edit1:setTop(0);
@@ -55,7 +55,7 @@ function newfrmSSF3_2()
     obj.edit1:setField("nome_efeito_positivo");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj);
     obj.edit2:setLeft(144);
     obj.edit2:setTop(0);
@@ -65,7 +65,7 @@ function newfrmSSF3_2()
     obj.edit2:setName("edit2");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             dialogs.confirmOkCancel("Tem certeza que quer apagar esse efeito?",
             				function (confirmado)
             					if confirmado then
@@ -96,9 +96,23 @@ function newfrmSSF3_2()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmSSF3_2()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmSSF3_2();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmSSF3_2 = {
@@ -112,6 +126,6 @@ local _frmSSF3_2 = {
     description=""};
 
 frmSSF3_2 = _frmSSF3_2;
-rrpg.registrarForm(_frmSSF3_2);
+Firecast.registrarForm(_frmSSF3_2);
 
 return _frmSSF3_2;

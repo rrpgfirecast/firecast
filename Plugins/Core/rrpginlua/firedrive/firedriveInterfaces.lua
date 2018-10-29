@@ -1,4 +1,4 @@
-﻿local fireDrive = require("fireDrive.lua");
+﻿require("fireDrive.lua");
 require("rrpg.lua");
 require("internet.lua");
 
@@ -123,11 +123,11 @@ rrpg.messaging.listen("HandleChatCommand",
 ]]	
 	
 function RRPG_ExibirFireDrive()
-	local frm = gui.newForm("frmFireDriveExplorer");		
+	local frm = GUI.newForm("frmFireDriveExplorer");		
 	frm:show();
 end;	
 	
-rrpg.messaging.listen("HandleChatCommand",
+Firecast.Messaging.listen("HandleChatCommand",
 	function(message)
 		message.response = {handled = true};		
 		

@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFichaRPGmeister2_svg()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmFichaRPGmeister2_svg()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,12 +31,12 @@ function newfrmFichaRPGmeister2_svg()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.attackList = gui.fromHandle(_obj_newObject("recordList"));
+    obj.attackList = GUI.fromHandle(_obj_newObject("recordList"));
     obj.attackList:setParent(obj.scrollBox1);
     obj.attackList:setAlign("client");
     obj.attackList:setField("attackList");
@@ -45,13 +45,13 @@ function newfrmFichaRPGmeister2_svg()
     obj.attackList:setLayout("vertical");
     obj.attackList:setMinQt(1);
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.scrollBox1);
     obj.dataLink1:setField("addWeapon");
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.attackList:addEventListener("onCompare",
-        function (self, nodeA, nodeB)
+        function (_, nodeA, nodeB)
             if nodeA.enabled and nodeB.enabled then 
             					return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
             				elseif nodeA.enabled then
@@ -62,7 +62,7 @@ function newfrmFichaRPGmeister2_svg()
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             				local addWeapon = tonumber(sheet.addWeapon) or 0;
             				if addWeapon>0 then
@@ -94,9 +94,23 @@ function newfrmFichaRPGmeister2_svg()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFichaRPGmeister2_svg()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFichaRPGmeister2_svg();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFichaRPGmeister2_svg = {
@@ -110,6 +124,6 @@ local _frmFichaRPGmeister2_svg = {
     description=""};
 
 frmFichaRPGmeister2_svg = _frmFichaRPGmeister2_svg;
-rrpg.registrarForm(_frmFichaRPGmeister2_svg);
+Firecast.registrarForm(_frmFichaRPGmeister2_svg);
 
 return _frmFichaRPGmeister2_svg;

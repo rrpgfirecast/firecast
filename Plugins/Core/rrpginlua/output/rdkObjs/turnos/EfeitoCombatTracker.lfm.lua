@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmEfeitoCombatTracker()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmEfeitoCombatTracker()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -36,7 +36,7 @@ function newfrmEfeitoCombatTracker()
 		end;		
 	
 		function self:apagarEfeito()
-			ndb.deleteNode(sheet);
+			NDB.deleteNode(sheet);
 		end;
 		
 		function self:doUsuarioAlterouDuracao()
@@ -47,7 +47,7 @@ function newfrmEfeitoCombatTracker()
 	
 
 
-    obj.imgEfeito = gui.fromHandle(_obj_newObject("image"));
+    obj.imgEfeito = GUI.fromHandle(_obj_newObject("image"));
     obj.imgEfeito:setParent(obj);
     obj.imgEfeito:setName("imgEfeito");
     obj.imgEfeito:setAlign("left");
@@ -56,7 +56,7 @@ function newfrmEfeitoCombatTracker()
     obj.imgEfeito:setHitTest(true);
     obj.imgEfeito:setHint("Um efeito/condição do ator");
 
-    obj.edtDescricao = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtDescricao = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtDescricao:setParent(obj);
     obj.edtDescricao:setName("edtDescricao");
     obj.edtDescricao:setAlign("client");
@@ -65,7 +65,7 @@ function newfrmEfeitoCombatTracker()
     obj.edtDescricao:setFontSize(10);
     obj.edtDescricao:setMargins({right=2});
 
-    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.edtDescricao);
     obj.horzLine1:setAlign("bottom");
     obj.horzLine1:setStrokeSize(1);
@@ -73,13 +73,13 @@ function newfrmEfeitoCombatTracker()
     obj.horzLine1:setOpacity(0.5);
     obj.horzLine1:setName("horzLine1");
 
-    obj.layDireita = gui.fromHandle(_obj_newObject("layout"));
+    obj.layDireita = GUI.fromHandle(_obj_newObject("layout"));
     obj.layDireita:setParent(obj);
     obj.layDireita:setName("layDireita");
     obj.layDireita:setAlign("right");
     obj.layDireita:setWidth(40);
 
-    obj.edtDuracao = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtDuracao = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtDuracao:setParent(obj.layDireita);
     obj.edtDuracao:setName("edtDuracao");
     obj.edtDuracao:setAlign("left");
@@ -92,7 +92,7 @@ function newfrmEfeitoCombatTracker()
     obj.edtDuracao:setField("duracao");
     obj.edtDuracao:setMin(0);
 
-    obj.imgDeleteEfeito = gui.fromHandle(_obj_newObject("image"));
+    obj.imgDeleteEfeito = GUI.fromHandle(_obj_newObject("image"));
     obj.imgDeleteEfeito:setParent(obj.layDireita);
     obj.imgDeleteEfeito:setName("imgDeleteEfeito");
     obj.imgDeleteEfeito:setAlign("left");
@@ -103,7 +103,7 @@ function newfrmEfeitoCombatTracker()
     obj.imgDeleteEfeito:setOpacity(0.6);
 
 
-		if system.isMobile() then
+		if System.isMobile() then
 			self.height = 30;
 			self.imgEfeito.width = 30;
 			self.imgEfeito.style = "autoFit";			
@@ -133,12 +133,12 @@ function newfrmEfeitoCombatTracker()
 
 
     obj._e_event0 = obj.edtDuracao:addEventListener("onUserChange",
-        function (self)
+        function (_)
             self:doUsuarioAlterouDuracao()
         end, obj);
 
     obj._e_event1 = obj.imgDeleteEfeito:addEventListener("onMouseUp",
-        function (self, event)
+        function (_, event)
             if event.button == 'left' then self:apagarEfeito(); end;
         end, obj);
 
@@ -167,9 +167,23 @@ function newfrmEfeitoCombatTracker()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmEfeitoCombatTracker()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmEfeitoCombatTracker();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmEfeitoCombatTracker = {
@@ -183,6 +197,6 @@ local _frmEfeitoCombatTracker = {
     description=""};
 
 frmEfeitoCombatTracker = _frmEfeitoCombatTracker;
-rrpg.registrarForm(_frmEfeitoCombatTracker);
+Firecast.registrarForm(_frmEfeitoCombatTracker);
 
 return _frmEfeitoCombatTracker;

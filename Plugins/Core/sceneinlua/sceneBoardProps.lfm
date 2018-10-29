@@ -65,7 +65,7 @@
 		local _maxH = 450;
 		local _minH = 300;
 		local _useHeight;
-		local _screenSafeW, _screenSafeH = System.getScreenSize();
+		local _, _screenSafeH = System.getScreenSize();
 		_screenSafeH = _screenSafeH - 40;
 				
 		_useHeight = _screenSafeH;

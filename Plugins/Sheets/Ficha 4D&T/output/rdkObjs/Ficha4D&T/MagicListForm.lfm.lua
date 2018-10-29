@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmMagicListForm()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmMagicListForm()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -54,13 +54,13 @@ function newfrmMagicListForm()
 		
 
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setName("rectangle1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
     obj.edit1:setLeft(0);
     obj.edit1:setTop(0);
@@ -69,7 +69,7 @@ function newfrmMagicListForm()
     obj.edit1:setField("nome");
     obj.edit1:setName("edit1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle1);
     obj.button1:setLeft(170);
     obj.button1:setTop(0);
@@ -78,7 +78,7 @@ function newfrmMagicListForm()
     obj.button1:setText("i");
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.rectangle1);
     obj.button2:setLeft(195);
     obj.button2:setTop(0);
@@ -88,12 +88,12 @@ function newfrmMagicListForm()
     obj.button2:setName("button2");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             showMagiaPopup()
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             askForDelete()
         end, obj);
 
@@ -120,9 +120,23 @@ function newfrmMagicListForm()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmMagicListForm()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmMagicListForm();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmMagicListForm = {
@@ -136,6 +150,6 @@ local _frmMagicListForm = {
     description=""};
 
 frmMagicListForm = _frmMagicListForm;
-rrpg.registrarForm(_frmMagicListForm);
+Firecast.registrarForm(_frmMagicListForm);
 
 return _frmMagicListForm;

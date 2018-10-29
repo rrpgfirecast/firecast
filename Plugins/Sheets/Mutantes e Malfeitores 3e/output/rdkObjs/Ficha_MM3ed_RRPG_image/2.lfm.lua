@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmFicha_MM3ed_RRPG_image2_svg()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmFicha_MM3ed_RRPG_image2_svg()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,19 +31,19 @@ function newfrmFicha_MM3ed_RRPG_image2_svg()
     obj:setTheme("light");
     obj:setMargins({top=1});
 
-    obj.scrollBox1 = gui.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
     obj.rectangle1:setWidth(893);
     obj.rectangle1:setHeight(1263);
     obj.rectangle1:setColor("white");
     obj.rectangle1:setName("rectangle1");
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.rectangle1);
     obj.image1:setLeft(0);
     obj.image1:setTop(0);
@@ -54,7 +54,7 @@ function newfrmFicha_MM3ed_RRPG_image2_svg()
     obj.image1:setOptimize(true);
     obj.image1:setName("image1");
 
-    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.rectangle1);
     obj.layout1:setLeft(43);
     obj.layout1:setTop(64);
@@ -62,7 +62,7 @@ function newfrmFicha_MM3ed_RRPG_image2_svg()
     obj.layout1:setHeight(590);
     obj.layout1:setName("layout1");
 
-    obj.textEditor1 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout1);
     obj.textEditor1:setLeft(0);
     obj.textEditor1:setTop(0);
@@ -74,7 +74,7 @@ function newfrmFicha_MM3ed_RRPG_image2_svg()
     obj.textEditor1:setTransparent(true);
     obj.textEditor1:setName("textEditor1");
 
-    obj.layout2 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.rectangle1);
     obj.layout2:setLeft(452);
     obj.layout2:setTop(933);
@@ -82,7 +82,7 @@ function newfrmFicha_MM3ed_RRPG_image2_svg()
     obj.layout2:setHeight(305);
     obj.layout2:setName("layout2");
 
-    obj.textEditor2 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.layout2);
     obj.textEditor2:setLeft(0);
     obj.textEditor2:setTop(0);
@@ -94,7 +94,7 @@ function newfrmFicha_MM3ed_RRPG_image2_svg()
     obj.textEditor2:setTransparent(true);
     obj.textEditor2:setName("textEditor2");
 
-    obj.layout3 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.rectangle1);
     obj.layout3:setLeft(43);
     obj.layout3:setTop(710);
@@ -102,7 +102,7 @@ function newfrmFicha_MM3ed_RRPG_image2_svg()
     obj.layout3:setHeight(528);
     obj.layout3:setName("layout3");
 
-    obj.textEditor3 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor3:setParent(obj.layout3);
     obj.textEditor3:setLeft(0);
     obj.textEditor3:setTop(0);
@@ -114,7 +114,7 @@ function newfrmFicha_MM3ed_RRPG_image2_svg()
     obj.textEditor3:setTransparent(true);
     obj.textEditor3:setName("textEditor3");
 
-    obj.layout4 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.rectangle1);
     obj.layout4:setLeft(452);
     obj.layout4:setTop(620);
@@ -122,7 +122,7 @@ function newfrmFicha_MM3ed_RRPG_image2_svg()
     obj.layout4:setHeight(256);
     obj.layout4:setName("layout4");
 
-    obj.textEditor4 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor4 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor4:setParent(obj.layout4);
     obj.textEditor4:setLeft(0);
     obj.textEditor4:setTop(0);
@@ -134,7 +134,7 @@ function newfrmFicha_MM3ed_RRPG_image2_svg()
     obj.textEditor4:setTransparent(true);
     obj.textEditor4:setName("textEditor4");
 
-    obj.layout5 = gui.fromHandle(_obj_newObject("layout"));
+    obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.rectangle1);
     obj.layout5:setLeft(452);
     obj.layout5:setTop(287);
@@ -142,7 +142,7 @@ function newfrmFicha_MM3ed_RRPG_image2_svg()
     obj.layout5:setHeight(276);
     obj.layout5:setName("layout5");
 
-    obj.textEditor5 = gui.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor5:setParent(obj.layout5);
     obj.textEditor5:setLeft(0);
     obj.textEditor5:setTop(0);
@@ -154,7 +154,7 @@ function newfrmFicha_MM3ed_RRPG_image2_svg()
     obj.textEditor5:setTransparent(true);
     obj.textEditor5:setName("textEditor5");
 
-    obj.rectangle2 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj.rectangle1);
     obj.rectangle2:setLeft(450);
     obj.rectangle2:setTop(22);
@@ -165,7 +165,7 @@ function newfrmFicha_MM3ed_RRPG_image2_svg()
     obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.rectangle1);
     obj.image2:setLeft(452);
     obj.image2:setTop(23);
@@ -176,7 +176,7 @@ function newfrmFicha_MM3ed_RRPG_image2_svg()
     obj.image2:setStyle("proportional");
     obj.image2:setName("image2");
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setLeft(600);
     obj.label1:setTop(1240);
@@ -190,7 +190,7 @@ function newfrmFicha_MM3ed_RRPG_image2_svg()
     obj.label1:setAutoSize(true);
 
     obj._e_event0 = obj.image2:addEventListener("onStartDrag",
-        function (self, drag, x, y)
+        function (_, drag, x, y)
             drag:addData("imageURL", sheet.sobmanto);
         end, obj);
 
@@ -228,9 +228,23 @@ function newfrmFicha_MM3ed_RRPG_image2_svg()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmFicha_MM3ed_RRPG_image2_svg()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmFicha_MM3ed_RRPG_image2_svg();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmFicha_MM3ed_RRPG_image2_svg = {
@@ -244,6 +258,6 @@ local _frmFicha_MM3ed_RRPG_image2_svg = {
     description=""};
 
 frmFicha_MM3ed_RRPG_image2_svg = _frmFicha_MM3ed_RRPG_image2_svg;
-rrpg.registrarForm(_frmFicha_MM3ed_RRPG_image2_svg);
+Firecast.registrarForm(_frmFicha_MM3ed_RRPG_image2_svg);
 
 return _frmFicha_MM3ed_RRPG_image2_svg;

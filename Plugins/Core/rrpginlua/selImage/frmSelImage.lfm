@@ -4,7 +4,7 @@
 
 	<script> <![CDATA[		
 		function self:adaptarTamanhoDaTela()
-			local sw, sh = system.getScreenSize();
+			local sw, sh = System.getScreenSize();
 			local dw = 650;
 			local dh = 600;
 		
@@ -22,8 +22,8 @@
 	
 		self:adaptarTamanhoDaTela();
 	
-		local cUser = rrpg.getCurrentUser();
-		local canUseFireDrive = cUser.isGold or cUser.isGoldPlus or cUser.isRuby;		
+		local cUser = Firecast.getCurrentUser();
+		local canUseFireDrive = cUser.isGold or cUser.isGoldPlus or cUser.isRuby;			
 		
 		if canUseFireDrive then							
 			self.navigator = require("/firedrive/firedriveNavigator.dlua").newFDNavigatorLayout();				
@@ -48,7 +48,7 @@
 		end;
 		
 		function self:retornarCancel(deveFecharForm)
-			if not self.__retornouOK and self._cancelCallback ~= ni then
+			if not self.__retornouOK and self._cancelCallback ~= nil then
 				self._cancelCallback();
 			end;
 			
