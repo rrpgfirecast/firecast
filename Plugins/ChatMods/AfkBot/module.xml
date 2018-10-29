@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5_prealpha_5" originalPluginFileName="afkbot.rpk">
+<module sdkVersion="3.5" originalPluginFileName="afkbot.rpk">
 	<id>AfkBot</id>
 	<version>1.2</version>
 	<name>AfkBot</name>

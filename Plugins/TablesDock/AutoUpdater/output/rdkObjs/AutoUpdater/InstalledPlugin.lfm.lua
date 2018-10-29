@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmInstalledPlugin()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmInstalledPlugin()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,14 +30,14 @@ function newfrmInstalledPlugin()
     obj:setHeight(50);
     obj:setMargins({top=1});
 
-    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("#212121");
     obj.rectangle1:setHitTest(false);
     obj.rectangle1:setName("rectangle1");
 
-    obj.pluginName = gui.fromHandle(_obj_newObject("label"));
+    obj.pluginName = GUI.fromHandle(_obj_newObject("label"));
     obj.pluginName:setParent(obj.rectangle1);
     obj.pluginName:setAlign("left");
     obj.pluginName:setField("name");
@@ -47,7 +47,7 @@ function newfrmInstalledPlugin()
     obj.pluginName:setName("pluginName");
     obj.pluginName:setHitTest(true);
 
-    obj.moduleId = gui.fromHandle(_obj_newObject("label"));
+    obj.moduleId = GUI.fromHandle(_obj_newObject("label"));
     obj.moduleId:setParent(obj.rectangle1);
     obj.moduleId:setAlign("left");
     obj.moduleId:setField("moduleId");
@@ -57,7 +57,7 @@ function newfrmInstalledPlugin()
     obj.moduleId:setName("moduleId");
     obj.moduleId:setHitTest(true);
 
-    obj.author = gui.fromHandle(_obj_newObject("label"));
+    obj.author = GUI.fromHandle(_obj_newObject("label"));
     obj.author:setParent(obj.rectangle1);
     obj.author:setAlign("left");
     obj.author:setField("author");
@@ -67,7 +67,7 @@ function newfrmInstalledPlugin()
     obj.author:setName("author");
     obj.author:setHitTest(true);
 
-    obj.label1 = gui.fromHandle(_obj_newObject("label"));
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.rectangle1);
     obj.label1:setAlign("left");
     obj.label1:setField("version");
@@ -76,7 +76,7 @@ function newfrmInstalledPlugin()
     obj.label1:setWordWrap(true);
     obj.label1:setName("label1");
 
-    obj.label2 = gui.fromHandle(_obj_newObject("label"));
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.rectangle1);
     obj.label2:setAlign("left");
     obj.label2:setField("versionAvailable");
@@ -85,7 +85,7 @@ function newfrmInstalledPlugin()
     obj.label2:setWordWrap(true);
     obj.label2:setName("label2");
 
-    obj.downloadButton = gui.fromHandle(_obj_newObject("button"));
+    obj.downloadButton = GUI.fromHandle(_obj_newObject("button"));
     obj.downloadButton:setParent(obj.rectangle1);
     obj.downloadButton:setAlign("right");
     obj.downloadButton:setWidth(25);
@@ -93,49 +93,49 @@ function newfrmInstalledPlugin()
     obj.downloadButton:setVisible(false);
     obj.downloadButton:setMargins({top = 12.5, bottom = 12.5, right = 5});
 
-    obj.image1 = gui.fromHandle(_obj_newObject("image"));
+    obj.image1 = GUI.fromHandle(_obj_newObject("image"));
     obj.image1:setParent(obj.downloadButton);
     obj.image1:setAlign("client");
     obj.image1:setShowStyle("proportional");
     obj.image1:setSRC("/AutoUpdater/images/download.png");
     obj.image1:setName("image1");
 
-    obj.removeButton = gui.fromHandle(_obj_newObject("button"));
+    obj.removeButton = GUI.fromHandle(_obj_newObject("button"));
     obj.removeButton:setParent(obj.rectangle1);
     obj.removeButton:setAlign("right");
     obj.removeButton:setWidth(25);
     obj.removeButton:setName("removeButton");
     obj.removeButton:setMargins({top = 12.5, bottom = 12.5, right = 5});
 
-    obj.image2 = gui.fromHandle(_obj_newObject("image"));
+    obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.removeButton);
     obj.image2:setAlign("client");
     obj.image2:setShowStyle("proportional");
     obj.image2:setSRC("/AutoUpdater/images/delete.png");
     obj.image2:setName("image2");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setFields({'url'});
     obj.dataLink1:setName("dataLink1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj);
     obj.dataLink2:setFields({'enabled'});
     obj.dataLink2:setName("dataLink2");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj);
     obj.dataLink3:setFields({'description'});
     obj.dataLink3:setName("dataLink3");
 
-    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink4:setParent(obj);
     obj.dataLink4:setFields({'contact'});
     obj.dataLink4:setName("dataLink4");
 
     obj._e_event0 = obj.downloadButton:addEventListener("onClick",
-        function (self)
+        function (_)
             local install = true;
             				if sheet.stream ~= nil then
             					install = rrpg.plugins.installPlugin(sheet.stream, true);
@@ -146,7 +146,7 @@ function newfrmInstalledPlugin()
         end, obj);
 
     obj._e_event1 = obj.removeButton:addEventListener("onClick",
-        function (self)
+        function (_)
             Dialogs.confirmOkCancel("Deseja desinstalar esse plugin?",
             			        function (confirmado)
             			            if confirmado then
@@ -156,7 +156,7 @@ function newfrmInstalledPlugin()
         end, obj);
 
     obj._e_event2 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             			if sheet.url==nil or sheet.url=="" then
@@ -167,7 +167,7 @@ function newfrmInstalledPlugin()
         end, obj);
 
     obj._e_event3 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             			if sheet.enabled then
@@ -178,7 +178,7 @@ function newfrmInstalledPlugin()
         end, obj);
 
     obj._e_event4 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             			self.pluginName.hint = sheet.description;
@@ -186,7 +186,7 @@ function newfrmInstalledPlugin()
         end, obj);
 
     obj._e_event5 = obj.dataLink4:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
             			self.author.hint = sheet.contact;
@@ -229,9 +229,23 @@ function newfrmInstalledPlugin()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmInstalledPlugin()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmInstalledPlugin();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmInstalledPlugin = {
@@ -245,6 +259,6 @@ local _frmInstalledPlugin = {
     description=""};
 
 frmInstalledPlugin = _frmInstalledPlugin;
-rrpg.registrarForm(_frmInstalledPlugin);
+Firecast.registrarForm(_frmInstalledPlugin);
 
 return _frmInstalledPlugin;

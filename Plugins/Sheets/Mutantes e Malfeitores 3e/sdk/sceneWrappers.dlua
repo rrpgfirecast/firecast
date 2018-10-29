@@ -72,7 +72,8 @@ local __sceneProps = {worldWidth = {tipo = "double", readProp = "WorldWidth", wr
 					  isGM = {tipo="bool", readProp="IsGM"},
 					  currentUserID = {tipo="string", readProp="CurrentUserID"},
 					  isViewingAsGM = {tipo="bool", readProp="IsViewingAsGM", writeProp = "IsViewingAsGM"},
-					  isViewingWalls = {tipo="bool", readProp="IsViewingWalls", writeProp = "IsViewingWalls"},};
+					  isViewingWalls = {tipo="bool", readProp="IsViewingWalls", writeProp = "IsViewingWalls"},
+					  renderAsPlayer = {tipo="bool", readProp="RenderAsPlayer"}};
 
 local __sceneEvents	= {onWorkingLayerChange="",
 					   onGMStateChange=""};
@@ -643,7 +644,8 @@ local __graphicItemProps = {width = {tipo = "double", readProp = "Width", writeP
 							selected = {tipo = "bool", readProp = "Selected", writeProp = "Selected"},
 							isHover = {tipo = "bool", readProp = "IsHover", writeProp = "IsHover"},
 							layer = {tipo = "enum", readProp = "Layer", writeProp = "Layer", values={"background", "objects", "token"}},
-						    isMine = {tipo = "bool", readProp = "IsMine"},		
+						    isMine = {tipo = "bool", readProp = "IsMine"},	
+						    canBeRendered = {tipo = "bool", readProp = "CanBeRendered"},							
 							ownerUserID = {tipo = "string", readProp = "OwnerUserID", writeProp="OwnerUserID"},	
 							canvas = {tipo = "table", getter = function(obj) return SceneWrappers.objectFromID(_obj_getProp(obj.handle, "CanvasObjectID")); end;},
 							scene = {tipo = "table", getter = function(obj) return SceneWrappers.objectFromID(_obj_getProp(obj.handle, "SceneObjectID")); end;}};
