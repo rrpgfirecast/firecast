@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.2" compilationDate="29102018121154" compilationDigest="2dc50b79af200d8b25f0a92d5a9b3e888c687867">
+    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.2" compilationDate="29102018135431" compilationDigest="3b07d454d306f61189560588d4333b766f38dcc5">
         <dataTypes>
             <dataType id="ambesek.afkbot" title="AfkBot"/>
         </dataTypes>
     </element>
-    <element id="Autolog" name="Autolog" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Autolog/output/Autolog.rpk?raw=true" fileName="Autolog.rpk" repositoryPath="ChatMods/Autolog/" author="Dniester &quot;Tyras&quot; Amorim de Aguiar" description="Salva automaticamente o log das mesas na pasta &quot;Documentos\RRPG\Complementos\Autolog\Logs&quot;" version="1.2.4" compilationDate="29102018121154" compilationDigest="754fa74b0b8dab6f17ef1abbca127a1be11432f5">
+    <element id="Autolog" name="Autolog" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Autolog/output/Autolog.rpk?raw=true" fileName="Autolog.rpk" repositoryPath="ChatMods/Autolog/" author="Dniester &quot;Tyras&quot; Amorim de Aguiar" description="Salva automaticamente o log das mesas na pasta &quot;Documentos\RRPG\Complementos\Autolog\Logs&quot;" version="1.2.4" compilationDate="29102018135431" compilationDigest="a7d84b48cc57a9ace193a0bae5c012c549a839e2">
         <dataTypes>
             <dataType id="br.com.rrpg.Autolog" title="Autolog"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Macro.Buttons" name="Macro Buttons" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/MacroButtons/output/MacroButtons.rpk?raw=true" fileName="MacroButtons.rpk" repositoryPath="ChatMods/MacroButtons/" author="Ambesek" description="Adiciona alguns macros a barra de botões." version="0.1.1" compilationDate="29102018121155" compilationDigest="7ab793ff58cbddf448a0c089a34131bbfea26893"/>
-    <element id="MemesSaver" name="Memes Saver" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Memes%20Saver/output/Memes%20Saver.rpk?raw=true" fileName="Memes Saver.rpk" repositoryPath="ChatMods/Memes Saver/" author="Vinny Ambesek" description="Permite criar e salvar seus proprios memes. Use /help para ver opções." version="0.3" compilationDate="29102018121155" compilationDigest="96f9dc9fd001b0b7a2125c38a1eb9e132c784d3a">
+    <element id="Ambesek.Macro.Buttons" name="Macro Buttons" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/MacroButtons/output/MacroButtons.rpk?raw=true" fileName="MacroButtons.rpk" repositoryPath="ChatMods/MacroButtons/" author="Ambesek" description="Adiciona alguns macros a barra de botões." version="0.1.1" compilationDate="29102018135432" compilationDigest="28d02a9527baca1ae596b2b1a968359c5572cb44"/>
+    <element id="MemesSaver" name="Memes Saver" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Memes%20Saver/output/Memes%20Saver.rpk?raw=true" fileName="Memes Saver.rpk" repositoryPath="ChatMods/Memes Saver/" author="Vinny Ambesek" description="Permite criar e salvar seus proprios memes. Use /help para ver opções." version="0.3" compilationDate="29102018135432" compilationDigest="0ad8f34cb1777af061646e2860c1681f7ae764d0">
         <dataTypes>
             <dataType id="ambesek.memesaver" title="MemeSaver"/>
         </dataTypes>
     </element>
-    <element id="NickSaver" name="NickSaver" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/NickSaver/output/NickSaver.rpk?raw=true" fileName="NickSaver.rpk" repositoryPath="ChatMods/NickSaver/" author="Ambesek" description="Salva o nick e cor de fonte do usuario por mesa. Use /nicksaver para abrir o popup de configuração." version="1.0" compilationDate="29102018121155" compilationDigest="53a666e4d2ffa2ce145c9b6fe03a9ea91e1cb026">
+    <element id="NickSaver" name="NickSaver" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/NickSaver/output/NickSaver.rpk?raw=true" fileName="NickSaver.rpk" repositoryPath="ChatMods/NickSaver/" author="Ambesek" description="Salva o nick e cor de fonte do usuario por mesa. Use /nicksaver para abrir o popup de configuração." version="1.0" compilationDate="29102018135433" compilationDigest="774413005128275c4aab13b77484e1829e6b84cf">
         <dataTypes>
             <dataType id="ambesek.afkbot" title="AfkBot"/>
         </dataTypes>
     </element>
-    <element id="PokeIcons" name="PokeIcons" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/PokeIcons/output/PokeIcons.rpk?raw=true" fileName="PokeIcons.rpk" repositoryPath="ChatMods/PokeIcons/" author="Ambesek" description="Use comandos e atalhos /unown :numero: pra inserir pokémon no chat. Use /help para mais informações. Use /help para ver opções." version="0.5" compilationDate="29102018121156" compilationDigest="8b3c73c8559f747d81c2e15460f2e6017671b411"/>
-    <element id="RRPG.ROLETA.RUSSA" name="Plugin de Roleta Russa" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/RoletaRussa/output/RoletaRussa.rpk?raw=true" fileName="RoletaRussa.rpk" repositoryPath="ChatMods/RoletaRussa/" author="AlyssonRPG (RRPG Firecast)" description="Instala comandos no RRPG para automatizar a brincadeira da Roleta Russa" version="1.0" compilationDate="29102018121156" compilationDigest="68f3ee9455436fce871d772005393ba03918636b"/>
-    <element id="RRPG.FIRECAST.FMXModule" name="Firecast" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/rrpginlua/output/rrpginlua.rpk?raw=true" fileName="rrpginlua.rpk" repositoryPath="Core/rrpginlua/" author="Firecast" description="Contém funcionalidades padrões do Firecast. Não é possível desinstalar este plug-in." version="1.0" compilationDate="29102018115348" compilationDigest="47367fd2cb1d61558a03b79c9765bda78aeabe90">
+    <element id="PokeIcons" name="PokeIcons" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/PokeIcons/output/PokeIcons.rpk?raw=true" fileName="PokeIcons.rpk" repositoryPath="ChatMods/PokeIcons/" author="Ambesek" description="Use comandos e atalhos /unown :numero: pra inserir pokémon no chat. Use /help para mais informações. Use /help para ver opções." version="0.5" compilationDate="29102018135433" compilationDigest="332aeaf5ed35d46cc8d6b057b68f4fb0f71a44e8"/>
+    <element id="RRPG.ROLETA.RUSSA" name="Plugin de Roleta Russa" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/RoletaRussa/output/RoletaRussa.rpk?raw=true" fileName="RoletaRussa.rpk" repositoryPath="ChatMods/RoletaRussa/" author="AlyssonRPG (RRPG Firecast)" description="Instala comandos no RRPG para automatizar a brincadeira da Roleta Russa" version="1.0" compilationDate="29102018135433" compilationDigest="288e9ca69f01ef7feb945d86112167558348dfa5"/>
+    <element id="RRPG.FIRECAST.FMXModule" name="Firecast" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/rrpginlua/output/rrpginlua.rpk?raw=true" fileName="rrpginlua.rpk" repositoryPath="Core/rrpginlua/" author="Firecast" description="Contém funcionalidades padrões do Firecast. Não é possível desinstalar este plug-in." version="1.0" compilationDate="29102018135434" compilationDigest="e812b9aa5304b3085245cf90bec4dcfb7ed9508e">
         <dataTypes>
             <dataType id="br.com.rrpg.FICHA_BASICA_V3" title="Ficha Básica Multi Abas"/>
             <dataType id="rrpg.com.br.FichaBasicaV3.DT" title="Ficha Básica do RRPG v3"/>
@@ -32,193 +32,193 @@
             <dataType id="RRPG.TB.COMBAT.TRACKER.v1" title="Tracker de Combate"/>
         </dataTypes>
     </element>
-    <element id="BR.COM.RRPG.SCENE3_IN_LUA" name="Núcleo do Scene 3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/sceneinlua/output/sceneinlua.rpk?raw=true" fileName="sceneinlua.rpk" repositoryPath="Core/sceneinlua/" author="AlyssonRPG" description="Plug-in que possui funcionalidades básicas do Scene 3" version="1.0" compilationDate="29102018115414" compilationDigest="1f7fb178d21fda061abccb59c2a4a8e3690f1b5f"/>
-    <element id="FICHA_ADnD_2e" name="Ficha Advanced Dungeons and Dragons 2th Edition" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/AD%26D%202e/output/AD%26D%202e.rpk?raw=true" fileName="AD&amp;D 2e.rpk" repositoryPath="Sheets/AD&amp;D 2e/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Advanced Dungeons and Dragons 2th Edition" version="0.2" compilationDate="29102018121012" compilationDigest="5bd3dc43fa714535a6e7739e9dc08cdf4a057000">
+    <element id="BR.COM.RRPG.SCENE3_IN_LUA" name="Núcleo do Scene 3" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Core/sceneinlua/output/sceneinlua.rpk?raw=true" fileName="sceneinlua.rpk" repositoryPath="Core/sceneinlua/" author="AlyssonRPG" description="Plug-in que possui funcionalidades básicas do Scene 3" version="1.0" compilationDate="29102018135438" compilationDigest="b4f31e8bdc3f24f8eff7f4c7b5fd85e2e3a19db3"/>
+    <element id="FICHA_ADnD_2e" name="Ficha Advanced Dungeons and Dragons 2th Edition" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/AD%26D%202e/output/AD%26D%202e.rpk?raw=true" fileName="AD&amp;D 2e.rpk" repositoryPath="Sheets/AD&amp;D 2e/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Advanced Dungeons and Dragons 2th Edition" version="0.2" compilationDate="29102018140146" compilationDigest="c8f35a7e2ebca9123188dfa14400aca0d146426f">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaADnD2e" title="Ficha AD&amp;D 2e"/>
         </dataTypes>
     </element>
-    <element id="FICHA_ACN" name="Ficha Ao Cair da Noite" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ao%20cair%20da%20noite/output/Ao%20cair%20da%20noite.rpk?raw=true" fileName="Ao cair da noite.rpk" repositoryPath="Sheets/Ao cair da noite/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Ao Cair da Noite" version="0.4" compilationDate="29102018121205" compilationDigest="e4ed4c9f6d7c604d4aa401ee5cee699178421e75">
+    <element id="FICHA_ACN" name="Ficha Ao Cair da Noite" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ao%20cair%20da%20noite/output/Ao%20cair%20da%20noite.rpk?raw=true" fileName="Ao cair da noite.rpk" repositoryPath="Sheets/Ao cair da noite/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Ao Cair da Noite" version="0.4" compilationDate="29102018135444" compilationDigest="d9a4ee369d5603d67415288837d6ce8b55f110f5">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaACN" title="Ficha ACN"/>
         </dataTypes>
     </element>
-    <element id="Arc.Metal.Zhuls" name="Ficha Arc Metal Zhuls" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Arc%20Metal%20Zhuls/output/Arc%20Metal%20Zhuls.rpk?raw=true" fileName="Arc Metal Zhuls.rpk" repositoryPath="Sheets/Arc Metal Zhuls/" author="Ambesek" description="Ficha para o cenario e sistema Arc Metal Zhuls." version="0.3" compilationDate="29102018121210" compilationDigest="d29839a70376eaeb73f556c201cb7897992286d9">
+    <element id="Arc.Metal.Zhuls" name="Ficha Arc Metal Zhuls" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Arc%20Metal%20Zhuls/output/Arc%20Metal%20Zhuls.rpk?raw=true" fileName="Arc Metal Zhuls.rpk" repositoryPath="Sheets/Arc Metal Zhuls/" author="Ambesek" description="Ficha para o cenario e sistema Arc Metal Zhuls." version="0.3" compilationDate="29102018135448" compilationDigest="00e5b24145298aaf83233aa6e345eec715847809">
         <dataTypes>
             <dataType id="Arc.Metal.Zhuls" title="Ficha Arc Metal Zhuls"/>
         </dataTypes>
     </element>
-    <element id="BibliotecaRPGmeister" name="RPGM" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/BibliotecaRPGmeister/output/BibliotecaRPGmeister.rpk?raw=true" fileName="BibliotecaRPGmeister.rpk" repositoryPath="Sheets/BibliotecaRPGmeister/" author="Ambesek" description="Biblioteca com o material da mesa RPGmeister. Tanto para facilitar para abrir os links do dropbox quanto para permitir o uso por jogadores mobile." version="0.2" compilationDate="29102018121212" compilationDigest="1336542949fd04afc68d2444f1dc3bb113d10073">
+    <element id="BibliotecaRPGmeister" name="RPGM" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/BibliotecaRPGmeister/output/BibliotecaRPGmeister.rpk?raw=true" fileName="BibliotecaRPGmeister.rpk" repositoryPath="Sheets/BibliotecaRPGmeister/" author="Ambesek" description="Biblioteca com o material da mesa RPGmeister. Tanto para facilitar para abrir os links do dropbox quanto para permitir o uso por jogadores mobile." version="0.2" compilationDate="29102018135450" compilationDigest="2c8d19a1be8f5ecc1527356c67069c79441b42d4">
         <dataTypes>
             <dataType id="Ambesek.Biblioteca.RPGmeister" title="Biblioteca RPGmeister"/>
         </dataTypes>
     </element>
-    <element id="o_CHAMADO" name="CALL OF CTHULHU" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Call%20Of%20Cthulhu/output/Call%20Of%20Cthulhu.rpk?raw=true" fileName="Call Of Cthulhu.rpk" repositoryPath="Sheets/Call Of Cthulhu/" author="ALIPIO ARAUJO" description="FICHA DE INVESTIGADOR PARA O CHAMADO DE CTHULHU" version="1.666" compilationDate="29102018121214" compilationDigest="9e2f1912ab609ad1dba5e824cbdd7851f25cfea6">
+    <element id="o_CHAMADO" name="CALL OF CTHULHU" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Call%20Of%20Cthulhu/output/Call%20Of%20Cthulhu.rpk?raw=true" fileName="Call Of Cthulhu.rpk" repositoryPath="Sheets/Call Of Cthulhu/" author="ALIPIO ARAUJO" description="FICHA DE INVESTIGADOR PARA O CHAMADO DE CTHULHU" version="1.666" compilationDate="29102018135453" compilationDigest="29f345a98609c6a52cc537d577369d71da143b4a">
         <dataTypes>
             <dataType id="O_Chamado" title="Ficha de Investigador"/>
         </dataTypes>
     </element>
-    <element id="dnd35" name="Dungeons and Dragons" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/D%26D%203.5/output/D%26D%203.5.rpk?raw=true" fileName="D&amp;D 3.5.rpk" repositoryPath="Sheets/D&amp;D 3.5/" author="Filernall" description="Descrição do plugin aqui. Exemplo: Adiciona suporte para fichas para o sistema TAL, com tais recursos, com tais finalidades..." version="1.0" compilationDate="29102018121216" compilationDigest="24594fd8d8f69057953a80db583db28f619cba77">
+    <element id="dnd35" name="Dungeons and Dragons" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/D%26D%203.5/output/D%26D%203.5.rpk?raw=true" fileName="D&amp;D 3.5.rpk" repositoryPath="Sheets/D&amp;D 3.5/" author="Filernall" description="Descrição do plugin aqui. Exemplo: Adiciona suporte para fichas para o sistema TAL, com tais recursos, com tais finalidades..." version="1.0" compilationDate="29102018135455" compilationDigest="0cc8ceaf33b63f0cdc008772ff72a558d38a1590">
         <dataTypes>
             <dataType id="dnd35" title="dnd"/>
         </dataTypes>
     </element>
-    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="RRPG Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.0" compilationDate="29102018115152" compilationDigest="a97cc216d10d90cb76740131928a3868cd9f89d0">
+    <element id="br.com.rrpg.DnD5_SDK3" name="D&amp;D 5e" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/DnD5e/output/DnD5e.rpk?raw=true" fileName="DnD5e.rpk" repositoryPath="Sheets/DnD5e/" author="RRPG Firecast" description="Modelo de ficha de D&amp;D 5ª edição" version="1.0" compilationDate="29102018135456" compilationDigest="d2322dd7289bedfd52e2fedc91f91c8b4e8b4cdd">
         <dataTypes>
             <dataType id="br.com.rrpg.DnD5_S3" title="D&amp;D 5e"/>
         </dataTypes>
     </element>
-    <element id="ID_MOB_FFRPG_3.5" name="FFRPG - Ficha de Monstro" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/FFRPG%20Mob%20Creator/output/FFRPG%20Mob%20Creator.rpk?raw=true" fileName="FFRPG Mob Creator.rpk" repositoryPath="Sheets/FFRPG Mob Creator/" author="Hitoshura" description="Essa ficha auxilia na criação de monstros." version="1.0" compilationDate="29102018121218" compilationDigest="ddf3011131ff15866d45be4405d762b02d83f44c">
+    <element id="ID_MOB_FFRPG_3.5" name="FFRPG - Ficha de Monstro" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/FFRPG%20Mob%20Creator/output/FFRPG%20Mob%20Creator.rpk?raw=true" fileName="FFRPG Mob Creator.rpk" repositoryPath="Sheets/FFRPG Mob Creator/" author="Hitoshura" description="Essa ficha auxilia na criação de monstros." version="1.0" compilationDate="29102018135457" compilationDigest="a4c415817fa9dfe4cf6f02f38d4ea41ba50d9c78">
         <dataTypes>
             <dataType id="MOB_CREATOR_FFRPG" title="Hitoshura - FFRPG Mob Creator"/>
         </dataTypes>
     </element>
-    <element id="FICHA_13_ERA" name="Ficha 13º Era" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%2013%C2%BA%20Era/output/Ficha%2013%C2%BA%20Era.rpk?raw=true" fileName="Ficha 13º Era.rpk" repositoryPath="Sheets/Ficha 13º Era/" author="Lincoln Ruteskid" description="Ficha de personagem para o sistema 13º Era" version="1.0" compilationDate="29102018121220" compilationDigest="9e8c10a82e3155ffcb04a72c44315f43062c8f84">
+    <element id="FICHA_13_ERA" name="Ficha 13º Era" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%2013%C2%BA%20Era/output/Ficha%2013%C2%BA%20Era.rpk?raw=true" fileName="Ficha 13º Era.rpk" repositoryPath="Sheets/Ficha 13º Era/" author="Lincoln Ruteskid" description="Ficha de personagem para o sistema 13º Era" version="1.0" compilationDate="29102018135458" compilationDigest="f34a26714fcfade8085481a23c5c5faa8ec1d748">
         <dataTypes>
             <dataType id="rrpg.Ficha.13.Era" title="Ficha - 13º Era"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.4DeT" name="Ficha 4D&amp;T" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%204D%26T/output/Ficha%204D%26T.rpk?raw=true" fileName="Ficha 4D&amp;T.rpk" repositoryPath="Sheets/Ficha 4D&amp;T/" author="Ambesek" description="Ficha para Defensores de Toqui 4ª edição." version="0.2" compilationDate="29102018121221" compilationDigest="882591d5f8cf60f84e8746ab8d791f6c40cebcd8">
+    <element id="Ambesek.4DeT" name="Ficha 4D&amp;T" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%204D%26T/output/Ficha%204D%26T.rpk?raw=true" fileName="Ficha 4D&amp;T.rpk" repositoryPath="Sheets/Ficha 4D&amp;T/" author="Ambesek" description="Ficha para Defensores de Toqui 4ª edição." version="0.2" compilationDate="29102018135459" compilationDigest="1835b4bf61512f032257525122d1e95355061a7c">
         <dataTypes>
             <dataType id="Ambesek.4DeT" title="Ficha 4D&amp;T"/>
         </dataTypes>
     </element>
-    <element id="FICHA_7_MAR" name="Ficha 7º Mar" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%207%C2%BA%20Mar/output/Ficha%207%C2%BA%20Mar.rpk?raw=true" fileName="Ficha 7º Mar.rpk" repositoryPath="Sheets/Ficha 7º Mar/" author="Lincoln Ruteski" description="Ficha de personagem para o sistema 7º Mar" version="1.0" compilationDate="29102018121222" compilationDigest="dc9d30978717ef3389c7daaff834cec617c1ac6f">
+    <element id="FICHA_7_MAR" name="Ficha 7º Mar" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%207%C2%BA%20Mar/output/Ficha%207%C2%BA%20Mar.rpk?raw=true" fileName="Ficha 7º Mar.rpk" repositoryPath="Sheets/Ficha 7º Mar/" author="Lincoln Ruteski" description="Ficha de personagem para o sistema 7º Mar" version="1.0" compilationDate="29102018135501" compilationDigest="f4ab20eec24b122b958e5ebe58c10721beb840bb">
         <dataTypes>
             <dataType id="rrpg.ficha.7.mar" title="Ficha 7º Mar"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Anima" name="Ficha Anima" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Anima%20RPG/output/Ficha%20Anima%20RPG.rpk?raw=true" fileName="Ficha Anima RPG.rpk" repositoryPath="Sheets/Ficha Anima RPG/" author="Ambesek" description="Ficha feita para o sistema Anima d20." version="0.3.3" compilationDate="29102018121224" compilationDigest="c71d7ede2e314aa91f49dea2a1210046fbe9dd18">
+    <element id="Ambesek.Anima" name="Ficha Anima" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Anima%20RPG/output/Ficha%20Anima%20RPG.rpk?raw=true" fileName="Ficha Anima RPG.rpk" repositoryPath="Sheets/Ficha Anima RPG/" author="Ambesek" description="Ficha feita para o sistema Anima d20." version="0.3.3" compilationDate="29102018135503" compilationDigest="c514a1e7fae573d059f719d3bb6d3fc2851cc16f">
         <dataTypes>
             <dataType id="Ambesek.Anima" title="Ficha Anima"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.Avatar.d20" name="Ficha Avatar d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/output/Ficha%20Avatar%20d20.rpk?raw=true" fileName="Ficha Avatar d20.rpk" repositoryPath="Sheets/Ficha Avatar d20/" author="Ambesek &amp; Nefertyne" description="Ficha feita para uma adaptação de Avatar para o sistema d20/D&amp;D3.5" version="0.5" compilationDate="29102018121231" compilationDigest="261f3cae1b66dfceaac979535b0f6ebb03cfb10f">
+    <element id="Ambesek.Nefertyne.Avatar.d20" name="Ficha Avatar d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/output/Ficha%20Avatar%20d20.rpk?raw=true" fileName="Ficha Avatar d20.rpk" repositoryPath="Sheets/Ficha Avatar d20/" author="Ambesek &amp; Nefertyne" description="Ficha feita para uma adaptação de Avatar para o sistema d20/D&amp;D3.5" version="0.5" compilationDate="29102018135510" compilationDigest="3ef3e48931783f85da814d753fb2168c13dd4921">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.Avatar.d20" title="Ficha Avatar d20"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.Cyberpunk2020" name="Ficha Cyberpunk 2020" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Cyberpunk%202020/output/Ficha%20Cyberpunk%202020.rpk?raw=true" fileName="Ficha Cyberpunk 2020.rpk" repositoryPath="Sheets/Ficha Cyberpunk 2020/" author="Ambesek" description="Ficha para o sistema Cyberpunk 2020." version="0.4" compilationDate="29102018121238" compilationDigest="ea77ab4cf5a272e6f93382078ee58c6322906ecd">
+    <element id="Ambesek.Nefertyne.Cyberpunk2020" name="Ficha Cyberpunk 2020" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Cyberpunk%202020/output/Ficha%20Cyberpunk%202020.rpk?raw=true" fileName="Ficha Cyberpunk 2020.rpk" repositoryPath="Sheets/Ficha Cyberpunk 2020/" author="Ambesek" description="Ficha para o sistema Cyberpunk 2020." version="0.4" compilationDate="29102018135517" compilationDigest="a18f01e149714e5a5cd666ce741d44fa8a8e60d6">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.Cyberpunk2020" title="Ficha Cyberpunk 2020"/>
         </dataTypes>
     </element>
-    <element id="FichaDnDNext" name="Ficha D&amp;D Next" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20D%26D%20Next/output/Ficha%20D%26D%20Next.rpk?raw=true" fileName="Ficha D&amp;D Next.rpk" repositoryPath="Sheets/Ficha D&amp;D Next/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema D&amp;D Next" version="0.2" compilationDate="29102018121240" compilationDigest="ebbe86b10ff2964738cbea3b3d871eaedc37eef1">
+    <element id="FichaDnDNext" name="Ficha D&amp;D Next" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20D%26D%20Next/output/Ficha%20D%26D%20Next.rpk?raw=true" fileName="Ficha D&amp;D Next.rpk" repositoryPath="Sheets/Ficha D&amp;D Next/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema D&amp;D Next" version="0.2" compilationDate="29102018135520" compilationDigest="b321178efa7a2ca5ed44b9c8568dfe933cc27852">
         <dataTypes>
             <dataType id="Ambesek.FichaDnDNext" title="Ficha D&amp;D Next"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.7.1" compilationDate="29102018121246" compilationDigest="71cb881c61675467a579ef70e10c15d6fe3dd90b">
+    <element id="Ambesek.Nefertyne.Reinos" name="Ficha Reinos d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true" fileName="Ficha de Reinos d20.rpk" repositoryPath="Sheets/Ficha de Reinos d20/" author="Ambesek" description="Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre." version="0.7.1" compilationDate="29102018135526" compilationDigest="1b26ed701dd807bfdb851658a850a169eafde7ba">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.Reinos" title="Ficha Reinos d20"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.GURPS" name="Ficha GURPS 4E" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true" fileName="Ficha GURPS 4E.rpk" repositoryPath="Sheets/Ficha GURPS 4E/" author="Ambesek" description="Ficha feita para o sistema GURPS 4ª Edição." version="0.8.5" compilationDate="29102018121249" compilationDigest="1828d3e9aafa792de10fd5fff6cadaa1cdff4593">
+    <element id="Ambesek.Nefertyne.GURPS" name="Ficha GURPS 4E" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true" fileName="Ficha GURPS 4E.rpk" repositoryPath="Sheets/Ficha GURPS 4E/" author="Ambesek" description="Ficha feita para o sistema GURPS 4ª Edição." version="0.8.5" compilationDate="29102018135529" compilationDigest="3b5aa5aa2d89d3356ce06fb006b9b3fdd4bcec74">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.GURPS" title="Ficha GURPS 4E"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Herois.d20" name="Ficha Herois d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/output/Ficha%20Herois%20d20.rpk?raw=true" fileName="Ficha Herois d20.rpk" repositoryPath="Sheets/Ficha Herois d20/" author="Ambesek" description="Ficha feita para jogar campanhas de Súper-Herois usando o sistema d20/D&amp;D3.5" version="0.3" compilationDate="29102018121251" compilationDigest="2813ae775bd66527bc9cdf2ec9beaf18d235be1b">
+    <element id="Ambesek.Herois.d20" name="Ficha Herois d20" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/output/Ficha%20Herois%20d20.rpk?raw=true" fileName="Ficha Herois d20.rpk" repositoryPath="Sheets/Ficha Herois d20/" author="Ambesek" description="Ficha feita para jogar campanhas de Súper-Herois usando o sistema d20/D&amp;D3.5" version="0.3" compilationDate="29102018135531" compilationDigest="eab3df7b4ea98cf5f2b699b3fb38bcbfc84f7f11">
         <dataTypes>
             <dataType id="Ambesek.Herois.d20" title="Ficha Herois d20"/>
         </dataTypes>
     </element>
-    <element id="FICHA_L5A" name="Ficha L5A" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20L5A/output/Ficha%20L5A.rpk?raw=true" fileName="Ficha L5A.rpk" repositoryPath="Sheets/Ficha L5A/" author="Lincoln Ruteski" description="Ficha de persongem para o sistema L5A" version="1.0" compilationDate="29102018121259" compilationDigest="791db58cf79c739ba9b2ee0351eafc9ab3826b8f">
+    <element id="FICHA_L5A" name="Ficha L5A" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20L5A/output/Ficha%20L5A.rpk?raw=true" fileName="Ficha L5A.rpk" repositoryPath="Sheets/Ficha L5A/" author="Lincoln Ruteski" description="Ficha de persongem para o sistema L5A" version="1.0" compilationDate="29102018135539" compilationDigest="4e508bd111869a7e72a98a1c90e95bcfd80d2545">
         <dataTypes>
             <dataType id="rrpg.ficha.L5A" title="Ficha L5A"/>
         </dataTypes>
     </element>
-    <element id="FichaMultiaba" name="Ficha Multiaba" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true" fileName="Ficha Multiaba.rpk" repositoryPath="Sheets/Ficha Multiaba/" author="Ambesek" description="Ficha com multiplas abas com o texto rico." version="0.6" compilationDate="29102018121303" compilationDigest="13af2273be4909319f4fb22ad5fcac050a175585">
+    <element id="FichaMultiaba" name="Ficha Multiaba" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true" fileName="Ficha Multiaba.rpk" repositoryPath="Sheets/Ficha Multiaba/" author="Ambesek" description="Ficha com multiplas abas com o texto rico." version="0.6" compilationDate="29102018135543" compilationDigest="614316788ec895d245d42fe033bfb1e9c1467cec">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaMultiaba" title="Ficha Multiaba"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.Numenera" name="Ficha Numenéra" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Numenera/output/Ficha%20Numenera.rpk?raw=true" fileName="Ficha Numenera.rpk" repositoryPath="Sheets/Ficha Numenera/" author="Ambesek" description="Ficha para o cenario e sistema Numenéra." version="0.1" compilationDate="29102018121304" compilationDigest="8ffd05c928ad4d62f7273cf96039dd4ce91e0122">
+    <element id="Ambesek.Nefertyne.Numenera" name="Ficha Numenéra" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Numenera/output/Ficha%20Numenera.rpk?raw=true" fileName="Ficha Numenera.rpk" repositoryPath="Sheets/Ficha Numenera/" author="Ambesek" description="Ficha para o cenario e sistema Numenéra." version="0.1" compilationDate="29102018135544" compilationDigest="2afddbab823b1c94e4d626ba469bac4d9b86ae8c">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.Numenera" title="Ficha Numenéra"/>
         </dataTypes>
     </element>
-    <element id="FICHA_PATHFINDER" name="Ficha Pathfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true" fileName="Ficha Pathfinder.rpk" repositoryPath="Sheets/Ficha Pathfinder/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Pathfinder." version="0.4.2" compilationDate="29102018121306" compilationDigest="ae643f9467330dc4f04ec9ead62524c81dec96ba">
+    <element id="FICHA_PATHFINDER" name="Ficha Pathfinder" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true" fileName="Ficha Pathfinder.rpk" repositoryPath="Sheets/Ficha Pathfinder/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Pathfinder." version="0.4.2" compilationDate="29102018135546" compilationDigest="e26511c313b77dfd911628c54a9a8676fee83956">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaPathfinder" title="Ficha Pathfinder"/>
         </dataTypes>
     </element>
-    <element id="FICHA_RPG_MEISTER" name="Ficha RPG meister" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true" fileName="Ficha RPG meister.rpk" repositoryPath="Sheets/Ficha RPG meister/" author="Ambesek &amp; Nefertyne" description="Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5" version="3.0.4" compilationDate="29102018121316" compilationDigest="7d0da78aec338c2f1ac1bd8eb009cb4186a52458">
+    <element id="FICHA_RPG_MEISTER" name="Ficha RPG meister" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true" fileName="Ficha RPG meister.rpk" repositoryPath="Sheets/Ficha RPG meister/" author="Ambesek &amp; Nefertyne" description="Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5" version="3.0.4" compilationDate="29102018135556" compilationDigest="b9377e5199d50e048dfa5fdf9102f298c2873f00">
         <dataTypes>
             <dataType id="Alterar.DataType.FichaRPGmeister" title="Ficha RPGmeister"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.Shadowrun5E" name="Ficha Shadowrun 5E" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Shadowrun%205E/output/Ficha%20Shadowrun%205E.rpk?raw=true" fileName="Ficha Shadowrun 5E.rpk" repositoryPath="Sheets/Ficha Shadowrun 5E/" author="Ambesek" description="Ficha para o sistema e cenario Shadowrun 5ª edição." version="0.1.1" compilationDate="29102018121325" compilationDigest="79e5020f48b59877086bd35ff12a5a33b8610a44">
+    <element id="Ambesek.Nefertyne.Shadowrun5E" name="Ficha Shadowrun 5E" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Shadowrun%205E/output/Ficha%20Shadowrun%205E.rpk?raw=true" fileName="Ficha Shadowrun 5E.rpk" repositoryPath="Sheets/Ficha Shadowrun 5E/" author="Ambesek" description="Ficha para o sistema e cenario Shadowrun 5ª edição." version="0.1.1" compilationDate="29102018135605" compilationDigest="5b20ef33d4f345ce6d18ad3886fcac819b6702ce">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.Shadowrun5E" title="Ficha Shadowrun 5E"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.The.Maze" name="FichaTheMaze" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20The%20Maze/output/Ficha%20The%20Maze.rpk?raw=true" fileName="Ficha The Maze.rpk" repositoryPath="Sheets/Ficha The Maze/" author="Ambesek" description="Ficha para o sistema e cenario The Maze." version="1.0" compilationDate="29102018121328" compilationDigest="469589f41eed4536246b563adcb71f32fbfe1563">
+    <element id="Ambesek.The.Maze" name="FichaTheMaze" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20The%20Maze/output/Ficha%20The%20Maze.rpk?raw=true" fileName="Ficha The Maze.rpk" repositoryPath="Sheets/Ficha The Maze/" author="Ambesek" description="Ficha para o sistema e cenario The Maze." version="1.0" compilationDate="29102018135608" compilationDigest="e7d90e96d1f2dbe1f2607d65564f116e063d1a56">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.TheMaze" title="Ficha The Maze"/>
         </dataTypes>
     </element>
-    <element id="fira.fira.sistema.random" name="Ficha Aleatória" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Fira/output/Fira.rpk?raw=true" fileName="Fira.rpk" repositoryPath="Sheets/Fira/" author="Yiotoo(Fábio Lofredo Cesar)" description="Uma ficha de personagem com elementos aleatórios e com diversas ferramentas." version="1.0" compilationDate="29102018121330" compilationDigest="f650cc7b48d1fd8e7d5765b93f75b22ca97ad5b9">
+    <element id="fira.fira.sistema.random" name="Ficha Aleatória" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Fira/output/Fira.rpk?raw=true" fileName="Fira.rpk" repositoryPath="Sheets/Fira/" author="Yiotoo(Fábio Lofredo Cesar)" description="Uma ficha de personagem com elementos aleatórios e com diversas ferramentas." version="1.0" compilationDate="29102018135610" compilationDigest="6b132b696bc947b6b5b1cef42f7d66e70dc3ad29">
         <dataTypes>
             <dataType id="fira.fire.now" title="Ficha Aleatória"/>
         </dataTypes>
     </element>
-    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="1.0.2" compilationDate="29102018121338" compilationDigest="df7cae33917e9c5c5182f5fd30ccebeaedfb8881">
+    <element id="GerenciadorDeCampanha" name="Gerenciador de Campanha" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Gerenciador%20de%20Campanha/output/Gerenciador%20de%20Campanha.rpk?raw=true" fileName="Gerenciador de Campanha.rpk" repositoryPath="Sheets/Gerenciador de Campanha/" author="Ambesek" description="Ficha para gerenciar informaçes publicas e privadas de jogo, com visualizaçao seletiva entre jogadores e mestres." version="1.0.2" compilationDate="29102018135619" compilationDigest="74a016f1ec9ed803e65255d41b938abb8af4c07f">
         <dataTypes>
             <dataType id="Ambesek.Gerenciador.RPGmeister" title="Gerenciador de Campanha"/>
         </dataTypes>
     </element>
-    <element id="FICHA_SSF" name="Ficha Saint Seya Forever" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/GURPS%20Saint%20Seiya%20Forever/output/GURPS%20Saint%20Seiya%20Forever.rpk?raw=true" fileName="GURPS Saint Seiya Forever.rpk" repositoryPath="Sheets/GURPS Saint Seiya Forever/" author="Ambesek &amp; Nefertyne" description="Ficha feita para a mesa Saint Seiya Forever. Sistema GURPS." version="0.5" compilationDate="29102018121342" compilationDigest="f295f6ec052ca75d34f7749ee90e7e4e583c1ff1">
+    <element id="FICHA_SSF" name="Ficha Saint Seya Forever" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/GURPS%20Saint%20Seiya%20Forever/output/GURPS%20Saint%20Seiya%20Forever.rpk?raw=true" fileName="GURPS Saint Seiya Forever.rpk" repositoryPath="Sheets/GURPS Saint Seiya Forever/" author="Ambesek &amp; Nefertyne" description="Ficha feita para a mesa Saint Seiya Forever. Sistema GURPS." version="0.5" compilationDate="29102018135622" compilationDigest="fd75b22ebff9b12c4370496a362dbccf64059c37">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaSSF" title="Ficha SSF"/>
         </dataTypes>
     </element>
-    <element id="HdA.LBP" name="HdA v1" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Hora%20da%20Aventura/output/Hora%20da%20Aventura.rpk?raw=true" fileName="Hora da Aventura.rpk" repositoryPath="Sheets/Hora da Aventura/" author="LeandroBP" description="Adiciona suporte para fichas do sistema Oficial de Hora de Aventura." version="1.0" compilationDate="29102018121347" compilationDigest="416b3f8f9a35b0af8d2f6d8641521aa72936959e">
+    <element id="HdA.LBP" name="HdA v1" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Hora%20da%20Aventura/output/Hora%20da%20Aventura.rpk?raw=true" fileName="Hora da Aventura.rpk" repositoryPath="Sheets/Hora da Aventura/" author="LeandroBP" description="Adiciona suporte para fichas do sistema Oficial de Hora de Aventura." version="1.0" compilationDate="29102018135628" compilationDigest="99fe5d95eeefc60d70f7c157dc36c45388185e33">
         <dataTypes>
             <dataType id="HdA.LBP" title="Hora de Aventura"/>
         </dataTypes>
     </element>
-    <element id="FICHA_KH" name="Ficha Konoha Heroes" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Konoha%20Heroes/output/Konoha%20Heroes.rpk?raw=true" fileName="Konoha Heroes.rpk" repositoryPath="Sheets/Konoha Heroes/" author="HashBR" description="Ficha feita para o sistema Konoha Heroes" version="2.2" compilationDate="29102018121348" compilationDigest="45ce05ecedbb344bbe9a6877f710ca90c4271c9a">
+    <element id="FICHA_KH" name="Ficha Konoha Heroes" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Konoha%20Heroes/output/Konoha%20Heroes.rpk?raw=true" fileName="Konoha Heroes.rpk" repositoryPath="Sheets/Konoha Heroes/" author="HashBR" description="Ficha feita para o sistema Konoha Heroes" version="2.2" compilationDate="29102018135628" compilationDigest="2635887c4a4400a1ab6beb1ccef523fb97ed499a">
         <dataTypes>
             <dataType id="HashBR.KH" title="Konoha Heroes 2.2"/>
         </dataTypes>
     </element>
-    <element id="FICHA_LH" name="Ficha Log Horizon" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Log%20Horizon/output/Log%20Horizon.rpk?raw=true" fileName="Log Horizon.rpk" repositoryPath="Sheets/Log Horizon/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Log Horizon" version="0.1" compilationDate="29102018121349" compilationDigest="6d4dc64fcbcfdee0bde037011689dd83c827348a">
+    <element id="FICHA_LH" name="Ficha Log Horizon" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Log%20Horizon/output/Log%20Horizon.rpk?raw=true" fileName="Log Horizon.rpk" repositoryPath="Sheets/Log Horizon/" author="Ambesek &amp; Nefertyne" description="Ficha feita para o sistema Log Horizon" version="0.1" compilationDate="29102018135630" compilationDigest="0f1cc63813bd06db8024b35996dffc7e9c442a11">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaLH" title="Ficha LH"/>
         </dataTypes>
     </element>
-    <element id="MALDITOSGLOBINS.mal.gob.mal.gob" name="Malditos Goblins" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Malditos%20Goblins/output/Malditos%20Goblins.rpk?raw=true" fileName="Malditos Goblins.rpk" repositoryPath="Sheets/Malditos Goblins/" author="Yiotoo(Fábio Lofredo Cesar)" description="Ficha do RPG malditos Goblins geradas automaticamente." version="1.0" compilationDate="29102018121351" compilationDigest="35fa8675571ad670e209502f95040ae4e3a428e4">
+    <element id="MALDITOSGLOBINS.mal.gob.mal.gob" name="Malditos Goblins" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Malditos%20Goblins/output/Malditos%20Goblins.rpk?raw=true" fileName="Malditos Goblins.rpk" repositoryPath="Sheets/Malditos Goblins/" author="Yiotoo(Fábio Lofredo Cesar)" description="Ficha do RPG malditos Goblins geradas automaticamente." version="1.0" compilationDate="29102018135631" compilationDigest="5f0bd3895c66a4eaf379a21ca411457e51bd16e6">
         <dataTypes>
             <dataType id="mg.mg.now" title="Malditos Goblins"/>
         </dataTypes>
     </element>
-    <element id="br.FichaDani_MB.3" name="M&amp;B 3.0" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/MightyBladeV6/output/MightyBladeV6.rpk?raw=true" fileName="MightyBladeV6.rpk" repositoryPath="Sheets/MightyBladeV6/" author="FichaEditavel-MarroarOligeiro" description="Ficha MB 3.0" version="1.0" compilationDate="29102018121351" compilationDigest="6592c39302cbc8921db799f8c9962ec447080911">
+    <element id="br.FichaDani_MB.3" name="M&amp;B 3.0" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/MightyBladeV6/output/MightyBladeV6.rpk?raw=true" fileName="MightyBladeV6.rpk" repositoryPath="Sheets/MightyBladeV6/" author="FichaEditavel-MarroarOligeiro" description="Ficha MB 3.0" version="1.0" compilationDate="29102018135632" compilationDigest="f2ba67a9139c119141641fa8d5b5ea18ecf113d8">
         <dataTypes>
             <dataType id="Alterar.DataType.mb30fichadani" title="mbFichaDani"/>
         </dataTypes>
     </element>
-    <element id="MM3e_RRPG_Gilgante_2_7" name="MM3e_2_7" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mutantes%20e%20Malfeitores%203e/output/Mutantes%20e%20Malfeitores%203e.rpk?raw=true" fileName="Mutantes e Malfeitores 3e.rpk" repositoryPath="Sheets/Mutantes e Malfeitores 3e/" author="Janus e Gilgante" description="Ficha para Mutantes e Malfeitores 3a edicao com frente, verso, aba de pericias, aba de lista de poderes, rolagens de pericias, defesas, ataques e iniciativa." version="2.8.1" compilationDate="29102018121353" compilationDigest="120e73d35b64620ba95e1420ab4094c8028bf72f">
+    <element id="MM3e_RRPG_Gilgante_2_7" name="MM3e_2_7" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mutantes%20e%20Malfeitores%203e/output/Mutantes%20e%20Malfeitores%203e.rpk?raw=true" fileName="Mutantes e Malfeitores 3e.rpk" repositoryPath="Sheets/Mutantes e Malfeitores 3e/" author="Janus e Gilgante" description="Ficha para Mutantes e Malfeitores 3a edicao com frente, verso, aba de pericias, aba de lista de poderes, rolagens de pericias, defesas, ataques e iniciativa." version="2.8.1" compilationDate="29102018135634" compilationDigest="542fa88fe161e3f2ed4a6581daf045eaf5a9e893">
         <dataTypes>
             <dataType id="MM3e_RRPG_2_7" title="MM3e_2_7"/>
         </dataTypes>
     </element>
-    <element id="Stark_OMM_1" name="OMM" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Os%20Mundos%20dos%20Mortos/output/Os%20Mundos%20dos%20Mortos.rpk?raw=true" fileName="Os Mundos dos Mortos.rpk" repositoryPath="Sheets/Os Mundos dos Mortos/" author="Stark_OMM_1" description="Pluguin de ficha O mundo dos mortos" version="1.0" compilationDate="29102018121355" compilationDigest="13e393bf0549ef9753de0b398b9b312fdec4a052">
+    <element id="Stark_OMM_1" name="OMM" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Os%20Mundos%20dos%20Mortos/output/Os%20Mundos%20dos%20Mortos.rpk?raw=true" fileName="Os Mundos dos Mortos.rpk" repositoryPath="Sheets/Os Mundos dos Mortos/" author="Stark_OMM_1" description="Pluguin de ficha O mundo dos mortos" version="1.0" compilationDate="29102018135635" compilationDigest="3e5e97615754310e6cf79d210ab312b8b06f97a9">
         <dataTypes>
             <dataType id="Stark_RRpg_OMM" title="OMM"/>
         </dataTypes>
     </element>
-    <element id="FICHA_PKMN" name="Ficha PKMN" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Pokemon%20D20/output/Pokemon%20D20.rpk?raw=true" fileName="Pokemon D20.rpk" repositoryPath="Sheets/Pokemon D20/" author="Ambesek &amp; Nefertyne" description="Ficha feita para Pokémon d20" version="0.1" compilationDate="29102018121355" compilationDigest="bccd0997994651eb91ad4eb8b3457b5d9c9e2870">
+    <element id="FICHA_PKMN" name="Ficha PKMN" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Pokemon%20D20/output/Pokemon%20D20.rpk?raw=true" fileName="Pokemon D20.rpk" repositoryPath="Sheets/Pokemon D20/" author="Ambesek &amp; Nefertyne" description="Ficha feita para Pokémon d20" version="0.1" compilationDate="29102018135636" compilationDigest="13d1c873efa0787644fff83d3bf8055d7cd6c20e">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaPKMN" title="Ficha Pokémon d20"/>
         </dataTypes>
     </element>
-    <element id="FICHA_RdF" name="Ficha Reinos de Ferro" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Reinos%20de%20Ferro/output/Reinos%20de%20Ferro.rpk?raw=true" fileName="Reinos de Ferro.rpk" repositoryPath="Sheets/Reinos de Ferro/" author="Ambesek &amp; Nefertyne" description="Ficha para o cenario/sistema Reinos de Ferro." version="0.2" compilationDate="29102018121357" compilationDigest="7803fb9285e878b1d9b66568f69a5b62f0d25d85">
+    <element id="FICHA_RdF" name="Ficha Reinos de Ferro" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Reinos%20de%20Ferro/output/Reinos%20de%20Ferro.rpk?raw=true" fileName="Reinos de Ferro.rpk" repositoryPath="Sheets/Reinos de Ferro/" author="Ambesek &amp; Nefertyne" description="Ficha para o cenario/sistema Reinos de Ferro." version="0.2" compilationDate="29102018135638" compilationDigest="7b631e37fa264164975a51f57b924f3cce771383">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.FichaRdF" title="Ficha Reinos de Ferro"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.WoD.20th" name="World of Darkness 20th Anniversary" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/output/World%20of%20Darkness%2020th.rpk?raw=true" fileName="World of Darkness 20th.rpk" repositoryPath="Sheets/World of Darkness 20th/" author="Ambesek" description="Plugin de ficha para Werewolf the Apocalypse 20th Anniversary Edition, Vampíre the Dark Ages 20th Anniversary Edition e Mage the Ascension 20th Anniversary Edition" version="0.4.1" compilationDate="29102018121402" compilationDigest="ddd1fdce34f7a81bedd095440b0a30b3d23c451d">
+    <element id="Ambesek.WoD.20th" name="World of Darkness 20th Anniversary" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/World%20of%20Darkness%2020th/output/World%20of%20Darkness%2020th.rpk?raw=true" fileName="World of Darkness 20th.rpk" repositoryPath="Sheets/World of Darkness 20th/" author="Ambesek" description="Plugin de ficha para Werewolf the Apocalypse 20th Anniversary Edition, Vampíre the Dark Ages 20th Anniversary Edition e Mage the Ascension 20th Anniversary Edition" version="0.4.1" compilationDate="29102018135643" compilationDigest="fd1fc287c4f174e53fc1f151b5df6081c49c864c">
         <dataTypes>
             <dataType id="Ambesek.Mage.20th" title="Mage 20th Anniversary"/>
             <dataType id="Ambesek.Mage.DarkAges" title="Mage Dark Ages"/>
@@ -226,17 +226,17 @@
             <dataType id="Ambesek.Werewolf.20th" title="Werewolf 20th Anniversary"/>
         </dataTypes>
     </element>
-    <element id="ID_PLUGIN_ZOMBIE_SURVIVAL" name="Plugin Zombie Survival v1" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Zombie%20Survival/output/Zombie%20Survival.rpk?raw=true" fileName="Zombie Survival.rpk" repositoryPath="Sheets/Zombie Survival/" author="JuniorMW" description="Esse Plugin foi feito a pedido do Wanderley pelo grupo do facebook RRPG Firecasters" version="1.0" compilationDate="29102018121411" compilationDigest="d7fb4fc06fcb032e443fc2a73d0917655027cf80">
+    <element id="ID_PLUGIN_ZOMBIE_SURVIVAL" name="Plugin Zombie Survival v1" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Zombie%20Survival/output/Zombie%20Survival.rpk?raw=true" fileName="Zombie Survival.rpk" repositoryPath="Sheets/Zombie Survival/" author="JuniorMW" description="Esse Plugin foi feito a pedido do Wanderley pelo grupo do facebook RRPG Firecasters" version="1.0" compilationDate="29102018135652" compilationDigest="0f582fbc7900920f28a79b0730c6aff68e35eb43">
         <dataTypes>
             <dataType id="DataType.Zombie.Survival" title="Zombie Survival"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Auto.Updater" name="Plugin Auto Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" fileName="AutoUpdater.rpk" repositoryPath="TablesDock/AutoUpdater/" author="Ambesek" description="Verifica seus plugins e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." version="0.4" compilationDate="29102018121411" compilationDigest="8c980e3fc96a16af821ea9124d39651c67a61d17">
+    <element id="Ambesek.Auto.Updater" name="Plugin Auto Updater" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true" fileName="AutoUpdater.rpk" repositoryPath="TablesDock/AutoUpdater/" author="Ambesek" description="Verifica seus plugins e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git." version="0.4" compilationDate="29102018135652" compilationDigest="a19dc945471461bc5d618055fe0134f2b07ba975">
         <dataTypes>
             <dataType id="Ambesek.Auto.Updater" title="Plugin Auto Updater"/>
         </dataTypes>
     </element>
-    <element id="LISTA_DE_NPC_RRPG" name="Lista de NPCs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20NPCs/output/Lista%20de%20NPCs.rpk?raw=true" fileName="Lista de NPCs.rpk" repositoryPath="TablesDock/Lista de NPCs/" author="Mia Alexandra (Mia)" description="Um plugin que em resumo, é uma tabela onde é possível inserir NPCs diversos. A configuração das barrinhas e linhas é similar à do RRPG, para o propósito de manter a interface limpa e homogênea." version="2.1" compilationDate="29102018121412" compilationDigest="c44d12bbfa1950d35be9e3aed3c077de5bb2d66a">
+    <element id="LISTA_DE_NPC_RRPG" name="Lista de NPCs" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Lista%20de%20NPCs/output/Lista%20de%20NPCs.rpk?raw=true" fileName="Lista de NPCs.rpk" repositoryPath="TablesDock/Lista de NPCs/" author="Mia Alexandra (Mia)" description="Um plugin que em resumo, é uma tabela onde é possível inserir NPCs diversos. A configuração das barrinhas e linhas é similar à do RRPG, para o propósito de manter a interface limpa e homogênea." version="2.1" compilationDate="29102018135653" compilationDigest="d77bf397aa6dede6f44578fa21cddd9ca315e629">
         <dataTypes>
             <dataType id="Lista.de.NPC" title="Lista de NPCs"/>
             <dataType id="Lista.de.NPC.Ficha" title="Lista de NPCs (Ficha)"/>
