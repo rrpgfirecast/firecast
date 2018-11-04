@@ -158,7 +158,8 @@ function newfrmDnDNext_proficiencias_proficiencia()
             			end;
             			
             			local atr = {"forca","destreza","constituicao","inteligencia","sabedoria","carisma", ""};
-            			mod = tonumber(node.atributos["mod" .. atr[sheet.atr]]) or 0;
+            			local atribute = atr[sheet.atr] or "";
+            			mod = tonumber(node.atributos["mod" .. atribute]) or 0;
             			
             			sheet.total = bonus + mod;
         end, obj);
