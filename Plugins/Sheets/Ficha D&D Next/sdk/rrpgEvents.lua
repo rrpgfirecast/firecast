@@ -15,6 +15,8 @@ local _LuaForms = {};
 --[ Lista de forms que não estao sendo utilizados, e podem ser reusados (antes que o garbage colector faca sua parte) ]--
 local _CachedFreeForms = {};  
 
+local _WeakKeyMetaTable = {__mode="k"};
+
 function _eve_Forms_CriarForm(formName)
   local dtObj = rrpg.forms[formName];
   
@@ -91,6 +93,7 @@ function _eve_Forms_Cached_DestruirForm(formHandle)
 			
 			if cache == nil then
 				cache = {};
+				--setmetatable(cache, _WeakKeyMetaTable);
 				_CachedFreeForms[formName] = cache;
 			end;
 			

@@ -1,14 +1,14 @@
-require("firecast.lua");
+require("rrpg.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
-require("locale.lua");
-local __o_Utils = require("utils.lua");
 
-local function constructNew_frmConsumiveis()
-    local obj = GUI.fromHandle(_obj_newObject("form"));
+function newfrmConsumiveis()
+    __o_rrpgObjs.beginObjectsLoading();
+
+    local obj = gui.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,13 +30,13 @@ local function constructNew_frmConsumiveis()
     obj:setHeight(60);
     obj:setMargins({top=2,bottom=2});
 
-    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle1 = gui.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj);
     obj.rectangle1:setAlign("client");
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label1 = gui.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
     obj.label1:setLeft(10);
     obj.label1:setTop(5);
@@ -45,7 +45,7 @@ local function constructNew_frmConsumiveis()
     obj.label1:setText("NOME");
     obj.label1:setName("label1");
 
-    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj);
     obj.edit1:setLeft(60);
     obj.edit1:setTop(5);
@@ -54,7 +54,7 @@ local function constructNew_frmConsumiveis()
     obj.edit1:setField("nome");
     obj.edit1:setName("edit1");
 
-    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label2 = gui.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj);
     obj.label2:setLeft(163);
     obj.label2:setTop(5);
@@ -63,7 +63,7 @@ local function constructNew_frmConsumiveis()
     obj.label2:setText("NC");
     obj.label2:setName("label2");
 
-    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj);
     obj.edit2:setLeft(185);
     obj.edit2:setTop(5);
@@ -72,7 +72,7 @@ local function constructNew_frmConsumiveis()
     obj.edit2:setField("nc");
     obj.edit2:setName("edit2");
 
-    obj.label3 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label3 = gui.fromHandle(_obj_newObject("label"));
     obj.label3:setParent(obj);
     obj.label3:setLeft(213);
     obj.label3:setTop(5);
@@ -81,7 +81,7 @@ local function constructNew_frmConsumiveis()
     obj.label3:setText("CD");
     obj.label3:setName("label3");
 
-    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj);
     obj.edit3:setLeft(235);
     obj.edit3:setTop(5);
@@ -90,7 +90,7 @@ local function constructNew_frmConsumiveis()
     obj.edit3:setField("cd");
     obj.edit3:setName("edit3");
 
-    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setLeft(5);
     obj.button1:setTop(30);
@@ -98,7 +98,7 @@ local function constructNew_frmConsumiveis()
     obj.button1:setText("Dados");
     obj.button1:setName("button1");
 
-    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj);
     obj.edit4:setLeft(60);
     obj.edit4:setTop(30);
@@ -107,7 +107,7 @@ local function constructNew_frmConsumiveis()
     obj.edit4:setField("dados");
     obj.edit4:setName("edit4");
 
-    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label4 = gui.fromHandle(_obj_newObject("label"));
     obj.label4:setParent(obj);
     obj.label4:setLeft(168);
     obj.label4:setTop(30);
@@ -116,7 +116,7 @@ local function constructNew_frmConsumiveis()
     obj.label4:setText("USOS");
     obj.label4:setName("label4");
 
-    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj);
     obj.edit5:setLeft(210);
     obj.edit5:setTop(30);
@@ -125,7 +125,7 @@ local function constructNew_frmConsumiveis()
     obj.edit5:setField("usosMin");
     obj.edit5:setName("edit5");
 
-    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj);
     obj.edit6:setLeft(235);
     obj.edit6:setTop(30);
@@ -134,7 +134,7 @@ local function constructNew_frmConsumiveis()
     obj.edit6:setField("usosMax");
     obj.edit6:setName("edit6");
 
-    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button2 = gui.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj);
     obj.button2:setAlign("right");
     obj.button2:setText("X");
@@ -169,12 +169,12 @@ local function constructNew_frmConsumiveis()
 
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (self)
             teste();
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (_)
+        function (self)
             ndb.deleteNode(sheet);
         end, obj);
 
@@ -210,23 +210,9 @@ local function constructNew_frmConsumiveis()
 
     obj:endUpdate();
 
+     __o_rrpgObjs.endObjectsLoading();
+
     return obj;
-end;
-
-function newfrmConsumiveis()
-    local retObj = nil;
-    __o_rrpgObjs.beginObjectsLoading();
-
-    __o_Utils.tryFinally(
-      function()
-        retObj = constructNew_frmConsumiveis();
-      end,
-      function()
-        __o_rrpgObjs.endObjectsLoading();
-      end);
-
-    assert(retObj ~= nil);
-    return retObj;
 end;
 
 local _frmConsumiveis = {
@@ -240,6 +226,6 @@ local _frmConsumiveis = {
     description=""};
 
 frmConsumiveis = _frmConsumiveis;
-Firecast.registrarForm(_frmConsumiveis);
+rrpg.registrarForm(_frmConsumiveis);
 
 return _frmConsumiveis;

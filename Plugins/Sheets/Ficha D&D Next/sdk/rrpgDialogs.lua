@@ -412,10 +412,12 @@ function lDialogs.choose(prompt, options, callback, defaultIndex, shortCircuit)
 		return;
 	end;
 
-	require("gui.lua");
+	local GUI = require("gui.lua");
 	local choosePanel = _newChoiceDialogPopup();
 	
-	if type(options) == "table" then						
+	if type(options) == "table" then				
+		local i;
+		
 		for i = 1, #options, 1 do
 			choosePanel:addSelectionOption(options[i]);
 		end;	
@@ -453,10 +455,12 @@ function lDialogs.choose(prompt, options, callback, defaultIndex, shortCircuit)
 end;
 
 function lDialogs.chooseMultiple(prompt, options, callback)
-	require("gui.lua");
+	local GUI = require("gui.lua");
 	local choosePanel = _newMultipleChoiceDialogPopup();
 	
-	if type(options) == "table" then		
+	if type(options) == "table" then
+		local i;
+		
 		for i = 1, #options, 1 do
 			choosePanel:addSelectionOption(options[i]);
 		end;

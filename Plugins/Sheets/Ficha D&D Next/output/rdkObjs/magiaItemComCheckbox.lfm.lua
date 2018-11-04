@@ -1,14 +1,14 @@
-require("firecast.lua");
+require("rrpg.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
-require("locale.lua");
-local __o_Utils = require("utils.lua");
 
-local function constructNew_frmMagiaItemComCheckbox()
-    local obj = GUI.fromHandle(_obj_newObject("form"));
+function newfrmMagiaItemComCheckbox()
+    __o_rrpgObjs.beginObjectsLoading();
+
+    local obj = gui.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -51,7 +51,7 @@ local function constructNew_frmMagiaItemComCheckbox()
 			
 
 
-    obj.imageCheckBox1 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.imageCheckBox1 = gui.fromHandle(_obj_newObject("imageCheckBox"));
     obj.imageCheckBox1:setParent(obj);
     obj.imageCheckBox1:setAlign("left");
     obj.imageCheckBox1:setWidth(25);
@@ -63,12 +63,12 @@ local function constructNew_frmMagiaItemComCheckbox()
     obj.imageCheckBox1:setName("imageCheckBox1");
     obj.imageCheckBox1:setHeight(20);
 
-    obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout1 = gui.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj);
     obj.layout1:setAlign("client");
     obj.layout1:setName("layout1");
 
-    obj.edtNome = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edtNome = gui.fromHandle(_obj_newObject("edit"));
     obj.edtNome:setParent(obj.layout1);
     obj.edtNome:setName("edtNome");
     obj.edtNome:setAlign("client");
@@ -79,13 +79,13 @@ local function constructNew_frmMagiaItemComCheckbox()
     obj.edtNome:setFontColor("white");
     obj.edtNome:setTransparent(true);
 
-    obj.horzLine1 = GUI.fromHandle(_obj_newObject("horzLine"));
+    obj.horzLine1 = gui.fromHandle(_obj_newObject("horzLine"));
     obj.horzLine1:setParent(obj.layout1);
     obj.horzLine1:setAlign("bottom");
     obj.horzLine1:setStrokeColor("white");
     obj.horzLine1:setName("horzLine1");
 
-    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1 = gui.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.layout1);
     obj.button1:setText("i");
     obj.button1:setAlign("right");
@@ -93,7 +93,7 @@ local function constructNew_frmMagiaItemComCheckbox()
     obj.button1:setMargins({left=4, right=0, top=2, bottom=2});
     obj.button1:setName("button1");
 
-    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button2 = gui.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.layout1);
     obj.button2:setText("Apagar");
     obj.button2:setAlign("right");
@@ -105,12 +105,12 @@ self.height=32;
 
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (_)
+        function (self)
             showMagiaPopup();
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
-        function (_)
+        function (self)
             askForDelete();
         end, obj);
 
@@ -139,23 +139,9 @@ self.height=32;
 
     obj:endUpdate();
 
+     __o_rrpgObjs.endObjectsLoading();
+
     return obj;
-end;
-
-function newfrmMagiaItemComCheckbox()
-    local retObj = nil;
-    __o_rrpgObjs.beginObjectsLoading();
-
-    __o_Utils.tryFinally(
-      function()
-        retObj = constructNew_frmMagiaItemComCheckbox();
-      end,
-      function()
-        __o_rrpgObjs.endObjectsLoading();
-      end);
-
-    assert(retObj ~= nil);
-    return retObj;
 end;
 
 local _frmMagiaItemComCheckbox = {
@@ -169,6 +155,6 @@ local _frmMagiaItemComCheckbox = {
     description=""};
 
 frmMagiaItemComCheckbox = _frmMagiaItemComCheckbox;
-Firecast.registrarForm(_frmMagiaItemComCheckbox);
+rrpg.registrarForm(_frmMagiaItemComCheckbox);
 
 return _frmMagiaItemComCheckbox;

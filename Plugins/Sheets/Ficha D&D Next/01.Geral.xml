@@ -347,100 +347,114 @@
 			]]>
 		</script>
 
-		<rectangle align="top" height="110" color="black">
-			<label left="5" top="5" width="50" height="25" text="CLASSE"/>
-			<edit vertTextAlign="center" left="60" top="5" width="380" height="25" field="classe1"/>
-			
-			<label left="5" top="30" width="50" height="25" text="RAÇA"/>
-			<edit vertTextAlign="center" left="60" top="30" width="380" height="25" field="raca"/>
-			
-			<label left="5" top="55" width="50" height="25" text="TIPO"/>
-			<edit vertTextAlign="center" left="60" top="55" width="380" height="25" field="tipo"/>
-			
-			<label left="5" top="80" width="70" height="25" text="SUBTIPO"/>
-			<edit vertTextAlign="center" left="60" top="80" width="380" height="25" field="subtipo"/>
-			
-			
-			<label left="445" top="5" width="70" height="25" text="JOGADOR" fontSize="13"/>
-			<edit vertTextAlign="center" left="520" top="5" width="290" height="25" field="nome"/>
-			
-			<label left="445" top="30" width="70" height="25" text="TENDÊNCIA"/>
-			<edit vertTextAlign="center" left="520" top="30" width="290" height="25" field="tendencia"/>
-			
-			<label left="445" top="55" width="70" height="25" text="ANTECEDENTES" fontSize="9"/>
-			<edit vertTextAlign="center" left="520" top="55" width="290" height="25" field="culto"/>
-			
-			<label left="445" top="80" width="70" height="25" text="TITULO"/>
-			<edit vertTextAlign="center" left="520" top="80" width="290" height="25" field="posto"/>
-			
-			
-			<label left="815" top="5" width="70" height="25" text="NEP"/>
-			<rectangle left="890" top="5" width="70" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label field="nep" left="890" top="5" width="70" height="25" horzTextAlign="center"/>
+		<rectangle top="0" width="5000" height="120" color="black"/>
+		<flowLayout align="top" class="oneLineTile" autoHeight="true" minScaledWidth="290" horzAlign="center">
+			<layout top="0" width="1110" height="110">
+					<label left="5" top="5" width="50" height="25" text="CLASSE"/>
+					<edit vertTextAlign="center" left="60" top="5" width="380" height="25" field="classe1"/>
+					
+					<label left="5" top="30" width="50" height="25" text="RAÇA"/>
+					<edit vertTextAlign="center" left="60" top="30" width="380" height="25" field="raca"/>
+					
+					<label left="5" top="55" width="50" height="25" text="TIPO"/>
+					<edit vertTextAlign="center" left="60" top="55" width="380" height="25" field="tipo"/>
+					
+					<label left="5" top="80" width="70" height="25" text="SUBTIPO"/>
+					<edit vertTextAlign="center" left="60" top="80" width="380" height="25" field="subtipo"/>
+					
+					
+					<label left="445" top="5" width="70" height="25" text="JOGADOR" fontSize="13"/>
+					<edit vertTextAlign="center" left="520" top="5" width="290" height="25" field="nome"/>
+					
+					<label left="445" top="30" width="70" height="25" text="TENDÊNCIA"/>
+					<edit vertTextAlign="center" left="520" top="30" width="290" height="25" field="tendencia"/>
+					
+					<label left="445" top="55" width="70" height="25" text="ANTECEDENTE" fontSize="10"/>
+					<edit vertTextAlign="center" left="520" top="55" width="290" height="25" field="culto"/>
+					
+					<label left="445" top="80" width="70" height="25" text="TITULO"/>
+					<edit vertTextAlign="center" left="520" top="80" width="290" height="25" field="posto"/>
+					
+					
+					<label left="815" top="5" width="70" height="25" text="NEP"/>
+					<rectangle left="890" top="5" width="70" height="25" color="black" strokeColor="white" strokeSize="1"/>
+					<label field="nep" left="890" top="5" width="70" height="25" horzTextAlign="center"/>
 
-			<label left="975" top="5" width="60" height="25" text="AJUSTE"/>
-			<edit vertTextAlign="center" left="1030" top="5" width="70" height="25" field="ajuste"/>
-			
-			<label left="815" top="30" width="70" height="25" text="XP ATUAL"/>
-			<edit vertTextAlign="center" left="890" top="30" width="210" height="25" field="xpAtual"/>
-			
-			<button left="815" top="56" width="50" text="ADD">
-				<event name="onClick">
-						local mod = (getNumber(sheet.xpAtual) or 0) + (getNumber(sheet.xpNova) or 0);
-						
-						while true do  
-							mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
-							if (k==0) then
-							  break
-							end
-						end
-						mod = string.gsub(mod, ",", ".");
-						
-						sheet.xpAtual = mod .. "XP";
-						sheet.xpNova = "0";
-					</event>
-			</button>
-			<edit vertTextAlign="center" left="890" top="55" width="210" height="25" field="xpNova"/>
-			
-			<label left="815" top="80" width="70" height="25" text="XP ALVO"/>
-			<rectangle left="890" top="80" width="210" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label field="xpNivel" left="890" top="80" width="210" height="25" horzTextAlign="center"/>
+					<label left="975" top="5" width="60" height="25" text="AJUSTE"/>
+					<edit vertTextAlign="center" left="1030" top="5" width="70" height="25" field="ajuste"/>
+					
+					<label left="815" top="30" width="70" height="25" text="XP ATUAL"/>
+					<edit vertTextAlign="center" left="890" top="30" width="210" height="25" field="xpAtual"/>
+					
+					<button left="815" top="56" width="50" text="ADD">
+						<event name="onClick">
+								local mod = (getNumber(sheet.xpAtual) or 0) + (getNumber(sheet.xpNova) or 0);
+								
+								while true do  
+									mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
+									if (k==0) then
+									  break
+									end
+								end
+								mod = string.gsub(mod, ",", ".");
+								
+								sheet.xpAtual = mod .. "XP";
+								sheet.xpNova = "0";
+							</event>
+					</button>
+					<edit vertTextAlign="center" left="890" top="55" width="210" height="25" field="xpNova"/>
+					
+					<label left="815" top="80" width="70" height="25" text="XP ALVO"/>
+					<rectangle left="890" top="80" width="210" height="25" color="black" strokeColor="white" strokeSize="1"/>
+					<label field="xpNivel" left="890" top="80" width="210" height="25" horzTextAlign="center"/>
 
-			<dataLink field="xpAtual">
-				<event name="onChange">
-					if sheet~= nil then
-						if sheet.xpAtual == nil then
-							sheet.xpAtual = 0;
-						end;
-						local mod = sheet.xpAtual;
-						mod = string.gsub(mod, "X", "");
-						mod = string.gsub(mod, "P", "");
-						mod = string.gsub(mod, "x", "");
-						mod = string.gsub(mod, "p", "");
-						mod = string.gsub(mod, "%.", "");
-						mod = (tonumber(mod) or 0);
-						local mod2 = 0;
-						local mod3 = 0;
-						while mod>=mod2 do
-							mod3 = mod3+1;
-							mod2 = mod2 + mod3*1000;
-						end
-						
-						while true do  
-							mod2, k = string.gsub(mod2, "^(-?%d+)(%d%d%d)", '%1,%2')
-							if (k==0) then
-							  break
-							end
-						end
-						mod2 = string.gsub(mod2, ",", ".");
-						
-						sheet.xpNivel = mod2 .. "XP";
-						sheet.nep = mod3;
-					end;
-				</event>
-			</dataLink>
-		</rectangle>
-		
+					<dataLink field="xpAtual">
+						<event name="onChange">
+							<![CDATA[
+							if sheet~= nil then
+								if sheet.xpAtual == nil then
+									sheet.xpAtual = 0;
+								end;
+
+								local xpTable = {300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000};
+
+								local myXP = sheet.xpAtual;
+								myXP = string.gsub(myXP, "X", "");
+								myXP = string.gsub(myXP, "P", "");
+								myXP = string.gsub(myXP, "x", "");
+								myXP = string.gsub(myXP, "p", "");
+								myXP = string.gsub(myXP, "%.", "");
+								myXP = (tonumber(myXP) or 0);
+								local nextXP = xpTable[1];
+								local level = 0;
+								local prof = 2;
+								while myXP>=nextXP and level<20 do
+									level = level+1;
+									nextXP = xpTable[level+1];
+									if level>=17 then prof = 6 
+									elseif level>=13 then prof = 5
+									elseif level>=9 then prof = 4
+									elseif level>=5 then prof = 3 end;
+								end
+								
+								while true do  
+									nextXP, k = string.gsub(nextXP, "^(-?%d+)(%d%d%d)", '%1,%2')
+									if (k==0) then
+									  break
+									end
+								end
+								nextXP = string.gsub(nextXP, ",", ".");
+								
+								sheet.xpNivel = nextXP .. "XP";
+								sheet.nep = level;
+								sheet.bonusProficiencia = prof;
+							end;
+							]]>
+						</event>
+					</dataLink>
+			</layout>
+		</flowLayout>
+
 		<rectangle align="client" color="black">
 			<import file="frente.xml"/>
 		</rectangle>

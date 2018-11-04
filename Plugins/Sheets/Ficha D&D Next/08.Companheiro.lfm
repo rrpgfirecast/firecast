@@ -75,16 +75,10 @@
 				<label left="110" top="8" width="40" height="20" text="PVs"/>
 				<edit left="140" top="5" width="55" height="25" field="pvsComp"/>
 
-				<label left="5" top="35" width="60" height="20" text="CA"/>
-				<edit left="70" top="30" width="35" height="25" field="caComp"/>
+				<label left="5" top="35" width="135" height="20" text="Classe de Armadura" horzTextAlign="center"/>
+				<edit left="140" top="30" width="55" height="25" field="caComp"/>
 
-				<label left="5" top="60" width="60" height="20" text="Toque"/>
-				<edit left="70" top="55" width="35" height="25" field="toqueComp"/>
-
-				<label left="5" top="85" width="60" height="20" text="Surpresa"/>
-				<edit left="70" top="80" width="35" height="25" field="surpresaComp"/>
-
-				<textEditor left="105" top="30" width="90" height="75" field="caCompDesc"/>
+				<textEditor left="5" top="55" width="190" height="50" field="caCompDesc"/>
 			</rectangle>
 
 			<rectangle left="0" top="251" width="200" height="60" color="black">
@@ -125,7 +119,7 @@
 			</rectangle>
 
 			<rectangle left="205" top="0" width="300" height="300" color="black">
-				<label left="0" top="0" width="300" height="25" text="PERÍCIAS" horzTextAlign="center"/>
+				<label left="0" top="0" width="300" height="25" text="PROFICIÊNCIAS" horzTextAlign="center"/>
 				<textEditor left="5" top="30" width="290" height="265" field="periciasComp"/>
 			</rectangle>
 
