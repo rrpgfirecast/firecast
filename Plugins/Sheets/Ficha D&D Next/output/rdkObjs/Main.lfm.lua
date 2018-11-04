@@ -13978,7 +13978,8 @@ self.flwMagicRecordList10._recalcHeight();
             						end;
             
             						local atr = {"forca","destreza","constituicao","inteligencia","sabedoria","carisma", ""};
-            						local atribute = atr[nodes[i].atr] or "";
+            						local atrNum = tonumber(nodes[i].atr) or 7;
+            						local atribute = atr[atrNum] or "";
             						mod = tonumber(sheet.atributos["mod" .. atribute]) or 0;
             
             						nodes[i].total = bonus + mod;
