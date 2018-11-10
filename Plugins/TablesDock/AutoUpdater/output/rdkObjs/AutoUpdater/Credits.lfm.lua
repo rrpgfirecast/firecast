@@ -116,25 +116,25 @@ local function constructNew_frmTemplateCreditos()
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/README.md')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/README.md')
         end, obj);
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
         function (_)
-            local install = rrpg.plugins.installPlugin(updaterSheet.stream, true);
+            local install = Firecast.Plugins.installPlugin(rawget(updaterSheet,"stream"), true);
                             if install==false then
-                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true');
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true');
                             end;
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true')
         end, obj);
 
     obj._e_event3 = obj.button3:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
+            GUI.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     function obj:_releaseEvents()

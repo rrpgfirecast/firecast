@@ -44,7 +44,7 @@ local function constructNew_frmInstalled()
     obj._e_event0 = obj.installedPluginsList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             if nodeA.enabled and nodeB.enabled then 
-            					return utils.compareStringPtBr(nodeA.name, nodeB.name);
+            					return Utils.compareStringPtBr(nodeA.name, nodeB.name);
             				elseif nodeA.enabled then
             					return 1;
             				elseif nodeB.enabled then

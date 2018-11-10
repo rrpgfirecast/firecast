@@ -78,7 +78,7 @@ local function constructNew_frmTemplate()
         end;
 
         local function verifyUpdate(id, url)
-            local nodes = ndb.getChildNodes(updaterSheet.installedPluginsList); 
+            local nodes = NDB.getChildNodes(updaterSheet.installedPluginsList); 
             local myNode;
             for i=1, #nodes, 1 do
                 if nodes[i].moduleId == id then
@@ -86,11 +86,11 @@ local function constructNew_frmTemplate()
                 end;
             end
 
-            internet.download(url,
+            Internet.download(url,
                 function(stream, contentType)
                     -- esta função será chamada quando o download terminar
                     -- o conteúdo do arquivo baixado está em stream.
-                    local info = rrpg.plugins.getRPKDetails(stream);
+                    local info = Firecast.Plugins.getRPKDetails(stream);
 
                     updaterSheet.loaded = updaterSheet.loaded + 1;
                     updaterSheet.loading = "Carregando " .. updaterSheet.loaded .. "/" .. updaterSheet.toLoad;
@@ -103,7 +103,7 @@ local function constructNew_frmTemplate()
                     if myNode ~= nil then
                         myNode.versionAvailable = info.version;
                         myNode.url = url;
-                        myNode.stream = stream;
+                        rawset(myNode,"stream",stream);
                     else
                         local item = self.downloadedPluginsList:append();
                         item.name = info.name;
@@ -111,11 +111,13 @@ local function constructNew_frmTemplate()
                         item.author = info.author;
                         item.version = info.version;
                         item.url = url;
-                        item.stream = stream;
+                        rawset(item,"stream",stream);
                         item.enabled = true;
                         item.description = info.description;
                         item.contact = info.contact;
                     end;
+
+                    
                 end,       
                 function (errorMsg)
                     -- esta função será chamada quando ocorrer algum erro no download.
@@ -310,18 +312,18 @@ local function constructNew_frmTemplate()
     obj._e_event0 = obj:addEventListener("onNodeReady",
         function (_)
             -- Carrega o local sheet para ser usado. 
-                    updaterSheet = ndb.load("sheet.xml");
+                    updaterSheet = NDB.load("config.xml");
                     self.scope:setNodeObject(updaterSheet);
             
                     -- Limpa os recordList e carrega a lista de plugins instaladados
-                    local installed = rrpg.plugins.getInstalledPlugins();
-                    local nodes = ndb.getChildNodes(updaterSheet.downloadedPluginsList); 
-                    for i=1, #nodes, 1 do
-                        ndb.deleteNode(nodes[i]);
+                    local installed = Firecast.Plugins.getInstalledPlugins();
+                    local nodesDownloaded = NDB.getChildNodes(updaterSheet.downloadedPluginsList); 
+                    for i=1, #nodesDownloaded, 1 do
+                        NDB.deleteNode(nodesDownloaded[i]);
                     end;
-                    local nodes = ndb.getChildNodes(updaterSheet.installedPluginsList); 
-                    for i=1, #nodes, 1 do
-                        ndb.deleteNode(nodes[i]);
+                    local nodesInstalled = NDB.getChildNodes(updaterSheet.installedPluginsList); 
+                    for i=1, #nodesInstalled, 1 do
+                        NDB.deleteNode(nodesInstalled[i]);
                     end;
             
                     -- Adiciona os plugins instalados a lista
@@ -358,23 +360,24 @@ local function constructNew_frmTemplate()
             
                     self.loader.visible = true;
                     updaterSheet.loading = "Carregando ?/?";
-                    internet.download("https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Plugins/plugins.xml",
+                    Internet.download("https://raw.githubusercontent.com/rrpgfirecast/firecast/master/Plugins/plugins.xml",
                         function(stream, contentType)
-                            if vhd.fileExists("import.xml") then
-                                vhd.deleteFile("import.xml");
+                            if VHD.fileExists("plugins.xml") then
+                                VHD.deleteFile("plugins.xml");
                             end;
-                            local file = vhd.openFile("import.xml", "w");
+                            local file = VHD.openFile("plugins.xml", "w");
                             file:copyFrom(stream, stream.size);
                             setTimeout(
                                 function ()
                                     file:close();
-                                    local import = ndb.load("import.xml");
+                                    local import = NDB.load("plugins.xml");
             
-                                    local list = ndb.getChildNodes(import);
+                                    local list = NDB.getChildNodes(import);
             
                                     updaterSheet.loaded = 0;
                                     updaterSheet.toLoad = #list;
                                     updaterSheet.loading = "Carregando 0/" .. updaterSheet.toLoad;
+            
                                     for i=1, #list, 1 do
                                         -- Verifica se tem updates em cada plugin
                                         verifyUpdate(list[i].id, list[i].url);
@@ -398,12 +401,12 @@ local function constructNew_frmTemplate()
 
     obj._e_event1 = obj:addEventListener("onNodeReady",
         function (_)
-            internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true",
+            Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true",
                         function(stream, contentType)
-                            local info = rrpg.plugins.getRPKDetails(stream);
+                            local info = Firecast.Plugins.getRPKDetails(stream);
                             updaterSheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
             
-                            local installed = rrpg.plugins.getInstalledPlugins();
+                            local installed = Firecast.Plugins.getInstalledPlugins();
                             local myself;
                             for i=1, #installed, 1 do
                                 if installed[i].moduleId == info.moduleId then
@@ -412,16 +415,16 @@ local function constructNew_frmTemplate()
                                 end;
                             end;
             
-                            updaterSheet.stream = stream;
+                            rawset(updaterSheet, "stream", stream);
             
                             if updaterSheet.noUpdate==true then return end;
                             if myself~= nil and isNewVersion(myself.version, info.version) then
                                 Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                                     function(selected, selectedIndex, selectedText)
                                         if selected and selectedIndex == 1 then
-                                            local install = rrpg.plugins.installPlugin(updaterSheet.stream, true);
+                                            local install = Firecast.Plugins.installPlugin(rawget(updaterSheet,"stream"), true);
                                             if install==false then
-                                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true');
+                                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true');
                                             end;
                                         elseif selected and selectedIndex == 3 then
                                             updaterSheet.noUpdate = true;
@@ -442,7 +445,7 @@ local function constructNew_frmTemplate()
     obj._e_event2 = obj.installedPluginsList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             if nodeA.enabled and nodeB.enabled then 
-            					return utils.compareStringPtBr(nodeA.name, nodeB.name);
+            					return Utils.compareStringPtBr(nodeA.name, nodeB.name);
             				elseif nodeA.enabled then
             					return 1;
             				elseif nodeB.enabled then
@@ -453,7 +456,7 @@ local function constructNew_frmTemplate()
     obj._e_event3 = obj.downloadedPluginsList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             if nodeA.enabled and nodeB.enabled then 
-            					return utils.compareStringPtBr(nodeA.name, nodeB.name);
+            					return Utils.compareStringPtBr(nodeA.name, nodeB.name);
             				elseif nodeA.enabled then
             					return 1;
             				elseif nodeB.enabled then
@@ -463,25 +466,25 @@ local function constructNew_frmTemplate()
 
     obj._e_event4 = obj.button1:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/README.md')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/README.md')
         end, obj);
 
     obj._e_event5 = obj.button1:addEventListener("onClick",
         function (_)
-            local install = rrpg.plugins.installPlugin(updaterSheet.stream, true);
+            local install = Firecast.Plugins.installPlugin(rawget(updaterSheet,"stream"), true);
                             if install==false then
-                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true');
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true');
                             end;
         end, obj);
 
     obj._e_event6 = obj.button2:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true')
         end, obj);
 
     obj._e_event7 = obj.button3:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
+            GUI.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     function obj:_releaseEvents()

@@ -4,7 +4,7 @@
 		<recordList align="client" field="installedPluginsList" name="installedPluginsList" templateForm="frmInstalledPlugin">
 			<event name="onCompare">
 				if nodeA.enabled and nodeB.enabled then 
-					return utils.compareStringPtBr(nodeA.name, nodeB.name);
+					return Utils.compareStringPtBr(nodeA.name, nodeB.name);
 				elseif nodeA.enabled then
 					return 1;
 				elseif nodeB.enabled then
