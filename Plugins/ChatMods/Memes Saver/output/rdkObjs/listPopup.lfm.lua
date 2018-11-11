@@ -118,7 +118,7 @@ local function constructNew_listPopup()
     obj._e_event0 = obj.memeList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             if nodeA.nome and nodeB.nome then 
-            				return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+            				return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
             			elseif nodeA.nome then
             				return 1;
             			elseif nodeB.nome then
@@ -189,14 +189,14 @@ local function constructNew_listPopup()
             local node = self.memeList.selectedNode; 
             			if node==nil then return end;
             
-            			dialogs.confirmOkCancel("Tem certeza que quer apagar esse meme?",
+            			Dialogs.confirmOkCancel("Tem certeza que quer apagar esse meme?",
             					function (confirmado)
             						if confirmado then
             							-- Quebra os parametros nas virgulas e nos espaços
             							for i in string.gmatch(node.nome, "[^,%s]+") do
             								sheet.link[i] = nil;
             							end;
-            							ndb.deleteNode(node);
+            							NDB.deleteNode(node);
             						end;
             				end);
         end, obj);
@@ -207,9 +207,9 @@ local function constructNew_listPopup()
             			if sheet.load then
             				sheet.load = false;
             
-            				local nodes = ndb.getChildNodes(sheet.memeList); 
+            				local nodes = NDB.getChildNodes(sheet.memeList); 
             				for i=1, #nodes, 1 do
-            					ndb.deleteNode(nodes[i]);
+            					NDB.deleteNode(nodes[i]);
             				end
             
             				local list = {};

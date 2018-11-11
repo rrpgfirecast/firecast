@@ -4,7 +4,7 @@ require("utils.lua");
 require("ndb.lua");
 require("internet.lua");
 
-afkdb = ndb.load("afkData.xml");
+afkdb = NDB.load("afkData.xml");
 if afkdb.afkStatus==nil then
 	afkdb.afkStatus = {};
 end;
@@ -33,7 +33,7 @@ if afkdb.config == nil then
 	afkdb.config = {};
 end;
 
-local config = ndb.load("config.xml");
+local config = NDB.load("config.xml");
 
 local function isNewVersion(installed, downloaded)
     local installedVersion = {};
@@ -81,8 +81,7 @@ local function sendPersonalMessage(chat, mesa)
 	local date = os.date("*t");
 
 	-- Ache qual a mensagem para esse dia e hora. 
-	local node = afkdb.config[mesa.codigoInterno];
-	local messages = ndb.getChildNodes(afkdb.config[mesa.codigoInterno].messagesList);
+	local messages = NDB.getChildNodes(afkdb.config[mesa.codigoInterno].messagesList);
 	local message = "";
 	for i=1, #messages, 1 do
 		local msg = messages[i];
@@ -107,17 +106,17 @@ local function sendPersonalMessage(chat, mesa)
 	end;
 end
 local function addUser(mesa)
-	local cfgForm = gui.newForm("afkbotPopup");
+	local cfgForm = GUI.newForm("afkbotPopup");
 	cfgForm:setNodeObject(afkdb.config[mesa.codigoInterno]);
 	cfgForm.title = "AfkBot - " .. mesa.nome;
 
-	local rcl = gui.findControlByName("kickList", cfgForm);
+	local rcl = GUI.findControlByName("kickList", cfgForm);
 	if rcl==nil then return end;
 
 	return rcl:append();
 end
 local function initializeKickList(mesa)
-	local list = ndb.getChildNodes(afkdb.config[mesa.codigoInterno].kickList);
+	local list = NDB.getChildNodes(afkdb.config[mesa.codigoInterno].kickList);
 	if #list == 0 then
 		local item = addUser(mesa);
 		item.login = "Login";
@@ -127,7 +126,7 @@ local function initializeKickList(mesa)
 	end;
 end
 local function findLogin(login, mesa)
-	local list = ndb.getChildNodes(afkdb.config[mesa.codigoInterno].kickList);
+	local list = NDB.getChildNodes(afkdb.config[mesa.codigoInterno].kickList);
 	local user = nil;
 	for i=1, #list, 1 do 
 		local item = list[i];
@@ -141,7 +140,7 @@ end
 function getConfigWindow(mesa)
 	initializeRoom(mesa);
 
-	local cfgForm = gui.newForm("afkbotPopup");
+	local cfgForm = GUI.newForm("afkbotPopup");
 	cfgForm:setNodeObject(afkdb.config[mesa.codigoInterno]);
 	cfgForm.title = "AfkBot - " .. mesa.nome;
 	popup = cfgForm;
@@ -150,7 +149,7 @@ function getConfigWindow(mesa)
 end
 
 -- Implementação dos comandos
-rrpg.messaging.listen("HandleChatCommand", 
+Firecast.Messaging.listen("HandleChatCommand", 
 	function (message)
 		initializeRoom(message.mesa);
 		if message.comando == "afk" then
@@ -225,7 +224,7 @@ rrpg.messaging.listen("HandleChatCommand",
 	end);
 
 -- Escuta das mensagens de chat padrão 
-rrpg.messaging.listen("ChatMessage", 
+Firecast.Messaging.listen("ChatMessage", 
 	function (message)
 		initializeRoom(message.mesa);
 		initializeClock(message.mesa);
@@ -241,9 +240,9 @@ rrpg.messaging.listen("ChatMessage",
 		alert = alert and message.mesa.meuJogador.isMestre;
 		
 		if alert then
-			local text = utils.removerFmtChat(message.texto, true);
+			local text = Utils.removerFmtChat(message.texto, true);
 			local login = message.mesa.meuJogador.login;
-			local nick = utils.removerFmtChat(message.mesa.meuJogador.nick, true);
+			local nick = Utils.removerFmtChat(message.mesa.meuJogador.nick, true);
 
 			text = text:lower();
 			nick = nick:lower();
@@ -265,7 +264,7 @@ rrpg.messaging.listen("ChatMessage",
 	end);
 
 -- Escuta de quem entra na sala
-rrpg.messaging.listen("MesaJoined",
+Firecast.Messaging.listen("MesaJoined",
 	function(message)
 		-- Enviar a mensagem de afk para todos espectadores, se ativo
 		initializeRoom(message.mesa);
@@ -305,14 +304,14 @@ rrpg.messaging.listen("MesaJoined",
 		end;
 
 		-- Enviar mensagem de bos vindas automatica.
-		local list = ndb.getChildNodes(afkdb.config[message.mesa.codigoInterno].welcomeList);
+		local list = NDB.getChildNodes(afkdb.config[message.mesa.codigoInterno].welcomeList);
 		if (not message.mesa.isModerada) then
 			for i=1, #list, 1 do 
 				local item = list[i];
 				if item.login == message.jogador.login then
 					message.mesa.chat:enviarMensagem(item.message);
 					if not item.permanent then
-						ndb.deleteNode(item);
+						NDB.deleteNode(item);
 					end
 				end;
 			end;
@@ -320,7 +319,7 @@ rrpg.messaging.listen("MesaJoined",
 	end);
 
 -- Escuta por rolagens de dado
-rrpg.messaging.listen("ChatMessage", 
+Firecast.Messaging.listen("ChatMessage", 
 	function (message)
 		initializeRoom(message.mesa);
 		-- Ve se está ligado o autokick para dados
@@ -358,7 +357,7 @@ rrpg.messaging.listen("ChatMessage",
 	end);
 
 -- Escuta por risadas
-rrpg.messaging.listen("ChatMessage", 
+Firecast.Messaging.listen("ChatMessage", 
 	function (message)
 		initializeRoom(message.mesa);
 		-- Ve se está ligado o autokick para risadas
@@ -395,7 +394,7 @@ rrpg.messaging.listen("ChatMessage",
 		end
 	end);
 
-rrpg.messaging.listen("ListChatCommands",
+Firecast.Messaging.listen("ListChatCommands",
     function(message)
         message.response = {{comando="/afkbot", descricao="Exibe a janela de configuração do afkbot."},
                             {comando="/stopdice", descricao="Avisa a espectadores para pararem de rolar dados e os expulsa na 4ª vez que o fizerem."},
@@ -405,12 +404,12 @@ rrpg.messaging.listen("ListChatCommands",
     end);
 
 -- auto-update
-internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true",
+Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true",
             function(stream, contentType)
-                local info = rrpg.plugins.getRPKDetails(stream);
+                local info = Firecast.Plugins.getRPKDetails(stream);
                 config.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
 
-                local installed = rrpg.plugins.getInstalledPlugins();
+                local installed = Firecast.Plugins.getInstalledPlugins();
                 local myself;
                 for i=1, #installed, 1 do
                     if installed[i].moduleId == info.moduleId then
@@ -421,10 +420,10 @@ internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/
 
                 if config.noUpdate==true then return end;
                 if myself~= nil and isNewVersion(myself.version, info.version) then
-                    Dialogs.choose("Há uma nova versão do AfkBot (".. infor.version .."). Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                    Dialogs.choose("Há uma nova versão do AfkBot (".. info.version .."). Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                         function(selected, selectedIndex, selectedText)
                             if selected and selectedIndex == 1 then
-                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true');
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true');
                             elseif selected and selectedIndex == 3 then
                                 config.noUpdate = true;
                             end;

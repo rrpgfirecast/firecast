@@ -2,7 +2,7 @@ require("firecast.lua");
 require("dialogs.lua"); 
 require("fireDrive.lua");
 
-myButtons = ndb.load("myButtons.xml");
+myButtons = NDB.load("myButtons.xml");
 
 if myButtons.list==nil then
 	myButtons.list = {};

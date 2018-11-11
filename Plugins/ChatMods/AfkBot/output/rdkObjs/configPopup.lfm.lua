@@ -292,7 +292,7 @@ local function constructNew_afkbotPopup()
     obj._e_event4 = obj.kickList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             if nodeA.user and nodeB.user then 
-            						return utils.compareStringPtBr(nodeA.login, nodeB.login);
+            						return Utils.compareStringPtBr(nodeA.login, nodeB.login);
             					elseif nodeA.user then
             						return 1;
             					elseif nodeB.user then
@@ -314,7 +314,7 @@ local function constructNew_afkbotPopup()
     obj._e_event6 = obj.welcomeList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             if nodeA.user and nodeB.user then 
-            						return utils.compareStringPtBr(nodeA.login, nodeB.login);
+            						return Utils.compareStringPtBr(nodeA.login, nodeB.login);
             					elseif nodeA.user then
             						return 1;
             					elseif nodeB.user then

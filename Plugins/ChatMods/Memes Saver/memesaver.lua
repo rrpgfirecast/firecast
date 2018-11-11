@@ -4,7 +4,7 @@ require("utils.lua");
 require("locale.lua");
 require("internet.lua");
 
-local config = ndb.load("config.xml");
+local config = NDB.load("config.xml");
 
 local function isNewVersion(installed, downloaded)
     local installedVersion = {};
@@ -36,12 +36,12 @@ local function isNewVersion(installed, downloaded)
     end;
 end;
 
-memedb = ndb.load("memeData.xml");
+memedb = NDB.load("memeData.xml");
 -- Criando lista padrão de memes. 
 if memedb.link==nil then
 	memedb.link = {};
-	memedb.link["rrpg"] = "http://blob.firecast.com.br/blobs/PGGSIDUU_468392/rrpg.png";
-	memedb.link["firecast"] = "http://blob.firecast.com.br/blobs/PGGSIDUU_468392/rrpg.png";
+	memedb.link["rrpg"] = "http://blob.firecast.com.br/blobs/PGGSIDUU_468392/Firecast.png";
+	memedb.link["firecast"] = "http://blob.firecast.com.br/blobs/PGGSIDUU_468392/Firecast.png";
 	memedb.link["aliens"] = "http://blob.firecast.com.br/blobs/KDDLSAAE_468484/aliens.png";
 	memedb.link["badass"] = "http://blob.firecast.com.br/blobs/WJLVQFUH_468487/badass.png";
 	memedb.link["cage"] = "http://blob.firecast.com.br/blobs/IREQBACR_468489/cage.jpg";
@@ -63,7 +63,7 @@ if memedb.link==nil then
 end;
 
 function getConfigWindow(mesa)
-	local cfgForm = gui.newForm("listPopup");
+	local cfgForm = GUI.newForm("listPopup");
 	memedb.load = true;
 	cfgForm:setNodeObject(memedb);
 	cfgForm.title = "Meme Saver - " .. mesa.nome;
@@ -86,7 +86,7 @@ function dump(o)
    end
 end
 
-rrpg.listen('HandleChatTextInput',
+Firecast.listen('HandleChatTextInput',
     function(message)
     	-- Se tiver algum ":" na mensagem veja se é um meme salvo
     	if string.match(message.texto, ":") then
@@ -103,7 +103,7 @@ rrpg.listen('HandleChatTextInput',
 			-- Para cada palavra na frase veja
 			local changed = false;
 			for i=1, #arg, 1 do
-				local token = utils.removerFmtChat(arg[i]);
+				local token = Utils.removerFmtChat(arg[i]);
 
 				local dot1 = string.sub(token, 1, 1);
 				local dot2 = string.sub(token, token:len(), token:len());
@@ -132,7 +132,7 @@ rrpg.listen('HandleChatTextInput',
     end);
 
 -- Implementação dos comandos
-rrpg.messaging.listen("HandleChatCommand", 
+Firecast.Messaging.listen("HandleChatCommand", 
 	function (message)
 		-- Exibe todos memes salvos. 
 		if message.comando == "memesaver" then
@@ -259,7 +259,7 @@ rrpg.messaging.listen("HandleChatCommand",
 		end
 	end);
 
-rrpg.messaging.listen("ListChatCommands",
+Firecast.Messaging.listen("ListChatCommands",
         function(message)
                 message.response = {
                 					{comando="/savedmemes", descricao=lang("memes.savedMemes.commandDescription") .." v0.2"},
@@ -269,12 +269,12 @@ rrpg.messaging.listen("ListChatCommands",
                                     };
         end);
 
-internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Memes%20Saver/output/Memes%20Saver.rpk?raw=true",
+Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Memes%20Saver/output/Memes%20Saver.rpk?raw=true",
             function(stream, contentType)
-                local info = rrpg.plugins.getRPKDetails(stream);
+                local info = Firecast.Plugins.getRPKDetails(stream);
                 config.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
 
-                local installed = rrpg.plugins.getInstalledPlugins();
+                local installed = Firecast.Plugins.getInstalledPlugins();
                 local myself;
                 for i=1, #installed, 1 do
                     if installed[i].moduleId == info.moduleId then
@@ -285,10 +285,10 @@ internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/
 
                 if config.noUpdate==true then return end;
                 if myself~= nil and isNewVersion(myself.version, info.version) then
-                    Dialogs.choose("Há uma nova versão do Memes Saver (".. infor.version .."). Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                    Dialogs.choose("Há uma nova versão do Memes Saver (".. info.version .."). Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                         function(selected, selectedIndex, selectedText)
                             if selected and selectedIndex == 1 then
-                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Memes%20Saver/output/Memes%20Saver.rpk?raw=true');
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Memes%20Saver/output/Memes%20Saver.rpk?raw=true');
                             elseif selected and selectedIndex == 3 then
                                 config.noUpdate = true;
                             end;

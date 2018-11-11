@@ -3,7 +3,7 @@ require("vhd.lua");
 require("utils.lua");
 require("internet.lua");   
 
-local config = ndb.load("config.xml");
+local config = NDB.load("config.xml");
 
 local function isNewVersion(installed, downloaded)
     local installedVersion = {};
@@ -35,7 +35,7 @@ local function isNewVersion(installed, downloaded)
     end;
 end;
 
-rrpg.listen('HandleChatTextInput',
+Firecast.listen('HandleChatTextInput',
     function(message)
     	if string.match(message.texto, ":") then
     		local text = "";
@@ -97,7 +97,7 @@ rrpg.listen('HandleChatTextInput',
     end);
 
 -- Implementação dos comandos
-rrpg.messaging.listen("HandleChatCommand", 
+Firecast.Messaging.listen("HandleChatCommand", 
 	function (message)
 		if message.comando == "unown" then
 			if message.parametro ~= nil and message.parametro ~= "" then
@@ -172,19 +172,19 @@ rrpg.messaging.listen("HandleChatCommand",
 		end
 	end);
 
-rrpg.messaging.listen("ListChatCommands",
+Firecast.Messaging.listen("ListChatCommands",
         function(message)
             message.response = {{comando="/unown <Texto>", descricao="Troca o texto por unown para cada letra. "},
                                 {comando="/pokecode", descricao="Exibe codigos para usar memes de Pokémon. v0.5"}};
         end);
 
 -- auto-update
-internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/PokeIcons/output/PokeIcons.rpk?raw=true",
+Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/PokeIcons/output/PokeIcons.rpk?raw=true",
             function(stream, contentType)
-                local info = rrpg.plugins.getRPKDetails(stream);
+                local info = Firecast.Plugins.getRPKDetails(stream);
                 config.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
 
-                local installed = rrpg.plugins.getInstalledPlugins();
+                local installed = Firecast.Plugins.getInstalledPlugins();
                 local myself;
                 for i=1, #installed, 1 do
                     if installed[i].moduleId == info.moduleId then
@@ -195,10 +195,10 @@ internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/
 
                 if config.noUpdate==true then return end;
                 if myself~= nil and isNewVersion(myself.version, info.version) then
-                    Dialogs.choose("Há uma nova versão do PokéIcons (".. infor.version .."). Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                    Dialogs.choose("Há uma nova versão do PokéIcons (".. info.version .."). Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                         function(selected, selectedIndex, selectedText)
                             if selected and selectedIndex == 1 then
-                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/PokeIcons/output/PokeIcons.rpk?raw=true');
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/PokeIcons/output/PokeIcons.rpk?raw=true');
                             elseif selected and selectedIndex == 3 then
                                 config.noUpdate = true;
                             end;

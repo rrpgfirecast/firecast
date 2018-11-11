@@ -215,16 +215,16 @@ local function constructNew_frmMessageItem()
     obj._e_event0 = obj.add:addEventListener("onClick",
         function (_)
             sheet.enabled = true;
-            			local node = ndb.getParent(ndb.getParent(sheet));
+            			local node = NDB.getParent(NDB.getParent(sheet));
             			node.addMessage = 1;
         end, obj);
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
         function (_)
-            dialogs.confirmOkCancel("Tem certeza que quer apagar essa mensagem?",
+            Dialogs.confirmOkCancel("Tem certeza que quer apagar essa mensagem?",
             					function (confirmado)
             						if confirmado then
-            							ndb.deleteNode(sheet);
+            							NDB.deleteNode(sheet);
             						end;
             				end);
         end, obj);
