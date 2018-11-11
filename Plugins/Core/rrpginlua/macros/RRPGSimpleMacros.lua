@@ -179,7 +179,7 @@ local function realExecutarMacro(macro, message, endCallback)
 	if macro.tipoMacro == "L" then
 		local macros = require("/macros/rrpgMacros.dlua");
 		local f = macros.compileMacro(macro.acoes, message.chat, "/" .. macro.macro, endCallback)
-		f({parametro=message.parameter});		
+		f({parametro=message.parameter or message.parametro});		
 	else
 		for linha in string.gmatch(macro.acoes, "[^\n\r]+") do
 			-- Quebrar a acoes em linhas.
