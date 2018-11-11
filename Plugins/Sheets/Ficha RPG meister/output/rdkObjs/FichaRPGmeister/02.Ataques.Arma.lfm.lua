@@ -39,8 +39,8 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
 			end;
 			local num = (tonumber(sheet.weaponType) or 1);
 			sheet.num = sheet.weaponType;
-			local node = ndb.getRoot(sheet);
-			local nodes = ndb.getChildNodes(node.campoDasArmas); 
+			local node = NDB.getRoot(sheet);
+			local nodes = NDB.getChildNodes(node.campoDasArmas); 
 			sheet.weapon = nodes[num];
 
 			if sheet.weapon== nil then
@@ -54,7 +54,7 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
 
             -- Adicionando bônus de melhoria ou de qualidade Obra-Prima ao acerto
     		local pen = tonumber(sheet.weapon.qualidade) or 0;
-            if utils.compareStringPtBr(sheet.weapon.qualidade, "Obra-Prima")==0 or utils.compareStringPtBr(sheet.weapon.qualidade, "OP")==0 or utils.compareStringPtBr(sheet.weapon.qualidade, "ObraPrima")==0  then
+            if Utils.compareStringPtBr(sheet.weapon.qualidade, "Obra-Prima")==0 or Utils.compareStringPtBr(sheet.weapon.qualidade, "OP")==0 or Utils.compareStringPtBr(sheet.weapon.qualidade, "ObraPrima")==0  then
     			pen = 1;
     		end;
     		pen = pen + (tonumber(node.buffAtaque) or 0);
@@ -1427,8 +1427,8 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
 
     obj._e_event1 = obj.weaponType:addEventListener("onMouseDown",
         function (_, event)
-            local node = ndb.getRoot(sheet);
-            				local nodes = ndb.getChildNodes(node.campoDasArmas); 
+            local node = NDB.getRoot(sheet);
+            				local nodes = NDB.getChildNodes(node.campoDasArmas); 
             				local selected = sheet.weaponType;
             				local items = {};
             				local values = {};
@@ -1446,7 +1446,7 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
             if sheet == nil then
             						return;
             					end;
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					if sheet.acertos[1] ~= nil then
             						
             						if sheet.municao~= nil then
@@ -1458,9 +1458,9 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
             							end;
             						end;
             
-            						local rolagem = rrpg.interpretarRolagem("1d20+" .. sheet.acertos[1]);
+            						local rolagem = Firecast.interpretarRolagem("1d20+" .. sheet.acertos[1]);
             						local armamento = sheet.nomeAtaque or "arma";
-            						local personagem = ndb.getRoot(sheet).nome or "personagem";
+            						local personagem = NDB.getRoot(sheet).nome or "personagem";
             
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque padrão com " .. armamento .. " de " .. personagem);
             					end;
@@ -1471,11 +1471,11 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
             if sheet == nil then
             						return;
             					end;
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					if sheet.dado ~= nil then
-            						local rolagem = rrpg.interpretarRolagem(sheet.dado);
+            						local rolagem = Firecast.interpretarRolagem(sheet.dado);
             						local armamento = sheet.nomeAtaque or "arma";
-            						local personagem = ndb.getRoot(sheet).nome or "personagem";
+            						local personagem = NDB.getRoot(sheet).nome or "personagem";
             
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano do ataque com " .. armamento .. " de " .. personagem);
             					end;
@@ -1486,11 +1486,11 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
             if sheet == nil then
             						return;
             					end;
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					if sheet.crit ~= nil then
-            						local rolagem = rrpg.interpretarRolagem(sheet.crit);
+            						local rolagem = Firecast.interpretarRolagem(sheet.crit);
             						local armamento = sheet.nomeAtaque or "arma";
-            						local personagem = ndb.getRoot(sheet).nome or "personagem";
+            						local personagem = NDB.getRoot(sheet).nome or "personagem";
             
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano adicional do decisivo do ataque com " .. armamento .. " de " .. personagem);
             					end;
@@ -1513,7 +1513,7 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
             if sheet == nil then
             						return;
             					end;
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					if sheet.auto ~= nil then
             						local mensagem = sheet.auto or "";
             						mesaDoPersonagem.activeChat:enviarMensagem(mensagem);
@@ -1527,10 +1527,10 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
 
     obj._e_event8 = obj.button7:addEventListener("onClick",
         function (_)
-            dialogs.confirmOkCancel("Tem certeza que quer apagar essa arma?",
+            Dialogs.confirmOkCancel("Tem certeza que quer apagar essa arma?",
             						function (confirmado)
             							if confirmado then
-            								ndb.deleteNode(sheet);
+            								NDB.deleteNode(sheet);
             							end;
             					end);
         end, obj);

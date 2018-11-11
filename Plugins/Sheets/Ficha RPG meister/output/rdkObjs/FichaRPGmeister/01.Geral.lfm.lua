@@ -5627,11 +5627,11 @@ local function constructNew_frmFichaRPGmeister1_svg()
 
 				local function caSecreta()
 					if sheet~= nil then
-						local jogadores = rrpg.getMesaDe(sheet).jogadores;
+						local jogadores = Firecast.getMesaDe(sheet).jogadores;
 						local current = nil;
 						
 						for i = 1, #jogadores, 1 do
-							if jogadores[i].login==rrpg.getCurrentUser().login then
+							if jogadores[i].login==Firecast.getCurrentUser().login then
 								current = jogadores[i];
 							end;
 						end; 
@@ -6327,8 +6327,8 @@ local function constructNew_frmFichaRPGmeister1_svg()
 
     obj._e_event11 = obj.button2:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModFor) or 0);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModFor) or 0);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Força de " .. (sheet.nome or "NOME"));
         end, obj);
 
@@ -6349,8 +6349,8 @@ local function constructNew_frmFichaRPGmeister1_svg()
 
     obj._e_event14 = obj.button3:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModDes) or 0);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModDes) or 0);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Destreza de " .. (sheet.nome or "NOME"));
         end, obj);
 
@@ -6371,8 +6371,8 @@ local function constructNew_frmFichaRPGmeister1_svg()
 
     obj._e_event17 = obj.button4:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModCon) or 0);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModCon) or 0);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Constituição de " .. (sheet.nome or "NOME"));
         end, obj);
 
@@ -6393,8 +6393,8 @@ local function constructNew_frmFichaRPGmeister1_svg()
 
     obj._e_event20 = obj.button5:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModInt) or 0);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModInt) or 0);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Inteligência de " .. (sheet.nome or "NOME"));
         end, obj);
 
@@ -6415,8 +6415,8 @@ local function constructNew_frmFichaRPGmeister1_svg()
 
     obj._e_event23 = obj.button6:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModSab) or 0);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModSab) or 0);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Sabedoria de " .. (sheet.nome or "NOME"));
         end, obj);
 
@@ -6437,8 +6437,8 @@ local function constructNew_frmFichaRPGmeister1_svg()
 
     obj._e_event26 = obj.button7:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModCar) or 0);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModCar) or 0);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Carisma de " .. (sheet.nome or "NOME"));
         end, obj);
 
@@ -6536,8 +6536,8 @@ local function constructNew_frmFichaRPGmeister1_svg()
 
     obj._e_event35 = obj.button8:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.iniciativa or "+0"));
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.iniciativa or "+0"));
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
@@ -6554,8 +6554,8 @@ local function constructNew_frmFichaRPGmeister1_svg()
 
     obj._e_event37 = obj.button9:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d100");
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d100");
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Falha Arcana (" .. (sheet.falha or "0%").. ") de " .. (sheet.nome or "NOME"));
         end, obj);
 
@@ -6689,7 +6689,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
 
     obj._e_event42 = obj.button10:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					sheet.modificador = sheet.modificador or 0;
             					mesaDoPersonagem.activeChat:rolarDados(sheet.dvs, "Pontos de Vigor de " .. (sheet.nome or "NOME"),
             						function (rolagem)
@@ -6708,7 +6708,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             									media = media + operacao.valor;
             								end;
             							end;
-            							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             							mesaDoPersonagem.activeChat:enviarMensagem("PV máximo: " .. maximo .. "; PV médio: " .. math.floor(media));
             							sheet.pvTotal = math.floor(media);
             						end);
@@ -6736,8 +6736,8 @@ local function constructNew_frmFichaRPGmeister1_svg()
 
     obj._e_event45 = obj.button12:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.agarrar or "0"));
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 + " .. (sheet.agarrar or "0"));
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Agarrar de " .. (sheet.nome or "NOME"));
         end, obj);
 
@@ -6766,22 +6766,22 @@ local function constructNew_frmFichaRPGmeister1_svg()
 
     obj._e_event48 = obj.button13:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 +" .. (sheet.trFort) or "0");
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 +" .. (sheet.trFort) or "0");
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Fortitude de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event49 = obj.button14:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 +" .. (sheet.trRef) or "0");
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 +" .. (sheet.trRef) or "0");
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Reflexos de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event50 = obj.button15:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 +" .. (sheet.trVon) or "0");
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 +" .. (sheet.trVon) or "0");
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Vontade de " .. (sheet.nome or "NOME"));
         end, obj);
 

@@ -56,10 +56,10 @@ local function constructNew_frmFichaRPGmeister5MM_svg()
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
-            dialogs.confirmOkCancel("Tem certeza que quer apagar suas magias?",
+            Dialogs.confirmOkCancel("Tem certeza que quer apagar suas magias?",
             				function (confirmado)
             					if confirmado then
-            						ndb.deleteNode(sheet);
+            						NDB.deleteNode(sheet);
             					end;
             			end);
         end, obj);

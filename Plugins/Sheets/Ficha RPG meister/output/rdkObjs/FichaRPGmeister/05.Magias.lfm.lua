@@ -6311,7 +6311,7 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event2 = obj.rclListaDosItens:addEventListener("onEndEnumeration",
         function (_)
             if self.rclListaDosItens.selectedNode == nil and sheet ~= nil then
-            					local nodes = ndb.getChildNodes(sheet.campoDosItens);               
+            					local nodes = NDB.getChildNodes(sheet.campoDosItens);               
             					if #nodes > 0 then
             						self.rclListaDosItens.selectedNode = nodes[1];
             					end;
@@ -6321,8 +6321,8 @@ local function constructNew_frmFichaRPGmeister5M_svg()
 
     obj._e_event3 = obj.button2:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 +" .. self.boxDetalhesDoItem.node.NC);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 +" .. self.boxDetalhesDoItem.node.NC);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de conjurador de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
@@ -6394,7 +6394,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event7 = obj.dataLink4:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -6470,7 +6469,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event10 = obj.dataLink7:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -6546,7 +6544,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event13 = obj.dataLink10:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -6622,7 +6619,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event16 = obj.dataLink13:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -6698,7 +6694,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event19 = obj.dataLink16:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -6774,7 +6769,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event22 = obj.dataLink19:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -6850,7 +6844,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event25 = obj.dataLink22:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -6926,7 +6919,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event28 = obj.dataLink25:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -7002,7 +6994,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event31 = obj.dataLink28:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -7078,7 +7069,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event34 = obj.dataLink31:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -7194,7 +7184,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event39 = obj.dataLink36:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -7270,7 +7259,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event42 = obj.dataLink39:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -7346,7 +7334,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event45 = obj.dataLink42:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -7422,7 +7409,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event48 = obj.dataLink45:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -7498,7 +7484,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event51 = obj.dataLink48:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -7574,7 +7559,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event54 = obj.dataLink51:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -7650,7 +7634,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event57 = obj.dataLink54:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -7726,7 +7709,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event60 = obj.dataLink57:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -7802,7 +7784,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event63 = obj.dataLink60:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -7878,7 +7859,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event66 = obj.dataLink63:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -7915,7 +7895,7 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             					    elseif (tonumber(nodeA.dispMagia )or 0) > (tonumber(nodeB.dispMagia) or 0) then
             					        return -1;
             					    else   
-            					        return utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+            					        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
             					    end;
         end, obj);
 
@@ -7931,7 +7911,7 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             					    elseif (tonumber(nodeA.dispMagia )or 0) > (tonumber(nodeB.dispMagia) or 0) then
             					        return -1;
             					    else   
-            					        return utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+            					        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
             					    end;
         end, obj);
 
@@ -7947,7 +7927,7 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             					    elseif (tonumber(nodeA.dispMagia )or 0) > (tonumber(nodeB.dispMagia) or 0) then
             					        return -1;
             					    else   
-            					        return utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+            					        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
             					    end;
         end, obj);
 
@@ -7963,7 +7943,7 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             					    elseif (tonumber(nodeA.dispMagia )or 0) > (tonumber(nodeB.dispMagia) or 0) then
             					        return -1;
             					    else   
-            					        return utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+            					        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
             					    end;
         end, obj);
 
@@ -7979,7 +7959,7 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             					    elseif (tonumber(nodeA.dispMagia )or 0) > (tonumber(nodeB.dispMagia) or 0) then
             					        return -1;
             					    else   
-            					        return utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+            					        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
             					    end;
         end, obj);
 
@@ -7995,7 +7975,7 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             					    elseif (tonumber(nodeA.dispMagia )or 0) > (tonumber(nodeB.dispMagia) or 0) then
             					        return -1;
             					    else   
-            					        return utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+            					        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
             					    end;
         end, obj);
 
@@ -8011,7 +7991,7 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             					    elseif (tonumber(nodeA.dispMagia )or 0) > (tonumber(nodeB.dispMagia) or 0) then
             					        return -1;
             					    else   
-            					        return utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+            					        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
             					    end;
         end, obj);
 
@@ -8027,7 +8007,7 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             					    elseif (tonumber(nodeA.dispMagia )or 0) > (tonumber(nodeB.dispMagia) or 0) then
             					        return -1;
             					    else   
-            					        return utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+            					        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
             					    end;
         end, obj);
 
@@ -8043,7 +8023,7 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             					    elseif (tonumber(nodeA.dispMagia )or 0) > (tonumber(nodeB.dispMagia) or 0) then
             					        return -1;
             					    else   
-            					        return utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+            					        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
             					    end;
         end, obj);
 
@@ -8059,7 +8039,7 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             					    elseif (tonumber(nodeA.dispMagia )or 0) > (tonumber(nodeB.dispMagia) or 0) then
             					        return -1;
             					    else   
-            					        return utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+            					        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
             					    end;
         end, obj);
 
@@ -8114,7 +8094,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event89 = obj.dataLink66:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -8190,7 +8169,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event92 = obj.dataLink69:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -8266,7 +8244,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event95 = obj.dataLink72:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -8342,7 +8319,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event98 = obj.dataLink75:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -8418,7 +8394,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event101 = obj.dataLink78:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -8494,7 +8469,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event104 = obj.dataLink81:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -8570,7 +8544,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event107 = obj.dataLink84:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -8646,7 +8619,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event110 = obj.dataLink87:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -8722,7 +8694,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event113 = obj.dataLink90:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
@@ -8798,7 +8769,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj._e_event116 = obj.dataLink93:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            							local resultado = 0;
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							

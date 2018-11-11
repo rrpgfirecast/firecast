@@ -34,10 +34,10 @@ local function constructNew_frmFichaRPGmeister3p_svg()
 
 			
 		local function askForDelete()
-			dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+			Dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
 								 function (confirmado)
 									if confirmado then
-										ndb.deleteNode(sheet);
+										NDB.deleteNode(sheet);
 									end;
 								 end);
 		end;
@@ -54,11 +54,11 @@ local function constructNew_frmFichaRPGmeister3p_svg()
 		end;
 
 		local function rollTest()
-			local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-			local node = ndb.getRoot(sheet);
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			local node = NDB.getRoot(sheet);
 
 			local mod = math.floor(tonumber(sheet.totalPericia) or 0) + (tonumber(node.buffPericia) or 0);
-			local rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+			local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
 
 			local warn = "";
 			if sheet.exigeTreino and (tonumber(sheet.graduacaoPericia) or 0)==0 then
@@ -216,7 +216,7 @@ local function constructNew_frmFichaRPGmeister3p_svg()
         function (_)
             if sheet~= nil then
             				local atributoPericia = 0;
-            				local node = ndb.getRoot(sheet);
+            				local node = NDB.getRoot(sheet);
             
             				if sheet.chavePericia == "1" then
             					atributoPericia = tonumber(node.efetModFor) or 0;
@@ -253,7 +253,7 @@ local function constructNew_frmFichaRPGmeister3p_svg()
     obj._e_event5 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
-            				local node = ndb.getRoot(sheet);
+            				local node = NDB.getRoot(sheet);
             				local pen = (tonumber(node.penalidade) or 0)
             
             				local mod = 0;
@@ -283,13 +283,13 @@ local function constructNew_frmFichaRPGmeister3p_svg()
     obj._e_event6 = obj.dataLink2:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
-            				local node = ndb.getRoot(sheet);
+            				local node = NDB.getRoot(sheet);
             				local mod = tonumber(node.idiomasGrad) or 0;
             				if not node.idiomasIsClass then
             					mod = mod + (tonumber(node.idiomasGrad) or 0);
             				end;
             				local path = 0;
-            				local nodes = ndb.getChildNodes(node.campoDasPericias); 
+            				local nodes = NDB.getChildNodes(node.campoDasPericias); 
             				--showMessage(#nodes);
             				for i=1, #nodes, 1 do
             					local mult = 1;

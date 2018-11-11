@@ -38,7 +38,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
 
 
 			
-			local dnd = ndb.load("dndskills.xml");
+			local dnd = NDB.load("dndskills.xml");
 
 			local function updateAtributes(num)
 				local atr = "" .. num;
@@ -58,7 +58,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
 					mod = getCAR();
 				end;
 
-				local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
 				for i=1, #nodes, 1 do
 					if nodes[i].chavePericia == atr then
 						nodes[i].atributoPericia = mod;
@@ -68,7 +68,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
 
 			local function updatePenalty()
 				if sheet~=nil then
-					local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
 					for i=1, #nodes, 1 do
 						if nodes[i].penalidadeArmadura or nodes[i].penalidadeArmadura2 then
 							local pen = (tonumber(sheet.penalidade) or 0)
@@ -99,9 +99,9 @@ local function constructNew_frmFichaRPGmeister3_svg()
 			end;
 
 			local function dndSkills()
-				local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
 				for i=1, #nodes, 1 do
-					ndb.deleteNode(nodes[i]);
+					NDB.deleteNode(nodes[i]);
 				end
 
 				for i=1, 44, 1 do
@@ -739,12 +739,12 @@ local function constructNew_frmFichaRPGmeister3_svg()
 
     obj._e_event0 = obj.rclListaDasPericias:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
+            return Utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
         end, obj);
 
     obj._e_event1 = obj.rclListaDosIdiomas:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.nomeIdioma, nodeB.nomeIdioma);
+            return Utils.compareStringPtBr(nodeA.nomeIdioma, nodeB.nomeIdioma);
         end, obj);
 
     obj._e_event2 = obj.button1:addEventListener("onClick",

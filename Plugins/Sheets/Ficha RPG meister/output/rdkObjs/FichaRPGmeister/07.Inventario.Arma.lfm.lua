@@ -34,11 +34,11 @@ local function constructNew_frmFichaRPGmeister7A_svg()
 
 			
 		local function askForDelete()
-			dialogs.confirmYesNo("Deseja realmente apagar essa arma?",
+			Dialogs.confirmYesNo("Deseja realmente apagar essa arma?",
 								 function (confirmado)
 									if confirmado then
-										local node = ndb.getRoot(sheet);
-										local nodes = ndb.getChildNodes(node.campoDasArmas); 
+										local node = NDB.getRoot(sheet);
+										local nodes = NDB.getChildNodes(node.campoDasArmas); 
 										local index = 0;
 										for i=1, #nodes, 1 do
 											if nodes[i]==sheet then
@@ -46,9 +46,9 @@ local function constructNew_frmFichaRPGmeister7A_svg()
 											end;
 										end;
 
-										local ataques = ndb.getChildNodes(node.campoDosAtaques);
+										local ataques = NDB.getChildNodes(node.campoDosAtaques);
 										for i=1, #ataques, 1 do
-											local armas = ndb.getChildNodes(ataques[i].campoDeArmas);
+											local armas = NDB.getChildNodes(ataques[i].campoDeArmas);
 											for j=1, #armas, 1 do
 												local weaponID = tonumber(armas[j].weaponType) or 0;
 												if weaponID == index then
@@ -59,7 +59,7 @@ local function constructNew_frmFichaRPGmeister7A_svg()
 											end;
 										end;
 
-										ndb.deleteNode(sheet);
+										NDB.deleteNode(sheet);
 									end;
 								 end);
 		end;
@@ -75,64 +75,27 @@ local function constructNew_frmFichaRPGmeister7A_svg()
 			end;				
 		end;
 
-		local function getNumber(text)
-			local mod = "0";
-			if text~= nil then
-				mod = string.gsub(text, "%.", "");
-				mod = string.gsub(mod, "k", "000");
-				mod = string.gsub(mod, "K", "");
-				mod = string.gsub(mod, "g", "");
-				mod = string.gsub(mod, "P", "");
-				mod = string.gsub(mod, "p", "");
-				mod = string.gsub(mod, "O", "");
-				mod = string.gsub(mod, "o", "");
-				mod = string.gsub(mod, "X", "");
-				mod = string.gsub(mod, "x", "");
-				mod = string.gsub(mod, " ", "");
-				mod = string.gsub(mod, ",", ".");
-			end
-			return tonumber(mod);
-		end;
-
 		local function weaponPrice()
 			if sheet~= nil then
-				local node = ndb.getRoot(sheet);
-				local mod = 0;
-				local nodes = ndb.getChildNodes(node.campoDasArmas); 
+				local node = NDB.getRoot(sheet);
+				local precoArmas = 0;
+				local nodes = NDB.getChildNodes(node.campoDasArmas); 
 				for i=1, #nodes, 1 do
-					mod = mod + (getNumber(nodes[i].preco) or 0);
+					precoArmas = precoArmas + (tonumber(nodes[i].preco) or 0);
 				end
-				mod = string.gsub(mod, "%.", "_");
-				while true do  
-					mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
-					if (k==0) then
-						break
-					end
-				end
-				mod = string.gsub(mod, ",", ".");
-				mod = string.gsub(mod, "_", ",");
-				node.precoArmas = mod .. "PO";
+				node.precoArmas = precoArmas;
 			end;
 		end;
 
 		local function weaponWeight()
 			if sheet~= nil then
-				local node = ndb.getRoot(sheet);
-				local mod = 0;
-				local nodes = ndb.getChildNodes(node.campoDasArmas); 
+				local node = NDB.getRoot(sheet);
+				local pesoArmas = 0;
+				local nodes = NDB.getChildNodes(node.campoDasArmas); 
 				for i=1, #nodes, 1 do
-					mod = mod + (getNumber(nodes[i].peso) or 0);
+					pesoArmas = pesoArmas + (tonumber(nodes[i].peso) or 0);
 				end
-				mod = string.gsub(mod, "%.", "_");
-				while true do  
-					mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
-					if (k==0) then
-						break
-					end
-				end
-				mod = string.gsub(mod, ",", ".");
-				mod = string.gsub(mod, "_", ",");
-				node.pesoArmas = mod .. "Kg";
+				node.pesoArmas = pesoArmas;
 			end;
 		end;
 		local function createName()
@@ -178,6 +141,7 @@ local function constructNew_frmFichaRPGmeister7A_svg()
     obj.edit2:setWidth(50);
     obj.edit2:setHeight(23);
     obj.edit2:setField("peso");
+    obj.edit2:setType("float");
     obj.edit2:setName("edit2");
 
     obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
@@ -187,6 +151,7 @@ local function constructNew_frmFichaRPGmeister7A_svg()
     obj.edit3:setWidth(75);
     obj.edit3:setHeight(23);
     obj.edit3:setField("preco");
+    obj.edit3:setType("float");
     obj.edit3:setName("edit3");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));

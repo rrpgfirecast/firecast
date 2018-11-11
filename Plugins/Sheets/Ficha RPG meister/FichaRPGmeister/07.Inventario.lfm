@@ -15,10 +15,10 @@
 
 			<label left="260" top="305" width="50" height="20" text="Kg"/>
 			<rectangle left="280" top="305" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
-			<label vertTextAlign="center" horzTextAlign="center" left="280" top="305" width="70" height="20" field="pesoArmas"/>
+			<label vertTextAlign="center" horzTextAlign="center" left="280" top="305" width="70" height="20" field="pesoArmas" formatFloat=",0.## Kg"/>
 			<label left="360" top="305" width="50" height="20" text="$"/>
 			<rectangle left="375" top="305" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
-			<label vertTextAlign="center" horzTextAlign="center" left="375" top="305" width="91" height="20" field="precoArmas"/>
+			<label vertTextAlign="center" horzTextAlign="center" left="375" top="305" width="91" height="20" field="precoArmas"  formatFloat=",0.## PO"/>
 		</layout>
 		
 		<layout left="0" top="335" width="475" height="335">
@@ -78,69 +78,34 @@
 
 			<label left="10" top="135" width="50" height="20" text="GASTOS"/>
 			<rectangle left="65" top="135" width="85" height="20" color="black" strokeColor="white" strokeSize="1"/>
-			<label field="gastos" text="0" left="65" top="135" width="85" height="20" horzTextAlign="center" fontSize="11"/>
+			<label field="gastos" text="0" left="65" top="135" width="85" height="20" horzTextAlign="center" fontSize="11" formatFloat=",0.## PO"/>
 
 			<label left="10" top="160" width="50" height="20" text="RESTANTE" fontSize="10"/>
 			<rectangle left="65" top="160" width="85" height="20" color="black" strokeColor="white" strokeSize="1"/>
-			<label field="dinheiroRestante" text="0" left="65" top="160" width="85" height="20" horzTextAlign="center" fontSize="11"/>
+			<label field="dinheiroRestante" text="0" left="65" top="160" width="85" height="20" horzTextAlign="center" fontSize="11" formatFloat=",0.## PO"/>
 		</layout>
-		<dataLink fields="{'precoCabeca', 'precoOlhos', 'precoPescoco', 'precoOmbros', 'precoTorso', 'precoCorpo', 'precoPunhos', 'precoCintura', 'precoMaos', 'precoDedosI', 'precoDesdosII', 'precoPes', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal'}">
+		<dataLink fields="{'precoEquipamento', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal', 'precoCorpo2', 'precoTesta'}">
 			<event name="onChange">
 				if sheet~= nil then
 
 					-- Calculando todos gastos
-					local mod = 0;
-					mod = (getNumber(sheet.precoCabeca) or 0) +
-								(getNumber(sheet.precoOlhos) or 0) +
-								(getNumber(sheet.precoPescoco) or 0) +
-								(getNumber(sheet.precoOmbros) or 0) +
-								(getNumber(sheet.precoTorso) or 0) +
-								(getNumber(sheet.precoCorpo) or 0) +
-								(getNumber(sheet.precoPunhos) or 0) +
-								(getNumber(sheet.precoCintura) or 0) +
-								(getNumber(sheet.precoMaos) or 0) +
-								(getNumber(sheet.precoDedosI) or 0) +
-								(getNumber(sheet.precoDesdosII) or 0) +
-								(getNumber(sheet.precoPes) or 0) +
-								(getNumber(sheet.precoArmas) or 0) +
-								(getNumber(sheet.precoMochila) or 0) +
-								(getNumber(sheet.precoPermanencias) or 0) +
-								(getNumber(sheet.precoLivres) or 0) +
-								(getNumber(sheet.precoOutros) or 0) +
-								(getNumber(sheet.precoMunicoes) or 0) +
-								(getNumber(sheet.precoBolsos) or 0) +
-								(getNumber(sheet.precoImoveis) or 0) +
-								(getNumber(sheet.precoInventorioComp) or 0);
+					local gastos = (tonumber(sheet.precoEquipamento) or 0) +
+									(tonumber(sheet.precoArmas) or 0) +
+									(getNumber(sheet.precoMochila) or 0) +
+									(getNumber(sheet.precoPermanencias) or 0) +
+									(getNumber(sheet.precoLivres) or 0) +
+									(getNumber(sheet.precoOutros) or 0) +
+									(getNumber(sheet.precoMunicoes) or 0) +
+									(getNumber(sheet.precoBolsos) or 0) +
+									(getNumber(sheet.precoImoveis) or 0) +
+									(getNumber(sheet.precoInventorioComp) or 0);
 
 					-- Calculando dinheiro restante
 					local total = getNumber(sheet.dinheiroTotal) or 0;
-					local restante = total - mod;
-					--showMessage(total .. " | " .. mod .. " | " .. restante);
+					local restante = total - gastos;
 
-					-- Formatando texto
-					mod = string.gsub(mod, "%.", "_");
-					while true do  
-						mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
-						if (k==0) then
-							break
-							end
-						end
-					mod = string.gsub(mod, ",", ".");
-					mod = string.gsub(mod, "_", ",");
-					sheet.gastos = mod .. "PO";
-
-					restante = string.gsub(restante, "%.", "_");
-					while true do  
-						restante, k = string.gsub(restante, "^(-?%d+)(%d%d%d)", '%1,%2')
-						if (k==0) then
-							break
-							end
-						end
-					restante = string.gsub(restante, ",", ".");
-					restante = string.gsub(restante, "_", ",");
-					sheet.dinheiroRestante = restante .. "PO";
-
-
+					sheet.gastos = gastos;
+					sheet.dinheiroRestante = restante;
 				end;
 			</event>
 		</dataLink>
@@ -151,67 +116,45 @@
 			
 			<label left="20" top="25" width="50" height="20" text="LEVE"/>
 			<rectangle left="80" top="25" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
-			<label left="80" top="25" width="70" height="20" field="cargaLeve" horzTextAlign="center"/>
+			<label left="80" top="25" width="70" height="20" field="cargaLeve" horzTextAlign="center" formatFloat=",0.## Kg"/>
 
 			<label left="20" top="47" width="50" height="20" text="MÉDIA"/>
 			<rectangle left="80" top="47" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
-			<label left="80" top="47" width="70" height="20" field="cargaMedia" horzTextAlign="center"/>
+			<label left="80" top="47" width="70" height="20" field="cargaMedia" horzTextAlign="center" formatFloat=",0.## Kg"/>
 
 			<label left="20" top="69" width="50" height="20" text="PESADA"/>
 			<rectangle left="80" top="69" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
-			<label left="80" top="69" width="70" height="20" field="cargaPesada" horzTextAlign="center"/>
+			<label left="80" top="69" width="70" height="20" field="cargaPesada" horzTextAlign="center"  formatFloat=",0.## Kg"/>
 			
 			<rectangle width="70" height="20" left="80" top="91" color="black" strokeColor="white" strokeSize="1"/>
 			<label left="20" top="91" width="50" height="20" text="ERGUER"/>
-			<label field="cargaErguer" text="valor" width="70" height="20" left="80" top="91" horzTextAlign="center"/>
+			<label field="cargaErguer" text="valor" width="70" height="20" left="80" top="91" horzTextAlign="center"  formatFloat=",0.## Kg"/>
 			<rectangle width="70" height="20" left="80" top="113" color="black" strokeColor="white" strokeSize="1"/>
 			<label left="10" top="113" width="70" height="20" text="EMPURRAR"/>
-			<label field="cargaLevantar" text="valor" width="70" height="20" left="80" top="113" horzTextAlign="center"/>
+			<label field="cargaLevantar" text="valor" width="70" height="20" left="80" top="113" horzTextAlign="center"  formatFloat=",0.## Kg"/>
 			<rectangle width="70" height="20" left="80" top="135" color="black" strokeColor="white" strokeSize="1"/>
 			<label left="10" top="135" width="65" height="20" text="LEVANTAR"/>
-			<label field="cargaEmpurrar" text="valor" width="70" height="20" left="80" top="135" horzTextAlign="center"/>
+			<label field="cargaEmpurrar" text="valor" width="70" height="20" left="80" top="135" horzTextAlign="center"  formatFloat=",0.## Kg"/>
 			<rectangle width="70" height="20" left="80" top="160" color="#404040"/>
 			<label left="20" top="160" width="65" height="20" text="ATUAL"/>
-			<label field="cargaAtual" width="70" height="20" left="80" top="160" horzTextAlign="center" fontColor="white"/>
+			<label field="cargaAtual" width="70" height="20" left="80" top="160" horzTextAlign="center" fontColor="white"  formatFloat=",0.## Kg"/>
 		</layout>
 		<dataLink field="cargaPesada">
 			<event name="onChange">
 				if sheet~= nil then
 
-					local mod1 = sheet.cargaPesada;
-					if mod1==nil then
-						mod1 = "0";
-					end
-					mod1 = string.gsub(mod1, "Kg", "");
-					mod1 = string.gsub(mod1, "K", "");
-					mod1 = string.gsub(mod1, "k", "");
-					mod1 = string.gsub(mod1, "G", "");
-					mod1 = string.gsub(mod1, "g", "");
-					mod1 = string.gsub(mod1, ",", ".");
-					local mod = (tonumber(mod1) or 0);
-					sheet.cargaErguer = mod .. "Kg";
-					sheet.cargaLevantar = (2*mod) .. "Kg";
-					sheet.cargaEmpurrar = (5*mod) .. "Kg";
+					local mod = (tonumber(sheet.cargaPesada) or 0);
+					sheet.cargaErguer = mod;
+					sheet.cargaLevantar = (2*mod);
+					sheet.cargaEmpurrar = (5*mod);
 				end;
 			</event>
 		</dataLink>
-		<dataLink fields="{'pesoCabeca', 'pesoOlhos', 'pesoPescoco', 'pesoOmbros', 'pesoTorso', 'pesoCorpo', 'pesoPunhos', 'pesoCintura', 'pesoMaos', 'pesoDedosI', 'pesoDesdosII', 'pesoPes', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp'}">
+		<dataLink fields="{'pesoEquipamento', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp', 'pesoTesta', 'pesoCorpo2'}">
 			<event name="onChange">
 				if sheet~=nil then
-					local mod = 0;
-					mod = (getNumber(sheet.pesoCabeca) or 0) +
-								(getNumber(sheet.pesoOlhos) or 0) +
-								(getNumber(sheet.pesoPescoco) or 0) +
-								(getNumber(sheet.pesoOmbros) or 0) +
-								(getNumber(sheet.pesoTorso) or 0) +
-								(getNumber(sheet.pesoCorpo) or 0) +
-								(getNumber(sheet.pesoPunhos) or 0) +
-								(getNumber(sheet.pesoCintura) or 0) +
-								(getNumber(sheet.pesoMaos) or 0) +
-								(getNumber(sheet.pesoDedosI) or 0) +
-								(getNumber(sheet.pesoDesdosII) or 0) +
-								(getNumber(sheet.pesoPes) or 0) +
-								(getNumber(sheet.pesoArmas) or 0) +
+					local carga = (tonumber(sheet.pesoEquipamento) or 0) +
+								(tonumber(sheet.pesoArmas) or 0) +
 								(getNumber(sheet.pesoMochila) or 0) +
 								(getNumber(sheet.pesoPermanencias) or 0) +
 								(getNumber(sheet.pesoLivres) or 0) +
@@ -219,14 +162,7 @@
 								(getNumber(sheet.pesoMunicoes) or 0) +
 								(getNumber(sheet.pesoBolsos) or 0) +
 								(getNumber(sheet.pesoImoveis) or 0);
-					while true do  
-						mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
-						if (k==0) then
-							break
-							end
-						end
-					mod = string.gsub(mod, ",", ".");
-					sheet.cargaAtual = mod .. "Kg";
+					sheet.cargaAtual = carga;
 				end;
 			</event>
 		</dataLink>
