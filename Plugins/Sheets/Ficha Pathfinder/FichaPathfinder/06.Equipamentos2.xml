@@ -46,7 +46,7 @@
 			<textEditor left="5" top="35" width="390" height="300" field="descricao"/>
 
 			<label left="5" top="340" width="95" height="20" text="Peso" horzTextAlign="center"/>
-			<edit vertTextAlign="center" left="100" top="340" width="75" height="25" field="peso">
+			<edit vertTextAlign="center" left="100" top="340" width="75" height="25" field="peso" type="float">
 				<event name="onUserChange">
 					if self.boxDetalheDoEquipamento.node~= nil then
 						local node = NDB.getRoot(self.boxDetalheDoEquipamento.node);
@@ -60,7 +60,7 @@
 				</event>
 			</edit>
 			<label left="200" top="340" width="95" height="20" text="Preço" horzTextAlign="center"/>
-			<edit vertTextAlign="center" left="290" top="340" width="75" height="25" field="preco">
+			<edit vertTextAlign="center" left="290" top="340" width="75" height="25" field="preco" type="float">
 				<event name="onUserChange">
 					if self.boxDetalheDoEquipamento.node~= nil then
 						local node = NDB.getRoot(self.boxDetalheDoEquipamento.node);
@@ -81,7 +81,15 @@
 				<label left="150" top="5" width="50" height="25" field="caTotal" horzTextAlign="center"/>
 
 				<label left="200" top="5" width="95" height="20" text="Melhoria" horzTextAlign="center"/>
-				<edit vertTextAlign="center" left="290" top="5" width="50" height="25" field="melhoria"/>
+				<edit vertTextAlign="center" left="290" top="5" width="50" height="25" field="melhoria">
+					<event name="onChange">
+						if self.boxDetalheDoEquipamento.node==nil then return end;
+						if self.boxDetalheDoEquipamento.node.melhoria==nil then return end;
+						local melhoria = tonumber(self.boxDetalheDoEquipamento.node.melhoria) or 0;
+						local caBase = tonumber(self.boxDetalheDoEquipamento.node.caBase) or 0;
+						self.boxDetalheDoEquipamento.node.caTotal = melhoria + caBase;
+					</event>
+				</edit>
 
 
 				<label left="5" top="30" width="95" height="20" text="DES. Máxima" horzTextAlign="center"/>

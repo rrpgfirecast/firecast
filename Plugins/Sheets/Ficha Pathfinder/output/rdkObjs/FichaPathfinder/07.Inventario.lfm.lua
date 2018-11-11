@@ -1535,8 +1535,8 @@ local function constructNew_frmFichaRPGmeister7_svg()
             if sheet~= nil then
             
             					-- Calculando todos gastos
-            					local gastos = (getNumber(sheet.precoEquipamento) or 0) +
-            									(getNumber(sheet.precoArmas) or 0) +
+            					local gastos = (tonumber(sheet.precoEquipamento) or 0) +
+            									(tonumber(sheet.precoArmas) or 0) +
             									(getNumber(sheet.precoMochila) or 0) +
             									(getNumber(sheet.precoPermanencias) or 0) +
             									(getNumber(sheet.precoLivres) or 0) +
@@ -1569,8 +1569,8 @@ local function constructNew_frmFichaRPGmeister7_svg()
     obj._e_event4 = obj.dataLink3:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~=nil then
-            					local carga = (getNumber(sheet.pesoEquipamento) or 0) +
-            								(getNumber(sheet.pesoArmas) or 0) +
+            					local carga = (tonumber(sheet.pesoEquipamento) or 0) +
+            								(tonumber(sheet.pesoArmas) or 0) +
             								(getNumber(sheet.pesoMochila) or 0) +
             								(getNumber(sheet.pesoPermanencias) or 0) +
             								(getNumber(sheet.pesoLivres) or 0) +
