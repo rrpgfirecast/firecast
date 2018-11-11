@@ -20,7 +20,7 @@
 			</event>
 			<event name="onEndEnumeration">
 				if self.rclListaDosItens.selectedNode == nil and sheet ~= nil then
-					local nodes = ndb.getChildNodes(sheet.campoDosItens);               
+					local nodes = NDB.getChildNodes(sheet.campoDosItens);               
 					if #nodes > 0 then
 						self.rclListaDosItens.selectedNode = nodes[1];
 					end;
@@ -35,8 +35,8 @@
 			
 			<button left="203" top="8" width="30" height="20" text="NC">
 				<event name="onClick">
-					local rolagem = rrpg.interpretarRolagem("1d20 +" .. self.boxDetalhesDoItem.node.NC);
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					local rolagem = Firecast.interpretarRolagem("1d20 +" .. self.boxDetalhesDoItem.node.NC);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de conjurador de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
 				</event>
 			</button>
@@ -154,7 +154,6 @@
 				<dataLink fields="{'atributoCD', 'efetModFor', 'efetModDes', 'efetModCon', 'efetModInt', 'efetModSab', 'efetModCar'}">
 					<event name="onChange">
 						if sheet ~= nil then
-							local resultado = 0;
 							local mod = 0;
 							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
 							
@@ -201,7 +200,7 @@
 					    elseif (tonumber(nodeA.dispMagia )or 0) > (tonumber(nodeB.dispMagia) or 0) then
 					        return -1;
 					    else   
-					        return utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+					        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
 					    end;               
 					    ]]>
 					</event>

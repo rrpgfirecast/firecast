@@ -87,7 +87,7 @@ local function constructNew_frmFichaRPGmeister6_svg()
 						text = text .. valor .. "/" .. valormax;
 					end;
 					
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 					if mesaDoPersonagem ~= nil then
 						   mesaDoPersonagem.activeChat:enviarMensagem(text);
 					end;
@@ -2241,7 +2241,7 @@ local function constructNew_frmFichaRPGmeister6_svg()
             							text = text .. valor .. "/" .. valormax;
             						end;
             						
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						if mesaDoPersonagem ~= nil then
             							   mesaDoPersonagem.activeChat:enviarMensagem(text);
             						end;

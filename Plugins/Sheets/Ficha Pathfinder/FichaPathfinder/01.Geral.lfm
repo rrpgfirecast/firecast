@@ -99,8 +99,8 @@
 		<template name="Atribute">
 			<button left="5" width="35" text="$(atrU)" fontSize="11">
 				<event name="onClick">
-					local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetMod$(atr)) or 0);
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetMod$(atr)) or 0);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "NOME"));
 				</event>
 			</button>
@@ -129,13 +129,6 @@
 					end;
 				</event>
 			</dataLink>
-			
-			<script>
-				local function get$(atrU)()
-					local mod = tonumber(sheet.efetMod$(atr)) or 0;
-					return mod;
-				end;
-			</script>
 		</template>
 		<template name="resitenceFlow">
 			<flowLayout align="top" autoHeight="true" maxControlsPerLine="11" margins="{bottom=4}" horzAlign="center">
@@ -166,8 +159,8 @@
 		<template name="Resistence">
 			<button left="5" width="45" text="$(atrU)" fontSize="11">
 				<event name="onClick">
-					local rolagem = rrpg.interpretarRolagem("1d20 +" .. (sheet.tr$(atr)) or "0");
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					local rolagem = Firecast.interpretarRolagem("1d20 +" .. (sheet.tr$(atr)) or "0");
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "NOME"));
 				</event>
 			</button>
@@ -379,7 +372,6 @@
 				<smallFieldCheckCenter field="bmdDerrubar"/>
 
 			</flowLayout>
-
 		</popup>
 
 		<script><![CDATA[
@@ -585,8 +577,8 @@
 			
 			<button left="35" top="25" width="75" height="25" text="INICIATIVA" fontSize="11">
 				<event name="onClick">
-					local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.iniciativa or "+0"));
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.iniciativa or "+0"));
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
 				</event>
 			</button>
@@ -633,8 +625,8 @@
 				
 				<button left="170" top="0" width="45" height="20" fontSize="10" text="FALHA">
 					<event name="onClick">
-						local rolagem = rrpg.interpretarRolagem("1d100");
-						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						local rolagem = Firecast.interpretarRolagem("1d100");
+						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Falha Arcana (" .. (sheet.falha or "0%").. ") de " .. (sheet.nome or "NOME"));
 					</event>
 				</button>
@@ -793,9 +785,9 @@
 			
 			<button left="5" top="70" width="40" height="25"  text="DVs">
 				<event name="onClick">
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 					sheet.modificador = sheet.modificador or 0;
-					mesaDoPersonagem.activeChat:rolarDados(sheet.dvs, "Pontos de Vigor de " .. (sheet.nome or "NOME"),
+					mesaDoPersonagem.activeChat:rolarDados(sheet.dvs, "Pontos de Vida de " .. (sheet.nome or "NOME"),
 						function (rolagem)
 							local maximo = 0;
 							local media = 0;
@@ -812,7 +804,7 @@
 									media = media + operacao.valor;
 								end;
 							end;
-							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 							mesaDoPersonagem.activeChat:enviarMensagem("PV máximo: " .. maximo .. "; PV médio: " .. math.floor(media));
 							sheet.pvTotal = math.floor(media);
 						end);  
@@ -822,54 +814,9 @@
 			<textEditor left="5" top="95" width="210" height="65" field="rd"/>
 		</rectangle>
 
-		<layout left="225" top="335" width="322" height="165">
+		<layout left="225" top="335" width="142" height="165">
 			<rectangle align="client" color="black"/>
 			<label left="5" top="0" width="321" height="20" text="BÔNUS TEMPORARIOS"/>
-			
-			<button left="165" top="5" width="85" height="20" text="CA oculta" onClick="caSecreta();"/>
-			
-			<label left="180" top="115" width="165" height="20" text="Apenas o Mestre." rotationAngle="90"/>
-			
-			<label left="165" top="30" width="50" height="25" text="Alvo 1"/>
-			<edit  left="205" top="30" width="40" height="25" field="alvo1" name="alvo1" visible="false" type="number"/>
-			<label left="165" top="55" width="50" height="25" text="Alvo 2"/>
-			<edit  left="205" top="55" width="40" height="25" field="alvo2" name="alvo2" visible="false" type="number"/>
-			<label left="165" top="80" width="50" height="25" text="Alvo 3"/>
-			<edit  left="205" top="80" width="40" height="25" field="alvo3" name="alvo3" visible="false" type="number"/>
-			<label left="165" top="105" width="50" height="25" text="Alvo 4"/>
-			<edit  left="205" top="105" width="40" height="25" field="alvo4" name="alvo4" visible="false" type="number"/>
-			<label left="165" top="130" width="50" height="25" text="Alvo 5"/>
-			<edit  left="205" top="130" width="40" height="25" field="alvo5" name="alvo5" visible="false" type="number"/>
-			
-			<script>
-				local function caSecreta()
-					if sheet~= nil then
-						local jogadores = rrpg.getMesaDe(sheet).jogadores;
-						local current = nil;
-						
-						for i = 1, #jogadores, 1 do
-							if jogadores[i].login==rrpg.getCurrentUser().login then
-								current = jogadores[i];
-							end;
-						end; 
-						
-						
-						if current~=nil and current.isMestre then
-							self.alvo1.visible = true;
-							self.alvo2.visible = true;
-							self.alvo3.visible = true;
-							self.alvo4.visible = true;
-							self.alvo5.visible = true;
-						else
-							self.alvo1.visible = false;
-							self.alvo2.visible = false;
-							self.alvo3.visible = false;
-							self.alvo4.visible = false;
-							self.alvo5.visible = false;
-						end;
-					end;
-				end;
-			</script>
 			
 			<label left="5" top="30" width="50" height="20" text="ATAQUE"/>
 			<edit vertTextAlign="center" left="60" top="30" width="70" height="25" field="buffAtaque"/>
@@ -881,6 +828,13 @@
 			<edit vertTextAlign="center" left="60" top="105" width="70" height="25" field="buffTR"/>
 			<label left="5" top="130" width="50" height="20" text="PERICIA"/>
 			<edit vertTextAlign="center" left="60" top="130" width="70" height="25" field="buffPericia"/>
+		</layout>
+
+		<layout left="372" top="335" width="170" height="165">
+			<rectangle align="client" color="black"/>
+			<label left="5" top="0" width="321" height="20" text="NOTAS"/>
+
+			<textEditor left="5" field="notas" width="160" top="30" height="130"/>
 		</layout>
 
 		<layout left="552" top="335" width="188" height="142">
@@ -909,8 +863,8 @@
 			<layout left="0" top="60" width="180" height="60">
 				<button left="5" top="0" width="40" height="25" text="BMC" fontSize="11">
 					<event name="onClick">
-						local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.bmc or "0"));
-						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						local rolagem = Firecast.interpretarRolagem("1d20 + " .. (sheet.bmc or "0"));
+						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de BMC de " .. (sheet.nome or "NOME"));
 					</event>
 				</button>
@@ -1055,49 +1009,49 @@
 						local num = tonumber(sheet.atrTrFort) or 3;
 
 						if num == 1 then
-							atrModFort = getFOR();
+							atrModFort = tonumber(sheet.efetModFor) or 0;
 						elseif num == 2 then
-							atrModFort = getDES();
+							atrModFort = tonumber(sheet.efetModDes) or 0;
 						elseif num == 3 then
-							atrModFort = getCON();
+							atrModFort = tonumber(sheet.efetModCon) or 0;
 						elseif num == 4 then
-							atrModFort = getINT();
+							atrModFort = tonumber(sheet.efetModInt) or 0;
 						elseif num == 5 then
-							atrModFort = getSAB();
+							atrModFort = tonumber(sheet.efetModSab) or 0;
 						elseif num == 6 then
-							atrModFort = getCAR();
+							atrModFort = tonumber(sheet.efetModCar) or 0;
 						end;
 
 						num = tonumber(sheet.atrTrRef) or 2;
 
 						if num == 1 then
-							atrModRef = getFOR();
+							atrModRef = tonumber(sheet.efetModFor) or 0;
 						elseif num == 2 then
-							atrModRef = getDES();
+							atrModRef = tonumber(sheet.efetModDes) or 0;
 						elseif num == 3 then
-							atrModRef = getCON();
+							atrModRef = tonumber(sheet.efetModCon) or 0;
 						elseif num == 4 then
-							atrModRef = getINT();
+							atrModRef = tonumber(sheet.efetModInt) or 0;
 						elseif num == 5 then
-							atrModRef = getSAB();
+							atrModRef = tonumber(sheet.efetModSab) or 0;
 						elseif num == 6 then
-							atrModRef = getCAR();
+							atrModRef = tonumber(sheet.efetModCar) or 0;
 						end;
 
 						num = tonumber(sheet.atrTrVon) or 5;
 
 						if num == 1 then
-							atrModVon = getFOR();
+							atrModVon = tonumber(sheet.efetModFor) or 0;
 						elseif num == 2 then
-							atrModVon = getDES();
+							atrModVon = tonumber(sheet.efetModDes) or 0;
 						elseif num == 3 then
-							atrModVon = getCON();
+							atrModVon = tonumber(sheet.efetModCon) or 0;
 						elseif num == 4 then
-							atrModVon = getINT();
+							atrModVon = tonumber(sheet.efetModInt) or 0;
 						elseif num == 5 then
-							atrModVon = getSAB();
+							atrModVon = tonumber(sheet.efetModSab) or 0;
 						elseif num == 6 then
-							atrModVon = getCAR();
+							atrModVon = tonumber(sheet.efetModCar) or 0;
 						end;
 
 						sheet.atrModFort = atrModFort;

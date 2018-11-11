@@ -20,7 +20,7 @@
 			</event>
 			<event name="onEndEnumeration">
 				if self.rclListaDosItens.selectedNode == nil and sheet ~= nil then
-					local nodes = ndb.getChildNodes(sheet.campoDosItens);               
+					local nodes = NDB.getChildNodes(sheet.campoDosItens);               
 					if #nodes > 0 then
 						self.rclListaDosItens.selectedNode = nodes[1];
 					end;
@@ -35,8 +35,8 @@
 			
 			<button left="203" top="8" width="30" height="20" text="NC">
 				<event name="onClick">
-					local rolagem = rrpg.interpretarRolagem("1d20 +" .. self.boxDetalhesDoItem.node.NC);
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					local rolagem = Firecast.interpretarRolagem("1d20 +" .. self.boxDetalhesDoItem.node.NC);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de conjurador de " .. (sheet.nome or "NOME"));
 				</event>
 			</button>
@@ -50,8 +50,8 @@
 				<event name="onClick">
 					local concentracao = (tonumber(self.boxDetalhesDoItem.node.concentracao) or 0);
 
-					local rolagem = rrpg.interpretarRolagem("1d20 +" .. concentracao);
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					local rolagem = Firecast.interpretarRolagem("1d20 +" .. concentracao);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de concentração de " .. (sheet.nome or "NOME"));
 				</event>
 			</button>
@@ -135,9 +135,11 @@
 			
 			<template name="CirculoMagia">
 				<label vertTextAlign="center" left="10" top="3" width="25" height="22" text="$(num)"/>
+				<!--  if num ~= "0" then -->	
 				<edit vertTextAlign="center" left="45" top="0" width="30" height="25" field="total$(num)" type="number"/>
 				<edit vertTextAlign="center" left="85" top="0" width="30" height="25" field="base$(num)" type="number"/>
 				<label vertTextAlign="center" left="140" top="0" width="30" height="25" field="bonus$(num)"/>
+				<!-- end; -->
 				<dataLink fields="{'base$(num)', 'bonus$(num)'}">
 					<event name="onChange">
 						local node = self.boxDetalhesDoItem.node;
@@ -157,17 +159,17 @@
 							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
 							
 							if ctrl=='1' then
-								mod = getFOR();
+								mod = tonumber(sheet.efetModFor) or 0;
 							elseif ctrl=='2' then
-								mod = getDES();
+								mod = tonumber(sheet.efetModDes) or 0;
 							elseif ctrl=='3' then
-								mod = getCON();
+								mod = tonumber(sheet.efetModCon) or 0;
 							elseif ctrl=='4' then
-								mod = getINT();
+								mod = tonumber(sheet.efetModInt) or 0;
 							elseif ctrl=='5' then
-								mod = getSAB();
+								mod = tonumber(sheet.efetModSab) or 0;
 							elseif ctrl=='6' then
-								mod = getCAR();
+								mod = tonumber(sheet.efetModCar) or 0;
 							end;
 							local nivel = $(num);
 							
@@ -193,22 +195,21 @@
 				<dataLink fields="{'atributoCD', 'efetModFor', 'efetModDes', 'efetModCon', 'efetModInt', 'efetModSab', 'efetModCar'}">
 					<event name="onChange">
 						if sheet ~= nil then
-							local resultado = 0;
 							local mod = 0;
 							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
 							
 							if ctrl=='1' then
-								mod = getFOR();
+								mod = tonumber(sheet.efetModFor) or 0;
 							elseif ctrl=='2' then
-								mod = getDES();
+								mod = tonumber(sheet.efetModDes) or 0;
 							elseif ctrl=='3' then
-								mod = getCON();
+								mod = tonumber(sheet.efetModCon) or 0;
 							elseif ctrl=='4' then
-								mod = getINT();
+								mod = tonumber(sheet.efetModInt) or 0;
 							elseif ctrl=='5' then
-								mod = getSAB();
+								mod = tonumber(sheet.efetModSab) or 0;
 							elseif ctrl=='6' then
-								mod = getCAR();
+								mod = tonumber(sheet.efetModCar) or 0;
 							end;
 							local nivel = $(num);
 							
@@ -240,7 +241,7 @@
 					    elseif (tonumber(nodeA.dispMagia )or 0) > (tonumber(nodeB.dispMagia) or 0) then
 					        return -1;
 					    else   
-					        return utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
+					        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
 					    end;               
 					    ]]>
 					</event>
@@ -374,17 +375,17 @@
 							local mod = 0;
 							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
 							if ctrl=='1' then
-								mod = getFOR();
+								mod = tonumber(sheet.efetModFor) or 0;
 							elseif ctrl=='2' then
-								mod = getDES();
+								mod = tonumber(sheet.efetModDes) or 0;
 							elseif ctrl=='3' then
-								mod = getCON();
+								mod = tonumber(sheet.efetModCon) or 0;
 							elseif ctrl=='4' then
-								mod = getINT();
+								mod = tonumber(sheet.efetModInt) or 0;
 							elseif ctrl=='5' then
-								mod = getSAB();
+								mod = tonumber(sheet.efetModSab) or 0;
 							elseif ctrl=='6' then
-								mod = getCAR();
+								mod = tonumber(sheet.efetModCar) or 0;
 							end;
 							
 							self.boxDetalhesDoItem.node.cdSignos = (10+mod+1) .. "  " .. (10+mod+3) .. "  " .. (10+mod+5) .. "  " .. (10+mod+7) .. "  " .. (10+mod+9);

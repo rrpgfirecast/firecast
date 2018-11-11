@@ -58,7 +58,14 @@
             <import file="05.Magias.lfm"/>
         </tab>
 		<tab title="Equipamentos">
-            <import file="06.Equipamentos.lfm"/>
+            <tabControl align="client">
+                <tab title="Novo">
+                    <import file="06.Equipamentos2.xml"/>
+                </tab>
+                <tab title="Velho">
+                    <import file="06.Equipamentos.lfm"/>
+                </tab>
+            </tabControl>
         </tab>
         <tab title="Inventario">
             <import file="07.Inventario.lfm"/>
@@ -70,19 +77,19 @@
             <import file="09.Descricao.lfm"/>
         </tab>
         <tab title="Anotações">
-            <import file="10.Anotacoes.lfm"/>
+            <import file="10.Anotacoes.xml"/>
         </tab>
 		<tab title="Creditos">
-            <import file="11.Creditos.lfm"/>
+            <import file="11.Creditos.xml"/>
         </tab>
     </tabControl>
     <event name="onNodeReady">
         internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true",
             function(stream, contentType)
-                local info = rrpg.plugins.getRPKDetails(stream);
+                local info = Firecast.Plugins.getRPKDetails(stream);
                 sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
 
-                local installed = rrpg.plugins.getInstalledPlugins();
+                local installed = Firecast.Plugins.getInstalledPlugins();
                 local myself;
                 for i=1, #installed, 1 do
                     if installed[i].moduleId == info.moduleId then
@@ -96,7 +103,7 @@
                     Dialogs.choose("Há uma nova versão(" .. info.version .. ") da Ficha Pathfinder. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                         function(selected, selectedIndex, selectedText)
                             if selected and selectedIndex == 1 then
-                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true');
+                                GUI.openInBrowser('https://github.com/rrpgFirecast./Firecast./blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true');
                             elseif selected and selectedIndex == 3 then
                                 sheet.noUpdate = true;
                             end;

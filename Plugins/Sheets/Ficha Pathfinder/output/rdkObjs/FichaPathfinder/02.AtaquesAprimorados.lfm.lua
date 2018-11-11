@@ -102,8 +102,8 @@ local function constructNew_frmFichaRPGmeister2a_svg()
 					ataquesFeitos = ataquesFeitos + 1;
 
 					local personagem = sheet.nome or "personagem";
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-					local weapons = ndb.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					local weapons = NDB.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
 
 					if ataquesFeitos < numeroAtaques then
 						ataqueID = ataqueID + 1;
@@ -117,7 +117,7 @@ local function constructNew_frmFichaRPGmeister2a_svg()
 						local crit = weapons[weaponID].crit;
 
 						if dadoAtaques[ataquesFeitos+1]>=decisivo then
-							local rolagem = rrpg.interpretarRolagem(crit);
+							local rolagem = Firecast.interpretarRolagem(crit);
 							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano adicional do decisivo #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 								function (rolado)
 									proximoCritico(rolado)
@@ -135,8 +135,8 @@ local function constructNew_frmFichaRPGmeister2a_svg()
 					ataquesFeitos = ataquesFeitos + 1;
 
 					local personagem = sheet.nome or "personagem";
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-					local weapons = ndb.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					local weapons = NDB.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
 
 					if ataquesFeitos < numeroAtaques then
 						ataqueID = ataqueID + 1;
@@ -149,7 +149,7 @@ local function constructNew_frmFichaRPGmeister2a_svg()
 						local decisivo = weapons[weaponID].decisivo;
 						local armamento = weapons[weaponID].nomeAtaque or "arma";
 						if dadoAtaques[ataquesFeitos+1]>=decisivo then
-							local confirmacao = rrpg.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+							local confirmacao = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
 							mesaDoPersonagem.activeChat:rolarDados(confirmacao, "Confirmação de Decisivo do ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 								function (rolado)
 									proximaConfirmacao(rolado)
@@ -169,7 +169,7 @@ local function constructNew_frmFichaRPGmeister2a_svg()
 						local crit = weapons[weaponID].crit;
 
 						if dadoAtaques[ataquesFeitos+1]>=decisivo then
-							local rolagem = rrpg.interpretarRolagem(crit);
+							local rolagem = Firecast.interpretarRolagem(crit);
 							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano adicional do decisivo #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 								function (rolado)
 									proximoCritico(rolado)
@@ -184,8 +184,8 @@ local function constructNew_frmFichaRPGmeister2a_svg()
 					ataquesFeitos = ataquesFeitos + 1;
 
 					local personagem = sheet.nome or "personagem";
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-					local weapons = ndb.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					local weapons = NDB.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
 
 					if ataquesFeitos < numeroAtaques then
 						ataqueID = ataqueID + 1;
@@ -197,7 +197,7 @@ local function constructNew_frmFichaRPGmeister2a_svg()
 						local dano = weapons[weaponID].dado;
 						local armamento = weapons[weaponID].nomeAtaque or "arma";
 
-						local rolagem = rrpg.interpretarRolagem(dano);
+						local rolagem = Firecast.interpretarRolagem(dano);
 						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 							function (rolado)
 								proximoDano(rolado)
@@ -214,7 +214,7 @@ local function constructNew_frmFichaRPGmeister2a_svg()
 						local decisivo = weapons[weaponID].decisivo;
 						local armamento = weapons[weaponID].nomeAtaque or "arma";
 						if dadoAtaques[ataquesFeitos+1]>=decisivo then
-							local confirmacao = rrpg.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+							local confirmacao = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
 							mesaDoPersonagem.activeChat:rolarDados(confirmacao, "Confirmação de Decisivo do ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 								function (rolado)
 									proximaConfirmacao(rolado)
@@ -231,8 +231,8 @@ local function constructNew_frmFichaRPGmeister2a_svg()
 					resultadoAtaques[ataquesFeitos] = rolado.resultado;
 
 					local personagem = sheet.nome or "personagem";
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-					local weapons = ndb.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					local weapons = NDB.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
 
 					if ataquesFeitos < numeroAtaques then
 						ataqueID = ataqueID + 1;
@@ -244,7 +244,7 @@ local function constructNew_frmFichaRPGmeister2a_svg()
 						local acertos = weapons[weaponID].acertos;
 						local armamento = weapons[weaponID].nomeAtaque or "arma";
 
-						local rolagem = rrpg.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+						local rolagem = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
 						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 							function (rolado)
 								proximoAtaque(rolado)
@@ -261,7 +261,7 @@ local function constructNew_frmFichaRPGmeister2a_svg()
 						local dano = weapons[weaponID].dado;
 						local armamento = weapons[weaponID].nomeAtaque or "arma";
 
-						local rolagem = rrpg.interpretarRolagem(dano);
+						local rolagem = Firecast.interpretarRolagem(dano);
 						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 							function (rolado)
 								proximoDano(rolado)
@@ -352,7 +352,7 @@ local function constructNew_frmFichaRPGmeister2a_svg()
     obj._e_event2 = obj.rclListaDosAtaques:addEventListener("onEndEnumeration",
         function (_)
             if self.rclListaDosAtaques.selectedNode == nil and sheet ~= nil then
-            					local nodes = ndb.getChildNodes(sheet.campoDosAtaques);               
+            					local nodes = NDB.getChildNodes(sheet.campoDosAtaques);               
             					if #nodes > 0 then
             						self.rclListaDosAtaques.selectedNode = nodes[1];
             					end;
@@ -374,8 +374,8 @@ local function constructNew_frmFichaRPGmeister2a_svg()
             						end;
             						rolando = true;
             						
-            						local weapons = ndb.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            						local weapons = NDB.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						local personagem = sheet.nome or "personagem";
             
             						--limpando variaveis do ultimo ataque
@@ -406,7 +406,7 @@ local function constructNew_frmFichaRPGmeister2a_svg()
             						local acertos = weapons[weaponID].acertos;
             						local armamento = weapons[weaponID].nomeAtaque or "arma";
             
-            						local rolagem = rrpg.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+            						local rolagem = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
             							function (rolado)
             								proximoAtaque(rolado)

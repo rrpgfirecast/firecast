@@ -42,7 +42,7 @@ local function constructNew_frmFichaRPGmeister6_svg()
     obj.image1:setTop(70);
     obj.image1:setWidth(200);
     obj.image1:setHeight(600);
-    obj.image1:setSRC("http://blob.firecast.com.br/blobs/GADIAGUF_607701/slots.png");
+    obj.image1:setSRC("http://blob.Firecast..com.br/blobs/GADIAGUF_607701/slots.png");
     obj.image1:setField("imgSlots");
     obj.image1:setStyle("stretch");
     obj.image1:setOptimize(true);
@@ -87,7 +87,7 @@ local function constructNew_frmFichaRPGmeister6_svg()
 						text = text .. valor .. "/" .. valormax;
 					end;
 					
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 					if mesaDoPersonagem ~= nil then
 						   mesaDoPersonagem.activeChat:enviarMensagem(text);
 					end;
@@ -2543,7 +2543,7 @@ local function constructNew_frmFichaRPGmeister6_svg()
             							text = text .. valor .. "/" .. valormax;
             						end;
             						
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						if mesaDoPersonagem ~= nil then
             							   mesaDoPersonagem.activeChat:enviarMensagem(text);
             						end;

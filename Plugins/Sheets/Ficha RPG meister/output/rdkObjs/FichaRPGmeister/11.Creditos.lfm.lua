@@ -231,32 +231,32 @@ local function constructNew_frmFichaRPGmeister11_svg()
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/README.md')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/README.md')
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true')
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/__Tutorial/Ficha%20RPG%20meister%20-%20Tutorial.docx?raw=true')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/__Tutorial/Ficha%20RPG%20meister%20-%20Tutorial.docx?raw=true')
         end, obj);
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
+            GUI.openInBrowser('http://firecast.Firecast.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     obj._e_event4 = obj.button5:addEventListener("onClick",
         function (_)
-            local export = ndb.load("export.xml");
+            local export = NDB.load("export.xml");
             				export.clone = sheet;
             
             				setTimeout(
             						function ()
-            							local stream = vhd.openFile("export.xml");
+            							local stream = VHD.openFile("export.xml");
             							Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
             								function()
             									stream:close();
@@ -274,21 +274,20 @@ local function constructNew_frmFichaRPGmeister11_svg()
             						local arq = arquivos[1];
             
             						-- Testar se deletar o arquivo funciona bem...
-            		                if vhd.fileExists("import.xml") then
-            		                    vhd.deleteFile("import.xml");
+            		                if VHD.fileExists("import.xml") then
+            		                    VHD.deleteFile("import.xml");
             		                end;
             						
-            						local stream = vhd.openFile("import.xml", "w");
+            						local stream = VHD.openFile("import.xml", "w");
             						stream:copyFrom(arq.stream, arq.stream.size);
             
             						setTimeout(
             								function ()
             									stream:close();
-            									local import = ndb.load("import.xml");
+            									local import = NDB.load("import.xml");
             									
-            									local allAtts = ndb.getAttributes(import.clone);
+            									local allAtts = NDB.getAttributes(import.clone);
             
-            									local mesa = rrpg.getMesaDe(sheet);
             									for k, v in pairs(allAtts) do
             										sheet[k] = v;
             									end;

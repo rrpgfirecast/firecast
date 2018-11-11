@@ -109,6 +109,7 @@ local function constructNew_frmFichaRPGmeister7_svg()
     obj.label3:setWidth(70);
     obj.label3:setHeight(20);
     obj.label3:setField("pesoArmas");
+    lfm_setPropAsString(obj.label3, "formatFloat",  ",0.## Kg");
     obj.label3:setName("label3");
 
     obj.label4 = GUI.fromHandle(_obj_newObject("label"));
@@ -140,6 +141,7 @@ local function constructNew_frmFichaRPGmeister7_svg()
     obj.label5:setWidth(91);
     obj.label5:setHeight(20);
     obj.label5:setField("precoArmas");
+    lfm_setPropAsString(obj.label5, "formatFloat",  ",0.## PO");
     obj.label5:setName("label5");
 
     obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
@@ -762,6 +764,7 @@ local function constructNew_frmFichaRPGmeister7_svg()
     obj.label30:setHeight(20);
     obj.label30:setHorzTextAlign("center");
     obj.label30:setFontSize(11);
+    lfm_setPropAsString(obj.label30, "formatFloat",  ",0.## PO");
     obj.label30:setName("label30");
 
     obj.label31 = GUI.fromHandle(_obj_newObject("label"));
@@ -795,11 +798,12 @@ local function constructNew_frmFichaRPGmeister7_svg()
     obj.label32:setHeight(20);
     obj.label32:setHorzTextAlign("center");
     obj.label32:setFontSize(11);
+    lfm_setPropAsString(obj.label32, "formatFloat",  ",0.## PO");
     obj.label32:setName("label32");
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj.scrollBox1);
-    obj.dataLink1:setFields({'precoCabeca', 'precoOlhos', 'precoPescoco', 'precoOmbros', 'precoTorso', 'precoCorpo', 'precoPunhos', 'precoCintura', 'precoMaos', 'precoDedosI', 'precoDesdosII', 'precoPes', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal'});
+    obj.dataLink1:setFields({'precoEquipamento', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal', 'precoCorpo2', 'precoTesta'});
     obj.dataLink1:setName("dataLink1");
 
     obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
@@ -853,6 +857,7 @@ local function constructNew_frmFichaRPGmeister7_svg()
     obj.label35:setHeight(20);
     obj.label35:setField("cargaLeve");
     obj.label35:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label35, "formatFloat",  ",0.## Kg");
     obj.label35:setName("label35");
 
     obj.label36 = GUI.fromHandle(_obj_newObject("label"));
@@ -883,6 +888,7 @@ local function constructNew_frmFichaRPGmeister7_svg()
     obj.label37:setHeight(20);
     obj.label37:setField("cargaMedia");
     obj.label37:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label37, "formatFloat",  ",0.## Kg");
     obj.label37:setName("label37");
 
     obj.label38 = GUI.fromHandle(_obj_newObject("label"));
@@ -913,6 +919,7 @@ local function constructNew_frmFichaRPGmeister7_svg()
     obj.label39:setHeight(20);
     obj.label39:setField("cargaPesada");
     obj.label39:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label39, "formatFloat",  ",0.## Kg");
     obj.label39:setName("label39");
 
     obj.rectangle19 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -944,6 +951,7 @@ local function constructNew_frmFichaRPGmeister7_svg()
     obj.label41:setLeft(80);
     obj.label41:setTop(91);
     obj.label41:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label41, "formatFloat",  ",0.## Kg");
     obj.label41:setName("label41");
 
     obj.rectangle20 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -975,6 +983,7 @@ local function constructNew_frmFichaRPGmeister7_svg()
     obj.label43:setLeft(80);
     obj.label43:setTop(113);
     obj.label43:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label43, "formatFloat",  ",0.## Kg");
     obj.label43:setName("label43");
 
     obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -1006,6 +1015,7 @@ local function constructNew_frmFichaRPGmeister7_svg()
     obj.label45:setLeft(80);
     obj.label45:setTop(135);
     obj.label45:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label45, "formatFloat",  ",0.## Kg");
     obj.label45:setName("label45");
 
     obj.rectangle22 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -1035,6 +1045,7 @@ local function constructNew_frmFichaRPGmeister7_svg()
     obj.label47:setTop(160);
     obj.label47:setHorzTextAlign("center");
     obj.label47:setFontColor("white");
+    lfm_setPropAsString(obj.label47, "formatFloat",  ",0.## Kg");
     obj.label47:setName("label47");
 
     obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -1044,7 +1055,7 @@ local function constructNew_frmFichaRPGmeister7_svg()
 
     obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj.scrollBox1);
-    obj.dataLink3:setFields({'pesoCabeca', 'pesoOlhos', 'pesoPescoco', 'pesoOmbros', 'pesoTorso', 'pesoCorpo', 'pesoPunhos', 'pesoCintura', 'pesoMaos', 'pesoDedosI', 'pesoDesdosII', 'pesoPes', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp'});
+    obj.dataLink3:setFields({'pesoEquipamento', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp', 'pesoTesta', 'pesoCorpo2'});
     obj.dataLink3:setName("dataLink3");
 
     obj.popArma = GUI.fromHandle(_obj_newObject("popup"));
@@ -1524,58 +1535,23 @@ local function constructNew_frmFichaRPGmeister7_svg()
             if sheet~= nil then
             
             					-- Calculando todos gastos
-            					local mod = 0;
-            					mod = (getNumber(sheet.precoCabeca) or 0) +
-            								(getNumber(sheet.precoOlhos) or 0) +
-            								(getNumber(sheet.precoPescoco) or 0) +
-            								(getNumber(sheet.precoOmbros) or 0) +
-            								(getNumber(sheet.precoTorso) or 0) +
-            								(getNumber(sheet.precoCorpo) or 0) +
-            								(getNumber(sheet.precoPunhos) or 0) +
-            								(getNumber(sheet.precoCintura) or 0) +
-            								(getNumber(sheet.precoMaos) or 0) +
-            								(getNumber(sheet.precoDedosI) or 0) +
-            								(getNumber(sheet.precoDesdosII) or 0) +
-            								(getNumber(sheet.precoPes) or 0) +
-            								(getNumber(sheet.precoArmas) or 0) +
-            								(getNumber(sheet.precoMochila) or 0) +
-            								(getNumber(sheet.precoPermanencias) or 0) +
-            								(getNumber(sheet.precoLivres) or 0) +
-            								(getNumber(sheet.precoOutros) or 0) +
-            								(getNumber(sheet.precoMunicoes) or 0) +
-            								(getNumber(sheet.precoBolsos) or 0) +
-            								(getNumber(sheet.precoImoveis) or 0) +
-            								(getNumber(sheet.precoInventorioComp) or 0);
+            					local gastos = (tonumber(sheet.precoEquipamento) or 0) +
+            									(tonumber(sheet.precoArmas) or 0) +
+            									(getNumber(sheet.precoMochila) or 0) +
+            									(getNumber(sheet.precoPermanencias) or 0) +
+            									(getNumber(sheet.precoLivres) or 0) +
+            									(getNumber(sheet.precoOutros) or 0) +
+            									(getNumber(sheet.precoMunicoes) or 0) +
+            									(getNumber(sheet.precoBolsos) or 0) +
+            									(getNumber(sheet.precoImoveis) or 0) +
+            									(getNumber(sheet.precoInventorioComp) or 0);
             
             					-- Calculando dinheiro restante
             					local total = getNumber(sheet.dinheiroTotal) or 0;
-            					local restante = total - mod;
-            					--showMessage(total .. " | " .. mod .. " | " .. restante);
+            					local restante = total - gastos;
             
-            					-- Formatando texto
-            					mod = string.gsub(mod, "%.", "_");
-            					while true do  
-            						mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
-            						if (k==0) then
-            							break
-            							end
-            						end
-            					mod = string.gsub(mod, ",", ".");
-            					mod = string.gsub(mod, "_", ",");
-            					sheet.gastos = mod .. "PO";
-            
-            					restante = string.gsub(restante, "%.", "_");
-            					while true do  
-            						restante, k = string.gsub(restante, "^(-?%d+)(%d%d%d)", '%1,%2')
-            						if (k==0) then
-            							break
-            							end
-            						end
-            					restante = string.gsub(restante, ",", ".");
-            					restante = string.gsub(restante, "_", ",");
-            					sheet.dinheiroRestante = restante .. "PO";
-            
-            
+            					sheet.gastos = gastos;
+            					sheet.dinheiroRestante = restante;
             				end;
         end, obj);
 
@@ -1583,40 +1559,18 @@ local function constructNew_frmFichaRPGmeister7_svg()
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             
-            					local mod1 = sheet.cargaPesada;
-            					if mod1==nil then
-            						mod1 = "0";
-            					end
-            					mod1 = string.gsub(mod1, "Kg", "");
-            					mod1 = string.gsub(mod1, "K", "");
-            					mod1 = string.gsub(mod1, "k", "");
-            					mod1 = string.gsub(mod1, "G", "");
-            					mod1 = string.gsub(mod1, "g", "");
-            					mod1 = string.gsub(mod1, ",", ".");
-            					local mod = (tonumber(mod1) or 0);
-            					sheet.cargaErguer = mod .. "Kg";
-            					sheet.cargaLevantar = (2*mod) .. "Kg";
-            					sheet.cargaEmpurrar = (5*mod) .. "Kg";
+            					local mod = (tonumber(sheet.cargaPesada) or 0);
+            					sheet.cargaErguer = mod;
+            					sheet.cargaLevantar = (2*mod);
+            					sheet.cargaEmpurrar = (5*mod);
             				end;
         end, obj);
 
     obj._e_event4 = obj.dataLink3:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~=nil then
-            					local mod = 0;
-            					mod = (getNumber(sheet.pesoCabeca) or 0) +
-            								(getNumber(sheet.pesoOlhos) or 0) +
-            								(getNumber(sheet.pesoPescoco) or 0) +
-            								(getNumber(sheet.pesoOmbros) or 0) +
-            								(getNumber(sheet.pesoTorso) or 0) +
-            								(getNumber(sheet.pesoCorpo) or 0) +
-            								(getNumber(sheet.pesoPunhos) or 0) +
-            								(getNumber(sheet.pesoCintura) or 0) +
-            								(getNumber(sheet.pesoMaos) or 0) +
-            								(getNumber(sheet.pesoDedosI) or 0) +
-            								(getNumber(sheet.pesoDesdosII) or 0) +
-            								(getNumber(sheet.pesoPes) or 0) +
-            								(getNumber(sheet.pesoArmas) or 0) +
+            					local carga = (tonumber(sheet.pesoEquipamento) or 0) +
+            								(tonumber(sheet.pesoArmas) or 0) +
             								(getNumber(sheet.pesoMochila) or 0) +
             								(getNumber(sheet.pesoPermanencias) or 0) +
             								(getNumber(sheet.pesoLivres) or 0) +
@@ -1624,14 +1578,7 @@ local function constructNew_frmFichaRPGmeister7_svg()
             								(getNumber(sheet.pesoMunicoes) or 0) +
             								(getNumber(sheet.pesoBolsos) or 0) +
             								(getNumber(sheet.pesoImoveis) or 0);
-            					while true do  
-            						mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
-            						if (k==0) then
-            							break
-            							end
-            						end
-            					mod = string.gsub(mod, ",", ".");
-            					sheet.cargaAtual = mod .. "Kg";
+            					sheet.cargaAtual = carga;
             				end;
         end, obj);
 

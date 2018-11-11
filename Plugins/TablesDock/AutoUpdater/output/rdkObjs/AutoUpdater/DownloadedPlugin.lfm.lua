@@ -109,10 +109,10 @@ local function constructNew_frmDownloadedPlugin()
         function (_)
             local install = true;
             				if sheet.stream ~= nil then
-            					install = rrpg.plugins.installPlugin(sheet.stream, true);
+            					install = Firecast.Plugins.installPlugin(sheet.stream, true);
             				end;
             				if install == false or sheet.stream == nil then
-            					gui.openInBrowser(sheet.url);
+            					GUI.openInBrowser(sheet.url);
             				end;
         end, obj);
 

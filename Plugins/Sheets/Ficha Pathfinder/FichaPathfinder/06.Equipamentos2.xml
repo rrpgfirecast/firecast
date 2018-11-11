@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister6E_svg" align="client" theme="dark" margins="{top=1}">
+	<scrollBox align="client">
+		<recordList left="0" top="0" width="150" height="602" name="rclEquipamentos" field="listaDeEquipamentos" templateForm="frmFichaRPGmeister6ES_svg" layout="vertical" selectable="true" minQt="14">
+			<event name="onEndEnumeration"><![CDATA[
+				if sheet~= nil then
+					local objetos = ndb.getChildNodes(sheet.listaDeEquipamentos);
+					local slots = {"Cabeça","Testa","Olhos","Pescoço","Ombros","Torso","Corpo","Armadura","Punhos","Cintura","Mãos","Dedo I","Dedo II","Pés"};
+					local indexes = {1,2,3,4,5,6,7,8,9,10,11,12,13,14};
+					local images = {"http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/cabeca.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/testa.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/olhos.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/pescoco.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/ombros.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/torso.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/corpo.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/corpo.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/punhos.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/cintura.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/maos.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/dedoI.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/dedoII.png","http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/pes.png"};
+					for i=1, #objetos, 1 do
+						objetos[i].slot = slots[i];
+						objetos[i].index = indexes[i];
+						objetos[i].imgSlots = images[i];
+					end;
+
+					if self.rclEquipamentos.selectedNode== nil and #objetos>0 then
+						self.rclEquipamentos.selectedNode = objetos[1]; 
+					end;
+					self.rclEquipamentos:sort();
+				end;
+				]]>
+			</event>
+			<event name="onSelect"><![CDATA[
+					local node = self.rclEquipamentos.selectedNode;
+					self.boxDetalheDoEquipamento.node = node; 
+					self.boxDetalheDoEquipamento.visible = (node ~= nil);
+				]]>
+			</event>
+			<event name="onCompare"><![CDATA[			   
+				if (nodeA.index or 0) < (nodeB.index or 0) then
+					return -1;
+				elseif (nodeA.index or 0) > (nodeB.index or 0) then
+					return 1;
+				else   
+					return 0;
+				end;
+				]]>
+			</event>
+		</recordList>
+
+		<dataScopeBox left="150" top="0" width="600" height="602" name="boxDetalheDoEquipamento" visible="false">
+			<rectangle align="client" color="black"/>
+
+			<edit vertTextAlign="center" left="5" top="5" width="390" height="25" field="nome"/>
+			<textEditor left="5" top="35" width="390" height="300" field="descricao"/>
+
+			<label left="5" top="340" width="95" height="20" text="Peso" horzTextAlign="center"/>
+			<edit vertTextAlign="center" left="100" top="340" width="75" height="25" field="peso" type="float">
+				<event name="onUserChange">
+					if self.boxDetalheDoEquipamento.node~= nil then
+						local node = NDB.getRoot(self.boxDetalheDoEquipamento.node);
+						local pesoEquipamento = 0;
+						local nodes = NDB.getChildNodes(node.listaDeEquipamentos); 
+						for i=1, #nodes, 1 do
+							pesoEquipamento = pesoEquipamento + (tonumber(nodes[i].peso) or 0);
+						end
+						node.pesoEquipamento = pesoEquipamento;
+					end;
+				</event>
+			</edit>
+			<label left="200" top="340" width="95" height="20" text="Preço" horzTextAlign="center"/>
+			<edit vertTextAlign="center" left="290" top="340" width="75" height="25" field="preco" type="float">
+				<event name="onUserChange">
+					if self.boxDetalheDoEquipamento.node~= nil then
+						local node = NDB.getRoot(self.boxDetalheDoEquipamento.node);
+						local precoEquipamento = 0;
+						local nodes = NDB.getChildNodes(node.listaDeEquipamentos); 
+						for i=1, #nodes, 1 do
+							precoEquipamento = precoEquipamento + (tonumber(nodes[i].preco) or 0);
+						end
+						node.precoEquipamento = precoEquipamento;
+					end;
+				</event>
+			</edit>
+
+			<layout left="5" top="370" width="390" height="230" name="armadura">
+				<label left="5" top="5" width="95" height="20" text="CA" horzTextAlign="center"/>
+				<edit vertTextAlign="center" left="100" top="5" width="50" height="25" field="caBase"/>
+				<rectangle left="150" top="5" width="50" height="25" color="black"  strokeColor="white" strokeSize="1"/>
+				<label left="150" top="5" width="50" height="25" field="caTotal" horzTextAlign="center"/>
+
+				<label left="200" top="5" width="95" height="20" text="Melhoria" horzTextAlign="center"/>
+				<edit vertTextAlign="center" left="290" top="5" width="50" height="25" field="melhoria">
+					<event name="onChange">
+						if self.boxDetalheDoEquipamento.node==nil then return end;
+						if self.boxDetalheDoEquipamento.node.melhoria==nil then return end;
+						local melhoria = tonumber(self.boxDetalheDoEquipamento.node.melhoria) or 0;
+						local caBase = tonumber(self.boxDetalheDoEquipamento.node.caBase) or 0;
+						self.boxDetalheDoEquipamento.node.caTotal = melhoria + caBase;
+					</event>
+				</edit>
+
+
+				<label left="5" top="30" width="95" height="20" text="DES. Máxima" horzTextAlign="center"/>
+				<edit vertTextAlign="center" left="100" top="30" width="50" height="25" field="desMax"/>
+
+				<label left="200" top="30" width="95" height="20" text="Categoria" horzTextAlign="center"/>
+				<comboBox left="290" top="30" width="100" height="25" field="categoria" items="{'Leve', 'Média', 'Pesada', 'Massiva'}" fontColor="white"/>
+
+
+				<label left="5" top="55" width="95" height="20" text="Penalidade" horzTextAlign="center"/>
+				<edit vertTextAlign="center" left="100" top="55" width="50" height="25" field="pen"/>
+
+				<label left="200" top="55" width="95" height="20" text="Falha Arcana" horzTextAlign="center"/>
+				<edit vertTextAlign="center" left="290" top="55" width="50" height="25" field="falhaArcana"/>
+
+
+				<label left="5" top="80" width="95" height="20" text="Deslocamento" horzTextAlign="center"/>
+				<edit vertTextAlign="center" left="100" top="80" width="50" height="25" field="deslocamento"/>
+
+				<label left="200" top="80" width="95" height="20" text="Corrida" horzTextAlign="center"/>
+				<edit vertTextAlign="center" left="290" top="80" width="50" height="25" field="corrida"/>
+			</layout>
+
+			<dataLink field="index">
+				<event name="onChange">
+					if self.boxDetalheDoEquipamento.node==nil then return end;
+					if self.boxDetalheDoEquipamento.node.index == 8 then
+						self.armadura.visible = true;
+					else
+						self.armadura.visible = false;
+					end;
+				</event>
+			</dataLink>
+
+			<image left="400" top="0" width="200" height="600" src="images/slots.png" field="imgSlots" style="stretch" optimize="true"/>
+		</dataScopeBox>
+	</scrollBox>
+</form>

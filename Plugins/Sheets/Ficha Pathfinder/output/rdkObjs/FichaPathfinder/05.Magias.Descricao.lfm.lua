@@ -34,10 +34,10 @@ local function constructNew_frmFichaRPGmeister5D_svg()
 
 			
 		local function askForDelete()
-			dialogs.confirmYesNo("Deseja realmente apagar essa magia?",
+			Dialogs.confirmYesNo("Deseja realmente apagar essa magia?",
 								 function (confirmado)
 									if confirmado then
-										ndb.deleteNode(sheet);
+										NDB.deleteNode(sheet);
 									end;
 								 end);
 		end;

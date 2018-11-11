@@ -33,10 +33,10 @@ local function constructNew_frmFichaRPGmeister4h_svg()
 
 			
 		local function askForDelete()
-			dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
+			Dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
 								 function (confirmado)
 									if confirmado then
-										ndb.deleteNode(sheet);
+										NDB.deleteNode(sheet);
 									end;
 								 end);
 		end;

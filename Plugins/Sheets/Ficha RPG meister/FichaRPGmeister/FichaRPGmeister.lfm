@@ -57,8 +57,15 @@
 		<tab title="Magias">
             <import file="05.Magias.lfm"/>
         </tab>
-		<tab title="Equipamentos">
-            <import file="06.Equipamentos.lfm"/>
+        <tab title="Equipamentos">
+            <tabControl align="client">
+                <tab title="Novo">
+                    <import file="06.Equipamentos2.xml"/>
+                </tab>
+                <tab title="Velho">
+                    <import file="06.Equipamentos.lfm"/>
+                </tab>
+            </tabControl>
         </tab>
         <tab title="Inventario">
             <import file="07.Inventario.lfm"/>
@@ -79,10 +86,10 @@
     <event name="onNodeReady">
         internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true",
             function(stream, contentType)
-                local info = rrpg.plugins.getRPKDetails(stream);
+                local info = Firecast.plugins.getRPKDetails(stream);
                 sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
 
-                local installed = rrpg.plugins.getInstalledPlugins();
+                local installed = Firecast.plugins.getInstalledPlugins();
                 local myself;
                 for i=1, #installed, 1 do
                     if installed[i].moduleId == info.moduleId then
@@ -96,7 +103,7 @@
                     Dialogs.choose("Há uma nova versão (".. info.version .. ") da Ficha RPG meister. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                         function(selected, selectedIndex, selectedText)
                             if selected and selectedIndex == 1 then
-                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true');
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20RPG%20meister/output/Ficha%20RPG%20meister.rpk?raw=true');
                             elseif selected and selectedIndex == 3 then
                                 sheet.noUpdate = true;
                             end;
