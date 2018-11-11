@@ -206,7 +206,7 @@ function yieldedFunctions.yInvokeMacro(co, chat, macroName, parameter)
 			handleCoResume(co, false, "Macro runner engine not found");		
 		else
 			globalExecutarMacro(foundMacro, {chat=chat, 
-											 parametro=parameter},
+											 parameter=parameter},
 				function(...)
 					handleCoResume(co, true, ...);
 				end)		
