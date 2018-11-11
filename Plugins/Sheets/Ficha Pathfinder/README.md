@@ -1,12 +1,17 @@
 # Ficha Pathfinder
-* Mudar agarrar de companheiro para bmc e dmc.
-
 Talentos para Verificar:
 * Ataque Poderoso;
 * Tiro Multiplo;
 * Especialização em Combate;
 * Piranha Strike
 * Rajada de Golpes
+
+Versão 5
++ Colocado um campo para notas no lugar da CA oculta.
++ Removidas magias diarias de nível 0.
++ Ataques não confirmam falhas criticas. 
++ Trocado Agarrar por BMC nos companheiros. 
+WARNING: Copie seus equipamentos para a nova aba, antes de ir para a versão 6.
 
 Versão 4:
 + Bug corrigido: quando o personagem está usando armadura não estava contabilizando o +3 em pericias de classe com graduações. 

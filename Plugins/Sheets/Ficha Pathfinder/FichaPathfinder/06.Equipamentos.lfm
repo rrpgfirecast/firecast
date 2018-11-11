@@ -40,7 +40,7 @@
 						text = text .. valor .. "/" .. valormax;
 					end;
 					
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 					if mesaDoPersonagem ~= nil then
 						   mesaDoPersonagem.activeChat:enviarMensagem(text);
 					end;
@@ -229,7 +229,7 @@
 							text = text .. valor .. "/" .. valormax;
 						end;
 						
-						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 						if mesaDoPersonagem ~= nil then
 							   mesaDoPersonagem.activeChat:enviarMensagem(text);
 						end;
@@ -244,7 +244,7 @@
 			</event>
 		</rectangle>
 
-		<image left="506" top="70" width="200" height="600" src="http://blob.firecast.com.br/blobs/GADIAGUF_607701/slots.png" field="imgSlots" style="stretch" optimize="true" compilerOrder="0"/>
+		<image left="506" top="70" width="200" height="600" src="http://blob.Firecast..com.br/blobs/GADIAGUF_607701/slots.png" field="imgSlots" style="stretch" optimize="true" compilerOrder="0"/>
 
 		<layout left="1" top="1" width="250" height="222">
 			<Equipamento slot="Cabeca" nome="CABEÇA" num="0" url="http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20RPG%20meister%20releases/images/cabeca.png"/>

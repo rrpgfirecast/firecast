@@ -4,10 +4,10 @@
 		<script>
 			local function pos(rolado)
 				local dado = rolado.ops[1].resultados[1];
-				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 				local valor = rolado.resultado;
 				
-				if (dado>=decisivo or dado==1) then
+				if (dado>=decisivo) then
 					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Confirmando Critico");
 				end;
 				
@@ -70,7 +70,7 @@
 				local mod = tonumber(array[i]);
 				
 				if mod~=nil then
-					rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+					rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
 					if sheet.buffAtaque ~= nil then
 					rolagem = rolagem:concatenar(sheet.buffAtaque);
 					end;
@@ -81,8 +81,6 @@
 				else
 					fimRolagem = true;
 				end;
-				
-				
 			end;
 		</script>
 			
@@ -112,12 +110,12 @@
 					array = {sheet.ataque$(num)a, sheet.ataque$(num)b, sheet.ataque$(num)c, sheet.ataque$(num)d, sheet.ataque$(num)e, sheet.ataque$(num)f, sheet.ataque$(num)g, sheet.ataque$(num)h};
 					decisivo = tonumber(string.sub(sheet.decisivo$(num), 1, 2));
 					
-					dano = rrpg.interpretarRolagem(sheet.dano$(num));
+					dano = Firecast.interpretarRolagem(sheet.dano$(num));
 					if sheet.buffDano ~= nil then
 						dano = dano:concatenar(sheet.buffDano);
 					end;
 					
-					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico$(num));
+					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico$(num));
 					if sheet.buffDanoCritico ~= nil then
 						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
 					end;
@@ -125,17 +123,17 @@
 					armamento = sheet.nome$(num);
 					municao = tonumber(sheet.municao$(num));
 					if armamento==nil then
-						armamento = sheet.arma$(num);
+						armamento = sheet.arma$(num) or "arma";
 					end;
 					
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 						while array[max]~=nil do
 						max = max + 1;
 					end;
 					
 					local mod = tonumber(array[1]);
 					if mod~=nil then
-						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
 						if sheet.buffAtaque ~= nil then
 							rolagem = rolagem:concatenar(sheet.buffAtaque);
 						end;
@@ -161,8 +159,8 @@
 			
 			<button left="279" top="31" width="73" text="DANO" fontSize="11">
 				<event name="onClick">
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-					local dano = rrpg.interpretarRolagem(sheet.dano$(num));
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					local dano = Firecast.interpretarRolagem(sheet.dano$(num));
 					if sheet.buffDano ~= nil then
 						dano = dano:concatenar(sheet.buffDano);
 					end;
@@ -172,15 +170,15 @@
 						armamento = sheet.arma$(num);
 					end;
 					
-					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
+					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
 				</event>
 			</button>
 			<edit vertTextAlign="center" left="352" top="30" width="82" height="25" field="dano$(num)"/>
 			
 			<button left="434" top="31" width="60" text="CRITICO" fontSize="11">
 				<event name="onClick">
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico$(num));
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico$(num));
 					if sheet.buffDanoCritico ~= nil then
 						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
 					end;
@@ -190,7 +188,7 @@
 						armamento = sheet.arma$(num);
 					end;
 					
-					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
+					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
 				</event>
 			</button>
 			<edit vertTextAlign="center" left="493" top="30" width="82" height="25" field="danoCritico$(num)"/>

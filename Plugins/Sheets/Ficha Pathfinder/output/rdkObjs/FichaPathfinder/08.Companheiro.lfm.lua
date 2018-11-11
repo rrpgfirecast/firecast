@@ -331,7 +331,7 @@ local function constructNew_frmFichaRPGmeister8_svg()
     obj.button2:setTop(58);
     obj.button2:setWidth(60);
     obj.button2:setHeight(20);
-    obj.button2:setText("Agarrar");
+    obj.button2:setText("BMC");
     obj.button2:setName("button2");
 
     obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1158,16 +1158,16 @@ local function constructNew_frmFichaRPGmeister8_svg()
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
-            						local rolagem = rrpg.interpretarRolagem("1d20 + " .. (node.iniciativaComp or 0));
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            						local rolagem = Firecast.interpretarRolagem("1d20 + " .. (node.iniciativaComp or 0));
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de iniciativa de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
-            						local rolagem = rrpg.interpretarRolagem("1d20 + " .. (node.agarrarComp or 0));
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            						local rolagem = Firecast.interpretarRolagem("1d20 + " .. (node.agarrarComp or 0));
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de agarrar de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -1179,8 +1179,8 @@ local function constructNew_frmFichaRPGmeister8_svg()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de força de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -1205,8 +1205,8 @@ local function constructNew_frmFichaRPGmeister8_svg()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de destreza de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -1231,8 +1231,8 @@ local function constructNew_frmFichaRPGmeister8_svg()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de constituição de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -1257,8 +1257,8 @@ local function constructNew_frmFichaRPGmeister8_svg()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de inteligência de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -1283,8 +1283,8 @@ local function constructNew_frmFichaRPGmeister8_svg()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de sabedoria de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -1309,8 +1309,8 @@ local function constructNew_frmFichaRPGmeister8_svg()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de carisma de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -1335,8 +1335,8 @@ local function constructNew_frmFichaRPGmeister8_svg()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de fortitude de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -1348,8 +1348,8 @@ local function constructNew_frmFichaRPGmeister8_svg()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de reflexos de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -1361,8 +1361,8 @@ local function constructNew_frmFichaRPGmeister8_svg()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de vontade de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -1370,7 +1370,7 @@ local function constructNew_frmFichaRPGmeister8_svg()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            					local nodes = ndb.getChildNodes(sheet.campoDosCompanheiros);   
+            					local nodes = NDB.getChildNodes(sheet.campoDosCompanheiros);   
             					local total = 0;
             					for i=1, #nodes, 1 do
             						total = total + (getNumber(nodes[i].precoInventorioComp) or 0);
@@ -1383,7 +1383,7 @@ local function constructNew_frmFichaRPGmeister8_svg()
             local macro = self.boxDetalhesDoCompanheiro.node.macro;
             						if macro~=nil then
             							local macros = lines(macro);
-            							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             							for i=1, #macros, 1 do
             								mesaDoPersonagem.activeChat:enviarMensagem(macros[i]);
             							end;
@@ -1410,7 +1410,7 @@ local function constructNew_frmFichaRPGmeister8_svg()
     obj._e_event22 = obj.rclListaDosCompanheiros:addEventListener("onEndEnumeration",
         function (_)
             if self.rclListaDosCompanheiros.selectedNode == nil and sheet ~= nil then
-            					local nodes = ndb.getChildNodes(sheet.campoDosCompanheiros);               
+            					local nodes = NDB.getChildNodes(sheet.campoDosCompanheiros);               
             					if #nodes > 0 then
             						self.rclListaDosCompanheiros.selectedNode = nodes[1];
             					end;
