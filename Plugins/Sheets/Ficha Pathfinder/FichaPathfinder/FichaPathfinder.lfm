@@ -116,6 +116,7 @@
             function (downloaded, total)
                 -- esta função será chamada constantemente.
                 -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
-            end);
+            end,
+            "checkForModification");
     </event>
 </form>

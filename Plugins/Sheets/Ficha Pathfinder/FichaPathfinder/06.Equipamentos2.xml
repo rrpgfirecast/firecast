@@ -81,7 +81,9 @@
 				<label left="150" top="5" width="50" height="25" field="caTotal" horzTextAlign="center"/>
 
 				<label left="200" top="5" width="95" height="20" text="Melhoria" horzTextAlign="center"/>
-				<edit vertTextAlign="center" left="290" top="5" width="50" height="25" field="melhoria">
+				<edit vertTextAlign="center" left="290" top="5" width="50" height="25" field="melhoria"/>
+
+				<dataLink fields="{'melhoria','caBase'}">
 					<event name="onChange">
 						if self.boxDetalheDoEquipamento.node==nil then return end;
 						if self.boxDetalheDoEquipamento.node.melhoria==nil then return end;
@@ -89,7 +91,7 @@
 						local caBase = tonumber(self.boxDetalheDoEquipamento.node.caBase) or 0;
 						self.boxDetalheDoEquipamento.node.caTotal = melhoria + caBase;
 					</event>
-				</edit>
+				</dataLink>
 
 
 				<label left="5" top="30" width="95" height="20" text="DES. Máxima" horzTextAlign="center"/>
@@ -100,7 +102,13 @@
 
 
 				<label left="5" top="55" width="95" height="20" text="Penalidade" horzTextAlign="center"/>
-				<edit vertTextAlign="center" left="100" top="55" width="50" height="25" field="pen"/>
+				<edit vertTextAlign="center" left="100" top="55" width="50" height="25" field="pen">
+					<event name="onChange">
+						if self.boxDetalheDoEquipamento.node==nil then return end;
+						if self.boxDetalheDoEquipamento.node.pen==nil then return end;
+						sheet.equipamentoCorpoPen = self.boxDetalheDoEquipamento.node.pen;
+					</event>
+				</edit>
 
 				<label left="200" top="55" width="95" height="20" text="Falha Arcana" horzTextAlign="center"/>
 				<edit vertTextAlign="center" left="290" top="55" width="50" height="25" field="falhaArcana"/>
