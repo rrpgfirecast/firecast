@@ -31,13 +31,8 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
-    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
-    obj.scrollBox1:setParent(obj);
-    obj.scrollBox1:setAlign("client");
-    obj.scrollBox1:setName("scrollBox1");
-
     obj.popAtributo = GUI.fromHandle(_obj_newObject("popup"));
-    obj.popAtributo:setParent(obj.scrollBox1);
+    obj.popAtributo:setParent(obj);
     obj.popAtributo:setName("popAtributo");
     obj.popAtributo:setWidth(820);
     obj.popAtributo:setHeight(170);
@@ -1579,7 +1574,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.dataLink12:setName("dataLink12");
 
     obj.popResistencia = GUI.fromHandle(_obj_newObject("popup"));
-    obj.popResistencia:setParent(obj.scrollBox1);
+    obj.popResistencia:setParent(obj);
     obj.popResistencia:setName("popResistencia");
     obj.popResistencia:setWidth(380);
     obj.popResistencia:setHeight(150);
@@ -2127,7 +2122,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.textEditor1:setName("textEditor1");
 
     obj.popCA = GUI.fromHandle(_obj_newObject("popup"));
-    obj.popCA:setParent(obj.scrollBox1);
+    obj.popCA:setParent(obj);
     obj.popCA:setName("popCA");
     obj.popCA:setWidth(600);
     obj.popCA:setHeight(210);
@@ -3133,7 +3128,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.flowLineBreak10:setName("flowLineBreak10");
 
     obj.popGrapple = GUI.fromHandle(_obj_newObject("popup"));
-    obj.popGrapple:setParent(obj.scrollBox1);
+    obj.popGrapple:setParent(obj);
     obj.popGrapple:setName("popGrapple");
     obj.popGrapple:setWidth(225);
     obj.popGrapple:setHeight(50);
@@ -3300,7 +3295,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.edit110:setName("edit110");
 
     obj.popManeuver = GUI.fromHandle(_obj_newObject("popup"));
-    obj.popManeuver:setParent(obj.scrollBox1);
+    obj.popManeuver:setParent(obj);
     obj.popManeuver:setName("popManeuver");
     obj.popManeuver:setWidth(380);
     obj.popManeuver:setHeight(65);
@@ -3702,19 +3697,24 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.edit116:setName("edit116");
 
 
-			local function getMOD(valor)
-				if valor~= nil then
-					local mod = math.floor(((tonumber(valor) or 10) / 2) - 5);
-					if (mod >= 0) then
-						mod = "+" .. mod;
-					end;					   
-					return mod;
-				else
-					return "+0";
-				end;
+		local function getMOD(valor)
+			if valor~= nil then
+				local mod = math.floor(((tonumber(valor) or 10) / 2) - 5);
+				if (mod >= 0) then
+					mod = "+" .. mod;
+				end;					   
+				return mod;
+			else
+				return "+0";
 			end;
-			
+		end;
+		
 
+
+    obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
+    obj.scrollBox1:setParent(obj);
+    obj.scrollBox1:setAlign("client");
+    obj.scrollBox1:setName("scrollBox1");
 
     obj.rectangle14 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle14:setParent(obj.scrollBox1);
@@ -3935,15 +3935,39 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.label64:setText("XP ATUAL");
     obj.label64:setName("label64");
 
-    obj.edit126 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit126:setParent(obj.rectangle14);
-    obj.edit126:setVertTextAlign("center");
-    obj.edit126:setLeft(890);
-    obj.edit126:setTop(30);
-    obj.edit126:setWidth(210);
-    obj.edit126:setHeight(25);
-    obj.edit126:setField("xpAtual");
-    obj.edit126:setName("edit126");
+    obj.xpAtualLabel = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.xpAtualLabel:setParent(obj.rectangle14);
+    obj.xpAtualLabel:setLeft(890);
+    obj.xpAtualLabel:setTop(30);
+    obj.xpAtualLabel:setWidth(210);
+    obj.xpAtualLabel:setHeight(25);
+    obj.xpAtualLabel:setColor("black");
+    obj.xpAtualLabel:setStrokeColor("grey");
+    obj.xpAtualLabel:setStrokeSize(1);
+    obj.xpAtualLabel:setName("xpAtualLabel");
+    obj.xpAtualLabel:setVisible(true);
+
+    obj.label65 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label65:setParent(obj.xpAtualLabel);
+    obj.label65:setWidth(210);
+    obj.label65:setHeight(25);
+    obj.label65:setField("xpAtual");
+    obj.label65:setHorzTextAlign("center");
+    obj.label65:setFontSize(11);
+    lfm_setPropAsString(obj.label65, "formatFloat",  ",0.## XP");
+    obj.label65:setName("label65");
+
+    obj.xpAtualEdit = GUI.fromHandle(_obj_newObject("edit"));
+    obj.xpAtualEdit:setParent(obj.rectangle14);
+    obj.xpAtualEdit:setField("xpAtual");
+    obj.xpAtualEdit:setLeft(890);
+    obj.xpAtualEdit:setTop(30);
+    obj.xpAtualEdit:setWidth(210);
+    obj.xpAtualEdit:setHeight(25);
+    obj.xpAtualEdit:setType("float");
+    obj.xpAtualEdit:setFontSize(11);
+    obj.xpAtualEdit:setName("xpAtualEdit");
+    obj.xpAtualEdit:setVisible(false);
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.rectangle14);
@@ -3953,24 +3977,25 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.button1:setText("ADD");
     obj.button1:setName("button1");
 
-    obj.edit127 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit127:setParent(obj.rectangle14);
-    obj.edit127:setVertTextAlign("center");
-    obj.edit127:setLeft(890);
-    obj.edit127:setTop(55);
-    obj.edit127:setWidth(210);
-    obj.edit127:setHeight(25);
-    obj.edit127:setField("xpNova");
-    obj.edit127:setName("edit127");
+    obj.edit126 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit126:setParent(obj.rectangle14);
+    obj.edit126:setVertTextAlign("center");
+    obj.edit126:setLeft(890);
+    obj.edit126:setTop(55);
+    obj.edit126:setWidth(210);
+    obj.edit126:setHeight(25);
+    obj.edit126:setType("number");
+    obj.edit126:setField("xpNova");
+    obj.edit126:setName("edit126");
 
-    obj.label65 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label65:setParent(obj.rectangle14);
-    obj.label65:setLeft(815);
-    obj.label65:setTop(80);
-    obj.label65:setWidth(70);
-    obj.label65:setHeight(25);
-    obj.label65:setText("XP ALVO");
-    obj.label65:setName("label65");
+    obj.label66 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label66:setParent(obj.rectangle14);
+    obj.label66:setLeft(815);
+    obj.label66:setTop(80);
+    obj.label66:setWidth(70);
+    obj.label66:setHeight(25);
+    obj.label66:setText("XP ALVO");
+    obj.label66:setName("label66");
 
     obj.rectangle16 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle16:setParent(obj.rectangle14);
@@ -3983,15 +4008,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle16:setStrokeSize(1);
     obj.rectangle16:setName("rectangle16");
 
-    obj.label66 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label66:setParent(obj.rectangle14);
-    obj.label66:setField("xpNivel");
-    obj.label66:setLeft(890);
-    obj.label66:setTop(80);
-    obj.label66:setWidth(210);
-    obj.label66:setHeight(25);
-    obj.label66:setHorzTextAlign("center");
-    obj.label66:setName("label66");
+    obj.label67 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label67:setParent(obj.rectangle14);
+    obj.label67:setField("xpNivel");
+    obj.label67:setLeft(890);
+    obj.label67:setTop(80);
+    obj.label67:setWidth(210);
+    obj.label67:setHeight(25);
+    obj.label67:setHorzTextAlign("center");
+    obj.label67:setName("label67");
 
     obj.dataLink16 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink16:setParent(obj.rectangle14);
@@ -4007,35 +4032,35 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle17:setColor("black");
     obj.rectangle17:setName("rectangle17");
 
-    obj.label67 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label67:setParent(obj.rectangle17);
-    obj.label67:setLeft(0);
-    obj.label67:setTop(0);
-    obj.label67:setWidth(235);
-    obj.label67:setHeight(25);
-    obj.label67:setText("ATRIBUTOS");
-    obj.label67:setHorzTextAlign("center");
-    obj.label67:setName("label67");
-
     obj.label68 = GUI.fromHandle(_obj_newObject("label"));
     obj.label68:setParent(obj.rectangle17);
-    obj.label68:setLeft(45);
-    obj.label68:setTop(30);
-    obj.label68:setWidth(70);
+    obj.label68:setLeft(0);
+    obj.label68:setTop(0);
+    obj.label68:setWidth(235);
     obj.label68:setHeight(25);
-    obj.label68:setText("Real");
+    obj.label68:setText("ATRIBUTOS");
     obj.label68:setHorzTextAlign("center");
     obj.label68:setName("label68");
 
     obj.label69 = GUI.fromHandle(_obj_newObject("label"));
     obj.label69:setParent(obj.rectangle17);
-    obj.label69:setLeft(120);
+    obj.label69:setLeft(45);
     obj.label69:setTop(30);
     obj.label69:setWidth(70);
     obj.label69:setHeight(25);
-    obj.label69:setText("Efetivo");
+    obj.label69:setText("Real");
     obj.label69:setHorzTextAlign("center");
     obj.label69:setName("label69");
+
+    obj.label70 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label70:setParent(obj.rectangle17);
+    obj.label70:setLeft(120);
+    obj.label70:setTop(30);
+    obj.label70:setWidth(70);
+    obj.label70:setHeight(25);
+    obj.label70:setText("Efetivo");
+    obj.label70:setHorzTextAlign("center");
+    obj.label70:setName("label70");
 
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.rectangle17);
@@ -4064,14 +4089,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle18:setStrokeSize(1);
     obj.rectangle18:setName("rectangle18");
 
-    obj.label70 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label70:setParent(obj.layout1);
-    obj.label70:setLeft(45);
-    obj.label70:setWidth(35);
-    obj.label70:setHeight(25);
-    obj.label70:setField("realFor");
-    obj.label70:setHorzTextAlign("center");
-    obj.label70:setName("label70");
+    obj.label71 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label71:setParent(obj.layout1);
+    obj.label71:setLeft(45);
+    obj.label71:setWidth(35);
+    obj.label71:setHeight(25);
+    obj.label71:setField("realFor");
+    obj.label71:setHorzTextAlign("center");
+    obj.label71:setName("label71");
 
     obj.rectangle19 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle19:setParent(obj.layout1);
@@ -4084,15 +4109,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle19:setStrokeSize(1);
     obj.rectangle19:setName("rectangle19");
 
-    obj.label71 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label71:setParent(obj.layout1);
-    obj.label71:setField("realModFor");
-    obj.label71:setText("0");
-    obj.label71:setLeft(80);
-    obj.label71:setTop(3);
-    obj.label71:setWidth(35);
-    obj.label71:setHorzTextAlign("center");
-    obj.label71:setName("label71");
+    obj.label72 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label72:setParent(obj.layout1);
+    obj.label72:setField("realModFor");
+    obj.label72:setText("0");
+    obj.label72:setLeft(80);
+    obj.label72:setTop(3);
+    obj.label72:setWidth(35);
+    obj.label72:setHorzTextAlign("center");
+    obj.label72:setName("label72");
 
     obj.dataLink17 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink17:setParent(obj.layout1);
@@ -4110,14 +4135,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle20:setStrokeSize(1);
     obj.rectangle20:setName("rectangle20");
 
-    obj.label72 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label72:setParent(obj.layout1);
-    obj.label72:setLeft(120);
-    obj.label72:setWidth(35);
-    obj.label72:setHeight(25);
-    obj.label72:setField("efetFor");
-    obj.label72:setHorzTextAlign("center");
-    obj.label72:setName("label72");
+    obj.label73 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label73:setParent(obj.layout1);
+    obj.label73:setLeft(120);
+    obj.label73:setWidth(35);
+    obj.label73:setHeight(25);
+    obj.label73:setField("efetFor");
+    obj.label73:setHorzTextAlign("center");
+    obj.label73:setName("label73");
 
     obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle21:setParent(obj.layout1);
@@ -4130,15 +4155,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle21:setStrokeSize(1);
     obj.rectangle21:setName("rectangle21");
 
-    obj.label73 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label73:setParent(obj.layout1);
-    obj.label73:setField("efetModFor");
-    obj.label73:setText("0");
-    obj.label73:setLeft(155);
-    obj.label73:setTop(3);
-    obj.label73:setWidth(35);
-    obj.label73:setHorzTextAlign("center");
-    obj.label73:setName("label73");
+    obj.label74 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label74:setParent(obj.layout1);
+    obj.label74:setField("efetModFor");
+    obj.label74:setText("0");
+    obj.label74:setLeft(155);
+    obj.label74:setTop(3);
+    obj.label74:setWidth(35);
+    obj.label74:setHorzTextAlign("center");
+    obj.label74:setName("label74");
 
     obj.dataLink18 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink18:setParent(obj.layout1);
@@ -4146,11 +4171,11 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.dataLink18:setName("dataLink18");
 
 
-				local function getFOR()
-					local mod = tonumber(sheet.efetModFor) or 0;
-					return mod;
-				end;
-			
+			local function getFOR()
+				local mod = tonumber(sheet.efetModFor) or 0;
+				return mod;
+			end;
+		
 
 
     obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
@@ -4180,14 +4205,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle22:setStrokeSize(1);
     obj.rectangle22:setName("rectangle22");
 
-    obj.label74 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label74:setParent(obj.layout2);
-    obj.label74:setLeft(45);
-    obj.label74:setWidth(35);
-    obj.label74:setHeight(25);
-    obj.label74:setField("realDes");
-    obj.label74:setHorzTextAlign("center");
-    obj.label74:setName("label74");
+    obj.label75 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label75:setParent(obj.layout2);
+    obj.label75:setLeft(45);
+    obj.label75:setWidth(35);
+    obj.label75:setHeight(25);
+    obj.label75:setField("realDes");
+    obj.label75:setHorzTextAlign("center");
+    obj.label75:setName("label75");
 
     obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle23:setParent(obj.layout2);
@@ -4200,15 +4225,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle23:setStrokeSize(1);
     obj.rectangle23:setName("rectangle23");
 
-    obj.label75 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label75:setParent(obj.layout2);
-    obj.label75:setField("realModDes");
-    obj.label75:setText("0");
-    obj.label75:setLeft(80);
-    obj.label75:setTop(3);
-    obj.label75:setWidth(35);
-    obj.label75:setHorzTextAlign("center");
-    obj.label75:setName("label75");
+    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label76:setParent(obj.layout2);
+    obj.label76:setField("realModDes");
+    obj.label76:setText("0");
+    obj.label76:setLeft(80);
+    obj.label76:setTop(3);
+    obj.label76:setWidth(35);
+    obj.label76:setHorzTextAlign("center");
+    obj.label76:setName("label76");
 
     obj.dataLink19 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink19:setParent(obj.layout2);
@@ -4226,14 +4251,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle24:setStrokeSize(1);
     obj.rectangle24:setName("rectangle24");
 
-    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label76:setParent(obj.layout2);
-    obj.label76:setLeft(120);
-    obj.label76:setWidth(35);
-    obj.label76:setHeight(25);
-    obj.label76:setField("efetDes");
-    obj.label76:setHorzTextAlign("center");
-    obj.label76:setName("label76");
+    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label77:setParent(obj.layout2);
+    obj.label77:setLeft(120);
+    obj.label77:setWidth(35);
+    obj.label77:setHeight(25);
+    obj.label77:setField("efetDes");
+    obj.label77:setHorzTextAlign("center");
+    obj.label77:setName("label77");
 
     obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle25:setParent(obj.layout2);
@@ -4246,15 +4271,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle25:setStrokeSize(1);
     obj.rectangle25:setName("rectangle25");
 
-    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label77:setParent(obj.layout2);
-    obj.label77:setField("efetModDes");
-    obj.label77:setText("0");
-    obj.label77:setLeft(155);
-    obj.label77:setTop(3);
-    obj.label77:setWidth(35);
-    obj.label77:setHorzTextAlign("center");
-    obj.label77:setName("label77");
+    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label78:setParent(obj.layout2);
+    obj.label78:setField("efetModDes");
+    obj.label78:setText("0");
+    obj.label78:setLeft(155);
+    obj.label78:setTop(3);
+    obj.label78:setWidth(35);
+    obj.label78:setHorzTextAlign("center");
+    obj.label78:setName("label78");
 
     obj.dataLink20 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink20:setParent(obj.layout2);
@@ -4262,11 +4287,11 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.dataLink20:setName("dataLink20");
 
 
-				local function getDES()
-					local mod = tonumber(sheet.efetModDes) or 0;
-					return mod;
-				end;
-			
+			local function getDES()
+				local mod = tonumber(sheet.efetModDes) or 0;
+				return mod;
+			end;
+		
 
 
     obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
@@ -4296,14 +4321,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle26:setStrokeSize(1);
     obj.rectangle26:setName("rectangle26");
 
-    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label78:setParent(obj.layout3);
-    obj.label78:setLeft(45);
-    obj.label78:setWidth(35);
-    obj.label78:setHeight(25);
-    obj.label78:setField("realCon");
-    obj.label78:setHorzTextAlign("center");
-    obj.label78:setName("label78");
+    obj.label79 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label79:setParent(obj.layout3);
+    obj.label79:setLeft(45);
+    obj.label79:setWidth(35);
+    obj.label79:setHeight(25);
+    obj.label79:setField("realCon");
+    obj.label79:setHorzTextAlign("center");
+    obj.label79:setName("label79");
 
     obj.rectangle27 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle27:setParent(obj.layout3);
@@ -4316,15 +4341,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle27:setStrokeSize(1);
     obj.rectangle27:setName("rectangle27");
 
-    obj.label79 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label79:setParent(obj.layout3);
-    obj.label79:setField("realModCon");
-    obj.label79:setText("0");
-    obj.label79:setLeft(80);
-    obj.label79:setTop(3);
-    obj.label79:setWidth(35);
-    obj.label79:setHorzTextAlign("center");
-    obj.label79:setName("label79");
+    obj.label80 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label80:setParent(obj.layout3);
+    obj.label80:setField("realModCon");
+    obj.label80:setText("0");
+    obj.label80:setLeft(80);
+    obj.label80:setTop(3);
+    obj.label80:setWidth(35);
+    obj.label80:setHorzTextAlign("center");
+    obj.label80:setName("label80");
 
     obj.dataLink21 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink21:setParent(obj.layout3);
@@ -4342,14 +4367,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle28:setStrokeSize(1);
     obj.rectangle28:setName("rectangle28");
 
-    obj.label80 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label80:setParent(obj.layout3);
-    obj.label80:setLeft(120);
-    obj.label80:setWidth(35);
-    obj.label80:setHeight(25);
-    obj.label80:setField("efetCon");
-    obj.label80:setHorzTextAlign("center");
-    obj.label80:setName("label80");
+    obj.label81 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label81:setParent(obj.layout3);
+    obj.label81:setLeft(120);
+    obj.label81:setWidth(35);
+    obj.label81:setHeight(25);
+    obj.label81:setField("efetCon");
+    obj.label81:setHorzTextAlign("center");
+    obj.label81:setName("label81");
 
     obj.rectangle29 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle29:setParent(obj.layout3);
@@ -4362,15 +4387,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle29:setStrokeSize(1);
     obj.rectangle29:setName("rectangle29");
 
-    obj.label81 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label81:setParent(obj.layout3);
-    obj.label81:setField("efetModCon");
-    obj.label81:setText("0");
-    obj.label81:setLeft(155);
-    obj.label81:setTop(3);
-    obj.label81:setWidth(35);
-    obj.label81:setHorzTextAlign("center");
-    obj.label81:setName("label81");
+    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label82:setParent(obj.layout3);
+    obj.label82:setField("efetModCon");
+    obj.label82:setText("0");
+    obj.label82:setLeft(155);
+    obj.label82:setTop(3);
+    obj.label82:setWidth(35);
+    obj.label82:setHorzTextAlign("center");
+    obj.label82:setName("label82");
 
     obj.dataLink22 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink22:setParent(obj.layout3);
@@ -4378,11 +4403,11 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.dataLink22:setName("dataLink22");
 
 
-				local function getCON()
-					local mod = tonumber(sheet.efetModCon) or 0;
-					return mod;
-				end;
-			
+			local function getCON()
+				local mod = tonumber(sheet.efetModCon) or 0;
+				return mod;
+			end;
+		
 
 
     obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
@@ -4412,14 +4437,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle30:setStrokeSize(1);
     obj.rectangle30:setName("rectangle30");
 
-    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label82:setParent(obj.layout4);
-    obj.label82:setLeft(45);
-    obj.label82:setWidth(35);
-    obj.label82:setHeight(25);
-    obj.label82:setField("realInt");
-    obj.label82:setHorzTextAlign("center");
-    obj.label82:setName("label82");
+    obj.label83 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label83:setParent(obj.layout4);
+    obj.label83:setLeft(45);
+    obj.label83:setWidth(35);
+    obj.label83:setHeight(25);
+    obj.label83:setField("realInt");
+    obj.label83:setHorzTextAlign("center");
+    obj.label83:setName("label83");
 
     obj.rectangle31 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle31:setParent(obj.layout4);
@@ -4432,15 +4457,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle31:setStrokeSize(1);
     obj.rectangle31:setName("rectangle31");
 
-    obj.label83 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label83:setParent(obj.layout4);
-    obj.label83:setField("realModInt");
-    obj.label83:setText("0");
-    obj.label83:setLeft(80);
-    obj.label83:setTop(3);
-    obj.label83:setWidth(35);
-    obj.label83:setHorzTextAlign("center");
-    obj.label83:setName("label83");
+    obj.label84 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label84:setParent(obj.layout4);
+    obj.label84:setField("realModInt");
+    obj.label84:setText("0");
+    obj.label84:setLeft(80);
+    obj.label84:setTop(3);
+    obj.label84:setWidth(35);
+    obj.label84:setHorzTextAlign("center");
+    obj.label84:setName("label84");
 
     obj.dataLink23 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink23:setParent(obj.layout4);
@@ -4458,14 +4483,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle32:setStrokeSize(1);
     obj.rectangle32:setName("rectangle32");
 
-    obj.label84 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label84:setParent(obj.layout4);
-    obj.label84:setLeft(120);
-    obj.label84:setWidth(35);
-    obj.label84:setHeight(25);
-    obj.label84:setField("efetInt");
-    obj.label84:setHorzTextAlign("center");
-    obj.label84:setName("label84");
+    obj.label85 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label85:setParent(obj.layout4);
+    obj.label85:setLeft(120);
+    obj.label85:setWidth(35);
+    obj.label85:setHeight(25);
+    obj.label85:setField("efetInt");
+    obj.label85:setHorzTextAlign("center");
+    obj.label85:setName("label85");
 
     obj.rectangle33 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle33:setParent(obj.layout4);
@@ -4478,15 +4503,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle33:setStrokeSize(1);
     obj.rectangle33:setName("rectangle33");
 
-    obj.label85 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label85:setParent(obj.layout4);
-    obj.label85:setField("efetModInt");
-    obj.label85:setText("0");
-    obj.label85:setLeft(155);
-    obj.label85:setTop(3);
-    obj.label85:setWidth(35);
-    obj.label85:setHorzTextAlign("center");
-    obj.label85:setName("label85");
+    obj.label86 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label86:setParent(obj.layout4);
+    obj.label86:setField("efetModInt");
+    obj.label86:setText("0");
+    obj.label86:setLeft(155);
+    obj.label86:setTop(3);
+    obj.label86:setWidth(35);
+    obj.label86:setHorzTextAlign("center");
+    obj.label86:setName("label86");
 
     obj.dataLink24 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink24:setParent(obj.layout4);
@@ -4494,11 +4519,11 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.dataLink24:setName("dataLink24");
 
 
-				local function getINT()
-					local mod = tonumber(sheet.efetModInt) or 0;
-					return mod;
-				end;
-			
+			local function getINT()
+				local mod = tonumber(sheet.efetModInt) or 0;
+				return mod;
+			end;
+		
 
 
     obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
@@ -4528,14 +4553,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle34:setStrokeSize(1);
     obj.rectangle34:setName("rectangle34");
 
-    obj.label86 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label86:setParent(obj.layout5);
-    obj.label86:setLeft(45);
-    obj.label86:setWidth(35);
-    obj.label86:setHeight(25);
-    obj.label86:setField("realSab");
-    obj.label86:setHorzTextAlign("center");
-    obj.label86:setName("label86");
+    obj.label87 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label87:setParent(obj.layout5);
+    obj.label87:setLeft(45);
+    obj.label87:setWidth(35);
+    obj.label87:setHeight(25);
+    obj.label87:setField("realSab");
+    obj.label87:setHorzTextAlign("center");
+    obj.label87:setName("label87");
 
     obj.rectangle35 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle35:setParent(obj.layout5);
@@ -4548,15 +4573,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle35:setStrokeSize(1);
     obj.rectangle35:setName("rectangle35");
 
-    obj.label87 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label87:setParent(obj.layout5);
-    obj.label87:setField("realModSab");
-    obj.label87:setText("0");
-    obj.label87:setLeft(80);
-    obj.label87:setTop(3);
-    obj.label87:setWidth(35);
-    obj.label87:setHorzTextAlign("center");
-    obj.label87:setName("label87");
+    obj.label88 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label88:setParent(obj.layout5);
+    obj.label88:setField("realModSab");
+    obj.label88:setText("0");
+    obj.label88:setLeft(80);
+    obj.label88:setTop(3);
+    obj.label88:setWidth(35);
+    obj.label88:setHorzTextAlign("center");
+    obj.label88:setName("label88");
 
     obj.dataLink25 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink25:setParent(obj.layout5);
@@ -4574,14 +4599,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle36:setStrokeSize(1);
     obj.rectangle36:setName("rectangle36");
 
-    obj.label88 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label88:setParent(obj.layout5);
-    obj.label88:setLeft(120);
-    obj.label88:setWidth(35);
-    obj.label88:setHeight(25);
-    obj.label88:setField("efetSab");
-    obj.label88:setHorzTextAlign("center");
-    obj.label88:setName("label88");
+    obj.label89 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label89:setParent(obj.layout5);
+    obj.label89:setLeft(120);
+    obj.label89:setWidth(35);
+    obj.label89:setHeight(25);
+    obj.label89:setField("efetSab");
+    obj.label89:setHorzTextAlign("center");
+    obj.label89:setName("label89");
 
     obj.rectangle37 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle37:setParent(obj.layout5);
@@ -4594,15 +4619,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle37:setStrokeSize(1);
     obj.rectangle37:setName("rectangle37");
 
-    obj.label89 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label89:setParent(obj.layout5);
-    obj.label89:setField("efetModSab");
-    obj.label89:setText("0");
-    obj.label89:setLeft(155);
-    obj.label89:setTop(3);
-    obj.label89:setWidth(35);
-    obj.label89:setHorzTextAlign("center");
-    obj.label89:setName("label89");
+    obj.label90 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label90:setParent(obj.layout5);
+    obj.label90:setField("efetModSab");
+    obj.label90:setText("0");
+    obj.label90:setLeft(155);
+    obj.label90:setTop(3);
+    obj.label90:setWidth(35);
+    obj.label90:setHorzTextAlign("center");
+    obj.label90:setName("label90");
 
     obj.dataLink26 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink26:setParent(obj.layout5);
@@ -4610,11 +4635,11 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.dataLink26:setName("dataLink26");
 
 
-				local function getSAB()
-					local mod = tonumber(sheet.efetModSab) or 0;
-					return mod;
-				end;
-			
+			local function getSAB()
+				local mod = tonumber(sheet.efetModSab) or 0;
+				return mod;
+			end;
+		
 
 
     obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
@@ -4644,14 +4669,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle38:setStrokeSize(1);
     obj.rectangle38:setName("rectangle38");
 
-    obj.label90 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label90:setParent(obj.layout6);
-    obj.label90:setLeft(45);
-    obj.label90:setWidth(35);
-    obj.label90:setHeight(25);
-    obj.label90:setField("realCar");
-    obj.label90:setHorzTextAlign("center");
-    obj.label90:setName("label90");
+    obj.label91 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label91:setParent(obj.layout6);
+    obj.label91:setLeft(45);
+    obj.label91:setWidth(35);
+    obj.label91:setHeight(25);
+    obj.label91:setField("realCar");
+    obj.label91:setHorzTextAlign("center");
+    obj.label91:setName("label91");
 
     obj.rectangle39 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle39:setParent(obj.layout6);
@@ -4664,15 +4689,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle39:setStrokeSize(1);
     obj.rectangle39:setName("rectangle39");
 
-    obj.label91 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label91:setParent(obj.layout6);
-    obj.label91:setField("realModCar");
-    obj.label91:setText("0");
-    obj.label91:setLeft(80);
-    obj.label91:setTop(3);
-    obj.label91:setWidth(35);
-    obj.label91:setHorzTextAlign("center");
-    obj.label91:setName("label91");
+    obj.label92 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label92:setParent(obj.layout6);
+    obj.label92:setField("realModCar");
+    obj.label92:setText("0");
+    obj.label92:setLeft(80);
+    obj.label92:setTop(3);
+    obj.label92:setWidth(35);
+    obj.label92:setHorzTextAlign("center");
+    obj.label92:setName("label92");
 
     obj.dataLink27 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink27:setParent(obj.layout6);
@@ -4690,14 +4715,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle40:setStrokeSize(1);
     obj.rectangle40:setName("rectangle40");
 
-    obj.label92 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label92:setParent(obj.layout6);
-    obj.label92:setLeft(120);
-    obj.label92:setWidth(35);
-    obj.label92:setHeight(25);
-    obj.label92:setField("efetCar");
-    obj.label92:setHorzTextAlign("center");
-    obj.label92:setName("label92");
+    obj.label93 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label93:setParent(obj.layout6);
+    obj.label93:setLeft(120);
+    obj.label93:setWidth(35);
+    obj.label93:setHeight(25);
+    obj.label93:setField("efetCar");
+    obj.label93:setHorzTextAlign("center");
+    obj.label93:setName("label93");
 
     obj.rectangle41 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle41:setParent(obj.layout6);
@@ -4710,15 +4735,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle41:setStrokeSize(1);
     obj.rectangle41:setName("rectangle41");
 
-    obj.label93 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label93:setParent(obj.layout6);
-    obj.label93:setField("efetModCar");
-    obj.label93:setText("0");
-    obj.label93:setLeft(155);
-    obj.label93:setTop(3);
-    obj.label93:setWidth(35);
-    obj.label93:setHorzTextAlign("center");
-    obj.label93:setName("label93");
+    obj.label94 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label94:setParent(obj.layout6);
+    obj.label94:setField("efetModCar");
+    obj.label94:setText("0");
+    obj.label94:setLeft(155);
+    obj.label94:setTop(3);
+    obj.label94:setWidth(35);
+    obj.label94:setHorzTextAlign("center");
+    obj.label94:setName("label94");
 
     obj.dataLink28 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink28:setParent(obj.layout6);
@@ -4726,11 +4751,11 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.dataLink28:setName("dataLink28");
 
 
-				local function getCAR()
-					local mod = tonumber(sheet.efetModCar) or 0;
-					return mod;
-				end;
-			
+			local function getCAR()
+				local mod = tonumber(sheet.efetModCar) or 0;
+				return mod;
+			end;
+		
 
 
     obj.AtrBut = GUI.fromHandle(_obj_newObject("button"));
@@ -4756,35 +4781,35 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle42:setColor("black");
     obj.rectangle42:setName("rectangle42");
 
-    obj.label94 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label94:setParent(obj.layout7);
-    obj.label94:setLeft(5);
-    obj.label94:setTop(1);
-    obj.label94:setWidth(225);
-    obj.label94:setHeight(20);
-    obj.label94:setText("DESLOCAMENTOS");
-    obj.label94:setHorzTextAlign("center");
-    obj.label94:setName("label94");
-
     obj.label95 = GUI.fromHandle(_obj_newObject("label"));
     obj.label95:setParent(obj.layout7);
-    obj.label95:setLeft(75);
-    obj.label95:setTop(30);
-    obj.label95:setWidth(70);
-    obj.label95:setHeight(25);
-    obj.label95:setText("Metros");
+    obj.label95:setLeft(5);
+    obj.label95:setTop(1);
+    obj.label95:setWidth(225);
+    obj.label95:setHeight(20);
+    obj.label95:setText("DESLOCAMENTOS");
     obj.label95:setHorzTextAlign("center");
     obj.label95:setName("label95");
 
     obj.label96 = GUI.fromHandle(_obj_newObject("label"));
     obj.label96:setParent(obj.layout7);
-    obj.label96:setLeft(155);
+    obj.label96:setLeft(75);
     obj.label96:setTop(30);
     obj.label96:setWidth(70);
     obj.label96:setHeight(25);
-    obj.label96:setText("Quadrados");
+    obj.label96:setText("Metros");
     obj.label96:setHorzTextAlign("center");
     obj.label96:setName("label96");
+
+    obj.label97 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label97:setParent(obj.layout7);
+    obj.label97:setLeft(155);
+    obj.label97:setTop(30);
+    obj.label97:setWidth(70);
+    obj.label97:setHeight(25);
+    obj.label97:setText("Quadrados");
+    obj.label97:setHorzTextAlign("center");
+    obj.label97:setName("label97");
 
     obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.layout7);
@@ -4794,24 +4819,24 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.layout8:setHeight(20);
     obj.layout8:setName("layout8");
 
-    obj.label97 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label97:setParent(obj.layout8);
-    obj.label97:setLeft(5);
-    obj.label97:setTop(0);
-    obj.label97:setWidth(70);
-    obj.label97:setHeight(20);
-    obj.label97:setText("TERRESTRE");
-    obj.label97:setName("label97");
+    obj.label98 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label98:setParent(obj.layout8);
+    obj.label98:setLeft(5);
+    obj.label98:setTop(0);
+    obj.label98:setWidth(70);
+    obj.label98:setHeight(20);
+    obj.label98:setText("TERRESTRE");
+    obj.label98:setName("label98");
 
-    obj.edit128 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit128:setParent(obj.layout8);
-    obj.edit128:setVertTextAlign("center");
-    obj.edit128:setLeft(75);
-    obj.edit128:setTop(0);
-    obj.edit128:setWidth(70);
-    obj.edit128:setHeight(20);
-    obj.edit128:setField("deslTerrestre");
-    obj.edit128:setName("edit128");
+    obj.edit127 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit127:setParent(obj.layout8);
+    obj.edit127:setVertTextAlign("center");
+    obj.edit127:setLeft(75);
+    obj.edit127:setTop(0);
+    obj.edit127:setWidth(70);
+    obj.edit127:setHeight(20);
+    obj.edit127:setField("deslTerrestre");
+    obj.edit127:setName("edit127");
 
     obj.rectangle43 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle43:setParent(obj.layout8);
@@ -4824,15 +4849,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle43:setStrokeSize(1);
     obj.rectangle43:setName("rectangle43");
 
-    obj.label98 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label98:setParent(obj.layout8);
-    obj.label98:setLeft(155);
-    obj.label98:setTop(0);
-    obj.label98:setWidth(60);
-    obj.label98:setHeight(20);
-    obj.label98:setField("deslTerrestreQuadrados");
-    obj.label98:setHorzTextAlign("center");
-    obj.label98:setName("label98");
+    obj.label99 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label99:setParent(obj.layout8);
+    obj.label99:setLeft(155);
+    obj.label99:setTop(0);
+    obj.label99:setWidth(60);
+    obj.label99:setHeight(20);
+    obj.label99:setField("deslTerrestreQuadrados");
+    obj.label99:setHorzTextAlign("center");
+    obj.label99:setName("label99");
 
     obj.dataLink29 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink29:setParent(obj.layout8);
@@ -4847,24 +4872,24 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.layout9:setHeight(20);
     obj.layout9:setName("layout9");
 
-    obj.label99 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label99:setParent(obj.layout9);
-    obj.label99:setLeft(5);
-    obj.label99:setTop(0);
-    obj.label99:setWidth(70);
-    obj.label99:setHeight(20);
-    obj.label99:setText("VOO");
-    obj.label99:setName("label99");
+    obj.label100 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label100:setParent(obj.layout9);
+    obj.label100:setLeft(5);
+    obj.label100:setTop(0);
+    obj.label100:setWidth(70);
+    obj.label100:setHeight(20);
+    obj.label100:setText("VOO");
+    obj.label100:setName("label100");
 
-    obj.edit129 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit129:setParent(obj.layout9);
-    obj.edit129:setVertTextAlign("center");
-    obj.edit129:setLeft(75);
-    obj.edit129:setTop(0);
-    obj.edit129:setWidth(70);
-    obj.edit129:setHeight(20);
-    obj.edit129:setField("deslVoo");
-    obj.edit129:setName("edit129");
+    obj.edit128 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit128:setParent(obj.layout9);
+    obj.edit128:setVertTextAlign("center");
+    obj.edit128:setLeft(75);
+    obj.edit128:setTop(0);
+    obj.edit128:setWidth(70);
+    obj.edit128:setHeight(20);
+    obj.edit128:setField("deslVoo");
+    obj.edit128:setName("edit128");
 
     obj.rectangle44 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle44:setParent(obj.layout9);
@@ -4877,30 +4902,30 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle44:setStrokeSize(1);
     obj.rectangle44:setName("rectangle44");
 
-    obj.label100 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label100:setParent(obj.layout9);
-    obj.label100:setLeft(155);
-    obj.label100:setTop(0);
-    obj.label100:setWidth(60);
-    obj.label100:setHeight(20);
-    obj.label100:setField("deslVooQuadrados");
-    obj.label100:setHorzTextAlign("center");
-    obj.label100:setName("label100");
+    obj.label101 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label101:setParent(obj.layout9);
+    obj.label101:setLeft(155);
+    obj.label101:setTop(0);
+    obj.label101:setWidth(60);
+    obj.label101:setHeight(20);
+    obj.label101:setField("deslVooQuadrados");
+    obj.label101:setHorzTextAlign("center");
+    obj.label101:setName("label101");
 
     obj.dataLink30 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink30:setParent(obj.layout9);
     obj.dataLink30:setField("deslVoo");
     obj.dataLink30:setName("dataLink30");
 
-    obj.label101 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label101:setParent(obj.layout7);
-    obj.label101:setLeft(50);
-    obj.label101:setTop(105);
-    obj.label101:setWidth(60);
-    obj.label101:setHeight(20);
-    obj.label101:setText("Manobra");
-    obj.label101:setFontSize(11);
-    obj.label101:setName("label101");
+    obj.label102 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label102:setParent(obj.layout7);
+    obj.label102:setLeft(50);
+    obj.label102:setTop(105);
+    obj.label102:setWidth(60);
+    obj.label102:setHeight(20);
+    obj.label102:setText("Manobra");
+    obj.label102:setFontSize(11);
+    obj.label102:setName("label102");
 
     obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox4:setParent(obj.layout7);
@@ -4921,24 +4946,24 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.layout10:setHeight(20);
     obj.layout10:setName("layout10");
 
-    obj.label102 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label102:setParent(obj.layout10);
-    obj.label102:setLeft(5);
-    obj.label102:setTop(0);
-    obj.label102:setWidth(70);
-    obj.label102:setHeight(20);
-    obj.label102:setText("NATAÇÃO");
-    obj.label102:setName("label102");
+    obj.label103 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label103:setParent(obj.layout10);
+    obj.label103:setLeft(5);
+    obj.label103:setTop(0);
+    obj.label103:setWidth(70);
+    obj.label103:setHeight(20);
+    obj.label103:setText("NATAÇÃO");
+    obj.label103:setName("label103");
 
-    obj.edit130 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit130:setParent(obj.layout10);
-    obj.edit130:setVertTextAlign("center");
-    obj.edit130:setLeft(75);
-    obj.edit130:setTop(0);
-    obj.edit130:setWidth(70);
-    obj.edit130:setHeight(20);
-    obj.edit130:setField("deslNatacao");
-    obj.edit130:setName("edit130");
+    obj.edit129 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit129:setParent(obj.layout10);
+    obj.edit129:setVertTextAlign("center");
+    obj.edit129:setLeft(75);
+    obj.edit129:setTop(0);
+    obj.edit129:setWidth(70);
+    obj.edit129:setHeight(20);
+    obj.edit129:setField("deslNatacao");
+    obj.edit129:setName("edit129");
 
     obj.rectangle45 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle45:setParent(obj.layout10);
@@ -4951,15 +4976,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle45:setStrokeSize(1);
     obj.rectangle45:setName("rectangle45");
 
-    obj.label103 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label103:setParent(obj.layout10);
-    obj.label103:setLeft(155);
-    obj.label103:setTop(0);
-    obj.label103:setWidth(60);
-    obj.label103:setHeight(20);
-    obj.label103:setField("deslNatacaoQuadrados");
-    obj.label103:setHorzTextAlign("center");
-    obj.label103:setName("label103");
+    obj.label104 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label104:setParent(obj.layout10);
+    obj.label104:setLeft(155);
+    obj.label104:setTop(0);
+    obj.label104:setWidth(60);
+    obj.label104:setHeight(20);
+    obj.label104:setField("deslNatacaoQuadrados");
+    obj.label104:setHorzTextAlign("center");
+    obj.label104:setName("label104");
 
     obj.dataLink31 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink31:setParent(obj.layout10);
@@ -4974,24 +4999,24 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.layout11:setHeight(20);
     obj.layout11:setName("layout11");
 
-    obj.label104 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label104:setParent(obj.layout11);
-    obj.label104:setLeft(5);
-    obj.label104:setTop(0);
-    obj.label104:setWidth(70);
-    obj.label104:setHeight(20);
-    obj.label104:setText("ESCALAR");
-    obj.label104:setName("label104");
+    obj.label105 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label105:setParent(obj.layout11);
+    obj.label105:setLeft(5);
+    obj.label105:setTop(0);
+    obj.label105:setWidth(70);
+    obj.label105:setHeight(20);
+    obj.label105:setText("ESCALAR");
+    obj.label105:setName("label105");
 
-    obj.edit131 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit131:setParent(obj.layout11);
-    obj.edit131:setVertTextAlign("center");
-    obj.edit131:setLeft(75);
-    obj.edit131:setTop(0);
-    obj.edit131:setWidth(70);
-    obj.edit131:setHeight(20);
-    obj.edit131:setField("deslEscalar");
-    obj.edit131:setName("edit131");
+    obj.edit130 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit130:setParent(obj.layout11);
+    obj.edit130:setVertTextAlign("center");
+    obj.edit130:setLeft(75);
+    obj.edit130:setTop(0);
+    obj.edit130:setWidth(70);
+    obj.edit130:setHeight(20);
+    obj.edit130:setField("deslEscalar");
+    obj.edit130:setName("edit130");
 
     obj.rectangle46 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle46:setParent(obj.layout11);
@@ -5004,15 +5029,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle46:setStrokeSize(1);
     obj.rectangle46:setName("rectangle46");
 
-    obj.label105 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label105:setParent(obj.layout11);
-    obj.label105:setLeft(155);
-    obj.label105:setTop(0);
-    obj.label105:setWidth(60);
-    obj.label105:setHeight(20);
-    obj.label105:setField("deslEscalarQuadrados");
-    obj.label105:setHorzTextAlign("center");
-    obj.label105:setName("label105");
+    obj.label106 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label106:setParent(obj.layout11);
+    obj.label106:setLeft(155);
+    obj.label106:setTop(0);
+    obj.label106:setWidth(60);
+    obj.label106:setHeight(20);
+    obj.label106:setField("deslEscalarQuadrados");
+    obj.label106:setHorzTextAlign("center");
+    obj.label106:setName("label106");
 
     obj.dataLink32 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink32:setParent(obj.layout11);
@@ -5027,24 +5052,24 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.layout12:setHeight(20);
     obj.layout12:setName("layout12");
 
-    obj.label106 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label106:setParent(obj.layout12);
-    obj.label106:setLeft(5);
-    obj.label106:setTop(0);
-    obj.label106:setWidth(70);
-    obj.label106:setHeight(20);
-    obj.label106:setText("ESCAVAR");
-    obj.label106:setName("label106");
+    obj.label107 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label107:setParent(obj.layout12);
+    obj.label107:setLeft(5);
+    obj.label107:setTop(0);
+    obj.label107:setWidth(70);
+    obj.label107:setHeight(20);
+    obj.label107:setText("ESCAVAR");
+    obj.label107:setName("label107");
 
-    obj.edit132 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit132:setParent(obj.layout12);
-    obj.edit132:setVertTextAlign("center");
-    obj.edit132:setLeft(75);
-    obj.edit132:setTop(0);
-    obj.edit132:setWidth(70);
-    obj.edit132:setHeight(20);
-    obj.edit132:setField("deslEscavar");
-    obj.edit132:setName("edit132");
+    obj.edit131 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit131:setParent(obj.layout12);
+    obj.edit131:setVertTextAlign("center");
+    obj.edit131:setLeft(75);
+    obj.edit131:setTop(0);
+    obj.edit131:setWidth(70);
+    obj.edit131:setHeight(20);
+    obj.edit131:setField("deslEscavar");
+    obj.edit131:setName("edit131");
 
     obj.rectangle47 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle47:setParent(obj.layout12);
@@ -5057,15 +5082,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle47:setStrokeSize(1);
     obj.rectangle47:setName("rectangle47");
 
-    obj.label107 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label107:setParent(obj.layout12);
-    obj.label107:setLeft(155);
-    obj.label107:setTop(0);
-    obj.label107:setWidth(60);
-    obj.label107:setHeight(20);
-    obj.label107:setField("deslEscavarQuadrados");
-    obj.label107:setHorzTextAlign("center");
-    obj.label107:setName("label107");
+    obj.label108 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label108:setParent(obj.layout12);
+    obj.label108:setLeft(155);
+    obj.label108:setTop(0);
+    obj.label108:setWidth(60);
+    obj.label108:setHeight(20);
+    obj.label108:setField("deslEscavarQuadrados");
+    obj.label108:setHorzTextAlign("center");
+    obj.label108:setName("label108");
 
     obj.dataLink33 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink33:setParent(obj.layout12);
@@ -5086,15 +5111,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle48:setColor("black");
     obj.rectangle48:setName("rectangle48");
 
-    obj.label108 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label108:setParent(obj.layout13);
-    obj.label108:setLeft(0);
-    obj.label108:setTop(1);
-    obj.label108:setWidth(260);
-    obj.label108:setHeight(20);
-    obj.label108:setText("INICIATIVA");
-    obj.label108:setHorzTextAlign("center");
-    obj.label108:setName("label108");
+    obj.label109 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label109:setParent(obj.layout13);
+    obj.label109:setLeft(0);
+    obj.label109:setTop(1);
+    obj.label109:setWidth(260);
+    obj.label109:setHeight(20);
+    obj.label109:setText("INICIATIVA");
+    obj.label109:setHorzTextAlign("center");
+    obj.label109:setName("label109");
 
     obj.button8 = GUI.fromHandle(_obj_newObject("button"));
     obj.button8:setParent(obj.layout13);
@@ -5117,14 +5142,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle49:setStrokeSize(1);
     obj.rectangle49:setName("rectangle49");
 
-    obj.label109 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label109:setParent(obj.layout13);
-    obj.label109:setField("iniciativa");
-    obj.label109:setLeft(115);
-    obj.label109:setTop(27);
-    obj.label109:setWidth(35);
-    obj.label109:setHorzTextAlign("center");
-    obj.label109:setName("label109");
+    obj.label110 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label110:setParent(obj.layout13);
+    obj.label110:setField("iniciativa");
+    obj.label110:setLeft(115);
+    obj.label110:setTop(27);
+    obj.label110:setWidth(35);
+    obj.label110:setHorzTextAlign("center");
+    obj.label110:setName("label110");
 
     obj.rectangle50 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle50:setParent(obj.layout13);
@@ -5137,26 +5162,26 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle50:setStrokeSize(1);
     obj.rectangle50:setName("rectangle50");
 
-    obj.label110 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label110:setParent(obj.layout13);
-    obj.label110:setField("efetModDes");
-    obj.label110:setLeft(165);
-    obj.label110:setTop(27);
-    obj.label110:setWidth(35);
-    obj.label110:setHorzTextAlign("center");
-    obj.label110:setName("label110");
+    obj.label111 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label111:setParent(obj.layout13);
+    obj.label111:setField("efetModDes");
+    obj.label111:setLeft(165);
+    obj.label111:setTop(27);
+    obj.label111:setWidth(35);
+    obj.label111:setHorzTextAlign("center");
+    obj.label111:setName("label111");
 
-    obj.edit133 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit133:setParent(obj.layout13);
-    obj.edit133:setType("number");
-    obj.edit133:setVertTextAlign("center");
-    obj.edit133:setHorzTextAlign("center");
-    obj.edit133:setLeft(205);
-    obj.edit133:setTop(25);
-    obj.edit133:setWidth(35);
-    obj.edit133:setHeight(25);
-    obj.edit133:setField("iniVariado");
-    obj.edit133:setName("edit133");
+    obj.edit132 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit132:setParent(obj.layout13);
+    obj.edit132:setType("number");
+    obj.edit132:setVertTextAlign("center");
+    obj.edit132:setHorzTextAlign("center");
+    obj.edit132:setLeft(205);
+    obj.edit132:setTop(25);
+    obj.edit132:setWidth(35);
+    obj.edit132:setHeight(25);
+    obj.edit132:setField("iniVariado");
+    obj.edit132:setName("edit132");
 
     obj.dataLink34 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink34:setParent(obj.layout13);
@@ -5172,15 +5197,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle51:setColor("black");
     obj.rectangle51:setName("rectangle51");
 
-    obj.label111 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label111:setParent(obj.rectangle51);
-    obj.label111:setLeft(0);
-    obj.label111:setTop(1);
-    obj.label111:setWidth(260);
-    obj.label111:setHeight(20);
-    obj.label111:setText("CLASSE DE ARMADURA");
-    obj.label111:setHorzTextAlign("center");
-    obj.label111:setName("label111");
+    obj.label112 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label112:setParent(obj.rectangle51);
+    obj.label112:setLeft(0);
+    obj.label112:setTop(1);
+    obj.label112:setWidth(260);
+    obj.label112:setHeight(20);
+    obj.label112:setText("CLASSE DE ARMADURA");
+    obj.label112:setHorzTextAlign("center");
+    obj.label112:setName("label112");
 
     obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.rectangle51);
@@ -5190,14 +5215,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.layout14:setHeight(50);
     obj.layout14:setName("layout14");
 
-    obj.label112 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label112:setParent(obj.layout14);
-    obj.label112:setLeft(10);
-    obj.label112:setTop(0);
-    obj.label112:setWidth(35);
-    obj.label112:setHeight(20);
-    obj.label112:setText("CA");
-    obj.label112:setName("label112");
+    obj.label113 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label113:setParent(obj.layout14);
+    obj.label113:setLeft(10);
+    obj.label113:setTop(0);
+    obj.label113:setWidth(35);
+    obj.label113:setHeight(20);
+    obj.label113:setText("CA");
+    obj.label113:setName("label113");
 
     obj.rectangle52 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle52:setParent(obj.layout14);
@@ -5210,23 +5235,23 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle52:setStrokeSize(1);
     obj.rectangle52:setName("rectangle52");
 
-    obj.label113 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label113:setParent(obj.layout14);
-    obj.label113:setLeft(5);
-    obj.label113:setTop(27);
-    obj.label113:setWidth(35);
-    obj.label113:setField("ca");
-    obj.label113:setHorzTextAlign("center");
-    obj.label113:setName("label113");
-
     obj.label114 = GUI.fromHandle(_obj_newObject("label"));
     obj.label114:setParent(obj.layout14);
-    obj.label114:setLeft(45);
-    obj.label114:setTop(0);
-    obj.label114:setWidth(40);
-    obj.label114:setHeight(20);
-    obj.label114:setText("SURP.");
+    obj.label114:setLeft(5);
+    obj.label114:setTop(27);
+    obj.label114:setWidth(35);
+    obj.label114:setField("ca");
+    obj.label114:setHorzTextAlign("center");
     obj.label114:setName("label114");
+
+    obj.label115 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label115:setParent(obj.layout14);
+    obj.label115:setLeft(45);
+    obj.label115:setTop(0);
+    obj.label115:setWidth(40);
+    obj.label115:setHeight(20);
+    obj.label115:setText("SURP.");
+    obj.label115:setName("label115");
 
     obj.rectangle53 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle53:setParent(obj.layout14);
@@ -5239,23 +5264,23 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle53:setStrokeSize(1);
     obj.rectangle53:setName("rectangle53");
 
-    obj.label115 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label115:setParent(obj.layout14);
-    obj.label115:setLeft(45);
-    obj.label115:setTop(27);
-    obj.label115:setWidth(35);
-    obj.label115:setField("surpresa");
-    obj.label115:setHorzTextAlign("center");
-    obj.label115:setName("label115");
-
     obj.label116 = GUI.fromHandle(_obj_newObject("label"));
     obj.label116:setParent(obj.layout14);
-    obj.label116:setLeft(85);
-    obj.label116:setTop(0);
-    obj.label116:setWidth(45);
-    obj.label116:setHeight(20);
-    obj.label116:setText("TOQUE");
+    obj.label116:setLeft(45);
+    obj.label116:setTop(27);
+    obj.label116:setWidth(35);
+    obj.label116:setField("surpresa");
+    obj.label116:setHorzTextAlign("center");
     obj.label116:setName("label116");
+
+    obj.label117 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label117:setParent(obj.layout14);
+    obj.label117:setLeft(85);
+    obj.label117:setTop(0);
+    obj.label117:setWidth(45);
+    obj.label117:setHeight(20);
+    obj.label117:setText("TOQUE");
+    obj.label117:setName("label117");
 
     obj.rectangle54 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle54:setParent(obj.layout14);
@@ -5268,23 +5293,23 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle54:setStrokeSize(1);
     obj.rectangle54:setName("rectangle54");
 
-    obj.label117 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label117:setParent(obj.layout14);
-    obj.label117:setLeft(90);
-    obj.label117:setTop(27);
-    obj.label117:setWidth(35);
-    obj.label117:setField("toque");
-    obj.label117:setHorzTextAlign("center");
-    obj.label117:setName("label117");
-
     obj.label118 = GUI.fromHandle(_obj_newObject("label"));
     obj.label118:setParent(obj.layout14);
-    obj.label118:setLeft(135);
-    obj.label118:setTop(0);
+    obj.label118:setLeft(90);
+    obj.label118:setTop(27);
     obj.label118:setWidth(35);
-    obj.label118:setHeight(20);
-    obj.label118:setText("PEN");
+    obj.label118:setField("toque");
+    obj.label118:setHorzTextAlign("center");
     obj.label118:setName("label118");
+
+    obj.label119 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label119:setParent(obj.layout14);
+    obj.label119:setLeft(135);
+    obj.label119:setTop(0);
+    obj.label119:setWidth(35);
+    obj.label119:setHeight(20);
+    obj.label119:setText("PEN");
+    obj.label119:setName("label119");
 
     obj.rectangle55 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle55:setParent(obj.layout14);
@@ -5297,14 +5322,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle55:setStrokeSize(1);
     obj.rectangle55:setName("rectangle55");
 
-    obj.label119 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label119:setParent(obj.layout14);
-    obj.label119:setLeft(135);
-    obj.label119:setTop(27);
-    obj.label119:setWidth(35);
-    obj.label119:setField("penalidade");
-    obj.label119:setHorzTextAlign("center");
-    obj.label119:setName("label119");
+    obj.label120 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label120:setParent(obj.layout14);
+    obj.label120:setLeft(135);
+    obj.label120:setTop(27);
+    obj.label120:setWidth(35);
+    obj.label120:setField("penalidade");
+    obj.label120:setHorzTextAlign("center");
+    obj.label120:setName("label120");
 
     obj.button9 = GUI.fromHandle(_obj_newObject("button"));
     obj.button9:setParent(obj.layout14);
@@ -5327,14 +5352,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle56:setStrokeSize(1);
     obj.rectangle56:setName("rectangle56");
 
-    obj.label120 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label120:setParent(obj.layout14);
-    obj.label120:setLeft(175);
-    obj.label120:setTop(27);
-    obj.label120:setWidth(35);
-    obj.label120:setField("falha");
-    obj.label120:setHorzTextAlign("center");
-    obj.label120:setName("label120");
+    obj.label121 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label121:setParent(obj.layout14);
+    obj.label121:setLeft(175);
+    obj.label121:setTop(27);
+    obj.label121:setWidth(35);
+    obj.label121:setField("falha");
+    obj.label121:setHorzTextAlign("center");
+    obj.label121:setName("label121");
 
     obj.caDetails = GUI.fromHandle(_obj_newObject("button"));
     obj.caDetails:setParent(obj.rectangle51);
@@ -5375,24 +5400,24 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.layout15:setHeight(25);
     obj.layout15:setName("layout15");
 
-    obj.label121 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label121:setParent(obj.layout15);
-    obj.label121:setLeft(30);
-    obj.label121:setTop(0);
-    obj.label121:setWidth(30);
-    obj.label121:setHeight(20);
-    obj.label121:setText("RM");
-    obj.label121:setName("label121");
+    obj.label122 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label122:setParent(obj.layout15);
+    obj.label122:setLeft(30);
+    obj.label122:setTop(0);
+    obj.label122:setWidth(30);
+    obj.label122:setHeight(20);
+    obj.label122:setText("RM");
+    obj.label122:setName("label122");
 
-    obj.edit134 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit134:setParent(obj.layout15);
-    obj.edit134:setVertTextAlign("center");
-    obj.edit134:setLeft(60);
-    obj.edit134:setTop(0);
-    obj.edit134:setWidth(170);
-    obj.edit134:setHeight(25);
-    obj.edit134:setField("rm");
-    obj.edit134:setName("edit134");
+    obj.edit133 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit133:setParent(obj.layout15);
+    obj.edit133:setVertTextAlign("center");
+    obj.edit133:setLeft(60);
+    obj.edit133:setTop(0);
+    obj.edit133:setWidth(170);
+    obj.edit133:setHeight(25);
+    obj.edit133:setField("rm");
+    obj.edit133:setName("edit133");
 
     obj.rectangle57 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle57:setParent(obj.scrollBox1);
@@ -5403,56 +5428,56 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle57:setColor("black");
     obj.rectangle57:setName("rectangle57");
 
-    obj.label122 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label122:setParent(obj.rectangle57);
-    obj.label122:setLeft(5);
-    obj.label122:setTop(1);
-    obj.label122:setWidth(220);
-    obj.label122:setHeight(20);
-    obj.label122:setText("PONTOS DE VIGOR");
-    obj.label122:setName("label122");
-
     obj.label123 = GUI.fromHandle(_obj_newObject("label"));
     obj.label123:setParent(obj.rectangle57);
-    obj.label123:setLeft(35);
-    obj.label123:setTop(25);
-    obj.label123:setWidth(100);
+    obj.label123:setLeft(5);
+    obj.label123:setTop(1);
+    obj.label123:setWidth(220);
     obj.label123:setHeight(20);
-    obj.label123:setText("VIGOR");
+    obj.label123:setText("PONTOS DE VIGOR");
     obj.label123:setName("label123");
+
+    obj.label124 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label124:setParent(obj.rectangle57);
+    obj.label124:setLeft(35);
+    obj.label124:setTop(25);
+    obj.label124:setWidth(100);
+    obj.label124:setHeight(20);
+    obj.label124:setText("VIGOR");
+    obj.label124:setName("label124");
+
+    obj.edit134 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit134:setParent(obj.rectangle57);
+    obj.edit134:setType("number");
+    obj.edit134:setVertTextAlign("center");
+    obj.edit134:setHorzTextAlign("center");
+    obj.edit134:setLeft(5);
+    obj.edit134:setTop(45);
+    obj.edit134:setWidth(105);
+    obj.edit134:setHeight(25);
+    obj.edit134:setField("pvTotal");
+    obj.edit134:setName("edit134");
+
+    obj.label125 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label125:setParent(obj.rectangle57);
+    obj.label125:setLeft(115);
+    obj.label125:setTop(25);
+    obj.label125:setWidth(100);
+    obj.label125:setHeight(20);
+    obj.label125:setText("TEMPORARIO");
+    obj.label125:setName("label125");
 
     obj.edit135 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit135:setParent(obj.rectangle57);
     obj.edit135:setType("number");
     obj.edit135:setVertTextAlign("center");
     obj.edit135:setHorzTextAlign("center");
-    obj.edit135:setLeft(5);
+    obj.edit135:setLeft(110);
     obj.edit135:setTop(45);
     obj.edit135:setWidth(105);
     obj.edit135:setHeight(25);
-    obj.edit135:setField("pvTotal");
+    obj.edit135:setField("pvTemporario");
     obj.edit135:setName("edit135");
-
-    obj.label124 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label124:setParent(obj.rectangle57);
-    obj.label124:setLeft(115);
-    obj.label124:setTop(25);
-    obj.label124:setWidth(100);
-    obj.label124:setHeight(20);
-    obj.label124:setText("TEMPORARIO");
-    obj.label124:setName("label124");
-
-    obj.edit136 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit136:setParent(obj.rectangle57);
-    obj.edit136:setType("number");
-    obj.edit136:setVertTextAlign("center");
-    obj.edit136:setHorzTextAlign("center");
-    obj.edit136:setLeft(110);
-    obj.edit136:setTop(45);
-    obj.edit136:setWidth(105);
-    obj.edit136:setHeight(25);
-    obj.edit136:setField("pvTemporario");
-    obj.edit136:setName("edit136");
 
     obj.button10 = GUI.fromHandle(_obj_newObject("button"));
     obj.button10:setParent(obj.rectangle57);
@@ -5463,15 +5488,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.button10:setText("DVs");
     obj.button10:setName("button10");
 
-    obj.edit137 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit137:setParent(obj.rectangle57);
-    obj.edit137:setVertTextAlign("center");
-    obj.edit137:setLeft(45);
-    obj.edit137:setTop(70);
-    obj.edit137:setWidth(170);
-    obj.edit137:setHeight(25);
-    obj.edit137:setField("dvs");
-    obj.edit137:setName("edit137");
+    obj.edit136 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit136:setParent(obj.rectangle57);
+    obj.edit136:setVertTextAlign("center");
+    obj.edit136:setLeft(45);
+    obj.edit136:setTop(70);
+    obj.edit136:setWidth(170);
+    obj.edit136:setHeight(25);
+    obj.edit136:setField("dvs");
+    obj.edit136:setName("edit136");
 
     obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.rectangle57);
@@ -5496,14 +5521,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle58:setColor("black");
     obj.rectangle58:setName("rectangle58");
 
-    obj.label125 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label125:setParent(obj.layout16);
-    obj.label125:setLeft(5);
-    obj.label125:setTop(0);
-    obj.label125:setWidth(321);
-    obj.label125:setHeight(20);
-    obj.label125:setText("BÔNUS TEMPORARIOS");
-    obj.label125:setName("label125");
+    obj.label126 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label126:setParent(obj.layout16);
+    obj.label126:setLeft(5);
+    obj.label126:setTop(0);
+    obj.label126:setWidth(321);
+    obj.label126:setHeight(20);
+    obj.label126:setText("BÔNUS TEMPORARIOS");
+    obj.label126:setName("label126");
 
     obj.button11 = GUI.fromHandle(_obj_newObject("button"));
     obj.button11:setParent(obj.layout16);
@@ -5514,24 +5539,24 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.button11:setText("CA oculta");
     obj.button11:setName("button11");
 
-    obj.label126 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label126:setParent(obj.layout16);
-    obj.label126:setLeft(180);
-    obj.label126:setTop(115);
-    obj.label126:setWidth(165);
-    obj.label126:setHeight(20);
-    obj.label126:setText("Apenas o Mestre.");
-    obj.label126:setRotationAngle(90);
-    obj.label126:setName("label126");
-
     obj.label127 = GUI.fromHandle(_obj_newObject("label"));
     obj.label127:setParent(obj.layout16);
-    obj.label127:setLeft(165);
-    obj.label127:setTop(30);
-    obj.label127:setWidth(50);
-    obj.label127:setHeight(25);
-    obj.label127:setText("Alvo 1");
+    obj.label127:setLeft(180);
+    obj.label127:setTop(115);
+    obj.label127:setWidth(165);
+    obj.label127:setHeight(20);
+    obj.label127:setText("Apenas o Mestre.");
+    obj.label127:setRotationAngle(90);
     obj.label127:setName("label127");
+
+    obj.label128 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label128:setParent(obj.layout16);
+    obj.label128:setLeft(165);
+    obj.label128:setTop(30);
+    obj.label128:setWidth(50);
+    obj.label128:setHeight(25);
+    obj.label128:setText("Alvo 1");
+    obj.label128:setName("label128");
 
     obj.alvo1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.alvo1:setParent(obj.layout16);
@@ -5544,14 +5569,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.alvo1:setVisible(false);
     obj.alvo1:setType("number");
 
-    obj.label128 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label128:setParent(obj.layout16);
-    obj.label128:setLeft(165);
-    obj.label128:setTop(55);
-    obj.label128:setWidth(50);
-    obj.label128:setHeight(25);
-    obj.label128:setText("Alvo 2");
-    obj.label128:setName("label128");
+    obj.label129 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label129:setParent(obj.layout16);
+    obj.label129:setLeft(165);
+    obj.label129:setTop(55);
+    obj.label129:setWidth(50);
+    obj.label129:setHeight(25);
+    obj.label129:setText("Alvo 2");
+    obj.label129:setName("label129");
 
     obj.alvo2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.alvo2:setParent(obj.layout16);
@@ -5564,14 +5589,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.alvo2:setVisible(false);
     obj.alvo2:setType("number");
 
-    obj.label129 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label129:setParent(obj.layout16);
-    obj.label129:setLeft(165);
-    obj.label129:setTop(80);
-    obj.label129:setWidth(50);
-    obj.label129:setHeight(25);
-    obj.label129:setText("Alvo 3");
-    obj.label129:setName("label129");
+    obj.label130 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label130:setParent(obj.layout16);
+    obj.label130:setLeft(165);
+    obj.label130:setTop(80);
+    obj.label130:setWidth(50);
+    obj.label130:setHeight(25);
+    obj.label130:setText("Alvo 3");
+    obj.label130:setName("label130");
 
     obj.alvo3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.alvo3:setParent(obj.layout16);
@@ -5584,14 +5609,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.alvo3:setVisible(false);
     obj.alvo3:setType("number");
 
-    obj.label130 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label130:setParent(obj.layout16);
-    obj.label130:setLeft(165);
-    obj.label130:setTop(105);
-    obj.label130:setWidth(50);
-    obj.label130:setHeight(25);
-    obj.label130:setText("Alvo 4");
-    obj.label130:setName("label130");
+    obj.label131 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label131:setParent(obj.layout16);
+    obj.label131:setLeft(165);
+    obj.label131:setTop(105);
+    obj.label131:setWidth(50);
+    obj.label131:setHeight(25);
+    obj.label131:setText("Alvo 4");
+    obj.label131:setName("label131");
 
     obj.alvo4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.alvo4:setParent(obj.layout16);
@@ -5604,14 +5629,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.alvo4:setVisible(false);
     obj.alvo4:setType("number");
 
-    obj.label131 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label131:setParent(obj.layout16);
-    obj.label131:setLeft(165);
-    obj.label131:setTop(130);
-    obj.label131:setWidth(50);
-    obj.label131:setHeight(25);
-    obj.label131:setText("Alvo 5");
-    obj.label131:setName("label131");
+    obj.label132 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label132:setParent(obj.layout16);
+    obj.label132:setLeft(165);
+    obj.label132:setTop(130);
+    obj.label132:setWidth(50);
+    obj.label132:setHeight(25);
+    obj.label132:setText("Alvo 5");
+    obj.label132:setName("label132");
 
     obj.alvo5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.alvo5:setParent(obj.layout16);
@@ -5655,100 +5680,100 @@ local function constructNew_frmFichaRPGmeister1_svg()
 			
 
 
-    obj.label132 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label132:setParent(obj.layout16);
-    obj.label132:setLeft(5);
-    obj.label132:setTop(30);
-    obj.label132:setWidth(50);
-    obj.label132:setHeight(20);
-    obj.label132:setText("ATAQUE");
-    obj.label132:setName("label132");
+    obj.label133 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label133:setParent(obj.layout16);
+    obj.label133:setLeft(5);
+    obj.label133:setTop(30);
+    obj.label133:setWidth(50);
+    obj.label133:setHeight(20);
+    obj.label133:setText("ATAQUE");
+    obj.label133:setName("label133");
+
+    obj.edit137 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit137:setParent(obj.layout16);
+    obj.edit137:setVertTextAlign("center");
+    obj.edit137:setLeft(60);
+    obj.edit137:setTop(30);
+    obj.edit137:setWidth(70);
+    obj.edit137:setHeight(25);
+    obj.edit137:setField("buffAtaque");
+    obj.edit137:setName("edit137");
+
+    obj.label134 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label134:setParent(obj.layout16);
+    obj.label134:setLeft(5);
+    obj.label134:setTop(55);
+    obj.label134:setWidth(50);
+    obj.label134:setHeight(20);
+    obj.label134:setText("DANO");
+    obj.label134:setName("label134");
 
     obj.edit138 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit138:setParent(obj.layout16);
     obj.edit138:setVertTextAlign("center");
     obj.edit138:setLeft(60);
-    obj.edit138:setTop(30);
+    obj.edit138:setTop(55);
     obj.edit138:setWidth(70);
     obj.edit138:setHeight(25);
-    obj.edit138:setField("buffAtaque");
+    obj.edit138:setField("buffDano");
     obj.edit138:setName("edit138");
 
-    obj.label133 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label133:setParent(obj.layout16);
-    obj.label133:setLeft(5);
-    obj.label133:setTop(55);
-    obj.label133:setWidth(50);
-    obj.label133:setHeight(20);
-    obj.label133:setText("DANO");
-    obj.label133:setName("label133");
+    obj.label135 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label135:setParent(obj.layout16);
+    obj.label135:setLeft(5);
+    obj.label135:setTop(80);
+    obj.label135:setWidth(50);
+    obj.label135:setHeight(20);
+    obj.label135:setText("CRITICO");
+    obj.label135:setName("label135");
 
     obj.edit139 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit139:setParent(obj.layout16);
     obj.edit139:setVertTextAlign("center");
     obj.edit139:setLeft(60);
-    obj.edit139:setTop(55);
+    obj.edit139:setTop(80);
     obj.edit139:setWidth(70);
     obj.edit139:setHeight(25);
-    obj.edit139:setField("buffDano");
+    obj.edit139:setField("buffDanoCritico");
     obj.edit139:setName("edit139");
 
-    obj.label134 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label134:setParent(obj.layout16);
-    obj.label134:setLeft(5);
-    obj.label134:setTop(80);
-    obj.label134:setWidth(50);
-    obj.label134:setHeight(20);
-    obj.label134:setText("CRITICO");
-    obj.label134:setName("label134");
+    obj.label136 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label136:setParent(obj.layout16);
+    obj.label136:setLeft(5);
+    obj.label136:setTop(105);
+    obj.label136:setWidth(50);
+    obj.label136:setHeight(20);
+    obj.label136:setText("TR");
+    obj.label136:setName("label136");
 
     obj.edit140 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit140:setParent(obj.layout16);
     obj.edit140:setVertTextAlign("center");
     obj.edit140:setLeft(60);
-    obj.edit140:setTop(80);
+    obj.edit140:setTop(105);
     obj.edit140:setWidth(70);
     obj.edit140:setHeight(25);
-    obj.edit140:setField("buffDanoCritico");
+    obj.edit140:setField("buffTR");
     obj.edit140:setName("edit140");
 
-    obj.label135 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label135:setParent(obj.layout16);
-    obj.label135:setLeft(5);
-    obj.label135:setTop(105);
-    obj.label135:setWidth(50);
-    obj.label135:setHeight(20);
-    obj.label135:setText("TR");
-    obj.label135:setName("label135");
+    obj.label137 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label137:setParent(obj.layout16);
+    obj.label137:setLeft(5);
+    obj.label137:setTop(130);
+    obj.label137:setWidth(50);
+    obj.label137:setHeight(20);
+    obj.label137:setText("PERICIA");
+    obj.label137:setName("label137");
 
     obj.edit141 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit141:setParent(obj.layout16);
     obj.edit141:setVertTextAlign("center");
     obj.edit141:setLeft(60);
-    obj.edit141:setTop(105);
+    obj.edit141:setTop(130);
     obj.edit141:setWidth(70);
     obj.edit141:setHeight(25);
-    obj.edit141:setField("buffTR");
+    obj.edit141:setField("buffPericia");
     obj.edit141:setName("edit141");
-
-    obj.label136 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label136:setParent(obj.layout16);
-    obj.label136:setLeft(5);
-    obj.label136:setTop(130);
-    obj.label136:setWidth(50);
-    obj.label136:setHeight(20);
-    obj.label136:setText("PERICIA");
-    obj.label136:setName("label136");
-
-    obj.edit142 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit142:setParent(obj.layout16);
-    obj.edit142:setVertTextAlign("center");
-    obj.edit142:setLeft(60);
-    obj.edit142:setTop(130);
-    obj.edit142:setWidth(70);
-    obj.edit142:setHeight(25);
-    obj.edit142:setField("buffPericia");
-    obj.edit142:setName("edit142");
 
     obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.scrollBox1);
@@ -5764,26 +5789,26 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle59:setColor("black");
     obj.rectangle59:setName("rectangle59");
 
-    obj.label137 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label137:setParent(obj.layout17);
-    obj.label137:setLeft(0);
-    obj.label137:setTop(0);
-    obj.label137:setWidth(180);
-    obj.label137:setHeight(25);
-    obj.label137:setText("BBA");
-    obj.label137:setHorzTextAlign("center");
-    obj.label137:setName("label137");
+    obj.label138 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label138:setParent(obj.layout17);
+    obj.label138:setLeft(0);
+    obj.label138:setTop(0);
+    obj.label138:setWidth(180);
+    obj.label138:setHeight(25);
+    obj.label138:setText("BBA");
+    obj.label138:setHorzTextAlign("center");
+    obj.label138:setName("label138");
 
-    obj.edit143 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit143:setParent(obj.layout17);
-    obj.edit143:setLeft(5);
-    obj.edit143:setTop(25);
-    obj.edit143:setWidth(40);
-    obj.edit143:setHeight(25);
-    obj.edit143:setType("number");
-    obj.edit143:setHorzTextAlign("center");
-    obj.edit143:setField("bba");
-    obj.edit143:setName("edit143");
+    obj.edit142 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit142:setParent(obj.layout17);
+    obj.edit142:setLeft(5);
+    obj.edit142:setTop(25);
+    obj.edit142:setWidth(40);
+    obj.edit142:setHeight(25);
+    obj.edit142:setType("number");
+    obj.edit142:setHorzTextAlign("center");
+    obj.edit142:setField("bba");
+    obj.edit142:setName("edit142");
 
     obj.rectangle60 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle60:setParent(obj.layout17);
@@ -5796,15 +5821,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle60:setStrokeSize(1);
     obj.rectangle60:setName("rectangle60");
 
-    obj.label138 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label138:setParent(obj.layout17);
-    obj.label138:setLeft(50);
-    obj.label138:setTop(25);
-    obj.label138:setWidth(125);
-    obj.label138:setHeight(25);
-    obj.label138:setField("bbaDesc");
-    obj.label138:setHorzTextAlign("center");
-    obj.label138:setName("label138");
+    obj.label139 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label139:setParent(obj.layout17);
+    obj.label139:setLeft(50);
+    obj.label139:setTop(25);
+    obj.label139:setWidth(125);
+    obj.label139:setHeight(25);
+    obj.label139:setField("bbaDesc");
+    obj.label139:setHorzTextAlign("center");
+    obj.label139:setName("label139");
 
     obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.layout17);
@@ -5835,14 +5860,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle61:setStrokeSize(1);
     obj.rectangle61:setName("rectangle61");
 
-    obj.label139 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label139:setParent(obj.layout18);
-    obj.label139:setField("agarrar");
-    obj.label139:setLeft(80);
-    obj.label139:setWidth(40);
-    obj.label139:setHeight(25);
-    obj.label139:setHorzTextAlign("center");
-    obj.label139:setName("label139");
+    obj.label140 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label140:setParent(obj.layout18);
+    obj.label140:setField("agarrar");
+    obj.label140:setLeft(80);
+    obj.label140:setWidth(40);
+    obj.label140:setHeight(25);
+    obj.label140:setHorzTextAlign("center");
+    obj.label140:setName("label140");
 
     obj.GrappleBt = GUI.fromHandle(_obj_newObject("button"));
     obj.GrappleBt:setParent(obj.layout18);
@@ -5867,15 +5892,15 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle62:setColor("black");
     obj.rectangle62:setName("rectangle62");
 
-    obj.label140 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label140:setParent(obj.rectangle62);
-    obj.label140:setLeft(0);
-    obj.label140:setTop(0);
-    obj.label140:setWidth(140);
-    obj.label140:setHeight(25);
-    obj.label140:setText("RESISTENCIAS");
-    obj.label140:setHorzTextAlign("center");
-    obj.label140:setName("label140");
+    obj.label141 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label141:setParent(obj.rectangle62);
+    obj.label141:setLeft(0);
+    obj.label141:setTop(0);
+    obj.label141:setWidth(140);
+    obj.label141:setHeight(25);
+    obj.label141:setText("RESISTENCIAS");
+    obj.label141:setHorzTextAlign("center");
+    obj.label141:setName("label141");
 
     obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.rectangle62);
@@ -5904,14 +5929,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle63:setStrokeSize(1);
     obj.rectangle63:setName("rectangle63");
 
-    obj.label141 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label141:setParent(obj.layout19);
-    obj.label141:setLeft(55);
-    obj.label141:setWidth(40);
-    obj.label141:setHeight(25);
-    obj.label141:setField("trFort");
-    obj.label141:setHorzTextAlign("center");
-    obj.label141:setName("label141");
+    obj.label142 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label142:setParent(obj.layout19);
+    obj.label142:setLeft(55);
+    obj.label142:setWidth(40);
+    obj.label142:setHeight(25);
+    obj.label142:setField("trFort");
+    obj.label142:setHorzTextAlign("center");
+    obj.label142:setName("label142");
 
     obj.dataLink40 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink40:setParent(obj.layout19);
@@ -5946,14 +5971,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle64:setStrokeSize(1);
     obj.rectangle64:setName("rectangle64");
 
-    obj.label142 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label142:setParent(obj.layout20);
-    obj.label142:setLeft(55);
-    obj.label142:setWidth(40);
-    obj.label142:setHeight(25);
-    obj.label142:setField("trRef");
-    obj.label142:setHorzTextAlign("center");
-    obj.label142:setName("label142");
+    obj.label143 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label143:setParent(obj.layout20);
+    obj.label143:setLeft(55);
+    obj.label143:setWidth(40);
+    obj.label143:setHeight(25);
+    obj.label143:setField("trRef");
+    obj.label143:setHorzTextAlign("center");
+    obj.label143:setName("label143");
 
     obj.dataLink41 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink41:setParent(obj.layout20);
@@ -5988,14 +6013,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.rectangle65:setStrokeSize(1);
     obj.rectangle65:setName("rectangle65");
 
-    obj.label143 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label143:setParent(obj.layout21);
-    obj.label143:setLeft(55);
-    obj.label143:setWidth(40);
-    obj.label143:setHeight(25);
-    obj.label143:setField("trVon");
-    obj.label143:setHorzTextAlign("center");
-    obj.label143:setName("label143");
+    obj.label144 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label144:setParent(obj.layout21);
+    obj.label144:setLeft(55);
+    obj.label144:setWidth(40);
+    obj.label144:setHeight(25);
+    obj.label144:setField("trVon");
+    obj.label144:setHorzTextAlign("center");
+    obj.label144:setName("label144");
 
     obj.dataLink42 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink42:setParent(obj.layout21);
@@ -6042,257 +6067,262 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj._e_event0 = obj.dataLink2:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
-            						local real = 	(tonumber(sheet.inicialFor) or 0) + 
-            										(tonumber(sheet.racaFor) or 0) + 
-            										(tonumber(sheet.nepFor) or 0) + 
-            										(tonumber(sheet.inerenteFor) or 0) + 
-            										(tonumber(sheet.tamanhoFor) or 0) + 
-            										(tonumber(sheet.outrosFor) or 0);
-            						local efetivo = real;
-            						if sheet.isMelhoriaActive then
-            							efetivo = efetivo + (tonumber(sheet.melhoriaFor) or 0);
-            						end;
-            						if sheet.isDnTempActive then
-            							efetivo = efetivo + (tonumber(sheet.danoTempFor) or 0);
-            						end;
-            						if sheet.isDnPermActive then
-            							efetivo = efetivo + (tonumber(sheet.danoPermFor) or 0);
-            						end;
-            						if sheet.isTempActive then
-            							efetivo = efetivo + (tonumber(sheet.temporarioFor) or 0);
-            						end;
-            						if sheet.isClasseActive then
-            							efetivo = efetivo + (tonumber(sheet.magiaFor) or 0);
-            						end;
-            						if sheet.isMagiaActive then
-            							efetivo = efetivo + (tonumber(sheet.classeFor) or 0);
-            						end;			
-            						sheet.realFor = real;
-            						sheet.efetFor = efetivo;
+            					local real = 	(tonumber(sheet.inicialFor) or 0) + 
+            									(tonumber(sheet.racaFor) or 0) + 
+            									(tonumber(sheet.nepFor) or 0) + 
+            									(tonumber(sheet.inerenteFor) or 0) + 
+            									(tonumber(sheet.tamanhoFor) or 0) + 
+            									(tonumber(sheet.outrosFor) or 0);
+            					local efetivo = real;
+            					if sheet.isMelhoriaActive then
+            						efetivo = efetivo + (tonumber(sheet.melhoriaFor) or 0);
             					end;
+            					if sheet.isDnTempActive then
+            						efetivo = efetivo + (tonumber(sheet.danoTempFor) or 0);
+            					end;
+            					if sheet.isDnPermActive then
+            						efetivo = efetivo + (tonumber(sheet.danoPermFor) or 0);
+            					end;
+            					if sheet.isTempActive then
+            						efetivo = efetivo + (tonumber(sheet.temporarioFor) or 0);
+            					end;
+            					if sheet.isClasseActive then
+            						efetivo = efetivo + (tonumber(sheet.magiaFor) or 0);
+            					end;
+            					if sheet.isMagiaActive then
+            						efetivo = efetivo + (tonumber(sheet.classeFor) or 0);
+            					end;			
+            					sheet.realFor = real;
+            					sheet.efetFor = efetivo;
+            				end;
         end, obj);
 
     obj._e_event1 = obj.dataLink4:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
-            						local real = 	(tonumber(sheet.inicialDes) or 0) + 
-            										(tonumber(sheet.racaDes) or 0) + 
-            										(tonumber(sheet.nepDes) or 0) + 
-            										(tonumber(sheet.inerenteDes) or 0) + 
-            										(tonumber(sheet.tamanhoDes) or 0) + 
-            										(tonumber(sheet.outrosDes) or 0);
-            						local efetivo = real;
-            						if sheet.isMelhoriaActive then
-            							efetivo = efetivo + (tonumber(sheet.melhoriaDes) or 0);
-            						end;
-            						if sheet.isDnTempActive then
-            							efetivo = efetivo + (tonumber(sheet.danoTempDes) or 0);
-            						end;
-            						if sheet.isDnPermActive then
-            							efetivo = efetivo + (tonumber(sheet.danoPermDes) or 0);
-            						end;
-            						if sheet.isTempActive then
-            							efetivo = efetivo + (tonumber(sheet.temporarioDes) or 0);
-            						end;
-            						if sheet.isClasseActive then
-            							efetivo = efetivo + (tonumber(sheet.magiaDes) or 0);
-            						end;
-            						if sheet.isMagiaActive then
-            							efetivo = efetivo + (tonumber(sheet.classeDes) or 0);
-            						end;			
-            						sheet.realDes = real;
-            						sheet.efetDes = efetivo;
+            					local real = 	(tonumber(sheet.inicialDes) or 0) + 
+            									(tonumber(sheet.racaDes) or 0) + 
+            									(tonumber(sheet.nepDes) or 0) + 
+            									(tonumber(sheet.inerenteDes) or 0) + 
+            									(tonumber(sheet.tamanhoDes) or 0) + 
+            									(tonumber(sheet.outrosDes) or 0);
+            					local efetivo = real;
+            					if sheet.isMelhoriaActive then
+            						efetivo = efetivo + (tonumber(sheet.melhoriaDes) or 0);
             					end;
+            					if sheet.isDnTempActive then
+            						efetivo = efetivo + (tonumber(sheet.danoTempDes) or 0);
+            					end;
+            					if sheet.isDnPermActive then
+            						efetivo = efetivo + (tonumber(sheet.danoPermDes) or 0);
+            					end;
+            					if sheet.isTempActive then
+            						efetivo = efetivo + (tonumber(sheet.temporarioDes) or 0);
+            					end;
+            					if sheet.isClasseActive then
+            						efetivo = efetivo + (tonumber(sheet.magiaDes) or 0);
+            					end;
+            					if sheet.isMagiaActive then
+            						efetivo = efetivo + (tonumber(sheet.classeDes) or 0);
+            					end;			
+            					sheet.realDes = real;
+            					sheet.efetDes = efetivo;
+            				end;
         end, obj);
 
     obj._e_event2 = obj.dataLink6:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
-            						local real = 	(tonumber(sheet.inicialCon) or 0) + 
-            										(tonumber(sheet.racaCon) or 0) + 
-            										(tonumber(sheet.nepCon) or 0) + 
-            										(tonumber(sheet.inerenteCon) or 0) + 
-            										(tonumber(sheet.tamanhoCon) or 0) + 
-            										(tonumber(sheet.outrosCon) or 0);
-            						local efetivo = real;
-            						if sheet.isMelhoriaActive then
-            							efetivo = efetivo + (tonumber(sheet.melhoriaCon) or 0);
-            						end;
-            						if sheet.isDnTempActive then
-            							efetivo = efetivo + (tonumber(sheet.danoTempCon) or 0);
-            						end;
-            						if sheet.isDnPermActive then
-            							efetivo = efetivo + (tonumber(sheet.danoPermCon) or 0);
-            						end;
-            						if sheet.isTempActive then
-            							efetivo = efetivo + (tonumber(sheet.temporarioCon) or 0);
-            						end;
-            						if sheet.isClasseActive then
-            							efetivo = efetivo + (tonumber(sheet.magiaCon) or 0);
-            						end;
-            						if sheet.isMagiaActive then
-            							efetivo = efetivo + (tonumber(sheet.classeCon) or 0);
-            						end;			
-            						sheet.realCon = real;
-            						sheet.efetCon = efetivo;
+            					local real = 	(tonumber(sheet.inicialCon) or 0) + 
+            									(tonumber(sheet.racaCon) or 0) + 
+            									(tonumber(sheet.nepCon) or 0) + 
+            									(tonumber(sheet.inerenteCon) or 0) + 
+            									(tonumber(sheet.tamanhoCon) or 0) + 
+            									(tonumber(sheet.outrosCon) or 0);
+            					local efetivo = real;
+            					if sheet.isMelhoriaActive then
+            						efetivo = efetivo + (tonumber(sheet.melhoriaCon) or 0);
             					end;
+            					if sheet.isDnTempActive then
+            						efetivo = efetivo + (tonumber(sheet.danoTempCon) or 0);
+            					end;
+            					if sheet.isDnPermActive then
+            						efetivo = efetivo + (tonumber(sheet.danoPermCon) or 0);
+            					end;
+            					if sheet.isTempActive then
+            						efetivo = efetivo + (tonumber(sheet.temporarioCon) or 0);
+            					end;
+            					if sheet.isClasseActive then
+            						efetivo = efetivo + (tonumber(sheet.magiaCon) or 0);
+            					end;
+            					if sheet.isMagiaActive then
+            						efetivo = efetivo + (tonumber(sheet.classeCon) or 0);
+            					end;			
+            					sheet.realCon = real;
+            					sheet.efetCon = efetivo;
+            				end;
         end, obj);
 
     obj._e_event3 = obj.dataLink8:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
-            						local real = 	(tonumber(sheet.inicialInt) or 0) + 
-            										(tonumber(sheet.racaInt) or 0) + 
-            										(tonumber(sheet.nepInt) or 0) + 
-            										(tonumber(sheet.inerenteInt) or 0) + 
-            										(tonumber(sheet.tamanhoInt) or 0) + 
-            										(tonumber(sheet.outrosInt) or 0);
-            						local efetivo = real;
-            						if sheet.isMelhoriaActive then
-            							efetivo = efetivo + (tonumber(sheet.melhoriaInt) or 0);
-            						end;
-            						if sheet.isDnTempActive then
-            							efetivo = efetivo + (tonumber(sheet.danoTempInt) or 0);
-            						end;
-            						if sheet.isDnPermActive then
-            							efetivo = efetivo + (tonumber(sheet.danoPermInt) or 0);
-            						end;
-            						if sheet.isTempActive then
-            							efetivo = efetivo + (tonumber(sheet.temporarioInt) or 0);
-            						end;
-            						if sheet.isClasseActive then
-            							efetivo = efetivo + (tonumber(sheet.magiaInt) or 0);
-            						end;
-            						if sheet.isMagiaActive then
-            							efetivo = efetivo + (tonumber(sheet.classeInt) or 0);
-            						end;			
-            						sheet.realInt = real;
-            						sheet.efetInt = efetivo;
+            					local real = 	(tonumber(sheet.inicialInt) or 0) + 
+            									(tonumber(sheet.racaInt) or 0) + 
+            									(tonumber(sheet.nepInt) or 0) + 
+            									(tonumber(sheet.inerenteInt) or 0) + 
+            									(tonumber(sheet.tamanhoInt) or 0) + 
+            									(tonumber(sheet.outrosInt) or 0);
+            					local efetivo = real;
+            					if sheet.isMelhoriaActive then
+            						efetivo = efetivo + (tonumber(sheet.melhoriaInt) or 0);
             					end;
+            					if sheet.isDnTempActive then
+            						efetivo = efetivo + (tonumber(sheet.danoTempInt) or 0);
+            					end;
+            					if sheet.isDnPermActive then
+            						efetivo = efetivo + (tonumber(sheet.danoPermInt) or 0);
+            					end;
+            					if sheet.isTempActive then
+            						efetivo = efetivo + (tonumber(sheet.temporarioInt) or 0);
+            					end;
+            					if sheet.isClasseActive then
+            						efetivo = efetivo + (tonumber(sheet.magiaInt) or 0);
+            					end;
+            					if sheet.isMagiaActive then
+            						efetivo = efetivo + (tonumber(sheet.classeInt) or 0);
+            					end;			
+            					sheet.realInt = real;
+            					sheet.efetInt = efetivo;
+            				end;
         end, obj);
 
     obj._e_event4 = obj.dataLink10:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
-            						local real = 	(tonumber(sheet.inicialSab) or 0) + 
-            										(tonumber(sheet.racaSab) or 0) + 
-            										(tonumber(sheet.nepSab) or 0) + 
-            										(tonumber(sheet.inerenteSab) or 0) + 
-            										(tonumber(sheet.tamanhoSab) or 0) + 
-            										(tonumber(sheet.outrosSab) or 0);
-            						local efetivo = real;
-            						if sheet.isMelhoriaActive then
-            							efetivo = efetivo + (tonumber(sheet.melhoriaSab) or 0);
-            						end;
-            						if sheet.isDnTempActive then
-            							efetivo = efetivo + (tonumber(sheet.danoTempSab) or 0);
-            						end;
-            						if sheet.isDnPermActive then
-            							efetivo = efetivo + (tonumber(sheet.danoPermSab) or 0);
-            						end;
-            						if sheet.isTempActive then
-            							efetivo = efetivo + (tonumber(sheet.temporarioSab) or 0);
-            						end;
-            						if sheet.isClasseActive then
-            							efetivo = efetivo + (tonumber(sheet.magiaSab) or 0);
-            						end;
-            						if sheet.isMagiaActive then
-            							efetivo = efetivo + (tonumber(sheet.classeSab) or 0);
-            						end;			
-            						sheet.realSab = real;
-            						sheet.efetSab = efetivo;
+            					local real = 	(tonumber(sheet.inicialSab) or 0) + 
+            									(tonumber(sheet.racaSab) or 0) + 
+            									(tonumber(sheet.nepSab) or 0) + 
+            									(tonumber(sheet.inerenteSab) or 0) + 
+            									(tonumber(sheet.tamanhoSab) or 0) + 
+            									(tonumber(sheet.outrosSab) or 0);
+            					local efetivo = real;
+            					if sheet.isMelhoriaActive then
+            						efetivo = efetivo + (tonumber(sheet.melhoriaSab) or 0);
             					end;
+            					if sheet.isDnTempActive then
+            						efetivo = efetivo + (tonumber(sheet.danoTempSab) or 0);
+            					end;
+            					if sheet.isDnPermActive then
+            						efetivo = efetivo + (tonumber(sheet.danoPermSab) or 0);
+            					end;
+            					if sheet.isTempActive then
+            						efetivo = efetivo + (tonumber(sheet.temporarioSab) or 0);
+            					end;
+            					if sheet.isClasseActive then
+            						efetivo = efetivo + (tonumber(sheet.magiaSab) or 0);
+            					end;
+            					if sheet.isMagiaActive then
+            						efetivo = efetivo + (tonumber(sheet.classeSab) or 0);
+            					end;			
+            					sheet.realSab = real;
+            					sheet.efetSab = efetivo;
+            				end;
         end, obj);
 
     obj._e_event5 = obj.dataLink12:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
-            						local real = 	(tonumber(sheet.inicialCar) or 0) + 
-            										(tonumber(sheet.racaCar) or 0) + 
-            										(tonumber(sheet.nepCar) or 0) + 
-            										(tonumber(sheet.inerenteCar) or 0) + 
-            										(tonumber(sheet.tamanhoCar) or 0) + 
-            										(tonumber(sheet.outrosCar) or 0);
-            						local efetivo = real;
-            						if sheet.isMelhoriaActive then
-            							efetivo = efetivo + (tonumber(sheet.melhoriaCar) or 0);
-            						end;
-            						if sheet.isDnTempActive then
-            							efetivo = efetivo + (tonumber(sheet.danoTempCar) or 0);
-            						end;
-            						if sheet.isDnPermActive then
-            							efetivo = efetivo + (tonumber(sheet.danoPermCar) or 0);
-            						end;
-            						if sheet.isTempActive then
-            							efetivo = efetivo + (tonumber(sheet.temporarioCar) or 0);
-            						end;
-            						if sheet.isClasseActive then
-            							efetivo = efetivo + (tonumber(sheet.magiaCar) or 0);
-            						end;
-            						if sheet.isMagiaActive then
-            							efetivo = efetivo + (tonumber(sheet.classeCar) or 0);
-            						end;			
-            						sheet.realCar = real;
-            						sheet.efetCar = efetivo;
+            					local real = 	(tonumber(sheet.inicialCar) or 0) + 
+            									(tonumber(sheet.racaCar) or 0) + 
+            									(tonumber(sheet.nepCar) or 0) + 
+            									(tonumber(sheet.inerenteCar) or 0) + 
+            									(tonumber(sheet.tamanhoCar) or 0) + 
+            									(tonumber(sheet.outrosCar) or 0);
+            					local efetivo = real;
+            					if sheet.isMelhoriaActive then
+            						efetivo = efetivo + (tonumber(sheet.melhoriaCar) or 0);
             					end;
+            					if sheet.isDnTempActive then
+            						efetivo = efetivo + (tonumber(sheet.danoTempCar) or 0);
+            					end;
+            					if sheet.isDnPermActive then
+            						efetivo = efetivo + (tonumber(sheet.danoPermCar) or 0);
+            					end;
+            					if sheet.isTempActive then
+            						efetivo = efetivo + (tonumber(sheet.temporarioCar) or 0);
+            					end;
+            					if sheet.isClasseActive then
+            						efetivo = efetivo + (tonumber(sheet.magiaCar) or 0);
+            					end;
+            					if sheet.isMagiaActive then
+            						efetivo = efetivo + (tonumber(sheet.classeCar) or 0);
+            					end;			
+            					sheet.realCar = real;
+            					sheet.efetCar = efetivo;
+            				end;
         end, obj);
 
     obj._e_event6 = obj.dataLink13:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
-            						local tr = (tonumber(sheet.baseFort) or 0) + 
-            										(tonumber(sheet.atrModFort) or 0) + 
-            										(tonumber(sheet.magiaFort) or 0) + 
-            										(tonumber(sheet.variavelFort) or 0) + 
-            										(tonumber(sheet.temporarioFort) or 0) + 
-            										(tonumber(sheet.outrosFort) or 0);
-            						sheet.trFort = tr;
-            					end;
+            					local tr = (tonumber(sheet.baseFort) or 0) + 
+            									(tonumber(sheet.atrModFort) or 0) + 
+            									(tonumber(sheet.magiaFort) or 0) + 
+            									(tonumber(sheet.variavelFort) or 0) + 
+            									(tonumber(sheet.temporarioFort) or 0) + 
+            									(tonumber(sheet.outrosFort) or 0);
+            					sheet.trFort = tr;
+            				end;
         end, obj);
 
     obj._e_event7 = obj.dataLink14:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
-            						local tr = (tonumber(sheet.baseRef) or 0) + 
-            										(tonumber(sheet.atrModRef) or 0) + 
-            										(tonumber(sheet.magiaRef) or 0) + 
-            										(tonumber(sheet.variavelRef) or 0) + 
-            										(tonumber(sheet.temporarioRef) or 0) + 
-            										(tonumber(sheet.outrosRef) or 0);
-            						sheet.trRef = tr;
-            					end;
+            					local tr = (tonumber(sheet.baseRef) or 0) + 
+            									(tonumber(sheet.atrModRef) or 0) + 
+            									(tonumber(sheet.magiaRef) or 0) + 
+            									(tonumber(sheet.variavelRef) or 0) + 
+            									(tonumber(sheet.temporarioRef) or 0) + 
+            									(tonumber(sheet.outrosRef) or 0);
+            					sheet.trRef = tr;
+            				end;
         end, obj);
 
     obj._e_event8 = obj.dataLink15:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
-            						local tr = (tonumber(sheet.baseVon) or 0) + 
-            										(tonumber(sheet.atrModVon) or 0) + 
-            										(tonumber(sheet.magiaVon) or 0) + 
-            										(tonumber(sheet.variavelVon) or 0) + 
-            										(tonumber(sheet.temporarioVon) or 0) + 
-            										(tonumber(sheet.outrosVon) or 0);
-            						sheet.trVon = tr;
-            					end;
+            					local tr = (tonumber(sheet.baseVon) or 0) + 
+            									(tonumber(sheet.atrModVon) or 0) + 
+            									(tonumber(sheet.magiaVon) or 0) + 
+            									(tonumber(sheet.variavelVon) or 0) + 
+            									(tonumber(sheet.temporarioVon) or 0) + 
+            									(tonumber(sheet.outrosVon) or 0);
+            					sheet.trVon = tr;
+            				end;
         end, obj);
 
-    obj._e_event9 = obj.button1:addEventListener("onClick",
+    obj._e_event9 = obj.xpAtualLabel:addEventListener("onClick",
         function (_)
-            local mod = (getNumber(sheet.xpAtual) or 0) + (getNumber(sheet.xpNova) or 0);
+            self.xpAtualLabel.visible = false;
+            				self.xpAtualEdit.visible = true;
+            				self.xpAtualEdit:setFocus();
+        end, obj);
+
+    obj._e_event10 = obj.xpAtualEdit:addEventListener("onExit",
+        function (_)
+            self.xpAtualLabel.visible = true;
+            				self.xpAtualEdit.visible = false;
+        end, obj);
+
+    obj._e_event11 = obj.button1:addEventListener("onClick",
+        function (_)
+            local xp = (tonumber(sheet.xpAtual) or 0) + (tonumber(sheet.xpNova) or 0);
             						
-            						while true do  
-            							mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
-            							if (k==0) then
-            							  break
-            							end
-            						end
-            						mod = string.gsub(mod, ",", ".");
-            						
-            						sheet.xpAtual = mod .. "XP";
+            						sheet.xpAtual = xp;
             						sheet.xpNova = "0";
         end, obj);
 
-    obj._e_event10 = obj.dataLink16:addEventListener("onChange",
+    obj._e_event12 = obj.dataLink16:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             						if sheet.xpAtual == nil then
@@ -6325,139 +6355,139 @@ local function constructNew_frmFichaRPGmeister1_svg()
             					end;
         end, obj);
 
-    obj._e_event11 = obj.button2:addEventListener("onClick",
+    obj._e_event13 = obj.button2:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModFor) or 0);
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Força de " .. (sheet.nome or "NOME"));
+            				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Força de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event12 = obj.dataLink17:addEventListener("onChange",
+    obj._e_event14 = obj.dataLink17:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            						sheet.realModFor = getMOD(sheet.realFor);  
-            					end;
+            					sheet.realModFor = getMOD(sheet.realFor);  
+            				end;
         end, obj);
 
-    obj._e_event13 = obj.dataLink18:addEventListener("onChange",
+    obj._e_event15 = obj.dataLink18:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            						sheet.efetModFor = getMOD(sheet.efetFor);
-            						updateAtributes(1);
-            					end;
+            					sheet.efetModFor = getMOD(sheet.efetFor);
+            					updateAtributes(1);
+            				end;
         end, obj);
 
-    obj._e_event14 = obj.button3:addEventListener("onClick",
+    obj._e_event16 = obj.button3:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModDes) or 0);
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Destreza de " .. (sheet.nome or "NOME"));
+            				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Destreza de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event15 = obj.dataLink19:addEventListener("onChange",
+    obj._e_event17 = obj.dataLink19:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            						sheet.realModDes = getMOD(sheet.realDes);  
-            					end;
+            					sheet.realModDes = getMOD(sheet.realDes);  
+            				end;
         end, obj);
 
-    obj._e_event16 = obj.dataLink20:addEventListener("onChange",
+    obj._e_event18 = obj.dataLink20:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            						sheet.efetModDes = getMOD(sheet.efetDes);
-            						updateAtributes(2);
-            					end;
+            					sheet.efetModDes = getMOD(sheet.efetDes);
+            					updateAtributes(2);
+            				end;
         end, obj);
 
-    obj._e_event17 = obj.button4:addEventListener("onClick",
+    obj._e_event19 = obj.button4:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModCon) or 0);
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Constituição de " .. (sheet.nome or "NOME"));
+            				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Constituição de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event18 = obj.dataLink21:addEventListener("onChange",
+    obj._e_event20 = obj.dataLink21:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            						sheet.realModCon = getMOD(sheet.realCon);  
-            					end;
+            					sheet.realModCon = getMOD(sheet.realCon);  
+            				end;
         end, obj);
 
-    obj._e_event19 = obj.dataLink22:addEventListener("onChange",
+    obj._e_event21 = obj.dataLink22:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            						sheet.efetModCon = getMOD(sheet.efetCon);
-            						updateAtributes(3);
-            					end;
+            					sheet.efetModCon = getMOD(sheet.efetCon);
+            					updateAtributes(3);
+            				end;
         end, obj);
 
-    obj._e_event20 = obj.button5:addEventListener("onClick",
+    obj._e_event22 = obj.button5:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModInt) or 0);
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Inteligência de " .. (sheet.nome or "NOME"));
+            				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Inteligência de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event21 = obj.dataLink23:addEventListener("onChange",
+    obj._e_event23 = obj.dataLink23:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            						sheet.realModInt = getMOD(sheet.realInt);  
-            					end;
+            					sheet.realModInt = getMOD(sheet.realInt);  
+            				end;
         end, obj);
 
-    obj._e_event22 = obj.dataLink24:addEventListener("onChange",
+    obj._e_event24 = obj.dataLink24:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            						sheet.efetModInt = getMOD(sheet.efetInt);
-            						updateAtributes(4);
-            					end;
+            					sheet.efetModInt = getMOD(sheet.efetInt);
+            					updateAtributes(4);
+            				end;
         end, obj);
 
-    obj._e_event23 = obj.button6:addEventListener("onClick",
+    obj._e_event25 = obj.button6:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModSab) or 0);
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Sabedoria de " .. (sheet.nome or "NOME"));
+            				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Sabedoria de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event24 = obj.dataLink25:addEventListener("onChange",
+    obj._e_event26 = obj.dataLink25:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            						sheet.realModSab = getMOD(sheet.realSab);  
-            					end;
+            					sheet.realModSab = getMOD(sheet.realSab);  
+            				end;
         end, obj);
 
-    obj._e_event25 = obj.dataLink26:addEventListener("onChange",
+    obj._e_event27 = obj.dataLink26:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            						sheet.efetModSab = getMOD(sheet.efetSab);
-            						updateAtributes(5);
-            					end;
+            					sheet.efetModSab = getMOD(sheet.efetSab);
+            					updateAtributes(5);
+            				end;
         end, obj);
 
-    obj._e_event26 = obj.button7:addEventListener("onClick",
+    obj._e_event28 = obj.button7:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModCar) or 0);
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Carisma de " .. (sheet.nome or "NOME"));
+            				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Carisma de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event27 = obj.dataLink27:addEventListener("onChange",
+    obj._e_event29 = obj.dataLink27:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            						sheet.realModCar = getMOD(sheet.realCar);  
-            					end;
+            					sheet.realModCar = getMOD(sheet.realCar);  
+            				end;
         end, obj);
 
-    obj._e_event28 = obj.dataLink28:addEventListener("onChange",
+    obj._e_event30 = obj.dataLink28:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
-            						sheet.efetModCar = getMOD(sheet.efetCar);
-            						updateAtributes(6);
-            					end;
+            					sheet.efetModCar = getMOD(sheet.efetCar);
+            					updateAtributes(6);
+            				end;
         end, obj);
 
-    obj._e_event29 = obj.AtrBut:addEventListener("onClick",
+    obj._e_event31 = obj.AtrBut:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popAtributo");
             				
@@ -6469,79 +6499,79 @@ local function constructNew_frmFichaRPGmeister1_svg()
             					end;
         end, obj);
 
-    obj._e_event30 = obj.dataLink29:addEventListener("onChange",
+    obj._e_event32 = obj.dataLink29:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslTerrestre ~= nil then
             
-            						local mod = sheet.deslTerrestre;
-            						mod = string.gsub(mod, "m", "");
-            						mod = string.gsub(mod, ",", ".");
+            					local mod = sheet.deslTerrestre;
+            					mod = string.gsub(mod, "m", "");
+            					mod = string.gsub(mod, ",", ".");
             
-            						mod = math.floor((tonumber(mod) or 0) / 1.5);
-            						sheet.deslTerrestreQuadrados = mod .. "q";
-            					end;
+            					mod = math.floor((tonumber(mod) or 0) / 1.5);
+            					sheet.deslTerrestreQuadrados = mod .. "q";
+            				end;
         end, obj);
 
-    obj._e_event31 = obj.dataLink30:addEventListener("onChange",
+    obj._e_event33 = obj.dataLink30:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslVoo ~= nil then
             
-            						local mod = sheet.deslVoo;
-            						mod = string.gsub(mod, "m", "");
-            						mod = string.gsub(mod, ",", ".");
+            					local mod = sheet.deslVoo;
+            					mod = string.gsub(mod, "m", "");
+            					mod = string.gsub(mod, ",", ".");
             
-            						mod = math.floor((tonumber(mod) or 0) / 1.5);
-            						sheet.deslVooQuadrados = mod .. "q";
-            					end;
+            					mod = math.floor((tonumber(mod) or 0) / 1.5);
+            					sheet.deslVooQuadrados = mod .. "q";
+            				end;
         end, obj);
 
-    obj._e_event32 = obj.dataLink31:addEventListener("onChange",
+    obj._e_event34 = obj.dataLink31:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslNatacao ~= nil then
             
-            						local mod = sheet.deslNatacao;
-            						mod = string.gsub(mod, "m", "");
-            						mod = string.gsub(mod, ",", ".");
+            					local mod = sheet.deslNatacao;
+            					mod = string.gsub(mod, "m", "");
+            					mod = string.gsub(mod, ",", ".");
             
-            						mod = math.floor((tonumber(mod) or 0) / 1.5);
-            						sheet.deslNatacaoQuadrados = mod .. "q";
-            					end;
+            					mod = math.floor((tonumber(mod) or 0) / 1.5);
+            					sheet.deslNatacaoQuadrados = mod .. "q";
+            				end;
         end, obj);
 
-    obj._e_event33 = obj.dataLink32:addEventListener("onChange",
+    obj._e_event35 = obj.dataLink32:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslEscalar ~= nil then
             
-            						local mod = sheet.deslEscalar;
-            						mod = string.gsub(mod, "m", "");
-            						mod = string.gsub(mod, ",", ".");
+            					local mod = sheet.deslEscalar;
+            					mod = string.gsub(mod, "m", "");
+            					mod = string.gsub(mod, ",", ".");
             
-            						mod = math.floor((tonumber(mod) or 0) / 1.5);
-            						sheet.deslEscalarQuadrados = mod .. "q";
-            					end;
+            					mod = math.floor((tonumber(mod) or 0) / 1.5);
+            					sheet.deslEscalarQuadrados = mod .. "q";
+            				end;
         end, obj);
 
-    obj._e_event34 = obj.dataLink33:addEventListener("onChange",
+    obj._e_event36 = obj.dataLink33:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil and sheet.deslEscavar ~= nil then
             
-            						local mod = sheet.deslEscavar;
-            						mod = string.gsub(mod, "m", "");
-            						mod = string.gsub(mod, ",", ".");
+            					local mod = sheet.deslEscavar;
+            					mod = string.gsub(mod, "m", "");
+            					mod = string.gsub(mod, ",", ".");
             
-            						mod = math.floor((tonumber(mod) or 0) / 1.5);
-            						sheet.deslEscavarQuadrados = mod .. "q";
-            					end;
+            					mod = math.floor((tonumber(mod) or 0) / 1.5);
+            					sheet.deslEscavarQuadrados = mod .. "q";
+            				end;
         end, obj);
 
-    obj._e_event35 = obj.button8:addEventListener("onClick",
+    obj._e_event37 = obj.button8:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.iniciativa or "+0"));
             					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
-    obj._e_event36 = obj.dataLink34:addEventListener("onChange",
+    obj._e_event38 = obj.dataLink34:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             						local mod = (tonumber(sheet.efetModDes) or 0) + (tonumber(sheet.iniVariado) or 0);
@@ -6552,14 +6582,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
             					end;
         end, obj);
 
-    obj._e_event37 = obj.button9:addEventListener("onClick",
+    obj._e_event39 = obj.button9:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d100");
             						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Falha Arcana (" .. (sheet.falha or "0%").. ") de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event38 = obj.caDetails:addEventListener("onClick",
+    obj._e_event40 = obj.caDetails:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popCA");
             					
@@ -6571,7 +6601,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             					end;
         end, obj);
 
-    obj._e_event39 = obj.dataLink35:addEventListener("onChange",
+    obj._e_event41 = obj.dataLink35:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             						local armaduraCa = (tonumber(sheet.armaduraCa) or 0);
@@ -6662,7 +6692,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             					end;
         end, obj);
 
-    obj._e_event40 = obj.dataLink37:addEventListener("onChange",
+    obj._e_event42 = obj.dataLink37:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~=nil then
             						sheet.penalidade = (tonumber(sheet.equipamentoCorpoPen) or 0) + (tonumber(sheet.escudoPEn) or 0);
@@ -6670,7 +6700,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             					end;
         end, obj);
 
-    obj._e_event41 = obj.dataLink38:addEventListener("onChange",
+    obj._e_event43 = obj.dataLink38:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~=nil then
             						local equipamentoCorpoFalha = sheet.equipamentoCorpoFalha;
@@ -6687,7 +6717,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             					end;
         end, obj);
 
-    obj._e_event42 = obj.button10:addEventListener("onClick",
+    obj._e_event44 = obj.button10:addEventListener("onClick",
         function (_)
             local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					sheet.modificador = sheet.modificador or 0;
@@ -6714,12 +6744,12 @@ local function constructNew_frmFichaRPGmeister1_svg()
             						end);
         end, obj);
 
-    obj._e_event43 = obj.button11:addEventListener("onClick",
+    obj._e_event45 = obj.button11:addEventListener("onClick",
         function (_)
             caSecreta();
         end, obj);
 
-    obj._e_event44 = obj.edit143:addEventListener("onChange",
+    obj._e_event46 = obj.edit142:addEventListener("onChange",
         function (_)
             if sheet~= nil then
             						local bba = tonumber(sheet.bba) or 0;
@@ -6734,14 +6764,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
             					end;
         end, obj);
 
-    obj._e_event45 = obj.button12:addEventListener("onClick",
+    obj._e_event47 = obj.button12:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 + " .. (sheet.agarrar or "0"));
             						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Agarrar de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event46 = obj.GrappleBt:addEventListener("onClick",
+    obj._e_event48 = obj.GrappleBt:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popGrapple");
             					
@@ -6753,7 +6783,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             						end;
         end, obj);
 
-    obj._e_event47 = obj.dataLink39:addEventListener("onChange",
+    obj._e_event49 = obj.dataLink39:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             							local agarrar = (tonumber(sheet.bba) or 0) + 
@@ -6764,28 +6794,28 @@ local function constructNew_frmFichaRPGmeister1_svg()
             						end;
         end, obj);
 
-    obj._e_event48 = obj.button13:addEventListener("onClick",
+    obj._e_event50 = obj.button13:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 +" .. (sheet.trFort) or "0");
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Fortitude de " .. (sheet.nome or "NOME"));
+            				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Fortitude de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event49 = obj.button14:addEventListener("onClick",
+    obj._e_event51 = obj.button14:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 +" .. (sheet.trRef) or "0");
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Reflexos de " .. (sheet.nome or "NOME"));
+            				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Reflexos de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event50 = obj.button15:addEventListener("onClick",
+    obj._e_event52 = obj.button15:addEventListener("onClick",
         function (_)
             local rolagem = Firecast.interpretarRolagem("1d20 +" .. (sheet.trVon) or "0");
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Vontade de " .. (sheet.nome or "NOME"));
+            				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Vontade de " .. (sheet.nome or "NOME"));
         end, obj);
 
-    obj._e_event51 = obj.dataLink43:addEventListener("onChange",
+    obj._e_event53 = obj.dataLink43:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet ~= nil then
             						local atrModFort = 0;
@@ -6846,7 +6876,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
             					end;
         end, obj);
 
-    obj._e_event52 = obj.TrBut:addEventListener("onClick",
+    obj._e_event54 = obj.TrBut:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popResistencia");
             				
@@ -6858,12 +6888,14 @@ local function constructNew_frmFichaRPGmeister1_svg()
             					end;
         end, obj);
 
-    obj._e_event53 = obj.image1:addEventListener("onStartDrag",
+    obj._e_event55 = obj.image1:addEventListener("onStartDrag",
         function (_, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event55);
+        __o_rrpgObjs.removeEventListenerById(self._e_event54);
         __o_rrpgObjs.removeEventListenerById(self._e_event53);
         __o_rrpgObjs.removeEventListenerById(self._e_event52);
         __o_rrpgObjs.removeEventListenerById(self._e_event51);
@@ -7198,6 +7230,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label42 ~= nil then self.label42:destroy(); self.label42 = nil; end;
         if self.checkBox14 ~= nil then self.checkBox14:destroy(); self.checkBox14 = nil; end;
+        if self.xpAtualEdit ~= nil then self.xpAtualEdit:destroy(); self.xpAtualEdit = nil; end;
         if self.flowPart162 ~= nil then self.flowPart162:destroy(); self.flowPart162 = nil; end;
         if self.rectangle20 ~= nil then self.rectangle20:destroy(); self.rectangle20 = nil; end;
         if self.edit133 ~= nil then self.edit133:destroy(); self.edit133 = nil; end;
@@ -7267,8 +7300,8 @@ local function constructNew_frmFichaRPGmeister1_svg()
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.flowPart85 ~= nil then self.flowPart85:destroy(); self.flowPart85 = nil; end;
         if self.label84 ~= nil then self.label84:destroy(); self.label84 = nil; end;
-        if self.edit135 ~= nil then self.edit135:destroy(); self.edit135 = nil; end;
         if self.label124 ~= nil then self.label124:destroy(); self.label124 = nil; end;
+        if self.edit135 ~= nil then self.edit135:destroy(); self.edit135 = nil; end;
         if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
         if self.dataLink38 ~= nil then self.dataLink38:destroy(); self.dataLink38 = nil; end;
         if self.edit102 ~= nil then self.edit102:destroy(); self.edit102 = nil; end;
@@ -7320,6 +7353,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
         if self.alvo2 ~= nil then self.alvo2:destroy(); self.alvo2 = nil; end;
         if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
+        if self.label144 ~= nil then self.label144:destroy(); self.label144 = nil; end;
         if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
         if self.checkBox7 ~= nil then self.checkBox7:destroy(); self.checkBox7 = nil; end;
         if self.label59 ~= nil then self.label59:destroy(); self.label59 = nil; end;
@@ -7392,6 +7426,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
         if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
         if self.layout20 ~= nil then self.layout20:destroy(); self.layout20 = nil; end;
         if self.layout18 ~= nil then self.layout18:destroy(); self.layout18 = nil; end;
+        if self.xpAtualLabel ~= nil then self.xpAtualLabel:destroy(); self.xpAtualLabel = nil; end;
         if self.label56 ~= nil then self.label56:destroy(); self.label56 = nil; end;
         if self.flowPart29 ~= nil then self.flowPart29:destroy(); self.flowPart29 = nil; end;
         if self.flowPart197 ~= nil then self.flowPart197:destroy(); self.flowPart197 = nil; end;
@@ -7413,7 +7448,6 @@ local function constructNew_frmFichaRPGmeister1_svg()
         if self.checkBox24 ~= nil then self.checkBox24:destroy(); self.checkBox24 = nil; end;
         if self.label130 ~= nil then self.label130:destroy(); self.label130 = nil; end;
         if self.flowPart23 ~= nil then self.flowPart23:destroy(); self.flowPart23 = nil; end;
-        if self.edit143 ~= nil then self.edit143:destroy(); self.edit143 = nil; end;
         if self.edit105 ~= nil then self.edit105:destroy(); self.edit105 = nil; end;
         if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
         if self.flowPart186 ~= nil then self.flowPart186:destroy(); self.flowPart186 = nil; end;

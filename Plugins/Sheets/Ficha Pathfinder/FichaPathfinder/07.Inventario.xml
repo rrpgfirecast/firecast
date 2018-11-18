@@ -1,7 +1,57 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister7_svg" align="client" theme="dark" margins="{top=1}">
-	<scrollBox align="client">
+	<template name="smallInventory">
+		<rectangle align="client" color="black"/>
+		<label left="5" top="1" width="150" height="20" text="$(title)"/>
+		
+		<textEditor left="5" top="25" width="190" height="165" field="$(field)"/>
+		
+		<label left="5" top="195" width="50" height="20" text="Kg"/>
+		<formatEdit left="25" top="195" width="70" height="20" field="peso$(field2)" unit="Kg"/>
+		<label left="105" top="195" width="50" height="20" text="$"/>
+		<formatEdit left="120" top="195" width="70" height="20" field="preco$(field2)" unit="PO"/>
+	</template>
+	<template name="weaponInfoField">
+		<flowPart minWidth="290" maxWidth="300" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="weaponInfoFieldSmallCenter">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="weaponInfoFieldSmall">
+		<flowPart minWidth="90" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<popup name="popArma" width="300" height="400" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+			<weaponInfoFieldSmall text="NOME" field="batismo" hint="Se a arma possui um nome de batismo ponha ele aqui."/>
+			<weaponInfoFieldSmall text="ARMA" field="arma" hint="Qual a arma? Espada Longa? Machado de Batalha? Arco Longo?"/>
+			<weaponInfoFieldSmall text="TAMANHO" field="tamanho" hint="Essa arma foi feita para um personagem de que tamanho? Médio? Pequeno? Grande?"/>
+			<weaponInfoFieldSmall text="MATERIAL" field="material" hint="Essa arma foi feita de um material especial? Adamante? Prata?"/>
+			<weaponInfoFieldSmallCenter text="QUALIDADE" field="qualidade" hint="Essa arma é Obra-Prima? +1? +2?"/>
+			<weaponInfoFieldSmall text="CATEGORIA" field="categoria" hint="Essa arma é Simples? Comum? Exotica?"/>
+			<weaponInfoFieldSmallCenter text="DANO" field="dano" hint="Qual o dado de dano dessa arma?"/>
+			<weaponInfoFieldSmallCenter text="DECISIVO" field="decisivo" hint="Quando a margem de ameaça dessa arma?20? 19-20?"/>
+			<weaponInfoFieldSmallCenter text="MULTIPLICADOR" field="multiplicador" hint="Em um decisivo por quanto é multiplicado o dano dessa arma?"/>
+			<weaponInfoFieldSmall text="ALCANCE" field="alcance" hint="Qual o alcance em metros da arma? Normalmente usado apenas em armas de ataque a distancia. "/>
+			<weaponInfoFieldSmall text="ESPECIAL" field="especial" hint="Essa arma tem efeitos especiais? Pode ser usada em derrubar? desarmar? Pode ser preparada contra investida?"/>
+			<weaponInfoFieldSmall text="TIPO" field="tipo" hint="Qual o tipo de dano que essa arma causa? Concusivo? Cortante?"/>
+			<weaponInfoField text="EFEITOS" field="efeitos" hint="Essa arma tem efeitos mágicos? Flamejante? Vorpal?"/>
+			<weaponInfoFieldSmallCenter text="CA" field="ca" hint="Para escudos: qual o bonus que ele fornece na CA?"/>
+			<weaponInfoFieldSmallCenter text="PEN" field="penalidade" hint="Para escudos: qual a penalidade do escudo?"/>
+			<weaponInfoFieldSmallCenter text="FALHA" field="falha" hint="Para escudos: qual a falha arcana?"/>
+		</flowLayout>
+		<textEditor align="client" field="descricao" class=""/>
+		</popup>
 
+	<scrollBox align="client">
 		<layout left="0" top="0" width="475" height="330">
 			<rectangle align="client" color="black"/>
 
@@ -26,22 +76,10 @@
 			<label left="5" top="1" width="200" height="20" text="MOCHILA"/>
 			<textEditor left="5" top="25" width="465" height="280" field="mochila"/>
 			<label left="280" top="310" width="50" height="20" text="Kg"/>
-			<edit vertTextAlign="center" horzTextAlign="center" left="300" top="310" width="70" height="20" field="pesoMochila"/>
+			<formatEdit left="300" top="310" width="70" height="20" field="pesoMochila" unit="Kg"/>
 			<label left="380" top="310" width="50" height="20" text="$"/>
-			<edit vertTextAlign="center" horzTextAlign="center" left="395" top="310" width="71" height="20" field="precoMochila"/>
+			<formatEdit left="395" top="310" width="71" height="20" field="precoMochila" unit="PO"/>
 		</layout>
-
-		<template name="smallInventory">
-			<rectangle align="client" color="black"/>
-			<label left="5" top="1" width="150" height="20" text="$(title)"/>
-			
-			<textEditor left="5" top="25" width="190" height="165" field="$(field)"/>
-			
-			<label left="5" top="195" width="50" height="20" text="Kg"/>
-			<edit vertTextAlign="center" horzTextAlign="center" left="25" top="195" width="70" height="20" field="peso$(field2)"/>
-			<label left="105" top="195" width="50" height="20" text="$"/>
-			<edit vertTextAlign="center" horzTextAlign="center" left="120" top="195" width="70" height="20" field="preco$(field2)"/>
-		</template>
 		
 		<layout left="480" top="0" width="200" height="220">
 			<smallInventory title="PERMANENCIAS" field="permanencias" field2="Permanencias"/>
@@ -74,7 +112,7 @@
 			<textEditor left="5" top="25" width="145" height="80" field="dinheiro"/>
 
 			<label left="10" top="110" width="50" height="20" text="TOTAL"/>
-			<edit field="dinheiroTotal"  left="65" top="110" width="85" height="20" fontSize="11"/>
+			<formatEdit left="65" top="110" width="85" height="20" field="dinheiroTotal" unit="PO"/>
 
 			<label left="10" top="135" width="50" height="20" text="GASTOS"/>
 			<rectangle left="65" top="135" width="85" height="20" color="black" strokeColor="white" strokeSize="1"/>
@@ -84,31 +122,6 @@
 			<rectangle left="65" top="160" width="85" height="20" color="black" strokeColor="white" strokeSize="1"/>
 			<label field="dinheiroRestante" text="0" left="65" top="160" width="85" height="20" horzTextAlign="center" fontSize="11" formatFloat=",0.## PO"/>
 		</layout>
-		<dataLink fields="{'precoEquipamento', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal', 'precoCorpo2', 'precoTesta'}">
-			<event name="onChange">
-				if sheet~= nil then
-
-					-- Calculando todos gastos
-					local gastos = (tonumber(sheet.precoEquipamento) or 0) +
-									(tonumber(sheet.precoArmas) or 0) +
-									(getNumber(sheet.precoMochila) or 0) +
-									(getNumber(sheet.precoPermanencias) or 0) +
-									(getNumber(sheet.precoLivres) or 0) +
-									(getNumber(sheet.precoOutros) or 0) +
-									(getNumber(sheet.precoMunicoes) or 0) +
-									(getNumber(sheet.precoBolsos) or 0) +
-									(getNumber(sheet.precoImoveis) or 0) +
-									(getNumber(sheet.precoInventorioComp) or 0);
-
-					-- Calculando dinheiro restante
-					local total = getNumber(sheet.dinheiroTotal) or 0;
-					local restante = total - gastos;
-
-					sheet.gastos = gastos;
-					sheet.dinheiroRestante = restante;
-				end;
-			</event>
-		</dataLink>
 
 		<layout left="1050" top="485" width="155" height="185">
 			<rectangle align="client" color="black"/>
@@ -139,6 +152,7 @@
 			<label left="20" top="160" width="65" height="20" text="ATUAL"/>
 			<label field="cargaAtual" width="70" height="20" left="80" top="160" horzTextAlign="center" fontColor="white"  formatFloat=",0.## Kg"/>
 		</layout>
+		
 		<dataLink field="cargaPesada">
 			<event name="onChange">
 				if sheet~= nil then
@@ -150,61 +164,46 @@
 				end;
 			</event>
 		</dataLink>
+		<dataLink fields="{'precoEquipamento', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal', 'precoCorpo2', 'precoTesta'}">
+			<event name="onChange">
+				if sheet~= nil then
+
+					-- Calculando todos gastos
+					local gastos = (tonumber(sheet.precoEquipamento) or 0) +
+									(tonumber(sheet.precoArmas) or 0) +
+									(tonumber(sheet.precoMochila) or 0) +
+									(tonumber(sheet.precoPermanencias) or 0) +
+									(tonumber(sheet.precoLivres) or 0) +
+									(tonumber(sheet.precoOutros) or 0) +
+									(tonumber(sheet.precoMunicoes) or 0) +
+									(tonumber(sheet.precoBolsos) or 0) +
+									(tonumber(sheet.precoImoveis) or 0) +
+									(tonumber(sheet.precoInventorioComp) or 0);
+
+					-- Calculando dinheiro restante
+					local total = tonumber(sheet.dinheiroTotal) or 0;
+					local restante = total - gastos;
+
+					sheet.gastos = gastos;
+					sheet.dinheiroRestante = restante;
+				end;
+			</event>
+		</dataLink>
 		<dataLink fields="{'pesoEquipamento', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp', 'pesoTesta', 'pesoCorpo2'}">
 			<event name="onChange">
 				if sheet~=nil then
 					local carga = (tonumber(sheet.pesoEquipamento) or 0) +
 								(tonumber(sheet.pesoArmas) or 0) +
-								(getNumber(sheet.pesoMochila) or 0) +
-								(getNumber(sheet.pesoPermanencias) or 0) +
-								(getNumber(sheet.pesoLivres) or 0) +
-								(getNumber(sheet.pesoOutros) or 0) +
-								(getNumber(sheet.pesoMunicoes) or 0) +
-								(getNumber(sheet.pesoBolsos) or 0) +
-								(getNumber(sheet.pesoImoveis) or 0);
+								(tonumber(sheet.pesoMochila) or 0) +
+								(tonumber(sheet.pesoPermanencias) or 0) +
+								(tonumber(sheet.pesoLivres) or 0) +
+								(tonumber(sheet.pesoOutros) or 0) +
+								(tonumber(sheet.pesoMunicoes) or 0) +
+								(tonumber(sheet.pesoBolsos) or 0) +
+								(tonumber(sheet.pesoImoveis) or 0);
 					sheet.cargaAtual = carga;
 				end;
 			</event>
 		</dataLink>
-		<template name="weaponInfoField">
-			<flowPart minWidth="290" maxWidth="300" height="35">
-				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
-				<edit align="client" class="" field="$(field)" fontSize="12"/>
-			</flowPart>
-		</template>
-		<template name="weaponInfoFieldSmallCenter">
-			<flowPart minWidth="90" maxWidth="100" height="35">
-				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
-				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
-			</flowPart>
-		</template>
-		<template name="weaponInfoFieldSmall">
-			<flowPart minWidth="90" maxWidth="100" height="35">
-				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
-				<edit align="client" class="" field="$(field)" fontSize="12"/>
-			</flowPart>
-		</template>
-		<popup name="popArma" width="300" height="400" backOpacity="0.4" autoScopeNode="false">
-			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
-				<weaponInfoFieldSmall text="NOME" field="batismo" hint="Se a arma possui um nome de batismo ponha ele aqui."/>
-				<weaponInfoFieldSmall text="ARMA" field="arma" hint="Qual a arma? Espada Longa? Machado de Batalha? Arco Longo?"/>
-				<weaponInfoFieldSmall text="TAMANHO" field="tamanho" hint="Essa arma foi feita para um personagem de que tamanho? Médio? Pequeno? Grande?"/>
-				<weaponInfoFieldSmall text="MATERIAL" field="material" hint="Essa arma foi feita de um material especial? Adamante? Prata?"/>
-				<weaponInfoFieldSmallCenter text="QUALIDADE" field="qualidade" hint="Essa arma é Obra-Prima? +1? +2?"/>
-				<weaponInfoFieldSmall text="CATEGORIA" field="categoria" hint="Essa arma é Simples? Comum? Exotica?"/>
-				<weaponInfoFieldSmallCenter text="DANO" field="dano" hint="Qual o dado de dano dessa arma?"/>
-				<weaponInfoFieldSmallCenter text="DECISIVO" field="decisivo" hint="Quando a margem de ameaça dessa arma?20? 19-20?"/>
-				<weaponInfoFieldSmallCenter text="MULTIPLICADOR" field="multiplicador" hint="Em um decisivo por quanto é multiplicado o dano dessa arma?"/>
-				<weaponInfoFieldSmall text="ALCANCE" field="alcance" hint="Qual o alcance em metros da arma? Normalmente usado apenas em armas de ataque a distancia. "/>
-				<weaponInfoFieldSmall text="ESPECIAL" field="especial" hint="Essa arma tem efeitos especiais? Pode ser usada em derrubar? desarmar? Pode ser preparada contra investida?"/>
-				<weaponInfoFieldSmall text="TIPO" field="tipo" hint="Qual o tipo de dano que essa arma causa? Concusivo? Cortante?"/>
-				<weaponInfoField text="EFEITOS" field="efeitos" hint="Essa arma tem efeitos mágicos? Flamejante? Vorpal?"/>
-				<weaponInfoFieldSmallCenter text="CA" field="ca" hint="Para escudos: qual o bonus que ele fornece na CA?"/>
-				<weaponInfoFieldSmallCenter text="PEN" field="penalidade" hint="Para escudos: qual a penalidade do escudo?"/>
-				<weaponInfoFieldSmallCenter text="FALHA" field="falha" hint="Para escudos: qual a falha arcana?"/>
-			</flowLayout>
-			<textEditor align="client" field="descricao" class=""/>
-		</popup>
-
 	</scrollBox>
 </form>

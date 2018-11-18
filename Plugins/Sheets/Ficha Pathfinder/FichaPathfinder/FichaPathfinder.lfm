@@ -68,7 +68,7 @@
             </tabControl>
         </tab>
         <tab title="Inventario">
-            <import file="07.Inventario.lfm"/>
+            <import file="07.Inventario.xml"/>
         </tab>
 		<tab title="Companheiro">
             <import file="08.Companheiro.lfm"/>

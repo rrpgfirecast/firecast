@@ -1,5 +1,95 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister6E_svg" align="client" theme="dark" margins="{top=1}">
+	<popup name="BarPopup" width="140" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}" autoScopeNode="false">
+		<rectangle align="client" color="white" xradius="5" yradius="5">
+			<rectangle align="client" name="PopupBarColor" color="#808080" xradius="5" yradius="5" opacity="0.9">
+				<label fontColor="black" margins="{left=6, top=2}" align="top" text="Valor" field="AtributoBarrinha" fontSize="12" fontStyle="bold" textTrimming="character"/>
+				<layout align="client" margins="{top=2, left=4}">
+					<layout align="top" height="18">
+						<label fontColor="black" align="left" text="Atual:  " horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+						<comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinha" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
+						<edit fontColor="white" margins="{left=2, right=4}" type="number" align="client" field="ValorMudadoAtualBarrinha" name="currentBarValue">
+							<event name="OnKeyDown">
+								local oenter = (event.keyCode == 13)
+								if oenter then
+									self.BarPopup:close();
+								end;
+							</event>
+						</edit>
+					</layout>
+					<layout align="top" height="18">
+						<label fontColor="black" align="left" text="Max:  " horzTextAlign="trailing" width="34" margins="{right=2}" fontSize="12"/>
+						<comboBox fontColor="white" margins="{left=2}" align="left" transparent="false" width="40" field="ModificadorBarrinhaMax" items="{'=', '+', '-'}" values="{'igual', 'mais', 'menos'}" value="igual"/>
+						<edit fontColor="white" margins="{left=2, right=4}" type="number" align="client" field="ValorMudadoMaxBarrinha" name="maxBarValue">
+							<event name="OnKeyDown">
+								local oenter = (event.keyCode == 13);
+								if oenter then
+									self.BarPopup:close();
+								end;
+							</event>
+						</edit>
+					</layout>
+				</layout>
+			</rectangle>
+		</rectangle>
+		
+		<event name="onClose">
+			setTimeout( function()
+				if (self.BarPopup.scopeNode.ModificadorBarrinha == "igual") then
+					self.BarPopup.scopeNode.ValorTempAtualBarrinha = tonumber(self.BarPopup.scopeNode.ValorMudadoAtualBarrinha or 0);
+				elseif (self.BarPopup.scopeNode.ModificadorBarrinha == "mais") then
+					self.BarPopup.scopeNode.ValorTempAtualBarrinha = tonumber(self.BarPopup.scopeNode.ValorTempAtualBarrinha or 0) + tonumber(self.BarPopup.scopeNode.ValorMudadoAtualBarrinha or 0);
+				elseif (self.BarPopup.scopeNode.ModificadorBarrinha == "menos") then
+					self.BarPopup.scopeNode.ValorTempAtualBarrinha = tonumber(self.BarPopup.scopeNode.ValorTempAtualBarrinha or 0) - tonumber(self.BarPopup.scopeNode.ValorMudadoAtualBarrinha or 0);
+				end;
+				
+				if (self.BarPopup.scopeNode.ModificadorBarrinhaMax == "igual") then
+					self.BarPopup.scopeNode.ValorTempMaxBarrinha = tonumber(self.BarPopup.scopeNode.ValorMudadoMaxBarrinha or 0);
+				elseif (self.BarPopup.scopeNode.ModificadorBarrinhaMax == "mais") then
+					self.BarPopup.scopeNode.ValorTempMaxBarrinha = tonumber(self.BarPopup.scopeNode.ValorTempMaxBarrinha or 0) + tonumber(self.BarPopup.scopeNode.ValorMudadoMaxBarrinha or 0);
+				elseif (self.BarPopup.scopeNode.ModificadorBarrinhaMax == "menos") then
+					self.BarPopup.scopeNode.ValorTempMaxBarrinha = tonumber(self.BarPopup.scopeNode.ValorTempMaxBarrinha or 0) - tonumber(self.BarPopup.scopeNode.ValorMudadoMaxBarrinha or 0);
+				end;
+				
+				local barrinhapc = 0
+				local barrinhapcmax = 0
+				local porcentagem = 0
+				local porcentagemmax = 0
+
+				barrinhapc = (self.BarPopup.scopeNode.ValorTempAtualBarrinha - (self.BarPopup.scopeNode.BarrinhaValor or 0));
+				barrinhapcmax = (self.BarPopup.scopeNode.ValorTempMaxBarrinha - (self.BarPopup.scopeNode.BarrinhaValorMax or 0));
+				self.BarPopup.scopeNode.BarrinhaValor = self.BarPopup.scopeNode.ValorTempAtualBarrinha;
+				self.BarPopup.scopeNode.BarrinhaValorMax = self.BarPopup.scopeNode.ValorTempMaxBarrinha;
+				
+				if ((barrinhapc ~= 0) or (barrinhapcmax ~= 0)) then
+					local nome = self.BarPopup.scopeNode.AtributoBarrinha or "Equipamento";
+					local personagem = sheet.nome or "nome";
+					local text = "[§K2]" .. nome .. "[§K3] de [§K2]" .. personagem.. "[§K3]: ";
+					local valor = barrinhapc;
+					local valormax = barrinhapcmax;
+					
+					if tonumber(barrinhapc) >= 0 then
+						valor = "+" .. tostring(barrinhapc);
+					end;
+					if tonumber(barrinhapcmax) >= 0 then
+						valormax = "+" .. tostring(barrinhapcmax);
+					end;
+					
+					if tonumber(valormax) == 0 then
+						text = text .. valor;
+					else
+						text = text .. valor .. "/" .. valormax;
+					end;
+					
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					if mesaDoPersonagem ~= nil then
+						   mesaDoPersonagem.activeChat:enviarMensagem(text);
+					end;
+				end;
+			end, 100);
+		</event>
+	</popup>
+	
 	<scrollBox align="client">
 		<recordList left="0" top="0" width="150" height="602" name="rclEquipamentos" field="listaDeEquipamentos" templateForm="frmFichaRPGmeister6ES_svg" layout="vertical" selectable="true" minQt="14">
 			<event name="onEndEnumeration"><![CDATA[
@@ -39,6 +129,13 @@
 			</event>
 		</recordList>
 
+		<label left="760" top="0" width="50" height="20" text="CARGA"/>
+		<rectangle left="810" top="0" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
+		<label vertTextAlign="center" horzTextAlign="center" left="810" top="0" width="70" height="20" field="pesoEquipamento" formatFloat=",0.## Kg"/>
+		<label left="760" top="25" width="50" height="20" text="GASTOS"/>
+		<rectangle left="810" top="25" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
+		<label vertTextAlign="center" horzTextAlign="center" left="810" top="25" width="91" height="20" field="precoEquipamento"  formatFloat=",0.## PO"/>
+
 		<dataScopeBox left="150" top="0" width="600" height="602" name="boxDetalheDoEquipamento" visible="false">
 			<rectangle align="client" color="black"/>
 
@@ -46,7 +143,15 @@
 			<textEditor left="5" top="35" width="390" height="300" field="descricao"/>
 
 			<label left="5" top="340" width="95" height="20" text="Peso" horzTextAlign="center"/>
-			<edit vertTextAlign="center" left="100" top="340" width="75" height="25" field="peso" type="float">
+			<rectangle left="100" top="340" width="75" height="25" color="black" strokeColor="white" strokeSize="1" name="weightLabel" visible="true">
+				<label width="75" height="25" field="peso" horzTextAlign="center" formatFloat=",0.## Kg"/>
+				<event name="onClick">
+					self.weightLabel.visible = false;
+					self.weightEdit.visible = true;
+					self.weightEdit:setFocus();
+				</event>
+			</rectangle>
+			<edit left="100" top="340" width="75" height="25" field="peso" type="float" vertTextAlign="center" name="weightEdit" visible="false">
 				<event name="onUserChange">
 					if self.boxDetalheDoEquipamento.node~= nil then
 						local node = NDB.getRoot(self.boxDetalheDoEquipamento.node);
@@ -58,9 +163,22 @@
 						node.pesoEquipamento = pesoEquipamento;
 					end;
 				</event>
+				<event name="onExit">
+					self.weightLabel.visible = true;
+					self.weightEdit.visible = false;
+				</event>
 			</edit>
+
 			<label left="200" top="340" width="95" height="20" text="Preço" horzTextAlign="center"/>
-			<edit vertTextAlign="center" left="290" top="340" width="75" height="25" field="preco" type="float">
+			<rectangle left="290" top="340" width="75" height="25" color="black" strokeColor="grey" strokeSize="1" name="priceLabel" visible="true">
+				<label width="75" height="25" field="preco" horzTextAlign="center" formatFloat=",0.## PO"/>
+				<event name="onClick">
+					self.priceLabel.visible = false;
+					self.priceEdit.visible = true;
+					self.priceEdit:setFocus();
+				</event>
+			</rectangle>
+			<edit left="290" top="340" width="75" height="25" field="preco" type="float" vertTextAlign="center" name="priceEdit" visible="false">
 				<event name="onUserChange">
 					if self.boxDetalheDoEquipamento.node~= nil then
 						local node = NDB.getRoot(self.boxDetalheDoEquipamento.node);
@@ -72,12 +190,16 @@
 						node.precoEquipamento = precoEquipamento;
 					end;
 				</event>
+				<event name="onExit">
+					self.priceLabel.visible = true;
+					self.priceEdit.visible = false;
+				</event>
 			</edit>
 
 			<layout left="5" top="370" width="390" height="230" name="armadura">
 				<label left="5" top="5" width="95" height="20" text="CA" horzTextAlign="center"/>
 				<edit vertTextAlign="center" left="100" top="5" width="50" height="25" field="caBase"/>
-				<rectangle left="150" top="5" width="50" height="25" color="black"  strokeColor="white" strokeSize="1"/>
+				<rectangle left="150" top="5" width="50" height="25" color="black"  strokeColor="grey" strokeSize="1"/>
 				<label left="150" top="5" width="50" height="25" field="caTotal" horzTextAlign="center"/>
 
 				<label left="200" top="5" width="95" height="20" text="Melhoria" horzTextAlign="center"/>
@@ -106,6 +228,7 @@
 					<event name="onChange">
 						if self.boxDetalheDoEquipamento.node==nil then return end;
 						if self.boxDetalheDoEquipamento.node.pen==nil then return end;
+						if self.boxDetalheDoEquipamento.node.index ~= 8 then return end;
 						sheet.equipamentoCorpoPen = self.boxDetalheDoEquipamento.node.pen;
 					</event>
 				</edit>
@@ -119,6 +242,52 @@
 
 				<label left="200" top="80" width="95" height="20" text="Corrida" horzTextAlign="center"/>
 				<edit vertTextAlign="center" left="290" top="80" width="50" height="25" field="corrida"/>
+			</layout>
+
+			<layout left="145" top="550" width="390" height="25">
+				<layout height="15" width="120">
+					<imageCheckBox align="client">
+						<progressBar colorMode="hl" width="100" height="15" hitTest="true" mouseGlow="true" color="Green" name="Barrinha" field="BarrinhaValor" fieldMax="BarrinhaValorMax">
+							<event name="onMouseEnter">
+								self.CorBarrinha.color = "Green";
+								self.ValoresBarrinha.visible = true;
+								self.boxDetalheDoEquipamento.node.InfoBarrinha = (self.boxDetalheDoEquipamento.node.BarrinhaValor or 0) .. "/"	.. (self.boxDetalheDoEquipamento.node.BarrinhaValorMax or 0);					
+							</event>
+							<event name="onMouseLeave">
+								self.ValoresBarrinha.visible = false;
+							</event>
+							<event name="onDblClick">
+								self.boxDetalheDoEquipamento.node.BarrinhaID = self.boxDetalheDoEquipamento.node.index;
+								self.boxDetalheDoEquipamento.node.AtributoBarrinha = self.boxDetalheDoEquipamento.node.nome;
+								
+								self.boxDetalheDoEquipamento.node.ModificadorBarrinha = "igual";
+								self.boxDetalheDoEquipamento.node.ModificadorBarrinhaMax = "igual";
+								self.boxDetalheDoEquipamento.node.ValorTempAtualBarrinha = self.boxDetalheDoEquipamento.node.BarrinhaValor;
+								self.boxDetalheDoEquipamento.node.ValorTempMaxBarrinha = self.boxDetalheDoEquipamento.node.BarrinhaValorMax;
+								self.boxDetalheDoEquipamento.node.ValorMudadoAtualBarrinha = self.boxDetalheDoEquipamento.node.BarrinhaValor;
+								self.boxDetalheDoEquipamento.node.ValorMudadoMaxBarrinha = self.boxDetalheDoEquipamento.node.BarrinhaValorMax;
+								self.PopupBarColor.color = "Green";
+								self.BarPopup.scopeNode = self.boxDetalheDoEquipamento.node;
+								self.BarPopup:show("top", self.Barrinha);
+								self.BarPopup.top = (self.BarPopup.top + 29 + 10);
+							</event>
+						</progressBar>
+					</imageCheckBox>
+				</layout>
+				<layout left="100" top="0" width="90" height="14" visible="false" name="ValoresBarrinha">
+					<rectangle align="client" xradius="2" yradius="2" name="CorBarrinha" color="Green">
+						<label align="left" fontColor="white" fontSize="12" autoSize="true" textTrimming="none" wordWrap="false" name="InfoBarrinha" field="InfoBarrinha" horzTextAlign="center" text="0/0">
+							<event name="onResize">
+								self.InfoBarrinha.width = (self.ValoresBarrinha1.width - 4);
+							</event>
+						</label>
+					</rectangle>
+				</layout>
+				<dataLink field="CorBarrinha" defaultValue="Green">
+					<event name="onChange">
+						self.Barrinha.color = "Green";
+					</event>
+				</dataLink>
 			</layout>
 
 			<dataLink field="index">

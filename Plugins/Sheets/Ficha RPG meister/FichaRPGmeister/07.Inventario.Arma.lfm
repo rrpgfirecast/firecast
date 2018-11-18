@@ -94,16 +94,43 @@
 		]]>	
 	</script>
 	<edit left="0" top="1" width="245" height="23" field="nome"/>
-	<edit left="245" top="1" width="50" height="23" field="peso" type="float">
+
+	<rectangle left="245" top="1" width="50" height="23" color="black" strokeColor="grey" strokeSize="1" name="weaponWeightLabel" visible="true">
+		<label width="50" height="23" field="peso" horzTextAlign="center" formatFloat=",0.## Kg"/>
+		<event name="onClick">
+			self.weaponWeightLabel.visible = false;
+			self.weaponWeightEdit.visible = true;
+			self.weaponWeightEdit:setFocus();
+		</event>
+	</rectangle>
+	<edit left="245" top="1" width="50" height="23" field="peso" type="float" name="weaponWeightEdit" visible="false">
 		<event name="onUserChange">
 			weaponWeight();
 		</event>
+		<event name="onExit">
+			self.weaponWeightLabel.visible = true;
+			self.weaponWeightEdit.visible = false;
+		</event>
 	</edit>
-	<edit left="295" top="1" width="75" height="23" field="preco" type="float">
+
+	<rectangle left="295" top="1" width="75" height="23" color="black" strokeColor="grey" strokeSize="1" name="weaponPriceLabel" visible="true">
+		<label width="75" height="23" field="preco" horzTextAlign="center" formatFloat=",0.## PO"/>
+		<event name="onClick">
+			self.weaponPriceLabel.visible = false;
+			self.weaponPriceEdit.visible = true;
+			self.weaponPriceEdit:setFocus();
+		</event>
+	</rectangle>
+	<edit left="295" top="1" width="75" height="23" field="preco" type="float" name="weaponPriceEdit" visible="false">
 		<event name="onUserChange">
 			weaponPrice();
 		</event>
+		<event name="onExit">
+			self.weaponPriceLabel.visible = true;
+			self.weaponPriceEdit.visible = false;
+		</event>
 	</edit>
+
 	<button left="370" top="1" width="23" height="23" text="i" onClick="showArmaPopup();"/>
 	<button left="395" top="1" width="23" height="23" text="N" onClick="createName();"/>
 	<button left="420" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
