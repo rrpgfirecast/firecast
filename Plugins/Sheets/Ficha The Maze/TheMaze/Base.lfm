@@ -466,7 +466,7 @@
 
 			<Beneficio left="0" top="225" text="Reg. de Vida" field="RegVida"/>
 			<Beneficio left="0" top="250" text="Reg. de Fadiga" field="RegFadiga"/>
-			<Beneficio left="0" top="275" text="Conjuração" field="Conjuração"/>
+			<Beneficio left="0" top="275" text="Crítico" field="Conjuração"/>
 
 			<Beneficio left="155" top="225" text="Ampliação" field="Ampliacao"/>
 			<Beneficio left="155" top="250" text="Negação" field="Negacao"/>
