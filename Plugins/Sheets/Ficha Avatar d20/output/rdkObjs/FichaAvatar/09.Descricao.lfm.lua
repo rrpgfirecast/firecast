@@ -510,7 +510,7 @@ local function constructNew_frmFichaRPGmeister9_svg()
             						str = 1;
             					end;
             
-            					local load = ndb.load("loads.xml");
+            					local load = NDB.load("loads.xml");
             
             					local light = (load.light[str] * mult);
             					local medium = (load.medium[str] * mult);

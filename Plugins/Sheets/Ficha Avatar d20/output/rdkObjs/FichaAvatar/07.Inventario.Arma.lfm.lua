@@ -34,11 +34,11 @@ local function constructNew_frmFichaRPGmeister7A_svg()
 
 			
 		local function askForDelete()
-			dialogs.confirmYesNo("Deseja realmente apagar essa arma?",
+			Dialogs.confirmYesNo("Deseja realmente apagar essa arma?",
 								 function (confirmado)
 									if confirmado then
-										local node = ndb.getRoot(sheet);
-										local nodes = ndb.getChildNodes(node.campoDasArmas); 
+										local node = NDB.getRoot(sheet);
+										local nodes = NDB.getChildNodes(node.campoDasArmas); 
 										local index = 0;
 										for i=1, #nodes, 1 do
 											if nodes[i]==sheet then
@@ -46,9 +46,9 @@ local function constructNew_frmFichaRPGmeister7A_svg()
 											end;
 										end;
 
-										local ataques = ndb.getChildNodes(node.campoDosAtaques);
+										local ataques = NDB.getChildNodes(node.campoDosAtaques);
 										for i=1, #ataques, 1 do
-											local armas = ndb.getChildNodes(ataques[i].campoDeArmas);
+											local armas = NDB.getChildNodes(ataques[i].campoDeArmas);
 											for j=1, #armas, 1 do
 												local weaponID = tonumber(armas[j].weaponType) or 0;
 												if weaponID == index then
@@ -59,7 +59,7 @@ local function constructNew_frmFichaRPGmeister7A_svg()
 											end;
 										end;
 
-										ndb.deleteNode(sheet);
+										NDB.deleteNode(sheet);
 									end;
 								 end);
 		end;
@@ -96,9 +96,9 @@ local function constructNew_frmFichaRPGmeister7A_svg()
 
 		local function weaponPrice()
 			if sheet~= nil then
-				local node = ndb.getRoot(sheet);
+				local node = NDB.getRoot(sheet);
 				local mod = 0;
-				local nodes = ndb.getChildNodes(node.campoDasArmas); 
+				local nodes = NDB.getChildNodes(node.campoDasArmas); 
 				for i=1, #nodes, 1 do
 					mod = mod + (getNumber(nodes[i].preco) or 0);
 				end
@@ -117,9 +117,9 @@ local function constructNew_frmFichaRPGmeister7A_svg()
 
 		local function weaponWeight()
 			if sheet~= nil then
-				local node = ndb.getRoot(sheet);
+				local node = NDB.getRoot(sheet);
 				local mod = 0;
-				local nodes = ndb.getChildNodes(node.campoDasArmas); 
+				local nodes = NDB.getChildNodes(node.campoDasArmas); 
 				for i=1, #nodes, 1 do
 					mod = mod + (getNumber(nodes[i].peso) or 0);
 				end

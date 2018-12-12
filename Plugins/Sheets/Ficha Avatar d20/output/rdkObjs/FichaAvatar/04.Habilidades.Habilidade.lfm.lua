@@ -33,10 +33,10 @@ local function constructNew_frmFichaRPGmeister4h_svg()
 
 			
 		local function askForDelete()
-			dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
+			Dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
 								 function (confirmado)
 									if confirmado then
-										ndb.deleteNode(sheet);
+										NDB.deleteNode(sheet);
 									end;
 								 end);
 		end;
@@ -119,24 +119,24 @@ local function constructNew_frmFichaRPGmeister4h_svg()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            			local node = ndb.getRoot(sheet);
+            			local node = NDB.getRoot(sheet);
             			
             			local pt = 0;
-            			local objetos = ndb.getChildNodes(node.campoDosTalentos);
+            			local objetos = NDB.getChildNodes(node.campoDosTalentos);
             			for i=1, #objetos, 1 do 
             				pt = pt + (tonumber(objetos[i].custoHabilidade) or 0);
             			end;
             			node.pt_talento = pt;
             
             			local pt = 0;
-            			local objetos = ndb.getChildNodes(node.campoDosOutros);
+            			local objetos = NDB.getChildNodes(node.campoDosOutros);
             			for i=1, #objetos, 1 do 
             				pt = pt + (tonumber(objetos[i].custoHabilidade) or 0);
             			end;
             			node.pt_outro = pt;
             
             			local pt = 0;
-            			local objetos = ndb.getChildNodes(node.campoDasCaracteristicasClasse);
+            			local objetos = NDB.getChildNodes(node.campoDasCaracteristicasClasse);
             			for i=1, #objetos, 1 do 
             				pt = pt + (tonumber(objetos[i].custoHabilidade) or 0);
             			end;

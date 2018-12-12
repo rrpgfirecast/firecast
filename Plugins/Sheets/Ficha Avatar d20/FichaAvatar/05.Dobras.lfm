@@ -3,10 +3,10 @@
 	<script> 
 		<![CDATA[	
 		local function rollTest()
-			local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 
 			local mod = (tonumber(sheet.testeDobra) or 0);
-			local rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+			local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
 
 			mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Dobra de " .. (sheet.nome or "Nome"));
 		end;

@@ -34,10 +34,10 @@ local function constructNew_frmFichaRPGmeister3i_svg()
 
 			
 		local function askForDelete()
-			dialogs.confirmYesNo("Deseja realmente apagar esse idioma?",
+			Dialogs.confirmYesNo("Deseja realmente apagar esse idioma?",
 								 function (confirmado)
 									if confirmado then
-										ndb.deleteNode(sheet);
+										NDB.deleteNode(sheet);
 									end;
 								 end);
 		end;
