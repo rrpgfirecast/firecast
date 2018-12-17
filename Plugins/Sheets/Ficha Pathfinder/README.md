@@ -7,10 +7,14 @@ Talentos para Verificar:
 * Rajada de Golpes
 
 Versão 5
++ Nova aba de equipamentos.
 + Colocado um campo para notas no lugar da CA oculta.
 + Removidas magias diarias de nível 0.
 + Ataques não confirmam falhas criticas. 
 + Trocado Agarrar por BMC nos companheiros. 
++ Corrigido bug ao ativar "composto" nos ataques avançados sem antes por o valor de limite. 
++ Nova forma de formatar preço e peso.
++ Nova forma de formatar xp.
 WARNING: Copie seus equipamentos para a nova aba, antes de ir para a versão 6.
 
 Versão 4:

@@ -5209,11 +5209,11 @@ local function constructNew_frmAvatar()
 
 				local function caSecreta()
 					if sheet~= nil then
-						local jogadores = rrpg.getMesaDe(sheet).jogadores;
+						local jogadores = Firecast.getMesaDe(sheet).jogadores;
 						local current = nil;
 						
 						for i = 1, #jogadores, 1 do
-							if jogadores[i].login==rrpg.getCurrentUser().login then
+							if jogadores[i].login==Firecast.getCurrentUser().login then
 								current = jogadores[i];
 							end;
 						end; 
@@ -5663,7 +5663,7 @@ local function constructNew_frmAvatar()
 
 			local function pos(rolado)
 				local dado = rolado.ops[1].resultados[1];
-				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 				local valor = rolado.resultado;
 				
 				if (dado>=decisivo or dado==1) then
@@ -5729,7 +5729,7 @@ local function constructNew_frmAvatar()
 				local mod = tonumber(array[i]);
 				
 				if mod~=nil then
-					rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+					rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
 					if sheet.buffAtaque ~= nil then
 					rolagem = rolagem:concatenar(sheet.buffAtaque);
 					end;
@@ -12903,8 +12903,8 @@ local function constructNew_frmAvatar()
 					ataquesFeitos = ataquesFeitos + 1;
 
 					local personagem = sheet.nome or "personagem";
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-					local weapons = ndb.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					local weapons = NDB.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
 
 					if ataquesFeitos < numeroAtaques then
 						ataqueID = ataqueID + 1;
@@ -12918,7 +12918,7 @@ local function constructNew_frmAvatar()
 						local crit = weapons[weaponID].crit;
 
 						if dadoAtaques[ataquesFeitos+1]>=decisivo then
-							local rolagem = rrpg.interpretarRolagem(crit);
+							local rolagem = Firecast.interpretarRolagem(crit);
 							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano adicional do decisivo #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 								function (rolado)
 									proximoCritico(rolado)
@@ -12936,8 +12936,8 @@ local function constructNew_frmAvatar()
 					ataquesFeitos = ataquesFeitos + 1;
 
 					local personagem = sheet.nome or "personagem";
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-					local weapons = ndb.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					local weapons = NDB.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
 
 					if ataquesFeitos < numeroAtaques then
 						ataqueID = ataqueID + 1;
@@ -12950,7 +12950,7 @@ local function constructNew_frmAvatar()
 						local decisivo = weapons[weaponID].decisivo;
 						local armamento = weapons[weaponID].nomeAtaque or "arma";
 						if dadoAtaques[ataquesFeitos+1]>=decisivo then
-							local confirmacao = rrpg.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+							local confirmacao = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
 							mesaDoPersonagem.activeChat:rolarDados(confirmacao, "Confirmação de Decisivo do ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 								function (rolado)
 									proximaConfirmacao(rolado)
@@ -12970,7 +12970,7 @@ local function constructNew_frmAvatar()
 						local crit = weapons[weaponID].crit;
 
 						if dadoAtaques[ataquesFeitos+1]>=decisivo then
-							local rolagem = rrpg.interpretarRolagem(crit);
+							local rolagem = Firecast.interpretarRolagem(crit);
 							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano adicional do decisivo #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 								function (rolado)
 									proximoCritico(rolado)
@@ -12985,8 +12985,8 @@ local function constructNew_frmAvatar()
 					ataquesFeitos = ataquesFeitos + 1;
 
 					local personagem = sheet.nome or "personagem";
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-					local weapons = ndb.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					local weapons = NDB.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
 
 					if ataquesFeitos < numeroAtaques then
 						ataqueID = ataqueID + 1;
@@ -12998,7 +12998,7 @@ local function constructNew_frmAvatar()
 						local dano = weapons[weaponID].dado;
 						local armamento = weapons[weaponID].nomeAtaque or "arma";
 
-						local rolagem = rrpg.interpretarRolagem(dano);
+						local rolagem = Firecast.interpretarRolagem(dano);
 						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 							function (rolado)
 								proximoDano(rolado)
@@ -13015,7 +13015,7 @@ local function constructNew_frmAvatar()
 						local decisivo = weapons[weaponID].decisivo;
 						local armamento = weapons[weaponID].nomeAtaque or "arma";
 						if dadoAtaques[ataquesFeitos+1]>=decisivo then
-							local confirmacao = rrpg.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+							local confirmacao = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
 							mesaDoPersonagem.activeChat:rolarDados(confirmacao, "Confirmação de Decisivo do ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 								function (rolado)
 									proximaConfirmacao(rolado)
@@ -13032,8 +13032,8 @@ local function constructNew_frmAvatar()
 					resultadoAtaques[ataquesFeitos] = rolado.resultado;
 
 					local personagem = sheet.nome or "personagem";
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-					local weapons = ndb.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+					local weapons = NDB.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
 
 					if ataquesFeitos < numeroAtaques then
 						ataqueID = ataqueID + 1;
@@ -13045,7 +13045,7 @@ local function constructNew_frmAvatar()
 						local acertos = weapons[weaponID].acertos;
 						local armamento = weapons[weaponID].nomeAtaque or "arma";
 
-						local rolagem = rrpg.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+						local rolagem = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
 						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 							function (rolado)
 								proximoAtaque(rolado)
@@ -13062,7 +13062,7 @@ local function constructNew_frmAvatar()
 						local dano = weapons[weaponID].dado;
 						local armamento = weapons[weaponID].nomeAtaque or "arma";
 
-						local rolagem = rrpg.interpretarRolagem(dano);
+						local rolagem = Firecast.interpretarRolagem(dano);
 						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Dano #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
 							function (rolado)
 								proximoDano(rolado)
@@ -13158,7 +13158,7 @@ local function constructNew_frmAvatar()
 
 
 			
-			local dnd = ndb.load("dndskills.xml");
+			local dnd = NDB.load("dndskills.xml");
 
 			local function updateAtributes(num)
 				local atr = "" .. num;
@@ -13178,7 +13178,7 @@ local function constructNew_frmAvatar()
 					mod = getCAR();
 				end;
 
-				local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
 				for i=1, #nodes, 1 do
 					if nodes[i].chavePericia == atr then
 						nodes[i].atributoPericia = mod;
@@ -13188,7 +13188,7 @@ local function constructNew_frmAvatar()
 
 			local function updatePenalty()
 				if sheet~=nil then
-					local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
 					for i=1, #nodes, 1 do
 						if nodes[i].penalidadeArmadura or nodes[i].penalidadeArmadura2 then
 							local pen = (tonumber(sheet.penalidade) or 0)
@@ -13219,9 +13219,9 @@ local function constructNew_frmAvatar()
 			end;
 
 			local function dndSkills()
-				local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
 				for i=1, #nodes, 1 do
-					ndb.deleteNode(nodes[i]);
+					NDB.deleteNode(nodes[i]);
 				end
 
 				for i=1, 43, 1 do
@@ -14335,10 +14335,10 @@ local function constructNew_frmAvatar()
 
 	
 		local function rollTest()
-			local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 
 			local mod = (tonumber(sheet.testeDobra) or 0);
-			local rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+			local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
 
 			mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Dobra de " .. (sheet.nome or "Nome"));
 		end;
@@ -18488,12 +18488,12 @@ local function constructNew_frmAvatar()
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
         function (_)
-            internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true",
+            Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true",
                         function(stream, contentType)
-                            local info = rrpg.plugins.getRPKDetails(stream);
+                            local info = Firecast.Plugins.getRPKDetails(stream);
                             sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
             
-                            local installed = rrpg.plugins.getInstalledPlugins();
+                            local installed = Firecast.Plugins.getInstalledPlugins();
                             local myself;
                             for i=1, #installed, 1 do
                                 if installed[i].moduleId == info.moduleId then
@@ -18507,7 +18507,7 @@ local function constructNew_frmAvatar()
                                 Dialogs.choose("Há uma nova versão(".. info.version .. ") da Ficha Pathfinder. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                                     function(selected, selectedIndex, selectedText)
                                         if selected and selectedIndex == 1 then
-                                            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true');
+                                            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true');
                                         elseif selected and selectedIndex == 3 then
                                             sheet.noUpdate = true;
                                         end;
@@ -18838,8 +18838,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event14 = obj.button2:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModFor) or 0);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModFor) or 0);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Força de " .. (sheet.nome or "NOME"));
         end, obj);
 
@@ -18860,8 +18860,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event17 = obj.button3:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModDes) or 0);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModDes) or 0);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Destreza de " .. (sheet.nome or "NOME"));
         end, obj);
 
@@ -18882,8 +18882,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event20 = obj.button4:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModCon) or 0);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModCon) or 0);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Constituição de " .. (sheet.nome or "NOME"));
         end, obj);
 
@@ -18904,8 +18904,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event23 = obj.button5:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModInt) or 0);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModInt) or 0);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Inteligência de " .. (sheet.nome or "NOME"));
         end, obj);
 
@@ -18926,8 +18926,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event26 = obj.button6:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModSab) or 0);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModSab) or 0);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Sabedoria de " .. (sheet.nome or "NOME"));
         end, obj);
 
@@ -18948,8 +18948,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event29 = obj.button7:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetModCar) or 0);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetModCar) or 0);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Carisma de " .. (sheet.nome or "NOME"));
         end, obj);
 
@@ -19047,8 +19047,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event38 = obj.button8:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.iniciativa or "+0"));
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.iniciativa or "+0"));
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
         end, obj);
 
@@ -19176,7 +19176,7 @@ local function constructNew_frmAvatar()
 
     obj._e_event43 = obj.button9:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					sheet.modificador = sheet.modificador or 0;
             					mesaDoPersonagem.activeChat:rolarDados(sheet.dvs, "Pontos de Vigor de " .. (sheet.nome or "NOME"),
             						function (rolagem)
@@ -19195,7 +19195,7 @@ local function constructNew_frmAvatar()
             									media = media + operacao.valor;
             								end;
             							end;
-            							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             							mesaDoPersonagem.activeChat:enviarMensagem("PV máximo: " .. maximo .. "; PV médio: " .. math.floor(media));
             							sheet.pvTotal = math.floor(media);
             						end);
@@ -19223,8 +19223,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event46 = obj.button11:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.agarrar or "0"));
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 + " .. (sheet.agarrar or "0"));
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Agarrar de " .. (sheet.nome or "NOME"));
         end, obj);
 
@@ -19253,22 +19253,22 @@ local function constructNew_frmAvatar()
 
     obj._e_event49 = obj.button12:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 +" .. (sheet.trFort) or "0");
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 +" .. (sheet.trFort) or "0");
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Fortitude de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event50 = obj.button13:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 +" .. (sheet.trRef) or "0");
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 +" .. (sheet.trRef) or "0");
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Reflexos de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event51 = obj.button14:addEventListener("onClick",
         function (_)
-            local rolagem = rrpg.interpretarRolagem("1d20 +" .. (sheet.trVon) or "0");
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            local rolagem = Firecast.interpretarRolagem("1d20 +" .. (sheet.trVon) or "0");
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Vontade de " .. (sheet.nome or "NOME"));
         end, obj);
 
@@ -19364,12 +19364,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque1a, sheet.ataque1b, sheet.ataque1c, sheet.ataque1d, sheet.ataque1e, sheet.ataque1f, sheet.ataque1g, sheet.ataque1h};
             					decisivo = tonumber(string.sub(sheet.decisivo1, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano1);
+            					dano = Firecast.interpretarRolagem(sheet.dano1);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico1);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico1);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -19380,14 +19380,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma1;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -19403,8 +19403,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event56 = obj.button16:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano1);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano1);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -19419,8 +19419,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event57 = obj.button17:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico1);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico1);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -19447,12 +19447,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque2a, sheet.ataque2b, sheet.ataque2c, sheet.ataque2d, sheet.ataque2e, sheet.ataque2f, sheet.ataque2g, sheet.ataque2h};
             					decisivo = tonumber(string.sub(sheet.decisivo2, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano2);
+            					dano = Firecast.interpretarRolagem(sheet.dano2);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico2);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico2);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -19463,14 +19463,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma2;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -19486,8 +19486,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event59 = obj.button19:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano2);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano2);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -19502,8 +19502,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event60 = obj.button20:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico2);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico2);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -19530,12 +19530,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque3a, sheet.ataque3b, sheet.ataque3c, sheet.ataque3d, sheet.ataque3e, sheet.ataque3f, sheet.ataque3g, sheet.ataque3h};
             					decisivo = tonumber(string.sub(sheet.decisivo3, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano3);
+            					dano = Firecast.interpretarRolagem(sheet.dano3);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico3);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico3);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -19546,14 +19546,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma3;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -19569,8 +19569,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event62 = obj.button22:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano3);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano3);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -19585,8 +19585,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event63 = obj.button23:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico3);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico3);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -19613,12 +19613,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque4a, sheet.ataque4b, sheet.ataque4c, sheet.ataque4d, sheet.ataque4e, sheet.ataque4f, sheet.ataque4g, sheet.ataque4h};
             					decisivo = tonumber(string.sub(sheet.decisivo4, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano4);
+            					dano = Firecast.interpretarRolagem(sheet.dano4);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico4);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico4);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -19629,14 +19629,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma4;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -19652,8 +19652,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event65 = obj.button25:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano4);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano4);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -19668,8 +19668,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event66 = obj.button26:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico4);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico4);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -19696,12 +19696,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque5a, sheet.ataque5b, sheet.ataque5c, sheet.ataque5d, sheet.ataque5e, sheet.ataque5f, sheet.ataque5g, sheet.ataque5h};
             					decisivo = tonumber(string.sub(sheet.decisivo5, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano5);
+            					dano = Firecast.interpretarRolagem(sheet.dano5);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico5);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico5);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -19712,14 +19712,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma5;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -19735,8 +19735,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event68 = obj.button28:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano5);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano5);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -19751,8 +19751,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event69 = obj.button29:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico5);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico5);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -19779,12 +19779,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque6a, sheet.ataque6b, sheet.ataque6c, sheet.ataque6d, sheet.ataque6e, sheet.ataque6f, sheet.ataque6g, sheet.ataque6h};
             					decisivo = tonumber(string.sub(sheet.decisivo6, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano6);
+            					dano = Firecast.interpretarRolagem(sheet.dano6);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico6);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico6);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -19795,14 +19795,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma6;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -19818,8 +19818,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event71 = obj.button31:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano6);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano6);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -19834,8 +19834,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event72 = obj.button32:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico6);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico6);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -19862,12 +19862,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque7a, sheet.ataque7b, sheet.ataque7c, sheet.ataque7d, sheet.ataque7e, sheet.ataque7f, sheet.ataque7g, sheet.ataque7h};
             					decisivo = tonumber(string.sub(sheet.decisivo7, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano7);
+            					dano = Firecast.interpretarRolagem(sheet.dano7);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico7);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico7);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -19878,14 +19878,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma7;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -19901,8 +19901,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event74 = obj.button34:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano7);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano7);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -19917,8 +19917,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event75 = obj.button35:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico7);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico7);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -19945,12 +19945,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque8a, sheet.ataque8b, sheet.ataque8c, sheet.ataque8d, sheet.ataque8e, sheet.ataque8f, sheet.ataque8g, sheet.ataque8h};
             					decisivo = tonumber(string.sub(sheet.decisivo8, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano8);
+            					dano = Firecast.interpretarRolagem(sheet.dano8);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico8);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico8);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -19961,14 +19961,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma8;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -19984,8 +19984,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event77 = obj.button37:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano8);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano8);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -20000,8 +20000,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event78 = obj.button38:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico8);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico8);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20028,12 +20028,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque9a, sheet.ataque9b, sheet.ataque9c, sheet.ataque9d, sheet.ataque9e, sheet.ataque9f, sheet.ataque9g, sheet.ataque9h};
             					decisivo = tonumber(string.sub(sheet.decisivo9, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano9);
+            					dano = Firecast.interpretarRolagem(sheet.dano9);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico9);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico9);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20044,14 +20044,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma9;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -20067,8 +20067,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event80 = obj.button40:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano9);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano9);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -20083,8 +20083,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event81 = obj.button41:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico9);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico9);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20111,12 +20111,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque10a, sheet.ataque10b, sheet.ataque10c, sheet.ataque10d, sheet.ataque10e, sheet.ataque10f, sheet.ataque10g, sheet.ataque10h};
             					decisivo = tonumber(string.sub(sheet.decisivo10, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano10);
+            					dano = Firecast.interpretarRolagem(sheet.dano10);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico10);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico10);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20127,14 +20127,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma10;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -20150,8 +20150,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event83 = obj.button43:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano10);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano10);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -20166,8 +20166,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event84 = obj.button44:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico10);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico10);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20194,12 +20194,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque11a, sheet.ataque11b, sheet.ataque11c, sheet.ataque11d, sheet.ataque11e, sheet.ataque11f, sheet.ataque11g, sheet.ataque11h};
             					decisivo = tonumber(string.sub(sheet.decisivo11, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano11);
+            					dano = Firecast.interpretarRolagem(sheet.dano11);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico11);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico11);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20210,14 +20210,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma11;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -20233,8 +20233,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event86 = obj.button46:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano11);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano11);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -20249,8 +20249,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event87 = obj.button47:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico11);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico11);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20277,12 +20277,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque12a, sheet.ataque12b, sheet.ataque12c, sheet.ataque12d, sheet.ataque12e, sheet.ataque12f, sheet.ataque12g, sheet.ataque12h};
             					decisivo = tonumber(string.sub(sheet.decisivo12, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano12);
+            					dano = Firecast.interpretarRolagem(sheet.dano12);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico12);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico12);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20293,14 +20293,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma12;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -20316,8 +20316,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event89 = obj.button49:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano12);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano12);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -20332,8 +20332,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event90 = obj.button50:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico12);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico12);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20360,12 +20360,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque13a, sheet.ataque13b, sheet.ataque13c, sheet.ataque13d, sheet.ataque13e, sheet.ataque13f, sheet.ataque13g, sheet.ataque13h};
             					decisivo = tonumber(string.sub(sheet.decisivo13, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano13);
+            					dano = Firecast.interpretarRolagem(sheet.dano13);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico13);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico13);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20376,14 +20376,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma13;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -20399,8 +20399,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event92 = obj.button52:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano13);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano13);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -20415,8 +20415,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event93 = obj.button53:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico13);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico13);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20443,12 +20443,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque14a, sheet.ataque14b, sheet.ataque14c, sheet.ataque14d, sheet.ataque14e, sheet.ataque14f, sheet.ataque14g, sheet.ataque14h};
             					decisivo = tonumber(string.sub(sheet.decisivo14, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano14);
+            					dano = Firecast.interpretarRolagem(sheet.dano14);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico14);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico14);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20459,14 +20459,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma14;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -20482,8 +20482,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event95 = obj.button55:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano14);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano14);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -20498,8 +20498,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event96 = obj.button56:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico14);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico14);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20526,12 +20526,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque15a, sheet.ataque15b, sheet.ataque15c, sheet.ataque15d, sheet.ataque15e, sheet.ataque15f, sheet.ataque15g, sheet.ataque15h};
             					decisivo = tonumber(string.sub(sheet.decisivo15, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano15);
+            					dano = Firecast.interpretarRolagem(sheet.dano15);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico15);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico15);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20542,14 +20542,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma15;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -20565,8 +20565,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event98 = obj.button58:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano15);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano15);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -20581,8 +20581,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event99 = obj.button59:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico15);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico15);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20609,12 +20609,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque16a, sheet.ataque16b, sheet.ataque16c, sheet.ataque16d, sheet.ataque16e, sheet.ataque16f, sheet.ataque16g, sheet.ataque16h};
             					decisivo = tonumber(string.sub(sheet.decisivo16, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano16);
+            					dano = Firecast.interpretarRolagem(sheet.dano16);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico16);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico16);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20625,14 +20625,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma16;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -20648,8 +20648,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event101 = obj.button61:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano16);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano16);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -20664,8 +20664,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event102 = obj.button62:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico16);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico16);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20692,12 +20692,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque17a, sheet.ataque17b, sheet.ataque17c, sheet.ataque17d, sheet.ataque17e, sheet.ataque17f, sheet.ataque17g, sheet.ataque17h};
             					decisivo = tonumber(string.sub(sheet.decisivo17, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano17);
+            					dano = Firecast.interpretarRolagem(sheet.dano17);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico17);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico17);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20708,14 +20708,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma17;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -20731,8 +20731,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event104 = obj.button64:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano17);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano17);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -20747,8 +20747,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event105 = obj.button65:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico17);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico17);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20775,12 +20775,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque18a, sheet.ataque18b, sheet.ataque18c, sheet.ataque18d, sheet.ataque18e, sheet.ataque18f, sheet.ataque18g, sheet.ataque18h};
             					decisivo = tonumber(string.sub(sheet.decisivo18, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano18);
+            					dano = Firecast.interpretarRolagem(sheet.dano18);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico18);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico18);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20791,14 +20791,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma18;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -20814,8 +20814,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event107 = obj.button67:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano18);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano18);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -20830,8 +20830,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event108 = obj.button68:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico18);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico18);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20858,12 +20858,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque19a, sheet.ataque19b, sheet.ataque19c, sheet.ataque19d, sheet.ataque19e, sheet.ataque19f, sheet.ataque19g, sheet.ataque19h};
             					decisivo = tonumber(string.sub(sheet.decisivo19, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano19);
+            					dano = Firecast.interpretarRolagem(sheet.dano19);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico19);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico19);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20874,14 +20874,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma19;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -20897,8 +20897,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event110 = obj.button70:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano19);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano19);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -20913,8 +20913,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event111 = obj.button71:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico19);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico19);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20941,12 +20941,12 @@ local function constructNew_frmAvatar()
             					array = {sheet.ataque20a, sheet.ataque20b, sheet.ataque20c, sheet.ataque20d, sheet.ataque20e, sheet.ataque20f, sheet.ataque20g, sheet.ataque20h};
             					decisivo = tonumber(string.sub(sheet.decisivo20, 1, 2));
             					
-            					dano = rrpg.interpretarRolagem(sheet.dano20);
+            					dano = Firecast.interpretarRolagem(sheet.dano20);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
             					
-            					danoCritico = rrpg.interpretarRolagem(sheet.danoCritico20);
+            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico20);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -20957,14 +20957,14 @@ local function constructNew_frmAvatar()
             						armamento = sheet.arma20;
             					end;
             					
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						while array[max]~=nil do
             						max = max + 1;
             					end;
             					
             					local mod = tonumber(array[1]);
             					if mod~=nil then
-            						rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
             						if sheet.buffAtaque ~= nil then
             							rolagem = rolagem:concatenar(sheet.buffAtaque);
             						end;
@@ -20980,8 +20980,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event113 = obj.button73:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local dano = rrpg.interpretarRolagem(sheet.dano20);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local dano = Firecast.interpretarRolagem(sheet.dano20);
             					if sheet.buffDano ~= nil then
             						dano = dano:concatenar(sheet.buffDano);
             					end;
@@ -20996,8 +20996,8 @@ local function constructNew_frmAvatar()
 
     obj._e_event114 = obj.button74:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-            					local danoCritico = rrpg.interpretarRolagem(sheet.danoCritico20);
+            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico20);
             					if sheet.buffDanoCritico ~= nil then
             						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
             					end;
@@ -21025,7 +21025,7 @@ local function constructNew_frmAvatar()
     obj._e_event117 = obj.rclListaDosAtaques:addEventListener("onEndEnumeration",
         function (_)
             if self.rclListaDosAtaques.selectedNode == nil and sheet ~= nil then
-            					local nodes = ndb.getChildNodes(sheet.campoDosAtaques);               
+            					local nodes = NDB.getChildNodes(sheet.campoDosAtaques);               
             					if #nodes > 0 then
             						self.rclListaDosAtaques.selectedNode = nodes[1];
             					end;
@@ -21047,8 +21047,8 @@ local function constructNew_frmAvatar()
             						end;
             						rolando = true;
             						
-            						local weapons = ndb.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            						local weapons = NDB.getChildNodes(self.boxDetalhesDoAtaque.node.campoDeArmas);
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						local personagem = sheet.nome or "personagem";
             
             						--limpando variaveis do ultimo ataque
@@ -21079,7 +21079,7 @@ local function constructNew_frmAvatar()
             						local acertos = weapons[weaponID].acertos;
             						local armamento = weapons[weaponID].nomeAtaque or "arma";
             
-            						local rolagem = rrpg.interpretarRolagem("1d20+" .. acertos[ataqueID]);
+            						local rolagem = Firecast.interpretarRolagem("1d20+" .. acertos[ataqueID]);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque #" .. ataqueID .. " com " .. armamento .. " de " .. personagem, 
             							function (rolado)
             								proximoAtaque(rolado)
@@ -21093,7 +21093,7 @@ local function constructNew_frmAvatar()
 
     obj._e_event121 = obj.rclListaDasPericias:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
+            return Utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
         end, obj);
 
     obj._e_event122 = obj.button79:addEventListener("onClick",
@@ -21489,16 +21489,16 @@ local function constructNew_frmAvatar()
     obj._e_event152 = obj.button89:addEventListener("onClick",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
-            						local rolagem = rrpg.interpretarRolagem("1d20 + " .. (node.iniciativaComp or 0));
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            						local rolagem = Firecast.interpretarRolagem("1d20 + " .. (node.iniciativaComp or 0));
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de iniciativa de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
     obj._e_event153 = obj.button90:addEventListener("onClick",
         function (_)
             local node = self.rclListaDosCompanheiros.selectedNode;
-            						local rolagem = rrpg.interpretarRolagem("1d20 + " .. (node.agarrarComp or 0));
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            						local rolagem = Firecast.interpretarRolagem("1d20 + " .. (node.agarrarComp or 0));
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de agarrar de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -21510,8 +21510,8 @@ local function constructNew_frmAvatar()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de força de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -21536,8 +21536,8 @@ local function constructNew_frmAvatar()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de destreza de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -21562,8 +21562,8 @@ local function constructNew_frmAvatar()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de constituição de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -21588,8 +21588,8 @@ local function constructNew_frmAvatar()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de inteligência de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -21614,8 +21614,8 @@ local function constructNew_frmAvatar()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de sabedoria de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -21640,8 +21640,8 @@ local function constructNew_frmAvatar()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de carisma de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -21666,8 +21666,8 @@ local function constructNew_frmAvatar()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de fortitude de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -21679,8 +21679,8 @@ local function constructNew_frmAvatar()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de reflexos de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -21692,8 +21692,8 @@ local function constructNew_frmAvatar()
             					if bonus >= 0 then
             						dado = "1d20 + ";
             					end;
-            					local rolagem = rrpg.interpretarRolagem(dado .. bonus);
-            					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            					local rolagem = Firecast.interpretarRolagem(dado .. bonus);
+            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de vontade de " .. (node.nomeComp or "Companheiro"));
         end, obj);
 
@@ -21701,7 +21701,7 @@ local function constructNew_frmAvatar()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            					local nodes = ndb.getChildNodes(sheet.campoDosCompanheiros);   
+            					local nodes = NDB.getChildNodes(sheet.campoDosCompanheiros);   
             					local total = 0;
             					for i=1, #nodes, 1 do
             						total = total + (getNumber(nodes[i].precoInventorioComp) or 0);
@@ -21714,7 +21714,7 @@ local function constructNew_frmAvatar()
             local macro = self.boxDetalhesDoCompanheiro.node.macro;
             						if macro~=nil then
             							local macros = lines(macro);
-            							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             							for i=1, #macros, 1 do
             								mesaDoPersonagem.activeChat:enviarMensagem(macros[i]);
             							end;
@@ -21741,7 +21741,7 @@ local function constructNew_frmAvatar()
     obj._e_event174 = obj.rclListaDosCompanheiros:addEventListener("onEndEnumeration",
         function (_)
             if self.rclListaDosCompanheiros.selectedNode == nil and sheet ~= nil then
-            					local nodes = ndb.getChildNodes(sheet.campoDosCompanheiros);               
+            					local nodes = NDB.getChildNodes(sheet.campoDosCompanheiros);               
             					if #nodes > 0 then
             						self.rclListaDosCompanheiros.selectedNode = nodes[1];
             					end;
@@ -21840,7 +21840,7 @@ local function constructNew_frmAvatar()
             						str = 1;
             					end;
             
-            					local load = ndb.load("loads.xml");
+            					local load = NDB.load("loads.xml");
             
             					local light = (load.light[str] * mult);
             					local medium = (load.medium[str] * mult);
@@ -21862,32 +21862,32 @@ local function constructNew_frmAvatar()
 
     obj._e_event177 = obj.button103:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/README.md')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/README.md')
         end, obj);
 
     obj._e_event178 = obj.button104:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/output/Ficha%20Avatar%20d20.rpk?raw=true')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/output/Ficha%20Avatar%20d20.rpk?raw=true')
         end, obj);
 
     obj._e_event179 = obj.button105:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/__Tutorial/Ficha%20Avatar%20-%20Tutorial.docx')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/__Tutorial/Ficha%20Avatar%20-%20Tutorial.docx')
         end, obj);
 
     obj._e_event180 = obj.button106:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Avatar%20d20/Dobra.docx')
+            GUI.openInBrowser('https://www.dropbox.com/s/h4zleo51jqq6cc8/Dobra.docx?dl=0')
         end, obj);
 
     obj._e_event181 = obj.button107:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
+            GUI.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     obj._e_event182 = obj.button108:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=149962');
+            GUI.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=149962');
         end, obj);
 
     function obj:_releaseEvents()

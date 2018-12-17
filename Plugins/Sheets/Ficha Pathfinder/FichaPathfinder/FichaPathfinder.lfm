@@ -68,7 +68,7 @@
             </tabControl>
         </tab>
         <tab title="Inventario">
-            <import file="07.Inventario.lfm"/>
+            <import file="07.Inventario.xml"/>
         </tab>
 		<tab title="Companheiro">
             <import file="08.Companheiro.lfm"/>
@@ -116,6 +116,7 @@
             function (downloaded, total)
                 -- esta função será chamada constantemente.
                 -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
-            end);
+            end,
+            "checkForModification");
     </event>
 </form>

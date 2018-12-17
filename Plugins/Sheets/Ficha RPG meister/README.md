@@ -6,6 +6,12 @@ Proximas Versões
 + Campo de Magia para cristais/essencias.
 + Testar se deletar o import.xml ajuda no import. 
 
+Versão 3.1
+- Nova aba de equipamentos.
+- Corrigido bug ao ativar "composto" nos ataques avançados sem antes por o valor de limite. 
+- Nova forma de formatar preço e peso.
+- Nova forma de formatar xp.
+
 Versão 30
 - Adicionados hint aos ataques avançados. 
 - Criado sistema de atualização automatica. 

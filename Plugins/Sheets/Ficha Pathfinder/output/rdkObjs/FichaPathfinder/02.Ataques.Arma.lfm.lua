@@ -198,8 +198,9 @@ local function constructNew_frmFichaRPGmeister2Aar_svg()
     		-- Adicionando bonus de força
     		if sheet.forma=="2" then
     			if sheet.composto then
-    				dado = dado .. "+" .. math.min(forc, (tonumber(sheet.compostoLim) or 0));
-                    if forc < tonumber(sheet.compostoLim) then
+                    local limit = tonumber(sheet.compostoLim) or 0;
+    				dado = dado .. "+" .. math.min(forc, limit);
+                    if forc < limit then
                         pen = pen - 2;
                     end;
     			end;

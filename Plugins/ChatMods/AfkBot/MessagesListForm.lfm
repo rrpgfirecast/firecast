@@ -3,7 +3,7 @@
 	<button width="250" height="240" fontSize="25" text="NOVA MENSAGEM" name="add" visible="true">
 		<event name="onClick">
 			sheet.enabled = true;
-			local node = ndb.getParent(ndb.getParent(sheet));
+			local node = NDB.getParent(NDB.getParent(sheet));
 			node.addMessage = 1;
 		</event>
 	</button>
@@ -32,10 +32,10 @@
 		<!-- Botão que apaga o objeto da lista -->
 		<button left="215" top="135" width="25" height="100" text="X">
 			<event name="onClick">
-				dialogs.confirmOkCancel("Tem certeza que quer apagar essa mensagem?",
+				Dialogs.confirmOkCancel("Tem certeza que quer apagar essa mensagem?",
 					function (confirmado)
 						if confirmado then
-							ndb.deleteNode(sheet);
+							NDB.deleteNode(sheet);
 						end;
 				end);
 			</event>

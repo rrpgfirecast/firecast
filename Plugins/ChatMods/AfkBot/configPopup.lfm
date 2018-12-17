@@ -69,7 +69,7 @@
 			<recordList left="10" top="5" width="270" height="490" field="kickList" name="kickList" templateForm="frmKickItem">
 				<event name="onCompare">
 					if nodeA.user and nodeB.user then 
-						return utils.compareStringPtBr(nodeA.login, nodeB.login);
+						return Utils.compareStringPtBr(nodeA.login, nodeB.login);
 					elseif nodeA.user then
 						return 1;
 					elseif nodeB.user then
@@ -94,7 +94,7 @@
 			<recordList left="10" top="5" width="270" height="490" field="welcomeList" name="welcomeList" templateForm="frmWelcomeItem" minQt="1">
 				<event name="onCompare">
 					if nodeA.user and nodeB.user then 
-						return utils.compareStringPtBr(nodeA.login, nodeB.login);
+						return Utils.compareStringPtBr(nodeA.login, nodeB.login);
 					elseif nodeA.user then
 						return 1;
 					elseif nodeB.user then

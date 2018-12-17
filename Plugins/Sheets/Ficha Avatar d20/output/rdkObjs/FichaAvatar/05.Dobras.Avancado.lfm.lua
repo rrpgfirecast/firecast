@@ -33,10 +33,10 @@ local function constructNew_frmAvancado()
 
 			
 		local function askForDelete()
-			dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
+			Dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
 								 function (confirmado)
 									if confirmado then
-										ndb.deleteNode(sheet);
+										NDB.deleteNode(sheet);
 									end;
 								 end);
 		end;
@@ -141,10 +141,10 @@ local function constructNew_frmAvancado()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            			local node = ndb.getRoot(sheet);
+            			local node = NDB.getRoot(sheet);
             			
             			local pt = 0;
-            			local objetos = ndb.getChildNodes(node.campoDasTecnicasAvancadas);
+            			local objetos = NDB.getChildNodes(node.campoDasTecnicasAvancadas);
             			for i=1, #objetos, 1 do 
             				pt = pt + (tonumber(objetos[i].pt) or 0);
             			end;

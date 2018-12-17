@@ -6362,17 +6362,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 0;
             							
@@ -6398,17 +6398,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 0;
             							
@@ -6437,17 +6437,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 1;
             							
@@ -6473,17 +6473,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 1;
             							
@@ -6512,17 +6512,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 2;
             							
@@ -6548,17 +6548,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 2;
             							
@@ -6587,17 +6587,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 3;
             							
@@ -6623,17 +6623,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 3;
             							
@@ -6662,17 +6662,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 4;
             							
@@ -6698,17 +6698,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 4;
             							
@@ -6737,17 +6737,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 5;
             							
@@ -6773,17 +6773,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 5;
             							
@@ -6812,17 +6812,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 6;
             							
@@ -6848,17 +6848,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 6;
             							
@@ -6887,17 +6887,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 7;
             							
@@ -6923,17 +6923,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 7;
             							
@@ -6962,17 +6962,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 8;
             							
@@ -6998,17 +6998,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 8;
             							
@@ -7037,17 +7037,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 9;
             							
@@ -7073,17 +7073,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 9;
             							
@@ -7099,17 +7099,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local mod = 0;
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							
             							self.boxDetalhesDoItem.node.cdSignos = (10+mod+1) .. "  " .. (10+mod+3) .. "  " .. (10+mod+5) .. "  " .. (10+mod+7) .. "  " .. (10+mod+9);
@@ -7152,17 +7152,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 0;
             							
@@ -7188,17 +7188,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 0;
             							
@@ -7227,17 +7227,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 1;
             							
@@ -7263,17 +7263,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 1;
             							
@@ -7302,17 +7302,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 2;
             							
@@ -7338,17 +7338,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 2;
             							
@@ -7377,17 +7377,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 3;
             							
@@ -7413,17 +7413,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 3;
             							
@@ -7452,17 +7452,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 4;
             							
@@ -7488,17 +7488,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 4;
             							
@@ -7527,17 +7527,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 5;
             							
@@ -7563,17 +7563,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 5;
             							
@@ -7602,17 +7602,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 6;
             							
@@ -7638,17 +7638,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 6;
             							
@@ -7677,17 +7677,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 7;
             							
@@ -7713,17 +7713,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 7;
             							
@@ -7752,17 +7752,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 8;
             							
@@ -7788,17 +7788,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 8;
             							
@@ -7827,17 +7827,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 9;
             							
@@ -7863,17 +7863,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 9;
             							
@@ -8062,17 +8062,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 10;
             							
@@ -8098,17 +8098,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 10;
             							
@@ -8137,17 +8137,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 11;
             							
@@ -8173,17 +8173,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 11;
             							
@@ -8212,17 +8212,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 12;
             							
@@ -8248,17 +8248,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 12;
             							
@@ -8287,17 +8287,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 13;
             							
@@ -8323,17 +8323,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 13;
             							
@@ -8362,17 +8362,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 14;
             							
@@ -8398,17 +8398,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 14;
             							
@@ -8437,17 +8437,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 15;
             							
@@ -8473,17 +8473,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 15;
             							
@@ -8512,17 +8512,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 16;
             							
@@ -8548,17 +8548,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 16;
             							
@@ -8587,17 +8587,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 17;
             							
@@ -8623,17 +8623,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 17;
             							
@@ -8662,17 +8662,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 18;
             							
@@ -8698,17 +8698,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 18;
             							
@@ -8737,17 +8737,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoBonus;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 19;
             							
@@ -8773,17 +8773,17 @@ local function constructNew_frmFichaRPGmeister5M_svg()
             							local ctrl = self.boxDetalhesDoItem.node.atributoCD;
             							
             							if ctrl=='1' then
-            								mod = getFOR();
+            								mod = tonumber(sheet.efetModFor) or 0;
             							elseif ctrl=='2' then
-            								mod = getDES();
+            								mod = tonumber(sheet.efetModDes) or 0;
             							elseif ctrl=='3' then
-            								mod = getCON();
+            								mod = tonumber(sheet.efetModCon) or 0;
             							elseif ctrl=='4' then
-            								mod = getINT();
+            								mod = tonumber(sheet.efetModInt) or 0;
             							elseif ctrl=='5' then
-            								mod = getSAB();
+            								mod = tonumber(sheet.efetModSab) or 0;
             							elseif ctrl=='6' then
-            								mod = getCAR();
+            								mod = tonumber(sheet.efetModCar) or 0;
             							end;
             							local nivel = 19;
             							

@@ -148,8 +148,8 @@ local function constructNew_frmConsumiveis()
 			end;
 			
 			if sheet.dados~=nil then
-				local rolagem = rrpg.interpretarRolagem(sheet.dados);
-				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+				local rolagem = Firecast.interpretarRolagem(sheet.dados);
+				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 				local texto = "";
 				if sheet.nome~=nil then
 					texto = texto .. sheet.nome .. " foi usado.";
@@ -175,7 +175,7 @@ local function constructNew_frmConsumiveis()
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (_)
-            ndb.deleteNode(sheet);
+            NDB.deleteNode(sheet);
         end, obj);
 
     function obj:_releaseEvents()

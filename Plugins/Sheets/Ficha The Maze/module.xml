@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.5" compilationDate="04042018152322" sdkApiVersion="34" originalPluginFileName="Ficha The Maze.rpk">
 	<id>Ambesek.The.Maze</id>
-	<version>1.0</version>
+	<version>1.0.1</version>
 	<name>FichaTheMaze</name>
 	<description>Ficha para o sistema e cenario The Maze. </description>
 	<author>Ambesek</author>

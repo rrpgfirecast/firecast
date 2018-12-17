@@ -963,7 +963,7 @@ local function constructNew_frmBase()
     obj.label39:setWidth(100);
     obj.label39:setHeight(25);
     obj.label39:setHorzTextAlign("center");
-    obj.label39:setText("Conjuração");
+    obj.label39:setText("Crítico");
     obj.label39:setName("label39");
 
     obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));

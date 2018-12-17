@@ -126,7 +126,7 @@
     <__EHEX_3432 armadura="0" chave="5" nome="Sobrevivência" treino="False">
         <__ndb__ id="42" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
     </__EHEX_3432>
-    <__EHEX_3433 armadura="0" chave="2" nome="Usar Cordar" treino="False">
+    <__EHEX_3433 armadura="0" chave="2" nome="Usar Cordas" treino="False">
         <__ndb__ id="43" t_armadura="6" t_chave="S" t_nome="S" t_treino="B" />
     </__EHEX_3433>
     <__ndb__ id="1" idGenerator="43" />

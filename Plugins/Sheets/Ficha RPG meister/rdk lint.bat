@@ -1,0 +1,2 @@
+rdk lint
+pause

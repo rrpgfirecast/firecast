@@ -45,17 +45,17 @@ local function constructNew_frmFichaRPGmeister3_svg()
 				local mod = 0;
 				
 				if num == 1 then
-					mod = getFOR();
+					mod = tonumber(sheet.efetModFor) or 0;
 				elseif num == 2 then
-					mod = getDES();
+					mod = tonumber(sheet.efetModDes) or 0;
 				elseif num == 3 then
-					mod = getCON();
+					mod = tonumber(sheet.efetModCon) or 0;
 				elseif num == 4 then
-					mod = getINT();
+					mod = tonumber(sheet.efetModInt) or 0;
 				elseif num == 5 then
-					mod = getSAB();
+					mod = tonumber(sheet.efetModSab) or 0;
 				elseif num == 6 then
-					mod = getCAR();
+					mod = tonumber(sheet.efetModCar) or 0;
 				end;
 
 				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 

@@ -3,7 +3,7 @@ require("vhd.lua");
 require("utils.lua");
 require("internet.lua");
 
-local config = ndb.load("config.xml");
+local config = NDB.load("config.xml");
 
 local function isNewVersion(installed, downloaded)
 	local installedVersion = {};
@@ -35,11 +35,11 @@ local function isNewVersion(installed, downloaded)
 	end;
 end;
 
-nickdb = ndb.load("nickData.xml");
+nickdb = NDB.load("nickData.xml");
 if nickdb.nicksSaved==nil then
 	nickdb.nicksSaved = {};
 end;
-colordb = ndb.load("colorData.xml");
+colordb = NDB.load("colorData.xml");
 if colordb.colorsSaved==nil then
 	colordb.colorsSaved = {};
 end;
@@ -56,7 +56,7 @@ end
 function getConfigWindow(mesa)
 	initializeRoom(mesa);
 
-	local cfgForm = gui.newForm("nicksaverPopup");
+	local cfgForm = GUI.newForm("nicksaverPopup");
 	cfgForm:setNodeObject(config.rooms[mesa.codigoInterno]);
 	cfgForm.title = "Nick Saver - " .. mesa.nome;
 	popup = cfgForm;
@@ -65,7 +65,7 @@ function getConfigWindow(mesa)
 end
 
 -- Implementação dos comandos
-rrpg.messaging.listen("HandleChatCommand", 
+Firecast.Messaging.listen("HandleChatCommand", 
 	function (message)
 		if message.mesa ~= nil then initializeRoom(message.mesa) end;
 
@@ -118,7 +118,7 @@ rrpg.messaging.listen("HandleChatCommand",
 	end);
 
 -- Escuta das mensagens de chat padrão
-rrpg.messaging.listen("MesaJoined", 
+Firecast.Messaging.listen("MesaJoined", 
 	function (message)
 		if message.mesa ~= nil then initializeRoom(message.mesa) end;
 		if message.eu and config.rooms[message.mesa.codigoInterno].nickSaved==true then
@@ -131,7 +131,7 @@ rrpg.messaging.listen("MesaJoined",
 		end
 	end);
 
-rrpg.listen('HandleChatTextInput',
+Firecast.listen('HandleChatTextInput',
 	function(message)  
 		if message.texto:sub(1, 1) == "/" then return end;
         if message.isCommand then return end;
@@ -145,7 +145,7 @@ rrpg.listen('HandleChatTextInput',
 
 		if config.rooms[message.mesa.codigoInterno].colorTalkSaved == true then
 			altered = true;
-			text = string.gsub(text, "-", "[§K".. config.rooms[message.mesa.codigoInterno].colorTalk .. "]-");
+			text = string.gsub(text, "- ", "[§K".. config.rooms[message.mesa.codigoInterno].colorTalk .. "]- ");
 		end;
 
         if config.rooms[message.mesa.codigoInterno].colorActSaved == true then
@@ -163,7 +163,7 @@ rrpg.listen('HandleChatTextInput',
 		end;
 	end);
 
-rrpg.messaging.listen("ListChatCommands",
+Firecast.Messaging.listen("ListChatCommands",
 		function(message)
 				message.response = {{comando="/nicksaver", descricao="Abre o pop up de configuração do Nick Saver. "},
 									{comando="/savenick", descricao="Salva o nick atual para essa mesa. "},
@@ -173,12 +173,12 @@ rrpg.messaging.listen("ListChatCommands",
 		end);
 
 -- auto-update
-internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/NickSaver/output/NickSaver.rpk?raw=true",
+Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/NickSaver/output/NickSaver.rpk?raw=true",
 			function(stream, contentType)
-				local info = rrpg.plugins.getRPKDetails(stream);
+				local info = Firecast.Plugins.getRPKDetails(stream);
 				config.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
 
-				local installed = rrpg.plugins.getInstalledPlugins();
+				local installed = Firecast.Plugins.getInstalledPlugins();
 				local myself;
 				for i=1, #installed, 1 do
 					if installed[i].moduleId == info.moduleId then
@@ -189,10 +189,10 @@ internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/
 
 				if config.noUpdate==true then return end;
 				if myself~= nil and isNewVersion(myself.version, info.version) then
-					Dialogs.choose("Há uma nova versão do Nick Saver (".. infor.version .."). Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+					Dialogs.choose("Há uma nova versão do Nick Saver (".. info.version .."). Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
 						function(selected, selectedIndex, selectedText)
 							if selected and selectedIndex == 1 then
-								gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/NickSaver/output/NickSaver.rpk?raw=true');
+								GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/NickSaver/output/NickSaver.rpk?raw=true');
 							elseif selected and selectedIndex == 3 then
 								config.noUpdate = true;
 							end;
