@@ -372,30 +372,16 @@
 						if sheet.xpAtual == nil then
 							sheet.xpAtual = 0;
 						end;
-						local mod = sheet.xpAtual;
-						mod = string.gsub(mod, "X", "");
-						mod = string.gsub(mod, "P", "");
-						mod = string.gsub(mod, "x", "");
-						mod = string.gsub(mod, "p", "");
-						mod = string.gsub(mod, "%.", "");
-						mod = (tonumber(mod) or 0);
-						local mod2 = 0;
-						local mod3 = 0;
-						while mod>=mod2 do
-							mod3 = mod3+1;
-							mod2 = mod2 + mod3*1000;
+						local xpAtual = tonumber(sheet.xpAtual) or 0;
+						local xpNivel = 0;
+						local nivel = 0;
+						while xpAtual>=xpNivel do
+							nivel = nivel+1;
+							xpNivel = xpNivel + nivel*1000;
 						end
 						
-						while true do  
-							mod2, k = string.gsub(mod2, "^(-?%d+)(%d%d%d)", '%1,%2')
-							if (k==0) then
-							  break
-							end
-						end
-						mod2 = string.gsub(mod2, ",", ".");
-						
-						sheet.xpNivel = mod2 .. "XP";
-						sheet.nep = mod3;
+						sheet.xpNivel = xpNivel;
+						sheet.nep = nivel;
 					end;
 				</event>
 			</dataLink>

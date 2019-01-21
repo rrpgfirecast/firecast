@@ -14001,6 +14001,7 @@ local function constructNew_frmAvatar()
     obj.checkBox33:setHeight(20);
     obj.checkBox33:setField("tracoHabil");
     obj.checkBox33:setText("Hábil");
+    obj.checkBox33:setHint("+4 pontos de perícia no nível 1 e +1 ponto de perícia por nível.");
     obj.checkBox33:setName("checkBox33");
 
     obj.checkBox34 = GUI.fromHandle(_obj_newObject("checkBox"));
@@ -14011,6 +14012,7 @@ local function constructNew_frmAvatar()
     obj.checkBox34:setHeight(20);
     obj.checkBox34:setField("tracoTalentoso");
     obj.checkBox34:setText("Talentoso");
+    obj.checkBox34:setHint("+1 talento.");
     obj.checkBox34:setName("checkBox34");
 
     obj.checkBox35 = GUI.fromHandle(_obj_newObject("checkBox"));
@@ -14021,6 +14023,7 @@ local function constructNew_frmAvatar()
     obj.checkBox35:setHeight(20);
     obj.checkBox35:setField("tracoResistente");
     obj.checkBox35:setText("Resistente");
+    obj.checkBox35:setHint("+1 em todas resistências. ");
     obj.checkBox35:setName("checkBox35");
 
     obj.checkBox36 = GUI.fromHandle(_obj_newObject("checkBox"));
@@ -14031,6 +14034,7 @@ local function constructNew_frmAvatar()
     obj.checkBox36:setHeight(20);
     obj.checkBox36:setField("tracoHeroico");
     obj.checkBox36:setText("Heroico");
+    obj.checkBox36:setHint("+1 em um atributo.");
     obj.checkBox36:setName("checkBox36");
 
     obj.checkBox37 = GUI.fromHandle(_obj_newObject("checkBox"));
@@ -14041,6 +14045,7 @@ local function constructNew_frmAvatar()
     obj.checkBox37:setHeight(20);
     obj.checkBox37:setField("tracoRobusto");
     obj.checkBox37:setText("Robusto");
+    obj.checkBox37:setHint("+1PV por nível.");
     obj.checkBox37:setName("checkBox37");
 
     obj.layout51 = GUI.fromHandle(_obj_newObject("layout"));
@@ -14165,6 +14170,7 @@ local function constructNew_frmAvatar()
     obj.classeBBA:setItems({'Ruim (0)', 'Médio (+1)', 'Bom (+2)'});
     obj.classeBBA:setValues({'0', '1', '2'});
     obj.classeBBA:setFontColor("white");
+    obj.classeBBA:setHint("BBA = 1/2 do NEP e sabe usar todas armas simples e armaduras leves.");
 
     obj.label366 = GUI.fromHandle(_obj_newObject("label"));
     obj.label366:setParent(obj.layout52);
@@ -14189,6 +14195,7 @@ local function constructNew_frmAvatar()
     obj.classeBBF:setItems({'Ruim (0)', 'Bom (+1)'});
     obj.classeBBF:setValues({'0', '1'});
     obj.classeBBF:setFontColor("white");
+    obj.classeBBF:setHint("BBF = 1/3 do NEP.");
 
     obj.label367 = GUI.fromHandle(_obj_newObject("label"));
     obj.label367:setParent(obj.layout52);
@@ -14213,6 +14220,7 @@ local function constructNew_frmAvatar()
     obj.classeBBR:setItems({'Ruim (0)', 'Bom (+1)'});
     obj.classeBBR:setValues({'0', '1'});
     obj.classeBBR:setFontColor("white");
+    obj.classeBBR:setHint("BBR = 1/3 do NEP.");
 
     obj.label368 = GUI.fromHandle(_obj_newObject("label"));
     obj.label368:setParent(obj.layout52);
@@ -14237,6 +14245,7 @@ local function constructNew_frmAvatar()
     obj.classeBBV:setItems({'Ruim (0)', 'Bom (+1)'});
     obj.classeBBV:setValues({'0', '1'});
     obj.classeBBV:setFontColor("white");
+    obj.classeBBV:setHint("BBV = 1/3 do NEP.");
 
     obj.label369 = GUI.fromHandle(_obj_newObject("label"));
     obj.label369:setParent(obj.layout52);
@@ -14261,6 +14270,7 @@ local function constructNew_frmAvatar()
     obj.classePericia:setItems({'Ruim (0)', 'Médio (+1)', 'Bom (+2)', 'Excelente (+3)'});
     obj.classePericia:setValues({'0', '1', '2', '3'});
     obj.classePericia:setFontColor("white");
+    obj.classePericia:setHint("2 + modificador de inteligência por nível, 7 perícias de classe.");
 
     obj.label370 = GUI.fromHandle(_obj_newObject("label"));
     obj.label370:setParent(obj.layout52);
@@ -14285,6 +14295,7 @@ local function constructNew_frmAvatar()
     obj.classeDVs:setItems({'Ruim (0)', 'Médio (+1)', 'Bom (+2)', 'Excelente (+3)'});
     obj.classeDVs:setValues({'0', '1', '2', '3'});
     obj.classeDVs:setFontColor("white");
+    obj.classeDVs:setHint("1d6 + modificador de constituição por nível.");
 
     obj.label371 = GUI.fromHandle(_obj_newObject("label"));
     obj.label371:setParent(obj.layout52);
@@ -14309,6 +14320,7 @@ local function constructNew_frmAvatar()
     obj.classePoderes:setItems({'Inferior (0)', 'Menor (+1)', 'Moderada (+2)', 'Maior (+3)', 'Superior (+4)'});
     obj.classePoderes:setValues({'0', '1', '2', '3', '4'});
     obj.classePoderes:setFontColor("white");
+    obj.classePoderes:setHint("Inferior: seus poderes seguem a progressão mais lenta conhecida (x1).");
 
     obj.dataLink44 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink44:setParent(obj.layout52);
@@ -18956,7 +18968,8 @@ local function constructNew_frmAvatar()
                         function (downloaded, total)
                             -- esta função será chamada constantemente.
                             -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
-                        end);
+                        end,
+                        "checkForModification");
         end, obj);
 
     obj._e_event1 = obj.dataLink2:addEventListener("onChange",
@@ -19241,30 +19254,16 @@ local function constructNew_frmAvatar()
             						if sheet.xpAtual == nil then
             							sheet.xpAtual = 0;
             						end;
-            						local mod = sheet.xpAtual;
-            						mod = string.gsub(mod, "X", "");
-            						mod = string.gsub(mod, "P", "");
-            						mod = string.gsub(mod, "x", "");
-            						mod = string.gsub(mod, "p", "");
-            						mod = string.gsub(mod, "%.", "");
-            						mod = (tonumber(mod) or 0);
-            						local mod2 = 0;
-            						local mod3 = 0;
-            						while mod>=mod2 do
-            							mod3 = mod3+1;
-            							mod2 = mod2 + mod3*1000;
+            						local xpAtual = tonumber(sheet.xpAtual) or 0;
+            						local xpNivel = 0;
+            						local nivel = 0;
+            						while xpAtual>=xpNivel do
+            							nivel = nivel+1;
+            							xpNivel = xpNivel + nivel*1000;
             						end
             						
-            						while true do  
-            							mod2, k = string.gsub(mod2, "^(-?%d+)(%d%d%d)", '%1,%2')
-            							if (k==0) then
-            							  break
-            							end
-            						end
-            						mod2 = string.gsub(mod2, ",", ".");
-            						
-            						sheet.xpNivel = mod2 .. "XP";
-            						sheet.nep = mod3;
+            						sheet.xpNivel = xpNivel;
+            						sheet.nep = nivel;
             					end;
         end, obj);
 
@@ -21598,7 +21597,7 @@ local function constructNew_frmAvatar()
             					elseif sheet.classeBBA == "2" then
             						self.classeBBA.hint = "BBA = NEP e sabe usar todas armas simples e comuns, armaduras até pesada e escudos.";
             					else
-            						self.classeBBA.hint = "";
+            						self.classeBBA.hint = "BBA = 1/2 do NEP e sabe usar todas armas simples e armaduras leves.";
             					end;
         end, obj);
 
@@ -21611,7 +21610,7 @@ local function constructNew_frmAvatar()
             					elseif sheet.classeBBF == "1" then
             						self.classeBBF.hint = "BBF = 2 + 1/2 do NEP.";
             					else
-            						self.classeBBF.hint = "";
+            						self.classeBBF.hint = "BBF = 1/3 do NEP.";
             					end;
         end, obj);
 
@@ -21624,7 +21623,7 @@ local function constructNew_frmAvatar()
             					elseif sheet.classeBBR == "1" then
             						self.classeBBR.hint = "BBR = 2 + 1/2 do NEP.";
             					else
-            						self.classeBBR.hint = "";
+            						self.classeBBR.hint = "BBR = 1/3 do NEP.";
             					end;
         end, obj);
 
@@ -21637,7 +21636,7 @@ local function constructNew_frmAvatar()
             					elseif sheet.classeBBV == "1" then
             						self.classeBBV.hint = "BBV = 2 + 1/2 do NEP.";
             					else
-            						self.classeBBV.hint = "";
+            						self.classeBBV.hint = "BBV = 1/3 do NEP.";
             					end;
         end, obj);
 
@@ -21654,7 +21653,7 @@ local function constructNew_frmAvatar()
             					elseif sheet.classePericia == "3" then
             						self.classePericia.hint = "8 + modificador de inteligência por nível, 22 perícias de classe.";
             					else
-            						self.classePericia.hint = "";
+            						self.classePericia.hint = "2 + modificador de inteligência por nível, 7 perícias de classe.";
             					end;
         end, obj);
 
@@ -21671,7 +21670,7 @@ local function constructNew_frmAvatar()
             					elseif sheet.classeDVs == "3" then
             						self.classeDVs.hint = "1d12 + modificador de constituição por nível.";
             					else
-            						self.classeDVs.hint = "";
+            						self.classeDVs.hint = "1d6 + modificador de constituição por nível.";
             					end;
         end, obj);
 
@@ -21690,7 +21689,7 @@ local function constructNew_frmAvatar()
             					elseif sheet.classePoderes == "4" then
             						self.classePoderes.hint = "Superior: seus poderes crescem a velocidade surpreendente e assustadora (x1,5).";
             					else
-            						self.classeDVs.hint = "";
+            						self.classePoderes.hint = "Inferior: seus poderes seguem a progressão mais lenta conhecida (x1).";
             					end;
         end, obj);
 

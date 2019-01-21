@@ -66,11 +66,11 @@
 
 			<label left="10" top="5" width="360" height="20" text="Traços Raciais" horzTextAlign="center"/>
 
-			<checkBox left="10" top="30" width="360" height="20" field="tracoHabil" text="Hábil"/>
-			<checkBox left="10" top="55" width="360" height="20" field="tracoTalentoso" text="Talentoso"/>
-			<checkBox left="10" top="80" width="360" height="20" field="tracoResistente" text="Resistente"/>
-			<checkBox left="10" top="105" width="360" height="20" field="tracoHeroico" text="Heroico"/>
-			<checkBox left="10" top="130" width="360" height="20" field="tracoRobusto" text="Robusto"/>
+			<checkBox left="10" top="30" width="360" height="20" field="tracoHabil" text="Hábil" hint="+4 pontos de perícia no nível 1 e +1 ponto de perícia por nível."/>
+			<checkBox left="10" top="55" width="360" height="20" field="tracoTalentoso" text="Talentoso" hint="+1 talento."/>
+			<checkBox left="10" top="80" width="360" height="20" field="tracoResistente" text="Resistente" hint="+1 em todas resistências. "/>
+			<checkBox left="10" top="105" width="360" height="20" field="tracoHeroico" text="Heroico" hint="+1 em um atributo."/>
+			<checkBox left="10" top="130" width="360" height="20" field="tracoRobusto" text="Robusto" hint="+1PV por nível."/>
 		</layout>
 		
 		<layout left="790" top="0" width="380" height="350">
@@ -95,7 +95,7 @@
 			<label left="315" top="30" width="60" height="60" field="classePontos" horzTextAlign="center"/>
 
 			<label left="10" top="35" width="150" height="20" text="Bônus Base Ataque" horzTextAlign="center"/>
-			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="35" width="150" height="25" name="classeBBA" field="classeBBA" items="{'Ruim (0)', 'Médio (+1)', 'Bom (+2)'}" values="{'0', '1', '2'}" fontColor="white">
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="35" width="150" height="25" name="classeBBA" field="classeBBA" items="{'Ruim (0)', 'Médio (+1)', 'Bom (+2)'}" values="{'0', '1', '2'}" fontColor="white" hint="BBA = 1/2 do NEP e sabe usar todas armas simples e armaduras leves.">
 				<event name="onChange">
 					if sheet==nil then return end;
 
@@ -106,13 +106,13 @@
 					elseif sheet.classeBBA == "2" then
 						self.classeBBA.hint = "BBA = NEP e sabe usar todas armas simples e comuns, armaduras até pesada e escudos.";
 					else
-						self.classeBBA.hint = "";
+						self.classeBBA.hint = "BBA = 1/2 do NEP e sabe usar todas armas simples e armaduras leves.";
 					end;
 				</event>
 			</comboBox>
 
 			<label left="10" top="65" width="150" height="20" text="Bônus Base Fortitude" horzTextAlign="center"/>
-			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="65" width="150" height="25" name="classeBBF" field="classeBBF" items="{'Ruim (0)', 'Bom (+1)'}" values="{'0', '1'}" fontColor="white">
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="65" width="150" height="25" name="classeBBF" field="classeBBF" items="{'Ruim (0)', 'Bom (+1)'}" values="{'0', '1'}" fontColor="white" hint="BBF = 1/3 do NEP.">
 				<event name="onChange">
 					if sheet==nil then return end;
 
@@ -121,13 +121,13 @@
 					elseif sheet.classeBBF == "1" then
 						self.classeBBF.hint = "BBF = 2 + 1/2 do NEP.";
 					else
-						self.classeBBF.hint = "";
+						self.classeBBF.hint = "BBF = 1/3 do NEP.";
 					end;
 				</event>
 			</comboBox>
 
 			<label left="10" top="95" width="150" height="20" text="Bônus Base Reflexos" horzTextAlign="center"/>
-			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="95" width="150" height="25" name="classeBBR" field="classeBBR" items="{'Ruim (0)', 'Bom (+1)'}" values="{'0', '1'}" fontColor="white">
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="95" width="150" height="25" name="classeBBR" field="classeBBR" items="{'Ruim (0)', 'Bom (+1)'}" values="{'0', '1'}" fontColor="white" hint="BBR = 1/3 do NEP.">
 				<event name="onChange">
 					if sheet==nil then return end;
 
@@ -136,13 +136,13 @@
 					elseif sheet.classeBBR == "1" then
 						self.classeBBR.hint = "BBR = 2 + 1/2 do NEP.";
 					else
-						self.classeBBR.hint = "";
+						self.classeBBR.hint = "BBR = 1/3 do NEP.";
 					end;
 				</event>
 			</comboBox>
 
 			<label left="10" top="125" width="150" height="20" text="Bônus Base Vontade" horzTextAlign="center"/>
-			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="125" width="150" height="25" name="classeBBV" field="classeBBV" items="{'Ruim (0)', 'Bom (+1)'}" values="{'0', '1'}" fontColor="white">
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="125" width="150" height="25" name="classeBBV" field="classeBBV" items="{'Ruim (0)', 'Bom (+1)'}" values="{'0', '1'}" fontColor="white" hint="BBV = 1/3 do NEP.">
 				<event name="onChange">
 					if sheet==nil then return end;
 
@@ -151,13 +151,13 @@
 					elseif sheet.classeBBV == "1" then
 						self.classeBBV.hint = "BBV = 2 + 1/2 do NEP.";
 					else
-						self.classeBBV.hint = "";
+						self.classeBBV.hint = "BBV = 1/3 do NEP.";
 					end;
 				</event>
 			</comboBox>
 
 			<label left="10" top="155" width="150" height="20" text="Perícias" horzTextAlign="center"/>
-			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="155" width="150" height="25" name="classePericia" field="classePericia" items="{'Ruim (0)', 'Médio (+1)', 'Bom (+2)', 'Excelente (+3)'}" values="{'0', '1', '2', '3'}" fontColor="white">
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="155" width="150" height="25" name="classePericia" field="classePericia" items="{'Ruim (0)', 'Médio (+1)', 'Bom (+2)', 'Excelente (+3)'}" values="{'0', '1', '2', '3'}" fontColor="white" hint="2 + modificador de inteligência por nível, 7 perícias de classe.">
 				<event name="onChange">
 					if sheet==nil then return end;
 
@@ -170,13 +170,13 @@
 					elseif sheet.classePericia == "3" then
 						self.classePericia.hint = "8 + modificador de inteligência por nível, 22 perícias de classe.";
 					else
-						self.classePericia.hint = "";
+						self.classePericia.hint = "2 + modificador de inteligência por nível, 7 perícias de classe.";
 					end;
 				</event>
 			</comboBox>
 
 			<label left="10" top="185" width="150" height="20" text="Dados de Vida" horzTextAlign="center"/>
-			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="185" width="150" height="25" name="classeDVs" field="classeDVs" items="{'Ruim (0)', 'Médio (+1)', 'Bom (+2)', 'Excelente (+3)'}" values="{'0', '1', '2', '3'}" fontColor="white">
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="185" width="150" height="25" name="classeDVs" field="classeDVs" items="{'Ruim (0)', 'Médio (+1)', 'Bom (+2)', 'Excelente (+3)'}" values="{'0', '1', '2', '3'}" fontColor="white" hint="1d6 + modificador de constituição por nível.">
 				<event name="onChange">
 					if sheet==nil then return end;
 
@@ -189,13 +189,13 @@
 					elseif sheet.classeDVs == "3" then
 						self.classeDVs.hint = "1d12 + modificador de constituição por nível.";
 					else
-						self.classeDVs.hint = "";
+						self.classeDVs.hint = "1d6 + modificador de constituição por nível.";
 					end;
 				</event>
 			</comboBox>
 
 			<label left="10" top="215" width="150" height="20" text="Progressão de Poderes" horzTextAlign="center"/>
-			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="215" width="150" height="25" name="classePoderes" field="classePoderes" items="{'Inferior (0)', 'Menor (+1)', 'Moderada (+2)', 'Maior (+3)', 'Superior (+4)'}" values="{'0', '1', '2', '3', '4'}" fontColor="white">
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="215" width="150" height="25" name="classePoderes" field="classePoderes" items="{'Inferior (0)', 'Menor (+1)', 'Moderada (+2)', 'Maior (+3)', 'Superior (+4)'}" values="{'0', '1', '2', '3', '4'}" fontColor="white" hint="Inferior: seus poderes seguem a progressão mais lenta conhecida (x1).">
 				<event name="onChange">
 					if sheet==nil then return end;
 
@@ -210,7 +210,7 @@
 					elseif sheet.classePoderes == "4" then
 						self.classePoderes.hint = "Superior: seus poderes crescem a velocidade surpreendente e assustadora (x1,5).";
 					else
-						self.classeDVs.hint = "";
+						self.classePoderes.hint = "Inferior: seus poderes seguem a progressão mais lenta conhecida (x1).";
 					end;
 				</event>
 			</comboBox>

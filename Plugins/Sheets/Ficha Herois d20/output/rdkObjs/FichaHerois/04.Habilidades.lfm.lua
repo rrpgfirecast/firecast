@@ -270,6 +270,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
     obj.checkBox1:setHeight(20);
     obj.checkBox1:setField("tracoHabil");
     obj.checkBox1:setText("Hábil");
+    obj.checkBox1:setHint("+4 pontos de perícia no nível 1 e +1 ponto de perícia por nível.");
     obj.checkBox1:setName("checkBox1");
 
     obj.checkBox2 = GUI.fromHandle(_obj_newObject("checkBox"));
@@ -280,6 +281,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
     obj.checkBox2:setHeight(20);
     obj.checkBox2:setField("tracoTalentoso");
     obj.checkBox2:setText("Talentoso");
+    obj.checkBox2:setHint("+1 talento.");
     obj.checkBox2:setName("checkBox2");
 
     obj.checkBox3 = GUI.fromHandle(_obj_newObject("checkBox"));
@@ -290,6 +292,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
     obj.checkBox3:setHeight(20);
     obj.checkBox3:setField("tracoResistente");
     obj.checkBox3:setText("Resistente");
+    obj.checkBox3:setHint("+1 em todas resistências. ");
     obj.checkBox3:setName("checkBox3");
 
     obj.checkBox4 = GUI.fromHandle(_obj_newObject("checkBox"));
@@ -300,6 +303,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
     obj.checkBox4:setHeight(20);
     obj.checkBox4:setField("tracoHeroico");
     obj.checkBox4:setText("Heroico");
+    obj.checkBox4:setHint("+1 em um atributo.");
     obj.checkBox4:setName("checkBox4");
 
     obj.checkBox5 = GUI.fromHandle(_obj_newObject("checkBox"));
@@ -310,6 +314,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
     obj.checkBox5:setHeight(20);
     obj.checkBox5:setField("tracoRobusto");
     obj.checkBox5:setText("Robusto");
+    obj.checkBox5:setHint("+1PV por nível.");
     obj.checkBox5:setName("checkBox5");
 
     obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
@@ -434,6 +439,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
     obj.classeBBA:setItems({'Ruim (0)', 'Médio (+1)', 'Bom (+2)'});
     obj.classeBBA:setValues({'0', '1', '2'});
     obj.classeBBA:setFontColor("white");
+    obj.classeBBA:setHint("BBA = 1/2 do NEP e sabe usar todas armas simples e armaduras leves.");
 
     obj.label13 = GUI.fromHandle(_obj_newObject("label"));
     obj.label13:setParent(obj.layout5);
@@ -458,6 +464,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
     obj.classeBBF:setItems({'Ruim (0)', 'Bom (+1)'});
     obj.classeBBF:setValues({'0', '1'});
     obj.classeBBF:setFontColor("white");
+    obj.classeBBF:setHint("BBF = 1/3 do NEP.");
 
     obj.label14 = GUI.fromHandle(_obj_newObject("label"));
     obj.label14:setParent(obj.layout5);
@@ -482,6 +489,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
     obj.classeBBR:setItems({'Ruim (0)', 'Bom (+1)'});
     obj.classeBBR:setValues({'0', '1'});
     obj.classeBBR:setFontColor("white");
+    obj.classeBBR:setHint("BBR = 1/3 do NEP.");
 
     obj.label15 = GUI.fromHandle(_obj_newObject("label"));
     obj.label15:setParent(obj.layout5);
@@ -506,6 +514,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
     obj.classeBBV:setItems({'Ruim (0)', 'Bom (+1)'});
     obj.classeBBV:setValues({'0', '1'});
     obj.classeBBV:setFontColor("white");
+    obj.classeBBV:setHint("BBV = 1/3 do NEP.");
 
     obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.layout5);
@@ -530,6 +539,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
     obj.classePericia:setItems({'Ruim (0)', 'Médio (+1)', 'Bom (+2)', 'Excelente (+3)'});
     obj.classePericia:setValues({'0', '1', '2', '3'});
     obj.classePericia:setFontColor("white");
+    obj.classePericia:setHint("2 + modificador de inteligência por nível, 7 perícias de classe.");
 
     obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.layout5);
@@ -554,6 +564,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
     obj.classeDVs:setItems({'Ruim (0)', 'Médio (+1)', 'Bom (+2)', 'Excelente (+3)'});
     obj.classeDVs:setValues({'0', '1', '2', '3'});
     obj.classeDVs:setFontColor("white");
+    obj.classeDVs:setHint("1d6 + modificador de constituição por nível.");
 
     obj.label18 = GUI.fromHandle(_obj_newObject("label"));
     obj.label18:setParent(obj.layout5);
@@ -578,6 +589,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
     obj.classePoderes:setItems({'Inferior (0)', 'Menor (+1)', 'Moderada (+2)', 'Maior (+3)', 'Superior (+4)'});
     obj.classePoderes:setValues({'0', '1', '2', '3', '4'});
     obj.classePoderes:setFontColor("white");
+    obj.classePoderes:setHint("Inferior: seus poderes seguem a progressão mais lenta conhecida (x1).");
 
     obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj.layout5);
@@ -672,7 +684,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
             					elseif sheet.classeBBA == "2" then
             						self.classeBBA.hint = "BBA = NEP e sabe usar todas armas simples e comuns, armaduras até pesada e escudos.";
             					else
-            						self.classeBBA.hint = "";
+            						self.classeBBA.hint = "BBA = 1/2 do NEP e sabe usar todas armas simples e armaduras leves.";
             					end;
         end, obj);
 
@@ -685,7 +697,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
             					elseif sheet.classeBBF == "1" then
             						self.classeBBF.hint = "BBF = 2 + 1/2 do NEP.";
             					else
-            						self.classeBBF.hint = "";
+            						self.classeBBF.hint = "BBF = 1/3 do NEP.";
             					end;
         end, obj);
 
@@ -698,7 +710,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
             					elseif sheet.classeBBR == "1" then
             						self.classeBBR.hint = "BBR = 2 + 1/2 do NEP.";
             					else
-            						self.classeBBR.hint = "";
+            						self.classeBBR.hint = "BBR = 1/3 do NEP.";
             					end;
         end, obj);
 
@@ -711,7 +723,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
             					elseif sheet.classeBBV == "1" then
             						self.classeBBV.hint = "BBV = 2 + 1/2 do NEP.";
             					else
-            						self.classeBBV.hint = "";
+            						self.classeBBV.hint = "BBV = 1/3 do NEP.";
             					end;
         end, obj);
 
@@ -728,7 +740,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
             					elseif sheet.classePericia == "3" then
             						self.classePericia.hint = "8 + modificador de inteligência por nível, 22 perícias de classe.";
             					else
-            						self.classePericia.hint = "";
+            						self.classePericia.hint = "2 + modificador de inteligência por nível, 7 perícias de classe.";
             					end;
         end, obj);
 
@@ -745,7 +757,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
             					elseif sheet.classeDVs == "3" then
             						self.classeDVs.hint = "1d12 + modificador de constituição por nível.";
             					else
-            						self.classeDVs.hint = "";
+            						self.classeDVs.hint = "1d6 + modificador de constituição por nível.";
             					end;
         end, obj);
 
@@ -764,7 +776,7 @@ local function constructNew_frmFichaRPGmeister4_svg()
             					elseif sheet.classePoderes == "4" then
             						self.classePoderes.hint = "Superior: seus poderes crescem a velocidade surpreendente e assustadora (x1,5).";
             					else
-            						self.classeDVs.hint = "";
+            						self.classePoderes.hint = "Inferior: seus poderes seguem a progressão mais lenta conhecida (x1).";
             					end;
         end, obj);
 
