@@ -491,15 +491,20 @@ function SHAPEMaker_New(scene, shape)
 	function maker:dettach()
 		if isAttached then
 			isAttached = false;
-			scene.viewport.cursor = oldCursor;				
 			
-			scene.viewport:unlisten(listenerMouseDown);
-			scene.viewport:unlisten(listenerMouseMove);
-			scene.viewport:unlisten(listenerMouseUp);		
-			scene.viewport:unlisten(listenerKeyDown);				
-			scene.viewport:unlisten(listenerDraw);	
-			scene.viewport:unlisten(listenerDblClick);			 
-			scene.viewport:needRepaint();			
+			local viewportToDettach = scene.viewport;
+			
+			if viewportToDettach ~= nil then				
+				viewportToDettach.cursor = oldCursor;				
+				
+				viewportToDettach:unlisten(listenerMouseDown);
+				viewportToDettach:unlisten(listenerMouseMove);
+				viewportToDettach:unlisten(listenerMouseUp);		
+				viewportToDettach:unlisten(listenerKeyDown);				
+				viewportToDettach:unlisten(listenerDraw);	
+				viewportToDettach:unlisten(listenerDblClick);			 
+				viewportToDettach:needRepaint();		
+			end;
 		end;
 	end;
 	
