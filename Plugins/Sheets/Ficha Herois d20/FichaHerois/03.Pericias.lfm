@@ -5,27 +5,27 @@
 		<script> 
 		<![CDATA[
 			
-			local dnd = ndb.load("dndskills.xml");
+			local dnd = NDB.load("dndskills.xml");
 
 			local function updateAtributes(num)
 				local atr = "" .. num;
 				local mod = 0;
 				
 				if num == 1 then
-					mod = getFOR();
+					mod = (tonumber(sheet.efetModFor) or 0);
 				elseif num == 2 then
-					mod = getDES();
+					mod = (tonumber(sheet.efetModDes) or 0);
 				elseif num == 3 then
-					mod = getCON();
+					mod = (tonumber(sheet.efetModCon) or 0);
 				elseif num == 4 then
-					mod = getINT();
+					mod = (tonumber(sheet.efetModInt) or 0);
 				elseif num == 5 then
-					mod = getSAB();
+					mod = (tonumber(sheet.efetModSab) or 0);
 				elseif num == 6 then
-					mod = getCAR();
+					mod = (tonumber(sheet.efetModCar) or 0);
 				end;
 
-				local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
 				for i=1, #nodes, 1 do
 					if nodes[i].chavePericia == atr then
 						nodes[i].atributoPericia = mod;
@@ -35,7 +35,7 @@
 
 			local function updatePenalty()
 				if sheet~=nil then
-					local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
 					for i=1, #nodes, 1 do
 						if nodes[i].penalidadeArmadura or nodes[i].penalidadeArmadura2 then
 							local pen = (tonumber(sheet.penalidade) or 0)
@@ -66,9 +66,9 @@
 			end;
 
 			local function dndSkills()
-				local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
 				for i=1, #nodes, 1 do
-					ndb.deleteNode(nodes[i]);
+					NDB.deleteNode(nodes[i]);
 				end
 
 				for i=1, 47, 1 do
@@ -135,7 +135,7 @@
 
 			<recordList name="rclListaDasPericias" field="campoDasPericias" templateForm="frmFichaRPGmeister3p_svg" left="5" top="25" width="920" height="650" layout="verticalTiles">
 				<event name="onCompare">
-		            return utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
+		            return Utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
 		        </event>
 			</recordList>
 		</layout>
@@ -152,7 +152,7 @@
 
 			<recordList name="rclListaDosIdiomas" field="campoDosIdiomas" templateForm="frmFichaRPGmeister3i_svg" left="5" top="75" width="290" height="320" layout="vertical">
 				<event name="onCompare">
-		            return utils.compareStringPtBr(nodeA.nomeIdioma, nodeB.nomeIdioma);
+		            return Utils.compareStringPtBr(nodeA.nomeIdioma, nodeB.nomeIdioma);
 		        </event>
 			</recordList>
 		</layout>

@@ -1,340 +1,340 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister1_svg" align="client" theme="dark" margins="{top=1}">
-	<scrollBox align="client">
-		<template name="smallTitleCenter">
-			<flowPart minWidth="50" maxWidth="50" height="15">
-				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
-			</flowPart>
-		</template>
-		<template name="smallFieldCenter">
-			<flowPart minWidth="50" maxWidth="50" height="20">
-				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
-			</flowPart>
-		</template>
-		<template name="midFieldCenter">
-			<flowPart minWidth="50" maxWidth="75" height="20">
-				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
-			</flowPart>
-		</template>
-		<template name="smallCheckboxCenter">
-			<flowPart minWidth="50" maxWidth="75" height="15">
-				<checkBox align="client" class="" field="$(field)" text="$(text)" horzTextAlign="center" fontSize="10"/>
-			</flowPart>
-		</template>
-		<template name="longTextCenter">
-			<flowPart minWidth="140" maxWidth="150" height="20">
-				<edit align="client" class="" field="$(field)" fontSize="12"/>
-			</flowPart>
-		</template>
-		<template name="smallLabelCenter">
-			<flowPart minWidth="50" maxWidth="50" height="20">
-				<rectangle align="client" color="black" strokeColor="white" strokeSize="1"/>
-				<label align="client" field="$(field)" horzTextAlign="center" fontSize="12"/>
-			</flowPart>
-		</template>
-		<template name="atributeComboBox">
-			<flowPart minWidth="60" maxWidth="60" height="20">
-				<comboBox align="client" fontColor="white" field="$(field)" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}"/>
-			</flowPart>
-		</template>
-		<template name="atributeFlow">
-			<flowLayout align="top" autoHeight="true" maxControlsPerLine="13" margins="{bottom=4}" horzAlign="center">
-				<smallFieldCenter field="inicial$(atr)"/>
-				<smallFieldCenter field="raca$(atr)"/>
-				<smallFieldCenter field="nep$(atr)"/>
-				<smallFieldCenter field="inerente$(atr)"/>
-				<smallFieldCenter field="tamanho$(atr)"/>
-				<smallFieldCenter field="outros$(atr)"/>
-				<flowPart minWidth="20" maxWidth="20" height="20"/>
-				<midFieldCenter field="melhoria$(atr)"/>
-				<midFieldCenter field="danoTemp$(atr)"/>
-				<midFieldCenter field="danoPerm$(atr)"/>
-				<midFieldCenter field="temporario$(atr)"/>
-				<midFieldCenter field="magia$(atr)"/>
-				<midFieldCenter field="classe$(atr)"/>
-			</flowLayout>
+	<template name="smallTitleCenter">
+		<flowPart minWidth="50" maxWidth="50" height="15">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+		</flowPart>
+	</template>
+	<template name="smallFieldCenter">
+		<flowPart minWidth="50" maxWidth="50" height="20">
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="midFieldCenter">
+		<flowPart minWidth="50" maxWidth="75" height="20">
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="smallCheckboxCenter">
+		<flowPart minWidth="50" maxWidth="75" height="15">
+			<checkBox align="client" class="" field="$(field)" text="$(text)" horzTextAlign="center" fontSize="10"/>
+		</flowPart>
+	</template>
+	<template name="longTextCenter">
+		<flowPart minWidth="140" maxWidth="150" height="20">
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="smallLabelCenter">
+		<flowPart minWidth="50" maxWidth="50" height="20">
+			<rectangle align="client" color="black" strokeColor="white" strokeSize="1"/>
+			<label align="client" field="$(field)" horzTextAlign="center" fontSize="12"/>
+		</flowPart>
+	</template>
+	<template name="atributeComboBox">
+		<flowPart minWidth="60" maxWidth="60" height="20">
+			<comboBox align="client" fontColor="white" field="$(field)" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}"/>
+		</flowPart>
+	</template>
+	<template name="atributeFlow">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="13" margins="{bottom=4}" horzAlign="center">
+			<smallFieldCenter field="inicial$(atr)"/>
+			<smallFieldCenter field="raca$(atr)"/>
+			<smallFieldCenter field="nep$(atr)"/>
+			<smallFieldCenter field="inerente$(atr)"/>
+			<smallFieldCenter field="tamanho$(atr)"/>
+			<smallFieldCenter field="outros$(atr)"/>
+			<flowPart minWidth="20" maxWidth="20" height="20"/>
+			<midFieldCenter field="melhoria$(atr)"/>
+			<midFieldCenter field="danoTemp$(atr)"/>
+			<midFieldCenter field="danoPerm$(atr)"/>
+			<midFieldCenter field="temporario$(atr)"/>
+			<midFieldCenter field="magia$(atr)"/>
+			<midFieldCenter field="classe$(atr)"/>
+		</flowLayout>
 
-			<dataLink fields="{'isMelhoriaActive', 'isDnTempActive', 'isDnPermActive', 'isTempActive', 'isClasseActive', 'isMagiaActive'}" defaultValues="{'true', 'true', 'true', 'true', 'true', 'true'}"/>
-			<dataLink fields="{'inicial$(atr)', 'raca$(atr)', 'nep$(atr)', 'inerente$(atr)', 'tamanho$(atr)', 'outros$(atr)', 'melhoria$(atr)', 'danoTemp$(atr)', 'danoPerm$(atr)', 'temporario$(atr)', 'magia$(atr)', 'classe$(atr)', 'isMelhoriaActive', 'isDnTempActive', 'isDnPermActive', 'isTempActive', 'isClasseActive', 'isMagiaActive'}">
-				<event name="onChange"><![CDATA[
-					if sheet~= nil then
-						local real = 	(tonumber(sheet.inicial$(atr)) or 0) + 
-										(tonumber(sheet.raca$(atr)) or 0) + 
-										(tonumber(sheet.nep$(atr)) or 0) + 
-										(tonumber(sheet.inerente$(atr)) or 0) + 
-										(tonumber(sheet.tamanho$(atr)) or 0) + 
-										(tonumber(sheet.outros$(atr)) or 0);
-						local efetivo = real;
-						if sheet.isMelhoriaActive then
-							efetivo = efetivo + (tonumber(sheet.melhoria$(atr)) or 0);
-						end;
-						if sheet.isDnTempActive then
-							efetivo = efetivo + (tonumber(sheet.danoTemp$(atr)) or 0);
-						end;
-						if sheet.isDnPermActive then
-							efetivo = efetivo + (tonumber(sheet.danoPerm$(atr)) or 0);
-						end;
-						if sheet.isTempActive then
-							efetivo = efetivo + (tonumber(sheet.temporario$(atr)) or 0);
-						end;
-						if sheet.isClasseActive then
-							efetivo = efetivo + (tonumber(sheet.magia$(atr)) or 0);
-						end;
-						if sheet.isMagiaActive then
-							efetivo = efetivo + (tonumber(sheet.classe$(atr)) or 0);
-						end;			
-						sheet.real$(atr) = real;
-						sheet.efet$(atr) = efetivo;
+		<dataLink fields="{'isMelhoriaActive', 'isDnTempActive', 'isDnPermActive', 'isTempActive', 'isClasseActive', 'isMagiaActive'}" defaultValues="{'true', 'true', 'true', 'true', 'true', 'true'}"/>
+		<dataLink fields="{'inicial$(atr)', 'raca$(atr)', 'nep$(atr)', 'inerente$(atr)', 'tamanho$(atr)', 'outros$(atr)', 'melhoria$(atr)', 'danoTemp$(atr)', 'danoPerm$(atr)', 'temporario$(atr)', 'magia$(atr)', 'classe$(atr)', 'isMelhoriaActive', 'isDnTempActive', 'isDnPermActive', 'isTempActive', 'isClasseActive', 'isMagiaActive'}">
+			<event name="onChange"><![CDATA[
+				if sheet~= nil then
+					local real = 	(tonumber(sheet.inicial$(atr)) or 0) + 
+									(tonumber(sheet.raca$(atr)) or 0) + 
+									(tonumber(sheet.nep$(atr)) or 0) + 
+									(tonumber(sheet.inerente$(atr)) or 0) + 
+									(tonumber(sheet.tamanho$(atr)) or 0) + 
+									(tonumber(sheet.outros$(atr)) or 0);
+					local efetivo = real;
+					if sheet.isMelhoriaActive then
+						efetivo = efetivo + (tonumber(sheet.melhoria$(atr)) or 0);
 					end;
-					]]>	
-				</event>
-			</dataLink>
-		</template>
-		<template name="Atribute">
-			<button left="5" width="35" text="$(atrU)" fontSize="11">
-				<event name="onClick">
-					local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.efetMod$(atr)) or 0);
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "NOME"));
-				</event>
-			</button>
-			
-			<rectangle left="45" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label  left="45" width="35" height="25" field="real$(atr)" horzTextAlign="center"/>
-			<rectangle left="80" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label field="realMod$(atr)" text="0" left="80" top="3" width="35" horzTextAlign="center"/>
-			<dataLink field="real$(atr)">
-				<event name="onChange">
-					if sheet ~= nil then
-						sheet.realMod$(atr) = getMOD(sheet.real$(atr));  
+					if sheet.isDnTempActive then
+						efetivo = efetivo + (tonumber(sheet.danoTemp$(atr)) or 0);
 					end;
-				</event>
-			</dataLink>
-			
-			<rectangle left="120" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label  left="120" width="35" height="25" field="efet$(atr)" horzTextAlign="center"/>
-			<rectangle left="155" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label field="efetMod$(atr)" text="0" left="155" top="3" width="35" horzTextAlign="center"/>
-			<dataLink field="efet$(atr)">
-				<event name="onChange">
-					if sheet ~= nil then
-						sheet.efetMod$(atr) = getMOD(sheet.efet$(atr));
-						updateAtributes($(num));
+					if sheet.isDnPermActive then
+						efetivo = efetivo + (tonumber(sheet.danoPerm$(atr)) or 0);
 					end;
-				</event>
-			</dataLink>
-			
-			<script>
-				local function get$(atrU)()
-					local mod = tonumber(sheet.efetMod$(atr)) or 0;
-					return mod;
+					if sheet.isTempActive then
+						efetivo = efetivo + (tonumber(sheet.temporario$(atr)) or 0);
+					end;
+					if sheet.isClasseActive then
+						efetivo = efetivo + (tonumber(sheet.magia$(atr)) or 0);
+					end;
+					if sheet.isMagiaActive then
+						efetivo = efetivo + (tonumber(sheet.classe$(atr)) or 0);
+					end;			
+					sheet.real$(atr) = real;
+					sheet.efet$(atr) = efetivo;
 				end;
-			</script>
-		</template>
-		<template name="resitenceFlow">
-			<flowLayout align="top" autoHeight="true" maxControlsPerLine="11" margins="{bottom=4}" horzAlign="center">
-				<smallLabelCenter field="base$(tr)"/>
-				<smallLabelCenter field="atrMod$(tr)"/>
-				<smallFieldCenter field="magia$(tr)"/>
-				<smallFieldCenter field="variavel$(tr)"/>
-				<smallFieldCenter field="temporario$(tr)"/>
-				<smallFieldCenter field="outros$(tr)"/>
-				<atributeComboBox field="atrTr$(tr)"/>
-			</flowLayout>
-
-			<dataLink fields="{'base$(tr)', 'atrMod$(tr)', 'magia$(tr)', 'variavel$(tr)', 'temporario$(tr)', 'outros$(tr)'}">
-				<event name="onChange"><![CDATA[
-					if sheet~= nil then
-						local tr = (tonumber(sheet.base$(tr)) or 0) + 
-										(tonumber(sheet.atrMod$(tr)) or 0) + 
-										(tonumber(sheet.magia$(tr)) or 0) + 
-										(tonumber(sheet.variavel$(tr)) or 0) + 
-										(tonumber(sheet.temporario$(tr)) or 0) + 
-										(tonumber(sheet.outros$(tr)) or 0);
-						sheet.tr$(tr) = tr;
-					end;
-					]]>
-				</event>
-			</dataLink>
-		</template>
-		<template name="Resistence">
-			<button left="5" width="45" text="$(atrU)" fontSize="11">
-				<event name="onClick">
-					local rolagem = rrpg.interpretarRolagem("1d20 +" .. (sheet.tr$(atr)) or "0");
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "NOME"));
-				</event>
-			</button>
-			
-			<rectangle left="55" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label  left="55" width="40" height="25" field="tr$(atr)" horzTextAlign="center"/>
-		</template>
-		<template name="Speed">
-			<label left="5" top="0" width="70" height="20" text="$(nome)"/>
-			<edit vertTextAlign="center" left="75" top="0" width="70" height="20" field="desl$(mode)"/>
-			<rectangle left="155" top="0" width="60" height="20" color="black" strokeColor="white" strokeSize="1"/>
-			<label left="155" top="0" width="60" height="20" field="desl$(mode)Quadrados" horzTextAlign="center"/>
-
-			<dataLink field="desl$(mode)">
-				<event name="onChange">
-					if sheet ~= nil and sheet.desl$(mode) ~= nil then
-
-						local mod = sheet.desl$(mode);
-						mod = string.gsub(mod, "m", "");
-						mod = string.gsub(mod, ",", ".");
-
-						mod = math.floor((tonumber(mod) or 0) / 1.5);
-						sheet.desl$(mode)Quadrados = mod .. "q";
-					end;
-				</event>
-			</dataLink>
-		</template>
-		<template name="Protection">
-			<smallTitleCenter text="$(nome)"/>
-			<smallFieldCenter field="$(field)"/>
-			<longTextCenter field="$(field)2"/>
-			<flowPart minWidth="50" maxWidth="60" height="20">
-				<checkBox field="$(field)Surp" text="Surpresa" fontSize="10" height="20"/>
-			</flowPart>
-			<flowPart minWidth="50" maxWidth="60" height="20">
-				<checkBox field="$(field)Toque" text="Toque" fontSize="10" height="15"/>
-			</flowPart>
-		</template>
-
-		<popup name="popAtributo" width="820" height="170" backOpacity="0.4" autoScopeNode="false">
-			<flowLayout align="top" autoHeight="true" maxControlsPerLine="13" margins="{bottom=4}" horzAlign="center">
-				<smallTitleCenter text="Inicial"/>
-				<smallTitleCenter text="Raça"/>
-				<smallTitleCenter text="NEP"/>
-				<smallTitleCenter text="Inerente"/>
-				<smallTitleCenter text="Tamanho"/>
-				<smallTitleCenter text="Outros"/>
-				<flowPart minWidth="20" maxWidth="20" height="15"/>
-				<smallCheckboxCenter text="Melhoria" field="isMelhoriaActive"/>
-				<smallCheckboxCenter text="Dn Temp." field="isDnTempActive"/>
-				<smallCheckboxCenter text="Dn Perm." field="isDnPermActive"/>
-				<smallCheckboxCenter text="Temp." field="isTempActive"/>
-				<smallCheckboxCenter text="Classe" field="isClasseActive"/>
-				<smallCheckboxCenter text="Poder" field="isMagiaActive"/>
-			</flowLayout>
-			<atributeFlow atr="For"/>
-			<atributeFlow atr="Des"/>
-			<atributeFlow atr="Con"/>
-			<atributeFlow atr="Int"/>
-			<atributeFlow atr="Sab"/>
-			<atributeFlow atr="Car"/>
-		</popup>
-		<popup name="popResistencia" width="380" height="150" backOpacity="0.4" autoScopeNode="false">
-			<flowLayout align="top" autoHeight="true" maxControlsPerLine="11" margins="{bottom=4}" horzAlign="center">
-				<smallTitleCenter text="Base"/>
-				<smallTitleCenter text="Atributo"/>
-				<smallTitleCenter text="Poder"/>
-				<smallTitleCenter text="Melhoria"/>
-				<smallTitleCenter text="Temp."/>
-				<smallTitleCenter text="Outros"/>
-				<smallTitleCenter text=""/>
-			</flowLayout>
-			<resitenceFlow tr="Fort"/>
-			<resitenceFlow tr="Ref"/>
-			<resitenceFlow tr="Von"/>
-			<textEditor align="client" field="trCondicional"/>
-		</popup>
-		<popup name="popCA" width="500" height="210" backOpacity="0.4" autoScopeNode="false">
-			<flowLayout align="top" autoHeight="true" margins="{bottom=4}">
-				<smallTitleCenter text="Armadura"/>
-				<smallLabelCenter field="equipamentoCorpoCA"/>
-				<longTextCenter field="equipamentoCorpoCA2"/>
-				<flowPart minWidth="50" maxWidth="60" height="20">
-					<checkBox field="armaduraCaSurp" text="Surpresa" fontSize="10" height="20"/>
-				</flowPart>
-				<flowPart minWidth="50" maxWidth="60" height="20">
-					<checkBox field="armaduraCaToque" text="Toque" fontSize="10" height="15"/>
-				</flowPart>
-				<flowPart minWidth="10" maxWidth="20" height="15"/>
-				<smallTitleCenter text="Penalidade"/>
-				<smallLabelCenter field="equipamentoCorpoPen"/>
-				<flowLineBreak/>
-				
-				<Protection nome="Escudo" field="escudoCa"/>
-				<flowPart minWidth="10" maxWidth="20" height="15"/>
-				<smallTitleCenter text="Penalidade"/>
-				<smallFieldCenter field="escudoPen"/>
-				<flowLineBreak/>
-				
-				<smallTitleCenter text="Destreza"/>
-				<smallLabelCenter field="efetModDes"/>
-				<longTextCenter field="destrezaCa2"/>
-				<flowPart minWidth="50" maxWidth="60" height="20">
-					<checkBox field="destrezaCaSurp" text="Surpresa" fontSize="10" height="20"/>
-				</flowPart>
-				<flowPart minWidth="50" maxWidth="60" height="20">
-					<checkBox field="destrezaCaToque" text="Toque" fontSize="10" height="15"/>
-				</flowPart>
-				
-				<flowLineBreak/>
-				<Protection nome="Tamanho" field="tamanhoCa"/>
-				<flowLineBreak/>
-				<Protection nome="Natural" field="naturalCa"/>
-				<flowLineBreak/>
-				<Protection nome="Deflexao" field="deflexaoCa"/>
-				<flowLineBreak/>
-				<Protection nome="Esquiva" field="esquivaCa"/>
-				<flowLineBreak/>
-				<Protection nome="Sorte" field="sorteCa"/>
-				<flowLineBreak/>
-				<Protection nome="Outros" field="outrosCa"/>
-				<flowLineBreak/>
-				<Protection nome="Variados" field="variadosCa"/>
-				<flowLineBreak/>
-			</flowLayout>
-		</popup>
-		<popup name="popGrapple" width="225" height="50" backOpacity="0.4" autoScopeNode="false">
-			<flowLayout align="top" autoHeight="true" maxControlsPerLine="4" margins="{bottom=4}" horzAlign="center">
-				<smallTitleCenter text="BBA"/>
-				<smallTitleCenter text="Força"/>
-				<smallTitleCenter text="Tamanho"/>
-				<smallTitleCenter text="Outros"/>
-
-				<smallLabelCenter field="bba"/>
-				<smallLabelCenter field="efetModFor"/>
-				<smallFieldCenter field="agarrarTam"/>
-				<smallFieldCenter field="agarrarVar"/>
-			</flowLayout>
-		</popup>
-
-		<script><![CDATA[
-			local function getMOD(valor)
-				if valor~= nil then
-					local mod = math.floor(((tonumber(valor) or 10) / 2) - 5);
-					if (mod >= 0) then
-						mod = "+" .. mod;
-					end;					   
-					return mod;
-				else
-					return "+0";
+				]]>	
+			</event>
+		</dataLink>
+	</template>
+	<template name="Atribute">
+		<button left="5" width="35" text="$(atrU)" fontSize="11">
+			<event name="onClick">
+				local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.efetMod$(atr)) or 0);
+				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "NOME"));
+			</event>
+		</button>
+		
+		<rectangle left="45" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label  left="45" width="35" height="25" field="real$(atr)" horzTextAlign="center"/>
+		<rectangle left="80" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label field="realMod$(atr)" text="0" left="80" top="3" width="35" horzTextAlign="center"/>
+		<dataLink field="real$(atr)">
+			<event name="onChange">
+				if sheet ~= nil then
+					sheet.realMod$(atr) = getMOD(sheet.real$(atr));  
 				end;
-			end;
+			</event>
+		</dataLink>
+		
+		<rectangle left="120" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label  left="120" width="35" height="25" field="efet$(atr)" horzTextAlign="center"/>
+		<rectangle left="155" top="0" width="35" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label field="efetMod$(atr)" text="0" left="155" top="3" width="35" horzTextAlign="center"/>
+		<dataLink field="efet$(atr)">
+			<event name="onChange">
+				if sheet ~= nil then
+					sheet.efetMod$(atr) = getMOD(sheet.efet$(atr));
+					updateAtributes($(num));
+				end;
+			</event>
+		</dataLink>
+	</template>
+	<template name="resitenceFlow">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="11" margins="{bottom=4}" horzAlign="center">
+			<smallLabelCenter field="base$(tr)"/>
+			<smallLabelCenter field="atrMod$(tr)"/>
+			<smallFieldCenter field="magia$(tr)"/>
+			<smallFieldCenter field="variavel$(tr)"/>
+			<smallFieldCenter field="temporario$(tr)"/>
+			<smallFieldCenter field="outros$(tr)"/>
+			<atributeComboBox field="atrTr$(tr)"/>
+		</flowLayout>
 
-			local function getNumber(text)
-				local mod = "0";
-				if text~= nil then
-					mod = string.gsub(text, "%.", "");
-					mod = string.gsub(mod, "k", "000");
-					mod = string.gsub(mod, "K", "");
-					mod = string.gsub(mod, "g", "");
-					mod = string.gsub(mod, "P", "");
-					mod = string.gsub(mod, "p", "");
-					mod = string.gsub(mod, "O", "");
-					mod = string.gsub(mod, "o", "");
-					mod = string.gsub(mod, "X", "");
-					mod = string.gsub(mod, "x", "");
-					mod = string.gsub(mod, " ", "");
+		<dataLink fields="{'base$(tr)', 'atrMod$(tr)', 'magia$(tr)', 'variavel$(tr)', 'temporario$(tr)', 'outros$(tr)', 'tracoResistente'}">
+			<event name="onChange"><![CDATA[
+				if sheet~= nil then
+
+					local traco = 0;
+					if sheet.tracoResistente then
+						traco = 1;
+					end;
+
+					local tr = (tonumber(sheet.base$(tr)) or 0) + 
+									(tonumber(sheet.atrMod$(tr)) or 0) + 
+									(tonumber(sheet.magia$(tr)) or 0) + 
+									(tonumber(sheet.variavel$(tr)) or 0) + 
+									(tonumber(sheet.temporario$(tr)) or 0) + 
+									(tonumber(sheet.outros$(tr)) or 0) + traco;
+					sheet.tr$(tr) = tr;
+				end;
+				]]>
+			</event>
+		</dataLink>
+	</template>
+	<template name="Resistence">
+		<button left="5" width="45" text="$(atrU)" fontSize="11">
+			<event name="onClick">
+				local rolagem = Firecast.interpretarRolagem("1d20 +" .. (sheet.tr$(atr)) or "0");
+				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+				mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de $(atrN) de " .. (sheet.nome or "NOME"));
+			</event>
+		</button>
+		
+		<rectangle left="55" top="0" width="40" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label  left="55" width="40" height="25" field="tr$(atr)" horzTextAlign="center"/>
+	</template>
+	<template name="Speed">
+		<label left="5" top="0" width="70" height="20" text="$(nome)"/>
+		<edit vertTextAlign="center" left="75" top="0" width="70" height="20" field="desl$(mode)"/>
+		<rectangle left="155" top="0" width="60" height="20" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="155" top="0" width="60" height="20" field="desl$(mode)Quadrados" horzTextAlign="center"/>
+
+		<dataLink field="desl$(mode)">
+			<event name="onChange">
+				if sheet ~= nil and sheet.desl$(mode) ~= nil then
+
+					local mod = sheet.desl$(mode);
+					mod = string.gsub(mod, "m", "");
 					mod = string.gsub(mod, ",", ".");
-				end
-				return tonumber(mod);
+
+					mod = math.floor((tonumber(mod) or 0) / 1.5);
+					sheet.desl$(mode)Quadrados = mod .. "q";
+				end;
+			</event>
+		</dataLink>
+	</template>
+	<template name="Protection">
+		<smallTitleCenter text="$(nome)"/>
+		<smallFieldCenter field="$(field)"/>
+		<longTextCenter field="$(field)2"/>
+		<flowPart minWidth="50" maxWidth="60" height="20">
+			<checkBox field="$(field)Surp" text="Surpresa" fontSize="10" height="20"/>
+		</flowPart>
+		<flowPart minWidth="50" maxWidth="60" height="20">
+			<checkBox field="$(field)Toque" text="Toque" fontSize="10" height="15"/>
+		</flowPart>
+	</template>
+
+	<popup name="popAtributo" width="820" height="170" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="13" margins="{bottom=4}" horzAlign="center">
+			<smallTitleCenter text="Inicial"/>
+			<smallTitleCenter text="Raça"/>
+			<smallTitleCenter text="NEP"/>
+			<smallTitleCenter text="Inerente"/>
+			<smallTitleCenter text="Tamanho"/>
+			<smallTitleCenter text="Outros"/>
+			<flowPart minWidth="20" maxWidth="20" height="15"/>
+			<smallCheckboxCenter text="Melhoria" field="isMelhoriaActive"/>
+			<smallCheckboxCenter text="Dn Temp." field="isDnTempActive"/>
+			<smallCheckboxCenter text="Dn Perm." field="isDnPermActive"/>
+			<smallCheckboxCenter text="Temp." field="isTempActive"/>
+			<smallCheckboxCenter text="Classe" field="isClasseActive"/>
+			<smallCheckboxCenter text="Poder" field="isMagiaActive"/>
+		</flowLayout>
+		<atributeFlow atr="For"/>
+		<atributeFlow atr="Des"/>
+		<atributeFlow atr="Con"/>
+		<atributeFlow atr="Int"/>
+		<atributeFlow atr="Sab"/>
+		<atributeFlow atr="Car"/>
+	</popup>
+	<popup name="popResistencia" width="380" height="150" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="11" margins="{bottom=4}" horzAlign="center">
+			<smallTitleCenter text="Base"/>
+			<smallTitleCenter text="Atributo"/>
+			<smallTitleCenter text="Poder"/>
+			<smallTitleCenter text="Melhoria"/>
+			<smallTitleCenter text="Temp."/>
+			<smallTitleCenter text="Outros"/>
+			<smallTitleCenter text=""/>
+		</flowLayout>
+		<resitenceFlow tr="Fort"/>
+		<resitenceFlow tr="Ref"/>
+		<resitenceFlow tr="Von"/>
+		<textEditor align="client" field="trCondicional"/>
+	</popup>
+	<popup name="popCA" width="500" height="210" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" margins="{bottom=4}">
+			<smallTitleCenter text="Armadura"/>
+			<smallLabelCenter field="equipamentoCorpoCA"/>
+			<longTextCenter field="equipamentoCorpoCA2"/>
+			<flowPart minWidth="50" maxWidth="60" height="20">
+				<checkBox field="armaduraCaSurp" text="Surpresa" fontSize="10" height="20"/>
+			</flowPart>
+			<flowPart minWidth="50" maxWidth="60" height="20">
+				<checkBox field="armaduraCaToque" text="Toque" fontSize="10" height="15"/>
+			</flowPart>
+			<flowPart minWidth="10" maxWidth="20" height="15"/>
+			<smallTitleCenter text="Penalidade"/>
+			<smallLabelCenter field="equipamentoCorpoPen"/>
+			<flowLineBreak/>
+			
+			<Protection nome="Escudo" field="escudoCa"/>
+			<flowPart minWidth="10" maxWidth="20" height="15"/>
+			<smallTitleCenter text="Penalidade"/>
+			<smallFieldCenter field="escudoPen"/>
+			<flowLineBreak/>
+			
+			<smallTitleCenter text="Destreza"/>
+			<smallLabelCenter field="efetModDes"/>
+			<longTextCenter field="destrezaCa2"/>
+			<flowPart minWidth="50" maxWidth="60" height="20">
+				<checkBox field="destrezaCaSurp" text="Surpresa" fontSize="10" height="20"/>
+			</flowPart>
+			<flowPart minWidth="50" maxWidth="60" height="20">
+				<checkBox field="destrezaCaToque" text="Toque" fontSize="10" height="15"/>
+			</flowPart>
+			
+			<flowLineBreak/>
+			<Protection nome="Tamanho" field="tamanhoCa"/>
+			<flowLineBreak/>
+			<Protection nome="Natural" field="naturalCa"/>
+			<flowLineBreak/>
+			<Protection nome="Deflexao" field="deflexaoCa"/>
+			<flowLineBreak/>
+			<Protection nome="Esquiva" field="esquivaCa"/>
+			<flowLineBreak/>
+			<Protection nome="Sorte" field="sorteCa"/>
+			<flowLineBreak/>
+			<Protection nome="Outros" field="outrosCa"/>
+			<flowLineBreak/>
+			<Protection nome="Variados" field="variadosCa"/>
+			<flowLineBreak/>
+		</flowLayout>
+	</popup>
+	<popup name="popGrapple" width="225" height="50" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="4" margins="{bottom=4}" horzAlign="center">
+			<smallTitleCenter text="BBA"/>
+			<smallTitleCenter text="Força"/>
+			<smallTitleCenter text="Tamanho"/>
+			<smallTitleCenter text="Outros"/>
+
+			<smallLabelCenter field="bba"/>
+			<smallLabelCenter field="efetModFor"/>
+			<smallFieldCenter field="agarrarTam"/>
+			<smallFieldCenter field="agarrarVar"/>
+		</flowLayout>
+	</popup>
+
+	<script><![CDATA[
+		local function getMOD(valor)
+			if valor~= nil then
+				local mod = math.floor(((tonumber(valor) or 10) / 2) - 5);
+				if (mod >= 0) then
+					mod = "+" .. mod;
+				end;					   
+				return mod;
+			else
+				return "+0";
 			end;
-			]]>
-		</script>
+		end;
+
+		local function getNumber(text)
+			local mod = "0";
+			if text~= nil then
+				mod = string.gsub(text, "%.", "");
+				mod = string.gsub(mod, "k", "000");
+				mod = string.gsub(mod, "K", "");
+				mod = string.gsub(mod, "g", "");
+				mod = string.gsub(mod, "P", "");
+				mod = string.gsub(mod, "p", "");
+				mod = string.gsub(mod, "O", "");
+				mod = string.gsub(mod, "o", "");
+				mod = string.gsub(mod, "X", "");
+				mod = string.gsub(mod, "x", "");
+				mod = string.gsub(mod, " ", "");
+				mod = string.gsub(mod, ",", ".");
+			end
+			return tonumber(mod);
+		end;
+		]]>
+	</script>
+	
+	<scrollBox align="client">
 
 		<rectangle left="0" top="0" width="740" height="85" color="black">
 			<label left="5" top="5" width="50" height="25" text="NOME"/>
@@ -352,27 +352,19 @@
 			<label field="nep" left="520" top="5" width="105" height="25" horzTextAlign="center"/>
 			
 			<label left="445" top="30" width="70" height="25" text="XP"/>
-			<edit vertTextAlign="center" left="520" top="30" width="105" height="25" field="xpAtual"/>
+			<formatEdit vertTextAlign="center" left="520" top="30" width="105" height="25" field="xpAtual" unit="XP"/>
 			<rectangle left="625" top="30" width="105" height="25" color="black" strokeColor="white" strokeSize="1"/>
 			<label field="xpNivel" left="625" top="30" width="105" height="25" horzTextAlign="center"/>
 			
 			<button left="445" top="56" width="50" text="ADD">
 				<event name="onClick">
-						local mod = (getNumber(sheet.xpAtual) or 0) + (getNumber(sheet.xpNova) or 0);
+						local xp = (tonumber(sheet.xpAtual) or 0) + (tonumber(sheet.xpNova) or 0);
 						
-						while true do  
-							mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
-							if (k==0) then
-							  break
-							end
-						end
-						mod = string.gsub(mod, ",", ".");
-						
-						sheet.xpAtual = mod .. "XP";
+						sheet.xpAtual = xp;
 						sheet.xpNova = "0";
 					</event>
 			</button>
-			<edit vertTextAlign="center" left="520" top="55" width="210" height="25" field="xpNova"/>
+			<edit vertTextAlign="center" left="520" top="55" width="210" height="25" field="xpNova" type="number"/>
 
 			<dataLink field="xpAtual">
 				<event name="onChange">
@@ -405,35 +397,6 @@
 						sheet.xpNivel = mod2 .. "XP";
 						sheet.nep = mod3;
 					end;
-				</event>
-			</dataLink>
-			<dataLink field="nep">
-				<event name="onChange"><![CDATA[
-					if sheet==nil then return end;
-
-					local pt = 0;
-					local nep = (tonumber(sheet.nep) or 0);
-
-					for i=1, nep, 1 do
-						pt = pt + 50 + math.floor(i/2) * 5;
-					end;
-					sheet.pt_total = pt;
-					]]>
-				</event>
-			</dataLink>
-			<dataLink fields="{'pt_talento', 'pt_outro', 'pt_classe', 'pt_dobra', 'pt_tecnica', 'pt_tecnica_avancada'}">
-				<event name="onChange"><![CDATA[
-					if sheet==nil then return end;
-
-					local pt_gasto = 	(tonumber(sheet.pt_talento) or 0) + 
-										(tonumber(sheet.pt_outro) or 0) + 
-										(tonumber(sheet.pt_classe) or 0) + 
-										(tonumber(sheet.pt_dobra) or 0) + 
-										(tonumber(sheet.pt_tecnica) or 0) + 
-										(tonumber(sheet.pt_tecnica_avancada) or 0);
-
-					sheet.pt_gasto = pt_gasto;
-					]]>
 				</event>
 			</dataLink>
 		</rectangle>
@@ -512,8 +475,8 @@
 			
 			<button left="35" top="25" width="75" height="25" text="INICIATIVA" fontSize="11">
 				<event name="onClick">
-					local rolagem = rrpg.interpretarRolagem("1d20 " .. (sheet.iniciativa or "+0"));
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					local rolagem = Firecast.interpretarRolagem("1d20 " .. (sheet.iniciativa or "+0"));
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
 				</event>
 			</button>
@@ -692,7 +655,7 @@
 			
 			<button left="5" top="70" width="40" height="25"  text="DVs">
 				<event name="onClick">
-					local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 					sheet.modificador = sheet.modificador or 0;
 					mesaDoPersonagem.activeChat:rolarDados(sheet.dvs, "Pontos de Vigor de " .. (sheet.nome or "NOME"),
 						function (rolagem)
@@ -711,7 +674,7 @@
 									media = media + operacao.valor;
 								end;
 							end;
-							local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 							mesaDoPersonagem.activeChat:enviarMensagem("PV máximo: " .. maximo .. "; PV médio: " .. math.floor(media));
 							sheet.pvTotal = math.floor(media);
 						end);  
@@ -744,11 +707,11 @@
 			<script>
 				local function caSecreta()
 					if sheet~= nil then
-						local jogadores = rrpg.getMesaDe(sheet).jogadores;
+						local jogadores = Firecast.getMesaDe(sheet).jogadores;
 						local current = nil;
 						
 						for i = 1, #jogadores, 1 do
-							if jogadores[i].login==rrpg.getCurrentUser().login then
+							if jogadores[i].login==Firecast.getCurrentUser().login then
 								current = jogadores[i];
 							end;
 						end; 
@@ -810,8 +773,8 @@
 			<layout left="0" top="60" width="180" height="25">
 				<button left="5" top="0" width="70" height="25" text="AGARRAR" fontSize="11">
 					<event name="onClick">
-						local rolagem = rrpg.interpretarRolagem("1d20 + " .. (sheet.agarrar or "0"));
-						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+						local rolagem = Firecast.interpretarRolagem("1d20 + " .. (sheet.agarrar or "0"));
+						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Agarrar de " .. (sheet.nome or "NOME"));
 					</event>
 				</button>
@@ -872,49 +835,49 @@
 						local num = tonumber(sheet.atrTrFort) or 3;
 
 						if num == 1 then
-							atrModFort = getFOR();
+							atrModFort = (tonumber(sheet.efetModFor) or 0);
 						elseif num == 2 then
-							atrModFort = getDES();
+							atrModFort = (tonumber(sheet.efetModDes) or 0);
 						elseif num == 3 then
-							atrModFort = getCON();
+							atrModFort = (tonumber(sheet.efetModCon) or 0);
 						elseif num == 4 then
-							atrModFort = getINT();
+							atrModFort = (tonumber(sheet.efetModInt) or 0);
 						elseif num == 5 then
-							atrModFort = getSAB();
+							atrModFort = (tonumber(sheet.efetModSab) or 0);
 						elseif num == 6 then
-							atrModFort = getCAR();
+							atrModFort = (tonumber(sheet.efetModCar) or 0);
 						end;
 
 						num = tonumber(sheet.atrTrRef) or 2;
 
 						if num == 1 then
-							atrModRef = getFOR();
+							atrModRef = (tonumber(sheet.efetModFor) or 0);
 						elseif num == 2 then
-							atrModRef = getDES();
+							atrModRef = (tonumber(sheet.efetModDes) or 0);
 						elseif num == 3 then
-							atrModRef = getCON();
+							atrModRef = (tonumber(sheet.efetModCon) or 0);
 						elseif num == 4 then
-							atrModRef = getINT();
+							atrModRef = (tonumber(sheet.efetModInt) or 0);
 						elseif num == 5 then
-							atrModRef = getSAB();
+							atrModRef = (tonumber(sheet.efetModSab) or 0);
 						elseif num == 6 then
-							atrModRef = getCAR();
+							atrModRef = (tonumber(sheet.efetModCar) or 0);
 						end;
 
 						num = tonumber(sheet.atrTrVon) or 5;
 
 						if num == 1 then
-							atrModVon = getFOR();
+							atrModVon = (tonumber(sheet.efetModFor) or 0);
 						elseif num == 2 then
-							atrModVon = getDES();
+							atrModVon = (tonumber(sheet.efetModDes) or 0);
 						elseif num == 3 then
-							atrModVon = getCON();
+							atrModVon = (tonumber(sheet.efetModCon) or 0);
 						elseif num == 4 then
-							atrModVon = getINT();
+							atrModVon = (tonumber(sheet.efetModInt) or 0);
 						elseif num == 5 then
-							atrModVon = getSAB();
+							atrModVon = (tonumber(sheet.efetModSab) or 0);
 						elseif num == 6 then
-							atrModVon = getCAR();
+							atrModVon = (tonumber(sheet.efetModCar) or 0);
 						end;
 
 						sheet.atrModFort = atrModFort;

@@ -3,10 +3,10 @@
 	 <script> 
 		<![CDATA[			
 		local function askForDelete()
-			dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
+			Dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
 								 function (confirmado)
 									if confirmado then
-										ndb.deleteNode(sheet);
+										NDB.deleteNode(sheet);
 									end;
 								 end);
 		end;
@@ -30,33 +30,4 @@
 	<edit vertTextAlign="center" left="35" top="0" width="265" height="23" field="nomeHabilidade"/>
 	<button left="300" top="1" width="23" height="23" text="i" onClick="showHabilidadePopup();"/>
 	<button left="325" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
-
-	<dataLink field="custoHabilidade">
-		<event name="onChange">
-			if sheet==nil then return end;
-
-			local node = ndb.getRoot(sheet);
-			
-			local pt = 0;
-			local objetos = ndb.getChildNodes(node.campoDosTalentos);
-			for i=1, #objetos, 1 do 
-				pt = pt + (tonumber(objetos[i].custoHabilidade) or 0);
-			end;
-			node.pt_talento = pt;
-
-			local pt = 0;
-			local objetos = ndb.getChildNodes(node.campoDosOutros);
-			for i=1, #objetos, 1 do 
-				pt = pt + (tonumber(objetos[i].custoHabilidade) or 0);
-			end;
-			node.pt_outro = pt;
-
-			local pt = 0;
-			local objetos = ndb.getChildNodes(node.campoDasCaracteristicasClasse);
-			for i=1, #objetos, 1 do 
-				pt = pt + (tonumber(objetos[i].custoHabilidade) or 0);
-			end;
-			node.pt_classe = pt;
-		</event>
-	</dataLink>
 </form>

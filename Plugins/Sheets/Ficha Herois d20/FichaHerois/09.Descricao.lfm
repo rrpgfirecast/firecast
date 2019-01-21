@@ -121,15 +121,15 @@
 						str = 1;
 					end;
 
-					local load = ndb.load("loads.xml");
+					local load = NDB.load("loads.xml");
 
 					local light = (load.light[str] * mult);
 					local medium = (load.medium[str] * mult);
 					local heavy = (load.heavy[str] * mult);
 
-					sheet.cargaLeve = light .. "Kg";
-					sheet.cargaMedia = medium .. "Kg";
-					sheet.cargaPesada = heavy .. "Kg";
+					sheet.cargaLeve = light;
+					sheet.cargaMedia = medium;
+					sheet.cargaPesada = heavy;
 
 					sheet.agarrarTam = 0 - mod2;
 					sheet.tamanhoCa = mod1;

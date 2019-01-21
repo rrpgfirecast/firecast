@@ -29,16 +29,15 @@ local function constructNew_frmFichaRPGmeister7A_svg()
     obj:setName("frmFichaRPGmeister7A_svg");
     obj:setWidth(465);
     obj:setHeight(25);
-    obj:setTheme("dark");
     obj:setMargins({top=1});
 
 			
 		local function askForDelete()
-			dialogs.confirmYesNo("Deseja realmente apagar essa arma?",
+			Dialogs.confirmYesNo("Deseja realmente apagar essa arma?",
 								 function (confirmado)
 									if confirmado then
-										local node = ndb.getRoot(sheet);
-										local nodes = ndb.getChildNodes(node.campoDasArmas); 
+										local node = NDB.getRoot(sheet);
+										local nodes = NDB.getChildNodes(node.campoDasArmas); 
 										local index = 0;
 										for i=1, #nodes, 1 do
 											if nodes[i]==sheet then
@@ -46,9 +45,9 @@ local function constructNew_frmFichaRPGmeister7A_svg()
 											end;
 										end;
 
-										local ataques = ndb.getChildNodes(node.campoDosAtaques);
+										local ataques = NDB.getChildNodes(node.campoDosAtaques);
 										for i=1, #ataques, 1 do
-											local armas = ndb.getChildNodes(ataques[i].campoDeArmas);
+											local armas = NDB.getChildNodes(ataques[i].campoDeArmas);
 											for j=1, #armas, 1 do
 												local weaponID = tonumber(armas[j].weaponType) or 0;
 												if weaponID == index then
@@ -59,7 +58,7 @@ local function constructNew_frmFichaRPGmeister7A_svg()
 											end;
 										end;
 
-										ndb.deleteNode(sheet);
+										NDB.deleteNode(sheet);
 									end;
 								 end);
 		end;
@@ -75,64 +74,27 @@ local function constructNew_frmFichaRPGmeister7A_svg()
 			end;				
 		end;
 
-		local function getNumber(text)
-			local mod = "0";
-			if text~= nil then
-				mod = string.gsub(text, "%.", "");
-				mod = string.gsub(mod, "k", "000");
-				mod = string.gsub(mod, "K", "");
-				mod = string.gsub(mod, "g", "");
-				mod = string.gsub(mod, "P", "");
-				mod = string.gsub(mod, "p", "");
-				mod = string.gsub(mod, "O", "");
-				mod = string.gsub(mod, "o", "");
-				mod = string.gsub(mod, "X", "");
-				mod = string.gsub(mod, "x", "");
-				mod = string.gsub(mod, " ", "");
-				mod = string.gsub(mod, ",", ".");
-			end
-			return tonumber(mod);
-		end;
-
 		local function weaponPrice()
 			if sheet~= nil then
-				local node = ndb.getRoot(sheet);
-				local mod = 0;
-				local nodes = ndb.getChildNodes(node.campoDasArmas); 
+				local node = NDB.getRoot(sheet);
+				local precoArmas = 0;
+				local nodes = NDB.getChildNodes(node.campoDasArmas); 
 				for i=1, #nodes, 1 do
-					mod = mod + (getNumber(nodes[i].preco) or 0);
+					precoArmas = precoArmas + (tonumber(nodes[i].preco) or 0);
 				end
-				mod = string.gsub(mod, "%.", "_");
-				while true do  
-					mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
-					if (k==0) then
-						break
-					end
-				end
-				mod = string.gsub(mod, ",", ".");
-				mod = string.gsub(mod, "_", ",");
-				node.precoArmas = mod;
+				node.precoArmas = precoArmas;
 			end;
 		end;
 
 		local function weaponWeight()
 			if sheet~= nil then
-				local node = ndb.getRoot(sheet);
-				local mod = 0;
-				local nodes = ndb.getChildNodes(node.campoDasArmas); 
+				local node = NDB.getRoot(sheet);
+				local pesoArmas = 0;
+				local nodes = NDB.getChildNodes(node.campoDasArmas); 
 				for i=1, #nodes, 1 do
-					mod = mod + (getNumber(nodes[i].peso) or 0);
+					pesoArmas = pesoArmas + (tonumber(nodes[i].peso) or 0);
 				end
-				mod = string.gsub(mod, "%.", "_");
-				while true do  
-					mod, k = string.gsub(mod, "^(-?%d+)(%d%d%d)", '%1,%2')
-					if (k==0) then
-						break
-					end
-				end
-				mod = string.gsub(mod, ",", ".");
-				mod = string.gsub(mod, "_", ",");
-				node.pesoArmas = mod .. "Kg";
+				node.pesoArmas = pesoArmas;
 			end;
 		end;
 		local function createName()
@@ -171,23 +133,69 @@ local function constructNew_frmFichaRPGmeister7A_svg()
     obj.edit1:setField("nome");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit2:setParent(obj);
-    obj.edit2:setLeft(245);
-    obj.edit2:setTop(1);
-    obj.edit2:setWidth(50);
-    obj.edit2:setHeight(23);
-    obj.edit2:setField("peso");
-    obj.edit2:setName("edit2");
+    obj.weaponWeightLabel = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.weaponWeightLabel:setParent(obj);
+    obj.weaponWeightLabel:setLeft(245);
+    obj.weaponWeightLabel:setTop(1);
+    obj.weaponWeightLabel:setWidth(50);
+    obj.weaponWeightLabel:setHeight(23);
+    obj.weaponWeightLabel:setColor("black");
+    obj.weaponWeightLabel:setStrokeColor("grey");
+    obj.weaponWeightLabel:setStrokeSize(1);
+    obj.weaponWeightLabel:setName("weaponWeightLabel");
+    obj.weaponWeightLabel:setVisible(true);
 
-    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit3:setParent(obj);
-    obj.edit3:setLeft(295);
-    obj.edit3:setTop(1);
-    obj.edit3:setWidth(75);
-    obj.edit3:setHeight(23);
-    obj.edit3:setField("preco");
-    obj.edit3:setName("edit3");
+    obj.label1 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label1:setParent(obj.weaponWeightLabel);
+    obj.label1:setWidth(50);
+    obj.label1:setHeight(23);
+    obj.label1:setField("peso");
+    obj.label1:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label1, "formatFloat",  ",0.## Kg");
+    obj.label1:setName("label1");
+
+    obj.weaponWeightEdit = GUI.fromHandle(_obj_newObject("edit"));
+    obj.weaponWeightEdit:setParent(obj);
+    obj.weaponWeightEdit:setLeft(245);
+    obj.weaponWeightEdit:setTop(1);
+    obj.weaponWeightEdit:setWidth(50);
+    obj.weaponWeightEdit:setHeight(23);
+    obj.weaponWeightEdit:setField("peso");
+    obj.weaponWeightEdit:setType("float");
+    obj.weaponWeightEdit:setName("weaponWeightEdit");
+    obj.weaponWeightEdit:setVisible(false);
+
+    obj.weaponPriceLabel = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.weaponPriceLabel:setParent(obj);
+    obj.weaponPriceLabel:setLeft(295);
+    obj.weaponPriceLabel:setTop(1);
+    obj.weaponPriceLabel:setWidth(75);
+    obj.weaponPriceLabel:setHeight(23);
+    obj.weaponPriceLabel:setColor("black");
+    obj.weaponPriceLabel:setStrokeColor("grey");
+    obj.weaponPriceLabel:setStrokeSize(1);
+    obj.weaponPriceLabel:setName("weaponPriceLabel");
+    obj.weaponPriceLabel:setVisible(true);
+
+    obj.label2 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label2:setParent(obj.weaponPriceLabel);
+    obj.label2:setWidth(75);
+    obj.label2:setHeight(23);
+    obj.label2:setField("preco");
+    obj.label2:setHorzTextAlign("center");
+    lfm_setPropAsString(obj.label2, "formatFloat",  ",0.## $");
+    obj.label2:setName("label2");
+
+    obj.weaponPriceEdit = GUI.fromHandle(_obj_newObject("edit"));
+    obj.weaponPriceEdit:setParent(obj);
+    obj.weaponPriceEdit:setLeft(295);
+    obj.weaponPriceEdit:setTop(1);
+    obj.weaponPriceEdit:setWidth(75);
+    obj.weaponPriceEdit:setHeight(23);
+    obj.weaponPriceEdit:setField("preco");
+    obj.weaponPriceEdit:setType("float");
+    obj.weaponPriceEdit:setName("weaponPriceEdit");
+    obj.weaponPriceEdit:setVisible(false);
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
@@ -216,32 +224,62 @@ local function constructNew_frmFichaRPGmeister7A_svg()
     obj.button3:setText("X");
     obj.button3:setName("button3");
 
-    obj._e_event0 = obj.edit2:addEventListener("onUserChange",
+    obj._e_event0 = obj.weaponWeightLabel:addEventListener("onClick",
+        function (_)
+            self.weaponWeightLabel.visible = false;
+            			self.weaponWeightEdit.visible = true;
+            			self.weaponWeightEdit:setFocus();
+        end, obj);
+
+    obj._e_event1 = obj.weaponWeightEdit:addEventListener("onUserChange",
         function (_)
             weaponWeight();
         end, obj);
 
-    obj._e_event1 = obj.edit3:addEventListener("onUserChange",
+    obj._e_event2 = obj.weaponWeightEdit:addEventListener("onExit",
+        function (_)
+            self.weaponWeightLabel.visible = true;
+            			self.weaponWeightEdit.visible = false;
+        end, obj);
+
+    obj._e_event3 = obj.weaponPriceLabel:addEventListener("onClick",
+        function (_)
+            self.weaponPriceLabel.visible = false;
+            			self.weaponPriceEdit.visible = true;
+            			self.weaponPriceEdit:setFocus();
+        end, obj);
+
+    obj._e_event4 = obj.weaponPriceEdit:addEventListener("onUserChange",
         function (_)
             weaponPrice();
         end, obj);
 
-    obj._e_event2 = obj.button1:addEventListener("onClick",
+    obj._e_event5 = obj.weaponPriceEdit:addEventListener("onExit",
+        function (_)
+            self.weaponPriceLabel.visible = true;
+            			self.weaponPriceEdit.visible = false;
+        end, obj);
+
+    obj._e_event6 = obj.button1:addEventListener("onClick",
         function (_)
             showArmaPopup();
         end, obj);
 
-    obj._e_event3 = obj.button2:addEventListener("onClick",
+    obj._e_event7 = obj.button2:addEventListener("onClick",
         function (_)
             createName();
         end, obj);
 
-    obj._e_event4 = obj.button3:addEventListener("onClick",
+    obj._e_event8 = obj.button3:addEventListener("onClick",
         function (_)
             askForDelete();
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event8);
+        __o_rrpgObjs.removeEventListenerById(self._e_event7);
+        __o_rrpgObjs.removeEventListenerById(self._e_event6);
+        __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
@@ -258,12 +296,16 @@ local function constructNew_frmFichaRPGmeister7A_svg()
           self:setNodeDatabase(nil);
         end;
 
-        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
-        if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
-        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
-        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.weaponPriceEdit ~= nil then self.weaponPriceEdit:destroy(); self.weaponPriceEdit = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.weaponPriceLabel ~= nil then self.weaponPriceLabel:destroy(); self.weaponPriceLabel = nil; end;
+        if self.weaponWeightLabel ~= nil then self.weaponWeightLabel:destroy(); self.weaponWeightLabel = nil; end;
+        if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.weaponWeightEdit ~= nil then self.weaponWeightEdit:destroy(); self.weaponWeightEdit = nil; end;
+        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         self:_oldLFMDestroy();
     end;
 

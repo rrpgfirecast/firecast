@@ -1,47 +1,44 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister4_svg" align="client" theme="dark" margins="{top=1}">
-	 <scrollBox align="client">
+	<template name="habilidadeSmallCenter">
+		<flowPart minWidth="45" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="habilidadeLarge">
+		<flowPart minWidth="180" maxWidth="200" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<popup name="popHabilidade" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+			<habilidadeSmallCenter text="Nível" field="nivelHabilidade"/>
+			<habilidadeLarge text="Obtido" field="obtencaoHabilidade"/>
+			<habilidadeSmallCenter text="Página" field="paginaHabilidade"/>
+			<habilidadeLarge text="Livro" field="livroHabilidade"/>
+			<dataLink field="nivelHabilidade">
+				<event name="onChange">
+					local rcl = self:findControlByName("rclListaDosTalentos");
+					if rcl~= nil then
+						rcl:sort();
+					end;
+					rcl = self:findControlByName("rclListaDosOutros");
+					if rcl~= nil then
+						rcl:sort();
+					end;
+					rcl = self:findControlByName("rclListaDasCaracteristicasClasse");
+					if rcl~= nil then
+						rcl:sort();
+					end;
+				</event>
+			</dataLink>
+		</flowLayout>
+		<textEditor align="client" field="descricao"/>
+	</popup>
 
-	 	<template name="habilidadeSmallCenter">
-			<flowPart minWidth="45" maxWidth="100" height="35">
-				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
-				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
-			</flowPart>
-		</template>
-		<template name="habilidadeLarge">
-			<flowPart minWidth="180" maxWidth="200" height="35">
-				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
-				<edit align="client" class="" field="$(field)" fontSize="12"/>
-			</flowPart>
-		</template>
-
-	 	<popup name="popHabilidade" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
-			<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
-				<habilidadeSmallCenter text="Nível" field="nivelHabilidade"/>
-				<habilidadeLarge text="Obtido" field="obtencaoHabilidade"/>
-				<habilidadeSmallCenter text="Página" field="paginaHabilidade"/>
-				<habilidadeLarge text="Livro" field="livroHabilidade"/>
-				<dataLink field="nivelHabilidade">
-					<event name="onChange">
-						local rcl = self:findControlByName("rclListaDosTalentos");
-						if rcl~= nil then
-							rcl:sort();
-						end;
-						rcl = self:findControlByName("rclListaDosOutros");
-						if rcl~= nil then
-							rcl:sort();
-						end;
-						rcl = self:findControlByName("rclListaDasCaracteristicasClasse");
-						if rcl~= nil then
-							rcl:sort();
-						end;
-					</event>
-				</dataLink>
-			</flowLayout>
-			<textEditor align="client" field="descricao"/>
-		</popup>
-
-			
+	 <scrollBox align="client">	
 		<layout left="0" top="0" width="380" height="600">
 			<rectangle align="client" color="#0000007F"/>
 			<label left="0" top="0" width="380" height="20" text="TALENTOS" horzTextAlign="center"/>
@@ -53,15 +50,27 @@
 			</recordList>
 		</layout>
 			
-		<layout left="395" top="0" width="380" height="600">
+		<layout left="395" top="0" width="380" height="435">
 			<rectangle align="client" color="#0000007F"/>
 			<label left="0" top="0" width="380" height="20" text="OUTROS" horzTextAlign="center"/>
 
-			<recordList name="rclListaDosOutros" field="campoDosOutros" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="570" layout="vertical">
+			<recordList name="rclListaDosOutros" field="campoDosOutros" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="405" layout="vertical">
 				<event name="onCompare">
 		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
 		        </event>
 			</recordList>
+		</layout>
+
+		<layout left="395" top="440" width="380" height="160">
+			<rectangle align="client" color="#0000007F"/>
+
+			<label left="10" top="5" width="360" height="20" text="Traços Raciais" horzTextAlign="center"/>
+
+			<checkBox left="10" top="30" width="360" height="20" field="tracoHabil" text="Hábil"/>
+			<checkBox left="10" top="55" width="360" height="20" field="tracoTalentoso" text="Talentoso"/>
+			<checkBox left="10" top="80" width="360" height="20" field="tracoResistente" text="Resistente"/>
+			<checkBox left="10" top="105" width="360" height="20" field="tracoHeroico" text="Heroico"/>
+			<checkBox left="10" top="130" width="360" height="20" field="tracoRobusto" text="Robusto"/>
 		</layout>
 		
 		<layout left="790" top="0" width="380" height="350">
@@ -153,13 +162,13 @@
 					if sheet==nil then return end;
 
 					if sheet.classePericia == "0" then
-						self.classePericia.hint = "2 + 1 + modificador de inteligência por nível, 7 perícias de classe.";
+						self.classePericia.hint = "2 + modificador de inteligência por nível, 7 perícias de classe.";
 					elseif sheet.classePericia == "1" then
-						self.classePericia.hint = "4 + 1 + modificador de inteligência por nível, 13 perícias de classe.";
+						self.classePericia.hint = "4 + modificador de inteligência por nível, 13 perícias de classe.";
 					elseif sheet.classePericia == "2" then
-						self.classePericia.hint = "6 + 1 + modificador de inteligência por nível, 18 perícias de classe.";
+						self.classePericia.hint = "6 + modificador de inteligência por nível, 18 perícias de classe.";
 					elseif sheet.classePericia == "3" then
-						self.classePericia.hint = "8 + 1 + modificador de inteligência por nível, 22 perícias de classe.";
+						self.classePericia.hint = "8 + modificador de inteligência por nível, 22 perícias de classe.";
 					else
 						self.classePericia.hint = "";
 					end;
@@ -191,15 +200,15 @@
 					if sheet==nil then return end;
 
 					if sheet.classePoderes == "0" then
-						self.classePoderes.hint = "";
+						self.classePoderes.hint = "Inferior: seus poderes seguem a progressão mais lenta conhecida (x1).";
 					elseif sheet.classePoderes == "1" then
-						self.classePoderes.hint = "";
+						self.classePoderes.hint = "Menor: seus poderes surgem mais lentamente que em outras pessoas (x1,125).";
 					elseif sheet.classePoderes == "2" then
-						self.classePoderes.hint = "";
+						self.classePoderes.hint = "Moderada: seus poderes crescem de forma mediana (x1,25).";
 					elseif sheet.classePoderes == "3" then
-						self.classePoderes.hint = "";
+						self.classePoderes.hint = "Maior: seus poderes crescem mais rápido que na maioria (x1,375).";
 					elseif sheet.classePoderes == "4" then
-						self.classePoderes.hint = "";
+						self.classePoderes.hint = "Superior: seus poderes crescem a velocidade surpreendente e assustadora (x1,5).";
 					else
 						self.classeDVs.hint = "";
 					end;
@@ -220,7 +229,7 @@
 				</event>
 			</dataLink>
 
-			<dataLink fields="{'classeDVs', 'nep', 'efetCon'}">
+			<dataLink fields="{'classeDVs', 'nep', 'efetCon', 'tracoRobusto'}">
 				<event name="onChange">
 					if sheet==nil then return end;
 
@@ -228,7 +237,11 @@
 					local nep = (tonumber(sheet.nep) or 1);
 					local con = (tonumber(sheet.efetModCon) or 0) * nep;
 
-					sheet.dvs = nep .. "d" .. dv .. "+" .. con;
+					if sheet.tracoRobusto then
+						sheet.dvs = nep .. "d" .. dv .. "+" .. con .. "+" .. nep;
+					else
+						sheet.dvs = nep .. "d" .. dv .. "+" .. con;
+					end;
 				</event>
 			</dataLink>
 

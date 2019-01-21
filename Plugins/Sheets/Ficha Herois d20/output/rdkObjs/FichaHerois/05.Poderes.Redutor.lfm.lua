@@ -33,10 +33,10 @@ local function constructNew_frmRedutor()
 
 			
 		local function askForDelete()
-			dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
+			Dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
 								 function (confirmado)
 									if confirmado then
-										ndb.deleteNode(sheet);
+										NDB.deleteNode(sheet);
 									end;
 								 end);
 		end;
@@ -119,10 +119,10 @@ local function constructNew_frmRedutor()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            			local node = ndb.getRoot(sheet);
+            			local node = NDB.getRoot(sheet);
             			
             			local porcentagem = 0;
-            			local objetos = ndb.getChildNodes(node.campoDosRedutores);
+            			local objetos = NDB.getChildNodes(node.campoDosRedutores);
             			for i=1, #objetos, 1 do 
             				porcentagem = porcentagem + (tonumber(objetos[i].porcentagem) or 0);
             			end;

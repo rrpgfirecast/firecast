@@ -33,10 +33,10 @@ local function constructNew_frmFichaRPGmeister4h_svg()
 
 			
 		local function askForDelete()
-			dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
+			Dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
 								 function (confirmado)
 									if confirmado then
-										ndb.deleteNode(sheet);
+										NDB.deleteNode(sheet);
 									end;
 								 end);
 		end;
@@ -100,11 +100,6 @@ local function constructNew_frmFichaRPGmeister4h_svg()
     obj.button2:setText("X");
     obj.button2:setName("button2");
 
-    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink1:setParent(obj);
-    obj.dataLink1:setField("custoHabilidade");
-    obj.dataLink1:setName("dataLink1");
-
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
             showHabilidadePopup();
@@ -115,36 +110,7 @@ local function constructNew_frmFichaRPGmeister4h_svg()
             askForDelete();
         end, obj);
 
-    obj._e_event2 = obj.dataLink1:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if sheet==nil then return end;
-            
-            			local node = ndb.getRoot(sheet);
-            			
-            			local pt = 0;
-            			local objetos = ndb.getChildNodes(node.campoDosTalentos);
-            			for i=1, #objetos, 1 do 
-            				pt = pt + (tonumber(objetos[i].custoHabilidade) or 0);
-            			end;
-            			node.pt_talento = pt;
-            
-            			local pt = 0;
-            			local objetos = ndb.getChildNodes(node.campoDosOutros);
-            			for i=1, #objetos, 1 do 
-            				pt = pt + (tonumber(objetos[i].custoHabilidade) or 0);
-            			end;
-            			node.pt_outro = pt;
-            
-            			local pt = 0;
-            			local objetos = ndb.getChildNodes(node.campoDasCaracteristicasClasse);
-            			for i=1, #objetos, 1 do 
-            				pt = pt + (tonumber(objetos[i].custoHabilidade) or 0);
-            			end;
-            			node.pt_classe = pt;
-        end, obj);
-
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
@@ -158,7 +124,6 @@ local function constructNew_frmFichaRPGmeister4h_svg()
           self:setNodeDatabase(nil);
         end;
 
-        if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
