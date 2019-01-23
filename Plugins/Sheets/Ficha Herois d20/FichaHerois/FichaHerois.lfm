@@ -33,9 +33,28 @@
         end;
         ]]> 
     </script>
+
+
+    <template name="formatEdit">
+        <rectangle left="$(left)" top="$(top)" width="$(width)" height="$(height)" color="black" strokeColor="grey" strokeSize="1" name="$(field)Label" visible="true">
+            <label width="$(width)" height="$(height)" field="$(field)" horzTextAlign="center" fontSize="11" formatFloat=",0.## $(unit)"/>
+            <event name="onClick">
+                self.$(field)Label.visible = false;
+                self.$(field)Edit.visible = true;
+                self.$(field)Edit:setFocus();
+            </event>
+        </rectangle>
+        <edit field="$(field)" left="$(left)" top="$(top)" width="$(width)" height="$(height)" type="float" fontSize="11" name="$(field)Edit" visible="false">
+            <event name="onExit">
+                self.$(field)Label.visible = true;
+                self.$(field)Edit.visible = false;
+            </event>
+        </edit>
+    </template>
+
     <tabControl align="client">
         <tab title="Geral">
-            <import file="01.Geral.lfm"/>
+            <import file="01.Geral.xml"/>
         </tab>
         <tab title="Ataques">
             <tabControl align="client">
@@ -57,7 +76,7 @@
             <import file="05.Poderes.lfm"/>
         </tab>
         <tab title="Inventario">
-            <import file="07.Inventario.lfm"/>
+            <import file="07.Inventario.xml"/>
         </tab>
 		<tab title="Companheiro">
             <import file="08.Companheiro.lfm"/>
@@ -75,10 +94,10 @@
     <event name="onNodeReady">
         internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/output/Ficha%20Herois%20d20.rpk?raw=true",
             function(stream, contentType)
-                local info = rrpg.plugins.getRPKDetails(stream);
+                local info = Firecast.Plugins.getRPKDetails(stream);
                 sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
 
-                local installed = rrpg.plugins.getInstalledPlugins();
+                local installed = Firecast.Plugins.getInstalledPlugins();
                 local myself;
                 for i=1, #installed, 1 do
                     if installed[i].moduleId == info.moduleId then
@@ -92,7 +111,7 @@
                     Dialogs.choose("Há uma nova versão ("..info.version..") desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                         function(selected, selectedIndex, selectedText)
                             if selected and selectedIndex == 1 then
-                                gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/output/Ficha%20Herois%20d20.rpk?raw=true');
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Herois%20d20/output/Ficha%20Herois%20d20.rpk?raw=true');
                             elseif selected and selectedIndex == 3 then
                                 sheet.noUpdate = true;
                             end;
@@ -105,6 +124,7 @@
             function (downloaded, total)
                 -- esta função será chamada constantemente.
                 -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
-            end);
+            end,
+            "checkForModification");
     </event>
 </form>

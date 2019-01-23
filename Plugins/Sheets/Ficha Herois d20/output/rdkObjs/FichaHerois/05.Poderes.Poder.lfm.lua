@@ -33,10 +33,10 @@ local function constructNew_frmPoder()
 
 			
 		local function askForDelete()
-			dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
+			Dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
 								 function (confirmado)
 									if confirmado then
-										ndb.deleteNode(sheet);
+										NDB.deleteNode(sheet);
 									end;
 								 end);
 		end;
@@ -141,10 +141,10 @@ local function constructNew_frmPoder()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            			local node = ndb.getRoot(sheet);
+            			local node = NDB.getRoot(sheet);
             			
             			local custo = 0;
-            			local objetos = ndb.getChildNodes(node.campoDosPoderes);
+            			local objetos = NDB.getChildNodes(node.campoDosPoderes);
             			for i=1, #objetos, 1 do 
             				custo = custo + (tonumber(objetos[i].custo) or 0);
             			end;

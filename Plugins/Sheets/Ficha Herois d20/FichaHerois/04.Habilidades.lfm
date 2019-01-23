@@ -1,47 +1,44 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister4_svg" align="client" theme="dark" margins="{top=1}">
-	 <scrollBox align="client">
+	<template name="habilidadeSmallCenter">
+		<flowPart minWidth="45" maxWidth="100" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+		</flowPart>
+	</template>
+	<template name="habilidadeLarge">
+		<flowPart minWidth="180" maxWidth="200" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" fontSize="12"/>
+		</flowPart>
+	</template>
+	<popup name="popHabilidade" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+			<habilidadeSmallCenter text="Nível" field="nivelHabilidade"/>
+			<habilidadeLarge text="Obtido" field="obtencaoHabilidade"/>
+			<habilidadeSmallCenter text="Página" field="paginaHabilidade"/>
+			<habilidadeLarge text="Livro" field="livroHabilidade"/>
+			<dataLink field="nivelHabilidade">
+				<event name="onChange">
+					local rcl = self:findControlByName("rclListaDosTalentos");
+					if rcl~= nil then
+						rcl:sort();
+					end;
+					rcl = self:findControlByName("rclListaDosOutros");
+					if rcl~= nil then
+						rcl:sort();
+					end;
+					rcl = self:findControlByName("rclListaDasCaracteristicasClasse");
+					if rcl~= nil then
+						rcl:sort();
+					end;
+				</event>
+			</dataLink>
+		</flowLayout>
+		<textEditor align="client" field="descricao"/>
+	</popup>
 
-	 	<template name="habilidadeSmallCenter">
-			<flowPart minWidth="45" maxWidth="100" height="35">
-				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
-				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
-			</flowPart>
-		</template>
-		<template name="habilidadeLarge">
-			<flowPart minWidth="180" maxWidth="200" height="35">
-				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
-				<edit align="client" class="" field="$(field)" fontSize="12"/>
-			</flowPart>
-		</template>
-
-	 	<popup name="popHabilidade" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
-			<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
-				<habilidadeSmallCenter text="Nível" field="nivelHabilidade"/>
-				<habilidadeLarge text="Obtido" field="obtencaoHabilidade"/>
-				<habilidadeSmallCenter text="Página" field="paginaHabilidade"/>
-				<habilidadeLarge text="Livro" field="livroHabilidade"/>
-				<dataLink field="nivelHabilidade">
-					<event name="onChange">
-						local rcl = self:findControlByName("rclListaDosTalentos");
-						if rcl~= nil then
-							rcl:sort();
-						end;
-						rcl = self:findControlByName("rclListaDosOutros");
-						if rcl~= nil then
-							rcl:sort();
-						end;
-						rcl = self:findControlByName("rclListaDasCaracteristicasClasse");
-						if rcl~= nil then
-							rcl:sort();
-						end;
-					</event>
-				</dataLink>
-			</flowLayout>
-			<textEditor align="client" field="descricao"/>
-		</popup>
-
-			
+	 <scrollBox align="client">	
 		<layout left="0" top="0" width="380" height="600">
 			<rectangle align="client" color="#0000007F"/>
 			<label left="0" top="0" width="380" height="20" text="TALENTOS" horzTextAlign="center"/>
@@ -53,15 +50,27 @@
 			</recordList>
 		</layout>
 			
-		<layout left="395" top="0" width="380" height="600">
+		<layout left="395" top="0" width="380" height="435">
 			<rectangle align="client" color="#0000007F"/>
 			<label left="0" top="0" width="380" height="20" text="OUTROS" horzTextAlign="center"/>
 
-			<recordList name="rclListaDosOutros" field="campoDosOutros" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="570" layout="vertical">
+			<recordList name="rclListaDosOutros" field="campoDosOutros" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="405" layout="vertical">
 				<event name="onCompare">
 		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
 		        </event>
 			</recordList>
+		</layout>
+
+		<layout left="395" top="440" width="380" height="160">
+			<rectangle align="client" color="#0000007F"/>
+
+			<label left="10" top="5" width="360" height="20" text="Traços Raciais" horzTextAlign="center"/>
+
+			<checkBox left="10" top="30" width="360" height="20" field="tracoHabil" text="Hábil" hint="+4 pontos de perícia no nível 1 e +1 ponto de perícia por nível."/>
+			<checkBox left="10" top="55" width="360" height="20" field="tracoTalentoso" text="Talentoso" hint="+1 talento."/>
+			<checkBox left="10" top="80" width="360" height="20" field="tracoResistente" text="Resistente" hint="+1 em todas resistências. "/>
+			<checkBox left="10" top="105" width="360" height="20" field="tracoHeroico" text="Heroico" hint="+1 em um atributo."/>
+			<checkBox left="10" top="130" width="360" height="20" field="tracoRobusto" text="Robusto" hint="+1PV por nível."/>
 		</layout>
 		
 		<layout left="790" top="0" width="380" height="350">
@@ -86,7 +95,7 @@
 			<label left="315" top="30" width="60" height="60" field="classePontos" horzTextAlign="center"/>
 
 			<label left="10" top="35" width="150" height="20" text="Bônus Base Ataque" horzTextAlign="center"/>
-			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="35" width="150" height="25" name="classeBBA" field="classeBBA" items="{'Ruim (0)', 'Médio (+1)', 'Bom (+2)'}" values="{'0', '1', '2'}" fontColor="white">
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="35" width="150" height="25" name="classeBBA" field="classeBBA" items="{'Ruim (0)', 'Médio (+1)', 'Bom (+2)'}" values="{'0', '1', '2'}" fontColor="white" hint="BBA = 1/2 do NEP e sabe usar todas armas simples e armaduras leves.">
 				<event name="onChange">
 					if sheet==nil then return end;
 
@@ -97,13 +106,13 @@
 					elseif sheet.classeBBA == "2" then
 						self.classeBBA.hint = "BBA = NEP e sabe usar todas armas simples e comuns, armaduras até pesada e escudos.";
 					else
-						self.classeBBA.hint = "";
+						self.classeBBA.hint = "BBA = 1/2 do NEP e sabe usar todas armas simples e armaduras leves.";
 					end;
 				</event>
 			</comboBox>
 
 			<label left="10" top="65" width="150" height="20" text="Bônus Base Fortitude" horzTextAlign="center"/>
-			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="65" width="150" height="25" name="classeBBF" field="classeBBF" items="{'Ruim (0)', 'Bom (+1)'}" values="{'0', '1'}" fontColor="white">
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="65" width="150" height="25" name="classeBBF" field="classeBBF" items="{'Ruim (0)', 'Bom (+1)'}" values="{'0', '1'}" fontColor="white" hint="BBF = 1/3 do NEP.">
 				<event name="onChange">
 					if sheet==nil then return end;
 
@@ -112,13 +121,13 @@
 					elseif sheet.classeBBF == "1" then
 						self.classeBBF.hint = "BBF = 2 + 1/2 do NEP.";
 					else
-						self.classeBBF.hint = "";
+						self.classeBBF.hint = "BBF = 1/3 do NEP.";
 					end;
 				</event>
 			</comboBox>
 
 			<label left="10" top="95" width="150" height="20" text="Bônus Base Reflexos" horzTextAlign="center"/>
-			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="95" width="150" height="25" name="classeBBR" field="classeBBR" items="{'Ruim (0)', 'Bom (+1)'}" values="{'0', '1'}" fontColor="white">
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="95" width="150" height="25" name="classeBBR" field="classeBBR" items="{'Ruim (0)', 'Bom (+1)'}" values="{'0', '1'}" fontColor="white" hint="BBR = 1/3 do NEP.">
 				<event name="onChange">
 					if sheet==nil then return end;
 
@@ -127,13 +136,13 @@
 					elseif sheet.classeBBR == "1" then
 						self.classeBBR.hint = "BBR = 2 + 1/2 do NEP.";
 					else
-						self.classeBBR.hint = "";
+						self.classeBBR.hint = "BBR = 1/3 do NEP.";
 					end;
 				</event>
 			</comboBox>
 
 			<label left="10" top="125" width="150" height="20" text="Bônus Base Vontade" horzTextAlign="center"/>
-			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="125" width="150" height="25" name="classeBBV" field="classeBBV" items="{'Ruim (0)', 'Bom (+1)'}" values="{'0', '1'}" fontColor="white">
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="125" width="150" height="25" name="classeBBV" field="classeBBV" items="{'Ruim (0)', 'Bom (+1)'}" values="{'0', '1'}" fontColor="white" hint="BBV = 1/3 do NEP.">
 				<event name="onChange">
 					if sheet==nil then return end;
 
@@ -142,32 +151,32 @@
 					elseif sheet.classeBBV == "1" then
 						self.classeBBV.hint = "BBV = 2 + 1/2 do NEP.";
 					else
-						self.classeBBV.hint = "";
+						self.classeBBV.hint = "BBV = 1/3 do NEP.";
 					end;
 				</event>
 			</comboBox>
 
 			<label left="10" top="155" width="150" height="20" text="Perícias" horzTextAlign="center"/>
-			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="155" width="150" height="25" name="classePericia" field="classePericia" items="{'Ruim (0)', 'Médio (+1)', 'Bom (+2)', 'Excelente (+3)'}" values="{'0', '1', '2', '3'}" fontColor="white">
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="155" width="150" height="25" name="classePericia" field="classePericia" items="{'Ruim (0)', 'Médio (+1)', 'Bom (+2)', 'Excelente (+3)'}" values="{'0', '1', '2', '3'}" fontColor="white" hint="2 + modificador de inteligência por nível, 7 perícias de classe.">
 				<event name="onChange">
 					if sheet==nil then return end;
 
 					if sheet.classePericia == "0" then
-						self.classePericia.hint = "2 + 1 + modificador de inteligência por nível, 7 perícias de classe.";
+						self.classePericia.hint = "2 + modificador de inteligência por nível, 7 perícias de classe.";
 					elseif sheet.classePericia == "1" then
-						self.classePericia.hint = "4 + 1 + modificador de inteligência por nível, 13 perícias de classe.";
+						self.classePericia.hint = "4 + modificador de inteligência por nível, 13 perícias de classe.";
 					elseif sheet.classePericia == "2" then
-						self.classePericia.hint = "6 + 1 + modificador de inteligência por nível, 18 perícias de classe.";
+						self.classePericia.hint = "6 + modificador de inteligência por nível, 18 perícias de classe.";
 					elseif sheet.classePericia == "3" then
-						self.classePericia.hint = "8 + 1 + modificador de inteligência por nível, 22 perícias de classe.";
+						self.classePericia.hint = "8 + modificador de inteligência por nível, 22 perícias de classe.";
 					else
-						self.classePericia.hint = "";
+						self.classePericia.hint = "2 + modificador de inteligência por nível, 7 perícias de classe.";
 					end;
 				</event>
 			</comboBox>
 
 			<label left="10" top="185" width="150" height="20" text="Dados de Vida" horzTextAlign="center"/>
-			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="185" width="150" height="25" name="classeDVs" field="classeDVs" items="{'Ruim (0)', 'Médio (+1)', 'Bom (+2)', 'Excelente (+3)'}" values="{'0', '1', '2', '3'}" fontColor="white">
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="185" width="150" height="25" name="classeDVs" field="classeDVs" items="{'Ruim (0)', 'Médio (+1)', 'Bom (+2)', 'Excelente (+3)'}" values="{'0', '1', '2', '3'}" fontColor="white" hint="1d6 + modificador de constituição por nível.">
 				<event name="onChange">
 					if sheet==nil then return end;
 
@@ -180,28 +189,28 @@
 					elseif sheet.classeDVs == "3" then
 						self.classeDVs.hint = "1d12 + modificador de constituição por nível.";
 					else
-						self.classeDVs.hint = "";
+						self.classeDVs.hint = "1d6 + modificador de constituição por nível.";
 					end;
 				</event>
 			</comboBox>
 
 			<label left="10" top="215" width="150" height="20" text="Progressão de Poderes" horzTextAlign="center"/>
-			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="215" width="150" height="25" name="classePoderes" field="classePoderes" items="{'Inferior (0)', 'Menor (+1)', 'Moderada (+2)', 'Maior (+3)', 'Superior (+4)'}" values="{'0', '1', '2', '3', '4'}" fontColor="white">
+			<comboBox vertTextAlign="center" horzTextAlign="center" left="160" top="215" width="150" height="25" name="classePoderes" field="classePoderes" items="{'Inferior (0)', 'Menor (+1)', 'Moderada (+2)', 'Maior (+3)', 'Superior (+4)'}" values="{'0', '1', '2', '3', '4'}" fontColor="white" hint="Inferior: seus poderes seguem a progressão mais lenta conhecida (x1).">
 				<event name="onChange">
 					if sheet==nil then return end;
 
 					if sheet.classePoderes == "0" then
-						self.classePoderes.hint = "";
+						self.classePoderes.hint = "Inferior: seus poderes seguem a progressão mais lenta conhecida (x1).";
 					elseif sheet.classePoderes == "1" then
-						self.classePoderes.hint = "";
+						self.classePoderes.hint = "Menor: seus poderes surgem mais lentamente que em outras pessoas (x1,125).";
 					elseif sheet.classePoderes == "2" then
-						self.classePoderes.hint = "";
+						self.classePoderes.hint = "Moderada: seus poderes crescem de forma mediana (x1,25).";
 					elseif sheet.classePoderes == "3" then
-						self.classePoderes.hint = "";
+						self.classePoderes.hint = "Maior: seus poderes crescem mais rápido que na maioria (x1,375).";
 					elseif sheet.classePoderes == "4" then
-						self.classePoderes.hint = "";
+						self.classePoderes.hint = "Superior: seus poderes crescem a velocidade surpreendente e assustadora (x1,5).";
 					else
-						self.classeDVs.hint = "";
+						self.classePoderes.hint = "Inferior: seus poderes seguem a progressão mais lenta conhecida (x1).";
 					end;
 				</event>
 			</comboBox>
@@ -220,7 +229,7 @@
 				</event>
 			</dataLink>
 
-			<dataLink fields="{'classeDVs', 'nep', 'efetCon'}">
+			<dataLink fields="{'classeDVs', 'nep', 'efetCon', 'tracoRobusto'}">
 				<event name="onChange">
 					if sheet==nil then return end;
 
@@ -228,7 +237,11 @@
 					local nep = (tonumber(sheet.nep) or 1);
 					local con = (tonumber(sheet.efetModCon) or 0) * nep;
 
-					sheet.dvs = nep .. "d" .. dv .. "+" .. con;
+					if sheet.tracoRobusto then
+						sheet.dvs = nep .. "d" .. dv .. "+" .. con .. "+" .. nep;
+					else
+						sheet.dvs = nep .. "d" .. dv .. "+" .. con;
+					end;
 				</event>
 			</dataLink>
 

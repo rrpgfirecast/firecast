@@ -3,10 +3,10 @@
 	<script> 
 		<![CDATA[	
 		local function rollTest()
-			local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 
 			local mod = (tonumber(sheet.testeDobra) or 0);
-			local rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+			local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
 
 			mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Dobra de " .. (sheet.nome or "Nome"));
 		end;
@@ -69,7 +69,22 @@
 
 			<label left="5" top="65" width="150" height="20" text="Poderes Efetivo" horzTextAlign="center"/>
 			<rectangle left="155" top="65" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label field="efetPoderes" text="0" left="155" top="65" width="75" height="25" horzTextAlign="center"/>
+			<label field="efetPoderes" text="0" left="155" top="65" width="75" height="25" horzTextAlign="center" name="efetPoderes"/>
+			<dataLink field="efetPoderes">
+				<event name="onChange">
+					if sheet == nil then return end;
+					local efet = tonumber(sheet.efetPoderes) or 0;
+					local max = tonumber(sheet.maxPoderes) or 0;
+
+					if efet > max then
+						self.efetPoderes.fontColor = "#FF0000";
+					elseif efet==max then
+						self.efetPoderes.fontColor = "#FFFFFF";
+					else
+						self.efetPoderes.fontColor = "#00FF00";
+					end;
+				</event>
+			</dataLink>
 
 			<label left="5" top="95" width="150" height="20" text="Poderes Máximo" horzTextAlign="center"/>
 			<rectangle left="155" top="95" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
@@ -79,13 +94,15 @@
 				<event name="onChange">
 					if sheet==nil then return end;
 
-					local nep = (tonumber(sheet.nep) or 0);
-					local ajuste = (tonumber(sheet.classePoderes) or 0);
-					local np = nep + ajuste;
+					local nep = (tonumber(sheet.nep) or 1);
+					local ajuste = (tonumber(sheet.classePoderes) or 0) + 1;
 
+					local multTable = {1, 1.125, 1.25, 1.375, 1.5};
 					local ppTable = {1000,3000,6000,10000,15000,23000,33000,45000,59000,75000,101000,133000,175000,231000,305000,400000,525000,680000,865000,1080000,1325000,1600000,1905000,2240000,2605000,3000000,3425000,3880000,4365000};
+					local pp = ppTable[nep] or 4365000;
+					local mult = multTable[ajuste] or 1;
 
-					sheet.maxPoderes = ppTable[np];
+					sheet.maxPoderes = pp * mult;
 				</event>
 			</dataLink>
 
@@ -150,7 +167,7 @@
 		            end;
 
 		            if order == 0 then
-		            	order = utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+		            	order = Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
 		            end;
 
 		            return order;

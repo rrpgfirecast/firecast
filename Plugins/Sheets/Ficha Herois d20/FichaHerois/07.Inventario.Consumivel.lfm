@@ -18,7 +18,7 @@
 	<edit left="210" top="30" width="25" height="25" field="usosMin"/>
 	<edit left="235" top="30" width="25" height="25" field="usosMax"/>
 	
-    <button align="right" text="X" width="18" onClick="ndb.deleteNode(sheet);"/>
+    <button align="right" text="X" width="18" onClick="NDB.deleteNode(sheet);"/>
 	
 	<script>
 		local function teste()
@@ -27,8 +27,8 @@
 			end;
 			
 			if sheet.dados~=nil then
-				local rolagem = rrpg.interpretarRolagem(sheet.dados);
-				local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+				local rolagem = Firecast.interpretarRolagem(sheet.dados);
+				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 				local texto = "";
 				if sheet.nome~=nil then
 					texto = texto .. sheet.nome .. " foi usado.";
