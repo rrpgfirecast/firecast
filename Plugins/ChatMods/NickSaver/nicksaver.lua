@@ -140,7 +140,7 @@ Firecast.listen('HandleChatTextInput',
 		local altered = false;
 		if config.rooms[message.mesa.codigoInterno].colorBaseSaved == true then
 			altered = true;
-			text = "[§K" .. config.rooms[message.mesa.codigoInterno].colorBase .. "]" .. text;
+			text = "[§K" .. config.rooms[message.mesa.codigoInterno].colorBase .. "] " .. text;
 		end;
 
 		if config.rooms[message.mesa.codigoInterno].colorTalkSaved == true then
