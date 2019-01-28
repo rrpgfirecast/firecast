@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.5" compilationDate="10012019182302" sdkApiVersion="86" originalPluginFileName="FichaMB3.0V2.rpk" compilationDigest="5d843d5b1962d9c6332596f7457e0d846afad65f">
+    <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
+    <id>id_fichamb3.0_v2</id>
+    <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
+    <version>1.0</version>
+    <name>Ficha MB 3.0 V2</name>
+    <description>Ficha feita para o RPG brasileiro Mighty Blade ( MB ) . 2° Versão .</description>
+    <author>Gustavo Muller ( PericlesDaFarofa )</author>
+    <site>Nulo</site>
+    <contact>gustavo.henrique2015@yahoo.com.br</contact>
+    
+</module>

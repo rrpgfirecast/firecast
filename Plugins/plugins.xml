@@ -242,4 +242,9 @@
             <dataType id="Lista.de.NPC.Ficha" title="Lista de NPCs (Ficha)"/>
         </dataTypes>
     </element>
+    <element id="id_fichamb3" name="Ficha MB 3.0 V2" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mighty%20Blade%203.0/output/Ficha%20Mighty%20Blade%203.0.rpk?raw=true" fileName="Ficha Mighty Blade 3.0.rpk" repositoryPath="Sheets/Ficha Mighty Blade 3.0/" author="Gustavo Muller ( PericlesDaFarofa )" description="Ficha feita para o RPG brasileiro Mighty Blade ( MB ) . 2° Versão ." version="1.0" compilationDate="28012019223434" compilationDigest="f692b3a80738e8e1d034283cb188efa8e11fc319">
+        <dataTypes>
+            <dataType id="datatype.mightyblade3.0v2" title="Mighty Blade 3.0 V2 by PericlesDaFarofa"/>
+        </dataTypes>
+    </element>
 </root>
