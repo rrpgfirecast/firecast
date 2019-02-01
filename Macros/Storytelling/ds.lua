@@ -21,6 +21,7 @@ for j=1, #op.resultados, 1 do
   end;
 end;
 
+dificuldade = 8;
 while explosao > 0 do
 	local teste = explosao .. "d10";
 	local resultado, rolagem = rolar(teste, "Dificuldade: " .. dificuldade);
