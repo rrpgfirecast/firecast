@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaRPGmeister4hist" height="25" width="350" margins="{top=2}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showHabilidadePopup()
+			local pop = self:findControlByName("popDescricao");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("right", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de pericias para exibir");
+			end;				
+		end;
+	]]>
+	</script>
+
+	<rectangle align="client" color="#202020" hitTest="false"/>
+
+	<edit vertTextAlign="center" left="5" top="0" width="265" height="23" field="nomeHabilidade"/>
+	<edit vertTextAlign="center" left="270" top="0" width="30" height="23" field="custoHabilidade" type="number"/>
+	<button left="300" top="1" width="23" height="23" text="i" onClick="showHabilidadePopup();"/>
+	<button left="325" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+
+	<dataLink fields="{'custoHabilidade'}">
+		<event name="onChange">
+			if sheet~= nil then
+				local node = NDB.getRoot(sheet);
+				local hist = 0;
+				local nodes = NDB.getChildNodes(node.campoDosOutros);
+				--showMessage(#nodes);
+				for i=1, #nodes, 1 do
+					hist = hist + (tonumber(nodes[i].custoHabilidade) or 0);
+				end
+
+				node.pontosHistorico = hist;
+			end;
+		</event>
+	</dataLink>
+</form>

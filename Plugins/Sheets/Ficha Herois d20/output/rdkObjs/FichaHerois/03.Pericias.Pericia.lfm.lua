@@ -284,13 +284,8 @@ local function constructNew_frmFichaRPGmeister3p_svg()
         function (_, field, oldValue, newValue)
             if sheet~= nil then
             				local node = NDB.getRoot(sheet);
-            				local mod = tonumber(node.idiomasGrad) or 0; 
+            				local mod = 0; 
             				local deClasse = 0;
-            				if not node.idiomasIsClass then
-            					mod = mod + (tonumber(node.idiomasGrad) or 0);
-            				else
-            					deClasse = 1;
-            				end;
             				local path = 0;
             				local nodes = NDB.getChildNodes(node.campoDasPericias);
             				--showMessage(#nodes);
@@ -305,12 +300,6 @@ local function constructNew_frmFichaRPGmeister3p_svg()
             					mod = mod + (tonumber(nodes[i].graduacaoPericia) or 0) * mult;
             					path = path + (tonumber(nodes[i].graduacaoPericia) or 0);
             				end
-            
-            				if node.idiomasIsClass then
-            					mod = mod + (tonumber(nodes.idiomasGrad) or 0);
-            				else
-            					mod = mod + (tonumber(nodes.idiomasGrad) or 0) * 2;
-            				end;
             
             				node.pontosPericia = mod;
             				node.pontosPericiaPath = path;

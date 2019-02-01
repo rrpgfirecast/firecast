@@ -3,6 +3,12 @@ Ficha feita para jogar campanhas de Súper-Herois usando o sistema d20/D&D3.5
 Proximas Versões
 * Sistema de ataques e inventario considerando armas de fogo. 
 * Exportar ficha para texto. 
+* Calculo de gasto máximo. 
+
+Versão 0.5
+* Removida parte de CA oculta. 
+* Ajustes do sistema. 
+* Separação do campo de caracteristicas. 
 
 Versão 0.4
 * Tabela de pontos de poder atualizada. 

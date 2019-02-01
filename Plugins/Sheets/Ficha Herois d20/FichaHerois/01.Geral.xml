@@ -671,54 +671,9 @@
 			<textEditor left="5" top="95" width="210" height="65" field="rd"/>
 		</rectangle>
 
-		<layout left="225" top="310" width="322" height="165">
+		<layout left="225" top="310" width="140" height="165">
 			<rectangle align="client" color="black"/>
 			<label left="5" top="0" width="321" height="20" text="BÔNUS TEMPORARIOS"/>
-			
-			<button left="165" top="5" width="85" height="20" text="CA oculta" onClick="caSecreta();"/>
-			
-			<label left="180" top="115" width="165" height="20" text="Apenas o Mestre." rotationAngle="90"/>
-			
-			<label left="165" top="30" width="50" height="25" text="Alvo 1"/>
-			<edit  left="205" top="30" width="40" height="25" field="alvo1" name="alvo1" visible="false" type="number"/>
-			<label left="165" top="55" width="50" height="25" text="Alvo 2"/>
-			<edit  left="205" top="55" width="40" height="25" field="alvo2" name="alvo2" visible="false" type="number"/>
-			<label left="165" top="80" width="50" height="25" text="Alvo 3"/>
-			<edit  left="205" top="80" width="40" height="25" field="alvo3" name="alvo3" visible="false" type="number"/>
-			<label left="165" top="105" width="50" height="25" text="Alvo 4"/>
-			<edit  left="205" top="105" width="40" height="25" field="alvo4" name="alvo4" visible="false" type="number"/>
-			<label left="165" top="130" width="50" height="25" text="Alvo 5"/>
-			<edit  left="205" top="130" width="40" height="25" field="alvo5" name="alvo5" visible="false" type="number"/>
-			
-			<script>
-				local function caSecreta()
-					if sheet~= nil then
-						local jogadores = Firecast.getMesaDe(sheet).jogadores;
-						local current = nil;
-						
-						for i = 1, #jogadores, 1 do
-							if jogadores[i].login==Firecast.getCurrentUser().login then
-								current = jogadores[i];
-							end;
-						end; 
-						
-						
-						if current~=nil and current.isMestre then
-							self.alvo1.visible = true;
-							self.alvo2.visible = true;
-							self.alvo3.visible = true;
-							self.alvo4.visible = true;
-							self.alvo5.visible = true;
-						else
-							self.alvo1.visible = false;
-							self.alvo2.visible = false;
-							self.alvo3.visible = false;
-							self.alvo4.visible = false;
-							self.alvo5.visible = false;
-						end;
-					end;
-				end;
-			</script>
 			
 			<label left="5" top="30" width="50" height="20" text="ATAQUE"/>
 			<edit vertTextAlign="center" left="60" top="30" width="70" height="25" field="buffAtaque"/>
@@ -732,7 +687,7 @@
 			<edit vertTextAlign="center" left="60" top="130" width="70" height="25" field="buffPericia"/>
 		</layout>
 
-		<layout left="552" top="310" width="188" height="142">
+		<layout left="370" top="310" width="190" height="142">
 			<rectangle align="client" color="black"/>
 			<label left="0" top="0" width="180" height="25" text="BBA" horzTextAlign="center"/>
 			
@@ -795,7 +750,7 @@
 
 		</layout>
 
-		<rectangle left="0" top="480" width="140" height="115" color="black">
+		<rectangle left="570" top="310" width="140" height="115" color="black">
 			<label left="0" top="0" width="140" height="25" text="RESISTENCIAS" horzTextAlign="center"/>
 
 			<layout left="0" top="30" width="275" height="25">
@@ -887,8 +842,8 @@
 			</button>
 		</rectangle>
 
-		<rectangle left="745" top="90" width="362" height="362" color="black" strokeColor="white" strokeSize="1"/>
-		<image left="746" top="91" width="360" height="360" field="avatar" editable="true" style="autoFit" >
+		<rectangle left="745" top="0" width="362" height="362" color="black" strokeColor="white" strokeSize="1"/>
+		<image left="746" top="1" width="360" height="360" field="avatar" editable="true" style="autoFit" >
 			<event name="OnStartDrag">
 			    drag:addData("imageURL", sheet.avatar);
 			</event>

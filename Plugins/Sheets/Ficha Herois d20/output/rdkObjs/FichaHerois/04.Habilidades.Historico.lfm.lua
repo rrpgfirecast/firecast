@@ -7,7 +7,7 @@ require("ndb.lua");
 require("locale.lua");
 local __o_Utils = require("utils.lua");
 
-local function constructNew_frmRedutor()
+local function constructNew_frmFichaRPGmeister4hist()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -26,9 +26,9 @@ local function constructNew_frmRedutor()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmRedutor");
+    obj:setName("frmFichaRPGmeister4hist");
     obj:setHeight(25);
-    obj:setWidth(325);
+    obj:setWidth(350);
     obj:setMargins({top=2});
 
 			
@@ -36,7 +36,6 @@ local function constructNew_frmRedutor()
 			Dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
 								 function (confirmado)
 									if confirmado then
-										sheet.porcentagem = 0;
 										NDB.deleteNode(sheet);
 									end;
 								 end);
@@ -49,7 +48,7 @@ local function constructNew_frmRedutor()
 				pop:setNodeObject(self.sheet);
 				pop:showPopupEx("right", self);
 			else
-				showMessage("Ops, bug.. nao encontrei o popup para exibir");
+				showMessage("Ops, bug.. nao encontrei o popup de pericias para exibir");
 			end;				
 		end;
 	
@@ -65,27 +64,27 @@ local function constructNew_frmRedutor()
     obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj);
     obj.edit1:setVertTextAlign("center");
-    obj.edit1:setLeft(0);
+    obj.edit1:setLeft(5);
     obj.edit1:setTop(0);
-    obj.edit1:setWidth(200);
+    obj.edit1:setWidth(265);
     obj.edit1:setHeight(23);
-    obj.edit1:setField("nome");
+    obj.edit1:setField("nomeHabilidade");
     obj.edit1:setName("edit1");
 
     obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj);
     obj.edit2:setVertTextAlign("center");
-    obj.edit2:setLeft(200);
+    obj.edit2:setLeft(270);
     obj.edit2:setTop(0);
-    obj.edit2:setWidth(50);
+    obj.edit2:setWidth(30);
     obj.edit2:setHeight(23);
-    obj.edit2:setField("porcentagem");
-    obj.edit2:setHorzTextAlign("center");
+    obj.edit2:setField("custoHabilidade");
+    obj.edit2:setType("number");
     obj.edit2:setName("edit2");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
-    obj.button1:setLeft(250);
+    obj.button1:setLeft(300);
     obj.button1:setTop(1);
     obj.button1:setWidth(23);
     obj.button1:setHeight(23);
@@ -94,7 +93,7 @@ local function constructNew_frmRedutor()
 
     obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj);
-    obj.button2:setLeft(275);
+    obj.button2:setLeft(325);
     obj.button2:setTop(1);
     obj.button2:setWidth(23);
     obj.button2:setHeight(23);
@@ -103,7 +102,7 @@ local function constructNew_frmRedutor()
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
-    obj.dataLink1:setField("porcentagem");
+    obj.dataLink1:setFields({'custoHabilidade'});
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
@@ -118,16 +117,17 @@ local function constructNew_frmRedutor()
 
     obj._e_event2 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
-            if sheet==nil then return end;
+            if sheet~= nil then
+            				local node = NDB.getRoot(sheet);
+            				local hist = 0;
+            				local nodes = NDB.getChildNodes(node.campoDosOutros);
+            				--showMessage(#nodes);
+            				for i=1, #nodes, 1 do
+            					hist = hist + (tonumber(nodes[i].custoHabilidade) or 0);
+            				end
             
-            			local node = NDB.getRoot(sheet);
-            			
-            			local porcentagem = 0;
-            			local objetos = NDB.getChildNodes(node.campoDosRedutores);
-            			for i=1, #objetos, 1 do 
-            				porcentagem = porcentagem + (tonumber(objetos[i].porcentagem) or 0);
+            				node.pontosHistorico = hist;
             			end;
-            			node.reduction = porcentagem;
         end, obj);
 
     function obj:_releaseEvents()
@@ -159,13 +159,13 @@ local function constructNew_frmRedutor()
     return obj;
 end;
 
-function newfrmRedutor()
+function newfrmFichaRPGmeister4hist()
     local retObj = nil;
     __o_rrpgObjs.beginObjectsLoading();
 
     __o_Utils.tryFinally(
       function()
-        retObj = constructNew_frmRedutor();
+        retObj = constructNew_frmFichaRPGmeister4hist();
       end,
       function()
         __o_rrpgObjs.endObjectsLoading();
@@ -175,17 +175,17 @@ function newfrmRedutor()
     return retObj;
 end;
 
-local _frmRedutor = {
-    newEditor = newfrmRedutor, 
-    new = newfrmRedutor, 
-    name = "frmRedutor", 
+local _frmFichaRPGmeister4hist = {
+    newEditor = newfrmFichaRPGmeister4hist, 
+    new = newfrmFichaRPGmeister4hist, 
+    name = "frmFichaRPGmeister4hist", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
     title = "", 
     description=""};
 
-frmRedutor = _frmRedutor;
-Firecast.registrarForm(_frmRedutor);
+frmFichaRPGmeister4hist = _frmFichaRPGmeister4hist;
+Firecast.registrarForm(_frmFichaRPGmeister4hist);
 
-return _frmRedutor;
+return _frmFichaRPGmeister4hist;
