@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplateCreditos" align="client">
+	<scrollBox align="client">
+		<rectangle align="client" color="black"/>
+		<label left="5" top="10" width="200" height="20" text="Feito por: Vinny (Ambesek)"/>
+		
+		<label left="5" top="35" width="200" height="20" text="Versão Atual: " horzTextAlign="center" field="versionInstalled"/>
+		<label left="5" top="60" width="200" height="20" text="Sua Versão: " horzTextAlign="center" field="versionDownloaded"/>
+		<checkBox left="5" top="85" width="200" height="20" field="noUpdate" text="Não pedir para atualizar."/>
+			
+		<button left="5" top="110" width="100" text="Change Log" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/README.md')">
+			<event name="onClick">
+                local install = Firecast.Plugins.installPlugin(rawget(updaterSheet,"stream"), true);
+                if install==false then
+                    GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true');
+                end;
+			</event>
+		</button>
+		<button left="5" top="135" width="100" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true')" />
+		
+		<label left="5" top="160" width="200" height="20" text="Conheça a Mesa:"/>
+		<button left="5" top="185" width="100" text="RPGmeister" onClick="GUI.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
+	</scrollBox>
+</form>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPlayer" height="25" margins="{top=1}">
+	<rectangle align="client" color="#212121">
+		<edit align="left" width="30" field="qtd" horzTextAlign="center" type="number" min="1"/>
+		<edit align="left" width="30" field="nep" horzTextAlign="center" type="number" min="1"/>
+
+		<label align="left" width="75" field="xpAll" horzTextAlign="center" formatFloat=",0 XP"/>
+		<label align="left" width="75" field="xpMine" horzTextAlign="center" formatFloat=",0 XP"/>
+
+		<button align="left" width="25" text="X">
+			<event name="onClick">
+				Dialogs.confirmOkCancel("Tem certeza que quer apagar esse desafio?",
+					function (confirmado)
+						if confirmado then
+							NDB.deleteNode(sheet);
+						end;
+				end);
+			</event>
+		</button>
+	</rectangle>
+
+	<dataLink fields="{'nep'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local rcl = self:findControlByName("playersList");
+			if rcl then rcl:sort() end;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'nep','qtd'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			scope = self:findControlByName("scope");
+			scope.node.calculateXP = true;
+		</event>
+	</dataLink>
+</form>
