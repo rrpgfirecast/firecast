@@ -112,7 +112,7 @@
 			<edit left="80" top="5" width="150" height="25" field="nome"/>
 
 			<label left="5" top="30" width="75" height="25" horzTextAlign="center" text="Aptidão"/>
-			<comboBox left="80" top="30" width="150" height="25" field="aptidao" items="{'Alquimista', 'Arcanista', 'Caçador', 'Cavaleiro', 'Monge', 'Necromante', 'Xamã', 'Atirador', 'Cigano', 'Hoplita', 'Ronin'}" values="{'1', '2', '3', '4', '5', '6', '7'}"/>
+			<comboBox left="80" top="30" width="150" height="25" field="aptidao" items="{'Alquimista', 'Arcanista', 'Caçador', 'Cavaleiro', 'Monge', 'Necromante', 'Xamã', 'Atirador', 'Cigano', 'Hoplita', 'Ronin'}" values="{'1', '2', '3', '4', '5', '6', '7', '8', '9','10','11'}"/>
 
 			<label left="225" top="5" width="75" height="25" horzTextAlign="center" text="Nível"/>
 			<rectangle left="300" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>

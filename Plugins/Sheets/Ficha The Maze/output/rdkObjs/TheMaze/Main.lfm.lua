@@ -154,8 +154,8 @@ local function constructNew_frmMain()
     obj.comboBox1:setWidth(150);
     obj.comboBox1:setHeight(25);
     obj.comboBox1:setField("aptidao");
-    obj.comboBox1:setItems({'Alquimista', 'Arcanista', 'Caçador', 'Cavaleiro', 'Monge', 'Necromante', 'Xamã'});
-    obj.comboBox1:setValues({'1', '2', '3', '4', '5', '6', '7'});
+    obj.comboBox1:setItems({'Alquimista', 'Arcanista', 'Caçador', 'Cavaleiro', 'Monge', 'Necromante', 'Xamã', 'Atirador', 'Cigano', 'Hoplita', 'Ronin'});
+    obj.comboBox1:setValues({'1', '2', '3', '4', '5', '6', '7', '8', '9','10','11'});
     obj.comboBox1:setName("comboBox1");
 
     obj.label3 = GUI.fromHandle(_obj_newObject("label"));
