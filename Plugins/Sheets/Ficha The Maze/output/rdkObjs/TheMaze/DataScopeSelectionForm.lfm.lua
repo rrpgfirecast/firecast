@@ -34,17 +34,17 @@ local function constructNew_frmDataScopeSelectionForm()
 
 	     function self:alternarVisibilidade()
 	         if self.cbxInvisivel.checked then
-	              ndb.setPermission(sheet, "group", "jogadores", "read", nil);
-	              ndb.setPermission(sheet, "group", "espectadores", "read", nil);
+	              NDB.setPermission(sheet, "group", "jogadores", "read", nil);
+	              NDB.setPermission(sheet, "group", "espectadores", "read", nil);
 	         else
-	              ndb.setPermission(sheet, "group", "jogadores", "read", "deny");
-	              ndb.setPermission(sheet, "group", "espectadores", "read", "deny");
+	              NDB.setPermission(sheet, "group", "jogadores", "read", "deny");
+	              NDB.setPermission(sheet, "group", "espectadores", "read", "deny");
 	         end;
 	     end; 
 	     function self:atualizarCbxInvisivel()          
-	         self.cbxInvisivel.checked = ndb.getPermission(sheet, "group", "espectadores", "read") == "deny" or
-	                                     ndb.getPermission(sheet, "group", "jogadores", "read") == "deny"                                                                                    
-	          self.cbxInvisivel.enabled = ndb.testPermission(sheet, "writePermissions");
+	         self.cbxInvisivel.checked = NDB.getPermission(sheet, "group", "espectadores", "read") == "deny" or
+	                                     NDB.getPermission(sheet, "group", "jogadores", "read") == "deny"                                                                                    
+	          self.cbxInvisivel.enabled = NDB.testPermission(sheet, "writePermissions");
 	     end;
 	
 
@@ -101,7 +101,7 @@ local function constructNew_frmDataScopeSelectionForm()
             	    end;
             	     
             	    if sheet ~= nil then   
-            	        self.observer = ndb.newObserver(sheet);
+            	        self.observer = NDB.newObserver(sheet);
             	        self.observer.onPermissionListChanged =
             	            function(node)                 
             	                self:atualizarCbxInvisivel();
@@ -121,10 +121,10 @@ local function constructNew_frmDataScopeSelectionForm()
 
     obj._e_event2 = obj.button1:addEventListener("onClick",
         function (_)
-            dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+            Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
             					function (confirmado)
             						if confirmado then
-            							ndb.deleteNode(sheet);
+            							NDB.deleteNode(sheet);
             						end;
             				end);
         end, obj);

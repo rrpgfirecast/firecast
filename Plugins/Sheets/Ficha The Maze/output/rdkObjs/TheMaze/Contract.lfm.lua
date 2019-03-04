@@ -77,10 +77,10 @@ local function constructNew_frmContract()
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
-            dialogs.confirmOkCancel("Tem certeza que quer apagar esse contrato?",
+            Dialogs.confirmOkCancel("Tem certeza que quer apagar esse contrato?",
             					function (confirmado)
             						if confirmado then
-            							ndb.deleteNode(sheet);
+            							NDB.deleteNode(sheet);
             						end;
             				end);
         end, obj);

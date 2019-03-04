@@ -145,10 +145,10 @@ local function constructNew_frmBlessing()
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
         function (_)
-            dialogs.confirmOkCancel("Tem certeza que quer apagar essa benção?",
+            Dialogs.confirmOkCancel("Tem certeza que quer apagar essa benção?",
             					function (confirmado)
             						if confirmado then
-            							ndb.deleteNode(sheet);
+            							NDB.deleteNode(sheet);
             						end;
             				end);
         end, obj);

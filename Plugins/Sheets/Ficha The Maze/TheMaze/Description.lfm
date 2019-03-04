@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmTemplateDescription" align="client">
+	<template name="Descricao">
+		<label left="$(left1)" top="$(top)" width="90" height="20" text="$(text)" horzTextAlign="center"/>
+		<edit left="$(left2)" top="$(top)" width="200" height="25" field="$(field)" vertTextAlign="center" />
+	</template>
+	<template name="Caracteristica">
+		<label left="5" top="$(top)" width="150" height="20" text="$(text_p)" horzTextAlign="center"/>
+		<edit left="155" top="$(top)" width="30" height="25" field="$(field_p)" vertTextAlign="center" type="number"/>
+
+		<label left="190" top="$(top)" width="150" height="20" text="$(text_n)" horzTextAlign="center"/>
+		<rectangle left="340" top="$(top)" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
+		<label left="340" top="$(top)" width="30" height="25" horzTextAlign="center" field="$(field_n)"/>
+
+		<dataLink field="$(field_n)" defaultValue="20"/>
+		<dataLink field="$(field_p)">
+			<event name="onUserChange">
+				if sheet == nil then return end;
+				local p = tonumber(sheet.$(field_p)) or 0;
+				sheet.$(field_n) = 20 - p;
+			</event>
+		</dataLink>
+	</template>
 	<scrollBox align="client">
-		<template name="Descricao">
-			<label left="$(left1)" top="$(top)" width="90" height="20" text="$(text)" horzTextAlign="center"/>
-			<edit left="$(left2)" top="$(top)" width="200" height="25" field="$(field)" vertTextAlign="center" />
-		</template>
-		
 		<rectangle left="0" top="0" width="1205" height="105" color="black">
 			<label left="3" top="1" width="100" height="20" text="DESCRIÇÃO"/>
 
@@ -26,15 +42,65 @@
 			<Descricao left1="910" left2="1000" top="75" text="ETNIA" field="reino"/>
 		</rectangle>
 		
-		<layout left="0" top="110" width="375" height="240">
+		<layout left="0" top="110" width="375" height="255">
 			<rectangle align="client" color="black"/>
-			<label left="5" top="1" width="100" height="20" text="CARACTERÍSTICAS"/>
-			<textEditor left="5" top="25" width="365" height="210" field="aparencia"/>
+			<label left="5" top="1" width="150" height="20" text="CARACTERÍSTICAS"/>
+
+			<Caracteristica top="25" text_p="Carisma" text_n="Timidez" field_p="carac_p_1" field_n="carac_n_1"/>
+			<Caracteristica top="50" text_p="Charme" text_n="Inconveniente" field_p="carac_p_2" field_n="carac_n_2"/>
+			<Caracteristica top="75" text_p="Intelecto" text_n="Ignorância" field_p="carac_p_3" field_n="carac_n_3"/>
+			<Caracteristica top="100" text_p="Discernimento" text_n="Desconfiança" field_p="carac_p_4" field_n="carac_n_4"/>
+			<Caracteristica top="125" text_p="Percepção," text_n="Desatento," field_p="carac_p_5" field_n="carac_n_5"/>
+			<Caracteristica top="150" text_p="Intimidação" text_n="Indiferença" field_p="carac_p_6" field_n="carac_n_6"/>
+			<Caracteristica top="175" text_p="Boa Memória" text_n="Esquecido" field_p="carac_p_7" field_n="carac_n_7"/>
+			<Caracteristica top="200" text_p="Fleuma" text_n="Irritado" field_p="carac_p_8" field_n="carac_n_8"/>
+
+
+			<rectangle left="155" top="225" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="155" top="225" width="30" height="25" horzTextAlign="center" field="carac_gasto"/>
+			<rectangle left="185" top="225" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="185" top="225" width="30" height="25" horzTextAlign="center" field="carac_total" fontColor="green" name="carac_total"/>
+
+			<dataLink fields="{'carac_p_1','carac_p_2','carac_p_3','carac_p_4','carac_p_5','carac_p_6','carac_p_7','carac_p_8'}">
+				<event name="onChange">
+					if sheet == nil then return end;
+					local gasto = (tonumber(sheet.carac_p_1) or 0) +
+									(tonumber(sheet.carac_p_2) or 0) +
+									(tonumber(sheet.carac_p_3) or 0) +
+									(tonumber(sheet.carac_p_4) or 0) +
+									(tonumber(sheet.carac_p_5) or 0) +
+									(tonumber(sheet.carac_p_6) or 0) +
+									(tonumber(sheet.carac_p_7) or 0) +
+									(tonumber(sheet.carac_p_8) or 0);
+					sheet.carac_gasto = gasto;
+				</event>
+			</dataLink>
+			<dataLink fields="{'carac_gasto','carac_total'}">
+				<event name="onChange">
+					if sheet == nil then return end;
+					local gasto = tonumber(sheet.carac_gasto) or 0;
+					local total = tonumber(sheet.carac_total) or 0;
+
+					if gasto > total then
+						self.carac_total.fontColor = "#FF0000";
+					elseif gasto==total then
+						self.carac_total.fontColor = "#FFFFFF";
+					else 
+						self.carac_total.fontColor = "#00FF00";
+					end;
+				</event>
+			</dataLink>
 		</layout>
-		<layout left="0" top="355" width="375" height="250">
+
+		<rectangle left="0" top="370" width="375" height="35" color="black" strokeColor="white" strokeSize="1">
+			<label left="55" top="5" width="100" height="25" text="Carma"/>
+			<comboBox left="110" top="5" width="200" height="25" field="carma" items="{'Divino 2','Divino 1','Humano','Demoníaco 1','Demoníaco 2'}"/>
+		</rectangle>
+
+		<layout left="0" top="410" width="375" height="195">
 			<rectangle align="client" color="black"/>
 			<label left="5" top="1" width="100" height="20" text="PERSONALIDADE"/>
-			<textEditor left="5" top="25" width="365" height="220" field="personalidade"/>
+			<textEditor left="5" top="25" width="365" height="165" field="personalidade"/>
 		</layout>
 		<layout left="380" top="110" width="825" height="495">
 			<rectangle align="client" color="black"/>

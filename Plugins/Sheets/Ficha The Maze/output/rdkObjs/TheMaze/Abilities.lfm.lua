@@ -41,10 +41,28 @@ local function constructNew_frmAbilities()
     obj.textEditor1:setParent(obj.rectangle1);
     obj.textEditor1:setLeft(0);
     obj.textEditor1:setTop(0);
-    obj.textEditor1:setWidth(835);
+    obj.textEditor1:setWidth(685);
     obj.textEditor1:setHeight(65);
     obj.textEditor1:setField("habilidade");
     obj.textEditor1:setName("textEditor1");
+
+    obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor2:setParent(obj.rectangle1);
+    obj.textEditor2:setLeft(685);
+    obj.textEditor2:setTop(0);
+    obj.textEditor2:setWidth(75);
+    obj.textEditor2:setHeight(65);
+    obj.textEditor2:setField("dificuldade");
+    obj.textEditor2:setName("textEditor2");
+
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3:setParent(obj.rectangle1);
+    obj.textEditor3:setLeft(760);
+    obj.textEditor3:setTop(0);
+    obj.textEditor3:setWidth(75);
+    obj.textEditor3:setHeight(65);
+    obj.textEditor3:setField("custo");
+    obj.textEditor3:setName("textEditor3");
 
     obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.rectangle1);
@@ -69,8 +87,8 @@ local function constructNew_frmAbilities()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            				local node = ndb.getRoot(sheet);
-            				local objetos = ndb.getChildNodes(node.listaDeHabilidades);
+            				local node = NDB.getRoot(sheet);
+            				local objetos = NDB.getChildNodes(node.listaDeHabilidades);
             				local nivel = 0;
             
             				for i=1, #objetos, 1 do 
@@ -93,10 +111,12 @@ local function constructNew_frmAbilities()
           self:setNodeDatabase(nil);
         end;
 
-        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
-        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
-        if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
+        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
+        if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
+        if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
+        if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;
         self:_oldLFMDestroy();
     end;
 
