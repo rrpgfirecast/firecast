@@ -4623,7 +4623,7 @@ local function constructNew_frmMain()
             					sheet.fadigaBase = 90 + (nivel * 10);
             					sheet.imersaoBase = 10 + (nivel * 5);
             					sheet.atr_max = 45 + (nivel * 3);
-            					sheet.habilidadesDisponivel = math.min(nivel + 1, 15);
+            					sheet.habilidadesDisponivel = math.min(nivel*2 + 1, 15);
             					sheet.carac_total = 47 + nivel;
         end, obj);
 
