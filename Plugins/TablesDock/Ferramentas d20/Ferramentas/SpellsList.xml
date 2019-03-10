@@ -36,6 +36,10 @@
 				for i=first, last, 1 do
 					local spell = self.spellList:append();
 
+					if updaterSheet.filteredSpells[i].description then 
+						spell.description = updaterSheet.filteredSpells[i].description;
+					end;
+
 					spell.name = updaterSheet.filteredSpells[i].name;
 					local nome = tryLang(updaterSheet.filteredSpells[i].name);
 					if nome ~= nil then spell.name = spell.name .. " - " .. nome end;
@@ -87,6 +91,10 @@
 
 				for i=first, last, 1 do
 					local spell = self.spellList:append();
+
+					if updaterSheet.filteredSpells[i].description then 
+						spell.description = updaterSheet.filteredSpells[i].description;
+					end;
 					
 					spell.name = updaterSheet.filteredSpells[i].name;
 					local nome = tryLang(updaterSheet.filteredSpells[i].name);

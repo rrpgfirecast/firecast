@@ -51,6 +51,7 @@ local function constructNew_frmSpellItem()
     obj.spellName:setName("spellName");
     obj.spellName:setHorzTextAlign("center");
     lfm_setPropAsString(obj.spellName, "fontStyle",  "bold");
+    obj.spellName:setHitTest(true);
 
     obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.rectangle1);
@@ -73,6 +74,7 @@ local function constructNew_frmSpellItem()
     obj.school:setWidth(110);
     obj.school:setField("school");
     obj.school:setName("school");
+    obj.school:setHitTest(true);
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj.layout2);
@@ -89,6 +91,7 @@ local function constructNew_frmSpellItem()
     obj.subschool:setWidth(110);
     obj.subschool:setField("subschool");
     obj.subschool:setName("subschool");
+    obj.subschool:setHitTest(true);
 
     obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.rectangle1);
@@ -103,6 +106,7 @@ local function constructNew_frmSpellItem()
     obj.descriptor:setField("descriptor");
     obj.descriptor:setName("descriptor");
     obj.descriptor:setHorzTextAlign("center");
+    obj.descriptor:setHitTest(true);
 
     obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.rectangle1);
@@ -117,6 +121,7 @@ local function constructNew_frmSpellItem()
     obj.level:setField("level");
     obj.level:setName("level");
     obj.level:setHorzTextAlign("center");
+    obj.level:setHitTest(true);
 
     obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.rectangle1);
@@ -131,6 +136,7 @@ local function constructNew_frmSpellItem()
     obj.components:setField("components");
     obj.components:setName("components");
     obj.components:setHorzTextAlign("center");
+    obj.components:setHitTest(true);
 
     obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.rectangle1);
@@ -145,6 +151,7 @@ local function constructNew_frmSpellItem()
     obj.duration:setField("duration");
     obj.duration:setName("duration");
     obj.duration:setHorzTextAlign("center");
+    obj.duration:setHitTest(true);
 
     obj.aiming = GUI.fromHandle(_obj_newObject("label"));
     obj.aiming:setParent(obj.layout6);
@@ -153,6 +160,7 @@ local function constructNew_frmSpellItem()
     obj.aiming:setField("aiming");
     obj.aiming:setName("aiming");
     obj.aiming:setHorzTextAlign("center");
+    obj.aiming:setHitTest(true);
 
     obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.rectangle1);
@@ -167,6 +175,7 @@ local function constructNew_frmSpellItem()
     obj.range:setField("range");
     obj.range:setName("range");
     obj.range:setHorzTextAlign("center");
+    obj.range:setHitTest(true);
 
     obj.save = GUI.fromHandle(_obj_newObject("label"));
     obj.save:setParent(obj.layout7);
@@ -175,6 +184,7 @@ local function constructNew_frmSpellItem()
     obj.save:setField("save");
     obj.save:setName("save");
     obj.save:setHorzTextAlign("center");
+    obj.save:setHitTest(true);
 
     obj.sr = GUI.fromHandle(_obj_newObject("label"));
     obj.sr:setParent(obj.layout7);
@@ -183,6 +193,7 @@ local function constructNew_frmSpellItem()
     obj.sr:setField("sr");
     obj.sr:setName("sr");
     obj.sr:setHorzTextAlign("center");
+    obj.sr:setHitTest(true);
 
     obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.rectangle1);
@@ -197,6 +208,7 @@ local function constructNew_frmSpellItem()
     obj.book:setField("book");
     obj.book:setName("book");
     obj.book:setHorzTextAlign("center");
+    obj.book:setHitTest(true);
 
     obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.rectangle1);
@@ -217,144 +229,183 @@ local function constructNew_frmSpellItem()
     obj.button1:setText("Abrir na Web");
     obj.button1:setName("button1");
 
+    obj.btDesc = GUI.fromHandle(_obj_newObject("button"));
+    obj.btDesc:setParent(obj.layout9);
+    obj.btDesc:setAlign("left");
+    obj.btDesc:setWidth(125);
+    obj.btDesc:setText("Descrição");
+    obj.btDesc:setName("btDesc");
+    obj.btDesc:setVisible(false);
+
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
-    obj.dataLink1:setField("spellName");
+    obj.dataLink1:setField("name");
     obj.dataLink1:setName("dataLink1");
 
     obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj);
-    obj.dataLink2:setField("school");
+    obj.dataLink2:setField("description");
     obj.dataLink2:setName("dataLink2");
 
     obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj);
-    obj.dataLink3:setField("subschool");
+    obj.dataLink3:setField("school");
     obj.dataLink3:setName("dataLink3");
 
     obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink4:setParent(obj);
-    obj.dataLink4:setField("level");
+    obj.dataLink4:setField("subschool");
     obj.dataLink4:setName("dataLink4");
 
     obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink5:setParent(obj);
-    obj.dataLink5:setField("descriptor");
+    obj.dataLink5:setField("level");
     obj.dataLink5:setName("dataLink5");
 
     obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink6:setParent(obj);
-    obj.dataLink6:setField("components");
+    obj.dataLink6:setField("descriptor");
     obj.dataLink6:setName("dataLink6");
 
     obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink7:setParent(obj);
-    obj.dataLink7:setField("range");
+    obj.dataLink7:setField("components");
     obj.dataLink7:setName("dataLink7");
 
     obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink8:setParent(obj);
-    obj.dataLink8:setField("duration");
+    obj.dataLink8:setField("range");
     obj.dataLink8:setName("dataLink8");
 
     obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink9:setParent(obj);
-    obj.dataLink9:setField("aiming");
+    obj.dataLink9:setField("duration");
     obj.dataLink9:setName("dataLink9");
 
     obj.dataLink10 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink10:setParent(obj);
-    obj.dataLink10:setField("save");
+    obj.dataLink10:setField("aiming");
     obj.dataLink10:setName("dataLink10");
 
     obj.dataLink11 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink11:setParent(obj);
-    obj.dataLink11:setField("sr");
+    obj.dataLink11:setField("save");
     obj.dataLink11:setName("dataLink11");
 
     obj.dataLink12 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink12:setParent(obj);
-    obj.dataLink12:setField("book");
+    obj.dataLink12:setField("sr");
     obj.dataLink12:setName("dataLink12");
+
+    obj.dataLink13 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink13:setParent(obj);
+    obj.dataLink13:setField("book");
+    obj.dataLink13:setName("dataLink13");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
             GUI.openInBrowser(sheet.url);
         end, obj);
 
-    obj._e_event1 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event1 = obj.btDesc:addEventListener("onClick",
+        function (_)
+            local pop = self:findControlByName("popDescription");
+            				
+            					if pop ~= nil then
+            						pop:setNodeObject(self.sheet);
+            						pop:showPopupEx("center", self);
+            					else
+            						showMessage("Ops, bug.. nao encontrei o popup para exibir");
+            					end;
+        end, obj);
+
+    obj._e_event2 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			self.spellName.hint = sheet.name;
         end, obj);
 
-    obj._e_event2 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event3 = obj.dataLink2:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            			if sheet.description==nil or sheet.description=="" then 
+            				-- remove popup button
+            				self.btDesc.visible = false;
+            			else
+            				-- add popup button
+            				self.btDesc.visible = true;
+            			end;
+        end, obj);
+
+    obj._e_event4 = obj.dataLink3:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			self.school.hint = sheet.school;
         end, obj);
 
-    obj._e_event3 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event5 = obj.dataLink4:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			self.subschool.hint = sheet.subschool;
         end, obj);
 
-    obj._e_event4 = obj.dataLink4:addEventListener("onChange",
+    obj._e_event6 = obj.dataLink5:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			self.level.hint = sheet.level;
         end, obj);
 
-    obj._e_event5 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event7 = obj.dataLink6:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			self.descriptor.hint = sheet.descriptor;
         end, obj);
 
-    obj._e_event6 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event8 = obj.dataLink7:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			self.components.hint = sheet.components;
         end, obj);
 
-    obj._e_event7 = obj.dataLink7:addEventListener("onChange",
+    obj._e_event9 = obj.dataLink8:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			self.range.hint = sheet.range;
         end, obj);
 
-    obj._e_event8 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event10 = obj.dataLink9:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			self.duration.hint = sheet.duration;
         end, obj);
 
-    obj._e_event9 = obj.dataLink9:addEventListener("onChange",
+    obj._e_event11 = obj.dataLink10:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			self.aiming.hint = sheet.aiming;
         end, obj);
 
-    obj._e_event10 = obj.dataLink10:addEventListener("onChange",
+    obj._e_event12 = obj.dataLink11:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			self.save.hint = sheet.save;
         end, obj);
 
-    obj._e_event11 = obj.dataLink11:addEventListener("onChange",
+    obj._e_event13 = obj.dataLink12:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			self.sr.hint = sheet.sr;
         end, obj);
 
-    obj._e_event12 = obj.dataLink12:addEventListener("onChange",
+    obj._e_event14 = obj.dataLink13:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             			self.book.hint = sheet.book;
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event14);
+        __o_rrpgObjs.removeEventListenerById(self._e_event13);
         __o_rrpgObjs.removeEventListenerById(self._e_event12);
         __o_rrpgObjs.removeEventListenerById(self._e_event11);
         __o_rrpgObjs.removeEventListenerById(self._e_event10);
@@ -403,7 +454,9 @@ local function constructNew_frmSpellItem()
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.dataLink11 ~= nil then self.dataLink11:destroy(); self.dataLink11 = nil; end;
         if self.dataLink7 ~= nil then self.dataLink7:destroy(); self.dataLink7 = nil; end;
+        if self.dataLink13 ~= nil then self.dataLink13:destroy(); self.dataLink13 = nil; end;
         if self.dataLink10 ~= nil then self.dataLink10:destroy(); self.dataLink10 = nil; end;
+        if self.btDesc ~= nil then self.btDesc:destroy(); self.btDesc = nil; end;
         if self.components ~= nil then self.components:destroy(); self.components = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;

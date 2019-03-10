@@ -5,15 +5,15 @@
         local mesa = Firecast.getMesaDe(sheet);
         local magicListData = NDB.load("magicListData.xml");
 
-        local schools = {"Abjuration","Conjuration","Calling","Creation","Healing","Summoning","Teleportation","Divination","Scrying","Enchantment","Charm","Compulsion","Evocation","Illusion","Figment","Glamer","Pattern","Phantasm","Shadow","Necromancy","Transmutation","Universal"};
+        local schools = {"Abjuration","Conjuration","Calling","Creation","Healing","Summoning","Teleportation","Divination","Scrying","Enchantment","Charm","Compulsion","Evocation","Illusion","Figment","Glamer","Pattern","Phantasm","Shadow","Necromancy","Transmutation","Polymorph","Universal"};
         local tags = {"Acid","Air","Chaotic","Cold","Darkness","Death","Earth","Electricity","Evil","Fear","Fire","Force","Good","Language-Dependent","Lawful","Light","Mind-Affecting","Sonic","Water"};
         local components = {"V", "S", "M", "F", "DF", "XP"}
-        local ranges = {"3m", "6m", "9m", "12m", "15m", "18m", "Close", "Medium", "Long", "Personal", "Touch", "Special"};
+        local ranges = {"3m", "6m", "9m", "12m", "15m", "18m", "Close", "Medium", "Long", "Personal", "Touch", "Special","Adjacent"};
         local durations = {"Concentration", "Dismissible", "Instantaneous", "Rounds", "Minutes", "Hours", "Days", "Permanent", "Special"};
         local targets = {"Area","Effect","Target","Burst","Cone","Cylinder","Emanation","Line","Ray","Sphere","Spread","Shapeable", "Special"};
         local trs = {"Fortitude","Reflex","Will","None","Special"};
         local srs = {"Yes", "No"};
-        local books = {"PHB"};
+        local books = {"PHB","ELH","CAd","CAr","CD","CC","CM","CS","CW"};
 
         local function dump(o)
            if type(o) == 'table' then
@@ -333,6 +333,14 @@
         updaterSheet = NDB.load("config.xml");
 
         self.scope:setNodeObject(updaterSheet);
+
+        --local json = VHD.openFile("spells.json");
+        --local file = {};
+        --json:read(file, json.remainingBytes);
+        --local str = Utils.binaryDecode(file, "utf8");
+
+        --local magicListData2 = NDB.load("magicListData2.xml");
+        --magicListData2.db = decode(str);
 
         local spells = NDB.getChildNodes(updaterSheet.spellList); 
     </event>

@@ -37,15 +37,15 @@ local function constructNew_frmMainFerramentas()
         local mesa = Firecast.getMesaDe(sheet);
         local magicListData = NDB.load("magicListData.xml");
 
-        local schools = {"Abjuration","Conjuration","Calling","Creation","Healing","Summoning","Teleportation","Divination","Scrying","Enchantment","Charm","Compulsion","Evocation","Illusion","Figment","Glamer","Pattern","Phantasm","Shadow","Necromancy","Transmutation","Universal"};
+        local schools = {"Abjuration","Conjuration","Calling","Creation","Healing","Summoning","Teleportation","Divination","Scrying","Enchantment","Charm","Compulsion","Evocation","Illusion","Figment","Glamer","Pattern","Phantasm","Shadow","Necromancy","Transmutation","Polymorph","Universal"};
         local tags = {"Acid","Air","Chaotic","Cold","Darkness","Death","Earth","Electricity","Evil","Fear","Fire","Force","Good","Language-Dependent","Lawful","Light","Mind-Affecting","Sonic","Water"};
         local components = {"V", "S", "M", "F", "DF", "XP"}
-        local ranges = {"3m", "6m", "9m", "12m", "15m", "18m", "Close", "Medium", "Long", "Personal", "Touch", "Special"};
+        local ranges = {"3m", "6m", "9m", "12m", "15m", "18m", "Close", "Medium", "Long", "Personal", "Touch", "Special","Adjacent"};
         local durations = {"Concentration", "Dismissible", "Instantaneous", "Rounds", "Minutes", "Hours", "Days", "Permanent", "Special"};
         local targets = {"Area","Effect","Target","Burst","Cone","Cylinder","Emanation","Line","Ray","Sphere","Spread","Shapeable", "Special"};
         local trs = {"Fortitude","Reflex","Will","None","Special"};
         local srs = {"Yes", "No"};
-        local books = {"PHB"};
+        local books = {"PHB","ELH","CAd","CAr","CD","CC","CM","CS","CW"};
 
         local function dump(o)
            if type(o) == 'table' then
@@ -793,7 +793,10 @@ local function constructNew_frmMainFerramentas()
 				if self.scope.node.Transmutation and spell.school == schools[21] then
 					return true;
 				end;
-				if self.scope.node.Universal and spell.school == schools[22] then
+				if self.scope.node.Polymorph and spell.subschool == schools[22] then
+					return true;
+				end;
+				if self.scope.node.Universal and spell.school == schools[23] then
 					return true;
 				end;
 
@@ -829,11 +832,23 @@ local function constructNew_frmMainFerramentas()
 				if updaterSheet.assassin then
 					ret = ret and spell.level.assassin ~= nil;
 				end;
-				if updaterSheet.blackguardif then
+				if updaterSheet.blackguard then
 					ret = ret and spell.level.blackguard ~= nil;
 				end;
+				if updaterSheet.shugenja ~= nil then
+					ret = ret  and spell.level.shugenja ~= nil;
+				end;
+				if updaterSheet.wu_jen ~= nil then
+					ret = ret  and spell.level["wu-jen"] ~= nil;
+				end;
+				if updaterSheet.warmage ~= nil then
+					ret = ret  and spell.level.warmage ~= nil;
+				end;
+				if updaterSheet.hexblade ~= nil then
+					ret = ret  and spell.level.hexblade ~= nil;
+				end;
 				if updaterSheet.domain then
-					ret = ret and (spell.level.air~=nil or spell.level.animal~=nil or spell.level.chaos~=nil or spell.level.death~=nil or spell.level.destruction~=nil or spell.level.earth~=nil or spell.level.evil~=nil or spell.level.fire~=nil or spell.level.good~=nil or spell.level.healing~=nil or spell.level.knowledge~=nil or spell.level.law~=nil or spell.level.luck~=nil or spell.level.magic~=nil or spell.level.plant~=nil or spell.level.protection~=nil or spell.level.strength~=nil or spell.level.sun~=nil or spell.level.travel~=nil or spell.level.trickery~=nil or spell.level.war~=nil or spell.level.water~=nil);
+					ret = ret and (spell.level.air~=nil or spell.level.animal~=nil or spell.level.chaos~=nil or spell.level.death~=nil or spell.level.destruction~=nil or spell.level.earth~=nil or spell.level.evil~=nil or spell.level.fire~=nil or spell.level.good~=nil or spell.level.healing~=nil or spell.level.knowledge~=nil or spell.level.law~=nil or spell.level.luck~=nil or spell.level.magic~=nil or spell.level.plant~=nil or spell.level.protection~=nil or spell.level.strength~=nil or spell.level.sun~=nil or spell.level.travel~=nil or spell.level.trickery~=nil or spell.level.war~=nil or spell.level.water~=nil or spell.level.liberation ~= nil or spell.level.cold ~= nil or spell.level.creation ~= nil or spell.level.dream ~= nil or spell.level.mind ~= nil or spell.level.madness ~= nil or spell.level.domination ~= nil or spell.level.force ~= nil or spell.level.glory ~= nil or spell.level.purification ~= nil or spell.level.pact ~= nil or spell.level.pestilence ~= nil or spell.level.celerity ~= nil or spell.level.weather ~= nil or spell.level.courage ~= nil);
 				end;
 				return ret;
 			end;
@@ -866,11 +881,23 @@ local function constructNew_frmMainFerramentas()
 				if updaterSheet.assassin and spell.level.assassin ~= nil then
 					return true;
 				end;
-				if updaterSheet.blackguardif and spell.level.blackguard ~= nil then
+				if updaterSheet.blackguard and spell.level.blackguard ~= nil then
+					return true;
+				end;
+				if updaterSheet.shugenja and spell.level.shugenja ~= nil then
+					return true;
+				end;
+				if updaterSheet.wu_jen and spell.level["wu-jen"] ~= nil then
+					return true;
+				end;
+				if updaterSheet.warmage and spell.level.warmage ~= nil then
+					return true;
+				end;
+				if updaterSheet.hexblade and spell.level.hexblade ~= nil then
 					return true;
 				end;
 				if updaterSheet.domain then
-					return (spell.level.air~=nil or spell.level.animal~=nil or spell.level.chaos~=nil or spell.level.death~=nil or spell.level.destruction~=nil or spell.level.earth~=nil or spell.level.evil~=nil or spell.level.fire~=nil or spell.level.good~=nil or spell.level.healing~=nil or spell.level.knowledge~=nil or spell.level.law~=nil or spell.level.luck~=nil or spell.level.magic~=nil or spell.level.plant~=nil or spell.level.protection~=nil or spell.level.strength~=nil or spell.level.sun~=nil or spell.level.travel~=nil or spell.level.trickery~=nil or spell.level.war~=nil or spell.level.water~=nil);
+					return (spell.level.air~=nil or spell.level.animal~=nil or spell.level.chaos~=nil or spell.level.death~=nil or spell.level.destruction~=nil or spell.level.earth~=nil or spell.level.evil~=nil or spell.level.fire~=nil or spell.level.good~=nil or spell.level.healing~=nil or spell.level.knowledge~=nil or spell.level.law~=nil or spell.level.luck~=nil or spell.level.magic~=nil or spell.level.plant~=nil or spell.level.protection~=nil or spell.level.strength~=nil or spell.level.sun~=nil or spell.level.travel~=nil or spell.level.trickery~=nil or spell.level.war~=nil or spell.level.water~=nil or spell.level.liberation ~= nil or spell.level.cold ~= nil or spell.level.creation ~= nil or spell.level.dream ~= nil or spell.level.mind ~= nil or spell.level.madness ~= nil or spell.level.domination ~= nil or spell.level.force ~= nil or spell.level.glory ~= nil or spell.level.purification ~= nil or spell.level.pact ~= nil or spell.level.pestilence ~= nil or spell.level.celerity ~= nil or spell.level.weather ~= nil or spell.level.courage ~= nil);
 				end;
 				return false;
 			end;
@@ -920,6 +947,9 @@ local function constructNew_frmMainFerramentas()
 				if updaterSheet.Special and spell.range == ranges[12] then
 					return true;
 				end;
+				if updaterSheet.Adjacent and spell.range == ranges[13] then
+					return true;
+				end;
 				return false;
 			end;
 
@@ -949,6 +979,40 @@ local function constructNew_frmMainFerramentas()
 					return true;
 				end;
 				if updaterSheet.SpecialDuration and array_contain(spell.duration, durations[9], #durations) then
+					return true;
+				end;
+
+				return false;
+			end
+
+
+
+			local function filterBook(spell)
+				if updaterSheet.PHB and array_contain(spell.book, books[1], #books) then
+					return true;
+				end;
+				if updaterSheet.ELH and array_contain(spell.book, books[2], #books) then
+					return true;
+				end;
+				if updaterSheet.CAd and array_contain(spell.book, books[3], #books) then
+					return true;
+				end;
+				if updaterSheet.CAr and array_contain(spell.book, books[4], #books) then
+					return true;
+				end;
+				if updaterSheet.CD and array_contain(spell.book, books[5], #books) then
+					return true;
+				end;
+				if updaterSheet.CC and array_contain(spell.book, books[6], #books) then
+					return true;
+				end;
+				if updaterSheet.CM and array_contain(spell.book, books[7], #books) then
+					return true;
+				end;
+				if updaterSheet.CS and array_contain(spell.book, books[8], #books) then
+					return true;
+				end;
+				if updaterSheet.CW and array_contain(spell.book, books[9], #books) then
 					return true;
 				end;
 
@@ -1064,13 +1128,27 @@ local function constructNew_frmMainFerramentas()
 				local nome1 = string.lower(Utils.removerAcentos(spell.name));
 				local nome2 = string.lower(Utils.removerAcentos(trans(spell.name)));
 
-				if string.find(nome1, filter) or string.find(nome1, filter) then
+				if string.find(nome1, filter) or string.find(nome2, filter) then
 					return true;
 				end;
 				return false;
 			end;
         
 
+
+    obj.popDescription = GUI.fromHandle(_obj_newObject("popup"));
+    obj.popDescription:setParent(obj.frmSpells);
+    obj.popDescription:setName("popDescription");
+    obj.popDescription:setWidth(200);
+    obj.popDescription:setHeight(200);
+    obj.popDescription:setBackOpacity(0.4);
+    lfm_setPropAsString(obj.popDescription, "autoScopeNode",  "false");
+
+    obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor1:setParent(obj.popDescription);
+    obj.textEditor1:setAlign("client");
+    obj.textEditor1:setField("description");
+    obj.textEditor1:setName("textEditor1");
 
     obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.frmSpells);
@@ -1269,9 +1347,47 @@ local function constructNew_frmMainFerramentas()
     obj.checkBox11:setAlign("left");
     obj.checkBox11:setHorzTextAlign("center");
     obj.checkBox11:setWidth(75);
-    obj.checkBox11:setField("domain");
-    obj.checkBox11:setText("Dominio");
+    obj.checkBox11:setField("shugenja");
+    obj.checkBox11:setText("Shugenja");
     obj.checkBox11:setName("checkBox11");
+
+    obj.checkBox12 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox12:setParent(obj.layout12);
+    obj.checkBox12:setAlign("left");
+    obj.checkBox12:setHorzTextAlign("center");
+    obj.checkBox12:setWidth(75);
+    obj.checkBox12:setField("wu_jen");
+    obj.checkBox12:setText("Wu-Jen");
+    obj.checkBox12:setName("checkBox12");
+
+    obj.checkBox13 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox13:setParent(obj.layout12);
+    obj.checkBox13:setAlign("left");
+    obj.checkBox13:setHorzTextAlign("center");
+    obj.checkBox13:setWidth(75);
+    obj.checkBox13:setField("warmage");
+    obj.checkBox13:setText("Mago de Guerra");
+    obj.checkBox13:setFontSize(8);
+    obj.checkBox13:setName("checkBox13");
+
+    obj.checkBox14 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox14:setParent(obj.layout12);
+    obj.checkBox14:setAlign("left");
+    obj.checkBox14:setHorzTextAlign("center");
+    obj.checkBox14:setWidth(75);
+    obj.checkBox14:setField("hexblade");
+    obj.checkBox14:setText("Lâmina Maldita");
+    obj.checkBox14:setFontSize(8);
+    obj.checkBox14:setName("checkBox14");
+
+    obj.checkBox15 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox15:setParent(obj.layout12);
+    obj.checkBox15:setAlign("left");
+    obj.checkBox15:setHorzTextAlign("center");
+    obj.checkBox15:setWidth(75);
+    obj.checkBox15:setField("domain");
+    obj.checkBox15:setText("Dominio");
+    obj.checkBox15:setName("checkBox15");
 
     obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.layout8);
@@ -1322,50 +1438,50 @@ local function constructNew_frmMainFerramentas()
     obj.layout16:setHeight(25);
     obj.layout16:setName("layout16");
 
-    obj.checkBox12 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox12:setParent(obj.layout16);
-    obj.checkBox12:setAlign("left");
-    obj.checkBox12:setHorzTextAlign("center");
-    obj.checkBox12:setWidth(75);
-    obj.checkBox12:setField("lvl0");
-    obj.checkBox12:setText("0");
-    obj.checkBox12:setName("checkBox12");
-
-    obj.checkBox13 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox13:setParent(obj.layout16);
-    obj.checkBox13:setAlign("left");
-    obj.checkBox13:setHorzTextAlign("center");
-    obj.checkBox13:setWidth(75);
-    obj.checkBox13:setField("lvl1");
-    obj.checkBox13:setText("1");
-    obj.checkBox13:setName("checkBox13");
-
-    obj.checkBox14 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox14:setParent(obj.layout16);
-    obj.checkBox14:setAlign("left");
-    obj.checkBox14:setHorzTextAlign("center");
-    obj.checkBox14:setWidth(75);
-    obj.checkBox14:setField("lvl2");
-    obj.checkBox14:setText("2");
-    obj.checkBox14:setName("checkBox14");
-
-    obj.checkBox15 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox15:setParent(obj.layout16);
-    obj.checkBox15:setAlign("left");
-    obj.checkBox15:setHorzTextAlign("center");
-    obj.checkBox15:setWidth(75);
-    obj.checkBox15:setField("lvl3");
-    obj.checkBox15:setText("3");
-    obj.checkBox15:setName("checkBox15");
-
     obj.checkBox16 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox16:setParent(obj.layout16);
     obj.checkBox16:setAlign("left");
     obj.checkBox16:setHorzTextAlign("center");
     obj.checkBox16:setWidth(75);
-    obj.checkBox16:setField("lvl4");
-    obj.checkBox16:setText("4");
+    obj.checkBox16:setField("lvl0");
+    obj.checkBox16:setText("0");
     obj.checkBox16:setName("checkBox16");
+
+    obj.checkBox17 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox17:setParent(obj.layout16);
+    obj.checkBox17:setAlign("left");
+    obj.checkBox17:setHorzTextAlign("center");
+    obj.checkBox17:setWidth(75);
+    obj.checkBox17:setField("lvl1");
+    obj.checkBox17:setText("1");
+    obj.checkBox17:setName("checkBox17");
+
+    obj.checkBox18 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox18:setParent(obj.layout16);
+    obj.checkBox18:setAlign("left");
+    obj.checkBox18:setHorzTextAlign("center");
+    obj.checkBox18:setWidth(75);
+    obj.checkBox18:setField("lvl2");
+    obj.checkBox18:setText("2");
+    obj.checkBox18:setName("checkBox18");
+
+    obj.checkBox19 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox19:setParent(obj.layout16);
+    obj.checkBox19:setAlign("left");
+    obj.checkBox19:setHorzTextAlign("center");
+    obj.checkBox19:setWidth(75);
+    obj.checkBox19:setField("lvl3");
+    obj.checkBox19:setText("3");
+    obj.checkBox19:setName("checkBox19");
+
+    obj.checkBox20 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox20:setParent(obj.layout16);
+    obj.checkBox20:setAlign("left");
+    obj.checkBox20:setHorzTextAlign("center");
+    obj.checkBox20:setWidth(75);
+    obj.checkBox20:setField("lvl4");
+    obj.checkBox20:setText("4");
+    obj.checkBox20:setName("checkBox20");
 
     obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.layout14);
@@ -1373,50 +1489,50 @@ local function constructNew_frmMainFerramentas()
     obj.layout17:setHeight(25);
     obj.layout17:setName("layout17");
 
-    obj.checkBox17 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox17:setParent(obj.layout17);
-    obj.checkBox17:setAlign("left");
-    obj.checkBox17:setHorzTextAlign("center");
-    obj.checkBox17:setWidth(75);
-    obj.checkBox17:setField("lvl5");
-    obj.checkBox17:setText("5");
-    obj.checkBox17:setName("checkBox17");
-
-    obj.checkBox18 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox18:setParent(obj.layout17);
-    obj.checkBox18:setAlign("left");
-    obj.checkBox18:setHorzTextAlign("center");
-    obj.checkBox18:setWidth(75);
-    obj.checkBox18:setField("lvl6");
-    obj.checkBox18:setText("6");
-    obj.checkBox18:setName("checkBox18");
-
-    obj.checkBox19 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox19:setParent(obj.layout17);
-    obj.checkBox19:setAlign("left");
-    obj.checkBox19:setHorzTextAlign("center");
-    obj.checkBox19:setWidth(75);
-    obj.checkBox19:setField("lvl7");
-    obj.checkBox19:setText("7");
-    obj.checkBox19:setName("checkBox19");
-
-    obj.checkBox20 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox20:setParent(obj.layout17);
-    obj.checkBox20:setAlign("left");
-    obj.checkBox20:setHorzTextAlign("center");
-    obj.checkBox20:setWidth(75);
-    obj.checkBox20:setField("lvl8");
-    obj.checkBox20:setText("8");
-    obj.checkBox20:setName("checkBox20");
-
     obj.checkBox21 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox21:setParent(obj.layout17);
     obj.checkBox21:setAlign("left");
     obj.checkBox21:setHorzTextAlign("center");
     obj.checkBox21:setWidth(75);
-    obj.checkBox21:setField("lvl9");
-    obj.checkBox21:setText("9");
+    obj.checkBox21:setField("lvl5");
+    obj.checkBox21:setText("5");
     obj.checkBox21:setName("checkBox21");
+
+    obj.checkBox22 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox22:setParent(obj.layout17);
+    obj.checkBox22:setAlign("left");
+    obj.checkBox22:setHorzTextAlign("center");
+    obj.checkBox22:setWidth(75);
+    obj.checkBox22:setField("lvl6");
+    obj.checkBox22:setText("6");
+    obj.checkBox22:setName("checkBox22");
+
+    obj.checkBox23 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox23:setParent(obj.layout17);
+    obj.checkBox23:setAlign("left");
+    obj.checkBox23:setHorzTextAlign("center");
+    obj.checkBox23:setWidth(75);
+    obj.checkBox23:setField("lvl7");
+    obj.checkBox23:setText("7");
+    obj.checkBox23:setName("checkBox23");
+
+    obj.checkBox24 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox24:setParent(obj.layout17);
+    obj.checkBox24:setAlign("left");
+    obj.checkBox24:setHorzTextAlign("center");
+    obj.checkBox24:setWidth(75);
+    obj.checkBox24:setField("lvl8");
+    obj.checkBox24:setText("8");
+    obj.checkBox24:setName("checkBox24");
+
+    obj.checkBox25 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox25:setParent(obj.layout17);
+    obj.checkBox25:setAlign("left");
+    obj.checkBox25:setHorzTextAlign("center");
+    obj.checkBox25:setWidth(75);
+    obj.checkBox25:setField("lvl9");
+    obj.checkBox25:setText("9");
+    obj.checkBox25:setName("checkBox25");
 
     obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.layout14);
@@ -1467,34 +1583,34 @@ local function constructNew_frmMainFerramentas()
     obj.layout21:setHeight(25);
     obj.layout21:setName("layout21");
 
-    obj.checkBox22 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox22:setParent(obj.layout21);
-    obj.checkBox22:setAlign("left");
-    obj.checkBox22:setHorzTextAlign("center");
-    obj.checkBox22:setWidth(125);
-    obj.checkBox22:setField("Abjuration");
-    obj.checkBox22:setText("Abjuração");
-    obj.checkBox22:setName("checkBox22");
+    obj.checkBox26 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox26:setParent(obj.layout21);
+    obj.checkBox26:setAlign("left");
+    obj.checkBox26:setHorzTextAlign("center");
+    obj.checkBox26:setWidth(125);
+    obj.checkBox26:setField("Abjuration");
+    obj.checkBox26:setText("Abjuração");
+    obj.checkBox26:setName("checkBox26");
 
-    obj.checkBox23 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox23:setParent(obj.layout21);
-    obj.checkBox23:setAlign("left");
-    obj.checkBox23:setHorzTextAlign("center");
-    obj.checkBox23:setWidth(125);
-    obj.checkBox23:setField("Conjuration");
-    obj.checkBox23:setText("Conjuração (Todas)");
-    obj.checkBox23:setFontSize(10);
-    obj.checkBox23:setName("checkBox23");
+    obj.checkBox27 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox27:setParent(obj.layout21);
+    obj.checkBox27:setAlign("left");
+    obj.checkBox27:setHorzTextAlign("center");
+    obj.checkBox27:setWidth(125);
+    obj.checkBox27:setField("Conjuration");
+    obj.checkBox27:setText("Conjuração (Todas)");
+    obj.checkBox27:setFontSize(10);
+    obj.checkBox27:setName("checkBox27");
 
-    obj.checkBox24 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox24:setParent(obj.layout21);
-    obj.checkBox24:setAlign("left");
-    obj.checkBox24:setHorzTextAlign("center");
-    obj.checkBox24:setWidth(125);
-    obj.checkBox24:setField("Calling");
-    obj.checkBox24:setText("Conjuração (Convocação)");
-    obj.checkBox24:setFontSize(9);
-    obj.checkBox24:setName("checkBox24");
+    obj.checkBox28 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox28:setParent(obj.layout21);
+    obj.checkBox28:setAlign("left");
+    obj.checkBox28:setHorzTextAlign("center");
+    obj.checkBox28:setWidth(125);
+    obj.checkBox28:setField("Calling");
+    obj.checkBox28:setText("Conjuração (Convocação)");
+    obj.checkBox28:setFontSize(9);
+    obj.checkBox28:setName("checkBox28");
 
     obj.layout22 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout22:setParent(obj.layout19);
@@ -1502,35 +1618,35 @@ local function constructNew_frmMainFerramentas()
     obj.layout22:setHeight(25);
     obj.layout22:setName("layout22");
 
-    obj.checkBox25 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox25:setParent(obj.layout22);
-    obj.checkBox25:setAlign("left");
-    obj.checkBox25:setHorzTextAlign("center");
-    obj.checkBox25:setWidth(125);
-    obj.checkBox25:setField("Creation");
-    obj.checkBox25:setText("Conjuração (Criação)");
-    obj.checkBox25:setFontSize(10);
-    obj.checkBox25:setName("checkBox25");
+    obj.checkBox29 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox29:setParent(obj.layout22);
+    obj.checkBox29:setAlign("left");
+    obj.checkBox29:setHorzTextAlign("center");
+    obj.checkBox29:setWidth(125);
+    obj.checkBox29:setField("Creation");
+    obj.checkBox29:setText("Conjuração (Criação)");
+    obj.checkBox29:setFontSize(10);
+    obj.checkBox29:setName("checkBox29");
 
-    obj.checkBox26 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox26:setParent(obj.layout22);
-    obj.checkBox26:setAlign("left");
-    obj.checkBox26:setHorzTextAlign("center");
-    obj.checkBox26:setWidth(125);
-    obj.checkBox26:setField("Healing");
-    obj.checkBox26:setText("Conjuração (Cura)");
-    obj.checkBox26:setFontSize(10);
-    obj.checkBox26:setName("checkBox26");
+    obj.checkBox30 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox30:setParent(obj.layout22);
+    obj.checkBox30:setAlign("left");
+    obj.checkBox30:setHorzTextAlign("center");
+    obj.checkBox30:setWidth(125);
+    obj.checkBox30:setField("Healing");
+    obj.checkBox30:setText("Conjuração (Cura)");
+    obj.checkBox30:setFontSize(10);
+    obj.checkBox30:setName("checkBox30");
 
-    obj.checkBox27 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox27:setParent(obj.layout22);
-    obj.checkBox27:setAlign("left");
-    obj.checkBox27:setHorzTextAlign("center");
-    obj.checkBox27:setWidth(125);
-    obj.checkBox27:setField("Summoning");
-    obj.checkBox27:setText("Conjuração (Invocação)");
-    obj.checkBox27:setFontSize(10);
-    obj.checkBox27:setName("checkBox27");
+    obj.checkBox31 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox31:setParent(obj.layout22);
+    obj.checkBox31:setAlign("left");
+    obj.checkBox31:setHorzTextAlign("center");
+    obj.checkBox31:setWidth(125);
+    obj.checkBox31:setField("Summoning");
+    obj.checkBox31:setText("Conjuração (Invocação)");
+    obj.checkBox31:setFontSize(10);
+    obj.checkBox31:setName("checkBox31");
 
     obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout23:setParent(obj.layout19);
@@ -1538,35 +1654,35 @@ local function constructNew_frmMainFerramentas()
     obj.layout23:setHeight(25);
     obj.layout23:setName("layout23");
 
-    obj.checkBox28 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox28:setParent(obj.layout23);
-    obj.checkBox28:setAlign("left");
-    obj.checkBox28:setHorzTextAlign("center");
-    obj.checkBox28:setWidth(125);
-    obj.checkBox28:setField("Teleportation");
-    obj.checkBox28:setText("Conjuração (Teletransporte)");
-    obj.checkBox28:setFontSize(8);
-    obj.checkBox28:setName("checkBox28");
+    obj.checkBox32 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox32:setParent(obj.layout23);
+    obj.checkBox32:setAlign("left");
+    obj.checkBox32:setHorzTextAlign("center");
+    obj.checkBox32:setWidth(125);
+    obj.checkBox32:setField("Teleportation");
+    obj.checkBox32:setText("Conjuração (Teletransporte)");
+    obj.checkBox32:setFontSize(8);
+    obj.checkBox32:setName("checkBox32");
 
-    obj.checkBox29 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox29:setParent(obj.layout23);
-    obj.checkBox29:setAlign("left");
-    obj.checkBox29:setHorzTextAlign("center");
-    obj.checkBox29:setWidth(125);
-    obj.checkBox29:setField("Divination");
-    obj.checkBox29:setText("Adivinhação (Todas)");
-    obj.checkBox29:setFontSize(10);
-    obj.checkBox29:setName("checkBox29");
+    obj.checkBox33 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox33:setParent(obj.layout23);
+    obj.checkBox33:setAlign("left");
+    obj.checkBox33:setHorzTextAlign("center");
+    obj.checkBox33:setWidth(125);
+    obj.checkBox33:setField("Divination");
+    obj.checkBox33:setText("Adivinhação (Todas)");
+    obj.checkBox33:setFontSize(10);
+    obj.checkBox33:setName("checkBox33");
 
-    obj.checkBox30 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox30:setParent(obj.layout23);
-    obj.checkBox30:setAlign("left");
-    obj.checkBox30:setHorzTextAlign("center");
-    obj.checkBox30:setWidth(125);
-    obj.checkBox30:setField("Scrying");
-    obj.checkBox30:setText("Adivinhação (Vidência)");
-    obj.checkBox30:setFontSize(10);
-    obj.checkBox30:setName("checkBox30");
+    obj.checkBox34 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox34:setParent(obj.layout23);
+    obj.checkBox34:setAlign("left");
+    obj.checkBox34:setHorzTextAlign("center");
+    obj.checkBox34:setWidth(125);
+    obj.checkBox34:setField("Scrying");
+    obj.checkBox34:setText("Adivinhação (Vidência)");
+    obj.checkBox34:setFontSize(10);
+    obj.checkBox34:setName("checkBox34");
 
     obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout24:setParent(obj.layout19);
@@ -1574,35 +1690,35 @@ local function constructNew_frmMainFerramentas()
     obj.layout24:setHeight(25);
     obj.layout24:setName("layout24");
 
-    obj.checkBox31 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox31:setParent(obj.layout24);
-    obj.checkBox31:setAlign("left");
-    obj.checkBox31:setHorzTextAlign("center");
-    obj.checkBox31:setWidth(125);
-    obj.checkBox31:setField("Enchantment");
-    obj.checkBox31:setText("Encantamento (Todas)");
-    obj.checkBox31:setFontSize(10);
-    obj.checkBox31:setName("checkBox31");
+    obj.checkBox35 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox35:setParent(obj.layout24);
+    obj.checkBox35:setAlign("left");
+    obj.checkBox35:setHorzTextAlign("center");
+    obj.checkBox35:setWidth(125);
+    obj.checkBox35:setField("Enchantment");
+    obj.checkBox35:setText("Encantamento (Todas)");
+    obj.checkBox35:setFontSize(10);
+    obj.checkBox35:setName("checkBox35");
 
-    obj.checkBox32 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox32:setParent(obj.layout24);
-    obj.checkBox32:setAlign("left");
-    obj.checkBox32:setHorzTextAlign("center");
-    obj.checkBox32:setWidth(125);
-    obj.checkBox32:setField("Charm");
-    obj.checkBox32:setText("Encantamento (Feitiço)");
-    obj.checkBox32:setFontSize(10);
-    obj.checkBox32:setName("checkBox32");
+    obj.checkBox36 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox36:setParent(obj.layout24);
+    obj.checkBox36:setAlign("left");
+    obj.checkBox36:setHorzTextAlign("center");
+    obj.checkBox36:setWidth(125);
+    obj.checkBox36:setField("Charm");
+    obj.checkBox36:setText("Encantamento (Feitiço)");
+    obj.checkBox36:setFontSize(10);
+    obj.checkBox36:setName("checkBox36");
 
-    obj.checkBox33 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox33:setParent(obj.layout24);
-    obj.checkBox33:setAlign("left");
-    obj.checkBox33:setHorzTextAlign("center");
-    obj.checkBox33:setWidth(125);
-    obj.checkBox33:setField("Compulsion");
-    obj.checkBox33:setText("Encantamento (Compulsão)");
-    obj.checkBox33:setFontSize(8);
-    obj.checkBox33:setName("checkBox33");
+    obj.checkBox37 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox37:setParent(obj.layout24);
+    obj.checkBox37:setAlign("left");
+    obj.checkBox37:setHorzTextAlign("center");
+    obj.checkBox37:setWidth(125);
+    obj.checkBox37:setField("Compulsion");
+    obj.checkBox37:setText("Encantamento (Compulsão)");
+    obj.checkBox37:setFontSize(8);
+    obj.checkBox37:setName("checkBox37");
 
     obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout25:setParent(obj.layout19);
@@ -1610,34 +1726,34 @@ local function constructNew_frmMainFerramentas()
     obj.layout25:setHeight(25);
     obj.layout25:setName("layout25");
 
-    obj.checkBox34 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox34:setParent(obj.layout25);
-    obj.checkBox34:setAlign("left");
-    obj.checkBox34:setHorzTextAlign("center");
-    obj.checkBox34:setWidth(125);
-    obj.checkBox34:setField("Evocation");
-    obj.checkBox34:setText("Evocação");
-    obj.checkBox34:setName("checkBox34");
+    obj.checkBox38 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox38:setParent(obj.layout25);
+    obj.checkBox38:setAlign("left");
+    obj.checkBox38:setHorzTextAlign("center");
+    obj.checkBox38:setWidth(125);
+    obj.checkBox38:setField("Evocation");
+    obj.checkBox38:setText("Evocação");
+    obj.checkBox38:setName("checkBox38");
 
-    obj.checkBox35 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox35:setParent(obj.layout25);
-    obj.checkBox35:setAlign("left");
-    obj.checkBox35:setHorzTextAlign("center");
-    obj.checkBox35:setWidth(125);
-    obj.checkBox35:setField("Illusion");
-    obj.checkBox35:setText("Ilusão (Todas)");
-    obj.checkBox35:setFontSize(12);
-    obj.checkBox35:setName("checkBox35");
+    obj.checkBox39 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox39:setParent(obj.layout25);
+    obj.checkBox39:setAlign("left");
+    obj.checkBox39:setHorzTextAlign("center");
+    obj.checkBox39:setWidth(125);
+    obj.checkBox39:setField("Illusion");
+    obj.checkBox39:setText("Ilusão (Todas)");
+    obj.checkBox39:setFontSize(12);
+    obj.checkBox39:setName("checkBox39");
 
-    obj.checkBox36 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox36:setParent(obj.layout25);
-    obj.checkBox36:setAlign("left");
-    obj.checkBox36:setHorzTextAlign("center");
-    obj.checkBox36:setWidth(125);
-    obj.checkBox36:setField("Figment");
-    obj.checkBox36:setText("Ilusão (Ídeia)");
-    obj.checkBox36:setFontSize(12);
-    obj.checkBox36:setName("checkBox36");
+    obj.checkBox40 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox40:setParent(obj.layout25);
+    obj.checkBox40:setAlign("left");
+    obj.checkBox40:setHorzTextAlign("center");
+    obj.checkBox40:setWidth(125);
+    obj.checkBox40:setField("Figment");
+    obj.checkBox40:setText("Ilusão (Ídeia)");
+    obj.checkBox40:setFontSize(12);
+    obj.checkBox40:setName("checkBox40");
 
     obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout26:setParent(obj.layout19);
@@ -1645,35 +1761,35 @@ local function constructNew_frmMainFerramentas()
     obj.layout26:setHeight(25);
     obj.layout26:setName("layout26");
 
-    obj.checkBox37 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox37:setParent(obj.layout26);
-    obj.checkBox37:setAlign("left");
-    obj.checkBox37:setHorzTextAlign("center");
-    obj.checkBox37:setWidth(125);
-    obj.checkBox37:setField("Glamer");
-    obj.checkBox37:setText("Ilusão (Sensação)");
-    obj.checkBox37:setFontSize(11);
-    obj.checkBox37:setName("checkBox37");
+    obj.checkBox41 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox41:setParent(obj.layout26);
+    obj.checkBox41:setAlign("left");
+    obj.checkBox41:setHorzTextAlign("center");
+    obj.checkBox41:setWidth(125);
+    obj.checkBox41:setField("Glamer");
+    obj.checkBox41:setText("Ilusão (Sensação)");
+    obj.checkBox41:setFontSize(11);
+    obj.checkBox41:setName("checkBox41");
 
-    obj.checkBox38 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox38:setParent(obj.layout26);
-    obj.checkBox38:setAlign("left");
-    obj.checkBox38:setHorzTextAlign("center");
-    obj.checkBox38:setWidth(125);
-    obj.checkBox38:setField("Pattern");
-    obj.checkBox38:setText("Ilusão (Padrão)");
-    obj.checkBox38:setFontSize(12);
-    obj.checkBox38:setName("checkBox38");
+    obj.checkBox42 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox42:setParent(obj.layout26);
+    obj.checkBox42:setAlign("left");
+    obj.checkBox42:setHorzTextAlign("center");
+    obj.checkBox42:setWidth(125);
+    obj.checkBox42:setField("Pattern");
+    obj.checkBox42:setText("Ilusão (Padrão)");
+    obj.checkBox42:setFontSize(12);
+    obj.checkBox42:setName("checkBox42");
 
-    obj.checkBox39 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox39:setParent(obj.layout26);
-    obj.checkBox39:setAlign("left");
-    obj.checkBox39:setHorzTextAlign("center");
-    obj.checkBox39:setWidth(125);
-    obj.checkBox39:setField("Phantasm");
-    obj.checkBox39:setText("Ilusão (Fantasma)");
-    obj.checkBox39:setFontSize(11);
-    obj.checkBox39:setName("checkBox39");
+    obj.checkBox43 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox43:setParent(obj.layout26);
+    obj.checkBox43:setAlign("left");
+    obj.checkBox43:setHorzTextAlign("center");
+    obj.checkBox43:setWidth(125);
+    obj.checkBox43:setField("Phantasm");
+    obj.checkBox43:setText("Ilusão (Fantasma)");
+    obj.checkBox43:setFontSize(11);
+    obj.checkBox43:setName("checkBox43");
 
     obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout27:setParent(obj.layout19);
@@ -1681,23 +1797,23 @@ local function constructNew_frmMainFerramentas()
     obj.layout27:setHeight(25);
     obj.layout27:setName("layout27");
 
-    obj.checkBox40 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox40:setParent(obj.layout27);
-    obj.checkBox40:setAlign("left");
-    obj.checkBox40:setHorzTextAlign("center");
-    obj.checkBox40:setWidth(125);
-    obj.checkBox40:setField("Shadow");
-    obj.checkBox40:setText("Ilusão (Sombra)");
-    obj.checkBox40:setName("checkBox40");
+    obj.checkBox44 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox44:setParent(obj.layout27);
+    obj.checkBox44:setAlign("left");
+    obj.checkBox44:setHorzTextAlign("center");
+    obj.checkBox44:setWidth(125);
+    obj.checkBox44:setField("Shadow");
+    obj.checkBox44:setText("Ilusão (Sombra)");
+    obj.checkBox44:setName("checkBox44");
 
-    obj.checkBox41 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox41:setParent(obj.layout27);
-    obj.checkBox41:setAlign("left");
-    obj.checkBox41:setHorzTextAlign("center");
-    obj.checkBox41:setWidth(125);
-    obj.checkBox41:setField("Necromancy");
-    obj.checkBox41:setText("Necromancia");
-    obj.checkBox41:setName("checkBox41");
+    obj.checkBox45 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox45:setParent(obj.layout27);
+    obj.checkBox45:setAlign("left");
+    obj.checkBox45:setHorzTextAlign("center");
+    obj.checkBox45:setWidth(125);
+    obj.checkBox45:setField("Necromancy");
+    obj.checkBox45:setText("Necromancia");
+    obj.checkBox45:setName("checkBox45");
 
     obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout28:setParent(obj.layout19);
@@ -1705,23 +1821,33 @@ local function constructNew_frmMainFerramentas()
     obj.layout28:setHeight(25);
     obj.layout28:setName("layout28");
 
-    obj.checkBox42 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox42:setParent(obj.layout28);
-    obj.checkBox42:setAlign("left");
-    obj.checkBox42:setHorzTextAlign("center");
-    obj.checkBox42:setWidth(125);
-    obj.checkBox42:setField("Transmutation");
-    obj.checkBox42:setText("Transmutação");
-    obj.checkBox42:setName("checkBox42");
+    obj.checkBox46 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox46:setParent(obj.layout28);
+    obj.checkBox46:setAlign("left");
+    obj.checkBox46:setHorzTextAlign("center");
+    obj.checkBox46:setWidth(125);
+    obj.checkBox46:setField("Transmutation");
+    obj.checkBox46:setText("Transmutação");
+    obj.checkBox46:setName("checkBox46");
 
-    obj.checkBox43 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox43:setParent(obj.layout28);
-    obj.checkBox43:setAlign("left");
-    obj.checkBox43:setHorzTextAlign("center");
-    obj.checkBox43:setWidth(125);
-    obj.checkBox43:setField("Universal");
-    obj.checkBox43:setText("Universal");
-    obj.checkBox43:setName("checkBox43");
+    obj.checkBox47 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox47:setParent(obj.layout28);
+    obj.checkBox47:setAlign("left");
+    obj.checkBox47:setHorzTextAlign("center");
+    obj.checkBox47:setWidth(125);
+    obj.checkBox47:setField("Polymorph");
+    obj.checkBox47:setText("Transmutação (Polimorfismo)");
+    obj.checkBox47:setFontSize(8);
+    obj.checkBox47:setName("checkBox47");
+
+    obj.checkBox48 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox48:setParent(obj.layout28);
+    obj.checkBox48:setAlign("left");
+    obj.checkBox48:setHorzTextAlign("center");
+    obj.checkBox48:setWidth(125);
+    obj.checkBox48:setField("Universal");
+    obj.checkBox48:setText("Universal");
+    obj.checkBox48:setName("checkBox48");
 
     obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout29:setParent(obj.layout19);
@@ -1772,41 +1898,41 @@ local function constructNew_frmMainFerramentas()
     obj.layout32:setHeight(25);
     obj.layout32:setName("layout32");
 
-    obj.checkBox44 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox44:setParent(obj.layout32);
-    obj.checkBox44:setAlign("left");
-    obj.checkBox44:setHorzTextAlign("center");
-    obj.checkBox44:setWidth(90);
-    obj.checkBox44:setField("Acid");
-    obj.checkBox44:setText("Ácido");
-    obj.checkBox44:setName("checkBox44");
+    obj.checkBox49 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox49:setParent(obj.layout32);
+    obj.checkBox49:setAlign("left");
+    obj.checkBox49:setHorzTextAlign("center");
+    obj.checkBox49:setWidth(90);
+    obj.checkBox49:setField("Acid");
+    obj.checkBox49:setText("Ácido");
+    obj.checkBox49:setName("checkBox49");
 
-    obj.checkBox45 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox45:setParent(obj.layout32);
-    obj.checkBox45:setAlign("left");
-    obj.checkBox45:setHorzTextAlign("center");
-    obj.checkBox45:setWidth(90);
-    obj.checkBox45:setField("Air");
-    obj.checkBox45:setText("Ar");
-    obj.checkBox45:setName("checkBox45");
+    obj.checkBox50 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox50:setParent(obj.layout32);
+    obj.checkBox50:setAlign("left");
+    obj.checkBox50:setHorzTextAlign("center");
+    obj.checkBox50:setWidth(90);
+    obj.checkBox50:setField("Air");
+    obj.checkBox50:setText("Ar");
+    obj.checkBox50:setName("checkBox50");
 
-    obj.checkBox46 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox46:setParent(obj.layout32);
-    obj.checkBox46:setAlign("left");
-    obj.checkBox46:setHorzTextAlign("center");
-    obj.checkBox46:setWidth(90);
-    obj.checkBox46:setField("Chaotic");
-    obj.checkBox46:setText("Caos");
-    obj.checkBox46:setName("checkBox46");
+    obj.checkBox51 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox51:setParent(obj.layout32);
+    obj.checkBox51:setAlign("left");
+    obj.checkBox51:setHorzTextAlign("center");
+    obj.checkBox51:setWidth(90);
+    obj.checkBox51:setField("Chaotic");
+    obj.checkBox51:setText("Caos");
+    obj.checkBox51:setName("checkBox51");
 
-    obj.checkBox47 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox47:setParent(obj.layout32);
-    obj.checkBox47:setAlign("left");
-    obj.checkBox47:setHorzTextAlign("center");
-    obj.checkBox47:setWidth(90);
-    obj.checkBox47:setField("Cold");
-    obj.checkBox47:setText("Frio");
-    obj.checkBox47:setName("checkBox47");
+    obj.checkBox52 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox52:setParent(obj.layout32);
+    obj.checkBox52:setAlign("left");
+    obj.checkBox52:setHorzTextAlign("center");
+    obj.checkBox52:setWidth(90);
+    obj.checkBox52:setField("Cold");
+    obj.checkBox52:setText("Frio");
+    obj.checkBox52:setName("checkBox52");
 
     obj.layout33 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout33:setParent(obj.layout30);
@@ -1814,41 +1940,41 @@ local function constructNew_frmMainFerramentas()
     obj.layout33:setHeight(25);
     obj.layout33:setName("layout33");
 
-    obj.checkBox48 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox48:setParent(obj.layout33);
-    obj.checkBox48:setAlign("left");
-    obj.checkBox48:setHorzTextAlign("center");
-    obj.checkBox48:setWidth(90);
-    obj.checkBox48:setField("Darkness");
-    obj.checkBox48:setText("Escuridão");
-    obj.checkBox48:setName("checkBox48");
+    obj.checkBox53 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox53:setParent(obj.layout33);
+    obj.checkBox53:setAlign("left");
+    obj.checkBox53:setHorzTextAlign("center");
+    obj.checkBox53:setWidth(90);
+    obj.checkBox53:setField("Darkness");
+    obj.checkBox53:setText("Escuridão");
+    obj.checkBox53:setName("checkBox53");
 
-    obj.checkBox49 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox49:setParent(obj.layout33);
-    obj.checkBox49:setAlign("left");
-    obj.checkBox49:setHorzTextAlign("center");
-    obj.checkBox49:setWidth(90);
-    obj.checkBox49:setField("Death");
-    obj.checkBox49:setText("Morte");
-    obj.checkBox49:setName("checkBox49");
+    obj.checkBox54 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox54:setParent(obj.layout33);
+    obj.checkBox54:setAlign("left");
+    obj.checkBox54:setHorzTextAlign("center");
+    obj.checkBox54:setWidth(90);
+    obj.checkBox54:setField("Death");
+    obj.checkBox54:setText("Morte");
+    obj.checkBox54:setName("checkBox54");
 
-    obj.checkBox50 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox50:setParent(obj.layout33);
-    obj.checkBox50:setAlign("left");
-    obj.checkBox50:setHorzTextAlign("center");
-    obj.checkBox50:setWidth(90);
-    obj.checkBox50:setField("Earth");
-    obj.checkBox50:setText("Terra");
-    obj.checkBox50:setName("checkBox50");
+    obj.checkBox55 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox55:setParent(obj.layout33);
+    obj.checkBox55:setAlign("left");
+    obj.checkBox55:setHorzTextAlign("center");
+    obj.checkBox55:setWidth(90);
+    obj.checkBox55:setField("Earth");
+    obj.checkBox55:setText("Terra");
+    obj.checkBox55:setName("checkBox55");
 
-    obj.checkBox51 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox51:setParent(obj.layout33);
-    obj.checkBox51:setAlign("left");
-    obj.checkBox51:setHorzTextAlign("center");
-    obj.checkBox51:setWidth(90);
-    obj.checkBox51:setField("Electricity");
-    obj.checkBox51:setText("Eletricidade");
-    obj.checkBox51:setName("checkBox51");
+    obj.checkBox56 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox56:setParent(obj.layout33);
+    obj.checkBox56:setAlign("left");
+    obj.checkBox56:setHorzTextAlign("center");
+    obj.checkBox56:setWidth(90);
+    obj.checkBox56:setField("Electricity");
+    obj.checkBox56:setText("Eletricidade");
+    obj.checkBox56:setName("checkBox56");
 
     obj.layout34 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout34:setParent(obj.layout30);
@@ -1856,41 +1982,41 @@ local function constructNew_frmMainFerramentas()
     obj.layout34:setHeight(25);
     obj.layout34:setName("layout34");
 
-    obj.checkBox52 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox52:setParent(obj.layout34);
-    obj.checkBox52:setAlign("left");
-    obj.checkBox52:setHorzTextAlign("center");
-    obj.checkBox52:setWidth(90);
-    obj.checkBox52:setField("Evil");
-    obj.checkBox52:setText("Mal");
-    obj.checkBox52:setName("checkBox52");
+    obj.checkBox57 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox57:setParent(obj.layout34);
+    obj.checkBox57:setAlign("left");
+    obj.checkBox57:setHorzTextAlign("center");
+    obj.checkBox57:setWidth(90);
+    obj.checkBox57:setField("Evil");
+    obj.checkBox57:setText("Mal");
+    obj.checkBox57:setName("checkBox57");
 
-    obj.checkBox53 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox53:setParent(obj.layout34);
-    obj.checkBox53:setAlign("left");
-    obj.checkBox53:setHorzTextAlign("center");
-    obj.checkBox53:setWidth(90);
-    obj.checkBox53:setField("Fear");
-    obj.checkBox53:setText("Medo");
-    obj.checkBox53:setName("checkBox53");
+    obj.checkBox58 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox58:setParent(obj.layout34);
+    obj.checkBox58:setAlign("left");
+    obj.checkBox58:setHorzTextAlign("center");
+    obj.checkBox58:setWidth(90);
+    obj.checkBox58:setField("Fear");
+    obj.checkBox58:setText("Medo");
+    obj.checkBox58:setName("checkBox58");
 
-    obj.checkBox54 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox54:setParent(obj.layout34);
-    obj.checkBox54:setAlign("left");
-    obj.checkBox54:setHorzTextAlign("center");
-    obj.checkBox54:setWidth(90);
-    obj.checkBox54:setField("Fire");
-    obj.checkBox54:setText("Fogo");
-    obj.checkBox54:setName("checkBox54");
+    obj.checkBox59 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox59:setParent(obj.layout34);
+    obj.checkBox59:setAlign("left");
+    obj.checkBox59:setHorzTextAlign("center");
+    obj.checkBox59:setWidth(90);
+    obj.checkBox59:setField("Fire");
+    obj.checkBox59:setText("Fogo");
+    obj.checkBox59:setName("checkBox59");
 
-    obj.checkBox55 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox55:setParent(obj.layout34);
-    obj.checkBox55:setAlign("left");
-    obj.checkBox55:setHorzTextAlign("center");
-    obj.checkBox55:setWidth(90);
-    obj.checkBox55:setField("Force");
-    obj.checkBox55:setText("Energia");
-    obj.checkBox55:setName("checkBox55");
+    obj.checkBox60 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox60:setParent(obj.layout34);
+    obj.checkBox60:setAlign("left");
+    obj.checkBox60:setHorzTextAlign("center");
+    obj.checkBox60:setWidth(90);
+    obj.checkBox60:setField("Force");
+    obj.checkBox60:setText("Energia");
+    obj.checkBox60:setName("checkBox60");
 
     obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout35:setParent(obj.layout30);
@@ -1898,42 +2024,42 @@ local function constructNew_frmMainFerramentas()
     obj.layout35:setHeight(25);
     obj.layout35:setName("layout35");
 
-    obj.checkBox56 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox56:setParent(obj.layout35);
-    obj.checkBox56:setAlign("left");
-    obj.checkBox56:setHorzTextAlign("center");
-    obj.checkBox56:setWidth(90);
-    obj.checkBox56:setField("Good");
-    obj.checkBox56:setText("Bem");
-    obj.checkBox56:setName("checkBox56");
+    obj.checkBox61 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox61:setParent(obj.layout35);
+    obj.checkBox61:setAlign("left");
+    obj.checkBox61:setHorzTextAlign("center");
+    obj.checkBox61:setWidth(90);
+    obj.checkBox61:setField("Good");
+    obj.checkBox61:setText("Bem");
+    obj.checkBox61:setName("checkBox61");
 
-    obj.checkBox57 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox57:setParent(obj.layout35);
-    obj.checkBox57:setAlign("left");
-    obj.checkBox57:setHorzTextAlign("center");
-    obj.checkBox57:setWidth(90);
-    obj.checkBox57:setField("Language_Dependent");
-    obj.checkBox57:setText("Dep. de Idioma");
-    obj.checkBox57:setFontSize(10);
-    obj.checkBox57:setName("checkBox57");
+    obj.checkBox62 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox62:setParent(obj.layout35);
+    obj.checkBox62:setAlign("left");
+    obj.checkBox62:setHorzTextAlign("center");
+    obj.checkBox62:setWidth(90);
+    obj.checkBox62:setField("Language_Dependent");
+    obj.checkBox62:setText("Dep. de Idioma");
+    obj.checkBox62:setFontSize(10);
+    obj.checkBox62:setName("checkBox62");
 
-    obj.checkBox58 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox58:setParent(obj.layout35);
-    obj.checkBox58:setAlign("left");
-    obj.checkBox58:setHorzTextAlign("center");
-    obj.checkBox58:setWidth(90);
-    obj.checkBox58:setField("Lawful");
-    obj.checkBox58:setText("Ordem");
-    obj.checkBox58:setName("checkBox58");
+    obj.checkBox63 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox63:setParent(obj.layout35);
+    obj.checkBox63:setAlign("left");
+    obj.checkBox63:setHorzTextAlign("center");
+    obj.checkBox63:setWidth(90);
+    obj.checkBox63:setField("Lawful");
+    obj.checkBox63:setText("Ordem");
+    obj.checkBox63:setName("checkBox63");
 
-    obj.checkBox59 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox59:setParent(obj.layout35);
-    obj.checkBox59:setAlign("left");
-    obj.checkBox59:setHorzTextAlign("center");
-    obj.checkBox59:setWidth(90);
-    obj.checkBox59:setField("Light");
-    obj.checkBox59:setText("Luz");
-    obj.checkBox59:setName("checkBox59");
+    obj.checkBox64 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox64:setParent(obj.layout35);
+    obj.checkBox64:setAlign("left");
+    obj.checkBox64:setHorzTextAlign("center");
+    obj.checkBox64:setWidth(90);
+    obj.checkBox64:setField("Light");
+    obj.checkBox64:setText("Luz");
+    obj.checkBox64:setName("checkBox64");
 
     obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout36:setParent(obj.layout30);
@@ -1941,42 +2067,42 @@ local function constructNew_frmMainFerramentas()
     obj.layout36:setHeight(25);
     obj.layout36:setName("layout36");
 
-    obj.checkBox60 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox60:setParent(obj.layout36);
-    obj.checkBox60:setAlign("left");
-    obj.checkBox60:setHorzTextAlign("center");
-    obj.checkBox60:setWidth(90);
-    obj.checkBox60:setField("Mind_Affecting");
-    obj.checkBox60:setText("Ação Mental");
-    obj.checkBox60:setFontSize(12);
-    obj.checkBox60:setName("checkBox60");
+    obj.checkBox65 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox65:setParent(obj.layout36);
+    obj.checkBox65:setAlign("left");
+    obj.checkBox65:setHorzTextAlign("center");
+    obj.checkBox65:setWidth(90);
+    obj.checkBox65:setField("Mind_Affecting");
+    obj.checkBox65:setText("Ação Mental");
+    obj.checkBox65:setFontSize(12);
+    obj.checkBox65:setName("checkBox65");
 
-    obj.checkBox61 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox61:setParent(obj.layout36);
-    obj.checkBox61:setAlign("left");
-    obj.checkBox61:setHorzTextAlign("center");
-    obj.checkBox61:setWidth(90);
-    obj.checkBox61:setField("Sonic");
-    obj.checkBox61:setText("Sônico");
-    obj.checkBox61:setName("checkBox61");
+    obj.checkBox66 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox66:setParent(obj.layout36);
+    obj.checkBox66:setAlign("left");
+    obj.checkBox66:setHorzTextAlign("center");
+    obj.checkBox66:setWidth(90);
+    obj.checkBox66:setField("Sonic");
+    obj.checkBox66:setText("Sônico");
+    obj.checkBox66:setName("checkBox66");
 
-    obj.checkBox62 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox62:setParent(obj.layout36);
-    obj.checkBox62:setAlign("left");
-    obj.checkBox62:setHorzTextAlign("center");
-    obj.checkBox62:setWidth(90);
-    obj.checkBox62:setField("Water");
-    obj.checkBox62:setText("Água");
-    obj.checkBox62:setName("checkBox62");
+    obj.checkBox67 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox67:setParent(obj.layout36);
+    obj.checkBox67:setAlign("left");
+    obj.checkBox67:setHorzTextAlign("center");
+    obj.checkBox67:setWidth(90);
+    obj.checkBox67:setField("Water");
+    obj.checkBox67:setText("Água");
+    obj.checkBox67:setName("checkBox67");
 
-    obj.checkBox63 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox63:setParent(obj.layout36);
-    obj.checkBox63:setAlign("left");
-    obj.checkBox63:setHorzTextAlign("center");
-    obj.checkBox63:setWidth(90);
-    obj.checkBox63:setField("None");
-    obj.checkBox63:setText("Nenhum");
-    obj.checkBox63:setName("checkBox63");
+    obj.checkBox68 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox68:setParent(obj.layout36);
+    obj.checkBox68:setAlign("left");
+    obj.checkBox68:setHorzTextAlign("center");
+    obj.checkBox68:setWidth(90);
+    obj.checkBox68:setField("None");
+    obj.checkBox68:setText("Nenhum");
+    obj.checkBox68:setName("checkBox68");
 
     obj.layout37 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout37:setParent(obj.layout30);
@@ -2060,41 +2186,41 @@ local function constructNew_frmMainFerramentas()
     obj.layout40:setHeight(25);
     obj.layout40:setName("layout40");
 
-    obj.checkBox64 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox64:setParent(obj.layout40);
-    obj.checkBox64:setAlign("left");
-    obj.checkBox64:setHorzTextAlign("center");
-    obj.checkBox64:setWidth(90);
-    obj.checkBox64:setField("V");
-    obj.checkBox64:setText("Verbal");
-    obj.checkBox64:setName("checkBox64");
+    obj.checkBox69 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox69:setParent(obj.layout40);
+    obj.checkBox69:setAlign("left");
+    obj.checkBox69:setHorzTextAlign("center");
+    obj.checkBox69:setWidth(90);
+    obj.checkBox69:setField("V");
+    obj.checkBox69:setText("Verbal");
+    obj.checkBox69:setName("checkBox69");
 
-    obj.checkBox65 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox65:setParent(obj.layout40);
-    obj.checkBox65:setAlign("left");
-    obj.checkBox65:setHorzTextAlign("center");
-    obj.checkBox65:setWidth(90);
-    obj.checkBox65:setField("S");
-    obj.checkBox65:setText("Gestos");
-    obj.checkBox65:setName("checkBox65");
+    obj.checkBox70 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox70:setParent(obj.layout40);
+    obj.checkBox70:setAlign("left");
+    obj.checkBox70:setHorzTextAlign("center");
+    obj.checkBox70:setWidth(90);
+    obj.checkBox70:setField("S");
+    obj.checkBox70:setText("Gestos");
+    obj.checkBox70:setName("checkBox70");
 
-    obj.checkBox66 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox66:setParent(obj.layout40);
-    obj.checkBox66:setAlign("left");
-    obj.checkBox66:setHorzTextAlign("center");
-    obj.checkBox66:setWidth(90);
-    obj.checkBox66:setField("M");
-    obj.checkBox66:setText("Material");
-    obj.checkBox66:setName("checkBox66");
+    obj.checkBox71 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox71:setParent(obj.layout40);
+    obj.checkBox71:setAlign("left");
+    obj.checkBox71:setHorzTextAlign("center");
+    obj.checkBox71:setWidth(90);
+    obj.checkBox71:setField("M");
+    obj.checkBox71:setText("Material");
+    obj.checkBox71:setName("checkBox71");
 
-    obj.checkBox67 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox67:setParent(obj.layout40);
-    obj.checkBox67:setAlign("left");
-    obj.checkBox67:setHorzTextAlign("center");
-    obj.checkBox67:setWidth(90);
-    obj.checkBox67:setField("F");
-    obj.checkBox67:setText("Foco");
-    obj.checkBox67:setName("checkBox67");
+    obj.checkBox72 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox72:setParent(obj.layout40);
+    obj.checkBox72:setAlign("left");
+    obj.checkBox72:setHorzTextAlign("center");
+    obj.checkBox72:setWidth(90);
+    obj.checkBox72:setField("F");
+    obj.checkBox72:setText("Foco");
+    obj.checkBox72:setName("checkBox72");
 
     obj.layout41 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout41:setParent(obj.layout38);
@@ -2102,32 +2228,32 @@ local function constructNew_frmMainFerramentas()
     obj.layout41:setHeight(25);
     obj.layout41:setName("layout41");
 
-    obj.checkBox68 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox68:setParent(obj.layout41);
-    obj.checkBox68:setAlign("left");
-    obj.checkBox68:setHorzTextAlign("center");
-    obj.checkBox68:setWidth(90);
-    obj.checkBox68:setField("DF");
-    obj.checkBox68:setText("Foco Divino");
-    obj.checkBox68:setName("checkBox68");
+    obj.checkBox73 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox73:setParent(obj.layout41);
+    obj.checkBox73:setAlign("left");
+    obj.checkBox73:setHorzTextAlign("center");
+    obj.checkBox73:setWidth(90);
+    obj.checkBox73:setField("DF");
+    obj.checkBox73:setText("Foco Divino");
+    obj.checkBox73:setName("checkBox73");
 
-    obj.checkBox69 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox69:setParent(obj.layout41);
-    obj.checkBox69:setAlign("left");
-    obj.checkBox69:setHorzTextAlign("center");
-    obj.checkBox69:setWidth(90);
-    obj.checkBox69:setField("XP");
-    obj.checkBox69:setText("Experiencia");
-    obj.checkBox69:setName("checkBox69");
+    obj.checkBox74 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox74:setParent(obj.layout41);
+    obj.checkBox74:setAlign("left");
+    obj.checkBox74:setHorzTextAlign("center");
+    obj.checkBox74:setWidth(90);
+    obj.checkBox74:setField("XP");
+    obj.checkBox74:setText("Experiencia");
+    obj.checkBox74:setName("checkBox74");
 
-    obj.checkBox70 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox70:setParent(obj.layout41);
-    obj.checkBox70:setAlign("left");
-    obj.checkBox70:setHorzTextAlign("center");
-    obj.checkBox70:setWidth(90);
-    obj.checkBox70:setField("N");
-    obj.checkBox70:setText("Nenhum");
-    obj.checkBox70:setName("checkBox70");
+    obj.checkBox75 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox75:setParent(obj.layout41);
+    obj.checkBox75:setAlign("left");
+    obj.checkBox75:setHorzTextAlign("center");
+    obj.checkBox75:setWidth(90);
+    obj.checkBox75:setField("N");
+    obj.checkBox75:setText("Nenhum");
+    obj.checkBox75:setName("checkBox75");
 
     obj.layout42 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout42:setParent(obj.layout38);
@@ -2154,7 +2280,7 @@ local function constructNew_frmMainFerramentas()
     obj.layout43 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout43:setParent(obj.scrollBox2);
     obj.layout43:setAlign("top");
-    obj.layout43:setHeight(125);
+    obj.layout43:setHeight(150);
     obj.layout43:setName("layout43");
 
     obj.layout44 = GUI.fromHandle(_obj_newObject("layout"));
@@ -2178,41 +2304,41 @@ local function constructNew_frmMainFerramentas()
     obj.layout45:setHeight(25);
     obj.layout45:setName("layout45");
 
-    obj.checkBox71 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox71:setParent(obj.layout45);
-    obj.checkBox71:setAlign("left");
-    obj.checkBox71:setHorzTextAlign("center");
-    obj.checkBox71:setWidth(90);
-    obj.checkBox71:setField("fixo3m");
-    obj.checkBox71:setText("3m");
-    obj.checkBox71:setName("checkBox71");
+    obj.checkBox76 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox76:setParent(obj.layout45);
+    obj.checkBox76:setAlign("left");
+    obj.checkBox76:setHorzTextAlign("center");
+    obj.checkBox76:setWidth(90);
+    obj.checkBox76:setField("fixo3m");
+    obj.checkBox76:setText("3m");
+    obj.checkBox76:setName("checkBox76");
 
-    obj.checkBox72 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox72:setParent(obj.layout45);
-    obj.checkBox72:setAlign("left");
-    obj.checkBox72:setHorzTextAlign("center");
-    obj.checkBox72:setWidth(90);
-    obj.checkBox72:setField("fixo6m");
-    obj.checkBox72:setText("6m");
-    obj.checkBox72:setName("checkBox72");
+    obj.checkBox77 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox77:setParent(obj.layout45);
+    obj.checkBox77:setAlign("left");
+    obj.checkBox77:setHorzTextAlign("center");
+    obj.checkBox77:setWidth(90);
+    obj.checkBox77:setField("fixo6m");
+    obj.checkBox77:setText("6m");
+    obj.checkBox77:setName("checkBox77");
 
-    obj.checkBox73 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox73:setParent(obj.layout45);
-    obj.checkBox73:setAlign("left");
-    obj.checkBox73:setHorzTextAlign("center");
-    obj.checkBox73:setWidth(90);
-    obj.checkBox73:setField("fixo9m");
-    obj.checkBox73:setText("9m");
-    obj.checkBox73:setName("checkBox73");
+    obj.checkBox78 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox78:setParent(obj.layout45);
+    obj.checkBox78:setAlign("left");
+    obj.checkBox78:setHorzTextAlign("center");
+    obj.checkBox78:setWidth(90);
+    obj.checkBox78:setField("fixo9m");
+    obj.checkBox78:setText("9m");
+    obj.checkBox78:setName("checkBox78");
 
-    obj.checkBox74 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox74:setParent(obj.layout45);
-    obj.checkBox74:setAlign("left");
-    obj.checkBox74:setHorzTextAlign("center");
-    obj.checkBox74:setWidth(90);
-    obj.checkBox74:setField("fixo12m");
-    obj.checkBox74:setText("12m");
-    obj.checkBox74:setName("checkBox74");
+    obj.checkBox79 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox79:setParent(obj.layout45);
+    obj.checkBox79:setAlign("left");
+    obj.checkBox79:setHorzTextAlign("center");
+    obj.checkBox79:setWidth(90);
+    obj.checkBox79:setField("fixo12m");
+    obj.checkBox79:setText("12m");
+    obj.checkBox79:setName("checkBox79");
 
     obj.layout46 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout46:setParent(obj.layout43);
@@ -2220,41 +2346,41 @@ local function constructNew_frmMainFerramentas()
     obj.layout46:setHeight(25);
     obj.layout46:setName("layout46");
 
-    obj.checkBox75 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox75:setParent(obj.layout46);
-    obj.checkBox75:setAlign("left");
-    obj.checkBox75:setHorzTextAlign("center");
-    obj.checkBox75:setWidth(90);
-    obj.checkBox75:setField("fixo15m");
-    obj.checkBox75:setText("15m");
-    obj.checkBox75:setName("checkBox75");
+    obj.checkBox80 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox80:setParent(obj.layout46);
+    obj.checkBox80:setAlign("left");
+    obj.checkBox80:setHorzTextAlign("center");
+    obj.checkBox80:setWidth(90);
+    obj.checkBox80:setField("fixo15m");
+    obj.checkBox80:setText("15m");
+    obj.checkBox80:setName("checkBox80");
 
-    obj.checkBox76 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox76:setParent(obj.layout46);
-    obj.checkBox76:setAlign("left");
-    obj.checkBox76:setHorzTextAlign("center");
-    obj.checkBox76:setWidth(90);
-    obj.checkBox76:setField("fixo18m");
-    obj.checkBox76:setText("18m");
-    obj.checkBox76:setName("checkBox76");
+    obj.checkBox81 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox81:setParent(obj.layout46);
+    obj.checkBox81:setAlign("left");
+    obj.checkBox81:setHorzTextAlign("center");
+    obj.checkBox81:setWidth(90);
+    obj.checkBox81:setField("fixo18m");
+    obj.checkBox81:setText("18m");
+    obj.checkBox81:setName("checkBox81");
 
-    obj.checkBox77 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox77:setParent(obj.layout46);
-    obj.checkBox77:setAlign("left");
-    obj.checkBox77:setHorzTextAlign("center");
-    obj.checkBox77:setWidth(90);
-    obj.checkBox77:setField("Close");
-    obj.checkBox77:setText("Curto");
-    obj.checkBox77:setName("checkBox77");
+    obj.checkBox82 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox82:setParent(obj.layout46);
+    obj.checkBox82:setAlign("left");
+    obj.checkBox82:setHorzTextAlign("center");
+    obj.checkBox82:setWidth(90);
+    obj.checkBox82:setField("Close");
+    obj.checkBox82:setText("Curto");
+    obj.checkBox82:setName("checkBox82");
 
-    obj.checkBox78 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox78:setParent(obj.layout46);
-    obj.checkBox78:setAlign("left");
-    obj.checkBox78:setHorzTextAlign("center");
-    obj.checkBox78:setWidth(90);
-    obj.checkBox78:setField("Medium");
-    obj.checkBox78:setText("Médio");
-    obj.checkBox78:setName("checkBox78");
+    obj.checkBox83 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox83:setParent(obj.layout46);
+    obj.checkBox83:setAlign("left");
+    obj.checkBox83:setHorzTextAlign("center");
+    obj.checkBox83:setWidth(90);
+    obj.checkBox83:setField("Medium");
+    obj.checkBox83:setText("Médio");
+    obj.checkBox83:setName("checkBox83");
 
     obj.layout47 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout47:setParent(obj.layout43);
@@ -2262,41 +2388,41 @@ local function constructNew_frmMainFerramentas()
     obj.layout47:setHeight(25);
     obj.layout47:setName("layout47");
 
-    obj.checkBox79 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox79:setParent(obj.layout47);
-    obj.checkBox79:setAlign("left");
-    obj.checkBox79:setHorzTextAlign("center");
-    obj.checkBox79:setWidth(90);
-    obj.checkBox79:setField("Long");
-    obj.checkBox79:setText("Longo");
-    obj.checkBox79:setName("checkBox79");
+    obj.checkBox84 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox84:setParent(obj.layout47);
+    obj.checkBox84:setAlign("left");
+    obj.checkBox84:setHorzTextAlign("center");
+    obj.checkBox84:setWidth(90);
+    obj.checkBox84:setField("Long");
+    obj.checkBox84:setText("Longo");
+    obj.checkBox84:setName("checkBox84");
 
-    obj.checkBox80 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox80:setParent(obj.layout47);
-    obj.checkBox80:setAlign("left");
-    obj.checkBox80:setHorzTextAlign("center");
-    obj.checkBox80:setWidth(90);
-    obj.checkBox80:setField("Personal");
-    obj.checkBox80:setText("Pessoal");
-    obj.checkBox80:setName("checkBox80");
+    obj.checkBox85 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox85:setParent(obj.layout47);
+    obj.checkBox85:setAlign("left");
+    obj.checkBox85:setHorzTextAlign("center");
+    obj.checkBox85:setWidth(90);
+    obj.checkBox85:setField("Personal");
+    obj.checkBox85:setText("Pessoal");
+    obj.checkBox85:setName("checkBox85");
 
-    obj.checkBox81 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox81:setParent(obj.layout47);
-    obj.checkBox81:setAlign("left");
-    obj.checkBox81:setHorzTextAlign("center");
-    obj.checkBox81:setWidth(90);
-    obj.checkBox81:setField("Touch");
-    obj.checkBox81:setText("Toque");
-    obj.checkBox81:setName("checkBox81");
+    obj.checkBox86 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox86:setParent(obj.layout47);
+    obj.checkBox86:setAlign("left");
+    obj.checkBox86:setHorzTextAlign("center");
+    obj.checkBox86:setWidth(90);
+    obj.checkBox86:setField("Touch");
+    obj.checkBox86:setText("Toque");
+    obj.checkBox86:setName("checkBox86");
 
-    obj.checkBox82 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox82:setParent(obj.layout47);
-    obj.checkBox82:setAlign("left");
-    obj.checkBox82:setHorzTextAlign("center");
-    obj.checkBox82:setWidth(90);
-    obj.checkBox82:setField("Special");
-    obj.checkBox82:setText("Especial");
-    obj.checkBox82:setName("checkBox82");
+    obj.checkBox87 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox87:setParent(obj.layout47);
+    obj.checkBox87:setAlign("left");
+    obj.checkBox87:setHorzTextAlign("center");
+    obj.checkBox87:setWidth(90);
+    obj.checkBox87:setField("Special");
+    obj.checkBox87:setText("Especial");
+    obj.checkBox87:setName("checkBox87");
 
     obj.layout48 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout48:setParent(obj.layout43);
@@ -2304,8 +2430,23 @@ local function constructNew_frmMainFerramentas()
     obj.layout48:setHeight(25);
     obj.layout48:setName("layout48");
 
+    obj.checkBox88 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox88:setParent(obj.layout48);
+    obj.checkBox88:setAlign("left");
+    obj.checkBox88:setHorzTextAlign("center");
+    obj.checkBox88:setWidth(90);
+    obj.checkBox88:setField("Adjacent");
+    obj.checkBox88:setText("Adjacente");
+    obj.checkBox88:setName("checkBox88");
+
+    obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout49:setParent(obj.layout43);
+    obj.layout49:setAlign("top");
+    obj.layout49:setHeight(25);
+    obj.layout49:setName("layout49");
+
     obj.button14 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button14:setParent(obj.layout48);
+    obj.button14:setParent(obj.layout49);
     obj.button14:setAlign("left");
     obj.button14:setHorzTextAlign("center");
     obj.button14:setWidth(187);
@@ -2313,27 +2454,27 @@ local function constructNew_frmMainFerramentas()
     obj.button14:setName("button14");
 
     obj.button15 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button15:setParent(obj.layout48);
+    obj.button15:setParent(obj.layout49);
     obj.button15:setAlign("left");
     obj.button15:setHorzTextAlign("center");
     obj.button15:setWidth(187);
     obj.button15:setText("Desmarque Todas");
     obj.button15:setName("button15");
 
-    obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout49:setParent(obj.scrollBox2);
-    obj.layout49:setAlign("top");
-    obj.layout49:setHeight(125);
-    obj.layout49:setName("layout49");
-
     obj.layout50 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout50:setParent(obj.layout49);
+    obj.layout50:setParent(obj.scrollBox2);
     obj.layout50:setAlign("top");
-    obj.layout50:setHeight(25);
+    obj.layout50:setHeight(125);
     obj.layout50:setName("layout50");
 
+    obj.layout51 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout51:setParent(obj.layout50);
+    obj.layout51:setAlign("top");
+    obj.layout51:setHeight(25);
+    obj.layout51:setName("layout51");
+
     obj.label16 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label16:setParent(obj.layout50);
+    obj.label16:setParent(obj.layout51);
     obj.label16:setAlign("left");
     obj.label16:setWidth(75);
     obj.label16:setHorzTextAlign("center");
@@ -2341,113 +2482,113 @@ local function constructNew_frmMainFerramentas()
     obj.label16:setMargins({right=75});
     obj.label16:setName("label16");
 
-    obj.layout51 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout51:setParent(obj.layout49);
-    obj.layout51:setAlign("top");
-    obj.layout51:setHeight(25);
-    obj.layout51:setName("layout51");
-
-    obj.checkBox83 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox83:setParent(obj.layout51);
-    obj.checkBox83:setAlign("left");
-    obj.checkBox83:setHorzTextAlign("center");
-    obj.checkBox83:setWidth(125);
-    obj.checkBox83:setField("Concentration");
-    obj.checkBox83:setText("Concentração");
-    obj.checkBox83:setName("checkBox83");
-
-    obj.checkBox84 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox84:setParent(obj.layout51);
-    obj.checkBox84:setAlign("left");
-    obj.checkBox84:setHorzTextAlign("center");
-    obj.checkBox84:setWidth(125);
-    obj.checkBox84:setField("Dismissible");
-    obj.checkBox84:setText("Dissipavel");
-    obj.checkBox84:setName("checkBox84");
-
-    obj.checkBox85 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox85:setParent(obj.layout51);
-    obj.checkBox85:setAlign("left");
-    obj.checkBox85:setHorzTextAlign("center");
-    obj.checkBox85:setWidth(125);
-    obj.checkBox85:setField("SpecialDuration");
-    obj.checkBox85:setText("Especial");
-    obj.checkBox85:setName("checkBox85");
-
     obj.layout52 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout52:setParent(obj.layout49);
+    obj.layout52:setParent(obj.layout50);
     obj.layout52:setAlign("top");
     obj.layout52:setHeight(25);
     obj.layout52:setName("layout52");
 
-    obj.checkBox86 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox86:setParent(obj.layout52);
-    obj.checkBox86:setAlign("left");
-    obj.checkBox86:setHorzTextAlign("center");
-    obj.checkBox86:setWidth(125);
-    obj.checkBox86:setField("Instantaneous");
-    obj.checkBox86:setText("Instantaneo");
-    obj.checkBox86:setName("checkBox86");
+    obj.checkBox89 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox89:setParent(obj.layout52);
+    obj.checkBox89:setAlign("left");
+    obj.checkBox89:setHorzTextAlign("center");
+    obj.checkBox89:setWidth(125);
+    obj.checkBox89:setField("Concentration");
+    obj.checkBox89:setText("Concentração");
+    obj.checkBox89:setName("checkBox89");
 
-    obj.checkBox87 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox87:setParent(obj.layout52);
-    obj.checkBox87:setAlign("left");
-    obj.checkBox87:setHorzTextAlign("center");
-    obj.checkBox87:setWidth(125);
-    obj.checkBox87:setField("Rounds");
-    obj.checkBox87:setText("Rodadas");
-    obj.checkBox87:setName("checkBox87");
+    obj.checkBox90 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox90:setParent(obj.layout52);
+    obj.checkBox90:setAlign("left");
+    obj.checkBox90:setHorzTextAlign("center");
+    obj.checkBox90:setWidth(125);
+    obj.checkBox90:setField("Dismissible");
+    obj.checkBox90:setText("Dissipavel");
+    obj.checkBox90:setName("checkBox90");
 
-    obj.checkBox88 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox88:setParent(obj.layout52);
-    obj.checkBox88:setAlign("left");
-    obj.checkBox88:setHorzTextAlign("center");
-    obj.checkBox88:setWidth(125);
-    obj.checkBox88:setField("Minutes");
-    obj.checkBox88:setText("Minutos");
-    obj.checkBox88:setName("checkBox88");
+    obj.checkBox91 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox91:setParent(obj.layout52);
+    obj.checkBox91:setAlign("left");
+    obj.checkBox91:setHorzTextAlign("center");
+    obj.checkBox91:setWidth(125);
+    obj.checkBox91:setField("SpecialDuration");
+    obj.checkBox91:setText("Especial");
+    obj.checkBox91:setName("checkBox91");
 
     obj.layout53 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout53:setParent(obj.layout49);
+    obj.layout53:setParent(obj.layout50);
     obj.layout53:setAlign("top");
     obj.layout53:setHeight(25);
     obj.layout53:setName("layout53");
 
-    obj.checkBox89 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox89:setParent(obj.layout53);
-    obj.checkBox89:setAlign("left");
-    obj.checkBox89:setHorzTextAlign("center");
-    obj.checkBox89:setWidth(125);
-    obj.checkBox89:setField("Hours");
-    obj.checkBox89:setText("Horas");
-    obj.checkBox89:setName("checkBox89");
+    obj.checkBox92 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox92:setParent(obj.layout53);
+    obj.checkBox92:setAlign("left");
+    obj.checkBox92:setHorzTextAlign("center");
+    obj.checkBox92:setWidth(125);
+    obj.checkBox92:setField("Instantaneous");
+    obj.checkBox92:setText("Instantaneo");
+    obj.checkBox92:setName("checkBox92");
 
-    obj.checkBox90 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox90:setParent(obj.layout53);
-    obj.checkBox90:setAlign("left");
-    obj.checkBox90:setHorzTextAlign("center");
-    obj.checkBox90:setWidth(125);
-    obj.checkBox90:setField("Days");
-    obj.checkBox90:setText("Dias");
-    obj.checkBox90:setName("checkBox90");
+    obj.checkBox93 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox93:setParent(obj.layout53);
+    obj.checkBox93:setAlign("left");
+    obj.checkBox93:setHorzTextAlign("center");
+    obj.checkBox93:setWidth(125);
+    obj.checkBox93:setField("Rounds");
+    obj.checkBox93:setText("Rodadas");
+    obj.checkBox93:setName("checkBox93");
 
-    obj.checkBox91 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox91:setParent(obj.layout53);
-    obj.checkBox91:setAlign("left");
-    obj.checkBox91:setHorzTextAlign("center");
-    obj.checkBox91:setWidth(125);
-    obj.checkBox91:setField("Permanent");
-    obj.checkBox91:setText("Permanente");
-    obj.checkBox91:setName("checkBox91");
+    obj.checkBox94 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox94:setParent(obj.layout53);
+    obj.checkBox94:setAlign("left");
+    obj.checkBox94:setHorzTextAlign("center");
+    obj.checkBox94:setWidth(125);
+    obj.checkBox94:setField("Minutes");
+    obj.checkBox94:setText("Minutos");
+    obj.checkBox94:setName("checkBox94");
 
     obj.layout54 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout54:setParent(obj.layout49);
+    obj.layout54:setParent(obj.layout50);
     obj.layout54:setAlign("top");
     obj.layout54:setHeight(25);
     obj.layout54:setName("layout54");
 
+    obj.checkBox95 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox95:setParent(obj.layout54);
+    obj.checkBox95:setAlign("left");
+    obj.checkBox95:setHorzTextAlign("center");
+    obj.checkBox95:setWidth(125);
+    obj.checkBox95:setField("Hours");
+    obj.checkBox95:setText("Horas");
+    obj.checkBox95:setName("checkBox95");
+
+    obj.checkBox96 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox96:setParent(obj.layout54);
+    obj.checkBox96:setAlign("left");
+    obj.checkBox96:setHorzTextAlign("center");
+    obj.checkBox96:setWidth(125);
+    obj.checkBox96:setField("Days");
+    obj.checkBox96:setText("Dias");
+    obj.checkBox96:setName("checkBox96");
+
+    obj.checkBox97 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox97:setParent(obj.layout54);
+    obj.checkBox97:setAlign("left");
+    obj.checkBox97:setHorzTextAlign("center");
+    obj.checkBox97:setWidth(125);
+    obj.checkBox97:setField("Permanent");
+    obj.checkBox97:setText("Permanente");
+    obj.checkBox97:setName("checkBox97");
+
+    obj.layout55 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout55:setParent(obj.layout50);
+    obj.layout55:setAlign("top");
+    obj.layout55:setHeight(25);
+    obj.layout55:setName("layout55");
+
     obj.button16 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button16:setParent(obj.layout54);
+    obj.button16:setParent(obj.layout55);
     obj.button16:setAlign("left");
     obj.button16:setHorzTextAlign("center");
     obj.button16:setWidth(187);
@@ -2455,27 +2596,27 @@ local function constructNew_frmMainFerramentas()
     obj.button16:setName("button16");
 
     obj.button17 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button17:setParent(obj.layout54);
+    obj.button17:setParent(obj.layout55);
     obj.button17:setAlign("left");
     obj.button17:setHorzTextAlign("center");
     obj.button17:setWidth(187);
     obj.button17:setText("Desmarque Todas");
     obj.button17:setName("button17");
 
-    obj.layout55 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout55:setParent(obj.scrollBox2);
-    obj.layout55:setAlign("top");
-    obj.layout55:setHeight(150);
-    obj.layout55:setName("layout55");
-
     obj.layout56 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout56:setParent(obj.layout55);
+    obj.layout56:setParent(obj.scrollBox2);
     obj.layout56:setAlign("top");
-    obj.layout56:setHeight(25);
+    obj.layout56:setHeight(150);
     obj.layout56:setName("layout56");
 
+    obj.layout57 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout57:setParent(obj.layout56);
+    obj.layout57:setAlign("top");
+    obj.layout57:setHeight(25);
+    obj.layout57:setName("layout57");
+
     obj.label17 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label17:setParent(obj.layout56);
+    obj.label17:setParent(obj.layout57);
     obj.label17:setAlign("left");
     obj.label17:setWidth(75);
     obj.label17:setHorzTextAlign("center");
@@ -2483,79 +2624,19 @@ local function constructNew_frmMainFerramentas()
     obj.label17:setMargins({right=75});
     obj.label17:setName("label17");
 
-    obj.layout57 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout57:setParent(obj.layout55);
-    obj.layout57:setAlign("top");
-    obj.layout57:setHeight(25);
-    obj.layout57:setName("layout57");
-
-    obj.checkBox92 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox92:setParent(obj.layout57);
-    obj.checkBox92:setAlign("left");
-    obj.checkBox92:setHorzTextAlign("center");
-    obj.checkBox92:setWidth(90);
-    obj.checkBox92:setField("Area");
-    obj.checkBox92:setText("Area");
-    obj.checkBox92:setName("checkBox92");
-
-    obj.checkBox93 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox93:setParent(obj.layout57);
-    obj.checkBox93:setAlign("left");
-    obj.checkBox93:setHorzTextAlign("center");
-    obj.checkBox93:setWidth(90);
-    obj.checkBox93:setField("Effect");
-    obj.checkBox93:setText("Efeito");
-    obj.checkBox93:setName("checkBox93");
-
-    obj.checkBox94 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox94:setParent(obj.layout57);
-    obj.checkBox94:setAlign("left");
-    obj.checkBox94:setHorzTextAlign("center");
-    obj.checkBox94:setWidth(90);
-    obj.checkBox94:setField("Target");
-    obj.checkBox94:setText("Alvo");
-    obj.checkBox94:setName("checkBox94");
-
-    obj.checkBox95 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox95:setParent(obj.layout57);
-    obj.checkBox95:setAlign("left");
-    obj.checkBox95:setHorzTextAlign("center");
-    obj.checkBox95:setWidth(90);
-    obj.checkBox95:setField("Burst");
-    obj.checkBox95:setText("Explosão");
-    obj.checkBox95:setName("checkBox95");
-
     obj.layout58 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout58:setParent(obj.layout55);
+    obj.layout58:setParent(obj.layout56);
     obj.layout58:setAlign("top");
     obj.layout58:setHeight(25);
     obj.layout58:setName("layout58");
-
-    obj.checkBox96 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox96:setParent(obj.layout58);
-    obj.checkBox96:setAlign("left");
-    obj.checkBox96:setHorzTextAlign("center");
-    obj.checkBox96:setWidth(90);
-    obj.checkBox96:setField("Cone");
-    obj.checkBox96:setText("Cone");
-    obj.checkBox96:setName("checkBox96");
-
-    obj.checkBox97 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox97:setParent(obj.layout58);
-    obj.checkBox97:setAlign("left");
-    obj.checkBox97:setHorzTextAlign("center");
-    obj.checkBox97:setWidth(90);
-    obj.checkBox97:setField("Cylinder");
-    obj.checkBox97:setText("Cilindro");
-    obj.checkBox97:setName("checkBox97");
 
     obj.checkBox98 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox98:setParent(obj.layout58);
     obj.checkBox98:setAlign("left");
     obj.checkBox98:setHorzTextAlign("center");
     obj.checkBox98:setWidth(90);
-    obj.checkBox98:setField("Emanation");
-    obj.checkBox98:setText("Emanação");
+    obj.checkBox98:setField("Area");
+    obj.checkBox98:setText("Area");
     obj.checkBox98:setName("checkBox98");
 
     obj.checkBox99 = GUI.fromHandle(_obj_newObject("checkBox"));
@@ -2563,41 +2644,41 @@ local function constructNew_frmMainFerramentas()
     obj.checkBox99:setAlign("left");
     obj.checkBox99:setHorzTextAlign("center");
     obj.checkBox99:setWidth(90);
-    obj.checkBox99:setField("Line");
-    obj.checkBox99:setText("Linha");
+    obj.checkBox99:setField("Effect");
+    obj.checkBox99:setText("Efeito");
     obj.checkBox99:setName("checkBox99");
 
-    obj.layout59 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout59:setParent(obj.layout55);
-    obj.layout59:setAlign("top");
-    obj.layout59:setHeight(25);
-    obj.layout59:setName("layout59");
-
     obj.checkBox100 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox100:setParent(obj.layout59);
+    obj.checkBox100:setParent(obj.layout58);
     obj.checkBox100:setAlign("left");
     obj.checkBox100:setHorzTextAlign("center");
     obj.checkBox100:setWidth(90);
-    obj.checkBox100:setField("Ray");
-    obj.checkBox100:setText("Raio");
+    obj.checkBox100:setField("Target");
+    obj.checkBox100:setText("Alvo");
     obj.checkBox100:setName("checkBox100");
 
     obj.checkBox101 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox101:setParent(obj.layout59);
+    obj.checkBox101:setParent(obj.layout58);
     obj.checkBox101:setAlign("left");
     obj.checkBox101:setHorzTextAlign("center");
     obj.checkBox101:setWidth(90);
-    obj.checkBox101:setField("Sphere");
-    obj.checkBox101:setText("Esfera");
+    obj.checkBox101:setField("Burst");
+    obj.checkBox101:setText("Explosão");
     obj.checkBox101:setName("checkBox101");
+
+    obj.layout59 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout59:setParent(obj.layout56);
+    obj.layout59:setAlign("top");
+    obj.layout59:setHeight(25);
+    obj.layout59:setName("layout59");
 
     obj.checkBox102 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox102:setParent(obj.layout59);
     obj.checkBox102:setAlign("left");
     obj.checkBox102:setHorzTextAlign("center");
     obj.checkBox102:setWidth(90);
-    obj.checkBox102:setField("Spread");
-    obj.checkBox102:setText("Disperção");
+    obj.checkBox102:setField("Cone");
+    obj.checkBox102:setText("Cone");
     obj.checkBox102:setName("checkBox102");
 
     obj.checkBox103 = GUI.fromHandle(_obj_newObject("checkBox"));
@@ -2605,33 +2686,93 @@ local function constructNew_frmMainFerramentas()
     obj.checkBox103:setAlign("left");
     obj.checkBox103:setHorzTextAlign("center");
     obj.checkBox103:setWidth(90);
-    obj.checkBox103:setField("Shapeable");
-    obj.checkBox103:setText("Moldavel");
+    obj.checkBox103:setField("Cylinder");
+    obj.checkBox103:setText("Cilindro");
     obj.checkBox103:setName("checkBox103");
 
+    obj.checkBox104 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox104:setParent(obj.layout59);
+    obj.checkBox104:setAlign("left");
+    obj.checkBox104:setHorzTextAlign("center");
+    obj.checkBox104:setWidth(90);
+    obj.checkBox104:setField("Emanation");
+    obj.checkBox104:setText("Emanação");
+    obj.checkBox104:setName("checkBox104");
+
+    obj.checkBox105 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox105:setParent(obj.layout59);
+    obj.checkBox105:setAlign("left");
+    obj.checkBox105:setHorzTextAlign("center");
+    obj.checkBox105:setWidth(90);
+    obj.checkBox105:setField("Line");
+    obj.checkBox105:setText("Linha");
+    obj.checkBox105:setName("checkBox105");
+
     obj.layout60 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout60:setParent(obj.layout55);
+    obj.layout60:setParent(obj.layout56);
     obj.layout60:setAlign("top");
     obj.layout60:setHeight(25);
     obj.layout60:setName("layout60");
 
-    obj.checkBox104 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox104:setParent(obj.layout60);
-    obj.checkBox104:setAlign("left");
-    obj.checkBox104:setHorzTextAlign("center");
-    obj.checkBox104:setWidth(90);
-    obj.checkBox104:setField("SpecialTarget");
-    obj.checkBox104:setText("Especial");
-    obj.checkBox104:setName("checkBox104");
+    obj.checkBox106 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox106:setParent(obj.layout60);
+    obj.checkBox106:setAlign("left");
+    obj.checkBox106:setHorzTextAlign("center");
+    obj.checkBox106:setWidth(90);
+    obj.checkBox106:setField("Ray");
+    obj.checkBox106:setText("Raio");
+    obj.checkBox106:setName("checkBox106");
+
+    obj.checkBox107 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox107:setParent(obj.layout60);
+    obj.checkBox107:setAlign("left");
+    obj.checkBox107:setHorzTextAlign("center");
+    obj.checkBox107:setWidth(90);
+    obj.checkBox107:setField("Sphere");
+    obj.checkBox107:setText("Esfera");
+    obj.checkBox107:setName("checkBox107");
+
+    obj.checkBox108 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox108:setParent(obj.layout60);
+    obj.checkBox108:setAlign("left");
+    obj.checkBox108:setHorzTextAlign("center");
+    obj.checkBox108:setWidth(90);
+    obj.checkBox108:setField("Spread");
+    obj.checkBox108:setText("Disperção");
+    obj.checkBox108:setName("checkBox108");
+
+    obj.checkBox109 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox109:setParent(obj.layout60);
+    obj.checkBox109:setAlign("left");
+    obj.checkBox109:setHorzTextAlign("center");
+    obj.checkBox109:setWidth(90);
+    obj.checkBox109:setField("Shapeable");
+    obj.checkBox109:setText("Moldavel");
+    obj.checkBox109:setName("checkBox109");
 
     obj.layout61 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout61:setParent(obj.layout55);
+    obj.layout61:setParent(obj.layout56);
     obj.layout61:setAlign("top");
     obj.layout61:setHeight(25);
     obj.layout61:setName("layout61");
 
+    obj.checkBox110 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox110:setParent(obj.layout61);
+    obj.checkBox110:setAlign("left");
+    obj.checkBox110:setHorzTextAlign("center");
+    obj.checkBox110:setWidth(90);
+    obj.checkBox110:setField("SpecialTarget");
+    obj.checkBox110:setText("Especial");
+    obj.checkBox110:setName("checkBox110");
+
+    obj.layout62 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout62:setParent(obj.layout56);
+    obj.layout62:setAlign("top");
+    obj.layout62:setHeight(25);
+    obj.layout62:setName("layout62");
+
     obj.button18 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button18:setParent(obj.layout61);
+    obj.button18:setParent(obj.layout62);
     obj.button18:setAlign("left");
     obj.button18:setHorzTextAlign("center");
     obj.button18:setWidth(187);
@@ -2639,27 +2780,27 @@ local function constructNew_frmMainFerramentas()
     obj.button18:setName("button18");
 
     obj.button19 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button19:setParent(obj.layout61);
+    obj.button19:setParent(obj.layout62);
     obj.button19:setAlign("left");
     obj.button19:setHorzTextAlign("center");
     obj.button19:setWidth(187);
     obj.button19:setText("Desmarque Todas");
     obj.button19:setName("button19");
 
-    obj.layout62 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout62:setParent(obj.scrollBox2);
-    obj.layout62:setAlign("top");
-    obj.layout62:setHeight(75);
-    obj.layout62:setName("layout62");
-
     obj.layout63 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout63:setParent(obj.layout62);
+    obj.layout63:setParent(obj.scrollBox2);
     obj.layout63:setAlign("top");
-    obj.layout63:setHeight(25);
+    obj.layout63:setHeight(75);
     obj.layout63:setName("layout63");
 
+    obj.layout64 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout64:setParent(obj.layout63);
+    obj.layout64:setAlign("top");
+    obj.layout64:setHeight(25);
+    obj.layout64:setName("layout64");
+
     obj.label18 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label18:setParent(obj.layout63);
+    obj.label18:setParent(obj.layout64);
     obj.label18:setAlign("left");
     obj.label18:setWidth(75);
     obj.label18:setHorzTextAlign("center");
@@ -2667,65 +2808,65 @@ local function constructNew_frmMainFerramentas()
     obj.label18:setMargins({right=75});
     obj.label18:setName("label18");
 
-    obj.layout64 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout64:setParent(obj.layout62);
-    obj.layout64:setAlign("top");
-    obj.layout64:setHeight(25);
-    obj.layout64:setName("layout64");
-
-    obj.checkBox105 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox105:setParent(obj.layout64);
-    obj.checkBox105:setAlign("left");
-    obj.checkBox105:setHorzTextAlign("center");
-    obj.checkBox105:setWidth(75);
-    obj.checkBox105:setField("fortitude");
-    obj.checkBox105:setText("Fortitude");
-    obj.checkBox105:setName("checkBox105");
-
-    obj.checkBox106 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox106:setParent(obj.layout64);
-    obj.checkBox106:setAlign("left");
-    obj.checkBox106:setHorzTextAlign("center");
-    obj.checkBox106:setWidth(75);
-    obj.checkBox106:setField("reflex");
-    obj.checkBox106:setText("Reflexos");
-    obj.checkBox106:setName("checkBox106");
-
-    obj.checkBox107 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox107:setParent(obj.layout64);
-    obj.checkBox107:setAlign("left");
-    obj.checkBox107:setHorzTextAlign("center");
-    obj.checkBox107:setWidth(75);
-    obj.checkBox107:setField("will");
-    obj.checkBox107:setText("Vontade");
-    obj.checkBox107:setName("checkBox107");
-
-    obj.checkBox108 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox108:setParent(obj.layout64);
-    obj.checkBox108:setAlign("left");
-    obj.checkBox108:setHorzTextAlign("center");
-    obj.checkBox108:setWidth(75);
-    obj.checkBox108:setField("none");
-    obj.checkBox108:setText("Nenhum");
-    obj.checkBox108:setName("checkBox108");
-
-    obj.checkBox109 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox109:setParent(obj.layout64);
-    obj.checkBox109:setAlign("left");
-    obj.checkBox109:setHorzTextAlign("center");
-    obj.checkBox109:setWidth(75);
-    obj.checkBox109:setField("specialTR");
-    obj.checkBox109:setText("Especial");
-    obj.checkBox109:setName("checkBox109");
-
     obj.layout65 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout65:setParent(obj.layout62);
+    obj.layout65:setParent(obj.layout63);
     obj.layout65:setAlign("top");
     obj.layout65:setHeight(25);
     obj.layout65:setName("layout65");
 
+    obj.checkBox111 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox111:setParent(obj.layout65);
+    obj.checkBox111:setAlign("left");
+    obj.checkBox111:setHorzTextAlign("center");
+    obj.checkBox111:setWidth(75);
+    obj.checkBox111:setField("fortitude");
+    obj.checkBox111:setText("Fortitude");
+    obj.checkBox111:setName("checkBox111");
+
+    obj.checkBox112 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox112:setParent(obj.layout65);
+    obj.checkBox112:setAlign("left");
+    obj.checkBox112:setHorzTextAlign("center");
+    obj.checkBox112:setWidth(75);
+    obj.checkBox112:setField("reflex");
+    obj.checkBox112:setText("Reflexos");
+    obj.checkBox112:setName("checkBox112");
+
+    obj.checkBox113 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox113:setParent(obj.layout65);
+    obj.checkBox113:setAlign("left");
+    obj.checkBox113:setHorzTextAlign("center");
+    obj.checkBox113:setWidth(75);
+    obj.checkBox113:setField("will");
+    obj.checkBox113:setText("Vontade");
+    obj.checkBox113:setName("checkBox113");
+
+    obj.checkBox114 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox114:setParent(obj.layout65);
+    obj.checkBox114:setAlign("left");
+    obj.checkBox114:setHorzTextAlign("center");
+    obj.checkBox114:setWidth(75);
+    obj.checkBox114:setField("none");
+    obj.checkBox114:setText("Nenhum");
+    obj.checkBox114:setName("checkBox114");
+
+    obj.checkBox115 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox115:setParent(obj.layout65);
+    obj.checkBox115:setAlign("left");
+    obj.checkBox115:setHorzTextAlign("center");
+    obj.checkBox115:setWidth(75);
+    obj.checkBox115:setField("specialTR");
+    obj.checkBox115:setText("Especial");
+    obj.checkBox115:setName("checkBox115");
+
+    obj.layout66 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout66:setParent(obj.layout63);
+    obj.layout66:setAlign("top");
+    obj.layout66:setHeight(25);
+    obj.layout66:setName("layout66");
+
     obj.button20 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button20:setParent(obj.layout65);
+    obj.button20:setParent(obj.layout66);
     obj.button20:setAlign("left");
     obj.button20:setHorzTextAlign("center");
     obj.button20:setWidth(187);
@@ -2733,27 +2874,27 @@ local function constructNew_frmMainFerramentas()
     obj.button20:setName("button20");
 
     obj.button21 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button21:setParent(obj.layout65);
+    obj.button21:setParent(obj.layout66);
     obj.button21:setAlign("left");
     obj.button21:setHorzTextAlign("center");
     obj.button21:setWidth(187);
     obj.button21:setText("Desmarque Todas");
     obj.button21:setName("button21");
 
-    obj.layout66 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout66:setParent(obj.scrollBox2);
-    obj.layout66:setAlign("top");
-    obj.layout66:setHeight(75);
-    obj.layout66:setName("layout66");
-
     obj.layout67 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout67:setParent(obj.layout66);
+    obj.layout67:setParent(obj.scrollBox2);
     obj.layout67:setAlign("top");
-    obj.layout67:setHeight(25);
+    obj.layout67:setHeight(75);
     obj.layout67:setName("layout67");
 
+    obj.layout68 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout68:setParent(obj.layout67);
+    obj.layout68:setAlign("top");
+    obj.layout68:setHeight(25);
+    obj.layout68:setName("layout68");
+
     obj.label19 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label19:setParent(obj.layout67);
+    obj.label19:setParent(obj.layout68);
     obj.label19:setAlign("left");
     obj.label19:setWidth(75);
     obj.label19:setHorzTextAlign("center");
@@ -2761,38 +2902,38 @@ local function constructNew_frmMainFerramentas()
     obj.label19:setMargins({right=75});
     obj.label19:setName("label19");
 
-    obj.layout68 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout68:setParent(obj.layout66);
-    obj.layout68:setAlign("top");
-    obj.layout68:setHeight(25);
-    obj.layout68:setName("layout68");
-
-    obj.checkBox110 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox110:setParent(obj.layout68);
-    obj.checkBox110:setAlign("left");
-    obj.checkBox110:setHorzTextAlign("center");
-    obj.checkBox110:setWidth(125);
-    obj.checkBox110:setField("yes");
-    obj.checkBox110:setText("Sim");
-    obj.checkBox110:setName("checkBox110");
-
-    obj.checkBox111 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox111:setParent(obj.layout68);
-    obj.checkBox111:setAlign("left");
-    obj.checkBox111:setHorzTextAlign("center");
-    obj.checkBox111:setWidth(125);
-    obj.checkBox111:setField("no");
-    obj.checkBox111:setText("Não");
-    obj.checkBox111:setName("checkBox111");
-
     obj.layout69 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout69:setParent(obj.layout66);
+    obj.layout69:setParent(obj.layout67);
     obj.layout69:setAlign("top");
     obj.layout69:setHeight(25);
     obj.layout69:setName("layout69");
 
+    obj.checkBox116 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox116:setParent(obj.layout69);
+    obj.checkBox116:setAlign("left");
+    obj.checkBox116:setHorzTextAlign("center");
+    obj.checkBox116:setWidth(187);
+    obj.checkBox116:setField("yes");
+    obj.checkBox116:setText("Sim");
+    obj.checkBox116:setName("checkBox116");
+
+    obj.checkBox117 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox117:setParent(obj.layout69);
+    obj.checkBox117:setAlign("left");
+    obj.checkBox117:setHorzTextAlign("center");
+    obj.checkBox117:setWidth(187);
+    obj.checkBox117:setField("no");
+    obj.checkBox117:setText("Não");
+    obj.checkBox117:setName("checkBox117");
+
+    obj.layout70 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout70:setParent(obj.layout67);
+    obj.layout70:setAlign("top");
+    obj.layout70:setHeight(25);
+    obj.layout70:setName("layout70");
+
     obj.button22 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button22:setParent(obj.layout69);
+    obj.button22:setParent(obj.layout70);
     obj.button22:setAlign("left");
     obj.button22:setHorzTextAlign("center");
     obj.button22:setWidth(187);
@@ -2800,12 +2941,155 @@ local function constructNew_frmMainFerramentas()
     obj.button22:setName("button22");
 
     obj.button23 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button23:setParent(obj.layout69);
+    obj.button23:setParent(obj.layout70);
     obj.button23:setAlign("left");
     obj.button23:setHorzTextAlign("center");
     obj.button23:setWidth(187);
     obj.button23:setText("Desmarque Todas");
     obj.button23:setName("button23");
+
+    obj.layout71 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout71:setParent(obj.scrollBox2);
+    obj.layout71:setAlign("top");
+    obj.layout71:setHeight(125);
+    obj.layout71:setName("layout71");
+
+    obj.layout72 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout72:setParent(obj.layout71);
+    obj.layout72:setAlign("top");
+    obj.layout72:setHeight(25);
+    obj.layout72:setName("layout72");
+
+    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label20:setParent(obj.layout72);
+    obj.label20:setAlign("left");
+    obj.label20:setWidth(75);
+    obj.label20:setHorzTextAlign("center");
+    obj.label20:setText("LIVRO");
+    obj.label20:setMargins({right=75});
+    obj.label20:setName("label20");
+
+    obj.layout73 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout73:setParent(obj.layout71);
+    obj.layout73:setAlign("top");
+    obj.layout73:setHeight(25);
+    obj.layout73:setName("layout73");
+
+    obj.checkBox118 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox118:setParent(obj.layout73);
+    obj.checkBox118:setAlign("left");
+    obj.checkBox118:setHorzTextAlign("center");
+    obj.checkBox118:setWidth(125);
+    obj.checkBox118:setField("PHB");
+    obj.checkBox118:setText("Jogador");
+    obj.checkBox118:setName("checkBox118");
+
+    obj.checkBox119 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox119:setParent(obj.layout73);
+    obj.checkBox119:setAlign("left");
+    obj.checkBox119:setHorzTextAlign("center");
+    obj.checkBox119:setWidth(125);
+    obj.checkBox119:setField("ELH");
+    obj.checkBox119:setText("Níveis Épicos");
+    obj.checkBox119:setName("checkBox119");
+
+    obj.checkBox120 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox120:setParent(obj.layout73);
+    obj.checkBox120:setAlign("left");
+    obj.checkBox120:setHorzTextAlign("center");
+    obj.checkBox120:setWidth(125);
+    obj.checkBox120:setField("CAd");
+    obj.checkBox120:setText("Comp. Aventureiro");
+    obj.checkBox120:setFontSize(11);
+    obj.checkBox120:setName("checkBox120");
+
+    obj.layout74 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout74:setParent(obj.layout71);
+    obj.layout74:setAlign("top");
+    obj.layout74:setHeight(25);
+    obj.layout74:setName("layout74");
+
+    obj.checkBox121 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox121:setParent(obj.layout74);
+    obj.checkBox121:setAlign("left");
+    obj.checkBox121:setHorzTextAlign("center");
+    obj.checkBox121:setWidth(125);
+    obj.checkBox121:setField("CAr");
+    obj.checkBox121:setText("Comp. Arcano");
+    obj.checkBox121:setName("checkBox121");
+
+    obj.checkBox122 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox122:setParent(obj.layout74);
+    obj.checkBox122:setAlign("left");
+    obj.checkBox122:setHorzTextAlign("center");
+    obj.checkBox122:setWidth(125);
+    obj.checkBox122:setField("CD");
+    obj.checkBox122:setText("Comp. Divino");
+    obj.checkBox122:setName("checkBox122");
+
+    obj.checkBox123 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox123:setParent(obj.layout74);
+    obj.checkBox123:setAlign("left");
+    obj.checkBox123:setHorzTextAlign("center");
+    obj.checkBox123:setWidth(125);
+    obj.checkBox123:setField("CC");
+    obj.checkBox123:setText("Comp. Campeão");
+    obj.checkBox123:setName("checkBox123");
+
+    obj.layout75 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout75:setParent(obj.layout71);
+    obj.layout75:setAlign("top");
+    obj.layout75:setHeight(25);
+    obj.layout75:setName("layout75");
+
+    obj.checkBox124 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox124:setParent(obj.layout75);
+    obj.checkBox124:setAlign("left");
+    obj.checkBox124:setHorzTextAlign("center");
+    obj.checkBox124:setWidth(125);
+    obj.checkBox124:setField("CM");
+    obj.checkBox124:setText("Comp. Mago");
+    obj.checkBox124:setName("checkBox124");
+
+    obj.checkBox125 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox125:setParent(obj.layout75);
+    obj.checkBox125:setAlign("left");
+    obj.checkBox125:setHorzTextAlign("center");
+    obj.checkBox125:setWidth(125);
+    obj.checkBox125:setField("CS");
+    obj.checkBox125:setText("Comp. Patife");
+    obj.checkBox125:setName("checkBox125");
+
+    obj.checkBox126 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox126:setParent(obj.layout75);
+    obj.checkBox126:setAlign("left");
+    obj.checkBox126:setHorzTextAlign("center");
+    obj.checkBox126:setWidth(125);
+    obj.checkBox126:setField("CW");
+    obj.checkBox126:setText("Comp. Guerreiro");
+    obj.checkBox126:setName("checkBox126");
+
+    obj.layout76 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout76:setParent(obj.layout71);
+    obj.layout76:setAlign("top");
+    obj.layout76:setHeight(25);
+    obj.layout76:setName("layout76");
+
+    obj.button24 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button24:setParent(obj.layout76);
+    obj.button24:setAlign("left");
+    obj.button24:setHorzTextAlign("center");
+    obj.button24:setWidth(187);
+    obj.button24:setText("Marque Todas");
+    obj.button24:setName("button24");
+
+    obj.button25 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button25:setParent(obj.layout76);
+    obj.button25:setAlign("left");
+    obj.button25:setHorzTextAlign("center");
+    obj.button25:setWidth(187);
+    obj.button25:setText("Desmarque Todas");
+    obj.button25:setName("button25");
 
     obj.spellListTab = GUI.fromHandle(_obj_newObject("tab"));
     obj.spellListTab:setParent(obj.tabControl2);
@@ -2831,51 +3115,51 @@ local function constructNew_frmMainFerramentas()
     obj.spellList:setTemplateForm("frmSpellItem");
     obj.spellList:setAutoHeight(true);
 
-    obj.layout70 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout70:setParent(obj.frmSpellsList);
-    obj.layout70:setAlign("bottom");
-    obj.layout70:setHeight(25);
-    obj.layout70:setName("layout70");
+    obj.layout77 = GUI.fromHandle(_obj_newObject("layout"));
+    obj.layout77:setParent(obj.frmSpellsList);
+    obj.layout77:setAlign("bottom");
+    obj.layout77:setHeight(25);
+    obj.layout77:setName("layout77");
 
-    obj.button24 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button24:setParent(obj.layout70);
-    obj.button24:setAlign("left");
-    obj.button24:setHorzTextAlign("center");
-    obj.button24:setWidth(150);
-    obj.button24:setText("Anterior");
-    obj.button24:setName("button24");
-
-    obj.label20 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label20:setParent(obj.layout70);
-    obj.label20:setAlign("left");
-    obj.label20:setField("SpellsPage");
-    obj.label20:setWidth(25);
-    obj.label20:setHorzTextAlign("center");
-    obj.label20:setName("label20");
+    obj.button26 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button26:setParent(obj.layout77);
+    obj.button26:setAlign("left");
+    obj.button26:setHorzTextAlign("center");
+    obj.button26:setWidth(150);
+    obj.button26:setText("Anterior");
+    obj.button26:setName("button26");
 
     obj.label21 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label21:setParent(obj.layout70);
+    obj.label21:setParent(obj.layout77);
     obj.label21:setAlign("left");
-    obj.label21:setText("/");
+    obj.label21:setField("SpellsPage");
     obj.label21:setWidth(25);
     obj.label21:setHorzTextAlign("center");
     obj.label21:setName("label21");
 
     obj.label22 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label22:setParent(obj.layout70);
+    obj.label22:setParent(obj.layout77);
     obj.label22:setAlign("left");
-    obj.label22:setField("maxSpellPages");
+    obj.label22:setText("/");
     obj.label22:setWidth(25);
     obj.label22:setHorzTextAlign("center");
     obj.label22:setName("label22");
 
-    obj.button25 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button25:setParent(obj.layout70);
-    obj.button25:setAlign("left");
-    obj.button25:setHorzTextAlign("center");
-    obj.button25:setWidth(150);
-    obj.button25:setText("Proximo");
-    obj.button25:setName("button25");
+    obj.label23 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label23:setParent(obj.layout77);
+    obj.label23:setAlign("left");
+    obj.label23:setField("maxSpellPages");
+    obj.label23:setWidth(25);
+    obj.label23:setHorzTextAlign("center");
+    obj.label23:setName("label23");
+
+    obj.button27 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button27:setParent(obj.layout77);
+    obj.button27:setAlign("left");
+    obj.button27:setHorzTextAlign("center");
+    obj.button27:setWidth(150);
+    obj.button27:setText("Proximo");
+    obj.button27:setName("button27");
 
     obj.tab4 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab4:setParent(obj.tabControl1);
@@ -2898,79 +3182,79 @@ local function constructNew_frmMainFerramentas()
     obj.rectangle1:setColor("black");
     obj.rectangle1:setName("rectangle1");
 
-    obj.label23 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label23:setParent(obj.scrollBox4);
-    obj.label23:setLeft(5);
-    obj.label23:setTop(10);
-    obj.label23:setWidth(200);
-    obj.label23:setHeight(20);
-    obj.label23:setText("Feito por: Vinny (Ambesek)");
-    obj.label23:setName("label23");
-
     obj.label24 = GUI.fromHandle(_obj_newObject("label"));
     obj.label24:setParent(obj.scrollBox4);
     obj.label24:setLeft(5);
-    obj.label24:setTop(35);
+    obj.label24:setTop(10);
     obj.label24:setWidth(200);
     obj.label24:setHeight(20);
-    obj.label24:setText("Versão Atual: ");
-    obj.label24:setHorzTextAlign("center");
-    obj.label24:setField("versionInstalled");
+    obj.label24:setText("Feito por: Vinny (Ambesek)");
     obj.label24:setName("label24");
 
     obj.label25 = GUI.fromHandle(_obj_newObject("label"));
     obj.label25:setParent(obj.scrollBox4);
     obj.label25:setLeft(5);
-    obj.label25:setTop(60);
+    obj.label25:setTop(35);
     obj.label25:setWidth(200);
     obj.label25:setHeight(20);
-    obj.label25:setText("Sua Versão: ");
+    obj.label25:setText("Versão Atual: ");
     obj.label25:setHorzTextAlign("center");
-    obj.label25:setField("versionDownloaded");
+    obj.label25:setField("versionInstalled");
     obj.label25:setName("label25");
-
-    obj.checkBox112 = GUI.fromHandle(_obj_newObject("checkBox"));
-    obj.checkBox112:setParent(obj.scrollBox4);
-    obj.checkBox112:setLeft(5);
-    obj.checkBox112:setTop(85);
-    obj.checkBox112:setWidth(200);
-    obj.checkBox112:setHeight(20);
-    obj.checkBox112:setField("noUpdate");
-    obj.checkBox112:setText("Não pedir para atualizar.");
-    obj.checkBox112:setName("checkBox112");
-
-    obj.button26 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button26:setParent(obj.scrollBox4);
-    obj.button26:setLeft(5);
-    obj.button26:setTop(110);
-    obj.button26:setWidth(100);
-    obj.button26:setText("Change Log");
-    obj.button26:setName("button26");
-
-    obj.button27 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button27:setParent(obj.scrollBox4);
-    obj.button27:setLeft(5);
-    obj.button27:setTop(135);
-    obj.button27:setWidth(100);
-    obj.button27:setText("Atualizar");
-    obj.button27:setName("button27");
 
     obj.label26 = GUI.fromHandle(_obj_newObject("label"));
     obj.label26:setParent(obj.scrollBox4);
     obj.label26:setLeft(5);
-    obj.label26:setTop(160);
+    obj.label26:setTop(60);
     obj.label26:setWidth(200);
     obj.label26:setHeight(20);
-    obj.label26:setText("Conheça a Mesa:");
+    obj.label26:setText("Sua Versão: ");
+    obj.label26:setHorzTextAlign("center");
+    obj.label26:setField("versionDownloaded");
     obj.label26:setName("label26");
+
+    obj.checkBox127 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox127:setParent(obj.scrollBox4);
+    obj.checkBox127:setLeft(5);
+    obj.checkBox127:setTop(85);
+    obj.checkBox127:setWidth(200);
+    obj.checkBox127:setHeight(20);
+    obj.checkBox127:setField("noUpdate");
+    obj.checkBox127:setText("Não pedir para atualizar.");
+    obj.checkBox127:setName("checkBox127");
 
     obj.button28 = GUI.fromHandle(_obj_newObject("button"));
     obj.button28:setParent(obj.scrollBox4);
     obj.button28:setLeft(5);
-    obj.button28:setTop(185);
+    obj.button28:setTop(110);
     obj.button28:setWidth(100);
-    obj.button28:setText("RPGmeister");
+    obj.button28:setText("Change Log");
     obj.button28:setName("button28");
+
+    obj.button29 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button29:setParent(obj.scrollBox4);
+    obj.button29:setLeft(5);
+    obj.button29:setTop(135);
+    obj.button29:setWidth(100);
+    obj.button29:setText("Atualizar");
+    obj.button29:setName("button29");
+
+    obj.label27 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label27:setParent(obj.scrollBox4);
+    obj.label27:setLeft(5);
+    obj.label27:setTop(160);
+    obj.label27:setWidth(200);
+    obj.label27:setHeight(20);
+    obj.label27:setText("Conheça a Mesa:");
+    obj.label27:setName("label27");
+
+    obj.button30 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button30:setParent(obj.scrollBox4);
+    obj.button30:setLeft(5);
+    obj.button30:setTop(185);
+    obj.button30:setWidth(100);
+    obj.button30:setText("RPGmeister");
+    obj.button30:setName("button30");
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
         function (_)
@@ -2978,6 +3262,14 @@ local function constructNew_frmMainFerramentas()
                     updaterSheet = NDB.load("config.xml");
             
                     self.scope:setNodeObject(updaterSheet);
+            
+                    --local json = VHD.openFile("spells.json");
+                    --local file = {};
+                    --json:read(file, json.remainingBytes);
+                    --local str = Utils.binaryDecode(file, "utf8");
+            
+                    --local magicListData2 = NDB.load("magicListData2.xml");
+                    --magicListData2.db = decode(str);
             
                     local spells = NDB.getChildNodes(updaterSheet.spellList);
         end, obj);
@@ -3110,37 +3402,76 @@ local function constructNew_frmMainFerramentas()
             					local spell = magicListData.db[k];
             
             					local isName = filterName(spell);
-            					if not isName then goto nextspell end;
+            					if not isName then 
+            						--write(spell.name .. " falhou no filtro de isName");
+            						goto nextspell 
+            					end;
             
             					local isClass = filterClass(spell);
-            					if not isClass then goto nextspell end;
+            					if not isClass then 
+            						--write(spell.name .. " falhou no filtro de isClass");
+            						goto nextspell 
+            					end;
             
             					local isLevel = filterLevel(spell);
-            					if not isLevel then goto nextspell end;
+            					if not isLevel then 
+            						--write(spell.name .. " falhou no filtro de isLevel");
+            						goto nextspell 
+            					end;
             
             					local isSchool = filterSchool(spell);
-            					if not isSchool then goto nextspell end;
+            					if not isSchool then 
+            						--write(spell.name .. " falhou no filtro de isSchool");
+            						goto nextspell 
+            					end;
             
             					local isTag = filterTag(spell);
-            					if not isTag then goto nextspell end;
+            					if not isTag then 
+            						--write(spell.name .. " falhou no filtro de isTag");
+            						goto nextspell 
+            					end;
             
             					local isComponent = filterComponent(spell);
-            					if not isComponent then goto nextspell end;
+            					if not isComponent then 
+            						--write(spell.name .. " falhou no filtro de isComponent");
+            						goto nextspell 
+            					end;
             
             					local isRange = filterRange(spell);
-            					if not isRange then goto nextspell end;
+            					if not isRange then 
+            						--write(spell.name .. " falhou no filtro de isRange");
+            						goto nextspell 
+            					end;
             
             					local isDuration = filterDuration(spell);
-            					if not isDuration then goto nextspell end;
+            					if not isDuration then 
+            						--write(spell.name .. " falhou no filtro de isDuration");
+            						goto nextspell 
+            					end;
             
             					local isTarget = filterTarget(spell);
-            					if not isTarget then goto nextspell end;
+            					if not isTarget then 
+            						--write(spell.name .. " falhou no filtro de isTarget");
+            						goto nextspell 
+            					end;
             
             					local isSave = filterSave(spell);
-            					if not isSave then goto nextspell end;
+            					if not isSave then 
+            						--write(spell.name .. " falhou no filtro de isSave");
+            						goto nextspell 
+            					end;
             
             					local isSR = filterSR(spell);
-            					if not isSR then goto nextspell end;
+            					if not isSR then 
+            						--write(spell.name .. " falhou no filtro de isSR");
+            						goto nextspell 
+            					end;
+            
+            					local isBook = filterBook(spell);
+            					if not isBook then 
+            						--write(spell.name .. " falhou no filtro de isBook");
+            						goto nextspell 
+            					end;
             
             					index = index +1;
             					updaterSheet.filteredSpells[index] = spell;
@@ -3163,6 +3494,10 @@ local function constructNew_frmMainFerramentas()
             		        local limit = math.min(index, 50);
             				for i=1, limit, 1 do
             					local spell = self.spellList:append();
+            
+            					if updaterSheet.filteredSpells[i].description then 
+            						spell.description = updaterSheet.filteredSpells[i].description;
+            					end;
             
             					spell.name = updaterSheet.filteredSpells[i].name;
             					local nome = tryLang(updaterSheet.filteredSpells[i].name);
@@ -3200,6 +3535,10 @@ local function constructNew_frmMainFerramentas()
             						self.scope.node.adept = true;
             						self.scope.node.assassin = true;
             						self.scope.node.blackguard = true;
+            						self.scope.node.shugenja = true;
+            						self.scope.node.wu_jen = true;
+            						self.scope.node.warmage = true;
+            						self.scope.node.hexblade = true;
             						self.scope.node.domain = true;
         end, obj);
 
@@ -3216,6 +3555,10 @@ local function constructNew_frmMainFerramentas()
             						self.scope.node.adept = false;
             						self.scope.node.assassin = false;
             						self.scope.node.blackguard = false;
+            						self.scope.node.shugenja = false;
+            						self.scope.node.wu_jen = false;
+            						self.scope.node.warmage = false;
+            						self.scope.node.hexblade = false;
             						self.scope.node.domain = false;
         end, obj);
 
@@ -3273,6 +3616,7 @@ local function constructNew_frmMainFerramentas()
             						self.scope.node.Shadow = true;
             						self.scope.node.Necromancy = true;
             						self.scope.node.Transmutation = true;
+            						self.scope.node.Polymorph = true;
             						self.scope.node.Universal = true;
         end, obj);
 
@@ -3300,6 +3644,7 @@ local function constructNew_frmMainFerramentas()
             						self.scope.node.Shadow = false;
             						self.scope.node.Necromancy = false;
             						self.scope.node.Transmutation = false;
+            						self.scope.node.Polymorph = false;
             						self.scope.node.Universal = false;
         end, obj);
 
@@ -3391,6 +3736,7 @@ local function constructNew_frmMainFerramentas()
             						self.scope.node.Long = true;
             						self.scope.node.Personal = true;
             						self.scope.node.Touch = true;
+            						self.scope.node.Adjacent = true;
             						self.scope.node.Special = true;
         end, obj);
 
@@ -3408,6 +3754,7 @@ local function constructNew_frmMainFerramentas()
             						self.scope.node.Long = false;
             						self.scope.node.Personal = false;
             						self.scope.node.Touch = false;
+            						self.scope.node.Adjacent = false;
             						self.scope.node.Special = false;
         end, obj);
 
@@ -3509,12 +3856,40 @@ local function constructNew_frmMainFerramentas()
             						self.scope.node.no = false;
         end, obj);
 
-    obj._e_event28 = obj.spellList:addEventListener("onCompare",
+    obj._e_event28 = obj.button24:addEventListener("onClick",
+        function (_)
+            if self.scope.node==nil then return end;
+            						self.scope.node.PHB = true;
+            						self.scope.node.ELH = true;
+            						self.scope.node.CAd = true;
+            						self.scope.node.CAr = true;
+            						self.scope.node.CD = true;
+            						self.scope.node.CC = true;
+            						self.scope.node.CM = true;
+            						self.scope.node.CS = true;
+            						self.scope.node.CW = true;
+        end, obj);
+
+    obj._e_event29 = obj.button25:addEventListener("onClick",
+        function (_)
+            if self.scope.node==nil then return end;
+            						self.scope.node.PHB = false;
+            						self.scope.node.ELH = false;
+            						self.scope.node.CAd = false;
+            						self.scope.node.CAr = false;
+            						self.scope.node.CD = false;
+            						self.scope.node.CC = false;
+            						self.scope.node.CM = false;
+            						self.scope.node.CS = false;
+            						self.scope.node.CW = false;
+        end, obj);
+
+    obj._e_event30 = obj.spellList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             return Utils.compareStringPtBr(nodeA.name, nodeB.name);
         end, obj);
 
-    obj._e_event29 = obj.button24:addEventListener("onClick",
+    obj._e_event31 = obj.button26:addEventListener("onClick",
         function (_)
             -- Verifica se ta na primeira pagina
             				if self.scope.node==nil then return end;
@@ -3541,6 +3916,10 @@ local function constructNew_frmMainFerramentas()
             				for i=first, last, 1 do
             					local spell = self.spellList:append();
             
+            					if updaterSheet.filteredSpells[i].description then 
+            						spell.description = updaterSheet.filteredSpells[i].description;
+            					end;
+            
             					spell.name = updaterSheet.filteredSpells[i].name;
             					local nome = tryLang(updaterSheet.filteredSpells[i].name);
             					if nome ~= nil then spell.name = spell.name .. " - " .. nome end;
@@ -3564,7 +3943,7 @@ local function constructNew_frmMainFerramentas()
             				local spells = NDB.getChildNodes(updaterSheet.spellList);
         end, obj);
 
-    obj._e_event30 = obj.button25:addEventListener("onClick",
+    obj._e_event32 = obj.button27:addEventListener("onClick",
         function (_)
             -- Verifica se ta na ultima pagina
             				if self.scope.node==nil then return end;
@@ -3587,6 +3966,10 @@ local function constructNew_frmMainFerramentas()
             
             				for i=first, last, 1 do
             					local spell = self.spellList:append();
+            
+            					if updaterSheet.filteredSpells[i].description then 
+            						spell.description = updaterSheet.filteredSpells[i].description;
+            					end;
             					
             					spell.name = updaterSheet.filteredSpells[i].name;
             					local nome = tryLang(updaterSheet.filteredSpells[i].name);
@@ -3612,12 +3995,12 @@ local function constructNew_frmMainFerramentas()
                     		self.spellList.height = #spells * 101;
         end, obj);
 
-    obj._e_event31 = obj.button26:addEventListener("onClick",
+    obj._e_event33 = obj.button28:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Ferramentas%20d20/README.md')
         end, obj);
 
-    obj._e_event32 = obj.button26:addEventListener("onClick",
+    obj._e_event34 = obj.button28:addEventListener("onClick",
         function (_)
             local install = Firecast.Plugins.installPlugin(rawget(updaterSheet,"stream"), true);
                             if install==false then
@@ -3625,17 +4008,19 @@ local function constructNew_frmMainFerramentas()
                             end;
         end, obj);
 
-    obj._e_event33 = obj.button27:addEventListener("onClick",
+    obj._e_event35 = obj.button29:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Ferramentas%20d20/output/Ferramentas%20d20.rpk?raw=true')
         end, obj);
 
-    obj._e_event34 = obj.button28:addEventListener("onClick",
+    obj._e_event36 = obj.button30:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event36);
+        __o_rrpgObjs.removeEventListenerById(self._e_event35);
         __o_rrpgObjs.removeEventListenerById(self._e_event34);
         __o_rrpgObjs.removeEventListenerById(self._e_event33);
         __o_rrpgObjs.removeEventListenerById(self._e_event32);
@@ -3715,8 +4100,9 @@ local function constructNew_frmMainFerramentas()
         if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
         if self.frmXP ~= nil then self.frmXP:destroy(); self.frmXP = nil; end;
-        if self.checkBox7 ~= nil then self.checkBox7:destroy(); self.checkBox7 = nil; end;
+        if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
         if self.playersList ~= nil then self.playersList:destroy(); self.playersList = nil; end;
+        if self.checkBox7 ~= nil then self.checkBox7:destroy(); self.checkBox7 = nil; end;
         if self.layout23 ~= nil then self.layout23:destroy(); self.layout23 = nil; end;
         if self.checkBox78 ~= nil then self.checkBox78:destroy(); self.checkBox78 = nil; end;
         if self.button20 ~= nil then self.button20:destroy(); self.button20 = nil; end;
@@ -3727,14 +4113,18 @@ local function constructNew_frmMainFerramentas()
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
         if self.layout9 ~= nil then self.layout9:destroy(); self.layout9 = nil; end;
         if self.checkBox45 ~= nil then self.checkBox45:destroy(); self.checkBox45 = nil; end;
+        if self.checkBox120 ~= nil then self.checkBox120:destroy(); self.checkBox120 = nil; end;
         if self.checkBox76 ~= nil then self.checkBox76:destroy(); self.checkBox76 = nil; end;
         if self.checkBox81 ~= nil then self.checkBox81:destroy(); self.checkBox81 = nil; end;
         if self.checkBox79 ~= nil then self.checkBox79:destroy(); self.checkBox79 = nil; end;
+        if self.layout71 ~= nil then self.layout71:destroy(); self.layout71 = nil; end;
         if self.layout54 ~= nil then self.layout54:destroy(); self.layout54 = nil; end;
+        if self.checkBox124 ~= nil then self.checkBox124:destroy(); self.checkBox124 = nil; end;
         if self.label15 ~= nil then self.label15:destroy(); self.label15 = nil; end;
         if self.layout50 ~= nil then self.layout50:destroy(); self.layout50 = nil; end;
         if self.checkBox56 ~= nil then self.checkBox56:destroy(); self.checkBox56 = nil; end;
         if self.layout32 ~= nil then self.layout32:destroy(); self.layout32 = nil; end;
+        if self.checkBox121 ~= nil then self.checkBox121:destroy(); self.checkBox121 = nil; end;
         if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
         if self.layout37 ~= nil then self.layout37:destroy(); self.layout37 = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
@@ -3745,6 +4135,8 @@ local function constructNew_frmMainFerramentas()
         if self.layout52 ~= nil then self.layout52:destroy(); self.layout52 = nil; end;
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
         if self.button21 ~= nil then self.button21:destroy(); self.button21 = nil; end;
+        if self.button29 ~= nil then self.button29:destroy(); self.button29 = nil; end;
+        if self.checkBox113 ~= nil then self.checkBox113:destroy(); self.checkBox113 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.checkBox102 ~= nil then self.checkBox102:destroy(); self.checkBox102 = nil; end;
         if self.button26 ~= nil then self.button26:destroy(); self.button26 = nil; end;
@@ -3763,13 +4155,17 @@ local function constructNew_frmMainFerramentas()
         if self.layout42 ~= nil then self.layout42:destroy(); self.layout42 = nil; end;
         if self.checkBox33 ~= nil then self.checkBox33:destroy(); self.checkBox33 = nil; end;
         if self.layout61 ~= nil then self.layout61:destroy(); self.layout61 = nil; end;
+        if self.checkBox126 ~= nil then self.checkBox126:destroy(); self.checkBox126 = nil; end;
         if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.layout20 ~= nil then self.layout20:destroy(); self.layout20 = nil; end;
         if self.radioButton1 ~= nil then self.radioButton1:destroy(); self.radioButton1 = nil; end;
+        if self.checkBox115 ~= nil then self.checkBox115:destroy(); self.checkBox115 = nil; end;
+        if self.checkBox119 ~= nil then self.checkBox119:destroy(); self.checkBox119 = nil; end;
         if self.layout55 ~= nil then self.layout55:destroy(); self.layout55 = nil; end;
         if self.checkBox61 ~= nil then self.checkBox61:destroy(); self.checkBox61 = nil; end;
         if self.layout18 ~= nil then self.layout18:destroy(); self.layout18 = nil; end;
         if self.checkBox63 ~= nil then self.checkBox63:destroy(); self.checkBox63 = nil; end;
+        if self.checkBox127 ~= nil then self.checkBox127:destroy(); self.checkBox127 = nil; end;
         if self.checkBox106 ~= nil then self.checkBox106:destroy(); self.checkBox106 = nil; end;
         if self.frmTemplateCreditos ~= nil then self.frmTemplateCreditos:destroy(); self.frmTemplateCreditos = nil; end;
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
@@ -3777,20 +4173,23 @@ local function constructNew_frmMainFerramentas()
         if self.tabControl1 ~= nil then self.tabControl1:destroy(); self.tabControl1 = nil; end;
         if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
         if self.checkBox84 ~= nil then self.checkBox84:destroy(); self.checkBox84 = nil; end;
+        if self.popDescription ~= nil then self.popDescription:destroy(); self.popDescription = nil; end;
         if self.checkBox53 ~= nil then self.checkBox53:destroy(); self.checkBox53 = nil; end;
         if self.checkBox24 ~= nil then self.checkBox24:destroy(); self.checkBox24 = nil; end;
         if self.checkBox70 ~= nil then self.checkBox70:destroy(); self.checkBox70 = nil; end;
         if self.checkBox48 ~= nil then self.checkBox48:destroy(); self.checkBox48 = nil; end;
         if self.layout49 ~= nil then self.layout49:destroy(); self.layout49 = nil; end;
+        if self.checkBox122 ~= nil then self.checkBox122:destroy(); self.checkBox122 = nil; end;
         if self.layout35 ~= nil then self.layout35:destroy(); self.layout35 = nil; end;
         if self.checkBox95 ~= nil then self.checkBox95:destroy(); self.checkBox95 = nil; end;
         if self.layout11 ~= nil then self.layout11:destroy(); self.layout11 = nil; end;
         if self.checkBox99 ~= nil then self.checkBox99:destroy(); self.checkBox99 = nil; end;
         if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
         if self.checkBox23 ~= nil then self.checkBox23:destroy(); self.checkBox23 = nil; end;
+        if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
         if self.checkBox37 ~= nil then self.checkBox37:destroy(); self.checkBox37 = nil; end;
-        if self.checkBox107 ~= nil then self.checkBox107:destroy(); self.checkBox107 = nil; end;
         if self.checkBox92 ~= nil then self.checkBox92:destroy(); self.checkBox92 = nil; end;
+        if self.checkBox107 ~= nil then self.checkBox107:destroy(); self.checkBox107 = nil; end;
         if self.checkBox13 ~= nil then self.checkBox13:destroy(); self.checkBox13 = nil; end;
         if self.checkBox40 ~= nil then self.checkBox40:destroy(); self.checkBox40 = nil; end;
         if self.button9 ~= nil then self.button9:destroy(); self.button9 = nil; end;
@@ -3798,6 +4197,8 @@ local function constructNew_frmMainFerramentas()
         if self.checkBox28 ~= nil then self.checkBox28:destroy(); self.checkBox28 = nil; end;
         if self.label18 ~= nil then self.label18:destroy(); self.label18 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.checkBox125 ~= nil then self.checkBox125:destroy(); self.checkBox125 = nil; end;
+        if self.checkBox117 ~= nil then self.checkBox117:destroy(); self.checkBox117 = nil; end;
         if self.layout33 ~= nil then self.layout33:destroy(); self.layout33 = nil; end;
         if self.spellList ~= nil then self.spellList:destroy(); self.spellList = nil; end;
         if self.checkBox74 ~= nil then self.checkBox74:destroy(); self.checkBox74 = nil; end;
@@ -3810,10 +4211,12 @@ local function constructNew_frmMainFerramentas()
         if self.checkBox4 ~= nil then self.checkBox4:destroy(); self.checkBox4 = nil; end;
         if self.checkBox32 ~= nil then self.checkBox32:destroy(); self.checkBox32 = nil; end;
         if self.layout51 ~= nil then self.layout51:destroy(); self.layout51 = nil; end;
+        if self.checkBox118 ~= nil then self.checkBox118:destroy(); self.checkBox118 = nil; end;
         if self.scrollBox1 ~= nil then self.scrollBox1:destroy(); self.scrollBox1 = nil; end;
         if self.frmSpells ~= nil then self.frmSpells:destroy(); self.frmSpells = nil; end;
         if self.layout7 ~= nil then self.layout7:destroy(); self.layout7 = nil; end;
         if self.checkBox65 ~= nil then self.checkBox65:destroy(); self.checkBox65 = nil; end;
+        if self.checkBox114 ~= nil then self.checkBox114:destroy(); self.checkBox114 = nil; end;
         if self.layout39 ~= nil then self.layout39:destroy(); self.layout39 = nil; end;
         if self.tab3 ~= nil then self.tab3:destroy(); self.tab3 = nil; end;
         if self.layout43 ~= nil then self.layout43:destroy(); self.layout43 = nil; end;
@@ -3822,6 +4225,7 @@ local function constructNew_frmMainFerramentas()
         if self.layout30 ~= nil then self.layout30:destroy(); self.layout30 = nil; end;
         if self.layout57 ~= nil then self.layout57:destroy(); self.layout57 = nil; end;
         if self.layout60 ~= nil then self.layout60:destroy(); self.layout60 = nil; end;
+        if self.checkBox123 ~= nil then self.checkBox123:destroy(); self.checkBox123 = nil; end;
         if self.layout59 ~= nil then self.layout59:destroy(); self.layout59 = nil; end;
         if self.checkBox27 ~= nil then self.checkBox27:destroy(); self.checkBox27 = nil; end;
         if self.radioButton4 ~= nil then self.radioButton4:destroy(); self.radioButton4 = nil; end;
@@ -3829,6 +4233,7 @@ local function constructNew_frmMainFerramentas()
         if self.layout65 ~= nil then self.layout65:destroy(); self.layout65 = nil; end;
         if self.radioButton3 ~= nil then self.radioButton3:destroy(); self.radioButton3 = nil; end;
         if self.label26 ~= nil then self.label26:destroy(); self.label26 = nil; end;
+        if self.layout72 ~= nil then self.layout72:destroy(); self.layout72 = nil; end;
         if self.checkBox6 ~= nil then self.checkBox6:destroy(); self.checkBox6 = nil; end;
         if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
@@ -3837,8 +4242,10 @@ local function constructNew_frmMainFerramentas()
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.tab2 ~= nil then self.tab2:destroy(); self.tab2 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.button30 ~= nil then self.button30:destroy(); self.button30 = nil; end;
         if self.layout45 ~= nil then self.layout45:destroy(); self.layout45 = nil; end;
         if self.checkBox112 ~= nil then self.checkBox112:destroy(); self.checkBox112 = nil; end;
+        if self.layout77 ~= nil then self.layout77:destroy(); self.layout77 = nil; end;
         if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
         if self.checkBox44 ~= nil then self.checkBox44:destroy(); self.checkBox44 = nil; end;
         if self.layout46 ~= nil then self.layout46:destroy(); self.layout46 = nil; end;
@@ -3857,6 +4264,7 @@ local function constructNew_frmMainFerramentas()
         if self.checkBox91 ~= nil then self.checkBox91:destroy(); self.checkBox91 = nil; end;
         if self.checkBox110 ~= nil then self.checkBox110:destroy(); self.checkBox110 = nil; end;
         if self.checkBox16 ~= nil then self.checkBox16:destroy(); self.checkBox16 = nil; end;
+        if self.checkBox116 ~= nil then self.checkBox116:destroy(); self.checkBox116 = nil; end;
         if self.checkBox103 ~= nil then self.checkBox103:destroy(); self.checkBox103 = nil; end;
         if self.checkBox66 ~= nil then self.checkBox66:destroy(); self.checkBox66 = nil; end;
         if self.checkBox20 ~= nil then self.checkBox20:destroy(); self.checkBox20 = nil; end;
@@ -3872,11 +4280,13 @@ local function constructNew_frmMainFerramentas()
         if self.checkBox108 ~= nil then self.checkBox108:destroy(); self.checkBox108 = nil; end;
         if self.checkBox83 ~= nil then self.checkBox83:destroy(); self.checkBox83 = nil; end;
         if self.button27 ~= nil then self.button27:destroy(); self.button27 = nil; end;
+        if self.layout74 ~= nil then self.layout74:destroy(); self.layout74 = nil; end;
         if self.checkBox5 ~= nil then self.checkBox5:destroy(); self.checkBox5 = nil; end;
         if self.button24 ~= nil then self.button24:destroy(); self.button24 = nil; end;
         if self.tab4 ~= nil then self.tab4:destroy(); self.tab4 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.checkBox101 ~= nil then self.checkBox101:destroy(); self.checkBox101 = nil; end;
+        if self.layout76 ~= nil then self.layout76:destroy(); self.layout76 = nil; end;
         if self.checkBox14 ~= nil then self.checkBox14:destroy(); self.checkBox14 = nil; end;
         if self.checkBox60 ~= nil then self.checkBox60:destroy(); self.checkBox60 = nil; end;
         if self.checkBox21 ~= nil then self.checkBox21:destroy(); self.checkBox21 = nil; end;
@@ -3938,12 +4348,14 @@ local function constructNew_frmMainFerramentas()
         if self.scrollBox4 ~= nil then self.scrollBox4:destroy(); self.scrollBox4 = nil; end;
         if self.layout22 ~= nil then self.layout22:destroy(); self.layout22 = nil; end;
         if self.layout48 ~= nil then self.layout48:destroy(); self.layout48 = nil; end;
+        if self.layout73 ~= nil then self.layout73:destroy(); self.layout73 = nil; end;
         if self.button19 ~= nil then self.button19:destroy(); self.button19 = nil; end;
         if self.button14 ~= nil then self.button14:destroy(); self.button14 = nil; end;
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
         if self.radioButton5 ~= nil then self.radioButton5:destroy(); self.radioButton5 = nil; end;
         if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
         if self.checkBox90 ~= nil then self.checkBox90:destroy(); self.checkBox90 = nil; end;
+        if self.layout75 ~= nil then self.layout75:destroy(); self.layout75 = nil; end;
         if self.checkBox30 ~= nil then self.checkBox30:destroy(); self.checkBox30 = nil; end;
         self:_oldLFMDestroy();
     end;

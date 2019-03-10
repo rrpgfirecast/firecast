@@ -272,7 +272,10 @@
 				if self.scope.node.Transmutation and spell.school == schools[21] then
 					return true;
 				end;
-				if self.scope.node.Universal and spell.school == schools[22] then
+				if self.scope.node.Polymorph and spell.subschool == schools[22] then
+					return true;
+				end;
+				if self.scope.node.Universal and spell.school == schools[23] then
 					return true;
 				end;
 
@@ -308,11 +311,23 @@
 				if updaterSheet.assassin then
 					ret = ret and spell.level.assassin ~= nil;
 				end;
-				if updaterSheet.blackguardif then
+				if updaterSheet.blackguard then
 					ret = ret and spell.level.blackguard ~= nil;
 				end;
+				if updaterSheet.shugenja ~= nil then
+					ret = ret  and spell.level.shugenja ~= nil;
+				end;
+				if updaterSheet.wu_jen ~= nil then
+					ret = ret  and spell.level["wu-jen"] ~= nil;
+				end;
+				if updaterSheet.warmage ~= nil then
+					ret = ret  and spell.level.warmage ~= nil;
+				end;
+				if updaterSheet.hexblade ~= nil then
+					ret = ret  and spell.level.hexblade ~= nil;
+				end;
 				if updaterSheet.domain then
-					ret = ret and (spell.level.air~=nil or spell.level.animal~=nil or spell.level.chaos~=nil or spell.level.death~=nil or spell.level.destruction~=nil or spell.level.earth~=nil or spell.level.evil~=nil or spell.level.fire~=nil or spell.level.good~=nil or spell.level.healing~=nil or spell.level.knowledge~=nil or spell.level.law~=nil or spell.level.luck~=nil or spell.level.magic~=nil or spell.level.plant~=nil or spell.level.protection~=nil or spell.level.strength~=nil or spell.level.sun~=nil or spell.level.travel~=nil or spell.level.trickery~=nil or spell.level.war~=nil or spell.level.water~=nil);
+					ret = ret and (spell.level.air~=nil or spell.level.animal~=nil or spell.level.chaos~=nil or spell.level.death~=nil or spell.level.destruction~=nil or spell.level.earth~=nil or spell.level.evil~=nil or spell.level.fire~=nil or spell.level.good~=nil or spell.level.healing~=nil or spell.level.knowledge~=nil or spell.level.law~=nil or spell.level.luck~=nil or spell.level.magic~=nil or spell.level.plant~=nil or spell.level.protection~=nil or spell.level.strength~=nil or spell.level.sun~=nil or spell.level.travel~=nil or spell.level.trickery~=nil or spell.level.war~=nil or spell.level.water~=nil or spell.level.liberation ~= nil or spell.level.cold ~= nil or spell.level.creation ~= nil or spell.level.dream ~= nil or spell.level.mind ~= nil or spell.level.madness ~= nil or spell.level.domination ~= nil or spell.level.force ~= nil or spell.level.glory ~= nil or spell.level.purification ~= nil or spell.level.pact ~= nil or spell.level.pestilence ~= nil or spell.level.celerity ~= nil or spell.level.weather ~= nil or spell.level.courage ~= nil);
 				end;
 				return ret;
 			end;
@@ -345,11 +360,23 @@
 				if updaterSheet.assassin and spell.level.assassin ~= nil then
 					return true;
 				end;
-				if updaterSheet.blackguardif and spell.level.blackguard ~= nil then
+				if updaterSheet.blackguard and spell.level.blackguard ~= nil then
+					return true;
+				end;
+				if updaterSheet.shugenja and spell.level.shugenja ~= nil then
+					return true;
+				end;
+				if updaterSheet.wu_jen and spell.level["wu-jen"] ~= nil then
+					return true;
+				end;
+				if updaterSheet.warmage and spell.level.warmage ~= nil then
+					return true;
+				end;
+				if updaterSheet.hexblade and spell.level.hexblade ~= nil then
 					return true;
 				end;
 				if updaterSheet.domain then
-					return (spell.level.air~=nil or spell.level.animal~=nil or spell.level.chaos~=nil or spell.level.death~=nil or spell.level.destruction~=nil or spell.level.earth~=nil or spell.level.evil~=nil or spell.level.fire~=nil or spell.level.good~=nil or spell.level.healing~=nil or spell.level.knowledge~=nil or spell.level.law~=nil or spell.level.luck~=nil or spell.level.magic~=nil or spell.level.plant~=nil or spell.level.protection~=nil or spell.level.strength~=nil or spell.level.sun~=nil or spell.level.travel~=nil or spell.level.trickery~=nil or spell.level.war~=nil or spell.level.water~=nil);
+					return (spell.level.air~=nil or spell.level.animal~=nil or spell.level.chaos~=nil or spell.level.death~=nil or spell.level.destruction~=nil or spell.level.earth~=nil or spell.level.evil~=nil or spell.level.fire~=nil or spell.level.good~=nil or spell.level.healing~=nil or spell.level.knowledge~=nil or spell.level.law~=nil or spell.level.luck~=nil or spell.level.magic~=nil or spell.level.plant~=nil or spell.level.protection~=nil or spell.level.strength~=nil or spell.level.sun~=nil or spell.level.travel~=nil or spell.level.trickery~=nil or spell.level.war~=nil or spell.level.water~=nil or spell.level.liberation ~= nil or spell.level.cold ~= nil or spell.level.creation ~= nil or spell.level.dream ~= nil or spell.level.mind ~= nil or spell.level.madness ~= nil or spell.level.domination ~= nil or spell.level.force ~= nil or spell.level.glory ~= nil or spell.level.purification ~= nil or spell.level.pact ~= nil or spell.level.pestilence ~= nil or spell.level.celerity ~= nil or spell.level.weather ~= nil or spell.level.courage ~= nil);
 				end;
 				return false;
 			end;
@@ -399,6 +426,9 @@
 				if updaterSheet.Special and spell.range == ranges[12] then
 					return true;
 				end;
+				if updaterSheet.Adjacent and spell.range == ranges[13] then
+					return true;
+				end;
 				return false;
 			end;
 
@@ -428,6 +458,40 @@
 					return true;
 				end;
 				if updaterSheet.SpecialDuration and array_contain(spell.duration, durations[9], #durations) then
+					return true;
+				end;
+
+				return false;
+			end
+
+
+
+			local function filterBook(spell)
+				if updaterSheet.PHB and array_contain(spell.book, books[1], #books) then
+					return true;
+				end;
+				if updaterSheet.ELH and array_contain(spell.book, books[2], #books) then
+					return true;
+				end;
+				if updaterSheet.CAd and array_contain(spell.book, books[3], #books) then
+					return true;
+				end;
+				if updaterSheet.CAr and array_contain(spell.book, books[4], #books) then
+					return true;
+				end;
+				if updaterSheet.CD and array_contain(spell.book, books[5], #books) then
+					return true;
+				end;
+				if updaterSheet.CC and array_contain(spell.book, books[6], #books) then
+					return true;
+				end;
+				if updaterSheet.CM and array_contain(spell.book, books[7], #books) then
+					return true;
+				end;
+				if updaterSheet.CS and array_contain(spell.book, books[8], #books) then
+					return true;
+				end;
+				if updaterSheet.CW and array_contain(spell.book, books[9], #books) then
 					return true;
 				end;
 
@@ -543,13 +607,18 @@
 				local nome1 = string.lower(Utils.removerAcentos(spell.name));
 				local nome2 = string.lower(Utils.removerAcentos(trans(spell.name)));
 
-				if string.find(nome1, filter) or string.find(nome1, filter) then
+				if string.find(nome1, filter) or string.find(nome2, filter) then
 					return true;
 				end;
 				return false;
 			end;
         ]]> 
     </script>
+
+    <popup name="popDescription" width="200" height="200" backOpacity="0.4" autoScopeNode="false">
+		<textEditor align="client" field="description"/>
+	</popup>
+
     <layout align="bottom" height="25">
 		<button align="left" horzTextAlign="center" width="375" text="Filtre!">
 			<event name="onClick">
@@ -562,37 +631,76 @@
 					local spell = magicListData.db[k];
 
 					local isName = filterName(spell);
-					if not isName then goto nextspell end;
+					if not isName then 
+						--write(spell.name .. " falhou no filtro de isName");
+						goto nextspell 
+					end;
 
 					local isClass = filterClass(spell);
-					if not isClass then goto nextspell end;
+					if not isClass then 
+						--write(spell.name .. " falhou no filtro de isClass");
+						goto nextspell 
+					end;
 
 					local isLevel = filterLevel(spell);
-					if not isLevel then goto nextspell end;
+					if not isLevel then 
+						--write(spell.name .. " falhou no filtro de isLevel");
+						goto nextspell 
+					end;
 
 					local isSchool = filterSchool(spell);
-					if not isSchool then goto nextspell end;
+					if not isSchool then 
+						--write(spell.name .. " falhou no filtro de isSchool");
+						goto nextspell 
+					end;
 
 					local isTag = filterTag(spell);
-					if not isTag then goto nextspell end;
+					if not isTag then 
+						--write(spell.name .. " falhou no filtro de isTag");
+						goto nextspell 
+					end;
 
 					local isComponent = filterComponent(spell);
-					if not isComponent then goto nextspell end;
+					if not isComponent then 
+						--write(spell.name .. " falhou no filtro de isComponent");
+						goto nextspell 
+					end;
 
 					local isRange = filterRange(spell);
-					if not isRange then goto nextspell end;
+					if not isRange then 
+						--write(spell.name .. " falhou no filtro de isRange");
+						goto nextspell 
+					end;
 
 					local isDuration = filterDuration(spell);
-					if not isDuration then goto nextspell end;
+					if not isDuration then 
+						--write(spell.name .. " falhou no filtro de isDuration");
+						goto nextspell 
+					end;
 
 					local isTarget = filterTarget(spell);
-					if not isTarget then goto nextspell end;
+					if not isTarget then 
+						--write(spell.name .. " falhou no filtro de isTarget");
+						goto nextspell 
+					end;
 
 					local isSave = filterSave(spell);
-					if not isSave then goto nextspell end;
+					if not isSave then 
+						--write(spell.name .. " falhou no filtro de isSave");
+						goto nextspell 
+					end;
 
 					local isSR = filterSR(spell);
-					if not isSR then goto nextspell end;
+					if not isSR then 
+						--write(spell.name .. " falhou no filtro de isSR");
+						goto nextspell 
+					end;
+
+					local isBook = filterBook(spell);
+					if not isBook then 
+						--write(spell.name .. " falhou no filtro de isBook");
+						goto nextspell 
+					end;
 
 					index = index +1;
 					updaterSheet.filteredSpells[index] = spell;
@@ -615,6 +723,10 @@
 		        local limit = math.min(index, 50);
 				for i=1, limit, 1 do
 					local spell = self.spellList:append();
+
+					if updaterSheet.filteredSpells[i].description then 
+						spell.description = updaterSheet.filteredSpells[i].description;
+					end;
 
 					spell.name = updaterSheet.filteredSpells[i].name;
 					local nome = tryLang(updaterSheet.filteredSpells[i].name);
@@ -666,6 +778,10 @@
 				<checkBox align="left" horzTextAlign="center" width="75" field="blackguard" text="Algoz"/>
 			</layout>
 			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="75" field="shugenja" text="Shugenja"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="wu_jen" text="Wu-Jen"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="warmage" text="Mago de Guerra" fontSize="8"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="hexblade" text="Lâmina Maldita" fontSize="8"/>
 				<checkBox align="left" horzTextAlign="center" width="75" field="domain" text="Dominio"/>
 			</layout>
 			<layout align="top" height="25">
@@ -682,6 +798,10 @@
 						self.scope.node.adept = true;
 						self.scope.node.assassin = true;
 						self.scope.node.blackguard = true;
+						self.scope.node.shugenja = true;
+						self.scope.node.wu_jen = true;
+						self.scope.node.warmage = true;
+						self.scope.node.hexblade = true;
 						self.scope.node.domain = true;
 					</event>
 				</button>
@@ -698,6 +818,10 @@
 						self.scope.node.adept = false;
 						self.scope.node.assassin = false;
 						self.scope.node.blackguard = false;
+						self.scope.node.shugenja = false;
+						self.scope.node.wu_jen = false;
+						self.scope.node.warmage = false;
+						self.scope.node.hexblade = false;
 						self.scope.node.domain = false;
 
 					</event>
@@ -795,6 +919,7 @@
 			</layout>
 			<layout align="top" height="25">
 				<checkBox align="left" horzTextAlign="center" width="125" field="Transmutation" text="Transmutação"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Polymorph" text="Transmutação (Polimorfismo)" fontSize="8"/>
 				<checkBox align="left" horzTextAlign="center" width="125" field="Universal" text="Universal"/>
 			</layout>
 			<layout align="top" height="25">
@@ -822,6 +947,7 @@
 						self.scope.node.Shadow = true;
 						self.scope.node.Necromancy = true;
 						self.scope.node.Transmutation = true;
+						self.scope.node.Polymorph = true;
 						self.scope.node.Universal = true;
 					</event>
 				</button>
@@ -849,6 +975,7 @@
 						self.scope.node.Shadow = false;
 						self.scope.node.Necromancy = false;
 						self.scope.node.Transmutation = false;
+						self.scope.node.Polymorph = false;
 						self.scope.node.Universal = false;
 					</event>
 				</button>
@@ -988,7 +1115,7 @@
 				</button>
 			</layout>
 		</layout>
-		<layout align="top" height="125">
+		<layout align="top" height="150">
 			<layout align="top" height="25">
 				<label align="left" width="75" horzTextAlign="center" text="ALCANCE" margins="{right=75}"/>
 			</layout>
@@ -1011,6 +1138,9 @@
 				<checkBox align="left" horzTextAlign="center" width="90" field="Special" text="Especial"/>
 			</layout>
 			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="90" field="Adjacent" text="Adjacente"/>
+			</layout>
+			<layout align="top" height="25">
 				<button align="left" horzTextAlign="center" width="187" text="Marque Todas">
 					<event name="onClick">
 						if self.scope.node==nil then return end;
@@ -1025,6 +1155,7 @@
 						self.scope.node.Long = true;
 						self.scope.node.Personal = true;
 						self.scope.node.Touch = true;
+						self.scope.node.Adjacent = true;
 						self.scope.node.Special = true;
 					</event>
 				</button>
@@ -1042,6 +1173,7 @@
 						self.scope.node.Long = false;
 						self.scope.node.Personal = false;
 						self.scope.node.Touch = false;
+						self.scope.node.Adjacent = false;
 						self.scope.node.Special = false;
 					</event>
 				</button>
@@ -1200,8 +1332,8 @@
 				<label align="left" width="75" horzTextAlign="center" text="RM" margins="{right=75}"/>
 			</layout>
 			<layout align="top" height="25">
-				<checkBox align="left" horzTextAlign="center" width="125" field="yes" text="Sim"/>
-				<checkBox align="left" horzTextAlign="center" width="125" field="no" text="Não"/>
+				<checkBox align="left" horzTextAlign="center" width="187" field="yes" text="Sim"/>
+				<checkBox align="left" horzTextAlign="center" width="187" field="no" text="Não"/>
 			</layout>
 			<layout align="top" height="25">
 				<button align="left" horzTextAlign="center" width="187" text="Marque Todas">
@@ -1216,6 +1348,56 @@
 						if self.scope.node==nil then return end;
 						self.scope.node.yes = false;
 						self.scope.node.no = false;
+					</event>
+				</button>
+			</layout>
+		</layout>
+		<layout align="top" height="125">
+			<layout align="top" height="25">
+				<label align="left" width="75" horzTextAlign="center" text="LIVRO" margins="{right=75}"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="PHB" text="Jogador"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="ELH" text="Níveis Épicos"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="CAd" text="Comp. Aventureiro" fontSize="11"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="CAr" text="Comp. Arcano"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="CD" text="Comp. Divino"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="CC" text="Comp. Campeão"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="CM" text="Comp. Mago"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="CS" text="Comp. Patife"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="CW" text="Comp. Guerreiro"/>
+			</layout>
+			<layout align="top" height="25">
+				<button align="left" horzTextAlign="center" width="187" text="Marque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.PHB = true;
+						self.scope.node.ELH = true;
+						self.scope.node.CAd = true;
+						self.scope.node.CAr = true;
+						self.scope.node.CD = true;
+						self.scope.node.CC = true;
+						self.scope.node.CM = true;
+						self.scope.node.CS = true;
+						self.scope.node.CW = true;
+					</event>
+				</button>
+				<button align="left" horzTextAlign="center" width="187" text="Desmarque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.PHB = false;
+						self.scope.node.ELH = false;
+						self.scope.node.CAd = false;
+						self.scope.node.CAr = false;
+						self.scope.node.CD = false;
+						self.scope.node.CC = false;
+						self.scope.node.CM = false;
+						self.scope.node.CS = false;
+						self.scope.node.CW = false;
 					</event>
 				</button>
 			</layout>

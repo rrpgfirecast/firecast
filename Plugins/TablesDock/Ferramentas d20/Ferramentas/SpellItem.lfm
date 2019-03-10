@@ -2,35 +2,35 @@
 <form name="frmSpellItem" height="225" margins="{top=1}">
 	<rectangle align="client" color="#212121" hitTest="false">
 		<layout align="top" height="25">
-			<label align="left" width="375" field="name" name="spellName" horzTextAlign="center" fontStyle="bold"/>
+			<label align="left" width="375" field="name" name="spellName" horzTextAlign="center" fontStyle="bold" hitTest="true"/>
 		</layout>
 		<layout align="top" height="25">
 			<label align="left" width="75" text="Escola: " horzTextAlign="trailing" margins="{right=2}"/>
-			<label align="left" width="110" field="school" name="school"/>
+			<label align="left" width="110" field="school" name="school" hitTest="true"/>
 			
 			<label align="left" width="75" text="Subescola: " horzTextAlign="trailing" margins="{right=2}"/>
-			<label align="left" width="110" field="subschool" name="subschool"/>
+			<label align="left" width="110" field="subschool" name="subschool" hitTest="true"/>
 		</layout>
 		<layout align="top" height="25">
-			<label align="left" width="375" field="descriptor" name="descriptor" horzTextAlign="center"/>
+			<label align="left" width="375" field="descriptor" name="descriptor" horzTextAlign="center" hitTest="true"/>
 		</layout>
 		<layout align="top" height="25">
-			<label align="left" width="375" field="level" name="level" horzTextAlign="center"/>
+			<label align="left" width="375" field="level" name="level" horzTextAlign="center" hitTest="true"/>
 		</layout>
 		<layout align="top" height="25">
-			<label align="left" width="375" field="components" name="components" horzTextAlign="center"/>
+			<label align="left" width="375" field="components" name="components" horzTextAlign="center" hitTest="true"/>
 		</layout>
 		<layout align="top" height="25">
-			<label align="left" width="187" field="duration" name="duration" horzTextAlign="center"/>
-			<label align="left" width="187" field="aiming" name="aiming" horzTextAlign="center"/>
+			<label align="left" width="187" field="duration" name="duration" horzTextAlign="center" hitTest="true"/>
+			<label align="left" width="187" field="aiming" name="aiming" horzTextAlign="center" hitTest="true"/>
 		</layout>
 		<layout align="top" height="25">
-			<label align="left" width="125" field="range" name="range" horzTextAlign="center"/>
-			<label align="left" width="125" field="save" name="save" horzTextAlign="center"/>
-			<label align="left" width="125" field="sr" name="sr" horzTextAlign="center"/>
+			<label align="left" width="125" field="range" name="range" horzTextAlign="center" hitTest="true"/>
+			<label align="left" width="125" field="save" name="save" horzTextAlign="center" hitTest="true"/>
+			<label align="left" width="125" field="sr" name="sr" horzTextAlign="center" hitTest="true"/>
 		</layout>
 		<layout align="top" height="25">
-			<label align="left" width="375" field="book" name="book" horzTextAlign="center"/>
+			<label align="left" width="375" field="book" name="book" horzTextAlign="center" hitTest="true"/>
 		</layout>
 
 
@@ -41,15 +41,39 @@
 					GUI.openInBrowser(sheet.url);
 				</event>
 			</button>
+			<button align="left" width="125" text="Descrição" name="btDesc" visible="false">
+				<event name="onClick">
+					local pop = self:findControlByName("popDescription");
+				
+					if pop ~= nil then
+						pop:setNodeObject(self.sheet);
+						pop:showPopupEx("center", self);
+					else
+						showMessage("Ops, bug.. nao encontrei o popup para exibir");
+					end;
+				</event>
+			</button>
 		</layout>
 
 		
 	</rectangle>
 
-	<dataLink field="spellName">
+	<dataLink field="name">
 		<event name="onChange">
 			if sheet==nil then return end;
 			self.spellName.hint = sheet.name;
+		</event>
+	</dataLink>
+	<dataLink field="description">
+		<event name="onChange">
+			if sheet==nil then return end;
+			if sheet.description==nil or sheet.description=="" then 
+				-- remove popup button
+				self.btDesc.visible = false;
+			else
+				-- add popup button
+				self.btDesc.visible = true;
+			end;
 		</event>
 	</dataLink>
 	<dataLink field="school">
