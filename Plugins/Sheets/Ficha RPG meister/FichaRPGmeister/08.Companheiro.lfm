@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister8_svg" align="client" margins="{top=1}">
+	<script>
+		local function getNumber(text)
+			local mod = "0";
+			if text~= nil then
+				mod = string.gsub(text, "%.", "");
+				mod = string.gsub(mod, "k", "000");
+				mod = string.gsub(mod, "K", "");
+				mod = string.gsub(mod, "g", "");
+				mod = string.gsub(mod, "P", "");
+				mod = string.gsub(mod, "p", "");
+				mod = string.gsub(mod, "O", "");
+				mod = string.gsub(mod, "o", "");
+				mod = string.gsub(mod, "X", "");
+				mod = string.gsub(mod, "x", "");
+				mod = string.gsub(mod, " ", "");
+				mod = string.gsub(mod, ",", ".");
+			end
+			return tonumber(mod);
+		end;
+	</script>
 	<scrollBox align="client">
 		<template name="AtributoComp">
 			<button left="0" top="3" width="42" height="20" text="$(ATR)">
