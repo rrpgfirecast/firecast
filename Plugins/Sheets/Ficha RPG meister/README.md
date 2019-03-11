@@ -4,7 +4,16 @@ Proximas Versões
 + Dar uma olhada nas questões de ajuste de tamanho da ficha para telas pequenas.
 + Campo de Magia para pontos de sombra.  
 + Campo de Magia para cristais/essencias.
-+ Testar se deletar o import.xml ajuda no import. 
++ Exportar ficha para texto (completo/simples).
++ Adicionar alcances de magias na aba de magias baseado no NC.
+
+Versão 3.2
+- Botão para apagar um ataque simples. 
+- Seleção cores temas da ficha. 
+- Realizar um ataque simples mesmo com tudo vazio não vai mais dar erros. 
+- Removida aba antiga de equipamentos.
+- Função de import e export atualizada. 
+- Interface de itens consumiveis atualizada. 
 
 Versão 3.1
 - Nova aba de equipamentos.

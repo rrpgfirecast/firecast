@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaRPGmeister9_svg" align="client" theme="dark" margins="{top=1}">
+<form name="frmFichaRPGmeister9_svg" align="client" margins="{top=1}">
 	<scrollBox align="client">
 		<template name="Descricao">
 			<label left="$(left1)" top="$(top)" width="90" height="20" text="$(text)" horzTextAlign="center"/>

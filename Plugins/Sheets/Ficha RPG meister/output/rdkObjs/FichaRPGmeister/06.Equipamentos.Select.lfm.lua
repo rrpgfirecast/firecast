@@ -29,15 +29,14 @@ local function constructNew_frmFichaRPGmeister6ES_svg()
     obj:setName("frmFichaRPGmeister6ES_svg");
     obj:setWidth(150);
     obj:setHeight(40);
-    obj:setTheme("dark");
-    obj:setMargins({top=3});
+    obj:setMargins({top=10});
 
-    obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle1:setParent(obj);
-    obj.rectangle1:setAlign("client");
-    obj.rectangle1:setColor("grey");
-    obj.rectangle1:setHitTest(false);
-    obj.rectangle1:setName("rectangle1");
+    obj.background = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.background:setParent(obj);
+    obj.background:setAlign("client");
+    obj.background:setColor("#333333");
+    obj.background:setHitTest(false);
+    obj.background:setName("background");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
@@ -61,7 +60,19 @@ local function constructNew_frmFichaRPGmeister6ES_svg()
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
 
+    obj._e_event0 = obj:addEventListener("onMouseEnter",
+        function (_)
+            self.background.color = "#444444";
+        end, obj);
+
+    obj._e_event1 = obj:addEventListener("onMouseLeave",
+        function (_)
+            self.background.color = "#333333";
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event1);
+        __o_rrpgObjs.removeEventListenerById(self._e_event0);
     end;
 
     obj._oldLFMDestroy = obj.destroy;
@@ -74,7 +85,7 @@ local function constructNew_frmFichaRPGmeister6ES_svg()
         end;
 
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
-        if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
+        if self.background ~= nil then self.background:destroy(); self.background = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         self:_oldLFMDestroy();
     end;

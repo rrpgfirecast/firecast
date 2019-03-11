@@ -29,7 +29,6 @@ local function constructNew_frmFichaRPGmeister5D_svg()
     obj:setName("frmFichaRPGmeister5D_svg");
     obj:setWidth(250);
     obj:setHeight(25);
-    obj:setTheme("dark");
     obj:setMargins({top=1});
 
 			

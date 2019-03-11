@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaRPGmeister4_svg" align="client" theme="dark" margins="{top=1}">
+<form name="frmFichaRPGmeister4_svg" align="client" margins="{top=1}">
 	 <scrollBox align="client">
 
 	 	<template name="habilidadeSmallCenter">

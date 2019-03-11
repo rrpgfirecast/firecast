@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaRPGmeister5M_svg" align="client" theme="dark" margins="{top=1}">
+<form name="frmFichaRPGmeister5M_svg" align="client" margins="{top=1}">
 	<style>#frmFichaRPGmeister5M_svg path {color: black; strokeColor: black; mode: stretch;} #frmFichaRPGmeister5M_svg label {fontColor: white; textTrimming: none; wordWrap: false; autoSize: true;}</style>
 	<scrollBox align="client">
 		<layout left="1205" top="0" width="30" height="30" margins="{bottom=4}">

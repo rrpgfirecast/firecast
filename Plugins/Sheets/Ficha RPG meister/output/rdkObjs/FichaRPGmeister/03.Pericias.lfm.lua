@@ -28,7 +28,6 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj:beginUpdate();
     obj:setName("frmFichaRPGmeister3_svg");
     obj:setAlign("client");
-    obj:setTheme("dark");
     obj:setMargins({top=1});
 
     obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
