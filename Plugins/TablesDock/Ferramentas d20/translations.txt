@@ -1,0 +1,906 @@
+Deathwatch
+Sleet Storm
+False Vision
+Repel Metal or Stone
+Mage's Private Sanctum
+Move Earth
+Control Water
+Whispering Wind
+Diminish Plants
+Plant Growth
+Summon Swarm
+Shambler
+Ironwood
+Create Food and Water
+Helping Hand
+Secure Shelter
+Minor Creation
+Prying Eyes
+Prying Eyes, Greater
+Passwall
+Acid Splash
+Clone
+Simulacrum
+Creeping Doom
+Insect Plague
+Clairaudience/Clairvoyance
+Dancing Lights
+Elemental Swarm
+Summon Instrument
+Arcane Eye
+Phase Door
+Acid Arrow
+Mage's Faithful Hound
+Major Creation
+Tiny Hut
+Fog Cloud
+Mage Hand
+Contact Other Plane
+Secret Chest
+Contingency
+Deeper Darkness
+Liveoak
+Magic Aura
+Moment of Prescience
+Tree Stride
+Tree Shape
+Longstrider
+Reduce Animal
+Changestaff
+Rope Trick
+Create Greater Undead
+Create Undead
+Fabricate
+Knock
+Commune with Nature
+Know Direction
+Mage's Lucubration
+Legend Lore
+Mnemonic Enhancer
+Vision
+Discern Location
+Rusting Grasp
+Animate Dead
+Stone Shape
+Identify
+Flame Arrow
+Message
+Find Traps
+Meld into Stone
+Stone Tell
+Divine Favor
+Spell Turning
+Bless Weapon
+Hold Portal
+Glibness
+Shield
+Disguise Self
+Arcane Sight
+Arcane Sight, Greater
+Invisibility Purge
+Shapechange
+See Invisibility
+Light
+Polymorph
+Instant Summons
+Snare
+Secret Page
+Refuge
+Phantom Trap
+Animate Objects
+Time Stop
+Transformation
+Commune
+Transport via Plants
+Sending
+Holy Sword
+Ethereal Jaunt
+Righteous Might
+Animate Plants
+Fire Seeds
+Screen
+Mislead
+Misdirection
+Transmute Mud to Rock
+Transmute Rock to Mud
+Wall of Stone
+Erase
+Entangle
+Sepia Snake Sigil
+Mage's Disjunction
+Magic Circle against Law
+Magic Circle against Good
+Magic Circle against Evil
+Magic Circle against Chaos
+Mirage Arcana
+Hallucinatory Terrain
+Glitterdust
+Illusory Wall
+Ghost Sound
+Project Image
+Silent Image
+Major Image
+Minor Image
+Persistent Image
+Permanent Image
+Programmed Image
+Discern Lies
+Control Plants
+Soul Bind
+Quench
+Sequester
+Wind Walk
+Word of Recall
+Foresight
+Glyph of Warding
+Glyph of Warding, Greater
+Seeming
+Planar Binding
+Planar Binding, Greater
+Planar Binding, Lesser
+Unhallow
+Hallow
+Guards and Wards
+Dispel Law
+Dispel Good
+Dispel Evil
+Dispel Chaos
+Circle of Death
+Sound Burst
+Symbol of Death
+Symbol of Weakness
+Symbol of Pain
+Flare
+Energy Drain
+Implosion
+Delay Poison
+Destruction
+Horrid Wilting
+Slay Living
+Contagion
+Remove Blindness/Deafness
+Regenerate
+Blight
+Animal Growth
+Resist Energy
+Virtue
+Polymorph Any Object
+Temporal Stasis
+Blindness/Deafness
+Eyebite
+Ghoul Touch
+Shatter
+Weird
+Chill Touch
+Baleful Polymorph
+Transmute Metal to Wood
+Faerie Fire
+Prayer
+Waves of Fatigue
+Waves of Exhaustion
+Ice Storm
+Limited Wish
+Dimensional Lock
+Desecrate
+Antilife Shell
+Antiplant Shell
+Wall of Fire
+Produce Flame
+Flame Blade
+Mage's Sword
+Spiritual Weapon
+Forceful Hand
+Interposing Hand
+Clenched Fist
+Grasping Hand
+Crushing Hand
+Disrupt Undead
+Enervation
+Polar Ray
+Searing Light
+Ray of Enfeeblement
+Dimensional Anchor
+Scintillating Pattern
+Rage
+Animal Messenger
+Goodberry
+Geas/Quest
+Animal Shapes
+Power Word Kill
+Shocking Grasp
+Raise Dead
+Reincarnate
+Atonement
+Giant Vermin
+Dream
+Touch of Idiocy
+Air Walk
+Aid
+Etherealness
+Power Word Stun
+Sympathetic Vibration
+Maze
+Power Word Blind
+Repel Vermin
+Word of Chaos
+Blasphemy
+Holy Word
+Prismatic Spray
+Forbiddance
+Trap the Soul
+Explosive Runes
+Unholy Aura
+Holy Aura
+Shield of Law
+Spike Stones
+Spike Growth
+Sunburst
+Cone of Cold
+Flame Strike
+Freezing Sphere
+Sunbeam
+Fire Storm
+Delayed Blast Fireball
+Blade Barrier
+Whirlwind
+Call Lightning Storm
+Call Lightning
+Wall of Ice
+Resilient Sphere
+Telekinetic Sphere
+Flaming Sphere
+Bane
+Lullaby
+Undeath to Death
+Holy Smite
+Order's Wrath
+Deep Slumber
+Color Spray
+Crushing Despair
+Fear
+Zone of Truth
+Repulsion
+Calm Emotions
+Unholy Blight
+Song of Discord
+Shades
+Shadow Conjuration
+Shadow Conjuration, Greater
+Shadow Evocation
+Shadow Evocation, Greater
+Symbol of Persuasion
+Symbol of Insanity
+Symbol of Sleep
+Symbol of Fear
+Symbol of Stunning
+Hypnotic Pattern
+Rainbow Pattern
+Mind Fog
+Animal Trance
+Veil
+Charm Monster, Mass
+Command Plants
+Charm Monster
+Command Undead
+Shrink Item
+Gentle Repose
+Geas, Lesser
+Illusory Script
+Binding
+Charm Animal
+Charm Person
+Mind Blank
+Undetectable Alignment
+Magic Fang, Greater
+Magic Weapon, Greater
+Enthrall
+Magic Jar
+Overland Flight
+Status
+Magic Vestment
+Nondetection
+Water Breathing
+Sculpt Sound
+Shield Other
+Sympathy
+Antipathy
+Shadow Walk
+Pass without Trace
+Statue
+Obscure Object
+Purify Food and Drink
+Remove Paralysis
+Freedom
+Warp Wood
+Dismissal
+Banishment
+Insanity
+Feeblemind
+Nightmare
+Teleport Object
+Heal Mount
+Imprisonment
+Remove Curse
+Harm
+Wood Shape
+Awaken
+Curse Water
+Bless Water
+Death Knell
+Calm Animals
+Remove Fear
+Keen Edge
+Control Undead
+Cat's Grace, Mass
+Eagle's Splendor, Mass
+Fox's Cunning, Mass
+Owl's Wisdom, Mass
+Good Hope
+Doom
+Guidance
+Spell Immunity
+Spell Immunity, Greater
+Spell Resistance
+Death Ward
+Align Weapon
+Magic Fang
+Magic Stone
+Magic Weapon
+Shillelagh
+Shield of Faith
+Stoneskin
+True Seeing
+Cat's Grace
+Eagle's Splendor
+Fox's Cunning
+Owl's Wisdom
+Protection from Spells
+Hide from Animals
+Blur
+Hide from Undead
+Water Walk
+Jump
+Modify Memory
+Magic Mouth
+Bestow Curse
+Imbue with Spell Ability
+Spellstaff
+Command
+Command, Greater
+Cause Fear
+Dominate Animal
+Daze
+Hideous Laughter
+Scare
+Daze Monster
+Halt Undead
+Demand
+Disrupting Weapon
+Hold Animal
+Daggerspell Stance
+Easy Trail
+Joyful Noise
+Healthful Rest
+Arrow Mind
+Balancing Lorecall
+Bloodhound
+Critical Strike
+Golem Strike
+Grave Strike
+Guided Shot
+Healing Lorecall
+Hindsight
+Insightful Feint
+Instant Locksmith
+Instant Search
+Listening Coin
+Listening Lorecall
+Master's Touch
+Sniper's Shot
+Speechlink
+Tactical Precision
+Vine Strike
+Dirge of Discord
+Distract Assailant
+Focusing Chant
+Harmonic Chorus
+Herald's Call
+Insidious Rhythm
+Inspirational Boost
+Mindless Rage
+Train Animal
+War Cry
+Cacophonic Shield
+Dissonant Chord
+Foebane
+Hymn of Praise
+Infernal Threnody
+Nature's Favor
+Bladeweave
+Invisibility, Swift
+Shadow Form
+Spectral Weapon
+Wail of Doom
+Wracking Touch
+Absorb Weapon
+Accelerated Movement
+Allegro
+Arrow Storm
+Blade Storm
+Branch to Branch
+Distort Speech
+Easy Climb
+Embrace the Wild
+Entangling Staff
+Exacting Shot
+Expeditious Retreat, Swift
+Fly, Swift
+Forestfold
+Haste, Swift
+Hawkeye
+Improvisation
+Iron Silence
+Nightstalker's Transformation
+Protege
+Sniper's Eye
+Sonic Weapon
+Wraithstrike
+Absorption
+Aiming At the Target
+Duelward
+Elemental Ward
+Finding the Center
+Otiluke's Dispelling Screen
+Otiluke's Greater Dispelling Screen
+Protection from Charm
+Reaving Dispel
+Reciprocal Gyre
+Refusal
+Sign of Sealing
+Sign of Sealing, Greater
+Arc of Lightning
+Bands of Steel
+Blades of Fire
+Blast of Flame
+Body Outside Body
+Cloud Chariot
+Corpse Candle
+Freezing Fog
+Hail of Stone
+Ice Knife
+Leomund's Hidden Lodge
+Reanimation
+Ring of Blades
+Servant Horde
+Sphere of Ultimate Destruction
+Spirit Binding
+Spirit Binding, Greater
+Spirit Binding, Lesser
+Vitriolic Sphere
+Wall of Bones
+Assay Resistance
+Commune With Greater Spirit
+Commune With Lesser Spirit
+Discern Shapechanger
+Unluck
+Programmed Amnesia
+Secret Signs
+Transfix
+Blistering Radiance
+Creeping Darkness
+Defenestrating Sphere
+Earthbolt
+Elemental Burst
+Emerald Flame Fist
+Fiery Eyes
+Fire Breath
+Fire Shuriken
+Fireburst
+Fireburst, Greater
+Force Whip
+Ice Blast
+Internal Fire
+Lightning Blade
+Melt
+Prismatic Ray
+Resonating Bolt
+Steam Breath
+Sword of Deception
+Apparition
+Chameleon
+Illusory Pit
+Phantasmal Assailants
+Shadow Binding
+Superior Invisibility
+Wall of Gloom
+Arrow of Bone
+Backbiter
+Blackfire
+Burning Blood
+Ghost Light
+Heart of Stone
+Heart Ripper
+Kiss of the Toad
+Pain
+Spirit Self
+Spiritwall
+Sword of Darkness
+Withering Palm
+Accuracy
+Animate Fire
+Animate Water
+Animate Wood
+Brilliant Blade
+Cobra's Breath
+Dancing Blade
+Decapitating Scarf
+Earthen Grasp
+Entangling Scarf
+Fiendform
+Fire Wings
+Fist of Stone
+Flensing
+Ghostform
+Giant Size
+Iron Scarf
+Low-light Vision
+Magnetism
+Metal Skin
+Minute Form
+Poison Needles
+Rain of Needles
+Scales of the Lizard
+Smoke Ladder
+Snake Darts
+Spirit Needle
+Stony Grasp
+Summoning Wind
+Swim
+Terra Cotta Lion
+Terra Cotta Warrior
+Thornskin
+Transmute Rock to Lava
+Water to Poison
+Wood Rot
+Enhance Familiar
+Familiar Pocket
+Fortify Familiar
+Imbue Familiar With Spell Ability
+Blessing of Bahamut
+Resurgence
+Resurgence, Mass
+Sacred Haven
+Spell Resistance, Mass
+Storm Tower
+Unbinding
+Zeal
+Beget Bogun
+Bottle of Smoke
+Cometfall
+Deific Vengeance
+Golden Barding
+Maelstrom
+Obedient Avalanche
+Otyugh Swarm
+Pavilion of Grandeur
+Phantom Bear
+Phantom Stag
+Phantom Wolf
+Plague of Rats
+Poison Vines
+Quill Blast
+Recitation
+Rejuvenation Cocoon
+Renewal Pact
+Revenance
+Slime Wave
+Spiritual Chariot
+Storm of Elemental Fury
+True Creation
+Vigor
+Vigor, Greater
+Vigor, Lesser
+Vigor, Mass Lesser
+Vigorous Circle
+Waterspout
+Wood Wose
+Blessed Aim
+Brain Spider
+Chain of Eyes
+Detect Favored Enemy
+Dream Sight
+Implacable Pursuer
+Mark of the Hunter
+Probe Thoughts
+Weather Eye
+Bolts of Bedevilment
+Maddening Scream
+Monstrous Thrall
+Righteous Wrath of the Faithful
+Touch of Madness
+True Domination
+Wave of Grief
+Anger of the Noonday Sun
+Bane Bow
+Binding Winds
+Blast of Force
+Bolt of Glory
+Castigate
+Cloudburst
+Crown of Glory
+Divine Sacrifice
+Dragon Breath
+Energy Vortex
+Enveloping Cocoon
+Fires of Purity
+Flame of Faith
+Miasma
+Murderous Mist
+Nature's Avatar
+Nimbus of Light
+Sandblast
+Stalwart Pact
+Tidal Surge
+Whirlwind, Greater
+Zealot Pact
+Doomtide
+Phantasmal Decoy
+Phantasmal Disorientation
+Shadow Landscape
+Contagious Touch
+Curse of Lycanthropy
+Death Pact
+Decomposition
+Infestation of Maggots
+Last Breath
+Naturewatch
+Scourge
+Wrack
+Awaken, Mass
+Beast Claws
+Bestow Curse, Greater
+Blink, Improved
+Body of the Sun
+Brambles
+Briar Web
+Brilliant Aura
+Camouflage
+Camouflage, Mass
+Cloudwalkers
+Creeping Cold
+Creeping Cold, Greater
+Crumble
+Curse of Ill Fortune
+Divine Agility
+Languor
+Poison Thorns
+Scent
+Spikes
+Standing Wave
+Stormrage
+Subvert Planar Essence
+Tortoise Shell
+Traveler's Mount
+Unyielding Roots
+Weapon of the Deity
+Winged Mount
+Aligned Aura
+Benediction
+Body Ward
+Bolster Aura
+Dampen Magic
+Divine Retribution
+Light of Courage
+Light of Faith
+Light of Purity
+Light of Wisdom
+Moral Facade
+Soul Ward
+Subdue Aura
+Conduit of Life
+Darts of Life
+Door of Decay
+Healing Circle
+Phantom Charge
+Rejuvenating Light
+Seed of Life
+Summon Holy Symbol
+Touch of Restoration
+Forest Eyes
+Lore of the Gods
+Spiritual Advisor
+Bewildering Mischance
+Confound
+Impede
+Interfaith Blessing
+Mark of Sin
+Turn Anathema
+Spiritual Guardian
+Weight of Sin
+Bewildering Substitution
+Bewildering Visions
+Bleed
+Execration
+Ravenous Darkness
+Deific Bastion
+Divine Presence
+Footsteps of the Divine
+Forest Child
+Forest Voice
+Iconic Manifestation
+Master Cavalier
+Metal Fang
+Profane Item
+Sacred Item
+Substitute Domain
+Surge of Fortune
+War-mount
+Wooden Blight
+Arcane Turmoil
+Attentive Alarm
+Cacophonous Alarm
+Energy Absorption
+Karmic Aura
+Karmic Retribution
+Karmic Backlash
+Mysterious Redirection
+Otiluke's Supressing Field
+Prismatic Aura
+Repelling Shield
+Tenacious Dispelling
+Caustic Mire
+Caustic Smoke
+Choking Cobwebs
+Climbing Tree
+Deadly Lahar
+Dimension Jumper
+Dimension Jumper, Greater
+Familiar Refuge
+Fire and Brimstone
+Genius Loci
+Great Worm of the Earth
+Incendiary Slime
+Mordenkainen's Trusted Bloodhound
+Rain of Spines
+Resinous Tar
+Steal Summoning
+Storm of Needles
+Summon Component
+Summon Weapon
+Tactical Teleportation
+Towering Thunderhead
+Toxic Tongue
+Allied Footsteps
+Combined Talent
+Critical Strike
+Deathsight
+Elemental Eye
+Enduring Scrutiny
+Guided Path
+Magic Savant
+Near Horizon
+Spellcaster's Bane
+True Casting
+Vigilant Slumber
+Vital Strike
+Bothersome Babble
+Caterwaul
+Endless Slumber
+Immediate Assistance
+Melf's Slumber Arrows
+Otto's Imperative Ambulation
+Torrent of Tears
+Vecna Malevolent Whisper
+Battlecry
+Bigby's Slapping Hand
+Channeled Sound Blast
+Coat of Arms
+Dawn Burst
+Deadly Sunstroke
+Deafening Blast
+Ghost Lantern
+Incendiary Surge
+Jet of Steam
+Lash of Force
+Lingering Flames
+Luminous Swarm
+Painful Echoes
+Prismatic Bow
+Prismatic Deluge
+Resonating Agony
+Resounding Thunder
+Storm of Fire and Ice
+Deceptive Facade
+Doublespeak
+False Lie
+Fever Dream
+Hood of the Cobra
+Interminable Echo
+Lingering Chorus
+Mask of the Ideal
+Nightmare Terrain
+Pall of Twilight
+Phantasmal Strangler
+Retributive Image
+Unseen Strike
+Blackrot
+Bloodletting
+Channeled Lifetheft
+Cryptwarden's Grasp
+Death's Call
+Escalating Enfeeblement
+Finger of Agony
+Horrid Sickness
+Necrotic Curse
+Prickling Torment
+Reaving Aura
+Retributive Enervation
+Seed of Undeath
+Seed of Undeath, Greater
+Touch of the Graveborn
+Touch of Vecna
+Touch of Years
+Adamantine Wings
+Animate Weapon
+Arboreal Transformation
+Aspect of the Icy Hunter
+Boiling Blood
+Catsfeet
+Crystalline Memories
+Discordant Malediction
+Dreaded Form of the Eye Tyrant
+Flaying Tendrils
+Form of the Threefold Beast
+Heart of Air
+Heart of Earth
+Heart of Fire
+Heart of Water
+Lightning Leap
+Rebirth of Iron
+Rusted Blade
+Shape of the Hellspawned Stalker
+Smoky Confinement
+Transcend Mortality
+Unicorn Blood
+Unicorn Heart
+Unicorn Horn
+Unyielding Form of Inevitable Death
+Arcane Fusion
+Arcane Fusion, Greater
+Rary's Arcane Conversion
+Disobedience
+Harmonic Void
+Opportune Dodge
+Spell Theft
+Blockade
+Create Fetch
+Evacuation Rune
+Grasping Wall
+Wall of Vermin
+Healer's Vision
+Scry Location
+Spymaster's Coin
+Assassin's Darkness
+Fatal Flame
+Manifestation of the Deity
+Animate Instrument
+Aquatic Escape
+Armor Lock
+Catapult
+Enlarge Weapon
+Lucky Streak
+Mage Burr
+Mimicry
+Siphon
+Smoke Stairs
+Spore Field
+Wand Modulation
+Winged Watcher
+Cloak of Bravery
+Cloak of Bravery, Greater
+Lion's Roar
+Hound of Doom
+Phantom Threat
+Cursed Blade
+Augment Familiar
+Valiant Fury

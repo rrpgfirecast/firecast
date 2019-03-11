@@ -1,0 +1,1501 @@
+[{
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Arcane Lock",
+    "spell_id": 2303,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Dismissal",
+    "spell_id": 2310,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Dispel Magic",
+    "spell_id": 2315,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Dispel Magic, Greater",
+    "spell_id": 2316,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Endure Elements",
+    "spell_id": 2317,
+    "level": 1
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Fire Trap",
+    "spell_id": 2320,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Fire Trap",
+    "spell_id": 2320,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Freedom",
+    "spell_id": 2323,
+    "level": 9
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Globe of Invulnerability",
+    "spell_id": 2324,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Globe of Invulnerability, Lesser",
+    "spell_id": 2325,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Imprisonment",
+    "spell_id": 2333,
+    "level": 9
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Magic Circle Against Chaos",
+    "spell_id": 2334,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Magic Circle Against Evil",
+    "spell_id": 2335,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Magic Circle Against Good",
+    "spell_id": 2336,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Magic Circle Against Law",
+    "spell_id": 2337,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Mind Blank",
+    "spell_id": 2338,
+    "level": 8
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Prismatic Sphere",
+    "spell_id": 2343,
+    "level": 9
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Prismatic Wall",
+    "spell_id": 2344,
+    "level": 8
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Protection from Arrows",
+    "spell_id": 2345,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Protection from Energy",
+    "spell_id": 2347,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Remove Curse",
+    "spell_id": 2352,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Repel Metal Or Stone",
+    "spell_id": 2354,
+    "level": 8
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Repulsion",
+    "spell_id": 2356,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Resist Energy",
+    "spell_id": 2357,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Resistance",
+    "spell_id": 2358,
+    "level": 0
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Shield",
+    "spell_id": 2364,
+    "level": 1
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Stoneskin",
+    "spell_id": 2369,
+    "level": 4
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Acid Fog",
+    "spell_id": 2372,
+    "level": 6
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Acid Splash",
+    "spell_id": 2373,
+    "level": 0
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Cloudkill",
+    "spell_id": 2374,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Dimension Door",
+    "spell_id": 2388,
+    "level": 4
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Elemental Swarm",
+    "spell_id": 2390,
+    "level": 9
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Evard's Black Tentacles",
+    "spell_id": 2391,
+    "level": 4
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Fire Seeds",
+    "spell_id": 2392,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Fire Seeds",
+    "spell_id": 2392,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Fog Cloud",
+    "spell_id": 2393,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Gate",
+    "spell_id": 2394,
+    "level": 9
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Incendiary Cloud",
+    "spell_id": 2401,
+    "level": 8
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Incendiary Cloud",
+    "spell_id": 2401,
+    "level": 8
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Major Creation",
+    "spell_id": 2406,
+    "level": 5
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Melf's Acid Arrow",
+    "spell_id": 2408,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Minor Creation",
+    "spell_id": 2409,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Obscuring Mist",
+    "spell_id": 2414,
+    "level": 1
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Sleet Storm",
+    "spell_id": 2436,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Solid Fog",
+    "spell_id": 2437,
+    "level": 4
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Stinking Cloud",
+    "spell_id": 2438,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Stinking Cloud",
+    "spell_id": 2438,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Summon Monster I",
+    "spell_id": 2441,
+    "level": 1
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Summon Monster II",
+    "spell_id": 2442,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Summon Monster III",
+    "spell_id": 2443,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Summon Monster IV",
+    "spell_id": 2444,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Summon Monster V",
+    "spell_id": 2445,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Summon Monster VI",
+    "spell_id": 2446,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Summon Monster VII",
+    "spell_id": 2447,
+    "level": 7
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Summon Monster VIII",
+    "spell_id": 2448,
+    "level": 8
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Summon Monster IX",
+    "spell_id": 2449,
+    "level": 9
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Teleport Object",
+    "spell_id": 2460,
+    "level": 7
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Teleport",
+    "spell_id": 2461,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Teleport, Greater",
+    "spell_id": 2462,
+    "level": 7
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Teleportation Circle",
+    "spell_id": 2463,
+    "level": 9
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Unseen Servant",
+    "spell_id": 2468,
+    "level": 1
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Wall of Iron",
+    "spell_id": 2469,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Wall of Stone",
+    "spell_id": 2470,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Comprehend Languages",
+    "spell_id": 2482,
+    "level": 1
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Detect Chaos",
+    "spell_id": 2485,
+    "level": 1
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Detect Evil",
+    "spell_id": 2486,
+    "level": 1
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Detect Good",
+    "spell_id": 2487,
+    "level": 1
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Detect Law",
+    "spell_id": 2488,
+    "level": 1
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Detect Magic",
+    "spell_id": 2489,
+    "level": 0
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Detect Poison",
+    "spell_id": 2490,
+    "level": 0
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Detect Thoughts",
+    "spell_id": 2494,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Locate Creature",
+    "spell_id": 2505,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Locate Object",
+    "spell_id": 2506,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Read Magic",
+    "spell_id": 2511,
+    "level": 0
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Scrying",
+    "spell_id": 2512,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Scrying, Greater",
+    "spell_id": 2513,
+    "level": 7
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "See Invisibility",
+    "spell_id": 2514,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Tongues",
+    "spell_id": 2519,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "True Seeing",
+    "spell_id": 2520,
+    "level": 6
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "True Strike",
+    "spell_id": 2521,
+    "level": 1
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "True Strike",
+    "spell_id": 2521,
+    "level": 1
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Antipathy",
+    "spell_id": 2526,
+    "level": 8
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Charm Monster",
+    "spell_id": 2533,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Charm Person",
+    "spell_id": 2535,
+    "level": 1
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Confusion",
+    "spell_id": 2538,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Crushing Despair",
+    "spell_id": 2540,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Daze",
+    "spell_id": 2542,
+    "level": 0
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Dominate Monster",
+    "spell_id": 2546,
+    "level": 9
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Dominate Person",
+    "spell_id": 2547,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Feeblemind",
+    "spell_id": 2549,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Geas/quest",
+    "spell_id": 2551,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Good Hope",
+    "spell_id": 2552,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Hold Monster",
+    "spell_id": 2556,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Hold Person",
+    "spell_id": 2558,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Power Word Blind",
+    "spell_id": 2566,
+    "level": 7
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Power Word Kill",
+    "spell_id": 2567,
+    "level": 9
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Power Word Stun",
+    "spell_id": 2568,
+    "level": 8
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Sleep",
+    "spell_id": 2571,
+    "level": 1
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Suggestion",
+    "spell_id": 2573,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Suggestion, Mass",
+    "spell_id": 2574,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Symbol of Insanity",
+    "spell_id": 2575,
+    "level": 8
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Symbol of Persuasion",
+    "spell_id": 2576,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Symbol of Sleep",
+    "spell_id": 2577,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Symbol of Stunning",
+    "spell_id": 2578,
+    "level": 7
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Sympathy",
+    "spell_id": 2579,
+    "level": 8
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Blade Barrier",
+    "spell_id": 2588,
+    "level": 6
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Burning Hands",
+    "spell_id": 2590,
+    "level": 1
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Chain Lightning",
+    "spell_id": 2593,
+    "level": 6
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Cone of Cold",
+    "spell_id": 2595,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Cone of Cold",
+    "spell_id": 2595,
+    "level": 5
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Continual Flame",
+    "spell_id": 2598,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Dancing Lights",
+    "spell_id": 2599,
+    "level": 0
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Delayed Blast Fireball",
+    "spell_id": 2603,
+    "level": 7
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Delayed Blast Fireball",
+    "spell_id": 2603,
+    "level": 7
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Earthquake",
+    "spell_id": 2608,
+    "level": 7
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Earthquake",
+    "spell_id": 2608,
+    "level": 8
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Fire Shield",
+    "spell_id": 2610,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Fire Shield",
+    "spell_id": 2610,
+    "level": 4
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Fire Storm",
+    "spell_id": 2611,
+    "level": 7
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Fireball",
+    "spell_id": 2612,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Fireball",
+    "spell_id": 2612,
+    "level": 3
+}, {
+    "className": "Shugenja",
+    "slug": "shugenja",
+    "spellName": "Fireball",
+    "spell_id": 2612,
+    "level": 4
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Flame Strike",
+    "spell_id": 2614,
+    "level": 5
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Flaming Sphere",
+    "spell_id": 2615,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Flare",
+    "spell_id": 2616,
+    "level": 0
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Gust of Wind",
+    "spell_id": 2618,
+    "level": 3
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Ice Storm",
+    "spell_id": 2624,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Ice Storm",
+    "spell_id": 2624,
+    "level": 4
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Implosion",
+    "spell_id": 2626,
+    "level": 9
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Light",
+    "spell_id": 2629,
+    "level": 0
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Light",
+    "spell_id": 2629,
+    "level": 0
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Lightning Bolt",
+    "spell_id": 2630,
+    "level": 3
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Magic Missile",
+    "spell_id": 2631,
+    "level": 1
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Magic Missile",
+    "spell_id": 2631,
+    "level": 1
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Meteor Swarm",
+    "spell_id": 2632,
+    "level": 9
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Mordenkainen's Sword",
+    "spell_id": 2634,
+    "level": 7
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Otiluke's Freezing Sphere",
+    "spell_id": 2636,
+    "level": 6
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Polar Ray",
+    "spell_id": 2639,
+    "level": 8
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Prismatic Spray",
+    "spell_id": 2640,
+    "level": 7
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Ray of Frost",
+    "spell_id": 2642,
+    "level": 0
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Ray of Frost",
+    "spell_id": 2642,
+    "level": 0
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Scorching Ray",
+    "spell_id": 2643,
+    "level": 2
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Shatter",
+    "spell_id": 2646,
+    "level": 2
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Shocking Grasp",
+    "spell_id": 2647,
+    "level": 1
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Shout",
+    "spell_id": 2648,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Shout",
+    "spell_id": 2648,
+    "level": 4
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Shout, Greater",
+    "spell_id": 2649,
+    "level": 8
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Sunbeam",
+    "spell_id": 2652,
+    "level": 7
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Sunburst",
+    "spell_id": 2653,
+    "level": 8
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Wall of Fire",
+    "spell_id": 2658,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Wall of Fire",
+    "spell_id": 2658,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Wall of Ice",
+    "spell_id": 2660,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Whirlwind",
+    "spell_id": 2661,
+    "level": 8
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Blur",
+    "spell_id": 2664,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Displacement",
+    "spell_id": 2667,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Dream",
+    "spell_id": 2668,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Ghost Sound",
+    "spell_id": 2670,
+    "level": 0
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Hypnotic Pattern",
+    "spell_id": 2672,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Illusory Script",
+    "spell_id": 2673,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Invisibility",
+    "spell_id": 2676,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Invisibility, Greater",
+    "spell_id": 2677,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Major Image",
+    "spell_id": 2681,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Minor Image",
+    "spell_id": 2682,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Misdirection",
+    "spell_id": 2685,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Nightmare",
+    "spell_id": 2687,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Permanent Image",
+    "spell_id": 2689,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Persistent Image",
+    "spell_id": 2690,
+    "level": 5
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Phantasmal Killer",
+    "spell_id": 2691,
+    "level": 4
+}, {
+    "className": "Hexblade",
+    "slug": "hexblade",
+    "spellName": "Phantasmal Killer",
+    "spell_id": 2691,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Programmed Image",
+    "spell_id": 2692,
+    "level": 6
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Scintillating Pattern",
+    "spell_id": 2695,
+    "level": 8
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Silent Image",
+    "spell_id": 2705,
+    "level": 1
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Veil",
+    "spell_id": 2707,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Ventriloquism",
+    "spell_id": 2708,
+    "level": 1
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Weird",
+    "spell_id": 2709,
+    "level": 9
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Animate Dead",
+    "spell_id": 2711,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Astral Projection",
+    "spell_id": 2712,
+    "level": 9
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Chill Touch",
+    "spell_id": 2717,
+    "level": 1
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Circle of Death",
+    "spell_id": 2718,
+    "level": 6
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Contagion",
+    "spell_id": 2721,
+    "level": 4
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Disrupt Undead",
+    "spell_id": 2730,
+    "level": 0
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Disrupt Undead",
+    "spell_id": 2730,
+    "level": 0
+}, {
+    "className": "Hexblade",
+    "slug": "hexblade",
+    "spellName": "Fear",
+    "spell_id": 2736,
+    "level": 4
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Finger of Death",
+    "spell_id": 2737,
+    "level": 7
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Horrid Wilting",
+    "spell_id": 2742,
+    "level": 8
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Horrid Wilting",
+    "spell_id": 2742,
+    "level": 8
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Poison",
+    "spell_id": 2754,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Speak With Dead",
+    "spell_id": 2760,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Symbol of Death",
+    "spell_id": 2762,
+    "level": 8
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Symbol of Fear",
+    "spell_id": 2763,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Symbol of Pain",
+    "spell_id": 2764,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Symbol of Weakness",
+    "spell_id": 2765,
+    "level": 7
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Wail of the Banshee",
+    "spell_id": 2769,
+    "level": 9
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Waves of Exhaustion",
+    "spell_id": 2770,
+    "level": 7
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Alter Self",
+    "spell_id": 2774,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Animal Growth",
+    "spell_id": 2775,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Animate Rope",
+    "spell_id": 2779,
+    "level": 1
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Baleful Polymorph",
+    "spell_id": 2781,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Bear's Endurance",
+    "spell_id": 2783,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Bull's Strength",
+    "spell_id": 2788,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Cat's Grace",
+    "spell_id": 2790,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Command Plants",
+    "spell_id": 2794,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Control Plants",
+    "spell_id": 2795,
+    "level": 8
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Control Water",
+    "spell_id": 2796,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Control Weather",
+    "spell_id": 2797,
+    "level": 6
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Disintegrate",
+    "spell_id": 2801,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Disintegrate",
+    "spell_id": 2801,
+    "level": 7
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Ethereal Jaunt",
+    "spell_id": 2809,
+    "level": 7
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Etherealness",
+    "spell_id": 2810,
+    "level": 9
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Fabricate",
+    "spell_id": 2812,
+    "level": 5
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Flame Arrow",
+    "spell_id": 2814,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Flesh to Stone",
+    "spell_id": 2815,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Gaseous Form",
+    "spell_id": 2819,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Haste",
+    "spell_id": 2823,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Ironwood",
+    "spell_id": 2826,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Keen Edge",
+    "spell_id": 2828,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Knock",
+    "spell_id": 2829,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Mage Hand",
+    "spell_id": 2833,
+    "level": 0
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Magic Weapon",
+    "spell_id": 2838,
+    "level": 1
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Magic Weapon, Greater",
+    "spell_id": 2839,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Mending",
+    "spell_id": 2842,
+    "level": 0
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Message",
+    "spell_id": 2843,
+    "level": 0
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Move Earth",
+    "spell_id": 2845,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Open/close",
+    "spell_id": 2846,
+    "level": 0
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Passwall",
+    "spell_id": 2851,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Plant Growth",
+    "spell_id": 2852,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Polymorph Any Object",
+    "spell_id": 2853,
+    "level": 8
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Polymorph",
+    "spell_id": 2854,
+    "level": 4
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Pyrotechnics",
+    "spell_id": 2856,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Pyrotechnics",
+    "spell_id": 2856,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Rope Trick",
+    "spell_id": 2866,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Rusting Grasp",
+    "spell_id": 2867,
+    "level": 4
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Shapechange",
+    "spell_id": 2870,
+    "level": 9
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Spider Climb",
+    "spell_id": 2877,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Statue",
+    "spell_id": 2880,
+    "level": 7
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Stone Shape",
+    "spell_id": 2881,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Stone to Flesh",
+    "spell_id": 2882,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Telekinesis",
+    "spell_id": 2883,
+    "level": 5
+}, {
+    "className": "Warmage",
+    "slug": "warmage",
+    "spellName": "Tenser's Transformation",
+    "spell_id": 2885,
+    "level": 6
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Time Stop",
+    "spell_id": 2886,
+    "level": 9
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Transmute Metal to Wood",
+    "spell_id": 2887,
+    "level": 7
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Warp Wood",
+    "spell_id": 2892,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Water Breathing",
+    "spell_id": 2893,
+    "level": 3
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Whispering Wind",
+    "spell_id": 2895,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Wood Shape",
+    "spell_id": 2897,
+    "level": 2
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Arcane Mark",
+    "spell_id": 2898,
+    "level": 0
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Limited Wish",
+    "spell_id": 2899,
+    "level": 7
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Permanency",
+    "spell_id": 2900,
+    "level": 5
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Prestidigitation",
+    "spell_id": 2901,
+    "level": 0
+}, {
+    "className": "Wu Jen",
+    "slug": "wu-jen",
+    "spellName": "Wish",
+    "spell_id": 2902,
+    "level": 9
+}]
