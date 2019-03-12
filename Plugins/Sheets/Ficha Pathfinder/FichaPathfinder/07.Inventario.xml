@@ -29,6 +29,13 @@
 			<edit align="client" class="" field="$(field)" fontSize="12"/>
 		</flowPart>
 	</template>
+	   <template name="itemInfoFieldSmall">
+        <flowPart minWidth="90" maxWidth="100" height="35">
+            <label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true" hint="$(hint)" hitTest="true"/>
+            <edit align="client" class="" field="$(field)" fontSize="12" type="number"/>
+        </flowPart>
+    </template>
+
 	<popup name="popArma" width="300" height="400" backOpacity="0.4" autoScopeNode="false">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
 			<weaponInfoFieldSmall text="NOME" field="batismo" hint="Se a arma possui um nome de batismo ponha ele aqui."/>
@@ -49,7 +56,20 @@
 			<weaponInfoFieldSmallCenter text="FALHA" field="falha" hint="Para escudos: qual a falha arcana?"/>
 		</flowLayout>
 		<textEditor align="client" field="descricao" class=""/>
-		</popup>
+	</popup>
+	<popup name="popItem" width="300" height="250" backOpacity="0.4" autoScopeNode="false">
+        <flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
+            <weaponInfoFieldSmall text="Nome" field="nome" hint=""/>
+            <weaponInfoFieldSmall text="Tipo" field="tipo" hint="Varinha? Poção? Cajado?"/>
+            <weaponInfoFieldSmall text="Rolagem" field="dados" hint="Rolagem feita ao usar o item."/>
+
+            <weaponInfoFieldSmallCenter text="NC" field="nc" hint="Nível de Conjurador"/>
+            <weaponInfoFieldSmallCenter text="CD" field="cd" hint="Classe de Dificuldade"/>
+            <itemInfoFieldSmall text="PREÇO" field="preco" hint=""/>
+        </flowLayout>
+        <textEditor align="client" field="descricao" class=""/>
+    </popup>
+
 
 	<scrollBox align="client">
 		<layout left="0" top="0" width="475" height="330">
@@ -164,7 +184,7 @@
 				end;
 			</event>
 		</dataLink>
-		<dataLink fields="{'precoEquipamento', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal', 'precoCorpo2', 'precoTesta'}">
+		<dataLink fields="{'precoEquipamento', 'precoArmas', 'precoMochila', 'precoPermanencias', 'precoLivres', 'precoOutros', 'precoMunicoes', 'precoBolsos', 'precoImoveis', 'precoInventorioComp', 'dinheiroTotal', 'precoItens'}">
 			<event name="onChange">
 				if sheet~= nil then
 
@@ -178,7 +198,8 @@
 									(tonumber(sheet.precoMunicoes) or 0) +
 									(tonumber(sheet.precoBolsos) or 0) +
 									(tonumber(sheet.precoImoveis) or 0) +
-									(tonumber(sheet.precoInventorioComp) or 0);
+									(tonumber(sheet.precoInventorioComp) or 0) +
+									(tonumber(sheet.precoItens) or 0);
 
 					-- Calculando dinheiro restante
 					local total = tonumber(sheet.dinheiroTotal) or 0;
@@ -189,7 +210,7 @@
 				end;
 			</event>
 		</dataLink>
-		<dataLink fields="{'pesoEquipamento', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp', 'pesoTesta', 'pesoCorpo2'}">
+		<dataLink fields="{'pesoEquipamento', 'pesoArmas', 'pesoMochila', 'pesoPermanencias', 'pesoLivres', 'pesoOutros', 'pesoMunicoes', 'pesoBolsos', 'pesoImoveis', 'pesoInventorioComp'}">
 			<event name="onChange">
 				if sheet~=nil then
 					local carga = (tonumber(sheet.pesoEquipamento) or 0) +

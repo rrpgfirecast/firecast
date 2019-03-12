@@ -58,14 +58,7 @@
             <import file="05.Magias.lfm"/>
         </tab>
 		<tab title="Equipamentos">
-            <tabControl align="client">
-                <tab title="Novo">
-                    <import file="06.Equipamentos2.xml"/>
-                </tab>
-                <tab title="Velho">
-                    <import file="06.Equipamentos.lfm"/>
-                </tab>
-            </tabControl>
+            <import file="06.Equipamentos2.xml"/>
         </tab>
         <tab title="Inventario">
             <import file="07.Inventario.xml"/>
@@ -103,7 +96,7 @@
                     Dialogs.choose("Há uma nova versão(" .. info.version .. ") da Ficha Pathfinder. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                         function(selected, selectedIndex, selectedText)
                             if selected and selectedIndex == 1 then
-                                GUI.openInBrowser('https://github.com/rrpgFirecast./Firecast./blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true');
+                                GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Pathfinder/output/Ficha%20Pathfinder.rpk?raw=true');
                             elseif selected and selectedIndex == 3 then
                                 sheet.noUpdate = true;
                             end;

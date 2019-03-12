@@ -137,13 +137,13 @@
 		<label vertTextAlign="center" horzTextAlign="center" left="810" top="25" width="91" height="20" field="precoEquipamento"  formatFloat=",0.## PO"/>
 
 		<dataScopeBox left="150" top="0" width="600" height="602" name="boxDetalheDoEquipamento" visible="false">
-			<rectangle align="client" color="black"/>
+			<rectangle width="400" height="602" color="black"/>
 
 			<edit vertTextAlign="center" left="5" top="5" width="390" height="25" field="nome"/>
 			<textEditor left="5" top="35" width="390" height="300" field="descricao"/>
 
 			<label left="5" top="340" width="95" height="20" text="Peso" horzTextAlign="center"/>
-			<rectangle left="100" top="340" width="75" height="25" color="black" strokeColor="white" strokeSize="1" name="weightLabel" visible="true">
+			<rectangle left="100" top="340" width="75" height="25" color="black" strokeColor="grey" strokeSize="1" name="weightLabel" visible="true">
 				<label width="75" height="25" field="peso" horzTextAlign="center" formatFloat=",0.## Kg"/>
 				<event name="onClick">
 					self.weightLabel.visible = false;
@@ -278,7 +278,7 @@
 					<rectangle align="client" xradius="2" yradius="2" name="CorBarrinha" color="Green">
 						<label align="left" fontColor="white" fontSize="12" autoSize="true" textTrimming="none" wordWrap="false" name="InfoBarrinha" field="InfoBarrinha" horzTextAlign="center" text="0/0">
 							<event name="onResize">
-								self.InfoBarrinha.width = (self.ValoresBarrinha1.width - 4);
+								self.InfoBarrinha.width = (self.ValoresBarrinha.width - 4);
 							</event>
 						</label>
 					</rectangle>

@@ -4701,6 +4701,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.xpAtualLabel:setStrokeSize(1);
     obj.xpAtualLabel:setName("xpAtualLabel");
     obj.xpAtualLabel:setVisible(true);
+    obj.xpAtualLabel:setOpacity(0.75);
 
     obj.label77 = GUI.fromHandle(_obj_newObject("label"));
     obj.label77:setParent(obj.xpAtualLabel);

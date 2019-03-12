@@ -31,6 +31,28 @@ local function constructNew_frmFichaRPGmeister8_svg()
     obj:setTheme("dark");
     obj:setMargins({top=1});
 
+
+        local function getNumber(text)
+            local mod = "0";
+            if text~= nil then
+                mod = string.gsub(text, "%.", "");
+                mod = string.gsub(mod, "k", "000");
+                mod = string.gsub(mod, "K", "");
+                mod = string.gsub(mod, "g", "");
+                mod = string.gsub(mod, "P", "");
+                mod = string.gsub(mod, "p", "");
+                mod = string.gsub(mod, "O", "");
+                mod = string.gsub(mod, "o", "");
+                mod = string.gsub(mod, "X", "");
+                mod = string.gsub(mod, "x", "");
+                mod = string.gsub(mod, " ", "");
+                mod = string.gsub(mod, ",", ".");
+            end
+            return tonumber(mod);
+        end;
+    
+
+
     obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");

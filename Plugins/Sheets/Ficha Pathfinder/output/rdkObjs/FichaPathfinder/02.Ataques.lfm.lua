@@ -28,103 +28,64 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj:beginUpdate();
     obj:setName("frmFichaRPGmeister2_svg");
     obj:setAlign("client");
-    obj:setTheme("dark");
     obj:setMargins({top=1});
+
+
+		local i;
+		local max;
+		local fimRolagem;
+		local array;
+		local decisivo;
+		local dano;
+		local danoCritico;
+
+		local function pos(rolado)
+			local dado = rolado.ops[1].resultados[1];
+			local mesa = Firecast.getMesaDe(sheet);
+			local valor = rolado.resultado;
+			
+			if (dado>=decisivo) then
+				mesa.activeChat:rolarDados(rolagem, "Confirmando Critico");
+			end;
+			
+			if dado>1 then
+				mesa.activeChat:rolarDados(dano, "Dano do Ataque " .. i);
+			end;
+			
+			if dado>=decisivo then
+				mesa.activeChat:rolarDados(danoCritico, "Dano Extra do Critico "  .. i);
+			end;
+			
+			i = i+1;
+			local mod = tonumber(array[i]);
+			
+			if mod~=nil then
+				rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
+				if sheet.buffAtaque ~= nil then
+					rolagem = rolagem:concatenar(sheet.buffAtaque);
+				end;
+
+				mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+					function (rolado)
+						pos(rolado)
+					end);
+			else
+				fimRolagem = true;
+			end;
+		end;
+	
+
 
     obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox1:setParent(obj);
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-
-			local function pos(rolado)
-				local dado = rolado.ops[1].resultados[1];
-				local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-				local valor = rolado.resultado;
-				
-				if (dado>=decisivo) then
-					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Confirmando Critico");
-				end;
-				
-				if dado>1 then
-					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano do Ataque " .. i,
-						function (rolagem)
-							if sheet.alvo1~=nil and valor>=tonumber(sheet.alvo1) then
-								danoAlvo1 = danoAlvo1 + rolagem.resultado;
-							end;
-							if sheet.alvo2~=nil and valor>=tonumber(sheet.alvo2) then
-								danoAlvo2 = danoAlvo2 + rolagem.resultado;
-							end;
-							if sheet.alvo3~=nil and valor>=tonumber(sheet.alvo3) then
-								danoAlvo3 = danoAlvo3 + rolagem.resultado;
-							end;
-							if sheet.alvo4~=nil and valor>=tonumber(sheet.alvo4) then
-								danoAlvo4 = danoAlvo4 + rolagem.resultado;
-							end;
-							if sheet.alvo5~=nil and valor>=tonumber(sheet.alvo5) then
-								danoAlvo5 = danoAlvo5 + rolagem.resultado;
-							end;
-							
-							if fimRolagem and decisivo>dado then
-								if sheet.alvo1~=nil or sheet.alvo2~=nil or sheet.alvo3~=nil or sheet.alvo4~=nil or sheet.alvo5~=nil then
-									mesaDoPersonagem.activeChat:enviarMensagem("Danos: Alvo 1: " .. danoAlvo1 .. ", Alvo 2: " .. danoAlvo2 .. ", Alvo 3: " .. danoAlvo3 .. ", Alvo 4: " .. danoAlvo4 .. ", Alvo 5: " .. danoAlvo5 .. ".");
-								end;
-							end;
-							
-						end);
-				end;
-				
-				if dado>=decisivo then
-					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Extra do Critico "  .. i,
-						function (rolagem)
-							if sheet.alvo1~=nil and valor>=tonumber(sheet.alvo1) then
-								danoAlvo1 = danoAlvo1 + rolagem.resultado;
-							end;
-							if sheet.alvo2~=nil and valor>=tonumber(sheet.alvo2) then
-								danoAlvo2 = danoAlvo2 + rolagem.resultado;
-							end;
-							if sheet.alvo3~=nil and valor>=tonumber(sheet.alvo3) then
-								danoAlvo3 = danoAlvo3 + rolagem.resultado;
-							end;
-							if sheet.alvo4~=nil and valor>=tonumber(sheet.alvo4) then
-								danoAlvo4 = danoAlvo4 + rolagem.resultado;
-							end;
-							if sheet.alvo5~=nil and valor>=tonumber(sheet.alvo5) then
-								danoAlvo5 = danoAlvo5 + rolagem.resultado;
-							end;
-							
-							if fimRolagem then
-								if sheet.alvo1~=nil or sheet.alvo2~=nil or sheet.alvo3~=nil or sheet.alvo4~=nil or sheet.alvo5~=nil then
-									mesaDoPersonagem.activeChat:enviarMensagem("Danos: Alvo 1: " .. danoAlvo1 .. ", Alvo 2: " .. danoAlvo2 .. ", Alvo 3: " .. danoAlvo3 .. ", Alvo 4: " .. danoAlvo4 .. ", Alvo 5: " .. danoAlvo5 .. ".");
-								end;
-							end;
-						end);
-				end;
-				
-				i = i+1;
-				local mod = tonumber(array[i]);
-				
-				if mod~=nil then
-					rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-					if sheet.buffAtaque ~= nil then
-					rolagem = rolagem:concatenar(sheet.buffAtaque);
-					end;
-					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-						function (rolado)
-							pos(rolado)
-						end);
-				else
-					fimRolagem = true;
-				end;
-			end;
-		
-
-
     obj.layout1 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout1:setParent(obj.scrollBox1);
     obj.layout1:setLeft(0);
     obj.layout1:setTop(0);
-    obj.layout1:setWidth(1209);
+    obj.layout1:setWidth(1234);
     obj.layout1:setHeight(1900);
     obj.layout1:setName("layout1");
 
@@ -138,7 +99,7 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.layout2:setParent(obj.layout1);
     obj.layout2:setLeft(2);
     obj.layout2:setTop(2);
-    obj.layout2:setWidth(1207);
+    obj.layout2:setWidth(1232);
     obj.layout2:setHeight(92);
     obj.layout2:setName("layout2");
 
@@ -147,17 +108,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle2:setAlign("client");
     obj.rectangle2:setColor("black");
     obj.rectangle2:setName("rectangle2");
-
-    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle3:setParent(obj.layout2);
-    obj.rectangle3:setLeft(869);
-    obj.rectangle3:setTop(4);
-    obj.rectangle3:setWidth(332);
-    obj.rectangle3:setHeight(77);
-    obj.rectangle3:setColor("black");
-    obj.rectangle3:setStrokeColor("white");
-    obj.rectangle3:setStrokeSize(1);
-    obj.rectangle3:setName("rectangle3");
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout2);
@@ -466,6 +416,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit19:setField("alcance1");
     obj.edit19:setName("edit19");
 
+    obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle3:setParent(obj.layout2);
+    obj.rectangle3:setLeft(869);
+    obj.rectangle3:setTop(4);
+    obj.rectangle3:setWidth(332);
+    obj.rectangle3:setHeight(77);
+    obj.rectangle3:setColor("black");
+    obj.rectangle3:setStrokeColor("white");
+    obj.rectangle3:setStrokeSize(1);
+    obj.rectangle3:setName("rectangle3");
+
     obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.layout2);
     obj.label10:setLeft(870);
@@ -487,11 +448,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image1:setHeight(75);
     obj.image1:setName("image1");
 
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button4:setParent(obj.layout2);
+    obj.button4:setLeft(1205);
+    obj.button4:setTop(5);
+    obj.button4:setWidth(25);
+    obj.button4:setHeight(75);
+    obj.button4:setText("X");
+    obj.button4:setFontSize(15);
+    obj.button4:setHint("Apaga o ataque.");
+    obj.button4:setName("button4");
+
     obj.layout3 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout3:setParent(obj.layout1);
     obj.layout3:setLeft(2);
     obj.layout3:setTop(97);
-    obj.layout3:setWidth(1207);
+    obj.layout3:setWidth(1232);
     obj.layout3:setHeight(92);
     obj.layout3:setName("layout3");
 
@@ -500,17 +472,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle4:setAlign("client");
     obj.rectangle4:setColor("black");
     obj.rectangle4:setName("rectangle4");
-
-    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle5:setParent(obj.layout3);
-    obj.rectangle5:setLeft(869);
-    obj.rectangle5:setTop(4);
-    obj.rectangle5:setWidth(332);
-    obj.rectangle5:setHeight(77);
-    obj.rectangle5:setColor("black");
-    obj.rectangle5:setStrokeColor("white");
-    obj.rectangle5:setStrokeSize(1);
-    obj.rectangle5:setName("rectangle5");
 
     obj.label11 = GUI.fromHandle(_obj_newObject("label"));
     obj.label11:setParent(obj.layout3);
@@ -569,14 +530,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit22:setField("tipo2");
     obj.edit22:setName("edit22");
 
-    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button4:setParent(obj.layout3);
-    obj.button4:setLeft(279);
-    obj.button4:setTop(6);
-    obj.button4:setWidth(73);
-    obj.button4:setText("ATAQUE");
-    obj.button4:setFontSize(11);
-    obj.button4:setName("button4");
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button5:setParent(obj.layout3);
+    obj.button5:setLeft(279);
+    obj.button5:setTop(6);
+    obj.button5:setWidth(73);
+    obj.button5:setText("ATAQUE");
+    obj.button5:setFontSize(11);
+    obj.button5:setName("button5");
 
     obj.edit23 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit23:setParent(obj.layout3);
@@ -666,14 +627,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit30:setField("ataque2h");
     obj.edit30:setName("edit30");
 
-    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button5:setParent(obj.layout3);
-    obj.button5:setLeft(279);
-    obj.button5:setTop(31);
-    obj.button5:setWidth(73);
-    obj.button5:setText("DANO");
-    obj.button5:setFontSize(11);
-    obj.button5:setName("button5");
+    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button6:setParent(obj.layout3);
+    obj.button6:setLeft(279);
+    obj.button6:setTop(31);
+    obj.button6:setWidth(73);
+    obj.button6:setText("DANO");
+    obj.button6:setFontSize(11);
+    obj.button6:setName("button6");
 
     obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit31:setParent(obj.layout3);
@@ -685,14 +646,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit31:setField("dano2");
     obj.edit31:setName("edit31");
 
-    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button6:setParent(obj.layout3);
-    obj.button6:setLeft(434);
-    obj.button6:setTop(31);
-    obj.button6:setWidth(60);
-    obj.button6:setText("CRITICO");
-    obj.button6:setFontSize(11);
-    obj.button6:setName("button6");
+    obj.button7 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button7:setParent(obj.layout3);
+    obj.button7:setLeft(434);
+    obj.button7:setTop(31);
+    obj.button7:setWidth(60);
+    obj.button7:setText("CRITICO");
+    obj.button7:setFontSize(11);
+    obj.button7:setName("button7");
 
     obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit32:setParent(obj.layout3);
@@ -819,6 +780,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit38:setField("alcance2");
     obj.edit38:setName("edit38");
 
+    obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle5:setParent(obj.layout3);
+    obj.rectangle5:setLeft(869);
+    obj.rectangle5:setTop(4);
+    obj.rectangle5:setWidth(332);
+    obj.rectangle5:setHeight(77);
+    obj.rectangle5:setColor("black");
+    obj.rectangle5:setStrokeColor("white");
+    obj.rectangle5:setStrokeSize(1);
+    obj.rectangle5:setName("rectangle5");
+
     obj.label20 = GUI.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.layout3);
     obj.label20:setLeft(870);
@@ -840,11 +812,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image2:setHeight(75);
     obj.image2:setName("image2");
 
+    obj.button8 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button8:setParent(obj.layout3);
+    obj.button8:setLeft(1205);
+    obj.button8:setTop(5);
+    obj.button8:setWidth(25);
+    obj.button8:setHeight(75);
+    obj.button8:setText("X");
+    obj.button8:setFontSize(15);
+    obj.button8:setHint("Apaga o ataque.");
+    obj.button8:setName("button8");
+
     obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout1);
     obj.layout4:setLeft(2);
     obj.layout4:setTop(192);
-    obj.layout4:setWidth(1207);
+    obj.layout4:setWidth(1232);
     obj.layout4:setHeight(92);
     obj.layout4:setName("layout4");
 
@@ -853,17 +836,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle6:setAlign("client");
     obj.rectangle6:setColor("black");
     obj.rectangle6:setName("rectangle6");
-
-    obj.rectangle7 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle7:setParent(obj.layout4);
-    obj.rectangle7:setLeft(869);
-    obj.rectangle7:setTop(4);
-    obj.rectangle7:setWidth(332);
-    obj.rectangle7:setHeight(77);
-    obj.rectangle7:setColor("black");
-    obj.rectangle7:setStrokeColor("white");
-    obj.rectangle7:setStrokeSize(1);
-    obj.rectangle7:setName("rectangle7");
 
     obj.label21 = GUI.fromHandle(_obj_newObject("label"));
     obj.label21:setParent(obj.layout4);
@@ -922,14 +894,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit41:setField("tipo3");
     obj.edit41:setName("edit41");
 
-    obj.button7 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button7:setParent(obj.layout4);
-    obj.button7:setLeft(279);
-    obj.button7:setTop(6);
-    obj.button7:setWidth(73);
-    obj.button7:setText("ATAQUE");
-    obj.button7:setFontSize(11);
-    obj.button7:setName("button7");
+    obj.button9 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button9:setParent(obj.layout4);
+    obj.button9:setLeft(279);
+    obj.button9:setTop(6);
+    obj.button9:setWidth(73);
+    obj.button9:setText("ATAQUE");
+    obj.button9:setFontSize(11);
+    obj.button9:setName("button9");
 
     obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit42:setParent(obj.layout4);
@@ -1019,14 +991,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit49:setField("ataque3h");
     obj.edit49:setName("edit49");
 
-    obj.button8 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button8:setParent(obj.layout4);
-    obj.button8:setLeft(279);
-    obj.button8:setTop(31);
-    obj.button8:setWidth(73);
-    obj.button8:setText("DANO");
-    obj.button8:setFontSize(11);
-    obj.button8:setName("button8");
+    obj.button10 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button10:setParent(obj.layout4);
+    obj.button10:setLeft(279);
+    obj.button10:setTop(31);
+    obj.button10:setWidth(73);
+    obj.button10:setText("DANO");
+    obj.button10:setFontSize(11);
+    obj.button10:setName("button10");
 
     obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit50:setParent(obj.layout4);
@@ -1038,14 +1010,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit50:setField("dano3");
     obj.edit50:setName("edit50");
 
-    obj.button9 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button9:setParent(obj.layout4);
-    obj.button9:setLeft(434);
-    obj.button9:setTop(31);
-    obj.button9:setWidth(60);
-    obj.button9:setText("CRITICO");
-    obj.button9:setFontSize(11);
-    obj.button9:setName("button9");
+    obj.button11 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button11:setParent(obj.layout4);
+    obj.button11:setLeft(434);
+    obj.button11:setTop(31);
+    obj.button11:setWidth(60);
+    obj.button11:setText("CRITICO");
+    obj.button11:setFontSize(11);
+    obj.button11:setName("button11");
 
     obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit51:setParent(obj.layout4);
@@ -1172,6 +1144,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit57:setField("alcance3");
     obj.edit57:setName("edit57");
 
+    obj.rectangle7 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle7:setParent(obj.layout4);
+    obj.rectangle7:setLeft(869);
+    obj.rectangle7:setTop(4);
+    obj.rectangle7:setWidth(332);
+    obj.rectangle7:setHeight(77);
+    obj.rectangle7:setColor("black");
+    obj.rectangle7:setStrokeColor("white");
+    obj.rectangle7:setStrokeSize(1);
+    obj.rectangle7:setName("rectangle7");
+
     obj.label30 = GUI.fromHandle(_obj_newObject("label"));
     obj.label30:setParent(obj.layout4);
     obj.label30:setLeft(870);
@@ -1193,11 +1176,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image3:setHeight(75);
     obj.image3:setName("image3");
 
+    obj.button12 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button12:setParent(obj.layout4);
+    obj.button12:setLeft(1205);
+    obj.button12:setTop(5);
+    obj.button12:setWidth(25);
+    obj.button12:setHeight(75);
+    obj.button12:setText("X");
+    obj.button12:setFontSize(15);
+    obj.button12:setHint("Apaga o ataque.");
+    obj.button12:setName("button12");
+
     obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.layout1);
     obj.layout5:setLeft(2);
     obj.layout5:setTop(288);
-    obj.layout5:setWidth(1207);
+    obj.layout5:setWidth(1232);
     obj.layout5:setHeight(92);
     obj.layout5:setName("layout5");
 
@@ -1206,17 +1200,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle8:setAlign("client");
     obj.rectangle8:setColor("black");
     obj.rectangle8:setName("rectangle8");
-
-    obj.rectangle9 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle9:setParent(obj.layout5);
-    obj.rectangle9:setLeft(869);
-    obj.rectangle9:setTop(4);
-    obj.rectangle9:setWidth(332);
-    obj.rectangle9:setHeight(77);
-    obj.rectangle9:setColor("black");
-    obj.rectangle9:setStrokeColor("white");
-    obj.rectangle9:setStrokeSize(1);
-    obj.rectangle9:setName("rectangle9");
 
     obj.label31 = GUI.fromHandle(_obj_newObject("label"));
     obj.label31:setParent(obj.layout5);
@@ -1275,14 +1258,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit60:setField("tipo4");
     obj.edit60:setName("edit60");
 
-    obj.button10 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button10:setParent(obj.layout5);
-    obj.button10:setLeft(279);
-    obj.button10:setTop(6);
-    obj.button10:setWidth(73);
-    obj.button10:setText("ATAQUE");
-    obj.button10:setFontSize(11);
-    obj.button10:setName("button10");
+    obj.button13 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button13:setParent(obj.layout5);
+    obj.button13:setLeft(279);
+    obj.button13:setTop(6);
+    obj.button13:setWidth(73);
+    obj.button13:setText("ATAQUE");
+    obj.button13:setFontSize(11);
+    obj.button13:setName("button13");
 
     obj.edit61 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit61:setParent(obj.layout5);
@@ -1372,14 +1355,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit68:setField("ataque4h");
     obj.edit68:setName("edit68");
 
-    obj.button11 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button11:setParent(obj.layout5);
-    obj.button11:setLeft(279);
-    obj.button11:setTop(31);
-    obj.button11:setWidth(73);
-    obj.button11:setText("DANO");
-    obj.button11:setFontSize(11);
-    obj.button11:setName("button11");
+    obj.button14 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button14:setParent(obj.layout5);
+    obj.button14:setLeft(279);
+    obj.button14:setTop(31);
+    obj.button14:setWidth(73);
+    obj.button14:setText("DANO");
+    obj.button14:setFontSize(11);
+    obj.button14:setName("button14");
 
     obj.edit69 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit69:setParent(obj.layout5);
@@ -1391,14 +1374,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit69:setField("dano4");
     obj.edit69:setName("edit69");
 
-    obj.button12 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button12:setParent(obj.layout5);
-    obj.button12:setLeft(434);
-    obj.button12:setTop(31);
-    obj.button12:setWidth(60);
-    obj.button12:setText("CRITICO");
-    obj.button12:setFontSize(11);
-    obj.button12:setName("button12");
+    obj.button15 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button15:setParent(obj.layout5);
+    obj.button15:setLeft(434);
+    obj.button15:setTop(31);
+    obj.button15:setWidth(60);
+    obj.button15:setText("CRITICO");
+    obj.button15:setFontSize(11);
+    obj.button15:setName("button15");
 
     obj.edit70 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit70:setParent(obj.layout5);
@@ -1525,6 +1508,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit76:setField("alcance4");
     obj.edit76:setName("edit76");
 
+    obj.rectangle9 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle9:setParent(obj.layout5);
+    obj.rectangle9:setLeft(869);
+    obj.rectangle9:setTop(4);
+    obj.rectangle9:setWidth(332);
+    obj.rectangle9:setHeight(77);
+    obj.rectangle9:setColor("black");
+    obj.rectangle9:setStrokeColor("white");
+    obj.rectangle9:setStrokeSize(1);
+    obj.rectangle9:setName("rectangle9");
+
     obj.label40 = GUI.fromHandle(_obj_newObject("label"));
     obj.label40:setParent(obj.layout5);
     obj.label40:setLeft(870);
@@ -1546,11 +1540,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image4:setHeight(75);
     obj.image4:setName("image4");
 
+    obj.button16 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button16:setParent(obj.layout5);
+    obj.button16:setLeft(1205);
+    obj.button16:setTop(5);
+    obj.button16:setWidth(25);
+    obj.button16:setHeight(75);
+    obj.button16:setText("X");
+    obj.button16:setFontSize(15);
+    obj.button16:setHint("Apaga o ataque.");
+    obj.button16:setName("button16");
+
     obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout1);
     obj.layout6:setLeft(2);
     obj.layout6:setTop(383);
-    obj.layout6:setWidth(1207);
+    obj.layout6:setWidth(1232);
     obj.layout6:setHeight(92);
     obj.layout6:setName("layout6");
 
@@ -1559,17 +1564,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle10:setAlign("client");
     obj.rectangle10:setColor("black");
     obj.rectangle10:setName("rectangle10");
-
-    obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle11:setParent(obj.layout6);
-    obj.rectangle11:setLeft(869);
-    obj.rectangle11:setTop(4);
-    obj.rectangle11:setWidth(332);
-    obj.rectangle11:setHeight(77);
-    obj.rectangle11:setColor("black");
-    obj.rectangle11:setStrokeColor("white");
-    obj.rectangle11:setStrokeSize(1);
-    obj.rectangle11:setName("rectangle11");
 
     obj.label41 = GUI.fromHandle(_obj_newObject("label"));
     obj.label41:setParent(obj.layout6);
@@ -1628,14 +1622,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit79:setField("tipo5");
     obj.edit79:setName("edit79");
 
-    obj.button13 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button13:setParent(obj.layout6);
-    obj.button13:setLeft(279);
-    obj.button13:setTop(6);
-    obj.button13:setWidth(73);
-    obj.button13:setText("ATAQUE");
-    obj.button13:setFontSize(11);
-    obj.button13:setName("button13");
+    obj.button17 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button17:setParent(obj.layout6);
+    obj.button17:setLeft(279);
+    obj.button17:setTop(6);
+    obj.button17:setWidth(73);
+    obj.button17:setText("ATAQUE");
+    obj.button17:setFontSize(11);
+    obj.button17:setName("button17");
 
     obj.edit80 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit80:setParent(obj.layout6);
@@ -1725,14 +1719,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit87:setField("ataque5h");
     obj.edit87:setName("edit87");
 
-    obj.button14 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button14:setParent(obj.layout6);
-    obj.button14:setLeft(279);
-    obj.button14:setTop(31);
-    obj.button14:setWidth(73);
-    obj.button14:setText("DANO");
-    obj.button14:setFontSize(11);
-    obj.button14:setName("button14");
+    obj.button18 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button18:setParent(obj.layout6);
+    obj.button18:setLeft(279);
+    obj.button18:setTop(31);
+    obj.button18:setWidth(73);
+    obj.button18:setText("DANO");
+    obj.button18:setFontSize(11);
+    obj.button18:setName("button18");
 
     obj.edit88 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit88:setParent(obj.layout6);
@@ -1744,14 +1738,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit88:setField("dano5");
     obj.edit88:setName("edit88");
 
-    obj.button15 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button15:setParent(obj.layout6);
-    obj.button15:setLeft(434);
-    obj.button15:setTop(31);
-    obj.button15:setWidth(60);
-    obj.button15:setText("CRITICO");
-    obj.button15:setFontSize(11);
-    obj.button15:setName("button15");
+    obj.button19 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button19:setParent(obj.layout6);
+    obj.button19:setLeft(434);
+    obj.button19:setTop(31);
+    obj.button19:setWidth(60);
+    obj.button19:setText("CRITICO");
+    obj.button19:setFontSize(11);
+    obj.button19:setName("button19");
 
     obj.edit89 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit89:setParent(obj.layout6);
@@ -1878,6 +1872,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit95:setField("alcance5");
     obj.edit95:setName("edit95");
 
+    obj.rectangle11 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle11:setParent(obj.layout6);
+    obj.rectangle11:setLeft(869);
+    obj.rectangle11:setTop(4);
+    obj.rectangle11:setWidth(332);
+    obj.rectangle11:setHeight(77);
+    obj.rectangle11:setColor("black");
+    obj.rectangle11:setStrokeColor("white");
+    obj.rectangle11:setStrokeSize(1);
+    obj.rectangle11:setName("rectangle11");
+
     obj.label50 = GUI.fromHandle(_obj_newObject("label"));
     obj.label50:setParent(obj.layout6);
     obj.label50:setLeft(870);
@@ -1899,11 +1904,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image5:setHeight(75);
     obj.image5:setName("image5");
 
+    obj.button20 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button20:setParent(obj.layout6);
+    obj.button20:setLeft(1205);
+    obj.button20:setTop(5);
+    obj.button20:setWidth(25);
+    obj.button20:setHeight(75);
+    obj.button20:setText("X");
+    obj.button20:setFontSize(15);
+    obj.button20:setHint("Apaga o ataque.");
+    obj.button20:setName("button20");
+
     obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.layout1);
     obj.layout7:setLeft(2);
     obj.layout7:setTop(478);
-    obj.layout7:setWidth(1207);
+    obj.layout7:setWidth(1232);
     obj.layout7:setHeight(92);
     obj.layout7:setName("layout7");
 
@@ -1912,17 +1928,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle12:setAlign("client");
     obj.rectangle12:setColor("black");
     obj.rectangle12:setName("rectangle12");
-
-    obj.rectangle13 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle13:setParent(obj.layout7);
-    obj.rectangle13:setLeft(869);
-    obj.rectangle13:setTop(4);
-    obj.rectangle13:setWidth(332);
-    obj.rectangle13:setHeight(77);
-    obj.rectangle13:setColor("black");
-    obj.rectangle13:setStrokeColor("white");
-    obj.rectangle13:setStrokeSize(1);
-    obj.rectangle13:setName("rectangle13");
 
     obj.label51 = GUI.fromHandle(_obj_newObject("label"));
     obj.label51:setParent(obj.layout7);
@@ -1981,14 +1986,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit98:setField("tipo6");
     obj.edit98:setName("edit98");
 
-    obj.button16 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button16:setParent(obj.layout7);
-    obj.button16:setLeft(279);
-    obj.button16:setTop(6);
-    obj.button16:setWidth(73);
-    obj.button16:setText("ATAQUE");
-    obj.button16:setFontSize(11);
-    obj.button16:setName("button16");
+    obj.button21 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button21:setParent(obj.layout7);
+    obj.button21:setLeft(279);
+    obj.button21:setTop(6);
+    obj.button21:setWidth(73);
+    obj.button21:setText("ATAQUE");
+    obj.button21:setFontSize(11);
+    obj.button21:setName("button21");
 
     obj.edit99 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit99:setParent(obj.layout7);
@@ -2078,14 +2083,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit106:setField("ataque6h");
     obj.edit106:setName("edit106");
 
-    obj.button17 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button17:setParent(obj.layout7);
-    obj.button17:setLeft(279);
-    obj.button17:setTop(31);
-    obj.button17:setWidth(73);
-    obj.button17:setText("DANO");
-    obj.button17:setFontSize(11);
-    obj.button17:setName("button17");
+    obj.button22 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button22:setParent(obj.layout7);
+    obj.button22:setLeft(279);
+    obj.button22:setTop(31);
+    obj.button22:setWidth(73);
+    obj.button22:setText("DANO");
+    obj.button22:setFontSize(11);
+    obj.button22:setName("button22");
 
     obj.edit107 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit107:setParent(obj.layout7);
@@ -2097,14 +2102,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit107:setField("dano6");
     obj.edit107:setName("edit107");
 
-    obj.button18 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button18:setParent(obj.layout7);
-    obj.button18:setLeft(434);
-    obj.button18:setTop(31);
-    obj.button18:setWidth(60);
-    obj.button18:setText("CRITICO");
-    obj.button18:setFontSize(11);
-    obj.button18:setName("button18");
+    obj.button23 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button23:setParent(obj.layout7);
+    obj.button23:setLeft(434);
+    obj.button23:setTop(31);
+    obj.button23:setWidth(60);
+    obj.button23:setText("CRITICO");
+    obj.button23:setFontSize(11);
+    obj.button23:setName("button23");
 
     obj.edit108 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit108:setParent(obj.layout7);
@@ -2231,6 +2236,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit114:setField("alcance6");
     obj.edit114:setName("edit114");
 
+    obj.rectangle13 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle13:setParent(obj.layout7);
+    obj.rectangle13:setLeft(869);
+    obj.rectangle13:setTop(4);
+    obj.rectangle13:setWidth(332);
+    obj.rectangle13:setHeight(77);
+    obj.rectangle13:setColor("black");
+    obj.rectangle13:setStrokeColor("white");
+    obj.rectangle13:setStrokeSize(1);
+    obj.rectangle13:setName("rectangle13");
+
     obj.label60 = GUI.fromHandle(_obj_newObject("label"));
     obj.label60:setParent(obj.layout7);
     obj.label60:setLeft(870);
@@ -2252,11 +2268,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image6:setHeight(75);
     obj.image6:setName("image6");
 
+    obj.button24 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button24:setParent(obj.layout7);
+    obj.button24:setLeft(1205);
+    obj.button24:setTop(5);
+    obj.button24:setWidth(25);
+    obj.button24:setHeight(75);
+    obj.button24:setText("X");
+    obj.button24:setFontSize(15);
+    obj.button24:setHint("Apaga o ataque.");
+    obj.button24:setName("button24");
+
     obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.layout1);
     obj.layout8:setLeft(2);
     obj.layout8:setTop(573);
-    obj.layout8:setWidth(1207);
+    obj.layout8:setWidth(1232);
     obj.layout8:setHeight(92);
     obj.layout8:setName("layout8");
 
@@ -2265,17 +2292,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle14:setAlign("client");
     obj.rectangle14:setColor("black");
     obj.rectangle14:setName("rectangle14");
-
-    obj.rectangle15 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle15:setParent(obj.layout8);
-    obj.rectangle15:setLeft(869);
-    obj.rectangle15:setTop(4);
-    obj.rectangle15:setWidth(332);
-    obj.rectangle15:setHeight(77);
-    obj.rectangle15:setColor("black");
-    obj.rectangle15:setStrokeColor("white");
-    obj.rectangle15:setStrokeSize(1);
-    obj.rectangle15:setName("rectangle15");
 
     obj.label61 = GUI.fromHandle(_obj_newObject("label"));
     obj.label61:setParent(obj.layout8);
@@ -2334,14 +2350,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit117:setField("tipo7");
     obj.edit117:setName("edit117");
 
-    obj.button19 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button19:setParent(obj.layout8);
-    obj.button19:setLeft(279);
-    obj.button19:setTop(6);
-    obj.button19:setWidth(73);
-    obj.button19:setText("ATAQUE");
-    obj.button19:setFontSize(11);
-    obj.button19:setName("button19");
+    obj.button25 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button25:setParent(obj.layout8);
+    obj.button25:setLeft(279);
+    obj.button25:setTop(6);
+    obj.button25:setWidth(73);
+    obj.button25:setText("ATAQUE");
+    obj.button25:setFontSize(11);
+    obj.button25:setName("button25");
 
     obj.edit118 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit118:setParent(obj.layout8);
@@ -2431,14 +2447,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit125:setField("ataque7h");
     obj.edit125:setName("edit125");
 
-    obj.button20 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button20:setParent(obj.layout8);
-    obj.button20:setLeft(279);
-    obj.button20:setTop(31);
-    obj.button20:setWidth(73);
-    obj.button20:setText("DANO");
-    obj.button20:setFontSize(11);
-    obj.button20:setName("button20");
+    obj.button26 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button26:setParent(obj.layout8);
+    obj.button26:setLeft(279);
+    obj.button26:setTop(31);
+    obj.button26:setWidth(73);
+    obj.button26:setText("DANO");
+    obj.button26:setFontSize(11);
+    obj.button26:setName("button26");
 
     obj.edit126 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit126:setParent(obj.layout8);
@@ -2450,14 +2466,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit126:setField("dano7");
     obj.edit126:setName("edit126");
 
-    obj.button21 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button21:setParent(obj.layout8);
-    obj.button21:setLeft(434);
-    obj.button21:setTop(31);
-    obj.button21:setWidth(60);
-    obj.button21:setText("CRITICO");
-    obj.button21:setFontSize(11);
-    obj.button21:setName("button21");
+    obj.button27 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button27:setParent(obj.layout8);
+    obj.button27:setLeft(434);
+    obj.button27:setTop(31);
+    obj.button27:setWidth(60);
+    obj.button27:setText("CRITICO");
+    obj.button27:setFontSize(11);
+    obj.button27:setName("button27");
 
     obj.edit127 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit127:setParent(obj.layout8);
@@ -2584,6 +2600,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit133:setField("alcance7");
     obj.edit133:setName("edit133");
 
+    obj.rectangle15 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle15:setParent(obj.layout8);
+    obj.rectangle15:setLeft(869);
+    obj.rectangle15:setTop(4);
+    obj.rectangle15:setWidth(332);
+    obj.rectangle15:setHeight(77);
+    obj.rectangle15:setColor("black");
+    obj.rectangle15:setStrokeColor("white");
+    obj.rectangle15:setStrokeSize(1);
+    obj.rectangle15:setName("rectangle15");
+
     obj.label70 = GUI.fromHandle(_obj_newObject("label"));
     obj.label70:setParent(obj.layout8);
     obj.label70:setLeft(870);
@@ -2605,11 +2632,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image7:setHeight(75);
     obj.image7:setName("image7");
 
+    obj.button28 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button28:setParent(obj.layout8);
+    obj.button28:setLeft(1205);
+    obj.button28:setTop(5);
+    obj.button28:setWidth(25);
+    obj.button28:setHeight(75);
+    obj.button28:setText("X");
+    obj.button28:setFontSize(15);
+    obj.button28:setHint("Apaga o ataque.");
+    obj.button28:setName("button28");
+
     obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.layout1);
     obj.layout9:setLeft(2);
     obj.layout9:setTop(668);
-    obj.layout9:setWidth(1207);
+    obj.layout9:setWidth(1232);
     obj.layout9:setHeight(92);
     obj.layout9:setName("layout9");
 
@@ -2618,17 +2656,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle16:setAlign("client");
     obj.rectangle16:setColor("black");
     obj.rectangle16:setName("rectangle16");
-
-    obj.rectangle17 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle17:setParent(obj.layout9);
-    obj.rectangle17:setLeft(869);
-    obj.rectangle17:setTop(4);
-    obj.rectangle17:setWidth(332);
-    obj.rectangle17:setHeight(77);
-    obj.rectangle17:setColor("black");
-    obj.rectangle17:setStrokeColor("white");
-    obj.rectangle17:setStrokeSize(1);
-    obj.rectangle17:setName("rectangle17");
 
     obj.label71 = GUI.fromHandle(_obj_newObject("label"));
     obj.label71:setParent(obj.layout9);
@@ -2687,14 +2714,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit136:setField("tipo8");
     obj.edit136:setName("edit136");
 
-    obj.button22 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button22:setParent(obj.layout9);
-    obj.button22:setLeft(279);
-    obj.button22:setTop(6);
-    obj.button22:setWidth(73);
-    obj.button22:setText("ATAQUE");
-    obj.button22:setFontSize(11);
-    obj.button22:setName("button22");
+    obj.button29 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button29:setParent(obj.layout9);
+    obj.button29:setLeft(279);
+    obj.button29:setTop(6);
+    obj.button29:setWidth(73);
+    obj.button29:setText("ATAQUE");
+    obj.button29:setFontSize(11);
+    obj.button29:setName("button29");
 
     obj.edit137 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit137:setParent(obj.layout9);
@@ -2784,14 +2811,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit144:setField("ataque8h");
     obj.edit144:setName("edit144");
 
-    obj.button23 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button23:setParent(obj.layout9);
-    obj.button23:setLeft(279);
-    obj.button23:setTop(31);
-    obj.button23:setWidth(73);
-    obj.button23:setText("DANO");
-    obj.button23:setFontSize(11);
-    obj.button23:setName("button23");
+    obj.button30 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button30:setParent(obj.layout9);
+    obj.button30:setLeft(279);
+    obj.button30:setTop(31);
+    obj.button30:setWidth(73);
+    obj.button30:setText("DANO");
+    obj.button30:setFontSize(11);
+    obj.button30:setName("button30");
 
     obj.edit145 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit145:setParent(obj.layout9);
@@ -2803,14 +2830,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit145:setField("dano8");
     obj.edit145:setName("edit145");
 
-    obj.button24 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button24:setParent(obj.layout9);
-    obj.button24:setLeft(434);
-    obj.button24:setTop(31);
-    obj.button24:setWidth(60);
-    obj.button24:setText("CRITICO");
-    obj.button24:setFontSize(11);
-    obj.button24:setName("button24");
+    obj.button31 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button31:setParent(obj.layout9);
+    obj.button31:setLeft(434);
+    obj.button31:setTop(31);
+    obj.button31:setWidth(60);
+    obj.button31:setText("CRITICO");
+    obj.button31:setFontSize(11);
+    obj.button31:setName("button31");
 
     obj.edit146 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit146:setParent(obj.layout9);
@@ -2937,6 +2964,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit152:setField("alcance8");
     obj.edit152:setName("edit152");
 
+    obj.rectangle17 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle17:setParent(obj.layout9);
+    obj.rectangle17:setLeft(869);
+    obj.rectangle17:setTop(4);
+    obj.rectangle17:setWidth(332);
+    obj.rectangle17:setHeight(77);
+    obj.rectangle17:setColor("black");
+    obj.rectangle17:setStrokeColor("white");
+    obj.rectangle17:setStrokeSize(1);
+    obj.rectangle17:setName("rectangle17");
+
     obj.label80 = GUI.fromHandle(_obj_newObject("label"));
     obj.label80:setParent(obj.layout9);
     obj.label80:setLeft(870);
@@ -2958,11 +2996,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image8:setHeight(75);
     obj.image8:setName("image8");
 
+    obj.button32 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button32:setParent(obj.layout9);
+    obj.button32:setLeft(1205);
+    obj.button32:setTop(5);
+    obj.button32:setWidth(25);
+    obj.button32:setHeight(75);
+    obj.button32:setText("X");
+    obj.button32:setFontSize(15);
+    obj.button32:setHint("Apaga o ataque.");
+    obj.button32:setName("button32");
+
     obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.layout1);
     obj.layout10:setLeft(2);
     obj.layout10:setTop(763);
-    obj.layout10:setWidth(1207);
+    obj.layout10:setWidth(1232);
     obj.layout10:setHeight(92);
     obj.layout10:setName("layout10");
 
@@ -2971,17 +3020,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle18:setAlign("client");
     obj.rectangle18:setColor("black");
     obj.rectangle18:setName("rectangle18");
-
-    obj.rectangle19 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle19:setParent(obj.layout10);
-    obj.rectangle19:setLeft(869);
-    obj.rectangle19:setTop(4);
-    obj.rectangle19:setWidth(332);
-    obj.rectangle19:setHeight(77);
-    obj.rectangle19:setColor("black");
-    obj.rectangle19:setStrokeColor("white");
-    obj.rectangle19:setStrokeSize(1);
-    obj.rectangle19:setName("rectangle19");
 
     obj.label81 = GUI.fromHandle(_obj_newObject("label"));
     obj.label81:setParent(obj.layout10);
@@ -3040,14 +3078,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit155:setField("tipo9");
     obj.edit155:setName("edit155");
 
-    obj.button25 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button25:setParent(obj.layout10);
-    obj.button25:setLeft(279);
-    obj.button25:setTop(6);
-    obj.button25:setWidth(73);
-    obj.button25:setText("ATAQUE");
-    obj.button25:setFontSize(11);
-    obj.button25:setName("button25");
+    obj.button33 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button33:setParent(obj.layout10);
+    obj.button33:setLeft(279);
+    obj.button33:setTop(6);
+    obj.button33:setWidth(73);
+    obj.button33:setText("ATAQUE");
+    obj.button33:setFontSize(11);
+    obj.button33:setName("button33");
 
     obj.edit156 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit156:setParent(obj.layout10);
@@ -3137,14 +3175,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit163:setField("ataque9h");
     obj.edit163:setName("edit163");
 
-    obj.button26 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button26:setParent(obj.layout10);
-    obj.button26:setLeft(279);
-    obj.button26:setTop(31);
-    obj.button26:setWidth(73);
-    obj.button26:setText("DANO");
-    obj.button26:setFontSize(11);
-    obj.button26:setName("button26");
+    obj.button34 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button34:setParent(obj.layout10);
+    obj.button34:setLeft(279);
+    obj.button34:setTop(31);
+    obj.button34:setWidth(73);
+    obj.button34:setText("DANO");
+    obj.button34:setFontSize(11);
+    obj.button34:setName("button34");
 
     obj.edit164 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit164:setParent(obj.layout10);
@@ -3156,14 +3194,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit164:setField("dano9");
     obj.edit164:setName("edit164");
 
-    obj.button27 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button27:setParent(obj.layout10);
-    obj.button27:setLeft(434);
-    obj.button27:setTop(31);
-    obj.button27:setWidth(60);
-    obj.button27:setText("CRITICO");
-    obj.button27:setFontSize(11);
-    obj.button27:setName("button27");
+    obj.button35 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button35:setParent(obj.layout10);
+    obj.button35:setLeft(434);
+    obj.button35:setTop(31);
+    obj.button35:setWidth(60);
+    obj.button35:setText("CRITICO");
+    obj.button35:setFontSize(11);
+    obj.button35:setName("button35");
 
     obj.edit165 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit165:setParent(obj.layout10);
@@ -3290,6 +3328,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit171:setField("alcance9");
     obj.edit171:setName("edit171");
 
+    obj.rectangle19 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle19:setParent(obj.layout10);
+    obj.rectangle19:setLeft(869);
+    obj.rectangle19:setTop(4);
+    obj.rectangle19:setWidth(332);
+    obj.rectangle19:setHeight(77);
+    obj.rectangle19:setColor("black");
+    obj.rectangle19:setStrokeColor("white");
+    obj.rectangle19:setStrokeSize(1);
+    obj.rectangle19:setName("rectangle19");
+
     obj.label90 = GUI.fromHandle(_obj_newObject("label"));
     obj.label90:setParent(obj.layout10);
     obj.label90:setLeft(870);
@@ -3311,11 +3360,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image9:setHeight(75);
     obj.image9:setName("image9");
 
+    obj.button36 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button36:setParent(obj.layout10);
+    obj.button36:setLeft(1205);
+    obj.button36:setTop(5);
+    obj.button36:setWidth(25);
+    obj.button36:setHeight(75);
+    obj.button36:setText("X");
+    obj.button36:setFontSize(15);
+    obj.button36:setHint("Apaga o ataque.");
+    obj.button36:setName("button36");
+
     obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.layout1);
     obj.layout11:setLeft(2);
     obj.layout11:setTop(858);
-    obj.layout11:setWidth(1207);
+    obj.layout11:setWidth(1232);
     obj.layout11:setHeight(92);
     obj.layout11:setName("layout11");
 
@@ -3324,17 +3384,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle20:setAlign("client");
     obj.rectangle20:setColor("black");
     obj.rectangle20:setName("rectangle20");
-
-    obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle21:setParent(obj.layout11);
-    obj.rectangle21:setLeft(869);
-    obj.rectangle21:setTop(4);
-    obj.rectangle21:setWidth(332);
-    obj.rectangle21:setHeight(77);
-    obj.rectangle21:setColor("black");
-    obj.rectangle21:setStrokeColor("white");
-    obj.rectangle21:setStrokeSize(1);
-    obj.rectangle21:setName("rectangle21");
 
     obj.label91 = GUI.fromHandle(_obj_newObject("label"));
     obj.label91:setParent(obj.layout11);
@@ -3393,14 +3442,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit174:setField("tipo10");
     obj.edit174:setName("edit174");
 
-    obj.button28 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button28:setParent(obj.layout11);
-    obj.button28:setLeft(279);
-    obj.button28:setTop(6);
-    obj.button28:setWidth(73);
-    obj.button28:setText("ATAQUE");
-    obj.button28:setFontSize(11);
-    obj.button28:setName("button28");
+    obj.button37 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button37:setParent(obj.layout11);
+    obj.button37:setLeft(279);
+    obj.button37:setTop(6);
+    obj.button37:setWidth(73);
+    obj.button37:setText("ATAQUE");
+    obj.button37:setFontSize(11);
+    obj.button37:setName("button37");
 
     obj.edit175 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit175:setParent(obj.layout11);
@@ -3490,14 +3539,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit182:setField("ataque10h");
     obj.edit182:setName("edit182");
 
-    obj.button29 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button29:setParent(obj.layout11);
-    obj.button29:setLeft(279);
-    obj.button29:setTop(31);
-    obj.button29:setWidth(73);
-    obj.button29:setText("DANO");
-    obj.button29:setFontSize(11);
-    obj.button29:setName("button29");
+    obj.button38 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button38:setParent(obj.layout11);
+    obj.button38:setLeft(279);
+    obj.button38:setTop(31);
+    obj.button38:setWidth(73);
+    obj.button38:setText("DANO");
+    obj.button38:setFontSize(11);
+    obj.button38:setName("button38");
 
     obj.edit183 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit183:setParent(obj.layout11);
@@ -3509,14 +3558,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit183:setField("dano10");
     obj.edit183:setName("edit183");
 
-    obj.button30 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button30:setParent(obj.layout11);
-    obj.button30:setLeft(434);
-    obj.button30:setTop(31);
-    obj.button30:setWidth(60);
-    obj.button30:setText("CRITICO");
-    obj.button30:setFontSize(11);
-    obj.button30:setName("button30");
+    obj.button39 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button39:setParent(obj.layout11);
+    obj.button39:setLeft(434);
+    obj.button39:setTop(31);
+    obj.button39:setWidth(60);
+    obj.button39:setText("CRITICO");
+    obj.button39:setFontSize(11);
+    obj.button39:setName("button39");
 
     obj.edit184 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit184:setParent(obj.layout11);
@@ -3643,6 +3692,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit190:setField("alcance10");
     obj.edit190:setName("edit190");
 
+    obj.rectangle21 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle21:setParent(obj.layout11);
+    obj.rectangle21:setLeft(869);
+    obj.rectangle21:setTop(4);
+    obj.rectangle21:setWidth(332);
+    obj.rectangle21:setHeight(77);
+    obj.rectangle21:setColor("black");
+    obj.rectangle21:setStrokeColor("white");
+    obj.rectangle21:setStrokeSize(1);
+    obj.rectangle21:setName("rectangle21");
+
     obj.label100 = GUI.fromHandle(_obj_newObject("label"));
     obj.label100:setParent(obj.layout11);
     obj.label100:setLeft(870);
@@ -3664,11 +3724,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image10:setHeight(75);
     obj.image10:setName("image10");
 
+    obj.button40 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button40:setParent(obj.layout11);
+    obj.button40:setLeft(1205);
+    obj.button40:setTop(5);
+    obj.button40:setWidth(25);
+    obj.button40:setHeight(75);
+    obj.button40:setText("X");
+    obj.button40:setFontSize(15);
+    obj.button40:setHint("Apaga o ataque.");
+    obj.button40:setName("button40");
+
     obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.layout1);
     obj.layout12:setLeft(2);
     obj.layout12:setTop(953);
-    obj.layout12:setWidth(1207);
+    obj.layout12:setWidth(1232);
     obj.layout12:setHeight(92);
     obj.layout12:setName("layout12");
 
@@ -3677,17 +3748,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle22:setAlign("client");
     obj.rectangle22:setColor("black");
     obj.rectangle22:setName("rectangle22");
-
-    obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle23:setParent(obj.layout12);
-    obj.rectangle23:setLeft(869);
-    obj.rectangle23:setTop(4);
-    obj.rectangle23:setWidth(332);
-    obj.rectangle23:setHeight(77);
-    obj.rectangle23:setColor("black");
-    obj.rectangle23:setStrokeColor("white");
-    obj.rectangle23:setStrokeSize(1);
-    obj.rectangle23:setName("rectangle23");
 
     obj.label101 = GUI.fromHandle(_obj_newObject("label"));
     obj.label101:setParent(obj.layout12);
@@ -3746,14 +3806,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit193:setField("tipo11");
     obj.edit193:setName("edit193");
 
-    obj.button31 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button31:setParent(obj.layout12);
-    obj.button31:setLeft(279);
-    obj.button31:setTop(6);
-    obj.button31:setWidth(73);
-    obj.button31:setText("ATAQUE");
-    obj.button31:setFontSize(11);
-    obj.button31:setName("button31");
+    obj.button41 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button41:setParent(obj.layout12);
+    obj.button41:setLeft(279);
+    obj.button41:setTop(6);
+    obj.button41:setWidth(73);
+    obj.button41:setText("ATAQUE");
+    obj.button41:setFontSize(11);
+    obj.button41:setName("button41");
 
     obj.edit194 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit194:setParent(obj.layout12);
@@ -3843,14 +3903,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit201:setField("ataque11h");
     obj.edit201:setName("edit201");
 
-    obj.button32 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button32:setParent(obj.layout12);
-    obj.button32:setLeft(279);
-    obj.button32:setTop(31);
-    obj.button32:setWidth(73);
-    obj.button32:setText("DANO");
-    obj.button32:setFontSize(11);
-    obj.button32:setName("button32");
+    obj.button42 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button42:setParent(obj.layout12);
+    obj.button42:setLeft(279);
+    obj.button42:setTop(31);
+    obj.button42:setWidth(73);
+    obj.button42:setText("DANO");
+    obj.button42:setFontSize(11);
+    obj.button42:setName("button42");
 
     obj.edit202 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit202:setParent(obj.layout12);
@@ -3862,14 +3922,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit202:setField("dano11");
     obj.edit202:setName("edit202");
 
-    obj.button33 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button33:setParent(obj.layout12);
-    obj.button33:setLeft(434);
-    obj.button33:setTop(31);
-    obj.button33:setWidth(60);
-    obj.button33:setText("CRITICO");
-    obj.button33:setFontSize(11);
-    obj.button33:setName("button33");
+    obj.button43 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button43:setParent(obj.layout12);
+    obj.button43:setLeft(434);
+    obj.button43:setTop(31);
+    obj.button43:setWidth(60);
+    obj.button43:setText("CRITICO");
+    obj.button43:setFontSize(11);
+    obj.button43:setName("button43");
 
     obj.edit203 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit203:setParent(obj.layout12);
@@ -3996,6 +4056,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit209:setField("alcance11");
     obj.edit209:setName("edit209");
 
+    obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle23:setParent(obj.layout12);
+    obj.rectangle23:setLeft(869);
+    obj.rectangle23:setTop(4);
+    obj.rectangle23:setWidth(332);
+    obj.rectangle23:setHeight(77);
+    obj.rectangle23:setColor("black");
+    obj.rectangle23:setStrokeColor("white");
+    obj.rectangle23:setStrokeSize(1);
+    obj.rectangle23:setName("rectangle23");
+
     obj.label110 = GUI.fromHandle(_obj_newObject("label"));
     obj.label110:setParent(obj.layout12);
     obj.label110:setLeft(870);
@@ -4017,11 +4088,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image11:setHeight(75);
     obj.image11:setName("image11");
 
+    obj.button44 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button44:setParent(obj.layout12);
+    obj.button44:setLeft(1205);
+    obj.button44:setTop(5);
+    obj.button44:setWidth(25);
+    obj.button44:setHeight(75);
+    obj.button44:setText("X");
+    obj.button44:setFontSize(15);
+    obj.button44:setHint("Apaga o ataque.");
+    obj.button44:setName("button44");
+
     obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.layout1);
     obj.layout13:setLeft(2);
     obj.layout13:setTop(1048);
-    obj.layout13:setWidth(1207);
+    obj.layout13:setWidth(1232);
     obj.layout13:setHeight(92);
     obj.layout13:setName("layout13");
 
@@ -4030,17 +4112,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle24:setAlign("client");
     obj.rectangle24:setColor("black");
     obj.rectangle24:setName("rectangle24");
-
-    obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle25:setParent(obj.layout13);
-    obj.rectangle25:setLeft(869);
-    obj.rectangle25:setTop(4);
-    obj.rectangle25:setWidth(332);
-    obj.rectangle25:setHeight(77);
-    obj.rectangle25:setColor("black");
-    obj.rectangle25:setStrokeColor("white");
-    obj.rectangle25:setStrokeSize(1);
-    obj.rectangle25:setName("rectangle25");
 
     obj.label111 = GUI.fromHandle(_obj_newObject("label"));
     obj.label111:setParent(obj.layout13);
@@ -4099,14 +4170,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit212:setField("tipo12");
     obj.edit212:setName("edit212");
 
-    obj.button34 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button34:setParent(obj.layout13);
-    obj.button34:setLeft(279);
-    obj.button34:setTop(6);
-    obj.button34:setWidth(73);
-    obj.button34:setText("ATAQUE");
-    obj.button34:setFontSize(11);
-    obj.button34:setName("button34");
+    obj.button45 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button45:setParent(obj.layout13);
+    obj.button45:setLeft(279);
+    obj.button45:setTop(6);
+    obj.button45:setWidth(73);
+    obj.button45:setText("ATAQUE");
+    obj.button45:setFontSize(11);
+    obj.button45:setName("button45");
 
     obj.edit213 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit213:setParent(obj.layout13);
@@ -4196,14 +4267,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit220:setField("ataque12h");
     obj.edit220:setName("edit220");
 
-    obj.button35 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button35:setParent(obj.layout13);
-    obj.button35:setLeft(279);
-    obj.button35:setTop(31);
-    obj.button35:setWidth(73);
-    obj.button35:setText("DANO");
-    obj.button35:setFontSize(11);
-    obj.button35:setName("button35");
+    obj.button46 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button46:setParent(obj.layout13);
+    obj.button46:setLeft(279);
+    obj.button46:setTop(31);
+    obj.button46:setWidth(73);
+    obj.button46:setText("DANO");
+    obj.button46:setFontSize(11);
+    obj.button46:setName("button46");
 
     obj.edit221 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit221:setParent(obj.layout13);
@@ -4215,14 +4286,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit221:setField("dano12");
     obj.edit221:setName("edit221");
 
-    obj.button36 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button36:setParent(obj.layout13);
-    obj.button36:setLeft(434);
-    obj.button36:setTop(31);
-    obj.button36:setWidth(60);
-    obj.button36:setText("CRITICO");
-    obj.button36:setFontSize(11);
-    obj.button36:setName("button36");
+    obj.button47 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button47:setParent(obj.layout13);
+    obj.button47:setLeft(434);
+    obj.button47:setTop(31);
+    obj.button47:setWidth(60);
+    obj.button47:setText("CRITICO");
+    obj.button47:setFontSize(11);
+    obj.button47:setName("button47");
 
     obj.edit222 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit222:setParent(obj.layout13);
@@ -4349,6 +4420,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit228:setField("alcance12");
     obj.edit228:setName("edit228");
 
+    obj.rectangle25 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle25:setParent(obj.layout13);
+    obj.rectangle25:setLeft(869);
+    obj.rectangle25:setTop(4);
+    obj.rectangle25:setWidth(332);
+    obj.rectangle25:setHeight(77);
+    obj.rectangle25:setColor("black");
+    obj.rectangle25:setStrokeColor("white");
+    obj.rectangle25:setStrokeSize(1);
+    obj.rectangle25:setName("rectangle25");
+
     obj.label120 = GUI.fromHandle(_obj_newObject("label"));
     obj.label120:setParent(obj.layout13);
     obj.label120:setLeft(870);
@@ -4370,11 +4452,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image12:setHeight(75);
     obj.image12:setName("image12");
 
+    obj.button48 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button48:setParent(obj.layout13);
+    obj.button48:setLeft(1205);
+    obj.button48:setTop(5);
+    obj.button48:setWidth(25);
+    obj.button48:setHeight(75);
+    obj.button48:setText("X");
+    obj.button48:setFontSize(15);
+    obj.button48:setHint("Apaga o ataque.");
+    obj.button48:setName("button48");
+
     obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.layout1);
     obj.layout14:setLeft(2);
     obj.layout14:setTop(1143);
-    obj.layout14:setWidth(1207);
+    obj.layout14:setWidth(1232);
     obj.layout14:setHeight(92);
     obj.layout14:setName("layout14");
 
@@ -4383,17 +4476,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle26:setAlign("client");
     obj.rectangle26:setColor("black");
     obj.rectangle26:setName("rectangle26");
-
-    obj.rectangle27 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle27:setParent(obj.layout14);
-    obj.rectangle27:setLeft(869);
-    obj.rectangle27:setTop(4);
-    obj.rectangle27:setWidth(332);
-    obj.rectangle27:setHeight(77);
-    obj.rectangle27:setColor("black");
-    obj.rectangle27:setStrokeColor("white");
-    obj.rectangle27:setStrokeSize(1);
-    obj.rectangle27:setName("rectangle27");
 
     obj.label121 = GUI.fromHandle(_obj_newObject("label"));
     obj.label121:setParent(obj.layout14);
@@ -4452,14 +4534,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit231:setField("tipo13");
     obj.edit231:setName("edit231");
 
-    obj.button37 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button37:setParent(obj.layout14);
-    obj.button37:setLeft(279);
-    obj.button37:setTop(6);
-    obj.button37:setWidth(73);
-    obj.button37:setText("ATAQUE");
-    obj.button37:setFontSize(11);
-    obj.button37:setName("button37");
+    obj.button49 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button49:setParent(obj.layout14);
+    obj.button49:setLeft(279);
+    obj.button49:setTop(6);
+    obj.button49:setWidth(73);
+    obj.button49:setText("ATAQUE");
+    obj.button49:setFontSize(11);
+    obj.button49:setName("button49");
 
     obj.edit232 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit232:setParent(obj.layout14);
@@ -4549,14 +4631,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit239:setField("ataque13h");
     obj.edit239:setName("edit239");
 
-    obj.button38 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button38:setParent(obj.layout14);
-    obj.button38:setLeft(279);
-    obj.button38:setTop(31);
-    obj.button38:setWidth(73);
-    obj.button38:setText("DANO");
-    obj.button38:setFontSize(11);
-    obj.button38:setName("button38");
+    obj.button50 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button50:setParent(obj.layout14);
+    obj.button50:setLeft(279);
+    obj.button50:setTop(31);
+    obj.button50:setWidth(73);
+    obj.button50:setText("DANO");
+    obj.button50:setFontSize(11);
+    obj.button50:setName("button50");
 
     obj.edit240 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit240:setParent(obj.layout14);
@@ -4568,14 +4650,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit240:setField("dano13");
     obj.edit240:setName("edit240");
 
-    obj.button39 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button39:setParent(obj.layout14);
-    obj.button39:setLeft(434);
-    obj.button39:setTop(31);
-    obj.button39:setWidth(60);
-    obj.button39:setText("CRITICO");
-    obj.button39:setFontSize(11);
-    obj.button39:setName("button39");
+    obj.button51 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button51:setParent(obj.layout14);
+    obj.button51:setLeft(434);
+    obj.button51:setTop(31);
+    obj.button51:setWidth(60);
+    obj.button51:setText("CRITICO");
+    obj.button51:setFontSize(11);
+    obj.button51:setName("button51");
 
     obj.edit241 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit241:setParent(obj.layout14);
@@ -4702,6 +4784,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit247:setField("alcance13");
     obj.edit247:setName("edit247");
 
+    obj.rectangle27 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle27:setParent(obj.layout14);
+    obj.rectangle27:setLeft(869);
+    obj.rectangle27:setTop(4);
+    obj.rectangle27:setWidth(332);
+    obj.rectangle27:setHeight(77);
+    obj.rectangle27:setColor("black");
+    obj.rectangle27:setStrokeColor("white");
+    obj.rectangle27:setStrokeSize(1);
+    obj.rectangle27:setName("rectangle27");
+
     obj.label130 = GUI.fromHandle(_obj_newObject("label"));
     obj.label130:setParent(obj.layout14);
     obj.label130:setLeft(870);
@@ -4723,11 +4816,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image13:setHeight(75);
     obj.image13:setName("image13");
 
+    obj.button52 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button52:setParent(obj.layout14);
+    obj.button52:setLeft(1205);
+    obj.button52:setTop(5);
+    obj.button52:setWidth(25);
+    obj.button52:setHeight(75);
+    obj.button52:setText("X");
+    obj.button52:setFontSize(15);
+    obj.button52:setHint("Apaga o ataque.");
+    obj.button52:setName("button52");
+
     obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.layout1);
     obj.layout15:setLeft(2);
     obj.layout15:setTop(1238);
-    obj.layout15:setWidth(1207);
+    obj.layout15:setWidth(1232);
     obj.layout15:setHeight(92);
     obj.layout15:setName("layout15");
 
@@ -4736,17 +4840,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle28:setAlign("client");
     obj.rectangle28:setColor("black");
     obj.rectangle28:setName("rectangle28");
-
-    obj.rectangle29 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle29:setParent(obj.layout15);
-    obj.rectangle29:setLeft(869);
-    obj.rectangle29:setTop(4);
-    obj.rectangle29:setWidth(332);
-    obj.rectangle29:setHeight(77);
-    obj.rectangle29:setColor("black");
-    obj.rectangle29:setStrokeColor("white");
-    obj.rectangle29:setStrokeSize(1);
-    obj.rectangle29:setName("rectangle29");
 
     obj.label131 = GUI.fromHandle(_obj_newObject("label"));
     obj.label131:setParent(obj.layout15);
@@ -4805,14 +4898,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit250:setField("tipo14");
     obj.edit250:setName("edit250");
 
-    obj.button40 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button40:setParent(obj.layout15);
-    obj.button40:setLeft(279);
-    obj.button40:setTop(6);
-    obj.button40:setWidth(73);
-    obj.button40:setText("ATAQUE");
-    obj.button40:setFontSize(11);
-    obj.button40:setName("button40");
+    obj.button53 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button53:setParent(obj.layout15);
+    obj.button53:setLeft(279);
+    obj.button53:setTop(6);
+    obj.button53:setWidth(73);
+    obj.button53:setText("ATAQUE");
+    obj.button53:setFontSize(11);
+    obj.button53:setName("button53");
 
     obj.edit251 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit251:setParent(obj.layout15);
@@ -4902,14 +4995,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit258:setField("ataque14h");
     obj.edit258:setName("edit258");
 
-    obj.button41 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button41:setParent(obj.layout15);
-    obj.button41:setLeft(279);
-    obj.button41:setTop(31);
-    obj.button41:setWidth(73);
-    obj.button41:setText("DANO");
-    obj.button41:setFontSize(11);
-    obj.button41:setName("button41");
+    obj.button54 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button54:setParent(obj.layout15);
+    obj.button54:setLeft(279);
+    obj.button54:setTop(31);
+    obj.button54:setWidth(73);
+    obj.button54:setText("DANO");
+    obj.button54:setFontSize(11);
+    obj.button54:setName("button54");
 
     obj.edit259 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit259:setParent(obj.layout15);
@@ -4921,14 +5014,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit259:setField("dano14");
     obj.edit259:setName("edit259");
 
-    obj.button42 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button42:setParent(obj.layout15);
-    obj.button42:setLeft(434);
-    obj.button42:setTop(31);
-    obj.button42:setWidth(60);
-    obj.button42:setText("CRITICO");
-    obj.button42:setFontSize(11);
-    obj.button42:setName("button42");
+    obj.button55 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button55:setParent(obj.layout15);
+    obj.button55:setLeft(434);
+    obj.button55:setTop(31);
+    obj.button55:setWidth(60);
+    obj.button55:setText("CRITICO");
+    obj.button55:setFontSize(11);
+    obj.button55:setName("button55");
 
     obj.edit260 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit260:setParent(obj.layout15);
@@ -5055,6 +5148,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit266:setField("alcance14");
     obj.edit266:setName("edit266");
 
+    obj.rectangle29 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle29:setParent(obj.layout15);
+    obj.rectangle29:setLeft(869);
+    obj.rectangle29:setTop(4);
+    obj.rectangle29:setWidth(332);
+    obj.rectangle29:setHeight(77);
+    obj.rectangle29:setColor("black");
+    obj.rectangle29:setStrokeColor("white");
+    obj.rectangle29:setStrokeSize(1);
+    obj.rectangle29:setName("rectangle29");
+
     obj.label140 = GUI.fromHandle(_obj_newObject("label"));
     obj.label140:setParent(obj.layout15);
     obj.label140:setLeft(870);
@@ -5076,11 +5180,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image14:setHeight(75);
     obj.image14:setName("image14");
 
+    obj.button56 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button56:setParent(obj.layout15);
+    obj.button56:setLeft(1205);
+    obj.button56:setTop(5);
+    obj.button56:setWidth(25);
+    obj.button56:setHeight(75);
+    obj.button56:setText("X");
+    obj.button56:setFontSize(15);
+    obj.button56:setHint("Apaga o ataque.");
+    obj.button56:setName("button56");
+
     obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.layout1);
     obj.layout16:setLeft(2);
     obj.layout16:setTop(1333);
-    obj.layout16:setWidth(1207);
+    obj.layout16:setWidth(1232);
     obj.layout16:setHeight(92);
     obj.layout16:setName("layout16");
 
@@ -5089,17 +5204,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle30:setAlign("client");
     obj.rectangle30:setColor("black");
     obj.rectangle30:setName("rectangle30");
-
-    obj.rectangle31 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle31:setParent(obj.layout16);
-    obj.rectangle31:setLeft(869);
-    obj.rectangle31:setTop(4);
-    obj.rectangle31:setWidth(332);
-    obj.rectangle31:setHeight(77);
-    obj.rectangle31:setColor("black");
-    obj.rectangle31:setStrokeColor("white");
-    obj.rectangle31:setStrokeSize(1);
-    obj.rectangle31:setName("rectangle31");
 
     obj.label141 = GUI.fromHandle(_obj_newObject("label"));
     obj.label141:setParent(obj.layout16);
@@ -5158,14 +5262,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit269:setField("tipo15");
     obj.edit269:setName("edit269");
 
-    obj.button43 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button43:setParent(obj.layout16);
-    obj.button43:setLeft(279);
-    obj.button43:setTop(6);
-    obj.button43:setWidth(73);
-    obj.button43:setText("ATAQUE");
-    obj.button43:setFontSize(11);
-    obj.button43:setName("button43");
+    obj.button57 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button57:setParent(obj.layout16);
+    obj.button57:setLeft(279);
+    obj.button57:setTop(6);
+    obj.button57:setWidth(73);
+    obj.button57:setText("ATAQUE");
+    obj.button57:setFontSize(11);
+    obj.button57:setName("button57");
 
     obj.edit270 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit270:setParent(obj.layout16);
@@ -5255,14 +5359,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit277:setField("ataque15h");
     obj.edit277:setName("edit277");
 
-    obj.button44 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button44:setParent(obj.layout16);
-    obj.button44:setLeft(279);
-    obj.button44:setTop(31);
-    obj.button44:setWidth(73);
-    obj.button44:setText("DANO");
-    obj.button44:setFontSize(11);
-    obj.button44:setName("button44");
+    obj.button58 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button58:setParent(obj.layout16);
+    obj.button58:setLeft(279);
+    obj.button58:setTop(31);
+    obj.button58:setWidth(73);
+    obj.button58:setText("DANO");
+    obj.button58:setFontSize(11);
+    obj.button58:setName("button58");
 
     obj.edit278 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit278:setParent(obj.layout16);
@@ -5274,14 +5378,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit278:setField("dano15");
     obj.edit278:setName("edit278");
 
-    obj.button45 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button45:setParent(obj.layout16);
-    obj.button45:setLeft(434);
-    obj.button45:setTop(31);
-    obj.button45:setWidth(60);
-    obj.button45:setText("CRITICO");
-    obj.button45:setFontSize(11);
-    obj.button45:setName("button45");
+    obj.button59 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button59:setParent(obj.layout16);
+    obj.button59:setLeft(434);
+    obj.button59:setTop(31);
+    obj.button59:setWidth(60);
+    obj.button59:setText("CRITICO");
+    obj.button59:setFontSize(11);
+    obj.button59:setName("button59");
 
     obj.edit279 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit279:setParent(obj.layout16);
@@ -5408,6 +5512,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit285:setField("alcance15");
     obj.edit285:setName("edit285");
 
+    obj.rectangle31 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle31:setParent(obj.layout16);
+    obj.rectangle31:setLeft(869);
+    obj.rectangle31:setTop(4);
+    obj.rectangle31:setWidth(332);
+    obj.rectangle31:setHeight(77);
+    obj.rectangle31:setColor("black");
+    obj.rectangle31:setStrokeColor("white");
+    obj.rectangle31:setStrokeSize(1);
+    obj.rectangle31:setName("rectangle31");
+
     obj.label150 = GUI.fromHandle(_obj_newObject("label"));
     obj.label150:setParent(obj.layout16);
     obj.label150:setLeft(870);
@@ -5429,11 +5544,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image15:setHeight(75);
     obj.image15:setName("image15");
 
+    obj.button60 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button60:setParent(obj.layout16);
+    obj.button60:setLeft(1205);
+    obj.button60:setTop(5);
+    obj.button60:setWidth(25);
+    obj.button60:setHeight(75);
+    obj.button60:setText("X");
+    obj.button60:setFontSize(15);
+    obj.button60:setHint("Apaga o ataque.");
+    obj.button60:setName("button60");
+
     obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.layout1);
     obj.layout17:setLeft(2);
     obj.layout17:setTop(1428);
-    obj.layout17:setWidth(1207);
+    obj.layout17:setWidth(1232);
     obj.layout17:setHeight(92);
     obj.layout17:setName("layout17");
 
@@ -5442,17 +5568,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle32:setAlign("client");
     obj.rectangle32:setColor("black");
     obj.rectangle32:setName("rectangle32");
-
-    obj.rectangle33 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle33:setParent(obj.layout17);
-    obj.rectangle33:setLeft(869);
-    obj.rectangle33:setTop(4);
-    obj.rectangle33:setWidth(332);
-    obj.rectangle33:setHeight(77);
-    obj.rectangle33:setColor("black");
-    obj.rectangle33:setStrokeColor("white");
-    obj.rectangle33:setStrokeSize(1);
-    obj.rectangle33:setName("rectangle33");
 
     obj.label151 = GUI.fromHandle(_obj_newObject("label"));
     obj.label151:setParent(obj.layout17);
@@ -5511,14 +5626,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit288:setField("tipo16");
     obj.edit288:setName("edit288");
 
-    obj.button46 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button46:setParent(obj.layout17);
-    obj.button46:setLeft(279);
-    obj.button46:setTop(6);
-    obj.button46:setWidth(73);
-    obj.button46:setText("ATAQUE");
-    obj.button46:setFontSize(11);
-    obj.button46:setName("button46");
+    obj.button61 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button61:setParent(obj.layout17);
+    obj.button61:setLeft(279);
+    obj.button61:setTop(6);
+    obj.button61:setWidth(73);
+    obj.button61:setText("ATAQUE");
+    obj.button61:setFontSize(11);
+    obj.button61:setName("button61");
 
     obj.edit289 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit289:setParent(obj.layout17);
@@ -5608,14 +5723,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit296:setField("ataque16h");
     obj.edit296:setName("edit296");
 
-    obj.button47 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button47:setParent(obj.layout17);
-    obj.button47:setLeft(279);
-    obj.button47:setTop(31);
-    obj.button47:setWidth(73);
-    obj.button47:setText("DANO");
-    obj.button47:setFontSize(11);
-    obj.button47:setName("button47");
+    obj.button62 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button62:setParent(obj.layout17);
+    obj.button62:setLeft(279);
+    obj.button62:setTop(31);
+    obj.button62:setWidth(73);
+    obj.button62:setText("DANO");
+    obj.button62:setFontSize(11);
+    obj.button62:setName("button62");
 
     obj.edit297 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit297:setParent(obj.layout17);
@@ -5627,14 +5742,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit297:setField("dano16");
     obj.edit297:setName("edit297");
 
-    obj.button48 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button48:setParent(obj.layout17);
-    obj.button48:setLeft(434);
-    obj.button48:setTop(31);
-    obj.button48:setWidth(60);
-    obj.button48:setText("CRITICO");
-    obj.button48:setFontSize(11);
-    obj.button48:setName("button48");
+    obj.button63 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button63:setParent(obj.layout17);
+    obj.button63:setLeft(434);
+    obj.button63:setTop(31);
+    obj.button63:setWidth(60);
+    obj.button63:setText("CRITICO");
+    obj.button63:setFontSize(11);
+    obj.button63:setName("button63");
 
     obj.edit298 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit298:setParent(obj.layout17);
@@ -5761,6 +5876,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit304:setField("alcance16");
     obj.edit304:setName("edit304");
 
+    obj.rectangle33 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle33:setParent(obj.layout17);
+    obj.rectangle33:setLeft(869);
+    obj.rectangle33:setTop(4);
+    obj.rectangle33:setWidth(332);
+    obj.rectangle33:setHeight(77);
+    obj.rectangle33:setColor("black");
+    obj.rectangle33:setStrokeColor("white");
+    obj.rectangle33:setStrokeSize(1);
+    obj.rectangle33:setName("rectangle33");
+
     obj.label160 = GUI.fromHandle(_obj_newObject("label"));
     obj.label160:setParent(obj.layout17);
     obj.label160:setLeft(870);
@@ -5782,11 +5908,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image16:setHeight(75);
     obj.image16:setName("image16");
 
+    obj.button64 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button64:setParent(obj.layout17);
+    obj.button64:setLeft(1205);
+    obj.button64:setTop(5);
+    obj.button64:setWidth(25);
+    obj.button64:setHeight(75);
+    obj.button64:setText("X");
+    obj.button64:setFontSize(15);
+    obj.button64:setHint("Apaga o ataque.");
+    obj.button64:setName("button64");
+
     obj.layout18 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout18:setParent(obj.layout1);
     obj.layout18:setLeft(2);
     obj.layout18:setTop(1523);
-    obj.layout18:setWidth(1207);
+    obj.layout18:setWidth(1232);
     obj.layout18:setHeight(92);
     obj.layout18:setName("layout18");
 
@@ -5795,17 +5932,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle34:setAlign("client");
     obj.rectangle34:setColor("black");
     obj.rectangle34:setName("rectangle34");
-
-    obj.rectangle35 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle35:setParent(obj.layout18);
-    obj.rectangle35:setLeft(869);
-    obj.rectangle35:setTop(4);
-    obj.rectangle35:setWidth(332);
-    obj.rectangle35:setHeight(77);
-    obj.rectangle35:setColor("black");
-    obj.rectangle35:setStrokeColor("white");
-    obj.rectangle35:setStrokeSize(1);
-    obj.rectangle35:setName("rectangle35");
 
     obj.label161 = GUI.fromHandle(_obj_newObject("label"));
     obj.label161:setParent(obj.layout18);
@@ -5864,14 +5990,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit307:setField("tipo17");
     obj.edit307:setName("edit307");
 
-    obj.button49 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button49:setParent(obj.layout18);
-    obj.button49:setLeft(279);
-    obj.button49:setTop(6);
-    obj.button49:setWidth(73);
-    obj.button49:setText("ATAQUE");
-    obj.button49:setFontSize(11);
-    obj.button49:setName("button49");
+    obj.button65 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button65:setParent(obj.layout18);
+    obj.button65:setLeft(279);
+    obj.button65:setTop(6);
+    obj.button65:setWidth(73);
+    obj.button65:setText("ATAQUE");
+    obj.button65:setFontSize(11);
+    obj.button65:setName("button65");
 
     obj.edit308 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit308:setParent(obj.layout18);
@@ -5961,14 +6087,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit315:setField("ataque17h");
     obj.edit315:setName("edit315");
 
-    obj.button50 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button50:setParent(obj.layout18);
-    obj.button50:setLeft(279);
-    obj.button50:setTop(31);
-    obj.button50:setWidth(73);
-    obj.button50:setText("DANO");
-    obj.button50:setFontSize(11);
-    obj.button50:setName("button50");
+    obj.button66 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button66:setParent(obj.layout18);
+    obj.button66:setLeft(279);
+    obj.button66:setTop(31);
+    obj.button66:setWidth(73);
+    obj.button66:setText("DANO");
+    obj.button66:setFontSize(11);
+    obj.button66:setName("button66");
 
     obj.edit316 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit316:setParent(obj.layout18);
@@ -5980,14 +6106,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit316:setField("dano17");
     obj.edit316:setName("edit316");
 
-    obj.button51 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button51:setParent(obj.layout18);
-    obj.button51:setLeft(434);
-    obj.button51:setTop(31);
-    obj.button51:setWidth(60);
-    obj.button51:setText("CRITICO");
-    obj.button51:setFontSize(11);
-    obj.button51:setName("button51");
+    obj.button67 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button67:setParent(obj.layout18);
+    obj.button67:setLeft(434);
+    obj.button67:setTop(31);
+    obj.button67:setWidth(60);
+    obj.button67:setText("CRITICO");
+    obj.button67:setFontSize(11);
+    obj.button67:setName("button67");
 
     obj.edit317 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit317:setParent(obj.layout18);
@@ -6114,6 +6240,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit323:setField("alcance17");
     obj.edit323:setName("edit323");
 
+    obj.rectangle35 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle35:setParent(obj.layout18);
+    obj.rectangle35:setLeft(869);
+    obj.rectangle35:setTop(4);
+    obj.rectangle35:setWidth(332);
+    obj.rectangle35:setHeight(77);
+    obj.rectangle35:setColor("black");
+    obj.rectangle35:setStrokeColor("white");
+    obj.rectangle35:setStrokeSize(1);
+    obj.rectangle35:setName("rectangle35");
+
     obj.label170 = GUI.fromHandle(_obj_newObject("label"));
     obj.label170:setParent(obj.layout18);
     obj.label170:setLeft(870);
@@ -6135,11 +6272,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image17:setHeight(75);
     obj.image17:setName("image17");
 
+    obj.button68 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button68:setParent(obj.layout18);
+    obj.button68:setLeft(1205);
+    obj.button68:setTop(5);
+    obj.button68:setWidth(25);
+    obj.button68:setHeight(75);
+    obj.button68:setText("X");
+    obj.button68:setFontSize(15);
+    obj.button68:setHint("Apaga o ataque.");
+    obj.button68:setName("button68");
+
     obj.layout19 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout19:setParent(obj.layout1);
     obj.layout19:setLeft(2);
     obj.layout19:setTop(1618);
-    obj.layout19:setWidth(1207);
+    obj.layout19:setWidth(1232);
     obj.layout19:setHeight(92);
     obj.layout19:setName("layout19");
 
@@ -6148,17 +6296,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle36:setAlign("client");
     obj.rectangle36:setColor("black");
     obj.rectangle36:setName("rectangle36");
-
-    obj.rectangle37 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle37:setParent(obj.layout19);
-    obj.rectangle37:setLeft(869);
-    obj.rectangle37:setTop(4);
-    obj.rectangle37:setWidth(332);
-    obj.rectangle37:setHeight(77);
-    obj.rectangle37:setColor("black");
-    obj.rectangle37:setStrokeColor("white");
-    obj.rectangle37:setStrokeSize(1);
-    obj.rectangle37:setName("rectangle37");
 
     obj.label171 = GUI.fromHandle(_obj_newObject("label"));
     obj.label171:setParent(obj.layout19);
@@ -6217,14 +6354,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit326:setField("tipo18");
     obj.edit326:setName("edit326");
 
-    obj.button52 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button52:setParent(obj.layout19);
-    obj.button52:setLeft(279);
-    obj.button52:setTop(6);
-    obj.button52:setWidth(73);
-    obj.button52:setText("ATAQUE");
-    obj.button52:setFontSize(11);
-    obj.button52:setName("button52");
+    obj.button69 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button69:setParent(obj.layout19);
+    obj.button69:setLeft(279);
+    obj.button69:setTop(6);
+    obj.button69:setWidth(73);
+    obj.button69:setText("ATAQUE");
+    obj.button69:setFontSize(11);
+    obj.button69:setName("button69");
 
     obj.edit327 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit327:setParent(obj.layout19);
@@ -6314,14 +6451,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit334:setField("ataque18h");
     obj.edit334:setName("edit334");
 
-    obj.button53 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button53:setParent(obj.layout19);
-    obj.button53:setLeft(279);
-    obj.button53:setTop(31);
-    obj.button53:setWidth(73);
-    obj.button53:setText("DANO");
-    obj.button53:setFontSize(11);
-    obj.button53:setName("button53");
+    obj.button70 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button70:setParent(obj.layout19);
+    obj.button70:setLeft(279);
+    obj.button70:setTop(31);
+    obj.button70:setWidth(73);
+    obj.button70:setText("DANO");
+    obj.button70:setFontSize(11);
+    obj.button70:setName("button70");
 
     obj.edit335 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit335:setParent(obj.layout19);
@@ -6333,14 +6470,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit335:setField("dano18");
     obj.edit335:setName("edit335");
 
-    obj.button54 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button54:setParent(obj.layout19);
-    obj.button54:setLeft(434);
-    obj.button54:setTop(31);
-    obj.button54:setWidth(60);
-    obj.button54:setText("CRITICO");
-    obj.button54:setFontSize(11);
-    obj.button54:setName("button54");
+    obj.button71 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button71:setParent(obj.layout19);
+    obj.button71:setLeft(434);
+    obj.button71:setTop(31);
+    obj.button71:setWidth(60);
+    obj.button71:setText("CRITICO");
+    obj.button71:setFontSize(11);
+    obj.button71:setName("button71");
 
     obj.edit336 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit336:setParent(obj.layout19);
@@ -6467,6 +6604,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit342:setField("alcance18");
     obj.edit342:setName("edit342");
 
+    obj.rectangle37 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle37:setParent(obj.layout19);
+    obj.rectangle37:setLeft(869);
+    obj.rectangle37:setTop(4);
+    obj.rectangle37:setWidth(332);
+    obj.rectangle37:setHeight(77);
+    obj.rectangle37:setColor("black");
+    obj.rectangle37:setStrokeColor("white");
+    obj.rectangle37:setStrokeSize(1);
+    obj.rectangle37:setName("rectangle37");
+
     obj.label180 = GUI.fromHandle(_obj_newObject("label"));
     obj.label180:setParent(obj.layout19);
     obj.label180:setLeft(870);
@@ -6488,11 +6636,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image18:setHeight(75);
     obj.image18:setName("image18");
 
+    obj.button72 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button72:setParent(obj.layout19);
+    obj.button72:setLeft(1205);
+    obj.button72:setTop(5);
+    obj.button72:setWidth(25);
+    obj.button72:setHeight(75);
+    obj.button72:setText("X");
+    obj.button72:setFontSize(15);
+    obj.button72:setHint("Apaga o ataque.");
+    obj.button72:setName("button72");
+
     obj.layout20 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout20:setParent(obj.layout1);
     obj.layout20:setLeft(2);
     obj.layout20:setTop(1713);
-    obj.layout20:setWidth(1207);
+    obj.layout20:setWidth(1232);
     obj.layout20:setHeight(92);
     obj.layout20:setName("layout20");
 
@@ -6501,17 +6660,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle38:setAlign("client");
     obj.rectangle38:setColor("black");
     obj.rectangle38:setName("rectangle38");
-
-    obj.rectangle39 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle39:setParent(obj.layout20);
-    obj.rectangle39:setLeft(869);
-    obj.rectangle39:setTop(4);
-    obj.rectangle39:setWidth(332);
-    obj.rectangle39:setHeight(77);
-    obj.rectangle39:setColor("black");
-    obj.rectangle39:setStrokeColor("white");
-    obj.rectangle39:setStrokeSize(1);
-    obj.rectangle39:setName("rectangle39");
 
     obj.label181 = GUI.fromHandle(_obj_newObject("label"));
     obj.label181:setParent(obj.layout20);
@@ -6570,14 +6718,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit345:setField("tipo19");
     obj.edit345:setName("edit345");
 
-    obj.button55 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button55:setParent(obj.layout20);
-    obj.button55:setLeft(279);
-    obj.button55:setTop(6);
-    obj.button55:setWidth(73);
-    obj.button55:setText("ATAQUE");
-    obj.button55:setFontSize(11);
-    obj.button55:setName("button55");
+    obj.button73 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button73:setParent(obj.layout20);
+    obj.button73:setLeft(279);
+    obj.button73:setTop(6);
+    obj.button73:setWidth(73);
+    obj.button73:setText("ATAQUE");
+    obj.button73:setFontSize(11);
+    obj.button73:setName("button73");
 
     obj.edit346 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit346:setParent(obj.layout20);
@@ -6667,14 +6815,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit353:setField("ataque19h");
     obj.edit353:setName("edit353");
 
-    obj.button56 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button56:setParent(obj.layout20);
-    obj.button56:setLeft(279);
-    obj.button56:setTop(31);
-    obj.button56:setWidth(73);
-    obj.button56:setText("DANO");
-    obj.button56:setFontSize(11);
-    obj.button56:setName("button56");
+    obj.button74 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button74:setParent(obj.layout20);
+    obj.button74:setLeft(279);
+    obj.button74:setTop(31);
+    obj.button74:setWidth(73);
+    obj.button74:setText("DANO");
+    obj.button74:setFontSize(11);
+    obj.button74:setName("button74");
 
     obj.edit354 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit354:setParent(obj.layout20);
@@ -6686,14 +6834,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit354:setField("dano19");
     obj.edit354:setName("edit354");
 
-    obj.button57 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button57:setParent(obj.layout20);
-    obj.button57:setLeft(434);
-    obj.button57:setTop(31);
-    obj.button57:setWidth(60);
-    obj.button57:setText("CRITICO");
-    obj.button57:setFontSize(11);
-    obj.button57:setName("button57");
+    obj.button75 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button75:setParent(obj.layout20);
+    obj.button75:setLeft(434);
+    obj.button75:setTop(31);
+    obj.button75:setWidth(60);
+    obj.button75:setText("CRITICO");
+    obj.button75:setFontSize(11);
+    obj.button75:setName("button75");
 
     obj.edit355 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit355:setParent(obj.layout20);
@@ -6820,6 +6968,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit361:setField("alcance19");
     obj.edit361:setName("edit361");
 
+    obj.rectangle39 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle39:setParent(obj.layout20);
+    obj.rectangle39:setLeft(869);
+    obj.rectangle39:setTop(4);
+    obj.rectangle39:setWidth(332);
+    obj.rectangle39:setHeight(77);
+    obj.rectangle39:setColor("black");
+    obj.rectangle39:setStrokeColor("white");
+    obj.rectangle39:setStrokeSize(1);
+    obj.rectangle39:setName("rectangle39");
+
     obj.label190 = GUI.fromHandle(_obj_newObject("label"));
     obj.label190:setParent(obj.layout20);
     obj.label190:setLeft(870);
@@ -6841,11 +7000,22 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image19:setHeight(75);
     obj.image19:setName("image19");
 
+    obj.button76 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button76:setParent(obj.layout20);
+    obj.button76:setLeft(1205);
+    obj.button76:setTop(5);
+    obj.button76:setWidth(25);
+    obj.button76:setHeight(75);
+    obj.button76:setText("X");
+    obj.button76:setFontSize(15);
+    obj.button76:setHint("Apaga o ataque.");
+    obj.button76:setName("button76");
+
     obj.layout21 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout21:setParent(obj.layout1);
     obj.layout21:setLeft(2);
     obj.layout21:setTop(1808);
-    obj.layout21:setWidth(1207);
+    obj.layout21:setWidth(1232);
     obj.layout21:setHeight(92);
     obj.layout21:setName("layout21");
 
@@ -6854,17 +7024,6 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.rectangle40:setAlign("client");
     obj.rectangle40:setColor("black");
     obj.rectangle40:setName("rectangle40");
-
-    obj.rectangle41 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle41:setParent(obj.layout21);
-    obj.rectangle41:setLeft(869);
-    obj.rectangle41:setTop(4);
-    obj.rectangle41:setWidth(332);
-    obj.rectangle41:setHeight(77);
-    obj.rectangle41:setColor("black");
-    obj.rectangle41:setStrokeColor("white");
-    obj.rectangle41:setStrokeSize(1);
-    obj.rectangle41:setName("rectangle41");
 
     obj.label191 = GUI.fromHandle(_obj_newObject("label"));
     obj.label191:setParent(obj.layout21);
@@ -6923,14 +7082,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit364:setField("tipo20");
     obj.edit364:setName("edit364");
 
-    obj.button58 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button58:setParent(obj.layout21);
-    obj.button58:setLeft(279);
-    obj.button58:setTop(6);
-    obj.button58:setWidth(73);
-    obj.button58:setText("ATAQUE");
-    obj.button58:setFontSize(11);
-    obj.button58:setName("button58");
+    obj.button77 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button77:setParent(obj.layout21);
+    obj.button77:setLeft(279);
+    obj.button77:setTop(6);
+    obj.button77:setWidth(73);
+    obj.button77:setText("ATAQUE");
+    obj.button77:setFontSize(11);
+    obj.button77:setName("button77");
 
     obj.edit365 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit365:setParent(obj.layout21);
@@ -7020,14 +7179,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit372:setField("ataque20h");
     obj.edit372:setName("edit372");
 
-    obj.button59 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button59:setParent(obj.layout21);
-    obj.button59:setLeft(279);
-    obj.button59:setTop(31);
-    obj.button59:setWidth(73);
-    obj.button59:setText("DANO");
-    obj.button59:setFontSize(11);
-    obj.button59:setName("button59");
+    obj.button78 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button78:setParent(obj.layout21);
+    obj.button78:setLeft(279);
+    obj.button78:setTop(31);
+    obj.button78:setWidth(73);
+    obj.button78:setText("DANO");
+    obj.button78:setFontSize(11);
+    obj.button78:setName("button78");
 
     obj.edit373 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit373:setParent(obj.layout21);
@@ -7039,14 +7198,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit373:setField("dano20");
     obj.edit373:setName("edit373");
 
-    obj.button60 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button60:setParent(obj.layout21);
-    obj.button60:setLeft(434);
-    obj.button60:setTop(31);
-    obj.button60:setWidth(60);
-    obj.button60:setText("CRITICO");
-    obj.button60:setFontSize(11);
-    obj.button60:setName("button60");
+    obj.button79 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button79:setParent(obj.layout21);
+    obj.button79:setLeft(434);
+    obj.button79:setTop(31);
+    obj.button79:setWidth(60);
+    obj.button79:setText("CRITICO");
+    obj.button79:setFontSize(11);
+    obj.button79:setName("button79");
 
     obj.edit374 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit374:setParent(obj.layout21);
@@ -7173,6 +7332,17 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.edit380:setField("alcance20");
     obj.edit380:setName("edit380");
 
+    obj.rectangle41 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle41:setParent(obj.layout21);
+    obj.rectangle41:setLeft(869);
+    obj.rectangle41:setTop(4);
+    obj.rectangle41:setWidth(332);
+    obj.rectangle41:setHeight(77);
+    obj.rectangle41:setColor("black");
+    obj.rectangle41:setStrokeColor("white");
+    obj.rectangle41:setStrokeSize(1);
+    obj.rectangle41:setName("rectangle41");
+
     obj.label200 = GUI.fromHandle(_obj_newObject("label"));
     obj.label200:setParent(obj.layout21);
     obj.label200:setLeft(870);
@@ -7194,1667 +7364,2278 @@ local function constructNew_frmFichaRPGmeister2_svg()
     obj.image20:setHeight(75);
     obj.image20:setName("image20");
 
+    obj.button80 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button80:setParent(obj.layout21);
+    obj.button80:setLeft(1205);
+    obj.button80:setTop(5);
+    obj.button80:setWidth(25);
+    obj.button80:setHeight(75);
+    obj.button80:setText("X");
+    obj.button80:setFontSize(15);
+    obj.button80:setHint("Apaga o ataque.");
+    obj.button80:setName("button80");
+
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
             i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque1a, sheet.ataque1b, sheet.ataque1c, sheet.ataque1d, sheet.ataque1e, sheet.ataque1f, sheet.ataque1g, sheet.ataque1h};
-            					decisivo = tonumber(string.sub(sheet.decisivo1, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano1);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque1a, sheet.ataque1b, sheet.ataque1c, sheet.ataque1d, sheet.ataque1e, sheet.ataque1f, sheet.ataque1g, sheet.ataque1h};
+            	
+            				decisivo = sheet.decisivo1 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano1 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico1 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome1;
+            				if armamento==nil then armamento = sheet.arma1 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao1);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
             					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico1);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao1 = municao-max+1;
             					end;
-            					
-            					armamento = sheet.nome1;
-            					municao = tonumber(sheet.municao1);
-            					if armamento==nil then
-            						armamento = sheet.arma1 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
-            						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao1 = municao-max+1;
-            						end;
-            					end;
+            				end;
         end, obj);
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano1);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					local armamento = sheet.nome1;
-            					if armamento==nil then
-            						armamento = sheet.arma1;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano1 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome1;
+            				if armamento==nil then armamento = sheet.arma1 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event2 = obj.button3:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico1);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					local armamento = sheet.nome1;
-            					if armamento==nil then
-            						armamento = sheet.arma1;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico1 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome1;
+            				if armamento==nil then armamento = sheet.arma1 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event3 = obj.button4:addEventListener("onClick",
         function (_)
-            i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque2a, sheet.ataque2b, sheet.ataque2c, sheet.ataque2d, sheet.ataque2e, sheet.ataque2f, sheet.ataque2g, sheet.ataque2h};
-            					decisivo = tonumber(string.sub(sheet.decisivo2, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano2);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico2);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					armamento = sheet.nome2;
-            					municao = tonumber(sheet.municao2);
-            					if armamento==nil then
-            						armamento = sheet.arma2 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome1 = null;
+            							sheet.arma1 = null;
+            							sheet.tipo1 = null;
+            							sheet.ataque1a = null;
+            							sheet.ataque1b = null;
+            							sheet.ataque1c = null;
+            							sheet.ataque1d = null;
+            							sheet.ataque1e = null;
+            							sheet.ataque1f = null;
+            							sheet.ataque1g = null;
+            							sheet.ataque1h = null;
+            							sheet.dano1 = null;
+            							sheet.danoCritico1 = null;
+            							sheet.decisivo1 = null;
+            							sheet.multiplicador1 = null;
+            							sheet.categoria1 = null;
+            							sheet.obs1 = null;
+            							sheet.municao1 = null;
+            							sheet.alcance1 = null;
+            							sheet.imagemArma1 = null;
             						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao2 = municao-max+1;
-            						end;
-            					end;
+            					end);
         end, obj);
 
     obj._e_event4 = obj.button5:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano2);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
+            i = 1;
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque2a, sheet.ataque2b, sheet.ataque2c, sheet.ataque2d, sheet.ataque2e, sheet.ataque2f, sheet.ataque2g, sheet.ataque2h};
+            	
+            				decisivo = sheet.decisivo2 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano2 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico2 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome2;
+            				if armamento==nil then armamento = sheet.arma2 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao2);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
             					end;
-            					
-            					local armamento = sheet.nome2;
-            					if armamento==nil then
-            						armamento = sheet.arma2;
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao2 = municao-max+1;
             					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            				end;
         end, obj);
 
     obj._e_event5 = obj.button6:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico2);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					local armamento = sheet.nome2;
-            					if armamento==nil then
-            						armamento = sheet.arma2;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano2 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome2;
+            				if armamento==nil then armamento = sheet.arma2 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event6 = obj.button7:addEventListener("onClick",
         function (_)
-            i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque3a, sheet.ataque3b, sheet.ataque3c, sheet.ataque3d, sheet.ataque3e, sheet.ataque3f, sheet.ataque3g, sheet.ataque3h};
-            					decisivo = tonumber(string.sub(sheet.decisivo3, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano3);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico3);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					armamento = sheet.nome3;
-            					municao = tonumber(sheet.municao3);
-            					if armamento==nil then
-            						armamento = sheet.arma3 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
-            						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao3 = municao-max+1;
-            						end;
-            					end;
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico2 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome2;
+            				if armamento==nil then armamento = sheet.arma2 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event7 = obj.button8:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano3);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					local armamento = sheet.nome3;
-            					if armamento==nil then
-            						armamento = sheet.arma3;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome2 = null;
+            							sheet.arma2 = null;
+            							sheet.tipo2 = null;
+            							sheet.ataque2a = null;
+            							sheet.ataque2b = null;
+            							sheet.ataque2c = null;
+            							sheet.ataque2d = null;
+            							sheet.ataque2e = null;
+            							sheet.ataque2f = null;
+            							sheet.ataque2g = null;
+            							sheet.ataque2h = null;
+            							sheet.dano2 = null;
+            							sheet.danoCritico2 = null;
+            							sheet.decisivo2 = null;
+            							sheet.multiplicador2 = null;
+            							sheet.categoria2 = null;
+            							sheet.obs2 = null;
+            							sheet.municao2 = null;
+            							sheet.alcance2 = null;
+            							sheet.imagemArma2 = null;
+            						end;
+            					end);
         end, obj);
 
     obj._e_event8 = obj.button9:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico3);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            i = 1;
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque3a, sheet.ataque3b, sheet.ataque3c, sheet.ataque3d, sheet.ataque3e, sheet.ataque3f, sheet.ataque3g, sheet.ataque3h};
+            	
+            				decisivo = sheet.decisivo3 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano3 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico3 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome3;
+            				if armamento==nil then armamento = sheet.arma3 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao3);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
             					end;
-            					
-            					local armamento = sheet.nome3;
-            					if armamento==nil then
-            						armamento = sheet.arma3;
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao3 = municao-max+1;
             					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            				end;
         end, obj);
 
     obj._e_event9 = obj.button10:addEventListener("onClick",
         function (_)
-            i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque4a, sheet.ataque4b, sheet.ataque4c, sheet.ataque4d, sheet.ataque4e, sheet.ataque4f, sheet.ataque4g, sheet.ataque4h};
-            					decisivo = tonumber(string.sub(sheet.decisivo4, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano4);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico4);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					armamento = sheet.nome4;
-            					municao = tonumber(sheet.municao4);
-            					if armamento==nil then
-            						armamento = sheet.arma4 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
-            						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao4 = municao-max+1;
-            						end;
-            					end;
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano3 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome3;
+            				if armamento==nil then armamento = sheet.arma3 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event10 = obj.button11:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano4);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					local armamento = sheet.nome4;
-            					if armamento==nil then
-            						armamento = sheet.arma4;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico3 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome3;
+            				if armamento==nil then armamento = sheet.arma3 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event11 = obj.button12:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico4);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					local armamento = sheet.nome4;
-            					if armamento==nil then
-            						armamento = sheet.arma4;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome3 = null;
+            							sheet.arma3 = null;
+            							sheet.tipo3 = null;
+            							sheet.ataque3a = null;
+            							sheet.ataque3b = null;
+            							sheet.ataque3c = null;
+            							sheet.ataque3d = null;
+            							sheet.ataque3e = null;
+            							sheet.ataque3f = null;
+            							sheet.ataque3g = null;
+            							sheet.ataque3h = null;
+            							sheet.dano3 = null;
+            							sheet.danoCritico3 = null;
+            							sheet.decisivo3 = null;
+            							sheet.multiplicador3 = null;
+            							sheet.categoria3 = null;
+            							sheet.obs3 = null;
+            							sheet.municao3 = null;
+            							sheet.alcance3 = null;
+            							sheet.imagemArma3 = null;
+            						end;
+            					end);
         end, obj);
 
     obj._e_event12 = obj.button13:addEventListener("onClick",
         function (_)
             i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque5a, sheet.ataque5b, sheet.ataque5c, sheet.ataque5d, sheet.ataque5e, sheet.ataque5f, sheet.ataque5g, sheet.ataque5h};
-            					decisivo = tonumber(string.sub(sheet.decisivo5, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano5);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque4a, sheet.ataque4b, sheet.ataque4c, sheet.ataque4d, sheet.ataque4e, sheet.ataque4f, sheet.ataque4g, sheet.ataque4h};
+            	
+            				decisivo = sheet.decisivo4 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano4 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico4 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome4;
+            				if armamento==nil then armamento = sheet.arma4 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao4);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
             					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico5);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao4 = municao-max+1;
             					end;
-            					
-            					armamento = sheet.nome5;
-            					municao = tonumber(sheet.municao5);
-            					if armamento==nil then
-            						armamento = sheet.arma5 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
-            						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao5 = municao-max+1;
-            						end;
-            					end;
+            				end;
         end, obj);
 
     obj._e_event13 = obj.button14:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano5);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					local armamento = sheet.nome5;
-            					if armamento==nil then
-            						armamento = sheet.arma5;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano4 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome4;
+            				if armamento==nil then armamento = sheet.arma4 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event14 = obj.button15:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico5);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					local armamento = sheet.nome5;
-            					if armamento==nil then
-            						armamento = sheet.arma5;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico4 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome4;
+            				if armamento==nil then armamento = sheet.arma4 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event15 = obj.button16:addEventListener("onClick",
         function (_)
-            i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque6a, sheet.ataque6b, sheet.ataque6c, sheet.ataque6d, sheet.ataque6e, sheet.ataque6f, sheet.ataque6g, sheet.ataque6h};
-            					decisivo = tonumber(string.sub(sheet.decisivo6, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano6);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico6);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					armamento = sheet.nome6;
-            					municao = tonumber(sheet.municao6);
-            					if armamento==nil then
-            						armamento = sheet.arma6 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome4 = null;
+            							sheet.arma4 = null;
+            							sheet.tipo4 = null;
+            							sheet.ataque4a = null;
+            							sheet.ataque4b = null;
+            							sheet.ataque4c = null;
+            							sheet.ataque4d = null;
+            							sheet.ataque4e = null;
+            							sheet.ataque4f = null;
+            							sheet.ataque4g = null;
+            							sheet.ataque4h = null;
+            							sheet.dano4 = null;
+            							sheet.danoCritico4 = null;
+            							sheet.decisivo4 = null;
+            							sheet.multiplicador4 = null;
+            							sheet.categoria4 = null;
+            							sheet.obs4 = null;
+            							sheet.municao4 = null;
+            							sheet.alcance4 = null;
+            							sheet.imagemArma4 = null;
             						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao6 = municao-max+1;
-            						end;
-            					end;
+            					end);
         end, obj);
 
     obj._e_event16 = obj.button17:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano6);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
+            i = 1;
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque5a, sheet.ataque5b, sheet.ataque5c, sheet.ataque5d, sheet.ataque5e, sheet.ataque5f, sheet.ataque5g, sheet.ataque5h};
+            	
+            				decisivo = sheet.decisivo5 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano5 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico5 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome5;
+            				if armamento==nil then armamento = sheet.arma5 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao5);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
             					end;
-            					
-            					local armamento = sheet.nome6;
-            					if armamento==nil then
-            						armamento = sheet.arma6;
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao5 = municao-max+1;
             					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            				end;
         end, obj);
 
     obj._e_event17 = obj.button18:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico6);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					local armamento = sheet.nome6;
-            					if armamento==nil then
-            						armamento = sheet.arma6;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano5 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome5;
+            				if armamento==nil then armamento = sheet.arma5 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event18 = obj.button19:addEventListener("onClick",
         function (_)
-            i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque7a, sheet.ataque7b, sheet.ataque7c, sheet.ataque7d, sheet.ataque7e, sheet.ataque7f, sheet.ataque7g, sheet.ataque7h};
-            					decisivo = tonumber(string.sub(sheet.decisivo7, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano7);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico7);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					armamento = sheet.nome7;
-            					municao = tonumber(sheet.municao7);
-            					if armamento==nil then
-            						armamento = sheet.arma7 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
-            						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao7 = municao-max+1;
-            						end;
-            					end;
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico5 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome5;
+            				if armamento==nil then armamento = sheet.arma5 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event19 = obj.button20:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano7);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					local armamento = sheet.nome7;
-            					if armamento==nil then
-            						armamento = sheet.arma7;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome5 = null;
+            							sheet.arma5 = null;
+            							sheet.tipo5 = null;
+            							sheet.ataque5a = null;
+            							sheet.ataque5b = null;
+            							sheet.ataque5c = null;
+            							sheet.ataque5d = null;
+            							sheet.ataque5e = null;
+            							sheet.ataque5f = null;
+            							sheet.ataque5g = null;
+            							sheet.ataque5h = null;
+            							sheet.dano5 = null;
+            							sheet.danoCritico5 = null;
+            							sheet.decisivo5 = null;
+            							sheet.multiplicador5 = null;
+            							sheet.categoria5 = null;
+            							sheet.obs5 = null;
+            							sheet.municao5 = null;
+            							sheet.alcance5 = null;
+            							sheet.imagemArma5 = null;
+            						end;
+            					end);
         end, obj);
 
     obj._e_event20 = obj.button21:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico7);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            i = 1;
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque6a, sheet.ataque6b, sheet.ataque6c, sheet.ataque6d, sheet.ataque6e, sheet.ataque6f, sheet.ataque6g, sheet.ataque6h};
+            	
+            				decisivo = sheet.decisivo6 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano6 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico6 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome6;
+            				if armamento==nil then armamento = sheet.arma6 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao6);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
             					end;
-            					
-            					local armamento = sheet.nome7;
-            					if armamento==nil then
-            						armamento = sheet.arma7;
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao6 = municao-max+1;
             					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            				end;
         end, obj);
 
     obj._e_event21 = obj.button22:addEventListener("onClick",
         function (_)
-            i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque8a, sheet.ataque8b, sheet.ataque8c, sheet.ataque8d, sheet.ataque8e, sheet.ataque8f, sheet.ataque8g, sheet.ataque8h};
-            					decisivo = tonumber(string.sub(sheet.decisivo8, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano8);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico8);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					armamento = sheet.nome8;
-            					municao = tonumber(sheet.municao8);
-            					if armamento==nil then
-            						armamento = sheet.arma8 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
-            						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao8 = municao-max+1;
-            						end;
-            					end;
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano6 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome6;
+            				if armamento==nil then armamento = sheet.arma6 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event22 = obj.button23:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano8);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					local armamento = sheet.nome8;
-            					if armamento==nil then
-            						armamento = sheet.arma8;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico6 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome6;
+            				if armamento==nil then armamento = sheet.arma6 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event23 = obj.button24:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico8);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					local armamento = sheet.nome8;
-            					if armamento==nil then
-            						armamento = sheet.arma8;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome6 = null;
+            							sheet.arma6 = null;
+            							sheet.tipo6 = null;
+            							sheet.ataque6a = null;
+            							sheet.ataque6b = null;
+            							sheet.ataque6c = null;
+            							sheet.ataque6d = null;
+            							sheet.ataque6e = null;
+            							sheet.ataque6f = null;
+            							sheet.ataque6g = null;
+            							sheet.ataque6h = null;
+            							sheet.dano6 = null;
+            							sheet.danoCritico6 = null;
+            							sheet.decisivo6 = null;
+            							sheet.multiplicador6 = null;
+            							sheet.categoria6 = null;
+            							sheet.obs6 = null;
+            							sheet.municao6 = null;
+            							sheet.alcance6 = null;
+            							sheet.imagemArma6 = null;
+            						end;
+            					end);
         end, obj);
 
     obj._e_event24 = obj.button25:addEventListener("onClick",
         function (_)
             i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque9a, sheet.ataque9b, sheet.ataque9c, sheet.ataque9d, sheet.ataque9e, sheet.ataque9f, sheet.ataque9g, sheet.ataque9h};
-            					decisivo = tonumber(string.sub(sheet.decisivo9, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano9);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque7a, sheet.ataque7b, sheet.ataque7c, sheet.ataque7d, sheet.ataque7e, sheet.ataque7f, sheet.ataque7g, sheet.ataque7h};
+            	
+            				decisivo = sheet.decisivo7 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano7 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico7 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome7;
+            				if armamento==nil then armamento = sheet.arma7 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao7);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
             					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico9);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao7 = municao-max+1;
             					end;
-            					
-            					armamento = sheet.nome9;
-            					municao = tonumber(sheet.municao9);
-            					if armamento==nil then
-            						armamento = sheet.arma9 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
-            						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao9 = municao-max+1;
-            						end;
-            					end;
+            				end;
         end, obj);
 
     obj._e_event25 = obj.button26:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano9);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					local armamento = sheet.nome9;
-            					if armamento==nil then
-            						armamento = sheet.arma9;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano7 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome7;
+            				if armamento==nil then armamento = sheet.arma7 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event26 = obj.button27:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico9);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					local armamento = sheet.nome9;
-            					if armamento==nil then
-            						armamento = sheet.arma9;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico7 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome7;
+            				if armamento==nil then armamento = sheet.arma7 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event27 = obj.button28:addEventListener("onClick",
         function (_)
-            i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque10a, sheet.ataque10b, sheet.ataque10c, sheet.ataque10d, sheet.ataque10e, sheet.ataque10f, sheet.ataque10g, sheet.ataque10h};
-            					decisivo = tonumber(string.sub(sheet.decisivo10, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano10);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico10);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					armamento = sheet.nome10;
-            					municao = tonumber(sheet.municao10);
-            					if armamento==nil then
-            						armamento = sheet.arma10 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome7 = null;
+            							sheet.arma7 = null;
+            							sheet.tipo7 = null;
+            							sheet.ataque7a = null;
+            							sheet.ataque7b = null;
+            							sheet.ataque7c = null;
+            							sheet.ataque7d = null;
+            							sheet.ataque7e = null;
+            							sheet.ataque7f = null;
+            							sheet.ataque7g = null;
+            							sheet.ataque7h = null;
+            							sheet.dano7 = null;
+            							sheet.danoCritico7 = null;
+            							sheet.decisivo7 = null;
+            							sheet.multiplicador7 = null;
+            							sheet.categoria7 = null;
+            							sheet.obs7 = null;
+            							sheet.municao7 = null;
+            							sheet.alcance7 = null;
+            							sheet.imagemArma7 = null;
             						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao10 = municao-max+1;
-            						end;
-            					end;
+            					end);
         end, obj);
 
     obj._e_event28 = obj.button29:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano10);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
+            i = 1;
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque8a, sheet.ataque8b, sheet.ataque8c, sheet.ataque8d, sheet.ataque8e, sheet.ataque8f, sheet.ataque8g, sheet.ataque8h};
+            	
+            				decisivo = sheet.decisivo8 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano8 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico8 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome8;
+            				if armamento==nil then armamento = sheet.arma8 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao8);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
             					end;
-            					
-            					local armamento = sheet.nome10;
-            					if armamento==nil then
-            						armamento = sheet.arma10;
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao8 = municao-max+1;
             					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            				end;
         end, obj);
 
     obj._e_event29 = obj.button30:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico10);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					local armamento = sheet.nome10;
-            					if armamento==nil then
-            						armamento = sheet.arma10;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano8 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome8;
+            				if armamento==nil then armamento = sheet.arma8 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event30 = obj.button31:addEventListener("onClick",
         function (_)
-            i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque11a, sheet.ataque11b, sheet.ataque11c, sheet.ataque11d, sheet.ataque11e, sheet.ataque11f, sheet.ataque11g, sheet.ataque11h};
-            					decisivo = tonumber(string.sub(sheet.decisivo11, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano11);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico11);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					armamento = sheet.nome11;
-            					municao = tonumber(sheet.municao11);
-            					if armamento==nil then
-            						armamento = sheet.arma11 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
-            						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao11 = municao-max+1;
-            						end;
-            					end;
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico8 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome8;
+            				if armamento==nil then armamento = sheet.arma8 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event31 = obj.button32:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano11);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					local armamento = sheet.nome11;
-            					if armamento==nil then
-            						armamento = sheet.arma11;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome8 = null;
+            							sheet.arma8 = null;
+            							sheet.tipo8 = null;
+            							sheet.ataque8a = null;
+            							sheet.ataque8b = null;
+            							sheet.ataque8c = null;
+            							sheet.ataque8d = null;
+            							sheet.ataque8e = null;
+            							sheet.ataque8f = null;
+            							sheet.ataque8g = null;
+            							sheet.ataque8h = null;
+            							sheet.dano8 = null;
+            							sheet.danoCritico8 = null;
+            							sheet.decisivo8 = null;
+            							sheet.multiplicador8 = null;
+            							sheet.categoria8 = null;
+            							sheet.obs8 = null;
+            							sheet.municao8 = null;
+            							sheet.alcance8 = null;
+            							sheet.imagemArma8 = null;
+            						end;
+            					end);
         end, obj);
 
     obj._e_event32 = obj.button33:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico11);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            i = 1;
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque9a, sheet.ataque9b, sheet.ataque9c, sheet.ataque9d, sheet.ataque9e, sheet.ataque9f, sheet.ataque9g, sheet.ataque9h};
+            	
+            				decisivo = sheet.decisivo9 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano9 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico9 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome9;
+            				if armamento==nil then armamento = sheet.arma9 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao9);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
             					end;
-            					
-            					local armamento = sheet.nome11;
-            					if armamento==nil then
-            						armamento = sheet.arma11;
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao9 = municao-max+1;
             					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            				end;
         end, obj);
 
     obj._e_event33 = obj.button34:addEventListener("onClick",
         function (_)
-            i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque12a, sheet.ataque12b, sheet.ataque12c, sheet.ataque12d, sheet.ataque12e, sheet.ataque12f, sheet.ataque12g, sheet.ataque12h};
-            					decisivo = tonumber(string.sub(sheet.decisivo12, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano12);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico12);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					armamento = sheet.nome12;
-            					municao = tonumber(sheet.municao12);
-            					if armamento==nil then
-            						armamento = sheet.arma12 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
-            						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao12 = municao-max+1;
-            						end;
-            					end;
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano9 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome9;
+            				if armamento==nil then armamento = sheet.arma9 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event34 = obj.button35:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano12);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					local armamento = sheet.nome12;
-            					if armamento==nil then
-            						armamento = sheet.arma12;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico9 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome9;
+            				if armamento==nil then armamento = sheet.arma9 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event35 = obj.button36:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico12);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					local armamento = sheet.nome12;
-            					if armamento==nil then
-            						armamento = sheet.arma12;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome9 = null;
+            							sheet.arma9 = null;
+            							sheet.tipo9 = null;
+            							sheet.ataque9a = null;
+            							sheet.ataque9b = null;
+            							sheet.ataque9c = null;
+            							sheet.ataque9d = null;
+            							sheet.ataque9e = null;
+            							sheet.ataque9f = null;
+            							sheet.ataque9g = null;
+            							sheet.ataque9h = null;
+            							sheet.dano9 = null;
+            							sheet.danoCritico9 = null;
+            							sheet.decisivo9 = null;
+            							sheet.multiplicador9 = null;
+            							sheet.categoria9 = null;
+            							sheet.obs9 = null;
+            							sheet.municao9 = null;
+            							sheet.alcance9 = null;
+            							sheet.imagemArma9 = null;
+            						end;
+            					end);
         end, obj);
 
     obj._e_event36 = obj.button37:addEventListener("onClick",
         function (_)
             i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque13a, sheet.ataque13b, sheet.ataque13c, sheet.ataque13d, sheet.ataque13e, sheet.ataque13f, sheet.ataque13g, sheet.ataque13h};
-            					decisivo = tonumber(string.sub(sheet.decisivo13, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano13);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque10a, sheet.ataque10b, sheet.ataque10c, sheet.ataque10d, sheet.ataque10e, sheet.ataque10f, sheet.ataque10g, sheet.ataque10h};
+            	
+            				decisivo = sheet.decisivo10 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano10 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico10 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome10;
+            				if armamento==nil then armamento = sheet.arma10 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao10);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
             					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico13);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao10 = municao-max+1;
             					end;
-            					
-            					armamento = sheet.nome13;
-            					municao = tonumber(sheet.municao13);
-            					if armamento==nil then
-            						armamento = sheet.arma13 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
-            						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao13 = municao-max+1;
-            						end;
-            					end;
+            				end;
         end, obj);
 
     obj._e_event37 = obj.button38:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano13);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					local armamento = sheet.nome13;
-            					if armamento==nil then
-            						armamento = sheet.arma13;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano10 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome10;
+            				if armamento==nil then armamento = sheet.arma10 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event38 = obj.button39:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico13);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					local armamento = sheet.nome13;
-            					if armamento==nil then
-            						armamento = sheet.arma13;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico10 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome10;
+            				if armamento==nil then armamento = sheet.arma10 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event39 = obj.button40:addEventListener("onClick",
         function (_)
-            i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque14a, sheet.ataque14b, sheet.ataque14c, sheet.ataque14d, sheet.ataque14e, sheet.ataque14f, sheet.ataque14g, sheet.ataque14h};
-            					decisivo = tonumber(string.sub(sheet.decisivo14, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano14);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico14);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					armamento = sheet.nome14;
-            					municao = tonumber(sheet.municao14);
-            					if armamento==nil then
-            						armamento = sheet.arma14 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome10 = null;
+            							sheet.arma10 = null;
+            							sheet.tipo10 = null;
+            							sheet.ataque10a = null;
+            							sheet.ataque10b = null;
+            							sheet.ataque10c = null;
+            							sheet.ataque10d = null;
+            							sheet.ataque10e = null;
+            							sheet.ataque10f = null;
+            							sheet.ataque10g = null;
+            							sheet.ataque10h = null;
+            							sheet.dano10 = null;
+            							sheet.danoCritico10 = null;
+            							sheet.decisivo10 = null;
+            							sheet.multiplicador10 = null;
+            							sheet.categoria10 = null;
+            							sheet.obs10 = null;
+            							sheet.municao10 = null;
+            							sheet.alcance10 = null;
+            							sheet.imagemArma10 = null;
             						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao14 = municao-max+1;
-            						end;
-            					end;
+            					end);
         end, obj);
 
     obj._e_event40 = obj.button41:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano14);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
+            i = 1;
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque11a, sheet.ataque11b, sheet.ataque11c, sheet.ataque11d, sheet.ataque11e, sheet.ataque11f, sheet.ataque11g, sheet.ataque11h};
+            	
+            				decisivo = sheet.decisivo11 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano11 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico11 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome11;
+            				if armamento==nil then armamento = sheet.arma11 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao11);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
             					end;
-            					
-            					local armamento = sheet.nome14;
-            					if armamento==nil then
-            						armamento = sheet.arma14;
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao11 = municao-max+1;
             					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            				end;
         end, obj);
 
     obj._e_event41 = obj.button42:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico14);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					local armamento = sheet.nome14;
-            					if armamento==nil then
-            						armamento = sheet.arma14;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano11 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome11;
+            				if armamento==nil then armamento = sheet.arma11 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event42 = obj.button43:addEventListener("onClick",
         function (_)
-            i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque15a, sheet.ataque15b, sheet.ataque15c, sheet.ataque15d, sheet.ataque15e, sheet.ataque15f, sheet.ataque15g, sheet.ataque15h};
-            					decisivo = tonumber(string.sub(sheet.decisivo15, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano15);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico15);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					armamento = sheet.nome15;
-            					municao = tonumber(sheet.municao15);
-            					if armamento==nil then
-            						armamento = sheet.arma15 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
-            						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao15 = municao-max+1;
-            						end;
-            					end;
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico11 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome11;
+            				if armamento==nil then armamento = sheet.arma11 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event43 = obj.button44:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano15);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					local armamento = sheet.nome15;
-            					if armamento==nil then
-            						armamento = sheet.arma15;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome11 = null;
+            							sheet.arma11 = null;
+            							sheet.tipo11 = null;
+            							sheet.ataque11a = null;
+            							sheet.ataque11b = null;
+            							sheet.ataque11c = null;
+            							sheet.ataque11d = null;
+            							sheet.ataque11e = null;
+            							sheet.ataque11f = null;
+            							sheet.ataque11g = null;
+            							sheet.ataque11h = null;
+            							sheet.dano11 = null;
+            							sheet.danoCritico11 = null;
+            							sheet.decisivo11 = null;
+            							sheet.multiplicador11 = null;
+            							sheet.categoria11 = null;
+            							sheet.obs11 = null;
+            							sheet.municao11 = null;
+            							sheet.alcance11 = null;
+            							sheet.imagemArma11 = null;
+            						end;
+            					end);
         end, obj);
 
     obj._e_event44 = obj.button45:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico15);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            i = 1;
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque12a, sheet.ataque12b, sheet.ataque12c, sheet.ataque12d, sheet.ataque12e, sheet.ataque12f, sheet.ataque12g, sheet.ataque12h};
+            	
+            				decisivo = sheet.decisivo12 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano12 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico12 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome12;
+            				if armamento==nil then armamento = sheet.arma12 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao12);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
             					end;
-            					
-            					local armamento = sheet.nome15;
-            					if armamento==nil then
-            						armamento = sheet.arma15;
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao12 = municao-max+1;
             					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            				end;
         end, obj);
 
     obj._e_event45 = obj.button46:addEventListener("onClick",
         function (_)
-            i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque16a, sheet.ataque16b, sheet.ataque16c, sheet.ataque16d, sheet.ataque16e, sheet.ataque16f, sheet.ataque16g, sheet.ataque16h};
-            					decisivo = tonumber(string.sub(sheet.decisivo16, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano16);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico16);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					armamento = sheet.nome16;
-            					municao = tonumber(sheet.municao16);
-            					if armamento==nil then
-            						armamento = sheet.arma16 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
-            						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao16 = municao-max+1;
-            						end;
-            					end;
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano12 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome12;
+            				if armamento==nil then armamento = sheet.arma12 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event46 = obj.button47:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano16);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					local armamento = sheet.nome16;
-            					if armamento==nil then
-            						armamento = sheet.arma16;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico12 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome12;
+            				if armamento==nil then armamento = sheet.arma12 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event47 = obj.button48:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico16);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					local armamento = sheet.nome16;
-            					if armamento==nil then
-            						armamento = sheet.arma16;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome12 = null;
+            							sheet.arma12 = null;
+            							sheet.tipo12 = null;
+            							sheet.ataque12a = null;
+            							sheet.ataque12b = null;
+            							sheet.ataque12c = null;
+            							sheet.ataque12d = null;
+            							sheet.ataque12e = null;
+            							sheet.ataque12f = null;
+            							sheet.ataque12g = null;
+            							sheet.ataque12h = null;
+            							sheet.dano12 = null;
+            							sheet.danoCritico12 = null;
+            							sheet.decisivo12 = null;
+            							sheet.multiplicador12 = null;
+            							sheet.categoria12 = null;
+            							sheet.obs12 = null;
+            							sheet.municao12 = null;
+            							sheet.alcance12 = null;
+            							sheet.imagemArma12 = null;
+            						end;
+            					end);
         end, obj);
 
     obj._e_event48 = obj.button49:addEventListener("onClick",
         function (_)
             i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque17a, sheet.ataque17b, sheet.ataque17c, sheet.ataque17d, sheet.ataque17e, sheet.ataque17f, sheet.ataque17g, sheet.ataque17h};
-            					decisivo = tonumber(string.sub(sheet.decisivo17, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano17);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque13a, sheet.ataque13b, sheet.ataque13c, sheet.ataque13d, sheet.ataque13e, sheet.ataque13f, sheet.ataque13g, sheet.ataque13h};
+            	
+            				decisivo = sheet.decisivo13 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano13 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico13 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome13;
+            				if armamento==nil then armamento = sheet.arma13 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao13);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
             					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico17);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao13 = municao-max+1;
             					end;
-            					
-            					armamento = sheet.nome17;
-            					municao = tonumber(sheet.municao17);
-            					if armamento==nil then
-            						armamento = sheet.arma17 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
-            						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao17 = municao-max+1;
-            						end;
-            					end;
+            				end;
         end, obj);
 
     obj._e_event49 = obj.button50:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano17);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					local armamento = sheet.nome17;
-            					if armamento==nil then
-            						armamento = sheet.arma17;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano13 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome13;
+            				if armamento==nil then armamento = sheet.arma13 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event50 = obj.button51:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico17);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					local armamento = sheet.nome17;
-            					if armamento==nil then
-            						armamento = sheet.arma17;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico13 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome13;
+            				if armamento==nil then armamento = sheet.arma13 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event51 = obj.button52:addEventListener("onClick",
         function (_)
-            i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque18a, sheet.ataque18b, sheet.ataque18c, sheet.ataque18d, sheet.ataque18e, sheet.ataque18f, sheet.ataque18g, sheet.ataque18h};
-            					decisivo = tonumber(string.sub(sheet.decisivo18, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano18);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico18);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					armamento = sheet.nome18;
-            					municao = tonumber(sheet.municao18);
-            					if armamento==nil then
-            						armamento = sheet.arma18 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome13 = null;
+            							sheet.arma13 = null;
+            							sheet.tipo13 = null;
+            							sheet.ataque13a = null;
+            							sheet.ataque13b = null;
+            							sheet.ataque13c = null;
+            							sheet.ataque13d = null;
+            							sheet.ataque13e = null;
+            							sheet.ataque13f = null;
+            							sheet.ataque13g = null;
+            							sheet.ataque13h = null;
+            							sheet.dano13 = null;
+            							sheet.danoCritico13 = null;
+            							sheet.decisivo13 = null;
+            							sheet.multiplicador13 = null;
+            							sheet.categoria13 = null;
+            							sheet.obs13 = null;
+            							sheet.municao13 = null;
+            							sheet.alcance13 = null;
+            							sheet.imagemArma13 = null;
             						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao18 = municao-max+1;
-            						end;
-            					end;
+            					end);
         end, obj);
 
     obj._e_event52 = obj.button53:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano18);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
+            i = 1;
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque14a, sheet.ataque14b, sheet.ataque14c, sheet.ataque14d, sheet.ataque14e, sheet.ataque14f, sheet.ataque14g, sheet.ataque14h};
+            	
+            				decisivo = sheet.decisivo14 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano14 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico14 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome14;
+            				if armamento==nil then armamento = sheet.arma14 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao14);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
             					end;
-            					
-            					local armamento = sheet.nome18;
-            					if armamento==nil then
-            						armamento = sheet.arma18;
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao14 = municao-max+1;
             					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            				end;
         end, obj);
 
     obj._e_event53 = obj.button54:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico18);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					local armamento = sheet.nome18;
-            					if armamento==nil then
-            						armamento = sheet.arma18;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano14 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome14;
+            				if armamento==nil then armamento = sheet.arma14 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event54 = obj.button55:addEventListener("onClick",
         function (_)
-            i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque19a, sheet.ataque19b, sheet.ataque19c, sheet.ataque19d, sheet.ataque19e, sheet.ataque19f, sheet.ataque19g, sheet.ataque19h};
-            					decisivo = tonumber(string.sub(sheet.decisivo19, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano19);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico19);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					armamento = sheet.nome19;
-            					municao = tonumber(sheet.municao19);
-            					if armamento==nil then
-            						armamento = sheet.arma19 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
-            						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao19 = municao-max+1;
-            						end;
-            					end;
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico14 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome14;
+            				if armamento==nil then armamento = sheet.arma14 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event55 = obj.button56:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano19);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					local armamento = sheet.nome19;
-            					if armamento==nil then
-            						armamento = sheet.arma19;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome14 = null;
+            							sheet.arma14 = null;
+            							sheet.tipo14 = null;
+            							sheet.ataque14a = null;
+            							sheet.ataque14b = null;
+            							sheet.ataque14c = null;
+            							sheet.ataque14d = null;
+            							sheet.ataque14e = null;
+            							sheet.ataque14f = null;
+            							sheet.ataque14g = null;
+            							sheet.ataque14h = null;
+            							sheet.dano14 = null;
+            							sheet.danoCritico14 = null;
+            							sheet.decisivo14 = null;
+            							sheet.multiplicador14 = null;
+            							sheet.categoria14 = null;
+            							sheet.obs14 = null;
+            							sheet.municao14 = null;
+            							sheet.alcance14 = null;
+            							sheet.imagemArma14 = null;
+            						end;
+            					end);
         end, obj);
 
     obj._e_event56 = obj.button57:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico19);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            i = 1;
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque15a, sheet.ataque15b, sheet.ataque15c, sheet.ataque15d, sheet.ataque15e, sheet.ataque15f, sheet.ataque15g, sheet.ataque15h};
+            	
+            				decisivo = sheet.decisivo15 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano15 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico15 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome15;
+            				if armamento==nil then armamento = sheet.arma15 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao15);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
             					end;
-            					
-            					local armamento = sheet.nome19;
-            					if armamento==nil then
-            						armamento = sheet.arma19;
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao15 = municao-max+1;
             					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            				end;
         end, obj);
 
     obj._e_event57 = obj.button58:addEventListener("onClick",
         function (_)
-            i = 1;
-            					max = 1;
-            					danoAlvo1 = 0;
-            					danoAlvo2 = 0;
-            					danoAlvo3 = 0;
-            					danoAlvo4 = 0;
-            					danoAlvo5 = 0;
-            					fimRolagem = false;
-            					
-            					array = {sheet.ataque20a, sheet.ataque20b, sheet.ataque20c, sheet.ataque20d, sheet.ataque20e, sheet.ataque20f, sheet.ataque20g, sheet.ataque20h};
-            					decisivo = tonumber(string.sub(sheet.decisivo20, 1, 2));
-            					
-            					dano = Firecast.interpretarRolagem(sheet.dano20);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					danoCritico = Firecast.interpretarRolagem(sheet.danoCritico20);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
-            					end;
-            					
-            					armamento = sheet.nome20;
-            					municao = tonumber(sheet.municao20);
-            					if armamento==nil then
-            						armamento = sheet.arma20 or "arma";
-            					end;
-            					
-            					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            						while array[max]~=nil do
-            						max = max + 1;
-            					end;
-            					
-            					local mod = tonumber(array[1]);
-            					if mod~=nil then
-            						rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
-            						if sheet.buffAtaque ~= nil then
-            							rolagem = rolagem:concatenar(sheet.buffAtaque);
-            						end;
-            						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"), 
-            							function (rolado)
-            								pos(rolado)
-            							end);
-            						if municao~=nil then
-            							sheet.municao20 = municao-max+1;
-            						end;
-            					end;
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano15 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome15;
+            				if armamento==nil then armamento = sheet.arma15 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event58 = obj.button59:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local dano = Firecast.interpretarRolagem(sheet.dano20);
-            					if sheet.buffDano ~= nil then
-            						dano = dano:concatenar(sheet.buffDano);
-            					end;
-            					
-            					local armamento = sheet.nome20;
-            					if armamento==nil then
-            						armamento = sheet.arma20;
-            					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(dano, "Dano" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico15 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome15;
+            				if armamento==nil then armamento = sheet.arma15 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
         end, obj);
 
     obj._e_event59 = obj.button60:addEventListener("onClick",
         function (_)
-            local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-            					local danoCritico = Firecast.interpretarRolagem(sheet.danoCritico20);
-            					if sheet.buffDanoCritico ~= nil then
-            						danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome15 = null;
+            							sheet.arma15 = null;
+            							sheet.tipo15 = null;
+            							sheet.ataque15a = null;
+            							sheet.ataque15b = null;
+            							sheet.ataque15c = null;
+            							sheet.ataque15d = null;
+            							sheet.ataque15e = null;
+            							sheet.ataque15f = null;
+            							sheet.ataque15g = null;
+            							sheet.ataque15h = null;
+            							sheet.dano15 = null;
+            							sheet.danoCritico15 = null;
+            							sheet.decisivo15 = null;
+            							sheet.multiplicador15 = null;
+            							sheet.categoria15 = null;
+            							sheet.obs15 = null;
+            							sheet.municao15 = null;
+            							sheet.alcance15 = null;
+            							sheet.imagemArma15 = null;
+            						end;
+            					end);
+        end, obj);
+
+    obj._e_event60 = obj.button61:addEventListener("onClick",
+        function (_)
+            i = 1;
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque16a, sheet.ataque16b, sheet.ataque16c, sheet.ataque16d, sheet.ataque16e, sheet.ataque16f, sheet.ataque16g, sheet.ataque16h};
+            	
+            				decisivo = sheet.decisivo16 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano16 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico16 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome16;
+            				if armamento==nil then armamento = sheet.arma16 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao16);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
             					end;
-            					
-            					local armamento = sheet.nome20;
-            					if armamento==nil then
-            						armamento = sheet.arma20;
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao16 = municao-max+1;
             					end;
-            					
-            					mesaDoPersonagem.activeChat:rolarDados(danoCritico, "Dano Critico" .. " com " .. armamento .. " de " .. (sheet.nome or "nome"));
+            				end;
+        end, obj);
+
+    obj._e_event61 = obj.button62:addEventListener("onClick",
+        function (_)
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano16 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome16;
+            				if armamento==nil then armamento = sheet.arma16 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
+        end, obj);
+
+    obj._e_event62 = obj.button63:addEventListener("onClick",
+        function (_)
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico16 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome16;
+            				if armamento==nil then armamento = sheet.arma16 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
+        end, obj);
+
+    obj._e_event63 = obj.button64:addEventListener("onClick",
+        function (_)
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome16 = null;
+            							sheet.arma16 = null;
+            							sheet.tipo16 = null;
+            							sheet.ataque16a = null;
+            							sheet.ataque16b = null;
+            							sheet.ataque16c = null;
+            							sheet.ataque16d = null;
+            							sheet.ataque16e = null;
+            							sheet.ataque16f = null;
+            							sheet.ataque16g = null;
+            							sheet.ataque16h = null;
+            							sheet.dano16 = null;
+            							sheet.danoCritico16 = null;
+            							sheet.decisivo16 = null;
+            							sheet.multiplicador16 = null;
+            							sheet.categoria16 = null;
+            							sheet.obs16 = null;
+            							sheet.municao16 = null;
+            							sheet.alcance16 = null;
+            							sheet.imagemArma16 = null;
+            						end;
+            					end);
+        end, obj);
+
+    obj._e_event64 = obj.button65:addEventListener("onClick",
+        function (_)
+            i = 1;
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque17a, sheet.ataque17b, sheet.ataque17c, sheet.ataque17d, sheet.ataque17e, sheet.ataque17f, sheet.ataque17g, sheet.ataque17h};
+            	
+            				decisivo = sheet.decisivo17 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano17 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico17 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome17;
+            				if armamento==nil then armamento = sheet.arma17 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao17);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
+            					end;
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao17 = municao-max+1;
+            					end;
+            				end;
+        end, obj);
+
+    obj._e_event65 = obj.button66:addEventListener("onClick",
+        function (_)
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano17 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome17;
+            				if armamento==nil then armamento = sheet.arma17 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
+        end, obj);
+
+    obj._e_event66 = obj.button67:addEventListener("onClick",
+        function (_)
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico17 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome17;
+            				if armamento==nil then armamento = sheet.arma17 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
+        end, obj);
+
+    obj._e_event67 = obj.button68:addEventListener("onClick",
+        function (_)
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome17 = null;
+            							sheet.arma17 = null;
+            							sheet.tipo17 = null;
+            							sheet.ataque17a = null;
+            							sheet.ataque17b = null;
+            							sheet.ataque17c = null;
+            							sheet.ataque17d = null;
+            							sheet.ataque17e = null;
+            							sheet.ataque17f = null;
+            							sheet.ataque17g = null;
+            							sheet.ataque17h = null;
+            							sheet.dano17 = null;
+            							sheet.danoCritico17 = null;
+            							sheet.decisivo17 = null;
+            							sheet.multiplicador17 = null;
+            							sheet.categoria17 = null;
+            							sheet.obs17 = null;
+            							sheet.municao17 = null;
+            							sheet.alcance17 = null;
+            							sheet.imagemArma17 = null;
+            						end;
+            					end);
+        end, obj);
+
+    obj._e_event68 = obj.button69:addEventListener("onClick",
+        function (_)
+            i = 1;
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque18a, sheet.ataque18b, sheet.ataque18c, sheet.ataque18d, sheet.ataque18e, sheet.ataque18f, sheet.ataque18g, sheet.ataque18h};
+            	
+            				decisivo = sheet.decisivo18 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano18 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico18 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome18;
+            				if armamento==nil then armamento = sheet.arma18 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao18);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
+            					end;
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao18 = municao-max+1;
+            					end;
+            				end;
+        end, obj);
+
+    obj._e_event69 = obj.button70:addEventListener("onClick",
+        function (_)
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano18 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome18;
+            				if armamento==nil then armamento = sheet.arma18 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
+        end, obj);
+
+    obj._e_event70 = obj.button71:addEventListener("onClick",
+        function (_)
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico18 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome18;
+            				if armamento==nil then armamento = sheet.arma18 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
+        end, obj);
+
+    obj._e_event71 = obj.button72:addEventListener("onClick",
+        function (_)
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome18 = null;
+            							sheet.arma18 = null;
+            							sheet.tipo18 = null;
+            							sheet.ataque18a = null;
+            							sheet.ataque18b = null;
+            							sheet.ataque18c = null;
+            							sheet.ataque18d = null;
+            							sheet.ataque18e = null;
+            							sheet.ataque18f = null;
+            							sheet.ataque18g = null;
+            							sheet.ataque18h = null;
+            							sheet.dano18 = null;
+            							sheet.danoCritico18 = null;
+            							sheet.decisivo18 = null;
+            							sheet.multiplicador18 = null;
+            							sheet.categoria18 = null;
+            							sheet.obs18 = null;
+            							sheet.municao18 = null;
+            							sheet.alcance18 = null;
+            							sheet.imagemArma18 = null;
+            						end;
+            					end);
+        end, obj);
+
+    obj._e_event72 = obj.button73:addEventListener("onClick",
+        function (_)
+            i = 1;
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque19a, sheet.ataque19b, sheet.ataque19c, sheet.ataque19d, sheet.ataque19e, sheet.ataque19f, sheet.ataque19g, sheet.ataque19h};
+            	
+            				decisivo = sheet.decisivo19 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano19 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico19 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome19;
+            				if armamento==nil then armamento = sheet.arma19 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao19);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
+            					end;
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao19 = municao-max+1;
+            					end;
+            				end;
+        end, obj);
+
+    obj._e_event73 = obj.button74:addEventListener("onClick",
+        function (_)
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano19 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome19;
+            				if armamento==nil then armamento = sheet.arma19 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
+        end, obj);
+
+    obj._e_event74 = obj.button75:addEventListener("onClick",
+        function (_)
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico19 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome19;
+            				if armamento==nil then armamento = sheet.arma19 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
+        end, obj);
+
+    obj._e_event75 = obj.button76:addEventListener("onClick",
+        function (_)
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome19 = null;
+            							sheet.arma19 = null;
+            							sheet.tipo19 = null;
+            							sheet.ataque19a = null;
+            							sheet.ataque19b = null;
+            							sheet.ataque19c = null;
+            							sheet.ataque19d = null;
+            							sheet.ataque19e = null;
+            							sheet.ataque19f = null;
+            							sheet.ataque19g = null;
+            							sheet.ataque19h = null;
+            							sheet.dano19 = null;
+            							sheet.danoCritico19 = null;
+            							sheet.decisivo19 = null;
+            							sheet.multiplicador19 = null;
+            							sheet.categoria19 = null;
+            							sheet.obs19 = null;
+            							sheet.municao19 = null;
+            							sheet.alcance19 = null;
+            							sheet.imagemArma19 = null;
+            						end;
+            					end);
+        end, obj);
+
+    obj._e_event76 = obj.button77:addEventListener("onClick",
+        function (_)
+            i = 1;
+            				max = 1;
+            				fimRolagem = false;
+            				
+            				array = {sheet.ataque20a, sheet.ataque20b, sheet.ataque20c, sheet.ataque20d, sheet.ataque20e, sheet.ataque20f, sheet.ataque20g, sheet.ataque20h};
+            	
+            				decisivo = sheet.decisivo20 or "20";
+            				decisivo = tonumber(string.sub(decisivo, 1, 2));
+            				
+            				dano = sheet.dano20 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				danoCritico = sheet.danoCritico20 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				armamento = sheet.nome20;
+            				if armamento==nil then armamento = sheet.arma20 end;
+            				if armamento==nil then armamento = "arma" end;
+            
+            				municao = tonumber(sheet.municao20);
+            				
+            				local mesa = Firecast.getMesaDe(sheet);
+            				while array[max]~=nil do
+            					max = max + 1;
+            				end;
+            				
+            				local ataque = tonumber(array[1]) or 0;
+            				if ataque~=nil then
+            					rolagem = Firecast.interpretarRolagem("1d20 + " .. ataque);
+            					if sheet.buffAtaque ~= nil then
+            						rolagem = rolagem:concatenar(sheet.buffAtaque);
+            					end;
+            
+            					mesa.activeChat:rolarDados(rolagem, "Ataque " .. i .. " com " .. armamento .. " de " .. (sheet.nome or "NOME"), 
+            						function (rolado)
+            							pos(rolado)
+            						end);
+            					if municao~=nil then
+            						sheet.municao20 = municao-max+1;
+            					end;
+            				end;
+        end, obj);
+
+    obj._e_event77 = obj.button78:addEventListener("onClick",
+        function (_)
+            local mesa = Firecast.getMesaDe(sheet);
+            				local dano = sheet.dano20 or "1d1";
+            				dano = Firecast.interpretarRolagem(dano);
+            				if sheet.buffDano ~= nil then
+            					dano = dano:concatenar(sheet.buffDano);
+            				end;
+            				
+            				local armamento = sheet.nome20;
+            				if armamento==nil then armamento = sheet.arma20 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(dano, "Dano com " .. armamento .. " de " .. (sheet.nome or "NOME"));
+        end, obj);
+
+    obj._e_event78 = obj.button79:addEventListener("onClick",
+        function (_)
+            local mesa = Firecast.getMesaDe(sheet);
+            				local danoCritico = sheet.danoCritico20 or "1d1";
+            				danoCritico = Firecast.interpretarRolagem(danoCritico);
+            				if sheet.buffDanoCritico ~= nil then
+            					danoCritico = danoCritico:concatenar(sheet.buffDanoCritico);
+            				end;
+            				
+            				local armamento = sheet.nome20;
+            				if armamento==nil then armamento = sheet.arma20 end;
+            				if armamento==nil then armamento = "arma" end;
+            				
+            				mesa.activeChat:rolarDados(danoCritico, "Dano Critico com " .. armamento .. " de " .. (sheet.nome or "NOME"));
+        end, obj);
+
+    obj._e_event79 = obj.button80:addEventListener("onClick",
+        function (_)
+            Dialogs.confirmYesNo("Deseja realmente apagar esse ataque?",
+            					function (confirmado)
+            						if confirmado then
+            							sheet.nome20 = null;
+            							sheet.arma20 = null;
+            							sheet.tipo20 = null;
+            							sheet.ataque20a = null;
+            							sheet.ataque20b = null;
+            							sheet.ataque20c = null;
+            							sheet.ataque20d = null;
+            							sheet.ataque20e = null;
+            							sheet.ataque20f = null;
+            							sheet.ataque20g = null;
+            							sheet.ataque20h = null;
+            							sheet.dano20 = null;
+            							sheet.danoCritico20 = null;
+            							sheet.decisivo20 = null;
+            							sheet.multiplicador20 = null;
+            							sheet.categoria20 = null;
+            							sheet.obs20 = null;
+            							sheet.municao20 = null;
+            							sheet.alcance20 = null;
+            							sheet.imagemArma20 = null;
+            						end;
+            					end);
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event79);
+        __o_rrpgObjs.removeEventListenerById(self._e_event78);
+        __o_rrpgObjs.removeEventListenerById(self._e_event77);
+        __o_rrpgObjs.removeEventListenerById(self._e_event76);
+        __o_rrpgObjs.removeEventListenerById(self._e_event75);
+        __o_rrpgObjs.removeEventListenerById(self._e_event74);
+        __o_rrpgObjs.removeEventListenerById(self._e_event73);
+        __o_rrpgObjs.removeEventListenerById(self._e_event72);
+        __o_rrpgObjs.removeEventListenerById(self._e_event71);
+        __o_rrpgObjs.removeEventListenerById(self._e_event70);
+        __o_rrpgObjs.removeEventListenerById(self._e_event69);
+        __o_rrpgObjs.removeEventListenerById(self._e_event68);
+        __o_rrpgObjs.removeEventListenerById(self._e_event67);
+        __o_rrpgObjs.removeEventListenerById(self._e_event66);
+        __o_rrpgObjs.removeEventListenerById(self._e_event65);
+        __o_rrpgObjs.removeEventListenerById(self._e_event64);
+        __o_rrpgObjs.removeEventListenerById(self._e_event63);
+        __o_rrpgObjs.removeEventListenerById(self._e_event62);
+        __o_rrpgObjs.removeEventListenerById(self._e_event61);
+        __o_rrpgObjs.removeEventListenerById(self._e_event60);
         __o_rrpgObjs.removeEventListenerById(self._e_event59);
         __o_rrpgObjs.removeEventListenerById(self._e_event58);
         __o_rrpgObjs.removeEventListenerById(self._e_event57);
@@ -8945,6 +9726,7 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.label43 ~= nil then self.label43:destroy(); self.label43 = nil; end;
         if self.edit33 ~= nil then self.edit33:destroy(); self.edit33 = nil; end;
         if self.label97 ~= nil then self.label97:destroy(); self.label97 = nil; end;
+        if self.button67 ~= nil then self.button67:destroy(); self.button67 = nil; end;
         if self.edit29 ~= nil then self.edit29:destroy(); self.edit29 = nil; end;
         if self.label77 ~= nil then self.label77:destroy(); self.label77 = nil; end;
         if self.label128 ~= nil then self.label128:destroy(); self.label128 = nil; end;
@@ -8994,12 +9776,13 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.label163 ~= nil then self.label163:destroy(); self.label163 = nil; end;
         if self.edit156 ~= nil then self.edit156:destroy(); self.edit156 = nil; end;
         if self.edit245 ~= nil then self.edit245:destroy(); self.edit245 = nil; end;
+        if self.button79 ~= nil then self.button79:destroy(); self.button79 = nil; end;
         if self.edit267 ~= nil then self.edit267:destroy(); self.edit267 = nil; end;
         if self.label195 ~= nil then self.label195:destroy(); self.label195 = nil; end;
         if self.label82 ~= nil then self.label82:destroy(); self.label82 = nil; end;
         if self.button37 ~= nil then self.button37:destroy(); self.button37 = nil; end;
-        if self.image11 ~= nil then self.image11:destroy(); self.image11 = nil; end;
         if self.button36 ~= nil then self.button36:destroy(); self.button36 = nil; end;
+        if self.image11 ~= nil then self.image11:destroy(); self.image11 = nil; end;
         if self.rectangle33 ~= nil then self.rectangle33:destroy(); self.rectangle33 = nil; end;
         if self.label162 ~= nil then self.label162:destroy(); self.label162 = nil; end;
         if self.edit69 ~= nil then self.edit69:destroy(); self.edit69 = nil; end;
@@ -9035,8 +9818,10 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.edit235 ~= nil then self.edit235:destroy(); self.edit235 = nil; end;
         if self.label109 ~= nil then self.label109:destroy(); self.label109 = nil; end;
         if self.label106 ~= nil then self.label106:destroy(); self.label106 = nil; end;
+        if self.button66 ~= nil then self.button66:destroy(); self.button66 = nil; end;
         if self.label103 ~= nil then self.label103:destroy(); self.label103 = nil; end;
         if self.edit66 ~= nil then self.edit66:destroy(); self.edit66 = nil; end;
+        if self.button73 ~= nil then self.button73:destroy(); self.button73 = nil; end;
         if self.edit347 ~= nil then self.edit347:destroy(); self.edit347 = nil; end;
         if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.edit343 ~= nil then self.edit343:destroy(); self.edit343 = nil; end;
@@ -9093,6 +9878,7 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.label159 ~= nil then self.label159:destroy(); self.label159 = nil; end;
         if self.edit161 ~= nil then self.edit161:destroy(); self.edit161 = nil; end;
         if self.edit241 ~= nil then self.edit241:destroy(); self.edit241 = nil; end;
+        if self.button72 ~= nil then self.button72:destroy(); self.button72 = nil; end;
         if self.edit62 ~= nil then self.edit62:destroy(); self.edit62 = nil; end;
         if self.edit330 ~= nil then self.edit330:destroy(); self.edit330 = nil; end;
         if self.edit74 ~= nil then self.edit74:destroy(); self.edit74 = nil; end;
@@ -9108,10 +9894,11 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.label200 ~= nil then self.label200:destroy(); self.label200 = nil; end;
         if self.rectangle9 ~= nil then self.rectangle9:destroy(); self.rectangle9 = nil; end;
         if self.edit121 ~= nil then self.edit121:destroy(); self.edit121 = nil; end;
+        if self.button68 ~= nil then self.button68:destroy(); self.button68 = nil; end;
         if self.button51 ~= nil then self.button51:destroy(); self.button51 = nil; end;
         if self.edit263 ~= nil then self.edit263:destroy(); self.edit263 = nil; end;
-        if self.edit163 ~= nil then self.edit163:destroy(); self.edit163 = nil; end;
         if self.button28 ~= nil then self.button28:destroy(); self.button28 = nil; end;
+        if self.edit163 ~= nil then self.edit163:destroy(); self.edit163 = nil; end;
         if self.edit199 ~= nil then self.edit199:destroy(); self.edit199 = nil; end;
         if self.edit285 ~= nil then self.edit285:destroy(); self.edit285 = nil; end;
         if self.edit360 ~= nil then self.edit360:destroy(); self.edit360 = nil; end;
@@ -9159,6 +9946,7 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.edit187 ~= nil then self.edit187:destroy(); self.edit187 = nil; end;
         if self.edit103 ~= nil then self.edit103:destroy(); self.edit103 = nil; end;
         if self.image12 ~= nil then self.image12:destroy(); self.image12 = nil; end;
+        if self.button74 ~= nil then self.button74:destroy(); self.button74 = nil; end;
         if self.edit370 ~= nil then self.edit370:destroy(); self.edit370 = nil; end;
         if self.label37 ~= nil then self.label37:destroy(); self.label37 = nil; end;
         if self.edit127 ~= nil then self.edit127:destroy(); self.edit127 = nil; end;
@@ -9201,14 +9989,16 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
         if self.label132 ~= nil then self.label132:destroy(); self.label132 = nil; end;
         if self.edit225 ~= nil then self.edit225:destroy(); self.edit225 = nil; end;
+        if self.button77 ~= nil then self.button77:destroy(); self.button77 = nil; end;
         if self.edit81 ~= nil then self.edit81:destroy(); self.edit81 = nil; end;
         if self.edit177 ~= nil then self.edit177:destroy(); self.edit177 = nil; end;
         if self.button11 ~= nil then self.button11:destroy(); self.button11 = nil; end;
         if self.label81 ~= nil then self.label81:destroy(); self.label81 = nil; end;
+        if self.button58 ~= nil then self.button58:destroy(); self.button58 = nil; end;
         if self.label166 ~= nil then self.label166:destroy(); self.label166 = nil; end;
         if self.label181 ~= nil then self.label181:destroy(); self.label181 = nil; end;
-        if self.button58 ~= nil then self.button58:destroy(); self.button58 = nil; end;
         if self.edit166 ~= nil then self.edit166:destroy(); self.edit166 = nil; end;
+        if self.button78 ~= nil then self.button78:destroy(); self.button78 = nil; end;
         if self.button6 ~= nil then self.button6:destroy(); self.button6 = nil; end;
         if self.label199 ~= nil then self.label199:destroy(); self.label199 = nil; end;
         if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
@@ -9248,8 +10038,8 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.button31 ~= nil then self.button31:destroy(); self.button31 = nil; end;
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
         if self.button8 ~= nil then self.button8:destroy(); self.button8 = nil; end;
-        if self.label50 ~= nil then self.label50:destroy(); self.label50 = nil; end;
         if self.button18 ~= nil then self.button18:destroy(); self.button18 = nil; end;
+        if self.label50 ~= nil then self.label50:destroy(); self.label50 = nil; end;
         if self.edit42 ~= nil then self.edit42:destroy(); self.edit42 = nil; end;
         if self.edit209 ~= nil then self.edit209:destroy(); self.edit209 = nil; end;
         if self.edit118 ~= nil then self.edit118:destroy(); self.edit118 = nil; end;
@@ -9257,6 +10047,7 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.image15 ~= nil then self.image15:destroy(); self.image15 = nil; end;
         if self.edit254 ~= nil then self.edit254:destroy(); self.edit254 = nil; end;
         if self.edit278 ~= nil then self.edit278:destroy(); self.edit278 = nil; end;
+        if self.button65 ~= nil then self.button65:destroy(); self.button65 = nil; end;
         if self.rectangle4 ~= nil then self.rectangle4:destroy(); self.rectangle4 = nil; end;
         if self.edit281 ~= nil then self.edit281:destroy(); self.edit281 = nil; end;
         if self.edit135 ~= nil then self.edit135:destroy(); self.edit135 = nil; end;
@@ -9268,6 +10059,7 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.edit178 ~= nil then self.edit178:destroy(); self.edit178 = nil; end;
         if self.edit102 ~= nil then self.edit102:destroy(); self.edit102 = nil; end;
         if self.image13 ~= nil then self.image13:destroy(); self.image13 = nil; end;
+        if self.button71 ~= nil then self.button71:destroy(); self.button71 = nil; end;
         if self.edit359 ~= nil then self.edit359:destroy(); self.edit359 = nil; end;
         if self.edit117 ~= nil then self.edit117:destroy(); self.edit117 = nil; end;
         if self.edit286 ~= nil then self.edit286:destroy(); self.edit286 = nil; end;
@@ -9280,9 +10072,9 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.edit222 ~= nil then self.edit222:destroy(); self.edit222 = nil; end;
         if self.edit98 ~= nil then self.edit98:destroy(); self.edit98 = nil; end;
         if self.edit310 ~= nil then self.edit310:destroy(); self.edit310 = nil; end;
-        if self.rectangle37 ~= nil then self.rectangle37:destroy(); self.rectangle37 = nil; end;
-        if self.label151 ~= nil then self.label151:destroy(); self.label151 = nil; end;
         if self.edit333 ~= nil then self.edit333:destroy(); self.edit333 = nil; end;
+        if self.label151 ~= nil then self.label151:destroy(); self.label151 = nil; end;
+        if self.rectangle37 ~= nil then self.rectangle37:destroy(); self.rectangle37 = nil; end;
         if self.edit320 ~= nil then self.edit320:destroy(); self.edit320 = nil; end;
         if self.label138 ~= nil then self.label138:destroy(); self.label138 = nil; end;
         if self.edit185 ~= nil then self.edit185:destroy(); self.edit185 = nil; end;
@@ -9293,6 +10085,7 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.image7 ~= nil then self.image7:destroy(); self.image7 = nil; end;
         if self.edit28 ~= nil then self.edit28:destroy(); self.edit28 = nil; end;
         if self.label57 ~= nil then self.label57:destroy(); self.label57 = nil; end;
+        if self.button64 ~= nil then self.button64:destroy(); self.button64 = nil; end;
         if self.label188 ~= nil then self.label188:destroy(); self.label188 = nil; end;
         if self.edit71 ~= nil then self.edit71:destroy(); self.edit71 = nil; end;
         if self.label71 ~= nil then self.label71:destroy(); self.label71 = nil; end;
@@ -9306,6 +10099,7 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.button56 ~= nil then self.button56:destroy(); self.button56 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.label22 ~= nil then self.label22:destroy(); self.label22 = nil; end;
+        if self.button70 ~= nil then self.button70:destroy(); self.button70 = nil; end;
         if self.label177 ~= nil then self.label177:destroy(); self.label177 = nil; end;
         if self.layout13 ~= nil then self.layout13:destroy(); self.layout13 = nil; end;
         if self.edit192 ~= nil then self.edit192:destroy(); self.edit192 = nil; end;
@@ -9314,8 +10108,8 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
         if self.edit153 ~= nil then self.edit153:destroy(); self.edit153 = nil; end;
         if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
-        if self.label59 ~= nil then self.label59:destroy(); self.label59 = nil; end;
         if self.button20 ~= nil then self.button20:destroy(); self.button20 = nil; end;
+        if self.label59 ~= nil then self.label59:destroy(); self.label59 = nil; end;
         if self.edit131 ~= nil then self.edit131:destroy(); self.edit131 = nil; end;
         if self.edit47 ~= nil then self.edit47:destroy(); self.edit47 = nil; end;
         if self.label68 ~= nil then self.label68:destroy(); self.label68 = nil; end;
@@ -9323,11 +10117,11 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.label67 ~= nil then self.label67:destroy(); self.label67 = nil; end;
         if self.edit169 ~= nil then self.edit169:destroy(); self.edit169 = nil; end;
         if self.edit246 ~= nil then self.edit246:destroy(); self.edit246 = nil; end;
-        if self.edit298 ~= nil then self.edit298:destroy(); self.edit298 = nil; end;
+        if self.button52 ~= nil then self.button52:destroy(); self.button52 = nil; end;
         if self.edit149 ~= nil then self.edit149:destroy(); self.edit149 = nil; end;
         if self.edit244 ~= nil then self.edit244:destroy(); self.edit244 = nil; end;
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
-        if self.label140 ~= nil then self.label140:destroy(); self.label140 = nil; end;
+        if self.button53 ~= nil then self.button53:destroy(); self.button53 = nil; end;
         if self.edit160 ~= nil then self.edit160:destroy(); self.edit160 = nil; end;
         if self.edit120 ~= nil then self.edit120:destroy(); self.edit120 = nil; end;
         if self.edit26 ~= nil then self.edit26:destroy(); self.edit26 = nil; end;
@@ -9338,14 +10132,14 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.edit19 ~= nil then self.edit19:destroy(); self.edit19 = nil; end;
         if self.edit114 ~= nil then self.edit114:destroy(); self.edit114 = nil; end;
         if self.label105 ~= nil then self.label105:destroy(); self.label105 = nil; end;
-        if self.button52 ~= nil then self.button52:destroy(); self.button52 = nil; end;
-        if self.label154 ~= nil then self.label154:destroy(); self.label154 = nil; end;
+        if self.label140 ~= nil then self.label140:destroy(); self.label140 = nil; end;
+        if self.edit298 ~= nil then self.edit298:destroy(); self.edit298 = nil; end;
         if self.label34 ~= nil then self.label34:destroy(); self.label34 = nil; end;
         if self.edit5 ~= nil then self.edit5:destroy(); self.edit5 = nil; end;
         if self.edit204 ~= nil then self.edit204:destroy(); self.edit204 = nil; end;
         if self.edit210 ~= nil then self.edit210:destroy(); self.edit210 = nil; end;
         if self.label126 ~= nil then self.label126:destroy(); self.label126 = nil; end;
-        if self.button53 ~= nil then self.button53:destroy(); self.button53 = nil; end;
+        if self.label154 ~= nil then self.label154:destroy(); self.label154 = nil; end;
         if self.edit279 ~= nil then self.edit279:destroy(); self.edit279 = nil; end;
         if self.edit367 ~= nil then self.edit367:destroy(); self.edit367 = nil; end;
         if self.label41 ~= nil then self.label41:destroy(); self.label41 = nil; end;
@@ -9364,13 +10158,13 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.rectangle28 ~= nil then self.rectangle28:destroy(); self.rectangle28 = nil; end;
         if self.label131 ~= nil then self.label131:destroy(); self.label131 = nil; end;
         if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
-        if self.edit158 ~= nil then self.edit158:destroy(); self.edit158 = nil; end;
+        if self.button29 ~= nil then self.button29:destroy(); self.button29 = nil; end;
         if self.edit10 ~= nil then self.edit10:destroy(); self.edit10 = nil; end;
         if self.edit106 ~= nil then self.edit106:destroy(); self.edit106 = nil; end;
         if self.edit31 ~= nil then self.edit31:destroy(); self.edit31 = nil; end;
         if self.edit125 ~= nil then self.edit125:destroy(); self.edit125 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
-        if self.button29 ~= nil then self.button29:destroy(); self.button29 = nil; end;
+        if self.edit158 ~= nil then self.edit158:destroy(); self.edit158 = nil; end;
         if self.edit256 ~= nil then self.edit256:destroy(); self.edit256 = nil; end;
         if self.edit79 ~= nil then self.edit79:destroy(); self.edit79 = nil; end;
         if self.rectangle26 ~= nil then self.rectangle26:destroy(); self.rectangle26 = nil; end;
@@ -9383,6 +10177,7 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.edit291 ~= nil then self.edit291:destroy(); self.edit291 = nil; end;
         if self.button59 ~= nil then self.button59:destroy(); self.button59 = nil; end;
         if self.edit101 ~= nil then self.edit101:destroy(); self.edit101 = nil; end;
+        if self.button80 ~= nil then self.button80:destroy(); self.button80 = nil; end;
         if self.edit315 ~= nil then self.edit315:destroy(); self.edit315 = nil; end;
         if self.label167 ~= nil then self.label167:destroy(); self.label167 = nil; end;
         if self.image3 ~= nil then self.image3:destroy(); self.image3 = nil; end;
@@ -9423,8 +10218,8 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.edit123 ~= nil then self.edit123:destroy(); self.edit123 = nil; end;
         if self.edit143 ~= nil then self.edit143:destroy(); self.edit143 = nil; end;
         if self.label130 ~= nil then self.label130:destroy(); self.label130 = nil; end;
-        if self.edit322 ~= nil then self.edit322:destroy(); self.edit322 = nil; end;
         if self.button60 ~= nil then self.button60:destroy(); self.button60 = nil; end;
+        if self.edit322 ~= nil then self.edit322:destroy(); self.edit322 = nil; end;
         if self.edit206 ~= nil then self.edit206:destroy(); self.edit206 = nil; end;
         if self.edit105 ~= nil then self.edit105:destroy(); self.edit105 = nil; end;
         if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
@@ -9466,12 +10261,13 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.label123 ~= nil then self.label123:destroy(); self.label123 = nil; end;
         if self.label178 ~= nil then self.label178:destroy(); self.label178 = nil; end;
         if self.label44 ~= nil then self.label44:destroy(); self.label44 = nil; end;
-        if self.image19 ~= nil then self.image19:destroy(); self.image19 = nil; end;
+        if self.button62 ~= nil then self.button62:destroy(); self.button62 = nil; end;
         if self.edit46 ~= nil then self.edit46:destroy(); self.edit46 = nil; end;
         if self.label95 ~= nil then self.label95:destroy(); self.label95 = nil; end;
         if self.edit276 ~= nil then self.edit276:destroy(); self.edit276 = nil; end;
         if self.label179 ~= nil then self.label179:destroy(); self.label179 = nil; end;
         if self.edit229 ~= nil then self.edit229:destroy(); self.edit229 = nil; end;
+        if self.image19 ~= nil then self.image19:destroy(); self.image19 = nil; end;
         if self.edit371 ~= nil then self.edit371:destroy(); self.edit371 = nil; end;
         if self.label83 ~= nil then self.label83:destroy(); self.label83 = nil; end;
         if self.edit288 ~= nil then self.edit288:destroy(); self.edit288 = nil; end;
@@ -9520,11 +10316,13 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.edit344 ~= nil then self.edit344:destroy(); self.edit344 = nil; end;
         if self.edit351 ~= nil then self.edit351:destroy(); self.edit351 = nil; end;
         if self.edit356 ~= nil then self.edit356:destroy(); self.edit356 = nil; end;
+        if self.button76 ~= nil then self.button76:destroy(); self.button76 = nil; end;
         if self.edit88 ~= nil then self.edit88:destroy(); self.edit88 = nil; end;
         if self.label150 ~= nil then self.label150:destroy(); self.label150 = nil; end;
         if self.edit44 ~= nil then self.edit44:destroy(); self.edit44 = nil; end;
         if self.label173 ~= nil then self.label173:destroy(); self.label173 = nil; end;
         if self.edit89 ~= nil then self.edit89:destroy(); self.edit89 = nil; end;
+        if self.button63 ~= nil then self.button63:destroy(); self.button63 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.button34 ~= nil then self.button34:destroy(); self.button34 = nil; end;
         if self.edit317 ~= nil then self.edit317:destroy(); self.edit317 = nil; end;
@@ -9537,6 +10335,7 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.label189 ~= nil then self.label189:destroy(); self.label189 = nil; end;
         if self.label149 ~= nil then self.label149:destroy(); self.label149 = nil; end;
         if self.edit148 ~= nil then self.edit148:destroy(); self.edit148 = nil; end;
+        if self.button69 ~= nil then self.button69:destroy(); self.button69 = nil; end;
         if self.button50 ~= nil then self.button50:destroy(); self.button50 = nil; end;
         if self.label180 ~= nil then self.label180:destroy(); self.label180 = nil; end;
         if self.label172 ~= nil then self.label172:destroy(); self.label172 = nil; end;
@@ -9564,12 +10363,12 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.edit56 ~= nil then self.edit56:destroy(); self.edit56 = nil; end;
         if self.label137 ~= nil then self.label137:destroy(); self.label137 = nil; end;
         if self.label80 ~= nil then self.label80:destroy(); self.label80 = nil; end;
+        if self.button57 ~= nil then self.button57:destroy(); self.button57 = nil; end;
         if self.edit290 ~= nil then self.edit290:destroy(); self.edit290 = nil; end;
-        if self.edit331 ~= nil then self.edit331:destroy(); self.edit331 = nil; end;
         if self.edit197 ~= nil then self.edit197:destroy(); self.edit197 = nil; end;
         if self.edit141 ~= nil then self.edit141:destroy(); self.edit141 = nil; end;
         if self.edit55 ~= nil then self.edit55:destroy(); self.edit55 = nil; end;
-        if self.button57 ~= nil then self.button57:destroy(); self.button57 = nil; end;
+        if self.edit331 ~= nil then self.edit331:destroy(); self.edit331 = nil; end;
         if self.edit43 ~= nil then self.edit43:destroy(); self.edit43 = nil; end;
         if self.label118 ~= nil then self.label118:destroy(); self.label118 = nil; end;
         if self.edit307 ~= nil then self.edit307:destroy(); self.edit307 = nil; end;
@@ -9580,8 +10379,8 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.label156 ~= nil then self.label156:destroy(); self.label156 = nil; end;
         if self.edit193 ~= nil then self.edit193:destroy(); self.edit193 = nil; end;
         if self.edit65 ~= nil then self.edit65:destroy(); self.edit65 = nil; end;
-        if self.edit130 ~= nil then self.edit130:destroy(); self.edit130 = nil; end;
         if self.button23 ~= nil then self.button23:destroy(); self.button23 = nil; end;
+        if self.edit130 ~= nil then self.edit130:destroy(); self.edit130 = nil; end;
         if self.edit39 ~= nil then self.edit39:destroy(); self.edit39 = nil; end;
         if self.edit337 ~= nil then self.edit337:destroy(); self.edit337 = nil; end;
         if self.edit374 ~= nil then self.edit374:destroy(); self.edit374 = nil; end;
@@ -9622,6 +10421,7 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.edit78 ~= nil then self.edit78:destroy(); self.edit78 = nil; end;
         if self.label87 ~= nil then self.label87:destroy(); self.label87 = nil; end;
         if self.label104 ~= nil then self.label104:destroy(); self.label104 = nil; end;
+        if self.button61 ~= nil then self.button61:destroy(); self.button61 = nil; end;
         if self.edit202 ~= nil then self.edit202:destroy(); self.edit202 = nil; end;
         if self.edit303 ~= nil then self.edit303:destroy(); self.edit303 = nil; end;
         if self.edit91 ~= nil then self.edit91:destroy(); self.edit91 = nil; end;
@@ -9633,6 +10433,7 @@ local function constructNew_frmFichaRPGmeister2_svg()
         if self.button46 ~= nil then self.button46:destroy(); self.button46 = nil; end;
         if self.edit377 ~= nil then self.edit377:destroy(); self.edit377 = nil; end;
         if self.edit22 ~= nil then self.edit22:destroy(); self.edit22 = nil; end;
+        if self.button75 ~= nil then self.button75:destroy(); self.button75 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.layout6 ~= nil then self.layout6:destroy(); self.layout6 = nil; end;
         if self.rectangle13 ~= nil then self.rectangle13:destroy(); self.rectangle13 = nil; end;
