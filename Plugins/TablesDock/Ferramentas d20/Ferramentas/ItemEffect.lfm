@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItemEffect" height="50" margins="{top=1}">
+	<rectangle align="top" color="#212121" height="25" visible="true">
+		<label align="left" width="50" text="Tipo" horzTextAlign="center"/>
+		<comboBox align="left" width="65" field="tipo" items="{'Efeito','Fixo'}" hint="Efeito: efeito baseado em magia. \nFixo: bônus númerico fixo."/>
+
+		<label align="left" width="50" text="Posição" horzTextAlign="center"/>
+		<comboBox align="left" width="85" field="posicao" items="{'Base','Adicional', 'Livre'}" values="{'1','2','3'}" hint="Base: efeito mais caro do item (preço x1). \nAdicional: efeito secundario (preço x1.5). \nLivre: efeito de item que não oculpa espaços (preço x2)."/>
+
+		<label align="left" width="40" text="Valor" horzTextAlign="center"/>
+		<label align="left" width="60" field="preco" horzTextAlign="center" formatFloat=",0.## PO" fontSize="10"/>
+
+		<button align="left" width="25" text="X">
+			<event name="onClick">
+				Dialogs.confirmYesNo("Deseja realmente apagar esse efeito?",
+					function (confirmado)
+						if confirmado then
+							NDB.deleteNode(sheet);
+						end;
+					end);
+			</event>
+		</button>
+	</rectangle>
+
+	<rectangle align="client" color="#212121" visible="true" name="efeito">
+		<label align="left" width="50" text="NC" horzTextAlign="center"/>
+		<edit align="left" width="30" field="nc" type="number"/>
+		<label align="left" width="50" text="Nível" horzTextAlign="center"/>
+		<edit align="left" width="30" field="nivel" type="number"/>
+		<label align="left" width="50" text="Usos" horzTextAlign="center"/>
+		<comboBox align="left" width="40" field="usos" items="{'1','2', '3','4','5','-','x2','x4'}" hint="1 a 5: Quantidade de usos diarios. \n-: efeito continuo. \nx2 ou x4: efeito de uso continuo com custo elevado. "/>
+		<label align="left" width="50" text="Ativação" horzTextAlign="center" fontSize="10"/>
+		<comboBox align="left" width="75" field="ativacao" items="{'Livre','Padrão'}" values="{'1','2'}" hint="Livre: ativar os efeitos do item é uma ação livre. \nAtivar os efeitos do item requer um comando [ação padrão]."/>
+	</rectangle>
+
+	<rectangle align="client" color="#212121" visible="false" name="fixo">
+		<label align="left" width="50" text="Bônus" horzTextAlign="center"/>
+		<edit align="left" width="50" field="bonus" type="number"/>
+		<label align="left" width="50" text="Efeito" horzTextAlign="center"/>
+		<comboBox align="left" width="225" field="efeito" items="{'Atributos (Melhoria)','Armadura (Melhoria)','Magia Adicional','CA (Deflexão)','CA (Outro)','Armadura Natural (Melhoria)','Resistencia','Resistencia (Outro)','Pericia (Competencia)','Pericia Parcial (Competencia)','Resistencia a Magia','Deslocamento','Carga (Fácil)','Carga'}" values="{'1','2','3','4','5','6','7','8','9','10','11','12','13','14'}" hint="Atributos (Melhoria): Bônus de melhoria em atributos. Multiplos de 2, max. 6. \nArmadura (Melhoria): Bônus de melhoria na armadura. Max. 10 \nMagia Adicional: Recupera magia do nível indicado. Max. 9.\nCA (Deflexão): Bônus deflexão na CA. Max. 5.\nCA (Outro): Outro bônus na CA. Max. 1.\nArmadura Natural (Melhoria): Bônus de melhoria na armadura natural. Max. 5.\nResistencia: Bônus em testes de resistência. Max. 5.\nResistencia (Outro): Outros bônus em testes de resistÊncia. Max. 1.\nPericia (Competencia): Bônus de competencia em testes de pericia. Max. 10.\nPericia Parcial (Competencia): Bônus de competencia em certos usos da pericia. Max. 10.\nResistencia a Magia: Valor fixo de resistencia a magia. Sem limite.\nDeslocamento: Cada 1 equivale a +1,5m para deslocamento de escavar; +3m para deslocamento terrestre, natação, escalar ou voo perfeito;\n +6 de voo bom; +9m de voo medio; +12m de voo ruim; ou +15m de voo desajeitado. Max. 3.\nCarga (Fácil): Carga reduzida de 25:1 e até 100Kg. Recuperar item é ação de movimento.\nCarga: Carga reduzida de 25:1 e até 1.000Kg. Recuperar item é até ação de rodada."/>
+	</rectangle>
+
+	<dataLink fields="{'tipo'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			if sheet.tipo=="Efeito" then
+				self.efeito.visible = true;
+				self.fixo.visible = false;
+			else
+				self.efeito.visible = false;
+				self.fixo.visible = true;
+			end;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'tipo','nc','nivel','usos','posicao','ativacao'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			if sheet.tipo~="Efeito" then return end;
+
+			local nc = tonumber(sheet.nc) or 1;
+			local nivel = tonumber(sheet.nivel) or 1;
+
+			-- Calcular multiplicador base da quantidade de usos
+			local mult = tonumber(sheet.usos) or 5;
+			if sheet.usos == "x2" then mult = 10 end;
+			if sheet.usos == "x4" then mult = 20 end;
+
+			-- Calcular multiplicador de posição do efeito
+			local posicao = tonumber(sheet.posicao) or 1;
+			local mults = {1,1.5,2};
+			local mult2 = mults[posicao];
+
+			-- Calcular preço base
+			local base = 360;
+			if sheet.ativacao=="1" then base=400 end;
+
+			local preco = nivel * nc * mult * mult2 * base;
+			sheet.preco = preco;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'tipo','efeito','bonus','posicao'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			if sheet.tipo~="Fixo" then return end;
+
+			local bonus = tonumber(sheet.bonus) or 1;
+			local sel = tonumber(sheet.efeito) or 1;
+			local base = {1000,1000,1000,2000,2500,2000,1000,2000,100,50,1000,3000,30,20};
+
+			-- Calcular multiplicador base do tipo de bonus
+			local mult = 1;
+			local limit = {6,10,9,5,1,5,5,1,10,10,-1,6,100,1000};
+			if bonus > limit[sel] then mult = 10 end;
+
+			-- Calcular multiplicador de posição do efeito
+			local posicao = tonumber(sheet.posicao) or 1;
+			local mults = {1,1.5,2};
+			local mult2 = mults[posicao];
+
+			local preco;
+			if sel == 11 then
+				preco = (bonus-12) * base[sel] * mult * mult2;
+			elseif sel==13 or sel==14 then
+				preco = bonus * base[sel] * mult * mult2;
+			else
+				preco = bonus * bonus * base[sel] * mult * mult2;
+			end;
+
+			sheet.preco = preco;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'preco'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local node = toolSheet;
+
+			local sum = 0;
+			local nodes = NDB.getChildNodes(node.effectList); 
+			for i=1, #nodes, 1 do
+				sum = sum + (tonumber(nodes[i].preco) or 0);
+			end;
+			node.precoWoundrous = sum;
+
+			node.custoWoundrous = sum/2;
+
+			local xp = math.ceil(sum/25)
+			node.xpWoundrous = xp;
+		</event>
+	</dataLink>
+</form>

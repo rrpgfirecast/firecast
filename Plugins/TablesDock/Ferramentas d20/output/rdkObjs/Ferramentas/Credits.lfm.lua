@@ -121,7 +121,7 @@ local function constructNew_frmTemplateCreditos()
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
         function (_)
-            local install = Firecast.Plugins.installPlugin(rawget(updaterSheet,"stream"), true);
+            local install = Firecast.Plugins.installPlugin(rawget(toolSheet,"stream"), true);
                             if install==false then
                                 GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Ferramentas%20d20/output/Ferramentas%20d20.rpk?raw=true');
                             end;

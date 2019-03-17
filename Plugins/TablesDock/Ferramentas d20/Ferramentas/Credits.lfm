@@ -10,7 +10,7 @@
 			
 		<button left="5" top="110" width="100" text="Change Log" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Ferramentas%20d20/README.md')">
 			<event name="onClick">
-                local install = Firecast.Plugins.installPlugin(rawget(updaterSheet,"stream"), true);
+                local install = Firecast.Plugins.installPlugin(rawget(toolSheet,"stream"), true);
                 if install==false then
                     GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Ferramentas%20d20/output/Ferramentas%20d20.rpk?raw=true');
                 end;

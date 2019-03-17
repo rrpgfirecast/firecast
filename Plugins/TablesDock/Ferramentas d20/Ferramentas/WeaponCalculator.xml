@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWeaponCalculator" align="client">
+	<scrollBox align="client">
+		<layout align="top" height="100">
+			<button align="left" width="50" text="+">
+				<event name="onClick">
+					self.weaponList:append();
+				</event>
+			</button>
+			<layout align="left" width="325">
+				<layout align="top" height="25">
+					<label align="left" width="75" horzTextAlign="center" text="Preço"/>
+					<label align="left" width="200" horzTextAlign="center" field="weaponPrice" formatFloat=",0.## PO"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="left" width="75" horzTextAlign="center" text="Custo"/>
+					<label align="left" width="100" horzTextAlign="center" field="weaponCost" formatFloat=",0.## PO"/>
+					<label align="left" width="100" horzTextAlign="center" field="weaponXP" formatFloat=",0.## XP"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="left" width="60" horzTextAlign="center" text="Valor"/>
+					<edit align="left" width="100" field="weaponValue" type="float"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="left" width="60" horzTextAlign="center" text="Material"/>
+					<edit align="left" width="100" field="weaponMaterial" type="float"/>
+					<checkBox align="left" width="100" horzTextAlign="center" text="Obra-Prima" field="weaponOP" margins="{left=10}"/>
+				</layout>
+			</layout>
+		</layout>
+		<recordList align="left" width="395" field="weaponList" name="weaponList" templateForm="frmWeaponItem" minQt="1" margins="{right=5}">
+			<event name="onCompare">
+				return (tonumber(nodeB.price) or 0) - (tonumber(nodeA.price) or 0);
+        	</event>
+		</recordList>
+
+		<dataLink fields="{'weaponValue','weaponMaterial','weaponBonus','weaponExtraPrice','weaponOP'}">
+			<event name="onChange">
+				if toolSheet==nil then return end;
+
+				local mundano = (tonumber(toolSheet.weaponValue) or 0) + 
+								(tonumber(toolSheet.weaponMaterial) or 0);
+				if toolSheet.weaponOP then mundano = mundano + 300 end;
+
+				local bonus = (tonumber(toolSheet.weaponBonus) or 0)
+				local magico = 	(bonus*bonus*2000) + 
+								(tonumber(toolSheet.weaponExtraPrice) or 0);
+
+				toolSheet.weaponPrice = magico + mundano;
+				toolSheet.weaponCost = (magico/2) + mundano;
+				toolSheet.weaponXP = math.ceil(magico/25);
+			</event>
+		</dataLink>
+	</scrollBox>
+</form>

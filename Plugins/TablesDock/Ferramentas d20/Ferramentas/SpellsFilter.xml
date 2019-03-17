@@ -22,26 +22,26 @@
 			local function filterComponentAnd(spell)
 				local ret = true;
 
-				if updaterSheet.N and spell.components==nil then
+				if toolSheet.N and spell.components==nil then
 					ret = ret and spell.components==nil;
 				end;
 
-				if updaterSheet.V then
+				if toolSheet.V then
 					ret = ret and array_contain(spell.components, components[1], #components);
 				end;
-				if updaterSheet.S then
+				if toolSheet.S then
 					ret = ret and array_contain(spell.components, components[2], #components);
 				end;
-				if updaterSheet.M then
+				if toolSheet.M then
 					ret = ret and array_contain(spell.components, components[3], #components);
 				end;
-				if updaterSheet.F then
+				if toolSheet.F then
 					ret = ret and array_contain(spell.components, components[4], #components);
 				end;
-				if updaterSheet.DF then
+				if toolSheet.DF then
 					ret = ret and array_contain(spell.components, components[5], #components);
 				end;
-				if updaterSheet.XP then
+				if toolSheet.XP then
 					ret = ret and array_contain(spell.components, components[6], #components);
 				end;
 
@@ -49,59 +49,59 @@
 			end
 
 			local function filterComponentNot(spell)
-				if updaterSheet.N and spell.components==nil then
+				if toolSheet.N and spell.components==nil then
 					return false;
 				end;
-				if updaterSheet.V and array_contain(spell.components, components[1], #components) then
+				if toolSheet.V and array_contain(spell.components, components[1], #components) then
 					return false;
 				end;
-				if updaterSheet.S and array_contain(spell.components, components[2], #components) then
+				if toolSheet.S and array_contain(spell.components, components[2], #components) then
 					return false;
 				end;
-				if updaterSheet.M and array_contain(spell.components, components[3], #components) then
+				if toolSheet.M and array_contain(spell.components, components[3], #components) then
 					return false;
 				end;
-				if updaterSheet.F and array_contain(spell.components, components[4], #components) then
+				if toolSheet.F and array_contain(spell.components, components[4], #components) then
 					return false;
 				end;
-				if updaterSheet.DF and array_contain(spell.components, components[5], #components) then
+				if toolSheet.DF and array_contain(spell.components, components[5], #components) then
 					return false;
 				end;
-				if updaterSheet.XP and array_contain(spell.components, components[6], #components) then
+				if toolSheet.XP and array_contain(spell.components, components[6], #components) then
 					return false;
 				end;
 				return true;
 			end;
 
 			local function filterComponentOr(spell)
-				if updaterSheet.N and spell.components==nil then
+				if toolSheet.N and spell.components==nil then
 					return true;
 				end;
-				if updaterSheet.V and array_contain(spell.components, components[1], #components) then
+				if toolSheet.V and array_contain(spell.components, components[1], #components) then
 					return true;
 				end;
-				if updaterSheet.S and array_contain(spell.components, components[2], #components) then
+				if toolSheet.S and array_contain(spell.components, components[2], #components) then
 					return true;
 				end;
-				if updaterSheet.M and array_contain(spell.components, components[3], #components) then
+				if toolSheet.M and array_contain(spell.components, components[3], #components) then
 					return true;
 				end;
-				if updaterSheet.F and array_contain(spell.components, components[4], #components) then
+				if toolSheet.F and array_contain(spell.components, components[4], #components) then
 					return true;
 				end;
-				if updaterSheet.DF and array_contain(spell.components, components[5], #components) then
+				if toolSheet.DF and array_contain(spell.components, components[5], #components) then
 					return true;
 				end;
-				if updaterSheet.XP and array_contain(spell.components, components[6], #components) then
+				if toolSheet.XP and array_contain(spell.components, components[6], #components) then
 					return true;
 				end;
 				return false;
 			end;
 
 			local function filterComponent(spell)
-				if updaterSheet.componentRule == "and" then
+				if toolSheet.componentRule == "and" then
 					return filterComponentAnd(spell);
-				elseif updaterSheet.componentRule == "not" then
+				elseif toolSheet.componentRule == "not" then
 					return filterComponentNot(spell);
 				else
 					return filterComponentOr(spell);
@@ -109,100 +109,100 @@
 			end
 
 			local function filterTag(spell)
-				if updaterSheet.None and spell.descriptor==nil then
+				if toolSheet.None and spell.descriptor==nil then
 					return true;
-				elseif not updaterSheet.None and spell.descriptor==nil then
+				elseif not toolSheet.None and spell.descriptor==nil then
 					return false;
 				end;
-				if updaterSheet.Acid and array_contain(spell.descriptor, tags[1], #tags) then
+				if toolSheet.Acid and array_contain(spell.descriptor, tags[1], #tags) then
 					return true;
 				end;
-				if updaterSheet.Air and array_contain(spell.descriptor, tags[2], #tags) then
+				if toolSheet.Air and array_contain(spell.descriptor, tags[2], #tags) then
 					return true;
 				end;
-				if updaterSheet.Chaotic and array_contain(spell.descriptor, tags[3], #tags) then
+				if toolSheet.Chaotic and array_contain(spell.descriptor, tags[3], #tags) then
 					return true;
 				end;
-				if updaterSheet.Cold and array_contain(spell.descriptor, tags[4], #tags) then
+				if toolSheet.Cold and array_contain(spell.descriptor, tags[4], #tags) then
 					return true;
 				end;
-				if updaterSheet.Darkness and array_contain(spell.descriptor, tags[5], #tags) then
+				if toolSheet.Darkness and array_contain(spell.descriptor, tags[5], #tags) then
 					return true;
 				end;
-				if updaterSheet.Death and array_contain(spell.descriptor, tags[6], #tags) then
+				if toolSheet.Death and array_contain(spell.descriptor, tags[6], #tags) then
 					return true;
 				end;
-				if updaterSheet.Earth and array_contain(spell.descriptor, tags[7], #tags) then
+				if toolSheet.Earth and array_contain(spell.descriptor, tags[7], #tags) then
 					return true;
 				end;
-				if updaterSheet.Electricity and array_contain(spell.descriptor, tags[8], #tags) then
+				if toolSheet.Electricity and array_contain(spell.descriptor, tags[8], #tags) then
 					return true;
 				end;
-				if updaterSheet.Evil and array_contain(spell.descriptor, tags[9], #tags) then
+				if toolSheet.Evil and array_contain(spell.descriptor, tags[9], #tags) then
 					return true;
 				end;
-				if updaterSheet.Fear and array_contain(spell.descriptor, tags[10], #tags) then
+				if toolSheet.Fear and array_contain(spell.descriptor, tags[10], #tags) then
 					return true;
 				end;
-				if updaterSheet.Fire and array_contain(spell.descriptor, tags[11], #tags) then
+				if toolSheet.Fire and array_contain(spell.descriptor, tags[11], #tags) then
 					return true;
 				end;
-				if updaterSheet.Force and array_contain(spell.descriptor, tags[12], #tags) then
+				if toolSheet.Force and array_contain(spell.descriptor, tags[12], #tags) then
 					return true;
 				end;
-				if updaterSheet.Good and array_contain(spell.descriptor, tags[13], #tags) then
+				if toolSheet.Good and array_contain(spell.descriptor, tags[13], #tags) then
 					return true;
 				end;
-				if updaterSheet.Language_Dependent and array_contain(spell.descriptor, tags[14], #tags) then
+				if toolSheet.Language_Dependent and array_contain(spell.descriptor, tags[14], #tags) then
 					return true;
 				end;
-				if updaterSheet.Lawful and array_contain(spell.descriptor, tags[15], #tags) then
+				if toolSheet.Lawful and array_contain(spell.descriptor, tags[15], #tags) then
 					return true;
 				end;
-				if updaterSheet.Light and array_contain(spell.descriptor, tags[16], #tags) then
+				if toolSheet.Light and array_contain(spell.descriptor, tags[16], #tags) then
 					return true;
 				end;
-				if updaterSheet.Mind_Affecting and array_contain(spell.descriptor, tags[17], #tags) then
+				if toolSheet.Mind_Affecting and array_contain(spell.descriptor, tags[17], #tags) then
 					return true;
 				end;
-				if updaterSheet.Sonic and array_contain(spell.descriptor, tags[18], #tags) then
+				if toolSheet.Sonic and array_contain(spell.descriptor, tags[18], #tags) then
 					return true;
 				end;
-				if updaterSheet.Water and array_contain(spell.descriptor, tags[19], #tags) then
+				if toolSheet.Water and array_contain(spell.descriptor, tags[19], #tags) then
 					return true;
 				end;
 				return false;
 			end;
 
 			local function filterLevel(spell)
-				if updaterSheet.lvl0 and has_value(spell.level, "0") then
+				if toolSheet.lvl0 and has_value(spell.level, "0") then
 					return true;
 				end;
-				if updaterSheet.lvl1 and has_value(spell.level, "1") then
+				if toolSheet.lvl1 and has_value(spell.level, "1") then
 					return true;
 				end;
-				if updaterSheet.lvl2 and has_value(spell.level, "2") then
+				if toolSheet.lvl2 and has_value(spell.level, "2") then
 					return true;
 				end;
-				if updaterSheet.lvl3 and has_value(spell.level, "3") then
+				if toolSheet.lvl3 and has_value(spell.level, "3") then
 					return true;
 				end;
-				if updaterSheet.lvl4 and has_value(spell.level, "4") then
+				if toolSheet.lvl4 and has_value(spell.level, "4") then
 					return true;
 				end;
-				if updaterSheet.lvl5 and has_value(spell.level, "5") then
+				if toolSheet.lvl5 and has_value(spell.level, "5") then
 					return true;
 				end;
-				if updaterSheet.lvl6 and has_value(spell.level, "6") then
+				if toolSheet.lvl6 and has_value(spell.level, "6") then
 					return true;
 				end;
-				if updaterSheet.lvl7 and has_value(spell.level, "7") then
+				if toolSheet.lvl7 and has_value(spell.level, "7") then
 					return true;
 				end;
-				if updaterSheet.lvl8 and has_value(spell.level, "8") then
+				if toolSheet.lvl8 and has_value(spell.level, "8") then
 					return true;
 				end;
-				if updaterSheet.lvl9 and has_value(spell.level, "9") then
+				if toolSheet.lvl9 and has_value(spell.level, "9") then
 					return true;
 				end;
 				return false;
@@ -284,105 +284,105 @@
 
 			local function filterClassAnd(spell)
 				local ret = true;
-				if updaterSheet.bard then
+				if toolSheet.bard then
 					ret = ret and spell.level.bard ~= nil;
 				end;
-				if updaterSheet.cleric then
+				if toolSheet.cleric then
 					ret = ret and spell.level.cleric ~= nil;
 				end;
-				if updaterSheet.druid then
+				if toolSheet.druid then
 					ret = ret and spell.level.druid ~= nil;
 				end;
-				if updaterSheet.paladin then
+				if toolSheet.paladin then
 					ret = ret and spell.level.paladin ~= nil;
 				end;
-				if updaterSheet.ranger then
+				if toolSheet.ranger then
 					ret = ret and spell.level.ranger ~= nil;
 				end;
-				if updaterSheet.sorcerer then
+				if toolSheet.sorcerer then
 					ret = ret and spell.level.sorcerer ~= nil;
 				end;
-				if updaterSheet.wizard then
+				if toolSheet.wizard then
 					ret = ret and spell.level.wizard ~= nil;
 				end;
-				if updaterSheet.adept then
+				if toolSheet.adept then
 					ret = ret and spell.level.adept ~= nil;
 				end;
-				if updaterSheet.assassin then
+				if toolSheet.assassin then
 					ret = ret and spell.level.assassin ~= nil;
 				end;
-				if updaterSheet.blackguard then
+				if toolSheet.blackguard then
 					ret = ret and spell.level.blackguard ~= nil;
 				end;
-				if updaterSheet.shugenja ~= nil then
+				if toolSheet.shugenja ~= nil then
 					ret = ret  and spell.level.shugenja ~= nil;
 				end;
-				if updaterSheet.wu_jen ~= nil then
+				if toolSheet.wu_jen ~= nil then
 					ret = ret  and spell.level["wu-jen"] ~= nil;
 				end;
-				if updaterSheet.warmage ~= nil then
+				if toolSheet.warmage ~= nil then
 					ret = ret  and spell.level.warmage ~= nil;
 				end;
-				if updaterSheet.hexblade ~= nil then
+				if toolSheet.hexblade ~= nil then
 					ret = ret  and spell.level.hexblade ~= nil;
 				end;
-				if updaterSheet.domain then
+				if toolSheet.domain then
 					ret = ret and (spell.level.air~=nil or spell.level.animal~=nil or spell.level.chaos~=nil or spell.level.death~=nil or spell.level.destruction~=nil or spell.level.earth~=nil or spell.level.evil~=nil or spell.level.fire~=nil or spell.level.good~=nil or spell.level.healing~=nil or spell.level.knowledge~=nil or spell.level.law~=nil or spell.level.luck~=nil or spell.level.magic~=nil or spell.level.plant~=nil or spell.level.protection~=nil or spell.level.strength~=nil or spell.level.sun~=nil or spell.level.travel~=nil or spell.level.trickery~=nil or spell.level.war~=nil or spell.level.water~=nil or spell.level.liberation ~= nil or spell.level.cold ~= nil or spell.level.creation ~= nil or spell.level.dream ~= nil or spell.level.mind ~= nil or spell.level.madness ~= nil or spell.level.domination ~= nil or spell.level.force ~= nil or spell.level.glory ~= nil or spell.level.purification ~= nil or spell.level.pact ~= nil or spell.level.pestilence ~= nil or spell.level.celerity ~= nil or spell.level.weather ~= nil or spell.level.courage ~= nil);
 				end;
 				return ret;
 			end;
 
 			local function filterClassOr(spell)
-				if updaterSheet.bard and spell.level.bard ~= nil then
+				if toolSheet.bard and spell.level.bard ~= nil then
 					return true;
 				end;
-				if updaterSheet.cleric and spell.level.cleric ~= nil then
+				if toolSheet.cleric and spell.level.cleric ~= nil then
 					return true;
 				end;
-				if updaterSheet.druid and spell.level.druid ~= nil then
+				if toolSheet.druid and spell.level.druid ~= nil then
 					return true;
 				end;
-				if updaterSheet.paladin and spell.level.paladin ~= nil then
+				if toolSheet.paladin and spell.level.paladin ~= nil then
 					return true;
 				end;
-				if updaterSheet.ranger and spell.level.ranger ~= nil then
+				if toolSheet.ranger and spell.level.ranger ~= nil then
 					return true;
 				end;
-				if updaterSheet.sorcerer and spell.level.sorcerer ~= nil then
+				if toolSheet.sorcerer and spell.level.sorcerer ~= nil then
 					return true;
 				end;
-				if updaterSheet.wizard and spell.level.wizard ~= nil then
+				if toolSheet.wizard and spell.level.wizard ~= nil then
 					return true;
 				end;
-				if updaterSheet.adept and spell.level.adept ~= nil then
+				if toolSheet.adept and spell.level.adept ~= nil then
 					return true;
 				end;
-				if updaterSheet.assassin and spell.level.assassin ~= nil then
+				if toolSheet.assassin and spell.level.assassin ~= nil then
 					return true;
 				end;
-				if updaterSheet.blackguard and spell.level.blackguard ~= nil then
+				if toolSheet.blackguard and spell.level.blackguard ~= nil then
 					return true;
 				end;
-				if updaterSheet.shugenja and spell.level.shugenja ~= nil then
+				if toolSheet.shugenja and spell.level.shugenja ~= nil then
 					return true;
 				end;
-				if updaterSheet.wu_jen and spell.level["wu-jen"] ~= nil then
+				if toolSheet.wu_jen and spell.level["wu-jen"] ~= nil then
 					return true;
 				end;
-				if updaterSheet.warmage and spell.level.warmage ~= nil then
+				if toolSheet.warmage and spell.level.warmage ~= nil then
 					return true;
 				end;
-				if updaterSheet.hexblade and spell.level.hexblade ~= nil then
+				if toolSheet.hexblade and spell.level.hexblade ~= nil then
 					return true;
 				end;
-				if updaterSheet.domain then
+				if toolSheet.domain then
 					return (spell.level.air~=nil or spell.level.animal~=nil or spell.level.chaos~=nil or spell.level.death~=nil or spell.level.destruction~=nil or spell.level.earth~=nil or spell.level.evil~=nil or spell.level.fire~=nil or spell.level.good~=nil or spell.level.healing~=nil or spell.level.knowledge~=nil or spell.level.law~=nil or spell.level.luck~=nil or spell.level.magic~=nil or spell.level.plant~=nil or spell.level.protection~=nil or spell.level.strength~=nil or spell.level.sun~=nil or spell.level.travel~=nil or spell.level.trickery~=nil or spell.level.war~=nil or spell.level.water~=nil or spell.level.liberation ~= nil or spell.level.cold ~= nil or spell.level.creation ~= nil or spell.level.dream ~= nil or spell.level.mind ~= nil or spell.level.madness ~= nil or spell.level.domination ~= nil or spell.level.force ~= nil or spell.level.glory ~= nil or spell.level.purification ~= nil or spell.level.pact ~= nil or spell.level.pestilence ~= nil or spell.level.celerity ~= nil or spell.level.weather ~= nil or spell.level.courage ~= nil);
 				end;
 				return false;
 			end;
 
 			local function filterClass(spell)
-				if updaterSheet.classRule == "and" then
+				if toolSheet.classRule == "and" then
 					return filterClassAnd(spell);
 				else
 					return filterClassOr(spell);
@@ -390,74 +390,74 @@
 			end;
 
 			local function filterRange(spell)
-				if updaterSheet.fixo3m and spell.range == ranges[1] then
+				if toolSheet.fixo3m and spell.range == ranges[1] then
 					return true;
 				end;
-				if updaterSheet.fixo6m and spell.range == ranges[2] then
+				if toolSheet.fixo6m and spell.range == ranges[2] then
 					return true;
 				end;
-				if updaterSheet.fixo9m and spell.range == ranges[3] then
+				if toolSheet.fixo9m and spell.range == ranges[3] then
 					return true;
 				end;
-				if updaterSheet.fixo12m and spell.range == ranges[4] then
+				if toolSheet.fixo12m and spell.range == ranges[4] then
 					return true;
 				end;
-				if updaterSheet.fixo15m and spell.range == ranges[5] then
+				if toolSheet.fixo15m and spell.range == ranges[5] then
 					return true;
 				end;
-				if updaterSheet.fixo18m and spell.range == ranges[6] then
+				if toolSheet.fixo18m and spell.range == ranges[6] then
 					return true;
 				end;
-				if updaterSheet.Close and spell.range == ranges[7] then
+				if toolSheet.Close and spell.range == ranges[7] then
 					return true;
 				end;
-				if updaterSheet.Medium and spell.range == ranges[8] then
+				if toolSheet.Medium and spell.range == ranges[8] then
 					return true;
 				end;
-				if updaterSheet.Long and spell.range == ranges[9] then
+				if toolSheet.Long and spell.range == ranges[9] then
 					return true;
 				end;
-				if updaterSheet.Personal and spell.range == ranges[10] then
+				if toolSheet.Personal and spell.range == ranges[10] then
 					return true;
 				end;
-				if updaterSheet.Touch and spell.range == ranges[11] then
+				if toolSheet.Touch and spell.range == ranges[11] then
 					return true;
 				end;
-				if updaterSheet.Special and spell.range == ranges[12] then
+				if toolSheet.Special and spell.range == ranges[12] then
 					return true;
 				end;
-				if updaterSheet.Adjacent and spell.range == ranges[13] then
+				if toolSheet.Adjacent and spell.range == ranges[13] then
 					return true;
 				end;
 				return false;
 			end;
 
 			local function filterDuration(spell)
-				if updaterSheet.Concentration and array_contain(spell.duration, durations[1], #durations) then
+				if toolSheet.Concentration and array_contain(spell.duration, durations[1], #durations) then
 					return true;
 				end;
-				if updaterSheet.Dismissible and array_contain(spell.duration, durations[2], #durations) then
+				if toolSheet.Dismissible and array_contain(spell.duration, durations[2], #durations) then
 					return true;
 				end;
-				if updaterSheet.Instantaneous and array_contain(spell.duration, durations[3], #durations) then
+				if toolSheet.Instantaneous and array_contain(spell.duration, durations[3], #durations) then
 					return true;
 				end;
-				if updaterSheet.Rounds and array_contain(spell.duration, durations[4], #durations) then
+				if toolSheet.Rounds and array_contain(spell.duration, durations[4], #durations) then
 					return true;
 				end;
-				if updaterSheet.Minutes and array_contain(spell.duration, durations[5], #durations) then
+				if toolSheet.Minutes and array_contain(spell.duration, durations[5], #durations) then
 					return true;
 				end;
-				if updaterSheet.Hours and array_contain(spell.duration, durations[6], #durations) then
+				if toolSheet.Hours and array_contain(spell.duration, durations[6], #durations) then
 					return true;
 				end;
-				if updaterSheet.Days and array_contain(spell.duration, durations[7], #durations) then
+				if toolSheet.Days and array_contain(spell.duration, durations[7], #durations) then
 					return true;
 				end;
-				if updaterSheet.Permanent and array_contain(spell.duration, durations[8], #durations) then
+				if toolSheet.Permanent and array_contain(spell.duration, durations[8], #durations) then
 					return true;
 				end;
-				if updaterSheet.SpecialDuration and array_contain(spell.duration, durations[9], #durations) then
+				if toolSheet.SpecialDuration and array_contain(spell.duration, durations[9], #durations) then
 					return true;
 				end;
 
@@ -467,31 +467,31 @@
 
 
 			local function filterBook(spell)
-				if updaterSheet.PHB and array_contain(spell.book, books[1], #books) then
+				if toolSheet.PHB and array_contain(spell.book, books[1], #books) then
 					return true;
 				end;
-				if updaterSheet.ELH and array_contain(spell.book, books[2], #books) then
+				if toolSheet.ELH and array_contain(spell.book, books[2], #books) then
 					return true;
 				end;
-				if updaterSheet.CAd and array_contain(spell.book, books[3], #books) then
+				if toolSheet.CAd and array_contain(spell.book, books[3], #books) then
 					return true;
 				end;
-				if updaterSheet.CAr and array_contain(spell.book, books[4], #books) then
+				if toolSheet.CAr and array_contain(spell.book, books[4], #books) then
 					return true;
 				end;
-				if updaterSheet.CD and array_contain(spell.book, books[5], #books) then
+				if toolSheet.CD and array_contain(spell.book, books[5], #books) then
 					return true;
 				end;
-				if updaterSheet.CC and array_contain(spell.book, books[6], #books) then
+				if toolSheet.CC and array_contain(spell.book, books[6], #books) then
 					return true;
 				end;
-				if updaterSheet.CM and array_contain(spell.book, books[7], #books) then
+				if toolSheet.CM and array_contain(spell.book, books[7], #books) then
 					return true;
 				end;
-				if updaterSheet.CS and array_contain(spell.book, books[8], #books) then
+				if toolSheet.CS and array_contain(spell.book, books[8], #books) then
 					return true;
 				end;
-				if updaterSheet.CW and array_contain(spell.book, books[9], #books) then
+				if toolSheet.CW and array_contain(spell.book, books[9], #books) then
 					return true;
 				end;
 
@@ -499,72 +499,72 @@
 			end
 
 			local function filterTarget(spell)
-				if updaterSheet.Area and array_contain(spell.aiming, targets[1], #targets) then
+				if toolSheet.Area and array_contain(spell.aiming, targets[1], #targets) then
 					return true;
 				end;
-				if updaterSheet.Effect and array_contain(spell.aiming, targets[2], #targets) then
+				if toolSheet.Effect and array_contain(spell.aiming, targets[2], #targets) then
 					return true;
 				end;
-				if updaterSheet.Target and array_contain(spell.aiming, targets[3], #targets) then
+				if toolSheet.Target and array_contain(spell.aiming, targets[3], #targets) then
 					return true;
 				end;
-				if updaterSheet.Burst and array_contain(spell.aiming, targets[4], #targets) then
+				if toolSheet.Burst and array_contain(spell.aiming, targets[4], #targets) then
 					return true;
 				end;
-				if updaterSheet.Cone and array_contain(spell.aiming, targets[5], #targets) then
+				if toolSheet.Cone and array_contain(spell.aiming, targets[5], #targets) then
 					return true;
 				end;
-				if updaterSheet.Cylinder and array_contain(spell.aiming, targets[6], #targets) then
+				if toolSheet.Cylinder and array_contain(spell.aiming, targets[6], #targets) then
 					return true;
 				end;
-				if updaterSheet.Emanation and array_contain(spell.aiming, targets[7], #targets) then
+				if toolSheet.Emanation and array_contain(spell.aiming, targets[7], #targets) then
 					return true;
 				end;
-				if updaterSheet.Line and array_contain(spell.aiming, targets[8], #targets) then
+				if toolSheet.Line and array_contain(spell.aiming, targets[8], #targets) then
 					return true;
 				end;
-				if updaterSheet.Ray and array_contain(spell.aiming, targets[9], #targets) then
+				if toolSheet.Ray and array_contain(spell.aiming, targets[9], #targets) then
 					return true;
 				end;
-				if updaterSheet.Sphere and array_contain(spell.aiming, targets[10], #targets) then
+				if toolSheet.Sphere and array_contain(spell.aiming, targets[10], #targets) then
 					return true;
 				end;
-				if updaterSheet.Spread and array_contain(spell.aiming, targets[11], #targets) then
+				if toolSheet.Spread and array_contain(spell.aiming, targets[11], #targets) then
 					return true;
 				end;
-				if updaterSheet.Shapeable and array_contain(spell.aiming, targets[12], #targets) then
+				if toolSheet.Shapeable and array_contain(spell.aiming, targets[12], #targets) then
 					return true;
 				end;
-				if updaterSheet.SpecialTarget and array_contain(spell.aiming, targets[13], #targets) then
+				if toolSheet.SpecialTarget and array_contain(spell.aiming, targets[13], #targets) then
 					return true;
 				end;
 				return false;
 			end;
 
 			local function filterSave(spell)
-				if updaterSheet.fortitude and array_contain(spell.save, trs[1], #trs) then
+				if toolSheet.fortitude and array_contain(spell.save, trs[1], #trs) then
 					return true;
 				end;
-				if updaterSheet.reflex and array_contain(spell.save, trs[2], #trs) then
+				if toolSheet.reflex and array_contain(spell.save, trs[2], #trs) then
 					return true;
 				end;
-				if updaterSheet.will and array_contain(spell.save, trs[3], #trs) then
+				if toolSheet.will and array_contain(spell.save, trs[3], #trs) then
 					return true;
 				end;
-				if updaterSheet.none and array_contain(spell.save, trs[4], #trs) then
+				if toolSheet.none and array_contain(spell.save, trs[4], #trs) then
 					return true;
 				end;
-				if updaterSheet.specialTR and array_contain(spell.save, trs[5], #trs) then
+				if toolSheet.specialTR and array_contain(spell.save, trs[5], #trs) then
 					return true;
 				end;
 				return false;
 			end;
 
 			local function filterSR(spell)
-				if updaterSheet.yes and array_contain(spell.sr, srs[1], #srs) then
+				if toolSheet.yes and array_contain(spell.sr, srs[1], #srs) then
 					return true;
 				end;
-				if updaterSheet.no and array_contain(spell.sr, srs[2], #srs) then
+				if toolSheet.no and array_contain(spell.sr, srs[2], #srs) then
 					return true;
 				end;
 				return false;
@@ -601,9 +601,9 @@
 			end;
 
 			local function filterName(spell)
-				if updaterSheet.nameFilter==nil or updaterSheet.nameFilter=="" then return true end;
+				if toolSheet.nameFilter==nil or toolSheet.nameFilter=="" then return true end;
 
-				local filter = string.lower(Utils.removerAcentos(updaterSheet.nameFilter));
+				local filter = string.lower(Utils.removerAcentos(toolSheet.nameFilter));
 				local nome1 = string.lower(Utils.removerAcentos(spell.name));
 				local nome2 = string.lower(Utils.removerAcentos(trans(spell.name)));
 
@@ -623,98 +623,122 @@
 		<button align="left" horzTextAlign="center" width="375" text="Filtre!">
 			<event name="onClick">
 				if self.scope.node==nil then return end;
-				updaterSheet.filteredSpells = {};
+				toolSheet.filteredSpells = {};
 				local index = 0;
 
 				-- Filtre as magias
 				for k,v in pairs(magicListData.db) do
 					local spell = magicListData.db[k];
 
-					local isName = filterName(spell);
-					if not isName then 
-						--write(spell.name .. " falhou no filtro de isName");
-						goto nextspell 
+					if toolSheet.enableName then
+						local isName = filterName(spell);
+						if not isName then 
+							--write(spell.name .. " falhou no filtro de isName");
+							goto nextspell 
+						end;
 					end;
 
-					local isClass = filterClass(spell);
-					if not isClass then 
-						--write(spell.name .. " falhou no filtro de isClass");
-						goto nextspell 
+					if toolSheet.enableClasses then
+						local isClass = filterClass(spell);
+						if not isClass then 
+							--write(spell.name .. " falhou no filtro de isClass");
+							goto nextspell 
+						end;
 					end;
 
-					local isLevel = filterLevel(spell);
-					if not isLevel then 
-						--write(spell.name .. " falhou no filtro de isLevel");
-						goto nextspell 
+					if toolSheet.enableNivel then
+						local isLevel = filterLevel(spell);
+						if not isLevel then 
+							--write(spell.name .. " falhou no filtro de isLevel");
+							goto nextspell 
+						end;
 					end;
 
-					local isSchool = filterSchool(spell);
-					if not isSchool then 
-						--write(spell.name .. " falhou no filtro de isSchool");
-						goto nextspell 
+					if toolSheet.enableSchool then
+						local isSchool = filterSchool(spell);
+						if not isSchool then 
+							--write(spell.name .. " falhou no filtro de isSchool");
+							goto nextspell 
+						end;
 					end;
 
-					local isTag = filterTag(spell);
-					if not isTag then 
-						--write(spell.name .. " falhou no filtro de isTag");
-						goto nextspell 
+					if toolSheet.enableDescritor then
+						local isTag = filterTag(spell);
+						if not isTag then 
+							--write(spell.name .. " falhou no filtro de isTag");
+							goto nextspell 
+						end;
 					end;
 
-					local isComponent = filterComponent(spell);
-					if not isComponent then 
-						--write(spell.name .. " falhou no filtro de isComponent");
-						goto nextspell 
+					if toolSheet.enableComponentes then
+						local isComponent = filterComponent(spell);
+						if not isComponent then 
+							--write(spell.name .. " falhou no filtro de isComponent");
+							goto nextspell 
+						end;
 					end;
 
-					local isRange = filterRange(spell);
-					if not isRange then 
-						--write(spell.name .. " falhou no filtro de isRange");
-						goto nextspell 
+					if toolSheet.enableAlcance then
+						local isRange = filterRange(spell);
+						if not isRange then 
+							--write(spell.name .. " falhou no filtro de isRange");
+							goto nextspell 
+						end;
 					end;
 
-					local isDuration = filterDuration(spell);
-					if not isDuration then 
-						--write(spell.name .. " falhou no filtro de isDuration");
-						goto nextspell 
+					if toolSheet.enableDuracao then
+						local isDuration = filterDuration(spell);
+						if not isDuration then 
+							--write(spell.name .. " falhou no filtro de isDuration");
+							goto nextspell 
+						end;
 					end;
 
-					local isTarget = filterTarget(spell);
-					if not isTarget then 
-						--write(spell.name .. " falhou no filtro de isTarget");
-						goto nextspell 
+					if toolSheet.enableAlvo then
+						local isTarget = filterTarget(spell);
+						if not isTarget then 
+							--write(spell.name .. " falhou no filtro de isTarget");
+							goto nextspell 
+						end;
 					end;
 
-					local isSave = filterSave(spell);
-					if not isSave then 
-						--write(spell.name .. " falhou no filtro de isSave");
-						goto nextspell 
+					if toolSheet.enableResistencia then
+						local isSave = filterSave(spell);
+						if not isSave then 
+							--write(spell.name .. " falhou no filtro de isSave");
+							goto nextspell 
+						end;
 					end;
 
-					local isSR = filterSR(spell);
-					if not isSR then 
-						--write(spell.name .. " falhou no filtro de isSR");
-						goto nextspell 
+					if toolSheet.enableRm then
+						local isSR = filterSR(spell);
+						if not isSR then 
+							--write(spell.name .. " falhou no filtro de isSR");
+							goto nextspell 
+						end;
 					end;
 
-					local isBook = filterBook(spell);
-					if not isBook then 
-						--write(spell.name .. " falhou no filtro de isBook");
-						goto nextspell 
+					if toolSheet.enableLivro then
+						local isBook = filterBook(spell);
+						if not isBook then 
+							--write(spell.name .. " falhou no filtro de isBook");
+							goto nextspell 
+						end;
 					end;
 
 					index = index +1;
-					updaterSheet.filteredSpells[index] = spell;
+					toolSheet.filteredSpells[index] = spell;
 					::nextspell::
 				end
 
 				--write(index);
 
 				-- Salve a quantidade de magias filtradas e de paginas
-				updaterSheet.numSpells = index;
-				updaterSheet.maxSpellPages = math.ceil(index/50);	
+				toolSheet.numSpells = index;
+				toolSheet.maxSpellPages = math.ceil(index/50);	
 
 				-- Delete o que ta no rcl atual
-		        local toDelete = NDB.getChildNodes(updaterSheet.spellList); 
+		        local toDelete = NDB.getChildNodes(toolSheet.spellList); 
 		        for i=1, #toDelete, 1 do
 		            NDB.deleteNode(toDelete[i]);
 		        end;
@@ -724,29 +748,29 @@
 				for i=1, limit, 1 do
 					local spell = self.spellList:append();
 
-					if updaterSheet.filteredSpells[i].description then 
-						spell.description = updaterSheet.filteredSpells[i].description;
+					if toolSheet.filteredSpells[i].description then 
+						spell.description = toolSheet.filteredSpells[i].description;
 					end;
 
-					spell.name = updaterSheet.filteredSpells[i].name;
-					local nome = tryLang(updaterSheet.filteredSpells[i].name);
+					spell.name = toolSheet.filteredSpells[i].name;
+					local nome = tryLang(toolSheet.filteredSpells[i].name);
 					if nome ~= nil then spell.name = spell.name .. " - " .. nome end;
 
-					spell.school = trans(updaterSheet.filteredSpells[i].school);
-					spell.subschool = trans(updaterSheet.filteredSpells[i].subschool);
-					spell.url = updaterSheet.filteredSpells[i].url;
-					spell.level = classToText(updaterSheet.filteredSpells[i].level);
-					spell.descriptor = "Descritores: " .. arrayToText(updaterSheet.filteredSpells[i].descriptor, #tags);
-					spell.components = "Componentes: " .. arrayToText(updaterSheet.filteredSpells[i].components, #components);
-					spell.range = "Alcance: " .. trans(updaterSheet.filteredSpells[i].range);
-					spell.duration = "Duração: " .. arrayToText(updaterSheet.filteredSpells[i].duration, #durations);
-					spell.aiming = "Alvo: " .. arrayToText(updaterSheet.filteredSpells[i].aiming, #targets);
-					spell.save = "Resistência: " .. arrayToText(updaterSheet.filteredSpells[i].save, #trs);
-					spell.sr = "RM: " .. arrayToText(updaterSheet.filteredSpells[i].sr, #srs);
-					spell.book = "Livro: " .. arrayToText(updaterSheet.filteredSpells[i].book, #books);
+					spell.school = trans(toolSheet.filteredSpells[i].school);
+					spell.subschool = trans(toolSheet.filteredSpells[i].subschool);
+					spell.url = toolSheet.filteredSpells[i].url;
+					spell.level = classToText(toolSheet.filteredSpells[i].level);
+					spell.descriptor = "Descritores: " .. arrayToText(toolSheet.filteredSpells[i].descriptor, #tags);
+					spell.components = "Componentes: " .. arrayToText(toolSheet.filteredSpells[i].components, #components);
+					spell.range = "Alcance: " .. trans(toolSheet.filteredSpells[i].range);
+					spell.duration = "Duração: " .. arrayToText(toolSheet.filteredSpells[i].duration, #durations);
+					spell.aiming = "Alvo: " .. arrayToText(toolSheet.filteredSpells[i].aiming, #targets);
+					spell.save = "Resistência: " .. arrayToText(toolSheet.filteredSpells[i].save, #trs);
+					spell.sr = "RM: " .. arrayToText(toolSheet.filteredSpells[i].sr, #srs);
+					spell.book = "Livro: " .. arrayToText(toolSheet.filteredSpells[i].book, #books);
 				end;
 				self.spellList:sort();
-				updaterSheet.SpellsPage = 1;
+				toolSheet.SpellsPage = 1;
 
 				self.spellListTab:setFocus();
 			</event>
@@ -754,12 +778,12 @@
 	</layout>
 	<scrollBox align="client">
 		<layout align="top" height="25">
-			<label align="left" width="75" horzTextAlign="center" text="NOME" margins="{right=25,bottom=5,top=5}"/>
+			<checkBox align="left" width="75" horzTextAlign="center" text="NOME" field="enableName" margins="{right=25,bottom=5,top=5}"/>
 			<edit align="left" width="275" field="nameFilter"/>
 		</layout>
 		<layout align="top" height="125">
 			<layout align="top" height="25">
-				<label align="left" width="75" horzTextAlign="center" text="CLASSES" margins="{right=75}"/>
+				<checkBox align="left" width="75" horzTextAlign="center" text="CLASSES" field="enableClasses" margins="{right=75}"/>
 				<radioButton align="left" width="60" text="Todas" groupName="grupoDeClasses" field="classRule" fieldValue="and" hint="Exibe magias apenas se elas pertencerem a todas classes selecionadas. "/>
 				<radioButton align="left" width="110" text="Ao menos uma" groupName="grupoDeClasses" field="classRule" fieldValue="or" hint="Exibe magias que pertençam ao menos a uma das classes selecionadas. "/> 
 			</layout>
@@ -830,7 +854,7 @@
 		</layout>
 		<layout align="top" height="100">
 			<layout align="top" height="25">
-				<label align="left" width="75" horzTextAlign="center" text="NÍVEL" margins="{right=75}"/>
+				<checkBox align="left" width="75" horzTextAlign="center" text="NÍVEL" field="enableNivel" margins="{right=75}"/>
 			</layout>
 			<layout align="top" height="25">
 				<checkBox align="left" horzTextAlign="center" width="75" field="lvl0" text="0"/>
@@ -881,7 +905,7 @@
 		</layout>
 		<layout align="top" height="250">
 			<layout align="top" height="25">
-				<label align="left" width="150" horzTextAlign="center" text="ESCOLA (SUBESCOLA)" margins="{right=0}"/>
+				<checkBox align="left" width="150" horzTextAlign="center" text="ESCOLA (SUBESCOLA)" field="enableSchool" margins="{right=0}"/>
 			</layout>
 			<layout align="top" height="25">
 				<checkBox align="left" horzTextAlign="center" width="125" field="Abjuration" text="Abjuração"/>
@@ -983,7 +1007,7 @@
 		</layout>
 		<layout align="top" height="175">
 			<layout align="top" height="25">
-				<label align="left" width="75" horzTextAlign="center" text="DESCRITOR" margins="{right=75}"/>
+				<checkBox align="left" width="100" horzTextAlign="center" text="DESCRITOR" field="enableDescritor" margins="{right=50}"/>
 			</layout>
 			<layout align="top" height="25">
 				<checkBox align="left" horzTextAlign="center" width="90" field="Acid" text="Ácido"/>
@@ -1071,7 +1095,7 @@
 		</layout>
 		<layout align="top" height="100">
 			<layout align="top" height="25">
-				<label align="left" width="100" horzTextAlign="center" text="COMPONENTES" margins="{right=25}"/>
+				<checkBox align="left" width="125" horzTextAlign="center" text="COMPONENTES" field="enableComponentes" margins="{right=0}"/>
 				<radioButton align="left" width="60" text="Todas" groupName="grupoDeComponentes" field="componentRule" fieldValue="and" hint="Exibe magias apenas se ela usa todos componentes selecionados. "/>
 				<radioButton align="left" width="110" text="Ao menos um" groupName="grupoDeComponentes" field="componentRule" fieldValue="or" hint="Exibe magias que usem ao menos um dos componentes selecionados.  "/> 
 				<radioButton align="left" width="75" text="Nenhum" groupName="grupoDeComponentes" field="componentRule" fieldValue="not" hint="Exibe magias apenas se ela usa não usa nenhum componentes selecionados. "/>
@@ -1117,7 +1141,7 @@
 		</layout>
 		<layout align="top" height="150">
 			<layout align="top" height="25">
-				<label align="left" width="75" horzTextAlign="center" text="ALCANCE" margins="{right=75}"/>
+				<checkBox align="left" width="75" horzTextAlign="center" text="ALCANCE" field="enableAlcance" margins="{right=75}"/>
 			</layout>
 			<layout align="top" height="25">
 				<checkBox align="left" horzTextAlign="center" width="90" field="fixo3m" text="3m"/>
@@ -1181,7 +1205,7 @@
 		</layout>
 		<layout align="top" height="125">
 			<layout align="top" height="25">
-				<label align="left" width="75" horzTextAlign="center" text="DURAÇÃO" margins="{right=75}"/>
+				<checkBox align="left" width="100" horzTextAlign="center" text="DURAÇÃO" field="enableDuracao" margins="{right=50}"/>
 			</layout>
 			<layout align="top" height="25">
 				<checkBox align="left" horzTextAlign="center" width="125" field="Concentration" text="Concentração"/>
@@ -1231,7 +1255,7 @@
 		</layout>
 		<layout align="top" height="150">
 			<layout align="top" height="25">
-				<label align="left" width="75" horzTextAlign="center" text="ALVO" margins="{right=75}"/>
+				<checkBox align="left" width="75" horzTextAlign="center" text="ALVO" field="enableAlvo" margins="{right=75}"/>
 			</layout>
 			<layout align="top" height="25">
 				<checkBox align="left" horzTextAlign="center" width="90" field="Area" text="Area"/>
@@ -1295,7 +1319,7 @@
 		</layout>
 		<layout align="top" height="75">
 			<layout align="top" height="25">
-				<label align="left" width="75" horzTextAlign="center" text="RESISTENCIA" margins="{right=75}"/>
+				<checkBox align="left" width="100" horzTextAlign="center" text="RESISTENCIA" field="enableResistencia" margins="{right=50}"/>
 			</layout>
 			<layout align="top" height="25">
 				<checkBox align="left" horzTextAlign="center" width="75" field="fortitude" text="Fortitude"/>
@@ -1329,7 +1353,7 @@
 		</layout>
 		<layout align="top" height="75">
 			<layout align="top" height="25">
-				<label align="left" width="75" horzTextAlign="center" text="RM" margins="{right=75}"/>
+				<checkBox align="left" width="75" horzTextAlign="center" text="RM" field="enableRm" margins="{right=75}"/>
 			</layout>
 			<layout align="top" height="25">
 				<checkBox align="left" horzTextAlign="center" width="187" field="yes" text="Sim"/>
@@ -1354,7 +1378,7 @@
 		</layout>
 		<layout align="top" height="125">
 			<layout align="top" height="25">
-				<label align="left" width="75" horzTextAlign="center" text="LIVRO" margins="{right=75}"/>
+				<checkBox align="left" width="75" horzTextAlign="center" text="LIVRO" field="enableLivro" margins="{right=75}"/>
 			</layout>
 			<layout align="top" height="25">
 				<checkBox align="left" horzTextAlign="center" width="125" field="PHB" text="Jogador"/>

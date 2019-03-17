@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWeaponItem" height="50" margins="{top=1}">
+	<rectangle align="top" color="#212121" height="25" visible="true">
+		<label align="left" width="50" text="Tipo" horzTextAlign="center"/>
+		<comboBox align="left" width="100" field="tipo" items="{'Aprimoramento','Único'}" hint="Aprimoramento: Efeito com valor númerico [+1, +2, +3 e etc]. \nÚnico: efeito de arma única."/>
+
+		<label align="left" width="40" text="Valor" horzTextAlign="center"/>
+		<label align="left" width="60" field="preco" horzTextAlign="center" formatFloat=",0.## PO" fontSize="10"/>
+
+		<button align="left" width="25" text="X">
+			<event name="onClick">
+				Dialogs.confirmYesNo("Deseja realmente apagar esse efeito?",
+					function (confirmado)
+						if confirmado then
+							NDB.deleteNode(sheet);
+						end;
+					end);
+			</event>
+		</button>
+	</rectangle>
+
+	<rectangle align="client" color="#212121" visible="true" name="aprimoramento">
+		<label align="left" width="50" text="Nome" horzTextAlign="center"/>
+		<edit align="left" width="100" field="nome"/>
+		<label align="left" width="50" text="Bônus" horzTextAlign="center"/>
+		<edit align="left" width="30" field="bonus" type="number"/>
+	</rectangle>
+
+	<rectangle align="client" color="#212121" visible="false" name="unico">
+		<label align="left" width="50" text="Nome" horzTextAlign="center"/>
+		<edit align="left" width="100" field="nome"/>
+		<label align="left" width="50" text="Valor" horzTextAlign="center"/>
+		<edit align="left" width="75" field="valor" type="number"/>
+	</rectangle>
+
+	<dataLink fields="{'tipo'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			if sheet.tipo=="Aprimoramento" then
+				self.aprimoramento.visible = true;
+				self.unico.visible = false;
+			else
+				self.aprimoramento.visible = false;
+				self.unico.visible = true;
+			end;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'tipo','bonus'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			if sheet.tipo~="Aprimoramento" then return end;
+
+			local node = toolSheet;
+			local sum = 0;
+
+			local nodes = NDB.getChildNodes(node.weaponList); 
+			for i=1, #nodes, 1 do
+				if sheet.tipo=="Aprimoramento" then sum = sum + (tonumber(nodes[i].bonus) or 0) end;
+			end;
+
+			node.weaponBonus = sum;
+			sheet.preco = 0;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'tipo','valor'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			if sheet.tipo~="Único" then return end;
+
+			local node = toolSheet;
+			local sum = 0;
+
+			local nodes = NDB.getChildNodes(node.weaponList); 
+			for i=1, #nodes, 1 do
+				if sheet.tipo=="Único" then sum = sum + (tonumber(nodes[i].valor) or 0) end;
+			end;
+
+			node.weaponExtraPrice = sum;
+			sheet.preco = sum;
+		</event>
+	</dataLink>
+</form>

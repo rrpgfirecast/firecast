@@ -13,54 +13,47 @@
 			<event name="onClick">
 				-- Verifica se ta na primeira pagina
 				if self.scope.node==nil then return end;
-				if updaterSheet.SpellsPage==nil then return end;
+				if toolSheet.SpellsPage==nil then return end;
 
-				if updaterSheet.SpellsPage==1 then return end;
+				if toolSheet.SpellsPage==1 then return end;
 
 				-- Apaga pagina atual
-				local toDelete = NDB.getChildNodes(updaterSheet.spellList); 
+				local toDelete = NDB.getChildNodes(toolSheet.spellList); 
 			    for i=1, #toDelete, 1 do
 			        NDB.deleteNode(toDelete[i]);
 			    end;
 
 				-- Passa para a pagina anterior
-				updaterSheet.SpellsPage = updaterSheet.SpellsPage - 1;
+				toolSheet.SpellsPage = toolSheet.SpellsPage - 1;
 
-				local mesa = Firecast.getMesaDe(sheet);
-
-				local filteredSpells = updaterSheet.filteredSpells;
-
-				local first = ((updaterSheet.SpellsPage-1)*50)+1;
-				local last = math.min(updaterSheet.SpellsPage*50, updaterSheet.numSpells);
+				local first = ((toolSheet.SpellsPage-1)*50)+1;
+				local last = math.min(toolSheet.SpellsPage*50, toolSheet.numSpells);
 
 				for i=first, last, 1 do
 					local spell = self.spellList:append();
 
-					if updaterSheet.filteredSpells[i].description then 
-						spell.description = updaterSheet.filteredSpells[i].description;
+					if toolSheet.filteredSpells[i].description then 
+						spell.description = toolSheet.filteredSpells[i].description;
 					end;
 
-					spell.name = updaterSheet.filteredSpells[i].name;
-					local nome = tryLang(updaterSheet.filteredSpells[i].name);
+					spell.name = toolSheet.filteredSpells[i].name;
+					local nome = tryLang(toolSheet.filteredSpells[i].name);
 					if nome ~= nil then spell.name = spell.name .. " - " .. nome end;
 
-					spell.school = trans(updaterSheet.filteredSpells[i].school);
-					spell.subschool = trans(updaterSheet.filteredSpells[i].subschool);
-					spell.url = updaterSheet.filteredSpells[i].url;
-					spell.level = classToText(updaterSheet.filteredSpells[i].level);
-					spell.descriptor = "Descritores: " .. arrayToText(updaterSheet.filteredSpells[i].descriptor, #tags);
-					spell.components = "Componentes: " .. arrayToText(updaterSheet.filteredSpells[i].components, #components);
-					spell.range = "Alcance: " .. trans(updaterSheet.filteredSpells[i].range);
-					spell.duration = "Duração: " .. arrayToText(updaterSheet.filteredSpells[i].duration, #durations);
-					spell.aiming = "Alvo: " .. arrayToText(updaterSheet.filteredSpells[i].aiming, #targets);
-					spell.save = "Resistência: " .. arrayToText(updaterSheet.filteredSpells[i].save, #trs);
-					spell.sr = "RM: " .. arrayToText(updaterSheet.filteredSpells[i].sr, #srs);
-					spell.book = "Livro: " .. arrayToText(updaterSheet.filteredSpells[i].book, #books);
+					spell.school = trans(toolSheet.filteredSpells[i].school);
+					spell.subschool = trans(toolSheet.filteredSpells[i].subschool);
+					spell.url = toolSheet.filteredSpells[i].url;
+					spell.level = classToText(toolSheet.filteredSpells[i].level);
+					spell.descriptor = "Descritores: " .. arrayToText(toolSheet.filteredSpells[i].descriptor, #tags);
+					spell.components = "Componentes: " .. arrayToText(toolSheet.filteredSpells[i].components, #components);
+					spell.range = "Alcance: " .. trans(toolSheet.filteredSpells[i].range);
+					spell.duration = "Duração: " .. arrayToText(toolSheet.filteredSpells[i].duration, #durations);
+					spell.aiming = "Alvo: " .. arrayToText(toolSheet.filteredSpells[i].aiming, #targets);
+					spell.save = "Resistência: " .. arrayToText(toolSheet.filteredSpells[i].save, #trs);
+					spell.sr = "RM: " .. arrayToText(toolSheet.filteredSpells[i].sr, #srs);
+					spell.book = "Livro: " .. arrayToText(toolSheet.filteredSpells[i].book, #books);
 				end;
 				self.spellList:sort();
-
-				-- Atualiza o tamanho do rcl
-				local spells = NDB.getChildNodes(updaterSheet.spellList); 
 			</event>
 		</button>
 
@@ -72,51 +65,50 @@
 			<event name="onClick">
 				-- Verifica se ta na ultima pagina
 				if self.scope.node==nil then return end;
-				if updaterSheet.SpellsPage==nil then return end;
+				if toolSheet.SpellsPage==nil then return end;
 
-				local filteredSpells = updaterSheet.filteredSpells;
-				if updaterSheet.SpellsPage>=updaterSheet.maxSpellPages then return end;
+				if toolSheet.SpellsPage>=toolSheet.maxSpellPages then return end;
 
 				-- Apaga pagina atual
-				local toDelete = NDB.getChildNodes(updaterSheet.spellList); 
+				local toDelete = NDB.getChildNodes(toolSheet.spellList); 
 			    for i=1, #toDelete, 1 do
 			        NDB.deleteNode(toDelete[i]);
 			    end;
 
 				-- Passa para a proxima pagina
-				updaterSheet.SpellsPage = updaterSheet.SpellsPage + 1;
+				toolSheet.SpellsPage = toolSheet.SpellsPage + 1;
 
-				local first = ((updaterSheet.SpellsPage-1)*50)+1;
-				local last = math.min(updaterSheet.SpellsPage*50, updaterSheet.numSpells);
+				local first = ((toolSheet.SpellsPage-1)*50)+1;
+				local last = math.min(toolSheet.SpellsPage*50, toolSheet.numSpells);
 
 				for i=first, last, 1 do
 					local spell = self.spellList:append();
 
-					if updaterSheet.filteredSpells[i].description then 
-						spell.description = updaterSheet.filteredSpells[i].description;
+					if toolSheet.filteredSpells[i].description then 
+						spell.description = toolSheet.filteredSpells[i].description;
 					end;
 					
-					spell.name = updaterSheet.filteredSpells[i].name;
-					local nome = tryLang(updaterSheet.filteredSpells[i].name);
+					spell.name = toolSheet.filteredSpells[i].name;
+					local nome = tryLang(toolSheet.filteredSpells[i].name);
 					if nome ~= nil then spell.name = spell.name .. " - " .. nome end;
 
-					spell.school = trans(updaterSheet.filteredSpells[i].school);
-					spell.subschool = trans(updaterSheet.filteredSpells[i].subschool);
-					spell.url = updaterSheet.filteredSpells[i].url;
-					spell.level = classToText(updaterSheet.filteredSpells[i].level);
-					spell.descriptor = "Descritores: " .. arrayToText(updaterSheet.filteredSpells[i].descriptor, #tags);
-					spell.components = "Componentes: " .. arrayToText(updaterSheet.filteredSpells[i].components, #components);
-					spell.range = "Alcance: " .. trans(updaterSheet.filteredSpells[i].range);
-					spell.duration = "Duração: " .. arrayToText(updaterSheet.filteredSpells[i].duration, #durations);
-					spell.aiming = "Alvo: " .. arrayToText(updaterSheet.filteredSpells[i].aiming, #targets);
-					spell.save = "Resistência: " .. arrayToText(updaterSheet.filteredSpells[i].save, #trs);
-					spell.sr = "RM: " .. arrayToText(updaterSheet.filteredSpells[i].sr, #srs);
-					spell.book = "Livro: " .. arrayToText(updaterSheet.filteredSpells[i].book, #books);
+					spell.school = trans(toolSheet.filteredSpells[i].school);
+					spell.subschool = trans(toolSheet.filteredSpells[i].subschool);
+					spell.url = toolSheet.filteredSpells[i].url;
+					spell.level = classToText(toolSheet.filteredSpells[i].level);
+					spell.descriptor = "Descritores: " .. arrayToText(toolSheet.filteredSpells[i].descriptor, #tags);
+					spell.components = "Componentes: " .. arrayToText(toolSheet.filteredSpells[i].components, #components);
+					spell.range = "Alcance: " .. trans(toolSheet.filteredSpells[i].range);
+					spell.duration = "Duração: " .. arrayToText(toolSheet.filteredSpells[i].duration, #durations);
+					spell.aiming = "Alvo: " .. arrayToText(toolSheet.filteredSpells[i].aiming, #targets);
+					spell.save = "Resistência: " .. arrayToText(toolSheet.filteredSpells[i].save, #trs);
+					spell.sr = "RM: " .. arrayToText(toolSheet.filteredSpells[i].sr, #srs);
+					spell.book = "Livro: " .. arrayToText(toolSheet.filteredSpells[i].book, #books);
 				end;
 				self.spellList:sort();
 
 				-- Atualiza o tamanho do rcl
-				local spells = NDB.getChildNodes(updaterSheet.spellList); 
+				local spells = NDB.getChildNodes(toolSheet.spellList); 
         		self.spellList.height = #spells * 101;
 			</event>
 		</button>

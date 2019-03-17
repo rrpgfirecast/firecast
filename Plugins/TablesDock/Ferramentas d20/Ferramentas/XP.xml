@@ -8,12 +8,12 @@
 		<layout align="top" height="25">
 			<button align="left" width="110" text="+" margins="{right=5}">
 				<event name="onClick">
-					local idioma = self.enemiesList:append();
+					self.enemiesList:append();
 				</event>
 			</button>
 			<button align="left" width="260" text="+">
 				<event name="onClick">
-					local idioma = self.playersList:append();
+					self.playersList:append();
 				</event>
 			</button>
 		</layout>
