@@ -59,7 +59,7 @@
 		</layout>
 
 		<layout left="620" top="240" width="200" height="150">
-			<rectangle left="0" top="0" width="200" height="150" color="black"/>
+			<rectangle left="0" top="0" width="200" height="150" color="black" strokeColor="white" strokeSize="1"/>
 			<label left="0" top="10" width="80" height="20" text="Tema:" horzTextAlign="center"/>
 			<comboBox left="95" top="10" width="90" field="theme" fontColor="white" items="{'Escuro', 'Claro'}" horzTextAlign="center">
 				<event name="onChange">

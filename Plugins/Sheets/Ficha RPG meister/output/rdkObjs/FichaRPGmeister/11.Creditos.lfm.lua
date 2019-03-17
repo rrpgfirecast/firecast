@@ -156,6 +156,8 @@ local function constructNew_frmFichaRPGmeister11_svg()
     obj.rectangle2:setWidth(200);
     obj.rectangle2:setHeight(150);
     obj.rectangle2:setColor("black");
+    obj.rectangle2:setStrokeColor("grey");
+    obj.rectangle2:setStrokeSize(1);
     obj.rectangle2:setName("rectangle2");
 
     obj.label5 = GUI.fromHandle(_obj_newObject("label"));
@@ -502,7 +504,7 @@ local function constructNew_frmFichaRPGmeister11_svg()
 
     obj._e_event7 = obj.button4:addEventListener("onClick",
         function (_)
-            GUI.openInBrowser('http://firecast.Firecast.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
+            GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     obj._e_event8 = obj.button5:addEventListener("onClick",

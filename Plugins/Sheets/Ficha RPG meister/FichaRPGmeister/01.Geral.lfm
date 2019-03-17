@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFichaRPGmeister1_svg" align="client" margins="{top=1}" theme="dark">
 	<template name="formatEdit">
-		<rectangle left="$(left)" top="$(top)" width="$(width)" height="$(height)" color="black" strokeColor="grey" strokeSize="1" name="$(field)Label" visible="true">
+		<rectangle left="$(left)" top="$(top)" width="$(width)" height="$(height)" color="black" strokeColor="grey" strokeSize="1" name="$(field)Label" visible="true" opacity="0.75" cornerType="innerRound" xradius="5" yradius="5">
 			<label width="$(width)" height="$(height)" field="$(field)" horzTextAlign="center" fontSize="11" formatFloat=",0.## $(unit)"/>
 			<event name="onClick">
 				self.$(field)Label.visible = false;

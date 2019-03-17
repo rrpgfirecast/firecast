@@ -53,7 +53,7 @@
             <import file="03.Pericias.lfm"/>
         </tab>
         <tab title="Habilidades">
-            <import file="04.Habilidades.lfm"/>
+            <import file="04.Habilidades.xml"/>
         </tab>
 		<tab title="Magias">
             <import file="05.Magias.lfm"/>

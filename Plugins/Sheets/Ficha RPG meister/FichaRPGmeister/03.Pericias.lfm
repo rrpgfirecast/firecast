@@ -137,6 +137,20 @@
 				<event name="onCompare">
 		            return Utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
 		        </event>
+				<event name="onEndEnumeration">
+					if sheet==nil then return end;
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+					if #nodes == 0 then
+						dndSkills();
+					end;
+				</event>
+				<event name="onBeginEnumeration">
+					if sheet==nil then return end;
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+					if #nodes == 0 then
+						dndSkills();
+					end;
+				</event>
 			</recordList>
 		</layout>
 

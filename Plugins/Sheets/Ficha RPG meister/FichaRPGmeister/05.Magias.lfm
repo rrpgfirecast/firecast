@@ -232,7 +232,7 @@
 					<comboBox left="260" top="0" width="60" height="25" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" field="atributoCD" fontColor="white"/>
 					
 					<rectangle left="210" top="0" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
-					<label left="211" top="0" width="30" height="25" field="grimorio" horzTextAlign="center"/>
+					<label left="210" top="0" width="30" height="25" field="grimorio" horzTextAlign="center"/>
 					<dataLink fields="{'conhecidas0', 'conhecidas1', 'conhecidas2', 'conhecidas3', 'conhecidas4', 'conhecidas5', 'conhecidas6', 'conhecidas7', 'conhecidas8', 'conhecidas9'}">
 						<event name="onChange">
 							if sheet~=nil then
@@ -432,7 +432,7 @@
 					<comboBox left="260" top="0" width="60" height="25" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" field="atributoCD" fontColor="white"/>
 					
 					<rectangle left="210" top="0" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
-					<label left="211" top="0" width="30" height="25" field="grimorio" horzTextAlign="center"/>
+					<label left="210" top="0" width="30" height="25" field="grimorio" horzTextAlign="center"/>
 					<dataLink fields="{'conhecidas0', 'conhecidas1', 'conhecidas2', 'conhecidas3', 'conhecidas4', 'conhecidas5', 'conhecidas6', 'conhecidas7', 'conhecidas8', 'conhecidas9'}">
 						<event name="onChange">
 							if sheet~=nil then

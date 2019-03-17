@@ -6,6 +6,12 @@ Talentos para Verificar:
 * Piranha Strike
 * Rajada de Golpes
 
+Versão 0.7
+- Campos editaveis invisiveis tem retangulo diferenciado agora. 
+- Aba de habilidades compativel com aparelhos moveis. 
+- Aba de anotações compativel com aparelhos moveis. 
+- Se a lista de pericias estiver vazia a lista padrão vai ser automaticamente colocada. 
+
 Versão 0.6
 - Botão para apagar um ataque simples. 
 - Seleção cores temas da ficha. 

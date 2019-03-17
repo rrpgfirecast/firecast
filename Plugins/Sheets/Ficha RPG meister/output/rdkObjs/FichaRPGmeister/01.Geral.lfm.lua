@@ -3946,6 +3946,10 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.xpAtualLabel:setStrokeSize(1);
     obj.xpAtualLabel:setName("xpAtualLabel");
     obj.xpAtualLabel:setVisible(true);
+    obj.xpAtualLabel:setOpacity(0.75);
+    obj.xpAtualLabel:setCornerType("innerRound");
+    obj.xpAtualLabel:setXradius(5);
+    obj.xpAtualLabel:setYradius(5);
 
     obj.label65 = GUI.fromHandle(_obj_newObject("label"));
     obj.label65:setParent(obj.xpAtualLabel);

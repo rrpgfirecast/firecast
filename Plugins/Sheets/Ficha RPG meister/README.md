@@ -7,6 +7,12 @@ Proximas Versões
 + Exportar ficha para texto (completo/simples).
 + Adicionar alcances de magias na aba de magias baseado no NC.
 
+Versão 3.3
+- Campos editaveis invisiveis tem retangulo diferenciado agora. 
+- Aba de habilidades compativel com aparelhos moveis. 
+- Aba de anotações compativel com aparelhos moveis. 
+- Se a lista de pericias estiver vazia a lista padrão vai ser automaticamente colocada. 
+
 Versão 3.2
 - Botão para apagar um ataque simples. 
 - Seleção cores temas da ficha. 

@@ -308,7 +308,7 @@ local function constructNew_frmFichaRPGmeister5M_svg()
 
     obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout2);
-    obj.label5:setLeft(211);
+    obj.label5:setLeft(210);
     obj.label5:setTop(0);
     obj.label5:setWidth(30);
     obj.label5:setHeight(25);
@@ -2457,7 +2457,7 @@ local function constructNew_frmFichaRPGmeister5M_svg()
 
     obj.label56 = GUI.fromHandle(_obj_newObject("label"));
     obj.label56:setParent(obj.layout47);
-    obj.label56:setLeft(211);
+    obj.label56:setLeft(210);
     obj.label56:setTop(0);
     obj.label56:setWidth(30);
     obj.label56:setHeight(25);

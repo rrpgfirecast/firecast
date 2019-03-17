@@ -135,7 +135,21 @@
 			<recordList name="rclListaDasPericias" field="campoDasPericias" templateForm="frmFichaRPGmeister3p_svg" left="5" top="25" width="920" height="650" layout="verticalTiles">
 				<event name="onCompare">
 		            return Utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
-		        </event>
+			    </event>
+				<event name="onEndEnumeration">
+					if sheet==nil then return end;
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+					if #nodes == 0 then
+						pathSkills();
+					end;
+				</event>
+				<event name="onBeginEnumeration">
+					if sheet==nil then return end;
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+					if #nodes == 0 then
+						pathSkills();
+					end;
+				</event>
 			</recordList>
 		</layout>
 

@@ -143,7 +143,7 @@
 			<textEditor left="5" top="35" width="390" height="300" field="descricao"/>
 
 			<label left="5" top="340" width="95" height="20" text="Peso" horzTextAlign="center"/>
-			<rectangle left="100" top="340" width="75" height="25" color="black" strokeColor="grey" strokeSize="1" name="weightLabel" visible="true">
+			<rectangle left="100" top="340" width="75" height="25" color="black" strokeColor="grey" strokeSize="1" name="weightLabel" visible="true" opacity="0.75" cornerType="innerRound" xradius="5" yradius="5">
 				<label width="75" height="25" field="peso" horzTextAlign="center" formatFloat=",0.## Kg"/>
 				<event name="onClick">
 					self.weightLabel.visible = false;
@@ -170,7 +170,7 @@
 			</edit>
 
 			<label left="200" top="340" width="95" height="20" text="Preço" horzTextAlign="center"/>
-			<rectangle left="290" top="340" width="75" height="25" color="black" strokeColor="grey" strokeSize="1" name="priceLabel" visible="true">
+			<rectangle left="290" top="340" width="75" height="25" color="black" strokeColor="grey" strokeSize="1" name="priceLabel" visible="true" opacity="0.75" cornerType="innerRound" xradius="5" yradius="5">
 				<label width="75" height="25" field="preco" horzTextAlign="center" formatFloat=",0.## PO"/>
 				<event name="onClick">
 					self.priceLabel.visible = false;
