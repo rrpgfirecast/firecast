@@ -14523,11 +14523,13 @@ local function constructNew_frmFichaRPGmeister()
 
 				for i=1, 36, 1 do
 					local pericia = self.rclListaDasPericias:append();
-					pericia.nomePericia = path[i].nome;
-					pericia.chavePericia = path[i].chave;
-					pericia.exigeTreino = path[i].treino;
-					if path[i].armadura > 0 then
-						pericia.penalidadeArmadura2 = true;
+					if pericia~=nil then
+						pericia.nomePericia = path[i].nome;
+						pericia.chavePericia = path[i].chave;
+						pericia.exigeTreino = path[i].treino;
+						if path[i].armadura > 0 then
+							pericia.penalidadeArmadura2 = true;
+						end;
 					end;
 				end;
 
@@ -22107,6 +22109,10 @@ local function constructNew_frmFichaRPGmeister()
     obj.weightLabel:setStrokeSize(1);
     obj.weightLabel:setName("weightLabel");
     obj.weightLabel:setVisible(true);
+    obj.weightLabel:setOpacity(0.75);
+    obj.weightLabel:setCornerType("innerRound");
+    obj.weightLabel:setXradius(5);
+    obj.weightLabel:setYradius(5);
 
     obj.label564 = GUI.fromHandle(_obj_newObject("label"));
     obj.label564:setParent(obj.weightLabel);
@@ -22150,6 +22156,10 @@ local function constructNew_frmFichaRPGmeister()
     obj.priceLabel:setStrokeSize(1);
     obj.priceLabel:setName("priceLabel");
     obj.priceLabel:setVisible(true);
+    obj.priceLabel:setOpacity(0.75);
+    obj.priceLabel:setCornerType("innerRound");
+    obj.priceLabel:setXradius(5);
+    obj.priceLabel:setYradius(5);
 
     obj.label566 = GUI.fromHandle(_obj_newObject("label"));
     obj.label566:setParent(obj.priceLabel);

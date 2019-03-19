@@ -105,14 +105,16 @@ local function constructNew_frmFichaRPGmeister3_svg()
 
 				for i=1, 44, 1 do
 					local pericia = self.rclListaDasPericias:append();
-					pericia.nomePericia = dnd[i].nome;
-					pericia.chavePericia = dnd[i].chave;
-					pericia.exigeTreino = dnd[i].treino;
-					if dnd[i].armadura > 0 then
-						pericia.penalidadeArmadura2 = true;
-					end;
-					if dnd[i].armadura > 1 then
-						pericia.penalidadeArmadura = true;
+					if pericia ~= nil then
+						pericia.nomePericia = dnd[i].nome;
+						pericia.chavePericia = dnd[i].chave;
+						pericia.exigeTreino = dnd[i].treino;
+						if dnd[i].armadura > 0 then
+							pericia.penalidadeArmadura2 = true;
+						end;
+						if dnd[i].armadura > 1 then
+							pericia.penalidadeArmadura = true;
+						end;
 					end;
 				end;
 

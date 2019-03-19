@@ -75,11 +75,13 @@
 
 				for i=1, 36, 1 do
 					local pericia = self.rclListaDasPericias:append();
-					pericia.nomePericia = path[i].nome;
-					pericia.chavePericia = path[i].chave;
-					pericia.exigeTreino = path[i].treino;
-					if path[i].armadura > 0 then
-						pericia.penalidadeArmadura2 = true;
+					if pericia~=nil then
+						pericia.nomePericia = path[i].nome;
+						pericia.chavePericia = path[i].chave;
+						pericia.exigeTreino = path[i].treino;
+						if path[i].armadura > 0 then
+							pericia.penalidadeArmadura2 = true;
+						end;
 					end;
 				end;
 
