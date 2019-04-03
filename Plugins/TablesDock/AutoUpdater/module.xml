@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.5">
     <id>Ambesek.Auto.Updater</id>
-    <version>0.5</version>
+    <version>0.6</version>
     <name>Plugin Auto Updater</name>
     <description>Verifica seus plugins e encontra quais tem atualizações disponíveis no git do firecast. Também permite acesso a plugins não instalados do git.</description>
     <author>Ambesek</author>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmXP" align="client">
+	<scrollBox align="client">
+		<layout align="top" height="25">
+			<label align="left" width="110" horzTextAlign="center" text="Desafios" margins="{right=5}"/>
+			<label align="left" width="260" horzTextAlign="center" text="Personagens"/>
+		</layout>
+		<layout align="top" height="25">
+			<button align="left" width="110" text="+" margins="{right=5}">
+				<event name="onClick">
+					self.enemiesList:append();
+				</event>
+			</button>
+			<button align="left" width="260" text="+">
+				<event name="onClick">
+					self.playersList:append();
+				</event>
+			</button>
+		</layout>
+		<layout align="top" height="25">
+			<layout align="left" width="110" margins="{right=5}">
+				<label align="left" width="30" horzTextAlign="center" text="#"/>
+				<label align="left" width="30" horzTextAlign="center" text="ND"/>
+			</layout>
+			<layout align="left" width="260">
+				<label align="left" width="30" horzTextAlign="center" text="#"/>
+				<label align="left" width="30" horzTextAlign="center" text="NEP"/>
+				<label align="left" width="75" horzTextAlign="center" text="XP Total"/>
+				<label align="left" width="75" horzTextAlign="center" text="XP Individual" fontSize="11"/>
+			</layout>
+		</layout>
+		<recordList align="left" width="110" field="enemiesList" name="enemiesList" templateForm="frmEnemy" minQt="1" margins="{right=5}">
+			<event name="onCompare">
+				return (tonumber(nodeB.nd) or 0) - (tonumber(nodeA.nd) or 0);
+        	</event>
+		</recordList>
+		<recordList align="left" width="260" field="playersList" name="playersList" templateForm="frmPlayer" minQt="1">
+			<event name="onCompare">
+				return (tonumber(nodeB.nep) or 0) - (tonumber(nodeA.nep) or 0);
+        	</event>
+		</recordList>
+
+		<dataLink fields="{'calculateXP'}">
+			<event name="onChange">
+				<![CDATA[
+				if self.scope.node==nil then return end;
+				if not self.scope.node.calculateXP then return end;
+				self.scope.node.calculateXP = false;
+
+				local players = NDB.getChildNodes(self.scope.node.playersList); 
+				local enemies = NDB.getChildNodes(self.scope.node.enemiesList); 
+
+				-- Veja quantos personagens tem, se tiver 0
+				local numPlayers = 0;
+				for i=1, #players, 1 do 
+					local qtd = tonumber(players[i].qtd) or 0;
+					numPlayers = numPlayers + qtd;
+				end;
+				if numPlayers == 0 then return end;
+
+				-- Calcule a XP de cada grupo
+
+				for i=1, #players, 1 do 
+					local xpAll = 0;
+					local nep = tonumber(players[i].nep) or 3;
+					if nep < 3 then nep = 3 end;
+
+					local xpTable = {};
+					xpTable[8] = nep * 300;
+					xpTable[9] = math.ceil(xpTable[8] * 1.5);
+					for i=10, 15, 1 do
+						xpTable[i] = xpTable[i-2] * 2;
+					end;
+					for i=7, 1, -1 do
+						xpTable[i] = math.ceil(xpTable[i+2] / 2);
+					end;
+
+					for j=1, #enemies, 1 do 
+						local nd = tonumber(enemies[j].nd) or 0;
+						local qtd = tonumber(enemies[j].qtd) or 1;
+						local index = math.ceil(nd+8-nep);
+						local xp = 0;
+						if index > 0 and index < 16 then
+							xp = xpTable[index] * qtd;
+						end;
+
+						if nd<1 then
+							xp = xp * nd;
+						end;
+
+						xpAll = xpAll + xp;
+					end;
+					players[i].xpAll = math.floor(xpAll);
+					players[i].xpMine = math.floor(xpAll/numPlayers);
+				end;
+
+				]]>	
+			</event>
+		</dataLink>
+	</scrollBox>
+</form>

@@ -7,6 +7,9 @@ Quando for subir seu plugin respeite o sistema de versão para facilitar sua ins
 
 Os valores separados pelos pontos não precisam ser decimais. A menor versão possivel deve ser 0.0.1, já a maior versão possivel deve ser 65535.65535.65535 . Logo mantenha isso em mente quando estiver aumentando a versão de seus plugins. 
 
+Versão 0.6:
+Adicionado campo de filtro nos plugins disponíveis. 
+
 Versão 0.2:
 * Corrigido problema de vizualização em mesas onde o usuario não é mestre.
 * Corrigido problema no download da lista de plugins.

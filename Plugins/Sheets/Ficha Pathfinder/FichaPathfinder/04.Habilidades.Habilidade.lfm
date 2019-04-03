@@ -18,16 +18,14 @@
 				pop:setNodeObject(self.sheet);
 				pop:showPopupEx("right", self);
 			else
-				showMessage("Ops, bug.. nao encontrei o popup de pericias para exibir");
+				showMessage("Ops, bug.. nao encontrei o popup de habilidades para exibir");
 			end;				
 		end;
 	]]>
 	</script>
 
-	<rectangle align="client" color="#202020" hitTest="false"/>
-
-	<edit vertTextAlign="center" left="0" top="0" width="30" height="23" field="nivelHabilidade" type="number"/>
-	<edit vertTextAlign="center" left="35" top="0" width="265" height="23" field="nomeHabilidade"/>
-	<button left="300" top="1" width="23" height="23" text="i" onClick="showHabilidadePopup();"/>
-	<button left="325" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
+	<edit align="left" width="30" field="nivelHabilidade" type="number" vertTextAlign="center" />
+	<button align="right" width="25" text="i" onClick="showHabilidadePopup();"/>
+	<button align="right" width="25" text="X" onClick="askForDelete();"/>
+	<edit align="client" vertTextAlign="center" field="nomeHabilidade"/>
 </form>

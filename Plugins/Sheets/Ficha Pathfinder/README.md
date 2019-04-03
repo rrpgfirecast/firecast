@@ -6,7 +6,22 @@ Talentos para Verificar:
 * Piranha Strike
 * Rajada de Golpes
 
-Versão 5
+Versão 0.7
+- Campos editaveis invisiveis tem retangulo diferenciado agora. 
+- Aba de habilidades compativel com aparelhos moveis. 
+- Aba de anotações compativel com aparelhos moveis. 
+- Se a lista de pericias estiver vazia a lista padrão vai ser automaticamente colocada. 
+
+Versão 0.6
+- Botão para apagar um ataque simples. 
+- Seleção cores temas da ficha. 
+- Realizar um ataque simples mesmo com tudo vazio não vai mais dar erros. 
+- Removida aba antiga de equipamentos.
+- Função de import e export atualizada. 
+- Interface de itens consumiveis atualizada.
+- Adicionado espaço para proezas nas habilidades, separado dos talentos. 
+
+Versão 0.5
 + Nova aba de equipamentos.
 + Colocado um campo para notas no lugar da CA oculta.
 + Removidas magias diarias de nível 0.

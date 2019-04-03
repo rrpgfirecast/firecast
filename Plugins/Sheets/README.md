@@ -34,6 +34,8 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 	- Ficha feita para jogar campanhas de Súper-Herois usando o sistema d20/D&D3.5
 - [Ficha L5A](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20L5A/output/Ficha%20L5A.rpk?raw=true): Ruteski
 	- Ficha para o sistema e cenario A Lenda dos Cinco Aneis. 
+- [Ficha Mighty Blade 3.0](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mighty%20Blade%203.0/output/Ficha%20Mighty%20Blade%203.0.rpk?raw=true): Gustavo Muller
+	- Ficha para o sistema Mighty Blade 3.0. 
 - [Ficha Multiaba](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Multiaba/output/Ficha%20Multiaba.rpk?raw=true): Ambesek
 	- Ficha V3 com multiplas abas e de uso geral. 
 - [Ficha Numenéra](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Numenera/output/Ficha%20Numenera.rpk?raw=true): Ambesek

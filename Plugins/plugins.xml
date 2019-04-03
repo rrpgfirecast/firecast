@@ -2,6 +2,11 @@
 <root>
     <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.2" compilationDate="29102018135431" compilationDigest="3b07d454d306f61189560588d4333b766f38dcc5">
         <dataTypes>
+            <dataType id="Ambesek.Ferramentas.d20" title="Ferramentas RPGmeister"/>
+        </dataTypes>
+    </element>
+    <element id="Ambesek.Ferramentas.d20" name="Ferramentas RPGmeister" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Ferramentas%20d20/output/Ferramentas%20d20.rpk?raw=true" fileName="Ferramentas d20.rpk" repositoryPath="TablesDock/Ferramentas d20/" author="Ambesek" description="Varias ferramentas para narradores de d20 system." version="0.1">
+        <dataTypes>
             <dataType id="ambesek.afkbot" title="AfkBot"/>
         </dataTypes>
     </element>
@@ -240,6 +245,11 @@
         <dataTypes>
             <dataType id="Lista.de.NPC" title="Lista de NPCs"/>
             <dataType id="Lista.de.NPC.Ficha" title="Lista de NPCs (Ficha)"/>
+        </dataTypes>
+    </element>
+    <element id="id_fichamb3" name="Ficha MB 3.0 V2" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Mighty%20Blade%203.0/output/Ficha%20Mighty%20Blade%203.0.rpk?raw=true" fileName="Ficha Mighty Blade 3.0.rpk" repositoryPath="Sheets/Ficha Mighty Blade 3.0/" author="Gustavo Muller ( PericlesDaFarofa )" description="Ficha feita para o RPG brasileiro Mighty Blade ( MB ) . 2° Versão ." version="1.0" compilationDate="28012019223434" compilationDigest="f692b3a80738e8e1d034283cb188efa8e11fc319">
+        <dataTypes>
+            <dataType id="datatype.mightyblade3.0v2" title="Mighty Blade 3.0 V2 by PericlesDaFarofa"/>
         </dataTypes>
     </element>
 </root>

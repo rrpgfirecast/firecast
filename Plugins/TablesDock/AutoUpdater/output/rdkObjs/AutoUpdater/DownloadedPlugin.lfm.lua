@@ -105,6 +105,11 @@ local function constructNew_frmDownloadedPlugin()
     obj.dataLink3:setFields({'contact'});
     obj.dataLink3:setName("dataLink3");
 
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4:setParent(obj);
+    obj.dataLink4:setFields({'priority'});
+    obj.dataLink4:setName("dataLink4");
+
     obj._e_event0 = obj.downloadButton:addEventListener("onClick",
         function (_)
             local install = true;
@@ -142,7 +147,16 @@ local function constructNew_frmDownloadedPlugin()
             			self.author.hint = sheet.contact;
         end, obj);
 
+    obj._e_event4 = obj.dataLink4:addEventListener("onChange",
+        function (_, field, oldValue, newValue)
+            if sheet==nil then return end;
+            
+            			local rcl = self:findControlByName("downloadedPluginsList");
+            			if rcl ~= nil then rcl:sort() end;
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
@@ -163,6 +177,7 @@ local function constructNew_frmDownloadedPlugin()
         if self.pluginName ~= nil then self.pluginName:destroy(); self.pluginName = nil; end;
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
+        if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.downloadButton ~= nil then self.downloadButton:destroy(); self.downloadButton = nil; end;

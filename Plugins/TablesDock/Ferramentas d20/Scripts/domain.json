@@ -1,0 +1,235 @@
+[{
+    "domain": "Purification",
+    "slug": "purification",
+    "level": 5,
+    "spell_id": 634,
+    "spellName": "Dance of the Unicorn"
+}, {
+    "domain": "Liberation",
+    "slug": "liberation",
+    "level": 9,
+    "spell_id": 640,
+    "spellName": "Unbinding"
+}, {
+    "domain": "Purification",
+    "slug": "purification",
+    "level": 2,
+    "spell_id": 645,
+    "spellName": "Deific Vengeance"
+}, {
+    "domain": "Cold",
+    "slug": "cold",
+    "level": 9,
+    "spell_id": 648,
+    "spellName": "Obedient Avalanche"
+}, {
+    "domain": "Pestilence",
+    "slug": "pestilence",
+    "level": 9,
+    "spell_id": 649,
+    "spellName": "Otyugh Swarm"
+}, {
+    "domain": "Creation",
+    "slug": "creation",
+    "level": 9,
+    "spell_id": 650,
+    "spellName": "Pavilion of Grandeur"
+}, {
+    "domain": "Pestilence",
+    "slug": "pestilence",
+    "level": 5,
+    "spell_id": 654,
+    "spellName": "Plague of Rats"
+}, {
+    "domain": "Purification",
+    "slug": "purification",
+    "level": 3,
+    "spell_id": 657,
+    "spellName": "Recitation"
+}, {
+    "domain": "Pact",
+    "slug": "pact",
+    "level": 7,
+    "spell_id": 659,
+    "spellName": "Renewal Pact"
+}, {
+    "domain": "Creation",
+    "slug": "creation",
+    "level": 8,
+    "spell_id": 664,
+    "spellName": "True Creation"
+}, {
+    "domain": "Mind",
+    "slug": "mind",
+    "level": 7,
+    "spell_id": 673,
+    "spellName": "Brain Spider"
+}, {
+    "domain": "Dream",
+    "slug": "dream",
+    "level": 6,
+    "spell_id": 676,
+    "spellName": "Dream Sight"
+}, {
+    "domain": "Mind",
+    "slug": "mind",
+    "level": 6,
+    "spell_id": 680,
+    "spellName": "Probe Thoughts"
+}, {
+    "domain": "Mind",
+    "slug": "mind",
+    "level": 3,
+    "spell_id": 681,
+    "spellName": "Telepathic Bond, Lesser"
+}, {
+    "domain": "Madness",
+    "slug": "madness",
+    "level": 5,
+    "spell_id": 683,
+    "spellName": "Bolts of Bedevilment"
+}, {
+    "domain": "Madness",
+    "slug": "madness",
+    "level": 8,
+    "spell_id": 684,
+    "spellName": "Maddening Scream"
+}, {
+    "domain": "Domination",
+    "slug": "domination",
+    "level": 9,
+    "spell_id": 685,
+    "spellName": "Monstrous Thrall"
+}, {
+    "domain": "Purification",
+    "slug": "purification",
+    "level": 7,
+    "spell_id": 686,
+    "spellName": "Righteous Wrath of the Faithful"
+}, {
+    "domain": "Madness",
+    "slug": "madness",
+    "level": 2,
+    "spell_id": 687,
+    "spellName": "Touch of Madness"
+}, {
+    "domain": "Domination",
+    "slug": "domination",
+    "level": 8,
+    "spell_id": 688,
+    "spellName": "True Domination"
+}, {
+    "domain": "Weather",
+    "slug": "weather",
+    "level": 5,
+    "spell_id": 692,
+    "spellName": "Binding Winds"
+}, {
+    "domain": "Force",
+    "slug": "force",
+    "level": 3,
+    "spell_id": 693,
+    "spellName": "Blast of Force"
+}, {
+    "domain": "Glory",
+    "slug": "glory",
+    "level": 6,
+    "spell_id": 694,
+    "spellName": "Bolt of Glory"
+}, {
+    "domain": "Purification",
+    "slug": "purification",
+    "level": 4,
+    "spell_id": 695,
+    "spellName": "Castigate"
+}, {
+    "domain": "Glory",
+    "slug": "glory",
+    "level": 8,
+    "spell_id": 697,
+    "spellName": "Crown of Glory"
+}, {
+    "domain": "Purification",
+    "slug": "purification",
+    "level": 6,
+    "spell_id": 702,
+    "spellName": "Fires of Purity"
+}, {
+    "domain": "Purification",
+    "slug": "purification",
+    "level": 1,
+    "spell_id": 708,
+    "spellName": "Nimbus of Light"
+}, {
+    "domain": "Pact",
+    "slug": "pact",
+    "level": 5,
+    "spell_id": 710,
+    "spellName": "Stalwart Pact"
+}, {
+    "domain": "Pact",
+    "slug": "pact",
+    "level": 6,
+    "spell_id": 713,
+    "spellName": "Zealot Pact"
+}, {
+    "domain": "Pestilence",
+    "slug": "pestilence",
+    "level": 6,
+    "spell_id": 719,
+    "spellName": "Curse of Lycanthropy"
+}, {
+    "domain": "Pact",
+    "slug": "pact",
+    "level": 8,
+    "spell_id": 720,
+    "spellName": "Death Pact"
+}, {
+    "domain": "Pestilence",
+    "slug": "pestilence",
+    "level": 7,
+    "spell_id": 725,
+    "spellName": "Scourge"
+}, {
+    "domain": "Celerity",
+    "slug": "celerity",
+    "level": 8,
+    "spell_id": 730,
+    "spellName": "Blink, Improved"
+}, {
+    "domain": "Weather",
+    "slug": "weather",
+    "level": 6,
+    "spell_id": 737,
+    "spellName": "Cloudwalkers"
+}, {
+    "domain": "Purification",
+    "slug": "purification",
+    "level": 9,
+    "spell_id": 757,
+    "spellName": "Visage of the Deity, Greater"
+}, {
+    "domain": "Courage",
+    "slug": "courage",
+    "level": 3,
+    "spell_id": 921,
+    "spellName": "Cloak of Bravery"
+}, {
+    "domain": "Courage",
+    "slug": "courage",
+    "level": 9,
+    "spell_id": 922,
+    "spellName": "Cloak of Bravery, Greater"
+}, {
+    "domain": "Courage",
+    "slug": "courage",
+    "level": 8,
+    "spell_id": 923,
+    "spellName": "Lion's Roar"
+}, {
+    "domain": "Courage",
+    "slug": "courage",
+    "level": 5,
+    "spell_id": 928,
+    "spellName": "Valiant Fury"
+}]

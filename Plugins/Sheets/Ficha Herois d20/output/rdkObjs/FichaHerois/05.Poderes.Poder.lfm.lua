@@ -36,6 +36,7 @@ local function constructNew_frmPoder()
 			Dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
 								 function (confirmado)
 									if confirmado then
+									sheet.custo = 0;
 										NDB.deleteNode(sheet);
 									end;
 								 end);

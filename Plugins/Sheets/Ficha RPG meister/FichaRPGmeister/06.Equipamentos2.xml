@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaRPGmeister6E_svg" align="client" theme="dark" margins="{top=1}">
+<form name="frmFichaRPGmeister6E_svg" align="client" margins="{top=1}">
 	<popup name="BarPopup" width="140" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}" autoScopeNode="false">
 		<rectangle align="client" color="white" xradius="5" yradius="5">
 			<rectangle align="client" name="PopupBarColor" color="#808080" xradius="5" yradius="5" opacity="0.9">
@@ -91,7 +91,7 @@
 	</popup>
 
 	<scrollBox align="client">
-		<recordList left="0" top="0" width="150" height="602" name="rclEquipamentos" field="listaDeEquipamentos" templateForm="frmFichaRPGmeister6ES_svg" layout="vertical" selectable="true" minQt="12">
+		<recordList left="0" top="2" width="150" height="602" name="rclEquipamentos" field="listaDeEquipamentos" templateForm="frmFichaRPGmeister6ES_svg" layout="vertical" selectable="true" minQt="12">
 			<event name="onEndEnumeration"><![CDATA[
 				if sheet~= nil then
 					local objetos = NDB.getChildNodes(sheet.listaDeEquipamentos);
@@ -130,20 +130,20 @@
 		</recordList>
 
 		<label left="760" top="0" width="50" height="20" text="CARGA"/>
-		<rectangle left="810" top="0" width="70" height="20" color="black" strokeColor="white" strokeSize="1"/>
-		<label vertTextAlign="center" horzTextAlign="center" left="810" top="0" width="70" height="20" field="pesoEquipamento" formatFloat=",0.## Kg"/>
+		<rectangle left="810" top="0" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
+		<label vertTextAlign="center" horzTextAlign="center" left="810" top="0" width="91" height="20" field="pesoEquipamento" formatFloat=",0.## Kg"/>
 		<label left="760" top="25" width="50" height="20" text="GASTOS"/>
 		<rectangle left="810" top="25" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
 		<label vertTextAlign="center" horzTextAlign="center" left="810" top="25" width="91" height="20" field="precoEquipamento"  formatFloat=",0.## PO"/>
 
 		<dataScopeBox left="150" top="0" width="600" height="602" name="boxDetalheDoEquipamento" visible="false">
-			<rectangle align="client" color="black"/>
+			<rectangle width="400" height="602" color="black"/>
 
 			<edit vertTextAlign="center" left="5" top="5" width="390" height="25" field="nome"/>
 			<textEditor left="5" top="35" width="390" height="300" field="descricao"/>
 
 			<label left="5" top="340" width="95" height="20" text="Peso" horzTextAlign="center"/>
-			<rectangle left="100" top="340" width="75" height="25" color="black" strokeColor="grey" strokeSize="1" name="weightLabel" visible="true">
+			<rectangle left="100" top="340" width="75" height="25" color="black" strokeColor="grey" strokeSize="1" name="weightLabel" visible="true" opacity="0.75" cornerType="innerRound" xradius="5" yradius="5">
 				<label width="75" height="25" field="peso" horzTextAlign="center" formatFloat=",0.## Kg"/>
 				<event name="onClick">
 					self.weightLabel.visible = false;
@@ -170,7 +170,7 @@
 			</edit>
 
 			<label left="200" top="340" width="95" height="20" text="Preço" horzTextAlign="center"/>
-			<rectangle left="290" top="340" width="75" height="25" color="black" strokeColor="grey" strokeSize="1" name="priceLabel" visible="true">
+			<rectangle left="290" top="340" width="75" height="25" color="black" strokeColor="grey" strokeSize="1" name="priceLabel" visible="true" opacity="0.75" cornerType="innerRound" xradius="5" yradius="5">
 				<label width="75" height="25" field="preco" horzTextAlign="center" formatFloat=",0.## PO"/>
 				<event name="onClick">
 					self.priceLabel.visible = false;
@@ -278,7 +278,7 @@
 					<rectangle align="client" xradius="2" yradius="2" name="CorBarrinha" color="Green">
 						<label align="left" fontColor="white" fontSize="12" autoSize="true" textTrimming="none" wordWrap="false" name="InfoBarrinha" field="InfoBarrinha" horzTextAlign="center" text="0/0">
 							<event name="onResize">
-								self.InfoBarrinha.width = (self.ValoresBarrinha1.width - 4);
+								self.InfoBarrinha.width = (self.ValoresBarrinha.width - 4);
 							</event>
 						</label>
 					</rectangle>

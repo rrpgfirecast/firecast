@@ -29,39 +29,38 @@ local function constructNew_frmFichaRPGmeister7A_svg()
     obj:setName("frmFichaRPGmeister7A_svg");
     obj:setWidth(465);
     obj:setHeight(25);
-    obj:setTheme("dark");
     obj:setMargins({top=1});
 
 			
 		local function askForDelete()
 			Dialogs.confirmYesNo("Deseja realmente apagar essa arma?",
-								 function (confirmado)
-									if confirmado then
-										local node = NDB.getRoot(sheet);
-										local nodes = NDB.getChildNodes(node.campoDasArmas); 
-										local index = 0;
-										for i=1, #nodes, 1 do
-											if nodes[i]==sheet then
-												index = i;
-											end;
-										end;
+				function (confirmado)
+					if confirmado then
+						local node = NDB.getRoot(sheet);
+						local nodes = NDB.getChildNodes(node.campoDasArmas); 
+						local index = 0;
+						for i=1, #nodes, 1 do
+							if nodes[i]==sheet then
+								index = i;
+							end;
+						end;
 
-										local ataques = NDB.getChildNodes(node.campoDosAtaques);
-										for i=1, #ataques, 1 do
-											local armas = NDB.getChildNodes(ataques[i].campoDeArmas);
-											for j=1, #armas, 1 do
-												local weaponID = tonumber(armas[j].weaponType) or 0;
-												if weaponID == index then
-													armas[j].weaponType = nil;
-												elseif weaponID > index then
-													armas[j].weaponType = weaponID - 1;
-												end
-											end;
-										end;
+						local ataques = NDB.getChildNodes(node.campoDosAtaques);
+						for i=1, #ataques, 1 do
+							local armas = NDB.getChildNodes(ataques[i].campoDeArmas);
+							for j=1, #armas, 1 do
+								local weaponID = tonumber(armas[j].weaponType) or 0;
+								if weaponID == index then
+									armas[j].weaponType = nil;
+								elseif weaponID > index then
+									armas[j].weaponType = weaponID - 1;
+								end
+							end;
+						end;
 
-										NDB.deleteNode(sheet);
-									end;
-								 end);
+						NDB.deleteNode(sheet);
+					end;
+				end);
 		end;
 
 		local function showArmaPopup()

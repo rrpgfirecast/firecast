@@ -111,10 +111,10 @@ local function constructNew_frmItem()
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
-            dialogs.confirmOkCancel("Tem certeza que quer apagar esse item??",
+            Dialogs.confirmOkCancel("Tem certeza que quer apagar esse item??",
             					function (confirmado)
             						if confirmado then
-            							ndb.deleteNode(sheet);
+            							NDB.deleteNode(sheet);
             						end;
             				end);
         end, obj);

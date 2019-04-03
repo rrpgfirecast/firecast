@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaRPGmeister8CS_svg" width="180" height="30" theme="dark">
+<form name="frmFichaRPGmeister8CS_svg" width="180" height="30">
     <button width="30" height="30" text="X">
 		<event name="onClick">
 			Dialogs.confirmOkCancel("Tem certeza que quer apagar esse companheiro?",

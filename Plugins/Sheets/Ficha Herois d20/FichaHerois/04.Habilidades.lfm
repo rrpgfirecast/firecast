@@ -32,6 +32,10 @@
 					if rcl~= nil then
 						rcl:sort();
 					end;
+					rcl = self:findControlByName("rclListaDasCaracteristicasSemProgressao");
+					if rcl~= nil then
+						rcl:sort();
+					end;
 				</event>
 			</dataLink>
 		</flowLayout>
@@ -52,9 +56,10 @@
 			
 		<layout left="395" top="0" width="380" height="435">
 			<rectangle align="client" color="#0000007F"/>
-			<label left="0" top="0" width="380" height="20" text="OUTROS" horzTextAlign="center"/>
+			<label left="0" top="0" width="380" height="20" text="HISTORICOS: " horzTextAlign="center"/>
+			<label left="235" top="0" width="380" height="20" field="pontosHistorico"/>
 
-			<recordList name="rclListaDosOutros" field="campoDosOutros" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="405" layout="vertical">
+			<recordList name="rclListaDosOutros" field="campoDosOutros" templateForm="frmFichaRPGmeister4hist" left="5" top="25" width="370" height="405" layout="vertical">
 				<event name="onCompare">
 		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
 		        </event>
@@ -73,18 +78,29 @@
 			<checkBox left="10" top="130" width="360" height="20" field="tracoRobusto" text="Robusto" hint="+1PV por nível."/>
 		</layout>
 		
-		<layout left="790" top="0" width="380" height="350">
+		<layout left="790" top="0" width="380" height="170">
 			<rectangle align="client" color="#0000007F"/>
-			<label left="0" top="0" width="380" height="20" text="CARACTERISTICAS DE CLASSE" horzTextAlign="center"/>
+			<label left="0" top="0" width="380" height="20" text="CARACTERISTICAS COM PROGRESSÃO" horzTextAlign="center"/>
 
-			<recordList name="rclListaDasCaracteristicasClasse" field="campoDasCaracteristicasClasse" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="320" layout="vertical">
+			<recordList name="rclListaDasCaracteristicasClasse" field="campoDasCaracteristicasClasse" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="140" layout="vertical">
+				<event name="onCompare">
+		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
+		        </event>
+			</recordList>
+		</layout>	
+		
+		<layout left="790" top="175" width="380" height="170">
+			<rectangle align="client" color="#0000007F"/>
+			<label left="0" top="0" width="380" height="20" text="CARACTERISTICAS SEM PROGRESSÃO" horzTextAlign="center"/>
+
+			<recordList name="rclListaDasCaracteristicasSemProgressao" field="campoDasCaracteristicasSemProgressao" templateForm="frmFichaRPGmeister4h_svg" left="5" top="25" width="370" height="140" layout="vertical">
 				<event name="onCompare">
 		            return ((tonumber(nodeA.nivelHabilidade) or 0) - (tonumber(nodeB.nivelHabilidade) or 0));
 		        </event>
 			</recordList>
 		</layout>		
 
-		<layout left="790" top="355" width="380" height="245">
+		<layout left="790" top="350" width="380" height="250">
 			<rectangle align="client" color="#0000007F"/>
 
 			<label left="10" top="5" width="150" height="20" text="Conceito" horzTextAlign="center"/>
@@ -280,10 +296,11 @@
 			</dataLink>
 		</layout>
 
-		<layout left="1180" top="0" width="135" height="600">
-			<button text="Novo Talento" left="0" top="0" width="125" height="25" onClick="self.rclListaDosTalentos:append();"/>
-			<button text="Novo Outros" left="0" top="25" width="125" height="25" onClick="self.rclListaDosOutros:append();"/>
-			<button text="Nova Caracteristica" left="0" top="50" width="125" height="25" onClick="self.rclListaDasCaracteristicasClasse:append();"/>
+		<layout left="1180" top="0" width="160" height="600">
+			<button text="Novo Talento" left="0" top="0" width="150" height="25" onClick="self.rclListaDosTalentos:append();"/>
+			<button text="Novo Historico" left="0" top="25" width="150" height="25" onClick="self.rclListaDosOutros:append();"/>
+			<button text="Caracteristica C/ Progressão" fontSize="10" left="0" top="50" width="150" height="25" onClick="self.rclListaDasCaracteristicasClasse:append();"/>
+			<button text="Caracteristica S/ Progressão" fontSize="10" left="0" top="75" width="150" height="25" onClick="self.rclListaDasCaracteristicasSemProgressao:append();"/>
 		</layout>
 	 </scrollBox>
 </form>

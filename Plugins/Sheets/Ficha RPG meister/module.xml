@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.5">
 	<id>FICHA_RPG_MEISTER</id>
-	<version>3.1.2</version>
+	<version>3.3.1</version>
 	<name>Ficha RPG meister</name>
 	<description>Ficha feita para a mesa RPGmeister. Funciona normalmente para o sistema d20/D&amp;D3.5</description>
 	<author>Ambesek &amp; Nefertyne</author>

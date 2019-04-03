@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmStaffCalculator" align="client">
+	<scrollBox align="client">
+		<layout align="top" height="50">
+			<button align="left" width="50" text="+">
+				<event name="onClick">
+					self.staffList:append();
+				</event>
+			</button>
+			<layout align="left" width="275">
+				<layout align="top" height="25">
+					<label align="left" width="75" horzTextAlign="center" text="Preço"/>
+					<label align="left" width="200" horzTextAlign="center" field="staffPrice" formatFloat=",0.## PO"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="left" width="75" horzTextAlign="center" text="Custo"/>
+					<label align="left" width="100" horzTextAlign="center" field="staffCost" formatFloat=",0.## PO"/>
+					<label align="left" width="100" horzTextAlign="center" field="staffXP" formatFloat=",0.## XP"/>
+				</layout>
+			</layout>
+		</layout>
+		<recordList align="left" width="395" field="staffList" name="staffList" templateForm="frmStaffItem" minQt="1" margins="{right=5}">
+			<event name="onCompare">
+				return (tonumber(nodeA.order) or 0) - (tonumber(nodeB.order) or 0);
+        	</event>
+		</recordList>
+
+		<dataLink fields="{'sortStaff'}">
+			<event name="onChange">
+				if toolSheet==nil then return end;
+				if toolSheet.sortStaff ~= 1 then return end;
+				toolSheet.sortStaff = 0;
+				self.staffList:sort();
+			</event>
+		</dataLink>
+	</scrollBox>
+</form>

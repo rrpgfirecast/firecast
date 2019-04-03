@@ -13,10 +13,10 @@
 
 		<button left="1150" top="0" width="25" height="25" text="X">
 			<event name="onClick">
-				dialogs.confirmOkCancel("Tem certeza que quer apagar esse item??",
+				Dialogs.confirmOkCancel("Tem certeza que quer apagar esse item??",
 					function (confirmado)
 						if confirmado then
-							ndb.deleteNode(sheet);
+							NDB.deleteNode(sheet);
 						end;
 				end);
 			</event>

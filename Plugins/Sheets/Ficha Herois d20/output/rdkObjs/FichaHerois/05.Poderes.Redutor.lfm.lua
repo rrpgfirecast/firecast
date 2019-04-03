@@ -36,6 +36,7 @@ local function constructNew_frmRedutor()
 			Dialogs.confirmYesNo("Deseja realmente apagar essa habilidade?",
 								 function (confirmado)
 									if confirmado then
+										sheet.porcentagem = 0;
 										NDB.deleteNode(sheet);
 									end;
 								 end);

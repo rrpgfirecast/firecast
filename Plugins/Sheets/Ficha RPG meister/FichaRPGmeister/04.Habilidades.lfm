@@ -1,45 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaRPGmeister4_svg" align="client" theme="dark" margins="{top=1}">
+<form name="frmFichaRPGmeister4_svg" align="client" margins="{top=1}">
 	 <scrollBox align="client">
-
-	 	<template name="habilidadeSmallCenter">
-			<flowPart minWidth="90" maxWidth="100" height="35">
-				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
-				<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
-			</flowPart>
-		</template>
-		<template name="habilidadeLarge">
-			<flowPart minWidth="180" maxWidth="200" height="35">
-				<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
-				<edit align="client" class="" field="$(field)" fontSize="12"/>
-			</flowPart>
-		</template>
-
-	 	<popup name="popHabilidade" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
-			<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
-				<habilidadeSmallCenter text="Nível" field="nivelHabilidade"/>
-				<habilidadeLarge text="Obtido" field="obtencaoHabilidade"/>
-				<habilidadeSmallCenter text="Página" field="paginaHabilidade"/>
-				<habilidadeLarge text="Livro" field="livroHabilidade"/>
-				<dataLink field="nivelHabilidade">
-					<event name="onChange">
-						local rcl = self:findControlByName("rclListaDosTalentos");
-						if rcl~= nil then
-							rcl:sort();
-						end;
-						rcl = self:findControlByName("rclListaDosOutros");
-						if rcl~= nil then
-							rcl:sort();
-						end;
-						rcl = self:findControlByName("rclListaDasCaracteristicasClasse");
-						if rcl~= nil then
-							rcl:sort();
-						end;
-					</event>
-				</dataLink>
-			</flowLayout>
-			<textEditor align="client" field="descricao"/>
-		</popup>
 
 			
 		<layout left="0" top="0" width="380" height="600">

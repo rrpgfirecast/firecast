@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.5">
+    <id>Ambesek.Ferramentas.d20</id>
+    <version>0.3</version>
+    <name>Ferramentas RPGmeister</name>
+    <description>Varias ferramentas para narradores de d20 system.</description>
+    <author>Ambesek</author>
+	<site>http://pt-br.rpgmeister.wikia.com/wiki/Main_Page</site>
+	<contact>vinnyrpgmeister@gmail.com</contact>
+</module>

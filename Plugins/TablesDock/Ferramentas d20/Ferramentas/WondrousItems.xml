@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmWondrousItems" align="client">
+	<scrollBox align="client">
+		<layout align="top" height="50">
+			<button align="left" width="50" text="+">
+				<event name="onClick">
+					self.effectList:append();
+				</event>
+			</button>
+			<layout align="left" width="275">
+				<layout align="top" height="25">
+					<label align="left" width="75" horzTextAlign="center" text="Preço"/>
+					<label align="left" width="200" horzTextAlign="center" field="precoWoundrous" formatFloat=",0.## PO"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="left" width="75" horzTextAlign="center" text="Custo"/>
+					<label align="left" width="100" horzTextAlign="center" field="custoWoundrous" formatFloat=",0.## PO"/>
+					<label align="left" width="100" horzTextAlign="center" field="xpWoundrous" formatFloat=",0.## XP"/>
+				</layout>
+			</layout>
+		</layout>
+		<recordList align="left" width="395" field="effectList" name="effectList" templateForm="frmItemEffect" minQt="1" margins="{right=5}">
+			<event name="onCompare">
+				return (tonumber(nodeB.price) or 0) - (tonumber(nodeA.price) or 0);
+        	</event>
+		</recordList>
+
+		<dataLink fields="{'precoWoundrous'}">
+			<event name="onChange">
+				if sheet==nil then return end;
+			</event>
+		</dataLink>
+	</scrollBox>
+</form>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmConsumableCalculator" align="client">
+	<scrollBox align="client">
+		<layout align="top" height="200">
+			<layout align="top" height="25">
+				<label align="left" width="75" horzTextAlign="center" text="Pergaminho"/>
+				<label align="left" width="200" horzTextAlign="center" field="scrollPrice" formatFloat=",0.## PO"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="left" width="75" horzTextAlign="center" text="Custo"/>
+				<label align="left" width="100" horzTextAlign="center" field="scrollCost" formatFloat=",0.## PO"/>
+				<label align="left" width="100" horzTextAlign="center" field="scrollXP" formatFloat=",0.## XP"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="left" width="75" horzTextAlign="center" text="Poção"/>
+				<label align="left" width="200" horzTextAlign="center" field="potionPrice" formatFloat=",0.## PO"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="left" width="75" horzTextAlign="center" text="Custo"/>
+				<label align="left" width="100" horzTextAlign="center" field="potionCost" formatFloat=",0.## PO"/>
+				<label align="left" width="100" horzTextAlign="center" field="potionXP" formatFloat=",0.## XP"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="left" width="75" horzTextAlign="center" text="Varinha"/>
+				<label align="left" width="200" horzTextAlign="center" field="wandPrice" formatFloat=",0.## PO"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="left" width="75" horzTextAlign="center" text="Custo"/>
+				<label align="left" width="100" horzTextAlign="center" field="wandCost" formatFloat=",0.## PO"/>
+				<label align="left" width="100" horzTextAlign="center" field="wandXP" formatFloat=",0.## XP"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="left" width="75" horzTextAlign="center" text="Nivel"/>
+				<edit align="left" width="50" field="consumableNivel" type="float"/>
+				<label align="left" width="75" horzTextAlign="center" text="NC"/>
+				<edit align="left" width="50" field="consumableNC" type="float"/>
+			</layout>
+			<layout align="top" height="25">
+				<label align="left" width="75" horzTextAlign="center" text="Material"/>
+				<edit align="left" width="50" field="consumableMaterial" type="float"/>
+				<label align="left" width="75" horzTextAlign="center" text="XP"/>
+				<edit align="left" width="50" field="consumableXP" type="float"/>
+			</layout>
+		</layout>
+
+		<dataLink fields="{'consumableNivel','consumableNC','consumableMaterial','consumableXP'}">
+			<event name="onChange">
+				if toolSheet==nil then return end;
+
+				local nivel = (tonumber(toolSheet.consumableNivel) or 0.5);
+				if nivel &lt;1 then nivel = 0.5 end;
+				local nc = (tonumber(toolSheet.consumableNC) or 1);
+				local material = (tonumber(toolSheet.consumableMaterial) or 0);
+				local xp = (tonumber(toolSheet.consumableXP) or 0);
+
+				local pergaminho = nivel * nc * 25;
+				local pocao = nivel * nc * 50;
+				local varinha = nivel * nc * 750;
+
+				toolSheet.scrollPrice = pergaminho + material + xp * 5;
+				toolSheet.scrollCost = (pergaminho/2) + material;
+				toolSheet.scrollXP = math.ceil(pergaminho/25) + xp;
+
+				toolSheet.potionPrice = pocao + material + xp * 5;
+				toolSheet.potionCost = (pocao/2) + material;
+				toolSheet.potionXP = math.ceil(pocao/25) + xp;
+
+				toolSheet.wandPrice = varinha + (material * 50) + (xp * 50 * 5);
+				toolSheet.wandCost = (varinha/2) + (material * 50);
+				toolSheet.wandXP = math.ceil(varinha/25) + (xp * 50);
+			</event>
+		</dataLink>
+	</scrollBox>
+</form>

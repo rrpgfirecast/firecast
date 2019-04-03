@@ -64,10 +64,10 @@
 		<!-- Botão que apaga o objeto da lista -->
 		<button left="250" top="50" width="25" height="25" text="X">
 			<event name="onClick">
-				dialogs.confirmOkCancel("Tem certeza que quer apagar essa benção?",
+				Dialogs.confirmOkCancel("Tem certeza que quer apagar essa benção?",
 					function (confirmado)
 						if confirmado then
-							ndb.deleteNode(sheet);
+							NDB.deleteNode(sheet);
 						end;
 				end);
 			</event>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmStaffItem" height="50" margins="{top=1}">
+	<rectangle align="top" color="#212121" height="25" visible="true">
+		<label align="left" width="50" text="Tipo" horzTextAlign="center"/>
+		<comboBox align="left" width="100" field="order" items="{'Primario','Secundario','Terciario'}" values="{'1','2','3'}" hint="Primario: Efeito principal do cajado. \n Secundario: efeito a 75% do preço. \n Terciario: efeito a 50% do preço. "/>
+
+		<label align="left" width="50" text="Nível" horzTextAlign="center"/>
+		<edit align="left" width="50" field="nivel" type="number"/>
+		<label align="left" width="50" text="NC" horzTextAlign="center"/>
+		<edit align="left" width="50" field="nc" type="number" min="8"/>
+
+		<button align="left" width="25" text="X">
+			<event name="onClick">
+				Dialogs.confirmYesNo("Deseja realmente apagar esse efeito?",
+					function (confirmado)
+						if confirmado then
+							NDB.deleteNode(sheet);
+						end;
+					end);
+			</event>
+		</button>
+	</rectangle>
+
+	<rectangle align="top" color="#212121" height="25">
+		<label align="left" width="50" text="Material" horzTextAlign="center"/>
+		<edit align="left" width="40" field="material" type="number"/>
+		<label align="left" width="50" text="XP" horzTextAlign="center"/>
+		<edit align="left" width="40" field="xp" type="number"/>
+		<label align="left" width="50" text="Cargas" horzTextAlign="center"/>
+		<edit align="left" width="40" field="cargas" type="number" min="1"/>
+
+		<label align="left" width="40" text="Valor" horzTextAlign="center"/>
+		<label align="left" width="60" field="price" horzTextAlign="center" formatFloat=",0.## PO" fontSize="10"/>
+	</rectangle>
+
+	<dataLink fields="{'nivel','nc','material','xp','cargas', 'order'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local nivel = tonumber(sheet.nivel) or 0;
+			if nivel &lt; 1 then nivel = 0.5 end;
+			local nc = tonumber(sheet.nc) or 8;
+			local material = tonumber(sheet.material) or 0;
+			local xp = tonumber(sheet.xp) or 0;
+			local cargas = tonumber(sheet.cargas) or 1;
+
+			local order = tonumber(sheet.order) or 0;
+			local mults = {1, 0.75, 0.5};
+			local mult = mults[order] or 1;
+
+			local price = nivel * nc * 750 * mult / cargas;
+			local materialCost = material * 50 / cargas;
+			local xpCost = xp * 5 / cargas;
+
+			sheet.price = price + materialCost + xpCost;
+			sheet.cost = (price/2) + materialCost;
+			sheet.xpCost = math.ceil(price/25) + xp;
+
+			local node = toolSheet;
+			local sumPrice = 0;
+			local sumCost = 0;
+			local sumXP = 0;
+			local nodes = NDB.getChildNodes(node.staffList); 
+			for i=1, #nodes, 1 do
+				sumPrice = sumPrice + (tonumber(nodes[i].price) or 0);
+				sumCost = sumCost + (tonumber(nodes[i].cost) or 0);
+				sumXP = sumXP + (tonumber(nodes[i].xpCost) or 0);
+			end;
+
+			node.staffPrice = sumPrice;
+			node.staffCost = sumCost;
+			node.staffXP = sumXP;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'order'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+			toolSheet.sortStaff = 1;
+		</event>
+	</dataLink>
+</form>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaRPGmeister3_svg" align="client" theme="dark" margins="{top=1}">
+<form name="frmFichaRPGmeister3_svg" align="client" margins="{top=1}">
 	<scrollBox align="client">
 
 		<script> 
@@ -73,14 +73,16 @@
 
 				for i=1, 44, 1 do
 					local pericia = self.rclListaDasPericias:append();
-					pericia.nomePericia = dnd[i].nome;
-					pericia.chavePericia = dnd[i].chave;
-					pericia.exigeTreino = dnd[i].treino;
-					if dnd[i].armadura > 0 then
-						pericia.penalidadeArmadura2 = true;
-					end;
-					if dnd[i].armadura > 1 then
-						pericia.penalidadeArmadura = true;
+					if pericia ~= nil then
+						pericia.nomePericia = dnd[i].nome;
+						pericia.chavePericia = dnd[i].chave;
+						pericia.exigeTreino = dnd[i].treino;
+						if dnd[i].armadura > 0 then
+							pericia.penalidadeArmadura2 = true;
+						end;
+						if dnd[i].armadura > 1 then
+							pericia.penalidadeArmadura = true;
+						end;
 					end;
 				end;
 
@@ -137,6 +139,20 @@
 				<event name="onCompare">
 		            return Utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
 		        </event>
+				<event name="onEndEnumeration">
+					if sheet==nil then return end;
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+					if #nodes == 0 then
+						dndSkills();
+					end;
+				</event>
+				<event name="onBeginEnumeration">
+					if sheet==nil then return end;
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+					if #nodes == 0 then
+						dndSkills();
+					end;
+				</event>
 			</recordList>
 		</layout>
 

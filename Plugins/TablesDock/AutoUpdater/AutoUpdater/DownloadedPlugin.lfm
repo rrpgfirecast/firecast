@@ -47,4 +47,13 @@
 			self.author.hint = sheet.contact;
 		</event>
 	</dataLink>
+
+	<dataLink fields="{'priority'}">
+		<event name="onChange">
+			if sheet==nil then return end;
+
+			local rcl = self:findControlByName("downloadedPluginsList");
+			if rcl ~= nil then rcl:sort() end;
+		</event>
+	</dataLink>
 </form>

@@ -1,0 +1,1430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSpells" align="client">
+	<script>
+        <![CDATA[
+        	local function has_value (tab, val)
+    			for k, v in pairs(tab) do
+			        if v == val then
+			            return true
+			        end
+			    end
+
+			    return false
+			end
+
+			local function array_contain(array, str, size)
+				for i=1, size, 1 do
+					if array[i]==str then return true end;
+				end;
+				return false;
+			end;
+
+			local function filterComponentAnd(spell)
+				local ret = true;
+
+				if toolSheet.N and spell.components==nil then
+					ret = ret and spell.components==nil;
+				end;
+
+				if toolSheet.V then
+					ret = ret and array_contain(spell.components, components[1], #components);
+				end;
+				if toolSheet.S then
+					ret = ret and array_contain(spell.components, components[2], #components);
+				end;
+				if toolSheet.M then
+					ret = ret and array_contain(spell.components, components[3], #components);
+				end;
+				if toolSheet.F then
+					ret = ret and array_contain(spell.components, components[4], #components);
+				end;
+				if toolSheet.DF then
+					ret = ret and array_contain(spell.components, components[5], #components);
+				end;
+				if toolSheet.XP then
+					ret = ret and array_contain(spell.components, components[6], #components);
+				end;
+
+				return ret;
+			end
+
+			local function filterComponentNot(spell)
+				if toolSheet.N and spell.components==nil then
+					return false;
+				end;
+				if toolSheet.V and array_contain(spell.components, components[1], #components) then
+					return false;
+				end;
+				if toolSheet.S and array_contain(spell.components, components[2], #components) then
+					return false;
+				end;
+				if toolSheet.M and array_contain(spell.components, components[3], #components) then
+					return false;
+				end;
+				if toolSheet.F and array_contain(spell.components, components[4], #components) then
+					return false;
+				end;
+				if toolSheet.DF and array_contain(spell.components, components[5], #components) then
+					return false;
+				end;
+				if toolSheet.XP and array_contain(spell.components, components[6], #components) then
+					return false;
+				end;
+				return true;
+			end;
+
+			local function filterComponentOr(spell)
+				if toolSheet.N and spell.components==nil then
+					return true;
+				end;
+				if toolSheet.V and array_contain(spell.components, components[1], #components) then
+					return true;
+				end;
+				if toolSheet.S and array_contain(spell.components, components[2], #components) then
+					return true;
+				end;
+				if toolSheet.M and array_contain(spell.components, components[3], #components) then
+					return true;
+				end;
+				if toolSheet.F and array_contain(spell.components, components[4], #components) then
+					return true;
+				end;
+				if toolSheet.DF and array_contain(spell.components, components[5], #components) then
+					return true;
+				end;
+				if toolSheet.XP and array_contain(spell.components, components[6], #components) then
+					return true;
+				end;
+				return false;
+			end;
+
+			local function filterComponent(spell)
+				if toolSheet.componentRule == "and" then
+					return filterComponentAnd(spell);
+				elseif toolSheet.componentRule == "not" then
+					return filterComponentNot(spell);
+				else
+					return filterComponentOr(spell);
+				end;
+			end
+
+			local function filterTag(spell)
+				if toolSheet.None and spell.descriptor==nil then
+					return true;
+				elseif not toolSheet.None and spell.descriptor==nil then
+					return false;
+				end;
+				if toolSheet.Acid and array_contain(spell.descriptor, tags[1], #tags) then
+					return true;
+				end;
+				if toolSheet.Air and array_contain(spell.descriptor, tags[2], #tags) then
+					return true;
+				end;
+				if toolSheet.Chaotic and array_contain(spell.descriptor, tags[3], #tags) then
+					return true;
+				end;
+				if toolSheet.Cold and array_contain(spell.descriptor, tags[4], #tags) then
+					return true;
+				end;
+				if toolSheet.Darkness and array_contain(spell.descriptor, tags[5], #tags) then
+					return true;
+				end;
+				if toolSheet.Death and array_contain(spell.descriptor, tags[6], #tags) then
+					return true;
+				end;
+				if toolSheet.Earth and array_contain(spell.descriptor, tags[7], #tags) then
+					return true;
+				end;
+				if toolSheet.Electricity and array_contain(spell.descriptor, tags[8], #tags) then
+					return true;
+				end;
+				if toolSheet.Evil and array_contain(spell.descriptor, tags[9], #tags) then
+					return true;
+				end;
+				if toolSheet.Fear and array_contain(spell.descriptor, tags[10], #tags) then
+					return true;
+				end;
+				if toolSheet.Fire and array_contain(spell.descriptor, tags[11], #tags) then
+					return true;
+				end;
+				if toolSheet.Force and array_contain(spell.descriptor, tags[12], #tags) then
+					return true;
+				end;
+				if toolSheet.Good and array_contain(spell.descriptor, tags[13], #tags) then
+					return true;
+				end;
+				if toolSheet.Language_Dependent and array_contain(spell.descriptor, tags[14], #tags) then
+					return true;
+				end;
+				if toolSheet.Lawful and array_contain(spell.descriptor, tags[15], #tags) then
+					return true;
+				end;
+				if toolSheet.Light and array_contain(spell.descriptor, tags[16], #tags) then
+					return true;
+				end;
+				if toolSheet.Mind_Affecting and array_contain(spell.descriptor, tags[17], #tags) then
+					return true;
+				end;
+				if toolSheet.Sonic and array_contain(spell.descriptor, tags[18], #tags) then
+					return true;
+				end;
+				if toolSheet.Water and array_contain(spell.descriptor, tags[19], #tags) then
+					return true;
+				end;
+				return false;
+			end;
+
+			local function filterLevel(spell)
+				if toolSheet.lvl0 and has_value(spell.level, "0") then
+					return true;
+				end;
+				if toolSheet.lvl1 and has_value(spell.level, "1") then
+					return true;
+				end;
+				if toolSheet.lvl2 and has_value(spell.level, "2") then
+					return true;
+				end;
+				if toolSheet.lvl3 and has_value(spell.level, "3") then
+					return true;
+				end;
+				if toolSheet.lvl4 and has_value(spell.level, "4") then
+					return true;
+				end;
+				if toolSheet.lvl5 and has_value(spell.level, "5") then
+					return true;
+				end;
+				if toolSheet.lvl6 and has_value(spell.level, "6") then
+					return true;
+				end;
+				if toolSheet.lvl7 and has_value(spell.level, "7") then
+					return true;
+				end;
+				if toolSheet.lvl8 and has_value(spell.level, "8") then
+					return true;
+				end;
+				if toolSheet.lvl9 and has_value(spell.level, "9") then
+					return true;
+				end;
+				return false;
+			end;
+
+			local function filterSchool(spell)
+				if self.scope.node.Abjuration and spell.school == schools[1] then
+					return true;
+				end;
+				if self.scope.node.Conjuration and spell.school == schools[2] then
+					return true;
+				end;
+				if self.scope.node.Calling and spell.subschool == schools[3] then
+					return true;
+				end;
+				if self.scope.node.Creation and spell.subschool == schools[4] then
+					return true;
+				end;
+				if self.scope.node.Healing and spell.subschool == schools[5] then
+					return true;
+				end;
+				if self.scope.node.Summoning and spell.subschool == schools[6] then
+					return true;
+				end;
+				if self.scope.node.Teleportation and spell.subschool == schools[7] then
+					return true;
+				end;
+				if self.scope.node.Divination and spell.school == schools[8] then
+					return true;
+				end;
+				if self.scope.node.Scrying and spell.subschool == schools[9] then
+					return true;
+				end;
+				if self.scope.node.Enchantment and spell.school == schools[10] then
+					return true;
+				end;
+				if self.scope.node.Charm and spell.subschool == schools[11] then
+					return true;
+				end;
+				if self.scope.node.Compulsion and spell.subschool == schools[12] then
+					return true;
+				end;
+				if self.scope.node.Evocation and spell.school == schools[13] then
+					return true;
+				end;
+				if self.scope.node.Illusion and spell.school == schools[14] then
+					return true;
+				end;
+				if self.scope.node.Figment and spell.subschool == schools[15] then
+					return true;
+				end;
+				if self.scope.node.Glamer and spell.subschool == schools[16] then
+					return true;
+				end;
+				if self.scope.node.Pattern and spell.subschool == schools[17] then
+					return true;
+				end;
+				if self.scope.node.Phantasm and spell.subschool == schools[18] then
+					return true;
+				end;
+				if self.scope.node.Shadow and spell.subschool == schools[19] then
+					return true;
+				end;
+				if self.scope.node.Necromancy and spell.school == schools[20] then
+					return true;
+				end;
+				if self.scope.node.Transmutation and spell.school == schools[21] then
+					return true;
+				end;
+				if self.scope.node.Polymorph and spell.subschool == schools[22] then
+					return true;
+				end;
+				if self.scope.node.Universal and spell.school == schools[23] then
+					return true;
+				end;
+
+				return false;
+			end;
+
+			local function filterClassAnd(spell)
+				local ret = true;
+				if toolSheet.bard then
+					ret = ret and spell.level.bard ~= nil;
+				end;
+				if toolSheet.cleric then
+					ret = ret and spell.level.cleric ~= nil;
+				end;
+				if toolSheet.druid then
+					ret = ret and spell.level.druid ~= nil;
+				end;
+				if toolSheet.paladin then
+					ret = ret and spell.level.paladin ~= nil;
+				end;
+				if toolSheet.ranger then
+					ret = ret and spell.level.ranger ~= nil;
+				end;
+				if toolSheet.sorcerer then
+					ret = ret and spell.level.sorcerer ~= nil;
+				end;
+				if toolSheet.wizard then
+					ret = ret and spell.level.wizard ~= nil;
+				end;
+				if toolSheet.adept then
+					ret = ret and spell.level.adept ~= nil;
+				end;
+				if toolSheet.assassin then
+					ret = ret and spell.level.assassin ~= nil;
+				end;
+				if toolSheet.blackguard then
+					ret = ret and spell.level.blackguard ~= nil;
+				end;
+				if toolSheet.shugenja ~= nil then
+					ret = ret  and spell.level.shugenja ~= nil;
+				end;
+				if toolSheet.wu_jen ~= nil then
+					ret = ret  and spell.level["wu-jen"] ~= nil;
+				end;
+				if toolSheet.warmage ~= nil then
+					ret = ret  and spell.level.warmage ~= nil;
+				end;
+				if toolSheet.hexblade ~= nil then
+					ret = ret  and spell.level.hexblade ~= nil;
+				end;
+				if toolSheet.domain then
+					ret = ret and (spell.level.air~=nil or spell.level.animal~=nil or spell.level.chaos~=nil or spell.level.death~=nil or spell.level.destruction~=nil or spell.level.earth~=nil or spell.level.evil~=nil or spell.level.fire~=nil or spell.level.good~=nil or spell.level.healing~=nil or spell.level.knowledge~=nil or spell.level.law~=nil or spell.level.luck~=nil or spell.level.magic~=nil or spell.level.plant~=nil or spell.level.protection~=nil or spell.level.strength~=nil or spell.level.sun~=nil or spell.level.travel~=nil or spell.level.trickery~=nil or spell.level.war~=nil or spell.level.water~=nil or spell.level.liberation ~= nil or spell.level.cold ~= nil or spell.level.creation ~= nil or spell.level.dream ~= nil or spell.level.mind ~= nil or spell.level.madness ~= nil or spell.level.domination ~= nil or spell.level.force ~= nil or spell.level.glory ~= nil or spell.level.purification ~= nil or spell.level.pact ~= nil or spell.level.pestilence ~= nil or spell.level.celerity ~= nil or spell.level.weather ~= nil or spell.level.courage ~= nil);
+				end;
+				return ret;
+			end;
+
+			local function filterClassOr(spell)
+				if toolSheet.bard and spell.level.bard ~= nil then
+					return true;
+				end;
+				if toolSheet.cleric and spell.level.cleric ~= nil then
+					return true;
+				end;
+				if toolSheet.druid and spell.level.druid ~= nil then
+					return true;
+				end;
+				if toolSheet.paladin and spell.level.paladin ~= nil then
+					return true;
+				end;
+				if toolSheet.ranger and spell.level.ranger ~= nil then
+					return true;
+				end;
+				if toolSheet.sorcerer and spell.level.sorcerer ~= nil then
+					return true;
+				end;
+				if toolSheet.wizard and spell.level.wizard ~= nil then
+					return true;
+				end;
+				if toolSheet.adept and spell.level.adept ~= nil then
+					return true;
+				end;
+				if toolSheet.assassin and spell.level.assassin ~= nil then
+					return true;
+				end;
+				if toolSheet.blackguard and spell.level.blackguard ~= nil then
+					return true;
+				end;
+				if toolSheet.shugenja and spell.level.shugenja ~= nil then
+					return true;
+				end;
+				if toolSheet.wu_jen and spell.level["wu-jen"] ~= nil then
+					return true;
+				end;
+				if toolSheet.warmage and spell.level.warmage ~= nil then
+					return true;
+				end;
+				if toolSheet.hexblade and spell.level.hexblade ~= nil then
+					return true;
+				end;
+				if toolSheet.domain then
+					return (spell.level.air~=nil or spell.level.animal~=nil or spell.level.chaos~=nil or spell.level.death~=nil or spell.level.destruction~=nil or spell.level.earth~=nil or spell.level.evil~=nil or spell.level.fire~=nil or spell.level.good~=nil or spell.level.healing~=nil or spell.level.knowledge~=nil or spell.level.law~=nil or spell.level.luck~=nil or spell.level.magic~=nil or spell.level.plant~=nil or spell.level.protection~=nil or spell.level.strength~=nil or spell.level.sun~=nil or spell.level.travel~=nil or spell.level.trickery~=nil or spell.level.war~=nil or spell.level.water~=nil or spell.level.liberation ~= nil or spell.level.cold ~= nil or spell.level.creation ~= nil or spell.level.dream ~= nil or spell.level.mind ~= nil or spell.level.madness ~= nil or spell.level.domination ~= nil or spell.level.force ~= nil or spell.level.glory ~= nil or spell.level.purification ~= nil or spell.level.pact ~= nil or spell.level.pestilence ~= nil or spell.level.celerity ~= nil or spell.level.weather ~= nil or spell.level.courage ~= nil);
+				end;
+				return false;
+			end;
+
+			local function filterClass(spell)
+				if toolSheet.classRule == "and" then
+					return filterClassAnd(spell);
+				else
+					return filterClassOr(spell);
+				end;
+			end;
+
+			local function filterRange(spell)
+				if toolSheet.fixo3m and spell.range == ranges[1] then
+					return true;
+				end;
+				if toolSheet.fixo6m and spell.range == ranges[2] then
+					return true;
+				end;
+				if toolSheet.fixo9m and spell.range == ranges[3] then
+					return true;
+				end;
+				if toolSheet.fixo12m and spell.range == ranges[4] then
+					return true;
+				end;
+				if toolSheet.fixo15m and spell.range == ranges[5] then
+					return true;
+				end;
+				if toolSheet.fixo18m and spell.range == ranges[6] then
+					return true;
+				end;
+				if toolSheet.Close and spell.range == ranges[7] then
+					return true;
+				end;
+				if toolSheet.Medium and spell.range == ranges[8] then
+					return true;
+				end;
+				if toolSheet.Long and spell.range == ranges[9] then
+					return true;
+				end;
+				if toolSheet.Personal and spell.range == ranges[10] then
+					return true;
+				end;
+				if toolSheet.Touch and spell.range == ranges[11] then
+					return true;
+				end;
+				if toolSheet.Special and spell.range == ranges[12] then
+					return true;
+				end;
+				if toolSheet.Adjacent and spell.range == ranges[13] then
+					return true;
+				end;
+				return false;
+			end;
+
+			local function filterDuration(spell)
+				if toolSheet.Concentration and array_contain(spell.duration, durations[1], #durations) then
+					return true;
+				end;
+				if toolSheet.Dismissible and array_contain(spell.duration, durations[2], #durations) then
+					return true;
+				end;
+				if toolSheet.Instantaneous and array_contain(spell.duration, durations[3], #durations) then
+					return true;
+				end;
+				if toolSheet.Rounds and array_contain(spell.duration, durations[4], #durations) then
+					return true;
+				end;
+				if toolSheet.Minutes and array_contain(spell.duration, durations[5], #durations) then
+					return true;
+				end;
+				if toolSheet.Hours and array_contain(spell.duration, durations[6], #durations) then
+					return true;
+				end;
+				if toolSheet.Days and array_contain(spell.duration, durations[7], #durations) then
+					return true;
+				end;
+				if toolSheet.Permanent and array_contain(spell.duration, durations[8], #durations) then
+					return true;
+				end;
+				if toolSheet.SpecialDuration and array_contain(spell.duration, durations[9], #durations) then
+					return true;
+				end;
+
+				return false;
+			end
+
+
+
+			local function filterBook(spell)
+				if toolSheet.PHB and array_contain(spell.book, books[1], #books) then
+					return true;
+				end;
+				if toolSheet.ELH and array_contain(spell.book, books[2], #books) then
+					return true;
+				end;
+				if toolSheet.CAd and array_contain(spell.book, books[3], #books) then
+					return true;
+				end;
+				if toolSheet.CAr and array_contain(spell.book, books[4], #books) then
+					return true;
+				end;
+				if toolSheet.CD and array_contain(spell.book, books[5], #books) then
+					return true;
+				end;
+				if toolSheet.CC and array_contain(spell.book, books[6], #books) then
+					return true;
+				end;
+				if toolSheet.CM and array_contain(spell.book, books[7], #books) then
+					return true;
+				end;
+				if toolSheet.CS and array_contain(spell.book, books[8], #books) then
+					return true;
+				end;
+				if toolSheet.CW and array_contain(spell.book, books[9], #books) then
+					return true;
+				end;
+
+				return false;
+			end
+
+			local function filterTarget(spell)
+				if toolSheet.Area and array_contain(spell.aiming, targets[1], #targets) then
+					return true;
+				end;
+				if toolSheet.Effect and array_contain(spell.aiming, targets[2], #targets) then
+					return true;
+				end;
+				if toolSheet.Target and array_contain(spell.aiming, targets[3], #targets) then
+					return true;
+				end;
+				if toolSheet.Burst and array_contain(spell.aiming, targets[4], #targets) then
+					return true;
+				end;
+				if toolSheet.Cone and array_contain(spell.aiming, targets[5], #targets) then
+					return true;
+				end;
+				if toolSheet.Cylinder and array_contain(spell.aiming, targets[6], #targets) then
+					return true;
+				end;
+				if toolSheet.Emanation and array_contain(spell.aiming, targets[7], #targets) then
+					return true;
+				end;
+				if toolSheet.Line and array_contain(spell.aiming, targets[8], #targets) then
+					return true;
+				end;
+				if toolSheet.Ray and array_contain(spell.aiming, targets[9], #targets) then
+					return true;
+				end;
+				if toolSheet.Sphere and array_contain(spell.aiming, targets[10], #targets) then
+					return true;
+				end;
+				if toolSheet.Spread and array_contain(spell.aiming, targets[11], #targets) then
+					return true;
+				end;
+				if toolSheet.Shapeable and array_contain(spell.aiming, targets[12], #targets) then
+					return true;
+				end;
+				if toolSheet.SpecialTarget and array_contain(spell.aiming, targets[13], #targets) then
+					return true;
+				end;
+				return false;
+			end;
+
+			local function filterSave(spell)
+				if toolSheet.fortitude and array_contain(spell.save, trs[1], #trs) then
+					return true;
+				end;
+				if toolSheet.reflex and array_contain(spell.save, trs[2], #trs) then
+					return true;
+				end;
+				if toolSheet.will and array_contain(spell.save, trs[3], #trs) then
+					return true;
+				end;
+				if toolSheet.none and array_contain(spell.save, trs[4], #trs) then
+					return true;
+				end;
+				if toolSheet.specialTR and array_contain(spell.save, trs[5], #trs) then
+					return true;
+				end;
+				return false;
+			end;
+
+			local function filterSR(spell)
+				if toolSheet.yes and array_contain(spell.sr, srs[1], #srs) then
+					return true;
+				end;
+				if toolSheet.no and array_contain(spell.sr, srs[2], #srs) then
+					return true;
+				end;
+				return false;
+			end;
+
+			local function trans(str)
+				if str==nil then return "" end;
+				return (tryLang(str) or str);
+			end
+
+			local function classToText(t)
+				local ret = "";
+				for k,v in pairs(t) do
+					ret = ret .. trans(k) .. " " .. t[k] .. ", ";
+				end;
+				if ret:len()>=2 then 
+					ret = ret:sub(1, -3);
+				end;
+				return ret;
+			end;
+
+			local function arrayToText(array, size)
+				if array==nil then return "" end;
+				local ret = "";
+				for i=1, size, 1 do
+					if array[i]~=nil then 
+						ret = ret .. trans(array[i]) .. ", " 
+					end;
+				end;
+				if ret:len()>=2 then 
+					ret = ret:sub(1, -3);
+				end;
+				return ret;
+			end;
+
+			local function filterName(spell)
+				if toolSheet.nameFilter==nil or toolSheet.nameFilter=="" then return true end;
+
+				local filter = string.lower(Utils.removerAcentos(toolSheet.nameFilter));
+				local nome1 = string.lower(Utils.removerAcentos(spell.name));
+				local nome2 = string.lower(Utils.removerAcentos(trans(spell.name)));
+
+				if string.find(nome1, filter) or string.find(nome2, filter) then
+					return true;
+				end;
+				return false;
+			end;
+        ]]> 
+    </script>
+
+    <popup name="popDescription" width="200" height="200" backOpacity="0.4" autoScopeNode="false">
+		<textEditor align="client" field="description"/>
+	</popup>
+
+    <layout align="bottom" height="25">
+		<button align="left" horzTextAlign="center" width="375" text="Filtre!">
+			<event name="onClick">
+				if self.scope.node==nil then return end;
+				toolSheet.filteredSpells = {};
+				local index = 0;
+
+				-- Filtre as magias
+				for k,v in pairs(magicListData.db) do
+					local spell = magicListData.db[k];
+
+					if toolSheet.enableName then
+						local isName = filterName(spell);
+						if not isName then 
+							--write(spell.name .. " falhou no filtro de isName");
+							goto nextspell 
+						end;
+					end;
+
+					if toolSheet.enableClasses then
+						local isClass = filterClass(spell);
+						if not isClass then 
+							--write(spell.name .. " falhou no filtro de isClass");
+							goto nextspell 
+						end;
+					end;
+
+					if toolSheet.enableNivel then
+						local isLevel = filterLevel(spell);
+						if not isLevel then 
+							--write(spell.name .. " falhou no filtro de isLevel");
+							goto nextspell 
+						end;
+					end;
+
+					if toolSheet.enableSchool then
+						local isSchool = filterSchool(spell);
+						if not isSchool then 
+							--write(spell.name .. " falhou no filtro de isSchool");
+							goto nextspell 
+						end;
+					end;
+
+					if toolSheet.enableDescritor then
+						local isTag = filterTag(spell);
+						if not isTag then 
+							--write(spell.name .. " falhou no filtro de isTag");
+							goto nextspell 
+						end;
+					end;
+
+					if toolSheet.enableComponentes then
+						local isComponent = filterComponent(spell);
+						if not isComponent then 
+							--write(spell.name .. " falhou no filtro de isComponent");
+							goto nextspell 
+						end;
+					end;
+
+					if toolSheet.enableAlcance then
+						local isRange = filterRange(spell);
+						if not isRange then 
+							--write(spell.name .. " falhou no filtro de isRange");
+							goto nextspell 
+						end;
+					end;
+
+					if toolSheet.enableDuracao then
+						local isDuration = filterDuration(spell);
+						if not isDuration then 
+							--write(spell.name .. " falhou no filtro de isDuration");
+							goto nextspell 
+						end;
+					end;
+
+					if toolSheet.enableAlvo then
+						local isTarget = filterTarget(spell);
+						if not isTarget then 
+							--write(spell.name .. " falhou no filtro de isTarget");
+							goto nextspell 
+						end;
+					end;
+
+					if toolSheet.enableResistencia then
+						local isSave = filterSave(spell);
+						if not isSave then 
+							--write(spell.name .. " falhou no filtro de isSave");
+							goto nextspell 
+						end;
+					end;
+
+					if toolSheet.enableRm then
+						local isSR = filterSR(spell);
+						if not isSR then 
+							--write(spell.name .. " falhou no filtro de isSR");
+							goto nextspell 
+						end;
+					end;
+
+					if toolSheet.enableLivro then
+						local isBook = filterBook(spell);
+						if not isBook then 
+							--write(spell.name .. " falhou no filtro de isBook");
+							goto nextspell 
+						end;
+					end;
+
+					index = index +1;
+					toolSheet.filteredSpells[index] = spell;
+					::nextspell::
+				end
+
+				--write(index);
+
+				-- Salve a quantidade de magias filtradas e de paginas
+				toolSheet.numSpells = index;
+				toolSheet.maxSpellPages = math.ceil(index/50);	
+
+				-- Delete o que ta no rcl atual
+		        local toDelete = NDB.getChildNodes(toolSheet.spellList); 
+		        for i=1, #toDelete, 1 do
+		            NDB.deleteNode(toDelete[i]);
+		        end;
+
+		        -- Preencha o rcl com até as primeiras 50 magias
+		        local limit = math.min(index, 50);
+				for i=1, limit, 1 do
+					local spell = self.spellList:append();
+
+					if toolSheet.filteredSpells[i].description then 
+						spell.description = toolSheet.filteredSpells[i].description;
+					end;
+
+					spell.name = toolSheet.filteredSpells[i].name;
+					local nome = tryLang(toolSheet.filteredSpells[i].name);
+					if nome ~= nil then spell.name = spell.name .. " - " .. nome end;
+
+					spell.school = trans(toolSheet.filteredSpells[i].school);
+					spell.subschool = trans(toolSheet.filteredSpells[i].subschool);
+					spell.url = toolSheet.filteredSpells[i].url;
+					spell.level = classToText(toolSheet.filteredSpells[i].level);
+					spell.descriptor = "Descritores: " .. arrayToText(toolSheet.filteredSpells[i].descriptor, #tags);
+					spell.components = "Componentes: " .. arrayToText(toolSheet.filteredSpells[i].components, #components);
+					spell.range = "Alcance: " .. trans(toolSheet.filteredSpells[i].range);
+					spell.duration = "Duração: " .. arrayToText(toolSheet.filteredSpells[i].duration, #durations);
+					spell.aiming = "Alvo: " .. arrayToText(toolSheet.filteredSpells[i].aiming, #targets);
+					spell.save = "Resistência: " .. arrayToText(toolSheet.filteredSpells[i].save, #trs);
+					spell.sr = "RM: " .. arrayToText(toolSheet.filteredSpells[i].sr, #srs);
+					spell.book = "Livro: " .. arrayToText(toolSheet.filteredSpells[i].book, #books);
+				end;
+				self.spellList:sort();
+				toolSheet.SpellsPage = 1;
+
+				self.spellListTab:setFocus();
+			</event>
+		</button>
+	</layout>
+	<scrollBox align="client">
+		<layout align="top" height="25">
+			<checkBox align="left" width="75" horzTextAlign="center" text="NOME" field="enableName" margins="{right=25,bottom=5,top=5}"/>
+			<edit align="left" width="275" field="nameFilter"/>
+		</layout>
+		<layout align="top" height="125">
+			<layout align="top" height="25">
+				<checkBox align="left" width="75" horzTextAlign="center" text="CLASSES" field="enableClasses" margins="{right=75}"/>
+				<radioButton align="left" width="60" text="Todas" groupName="grupoDeClasses" field="classRule" fieldValue="and" hint="Exibe magias apenas se elas pertencerem a todas classes selecionadas. "/>
+				<radioButton align="left" width="110" text="Ao menos uma" groupName="grupoDeClasses" field="classRule" fieldValue="or" hint="Exibe magias que pertençam ao menos a uma das classes selecionadas. "/> 
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="75" field="bard" text="Bardo"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="cleric" text="Clerigo"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="druid" text="Druida"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="paladin" text="Paladino"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="ranger" text="Ranger"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="75" field="sorcerer" text="Feiticeiro"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="wizard" text="Mago"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="adept" text="Adepto"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="assassin" text="Assassino"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="blackguard" text="Algoz"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="75" field="shugenja" text="Shugenja"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="wu_jen" text="Wu-Jen"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="warmage" text="Mago de Guerra" fontSize="8"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="hexblade" text="Lâmina Maldita" fontSize="8"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="domain" text="Dominio"/>
+			</layout>
+			<layout align="top" height="25">
+				<button align="left" horzTextAlign="center" width="187" text="Marque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.bard = true;
+						self.scope.node.cleric = true;
+						self.scope.node.druid = true;
+						self.scope.node.paladin = true;
+						self.scope.node.ranger = true;
+						self.scope.node.sorcerer = true;
+						self.scope.node.wizard = true;
+						self.scope.node.adept = true;
+						self.scope.node.assassin = true;
+						self.scope.node.blackguard = true;
+						self.scope.node.shugenja = true;
+						self.scope.node.wu_jen = true;
+						self.scope.node.warmage = true;
+						self.scope.node.hexblade = true;
+						self.scope.node.domain = true;
+					</event>
+				</button>
+				<button align="left" horzTextAlign="center" width="187" text="Desmarque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.bard = false;
+						self.scope.node.cleric = false;
+						self.scope.node.druid = false;
+						self.scope.node.paladin = false;
+						self.scope.node.ranger = false;
+						self.scope.node.sorcerer = false;
+						self.scope.node.wizard = false;
+						self.scope.node.adept = false;
+						self.scope.node.assassin = false;
+						self.scope.node.blackguard = false;
+						self.scope.node.shugenja = false;
+						self.scope.node.wu_jen = false;
+						self.scope.node.warmage = false;
+						self.scope.node.hexblade = false;
+						self.scope.node.domain = false;
+
+					</event>
+				</button>
+			</layout>
+		</layout>
+		<layout align="top" height="100">
+			<layout align="top" height="25">
+				<checkBox align="left" width="75" horzTextAlign="center" text="NÍVEL" field="enableNivel" margins="{right=75}"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="75" field="lvl0" text="0"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="lvl1" text="1"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="lvl2" text="2"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="lvl3" text="3"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="lvl4" text="4"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="75" field="lvl5" text="5"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="lvl6" text="6"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="lvl7" text="7"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="lvl8" text="8"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="lvl9" text="9"/>
+			</layout>
+			<layout align="top" height="25">
+				<button align="left" horzTextAlign="center" width="187" text="Marque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.lvl0 = true;
+						self.scope.node.lvl1 = true;
+						self.scope.node.lvl2 = true;
+						self.scope.node.lvl3 = true;
+						self.scope.node.lvl4 = true;
+						self.scope.node.lvl5 = true;
+						self.scope.node.lvl6 = true;
+						self.scope.node.lvl7 = true;
+						self.scope.node.lvl8 = true;
+						self.scope.node.lvl9 = true;
+					</event>
+				</button>
+				<button align="left" horzTextAlign="center" width="187" text="Desmarque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.lvl0 = false;
+						self.scope.node.lvl1 = false;
+						self.scope.node.lvl2 = false;
+						self.scope.node.lvl3 = false;
+						self.scope.node.lvl4 = false;
+						self.scope.node.lvl5 = false;
+						self.scope.node.lvl6 = false;
+						self.scope.node.lvl7 = false;
+						self.scope.node.lvl8 = false;
+						self.scope.node.lvl9 = false;
+					</event>
+				</button>
+			</layout>
+		</layout>
+		<layout align="top" height="250">
+			<layout align="top" height="25">
+				<checkBox align="left" width="150" horzTextAlign="center" text="ESCOLA (SUBESCOLA)" field="enableSchool" margins="{right=0}"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="Abjuration" text="Abjuração"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Conjuration" text="Conjuração (Todas)" fontSize="10"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Calling" text="Conjuração (Convocação)" fontSize="9"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="Creation" text="Conjuração (Criação)" fontSize="10"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Healing" text="Conjuração (Cura)" fontSize="10"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Summoning" text="Conjuração (Invocação)" fontSize="10"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="Teleportation" text="Conjuração (Teletransporte)" fontSize="8"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Divination" text="Adivinhação (Todas)" fontSize="10"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Scrying" text="Adivinhação (Vidência)" fontSize="10"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="Enchantment" text="Encantamento (Todas)" fontSize="10"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Charm" text="Encantamento (Feitiço)" fontSize="10"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Compulsion" text="Encantamento (Compulsão)" fontSize="8"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="Evocation" text="Evocação"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Illusion" text="Ilusão (Todas)" fontSize="12"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Figment" text="Ilusão (Ídeia)" fontSize="12"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="Glamer" text="Ilusão (Sensação)" fontSize="11"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Pattern" text="Ilusão (Padrão)" fontSize="12"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Phantasm" text="Ilusão (Fantasma)" fontSize="11"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="Shadow" text="Ilusão (Sombra)"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Necromancy" text="Necromancia"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="Transmutation" text="Transmutação"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Polymorph" text="Transmutação (Polimorfismo)" fontSize="8"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Universal" text="Universal"/>
+			</layout>
+			<layout align="top" height="25">
+				<button align="left" horzTextAlign="center" width="187" text="Marque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.Abjuration = true;
+						self.scope.node.Conjuration = true;
+						self.scope.node.Calling = true;
+						self.scope.node.Creation = true;
+						self.scope.node.Healing = true;
+						self.scope.node.Summoning = true;
+						self.scope.node.Teleportation = true;
+						self.scope.node.Divination = true;
+						self.scope.node.Scrying = true;
+						self.scope.node.Enchantment = true;
+						self.scope.node.Charm = true;
+						self.scope.node.Compulsion = true;
+						self.scope.node.Evocation = true;
+						self.scope.node.Illusion = true;
+						self.scope.node.Figment = true;
+						self.scope.node.Glamer = true;
+						self.scope.node.Pattern = true;
+						self.scope.node.Phantasm = true;
+						self.scope.node.Shadow = true;
+						self.scope.node.Necromancy = true;
+						self.scope.node.Transmutation = true;
+						self.scope.node.Polymorph = true;
+						self.scope.node.Universal = true;
+					</event>
+				</button>
+				<button align="left" horzTextAlign="center" width="187" text="Desmarque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.Abjuration = false;
+						self.scope.node.Conjuration = false;
+						self.scope.node.Calling = false;
+						self.scope.node.Creation = false;
+						self.scope.node.Healing = false;
+						self.scope.node.Summoning = false;
+						self.scope.node.Teleportation = false;
+						self.scope.node.Divination = false;
+						self.scope.node.Scrying = false;
+						self.scope.node.Enchantment = false;
+						self.scope.node.Charm = false;
+						self.scope.node.Compulsion = false;
+						self.scope.node.Evocation = false;
+						self.scope.node.Illusion = false;
+						self.scope.node.Figment = false;
+						self.scope.node.Glamer = false;
+						self.scope.node.Pattern = false;
+						self.scope.node.Phantasm = false;
+						self.scope.node.Shadow = false;
+						self.scope.node.Necromancy = false;
+						self.scope.node.Transmutation = false;
+						self.scope.node.Polymorph = false;
+						self.scope.node.Universal = false;
+					</event>
+				</button>
+			</layout>
+		</layout>
+		<layout align="top" height="175">
+			<layout align="top" height="25">
+				<checkBox align="left" width="100" horzTextAlign="center" text="DESCRITOR" field="enableDescritor" margins="{right=50}"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="90" field="Acid" text="Ácido"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Air" text="Ar"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Chaotic" text="Caos"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Cold" text="Frio"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="90" field="Darkness" text="Escuridão"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Death" text="Morte"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Earth" text="Terra"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Electricity" text="Eletricidade"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="90" field="Evil" text="Mal"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Fear" text="Medo"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Fire" text="Fogo"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Force" text="Energia"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="90" field="Good" text="Bem"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Language_Dependent" text="Dep. de Idioma" fontSize="10"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Lawful" text="Ordem"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Light" text="Luz"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="90" field="Mind_Affecting" text="Ação Mental" fontSize="12"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Sonic" text="Sônico"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Water" text="Água"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="None" text="Nenhum"/>
+			</layout>
+			<layout align="top" height="25">
+				<button align="left" horzTextAlign="center" width="187" text="Marque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.Acid = true;
+						self.scope.node.Air = true;
+						self.scope.node.Chaotic = true;
+						self.scope.node.Cold = true;
+						self.scope.node.Darkness = true;
+						self.scope.node.Death = true;
+						self.scope.node.Earth = true;
+						self.scope.node.Electricity = true;
+						self.scope.node.Evil = true;
+						self.scope.node.Fear = true;
+						self.scope.node.Fire = true;
+						self.scope.node.Force = true;
+						self.scope.node.Good = true;
+						self.scope.node.Language_Dependent = true;
+						self.scope.node.Lawful = true;
+						self.scope.node.Light = true;
+						self.scope.node.Mind_Affecting = true;
+						self.scope.node.Sonic = true;
+						self.scope.node.Water = true;
+						self.scope.node.None = true;
+					</event>
+				</button>
+				<button align="left" horzTextAlign="center" width="187" text="Desmarque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.Acid = false;
+						self.scope.node.Air = false;
+						self.scope.node.Chaotic = false;
+						self.scope.node.Cold = false;
+						self.scope.node.Darkness = false;
+						self.scope.node.Death = false;
+						self.scope.node.Earth = false;
+						self.scope.node.Electricity = false;
+						self.scope.node.Evil = false;
+						self.scope.node.Fear = false;
+						self.scope.node.Fire = false;
+						self.scope.node.Force = false;
+						self.scope.node.Good = false;
+						self.scope.node.Language_Dependent = false;
+						self.scope.node.Lawful = false;
+						self.scope.node.Light = false;
+						self.scope.node.Mind_Affecting = false;
+						self.scope.node.Sonic = false;
+						self.scope.node.Water = false;
+						self.scope.node.None = false;
+
+					</event>
+				</button>
+			</layout>
+		</layout>
+		<layout align="top" height="100">
+			<layout align="top" height="25">
+				<checkBox align="left" width="125" horzTextAlign="center" text="COMPONENTES" field="enableComponentes" margins="{right=0}"/>
+				<radioButton align="left" width="60" text="Todas" groupName="grupoDeComponentes" field="componentRule" fieldValue="and" hint="Exibe magias apenas se ela usa todos componentes selecionados. "/>
+				<radioButton align="left" width="110" text="Ao menos um" groupName="grupoDeComponentes" field="componentRule" fieldValue="or" hint="Exibe magias que usem ao menos um dos componentes selecionados.  "/> 
+				<radioButton align="left" width="75" text="Nenhum" groupName="grupoDeComponentes" field="componentRule" fieldValue="not" hint="Exibe magias apenas se ela usa não usa nenhum componentes selecionados. "/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="90" field="V" text="Verbal"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="S" text="Gestos"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="M" text="Material"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="F" text="Foco"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="90" field="DF" text="Foco Divino"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="XP" text="Experiencia"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="N" text="Nenhum"/>
+			</layout>
+			<layout align="top" height="25">
+				<button align="left" horzTextAlign="center" width="187" text="Marque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.V = true;
+						self.scope.node.S = true;
+						self.scope.node.M = true;
+						self.scope.node.F = true;
+						self.scope.node.XP = true;
+						self.scope.node.DF = true;
+						self.scope.node.N = true;
+					</event>
+				</button>
+				<button align="left" horzTextAlign="center" width="187" text="Desmarque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.V = false;
+						self.scope.node.S = false;
+						self.scope.node.M = false;
+						self.scope.node.F = false;
+						self.scope.node.DF = false;
+						self.scope.node.XP = false;
+						self.scope.node.N = false;
+
+					</event>
+				</button>
+			</layout>
+		</layout>
+		<layout align="top" height="150">
+			<layout align="top" height="25">
+				<checkBox align="left" width="75" horzTextAlign="center" text="ALCANCE" field="enableAlcance" margins="{right=75}"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="90" field="fixo3m" text="3m"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="fixo6m" text="6m"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="fixo9m" text="9m"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="fixo12m" text="12m"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="90" field="fixo15m" text="15m"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="fixo18m" text="18m"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Close" text="Curto"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Medium" text="Médio"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="90" field="Long" text="Longo"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Personal" text="Pessoal"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Touch" text="Toque"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Special" text="Especial"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="90" field="Adjacent" text="Adjacente"/>
+			</layout>
+			<layout align="top" height="25">
+				<button align="left" horzTextAlign="center" width="187" text="Marque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.fixo3m = true;
+						self.scope.node.fixo6m = true;
+						self.scope.node.fixo9m = true;
+						self.scope.node.fixo12m = true;
+						self.scope.node.fixo15m = true;
+						self.scope.node.fixo18m = true;
+						self.scope.node.Close = true;
+						self.scope.node.Medium = true;
+						self.scope.node.Long = true;
+						self.scope.node.Personal = true;
+						self.scope.node.Touch = true;
+						self.scope.node.Adjacent = true;
+						self.scope.node.Special = true;
+					</event>
+				</button>
+				<button align="left" horzTextAlign="center" width="187" text="Desmarque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.fixo3m = false;
+						self.scope.node.fixo6m = false;
+						self.scope.node.fixo9m = false;
+						self.scope.node.fixo12m = false;
+						self.scope.node.fixo15m = false;
+						self.scope.node.fixo18m = false;
+						self.scope.node.Close = false;
+						self.scope.node.Medium = false;
+						self.scope.node.Long = false;
+						self.scope.node.Personal = false;
+						self.scope.node.Touch = false;
+						self.scope.node.Adjacent = false;
+						self.scope.node.Special = false;
+					</event>
+				</button>
+			</layout>
+		</layout>
+		<layout align="top" height="125">
+			<layout align="top" height="25">
+				<checkBox align="left" width="100" horzTextAlign="center" text="DURAÇÃO" field="enableDuracao" margins="{right=50}"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="Concentration" text="Concentração"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Dismissible" text="Dissipavel"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="SpecialDuration" text="Especial"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="Instantaneous" text="Instantaneo"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Rounds" text="Rodadas"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Minutes" text="Minutos"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="Hours" text="Horas"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Days" text="Dias"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="Permanent" text="Permanente"/>
+			</layout>
+			<layout align="top" height="25">
+				<button align="left" horzTextAlign="center" width="187" text="Marque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.Instantaneous = true;
+						self.scope.node.Concentration = true;
+						self.scope.node.Rounds = true;
+						self.scope.node.Minutes = true;
+						self.scope.node.Hours = true;
+						self.scope.node.Days = true;
+						self.scope.node.Permanent = true;
+						self.scope.node.Dismissible = true;
+						self.scope.node.SpecialDuration = true;
+					</event>
+				</button>
+				<button align="left" horzTextAlign="center" width="187" text="Desmarque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.Instantaneous = false;
+						self.scope.node.Concentration = false;
+						self.scope.node.Rounds = false;
+						self.scope.node.Minutes = false;
+						self.scope.node.Hours = false;
+						self.scope.node.Days = false;
+						self.scope.node.Permanent = false;
+						self.scope.node.Dismissible = false;
+						self.scope.node.SpecialDuration = false;
+					</event>
+				</button>
+			</layout>
+		</layout>
+		<layout align="top" height="150">
+			<layout align="top" height="25">
+				<checkBox align="left" width="75" horzTextAlign="center" text="ALVO" field="enableAlvo" margins="{right=75}"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="90" field="Area" text="Area"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Effect" text="Efeito"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Target" text="Alvo"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Burst" text="Explosão"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="90" field="Cone" text="Cone"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Cylinder" text="Cilindro"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Emanation" text="Emanação"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Line" text="Linha"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="90" field="Ray" text="Raio"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Sphere" text="Esfera"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Spread" text="Disperção"/>
+				<checkBox align="left" horzTextAlign="center" width="90" field="Shapeable" text="Moldavel"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="90" field="SpecialTarget" text="Especial"/>
+			</layout>
+			<layout align="top" height="25">
+				<button align="left" horzTextAlign="center" width="187" text="Marque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.Area = true;
+						self.scope.node.Effect = true;
+						self.scope.node.Target = true;
+						self.scope.node.Burst = true;
+						self.scope.node.Cone = true;
+						self.scope.node.Cylinder = true;
+						self.scope.node.Emanation = true;
+						self.scope.node.Line = true;
+						self.scope.node.Ray = true;
+						self.scope.node.Sphere = true;
+						self.scope.node.Spread = true;
+						self.scope.node.Shapeable = true;
+						self.scope.node.SpecialTarget = true;
+					</event>
+				</button>
+				<button align="left" horzTextAlign="center" width="187" text="Desmarque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.Area = false;
+						self.scope.node.Effect = false;
+						self.scope.node.Target = false;
+						self.scope.node.Burst = false;
+						self.scope.node.Cone = false;
+						self.scope.node.Cylinder = false;
+						self.scope.node.Emanation = false;
+						self.scope.node.Line = false;
+						self.scope.node.Ray = false;
+						self.scope.node.Sphere = false;
+						self.scope.node.Spread = false;
+						self.scope.node.Shapeable = false;
+						self.scope.node.SpecialTarget = false;
+					</event>
+				</button>
+			</layout>
+		</layout>
+		<layout align="top" height="75">
+			<layout align="top" height="25">
+				<checkBox align="left" width="100" horzTextAlign="center" text="RESISTENCIA" field="enableResistencia" margins="{right=50}"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="75" field="fortitude" text="Fortitude"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="reflex" text="Reflexos"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="will" text="Vontade"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="none" text="Nenhum"/>
+				<checkBox align="left" horzTextAlign="center" width="75" field="specialTR" text="Especial"/>
+			</layout>
+			<layout align="top" height="25">
+				<button align="left" horzTextAlign="center" width="187" text="Marque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.fortitude = true;
+						self.scope.node.reflex = true;
+						self.scope.node.will = true;
+						self.scope.node.none = true;
+						self.scope.node.specialTR = true;
+					</event>
+				</button>
+				<button align="left" horzTextAlign="center" width="187" text="Desmarque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.fortitude = false;
+						self.scope.node.reflex = false;
+						self.scope.node.will = false;
+						self.scope.node.none = false;
+						self.scope.node.specialTR = false;
+					</event>
+				</button>
+			</layout>
+		</layout>
+		<layout align="top" height="75">
+			<layout align="top" height="25">
+				<checkBox align="left" width="75" horzTextAlign="center" text="RM" field="enableRm" margins="{right=75}"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="187" field="yes" text="Sim"/>
+				<checkBox align="left" horzTextAlign="center" width="187" field="no" text="Não"/>
+			</layout>
+			<layout align="top" height="25">
+				<button align="left" horzTextAlign="center" width="187" text="Marque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.yes = true;
+						self.scope.node.no = true;
+					</event>
+				</button>
+				<button align="left" horzTextAlign="center" width="187" text="Desmarque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.yes = false;
+						self.scope.node.no = false;
+					</event>
+				</button>
+			</layout>
+		</layout>
+		<layout align="top" height="125">
+			<layout align="top" height="25">
+				<checkBox align="left" width="75" horzTextAlign="center" text="LIVRO" field="enableLivro" margins="{right=75}"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="PHB" text="Jogador"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="ELH" text="Níveis Épicos"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="CAd" text="Comp. Aventureiro" fontSize="11"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="CAr" text="Comp. Arcano"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="CD" text="Comp. Divino"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="CC" text="Comp. Campeão"/>
+			</layout>
+			<layout align="top" height="25">
+				<checkBox align="left" horzTextAlign="center" width="125" field="CM" text="Comp. Mago"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="CS" text="Comp. Patife"/>
+				<checkBox align="left" horzTextAlign="center" width="125" field="CW" text="Comp. Guerreiro"/>
+			</layout>
+			<layout align="top" height="25">
+				<button align="left" horzTextAlign="center" width="187" text="Marque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.PHB = true;
+						self.scope.node.ELH = true;
+						self.scope.node.CAd = true;
+						self.scope.node.CAr = true;
+						self.scope.node.CD = true;
+						self.scope.node.CC = true;
+						self.scope.node.CM = true;
+						self.scope.node.CS = true;
+						self.scope.node.CW = true;
+					</event>
+				</button>
+				<button align="left" horzTextAlign="center" width="187" text="Desmarque Todas">
+					<event name="onClick">
+						if self.scope.node==nil then return end;
+						self.scope.node.PHB = false;
+						self.scope.node.ELH = false;
+						self.scope.node.CAd = false;
+						self.scope.node.CAr = false;
+						self.scope.node.CD = false;
+						self.scope.node.CC = false;
+						self.scope.node.CM = false;
+						self.scope.node.CS = false;
+						self.scope.node.CW = false;
+					</event>
+				</button>
+			</layout>
+		</layout>
+	</scrollBox>
+</form>

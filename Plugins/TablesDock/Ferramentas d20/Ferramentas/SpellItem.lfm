@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSpellItem" height="225" margins="{top=1}">
+	<rectangle align="client" color="#212121" hitTest="false">
+		<layout align="top" height="25">
+			<label align="left" width="375" field="name" name="spellName" horzTextAlign="center" fontStyle="bold" hitTest="true"/>
+		</layout>
+		<layout align="top" height="25">
+			<label align="left" width="75" text="Escola: " horzTextAlign="trailing" margins="{right=2}"/>
+			<label align="left" width="110" field="school" name="school" hitTest="true"/>
+			
+			<label align="left" width="75" text="Subescola: " horzTextAlign="trailing" margins="{right=2}"/>
+			<label align="left" width="110" field="subschool" name="subschool" hitTest="true"/>
+		</layout>
+		<layout align="top" height="25">
+			<label align="left" width="375" field="descriptor" name="descriptor" horzTextAlign="center" hitTest="true"/>
+		</layout>
+		<layout align="top" height="25">
+			<label align="left" width="375" field="level" name="level" horzTextAlign="center" hitTest="true"/>
+		</layout>
+		<layout align="top" height="25">
+			<label align="left" width="375" field="components" name="components" horzTextAlign="center" hitTest="true"/>
+		</layout>
+		<layout align="top" height="25">
+			<label align="left" width="187" field="duration" name="duration" horzTextAlign="center" hitTest="true"/>
+			<label align="left" width="187" field="aiming" name="aiming" horzTextAlign="center" hitTest="true"/>
+		</layout>
+		<layout align="top" height="25">
+			<label align="left" width="125" field="range" name="range" horzTextAlign="center" hitTest="true"/>
+			<label align="left" width="125" field="save" name="save" horzTextAlign="center" hitTest="true"/>
+			<label align="left" width="125" field="sr" name="sr" horzTextAlign="center" hitTest="true"/>
+		</layout>
+		<layout align="top" height="25">
+			<label align="left" width="375" field="book" name="book" horzTextAlign="center" hitTest="true"/>
+		</layout>
+
+
+		<layout align="top" height="25">
+			<layout align="left" width="125"/>
+			<button align="left" width="125" text="Abrir na Web">
+				<event name="onClick">
+					GUI.openInBrowser(sheet.url);
+				</event>
+			</button>
+			<button align="left" width="125" text="Descrição" name="btDesc" visible="false">
+				<event name="onClick">
+					local pop = self:findControlByName("popDescription");
+				
+					if pop ~= nil then
+						pop:setNodeObject(self.sheet);
+						pop:showPopupEx("center", self);
+					else
+						showMessage("Ops, bug.. nao encontrei o popup para exibir");
+					end;
+				</event>
+			</button>
+		</layout>
+
+		
+	</rectangle>
+
+	<dataLink field="name">
+		<event name="onChange">
+			if sheet==nil then return end;
+			self.spellName.hint = sheet.name;
+		</event>
+	</dataLink>
+	<dataLink field="description">
+		<event name="onChange">
+			if sheet==nil then return end;
+			if sheet.description==nil or sheet.description=="" then 
+				-- remove popup button
+				self.btDesc.visible = false;
+			else
+				-- add popup button
+				self.btDesc.visible = true;
+			end;
+		</event>
+	</dataLink>
+	<dataLink field="school">
+		<event name="onChange">
+			if sheet==nil then return end;
+			self.school.hint = sheet.school;
+		</event>
+	</dataLink>
+	<dataLink field="subschool">
+		<event name="onChange">
+			if sheet==nil then return end;
+			self.subschool.hint = sheet.subschool;
+		</event>
+	</dataLink>
+	<dataLink field="level">
+		<event name="onChange">
+			if sheet==nil then return end;
+			self.level.hint = sheet.level;
+		</event>
+	</dataLink>
+	<dataLink field="descriptor">
+		<event name="onChange">
+			if sheet==nil then return end;
+			self.descriptor.hint = sheet.descriptor;
+		</event>
+	</dataLink>
+	<dataLink field="components">
+		<event name="onChange">
+			if sheet==nil then return end;
+			self.components.hint = sheet.components;
+		</event>
+	</dataLink>
+	<dataLink field="range">
+		<event name="onChange">
+			if sheet==nil then return end;
+			self.range.hint = sheet.range;
+		</event>
+	</dataLink>
+	<dataLink field="duration">
+		<event name="onChange">
+			if sheet==nil then return end;
+			self.duration.hint = sheet.duration;
+		</event>
+	</dataLink>
+	<dataLink field="aiming">
+		<event name="onChange">
+			if sheet==nil then return end;
+			self.aiming.hint = sheet.aiming;
+		</event>
+	</dataLink>
+	<dataLink field="save">
+		<event name="onChange">
+			if sheet==nil then return end;
+			self.save.hint = sheet.save;
+		</event>
+	</dataLink>
+	<dataLink field="sr">
+		<event name="onChange">
+			if sheet==nil then return end;
+			self.sr.hint = sheet.sr;
+		</event>
+	</dataLink>
+	<dataLink field="book">
+		<event name="onChange">
+			if sheet==nil then return end;
+			self.book.hint = sheet.book;
+		</event>
+	</dataLink>
+</form>

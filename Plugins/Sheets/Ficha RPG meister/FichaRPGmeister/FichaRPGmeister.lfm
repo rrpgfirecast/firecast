@@ -53,20 +53,13 @@
             <import file="03.Pericias.lfm"/>
         </tab>
         <tab title="Habilidades">
-            <import file="04.Habilidades.lfm"/>
+            <import file="04.Habilidades.xml"/>
         </tab>
 		<tab title="Magias">
             <import file="05.Magias.lfm"/>
         </tab>
         <tab title="Equipamentos">
-            <tabControl align="client">
-                <tab title="Novo">
-                    <import file="06.Equipamentos2.xml"/>
-                </tab>
-                <tab title="Velho">
-                    <import file="06.Equipamentos.lfm"/>
-                </tab>
-            </tabControl>
+            <import file="06.Equipamentos2.xml"/>
         </tab>
         <tab title="Inventario">
             <import file="07.Inventario.xml"/>

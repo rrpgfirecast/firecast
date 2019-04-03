@@ -35,7 +35,35 @@
     </script>
     <tabControl align="client">
         <tab title="Exemplos">
-            <import file="Examples.lfm"/>
+            <tabControl align="client">
+                <tab title="DetailList">
+                    <import file="DetailList.lfm"/>
+                </tab>
+                <tab title="MultImageCheckbox">
+                    <import file="MultImageCheckbox.lfm"/>
+                </tab>
+                <tab title="ColorSelector">
+                    <import file="ColorSelector.lfm"/>
+                </tab>
+                <tab title="RclCounter">
+                    <import file="RclCounter.lfm"/>
+                </tab>
+                <tab title="Popup">
+                    <import file="Popup.lfm"/>
+                </tab>
+                <tab title="DiceRoll">
+                    <import file="DiceRoll.lfm"/>
+                </tab>
+                <tab title="Avatar">
+                    <import file="Avatar.lfm"/>
+                </tab>
+                <tab title="ImportExport">
+                    <import file="ImportExport.lfm"/>
+                </tab>
+                <tab title="ThemeControl">
+                    <import file="ThemeControl.lfm"/>
+                </tab>
+            </tabControl>
         </tab>
         <tab title="Descrição">
             <import file="Description.lfm"/>
@@ -48,12 +76,12 @@
         </tab>
     </tabControl>
     <event name="onNodeReady">
-        internet.download("raw_download_link",
+        Internet.download("raw_download_link",
             function(stream, contentType)
-                local info = rrpg.plugins.getRPKDetails(stream);
+                local info = Firecast.Plugins.getRPKDetails(stream);
                 sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
 
-                local installed = rrpg.plugins.getInstalledPlugins();
+                local installed = Firecast.Plugins.getInstalledPlugins();
                 local myself;
                 for i=1, #installed, 1 do
                     if installed[i].moduleId == info.moduleId then
@@ -67,7 +95,7 @@
                     Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                         function(selected, selectedIndex, selectedText)
                             if selected and selectedIndex == 1 then
-                                gui.openInBrowser('raw_download_link');
+                                GUI.openInBrowser('raw_download_link');
                             elseif selected and selectedIndex == 3 then
                                 sheet.noUpdate = true;
                             end;

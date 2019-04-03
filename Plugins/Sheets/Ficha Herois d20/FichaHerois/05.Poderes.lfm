@@ -56,12 +56,30 @@
 
 	<scrollBox align="client">	
 
-		<layout left="0" top="0" width="335" height="135">
+		<layout left="0" top="0" width="335" height="95">
 			<rectangle align="client" color="#0000007F"/>
 
 			<label left="5" top="5" width="150" height="20" text="Poderes Total" horzTextAlign="center"/>
 			<rectangle left="155" top="5" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label field="sumPoderes" text="0" left="155" top="5" width="75" height="25" horzTextAlign="center"/>
+			<label field="sumPoderes" name="sumPoderes" text="0" left="155" top="5" width="75" height="25" horzTextAlign="center"/>
+			<dataLink fields="{'sumPoderes', 'limitPoderes'}">
+				<event name="onChange">
+					if sheet == nil then return end;
+					local sum = tonumber(sheet.sumPoderes) or 0;
+					local limit = tonumber(sheet.limitPoderes) or 0;
+
+					if sum > limit then
+						self.sumPoderes.fontColor = "#FF0000";
+					elseif sum==limit then
+						self.sumPoderes.fontColor = "#FFFFFF";
+					else
+						self.sumPoderes.fontColor = "#00FF00";
+					end;
+				</event>
+			</dataLink>
+
+			<rectangle left="235" top="5" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label field="limitPoderes" text="0" left="235" top="5" width="75" height="25" horzTextAlign="center"/>
 
 			<label left="5" top="35" width="150" height="20" text="Redução (%)" horzTextAlign="center"/>
 			<rectangle left="155" top="35" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
@@ -70,7 +88,7 @@
 			<label left="5" top="65" width="150" height="20" text="Poderes Efetivo" horzTextAlign="center"/>
 			<rectangle left="155" top="65" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
 			<label field="efetPoderes" text="0" left="155" top="65" width="75" height="25" horzTextAlign="center" name="efetPoderes"/>
-			<dataLink field="efetPoderes">
+			<dataLink fields="{'efetPoderes', 'maxPoderes'}">
 				<event name="onChange">
 					if sheet == nil then return end;
 					local efet = tonumber(sheet.efetPoderes) or 0;
@@ -86,11 +104,10 @@
 				</event>
 			</dataLink>
 
-			<label left="5" top="95" width="150" height="20" text="Poderes Máximo" horzTextAlign="center"/>
-			<rectangle left="155" top="95" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label field="maxPoderes" text="0" left="155" top="95" width="75" height="25" horzTextAlign="center"/>
+			<rectangle left="235" top="65" width="75" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label field="maxPoderes" text="0" left="235" top="65" width="75" height="25" horzTextAlign="center"/>
 
-			<dataLink fields="{'nep','classePoderes'}">
+			<dataLink fields="{'nep','classePoderes', 'reduction'}">
 				<event name="onChange">
 					if sheet==nil then return end;
 
@@ -101,8 +118,14 @@
 					local ppTable = {1000,3000,6000,10000,15000,23000,33000,45000,59000,75000,101000,133000,175000,231000,305000,400000,525000,680000,865000,1080000,1325000,1600000,1905000,2240000,2605000,3000000,3425000,3880000,4365000};
 					local pp = ppTable[nep] or 4365000;
 					local mult = multTable[ajuste] or 1;
+					local max = pp * mult;
 
-					sheet.maxPoderes = pp * mult;
+					sheet.maxPoderes = max;
+
+					local reduction = (tonumber(sheet.reduction) or 0);
+					local limit = max * 100 / (100-reduction);
+					sheet.limitPoderes = math.floor(limit);
+
 				</event>
 			</dataLink>
 
@@ -119,7 +142,7 @@
 			</dataLink>
 		</layout>
 
-		<layout left="0" top="145" width="335" height="455">
+		<layout left="0" top="100" width="335" height="500">
 			<rectangle align="client" color="#0000007F"/>
 			<button text="+" left="5" top="0" width="25" height="25" onClick="self.rclListaDosTemas:append();"/>
 			<label left="0" top="0" width="335" height="20" text="TEMAS" horzTextAlign="center"/>
@@ -127,7 +150,7 @@
 			<label left="5" top="25" width="50" height="20" text="NÍVEL" horzTextAlign="center"/>
 			<label left="55" top="25" width="200" height="20" text="NOME" horzTextAlign="center"/>
 
-			<recordList name="rclListaDosTemas" field="campoDosTemas" templateForm="frmTema" left="5" top="50" width="320" height="400" layout="vertical">
+			<recordList name="rclListaDosTemas" field="campoDosTemas" templateForm="frmTema" left="5" top="50" width="320" height="445" layout="vertical">
 				<event name="onCompare">
 		            return ((tonumber(nodeA.nivel) or 0) - (tonumber(nodeB.nivel) or 0));
 		        </event>

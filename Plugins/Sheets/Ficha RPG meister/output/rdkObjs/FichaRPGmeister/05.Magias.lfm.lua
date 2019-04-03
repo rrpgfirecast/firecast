@@ -28,7 +28,6 @@ local function constructNew_frmFichaRPGmeister5M_svg()
     obj:beginUpdate();
     obj:setName("frmFichaRPGmeister5M_svg");
     obj:setAlign("client");
-    obj:setTheme("dark");
     obj:setMargins({top=1});
 
     obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
@@ -309,7 +308,7 @@ local function constructNew_frmFichaRPGmeister5M_svg()
 
     obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout2);
-    obj.label5:setLeft(211);
+    obj.label5:setLeft(210);
     obj.label5:setTop(0);
     obj.label5:setWidth(30);
     obj.label5:setHeight(25);
@@ -2458,7 +2457,7 @@ local function constructNew_frmFichaRPGmeister5M_svg()
 
     obj.label56 = GUI.fromHandle(_obj_newObject("label"));
     obj.label56:setParent(obj.layout47);
-    obj.label56:setLeft(211);
+    obj.label56:setLeft(210);
     obj.label56:setTop(0);
     obj.label56:setWidth(30);
     obj.label56:setHeight(25);

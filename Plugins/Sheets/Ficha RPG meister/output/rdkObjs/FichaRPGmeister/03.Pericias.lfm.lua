@@ -28,7 +28,6 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj:beginUpdate();
     obj:setName("frmFichaRPGmeister3_svg");
     obj:setAlign("client");
-    obj:setTheme("dark");
     obj:setMargins({top=1});
 
     obj.scrollBox1 = GUI.fromHandle(_obj_newObject("scrollBox"));
@@ -106,14 +105,16 @@ local function constructNew_frmFichaRPGmeister3_svg()
 
 				for i=1, 44, 1 do
 					local pericia = self.rclListaDasPericias:append();
-					pericia.nomePericia = dnd[i].nome;
-					pericia.chavePericia = dnd[i].chave;
-					pericia.exigeTreino = dnd[i].treino;
-					if dnd[i].armadura > 0 then
-						pericia.penalidadeArmadura2 = true;
-					end;
-					if dnd[i].armadura > 1 then
-						pericia.penalidadeArmadura = true;
+					if pericia ~= nil then
+						pericia.nomePericia = dnd[i].nome;
+						pericia.chavePericia = dnd[i].chave;
+						pericia.exigeTreino = dnd[i].treino;
+						if dnd[i].armadura > 0 then
+							pericia.penalidadeArmadura2 = true;
+						end;
+						if dnd[i].armadura > 1 then
+							pericia.penalidadeArmadura = true;
+						end;
 					end;
 				end;
 
@@ -742,29 +743,49 @@ local function constructNew_frmFichaRPGmeister3_svg()
             return Utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
         end, obj);
 
-    obj._e_event1 = obj.rclListaDosIdiomas:addEventListener("onCompare",
+    obj._e_event1 = obj.rclListaDasPericias:addEventListener("onEndEnumeration",
+        function (_)
+            if sheet==nil then return end;
+            					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+            					if #nodes == 0 then
+            						dndSkills();
+            					end;
+        end, obj);
+
+    obj._e_event2 = obj.rclListaDasPericias:addEventListener("onBeginEnumeration",
+        function (_)
+            if sheet==nil then return end;
+            					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+            					if #nodes == 0 then
+            						dndSkills();
+            					end;
+        end, obj);
+
+    obj._e_event3 = obj.rclListaDosIdiomas:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             return Utils.compareStringPtBr(nodeA.nomeIdioma, nodeB.nomeIdioma);
         end, obj);
 
-    obj._e_event2 = obj.button1:addEventListener("onClick",
+    obj._e_event4 = obj.button1:addEventListener("onClick",
         function (_)
             self.rclListaDasPericias:append();
         end, obj);
 
-    obj._e_event3 = obj.button2:addEventListener("onClick",
+    obj._e_event5 = obj.button2:addEventListener("onClick",
         function (_)
             local idioma = self.rclListaDosIdiomas:append();
             					idioma.conversarIdioma = true;
             					idioma.escritaIdioma = true;
         end, obj);
 
-    obj._e_event4 = obj.button3:addEventListener("onClick",
+    obj._e_event6 = obj.button3:addEventListener("onClick",
         function (_)
             dndSkills();
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event6);
+        __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);

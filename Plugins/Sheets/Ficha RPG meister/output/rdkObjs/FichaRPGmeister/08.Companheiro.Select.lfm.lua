@@ -29,7 +29,6 @@ local function constructNew_frmFichaRPGmeister8CS_svg()
     obj:setName("frmFichaRPGmeister8CS_svg");
     obj:setWidth(180);
     obj:setHeight(30);
-    obj:setTheme("dark");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);

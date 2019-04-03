@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmInventory" align="client">
+	<template name="Equipamento">
+		<label left="5" top="$(top)" width="95" height="20" text="$(text)" horzTextAlign="center"/>
+		<edit left="100" top="$(top)" width="200" height="25" field="equip_$(field)" vertTextAlign="center" />
+		<edit left="300" top="$(top)" width="590" height="25" field="equip_$(field)_desc" vertTextAlign="center" />
+	</template>
 	<scrollBox align="client">
-		<rectangle color="#FF000000" width="1363" height="686"/>
-		
-		<rectangle left="0" top="0" width="1210" height="555" color="black" strokeColor="white" strokeSize="1">
-			<label left="5" top="5" width="200" height="25" horzTextAlign="center" text="Nome"/>
-			<label left="205" top="5" width="700" height="25" horzTextAlign="center" text="Efeito"/>
-			<label left="905" top="5" width="150" height="25" horzTextAlign="center" text="Tipo"/>
-			<label left="1055" top="5" width="50" height="25" horzTextAlign="center" text="Qtd"/>
-			<label left="1105" top="5" width="50" height="25" horzTextAlign="center" text="Max"/>
+		<rectangle left="0" top="0" width="895" height="110" color="black" strokeColor="white" strokeSize="1">
+			<label left="0" top="5" width="895" height="25" horzTextAlign="center" text="Equipados"/>
 
-			<recordList left="5" top="30" width="1200" height="520" name="rclInventario" field="listaDeItens" templateForm="frmItem" layout="vertical" minQt="8"/>
+			<Equipamento top="30" text="Arma" field="arma"/>
+			<Equipamento top="55" text="Equipamento" field="equipamento"/>
+			<Equipamento top="80" text="Vestimenta" field="vestimenta"/>
 		</rectangle>
 
-		<rectangle left="0" top="560" width="310" height="110" color="black" strokeColor="white" strokeSize="1">
+		<rectangle left="900" top="0" width="310" height="110" color="black" strokeColor="white" strokeSize="1">
 			<label left="0" top="5" width="310" height="25" horzTextAlign="center" text="Armazenamento"/>
 			<comboBox left="5" top="30" width="300" height="25" field="armazenamento1" items="{'', 'Coldre', 'Bolsa Grande'}" values="{'0','4','6'}"/>
 			<comboBox left="5" top="55" width="300" height="25" field="armazenamento2" items="{'', 'Coldre', 'Bolsa Grande'}" values="{'0','4','6'}"/>
@@ -25,11 +26,11 @@
 					local armazenamento1 = (tonumber(sheet.armazenamento1) or 0);
 					local armazenamento2 = (tonumber(sheet.armazenamento2) or 0);
 					local armazenamento3 = (tonumber(sheet.armazenamento3) or 0);
-					local tamanho = 8 + armazenamento1 + armazenamento2 + armazenamento3;
+					local tamanho = 10 + armazenamento1 + armazenamento2 + armazenamento3;
 					sheet.inventarioTamanho = tamanho;
 					self.rclInventario.minQt = tamanho;
 
-					local objetos = ndb.getChildNodes(sheet.listaDeItens);
+					local objetos = NDB.getChildNodes(sheet.listaDeItens);
 
 					if #objetos > tamanho then
 						local excesso = #objetos - tamanho;
@@ -37,6 +38,16 @@
 					end;
 				</event>
 			</dataLink>
+		</rectangle>
+		
+		<rectangle left="0" top="115" width="1210" height="555" color="black" strokeColor="white" strokeSize="1">
+			<label left="5" top="5" width="200" height="25" horzTextAlign="center" text="Nome"/>
+			<label left="205" top="5" width="700" height="25" horzTextAlign="center" text="Efeito"/>
+			<label left="905" top="5" width="150" height="25" horzTextAlign="center" text="Tipo"/>
+			<label left="1055" top="5" width="50" height="25" horzTextAlign="center" text="Qtd"/>
+			<label left="1105" top="5" width="50" height="25" horzTextAlign="center" text="Max"/>
+
+			<recordList left="5" top="30" width="1200" height="520" name="rclInventario" field="listaDeItens" templateForm="frmItem" layout="vertical" minQt="10"/>
 		</rectangle>
 	</scrollBox>
 </form>

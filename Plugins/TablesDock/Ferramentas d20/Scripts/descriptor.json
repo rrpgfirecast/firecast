@@ -1,0 +1,1236 @@
+[{
+    "rulebook_id": 54,
+    "id": 373,
+    "name": "Grave Strike",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 54,
+    "id": 385,
+    "name": "Tactical Precision",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 54,
+    "id": 387,
+    "name": "Dirge of Discord",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 54,
+    "id": 387,
+    "name": "Dirge of Discord",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 54,
+    "id": 388,
+    "name": "Distract Assailant",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 54,
+    "id": 389,
+    "name": "Focusing Chant",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 54,
+    "id": 390,
+    "name": "Harmonic Chorus",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 54,
+    "id": 391,
+    "name": "Herald's Call",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 54,
+    "id": 391,
+    "name": "Herald's Call",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 54,
+    "id": 392,
+    "name": "Insidious Rhythm",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 54,
+    "id": 393,
+    "name": "Inspirational Boost",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 54,
+    "id": 393,
+    "name": "Inspirational Boost",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 54,
+    "id": 394,
+    "name": "Mindless Rage",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 54,
+    "id": 395,
+    "name": "Train Animal",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 54,
+    "id": 396,
+    "name": "War Cry",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 54,
+    "id": 396,
+    "name": "War Cry",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 54,
+    "id": 397,
+    "name": "Cacophonic Shield",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 54,
+    "id": 398,
+    "name": "Dissonant Chord",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 54,
+    "id": 400,
+    "name": "Hymn of Praise",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 54,
+    "id": 400,
+    "name": "Hymn of Praise",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 54,
+    "id": 401,
+    "name": "Infernal Threnody",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 54,
+    "id": 401,
+    "name": "Infernal Threnody",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 54,
+    "id": 403,
+    "name": "Bladeweave",
+    "descriptor": "Pattern"
+}, {
+    "rulebook_id": 54,
+    "id": 407,
+    "name": "Wail of Doom",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 54,
+    "id": 407,
+    "name": "Wail of Doom",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 54,
+    "id": 407,
+    "name": "Wail of Doom",
+    "descriptor": "Fear"
+}, {
+    "rulebook_id": 54,
+    "id": 416,
+    "name": "Distort Speech",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 54,
+    "id": 431,
+    "name": "Sonic Weapon",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 55,
+    "id": 450,
+    "name": "Arc of Lightning",
+    "descriptor": "Electricity"
+}, {
+    "rulebook_id": 55,
+    "id": 452,
+    "name": "Blades of Fire",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 55,
+    "id": 453,
+    "name": "Blast of Flame",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 55,
+    "id": 455,
+    "name": "Cloud Chariot",
+    "descriptor": "Water"
+}, {
+    "rulebook_id": 55,
+    "id": 457,
+    "name": "Freezing Fog",
+    "descriptor": "Cold"
+}, {
+    "rulebook_id": 55,
+    "id": 458,
+    "name": "Hail of Stone",
+    "descriptor": "Earth"
+}, {
+    "rulebook_id": 55,
+    "id": 459,
+    "name": "Ice Knife",
+    "descriptor": "Cold"
+}, {
+    "rulebook_id": 55,
+    "id": 461,
+    "name": "Mage Armor, Greater",
+    "descriptor": "Force"
+}, {
+    "rulebook_id": 55,
+    "id": 462,
+    "name": "Orb of Acid",
+    "descriptor": "Acid"
+}, {
+    "rulebook_id": 55,
+    "id": 463,
+    "name": "Orb of Acid, Lesser",
+    "descriptor": "Acid"
+}, {
+    "rulebook_id": 55,
+    "id": 464,
+    "name": "Orb of Cold",
+    "descriptor": "Cold"
+}, {
+    "rulebook_id": 55,
+    "id": 465,
+    "name": "Orb of Cold, Lesser",
+    "descriptor": "Cold"
+}, {
+    "rulebook_id": 55,
+    "id": 466,
+    "name": "Orb of Electricity",
+    "descriptor": "Electricity"
+}, {
+    "rulebook_id": 55,
+    "id": 467,
+    "name": "Orb of Electricity, Lesser",
+    "descriptor": "Electricity"
+}, {
+    "rulebook_id": 55,
+    "id": 468,
+    "name": "Orb of Fire",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 55,
+    "id": 469,
+    "name": "Orb of Fire, Lesser",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 55,
+    "id": 470,
+    "name": "Orb of Force",
+    "descriptor": "Force"
+}, {
+    "rulebook_id": 55,
+    "id": 471,
+    "name": "Orb of Sound",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 55,
+    "id": 472,
+    "name": "Orb of Sound, Lesser",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 55,
+    "id": 477,
+    "name": "Spirit Binding",
+    "descriptor": "see text for lesser spirit binding"
+}, {
+    "rulebook_id": 55,
+    "id": 478,
+    "name": "Spirit Binding, Greater",
+    "descriptor": "see text for lesser spirit binding"
+}, {
+    "rulebook_id": 55,
+    "id": 479,
+    "name": "Spirit Binding, Lesser",
+    "descriptor": "see text"
+}, {
+    "rulebook_id": 55,
+    "id": 480,
+    "name": "Summon Elemental Monolith",
+    "descriptor": "see text"
+}, {
+    "rulebook_id": 55,
+    "id": 481,
+    "name": "Vitriolic Sphere",
+    "descriptor": "Acid"
+}, {
+    "rulebook_id": 55,
+    "id": 488,
+    "name": "Programmed Amnesia",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 55,
+    "id": 489,
+    "name": "Secret Signs",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 55,
+    "id": 490,
+    "name": "Transfix",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 55,
+    "id": 491,
+    "name": "Blistering Radiance",
+    "descriptor": "Light"
+}, {
+    "rulebook_id": 55,
+    "id": 491,
+    "name": "Blistering Radiance",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 55,
+    "id": 492,
+    "name": "Creeping Darkness",
+    "descriptor": "Darkness"
+}, {
+    "rulebook_id": 55,
+    "id": 493,
+    "name": "Defenestrating Sphere",
+    "descriptor": "Air"
+}, {
+    "rulebook_id": 55,
+    "id": 494,
+    "name": "Earthbolt",
+    "descriptor": "Earth"
+}, {
+    "rulebook_id": 55,
+    "id": 496,
+    "name": "Emerald Flame Fist",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 55,
+    "id": 497,
+    "name": "Fiery Eyes",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 55,
+    "id": 498,
+    "name": "Fire Breath",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 55,
+    "id": 499,
+    "name": "Fire Shield, Mass",
+    "descriptor": "Fire or Cold"
+}, {
+    "rulebook_id": 55,
+    "id": 500,
+    "name": "Fire Shuriken",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 55,
+    "id": 501,
+    "name": "Fireburst",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 55,
+    "id": 502,
+    "name": "Fireburst, Greater",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 55,
+    "id": 503,
+    "name": "Force Whip",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 55,
+    "id": 503,
+    "name": "Force Whip",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 55,
+    "id": 504,
+    "name": "Ice Blast",
+    "descriptor": "Cold"
+}, {
+    "rulebook_id": 55,
+    "id": 505,
+    "name": "Internal Fire",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 55,
+    "id": 506,
+    "name": "Lightning Blade",
+    "descriptor": "Electricity"
+}, {
+    "rulebook_id": 55,
+    "id": 509,
+    "name": "Resonating Bolt",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 55,
+    "id": 510,
+    "name": "Steam Breath",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 55,
+    "id": 512,
+    "name": "Apparition",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 55,
+    "id": 512,
+    "name": "Apparition",
+    "descriptor": "Fear"
+}, {
+    "rulebook_id": 55,
+    "id": 515,
+    "name": "Phantasmal Assailants",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 55,
+    "id": 515,
+    "name": "Phantasmal Assailants",
+    "descriptor": "Fear"
+}, {
+    "rulebook_id": 55,
+    "id": 518,
+    "name": "Wall of Gloom",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 55,
+    "id": 518,
+    "name": "Wall of Gloom",
+    "descriptor": "Darkness"
+}, {
+    "rulebook_id": 55,
+    "id": 518,
+    "name": "Wall of Gloom",
+    "descriptor": "Fear"
+}, {
+    "rulebook_id": 55,
+    "id": 519,
+    "name": "Arrow of Bone",
+    "descriptor": "Death"
+}, {
+    "rulebook_id": 55,
+    "id": 521,
+    "name": "Blackfire",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 55,
+    "id": 523,
+    "name": "Ghost Light",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 55,
+    "id": 523,
+    "name": "Ghost Light",
+    "descriptor": "Fear"
+}, {
+    "rulebook_id": 55,
+    "id": 529,
+    "name": "Spiritwall",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 55,
+    "id": 529,
+    "name": "Spiritwall",
+    "descriptor": "Fear"
+}, {
+    "rulebook_id": 55,
+    "id": 530,
+    "name": "Sword of Darkness",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 55,
+    "id": 533,
+    "name": "Animate Fire",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 55,
+    "id": 534,
+    "name": "Animate Water",
+    "descriptor": "Water"
+}, {
+    "rulebook_id": 55,
+    "id": 542,
+    "name": "Earthen Grasp",
+    "descriptor": "Earth"
+}, {
+    "rulebook_id": 55,
+    "id": 544,
+    "name": "Fiendform",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 55,
+    "id": 545,
+    "name": "Fire Wings",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 55,
+    "id": 546,
+    "name": "Fist of Stone",
+    "descriptor": "Earth"
+}, {
+    "rulebook_id": 55,
+    "id": 547,
+    "name": "Flensing",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 55,
+    "id": 567,
+    "name": "Stony Grasp",
+    "descriptor": "Earth"
+}, {
+    "rulebook_id": 55,
+    "id": 569,
+    "name": "Swim",
+    "descriptor": "Water"
+}, {
+    "rulebook_id": 55,
+    "id": 570,
+    "name": "Terra Cotta Lion",
+    "descriptor": "Earth"
+}, {
+    "rulebook_id": 55,
+    "id": 573,
+    "name": "Transmute Rock to Lava",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 55,
+    "id": 573,
+    "name": "Transmute Rock to Lava",
+    "descriptor": "Earth"
+}, {
+    "rulebook_id": 56,
+    "id": 633,
+    "name": "Blessing of Bahamut",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 56,
+    "id": 637,
+    "name": "Sacred Haven",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 56,
+    "id": 646,
+    "name": "Golden Barding",
+    "descriptor": "Force"
+}, {
+    "rulebook_id": 56,
+    "id": 648,
+    "name": "Obedient Avalanche",
+    "descriptor": "Cold"
+}, {
+    "rulebook_id": 56,
+    "id": 673,
+    "name": "Brain Spider",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 56,
+    "id": 680,
+    "name": "Probe Thoughts",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 56,
+    "id": 681,
+    "name": "Telepathic Bond, Lesser",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 56,
+    "id": 683,
+    "name": "Bolts of Bedevilment",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 56,
+    "id": 684,
+    "name": "Maddening Scream",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 56,
+    "id": 685,
+    "name": "Monstrous Thrall",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 56,
+    "id": 686,
+    "name": "Righteous Wrath of the Faithful",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 56,
+    "id": 687,
+    "name": "Touch of Madness",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 56,
+    "id": 688,
+    "name": "True Domination",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 56,
+    "id": 689,
+    "name": "Wave of Grief",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 56,
+    "id": 689,
+    "name": "Wave of Grief",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 56,
+    "id": 690,
+    "name": "Anger of the Noonday Sun",
+    "descriptor": "Light"
+}, {
+    "rulebook_id": 56,
+    "id": 693,
+    "name": "Blast of Force",
+    "descriptor": "Force"
+}, {
+    "rulebook_id": 56,
+    "id": 694,
+    "name": "Bolt of Glory",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 56,
+    "id": 695,
+    "name": "Castigate",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 56,
+    "id": 696,
+    "name": "Cloudburst",
+    "descriptor": "Water"
+}, {
+    "rulebook_id": 56,
+    "id": 699,
+    "name": "Dragon Breath",
+    "descriptor": "Good or Evil"
+}, {
+    "rulebook_id": 56,
+    "id": 700,
+    "name": "Energy Vortex",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 56,
+    "id": 700,
+    "name": "Energy Vortex",
+    "descriptor": "Electricity"
+}, {
+    "rulebook_id": 56,
+    "id": 700,
+    "name": "Energy Vortex",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 56,
+    "id": 700,
+    "name": "Energy Vortex",
+    "descriptor": "Acid"
+}, {
+    "rulebook_id": 56,
+    "id": 700,
+    "name": "Energy Vortex",
+    "descriptor": "Cold"
+}, {
+    "rulebook_id": 56,
+    "id": 702,
+    "name": "Fires of Purity",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 56,
+    "id": 708,
+    "name": "Nimbus of Light",
+    "descriptor": "Light"
+}, {
+    "rulebook_id": 56,
+    "id": 711,
+    "name": "Tidal Surge",
+    "descriptor": "Water"
+}, {
+    "rulebook_id": 56,
+    "id": 712,
+    "name": "Whirlwind, Greater",
+    "descriptor": "Air"
+}, {
+    "rulebook_id": 56,
+    "id": 715,
+    "name": "Phantasmal Decoy",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 56,
+    "id": 716,
+    "name": "Phantasmal Disorientation",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 56,
+    "id": 720,
+    "name": "Death Pact",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 56,
+    "id": 726,
+    "name": "Wrack",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 56,
+    "id": 731,
+    "name": "Body of the Sun",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 56,
+    "id": 738,
+    "name": "Creeping Cold",
+    "descriptor": "Cold"
+}, {
+    "rulebook_id": 56,
+    "id": 739,
+    "name": "Creeping Cold, Greater",
+    "descriptor": "Cold"
+}, {
+    "rulebook_id": 56,
+    "id": 743,
+    "name": "Fire Wings",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 56,
+    "id": 751,
+    "name": "Stormrage",
+    "descriptor": "Electricity"
+}, {
+    "rulebook_id": 56,
+    "id": 756,
+    "name": "Visage of the Deity",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 56,
+    "id": 756,
+    "name": "Visage of the Deity",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 56,
+    "id": 757,
+    "name": "Visage of the Deity, Greater",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 56,
+    "id": 757,
+    "name": "Visage of the Deity, Greater",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 56,
+    "id": 758,
+    "name": "Visage of the Deity, Lesser",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 56,
+    "id": 758,
+    "name": "Visage of the Deity, Lesser",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 57,
+    "id": 587,
+    "name": "Light of Courage",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 57,
+    "id": 588,
+    "name": "Light of Faith",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 57,
+    "id": 589,
+    "name": "Light of Purity",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 57,
+    "id": 590,
+    "name": "Light of Wisdom",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 57,
+    "id": 599,
+    "name": "Rejuvenating Light",
+    "descriptor": "Light"
+}, {
+    "rulebook_id": 57,
+    "id": 606,
+    "name": "Bewildering Mischance",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 57,
+    "id": 607,
+    "name": "Confound",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 57,
+    "id": 608,
+    "name": "Impede",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 57,
+    "id": 609,
+    "name": "Interfaith Blessing",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 57,
+    "id": 610,
+    "name": "Mark of Sin",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 57,
+    "id": 611,
+    "name": "Turn Anathema",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 57,
+    "id": 611,
+    "name": "Turn Anathema",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 57,
+    "id": 611,
+    "name": "Turn Anathema",
+    "descriptor": "Mind Affecting and Chaotic"
+}, {
+    "rulebook_id": 57,
+    "id": 611,
+    "name": "Turn Anathema",
+    "descriptor": "Lawful"
+}, {
+    "rulebook_id": 57,
+    "id": 612,
+    "name": "Spiritual Guardian",
+    "descriptor": "Force"
+}, {
+    "rulebook_id": 57,
+    "id": 613,
+    "name": "Weight of Sin",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 57,
+    "id": 613,
+    "name": "Weight of Sin",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 57,
+    "id": 613,
+    "name": "Weight of Sin",
+    "descriptor": "Lawful"
+}, {
+    "rulebook_id": 57,
+    "id": 613,
+    "name": "Weight of Sin",
+    "descriptor": "Chaotic"
+}, {
+    "rulebook_id": 57,
+    "id": 614,
+    "name": "Bewildering Substitution",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 57,
+    "id": 615,
+    "name": "Bewildering Visions",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 57,
+    "id": 618,
+    "name": "Ravenous Darkness",
+    "descriptor": "Darkness"
+}, {
+    "rulebook_id": 57,
+    "id": 623,
+    "name": "Forest Voice",
+    "descriptor": "Language-Dependent"
+}, {
+    "rulebook_id": 57,
+    "id": 624,
+    "name": "Iconic Manifestation",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 57,
+    "id": 624,
+    "name": "Iconic Manifestation",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 57,
+    "id": 624,
+    "name": "Iconic Manifestation",
+    "descriptor": "Lawful"
+}, {
+    "rulebook_id": 57,
+    "id": 624,
+    "name": "Iconic Manifestation",
+    "descriptor": "Chaotic"
+}, {
+    "rulebook_id": 57,
+    "id": 627,
+    "name": "Profane Item",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 57,
+    "id": 628,
+    "name": "Sacred Item",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 58,
+    "id": 771,
+    "name": "Repelling Shield",
+    "descriptor": "Force"
+}, {
+    "rulebook_id": 58,
+    "id": 777,
+    "name": "Deadly Lahar",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 58,
+    "id": 777,
+    "name": "Deadly Lahar",
+    "descriptor": "Earth"
+}, {
+    "rulebook_id": 58,
+    "id": 781,
+    "name": "Fire and Brimstone",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 58,
+    "id": 782,
+    "name": "Genius Loci",
+    "descriptor": "see text"
+}, {
+    "rulebook_id": 58,
+    "id": 783,
+    "name": "Great Worm of the Earth",
+    "descriptor": "Earth"
+}, {
+    "rulebook_id": 58,
+    "id": 786,
+    "name": "Rain of Spines",
+    "descriptor": "Earth"
+}, {
+    "rulebook_id": 58,
+    "id": 793,
+    "name": "Towering Thunderhead",
+    "descriptor": "Air"
+}, {
+    "rulebook_id": 58,
+    "id": 808,
+    "name": "Bothersome Babble",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 58,
+    "id": 809,
+    "name": "Caterwaul",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 58,
+    "id": 809,
+    "name": "Caterwaul",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 58,
+    "id": 810,
+    "name": "Endless Slumber",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 58,
+    "id": 812,
+    "name": "Melf's Slumber Arrows",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 58,
+    "id": 813,
+    "name": "Otto's Imperative Ambulation",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 58,
+    "id": 814,
+    "name": "Torrent of Tears",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 58,
+    "id": 815,
+    "name": "Vecna Malevolent Whisper",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 58,
+    "id": 815,
+    "name": "Vecna Malevolent Whisper",
+    "descriptor": "Death"
+}, {
+    "rulebook_id": 58,
+    "id": 816,
+    "name": "Battlecry",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 58,
+    "id": 816,
+    "name": "Battlecry",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 58,
+    "id": 817,
+    "name": "Bigby's Slapping Hand",
+    "descriptor": "Force"
+}, {
+    "rulebook_id": 58,
+    "id": 818,
+    "name": "Channeled Sound Blast",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 58,
+    "id": 819,
+    "name": "Coat of Arms",
+    "descriptor": "Force"
+}, {
+    "rulebook_id": 58,
+    "id": 820,
+    "name": "Dawn Burst",
+    "descriptor": "Light"
+}, {
+    "rulebook_id": 58,
+    "id": 821,
+    "name": "Deadly Sunstroke",
+    "descriptor": "Light"
+}, {
+    "rulebook_id": 58,
+    "id": 822,
+    "name": "Deafening Blast",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 58,
+    "id": 823,
+    "name": "Ghost Lantern",
+    "descriptor": "Light"
+}, {
+    "rulebook_id": 58,
+    "id": 824,
+    "name": "Incendiary Surge",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 58,
+    "id": 825,
+    "name": "Jet of Steam",
+    "descriptor": "Water"
+}, {
+    "rulebook_id": 58,
+    "id": 826,
+    "name": "Lash of Force",
+    "descriptor": "Force"
+}, {
+    "rulebook_id": 58,
+    "id": 827,
+    "name": "Lingering Flames",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 58,
+    "id": 828,
+    "name": "Luminous Swarm",
+    "descriptor": "Force"
+}, {
+    "rulebook_id": 58,
+    "id": 829,
+    "name": "Painful Echoes",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 58,
+    "id": 832,
+    "name": "Resonating Agony",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 58,
+    "id": 833,
+    "name": "Resounding Thunder",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 58,
+    "id": 834,
+    "name": "Storm of Fire and Ice",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 58,
+    "id": 834,
+    "name": "Storm of Fire and Ice",
+    "descriptor": "Cold"
+}, {
+    "rulebook_id": 58,
+    "id": 838,
+    "name": "Fever Dream",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 58,
+    "id": 839,
+    "name": "Hood of the Cobra",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 58,
+    "id": 839,
+    "name": "Hood of the Cobra",
+    "descriptor": "Fear"
+}, {
+    "rulebook_id": 58,
+    "id": 840,
+    "name": "Interminable Echo",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 58,
+    "id": 840,
+    "name": "Interminable Echo",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 58,
+    "id": 844,
+    "name": "Pall of Twilight",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 58,
+    "id": 844,
+    "name": "Pall of Twilight",
+    "descriptor": "Darkness"
+}, {
+    "rulebook_id": 58,
+    "id": 845,
+    "name": "Phantasmal Strangler",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 58,
+    "id": 845,
+    "name": "Phantasmal Strangler",
+    "descriptor": "Fear"
+}, {
+    "rulebook_id": 58,
+    "id": 846,
+    "name": "Retributive Image",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 58,
+    "id": 851,
+    "name": "Cryptwarden's Grasp",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 58,
+    "id": 852,
+    "name": "Death's Call",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 58,
+    "id": 856,
+    "name": "Necrotic Curse",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 58,
+    "id": 858,
+    "name": "Reaving Aura",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 58,
+    "id": 863,
+    "name": "Touch of Vecna",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 58,
+    "id": 863,
+    "name": "Touch of Vecna",
+    "descriptor": "Fear"
+}, {
+    "rulebook_id": 58,
+    "id": 869,
+    "name": "Boiling Blood",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 58,
+    "id": 871,
+    "name": "Crystalline Memories",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 58,
+    "id": 872,
+    "name": "Discordant Malediction",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 58,
+    "id": 874,
+    "name": "Flaying Tendrils",
+    "descriptor": "Evil"
+}, {
+    "rulebook_id": 58,
+    "id": 876,
+    "name": "Heart of Air",
+    "descriptor": "Air"
+}, {
+    "rulebook_id": 58,
+    "id": 877,
+    "name": "Heart of Earth",
+    "descriptor": "Earth"
+}, {
+    "rulebook_id": 58,
+    "id": 878,
+    "name": "Heart of Fire",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 58,
+    "id": 879,
+    "name": "Heart of Water",
+    "descriptor": "Water"
+}, {
+    "rulebook_id": 58,
+    "id": 880,
+    "name": "Lightning Leap",
+    "descriptor": "Electricity"
+}, {
+    "rulebook_id": 58,
+    "id": 886,
+    "name": "Unicorn Blood",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 58,
+    "id": 887,
+    "name": "Unicorn Heart",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 58,
+    "id": 888,
+    "name": "Unicorn Horn",
+    "descriptor": "Good"
+}, {
+    "rulebook_id": 60,
+    "id": 905,
+    "name": "Assassin's Darkness",
+    "descriptor": "Darkness"
+}, {
+    "rulebook_id": 60,
+    "id": 906,
+    "name": "Fatal Flame",
+    "descriptor": "Fire"
+}, {
+    "rulebook_id": 60,
+    "id": 907,
+    "name": "Manifestation of the Deity",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 60,
+    "id": 907,
+    "name": "Manifestation of the Deity",
+    "descriptor": "Fear"
+}, {
+    "rulebook_id": 60,
+    "id": 917,
+    "name": "Smoke Stairs",
+    "descriptor": "Air"
+}, {
+    "rulebook_id": 61,
+    "id": 921,
+    "name": "Cloak of Bravery",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 61,
+    "id": 922,
+    "name": "Cloak of Bravery, Greater",
+    "descriptor": "Mind-Affecting"
+}, {
+    "rulebook_id": 61,
+    "id": 923,
+    "name": "Lion's Roar",
+    "descriptor": "Sonic"
+}, {
+    "rulebook_id": 61,
+    "id": 925,
+    "name": "Phantom Threat",
+    "descriptor": "Mind-Affecting"
+}]
