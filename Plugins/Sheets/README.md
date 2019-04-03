@@ -63,7 +63,8 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 - [Mighty Blade V6](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/MightyBladeV6/output/MightyBladeV6.rpk?raw=true): DanielMartinsLF
 - [Mutante e Malfeitores 3e](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Mutantes%20e%20Malfeitores%203e/output/MM3.rpk?raw=true): Janus71 e Gilgante
 	- Ficha para o sistema Mutantes e Malfeitores. 
-- [Os Mundos dos Mortos ](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Os%20Mundos%20dos%20Mortos/output/Os%20Mundos%20dos%20Mortos.rpk?raw=true): Mestre_Stark
+- [Os Mundos dos Mortos](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Os%20Mundos%20dos%20Mortos/output/Os%20Mundos%20dos%20Mortos.rpk?raw=true): Mestre_Stark
+- [Old Dragon](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Old%20Dragon/output/Old%20Dragon.rpk?raw=true): Matheus Furtado
 - [Pokemon D20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Pokemon%20D20/output/Ficha%20PKMN.rpk?raw=true): Ambesek
 	- Ficha incompleta para uma adaptação de Pokémon d20.
 - [Reinos de Ferro](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Reinos%20de%20Ferro/output/Ficha%20RdF.rpk?raw=true): Ambesek

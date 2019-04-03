@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmficha_od1_svg" align="client" theme="light" margins="{top=1}">
+	<style>
+		edit {
+			fontColor: black;
+		}
+		label {
+			fontColor: black;
+		}
+	</style>
+    <scrollBox align="client">
+        <rectangle width="629" height="893" color="white">
+            <image left="0" top="0" width="629" height="893" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>
+            
+			
+			<layout left="61" top="62" width="322" height="41">
+                <edit transparent="true" fontSize="30" left="0" top="0" width="322" height="42" field="nome_personagem" />
+            </layout>
+			<layout left="54" top="112" width="226" height="29" >
+                <edit transparent="true" fontSize="14.2" left="0" top="0" width="226" height="30" field="classe" />
+            </layout>
+            <layout left="292" top="110" width="43" height="32" >
+                <edit transparent="true" fontSize="14.2" left="0" top="0" width="43" height="33" field="nivel" />
+            </layout>
+            <layout left="348" top="112" width="94" height="29" >
+                <edit transparent="true" fontSize="14.2" left="0" top="0" width="94" height="30" field="raca" />
+            </layout>
+            <layout left="454" top="112" width="121" height="29" >
+                <edit transparent="true" fontSize="14.2" left="0" top="0" width="121" height="30" field="alinhamento" />
+            </layout>
+			
+			
+			<layout left="135" top="199" width="47" height="43" >
+                <edit transparent="true" fontSize="30" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="44" field="forca" />
+            </layout>
+			<layout left="196" top="195" width="44" height="42" >
+                <label horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="42" fontSize="21" field="mod_forca" />
+            </layout>
+			
+			<layout left="135" top="254" width="47" height="43" >
+                <edit transparent="true" fontSize="30" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="44" field="destreza" />
+            </layout>
+            <layout left="196" top="251" width="44" height="42" >
+                <label left="0" top="0" width="44" height="42" fontSize="21" horzTextAlign="center" vertTextAlign="center" field="mod_destreza" />
+            </layout>
+			
+			<layout left="135" top="311" width="47" height="43" >
+                <edit transparent="true" fontSize="30" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="44" field="constituicao" />
+            </layout>
+            <layout left="196" top="308" width="44" height="43" >
+                <label left="0" top="0" width="44" height="43" fontSize="21" horzTextAlign="center" vertTextAlign="center" field="mod_constituicao" />
+            </layout>
+			
+			<layout left="135" top="367" width="47" height="43" >
+                <edit transparent="true" fontSize="30" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="44" field="inteligencia" />
+            </layout>
+            <layout left="196" top="364" width="44" height="43" >
+                <edit transparent="true" left="0" top="0" width="44" height="43" fontSize="21" horzTextAlign="center" vertTextAlign="center" field="idiomas" />
+            </layout>
+            <layout left="246" top="364" width="44" height="43" >
+                <edit transparent="true" left="0" top="0" width="44" height="43" fontSize="21" horzTextAlign="center" vertTextAlign="center" field="aprender_magia" />
+            </layout>
+			
+			<layout left="135" top="423" width="47" height="43" >
+                <edit transparent="true" fontSize="30" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="44" field="sabedoria" />
+            </layout>
+            <layout left="196" top="420" width="44" height="43" >
+                <label left="0" top="0" width="44" height="43" fontSize="21" horzTextAlign="center" vertTextAlign="center" field="mod_sabedoria" />
+            </layout>
+			<layout left="135" top="479" width="47" height="43" >
+                <edit transparent="true" fontSize="30" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="47" height="44" field="carisma" />
+            </layout>
+			<layout left="197" top="476" width="43" height="41" >
+                <edit transparent="true" fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="43" height="42" field="seguidores" />
+            </layout>
+            <layout left="247" top="476" width="43" height="41" >
+                <edit transparent="true" fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="43" height="42" field="ajuste_reacao" />
+            </layout>
+			
+			
+			<layout left="374" top="201" width="55" height="41" >
+                <edit transparent="true" fontSize="30" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="42" field="pv_total" />
+            </layout>
+            <layout left="444" top="196" width="39" height="40" >
+                <edit transparent="true" fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="41" field="dv" />
+            </layout>
+            <layout left="491" top="196" width="39" height="40" >
+                <label fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="41" field="pv_bonus_con" />
+            </layout>
+            <layout left="537" top="196" width="40" height="41" >
+                <edit transparent="true" fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="40" height="42" field="porcentagem_ressureicao" />
+            </layout>
+			<layout left="369" top="253" width="208" height="32" >
+                <edit transparent="true" fontSize="20" left="0" top="0" width="208" height="33" field="pv_atual" />
+            </layout>
+            
+            
+            <layout left="376" top="303" width="55" height="41" >
+                <label fontSize="30" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="55" height="42" field="ca_total" />
+            </layout>
+			<layout left="444" top="299" width="39" height="36" >
+                <edit transparent="true" fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="37" field="ca_armadura" />
+            </layout>
+            <layout left="491" top="299" width="39" height="36" >
+                <edit transparent="true" fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="37" field="ca_escudo" />
+            </layout>
+            <layout left="537" top="299" width="39" height="36" >
+                <edit transparent="true" fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="37" field="ca_racial" />
+            </layout>
+            <layout left="444" top="350" width="39" height="36" >
+                <edit transparent="true" fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="37" field="ca_outro1" />
+            </layout>
+            <layout left="491" top="350" width="39" height="36" >
+                <edit transparent="true" fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="37" field="ca_outro2" />
+            </layout>
+            <layout left="537" top="350" width="39" height="36" >
+                <edit transparent="true" fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="37" field="ca_outro3" />
+            </layout>
+            
+			
+            <layout left="372" top="413" width="48" height="41" >
+                <edit transparent="true" fontSize="30" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="48" height="42" field="jp" />
+            </layout>
+			<layout left="435" top="408" width="42" height="42" >
+                <edit transparent="true" fontSize="24" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="42" height="43" field="jp_mod_destreza" />
+            </layout>
+            <layout left="485" top="408" width="42" height="42" >
+                <edit transparent="true" fontSize="24" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="42" height="43" field="jp_mod_constituicao" />
+            </layout>
+            <layout left="535" top="408" width="42" height="42" >
+                <edit transparent="true" fontSize="24" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="42" height="43" field="jp_mod_sabedoria" />
+            </layout>
+            
+            
+            <layout left="316" top="476" width="113" height="39" >
+                <label fontSize="30" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="113" height="40" field="movimento_total" />
+            </layout>
+			<layout left="441" top="475" width="41" height="40" >
+                <edit transparent="true" fontSize="24" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="41" height="41" field="movimento_raça" />
+            </layout>
+            <layout left="490" top="475" width="40" height="40" >
+                <edit transparent="true" fontSize="24" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="40" height="41" field="movimento_carga" />
+            </layout>
+            <layout left="536" top="475" width="41" height="41" >
+                <edit transparent="true" fontSize="24" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="41" height="42" field="movimento_armadura" />
+            </layout>
+			
+            
+            <layout left="110" top="583" width="44" height="34" >
+                <label fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="35" field="ba_cac_total" />
+            </layout>
+			<layout left="163" top="583" width="30" height="35" >
+                <edit transparent="true" fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="36" field="ba_cac_classe" />
+            </layout>
+			<layout left="201" top="583" width="30" height="36" >
+                <label fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="37" field="ba_cac_mod_forca" />
+            </layout>
+			<layout left="238" top="583" width="30" height="36" >
+                <edit transparent="true" fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="37" field="ba_cac_item" />
+            </layout>
+            <layout left="275" top="583" width="30" height="36" >
+                <edit transparent="true" fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="37" field="ba_cac_misc" />
+            </layout>
+			
+			
+			<layout left="381" top="582" width="44" height="38" >
+                <label fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="44" height="39" field="ba_distancia_total" />
+            </layout>
+			<layout left="435" top="583" width="30" height="35" >
+                <edit transparent="true" fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="36" field="ba_distancia_classe" />
+            </layout>
+            <layout left="472" top="583" width="30" height="36" >
+                <label fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="37" field="ba_distancia_mod_destreza" />
+            </layout>
+			<layout left="510" top="583" width="30" height="36" >
+                <edit transparent="true" fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="37" field="ba_distancia_item" />
+            </layout>
+            <layout left="547" top="583" width="30" height="36" >
+                <edit transparent="true" fontSize="21" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="30" height="37" field="ba_distancia_misc" />
+            </layout>
+			
+            
+            <layout left="52" top="651" width="141" height="26" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="141" height="27" field="arma1" />
+            </layout>
+			<layout left="201" top="651" width="52" height="26" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="52" height="27" field="ataque1" />
+            </layout>
+			<layout left="261" top="650" width="52" height="26" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="52" height="27" field="dano1" />
+            </layout>
+            <layout left="320" top="650" width="39" height="26" >
+                <edit transparent="true" fontSize="10" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="27" field="tipo1" />
+            </layout>
+            <layout left="367" top="650" width="39" height="26" >
+                <edit transparent="true" fontSize="10" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="27" field="critico1" />
+            </layout>
+            <layout left="416" top="650" width="71" height="26" >
+                <edit transparent="true" fontSize="10" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="27" field="especial1" />
+            </layout>
+            <layout left="494" top="650" width="84" height="26" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="84" height="27" field="alcance1" />
+            </layout>
+            
+            
+			
+            <layout left="52" top="678" width="141" height="26" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="141" height="27" field="arma2" />
+            </layout>
+            <layout left="201" top="678" width="52" height="26" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="52" height="27" field="ataque2" />
+            </layout>
+            <layout left="261" top="678" width="53" height="26" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="27" field="dano2" />
+            </layout>
+            <layout left="320" top="678" width="39" height="26" >
+                <edit transparent="true" fontSize="10" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="27" field="tipo2" />
+            </layout>
+            <layout left="367" top="678" width="39" height="26" >
+                <edit transparent="true" fontSize="10" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="27" field="critico2" />
+            </layout>
+            <layout left="416" top="678" width="71" height="26" >
+                <edit transparent="true" fontSize="10" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="27" field="especial2" />
+            </layout>
+            <layout left="494" top="678" width="84" height="26" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="84" height="27" field="alcance2" />
+            </layout>
+			
+			
+            <layout left="52" top="705" width="141" height="26" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="141" height="27" field="arma3" />
+            </layout>
+            <layout left="201" top="705" width="52" height="26" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="52" height="27" field="ataque3" />
+            </layout>
+            <layout left="261" top="705" width="53" height="26" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="27" field="dano3" />
+            </layout>
+            <layout left="320" top="705" width="39" height="26" >
+                <edit transparent="true" fontSize="10" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="27" field="tipo3" />
+            </layout>
+            <layout left="367" top="705" width="39" height="26" >
+                <edit transparent="true" fontSize="10" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="27" field="critico3" />
+            </layout>
+            <layout left="416" top="705" width="71" height="26" >
+                <edit transparent="true" fontSize="10" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="27" field="especial3" />
+            </layout>
+            <layout left="494" top="705" width="84" height="26" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="84" height="27" field="alcance3" />
+            </layout>
+			
+			
+			<layout left="52" top="733" width="141" height="26" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="141" height="27" field="arma4" />
+            </layout>
+            <layout left="201" top="733" width="52" height="26" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="52" height="27" field="ataque4" />
+            </layout>
+            <layout left="261" top="732" width="53" height="26" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="53" height="27" field="dano4" />
+            </layout>
+            <layout left="320" top="732" width="39" height="26" >
+                <edit transparent="true" fontSize="10" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="27" field="tipo4" />
+            </layout>
+            <layout left="367" top="732" width="39" height="26" >
+                <edit transparent="true" fontSize="10" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="39" height="27" field="critico4" />
+            </layout>
+            <layout left="416" top="732" width="71" height="26" >
+                <edit transparent="true" fontSize="10" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="71" height="27" field="especial4" />
+            </layout>
+            <layout left="494" top="732" width="84" height="26" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="84" height="27" field="alcance4" />
+            </layout>
+            
+			
+            <layout left="53" top="799" width="238" height="23" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="238" height="24" field="idiomas1" />
+            </layout>
+            <layout left="53" top="822" width="238" height="23" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="238" height="24" field="idiomas2" />
+            </layout>
+			
+			
+			<layout left="372" top="799" width="206" height="23" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="206" height="24" field="xp_atual" />
+            </layout>
+            <layout left="383" top="822" width="194" height="23" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="194" height="24" field="xp_proximo_nivel" />
+            </layout>
+        </rectangle>
+    </scrollBox>
+	
+	<import file="calculos_frente.xml" />
+	
+</form>

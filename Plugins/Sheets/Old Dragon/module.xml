@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.5">
+    <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
+    <id>ficha.nova.olddragon</id>
+    <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
+    <version>1.0</version>
+    <name>Old Dragon</name>
+    <description>Ficha Old Dragon</description>
+    <author>Matheus Furtado</author>
+    <site>https://matheusfurtado94.wordpress.com/</site>
+    <contact>matheus.furtado94@outlook.com</contact>
+</module>

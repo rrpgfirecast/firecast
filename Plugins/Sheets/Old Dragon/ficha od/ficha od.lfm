@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmficha_od" formType="sheetTemplate" dataType="FichaOldDragon" title="Ficha Old Dragon" align="client" theme="light">
+    <tabControl align="client">
+        <tab title="Frente">
+            <import file="frente.lfm"/>
+        </tab>
+        <tab title="Verso">
+            <import file="verso.lfm"/>
+        </tab>
+		<tab title="Anotações">
+			<import file="anotacoes.lfm" />
+		</tab>
+		<tab title="Grimório">
+			<import file="grimorio.lfm" />
+		</tab>
+    </tabControl>
+</form>

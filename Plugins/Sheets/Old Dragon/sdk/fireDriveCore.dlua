@@ -1,0 +1,261 @@
+﻿require("rrpg.lua");
+local plugins = require("plugins.lua");
+local fdmodule = "RRPG.FIRECAST.FMXModule";
+
+plugins.requirePlugin(fdmodule);
+
+local fireDrive = {};
+
+local _uploads = {};
+local _uploadsIdGenerator = 0;
+
+local function unsetupUpload(uploadId)
+	local upload =_uploads[uploadId];
+	
+	if upload ~= nil then
+		plugins.unlistenPM(upload.pmListenerId);
+		upload.pmListenerId = nil;
+		_uploads[uploadId] = nil;
+	end;
+end;
+
+local function fdManageItem(destName, metadata, onSuccess, onProgress, onFailure)
+	_uploadsIdGenerator = _uploadsIdGenerator + 1;
+	local esteId = _uploadsIdGenerator;
+	local esteUpload = {};	
+	local msg = {};
+			
+	_uploads[esteId] = esteUpload;	
+	esteUpload.destName = destName;
+	esteUpload.metadata = metadata;
+	esteUpload.onSuccess = onSuccess;
+	esteUpload.onProgress = onProgress;
+	esteUpload.onFailure = onFailure;
+	esteUpload.pmListener = "L" .. _rrpg_generateUniqueStrID();
+	esteUpload.pmListenerId = plugins.listenPM(esteUpload.pmListener,
+		function (receivedMsg)
+			plugins.replyPM(receivedMsg, nil);
+		
+			if receivedMsg.kind == "progress" then
+				if onProgress ~= nil then
+					onProgress(receivedMsg.currentBytes, receivedMsg.maxBytes);
+				end;
+			elseif receivedMsg.kind == "error" then				
+				unsetupUpload(esteId);		
+
+				if onFailure ~= nil then
+					onFailure(receivedMsg.errorMsg);
+				end;
+			elseif receivedMsg.kind == "end" then
+				unsetupUpload(esteId);								
+				
+				if onSuccess ~= nil then
+					onSuccess(receivedMsg.successData);
+				end;
+			elseif receivedMsg.kind == "uploadId" then
+				esteUpload.remoteUploadId = receivedMsg.uploadId;
+			end;
+		end);
+	
+	msg.destName = destName;
+	msg.metadata = metadata;
+	msg.uploadId = esteId;	
+	msg.pmListener = esteUpload.pmListener;
+		
+	plugins.sendPM(fdmodule, "fireDrive:manageItem", msg, 
+		function (_)
+
+		end,
+		
+		function (r)
+			if onFailure ~= nil then
+				unsetupUpload(esteId);
+				onFailure(r);
+			end;
+		end);	
+	
+	return esteId;
+end;
+
+local function tryGetMimeFromFileName(fileName)
+	local ext = string.match(fileName, "%.[^%.\\/]+$");
+		
+	if ext ~= nil then
+		local r, mime = _util_tryGetMimeFromExtension(ext);
+		
+		if r then
+			return mime;
+		else
+			return 'application/octet-stream';
+		end;
+	else
+		return 'application/octet-stream';
+	end;
+end;
+
+local function fdExecuteUpload(params)
+	if type(params) ~= "table" then
+		error("fdExecuteUpload - params was not informed");
+	end;
+
+	if type(params.stream) ~= "table" then
+		error("fireDrive upload - stream was not informed");
+	end;
+	
+	local metadata = {};
+	params.stream.position = 0;
+	
+	if params.stream.size > 15 * 1024 * 1024 then
+		if params.onFailure then
+			params.onFailure("FILE TOO BIG");
+		end;
+	
+		return nil;
+	end;
+		
+	metadata.headers = {};
+		
+	if params.isQuickUpload then
+		params.destName = params.suggestedFileName;	
+		metadata.headers.operation = "quickUpload";
+	else	
+		metadata.headers.operation = "create";
+		metadata.headers.kind = "file";	
+	end;	
+	
+	metadata.blobs = {};
+	metadata.blobs[1] = {name="content", streamSharedId = params.stream:share(), mimeType = params.mimeType or tryGetMimeFromFileName(params.destName)};		
+	
+	if params.isQuickUpload and not _util_isValidMimeType(metadata.blobs[1].mimeType) then
+		error("INVALID MIME TYPE: " .. tostring(metadata.blobs[1].mimeType));
+	end;
+	
+	local ret = fdManageItem(params.destName, metadata, params.onSuccess, params.onProgress, params.onFailure);
+	metadata.blobs[1].data = nil;
+	return ret;
+end;
+
+function fireDrive.uploadFile(destName, stream, onSuccess, onProgress, onFailure, mimeType)
+	local params = {};
+	params.destName = destName;
+	params.stream = stream;
+	params.onSuccess = onSuccess;
+	params.onProgress = onProgress;
+	params.onFailure = onFailure;
+	params.mimeType = mimeType;
+
+	return fdExecuteUpload(params);
+end;
+
+function fireDrive.upload(...)
+	return fireDrive.uploadFile(...);
+end;
+
+function fireDrive.quickUpload(suggestedFileName, mimeType, stream, onSuccess, onProgress, onFailure)
+	local params = {};
+	params.stream = stream;
+	params.onSuccess = onSuccess;
+	params.onProgress = onProgress;
+	params.onFailure = onFailure;
+	params.mimeType = mimeType;
+	params.isQuickUpload = true;
+	params.suggestedFileName = suggestedFileName;
+	
+	return fdExecuteUpload(params);
+end;
+
+function fireDrive.abortOperation(operationId)
+	local upload = _uploads[operationId];
+
+	if upload ~= nil then
+		plugins.sendPM(fdmodule, "fireDrive:abortOperation", {uploadId = upload.remoteUploadId});
+	end;
+	
+	unsetupUpload(operationId);
+end;
+
+function fireDrive.createDirectory(directoryName, onSuccess, onFailure)
+	local metadata = {};	
+	metadata.headers = {};
+	metadata.headers.operation = "create";
+	metadata.headers.kind = "directory";	
+	
+	return fdManageItem(directoryName, metadata, onSuccess, nil, onFailure);
+end;
+
+function fireDrive.delete(destName, onSuccess, onFailure)
+	local metadata = {};	
+	metadata.headers = {};
+	metadata.headers.operation = "delete";		
+	return fdManageItem(destName, metadata, onSuccess, nil, onFailure);
+end;
+
+function fireDrive.rename(existingFileName, newFileName, onSuccess, onFailure)
+	local metadata = {};	
+	metadata.headers = {};
+	metadata.headers.operation = "rename";		
+	metadata.headers.newFileName = newFileName;
+	return fdManageItem(existingFileName, metadata, onSuccess, nil, onFailure);
+end;
+
+function fireDrive.getFiles(directory, callback, failureCallback)
+	plugins.sendPM(fdmodule, "fireDrive:enumerateFiles", {dir=directory},
+		function(r)
+			if callback ~= nil then
+				callback(r);
+			end;
+		end,
+		
+		function(r)
+			if failureCallback ~= nil then
+				failureCallback(r);
+			end;
+		end);
+end;
+
+function fireDrive.refresh(refreshCallback, failureCallback)
+	plugins.sendPM(fdmodule, "fireDrive:refresh", nil, 
+		function (r)
+			if refreshCallback ~= nil then
+				refreshCallback(r);
+			end;
+		end,
+		
+		function (r)
+			if failureCallback ~= nil then
+				failureCallback(r);
+			end;
+		end);
+end;
+
+function fireDrive.getFileInfo(fileName, callback, failureCallback)
+	plugins.sendPM(fdmodule, "fireDrive:getFileInfo", {fileName=fileName}, 
+		function (r)
+			if callback ~= nil then
+				callback(r);
+			end;
+		end,
+		
+		function (r)
+			if failureCallback ~= nil then
+				failureCallback(r);
+			end;
+		end);
+end;
+
+function fireDrive.getSpaceInfo(callback, failureCallback)
+	plugins.sendPM(fdmodule, "fireDrive:getSpaceInfo", nil, 
+		function (r)
+			if callback ~= nil then
+				callback(r);
+			end;
+		end,
+		
+		function (r)
+			if failureCallback ~= nil then
+				failureCallback(r);
+			end;
+		end);
+end;
+
+return fireDrive;
