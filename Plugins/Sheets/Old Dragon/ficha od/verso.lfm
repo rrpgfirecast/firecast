@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmficha_od2_svg" align="client" theme="light" margins="{top=1}">
+	<style>
+		edit {
+			fontColor: black;
+		}
+		label {
+			fontColor: black;
+		}
+	</style>
+    <scrollBox align="client">
+        <rectangle width="629" height="893" color="white">
+            <image left="0" top="0" width="629" height="893" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>
+            
+			
+			<layout left="53" top="69" width="126" height="20">
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="126" height="21" field="equip1" />
+            </layout>
+            <layout left="186" top="69" width="33" height="20">
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" field="peso1" />
+            </layout>
+			
+			<layout left="53" top="91" width="127" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="127" height="21" field="equip2" />
+            </layout>
+            <layout left="187" top="91" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" field="Peso2" />
+            </layout>
+			
+            <layout left="53" top="113" width="126" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="126" height="21" field="equip3" />
+            </layout>
+            <layout left="186" top="113" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso3" />
+            </layout>
+            
+			<layout left="53" top="134" width="127" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="127" height="21" field="equip4" />
+            </layout>
+            <layout left="186" top="134" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso4" />
+            </layout>
+			
+            <layout left="53" top="156" width="126" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="126" height="21" field="equip5" />
+            </layout>
+            <layout left="186" top="156" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso5" />
+            </layout>
+            
+			<layout left="53" top="177" width="126" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="126" height="21" field="equip6" />
+            </layout>
+            <layout left="186" top="177" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso6" />
+            </layout>
+			
+            <layout left="53" top="199" width="127" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="127" height="21" field="equip7" />
+            </layout>
+            <layout left="187" top="199" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso7" />
+            </layout>
+            
+            
+            <layout left="53" top="221" width="127" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="127" height="21" field="equip8" />
+            </layout>
+            <layout left="186" top="221" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso8" />
+            </layout>
+            
+            <layout left="53" top="242" width="126" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="126" height="21" field="equip9" />
+            </layout>
+            <layout left="186" top="242" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso9" />
+            </layout>
+            
+			<layout left="53" top="264" width="127" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="127" height="21" field="equip10" />
+            </layout>
+            <layout left="186" top="264" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso10" />
+            </layout>
+            
+            <layout left="53" top="286" width="126" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="126" height="21" field="equip11" />
+            </layout>
+			<layout left="186" top="286" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso11" />
+            </layout>
+			
+            <layout left="53" top="307" width="126" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="126" height="21" field="equip12" />
+            </layout>
+            <layout left="186" top="307" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso12" />
+            </layout>
+            
+            <layout left="53" top="329" width="126" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="126" height="21" field="equip13" />
+            </layout>
+            
+			<layout left="187" top="329" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso13" />
+            </layout>
+            
+			<layout left="53" top="351" width="127" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="127" height="21" field="equip14" />
+            </layout>
+            <layout left="186" top="351" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso14" />
+            </layout>
+            
+            <layout left="53" top="373" width="126" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="126" height="21" field="equip15" />
+            </layout>
+            <layout left="187" top="373" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso15" />
+            </layout>
+            
+			<layout left="53" top="394" width="127" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="127" height="21" field="equip16" />
+            </layout>
+            <layout left="187" top="394" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso16" />
+            </layout>
+            
+			<layout left="53" top="416" width="126" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="126" height="21" field="equip17" />
+            </layout>
+            <layout left="187" top="416" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso17" />
+            </layout>
+            
+            <layout left="53" top="437" width="126" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="126" height="21" field="equip18" />
+            </layout>
+            <layout left="187" top="437" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso18" />
+            </layout>
+            
+            <layout left="53" top="459" width="127" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="127" height="21" field="equip19" />
+            </layout>
+            <layout left="186" top="459" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso19" />
+            </layout>
+            
+            <layout left="53" top="481" width="127" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="leading" vertTextAlign="center" left="0" top="0" width="127" height="21" field="equip20" />
+            </layout>
+            <layout left="187" top="481" width="33" height="20" >
+                <edit transparent="true" fontSize="12.8" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="33" height="21" type="float" field="peso20" />
+            </layout>
+			
+			
+			<layout left="92" top="514" width="36" height="33" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" type="float" field="carga_leve" />
+            </layout>
+            <layout left="138" top="514" width="36" height="33" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" type="float" field="carga_media" />
+            </layout>
+            <layout left="182" top="514" width="36" height="33" >
+                <edit transparent="true" fontSize="14.2" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="34" type="float" field="carga_pesada" />
+            </layout>
+            <layout left="53" top="601" width="166" height="73" >
+                <richEdit showToolbar="false" defaultFontSize="12" left="0" top="0" width="166" height="74" field="dinheiro" />
+            </layout>
+			
+			
+			<layout left="280" top="89" width="37" height="26" >
+                <edit transparent="true" fontSize="20" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="27" type="number" field="circulo_magia1" />
+            </layout>
+			<layout left="328" top="85" width="42" height="32" >
+                <edit transparent="true" fontSize="18" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="42" height="33" type="number" field="circulo_magia_adicional1" />
+            </layout>
+			<layout left="280" top="125" width="37" height="26" >
+                <edit transparent="true" fontSize="20" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="27" type="number" field="circulo_magia2" />
+            </layout>
+			<layout left="328" top="122" width="42" height="32" >
+                <edit transparent="true" fontSize="18" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="42" height="33" type="number" field="circulo_magia_adicional2" />
+            </layout>
+			<layout left="280" top="162" width="37" height="26" >
+                <edit transparent="true" fontSize="20" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="27" type="number" field="circulo_magia3" />
+            </layout>
+			<layout left="328" top="159" width="42" height="32" >
+                <edit transparent="true" fontSize="18" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="42" height="33" type="number" field="circulo_magia_adicional3" />
+            </layout>
+			<layout left="280" top="199" width="36" height="26" >
+                <edit transparent="true" fontSize="20" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="27" type="number" field="circulo_magia4" />
+            </layout>
+			<layout left="280" top="235" width="37" height="26" >
+                <edit transparent="true" fontSize="20" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="27" type="number" field="circulo_magia5" />
+            </layout>
+			<layout left="280" top="272" width="36" height="26" >
+                <edit transparent="true" fontSize="20" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="27" type="number" field="circulo_magia6" />
+            </layout>
+			<layout left="332" top="199" width="37" height="26" >
+                <edit transparent="true" fontSize="20" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="37" height="27" type="number" field="circulo_magia7" />
+            </layout>
+            <layout left="332" top="235" width="36" height="26" >
+                <edit transparent="true" fontSize="20" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="27" type="number" field="circulo_magia8" />
+            </layout>
+            <layout left="332" top="272" width="36" height="26" >
+                <edit transparent="true" fontSize="20" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="27" type="number" field="circulo_magia9" />
+            </layout>
+			
+			
+			<layout left="276" top="308" width="122" height="21" >
+                <edit transparent="true" fontSize="13.5" vertTextAlign="center" left="0" top="0" width="122" height="22" field="dominio1" />
+            </layout>
+			<layout left="231" top="329" width="167" height="21" >
+                <edit transparent="true" fontSize="13.5" vertTextAlign="center" left="0" top="0" width="167" height="22" field="dominio2" />
+            </layout>
+			<layout left="231" top="351" width="167" height="21" >
+                <edit transparent="true" fontSize="13.5" vertTextAlign="center" left="0" top="0" width="167" height="22" field="dominio3" />
+            </layout>
+			
+			
+			<layout left="492" top="79" width="38" height="29" >
+                <edit transparent="true" fontSize="20" vertTextAlign="center" left="0" top="0" width="38" height="30" type="number" field="arrombar" />
+            </layout>
+            <layout left="540" top="76" width="36" height="36" >
+                <edit transparent="true" fontSize="20" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="37" field="arrombar_dado_turno" />
+            </layout>
+            <layout left="492" top="120" width="38" height="29" >
+                <edit transparent="true" fontSize="20" vertTextAlign="center" left="0" top="0" width="38" height="30" type="number" field="armadilhas" />
+            </layout>
+			<layout left="540" top="116" width="36" height="37" >
+                <edit transparent="true" fontSize="20" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="36" height="38" field="armadilhas_dado_turno" />
+            </layout>
+			<layout left="492" top="161" width="38" height="29" >
+                <edit transparent="true" fontSize="20" vertTextAlign="center" left="0" top="0" width="38" height="30" type="number" field="escalar" />
+            </layout>
+			<layout left="492" top="202" width="38" height="29" >
+                <edit transparent="true" fontSize="20" vertTextAlign="center" left="0" top="0" width="38" height="30" type="number" field="furtividade" />
+            </layout>
+			<layout left="492" top="243" width="38" height="30" >
+                <edit transparent="true" fontSize="20" vertTextAlign="center" left="0" top="0" width="38" height="31" type="number" field="punga" />
+            </layout>
+			<layout left="492" top="284" width="38" height="29" >
+                <edit transparent="true" fontSize="20" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="38" height="30" field="percepção" />
+            </layout>
+			<layout left="492" top="325" width="38" height="29" >
+                <edit transparent="true" fontSize="20" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="38" height="30" type="number" field="atqFurtivo" />
+            </layout>
+			
+			
+			<layout left="274" top="416" width="123" height="22" >
+                <edit transparent="true" fontSize="14.2" vertTextAlign="center" left="0" top="0" width="123" height="23" field="especializacao1" />
+            </layout>
+			<layout left="232" top="438" width="165" height="21" >
+                <edit transparent="true" fontSize="13.5" vertTextAlign="center" left="0" top="0" width="165" height="22" field="especializacao2" />
+            </layout>
+			<layout left="232" top="459" width="165" height="22" >
+                <edit transparent="true" fontSize="14.2" vertTextAlign="center" left="0" top="0" width="165" height="23" field="especializacao3" />
+            </layout>
+			<layout left="232" top="480" width="165" height="22" >
+                <edit transparent="true" fontSize="14.2" vertTextAlign="center" left="0" top="0" width="165" height="23" field="especializacao4" />
+            </layout>
+            <layout left="274" top="502" width="123" height="22" >
+                <edit transparent="true" fontSize="14.2" vertTextAlign="center" left="0" top="0" width="123" height="23" field="especializacao5" />
+            </layout>
+			<layout left="232" top="524" width="165" height="21" >
+                <edit transparent="true" fontSize="13.5" vertTextAlign="center" left="0" top="0" width="165" height="22" field="especializacao6" />
+            </layout>
+            <layout left="232" top="545" width="165" height="22" >
+                <edit transparent="true" fontSize="14.2" vertTextAlign="center" left="0" top="0" width="165" height="23" field="especializacao7" />
+            </layout>
+			<layout left="232" top="567" width="165" height="22" >
+                <edit transparent="true" fontSize="14.2" vertTextAlign="center" left="0" top="0" width="165" height="23" field="especializacao8" />
+            </layout>
+            <layout left="276" top="588" width="123" height="22" >
+                <edit transparent="true" fontSize="14.2" vertTextAlign="center" left="0" top="0" width="123" height="23" field="especializacao9" />
+            </layout>
+			<layout left="232" top="610" width="166" height="21" >
+                <edit transparent="true" fontSize="13.5" vertTextAlign="center" left="0" top="0" width="166" height="22" field="especializacao10" />
+            </layout>
+            <layout left="232" top="631" width="166" height="22" >
+                <edit transparent="true" fontSize="14.2" vertTextAlign="center" left="0" top="0" width="166" height="23" field="especializacao11" />
+            </layout>
+			<layout left="232" top="653" width="166" height="22" >
+                <edit transparent="true" fontSize="14.2" vertTextAlign="center" left="0" top="0" width="166" height="23" field="especializacao12" />
+            </layout>
+            
+			
+            <layout left="434" top="431" width="45" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="45" height="31" field="mvdv1" />
+            </layout>
+			<layout left="434" top="472" width="45" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="45" height="31" field="mvdv2" />
+            </layout>
+			<layout left="434" top="513" width="45" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="45" height="31" field="mvdv3" />
+            </layout>
+			<layout left="434" top="554" width="45" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="45" height="31" field="mvdv4" />
+            </layout>
+			<layout left="434" top="595" width="45" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="45" height="31" field="mvdv5" />
+            </layout>
+			<layout left="434" top="636" width="45" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="45" height="31" field="mvdv6" />
+            </layout>
+			<layout left="434" top="677" width="45" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="45" height="31" field="mvdv7" />
+            </layout>
+			<layout left="434" top="718" width="45" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="45" height="31" field="mvdv8" />
+            </layout>
+			<layout left="434" top="759" width="45" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="45" height="31" field="mvdv9" />
+            </layout>
+			<layout left="526" top="431" width="45" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="45" height="31" field="mvdv10" />
+            </layout>
+            <layout left="526" top="472" width="46" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="46" height="31" field="mvdv11" />
+            </layout>
+            <layout left="526" top="513" width="45" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="45" height="31" field="mvdv12" />
+            </layout>            
+            <layout left="526" top="554" width="46" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="46" height="31" field="mvdv13" />
+            </layout>
+			<layout left="526" top="595" width="45" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="45" height="31" field="mvdv14" />
+            </layout>
+            <layout left="526" top="636" width="46" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="46" height="31" field="mvdv15" />
+            </layout>
+			<layout left="526" top="677" width="45" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="45" height="31" field="mvdv16" />
+            </layout>
+			<layout left="526" top="718" width="45" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="45" height="31" field="mvdv17" />
+            </layout>
+			<layout left="526" top="759" width="46" height="30" >
+                <edit transparent="true" fontSize="25" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="46" height="31" field="mvdv18" />
+            </layout>
+			<layout left="502" top="803" width="75" height="42" >
+                <edit transparent="true" fontSize="30" horzTextAlign="center" vertTextAlign="center" left="0" top="0" width="75" height="43" field="quantidade_afastada" />
+            </layout>
+			
+			
+			<layout left="51" top="717" width="348" height="129" >
+                <richEdit showToolbar="false" defaultFontSize="12" left="0" top="0" width="348" height="129" field="caracteristicas_notas" />
+            </layout>			
+			
+			
+        </rectangle>
+    </scrollBox>
+</form>

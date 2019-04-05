@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFichaODGrimorio" align="client" theme="light" margins="{top=1}">
+	<richEdit align="client" backgroundColor="white" defaultFontColor="black" field="grimorio" hideSelection="false" defaultFontSize="15" animateImages="true"/>
+</form>

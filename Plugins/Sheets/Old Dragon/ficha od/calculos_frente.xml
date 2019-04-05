@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+	<dataLink field="forca">
+		<event name="onChange">
+			local mod = math.floor(((sheet.forca or 10) - 10) / 2)
+			if (mod >= 0) then
+				mod = "+"..mod
+			end
+			sheet.mod_forca = mod
+			sheet.ba_cac_mod_forca = mod
+		</event>
+	</dataLink>
+	<dataLink field="destreza">
+		<event name="onChange">
+			local mod = math.floor(((sheet.destreza or 10) - 10) / 2)
+			if (mod >= 0) then
+				mod = "+"..mod
+			end
+			sheet.mod_destreza = mod
+			sheet.ca_outro1 = mod
+			sheet.ba_distancia_mod_destreza = mod
+		</event>
+	</dataLink>
+	<dataLink field="constituicao">
+		<event name="onChange">
+			local mod = math.floor(((sheet.constituicao or 10) - 10) / 2)
+			if (mod >= 0) then
+				mod = "+"..mod
+			end
+			sheet.mod_constituicao = mod
+			sheet.pv_bonus_con = mod
+		</event>
+	</dataLink>
+	<dataLink field="inteligencia">
+		<event name="onChange">
+			local idiomas = math.floor((sheet.inteligencia or 10) / 6)
+			sheet.idiomas = idiomas
+		</event>
+	</dataLink>
+	<dataLink field="sabedoria">
+		<event name="onChange">
+			local mod = math.floor(((sheet.sabedoria or 10) - 10) / 2)
+			if (mod >= 0) then
+				mod = "+"..mod
+			end
+			sheet.mod_sabedoria = mod
+		</event>
+	</dataLink>
+	<dataLink field="carisma">
+		<event name="onChange">
+			local mod = math.floor(((sheet.carisma or 10) - 10) / 2)
+			if ((mod + 1) > 0) then
+				sheet.seguidores = (mod + 1)
+			else
+				sheet.seguidores = 0
+			end
+			sheet.ajuste_reacao = (mod * 5)
+		</event>
+	</dataLink>
+	<dataLink fields="{'ca_armadura', 'ca_escudo', 'ca_racial', 'ca_outro1', 'ca_outro2', 'ca_outro3'}">
+		<event name="onChange">
+			local ca_base = 10
+			local ca_bonus = (sheet.ca_armadura or 0) + (sheet.ca_escudo or 0) + (sheet.ca_racial or 0) + (sheet.ca_outro1 or 0) + (sheet.ca_outro2 or 0) + (sheet.ca_outro3 or 0)
+			sheet.ca_total = ca_base + ca_bonus
+		</event>
+	</dataLink>
+	<dataLink fields="{'jp', 'constituicao', 'destreza', 'sabedoria'}">
+		<event name="onChange">
+			sheet.jp_mod_constituicao = (sheet.jp or 0) - (sheet.mod_constituicao or 0)
+			sheet.jp_mod_destreza = (sheet.jp or 0) - (sheet.mod_destreza or 0)
+			sheet.jp_mod_sabedoria = (sheet.jp or 0) - (sheet.mod_sabedoria or 0)
+		</event>
+	</dataLink>
+	<dataLink fields="{'movimento_raca', 'movimento_carga', 'movimento_armadura'}">
+		<event name="onChange">
+			sheet.movimento_total = (sheet.movimento_raca or 0) + (sheet.movimento_carga or 0) + (sheet.movimento_armadura or 0)
+		</event>
+	</dataLink>
+	<dataLink fields="{'ba_cac_classe', 'ba_cac_mod_forca', 'ba_cac_item', 'ba_cac_misc'}">
+		<event name="onChange">
+			sheet.ba_cac_total = (sheet.ba_cac_classe or 0) + (sheet.ba_cac_mod_forca or 0) + (sheet.ba_cac_item or 0) + (sheet.ba_cac_misc or 0)
+		</event>
+	</dataLink>
+	<dataLink fields="{'ba_distancia_classe', 'ba_distancia_mod_destreza', 'ba_distancia_item', 'ba_distancia_misc'}">
+		<event name="onChange">
+			sheet.ba_distancia_total = (sheet.ba_distancia_classe or 0) + (sheet.ba_distancia_mod_destreza or 0) + (sheet.ba_distancia_item or 0) + (sheet.ba_distancia_misc or 0)
+		</event>
+	</dataLink>
+</group>
