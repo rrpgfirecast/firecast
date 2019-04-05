@@ -102,8 +102,8 @@ local function constructNew_frmBase()
     obj.comboBox1:setWidth(150);
     obj.comboBox1:setHeight(25);
     obj.comboBox1:setField("aptidao");
-    obj.comboBox1:setItems({'Alquimista', 'Arcanista', 'Caçador', 'Cavaleiro', 'Monge', 'Necromante', 'Xamã', 'Atirador', 'Cigano', 'Hoplita', 'Ronin'});
-    obj.comboBox1:setValues({'1', '2', '3', '4', '5', '6', '7', '8', '9','10','11'});
+    obj.comboBox1:setItems({'Alquimista', 'Arcanista', 'Caçador', 'Cavaleiro', 'Monge', 'Necromante', 'Xamã', 'Atirador', 'Cigano', 'Hoplita', 'Ronin', 'Executor'});
+    obj.comboBox1:setValues({'1', '2', '3', '4', '5', '6', '7', '8', '9','10','11','12'});
     obj.comboBox1:setName("comboBox1");
 
     obj.label3 = GUI.fromHandle(_obj_newObject("label"));
@@ -1231,9 +1231,9 @@ local function constructNew_frmBase()
 
     obj.edit25 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit25:setParent(obj.layout1);
-    obj.edit25:setLeft(100);
+    obj.edit25:setLeft(90);
     obj.edit25:setTop(0);
-    obj.edit25:setWidth(50);
+    obj.edit25:setWidth(60);
     obj.edit25:setHeight(25);
     obj.edit25:setHorzTextAlign("center");
     obj.edit25:setField("resistenciadanoBase");
@@ -1259,9 +1259,9 @@ local function constructNew_frmBase()
 
     obj.edit26 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit26:setParent(obj.layout2);
-    obj.edit26:setLeft(100);
+    obj.edit26:setLeft(90);
     obj.edit26:setTop(0);
-    obj.edit26:setWidth(50);
+    obj.edit26:setWidth(60);
     obj.edit26:setHeight(25);
     obj.edit26:setHorzTextAlign("center");
     obj.edit26:setField("resistenciabloqueio");
@@ -2614,7 +2614,7 @@ local function constructNew_frmBase()
     obj.label114:setWidth(100);
     obj.label114:setHeight(25);
     obj.label114:setHorzTextAlign("center");
-    obj.label114:setText("Atordoamento");
+    obj.label114:setText("Aturdido");
     obj.label114:setName("label114");
 
     obj.rectangle65 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -3038,7 +3038,7 @@ local function constructNew_frmBase()
             					sheet.vidaBase = 140 + (nivel * 20);
             					sheet.fadigaBase = 90 + (nivel * 10);
             					sheet.imersaoBase = 10 + (nivel * 5);
-            					sheet.atr_max = 45 + (nivel * 3);
+            					sheet.atr_max = 42 + (nivel * 6);
             					sheet.habilidadesDisponivel = math.min(nivel*2 + 1, 15);
             					sheet.carac_total = 47 + nivel;
         end, obj);

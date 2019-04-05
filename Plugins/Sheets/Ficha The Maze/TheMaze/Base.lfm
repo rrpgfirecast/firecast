@@ -22,7 +22,7 @@
 	<template name="Resistencia">
 		<layout left="$(left)" top="$(top)" width="155" height="25"> 
 			<label left="0" top="0" width="100" height="25" horzTextAlign="center" text="$(text)"/>
-			<edit left="100" top="0" width="50" height="25" horzTextAlign="center" field="resistencia$(field)"/>
+			<edit left="90" top="0" width="60" height="25" horzTextAlign="center" field="resistencia$(field)"/>
 		</layout>
 	</template>
 	<template name="Beneficio">
@@ -112,7 +112,7 @@
 			<edit left="80" top="5" width="150" height="25" field="nome"/>
 
 			<label left="5" top="30" width="75" height="25" horzTextAlign="center" text="Aptidão"/>
-			<comboBox left="80" top="30" width="150" height="25" field="aptidao" items="{'Alquimista', 'Arcanista', 'Caçador', 'Cavaleiro', 'Monge', 'Necromante', 'Xamã', 'Atirador', 'Cigano', 'Hoplita', 'Ronin'}" values="{'1', '2', '3', '4', '5', '6', '7', '8', '9','10','11'}"/>
+			<comboBox left="80" top="30" width="150" height="25" field="aptidao" items="{'Alquimista', 'Arcanista', 'Caçador', 'Cavaleiro', 'Monge', 'Necromante', 'Xamã', 'Atirador', 'Cigano', 'Hoplita', 'Ronin', 'Executor'}" values="{'1', '2', '3', '4', '5', '6', '7', '8', '9','10','11','12'}"/>
 
 			<label left="225" top="5" width="75" height="25" horzTextAlign="center" text="Nível"/>
 			<rectangle left="300" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
@@ -167,7 +167,7 @@
 					sheet.vidaBase = 140 + (nivel * 20);
 					sheet.fadigaBase = 90 + (nivel * 10);
 					sheet.imersaoBase = 10 + (nivel * 5);
-					sheet.atr_max = 45 + (nivel * 3);
+					sheet.atr_max = 42 + (nivel * 6);
 					sheet.habilidadesDisponivel = math.min(nivel*2 + 1, 15);
 					sheet.carac_total = 47 + nivel;
 				</event>
@@ -277,7 +277,7 @@
 			<Combate top="500" text="Fragilização" field="fragilizacao" format="%"/>
 			<Combate top="525" text="Envenenamento" field="envenenamento" format="%"/>
 			<Combate top="550" text="Incendiado" field="incendiado" format="%"/>
-			<Combate top="575" text="Atordoamento" field="atordoamento" format="%"/>
+			<Combate top="575" text="Aturdido" field="atordoamento" format="%"/>
 			<Combate top="600" text="Paralisação" field="paralisacao" format="%"/>
 			<Combate top="625" text="Provocação" field="provocacao" format="%"/>
 			<Combate top="650" text="Silenciamento" field="silenciado" format="%"/>
