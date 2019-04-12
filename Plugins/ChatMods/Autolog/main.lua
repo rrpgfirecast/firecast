@@ -33,19 +33,17 @@ function enableAutolog(mesa, state)
 end
 
 -- Copia o conteúdo do log da mesa informada para a área de transferência
-function readLog(mesa)
-	local ret;
-	
+function readLog(mesa)	
 	local logFile = "/Logs/" .. mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','') .. "/Mesa.log";
 		
-	if vhd.fileExists(logFile) then
-		fileStream = vhd.openFile(logFile, "r");
+	if VHD.fileExists(logFile) then
+		fileStream = VHD.openFile(logFile, "r");
 		local logText = fileStream:readBinary("ansi");
 		
 		if fileStream == nil then
 			mesa.chat:escrever("Falha ao ler Log");
 		else
-			if system.setClipboardText(logText) then
+			if System.setClipboardText(logText) then
 				mesa.chat:escrever("Log Copiado!");
 			else
 				mesa.chat:escrever("Falha ao copiar o log para o clipboard!");
@@ -56,41 +54,35 @@ function readLog(mesa)
 	else
 		mesa.chat:escrever("Log não encontrado!");
 	end
-	
-	return ret;
 end
 
 -- Exporta o arquivo de log da mesa principal para um txt externo
 function exportLog(mesa)
-	local ret;
-
 	local logFile = "/Logs/" .. mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','') .. "/Mesa.log";
 
-	if vhd.fileExists(logFile) then
-		fileStream = vhd.openFile(logFile, "r");
+	if VHD.fileExists(logFile) then
+		fileStream = VHD.openFile(logFile, "r");
 
 		-- Definimos um callback bem simples, só pra fechar a stream mesmo.
 		function closeStream()
 			fileStream:close();
 		end
 
-		dialogs.saveFile("Exportar Log de " .. mesa.nome, fileStream, mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','') .. ".txt", "text/plain", closeStream, closeStream);
+		Dialogs.saveFile("Exportar Log de " .. mesa.nome, fileStream, mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','') .. ".txt", "text/plain", closeStream, closeStream);
 
 	else
 		mesa.chat:escrever("Log não encontrado!");
 	end
-
-	return ret;
 end
 
 -- Inicializa uma Gui com os parâmetros atuais da mesa
 function getConfigWindow(mesa)
 	if not isGold then
-		dialogs.alert("O Autolog requer uma assinatura Gold, Gold+ ou Ruby do RRPG.");
+		Dialogs.alert("O Autolog requer uma assinatura Gold, Gold+ ou Ruby do Firecast.");
 		return nil;
 	end
 
-	local cfgForm = gui.newForm("autologConfigPanel");
+	local cfgForm = GUI.newForm("autologConfigPanel");
 	
 	cfgForm.mesa = mesa
 	cfgForm.enableCheckBox.checked = autolog.mesas[mesa.nome].enabled;
@@ -104,13 +96,13 @@ end
 -- Limpa os arquivos de log da mesa informada
 function clearLog(mesa)
 	function userInput(escolha)
-		if escolha == dialogs.DB_YES then
+		if escolha == Dialogs.DB_YES then
 			local logFile = "/Logs/" .. mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','');
-			vhd.deleteDirectory(logFile);
+			VHD.deleteDirectory(logFile);
 		end;
 	end
 
-	dialogs.showMessageDlg("Atenção! Todos os logs da mesa " .. mesa.nome .. " Serão apagados IRREVERSÍVELMENTE. Tem certeza?", dialogs.DT_WARNING, {dialogs.DB_YES, dialogs.DB_NO}, userInput);
+	Dialogs.showMessageDlg("Atenção! Todos os logs da mesa " .. mesa.nome .. " Serão apagados IRREVERSÍVELMENTE. Tem certeza?", Dialogs.DT_WARNING, {Dialogs.DB_YES, Dialogs.DB_NO}, userInput);
 end
 
 function sendLastMessages(mesa, qtdLines)
@@ -121,8 +113,8 @@ function sendLastMessages(mesa, qtdLines)
 	local logFile = "/Logs/" .. mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','') .. "/Mesa.log";
 	local logLines;
 
-	if vhd.fileExists(logFile) then
-		fileStream = vhd.openFile(logFile, "r");
+	if VHD.fileExists(logFile) then
+		fileStream = VHD.openFile(logFile, "r");
 		if fileStream == nil then
 			mesa.chat:escrever("Falha ao ler Log");
 			return;
@@ -156,7 +148,7 @@ end
 -- Callback da chamada de comandos
 function commandCallback(message)
 	if(isGold == nil) then
-		isGold = rrpg.getCurrentUser().isGold or rrpg.getCurrentUser().isGoldPlus or rrpg.getCurrentUser().isRuby;
+		isGold = Firecast.getCurrentUser().isGold or Firecast.getCurrentUser().isGoldPlus or Firecast.getCurrentUser().isRuby;
 	end
 
 	if autolog.mesas[message.mesa.nome] == nil then
@@ -195,7 +187,8 @@ function commandCallback(message)
 		message.response = {handled = true};
 
 	elseif (message.comando == "sendlog") then
-		sendLastMessages(message.mesa, tonumber(message.parametro));
+		num = tonumber(message.parametro);
+		sendLastMessages(message.mesa, num);
 		message.response = {handled = true};
 
 	end
@@ -204,14 +197,14 @@ end
 -- Callback das mensagens de chat
 function chatMessageCallback(message)
 	if(isGold == nil) then
-		isGold = rrpg.getCurrentUser().isGold or rrpg.getCurrentUser().isGoldPlus or rrpg.getCurrentUser().isRuby;
+		isGold = Firecast.getCurrentUser().isGold or Firecast.getCurrentUser().isGoldPlus or Firecast.getCurrentUser().isRuby;
 	end
 
 	if autolog.enabled == false then
 		return;
 
 	elseif not isGold then
-		dialogs.alert("O Autolog requer uma assinatura Gold, Gold+ ou Ruby do RRPG.");
+		Dialogs.alert("O Autolog requer uma assinatura Gold, Gold+ ou Ruby do Firecast.");
 		autolog.enabled = false;
 		return;
 	end
@@ -234,14 +227,14 @@ function chatMessageCallback(message)
 			return;
 		end
 			
-		vhd.forceDirectory("/Logs/" .. message.mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$',''));
+		VHD.forceDirectory("/Logs/" .. message.mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$',''));
 			
 		--Se o objeto jogadorPVT não é nil, então foi um PVT Privado.
 		if(message.jogadorPVT ~= nil) then
 			if(autolog.useLoginForPvtName) then
-				logFile = "PVT com " .. utils.removerFmtChat(message.jogadorPVT.login) .. ".log";
+				logFile = "PVT com " .. Utils.removerFmtChat(message.jogadorPVT.login) .. ".log";
 			else
-				logFile = "PVT com " .. utils.removerFmtChat(message.jogadorPVT.nick) .. ".log";
+				logFile = "PVT com " .. Utils.removerFmtChat(message.jogadorPVT.nick) .. ".log";
 			end
 
 		--Se o objeto jogadorPVT é nil, mas o chat não é o chat principal da mesa, então eh um PVT em grupo.
@@ -275,15 +268,15 @@ function chatMessageCallback(message)
 		elseif message.tipo == "rir" then
 			linha = linha .. "Hohohohoho";
 		else
-			linha = linha .. message.texto, true;
+			linha = linha .. message.texto;
 		end
 
-		linha = utils.removerFmtChat(linha);
+		linha = Utils.removerFmtChat(linha);
 	
-		if vhd.fileExists(logFile) then
-			fileStream = vhd.openFile(logFile, "a");
+		if VHD.fileExists(logFile) then
+			fileStream = VHD.openFile(logFile, "a");
 		else
-			fileStream = vhd.openFile(logFile, "w");
+			fileStream = VHD.openFile(logFile, "w");
 		end
 		
 		if(fileStream == nil) then
@@ -300,14 +293,14 @@ end
 -- Callback das mensagens de join
 function joinCallback(message)
 	if(isGold == nil) then
-		isGold = rrpg.getCurrentUser().isGold or rrpg.getCurrentUser().isGoldPlus or rrpg.getCurrentUser().isRuby;
+		isGold = Firecast.getCurrentUser().isGold or Firecast.getCurrentUser().isGoldPlus or Firecast.getCurrentUser().isRuby;
 	end
 
 	if autolog.enabled == false then
 		return;
 
 	elseif not isGold then
-		dialogs.alert("O Autolog requer uma assinatura Gold, Gold+ ou Ruby do RRPG.");
+		Dialogs.alert("O Autolog requer uma assinatura Gold, Gold+ ou Ruby do Firecast.");
 		autolog.enabled = false;
 		return;
 	end
@@ -318,21 +311,21 @@ function joinCallback(message)
 	
 	if autolog.mesas[message.mesa.nome].enabled ~= false then
 		autolog.mesas[message.mesa.nome].enabled = true
-		local linha = os.date("[%d/%m/%Y|%H:%M] ") .. utils.removerFmtChat(message.jogador.nick) .. " (" .. message.jogador.login .. ")";
+		local linha = os.date("[%d/%m/%Y|%H:%M] ") .. Utils.removerFmtChat(message.jogador.nick) .. " (" .. message.jogador.login .. ")";
 		local logFile = "/Logs/" .. message.mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','');
 
 		linha = linha .. " acabou de entrar";
 		
-		vhd.forceDirectory(logFile);
+		VHD.forceDirectory(logFile);
 
 		logFile = logFile .. "/Mesa.log";
 			
 		local fileStream;
 			
-		if vhd.fileExists(logFile) then
-			fileStream = vhd.openFile(logFile, "a");
+		if VHD.fileExists(logFile) then
+			fileStream = VHD.openFile(logFile, "a");
 		else
-			fileStream = vhd.openFile(logFile, "w");
+			fileStream = VHD.openFile(logFile, "w");
 		end
 			
 		if(fileStream == nil) then
@@ -349,14 +342,14 @@ end
 -- Callback das mensagens de part
 function partCallback(message)
 	if(isGold == nil) then
-		isGold = rrpg.getCurrentUser().isGold or rrpg.getCurrentUser().isGoldPlus or rrpg.getCurrentUser().isRuby;
+		isGold = Firecast.getCurrentUser().isGold or Firecast.getCurrentUser().isGoldPlus or Firecast.getCurrentUser().isRuby;
 	end
 
 	if autolog.enabled == false then
 		return;
 
 	elseif not isGold then
-		dialogs.alert("O Autolog requer uma assinatura Gold, Gold+ ou Ruby do RRPG.");
+		Dialogs.alert("O Autolog requer uma assinatura Gold, Gold+ ou Ruby do Firecast.");
 		autolog.enabled = false;
 		return;
 	end
@@ -368,14 +361,14 @@ function partCallback(message)
 	if autolog.mesas[message.mesa.nome].enabled ~= false then
 		autolog.mesas[message.mesa.nome].enabled = true
 			
-		local linha = os.date("[%d/%m/%Y|%H:%M] ") .. utils.removerFmtChat(message.jogador.nick) .. " (" .. message.jogador.login .. ")";
+		local linha = os.date("[%d/%m/%Y|%H:%M] ") .. Utils.removerFmtChat(message.jogador.nick) .. " (" .. message.jogador.login .. ")";
 		local logFile = "/Logs/" .. message.mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','');
 
-		vhd.forceDirectory(logFile);
+		VHD.forceDirectory(logFile);
 			
 		--Senão, é o chat main
 		if(message.ehKick) then
-			linha = linha .. " foi kickado por " .. utils.removerFmtChat(message.responsavel.nick) .. " (" .. message.responsavel.login .. ")";
+			linha = linha .. " foi kickado por " .. Utils.removerFmtChat(message.responsavel.nick) .. " (" .. message.responsavel.login .. ")";
 		else
 			linha = linha .. " acabou de sair";
 		end
@@ -384,10 +377,10 @@ function partCallback(message)
 			
 		local fileStream;
 			
-		if vhd.fileExists(logFile) then
-			fileStream = vhd.openFile(logFile, "a");
+		if VHD.fileExists(logFile) then
+			fileStream = VHD.openFile(logFile, "a");
 		else
-			fileStream = vhd.openFile(logFile, "w");
+			fileStream = VHD.openFile(logFile, "w");
 		end
 			
 		if(fileStream == nil) then
@@ -412,12 +405,12 @@ function helpCallback(message)
 end
 
 -- Escuta das mensagens de comandos
-rrpg.messaging.listen("HandleChatCommand", commandCallback);
+Firecast.Messaging.listen("HandleChatCommand", commandCallback);
 -- Escuta das mensagens de chat padrão
-rrpg.messaging.listen("ChatMessage", chatMessageCallback);
+Firecast.Messaging.listen("ChatMessage", chatMessageCallback);
 -- Escuta das mensagens de join
-rrpg.messaging.listen("MesaJoined", joinCallback);
+Firecast.Messaging.listen("MesaJoined", joinCallback);
 -- Escuta das mensagens de part
-rrpg.messaging.listen("MesaParted", partCallback);
+Firecast.Messaging.listen("MesaParted", partCallback);
 -- Escuta do Help
-rrpg.messaging.listen("ListChatCommands", helpCallback);
+Firecast.Messaging.listen("ListChatCommands", helpCallback);
