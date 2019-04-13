@@ -16,11 +16,13 @@ sudo apt-get install -y wine-development winetricks winbind imagemagick #libvulk
 #criação e configuração do prefix 32bits exclusivo pro RRPG
 rm -rf $WINEPREFIX
 eval $WINE wineboot
-eval winetricks -q comctl32 comctl32ocx comdlg32ocx d3dx11_43 gdiplus ole32 windowscodecs wininet mfc42 riched30 #allfonts
+eval winetricks -q gdiplus ole32 windowscodecs wininet mfc42 riched30 d3dx11_43 #comctl32 comctl32ocx comdlg32ocx allfonts
 eval winetricks -q win10
 
 #download do instalador
-wget $RRPG_INSTALLER_URL -O ./$RRPG_INSTALLER_NAME
+if [ ! -f ./$RRPG_INSTALLER_NAME ]; then
+    wget $RRPG_INSTALLER_URL -O ./$RRPG_INSTALLER_NAME
+fi
 
 #start do instalador do RRPG
 eval $WINE ./$RRPG_INSTALLER_NAME /VERYSILENT /WINE
