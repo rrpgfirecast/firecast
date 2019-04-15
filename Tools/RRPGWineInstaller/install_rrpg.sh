@@ -3,15 +3,56 @@
 # Variáveis de Ambiente
 export WINEARCH=win32
 export WINEPREFIX=$HOME/.wine-rrpg
-export WINE=wine-development
 
 # Constantes
 RRPG_INSTALLER_NAME=RRPG7.8c_beta3.exe
 RRPG_INSTALLER_URL=http://firecast.app/downloads/$RRPG_INSTALLER_NAME
 RRPG_INSTALL_DIRECTORY=$WINEPREFIX/drive_c/RRPG
 
+## Funções
+
+apt_get_version()
+{
+    TEMP=$(apt-cache show $1 | grep -oiP -3 "Version:\s*\K([0-9]*)(?=)")
+    eval "$2=$TEMP"
+
+    TEMP=$(apt-cache show $1 | grep -oiP -3 "Version:\s*([0-9]*)\.\K([0-9]*)(?=)")
+    eval "$3=$TEMP"
+}
+
+choose_wine_stable_or_dev()
+{
+    apt_get_version wine STABLE_MAJOR_VERSION STABLE_MINOR_VERSION
+    apt_get_version wine-development DEV_MAJOR_VERSION DEV_MINOR_VERSION
+
+    if [ $STABLE_MAJOR_VERSION -gt $DEV_MAJOR_VERSION ]; then
+        WINE=wine
+        return
+    fi
+
+    if [ $STABLE_MAJOR_VERSION -lt $DEV_MAJOR_VERSION ]; then
+      WINE=wine-development
+      return
+    fi
+
+    if [ $STABLE_MINOR_VERSION -gt $DEV_MINOR_VERSION ]; then
+        WINE=wine
+    else
+        WINE=wine-development
+    fi
+}
+
+# Script para definir parâmetros
+
+if [ $# -eq 1 -a "$1" = "--wd" ]; then
+    export WINE=wine-development
+else
+    sudo apt-get update
+    choose_wine_stable_or_dev
+fi
+
 #instalação do wine, winetricks e winbind (requerido)
-sudo apt-get install -y wine-development winetricks winbind imagemagick #libvulkan1 libvulkan1:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386
+sudo apt-get install -y $WINE winetricks winbind imagemagick #libvulkan1 libvulkan1:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386
 
 #criação e configuração do prefix 32bits exclusivo pro RRPG
 rm -rf $WINEPREFIX
@@ -43,6 +84,7 @@ $WINE $RRPG_INSTALL_DIRECTORY/rrpg.exe
 EOF
 
 chmod +x $RRPG_INSTALL_DIRECTORY/wine/rrpg.sh
+ln -sfn $RRPG_INSTALL_DIRECTORY/wine/rrpg.sh $HOME/rrpg.sh
 
 #adição dos atalhos aos menus
 mkdir -p ~/.local/share/icons/hicolor/256x256/apps/ && cp $RRPG_INSTALL_DIRECTORY/wine/images/rrpg_logo_256.png ~/.local/share/icons/hicolor/256x256/apps/rrpg.png
