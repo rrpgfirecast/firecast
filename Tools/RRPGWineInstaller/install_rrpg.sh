@@ -13,10 +13,10 @@ RRPG_INSTALL_DIRECTORY=$WINEPREFIX/drive_c/RRPG
 
 apt_get_version()
 {
-    TEMP=$(apt-cache show $1 | grep -oiP -3 "Version:\s*\K([0-9]*)(?=)")
+    TEMP=$(apt-cache show $1 | grep -oiP "Version:\s*\K([0-9]*)(?=)")
     eval "$2=$TEMP"
 
-    TEMP=$(apt-cache show $1 | grep -oiP -3 "Version:\s*([0-9]*)\.\K([0-9]*)(?=)")
+    TEMP=$(apt-cache show $1 | grep -oiP "Version:\s*([0-9]*)\.\K([0-9]*)(?=)")
     eval "$3=$TEMP"
 }
 
