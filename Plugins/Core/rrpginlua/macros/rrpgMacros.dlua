@@ -10,9 +10,9 @@ local cloneFunctions = {};
 
 local function throwMacroNotAssociatedToRooom(featureName)
 	if type(featureName) == "string" then
-		error(string.format(lang("macros.error.notRoomMisingFeature.withParam"), featureName));
+		error(string.format(lang("macros.error.notRoomMissingFeature.withParam"), featureName));
 	else
-		error(lang("macros.error.notRoomMisingFeature"));
+		error(lang("macros.error.notRoomMissingFeature"));
 	end;
 end;
 
@@ -121,10 +121,7 @@ local function handleCoResume(co, ...)
 	local retornos = table.pack(coroutine.resume(co, ...));
 												
 	if not retornos[1] then
-		local dialogs = require("dialogs.lua");
-		
-		dialogs.showMessageDlg(lang("macros.error.executionError") .. ":\n" .. retornos[2], dialogs.DT_ERROR, {dialogs.DB_OK});
-		--error(retornos[2]);
+		reraise(lang("macros.error.executionError") .. ":\n" .. retornos[2]);
 	else
 		if retornos[2] == _MACRO_CALL_CO_FUNCTION_RET then			
 			local f = yieldedFunctions[retornos[3]];
@@ -861,7 +858,7 @@ local function createMacroEnvTable(chat)
 end;
 
 function macros.compileMacro(body, chat, macroName, endCallback)
-	local macroFunction = function (parameters)
+	local function macroBootstrap(parameters)
 		local ambiente = createMacroEnvTable(chat);
 		
 		if type(parameters) == "table" then
@@ -873,19 +870,29 @@ function macros.compileMacro(body, chat, macroName, endCallback)
 		end;
 	
 		
-		local f, errorMsg = load(body, macroName, "t", ambiente);
+		local f, errorMsg = load(body, "/" .. string.lower(macroName), "t", ambiente);
 		
 		if f == nil then
 			error(lang("macros.error.compilingError") .. ":\n\n" .. errorMsg);
 			return nil;
 		end;
 			
-		local co = coroutine.create(f);		
+		local function macroLauncher(...)
+			local packedReturn = table.pack(pcall(f, ...));
+			
+			if not packedReturn[1] then
+				reraise(packedReturn[2])
+			else			
+				return table.unpack(packedReturn, 2);
+			end;
+		end;
+			
+		local co = coroutine.create(macroLauncher);		
 		rawset(co, "__endCallback", endCallback);		
 		handleCoResume(co);
 	end;
 	
-	return macroFunction;
+	return macroBootstrap;
 end;
 
 return macros;
