@@ -1294,15 +1294,15 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.flowPart10:setStepSizes({105});
     obj.flowPart10:setMinScaledWidth(75);
     obj.flowPart10:setHeight(120);
+    obj.flowPart10:setMargins({top=35});
     obj.flowPart10:setFrameStyle("frames/shield/frame.xml");
     obj.flowPart10:setName("flowPart10");
-    obj.flowPart10:setMargins({left=1, right=1, top=2, bottom=2});
     obj.flowPart10:setVertAlign("leading");
 
     obj.label30 = GUI.fromHandle(_obj_newObject("label"));
     obj.label30:setParent(obj.flowPart10);
     obj.label30:setAlign("top");
-    obj.label30:setText("BOQUEAR");
+    obj.label30:setText("BLOQUEAR");
     obj.label30:setHeight(20);
     obj.label30:setFontSize(9);
     obj.label30:setWordWrap(true);
@@ -1327,9 +1327,9 @@ self.upperGridMagicEditBox1._RecalcSize();
     obj.flowPart11:setStepSizes({105});
     obj.flowPart11:setMinScaledWidth(75);
     obj.flowPart11:setHeight(120);
+    obj.flowPart11:setMargins({top=35});
     obj.flowPart11:setFrameStyle("frames/shield/frame.xml");
     obj.flowPart11:setName("flowPart11");
-    obj.flowPart11:setMargins({left=1, right=1, top=2, bottom=2});
     obj.flowPart11:setVertAlign("leading");
 
     obj.label31 = GUI.fromHandle(_obj_newObject("label"));
