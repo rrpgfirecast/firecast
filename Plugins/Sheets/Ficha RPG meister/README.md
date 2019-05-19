@@ -6,6 +6,10 @@ Proximas Versões
 + Campo de Magia para cristais/essencias.
 + Exportar ficha para texto (completo/simples).
 + Adicionar alcances de magias na aba de magias baseado no NC.
++ Adicionar import/export de lista de magias. Criar alguns XMLs com listas de magia comuns. 
++ Ordenar magias por usos também. 
++ Exibir a CD ao lado da magia. 
++ Popup pericia: competencia, intuição e sorte. 
 
 Versão 3.3
 - Campos editaveis invisiveis tem retangulo diferenciado agora. 

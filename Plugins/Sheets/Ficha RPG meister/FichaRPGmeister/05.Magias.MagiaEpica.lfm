@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagiasMagiaEpica" width="250" height="25" margins="{top=1}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa magia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function showMagiaPopup()
+			local pop = self:findControlByName("popMagiaEpica");
+				
+			if pop ~= nil then
+				pop:setNodeObject(self.sheet);
+				pop:showPopupEx("bottomCenter", self);
+			else
+				showMessage("Ops, bug.. nao encontrei o popup de magia épica para exibir");
+			end;				
+		end;
+
+		local function write(str)
+            local mesa = Firecast.getMesaDe(sheet);
+            if str then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
+		]]>	
+	</script>
+
+	<rectangle align="right" width="25" color="black" strokeColor="white" strokeSize="1">
+		<label align="client" field="idMagia" horzTextAlign="center" fontSize="12"/>
+	</rectangle>
+
+	<edit align="right" width="25" field="used" type="number"/>
+
+	<rectangle align="right" width="25" color="black" strokeColor="white" strokeSize="1">
+		<label align="client" field="cd" horzTextAlign="center" fontSize="12"/>
+	</rectangle>
+
+	<button align="right" width="25" text="i" onClick="showMagiaPopup();"/>
+	<button align="right" width="25" text="X" onClick="askForDelete();"/>
+
+	<edit align="client" field="nomeMagia"/>
+
+	<dataLink fields="{'myCD', 'atr', 'cdExtra'}">
+		<event name="onChange">
+			local cd = (tonumber(sheet.myCD) or 0) +
+						(tonumber(sheet.cdExtra) or 0) + 
+						(tonumber(sheet.atr) or 0) + 20;
+			sheet.cd = cd;
+		</event>
+	</dataLink>
+
+	<dataLink fields="{'used'}">
+		<event name="onChange">
+			if sheet== nil then return end;
+
+			local pai = NDB.getParent(sheet);
+			local avo = NDB.getParent(pai);
+
+			local used = 0;
+			local nodes = NDB.getChildNodes(pai); 
+			for i=1, #nodes, 1 do
+				used = used + (tonumber(nodes[i].used) or 0);
+			end;
+
+			avo.usedEpic = used;
+		</event>
+	</dataLink>
+</form>
