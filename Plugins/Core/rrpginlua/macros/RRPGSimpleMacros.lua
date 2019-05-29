@@ -296,6 +296,7 @@ local function inicializar()
 	-- Register Chat Tool Button
 	
 	local macroButton = {};
+	macroButton.hintLang = "macros.ui.manageMacros";
 	macroButton.hint = lang("macros.ui.manageMacros");
 	macroButton.icon = "/macros/icons/scriptIcon.xml";
 	macroButton.group = "macros";

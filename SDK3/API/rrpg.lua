@@ -342,7 +342,14 @@ function rrpg.registerChatToolButton(params)
 	regClass.eves = {};
 	regClass.eves["onCallback"] = "";
 	
-	_obj_setProp(regClass.handle, "Hint", params.hint);
+	if params.hintLang ~= nil then
+		_obj_setProp(regClass.handle, "HintLang", params.hintLang);
+	end;
+	
+	if params.hint ~= nil then
+		_obj_setProp(regClass.handle, "Hint", params.hint);
+	end;	
+		
 	_obj_setProp(regClass.handle, "IconURL", params.icon);
 	
 	local p = tonumber(params.priority);
