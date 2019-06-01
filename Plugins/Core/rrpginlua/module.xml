@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module sdkVersion="3.5">
+<module sdkVersion="3.6_prealfa_1">
 	<!--O id identifica seu plugin globalmente. Deve ser único, conter apenas caracteres alfanuméricos, underlines, pontos e deve conter ao menos 5 caracteres e um máximo de 40. Uma vez definido o ID, você não deve alterar ele ;) -->
 	<id>RRPG.FIRECAST.FMXModule</id>
 	<!--version é a versão do seu plugin. Quando for lançar uma nova versão do seu módulo, altere aqui =) -->
 	<version>1.0</version>
-	<name>Firecast</name>
-	<description>Contém funcionalidades padrões do Firecast. Não é possível desinstalar este plug-in. </description>
-	<author>Firecast</author>
-	<site>http://www.rrpg.com.br</site>
-	<contact>http://www.rrpg.com.br</contact>
+	
+    <info lang="pt">
+        <!--Informações do plugin na língua "pt". Você pode ter várias tags "info", uma para cada tradução que quiser.-->
+        <name>Firecast</name>
+        <description>Contém funcionalidades padrões do Firecast. Não é possível desinstalar este plug-in.</description>
+        <author>Firecast</author>
+        <site>http://www.rrpg.com.br</site>
+        <contact>http://www.rrpg.com.br</contact>
+    </info>
+	
+    <info lang="en">
+        <!--Informações do plugin na língua "en". Você pode ter várias tags "info", uma para cada tradução que quiser.-->    
+        <description>Contains standard Firecast features. Is not possible to uninstall this plug-in.</description>
+    </info>	
 </module>
