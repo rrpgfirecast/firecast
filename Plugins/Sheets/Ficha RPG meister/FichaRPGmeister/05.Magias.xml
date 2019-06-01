@@ -41,6 +41,12 @@
 			<label align="client" field="$(field)" horzTextAlign="center" fontSize="12" formatFloat="$(format)"/>
 		</flowPart>
 	</template>
+	<template name="magicInfoField">
+		<flowPart minWidth="30" maxWidth="400" height="35">
+			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
+			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
+		</flowPart>
+	</template>
 
 	<template name="magicLevel">
 		<TitleCenter text="$(nivel)"/>
