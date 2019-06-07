@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<form dataType="br.com.rrpg.DnD5_S3" formType="sheetTemplate" title="D&amp;D 5e" name="frmDnD5" theme="dark">
+<form dataType="br.com.rrpg.DnD5_S3" formType="sheetTemplate" title="@@dnd.edition" description="@@dnd.sheet.description" name="frmDnD5" theme="dark">
 	<import file="styles.xml"/>
 	<import file="templates.xml"/>
 	
