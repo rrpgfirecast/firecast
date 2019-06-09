@@ -6,12 +6,15 @@
 		<edit left="300" top="$(top)" width="590" height="25" field="equip_$(field)_desc" vertTextAlign="center" />
 	</template>
 	<scrollBox align="client">
-		<rectangle left="0" top="0" width="895" height="110" color="black" strokeColor="white" strokeSize="1">
-			<label left="0" top="5" width="895" height="25" horzTextAlign="center" text="Equipados"/>
+		<rectangle left="0" top="0" width="895" height="160" color="black" strokeColor="white" strokeSize="1">
+			<label left="100" top="5" width="200" height="25" horzTextAlign="center" text="Itens Equipados"/>
+			<label left="300" top="5" width="590" height="25" horzTextAlign="center" text="Efeitos Adicionais"/>
 
 			<Equipamento top="30" text="Arma" field="arma"/>
 			<Equipamento top="55" text="Equipamento" field="equipamento"/>
 			<Equipamento top="80" text="Vestimenta" field="vestimenta"/>
+			<edit left="100" top="105" width="200" height="25" field="equip_vestimenta1" vertTextAlign="center" />
+			<edit left="100" top="130" width="200" height="25" field="equip_vestimenta2" vertTextAlign="center" />
 		</rectangle>
 
 		<rectangle left="900" top="0" width="310" height="110" color="black" strokeColor="white" strokeSize="1">
@@ -40,14 +43,14 @@
 			</dataLink>
 		</rectangle>
 		
-		<rectangle left="0" top="115" width="1210" height="555" color="black" strokeColor="white" strokeSize="1">
-			<label left="5" top="5" width="200" height="25" horzTextAlign="center" text="Nome"/>
-			<label left="205" top="5" width="700" height="25" horzTextAlign="center" text="Efeito"/>
+		<rectangle left="0" top="165" width="1210" height="505" color="black" strokeColor="white" strokeSize="1">
+			<label left="5" top="5" width="200" height="25" horzTextAlign="center" text="Itens Guardados"/>
+			<label left="205" top="5" width="700" height="25" horzTextAlign="center" text="Efeitos Adicionais"/>
 			<label left="905" top="5" width="150" height="25" horzTextAlign="center" text="Tipo"/>
 			<label left="1055" top="5" width="50" height="25" horzTextAlign="center" text="Qtd"/>
 			<label left="1105" top="5" width="50" height="25" horzTextAlign="center" text="Max"/>
 
-			<recordList left="5" top="30" width="1200" height="520" name="rclInventario" field="listaDeItens" templateForm="frmItem" layout="vertical" minQt="10"/>
+			<recordList left="5" top="30" width="1200" height="470" name="rclInventario" field="listaDeItens" templateForm="frmItem" layout="vertical" minQt="10"/>
 		</rectangle>
 	</scrollBox>
 </form>
