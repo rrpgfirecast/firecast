@@ -1,7 +1,7 @@
 ﻿local rrpg = require("rrpg.lua");
 local Dialogs = require("dialogs.lua");
 local NDB = require("ndb.lua");
-require("locale.lua");
+local Locale = require("locale.lua");
 
 local macros = {};
 local _MACRO_CALL_CO_FUNCTION_RET = "CallSomeFunctionInMainThread";
@@ -144,6 +144,19 @@ function yieldedFunctions.yRolarDado(co, chat, rolagem, msgAdicional)
 		function(rolado)
 			handleCoResume(co, rolado.resultado, rolado);
 		end);
+end;
+
+function yieldedFunctions.yChatSendMessageAndWait(co, chat, functionNameToCall, ...)	
+	local functionToCall = chat[functionNameToCall] ;
+	
+	local parametersPacked = table.pack(...);
+	
+	parametersPacked[#parametersPacked + 1] = 
+		function()
+			handleCoResume(co);
+		end;
+		
+	Locale.withNoEval(functionToCall, chat, table.unpack(parametersPacked));
 end;
 
 function yieldedFunctions.yEsperar(co, milisegundos)	
@@ -331,6 +344,10 @@ local __delayedLoadMacroEnv = {
 	sheet = function(chat, env)
 		return env.getCharacterSheet(env.myCharacter);
 	end;
+	
+	chat = function(chat, env)
+		return cloneTable(chat);
+	end;	
 };
 
 __delayedLoadMacroEnv.myPlayer = __delayedLoadMacroEnv.meuJogador;
@@ -355,7 +372,7 @@ local function createMacroEnvTable(chat)
 	env.write = env.escrever;
 	
 	function env.enviar(texto)
-		chat:enviarMensagem(texto);
+		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yChatSendMessageAndWait', chat, 'enviarMensagem', texto); 
 	end;		
 	
 	env.send = env.enviar;
@@ -388,19 +405,19 @@ local function createMacroEnvTable(chat)
 	env.wait = env.esperar;
 	
 	function env.agir(acao)
-		chat:enviarAcao(acao);
+		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yChatSendMessageAndWait', chat, 'enviarAcao', acao); 	
 	end;
 	
 	env.act = env.agir;
 		
 	function env.narrar(narracao)
-		chat:enviarNarracao(narracao);
+		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yChatSendMessageAndWait', chat, 'enviarNarracao', narracao);	
 	end;
 	
 	env.narrate = env.narrar;
 	
-	function env.enviarNPC(npc, msg)
-		chat:enviarMensagemNPC(npc, msg);
+	function env.enviarNPC(npc, msg)		
+		return coroutine.yield(_MACRO_CALL_CO_FUNCTION_RET, 'yChatSendMessageAndWait', chat, 'enviarMensagemNPC', npc, msg);			
 	end;
 	
 	env.sendNPC = env.enviarNPC;
@@ -868,8 +885,7 @@ function macros.compileMacro(body, chat, macroName, endCallback)
 				end;
 			end;
 		end;
-	
-		
+			
 		local f, errorMsg = load(body, "/" .. string.lower(macroName), "t", ambiente);
 		
 		if f == nil then
@@ -878,13 +894,16 @@ function macros.compileMacro(body, chat, macroName, endCallback)
 		end;
 			
 		local function macroLauncher(...)
-			local packedReturn = table.pack(pcall(f, ...));
-			
-			if not packedReturn[1] then
-				reraise(packedReturn[2])
-			else			
-				return table.unpack(packedReturn, 2);
-			end;
+			return Locale.withNoEval(
+				function(...)
+					local packedReturn = table.pack(pcall(f, ...));
+					
+					if not packedReturn[1] then
+						reraise(packedReturn[2])
+					else			
+						return table.unpack(packedReturn, 2);
+					end;
+				end, ...);
 		end;
 			
 		local co = coroutine.create(macroLauncher);		
