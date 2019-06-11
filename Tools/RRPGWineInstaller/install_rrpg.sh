@@ -174,34 +174,36 @@ fi
 prepare_installer_environment
 
 
-#instalação do wine, winetricks e winbind (requerido)
-
+#instalação do wine, winbind (requerido) e imagemagick
 set e-
 
 log_progress "Installing apt packages..."
 
-silent_eval_with_error_care "sudo apt-get install -y --install-recommends $WINE_PACKAGE winetricks winbind imagemagick"
+silent_eval_with_error_care "sudo apt-get install -y --install-recommends $WINE_PACKAGE winbind imagemagick"
 
-#criação e configuração do prefix 32bits exclusivo pro RRPG
+#criação do prefix 32bits exclusivo pro RRPG
 log_progress "Preparing wine prefix..."
 
 rm -rf $WINEPREFIX
 silent_eval_with_error_care "$WINE_FIRST_PREFIX_BOOT_ARGS $WINE wineboot"
 
+#download do winetricks mais recente
+silent_eval "wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
+silent_eval "chmod +x ./winetricks"
+
+#configuração do prefix
 log_progress "Installing winetricks components..."
 
-silent_eval_with_error_care "winetricks -q gdiplus ole32 windowscodecs wininet mfc42 riched30 d3dx11_43"
-silent_eval_with_error_care "winetricks -q win10"
+silent_eval_with_error_care "./winetricks -q gdiplus ole32 windowscodecs wininet mfc42 riched30 d3dx11_43"
+silent_eval_with_error_care "./winetricks -q win10"
 
 #download do instalador
-
 if [ ! -f ./$RRPG_INSTALLER_NAME ]; then
     log_progress "Downloading RRPG installer..." 
     silent_eval_with_error_care "wget $SILENT_Q_FLAG $RRPG_INSTALLER_URL -O ./$RRPG_INSTALLER_NAME"
 fi
 
 #start do instalador do RRPG
-
 log_progress "Installing RRPG..."
 silent_eval_with_error_care "$WINE ./$RRPG_INSTALLER_NAME /VERYSILENT /WINE"
 
@@ -223,7 +225,7 @@ cat <<EOF >$RRPG_INSTALL_DIRECTORY/wine/rrpg.sh
 #!/bin/sh
 export WINEARCH=$WINEARCH
 export WINEPREFIX=$WINEPREFIX
-$WINE $RRPG_INSTALL_DIRECTORY/rrpg.exe
+$WINE $RRPG_INSTALL_DIRECTORY/rrpg.exe \$1
 EOF
 
 silent_eval_with_error_care "chmod +x $RRPG_INSTALL_DIRECTORY/wine/rrpg.sh"
@@ -242,7 +244,8 @@ cat <<EOF >$RRPG_INSTALL_DIRECTORY/wine/rrpg.desktop
 [Desktop Entry]
 Type=Application
 GenericName=RRPG
-Exec=$RRPG_INSTALL_DIRECTORY/wine/rrpg.sh
+Exec=$RRPG_INSTALL_DIRECTORY/wine/rrpg.sh %f
+MimeType=application/x-rrpg-plugin-package
 Icon=rrpg
 Name=RRPG Firecast
 Name[en_US]=RRPG Firecast
@@ -251,7 +254,22 @@ EOF
 
 silent_eval "desktop-file-install --dir=$HOME/.local/share/applications $RRPG_INSTALL_DIRECTORY/wine/rrpg.desktop"
 
+cat <<EOF >$RRPG_INSTALL_DIRECTORY/wine/rrpg-firecast.xml
+<?xml version="1.0"?>
+<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+  <mime-type type="application/x-rrpg-plugin-package">  
+    <comment>Plugin do RRPG Firecast</comment>
+    <glob pattern="*.rpk"/>
+  </mime-type>
+</mime-info>
+EOF
+
+silent_eval "xdg-icon-resource install --context mimetypes --size 128 $RRPG_INSTALL_DIRECTORY/wine/images/rrpg-firecast-plugin.png application-x-rrpg-plugin-package"
+silent_eval "xdg-mime install $RRPG_INSTALL_DIRECTORY/wine/rrpg-firecast.xml"
+silent_eval "xdg-mime default rrpg.desktop application/x-rrpg-plugin-package"
+
 rm ./$RRPG_INSTALLER_NAME
+rm ./winetricks
 
 echo ""
 echo ""
