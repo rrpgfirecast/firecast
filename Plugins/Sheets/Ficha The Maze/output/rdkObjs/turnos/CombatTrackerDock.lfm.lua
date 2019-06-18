@@ -128,19 +128,6 @@ local function constructNew_frmCombatTracker()
 				node.vez = true;
 				self.rclAtores:scrollToNode(node);
 			end;
-						
-			if (type(node.nome) == "string" and node.nome ~= "") and
-               (not oldEstavaNaVez)	then
-				local headerTralha = "[§K15] >>";
-				local footerTralha = "";
-				local notificacaoDeTurno = "[§K1]" .. headerTralha .. "[§K1] Turno de " .. self:getNomeColoridoDe(node) .. "[§K1] " .. footerTralha;
-			
-				if (NDB.getPermission(node, "group", "espectadores", "read") ~= "deny") then			   
-					self:narrar(notificacaoDeTurno);
-				else					
-					self:escrever(notificacaoDeTurno);
-				end;
-			end;
 		end;
 		
 		local scheduledSort = false;
@@ -313,8 +300,13 @@ local function constructNew_frmCombatTracker()
 			Dialogs.confirmYesNo("Deseja realmente limpar o Tracker de Combate?",
 				function(confirmado)
 					if confirmado then
-						n.atores = {};
-						n.rodada = 1;
+						local atores = getAtoresNodes();
+
+						for i = 1, #atores, 1 do
+							atores[i].iniciativa = 0;
+						end;
+						
+						n.rodada = 0;
 						n.relogio = 0;
 					end;
 				end);

@@ -203,7 +203,7 @@ local function constructNew_frmInventory()
     obj.comboBox1:setWidth(300);
     obj.comboBox1:setHeight(25);
     obj.comboBox1:setField("armazenamento1");
-    obj.comboBox1:setItems({'', 'Coldre', 'Bolsa Grande'});
+    obj.comboBox1:setItems({'', 'Coldre Pequeno', 'Coldre Grande'});
     obj.comboBox1:setValues({'0','4','6'});
     obj.comboBox1:setName("comboBox1");
 
@@ -214,7 +214,7 @@ local function constructNew_frmInventory()
     obj.comboBox2:setWidth(300);
     obj.comboBox2:setHeight(25);
     obj.comboBox2:setField("armazenamento2");
-    obj.comboBox2:setItems({'', 'Coldre', 'Bolsa Grande'});
+    obj.comboBox2:setItems({'', 'Coldre Pequeno', 'Coldre Grande'});
     obj.comboBox2:setValues({'0','4','6'});
     obj.comboBox2:setName("comboBox2");
 

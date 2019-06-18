@@ -19,8 +19,8 @@
 
 		<rectangle left="900" top="0" width="310" height="110" color="black" strokeColor="white" strokeSize="1">
 			<label left="0" top="5" width="310" height="25" horzTextAlign="center" text="Armazenamento"/>
-			<comboBox left="5" top="30" width="300" height="25" field="armazenamento1" items="{'', 'Coldre', 'Bolsa Grande'}" values="{'0','4','6'}"/>
-			<comboBox left="5" top="55" width="300" height="25" field="armazenamento2" items="{'', 'Coldre', 'Bolsa Grande'}" values="{'0','4','6'}"/>
+			<comboBox left="5" top="30" width="300" height="25" field="armazenamento1" items="{'', 'Coldre Pequeno', 'Coldre Grande'}" values="{'0','4','6'}"/>
+			<comboBox left="5" top="55" width="300" height="25" field="armazenamento2" items="{'', 'Coldre Pequeno', 'Coldre Grande'}" values="{'0','4','6'}"/>
 			<comboBox left="5" top="80" width="300" height="25" field="armazenamento3" items="{'+0', '+1', '+2', '+3', '+4', '+5', '+6'}" values="{'0','1','2','3','4','5','6'}"/>
 
 			<dataLink fields="{'armazenamento1','armazenamento2','armazenamento3'}">

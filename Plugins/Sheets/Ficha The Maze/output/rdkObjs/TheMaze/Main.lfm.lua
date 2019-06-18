@@ -3270,7 +3270,7 @@ local function constructNew_frmMain()
     obj.comboBox2:setWidth(300);
     obj.comboBox2:setHeight(25);
     obj.comboBox2:setField("armazenamento1");
-    obj.comboBox2:setItems({'', 'Coldre', 'Bolsa Grande'});
+    obj.comboBox2:setItems({'', 'Coldre Pequeno', 'Coldre Grande'});
     obj.comboBox2:setValues({'0','4','6'});
     obj.comboBox2:setName("comboBox2");
 
@@ -3281,7 +3281,7 @@ local function constructNew_frmMain()
     obj.comboBox3:setWidth(300);
     obj.comboBox3:setHeight(25);
     obj.comboBox3:setField("armazenamento2");
-    obj.comboBox3:setItems({'', 'Coldre', 'Bolsa Grande'});
+    obj.comboBox3:setItems({'', 'Coldre Pequeno', 'Coldre Grande'});
     obj.comboBox3:setValues({'0','4','6'});
     obj.comboBox3:setName("comboBox3");
 
@@ -5050,17 +5050,17 @@ local function constructNew_frmMain()
             
             					-- PODER
             
-            					sheet.poderFisicoBase = agilidade * 2 + cac * 5 + destreza * 4 + precisao * 3 + sorte * 3;
-            					sheet.poderParanormalBase = destreza * 4 + precisao * 3 + paranormalidade * 5 + sorte * 3;
-            					sheet.poderProjetilBase = destreza * 4 + precisao * 5 + sorte * 4;
+            					sheet.poderFisicoBase = agilidade * 2 + cac * 4 + destreza * 3 + precisao * 2 + sorte * 2;
+            					sheet.poderParanormalBase = destreza * 3 + precisao * 2 + paranormalidade * 4 + sorte * 2;
+            					sheet.poderProjetilBase = destreza * 3 + precisao * 4 + sorte * 3;
             
             					-- STATUS DE COMBATE
             
-            					sheet.regVidaBase = 8 + math.floor(cac/4)*5;
+            					sheet.regVidaBase = 8 + math.floor(cac/4)*4;
             					sheet.regFadigaBase = 5 + math.floor(paranormalidade/4)*3;
             					sheet.iniciativaBase = math.floor(agilidade/6);
             					sheet.criticoBase = 1 + math.floor(sorte/4);
-            					sheet.amplificacaoBase = math.floor(destreza/4)*20;
+            					sheet.amplificacaoBase = math.floor(destreza/4)*10;
             					sheet.negacaoBase = math.floor(precisao/4)*10;
             
             					-- REDUTORES
