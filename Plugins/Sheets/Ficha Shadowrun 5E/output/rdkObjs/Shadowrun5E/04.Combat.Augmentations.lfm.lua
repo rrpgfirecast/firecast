@@ -111,10 +111,10 @@ local function constructNew_frmAugmentation()
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
-            dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+            Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
             					function (confirmado)
             						if confirmado then
-            							ndb.deleteNode(sheet);
+            							NDB.deleteNode(sheet);
             						end;
             				end);
         end, obj);
@@ -123,8 +123,8 @@ local function constructNew_frmAugmentation()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            				local node = ndb.getRoot(sheet);
-            				local objetos = ndb.getChildNodes(node.augmentationsList);
+            				local node = NDB.getRoot(sheet);
+            				local objetos = NDB.getChildNodes(node.augmentationsList);
             				local price = 0;
             
             				for i=1, #objetos, 1 do 
@@ -138,8 +138,8 @@ local function constructNew_frmAugmentation()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            				local node = ndb.getRoot(sheet);
-            				local objetos = ndb.getChildNodes(node.augmentationsList);
+            				local node = NDB.getRoot(sheet);
+            				local objetos = NDB.getChildNodes(node.augmentationsList);
             				local essence = 0;
             
             				for i=1, #objetos, 1 do 

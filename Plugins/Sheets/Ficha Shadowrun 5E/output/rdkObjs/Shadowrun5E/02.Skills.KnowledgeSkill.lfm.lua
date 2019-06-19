@@ -120,10 +120,10 @@ local function constructNew_frmKnowledgeSkill()
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (_)
-            dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+            Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
             					function (confirmado)
             						if confirmado then
-            							ndb.deleteNode(sheet);
+            							NDB.deleteNode(sheet);
             						end;
             				end);
         end, obj);
@@ -141,8 +141,8 @@ local function constructNew_frmKnowledgeSkill()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            				local node = ndb.getRoot(sheet);
-            				local objetos = ndb.getChildNodes(node.knowledgeList);
+            				local node = NDB.getRoot(sheet);
+            				local objetos = NDB.getChildNodes(node.knowledgeList);
             				local karma = 0;
             
             				for i=1, #objetos, 1 do 
@@ -157,15 +157,15 @@ local function constructNew_frmKnowledgeSkill()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            				local node = ndb.getRoot(sheet);
-            				local objetos = ndb.getChildNodes(node.knowledgeList);
+            				local node = NDB.getRoot(sheet);
+            				local objetos = NDB.getChildNodes(node.knowledgeList);
             				local points = 0;
             
             				for i=1, #objetos, 1 do 
             					points = points + (tonumber(objetos[i].skill_points) or 0);
             				end;
             
-            				local objetos = ndb.getChildNodes(node.languageList);
+            				local objetos = NDB.getChildNodes(node.languageList);
             
             				for i=1, #objetos, 1 do 
             					points = points + (tonumber(objetos[i].skill_points) or 0);
@@ -178,8 +178,8 @@ local function constructNew_frmKnowledgeSkill()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            				local node = ndb.getRoot(sheet);
-            				local objetos = ndb.getChildNodes(node.knowledgeList);
+            				local node = NDB.getRoot(sheet);
+            				local objetos = NDB.getChildNodes(node.knowledgeList);
             				local base = 0;
             
             				for i=1, #objetos, 1 do 

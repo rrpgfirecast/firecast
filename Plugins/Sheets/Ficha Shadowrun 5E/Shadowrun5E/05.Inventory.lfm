@@ -13,7 +13,7 @@
 
 			<recordList name="rclGearList" field="gearList" templateForm="frmGear" left="5" top="50" width="350" height="625" layout="vertical">
 				<event name="onCompare">
-					return utils.compareStringPtBr(nodeA.gear_name, nodeB.gear_name);
+					return Utils.compareStringPtBr(nodeA.gear_name, nodeB.gear_name);
 		        </event>
 			</recordList>
 		</layout>

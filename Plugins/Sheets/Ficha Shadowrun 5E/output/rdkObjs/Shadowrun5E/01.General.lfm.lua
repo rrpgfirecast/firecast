@@ -5025,9 +5025,9 @@ local function constructNew_frmGeneral()
             						pop.node.skill_group_karma_bonus = (tonumber(pop.node.skill_group_karma_bonus) or 0) + 1;
             						pop.node.skill_group_karma_spent = (tonumber(pop.node.skill_group_karma_spent) or 0) + (total*5);
             
-            						local objetos = ndb.getChildNodes(sheet.skillList);
+            						local objetos = NDB.getChildNodes(sheet.skillList);
             						for i=1, #objetos, 1 do 
-            							if utils.compareStringPtBr(objetos[i].skill_group_name, pop.node.skill_group_name) == 0 then
+            							if Utils.compareStringPtBr(objetos[i].skill_group_name, pop.node.skill_group_name) == 0 then
             								objetos[i].skill_group_karma_bonus = pop.node.skill_group_karma_bonus;
             								objetos[i].skill_group_karma_spent = pop.node.skill_group_karma_spent;
             							end;
@@ -5492,8 +5492,8 @@ local function constructNew_frmGeneral()
     obj._e_event26 = obj.button5:addEventListener("onClick",
         function (_)
             local teste = (sheet.initiativePhysicalDice or 1) .. "d6 + " .. (sheet.initiativePhysical or 0); 
-            						local rolagem = rrpg.interpretarRolagem(teste);
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            						local rolagem = Firecast.interpretarRolagem(teste);
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa de " .. (sheet.name or "name"));
         end, obj);
 
@@ -5511,8 +5511,8 @@ local function constructNew_frmGeneral()
     obj._e_event28 = obj.button6:addEventListener("onClick",
         function (_)
             local teste = (sheet.initiativeMatrixDice or 1) .. "d6 + " .. (sheet.initiativeMatrix or 0); 
-            						local rolagem = rrpg.interpretarRolagem(teste);
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            						local rolagem = Firecast.interpretarRolagem(teste);
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa da Matrix de " .. (sheet.name or "name"));
         end, obj);
 
@@ -5530,8 +5530,8 @@ local function constructNew_frmGeneral()
     obj._e_event30 = obj.button7:addEventListener("onClick",
         function (_)
             local teste = (sheet.initiativeAstralDice or 1) .. "d6 + " .. (sheet.initiativeAstral or 0); 
-            						local rolagem = rrpg.interpretarRolagem(teste);
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            						local rolagem = Firecast.interpretarRolagem(teste);
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa Astral de " .. (sheet.name or "name"));
         end, obj);
 

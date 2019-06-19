@@ -9,10 +9,10 @@
 
 		<button left="400" top="0" width="25" height="25" text="X">
 			<event name="onClick">
-				dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+				Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
 					function (confirmado)
 						if confirmado then
-							ndb.deleteNode(sheet);
+							NDB.deleteNode(sheet);
 						end;
 				end);
 			</event>
@@ -22,8 +22,8 @@
 			<event name="onChange">
 				if sheet==nil then return end;
 
-				local node = ndb.getRoot(sheet);
-				local objetos = ndb.getChildNodes(node.augmentationsList);
+				local node = NDB.getRoot(sheet);
+				local objetos = NDB.getChildNodes(node.augmentationsList);
 				local price = 0;
 
 				for i=1, #objetos, 1 do 
@@ -38,8 +38,8 @@
 			<event name="onChange">
 				if sheet==nil then return end;
 
-				local node = ndb.getRoot(sheet);
-				local objetos = ndb.getChildNodes(node.augmentationsList);
+				local node = NDB.getRoot(sheet);
+				local objetos = NDB.getChildNodes(node.augmentationsList);
 				local essence = 0;
 
 				for i=1, #objetos, 1 do 

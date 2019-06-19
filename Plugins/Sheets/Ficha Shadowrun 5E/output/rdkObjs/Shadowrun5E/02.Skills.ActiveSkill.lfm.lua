@@ -116,7 +116,7 @@ local function constructNew_frmActiveSkill()
 				local contain = false;
 
 				for i=1, #array, 1 do
-					if utils.compareStringPtBr(array[i], word)==0 then
+					if Utils.compareStringPtBr(array[i], word)==0 then
 						contain = true;
 					end;
 				end;
@@ -140,10 +140,10 @@ local function constructNew_frmActiveSkill()
 
     obj._e_event1 = obj.button2:addEventListener("onClick",
         function (_)
-            dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+            Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
             					function (confirmado)
             						if confirmado then
-            							ndb.deleteNode(sheet);
+            							NDB.deleteNode(sheet);
             						end;
             				end);
         end, obj);
@@ -163,8 +163,8 @@ local function constructNew_frmActiveSkill()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            				local node = ndb.getRoot(sheet);
-            				local objetos = ndb.getChildNodes(node.skillList);
+            				local node = NDB.getRoot(sheet);
+            				local objetos = NDB.getChildNodes(node.skillList);
             				local karma = 0;
             				local groups = {};
             
@@ -184,8 +184,8 @@ local function constructNew_frmActiveSkill()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            				local node = ndb.getRoot(sheet);
-            				local objetos = ndb.getChildNodes(node.skillList);
+            				local node = NDB.getRoot(sheet);
+            				local objetos = NDB.getChildNodes(node.skillList);
             				local points = 0;
             				local groups = {};
             
@@ -203,8 +203,8 @@ local function constructNew_frmActiveSkill()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            				local node = ndb.getRoot(sheet);
-            				local objetos = ndb.getChildNodes(node.skillList);
+            				local node = NDB.getRoot(sheet);
+            				local objetos = NDB.getChildNodes(node.skillList);
             				local points = 0;
             
             				for i=1, #objetos, 1 do 
@@ -218,8 +218,8 @@ local function constructNew_frmActiveSkill()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            				local node = ndb.getRoot(sheet);
-            				local objetos = ndb.getChildNodes(node.skillList);
+            				local node = NDB.getRoot(sheet);
+            				local objetos = NDB.getChildNodes(node.skillList);
             				local base = 0;
             
             				for i=1, #objetos, 1 do 

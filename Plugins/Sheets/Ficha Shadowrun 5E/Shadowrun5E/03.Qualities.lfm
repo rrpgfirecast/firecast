@@ -12,7 +12,7 @@
 
 			<recordList name="rclPositiveQualities" field="positiveQualityList" templateForm="frmQuality" left="5" top="50" width="400" height="625" layout="vertical">
 				<event name="onCompare">
-					return utils.compareStringPtBr(nodeA.quality_name, nodeB.quality_name);
+					return Utils.compareStringPtBr(nodeA.quality_name, nodeB.quality_name);
 		        </event>
 			</recordList>
 		</layout>
@@ -28,7 +28,7 @@
 
 			<recordList name="rclNegativeQualities" field="negativeQualityList" templateForm="frmQuality" left="5" top="50" width="400" height="625" layout="vertical">
 				<event name="onCompare">
-					return utils.compareStringPtBr(nodeA.quality_name, nodeB.quality_name);
+					return Utils.compareStringPtBr(nodeA.quality_name, nodeB.quality_name);
 		        </event>
 			</recordList>
 		</layout>
@@ -45,7 +45,7 @@
 
 			<recordList name="rclContacts" field="contactList" templateForm="frmContact" left="5" top="50" width="350" height="625" layout="vertical">
 				<event name="onCompare">
-					return utils.compareStringPtBr(nodeA.contact_name, nodeB.contact_name);
+					return Utils.compareStringPtBr(nodeA.contact_name, nodeB.contact_name);
 		        </event>
 			</recordList>
 		</layout>

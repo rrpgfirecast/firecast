@@ -18,7 +18,7 @@
 
 			<recordList name="rclRangedWeapons" field="rangedWeaponsList" templateForm="frmRanged" left="5" top="50" width="530" height="280" layout="vertical">
 				<event name="onCompare">
-					return utils.compareStringPtBr(nodeA.ranged_weapon, nodeB.ranged_weapon);
+					return Utils.compareStringPtBr(nodeA.ranged_weapon, nodeB.ranged_weapon);
 		        </event>
 			</recordList>
 		</layout>
@@ -38,7 +38,7 @@
 
 			<recordList name="rclMeleeWeapons" field="meleeWeaponsList" templateForm="frmMelee" left="5" top="50" width="440" height="280" layout="vertical">
 				<event name="onCompare">
-					return utils.compareStringPtBr(nodeA.melee_weapon, nodeB.melee_weapon);
+					return Utils.compareStringPtBr(nodeA.melee_weapon, nodeB.melee_weapon);
 		        </event>
 			</recordList>
 		</layout>
@@ -56,7 +56,7 @@
 
 			<recordList name="rclAugmentations" field="augmentationsList" templateForm="frmAugmentation" left="5" top="50" width="450" height="280" layout="vertical">
 				<event name="onCompare">
-					return utils.compareStringPtBr(nodeA.augmentation_name, nodeB.augmentation_name);
+					return Utils.compareStringPtBr(nodeA.augmentation_name, nodeB.augmentation_name);
 		        </event>
 			</recordList>
 		</layout>
@@ -74,7 +74,7 @@
 
 			<recordList name="rclArmor" field="armorList" templateForm="frmArmor" left="5" top="50" width="350" height="280" layout="vertical">
 				<event name="onCompare">
-					return utils.compareStringPtBr(nodeA.armor_name, nodeB.armor_name);
+					return Utils.compareStringPtBr(nodeA.armor_name, nodeB.armor_name);
 		        </event>
 			</recordList>
 		</layout>

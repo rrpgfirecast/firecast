@@ -87,7 +87,6 @@ local function constructNew_frmRanged()
     obj.edit5:setHeight(25);
     obj.edit5:setField("ranged_mode");
     obj.edit5:setHorzTextAlign("center");
-    obj.edit5:setType("number");
     obj.edit5:setName("edit5");
 
     obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
@@ -155,10 +154,10 @@ local function constructNew_frmRanged()
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
-            dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+            Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
             					function (confirmado)
             						if confirmado then
-            							ndb.deleteNode(sheet);
+            							NDB.deleteNode(sheet);
             						end;
             				end);
         end, obj);
@@ -167,8 +166,8 @@ local function constructNew_frmRanged()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            				local node = ndb.getRoot(sheet);
-            				local objetos = ndb.getChildNodes(node.rangedWeaponsList);
+            				local node = NDB.getRoot(sheet);
+            				local objetos = NDB.getChildNodes(node.rangedWeaponsList);
             				local price = 0;
             
             				for i=1, #objetos, 1 do 
@@ -182,8 +181,8 @@ local function constructNew_frmRanged()
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
-            				local node = ndb.getRoot(sheet);
-            				local objetos = ndb.getChildNodes(node.rangedWeaponsList);
+            				local node = NDB.getRoot(sheet);
+            				local objetos = NDB.getChildNodes(node.rangedWeaponsList);
             				local weight = 0;
             
             				for i=1, #objetos, 1 do 
