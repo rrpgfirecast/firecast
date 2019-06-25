@@ -342,9 +342,6 @@ function rrpg.registerChatToolButton(params)
 	regClass.eves = {};
 	regClass.eves["onCallback"] = "";
 	
-	if params.hintLang ~= nil then
-		_obj_setProp(regClass.handle, "HintLang", params.hintLang);
-	end;
 	
 	if params.hint ~= nil then
 		_obj_setProp(regClass.handle, "Hint", params.hint);

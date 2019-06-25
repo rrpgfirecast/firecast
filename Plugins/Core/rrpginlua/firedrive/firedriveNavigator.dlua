@@ -17,7 +17,7 @@ function nav.criarAddPopup(ctrl)
 	local btnDir = GUI.newButton();
 	btnDir.align = "top";
 	btnDir.margins = {left=5, right=5, top=5, bottom=5};
-	btnDir.text = "Novo diretório";
+	btnDir.text = "@@firedrive.newDirectory";
 	btnDir.height = 40;
 	btnDir.parent = pop;
 	
@@ -41,13 +41,13 @@ function nav.criarAddPopup(ctrl)
 	
 	local labUpload = GUI.newLabel();
 	labUpload.horzTextAlign = "leading";
-	labUpload.text = "Fazer Upload";
+	labUpload.text = "@@firedrive.uploadFile";
 	labUpload.align = "client";
 	labUpload.parent = btnUpload;
 	
 	
 	btnDir.onClick = function()
-						dialogs.inputQuery("Nome do diretório", "Nome do novo diretório:", nil,
+						dialogs.inputQuery("@@firedrive.newDirectory.name", "@@(firedrive.newDirectory.prompt):", nil,
 							function(informado)
 								pop:close();	
 								ctrl:setLoading();										
@@ -82,7 +82,7 @@ function nav.criarAddPopup(ctrl)
 								end;
 							end;
 							
-							dialogs.openFile("Selecione arquivos para fazer upload", filtroAbrir, true, 
+							dialogs.openFile("@@firedrive.uploadFile.prompt", filtroAbrir, true, 
 								function(files)
 									pop:close();	
 								
@@ -121,17 +121,16 @@ function nav.criarItemMenuPopup(ctrl)
 		return btn;
 	end;
 	
-	local btnRename = newMenuBtn("Renomear...");
-	local btnDelete = newMenuBtn("Excluir");
-	local btnCopyURL = newMenuBtn("Copiar link de download");	
-	--local btnTeste = newMenuBtn("Botao 2");
+	local btnRename = newMenuBtn("@@firedrive.mgr.renameAction");
+	local btnDelete = newMenuBtn("@@firedrive.mgr.deleteAction");
+	local btnCopyURL = newMenuBtn("@@firedrive.mgr.copyURLAction");	
 	
 	pop.height = totalH + 8;
 	
 	btnDelete.onClick = function()
 							local itemUrlToDel = itemUrl;
 	
-							dialogs.confirmYesNo("Deseja realmente excluir '" .. itemName .. "'?", 
+							dialogs.confirmYesNo(string.format(lang('firedrive.mgr.deleteAction.promptFmt'), itemName), 
 								function(confirmado)
 									if confirmado then
 										pop:close();
@@ -163,7 +162,7 @@ function nav.criarItemMenuPopup(ctrl)
 	btnRename.onClick = function()
 			local oldCompleteFileName = itemUrl;
 	
-			dialogs.inputQuery("Digite um novo nome", "Novo nome", extractFileName(oldCompleteFileName),
+			dialogs.inputQuery("@@firedrive.mgr.renameAction.prompt", "@@firedrive.mgr.renameAction.name", extractFileName(oldCompleteFileName),
 				function(nv)
 					local nvParts = breakPathIntoParts(nv);
 					
@@ -558,7 +557,7 @@ function nav.newFDNavigatorLayout()
 				function(errorMsg)
 					uploadObject:setErrorState(errorMsg);
 					uploadObject:finalizar();
-					ctrl:notifyError(string.format("Erro ao fazer upload do arquivo '%s': %s", fileName, errorMsg));											
+					ctrl:notifyError(string.format(lang('firedrive.uploadFile.errorFmt'), fileName, errorMsg));											
 				end);		
 			end,
 			
@@ -610,7 +609,7 @@ function nav.newFDNavigatorLayout()
 					quantificador = "Bytes";
 				end;
 				
-				labSpaceInfo.text = string.format("Usado: %2.2f / %1.1f %s", used / divisor, total / divisor, quantificador);
+				labSpaceInfo.text = string.format(lang('firedrive.space.usedSpaceFmt'), used / divisor, total / divisor, quantificador);
 			end);
 	end;
 	

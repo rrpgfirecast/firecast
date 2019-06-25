@@ -221,7 +221,6 @@
 		
 	<event name="onScopeNodeChanged">verificarTipoDoItem();</event>
 	<event name="onDblClick">abrir();</event>
-	<!--<event name="onTap">showMessage("tap");</event>-->
 	<event name="onMenu">exibirMenu();</event>
 	
 	<dataLink field="urlThumb64" onChange="verificarTipoDoItem();"/>

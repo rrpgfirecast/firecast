@@ -40,7 +40,7 @@
 			local KG = require("/knowGold/knowGoldPanel.dlua");
 			
 			self.panKG = KG.newPanel();
-			self.panKG:setInfo("FireDrive é uma hospedagem de arquivos na internet exclusiva para assinantes RRPG Gold");
+			self.panKG:setInfo("@@firedrive.premium.goldExclusiveInfo");
 			self.panKG.parent = self.layCentro;		
 		end;
 		
