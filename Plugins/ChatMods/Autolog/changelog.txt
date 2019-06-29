@@ -1,5 +1,9 @@
 ﻿CHANGELOG:
 
+v1.2.6
+- Adição da opção de gravar logs de mesa separados por dia de início
+===================================================================================
+
 v1.2.5
 - Compatibilização com Firecast 7.8
 

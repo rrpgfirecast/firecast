@@ -8,6 +8,7 @@ if(autolog == nil) then
 	autolog = {};
 	autolog.enabled = true;
 	autolog.useLoginForPvtName = false;
+	autolog.singleLogFile = true;
 	autolog.mesas = {};
 end
 
@@ -23,8 +24,8 @@ function toogleAutolog(mesa)
 		autolog.mesas[mesa.nome].enabled = false;
 	else
 		autolog.mesas[mesa.nome].enabled = true;
-	end	
-	
+	end
+
 	return autolog.mesas[mesa.nome].enabled;
 end
 
@@ -33,13 +34,20 @@ function enableAutolog(mesa, state)
 end
 
 -- Copia o conteúdo do log da mesa informada para a área de transferência
-function readLog(mesa)	
-	local logFile = "/Logs/" .. mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','') .. "/Mesa.log";
-		
+function readLog(mesa)
+	local logFile;
+
+	if autolog.singleLogFile ~= false then
+		autolog.singleLogFile = true;
+		logFile = "/Logs/" .. mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','') .. "/Mesa.log";
+	else
+		logFile = autolog.mesas[mesa.nome].currentLogDir .. "/Mesa.log";
+	end
+
 	if VHD.fileExists(logFile) then
 		fileStream = VHD.openFile(logFile, "r");
 		local logText = fileStream:readBinary("ansi");
-		
+
 		if fileStream == nil then
 			mesa.chat:escrever("Falha ao ler Log");
 		else
@@ -47,9 +55,9 @@ function readLog(mesa)
 				mesa.chat:escrever("Log Copiado!");
 			else
 				mesa.chat:escrever("Falha ao copiar o log para o clipboard!");
-			end					
+			end
 		end
-				
+
 		fileStream:close();
 	else
 		mesa.chat:escrever("Log não encontrado!");
@@ -58,7 +66,14 @@ end
 
 -- Exporta o arquivo de log da mesa principal para um txt externo
 function exportLog(mesa)
-	local logFile = "/Logs/" .. mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','') .. "/Mesa.log";
+	local logFile;
+
+	if autolog.singleLogFile ~= false then
+		autolog.singleLogFile = true;
+		logFile = "/Logs/" .. mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','') .. "/Mesa.log";
+	else
+		logFile = autolog.mesas[mesa.nome].currentLogDir .. "/Mesa.log";
+	end
 
 	if VHD.fileExists(logFile) then
 		fileStream = VHD.openFile(logFile, "r");
@@ -83,13 +98,14 @@ function getConfigWindow(mesa)
 	end
 
 	local cfgForm = GUI.newForm("autologConfigPanel");
-	
+
 	cfgForm.mesa = mesa
 	cfgForm.enableCheckBox.checked = autolog.mesas[mesa.nome].enabled;
 	cfgForm.useLoginForPvtCheckBox.checked = autolog.useLoginForPvtName;
+	cfgForm.singleLogFileCheckBox.checked = not autolog.singleLogFile;
 	cfgForm.title = "Autolog - " .. mesa.nome;
 	-- aqui vem as inicializações dos itens do painel.
-	
+
 	return cfgForm;
 end
 
@@ -102,7 +118,7 @@ function clearLog(mesa)
 		end;
 	end
 
-	Dialogs.showMessageDlg("Atenção! Todos os logs da mesa " .. mesa.nome .. " Serão apagados IRREVERSÍVELMENTE. Tem certeza?", Dialogs.DT_WARNING, {Dialogs.DB_YES, Dialogs.DB_NO}, userInput);
+	Dialogs.showMessageDlg("Atenção! TODOS Os logs da mesa " .. mesa.nome .. " Serão apagados IRREVERSÍVELMENTE. Tem certeza?", Dialogs.DT_WARNING, {Dialogs.DB_YES, Dialogs.DB_NO}, userInput);
 end
 
 function sendLastMessages(mesa, qtdLines)
@@ -110,7 +126,17 @@ function sendLastMessages(mesa, qtdLines)
 		return;
 	end
 
-	local logFile = "/Logs/" .. mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','') .. "/Mesa.log";
+	local logFile;
+
+	if autolog.singleLogFile ~= false then
+		autolog.singleLogFile = true;
+		logFile = "/Logs/" .. mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','');
+	else
+		logFile =  autolog.mesas[mesa.nome].currentLogDir;
+	end
+	
+	logFile = logFile .. "/Mesa.log";
+
 	local logLines;
 
 	if VHD.fileExists(logFile) then
@@ -155,7 +181,7 @@ function commandCallback(message)
 		autolog.mesas[message.mesa.nome] = {};
 		autolog.mesas[message.mesa.nome].enabled = true;
 	end
-	
+
 	if(message.comando == "autolog") then
 		local cfgForm = getConfigWindow(message.mesa);
 
@@ -164,7 +190,7 @@ function commandCallback(message)
 		end
 
 		message.response = {handled = true};
-			
+
 	elseif (message.comando == "enablelog" and isGold) then
 		if toogleAutolog(message.mesa) then
 			message.mesa.chat:escrever("Log habilitado!");
@@ -173,11 +199,11 @@ function commandCallback(message)
 		end
 
 		message.response = {handled = true};
-			
+
 	elseif (message.comando == "readlog") then
 		readLog(message.mesa);
 		message.response = {handled = true};
-			
+
 	elseif (message.comando == "clearlog") then
 		clearLog(message.mesa);
 		message.response = {handled = true};
@@ -212,7 +238,7 @@ function chatMessageCallback(message)
 	if autolog.mesas[message.mesa.nome] == nil then
 		autolog.mesas[message.mesa.nome] = {};
 	end
-		
+
 	if autolog.mesas[message.mesa.nome].enabled ~= false then
 		autolog.mesas[message.mesa.nome].enabled = true
 
@@ -226,43 +252,50 @@ function chatMessageCallback(message)
 
 			return;
 		end
-			
-		VHD.forceDirectory("/Logs/" .. message.mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$',''));
-			
+		
+		local logFile;
+		
+		if autolog.singleLogFile ~= false then
+			autolog.singleLogFile = true;
+			logFile = "/Logs/" .. message.mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','');
+		else
+			logFile = autolog.mesas[message.mesa.nome].currentLogDir;
+		end
+
+		VHD.forceDirectory(logFile);
+
 		--Se o objeto jogadorPVT não é nil, então foi um PVT Privado.
 		if(message.jogadorPVT ~= nil) then
 			if(autolog.useLoginForPvtName) then
-				logFile = "PVT com " .. Utils.removerFmtChat(message.jogadorPVT.login) .. ".log";
+				logFile = logFile .. "/PVT com " .. Utils.removerFmtChat(message.jogadorPVT.login) .. ".log";
 			else
-				logFile = "PVT com " .. Utils.removerFmtChat(message.jogadorPVT.nick) .. ".log";
+				logFile = logFile .. "/PVT com " .. Utils.removerFmtChat(message.jogadorPVT.nick) .. ".log";
 			end
 
 		--Se o objeto jogadorPVT é nil, mas o chat não é o chat principal da mesa, então eh um PVT em grupo.
 		elseif(message.chat.objectID ~= message.mesa.chat.objectID) then
-			logFile = "Conversa Em Grupo ID " .. message.chat.objectID .. ".log";
+			logFile = logFile .. "/Conversa Em Grupo ID " .. message.chat.objectID .. ".log";
 
 		--Se não, é o chat da mesa
 		else
-			logFile = "Mesa.log";
+			logFile = logFile .. "/Mesa.log";
 		end
-			
-		logFile = "/Logs/" .. message.mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','') .. "/" .. logFile:gsub('[\\/:*?\"<>|]', '_');
-			
+
 		local linha = os.date("[%d/%m/%Y|%H:%M] ");
 		local fileStream;
-		
+
 		if message.tipo == "comoNarrador" then
 			linha = linha .. "«!» ";
 		elseif message.tipo == "comoNPC" then
-			linha = linha .. "<" .. message.npc .. "> ";			
+			linha = linha .. "<" .. message.npc .. "> ";
 		elseif message.tipo == "acao" then
 			linha = linha .. message.jogador.nick .. " ";
 		elseif message.tipo == "dados" then
 			linha = linha .. message.jogador.nick .. " rolou ";
 		else
 			linha = linha .. "<" .. message.jogador.nick .. "> ";
-		end 
-		
+		end
+
 		if message.tipo == "dados" then
 			linha = linha .. getRolagemAsString(message.rolagem);
 		elseif message.tipo == "rir" then
@@ -272,13 +305,13 @@ function chatMessageCallback(message)
 		end
 
 		linha = Utils.removerFmtChat(linha);
-	
+
 		if VHD.fileExists(logFile) then
 			fileStream = VHD.openFile(logFile, "a");
 		else
 			fileStream = VHD.openFile(logFile, "w");
 		end
-		
+
 		if(fileStream == nil) then
 			message.mesa.chat:escrever("Falha ao criar arquivo de Log" .. logFile);
 		elseif (linha == nil) then
@@ -308,26 +341,33 @@ function joinCallback(message)
 	if autolog.mesas[message.mesa.nome] == nil then
 		autolog.mesas[message.mesa.nome] = {};
 	end
-	
+
+	if message.jogador.login == Firecast.getCurrentUser().login then
+		autolog.mesas[message.mesa.nome].currentLogDir = "/Logs/" .. message.mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','') .. os.date("/%d.%m.%Y");
+		VHD.forceDirectory(autolog.mesas[message.mesa.nome].currentLogDir);
+	end
+
 	if autolog.mesas[message.mesa.nome].enabled ~= false then
 		autolog.mesas[message.mesa.nome].enabled = true
-		local linha = os.date("[%d/%m/%Y|%H:%M] ") .. Utils.removerFmtChat(message.jogador.nick) .. " (" .. message.jogador.login .. ")";
-		local logFile = "/Logs/" .. message.mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','');
+		local linha = os.date("[%d/%m/%Y|%H:%M] ") .. Utils.removerFmtChat(message.jogador.nick) .. " (" .. message.jogador.login .. ") acabou de entrar";
 
-		linha = linha .. " acabou de entrar";
-		
-		VHD.forceDirectory(logFile);
+		local logFile;
 
-		logFile = logFile .. "/Mesa.log";
-			
+		if autolog.singleLogFile ~= false then
+			autolog.singleLogFile = true;
+			logFile = "/Logs/" .. message.mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','') .. "/Mesa.log";
+		else
+			logFile = autolog.mesas[message.mesa.nome].currentLogDir .. "/Mesa.log";
+		end
+
 		local fileStream;
-			
+
 		if VHD.fileExists(logFile) then
 			fileStream = VHD.openFile(logFile, "a");
 		else
 			fileStream = VHD.openFile(logFile, "w");
 		end
-			
+
 		if(fileStream == nil) then
 			message.mesa.chat:escrever("Falha ao criar arquivo de Log" .. logFile);
 		elseif (linha == nil) then
@@ -357,32 +397,38 @@ function partCallback(message)
 	if autolog.mesas[message.mesa.nome] == nil then
 		autolog.mesas[message.mesa.nome] = {};
 	end
-	
+
 	if autolog.mesas[message.mesa.nome].enabled ~= false then
 		autolog.mesas[message.mesa.nome].enabled = true
-			
-		local linha = os.date("[%d/%m/%Y|%H:%M] ") .. Utils.removerFmtChat(message.jogador.nick) .. " (" .. message.jogador.login .. ")";
-		local logFile = "/Logs/" .. message.mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','');
 
-		VHD.forceDirectory(logFile);
-			
-		--Senão, é o chat main
+		local linha = os.date("[%d/%m/%Y|%H:%M] ") .. Utils.removerFmtChat(message.jogador.nick) .. " (" .. message.jogador.login .. ")";
+		
 		if(message.ehKick) then
 			linha = linha .. " foi kickado por " .. Utils.removerFmtChat(message.responsavel.nick) .. " (" .. message.responsavel.login .. ")";
 		else
 			linha = linha .. " acabou de sair";
+		end	
+		
+		local logFile;		
+		if autolog.singleLogFile ~= false then
+			autolog.singleLogFile = true;
+			logFile = "/Logs/" .. message.mesa.nome:gsub('[\\/:*?\"<>|]', '_'):gsub('^[%s.]*',''):gsub('[%s.]*$','');
+		else
+			logFile = autolog.mesas[message.mesa.nome].currentLogDir;
 		end
+		
+		VHD.forceDirectory(logFile);
+		
+		logFile = logFile .. "/Mesa.log";		
 
-		logFile =  logFile .. "/Mesa.log";
-			
 		local fileStream;
-			
+
 		if VHD.fileExists(logFile) then
 			fileStream = VHD.openFile(logFile, "a");
 		else
 			fileStream = VHD.openFile(logFile, "w");
 		end
-			
+
 		if(fileStream == nil) then
 			message.mesa.chat:escrever("Falha ao criar arquivo de Log" .. logFile);
 		elseif (linha == nil) then
