@@ -33,6 +33,39 @@ local function constructNew_frmTemplate()
     obj:setAlign("client");
     obj:setTheme("dark");
 
+
+        local function isNewVersion(installed, downloaded)
+            local installedVersion = {};
+            local installedIndex = 0;
+            for i in string.gmatch(installed, "[^%.]+") do
+                installedIndex = installedIndex +1;
+                installedVersion[installedIndex] = i;
+            end
+
+            local downloadedVersion = {};
+            local downloadedIndex = 0;
+            for i in string.gmatch(downloaded, "[^%.]+") do
+                downloadedIndex = downloadedIndex +1;
+                downloadedVersion[downloadedIndex] = i;
+            end
+
+            for i=1, math.min(installedIndex, downloadedIndex), 1 do 
+                if (tonumber(installedVersion[i]) or 0) > (tonumber(downloadedVersion[i]) or 0) then
+                    return false;
+                elseif (tonumber(installedVersion[i]) or 0) < (tonumber(downloadedVersion[i]) or 0) then
+                    return true;
+                end;
+            end;
+
+            if downloadedIndex > installedIndex then
+                return true;
+            else
+                return false;
+            end;
+        end;
+        
+
+
     obj.tabControl1 = GUI.fromHandle(_obj_newObject("tabControl"));
     obj.tabControl1:setParent(obj);
     obj.tabControl1:setAlign("client");
@@ -8074,42 +8107,34 @@ local function constructNew_frmTemplate()
     obj.label292 = GUI.fromHandle(_obj_newObject("label"));
     obj.label292:setParent(obj.scrollBox10);
     obj.label292:setLeft(555);
-    obj.label292:setTop(300);
-    obj.label292:setWidth(100);
+    obj.label292:setTop(275);
+    obj.label292:setWidth(200);
     obj.label292:setHeight(20);
     obj.label292:setText("Versão Atual: ");
     obj.label292:setHorzTextAlign("center");
+    obj.label292:setField("versionInstalled");
     obj.label292:setName("label292");
-
-    obj.image4 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image4:setParent(obj.scrollBox10);
-    obj.image4:setLeft(667);
-    obj.image4:setTop(300);
-    obj.image4:setWidth(100);
-    obj.image4:setHeight(20);
-    obj.image4:setStyle("autoFit");
-    obj.image4:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Shadowrun%205E/release.png");
-    obj.image4:setName("image4");
 
     obj.label293 = GUI.fromHandle(_obj_newObject("label"));
     obj.label293:setParent(obj.scrollBox10);
     obj.label293:setLeft(555);
-    obj.label293:setTop(325);
-    obj.label293:setWidth(100);
+    obj.label293:setTop(300);
+    obj.label293:setWidth(200);
     obj.label293:setHeight(20);
     obj.label293:setText("Sua Versão: ");
     obj.label293:setHorzTextAlign("center");
+    obj.label293:setField("versionDownloaded");
     obj.label293:setName("label293");
 
-    obj.image5 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image5:setParent(obj.scrollBox10);
-    obj.image5:setLeft(667);
-    obj.image5:setTop(325);
-    obj.image5:setWidth(100);
-    obj.image5:setHeight(20);
-    obj.image5:setStyle("autoFit");
-    obj.image5:setSRC("http://www.cin.ufpe.br/~jvdl/Plugins/Version/versao01.png");
-    obj.image5:setName("image5");
+    obj.checkBox2 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox2:setParent(obj.scrollBox10);
+    obj.checkBox2:setLeft(555);
+    obj.checkBox2:setTop(325);
+    obj.checkBox2:setWidth(200);
+    obj.checkBox2:setHeight(20);
+    obj.checkBox2:setField("noUpdate");
+    obj.checkBox2:setText("Não pedir para atualizar.");
+    obj.checkBox2:setName("checkBox2");
 
     obj.button21 = GUI.fromHandle(_obj_newObject("button"));
     obj.button21:setParent(obj.scrollBox10);
@@ -8144,7 +8169,44 @@ local function constructNew_frmTemplate()
     obj.button23:setText("RPGmeister");
     obj.button23:setName("button23");
 
-    obj._e_event0 = obj.button1:addEventListener("onClick",
+    obj._e_event0 = obj:addEventListener("onNodeReady",
+        function (_)
+            Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Shadowrun%205E/output/Ficha%20Shadowrun%205E.rpk?raw=true",
+                        function(stream, contentType)
+                            local info = Firecast.Plugins.getRPKDetails(stream);
+                            sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
+            
+                            local installed = Firecast.Plugins.getInstalledPlugins();
+                            local myself;
+                            for i=1, #installed, 1 do
+                                if installed[i].moduleId == info.moduleId then
+                                    myself = installed[i];
+                                    sheet.versionInstalled = "VERSÃO INSTALADA: " .. installed[i].version;
+                                end;
+                            end;
+            
+                            if sheet.noUpdate==true then return end;
+                            if myself~= nil and isNewVersion(myself.version, info.version) then
+                                Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                                    function(selected, selectedIndex, selectedText)
+                                        if selected and selectedIndex == 1 then
+                                            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Shadowrun%205E/output/Ficha%20Shadowrun%205E.rpk?raw=true');
+                                        elseif selected and selectedIndex == 3 then
+                                            sheet.noUpdate = true;
+                                        end;
+                                    end);
+                            end;
+                        end,       
+                        function (errorMsg)
+                            --showMessage(errorMsg);
+                        end,       
+                        function (downloaded, total)
+                            -- esta função será chamada constantemente.
+                            -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
+                        end);
+        end, obj);
+
+    obj._e_event1 = obj.button1:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popupActiveSkill");
             						if pop == nil then return end;
@@ -8155,7 +8217,7 @@ local function constructNew_frmTemplate()
             						pop.node.skill_karma_spent = (tonumber(pop.node.skill_karma_spent) or 0) + (total*2);
         end, obj);
 
-    obj._e_event1 = obj.button2:addEventListener("onClick",
+    obj._e_event2 = obj.button2:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popupActiveSkill");
             						if pop == nil then return end;
@@ -8165,16 +8227,16 @@ local function constructNew_frmTemplate()
             						pop.node.skill_group_karma_bonus = (tonumber(pop.node.skill_group_karma_bonus) or 0) + 1;
             						pop.node.skill_group_karma_spent = (tonumber(pop.node.skill_group_karma_spent) or 0) + (total*5);
             
-            						local objetos = ndb.getChildNodes(sheet.skillList);
+            						local objetos = NDB.getChildNodes(sheet.skillList);
             						for i=1, #objetos, 1 do 
-            							if utils.compareStringPtBr(objetos[i].skill_group_name, pop.node.skill_group_name) == 0 then
+            							if Utils.compareStringPtBr(objetos[i].skill_group_name, pop.node.skill_group_name) == 0 then
             								objetos[i].skill_group_karma_bonus = pop.node.skill_group_karma_bonus;
             								objetos[i].skill_group_karma_spent = pop.node.skill_group_karma_spent;
             							end;
             						end;
         end, obj);
 
-    obj._e_event2 = obj.button3:addEventListener("onClick",
+    obj._e_event3 = obj.button3:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popupKnowledgeSkill");
             						if pop == nil then return end;
@@ -8185,7 +8247,7 @@ local function constructNew_frmTemplate()
             						pop.node.skill_karma_spent = (tonumber(pop.node.skill_karma_spent) or 0) + total;
         end, obj);
 
-    obj._e_event3 = obj.button4:addEventListener("onClick",
+    obj._e_event4 = obj.button4:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popupLanguageSkill");
             						if pop == nil then return end;
@@ -8196,7 +8258,7 @@ local function constructNew_frmTemplate()
             						pop.node.skill_karma_spent = (tonumber(pop.node.skill_karma_spent) or 0) + total;
         end, obj);
 
-    obj._e_event4 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event5 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8223,7 +8285,7 @@ local function constructNew_frmTemplate()
             				sheet.attribute_body_effective = effective;
         end, obj);
 
-    obj._e_event5 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event6 = obj.dataLink2:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8250,7 +8312,7 @@ local function constructNew_frmTemplate()
             				sheet.attribute_agility_effective = effective;
         end, obj);
 
-    obj._e_event6 = obj.dataLink3:addEventListener("onChange",
+    obj._e_event7 = obj.dataLink3:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8277,7 +8339,7 @@ local function constructNew_frmTemplate()
             				sheet.attribute_reaction_effective = effective;
         end, obj);
 
-    obj._e_event7 = obj.dataLink4:addEventListener("onChange",
+    obj._e_event8 = obj.dataLink4:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8304,7 +8366,7 @@ local function constructNew_frmTemplate()
             				sheet.attribute_strenght_effective = effective;
         end, obj);
 
-    obj._e_event8 = obj.physicalButton:addEventListener("onClick",
+    obj._e_event9 = obj.physicalButton:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popupPhysical");
             			
@@ -8316,7 +8378,7 @@ local function constructNew_frmTemplate()
             				end;
         end, obj);
 
-    obj._e_event9 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event10 = obj.dataLink5:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8343,7 +8405,7 @@ local function constructNew_frmTemplate()
             				sheet.attribute_charisma_effective = effective;
         end, obj);
 
-    obj._e_event10 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event11 = obj.dataLink6:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8370,7 +8432,7 @@ local function constructNew_frmTemplate()
             				sheet.attribute_intuition_effective = effective;
         end, obj);
 
-    obj._e_event11 = obj.dataLink7:addEventListener("onChange",
+    obj._e_event12 = obj.dataLink7:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8397,7 +8459,7 @@ local function constructNew_frmTemplate()
             				sheet.attribute_logic_effective = effective;
         end, obj);
 
-    obj._e_event12 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event13 = obj.dataLink8:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8424,7 +8486,7 @@ local function constructNew_frmTemplate()
             				sheet.attribute_willpower_effective = effective;
         end, obj);
 
-    obj._e_event13 = obj.mentalButton:addEventListener("onClick",
+    obj._e_event14 = obj.mentalButton:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popupMental");
             			
@@ -8436,7 +8498,7 @@ local function constructNew_frmTemplate()
             				end;
         end, obj);
 
-    obj._e_event14 = obj.dataLink9:addEventListener("onChange",
+    obj._e_event15 = obj.dataLink9:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8463,7 +8525,7 @@ local function constructNew_frmTemplate()
             				sheet.attribute_edge_effective = effective;
         end, obj);
 
-    obj._e_event15 = obj.dataLink10:addEventListener("onChange",
+    obj._e_event16 = obj.dataLink10:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8490,7 +8552,7 @@ local function constructNew_frmTemplate()
             				sheet.attribute_magic_effective = effective;
         end, obj);
 
-    obj._e_event16 = obj.dataLink11:addEventListener("onChange",
+    obj._e_event17 = obj.dataLink11:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8517,13 +8579,13 @@ local function constructNew_frmTemplate()
             				sheet.attribute_ressonance_effective = effective;
         end, obj);
 
-    obj._e_event17 = obj.dataLink12:addEventListener("onChange",
+    obj._e_event18 = obj.dataLink12:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             				sheet.attribute_essence_effective = math.floor(tonumber(sheet.attribute_essence_real) or 6);
         end, obj);
 
-    obj._e_event18 = obj.specialButton:addEventListener("onClick",
+    obj._e_event19 = obj.specialButton:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popupSpecial");
             			
@@ -8535,7 +8597,7 @@ local function constructNew_frmTemplate()
             				end;
         end, obj);
 
-    obj._e_event19 = obj.dataLink13:addEventListener("onChange",
+    obj._e_event20 = obj.dataLink13:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8546,7 +8608,7 @@ local function constructNew_frmTemplate()
             					sheet.limitPhysical = math.ceil((strenght + body + reaction)/3);
         end, obj);
 
-    obj._e_event20 = obj.dataLink14:addEventListener("onChange",
+    obj._e_event21 = obj.dataLink14:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8557,7 +8619,7 @@ local function constructNew_frmTemplate()
             					sheet.limitMental = math.ceil((logic + willpower + intuition)/3);
         end, obj);
 
-    obj._e_event21 = obj.dataLink15:addEventListener("onChange",
+    obj._e_event22 = obj.dataLink15:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8568,7 +8630,7 @@ local function constructNew_frmTemplate()
             					sheet.limitSocial = math.ceil((charisma + willpower + essence)/3);
         end, obj);
 
-    obj._e_event22 = obj.dataLink16:addEventListener("onChange",
+    obj._e_event23 = obj.dataLink16:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8585,7 +8647,7 @@ local function constructNew_frmTemplate()
             													(tonumber(sheet.attribute_ressonance_karma) or 0);
         end, obj);
 
-    obj._e_event23 = obj.dataLink17:addEventListener("onChange",
+    obj._e_event24 = obj.dataLink17:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8602,7 +8664,7 @@ local function constructNew_frmTemplate()
             													(tonumber(sheet.attribute_ressonance_base) or 0);
         end, obj);
 
-    obj._e_event24 = obj.dataLink18:addEventListener("onChange",
+    obj._e_event25 = obj.dataLink18:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8619,7 +8681,7 @@ local function constructNew_frmTemplate()
             													(tonumber(sheet.attribute_ressonance_initial) or 0);
         end, obj);
 
-    obj._e_event25 = obj.dataLink19:addEventListener("onChange",
+    obj._e_event26 = obj.dataLink19:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8629,15 +8691,15 @@ local function constructNew_frmTemplate()
             					sheet.attribute_essence_effective = math.floor(essence);
         end, obj);
 
-    obj._e_event26 = obj.button5:addEventListener("onClick",
+    obj._e_event27 = obj.button5:addEventListener("onClick",
         function (_)
             local teste = (sheet.initiativePhysicalDice or 1) .. "d6 + " .. (sheet.initiativePhysical or 0); 
-            						local rolagem = rrpg.interpretarRolagem(teste);
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            						local rolagem = Firecast.interpretarRolagem(teste);
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa de " .. (sheet.name or "name"));
         end, obj);
 
-    obj._e_event27 = obj.dataLink21:addEventListener("onChange",
+    obj._e_event28 = obj.dataLink21:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8648,15 +8710,15 @@ local function constructNew_frmTemplate()
             						sheet.initiativePhysical = reaction+intuition+other;
         end, obj);
 
-    obj._e_event28 = obj.button6:addEventListener("onClick",
+    obj._e_event29 = obj.button6:addEventListener("onClick",
         function (_)
             local teste = (sheet.initiativeMatrixDice or 1) .. "d6 + " .. (sheet.initiativeMatrix or 0); 
-            						local rolagem = rrpg.interpretarRolagem(teste);
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            						local rolagem = Firecast.interpretarRolagem(teste);
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa da Matrix de " .. (sheet.name or "name"));
         end, obj);
 
-    obj._e_event29 = obj.dataLink23:addEventListener("onChange",
+    obj._e_event30 = obj.dataLink23:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8667,15 +8729,15 @@ local function constructNew_frmTemplate()
             						sheet.initiativeMatrix = intuition+data+other;
         end, obj);
 
-    obj._e_event30 = obj.button7:addEventListener("onClick",
+    obj._e_event31 = obj.button7:addEventListener("onClick",
         function (_)
             local teste = (sheet.initiativeAstralDice or 1) .. "d6 + " .. (sheet.initiativeAstral or 0); 
-            						local rolagem = rrpg.interpretarRolagem(teste);
-            						local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+            						local rolagem = Firecast.interpretarRolagem(teste);
+            						local mesaDoPersonagem = Firecast.getMesaDe(sheet);
             						mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de Iniciativa Astral de " .. (sheet.name or "name"));
         end, obj);
 
-    obj._e_event31 = obj.dataLink25:addEventListener("onChange",
+    obj._e_event32 = obj.dataLink25:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8685,7 +8747,7 @@ local function constructNew_frmTemplate()
             						sheet.initiativeAstral = (intuition*2)+other;
         end, obj);
 
-    obj._e_event32 = obj.dataLink26:addEventListener("onChange",
+    obj._e_event33 = obj.dataLink26:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8695,7 +8757,7 @@ local function constructNew_frmTemplate()
             				sheet.attribute_composure = link1 + link2 + other;
         end, obj);
 
-    obj._e_event33 = obj.dataLink27:addEventListener("onChange",
+    obj._e_event34 = obj.dataLink27:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8705,7 +8767,7 @@ local function constructNew_frmTemplate()
             				sheet.attribute_judge = link1 + link2 + other;
         end, obj);
 
-    obj._e_event34 = obj.dataLink28:addEventListener("onChange",
+    obj._e_event35 = obj.dataLink28:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8715,7 +8777,7 @@ local function constructNew_frmTemplate()
             				sheet.attribute_lifting = link1 + link2 + other;
         end, obj);
 
-    obj._e_event35 = obj.dataLink29:addEventListener("onChange",
+    obj._e_event36 = obj.dataLink29:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8725,7 +8787,7 @@ local function constructNew_frmTemplate()
             				sheet.attribute_memory = link1 + link2 + other;
         end, obj);
 
-    obj._e_event36 = obj.dataLink30:addEventListener("onChange",
+    obj._e_event37 = obj.dataLink30:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8735,7 +8797,7 @@ local function constructNew_frmTemplate()
             					sheet.attribute_movement_run = agility * 4;
         end, obj);
 
-    obj._e_event37 = obj.dataLink31:addEventListener("onChange",
+    obj._e_event38 = obj.dataLink31:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8744,7 +8806,7 @@ local function constructNew_frmTemplate()
             				sheet.monitor_physical = link1 + other + 8;
         end, obj);
 
-    obj._e_event38 = obj.dataLink32:addEventListener("onChange",
+    obj._e_event39 = obj.dataLink32:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8760,7 +8822,7 @@ local function constructNew_frmTemplate()
             				end;
         end, obj);
 
-    obj._e_event39 = obj.dataLink33:addEventListener("onChange",
+    obj._e_event40 = obj.dataLink33:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8769,7 +8831,7 @@ local function constructNew_frmTemplate()
             				sheet.monitor_stun = link1 + other + 8;
         end, obj);
 
-    obj._e_event40 = obj.dataLink34:addEventListener("onChange",
+    obj._e_event41 = obj.dataLink34:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8785,7 +8847,7 @@ local function constructNew_frmTemplate()
             				end;
         end, obj);
 
-    obj._e_event41 = obj.dataLink35:addEventListener("onChange",
+    obj._e_event42 = obj.dataLink35:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8794,7 +8856,7 @@ local function constructNew_frmTemplate()
             				sheet.monitor_overflow = link1 + other;
         end, obj);
 
-    obj._e_event42 = obj.dataLink36:addEventListener("onChange",
+    obj._e_event43 = obj.dataLink36:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8811,152 +8873,152 @@ local function constructNew_frmTemplate()
             				end;
         end, obj);
 
-    obj._e_event43 = obj.image1:addEventListener("onStartDrag",
+    obj._e_event44 = obj.image1:addEventListener("onStartDrag",
         function (_, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
-    obj._e_event44 = obj.button8:addEventListener("onClick",
+    obj._e_event45 = obj.button8:addEventListener("onClick",
         function (_)
             self.rclSkillList:append();
         end, obj);
 
-    obj._e_event45 = obj.rclSkillList:addEventListener("onCompare",
+    obj._e_event46 = obj.rclSkillList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            if utils.compareStringPtBr(nodeA.skill_group_name, nodeB.skill_group_name)== 0 then
-            						return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
+            if Utils.compareStringPtBr(nodeA.skill_group_name, nodeB.skill_group_name)== 0 then
+            						return Utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
             					else 
-            		            	return utils.compareStringPtBr(nodeA.skill_group_name, nodeB.skill_group_name);
+            		            	return Utils.compareStringPtBr(nodeA.skill_group_name, nodeB.skill_group_name);
             		            end;
         end, obj);
 
-    obj._e_event46 = obj.button9:addEventListener("onClick",
+    obj._e_event47 = obj.button9:addEventListener("onClick",
         function (_)
             self.rclKnowledgeList:append();
         end, obj);
 
-    obj._e_event47 = obj.rclKnowledgeList:addEventListener("onCompare",
+    obj._e_event48 = obj.rclKnowledgeList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
+            return Utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
         end, obj);
 
-    obj._e_event48 = obj.button10:addEventListener("onClick",
+    obj._e_event49 = obj.button10:addEventListener("onClick",
         function (_)
             self.rclLanguageList:append();
         end, obj);
 
-    obj._e_event49 = obj.rclLanguageList:addEventListener("onCompare",
+    obj._e_event50 = obj.rclLanguageList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
+            return Utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
         end, obj);
 
-    obj._e_event50 = obj.button11:addEventListener("onClick",
+    obj._e_event51 = obj.button11:addEventListener("onClick",
         function (_)
             self.rclPositiveQualities:append();
         end, obj);
 
-    obj._e_event51 = obj.rclPositiveQualities:addEventListener("onCompare",
+    obj._e_event52 = obj.rclPositiveQualities:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.quality_name, nodeB.quality_name);
+            return Utils.compareStringPtBr(nodeA.quality_name, nodeB.quality_name);
         end, obj);
 
-    obj._e_event52 = obj.button12:addEventListener("onClick",
+    obj._e_event53 = obj.button12:addEventListener("onClick",
         function (_)
             self.rclNegativeQualities:append();
         end, obj);
 
-    obj._e_event53 = obj.rclNegativeQualities:addEventListener("onCompare",
+    obj._e_event54 = obj.rclNegativeQualities:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.quality_name, nodeB.quality_name);
+            return Utils.compareStringPtBr(nodeA.quality_name, nodeB.quality_name);
         end, obj);
 
-    obj._e_event54 = obj.button13:addEventListener("onClick",
+    obj._e_event55 = obj.button13:addEventListener("onClick",
         function (_)
             self.rclContacts:append();
         end, obj);
 
-    obj._e_event55 = obj.rclContacts:addEventListener("onCompare",
+    obj._e_event56 = obj.rclContacts:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.contact_name, nodeB.contact_name);
+            return Utils.compareStringPtBr(nodeA.contact_name, nodeB.contact_name);
         end, obj);
 
-    obj._e_event56 = obj.button14:addEventListener("onClick",
+    obj._e_event57 = obj.button14:addEventListener("onClick",
         function (_)
             self.rclRangedWeapons:append();
         end, obj);
 
-    obj._e_event57 = obj.rclRangedWeapons:addEventListener("onCompare",
+    obj._e_event58 = obj.rclRangedWeapons:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.ranged_weapon, nodeB.ranged_weapon);
+            return Utils.compareStringPtBr(nodeA.ranged_weapon, nodeB.ranged_weapon);
         end, obj);
 
-    obj._e_event58 = obj.button15:addEventListener("onClick",
+    obj._e_event59 = obj.button15:addEventListener("onClick",
         function (_)
             self.rclMeleeWeapons:append();
         end, obj);
 
-    obj._e_event59 = obj.rclMeleeWeapons:addEventListener("onCompare",
+    obj._e_event60 = obj.rclMeleeWeapons:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.melee_weapon, nodeB.melee_weapon);
+            return Utils.compareStringPtBr(nodeA.melee_weapon, nodeB.melee_weapon);
         end, obj);
 
-    obj._e_event60 = obj.button16:addEventListener("onClick",
+    obj._e_event61 = obj.button16:addEventListener("onClick",
         function (_)
             self.rclAugmentations:append();
         end, obj);
 
-    obj._e_event61 = obj.rclAugmentations:addEventListener("onCompare",
+    obj._e_event62 = obj.rclAugmentations:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.augmentation_name, nodeB.augmentation_name);
+            return Utils.compareStringPtBr(nodeA.augmentation_name, nodeB.augmentation_name);
         end, obj);
 
-    obj._e_event62 = obj.button17:addEventListener("onClick",
+    obj._e_event63 = obj.button17:addEventListener("onClick",
         function (_)
             self.rclArmor:append();
         end, obj);
 
-    obj._e_event63 = obj.rclArmor:addEventListener("onCompare",
+    obj._e_event64 = obj.rclArmor:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.armor_name, nodeB.armor_name);
+            return Utils.compareStringPtBr(nodeA.armor_name, nodeB.armor_name);
         end, obj);
 
-    obj._e_event64 = obj.button18:addEventListener("onClick",
+    obj._e_event65 = obj.button18:addEventListener("onClick",
         function (_)
             self.rclGearList:append();
         end, obj);
 
-    obj._e_event65 = obj.rclGearList:addEventListener("onCompare",
+    obj._e_event66 = obj.rclGearList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.gear_name, nodeB.gear_name);
+            return Utils.compareStringPtBr(nodeA.gear_name, nodeB.gear_name);
         end, obj);
 
-    obj._e_event66 = obj.dataLink37:addEventListener("onChange",
+    obj._e_event67 = obj.dataLink37:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             					sheet.monitor_matrix_left = (tonumber(sheet.monitor_matrix) or 0) - ((tonumber(sheet.monitor_matrix_damage) or 0));
         end, obj);
 
-    obj._e_event67 = obj.button19:addEventListener("onClick",
+    obj._e_event68 = obj.button19:addEventListener("onClick",
         function (_)
             self.rclSpells:append();
         end, obj);
 
-    obj._e_event68 = obj.rclSpells:addEventListener("onCompare",
+    obj._e_event69 = obj.rclSpells:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.spell_name, nodeB.spell_name);
+            return Utils.compareStringPtBr(nodeA.spell_name, nodeB.spell_name);
         end, obj);
 
-    obj._e_event69 = obj.button20:addEventListener("onClick",
+    obj._e_event70 = obj.button20:addEventListener("onClick",
         function (_)
             self.rclAbilities:append();
         end, obj);
 
-    obj._e_event70 = obj.rclAbilities:addEventListener("onCompare",
+    obj._e_event71 = obj.rclAbilities:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.abilities_name, nodeB.abilities_name);
+            return Utils.compareStringPtBr(nodeA.abilities_name, nodeB.abilities_name);
         end, obj);
 
-    obj._e_event71 = obj.dataLink38:addEventListener("onChange",
+    obj._e_event72 = obj.dataLink38:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -8978,22 +9040,23 @@ local function constructNew_frmTemplate()
             					sheet.karma = left;
         end, obj);
 
-    obj._e_event72 = obj.button21:addEventListener("onClick",
+    obj._e_event73 = obj.button21:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Shadowrun%205E/README.md')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Shadowrun%205E/README.md')
         end, obj);
 
-    obj._e_event73 = obj.button22:addEventListener("onClick",
+    obj._e_event74 = obj.button22:addEventListener("onClick",
         function (_)
-            gui.openInBrowser('http://www.cin.ufpe.br/~jvdl/Plugins/Ficha%20Shadowrun%205E/Ficha%20Shadowrun%205E.rpk')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Shadowrun%205E/output/Ficha%20Shadowrun%205E.rpk?raw=true')
         end, obj);
 
-    obj._e_event74 = obj.button23:addEventListener("onClick",
+    obj._e_event75 = obj.button23:addEventListener("onClick",
         function (_)
             gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event75);
         __o_rrpgObjs.removeEventListenerById(self._e_event74);
         __o_rrpgObjs.removeEventListenerById(self._e_event73);
         __o_rrpgObjs.removeEventListenerById(self._e_event72);
@@ -9310,7 +9373,6 @@ local function constructNew_frmTemplate()
         if self.label138 ~= nil then self.label138:destroy(); self.label138 = nil; end;
         if self.flowPart73 ~= nil then self.flowPart73:destroy(); self.flowPart73 = nil; end;
         if self.label40 ~= nil then self.label40:destroy(); self.label40 = nil; end;
-        if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
         if self.flowPart155 ~= nil then self.flowPart155:destroy(); self.flowPart155 = nil; end;
         if self.edit28 ~= nil then self.edit28:destroy(); self.edit28 = nil; end;
         if self.flowLayout13 ~= nil then self.flowLayout13:destroy(); self.flowLayout13 = nil; end;
@@ -9746,7 +9808,6 @@ local function constructNew_frmTemplate()
         if self.label84 ~= nil then self.label84:destroy(); self.label84 = nil; end;
         if self.label124 ~= nil then self.label124:destroy(); self.label124 = nil; end;
         if self.label264 ~= nil then self.label264:destroy(); self.label264 = nil; end;
-        if self.image4 ~= nil then self.image4:destroy(); self.image4 = nil; end;
         if self.tab1 ~= nil then self.tab1:destroy(); self.tab1 = nil; end;
         if self.edit102 ~= nil then self.edit102:destroy(); self.edit102 = nil; end;
         if self.label207 ~= nil then self.label207:destroy(); self.label207 = nil; end;
@@ -9962,6 +10023,7 @@ local function constructNew_frmTemplate()
         if self.label218 ~= nil then self.label218:destroy(); self.label218 = nil; end;
         if self.label226 ~= nil then self.label226:destroy(); self.label226 = nil; end;
         if self.label46 ~= nil then self.label46:destroy(); self.label46 = nil; end;
+        if self.checkBox2 ~= nil then self.checkBox2:destroy(); self.checkBox2 = nil; end;
         if self.flowPart61 ~= nil then self.flowPart61:destroy(); self.flowPart61 = nil; end;
         if self.flowPart27 ~= nil then self.flowPart27:destroy(); self.flowPart27 = nil; end;
         if self.label183 ~= nil then self.label183:destroy(); self.label183 = nil; end;

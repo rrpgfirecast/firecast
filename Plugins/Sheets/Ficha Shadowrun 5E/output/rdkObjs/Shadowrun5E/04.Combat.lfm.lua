@@ -489,7 +489,7 @@ local function constructNew_frmCombat()
 
     obj._e_event1 = obj.rclRangedWeapons:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.ranged_weapon, nodeB.ranged_weapon);
+            return Utils.compareStringPtBr(nodeA.ranged_weapon, nodeB.ranged_weapon);
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
@@ -499,7 +499,7 @@ local function constructNew_frmCombat()
 
     obj._e_event3 = obj.rclMeleeWeapons:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.melee_weapon, nodeB.melee_weapon);
+            return Utils.compareStringPtBr(nodeA.melee_weapon, nodeB.melee_weapon);
         end, obj);
 
     obj._e_event4 = obj.button3:addEventListener("onClick",
@@ -509,7 +509,7 @@ local function constructNew_frmCombat()
 
     obj._e_event5 = obj.rclAugmentations:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.augmentation_name, nodeB.augmentation_name);
+            return Utils.compareStringPtBr(nodeA.augmentation_name, nodeB.augmentation_name);
         end, obj);
 
     obj._e_event6 = obj.button4:addEventListener("onClick",
@@ -519,7 +519,7 @@ local function constructNew_frmCombat()
 
     obj._e_event7 = obj.rclArmor:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.armor_name, nodeB.armor_name);
+            return Utils.compareStringPtBr(nodeA.armor_name, nodeB.armor_name);
         end, obj);
 
     function obj:_releaseEvents()

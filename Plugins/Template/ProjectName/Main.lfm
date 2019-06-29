@@ -63,6 +63,9 @@
                 <tab title="ThemeControl">
                     <import file="ThemeControl.lfm"/>
                 </tab>
+                <tab title="BarControl">
+                    <import file="BarControl.lfm"/>
+                </tab>
             </tabControl>
         </tab>
         <tab title="Descrição">

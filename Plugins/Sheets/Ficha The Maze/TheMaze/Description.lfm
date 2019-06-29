@@ -9,17 +9,7 @@
 		<edit left="155" top="$(top)" width="30" height="25" field="$(field_p)" vertTextAlign="center" type="number"/>
 
 		<label left="190" top="$(top)" width="150" height="20" text="$(text_n)" horzTextAlign="center"/>
-		<rectangle left="340" top="$(top)" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
-		<label left="340" top="$(top)" width="30" height="25" horzTextAlign="center" field="$(field_n)"/>
-
-		<dataLink field="$(field_n)" defaultValue="20"/>
-		<dataLink field="$(field_p)">
-			<event name="onUserChange">
-				if sheet == nil then return end;
-				local p = tonumber(sheet.$(field_p)) or 0;
-				sheet.$(field_n) = 20 - p;
-			</event>
-		</dataLink>
+		<edit left="340" top="$(top)" width="30" height="25" field="$(field_n)" vertTextAlign="center" type="number"/>
 	</template>
 	<scrollBox align="client">
 		<rectangle left="0" top="0" width="1205" height="105" color="black">
@@ -46,20 +36,21 @@
 			<rectangle align="client" color="black"/>
 			<label left="5" top="1" width="150" height="20" text="CARACTERÍSTICAS"/>
 
-			<Caracteristica top="25" text_p="Carisma" text_n="Timidez" field_p="carac_p_1" field_n="carac_n_1"/>
-			<Caracteristica top="50" text_p="Charme" text_n="Inconveniente" field_p="carac_p_2" field_n="carac_n_2"/>
-			<Caracteristica top="75" text_p="Intelecto" text_n="Ignorância" field_p="carac_p_3" field_n="carac_n_3"/>
-			<Caracteristica top="100" text_p="Discernimento" text_n="Desconfiança" field_p="carac_p_4" field_n="carac_n_4"/>
-			<Caracteristica top="125" text_p="Percepção," text_n="Desatento," field_p="carac_p_5" field_n="carac_n_5"/>
-			<Caracteristica top="150" text_p="Intimidação" text_n="Indiferença" field_p="carac_p_6" field_n="carac_n_6"/>
-			<Caracteristica top="175" text_p="Boa Memória" text_n="Esquecido" field_p="carac_p_7" field_n="carac_n_7"/>
-			<Caracteristica top="200" text_p="Fleuma" text_n="Irritado" field_p="carac_p_8" field_n="carac_n_8"/>
+			<Caracteristica top="25" text_p="Carisma/Charme" text_n="Cobiça/Ganancia" field_p="carac_p_1" field_n="carac_n_1"/>
+			<Caracteristica top="50" text_p="Força de Vontade" text_n="Emotividade" field_p="carac_p_2" field_n="carac_n_2"/>
+			<Caracteristica top="75" text_p="Intelecto" text_n="Vício" field_p="carac_p_3" field_n="carac_n_3"/>
+			<Caracteristica top="100" text_p="Discernimento" text_n="Maldição" field_p="carac_p_4" field_n="carac_n_4"/>
+			<Caracteristica top="125" text_p="Percepção" text_n="Azar" field_p="carac_p_5" field_n="carac_n_5"/>
+			<Caracteristica top="150" text_p="Intimidação" text_n="Mitomania" field_p="carac_p_6" field_n="carac_n_6"/>
+			<Caracteristica top="175" text_p="Boa Memória" text_n="Trauma/Medo" field_p="carac_p_7" field_n="carac_n_7"/>
+			<Caracteristica top="200" text_p="Fleuma" text_n="Irritação/Orgulho" field_p="carac_p_8" field_n="carac_n_8"/>
 
 
 			<rectangle left="155" top="225" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
 			<label left="155" top="225" width="30" height="25" horzTextAlign="center" field="carac_gasto"/>
-			<rectangle left="185" top="225" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label left="185" top="225" width="30" height="25" horzTextAlign="center" field="carac_total" fontColor="green" name="carac_total"/>
+			<edit left="185" top="225" width="30" height="25" field="carac_extra" horzTextAlign="center" type="number"/>
+			<rectangle left="215" top="225" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
+			<label left="215" top="225" width="30" height="25" horzTextAlign="center" field="carac_total" fontColor="green" name="carac_total"/>
 
 			<dataLink fields="{'carac_p_1','carac_p_2','carac_p_3','carac_p_4','carac_p_5','carac_p_6','carac_p_7','carac_p_8'}">
 				<event name="onChange">
@@ -75,6 +66,34 @@
 					sheet.carac_gasto = gasto;
 				</event>
 			</dataLink>
+
+			<dataLink fields="{'carac_n_1','carac_n_2','carac_n_3','carac_n_4','carac_n_5','carac_n_6','carac_n_7','carac_n_8'}">
+				<event name="onChange">
+					if sheet == nil then return end;
+					local penalidade = (tonumber(sheet.carac_n_1) or 0) +
+									(tonumber(sheet.carac_n_2) or 0) +
+									(tonumber(sheet.carac_n_3) or 0) +
+									(tonumber(sheet.carac_n_4) or 0) +
+									(tonumber(sheet.carac_n_5) or 0) +
+									(tonumber(sheet.carac_n_6) or 0) +
+									(tonumber(sheet.carac_n_7) or 0) +
+									(tonumber(sheet.carac_n_8) or 0);
+					sheet.carac_penalidade = penalidade;
+				</event>
+			</dataLink>
+
+			<dataLink fields="{'nivel','carac_penalidade', 'carac_extra'}">
+				<event name="onChange">
+					if sheet==nil then return end;
+
+					local nivel = (tonumber(sheet.nivel) or 0);
+					local pen = (sheet.carac_penalidade) or 0;
+					local extra = (sheet.carac_extra) or 0;
+
+					sheet.carac_total = 15 + nivel + pen + extra;
+				</event>
+			</dataLink>
+
 			<dataLink fields="{'carac_gasto','carac_total'}">
 				<event name="onChange">
 					if sheet == nil then return end;

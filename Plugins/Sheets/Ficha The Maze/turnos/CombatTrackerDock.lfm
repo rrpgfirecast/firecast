@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmCombatTracker" formType="tablesDock" dataType="Ambesek.Maze.Tracker" title="Maze Tracker" height="300" width="300">
+	<import file="combatTrackerGlobals.xml"/>
+	<import file="CombatTrackerScripts.xml"/>	
+
+	
+	<!--
+	<script>
+		System.isMobile = function() return true; end;
+	</script> -->
+	
+	<layout name="layTopTracker" align="top" height="18" margins="{left=2, right=2, top=2}">
+		<button name="btnAddAtor" text="" onClick="self:criarNovoAtor()" class="combatHeaderButton" hint="Adicionar um novo ator ao Tracker">
+			<image align="client" src="images/addIcon.png"/>
+		</button>
+		<button name="btnRoll" text="R" onClick="" class="combatHeaderButton" hint="Rola todas iniciativas">
+			<event name="onClick">
+				local atores = NDB.getChildNodes(sheet.atores);
+				local mesa = Firecast.getMesaDe(self);
+
+				for i=1, #atores, 1 do 
+				local ator = atores[i];
+					if ator.iniciativaRolagem~= nil then
+						local rolagem = Firecast.interpretarRolagem(ator.iniciativaRolagem);
+
+						if rolagem.possuiAlgumDado then
+							mesa.activeChat:rolarDados(rolagem, "Iniciativa de " .. (ator.nome or "ator"), 
+									function (rolado) 
+										ator.iniciativa = rolado.resultado;
+									end);
+						end;
+					end;
+				end;
+
+			</event>
+		</button>
+		<button name="btnAddAll" text="T" onClick="" class="combatHeaderButton" hint="Rola Adiciona todos com +Jogador a lista">
+			<event name="onClick">
+				local mesa = Firecast.getMesaDe(self);
+				local jogadores = mesa.jogadores;
+
+				for i=1, #jogadores, 1 do
+					local jogador = jogadores[i];
+					if jogador.isJogador then
+						local ator = self:criarNovoAtor();
+						if ator ~= nil then
+							ator.nome = Utils.removerFmtChat(jogador.nick);
+							ator.fof = 1;
+						end;
+					end;
+				end;
+			</event>
+		</button>
+
+		
+		<button name="btnLimpar" text="Limpar" class="combatHeaderButton" align="right" width="60" onClick="self:limpar();"/>
+	</layout>
+	
+	<layout align="top" class="combatHeaderContentAlignedLayout combatHeader0_H" height="16" padding="{left=2, right=2}">
+		<layout name="layHeader0" class="combatHeader0">
+		</layout>
+		
+		<label class="combatHeaderTeste" text="Teste"/>		
+		<label class="combatHeaderNome" text="Nome"/>
+		
+		<layout name="layRightAlinedTitle" class="combateHeaderRightAlignedContent">
+			<label name="labTitIniciativa" class="combatHeaderIniciativa" text="Init" horzTextAlign="center"/>		
+			<label name="labTitFoF" class="combatHeaderFriendOrFoe" text="A/H" horzTextAlign="center"/>				
+		</layout>
+	</layout>
+	
+	<script>
+		if System.isMobile() then
+			self.layTopTracker.height = 32;
+			self.btnAddAtor.width = self.layTopTracker.height;
+			self.layHeader0.width = 32;
+			self.layRightAlinedTitle.width = 108;
+			self.layRightAlinedTitle.width = 108;
+			self.labTitFoF.width = 32;
+			self.labTitIniciativa.width = 32;
+		end;
+	</script>	
+	
+	<recordList name="rclAtores" align="client" field="atores" templateForm="frmAtorCombatTracker" margins="{top=1}">
+		<event name="onCompare">
+			return self:compareNodes(nodeA, nodeB);
+		</event>
+	</recordList>
+	
+	<layout name="layTrackerBottom" align="bottom" height="28" margins="{top=2, left=2, bottom=2, right=2}">
+		<button text="Act" onClick="self:proximoTurno();" fontSize="11" width="50" align="left"/>
+		<edit field="action" align="left" type="number" width="30" horzTextAlign="center" fontStyle="bold"/>	
+		
+		<layout align="right" width="150">
+			<label align="left" autoSize="true" text="Contador de Tempo" wordWrap="false" fontSize="11"/>
+			<edit field="rodada" align="client" type="number" min="0" horzTextAlign="center" fontStyle="bold"/>			
+		</layout>
+	</layout>
+	
+	<script>
+		if System.isMobile() then
+			self.layTrackerBottom.height = 32;
+		end;
+		
+		self.onStartDrop = self.handleStartDrop;
+		self.rclAtores.onStartDrop = self.handleStartDrop;
+	</script>
+</form>

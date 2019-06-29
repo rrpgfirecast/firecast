@@ -273,11 +273,15 @@
 
 				<flowLineBreak/>
 
-				<header field="a"/>
+				<flowPart stepSizes="{105}" minScaledWidth="75" height="120" margins="{top=35}" frameStyle="frames/shield/frame.xml">
+					<label align="top" text="BLOQUEAR" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					<edit align="client" class="atributo transparente" field="a" fontSize="30"/>	
+				</flowPart>	
 
-				<flowLineBreak/>
-
-				<header field="b"/>
+				<flowPart stepSizes="{105}" minScaledWidth="75" height="120" margins="{top=35}" frameStyle="frames/shield/frame.xml">
+					<label align="top" text="APARAR" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+					<edit align="client" class="atributo transparente" field="b" fontSize="30"/>	
+				</flowPart>	
 
 				<dataLink fields="{'totalPontos', 'atributos_st', 'atributos_ht', 'atributos_dx', 'atributos_vt', 'atributos_iq', 'atributos_per', 'atributos_pv', 'atributos_pf', 'atributos_velocidade', 'atributos_deslocamento'}">
 					<event name="onChange">

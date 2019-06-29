@@ -60,7 +60,7 @@
 		<edit left="105" top="$(top)" width="200" height="25" field="$(field)"/>
 	</template>
 	<template name="Combate">
-		<label left="5" top="$(top)" width="100" height="25" horzTextAlign="center" text="$(text)"/>
+		<label left="5" top="$(top)" width="100" height="25" horzTextAlign="center" text="$(text)" fontSize="$(fontSize)"/>
 		<rectangle left="105" top="$(top)" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
 		<label left="105" top="$(top)" width="50" height="25" horzTextAlign="center" field="$(field)Base"/>
 		<edit left="155" top="$(top)" width="75" height="25" field="$(field)Adicional" horzTextAlign="center" type="number"/>
@@ -169,7 +169,6 @@
 					sheet.imersaoBase = 10 + (nivel * 5);
 					sheet.atr_max = 42 + (nivel * 6);
 					sheet.habilidadesDisponivel = math.min(nivel*2 + 1, 15);
-					sheet.carac_total = 47 + nivel;
 				</event>
 			</dataLink>
 		</rectangle>
@@ -237,50 +236,56 @@
 		<rectangle left="600" top="175" width="310" height="130" color="black" strokeColor="white" strokeSize="1">
 			<label left="0" top="0" width="310" height="20" horzTextAlign="center" text="Atributos Avançados"/>
 
-			<AtributoAvancado top="25" text="Benção I" field="bencao1"/>
-			<AtributoAvancado top="50" text="Benção II" field="bencao2"/>
+			<AtributoAvancado top="25" text="Benção" field="bencao1"/>
+			<AtributoAvancado top="50" text="Sentinela" field="bencao2"/>
 			<AtributoAvancado top="75" text="Ultimato" field="ultimato"/>
-			<AtributoAvancado top="100" text="Privilégio" field="privilegio"/>
+			<AtributoAvancado top="100" text="Clã" field="privilegio"/>
 		</rectangle>
 
 		<rectangle left="915" top="0" width="310" height="680" color="black" strokeColor="white" strokeSize="1">
-			<label left="0" top="5" width="310" height="20" horzTextAlign="center" text="Status de Combate"/>
 
-			<Resistencia left="0" top="25" text="Dano Base" field="danoBase"/>
-			<Resistencia left="155" top="25" text="Bloqueio" field="bloqueio"/>
+			<Combate top="0" text="Poder Físico" field="poderFisico" format="" fontSize="13"/>
+			<Combate top="25" text="Poder Paranormal" field="poderParanormal" format="" fontSize="11"/>
+			<Combate top="50" text="Poder de Projétil" field="poderProjetil" format="" fontSize="11"/>
+			
+			<layout left="0" top="75" width="310" height="25">
+				<label left="0" top="0" width="100" height="25" horzTextAlign="center" text="Bloqueio"/>
 
-			<label left="105" top="50" width="50" height="20" horzTextAlign="center" text="Natural"/>
-			<label left="155" top="50" width="75" height="20" horzTextAlign="center" text="Adicional"/>
-			<label left="230" top="50" width="75" height="20" horzTextAlign="center" text="Total"/>
+				<edit left="100" top="0" width="70" height="25" horzTextAlign="center" field="bloqueioFis"/>
+				<label left="170" top="0" width="35" height="25" horzTextAlign="center" text="Fís."/>
 
-			<Combate top="75" text="Reg. de Vida" field="regVida" format="pt"/>
-			<Combate top="100" text="Reg. de Fadiga" field="regFadiga" format="pt"/>
-			<Combate2 top="125" text="Iniciativa" field="iniciativa" format1="d6+" format2=""/>
-			<Combate2 top="150" text="Crítico" field="critico" format1="|" format2="%"/>
-			<Combate top="175" text="Negação" field="negacao" format="%"/>
-			<Combate top="200" text="Conjuração" field="conjuracao" format=""/>
+				<edit left="205" top="0" width="70" height="25" horzTextAlign="center" field="bloqueioPar"/>
+				<label left="275" top="0" width="35" height="25" horzTextAlign="center" text="Par."/>
+			</layout>
 
-			<label left="5" top="230" width="300" height="20" horzTextAlign="center" text="Redutores"/>
+			<label left="0" top="105" width="310" height="20" horzTextAlign="center" text="Status de Combate"/>
 
-			<Combate2 top="250" text="Físico" field="fisico" format1="%+" format2=""/>
-			<Combate2 top="275" text="Paranormal" field="paranormal" format1="%+" format2=""/>
-			<Combate2 top="300" text="Projétil" field="projetil" format1="%+" format2=""/>
-			<Combate2 top="325" text="Corrosivo" field="corrosivo" format1="%+" format2=""/>
+			<Combate top="125" text="Reg. de Vida" field="regVida" format="pt" fontSize="13"/>
+			<Combate top="150" text="Reg. de Fadiga" field="regFadiga" format="pt" fontSize="13"/>
+			<Combate top="175" text="Vel. de Movimento" field="iniciativa" format="" fontSize="11"/>
+			<Combate top="200" text="Chance de Crítico" field="critico" format="" fontSize="11"/>
+			<Combate top="225" text="Amplificação" field="amplificacao" format="%" fontSize="13"/>
+			<Combate top="250" text="Negação" field="negacao" format="%" fontSize="13"/>
 
-			<label left="5" top="355" width="300" height="20" horzTextAlign="center" text="Resistências"/>
+			<label left="5" top="280" width="300" height="20" horzTextAlign="center" text="Redutores"/>
 
-			<Combate top="375" text="Desaceleração" field="desaceleracao" format="%"/>
-			<Combate top="400" text="Sangramento" field="sangramento" format="%"/>
-			<Combate top="425" text="Impelimento" field="impelimento" format="%"/>
-			<Combate top="450" text="Imobilização" field="imobilizacao" format="%"/>
-			<Combate top="475" text="Fratura" field="fratura" format="%"/>
-			<Combate top="500" text="Fragilização" field="fragilizacao" format="%"/>
-			<Combate top="525" text="Envenenamento" field="envenenamento" format="%"/>
-			<Combate top="550" text="Incendiado" field="incendiado" format="%"/>
-			<Combate top="575" text="Aturdido" field="atordoamento" format="%"/>
-			<Combate top="600" text="Paralisação" field="paralisacao" format="%"/>
-			<Combate top="625" text="Provocação" field="provocacao" format="%"/>
-			<Combate top="650" text="Silenciamento" field="silenciado" format="%"/>
+			<Combate2 top="300" text="Físico" field="fisico" format1="%+" format2=""/>
+			<Combate2 top="325" text="Paranormal" field="paranormal" format1="%+" format2=""/>
+			<Combate2 top="350" text="Projétil" field="projetil" format1="%+" format2=""/>
+			<Combate2 top="375" text="Corrosivo" field="corrosivo" format1="%+" format2=""/>
+
+			<label left="5" top="405" width="300" height="20" horzTextAlign="center" text="Resistências"/>
+
+			<Combate top="425" text="Sangramento" field="sangramento" format="%" fontSize="13"/>
+			<Combate top="450" text="Impelimento" field="impelimento" format="%" fontSize="13"/>
+			<Combate top="475" text="Imobilização" field="imobilizacao" format="%" fontSize="13"/>
+			<Combate top="500" text="Fratura" field="fratura" format="%" fontSize="13"/>
+			<Combate top="525" text="Aturdido" field="atordoamento" format="%" fontSize="13"/>
+			<Combate top="550" text="Envenenamento" field="envenenamento" format="%" fontSize="13"/>
+			<Combate top="575" text="Incendiado" field="incendiado" format="%" fontSize="13"/>
+			<Combate top="600" text="Paralisação" field="paralisacao" format="%" fontSize="13"/>
+			<Combate top="625" text="Provocação" field="provocacao" format="%" fontSize="13"/>
+			<Combate top="650" text="Silenciamento" field="silenciado" format="%" fontSize="13"/>
 
 			<dataLink fields="{'nivel', 'cac_total', 'paranormalidade_total', 'agilidade_total', 'sorte_total', 'manuseio_total', 'pontaria_total'}">
 				<event name="onChange">
@@ -293,21 +298,20 @@
 					local destreza = (tonumber(sheet.manuseio_total) or 0);
 					local precisao = (tonumber(sheet.pontaria_total) or 0);
 
-					sheet.regVidaBase = 8 + math.floor(cac/4)*5;
+					-- PODER
 
+					sheet.poderFisicoBase = agilidade * 2 + cac * 4 + destreza * 3 + precisao * 2 + sorte * 2;
+					sheet.poderParanormalBase = destreza * 3 + precisao * 2 + paranormalidade * 4 + sorte * 2;
+					sheet.poderProjetilBase = destreza * 3 + precisao * 4 + sorte * 3;
+
+					-- STATUS DE COMBATE
+
+					sheet.regVidaBase = 8 + math.floor(cac/4)*4;
 					sheet.regFadigaBase = 5 + math.floor(paranormalidade/4)*3;
-
-					sheet.iniciativaBase = 4 + math.floor(agilidade/6);
-					sheet.iniciativaBase1 = 4 + math.floor(agilidade/6);
-					sheet.iniciativaBase2 = 0;
-
-					sheet.criticoBase1 = 1 + math.floor(sorte/4);
-					sheet.criticoBase2 = 50 + math.floor(destreza/6)*25;
-					sheet.criticoBase = sheet.criticoBase1 .. "|" .. sheet.criticoBase2;
-
+					sheet.iniciativaBase = math.floor(agilidade/6);
+					sheet.criticoBase = 1 + math.floor(sorte/4);
+					sheet.amplificacaoBase = math.floor(destreza/4)*10;
 					sheet.negacaoBase = math.floor(precisao/4)*10;
-
-					sheet.conjuracaoBase = math.floor(destreza/4);
 
 					-- REDUTORES
 
@@ -337,7 +341,7 @@
 					sheet.fragilizacaoBase = math.floor(cac/4)*5;
 					sheet.envenenamentoBase = math.floor(paranormalidade/4)*5;
 					sheet.incendiadoBase = math.floor(paranormalidade/4)*5;
-					sheet.atordoamentoBase = math.floor(paranormalidade/4)*5;
+					sheet.atordoamentoBase = math.floor(cac/4)*5;
 					sheet.paralisacaoBase = math.floor(paranormalidade/4)*5;
 					sheet.provocacaoBase = math.floor(paranormalidade/4)*5;
 					sheet.silenciadoBase = math.floor(paranormalidade/4)*5;
