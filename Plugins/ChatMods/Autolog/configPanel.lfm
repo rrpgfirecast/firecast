@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<popupForm name="autologConfigPanel" formType="undefined" dataType="br.com.rrpg.Autolog" title="Autolog" width="290" height = "245">
+<popupForm name="autologConfigPanel" formType="undefined" dataType="br.com.rrpg.Autolog" title="Autolog" width="290" height = "275">
 	<script>
 	-- nome da mesa a qual a janela se refere
 	mesa = nil;
@@ -11,22 +11,23 @@
 			<horzLine left="10" top="40" width="270"/>
 
 			<checkBox name="useLoginForPvtCheckBox" left="10" top="55" width="280" text="Usar login como nome para logs de PVT" onChange="autolog.useLoginForPvtName = self.useLoginForPvtCheckBox.checked;"/>
+			<checkBox name="singleLogFileCheckBox" left="10" top="85" width="280" text="Gravar logs de mesa separados por dias" onChange="autolog.singleLogFile = not self.singleLogFileCheckBox.checked;"/>
 
-			<horzLine left="10" top="85" width="270"/>
+			<horzLine left="10" top="115" width="270"/>
 
-			<label left="10" top="100" width="200" text="Copiar Log para o Clipboard:"/>
-			<button name="readLogButton" left="200" top="100" text="Copiar" onClick="readLog(self.mesa);"/>
+			<label left="10" top="130" width="200" text="Copiar Log para o Clipboard:"/>
+			<button name="readLogButton" left="200" top="130" text="Copiar" onClick="readLog(self.mesa);"/>
 
-			<label left="10" top="130" width="200" text="Exportar Log:"/>
-			<button name="exportLogButton" left="200" top="130" text="Exportar" onClick="exportLog(self.mesa);"/>
-			
-			<label left="10" top="160" text="Apagar Log:"/>
-			<button name="clearLogButton" left="200" top="160" text="Apagar" onClick="clearLog(self.mesa);"/>
-			
-			<label left="10" top="190" width="280" text="Enviar últimas linhas do log para a mesa:"/>
-			<edit name="linesToSendField" left="10" top="211" width="30" height="20" type="number" keyboardType="numberPad"/>
-			<label left="45" top="211" text="linhas"/>
-			<button name="sendLinesButton" left="200" top="211" text="Enviar" onClick="sendLastMessages(self.mesa, self.linesToSendField.asNumber);"/>
+			<label left="10" top="160" width="200" text="Exportar Log:"/>
+			<button name="exportLogButton" left="200" top="160" text="Exportar" onClick="exportLog(self.mesa);"/>
+
+			<label left="10" top="190" text="Apagar Log:"/>
+			<button name="clearLogButton" left="200" top="190" text="Apagar" onClick="clearLog(self.mesa);"/>
+
+			<label left="10" top="220" width="280" text="Enviar últimas linhas do log para a mesa:"/>
+			<edit name="linesToSendField" left="10" top="241" width="30" height="20" type="number" keyboardType="numberPad"/>
+			<label left="45" top="241" text="linhas"/>
+			<button name="sendLinesButton" left="200" top="241" text="Enviar" onClick="sendLastMessages(self.mesa, self.linesToSendField.asNumber);"/>
 
 <!--	</tab>
 	</tabControl>-->
