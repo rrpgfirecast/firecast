@@ -21,10 +21,10 @@
 
 		<button left="225" top="0" width="25" height="25" text="X">
 			<event name="onClick">
-				dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
+				Dialogs.confirmOkCancel("Tem certeza que quer apagar esse objeto?",
 					function (confirmado)
 						if confirmado then
-							ndb.deleteNode(sheet);
+							NDB.deleteNode(sheet);
 						end;
 				end);
 			</event>
@@ -45,8 +45,8 @@
 			<event name="onChange">
 				if sheet==nil then return end;
 
-				local node = ndb.getRoot(sheet);
-				local objetos = ndb.getChildNodes(node.skillList);
+				local node = NDB.getRoot(sheet);
+				local objetos = NDB.getChildNodes(node.skillList);
 				local karma = 0;
 				local groups = {};
 
@@ -66,8 +66,8 @@
 			<event name="onChange">
 				if sheet==nil then return end;
 
-				local node = ndb.getRoot(sheet);
-				local objetos = ndb.getChildNodes(node.skillList);
+				local node = NDB.getRoot(sheet);
+				local objetos = NDB.getChildNodes(node.skillList);
 				local points = 0;
 				local groups = {};
 
@@ -85,8 +85,8 @@
 			<event name="onChange">
 				if sheet==nil then return end;
 
-				local node = ndb.getRoot(sheet);
-				local objetos = ndb.getChildNodes(node.skillList);
+				local node = NDB.getRoot(sheet);
+				local objetos = NDB.getChildNodes(node.skillList);
 				local points = 0;
 
 				for i=1, #objetos, 1 do 
@@ -100,8 +100,8 @@
 			<event name="onChange">
 				if sheet==nil then return end;
 
-				local node = ndb.getRoot(sheet);
-				local objetos = ndb.getChildNodes(node.skillList);
+				local node = NDB.getRoot(sheet);
+				local objetos = NDB.getChildNodes(node.skillList);
 				local base = 0;
 
 				for i=1, #objetos, 1 do 
@@ -117,7 +117,7 @@
 				local contain = false;
 
 				for i=1, #array, 1 do
-					if utils.compareStringPtBr(array[i], word)==0 then
+					if Utils.compareStringPtBr(array[i], word)==0 then
 						contain = true;
 					end;
 				end;

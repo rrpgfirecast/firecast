@@ -679,7 +679,7 @@ local function constructNew_frmInventory()
 
     obj._e_event1 = obj.rclGearList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.gear_name, nodeB.gear_name);
+            return Utils.compareStringPtBr(nodeA.gear_name, nodeB.gear_name);
         end, obj);
 
     obj._e_event2 = obj.dataLink1:addEventListener("onChange",

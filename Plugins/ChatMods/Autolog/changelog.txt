@@ -1,5 +1,13 @@
 ﻿CHANGELOG:
 
+v1.2.6
+- Adição da opção de gravar logs de mesa separados por dia de início
+===================================================================================
+
+v1.2.5
+- Compatibilização com Firecast 7.8
+
+===================================================================================
 v1.2.4
 - Adição da opção de usar o login como nome do arquivo de log para PVTs
 

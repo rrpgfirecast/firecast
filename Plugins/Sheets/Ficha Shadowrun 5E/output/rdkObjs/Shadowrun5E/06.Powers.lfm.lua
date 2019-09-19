@@ -237,7 +237,7 @@ local function constructNew_frmPowers()
 
     obj._e_event1 = obj.rclSpells:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.spell_name, nodeB.spell_name);
+            return Utils.compareStringPtBr(nodeA.spell_name, nodeB.spell_name);
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
@@ -247,7 +247,7 @@ local function constructNew_frmPowers()
 
     obj._e_event3 = obj.rclAbilities:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.abilities_name, nodeB.abilities_name);
+            return Utils.compareStringPtBr(nodeA.abilities_name, nodeB.abilities_name);
         end, obj);
 
     function obj:_releaseEvents()

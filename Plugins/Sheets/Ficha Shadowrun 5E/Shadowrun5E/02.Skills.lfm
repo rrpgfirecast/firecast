@@ -8,10 +8,10 @@
 
 			<recordList name="rclSkillList" field="skillList" templateForm="frmActiveSkill" left="5" top="25" width="275" height="650" layout="vertical">
 				<event name="onCompare">
-					if utils.compareStringPtBr(nodeA.skill_group_name, nodeB.skill_group_name)== 0 then
-						return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
+					if Utils.compareStringPtBr(nodeA.skill_group_name, nodeB.skill_group_name)== 0 then
+						return Utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
 					else 
-		            	return utils.compareStringPtBr(nodeA.skill_group_name, nodeB.skill_group_name);
+		            	return Utils.compareStringPtBr(nodeA.skill_group_name, nodeB.skill_group_name);
 		            end;
 		        </event>
 			</recordList>
@@ -24,7 +24,7 @@
 
 			<recordList name="rclKnowledgeList" field="knowledgeList" templateForm="frmKnowledgeSkill" left="5" top="25" width="275" height="650" layout="vertical">
 				<event name="onCompare">
-					return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
+					return Utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
 		        </event>
 			</recordList>
 		</layout>
@@ -36,7 +36,7 @@
 
 			<recordList name="rclLanguageList" field="languageList" templateForm="frmLanguageSkill" left="5" top="25" width="275" height="650" layout="vertical">
 				<event name="onCompare">
-					return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
+					return Utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
 		        </event>
 			</recordList>
 		</layout>
