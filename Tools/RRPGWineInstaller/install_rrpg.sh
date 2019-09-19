@@ -7,7 +7,7 @@ export WINEPREFIX=$HOME/.wine-rrpg
 # Constantes
 SILENT=true
 
-RRPG_INSTALLER_NAME=RRPG7.8c_beta3.exe
+RRPG_INSTALLER_NAME=RRPG7.8c_beta6.exe
 RRPG_INSTALLER_URL=http://firecast.app/downloads/$RRPG_INSTALLER_NAME
 RRPG_INSTALL_DIRECTORY=$WINEPREFIX/drive_c/RRPG
 
