@@ -39,7 +39,8 @@ function getRolagemAsString(rolagem)
 			diceString = diceString .. " - ";
 		end
 	end
-	local diceString = diceString .. "}";
+	
+	diceString = diceString .. "}";
 
 	return string.format(rolagem.asString .. " = %d %s", total, diceString);
 end
@@ -48,8 +49,7 @@ require("vhd.lua");
 require("fireDrive.lua");
 
 -- splitString(string, separador): separa uma string em uma lista de strings.
-function splitString(str, pat)
-	local size = 0;
+function splitString(str, pat)	
 	local t = {};
 	local fpat = "(.-)" .. pat;
 	local last_end = 1;

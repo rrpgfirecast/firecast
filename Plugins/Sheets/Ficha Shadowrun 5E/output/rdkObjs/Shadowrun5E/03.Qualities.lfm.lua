@@ -275,7 +275,7 @@ local function constructNew_frmQualities()
 
     obj._e_event1 = obj.rclPositiveQualities:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.quality_name, nodeB.quality_name);
+            return Utils.compareStringPtBr(nodeA.quality_name, nodeB.quality_name);
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
@@ -285,7 +285,7 @@ local function constructNew_frmQualities()
 
     obj._e_event3 = obj.rclNegativeQualities:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.quality_name, nodeB.quality_name);
+            return Utils.compareStringPtBr(nodeA.quality_name, nodeB.quality_name);
         end, obj);
 
     obj._e_event4 = obj.button3:addEventListener("onClick",
@@ -295,7 +295,7 @@ local function constructNew_frmQualities()
 
     obj._e_event5 = obj.rclContacts:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.contact_name, nodeB.contact_name);
+            return Utils.compareStringPtBr(nodeA.contact_name, nodeB.contact_name);
         end, obj);
 
     function obj:_releaseEvents()

@@ -15,7 +15,7 @@
 
 			<recordList name="rclSpells" field="spellList" templateForm="frmSpells" left="5" top="50" width="500" height="625" layout="vertical">
 				<event name="onCompare">
-					return utils.compareStringPtBr(nodeA.spell_name, nodeB.spell_name);
+					return Utils.compareStringPtBr(nodeA.spell_name, nodeB.spell_name);
 		        </event>
 			</recordList>
 		</layout>
@@ -32,7 +32,7 @@
 
 			<recordList name="rclAbilities" field="abilityList" templateForm="frmAbilities" left="5" top="50" width="400" height="625" layout="vertical">
 				<event name="onCompare">
-					return utils.compareStringPtBr(nodeA.abilities_name, nodeB.abilities_name);
+					return Utils.compareStringPtBr(nodeA.abilities_name, nodeB.abilities_name);
 		        </event>
 			</recordList>
 		</layout>

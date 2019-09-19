@@ -173,10 +173,10 @@ local function constructNew_frmSkills()
 
     obj._e_event1 = obj.rclSkillList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            if utils.compareStringPtBr(nodeA.skill_group_name, nodeB.skill_group_name)== 0 then
-            						return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
+            if Utils.compareStringPtBr(nodeA.skill_group_name, nodeB.skill_group_name)== 0 then
+            						return Utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
             					else 
-            		            	return utils.compareStringPtBr(nodeA.skill_group_name, nodeB.skill_group_name);
+            		            	return Utils.compareStringPtBr(nodeA.skill_group_name, nodeB.skill_group_name);
             		            end;
         end, obj);
 
@@ -187,7 +187,7 @@ local function constructNew_frmSkills()
 
     obj._e_event3 = obj.rclKnowledgeList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
+            return Utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
         end, obj);
 
     obj._e_event4 = obj.button3:addEventListener("onClick",
@@ -197,7 +197,7 @@ local function constructNew_frmSkills()
 
     obj._e_event5 = obj.rclLanguageList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
+            return Utils.compareStringPtBr(nodeA.skill_name, nodeB.skill_name);
         end, obj);
 
     function obj:_releaseEvents()
