@@ -10,6 +10,7 @@ Proximas Versões
 + Ordenar magias por usos também. 
 + Exibir a CD ao lado da magia. 
 + Popup pericia: competencia, intuição e sorte. 
++ Barrinhas para talentos. 
 
 Versão 3.3
 - Campos editaveis invisiveis tem retangulo diferenciado agora. 
