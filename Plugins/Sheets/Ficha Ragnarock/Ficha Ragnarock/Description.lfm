@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmTemplateDescription" align="client">
+	<scrollBox align="client">
+		<richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+	</scrollBox>
+</form>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPet" align="client">
+	<scrollBox align="client">
+		<rectangle color="black" align="top" height="200" margins="{bottom=5}">
+			<layout align="left" width="220" margins="{right=5}">
+				<Atributo field="pet_FOR" text="Força"/>
+				<Atributo field="pet_AGI" text="Agilidade"/>
+				<Atributo field="pet_PUL" text="Pulo"/>
+			</layout>
+
+			<layout align="left" width="270" margins="{right=5}">
+				<layout align="top" height="50" margins="{bottom=5, top=5}">
+					<UpperBar width="150" text="Nome" field="pet_nome" fontSize="13"/>
+					<UpperBar width="50" text="Level" field="pet_level" fontSize="13"/>
+				</layout>
+				<layout align="top" height="50" margins="{bottom=5, top=0}">
+					<UpperBar width="100" text="Raça" field="pet_raca" fontSize="13"/>
+					<UpperBar width="100" text="Aparencia" field="pet_aparencia" fontSize="13"/>
+				</layout>
+
+				<layout align="top" height="25" margins="{bottom=5, top=0}">
+					<LabelEdit text="HP" field="pet_hp"/>
+					<LabelEdit text="SP" field="pet_sp"/>
+				</layout>
+
+				<layout align="top" height="50" margins="{bottom=5}">
+					<UpperBar width="150" text="Experiência" field="pet_experiencia" fontSize="13"/>
+					<UpperBar width="50" text="AP" field="pet_ap" fontSize="13"/>
+					<UpperBar width="50" text="React" field="pet_react" fontSize="13"/>
+				</layout>
+			</layout>
+
+			<layout align="left" width="200" margins="{right=5}">
+				<rectangle left="0" top="0" width="200" height="200" color="black" strokeColor="white" strokeSize="1">
+					<image align="client" field="pet_avatar" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+						<event name="OnStartDrag">
+						    drag:addData("imageURL", sheet.pet_avatar);
+						</event>
+					</image>
+				</rectangle>
+			</layout>
+
+		</rectangle>
+
+		<richEdit align="client" field="pet_background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+	</scrollBox>
+</form>

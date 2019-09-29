@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmEquipamentos" align="client">
+	<template name="Equipamento">
+
+		<layout align="left" width="325" margins="{bottom=0}">
+			<layout align="top" height="50" margins="{bottom=0}">
+				<layout align="left" width="125" margins="{right=0}">
+					<label text="Nome" width="125" horzTextAlign="leading" fontSize="13"/>
+					<edit top="20" field="$(field)_nome" width="125" height="25"/>
+				</layout>
+				<layout align="left" width="75" margins="{right=0}">
+					<label text="$(text)" width="75" horzTextAlign="leading" fontSize="13"/>
+					<edit top="20" field="$(field)_def" width="75" height="25"/>
+				</layout>
+				<layout align="left" width="125" margins="{right=0}">
+					<label text="$(text2)" width="125" horzTextAlign="leading" fontSize="13"/>
+					<edit top="20" field="$(field)_bonus" width="125" height="25"/>
+				</layout>
+			</layout>
+			<textEditor align="client" field="$(field)_desc"/>
+		</layout>
+
+		<layout align="left" width="75" margins="{top=50}">
+			<rectangle width="75" height="100" color="black" strokeColor="white" strokeSize="1">
+				<image width="75" height="100" field="$(field)_pic" editable="true" style="autoFit" margins="{left=2, right=2, top=2, bottom=2}">
+					<event name="OnStartDrag">
+					    drag:addData("imageURL", sheet.$(field)_pic);
+					</event>
+				</image>
+			</rectangle>
+		</layout>
+			
+	</template>
+
+	<scrollBox align="client">
+		<layout height="900" width="1255" margins="{right=0}">
+
+			<rectangle color="black" align="top" height="175" margins="{bottom=5}">
+				<layout align="left" width="400" margins="{right=25}">
+					<label text="" align="top" height="25" horzTextAlign="center"/>
+					<Equipamento field="head1" text="Def" text2="Bônus"/>
+				</layout>
+				<layout align="left" width="400" margins="{right=25}">
+					<label text="CABEÇA" align="top" height="25" horzTextAlign="center"/>
+					<Equipamento field="head2" text="Def" text2="Bônus"/>
+				</layout>
+				<layout align="left" width="400" margins="{right=25}">
+					<label text="" align="top" height="25" horzTextAlign="center"/>
+					<Equipamento field="head3" text="Def" text2="Bônus"/>
+				</layout>
+			</rectangle>
+
+			<rectangle color="black" align="top" height="175" margins="{bottom=5}">
+				<layout align="left" width="400" margins="{right=25}">
+					<label text="Mão Esquerda" align="top" height="25" horzTextAlign="center"/>
+					<Equipamento field="left" text="Dano/Def" text2="Intensidade"/>
+				</layout>
+				<layout align="left" width="400" margins="{right=25}">
+					<label text="Mão Direita" align="top" height="25" horzTextAlign="center"/>
+					<Equipamento field="right" text="Dano/Def" text2="Intensidade"/>
+				</layout>
+				<layout align="left" width="400" margins="{right=25}">
+					<label text="Armadura" align="top" height="25" horzTextAlign="center"/>
+					<Equipamento field="armor" text="Def" text2="Bônus"/>
+				</layout>
+			</rectangle>
+
+			<rectangle color="black" align="top" height="175" margins="{bottom=5}">
+				<layout align="left" width="400" margins="{right=25}">
+					<label text="Garmel" align="top" height="25" horzTextAlign="center"/>
+					<Equipamento field="garmel" text="Def" text2="Bônus"/>
+				</layout>
+				<layout align="left" width="400" margins="{right=25}">
+					<label text="Bota" align="top" height="25" horzTextAlign="center"/>
+					<Equipamento field="bota" text="Def" text2="Bônus"/>
+				</layout>
+				<layout align="left" width="400" margins="{right=25}">
+					<label text="Acessório" align="top" height="25" horzTextAlign="center"/>
+					<Equipamento field="acessorio1" text="Def" text2="Bônus"/>
+				</layout>
+			</rectangle>
+
+			<rectangle color="black" align="top" height="175" margins="{bottom=5}">
+				<layout align="left" width="400" margins="{right=25}">
+					<label text="Acessório" align="top" height="25" horzTextAlign="center"/>
+					<Equipamento field="acessorio2" text="Def" text2="Bônus"/>
+				</layout>
+				<layout align="left" width="400" margins="{right=25}">
+					<label text="Itens" align="top" height="25" horzTextAlign="center"/>
+					<textEditor align="client" field="itens_desc"/>
+				</layout>
+				<layout align="left" width="400" margins="{right=25}">
+					<label text="Acessório" align="top" height="25" horzTextAlign="center"/>
+					<Equipamento field="acessorio3" text="Def" text2="Bônus"/>
+				</layout>
+			</rectangle>
+
+			<rectangle color="black" align="top" height="175" margins="{bottom=5}">
+				<layout align="left" width="600" margins="{right=37.5}">
+					<label text="Orbs" align="top" height="25" horzTextAlign="center"/>
+					<textEditor align="client" field="orbs_desc"/>
+				</layout>
+				<layout align="left" width="600" margins="{right=37.5}">
+					<label text="Clã" align="top" height="25" horzTextAlign="center"/>
+					<textEditor align="client" field="cla_desc"/>
+				</layout>
+			</rectangle>
+
+		</layout>
+	</scrollBox>
+</form> 
