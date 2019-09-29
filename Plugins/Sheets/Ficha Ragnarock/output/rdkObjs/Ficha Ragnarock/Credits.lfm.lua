@@ -428,7 +428,7 @@ local function constructNew_frmTemplateCreditos()
 
     obj._e_event5 = obj.button2:addEventListener("onClick",
         function (_)
-            GUI.openInBrowser('raw_download_link')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true')
         end, obj);
 
     obj._e_event6 = obj.button3:addEventListener("onClick",

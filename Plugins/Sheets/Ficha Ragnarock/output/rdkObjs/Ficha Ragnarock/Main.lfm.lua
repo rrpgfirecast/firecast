@@ -5047,7 +5047,7 @@ local function constructNew_frmMain()
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
         function (_)
-            Internet.download("raw_download_link",
+            Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true",
                         function(stream, contentType)
                             local info = Firecast.Plugins.getRPKDetails(stream);
                             sheet.versionDownloaded = "VERSÃO DISPONÍVEL: " .. info.version;
@@ -5066,7 +5066,7 @@ local function constructNew_frmMain()
                                 Dialogs.choose("Há uma nova versão desse plugin. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                                     function(selected, selectedIndex, selectedText)
                                         if selected and selectedIndex == 1 then
-                                            GUI.openInBrowser('raw_download_link');
+                                            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true');
                                         elseif selected and selectedIndex == 3 then
                                             sheet.noUpdate = true;
                                         end;
@@ -6819,7 +6819,7 @@ local function constructNew_frmMain()
 
     obj._e_event69 = obj.button27:addEventListener("onClick",
         function (_)
-            GUI.openInBrowser('raw_download_link')
+            GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true')
         end, obj);
 
     obj._e_event70 = obj.button28:addEventListener("onClick",

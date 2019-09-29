@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.2" compilationDate="29102018135431" compilationDigest="3b07d454d306f61189560588d4333b766f38dcc5">
+    <element id="Ambesek.Ragnarock" name="Ficha Ragnarok" url="https://github.com/rrpgfirecast/fihttps://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true" fileName="Ficha Ragnarock.rpk" repositoryPath="Plugins/Sheets/Ficha Ragnarock" author="Ambesek" description="Ficha para um sistema proprio de Ragnarock." version="0.1" compilationDate="29102018135431" compilationDigest="3b07d454d306f61189560588d4333b766f38dcc5">
         <dataTypes>
-            <dataType id="Ambesek.Ferramentas.d20" title="Ferramentas RPGmeister"/>
+            <dataType id="Ambesek.Ragnarock" title="Ficha Ragnarok"/>
         </dataTypes>
     </element>
     <element id="Ambesek.Ferramentas.d20" name="Ferramentas RPGmeister" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/Ferramentas%20d20/output/Ferramentas%20d20.rpk?raw=true" fileName="Ferramentas d20.rpk" repositoryPath="TablesDock/Ferramentas d20/" author="Ambesek" description="Varias ferramentas para narradores de d20 system." version="0.1">
         <dataTypes>
             <dataType id="ambesek.afkbot" title="AfkBot"/>
+        </dataTypes>
+    </element>
+    <element id="AfkBot" name="AfkBot" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/AfkBot/output/AfkBot.rpk?raw=true" fileName="AfkBot.rpk" repositoryPath="ChatMods/AfkBot/" author="Ambesek" description="Crie uma mensagem padrão para responder quando estiver ocupado. Também protege a mesa de flood de dados e /rir se configurado para tal. Use /afkbot para abrir o popup de configuração." version="1.2" compilationDate="29102018135431" compilationDigest="3b07d454d306f61189560588d4333b766f38dcc5">
+        <dataTypes>
+            <dataType id="Ambesek.Ferramentas.d20" title="Ferramentas RPGmeister"/>
         </dataTypes>
     </element>
     <element id="Autolog" name="Autolog" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/ChatMods/Autolog/output/Autolog.rpk?raw=true" fileName="Autolog.rpk" repositoryPath="ChatMods/Autolog/" author="Dniester &quot;Tyras&quot; Amorim de Aguiar" description="Salva automaticamente o log das mesas na pasta &quot;Documentos\RRPG\Complementos\Autolog\Logs&quot;" version="1.2.4" compilationDate="29102018135431" compilationDigest="a7d84b48cc57a9ace193a0bae5c012c549a839e2">
