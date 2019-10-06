@@ -137,6 +137,16 @@ local function constructNew_frmTemplateCreditos()
     obj.label3:setHorzTextAlign("center");
     obj.label3:setName("label3");
 
+    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label4:setParent(obj.layout1);
+    obj.label4:setLeft(0);
+    obj.label4:setTop(85);
+    obj.label4:setWidth(200);
+    obj.label4:setHeight(20);
+    obj.label4:setText("Sistema: Silver");
+    obj.label4:setHorzTextAlign("center");
+    obj.label4:setName("label4");
+
     obj.layout2 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout2:setParent(obj.scrollBox1);
     obj.layout2:setLeft(850);
@@ -154,15 +164,15 @@ local function constructNew_frmTemplateCreditos()
     obj.rectangle2:setColor("black");
     obj.rectangle2:setName("rectangle2");
 
-    obj.label4 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label4:setParent(obj.layout2);
-    obj.label4:setLeft(0);
-    obj.label4:setTop(10);
-    obj.label4:setWidth(80);
-    obj.label4:setHeight(20);
-    obj.label4:setText("Tema:");
-    obj.label4:setHorzTextAlign("center");
-    obj.label4:setName("label4");
+    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label5:setParent(obj.layout2);
+    obj.label5:setLeft(0);
+    obj.label5:setTop(10);
+    obj.label5:setWidth(80);
+    obj.label5:setHeight(20);
+    obj.label5:setText("Tema:");
+    obj.label5:setHorzTextAlign("center");
+    obj.label5:setName("label5");
 
     obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.layout2);
@@ -181,25 +191,25 @@ local function constructNew_frmTemplateCreditos()
     obj.dataLink1:setDefaultValue("Escuro");
     obj.dataLink1:setName("dataLink1");
 
-    obj.label5 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label5:setParent(obj.layout2);
-    obj.label5:setLeft(0);
-    obj.label5:setTop(35);
-    obj.label5:setWidth(90);
-    obj.label5:setHeight(20);
-    obj.label5:setText("Cores: ");
-    obj.label5:setHorzTextAlign("center");
-    obj.label5:setName("label5");
-
     obj.label6 = GUI.fromHandle(_obj_newObject("label"));
     obj.label6:setParent(obj.layout2);
     obj.label6:setLeft(0);
-    obj.label6:setTop(60);
+    obj.label6:setTop(35);
     obj.label6:setWidth(90);
     obj.label6:setHeight(20);
-    obj.label6:setText("Fundo ");
+    obj.label6:setText("Cores: ");
     obj.label6:setHorzTextAlign("center");
     obj.label6:setName("label6");
+
+    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label7:setParent(obj.layout2);
+    obj.label7:setLeft(0);
+    obj.label7:setTop(60);
+    obj.label7:setWidth(90);
+    obj.label7:setHeight(20);
+    obj.label7:setText("Fundo ");
+    obj.label7:setHorzTextAlign("center");
+    obj.label7:setName("label7");
 
     obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox2:setParent(obj.layout2);
@@ -217,15 +227,15 @@ local function constructNew_frmTemplateCreditos()
     obj.dataLink2:setDefaultValue("#000000");
     obj.dataLink2:setName("dataLink2");
 
-    obj.label7 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label7:setParent(obj.layout2);
-    obj.label7:setLeft(0);
-    obj.label7:setTop(85);
-    obj.label7:setWidth(90);
-    obj.label7:setHeight(20);
-    obj.label7:setText("Linhas ");
-    obj.label7:setHorzTextAlign("center");
-    obj.label7:setName("label7");
+    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label8:setParent(obj.layout2);
+    obj.label8:setLeft(0);
+    obj.label8:setTop(85);
+    obj.label8:setWidth(90);
+    obj.label8:setHeight(20);
+    obj.label8:setText("Linhas ");
+    obj.label8:setHorzTextAlign("center");
+    obj.label8:setName("label8");
 
     obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox3:setParent(obj.layout2);
@@ -243,15 +253,15 @@ local function constructNew_frmTemplateCreditos()
     obj.dataLink3:setDefaultValue("#FFFFFF");
     obj.dataLink3:setName("dataLink3");
 
-    obj.label8 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label8:setParent(obj.layout2);
-    obj.label8:setLeft(0);
-    obj.label8:setTop(110);
-    obj.label8:setWidth(90);
-    obj.label8:setHeight(20);
-    obj.label8:setText("Fonte ");
-    obj.label8:setHorzTextAlign("center");
-    obj.label8:setName("label8");
+    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label9:setParent(obj.layout2);
+    obj.label9:setLeft(0);
+    obj.label9:setTop(110);
+    obj.label9:setWidth(90);
+    obj.label9:setHeight(20);
+    obj.label9:setText("Fonte ");
+    obj.label9:setHorzTextAlign("center");
+    obj.label9:setName("label9");
 
     obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox4:setParent(obj.layout2);
@@ -269,27 +279,27 @@ local function constructNew_frmTemplateCreditos()
     obj.dataLink4:setDefaultValue("#FFFFFF");
     obj.dataLink4:setName("dataLink4");
 
-    obj.label9 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label9:setParent(obj.scrollBox1);
-    obj.label9:setLeft(555);
-    obj.label9:setTop(275);
-    obj.label9:setWidth(200);
-    obj.label9:setHeight(20);
-    obj.label9:setText("Versão Atual: ");
-    obj.label9:setHorzTextAlign("center");
-    obj.label9:setField("versionInstalled");
-    obj.label9:setName("label9");
-
     obj.label10 = GUI.fromHandle(_obj_newObject("label"));
     obj.label10:setParent(obj.scrollBox1);
     obj.label10:setLeft(555);
-    obj.label10:setTop(300);
+    obj.label10:setTop(275);
     obj.label10:setWidth(200);
     obj.label10:setHeight(20);
-    obj.label10:setText("Sua Versão: ");
+    obj.label10:setText("Versão Atual: ");
     obj.label10:setHorzTextAlign("center");
-    obj.label10:setField("versionDownloaded");
+    obj.label10:setField("versionInstalled");
     obj.label10:setName("label10");
+
+    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label11:setParent(obj.scrollBox1);
+    obj.label11:setLeft(555);
+    obj.label11:setTop(300);
+    obj.label11:setWidth(200);
+    obj.label11:setHeight(20);
+    obj.label11:setText("Sua Versão: ");
+    obj.label11:setHorzTextAlign("center");
+    obj.label11:setField("versionDownloaded");
+    obj.label11:setName("label11");
 
     obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.scrollBox1);
@@ -317,14 +327,14 @@ local function constructNew_frmTemplateCreditos()
     obj.button2:setText("Atualizar");
     obj.button2:setName("button2");
 
-    obj.label11 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label11:setParent(obj.scrollBox1);
-    obj.label11:setLeft(555);
-    obj.label11:setTop(400);
-    obj.label11:setWidth(200);
-    obj.label11:setHeight(20);
-    obj.label11:setText("Conheça as Mesas:");
-    obj.label11:setName("label11");
+    obj.label12 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label12:setParent(obj.scrollBox1);
+    obj.label12:setLeft(555);
+    obj.label12:setTop(400);
+    obj.label12:setWidth(200);
+    obj.label12:setHeight(20);
+    obj.label12:setText("Conheça as Mesas:");
+    obj.label12:setName("label12");
 
     obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.scrollBox1);
@@ -339,7 +349,7 @@ local function constructNew_frmTemplateCreditos()
     obj.button4:setLeft(667);
     obj.button4:setTop(425);
     obj.button4:setWidth(125);
-    obj.button4:setText("Ragnarock");
+    obj.button4:setText("Ragnarok");
     obj.button4:setName("button4");
 
     obj._e_event0 = obj.comboBox1:addEventListener("onChange",
@@ -479,6 +489,7 @@ local function constructNew_frmTemplateCreditos()
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
         if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
+        if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
         if self.comboBox4 ~= nil then self.comboBox4:destroy(); self.comboBox4 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;

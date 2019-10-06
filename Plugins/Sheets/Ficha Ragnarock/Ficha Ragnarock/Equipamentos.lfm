@@ -37,15 +37,15 @@
 
 			<rectangle color="black" align="top" height="175" margins="{bottom=5}">
 				<layout align="left" width="400" margins="{right=25}">
-					<label text="" align="top" height="25" horzTextAlign="center"/>
+					<label text="Cabeça Up" align="top" height="25" horzTextAlign="center"/>
 					<Equipamento field="head1" text="Def" text2="Bônus"/>
 				</layout>
 				<layout align="left" width="400" margins="{right=25}">
-					<label text="CABEÇA" align="top" height="25" horzTextAlign="center"/>
+					<label text="Cabeça Mid" align="top" height="25" horzTextAlign="center"/>
 					<Equipamento field="head2" text="Def" text2="Bônus"/>
 				</layout>
 				<layout align="left" width="400" margins="{right=25}">
-					<label text="" align="top" height="25" horzTextAlign="center"/>
+					<label text="Cabeça Down" align="top" height="25" horzTextAlign="center"/>
 					<Equipamento field="head3" text="Def" text2="Bônus"/>
 				</layout>
 			</rectangle>
@@ -67,7 +67,7 @@
 
 			<rectangle color="black" align="top" height="175" margins="{bottom=5}">
 				<layout align="left" width="400" margins="{right=25}">
-					<label text="Garmel" align="top" height="25" horzTextAlign="center"/>
+					<label text="Garmet" align="top" height="25" horzTextAlign="center"/>
 					<Equipamento field="garmel" text="Def" text2="Bônus"/>
 				</layout>
 				<layout align="left" width="400" margins="{right=25}">

@@ -51,6 +51,7 @@
 			<label left="0" top="10" width="200" height="20" text="Plugin feito por: " horzTextAlign="center"/>
 			<label left="0" top="35" width="200" height="20" text="Vinny (Ambesek)" horzTextAlign="center"/>
 			<label left="0" top="60" width="200" height="20" text="Consultor: SlAyErXxX" horzTextAlign="center"/>
+			<label left="0" top="85" width="200" height="20" text="Sistema: Silver" horzTextAlign="center"/>
 		</layout>
 
 		<layout left="850" top="200" width="200" height="150">
@@ -158,6 +159,6 @@
 		
 		<label left="555" top="400" width="200" height="20" text="Conheça as Mesas:"/>
 		<button left="555" top="425" width="100" text="RPGmeister" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
-		<button left="667" top="425" width="125" text="Ragnarock" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=1063');" />
+		<button left="667" top="425" width="125" text="Ragnarok" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=1063');" />
 	</scrollBox>
 </form>

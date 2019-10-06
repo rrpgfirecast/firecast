@@ -2428,7 +2428,7 @@ local function constructNew_frmMain()
 
     obj.label91 = GUI.fromHandle(_obj_newObject("label"));
     obj.label91:setParent(obj.layout70);
-    obj.label91:setText("");
+    obj.label91:setText("Cabeça Up");
     obj.label91:setAlign("top");
     obj.label91:setHeight(25);
     obj.label91:setHorzTextAlign("center");
@@ -2558,7 +2558,7 @@ local function constructNew_frmMain()
 
     obj.label95 = GUI.fromHandle(_obj_newObject("label"));
     obj.label95:setParent(obj.layout77);
-    obj.label95:setText("CABEÇA");
+    obj.label95:setText("Cabeça Mid");
     obj.label95:setAlign("top");
     obj.label95:setHeight(25);
     obj.label95:setHorzTextAlign("center");
@@ -2688,7 +2688,7 @@ local function constructNew_frmMain()
 
     obj.label99 = GUI.fromHandle(_obj_newObject("label"));
     obj.label99:setParent(obj.layout84);
-    obj.label99:setText("");
+    obj.label99:setText("Cabeça Down");
     obj.label99:setAlign("top");
     obj.label99:setHeight(25);
     obj.label99:setHorzTextAlign("center");
@@ -3224,7 +3224,7 @@ local function constructNew_frmMain()
 
     obj.label115 = GUI.fromHandle(_obj_newObject("label"));
     obj.label115:setParent(obj.layout112);
-    obj.label115:setText("Garmel");
+    obj.label115:setText("Garmet");
     obj.label115:setAlign("top");
     obj.label115:setHeight(25);
     obj.label115:setHorzTextAlign("center");
@@ -4840,6 +4840,16 @@ local function constructNew_frmMain()
     obj.label161:setHorzTextAlign("center");
     obj.label161:setName("label161");
 
+    obj.label162 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label162:setParent(obj.layout175);
+    obj.label162:setLeft(0);
+    obj.label162:setTop(85);
+    obj.label162:setWidth(200);
+    obj.label162:setHeight(20);
+    obj.label162:setText("Sistema: Silver");
+    obj.label162:setHorzTextAlign("center");
+    obj.label162:setName("label162");
+
     obj.layout176 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout176:setParent(obj.scrollBox7);
     obj.layout176:setLeft(850);
@@ -4857,15 +4867,15 @@ local function constructNew_frmMain()
     obj.rectangle52:setColor("black");
     obj.rectangle52:setName("rectangle52");
 
-    obj.label162 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label162:setParent(obj.layout176);
-    obj.label162:setLeft(0);
-    obj.label162:setTop(10);
-    obj.label162:setWidth(80);
-    obj.label162:setHeight(20);
-    obj.label162:setText("Tema:");
-    obj.label162:setHorzTextAlign("center");
-    obj.label162:setName("label162");
+    obj.label163 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label163:setParent(obj.layout176);
+    obj.label163:setLeft(0);
+    obj.label163:setTop(10);
+    obj.label163:setWidth(80);
+    obj.label163:setHeight(20);
+    obj.label163:setText("Tema:");
+    obj.label163:setHorzTextAlign("center");
+    obj.label163:setName("label163");
 
     obj.comboBox1 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox1:setParent(obj.layout176);
@@ -4884,25 +4894,25 @@ local function constructNew_frmMain()
     obj.dataLink24:setDefaultValue("Escuro");
     obj.dataLink24:setName("dataLink24");
 
-    obj.label163 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label163:setParent(obj.layout176);
-    obj.label163:setLeft(0);
-    obj.label163:setTop(35);
-    obj.label163:setWidth(90);
-    obj.label163:setHeight(20);
-    obj.label163:setText("Cores: ");
-    obj.label163:setHorzTextAlign("center");
-    obj.label163:setName("label163");
-
     obj.label164 = GUI.fromHandle(_obj_newObject("label"));
     obj.label164:setParent(obj.layout176);
     obj.label164:setLeft(0);
-    obj.label164:setTop(60);
+    obj.label164:setTop(35);
     obj.label164:setWidth(90);
     obj.label164:setHeight(20);
-    obj.label164:setText("Fundo ");
+    obj.label164:setText("Cores: ");
     obj.label164:setHorzTextAlign("center");
     obj.label164:setName("label164");
+
+    obj.label165 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label165:setParent(obj.layout176);
+    obj.label165:setLeft(0);
+    obj.label165:setTop(60);
+    obj.label165:setWidth(90);
+    obj.label165:setHeight(20);
+    obj.label165:setText("Fundo ");
+    obj.label165:setHorzTextAlign("center");
+    obj.label165:setName("label165");
 
     obj.comboBox2 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox2:setParent(obj.layout176);
@@ -4920,15 +4930,15 @@ local function constructNew_frmMain()
     obj.dataLink25:setDefaultValue("#000000");
     obj.dataLink25:setName("dataLink25");
 
-    obj.label165 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label165:setParent(obj.layout176);
-    obj.label165:setLeft(0);
-    obj.label165:setTop(85);
-    obj.label165:setWidth(90);
-    obj.label165:setHeight(20);
-    obj.label165:setText("Linhas ");
-    obj.label165:setHorzTextAlign("center");
-    obj.label165:setName("label165");
+    obj.label166 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label166:setParent(obj.layout176);
+    obj.label166:setLeft(0);
+    obj.label166:setTop(85);
+    obj.label166:setWidth(90);
+    obj.label166:setHeight(20);
+    obj.label166:setText("Linhas ");
+    obj.label166:setHorzTextAlign("center");
+    obj.label166:setName("label166");
 
     obj.comboBox3 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox3:setParent(obj.layout176);
@@ -4946,15 +4956,15 @@ local function constructNew_frmMain()
     obj.dataLink26:setDefaultValue("#FFFFFF");
     obj.dataLink26:setName("dataLink26");
 
-    obj.label166 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label166:setParent(obj.layout176);
-    obj.label166:setLeft(0);
-    obj.label166:setTop(110);
-    obj.label166:setWidth(90);
-    obj.label166:setHeight(20);
-    obj.label166:setText("Fonte ");
-    obj.label166:setHorzTextAlign("center");
-    obj.label166:setName("label166");
+    obj.label167 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label167:setParent(obj.layout176);
+    obj.label167:setLeft(0);
+    obj.label167:setTop(110);
+    obj.label167:setWidth(90);
+    obj.label167:setHeight(20);
+    obj.label167:setText("Fonte ");
+    obj.label167:setHorzTextAlign("center");
+    obj.label167:setName("label167");
 
     obj.comboBox4 = GUI.fromHandle(_obj_newObject("comboBox"));
     obj.comboBox4:setParent(obj.layout176);
@@ -4972,27 +4982,27 @@ local function constructNew_frmMain()
     obj.dataLink27:setDefaultValue("#FFFFFF");
     obj.dataLink27:setName("dataLink27");
 
-    obj.label167 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label167:setParent(obj.scrollBox7);
-    obj.label167:setLeft(555);
-    obj.label167:setTop(275);
-    obj.label167:setWidth(200);
-    obj.label167:setHeight(20);
-    obj.label167:setText("Versão Atual: ");
-    obj.label167:setHorzTextAlign("center");
-    obj.label167:setField("versionInstalled");
-    obj.label167:setName("label167");
-
     obj.label168 = GUI.fromHandle(_obj_newObject("label"));
     obj.label168:setParent(obj.scrollBox7);
     obj.label168:setLeft(555);
-    obj.label168:setTop(300);
+    obj.label168:setTop(275);
     obj.label168:setWidth(200);
     obj.label168:setHeight(20);
-    obj.label168:setText("Sua Versão: ");
+    obj.label168:setText("Versão Atual: ");
     obj.label168:setHorzTextAlign("center");
-    obj.label168:setField("versionDownloaded");
+    obj.label168:setField("versionInstalled");
     obj.label168:setName("label168");
+
+    obj.label169 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label169:setParent(obj.scrollBox7);
+    obj.label169:setLeft(555);
+    obj.label169:setTop(300);
+    obj.label169:setWidth(200);
+    obj.label169:setHeight(20);
+    obj.label169:setText("Sua Versão: ");
+    obj.label169:setHorzTextAlign("center");
+    obj.label169:setField("versionDownloaded");
+    obj.label169:setName("label169");
 
     obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
     obj.checkBox1:setParent(obj.scrollBox7);
@@ -5020,14 +5030,14 @@ local function constructNew_frmMain()
     obj.button27:setText("Atualizar");
     obj.button27:setName("button27");
 
-    obj.label169 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label169:setParent(obj.scrollBox7);
-    obj.label169:setLeft(555);
-    obj.label169:setTop(400);
-    obj.label169:setWidth(200);
-    obj.label169:setHeight(20);
-    obj.label169:setText("Conheça as Mesas:");
-    obj.label169:setName("label169");
+    obj.label170 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label170:setParent(obj.scrollBox7);
+    obj.label170:setLeft(555);
+    obj.label170:setTop(400);
+    obj.label170:setWidth(200);
+    obj.label170:setHeight(20);
+    obj.label170:setText("Conheça as Mesas:");
+    obj.label170:setName("label170");
 
     obj.button28 = GUI.fromHandle(_obj_newObject("button"));
     obj.button28:setParent(obj.scrollBox7);
@@ -5042,7 +5052,7 @@ local function constructNew_frmMain()
     obj.button29:setLeft(667);
     obj.button29:setTop(425);
     obj.button29:setWidth(125);
-    obj.button29:setText("Ragnarock");
+    obj.button29:setText("Ragnarok");
     obj.button29:setName("button29");
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
@@ -5084,10 +5094,10 @@ local function constructNew_frmMain()
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_FORTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -5152,10 +5162,10 @@ local function constructNew_frmMain()
 
     obj._e_event3 = obj.button2:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_HABTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -5220,10 +5230,10 @@ local function constructNew_frmMain()
 
     obj._e_event5 = obj.button3:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_AGITotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -5288,10 +5298,10 @@ local function constructNew_frmMain()
 
     obj._e_event7 = obj.button4:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_VITTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -5356,10 +5366,10 @@ local function constructNew_frmMain()
 
     obj._e_event9 = obj.button5:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_INTTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -5424,10 +5434,10 @@ local function constructNew_frmMain()
 
     obj._e_event11 = obj.button6:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_DESTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -5492,10 +5502,10 @@ local function constructNew_frmMain()
 
     obj._e_event13 = obj.button7:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_SORTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -5560,10 +5570,10 @@ local function constructNew_frmMain()
 
     obj._e_event15 = obj.button8:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_MAGTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -5628,10 +5638,10 @@ local function constructNew_frmMain()
 
     obj._e_event17 = obj.button9:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_DEFTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -5696,10 +5706,10 @@ local function constructNew_frmMain()
 
     obj._e_event19 = obj.button10:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_M.DEFTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -5764,10 +5774,10 @@ local function constructNew_frmMain()
 
     obj._e_event21 = obj.button11:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_PULTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -5832,10 +5842,10 @@ local function constructNew_frmMain()
 
     obj._e_event23 = obj.button12:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_ESCTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -5900,10 +5910,10 @@ local function constructNew_frmMain()
 
     obj._e_event25 = obj.button13:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_MIRTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -5968,10 +5978,10 @@ local function constructNew_frmMain()
 
     obj._e_event27 = obj.button14:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_CARTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -6036,10 +6046,10 @@ local function constructNew_frmMain()
 
     obj._e_event29 = obj.button15:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_LABTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -6104,10 +6114,10 @@ local function constructNew_frmMain()
 
     obj._e_event31 = obj.button16:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_DECTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -6172,10 +6182,10 @@ local function constructNew_frmMain()
 
     obj._e_event33 = obj.button17:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_FURTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -6240,10 +6250,10 @@ local function constructNew_frmMain()
 
     obj._e_event35 = obj.button18:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_PERTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -6308,10 +6318,10 @@ local function constructNew_frmMain()
 
     obj._e_event37 = obj.button19:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_CNHTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -6376,10 +6386,10 @@ local function constructNew_frmMain()
 
     obj._e_event39 = obj.button20:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_AMBTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -6526,10 +6536,10 @@ local function constructNew_frmMain()
 
     obj._e_event57 = obj.button23:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_pet_FORTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -6594,10 +6604,10 @@ local function constructNew_frmMain()
 
     obj._e_event59 = obj.button24:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_pet_AGITotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -6662,10 +6672,10 @@ local function constructNew_frmMain()
 
     obj._e_event61 = obj.button25:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 24, 24, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 36, 36, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 60, 60, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 72, 72, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82};
+            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_pet_PULTotal) or 0;
-            					atr = math.min(74, atr);
+            					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
             					local faces = faceTable[atr];
@@ -7079,6 +7089,7 @@ local function constructNew_frmMain()
         if self.label127 ~= nil then self.label127:destroy(); self.label127 = nil; end;
         if self.layout132 ~= nil then self.layout132:destroy(); self.layout132 = nil; end;
         if self.layout145 ~= nil then self.layout145:destroy(); self.layout145 = nil; end;
+        if self.label170 ~= nil then self.label170:destroy(); self.label170 = nil; end;
         if self.layout146 ~= nil then self.layout146:destroy(); self.layout146 = nil; end;
         if self.label142 ~= nil then self.label142:destroy(); self.label142 = nil; end;
         if self.layout39 ~= nil then self.layout39:destroy(); self.layout39 = nil; end;
