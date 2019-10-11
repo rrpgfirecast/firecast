@@ -6,9 +6,9 @@
 				<label left="0" width="75" height="25" text="Caminho"/>
 				<edit left="75" width="225" height="25" field="caminhoMitico"/>
 			</layout>
-			<layout left="310" width="125">
-				<label left="0" width="75" height="25" text="Poder Mítico"/>
-				<edit left="75" width="50" height="25" field="poderMitico" type="number"/>
+			<layout left="310" width="155">
+				<label left="0" width="100" height="25" text="Poder Mítico"/>
+				<edit left="105" width="50" height="25" field="poderMitico" type="number"/>
 			</layout>
 		</flowLayout>
 		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">

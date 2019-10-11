@@ -422,10 +422,10 @@
 			<label left="445" top="5" width="50" height="25" text="NOME"/>
 			<edit vertTextAlign="center" left="520" top="5" width="290" height="25" field="nome"/>
 			
-			<label left="445" top="30" width="70" height="25" text="TENDÊNCIA"/>
+			<label left="445" top="30" width="70" height="25" text="TENDÊNCIA" fontSize="12"/>
 			<edit vertTextAlign="center" left="520" top="30" width="290" height="25" field="tendencia"/>
 			
-			<label left="445" top="55" width="70" height="25" text="CULTO"/>
+			<label left="445" top="55" width="70" height="25" text="RELIGIÂO"/>
 			<edit vertTextAlign="center" left="520" top="55" width="290" height="25" field="culto"/>
 			
 			<label left="445" top="80" width="70" height="25" text="TITULO"/>
@@ -826,15 +826,15 @@
 			<rectangle align="client" color="black"/>
 			<label left="5" top="0" width="321" height="20" text="BÔNUS TEMPORARIOS"/>
 			
-			<label left="5" top="30" width="50" height="20" text="ATAQUE"/>
+			<label left="5" top="30" width="50" height="20" text="ATAQUE" fontSize="12"/>
 			<edit vertTextAlign="center" left="60" top="30" width="70" height="25" field="buffAtaque"/>
-			<label left="5" top="55" width="50" height="20" text="DANO"/>
+			<label left="5" top="55" width="50" height="20" text="DANO" fontSize="12"/>
 			<edit vertTextAlign="center" left="60" top="55" width="70" height="25" field="buffDano"/>
-			<label left="5" top="80" width="50" height="20" text="CRITICO"/>
+			<label left="5" top="80" width="50" height="20" text="CRITICO" fontSize="12"/>
 			<edit vertTextAlign="center" left="60" top="80" width="70" height="25" field="buffDanoCritico"/>
-			<label left="5" top="105" width="50" height="20" text="TR"/>
+			<label left="5" top="105" width="50" height="20" text="TR" fontSize="12"/>
 			<edit vertTextAlign="center" left="60" top="105" width="70" height="25" field="buffTR"/>
-			<label left="5" top="130" width="50" height="20" text="PERICIA"/>
+			<label left="5" top="130" width="50" height="20" text="PERICIA" fontSize="12"/>
 			<edit vertTextAlign="center" left="60" top="130" width="70" height="25" field="buffPericia"/>
 		</layout>
 

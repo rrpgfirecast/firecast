@@ -4582,6 +4582,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.label70:setWidth(70);
     obj.label70:setHeight(25);
     obj.label70:setText("TENDÊNCIA");
+    obj.label70:setFontSize(12);
     obj.label70:setName("label70");
 
     obj.edit142 = GUI.fromHandle(_obj_newObject("edit"));
@@ -4600,7 +4601,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.label71:setTop(55);
     obj.label71:setWidth(70);
     obj.label71:setHeight(25);
-    obj.label71:setText("CULTO");
+    obj.label71:setText("RELIGIÂO");
     obj.label71:setName("label71");
 
     obj.edit143 = GUI.fromHandle(_obj_newObject("edit"));
@@ -6398,6 +6399,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.label144:setWidth(50);
     obj.label144:setHeight(20);
     obj.label144:setText("ATAQUE");
+    obj.label144:setFontSize(12);
     obj.label144:setName("label144");
 
     obj.edit152 = GUI.fromHandle(_obj_newObject("edit"));
@@ -6417,6 +6419,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.label145:setWidth(50);
     obj.label145:setHeight(20);
     obj.label145:setText("DANO");
+    obj.label145:setFontSize(12);
     obj.label145:setName("label145");
 
     obj.edit153 = GUI.fromHandle(_obj_newObject("edit"));
@@ -6436,6 +6439,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.label146:setWidth(50);
     obj.label146:setHeight(20);
     obj.label146:setText("CRITICO");
+    obj.label146:setFontSize(12);
     obj.label146:setName("label146");
 
     obj.edit154 = GUI.fromHandle(_obj_newObject("edit"));
@@ -6455,6 +6459,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.label147:setWidth(50);
     obj.label147:setHeight(20);
     obj.label147:setText("TR");
+    obj.label147:setFontSize(12);
     obj.label147:setName("label147");
 
     obj.edit155 = GUI.fromHandle(_obj_newObject("edit"));
@@ -6474,6 +6479,7 @@ local function constructNew_frmFichaRPGmeister1_svg()
     obj.label148:setWidth(50);
     obj.label148:setHeight(20);
     obj.label148:setText("PERICIA");
+    obj.label148:setFontSize(12);
     obj.label148:setName("label148");
 
     obj.edit156 = GUI.fromHandle(_obj_newObject("edit"));

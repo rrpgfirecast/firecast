@@ -187,7 +187,6 @@
 					idioma.escritaIdioma = true;
 				</event>
 			</button>
-			<button text="Padrão Pathfinder" left="0" top="50" width="125" height="25" onClick="pathSkills();" hint="Vai apagar todas perícias atuais. "/>
 		</layout>
 	</scrollBox>
 </form>
