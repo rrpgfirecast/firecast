@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 
-<flowLayout align="client" autoHeight="true" maxColumns="5" horzAlign="center" orientation="vertical" name="magicList7" visible="true" minWidth="300" maxWidth="1800" >
-	<recordList name="rclEpicMagicList" field="campoDasMagiasEpicas" templateForm="frmMagiasMagiaEpica" align="client" layout="verticalTiles" hitTest="false" minQt="1">
+<flowLayout autoHeight="true" maxColumns="5" horzAlign="center" orientation="vertical" name="magicList7" visible="false" padding="{left=5,right=5,top=5,bottom=5}" margins="{left=5,right=5,top=5,bottom=5}" avoidScale="false">
+	<recordList name="rclEpicMagicList" field="campoDasMagiasEpicas" templateForm="frmMagiasMagiaEpica" align="client" layout="horizontalTiles" hitTest="false" minQt="1" autoHeight="true" >
 		<event name="onCompare"><![CDATA[ 
 			local aUsada = (tonumber(nodeA.usedMagia) or 0);
 			local bUsada = (tonumber(nodeB.usedMagia) or 0);

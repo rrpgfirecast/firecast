@@ -47,7 +47,6 @@
 			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
 		</flowPart>
 	</template>
-
 	<template name="magicLevel">
 		<TitleCenter text="$(nivel)"/>
 		<LabelCenter field="total$(nivel)"/>
@@ -138,16 +137,15 @@
 
 		<flowLineBreak/>
 	</template>
-
 	<template name="magicListFlow">
-		<flowPart minWidth="300" maxWidth="600" height="25" minScaledWidth="280" name="rclmagicList$(num)Part" adjustHeightToLine="false" margins="{left=5}">
+		<flowPart stepSizes="{300, 350, 400, 450, 500, 550, 600}" height="25" minScaledWidth="300"  maxScaledWidth="600" name="rclmagicList$(num)Part" adjustHeightToLine="true" margins="{left=5}">
 			<script>
 				<![CDATA[
 					rawset(self.rclmagicList$(num)Part, "_recalcHeight", 					
 						function ()
 							self.rclmagicList$(num)Part.height = self.rclmagicList$(num).height + 50;
 							
-							self.boxDetalhesDaMagia.height = math.max(self.detalhesDaMagia.height, 550);
+							--self.boxDetalhesDaMagia.height = math.max(self.detalhesDaMagia.height, 550);
 						end);
 				]]>
 			</script>
@@ -364,12 +362,10 @@
 			</event>
 		</dataLink>
 
-
-		<dataScopeBox name="boxDetalhesDaMagia" visible="false" align="top" height="550">
-			<flowLayout align="client" autoHeight="true" maxColumns="2" horzAlign="center" orientation="vertical" avoidScale="false" adjustHeightToLine="false" name="detalhesDaMagia">
-				<rectangle height="550" width="350" strokeSize="1" name="detailsPart">
+		<dataScopeBox name="boxDetalhesDaMagia" visible="false" align="client" height="550">
+			<rectangle align="client" color="black" padding="{left=5,right=5,top=5,bottom=5}">
+				<rectangle align="left" width="350" strokeSize="1" name="listPart">
 					<flowLayout left="5" top="5" minWidth="300" maxWidth="350" width="340" height="540" autoHeight="true" adjustHeightToLine="true" maxColumns="5" name="detailsLayout">
-
 						<TitleCenter text="Classe"/>
 						<TitleCenter text="Tipo"/>
 						<flowPart minWidth="50" maxWidth="50" height="15">
@@ -464,12 +460,14 @@
 						<textEditor align="bottom" height="100" width="340" field="notes"/>
 					</flowLayout>
 				</rectangle>
-				<import file="05.Magias.List3.xml"/>
-				<import file="05.Magias.List7.xml"/>
-				<import file="05.Magias.List8.xml"/>
-			</flowLayout>
-
-
+				<layout align="client" name="scrollPart" margins="{left=5}">
+					<scrollBox align="client" name="detailsPart" padding="{left=5,right=5,top=5,bottom=5}">
+						<import file="05.Magias.List3.xml"/>
+						<import file="05.Magias.List7.xml"/>
+						<import file="05.Magias.List8.xml"/>
+					</scrollBox>
+				</layout>
+			</rectangle>
 		</dataScopeBox>
 	</scrollBox>
 </form>
