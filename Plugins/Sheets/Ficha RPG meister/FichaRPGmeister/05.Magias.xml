@@ -279,6 +279,8 @@
 			self.details8.visible = false;
 
 			self.magicList3.visible = false;
+			self.magicList2.visible = false;
+			self.magicList1.visible = false;
 			self.magicList7.visible = false;
 			self.magicList8.visible = false;
 
@@ -304,6 +306,14 @@
 				if tipo == "7" then
 					self.rclEpicMagicList.width = self.magics.width - 350;
 					self.rclEpicMagicList.height = self["magicList" .. tipo].height;
+				end;
+				if tipo == "2" then
+					self.rclSignDescList.width = self.magics.width - 350;
+					self.rclSignDescList.height = self["magicList" .. tipo].height;
+				end;
+				if tipo == "1" then
+					self.rclMagiasOld.width = self.magics.width - 350;
+					self.rclMagiasOld.height = self["magicList" .. tipo].height;
 				end;
 			end;
 
@@ -442,7 +452,7 @@
 								<import file="05.Magias.Details3.xml"/>
 							</rectangle>
 							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details2" visible="false">
-								<label text="Signos"/>
+								<import file="05.Magias.Details2.xml"/>
 							</rectangle>
 							<rectangle align="client" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" name="details1" visible="false">
 								<import file="05.Magias.Details1.xml"/>
@@ -463,6 +473,8 @@
 				<layout align="client" name="scrollPart" margins="{left=5}">
 					<scrollBox align="client" name="detailsPart" padding="{left=5,right=5,top=5,bottom=5}">
 						<import file="05.Magias.List3.xml"/>
+						<import file="05.Magias.List2.xml"/>
+						<import file="05.Magias.List1.xml"/>
 						<import file="05.Magias.List7.xml"/>
 						<import file="05.Magias.List8.xml"/>
 					</scrollBox>

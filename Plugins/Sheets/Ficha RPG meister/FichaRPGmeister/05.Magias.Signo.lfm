@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmMagiasSigno" width="400" height="150" margins="{bottom=3,right=3}">
+	<script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar essa magia?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+
+		local function write(str)
+            local mesa = Firecast.getMesaDe(sheet);
+            if str then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
+		]]>	
+	</script>
+
+	<layout align="top" height="25">
+		<rectangle align="right" width="100" color="black" strokeColor="white" strokeSize="1">
+			<edit align="left" width="75" field="cd" horzTextAlign="center" fontSize="12"/>
+			<button align="right" width="25" text="X" onClick="askForDelete();"/>
+		</rectangle>
+
+		<edit align="client" field="nomeMagia"/>
+	</layout>
+	<textEditor align="bottom" height="125" field="details"/>
+</form>

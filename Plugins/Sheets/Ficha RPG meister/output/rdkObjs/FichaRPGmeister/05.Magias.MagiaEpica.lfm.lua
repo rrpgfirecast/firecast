@@ -27,7 +27,7 @@ local function constructNew_frmMagiasMagiaEpica()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmMagiasMagiaEpica");
-    obj:setWidth(250);
+    obj:setWidth(400);
     obj:setHeight(25);
     obj:setMargins({top=1});
 

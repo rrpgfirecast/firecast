@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmBuffs" height="50" width="350" margins="{bottom=2}">
+	 <script> 
+		<![CDATA[			
+		local function askForDelete()
+			Dialogs.confirmYesNo("Deseja realmente apagar esse efeito?",
+								 function (confirmado)
+									if confirmado then
+										NDB.deleteNode(sheet);
+									end;
+								 end);
+		end;
+	]]>
+	</script>
+	<layout align="top" height="25">
+		<edit align="left" width="175" field="magia"/>
+		<edit align="left" width="75" field="duracao" vertTextAlign="center"/>
+		<edit align="left" width="50" field="dissipar" type="number" vertTextAlign="center"/>
+		<edit align="left" width="75" field="alvos" vertTextAlign="center"/>
+
+		<button align="right" width="25" text="X" onClick="askForDelete();"/>
+	</layout>
+	<edit align="client" vertTextAlign="center" field="efeitos"/>
+</form>

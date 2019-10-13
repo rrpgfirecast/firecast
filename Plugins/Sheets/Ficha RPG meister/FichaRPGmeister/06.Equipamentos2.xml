@@ -129,12 +129,12 @@
 			</event>
 		</recordList>
 
-		<label left="760" top="0" width="50" height="20" text="CARGA"/>
-		<rectangle left="810" top="0" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
-		<label vertTextAlign="center" horzTextAlign="center" left="810" top="0" width="91" height="20" field="pesoEquipamento" formatFloat=",0.## Kg"/>
-		<label left="760" top="25" width="50" height="20" text="GASTOS"/>
-		<rectangle left="810" top="25" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
-		<label vertTextAlign="center" horzTextAlign="center" left="810" top="25" width="91" height="20" field="precoEquipamento"  formatFloat=",0.## PO"/>
+		<label left="150" top="605" width="50" height="20" text="CARGA"/>
+		<rectangle left="200" top="605" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
+		<label vertTextAlign="center" horzTextAlign="center" left="200" top="605" width="91" height="20" field="pesoEquipamento" formatFloat=",0.## Kg"/>
+		<label left="300" top="605" width="50" height="20" text="GASTOS"/>
+		<rectangle left="350" top="605" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
+		<label vertTextAlign="center" horzTextAlign="center" left="350" top="605" width="91" height="20" field="precoEquipamento"  formatFloat=",0.## PO"/>
 
 		<dataScopeBox left="150" top="0" width="600" height="602" name="boxDetalheDoEquipamento" visible="false">
 			<rectangle width="400" height="602" color="black"/>
@@ -303,5 +303,25 @@
 
 			<image left="400" top="0" width="200" height="600" src="images/slots.png" field="imgSlots" style="stretch" optimize="true"/>
 		</dataScopeBox>
+
+		<button text="+" left="800" top="0" width="400" height="25" onClick="self.rclBuffs:append();" hint=""/>
+		<layout left="800" top="25" width="400" height="25">
+			<label left="0" top="0" width="175" height="25" text="Magia" horzTextAlign="center"/>
+			<label left="175" top="0" width="75" height="25" text="Duração" horzTextAlign="center"/>
+			<label left="250" top="0" width="50" height="25" text="Dissipar (CD)" fontSize="9" horzTextAlign="center"/>
+			<label left="300" top="0" width="75" height="25" text="Alvos" horzTextAlign="center"/>
+		</layout>
+		<recordList left="800" top="50" width="400" height="550" name="rclBuffs" field="listaDeBuffs" templateForm="frmBuffs" layout="vertical">
+			<event name="onCompare"><![CDATA[			   
+				if (nodeA.index or 0) < (nodeB.index or 0) then
+					return -1;
+				elseif (nodeA.index or 0) > (nodeB.index or 0) then
+					return 1;
+				else   
+					return 0;
+				end;
+				]]>
+			</event>
+		</recordList>
 	</scrollBox>
 </form>

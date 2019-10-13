@@ -12,7 +12,7 @@
 		        return -1;
 		    else
 		        return Utils.compareStringPtBr(nodeA.nomeMagia, nodeB.nomeMagia);
-		    end;               
+		    end;
 		    ]]>
 		</event>
 	</recordList>

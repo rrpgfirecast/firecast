@@ -1,53 +1,39 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<flowLayout minWidth="300" maxWidth="350" width="330" height="400" autoHeight="true" adjustHeightToLine="true" maxColumns="6" padding="{left=5,right=5,top=5,bottom=5}" horzAlign="center">
+<flowLayout left="5" minWidth="300" maxWidth="350" width="330" height="400" autoHeight="true" adjustHeightToLine="true" maxColumns="6" padding="{left=5,right=5,top=5,bottom=5}" horzAlign="center">
 
-	<flowPart minWidth="50" maxWidth="150" height="25"/>
-	<flowPart minWidth="50" maxWidth="150" height="25"/>
 	<TitleCenter text="CD"/>
 	<TitleCenter text="Bônus"/>
-	<TitleCenter text="Grimorio"/>
+	<TitleCenter text="Usos"/>
+	<TitleCenter text="Signos"/>
+	<flowPart minWidth="50" maxWidth="150" height="25"/>
 
 	<flowLineBreak/>
 
-	<flowPart minWidth="50" maxWidth="150" height="25"/>
+	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" field="atributoCD"/>
+	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" field="atributoBonus"/>
+	<FieldCenter field="usosSignos"/>
+	<LabelCenter field="sumSignos"/>
 	<flowPart minWidth="50" maxWidth="150" height="25">
 		<button align="client" text="+">
 			<event name="onClick">
-				local listA = self.rclMagiasOld:append();
+				local listA = self.rclSigns:append();
+				local listB = self.rclSignDescList:append();
 			</event>
 		</button>
 	</flowPart>
-	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" field="atributoCD"/>
-	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" field="atributoBonus"/>
-	<LabelCenter field="grimorio"/>
 
 	<flowLineBreak/>
 
-	<TitleCenter text="NÍVEL"/>
-	<TitleCenter text="TOTAL"/>
-	<TitleCenter text="BASE"/>
-	<TitleCenter text="BÔNUS"/>
-	<TitleCenterSize text="CONHECIDAS" fontSize="8"/>
-
-	<flowLineBreak/>
-
-	<magicLevel nivel="0"/>
-	<magicLevel nivel="1"/>
-	<magicLevel nivel="2"/>
-	<magicLevel nivel="3"/>
-	<magicLevel nivel="4"/>
-	<magicLevel nivel="5"/>
-	<magicLevel nivel="6"/>
-	<magicLevel nivel="7"/>
-	<magicLevel nivel="8"/>
-	<magicLevel nivel="9"/>
+	<flowPart minWidth="300" maxWidth="350" height="270">
+		<recordList align="client" margins="{left=5,right=5,bottom=5,top=5}" name="rclSigns" field="listaDeSignos" templateForm="frmRecordListForm" layout="vertical"/>
+	</flowPart>
 
 	<flowLineBreak/>
 
 	<flowPart minWidth="50" maxWidth="150" height="25">
 		<button align="client" text="Exportar Magias" >
 			<event name="onClick">
-				sheet.ieNode = {self.boxDetalhesDaMagia.node.campoDasMagiasOld}
+				sheet.ieNode = {self.boxDetalhesDaMagia.node.campoDosSignos,self.boxDetalhesDaMagia.node.listaDeSignos}
 
 				local xml = NDB.exportXML(sheet.ieNode);
 
@@ -80,7 +66,8 @@
 						sheet.ieNode = {};
 						NDB.importXML(sheet.ieNode, xml);
 
-						self.boxDetalhesDaMagia.node.campoDasMagiasOld = sheet.ieNode[1];
+						self.boxDetalhesDaMagia.node.campoDosSignos = sheet.ieNode[1];
+						self.boxDetalhesDaMagia.node.listaDeSignos = sheet.ieNode[2];
 					end);
 			</event>
 		</button>

@@ -85,7 +85,7 @@
 	<button left="385" top="1" width="23" height="23" text="i" onClick="showPericiaPopup();"/>
 	<button left="410" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
 
-	<dataLink fields="{'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia'}">
+	<dataLink fields="{'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'competenciaPericia', 'intuicaoPericia', 'sortePericia'}">
 		<event name="onChange">
 			if sheet~= nil then
 				local node = NDB.getRoot(sheet);
@@ -102,6 +102,9 @@
 							(tonumber(sheet.outrosPericia) or 0) + 
 							(tonumber(sheet.talentosPericia) or 0) +
 							(tonumber(sheet.classePericia) or 0) +
+							(tonumber(sheet.competenciaPericia) or 0) +
+							(tonumber(sheet.intuicaoPericia) or 0) +
+							(tonumber(sheet.sortePericia) or 0) +
 							(tonumber(sheet.condicionalPericia) or 0);
 
 				if sheet.penalidadeArmadura then

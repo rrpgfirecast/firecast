@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<flowLayout autoHeight="true" maxColumns="5" horzAlign="center" orientation="vertical" name="magicList2" visible="false" padding="{left=5,right=5,top=5,bottom=5}" margins="{left=5,right=5,top=5,bottom=5}" avoidScale="false">
+	<recordList name="rclSignDescList" field="campoDosSignos" templateForm="frmMagiasSigno" align="client" layout="horizontalTiles" hitTest="false" minQt="0" autoHeight="true" >
+		<event name="onCompare"><![CDATA[
+		    ]]>
+		</event>
+	</recordList>
+</flowLayout>
