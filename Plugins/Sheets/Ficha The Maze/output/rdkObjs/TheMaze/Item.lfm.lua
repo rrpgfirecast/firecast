@@ -62,7 +62,7 @@ local function constructNew_frmItem()
     obj.comboBox1:setWidth(150);
     obj.comboBox1:setHeight(25);
     obj.comboBox1:setField("tipo");
-    obj.comboBox1:setItems({'Consumível', 'Material', 'Arma', 'Equipamento'});
+    obj.comboBox1:setItems({'Consumível', 'Material', 'Arma', 'Equipamento', 'Peça de Vestimenta', '-'});
     obj.comboBox1:setName("comboBox1");
 
     obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
@@ -131,6 +131,10 @@ local function constructNew_frmItem()
             					max = 1;
             				elseif sheet.tipo == "Equipamento" then
             					max = 1;
+            				elseif sheet.tipo == "Peça de Vestimenta" then
+            					max = 1;
+            				elseif sheet.tipo == "-" then
+            					max = 99;
             				end;
             				sheet.max = max;
         end, obj);

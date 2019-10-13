@@ -2371,7 +2371,7 @@ local function constructNew_frmBase()
     obj.label103:setWidth(100);
     obj.label103:setHeight(25);
     obj.label103:setHorzTextAlign("center");
-    obj.label103:setText("Imobilização");
+    obj.label103:setText("Lentidão");
     obj.label103:setFontSize(13);
     obj.label103:setName("label103");
 
@@ -3072,7 +3072,7 @@ local function constructNew_frmBase()
             if sheet==nil then return end;
             
             					local nivel = (tonumber(sheet.nivel) or 0);
-            					sheet.vidaBase = 140 + (nivel * 20);
+            					sheet.vidaBase = 380 + (nivel * 20);
             					sheet.fadigaBase = 90 + (nivel * 10);
             					sheet.imersaoBase = 10 + (nivel * 5);
             					sheet.atr_max = 42 + (nivel * 6);
@@ -3082,55 +3082,55 @@ local function constructNew_frmBase()
     obj._e_event4 = obj.dataLink2:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
-            				local total = 	(tonumber(sheet.agilidade_nivel) or 0) + 
-            								(tonumber(sheet.agilidade_outros) or 0);
+            				local nivel = (tonumber(sheet.agilidade_nivel) or 0);
+            				local total = 	nivel + (tonumber(sheet.agilidade_outros) or 0);
             				sheet.agilidade_total = total;
-            				sheet.agilidade_pericia = math.floor(total/4);
+            				sheet.agilidade_pericia = math.floor(nivel/4);
         end, obj);
 
     obj._e_event5 = obj.dataLink3:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
-            				local total = 	(tonumber(sheet.cac_nivel) or 0) + 
-            								(tonumber(sheet.cac_outros) or 0);
+            				local nivel = (tonumber(sheet.cac_nivel) or 0);
+            				local total = 	nivel + (tonumber(sheet.cac_outros) or 0);
             				sheet.cac_total = total;
-            				sheet.cac_pericia = math.floor(total/4);
+            				sheet.cac_pericia = math.floor(nivel/4);
         end, obj);
 
     obj._e_event6 = obj.dataLink4:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
-            				local total = 	(tonumber(sheet.manuseio_nivel) or 0) + 
-            								(tonumber(sheet.manuseio_outros) or 0);
+            				local nivel = (tonumber(sheet.manuseio_nivel) or 0);
+            				local total = 	nivel + (tonumber(sheet.manuseio_outros) or 0);
             				sheet.manuseio_total = total;
-            				sheet.manuseio_pericia = math.floor(total/4);
+            				sheet.manuseio_pericia = math.floor(nivel/4);
         end, obj);
 
     obj._e_event7 = obj.dataLink5:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
-            				local total = 	(tonumber(sheet.pontaria_nivel) or 0) + 
-            								(tonumber(sheet.pontaria_outros) or 0);
+            				local nivel = (tonumber(sheet.pontaria_nivel) or 0);
+            				local total = 	nivel + (tonumber(sheet.pontaria_outros) or 0);
             				sheet.pontaria_total = total;
-            				sheet.pontaria_pericia = math.floor(total/4);
+            				sheet.pontaria_pericia = math.floor(nivel/4);
         end, obj);
 
     obj._e_event8 = obj.dataLink6:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
-            				local total = 	(tonumber(sheet.paranormalidade_nivel) or 0) + 
-            								(tonumber(sheet.paranormalidade_outros) or 0);
+            				local nivel = (tonumber(sheet.paranormalidade_nivel) or 0);
+            				local total = 	nivel + (tonumber(sheet.paranormalidade_outros) or 0);
             				sheet.paranormalidade_total = total;
-            				sheet.paranormalidade_pericia = math.floor(total/4);
+            				sheet.paranormalidade_pericia = math.floor(nivel/4);
         end, obj);
 
     obj._e_event9 = obj.dataLink7:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
-            				local total = 	(tonumber(sheet.sorte_nivel) or 0) + 
-            								(tonumber(sheet.sorte_outros) or 0);
+            				local nivel = (tonumber(sheet.sorte_nivel) or 0);
+            				local total = 	nivel + (tonumber(sheet.sorte_outros) or 0);
             				sheet.sorte_total = total;
-            				sheet.sorte_pericia = math.floor(total/4);
+            				sheet.sorte_pericia = math.floor(nivel/4);
         end, obj);
 
     obj._e_event10 = obj.dataLink8:addEventListener("onChange",
@@ -3421,8 +3421,11 @@ local function constructNew_frmBase()
             
             					-- STATUS DE COMBATE
             
-            					sheet.regVidaBase = 8 + math.floor(cac/4)*4;
-            					sheet.regFadigaBase = 5 + math.floor(paranormalidade/4)*3;
+            					local vidaBase = math.floor( (tonumber(sheet.vidaBase) or 0)/10 );
+            					local fadigaBase = math.floor( (tonumber(sheet.fadigaBase) or 0)/10 );
+            
+            					sheet.regVidaBase = vidaBase + math.floor(cac/4)*8;
+            					sheet.regFadigaBase = fadigaBase + math.floor(paranormalidade/4)*3;
             					sheet.iniciativaBase = math.floor(agilidade/6);
             					sheet.criticoBase = 1 + math.floor(sorte/4);
             					sheet.amplificacaoBase = math.floor(destreza/4)*10;

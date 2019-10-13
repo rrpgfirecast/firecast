@@ -649,7 +649,7 @@ local function constructNew_frmCombatTracker()
     obj.label3:setParent(obj.layout2);
     obj.label3:setAlign("left");
     obj.label3:setAutoSize(true);
-    obj.label3:setText("Contador de Tempo");
+    obj.label3:setText("Tempo Mundi");
     obj.label3:setWordWrap(false);
     obj.label3:setFontSize(11);
     obj.label3:setName("label3");
