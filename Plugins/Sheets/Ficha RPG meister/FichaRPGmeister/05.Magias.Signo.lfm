@@ -22,13 +22,15 @@
 		]]>	
 	</script>
 
-	<layout align="top" height="25">
-		<rectangle align="right" width="100" color="black" strokeColor="white" strokeSize="1">
-			<edit align="left" width="75" field="cd" horzTextAlign="center" fontSize="12"/>
-			<button align="right" width="25" text="X" onClick="askForDelete();"/>
-		</rectangle>
+	<layout width="400" height="150">
+		<layout align="top" height="25">
+			<rectangle align="right" width="100" color="black" strokeColor="white" strokeSize="1">
+				<edit align="left" width="75" field="cd" horzTextAlign="center" fontSize="12"/>
+				<button align="right" width="25" text="X" onClick="askForDelete();"/>
+			</rectangle>
 
-		<edit align="client" field="nomeMagia"/>
+			<edit align="client" field="nomeMagia"/>
+		</layout>
+		<textEditor align="bottom" height="125" field="details"/>
 	</layout>
-	<textEditor align="bottom" height="125" field="details"/>
 </form>

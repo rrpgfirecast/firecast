@@ -39,6 +39,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
 			
 			local dnd = NDB.load("dndskills.xml");
 			local rpgmeister = NDB.load("rpgmeisterskills.xml");
+			local faroeste = NDB.load("faroesteskills.xml");
 
 			local function updateAtributes(num)
 				local atr = "" .. num;
@@ -98,22 +99,22 @@ local function constructNew_frmFichaRPGmeister3_svg()
 				end;
 			end;
 
-			local function dndSkills()
+			local function fillSkills(list, limit)
 				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
 				for i=1, #nodes, 1 do
 					NDB.deleteNode(nodes[i]);
 				end
 
-				for i=1, 44, 1 do
+				for i=1, limit, 1 do
 					local pericia = self.rclListaDasPericias:append();
 					if pericia ~= nil then
-						pericia.nomePericia = dnd[i].nome;
-						pericia.chavePericia = dnd[i].chave;
-						pericia.exigeTreino = dnd[i].treino;
-						if dnd[i].armadura > 0 then
+						pericia.nomePericia = list[i].nome;
+						pericia.chavePericia = list[i].chave;
+						pericia.exigeTreino = list[i].treino;
+						if list[i].armadura > 0 then
 							pericia.penalidadeArmadura2 = true;
 						end;
-						if dnd[i].armadura > 1 then
+						if list[i].armadura > 1 then
 							pericia.penalidadeArmadura = true;
 						end;
 					end;
@@ -122,28 +123,16 @@ local function constructNew_frmFichaRPGmeister3_svg()
 				self.rclListaDasPericias:sort();
 			end;
 
+			local function dndSkills()
+				fillSkills(dnd, 44);
+			end;
+
 			local function rpgmeisterSkills()
-				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
-				for i=1, #nodes, 1 do
-					NDB.deleteNode(nodes[i]);
-				end
+				fillSkills(rpgmeister, 41);
+			end;
 
-				for i=1, 41, 1 do
-					local pericia = self.rclListaDasPericias:append();
-					if pericia ~= nil then
-						pericia.nomePericia = rpgmeister[i].nome;
-						pericia.chavePericia = rpgmeister[i].chave;
-						pericia.exigeTreino = rpgmeister[i].treino;
-						if rpgmeister[i].armadura > 0 then
-							pericia.penalidadeArmadura2 = true;
-						end;
-						if rpgmeister[i].armadura > 1 then
-							pericia.penalidadeArmadura = true;
-						end;
-					end;
-				end;
-
-				self.rclListaDasPericias:sort();
+			local function faroesteSkills()
+				fillSkills(faroeste, 25);
 			end;
 		
 
@@ -492,6 +481,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.popPericia);
     obj.textEditor1:setAlign("bottom");
+    obj.textEditor1:setHeight(80);
     obj.textEditor1:setField("descricao");
     obj.textEditor1:setName("textEditor1");
 
@@ -834,9 +824,19 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.button2:setHeight(25);
     obj.button2:setName("button2");
 
+    obj.label30 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label30:setParent(obj.layout4);
+    obj.label30:setText("Padrões de Perícia");
+    obj.label30:setLeft(0);
+    obj.label30:setTop(50);
+    obj.label30:setWidth(125);
+    obj.label30:setHeight(20);
+    obj.label30:setHorzTextAlign("center");
+    obj.label30:setName("label30");
+
     obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.layout4);
-    obj.button3:setText("Padrão DnD3.5");
+    obj.button3:setText("DnD3.5");
     obj.button3:setLeft(0);
     obj.button3:setTop(75);
     obj.button3:setWidth(125);
@@ -846,13 +846,23 @@ local function constructNew_frmFichaRPGmeister3_svg()
 
     obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.layout4);
-    obj.button4:setText("Padrão RPGmeister");
+    obj.button4:setText("RPGmeister");
     obj.button4:setLeft(0);
     obj.button4:setTop(100);
     obj.button4:setWidth(125);
     obj.button4:setHeight(25);
     obj.button4:setHint("Vai apagar todas perícias atuais. ");
     obj.button4:setName("button4");
+
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button5:setParent(obj.layout4);
+    obj.button5:setText("Faroeste Arcano");
+    obj.button5:setLeft(0);
+    obj.button5:setTop(125);
+    obj.button5:setWidth(125);
+    obj.button5:setHeight(25);
+    obj.button5:setHint("Vai apagar todas perícias atuais. ");
+    obj.button5:setName("button5");
 
     obj._e_event0 = obj.rclListaDasPericias:addEventListener("onCompare",
         function (_, nodeA, nodeB)
@@ -886,7 +896,13 @@ local function constructNew_frmFichaRPGmeister3_svg()
             rpgmeisterSkills();
         end, obj);
 
+    obj._e_event6 = obj.button5:addEventListener("onClick",
+        function (_)
+            faroesteSkills();
+        end, obj);
+
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event6);
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
@@ -931,6 +947,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
+        if self.button5 ~= nil then self.button5:destroy(); self.button5 = nil; end;
         if self.checkBox6 ~= nil then self.checkBox6:destroy(); self.checkBox6 = nil; end;
         if self.label21 ~= nil then self.label21:destroy(); self.label21 = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
@@ -941,6 +958,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
+        if self.label30 ~= nil then self.label30:destroy(); self.label30 = nil; end;
         if self.label10 ~= nil then self.label10:destroy(); self.label10 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
