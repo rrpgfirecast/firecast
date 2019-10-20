@@ -50,7 +50,7 @@
 
 				<recordList align="client" name="rclSkills" field="listaDePericias" templateForm="frmSkillItem" layout="vertical">
 					<event name="onCompare">
-		                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+		                return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
 		        	</event>
 				</recordList>
 			</flowPart>

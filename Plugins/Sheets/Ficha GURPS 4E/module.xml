@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.5">
 	<id>Ambesek.Nefertyne.GURPS</id>
-	<version>0.8.6</version>
+	<version>0.9.0</version>
 	<name>Ficha GURPS 4E</name>
 	<description>Ficha feita para o sistema GURPS 4ª Edição. </description>
 	<author>Ambesek</author>

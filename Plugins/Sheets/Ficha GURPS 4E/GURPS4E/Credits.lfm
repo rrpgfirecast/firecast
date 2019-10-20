@@ -15,12 +15,12 @@
 			<label left="555" top="300" width="200" height="20" text="Versão Atual: " horzTextAlign="center" field="versionInstalled"/>
 			<label left="555" top="325" width="200" height="20" text="Sua Versão: " horzTextAlign="center" field="versionDownloaded"/>
 				
-			<button left="555" top="350" width="100" text="Change Log" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/README.md')" />
-			<button left="667" top="350" width="100" text="Atualizar" onClick="gui.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true')" />
+			<button left="555" top="350" width="100" text="Change Log" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/README.md')" />
+			<button left="667" top="350" width="100" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true')" />
 			
 			<label left="555" top="400" width="200" height="20" text="Conheça as Mesas:"/>
-			<button left="555" top="425" width="100" text="RPGmeister" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
-			<button left="667" top="425" width="125" text="[A] Homebound" onClick="gui.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=131156');" />
+			<button left="555" top="425" width="100" text="RPGmeister" onClick="GUI.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
+			<button left="667" top="425" width="125" text="[A] Homebound" onClick="GUI.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=131156');" />
 		</scrollBox>
 	</rectangle>
 </form>

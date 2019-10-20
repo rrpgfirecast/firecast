@@ -6,259 +6,175 @@
 			<edit frameRegion="RegiaoConteudo2" class="magicLevelInformation" field="right_$(field)"/>
 		</flowPart>	
 	</template>	
+
+	<popup name="popSkill" width="250" height="250" backOpacity="0.4" autoScopeNode="false">
+		<edit align="top" class="" field="nome" textPrompt="NOME DA MAGIA" horzTextAlign="center"/>
+	
+		<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
+			<magicInfoField text="TIPO" field="tipo"/>
+			<magicInfoField text="CUSTO" field="pts"/>
+		</flowLayout>
+		
+		<textEditor align="client" field="descricao" class=""/>
+	</popup>
+
 	<scrollBox align="client">
-		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="2" name="fraFrenteLayoutNew" maxControlsPerLine="2">
-			<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center">
-				<flowLayout class="tile" vertAlign="leading" autoHeight="true" minScaledWidth="290" maxControlsPerLine="2" horzAlign="center" lineSpacing="10" margins="{left=2, top=0, right=16, bottom=4}" avoidScale="true" frameStyle="frames/panel1/frame.xml">
-					<flowPart stepSizes="{130}" minScaledWidth="130" height="160">
-						<edit left="0" top="10" width="40" height="25" field="atributos_st" horzTextAlign="center" transparent="true"/>
-						<label left="40" top="10" width="50" height="25" text="ST" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<edit left="90" top="10" width="40" height="25" field="atributos_mod_st" horzTextAlign="center" transparent="true"/>
-						
-						<edit left="0" top="35" width="40" height="25" field="atributos_dx" horzTextAlign="center" transparent="true"/>
-						<label left="40" top="35" width="50" height="25" text="DX" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<edit left="90" top="35" width="40" height="25" field="atributos_mod_dx" horzTextAlign="center" transparent="true"/>
-						
-						<edit left="0" top="60" width="40" height="25" field="atributos_iq" horzTextAlign="center" transparent="true"/>
-						<label left="40" top="60" width="50" height="25" text="IQ" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<edit left="90" top="60" width="40" height="25" field="atributos_mod_iq" horzTextAlign="center" transparent="true"/>
-						
-						<edit left="0" top="85" width="40" height="25" field="atributos_ht" horzTextAlign="center" transparent="true"/>
-						<label left="40" top="85" width="50" height="25" text="HT" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<edit left="90" top="85" width="40" height="25" field="atributos_mod_ht" horzTextAlign="center" transparent="true"/>
-						
-						<edit left="0" top="110" width="40" height="25" field="atributos_per" horzTextAlign="center" transparent="true"/>
-						<label left="40" top="110" width="50" height="25" text="Per" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<edit left="90" top="110" width="40" height="25" field="atributos_mod_per" horzTextAlign="center" transparent="true"/>
-						
-						<edit left="0" top="135" width="40" height="25" field="atributos_vt" horzTextAlign="center" transparent="true"/>
-						<label left="40" top="135" width="50" height="25" text="Vont" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<edit left="90" top="135" width="40" height="25" field="atributos_mod_vt" horzTextAlign="center" transparent="true"/>
-					</flowPart>
-					<flowPart stepSizes="{130}" minScaledWidth="130" height="160">
-						<edit left="0" top="10" width="40" height="25" field="atributos_deslocamento" horzTextAlign="center" transparent="true"/>
-						<label left="40" top="10" width="50" height="25" text="Desloc." fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<edit left="90" top="10" width="40" height="25" field="atributos_mod_deslocamento" horzTextAlign="center" transparent="true"/>
-						
-						<label left="40" top="35" width="50" height="25" text="Esquiva" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<label left="90" top="35" width="40" height="25" field="dodge" horzTextAlign="center"/>
-						<dataLink field="atributos_mod_velocidade">
-							<event name="onChange">
-								if sheet == nil then return end;
-								local vel = math.floor(tonumber(sheet.atributos_mod_velocidade) or 0);
-								sheet.dodge = vel + 3;
-							</event>
-						</dataLink>
-						
-						<edit left="0" top="60" width="40" height="25" field="atributos_velocidade" horzTextAlign="center" transparent="true"/>
-						<label left="40" top="60" width="50" height="25" text="Velocidade" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<edit left="90" top="60" width="40" height="25" field="atributos_mod_velocidade" type="float" horzTextAlign="center" transparent="true"/>
-						
-						<label left="40" top="85" width="50" height="25" text="Carga Base" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<edit left="90" top="85" width="40" height="25" field="carga" horzTextAlign="center" transparent="true"/>
-						
-						<label left="40" top="110" width="50" height="25" text="GdP" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<edit left="90" top="110" width="40" height="25" field="gdp" horzTextAlign="center" transparent="true"/>
-						
-						<label left="40" top="135" width="50" height="25" text="GeB" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<edit left="90" top="135" width="40" height="25" field="gdb" horzTextAlign="center" transparent="true"/>
+		<flowLayout class="tile" align="top" height="500" margins="{left=10, right=10, top=10}" autoHeight="true" horzAlign="center" lineSpacing="1" name="fraFrenteLayoutNew" maxControlsPerLine="4">
+			
+			<!-- Titulo -->
+			<flowLayout class="oneLineTile2" autoHeight="true" minScaledWidth="290" horzAlign="center">
+				<!-- NOME DO PERSONAGEM -->													
+				<flowPart class="tile" minWidth="320" maxWidth="1600" frameStyle="frames/banner/dragon.xml" height="175" vertAlign="center" avoidScale="true">							
+					<layout align="client">
+						<edit field="nome" class="transparente center" fontSize="17" align="client"/>
+						<label align="bottom" text="NOME DO PERSONAGEM" class="tituloCampo" autoSize="true" margins="{left=3}"/>
+					</layout>
+				</flowPart>				
+		
+				<!-- GRID DE INFORMACOES SUPERIORES DA FRENTE -->
+				<flowLayout class="tile"  minWidth="320" maxWidth="1600" name="fraUpperGridCaracteristicas" avoidScale="true" frameStyle="frames/upperInfoGrid/frame.xml" autoHeight="true" vertAlign="trailing" maxControlsPerLine="4">
+					<upperGridCampo field="olhos" minWidth="100" titulo="JOGADOR"/>
+					<upperGridCampo field="pele" titulo="MOD DE TAMANHO"/>
+					<upperGridCampo field="totalPontos" titulo="PONTOS PARA GASTAR"/>
+
+					<flowLineBreak/>
+
+					<upperGridCampo field="idade" minWidth="100" titulo="IDADE"/>
+					<upperGridCampo field="altura" titulo="ALTURA"/>
+					<upperGridCampo field="peso" titulo="PESO"/>					
+					<upperGridCampo field="pontosRestantes" titulo="PONTOS RESTANTES"/>
+				</flowLayout>	
+			</flowLayout>			
+	
+			<flowLineBreak/>
+
+			<!-- Atributos Primarios -->
+			<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="120" maxScaledWidth="240" margins="{right=10}" horzAlign="center" vertAlign="center" maxControlsPerLine="1" frameStyle="frames/panel1/frame.xml">
+				<flowLayout height="140" class="oneLineTile" minScaledWidth="120" maxScaledWidth="240" horzAlign="center" maxControlsPerLine="3">
+					<boxAtributo titulo="ST" field="st"/>
+					<flowPart stepSizes="{105}" minScaledWidth="75" height="140" margins="{top=0}" frameStyle="frames/panel4transp/frame.xml">
+						<label align="top" text="PV" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit align="client" class="atributo transparente" field="atributos_mod_pv" fontSize="30"/>	
+					</flowPart>	
+					<flowPart minWidth="60" maxWidth="60" margins="{top=30}" height="60" frameStyle="">
+						<edit align="left" field="atributos_pv" width="60" horzTextAlign="center" transparent="true"/>
 					</flowPart>
 				</flowLayout>
-				<dataLink fields="{'atributos_st','atributos_ht','atributos_dx','atributos_vt','atributos_iq','atributos_per','atributos_velocidade','atributos_deslocamento'}" defaultValues="{'+0','+0','+0','+0','+0','+0','+0','+0'}"/>
-				<dataLink fields="{'atributos_mod_st','atributos_mod_dx','atributos_mod_iq','atributos_mod_ht','atributos_mod_vt','atributos_mod_per'}" defaultValues="{10,10,10,10,10,10}"/>
 
-				<flowLineBreak/>
-
-				<flowLayout class="tile" vertAlign="leading" autoHeight="true" minScaledWidth="290" maxControlsPerLine="2" horzAlign="center" lineSpacing="10" margins="{left=2, top=2, right=16, bottom=4}" avoidScale="true">
-					<boxAtributo titulo="PV" field="pv"/>
-					<boxAtributo titulo="PF" field="pf"/>
+				<flowLayout height="140" class="oneLineTile" minScaledWidth="120" maxScaledWidth="240" horzAlign="center" maxControlsPerLine="3">
+					<boxAtributo titulo="DX" field="dx"/>
+					<flowPart stepSizes="{105}" minScaledWidth="75" height="140" margins="{top=0}" frameStyle="frames/panel4transp/frame.xml">
+						<label align="top" text="Vontade" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit align="client" class="atributo transparente" field="atributos_mod_vt" fontSize="30"/>	
+					</flowPart>	
+					<flowPart minWidth="60" maxWidth="60" margins="{top=30}" height="60" frameStyle="">
+						<edit align="left" field="atributos_vt" width="60" horzTextAlign="center" transparent="true"/>
+					</flowPart>
 				</flowLayout>
 
-				<flowLineBreak/>
+				<flowLayout height="140" class="oneLineTile" minScaledWidth="120" maxScaledWidth="240" horzAlign="center" maxControlsPerLine="3">
+					<boxAtributo titulo="IQ" field="iq"/>
+					<flowPart stepSizes="{105}" minScaledWidth="75" height="140" margins="{top=0}" frameStyle="frames/panel4transp/frame.xml">
+						<label align="top" text="Percepção" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit align="client" class="atributo transparente" field="atributos_mod_per" fontSize="30"/>	
+					</flowPart>	
+					<flowPart minWidth="60" maxWidth="60" margins="{top=30}" height="60" frameStyle="">
+						<edit align="left" field="atributos_per" width="60" horzTextAlign="center" transparent="true"/>
+					</flowPart>
+				</flowLayout>
 
-				<button margins="{top=5,bottom=5}" align="top" text="Arquétipo" width="250">
-					<event name="onClick">
-							local pop = self:findControlByName("popDetails");
-					
-							if sheet.arquetipo == nil then
-								sheet.arquetipo = {};
-								sheet.arquetipo.title = "Arquétipo";
-							else
-								sheet.arquetipo.title = "Arquétipo";
-							end;
+				<flowLayout height="140" class="oneLineTile" minScaledWidth="120" maxScaledWidth="240" horzAlign="center" maxControlsPerLine="3">
+					<boxAtributo titulo="HT" field="ht"/>
+					<flowPart stepSizes="{105}" minScaledWidth="75" height="140" margins="{top=0}" frameStyle="frames/panel4transp/frame.xml">
+						<label align="top" text="PF" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit align="client" class="atributo transparente" field="atributos_mod_pf" fontSize="30"/>	
+					</flowPart>	
+					<flowPart minWidth="60" maxWidth="60" margins="{top=30}" height="60" frameStyle="">
+						<edit align="left" field="atributos_pf" width="60" horzTextAlign="center" transparent="true"/>
+					</flowPart>
+				</flowLayout>
 
-							if pop ~= nil then
-								pop:setNodeObject(sheet.arquetipo);
-								pop:showPopupEx("center", self);
-							elseif sheet.arquetipo == nil then
-								showMessage(sheet.arquetipo);
-							else
-								showMessage("Ops, bug.. nao encontrei o popup para exibir");
-							end;
-					</event>
-				</button>
+			</flowLayout>
 
-				<flowLineBreak/>
+			<dataLink fields="{'atributos_st','atributos_ht','atributos_dx','atributos_vt','atributos_iq','atributos_per','atributos_velocidade','atributos_deslocamento','dodge_cost'}" defaultValues="{'0','0','0','0','0','0','0','0','0'}"/>
+			<dataLink fields="{'atributos_mod_st','atributos_mod_dx','atributos_mod_iq','atributos_mod_ht','atributos_mod_vt','atributos_mod_per'}" defaultValues="{10,10,10,10,10,10}"/>
 
-				<button margins="{top=5,bottom=5}" align="top" text="Vantagens" width="250">
-					<event name="onClick">
-						local pop = self:findControlByName("popDetails");
-				
-						if sheet.advantages == nil then
-							sheet.advantages = {};
-							sheet.advantages.title = "Vantagens";
-						else
-							sheet.advantages.title = "Vantagens";
-						end;
+			<!-- Estatisticas -->
+			<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" margins="{right=10}" horzAlign="center" maxControlsPerLine="1">
+				<!-- Bloqueio e Dano -->
+				<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center" maxControlsPerLine="3" frameStyle="frames/panel1/frame.xml">
+					<flowPart stepSizes="{105}" minScaledWidth="75" height="120" margins="{top=0}" frameStyle="frames/shield/frame.xml">
+						<label align="top" text="Defesa" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit align="client" class="atributo transparente" field="a" fontSize="30"/>	
+					</flowPart>	
+					<flowPart stepSizes="{105}" minScaledWidth="75" height="120" margins="{top=0}" frameStyle="frames/panel4transp/frame.xml">
+						<label align="top" text="Dano GeB" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit align="client" class="atributo transparente" field="gdb" fontSize="30"/>	
+					</flowPart>	
 
-						if pop ~= nil then
-							pop:setNodeObject(sheet.advantages);
-							pop:showPopupEx("center", self);
-						elseif sheet.advantages == nil then
-							showMessage(sheet.advantages);
-						else
-							showMessage("Ops, bug.. nao encontrei o popup para exibir");
-						end;
-					</event>
-				</button>
+					<flowPart stepSizes="{105}" minScaledWidth="75" height="120" margins="{top=0}" frameStyle="frames/panel4transp/frame.xml">
+						<label align="top" text="Dano GdP" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit align="client" class="atributo transparente" field="gdp" fontSize="30"/>	
+					</flowPart>	
+				</flowLayout>
+				<!-- Resistencias -->
+				<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center" maxControlsPerLine="2" frameStyle="frames/panel1/frame.xml">
+					<upperGridCampo field="rdCabeca" minWidth="100" titulo="Cabeça"/>
+					<upperGridCampo field="rdMaos" minWidth="100" titulo="Mãos"/>
+					<upperGridCampo field="rdTronco" minWidth="100" titulo="Tronco"/>
+					<upperGridCampo field="rdPernas" minWidth="100" titulo="Pernas"/>
+					<upperGridCampo field="rdBracos" minWidth="100" titulo="Braços"/>
+					<upperGridCampo field="rdPes" minWidth="100" titulo="Pés"/>
 
-				<flowLineBreak/>
+					<label align="bottom" text="RESISTÊNCIA A DANO" height="20" fontSize="11" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+				</flowLayout>
+				<!-- Mobilidade -->
+				<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center" maxControlsPerLine="3" frameStyle="frames/panel1/frame.xml">
 
-				<button margins="{top=5,bottom=5}" align="top" text="Desvantagens" width="250">
-					<event name="onClick">
-						local pop = self:findControlByName("popDetails");
-				
-						if sheet.disadvantages == nil then
-							sheet.disadvantages = {};
-							sheet.disadvantages.title = "Desvantagens";
-						else
-							sheet.disadvantages.title = "Desvantagens";
-						end;
+					<flowPart stepSizes="{105}" minScaledWidth="75" height="120" margins="{top=0}" frameStyle="frames/panel4transp/frame.xml">
+						<label align="top" text="Esquiva" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit align="client" class="atributo transparente" field="dodge" fontSize="30"/>	
+					</flowPart>	
+					<flowPart stepSizes="{105}" minScaledWidth="75" height="120" margins="{top=0}" frameStyle="frames/panel4transp/frame.xml">
+						<label align="top" text="Vel Base" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit align="client" class="atributo transparente" field="atributos_mod_velocidade" fontSize="30"/>	
+					</flowPart>	
+					<flowPart stepSizes="{105}" minScaledWidth="75" height="120" margins="{top=0}" frameStyle="frames/panel4transp/frame.xml">
+						<label align="top" text="Desl Base" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
+						<edit align="client" class="atributo transparente" field="atributos_mod_deslocamento" fontSize="30"/>	
+					</flowPart>	
 
-						if pop ~= nil then
-							pop:setNodeObject(sheet.disadvantages);
-							pop:showPopupEx("center", self);
-						elseif sheet.disadvantages == nil then
-							showMessage(sheet.disadvantages);
-						else
-							showMessage("Ops, bug.. nao encontrei o popup para exibir");
-						end;
-					</event>
-				</button>
+					<flowPart minWidth="80" maxWidth="160" margins="{top=10, left=15}" height="20" frameStyle="">
+						<edit align="left" field="dodge_cost" width="50" horzTextAlign="center" transparent="true"/>
+					</flowPart>
+					<flowPart minWidth="80" maxWidth="160" margins="{top=10,left=15}" height="20" frameStyle="">
+						<edit align="left" field="atributos_velocidade" width="50" horzTextAlign="center" transparent="true"/>
+					</flowPart>
+					<flowPart minWidth="80" maxWidth="160" margins="{top=10,left=15}" height="20" frameStyle="">
+						<edit align="left" field="atributos_deslocamento" width="50" horzTextAlign="center" transparent="true"/>
+					</flowPart>
 
-				<flowLineBreak/>
+					<label align="bottom" text="MOBILIDADE" height="20" fontSize="11" wordWrap="true" horzTextAlign="center" margins="{bottom=10}" textTrimming="none"/>
 
-				<button margins="{top=5,bottom=5}" align="top" text="Familiaridades Culturais" width="250">
-					<event name="onClick">
-							local pop = self:findControlByName("popDetails");
-					
-							if sheet.familiaridades == nil then
-								sheet.familiaridades = {};
-								sheet.familiaridades.title = "Familiaridades Culturais";
-							else
-								sheet.familiaridades.title = "Familiaridades Culturais";
-							end;
-
-							if pop ~= nil then
-								pop:setNodeObject(sheet.familiaridades);
-								pop:showPopupEx("center", self);
-							elseif sheet.familiaridades == nil then
-								showMessage(sheet.familiaridades);
-							else
-								showMessage("Ops, bug.. nao encontrei o popup para exibir");
-							end;
-					</event>
-				</button>
-
-				<flowLineBreak/>
-
-				<button margins="{top=5,bottom=5}" align="top" text="Idiomas" width="250">
-					<event name="onClick">
-							local pop = self:findControlByName("popDetails");
-					
-							if sheet.idiomas == nil then
-								sheet.idiomas = {};
-								sheet.idiomas.title = "Idiomas";
-							else
-								sheet.idiomas.title = "Idiomas";
-							end;
-
-							if pop ~= nil then
-								pop:setNodeObject(sheet.idiomas);
-								pop:showPopupEx("center", self);
-							elseif sheet.idiomas == nil then
-								showMessage(sheet.idiomas);
-							else
-								showMessage("Ops, bug.. nao encontrei o popup para exibir");
-							end;
-					</event>
-				</button>
-
-				<dataLink fields="{'vantagens_pontos', 'desvantagens_pontos', 'familiaridade_cultural','arquetipo_pontos','idiomas_pontos'}">
-					<event name="onChange">
-						pointCount();
-					</event>
-				</dataLink>
-
-				<flowLineBreak/>
-
-				<flowPart stepSizes="{120}" minScaledWidth="120" margins="{top=5}" height="145" frameStyle="frames/panel4transp/frame.xml">
-						<label left="15" top="10" width="90" height="25" field="bc_0" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<label left="15" top="35" width="90" height="25" field="bc_1" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<label left="15" top="60" width="90" height="25" field="bc_2" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<label left="15" top="85" width="90" height="25" field="bc_3" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<label left="15" top="110" width="90" height="25" field="bc_4" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-				</flowPart>
-				<dataLink field="carga">
+					<dataLink field="atributos_mod_velocidade">
 						<event name="onChange">
-							if sheet==nil then return end;
-
-							local carga = tonumber(sheet.carga) or 0;
-
-							sheet.bc_0 = "Nenhuma (BC): " .. (carga);
-							sheet.bc_1 = "Leve (BCx2): " .. (carga*2);
-							sheet.bc_2 = "Média (BCx3): " .. (carga*3);
-							sheet.bc_3 = "Pesada (BCx6): " .. (carga*6);
-							sheet.bc_4 = "Muito Pesada (BCx10): " .. (carga*10);
+							if sheet == nil then return end;
+							local vel = math.floor(tonumber(sheet.atributos_mod_velocidade) or 0);
+							sheet.dodge = vel + 3;
 						</event>
-				</dataLink>
-
-				<flowPart stepSizes="{120}" minScaledWidth="120" margins="{top=5}" height="145" frameStyle="frames/panel4transp/frame.xml">
-						<label left="15" top="10" width="90" height="25" field="db_0" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<label left="15" top="35" width="90" height="25" field="db_1" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<label left="15" top="60" width="90" height="25" field="db_2" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<label left="15" top="85" width="90" height="25" field="db_3" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-						<label left="15" top="110" width="90" height="25" field="db_4" fontSize="10" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-				</flowPart>
-				<dataLink field="atributos_mod_deslocamento">
-						<event name="onChange">
-							if sheet==nil then return end;
-
-							local velocidade = tonumber(sheet.atributos_mod_deslocamento) or 0;
-
-							sheet.db_0 = "DBx1: " .. (velocidade);
-							sheet.db_1 = "DBx0,8: " .. math.floor(velocidade*0.8);
-							sheet.db_2 = "DBx0,6: " .. math.floor(velocidade*0.6);
-							sheet.db_3 = "DBx0,4: " .. math.floor(velocidade*0.4);
-							sheet.db_4 = "DBx0,2: " .. math.floor(velocidade*0.2);
-						</event>
-				</dataLink>
-
-				<flowLineBreak/>
-
-				<upperGridMagicBox field="pontosRestantes" titulo="PONTOS RESTANTES"/>
-				<upperGridMagicEditBox field="totalPontos" titulo="TOTAL DE PONTOS"/>
+					</dataLink>
+				</flowLayout>
 			</flowLayout>
 
 			<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center">
-				<flowPart minWidth="280" maxWidth="800" margins="{top=10}" height="64" frameStyle="frames/posCaptionEdit1/frame.xml">
+				<flowPart minWidth="280" maxWidth="800" margins="{top=10}" height="64" frameStyle="frames/posCaptionEdit2/frame.xml">
 					<edit align="left" class="pericia" field="nt_total" width="65"/>
 					<label align="client" text="Nível Tecnológico" margins="{left=10}" class="tituloCampo" horzTextAlign="center"/>
 				</flowPart>
 
 				<flowLineBreak/>
 
-				<flowPart class="tileCarac" height="515" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
+				<flowPart class="tileCarac" height="500" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}">
 					<layout align="top" height="25">
 						<label align="top" autoSize="true" text="PERÍCIAS" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 						<button align="left" text="+" width="25" hint="Adiciona uma perícia." horzTextAlign="center" onClick="self.rclSkillsNew:append();" margins="{top=-10}"/>
@@ -266,30 +182,18 @@
 
 					<recordList align="client" name="rclSkillsNew" field="listaDePericias" templateForm="frmSkillItem" layout="vertical">
 						<event name="onCompare">
-			                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+			                return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
 			        	</event>
 					</recordList>
 				</flowPart>
 
-				<flowLineBreak/>
-
-				<flowPart stepSizes="{105}" minScaledWidth="75" height="120" margins="{top=35}" frameStyle="frames/shield/frame.xml">
-					<label align="top" text="BLOQUEAR" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-					<edit align="client" class="atributo transparente" field="a" fontSize="30"/>	
-				</flowPart>	
-
-				<flowPart stepSizes="{105}" minScaledWidth="75" height="120" margins="{top=35}" frameStyle="frames/shield/frame.xml">
-					<label align="top" text="APARAR" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
-					<edit align="client" class="atributo transparente" field="b" fontSize="30"/>	
-				</flowPart>	
-
-				<dataLink fields="{'totalPontos', 'atributos_st', 'atributos_ht', 'atributos_dx', 'atributos_vt', 'atributos_iq', 'atributos_per', 'atributos_pv', 'atributos_pf', 'atributos_velocidade', 'atributos_deslocamento'}">
+				<dataLink fields="{'totalPontos', 'atributos_st', 'atributos_ht', 'atributos_dx', 'atributos_vt', 'atributos_iq', 'atributos_per', 'atributos_pv', 'atributos_pf', 'atributos_velocidade', 'atributos_deslocamento','dodge_cost'}">
 					<event name="onChange">
 						pointCount();
 					</event>
 				</dataLink>
 			</flowLayout>
-
+ 
 		</flowLayout>
 	</scrollBox>
 </rectangle>

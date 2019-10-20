@@ -55,7 +55,7 @@
 			<recordList name="rcl$(baseName)" align="top" field="$(field)" templateForm="$(templateFormForThisGroup)" 
 						autoHeight="true" minHeight="5" onResize="self.$(baseName)._recalcHeight();" hitTest="false" margins="{left=10, right=10}">
 				<event name="onCompare">
-	                return utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+	                return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
 	        	</event>
 			</recordList>			
 						
@@ -72,13 +72,6 @@
 			<magicHeader0 text="$(text)" field="$(field2)"/>
 			<magicRecordList field="$(field)" tipo="$(tipo)"/>
 		</flowLayout>	
-	</template>
-
-	<template name="magicInfoField">
-		<flowPart minWidth="30" maxWidth="400" height="35">
-			<label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true" textTrimming="none" autoSize="true"/>
-			<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
-		</flowPart>
 	</template>
 	<popup name="popPower" width="250" height="250" backOpacity="0.4" autoScopeNode="false">
 		<edit align="top" class="" field="nome" textPrompt="NOME DA MAGIA" horzTextAlign="center"/>

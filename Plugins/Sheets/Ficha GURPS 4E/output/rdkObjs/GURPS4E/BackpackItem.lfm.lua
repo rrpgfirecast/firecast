@@ -30,10 +30,10 @@ local function constructNew_frmBackpackItem()
 
 			
 			local function askForDelete()
-				dialogs.confirmYesNo("Deseja realmente apagar este item?",
+				Dialogs.confirmYesNo("Deseja realmente apagar este item?",
 									 function (confirmado)
 										if confirmado then
-											ndb.deleteNode(self.sheet);
+											NDB.deleteNode(self.sheet);
 										end;
 									 end);
 			end;

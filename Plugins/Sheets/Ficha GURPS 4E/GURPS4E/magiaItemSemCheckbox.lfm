@@ -6,8 +6,6 @@
 	<magiaItemContent useCheckBox="false">
 	</magiaItemContent>	
 
-
-
 	<dataLink field="custo">
 		<event name="onChange">
 			pointCount();
