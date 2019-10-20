@@ -3120,7 +3120,7 @@ local function constructNew_frmTemplate()
             
                             if sheet.noUpdate==true then return end;
                             if myself~= nil and isNewVersion(myself.version, info.version) then
-                                Dialogs.choose("Há uma nova versão (" .. info.version .. ") do plugin de FURPS 4E. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                                Dialogs.choose("Há uma nova versão (" .. info.version .. ") do plugin de GURPS 4E. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                                     function(selected, selectedIndex, selectedText)
                                         if selected and selectedIndex == 1 then
                                             GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true');
