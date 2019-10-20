@@ -3136,7 +3136,8 @@ local function constructNew_frmTemplate()
                         function (downloaded, total)
                             -- esta função será chamada constantemente.
                             -- dividir "downloaded" por "total" lhe dará uma porcentagem do download.
-                        end);
+                        end,
+                        "checkForModification");
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
