@@ -13,10 +13,12 @@
 	]]>
 	</script>
 	<layout align="top" height="25">
-		<edit align="left" width="175" field="magia"/>
-		<edit align="left" width="75" field="duracao" vertTextAlign="center"/>
-		<edit align="left" width="50" field="dissipar" type="number" vertTextAlign="center"/>
-		<edit align="left" width="75" field="alvos" vertTextAlign="center"/>
+		<checkBox align="left" width="20" field="ativo"/>
+		<edit align="left" width="170" field="magia"/>
+		<edit align="left" width="65" field="duracao" vertTextAlign="center"/>
+		<edit align="left" width="30" field="nv" type="number" vertTextAlign="center"/>
+		<edit align="left" width="30" field="nc" type="number" vertTextAlign="center"/>
+		<edit align="left" width="60" field="alvos" vertTextAlign="center"/>
 
 		<button align="right" width="25" text="X" onClick="askForDelete();"/>
 	</layout>
