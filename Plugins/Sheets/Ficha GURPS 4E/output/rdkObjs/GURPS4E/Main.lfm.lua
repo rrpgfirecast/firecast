@@ -1818,11 +1818,6 @@ local function constructNew_frmTemplate()
     obj.label21:setName("label21");
     obj.label21:setFontColor("white");
 
-    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink4:setParent(obj.flowLayout12);
-    obj.dataLink4:setField("atributos_mod_velocidade");
-    obj.dataLink4:setName("dataLink4");
-
     obj.flowLayout13 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout13:setParent(obj.fraFrenteLayoutNew);
     obj.flowLayout13:setAutoHeight(true);
@@ -1917,14 +1912,14 @@ local function constructNew_frmTemplate()
     obj.rclSkillsNew:setTemplateForm("frmSkillItem");
     obj.rclSkillsNew:setLayout("vertical");
 
-    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink5:setParent(obj.flowLayout13);
-    obj.dataLink5:setFields({'totalPontos', 'atributos_st', 'atributos_ht', 'atributos_dx', 'atributos_vt', 'atributos_iq', 'atributos_per', 'atributos_pv', 'atributos_pf', 'atributos_velocidade', 'atributos_deslocamento','dodge_cost'});
-    obj.dataLink5:setName("dataLink5");
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4:setParent(obj.flowLayout13);
+    obj.dataLink4:setFields({'totalPontos', 'atributos_st', 'atributos_ht', 'atributos_dx', 'atributos_vt', 'atributos_iq', 'atributos_per', 'atributos_pv', 'atributos_pf', 'atributos_velocidade', 'atributos_deslocamento','dodge_cost'});
+    obj.dataLink4:setName("dataLink4");
 
     obj.tab2 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab2:setParent(obj.pgcPrincipal);
-    obj.tab2:setTitle("Catacterísticas");
+    obj.tab2:setTitle("Características");
     obj.tab2:setName("tab2");
 
     obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -2217,10 +2212,10 @@ local function constructNew_frmTemplate()
     obj.button3:setWidth(250);
     obj.button3:setName("button3");
 
-    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink6:setParent(obj.flowPart34);
-    obj.dataLink6:setFields({'vantagens_pontos', 'desvantagens_pontos'});
-    obj.dataLink6:setName("dataLink6");
+    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5:setParent(obj.flowPart34);
+    obj.dataLink5:setFields({'vantagens_pontos', 'desvantagens_pontos'});
+    obj.dataLink5:setName("dataLink5");
 
     obj.textEditor8 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor8:setParent(obj.flowPart34);
@@ -2779,10 +2774,10 @@ local function constructNew_frmTemplate()
     obj.label42:setName("label42");
     obj.label42:setFontColor("white");
 
-    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink7:setParent(obj.flowLayout19);
-    obj.dataLink7:setField("carga");
-    obj.dataLink7:setName("dataLink7");
+    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink6:setParent(obj.flowLayout19);
+    obj.dataLink6:setField("carga");
+    obj.dataLink6:setName("dataLink6");
 
     obj.flowPart42 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart42:setParent(obj.flowLayout19);
@@ -2865,10 +2860,10 @@ local function constructNew_frmTemplate()
     obj.label47:setName("label47");
     obj.label47:setFontColor("white");
 
-    obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink8:setParent(obj.flowLayout19);
-    obj.dataLink8:setField("atributos_mod_deslocamento");
-    obj.dataLink8:setName("dataLink8");
+    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7:setParent(obj.flowLayout19);
+    obj.dataLink7:setField("atributos_mod_deslocamento");
+    obj.dataLink7:setName("dataLink7");
 
     obj.flowPart43 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart43:setParent(obj.flowPart39);
@@ -2997,6 +2992,26 @@ local function constructNew_frmTemplate()
     obj.image5:setSRC("/GURPS4E/images/Capa.png");
     obj.image5:setName("image5");
 
+    obj.label49 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label49:setParent(obj.scrollBox5);
+    obj.label49:setLeft(850);
+    obj.label49:setTop(275);
+    obj.label49:setWidth(250);
+    obj.label49:setHeight(20);
+    obj.label49:setText("Anotações do Mestre");
+    obj.label49:setHorzTextAlign("center");
+    obj.label49:setName("label49");
+    obj.label49:setFontColor("white");
+
+    obj.textEditor12 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor12:setParent(obj.scrollBox5);
+    obj.textEditor12:setLeft(850);
+    obj.textEditor12:setTop(300);
+    obj.textEditor12:setWidth(250);
+    obj.textEditor12:setHeight(250);
+    obj.textEditor12:setField("anotacoesMestre");
+    obj.textEditor12:setName("textEditor12");
+
     obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.scrollBox5);
     obj.layout8:setLeft(150);
@@ -3014,51 +3029,51 @@ local function constructNew_frmTemplate()
     obj.rectangle6:setCornerType("round");
     obj.rectangle6:setName("rectangle6");
 
-    obj.label49 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label49:setParent(obj.layout8);
-    obj.label49:setLeft(0);
-    obj.label49:setTop(10);
-    obj.label49:setWidth(200);
-    obj.label49:setHeight(20);
-    obj.label49:setText("Programador: Vinny (Ambesek)");
-    obj.label49:setHorzTextAlign("center");
-    obj.label49:setName("label49");
-    obj.label49:setFontColor("white");
-
     obj.label50 = GUI.fromHandle(_obj_newObject("label"));
     obj.label50:setParent(obj.layout8);
     obj.label50:setLeft(0);
-    obj.label50:setTop(35);
+    obj.label50:setTop(10);
     obj.label50:setWidth(200);
     obj.label50:setHeight(20);
-    obj.label50:setText("Consultor: rexLiterate");
+    obj.label50:setText("Programador: Vinny (Ambesek)");
     obj.label50:setHorzTextAlign("center");
     obj.label50:setName("label50");
     obj.label50:setFontColor("white");
 
     obj.label51 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label51:setParent(obj.scrollBox5);
-    obj.label51:setLeft(555);
-    obj.label51:setTop(300);
+    obj.label51:setParent(obj.layout8);
+    obj.label51:setLeft(0);
+    obj.label51:setTop(35);
     obj.label51:setWidth(200);
     obj.label51:setHeight(20);
-    obj.label51:setText("Versão Atual: ");
+    obj.label51:setText("Consultor: rexLiterate");
     obj.label51:setHorzTextAlign("center");
-    obj.label51:setField("versionInstalled");
     obj.label51:setName("label51");
     obj.label51:setFontColor("white");
 
     obj.label52 = GUI.fromHandle(_obj_newObject("label"));
     obj.label52:setParent(obj.scrollBox5);
     obj.label52:setLeft(555);
-    obj.label52:setTop(325);
+    obj.label52:setTop(300);
     obj.label52:setWidth(200);
     obj.label52:setHeight(20);
-    obj.label52:setText("Sua Versão: ");
+    obj.label52:setText("Versão Atual: ");
     obj.label52:setHorzTextAlign("center");
-    obj.label52:setField("versionDownloaded");
+    obj.label52:setField("versionInstalled");
     obj.label52:setName("label52");
     obj.label52:setFontColor("white");
+
+    obj.label53 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label53:setParent(obj.scrollBox5);
+    obj.label53:setLeft(555);
+    obj.label53:setTop(325);
+    obj.label53:setWidth(200);
+    obj.label53:setHeight(20);
+    obj.label53:setText("Sua Versão: ");
+    obj.label53:setHorzTextAlign("center");
+    obj.label53:setField("versionDownloaded");
+    obj.label53:setName("label53");
+    obj.label53:setFontColor("white");
 
     obj.button5 = GUI.fromHandle(_obj_newObject("button"));
     obj.button5:setParent(obj.scrollBox5);
@@ -3076,15 +3091,15 @@ local function constructNew_frmTemplate()
     obj.button6:setText("Atualizar");
     obj.button6:setName("button6");
 
-    obj.label53 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label53:setParent(obj.scrollBox5);
-    obj.label53:setLeft(555);
-    obj.label53:setTop(400);
-    obj.label53:setWidth(200);
-    obj.label53:setHeight(20);
-    obj.label53:setText("Conheça as Mesas:");
-    obj.label53:setName("label53");
-    obj.label53:setFontColor("white");
+    obj.label54 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label54:setParent(obj.scrollBox5);
+    obj.label54:setLeft(555);
+    obj.label54:setTop(400);
+    obj.label54:setWidth(200);
+    obj.label54:setHeight(20);
+    obj.label54:setText("Conheça as Mesas:");
+    obj.label54:setName("label54");
+    obj.label54:setFontColor("white");
 
     obj.button7 = GUI.fromHandle(_obj_newObject("button"));
     obj.button7:setParent(obj.scrollBox5);
@@ -3160,29 +3175,22 @@ local function constructNew_frmTemplate()
                             end;
         end, obj);
 
-    obj._e_event2 = obj.dataLink4:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if sheet == nil then return end;
-            							local vel = math.floor(tonumber(sheet.atributos_mod_velocidade) or 0);
-            							sheet.dodge = vel + 3;
-        end, obj);
-
-    obj._e_event3 = obj.button1:addEventListener("onClick",
+    obj._e_event2 = obj.button1:addEventListener("onClick",
         function (_)
             self.rclSkillsNew:append();
         end, obj);
 
-    obj._e_event4 = obj.rclSkillsNew:addEventListener("onCompare",
+    obj._e_event3 = obj.rclSkillsNew:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
-    obj._e_event5 = obj.dataLink5:addEventListener("onChange",
+    obj._e_event4 = obj.dataLink4:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             pointCount();
         end, obj);
 
-    obj._e_event6 = obj.button2:addEventListener("onClick",
+    obj._e_event5 = obj.button2:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popDetails");
             					
@@ -3203,7 +3211,7 @@ local function constructNew_frmTemplate()
             							end;
         end, obj);
 
-    obj._e_event7 = obj.button3:addEventListener("onClick",
+    obj._e_event6 = obj.button3:addEventListener("onClick",
         function (_)
             local pop = self:findControlByName("popDetails");
             					
@@ -3224,12 +3232,12 @@ local function constructNew_frmTemplate()
             							end;
         end, obj);
 
-    obj._e_event8 = obj.dataLink6:addEventListener("onChange",
+    obj._e_event7 = obj.dataLink5:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             pointCount();
         end, obj);
 
-    obj._e_event9 = obj.fraAliadosOrganizacoes:addEventListener("onBeforeLayoutCalc",
+    obj._e_event8 = obj.fraAliadosOrganizacoes:addEventListener("onBeforeLayoutCalc",
         function (_)
             if self.fraAliadosOrganizacoes:getWidth() <= 500 then
             									self.prtAliados:setHeight(200);
@@ -3240,42 +3248,42 @@ local function constructNew_frmTemplate()
             								end;
         end, obj);
 
-    obj._e_event10 = obj.labEquipAtackTit:addEventListener("onResize",
+    obj._e_event9 = obj.labEquipAtackTit:addEventListener("onResize",
         function (_)
             recalcularTamanhoEquipsEAtaques();
         end, obj);
 
-    obj._e_event11 = obj.rclEquips:addEventListener("onResize",
+    obj._e_event10 = obj.rclEquips:addEventListener("onResize",
         function (_)
             recalcularTamanhoEquipsEAtaques();
         end, obj);
 
-    obj._e_event12 = obj.rclEquips:addEventListener("onCompare",
+    obj._e_event11 = obj.rclEquips:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
-    obj._e_event13 = obj.btnEquipAtackNew:addEventListener("onClick",
+    obj._e_event12 = obj.btnEquipAtackNew:addEventListener("onClick",
         function (_)
             self.rclEquips:append();
         end, obj);
 
-    obj._e_event14 = obj.labEquipDefense:addEventListener("onResize",
+    obj._e_event13 = obj.labEquipDefense:addEventListener("onResize",
         function (_)
             recalcularTamanhoEquipsDefesa();
         end, obj);
 
-    obj._e_event15 = obj.rclEquipsDefense:addEventListener("onResize",
+    obj._e_event14 = obj.rclEquipsDefense:addEventListener("onResize",
         function (_)
             recalcularTamanhoEquipsDefesa();
         end, obj);
 
-    obj._e_event16 = obj.btnEquipDefenseNew:addEventListener("onClick",
+    obj._e_event15 = obj.btnEquipDefenseNew:addEventListener("onClick",
         function (_)
             self.rclEquipsDefense:append();
         end, obj);
 
-    obj._e_event17 = obj.dataLink7:addEventListener("onChange",
+    obj._e_event16 = obj.dataLink6:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -3288,7 +3296,7 @@ local function constructNew_frmTemplate()
             									sheet.bc_4 = "Muito Pesada (BCx10): " .. (carga*10);
         end, obj);
 
-    obj._e_event18 = obj.dataLink8:addEventListener("onChange",
+    obj._e_event17 = obj.dataLink7:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet==nil then return end;
             
@@ -3301,38 +3309,37 @@ local function constructNew_frmTemplate()
             									sheet.db_4 = "DBx0,2: " .. math.floor(velocidade*0.2);
         end, obj);
 
-    obj._e_event19 = obj.button4:addEventListener("onClick",
+    obj._e_event18 = obj.button4:addEventListener("onClick",
         function (_)
             self.rclEquipments:append();
         end, obj);
 
-    obj._e_event20 = obj.rclEquipments:addEventListener("onCompare",
+    obj._e_event19 = obj.rclEquipments:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
         end, obj);
 
-    obj._e_event21 = obj.button5:addEventListener("onClick",
+    obj._e_event20 = obj.button5:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/README.md')
         end, obj);
 
-    obj._e_event22 = obj.button6:addEventListener("onClick",
+    obj._e_event21 = obj.button6:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true')
         end, obj);
 
-    obj._e_event23 = obj.button7:addEventListener("onClick",
+    obj._e_event22 = obj.button7:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event24 = obj.button8:addEventListener("onClick",
+    obj._e_event23 = obj.button8:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=131156');
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event24);
         __o_rrpgObjs.removeEventListenerById(self._e_event23);
         __o_rrpgObjs.removeEventListenerById(self._e_event22);
         __o_rrpgObjs.removeEventListenerById(self._e_event21);
@@ -3482,14 +3489,16 @@ local function constructNew_frmTemplate()
         if self.flowPart6 ~= nil then self.flowPart6:destroy(); self.flowPart6 = nil; end;
         if self.textEditor6 ~= nil then self.textEditor6:destroy(); self.textEditor6 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
-        if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
         if self.label30 ~= nil then self.label30:destroy(); self.label30 = nil; end;
+        if self.dataLink6 ~= nil then self.dataLink6:destroy(); self.dataLink6 = nil; end;
         if self.label19 ~= nil then self.label19:destroy(); self.label19 = nil; end;
         if self.flowPart39 ~= nil then self.flowPart39:destroy(); self.flowPart39 = nil; end;
         if self.flowPart26 ~= nil then self.flowPart26:destroy(); self.flowPart26 = nil; end;
+        if self.textEditor12 ~= nil then self.textEditor12:destroy(); self.textEditor12 = nil; end;
         if self.label51 ~= nil then self.label51:destroy(); self.label51 = nil; end;
         if self.flowPart23 ~= nil then self.flowPart23:destroy(); self.flowPart23 = nil; end;
         if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
+        if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
         if self.labUpperGridCampo10 ~= nil then self.labUpperGridCampo10:destroy(); self.labUpperGridCampo10 = nil; end;
         if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
         if self.textEditor1 ~= nil then self.textEditor1:destroy(); self.textEditor1 = nil; end;
@@ -3549,8 +3558,8 @@ local function constructNew_frmTemplate()
         if self.flowLayout15 ~= nil then self.flowLayout15:destroy(); self.flowLayout15 = nil; end;
         if self.flowPart18 ~= nil then self.flowPart18:destroy(); self.flowPart18 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
-        if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
+        if self.dataLink5 ~= nil then self.dataLink5:destroy(); self.dataLink5 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.label32 ~= nil then self.label32:destroy(); self.label32 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
@@ -3565,7 +3574,6 @@ local function constructNew_frmTemplate()
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
         if self.UpperGridCampo8 ~= nil then self.UpperGridCampo8:destroy(); self.UpperGridCampo8 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
-        if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
         if self.labUpperGridCampo8 ~= nil then self.labUpperGridCampo8:destroy(); self.labUpperGridCampo8 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.fraFrenteLayoutNew ~= nil then self.fraFrenteLayoutNew:destroy(); self.fraFrenteLayoutNew = nil; end;

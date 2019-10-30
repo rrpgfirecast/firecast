@@ -155,14 +155,6 @@
 					</flowPart>
 
 					<label align="bottom" text="MOBILIDADE" height="20" fontSize="11" wordWrap="true" horzTextAlign="center" margins="{bottom=10}" textTrimming="none"/>
-
-					<dataLink field="atributos_mod_velocidade">
-						<event name="onChange">
-							if sheet == nil then return end;
-							local vel = math.floor(tonumber(sheet.atributos_mod_velocidade) or 0);
-							sheet.dodge = vel + 3;
-						</event>
-					</dataLink>
 				</flowLayout>
 			</flowLayout>
 

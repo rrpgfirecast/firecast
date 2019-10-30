@@ -6,6 +6,9 @@
 			<image left="550" top="0" width="250" height="250" style="autoFit" src="images/RPGmeister.jpg"/>
 			<image left="850" top="0" width="250" height="250" style="autoFit" src="images/Capa.png"/>
 
+			<label left="850" top="275" width="250" height="20" text="Anotações do Mestre" horzTextAlign="center"/>
+			<textEditor left="850" top="300" width="250" height="250" field="anotacoesMestre"/>
+
 			<layout left="150" top="250" width="200" height="160">
 				<rectangle align="client" color="black" xradius="5" yradius="15" cornerType="round"/>
 				<label left="0" top="10" width="200" height="20" text="Programador: Vinny (Ambesek)" horzTextAlign="center"/>

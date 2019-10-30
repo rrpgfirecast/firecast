@@ -125,7 +125,7 @@
             <tab title="Habilidades">
                 <import file="General.xml"/>
             </tab>
-            <tab title="Catacterísticas">
+            <tab title="Características">
                 <import file="Characteristics.xml"/>
             </tab>
             <tab title="Equipamento">
