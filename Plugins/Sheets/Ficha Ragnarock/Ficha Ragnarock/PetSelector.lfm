@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmPetSeletor" width="200" height="30">
+	<button top="0" width="30" height="30" text="X">
+		<event name="onClick">
+			Dialogs.confirmOkCancel("Tem certeza que quer apagar esse Pet?",
+				function (confirmado)
+					if confirmado then
+						NDB.deleteNode(sheet);
+					end;
+			end);
+		</event>
+	</button>
+	<rectangle left="30" width="170" height="30" color="808080" strokeSize="1" hitTest="false">
+	    <label left="5" width="160" height="30" field="pet_nome"/>
+   	</rectangle>
+</form>

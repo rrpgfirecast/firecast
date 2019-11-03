@@ -58,7 +58,7 @@ local function constructNew_frmEquipamentos()
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj.layout2);
-    obj.label1:setText("Cabeça Up");
+    obj.label1:setText("Cabeça (Alto)");
     obj.label1:setAlign("top");
     obj.label1:setHeight(25);
     obj.label1:setHorzTextAlign("center");
@@ -188,7 +188,7 @@ local function constructNew_frmEquipamentos()
 
     obj.label5 = GUI.fromHandle(_obj_newObject("label"));
     obj.label5:setParent(obj.layout9);
-    obj.label5:setText("Cabeça Mid");
+    obj.label5:setText("Cabeça (Meio)");
     obj.label5:setAlign("top");
     obj.label5:setHeight(25);
     obj.label5:setHorzTextAlign("center");
@@ -318,7 +318,7 @@ local function constructNew_frmEquipamentos()
 
     obj.label9 = GUI.fromHandle(_obj_newObject("label"));
     obj.label9:setParent(obj.layout16);
-    obj.label9:setText("Cabeça Down");
+    obj.label9:setText("Cabeça (Baixo)");
     obj.label9:setAlign("top");
     obj.label9:setHeight(25);
     obj.label9:setHorzTextAlign("center");
@@ -854,7 +854,7 @@ local function constructNew_frmEquipamentos()
 
     obj.label25 = GUI.fromHandle(_obj_newObject("label"));
     obj.label25:setParent(obj.layout44);
-    obj.label25:setText("Garmet");
+    obj.label25:setText("Capa");
     obj.label25:setAlign("top");
     obj.label25:setHeight(25);
     obj.label25:setHorzTextAlign("center");

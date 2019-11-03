@@ -993,7 +993,7 @@ local function constructNew_frmGeneral()
 
     obj.button11 = GUI.fromHandle(_obj_newObject("button"));
     obj.button11:setParent(obj.layout22);
-    obj.button11:setText("Pulo");
+    obj.button11:setText("Escalada");
     obj.button11:setAlign("left");
     obj.button11:setWidth(100);
     obj.button11:setHorzTextAlign("center");
@@ -1001,7 +1001,7 @@ local function constructNew_frmGeneral()
 
     obj.edit29 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit29:setParent(obj.layout22);
-    obj.edit29:setField("atr_PULBase");
+    obj.edit29:setField("atr_ESCBase");
     obj.edit29:setLeft(105);
     obj.edit29:setWidth(30);
     obj.edit29:setHeight(25);
@@ -1018,7 +1018,7 @@ local function constructNew_frmGeneral()
 
     obj.edit30 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit30:setParent(obj.layout22);
-    obj.edit30:setField("atr_PULExtra");
+    obj.edit30:setField("atr_ESCExtra");
     obj.edit30:setLeft(145);
     obj.edit30:setWidth(30);
     obj.edit30:setHeight(25);
@@ -1045,7 +1045,7 @@ local function constructNew_frmGeneral()
 
     obj.label41 = GUI.fromHandle(_obj_newObject("label"));
     obj.label41:setParent(obj.layout22);
-    obj.label41:setField("atr_PULTotal");
+    obj.label41:setField("atr_ESCTotal");
     obj.label41:setLeft(185);
     obj.label41:setWidth(30);
     obj.label41:setHeight(25);
@@ -1054,7 +1054,7 @@ local function constructNew_frmGeneral()
 
     obj.dataLink11 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink11:setParent(obj.layout21);
-    obj.dataLink11:setFields({'atr_PULBase','atr_PULExtra'});
+    obj.dataLink11:setFields({'atr_ESCBase','atr_ESCExtra'});
     obj.dataLink11:setName("dataLink11");
 
     obj.layout23 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1066,7 +1066,7 @@ local function constructNew_frmGeneral()
 
     obj.button12 = GUI.fromHandle(_obj_newObject("button"));
     obj.button12:setParent(obj.layout23);
-    obj.button12:setText("Escalada");
+    obj.button12:setText("Mira");
     obj.button12:setAlign("left");
     obj.button12:setWidth(100);
     obj.button12:setHorzTextAlign("center");
@@ -1074,7 +1074,7 @@ local function constructNew_frmGeneral()
 
     obj.edit31 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit31:setParent(obj.layout23);
-    obj.edit31:setField("atr_ESCBase");
+    obj.edit31:setField("atr_MIRBase");
     obj.edit31:setLeft(105);
     obj.edit31:setWidth(30);
     obj.edit31:setHeight(25);
@@ -1091,7 +1091,7 @@ local function constructNew_frmGeneral()
 
     obj.edit32 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit32:setParent(obj.layout23);
-    obj.edit32:setField("atr_ESCExtra");
+    obj.edit32:setField("atr_MIRExtra");
     obj.edit32:setLeft(145);
     obj.edit32:setWidth(30);
     obj.edit32:setHeight(25);
@@ -1118,7 +1118,7 @@ local function constructNew_frmGeneral()
 
     obj.label44 = GUI.fromHandle(_obj_newObject("label"));
     obj.label44:setParent(obj.layout23);
-    obj.label44:setField("atr_ESCTotal");
+    obj.label44:setField("atr_MIRTotal");
     obj.label44:setLeft(185);
     obj.label44:setWidth(30);
     obj.label44:setHeight(25);
@@ -1127,7 +1127,7 @@ local function constructNew_frmGeneral()
 
     obj.dataLink12 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink12:setParent(obj.layout21);
-    obj.dataLink12:setFields({'atr_ESCBase','atr_ESCExtra'});
+    obj.dataLink12:setFields({'atr_MIRBase','atr_MIRExtra'});
     obj.dataLink12:setName("dataLink12");
 
     obj.layout24 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1139,7 +1139,7 @@ local function constructNew_frmGeneral()
 
     obj.button13 = GUI.fromHandle(_obj_newObject("button"));
     obj.button13:setParent(obj.layout24);
-    obj.button13:setText("Mira");
+    obj.button13:setText("Carisma");
     obj.button13:setAlign("left");
     obj.button13:setWidth(100);
     obj.button13:setHorzTextAlign("center");
@@ -1147,7 +1147,7 @@ local function constructNew_frmGeneral()
 
     obj.edit33 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit33:setParent(obj.layout24);
-    obj.edit33:setField("atr_MIRBase");
+    obj.edit33:setField("atr_CARBase");
     obj.edit33:setLeft(105);
     obj.edit33:setWidth(30);
     obj.edit33:setHeight(25);
@@ -1164,7 +1164,7 @@ local function constructNew_frmGeneral()
 
     obj.edit34 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit34:setParent(obj.layout24);
-    obj.edit34:setField("atr_MIRExtra");
+    obj.edit34:setField("atr_CARExtra");
     obj.edit34:setLeft(145);
     obj.edit34:setWidth(30);
     obj.edit34:setHeight(25);
@@ -1191,7 +1191,7 @@ local function constructNew_frmGeneral()
 
     obj.label47 = GUI.fromHandle(_obj_newObject("label"));
     obj.label47:setParent(obj.layout24);
-    obj.label47:setField("atr_MIRTotal");
+    obj.label47:setField("atr_CARTotal");
     obj.label47:setLeft(185);
     obj.label47:setWidth(30);
     obj.label47:setHeight(25);
@@ -1200,7 +1200,7 @@ local function constructNew_frmGeneral()
 
     obj.dataLink13 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink13:setParent(obj.layout21);
-    obj.dataLink13:setFields({'atr_MIRBase','atr_MIRExtra'});
+    obj.dataLink13:setFields({'atr_CARBase','atr_CARExtra'});
     obj.dataLink13:setName("dataLink13");
 
     obj.layout25 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1212,7 +1212,7 @@ local function constructNew_frmGeneral()
 
     obj.button14 = GUI.fromHandle(_obj_newObject("button"));
     obj.button14:setParent(obj.layout25);
-    obj.button14:setText("Carisma");
+    obj.button14:setText("Labia");
     obj.button14:setAlign("left");
     obj.button14:setWidth(100);
     obj.button14:setHorzTextAlign("center");
@@ -1220,7 +1220,7 @@ local function constructNew_frmGeneral()
 
     obj.edit35 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit35:setParent(obj.layout25);
-    obj.edit35:setField("atr_CARBase");
+    obj.edit35:setField("atr_LABBase");
     obj.edit35:setLeft(105);
     obj.edit35:setWidth(30);
     obj.edit35:setHeight(25);
@@ -1237,7 +1237,7 @@ local function constructNew_frmGeneral()
 
     obj.edit36 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit36:setParent(obj.layout25);
-    obj.edit36:setField("atr_CARExtra");
+    obj.edit36:setField("atr_LABExtra");
     obj.edit36:setLeft(145);
     obj.edit36:setWidth(30);
     obj.edit36:setHeight(25);
@@ -1264,7 +1264,7 @@ local function constructNew_frmGeneral()
 
     obj.label50 = GUI.fromHandle(_obj_newObject("label"));
     obj.label50:setParent(obj.layout25);
-    obj.label50:setField("atr_CARTotal");
+    obj.label50:setField("atr_LABTotal");
     obj.label50:setLeft(185);
     obj.label50:setWidth(30);
     obj.label50:setHeight(25);
@@ -1273,7 +1273,7 @@ local function constructNew_frmGeneral()
 
     obj.dataLink14 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink14:setParent(obj.layout21);
-    obj.dataLink14:setFields({'atr_CARBase','atr_CARExtra'});
+    obj.dataLink14:setFields({'atr_LABBase','atr_LABExtra'});
     obj.dataLink14:setName("dataLink14");
 
     obj.layout26 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1285,7 +1285,7 @@ local function constructNew_frmGeneral()
 
     obj.button15 = GUI.fromHandle(_obj_newObject("button"));
     obj.button15:setParent(obj.layout26);
-    obj.button15:setText("Labia");
+    obj.button15:setText("Decifrar");
     obj.button15:setAlign("left");
     obj.button15:setWidth(100);
     obj.button15:setHorzTextAlign("center");
@@ -1293,7 +1293,7 @@ local function constructNew_frmGeneral()
 
     obj.edit37 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit37:setParent(obj.layout26);
-    obj.edit37:setField("atr_LABBase");
+    obj.edit37:setField("atr_DECBase");
     obj.edit37:setLeft(105);
     obj.edit37:setWidth(30);
     obj.edit37:setHeight(25);
@@ -1310,7 +1310,7 @@ local function constructNew_frmGeneral()
 
     obj.edit38 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit38:setParent(obj.layout26);
-    obj.edit38:setField("atr_LABExtra");
+    obj.edit38:setField("atr_DECExtra");
     obj.edit38:setLeft(145);
     obj.edit38:setWidth(30);
     obj.edit38:setHeight(25);
@@ -1337,7 +1337,7 @@ local function constructNew_frmGeneral()
 
     obj.label53 = GUI.fromHandle(_obj_newObject("label"));
     obj.label53:setParent(obj.layout26);
-    obj.label53:setField("atr_LABTotal");
+    obj.label53:setField("atr_DECTotal");
     obj.label53:setLeft(185);
     obj.label53:setWidth(30);
     obj.label53:setHeight(25);
@@ -1346,7 +1346,7 @@ local function constructNew_frmGeneral()
 
     obj.dataLink15 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink15:setParent(obj.layout21);
-    obj.dataLink15:setFields({'atr_LABBase','atr_LABExtra'});
+    obj.dataLink15:setFields({'atr_DECBase','atr_DECExtra'});
     obj.dataLink15:setName("dataLink15");
 
     obj.layout27 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1358,7 +1358,7 @@ local function constructNew_frmGeneral()
 
     obj.button16 = GUI.fromHandle(_obj_newObject("button"));
     obj.button16:setParent(obj.layout27);
-    obj.button16:setText("Decifrar");
+    obj.button16:setText("Furtividade");
     obj.button16:setAlign("left");
     obj.button16:setWidth(100);
     obj.button16:setHorzTextAlign("center");
@@ -1366,7 +1366,7 @@ local function constructNew_frmGeneral()
 
     obj.edit39 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit39:setParent(obj.layout27);
-    obj.edit39:setField("atr_DECBase");
+    obj.edit39:setField("atr_FURBase");
     obj.edit39:setLeft(105);
     obj.edit39:setWidth(30);
     obj.edit39:setHeight(25);
@@ -1383,7 +1383,7 @@ local function constructNew_frmGeneral()
 
     obj.edit40 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit40:setParent(obj.layout27);
-    obj.edit40:setField("atr_DECExtra");
+    obj.edit40:setField("atr_FURExtra");
     obj.edit40:setLeft(145);
     obj.edit40:setWidth(30);
     obj.edit40:setHeight(25);
@@ -1410,7 +1410,7 @@ local function constructNew_frmGeneral()
 
     obj.label56 = GUI.fromHandle(_obj_newObject("label"));
     obj.label56:setParent(obj.layout27);
-    obj.label56:setField("atr_DECTotal");
+    obj.label56:setField("atr_FURTotal");
     obj.label56:setLeft(185);
     obj.label56:setWidth(30);
     obj.label56:setHeight(25);
@@ -1419,7 +1419,7 @@ local function constructNew_frmGeneral()
 
     obj.dataLink16 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink16:setParent(obj.layout21);
-    obj.dataLink16:setFields({'atr_DECBase','atr_DECExtra'});
+    obj.dataLink16:setFields({'atr_FURBase','atr_FURExtra'});
     obj.dataLink16:setName("dataLink16");
 
     obj.layout28 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1431,7 +1431,7 @@ local function constructNew_frmGeneral()
 
     obj.button17 = GUI.fromHandle(_obj_newObject("button"));
     obj.button17:setParent(obj.layout28);
-    obj.button17:setText("Furtividade");
+    obj.button17:setText("Percepção");
     obj.button17:setAlign("left");
     obj.button17:setWidth(100);
     obj.button17:setHorzTextAlign("center");
@@ -1439,7 +1439,7 @@ local function constructNew_frmGeneral()
 
     obj.edit41 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit41:setParent(obj.layout28);
-    obj.edit41:setField("atr_FURBase");
+    obj.edit41:setField("atr_PERBase");
     obj.edit41:setLeft(105);
     obj.edit41:setWidth(30);
     obj.edit41:setHeight(25);
@@ -1456,7 +1456,7 @@ local function constructNew_frmGeneral()
 
     obj.edit42 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit42:setParent(obj.layout28);
-    obj.edit42:setField("atr_FURExtra");
+    obj.edit42:setField("atr_PERExtra");
     obj.edit42:setLeft(145);
     obj.edit42:setWidth(30);
     obj.edit42:setHeight(25);
@@ -1483,7 +1483,7 @@ local function constructNew_frmGeneral()
 
     obj.label59 = GUI.fromHandle(_obj_newObject("label"));
     obj.label59:setParent(obj.layout28);
-    obj.label59:setField("atr_FURTotal");
+    obj.label59:setField("atr_PERTotal");
     obj.label59:setLeft(185);
     obj.label59:setWidth(30);
     obj.label59:setHeight(25);
@@ -1492,7 +1492,7 @@ local function constructNew_frmGeneral()
 
     obj.dataLink17 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink17:setParent(obj.layout21);
-    obj.dataLink17:setFields({'atr_FURBase','atr_FURExtra'});
+    obj.dataLink17:setFields({'atr_PERBase','atr_PERExtra'});
     obj.dataLink17:setName("dataLink17");
 
     obj.layout29 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1504,7 +1504,7 @@ local function constructNew_frmGeneral()
 
     obj.button18 = GUI.fromHandle(_obj_newObject("button"));
     obj.button18:setParent(obj.layout29);
-    obj.button18:setText("Percepção");
+    obj.button18:setText("Conhecimento");
     obj.button18:setAlign("left");
     obj.button18:setWidth(100);
     obj.button18:setHorzTextAlign("center");
@@ -1512,7 +1512,7 @@ local function constructNew_frmGeneral()
 
     obj.edit43 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit43:setParent(obj.layout29);
-    obj.edit43:setField("atr_PERBase");
+    obj.edit43:setField("atr_CNHBase");
     obj.edit43:setLeft(105);
     obj.edit43:setWidth(30);
     obj.edit43:setHeight(25);
@@ -1529,7 +1529,7 @@ local function constructNew_frmGeneral()
 
     obj.edit44 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit44:setParent(obj.layout29);
-    obj.edit44:setField("atr_PERExtra");
+    obj.edit44:setField("atr_CNHExtra");
     obj.edit44:setLeft(145);
     obj.edit44:setWidth(30);
     obj.edit44:setHeight(25);
@@ -1556,7 +1556,7 @@ local function constructNew_frmGeneral()
 
     obj.label62 = GUI.fromHandle(_obj_newObject("label"));
     obj.label62:setParent(obj.layout29);
-    obj.label62:setField("atr_PERTotal");
+    obj.label62:setField("atr_CNHTotal");
     obj.label62:setLeft(185);
     obj.label62:setWidth(30);
     obj.label62:setHeight(25);
@@ -1565,7 +1565,7 @@ local function constructNew_frmGeneral()
 
     obj.dataLink18 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink18:setParent(obj.layout21);
-    obj.dataLink18:setFields({'atr_PERBase','atr_PERExtra'});
+    obj.dataLink18:setFields({'atr_CNHBase','atr_CNHExtra'});
     obj.dataLink18:setName("dataLink18");
 
     obj.layout30 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1577,7 +1577,7 @@ local function constructNew_frmGeneral()
 
     obj.button19 = GUI.fromHandle(_obj_newObject("button"));
     obj.button19:setParent(obj.layout30);
-    obj.button19:setText("Conhecimento");
+    obj.button19:setText("Ambidestria");
     obj.button19:setAlign("left");
     obj.button19:setWidth(100);
     obj.button19:setHorzTextAlign("center");
@@ -1585,7 +1585,7 @@ local function constructNew_frmGeneral()
 
     obj.edit45 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit45:setParent(obj.layout30);
-    obj.edit45:setField("atr_CNHBase");
+    obj.edit45:setField("atr_AMBBase");
     obj.edit45:setLeft(105);
     obj.edit45:setWidth(30);
     obj.edit45:setHeight(25);
@@ -1602,7 +1602,7 @@ local function constructNew_frmGeneral()
 
     obj.edit46 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit46:setParent(obj.layout30);
-    obj.edit46:setField("atr_CNHExtra");
+    obj.edit46:setField("atr_AMBExtra");
     obj.edit46:setLeft(145);
     obj.edit46:setWidth(30);
     obj.edit46:setHeight(25);
@@ -1629,7 +1629,7 @@ local function constructNew_frmGeneral()
 
     obj.label65 = GUI.fromHandle(_obj_newObject("label"));
     obj.label65:setParent(obj.layout30);
-    obj.label65:setField("atr_CNHTotal");
+    obj.label65:setField("atr_AMBTotal");
     obj.label65:setLeft(185);
     obj.label65:setWidth(30);
     obj.label65:setHeight(25);
@@ -1638,7 +1638,7 @@ local function constructNew_frmGeneral()
 
     obj.dataLink19 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink19:setParent(obj.layout21);
-    obj.dataLink19:setFields({'atr_CNHBase','atr_CNHExtra'});
+    obj.dataLink19:setFields({'atr_AMBBase','atr_AMBExtra'});
     obj.dataLink19:setName("dataLink19");
 
     obj.layout31 = GUI.fromHandle(_obj_newObject("layout"));
@@ -1648,71 +1648,17 @@ local function constructNew_frmGeneral()
     obj.layout31:setMargins({top=5});
     obj.layout31:setName("layout31");
 
-    obj.button20 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button20:setParent(obj.layout31);
-    obj.button20:setText("Ambidestria");
-    obj.button20:setAlign("left");
-    obj.button20:setWidth(100);
-    obj.button20:setHorzTextAlign("center");
-    obj.button20:setName("button20");
-
-    obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit47:setParent(obj.layout31);
-    obj.edit47:setField("atr_AMBBase");
-    obj.edit47:setLeft(105);
-    obj.edit47:setWidth(30);
-    obj.edit47:setHeight(25);
-    obj.edit47:setType("number");
-    obj.edit47:setName("edit47");
-
-    obj.label66 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label66:setParent(obj.layout31);
-    obj.label66:setText("+");
-    obj.label66:setLeft(135);
-    obj.label66:setWidth(10);
-    obj.label66:setHorzTextAlign("center");
-    obj.label66:setName("label66");
-
-    obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit48:setParent(obj.layout31);
-    obj.edit48:setField("atr_AMBExtra");
-    obj.edit48:setLeft(145);
-    obj.edit48:setWidth(30);
-    obj.edit48:setHeight(25);
-    obj.edit48:setType("number");
-    obj.edit48:setName("edit48");
-
-    obj.label67 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label67:setParent(obj.layout31);
-    obj.label67:setText("=");
-    obj.label67:setLeft(175);
-    obj.label67:setWidth(10);
-    obj.label67:setHorzTextAlign("center");
-    obj.label67:setName("label67");
-
-    obj.rectangle22 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle22:setParent(obj.layout31);
-    obj.rectangle22:setLeft(185);
-    obj.rectangle22:setWidth(30);
-    obj.rectangle22:setHeight(25);
-    obj.rectangle22:setColor("black");
-    obj.rectangle22:setStrokeColor("white");
-    obj.rectangle22:setStrokeSize(1);
-    obj.rectangle22:setName("rectangle22");
-
-    obj.label68 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label68:setParent(obj.layout31);
-    obj.label68:setField("atr_AMBTotal");
-    obj.label68:setLeft(185);
-    obj.label68:setWidth(30);
-    obj.label68:setHeight(25);
-    obj.label68:setHorzTextAlign("center");
-    obj.label68:setName("label68");
-
-    obj.dataLink20 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink20:setParent(obj.layout21);
-    obj.dataLink20:setFields({'atr_AMBBase','atr_AMBExtra'});
-    obj.dataLink20:setName("dataLink20");
+    obj.checkBox1 = GUI.fromHandle(_obj_newObject("checkBox"));
+    obj.checkBox1:setParent(obj.layout31);
+    obj.checkBox1:setLeft(0);
+    obj.checkBox1:setTop(0);
+    obj.checkBox1:setWidth(190);
+    obj.checkBox1:setHeight(25);
+    obj.checkBox1:setField("doubleRoll");
+    obj.checkBox1:setText("Usar dois atributos na rolagem.");
+    obj.checkBox1:setFontSize(12);
+    obj.checkBox1:setHint("Clique no primeiro e depois no segundo. ");
+    obj.checkBox1:setName("checkBox1");
 
     obj.layout32 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout32:setParent(obj.rectangle2);
@@ -1735,20 +1681,20 @@ local function constructNew_frmGeneral()
     obj.layout34:setMargins({right=5});
     obj.layout34:setName("layout34");
 
-    obj.label69 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label69:setParent(obj.layout34);
-    obj.label69:setText("HP");
-    obj.label69:setWidth(20);
-    obj.label69:setHorzTextAlign("leading");
-    obj.label69:setName("label69");
+    obj.label66 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label66:setParent(obj.layout34);
+    obj.label66:setText("HP");
+    obj.label66:setWidth(20);
+    obj.label66:setHorzTextAlign("leading");
+    obj.label66:setName("label66");
 
-    obj.edit49 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit49:setParent(obj.layout34);
-    obj.edit49:setLeft(25);
-    obj.edit49:setField("hp");
-    obj.edit49:setWidth(50);
-    obj.edit49:setHeight(25);
-    obj.edit49:setName("edit49");
+    obj.edit47 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit47:setParent(obj.layout34);
+    obj.edit47:setLeft(25);
+    obj.edit47:setField("hp");
+    obj.edit47:setWidth(50);
+    obj.edit47:setHeight(25);
+    obj.edit47:setName("edit47");
 
     obj.layout35 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout35:setParent(obj.layout33);
@@ -1757,28 +1703,28 @@ local function constructNew_frmGeneral()
     obj.layout35:setMargins({right=5});
     obj.layout35:setName("layout35");
 
-    obj.label70 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label70:setParent(obj.layout35);
-    obj.label70:setText("SP");
-    obj.label70:setWidth(20);
-    obj.label70:setHorzTextAlign("leading");
-    obj.label70:setName("label70");
+    obj.label67 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label67:setParent(obj.layout35);
+    obj.label67:setText("SP");
+    obj.label67:setWidth(20);
+    obj.label67:setHorzTextAlign("leading");
+    obj.label67:setName("label67");
 
-    obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit50:setParent(obj.layout35);
-    obj.edit50:setLeft(25);
-    obj.edit50:setField("sp");
-    obj.edit50:setWidth(50);
-    obj.edit50:setHeight(25);
-    obj.edit50:setName("edit50");
+    obj.edit48 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit48:setParent(obj.layout35);
+    obj.edit48:setLeft(25);
+    obj.edit48:setField("sp");
+    obj.edit48:setWidth(50);
+    obj.edit48:setHeight(25);
+    obj.edit48:setName("edit48");
 
-    obj.label71 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label71:setParent(obj.layout32);
-    obj.label71:setText("BÔNUS");
-    obj.label71:setAlign("top");
-    obj.label71:setHeight(25);
-    obj.label71:setHorzTextAlign("center");
-    obj.label71:setName("label71");
+    obj.label68 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label68:setParent(obj.layout32);
+    obj.label68:setText("BÔNUS");
+    obj.label68:setAlign("top");
+    obj.label68:setHeight(25);
+    obj.label68:setHorzTextAlign("center");
+    obj.label68:setName("label68");
 
     obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout36:setParent(obj.layout32);
@@ -1794,21 +1740,21 @@ local function constructNew_frmGeneral()
     obj.layout37:setMargins({right=5});
     obj.layout37:setName("layout37");
 
-    obj.label72 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label72:setParent(obj.layout37);
-    obj.label72:setText("Esquiva");
-    obj.label72:setWidth(50);
-    obj.label72:setHorzTextAlign("leading");
-    obj.label72:setFontSize(12);
-    obj.label72:setName("label72");
+    obj.label69 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label69:setParent(obj.layout37);
+    obj.label69:setText("Esquiva");
+    obj.label69:setWidth(50);
+    obj.label69:setHorzTextAlign("leading");
+    obj.label69:setFontSize(12);
+    obj.label69:setName("label69");
 
-    obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit51:setParent(obj.layout37);
-    obj.edit51:setTop(20);
-    obj.edit51:setField("bonus_esquiva");
-    obj.edit51:setWidth(50);
-    obj.edit51:setHeight(25);
-    obj.edit51:setName("edit51");
+    obj.edit49 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit49:setParent(obj.layout37);
+    obj.edit49:setTop(20);
+    obj.edit49:setField("bonus_esquiva");
+    obj.edit49:setWidth(50);
+    obj.edit49:setHeight(25);
+    obj.edit49:setName("edit49");
 
     obj.layout38 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout38:setParent(obj.layout36);
@@ -1817,21 +1763,21 @@ local function constructNew_frmGeneral()
     obj.layout38:setMargins({right=5});
     obj.layout38:setName("layout38");
 
-    obj.label73 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label73:setParent(obj.layout38);
-    obj.label73:setText("Força");
-    obj.label73:setWidth(45);
-    obj.label73:setHorzTextAlign("leading");
-    obj.label73:setFontSize(12);
-    obj.label73:setName("label73");
+    obj.label70 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label70:setParent(obj.layout38);
+    obj.label70:setText("Força");
+    obj.label70:setWidth(45);
+    obj.label70:setHorzTextAlign("leading");
+    obj.label70:setFontSize(12);
+    obj.label70:setName("label70");
 
-    obj.edit52 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit52:setParent(obj.layout38);
-    obj.edit52:setTop(20);
-    obj.edit52:setField("bonus_forca");
-    obj.edit52:setWidth(45);
-    obj.edit52:setHeight(25);
-    obj.edit52:setName("edit52");
+    obj.edit50 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit50:setParent(obj.layout38);
+    obj.edit50:setTop(20);
+    obj.edit50:setField("bonus_forca");
+    obj.edit50:setWidth(45);
+    obj.edit50:setHeight(25);
+    obj.edit50:setName("edit50");
 
     obj.layout39 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout39:setParent(obj.layout36);
@@ -1840,21 +1786,21 @@ local function constructNew_frmGeneral()
     obj.layout39:setMargins({right=5});
     obj.layout39:setName("layout39");
 
-    obj.label74 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label74:setParent(obj.layout39);
-    obj.label74:setText("Destreza");
-    obj.label74:setWidth(50);
-    obj.label74:setHorzTextAlign("leading");
-    obj.label74:setFontSize(11);
-    obj.label74:setName("label74");
+    obj.label71 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label71:setParent(obj.layout39);
+    obj.label71:setText("Destreza");
+    obj.label71:setWidth(50);
+    obj.label71:setHorzTextAlign("leading");
+    obj.label71:setFontSize(11);
+    obj.label71:setName("label71");
 
-    obj.edit53 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit53:setParent(obj.layout39);
-    obj.edit53:setTop(20);
-    obj.edit53:setField("bonus_destreza");
-    obj.edit53:setWidth(50);
-    obj.edit53:setHeight(25);
-    obj.edit53:setName("edit53");
+    obj.edit51 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit51:setParent(obj.layout39);
+    obj.edit51:setTop(20);
+    obj.edit51:setField("bonus_destreza");
+    obj.edit51:setWidth(50);
+    obj.edit51:setHeight(25);
+    obj.edit51:setName("edit51");
 
     obj.layout40 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout40:setParent(obj.layout36);
@@ -1863,21 +1809,21 @@ local function constructNew_frmGeneral()
     obj.layout40:setMargins({right=5});
     obj.layout40:setName("layout40");
 
-    obj.label75 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label75:setParent(obj.layout40);
-    obj.label75:setText("Dano");
-    obj.label75:setWidth(45);
-    obj.label75:setHorzTextAlign("leading");
-    obj.label75:setFontSize(12);
-    obj.label75:setName("label75");
+    obj.label72 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label72:setParent(obj.layout40);
+    obj.label72:setText("Dano");
+    obj.label72:setWidth(45);
+    obj.label72:setHorzTextAlign("leading");
+    obj.label72:setFontSize(12);
+    obj.label72:setName("label72");
 
-    obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit54:setParent(obj.layout40);
-    obj.edit54:setTop(20);
-    obj.edit54:setField("bonus_dano");
-    obj.edit54:setWidth(45);
-    obj.edit54:setHeight(25);
-    obj.edit54:setName("edit54");
+    obj.edit52 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit52:setParent(obj.layout40);
+    obj.edit52:setTop(20);
+    obj.edit52:setField("bonus_dano");
+    obj.edit52:setWidth(45);
+    obj.edit52:setHeight(25);
+    obj.edit52:setName("edit52");
 
     obj.layout41 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout41:setParent(obj.layout36);
@@ -1886,21 +1832,21 @@ local function constructNew_frmGeneral()
     obj.layout41:setMargins({right=5});
     obj.layout41:setName("layout41");
 
-    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label76:setParent(obj.layout41);
-    obj.label76:setText("Intensidade");
-    obj.label76:setWidth(60);
-    obj.label76:setHorzTextAlign("leading");
-    obj.label76:setFontSize(11);
-    obj.label76:setName("label76");
+    obj.label73 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label73:setParent(obj.layout41);
+    obj.label73:setText("Intensidade");
+    obj.label73:setWidth(60);
+    obj.label73:setHorzTextAlign("leading");
+    obj.label73:setFontSize(11);
+    obj.label73:setName("label73");
 
-    obj.edit55 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit55:setParent(obj.layout41);
-    obj.edit55:setTop(20);
-    obj.edit55:setField("bonus_intensidade");
-    obj.edit55:setWidth(60);
-    obj.edit55:setHeight(25);
-    obj.edit55:setName("edit55");
+    obj.edit53 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit53:setParent(obj.layout41);
+    obj.edit53:setTop(20);
+    obj.edit53:setField("bonus_intensidade");
+    obj.edit53:setWidth(60);
+    obj.edit53:setHeight(25);
+    obj.edit53:setName("edit53");
 
     obj.layout42 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout42:setParent(obj.layout32);
@@ -1923,20 +1869,20 @@ local function constructNew_frmGeneral()
     obj.layout44:setMargins({right=5});
     obj.layout44:setName("layout44");
 
-    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label77:setParent(obj.layout44);
-    obj.label77:setText("D. Corporal");
-    obj.label77:setWidth(100);
-    obj.label77:setHorzTextAlign("leading");
-    obj.label77:setName("label77");
+    obj.label74 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label74:setParent(obj.layout44);
+    obj.label74:setText("D. Corporal");
+    obj.label74:setWidth(100);
+    obj.label74:setHorzTextAlign("leading");
+    obj.label74:setName("label74");
 
-    obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit56:setParent(obj.layout44);
-    obj.edit56:setLeft(105);
-    obj.edit56:setField("def_corporal");
-    obj.edit56:setWidth(100);
-    obj.edit56:setHeight(25);
-    obj.edit56:setName("edit56");
+    obj.edit54 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit54:setParent(obj.layout44);
+    obj.edit54:setLeft(105);
+    obj.edit54:setField("def_corporal");
+    obj.edit54:setWidth(100);
+    obj.edit54:setHeight(25);
+    obj.edit54:setName("edit54");
 
     obj.layout45 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout45:setParent(obj.layout42);
@@ -1952,20 +1898,20 @@ local function constructNew_frmGeneral()
     obj.layout46:setMargins({right=5});
     obj.layout46:setName("layout46");
 
-    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label78:setParent(obj.layout46);
-    obj.label78:setText("D. Equipamento");
-    obj.label78:setWidth(100);
-    obj.label78:setHorzTextAlign("leading");
-    obj.label78:setName("label78");
+    obj.label75 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label75:setParent(obj.layout46);
+    obj.label75:setText("D. Equipamento");
+    obj.label75:setWidth(100);
+    obj.label75:setHorzTextAlign("leading");
+    obj.label75:setName("label75");
 
-    obj.edit57 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit57:setParent(obj.layout46);
-    obj.edit57:setLeft(105);
-    obj.edit57:setField("def_equipamento");
-    obj.edit57:setWidth(100);
-    obj.edit57:setHeight(25);
-    obj.edit57:setName("edit57");
+    obj.edit55 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit55:setParent(obj.layout46);
+    obj.edit55:setLeft(105);
+    obj.edit55:setField("def_equipamento");
+    obj.edit55:setWidth(100);
+    obj.edit55:setHeight(25);
+    obj.edit55:setName("edit55");
 
     obj.layout47 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout47:setParent(obj.layout42);
@@ -1981,20 +1927,20 @@ local function constructNew_frmGeneral()
     obj.layout48:setMargins({right=5});
     obj.layout48:setName("layout48");
 
-    obj.label79 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label79:setParent(obj.layout48);
-    obj.label79:setText("R. Intensidade");
-    obj.label79:setWidth(100);
-    obj.label79:setHorzTextAlign("leading");
-    obj.label79:setName("label79");
+    obj.label76 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label76:setParent(obj.layout48);
+    obj.label76:setText("R. Intensidade");
+    obj.label76:setWidth(100);
+    obj.label76:setHorzTextAlign("leading");
+    obj.label76:setName("label76");
 
-    obj.edit58 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit58:setParent(obj.layout48);
-    obj.edit58:setLeft(105);
-    obj.edit58:setField("R_intensidade");
-    obj.edit58:setWidth(100);
-    obj.edit58:setHeight(25);
-    obj.edit58:setName("edit58");
+    obj.edit56 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit56:setParent(obj.layout48);
+    obj.edit56:setLeft(105);
+    obj.edit56:setField("R_intensidade");
+    obj.edit56:setWidth(100);
+    obj.edit56:setHeight(25);
+    obj.edit56:setName("edit56");
 
     obj.layout49 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout49:setParent(obj.layout42);
@@ -2010,20 +1956,20 @@ local function constructNew_frmGeneral()
     obj.layout50:setMargins({right=5});
     obj.layout50:setName("layout50");
 
-    obj.label80 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label80:setParent(obj.layout50);
-    obj.label80:setText("D.M.A.");
-    obj.label80:setWidth(100);
-    obj.label80:setHorzTextAlign("leading");
-    obj.label80:setName("label80");
+    obj.label77 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label77:setParent(obj.layout50);
+    obj.label77:setText("D.M.A.");
+    obj.label77:setWidth(100);
+    obj.label77:setHorzTextAlign("leading");
+    obj.label77:setName("label77");
 
-    obj.edit59 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit59:setParent(obj.layout50);
-    obj.edit59:setLeft(105);
-    obj.edit59:setField("dma");
-    obj.edit59:setWidth(100);
-    obj.edit59:setHeight(25);
-    obj.edit59:setName("edit59");
+    obj.edit57 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit57:setParent(obj.layout50);
+    obj.edit57:setLeft(105);
+    obj.edit57:setField("dma");
+    obj.edit57:setWidth(100);
+    obj.edit57:setHeight(25);
+    obj.edit57:setName("edit57");
 
     obj.layout51 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout51:setParent(obj.layout42);
@@ -2039,20 +1985,20 @@ local function constructNew_frmGeneral()
     obj.layout52:setMargins({right=5});
     obj.layout52:setName("layout52");
 
-    obj.label81 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label81:setParent(obj.layout52);
-    obj.label81:setText("D. Total");
-    obj.label81:setWidth(100);
-    obj.label81:setHorzTextAlign("leading");
-    obj.label81:setName("label81");
+    obj.label78 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label78:setParent(obj.layout52);
+    obj.label78:setText("D. Total");
+    obj.label78:setWidth(100);
+    obj.label78:setHorzTextAlign("leading");
+    obj.label78:setName("label78");
 
-    obj.edit60 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit60:setParent(obj.layout52);
-    obj.edit60:setLeft(105);
-    obj.edit60:setField("def_total");
-    obj.edit60:setWidth(100);
-    obj.edit60:setHeight(25);
-    obj.edit60:setName("edit60");
+    obj.edit58 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit58:setParent(obj.layout52);
+    obj.edit58:setLeft(105);
+    obj.edit58:setField("def_total");
+    obj.edit58:setWidth(100);
+    obj.edit58:setHeight(25);
+    obj.edit58:setName("edit58");
 
     obj.layout53 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout53:setParent(obj.rectangle2);
@@ -2075,21 +2021,21 @@ local function constructNew_frmGeneral()
     obj.layout55:setMargins({right=5});
     obj.layout55:setName("layout55");
 
-    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label82:setParent(obj.layout55);
-    obj.label82:setText("Velocidade");
-    obj.label82:setWidth(100);
-    obj.label82:setHorzTextAlign("leading");
-    obj.label82:setFontSize(13);
-    obj.label82:setName("label82");
+    obj.label79 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label79:setParent(obj.layout55);
+    obj.label79:setText("Velocidade");
+    obj.label79:setWidth(100);
+    obj.label79:setHorzTextAlign("leading");
+    obj.label79:setFontSize(13);
+    obj.label79:setName("label79");
 
-    obj.edit61 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit61:setParent(obj.layout55);
-    obj.edit61:setTop(20);
-    obj.edit61:setField("velocidade");
-    obj.edit61:setWidth(100);
-    obj.edit61:setHeight(25);
-    obj.edit61:setName("edit61");
+    obj.edit59 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit59:setParent(obj.layout55);
+    obj.edit59:setTop(20);
+    obj.edit59:setField("velocidade");
+    obj.edit59:setWidth(100);
+    obj.edit59:setHeight(25);
+    obj.edit59:setName("edit59");
 
     obj.layout56 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout56:setParent(obj.layout53);
@@ -2105,21 +2051,21 @@ local function constructNew_frmGeneral()
     obj.layout57:setMargins({right=5});
     obj.layout57:setName("layout57");
 
-    obj.label83 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label83:setParent(obj.layout57);
-    obj.label83:setText("Experiência");
-    obj.label83:setWidth(150);
-    obj.label83:setHorzTextAlign("leading");
-    obj.label83:setFontSize(13);
-    obj.label83:setName("label83");
+    obj.label80 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label80:setParent(obj.layout57);
+    obj.label80:setText("Experiência");
+    obj.label80:setWidth(150);
+    obj.label80:setHorzTextAlign("leading");
+    obj.label80:setFontSize(13);
+    obj.label80:setName("label80");
 
-    obj.edit62 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit62:setParent(obj.layout57);
-    obj.edit62:setTop(20);
-    obj.edit62:setField("experiencia");
-    obj.edit62:setWidth(150);
-    obj.edit62:setHeight(25);
-    obj.edit62:setName("edit62");
+    obj.edit60 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit60:setParent(obj.layout57);
+    obj.edit60:setTop(20);
+    obj.edit60:setField("experiencia");
+    obj.edit60:setWidth(150);
+    obj.edit60:setHeight(25);
+    obj.edit60:setName("edit60");
 
     obj.layout58 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout58:setParent(obj.layout56);
@@ -2128,21 +2074,21 @@ local function constructNew_frmGeneral()
     obj.layout58:setMargins({right=5});
     obj.layout58:setName("layout58");
 
-    obj.label84 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label84:setParent(obj.layout58);
-    obj.label84:setText("AP");
-    obj.label84:setWidth(50);
-    obj.label84:setHorzTextAlign("leading");
-    obj.label84:setFontSize(13);
-    obj.label84:setName("label84");
+    obj.label81 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label81:setParent(obj.layout58);
+    obj.label81:setText("AP");
+    obj.label81:setWidth(50);
+    obj.label81:setHorzTextAlign("leading");
+    obj.label81:setFontSize(13);
+    obj.label81:setName("label81");
 
-    obj.edit63 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit63:setParent(obj.layout58);
-    obj.edit63:setTop(20);
-    obj.edit63:setField("ap");
-    obj.edit63:setWidth(50);
-    obj.edit63:setHeight(25);
-    obj.edit63:setName("edit63");
+    obj.edit61 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit61:setParent(obj.layout58);
+    obj.edit61:setTop(20);
+    obj.edit61:setField("ap");
+    obj.edit61:setWidth(50);
+    obj.edit61:setHeight(25);
+    obj.edit61:setName("edit61");
 
     obj.layout59 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout59:setParent(obj.layout53);
@@ -2165,20 +2111,20 @@ local function constructNew_frmGeneral()
     obj.layout61:setMargins({right=5});
     obj.layout61:setName("layout61");
 
-    obj.label85 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label85:setParent(obj.layout61);
-    obj.label85:setText("Critico");
-    obj.label85:setWidth(100);
-    obj.label85:setHorzTextAlign("leading");
-    obj.label85:setName("label85");
+    obj.label82 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label82:setParent(obj.layout61);
+    obj.label82:setText("Critico");
+    obj.label82:setWidth(100);
+    obj.label82:setHorzTextAlign("leading");
+    obj.label82:setName("label82");
 
-    obj.edit64 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit64:setParent(obj.layout61);
-    obj.edit64:setLeft(105);
-    obj.edit64:setField("critico");
-    obj.edit64:setWidth(100);
-    obj.edit64:setHeight(25);
-    obj.edit64:setName("edit64");
+    obj.edit62 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit62:setParent(obj.layout61);
+    obj.edit62:setLeft(105);
+    obj.edit62:setField("critico");
+    obj.edit62:setWidth(100);
+    obj.edit62:setHeight(25);
+    obj.edit62:setName("edit62");
 
     obj.layout62 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout62:setParent(obj.layout59);
@@ -2194,20 +2140,20 @@ local function constructNew_frmGeneral()
     obj.layout63:setMargins({right=5});
     obj.layout63:setName("layout63");
 
-    obj.label86 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label86:setParent(obj.layout63);
-    obj.label86:setText("Esquiva Perfeita");
-    obj.label86:setWidth(100);
-    obj.label86:setHorzTextAlign("leading");
-    obj.label86:setName("label86");
+    obj.label83 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label83:setParent(obj.layout63);
+    obj.label83:setText("Esquiva Perfeita");
+    obj.label83:setWidth(100);
+    obj.label83:setHorzTextAlign("leading");
+    obj.label83:setName("label83");
 
-    obj.edit65 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit65:setParent(obj.layout63);
-    obj.edit65:setLeft(105);
-    obj.edit65:setField("esquiva_perfeita");
-    obj.edit65:setWidth(100);
-    obj.edit65:setHeight(25);
-    obj.edit65:setName("edit65");
+    obj.edit63 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit63:setParent(obj.layout63);
+    obj.edit63:setLeft(105);
+    obj.edit63:setField("esquiva_perfeita");
+    obj.edit63:setWidth(100);
+    obj.edit63:setHeight(25);
+    obj.edit63:setName("edit63");
 
     obj.layout64 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout64:setParent(obj.layout59);
@@ -2223,20 +2169,20 @@ local function constructNew_frmGeneral()
     obj.layout65:setMargins({right=5});
     obj.layout65:setName("layout65");
 
-    obj.label87 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label87:setParent(obj.layout65);
-    obj.label87:setText("Turnos de Magia");
-    obj.label87:setWidth(100);
-    obj.label87:setHorzTextAlign("leading");
-    obj.label87:setName("label87");
+    obj.label84 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label84:setParent(obj.layout65);
+    obj.label84:setText("Turnos de Magia");
+    obj.label84:setWidth(100);
+    obj.label84:setHorzTextAlign("leading");
+    obj.label84:setName("label84");
 
-    obj.edit66 = GUI.fromHandle(_obj_newObject("edit"));
-    obj.edit66:setParent(obj.layout65);
-    obj.edit66:setLeft(105);
-    obj.edit66:setField("tunos_magia");
-    obj.edit66:setWidth(100);
-    obj.edit66:setHeight(25);
-    obj.edit66:setName("edit66");
+    obj.edit64 = GUI.fromHandle(_obj_newObject("edit"));
+    obj.edit64:setParent(obj.layout65);
+    obj.edit64:setLeft(105);
+    obj.edit64:setField("tunos_magia");
+    obj.edit64:setWidth(100);
+    obj.edit64:setHeight(25);
+    obj.edit64:setName("edit64");
 
     obj.layout66 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout66:setParent(obj.rectangle2);
@@ -2245,29 +2191,29 @@ local function constructNew_frmGeneral()
     obj.layout66:setMargins({right=5});
     obj.layout66:setName("layout66");
 
-    obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle23:setParent(obj.layout66);
-    obj.rectangle23:setLeft(0);
-    obj.rectangle23:setTop(50);
-    obj.rectangle23:setWidth(200);
-    obj.rectangle23:setHeight(200);
-    obj.rectangle23:setColor("black");
-    obj.rectangle23:setStrokeColor("white");
-    obj.rectangle23:setStrokeSize(1);
-    obj.rectangle23:setName("rectangle23");
+    obj.rectangle22 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle22:setParent(obj.layout66);
+    obj.rectangle22:setLeft(0);
+    obj.rectangle22:setTop(50);
+    obj.rectangle22:setWidth(200);
+    obj.rectangle22:setHeight(200);
+    obj.rectangle22:setColor("black");
+    obj.rectangle22:setStrokeColor("white");
+    obj.rectangle22:setStrokeSize(1);
+    obj.rectangle22:setName("rectangle22");
 
-    obj.label88 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label88:setParent(obj.rectangle23);
-    obj.label88:setLeft(0);
-    obj.label88:setTop(40);
-    obj.label88:setWidth(200);
-    obj.label88:setHeight(20);
-    obj.label88:setText("Avatar");
-    obj.label88:setHorzTextAlign("center");
-    obj.label88:setName("label88");
+    obj.label85 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label85:setParent(obj.rectangle22);
+    obj.label85:setLeft(0);
+    obj.label85:setTop(40);
+    obj.label85:setWidth(200);
+    obj.label85:setHeight(20);
+    obj.label85:setText("Avatar");
+    obj.label85:setHorzTextAlign("center");
+    obj.label85:setName("label85");
 
     obj.image1 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image1:setParent(obj.rectangle23);
+    obj.image1:setParent(obj.rectangle22);
     obj.image1:setAlign("client");
     obj.image1:setField("avatar");
     obj.image1:setEditable(true);
@@ -2275,28 +2221,28 @@ local function constructNew_frmGeneral()
     obj.image1:setMargins({left=2, right=2, top=2, bottom=2});
     obj.image1:setName("image1");
 
-    obj.rectangle24 = GUI.fromHandle(_obj_newObject("rectangle"));
-    obj.rectangle24:setParent(obj.layout1);
-    obj.rectangle24:setColor("black");
-    obj.rectangle24:setAlign("top");
-    obj.rectangle24:setHeight(200);
-    obj.rectangle24:setMargins({bottom=5});
-    obj.rectangle24:setName("rectangle24");
+    obj.rectangle23 = GUI.fromHandle(_obj_newObject("rectangle"));
+    obj.rectangle23:setParent(obj.layout1);
+    obj.rectangle23:setColor("black");
+    obj.rectangle23:setAlign("top");
+    obj.rectangle23:setHeight(200);
+    obj.rectangle23:setMargins({bottom=5});
+    obj.rectangle23:setName("rectangle23");
 
     obj.layout67 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout67:setParent(obj.rectangle24);
+    obj.layout67:setParent(obj.rectangle23);
     obj.layout67:setAlign("left");
     obj.layout67:setWidth(500);
     obj.layout67:setMargins({right=5});
     obj.layout67:setName("layout67");
 
-    obj.label89 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label89:setParent(obj.layout67);
-    obj.label89:setText("VANTAGENS");
-    obj.label89:setAlign("top");
-    obj.label89:setHeight(25);
-    obj.label89:setHorzTextAlign("center");
-    obj.label89:setName("label89");
+    obj.label86 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label86:setParent(obj.layout67);
+    obj.label86:setText("VANTAGENS");
+    obj.label86:setAlign("top");
+    obj.label86:setHeight(25);
+    obj.label86:setHorzTextAlign("center");
+    obj.label86:setName("label86");
 
     obj.textEditor1 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor1:setParent(obj.layout67);
@@ -2306,19 +2252,19 @@ local function constructNew_frmGeneral()
     obj.textEditor1:setName("textEditor1");
 
     obj.layout68 = GUI.fromHandle(_obj_newObject("layout"));
-    obj.layout68:setParent(obj.rectangle24);
+    obj.layout68:setParent(obj.rectangle23);
     obj.layout68:setAlign("left");
     obj.layout68:setWidth(500);
     obj.layout68:setMargins({right=5});
     obj.layout68:setName("layout68");
 
-    obj.label90 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label90:setParent(obj.layout68);
-    obj.label90:setText("DESVANTAGENS");
-    obj.label90:setAlign("top");
-    obj.label90:setHeight(25);
-    obj.label90:setHorzTextAlign("center");
-    obj.label90:setName("label90");
+    obj.label87 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label87:setParent(obj.layout68);
+    obj.label87:setText("DESVANTAGENS");
+    obj.label87:setAlign("top");
+    obj.label87:setHeight(25);
+    obj.label87:setHorzTextAlign("center");
+    obj.label87:setName("label87");
 
     obj.textEditor2 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor2:setParent(obj.layout68);
@@ -2328,7 +2274,7 @@ local function constructNew_frmGeneral()
     obj.textEditor2:setName("textEditor2");
 
     obj.image2 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image2:setParent(obj.rectangle24);
+    obj.image2:setParent(obj.rectangle23);
     obj.image2:setLeft(1010);
     obj.image2:setTop(25);
     obj.image2:setWidth(190);
@@ -2339,9 +2285,20 @@ local function constructNew_frmGeneral()
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_FORTotal) or 0;
+            						sheet.firstValueName = "Força";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_FORTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -2362,39 +2319,51 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Força" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Força + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Força" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
@@ -2407,9 +2376,20 @@ local function constructNew_frmGeneral()
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_HABTotal) or 0;
+            						sheet.firstValueName = "Habilidade";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_HABTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -2430,39 +2410,51 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Habilidade" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Habilidade + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Habilidade" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
@@ -2475,9 +2467,20 @@ local function constructNew_frmGeneral()
 
     obj._e_event4 = obj.button3:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_AGITotal) or 0;
+            						sheet.firstValueName = "Agilidade";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_AGITotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -2498,39 +2501,51 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Agilidade" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Agilidade + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Agilidade" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
@@ -2543,9 +2558,20 @@ local function constructNew_frmGeneral()
 
     obj._e_event6 = obj.button4:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_VITTotal) or 0;
+            						sheet.firstValueName = "Vitalidade";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_VITTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -2566,39 +2592,51 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Vitalidade" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Vitalidade + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Vitalidade" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
@@ -2611,9 +2649,20 @@ local function constructNew_frmGeneral()
 
     obj._e_event8 = obj.button5:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_INTTotal) or 0;
+            						sheet.firstValueName = "Inteligência";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_INTTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -2634,39 +2683,51 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Inteligência" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Inteligência + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Inteligência" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
@@ -2679,9 +2740,20 @@ local function constructNew_frmGeneral()
 
     obj._e_event10 = obj.button6:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_DESTotal) or 0;
+            						sheet.firstValueName = "Destreza";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_DESTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -2702,39 +2774,51 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Destreza" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Destreza + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Destreza" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
@@ -2747,9 +2831,20 @@ local function constructNew_frmGeneral()
 
     obj._e_event12 = obj.button7:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_SORTotal) or 0;
+            						sheet.firstValueName = "Sorte";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_SORTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -2770,39 +2865,51 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Sorte" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Sorte + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Sorte" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
@@ -2815,9 +2922,20 @@ local function constructNew_frmGeneral()
 
     obj._e_event14 = obj.button8:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_MAGTotal) or 0;
+            						sheet.firstValueName = "Magia";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_MAGTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -2838,39 +2956,51 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Magia" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Magia + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Magia" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
@@ -2883,9 +3013,20 @@ local function constructNew_frmGeneral()
 
     obj._e_event16 = obj.button9:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_DEFTotal) or 0;
+            						sheet.firstValueName = "Defesa";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_DEFTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -2906,39 +3047,51 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Defesa" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Defesa + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Defesa" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
@@ -2951,9 +3104,20 @@ local function constructNew_frmGeneral()
 
     obj._e_event18 = obj.button10:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_M.DEFTotal) or 0;
+            						sheet.firstValueName = "Defesa Mágica";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
             					local atr = tonumber(sheet.atr_M.DEFTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -2974,39 +3138,51 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Defesa Mágica" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Defesa Mágica + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Defesa Mágica" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
@@ -3019,9 +3195,20 @@ local function constructNew_frmGeneral()
 
     obj._e_event20 = obj.button11:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_ESCTotal) or 0;
+            						sheet.firstValueName = "Escalada";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
-            					local atr = tonumber(sheet.atr_PULTotal) or 0;
+            					local atr = tonumber(sheet.atr_ESCTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -3042,54 +3229,77 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Escalada" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Escalada + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Pulo" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
     obj._e_event21 = obj.dataLink11:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet == nil then return end;
-            				sheet.atr_PULTotal = 	(tonumber(sheet.atr_PULBase) or 0) + 
-            											(tonumber(sheet.atr_PULExtra) or 0);
+            				sheet.atr_ESCTotal = 	(tonumber(sheet.atr_ESCBase) or 0) + 
+            											(tonumber(sheet.atr_ESCExtra) or 0);
         end, obj);
 
     obj._e_event22 = obj.button12:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_MIRTotal) or 0;
+            						sheet.firstValueName = "Mira";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
-            					local atr = tonumber(sheet.atr_ESCTotal) or 0;
+            					local atr = tonumber(sheet.atr_MIRTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -3110,54 +3320,77 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Mira" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Mira + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Escalada" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
     obj._e_event23 = obj.dataLink12:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet == nil then return end;
-            				sheet.atr_ESCTotal = 	(tonumber(sheet.atr_ESCBase) or 0) + 
-            											(tonumber(sheet.atr_ESCExtra) or 0);
+            				sheet.atr_MIRTotal = 	(tonumber(sheet.atr_MIRBase) or 0) + 
+            											(tonumber(sheet.atr_MIRExtra) or 0);
         end, obj);
 
     obj._e_event24 = obj.button13:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_CARTotal) or 0;
+            						sheet.firstValueName = "Carisma";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
-            					local atr = tonumber(sheet.atr_MIRTotal) or 0;
+            					local atr = tonumber(sheet.atr_CARTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -3178,54 +3411,77 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Carisma" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Carisma + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Mira" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
     obj._e_event25 = obj.dataLink13:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet == nil then return end;
-            				sheet.atr_MIRTotal = 	(tonumber(sheet.atr_MIRBase) or 0) + 
-            											(tonumber(sheet.atr_MIRExtra) or 0);
+            				sheet.atr_CARTotal = 	(tonumber(sheet.atr_CARBase) or 0) + 
+            											(tonumber(sheet.atr_CARExtra) or 0);
         end, obj);
 
     obj._e_event26 = obj.button14:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_LABTotal) or 0;
+            						sheet.firstValueName = "Labia";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
-            					local atr = tonumber(sheet.atr_CARTotal) or 0;
+            					local atr = tonumber(sheet.atr_LABTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -3246,54 +3502,77 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Labia" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Labia + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Carisma" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
     obj._e_event27 = obj.dataLink14:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet == nil then return end;
-            				sheet.atr_CARTotal = 	(tonumber(sheet.atr_CARBase) or 0) + 
-            											(tonumber(sheet.atr_CARExtra) or 0);
+            				sheet.atr_LABTotal = 	(tonumber(sheet.atr_LABBase) or 0) + 
+            											(tonumber(sheet.atr_LABExtra) or 0);
         end, obj);
 
     obj._e_event28 = obj.button15:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_DECTotal) or 0;
+            						sheet.firstValueName = "Decifrar";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
-            					local atr = tonumber(sheet.atr_LABTotal) or 0;
+            					local atr = tonumber(sheet.atr_DECTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -3314,54 +3593,77 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Decifrar" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Decifrar + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Labia" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
     obj._e_event29 = obj.dataLink15:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet == nil then return end;
-            				sheet.atr_LABTotal = 	(tonumber(sheet.atr_LABBase) or 0) + 
-            											(tonumber(sheet.atr_LABExtra) or 0);
+            				sheet.atr_DECTotal = 	(tonumber(sheet.atr_DECBase) or 0) + 
+            											(tonumber(sheet.atr_DECExtra) or 0);
         end, obj);
 
     obj._e_event30 = obj.button16:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_FURTotal) or 0;
+            						sheet.firstValueName = "Furtividade";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
-            					local atr = tonumber(sheet.atr_DECTotal) or 0;
+            					local atr = tonumber(sheet.atr_FURTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -3382,54 +3684,77 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Furtividade" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Furtividade + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Decifrar" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
     obj._e_event31 = obj.dataLink16:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet == nil then return end;
-            				sheet.atr_DECTotal = 	(tonumber(sheet.atr_DECBase) or 0) + 
-            											(tonumber(sheet.atr_DECExtra) or 0);
+            				sheet.atr_FURTotal = 	(tonumber(sheet.atr_FURBase) or 0) + 
+            											(tonumber(sheet.atr_FURExtra) or 0);
         end, obj);
 
     obj._e_event32 = obj.button17:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_PERTotal) or 0;
+            						sheet.firstValueName = "Percepção";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
-            					local atr = tonumber(sheet.atr_FURTotal) or 0;
+            					local atr = tonumber(sheet.atr_PERTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -3450,54 +3775,77 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Percepção" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Percepção + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Furtividade" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
     obj._e_event33 = obj.dataLink17:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet == nil then return end;
-            				sheet.atr_FURTotal = 	(tonumber(sheet.atr_FURBase) or 0) + 
-            											(tonumber(sheet.atr_FURExtra) or 0);
+            				sheet.atr_PERTotal = 	(tonumber(sheet.atr_PERBase) or 0) + 
+            											(tonumber(sheet.atr_PERExtra) or 0);
         end, obj);
 
     obj._e_event34 = obj.button18:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_CNHTotal) or 0;
+            						sheet.firstValueName = "Conhecimento";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
-            					local atr = tonumber(sheet.atr_PERTotal) or 0;
+            					local atr = tonumber(sheet.atr_CNHTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -3518,54 +3866,77 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Conhecimento" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Conhecimento + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Percepção" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
     obj._e_event35 = obj.dataLink18:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet == nil then return end;
-            				sheet.atr_PERTotal = 	(tonumber(sheet.atr_PERBase) or 0) + 
-            											(tonumber(sheet.atr_PERExtra) or 0);
+            				sheet.atr_CNHTotal = 	(tonumber(sheet.atr_CNHBase) or 0) + 
+            											(tonumber(sheet.atr_CNHExtra) or 0);
         end, obj);
 
     obj._e_event36 = obj.button19:addEventListener("onClick",
         function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
+            local firstValue = tonumber(sheet.firstValue) or -1;
+            					if (sheet.doubleRoll and firstValue < 0) then
+            						sheet.firstValue = tonumber(sheet.atr_AMBTotal) or 0;
+            						sheet.firstValueName = "Ambidestria";
+            						return;
+            					end;
+            					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
             
-            					local atr = tonumber(sheet.atr_CNHTotal) or 0;
+            					local atr = tonumber(sheet.atr_AMBTotal) or 0;
+            					if (sheet.doubleRoll) then
+            						 atr = atr + firstValue;
+            						 sheet.firstValue = -1;
+            					end;
+            
             					atr = math.min(80, atr);
             					atr = math.max(1, atr);
             
@@ -3586,125 +3957,67 @@ local function constructNew_frmGeneral()
             							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
             				        		function (valorPreenchido)
             				        			local margem = tonumber(valorPreenchido) or 1;
+            				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+            				        				function (valorPreenchido)
+            				        					local extra = (tonumber(valorPreenchido) or 0);
+            				        					local msg = "Teste de Ambidestria" .. ", margem de critico " .. margem;
+            				        					if (firstValue > -1) then
+            				        						msg = "Teste de Ambidestria + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+            				        					end;
+            				        					if extra > 0 then
+            				        						msg = msg .. ", +" .. extra .. " penalidade.";
+            				        					elseif extra < 0 then
+            				        						msg = msg .. ", " .. extra .. " bônus.";
+            				        					end;
+            				                        	mesa.activeChat:rolarDados(rolagem, msg,
+            				                                function (rolado)
+            				                                	local op = rolado.ops[2];
+            		 
+            													for j=1, #op.resultados, 1 do
+            													    local result = op.resultados[j] + extra;
             
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Conhecimento" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
+            													    if result <= atr then
+            													        sucessos = sucessos +1;
+            													    else
+            													        falhas = falhas +1;
+            													    end;
+            													    if result <= margem then
+            													        decisivo = decisivo +1;
+            													    end;
+            													    if result == faces then
+            													        falhaCritica = falhaCritica +1;
+            													    end;
+            													end;
             
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
+            													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+            		 
+            													if decisivo > 0 then
+            													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+            													end;
+            													if falhaCritica > 0 then
+            													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+            													end;
             
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
+            													mesa.activeChat:enviarMensagem(txt);
+            				                                end);
+            			                    end);
+                                        end);
             				        end);
         end, obj);
 
     obj._e_event37 = obj.dataLink19:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet == nil then return end;
-            				sheet.atr_CNHTotal = 	(tonumber(sheet.atr_CNHBase) or 0) + 
-            											(tonumber(sheet.atr_CNHExtra) or 0);
-        end, obj);
-
-    obj._e_event38 = obj.button20:addEventListener("onClick",
-        function (_)
-            local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
-            
-            					local atr = tonumber(sheet.atr_AMBTotal) or 0;
-            					atr = math.min(80, atr);
-            					atr = math.max(1, atr);
-            
-            					local faces = faceTable[atr];
-            
-            					local mesa = Firecast.getMesaDe(sheet);
-            
-            					local sucessos = 0;
-            					local falhas = 0;
-            					local decisivo = 0;
-            					local falhaCritica = 0;
-            
-            					Dialogs.inputQuery("Quantidade de Dados", "Coloque quantos dados vai rolar", "1",
-            				        function (valorPreenchido)
-            				        	local dados = tonumber(valorPreenchido) or 1;
-            				        	local rolagem = Firecast.interpretarRolagem("ord " .. dados .. "d" .. faces); 
-            							
-            							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
-            				        		function (valorPreenchido)
-            				        			local margem = tonumber(valorPreenchido) or 1;
-            
-            		                        	mesa.activeChat:rolarDados(rolagem, "Teste de Ambidestria" .. ", margem de critico " .. margem,
-            		                                function (rolado)
-            		                                	local op = rolado.ops[2];
-             
-            											for j=1, #op.resultados, 1 do
-            											    local result = op.resultados[j];
-            											    if result <= atr then
-            											        sucessos = sucessos +1;
-            											    else
-            											        falhas = falhas +1;
-            											    end;
-            											    if result <= margem then
-            											        decisivo = decisivo +1;
-            											    end;
-            											    if result == faces then
-            											        falhaCritica = falhaCritica +1;
-            											    end;
-            											end;
-            
-            											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
-             
-            											if decisivo > 0 then
-            											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-            											end;
-            											if falhaCritica > 0 then
-            											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-            											end;
-            
-            											mesa.activeChat:enviarMensagem(txt);
-            		                                end);
-            
-                                        end);   
-            				        end);
-        end, obj);
-
-    obj._e_event39 = obj.dataLink20:addEventListener("onChange",
-        function (_, field, oldValue, newValue)
-            if sheet == nil then return end;
             				sheet.atr_AMBTotal = 	(tonumber(sheet.atr_AMBBase) or 0) + 
             											(tonumber(sheet.atr_AMBExtra) or 0);
         end, obj);
 
-    obj._e_event40 = obj.image1:addEventListener("onStartDrag",
+    obj._e_event38 = obj.image1:addEventListener("onStartDrag",
         function (_, drag, x, y)
             drag:addData("imageURL", sheet.avatar);
         end, obj);
 
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event40);
-        __o_rrpgObjs.removeEventListenerById(self._e_event39);
         __o_rrpgObjs.removeEventListenerById(self._e_event38);
         __o_rrpgObjs.removeEventListenerById(self._e_event37);
         __o_rrpgObjs.removeEventListenerById(self._e_event36);
@@ -3790,16 +4103,15 @@ local function constructNew_frmGeneral()
         if self.dataLink18 ~= nil then self.dataLink18:destroy(); self.dataLink18 = nil; end;
         if self.layout13 ~= nil then self.layout13:destroy(); self.layout13 = nil; end;
         if self.label35 ~= nil then self.label35:destroy(); self.label35 = nil; end;
-        if self.label70 ~= nil then self.label70:destroy(); self.label70 = nil; end;
+        if self.layout38 ~= nil then self.layout38:destroy(); self.layout38 = nil; end;
         if self.label13 ~= nil then self.label13:destroy(); self.label13 = nil; end;
         if self.layout8 ~= nil then self.layout8:destroy(); self.layout8 = nil; end;
-        if self.layout38 ~= nil then self.layout38:destroy(); self.layout38 = nil; end;
+        if self.label70 ~= nil then self.label70:destroy(); self.label70 = nil; end;
         if self.label27 ~= nil then self.label27:destroy(); self.label27 = nil; end;
         if self.label59 ~= nil then self.label59:destroy(); self.label59 = nil; end;
         if self.layout23 ~= nil then self.layout23:destroy(); self.layout23 = nil; end;
-        if self.button20 ~= nil then self.button20:destroy(); self.button20 = nil; end;
-        if self.edit47 ~= nil then self.edit47:destroy(); self.edit47 = nil; end;
         if self.label68 ~= nil then self.label68:destroy(); self.label68 = nil; end;
+        if self.edit47 ~= nil then self.edit47:destroy(); self.edit47 = nil; end;
         if self.label67 ~= nil then self.label67:destroy(); self.label67 = nil; end;
         if self.rectangle5 ~= nil then self.rectangle5:destroy(); self.rectangle5 = nil; end;
         if self.layout62 ~= nil then self.layout62:destroy(); self.layout62 = nil; end;
@@ -3825,7 +4137,6 @@ local function constructNew_frmGeneral()
         if self.label49 ~= nil then self.label49:destroy(); self.label49 = nil; end;
         if self.layout32 ~= nil then self.layout32:destroy(); self.layout32 = nil; end;
         if self.label72 ~= nil then self.label72:destroy(); self.label72 = nil; end;
-        if self.label88 ~= nil then self.label88:destroy(); self.label88 = nil; end;
         if self.layout37 ~= nil then self.layout37:destroy(); self.layout37 = nil; end;
         if self.rectangle15 ~= nil then self.rectangle15:destroy(); self.rectangle15 = nil; end;
         if self.label12 ~= nil then self.label12:destroy(); self.label12 = nil; end;
@@ -3854,8 +4165,6 @@ local function constructNew_frmGeneral()
         if self.edit58 ~= nil then self.edit58:destroy(); self.edit58 = nil; end;
         if self.layout61 ~= nil then self.layout61:destroy(); self.layout61 = nil; end;
         if self.label58 ~= nil then self.label58:destroy(); self.label58 = nil; end;
-        if self.edit66 ~= nil then self.edit66:destroy(); self.edit66 = nil; end;
-        if self.dataLink20 ~= nil then self.dataLink20:destroy(); self.dataLink20 = nil; end;
         if self.layout5 ~= nil then self.layout5:destroy(); self.layout5 = nil; end;
         if self.layout20 ~= nil then self.layout20:destroy(); self.layout20 = nil; end;
         if self.edit23 ~= nil then self.edit23:destroy(); self.edit23 = nil; end;
@@ -3891,7 +4200,6 @@ local function constructNew_frmGeneral()
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
         if self.layout33 ~= nil then self.layout33:destroy(); self.layout33 = nil; end;
-        if self.label89 ~= nil then self.label89:destroy(); self.label89 = nil; end;
         if self.label38 ~= nil then self.label38:destroy(); self.label38 = nil; end;
         if self.label62 ~= nil then self.label62:destroy(); self.label62 = nil; end;
         if self.edit49 ~= nil then self.edit49:destroy(); self.edit49 = nil; end;
@@ -3940,30 +4248,29 @@ local function constructNew_frmGeneral()
         if self.rectangle10 ~= nil then self.rectangle10:destroy(); self.rectangle10 = nil; end;
         if self.label65 ~= nil then self.label65:destroy(); self.label65 = nil; end;
         if self.layout1 ~= nil then self.layout1:destroy(); self.layout1 = nil; end;
-        if self.rectangle22 ~= nil then self.rectangle22:destroy(); self.rectangle22 = nil; end;
+        if self.edit54 ~= nil then self.edit54:destroy(); self.edit54 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.edit50 ~= nil then self.edit50:destroy(); self.edit50 = nil; end;
-        if self.edit54 ~= nil then self.edit54:destroy(); self.edit54 = nil; end;
+        if self.layout45 ~= nil then self.layout45:destroy(); self.layout45 = nil; end;
         if self.label60 ~= nil then self.label60:destroy(); self.label60 = nil; end;
         if self.label64 ~= nil then self.label64:destroy(); self.label64 = nil; end;
         if self.edit24 ~= nil then self.edit24:destroy(); self.edit24 = nil; end;
-        if self.layout45 ~= nil then self.layout45:destroy(); self.layout45 = nil; end;
+        if self.edit61 ~= nil then self.edit61:destroy(); self.edit61 = nil; end;
         if self.edit59 ~= nil then self.edit59:destroy(); self.edit59 = nil; end;
         if self.layout12 ~= nil then self.layout12:destroy(); self.layout12 = nil; end;
         if self.edit14 ~= nil then self.edit14:destroy(); self.edit14 = nil; end;
-        if self.edit61 ~= nil then self.edit61:destroy(); self.edit61 = nil; end;
+        if self.edit63 ~= nil then self.edit63:destroy(); self.edit63 = nil; end;
         if self.layout46 ~= nil then self.layout46:destroy(); self.layout46 = nil; end;
         if self.dataLink8 ~= nil then self.dataLink8:destroy(); self.dataLink8 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.layout25 ~= nil then self.layout25:destroy(); self.layout25 = nil; end;
         if self.edit44 ~= nil then self.edit44:destroy(); self.edit44 = nil; end;
         if self.layout56 ~= nil then self.layout56:destroy(); self.layout56 = nil; end;
-        if self.edit63 ~= nil then self.edit63:destroy(); self.edit63 = nil; end;
+        if self.rectangle22 ~= nil then self.rectangle22:destroy(); self.rectangle22 = nil; end;
         if self.dataLink14 ~= nil then self.dataLink14:destroy(); self.dataLink14 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.layout66 ~= nil then self.layout66:destroy(); self.layout66 = nil; end;
-        if self.label90 ~= nil then self.label90:destroy(); self.label90 = nil; end;
         if self.image2 ~= nil then self.image2:destroy(); self.image2 = nil; end;
         if self.button13 ~= nil then self.button13:destroy(); self.button13 = nil; end;
         if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
@@ -3995,7 +4302,6 @@ local function constructNew_frmGeneral()
         if self.edit43 ~= nil then self.edit43:destroy(); self.edit43 = nil; end;
         if self.rectangle20 ~= nil then self.rectangle20:destroy(); self.rectangle20 = nil; end;
         if self.label17 ~= nil then self.label17:destroy(); self.label17 = nil; end;
-        if self.edit65 ~= nil then self.edit65:destroy(); self.edit65 = nil; end;
         if self.layout53 ~= nil then self.layout53:destroy(); self.layout53 = nil; end;
         if self.edit13 ~= nil then self.edit13:destroy(); self.edit13 = nil; end;
         if self.edit39 ~= nil then self.edit39:destroy(); self.edit39 = nil; end;
@@ -4046,7 +4352,7 @@ local function constructNew_frmGeneral()
         if self.button19 ~= nil then self.button19:destroy(); self.button19 = nil; end;
         if self.edit32 ~= nil then self.edit32:destroy(); self.edit32 = nil; end;
         if self.button14 ~= nil then self.button14:destroy(); self.button14 = nil; end;
-        if self.rectangle24 ~= nil then self.rectangle24:destroy(); self.rectangle24 = nil; end;
+        if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
         if self.dataLink12 ~= nil then self.dataLink12:destroy(); self.dataLink12 = nil; end;
         self:_oldLFMDestroy();
     end;

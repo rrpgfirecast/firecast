@@ -22,9 +22,20 @@
 		<layout align="top" height="25" margins="{top=5}">
 			<button text="$(text)" align="left" width="100" horzTextAlign="center">
 				<event name="onClick">
+					local firstValue = tonumber(sheet.firstValue) or -1;
+					if (sheet.doubleRoll and firstValue &lt; 0) then
+						sheet.firstValue = tonumber(sheet.atr_$(field)Total) or 0;
+						sheet.firstValueName = "$(text)";
+						return;
+					end;
 					local faceTable = {10, 10, 10, 10, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20, 20, 22, 22, 26, 26, 28, 28, 30, 30, 32, 32, 34, 34, 38, 38, 40, 40, 42, 42, 44, 44, 46, 46, 50, 50, 52, 52, 54, 54, 56, 56, 58, 58, 62, 62, 64, 64, 66, 66, 68, 68, 70, 70, 74, 74, 76, 76, 78, 78, 80, 80, 82, 82, 86, 86, 88, 88, 90, 90, 92, 92, 94, 94, 98, 98};
 
 					local atr = tonumber(sheet.atr_$(field)Total) or 0;
+					if (sheet.doubleRoll) then
+						 atr = atr + firstValue;
+						 sheet.firstValue = -1;
+					end;
+
 					atr = math.min(80, atr);
 					atr = math.max(1, atr);
 
@@ -45,41 +56,52 @@
 							Dialogs.inputQuery("Margem de Critico", "Coloque o maior valor que deve ser considerado critico no dado. ", "1",
 				        		function (valorPreenchido)
 				        			local margem = tonumber(valorPreenchido) or 1;
+				        			Dialogs.inputQuery("Bônus ou Redutores", "Há alguma bônus ou redutor na rolagem?. ", "0",
+				        				function (valorPreenchido)
+				        					local extra = (tonumber(valorPreenchido) or 0);
+				        					local msg = "Teste de $(text)" .. ", margem de critico " .. margem;
+				        					if (firstValue &gt; -1) then
+				        						msg = "Teste de $(text) + " .. (sheet.firstValueName or "") .. ", margem de critico " .. margem;
+				        					end;
+				        					if extra &gt; 0 then
+				        						msg = msg .. ", +" .. extra .. " penalidade.";
+				        					elseif extra &lt; 0 then
+				        						msg = msg .. ", " .. extra .. " bônus.";
+				        					end;
+				                        	mesa.activeChat:rolarDados(rolagem, msg,
+				                                function (rolado)
+				                                	local op = rolado.ops[2];
+		 
+													for j=1, #op.resultados, 1 do
+													    local result = op.resultados[j] + extra;
 
-		                        	mesa.activeChat:rolarDados(rolagem, "Teste de $(text)" .. ", margem de critico " .. margem,
-		                                function (rolado)
-		                                	local op = rolado.ops[2];
- 
-											for j=1, #op.resultados, 1 do
-											    local result = op.resultados[j];
-											    if result &lt;= atr then
-											        sucessos = sucessos +1;
-											    else
-											        falhas = falhas +1;
-											    end;
-											    if result &lt;= margem then
-											        decisivo = decisivo +1;
-											    end;
-											    if result == faces then
-											        falhaCritica = falhaCritica +1;
-											    end;
-											end;
+													    if result &lt;= atr then
+													        sucessos = sucessos +1;
+													    else
+													        falhas = falhas +1;
+													    end;
+													    if result &lt;= margem then
+													        decisivo = decisivo +1;
+													    end;
+													    if result == faces then
+													        falhaCritica = falhaCritica +1;
+													    end;
+													end;
 
-											local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
- 
-											if decisivo > 0 then
-											    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
-											end;
-											if falhaCritica > 0 then
-											    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
-											end;
+													local txt = sucessos .. " Sucesso(s) e " .. falhas .. " Falha(s)! ";
+		 
+													if decisivo > 0 then
+													    txt = txt .. decisivo .. " Sucesso(s) Critico(s). ";
+													end;
+													if falhaCritica > 0 then
+													    txt = txt .. falhaCritica .. " Falha(s) Critica(s). ";
+													end;
 
-											mesa.activeChat:enviarMensagem(txt);
-		                                end);
-
-                            end);   
+													mesa.activeChat:enviarMensagem(txt);
+				                                end);
+			                    end);
+                            end);
 				        end);
-
 				</event>
 			</button>
 
@@ -128,7 +150,6 @@
 					<Atributo field="M.DEF" text="Defesa Mágica"/>
 				</layout>
 				<layout align="left" width="220" margins="{right=5}">
-					<Atributo field="PUL" text="Pulo"/>
 					<Atributo field="ESC" text="Escalada"/>
 					<Atributo field="MIR" text="Mira"/>
 					<Atributo field="CAR" text="Carisma"/>
@@ -138,6 +159,9 @@
 					<Atributo field="PER" text="Percepção"/>
 					<Atributo field="CNH" text="Conhecimento"/>
 					<Atributo field="AMB" text="Ambidestria"/>
+					<layout align="top" height="25" margins="{top=5}">
+						<checkBox left="0" top="0" width="190" height="25" field="doubleRoll" text="Usar dois atributos na rolagem." fontSize="12" hint="Clique no primeiro e depois no segundo. "/>
+					</layout>
 				</layout>
 
 				<layout align="left" width="270" margins="{right=5}">
@@ -207,7 +231,6 @@
 						</image>
 					</rectangle>
 				</layout>
-
 			</rectangle>
 
 			<rectangle color="black" align="top" height="200" margins="{bottom=5}">
@@ -221,7 +244,7 @@
 				</layout>
 
 				<image left="1010" top="25" width="190" height="116" style="autoFit" src="images/ragnarock.jpg"/>
-			</rectangle>
+							</rectangle>
 
 		</layout>
 	</scrollBox>
