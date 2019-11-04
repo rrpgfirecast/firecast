@@ -150,6 +150,7 @@
 					<Atributo field="M.DEF" text="Defesa Mágica"/>
 				</layout>
 				<layout align="left" width="220" margins="{right=5}">
+					<Atributo field="PUL" text="Pulo"/>
 					<Atributo field="ESC" text="Escalada"/>
 					<Atributo field="MIR" text="Mira"/>
 					<Atributo field="CAR" text="Carisma"/>
@@ -159,9 +160,6 @@
 					<Atributo field="PER" text="Percepção"/>
 					<Atributo field="CNH" text="Conhecimento"/>
 					<Atributo field="AMB" text="Ambidestria"/>
-					<layout align="top" height="25" margins="{top=5}">
-						<checkBox left="0" top="0" width="190" height="25" field="doubleRoll" text="Usar dois atributos na rolagem." fontSize="12" hint="Clique no primeiro e depois no segundo. "/>
-					</layout>
 				</layout>
 
 				<layout align="left" width="270" margins="{right=5}">
@@ -180,7 +178,7 @@
 						<UpperBar width="60" text="Intensidade" field="bonus_intensidade" fontSize="11"/>
 					</layout>
 
-					<layout align="top" height="150" margins="{bottom=5, top=5}">
+					<layout align="top" height="175" margins="{bottom=5, top=5}">
 						<layout align="top" height="25" margins="{bottom=5}">
 							<LabelEditMid text="D. Corporal" field="def_corporal"/>
 						</layout>
@@ -193,8 +191,11 @@
 						<layout align="top" height="25" margins="{bottom=10}">
 							<LabelEditMid text="D.M.A." field="dma"/>
 						</layout>
-						<layout align="top" height="25" margins="{bottom=5}">
+						<layout align="top" height="25" margins="{bottom=0}">
 							<LabelEditMid text="D. Total" field="def_total"/>
+						</layout>
+						<layout align="top" height="25" margins="{top=0}">
+							<checkBox left="0" top="0" width="190" height="25" field="doubleRoll" text="Usar dois atributos na rolagem." fontSize="12" hint="Clique no primeiro e depois no segundo. "/>
 						</layout>
 					</layout>
 				</layout>
