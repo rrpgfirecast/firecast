@@ -215,6 +215,28 @@
 			<magicInfoField text="LIVRO" field="livro"/>
 			<magicInfoField text="PÁGINA" field="pagina"/>
 		</flowLayout>
+		<button align="top" height="25" text="Exibir">
+			<event name="onClick">
+				local txt = "\n";
+				local node = self.popMagia.node;
+				if (node.nomeMagia ~= nil) then txt = txt .. node.nomeMagia .. "\n" end;
+				if (node.escola ~= nil) then txt = txt .. node.escola .. "\n" end;
+				if (node.componentes ~= nil) then txt = txt .. "Componentes: " .. node.componentes .. "\n" end;
+				if (node.execucao ~= nil) then txt = txt .. "Execução: " .. node.execucao .. "\n" end;
+				if (node.alcance ~= nil) then txt = txt .. "Alcance: " .. node.alcance .. "\n" end;
+				if (node.alvo ~= nil) then txt = txt .. "Alvo: " .. node.alvo .. "\n" end;
+				if (node.duracao ~= nil) then txt = txt .. "Duração: " .. node.duracao .. "\n" end;
+				if (node.tr ~= nil) then txt = txt .. "Teste de Resistência: " .. node.tr .. "\n" end;
+				if (node.rm ~= nil) then txt = txt .. "Resistência a Magia: " .. node.rm .. "\n" end;
+				if (node.livro ~= nil) then txt = txt .. "Livro: " .. node.livro .. " " .. (node.pagina or "") .. "\n" end;
+				if (node.descricao ~= nil) then txt = txt .. node.descricao end;
+
+				local mesa = Firecast.getMesaDe(node);
+				if mesa ~= nil then
+					   mesa.activeChat:enviarMensagem(txt);
+				end;
+			</event>
+		</button>
 		
 		<textEditor align="client" field="descricao" class=""/>
 	</popup>
@@ -224,6 +246,61 @@
 			<magicInfoField text="ESCOLA" field="escola"/>
 			<flowPart minWidth="30" maxWidth="35" height="35">
 				<button align="client" text="+" onClick="self.rclFactors:append();"/>
+			</flowPart>
+			<flowPart minWidth="30" maxWidth="35" height="35">
+				<button align="client" text="Exibir" fontSize="10">
+					<event name="onClick">
+						local txt = "\n";
+						local node = self.popMagiaEpica.node;
+						if (node.nomeMagia ~= nil) then txt = txt .. node.nomeMagia .. " CD: " .. (node.idMagia or "?") .. "\n"  end;
+						if (node.escola ~= nil) then txt = txt .. node.escola .. "\n" end;
+						if (node.componentes ~= nil) then txt = txt .. "Componentes: " .. node.componentes .. "\n" end;
+						if (node.execucao ~= nil) then txt = txt .. "Execução: " .. node.execucao .. "\n" end;
+						if (node.alcance ~= nil) then txt = txt .. "Alcance: " .. node.alcance .. "\n" end;
+						if (node.alvo ~= nil) then txt = txt .. "Alvo: " .. node.alvo .. "\n" end;
+						if (node.duracao ~= nil) then txt = txt .. "Duração: " .. node.duracao .. "\n" end;
+						if (node.tr ~= nil) then txt = txt .. "Teste de Resistência: " .. node.tr .. "\n" end;
+						if (node.rm ~= nil) then txt = txt .. "Resistência a Magia: " .. node.rm .. "\n" end;
+
+						-- Organize rcl in groups [seed, factor, mult, pen]
+						local factors = {};
+						factors[0] = "";
+						factors[1] = "";
+						factors[2] = "";
+						factors[3] = "";
+
+						local spells = NDB.getChildNodes(node.campoDosFatores); 
+						for i=1, #spells, 1 do
+							local spell = spells[i];
+							local txt = "" .. (spell.custo or "");
+							local tipo = string.sub(txt, 1, 1);
+
+							local index = 0;
+							if tipo=="+" then index = 1 end;
+							if tipo=="x" then index = 2 end;
+							if tipo=="-" then index = 3 end;
+
+							if factors[index] == "" then 
+								factors[index] = (spell.fator or "") .. " (CD " .. (spell.custo or 0) .. ")";
+							else 
+								factors[index] = factors[index] .. ", " .. (spell.fator or "") .. " (CD " .. (spell.custo or 0) .. ")";
+							end;
+						end;
+
+						if (factors[0] ~= "") then txt = txt .. "Palavras de Poder: " .. factors[0] .. ".\n" end;
+						if (factors[1] ~= "") then txt = txt .. "Fatores: " .. factors[1] .. ".\n" end;
+						if (factors[2] ~= "") then txt = txt .. "Multiplicadores: " .. factors[2] .. ".\n" end;
+						if (factors[3] ~= "") then txt = txt .. "Atenuadores: " .. factors[3] .. ".\n" end;
+
+						-- spell description
+						if (node.descricao ~= nil) then txt = txt .. node.descricao end;
+
+						local mesa = Firecast.getMesaDe(node);
+						if mesa ~= nil then
+							   mesa.activeChat:enviarMensagem(txt);
+						end;
+					</event>
+				</button>
 			</flowPart>
 			<flowLineBreak/>
 			<magicInfoField text="COMPONENTES" field="componentes"/>

@@ -2,15 +2,9 @@
 Proximas Versões
 + Tiro Multiplo Aprimorado pra ataques avançados. 
 + Dar uma olhada nas questões de ajuste de tamanho da ficha para telas pequenas.
-+ Campo de Magia para pontos de sombra.
++ Campo de Magia para pontos de sombra.  
++ Campo de Magia para cristais/essencias.
 + Exportar ficha para texto (completo/simples).
-
-Versão 3.4
-- Nova Aba de Magia.
-- Botão para por as pericias segundo o padrão da mesa RPGmeister.
-- Espaço para bônus de competencia, intuição e sorte nas pericias. 
-- Contador de uso para habilidades. 
-- Campo de efeitos [junto com equipamentos].
 
 Versão 3.3
 - Campos editaveis invisiveis tem retangulo diferenciado agora. 
