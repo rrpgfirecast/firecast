@@ -8,5 +8,6 @@ if re < 0 then teste = "3d6"..re end;
 local resultado = rolar(teste, "Reação") + 1;
 local table = {"Disastrous", "Very Bad", "Very Bad", "Very Bad", "Bad", "Bad", "Bad", "Poor", "Poor", "Poor", "Neutra", "Neutra", "Neutra", "Good", "Good", "Good", "Very Good", "Very Good", "Very Good", "Excellent"};
 if resultado > 20 then resultado = 20 end;
+if resultado < 1 then resultado = 1 end;
 
 enviar(table[resultado]);
