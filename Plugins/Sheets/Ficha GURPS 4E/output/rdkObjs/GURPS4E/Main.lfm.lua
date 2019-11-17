@@ -711,11 +711,11 @@ local function constructNew_frmTemplate()
     obj.flowLayout4:setAutoHeight(true);
     obj.flowLayout4:setMinScaledWidth(120);
     obj.flowLayout4:setMaxScaledWidth(240);
-    obj.flowLayout4:setMargins({right=10});
+    obj.flowLayout4:setMargins({right=0});
     obj.flowLayout4:setHorzAlign("center");
     obj.flowLayout4:setVertAlign("center");
     obj.flowLayout4:setMaxControlsPerLine(1);
-    obj.flowLayout4:setFrameStyle("frames/panel1/frame.xml");
+    obj.flowLayout4:setFrameStyle("frames/panel1/frameSmall.xml");
     obj.flowLayout4:setName("flowLayout4");
     obj.flowLayout4:setStepSizes({310, 420, 640, 760, 1150});
 
@@ -821,10 +821,10 @@ local function constructNew_frmTemplate()
 
     obj.flowPart7 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart7:setParent(obj.flowLayout5);
-    obj.flowPart7:setMinWidth(60);
-    obj.flowPart7:setMaxWidth(60);
-    obj.flowPart7:setMargins({top=30});
-    obj.flowPart7:setHeight(60);
+    obj.flowPart7:setMinWidth(30);
+    obj.flowPart7:setMaxWidth(30);
+    obj.flowPart7:setMargins({top=60});
+    obj.flowPart7:setHeight(30);
     obj.flowPart7:setFrameStyle("");
     obj.flowPart7:setName("flowPart7");
     obj.flowPart7:setVertAlign("leading");
@@ -833,7 +833,7 @@ local function constructNew_frmTemplate()
     obj.edit9:setParent(obj.flowPart7);
     obj.edit9:setAlign("left");
     obj.edit9:setField("atributos_pv");
-    obj.edit9:setWidth(60);
+    obj.edit9:setWidth(30);
     obj.edit9:setHorzTextAlign("center");
     obj.edit9:setTransparent(true);
     obj.edit9:setName("edit9");
@@ -942,10 +942,10 @@ local function constructNew_frmTemplate()
 
     obj.flowPart10 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart10:setParent(obj.flowLayout6);
-    obj.flowPart10:setMinWidth(60);
-    obj.flowPart10:setMaxWidth(60);
-    obj.flowPart10:setMargins({top=30});
-    obj.flowPart10:setHeight(60);
+    obj.flowPart10:setMinWidth(30);
+    obj.flowPart10:setMaxWidth(30);
+    obj.flowPart10:setMargins({top=60});
+    obj.flowPart10:setHeight(30);
     obj.flowPart10:setFrameStyle("");
     obj.flowPart10:setName("flowPart10");
     obj.flowPart10:setVertAlign("leading");
@@ -954,7 +954,7 @@ local function constructNew_frmTemplate()
     obj.edit13:setParent(obj.flowPart10);
     obj.edit13:setAlign("left");
     obj.edit13:setField("atributos_vt");
-    obj.edit13:setWidth(60);
+    obj.edit13:setWidth(30);
     obj.edit13:setHorzTextAlign("center");
     obj.edit13:setTransparent(true);
     obj.edit13:setName("edit13");
@@ -1063,10 +1063,10 @@ local function constructNew_frmTemplate()
 
     obj.flowPart13 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart13:setParent(obj.flowLayout7);
-    obj.flowPart13:setMinWidth(60);
-    obj.flowPart13:setMaxWidth(60);
-    obj.flowPart13:setMargins({top=30});
-    obj.flowPart13:setHeight(60);
+    obj.flowPart13:setMinWidth(30);
+    obj.flowPart13:setMaxWidth(30);
+    obj.flowPart13:setMargins({top=60});
+    obj.flowPart13:setHeight(30);
     obj.flowPart13:setFrameStyle("");
     obj.flowPart13:setName("flowPart13");
     obj.flowPart13:setVertAlign("leading");
@@ -1075,7 +1075,7 @@ local function constructNew_frmTemplate()
     obj.edit17:setParent(obj.flowPart13);
     obj.edit17:setAlign("left");
     obj.edit17:setField("atributos_per");
-    obj.edit17:setWidth(60);
+    obj.edit17:setWidth(30);
     obj.edit17:setHorzTextAlign("center");
     obj.edit17:setTransparent(true);
     obj.edit17:setName("edit17");
@@ -1184,10 +1184,10 @@ local function constructNew_frmTemplate()
 
     obj.flowPart16 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.flowPart16:setParent(obj.flowLayout8);
-    obj.flowPart16:setMinWidth(60);
-    obj.flowPart16:setMaxWidth(60);
-    obj.flowPart16:setMargins({top=30});
-    obj.flowPart16:setHeight(60);
+    obj.flowPart16:setMinWidth(30);
+    obj.flowPart16:setMaxWidth(30);
+    obj.flowPart16:setMargins({top=60});
+    obj.flowPart16:setHeight(30);
     obj.flowPart16:setFrameStyle("");
     obj.flowPart16:setName("flowPart16");
     obj.flowPart16:setVertAlign("leading");
@@ -1196,7 +1196,7 @@ local function constructNew_frmTemplate()
     obj.edit21:setParent(obj.flowPart16);
     obj.edit21:setAlign("left");
     obj.edit21:setField("atributos_pf");
-    obj.edit21:setWidth(60);
+    obj.edit21:setWidth(30);
     obj.edit21:setHorzTextAlign("center");
     obj.edit21:setTransparent(true);
     obj.edit21:setName("edit21");

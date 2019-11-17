@@ -49,15 +49,15 @@
 			<flowLineBreak/>
 
 			<!-- Atributos Primarios -->
-			<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="120" maxScaledWidth="240" margins="{right=10}" horzAlign="center" vertAlign="center" maxControlsPerLine="1" frameStyle="frames/panel1/frame.xml">
+			<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="120" maxScaledWidth="240" margins="{right=0}" horzAlign="center" vertAlign="center" maxControlsPerLine="1" frameStyle="frames/panel1/frameSmall.xml">
 				<flowLayout height="140" class="oneLineTile" minScaledWidth="120" maxScaledWidth="240" horzAlign="center" maxControlsPerLine="3">
 					<boxAtributo titulo="ST" field="st"/>
 					<flowPart stepSizes="{105}" minScaledWidth="75" height="140" margins="{top=0}" frameStyle="frames/panel4transp/frame.xml">
 						<label align="top" text="PV" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 						<edit align="client" class="atributo transparente" field="atributos_mod_pv" fontSize="30"/>	
 					</flowPart>	
-					<flowPart minWidth="60" maxWidth="60" margins="{top=30}" height="60" frameStyle="">
-						<edit align="left" field="atributos_pv" width="60" horzTextAlign="center" transparent="true"/>
+					<flowPart minWidth="30" maxWidth="30" margins="{top=60}" height="30" frameStyle="">
+						<edit align="left" field="atributos_pv" width="30" horzTextAlign="center" transparent="true"/>
 					</flowPart>
 				</flowLayout>
 
@@ -67,8 +67,8 @@
 						<label align="top" text="Vontade" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 						<edit align="client" class="atributo transparente" field="atributos_mod_vt" fontSize="30"/>	
 					</flowPart>	
-					<flowPart minWidth="60" maxWidth="60" margins="{top=30}" height="60" frameStyle="">
-						<edit align="left" field="atributos_vt" width="60" horzTextAlign="center" transparent="true"/>
+					<flowPart minWidth="30" maxWidth="30" margins="{top=60}" height="30" frameStyle="">
+						<edit align="left" field="atributos_vt" width="30" horzTextAlign="center" transparent="true"/>
 					</flowPart>
 				</flowLayout>
 
@@ -78,8 +78,8 @@
 						<label align="top" text="Percepção" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 						<edit align="client" class="atributo transparente" field="atributos_mod_per" fontSize="30"/>	
 					</flowPart>	
-					<flowPart minWidth="60" maxWidth="60" margins="{top=30}" height="60" frameStyle="">
-						<edit align="left" field="atributos_per" width="60" horzTextAlign="center" transparent="true"/>
+					<flowPart minWidth="30" maxWidth="30" margins="{top=60}" height="30" frameStyle="">
+						<edit align="left" field="atributos_per" width="30" horzTextAlign="center" transparent="true"/>
 					</flowPart>
 				</flowLayout>
 
@@ -89,8 +89,8 @@
 						<label align="top" text="PF" height="20" fontSize="9" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 						<edit align="client" class="atributo transparente" field="atributos_mod_pf" fontSize="30"/>	
 					</flowPart>	
-					<flowPart minWidth="60" maxWidth="60" margins="{top=30}" height="60" frameStyle="">
-						<edit align="left" field="atributos_pf" width="60" horzTextAlign="center" transparent="true"/>
+					<flowPart minWidth="30" maxWidth="30" margins="{top=60}" height="30" frameStyle="">
+						<edit align="left" field="atributos_pf" width="30" horzTextAlign="center" transparent="true"/>
 					</flowPart>
 				</flowLayout>
 
