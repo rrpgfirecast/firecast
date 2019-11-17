@@ -531,7 +531,7 @@ local function constructNew_frmEquipamentos()
 
     obj.label16 = GUI.fromHandle(_obj_newObject("label"));
     obj.label16:setParent(obj.layout28);
-    obj.label16:setText("Intensidade");
+    obj.label16:setText("Intensidade/Bônus");
     obj.label16:setWidth(125);
     obj.label16:setHorzTextAlign("leading");
     obj.label16:setFontSize(13);
@@ -586,7 +586,7 @@ local function constructNew_frmEquipamentos()
 
     obj.label17 = GUI.fromHandle(_obj_newObject("label"));
     obj.label17:setParent(obj.layout30);
-    obj.label17:setText("Mão Direita");
+    obj.label17:setText("Armadura");
     obj.label17:setAlign("top");
     obj.label17:setHeight(25);
     obj.label17:setHorzTextAlign("center");
@@ -624,7 +624,7 @@ local function constructNew_frmEquipamentos()
     obj.edit13 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit13:setParent(obj.layout33);
     obj.edit13:setTop(20);
-    obj.edit13:setField("right_nome");
+    obj.edit13:setField("armor_nome");
     obj.edit13:setWidth(125);
     obj.edit13:setHeight(25);
     obj.edit13:setName("edit13");
@@ -638,7 +638,7 @@ local function constructNew_frmEquipamentos()
 
     obj.label19 = GUI.fromHandle(_obj_newObject("label"));
     obj.label19:setParent(obj.layout34);
-    obj.label19:setText("Dano/Def");
+    obj.label19:setText("Def");
     obj.label19:setWidth(75);
     obj.label19:setHorzTextAlign("leading");
     obj.label19:setFontSize(13);
@@ -647,7 +647,7 @@ local function constructNew_frmEquipamentos()
     obj.edit14 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit14:setParent(obj.layout34);
     obj.edit14:setTop(20);
-    obj.edit14:setField("right_def");
+    obj.edit14:setField("armor_def");
     obj.edit14:setWidth(75);
     obj.edit14:setHeight(25);
     obj.edit14:setName("edit14");
@@ -661,7 +661,7 @@ local function constructNew_frmEquipamentos()
 
     obj.label20 = GUI.fromHandle(_obj_newObject("label"));
     obj.label20:setParent(obj.layout35);
-    obj.label20:setText("Intensidade");
+    obj.label20:setText("Bônus");
     obj.label20:setWidth(125);
     obj.label20:setHorzTextAlign("leading");
     obj.label20:setFontSize(13);
@@ -670,7 +670,7 @@ local function constructNew_frmEquipamentos()
     obj.edit15 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit15:setParent(obj.layout35);
     obj.edit15:setTop(20);
-    obj.edit15:setField("right_bonus");
+    obj.edit15:setField("armor_bonus");
     obj.edit15:setWidth(125);
     obj.edit15:setHeight(25);
     obj.edit15:setName("edit15");
@@ -678,7 +678,7 @@ local function constructNew_frmEquipamentos()
     obj.textEditor5 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor5:setParent(obj.layout31);
     obj.textEditor5:setAlign("client");
-    obj.textEditor5:setField("right_desc");
+    obj.textEditor5:setField("armor_desc");
     obj.textEditor5:setName("textEditor5");
 
     obj.layout36 = GUI.fromHandle(_obj_newObject("layout"));
@@ -701,7 +701,7 @@ local function constructNew_frmEquipamentos()
     obj.image5:setParent(obj.rectangle7);
     obj.image5:setWidth(75);
     obj.image5:setHeight(100);
-    obj.image5:setField("right_pic");
+    obj.image5:setField("armor_pic");
     obj.image5:setEditable(true);
     obj.image5:setStyle("autoFit");
     obj.image5:setMargins({left=2, right=2, top=2, bottom=2});
@@ -716,7 +716,7 @@ local function constructNew_frmEquipamentos()
 
     obj.label21 = GUI.fromHandle(_obj_newObject("label"));
     obj.label21:setParent(obj.layout37);
-    obj.label21:setText("Armadura");
+    obj.label21:setText("Mão Direita");
     obj.label21:setAlign("top");
     obj.label21:setHeight(25);
     obj.label21:setHorzTextAlign("center");
@@ -754,7 +754,7 @@ local function constructNew_frmEquipamentos()
     obj.edit16 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit16:setParent(obj.layout40);
     obj.edit16:setTop(20);
-    obj.edit16:setField("armor_nome");
+    obj.edit16:setField("right_nome");
     obj.edit16:setWidth(125);
     obj.edit16:setHeight(25);
     obj.edit16:setName("edit16");
@@ -768,7 +768,7 @@ local function constructNew_frmEquipamentos()
 
     obj.label23 = GUI.fromHandle(_obj_newObject("label"));
     obj.label23:setParent(obj.layout41);
-    obj.label23:setText("Def");
+    obj.label23:setText("Dano/Def");
     obj.label23:setWidth(75);
     obj.label23:setHorzTextAlign("leading");
     obj.label23:setFontSize(13);
@@ -777,7 +777,7 @@ local function constructNew_frmEquipamentos()
     obj.edit17 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit17:setParent(obj.layout41);
     obj.edit17:setTop(20);
-    obj.edit17:setField("armor_def");
+    obj.edit17:setField("right_def");
     obj.edit17:setWidth(75);
     obj.edit17:setHeight(25);
     obj.edit17:setName("edit17");
@@ -791,7 +791,7 @@ local function constructNew_frmEquipamentos()
 
     obj.label24 = GUI.fromHandle(_obj_newObject("label"));
     obj.label24:setParent(obj.layout42);
-    obj.label24:setText("Bônus");
+    obj.label24:setText("Intensidade/Bônus");
     obj.label24:setWidth(125);
     obj.label24:setHorzTextAlign("leading");
     obj.label24:setFontSize(13);
@@ -800,7 +800,7 @@ local function constructNew_frmEquipamentos()
     obj.edit18 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit18:setParent(obj.layout42);
     obj.edit18:setTop(20);
-    obj.edit18:setField("armor_bonus");
+    obj.edit18:setField("right_bonus");
     obj.edit18:setWidth(125);
     obj.edit18:setHeight(25);
     obj.edit18:setName("edit18");
@@ -808,7 +808,7 @@ local function constructNew_frmEquipamentos()
     obj.textEditor6 = GUI.fromHandle(_obj_newObject("textEditor"));
     obj.textEditor6:setParent(obj.layout38);
     obj.textEditor6:setAlign("client");
-    obj.textEditor6:setField("armor_desc");
+    obj.textEditor6:setField("right_desc");
     obj.textEditor6:setName("textEditor6");
 
     obj.layout43 = GUI.fromHandle(_obj_newObject("layout"));
@@ -831,7 +831,7 @@ local function constructNew_frmEquipamentos()
     obj.image6:setParent(obj.rectangle8);
     obj.image6:setWidth(75);
     obj.image6:setHeight(100);
-    obj.image6:setField("armor_pic");
+    obj.image6:setField("right_pic");
     obj.image6:setEditable(true);
     obj.image6:setStyle("autoFit");
     obj.image6:setMargins({left=2, right=2, top=2, bottom=2});
@@ -1596,12 +1596,12 @@ local function constructNew_frmEquipamentos()
 
     obj._e_event4 = obj.image5:addEventListener("onStartDrag",
         function (_, drag, x, y)
-            drag:addData("imageURL", sheet.right_pic);
+            drag:addData("imageURL", sheet.armor_pic);
         end, obj);
 
     obj._e_event5 = obj.image6:addEventListener("onStartDrag",
         function (_, drag, x, y)
-            drag:addData("imageURL", sheet.armor_pic);
+            drag:addData("imageURL", sheet.right_pic);
         end, obj);
 
     obj._e_event6 = obj.image7:addEventListener("onStartDrag",

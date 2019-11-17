@@ -53,15 +53,15 @@
 			<rectangle color="black" align="top" height="175" margins="{bottom=5}">
 				<layout align="left" width="400" margins="{right=25}">
 					<label text="Mão Esquerda" align="top" height="25" horzTextAlign="center"/>
-					<Equipamento field="left" text="Dano/Def" text2="Intensidade"/>
-				</layout>
-				<layout align="left" width="400" margins="{right=25}">
-					<label text="Mão Direita" align="top" height="25" horzTextAlign="center"/>
-					<Equipamento field="right" text="Dano/Def" text2="Intensidade"/>
+					<Equipamento field="left" text="Dano/Def" text2="Intensidade/Bônus"/>
 				</layout>
 				<layout align="left" width="400" margins="{right=25}">
 					<label text="Armadura" align="top" height="25" horzTextAlign="center"/>
 					<Equipamento field="armor" text="Def" text2="Bônus"/>
+				</layout>
+				<layout align="left" width="400" margins="{right=25}">
+					<label text="Mão Direita" align="top" height="25" horzTextAlign="center"/>
+					<Equipamento field="right" text="Dano/Def" text2="Intensidade/Bônus"/>
 				</layout>
 			</rectangle>
 

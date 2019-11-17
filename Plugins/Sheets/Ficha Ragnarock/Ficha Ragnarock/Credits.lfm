@@ -159,6 +159,6 @@
 		
 		<label left="555" top="400" width="200" height="20" text="Conheça as Mesas:"/>
 		<button left="555" top="425" width="100" text="RPGmeister" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=64070');" />
-		<button left="667" top="425" width="125" text="Ragnarok" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=1063');" />
+		<button left="667" top="425" width="125" text="Ragnarök" onClick="GUI.openInBrowser('https://my.firecastrpg.com/a?a=pagRWEMesaInfo.actInfoMesa&amp;mesaid=1063');" />
 	</scrollBox>
 </form>
