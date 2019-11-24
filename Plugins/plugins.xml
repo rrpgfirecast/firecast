@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-    <element id="Ambesek.Ragnarock" name="Ficha Ragnarok" url="https://github.com/rrpgfirecast/fihttps://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true" fileName="Ficha Ragnarock.rpk" repositoryPath="Plugins/Sheets/Ficha Ragnarock" author="Ambesek" description="Ficha para um sistema proprio de Ragnarock." version="0.1" compilationDate="29102018135431" compilationDigest="3b07d454d306f61189560588d4333b766f38dcc5">
+    <element id="Ambesek.Ragnarock" name="Ficha Ragnarok" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Ragnarock/output/Ficha%20Ragnarock.rpk?raw=true" fileName="Ficha Ragnarock.rpk" repositoryPath="Plugins/Sheets/Ficha Ragnarock" author="Ambesek" description="Ficha para um sistema proprio de Ragnarock." version="0.1" compilationDate="29102018135431" compilationDigest="3b07d454d306f61189560588d4333b766f38dcc5">
         <dataTypes>
             <dataType id="Ambesek.Ragnarock" title="Ficha Ragnarok"/>
         </dataTypes>
