@@ -33544,7 +33544,7 @@ local function constructNew_frmFichaRPGmeister()
             if self.rclListaDasClassesMagicas.selectedNode == nil and sheet ~= nil then
             						local nodes = NDB.getChildNodes(sheet.campoDosItens);               
             						if #nodes > 0 then
-            							self.rclListaDasClassesMagicas.selectedNode = nodes[1];
+            							--self.rclListaDasClassesMagicas.selectedNode = nodes[1];
             						end;
             						showHiddenLayouts();
             					end;

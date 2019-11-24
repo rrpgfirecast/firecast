@@ -43,7 +43,7 @@ local function constructNew_frmMagiasSeletor()
     obj.rectangle1:setLeft(30);
     obj.rectangle1:setWidth(170);
     obj.rectangle1:setHeight(30);
-    obj.rectangle1:setColor("808080");
+    obj.rectangle1:setColor("#808080");
     obj.rectangle1:setStrokeSize(1);
     obj.rectangle1:setHitTest(false);
     obj.rectangle1:setName("rectangle1");
