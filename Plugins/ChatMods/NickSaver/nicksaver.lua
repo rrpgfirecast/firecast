@@ -132,7 +132,9 @@ Firecast.Messaging.listen("MesaJoined",
 	end);
 
 Firecast.listen('HandleChatTextInput',
-	function(message)  
+	function(message)
+		if message.mesa ~= nil then initializeRoom(message.mesa) end;
+		-- ignore if is a command 
 		if message.texto:sub(1, 1) == "/" then return end;
         if message.isCommand then return end;
 
@@ -140,12 +142,14 @@ Firecast.listen('HandleChatTextInput',
 		local altered = false;
 		if config.rooms[message.mesa.codigoInterno].colorBaseSaved == true then
 			altered = true;
-			text = "[§K" .. config.rooms[message.mesa.codigoInterno].colorBase .. "] " .. text;
+			text = "[§K" .. config.rooms[message.mesa.codigoInterno].colorBase .. "]" .. text;
 		end;
 
 		if config.rooms[message.mesa.codigoInterno].colorTalkSaved == true then
 			altered = true;
-			text = string.gsub(text, "- ", "[§K".. config.rooms[message.mesa.codigoInterno].colorTalk .. "]- ");
+			text = string.gsub(text, "%-%-%- ", "[§K".. config.rooms[message.mesa.codigoInterno].colorTalk .. "]--- ");
+			text = string.gsub(text, "%-%- ", "[§K".. config.rooms[message.mesa.codigoInterno].colorTalk .. "]-- ");
+			text = string.gsub(text, "%- ", "[§K".. config.rooms[message.mesa.codigoInterno].colorTalk .. "]- ");
 		end;
 
         if config.rooms[message.mesa.codigoInterno].colorActSaved == true then
