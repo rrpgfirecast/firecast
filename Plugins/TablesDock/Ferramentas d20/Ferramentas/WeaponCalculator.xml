@@ -42,7 +42,8 @@
 								(tonumber(toolSheet.weaponMaterial) or 0);
 				if toolSheet.weaponOP then mundano = mundano + 300 end;
 
-				local bonus = (tonumber(toolSheet.weaponBonus) or 0)
+				local bonus = (tonumber(toolSheet.weaponBonus) or 0);
+				-- BASE PRICE: 2000
 				local magico = 	(bonus*bonus*2000) + 
 								(tonumber(toolSheet.weaponExtraPrice) or 0);
 

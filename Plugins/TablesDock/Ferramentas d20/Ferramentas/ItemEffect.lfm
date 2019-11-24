@@ -88,6 +88,7 @@
 
 			local bonus = tonumber(sheet.bonus) or 1;
 			local sel = tonumber(sheet.efeito) or 1;
+			-- BASE PRICE: 
 			local base = {1000,1000,1000,2000,2500,2000,1000,2000,100,50,1000,3000,30,20};
 
 			-- Calcular multiplicador base do tipo de bonus

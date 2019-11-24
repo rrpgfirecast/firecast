@@ -4,6 +4,7 @@
 		<![CDATA[
 		local magicListData = NDB.load("magicListData.xml");
 
+		-- lists
 		local schools = {"Abjuration","Conjuration","Calling","Creation","Healing","Summoning","Teleportation","Divination","Scrying","Enchantment","Charm","Compulsion","Evocation","Illusion","Figment","Glamer","Pattern","Phantasm","Shadow","Necromancy","Transmutation","Polymorph","Universal"};
 		local tags = {"Acid","Air","Chaotic","Cold","Darkness","Death","Earth","Electricity","Evil","Fear","Fire","Force","Good","Language-Dependent","Lawful","Light","Mind-Affecting","Sonic","Water"};
 		local components = {"V", "S", "M", "F", "DF", "XP"}
@@ -359,6 +360,9 @@
 					</tab>
 					<tab title="Cajado">
 						<import file="StaffCalculator.xml"/>
+					</tab>
+					<tab title="Cetro">
+						<import file="ScepterCalculator.xml"/>
 					</tab>
 				</tabControl>
 			</tab>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmScepterCalculator" align="client">
+	<scrollBox align="client">
+		<layout align="top" height="50">
+			<button align="left" width="50" text="+">
+				<event name="onClick">
+					self.scepterList:append();
+				</event>
+			</button>
+			<layout align="left" width="275">
+				<layout align="top" height="25">
+					<label align="left" width="75" horzTextAlign="center" text="Preço"/>
+					<label align="left" width="200" horzTextAlign="center" field="scepterPrice" formatFloat=",0.## PO"/>
+				</layout>
+				<layout align="top" height="25">
+					<label align="left" width="75" horzTextAlign="center" text="Custo"/>
+					<label align="left" width="100" horzTextAlign="center" field="scepterCost" formatFloat=",0.## PO"/>
+					<label align="left" width="100" horzTextAlign="center" field="scepterXP" formatFloat=",0.## XP"/>
+				</layout>
+			</layout>
+		</layout>
+		<recordList align="left" width="395" field="scepterList" name="scepterList" templateForm="frmScepterItem" minQt="1" margins="{right=5}">
+			<event name="onCompare">
+				return (tonumber(nodeA.order) or 0) - (tonumber(nodeB.order) or 0);
+        	</event>
+		</recordList>
+
+		<dataLink fields="{'sortScepter'}">
+			<event name="onChange">
+				if toolSheet==nil then return end;
+				if toolSheet.sortScepter ~= 1 then return end;
+				toolSheet.sortScepter = 0;
+				self.scepterList:sort();
+			</event>
+		</dataLink>
+	</scrollBox>
+</form>

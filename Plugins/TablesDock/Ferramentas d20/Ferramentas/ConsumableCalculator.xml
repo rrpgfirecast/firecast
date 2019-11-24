@@ -53,8 +53,11 @@
 				local material = (tonumber(toolSheet.consumableMaterial) or 0);
 				local xp = (tonumber(toolSheet.consumableXP) or 0);
 
+				-- BASE PRICE: 25
 				local pergaminho = nivel * nc * 25;
+				-- BASE PRICE: 50
 				local pocao = nivel * nc * 50;
+				-- BASE PRICE: 750
 				local varinha = nivel * nc * 750;
 
 				toolSheet.scrollPrice = pergaminho + material + xp * 5;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmStaffItem" height="50" margins="{top=1}">
+<form name="frmScepterItem" height="50" margins="{top=1}">
 	<rectangle align="top" color="#212121" height="25" visible="true">
 		<label align="left" width="50" text="Tipo" horzTextAlign="center"/>
 		<comboBox align="left" width="100" field="order" items="{'Primario','Secundario','Terciario'}" values="{'1','2','3'}" hint="Primario: Efeito principal do cajado. \n Secundario: efeito a 75% do preço. \n Terciario: efeito a 50% do preço. "/>
@@ -23,11 +23,9 @@
 
 	<rectangle align="top" color="#212121" height="25">
 		<label align="left" width="50" text="Material" horzTextAlign="center"/>
-		<edit align="left" width="40" field="material" type="number"/>
-		<label align="left" width="50" text="XP" horzTextAlign="center"/>
-		<edit align="left" width="40" field="xp" type="number"/>
+		<edit align="left" width="50" field="material" type="number"/>
 		<label align="left" width="50" text="Cargas" horzTextAlign="center"/>
-		<edit align="left" width="40" field="cargas" type="number" min="1"/>
+		<edit align="left" width="50" field="cargas" type="number" min="1"/>
 
 		<label align="left" width="40" text="Valor" horzTextAlign="center"/>
 		<label align="left" width="60" field="price" horzTextAlign="center" formatFloat=",0.## PO" fontSize="10"/>
@@ -48,8 +46,8 @@
 			local mults = {1, 0.75, 0.5};
 			local mult = mults[order] or 1;
 
-			-- BASE PRICE: 750
-			local price = nivel * nc * 750 * mult / cargas;
+			-- BASE PRICE: 1000
+			local price = nivel * nc * 1000 * mult / cargas;
 			local materialCost = material * 50 / cargas;
 			local xpCost = xp * 5 / cargas;
 
@@ -61,23 +59,23 @@
 			local sumPrice = 0;
 			local sumCost = 0;
 			local sumXP = 0;
-			local nodes = NDB.getChildNodes(node.staffList); 
+			local nodes = NDB.getChildNodes(node.scepterList); 
 			for i=1, #nodes, 1 do
 				sumPrice = sumPrice + (tonumber(nodes[i].price) or 0);
 				sumCost = sumCost + (tonumber(nodes[i].cost) or 0);
 				sumXP = sumXP + (tonumber(nodes[i].xpCost) or 0);
 			end;
 
-			node.staffPrice = sumPrice;
-			node.staffCost = sumCost;
-			node.staffXP = sumXP;
+			node.scepterPrice = sumPrice;
+			node.scepterCost = sumCost;
+			node.scepterXP = sumXP;
 		</event>
 	</dataLink>
 
 	<dataLink fields="{'order'}">
 		<event name="onChange">
 			if sheet==nil then return end;
-			toolSheet.sortStaff = 1;
+			toolSheet.sortScepter = 1;
 		</event>
 	</dataLink>
 </form>
