@@ -6,6 +6,9 @@ Proximas Versões
 + Campo de Magia para cristais/essencias.
 + Exportar ficha para texto (completo/simples).
 
+Versão 3.4
+* Nova aba de magias.  
+
 Versão 3.3
 - Campos editaveis invisiveis tem retangulo diferenciado agora. 
 - Aba de habilidades compativel com aparelhos moveis. 
