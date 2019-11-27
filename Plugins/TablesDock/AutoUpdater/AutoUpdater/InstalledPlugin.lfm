@@ -18,6 +18,16 @@
 				end;
 			</event>
 		</button>
+		<button align="right" width="25" name="openButton" visible="false" margins="{top = 12.5, bottom = 12.5, right = 5}">
+			<image align="client" showStyle="proportional" src="images/www.png"/>
+			<event name="onClick">
+				local url = sheet.url;
+				local pos = string.find(url, "/output");
+				if pos == nil then return end;
+				url =  string.sub(url, 1, pos);
+				GUI.openInBrowser(url);
+			</event>
+		</button>
 		<button align="right" width="25" name="removeButton" margins="{top = 12.5, bottom = 12.5, right = 5}">
 			<image align="client" showStyle="proportional" src="images/delete.png"/>
 			<event name="onClick">
@@ -38,8 +48,10 @@
 
 			if sheet.url==nil or sheet.url=="" then
 				self.downloadButton.visible = false;
+				self.openButton.visible = false;
 			else
 				self.downloadButton.visible = true;
+				self.openButton.visible = true;
 			end;
 		</event>
 	</dataLink>

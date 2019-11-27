@@ -7,8 +7,8 @@ require("ndb.lua");
 require("locale.lua");
 local __o_Utils = require("utils.lua");
 
-local function constructNew_frmMainAutoupdater()
-    local obj = GUI.fromHandle(_obj_newObject("form"));
+local function constructNew_autoupdaterPopup()
+    local obj = GUI.fromHandle(_obj_newObject("popupForm"));
     local self = obj;
     local sheet = nil;
 
@@ -26,12 +26,21 @@ local function constructNew_frmMainAutoupdater()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmMainAutoupdater");
-    obj:setFormType("tablesDock");
-    obj:setDataType("Ambesek.Auto.Updater");
-    obj:setTitle("Plugin Auto Updater");
-    obj:setAlign("client");
-    obj:setTheme("dark");
+    obj:setName("autoupdaterPopup");
+    obj:setFormType("undefined");
+    obj:setDataType("ambesek.autoupdater");
+    obj:setTitle("Auto Updater");
+    obj:setWidth(720);
+    obj:setHeight(300);
+
+    obj.frmMainAutoupdater = GUI.fromHandle(_obj_newObject("form"));
+    obj.frmMainAutoupdater:setParent(obj);
+    obj.frmMainAutoupdater:setName("frmMainAutoupdater");
+    obj.frmMainAutoupdater:setFormType("tablesDock");
+    obj.frmMainAutoupdater:setDataType("Ambesek.Auto.Updater");
+    obj.frmMainAutoupdater:setTitle("Plugin Auto Updater");
+    obj.frmMainAutoupdater:setAlign("client");
+    obj.frmMainAutoupdater:setTheme("dark");
 
 
         local function dump(o)
@@ -204,7 +213,7 @@ local function constructNew_frmMainAutoupdater()
 
 
     obj.scope = GUI.fromHandle(_obj_newObject("dataScopeBox"));
-    obj.scope:setParent(obj);
+    obj.scope:setParent(obj.frmMainAutoupdater);
     obj.scope:setName("scope");
     obj.scope:setAlign("client");
 
@@ -387,12 +396,17 @@ local function constructNew_frmMainAutoupdater()
     obj.label5:setField("loading");
     obj.label5:setName("label5");
 
-    obj._e_event0 = obj:addEventListener("onNodeChanged",
+    obj._e_event0 = obj:addEventListener("onShow",
         function (_)
             init();
         end, obj);
 
-    obj._e_event1 = obj:addEventListener("onNodeReady",
+    obj._e_event1 = obj.frmMainAutoupdater:addEventListener("onNodeChanged",
+        function (_)
+            init();
+        end, obj);
+
+    obj._e_event2 = obj.frmMainAutoupdater:addEventListener("onNodeReady",
         function (_)
             Internet.download("https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true",
                         function(stream, contentType)
@@ -435,7 +449,7 @@ local function constructNew_frmMainAutoupdater()
                         "checkForModification");
         end, obj);
 
-    obj._e_event2 = obj.installedPluginsList:addEventListener("onCompare",
+    obj._e_event3 = obj.installedPluginsList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             if nodeA.enabled and nodeB.enabled then 
             					return Utils.compareStringPtBr(nodeA.name, nodeB.name);
@@ -446,7 +460,7 @@ local function constructNew_frmMainAutoupdater()
             				end;
         end, obj);
 
-    obj._e_event3 = obj.edit1:addEventListener("onChange",
+    obj._e_event4 = obj.edit1:addEventListener("onChange",
         function (_)
             if sheet == nil then return end;
             				if self.scope.node == nil then return end;
@@ -482,7 +496,7 @@ local function constructNew_frmMainAutoupdater()
             				end;
         end, obj);
 
-    obj._e_event4 = obj.downloadedPluginsList:addEventListener("onCompare",
+    obj._e_event5 = obj.downloadedPluginsList:addEventListener("onCompare",
         function (_, nodeA, nodeB)
             if nodeA.enabled and nodeB.enabled then
             					if (tonumber(nodeA.priority) or 0) > (tonumber(nodeB.priority) or 0) then
@@ -499,12 +513,12 @@ local function constructNew_frmMainAutoupdater()
             				end;
         end, obj);
 
-    obj._e_event5 = obj.button1:addEventListener("onClick",
+    obj._e_event6 = obj.button1:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/README.md')
         end, obj);
 
-    obj._e_event6 = obj.button1:addEventListener("onClick",
+    obj._e_event7 = obj.button1:addEventListener("onClick",
         function (_)
             local install = Firecast.Plugins.installPlugin(rawget(updaterSheet,"stream"), true);
                             if install==false then
@@ -512,17 +526,18 @@ local function constructNew_frmMainAutoupdater()
                             end;
         end, obj);
 
-    obj._e_event7 = obj.button2:addEventListener("onClick",
+    obj._e_event8 = obj.button2:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('https://github.com/rrpgfirecast/firecast/blob/master/Plugins/TablesDock/AutoUpdater/output/AutoUpdater.rpk?raw=true')
         end, obj);
 
-    obj._e_event8 = obj.button3:addEventListener("onClick",
+    obj._e_event9 = obj.button3:addEventListener("onClick",
         function (_)
             GUI.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event9);
         __o_rrpgObjs.removeEventListenerById(self._e_event8);
         __o_rrpgObjs.removeEventListenerById(self._e_event7);
         __o_rrpgObjs.removeEventListenerById(self._e_event6);
@@ -554,6 +569,7 @@ local function constructNew_frmMainAutoupdater()
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
         if self.loader ~= nil then self.loader:destroy(); self.loader = nil; end;
         if self.scope ~= nil then self.scope:destroy(); self.scope = nil; end;
+        if self.frmMainAutoupdater ~= nil then self.frmMainAutoupdater:destroy(); self.frmMainAutoupdater = nil; end;
         if self.frmAvailable ~= nil then self.frmAvailable:destroy(); self.frmAvailable = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
         if self.scrollBox2 ~= nil then self.scrollBox2:destroy(); self.scrollBox2 = nil; end;
@@ -577,13 +593,13 @@ local function constructNew_frmMainAutoupdater()
     return obj;
 end;
 
-function newfrmMainAutoupdater()
+function newautoupdaterPopup()
     local retObj = nil;
     __o_rrpgObjs.beginObjectsLoading();
 
     __o_Utils.tryFinally(
       function()
-        retObj = constructNew_frmMainAutoupdater();
+        retObj = constructNew_autoupdaterPopup();
       end,
       function()
         __o_rrpgObjs.endObjectsLoading();
@@ -593,19 +609,18 @@ function newfrmMainAutoupdater()
     return retObj;
 end;
 
-local _frmMainAutoupdater = {
-    newEditor = newfrmMainAutoupdater, 
-    new = newfrmMainAutoupdater, 
-    name = "frmMainAutoupdater", 
-    dataType = "Ambesek.Auto.Updater", 
-    formType = "tablesDock", 
-    formComponentName = "form", 
-    title = "Plugin Auto Updater", 
+local _autoupdaterPopup = {
+    newEditor = newautoupdaterPopup, 
+    new = newautoupdaterPopup, 
+    name = "autoupdaterPopup", 
+    dataType = "ambesek.autoupdater", 
+    formType = "undefined", 
+    formComponentName = "popupForm", 
+    title = "Auto Updater", 
     description=""};
 
-frmMainAutoupdater = _frmMainAutoupdater;
-Firecast.registrarForm(_frmMainAutoupdater);
-Firecast.registrarDataType(_frmMainAutoupdater);
-Firecast.registrarSpecialForm(_frmMainAutoupdater);
+autoupdaterPopup = _autoupdaterPopup;
+Firecast.registrarForm(_autoupdaterPopup);
+Firecast.registrarDataType(_autoupdaterPopup);
 
-return _frmMainAutoupdater;
+return _autoupdaterPopup;
