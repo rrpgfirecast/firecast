@@ -32,6 +32,30 @@
                 return false;
             end;
         end;
+
+        -- DEBUG FUNCTIONS
+
+        local function dump(o)
+           if type(o) == 'table' then
+              local s = '{ '
+              for k,v in pairs(o) do
+                 if type(k) ~= 'number' then k = '"'..k..'"' end
+                 s = s .. '['..k..'] = ' .. dump(v) .. ','
+              end
+              return s .. '} '
+           else
+              return tostring(o)
+           end
+        end
+
+        local function write(str)
+            local mesa = Firecast.getMesaDe(sheet);
+            if str~=nil then
+                mesa.activeChat:escrever(str);
+            else
+                mesa.activeChat:escrever("String nula");
+            end;
+        end;
         ]]> 
     </script>
     
@@ -55,8 +79,8 @@
         <tab title="Habilidades">
             <import file="04.Habilidades.xml"/>
         </tab>
-		<tab title="Magias">
-            <import file="05.Magias.lfm"/>
+        <tab title="Magias">
+            <import file="05.Magias.xml"/>
         </tab>
         <tab title="Equipamentos">
             <import file="06.Equipamentos2.xml"/>

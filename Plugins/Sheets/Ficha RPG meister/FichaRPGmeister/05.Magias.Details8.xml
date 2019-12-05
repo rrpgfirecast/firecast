@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout minWidth="300" maxWidth="350" width="330" height="400" autoHeight="true" adjustHeightToLine="true" maxColumns="6" padding="{left=5,right=5,top=5,bottom=5}"  horzAlign="center">
+
+	<flowPart minWidth="50" maxWidth="150" height="25"/>
+	<flowPart minWidth="50" maxWidth="150" height="25"/>
+	<TitleCenter text="CD"/>
+	<TitleCenter text="Bônus"/>
+	<TitleCenter text="Grimorio"/>
+
+	<flowLineBreak/>
+
+	<flowPart minWidth="50" maxWidth="150" height="25"/>
+	<flowPart minWidth="50" maxWidth="150" height="25"/>
+	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" field="atributoCD"/>
+	<ComboFlow items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" field="atributoBonus"/>
+	<LabelCenter field="grimorio"/>
+
+	<flowLineBreak/>
+
+	<TitleCenter text="NÍVEL"/>
+	<TitleCenter text="TOTAL"/>
+	<TitleCenter text="BASE"/>
+	<TitleCenter text="BÔNUS"/>
+	<TitleCenterSize text="CONHECIDAS" fontSize="8"/>
+
+	<flowLineBreak/>
+
+	<magicLevel nivel="10"/>
+	<magicLevel nivel="11"/>
+	<magicLevel nivel="12"/>
+	<magicLevel nivel="13"/>
+	<magicLevel nivel="14"/>
+	<magicLevel nivel="15"/>
+	<magicLevel nivel="16"/>
+	<magicLevel nivel="17"/>
+	<magicLevel nivel="18"/>
+	<magicLevel nivel="19"/>
+
+	<flowLineBreak/>
+
+	<flowPart minWidth="50" maxWidth="150" height="25">
+		<button align="client" text="Exportar Magias" >
+			<event name="onClick">
+				sheet.ieNode = {self.boxDetalhesDaMagia.node.campoDasMagias10,self.boxDetalhesDaMagia.node.campoDasMagias11,self.boxDetalhesDaMagia.node.campoDasMagias12,self.boxDetalhesDaMagia.node.campoDasMagias13,self.boxDetalhesDaMagia.node.campoDasMagias14,self.boxDetalhesDaMagia.node.campoDasMagias15,self.boxDetalhesDaMagia.node.campoDasMagias16,self.boxDetalhesDaMagia.node.campoDasMagias17,self.boxDetalhesDaMagia.node.campoDasMagias18,self.boxDetalhesDaMagia.node.campoDasMagias19}
+
+				local xml = NDB.exportXML(sheet.ieNode);
+
+				local export = {};
+				local bytes = Utils.binaryEncode(export, "utf8", xml);
+
+				local stream = Utils.newMemoryStream();
+				local bytes = stream:write(export);
+
+				Dialogs.saveFile("Salvar Ficha como XML", stream, "ficha.xml", "application/xml",
+					function()
+						stream:close();
+						showMessage("Lista Exportada.");
+					end);
+			</event>
+		</button>
+	</flowPart>
+	<flowPart minWidth="50" maxWidth="150" height="25">
+		<button align="client" text="Importar Magias" >
+			<event name="onClick">
+				Dialogs.openFile("Importar Ficha", "application/xml", false, 
+					function(arquivos)
+						local arq = arquivos[1];
+
+						local import = {};
+						local bytes = arq.stream:read(import, arq.stream.size);
+
+						local xml = Utils.binaryDecode(import, "utf8");
+
+						sheet.ieNode = {};
+						NDB.importXML(sheet.ieNode, xml);
+
+						self.boxDetalhesDaMagia.node.campoDasMagias10 = sheet.ieNode[1];
+						self.boxDetalhesDaMagia.node.campoDasMagias11 = sheet.ieNode[2];
+						self.boxDetalhesDaMagia.node.campoDasMagias12 = sheet.ieNode[3];
+						self.boxDetalhesDaMagia.node.campoDasMagias13 = sheet.ieNode[4];
+						self.boxDetalhesDaMagia.node.campoDasMagias14 = sheet.ieNode[5];
+						self.boxDetalhesDaMagia.node.campoDasMagias15 = sheet.ieNode[6];
+						self.boxDetalhesDaMagia.node.campoDasMagias16 = sheet.ieNode[7];
+						self.boxDetalhesDaMagia.node.campoDasMagias17 = sheet.ieNode[8];
+						self.boxDetalhesDaMagia.node.campoDasMagias18 = sheet.ieNode[9];
+						self.boxDetalhesDaMagia.node.campoDasMagias19 = sheet.ieNode[10];
+					end);
+			</event>
+		</button>
+	</flowPart>
+
+	<flowLineBreak/>
+
+	<TitleCenter text="Alcances"/>
+
+	<flowLineBreak/>
+
+	<TitleCenter text="Curto"/>
+	<TitleCenter text="Médio"/>
+	<TitleCenter text="Longo"/>
+
+	<flowLineBreak/>
+
+	<LabelCenter field="alcanceCurto"/>
+	<LabelCenter field="alcanceMedio"/>
+	<LabelCenter field="alcanceLongo"/>
+</flowLayout>
