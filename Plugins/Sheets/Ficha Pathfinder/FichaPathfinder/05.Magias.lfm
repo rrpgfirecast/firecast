@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaRPGmeister5M_svg" align="client" theme="dark" margins="{top=1}">
+<form name="frmFichaRPGmeister5M_svg" align="client" margins="{top=1}">
 	<style>#frmFichaRPGmeister5M_svg path {color: black; strokeColor: black; mode: stretch;} #frmFichaRPGmeister5M_svg label {fontColor: white; textTrimming: none; wordWrap: false; autoSize: true;}</style>
 	<scrollBox align="client">
 		<layout left="1205" top="0" width="30" height="30" margins="{bottom=4}">
@@ -11,7 +11,7 @@
 		</layout>
 		
 		<rectangle left="0" top="0" width="1200" height="46" color="gray"/>
-		<recordList name="rclListaDosItens" field="campoDosItens" templateForm="frmFichaRPGmeister5MM_svg" left="0" top="0" width="1200" height="46" selectable="true" layout="horizontal">
+		<recordList name="rclListaDosItens" field="campoDosItens" templateForm="frmMagiasSeletor" left="0" top="0" width="1200" height="46" selectable="true" layout="horizontal">
 			<event name="onSelect">
 				local node = self.rclListaDosItens.selectedNode;
 				self.boxDetalhesDoItem.node = node;
@@ -37,56 +37,17 @@
 				<event name="onClick">
 					local rolagem = Firecast.interpretarRolagem("1d20 +" .. self.boxDetalhesDoItem.node.NC);
 					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de conjurador de " .. (sheet.nome or "NOME"));
+					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de conjurador de " .. (sheet.nome or "PONHA UM NOME NO PERSONAGEM"));
 				</event>
 			</button>
-			<edit vertTextAlign="center" left="235" top="5" width="50" height="25" field="NC"/>
+			<edit vertTextAlign="center" left="235" top="5" width="100" height="25" field="NC"/>
 			
-			<label vertTextAlign="center" left="290" top="10" width="30" height="25" text="PM"/>
-			<edit vertTextAlign="center" left="325" top="5" width="50" height="25" field="PM"/>
-			<edit vertTextAlign="center" left="375" top="5" width="50" height="25" field="usos"/>
-
-			<button vertTextAlign="center" left="450" top="5" width="100" height="25" text="Concentração" fontSize="11">
-				<event name="onClick">
-					local concentracao = (tonumber(self.boxDetalhesDoItem.node.concentracao) or 0);
-
-					local rolagem = Firecast.interpretarRolagem("1d20 +" .. concentracao);
-					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-					mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de concentração de " .. (sheet.nome or "NOME"));
-				</event>
-			</button>
-			<rectangle left="550" top="5" width="50" height="25" color="black" strokeColor="white" strokeSize="1"/>
-			<label field="concentracao" left="555" top="10" width="40" height="25" vertTextAlign="center" horzTextAlign="center"/>
-
-			<comboBox vertTextAlign="center" horzTextAlign="center" left="600" top="5" width="60" height="25" field="atributoConcentracao" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR', '-'}" values="{'1', '2', '3', '4', '5', '6', '7'}" fontColor="white"/>
-			<edit vertTextAlign="center" left="660" top="5" width="50" height="25" field="concentracaoOutros"/>
-
-			<label vertTextAlign="center" left="720" top="10" width="35" height="25" text="Outros"/>
-			<edit vertTextAlign="center" left="765" top="5" width="435" height="25" field="magiasOutros"/>
-
-			<dataLink fields="{'NC', 'atributoConcentracao', 'concentracaoOutros'}">
-				<event name="onChange">
-					if sheet==nil then return end;
-					local concentracao = (tonumber(self.boxDetalhesDoItem.node.NC) or 0) + 
-										 (tonumber(self.boxDetalhesDoItem.node.concentracaoOutros) or 0);
-
-					if self.boxDetalhesDoItem.node.atributoConcentracao == "1" then
-						concentracao = concentracao + sheet.efetModFor;
-					elseif self.boxDetalhesDoItem.node.atributoConcentracao == "2" then
-						concentracao = concentracao + sheet.efetModDes;
-					elseif self.boxDetalhesDoItem.node.atributoConcentracao == "3" then
-						concentracao = concentracao + sheet.efetModCon;
-					elseif self.boxDetalhesDoItem.node.atributoConcentracao == "4" then
-						concentracao = concentracao + sheet.efetModInt;
-					elseif self.boxDetalhesDoItem.node.atributoConcentracao == "5" then
-						concentracao = concentracao + sheet.efetModSab;
-					elseif self.boxDetalhesDoItem.node.atributoConcentracao == "6" then
-						concentracao = concentracao + sheet.efetModCar;
-					end;
-
-					self.boxDetalhesDoItem.node.concentracao = concentracao;
-				</event>
-			</dataLink>
+			<label vertTextAlign="center" left="340" top="10" width="30" height="25" text="PM"/>
+			<edit vertTextAlign="center" left="375" top="5" width="100" height="25" field="PM"/>
+			<label vertTextAlign="center" left="480" top="10" width="30" height="25" text="Usos"/>
+			<edit vertTextAlign="center" left="515" top="5" width="100" height="25" field="usos"/>
+			<label vertTextAlign="center" left="620" top="10" width="35" height="25" text="Outros"/>
+			<edit vertTextAlign="center" left="665" top="5" width="535" height="25" field="magiasOutros"/>
 			
 			<script>
 				local function limpar()
@@ -135,11 +96,9 @@
 			
 			<template name="CirculoMagia">
 				<label vertTextAlign="center" left="10" top="3" width="25" height="22" text="$(num)"/>
-				<!--  if num ~= "0" then -->	
 				<edit vertTextAlign="center" left="45" top="0" width="30" height="25" field="total$(num)" type="number"/>
 				<edit vertTextAlign="center" left="85" top="0" width="30" height="25" field="base$(num)" type="number"/>
 				<label vertTextAlign="center" left="140" top="0" width="30" height="25" field="bonus$(num)"/>
-				<!-- end; -->
 				<dataLink fields="{'base$(num)', 'bonus$(num)'}">
 					<event name="onChange">
 						local node = self.boxDetalhesDoItem.node;
@@ -273,7 +232,7 @@
 					<comboBox left="260" top="0" width="60" height="25" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" field="atributoCD" fontColor="white"/>
 					
 					<rectangle left="210" top="0" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
-					<label left="211" top="0" width="30" height="25" field="grimorio" horzTextAlign="center"/>
+					<label left="210" top="0" width="30" height="25" field="grimorio" horzTextAlign="center"/>
 					<dataLink fields="{'conhecidas0', 'conhecidas1', 'conhecidas2', 'conhecidas3', 'conhecidas4', 'conhecidas5', 'conhecidas6', 'conhecidas7', 'conhecidas8', 'conhecidas9'}">
 						<event name="onChange">
 							if sheet~=nil then
@@ -473,7 +432,7 @@
 					<comboBox left="260" top="0" width="60" height="25" items="{'FOR', 'DES', 'CON', 'INT', 'SAB', 'CAR'}" values="{'1', '2', '3', '4', '5', '6'}" field="atributoCD" fontColor="white"/>
 					
 					<rectangle left="210" top="0" width="30" height="25" color="black" strokeColor="white" strokeSize="1"/>
-					<label left="211" top="0" width="30" height="25" field="grimorio" horzTextAlign="center"/>
+					<label left="210" top="0" width="30" height="25" field="grimorio" horzTextAlign="center"/>
 					<dataLink fields="{'conhecidas0', 'conhecidas1', 'conhecidas2', 'conhecidas3', 'conhecidas4', 'conhecidas5', 'conhecidas6', 'conhecidas7', 'conhecidas8', 'conhecidas9'}">
 						<event name="onChange">
 							if sheet~=nil then
@@ -689,23 +648,6 @@
 					<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
 				</flowPart>
 			</template>
-
-			<popup name="popMagia" width="250" height="350" backOpacity="0.4" autoScopeNode="false">
-				<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
-					<magicInfoField text="ESCOLA" field="escola"/>
-					<magicInfoField text="COMPONENTES" field="componentes"/>
-					<magicInfoField text="EXECUÇÃO" field="execucao"/>
-					<magicInfoField text="ALCANCE" field="alcance"/>
-					<magicInfoField text="ALVO" field="alvo"/>
-					<magicInfoField text="DURAÇÃO" field="duracao"/>
-					<magicInfoField text="TR" field="tr"/>
-					<magicInfoField text="RM" field="rm"/>
-					<magicInfoField text="LIVRO" field="livro"/>
-					<magicInfoField text="PÁGINA" field="pagina"/>
-				</flowLayout>
-				
-				<textEditor align="client" field="descricao" class=""/>
-			</popup>
 		</dataScopeBox>
 	</scrollBox>
 </form>

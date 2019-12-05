@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaRPGmeister3p_svg" width="435" height="25" theme="dark" margins="{top=2, bottom=2, right=10}">
+<form name="frmFichaRPGmeister3p_svg" width="435" height="25" margins="{top=2, bottom=2, right=10}">
 
 	<script> 
 		<![CDATA[			
@@ -85,13 +85,14 @@
 	<button left="385" top="1" width="23" height="23" text="i" onClick="showPericiaPopup();"/>
 	<button left="410" top="1" width="23" height="23" text="X" onClick="askForDelete();"/>
 
-	<dataLink fields="{'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'isClass'}">
+	<dataLink fields="{'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'competenciaPericia', 'intuicaoPericia', 'sortePericia', 'isClass'}">
 		<event name="onChange">
 			if sheet~= nil then
 				local node = NDB.getRoot(sheet);
 				local pen = (tonumber(node.penalidade) or 0)
 
-				local mod = (tonumber(sheet.atributoPericia) or 0) +
+				local mod = 0;
+				mod = (tonumber(sheet.atributoPericia) or 0) +
 							(tonumber(sheet.graduacaoPericia) or 0) +
 							(tonumber(sheet.penalidesPericia) or 0) +
 							(tonumber(sheet.racialPericia) or 0) +
@@ -101,6 +102,9 @@
 							(tonumber(sheet.outrosPericia) or 0) + 
 							(tonumber(sheet.talentosPericia) or 0) +
 							(tonumber(sheet.classePericia) or 0) +
+							(tonumber(sheet.competenciaPericia) or 0) +
+							(tonumber(sheet.intuicaoPericia) or 0) +
+							(tonumber(sheet.sortePericia) or 0) +
 							(tonumber(sheet.condicionalPericia) or 0);
 
 				if sheet.penalidadeArmadura then
@@ -137,6 +141,12 @@
 					mod = mod + (tonumber(nodes[i].graduacaoPericia) or 0) * mult;
 					path = path + (tonumber(nodes[i].graduacaoPericia) or 0);
 				end
+
+				if node.idiomasIsClass then
+					mod = mod + (tonumber(nodes.idiomasGrad) or 0);
+				else
+					mod = mod + (tonumber(nodes.idiomasGrad) or 0) * 2;
+				end;
 
 				node.pontosPericia = mod;
 				node.pontosPericiaPath = path;
