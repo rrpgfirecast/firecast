@@ -379,17 +379,14 @@ local function constructNew_frmTemplateDescription()
     obj.label16:setText("HISTORIA");
     obj.label16:setName("label16");
 
-    obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
-    obj.richEdit1:setParent(obj.layout3);
-    obj.richEdit1:setLeft(5);
-    obj.richEdit1:setTop(25);
-    obj.richEdit1:setWidth(815);
-    obj.richEdit1:setHeight(465);
-    obj.richEdit1:setField("background");
-    lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "#333333");
-    lfm_setPropAsString(obj.richEdit1, "defaultFontSize",  "12");
-    lfm_setPropAsString(obj.richEdit1, "defaultFontColor",  "white");
-    obj.richEdit1:setName("richEdit1");
+    obj.textEditor3 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor3:setParent(obj.layout3);
+    obj.textEditor3:setLeft(5);
+    obj.textEditor3:setTop(25);
+    obj.textEditor3:setWidth(815);
+    obj.textEditor3:setHeight(465);
+    obj.textEditor3:setField("background");
+    obj.textEditor3:setName("textEditor3");
 
     function obj:_releaseEvents()
     end;
@@ -404,7 +401,6 @@ local function constructNew_frmTemplateDescription()
         end;
 
         if self.label14 ~= nil then self.label14:destroy(); self.label14 = nil; end;
-        if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
         if self.edit4 ~= nil then self.edit4:destroy(); self.edit4 = nil; end;
         if self.label8 ~= nil then self.label8:destroy(); self.label8 = nil; end;
@@ -422,6 +418,7 @@ local function constructNew_frmTemplateDescription()
         if self.label7 ~= nil then self.label7:destroy(); self.label7 = nil; end;
         if self.edit7 ~= nil then self.edit7:destroy(); self.edit7 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
+        if self.textEditor3 ~= nil then self.textEditor3:destroy(); self.textEditor3 = nil; end;
         if self.edit3 ~= nil then self.edit3:destroy(); self.edit3 = nil; end;
         if self.edit12 ~= nil then self.edit12:destroy(); self.edit12 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;

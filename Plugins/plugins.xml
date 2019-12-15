@@ -113,7 +113,7 @@
             <dataType id="Ambesek.Nefertyne.Reinos" title="Ficha Reinos d20"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.GURPS" name="Ficha GURPS 4E" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true" fileName="Ficha GURPS 4E.rpk" repositoryPath="Sheets/Ficha GURPS 4E/" author="Ambesek" description="Ficha feita para o sistema GURPS 4ª Edição." version="0.9.3" compilationDate="27112019000034" compilationDigest="360de167c3b9eee24710b11a2c88f1a09f65acb0">
+    <element id="Ambesek.Nefertyne.GURPS" name="Ficha GURPS 4E" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20GURPS%204E/output/Ficha%20GURPS%204E.rpk?raw=true" fileName="Ficha GURPS 4E.rpk" repositoryPath="Sheets/Ficha GURPS 4E/" author="Ambesek" description="Ficha feita para o sistema GURPS 4ª Edição." version="0.9.4" compilationDate="27112019000034" compilationDigest="360de167c3b9eee24710b11a2c88f1a09f65acb0">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.GURPS" title="Ficha GURPS 4E"/>
         </dataTypes>

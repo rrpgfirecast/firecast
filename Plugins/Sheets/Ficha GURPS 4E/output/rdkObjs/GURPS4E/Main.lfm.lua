@@ -1339,18 +1339,28 @@ local function constructNew_frmTemplate()
 
     obj.flowLayout11 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout11:setParent(obj.flowLayout9);
-    obj.flowLayout11:setAutoHeight(true);
+    obj.flowLayout11:setHeight(10);
     obj.flowLayout11:setMinScaledWidth(290);
     obj.flowLayout11:setHorzAlign("center");
-    obj.flowLayout11:setMaxControlsPerLine(2);
-    obj.flowLayout11:setFrameStyle("frames/panel1/frame.xml");
     obj.flowLayout11:setName("flowLayout11");
     obj.flowLayout11:setStepSizes({310, 420, 640, 760, 1150});
     obj.flowLayout11:setMargins({left=1, right=1, top=2, bottom=2});
     obj.flowLayout11:setVertAlign("leading");
 
+    obj.flowLayout12 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout12:setParent(obj.flowLayout9);
+    obj.flowLayout12:setAutoHeight(true);
+    obj.flowLayout12:setMinScaledWidth(290);
+    obj.flowLayout12:setHorzAlign("center");
+    obj.flowLayout12:setMaxControlsPerLine(2);
+    obj.flowLayout12:setFrameStyle("frames/panel1/frame.xml");
+    obj.flowLayout12:setName("flowLayout12");
+    obj.flowLayout12:setStepSizes({310, 420, 640, 760, 1150});
+    obj.flowLayout12:setMargins({left=1, right=1, top=2, bottom=2});
+    obj.flowLayout12:setVertAlign("leading");
+
     obj.UpperGridCampo8 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.UpperGridCampo8:setParent(obj.flowLayout11);
+    obj.UpperGridCampo8:setParent(obj.flowLayout12);
     obj.UpperGridCampo8:setHeight(50);
     obj.UpperGridCampo8:setMinScaledWidth(100);
     obj.UpperGridCampo8:setMinWidth(100);
@@ -1395,7 +1405,7 @@ local function constructNew_frmTemplate()
 
 
     obj.UpperGridCampo9 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.UpperGridCampo9:setParent(obj.flowLayout11);
+    obj.UpperGridCampo9:setParent(obj.flowLayout12);
     obj.UpperGridCampo9:setHeight(50);
     obj.UpperGridCampo9:setMinScaledWidth(100);
     obj.UpperGridCampo9:setMinWidth(100);
@@ -1440,7 +1450,7 @@ local function constructNew_frmTemplate()
 
 
     obj.UpperGridCampo10 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.UpperGridCampo10:setParent(obj.flowLayout11);
+    obj.UpperGridCampo10:setParent(obj.flowLayout12);
     obj.UpperGridCampo10:setHeight(50);
     obj.UpperGridCampo10:setMinScaledWidth(100);
     obj.UpperGridCampo10:setMinWidth(100);
@@ -1485,7 +1495,7 @@ local function constructNew_frmTemplate()
 
 
     obj.UpperGridCampo11 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.UpperGridCampo11:setParent(obj.flowLayout11);
+    obj.UpperGridCampo11:setParent(obj.flowLayout12);
     obj.UpperGridCampo11:setHeight(50);
     obj.UpperGridCampo11:setMinScaledWidth(100);
     obj.UpperGridCampo11:setMinWidth(100);
@@ -1530,7 +1540,7 @@ local function constructNew_frmTemplate()
 
 
     obj.UpperGridCampo12 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.UpperGridCampo12:setParent(obj.flowLayout11);
+    obj.UpperGridCampo12:setParent(obj.flowLayout12);
     obj.UpperGridCampo12:setHeight(50);
     obj.UpperGridCampo12:setMinScaledWidth(100);
     obj.UpperGridCampo12:setMinWidth(100);
@@ -1575,7 +1585,7 @@ local function constructNew_frmTemplate()
 
 
     obj.UpperGridCampo13 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.UpperGridCampo13:setParent(obj.flowLayout11);
+    obj.UpperGridCampo13:setParent(obj.flowLayout12);
     obj.UpperGridCampo13:setHeight(50);
     obj.UpperGridCampo13:setMinScaledWidth(100);
     obj.UpperGridCampo13:setMinWidth(100);
@@ -1620,7 +1630,7 @@ local function constructNew_frmTemplate()
 
 
     obj.label17 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label17:setParent(obj.flowLayout11);
+    obj.label17:setParent(obj.flowLayout12);
     obj.label17:setAlign("bottom");
     obj.label17:setText("RESISTÊNCIA A DANO");
     obj.label17:setHeight(20);
@@ -1631,20 +1641,30 @@ local function constructNew_frmTemplate()
     obj.label17:setName("label17");
     obj.label17:setFontColor("white");
 
-    obj.flowLayout12 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout12:setParent(obj.flowLayout9);
-    obj.flowLayout12:setAutoHeight(true);
-    obj.flowLayout12:setMinScaledWidth(290);
-    obj.flowLayout12:setHorzAlign("center");
-    obj.flowLayout12:setMaxControlsPerLine(3);
-    obj.flowLayout12:setFrameStyle("frames/panel1/frame.xml");
-    obj.flowLayout12:setName("flowLayout12");
-    obj.flowLayout12:setStepSizes({310, 420, 640, 760, 1150});
-    obj.flowLayout12:setMargins({left=1, right=1, top=2, bottom=2});
-    obj.flowLayout12:setVertAlign("leading");
+    obj.flowLayout13 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout13:setParent(obj.flowLayout9);
+    obj.flowLayout13:setHeight(10);
+    obj.flowLayout13:setMinScaledWidth(290);
+    obj.flowLayout13:setHorzAlign("center");
+    obj.flowLayout13:setName("flowLayout13");
+    obj.flowLayout13:setStepSizes({310, 420, 640, 760, 1150});
+    obj.flowLayout13:setMargins({left=1, right=1, top=2, bottom=2});
+    obj.flowLayout13:setVertAlign("leading");
+
+    obj.flowLayout14 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout14:setParent(obj.flowLayout9);
+    obj.flowLayout14:setAutoHeight(true);
+    obj.flowLayout14:setMinScaledWidth(290);
+    obj.flowLayout14:setHorzAlign("center");
+    obj.flowLayout14:setMaxControlsPerLine(3);
+    obj.flowLayout14:setFrameStyle("frames/panel1/frame.xml");
+    obj.flowLayout14:setName("flowLayout14");
+    obj.flowLayout14:setStepSizes({310, 420, 640, 760, 1150});
+    obj.flowLayout14:setMargins({left=1, right=1, top=2, bottom=2});
+    obj.flowLayout14:setVertAlign("leading");
 
     obj.flowPart20 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart20:setParent(obj.flowLayout12);
+    obj.flowPart20:setParent(obj.flowLayout14);
     obj.flowPart20:setStepSizes({105});
     obj.flowPart20:setMinScaledWidth(75);
     obj.flowPart20:setHeight(120);
@@ -1677,7 +1697,7 @@ local function constructNew_frmTemplate()
     obj.edit25:setFontColor("white");
 
     obj.flowPart21 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart21:setParent(obj.flowLayout12);
+    obj.flowPart21:setParent(obj.flowLayout14);
     obj.flowPart21:setStepSizes({105});
     obj.flowPart21:setMinScaledWidth(75);
     obj.flowPart21:setHeight(120);
@@ -1710,7 +1730,7 @@ local function constructNew_frmTemplate()
     obj.edit26:setFontColor("white");
 
     obj.flowPart22 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart22:setParent(obj.flowLayout12);
+    obj.flowPart22:setParent(obj.flowLayout14);
     obj.flowPart22:setStepSizes({105});
     obj.flowPart22:setMinScaledWidth(75);
     obj.flowPart22:setHeight(120);
@@ -1743,7 +1763,7 @@ local function constructNew_frmTemplate()
     obj.edit27:setFontColor("white");
 
     obj.flowPart23 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart23:setParent(obj.flowLayout12);
+    obj.flowPart23:setParent(obj.flowLayout14);
     obj.flowPart23:setMinWidth(80);
     obj.flowPart23:setMaxWidth(160);
     obj.flowPart23:setMargins({top=10, left=15});
@@ -1764,7 +1784,7 @@ local function constructNew_frmTemplate()
     obj.edit28:setFontColor("white");
 
     obj.flowPart24 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart24:setParent(obj.flowLayout12);
+    obj.flowPart24:setParent(obj.flowLayout14);
     obj.flowPart24:setMinWidth(80);
     obj.flowPart24:setMaxWidth(160);
     obj.flowPart24:setMargins({top=10,left=15});
@@ -1785,7 +1805,7 @@ local function constructNew_frmTemplate()
     obj.edit29:setFontColor("white");
 
     obj.flowPart25 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart25:setParent(obj.flowLayout12);
+    obj.flowPart25:setParent(obj.flowLayout14);
     obj.flowPart25:setMinWidth(80);
     obj.flowPart25:setMaxWidth(160);
     obj.flowPart25:setMargins({top=10,left=15});
@@ -1806,7 +1826,7 @@ local function constructNew_frmTemplate()
     obj.edit30:setFontColor("white");
 
     obj.label21 = GUI.fromHandle(_obj_newObject("label"));
-    obj.label21:setParent(obj.flowLayout12);
+    obj.label21:setParent(obj.flowLayout14);
     obj.label21:setAlign("bottom");
     obj.label21:setText("MOBILIDADE");
     obj.label21:setHeight(20);
@@ -1818,18 +1838,18 @@ local function constructNew_frmTemplate()
     obj.label21:setName("label21");
     obj.label21:setFontColor("white");
 
-    obj.flowLayout13 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout13:setParent(obj.fraFrenteLayoutNew);
-    obj.flowLayout13:setAutoHeight(true);
-    obj.flowLayout13:setMinScaledWidth(290);
-    obj.flowLayout13:setHorzAlign("center");
-    obj.flowLayout13:setName("flowLayout13");
-    obj.flowLayout13:setStepSizes({310, 420, 640, 760, 1150});
-    obj.flowLayout13:setMargins({left=1, right=1, top=2, bottom=2});
-    obj.flowLayout13:setVertAlign("leading");
+    obj.flowLayout15 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout15:setParent(obj.fraFrenteLayoutNew);
+    obj.flowLayout15:setAutoHeight(true);
+    obj.flowLayout15:setMinScaledWidth(290);
+    obj.flowLayout15:setHorzAlign("center");
+    obj.flowLayout15:setName("flowLayout15");
+    obj.flowLayout15:setStepSizes({310, 420, 640, 760, 1150});
+    obj.flowLayout15:setMargins({left=1, right=1, top=2, bottom=2});
+    obj.flowLayout15:setVertAlign("leading");
 
     obj.flowPart26 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart26:setParent(obj.flowLayout13);
+    obj.flowPart26:setParent(obj.flowLayout15);
     obj.flowPart26:setMinWidth(280);
     obj.flowPart26:setMaxWidth(800);
     obj.flowPart26:setMargins({top=10});
@@ -1861,11 +1881,11 @@ local function constructNew_frmTemplate()
     obj.label22:setFontColor("#D0D0D0");
 
     obj.flowLineBreak3 = GUI.fromHandle(_obj_newObject("flowLineBreak"));
-    obj.flowLineBreak3:setParent(obj.flowLayout13);
+    obj.flowLineBreak3:setParent(obj.flowLayout15);
     obj.flowLineBreak3:setName("flowLineBreak3");
 
     obj.flowPart27 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart27:setParent(obj.flowLayout13);
+    obj.flowPart27:setParent(obj.flowLayout15);
     obj.flowPart27:setHeight(500);
     obj.flowPart27:setFrameStyle("frames/panel5/frame.xml");
     obj.flowPart27:setMargins({left = 4, right = 4});
@@ -1913,7 +1933,7 @@ local function constructNew_frmTemplate()
     obj.rclSkillsNew:setLayout("vertical");
 
     obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink4:setParent(obj.flowLayout13);
+    obj.dataLink4:setParent(obj.flowLayout15);
     obj.dataLink4:setFields({'totalPontos', 'atributos_st', 'atributos_ht', 'atributos_dx', 'atributos_vt', 'atributos_iq', 'atributos_per', 'atributos_pv', 'atributos_pf', 'atributos_velocidade', 'atributos_deslocamento','dodge_cost'});
     obj.dataLink4:setName("dataLink4");
 
@@ -1948,32 +1968,32 @@ local function constructNew_frmTemplate()
     obj.fraCaracteristicasLayout:setMinScaledWidth(150);
     obj.fraCaracteristicasLayout:setVertAlign("leading");
 
-    obj.flowLayout14 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout14:setParent(obj.fraCaracteristicasLayout);
-    obj.flowLayout14:setAutoHeight(true);
-    obj.flowLayout14:setMinScaledWidth(290);
-    obj.flowLayout14:setHorzAlign("center");
-    obj.flowLayout14:setLineSpacing(10);
-    obj.flowLayout14:setName("flowLayout14");
-    obj.flowLayout14:setStepSizes({310, 420, 640, 760, 860, 960, 1150, 1200, 1600});
-    obj.flowLayout14:setMargins({left=1, right=1, top=2, bottom=2});
-    obj.flowLayout14:setVertAlign("leading");
+    obj.flowLayout16 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout16:setParent(obj.fraCaracteristicasLayout);
+    obj.flowLayout16:setAutoHeight(true);
+    obj.flowLayout16:setMinScaledWidth(290);
+    obj.flowLayout16:setHorzAlign("center");
+    obj.flowLayout16:setLineSpacing(10);
+    obj.flowLayout16:setName("flowLayout16");
+    obj.flowLayout16:setStepSizes({310, 420, 640, 760, 860, 960, 1150, 1200, 1600});
+    obj.flowLayout16:setMargins({left=1, right=1, top=2, bottom=2});
+    obj.flowLayout16:setVertAlign("leading");
 
-    obj.flowLayout15 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout15:setParent(obj.flowLayout14);
-    obj.flowLayout15:setMaxControlsPerLine(1);
-    obj.flowLayout15:setAutoHeight(true);
-    obj.flowLayout15:setLineSpacing(10);
-    obj.flowLayout15:setMargins({left = 4, right = 4});
-    obj.flowLayout15:setName("flowLayout15");
-    obj.flowLayout15:setStepSizes({});
-    obj.flowLayout15:setMinWidth(300);
-    obj.flowLayout15:setMaxWidth(1600);
-    obj.flowLayout15:setMinScaledWidth(300);
-    obj.flowLayout15:setVertAlign("leading");
+    obj.flowLayout17 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout17:setParent(obj.flowLayout16);
+    obj.flowLayout17:setMaxControlsPerLine(1);
+    obj.flowLayout17:setAutoHeight(true);
+    obj.flowLayout17:setLineSpacing(10);
+    obj.flowLayout17:setMargins({left = 4, right = 4});
+    obj.flowLayout17:setName("flowLayout17");
+    obj.flowLayout17:setStepSizes({});
+    obj.flowLayout17:setMinWidth(300);
+    obj.flowLayout17:setMaxWidth(1600);
+    obj.flowLayout17:setMinScaledWidth(300);
+    obj.flowLayout17:setVertAlign("leading");
 
     obj.flowPart28 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart28:setParent(obj.flowLayout15);
+    obj.flowPart28:setParent(obj.flowLayout17);
     obj.flowPart28:setHeight(390);
     obj.flowPart28:setFrameStyle("frames/panel5/frame.xml");
     obj.flowPart28:setMargins({left = 0, right = 4});
@@ -2007,7 +2027,7 @@ local function constructNew_frmTemplate()
     obj.label24:setFontColor("white");
 
     obj.flowPart29 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart29:setParent(obj.flowLayout15);
+    obj.flowPart29:setParent(obj.flowLayout17);
     obj.flowPart29:setHeight(115);
     obj.flowPart29:setFrameStyle("frames/panel5/frame.xml");
     obj.flowPart29:setMargins({left = 4, right = 0});
@@ -2039,21 +2059,21 @@ local function constructNew_frmTemplate()
     obj.label25:setName("label25");
     obj.label25:setFontColor("white");
 
-    obj.flowLayout16 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout16:setParent(obj.flowLayout14);
-    obj.flowLayout16:setMaxControlsPerLine(1);
-    obj.flowLayout16:setAutoHeight(true);
-    obj.flowLayout16:setLineSpacing(10);
-    obj.flowLayout16:setMargins({left=4, right=4});
-    obj.flowLayout16:setName("flowLayout16");
-    obj.flowLayout16:setStepSizes({});
-    obj.flowLayout16:setMinWidth(300);
-    obj.flowLayout16:setMaxWidth(1600);
-    obj.flowLayout16:setMinScaledWidth(300);
-    obj.flowLayout16:setVertAlign("leading");
+    obj.flowLayout18 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout18:setParent(obj.flowLayout16);
+    obj.flowLayout18:setMaxControlsPerLine(1);
+    obj.flowLayout18:setAutoHeight(true);
+    obj.flowLayout18:setLineSpacing(10);
+    obj.flowLayout18:setMargins({left=4, right=4});
+    obj.flowLayout18:setName("flowLayout18");
+    obj.flowLayout18:setStepSizes({});
+    obj.flowLayout18:setMinWidth(300);
+    obj.flowLayout18:setMaxWidth(1600);
+    obj.flowLayout18:setMinScaledWidth(300);
+    obj.flowLayout18:setVertAlign("leading");
 
     obj.flowPart30 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart30:setParent(obj.flowLayout16);
+    obj.flowPart30:setParent(obj.flowLayout18);
     obj.flowPart30:setHeight(140);
     obj.flowPart30:setFrameStyle("frames/panel5/topPanel.xml");
     obj.flowPart30:setMargins({left = 4, right = 4});
@@ -2086,7 +2106,7 @@ local function constructNew_frmTemplate()
     obj.label26:setFontColor("white");
 
     obj.flowPart31 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart31:setParent(obj.flowLayout16);
+    obj.flowPart31:setParent(obj.flowLayout18);
     obj.flowPart31:setHeight(115);
     obj.flowPart31:setFrameStyle("frames/panel5/centerPanel.xml");
     obj.flowPart31:setMargins({left = 4, right = 4});
@@ -2119,7 +2139,7 @@ local function constructNew_frmTemplate()
     obj.label27:setFontColor("white");
 
     obj.flowPart32 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart32:setParent(obj.flowLayout16);
+    obj.flowPart32:setParent(obj.flowLayout18);
     obj.flowPart32:setHeight(115);
     obj.flowPart32:setFrameStyle("frames/panel5/centerPanel.xml");
     obj.flowPart32:setMargins({left = 4, right = 4});
@@ -2152,7 +2172,7 @@ local function constructNew_frmTemplate()
     obj.label28:setFontColor("white");
 
     obj.flowPart33 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart33:setParent(obj.flowLayout16);
+    obj.flowPart33:setParent(obj.flowLayout18);
     obj.flowPart33:setHeight(115);
     obj.flowPart33:setFrameStyle("frames/panel5/bottomPanel.xml");
     obj.flowPart33:setMargins({left = 4, right = 4});
@@ -2185,7 +2205,7 @@ local function constructNew_frmTemplate()
     obj.label29:setFontColor("white");
 
     obj.flowPart34 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart34:setParent(obj.flowLayout14);
+    obj.flowPart34:setParent(obj.flowLayout16);
     obj.flowPart34:setHeight(515);
     obj.flowPart34:setFrameStyle("frames/panel5/frame.xml");
     obj.flowPart34:setMargins({left = 4, right = 4});
@@ -2242,19 +2262,19 @@ local function constructNew_frmTemplate()
     obj.flowLineBreak4:setParent(obj.fraCaracteristicasLayout);
     obj.flowLineBreak4:setName("flowLineBreak4");
 
-    obj.flowLayout17 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout17:setParent(obj.fraCaracteristicasLayout);
-    obj.flowLayout17:setAutoHeight(true);
-    obj.flowLayout17:setMinScaledWidth(290);
-    obj.flowLayout17:setHorzAlign("center");
-    obj.flowLayout17:setLineSpacing(10);
-    obj.flowLayout17:setMargins({top=5});
-    obj.flowLayout17:setName("flowLayout17");
-    obj.flowLayout17:setStepSizes({310, 420, 640, 760, 860, 960, 1150, 1200, 1600});
-    obj.flowLayout17:setVertAlign("leading");
+    obj.flowLayout19 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout19:setParent(obj.fraCaracteristicasLayout);
+    obj.flowLayout19:setAutoHeight(true);
+    obj.flowLayout19:setMinScaledWidth(290);
+    obj.flowLayout19:setHorzAlign("center");
+    obj.flowLayout19:setLineSpacing(10);
+    obj.flowLayout19:setMargins({top=5});
+    obj.flowLayout19:setName("flowLayout19");
+    obj.flowLayout19:setStepSizes({310, 420, 640, 760, 860, 960, 1150, 1200, 1600});
+    obj.flowLayout19:setVertAlign("leading");
 
     obj.fraAliadosOrganizacoes = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.fraAliadosOrganizacoes:setParent(obj.flowLayout17);
+    obj.fraAliadosOrganizacoes:setParent(obj.flowLayout19);
     obj.fraAliadosOrganizacoes:setName("fraAliadosOrganizacoes");
     obj.fraAliadosOrganizacoes:setAutoHeight(true);
     obj.fraAliadosOrganizacoes:setFrameStyle("frames/panel5/frame.xml");
@@ -2362,24 +2382,21 @@ local function constructNew_frmTemplate()
     obj.label33:setFontColor("white");
 
     obj.flowPart36 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart36:setParent(obj.flowLayout17);
+    obj.flowPart36:setParent(obj.flowLayout19);
     obj.flowPart36:setHeight(515);
     obj.flowPart36:setFrameStyle("frames/panel5/frame.xml");
-    obj.flowPart36:setMargins({left = 4, right = 4});
+    obj.flowPart36:setMargins({left = 10, right = 10});
     obj.flowPart36:setAdjustHeightToLine(true);
     obj.flowPart36:setName("flowPart36");
     obj.flowPart36:setStepSizes({310, 420, 640, 760, 1150});
     obj.flowPart36:setMinScaledWidth(150);
     obj.flowPart36:setVertAlign("leading");
 
-    obj.richEdit1 = GUI.fromHandle(_obj_newObject("richEdit"));
-    obj.richEdit1:setParent(obj.flowPart36);
-    obj.richEdit1:setAlign("client");
-    obj.richEdit1:setField("background");
-    lfm_setPropAsString(obj.richEdit1, "backgroundColor",  "#333333");
-    lfm_setPropAsString(obj.richEdit1, "defaultFontSize",  "12");
-    lfm_setPropAsString(obj.richEdit1, "defaultFontColor",  "white");
-    obj.richEdit1:setName("richEdit1");
+    obj.textEditor10 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor10:setParent(obj.flowPart36);
+    obj.textEditor10:setAlign("client");
+    obj.textEditor10:setField("background");
+    obj.textEditor10:setName("textEditor10");
 
     obj.label34 = GUI.fromHandle(_obj_newObject("label"));
     obj.label34:setParent(obj.flowPart36);
@@ -2443,18 +2460,18 @@ local function constructNew_frmTemplate()
     obj.edit33:setFontSize(15);
     obj.edit33:setFontColor("white");
 
-    obj.flowLayout18 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout18:setParent(obj.popBag);
-    obj.flowLayout18:setAlign("top");
-    obj.flowLayout18:setAutoHeight(true);
-    obj.flowLayout18:setMaxControlsPerLine(2);
-    obj.flowLayout18:setMargins({bottom=4});
-    obj.flowLayout18:setHorzAlign("center");
-    obj.flowLayout18:setName("flowLayout18");
-    obj.flowLayout18:setVertAlign("leading");
+    obj.flowLayout20 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout20:setParent(obj.popBag);
+    obj.flowLayout20:setAlign("top");
+    obj.flowLayout20:setAutoHeight(true);
+    obj.flowLayout20:setMaxControlsPerLine(2);
+    obj.flowLayout20:setMargins({bottom=4});
+    obj.flowLayout20:setHorzAlign("center");
+    obj.flowLayout20:setName("flowLayout20");
+    obj.flowLayout20:setVertAlign("leading");
 
     obj.flowPart37 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart37:setParent(obj.flowLayout18);
+    obj.flowPart37:setParent(obj.flowLayout20);
     obj.flowPart37:setMinWidth(30);
     obj.flowPart37:setMaxWidth(400);
     obj.flowPart37:setHeight(35);
@@ -2484,7 +2501,7 @@ local function constructNew_frmTemplate()
     obj.edit34:setFontColor("white");
 
     obj.flowPart38 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart38:setParent(obj.flowLayout18);
+    obj.flowPart38:setParent(obj.flowLayout20);
     obj.flowPart38:setMinWidth(30);
     obj.flowPart38:setMaxWidth(400);
     obj.flowPart38:setHeight(35);
@@ -2513,11 +2530,11 @@ local function constructNew_frmTemplate()
     obj.edit35:setName("edit35");
     obj.edit35:setFontColor("white");
 
-    obj.textEditor10 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor10:setParent(obj.popBag);
-    obj.textEditor10:setAlign("client");
-    obj.textEditor10:setField("descricao");
-    obj.textEditor10:setName("textEditor10");
+    obj.textEditor11 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor11:setParent(obj.popBag);
+    obj.textEditor11:setAlign("client");
+    obj.textEditor11:setField("descricao");
+    obj.textEditor11:setName("textEditor11");
 
     obj.scrollBox3 = GUI.fromHandle(_obj_newObject("scrollBox"));
     obj.scrollBox3:setParent(obj.rectangle4);
@@ -2649,18 +2666,18 @@ local function constructNew_frmTemplate()
     obj.flowPart39:setMargins({left=1, right=1, top=2, bottom=2});
     obj.flowPart39:setVertAlign("leading");
 
-    obj.flowLayout19 = GUI.fromHandle(_obj_newObject("flowLayout"));
-    obj.flowLayout19:setParent(obj.flowPart39);
-    obj.flowLayout19:setAlign("left");
-    obj.flowLayout19:setWidth(120);
-    obj.flowLayout19:setMargins({left=10, right=10, top=10});
-    obj.flowLayout19:setHorzAlign("center");
-    obj.flowLayout19:setLineSpacing(3);
-    obj.flowLayout19:setName("flowLayout19");
-    obj.flowLayout19:setVertAlign("leading");
+    obj.flowLayout21 = GUI.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout21:setParent(obj.flowPart39);
+    obj.flowLayout21:setAlign("left");
+    obj.flowLayout21:setWidth(120);
+    obj.flowLayout21:setMargins({left=10, right=10, top=10});
+    obj.flowLayout21:setHorzAlign("center");
+    obj.flowLayout21:setLineSpacing(3);
+    obj.flowLayout21:setName("flowLayout21");
+    obj.flowLayout21:setVertAlign("leading");
 
     obj.flowPart40 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart40:setParent(obj.flowLayout19);
+    obj.flowPart40:setParent(obj.flowLayout21);
     obj.flowPart40:setAvoidScale(true);
     obj.flowPart40:setStepSizes({120});
     obj.flowPart40:setMinScaledWidth(120);
@@ -2694,7 +2711,7 @@ local function constructNew_frmTemplate()
     obj.edit36:setFontColor("white");
 
     obj.flowPart41 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart41:setParent(obj.flowLayout19);
+    obj.flowPart41:setParent(obj.flowLayout21);
     obj.flowPart41:setAvoidScale(true);
     obj.flowPart41:setStepSizes({120});
     obj.flowPart41:setMinScaledWidth(120);
@@ -2775,12 +2792,12 @@ local function constructNew_frmTemplate()
     obj.label42:setFontColor("white");
 
     obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink6:setParent(obj.flowLayout19);
+    obj.dataLink6:setParent(obj.flowLayout21);
     obj.dataLink6:setField("carga");
     obj.dataLink6:setName("dataLink6");
 
     obj.flowPart42 = GUI.fromHandle(_obj_newObject("flowPart"));
-    obj.flowPart42:setParent(obj.flowLayout19);
+    obj.flowPart42:setParent(obj.flowLayout21);
     obj.flowPart42:setAvoidScale(true);
     obj.flowPart42:setStepSizes({120});
     obj.flowPart42:setMinScaledWidth(120);
@@ -2861,7 +2878,7 @@ local function constructNew_frmTemplate()
     obj.label47:setFontColor("white");
 
     obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink7:setParent(obj.flowLayout19);
+    obj.dataLink7:setParent(obj.flowLayout21);
     obj.dataLink7:setField("atributos_mod_deslocamento");
     obj.dataLink7:setName("dataLink7");
 
@@ -2933,11 +2950,11 @@ local function constructNew_frmTemplate()
     obj.scrollBox4:setAlign("client");
     obj.scrollBox4:setName("scrollBox4");
 
-    obj.textEditor11 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor11:setParent(obj.scrollBox4);
-    obj.textEditor11:setAlign("client");
-    obj.textEditor11:setField("anotacoesLivres");
-    obj.textEditor11:setName("textEditor11");
+    obj.textEditor12 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor12:setParent(obj.scrollBox4);
+    obj.textEditor12:setAlign("client");
+    obj.textEditor12:setField("anotacoesLivres");
+    obj.textEditor12:setName("textEditor12");
 
     obj.tab5 = GUI.fromHandle(_obj_newObject("tab"));
     obj.tab5:setParent(obj.pgcPrincipal);
@@ -3003,14 +3020,14 @@ local function constructNew_frmTemplate()
     obj.label49:setName("label49");
     obj.label49:setFontColor("white");
 
-    obj.textEditor12 = GUI.fromHandle(_obj_newObject("textEditor"));
-    obj.textEditor12:setParent(obj.scrollBox5);
-    obj.textEditor12:setLeft(850);
-    obj.textEditor12:setTop(300);
-    obj.textEditor12:setWidth(250);
-    obj.textEditor12:setHeight(250);
-    obj.textEditor12:setField("anotacoesMestre");
-    obj.textEditor12:setName("textEditor12");
+    obj.textEditor13 = GUI.fromHandle(_obj_newObject("textEditor"));
+    obj.textEditor13:setParent(obj.scrollBox5);
+    obj.textEditor13:setLeft(850);
+    obj.textEditor13:setTop(300);
+    obj.textEditor13:setWidth(250);
+    obj.textEditor13:setHeight(250);
+    obj.textEditor13:setField("anotacoesMestre");
+    obj.textEditor13:setName("textEditor13");
 
     obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.scrollBox5);
@@ -3497,7 +3514,6 @@ local function constructNew_frmTemplate()
         if self.textEditor12 ~= nil then self.textEditor12:destroy(); self.textEditor12 = nil; end;
         if self.label51 ~= nil then self.label51:destroy(); self.label51 = nil; end;
         if self.flowPart23 ~= nil then self.flowPart23:destroy(); self.flowPart23 = nil; end;
-        if self.richEdit1 ~= nil then self.richEdit1:destroy(); self.richEdit1 = nil; end;
         if self.label54 ~= nil then self.label54:destroy(); self.label54 = nil; end;
         if self.labUpperGridCampo10 ~= nil then self.labUpperGridCampo10:destroy(); self.labUpperGridCampo10 = nil; end;
         if self.scrollBox3 ~= nil then self.scrollBox3:destroy(); self.scrollBox3 = nil; end;
@@ -3538,6 +3554,7 @@ local function constructNew_frmTemplate()
         if self.label44 ~= nil then self.label44:destroy(); self.label44 = nil; end;
         if self.flowPart10 ~= nil then self.flowPart10:destroy(); self.flowPart10 = nil; end;
         if self.UpperGridCampo11 ~= nil then self.UpperGridCampo11:destroy(); self.UpperGridCampo11 = nil; end;
+        if self.textEditor13 ~= nil then self.textEditor13:destroy(); self.textEditor13 = nil; end;
         if self.textEditor9 ~= nil then self.textEditor9:destroy(); self.textEditor9 = nil; end;
         if self.flowLayout3 ~= nil then self.flowLayout3:destroy(); self.flowLayout3 = nil; end;
         if self.labUpperGridCampo12 ~= nil then self.labUpperGridCampo12:destroy(); self.labUpperGridCampo12 = nil; end;
@@ -3554,8 +3571,8 @@ local function constructNew_frmTemplate()
         if self.edtUpperGridCampo2 ~= nil then self.edtUpperGridCampo2:destroy(); self.edtUpperGridCampo2 = nil; end;
         if self.flowLayout12 ~= nil then self.flowLayout12:destroy(); self.flowLayout12 = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
-        if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
         if self.flowLayout15 ~= nil then self.flowLayout15:destroy(); self.flowLayout15 = nil; end;
+        if self.label23 ~= nil then self.label23:destroy(); self.label23 = nil; end;
         if self.flowPart18 ~= nil then self.flowPart18:destroy(); self.flowPart18 = nil; end;
         if self.layout3 ~= nil then self.layout3:destroy(); self.layout3 = nil; end;
         if self.label24 ~= nil then self.label24:destroy(); self.label24 = nil; end;
@@ -3580,6 +3597,7 @@ local function constructNew_frmTemplate()
         if self.label6 ~= nil then self.label6:destroy(); self.label6 = nil; end;
         if self.linUpperGridCampo12 ~= nil then self.linUpperGridCampo12:destroy(); self.linUpperGridCampo12 = nil; end;
         if self.UpperGridCampo7 ~= nil then self.UpperGridCampo7:destroy(); self.UpperGridCampo7 = nil; end;
+        if self.flowLayout20 ~= nil then self.flowLayout20:destroy(); self.flowLayout20 = nil; end;
         if self.textEditor11 ~= nil then self.textEditor11:destroy(); self.textEditor11 = nil; end;
         if self.fraAliadosOrganizacoes ~= nil then self.fraAliadosOrganizacoes:destroy(); self.fraAliadosOrganizacoes = nil; end;
         if self.textEditor2 ~= nil then self.textEditor2:destroy(); self.textEditor2 = nil; end;
@@ -3607,6 +3625,7 @@ local function constructNew_frmTemplate()
         if self.edit21 ~= nil then self.edit21:destroy(); self.edit21 = nil; end;
         if self.tab4 ~= nil then self.tab4:destroy(); self.tab4 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
+        if self.flowLayout21 ~= nil then self.flowLayout21:destroy(); self.flowLayout21 = nil; end;
         if self.label42 ~= nil then self.label42:destroy(); self.label42 = nil; end;
         if self.labUpperGridCampo4 ~= nil then self.labUpperGridCampo4:destroy(); self.labUpperGridCampo4 = nil; end;
         if self.labUpperGridCampo3 ~= nil then self.labUpperGridCampo3:destroy(); self.labUpperGridCampo3 = nil; end;

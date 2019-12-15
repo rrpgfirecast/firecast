@@ -117,8 +117,9 @@
 						<edit align="client" class="atributo transparente" field="gdp" fontSize="30"/>	
 					</flowPart>	
 				</flowLayout>
+				<flowLayout height="10" class="oneLineTile" minScaledWidth="290" horzAlign="center"/>
 				<!-- Resistencias -->
-				<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center" maxControlsPerLine="2" frameStyle="frames/panel1/frame.xml">
+				<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center" maxControlsPerLine="2" frameStyle="frames/panel1/frame.xml" >
 					<upperGridCampo field="rdCabeca" minWidth="100" titulo="Cabeça"/>
 					<upperGridCampo field="rdMaos" minWidth="100" titulo="Mãos"/>
 					<upperGridCampo field="rdTronco" minWidth="100" titulo="Tronco"/>
@@ -128,6 +129,7 @@
 
 					<label align="bottom" text="RESISTÊNCIA A DANO" height="20" fontSize="11" wordWrap="true" horzTextAlign="center" textTrimming="none"/>
 				</flowLayout>
+				<flowLayout height="10" class="oneLineTile" minScaledWidth="290" horzAlign="center"/>
 				<!-- Mobilidade -->
 				<flowLayout autoHeight="true" class="oneLineTile" minScaledWidth="290" horzAlign="center" maxControlsPerLine="3" frameStyle="frames/panel1/frame.xml">
 
