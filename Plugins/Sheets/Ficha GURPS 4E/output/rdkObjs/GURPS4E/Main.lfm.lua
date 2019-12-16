@@ -2365,7 +2365,7 @@ local function constructNew_frmTemplate()
     obj.flowPart36:setParent(obj.flowLayout17);
     obj.flowPart36:setHeight(515);
     obj.flowPart36:setFrameStyle("frames/panel5/frame.xml");
-    obj.flowPart36:setMargins({left = 10, right = 10});
+    obj.flowPart36:setMargins({left = 4, right = 4});
     obj.flowPart36:setAdjustHeightToLine(true);
     obj.flowPart36:setName("flowPart36");
     obj.flowPart36:setStepSizes({310, 420, 640, 760, 1150});
