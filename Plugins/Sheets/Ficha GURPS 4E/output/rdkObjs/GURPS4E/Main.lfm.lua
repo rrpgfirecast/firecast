@@ -2982,16 +2982,6 @@ local function constructNew_frmTemplate()
     obj.image4:setSRC("/GURPS4E/images/RPGmeister.jpg");
     obj.image4:setName("image4");
 
-    obj.image5 = GUI.fromHandle(_obj_newObject("image"));
-    obj.image5:setParent(obj.scrollBox5);
-    obj.image5:setLeft(850);
-    obj.image5:setTop(0);
-    obj.image5:setWidth(250);
-    obj.image5:setHeight(250);
-    obj.image5:setStyle("autoFit");
-    obj.image5:setSRC("/GURPS4E/images/Capa.png");
-    obj.image5:setName("image5");
-
     obj.label49 = GUI.fromHandle(_obj_newObject("label"));
     obj.label49:setParent(obj.scrollBox5);
     obj.label49:setLeft(850);
@@ -3108,14 +3098,6 @@ local function constructNew_frmTemplate()
     obj.button7:setWidth(100);
     obj.button7:setText("RPGmeister");
     obj.button7:setName("button7");
-
-    obj.button8 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button8:setParent(obj.scrollBox5);
-    obj.button8:setLeft(667);
-    obj.button8:setTop(425);
-    obj.button8:setWidth(125);
-    obj.button8:setText("[A] Homebound");
-    obj.button8:setName("button8");
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
         function (_)
@@ -3334,13 +3316,7 @@ local function constructNew_frmTemplate()
             GUI.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=64070');
         end, obj);
 
-    obj._e_event23 = obj.button8:addEventListener("onClick",
-        function (_)
-            GUI.openInBrowser('http://firecast.rrpg.com.br:90/a?a=pagRWEMesaInfo.actInfoMesa&mesaid=131156');
-        end, obj);
-
     function obj:_releaseEvents()
-        __o_rrpgObjs.removeEventListenerById(self._e_event23);
         __o_rrpgObjs.removeEventListenerById(self._e_event22);
         __o_rrpgObjs.removeEventListenerById(self._e_event21);
         __o_rrpgObjs.removeEventListenerById(self._e_event20);
@@ -3400,7 +3376,6 @@ local function constructNew_frmTemplate()
         if self.UpperGridCampo4 ~= nil then self.UpperGridCampo4:destroy(); self.UpperGridCampo4 = nil; end;
         if self.flowPart13 ~= nil then self.flowPart13:destroy(); self.flowPart13 = nil; end;
         if self.label45 ~= nil then self.label45:destroy(); self.label45 = nil; end;
-        if self.image5 ~= nil then self.image5:destroy(); self.image5 = nil; end;
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.flowLineBreak7 ~= nil then self.flowLineBreak7:destroy(); self.flowLineBreak7 = nil; end;
         if self.UpperGridCampo13 ~= nil then self.UpperGridCampo13:destroy(); self.UpperGridCampo13 = nil; end;
@@ -3654,7 +3629,6 @@ local function constructNew_frmTemplate()
         if self.UpperGridCampo9 ~= nil then self.UpperGridCampo9:destroy(); self.UpperGridCampo9 = nil; end;
         if self.label50 ~= nil then self.label50:destroy(); self.label50 = nil; end;
         if self.linUpperGridCampo3 ~= nil then self.linUpperGridCampo3:destroy(); self.linUpperGridCampo3 = nil; end;
-        if self.button8 ~= nil then self.button8:destroy(); self.button8 = nil; end;
         if self.flowPart21 ~= nil then self.flowPart21:destroy(); self.flowPart21 = nil; end;
         if self.edit22 ~= nil then self.edit22:destroy(); self.edit22 = nil; end;
         if self.label5 ~= nil then self.label5:destroy(); self.label5 = nil; end;
