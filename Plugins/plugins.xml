@@ -48,6 +48,11 @@
             <dataType id="Arc.Metal.Zhuls" title="Ficha Arc Metal Zhuls"/>
         </dataTypes>
     </element>
+    <element id="Tormenta_Imperio_De_Jade" name="Imperio De Jade" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Tormenta%20Imperio%20De%20Jade/output/Tormenta%20Imperio%20De%20Jade.rpk?raw=true" fileName="Tormenta Imperio De Jade.rpk" repositoryPath="Sheet/Tormenta Imperio De Jade/" author="Miguel &quot;AJ&quot; Carigo" description="Ficha De Tormenta Imperio De Jade" version="1.0" compilationDate="26112019235846" compilationDigest="2c436d55f7346bc88202c1a8ce6d621275db7df0">
+        <dataTypes>
+            <dataType id="ImperioDeJade" title="Imperio De Jade"/>
+        </dataTypes>
+    </element>
     <element id="BibliotecaRPGmeister" name="RPGM" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/BibliotecaRPGmeister/output/BibliotecaRPGmeister.rpk?raw=true" fileName="BibliotecaRPGmeister.rpk" repositoryPath="Sheets/BibliotecaRPGmeister/" author="Ambesek" description="Biblioteca com o material da mesa RPGmeister. Tanto para facilitar para abrir os links do dropbox quanto para permitir o uso por jogadores mobile." version="0.2" compilationDate="26112019235921" compilationDigest="1336542949fd04afc68d2444f1dc3bb113d10073">
         <dataTypes>
             <dataType id="Ambesek.Biblioteca.RPGmeister" title="Biblioteca RPGmeister"/>

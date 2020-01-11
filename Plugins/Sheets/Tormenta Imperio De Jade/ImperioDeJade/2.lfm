@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmImperioDeJade2_svg" align="client" theme="light" margins="{top=1}">
+    <style>#frmImperioDeJade2_svg path {color: black; strokeColor: black; mode: stretch;} &#xD;
+#frmImperioDeJade2_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
+    <scrollBox align="client">
+        <rectangle width="872" height="1169" color="white">&#xD;
+            <image left="0" top="0" width="872" height="1169" src="images/2.png" style="stretch" optimize="true" compilerOrder="0"/>&#xD;
+            <layout left="44" top="105" width="241" height="408" compilerOrder="1">
+                <textEditor left="0" top="0" width="241" height="408" fontSize="12" fontColor="#000000" field="Talentos" transparent="true" compilerOrder="2"/>
+            </layout>&#xD;
+            <layout left="588" top="105" width="241" height="408" compilerOrder="13">
+                <textEditor left="0" top="0" width="241" height="408" fontSize="12" fontColor="#000000" field="Equipamento" transparent="true" compilerOrder="14"/>
+            </layout>&#xD;
+            <layout left="317" top="118" width="239" height="59" compilerOrder="3">
+                <textEditor left="0" top="0" width="239" height="59" fontSize="12" fontColor="#000000" field="Jutsus_basicos" transparent="true" compilerOrder="4"/>
+            </layout>&#xD;
+            <layout left="317" top="205" width="239" height="59" compilerOrder="5">
+                <textEditor left="0" top="0" width="239" height="59" fontSize="12" fontColor="#000000" field="Jutsus_medianos" transparent="true" compilerOrder="6"/>
+            </layout>&#xD;
+            <layout left="317" top="288" width="239" height="59" compilerOrder="7">
+                <textEditor left="0" top="0" width="239" height="59" fontSize="12" fontColor="#000000" field="Jutsus_avancados" transparent="true" compilerOrder="8"/>
+            </layout>&#xD;
+            <layout left="317" top="372" width="239" height="59" compilerOrder="9">
+                <textEditor left="0" top="0" width="239" height="59" fontSize="12" fontColor="#000000" field="Jutsus_sublimes" transparent="true" compilerOrder="10"/>
+            </layout>&#xD;
+            <layout left="317" top="456" width="239" height="59" compilerOrder="11">
+                <textEditor left="0" top="0" width="239" height="59" fontSize="12" fontColor="#000000" field="Jutsus_lendarios" transparent="true" compilerOrder="12"/>
+            </layout>&#xD;
+            <layout left="70" top="574" width="214" height="8" compilerOrder="17">
+                <textEditor left="0" top="0" width="214" height="8" fontSize="12" fontColor="#000000" field="Dinheiro_Yo" transparent="true" compilerOrder="18"/>
+            </layout>&#xD;
+            <layout left="317" top="574" width="240" height="135" compilerOrder="15">
+                <textEditor left="0" top="0" width="240" height="135" fontSize="12" fontColor="#000000" field="Idiomas" transparent="true" compilerOrder="16"/>
+            </layout>&#xD;
+            <layout left="652" top="575" width="176" height="8" compilerOrder="23">
+                <textEditor left="0" top="0" width="176" height="8" fontSize="12" fontColor="#000000" field="Campanha" transparent="true" compilerOrder="24"/>
+            </layout>&#xD;
+            <layout left="633" top="596" width="195" height="8" compilerOrder="25">
+                <textEditor left="0" top="0" width="195" height="8" fontSize="12" fontColor="#000000" field="Mestre" transparent="true" compilerOrder="26"/>
+            </layout>&#xD;
+            <layout left="70" top="622" width="214" height="8" compilerOrder="19">
+                <textEditor left="0" top="0" width="214" height="8" fontSize="12" fontColor="#000000" field="Dinheiro_Yp" transparent="true" compilerOrder="20"/>
+            </layout>&#xD;
+            <layout left="588" top="633" width="240" height="37" compilerOrder="27">
+                <textEditor left="0" top="0" width="240" height="37" fontSize="12" fontColor="#000000" field="Outros_Jogadores" transparent="true" compilerOrder="28"/>
+            </layout>&#xD;
+            <layout left="70" top="671" width="214" height="8" compilerOrder="21">
+                <textEditor left="0" top="0" width="214" height="8" fontSize="12" fontColor="#000000" field="Dinheiro_Y" transparent="true" compilerOrder="22"/>
+            </layout>&#xD;
+            <layout left="643" top="682" width="185" height="8" compilerOrder="29">
+                <textEditor left="0" top="0" width="185" height="8" fontSize="12" fontColor="#000000" field="XP_Atual" transparent="true" compilerOrder="30"/>
+            </layout>&#xD;
+            <layout left="717" top="703" width="111" height="8" compilerOrder="31">
+                <textEditor left="0" top="0" width="111" height="8" fontSize="12" fontColor="#000000" field="XP_proximo_nivel" transparent="true" compilerOrder="32"/>
+            </layout>&#xD;
+            <layout left="44" top="768" width="250" height="142" compilerOrder="33">
+                <textEditor left="0" top="0" width="250" height="142" fontSize="12" fontColor="#000000" field="Notas1" transparent="true" compilerOrder="34"/>
+            </layout>&#xD;
+            <layout left="308" top="768" width="255" height="142" compilerOrder="37">
+                <textEditor left="0" top="0" width="255" height="142" fontSize="12" fontColor="#000000" field="Notas2" transparent="true" compilerOrder="38"/>
+            </layout>&#xD;
+            <layout left="580" top="768" width="248" height="142" compilerOrder="35">
+                <textEditor left="0" top="0" width="248" height="142" fontSize="12" fontColor="#000000" field="Notas3" transparent="true" compilerOrder="36"/>
+            </layout>&#xD;
+            <layout left="44" top="977" width="240" height="137" compilerOrder="39">
+                <textEditor left="0" top="0" width="240" height="137" fontSize="12" fontColor="#000000" field="historia" transparent="true" compilerOrder="40"/>
+            </layout>&#xD;
+            <layout left="318" top="977" width="237" height="137" compilerOrder="41">
+                <textEditor left="0" top="0" width="237" height="137" fontSize="12" fontColor="#000000" field="personalidade" transparent="true" compilerOrder="42"/>
+            </layout>&#xD;
+            <layout left="588" top="977" width="240" height="137" compilerOrder="43">
+                <textEditor left="0" top="0" width="240" height="137" fontSize="12" fontColor="#000000" field="aparencia" transparent="true" compilerOrder="44"/>
+            </layout>&#xD;
+        </rectangle>
+    </scrollBox>
+</form>
