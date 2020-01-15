@@ -29,7 +29,6 @@ local function constructNew_frmFichaRPGmeister3p_svg()
     obj:setName("frmFichaRPGmeister3p_svg");
     obj:setWidth(435);
     obj:setHeight(25);
-    obj:setTheme("dark");
     obj:setMargins({top=2, bottom=2, right=10});
 
 			
@@ -196,7 +195,7 @@ local function constructNew_frmFichaRPGmeister3p_svg()
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
-    obj.dataLink1:setFields({'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'isClass'});
+    obj.dataLink1:setFields({'atributoPericia', 'graduacaoPericia', 'penalidesPericia', 'racialPericia', 'sinergiaPericia', 'equipamentosPericia', 'magicoPericia', 'outrosPericia', 'penalidadeArmadura', 'penalidadeArmadura2', 'talentosPericia', 'classePericia', 'condicionalPericia', 'competenciaPericia', 'intuicaoPericia', 'sortePericia', 'isClass'});
     obj.dataLink1:setName("dataLink1");
 
     obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
@@ -256,7 +255,8 @@ local function constructNew_frmFichaRPGmeister3p_svg()
             				local node = NDB.getRoot(sheet);
             				local pen = (tonumber(node.penalidade) or 0)
             
-            				local mod = (tonumber(sheet.atributoPericia) or 0) +
+            				local mod = 0;
+            				mod = (tonumber(sheet.atributoPericia) or 0) +
             							(tonumber(sheet.graduacaoPericia) or 0) +
             							(tonumber(sheet.penalidesPericia) or 0) +
             							(tonumber(sheet.racialPericia) or 0) +
@@ -266,6 +266,9 @@ local function constructNew_frmFichaRPGmeister3p_svg()
             							(tonumber(sheet.outrosPericia) or 0) + 
             							(tonumber(sheet.talentosPericia) or 0) +
             							(tonumber(sheet.classePericia) or 0) +
+            							(tonumber(sheet.competenciaPericia) or 0) +
+            							(tonumber(sheet.intuicaoPericia) or 0) +
+            							(tonumber(sheet.sortePericia) or 0) +
             							(tonumber(sheet.condicionalPericia) or 0);
             
             				if sheet.penalidadeArmadura then
@@ -302,6 +305,12 @@ local function constructNew_frmFichaRPGmeister3p_svg()
             					mod = mod + (tonumber(nodes[i].graduacaoPericia) or 0) * mult;
             					path = path + (tonumber(nodes[i].graduacaoPericia) or 0);
             				end
+            
+            				if node.idiomasIsClass then
+            					mod = mod + (tonumber(nodes.idiomasGrad) or 0);
+            				else
+            					mod = mod + (tonumber(nodes.idiomasGrad) or 0) * 2;
+            				end;
             
             				node.pontosPericia = mod;
             				node.pontosPericiaPath = path;

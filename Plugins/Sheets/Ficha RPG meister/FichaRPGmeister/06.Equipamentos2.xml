@@ -129,12 +129,12 @@
 			</event>
 		</recordList>
 
-		<label left="760" top="0" width="50" height="20" text="CARGA"/>
-		<rectangle left="810" top="0" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
-		<label vertTextAlign="center" horzTextAlign="center" left="810" top="0" width="91" height="20" field="pesoEquipamento" formatFloat=",0.## Kg"/>
-		<label left="760" top="25" width="50" height="20" text="GASTOS"/>
-		<rectangle left="810" top="25" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
-		<label vertTextAlign="center" horzTextAlign="center" left="810" top="25" width="91" height="20" field="precoEquipamento"  formatFloat=",0.## PO"/>
+		<label left="150" top="605" width="50" height="20" text="CARGA"/>
+		<rectangle left="200" top="605" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
+		<label vertTextAlign="center" horzTextAlign="center" left="200" top="605" width="91" height="20" field="pesoEquipamento" formatFloat=",0.## Kg"/>
+		<label left="300" top="605" width="50" height="20" text="GASTOS"/>
+		<rectangle left="350" top="605" width="91" height="20" color="black" strokeColor="white" strokeSize="1"/>
+		<label vertTextAlign="center" horzTextAlign="center" left="350" top="605" width="91" height="20" field="precoEquipamento"  formatFloat=",0.## PO"/>
 
 		<dataScopeBox left="150" top="0" width="600" height="602" name="boxDetalheDoEquipamento" visible="false">
 			<rectangle width="400" height="602" color="black"/>
@@ -303,5 +303,46 @@
 
 			<image left="400" top="0" width="200" height="600" src="images/slots.png" field="imgSlots" style="stretch" optimize="true"/>
 		</dataScopeBox>
+
+		<button text="+" left="800" top="0" width="200" height="25" onClick="self.rclBuffs:append();" hint=""/>
+		<button text="Organizar" left="1000" top="0" width="100" height="25" onClick="self.rclBuffs:sort();" hint=""/>
+		<button text="Exibir" left="1100" top="0" width="100" height="25" hint="">
+			<event name="onClick">
+				local nodes = NDB.getChildNodes(sheet.listaDeBuffs);
+				local chat = Firecast.getMesaDe(sheet).activeChat;
+				for i=1, #nodes, 1 do
+					local cd = 11 + (tonumber(nodes[i].nc) or 0)
+					if (nodes[i].ativo) then
+						local txt = "* " .. (nodes[i].magia or "efeito") .. " (" .. (nodes[i].duracao or "duração") .. ", CD" .. cd .. "): sobre " .. (nodes[i].alvos or "alvos");
+						chat:enviarMensagem(txt); 
+					end;
+				end
+			</event>
+		</button>
+		<layout left="800" top="25" width="400" height="25">
+			<label left="20" top="0" width="175" height="25" text="Magia" horzTextAlign="center"/>
+			<label left="190" top="0" width="75" height="25" text="Duração" horzTextAlign="center"/>
+			<label left="255" top="0" width="30" height="25" text="NV" fontSize="10" horzTextAlign="center"/>
+			<label left="285" top="0" width="30" height="25" text="NC" fontSize="10" horzTextAlign="center"/>
+			<label left="315" top="0" width="75" height="25" text="Alvos" horzTextAlign="center"/>
+		</layout>
+		<recordList left="800" top="50" width="400" height="550" name="rclBuffs" field="listaDeBuffs" templateForm="frmBuffs" layout="vertical">
+			<event name="onCompare"><![CDATA[
+				local ativoA = 0;
+				if nodeA.ativo then ativoA = 1 end;
+				local ativoB = 0;
+				if nodeB.ativo then ativoB = 1 end;
+
+				local nivelA = tonumber(nodeA.nv) or 0;
+				local nivelB = tonumber(nodeB.nv) or 0;
+
+				if ativoA ~= ativoB then
+					return ativoB - ativoA;
+				else
+					return nivelB - nivelA;
+				end;
+				]]>
+			</event>
+		</recordList>
 	</scrollBox>
 </form>

@@ -58,7 +58,7 @@
             <import file="04.HabilidadesMiticas.xml"/>
         </tab>
 		<tab title="Magias">
-            <import file="05.Magias.lfm"/>
+            <import file="05.Magias.xml"/>
         </tab>
 		<tab title="Equipamentos">
             <import file="06.Equipamentos2.xml"/>

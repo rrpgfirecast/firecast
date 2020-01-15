@@ -1645,7 +1645,7 @@ local function constructNew_frmW20_1()
     obj.label33:setTop(5);
     obj.label33:setWidth(80);
     obj.label33:setHeight(20);
-    obj.label33:setText("Primal-Urge ");
+    obj.label33:setText("Primal-Urge");
     obj.label33:setName("label33");
 
     obj.imageCheckBox72 = GUI.fromHandle(_obj_newObject("imageCheckBox"));

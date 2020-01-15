@@ -5,7 +5,9 @@ Proximas Versões
 + Campo de Magia para pontos de sombra.  
 + Campo de Magia para cristais/essencias.
 + Exportar ficha para texto (completo/simples).
-+ Adicionar alcances de magias na aba de magias baseado no NC.
+
+Versão 3.4
+* Nova aba de magias.  
 
 Versão 3.3
 - Campos editaveis invisiveis tem retangulo diferenciado agora. 

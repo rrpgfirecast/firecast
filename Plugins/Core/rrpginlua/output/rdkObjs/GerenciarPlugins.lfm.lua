@@ -27,7 +27,7 @@ local function constructNew_frmGerenciarPlugins()
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
     obj:setName("frmGerenciarPlugins");
-    obj:setTitle(lang("plugins.mgr.title"));
+    obj:setTitle("@@plugins.mgr.title");
     obj:setWidth(300);
     obj:setHeight(380);
 
@@ -68,7 +68,7 @@ local function constructNew_frmGerenciarPlugins()
 
     obj.label1 = GUI.fromHandle(_obj_newObject("label"));
     obj.label1:setParent(obj);
-    obj.label1:setText(lang("plugins.mgr.installedPluginsTitle"));
+    obj.label1:setText("@@plugins.mgr.installedPluginsTitle");
     obj.label1:setName("label1");
     obj.label1:setFontSize(15);
     obj.label1:setFontColor("#FFCC66");
@@ -93,7 +93,7 @@ local function constructNew_frmGerenciarPlugins()
     obj.btnInstalar = GUI.fromHandle(_obj_newObject("button"));
     obj.btnInstalar:setParent(obj.layTop);
     obj.btnInstalar:setName("btnInstalar");
-    obj.btnInstalar:setText(lang("plugins.mgr.installPluginTitle"));
+    obj.btnInstalar:setText("@@plugins.mgr.installPluginTitle");
     obj.btnInstalar:setWidth(200);
     obj.btnInstalar:setWordWrap(false);
 

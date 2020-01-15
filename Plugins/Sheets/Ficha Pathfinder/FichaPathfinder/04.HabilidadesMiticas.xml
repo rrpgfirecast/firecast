@@ -12,9 +12,9 @@
 			</layout>
 		</flowLayout>
 		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
-			<magicLayout nome="HABILIDADES MÍTICAS" rclName="campoDasHabilidadesMiticas" rclField="campoDasHabilidadesMiticas"/>
-			<magicLayout nome="CAMINHO MÍTICO" rclName="campoDosCaminhosMiticos" rclField="campoDosCaminhosMiticos"/>
-			<magicLayout nome="TALENTOS MÍTICOS" rclName="campoDosTalentosMiticos" rclField="campoDosTalentosMiticos"/>
+			<ListaFlexivel nome="HABILIDADES MÍTICAS" rclName="campoDasHabilidadesMiticas" rclField="campoDasHabilidadesMiticas"/>
+			<ListaFlexivel nome="CAMINHO MÍTICO" rclName="campoDosCaminhosMiticos" rclField="campoDosCaminhosMiticos"/>
+			<ListaFlexivel nome="TALENTOS MÍTICOS" rclName="campoDosTalentosMiticos" rclField="campoDosTalentosMiticos"/>
 		</flowLayout>
 	</scrollBox>
 </form>

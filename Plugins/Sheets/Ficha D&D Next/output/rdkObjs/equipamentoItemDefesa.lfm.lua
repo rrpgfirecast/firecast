@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmEquipamentoItemDefesa()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmEquipamentoItemDefesa()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -54,14 +54,14 @@ function newfrmEquipamentoItemDefesa()
 			
 
 
-    obj.layMenu = gui.fromHandle(_obj_newObject("layout"));
+    obj.layMenu = GUI.fromHandle(_obj_newObject("layout"));
     obj.layMenu:setParent(obj);
     obj.layMenu:setAlign("left");
     obj.layMenu:setWidth(64);
     obj.layMenu:setMargins({top=10, left=3, bottom=10});
     obj.layMenu:setName("layMenu");
 
-    obj.btnApagar = gui.fromHandle(_obj_newObject("button"));
+    obj.btnApagar = GUI.fromHandle(_obj_newObject("button"));
     obj.btnApagar:setParent(obj.layMenu);
     obj.btnApagar:setAlign("top");
     obj.btnApagar:setText("Apagar");
@@ -69,13 +69,13 @@ function newfrmEquipamentoItemDefesa()
     obj.btnApagar:setMargins({bottom=6});
     obj.btnApagar:setHeight(32);
 
-    obj.layPrincipal = gui.fromHandle(_obj_newObject("layout"));
+    obj.layPrincipal = GUI.fromHandle(_obj_newObject("layout"));
     obj.layPrincipal:setParent(obj);
     obj.layPrincipal:setAlign("client");
     obj.layPrincipal:setMargins({top=8, bottom=8});
     obj.layPrincipal:setName("layPrincipal");
 
-    obj.fraLayout = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.fraLayout = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.fraLayout:setParent(obj.layPrincipal);
     obj.fraLayout:setName("fraLayout");
     obj.fraLayout:setAvoidScale(true);
@@ -88,7 +88,7 @@ function newfrmEquipamentoItemDefesa()
     obj.fraLayout:setStepSizes({310, 420, 640, 760, 1150});
     obj.fraLayout:setMinScaledWidth(300);
 
-    obj.GridCampoSolido1 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.GridCampoSolido1 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.GridCampoSolido1:setParent(obj.fraLayout);
     obj.GridCampoSolido1:setHeight(40);
     obj.GridCampoSolido1:setMinScaledWidth(190);
@@ -100,7 +100,7 @@ function newfrmEquipamentoItemDefesa()
     obj.GridCampoSolido1:setMargins({left=5, right=5, top=2, bottom=2});
     obj.GridCampoSolido1:setVertAlign("leading");
 
-    obj.edtGridCampoSolido1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtGridCampoSolido1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtGridCampoSolido1:setParent(obj.GridCampoSolido1);
     obj.edtGridCampoSolido1:setName("edtGridCampoSolido1");
     obj.edtGridCampoSolido1:setAlign("top");
@@ -112,7 +112,7 @@ function newfrmEquipamentoItemDefesa()
     obj.edtGridCampoSolido1:setWidth(195);
     obj.edtGridCampoSolido1:setFontColor("white");
 
-    obj.labGridCampoSolido1 = gui.fromHandle(_obj_newObject("label"));
+    obj.labGridCampoSolido1 = GUI.fromHandle(_obj_newObject("label"));
     obj.labGridCampoSolido1:setParent(obj.GridCampoSolido1);
     obj.labGridCampoSolido1:setName("labGridCampoSolido1");
     obj.labGridCampoSolido1:setAlign("top");
@@ -126,7 +126,7 @@ function newfrmEquipamentoItemDefesa()
     self.GridCampoSolido1:setHeight(self.edtGridCampoSolido1:getHeight() + self.labGridCampoSolido1:getHeight());
 
 
-    obj.GridCampoSolido2 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.GridCampoSolido2 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.GridCampoSolido2:setParent(obj.fraLayout);
     obj.GridCampoSolido2:setHeight(40);
     obj.GridCampoSolido2:setMinScaledWidth(50);
@@ -138,7 +138,7 @@ function newfrmEquipamentoItemDefesa()
     obj.GridCampoSolido2:setMargins({left=5, right=5, top=2, bottom=2});
     obj.GridCampoSolido2:setVertAlign("leading");
 
-    obj.edtGridCampoSolido2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtGridCampoSolido2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtGridCampoSolido2:setParent(obj.GridCampoSolido2);
     obj.edtGridCampoSolido2:setName("edtGridCampoSolido2");
     obj.edtGridCampoSolido2:setAlign("top");
@@ -150,7 +150,7 @@ function newfrmEquipamentoItemDefesa()
     obj.edtGridCampoSolido2:setWidth(195);
     obj.edtGridCampoSolido2:setFontColor("white");
 
-    obj.labGridCampoSolido2 = gui.fromHandle(_obj_newObject("label"));
+    obj.labGridCampoSolido2 = GUI.fromHandle(_obj_newObject("label"));
     obj.labGridCampoSolido2:setParent(obj.GridCampoSolido2);
     obj.labGridCampoSolido2:setName("labGridCampoSolido2");
     obj.labGridCampoSolido2:setAlign("top");
@@ -164,7 +164,7 @@ function newfrmEquipamentoItemDefesa()
     self.GridCampoSolido2:setHeight(self.edtGridCampoSolido2:getHeight() + self.labGridCampoSolido2:getHeight());
 
 
-    obj.GridCampoSolido3 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.GridCampoSolido3 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.GridCampoSolido3:setParent(obj.fraLayout);
     obj.GridCampoSolido3:setHeight(40);
     obj.GridCampoSolido3:setMinScaledWidth(100);
@@ -176,7 +176,7 @@ function newfrmEquipamentoItemDefesa()
     obj.GridCampoSolido3:setMargins({left=5, right=5, top=2, bottom=2});
     obj.GridCampoSolido3:setVertAlign("leading");
 
-    obj.edtGridCampoSolido3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtGridCampoSolido3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtGridCampoSolido3:setParent(obj.GridCampoSolido3);
     obj.edtGridCampoSolido3:setName("edtGridCampoSolido3");
     obj.edtGridCampoSolido3:setAlign("top");
@@ -188,7 +188,7 @@ function newfrmEquipamentoItemDefesa()
     obj.edtGridCampoSolido3:setWidth(195);
     obj.edtGridCampoSolido3:setFontColor("white");
 
-    obj.labGridCampoSolido3 = gui.fromHandle(_obj_newObject("label"));
+    obj.labGridCampoSolido3 = GUI.fromHandle(_obj_newObject("label"));
     obj.labGridCampoSolido3:setParent(obj.GridCampoSolido3);
     obj.labGridCampoSolido3:setName("labGridCampoSolido3");
     obj.labGridCampoSolido3:setAlign("top");
@@ -202,7 +202,7 @@ function newfrmEquipamentoItemDefesa()
     self.GridCampoSolido3:setHeight(self.edtGridCampoSolido3:getHeight() + self.labGridCampoSolido3:getHeight());
 
 
-    obj.GridCampoSolido4 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.GridCampoSolido4 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.GridCampoSolido4:setParent(obj.fraLayout);
     obj.GridCampoSolido4:setHeight(40);
     obj.GridCampoSolido4:setMinScaledWidth(100);
@@ -214,7 +214,7 @@ function newfrmEquipamentoItemDefesa()
     obj.GridCampoSolido4:setMargins({left=5, right=5, top=2, bottom=2});
     obj.GridCampoSolido4:setVertAlign("leading");
 
-    obj.edtGridCampoSolido4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtGridCampoSolido4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtGridCampoSolido4:setParent(obj.GridCampoSolido4);
     obj.edtGridCampoSolido4:setName("edtGridCampoSolido4");
     obj.edtGridCampoSolido4:setAlign("top");
@@ -226,7 +226,7 @@ function newfrmEquipamentoItemDefesa()
     obj.edtGridCampoSolido4:setWidth(195);
     obj.edtGridCampoSolido4:setFontColor("white");
 
-    obj.labGridCampoSolido4 = gui.fromHandle(_obj_newObject("label"));
+    obj.labGridCampoSolido4 = GUI.fromHandle(_obj_newObject("label"));
     obj.labGridCampoSolido4:setParent(obj.GridCampoSolido4);
     obj.labGridCampoSolido4:setName("labGridCampoSolido4");
     obj.labGridCampoSolido4:setAlign("top");
@@ -240,7 +240,7 @@ function newfrmEquipamentoItemDefesa()
     self.GridCampoSolido4:setHeight(self.edtGridCampoSolido4:getHeight() + self.labGridCampoSolido4:getHeight());
 
 
-    obj.GridCampoSolido5 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.GridCampoSolido5 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.GridCampoSolido5:setParent(obj.fraLayout);
     obj.GridCampoSolido5:setHeight(40);
     obj.GridCampoSolido5:setMinScaledWidth(32);
@@ -252,7 +252,7 @@ function newfrmEquipamentoItemDefesa()
     obj.GridCampoSolido5:setMargins({left=5, right=5, top=2, bottom=2});
     obj.GridCampoSolido5:setVertAlign("leading");
 
-    obj.cbxGridCampoSolido5 = gui.fromHandle(_obj_newObject("imageCheckBox"));
+    obj.cbxGridCampoSolido5 = GUI.fromHandle(_obj_newObject("imageCheckBox"));
     obj.cbxGridCampoSolido5:setParent(obj.GridCampoSolido5);
     obj.cbxGridCampoSolido5:setAlign("top");
     obj.cbxGridCampoSolido5:setWidth(20);
@@ -264,7 +264,7 @@ function newfrmEquipamentoItemDefesa()
     obj.cbxGridCampoSolido5:setName("cbxGridCampoSolido5");
     obj.cbxGridCampoSolido5:setHeight(32);
 
-    obj.labGridCampoSolido5 = gui.fromHandle(_obj_newObject("label"));
+    obj.labGridCampoSolido5 = GUI.fromHandle(_obj_newObject("label"));
     obj.labGridCampoSolido5:setParent(obj.GridCampoSolido5);
     obj.labGridCampoSolido5:setName("labGridCampoSolido5");
     obj.labGridCampoSolido5:setAlign("top");
@@ -279,7 +279,7 @@ function newfrmEquipamentoItemDefesa()
     self.GridCampoSolido5:setHeight(self.cbxGridCampoSolido5:getHeight() + self.labGridCampoSolido5:getHeight());
 
 
-    obj.GridCampoSolido6 = gui.fromHandle(_obj_newObject("flowPart"));
+    obj.GridCampoSolido6 = GUI.fromHandle(_obj_newObject("flowPart"));
     obj.GridCampoSolido6:setParent(obj.fraLayout);
     obj.GridCampoSolido6:setHeight(40);
     obj.GridCampoSolido6:setMinScaledWidth(150);
@@ -291,7 +291,7 @@ function newfrmEquipamentoItemDefesa()
     obj.GridCampoSolido6:setMargins({left=5, right=5, top=2, bottom=2});
     obj.GridCampoSolido6:setVertAlign("leading");
 
-    obj.edtGridCampoSolido6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edtGridCampoSolido6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edtGridCampoSolido6:setParent(obj.GridCampoSolido6);
     obj.edtGridCampoSolido6:setName("edtGridCampoSolido6");
     obj.edtGridCampoSolido6:setAlign("top");
@@ -303,7 +303,7 @@ function newfrmEquipamentoItemDefesa()
     obj.edtGridCampoSolido6:setWidth(195);
     obj.edtGridCampoSolido6:setFontColor("white");
 
-    obj.labGridCampoSolido6 = gui.fromHandle(_obj_newObject("label"));
+    obj.labGridCampoSolido6 = GUI.fromHandle(_obj_newObject("label"));
     obj.labGridCampoSolido6:setParent(obj.GridCampoSolido6);
     obj.labGridCampoSolido6:setName("labGridCampoSolido6");
     obj.labGridCampoSolido6:setAlign("top");
@@ -318,12 +318,12 @@ function newfrmEquipamentoItemDefesa()
 
 
     obj._e_event0 = obj.btnApagar:addEventListener("onClick",
-        function (self)
+        function (_)
             askForDelete();
         end, obj);
 
     obj._e_event1 = obj.fraLayout:addEventListener("onResize",
-        function (self)
+        function (_)
             atualizarDesiredHeight();
         end, obj);
 
@@ -368,9 +368,23 @@ function newfrmEquipamentoItemDefesa()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmEquipamentoItemDefesa()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmEquipamentoItemDefesa();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmEquipamentoItemDefesa = {
@@ -384,6 +398,6 @@ local _frmEquipamentoItemDefesa = {
     description=""};
 
 frmEquipamentoItemDefesa = _frmEquipamentoItemDefesa;
-rrpg.registrarForm(_frmEquipamentoItemDefesa);
+Firecast.registrarForm(_frmEquipamentoItemDefesa);
 
 return _frmEquipamentoItemDefesa;

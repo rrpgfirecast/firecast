@@ -144,7 +144,7 @@
 				
 				<!-- HISTÓRIA DO PERSONAGEM -->		
 				<flowPart class="tile" height="515" frameStyle="frames/panel5/frame.xml" margins="{left = 4, right = 4}" adjustHeightToLine="true">
-					<richEdit align="client" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+					<textEditor align="client" field="historia.texto" class="transparente" margins="{top=2}" fontSize="16"/>
 					<label align="bottom" autoSize="true" text="HISTÓRIA" fontSize="12" vertTextAlign="center" horzTextAlign="center" fontStyle="bold"/>
 				</flowPart>	
 			</flowLayout>

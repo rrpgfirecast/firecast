@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.5" compilationDate="10012020133524" sdkApiVersion="86" originalPluginFileName="Tormenta Imperio De Jade.rpk" compilationDigest="cae2ccfec103d6909ac949b1b6cd2b4e85e1666a">
+    <!--The "id" identifies your plugin globally. Must be unique, must contain only alphanumeric characters, underlines and dots and must contain at least 5 characters and a maximum of 40. Once set the ID, you should not change it;)-->
+    <id>Tormenta_Imperio_De_Jade</id>
+    <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
+    <version>1.0</version>
+    <name>Imperio De Jade</name>
+    <description>Ficha De Tormenta Imperio De Jade</description>
+    <author>Miguel "AJ" Carigo</author>
+    <site>nao tenho site</site>
+    <contact>https://www.facebook.com/Miguel.Carigo</contact>
+    <dataTypes>
+        <dataType title="Imperio De Jade" name="frmImperioDeJade" lfmFile="ImperioDeJade/ImperioDeJade.lfm">ImperioDeJade</dataType>
+    </dataTypes>
+</module>

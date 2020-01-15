@@ -11,7 +11,7 @@
 		</layout>
 		
 		<rectangle left="0" top="0" width="1200" height="46" color="gray"/>
-		<recordList name="rclListaDosItens" field="campoDosItens" templateForm="frmFichaRPGmeister5MM_svg" left="0" top="0" width="1200" height="46" selectable="true" layout="horizontal">
+		<recordList name="rclListaDosItens" field="campoDosItens" templateForm="frmMagiasSeletor" left="0" top="0" width="1200" height="46" selectable="true" layout="horizontal">
 			<event name="onSelect">
 				local node = self.rclListaDosItens.selectedNode;
 				self.boxDetalhesDoItem.node = node;
@@ -648,23 +648,6 @@
 					<edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12"/>
 				</flowPart>
 			</template>
-
-			<popup name="popMagia" width="250" height="350" backOpacity="0.4" autoScopeNode="false">
-				<flowLayout align="top" autoHeight="true" maxControlsPerLine="2" margins="{bottom=4}" horzAlign="center">
-					<magicInfoField text="ESCOLA" field="escola"/>
-					<magicInfoField text="COMPONENTES" field="componentes"/>
-					<magicInfoField text="EXECUÇÃO" field="execucao"/>
-					<magicInfoField text="ALCANCE" field="alcance"/>
-					<magicInfoField text="ALVO" field="alvo"/>
-					<magicInfoField text="DURAÇÃO" field="duracao"/>
-					<magicInfoField text="TR" field="tr"/>
-					<magicInfoField text="RM" field="rm"/>
-					<magicInfoField text="LIVRO" field="livro"/>
-					<magicInfoField text="PÁGINA" field="pagina"/>
-				</flowLayout>
-				
-				<textEditor align="client" field="descricao" class=""/>
-			</popup>
 		</dataScopeBox>
 	</scrollBox>
 </form>

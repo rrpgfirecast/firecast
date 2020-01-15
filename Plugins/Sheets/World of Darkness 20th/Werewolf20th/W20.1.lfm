@@ -174,7 +174,7 @@
 					<Ability field="intimidation" nome="Intimidation"/>
 				</layout>
 				<layout left="15" top="200" width="205" height="25" >
-					<Ability field="primal_urge" nome="Primal-Urge "/>
+					<Ability field="primal_urge" nome="Primal-Urge"/>
 				</layout>
 				<layout left="15" top="225" width="205" height="25" >
 					<Ability field="streetwise" nome="Streetwise"/>

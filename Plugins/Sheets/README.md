@@ -48,6 +48,8 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 	- Para o sistema e cenario Shadowrun 5ª edição
 - [Ficha The Maze](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20The%20Maze/output/Ficha%20The%20Maze.rpk?raw=true): Ambesek
 	- Ficha para o cenario e sistema The Maze.
+- [Ficha Tormenta Imperio De Jade](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Arc%20Metal%20Zhuls/output/Arc%20Metal%20Zhuls.rpk?raw=true): Miguel "AJ" Carigo
+	- Ficha para Tormenta Imperio De Jade.
 - [Ficha Reinos d20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true): Ambesek
 	- Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre.  
 - [Fira](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Fira/output/fira.rpk?raw=true): Yiotoo
