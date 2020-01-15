@@ -121,17 +121,13 @@ local function handleCoResume(co, ...)
 	local retornos = table.pack(coroutine.resume(co, ...));
 												
 	if not retornos[1] then
-		local dialogs = require("dialogs.lua");
-		
-		dialogs.showMessageDlg(lang("macros.error.executionError") .. ":\n" .. retornos[2], dialogs.DT_ERROR, {dialogs.DB_OK});
-		--error(retornos[2]);
+		local dialogs = require("dialogs.lua");	
+		dialogs.showMessageDlg(lang("macros.error.executionError") .. ":\n" .. retornos[2], dialogs.DT_ERROR, {dialogs.DB_OK});		
 	else
 		if retornos[2] == _MACRO_CALL_CO_FUNCTION_RET then			
 			local f = yieldedFunctions[retornos[3]];
 			
-			if type(f) == "function" then
-				f(co, table.unpack(retornos, 4));
-			end;
+			f(co, table.unpack(retornos, 4));
 		elseif coroutine.status(co)	== "dead" then
 			local endCallback = rawget(co, "__endCallback");
 			
@@ -871,7 +867,6 @@ function macros.compileMacro(body, chat, macroName, endCallback)
 				end;
 			end;
 		end;
-	
 		
 		local f, errorMsg = load(body, macroName, "t", ambiente);
 		
@@ -881,7 +876,7 @@ function macros.compileMacro(body, chat, macroName, endCallback)
 		end;
 			
 		local co = coroutine.create(f);		
-		rawset(co, "__endCallback", endCallback);		
+		rawset(co, "__endCallback", endCallback);			
 		handleCoResume(co);
 	end;
 	
