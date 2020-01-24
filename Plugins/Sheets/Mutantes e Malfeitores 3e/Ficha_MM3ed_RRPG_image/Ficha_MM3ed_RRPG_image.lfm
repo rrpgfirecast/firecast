@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFicha_MM3ed_RRPG_image" formType="sheetTemplate" dataType="MM3e_RRPG_2_7" title="MM3e_2_7" align="client" theme="light">
+<form name="frmFicha_MM3ed_RRPG_image" formType="sheetTemplate" dataType="Ficha_MM3e" title="M&amp;M3e" align="client" theme="light">
     <tabControl align="client">
         <tab title="Frente">
             <import file="1.lfm"/>
@@ -7,11 +7,17 @@
         <tab title="Verso">
             <import file="2.lfm"/>
         </tab>
-	<tab title="Pericias">
+		<tab title="Pericias">
             <import file="Pericias.lfm"/>
         </tab>
         <tab title="Poderes">
             <import file="Poderes.lfm"/>
+        </tab>
+        <tab title="Logs">
+            <import file="FichaMultiaba.lfm"/>
+        </tab>
+        <tab title="Consultas">
+            <import file="Consultas.lfm"/>
         </tab>
     </tabControl>
 </form>

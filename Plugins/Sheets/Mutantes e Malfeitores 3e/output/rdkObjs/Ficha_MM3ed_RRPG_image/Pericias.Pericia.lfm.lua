@@ -7,7 +7,7 @@ require("ndb.lua");
 require("locale.lua");
 local __o_Utils = require("utils.lua");
 
-local function constructNew_frmFichaRPGmeister3p_svg()
+local function constructNew_frmFichaMM3eP_svg()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -26,7 +26,7 @@ local function constructNew_frmFichaRPGmeister3p_svg()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmFichaRPGmeister3p_svg");
+    obj:setName("frmFichaMM3eP_svg");
     obj:setWidth(435);
     obj:setHeight(25);
     obj:setTheme("dark");
@@ -34,10 +34,10 @@ local function constructNew_frmFichaRPGmeister3p_svg()
 
 			
 		local function askForDelete()
-			dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
+			Dialogs.confirmYesNo("Deseja realmente apagar essa perícia?",
 								 function (confirmado)
 									if confirmado then
-										ndb.deleteNode(sheet);
+										NDB.deleteNode(sheet);
 									end;
 								 end);
 		end;
@@ -54,26 +54,62 @@ local function constructNew_frmFichaRPGmeister3p_svg()
 		end;
 
 		local function rollTest()
-			local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-			local node = ndb.getRoot(sheet);
+			local personagem = Firecast.getPersonagemDe(sheet);
 
-			local mod = math.floor(tonumber(sheet.totalPericia) or 0) + (tonumber(node.buffPericia) or 0);
-			local rolagem = rrpg.interpretarRolagem("1d20 + " .. mod);
+					if (personagem ~= nil) then
+						local mesa = personagem.mesa;
+						
+						if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+							local node = NDB.getRoot(sheet);
+						
+							local mod = math.floor(tonumber(sheet.totalPericia) or 0) + (tonumber(node.buffPericia) or 0);
+							local rolagem = Firecast.interpretarRolagem("1d20 + " .. mod);
 
 
-			local warn = "";
-			if sheet.exigeTreino and (tonumber(sheet.graduacaoPericia) or 0)==0 then
-				warn = " (não possuo graduações e exige treinamento)."
-			end;
+							local warn = "";
+							if sheet.exigeTreino and (tonumber(sheet.graduacaoPericia) or 0)==0 then
+								warn = " (Não possuo graduações e exige treinamento)."
+							end;
 
-			local tools = "";
-			if node.exigeFerramentas then
-				tools = " (Também exige ferramentas)."
-			end
-							
-			mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de " .. (sheet.nomePericia or "Pericia") .. " de " .. (node.codinome or "Heroi") .. warn .. tools);
+							local tools = "";
+							if node.exigeFerramentas then
+								tools = " (Também exige ferramentas)."
+							end
+											
+							mesaDoPersonagem.activeChat:rolarDados(rolagem, "Teste de " .. (sheet.nomePericia or "Pericia") .. " de " .. (node.codinome or "Heroi") .. warn .. tools);
+						else
+							showMessage("Ops, este não é seu personagem...");
+						end;
+					end;
 		end;
 
+			local function updateAtributes(num)
+				if sheet==nil then return end;
+					local atributoPericia = 0;
+					local node = NDB.getRoot(sheet);
+
+					if sheet.chavePericia == "1" then
+						atributoPericia = tonumber(node.FORtotal) or 0;
+					elseif sheet.chavePericia == "2" then
+						atributoPericia = tonumber(node.VIGtotal or 0);
+					elseif sheet.chavePericia == "3" then
+						atributoPericia = tonumber(node.AGItotal or 0);
+					elseif sheet.chavePericia == "4" then
+						atributoPericia = tonumber(node.DEStotal or 0);
+					elseif sheet.chavePericia == "5" then
+						atributoPericia = tonumber(node.LUTtotal or 0);
+					elseif sheet.chavePericia == "6" then
+						atributoPericia = tonumber(node.INTtotal or 0);
+					elseif sheet.chavePericia == "7" then
+						atributoPericia = tonumber(node.PROtotal or 0);
+					elseif sheet.chavePericia == "8" then
+						atributoPericia = tonumber(node.PREtotal or 0);
+					end;
+					sheet.atributoPericia = atributoPericia;
+					
+			end;
+				
 		
 
 
@@ -128,6 +164,12 @@ local function constructNew_frmFichaRPGmeister3p_svg()
     obj.comboBox1:setFontColor("white");
     obj.comboBox1:setName("comboBox1");
 
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1:setParent(obj.comboBox1);
+    obj.dataLink1:setFields({'chavePericia'});
+    obj.dataLink1:setDefaultValues({'9'});
+    obj.dataLink1:setName("dataLink1");
+
     obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj);
     obj.rectangle2:setLeft(248);
@@ -149,6 +191,12 @@ local function constructNew_frmFichaRPGmeister3p_svg()
     obj.label1:setHeight(20);
     obj.label1:setHorzTextAlign("center");
     obj.label1:setName("label1");
+
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2:setParent(obj.rectangle2);
+    obj.dataLink2:setFields({'atributoPericia'});
+    obj.dataLink2:setDefaultValues({'0'});
+    obj.dataLink2:setName("dataLink2");
 
     obj.label2 = GUI.fromHandle(_obj_newObject("label"));
     obj.label2:setParent(obj);
@@ -244,22 +292,27 @@ local function constructNew_frmFichaRPGmeister3p_svg()
     obj.image1:setSRC("/Ficha_MM3ed_RRPG_image/images/dice.png");
     obj.image1:setName("image1");
 
-    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink1:setParent(obj);
-    obj.dataLink1:setFields({'atributoPericia', 'graduacaoPericia', 'graduacaoVariavel', 'penalidesPericia', 'equipamentosPericia', 'poderPericia','condicionalPericia'});
-    obj.dataLink1:setName("dataLink1");
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3:setParent(obj);
+    obj.dataLink3:setFields({'atributoPericia', 'graduacaoPericia', 'graduacaoVariavel', 'penalidesPericia', 'equipamentosPericia', 'poderPericia','condicionalPericia'});
+    obj.dataLink3:setName("dataLink3");
 
-    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
-    obj.dataLink2:setParent(obj);
-    obj.dataLink2:setFields({'graduacaoPericia'});
-    obj.dataLink2:setName("dataLink2");
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4:setParent(obj);
+    obj.dataLink4:setFields({'graduacaoPericia'});
+    obj.dataLink4:setName("dataLink4");
 
-    obj._e_event0 = obj.button1:addEventListener("onClick",
+    obj._e_event0 = obj:addEventListener("onShow",
+        function (_)
+            updateAtributes();
+        end, obj);
+
+    obj._e_event1 = obj.button1:addEventListener("onClick",
         function (_)
             askForDelete();
         end, obj);
 
-    obj._e_event1 = obj.edit1:addEventListener("onChange",
+    obj._e_event2 = obj.edit1:addEventListener("onChange",
         function (_)
             local rcl = self:findControlByName("rclListaDasPericias");
             			if rcl~= nil then
@@ -267,16 +320,16 @@ local function constructNew_frmFichaRPGmeister3p_svg()
             			end;
         end, obj);
 
-    obj._e_event2 = obj.button2:addEventListener("onClick",
+    obj._e_event3 = obj.button2:addEventListener("onClick",
         function (_)
             showPericiaPopup();
         end, obj);
 
-    obj._e_event3 = obj.comboBox1:addEventListener("onChange",
+    obj._e_event4 = obj.comboBox1:addEventListener("onChange",
         function (_)
-            if sheet ~= nil then
+            if sheet.chavePericia ~= nil then
             				local atributoPericia = 0;
-            				local node = ndb.getRoot(sheet);
+            				local node = NDB.getRoot(sheet);
             
             				if sheet.chavePericia == "1" then
             					atributoPericia = tonumber(node.FORtotal) or 0;
@@ -299,18 +352,18 @@ local function constructNew_frmFichaRPGmeister3p_svg()
             			end;
         end, obj);
 
-    obj._e_event4 = obj.button3:addEventListener("onClick",
+    obj._e_event5 = obj.button3:addEventListener("onClick",
         function (_)
             rollTest();
         end, obj);
 
-    obj._e_event5 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event6 = obj.dataLink3:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
-            				local node = ndb.getRoot(sheet);
+            				local node = NDB.getRoot(sheet);
             				local pen = (tonumber(node.penalidade) or 0)
             
-            				local mod = 0;
+            				local mod;
             				mod = (tonumber(sheet.atributoPericia) or 0) +
             							(tonumber(sheet.graduacaoPericia) or 0) +
             							(tonumber(sheet.graduacaoVariavel) or 0) +
@@ -329,14 +382,14 @@ local function constructNew_frmFichaRPGmeister3p_svg()
             			end;
         end, obj);
 
-    obj._e_event6 = obj.dataLink2:addEventListener("onChange",
+    obj._e_event7 = obj.dataLink4:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet~= nil then
-            				local node = ndb.getRoot(sheet);
+            				local node = NDB.getRoot(sheet);
             				local mod = tonumber(node.idiomasGrad) or 0;
             
             				local path = 0;
-            				local nodes = ndb.getChildNodes(node.campoDasPericias); 
+            				local nodes = NDB.getChildNodes(node.campoDasPericias); 
             				--showMessage(#nodes);
             				for i=1, #nodes, 1 do
             					local mult = 0.5;
@@ -350,6 +403,7 @@ local function constructNew_frmFichaRPGmeister3p_svg()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event7);
         __o_rrpgObjs.removeEventListenerById(self._e_event6);
         __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
@@ -374,15 +428,17 @@ local function constructNew_frmFichaRPGmeister3p_svg()
         if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
+        if self.dataLink3 ~= nil then self.dataLink3:destroy(); self.dataLink3 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
         if self.label3 ~= nil then self.label3:destroy(); self.label3 = nil; end;
         if self.label4 ~= nil then self.label4:destroy(); self.label4 = nil; end;
         if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.image1 ~= nil then self.image1:destroy(); self.image1 = nil; end;
-        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
-        if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.dataLink2 ~= nil then self.dataLink2:destroy(); self.dataLink2 = nil; end;
+        if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
+        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.dataLink4 ~= nil then self.dataLink4:destroy(); self.dataLink4 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.label2 ~= nil then self.label2:destroy(); self.label2 = nil; end;
@@ -394,13 +450,13 @@ local function constructNew_frmFichaRPGmeister3p_svg()
     return obj;
 end;
 
-function newfrmFichaRPGmeister3p_svg()
+function newfrmFichaMM3eP_svg()
     local retObj = nil;
     __o_rrpgObjs.beginObjectsLoading();
 
     __o_Utils.tryFinally(
       function()
-        retObj = constructNew_frmFichaRPGmeister3p_svg();
+        retObj = constructNew_frmFichaMM3eP_svg();
       end,
       function()
         __o_rrpgObjs.endObjectsLoading();
@@ -410,17 +466,17 @@ function newfrmFichaRPGmeister3p_svg()
     return retObj;
 end;
 
-local _frmFichaRPGmeister3p_svg = {
-    newEditor = newfrmFichaRPGmeister3p_svg, 
-    new = newfrmFichaRPGmeister3p_svg, 
-    name = "frmFichaRPGmeister3p_svg", 
+local _frmFichaMM3eP_svg = {
+    newEditor = newfrmFichaMM3eP_svg, 
+    new = newfrmFichaMM3eP_svg, 
+    name = "frmFichaMM3eP_svg", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
     title = "", 
     description=""};
 
-frmFichaRPGmeister3p_svg = _frmFichaRPGmeister3p_svg;
-Firecast.registrarForm(_frmFichaRPGmeister3p_svg);
+frmFichaMM3eP_svg = _frmFichaMM3eP_svg;
+Firecast.registrarForm(_frmFichaMM3eP_svg);
 
-return _frmFichaRPGmeister3p_svg;
+return _frmFichaMM3eP_svg;

@@ -6,30 +6,63 @@
 //                                        Arte: Gilgante                                       //
 //                                        Encode: Janus7l                                      //
 //                                                                                             //
-//                                  CRÉDITOS DAS VERSÕES 1.3 À 2.8                             //
+//                                  CRÉDITOS DAS VERSÕES 1.3 À 2020-01-24                      //
 //                                    Arte e Encode: Gilgante                                  //
 //                                                                                             //
 //                            Os códigos base para cada função da ficha:                       //
 //                Aba de Perícias Adaptado de: Ficha RPG Meister V.2.9 - Vinny (Ambesek)       //
 //                      Aba de Poderes Estudado de: Help do SDK 3 by RRPG crew.                //
+//                    Aba de Logs Adaptado de: Ficha Multiaba V.3 - Vinny (Ambesek)            //
 //                  Roladores e Demais Funções da Ficha: Help do SDK 3 by RRPG crew.           //
+//                     Aba de Consultas Estudado de: Help do SDK 3 by RRPG crew.               //
 //                                                                                             //
 //              Mesmo sem ser programador, a linguagem instrucional fácil foi suficiente.      //
 //                Use o plugin livremente e aprimore os códigos e aprimore o plugin.           //
+//                                                                                             //
+//                                     Agradecimento especial:                                 //
+//                                   Vinny Ambesek (RPGMeister)                                //
 //                                                                                             //
 //                                  \o/ É pra todo mundo! \o/                                  //
 //                                                                                             //
 //                                          BETA TESTERS                                       //
 //        Janus7l, Produtor, GodsCorpse, Black2828, Balth, Yan78, Thysson, Necro22, MW3        //
-//                                  e outros jogadores das salas                               //
+//      Torekuchiha, GuerreiroRex, SpetsnazRu, ClintRPGWood e outros jogadores das salas       //
 //        "M&M 3Ed - Cenário Próprio", "DC Universe - Terra ?" e "DC Universe - Earth N"       //
 //                                                                                             //
 //                                                                                             //
 //                Dúvidas, críticas e sugestões: adicione Gilgante no RRPG Firecast            //
 //                                                                                             //
 /////////////////////////////////////////////////////////////////////////////////////////////////
-Log:
-    2018-JUL-21 - BUG Conhecido: aba de perícias gera erro na função
-                  "rrpg.getMesaDe(sheet).activeChat:enviarMensagem" quando rodando
-                  a versão "RRPG 7.8 beta 2"
+Melhorias até a versão 2020-01-24:
+Aba Frente:
+ - Rolador para cada Habilidade;
+ - Opcional para HeroHigh (Habilidades partem de -1)
+ - Lista de Vantagens com somatório automático;
+ - Rolador para cada Defesa;
+ - Penalidade que se aplica automaticamente às rolagens de Resistência;
+ - Lista Dinâmica de Ataques com opcional de Efeito, Dano ou Efeito de Área;
+ - Somatório automático dos pontos de poder;
 
+Aba Verso:
+ - Editor Texto com formatação para História, Complicações (barra oculta), Base de Operações (barra oculta), Inimigos e Aliados (barra oculta);
+
+Aba Perícias:
+ - Lista automática com atualização dinâmica de valores de Habilidades;
+ - Contagem automática de pontos de poder empreendidos em perícias;
+ - Rolador identificado;
+
+Aba Poderes:
+ - Lista dinâmica de poderes com espaço para Efeitos, Notas, Custo, Imagem, Defesa, Ação, Alcance, Duração e Referêcias.
+
+Abra Logs:
+ - Importação de Ficha Multiabas para criação de Lista dinâmica para notação de Logs.
+ - Bug conhecido: Acúmulo de muitas abas gera lag para carregamento ao abrir a Ficha.
+
+Aba Consultas:
+ - Tabeça de Medidas (imagem);
+ - Tabela de Tamanho (imagem);
+ - Calculadora de Velocidade em km/h;
+ - Lista de Vantagens com descrição breve;
+ - Lista de Condições Básicas com descrição breve dos seus efeitos;
+ - Lista de Condições Combinadas com descrição breve dos seus efeitos;
+ - Calculadora de Tempo e Classe de Dificuldade para Inventos de Magia ou Tecnologia.
