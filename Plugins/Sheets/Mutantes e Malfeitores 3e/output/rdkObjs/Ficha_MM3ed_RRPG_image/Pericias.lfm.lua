@@ -7,7 +7,7 @@ require("ndb.lua");
 require("locale.lua");
 local __o_Utils = require("utils.lua");
 
-local function constructNew_frmFichaRPGmeister3_svg()
+local function constructNew_frmFichaMM3ePericias_svg()
     local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
@@ -26,7 +26,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
 
     _gui_assignInitialParentForForm(obj.handle);
     obj:beginUpdate();
-    obj:setName("frmFichaRPGmeister3_svg");
+    obj:setName("frmFichaMM3ePericias_svg");
     obj:setAlign("client");
     obj:setTheme("light");
     obj:setMargins({top=1});
@@ -36,73 +36,54 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.scrollBox1:setAlign("client");
     obj.scrollBox1:setName("scrollBox1");
 
-
+		
 			require("ndb.lua");
-			local mms = ndb.load("mmsskills.xml");
+			local mms = NDB.load("mmsskills.xml");
 
 			local function updateAtributes(num)
 				local atr = "" .. num;
 				local mod = 0;
 				
 				if num == 1 then
-					mod = SHEET.FOR();
+					mod = tonumber(sheet.FORtotal) or 0;
 				elseif num == 2 then
-					mod = SHEET.VIG();
+					mod = tonumber(sheet.VIGtotal) or 0;
 				elseif num == 3 then
-					mod = SHEET.AGI();
+					mod = tonumber(sheet.AGItotal) or 0;
 				elseif num == 4 then
-					mod = SHEET.DES();
+					mod = tonumber(sheet.DEStotal) or 0;
 				elseif num == 5 then
-					mod = SHEET.LUT();
+					mod = tonumber(sheet.LUTtotal) or 0;
 				elseif num == 6 then
-					mod = SHEET.INT();
+					mod = tonumber(sheet.INTtotal) or 0;
 				elseif num == 7 then
-					mod = SHEET.PRO();
+					mod = tonumber(sheet.PROtotal) or 0;
 				elseif num == 8 then
-					mod = SHEET.PRE();
+					mod = tonumber(sheet.PREtotal) or 0;
 				end;
 
-				local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
 				for i=1, #nodes, 1 do
 					if nodes[i].chavePericia == atr then
-						nodes[i].atributoPericia = SHEET;
+						nodes[i].atributoPericia = mod;
 					end;
 				end
 			end;
-
-			local function updatePenalty()
-				if sheet~=nil then
-					local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
-					for i=1, #nodes, 1 do
-						if nodes[i].penalidadeArmadura or nodes[i].penalidadeArmadura2 then
-							local pen = (tonumber(sheet.penalidade) or 0)
-
-							local mod = 0;
-							mod =   (tonumber(nodes[i].atributoPericia) or 0) +
-									(tonumber(nodes[i].graduacaoPericia) or 0) +
-									(tonumber(sheet.graduacaoVariavel) or 0) +
-									(tonumber(nodes[i].penalidesPericia) or 0) +
-									(tonumber(nodes[i].equipamentosPericia) or 0) +
-									(tonumber(nodes[i].condicionalPericia) or 0);
-
-							nodes[i].totalPericia = mod;
-						end;
-					end;
-				end;
-			end;
-						
+			
 			local function dndSkills()				
-				local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
 				for i=1, #nodes, 1 do
-					ndb.deleteNode(nodes[i]);
+					NDB.deleteNode(nodes[i]);
 				end;		
 
 				for i=1, 17, 1 do
 					local pericia = self.rclListaDasPericias:append();
-					pericia.nomePericia = mms[i].nome;
-					pericia.chavePericia = mms[i].chave;
-					pericia.exigeTreino = mms[i].treino;
-					pericia.exigeFerramentas = mms[i].ferramenta;
+					if pericia~=nil then
+						pericia.nomePericia = mms[i].nome;
+						pericia.chavePericia = mms[i].chave;
+						pericia.exigeTreino = mms[i].treino;
+						pericia.exigeFerramentas = mms[i].ferramenta;
+					end;
 				end;
 
 				self.rclListaDasPericias:sort();
@@ -117,7 +98,6 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.popPericia:setWidth(300);
     obj.popPericia:setHeight(85);
     obj.popPericia:setBackOpacity(0.4);
-    lfm_setPropAsString(obj.popPericia, "autoScopeNode",  "false");
 
     obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj.popPericia);
@@ -374,7 +354,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.rclListaDasPericias:setParent(obj.rectangle1);
     obj.rclListaDasPericias:setName("rclListaDasPericias");
     obj.rclListaDasPericias:setField("campoDasPericias");
-    obj.rclListaDasPericias:setTemplateForm("frmFichaRPGmeister3p_svg");
+    obj.rclListaDasPericias:setTemplateForm("frmFichaMM3eP_svg");
     obj.rclListaDasPericias:setLeft(5);
     obj.rclListaDasPericias:setTop(25);
     obj.rclListaDasPericias:setWidth(920);
@@ -410,7 +390,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.label14:setText("PONTOS DE PODER");
     lfm_setPropAsString(obj.label14, "fontStyle",  "bold");
     obj.label14:setLeft(0);
-    obj.label14:setTop(0);
+    obj.label14:setTop(5);
     obj.label14:setWidth(135);
     obj.label14:setHeight(20);
     obj.label14:setHorzTextAlign("center");
@@ -424,7 +404,7 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.label15:setWidth(135);
     obj.label15:setHeight(25);
     obj.label15:setHorzTextAlign("center");
-    obj.label15:setMargins({top=5});
+    obj.label15:setMargins({top=10});
     obj.label15:setName("label15");
 
     obj.button1 = GUI.fromHandle(_obj_newObject("button"));
@@ -435,31 +415,48 @@ local function constructNew_frmFichaRPGmeister3_svg()
     obj.button1:setHeight(25);
     obj.button1:setName("button1");
 
-    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button2:setParent(obj.rectangle5);
-    obj.button2:setText("Zerar e Listar Perícias");
-    obj.button2:setAlign("left");
-    obj.button2:setWidth(145);
-    obj.button2:setHeight(25);
-    obj.button2:setHint("Vai apagar todas perícias atuais. ");
-    obj.button2:setName("button2");
+    obj.label16 = GUI.fromHandle(_obj_newObject("label"));
+    obj.label16:setParent(obj.scrollBox1);
+    obj.label16:setLeft(577);
+    obj.label16:setTop(362);
+    obj.label16:setWidth(650);
+    obj.label16:setHeight(20);
+    obj.label16:setFontColor("#3f8270");
+    obj.label16:setRotationAngle(90);
+    obj.label16:setHorzTextAlign("leading");
+    obj.label16:setText("Os códigos desta aba foram adaptados de Ambesek/RPGMeister no GitHub. Obrigado por compartilhar! ^^");
+    obj.label16:setName("label16");
 
     obj._e_event0 = obj.rclListaDasPericias:addEventListener("onCompare",
         function (_, nodeA, nodeB)
-            return utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
+            return Utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
         end, obj);
 
-    obj._e_event1 = obj.button1:addEventListener("onClick",
+    obj._e_event1 = obj.rclListaDasPericias:addEventListener("onEndEnumeration",
+        function (_)
+            if sheet==nil then return end;
+            					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+            					if #nodes == 0 then
+            						dndSkills();
+            					end;
+        end, obj);
+
+    obj._e_event2 = obj.rclListaDasPericias:addEventListener("onBeginEnumeration",
+        function (_)
+            if sheet==nil then return end;
+            					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+            					if #nodes == 0 then
+            						dndSkills();
+            					end;
+        end, obj);
+
+    obj._e_event3 = obj.button1:addEventListener("onClick",
         function (_)
             self.rclListaDasPericias:append();
         end, obj);
 
-    obj._e_event2 = obj.button2:addEventListener("onClick",
-        function (_)
-            dndSkills();
-        end, obj);
-
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
         __o_rrpgObjs.removeEventListenerById(self._e_event1);
         __o_rrpgObjs.removeEventListenerById(self._e_event0);
@@ -499,8 +496,8 @@ local function constructNew_frmFichaRPGmeister3_svg()
         if self.flowPart1 ~= nil then self.flowPart1:destroy(); self.flowPart1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
         if self.rectangle3 ~= nil then self.rectangle3:destroy(); self.rectangle3 = nil; end;
-        if self.button2 ~= nil then self.button2:destroy(); self.button2 = nil; end;
         if self.flowPart2 ~= nil then self.flowPart2:destroy(); self.flowPart2 = nil; end;
+        if self.label16 ~= nil then self.label16:destroy(); self.label16 = nil; end;
         if self.flowLayout2 ~= nil then self.flowLayout2:destroy(); self.flowLayout2 = nil; end;
         if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
         if self.checkBox1 ~= nil then self.checkBox1:destroy(); self.checkBox1 = nil; end;
@@ -519,13 +516,13 @@ local function constructNew_frmFichaRPGmeister3_svg()
     return obj;
 end;
 
-function newfrmFichaRPGmeister3_svg()
+function newfrmFichaMM3ePericias_svg()
     local retObj = nil;
     __o_rrpgObjs.beginObjectsLoading();
 
     __o_Utils.tryFinally(
       function()
-        retObj = constructNew_frmFichaRPGmeister3_svg();
+        retObj = constructNew_frmFichaMM3ePericias_svg();
       end,
       function()
         __o_rrpgObjs.endObjectsLoading();
@@ -535,17 +532,17 @@ function newfrmFichaRPGmeister3_svg()
     return retObj;
 end;
 
-local _frmFichaRPGmeister3_svg = {
-    newEditor = newfrmFichaRPGmeister3_svg, 
-    new = newfrmFichaRPGmeister3_svg, 
-    name = "frmFichaRPGmeister3_svg", 
+local _frmFichaMM3ePericias_svg = {
+    newEditor = newfrmFichaMM3ePericias_svg, 
+    new = newfrmFichaMM3ePericias_svg, 
+    name = "frmFichaMM3ePericias_svg", 
     dataType = "", 
     formType = "undefined", 
     formComponentName = "form", 
     title = "", 
     description=""};
 
-frmFichaRPGmeister3_svg = _frmFichaRPGmeister3_svg;
-Firecast.registrarForm(_frmFichaRPGmeister3_svg);
+frmFichaMM3ePericias_svg = _frmFichaMM3ePericias_svg;
+Firecast.registrarForm(_frmFichaMM3ePericias_svg);
 
-return _frmFichaRPGmeister3_svg;
+return _frmFichaMM3ePericias_svg;

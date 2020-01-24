@@ -1,36 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <form name="frmFicha_MM3e_RRPG1_svg" align="client" theme="light" margins="{top=1}">
     <style>#frmFicha_MM3e_RRPG1_svg path {color: black; strokeColor: black; mode: stretch;} 
 #frmFicha_MM3e_RRPG1_svg label {fontColor: black; textTrimming: none; wordWrap: false; autoSize: true;}</style>
     <scrollBox align="client">
         <rectangle width="893" height="1263" color="white">
-            <image left="0" top="0" width="893" height="1263" src="images/1.png" style="stretch" optimize="true" compilerOrder="0"/>
-            <layout left="257" top="28" width="180" height="242" compilerOrder="81">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="180" height="243" field="untitled52" compilerOrder="82"/>
+            <image left="0" top="0" width="893" height="1263" src="images/Parede_1.png" style="stretch" optimize="true" />
+            <layout left="257" top="28" width="180" height="242">
+                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="180" height="243" field="untitled52"/>
             </layout>
-            <layout left="459" top="470" width="391" height="714" compilerOrder="35">
-                <textEditor left="0" top="0" width="391" height="687" fontSize="16.5" fontColor="#000000" field="PODERES" transparent="true" compilerOrder="36"/>
+            <layout left="459" top="470" width="391" height="937">
+                <richEdit left="0" top="0" width="391" height="687" field="PODERES" backgroundColor="#6cb098" showToolbar="false" defaultFontSize="16.5" defaultFontColor="black"/> <dataLink fields="{'PODERES'}" defaultValues="{'PODERES\n ✲ Nome do Poder ● custo final \n\n ✲ Nome do Poder ● custo final\n\n ✲ Nome do Poder ● custo final\n\n ✲ Nome do Poder ● custo final '}"/>
             </layout>
-            <layout left="43" top="105" width="202" height="35" compilerOrder="1">
-                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="202" height="36" field="JOGADOR" compilerOrder="2"/>
+            <layout left="43" top="105" width="202" height="35">
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="202" height="36" field="JOGADOR"/>
             </layout>
-            <layout left="43" top="186" width="202" height="35" compilerOrder="7">
-                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="202" height="36" field="IDENTIDADE" compilerOrder="8"/>
+            <layout left="43" top="186" width="202" height="35" >
+                <edit transparent="true" fontSize="18" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="202" height="36" field="IDENTIDADE"/>
             </layout>
-            <layout left="44" top="285" width="257" height="40" compilerOrder="3">
-                <edit transparent="true" fontSize="22" fontColor="#000000" fontStyle="bold" horzTextAlign="center" left="0" top="0" width="257" height="40" field="CODINOME" compilerOrder="4"/>
+            <layout left="44" top="285" width="257" height="40">
+                <edit transparent="true" fontSize="22" fontColor="#000000" fontStyle="bold" horzTextAlign="center" left="0" top="0" width="257" height="40" field="CODINOME" />
             </layout>
-            <layout left="381" top="291" width="51" height="53" compilerOrder="5">
-                <edit transparent="true" fontSize="37.6" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="51" height="54" field="NP" compilerOrder="6"/>
+            <layout left="381" top="291" width="51" height="53" >
+                <edit transparent="true" fontSize="37.6" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="51" height="54" field="NP" />
             </layout>
-            <layout left="377" top="360" width="61" height="33" compilerOrder="25">
-                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="61" height="34" field="PONTOSDEPODER" compilerOrder="26"/>
+			<layout left="315" top="279" width="52" height="16" hint="Afeta em -1 em todas as suas habilidades" >
+				<checkBox left="0" top="0" text="HeroHigh" fontSize="8" fontColor="white" field="HeroHigh" />
+			</layout>
+            <layout left="377" top="360" width="61" height="33" >
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="61" height="34" field="PONTOSDEPODER" />
             </layout>
-            <layout left="377" top="405" width="61" height="33" compilerOrder="27">
-                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="61" height="34" field="PONTOSHEROICOS" compilerOrder="28"/>
+            <layout left="377" top="405" width="61" height="33" >
+                <edit transparent="true" fontSize="22.6" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="61" height="34" field="PONTOSHEROICOS" />
             </layout>
-            <layout left="62" top="486" width="80" height="30" compilerOrder="9">
-                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="FOR" compilerOrder="10"/> <dataLink fields="{'FOR'}" defaultValues="{'0'}"/>
+            <layout left="62" top="486" width="80" height="30">
+                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="FOR" /> <dataLink fields="{'FOR'}" defaultValues="{'0'}"/>
 		                <label visible="false" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="FORtotal" /> 
 				<edit transparent="true" fontSize="12" fontColor="#85bbb1" hint="Insira aqui valores que não somarão Pontos de Poder" horzTextAlign="center" left="49" top="5" width="20" height="20" field="varFORvalor"/> <dataLink fields="{'varFORvalor'}" defaultValues="{'0'}"/>
 				<label fontSize="12" fontColor="#264d43" fontStyle="bold" horzTextAlign="center" left="49" top="6" width="20" height="20" field="varFOR"/> <dataLink fields="{'varFOR'}" defaultValues="{'0'}"/>
@@ -49,10 +52,36 @@
 					end;						
 				</event>
 			</dataLink>
+			
+		   <button left="39" top="450" width="99" height="36" text="">
+					<image align="top" margins="{top=-1}" width="100" height="40" src="images/Hab_FOR.png"/>
+					<event name="onClick">
+					local personagem = Firecast.getPersonagemDe(sheet);                                
+
+					if (personagem ~= nil) then
+						local mesa = personagem.mesa;
+
+						if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+
+							local rolagem = Firecast.interpretarRolagem(sheet.FORtotal); 
+
+							if not rolagem.possuiAlgumDado then
+								   rolagem = Firecast.interpretarRolagem("1d20"):concatenar(rolagem);
+							end; 
+
+							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+							if mesaDoPersonagem ~= nil then
+								   mesaDoPersonagem.activeChat:rolarDados(rolagem, "Força de " .. (sheet.CODINOME or "Herói"));
+							end;
+						end;
+			end;     
+					</event>
+			</button>
 		
 			
-            <layout left="162" top="486" width="80" height="30" compilerOrder="23">
-                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="AGI" compilerOrder="24"/> <dataLink fields="{'AGI'}" defaultValues="{'0'}"/>
+            <layout left="162" top="486" width="80" height="30" >
+                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="AGI" /> <dataLink fields="{'AGI'}" defaultValues="{'0'}"/>
 		                <label visible="false" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="AGItotal" /> 
 				<edit transparent="true" fontSize="12" fontColor="#85bbb1" hint="Insira aqui valores que não somarão Pontos de Poder" horzTextAlign="center" left="49" top="5" width="20" height="20" field="varAGIvalor" /> <dataLink fields="{'varAGIvalor'}" defaultValues="{'0'}"/>
 				<label fontSize="12" fontColor="#264d43" fontStyle="bold" horzTextAlign="center" left="49" top="6" width="20" height="20" field="varAGI" /> <dataLink fields="{'varAGI'}" defaultValues="{'0'}"/>
@@ -71,9 +100,35 @@
 					end;						
 				</event>
 			</dataLink>
+			
+		   <button left="139" top="450" width="99" height="36" text="">
+					<image align="top" margins="{top=-1}" width="100" height="40" src="images/Hab_AGI.png"/>
+					<event name="onClick">
+					local personagem = Firecast.getPersonagemDe(sheet);                                
 
-            <layout left="263" top="486" width="80" height="30" compilerOrder="21">
-                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="LUT" compilerOrder="22"/> <dataLink fields="{'LUT'}" defaultValues="{'0'}"/>
+					if (personagem ~= nil) then
+						local mesa = personagem.mesa;
+
+						if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+
+							local rolagem = Firecast.interpretarRolagem(sheet.AGItotal); 
+
+							if not rolagem.possuiAlgumDado then
+								   rolagem = Firecast.interpretarRolagem("1d20"):concatenar(rolagem);
+							end; 
+
+							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+							if mesaDoPersonagem ~= nil then
+								   mesaDoPersonagem.activeChat:rolarDados(rolagem, "Agilidade de " .. (sheet.CODINOME or "Herói"));
+							end;
+						end;
+			end;     
+					</event>
+			</button>
+
+            <layout left="263" top="486" width="80" height="30">
+                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="LUT" /> <dataLink fields="{'LUT'}" defaultValues="{'0'}"/>
 		                <label visible="false" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="LUTtotal" /> 
 				<edit transparent="true" fontSize="12" fontColor="#85bbb1" hint="Insira aqui valores que não somarão Pontos de Poder" horzTextAlign="center" left="49" top="5" width="20" height="20" field="varLUTvalor" /> <dataLink fields="{'varLUTvalor'}" defaultValues="{'0'}"/>
 				<label fontSize="12" fontColor="#264d43" fontStyle="bold" horzTextAlign="center" left="49" top="6" width="20" height="20" field="varLUT" /> <dataLink fields="{'varLUT'}" defaultValues="{'0'}"/>
@@ -92,9 +147,35 @@
 					end;						
 				</event>
 			</dataLink>
+			
+		   <button left="239" top="450" width="99" height="36" text="">
+					<image align="top" margins="{top=-1}" width="100" height="40" src="images/Hab_LUT.png"/>
+					<event name="onClick">
+					local personagem = Firecast.getPersonagemDe(sheet);                                
 
-            <layout left="364" top="486" width="80" height="30" compilerOrder="19">
-                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="PRO" compilerOrder="20"/> <dataLink fields="{'PRO'}" defaultValues="{'0'}"/>
+					if (personagem ~= nil) then
+						local mesa = personagem.mesa;
+
+						if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+
+							local rolagem = Firecast.interpretarRolagem(sheet.LUTtotal); 
+
+							if not rolagem.possuiAlgumDado then
+								   rolagem = Firecast.interpretarRolagem("1d20"):concatenar(rolagem);
+							end; 
+
+							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+							if mesaDoPersonagem ~= nil then
+								   mesaDoPersonagem.activeChat:rolarDados(rolagem, "Luta de " .. (sheet.CODINOME or "Herói"));
+							end;
+						end;
+			end;     
+					</event>
+			</button>
+
+            <layout left="364" top="486" width="80" height="30">
+                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="PRO"/> <dataLink fields="{'PRO'}" defaultValues="{'0'}"/>
 		                <label visible="false" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="PROtotal" /> 
 				<edit transparent="true" fontSize="12" fontColor="#85bbb1" hint="Insira aqui valores que não somarão Pontos de Poder" horzTextAlign="center" left="49" top="5" width="20" height="20" field="varPROvalor" /> <dataLink fields="{'varPROvalor'}" defaultValues="{'0'}"/>
 				<label fontSize="12" fontColor="#264d43" fontStyle="bold" horzTextAlign="center" left="49" top="6" width="20" height="20" field="varPRO" /> <dataLink fields="{'varPRO'}" defaultValues="{'0'}"/>
@@ -113,9 +194,35 @@
 					end;						
 				</event>
 			</dataLink>
+			
+		   <button left="339" top="450" width="99" height="36" text="">
+					<image align="top" margins="{top=-1}" width="100" height="40" src="images/Hab_PRO.png"/>
+					<event name="onClick">
+					local personagem = Firecast.getPersonagemDe(sheet);                                
 
-            <layout left="63" top="557" width="80" height="30" compilerOrder="11">
-                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="VIG" compilerOrder="12"/> <dataLink fields="{'VIG'}" defaultValues="{'0'}"/>
+					if (personagem ~= nil) then
+						local mesa = personagem.mesa;
+
+						if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+
+							local rolagem = Firecast.interpretarRolagem(sheet.PROtotal); 
+
+							if not rolagem.possuiAlgumDado then
+								   rolagem = Firecast.interpretarRolagem("1d20"):concatenar(rolagem);
+							end; 
+
+							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+							if mesaDoPersonagem ~= nil then
+								   mesaDoPersonagem.activeChat:rolarDados(rolagem, "Prontidão de " .. (sheet.CODINOME or "Herói"));
+							end;
+						end;
+			end;     
+					</event>
+			</button>
+
+            <layout left="63" top="557" width="80" height="30">
+                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="VIG" /> <dataLink fields="{'VIG'}" defaultValues="{'0'}"/>
 		                <label visible="false" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="VIGtotal" /> 
 				<edit transparent="true" fontSize="12" fontColor="#85bbb1" hint="Insira aqui valores que não somarão Pontos de Poder" horzTextAlign="center" left="49" top="5" width="20" height="20" field="varVIGvalor" /> <dataLink fields="{'varVIGvalor'}" defaultValues="{'0'}"/>
 				<label fontSize="12" fontColor="#264d43" fontStyle="bold" horzTextAlign="center" left="49" top="6" width="20" height="20" field="varVIG" /> <dataLink fields="{'varVIG'}" defaultValues="{'0'}"/>
@@ -134,9 +241,35 @@
 					end;						
 				</event>
 			</dataLink>
+			
+		   <button left="39" top="521" width="99" height="36" text="">
+					<image align="top" margins="{top=-1}" width="100" height="40" src="images/Hab_VIG.png"/>
+					<event name="onClick">
+					local personagem = Firecast.getPersonagemDe(sheet);                                
 
-            <layout left="162" top="557" width="80" height="30" compilerOrder="13">
-                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="DES" compilerOrder="14"/> <dataLink fields="{'DES'}" defaultValues="{'0'}"/>
+					if (personagem ~= nil) then
+						local mesa = personagem.mesa;
+
+						if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+
+							local rolagem = Firecast.interpretarRolagem(sheet.VIGtotal); 
+
+							if not rolagem.possuiAlgumDado then
+								   rolagem = Firecast.interpretarRolagem("1d20"):concatenar(rolagem);
+							end; 
+
+							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+							if mesaDoPersonagem ~= nil then
+								   mesaDoPersonagem.activeChat:rolarDados(rolagem, "Vigor de " .. (sheet.CODINOME or "Herói"));
+							end;
+						end;
+			end;     
+					</event>
+			</button>
+
+            <layout left="162" top="557" width="80" height="30" >
+                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="DES"/> <dataLink fields="{'DES'}" defaultValues="{'0'}"/>
 		                <label visible="false" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="DEStotal" /> 
 				<edit transparent="true" fontSize="12" fontColor="#85bbb1" hint="Insira aqui valores que não somarão Pontos de Poder" horzTextAlign="center" left="49" top="5" width="20" height="20" field="varDESvalor" /> <dataLink fields="{'varDESvalor'}" defaultValues="{'0'}"/>
 				<label fontSize="12" fontColor="#264d43" fontStyle="bold" horzTextAlign="center" left="49" top="6" width="20" height="20" field="varDES" /> <dataLink fields="{'varDES'}" defaultValues="{'0'}"/>
@@ -155,9 +288,36 @@
 					end;						
 				</event>
 			</dataLink>
+			
+			
+		   <button left="139" top="521" width="99" height="36" text="">
+					<image align="top" margins="{top=-1}" width="100" height="40" src="images/Hab_DES.png"/>
+					<event name="onClick">
+					local personagem = Firecast.getPersonagemDe(sheet);                                
 
-            <layout left="262" top="557" width="80" height="30" compilerOrder="15">
-                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="INT" compilerOrder="16"/> <dataLink fields="{'INT'}" defaultValues="{'0'}"/>
+					if (personagem ~= nil) then
+						local mesa = personagem.mesa;
+
+						if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+
+							local rolagem = Firecast.interpretarRolagem(sheet.DEStotal); 
+
+							if not rolagem.possuiAlgumDado then
+								   rolagem = Firecast.interpretarRolagem("1d20"):concatenar(rolagem);
+							end; 
+
+							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+							if mesaDoPersonagem ~= nil then
+								   mesaDoPersonagem.activeChat:rolarDados(rolagem, "Destreza de " .. (sheet.CODINOME or "Herói"));
+							end;
+						end;
+			end;     
+					</event>
+			</button>
+
+            <layout left="262" top="557" width="80" height="30">
+                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="INT"/> <dataLink fields="{'INT'}" defaultValues="{'0'}"/>
 		                <label visible="false" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="INTtotal" /> 
 				<edit transparent="true" fontSize="12" fontColor="#85bbb1" hint="Insira aqui valores que não somarão Pontos de Poder" horzTextAlign="center" left="49" top="5" width="20" height="20" field="varINTvalor" /> <dataLink fields="{'varINTvalor'}" defaultValues="{'0'}"/>
 				<label fontSize="12" fontColor="#264d43" fontStyle="bold" horzTextAlign="center" left="49" top="6" width="20" height="20" field="varINT" /> <dataLink fields="{'varINT'}" defaultValues="{'0'}"/>
@@ -176,9 +336,36 @@
 					end;						
 				</event>
 			</dataLink>
+			
+			
+		   <button left="239" top="521" width="99" height="36" text="">
+					<image align="top" margins="{top=-1}" width="100" height="40" src="images/Hab_INT.png"/>
+					<event name="onClick">
+					local personagem = Firecast.getPersonagemDe(sheet);                                
 
-            <layout left="364" top="557" width="80" height="30" compilerOrder="17">
-                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="PRE" compilerOrder="18"/> <dataLink fields="{'PRE'}" defaultValues="{'0'}"/>
+					if (personagem ~= nil) then
+						local mesa = personagem.mesa;
+
+						if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
+
+							local rolagem = Firecast.interpretarRolagem(sheet.INTtotal); 
+
+							if not rolagem.possuiAlgumDado then
+								   rolagem = Firecast.interpretarRolagem("1d20"):concatenar(rolagem);
+							end; 
+
+							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+
+							if mesaDoPersonagem ~= nil then
+								   mesaDoPersonagem.activeChat:rolarDados(rolagem, "Intelecto de " .. (sheet.CODINOME or "Herói"));
+							end;
+						end;
+			end;     
+					</event>
+			</button>
+
+            <layout left="364" top="557" width="80" height="30" >
+                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="PRE" /> <dataLink fields="{'PRE'}" defaultValues="{'0'}"/>
 		                <label visible="false" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="PREtotal" /> 
 				<edit transparent="true" fontSize="12" fontColor="#85bbb1" hint="Insira aqui valores que não somarão Pontos de Poder" horzTextAlign="center" left="49" top="5" width="20" height="20" field="varPREvalor" /> <dataLink fields="{'varPREvalor'}" defaultValues="{'0'}"/>
 				<label fontSize="12" fontColor="#264d43" fontStyle="bold" horzTextAlign="center" left="49" top="6" width="20" height="20" field="varPRE" /> <dataLink fields="{'varPRE'}" defaultValues="{'0'}"/>
@@ -197,617 +384,114 @@
 					end;						
 				</event>
 			</dataLink>
-
-            <layout left="43" top="630" width="391" height="262" compilerOrder="31">
-                <textEditor left="0" top="0" width="391" height="262" fontSize="16.5" fontColor="#000000" field="Vantagens" transparent="true" compilerOrder="32"/>
-            </layout>
-            <layout left="688" top="171" width="28" height="16" compilerOrder="37">
-                <edit transparent="true" fontSize="12" fontColor="#000000" fontStyle="bold" vertTextAlign="center" left="0" top="0" width="28" height="19" field="Iniciativa" compilerOrder="38"/>
-            </layout>
-
- <!-- ATAQUES -->
-			
-            <layout top="215" left="458" width="188" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="188" height="19" field="ATK1" compilerOrder="72"/>
-            </layout>
-            <layout top="215" left="651" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK1mod"/> <dataLink fields="{'ATK1mod'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="215" left="681" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK1dano"/> <dataLink fields="{'ATK1dano'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="215" left="710" width="95" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="95" height="19" field="ATK1tipo"/> <dataLink fields="{'ATK1tipo'}" defaultValues="{'-'}" />
-            </layout>
-			<layout top="214" left="807" compilerOrder="71">
-			<comboBox align="top" field="ATK1TesteCD" width="18" height="19" horzTextAlign="center" items="{'-', 'D', 'E'}" values="{'0', '+15', '+10'}" hint="Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares"/><dataLink fields="{'ATK1TesteCD'}" defaultValues="{'+15'}"/>
-			</layout>
-			<button top="214" left="834" width="22" height="20">
-				<image left="1" width="20" height="21" src="images/dice.png"/>
-					<event name="onClick">
-						local personagem = rrpg.getPersonagemDe(sheet);                                
-
-						if (personagem ~= nil) then
-							local mesa = personagem.mesa;
-
-							if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
-								
-									if sheet.ATK1tipo == nil then
-										sheet.ATK1tipo = "-";
-									end;
-									
-									if sheet.ATK1dano == nil then
-										sheet.ATK1dano = "0";
-									end;
-								
-								local rolagem = rrpg.interpretarRolagem(sheet.ATK1mod); 
-								local dificuldade = math.floor(tonumber(sheet.ATK1dano or 0) + tonumber(sheet.ATK1TesteCD or 0))
-
-								local tipo = sheet.ATK1tipo
-								local descricao = "Ataque 1 - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK1dano .. " - CD: " .. dificuldade .. "";
-
-								if sheet.ATK1 ~= nil then
-									   descricao = sheet.ATK1 ..  " - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK1dano .. " - CD: " .. dificuldade .. "";
-								end;
-
-								if not rolagem.possuiAlgumDado then
-									   rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
-
-								end; 
-
-								local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-
-								if mesaDoPersonagem ~= nil then
-									   mesaDoPersonagem.chat:rolarDados(rolagem, descricao)
-								end;
-							end;
-						end;     
-					</event>
-			</button>
-
-			
-            <layout top="238" left="458" width="188" height="18" compilerOrder="73">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="188" height="19" field="ATK2" compilerOrder="74"/>
-            </layout>
-            <layout top="238" left="651" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK2mod"/> <dataLink fields="{'ATK2mod'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="238" left="681" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK2dano"/> <dataLink fields="{'ATK2dano'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="238" left="710" width="102" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="102" height="19" field="ATK2tipo"/> <dataLink fields="{'ATK2tipo'}" defaultValues="{'-'}"/>
-            </layout>
-			<layout top="236" left="807" compilerOrder="71">
-			<comboBox align="top" field="ATK2TesteCD" width="18" height="19" horzTextAlign="center" items="{'-', 'D', 'E'}" values="{'0', '+15', '+10'}" hint="Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares"/><dataLink fields="{'ATK2TesteCD'}" defaultValues="{'+15'}"/>
-			</layout>
-			<button top="236" left="834" width="22" height="20">
-				<image left="1" width="20" height="21" src="images/dice.png"/>
-					<event name="onClick">
-						local personagem = rrpg.getPersonagemDe(sheet);                                
-
-						if (personagem ~= nil) then
-							local mesa = personagem.mesa;
-
-							if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
-								
-									if sheet.ATK2tipo == nil then
-										sheet.ATK2tipo = "-";
-									end;
-									
-									if sheet.ATK2dano == nil then
-										sheet.ATK2dano = "0";
-									end;
-								
-								local rolagem = rrpg.interpretarRolagem(sheet.ATK2mod); 
-								local dificuldade = math.floor(tonumber(sheet.ATK2dano or 0) + tonumber(sheet.ATK2TesteCD or 0))
-								local tipo = sheet.ATK2tipo
-								local descricao = "Ataque 2 - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK2dano .. " - CD: " .. dificuldade .. "";
-
-								if sheet.ATK2 ~= nil then
-									   descricao = sheet.ATK2 ..  " - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK2dano .. " - CD: " .. dificuldade .. "";
-								end;
-
-								if not rolagem.possuiAlgumDado then
-									   rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
-
-								end; 
-
-								local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-
-								if mesaDoPersonagem ~= nil then
-									   mesaDoPersonagem.chat:rolarDados(rolagem, descricao)
-								end;
-							end;
-						end;     
-					</event>
-			</button>
 			
 			
-			<layout top="259" left="458" width="188" height="18" compilerOrder="75">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="188" height="19" field="ATK3" compilerOrder="76"/>
-            </layout>
-            <layout top="259" left="651" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK3mod"/> <dataLink fields="{'ATK3mod'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="259" left="681" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK3dano"/> <dataLink fields="{'ATK3dano'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="259" left="710" width="102" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="102" height="19" field="ATK3tipo"/> <dataLink fields="{'ATK3tipo'}" defaultValues="{'-'}"/>
-            </layout>
-			<layout top="258" left="807" compilerOrder="71">
-			<comboBox align="top" field="ATK3TesteCD" width="18" height="19" horzTextAlign="center" items="{'-', 'D', 'E'}" values="{'0', '+15', '+10'}" hint="Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares"/><dataLink fields="{'ATK3TesteCD'}" defaultValues="{'+15'}"/>
-			</layout>
-			<button top="258" left="834" width="22" height="20">
-				<image left="1" width="20" height="21" src="images/dice.png"/>
+		   <button left="339" top="521" width="99" height="36" text="">
+					<image align="top" margins="{top=-1}" width="100" height="40" src="images/Hab_PRE.png"/>
 					<event name="onClick">
-						local personagem = rrpg.getPersonagemDe(sheet);                                
+					local personagem = Firecast.getPersonagemDe(sheet);                                
 
-						if (personagem ~= nil) then
-							local mesa = personagem.mesa;
+					if (personagem ~= nil) then
+						local mesa = personagem.mesa;
 
-							if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
-								
-									if sheet.ATK3tipo == nil then
-										sheet.ATK3tipo = "-";
-									end;
-									
-									if sheet.ATK3dano == nil then
-										sheet.ATK3dano = "0";
-									end;
-								
+						if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
 
-								local rolagem = rrpg.interpretarRolagem(sheet.ATK3mod); 
-								local dificuldade = math.floor(tonumber(sheet.ATK3dano or 0) + tonumber(sheet.ATK3TesteCD or 0))
-								local tipo = sheet.ATK3tipo
-								local descricao = "Ataque 3 - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK3dano .. " - CD: " .. dificuldade .. "";
+							local rolagem = Firecast.interpretarRolagem(sheet.PREtotal); 
 
-								if sheet.ATK3 ~= nil then
-									   descricao = sheet.ATK3 .. " - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK3dano .. " - CD: " .. dificuldade .. "";
-								end;
+							if not rolagem.possuiAlgumDado then
+								   rolagem = Firecast.interpretarRolagem("1d20"):concatenar(rolagem);
+							end; 
 
-								if not rolagem.possuiAlgumDado then
-									   rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
+							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 
-								end; 
-
-								local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-
-								if mesaDoPersonagem ~= nil then
-									   mesaDoPersonagem.chat:rolarDados(rolagem, descricao)
-								end;
+							if mesaDoPersonagem ~= nil then
+								   mesaDoPersonagem.activeChat:rolarDados(rolagem, "Presença de " .. (sheet.CODINOME or "Herói"));
 							end;
-						end;     
+						end;
+			end;     
 					</event>
 			</button>
+    
+		
+<!-- VANTAGENS AUTOMÁTICAS	 -->
 
+		<label vertTextAlign="center" horzTextAlign="center" fontColor="#bedbd5" text="TOTAL" left="395" top="596" width="30" height="29" />
+		
+		<edit transparent="true" vertTextAlign="center" horzTextAlign="center" fontColor="#bedbd5" left="395" top="607" width="35" height="20" field="TotalppVantagem"/> <dataLink fields="{'TotalppVantagem'}" defaultValues="{'0'}"/>
 			
-            <layout top="280" left="458" width="188" height="18" compilerOrder="77">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="188" height="19" field="ATK4" compilerOrder="78"/>
-            </layout>
-            <layout top="280" left="651" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK4mod"/> <dataLink fields="{'ATK4mod'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="280" left="681" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK4dano"/> <dataLink fields="{'ATK4dano'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="280" left="710" width="102" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="102" height="19" field="ATK4tipo"/> <dataLink fields="{'ATK4tipo'}" defaultValues="{'-'}"/>
-            </layout>
-			<layout top="279" left="807" compilerOrder="71">
-			<comboBox align="top" field="ATK4TesteCD" width="19" height="18" horzTextAlign="center" items="{'-', 'D', 'E'}" values="{'0', '+15', '+10'}" hint="Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares"/><dataLink fields="{'ATK4TesteCD'}" defaultValues="{'+15'}"/>
-			</layout>
-			<button top="279" left="834" width="22" height="20">
-				<image left="1" width="20" height="21" src="images/dice.png"/>
-					<event name="onClick">
-						local personagem = rrpg.getPersonagemDe(sheet);                                
+		<button left="287" top="598" height="24" text="Nova Vantagem" fontSize="12" width="100"
+                onClick="self.rclVantagens:append();"/>
+				
+		<layout left="40" top="646" width="398" height="250">
+		<scrollBox left="0" top="0" width="398" height="250">
+		   <recordList name="rclVantagens" field="dVantagens" templateForm="frmFichaMM3eVantagens_svg"
+						left="0" top="0" width="400" autoHeight="true">
+							<event name="onCompare">
+								return Utils.compareStringPtBr(nodeA.nomeVantagem, nodeB.nomeVantagem);
+							</event>
+			</recordList>
+		</scrollBox>		
+		</layout>
+		
+<!-- ATAQUES DINÂMICOS -->
 
-						if (personagem ~= nil) then
-							local mesa = personagem.mesa;
-
-							if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
-								
-									if sheet.ATK4tipo == nil then
-										sheet.ATK4tipo = "-";
-									end;
-									
-									if sheet.ATK4dano == nil then
-										sheet.ATK4dano = "0";
-									end;
-								
-
-								local rolagem = rrpg.interpretarRolagem(sheet.ATK4mod); 
-								local dificuldade = math.floor(tonumber(sheet.ATK4dano or 0) + tonumber(sheet.ATK4TesteCD or 0))
-								local tipo = sheet.ATK4tipo
-								local descricao = "Ataque 4 - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK4dano .. " - CD: " .. dificuldade .. "";
-
-								if sheet.ATK4 ~= nil then
-									   descricao = sheet.ATK4 .. " - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK4dano .. " - CD: " .. dificuldade .. "";
-								end;
-
-								if not rolagem.possuiAlgumDado then
-									   rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
-
-								end; 
-
-								local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-
-								if mesaDoPersonagem ~= nil then
-									   mesaDoPersonagem.chat:rolarDados(rolagem, descricao)
-								end;
-							end;
-						end;     
-					</event>
-			</button>
-
+		<button left="720" top="214" height="24" text="Novo Ataque" fontSize="12" width="100"
+                onClick="self.rclAtaques:append();"/>
+		
+		<layout top="280" left="456" width="402" height="150">
+		
+		<scrollBox left="0" top="0" width="402" height="150">
 			
-            <layout top="302" left="458" width="188" height="18" compilerOrder="79">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="188" height="19" field="ATK5" compilerOrder="80"/>
+		   <recordList name="rclAtaques" field="dAtaques" templateForm="frmFichaMM3eAtaques_svg"
+						left="0" top="0" width="400" autoHeight="true">
+							<event name="onCompare">
+								return Utils.compareStringPtBr(nodeA.ATK, nodeB.ATK);
+							</event>
+			</recordList>
+		</scrollBox>		
+		</layout>
+		
+<!-- INICIATIVA -->
+            <layout left="688" top="239" width="28" height="16" >
+                <edit transparent="true" fontSize="12" fontColor="#000000" fontStyle="bold" vertTextAlign="center" left="0" top="0" width="28" height="19" field="Iniciativa" />
             </layout>
-            <layout top="302" left="651" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK5mod"/> <dataLink fields="{'ATK5mod'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="302" left="681" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK5dano"/> <dataLink fields="{'ATK5dano'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="302" left="710" width="102" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="102" height="19" field="ATK5tipo"/> <dataLink fields="{'ATK5tipo'}" defaultValues="{'-'}"/>
-            </layout>
-			<layout top="301" left="807" compilerOrder="71">
-			<comboBox align="top" field="ATK5TesteCD" width="18" height="19" horzTextAlign="center" items="{'-', 'D', 'E'}" values="{'0', '+15', '+10'}" hint="Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares"/><dataLink fields="{'ATK5TesteCD'}" defaultValues="{'+15'}"/>
-			</layout>
-			<button top="301" left="834" width="22" height="20">
-				<image left="1" width="20" height="21" src="images/dice.png"/>
-					<event name="onClick">
-						local personagem = rrpg.getPersonagemDe(sheet);                                
-
-						if (personagem ~= nil) then
-							local mesa = personagem.mesa;
-
-							if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
-								
-									if sheet.ATK5tipo == nil then
-										sheet.ATK5tipo = "-";
-									end;
-									
-									if sheet.ATK5dano == nil then
-										sheet.ATK5dano = "0";
-									end;
-								
-
-								local rolagem = rrpg.interpretarRolagem(sheet.ATK5mod); 
-								local dificuldade = math.floor(tonumber(sheet.ATK5dano or 0) + tonumber(sheet.ATK5TesteCD or 0))
-								local tipo = sheet.ATK5tipo
-								local descricao = "Ataque 5 - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK5dano .. " - CD: " .. dificuldade .. "";
-
-								if sheet.ATK5 ~= nil then
-									   descricao = sheet.ATK5 .. " - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK5dano .. " - CD: " .. dificuldade .. "";
-								end;
-
-								if not rolagem.possuiAlgumDado then
-									   rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
-
-								end; 
-
-								local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-
-								if mesaDoPersonagem ~= nil then
-									   mesaDoPersonagem.chat:rolarDados(rolagem, descricao)
-								end;
-							end;
-						end;     
-					</event>
-			</button>
-
 			
-            <layout top="323" left="458" width="188" height="18" compilerOrder="79">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="188" height="19" field="ATK6" compilerOrder="80"/>
-            </layout>
-            <layout top="323" left="651" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK6mod"/> <dataLink fields="{'ATK6mod'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="323" left="681" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK6dano"/> <dataLink fields="{'ATK6dano'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="323" left="710" width="102" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="102" height="19" field="ATK6tipo"/> <dataLink fields="{'ATK6tipo'}" defaultValues="{'-'}"/>
-            </layout>
-			<layout top="322" left="807" compilerOrder="71">
-			<comboBox align="top" field="ATK6TesteCD" width="18" height="19" horzTextAlign="center" items="{'-', 'D', 'E'}" values="{'0', '+15', '+10'}" hint="Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares"/><dataLink fields="{'ATK6TesteCD'}" defaultValues="{'+15'}"/>
-			</layout>
-			<button top="322" left="834" width="22" height="20">
-				<image left="1" width="20" height="21" src="images/dice.png"/>
+		   <button left="590" top="239" width="89" height="21" text="INICIATIVA">
 					<event name="onClick">
-						local personagem = rrpg.getPersonagemDe(sheet);                                
+					local personagem = Firecast.getPersonagemDe(sheet);                                
 
-						if (personagem ~= nil) then
-							local mesa = personagem.mesa;
+					if (personagem ~= nil) then
+						local mesa = personagem.mesa;
 
-							if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
-								
-									if sheet.ATK6tipo == nil then
-										sheet.ATK6tipo = "-";
-									end;
-									
-									if sheet.ATK6dano == nil then
-										sheet.ATK6dano = "0";
-									end;
-								
+						if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
 
-								local rolagem = rrpg.interpretarRolagem(sheet.ATK6mod); 
-								local dificuldade = math.floor(tonumber(sheet.ATK6dano or 0) + tonumber(sheet.ATK6TesteCD or 0))
-								local tipo = sheet.ATK6tipo
-								local descricao = "Ataque 6 - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK6dano .. " - CD: " .. dificuldade .. "";
+							local rolagem = Firecast.interpretarRolagem(sheet.Iniciativa); 
 
-								if sheet.ATK6 ~= nil then
-									   descricao = sheet.ATK6 .. " - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK6dano .. " - CD: " .. dificuldade .. "";
-								end;
+							if not rolagem.possuiAlgumDado then
+								   rolagem = Firecast.interpretarRolagem("1d20"):concatenar(rolagem);
+							end; 
 
-								if not rolagem.possuiAlgumDado then
-									   rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
+							local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 
-								end; 
-
-								local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-
-								if mesaDoPersonagem ~= nil then
-									   mesaDoPersonagem.chat:rolarDados(rolagem, descricao)
-								end;
+							if mesaDoPersonagem ~= nil then
+								   mesaDoPersonagem.activeChat:rolarDados(rolagem, "Iniciativa de " .. (sheet.CODINOME or "Herói") );
 							end;
-						end;     
+						end;
+			end;     
 					</event>
 			</button>
-
-						
-            <layout top="345" left="458" width="188" height="18" compilerOrder="79">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="188" height="19" field="ATK7" compilerOrder="80"/>
-            </layout>
-            <layout top="345" left="651" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK7mod"/> <dataLink fields="{'ATK7mod'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="345" left="681" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK7dano"/> <dataLink fields="{'ATK7dano'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="345" left="710" width="102" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="102" height="19" field="ATK7tipo"/> <dataLink fields="{'ATK7tipo'}" defaultValues="{'-'}"/>
-            </layout>
-			<layout top="344" left="807" compilerOrder="71">
-			<comboBox align="top" field="ATK7TesteCD" width="18" height="19" horzTextAlign="center" items="{'-', 'D', 'E'}" values="{'0', '+15', '+10'}" hint="Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares"/><dataLink fields="{'ATK7TesteCD'}" defaultValues="{'+15'}"/>
-			</layout>
-			<button top="344" left="834" width="22" height="20">
-				<image left="1" width="20" height="21" src="images/dice.png"/>
-					<event name="onClick">
-						local personagem = rrpg.getPersonagemDe(sheet);                                
-
-						if (personagem ~= nil) then
-							local mesa = personagem.mesa;
-
-							if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
-								
-									if sheet.ATK7tipo == nil then
-										sheet.ATK7tipo = "-";
-									end;
-									
-									if sheet.ATK7dano == nil then
-										sheet.ATK7dano = "0";
-									end;
-								
-
-								local rolagem = rrpg.interpretarRolagem(sheet.ATK7mod); 
-								local dificuldade = math.floor(tonumber(sheet.ATK7dano or 0) + tonumber(sheet.ATK7TesteCD or 0))
-								local tipo = sheet.ATK7tipo
-								local descricao = "Ataque 7 - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK7dano .. " - CD: " .. dificuldade .. "";
-
-								if sheet.ATK7 ~= nil then
-									   descricao = sheet.ATK7 .. " - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK7dano .. " - CD: " .. dificuldade .. "";
-								end;
-
-								if not rolagem.possuiAlgumDado then
-									   rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
-
-								end; 
-
-								local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-
-								if mesaDoPersonagem ~= nil then
-									   mesaDoPersonagem.chat:rolarDados(rolagem, descricao)
-								end;
-							end;
-						end;     
-					</event>
-			</button>
-
-						
-            <layout top="366" left="458" width="188" height="18" compilerOrder="79">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="188" height="19" field="ATK8" compilerOrder="80"/>
-            </layout>
-            <layout top="366" left="651" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK8mod"/> <dataLink fields="{'ATK8mod'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="366" left="681" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK8dano"/> <dataLink fields="{'ATK8dano'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="366" left="710" width="102" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="102" height="19" field="ATK8tipo"/> <dataLink fields="{'ATK8tipo'}" defaultValues="{'-'}"/>
-            </layout>
-			<layout top="365" left="807" compilerOrder="71">
-			<comboBox align="top" field="ATK8TesteCD" width="18" height="19" horzTextAlign="center" items="{'-', 'D', 'E'}" values="{'0', '+15', '+10'}" hint="Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares"/><dataLink fields="{'ATK8TesteCD'}" defaultValues="{'+15'}"/>
-			</layout>
-			<button top="365" left="834" width="22" height="20">
-				<image left="1" width="20" height="21" src="images/dice.png"/>
-					<event name="onClick">
-						local personagem = rrpg.getPersonagemDe(sheet);                                
-
-						if (personagem ~= nil) then
-							local mesa = personagem.mesa;
-
-							if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
-								
-									if sheet.ATK8tipo == nil then
-										sheet.ATK8tipo = "-";
-									end;
-									
-									if sheet.ATK8dano == nil then
-										sheet.ATK8dano = "0";
-									end;
-								
-
-								local rolagem = rrpg.interpretarRolagem(sheet.ATK8mod); 
-								local dificuldade = math.floor(tonumber(sheet.ATK8dano or 0) + tonumber(sheet.ATK8TesteCD or 0))
-								local tipo = sheet.ATK8tipo
-								local descricao = "Ataque 8 - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK8dano .. " - CD: " .. dificuldade .. "";
-
-								if sheet.ATK8 ~= nil then
-									   descricao = sheet.ATK8 .. " - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK8dano .. " - CD: " .. dificuldade .. "";
-								end;
-
-								if not rolagem.possuiAlgumDado then
-									   rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
-
-								end; 
-
-								local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-
-								if mesaDoPersonagem ~= nil then
-									   mesaDoPersonagem.chat:rolarDados(rolagem, descricao)
-								end;
-							end;
-						end;     
-					</event>
-			</button>
-
-						
-            <layout top="388" left="458" width="188" height="18" compilerOrder="79">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="188" height="19" field="ATK9" compilerOrder="80"/>
-            </layout>
-            <layout top="388" left="651" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK9mod"/> <dataLink fields="{'ATK9mod'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="388" left="681" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK9dano"/> <dataLink fields="{'ATK9dano'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="388" left="710" width="102" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="102" height="19" field="ATK9tipo"/> <dataLink fields="{'ATK9tipo'}" defaultValues="{'-'}"/>
-            </layout>
-			<layout top="387" left="807" compilerOrder="71">
-			<comboBox align="top" field="ATK9TesteCD" width="18" height="19" horzTextAlign="center" items="{'-', 'D', 'E'}" values="{'0', '+15', '+10'}" hint="Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares"/><dataLink fields="{'ATK9TesteCD'}" defaultValues="{'+15'}"/>
-			</layout>
-			<button top="387" left="834" width="22" height="20">
-				<image left="1" width="20" height="21" src="images/dice.png"/>
-					<event name="onClick">
-						local personagem = rrpg.getPersonagemDe(sheet);                                
-
-						if (personagem ~= nil) then
-							local mesa = personagem.mesa;
-
-							if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
-								
-									if sheet.ATK9tipo == nil then
-										sheet.ATK9tipo = "-";
-									end;
-									
-									if sheet.ATK9dano == nil then
-										sheet.ATK9dano = "0";
-									end;
-								
-
-								local rolagem = rrpg.interpretarRolagem(sheet.ATK9mod); 
-								local dificuldade = math.floor(tonumber(sheet.ATK9dano or 0) + tonumber(sheet.ATK9TesteCD or 0))
-								local tipo = sheet.ATK9tipo
-								local descricao = "Ataque 9 - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK9dano .. " - CD: " .. dificuldade .. "";
-
-								if sheet.ATK9 ~= nil then
-									   descricao = sheet.ATK9 .. " - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK9dano .. " - CD: " .. dificuldade .. "";
-								end;
-
-								if not rolagem.possuiAlgumDado then
-									   rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
-
-								end; 
-
-								local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-
-								if mesaDoPersonagem ~= nil then
-									   mesaDoPersonagem.chat:rolarDados(rolagem, descricao)
-								end;
-							end;
-						end;     
-					</event>
-			</button>
-
-						
-            <layout top="409" left="458" width="188" height="18" compilerOrder="79">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="188" height="19" field="ATK10" compilerOrder="80"/>
-            </layout>
-            <layout top="409" left="651" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK10mod"/> <dataLink fields="{'ATK10mod'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="409" left="681" width="25" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="27" height="19" field="ATK10dano"/> <dataLink fields="{'ATK10dano'}" defaultValues="{'0'}"/>
-            </layout>
-            <layout top="409" left="710" width="102" height="18" compilerOrder="71">
-                <edit transparent="true" fontSize="12" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="102" height="19" field="ATK10tipo"/> <dataLink fields="{'ATK10tipo'}" defaultValues="{'-'}"/>
-            </layout>
-			<layout top="408" left="807" compilerOrder="71">
-			<comboBox align="top" field="ATK10TesteCD" width="18" height="19" horzTextAlign="center" items="{'-', 'D', 'E'}" values="{'0', '+15', '+10'}" hint="Escolha entre Nulo 'D'ano ou 'E'feitos como Aflição ou similares"/><dataLink fields="{'ATK10TesteCD'}" defaultValues="{'+15'}"/>
-			</layout>
-			<button top="408" left="834" width="22" height="20">
-				<image left="1" width="20" height="21" src="images/dice.png"/>
-					<event name="onClick">
-						local personagem = rrpg.getPersonagemDe(sheet);                                
-
-						if (personagem ~= nil) then
-							local mesa = personagem.mesa;
-
-							if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
-								
-									if sheet.ATK10tipo == nil then
-										sheet.ATK10tipo = "-";
-									end;
-									
-									if sheet.ATK10dano == nil then
-										sheet.ATK10dano = "0";
-									end;
-								
-
-								local rolagem = rrpg.interpretarRolagem(sheet.ATK10mod); 
-								local dificuldade = math.floor(tonumber(sheet.ATK10dano or 0) + tonumber(sheet.ATK10TesteCD or 0))
-								local tipo = sheet.ATK10tipo
-								local descricao = "Ataque 10 - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK10dano .. " - CD: " .. dificuldade .. "";
-
-								if sheet.ATK10 ~= nil then
-									   descricao = sheet.ATK10 .. " - Efeito: " .. tipo .. " - Dano: " .. sheet.ATK10dano .. " - CD: " .. dificuldade .. "";
-								end;
-
-								if not rolagem.possuiAlgumDado then
-									   rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
-
-								end; 
-
-								local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-
-								if mesaDoPersonagem ~= nil then
-									   mesaDoPersonagem.chat:rolarDados(rolagem, descricao)
-								end;
-							end;
-						end;     
-					</event>
-			</button>
-
-			
-<!-- FIM DOS ATAQUES -->
+<!-- FIM DA INICIATIVA -->
 			
 			
-            <layout left="43" top="933" width="391" height="302" compilerOrder="33">
-                <textEditor left="0" top="0" width="391" height="302" fontSize="16.5" fontColor="#000000" field="Equipamentos" transparent="true" compilerOrder="34"/>
+            <layout left="43" top="933" width="391" height="302">
+                <textEditor left="0" top="0" width="391" height="302" fontSize="16.5" fontColor="#000000" field="Equipamentos" transparent="true"/> <dataLink fields="{'Equipamentos'}" defaultValues="{'Equipamentos\n ✲ Nome do Equipamento ● custo final \n\n ✲ Nome do Equipamento ● custo final\n\n ✲ Nome do Equipamento ● custo final\n\n ✲ Nome do Equipamento ● custo final '}"/>
             </layout>
 
-            <layout left="541" top="78" width="24" height="15" compilerOrder="41">
-                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFesq1" compilerOrder="42"/>
+            <layout left="541" top="78" width="24" height="15">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFesq1"/>
             </layout>
-            <layout left="568" top="78" width="24" height="15" compilerOrder="39">
-                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFesq2" compilerOrder="40"/> <dataLink fields="{'DEFesq2'}" defaultValues="{'0'}"/>
+            <layout left="568" top="78" width="24" height="15">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFesq2"/> <dataLink fields="{'DEFesq2'}" defaultValues="{'0'}"/>
             </layout>
             <layout left="595" top="78" width="24" height="15">
                 <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFesq3"/> <dataLink fields="{'DEFesq3'}" defaultValues="{'0'}"/>
@@ -817,11 +501,11 @@
             </layout>
 
 
-            <layout left="541" top="99" width="24" height="15" compilerOrder="43">
-                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFapa1" compilerOrder="44"/>
+            <layout left="541" top="99" width="24" height="15">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFapa1"/>
             </layout>
-            <layout left="568" top="99" width="24" height="15" compilerOrder="45">
-                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFapa2" compilerOrder="46"/> <dataLink fields="{'DEFapa2'}" defaultValues="{'0'}"/>
+            <layout left="568" top="99" width="24" height="15">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFapa2"/> <dataLink fields="{'DEFapa2'}" defaultValues="{'0'}"/>
             </layout>
             <layout left="595" top="99" width="24" height="15">
                 <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFapa3"/> <dataLink fields="{'DEFapa3'}" defaultValues="{'0'}"/>
@@ -830,11 +514,11 @@
                 <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFapaTotal"/>
             </layout>
 
-            <layout left="541" top="120" width="24" height="15" compilerOrder="49">
-                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFvon1" compilerOrder="50"/>
+            <layout left="541" top="120" width="24" height="15">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFvon1"/>
             </layout>
-            <layout left="568" top="120" width="24" height="15" compilerOrder="47">
-                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFvon2" compilerOrder="48"/> <dataLink fields="{'DEFvon2'}" defaultValues="{'0'}"/>
+            <layout left="568" top="120" width="24" height="15">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFvon2"/> <dataLink fields="{'DEFvon2'}" defaultValues="{'0'}"/>
             </layout>
             <layout left="595" top="120" width="24" height="15">
                 <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFvon3"/> <dataLink fields="{'DEFvon3'}" defaultValues="{'0'}"/>
@@ -844,21 +528,21 @@
             </layout>
 
 
-            <layout left="750" top="78" width="24" height="15" compilerOrder="53">
-                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFforti1" compilerOrder="54"/>
+            <layout left="750" top="78" width="24" height="15">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFforti1"/>
             </layout>
-            <layout left="777" top="78" width="24" height="15" compilerOrder="53">
+            <layout left="777" top="78" width="24" height="15">
                 <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFforti2"/> <dataLink fields="{'DEFforti2'}" defaultValues="{'0'}"/>
             </layout>
-            <layout left="804" top="78" width="24" height="15" compilerOrder="53">
+            <layout left="804" top="78" width="24" height="15">
                 <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFforti3"/> <dataLink fields="{'DEFforti3'}" defaultValues="{'0'}"/>
             </layout>
-            <layout left="831" top="78" width="24" height="15" compilerOrder="53">
+            <layout left="831" top="78" width="24" height="15">
                 <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFfortiTotal"/>
             </layout>
 
-            <layout left="750" top="99" width="24" height="15" compilerOrder="51">
-                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFres1" compilerOrder="52"/>
+            <layout left="750" top="99" width="24" height="15">
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFres1"/>
             </layout>
             <layout left="777" top="99" width="24" height="15">
                 <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFres2"/> <dataLink fields="{'DEFres2'}" defaultValues="{'0'}"/>
@@ -870,66 +554,90 @@
                 <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFresTotal"/>
             </layout>
 
-            <layout left="650" top="117" width="98" height="24" compilerOrder="55">
-                <edit transparent="true" fontSize="14" fontColor="#000000" fontStyle="bold" vertTextAlign="center" left="0" top="0" width="182" height="24" field="DEFextraName" compilerOrder="56"/>
+            <layout left="650" top="117" width="98" height="24">
+                <edit transparent="true" fontSize="14" fontColor="#000000" fontStyle="bold" vertTextAlign="center" left="0" top="0" width="182" height="24" field="DEFextraName"/>
             </layout>
             <layout left="750" top="120" width="24" height="15">
-                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFextra1" compilerOrder="56"/>
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFextra1"/>
             </layout>
             <layout left="777" top="120" width="24" height="15">
-                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFextra2" compilerOrder="56"/> <dataLink fields="{'DEFextra2'}" defaultValues="{'0'}"/>
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFextra2"/> <dataLink fields="{'DEFextra2'}" defaultValues="{'0'}"/>
             </layout>
             <layout left="804" top="120" width="24" height="15">
-                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFextra3" compilerOrder="56"/> <dataLink fields="{'DEFextra3'}" defaultValues="{'0'}"/>
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFextra3"/> <dataLink fields="{'DEFextra3'}" defaultValues="{'0'}"/>
             </layout>
             <layout left="831" top="120" width="24" height="15">
-                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFextraTotal" compilerOrder="56"/>
-            </layout>
-
-
-            <layout left="540" top="1196" width="19" height="18" compilerOrder="57">
-                <label fontSize="10" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="15" field="PPhabilidades" compilerOrder="58"/>
-            </layout>
-            <layout left="618" top="1196" width="21" height="18" compilerOrder="59">
-                <label fontSize="10" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="15" field="PPpericias" compilerOrder="60"/>
-            </layout>
-            <layout left="641" top="1197" width="19" height="14" compilerOrder="61">
-                <label fontSize="9" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="19" height="15" field="PPpericiasgrad" compilerOrder="62"/>
-            </layout>
-            <layout left="811" top="1194" width="21" height="18" compilerOrder="63">
-                <edit transparent="true" fontSize="10" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="18" field="PPvantagens" compilerOrder="64"/>
-            </layout>
-            <layout left="512" top="1212" width="21" height="14" compilerOrder="65">
-                <edit transparent="TRUE" fontSize="10" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="18" field="PPdefesas" compilerOrder="66"/>
-            </layout>
-            <layout left="593" top="1212" width="24" height="18" compilerOrder="67">
-                <edit transparent="true" fontSize="10" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="24" height="18" field="PPpoderes" compilerOrder="68"/>
-            </layout>
-            <layout left="630" top="1214" width="140" height="18" compilerOrder="69">
-                <label fontSize="12" fontColor="#000000" fontStyle="bold" vertTextAlign="center" left="0" top="0" width="140" height="18" field="PPsomatotal" compilerOrder="70"/>
+                <edit transparent="true" fontSize="9" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="16" field="DEFextraTotal"/>
             </layout>
 			
+            <layout left="456" top="173" width="115" height="50">
+                <edit transparent="true" fontSize="18" fontStyle="bold" fontColor="#591f1d" horzTextAlign="center" left="0" top="0" width="115" height="30" type="number" field="PenaRes"/>
+				<label visible="false" field="PenalidadeRes" />
+            </layout>
+			
+			<dataLink fields="{'PenaRes'}">
+				<event name="onChange">
+					if sheet.PenaRes ~= nil then
+						if sheet.PenaRes >= 0 then
+							sheet.PenaRes = 0 - (tonumber(sheet.PenaRes));
+						end;						
+					end;
+				</event>
+			</dataLink>
+			
+            <layout left="578" top="173" width="277" height="40">
+                <textEditor transparent="true" fontSize="14" fontColor="#591f1d" left="0" top="0" width="277" height="34" field="Condicoes"/>
+            </layout>
+
+
+            <layout left="540" top="1196" width="19" height="18">
+                <label fontSize="10" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="15" field="PPhabilidades"/>
+            </layout>
+            <layout left="618" top="1196" width="21" height="18">
+                <label fontSize="10" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="15" field="PPpericias"/>
+            </layout>
+            <layout left="641" top="1197" width="19" height="14">
+                <label fontSize="9" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="19" height="15" field="PPpericiasgrad"/>
+            </layout>
+            <layout left="811" top="1194" width="21" height="18">
+                <edit transparent="true" fontSize="10" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="18" field="PPvantagens"/>
+				    <dataLink fields="'TotalppVantagem'">
+						<event name="onChange">
+						   sheet.PPvantagens = (tonumber(sheet.TotalppVantagem) or 0);
+						</event>
+					</dataLink>
+			
+            </layout>
+            <layout left="512" top="1212" width="21" height="14">
+                <edit transparent="TRUE" fontSize="10" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="24" height="18" field="PPdefesas"/>
+            </layout>
+            <layout left="593" top="1212" width="24" height="18">
+                <edit transparent="true" fontSize="10" fontColor="#000000" vertTextAlign="center" left="0" top="0" width="24" height="18" field="PPpoderes"/>
+            </layout>
+            <layout left="630" top="1214" width="140" height="18">
+                <label fontSize="12" fontColor="#000000" fontStyle="bold" vertTextAlign="center" left="0" top="0" width="140" height="18" field="PPsomatotal"/>
+            </layout>
 			<rectangle left="254" top="26" width="184" height="245" color="#6cb098" strokeColor="white" strokeSize="1"/>
-			<image left="255" top="27" width="182" height="243" field="avatar" editable="true" style="autoFit" >
+			<image left="255" top="27" width="182" height="243" field="avatar" editable="true" style="autoFit" animate="true">
 				<event name="OnStartDrag">
 					drag:addData("imageURL", sheet.avatar);
 				</event>
 			</image>
 		
-            <layout left="52" top="373" width="52" height="30" compilerOrder="71">
-                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="52" height="31" field="IDADE" compilerOrder="72"/>
+            <layout left="40" top="373" width="78" height="30">
+                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="78" height="31" field="IDADE"/>
             </layout>
-            <layout left="125" top="373" width="68" height="30" compilerOrder="73">
-                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="68" height="31" field="ALTURA" compilerOrder="74"/>
+            <layout left="120" top="373" width="78" height="30">
+                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="78" height="31" field="ALTURA"/>
             </layout>
-            <layout left="207" top="373" width="68" height="30" compilerOrder="75">
-                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="68" height="31" field="PESO" compilerOrder="76"/>
+            <layout left="202" top="373" width="78" height="30">
+                <edit transparent="true" fontSize="20.3" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="78" height="31" field="PESO"/>
             </layout>
-			<layout left="117" top="216" width="202" height="35" compilerOrder="77">
+			<layout left="117" top="216" width="202" height="35">
 				<imageCheckBox field="CheckIDENTIDADE" checkedImage="images/PUBLICA.png" uncheckedImage="images/SECRETA.png" />
 			</layout>
-            <layout left="43" top="243" width="202" height="35" compilerOrder="77">
-                <edit transparent="true" fontSize="10" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="202" height="36" field="ALIAS" hint="Notas sobre a Identidade. " compilerOrder="78"/>
+            <layout left="43" top="243" width="202" height="35">
+                <edit transparent="true" fontSize="10" fontColor="#000000" horzTextAlign="center" left="0" top="0" width="202" height="36" field="ALIAS" hint="Notas sobre a Identidade. "/>
             </layout>
 
 <dataLink fields="'FOR', 'VIG', 'AGI', 'DES', 'LUT', 'INT', 'PRO', 'PRE', 'varFORvalor', 'varVIGvalor', 'varAGIvalor', 'varDESvalor', 'varLUTvalor', 'varINTvalor', 'varPROvalor', 'varPREvalor'">
@@ -952,6 +660,7 @@
                sheet.INTtotal = (tonumber(sheet.INT) or 0) + (tonumber(sheet.varINTvalor) or 0);
                sheet.PROtotal = (tonumber(sheet.PRO) or 0) + (tonumber(sheet.varPROvalor) or 0);
                sheet.PREtotal = (tonumber(sheet.PRE) or 0) + (tonumber(sheet.varPREvalor) or 0);
+			   
         </event>
 </dataLink>
 
@@ -1000,23 +709,23 @@
 
        <button left="454" top="74" width="85" height="22" text="ESQUIVAR">
                 <event name="onClick">
-                local personagem = rrpg.getPersonagemDe(sheet);                                
+                local personagem = Firecast.getPersonagemDe(sheet);                                
 
                 if (personagem ~= nil) then
                     local mesa = personagem.mesa;
 
                     if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
 
-                        local rolagem = rrpg.interpretarRolagem(sheet.DEFesqTOTAL); 
+                        local rolagem = Firecast.interpretarRolagem(sheet.DEFesqTOTAL); 
 
                         if not rolagem.possuiAlgumDado then
-                               rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
+                               rolagem = Firecast.interpretarRolagem("1d20"):concatenar(rolagem);
                         end; 
 
-                        local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+                        local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 
                         if mesaDoPersonagem ~= nil then
-                               mesaDoPersonagem.chat:rolarDados(rolagem, "Esquivar");
+                               mesaDoPersonagem.activeChat:rolarDados(rolagem, "Esquivar de " .. (sheet.CODINOME or "Herói"));
                         end;
                     end;
 		end;     
@@ -1025,23 +734,23 @@
 
        <button left="454" top="96" width="85" height="22" text="APARAR">
                 <event name="onClick">
-                local personagem = rrpg.getPersonagemDe(sheet);                                
+                local personagem = Firecast.getPersonagemDe(sheet);                                
 
                 if (personagem ~= nil) then
                     local mesa = personagem.mesa;
 
                     if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
 
-                        local rolagem = rrpg.interpretarRolagem(sheet.DEFapaTOTAL); 
+                        local rolagem = Firecast.interpretarRolagem(sheet.DEFapaTOTAL); 
 
                         if not rolagem.possuiAlgumDado then
-                               rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
+                               rolagem = Firecast.interpretarRolagem("1d20"):concatenar(rolagem);
                         end; 
 
-                        local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+                        local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 
                         if mesaDoPersonagem ~= nil then
-                               mesaDoPersonagem.chat:rolarDados(rolagem, "Aparar");
+                               mesaDoPersonagem.activeChat:rolarDados(rolagem, "Aparar de " .. (sheet.CODINOME or "Herói"));
                         end;
                     end;
 		end;     
@@ -1050,23 +759,23 @@
 
        <button left="454" top="118" width="85" height="22" text="VONTADE">
                 <event name="onClick">
-                local personagem = rrpg.getPersonagemDe(sheet);                                
+                local personagem = Firecast.getPersonagemDe(sheet);                                
 
                 if (personagem ~= nil) then
                     local mesa = personagem.mesa;
 
                     if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
 
-                        local rolagem = rrpg.interpretarRolagem(sheet.DEFvonTOTAL); 
+                        local rolagem = Firecast.interpretarRolagem(sheet.DEFvonTOTAL); 
 
                         if not rolagem.possuiAlgumDado then
-                               rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
+                               rolagem = Firecast.interpretarRolagem("1d20"):concatenar(rolagem);
                         end; 
 
-                        local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+                        local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 
                         if mesaDoPersonagem ~= nil then
-                               mesaDoPersonagem.chat:rolarDados(rolagem, "Vontade");
+                               mesaDoPersonagem.activeChat:rolarDados(rolagem, "Vontade de " .. (sheet.CODINOME or "Herói"));
                         end;
                     end;
 		end;     
@@ -1075,23 +784,23 @@
 
        <button left="651" top="74" width="98" height="22" text="FORTITUDE">
                 <event name="onClick">
-                local personagem = rrpg.getPersonagemDe(sheet);                                
+                local personagem = Firecast.getPersonagemDe(sheet);                                
 
                 if (personagem ~= nil) then
                     local mesa = personagem.mesa;
 
                     if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
 
-                        local rolagem = rrpg.interpretarRolagem(sheet.DEFfortiTOTAL); 
+                        local rolagem = Firecast.interpretarRolagem(sheet.DEFfortiTOTAL); 
 
                         if not rolagem.possuiAlgumDado then
-                               rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
+                               rolagem = Firecast.interpretarRolagem("1d20"):concatenar(rolagem);
                         end; 
 
-                        local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+                        local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 
                         if mesaDoPersonagem ~= nil then
-                               mesaDoPersonagem.chat:rolarDados(rolagem, "Fortitude");
+                               mesaDoPersonagem.activeChat:rolarDados(rolagem, "Fortitude de " .. (sheet.CODINOME or "Herói"));
                         end;
                     end;
 		end;     
@@ -1100,23 +809,28 @@
 
        <button left="651" top="96" width="98" height="22" text="RESISTENCIA">
                 <event name="onClick">
-                local personagem = rrpg.getPersonagemDe(sheet);                                
+                local personagem = Firecast.getPersonagemDe(sheet);                                
 
                 if (personagem ~= nil) then
                     local mesa = personagem.mesa;
 
                     if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
 
-                        local rolagem = rrpg.interpretarRolagem(sheet.DEFresTOTAL); 
+                        local rolagem = Firecast.interpretarRolagem(sheet.DEFresTOTAL); 
+						local penalidade = Firecast.interpretarRolagem(sheet.PenaRes); 
 
                         if not rolagem.possuiAlgumDado then
-                               rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
+                               rolagem = Firecast.interpretarRolagem("1d20"):concatenar(rolagem):concatenar(penalidade);
                         end; 
 
-                        local mesaDoPersonagem = rrpg.getMesaDe(sheet);
+                        local mesaDoPersonagem = Firecast.getMesaDe(sheet);
 
                         if mesaDoPersonagem ~= nil then
-                               mesaDoPersonagem.chat:rolarDados(rolagem, "Resistencia");
+								if sheet.PenaRes ~= nil then
+									mesaDoPersonagem.activeChat:rolarDados(rolagem, "Resistência de " .. (sheet.CODINOME or "Herói") .. " com penalidade de " .. (sheet.PenaRes));
+								else
+									mesaDoPersonagem.activeChat:rolarDados(rolagem, "Resistência de " .. (sheet.CODINOME or "Herói"));
+								end;
                         end;
                     end;
 		end;     
@@ -1124,42 +838,79 @@
 	    </button>
 
 
-       <button left="590" top="171" width="89" height="21" text="INICIATIVA">
-                <event name="onClick">
-                local personagem = rrpg.getPersonagemDe(sheet);                                
-
-                if (personagem ~= nil) then
-                    local mesa = personagem.mesa;
-
-                    if ((personagem.dono == mesa.meuJogador) or (mesa.meuJogador.isMestre)) then
-
-                        local rolagem = rrpg.interpretarRolagem(sheet.Iniciativa); 
-
-                        if not rolagem.possuiAlgumDado then
-                               rolagem = rrpg.interpretarRolagem("1d20"):concatenar(rolagem);
-                        end; 
-
-                        local mesaDoPersonagem = rrpg.getMesaDe(sheet);
-
-                        if mesaDoPersonagem ~= nil then
-                               mesaDoPersonagem.chat:rolarDados(rolagem, "Iniciativa");
-                        end;
-                    end;
-		end;     
-                </event>
-	    </button>
 
 
 	    <dataLink fields="{'FOR', 'VIG', 'AGI', 'DES', 'LUT', 'INT', 'PRO', 'PRE'}">
                 <event name="onChange">
-                    sheet.PPhabilidades = ((tonumber(sheet.FOR) or 0) +
-                                          (tonumber(sheet.VIG) or 0) +
-                                          (tonumber(sheet.AGI) or 0) +
-                                          (tonumber(sheet.DES) or 0) +
-                                          (tonumber(sheet.LUT) or 0) +
-                                          (tonumber(sheet.INT) or 0) +
-                                          (tonumber(sheet.PRO) or 0) +
-                                          (tonumber(sheet.PRE) or 0)) * 2;                  
+					
+					if sheet.HeroHigh then
+						sheet.PPhabilidades = ((tonumber(sheet.FOR) or 0) + 1 +
+											  (tonumber(sheet.VIG) or 0) + 1 +
+											  (tonumber(sheet.AGI) or 0) + 1 +
+											  (tonumber(sheet.DES) or 0) + 1 +
+											  (tonumber(sheet.LUT) or 0) + 1 +
+											  (tonumber(sheet.INT) or 0) + 1 +
+											  (tonumber(sheet.PRO) or 0) + 1 +
+											  (tonumber(sheet.PRE) or 0) + 1) * 2;  
+					else
+						sheet.PPhabilidades = ((tonumber(sheet.FOR) or 0) +
+											  (tonumber(sheet.ppFOR) or 0) +
+											  (tonumber(sheet.VIG) or 0) +
+											  (tonumber(sheet.ppVIG) or 0) +
+											  (tonumber(sheet.AGI) or 0) +
+											  (tonumber(sheet.ppAGI) or 0) +
+											  (tonumber(sheet.DES) or 0) +
+											  (tonumber(sheet.ppDES) or 0) +
+											  (tonumber(sheet.LUT) or 0) +
+											  (tonumber(sheet.ppLUT) or 0) +
+											  (tonumber(sheet.INT) or 0) +
+											  (tonumber(sheet.ppINT) or 0) +
+											  (tonumber(sheet.PRO) or 0) +
+											  (tonumber(sheet.ppPRO) or 0) +
+											  (tonumber(sheet.PRE) or 0) +
+											  (tonumber(sheet.ppPRE) or 0)) * 2;                  
+					end;
+					
+					if tonumber(sheet.FOR) ~= nil then
+						sheet.ppFOR = 0;
+					else
+						sheet.ppFOR = -5;
+					end;
+					if tonumber(sheet.AGI) ~= nil then
+						sheet.ppAGI = 0;
+					else
+						sheet.ppAGI = -5;
+					end;
+					if tonumber(sheet.LUT) ~= nil then
+						sheet.ppLUT = 0;
+					else
+						sheet.ppLUT = -5;
+					end;
+					if tonumber(sheet.PRO) ~= nil then
+						sheet.ppPRO = 0;
+					else
+						sheet.ppPRO = -5;
+					end;
+					if tonumber(sheet.VIG) ~= nil then
+						sheet.ppVIG = 0;
+					else
+						sheet.ppVIG = -5;
+					end;
+					if tonumber(sheet.DES) ~= nil then
+						sheet.ppDES = 0;
+					else
+						sheet.ppDES = -5;
+					end;
+					if tonumber(sheet.INT) ~= nil then
+						sheet.ppINT = 0;
+					else
+						sheet.ppINT = -5;
+					end;
+					if tonumber(sheet.PRE) ~= nil then
+						sheet.ppPRE = 0;
+					else
+						sheet.ppPRE = -5;
+					end;
                 </event>
 	    </dataLink>
 
@@ -1202,15 +953,6 @@
 
 
 		
-		
-
-
-
-
-
-
-
-
         </rectangle>
     </scrollBox>
 </form>

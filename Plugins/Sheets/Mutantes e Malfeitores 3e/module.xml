@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.5">
-	<id>MM3e_RRPG_Gilgante_2_7</id>
-	<version>2.8.1</version>
-	<name>MM3e_2_7</name>
-	<description>Ficha para Mutantes e Malfeitores 3a edicao com frente, verso, aba de pericias, aba de lista de poderes, rolagens de pericias, defesas, ataques e iniciativa.</description>
+	<id>MM3e_RRPG_Gilgante</id>
+	<version>2019-12-28</version>
+	<name>M&amp;M3e</name>
+	<description>Ficha para Mutantes e Malfeitores 3a edicao com frente, verso, aba de pericias, aba de lista de poderes, aba de Logs, aba de Consultas, rolagens de pericias, defesas, ataques e iniciativa.</description>
 	<author>Janus e Gilgante</author>
 	<site>http://www.rrpg.com.br</site>
 	<contact>Adicione os usuarios Janus ou Gilgante</contact>

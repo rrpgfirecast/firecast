@@ -38,7 +38,7 @@ local function constructNew_frmFicha_MM3ed_RRPG_Power()
 
     obj.rectangle1 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle1:setParent(obj.scrollBox1);
-    obj.rectangle1:setWidth(700);
+    obj.rectangle1:setWidth(893);
     obj.rectangle1:setHeight(1263);
     obj.rectangle1:setColor("#50a48d");
     obj.rectangle1:setName("rectangle1");
@@ -82,7 +82,7 @@ local function constructNew_frmFicha_MM3ed_RRPG_Power()
     obj.boxDetalhesDoItem:setName("boxDetalhesDoItem");
     obj.boxDetalhesDoItem:setVisible(false);
     obj.boxDetalhesDoItem:setAlign("right");
-    obj.boxDetalhesDoItem:setWidth(400);
+    obj.boxDetalhesDoItem:setWidth(600);
     obj.boxDetalhesDoItem:setMargins({left=14, right=14});
 
     obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
@@ -91,7 +91,7 @@ local function constructNew_frmFicha_MM3ed_RRPG_Power()
     obj.rectangle2:setColor("#6cb098");
     obj.rectangle2:setXradius(10);
     obj.rectangle2:setYradius(10);
-    obj.rectangle2:setHeight(500);
+    obj.rectangle2:setHeight(560);
     obj.rectangle2:setPadding({top=7, left=7, right=7, bottom=7});
     obj.rectangle2:setName("rectangle2");
 
@@ -126,21 +126,21 @@ local function constructNew_frmFicha_MM3ed_RRPG_Power()
     obj.layout3:setParent(obj.rectangle2);
     obj.layout3:setLeft(10);
     obj.layout3:setTop(40);
-    obj.layout3:setWidth(350);
+    obj.layout3:setWidth(440);
     obj.layout3:setHeight(600);
     obj.layout3:setName("layout3");
 
     obj.layout4 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout4:setParent(obj.layout3);
     obj.layout4:setAlign("left");
-    obj.layout4:setWidth(240);
+    obj.layout4:setWidth(440);
     obj.layout4:setName("layout4");
 
     obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj.layout4);
     obj.rectangle3:setAlign("top");
-    obj.rectangle3:setWidth(240);
-    obj.rectangle3:setHeight(298);
+    obj.rectangle3:setWidth(4400);
+    obj.rectangle3:setHeight(348);
     obj.rectangle3:setColor("#3f8270");
     obj.rectangle3:setStrokeColor("white");
     obj.rectangle3:setStrokeSize(1);
@@ -163,7 +163,7 @@ local function constructNew_frmFicha_MM3ed_RRPG_Power()
     obj.textEditor1:setField("PoderEfeito");
     obj.textEditor1:setTransparent(true);
     obj.textEditor1:setFontColor("white");
-    obj.textEditor1:setHeight(280);
+    obj.textEditor1:setHeight(320);
     obj.textEditor1:setMargins({left=10, right=10});
     obj.textEditor1:setName("textEditor1");
 
@@ -176,22 +176,22 @@ local function constructNew_frmFicha_MM3ed_RRPG_Power()
     obj.layout5 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout5:setParent(obj.rectangle2);
     obj.layout5:setLeft(10);
-    obj.layout5:setTop(348);
-    obj.layout5:setWidth(350);
-    obj.layout5:setHeight(400);
+    obj.layout5:setTop(398);
+    obj.layout5:setWidth(440);
+    obj.layout5:setHeight(390);
     obj.layout5:setName("layout5");
 
     obj.layout6 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout6:setParent(obj.layout5);
     obj.layout6:setAlign("left");
-    obj.layout6:setWidth(240);
+    obj.layout6:setWidth(440);
     obj.layout6:setName("layout6");
 
     obj.rectangle4 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle4:setParent(obj.layout6);
     obj.rectangle4:setAlign("top");
-    obj.rectangle4:setWidth(240);
-    obj.rectangle4:setHeight(82);
+    obj.rectangle4:setWidth(390);
+    obj.rectangle4:setHeight(93);
     obj.rectangle4:setColor("#3f8270");
     obj.rectangle4:setStrokeColor("white");
     obj.rectangle4:setStrokeSize(1);
@@ -227,21 +227,21 @@ local function constructNew_frmFicha_MM3ed_RRPG_Power()
     obj.layout7 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout7:setParent(obj.rectangle2);
     obj.layout7:setLeft(10);
-    obj.layout7:setTop(441);
-    obj.layout7:setWidth(350);
+    obj.layout7:setTop(501);
+    obj.layout7:setWidth(580);
     obj.layout7:setHeight(300);
     obj.layout7:setName("layout7");
 
     obj.layout8 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout8:setParent(obj.layout7);
     obj.layout8:setAlign("left");
-    obj.layout8:setWidth(240);
+    obj.layout8:setWidth(580);
     obj.layout8:setName("layout8");
 
     obj.rectangle5 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle5:setParent(obj.layout8);
     obj.rectangle5:setAlign("top");
-    obj.rectangle5:setWidth(240);
+    obj.rectangle5:setWidth(580);
     obj.rectangle5:setColor("#3f8270");
     obj.rectangle5:setStrokeColor("white");
     obj.rectangle5:setStrokeSize(1);
@@ -275,7 +275,7 @@ local function constructNew_frmFicha_MM3ed_RRPG_Power()
 
     obj.layout9 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout9:setParent(obj.rectangle2);
-    obj.layout9:setLeft(140);
+    obj.layout9:setLeft(340);
     obj.layout9:setTop(40);
     obj.layout9:setWidth(250);
     obj.layout9:setHeight(200);
@@ -298,21 +298,23 @@ local function constructNew_frmFicha_MM3ed_RRPG_Power()
     obj.label4:setFontColor("white");
     lfm_setPropAsString(obj.label4, "fontStyle",  "bold");
     obj.label4:setHorzTextAlign("center");
-    obj.label4:setMargins({bottom=1});
+    obj.label4:setMargins({bottom=1, left=1});
     obj.label4:setName("label4");
 
     obj.image2 = GUI.fromHandle(_obj_newObject("image"));
     obj.image2:setParent(obj.rectangle6);
     obj.image2:setAlign("right");
     obj.image2:setEditable(true);
+    obj.image2:setStyle("autoFit");
     obj.image2:setField("PoderImagem");
-    obj.image2:setWidth(130);
-    obj.image2:setMargins({top=1});
+    obj.image2:setWidth(128);
+    obj.image2:setMargins({top=1, left=2, right=1, bottom=1});
+    lfm_setPropAsString(obj.image2, "animate",  "true");
     obj.image2:setName("image2");
 
     obj.layout10 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout10:setParent(obj.rectangle2);
-    obj.layout10:setLeft(260);
+    obj.layout10:setLeft(460);
     obj.layout10:setTop(252);
     obj.layout10:setWidth(130);
     obj.layout10:setHeight(38);
@@ -354,7 +356,7 @@ local function constructNew_frmFicha_MM3ed_RRPG_Power()
 
     obj.layout11 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout11:setParent(obj.rectangle2);
-    obj.layout11:setLeft(260);
+    obj.layout11:setLeft(460);
     obj.layout11:setTop(300);
     obj.layout11:setWidth(130);
     obj.layout11:setHeight(38);
@@ -396,7 +398,7 @@ local function constructNew_frmFicha_MM3ed_RRPG_Power()
 
     obj.layout12 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout12:setParent(obj.rectangle2);
-    obj.layout12:setLeft(140);
+    obj.layout12:setLeft(340);
     obj.layout12:setTop(348);
     obj.layout12:setWidth(250);
     obj.layout12:setHeight(18);
@@ -423,7 +425,7 @@ local function constructNew_frmFicha_MM3ed_RRPG_Power()
 
     obj.layout13 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout13:setParent(obj.rectangle2);
-    obj.layout13:setLeft(140);
+    obj.layout13:setLeft(340);
     obj.layout13:setTop(364);
     obj.layout13:setWidth(250);
     obj.layout13:setHeight(25);
@@ -444,7 +446,7 @@ local function constructNew_frmFicha_MM3ed_RRPG_Power()
 
     obj.layout14 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout14:setParent(obj.rectangle2);
-    obj.layout14:setLeft(140);
+    obj.layout14:setLeft(340);
     obj.layout14:setTop(398);
     obj.layout14:setWidth(250);
     obj.layout14:setHeight(18);
@@ -471,7 +473,7 @@ local function constructNew_frmFicha_MM3ed_RRPG_Power()
 
     obj.layout15 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout15:setParent(obj.rectangle2);
-    obj.layout15:setLeft(140);
+    obj.layout15:setLeft(340);
     obj.layout15:setTop(414);
     obj.layout15:setWidth(250);
     obj.layout15:setHeight(25);
@@ -492,7 +494,7 @@ local function constructNew_frmFicha_MM3ed_RRPG_Power()
 
     obj.layout16 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout16:setParent(obj.rectangle2);
-    obj.layout16:setLeft(140);
+    obj.layout16:setLeft(340);
     obj.layout16:setTop(449);
     obj.layout16:setWidth(250);
     obj.layout16:setHeight(18);
@@ -519,7 +521,7 @@ local function constructNew_frmFicha_MM3ed_RRPG_Power()
 
     obj.layout17 = GUI.fromHandle(_obj_newObject("layout"));
     obj.layout17:setParent(obj.rectangle2);
-    obj.layout17:setLeft(140);
+    obj.layout17:setLeft(340);
     obj.layout17:setTop(466);
     obj.layout17:setWidth(250);
     obj.layout17:setHeight(25);
