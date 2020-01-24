@@ -33,3 +33,37 @@
 //                Dúvidas, críticas e sugestões: adicione Gilgante no RRPG Firecast            //
 //                                                                                             //
 /////////////////////////////////////////////////////////////////////////////////////////////////
+
+Melhorias até a versão 2020-01-24:
+Aba Frente:
+ - Rolador para cada Habilidade;
+ - Opcional para HeroHigh (Habilidades partem de -1)
+ - Lista de Vantagens com somatório automático;
+ - Rolador para cada Defesa;
+ - Penalidade que se aplica automaticamente às rolagens de Resistência;
+ - Lista Dinâmica de Ataques com opcional de Efeito, Dano ou Efeito de Área;
+ - Somatório automático dos pontos de poder;
+
+Aba Verso:
+ - Editor Texto com formatação para História, Complicações (barra oculta), Base de Operações (barra oculta), Inimigos e Aliados (barra oculta);
+
+Aba Perícias:
+ - Lista automática com atualização dinâmica de valores de Habilidades;
+ - Contagem automática de pontos de poder empreendidos em perícias;
+ - Rolador identificado;
+
+Aba Poderes:
+ - Lista dinâmica de poderes com espaço para Efeitos, Notas, Custo, Imagem, Defesa, Ação, Alcance, Duração e Referêcias.
+
+Abra Logs:
+ - Importação de Ficha Multiabas para criação de Lista dinâmica para notação de Logs.
+ - Bug conhecido: Acúmulo de muitas abas gera lag para carregamento ao abrir a Ficha.
+
+Aba Consultas:
+ - Tabeça de Medidas (imagem);
+ - Tabela de Tamanho (imagem);
+ - Calculadora de Velocidade em km/h;
+ - Lista de Vantagens com descrição breve;
+ - Lista de Condições Básicas com descrição breve dos seus efeitos;
+ - Lista de Condições Combinadas com descrição breve dos seus efeitos;
+ - Calculadora de Tempo e Classe de Dificuldade para Inventos de Magia ou Tecnologia.
