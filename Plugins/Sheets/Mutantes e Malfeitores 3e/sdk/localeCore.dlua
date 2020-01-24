@@ -8,4 +8,8 @@ function Locale.tryLang(txtId)
 	return _system_locale_tryLang(txtId);
 end;
 
+function Locale.loadLangTexts(langTexts)
+	return _system_locale_loadLangTexts(langTexts);
+end;
+
 return Locale;

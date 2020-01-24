@@ -1,83 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmFichaRPGmeister3_svg" align="client" theme="light" margins="{top=1}">
+<form name="frmFichaMM3ePericias_svg" align="client" theme="light" margins="{top=1}">
 	<scrollBox align="client">
 
 		<script> 
-		<![CDATA[
+		<![CDATA[		
 			require("ndb.lua");
-			local mms = ndb.load("mmsskills.xml");
+			local mms = NDB.load("mmsskills.xml");
 
 			local function updateAtributes(num)
-				if debug then
-					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Atributos nas Pericias. ");
-					index = index + 1;
-				end;
 				local atr = "" .. num;
 				local mod = 0;
 				
 				if num == 1 then
-					mod = SHEET.FOR();
+					mod = tonumber(sheet.FORtotal) or 0;
 				elseif num == 2 then
-					mod = SHEET.VIG();
+					mod = tonumber(sheet.VIGtotal) or 0;
 				elseif num == 3 then
-					mod = SHEET.AGI();
+					mod = tonumber(sheet.AGItotal) or 0;
 				elseif num == 4 then
-					mod = SHEET.DES();
+					mod = tonumber(sheet.DEStotal) or 0;
 				elseif num == 5 then
-					mod = SHEET.LUT();
+					mod = tonumber(sheet.LUTtotal) or 0;
 				elseif num == 6 then
-					mod = SHEET.INT();
+					mod = tonumber(sheet.INTtotal) or 0;
 				elseif num == 7 then
-					mod = SHEET.PRO();
+					mod = tonumber(sheet.PROtotal) or 0;
 				elseif num == 8 then
-					mod = SHEET.PRE();
+					mod = tonumber(sheet.PREtotal) or 0;
 				end;
 
-				local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
 				for i=1, #nodes, 1 do
 					if nodes[i].chavePericia == atr then
-						nodes[i].atributoPericia = SHEET;
+						nodes[i].atributoPericia = mod;
 					end;
 				end
 			end;
-
-			local function updatePenalty()
-				if debug then
-					rrpg.getMesaDe(sheet).activeChat:enviarMensagem("Debug #:" .. index .. ": Atualizando Penalidade nas pericias.");
-					index = index + 1;
-				end;
-				if sheet~=nil then
-					local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
-					for i=1, #nodes, 1 do
-						if nodes[i].penalidadeArmadura or nodes[i].penalidadeArmadura2 then
-							local pen = (tonumber(sheet.penalidade) or 0)
-
-							local mod = 0;
-							mod =   (tonumber(nodes[i].atributoPericia) or 0) +
-									(tonumber(nodes[i].graduacaoPericia) or 0) +
-									(tonumber(sheet.graduacaoVariavel) or 0) +
-									(tonumber(nodes[i].penalidesPericia) or 0) +
-									(tonumber(nodes[i].equipamentosPericia) or 0) +
-									(tonumber(nodes[i].condicionalPericia) or 0);
-
-							nodes[i].totalPericia = mod;
-						end;
-					end;
-				end;
-			end;
-						
+			
 			local function dndSkills()				
-				local nodes = ndb.getChildNodes(sheet.campoDasPericias); 
+				local nodes = NDB.getChildNodes(sheet.campoDasPericias); 
 				for i=1, #nodes, 1 do
-					ndb.deleteNode(nodes[i]);
+					NDB.deleteNode(nodes[i]);
 				end;		
 
 				for i=1, 17, 1 do
 					local pericia = self.rclListaDasPericias:append();
-					pericia.nomePericia = mms[i].nome;
-					pericia.chavePericia = mms[i].chave;
-					pericia.exigeTreino = mms[i].treino;
-					pericia.exigeFerramentas = mms[i].ferramenta;
+					if pericia~=nil then
+						pericia.nomePericia = mms[i].nome;
+						pericia.chavePericia = mms[i].chave;
+						pericia.exigeTreino = mms[i].treino;
+						pericia.exigeFerramentas = mms[i].ferramenta;
+					end;
 				end;
 
 				self.rclListaDasPericias:sort();
@@ -121,24 +94,39 @@
 			<label text="VAR" left="774" top="1" width="40" height="20" horzTextAlign="center"/>
 			<label text="TOTAL" left="820" top="1" width="40" height="20" horzTextAlign="center"/>
 			
-			<recordList name="rclListaDasPericias" field="campoDasPericias" templateForm="frmFichaRPGmeister3p_svg" left="5" top="25" width="920" height="650" layout="verticalTiles">
+			<recordList name="rclListaDasPericias" field="campoDasPericias" templateForm="frmFichaMM3eP_svg" left="5" top="25" width="920" height="650" layout="verticalTiles">
 				<event name="onCompare">
-		            return utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
+		            return Utils.compareStringPtBr(nodeA.nomePericia, nodeB.nomePericia);
 		        </event>
+				<event name="onEndEnumeration">
+					if sheet==nil then return end;
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+					if #nodes == 0 then
+						dndSkills();
+					end;
+				</event>
+				<event name="onBeginEnumeration">
+					if sheet==nil then return end;
+					local nodes = NDB.getChildNodes(sheet.campoDasPericias);               
+					if #nodes == 0 then
+						dndSkills();
+					end;
+				</event>
 			</recordList>
 			</rectangle>
 		</layout>
-
 			
+						
 		<flowLayout minWidth="500" maxWidth="900" height="45" align="top">
 			<rectangle align="right" color="#50a48d">
 				<rectangle align="left" width="135" height="25" color="black" strokeColor="white" strokeSize="1">
-				<label text="PONTOS DE PODER" fontStyle="bold" left="0" top="0" width="135" height="20" horzTextAlign="center" margins="{left=250}"/>
-                <label field="pontosPericia" align="left" width="135" height="25" horzTextAlign="center" margins="{top=5}"/>
-				<button text="Nova Perícia" align="left" width="125" height="25" onClick="self.rclListaDasPericias:append();"/>
-				<button text="Zerar e Listar Perícias" align="left" width="145" height="25" onClick="dndSkills();" hint="Vai apagar todas perícias atuais. "/>
-				</rectangle>
+					<label text="PONTOS DE PODER" fontStyle="bold" left="0" top="5" width="135" height="20" horzTextAlign="center" margins="{left=250}"/>
+					<label field="pontosPericia" align="left" width="135" height="25" horzTextAlign="center" margins="{top=10}"/>
+					<button text="Nova Perícia" align="left" width="125" height="25" onClick="self.rclListaDasPericias:append();"/>
+				</rectangle>				
 			</rectangle>
 		</flowLayout>
+		
+		<label left="577" top="362" width="650" height="20" fontColor="#3f8270" rotationAngle="90" horzTextAlign="leading" text="Os códigos desta aba foram adaptados de Ambesek/RPGMeister no GitHub. Obrigado por compartilhar! ^^" />
 	</scrollBox>
 </form>

@@ -6,7 +6,7 @@ local _downloadIdGenerator = 1;
 local _downloads = {};
 local internet = lInternet;
 
-function internet.download(url, finishCallback, errorCallback, progressCallback)
+function internet.download(url, finishCallback, errorCallback, progressCallback, cacheMode)
 	local urlGetter = objs.objectFromHandle(_obj_newObject("TLuaURLGetter"));
 	
 	_downloadIdGenerator = _downloadIdGenerator + 1;
@@ -44,7 +44,10 @@ function internet.download(url, finishCallback, errorCallback, progressCallback)
 				end;
 			end;
 		end);		
-				
+		
+	if type(cacheMode) == "string" then
+		_obj_setProp(urlGetter.handle, "CacheMode", cacheMode);
+	end;				
 		
 	_downloads[idDownload] = urlGetter;	
 	_obj_invoke(urlGetter.handle, "StartDownload", url);	
@@ -93,9 +96,9 @@ function internet.newHTTPRequest(method, url)
 	function r:getStatus() return _obj_getProp(self.handle, "Status"); end;
 	function r:getStatusText() return _obj_getProp(self.handle, "StatusText"); end;
 	
-	function r:open(method, url)
-		self.method = method;
-		self.url = url;
+	function r:open(openMethod, openURL)
+		self.method = openMethod;
+		self.url = openURL;
 	end;
 	
 	function r:send(body) 

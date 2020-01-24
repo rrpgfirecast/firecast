@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmFicha_MM3ed_RRPG_Consultas" align="client" theme="dark" margins="{top=1}">
+ <scrollBox align="client">
+ <rectangle width="893" height="1263" color="#6cb098">
+ <image left="0" top="0" width="893" height="1263" src="images/fundo2.png" style="stretch" optimize="true" compilerOrder="0"/>
+ </rectangle>
+ <layout align="left" width="700" height="1263"  margins="{top=2, left=2, right=2}">
+  
+	
+	
+	<rectangle align="top" color="#264d43" width="331" height="32" margins="{top=4}" xradius="10" yradius="10">
+		
+		<!-- TABELA DE MEDIDAS -->
+        <popup name="popTabelaMed" width="280" height="586" backOpacity="0.5" >
+                <image align="client" style="proportional" src="images/TabelaMed.png"/>       
+        </popup>       
+		
+        <button text="TABELA DE MEDIDAS" width="160" height="25" left="5" top="4" 
+                onClick="self.popTabelaMed:show();"/>
+		<!-- FIM DA TABELA DE MEDIDAS -->
+		
+		<!-- TABELA DE TAMANHO -->
+        <popup name="popTabelaTam" width="436" height="290" backOpacity="0.5" >
+                <image align="client" style="proportional" src="images/TabelaTam.png"/>       
+        </popup>       
+		
+        <button text="TABELA DE TAMANHO" width="160" height="25" left="170" top="4" 
+                onClick="self.popTabelaTam:show();"/>
+		<!-- FIM DA TABELA DE TAMANHO -->
+		
+		<!-- VALORES VELOCIDADE -->
+		<label left="337" text="GRADUAÇÃO EM VELOCIDADE" fontStyle="bold" top="6" width="190" height="20"/>
+			<edit vertTextAlign="center" horzTextAlign="center" left="528" top="3" width="30" height="25" type="float" field="Velocidade1" /> 
+		<label left="562" text="≅" top="5" width="8" height="20" horzTextAlign="center" />
+		<rectangle left="575" top="3" width="33" height="25" color="#202020" strokeColor="black" strokeSize="1" >
+			<label text="0" left="0" top="2" width="33" height="20" horzTextAlign="center" field="VelocidadeTotal"/>
+		</rectangle>
+		<label left="610" text="km/h" fontStyle="bold" top="5" width="38" height="20" horzTextAlign="center"/>
+		
+		<dataLink fields="'Velocidade1'" defaultValues="{'0'}">
+				<event name="onChange">
+					   sheet.VelocidadeTotal = 2^((tonumber(sheet.Velocidade1) or 0) + 2);
+				</event>
+		</dataLink>
+		<!-- FIM DA VELOCIDADE -->
+    
+	</rectangle>
+	
+	<!-- VANTAGENS -->
+	<rectangle align="top" color="#264d43" width="631" height="60" margins="{top=4}" strokeColor="#264d43" strokeSize="1" xradius="10" yradius="10">
+		<label align="top" fontStyle="bold" text="VANTAGENS" fontColor="white" fontSize="16" margins="{left=10}" />
+	
+	<layout align="left" width="695" height="32" margins="{top=2, left=2, right=2}">
+		
+		<comboBox vertTextAlign="center" horzTextAlign="center" fontSize="12" left="0" top="0" width="165" height="27" field="chaveVantagem" items="{'Ação em Movimento', 'Agarrar Aprimorado', 'Agarrar Preciso', 'Agarrar Rápido', 'Ambiente Favorito',
+																																					'Arma Improvisada', 'Armação', 'Artífice', 'Assustar', 'Ataque à Distância', 'Ataque Acurado',
+																																					'Ataque Corpo-a-Corpo', 'Ataque Defensivo', 'Ataque Dominó', 'Ataque Imprudente', 'Ataque Poderoso',
+																																					'Ataque Preciso', 'Atraente', 'Avaliação', 'Bem Informado', 'Bem Relacionado', 'Benefício', 'Capanga',
+																																					'Contatos', 'Crítico Aprimorado ', 'De Pé', 'Defesa Aprimorada', 'Derrubar Aprimorado', 'Desarmar Aprimorado',
+																																					'Destemido', 'Duro de Matar', 'Empatia com Animais', 'Equipamento', 'Esconder-se à Plena Vista',
+																																					'Esforço Extraordinário', 'Esforço Supremo', 'Esquiva Fabulosa', 'Estrangular', 'Evasão', 'Fascinar',
+																																					'Faz Tudo', 'Ferramentas Aprimoradas', 'Finta Ágil', 'Idiomas', 'Imobilizar Aprimorado', 'Iniciativa Aprimorada',
+																																					'Inimigo Favorito', 'Inspirar', 'Interpor-se', 'Inventor', 'Liderança', 'Luta no Chão', 'Maestria em Arremesso',
+																																					'Maestria em Perícia', 'Memória Eidética', 'Mira Aprimorada ', 'Parceiro', 'Prender Arma', 'Quebrar Aprimorado',
+																																					'Quebrar Arma', 'Rastrear', 'Redirecionar', 'Ritualista', 'Rolamento Defensivo', 'Saque Rápido', 'Segunda Chance',
+																																					'Sorte', 'Sorte de Principiante', 'Tolerância Maior', 'Tomar a Iniciativa', 'Tontear', 'Trabalho em Equipe', 'Transe', 'Zombar', '-'}"
+			values="{'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35',
+					'36', '37', '38', '39', '40', '41', '42', '43', '44', '45','46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75'}"
+			fontColor="white">
+			<event name="onChange">
+				if sheet ~= nil then
+					local mod = "";
+					
+					if sheet.chaveVantagem == "1" then	mod = "Mova-se tanto antes quanto depois de sua ação padrão.";
+						elseif sheet.chaveVantagem == "2" then	mod = "Faça ataques de agarrar com apenas uma mão.";
+						elseif sheet.chaveVantagem == "3" then	mod = "Substitui Des por For em ataques para agarrar.";
+						elseif sheet.chaveVantagem == "4" then	mod = "Quando acerta um ataque desarmado, pode fazer um teste de agarrar como ação livre.";
+						elseif sheet.chaveVantagem == "5" then	mod = "Bônus de circunstância no ataque ou na defesa em determinado ambiente.";
+						elseif sheet.chaveVantagem == "6" then	mod = "Use a perícia Combate Desarmado com armas improvisadas, com bônus de dano de +1.";
+						elseif sheet.chaveVantagem == "7" then	mod = "Transfira o benefício de uma perícia de interação para um aliado.";
+						elseif sheet.chaveVantagem == "8" then	mod = "Use Especialidade: Magia para criar dispositivos mágicos temporários.";
+						elseif sheet.chaveVantagem == "9" then	mod = "Use Intimidação para fintar em combate.";
+						elseif sheet.chaveVantagem == "10" then	mod = "Bônus de +1 em testes de ataque à distância por graduação.";
+						elseif sheet.chaveVantagem == "11" then	mod = "Troque a CD do efeito por um bônus de ataque.";
+						elseif sheet.chaveVantagem == "12" then	mod = "Bônus de +1 em testes de ataque corpo-a-corpo por graduação.";
+						elseif sheet.chaveVantagem == "13" then	mod = "Troque um bônus de ataque por um bônus de defesa ativa.";
+						elseif sheet.chaveVantagem == "14" then	mod = "Ganhe um ataque extra quando incapacitar um capanga.";
+						elseif sheet.chaveVantagem == "15" then	mod = "Troque defesa ativa por um bônus de ataque.";
+						elseif sheet.chaveVantagem == "16" then	mod = "Troque bônus de ataque por bônus de efeito.";
+						elseif sheet.chaveVantagem == "17" then	mod = "Ignore penalidades em testes de ataque devido a cobertura ou camuflagem.";
+						elseif sheet.chaveVantagem == "18" then	mod = "Bônus de circunstância em perícias de interação baseado em sua aparência.";
+						elseif sheet.chaveVantagem == "19" then	mod = "Use Intuição para descobrir as habilidades de combate do oponente.";
+						elseif sheet.chaveVantagem == "20" then	mod = "Teste imediato de Investigação ou Percepção para saber alguma coisa.";
+						elseif sheet.chaveVantagem == "21" then	mod = "Chame ajuda ou consiga favores com um teste de Persuasão.";
+						elseif sheet.chaveVantagem == "22" then mod = "Ganhe uma gratificação ou benefício adicional.";
+						elseif sheet.chaveVantagem == "23" then	mod = "Ganhe um seguidor ou capanga com (15 x graduação) pontos de poder.";
+						elseif sheet.chaveVantagem == "24" then	mod = "Faça um teste inicial de Investigação em um minuto.";
+						elseif sheet.chaveVantagem == "25" then	mod = "+1 na ameaça de crítico com um ataque específico por graduação.";
+						elseif sheet.chaveVantagem == "26" then	mod = "Passe de caído para em pé como uma ação livre.";
+						elseif sheet.chaveVantagem == "27" then	mod = "Bônus de +2 em uma defesa ativa quando você usa a ação defender-se.";
+						elseif sheet.chaveVantagem == "28" then	mod = "Sem penalidade para usar a ação derrubar.";
+						elseif sheet.chaveVantagem == "29" then	mod = "Sem penalidade para usar a ação desarmar.";
+						elseif sheet.chaveVantagem == "30" then	mod = "Imune a efeitos de medo.";
+						elseif sheet.chaveVantagem == "31" then	mod = "Estabilize automaticamente quando moribundo.";
+						elseif sheet.chaveVantagem == "32" then	mod = "Use perícias de interação com animais.";
+						elseif sheet.chaveVantagem == "33" then	mod = "5 pontos de equipamento por graduação.";
+						elseif sheet.chaveVantagem == "34" then	mod = "Esconda-se quando observado sem precisar de uma distração.";
+						elseif sheet.chaveVantagem == "35" then	mod = "Ganhe dois benefícios quando usando esforço extra.";
+						elseif sheet.chaveVantagem == "36" then	mod = "Gaste um ponto heróico para ganhar um 20 efetivo em um teste específico.";
+						elseif sheet.chaveVantagem == "37" then	mod = "Você não fica vulnerável quando surpreso ou desatento.";
+						elseif sheet.chaveVantagem == "38" then	mod = "Sufoca um oponente que você tenha agarrado.";
+						elseif sheet.chaveVantagem == "39" then	mod = "Bônus de circunstância para evitar ataques de área.";
+						elseif sheet.chaveVantagem == "40" then	mod = "Use uma perícia de interação para prender a atenção dos outros.";
+						elseif sheet.chaveVantagem == "41" then	mod = "Use qualquer perícia sem treinamento.";
+						elseif sheet.chaveVantagem == "42" then	mod = "Sem penalidade por usar perícias sem as ferramentas apropriadas.";
+						elseif sheet.chaveVantagem == "43" then	mod = "Finte usando a perícia Acrobacia ou sua velocidade.";
+						elseif sheet.chaveVantagem == "44" then	mod = "Fale e compreenda idiomas adicionais.";
+						elseif sheet.chaveVantagem == "45" then	mod = "Penalidade de circunstância de –5 para escapar de você.";
+						elseif sheet.chaveVantagem == "46" then	mod = "Bônus de +4 por graduação em testes de iniciativa.";
+						elseif sheet.chaveVantagem == "47" then	mod = "Bônus de circunstância em testes contra um tipo de oponente.";
+						elseif sheet.chaveVantagem == "48" then	mod = "Gaste um ponto heróico para conceder a seus aliados um bônus de circunstância de +1 por graduação.";
+						elseif sheet.chaveVantagem == "49" then	mod = "Sofra um ataque mirado contra um aliado.";
+						elseif sheet.chaveVantagem == "50" then	mod = "Use Tecnologia para criar dispositivos temporários.";
+						elseif sheet.chaveVantagem == "51" then	mod = "Gaste um ponto heróico para remover uma condição de um aliado.";
+						elseif sheet.chaveVantagem == "52" then	mod = "Sem penalidade por lutar caído.";
+						elseif sheet.chaveVantagem == "53" then	mod = "Bônus de dano de +1 com armas arremessadas por graduação.";
+						elseif sheet.chaveVantagem == "54" then mod = "Realize testes de rotina com uma perícia sob quaisquer circunstâncias.";
+						elseif sheet.chaveVantagem == "55" then	mod = "Você se lembra de tudo, bônus de circunstância de +5 para se lembrar das coisas.";
+						elseif sheet.chaveVantagem == "56" then	mod = "Dobra os bônus de circunstância por mirar.";
+						elseif sheet.chaveVantagem == "57" then	mod = "Ganhe um parceiro com (5 x graduação) pontos de poder.";
+						elseif sheet.chaveVantagem == "58" then	mod = "Tentativa livre de desarme quando você se defende.";
+						elseif sheet.chaveVantagem == "59" then	mod = "Sem penalidade para usar a ação quebrar.";
+						elseif sheet.chaveVantagem == "60" then	mod = "Tentativa livre de quebrar quando você se defende.";
+						elseif sheet.chaveVantagem == "61" then	mod = "Use Percepção para seguir rastros.";
+						elseif sheet.chaveVantagem == "62" then	mod = "Use Enganação para redirecionar um ataque que falhe para outro alvo.";
+						elseif sheet.chaveVantagem == "63" then	mod = "Use Especialidade: Magia para criar e realizar rituais.";
+						elseif sheet.chaveVantagem == "64" then	mod = "Bônus de defesa ativa de +1 em Resistência por graduação.";
+						elseif sheet.chaveVantagem == "65" then	mod = "Saque uma arma como uma ação livre.";
+						elseif sheet.chaveVantagem == "66" then	mod = "Rerole um teste falho contra uma ameaça uma vez.";
+						elseif sheet.chaveVantagem == "67" then	mod = "Rerole uma rolagem uma vez por graduação.";
+						elseif sheet.chaveVantagem == "68" then	mod = "Gaste um ponto heróico para ganhar 5 graduações temporárias em uma perícia.";
+						elseif sheet.chaveVantagem == "69" then	mod = "+5 em testes envolvendo tolerância.";
+						elseif sheet.chaveVantagem == "70" then	mod = "Gaste um ponto heróico para agir primeiro na ordem de iniciativa.";
+						elseif sheet.chaveVantagem == "71" then	mod = "Use Enganação ou Intimidação para deixar um oponente tonto.";
+						elseif sheet.chaveVantagem == "72" then	mod = "+5 de bônus para ajudar em testes de equipe.";
+						elseif sheet.chaveVantagem == "73" then	mod = "Entre em um transe parecido com a morte que diminui as funções vitais.";
+						elseif sheet.chaveVantagem == "74" then	mod = "Use Enganação para desmoralizar em combate.";
+						elseif sheet.chaveVantagem == "75" then
+							mod =  " ";
+					end;
+					
+						sheet.ConsultaVantagem = mod;
+					
+				end;
+			</event>
+		</comboBox>	
+		<rectangle align="left" color="#6cb098" width="530" height="30" margins="{top=2, left=165, right=2}" strokeColor="#202020" strokeSize="1" xradius="2" yradius="2">
+			<textEditor left="2" top="-2" width="530" height="30" fontSize="12" fontColor="#000000" field="ConsultaVantagem" transparent="true" margins="{top=2, left=2}"/>
+		</rectangle>
+	</layout>
+	</rectangle>
+	<!-- FIM DAS VANTAGENS -->
+	
+    <!-- CONDIÇÕES BÁSICAS -->
+	<rectangle align="top" color="#264d43" width="631" height="123" margins="{top=4}" strokeColor="#264d43" strokeSize="1" xradius="10" yradius="10">
+	<label align="top" fontStyle="bold" text="CONDIÇÕES BÁSICAS" fontColor="white" fontSize="16" margins="{left=10}" />
+	
+	<layout align="left" width="695" height="99" margins="{top=2, left=2, right=2}">
+	
+		<comboBox vertTextAlign="center" horzTextAlign="center" fontSize="12" left="0" top="0" width="165" height="27" field="chaveCondicao1" items="{'Atordoado', 'Compelido', 'Controlado', 'Debilitado', 'Desabilitado', 'Desatento', 'Enfraquecido', 'Fatigado',
+																																					'Imóvel', 'Impedido', 'Indefeso', 'Normal', 'Prejudicado', 'Tonto', 'Transformado', 'Vulnerável', '-'}"
+			values="{'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17'}"
+			fontColor="white">
+			<event name="onChange">
+				if sheet ~= nil then
+					local mod = "";
+					
+					if sheet.chaveCondicao1 == "1" then mod = "Atordoado: não pode executar ações, nem mesmo ações livres.";
+						elseif sheet.chaveCondicao1 == "2" then mod = "Compelled: o personagem fica limitado a ações livres e a uma única ação padrão por turno, com todas as ações sendo escolhidas pelo personagem que o controla. Controlado se sobrepõe a compelido.";
+						elseif sheet.chaveCondicao1 == "3" then mod = "Controlled: Outro personagem dita suas ações.";
+						elseif sheet.chaveCondicao1 == "4" then mod = "Debilitated: o personagem tem uma ou mais das habilidades reduzida para abaixo de –5.";
+						elseif sheet.chaveCondicao1 == "5" then mod = "Desabled: penalidade de –5 em todos os testes. Caso se aplique à(s) mesma(s) característica(s), debilitado se sobrepõe a desabilitado.";
+						elseif sheet.chaveCondicao1 == "6" then mod = "Unaware: o personagem está completamente inconsciente dos arredores, incapaz de interagir ou de fazer testes de Percepção ou executar qualquer ação baseada neles. Alvos têm cobertura total contra todos os sentidos do personagem desatento.";
+						elseif sheet.chaveCondicao1 == "7" then mod = "Weakened: o personagem perdeu pontos de poder em uma característica temporariamente. Debilitado se sobrepõe a enfraquecido.";
+						elseif sheet.chaveCondicao1 == "8" then mod = "Fatigued: fica Impedido. Um personagem se recupera da condição fatigada com uma hora de descanso.";
+						elseif sheet.chaveCondicao1 == "9" then mod = "Immobile: não tem velocidade de movimento e não pode se mover do lugar em que se encontram, embora ainda sejam capazes de executar ações.";
+						elseif sheet.chaveCondicao1 == "10" then mod = "Hindered: se move a metade de seu movimento normal (–1 graduação de velocidade). Imóvel se sobrepõe a impedido.";
+						elseif sheet.chaveCondicao1 == "11" then mod = "Defenseless: o bônus das defesas ativas de um personagem indefeso é 0. Atacantes podem atacar oponentes indefesos com testes de rotina. Se o atacante preferir fazer um teste de ataque normal, todos os acertos serão tratados como acertos críticos.";
+						elseif sheet.chaveCondicao1 == "12" then mod = "Normal: o personagem não está sob o efeito de nenhuma condição.";
+						elseif sheet.chaveCondicao1 == "13" then mod = "Impaired: sofre uma penalidade de circunstância de –2 em todos os testes. Caso se aplique à(s) mesma(s) característica(s), desabilitado se sobrepõe a prejudicado.";
+						elseif sheet.chaveCondicao1 == "14" then mod = "Dazed: fica limitado a ações livres e a uma única ação padrão por turno. Atordoado se sobrepõe a tonto.";
+						elseif sheet.chaveCondicao1 == "15" then mod = "Transformed: algumas ou todas as características do personagem são alteradas.";
+						elseif sheet.chaveCondicao1 == "16" then mod = "Vulnerable: divide suas defesas ativas pela metade (arredonde o resultado para cima). Indefeso se sobrepõe a vulnerável.";
+						elseif sheet.chaveCondicao1 == "17" then	mod =  " ";
+					end;
+						sheet.ConsultaCondicao1 = mod;
+					
+				end;
+			</event>
+		</comboBox>	
+		<rectangle align="left" color="#6cb098" width="530" height="99" margins="{top=2, left=165, right=2}" strokeColor="#202020" strokeSize="1" xradius="2" yradius="2">
+			<textEditor left="2" top="-2" width="530" height="97" fontSize="12" fontColor="#000000" field="ConsultaCondicao1" transparent="true" margins="{top=2, left=2}" />
+		</rectangle>
+	</layout>
+	</rectangle>
+	<!-- FIM DAS CONDIÇÕES BÁSICAS -->
+	
+    <!-- CONDIÇÕES COMBINADAS -->
+	<rectangle align="top" color="#264d43" width="631" height="123" margins="{top=4}" strokeColor="#264d43" strokeSize="1" xradius="10" yradius="10">
+	<label align="top" fontStyle="bold" text="CONDIÇÕES COMBINADAS" fontColor="white" fontSize="16" margins="{left=10}" />
+	
+	<layout align="left" width="695" height="99" margins="{top=2, left=2, right=2}">
+		
+		<comboBox vertTextAlign="center" horzTextAlign="center" fontSize="12" left="0" top="0" width="165" height="27" field="chaveCondicao2" items="{'Abatido', 'Adormecido', 'Caído', 'Cego', 'Exausto', 'Incapacitado', 'Moribundo',
+																																					'Paralisado', 'Restrito', 'Surdo', 'Surpreso', 'Transe', '-'}"
+			values="{'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'}"
+			fontColor="white">
+			<event name="onChange">
+				if sheet ~= nil then
+					local mod = "";
+					
+					if sheet.chaveCondicao2 == "1" then mod = "Staggered: Tonto e impedido.";
+						elseif sheet.chaveCondicao2 == "2" then mod = "Asleep: Indefeso, imóvel e prejudicado.";
+						elseif sheet.chaveCondicao2 == "3" then mod = "Prone: um personagem caído jaz no chão, sofrendo uma penalidade de –5 em testes de combate corpo-a-corpo. Os oponentes ganham um bônus de +5 em testes de combate corpo-a-corpo, mas sofrem uma penalidade de –5 em testes de ataque à distância (na prática, o personagem caído tem cobertura total contra ataques à distância). Personagens caídos estão impedidos. Ficar de pé é uma ação de movimento.";
+						elseif sheet.chaveCondicao2 == "4" then mod = "Blind: Impedido, visualmente desatento e vulnerável, e pode estar prejudicado ou desabilidade para atividades visuais.";
+						elseif sheet.chaveCondicao2 == "5" then mod = "Exhausted: Prejudicado e impedido, recupere após 1 hora de descanso.";
+						elseif sheet.chaveCondicao2 == "6" then mod = "Incapacitated: Indefeso, atordoado e desatento. Normalmente ficam caídos.";
+						elseif sheet.chaveCondicao2 == "7" then mod = "Dying: Incapacitado e próximo da morte.";
+						elseif sheet.chaveCondicao2 == "8" then mod = "Paralyzed: Indefeso, imóvel e fisicamente atordoado; pode ser capaz de realizar ações mentais.";
+						elseif sheet.chaveCondicao2 == "9" then mod = "Restrained: Impedido e vunerável. Se o que quer que o restrinja estiver preso a um objeto imóvel, o personagem está imóvel ao invés de impedido.";
+						elseif sheet.chaveCondicao2 == "10" then mod = "Deaf: Não pode ouvir, o que concede a tudo e todos camuflagem auditiva total contra ele.";
+						elseif sheet.chaveCondicao2 == "11" then mod = "Surprised: Atordoado e vulnerável.";
+						elseif sheet.chaveCondicao2 == "12" then mod = "Entranced: Atordoado, mas só pode prestar atenção no efeito que o mantém em transe. Um aliado pode libertar o personagem desta condição com um teste de qualquer perícia de interação (CD 10+grad).";
+						elseif sheet.chaveCondicao2 == "13" then mod =  " ";
+					end;
+						sheet.ConsultaCondicao2 = mod;
+					
+				end;
+			</event>
+		</comboBox>	
+		<rectangle align="left" color="#6cb098" width="530" height="99" margins="{top=2, left=165, right=2}" strokeColor="#202020" strokeSize="1" xradius="2" yradius="2">
+			<textEditor left="2" top="-2" width="530" height="97" fontSize="12" fontColor="#000000" field="ConsultaCondicao2" transparent="true" margins="{top=2, left=2}" />
+		</rectangle>
+	</layout>
+	</rectangle>
+	<!-- FIM DAS CONDIÇÕES COMBINADAS -->
+	
+	
+    <!-- INVENTANDO -->
+	<rectangle align="top" color="#264d43" width="631" height="123" margins="{top=4}" strokeColor="#264d43" strokeSize="1" xradius="10" yradius="10">
+	<label align="top" fontStyle="bold" text="INVENTANDO COM MAGIA OU TECNOLOGIA" fontColor="white" fontSize="16" margins="{left=10}" />
+	<label align="top" fontStyle="bold" text="" fontColor="white" fontSize="16" margins="{left=10}" />
+	<label align="top" fontStyle="bold" text="PROJETO                                                               CONSTRUÇÃO" fontColor="white" fontSize="16" margins="{left=10}" />
+	
+	
+	<layout align="left" width="695" height="99" margins="{top=2, left=2, right=2}">
+	
+	
+		<!-- PROJETANDO -->
+		
+		<label left="3" top="6" text="Custo de Poder:" fontStyle="bold" width="190" height="20"/>
+		<label left="3" top="30" text="Acelerar Projeto:" fontStyle="bold" width="190" height="20"/>
+		<edit vertTextAlign="center" horzTextAlign="center" left="108" top="3" width="30" height="25" type="float" field="custoInvento" /> 
+		<edit vertTextAlign="center" horzTextAlign="center" left="108" top="30" width="30" height="25" type="float" field="tempoProjetoRapido" /> <dataLink fields="{'tempoProjetoRapido'}" defaultValues="{'0'}"/>
+		
+		<label left="155" top="6" text="CD de Projeto:" fontStyle="bold" width="190" height="20"/>
+		<label left="155" top="30" text="Tempo de Projeto:" fontStyle="bold" width="190" height="20"/>
+		<rectangle left="270" top="3" width="33" height="25" color="#202020" strokeColor="black" strokeSize="1" >
+			<label text="0" left="0" top="2" width="33" height="20" horzTextAlign="center" field="cdProjeto"/>
+		</rectangle>
+		<!-- TEMPO DE PROJETO -->
+			
+			
+			
+			<rectangle left="270" top="30" width="130" height="23" color="#264d43" >
+				<label visible="false" text="0" horzTextAlign="center" field="tempoProjeto"/>
+				<label text="0" left="0" top="0" width="130" height="20" horzTextAlign="leading" field="tempoShowProjeto"/>
+			</rectangle>
+		<!-- FIM DO TEMPO DE PROJETO -->
+		
+		
+		<dataLink fields="'custoInvento', 'tempoProjetoRapido', 'tempoProjeto'" defaultValues="{'0'}">
+			<event name="onChange">
+				if tonumber (sheet.tempoProjetoRapido) ~= nil then
+					sheet.tempoProjeto = (tonumber(sheet.custoInvento) or 0) / (2 ^ (tonumber(sheet.tempoProjetoRapido) or 0));
+					sheet.cdProjeto = (tonumber(sheet.custoInvento) or 0) + 10 + (5 * (tonumber(sheet.tempoProjetoRapido) or 0));
+				else
+					sheet.tempoProjeto = (tonumber(sheet.custoInvento) or 0) ;
+					sheet.cdProjeto = (tonumber(sheet.custoInvento) or 0) + 10 ;
+				end;
+				
+				if tonumber (sheet.tempoProjeto) ~= nil then
+					if tonumber(sheet.tempoProjeto) >= 1 then
+						sheet.tempoShowProjeto = sheet.tempoProjeto .. " ≅ horas";
+					elseif tonumber(sheet.tempoProjeto) >= 0 then
+						if tonumber (sheet.tempoProjetoRapido) ~= nil then
+							if tonumber(sheet.tempoProjetoRapido) >= 6 then
+								sheet.tempoShowProjeto = tonumber(sheet.tempoProjeto * 60 * 60) .. " ≅ seg.";
+							else
+								sheet.tempoShowProjeto = tonumber(sheet.tempoProjeto * 60) .. " ≅ min.";
+							end;
+						end;
+					else
+						sheet.tempoShowProjeto = tonumber(60 / tonumber(sheet.tempoProjeto)) .. " ≅ seg.";
+					end;
+				end;
+				
+			</event>
+		</dataLink>
+		<!-- FIM DO PROJETANDO -->
+		
+		<rectangle left="345" top="3" width="5" height="56" color="#8bad9f" strokeColor="black" xradius="2" yradius="2" />
+		
+		<!-- CONSTRUINDO -->
+		
+		<label left="357" top="6" text="Custo de Poder:" fontStyle="bold" width="190" height="20"/>
+		<label left="357" top="30" text="Acelerar Constr.:" fontStyle="bold" width="190" height="20"/>
+		<edit vertTextAlign="center" horzTextAlign="center" left="460" top="3" width="30" height="25" type="float" field="custoInvento" /> <dataLink fields="{'custoInvento'}" defaultValues="{'0'}"/>
+		<edit vertTextAlign="center" horzTextAlign="center" left="460" top="30" width="30" height="25" type="float" field="tempoContruirRapido" /> <dataLink fields="{'tempoContruirRapido'}" defaultValues="{'0'}"/>
+		
+		<label left="505" top="6" text="CD de Construção:" fontStyle="bold" width="190" height="20"/>
+		<label left="505" top="30" text="Tempo de Constr.:" fontStyle="bold" width="190" height="20"/>
+		<rectangle left="620" top="3" width="33" height="25" color="#202020" strokeColor="black" strokeSize="1" >
+			<label text="0" left="0" top="2" width="33" height="20" horzTextAlign="center" field="cdInventoC"/>
+		</rectangle>
+		<!-- TEMPO DE CONSTRUINDO -->
+			<rectangle left="620" top="30" width="130" height="23" color="#264d43" >
+				<label visible="false" text="0" horzTextAlign="center" field="tempoConstruir"/>
+				<label text="0" left="0" top="0" width="130" height="20" horzTextAlign="leading" field="tempoShowConstruir"/>
+			</rectangle>
+		<!-- FIM DO TEMPO DE CONSTRUINDO -->
+		
+		
+		<dataLink fields="'custoInvento', 'tempoContruirRapido', 'tempoConstruir'" defaultValues="{'0'}">
+			<event name="onChange">
+				if tonumber (sheet.tempoContruirRapido) ~= nil then
+					sheet.tempoConstruir = ((tonumber(sheet.custoInvento) or 0) * 4) / (2 ^ (tonumber(sheet.tempoContruirRapido) or 0));
+					sheet.cdInventoC = (tonumber(sheet.custoInvento) or 0) + 10 + (5 * (tonumber(sheet.tempoContruirRapido) or 0));
+				else
+					sheet.tempoConstruir = (tonumber(sheet.custoInvento) or 0) * 4 ;
+					sheet.cdInventoC = (tonumber(sheet.custoInvento) or 0) + 10 ;
+				end;
+				if tonumber (sheet.tempoConstruir) ~= nil then
+					if tonumber(sheet.tempoConstruir) >= 1 then
+						sheet.tempoShowConstruir = sheet.tempoConstruir .. " ≅ horas";
+					elseif tonumber(sheet.tempoConstruir) >= 0 then
+						if tonumber (sheet.tempoContruirRapido) ~= nil then
+							if tonumber(sheet.tempoContruirRapido) >= 6 then
+								sheet.tempoShowConstruir = tonumber(sheet.tempoConstruir * 60 * 60) .. " ≅ seg.";
+							else
+								sheet.tempoShowConstruir = tonumber(sheet.tempoConstruir * 60) .. " ≅ min.";
+							end;
+						end;
+					else
+						sheet.tempoShowConstruir = tonumber(60 / tonumber(sheet.tempoConstruir)) .. " ≅ seg.";
+					end;
+				end;
+				
+			</event>
+		</dataLink>
+		<!-- FIM DO CONSTRUINDO -->
+		
+	</layout>
+	</rectangle>
+	
+	</layout>
+ </scrollBox>
+</form>

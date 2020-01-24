@@ -1,4 +1,6 @@
-vhd = {}
+local localVHD = {};
+
+vhd = localVHD;
 VHD = vhd;
 
 function vhd.expandFileName(shortFileName)
@@ -58,3 +60,8 @@ function VHD.enumerateContent(directoryPath)
 	return __vhd_enumerateContent(directoryPath);
 end
 
+function VHD.registerAlias(aliases)
+	return __vhd_registerAlias(aliases);
+end;
+
+return localVHD;

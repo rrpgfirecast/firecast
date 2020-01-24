@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frm_FM" formType="sheetTemplate" dataType="Ficha_MM3e" title="Ficha Multiaba" align="client" theme="dark">
+	<scrollBox align="client">
+		<label left="150" top="0" width="550" height="50" rotationAngle="0" horzTextAlign="leading" text="Os códigos desta aba foram adaptados de Ambesek/RPGMeister no GitHub.\n Obrigado por compartilhar! ^^" />
+		<popup name="popCredit" width="210" height="120" backOpacity="0.4">
+			<layout left="5" top="5" width="200" height="120">
+				<rectangle left="0" top="0" width="200" height="110" color="#3f8270" xradius="15" yradius="15" cornerType="round"/>
+				<label left="0" top="1" width="200" height="50" text="● Antes de criar, estabeleça um Padrão Global no botão ao lado." fontColor="white" horzTextAlign="center"/>
+				<label left="0" top="40" width="200" height="70" text="● Acumular muitas abas pode gerar algum lag para carregar \n a ficha. " fontColor="white" horzTextAlign="center" margins="{top=2}"/>
+			</layout>
+		</popup>
+		<popup name="popupSettings" width="210" height="160" backOpacity="0.4">
+			<layout left="5" top="5" width="200" height="160">
+			<rectangle left="0" top="0" width="200" height="150" color="#3f8270" xradius="15" yradius="15" cornerType="round"/>
+				<label top="0" width="150" height="25" text="Cor padrão de Fundo" fontColor="white" fontStyle="bold" horzTextAlign="center"/>
+				<colorComboBox left="150" top="0" width="50" height="25" field="backgroundColor" color="black" useAlpha="false" hint="Muda a cor padrão da cor de fundo do editor de texto. ">
+					<event name="onChange">
+						if sheet~=nil then
+							self.txt.backgroundColor = sheet.backgroundColor;
+							default.backgroundColor = sheet.backgroundColor;
+						end;
+					</event>
+				</colorComboBox>
+
+				<label top="25" width="150" height="25" text="Cor padrão de Fonte" fontColor="white" fontStyle="bold" horzTextAlign="center"/>
+				<colorComboBox left="150" top="25" width="50" height="25" field="fontColor" color="black" useAlpha="false" hint="Muda a cor padrão da fonte do editor de texto.">
+					<event name="onChange">
+						if sheet~=nil then
+							self.txt.defaultFontColor = sheet.fontColor;
+							default.fontColor = sheet.fontColor;
+						end;
+					</event>
+				</colorComboBox>
+				<dataLink field="fontColor" defaultValue="#FFFFFF"/>
+
+				<label top="50" width="150" height="25" text="Tamanho padrão de Fonte" fontColor="white" fontStyle="bold" fontSize="11" horzTextAlign="center"/>
+				<edit left="150" top="50" width="50" height="25" type="number" field="fontSize" min="8" max="72">
+					<event name="onChange">
+						if sheet~=nil then
+							self.txt.defaultFontSize = sheet.fontSize;
+							default.fontSize = sheet.fontSize;
+						end;
+					</event>
+				</edit>
+				<dataLink field="fontSize" defaultValue="15"/>
+
+				<checkBox top="75" width="200" height="25" text="Ocultar barra de edição" fontColor="white" vertTextAlign="center" field="showToolbar">
+					<event name="onChange">
+						if sheet~=nil then
+							self.txt.showToolbar = not sheet.showToolbar;
+							default.showToolbar = sheet.showToolbar;
+						end;
+					</event>
+				</checkBox>
+
+				<checkBox top="100" width="200" height="25" text="Padrão Global." fontColor="white" vertTextAlign="center" field="global" hint="Vai usar essas configurações em todas as abas.">
+				  <event name="onChange">
+					if sheet~=nil then
+						default.global = sheet.global;
+					end;
+				  </event>
+				</checkBox>
+
+				<button top="125" width="200" height="25" text="Padrão Global." hint="Vai usar as últimas configurações usadas em outras abas nessa.">
+					<event name="onClick">
+						if sheet~=nil then
+							local default = NDB.load("defaults.xml");
+							
+							sheet.showToolbar = default.showToolbar;
+							self.txt.showToolbar = not sheet.showToolbar;
+
+							sheet.fontSize = default.fontSize;
+							self.txt.defaultFontSize = sheet.fontSize;
+
+							sheet.fontColor = default.fontColor;
+							self.txt.defaultFontColor = sheet.fontColor;
+							
+							sheet.backgroundColor = default.backgroundColor;
+							self.txt.backgroundColor = sheet.backgroundColor;
+						end;
+					</event>
+				</button>
+
+			</layout>
+		</popup>
+		<script><![CDATA[
+			local default = NDB.load("defaults.xml");
+			
+			--colocar algo para quando sheet terminar de carregar puxar os valores de default. 
+
+			local function dump(o)
+			   if type(o) == 'table' then
+				  local s = '{ '
+				  for k,v in pairs(o) do
+					 if type(k) ~= 'number' then k = '"'..k..'"' end
+					 s = s .. '['..k..'] = ' .. dump(v) .. ','
+				  end
+				  return s .. '} '
+			   else
+				  return tostring(o)
+			   end
+			end
+			
+			local function loadDefault()
+				if sheet==nil then return end;
+
+				if default.global then
+					sheet.showToolbar = default.showToolbar;
+					sheet.fontSize = default.fontSize;
+					sheet.fontColor = default.fontColor;
+					sheet.backgroundColor = default.backgroundColor;
+					sheet.global = true;
+				end;
+
+				self.txt.showToolbar = not sheet.showToolbar;
+				self.txt.defaultFontSize = sheet.fontSize;
+				self.txt.defaultFontColor = sheet.fontColor;
+				self.txt.backgroundColor = sheet.backgroundColor;
+
+			end;
+			]]> 
+		</script>
+		<layout align="top">
+			<layout align="left" width="150">
+				<button left="0" top="0" width="45" height="45" text="" onClick="self.rclAbas:append();" hint="Adiciona nova aba. ">
+					<image left="5" top="5" width="35" height="35" src="images/addIcon.png"/>
+				</button>
+				<button left="50" top="0" width="45" height="45" text="" name="settingsBT" hint="Opções da ficha.">
+					<image left="5" top="5" width="35" height="35" src="images/config.png"/>
+					<event name="onClick">
+						loadDefault();
+						local pop = self:findControlByName("popupSettings");
+					
+						if pop ~= nil then
+							pop:setNodeObject(self.sheet);
+							pop:showPopupEx("bottom", self.settingsBT);
+						else
+							showMessage("Ops, bug.. nao encontrei o popup de opções para exibir");
+						end;
+					</event>
+				</button>
+				<button left="100" top="0" width="45" height="45" text="" name="creditBt">
+					<image left="5" top="5" width="35" height="35" src="images/helpIcon.png"/>
+					<event name="onClick">
+						local pop = self:findControlByName("popCredit");
+					
+						if pop ~= nil then
+							pop:setNodeObject(self.sheet);
+							pop:showPopupEx("bottom", self.creditBt);
+						else
+							showMessage("Ops, bug.. nao encontrei o popup de creditos para exibir");
+						end;
+					</event>
+				</button>
+			</layout>
+			<layout align="client">
+				<recordList name="rclAbas" field="abas" templateForm="frm_FM_Aba" align="top" height="46" selectable="true" layout="horizontal">
+					<event name="onSelect">
+						local node = self.rclAbas.selectedNode;
+						self.boxTexto.node = node;
+						self.boxTexto.visible = (node ~= nil);
+					</event>
+					<event name="onEndEnumeration">
+						if self.rclAbas.selectedNode == nil and sheet ~= nil then
+							local nodes = NDB.getChildNodes(sheet.abas);			   
+
+							if #nodes > 0 then
+								self.rclAbas.selectedNode = nodes[1];
+							end;
+						end;
+					</event>
+				</recordList>
+			</layout>
+		</layout>
+		<layout align="client">
+			<dataScopeBox name="boxTexto" align="client" visible="false">
+				<richEdit name="txt" align="client" backgroundColor="black" defaultFontColor="white" field="txt" hideSelection="false" animateImages="true">
+					<event name="onMouseMove">
+						loadDefault();
+					</event>
+				</richEdit>
+			</dataScopeBox>
+		</layout>
+	</scrollBox>
+</form>
