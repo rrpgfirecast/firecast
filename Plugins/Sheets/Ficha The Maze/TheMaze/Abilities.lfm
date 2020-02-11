@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmAbilities" width="910" height="65" margins="{top=2}">
+<form name="frmAbilities" width="610" height="65" margins="{top=2}">
 	<rectangle align="client" color="#212121">
-		<textEditor left="0" top="0" width="685" height="65" field="habilidade"/>
-		<textEditor left="685" top="0" width="75" height="65" field="dificuldade"/>
-		<textEditor left="760" top="0" width="75" height="65" field="custo"/>
-		<edit left="835" top="0" width="50" height="65" field="nivel" type="number" fontSize="20" horzTextAlign="center" vertTextAlign="center" max="3"/>
+		<textEditor left="0" top="0" width="560" height="65" field="habilidade"/>
+		<edit left="560" top="0" width="50" height="65" field="nivel" type="number" fontSize="20" horzTextAlign="center" vertTextAlign="center" max="3"/>
 
 		<dataLink fields="{'nivel'}">
 			<event name="onChange">
