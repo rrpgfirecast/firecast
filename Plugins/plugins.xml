@@ -103,7 +103,7 @@
             <dataType id="Ambesek.Nefertyne.Avatar.d20" title="Ficha Avatar d20"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.Nefertyne.Cyberpunk2020" name="Ficha Cyberpunk 2020" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Cyberpunk%202020/output/Ficha%20Cyberpunk%202020.rpk?raw=true" fileName="Ficha Cyberpunk 2020.rpk" repositoryPath="Sheets/Ficha Cyberpunk 2020/" author="Ambesek" description="Ficha para o sistema Cyberpunk 2020." version="0.4" compilationDate="27112019000010" compilationDigest="ea77ab4cf5a272e6f93382078ee58c6322906ecd">
+    <element id="Ambesek.Nefertyne.Cyberpunk2020" name="Ficha Cyberpunk 2020" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20Cyberpunk%202020/output/Ficha%20Cyberpunk%202020.rpk?raw=true" fileName="Ficha Cyberpunk 2020.rpk" repositoryPath="Sheets/Ficha Cyberpunk 2020/" author="Ambesek" description="Ficha para o sistema Cyberpunk 2020." version="0.5" compilationDate="27112019000010" compilationDigest="ea77ab4cf5a272e6f93382078ee58c6322906ecd">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.Cyberpunk2020" title="Ficha Cyberpunk 2020"/>
         </dataTypes>
@@ -168,7 +168,7 @@
             <dataType id="Ambesek.Nefertyne.Shadowrun5E" title="Ficha Shadowrun 5E"/>
         </dataTypes>
     </element>
-    <element id="Ambesek.The.Maze" name="FichaTheMaze" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20The%20Maze/output/Ficha%20The%20Maze.rpk?raw=true" fileName="Ficha The Maze.rpk" repositoryPath="Sheets/Ficha The Maze/" author="Ambesek" description="Ficha para o sistema e cenario The Maze." version="3.5" compilationDate="27112019000152" compilationDigest="f7f2356606b4afcfe4ded97ade70a1b8b19ac524">
+    <element id="Ambesek.The.Maze" name="FichaTheMaze" url="https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20The%20Maze/output/Ficha%20The%20Maze.rpk?raw=true" fileName="Ficha The Maze.rpk" repositoryPath="Sheets/Ficha The Maze/" author="Ambesek" description="Ficha para o sistema e cenario The Maze." version="3.5.1" compilationDate="27112019000152" compilationDigest="f7f2356606b4afcfe4ded97ade70a1b8b19ac524">
         <dataTypes>
             <dataType id="Ambesek.Nefertyne.TheMaze" title="Ficha The Maze"/>
             <dataType id="Ambesek.Maze.Tracker" title="Maze Tracker"/>

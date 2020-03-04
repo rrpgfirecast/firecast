@@ -53,6 +53,16 @@ local function constructNew_frmSkillItem()
 			end;				
 		end;
 
+		local function roll()
+			local mesa = Firecast.getMesaDe(sheet);
+			local node = NDB.getRoot(sheet);
+
+			local total = math.floor(tonumber(sheet.total) or 0);
+			local rolagem = Firecast.interpretarRolagem("1d10 + " .. total);
+
+			mesa.activeChat:rolarDados(rolagem, "Teste de " .. (sheet.nomePericia or "Pericia") .. " de " .. (node.nome or "Nome"));				
+		end;
+
 		
 
 
@@ -87,9 +97,18 @@ local function constructNew_frmSkillItem()
     obj.comboBox1:setFontColor("white");
     obj.comboBox1:setName("comboBox1");
 
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button1:setParent(obj);
+    obj.button1:setLeft(230);
+    obj.button1:setTop(1);
+    obj.button1:setWidth(23);
+    obj.button1:setHeight(23);
+    obj.button1:setText("R");
+    obj.button1:setName("button1");
+
     obj.rectangle2 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle2:setParent(obj);
-    obj.rectangle2:setLeft(240);
+    obj.rectangle2:setLeft(255);
     obj.rectangle2:setTop(0);
     obj.rectangle2:setWidth(35);
     obj.rectangle2:setHeight(25);
@@ -102,7 +121,7 @@ local function constructNew_frmSkillItem()
     obj.label1:setParent(obj);
     obj.label1:setField("total");
     obj.label1:setText("0");
-    obj.label1:setLeft(240);
+    obj.label1:setLeft(255);
     obj.label1:setTop(0);
     obj.label1:setWidth(35);
     obj.label1:setHeight(25);
@@ -111,9 +130,9 @@ local function constructNew_frmSkillItem()
 
     obj.rectangle3 = GUI.fromHandle(_obj_newObject("rectangle"));
     obj.rectangle3:setParent(obj);
-    obj.rectangle3:setLeft(280);
+    obj.rectangle3:setLeft(290);
     obj.rectangle3:setTop(0);
-    obj.rectangle3:setWidth(33);
+    obj.rectangle3:setWidth(30);
     obj.rectangle3:setHeight(24);
     obj.rectangle3:setColor("black");
     obj.rectangle3:setStrokeColor("white");
@@ -124,9 +143,9 @@ local function constructNew_frmSkillItem()
     obj.label2:setParent(obj);
     obj.label2:setField("atributoPericia");
     obj.label2:setText("0");
-    obj.label2:setLeft(280);
+    obj.label2:setLeft(290);
     obj.label2:setTop(0);
-    obj.label2:setWidth(33);
+    obj.label2:setWidth(30);
     obj.label2:setHeight(20);
     obj.label2:setHorzTextAlign("center");
     obj.label2:setName("label2");
@@ -143,23 +162,23 @@ local function constructNew_frmSkillItem()
     obj.edit2:setType("number");
     obj.edit2:setName("edit2");
 
-    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
-    obj.button1:setParent(obj);
-    obj.button1:setLeft(350);
-    obj.button1:setTop(1);
-    obj.button1:setWidth(23);
-    obj.button1:setHeight(23);
-    obj.button1:setText("i");
-    obj.button1:setName("button1");
-
     obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj);
-    obj.button2:setLeft(375);
+    obj.button2:setLeft(350);
     obj.button2:setTop(1);
     obj.button2:setWidth(23);
     obj.button2:setHeight(23);
-    obj.button2:setText("X");
+    obj.button2:setText("i");
     obj.button2:setName("button2");
+
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
+    obj.button3:setParent(obj);
+    obj.button3:setLeft(375);
+    obj.button3:setTop(1);
+    obj.button3:setWidth(23);
+    obj.button3:setHeight(23);
+    obj.button3:setText("X");
+    obj.button3:setName("button3");
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
@@ -202,15 +221,20 @@ local function constructNew_frmSkillItem()
 
     obj._e_event2 = obj.button1:addEventListener("onClick",
         function (_)
-            showPericiaPopup();
+            roll();
         end, obj);
 
     obj._e_event3 = obj.button2:addEventListener("onClick",
         function (_)
+            showPericiaPopup();
+        end, obj);
+
+    obj._e_event4 = obj.button3:addEventListener("onClick",
+        function (_)
             askForDelete();
         end, obj);
 
-    obj._e_event4 = obj.dataLink1:addEventListener("onChange",
+    obj._e_event5 = obj.dataLink1:addEventListener("onChange",
         function (_, field, oldValue, newValue)
             if sheet== nil then return end;
             
@@ -225,6 +249,7 @@ local function constructNew_frmSkillItem()
         end, obj);
 
     function obj:_releaseEvents()
+        __o_rrpgObjs.removeEventListenerById(self._e_event5);
         __o_rrpgObjs.removeEventListenerById(self._e_event4);
         __o_rrpgObjs.removeEventListenerById(self._e_event3);
         __o_rrpgObjs.removeEventListenerById(self._e_event2);
@@ -242,10 +267,11 @@ local function constructNew_frmSkillItem()
         end;
 
         if self.dataLink1 ~= nil then self.dataLink1:destroy(); self.dataLink1 = nil; end;
-        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
         if self.comboBox1 ~= nil then self.comboBox1:destroy(); self.comboBox1 = nil; end;
         if self.label1 ~= nil then self.label1:destroy(); self.label1 = nil; end;
-        if self.button1 ~= nil then self.button1:destroy(); self.button1 = nil; end;
+        if self.edit2 ~= nil then self.edit2:destroy(); self.edit2 = nil; end;
+        if self.button3 ~= nil then self.button3:destroy(); self.button3 = nil; end;
         if self.rectangle1 ~= nil then self.rectangle1:destroy(); self.rectangle1 = nil; end;
         if self.edit1 ~= nil then self.edit1:destroy(); self.edit1 = nil; end;
         if self.rectangle2 ~= nil then self.rectangle2:destroy(); self.rectangle2 = nil; end;
