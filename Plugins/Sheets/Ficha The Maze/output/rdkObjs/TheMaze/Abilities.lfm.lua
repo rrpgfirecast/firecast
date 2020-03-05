@@ -57,7 +57,7 @@ local function constructNew_frmAbilities()
     obj.edit1:setFontSize(20);
     obj.edit1:setHorzTextAlign("center");
     obj.edit1:setVertTextAlign("center");
-    obj.edit1:setMax(3);
+    obj.edit1:setMax(5);
     obj.edit1:setName("edit1");
 
     obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));

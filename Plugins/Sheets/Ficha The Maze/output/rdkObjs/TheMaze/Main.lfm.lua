@@ -5044,14 +5044,14 @@ local function constructNew_frmMain()
             					sheet.regFadigaBase = 10 + math.floor(paranormalidade/4)*2;
             					sheet.iniciativaBase = math.floor(agilidade/6);
             					sheet.criticoBase = 1 + math.floor(sorte/6);
-            					sheet.amplificacaoBase = 50 + math.floor(destreza/4)*10;
+            					sheet.amplificacaoBase = 50 + math.floor(destreza/4)*5;
             					sheet.negacaoBase = math.floor(precisao/4)*5;
             
             					-- REDUTORES
             
-            					sheet.fisicoBase = math.floor(cac/4)*5;
-            					sheet.paranormalBase = math.floor(paranormalidade/4)*5;
-            					sheet.projetilBase = math.floor(sorte/4)*5;
+            					sheet.fisicoBase = math.floor(cac/4)*10;
+            					sheet.paranormalBase = math.floor(paranormalidade/4)*10;
+            					sheet.projetilBase = math.floor(sorte/4)*10;
             
             					sheet.corrosivoBase = 0;
             
