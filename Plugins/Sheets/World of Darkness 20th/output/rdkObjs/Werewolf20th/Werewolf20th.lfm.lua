@@ -8433,7 +8433,7 @@ local function constructNew_frmWerewolf20th()
     obj.edit132:setTop(0);
     obj.edit132:setWidth(50);
     obj.edit132:setHeight(24);
-    obj.edit132:setField("gnosis_1");
+    obj.edit132:setField("gnosis_f_1");
     obj.edit132:setName("edit132");
 
     obj.edit133 = GUI.fromHandle(_obj_newObject("edit"));
@@ -8477,7 +8477,7 @@ local function constructNew_frmWerewolf20th()
     obj.edit136:setTop(0);
     obj.edit136:setWidth(50);
     obj.edit136:setHeight(24);
-    obj.edit136:setField("gnosis_2");
+    obj.edit136:setField("gnosis_f_2");
     obj.edit136:setName("edit136");
 
     obj.edit137 = GUI.fromHandle(_obj_newObject("edit"));
@@ -8521,7 +8521,7 @@ local function constructNew_frmWerewolf20th()
     obj.edit140:setTop(0);
     obj.edit140:setWidth(50);
     obj.edit140:setHeight(24);
-    obj.edit140:setField("gnosis_3");
+    obj.edit140:setField("gnosis_f_3");
     obj.edit140:setName("edit140");
 
     obj.edit141 = GUI.fromHandle(_obj_newObject("edit"));
@@ -8565,7 +8565,7 @@ local function constructNew_frmWerewolf20th()
     obj.edit144:setTop(0);
     obj.edit144:setWidth(50);
     obj.edit144:setHeight(24);
-    obj.edit144:setField("gnosis_4");
+    obj.edit144:setField("gnosis_f_4");
     obj.edit144:setName("edit144");
 
     obj.edit145 = GUI.fromHandle(_obj_newObject("edit"));
@@ -8609,7 +8609,7 @@ local function constructNew_frmWerewolf20th()
     obj.edit148:setTop(0);
     obj.edit148:setWidth(50);
     obj.edit148:setHeight(24);
-    obj.edit148:setField("gnosis_5");
+    obj.edit148:setField("gnosis_f_5");
     obj.edit148:setName("edit148");
 
     obj.edit149 = GUI.fromHandle(_obj_newObject("edit"));
@@ -8653,7 +8653,7 @@ local function constructNew_frmWerewolf20th()
     obj.edit152:setTop(0);
     obj.edit152:setWidth(50);
     obj.edit152:setHeight(24);
-    obj.edit152:setField("gnosis_6");
+    obj.edit152:setField("gnosis_f_6");
     obj.edit152:setName("edit152");
 
     obj.edit153 = GUI.fromHandle(_obj_newObject("edit"));
@@ -8697,7 +8697,7 @@ local function constructNew_frmWerewolf20th()
     obj.edit156:setTop(0);
     obj.edit156:setWidth(50);
     obj.edit156:setHeight(24);
-    obj.edit156:setField("gnosis_7");
+    obj.edit156:setField("gnosis_f_7");
     obj.edit156:setName("edit156");
 
     obj.edit157 = GUI.fromHandle(_obj_newObject("edit"));
@@ -8741,7 +8741,7 @@ local function constructNew_frmWerewolf20th()
     obj.edit160:setTop(0);
     obj.edit160:setWidth(50);
     obj.edit160:setHeight(24);
-    obj.edit160:setField("gnosis_8");
+    obj.edit160:setField("gnosis_f_8");
     obj.edit160:setName("edit160");
 
     obj.edit161 = GUI.fromHandle(_obj_newObject("edit"));
@@ -8785,7 +8785,7 @@ local function constructNew_frmWerewolf20th()
     obj.edit164:setTop(0);
     obj.edit164:setWidth(50);
     obj.edit164:setHeight(24);
-    obj.edit164:setField("gnosis_9");
+    obj.edit164:setField("gnosis_f_9");
     obj.edit164:setName("edit164");
 
     obj.edit165 = GUI.fromHandle(_obj_newObject("edit"));
@@ -8829,7 +8829,7 @@ local function constructNew_frmWerewolf20th()
     obj.edit168:setTop(0);
     obj.edit168:setWidth(50);
     obj.edit168:setHeight(24);
-    obj.edit168:setField("gnosis_10");
+    obj.edit168:setField("gnosis_f_10");
     obj.edit168:setName("edit168");
 
     obj.edit169 = GUI.fromHandle(_obj_newObject("edit"));

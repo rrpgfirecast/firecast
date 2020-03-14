@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.5" originalPluginFileName="World of Darkness 20th.rpk">
 	<id>Ambesek.WoD.20th</id>
-	<version>0.5</version>
+	<version>0.5.1</version>
 	<name>World of Darkness 20th Anniversary</name>
 	<description>Plugin de ficha para Werewolf the Apocalypse 20th Anniversary Edition, Vampíre the Dark Ages 20th Anniversary Edition e Mage the Ascension 20th Anniversary Edition</description>
 	<author>Ambesek</author>

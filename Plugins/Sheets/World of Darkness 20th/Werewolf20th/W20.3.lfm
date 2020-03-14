@@ -13,7 +13,7 @@
 		<template name="Fetish">
 			<edit left="0" top="0" width="200" height="24" field="item_$(num)"/>
 			<edit left="200" top="0" width="50" height="24" field="level_$(num)"/>
-			<edit left="250" top="0" width="50" height="24" field="gnosis_$(num)"/>
+			<edit left="250" top="0" width="50" height="24" field="gnosis_f_$(num)"/>
 			<edit left="300" top="0" width="250" height="24" field="power_$(num)"/>
 		</template>
 

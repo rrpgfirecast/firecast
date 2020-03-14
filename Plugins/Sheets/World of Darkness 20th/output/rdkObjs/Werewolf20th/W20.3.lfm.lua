@@ -849,7 +849,7 @@ local function constructNew_frmW20_3()
     obj.edit73:setTop(0);
     obj.edit73:setWidth(50);
     obj.edit73:setHeight(24);
-    obj.edit73:setField("gnosis_1");
+    obj.edit73:setField("gnosis_f_1");
     obj.edit73:setName("edit73");
 
     obj.edit74 = GUI.fromHandle(_obj_newObject("edit"));
@@ -893,7 +893,7 @@ local function constructNew_frmW20_3()
     obj.edit77:setTop(0);
     obj.edit77:setWidth(50);
     obj.edit77:setHeight(24);
-    obj.edit77:setField("gnosis_2");
+    obj.edit77:setField("gnosis_f_2");
     obj.edit77:setName("edit77");
 
     obj.edit78 = GUI.fromHandle(_obj_newObject("edit"));
@@ -937,7 +937,7 @@ local function constructNew_frmW20_3()
     obj.edit81:setTop(0);
     obj.edit81:setWidth(50);
     obj.edit81:setHeight(24);
-    obj.edit81:setField("gnosis_3");
+    obj.edit81:setField("gnosis_f_3");
     obj.edit81:setName("edit81");
 
     obj.edit82 = GUI.fromHandle(_obj_newObject("edit"));
@@ -981,7 +981,7 @@ local function constructNew_frmW20_3()
     obj.edit85:setTop(0);
     obj.edit85:setWidth(50);
     obj.edit85:setHeight(24);
-    obj.edit85:setField("gnosis_4");
+    obj.edit85:setField("gnosis_f_4");
     obj.edit85:setName("edit85");
 
     obj.edit86 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1025,7 +1025,7 @@ local function constructNew_frmW20_3()
     obj.edit89:setTop(0);
     obj.edit89:setWidth(50);
     obj.edit89:setHeight(24);
-    obj.edit89:setField("gnosis_5");
+    obj.edit89:setField("gnosis_f_5");
     obj.edit89:setName("edit89");
 
     obj.edit90 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1069,7 +1069,7 @@ local function constructNew_frmW20_3()
     obj.edit93:setTop(0);
     obj.edit93:setWidth(50);
     obj.edit93:setHeight(24);
-    obj.edit93:setField("gnosis_6");
+    obj.edit93:setField("gnosis_f_6");
     obj.edit93:setName("edit93");
 
     obj.edit94 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1113,7 +1113,7 @@ local function constructNew_frmW20_3()
     obj.edit97:setTop(0);
     obj.edit97:setWidth(50);
     obj.edit97:setHeight(24);
-    obj.edit97:setField("gnosis_7");
+    obj.edit97:setField("gnosis_f_7");
     obj.edit97:setName("edit97");
 
     obj.edit98 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1157,7 +1157,7 @@ local function constructNew_frmW20_3()
     obj.edit101:setTop(0);
     obj.edit101:setWidth(50);
     obj.edit101:setHeight(24);
-    obj.edit101:setField("gnosis_8");
+    obj.edit101:setField("gnosis_f_8");
     obj.edit101:setName("edit101");
 
     obj.edit102 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1201,7 +1201,7 @@ local function constructNew_frmW20_3()
     obj.edit105:setTop(0);
     obj.edit105:setWidth(50);
     obj.edit105:setHeight(24);
-    obj.edit105:setField("gnosis_9");
+    obj.edit105:setField("gnosis_f_9");
     obj.edit105:setName("edit105");
 
     obj.edit106 = GUI.fromHandle(_obj_newObject("edit"));
@@ -1245,7 +1245,7 @@ local function constructNew_frmW20_3()
     obj.edit109:setTop(0);
     obj.edit109:setWidth(50);
     obj.edit109:setHeight(24);
-    obj.edit109:setField("gnosis_10");
+    obj.edit109:setField("gnosis_f_10");
     obj.edit109:setName("edit109");
 
     obj.edit110 = GUI.fromHandle(_obj_newObject("edit"));
