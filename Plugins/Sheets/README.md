@@ -52,6 +52,7 @@ Esses são plugins de fichas para diversos sistemas (Próprios e Comerciais) e s
 	- Ficha para Tormenta Imperio De Jade.
 - [Ficha Reinos d20](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Ficha%20de%20Reinos%20d20/output/Ficha%20de%20Reinos%20d20.rpk?raw=true): Ambesek
 	- Ficha para descrição de Reinos e Cidades seguindo o padrão d20system do Livro do Mestre.  
+- [FichaAODD](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/FichaAODD/output/FichaAODD.rpk?raw=true): AlvagorH e Hellzen
 - [Fira](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/Fira/output/fira.rpk?raw=true): Yiotoo
 - [GURPS Saint Seiya Forever](https://github.com/rrpgfirecast/firecast/blob/master/Plugins/Sheets/GURPS%20Saint%20Seiya%20Forever/output/Ficha%20SSF.rpk?raw=true): Ambesek
 	- Ficha para o sistema GURPS adaptada para a mesa Saint Seiya Forever.
